@@ -278,7 +278,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['推论', '线性代数', '谱', '标准形'],
       statement: [
-        'Jordan 标准形在「Jordan 块的排列顺序」之外是**唯一**的，即 $A \\sim B$ 当且仅当 $A$ 与 $B$ 有相同的 Jordan 型（不计块的次序）：',
+        '设 $A$ 的**特征多项式在 $K$ 上分裂**（否则连 Jordan 形都不存在：$\\mathbb{R}$ 上的旋转 $\\begin{pmatrix}0 & -1\\cr 1 & 0\\end{pmatrix}$ 就是反例）。在这个前提下，Jordan 标准形在「Jordan 块的排列顺序」之外是**唯一**的，即 $A \\sim B$ 当且仅当 $A$ 与 $B$ 有相同的 Jordan 型（不计块的次序）：',
         '',
         '$$A \\sim B \\iff \\mu_A(\\lambda) = \\mu_B(\\lambda) \\ \\ (\\forall \\lambda)$$',
         '',

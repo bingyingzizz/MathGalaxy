@@ -52,7 +52,7 @@ window.MG = window.MG || {};
       regions: ['topology', 'algebra'],
       tags: ['拓扑', 'Stone 空间', '布尔环', '表示定理', '对偶等价'],
       statement: [
-        '布尔环范畴与 Stone 空间范畴**反等价**：',
+        '设 $\\mathbf{BoolRing}$ 是**含单位元**的布尔环配上**保单位**的环同态（缺这一条，反等价不成立：$\\mathbb{F}_{2}$ 上允许零映射时，$\\operatorname{Spec}$ 会把两点粘成一点，还原出来是 $4$ 元环）。在这个约定下，布尔环范畴与 Stone 空间范畴**反等价**：',
         '',
         '$$\\mathbf{BoolRing}^{\\mathrm{op}}\\;\\simeq\\;\\mathbf{Stone}.$$',
         '',

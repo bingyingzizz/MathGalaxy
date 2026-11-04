@@ -169,7 +169,7 @@ window.MG = window.MG || {};
       statement: [
         '**在做什么**：奇异矩阵、长方矩阵都没有逆，但仍然有「最好用的那个替代品」。伪逆 $A^{+}$ 是唯一满足四条 Penrose 条件的矩阵。',
         '',
-        '设 $A \\in M_{m\\times n}(K)$。**Moore–Penrose 伪逆** $A^{+} \\in M_{n\\times m}(K)$ 是唯一满足下面四条的矩阵：',
+        '设 $A \\in M_{m\\times n}(\\mathbb{K})$，其中 $\\mathbb{K} = \\mathbb{R}$ 或 $\\mathbb{C}$（$^{*}$ 取转置 / 共轭转置）。**Moore–Penrose 伪逆** $A^{+} \\in M_{n\\times m}(\\mathbb{K})$ 是唯一满足下面四条的矩阵：（⚠ 一般域上四条**未必有解**：$K = \\mathbb{F}_{2}$、$A = (1\\, 1)$ 会把四条化成 $1 = 0$。）',
         '',
         '$$A A^{+} A = A, \\qquad A^{+} A A^{+} = A^{+} ,$$',
         '',

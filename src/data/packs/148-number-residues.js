@@ -180,11 +180,11 @@ window.MG = window.MG || {};
       regions: ['number'],
       tags: ['数论', '二次剩余', '定理'],
       statement: [
-        '设 $m, n$ 是正奇数，$a, b \\in \\mathbb{Z}$。则',
+        '设 $m, n$ 是正奇数，$a, b \\in \\mathbb{Z}$。则（前两个式子是**定义**，无需互素；**互反律（第三个）要 $\\gcd(m,n) = 1$** —— 取 $m = n = 3$：左端 $0\\cdot 0 = 0$，右端 $(-1)^{1} = -1$）',
         '',
         '$$\\left(\\frac{ab}{n}\\right) = \\left(\\frac{a}{n}\\right)\\left(\\frac{b}{n}\\right), \\qquad \\left(\\frac{a}{mn}\\right) = \\left(\\frac{a}{m}\\right)\\left(\\frac{a}{n}\\right),$$',
         '',
-        '$$\\left(\\frac{m}{n}\\right)\\left(\\frac{n}{m}\\right) = (-1)^{\\frac{m-1}{2}\\cdot\\frac{n-1}{2}}, \\qquad \\left(\\frac{-1}{n}\\right) = (-1)^{\\frac{n-1}{2}}, \\qquad \\left(\\frac{2}{n}\\right) = (-1)^{\\frac{n^{2}-1}{8}} .$$',
+        '$$\\gcd(m,n) = 1:\\quad \\left(\\frac{m}{n}\\right)\\left(\\frac{n}{m}\\right) = (-1)^{\\frac{m-1}{2}\\cdot\\frac{n-1}{2}}, \\qquad \\left(\\frac{-1}{n}\\right) = (-1)^{\\frac{n-1}{2}}, \\qquad \\left(\\frac{2}{n}\\right) = (-1)^{\\frac{n^{2}-1}{8}} .$$',
       ].join('\n'),
       notes: [
         '算法：把 $\\left(\\frac{a}{n}\\right)$ 里的 $a$ 拆成 $2^{k}$ 乘一个奇数，用 $\\left(\\frac{2}{n}\\right)$ 的公式处理 $2$ 的部分；\n\n再把剩下的奇数因子用互反律翻过来（符号按 $m \\equiv n \\equiv 3 \\pmod 4$ 判），然后对 $a \\bmod n$ 取余 —— 与辗转相除同构，$O(\\log n)$ 步。',

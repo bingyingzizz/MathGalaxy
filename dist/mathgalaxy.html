@@ -25471,7 +25471,7 @@ window.MG = window.MG || {};
         '',
         '**$(b) \\implies (c)$。** 若 $F(x) - F(a) = \\int_a^x f$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$d / dx\\int_a^x f = f(x)$ a.e.，故 $F\' = f$ a.e.、$F\' \\in L^1$，公式成立。',
         '',
-        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $F(x) - \\int_a^x F\'$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；\n\n再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv 0$。\n\n故 $F$ 本身绝对连续。\n\n∎',
+        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $F(x) - \\int_a^x F\'$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；\n\n再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv$ **常数**（其值为 $G(a) = F(a)$，不是 $0$）。\n\n于是 $F(x) = F(a) + \\int_a^x F^{\\prime}$ 是绝对连续的。\n\n∎',
         '',
         '$>$ ⭐ 最容易错的直觉是「a.e. 可导 $F\' \\in L^{1}$ 就够」——**Cantor 函数**正是反例：它 a.e. 可导、$F\' \\equiv 0 \\in L^{1}$，但 $\\int _{0}^{1} F\' = 0 \\ne 1$。**绝对连续这一条不能省。**'
       ].join('\n'),
@@ -38772,7 +38772,7 @@ window.MG = window.MG || {};
       regions: ['topology', 'algebra'],
       tags: ['拓扑', 'Stone 空间', '布尔环', '表示定理', '对偶等价'],
       statement: [
-        '布尔环范畴与 Stone 空间范畴**反等价**：',
+        '设 $\\mathbf{BoolRing}$ 是**含单位元**的布尔环配上**保单位**的环同态（缺这一条，反等价不成立：$\\mathbb{F}_{2}$ 上允许零映射时，$\\operatorname{Spec}$ 会把两点粘成一点，还原出来是 $4$ 元环）。在这个约定下，布尔环范畴与 Stone 空间范畴**反等价**：',
         '',
         '$$\\mathbf{BoolRing}^{\\mathrm{op}}\\;\\simeq\\;\\mathbf{Stone}.$$',
         '',
@@ -50122,7 +50122,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['推论', '线性代数', '谱', '标准形'],
       statement: [
-        'Jordan 标准形在「Jordan 块的排列顺序」之外是**唯一**的，即 $A \\sim B$ 当且仅当 $A$ 与 $B$ 有相同的 Jordan 型（不计块的次序）：',
+        '设 $A$ 的**特征多项式在 $K$ 上分裂**（否则连 Jordan 形都不存在：$\\mathbb{R}$ 上的旋转 $\\begin{pmatrix}0 & -1\\cr 1 & 0\\end{pmatrix}$ 就是反例）。在这个前提下，Jordan 标准形在「Jordan 块的排列顺序」之外是**唯一**的，即 $A \\sim B$ 当且仅当 $A$ 与 $B$ 有相同的 Jordan 型（不计块的次序）：',
         '',
         '$$A \\sim B \\iff \\mu_A(\\lambda) = \\mu_B(\\lambda) \\ \\ (\\forall \\lambda)$$',
         '',
@@ -74392,7 +74392,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['代数拓扑', '链群', '自由阿贝尔群'],
       statement: [
-        '设 $K$ 是单纯复形，记 $K_{p}$ 为它全体 $p$-单纯形之集（有限集）。**$p$-链群** $C_{p}(K)$ 是**以 $K_{p}$ 为基的自由阿贝尔群**，' +
+        '设 $K$ 是单纯复形，记 $K_{p}$ 为它全体 $p$-单纯形之集（$K$ **有限**时它是有限集；一般情形可以无限，下面的「有限支撑」条件就是为此设的）。**$p$-链群** $C_{p}(K)$ 是**以 $K_{p}$ 为基的自由阿贝尔群**，' +
           '它的具体构造是',
         '',
         '$$C_{p}(K) := \\{\\, n : K_{p} \\to \\mathbb{Z} \\,\\},$$',
@@ -75009,7 +75009,7 @@ window.MG = window.MG || {};
           '各自经球极投影同胚于 $\\mathbb{R}^{n}$，因而可缩。',
         '',
         '**可缩 $\\implies$ 约化同调为零**：恒等映射 $\\simeq$ 常值映射，同调不变性给出两者诱导相同的映射；' +
-          '而常值映射在约化同调上是零（$\\tilde{H}_{0}$ 上：$\\varepsilon(1 \\cdot x) = 1$ 但约化同调里点类为零；$p \\ge 1$ 上：链映射经过 $S_{*}(\\mathrm{pt})$，那里没有正维数的链）。\n\n' +
+          '而常值映射在约化同调上是零（$\\tilde{H}_{0}$ 上：$\\varepsilon(1 \\cdot x) = 1$ 但约化同调里点类为零；$p \\ge 1$ 上：链映射经过 $S_{*}(\\mathrm{pt})$ —— 注意 $S_{p}(\\mathrm{pt}) \\cong \\mathbb{Z}$（每个 $p$ **恰有一个**奇异 $p$-单纯形，不是「没有链」），但边缘映射 $S_{p}(\\mathrm{pt}) \\to S_{p-1}(\\mathrm{pt})$ 是同构，所以同调为零）。\n\n' +
           '故 $\\tilde{H}_{p}(U) = \\tilde{H}_{p}(V) = 0$ 对一切 $p$。',
         '',
         '**交叠**：$U \\cap V = S^{n} \\setminus \\{N, S\\}$ 沿经线把每点推到赤道，给出到 $S^{n-1}$ 的**形变收缩**，' +
@@ -77712,11 +77712,11 @@ window.MG = window.MG || {};
       regions: ['number'],
       tags: ['数论', '二次剩余', '定理'],
       statement: [
-        '设 $m, n$ 是正奇数，$a, b \\in \\mathbb{Z}$。则',
+        '设 $m, n$ 是正奇数，$a, b \\in \\mathbb{Z}$。则（前两个式子是**定义**，无需互素；**互反律（第三个）要 $\\gcd(m,n) = 1$** —— 取 $m = n = 3$：左端 $0\\cdot 0 = 0$，右端 $(-1)^{1} = -1$）',
         '',
         '$$\\left(\\frac{ab}{n}\\right) = \\left(\\frac{a}{n}\\right)\\left(\\frac{b}{n}\\right), \\qquad \\left(\\frac{a}{mn}\\right) = \\left(\\frac{a}{m}\\right)\\left(\\frac{a}{n}\\right),$$',
         '',
-        '$$\\left(\\frac{m}{n}\\right)\\left(\\frac{n}{m}\\right) = (-1)^{\\frac{m-1}{2}\\cdot\\frac{n-1}{2}}, \\qquad \\left(\\frac{-1}{n}\\right) = (-1)^{\\frac{n-1}{2}}, \\qquad \\left(\\frac{2}{n}\\right) = (-1)^{\\frac{n^{2}-1}{8}} .$$',
+        '$$\\gcd(m,n) = 1:\\quad \\left(\\frac{m}{n}\\right)\\left(\\frac{n}{m}\\right) = (-1)^{\\frac{m-1}{2}\\cdot\\frac{n-1}{2}}, \\qquad \\left(\\frac{-1}{n}\\right) = (-1)^{\\frac{n-1}{2}}, \\qquad \\left(\\frac{2}{n}\\right) = (-1)^{\\frac{n^{2}-1}{8}} .$$',
       ].join('\n'),
       notes: [
         '算法：把 $\\left(\\frac{a}{n}\\right)$ 里的 $a$ 拆成 $2^{k}$ 乘一个奇数，用 $\\left(\\frac{2}{n}\\right)$ 的公式处理 $2$ 的部分；\n\n再把剩下的奇数因子用互反律翻过来（符号按 $m \\equiv n \\equiv 3 \\pmod 4$ 判），然后对 $a \\bmod n$ 取余 —— 与辗转相除同构，$O(\\log n)$ 步。',
@@ -80019,7 +80019,7 @@ window.MG = window.MG || {};
       statement: [
         '**在做什么**：奇异矩阵、长方矩阵都没有逆，但仍然有「最好用的那个替代品」。伪逆 $A^{+}$ 是唯一满足四条 Penrose 条件的矩阵。',
         '',
-        '设 $A \\in M_{m\\times n}(K)$。**Moore–Penrose 伪逆** $A^{+} \\in M_{n\\times m}(K)$ 是唯一满足下面四条的矩阵：',
+        '设 $A \\in M_{m\\times n}(\\mathbb{K})$，其中 $\\mathbb{K} = \\mathbb{R}$ 或 $\\mathbb{C}$（$^{*}$ 取转置 / 共轭转置）。**Moore–Penrose 伪逆** $A^{+} \\in M_{n\\times m}(\\mathbb{K})$ 是唯一满足下面四条的矩阵：（⚠ 一般域上四条**未必有解**：$K = \\mathbb{F}_{2}$、$A = (1\\, 1)$ 会把四条化成 $1 = 0$。）',
         '',
         '$$A A^{+} A = A, \\qquad A^{+} A A^{+} = A^{+} ,$$',
         '',
@@ -81380,7 +81380,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathcal{B}_{n} := \\bigl\\{\\, B(s, 2^{-n}) : s \\in S_{n} \\,\\bigr\\}$$',
         '',
-        '覆盖 $X$（否则可再加一点，与极大性矛盾）。\n\n同一个 $\\mathcal{B}_{n}$ 里的球**两两不交**（中心相距 $\\ge 2^{-n}$ $\\implies$ 半径 $2^{-n}$ 的球不交），所以 $\\mathcal{B}_{n}$ 是**离散**族；\n\n$\\bigcup_{n}\\mathcal{B}_{n}$ 是 $\\sigma$-离散族。',
+        '覆盖 $X$（否则可再加一点，与极大性矛盾）。\n\n**半径要减半**：中心相距 $\\ge 2^{-n}$ 只保证**半径 $2^{-n-1}$** 的球两两不交（两球交于 $z$ 会给出 $d(x,y) \\le d(x,z)+d(z,y) < 2\\cdot 2^{-n-1} = 2^{-n}$，矛盾）；半径 $2^{-n}$ 那族只负责**覆盖**。下面说的「离散族」指的都是减半后的 $\\bigl\\{, B(s,2^{-n-1}):s\\in S_{n},\\bigr\\}$；\n\n$\\bigcup_{n}\\mathcal{B}_{n}$ 是 $\\sigma$-离散族。',
         '',
         '**第 2 步（$\\sigma$-离散 $\\implies$ 局部有限）**：对一个固定点 $x$，$B(x, 2^{-n})$ 只与 $S_{n}$ 中有限多个点相交（它们两两相距 $\\ge 2^{-n}$，而都落在 $B(x, 2^{-n+1})$ 里 —— 直径有限的距离空间里这样的点最多有限多个）。\n\n于是 $x$ 的一个邻域只碰到 $\\mathcal{B}_{n}$ 中有限多个成员 ✓。',
         '',
