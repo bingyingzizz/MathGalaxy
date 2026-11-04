@@ -8,3 +8,4 @@
 - 被 [`prop.curvature-split`](../nodes/prop.curvature-split.md) 曲率分解 用
 - 被 [`def.gauss-curvature`](../nodes/def.gauss-curvature.md) Gauss 曲率 用
 - 被 [`def.intrinsic-quantity`](../nodes/def.intrinsic-quantity.md) 内蕴量 用
+- 被 [`ex.sphere-curvature`](../nodes/ex.sphere-curvature.md) 球面的曲率 用

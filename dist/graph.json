@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T03:35:17.973Z",
+  "generated": "2026-11-04T03:42:14.334Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
    "nodes": 1520,
-   "edges": 3081,
-   "strong": 3043,
+   "edges": 3083,
+   "strong": 3045,
    "weak": 38,
    "derived": 33,
    "en_pages": 1506
@@ -41200,7 +41200,7 @@
     "geometry"
    ],
    "cluster": "diffgeom.intrinsic",
-   "layer": 31,
+   "layer": 33,
    "tags": [
     "例",
     "微分几何",
@@ -83060,6 +83060,22 @@
    "note": "例子的结论就是「$K = 1/R^{2}$」—— 用到 Gauss 曲率的定义（两主曲率之积）。"
   },
   {
+   "id": "dep.spherecurv-gb",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.gauss-bonnet",
+   "usedBy": "ex.sphere-curvature",
+   "note": "注里用 $\\int_{S^{2}_{R}} K\\,\\mathrm{d}A = 4\\pi = 2\\pi\\chi$ **对账**，用的就是 Gauss–Bonnet 定理。"
+  },
+  {
+   "id": "dep.spherecurv-sff",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.second-fundamental-form",
+   "usedBy": "ex.sphere-curvature",
+   "note": "计算过程取第二基本形式 $h = R\\,\\mathrm{d}\\theta^{2} + R\\sin^{2}\\theta\\,\\mathrm{d}\\varphi^{2}$ 来得到主曲率。"
+  },
+  {
    "id": "dep.s1tangent-bundle",
    "kind": "definition",
    "strength": "strong",
@@ -94369,7 +94385,7 @@
   {
    "a": "diffgeom.intrinsic",
    "b": "diffgeom.surface",
-   "count": 16,
+   "count": 17,
    "label": "",
    "explicit": false
   },

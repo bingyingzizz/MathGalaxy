@@ -9,6 +9,7 @@ layer 32 · 定理 · 内蕴几何 · 微分几何
 
 ## 它能推出什么 / 谁在用它
 - ～弱边 [`thm.classification-surfaces`](../nodes/thm.classification-surfaces.md) 闭曲面分类定理
+- 被 [`ex.sphere-curvature`](../nodes/ex.sphere-curvature.md) 球面的曲率 用
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.gauss-bonnet.5.md](./thm.gauss-bonnet.5.md)
