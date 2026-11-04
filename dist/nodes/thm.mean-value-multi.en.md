@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 22 · theorem · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
+layer 25 · theorem · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
 names: `Mean Value Theorem` (short) · `Mean Value Theorem in Several Variables` (full)
 
 ## Statement and proof

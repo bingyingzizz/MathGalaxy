@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · corollary · cluster Arithmetic and Inequalities on the Reals (`analysis.real-calc`) · Mathematical Analysis
+layer 18 · corollary · cluster Arithmetic and Inequalities on the Reals (`analysis.real-calc`) · Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/cor.archimedean-epsilon.md` and `proofs/`.

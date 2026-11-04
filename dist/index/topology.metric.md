@@ -4,12 +4,12 @@
 中心天体 def.metric-space　·　10 个节点　·　根 `../`
 
 - def.metric-space　距离空间　layer 13
-- def.complete　完备　layer 14
-- def.totally-bounded　全有界　layer 14
-- def.sequentially-compact　列紧　layer 14
-- def.compact　紧　layer 14
-- thm.metric-compact-equiv　紧的三个等价刻画　layer 15
-- prop.compact-subset-closed　紧子集是闭的　layer 15
-- prop.subset-compact-equiv　子集的紧性刻画　layer 15
-- def.lebesgue-number　勒贝格数　layer 15
-- def.relatively-compact　相对紧　layer 15
+- def.complete　完备　layer 15
+- def.totally-bounded　全有界　layer 15
+- def.sequentially-compact　列紧　layer 15
+- def.compact　紧　layer 15
+- thm.metric-compact-equiv　紧的三个等价刻画　layer 16
+- prop.compact-subset-closed　紧子集是闭的　layer 16
+- prop.subset-compact-equiv　子集的紧性刻画　layer 16
+- def.lebesgue-number　勒贝格数　layer 16
+- def.relatively-compact　相对紧　layer 16

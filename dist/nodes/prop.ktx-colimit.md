@@ -1,6 +1,6 @@
 # kX 是紧空间的余极限　`prop.ktx-colimit`
 $kX = \varinjlim S$
-layer 18 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
+layer 19 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=prop.ktx-colimit)　·　[节点索引](../index.md)
 
 对任何拓扑空间 $X$，$kX$ 是全体连续映射 $S \to X$（$S$ 取遍紧 Hausdorff 空间）在 $\mathbf{Top}$ 中的余极限。

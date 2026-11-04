@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · proposition · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra / Category Theory
+layer 20 · proposition · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra / Category Theory
 names: `Rings and Tensor` (short) · `Fiber Coproducts of Commutative Rings Are Tensor Products` (full)
 
 ## Statement and proof

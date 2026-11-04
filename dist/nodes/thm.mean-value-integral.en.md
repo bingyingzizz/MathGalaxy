@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · theorem · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
+layer 23 · theorem · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
 names: `Integral Mean Value Theorem` (short) · `Mean Value Theorem for Integrals` (full)
 
 ## Statement and proof

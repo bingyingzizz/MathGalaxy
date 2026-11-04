@@ -11,4 +11,10 @@
 
 - 单位根 | 分圆多项式 | n 次单位根 | roots of unity → def.roots-of-unity
 
+- 同构 | 可逆态射 | 同构映射 | isomorphic → def.isomorphism
+
+- 二元运算 | 二元算子 | 封闭运算 → def.binary-operation
+
+- 群的阶 | 元素的阶 | 阶（群论） → def.group-order
+
 见 `../../alias.md`。

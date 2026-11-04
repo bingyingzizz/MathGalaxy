@@ -27,4 +27,6 @@
 
 - 函子保同构 → prop.functor-preserves-iso
 
+- 同构 | 可逆态射 | 同构映射 | isomorphic → def.isomorphism
+
 见 `../../alias.md`。

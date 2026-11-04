@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis
+layer 21 · theorem · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.real-complete-metric.md` and `proofs/`.

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · proposition · cluster L^p Spaces (`analysis.lp`) · Functions of a Real Variable / Mathematical Analysis
+layer 20 · proposition · cluster L^p Spaces (`analysis.lp`) · Functions of a Real Variable / Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.lq-in-lp-plus-lr.md` and `proofs/`.

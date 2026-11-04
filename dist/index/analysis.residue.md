@@ -6,10 +6,10 @@
 - def.residue　留数　layer 18
 - lem.jordan　Jordan 引理　layer 18
 - prop.residue-at-pole　极点处的留数公式　layer 19
-- thm.mittag-leffler　Mittag-Leffler 定理　layer 19
-- thm.residue　留数定理　layer 20
-- thm.argument-principle　辐角原理　layer 21
-- thm.integral-rational　实轴上有理函数的积分　layer 21
-- thm.integral-trig　三角有理函数的积分　layer 21
-- thm.rouche　Rouché 定理　layer 22
-- thm.hurwitz　Hurwitz 定理　layer 23
+- thm.mittag-leffler　Mittag-Leffler 定理　layer 21
+- thm.residue　留数定理　layer 23
+- thm.argument-principle　辐角原理　layer 24
+- thm.integral-rational　实轴上有理函数的积分　layer 24
+- thm.integral-trig　三角有理函数的积分　layer 24
+- thm.rouche　Rouché 定理　layer 25
+- thm.hurwitz　Hurwitz 定理　layer 26

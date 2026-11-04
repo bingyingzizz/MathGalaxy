@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · theorem · cluster Matrix Factorizations and Least Squares (`algebra.numeric`) · Abstract Algebra
+layer 16 · theorem · cluster Matrix Factorizations and Least Squares (`algebra.numeric`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.qr-decomposition.md` and `proofs/`.

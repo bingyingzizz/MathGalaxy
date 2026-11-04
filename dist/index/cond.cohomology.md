@@ -6,8 +6,8 @@
 - def.semi-normed-ab-group　半范数阿贝尔群　layer 7
 - def.k-bounded-exact　K-有界正合　layer 11
 - prop.k-bounded-exact-filtered-colimit　K-有界正合沿滤过余极限保持　layer 12
-- def.banach-ab-group　Banach 阿贝尔群　layer 15
-- thm.tietze-banach　Tietze 延拓（Banach 值）　layer 15
-- lem.k-bounded-completion　K-有界正合在完备化下不变　layer 16
+- def.banach-ab-group　Banach 阿贝尔群　layer 16
+- thm.tietze-banach　Tietze 延拓（Banach 值）　layer 16
+- lem.k-bounded-completion　K-有界正合在完备化下不变　layer 17
 
 > 续见 `index/cond.cohomology.2.md`

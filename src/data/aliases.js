@@ -1462,6 +1462,12 @@ MG.aliases = {
     { id: 'thm.quintic-unsolvable', en: 'insolubility of the quintic', aka: ['五次方程没有根式解', 'Abel-Ruffini', '五次方程'] },
     { id: 'def.algebraically-closed', en: 'algebraically closed field', aka: ['代数闭', '代数闭包', 'algebraically closed'] },
     { id: 'def.roots-of-unity', en: 'roots of unity', aka: ['单位根', '分圆多项式', 'n 次单位根', 'roots of unity'] },
+    { id: 'def.isomorphism', en: 'isomorphism', aka: ['同构', '可逆态射', '同构映射', 'isomorphic'] },
+    { id: 'def.antiderivative', en: 'antiderivative', aka: ['原函数', '不定积分', 'primitive'] },
+    { id: 'def.binary-operation', en: 'binary operation', aka: ['二元运算', '二元算子', '封闭运算'] },
+    { id: 'def.group-order', en: 'order of a group', aka: ['群的阶', '元素的阶', '阶（群论）'] },
+    { id: 'def.tan-cot-sec', en: 'tangent, cotangent, secant, cosecant', aka: ['正切', '余切', '正割', '余割', 'tan', 'cot', 'sec', 'csc'] },
+    { id: 'def.inverse-trig', en: 'inverse trigonometric functions', aka: ['反三角函数', '反正弦', '反余弦', '反正切', 'arcsin', 'arccos', 'arctan'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

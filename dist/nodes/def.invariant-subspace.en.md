@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 11 · definition · cluster Eigenvalues and Jordan Form (`algebra.spectral`) · Abstract Algebra
+layer 12 · definition · cluster Eigenvalues and Jordan Form (`algebra.spectral`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.invariant-subspace.md` and `proofs/`.

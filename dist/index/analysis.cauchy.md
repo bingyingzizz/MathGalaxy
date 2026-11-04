@@ -4,15 +4,15 @@
 中心天体 thm.cauchy-goursat　·　16 个节点　·　根 `../`　·　续页 `index/analysis.cauchy.2.md`
 
 - def.laurent-series　Laurent 级数　layer 16
-- lem.goursat-triangle　Goursat 三角形引理　layer 18
-- thm.morera　Morera 定理　layer 18
-- def.entire-meromorphic　整函数与亚纯函数　layer 18
-- thm.cauchy-goursat　Cauchy–Goursat 积分定理　layer 19
-- thm.weierstrass-convergence　Weierstrass 收敛性定理　layer 19
-- thm.cauchy-integral-formula　Cauchy 积分公式　layer 20
-- thm.cauchy-higher-derivative　高阶导数公式　layer 21
-- thm.taylor-complex　全纯函数的 Taylor 展开　layer 21
-- thm.laurent　Laurent 展开定理　layer 21
-- thm.riemann-removable　Riemann 可去奇点定理　layer 21
+- lem.goursat-triangle　Goursat 三角形引理　layer 20
+- thm.morera　Morera 定理　layer 20
+- def.entire-meromorphic　整函数与亚纯函数　layer 20
+- thm.weierstrass-convergence　Weierstrass 收敛性定理　layer 21
+- thm.cauchy-goursat　Cauchy–Goursat 积分定理　layer 22
+- thm.cauchy-integral-formula　Cauchy 积分公式　layer 23
+- thm.cauchy-higher-derivative　高阶导数公式　layer 24
+- thm.taylor-complex　全纯函数的 Taylor 展开　layer 24
+- thm.laurent　Laurent 展开定理　layer 24
+- thm.riemann-removable　Riemann 可去奇点定理　layer 24
 
 > 续见 `index/analysis.cauchy.2.md`

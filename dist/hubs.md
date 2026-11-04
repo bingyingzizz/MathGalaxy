@@ -19,8 +19,8 @@
 - 全部：`hubs/big.md`
 
 ## 跨领域连接榜
-- **16 团 / 23 节点** `def.function` 映射 · 关系与函数
-- **15 团 / 25 节点** `def.group` 群 · 代数结构
+- **16 团 / 24 节点** `def.function` 映射 · 关系与函数
+- **15 团 / 26 节点** `def.group` 群 · 代数结构
 - **14 团 / 28 节点** `def.compact` 紧 · 度量空间
 - 全部：`hubs/cross.md`
 

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
+layer 19 · theorem · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
 names: `Cond Is Sheaves on FCHaus` (short) · `Condensed Sets Are Sheaves on Finite Compact Hausdorff Spaces` (full)
 
 ## Statement and proof

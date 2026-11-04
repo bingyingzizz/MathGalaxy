@@ -1,7 +1,7 @@
-# 实数的运算与不等式 / Arithmetic and Inequalities on the Reals（analysis.real-calc）· 节点清单（第 1/1 页）
+# 实数的运算与不等式 / Arithmetic and Inequalities on the Reals（analysis.real-calc）· 节点清单（第 1/2 页）
 
 把「在 ℝ 上算」与「比大小」的规则一次立全：域等式 → 序与四则运算 → 绝对值 → 阿基米德的 ε 形式与取整 → 整数幂 → 指数律 → n 次方根 → 有理/实数指数 → 二项式 → Bernoulli。这一团是后面所有 ε 估计与放缩的**许可证**。
-中心天体 thm.nth-root　·　13 个节点　·　根 `../`
+中心天体 thm.nth-root　·　15 个节点　·　根 `../`　·　续页 `index/analysis.real-calc.2.md`
 
 - thm.bernoulli　Bernoulli 不等式　layer 7
 - prop.field-rules　环与域的基本等式　layer 8
@@ -12,7 +12,9 @@
 - def.abs　绝对值 |x|　layer 9
 - prop.abs-properties　绝对值的运算性质　layer 10
 - thm.triangle　三角不等式　layer 10
-- thm.nth-root　n 次方根　layer 14
-- lem.archimedean　Archimedes 性质　layer 14
-- cor.archimedean-epsilon　Archimedes 的 ε 形式与取整　layer 15
-- def.real-power　有理指数与实数指数幂　layer 15
+- thm.nth-root　n 次方根　layer 17
+- def.tan-cot-sec　正切、余切、正割、余割　layer 17
+- def.inverse-trig　反三角函数　layer 17
+- lem.archimedean　Archimedes 性质　layer 17
+
+> 续见 `index/analysis.real-calc.2.md`

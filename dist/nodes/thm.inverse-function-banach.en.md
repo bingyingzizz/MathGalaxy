@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 24 · theorem · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
+layer 27 · theorem · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
 names: `Inverse Function (Banach)` (short) · `Inverse Function Theorem in Banach Spaces` (full)
 
 ## Statement and proof

@@ -9,13 +9,13 @@
 - prop.maximal-atlas　极大图册　layer 9
 - def.smooth-map　光滑映射　layer 9
 - def.boundary-manifold　带边流形　layer 9
-- def.vector-bundle　向量丛　layer 10
 - def.fiber-bundle　纤维丛　layer 10
-- def.bundle-section　丛的截面　layer 11
-- def.transition-function　转移函数　layer 11
-- def.invariant-polynomial　不变多项式　layer 11
-- def.orientable-manifold　可定向流形　layer 14
-- prop.volume-form-orientation　定向与体积形式　layer 16
+- def.vector-bundle　向量丛　layer 11
+- def.bundle-section　丛的截面　layer 12
+- def.transition-function　转移函数　layer 12
+- def.invariant-polynomial　不变多项式　layer 12
+- def.orientable-manifold　可定向流形　layer 15
 - thm.smooth-partition-unity　光滑单位分解　layer 17
+- prop.volume-form-orientation　定向与体积形式　layer 17
 
 > 续见 `index/diffgeom.manifold.2.md`

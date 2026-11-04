@@ -4,9 +4,9 @@
 中心天体 def.tensor-module　·　7 个节点　·　根 `../`
 
 - def.scalar-restriction　标量限制　layer 8
-- def.tensor-module　张量积　layer 12
-- prop.tensor-functor-properties　张量积的函子性质　layer 13
-- def.scalar-extension　标量扩张　layer 13
-- thm.hom-tensor-adjunction-mod　张量与内同态的伴随　layer 14
-- prop.scalar-extension-adjunction　标量扩张与限制互为伴随　layer 15
-- prop.scalar-extension-coproduct　纤维余积与基变换　layer 16
+- def.tensor-module　张量积　layer 13
+- prop.tensor-functor-properties　张量积的函子性质　layer 14
+- def.scalar-extension　标量扩张　layer 14
+- thm.hom-tensor-adjunction-mod　张量与内同态的伴随　layer 15
+- prop.scalar-extension-adjunction　标量扩张与限制互为伴随　layer 16
+- prop.scalar-extension-coproduct　纤维余积与基变换　layer 17

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 25 · theorem · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
+layer 28 · theorem · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
 names: `Preimage of a Regular Value` (short) · `Regular Value Theorem` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 25 · theorem · cluster Differentiation Theorems (`analysis.differentiation`) · Functions of a Real Variable / Mathematical Analysis
+layer 26 · theorem · cluster Differentiation Theorems (`analysis.differentiation`) · Functions of a Real Variable / Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.lebesgue-set-full.md` and `proofs/`.

@@ -35,4 +35,6 @@
 
 - 梯度 | ∇ | grad → def.gradient
 
-见 `../../alias.md`。
+- 原函数 | 不定积分 | primitive → def.antiderivative
+
+> 续见 alias/aka/analysis.18.md

@@ -10,4 +10,4 @@
 - prop.rational-localization　有理开集上的局部化　layer 11
 - thm.adic-structure-sheaf　adic 结构层是层　layer 12
 - prop.scheme-embeds-adic　概形嵌入 adic 空间　layer 12
-- thm.adic-gluing　导出范畴按无穷范畴粘合　layer 21
+- thm.adic-gluing　导出范畴按无穷范畴粘合　layer 22

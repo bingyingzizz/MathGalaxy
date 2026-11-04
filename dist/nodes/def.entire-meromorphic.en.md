@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · definition · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
+layer 20 · definition · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.entire-meromorphic.md` and `proofs/`.

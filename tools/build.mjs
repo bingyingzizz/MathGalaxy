@@ -2972,6 +2972,18 @@ if (doJSON) {
   console.log('  → dist/LICENSE.txt + dist/LICENSE-CC-BY-4.0.txt（复制自仓库根 LICENSE / LICENSE-CC-BY-4.0.txt）');
 
   const errs = assertAI(MG, graph, files, pagesOf);
+  /* ⭐ 2026-11-03（审计 v1 §9-H2）：**黑边环现在是硬门**。
+     旧状态：环检测只在 `dist/audit.md` 里报警告，构建照样绿 —— 审计原话「黑边环无门」。
+     三分类（与 audit.md 同一口径，不另写一套）：
+       · 环里有 equivalence 边 ⇒ 合法（等价类本来就会缩成一个 SCC）；
+       · `src/data/gaps.js` 的 `cycleOk` 白名单 ⇒ 合法（多前提假环，每条都写了理由）；
+       · 其余 ⇒ **可疑 → 构建失败**（无条件互推该改 equivalence / 回头证该标 layer:false / 否则就是数据错）。
+     ⚠️ 用上面已经算好的 `audit`，不重算（`auditContent` 有近同名两两比对，重跑很贵）。 */
+  for (const c of audit.cycles) {
+    if (c.verdict !== 'suspicious') continue;
+    errs.push(`图结构：黑边环可疑 —— ${c.nodes.join(' ↔ ')}（边 ${c.edges.join(', ')}）—— ` +
+      '无条件互推 ⇒ 改 equivalence；用更强工具回头证 ⇒ 标 layer:false；都不是 ⇒ 这条边错了');
+  }
   errs.push(...aliasErrs);
   errs.push(...enErrs);
   errs.push(...assertEdgeEndpoints(MG, graph));

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · proposition · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
+layer 19 · proposition · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
 names: `Diagonal and Weak Hausdorff` (short) · `Diagonal, Kernels and Weak Hausdorff Spaces` (full)
 
 ## Statement and proof

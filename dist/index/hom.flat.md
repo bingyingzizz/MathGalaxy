@@ -4,12 +4,12 @@
 中心天体 def.flat-module　·　14 个节点　·　根 `../`　·　续页 `index/hom.flat.2.md`
 
 - def.flat-module　平坦模　layer 14
-- def.tor　挠积　layer 14
 - thm.watts　张量函子的刻画　layer 14
 - prop.free-flat　自由模平坦　layer 15
-- prop.tor-symmetry　挠积的对称性　layer 15
+- def.tor　挠积　layer 15
 - thm.lazard　平坦模的结构定理　layer 15
 - prop.flat-summand　平坦的直和项　layer 16
+- prop.tor-symmetry　挠积的对称性　layer 16
 - prop.tor-flat-vanishing　平坦与挠积消失　layer 16
 - prop.tensor-right-exact　张量函子右正合　layer 17
 - thm.tor-torsion　挠积给出挠元　layer 17

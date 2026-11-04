@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 22 · corollary · cluster Mean Value Theorems and Taylor (`analysis.mvt`) · Mathematical Analysis
+layer 25 · corollary · cluster Mean Value Theorems and Taylor (`analysis.mvt`) · Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/cor.constant-iff-zero-derivative.md` and `proofs/`.

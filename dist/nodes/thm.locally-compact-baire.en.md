@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · theorem · cluster Baire Category and the Three Big Theorems (`fa.baire`) · Functional Analysis
+layer 17 · theorem · cluster Baire Category and the Three Big Theorems (`fa.baire`) · Functional Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.locally-compact-baire.md` and `proofs/`.

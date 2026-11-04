@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
+layer 19 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.orthonormal-basis-exists.md` and `proofs/`.

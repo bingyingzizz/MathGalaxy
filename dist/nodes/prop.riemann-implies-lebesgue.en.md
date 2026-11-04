@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · proposition · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
+layer 21 · proposition · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
 names: `Riemann Implies Lebesgue` (short) · `Riemann Integrability Implies Lebesgue Integrability` (full)
 
 ## Statement and proof

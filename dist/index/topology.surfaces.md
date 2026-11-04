@@ -4,7 +4,7 @@
 中心天体 def.genus　·　10 个节点　·　根 `../`
 
 - def.connected-sum　连通和　layer 9
-- def.closed-surface　闭曲面　layer 15
+- def.closed-surface　闭曲面　layer 16
 - def.genus　亏格　layer 19
 - ex.sphere　球面 S²　layer 20
 - thm.classification-surfaces　闭曲面分类定理　layer 22

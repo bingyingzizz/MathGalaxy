@@ -8,11 +8,11 @@
 - 集合论　`alias/set-theory.md` / `alias/aka/set-theory.md` 25+60
 - 序理论　`alias/order-theory.md` / `alias/aka/order-theory.md` 10+16
 - 拓扑学　`alias/topology.md` / `alias/aka/topology.md` 48+164
-- 抽象代数　`alias/algebra.md` / `alias/aka/algebra.md` 16+176
-- 数学分析　`alias/analysis.md` / `alias/aka/analysis.md` 48+268
+- 抽象代数　`alias/algebra.md` / `alias/aka/algebra.md` 16+179
+- 数学分析　`alias/analysis.md` / `alias/aka/analysis.md` 48+271
 - 泛函分析　`alias/aka/functional-analysis.md` 0+54
 - 实变函数　`alias/analysis-measure.md` / `alias/aka/analysis-measure.md` 37+144
-- 范畴论　`alias/category.md` / `alias/aka/category.md` 63+203
+- 范畴论　`alias/category.md` / `alias/aka/category.md` 63+204
 - 同调代数　`alias/homology.md` / `alias/aka/homology.md` 47+160
 - 凝聚态数学　`alias/condensed.md` / `alias/aka/condensed.md` 40+108
 - 解析空间　`alias/aka/analytic.md` 0+15

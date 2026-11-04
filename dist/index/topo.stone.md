@@ -8,12 +8,12 @@
 - def.boolean-ring　布尔环　layer 8
 - def.profinite　投射有限空间　layer 12
 - prop.profinite-sets-spaces　投射有限集即投射有限空间　layer 13
-- prop.component-clopen　连通分量是闭开邻域之交　layer 16
-- def.stone-space　全不连通与 Stone 空间　layer 16
-- prop.stonean-basic　极端不连通的基本性质　layer 17
-- prop.td-reflective　全不连通空间是反射子范畴　layer 17
-- prop.stone-reflective　Stone 空间是紧 Hausdorff 空间的反射子范畴　layer 17
-- thm.gleason　Gleason 定理　layer 17
-- thm.boolean-stone　Boolean 环与 Stone 空间等价　layer 17
+- prop.component-clopen　连通分量是闭开邻域之交　layer 17
+- def.stone-space　全不连通与 Stone 空间　layer 17
+- prop.stonean-basic　极端不连通的基本性质　layer 18
+- prop.td-reflective　全不连通空间是反射子范畴　layer 18
+- prop.stone-reflective　Stone 空间是紧 Hausdorff 空间的反射子范畴　layer 18
+- thm.gleason　Gleason 定理　layer 18
+- thm.boolean-stone　Boolean 环与 Stone 空间等价　layer 18
 
 > 续见 `index/topo.stone.2.md`

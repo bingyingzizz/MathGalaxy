@@ -4,11 +4,11 @@
 中心天体 thm.ivt　·　9 个节点　·　根 `../`
 
 - def.uniform-continuity　一致连续　layer 15
-- thm.ivt　介值定理　layer 15
 - prop.discontinuity-types　间断点分类　layer 15
 - prop.continuous-arithmetic　连续函数的运算　layer 16
-- cor.zero-point　零点定理　layer 16
-- thm.monotone-inverse　反函数连续　layer 16
-- thm.uniform-continuity-compact　紧集上连续 ⟹ 一致连续　layer 17
-- prop.continuous-bounded-on-compact　紧集上连续 ⟹ 有界　layer 18
-- thm.evt　最值定理　layer 19
+- thm.ivt　介值定理　layer 17
+- cor.zero-point　零点定理　layer 18
+- thm.monotone-inverse　反函数连续　layer 18
+- thm.uniform-continuity-compact　紧集上连续 ⟹ 一致连续　layer 20
+- prop.continuous-bounded-on-compact　紧集上连续 ⟹ 有界　layer 21
+- thm.evt　最值定理　layer 22

@@ -1,8 +1,9 @@
 # 代数结构 / Algebraic Structures（algebra.structures）· 节点清单（第 1/2 页）
 
 造出代数语言本身：**群** = 集合 + 运算 + 公理 → 子群 → 正规子群 → 商群 → 第一同构定理；再往上叠**域**（= 两个阿贝尔群 + 分配律）与**有序域**。
-中心天体 def.group　·　21 个节点　·　根 `../`　·　续页 `index/algebra.structures.2.md`
+中心天体 def.group　·　23 个节点　·　根 `../`　·　续页 `index/algebra.structures.2.md`
 
+- def.binary-operation　二元运算　layer 6
 - def.group　群　layer 6
 - prop.group-basic　群的基本性质　layer 7
 - def.field　域　layer 7
@@ -15,11 +16,10 @@
 - def.group-hom　群同态、核与像　layer 8
 - def.module　模　layer 8
 - prop.zmod-is-ab　Z-模就是阿贝尔群　layer 8
+- def.group-order　群的阶与元素的阶　layer 9
 - thm.first-iso　第一同构定理（Noether）　layer 9
 - def.ideal　理想　layer 9
 - prop.ideal-basic　理想的运算与商环泛性质　layer 10
 - prop.abelianization　交换化　layer 10
-- prop.prime-ideal　素理想与极大理想　layer 11
-- prop.ring-localization　环的局部化 W⁻¹R　layer 11
 
 > 续见 `index/algebra.structures.2.md`

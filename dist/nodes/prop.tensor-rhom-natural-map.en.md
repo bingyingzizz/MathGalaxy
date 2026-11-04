@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · proposition · cluster Abelian Sheaves (`hom.sheaf`) · Homological Algebra
+layer 20 · proposition · cluster Abelian Sheaves (`hom.sheaf`) · Homological Algebra
 names: `Tensor–Hom Pairing` (short) · `Pairing of Tensor with Derived Hom` (full)
 
 ## Statement and proof

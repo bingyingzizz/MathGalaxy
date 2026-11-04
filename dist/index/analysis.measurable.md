@@ -15,6 +15,6 @@
 - prop.complete-measurable　完备性 ⟺ 不破坏可测性　layer 17
 - prop.completion-measurable-function　完备化后可改在零集上　layer 17
 - thm.cauchy-in-measure　依测度 Cauchy ⟹ 收敛　layer 17
-- def.convergence-modes　五种收敛　layer 20
+- def.convergence-modes　五种收敛　layer 21
 
 > 续见 `index/analysis.measurable.2.md`

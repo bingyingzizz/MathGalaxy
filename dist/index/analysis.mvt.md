@@ -9,13 +9,13 @@
 - def.higher-derivative　高阶导数与 C^k　layer 16
 - thm.derivative-rules　求导法则　layer 17
 - thm.fermat　Fermat 引理　layer 17
-- thm.rolle　Rolle 中值定理　layer 20
-- thm.mvt　Lagrange 中值定理　layer 21
-- thm.cauchy-mvt　Cauchy 中值定理　layer 21
-- cor.constant-iff-zero-derivative　导数为零 ⟺ 常函数　layer 22
-- prop.derivative-monotone　导数符号 ⟹ 单调性　layer 22
-- thm.lhopital　L'Hôpital 法则　layer 22
-- thm.convex-criterion　凸性的导数判据　layer 22
-- thm.taylor　Taylor 公式　layer 22
+- thm.rolle　Rolle 中值定理　layer 23
+- thm.mvt　Lagrange 中值定理　layer 24
+- thm.cauchy-mvt　Cauchy 中值定理　layer 24
+- cor.constant-iff-zero-derivative　导数为零 ⟺ 常函数　layer 25
+- prop.derivative-monotone　导数符号 ⟹ 单调性　layer 25
+- thm.lhopital　L'Hôpital 法则　layer 25
+- thm.convex-criterion　凸性的导数判据　layer 25
+- thm.taylor　Taylor 公式　layer 25
 
 > 续见 `index/analysis.mvt.2.md`

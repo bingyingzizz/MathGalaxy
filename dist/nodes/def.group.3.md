@@ -6,6 +6,7 @@
 - 被 [`def.order-mod-n`](../nodes/def.order-mod-n.md) 模 n 的阶 用
 - 被 [`def.vector-space`](../nodes/def.vector-space.md) 向量空间 用
 - 被 [`def.galois-group`](../nodes/def.galois-group.md) 伽罗瓦群 用
+- 被 [`def.group-order`](../nodes/def.group-order.md) 群的阶与元素的阶 用
 - 被 [`def.subgroup`](../nodes/def.subgroup.md) 子群 用
 - 被 [`def.normal-subgroup`](../nodes/def.normal-subgroup.md) 正规子群 用
 - 被 [`def.group-hom`](../nodes/def.group-hom.md) 群同态、核与像 用

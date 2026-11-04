@@ -14,12 +14,14 @@ $$\forall E \in \mathcal{M}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \
 则称 $\mu$（或这个测度空间）**完备**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/def-dep.measure-null-set.md](../proofs/def-dep.measure-null-set.md)
+- [`def.complete`](../nodes/def.complete.md) 完备：两个「完备」：度量完备 vs 测度完备　[proofs/e179.analogy.md](../proofs/e179.analogy.md)
+
+- …另有入边，续页见 [nodes/def.null-set.2.md](./def.null-set.2.md)
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.completion`](../nodes/thm.completion.md) 完备化定理
 
-- …另有出边，续页见 [nodes/def.null-set.2.md](./def.null-set.2.md)
+- …另有出边，续页见 [nodes/def.null-set.3.md](./def.null-set.3.md)
 
 refs: Halmos, Measure Theory, §11
 

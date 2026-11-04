@@ -15,7 +15,9 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N :\ |x_m - x_n| < \var
 - …另有入边，续页见 [nodes/def.cauchy-sequence.2.md](./def.cauchy-sequence.2.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 [`thm.cauchy-criterion`](../nodes/thm.cauchy-criterion.md) Cauchy 收敛准则 用
+- 被 [`def.complete`](../nodes/def.complete.md) 完备 用
+
+- …另有出边，续页见 [nodes/def.cauchy-sequence.3.md](./def.cauchy-sequence.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 

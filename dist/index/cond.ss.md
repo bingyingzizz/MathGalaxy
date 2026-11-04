@@ -4,7 +4,7 @@
 中心天体 thm.breen-deligne　·　5 个节点　·　根 `../`
 
 - lem.stone-cech-1-bounded　Stone 满射的 Čech 复形 1-有界零调　layer 18
-- thm.breen-deligne　Breen–Deligne 分解　layer 18
-- lem.breen-deligne-scalar-homotopy　分解上乘 p 与 M 上乘 p 同伦　layer 19
-- prop.breen-deligne-ss-stonean　Stonean 上 Breen–Deligne 的谱序列　layer 19
-- ex.bd-ss　Breen–Deligne 的一般谱序列　layer 20
+- thm.breen-deligne　Breen–Deligne 分解　layer 19
+- lem.breen-deligne-scalar-homotopy　分解上乘 p 与 M 上乘 p 同伦　layer 20
+- prop.breen-deligne-ss-stonean　Stonean 上 Breen–Deligne 的谱序列　layer 20
+- ex.bd-ss　Breen–Deligne 的一般谱序列　layer 21

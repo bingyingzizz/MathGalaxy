@@ -6,16 +6,16 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T13:22:49.506Z",
+  "generated": "2026-11-04T02:46:04.802Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
-   "nodes": 1500,
-   "edges": 2902,
-   "strong": 2868,
-   "weak": 34,
+   "nodes": 1506,
+   "edges": 2915,
+   "strong": 2880,
+   "weak": 35,
    "derived": 33,
-   "en_pages": 1500
+   "en_pages": 1506
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -77,7 +77,7 @@
    "en": "Abstract Algebra",
    "desc": "群、环、域、模与线性代数；佐恩引理的经典应用场。",
    "color": "#E08A3C",
-   "nodeCount": 200
+   "nodeCount": 203
   },
   {
    "id": "analysis",
@@ -85,7 +85,7 @@
    "en": "Mathematical Analysis",
    "desc": "从实数出发的初等分析：极限与完备性、连续与紧性、中值定理与 Taylor、多元微分与逆映射定理、级数、一致收敛，顶点是 Riemann 积分与 Newton–Leibniz 公式。",
    "color": "#3AA8D8",
-   "nodeCount": 294
+   "nodeCount": 297
   },
   {
    "id": "functional-analysis",
@@ -109,7 +109,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。",
    "color": "#B03A5B",
-   "nodeCount": 207
+   "nodeCount": 208
   },
   {
    "id": "homology",
@@ -325,12 +325,14 @@
    "en": "Algebraic Structures",
    "parent": "algebra",
    "desc": "造出代数语言本身：**群** = 集合 + 运算 + 公理 → 子群 → 正规子群 → 商群 → 第一同构定理；再往上叠**域**（= 两个阿贝尔群 + 分配律）与**有序域**。",
-   "nodeCount": 21,
+   "nodeCount": 23,
    "nodes": [
     "prop.group-basic",
     "prop.ideal-basic",
     "prop.prime-ideal",
     "def.characteristic",
+    "def.binary-operation",
+    "def.group-order",
     "def.field",
     "def.ordered-field",
     "def.group",
@@ -778,7 +780,7 @@
    "en": "Arithmetic and Inequalities on the Reals",
    "parent": "analysis",
    "desc": "把「在 ℝ 上算」与「比大小」的规则一次立全：域等式 → 序与四则运算 → 绝对值 → 阿基米德的 ε 形式与取整 → 整数幂 → 指数律 → n 次方根 → 有理/实数指数 → 二项式 → Bernoulli。这一团是后面所有 ε 估计与放缩的**许可证**。",
-   "nodeCount": 13,
+   "nodeCount": 15,
    "nodes": [
     "prop.field-rules",
     "prop.order-rules",
@@ -790,6 +792,8 @@
     "def.real-power",
     "thm.binomial",
     "thm.bernoulli",
+    "def.tan-cot-sec",
+    "def.inverse-trig",
     "def.abs",
     "thm.triangle",
     "lem.archimedean"
@@ -865,9 +869,10 @@
    "en": "The Riemann Integral",
    "parent": "analysis",
    "desc": "造出「曲线下的面积」这套工具：分割 → 上和 / 下和 → 可积性判据 → 微积分基本定理（Newton–Leibniz）。顶点是那条**把可积性翻译成零测集语言**的判据 —— 它在这里与 Lebesgue 积分那一侧正式接头。",
-   "nodeCount": 19,
+   "nodeCount": 20,
    "nodes": [
     "thm.riemann-lebesgue",
+    "def.antiderivative",
     "def.partition",
     "def.riemann-sum",
     "def.darboux-sum",
@@ -1309,8 +1314,9 @@
    "en": "Categories and Diagrams",
    "parent": "category",
    "desc": "造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。",
-   "nodeCount": 18,
+   "nodeCount": 19,
    "nodes": [
+    "def.isomorphism",
     "def.universe",
     "ax.grothendieck-universe",
     "def.graph",
@@ -4110,7 +4116,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "线性代数"
@@ -4149,7 +4155,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定理",
     "应用",
@@ -4253,7 +4259,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "完备",
@@ -4293,7 +4299,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "全有界",
@@ -4333,7 +4339,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "列紧",
@@ -4373,7 +4379,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "紧",
@@ -4434,7 +4440,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "紧",
@@ -4480,7 +4486,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "紧",
@@ -4519,7 +4525,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "紧",
@@ -6773,7 +6779,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "定义",
     "积分",
@@ -6814,7 +6820,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "定义",
     "L¹",
@@ -6855,7 +6861,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "L¹",
@@ -6895,7 +6901,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "三角不等式"
@@ -6934,7 +6940,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "σ-有限",
@@ -6974,7 +6980,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "几乎处处",
@@ -7015,7 +7021,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "DCT",
@@ -7100,7 +7106,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "逼近",
@@ -7141,7 +7147,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "定理",
     "DCT",
@@ -7182,7 +7188,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7222,7 +7228,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "命题",
     "线性代数"
@@ -7261,7 +7267,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7301,7 +7307,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定理",
     "线性代数"
@@ -7341,7 +7347,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定理",
     "线性代数",
@@ -7382,7 +7388,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7422,7 +7428,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7461,7 +7467,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7540,7 +7546,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "线性代数"
@@ -7617,7 +7623,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数"
@@ -7656,7 +7662,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数"
@@ -7695,7 +7701,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "线性代数",
@@ -7736,7 +7742,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7776,7 +7782,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数"
@@ -7815,7 +7821,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数"
@@ -7855,7 +7861,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7895,7 +7901,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7934,7 +7940,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7973,7 +7979,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "线性代数",
@@ -8014,7 +8020,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定理",
     "线性代数"
@@ -8054,7 +8060,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "线性代数"
@@ -8092,7 +8098,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -8131,7 +8137,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "线性代数",
@@ -8170,7 +8176,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数"
@@ -8210,7 +8216,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数"
@@ -8249,7 +8255,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -8289,7 +8295,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -8328,7 +8334,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "线性代数",
@@ -8369,7 +8375,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -8409,7 +8415,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -8449,7 +8455,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "线性代数",
@@ -8489,7 +8495,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -8735,7 +8741,7 @@
     "analysis"
    ],
    "cluster": "algebra.polynomial",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "定理",
     "代数",
@@ -8859,7 +8865,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -8900,7 +8906,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -8940,7 +8946,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -8982,7 +8988,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -9022,7 +9028,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -9062,7 +9068,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -9103,7 +9109,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "线性代数",
@@ -9143,7 +9149,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -9184,7 +9190,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -9224,7 +9230,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -9265,7 +9271,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "线性代数",
@@ -9307,7 +9313,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "推论",
     "线性代数",
@@ -9348,7 +9354,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数",
@@ -9390,7 +9396,7 @@
     "analysis"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 18,
    "tags": [
     "定义",
     "线性代数",
@@ -9431,7 +9437,7 @@
     "analysis"
    ],
    "cluster": "algebra.inner",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定理",
     "线性代数",
@@ -9472,7 +9478,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -9512,7 +9518,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -9552,7 +9558,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -9592,7 +9598,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -9631,7 +9637,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -9672,7 +9678,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -9711,7 +9717,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -9751,7 +9757,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -9792,7 +9798,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "定理",
     "线性代数",
@@ -9833,7 +9839,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "推论",
     "线性代数",
@@ -9874,7 +9880,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -9915,7 +9921,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "线性代数",
@@ -9956,7 +9962,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "线性代数",
@@ -9998,7 +10004,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -10039,7 +10045,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -10079,7 +10085,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -10119,7 +10125,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "线性代数",
@@ -10161,7 +10167,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -10202,7 +10208,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -10242,7 +10248,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -10281,7 +10287,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "线性代数",
@@ -10323,7 +10329,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "泛函",
@@ -10364,7 +10370,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "泛函",
@@ -10529,7 +10535,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "微积分",
@@ -10693,7 +10699,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "微积分",
@@ -10734,7 +10740,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "微积分",
@@ -10775,7 +10781,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "定理",
     "微积分",
@@ -10816,7 +10822,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "定理",
     "微积分",
@@ -10898,7 +10904,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "度量空间",
@@ -10940,7 +10946,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "定理",
     "微积分",
@@ -10983,7 +10989,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "定理",
     "微积分",
@@ -11025,7 +11031,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "定理",
     "泛函",
@@ -11067,7 +11073,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "定理",
     "泛函",
@@ -11109,7 +11115,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "推论",
     "微积分",
@@ -11151,7 +11157,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "微积分",
@@ -11192,7 +11198,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "定理",
     "微积分",
@@ -11233,7 +11239,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 26,
+   "layer": 29,
    "tags": [
     "定理",
     "微积分",
@@ -11274,7 +11280,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "定理",
     "微积分",
@@ -11315,7 +11321,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "定理",
     "微积分",
@@ -12107,7 +12113,7 @@
     "analysis"
    ],
    "cluster": "analysis.real-calc",
-   "layer": 15,
+   "layer": 18,
    "tags": [
     "推论",
     "阿基米德",
@@ -12227,7 +12233,7 @@
     "analysis"
    ],
    "cluster": "analysis.real-calc",
-   "layer": 14,
+   "layer": 17,
    "tags": [
     "定理",
     "根",
@@ -12267,7 +12273,7 @@
     "analysis"
    ],
    "cluster": "analysis.real-calc",
-   "layer": 15,
+   "layer": 18,
    "tags": [
     "定义",
     "幂",
@@ -12388,7 +12394,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定义",
     "收敛",
@@ -12429,7 +12435,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "反例",
     "收敛",
@@ -12551,7 +12557,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "命题",
     "L¹",
@@ -12593,7 +12599,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "定理",
     "Egorov",
@@ -12635,7 +12641,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 22,
+   "layer": 23,
    "tags": [
     "推论",
     "Lusin",
@@ -12957,7 +12963,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "定理",
     "导数",
@@ -12997,7 +13003,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定理",
     "级数",
@@ -13037,7 +13043,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定理",
     "级数",
@@ -13280,7 +13286,7 @@
     "condensed"
    ],
    "cluster": "cond.solid",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "定义",
     "凝聚态",
@@ -13753,7 +13759,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定义",
     "凝聚态",
@@ -13793,7 +13799,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "定义",
     "凝聚态",
@@ -13833,7 +13839,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "定理",
     "凝聚态",
@@ -13874,7 +13880,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "凝聚态",
@@ -13914,7 +13920,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "凝聚态",
@@ -13954,7 +13960,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "凝聚态",
@@ -13995,7 +14001,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "定理",
     "凝聚态",
@@ -14034,7 +14040,7 @@
     "condensed"
    ],
    "cluster": "cond.analytic",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "凝聚态",
@@ -14355,7 +14361,7 @@
     "analytic"
    ],
    "cluster": "analytic.adic",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "定理",
     "解析几何",
@@ -14396,7 +14402,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "定义",
     "解析几何",
@@ -14435,7 +14441,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "解析几何",
@@ -14475,7 +14481,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 22,
+   "layer": 23,
    "tags": [
     "定义",
     "解析几何",
@@ -14514,7 +14520,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 23,
+   "layer": 24,
    "tags": [
     "命题",
     "解析几何",
@@ -14553,7 +14559,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 24,
+   "layer": 25,
    "tags": [
     "命题",
     "解析几何",
@@ -14592,7 +14598,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 25,
+   "layer": 26,
    "tags": [
     "定理",
     "解析几何",
@@ -14632,7 +14638,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 26,
+   "layer": 27,
    "tags": [
     "定理",
     "解析几何",
@@ -14892,7 +14898,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "Fubini",
@@ -14937,7 +14943,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "定理",
     "Fubini",
@@ -15017,7 +15023,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "同调代数",
@@ -15059,7 +15065,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "同调代数",
@@ -15102,7 +15108,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "同调代数",
@@ -15188,7 +15194,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "同调代数",
@@ -15231,7 +15237,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "同调代数",
@@ -15274,7 +15280,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "同调代数",
@@ -16691,7 +16697,7 @@
     "homology"
    ],
    "cluster": "hom.flat",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "挠积",
@@ -16734,7 +16740,7 @@
     "homology"
    ],
    "cluster": "hom.flat",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "挠积",
@@ -17807,7 +17813,7 @@
     "homology"
    ],
    "cluster": "hom.spectral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "同调代数",
     "谱序列",
@@ -17848,7 +17854,7 @@
     "homology"
    ],
    "cluster": "hom.spectral",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "同调代数",
     "谱序列",
@@ -17888,7 +17894,7 @@
     "homology"
    ],
    "cluster": "hom.spectral",
-   "layer": 19,
+   "layer": 21,
    "tags": [
     "同调代数",
     "谱序列",
@@ -20595,7 +20601,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.frame",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "微分几何",
@@ -20638,7 +20644,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.frame",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "微分几何",
@@ -20681,7 +20687,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.frame",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "命题",
     "微分几何",
@@ -20904,7 +20910,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.intrinsic",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "定理",
     "微分几何",
@@ -21206,7 +21212,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.intrinsic",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "微分几何",
@@ -21663,7 +21669,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "绝对连续",
@@ -21703,7 +21709,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "推论",
     "绝对连续",
@@ -21869,7 +21875,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "命题",
     "RN 导数",
@@ -21966,7 +21972,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定义",
     "复测度"
@@ -22008,7 +22014,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "Radon-Nikodym",
@@ -22049,7 +22055,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "命题",
     "全变差",
@@ -22090,7 +22096,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "命题",
     "复数",
@@ -22131,7 +22137,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定义",
     "全纯",
@@ -22173,7 +22179,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定义",
     "复偏导数",
@@ -22214,7 +22220,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "命题",
     "复偏导数",
@@ -22255,7 +22261,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定理",
     "全纯",
@@ -22297,7 +22303,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "命题",
     "保角",
@@ -22379,7 +22385,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "引理",
     "Green 公式",
@@ -22420,7 +22426,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "引理",
     "Goursat",
@@ -22461,7 +22467,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "定理",
     "Cauchy 定理",
@@ -22503,7 +22509,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "定理",
     "Cauchy 积分公式"
@@ -22543,7 +22549,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "高阶导数",
@@ -22584,7 +22590,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "Cauchy 不等式",
@@ -22625,7 +22631,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "定理",
     "Liouville",
@@ -22666,7 +22672,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "最大模",
@@ -22707,7 +22713,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "Taylor 级数",
@@ -22790,7 +22796,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "Laurent 级数",
@@ -22873,7 +22879,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "可去奇点",
@@ -22996,7 +23002,7 @@
     "complex"
    ],
    "cluster": "analysis.residue",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "定理",
     "留数",
@@ -23037,7 +23043,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定义",
     "Möbius",
@@ -23427,7 +23433,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "微分流形",
@@ -23469,7 +23475,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "微分流形",
@@ -23597,7 +23603,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "微分流形",
@@ -23682,7 +23688,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "微分流形",
@@ -23894,7 +23900,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.lieg",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "定义",
     "微分流形",
@@ -23979,7 +23985,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.lieg",
-   "layer": 26,
+   "layer": 29,
    "tags": [
     "命题",
     "微分流形",
@@ -24675,7 +24681,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "定理",
     "Morera",
@@ -24759,7 +24765,7 @@
     "complex"
    ],
    "cluster": "analysis.residue",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "辐角原理",
@@ -24803,7 +24809,7 @@
     "complex"
    ],
    "cluster": "analysis.residue",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "Rouché",
@@ -24844,7 +24850,7 @@
     "complex"
    ],
    "cluster": "analysis.residue",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "定理",
     "Hurwitz",
@@ -24886,7 +24892,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "引理",
     "Schwarz",
@@ -24928,7 +24934,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "定理",
     "Schwarz–Pick",
@@ -24969,7 +24975,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定义",
     "多值函数",
@@ -25011,7 +25017,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "定义",
     "对数",
@@ -25054,7 +25060,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "定义",
     "Riemann 曲面",
@@ -25136,7 +25142,7 @@
     "complex"
    ],
    "cluster": "analysis.harmonic",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "调和函数",
@@ -25177,7 +25183,7 @@
     "complex"
    ],
    "cluster": "analysis.harmonic",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "Poisson 公式",
@@ -25219,7 +25225,7 @@
     "complex"
    ],
    "cluster": "analysis.harmonic",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "定理",
     "调和函数",
@@ -25260,7 +25266,7 @@
     "complex"
    ],
    "cluster": "analysis.harmonic",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "最大值原理",
@@ -25301,7 +25307,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "定义",
     "整函数",
@@ -25344,7 +25350,7 @@
     "complex"
    ],
    "cluster": "analysis.residue",
-   "layer": 19,
+   "layer": 21,
    "tags": [
     "定理",
     "Mittag-Leffler",
@@ -25427,7 +25433,7 @@
     "complex"
    ],
    "cluster": "analysis.residue",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "留数",
@@ -25468,7 +25474,7 @@
     "complex"
    ],
    "cluster": "analysis.residue",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "留数",
@@ -25687,7 +25693,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.lieg",
-   "layer": 26,
+   "layer": 29,
    "tags": [
     "定义",
     "微分流形",
@@ -25731,7 +25737,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.lieg",
-   "layer": 27,
+   "layer": 30,
    "tags": [
     "定理",
     "微分流形",
@@ -25775,7 +25781,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.lieg",
-   "layer": 27,
+   "layer": 30,
    "tags": [
     "定理",
     "微分流形",
@@ -25819,7 +25825,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 30,
+   "layer": 33,
    "tags": [
     "定理",
     "微分流形",
@@ -26275,7 +26281,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "复变函数",
     "初等函数",
@@ -26318,7 +26324,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "复变函数",
     "指数函数",
@@ -26360,7 +26366,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "复变函数",
     "多值函数",
@@ -26486,7 +26492,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "复变函数",
     "零点",
@@ -26528,7 +26534,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "复变函数",
     "唯一性定理",
@@ -26571,7 +26577,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "复变函数",
     "本性奇点",
@@ -26614,7 +26620,7 @@
     "complex"
    ],
    "cluster": "analysis.cauchy",
-   "layer": 19,
+   "layer": 21,
    "tags": [
     "复变函数",
     "收敛",
@@ -26658,7 +26664,7 @@
     "analysis"
    ],
    "cluster": "analysis.mapping",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "复变函数",
     "紧性",
@@ -26701,7 +26707,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "复变函数",
     "正规族",
@@ -26744,7 +26750,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "复变函数",
     "开映射",
@@ -26787,7 +26793,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "复变函数",
     "Riemann 映射",
@@ -26830,7 +26836,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "复变函数",
     "双曲几何",
@@ -26874,7 +26880,7 @@
     "complex"
    ],
    "cluster": "analysis.topology-app",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "复变函数",
     "拓扑",
@@ -26917,7 +26923,7 @@
     "complex"
    ],
    "cluster": "analysis.topology-app",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "复变函数",
     "拓扑",
@@ -26960,7 +26966,7 @@
     "complex"
    ],
    "cluster": "analysis.topology-app",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "复变函数",
     "拓扑",
@@ -27003,7 +27009,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "复变函数",
     "解析延拓",
@@ -27046,7 +27052,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "复变函数",
     "解析延拓",
@@ -27089,7 +27095,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "复变函数",
     "解析延拓",
@@ -27133,7 +27139,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "复变函数",
     "Runge",
@@ -27176,7 +27182,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "复变函数",
     "整函数",
@@ -27219,7 +27225,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "复变函数",
     "Jensen 公式",
@@ -27262,7 +27268,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "复变函数",
     "Weierstrass 乘积",
@@ -27306,7 +27312,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "复变函数",
     "Weierstrass 乘积",
@@ -27351,7 +27357,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "复变函数",
     "Hadamard",
@@ -27395,7 +27401,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 26,
+   "layer": 29,
    "tags": [
     "复变函数",
     "Picard",
@@ -27438,7 +27444,7 @@
     "complex"
    ],
    "cluster": "analysis.entire",
-   "layer": 27,
+   "layer": 30,
    "tags": [
     "复变函数",
     "Picard",
@@ -27480,7 +27486,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "L¹",
@@ -27562,7 +27568,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定义",
     "局部可积"
@@ -27602,7 +27608,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "定义",
     "平均算子"
@@ -27642,7 +27648,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 22,
+   "layer": 23,
    "tags": [
     "引理",
     "连续",
@@ -27683,7 +27689,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 22,
+   "layer": 23,
    "tags": [
     "定义",
     "极大函数",
@@ -27724,7 +27730,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 23,
+   "layer": 24,
    "tags": [
     "定理",
     "极大不等式",
@@ -27765,7 +27771,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 24,
+   "layer": 25,
    "tags": [
     "定理",
     "Lebesgue 微分",
@@ -27806,7 +27812,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 22,
+   "layer": 23,
    "tags": [
     "定义",
     "Lebesgue 集"
@@ -27845,7 +27851,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 25,
+   "layer": 26,
    "tags": [
     "定理",
     "Lebesgue 集"
@@ -27945,7 +27951,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 26,
+   "layer": 27,
    "tags": [
     "定理",
     "微分",
@@ -27986,7 +27992,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定义",
     "正则",
@@ -28026,7 +28032,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 27,
+   "layer": 28,
    "tags": [
     "定理",
     "RN 导数",
@@ -29243,7 +29249,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "复变函数",
     "共形映射",
@@ -29285,7 +29291,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "复变函数",
     "交比",
@@ -29326,7 +29332,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "复变函数",
     "分式线性变换",
@@ -29367,7 +29373,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "复变函数",
     "分式线性变换",
@@ -29408,7 +29414,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "复变函数",
     "对称点",
@@ -29449,7 +29455,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "复变函数",
     "对称点",
@@ -29490,7 +29496,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "复变函数",
     "分式线性变换",
@@ -29531,7 +29537,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "复变函数",
     "分式线性变换",
@@ -29573,7 +29579,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "复变函数",
     "共形映射",
@@ -29616,7 +29622,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 26,
+   "layer": 29,
    "tags": [
     "复变函数",
     "Schwarz-Christoffel",
@@ -29659,7 +29665,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "复变函数",
     "Joukowski",
@@ -29702,7 +29708,7 @@
     "complex"
    ],
    "cluster": "analysis.mapping",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "复变函数",
     "边界对应",
@@ -29745,7 +29751,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "复变函数",
     "扩充复平面",
@@ -29787,7 +29793,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "复变函数",
     "球极投影",
@@ -29828,7 +29834,7 @@
     "complex"
    ],
    "cluster": "analysis.complex",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "复变函数",
     "扩充复平面",
@@ -32210,7 +32216,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "NBV",
@@ -32295,7 +32301,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "命题",
     "绝对连续",
@@ -32335,7 +32341,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "推论",
     "AC",
@@ -32417,7 +32423,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 22,
+   "layer": 23,
    "tags": [
     "定理",
     "微积分基本定理",
@@ -32762,7 +32768,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 26,
+   "layer": 29,
    "tags": [
     "定义",
     "微分几何",
@@ -32804,7 +32810,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -32846,7 +32852,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -32889,7 +32895,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -32932,7 +32938,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -32975,7 +32981,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -33017,7 +33023,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -33061,7 +33067,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -33104,7 +33110,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "定理",
     "线性代数",
@@ -33147,7 +33153,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "线性代数",
@@ -33190,7 +33196,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33233,7 +33239,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -33277,7 +33283,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -33320,7 +33326,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33362,7 +33368,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "线性代数",
@@ -33405,7 +33411,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -33447,7 +33453,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33490,7 +33496,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -33533,7 +33539,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -33576,7 +33582,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "线性代数",
@@ -33620,7 +33626,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "线性代数",
@@ -33663,7 +33669,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -33706,7 +33712,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33748,7 +33754,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定义",
     "线性代数",
@@ -33791,7 +33797,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "线性代数",
@@ -33834,7 +33840,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -33877,7 +33883,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -33920,7 +33926,7 @@
     "algebra"
    ],
    "cluster": "algebra.numeric",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定义",
     "线性代数",
@@ -33962,7 +33968,7 @@
     "algebra"
    ],
    "cluster": "algebra.numeric",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "线性代数",
@@ -34004,7 +34010,7 @@
     "algebra"
    ],
    "cluster": "algebra.numeric",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -34046,7 +34052,7 @@
     "algebra"
    ],
    "cluster": "algebra.numeric",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "线性代数",
@@ -34089,7 +34095,7 @@
     "algebra"
    ],
    "cluster": "algebra.numeric",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定义",
     "线性代数",
@@ -34132,7 +34138,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -34175,7 +34181,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -34219,7 +34225,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -34262,7 +34268,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -34304,7 +34310,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "线性代数",
@@ -34347,7 +34353,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "线性代数",
@@ -35133,7 +35139,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "定义",
     "Lp",
@@ -35174,7 +35180,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "引理",
     "Young",
@@ -35215,7 +35221,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "定理",
     "Hölder",
@@ -35259,7 +35265,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "Minkowski",
@@ -35300,7 +35306,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 21,
+   "layer": 22,
    "tags": [
     "定理",
     "Banach",
@@ -35342,7 +35348,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "稠密",
@@ -35445,7 +35451,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "L∞",
@@ -35487,7 +35493,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "插值",
@@ -35527,7 +35533,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "插值",
@@ -35567,7 +35573,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "序列空间",
@@ -35607,7 +35613,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "有限测度",
@@ -35689,7 +35695,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "定义",
     "对偶",
@@ -35730,7 +35736,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "等距",
@@ -35770,7 +35776,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "有界泛函",
@@ -35855,7 +35861,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "推论",
     "自反",
@@ -35982,7 +35988,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -36068,7 +36074,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "赋范空间",
@@ -36149,7 +36155,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "赋范空间",
@@ -36191,7 +36197,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "泛函分析",
     "赋范空间",
@@ -36231,7 +36237,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "赋范空间",
@@ -36273,7 +36279,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "紧性",
@@ -36313,7 +36319,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36352,7 +36358,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36391,7 +36397,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36431,7 +36437,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "Banach 代数"
@@ -36469,7 +36475,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36509,7 +36515,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "对偶空间",
@@ -36548,7 +36554,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "泛函分析",
     "延拓",
@@ -36588,7 +36594,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36628,7 +36634,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 22,
+   "layer": 23,
    "tags": [
     "泛函分析",
     "可分空间",
@@ -36668,7 +36674,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "基",
@@ -36709,7 +36715,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36749,7 +36755,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36789,7 +36795,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36828,7 +36834,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36868,7 +36874,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36908,7 +36914,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36948,7 +36954,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36987,7 +36993,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37026,7 +37032,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37065,7 +37071,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37104,7 +37110,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37143,7 +37149,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37186,7 +37192,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37313,7 +37319,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "拓扑",
@@ -37356,7 +37362,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "拓扑",
@@ -37399,7 +37405,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "拓扑",
@@ -37442,7 +37448,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "拓扑",
@@ -37602,7 +37608,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "Baire 纲",
     "完备性",
@@ -37642,7 +37648,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "Baire 纲",
     "拓扑学"
@@ -37680,7 +37686,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "Baire 纲",
     "拓扑学"
@@ -37718,7 +37724,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "Baire 纲",
     "拓扑学"
@@ -37795,7 +37801,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "Baire 纲",
     "连续"
@@ -37836,7 +37842,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "三大定理",
@@ -37876,7 +37882,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "泛函分析",
     "三大定理",
@@ -37918,7 +37924,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 24,
+   "layer": 27,
    "tags": [
     "泛函分析",
     "三大定理",
@@ -37959,7 +37965,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "泛函分析",
     "三大定理",
@@ -38003,7 +38009,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.baire",
-   "layer": 26,
+   "layer": 29,
    "tags": [
     "泛函分析",
     "三大定理",
@@ -38160,7 +38166,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "泛函分析",
     "等度连续",
@@ -38200,7 +38206,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "泛函分析",
     "紧性",
@@ -38240,7 +38246,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -38279,7 +38285,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -38319,7 +38325,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -38361,7 +38367,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -38441,7 +38447,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 27,
+   "layer": 30,
    "tags": [
     "定义",
     "微分几何",
@@ -38484,7 +38490,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 28,
+   "layer": 31,
    "tags": [
     "定义",
     "微分几何",
@@ -38527,7 +38533,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "拓扑",
@@ -38614,7 +38620,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "微分几何",
@@ -38657,7 +38663,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 29,
+   "layer": 32,
    "tags": [
     "定义",
     "微分几何",
@@ -38701,7 +38707,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 31,
+   "layer": 34,
    "tags": [
     "定义",
     "微分几何",
@@ -38745,7 +38751,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "拓扑",
@@ -38789,7 +38795,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "定义",
     "泛函分析",
@@ -39071,7 +39077,7 @@
     "algebra"
    ],
    "cluster": "set.numbers",
-   "layer": 15,
+   "layer": 18,
    "tags": [
     "定义",
     "复数"
@@ -39110,7 +39116,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "微分几何",
@@ -39197,7 +39203,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 32,
+   "layer": 35,
    "tags": [
     "定义",
     "微分几何",
@@ -39240,7 +39246,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 33,
+   "layer": 36,
    "tags": [
     "命题",
     "微分几何",
@@ -39283,7 +39289,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.characteristic",
-   "layer": 34,
+   "layer": 37,
    "tags": [
     "定理",
     "微分几何",
@@ -39615,7 +39621,7 @@
     "topology"
    ],
    "cluster": "topology.surfaces",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "拓扑",
@@ -40314,7 +40320,7 @@
     "algebra"
    ],
    "cluster": "algebra.galois",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定理",
     "代数",
@@ -40358,7 +40364,7 @@
     "algebra"
    ],
    "cluster": "algebra.galois",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "定理",
     "代数",
@@ -40400,7 +40406,7 @@
     "algebra"
    ],
    "cluster": "algebra.galois",
-   "layer": 25,
+   "layer": 28,
    "tags": [
     "定义",
     "代数",
@@ -40442,7 +40448,7 @@
     "complex"
    ],
    "cluster": "algebra.galois",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定义",
     "代数",
@@ -40731,6 +40737,251 @@
    "notes": "⭐ a.e. 是 Lebesgue 理论的**润滑剂**：$L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），几乎所有收敛定理（MCT、Fatou、DCT 的 a.e. 版本、Egorov）都只要求 a.e. 收敛 —— 因为零集上的取值对积分没有贡献。\n\n⚠ 「a.e. 相等」与「处处相等」是不同的关系：$\\int |f| = 0 \\implies f = 0$ a.e.（而不是处处 0）。\n\n\n⚠ 零集的**子集**未必可测，除非测度空间完备 —— 这就是「完备化」要解决的问题。",
    "refs": [
     "Rudin, Real and Complex Analysis, Ch. 1"
+   ]
+  },
+  {
+   "id": "def.isomorphism",
+   "type": "definition",
+   "label": "同构",
+   "title": "同构（可逆态射）—— 各分支的通名",
+   "label_en": "isomorphism",
+   "title_en": "isomorphism",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.isomorphism.en.md",
+   "region": "category",
+   "regions": [
+    "category",
+    "algebra"
+   ],
+   "cluster": "cat.basic",
+   "layer": 8,
+   "tags": [
+    "定义",
+    "范畴",
+    "代数"
+   ],
+   "statement": "设 $\\mathcal{C}$ 是范畴，$f : X \\to Y$ 是其中的态射。称 $f$ 是**同构**，如果存在态射 $g : Y \\to X$ 使\n\n$$g \\circ f = \\mathrm{id}_{X}, \\qquad f \\circ g = \\mathrm{id}_{Y}.$$\n\n这样的 $g$ 唯一（若 $g, g'$ 都行，则 $g = g' f g = g'$），记 $g = f^{-1}$；此时称 $X$ 与 $Y$ **同构**，记 $X \\cong Y$。",
+   "notes": "⭐ **它是各分支里同一个概念的通名**（此前全库只有范畴论那个三合一的 `def.mono`）：\n\n- 集合 / $\\mathbf{Set}$：同构 = **双射**；\n\n- 群、环、模：同构 = 双射的同态；\n\n- 拓扑 / $\\mathbf{Top}$：同构 = **同胚**（`def.homeomorphism`）；\n\n- 向量空间：同构 = **线性同构**（`def.linear-isomorphism`）；\n\n- 序集：同构 = **序同构**（`def.order-iso`）；\n\n- 而「单态射 / 满态射」是**另一对概念** —— 一般范畴里单 + 满**不**蕴含同构（例如 $\\mathbf{Top}$ 里连续双射不必同胚），所以它不能当同构的通名。\n\n⚠ **「同构」不等于「相等」**：同构说的是「在保持结构的映射下无法区分」。整张星图里绝大多数结论都只在同构意义下成立（例如「$V \\cong K^{n}$」而不是「$V = K^{n}$」）。\n\n📌 与「等价」的区别：范畴之间的**等价**（`def.adjoint` 那一族讨论的）只需要「差一个自然同构」，比同构弱；同构是最强的那一档。",
+   "refs": [
+    "Mac Lane, Categories for the Working Mathematician, Ch. I §5",
+    "Lang, Algebra, Ch. I"
+   ]
+  },
+  {
+   "id": "def.antiderivative",
+   "type": "definition",
+   "label": "原函数",
+   "title": "原函数：$F' = f$ 的那个 $F$",
+   "label_en": "antiderivative",
+   "title_en": "antiderivative",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.antiderivative.en.md",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.riemann",
+   "layer": 21,
+   "tags": [
+    "定义",
+    "分析",
+    "积分"
+   ],
+   "statement": "设 $I \\subseteq \\mathbb{R}$ 是区间，$f : I \\to \\mathbb{R}$。函数 $F : I \\to \\mathbb{R}$ 叫 $f$ 在 $I$ 上的**原函数**（也叫**不定积分**），如果 $F$ 在 $I$ 上可导且\n\n$$F'(x) = f(x) \\qquad (\\forall x \\in I).$$\n\n若 $F$ 是一个原函数，则 $f$ 的**全部**原函数恰好是 $\\{ F + C : C \\in \\mathbb{R} \\}$。",
+   "notes": "⭐ **为什么「全部」只差常数**：若 $F' = G' = f$，则 $(F - G)' = 0$，由中值定理（`thm.mvt`）$F - G$ 是常数。这一步是「不定积分」这个记号 $\\int f\\,\\mathrm{d}x = F + C$ 的全部依据。\n\n⭐ **存在性不是白给的**：$f$ **连续**时一定有原函数 —— 取 $F(x) = \\int_{a}^{x} f$，就是变上限积分的导数（`thm.ftc-riemann-part1`）。而不连续的函数可能没有原函数（有第一类间断点的导数不存在原函数：导函数不能有跳跃间断）。\n\n⚠ **「原函数」与「定积分」是两件事**：原函数是一个**函数**（差一个常数），定积分是一个**数**；把它们粘起来的是微积分基本定理。\n\n⚠ 与 `def.riemann-integrable` 的分工：可积 $\\ne$ 有原函数。$|x|$ 在 $[-1,1]$ 上可积且它有原函数，但 $\\operatorname{sgn}(x)$ 可积却**没有**原函数（跳跃间断）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 6",
+    "Folland, Real Analysis, Ch. 1"
+   ]
+  },
+  {
+   "id": "def.binary-operation",
+   "type": "definition",
+   "label": "二元运算",
+   "title": "二元运算（$S \\times S \\to S$）",
+   "label_en": "binary operation",
+   "title_en": "binary operation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.binary-operation.en.md",
+   "region": "algebra",
+   "regions": [
+    "algebra"
+   ],
+   "cluster": "algebra.structures",
+   "layer": 6,
+   "tags": [
+    "定义",
+    "代数"
+   ],
+   "statement": "集合 $S$ 上的**（二元）运算**就是一个映射\n\n$\\ast : S \\times S \\longrightarrow S, \\qquad (a, b) \\longmapsto a \\ast b .$$\n\n「像落在 $S$ 里」这一条就是常说的**封闭性** —— 它是定义的一部分，不是额外要求。",
+   "notes": "⭐ **群、环、域、格、半群全部建立在它上面**：`def.group` 说的是「一个运算 + 三条公理」，环是两个运算 + 分配律，格是两条幂等交换运算 + 吸收律。此前这些定义各自**内联**了一次「$S \\times S \\to S$」，没有通名节点。\n\n⚠ **运算 vs 关系**：$S \\times S \\to S$ 是**运算**（有返回值），$S \\times S \\to \\{\\text{真}, \\text{假}\\}$是**二元关系**（如 $\\le$、$\\in$）。两者不能混：关系没有「封闭性」问题，因为它不往 $S$ 里取值。\n\n⭐ **结合律不是运算的定义的一部分**：$a \\ast (b \\ast c) = (a \\ast b) \\ast c$ 是**额外条件**，满足它的叫半群。这是初学者最常见的混淆点。\n\n📌 例子：$\\mathbb{Z}$ 上的加法与乘法都是二元运算；$\\mathbb{Z}$ 上的除法**不是**（$1/2 \\notin \\mathbb{Z}$，不封闭）；$\\mathbb{R}^{\\times}$ 上的乘法是（去掉 0 之后才封闭）。",
+   "refs": [
+    "Lang, Algebra, Ch. I §1",
+    "Hungerford, Algebra, Ch. I"
+   ]
+  },
+  {
+   "id": "def.group-order",
+   "type": "definition",
+   "label": "群的阶与元素的阶",
+   "title": "群的阶 $|G|$ 与元素的阶 $\\operatorname{ord}(x)$",
+   "label_en": "order of a group",
+   "title_en": "order of a group",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.group-order.en.md",
+   "region": "algebra",
+   "regions": [
+    "algebra"
+   ],
+   "cluster": "algebra.structures",
+   "layer": 9,
+   "tags": [
+    "定义",
+    "代数",
+    "群论"
+   ],
+   "statement": "设 $G$ 是群。\n\n- $G$ 的**阶**指它的**基数**，记 $|G|$（$G$ 有限时就是元素个数）；\n- $x \\in G$ 的**阶**指使 $x^{n} = e$ 成立的**最小正整数** $n$，记 $\\operatorname{ord}(x)$；若不存在这样的 $n$，说 $x$ 的阶为**无穷**。",
+   "notes": "⭐ **两个「阶」靠 Lagrange 定理连起来**（`thm.lagrange`）：$\\operatorname{ord}(x)$ 整除 $|G|$，而且 $\\operatorname{ord}(x)$ 就是循环子群 $\\langle x \\rangle$ 的阶。这条是初等群论里最常用的桥。\n\n⚠ **$|G|$ 这个记号在本图有两个含义**（同一个符号、不同语境，见 `notation` 的 R13）：群的阶用 $|G|$，而**集合的势**用 $\\#A$。两者数学上是同一件事（群的阶就是其底层集合的势），但写法按语境分工 —— 读的时候看落点是不是群。\n\n⚠ **与「元素的次数」不是一回事**：环里 $x$ 的「幂零次数」、域元素的「次数」$[F(x):F]$ 都是别的量。\n\n📌 读数：$|S_{n}| = n!$；$\\operatorname{ord}((1\\,2\\,3)) = 3$；$\\mathbb{Z}/n$ 里 $\\operatorname{ord}(\\bar{k}) = n/\\gcd(n,k)$。",
+   "refs": [
+    "Lang, Algebra, Ch. I §4",
+    "Hungerford, Algebra, Ch. I §4"
+   ]
+  },
+  {
+   "id": "def.tan-cot-sec",
+   "type": "definition",
+   "label": "正切、余切、正割、余割",
+   "title": "$\\tan,\\ \\cot,\\ \\sec,\\ \\csc$ —— 都是 $\\sin,\\cos$ 的商与倒数",
+   "title_en": "tangent, cotangent, secant, cosecant",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.tan-cot-sec.en.md",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real-calc",
+   "layer": 17,
+   "tags": [
+    "定义",
+    "分析",
+    "初等函数"
+   ],
+   "statement": "在 $\\sin,\\cos$ 已经定义的区间上，令\n\n$$\\tan x := \\frac{\\sin x}{\\cos x}\\ (\\cos x \\ne 0), \\qquad \\cot x := \\frac{\\cos x}{\\sin x}\\ (\\sin x \\ne 0),$$\n$$\\sec x := \\frac{1}{\\cos x}, \\qquad \\csc x := \\frac{1}{\\sin x}.$$\n\n定义域相应去掉分母为零的点（例如 $\\tan$ 在 $x = \\pi/2 + k\\pi$ 处无定义）。",
+   "notes": "⭐ **它们不是新函数**：全部由 $\\sin,\\cos$ 的商/倒数给出，所以导数和恒等式都能从 $\\sin,\\cos$ 推 —— $\\tan' = \\sec^{2}$、$(\\sec)' = \\sec\\tan$。此前本图只有 `def.trig-function`（只造 $\\sin,\\cos$），搜「正切」0 命中。\n\n⭐ **基本恒等式**（都来自 $\\sin^{2} + \\cos^{2} = 1$ 除以 $\\cos^{2}$）：\n\n\n\n$$1 + \\tan^{2} x = \\sec^{2} x, \\qquad 1 + \\cot^{2} x = \\csc^{2} x .$$\n\n⚠ **定义域是真事**：$\\tan$ 在 $\\pi/2$ 处发散（竖直渐近线），这不是「画不出来」，是函数在那里没定义。所以 $\\tan$ 在 $(-\\pi/2, \\pi/2)$ 上才是双射 —— 反函数只在这样的区间上取（见 `def.inverse-trig`）。\n\n📌 名字的来历：$\\sec$ 是 secant（割线），$\\csc$ 是 cosecant；中文「正割/余割」与「正弦/余弦」同源的配对约定，与「正/余」在 $\\sin(\\pi/2 - x) = \\cos x$ 意义下的互换一致。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 8",
+    "Apostol, Calculus, Ch. 1"
+   ]
+  },
+  {
+   "id": "def.inverse-trig",
+   "type": "definition",
+   "label": "反三角函数",
+   "title": "$\\arcsin,\\ \\arccos,\\ \\arctan$ —— 在单调区间上取反函数",
+   "label_en": "inverse trigonometric functions",
+   "title_en": "inverse trigonometric functions",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.inverse-trig.en.md",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real-calc",
+   "layer": 17,
+   "tags": [
+    "定义",
+    "分析",
+    "初等函数"
+   ],
+   "statement": "三角函数是周期的，**整体上没有反函数**；但在单调区间上可以取反函数：\n\n- $\\arcsin : [-1, 1] \\to [-\\pi/2, \\pi/2]$ 是 $\\sin$ 限制在 $[-\\pi/2, \\pi/2]$ 上的反函数；\n- $\\arccos : [-1, 1] \\to [0, \\pi]$ 是 $\\cos$ 限制在 $[0, \\pi]$ 上的反函数；\n- $\\arctan : \\mathbb{R} \\to (-\\pi/2, \\pi/2)$ 是 $\\tan$ 限制在 $(-\\pi/2, \\pi/2)$ 上的反函数。\n\n即 $\\sin(\\arcsin x) = x$（$|x| \\le 1$），而 $\\arcsin(\\sin x) = x$ **只在** $|x| \\le \\pi/2$ 时成立。",
+   "notes": "⚠ **最关键的一条**：$\\arcsin(\\sin x) = x$ 一般**不成立**（只在上面的单调区间内成立）；反过来 $\\sin(\\arcsin x) = x$ 在定义域内总成立。这个「一侧总成立、另一侧要看区间」是反函数的一般规律。\n\n⭐ **为什么必须挑区间**：$\\sin$ 在 $[0, \\pi]$ 上不单调，所以那里没有单值的反函数；选 $[-\\pi/2, \\pi/2]$ 是约定（值域对称、含 $0$、连续），换一个区间就是另一个反函数。\n\n⭐ **导数**（都能从反函数求导 + $\\sin^{2}+\\cos^{2}=1$ 推出）：\n\n\n\n$$(\\arcsin x)' = \\frac{1}{\\sqrt{1 - x^{2}}}, \\qquad (\\arctan x)' = \\frac{1}{1 + x^{2}} .$$\n\n⚠ 两个都要注意开区间：$\\arcsin$ 在 $x = \\pm 1$ 处导数发散（竖直切线），所以它在端点只有单侧导数。\n\n📌 本图没有「弧度」与「单位圆」的节点（E4 缺口），所以这里只说「$\\sin$ 限制在区间上」，不引入角度语言 —— 从级数/微分方程定义 $\\sin,\\cos$ 的那条线上，$\\pi$ 是 $2\\sin^{-1}(1)$。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 8",
+    "Apostol, Calculus, Ch. 6"
    ]
   },
   {
@@ -41875,7 +42126,7 @@
     "set-theory"
    ],
    "cluster": "analysis.completeness",
-   "layer": 13,
+   "layer": 16,
    "tags": [
     "定理",
     "实数",
@@ -41918,7 +42169,7 @@
     "set-theory"
    ],
    "cluster": "analysis.real-calc",
-   "layer": 14,
+   "layer": 17,
    "tags": [
     "引理",
     "阿基米德",
@@ -41960,7 +42211,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 15,
+   "layer": 18,
    "tags": [
     "定理",
     "实数",
@@ -42019,7 +42270,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 14,
+   "layer": 17,
    "tags": [
     "定理",
     "实数",
@@ -44568,7 +44819,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "范畴论",
     "紧",
@@ -44625,7 +44876,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "范畴论",
     "Stone–Čech",
@@ -44668,7 +44919,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "范畴论",
     "紧",
@@ -44708,7 +44959,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "范畴论",
     "自由",
@@ -44747,7 +44998,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "范畴论",
     "商",
@@ -44826,7 +45077,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "范畴论",
     "投射",
@@ -44866,7 +45117,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "范畴论",
     "商",
@@ -44905,7 +45156,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "范畴论",
     "自由表示",
@@ -44944,7 +45195,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "范畴论",
     "连通分量",
@@ -44984,7 +45235,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "范畴论",
     "Stone",
@@ -45023,7 +45274,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "范畴论",
     "极端不连通",
@@ -45062,7 +45313,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "范畴论",
     "反射",
@@ -45101,7 +45352,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "范畴论",
     "Stone",
@@ -45181,7 +45432,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "范畴论",
     "Stone",
@@ -45221,7 +45472,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "范畴论",
     "Gleason",
@@ -45261,7 +45512,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "范畴论",
     "收缩核",
@@ -46753,7 +47004,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态",
     "CHaus",
@@ -46794,7 +47045,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态",
     "层",
@@ -46838,7 +47089,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "层",
@@ -46917,7 +47168,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "自由",
@@ -46957,7 +47208,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "自由",
@@ -46997,7 +47248,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "凝聚态",
     "等价",
@@ -47037,7 +47288,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "满态射"
@@ -47115,7 +47366,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态",
     "拓扑空间"
@@ -47154,7 +47405,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "凝聚态",
     "伴随",
@@ -47194,7 +47445,7 @@
     "condensed"
    ],
    "cluster": "cond.ab",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "阿贝尔群",
@@ -47233,7 +47484,7 @@
     "condensed"
    ],
    "cluster": "cond.ab",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "截面",
@@ -47392,7 +47643,7 @@
     "condensed"
    ],
    "cluster": "cond.ab",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "Stonean",
@@ -48351,7 +48602,7 @@
     "homology"
    ],
    "cluster": "hom.sheaf",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "同调代数",
     "张量积",
@@ -48391,7 +48642,7 @@
     "homology"
    ],
    "cluster": "hom.sheaf",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "同调代数",
     "平坦",
@@ -48431,7 +48682,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "拓扑",
     "紧生成",
@@ -48472,7 +48723,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "紧生成",
@@ -48513,7 +48764,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "紧生成",
@@ -48553,7 +48804,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "k-拓扑",
@@ -48594,7 +48845,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "拓扑",
     "k-拓扑",
@@ -48650,7 +48901,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "拓扑",
     "紧生成",
@@ -48757,7 +49008,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "紧生成",
@@ -48797,7 +49048,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "拓扑",
     "k-拓扑",
@@ -48838,7 +49089,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "拓扑",
     "紧开拓扑",
@@ -48878,7 +49129,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "拓扑",
     "紧开拓扑",
@@ -48958,7 +49209,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "拓扑",
     "弱 Hausdorff",
@@ -49080,7 +49331,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "CGWH",
@@ -49162,7 +49413,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "拓扑",
     "弱 Hausdorff",
@@ -49203,7 +49454,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "紧生成",
@@ -49245,7 +49496,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "拓扑",
     "紧生成",
@@ -49722,7 +49973,7 @@
     "topology"
    ],
    "cluster": "cond.topo",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态",
     "拓扑阿贝尔群",
@@ -49762,7 +50013,7 @@
     "condensed"
    ],
    "cluster": "cond.topo",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "凝聚态",
     "拓扑阿贝尔群",
@@ -49842,7 +50093,7 @@
     "condensed"
    ],
    "cluster": "cond.topo",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "凝聚态",
     "正合列",
@@ -49884,7 +50135,7 @@
     "topology"
    ],
    "cluster": "cond.topo",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "局部紧",
@@ -49925,7 +50176,7 @@
     "condensed"
    ],
    "cluster": "cond.topo",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态",
     "Pontryagin",
@@ -49967,7 +50218,7 @@
     "topology"
    ],
    "cluster": "cond.topo",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "凝聚态",
     "Pontryagin",
@@ -51340,7 +51591,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "拓扑",
     "局部紧",
@@ -51385,7 +51636,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "拓扑",
     "紧",
@@ -52169,7 +52420,7 @@
     "category"
    ],
    "cluster": "algebra.structures",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "代数",
     "环",
@@ -53122,7 +53373,7 @@
     "topology"
    ],
    "cluster": "hom.sheafcoh",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "同调代数",
     "Stone 空间",
@@ -53247,7 +53498,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态数学",
     "内部 Hom",
@@ -53288,7 +53539,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态数学",
     "拟紧",
@@ -53451,7 +53702,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态数学",
     "弱 Hausdorff",
@@ -53702,7 +53953,7 @@
     "analysis"
    ],
    "cluster": "cond.cohomology",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "凝聚态数学",
     "Banach",
@@ -53786,7 +54037,7 @@
     "homology"
    ],
    "cluster": "cond.cohomology",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态数学",
     "Banach",
@@ -53828,7 +54079,7 @@
     "homology"
    ],
    "cluster": "cond.cohomology",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态数学",
     "Banach",
@@ -53870,7 +54121,7 @@
     "homology"
    ],
    "cluster": "cond.cohomology",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态数学",
     "Banach",
@@ -53954,7 +54205,7 @@
     "homology"
    ],
    "cluster": "cond.cohomology",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态数学",
     "Banach",
@@ -53996,7 +54247,7 @@
     "topology"
    ],
    "cluster": "cond.cohomology",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "凝聚态数学",
     "Tietze",
@@ -54040,7 +54291,7 @@
     "homology"
    ],
    "cluster": "cond.cohomology",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态数学",
     "Banach 空间",
@@ -54124,7 +54375,7 @@
     "homology"
    ],
    "cluster": "cond.ss",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "凝聚态数学",
     "Breen-Deligne",
@@ -54166,7 +54417,7 @@
     "homology"
    ],
    "cluster": "cond.ss",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "凝聚态数学",
     "Breen-Deligne",
@@ -54208,7 +54459,7 @@
     "homology"
    ],
    "cluster": "cond.ss",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "凝聚态数学",
     "Breen-Deligne",
@@ -54292,7 +54543,7 @@
     "homology"
    ],
    "cluster": "cond.compute",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态数学",
     "RHom",
@@ -54587,7 +54838,7 @@
     "homology"
    ],
    "cluster": "cond.ss",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "凝聚态数学",
     "Breen-Deligne",
@@ -54715,7 +54966,7 @@
     "topology"
    ],
    "cluster": "cond.topo",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "凝聚态数学",
     "局部紧阿贝尔群",
@@ -54757,7 +55008,7 @@
     "topology"
    ],
    "cluster": "cond.topo",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "凝聚态数学",
     "Pontryagin 对偶",
@@ -54800,7 +55051,7 @@
     "topology"
    ],
    "cluster": "cond.topo",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "凝聚态数学",
     "Pontryagin 对偶",
@@ -54843,7 +55094,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态数学",
     "拓扑斯",
@@ -54885,7 +55136,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态数学",
     "拓扑斯",
@@ -54927,7 +55178,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "凝聚态数学",
     "拓扑斯",
@@ -55260,7 +55511,7 @@
     "algebra"
    ],
    "cluster": "topo.stone",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "Stone 空间",
@@ -55302,7 +55553,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "拓扑",
     "紧 Hausdorff",
@@ -55639,7 +55890,7 @@
     "condensed"
    ],
    "cluster": "cond.topo",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "命题",
     "拓扑阿贝尔群",
@@ -55762,7 +56013,7 @@
     "condensed"
    ],
    "cluster": "cond.compute",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "引理",
     "Čech 上同调",
@@ -55803,7 +56054,7 @@
     "condensed"
    ],
    "cluster": "cond.compute",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "凝聚态",
@@ -55844,7 +56095,7 @@
     "condensed"
    ],
    "cluster": "cond.compute",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "凝聚态",
@@ -55967,7 +56218,7 @@
     "condensed"
    ],
    "cluster": "cond.compute",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "Ext",
@@ -56008,7 +56259,7 @@
     "condensed"
    ],
    "cluster": "cond.compute",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "凝聚态",
@@ -56050,7 +56301,7 @@
     "homology"
    ],
    "cluster": "hom.sheaf",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "导出范畴",
@@ -56458,7 +56709,7 @@
     "condensed"
    ],
    "cluster": "cond.cohomology",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "Banach",
@@ -56832,7 +57083,7 @@
     "topology"
    ],
    "cluster": "topo.stone",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "命题",
     "Stone 空间",
@@ -56995,7 +57246,7 @@
     "condensed"
    ],
    "cluster": "cond.topo",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "Pontryagin 对偶",
@@ -57285,7 +57536,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "推论",
     "凝聚态集",
@@ -57579,7 +57830,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "凝聚态集",
@@ -57621,7 +57872,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "凝聚态集",
@@ -57956,7 +58207,7 @@
     "homology"
    ],
    "cluster": "hom.sheaf",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "定理",
     "阿贝尔层",
@@ -58082,7 +58333,7 @@
     "homology"
    ],
    "cluster": "hom.sheaf",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "张量积",
@@ -58368,7 +58619,7 @@
     "homology"
    ],
    "cluster": "hom.sheaf",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "平坦",
@@ -58698,7 +58949,7 @@
     "category"
    ],
    "cluster": "cat.topos",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "命题",
     "拓扑斯态射",
@@ -59028,7 +59279,7 @@
     "category"
    ],
    "cluster": "cat.topos",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "切片拓扑斯",
@@ -59437,7 +59688,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "紧",
@@ -59478,7 +59729,7 @@
     "topology"
    ],
    "cluster": "topology.convergence",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "紧",
@@ -59599,7 +59850,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "紧开拓扑",
@@ -59971,7 +60222,7 @@
     "algebra"
    ],
    "cluster": "algebra.structures",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "张量积",
@@ -60093,7 +60344,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "紧 Hausdorff",
@@ -60214,7 +60465,7 @@
     "condensed"
    ],
    "cluster": "cond.topo",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "Pontryagin 对偶",
@@ -60254,7 +60505,7 @@
     "topology"
    ],
    "cluster": "topo.chaus",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "紧 Hausdorff",
@@ -60296,7 +60547,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "弱 Hausdorff",
@@ -60750,7 +61001,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "命题",
     "凝聚态集",
@@ -60792,7 +61043,7 @@
     "condensed"
    ],
    "cluster": "cond.set",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "命题",
     "凝聚态集",
@@ -60833,7 +61084,7 @@
     "condensed"
    ],
    "cluster": "cond.ab",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "凝聚态阿贝尔群",
@@ -60874,7 +61125,7 @@
     "condensed"
    ],
    "cluster": "cond.ab",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "凝聚态阿贝尔群",
@@ -62371,7 +62622,7 @@
     "analysis"
    ],
    "cluster": "analysis.completeness",
-   "layer": 14,
+   "layer": 17,
    "tags": [
     "定理",
     "完备性"
@@ -62410,7 +62661,7 @@
     "analysis"
    ],
    "cluster": "analysis.completeness",
-   "layer": 15,
+   "layer": 18,
    "tags": [
     "引理",
     "完备性"
@@ -62449,7 +62700,7 @@
     "analysis"
    ],
    "cluster": "analysis.completeness",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定理",
     "完备性"
@@ -62488,7 +62739,7 @@
     "analysis"
    ],
    "cluster": "analysis.completeness",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定理",
     "完备性"
@@ -62527,7 +62778,7 @@
     "analysis"
    ],
    "cluster": "analysis.completeness",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "定理",
     "完备性",
@@ -62567,7 +62818,7 @@
     "analysis"
    ],
    "cluster": "analysis.completeness",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "定理",
     "完备性",
@@ -62612,7 +62863,7 @@
     "topology"
    ],
    "cluster": "analysis.completeness",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "推论",
     "完备性",
@@ -62693,7 +62944,7 @@
     "topology"
    ],
    "cluster": "analysis.continuity",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "命题",
     "连续",
@@ -62737,7 +62988,7 @@
     "topology"
    ],
    "cluster": "analysis.continuity",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "定理",
     "连续",
@@ -62777,7 +63028,7 @@
     "analysis"
    ],
    "cluster": "analysis.continuity",
-   "layer": 15,
+   "layer": 17,
    "tags": [
     "定理",
     "连续"
@@ -62816,7 +63067,7 @@
     "analysis"
    ],
    "cluster": "analysis.continuity",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "推论",
     "连续"
@@ -62858,7 +63109,7 @@
     "topology"
    ],
    "cluster": "analysis.continuity",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定理",
     "连续",
@@ -62897,7 +63148,7 @@
     "analysis"
    ],
    "cluster": "analysis.continuity",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "定理",
     "连续",
@@ -63053,7 +63304,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "定理",
     "导数"
@@ -63092,7 +63343,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "导数"
@@ -63132,7 +63383,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "导数"
@@ -63171,7 +63422,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "推论",
     "导数"
@@ -63209,7 +63460,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "命题",
     "导数",
@@ -63249,7 +63500,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "导数",
@@ -63368,7 +63619,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "导数",
@@ -63409,7 +63660,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "导数",
@@ -63449,7 +63700,7 @@
     "analysis"
    ],
    "cluster": "analysis.mvt",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "命题",
     "导数",
@@ -63727,7 +63978,7 @@
     "analysis"
    ],
    "cluster": "analysis.riemann",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "命题",
     "积分",
@@ -63928,7 +64179,7 @@
     "analysis"
    ],
    "cluster": "analysis.riemann",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "积分",
@@ -63968,7 +64219,7 @@
     "analysis"
    ],
    "cluster": "analysis.riemann",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "命题",
     "积分"
@@ -64007,7 +64258,7 @@
     "analysis"
    ],
    "cluster": "analysis.riemann",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "命题",
     "积分"
@@ -64046,7 +64297,7 @@
     "analysis"
    ],
    "cluster": "analysis.riemann",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "定理",
     "积分"
@@ -64124,7 +64375,7 @@
     "analysis"
    ],
    "cluster": "analysis.riemann",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "命题",
     "积分",
@@ -64164,7 +64415,7 @@
     "analysis"
    ],
    "cluster": "analysis.riemann",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "命题",
     "积分",
@@ -64205,7 +64456,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "定理",
     "级数",
@@ -64245,7 +64496,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 15,
+   "layer": 18,
    "tags": [
     "定理",
     "级数",
@@ -64285,7 +64536,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定理",
     "级数",
@@ -64327,7 +64578,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定理",
     "级数",
@@ -64367,7 +64618,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "定理",
     "级数",
@@ -64408,7 +64659,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "定理",
     "级数",
@@ -64448,7 +64699,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "定理",
     "级数",
@@ -64567,7 +64818,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 19,
+   "layer": 22,
    "tags": [
     "定理",
     "级数",
@@ -64606,7 +64857,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "定理",
     "级数",
@@ -64687,7 +64938,7 @@
     "analysis"
    ],
    "cluster": "analysis.series",
-   "layer": 21,
+   "layer": 24,
    "tags": [
     "定理",
     "级数",
@@ -64926,7 +65177,7 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 22,
+   "layer": 25,
    "tags": [
     "定理",
     "函数列",
@@ -64967,7 +65218,7 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "函数列",
@@ -65089,7 +65340,7 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "定理",
     "幂级数",
@@ -65128,7 +65379,7 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 23,
+   "layer": 26,
    "tags": [
     "定理",
     "幂级数",
@@ -65168,7 +65419,7 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 20,
+   "layer": 23,
    "tags": [
     "定理",
     "幂级数",
@@ -81131,6 +81382,111 @@
    "note": "**同名不同物**，中文里都叫「子空间」：\n\n- `def.subspace`：$V$ 的**线性**子空间 —— 要求含零、对加法与数乘封闭（代数条件）；\n\n- `def.subspace-topology`：$X$ 的**子集** $A$ 带上「$U \\cap A$ 开」的拓扑（纯拓扑操作，$A$ 可以是任何子集）。\n\n⚠ 两者只在「$\\mathbb{R}^{n}$ 的线性子空间配上子空间拓扑」这种特殊场合才谈得上关系；一般情形下一个是代数结构、一个是把拓扑限制到子集上。\n\n⛔ 不能连 definition/implication：没有谁是谁的前提，而且方向想清楚也很难 —— 所以只能用类比边把这层「词撞车」记下来，让读者别点错。"
   },
   {
+   "id": "dep.category-isomorphism",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.isomorphism",
+   "note": "同构是**范畴里的**概念（可逆态射），先要有范畴。"
+  },
+  {
+   "id": "dep.derivative-antiderivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.derivative",
+   "usedBy": "def.antiderivative",
+   "note": "原函数就是用导数**倒过来**定义的：$F' = f$。"
+  },
+  {
+   "id": "dep.interval-antiderivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.interval",
+   "usedBy": "def.antiderivative",
+   "note": "原函数是「在某个**区间**上」说的 —— 在两点集上取原函数没有意义（中值定理要区间）。"
+  },
+  {
+   "id": "dep.ftc-antiderivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.ftc-riemann-part1",
+   "usedBy": "def.antiderivative",
+   "note": "存在性的唯一来源：$f$ 连续时 $F(x) = \\int_{a}^{x} f$ 就是它的原函数 —— 这正是那条定理的内容。"
+  },
+  {
+   "id": "dep.function-binaryop",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.function",
+   "usedBy": "def.binary-operation",
+   "note": "运算就是一个**映射**（$S \\times S \\to S$）；「封闭性」由像集落在 $S$ 内自动给出。"
+  },
+  {
+   "id": "dep.group-grouporder",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.group",
+   "usedBy": "def.group-order",
+   "note": "群的阶与元素的阶都是**群**上的量。"
+  },
+  {
+   "id": "dep.lagrange-grouporder",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.lagrange",
+   "usedBy": "def.group-order",
+   "note": "$\\operatorname{ord}(x) \\mid |G|$ 这条要用 Lagrange 定理（$\\operatorname{ord}(x) = |\\langle x\\rangle|$）。"
+  },
+  {
+   "id": "dep.grouporder-vs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.group-order",
+   "usedBy": "def.vs",
+   "note": "基的存在性定理要数「基的势」，而群那一侧用的是「$|G|$ 是阶」这套语言 —— 两个「大小」在这里对上。"
+  },
+  {
+   "id": "dep.trig-tancot",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.trig-function",
+   "usedBy": "def.tan-cot-sec",
+   "note": "四个新函数全部由 $\\sin,\\cos$ 的商与倒数给出 —— 这是它们**不是新函数**的准确含义。"
+  },
+  {
+   "id": "dep.trig-inversetrig",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.trig-function",
+   "usedBy": "def.inverse-trig",
+   "note": "反三角函数是 $\\sin,\\cos$（以及由它们定义的 $\\tan$）在单调区间上的反函数。"
+  },
+  {
+   "id": "dep.cauchy-complete",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cauchy-sequence",
+   "usedBy": "def.complete",
+   "note": "**完备的定义就是「每个 Cauchy 列都收敛」** —— 此前这两个节点之间一条边都没有，读 `def.complete` 的人不知道 Cauchy 列是什么，读 Cauchy 列的人不知道它被谁用。"
+  },
+  {
+   "id": "dep.realcomplete-complete",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complete",
+   "usedBy": "thm.real-ordered-field",
+   "note": "$\\mathbb{R}$ 是**完备有序域**：这里的完备是**序完备**（有上确界），它与「度量完备」（Cauchy 列收敛）在 $\\mathbb{R}$ 上等价 —— 但那要一条定理，不是定义。⚠ 两个「完备」不是同一个概念，只是在这条线上恰好重合。"
+  },
+  {
+   "id": "e179.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.complete",
+   "b": "def.null-set",
+   "title": "两个「完备」：度量完备 vs 测度完备",
+   "note": "**同名不同物**（第三个是序完备，见 `thm.real-ordered-field` 那条边）：\n\n- `def.complete`：距离空间的完备 —— **每个 Cauchy 列都收敛**（关于距离）；\n\n- 测度空间的完备（`def.null-set` 那一族）：**零集的子集仍可测**（关于 $\\sigma$-代数）；\n\n- 序完备：每个有上界的非空子集有上确界（关于 $\\le$）。\n\n⚠ 三者在 $\\mathbb{R}$ 上刚好都成立，所以初学时容易以为是一件事；换一个空间就分开了（$\\mathbb{Q}$ 序不完备；某个测度空间可以测度完备而作为度量空间不完备，反之亦然）。\n\n⛔ 不能连 definition：一个是「列都收敛」，一个是「零集都进 $\\sigma$-代数」，没有蕴含关系。"
+  },
+  {
    "id": "dep.subset-powerset",
    "kind": "definition",
    "strength": "strong",
@@ -91825,7 +92181,7 @@
   {
    "a": "algebra.group-action",
    "b": "algebra.structures",
-   "count": 7,
+   "count": 8,
    "label": "",
    "explicit": false
   },
@@ -91881,7 +92237,7 @@
   {
    "a": "analysis.real-calc",
    "b": "analysis.uniform",
-   "count": 5,
+   "count": 7,
    "label": "",
    "explicit": false
   },
@@ -92854,7 +93210,7 @@
   {
    "a": "algebra.structures",
    "b": "algebra.vectorspace",
-   "count": 3,
+   "count": 4,
    "label": "",
    "explicit": false
   },
@@ -92957,6 +93313,34 @@
    "explicit": false
   },
   {
+   "a": "analysis.real",
+   "b": "analysis.riemann",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "algebra.structures",
+   "b": "set.rel",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.real",
+   "b": "topology.metric",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.completeness",
+   "b": "topology.metric",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
    "a": "set.cardinal",
    "b": "set.construct",
    "count": 2,
@@ -93009,13 +93393,6 @@
    "a": "analysis.completeness",
    "b": "set.numbers",
    "count": 2,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "algebra.structures",
-   "b": "set.rel",
-   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -93735,22 +94112,8 @@
   },
   {
    "a": "analysis.completeness",
-   "b": "topology.metric",
-   "count": 3,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "analysis.completeness",
    "b": "analysis.continuity",
    "count": 5,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "analysis.real",
-   "b": "analysis.riemann",
-   "count": 2,
    "label": "",
    "explicit": false
   },

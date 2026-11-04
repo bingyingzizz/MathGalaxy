@@ -10,7 +10,6 @@
 - prop.etale-sheaf-examples　étale 层的例子　layer 17
 - def.sheaf-cohomology　层上同调　layer 17
 - def.cech-cohomology　Čech 上同调　layer 17
-- prop.stone-acyclic　Stone 空间上的上同调为零　layer 17
 - lem.cartan-eilenberg　Cartan–Eilenberg 分解　layer 17
 - prop.cech-section-vanishing　带截面的覆盖上 Čech 零调　layer 17
 - prop.skyscraper-injective　天际线层是内射层　layer 18

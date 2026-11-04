@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · lemma · cluster Breen-Deligne Spectral Sequences (`cond.ss`) · Condensed Mathematics / Homological Algebra
+layer 20 · lemma · cluster Breen-Deligne Spectral Sequences (`cond.ss`) · Condensed Mathematics / Homological Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/lem.breen-deligne-scalar-homotopy.md` and `proofs/`.

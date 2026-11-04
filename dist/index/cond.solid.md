@@ -9,8 +9,8 @@
 - prop.solid-hypercover　固态化把超覆盖变成正合列　layer 15
 - prop.free-solid-solid　自由固态群是固态的　layer 16
 - lem.solid-completion-criterion　完备化判据　layer 17
-- def.solid-group　固态阿贝尔群　layer 18
 - thm.solid-abelian　固态群构成阿贝尔子范畴　layer 18
+- def.solid-group　固态阿贝尔群　layer 19
 - thm.solid-derived　固态复形与导出范畴　layer 19
 
 > 续见 `index/cond.solid.2.md`

@@ -12,8 +12,8 @@
 - def.separable-extension　可分扩张　layer 12
 - def.galois-extension　伽罗瓦扩张　layer 13
 - thm.galois-correspondence　伽罗瓦基本定理　layer 14
-- def.roots-of-unity　单位根　layer 16
-- thm.radical-solvable　根式可解 与 伽罗瓦群可解　layer 17
-- thm.quintic-unsolvable　五次方程没有根式解　layer 18
+- def.roots-of-unity　单位根　layer 19
+- thm.radical-solvable　根式可解 与 伽罗瓦群可解　layer 20
+- thm.quintic-unsolvable　五次方程没有根式解　layer 21
 
 > 续见 `index/algebra.galois.2.md`

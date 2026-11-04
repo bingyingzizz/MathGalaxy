@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · theorem · cluster Analytic Rings and Solid Modules (`cond.analytic`) · Condensed Mathematics
+layer 21 · theorem · cluster Analytic Rings and Solid Modules (`cond.analytic`) · Condensed Mathematics
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.za-analytic.md` and `proofs/`.
