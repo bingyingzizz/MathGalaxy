@@ -184,7 +184,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '导出函子', '长正合列'],
       statement: [
-        '任意短正合列 $0 \\to K^{\\bullet} \\to L^{\\bullet} \\to M^{\\bullet} \\to 0$（在 $C^{+}(\\mathcal{A})$ 里）给出长正合列',
+        '设 $\\mathcal{A},\\mathcal{B}$ 是阿贝尔范畴、$\\mathcal{A}$ 有**足够内射对象**、$F : \\mathcal{A}\\to\\mathcal{B}$ 加性左正合（于是 $RF$ 由 $C^{+}(\\mathcal{A})$ 上的内射分解定义，$R^{n}F$ 存在）。则任意短正合列 $0 \\to K^{\\bullet} \\to L^{\\bullet} \\to M^{\\bullet} \\to 0$（在 $C^{+}(\\mathcal{A})$ 里）给出长正合列',
         '',
         '$$\\cdots \\to R^{n}FK^{\\bullet} \\to R^{n}FL^{\\bullet} \\to R^{n}FM^{\\bullet} \\xrightarrow{\\ \\delta\\ } R^{n+1}FK^{\\bullet} \\to \\cdots$$'
       ].join('\n'),
@@ -197,7 +197,8 @@ window.MG = window.MG || {};
           '$$\\cdots \\to H^{n}FK^{\\bullet} \\to H^{n}FL^{\\bullet} \\to H^{n}FM^{\\bullet} \\to H^{n+1}FK^{\\bullet} \\to \\cdots ,$$',
           '正是要的那条。∎'
         ].join('\n'),
-        '⭐ **这就是「求导」的全部收益**：原来 $F$ 只给半条，$RF$ 把连接同态 $\\delta$ 补上，长正合列就活了。'
+        '⭐ **这就是「求导」的全部收益**：原来 $F$ 只给半条，$RF$ 把连接同态 $\\delta$ 补上，长正合列就活了。',
+        '⚠️ **三个假设都不能省**：$R^{n}F$ 是在 $C^{+}(\\mathcal{A})$ 上取内射分解再取同调定义的 —— 没有「足够内射对象」，这条链里每一个 $R^{n}F$ 都**没有定义**；不要求 $F$ 加性左正合，$R^{0}F = F$ 与长正合列都不成立。'
       ].join('\n\n'),
       refs: ['Le Stum, Theorem 7.2.8']
     },

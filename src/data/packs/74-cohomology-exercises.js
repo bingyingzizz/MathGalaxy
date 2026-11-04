@@ -340,10 +340,15 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{\\mathbb{Z}}(M, N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{X!}j_{X}^{-1}M,\\ N\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{X}^{-1}M,\\ j_{X}^{-1}N\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M,\\ j_{X*}j_{X}^{-1}N\\bigr).$$',
         '',
-        '对一个**测试对象** $Z$ 也一样：$\\operatorname{Hom}(X, N)(Z) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{Z}^{-1} X,\\ j_{Z}^{-1}N\\bigr)$（只是把 $X$ 换成 $Z$ 那一对伴随）。'
+        '对**测试对象** $Z\\in\\mathcal{T}$ 取内 Hom 的值也一样（这里 $M,N$ 本来就是阿贝尔群层）：',
+        '',
+        '$$\\underline{\\operatorname{Hom}}_{\\mathbb{Z}}(M,N)(Z) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M\\otimes_{\\mathbb{Z}}\\mathbb{Z}\\cdot Z,\\ N\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{Z}^{-1}M,\\ j_{Z}^{-1}N\\bigr),$$',
+        '',
+        '因为 $\\mathbb{Z}\\cdot Z = j_{Z!}\\mathbb{Z}$，故 $M\\otimes_{\\mathbb{Z}}\\mathbb{Z}\\cdot Z = j_{Z!}j_{Z}^{-1}M$（见 `prop.slice-shriek-projection`），再用 $j_{Z!}\\dashv j_{Z}^{-1}$ 就得到末项。'
       ].join('\n'),
       notes: [
-        '**证明。** 每一步都是一次伴随：内 Hom 的取值 $\\operatorname{Hom}_{\\mathbb{Z}}(M,N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1}_{X})$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \\dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \\dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。\n\n∎'
+        '**证明。** 每一步都是一次伴随：内 Hom 的取值 $\\operatorname{Hom}_{\\mathbb{Z}}(M,N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1}_{X})$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \\dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \\dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。\n\n∎',
+        '⚠️ **不能把 $X$ 直接代进 $\\operatorname{Hom}_{\\mathbb{Z}}$**：$X$ 只被假设为**拓扑斯对象**，不一定是阿贝尔群对象，于是 $j_{Z}^{-1}X$ 只是 $\\mathcal{T}/Z$ 里的一个对象、$\\operatorname{Hom}_{\\mathbb{Z}}(j_{Z}^{-1}X,\\cdot)$ 没有定义。例：$\\mathcal{T} = \\mathbf{Set}$、$X$ 取三元素集 $\\{0,1,2\\}$，$j_{X}^{-1}X$ 仍只是个集合。要用 $X$ 的版本，必须额外假设 $X\\in\\mathrm{Ab}(\\mathcal{T})$（那时 $\\mathbb{Z}\\cdot X = X$）。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.60']
     },
@@ -358,16 +363,21 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '切片拓扑斯', '投影公式', '张量积', '伴随'],
       statement: [
-        '设 $\\mathcal{T}$ 是拓扑斯、$X \\in \\mathcal{T}$、$M, N$ 是阿贝尔群层。则',
+        '设 $\\mathcal{T}$ 是拓扑斯、$X \\in \\mathcal{T}$。则对 $M \\in \\mathrm{Ab}(\\mathcal{T}/X)$、$N \\in \\mathrm{Ab}(\\mathcal{T})$ 有',
         '',
-        '$$j_{X!}\\bigl(M \\otimes_{\\mathbb{Z}} j_{X}^{-1}N\\bigr) = j_{X!}M \\otimes_{\\mathbb{Z}} N, \\qquad j_{X!}\\bigl(j_{X}^{-1}M \\otimes_{\\mathbb{Z}} N\\bigr) = M \\otimes_{\\mathbb{Z}} j_{X!}N.$$',
+        '$$j_{X!}\\bigl(M \\otimes_{\\mathbb{Z}} j_{X}^{-1}N\\bigr) = j_{X!}M \\otimes_{\\mathbb{Z}} N,$$',
         '',
-        '特别地',
+        '而对 $M \\in \\mathrm{Ab}(\\mathcal{T})$、$N \\in \\mathrm{Ab}(\\mathcal{T}/X)$ 有',
+        '',
+        '$$j_{X!}\\bigl(j_{X}^{-1}M \\otimes_{\\mathbb{Z}} N\\bigr) = M \\otimes_{\\mathbb{Z}} j_{X!}N.$$',
+        '',
+        '特别地（$M \\in \\mathrm{Ab}(\\mathcal{T})$、$N = \\mathbb{Z}$）',
         '',
         '$$M\\cdot X \\;:=\\; M \\otimes_{\\mathbb{Z}} \\mathbb{Z}\\cdot X \\;=\\; j_{X!}j_{X}^{-1}M.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \\dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。\n\n最后一式把 $N = \\mathbb{Z}$ 代入并记住 $j_{X!}\\mathbb{Z} = \\mathbb{Z}\\cdot X$ ✓。\n\n∎'
+        '**证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \\dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。\n\n最后一式把 $N = \\mathbb{Z}$ 代入并记住 $j_{X!}\\mathbb{Z} = \\mathbb{Z}\\cdot X$ ✓。\n\n∎',
+        '⚠️ **两式的 $M,N$ 不能混用**：$j_{X!}$ 只定义在 $\\mathrm{Ab}(\\mathcal{T}/X)$ 上，所以第一式的 $M$、第二式的 $N$ 必须先在切片里；把 $N \\in \\mathrm{Ab}(\\mathcal{T})$ 塞进第二式，$j_{X!}N$ 根本不存在。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.61']
     }

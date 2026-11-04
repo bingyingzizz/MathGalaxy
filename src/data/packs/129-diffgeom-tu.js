@@ -191,7 +191,7 @@ window.MG = window.MG || {};
       tags: ['定理', '微分几何', '曲线', '存在唯一性', '刚体运动'],
       statement: [
         '设 $I\\subseteq\\mathbb{R}$ 是区间，$\\kappa : I\\to(0,\\infty)$ 与 $\\tau : I\\to\\mathbb{R}$ 连续。\n\n' +
-        '则存在弧长参数化的 $C^{3}$ 正则曲线 $\\gamma : I\\to\\mathbb{R}^{3}$，其曲率与挠率恰为 $\\kappa,\\tau$；\n\n' +
+        '则存在弧长参数化的 $C^{2}$ 正则曲线 $\\gamma : I\\to\\mathbb{R}^{3}$，其曲率与挠率恰为 $\\kappa,\\tau$；\n\n' +
         '并且这样的曲线**唯一到刚体运动**（旋转加平移）为止。',
         '',
         '换句话说：一对函数 $(\\kappa,\\tau)$ **完全决定**一条空间曲线的形状，再没有别的自由度。'
@@ -200,6 +200,7 @@ window.MG = window.MG || {};
         '**为什么恰好是两个函数**：曲线有 $3$ 个分量；去掉重参数化（$1$ 个函数）与刚体运动（$6$ 个常数）之后，剩下的局部不变量就是 $2$ 个函数 —— 与 Frenet 公式里出现的系数个数吻合。',
         '**与曲面论基本定理同构**：两处都是「结构方程 + 可积性」，唯一性都来自「初始标架对齐后解唯一」。差别只在曲线情形方程关于标架是**线性**的，可积性条件 $\\mathrm{d}^{2}=0$ 自动满足，不需要 Gauss–Codazzi 那样成对的额外条件。',
         '⚠️ 前提 $\\kappa>0$ 去不掉：Frenet 标架靠它存在。若改用**有符号曲率**，命题要重写成相应的版本，$\\kappa$ 与 $\\tau$ 的符号约定也随之改变。',
+        '⚠️ **正则性只能到 $C^{2}$**：Frenet 方程组 $\\gamma^{\\prime} = t$、$t^{\\prime} = \\kappa n$、$n^{\\prime} = -\\kappa t+\\tau b$、$b^{\\prime} = -\\tau n$ 关于 $(\\gamma,t,n,b)$ 是**线性**的，系数 $\\kappa,\\tau$ 只连续 $\\implies$ 解只 $C^{1}$ $\\implies$ $\\gamma\\in C^{2}$。反例：$\\kappa(s) = 1+\\lvert s\\rvert$（连续、在 $0$ 处不可导）$\\implies$ $\\gamma^{\\prime\\prime} = \\kappa n$ 连续，但 $\\gamma^{\\prime\\prime\\prime} = \\kappa^{\\prime}n+\\kappa n^{\\prime}$ 在 $s = 0$ 处不存在，故 $\\gamma\\notin C^{3}$。要 $C^{3}$ 就必须假设 $\\kappa,\\tau\\in C^{1}$。',
         '**怎么用**：判断两条曲线是否全等，只要比 $\\kappa,\\tau$。这是曲线论里「不变量完备」的意思，与曲面论里「$I,II$ 决定曲面」平行。',
         '⚠️ 唯一性是**局部**的表述在整体区间上的直接推广：$I$ 可以任意（不必紧），因为线性 ODE 的解在整个区间上存在。'
       ].join('\n\n'),
@@ -361,7 +362,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{d}A := \\lVert r_{u}\\times r_{v}\\rVert\\,\\mathrm{d}u\\,\\mathrm{d}v = \\sqrt{\\det(g_{ij})}\\;\\mathrm{d}u\\,\\mathrm{d}v ,$$',
         '',
-        '区域 $D\\subseteq U$ 的面积是 $\\operatorname{area}\\bigl(r(D)\\bigr) := \\int_{D}\\mathrm{d}A$。在正交余标架下它写成 $2$-形式',
+        '区域 $D\\subseteq U$ 的面积是 $\\operatorname{area}\\bigl(r(D)\\bigr) := \\int_{D}\\mathrm{d}A$ —— 但这条等式**只在 $r$ 于 $D$ 上单射时成立**（否则右边是**计重数面积**，一般大于像的几何面积）。在**与参数定向相容**的正交单位余标架下它写成 $2$-形式',
         '',
         '$$\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2} .$$',
         '',
@@ -371,6 +372,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么是 Gram 行列式**：二维平行四边形的面积 = 底乘高，平方之后就是两个向量的 Gram 矩阵的行列式（Lagrange 恒等式）。所以 $\\mathrm{d}A$ 就是切映射把参数域面积放大多少倍的因子。',
+        '⚠️ **① 单射不能省**：$r$ 正则只保证秩 $2$，推不出单射。反例：圆柱面的参数化 $r(u,v) = (\\cos u,\\sin u,v)$、$D = (0,4\\pi)\\times(0,1)$ —— $u$ 绕了两圈，$\\int_{D}\\mathrm{d}A = 4\\pi$，而像的几何面积只有 $2\\pi$。所以一般只能把 $\\int_{D}\\mathrm{d}A$ 叫作像的**计重数面积**；要写等号就必须要求 $r|_{D}$ 单射。',
+        '⚠️ **② 定向相容不能省**：$\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$ 只在余标架与参数定向相容时成立。同一张平面 $r(u,v) = (u,v,0)$ 上取 $\\omega^{1} = \\mathrm{d}u$、$\\omega^{2} = -\\mathrm{d}v$，得到的是 $-\\mathrm{d}u\\wedge\\mathrm{d}v$：符号反了，量值不变。所以作为**密度**的面积要用 $\\lvert\\omega^{1}\\wedge\\omega^{2}\\rvert$（下一段说的「面积元不变号」正是这件事）。',
         '**与换元公式同源**：$\\sqrt{\\det(\\mathrm{d}r^{\\mathsf{T}}\\mathrm{d}r)}$ 正是非线性换元的 Jacobi 因子。注意 $\\mathrm{d}r$ 不是方阵，$(\\det\\mathrm{d}r)^{2}$ 没有意义，所以必须走 Gram 行列式这一条。',
         '⚠️ **面积元是密度、不是形式**：换参数化时 $\\sqrt{\\det g}$ 与 $\\mathrm{d}u\\,\\mathrm{d}v$ 一起变，乘积不变且**不变号**；而 $\\omega^{1}\\wedge\\omega^{2}$ 在反向参数化下变号。\n\n要把它当 $2$-形式积分，必须先取定定向（`def.orientable-surface`、`def.integral-form`）。',
         '**面积是内蕴的、定向是额外的**：面积不依赖参数化（换元即知），带符号面积才依赖定向。所以「面积」写得出来而「$\\int\\omega^{1}\\wedge\\omega^{2}$ 的符号」要另外交代。',

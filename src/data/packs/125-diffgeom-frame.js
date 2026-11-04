@@ -288,13 +288,14 @@ window.MG = window.MG || {};
         '',
         '$$I = (\\omega^{1})^{2}+(\\omega^{2})^{2}.$$',
         '',
-        '它给出切向量的长度与夹角、曲线的弧长，以及面积元 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2} = \\sqrt{EG-F^{2}}\\,\\mathrm{d}u\\,\\mathrm{d}v$。'
+        '它给出切向量的长度与夹角、曲线的弧长，以及面积元：对与参数定向**相容**的正交单位余标架 $(\\omega^{1},\\omega^{2})$ 有 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2} = \\sqrt{EG-F^{2}}\\,\\mathrm{d}u\\,\\mathrm{d}v$；标架与参数定向**不相容**时差一个符号，此时面积密度要用 $\\lvert\\omega^{1}\\wedge\\omega^{2}\\rvert$。'
       ].join('\n'),
       notes: [
         '$I$ 是 $\\mathbb{R}^{3}$ 的内积沿 $r$ 的**拉回**：$\\mathrm{d}r$ 把参数域的切向量送进切平面，再用 $\\mathbb{R}^{3}$ 的内积量。所以 $I$ 只看见「曲面上的长度」，看不见「曲面怎么弯」—— 弯曲在 $II$ 里。',
         '**为什么正交标架下是两平方和**：$\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ 且 $e_{i}$ 标准正交，故 $\\langle \\mathrm{d}r, \\mathrm{d}r\\rangle = \\sum_{i}(\\omega^{i})^{2}$；\n\n沿曲面 $\\omega^{3} = 0$，只剩两项。',
         '**矩阵**：$(g_{ij}) = \\begin{pmatrix} E & F \\\\ F & G \\end{pmatrix}$，$\\det g = EG-F^{2} > 0$。后面所有「$h$ 相对 $g$ 的特征值」都在用这个矩阵。',
         '⚠️ 换参数化会改 $E,F,G$ 的表达式，$I$ 作为张量不变。正交参数化（$F = 0$）能让公式短一半 —— 那串 $\\Gamma$ 就只在那种情形写出来。',
+        '⚠️ **「定向相容」不能省**：$\\omega^{1}\\wedge\\omega^{2}$ 只在余标架与参数定向相容时才等于 $\\sqrt{EG-F^{2}}\\,\\mathrm{d}u\\,\\mathrm{d}v$。反例：平面 $r(u,v) = (u,v,0)$ 上取正交单位余标架 $\\omega^{1} = \\mathrm{d}u$、$\\omega^{2} = -\\mathrm{d}v$，则 $\\omega^{1}\\wedge\\omega^{2} = -\\mathrm{d}u\\wedge\\mathrm{d}v$，符号反了。面积本身是**密度**，要用 $\\lvert\\omega^{1}\\wedge\\omega^{2}\\rvert$（见面积元那条）。',
       
         '📌 例：半径 $R$ 的圆柱用 $r(u,v) = (R\\cos u, R\\sin u, v)$ 参数化时 $\\mathrm{I} = R^{2}\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$（$E = R^{2}$、$F = 0$、$G = 1$），于是 $K = 0$（见 `ex.cylinder-first-form`）。',   /* exnotes:def.first-fundamental-form */
       ].join('\n\n'),

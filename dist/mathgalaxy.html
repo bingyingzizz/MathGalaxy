@@ -36762,7 +36762,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '导出函子', '长正合列'],
       statement: [
-        '任意短正合列 $0 \\to K^{\\bullet} \\to L^{\\bullet} \\to M^{\\bullet} \\to 0$（在 $C^{+}(\\mathcal{A})$ 里）给出长正合列',
+        '设 $\\mathcal{A},\\mathcal{B}$ 是阿贝尔范畴、$\\mathcal{A}$ 有**足够内射对象**、$F : \\mathcal{A}\\to\\mathcal{B}$ 加性左正合（于是 $RF$ 由 $C^{+}(\\mathcal{A})$ 上的内射分解定义，$R^{n}F$ 存在）。则任意短正合列 $0 \\to K^{\\bullet} \\to L^{\\bullet} \\to M^{\\bullet} \\to 0$（在 $C^{+}(\\mathcal{A})$ 里）给出长正合列',
         '',
         '$$\\cdots \\to R^{n}FK^{\\bullet} \\to R^{n}FL^{\\bullet} \\to R^{n}FM^{\\bullet} \\xrightarrow{\\ \\delta\\ } R^{n+1}FK^{\\bullet} \\to \\cdots$$'
       ].join('\n'),
@@ -36775,7 +36775,8 @@ window.MG = window.MG || {};
           '$$\\cdots \\to H^{n}FK^{\\bullet} \\to H^{n}FL^{\\bullet} \\to H^{n}FM^{\\bullet} \\to H^{n+1}FK^{\\bullet} \\to \\cdots ,$$',
           '正是要的那条。∎'
         ].join('\n'),
-        '⭐ **这就是「求导」的全部收益**：原来 $F$ 只给半条，$RF$ 把连接同态 $\\delta$ 补上，长正合列就活了。'
+        '⭐ **这就是「求导」的全部收益**：原来 $F$ 只给半条，$RF$ 把连接同态 $\\delta$ 补上，长正合列就活了。',
+        '⚠️ **三个假设都不能省**：$R^{n}F$ 是在 $C^{+}(\\mathcal{A})$ 上取内射分解再取同调定义的 —— 没有「足够内射对象」，这条链里每一个 $R^{n}F$ 都**没有定义**；不要求 $F$ 加性左正合，$R^{0}F = F$ 与长正合列都不成立。'
       ].join('\n\n'),
       refs: ['Le Stum, Theorem 7.2.8']
     },
@@ -42589,10 +42590,15 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{\\mathbb{Z}}(M, N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{X!}j_{X}^{-1}M,\\ N\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{X}^{-1}M,\\ j_{X}^{-1}N\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M,\\ j_{X*}j_{X}^{-1}N\\bigr).$$',
         '',
-        '对一个**测试对象** $Z$ 也一样：$\\operatorname{Hom}(X, N)(Z) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{Z}^{-1} X,\\ j_{Z}^{-1}N\\bigr)$（只是把 $X$ 换成 $Z$ 那一对伴随）。'
+        '对**测试对象** $Z\\in\\mathcal{T}$ 取内 Hom 的值也一样（这里 $M,N$ 本来就是阿贝尔群层）：',
+        '',
+        '$$\\underline{\\operatorname{Hom}}_{\\mathbb{Z}}(M,N)(Z) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M\\otimes_{\\mathbb{Z}}\\mathbb{Z}\\cdot Z,\\ N\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{Z}^{-1}M,\\ j_{Z}^{-1}N\\bigr),$$',
+        '',
+        '因为 $\\mathbb{Z}\\cdot Z = j_{Z!}\\mathbb{Z}$，故 $M\\otimes_{\\mathbb{Z}}\\mathbb{Z}\\cdot Z = j_{Z!}j_{Z}^{-1}M$（见 `prop.slice-shriek-projection`），再用 $j_{Z!}\\dashv j_{Z}^{-1}$ 就得到末项。'
       ].join('\n'),
       notes: [
-        '**证明。** 每一步都是一次伴随：内 Hom 的取值 $\\operatorname{Hom}_{\\mathbb{Z}}(M,N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1}_{X})$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \\dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \\dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。\n\n∎'
+        '**证明。** 每一步都是一次伴随：内 Hom 的取值 $\\operatorname{Hom}_{\\mathbb{Z}}(M,N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1}_{X})$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \\dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \\dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。\n\n∎',
+        '⚠️ **不能把 $X$ 直接代进 $\\operatorname{Hom}_{\\mathbb{Z}}$**：$X$ 只被假设为**拓扑斯对象**，不一定是阿贝尔群对象，于是 $j_{Z}^{-1}X$ 只是 $\\mathcal{T}/Z$ 里的一个对象、$\\operatorname{Hom}_{\\mathbb{Z}}(j_{Z}^{-1}X,\\cdot)$ 没有定义。例：$\\mathcal{T} = \\mathbf{Set}$、$X$ 取三元素集 $\\{0,1,2\\}$，$j_{X}^{-1}X$ 仍只是个集合。要用 $X$ 的版本，必须额外假设 $X\\in\\mathrm{Ab}(\\mathcal{T})$（那时 $\\mathbb{Z}\\cdot X = X$）。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.60']
     },
@@ -42607,16 +42613,21 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '切片拓扑斯', '投影公式', '张量积', '伴随'],
       statement: [
-        '设 $\\mathcal{T}$ 是拓扑斯、$X \\in \\mathcal{T}$、$M, N$ 是阿贝尔群层。则',
+        '设 $\\mathcal{T}$ 是拓扑斯、$X \\in \\mathcal{T}$。则对 $M \\in \\mathrm{Ab}(\\mathcal{T}/X)$、$N \\in \\mathrm{Ab}(\\mathcal{T})$ 有',
         '',
-        '$$j_{X!}\\bigl(M \\otimes_{\\mathbb{Z}} j_{X}^{-1}N\\bigr) = j_{X!}M \\otimes_{\\mathbb{Z}} N, \\qquad j_{X!}\\bigl(j_{X}^{-1}M \\otimes_{\\mathbb{Z}} N\\bigr) = M \\otimes_{\\mathbb{Z}} j_{X!}N.$$',
+        '$$j_{X!}\\bigl(M \\otimes_{\\mathbb{Z}} j_{X}^{-1}N\\bigr) = j_{X!}M \\otimes_{\\mathbb{Z}} N,$$',
         '',
-        '特别地',
+        '而对 $M \\in \\mathrm{Ab}(\\mathcal{T})$、$N \\in \\mathrm{Ab}(\\mathcal{T}/X)$ 有',
+        '',
+        '$$j_{X!}\\bigl(j_{X}^{-1}M \\otimes_{\\mathbb{Z}} N\\bigr) = M \\otimes_{\\mathbb{Z}} j_{X!}N.$$',
+        '',
+        '特别地（$M \\in \\mathrm{Ab}(\\mathcal{T})$、$N = \\mathbb{Z}$）',
         '',
         '$$M\\cdot X \\;:=\\; M \\otimes_{\\mathbb{Z}} \\mathbb{Z}\\cdot X \\;=\\; j_{X!}j_{X}^{-1}M.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \\dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。\n\n最后一式把 $N = \\mathbb{Z}$ 代入并记住 $j_{X!}\\mathbb{Z} = \\mathbb{Z}\\cdot X$ ✓。\n\n∎'
+        '**证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \\dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。\n\n最后一式把 $N = \\mathbb{Z}$ 代入并记住 $j_{X!}\\mathbb{Z} = \\mathbb{Z}\\cdot X$ ✓。\n\n∎',
+        '⚠️ **两式的 $M,N$ 不能混用**：$j_{X!}$ 只定义在 $\\mathrm{Ab}(\\mathcal{T}/X)$ 上，所以第一式的 $M$、第二式的 $N$ 必须先在切片里；把 $N \\in \\mathrm{Ab}(\\mathcal{T})$ 塞进第二式，$j_{X!}N$ 根本不存在。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.61']
     }
@@ -61329,13 +61340,14 @@ window.MG = window.MG || {};
         '',
         '$$I = (\\omega^{1})^{2}+(\\omega^{2})^{2}.$$',
         '',
-        '它给出切向量的长度与夹角、曲线的弧长，以及面积元 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2} = \\sqrt{EG-F^{2}}\\,\\mathrm{d}u\\,\\mathrm{d}v$。'
+        '它给出切向量的长度与夹角、曲线的弧长，以及面积元：对与参数定向**相容**的正交单位余标架 $(\\omega^{1},\\omega^{2})$ 有 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2} = \\sqrt{EG-F^{2}}\\,\\mathrm{d}u\\,\\mathrm{d}v$；标架与参数定向**不相容**时差一个符号，此时面积密度要用 $\\lvert\\omega^{1}\\wedge\\omega^{2}\\rvert$。'
       ].join('\n'),
       notes: [
         '$I$ 是 $\\mathbb{R}^{3}$ 的内积沿 $r$ 的**拉回**：$\\mathrm{d}r$ 把参数域的切向量送进切平面，再用 $\\mathbb{R}^{3}$ 的内积量。所以 $I$ 只看见「曲面上的长度」，看不见「曲面怎么弯」—— 弯曲在 $II$ 里。',
         '**为什么正交标架下是两平方和**：$\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ 且 $e_{i}$ 标准正交，故 $\\langle \\mathrm{d}r, \\mathrm{d}r\\rangle = \\sum_{i}(\\omega^{i})^{2}$；\n\n沿曲面 $\\omega^{3} = 0$，只剩两项。',
         '**矩阵**：$(g_{ij}) = \\begin{pmatrix} E & F \\\\ F & G \\end{pmatrix}$，$\\det g = EG-F^{2} > 0$。后面所有「$h$ 相对 $g$ 的特征值」都在用这个矩阵。',
         '⚠️ 换参数化会改 $E,F,G$ 的表达式，$I$ 作为张量不变。正交参数化（$F = 0$）能让公式短一半 —— 那串 $\\Gamma$ 就只在那种情形写出来。',
+        '⚠️ **「定向相容」不能省**：$\\omega^{1}\\wedge\\omega^{2}$ 只在余标架与参数定向相容时才等于 $\\sqrt{EG-F^{2}}\\,\\mathrm{d}u\\,\\mathrm{d}v$。反例：平面 $r(u,v) = (u,v,0)$ 上取正交单位余标架 $\\omega^{1} = \\mathrm{d}u$、$\\omega^{2} = -\\mathrm{d}v$，则 $\\omega^{1}\\wedge\\omega^{2} = -\\mathrm{d}u\\wedge\\mathrm{d}v$，符号反了。面积本身是**密度**，要用 $\\lvert\\omega^{1}\\wedge\\omega^{2}\\rvert$（见面积元那条）。',
       
         '📌 例：半径 $R$ 的圆柱用 $r(u,v) = (R\\cos u, R\\sin u, v)$ 参数化时 $\\mathrm{I} = R^{2}\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$（$E = R^{2}$、$F = 0$、$G = 1$），于是 $K = 0$（见 `ex.cylinder-first-form`）。',   /* exnotes:def.first-fundamental-form */
       ].join('\n\n'),
@@ -62528,7 +62540,7 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['引理', '微分几何', '内蕴几何', '高斯引理', '测地极坐标'],
       statement: [
-        '设 $p \\in S$、$v \\in T_{p}S$、$w \\in T_{v}(T_{p}S)$。则',
+        '设 $p \\in S$、$v \\in \\operatorname{Dom}(\\exp_{p})$、$w \\in T_{v}(T_{p}S)$。则',
         '',
         '$$\\langle (\\mathrm{d}\\exp_{p})_{v}(v),\\,(\\mathrm{d}\\exp_{p})_{v}(w)\\rangle = \\langle v,w\\rangle .$$',
         '',
@@ -62540,9 +62552,11 @@ window.MG = window.MG || {};
         '**证明骨架（细节在边上）**：沿测地线对 $\\langle \\partial_{\\rho},\\partial_{\\theta}\\rangle$ 求 $\\rho$ 的导数，第一项因测地线为零，第二项用 $[\\partial_{\\rho},\\partial_{\\theta}] = 0$ 与 $|\\partial_{\\rho}| = 1$ 化成 $\\frac{1}{2}\\partial_{\\theta}\\langle \\partial_{\\rho},\\partial_{\\rho}\\rangle = 0$。\n\n' +
         '于是这个内积沿 $\\rho$ 是常数；\n\n' +
         '$\\rho\\to0$ 时 $\\partial_{\\theta}\\to0$，常数只能是 $0$。',
+        '⚠️ **$v$ 必须落在 $\\operatorname{Dom}(\\exp_{p})$ 里**：$\\exp_{p}(v)$ 只在 $\\gamma_{v}$ 能走到 $t = 1$ 时才有定义（见 `def.exponential-map`）。取开圆盘内的 $p$ 与 $v = (2,0,0)$：测地线在 $t = 1$ 之前就离开了曲面，$\\exp_{p}(v)$ 与 $(\\mathrm{d}\\exp_{p})_{v}$ 都无从谈起。',
         '**同一个引理的两种说法**：几何说法是「径向 $\\perp$ 球面」（高斯引理的本来面貌）；坐标说法是「$F\\equiv0$」（测地极坐标下的展开）。而 $E = |\\partial_{\\rho}|^{2} = 1$ 只是因为 $\\rho$ 是弧长。',
         '⭐ **这是整门内蕴几何的枢纽**：它把「测地线」翻译成「坐标线」，于是 $I$ 在测地极坐标下只剩**一个**未知函数 $G$。而 $G$ 的展开系数就是曲率：',
-        '$$\\sqrt{G(\\rho,\\theta)} = \\rho-\\frac{K(p)}{6}\\rho^{3}+O(\\rho^{5}),$$',
+        '$$\\sqrt{G(\\rho,\\theta)} = \\rho-\\frac{K(p)}{6}\\rho^{3}-\\frac{\\mathrm{d}K_{p}(u_{\\theta})}{12}\\rho^{4}+O(\\rho^{5}),$$',
+        '⚠️ **四次项不能省**：其中 $u_{\\theta} = \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}$，$\\mathrm{d}K_{p}$ 是 $K$ 在 $p$ 处的微分。$\\rho^{2}$ 项**恒为** $0$（因为 $(\\sqrt G)_{\\rho\\rho}(0) = -K(p)\\cdot\\sqrt G(0) = 0$），所以 $\\rho^{4}$ 项是 $\\rho^{3}$ 之后**第一个**修正 —— 只写 $O(\\rho^{5})$ 会在 $K(p) = 0$ 的点上把 $\\rho^{4}$ 阶的偏离说成没有。例：$g = e^{2x^{3}}(\\mathrm{d}x^{2}+\\mathrm{d}y^{2})$ 在原点 $K = 0$ 而 $\\mathrm{d}K_{p}(\\partial_{x}) = -6\\ne 0$，沿 $\\theta = 0$ 是 $\\sqrt G = \\rho+\\frac{1}{2}\\rho^{4}+O(\\rho^{5})$。',
         '等价地，半径 $\\rho$ 的测地圆周长 $L(\\rho) = 2\\pi\\rho\\left(1-\\frac{K(p)}{6}\\rho^{2}+O(\\rho^{4})\\right)$。**一个会量长度的人就能把 $K$ 量出来** —— 这就是绝妙定理的操作形式。',
         '⚠️ 只在 $\\exp_{p}$ 是微分同胚的范围内成立；越过割迹，同一组 $(\\rho,\\theta)$ 会对应多个点。'
       ].join('\n\n'),
@@ -63282,7 +63296,7 @@ window.MG = window.MG || {};
       tags: ['定理', '微分几何', '曲线', '存在唯一性', '刚体运动'],
       statement: [
         '设 $I\\subseteq\\mathbb{R}$ 是区间，$\\kappa : I\\to(0,\\infty)$ 与 $\\tau : I\\to\\mathbb{R}$ 连续。\n\n' +
-        '则存在弧长参数化的 $C^{3}$ 正则曲线 $\\gamma : I\\to\\mathbb{R}^{3}$，其曲率与挠率恰为 $\\kappa,\\tau$；\n\n' +
+        '则存在弧长参数化的 $C^{2}$ 正则曲线 $\\gamma : I\\to\\mathbb{R}^{3}$，其曲率与挠率恰为 $\\kappa,\\tau$；\n\n' +
         '并且这样的曲线**唯一到刚体运动**（旋转加平移）为止。',
         '',
         '换句话说：一对函数 $(\\kappa,\\tau)$ **完全决定**一条空间曲线的形状，再没有别的自由度。'
@@ -63291,6 +63305,7 @@ window.MG = window.MG || {};
         '**为什么恰好是两个函数**：曲线有 $3$ 个分量；去掉重参数化（$1$ 个函数）与刚体运动（$6$ 个常数）之后，剩下的局部不变量就是 $2$ 个函数 —— 与 Frenet 公式里出现的系数个数吻合。',
         '**与曲面论基本定理同构**：两处都是「结构方程 + 可积性」，唯一性都来自「初始标架对齐后解唯一」。差别只在曲线情形方程关于标架是**线性**的，可积性条件 $\\mathrm{d}^{2}=0$ 自动满足，不需要 Gauss–Codazzi 那样成对的额外条件。',
         '⚠️ 前提 $\\kappa>0$ 去不掉：Frenet 标架靠它存在。若改用**有符号曲率**，命题要重写成相应的版本，$\\kappa$ 与 $\\tau$ 的符号约定也随之改变。',
+        '⚠️ **正则性只能到 $C^{2}$**：Frenet 方程组 $\\gamma^{\\prime} = t$、$t^{\\prime} = \\kappa n$、$n^{\\prime} = -\\kappa t+\\tau b$、$b^{\\prime} = -\\tau n$ 关于 $(\\gamma,t,n,b)$ 是**线性**的，系数 $\\kappa,\\tau$ 只连续 $\\implies$ 解只 $C^{1}$ $\\implies$ $\\gamma\\in C^{2}$。反例：$\\kappa(s) = 1+\\lvert s\\rvert$（连续、在 $0$ 处不可导）$\\implies$ $\\gamma^{\\prime\\prime} = \\kappa n$ 连续，但 $\\gamma^{\\prime\\prime\\prime} = \\kappa^{\\prime}n+\\kappa n^{\\prime}$ 在 $s = 0$ 处不存在，故 $\\gamma\\notin C^{3}$。要 $C^{3}$ 就必须假设 $\\kappa,\\tau\\in C^{1}$。',
         '**怎么用**：判断两条曲线是否全等，只要比 $\\kappa,\\tau$。这是曲线论里「不变量完备」的意思，与曲面论里「$I,II$ 决定曲面」平行。',
         '⚠️ 唯一性是**局部**的表述在整体区间上的直接推广：$I$ 可以任意（不必紧），因为线性 ODE 的解在整个区间上存在。'
       ].join('\n\n'),
@@ -63452,7 +63467,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{d}A := \\lVert r_{u}\\times r_{v}\\rVert\\,\\mathrm{d}u\\,\\mathrm{d}v = \\sqrt{\\det(g_{ij})}\\;\\mathrm{d}u\\,\\mathrm{d}v ,$$',
         '',
-        '区域 $D\\subseteq U$ 的面积是 $\\operatorname{area}\\bigl(r(D)\\bigr) := \\int_{D}\\mathrm{d}A$。在正交余标架下它写成 $2$-形式',
+        '区域 $D\\subseteq U$ 的面积是 $\\operatorname{area}\\bigl(r(D)\\bigr) := \\int_{D}\\mathrm{d}A$ —— 但这条等式**只在 $r$ 于 $D$ 上单射时成立**（否则右边是**计重数面积**，一般大于像的几何面积）。在**与参数定向相容**的正交单位余标架下它写成 $2$-形式',
         '',
         '$$\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2} .$$',
         '',
@@ -63462,6 +63477,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么是 Gram 行列式**：二维平行四边形的面积 = 底乘高，平方之后就是两个向量的 Gram 矩阵的行列式（Lagrange 恒等式）。所以 $\\mathrm{d}A$ 就是切映射把参数域面积放大多少倍的因子。',
+        '⚠️ **① 单射不能省**：$r$ 正则只保证秩 $2$，推不出单射。反例：圆柱面的参数化 $r(u,v) = (\\cos u,\\sin u,v)$、$D = (0,4\\pi)\\times(0,1)$ —— $u$ 绕了两圈，$\\int_{D}\\mathrm{d}A = 4\\pi$，而像的几何面积只有 $2\\pi$。所以一般只能把 $\\int_{D}\\mathrm{d}A$ 叫作像的**计重数面积**；要写等号就必须要求 $r|_{D}$ 单射。',
+        '⚠️ **② 定向相容不能省**：$\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$ 只在余标架与参数定向相容时成立。同一张平面 $r(u,v) = (u,v,0)$ 上取 $\\omega^{1} = \\mathrm{d}u$、$\\omega^{2} = -\\mathrm{d}v$，得到的是 $-\\mathrm{d}u\\wedge\\mathrm{d}v$：符号反了，量值不变。所以作为**密度**的面积要用 $\\lvert\\omega^{1}\\wedge\\omega^{2}\\rvert$（下一段说的「面积元不变号」正是这件事）。',
         '**与换元公式同源**：$\\sqrt{\\det(\\mathrm{d}r^{\\mathsf{T}}\\mathrm{d}r)}$ 正是非线性换元的 Jacobi 因子。注意 $\\mathrm{d}r$ 不是方阵，$(\\det\\mathrm{d}r)^{2}$ 没有意义，所以必须走 Gram 行列式这一条。',
         '⚠️ **面积元是密度、不是形式**：换参数化时 $\\sqrt{\\det g}$ 与 $\\mathrm{d}u\\,\\mathrm{d}v$ 一起变，乘积不变且**不变号**；而 $\\omega^{1}\\wedge\\omega^{2}$ 在反向参数化下变号。\n\n要把它当 $2$-形式积分，必须先取定定向（`def.orientable-surface`、`def.integral-form`）。',
         '**面积是内蕴的、定向是额外的**：面积不依赖参数化（换元即知），带符号面积才依赖定向。所以「面积」写得出来而「$\\int\\omega^{1}\\wedge\\omega^{2}$ 的符号」要另外交代。',
