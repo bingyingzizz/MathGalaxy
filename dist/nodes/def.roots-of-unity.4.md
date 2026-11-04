@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`thm.radical-solvable`](../nodes/thm.radical-solvable.md) 根式可解 与 伽罗瓦群可解 用
+- 被 [`ex.divisible-groups`](../nodes/ex.divisible-groups.md) 可除群的例子 用

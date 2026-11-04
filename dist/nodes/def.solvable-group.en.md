@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster Composition Series and Solvable Groups (`algebra.solvable`) · Abstract Algebra
+layer 10 · definition · cluster Composition Series and Solvable Groups (`algebra.solvable`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.solvable-group.md` and `proofs/`.

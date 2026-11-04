@@ -4,18 +4,18 @@
 中心天体 def.manifold-chart　·　17 个节点　·　根 `../`　·　续页 `index/diffgeom.manifold.2.md`
 
 - def.manifold-chart　图卡　layer 8
-- def.local-trivialization　局部平凡化　layer 8
 - def.topological-manifold　拓扑流形　layer 8
 - prop.maximal-atlas　极大图册　layer 9
-- def.smooth-map　光滑映射　layer 9
-- def.boundary-manifold　带边流形　layer 9
-- def.fiber-bundle　纤维丛　layer 10
-- def.vector-bundle　向量丛　layer 11
-- def.bundle-section　丛的截面　layer 12
-- def.transition-function　转移函数　layer 12
-- def.invariant-polynomial　不变多项式　layer 12
-- def.orientable-manifold　可定向流形　layer 15
-- thm.smooth-partition-unity　光滑单位分解　layer 17
-- prop.volume-form-orientation　定向与体积形式　layer 17
+- def.local-trivialization　局部平凡化　layer 9
+- def.invariant-polynomial　不变多项式　layer 13
+- def.orientable-manifold　可定向流形　layer 16
+- def.smooth-map　光滑映射　layer 18
+- thm.smooth-partition-unity　光滑单位分解　layer 18
+- prop.volume-form-orientation　定向与体积形式　layer 18
+- def.vector-bundle　向量丛　layer 19
+- def.boundary-manifold　带边流形　layer 19
+- def.bundle-section　丛的截面　layer 20
+- prop.bundle-metric　纤维度量　layer 20
+- def.fiber-bundle　纤维丛　layer 20
 
 > 续见 `index/diffgeom.manifold.2.md`

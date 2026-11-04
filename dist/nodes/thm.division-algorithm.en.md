@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · theorem · cluster Polynomials and Factorization (`algebra.polynomial`) · Abstract Algebra
+layer 11 · theorem · cluster Polynomials and Factorization (`algebra.polynomial`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.division-algorithm.md` and `proofs/`.

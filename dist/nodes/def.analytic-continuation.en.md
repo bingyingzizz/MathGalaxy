@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 27 · definition · cluster Analytic Continuation and Entire Functions (`analysis.entire`) · Complex Analysis
+layer 28 · definition · cluster Analytic Continuation and Entire Functions (`analysis.entire`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.analytic-continuation.md` and `proofs/`.

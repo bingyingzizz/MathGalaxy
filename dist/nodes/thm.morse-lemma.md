@@ -1,6 +1,6 @@
 # Morse 引理　`thm.morse-lemma`
 定理（Morse 引理）：非退化临界点附近的局部标准形
-layer 27 · 定理 · 多元微分 · 数学分析
+layer 28 · 定理 · 多元微分 · 数学分析
 [在星图里打开](../#n=thm.morse-lemma)　·　[节点索引](../index.md)
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}$ 是 $C^{k+2}$（$k \ge 1$），$a$ 是 $f$ 的**非退化临界点**（即 $\nabla f(a) = 0$ 且 $\det H_f(a) \ne 0$）。

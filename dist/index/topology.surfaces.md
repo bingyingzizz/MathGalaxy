@@ -4,12 +4,12 @@
 中心天体 def.genus　·　10 个节点　·　根 `../`
 
 - def.connected-sum　连通和　layer 9
-- def.closed-surface　闭曲面　layer 16
-- def.genus　亏格　layer 19
-- ex.sphere　球面 S²　layer 20
-- thm.classification-surfaces　闭曲面分类定理　layer 22
-- prop.eulerchar-genus　Euler 示性数与亏格　layer 23
-- prop.eulerchar-nonorientable　Euler 示性数与不可定向亏格　layer 23
-- ex.torus　环面 T²　layer 24
-- ex.projective-plane　射影平面 RP²　layer 24
-- ex.klein-bottle　克莱因瓶　layer 24
+- def.closed-surface　闭曲面　layer 17
+- def.genus　亏格　layer 20
+- ex.sphere　球面 S²　layer 21
+- thm.classification-surfaces　闭曲面分类定理　layer 24
+- prop.eulerchar-genus　Euler 示性数与亏格　layer 25
+- prop.eulerchar-nonorientable　Euler 示性数与不可定向亏格　layer 25
+- ex.torus　环面 T²　layer 26
+- ex.projective-plane　射影平面 RP²　layer 26
+- ex.klein-bottle　克莱因瓶　layer 26

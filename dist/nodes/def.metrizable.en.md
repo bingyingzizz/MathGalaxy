@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · definition · cluster Metrizability (`topology.metrizable`) · Topology
+layer 15 · definition · cluster Metrizability (`topology.metrizable`) · Topology
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.metrizable.md` and `proofs/`.

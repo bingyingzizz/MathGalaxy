@@ -6,13 +6,13 @@
 - def.weak-hausdorff　弱 Hausdorff 空间　layer 6
 - thm.quotient-product　商映射与局部紧空间作积　layer 7
 - prop.cg-kclosed-quotient　k-闭等价关系与弱 Hausdorff 商　layer 7
-- prop.cgwh-closed　弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　layer 7
 - prop.cgwh-fiber-product　紧块的纤维积还是紧的　layer 13
-- def.compact-open-topology　紧开拓扑　layer 16
-- def.compactly-generated　紧生成空间　layer 17
-- prop.compact-open-discrete　离散时函数空间是积　layer 17
-- prop.cg-function-space　函数空间弱 Hausdorff　layer 17
-- prop.continuous-map-space-metric　紧 Hausdorff 上的函数空间是度量空间　layer 17
-- ex.cg-examples　紧生成空间的例子　layer 18
+- prop.cgwh-closed　弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　layer 13
+- def.compact-open-topology　紧开拓扑　layer 17
+- def.compactly-generated　紧生成空间　layer 18
+- prop.compact-open-discrete　离散时函数空间是积　layer 18
+- prop.cg-function-space　函数空间弱 Hausdorff　layer 18
+- prop.continuous-map-space-metric　紧 Hausdorff 上的函数空间是度量空间　layer 18
+- ex.cg-examples　紧生成空间的例子　layer 19
 
 > 续见 `index/topo.cg.2.md`

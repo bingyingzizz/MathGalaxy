@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · proposition · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
+layer 18 · proposition · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
 names: `Integral Estimates` (short) · `Monotonicity and Estimates for Integrals` (full)
 
 ## Statement and proof

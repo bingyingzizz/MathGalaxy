@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
+layer 19 · theorem · cluster The Riemann Integral (`analysis.riemann`) · Mathematical Analysis
 names: `Riemann Criterion` (short) · `Riemann Criterion for Integrability` (full)
 
 ## Statement and proof

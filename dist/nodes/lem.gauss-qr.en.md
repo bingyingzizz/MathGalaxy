@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · lemma · cluster Quadratic Residues and Primitive Roots (`number.quadratic`) · Number Theory
+layer 17 · lemma · cluster Quadratic Residues and Primitive Roots (`number.quadratic`) · Number Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/lem.gauss-qr.md` and `proofs/`.

@@ -1,6 +1,6 @@
 # Euler 定理　`thm.euler-theorem`
 Euler 定理：互素时幂同余于一
-layer 9 · 定理 · 整除与同余 · 数论
+layer 10 · 定理 · 整除与同余 · 数论
 [在星图里打开](../#n=thm.euler-theorem)　·　[节点索引](../index.md)
 
 设 $a, n \ge 1$ 且 $\gcd(a, n) = 1$。则

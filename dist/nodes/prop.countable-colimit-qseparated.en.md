@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · proposition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
+layer 20 · proposition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
 names: `Countable Colimits` (short) · `Countable Increasing Colimits Are Quasi-Separated` (full)
 
 ## Statement and proof

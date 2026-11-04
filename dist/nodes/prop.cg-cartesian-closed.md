@@ -1,6 +1,6 @@
 # 紧生成空间是笛卡尔闭的　`prop.cg-cartesian-closed`
 紧生成空间是笛卡尔闭范畴
-layer 18 · 定理 · 紧生成空间与弱 Hausdorff · 拓扑学
+layer 19 · 定理 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=prop.cg-cartesian-closed)　·　[节点索引](../index.md)
 
 设 $X, Y, Z$ 是紧生成空间。则存在同胚

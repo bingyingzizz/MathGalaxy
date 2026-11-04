@@ -1,6 +1,6 @@
 # Euler 示性数与不可定向亏格　`prop.eulerchar-nonorientable`
 闭不可定向曲面：$\chi = 2 - k$
-layer 23 · 命题 · 曲面的地形 · 拓扑学
+layer 25 · 命题 · 曲面的地形 · 拓扑学
 [在星图里打开](../#n=prop.eulerchar-nonorientable)　·　[节点索引](../index.md)
 
 设 $S$ 是**闭不可定向曲面**，且 $S \cong \mathbb{RP}^{2}\#\cdots\#\mathbb{RP}^{2}$（$k$ 个，见 `thm.classification-surfaces`；$k$ 叫**不可定向亏格**）。则

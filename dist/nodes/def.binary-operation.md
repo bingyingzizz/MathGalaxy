@@ -12,6 +12,9 @@ $\ast : S \times S \longrightarrow S, \qquad (a, b) \longmapsto a \ast b .$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/dep.function-binaryop.md](../proofs/dep.function-binaryop.md)
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.group`](../nodes/def.group.md) 群 用
+
 refs: Lang, Algebra, Ch. I §1；Hungerford, Algebra, Ch. I
 
 > 说明见 `notes/def.binary-operation.md`

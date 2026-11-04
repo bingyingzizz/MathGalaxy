@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster Solid Abelian Groups (`cond.solid`) · Condensed Mathematics
+layer 22 · theorem · cluster Solid Abelian Groups (`cond.solid`) · Condensed Mathematics
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.solid-abelian.md` and `proofs/`.

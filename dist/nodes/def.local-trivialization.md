@@ -1,6 +1,6 @@
 # 局部平凡化　`def.local-trivialization`
 局部平凡化：把丛的一块摊平成一个乘积
-layer 8 · 定义 · 流形与向量丛 · 微分几何
+layer 9 · 定义 · 流形与向量丛 · 微分几何
 [在星图里打开](../#n=def.local-trivialization)　·　[节点索引](../index.md)
 
 **在说什么**：丛之所以叫「丛」，全靠这一条 —— 它在局部一定能摊平成一个乘积。纤维丛、向量丛
@@ -11,7 +11,7 @@ layer 8 · 定义 · 流形与向量丛 · 微分几何
 - 被 [`def.vector-bundle`](../nodes/def.vector-bundle.md) 向量丛 用
 - 被 [`def.fiber-bundle`](../nodes/def.fiber-bundle.md) 纤维丛 用
 
-- …另有出边，续页见 [nodes/def.local-trivialization.4.md](./def.local-trivialization.4.md)
+- …另有出边，续页见 [nodes/def.local-trivialization.5.md](./def.local-trivialization.5.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.local-trivialization.3.md](./def.local-trivialization.3.md)

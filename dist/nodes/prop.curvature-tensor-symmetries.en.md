@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 24 · proposition · cluster Intrinsic Geometry (`diffgeom.intrinsic`) · Differential Geometry
+layer 27 · proposition · cluster Intrinsic Geometry (`diffgeom.intrinsic`) · Differential Geometry
 names: `Curvature Symmetries` (short) · `Symmetries of the Curvature Tensor` (full)
 
 ## Statement and proof

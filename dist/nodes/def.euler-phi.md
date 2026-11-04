@@ -1,6 +1,6 @@
 # Euler 函数　`def.euler-phi`
 Euler 函数与它的乘积公式
-layer 13 · 定义 · 整除与同余 · 数论
+layer 14 · 定义 · 整除与同余 · 数论
 [在星图里打开](../#n=def.euler-phi)　·　[节点索引](../index.md)
 
 对 $n \ge 1$，$\varphi(n)$ 是 $1, 2, \cdots, n$ 中与 $n$ 互素的整数个数：

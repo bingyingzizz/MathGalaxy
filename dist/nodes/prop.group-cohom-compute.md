@@ -1,6 +1,6 @@
 # 用标准消解计算群上同调　`prop.group-cohom-compute`
 用标准消解计算：$H^{n}(G, M) = H^{n}\bigl(C^{\bullet}(G, M)\bigr)$
-layer 12 · 命题 · 群上同调 · 同调代数+抽象代数
+layer 15 · 命题 · 群上同调 · 同调代数+抽象代数
 [在星图里打开](../#n=prop.group-cohom-compute)　·　[节点索引](../index.md)
 
 设 $M$ 是 $G$-模。令

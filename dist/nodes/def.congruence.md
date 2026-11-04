@@ -1,6 +1,6 @@
 # 同余　`def.congruence`
 模 $n$ 同余：与运算相容的等价关系
-layer 11 · 定义 · 整除与同余 · 数论
+layer 12 · 定义 · 整除与同余 · 数论
 [在星图里打开](../#n=def.congruence)　·　[节点索引](../index.md)
 
 设 $n \ge 1$。称 $a$ 与 $b$ **模 $n$ 同余**，记 $a \equiv b \pmod n$，若 $n \mid (a - b)$。

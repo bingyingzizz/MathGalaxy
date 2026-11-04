@@ -19,6 +19,52 @@ MG.gaps = {
   version: 1,
   updated: '2026-11-03',
   /* 按主题分组只是为了人读；构建时拍平。 */
+  /* C3 白名单（2026-11-04）：`dist/gaps.md` 第二节里判为「不是缺边」的那些。
+     判据只有三种：顺带/对照式提及、同名不同物、以及「加上会成环」。
+     ⛔ 每条必须写 why；为了让报告变绿而加条目 = 刷绿。 */
+  noEdgeOk: [
+    { node: 'def.invariant-polynomial', def: 'def.characteristic-class', why: '方向相反：不变多项式是**输入**，示性类是它的产物；本节点只在「用途」一句里点了示性类。' },
+    { node: 'thm.chern-weil', def: 'def.characteristic-class', why: '示性类在本图是陈类的上位概念，而陈–Weil 直接造的是**陈类**（已有 `thm.chern-weil → def.chern-class`）。' },
+    { node: 'def.bundle-section', def: 'def.vector-field', why: '「向量场是截面的特例」是**比喻式对照**，定义本身不用向量场。' },
+    { node: 'def.bundle-section', def: 'def.form-on-manifold', why: '只是举例「微分形式也是截面」，不是依赖。' },
+    { node: 'def.bundle-section', def: 'def.differential-form', why: '同上（举例），且指向的是 $\\mathbb{R}^n$ 版，容易连错口径。' },
+    { node: 'def.lie-algebra', def: 'def.lie-group', why: 'Lie 代数独立定义；提到 Lie 群只是解释「它从哪来」（线性化）。' },
+    { node: 'def.connection-form', def: 'def.second-fundamental-form', why: '「第二基本形式由它算出」是**后果**，定义不用它。' },
+    { node: 'def.connection-form', def: 'def.gauss-curvature', why: '同上（Gauss 曲率是它的产物）。' },
+    { node: 'def.curvature-tensor', def: 'def.second-fundamental-form', why: '原句是「**没有**法向、没有第二基本形式」—— 否定式提及。' },
+    { node: 'prop.syzygy-stability', def: 'def.projective-dimension', why: '原句是「这正是投射维数能良定义的原因」—— 后果，不是前提。' },
+    { node: 'def.affine-connection', def: 'def.geodesic', why: '「进而谈加速度、测地线」是**前瞻**，定义不用测地线。' },
+    { node: 'prop.mobius-classification', def: 'def.geodesic', why: '「沿测地线平移」是双曲型的**几何解释**，分类本身只用矩阵。' },
+    { node: 'thm.darboux', def: 'def.riemannian-metric', why: '原句是「Riemann 度量**做不到**这一点」—— 尖锐对照，不是依赖。' },
+    { node: 'prop.pretopos-factorization', def: 'def.topos', why: '命中的是「预拓扑斯」的子串。' },
+    { node: 'def.precanonical-topology', def: 'def.topos', why: '命中的是「预拓扑斯」的子串。' },
+    { node: 'def.bound', def: 'def.ordered-field', why: '原句是「见『$\\mathbb{R}$ 是完备有序域』」—— 导航式提醒。' },
+    { node: 'def.ac-function', def: 'def.absolute-continuity', why: '**同名不同物**：这里是「绝对连续**函数**」，那个节点是「测度的绝对连续性（$\\mu \\ll \\nu$）」。' },
+    { node: 'def.t35-space', def: 'def.regular-space', why: '「加了 $T_1$ 之后叫完全正则空间」是**命名备注**，不是依赖。' },
+    { node: 'prop.spectral-sequence-page-picture', def: 'def.vector-field', why: '「同一张图上不同的『向量场』」是**比喻**（打引号的）。' },
+    { node: 'prop.pullback-forms', def: 'def.vector-field', why: '「向量场只能正着推」是**对照**（说形式能力更强）。' },
+    { node: 'def.riemannian-metric', def: 'def.geodesic', why: '「也才有测地线与曲率」是**前瞻**（度量是它们的来源）。' },
+    { node: 'prop.subobject-lattice', def: 'def.topos', why: '命中的是「预拓扑斯」的子串（本命题的前提就是预拓扑斯）。' },
+    { node: 'prop.geodesic-existence', def: 'def.exponential-map', why: '原句是「下一站的指数映射」—— 明确的前向指路。' },
+    { node: 'thm.symplectic-normal-form', def: 'def.inertia-index', why: '与实对称型分类的**对照**，不是前提。' },
+    { node: 'def.empty', def: 'def.first-order-language', why: '「与一阶语言同级」是**类比式说明**。' },
+    { node: 'def.quotient-topology', def: 'def.quotient-vs', why: '**同名不同物**：这里是拓扑的**商空间**，那个节点是向量空间的商 $V/U$。' },
+    { node: 'prop.module-tensor-universal', def: 'def.tensor-product-vs', why: '**同名不同物**：这里是**模**的张量积，那个节点是向量空间的张量积。' },
+    { node: 'def.fiber-bundle', def: 'def.lie-group', why: '纤维丛本身不需要 Lie 群：只有「结构群」那一层才需要，而结构群已由 `def.fiber-bundle → def.structure-group` 覆盖（结构群节点自己连到 Lie 群）。硬连会把 fiber-bundle 从 L10 抬到 L29，整条丛的链一起虚高。' },
+    { node: 'def.smooth-manifold', def: 'def.partial-derivative', why: '$C^{\\infty}$ 的定义在 `def.smooth-map` 那一层（真源），本节点只是括注「用偏导数检验」。已改为在 smooth-map 上补根边，避免把整个流形团从 L8 抬到 L16。' },
+    { node: 'def.manifold-chart', def: 'def.partial-derivative', why: '同上（同一个括注，真源在 `def.smooth-map`）。' },
+    { node: 'def.exterior-derivative', def: 'def.closed-form', why: '外微分的陈述只是**命名**「$mathrm{d}omega = 0$ 的叫闭形式」；本图闭形式的定义边已经指向流形版 `prop.exterior-derivative-manifold`，不指坐标模型版。' },
+    { node: 'def.exterior-derivative', def: 'def.exact-form', why: '同上（命名「恰当形式」）。' },
+    { node: 'def.cauchy-null', def: 'def.cauchy-sequence', why: '**同名不同物**：这里是**有理**数列版的 Cauchy 列（构造 $mathbb{R}$ 用，$arepsilon$ 取有理数），那个节点是**实**数列版。' },
+    { node: 'def.real', def: 'def.cauchy-sequence', why: '**同名不同物**：$mathbb{R}$ 的构造用的是有理 Cauchy 列，已有 `def.cauchy-null → def.real`。' },
+    { node: 'prop.cg-kclosed-quotient', def: 'def.quotient-vs', why: '**同名不同物**：这里是拓扑的**商空间**（$k$-闭商），那个节点是向量空间的商 $V/U$。' },
+    { node: 'def.separable-extension', def: 'def.minimal-poly', why: '**同名不同物**：可分扩张里的「极小多项式」是**代数元**的（`def.algebraic-element`，已连），不是**算子**的 `def.minimal-poly`（$\\mu_{T}$）。' },
+    { node: 'prop.tensor-functor-properties', def: 'def.tensor-product-vs', why: '**同名不同物**：本命题讲的是**模**的张量积（`def.tensor-module`，已连），不是向量空间的张量积。' },
+    { node: 'ex.ab-of-categories', def: 'def.lie-group', why: '例子行「Ab(Manifold) = 阿贝尔 Lie 群」是**列答案**，不是依赖。' }
+  ],
+  /* C3 白名单（2026-11-04）：`dist/gaps.md` 第二节里判为「不是缺边」的那些。
+     判据只有三种：顺带/对照式提及、同名不同物、以及「加上会成环」。
+     ⛔ 每条必须写 why；为了让报告变绿而加条目 = 刷绿。 */
   /* 黑边环的白名单：只有真·假环才能进这里，每条都要写清「为什么不是数学循环」。
      ⛔ 别为了让她变绿就加条目 —— 先判断它是等价（改 equivalence）/ 回头证（改粉边）/ 真错。 */
   cycleOk: [

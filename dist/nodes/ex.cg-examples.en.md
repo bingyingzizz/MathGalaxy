@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · example · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
+layer 19 · example · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
 names: `CG Examples` (short) · `Examples of Compactly Generated Spaces` (full)
 
 ## Statement and proof

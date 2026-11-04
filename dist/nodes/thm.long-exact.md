@@ -1,6 +1,6 @@
 # 长正合列　`thm.long-exact`
 短正合列给出长正合列（蛇引理）
-layer 18 · 定理 · 同调与正合列 · 同调代数
+layer 19 · 定理 · 同调与正合列 · 同调代数
 [在星图里打开](../#n=thm.long-exact)　·　[节点索引](../index.md)
 
 设 $\mathcal{A}$ 是阿贝尔范畴，$0 \to K \to L \to M \to 0$ 是复形的短正合列。则存在**长正合列**
@@ -16,7 +16,7 @@ $$\cdots \to H^{n}(K) \to H^{n}(L) \to H^{n}(M) \xrightarrow{\ \delta\ } H^{n+1}
 - ⇒ [`lem.horseshoe`](../nodes/lem.horseshoe.md) 马蹄引理
 - ⇒ [`prop.low-degree-exact`](../nodes/prop.low-degree-exact.md) 低次正合列
 
-- …另有出边，续页见 [nodes/thm.long-exact.3.md](./thm.long-exact.3.md)
+- …另有出边，续页见 [nodes/thm.long-exact.4.md](./thm.long-exact.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.long-exact.2.md](./thm.long-exact.2.md)

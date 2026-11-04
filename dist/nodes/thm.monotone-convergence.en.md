@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · theorem · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis
+layer 18 · theorem · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.monotone-convergence.md` and `proofs/`.

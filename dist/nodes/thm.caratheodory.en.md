@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · theorem · cluster Constructing Measures (`analysis.measure`) · Functions of a Real Variable / Mathematical Analysis
+layer 17 · theorem · cluster Constructing Measures (`analysis.measure`) · Functions of a Real Variable / Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.caratheodory.md` and `proofs/`.

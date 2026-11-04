@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · proposition · cluster Adjunctions and Reflections (`cat.adjoint`) · Category Theory
+layer 13 · proposition · cluster Adjunctions and Reflections (`cat.adjoint`) · Category Theory
 names: `Copowers and Adjoints` (short) · `Copowers Give Adjoints to Representables` (full)
 
 ## Statement and proof

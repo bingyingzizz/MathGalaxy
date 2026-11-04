@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 26 · theorem · cluster Conformal Maps and Normal Families (`analysis.mapping`) · Complex Analysis
+layer 27 · theorem · cluster Conformal Maps and Normal Families (`analysis.mapping`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.schwarz-pick.md` and `proofs/`.

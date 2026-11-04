@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · proposition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
+layer 19 · proposition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
 names: `Cond Projectives` (short) · `Condensed Sets Have Enough Projectives` (full)
 
 ## Statement and proof

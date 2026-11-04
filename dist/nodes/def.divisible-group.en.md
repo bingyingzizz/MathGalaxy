@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 7 · definition · cluster Injective Modules and Divisible Groups (`hom.injective`) · Homological Algebra
+layer 8 · definition · cluster Injective Modules and Divisible Groups (`hom.injective`) · Homological Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.divisible-group.md` and `proofs/`.

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · definition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
+layer 18 · definition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.condensed-set.md` and `proofs/`.

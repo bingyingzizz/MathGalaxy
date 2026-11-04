@@ -4,3 +4,5 @@
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`thm.theorema-egregium`](../nodes/thm.theorema-egregium.md) 绝妙定理
 - ⇒ [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) Gauss–Bonnet 定理
+- 被 [`thm.gauss-equation`](../nodes/thm.gauss-equation.md) Gauss 方程 用
+- 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用

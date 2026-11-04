@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 24 · theorem · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
+layer 25 · theorem · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
 names: `Formula for Derivatives` (short) · `Cauchy Integral Formula for Derivatives` (full)
 
 ## Statement and proof

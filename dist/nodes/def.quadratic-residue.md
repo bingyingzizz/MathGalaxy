@@ -1,6 +1,6 @@
 # 二次剩余　`def.quadratic-residue`
 二次剩余与二次非剩余
-layer 12 · 定义 · 二次剩余与原根 · 数论
+layer 13 · 定义 · 二次剩余与原根 · 数论
 [在星图里打开](../#n=def.quadratic-residue)　·　[节点索引](../index.md)
 
 设 $p$ 是奇素数，$p \nmid a$。若同余方程

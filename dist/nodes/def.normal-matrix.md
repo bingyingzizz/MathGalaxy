@@ -1,6 +1,6 @@
 # 正规矩阵　`def.normal-matrix`
 正规矩阵：与自己的伴随可交换
-layer 16 · 定义 · 内积空间与正交性 · 抽象代数
+layer 20 · 定义 · 内积空间与正交性 · 抽象代数
 [在星图里打开](../#n=def.normal-matrix)　·　[节点索引](../index.md)
 
 **在做什么**：把酉矩阵、Hermite 矩阵、以及「$A^{*}A$ 与 $AA^{*}$ 不分先后」的那些矩阵，收进同一个类 —— 这一类正好就是**能被酉对角化**的全部矩阵。
@@ -11,6 +11,8 @@ layer 16 · 定义 · 内积空间与正交性 · 抽象代数
 
 ## 它能推出什么 / 谁在用它
 - 被 [`thm.spectral-matrix`](../nodes/thm.spectral-matrix.md) 谱定理（矩阵版） 用
+
+- …另有出边，续页见 [nodes/def.normal-matrix.4.md](./def.normal-matrix.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.normal-matrix.3.md](./def.normal-matrix.3.md)

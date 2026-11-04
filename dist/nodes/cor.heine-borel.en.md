@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · corollary · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis / Topology
+layer 21 · corollary · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis / Topology
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/cor.heine-borel.md` and `proofs/`.

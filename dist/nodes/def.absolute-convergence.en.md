@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster Convergence Tests for Series (`analysis.series`) · Mathematical Analysis
+layer 16 · definition · cluster Convergence Tests for Series (`analysis.series`) · Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.absolute-convergence.md` and `proofs/`.

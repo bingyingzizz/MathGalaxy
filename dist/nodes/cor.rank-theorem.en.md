@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 28 · corollary · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
+layer 29 · corollary · cluster Multivariable Differentiation (`analysis.multivariable`) · Mathematical Analysis
 names: `Rank Theorem` (short) · `Constant Rank Theorem` (full)
 
 ## Statement and proof

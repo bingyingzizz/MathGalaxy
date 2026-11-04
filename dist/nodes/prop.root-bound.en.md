@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 12 · proposition · cluster Polynomials and Factorization (`algebra.polynomial`) · Abstract Algebra
+layer 13 · proposition · cluster Polynomials and Factorization (`algebra.polynomial`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.root-bound.md` and `proofs/`.

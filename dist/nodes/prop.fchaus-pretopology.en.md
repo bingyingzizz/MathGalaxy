@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · proposition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
+layer 19 · proposition · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
 names: `FCHaus Pretopology` (short) · `Pretopology on Finite Compact Hausdorff Spaces` (full)
 
 ## Statement and proof

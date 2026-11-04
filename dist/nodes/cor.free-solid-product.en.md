@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · corollary · cluster Solid Abelian Groups (`cond.solid`) · Condensed Mathematics
+layer 20 · corollary · cluster Solid Abelian Groups (`cond.solid`) · Condensed Mathematics
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/cor.free-solid-product.md` and `proofs/`.

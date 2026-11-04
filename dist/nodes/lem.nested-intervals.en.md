@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · lemma · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis
+layer 19 · lemma · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/lem.nested-intervals.md` and `proofs/`.

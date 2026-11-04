@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 33 · theorem · cluster Characteristic Classes (`diffgeom.characteristic`) · Differential Geometry
+layer 34 · theorem · cluster Characteristic Classes (`diffgeom.characteristic`) · Differential Geometry
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.bundle-classification.md` and `proofs/`.

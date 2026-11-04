@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · proposition · cluster Condensed Abelian Groups (`cond.ab`) · Condensed Mathematics
+layer 20 · proposition · cluster Condensed Abelian Groups (`cond.ab`) · Condensed Mathematics
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.discrete-functor-coproduct.md` and `proofs/`.

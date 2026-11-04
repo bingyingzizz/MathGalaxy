@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 28 · definition · cluster Lie Groups (`diffgeom.lieg`) · Differential Geometry
+layer 29 · definition · cluster Lie Groups (`diffgeom.lieg`) · Differential Geometry
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.lie-group.md` and `proofs/`.

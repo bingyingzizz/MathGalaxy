@@ -14,6 +14,9 @@ $$FK \longrightarrow FL \longrightarrow FM$$
 
 - …另有入边，续页见 [nodes/def.cohomological-functor.2.md](./def.cohomological-functor.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.cohomological-functor.3.md](./def.cohomological-functor.3.md)
+
 refs: Le Stum, An introduction to condensed mathematics, §7.1–7.3
 
 > 说明见 `notes/def.cohomological-functor.md`

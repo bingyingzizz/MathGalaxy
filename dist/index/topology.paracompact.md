@@ -13,4 +13,4 @@
 - thm.paracompact-hausdorff-normal　仿紧 Hausdorff 空间正规　layer 8
 - lem.shrink　收缩引理　layer 9
 - prop.paracompact-closed-refinement　闭加细　layer 10
-- prop.paracompact-partition-unity　仿紧性与单位分解　layer 16
+- prop.paracompact-partition-unity　仿紧性与单位分解　layer 17

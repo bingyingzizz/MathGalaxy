@@ -6,8 +6,9 @@ layer 14 · 定义 · 层与拓扑 · 范畴论
 态射 $f : X \to Y$ 叫**正则满态射**，如果它是某个平行对的**余等化子**：存在 $u, v : W \rightrightarrows X$ 使 $f = \operatorname{coker}(u, v)$。
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`prop.pretopos-factorization`](../nodes/prop.pretopos-factorization.md) 满-单分解
-- 被 [`def.pretopos`](../nodes/def.pretopos.md) 预拓扑斯 用
+- 被 [`def.universal-colimit`](../nodes/def.universal-colimit.md) 万有关系 用
+
+- …另有出边，续页见 [nodes/def.regular-epi.3.md](./def.regular-epi.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.regular-epi.2.md](./def.regular-epi.2.md)

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · proposition · cluster Toposes (`cat.topos`) · Category Theory
+layer 19 · proposition · cluster Toposes (`cat.topos`) · Category Theory
 names: `Slice Left Adjoint` (short) · `The Slice Left Adjoint on the Constant Sheaf` (full)
 
 ## Statement and proof

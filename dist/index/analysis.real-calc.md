@@ -4,17 +4,17 @@
 中心天体 thm.nth-root　·　15 个节点　·　根 `../`　·　续页 `index/analysis.real-calc.2.md`
 
 - thm.bernoulli　Bernoulli 不等式　layer 7
-- prop.field-rules　环与域的基本等式　layer 8
 - def.power　整数幂　layer 8
-- prop.order-rules　序与四则运算　layer 9
-- prop.power-rules　指数律与幂的单调性　layer 9
+- prop.field-rules　环与域的基本等式　layer 9
 - thm.binomial　二项式定理　layer 9
-- def.abs　绝对值 |x|　layer 9
-- prop.abs-properties　绝对值的运算性质　layer 10
-- thm.triangle　三角不等式　layer 10
-- thm.nth-root　n 次方根　layer 17
-- def.tan-cot-sec　正切、余切、正割、余割　layer 17
-- def.inverse-trig　反三角函数　layer 17
-- lem.archimedean　Archimedes 性质　layer 17
+- prop.order-rules　序与四则运算　layer 10
+- prop.power-rules　指数律与幂的单调性　layer 10
+- def.abs　绝对值 |x|　layer 10
+- prop.abs-properties　绝对值的运算性质　layer 11
+- thm.triangle　三角不等式　layer 11
+- thm.nth-root　n 次方根　layer 18
+- def.tan-cot-sec　正切、余切、正割、余割　layer 18
+- def.inverse-trig　反三角函数　layer 18
+- lem.archimedean　Archimedes 性质　layer 18
 
 > 续见 `index/analysis.real-calc.2.md`

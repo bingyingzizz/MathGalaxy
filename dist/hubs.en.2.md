@@ -13,13 +13,13 @@
 - **24 / 24** `def.function` mapping · 关系与函数
 
 - **22 / 22** `def.functor` functor · 函子与自然变换
+- **22 / 22** `def.condensed-abelian-group` condensed abelian group · 凝聚态阿贝尔群
 - **21 / 22** `def.chaus` compact Hausdorff · 紧 Hausdorff 空间
 - **21 / 21** `def.subset` subset · 集合的构造
-- **20 / 21** `def.projective-object` Projective and Injective · 紧 Hausdorff 空间
 
-- **20 / 20** `def.abs` absolute value · 实数的运算与不等式
-- **19 / 20** `def.integrable` integrable · 积分
-- **18 / 18** `def.category` category · 范畴与图
+- **20 / 21** `def.projective-object` Projective and Injective · 紧 Hausdorff 空间
+- **20 / 21** `def.topos` topos · 拓扑斯
+- **20 / 21** `def.condensed-set` condensed set · 凝聚态集
 
 ## Comprehensive results
 

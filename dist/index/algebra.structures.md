@@ -4,22 +4,22 @@
 中心天体 def.group　·　23 个节点　·　根 `../`　·　续页 `index/algebra.structures.2.md`
 
 - def.binary-operation　二元运算　layer 6
-- def.group　群　layer 6
-- prop.group-basic　群的基本性质　layer 7
-- def.field　域　layer 7
-- def.subgroup　子群　layer 7
-- def.normal-subgroup　正规子群　layer 7
-- def.ring　环　layer 7
-- def.characteristic　域的特征　layer 8
-- def.ordered-field　有序域　layer 8
-- def.quotient-group　商群　layer 8
-- def.group-hom　群同态、核与像　layer 8
-- def.module　模　layer 8
-- prop.zmod-is-ab　Z-模就是阿贝尔群　layer 8
-- def.group-order　群的阶与元素的阶　layer 9
-- thm.first-iso　第一同构定理（Noether）　layer 9
-- def.ideal　理想　layer 9
-- prop.ideal-basic　理想的运算与商环泛性质　layer 10
+- def.group　群　layer 7
+- prop.group-basic　群的基本性质　layer 8
+- def.field　域　layer 8
+- def.subgroup　子群　layer 8
+- def.normal-subgroup　正规子群　layer 8
+- def.ring　环　layer 8
+- def.characteristic　域的特征　layer 9
+- def.ordered-field　有序域　layer 9
+- def.quotient-group　商群　layer 9
+- def.group-hom　群同态、核与像　layer 9
+- def.module　模　layer 9
+- prop.zmod-is-ab　Z-模就是阿贝尔群　layer 9
+- def.group-order　群的阶与元素的阶　layer 10
+- thm.first-iso　第一同构定理（Noether）　layer 10
+- def.ideal　理想　layer 10
 - prop.abelianization　交换化　layer 10
+- prop.ideal-basic　理想的运算与商环泛性质　layer 11
 
 > 续见 `index/algebra.structures.2.md`

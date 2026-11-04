@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 29 · proposition · cluster Lie Groups (`diffgeom.lieg`) · Differential Geometry
+layer 30 · proposition · cluster Lie Groups (`diffgeom.lieg`) · Differential Geometry
 names: `Left-Invariant Fields` (short) · `Left-Invariant Vector Fields` (full)
 
 ## Statement and proof

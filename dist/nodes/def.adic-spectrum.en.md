@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster Adic Spaces (`analytic.adic`) · Analytic Spaces
+layer 22 · definition · cluster Adic Spaces (`analytic.adic`) · Analytic Spaces
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.adic-spectrum.md` and `proofs/`.

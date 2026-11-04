@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · theorem · cluster Divisibility and Congruences (`number.basic`) · Number Theory
+layer 10 · theorem · cluster Divisibility and Congruences (`number.basic`) · Number Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.euler-theorem.md` and `proofs/`.

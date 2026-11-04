@@ -1,6 +1,6 @@
 # Tietze 延拓（Banach 值）　`thm.tietze-banach`
 Tietze 延拓定理：$C(X, V) \twoheadrightarrow C(K, V)$
-layer 16 · 定理 · 凝聚态导出函子 · 凝聚态数学+拓扑学
+layer 18 · 定理 · 凝聚态导出函子 · 凝聚态数学+拓扑学
 [在星图里打开](../#n=thm.tietze-banach)　·　[节点索引](../index.md)
 
 设 $X$ 是**正规**拓扑空间，$K \subseteq X$ 是**紧**子集，$V$ 是**实 Banach 空间**。则限制映射
@@ -10,7 +10,7 @@ $$C(X,\ V) \twoheadrightarrow C(K,\ V)$$
 是**满**的：每个连续映射 $K \to V$ 都能延拓到 $X$ 上。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.normal-space`](../nodes/def.normal-space.md) 正规空间：用到了定义 正规空间　[proofs/def-dep.tietze-normal.md](../proofs/def-dep.tietze-normal.md)
+- [`def.banach-space`](../nodes/def.banach-space.md) Banach 空间：用到了定义 Banach 空间　[proofs/dep.gap-tietze-banach-banach-space.md](../proofs/dep.gap-tietze-banach-banach-space.md)
 
 - …另有入边，续页见 [nodes/thm.tietze-banach.2.md](./thm.tietze-banach.2.md)
 

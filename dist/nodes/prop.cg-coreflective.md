@@ -1,6 +1,6 @@
 # 紧生成空间是余反射子范畴　`prop.cg-coreflective`
 紧生成空间是 $\mathbf{Top}$ 的余反射子范畴
-layer 19 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
+layer 20 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=prop.cg-coreflective)　·　[节点索引](../index.md)
 
 紧生成空间构成的范畴 $k\mathbf{Top}$ 是 

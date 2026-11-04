@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · theorem · cluster Metrizability (`topology.metrizable`) · Topology
+layer 17 · theorem · cluster Metrizability (`topology.metrizable`) · Topology
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.bing-metrization.md` and `proofs/`.

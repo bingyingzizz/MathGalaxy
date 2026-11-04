@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · proposition · cluster Continuity and Compactness (`analysis.continuity`) · Mathematical Analysis
+layer 17 · proposition · cluster Continuity and Compactness (`analysis.continuity`) · Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.continuous-arithmetic.md` and `proofs/`.

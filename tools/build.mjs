@@ -1692,6 +1692,14 @@ function exportGaps(MG, graph) {
     for (const a of p.from) for (const b of p.to) { EDGE_PAIRS.add(a + '>' + b); EDGE_PAIRS.add(b + '>' + a); }
   }
   const noEdge = [];
+  /* C3 白名单（`src/data/gaps.js` 的 `noEdgeOk`）：判过「这不是缺边」的（node, def）对。
+     ⭐ 白名单不是删报告 —— `noEdgeAll` 保留全量，报告里单列一节写清「白了几条、为什么」，
+     否则它就是刷绿。 */
+  const OKED = new Map();
+  for (const r of (MG.gaps && MG.gaps.noEdgeOk) || []) {
+    if (r && r.node && r.def) OKED.set(r.node + '>' + r.def, r.why || '');
+  }
+  const noEdgeAll = [];
   for (const n of graph.nodes) {
     const st = n.statement || '';
     if (!st) continue;
@@ -1702,9 +1710,15 @@ function exportGaps(MG, graph) {
       if (EDGE_PAIRS.has(n.id + '>' + d.id)) continue;
       const gap = (d.layer || 0) - (n.layer || 0);
       if (gap < 0) continue;            // 定义比它浅 ⇒ 不算「往下掉」（同审计口径）
-      noEdge.push({ node: n.id, nodeLabel: n.label, nodeLayer: n.layer, def: d.id, defLabel: d.label, defLayer: d.layer, gap });
+      const rec = { node: n.id, nodeLabel: n.label, nodeLayer: n.layer, def: d.id, defLabel: d.label, defLayer: d.layer, gap };
+      noEdgeAll.push(rec);
+      if (OKED.has(n.id + '>' + d.id)) continue;
+      noEdge.push(rec);
     }
   }
+  /* 白名单条目必须真能对上一条缺口 —— 对不上就是过期账（改了陈述/加了边），要清。 */
+  const allKeys = new Set(noEdgeAll.map((x) => x.node + '>' + x.def));
+  const staleOk = [...OKED.keys()].filter((k) => !allKeys.has(k));
   noEdge.sort((a, b) => b.gap - a.gap);
 
   const cnt = graph.metaCounts || { nodes: graph.nodes.length, edges: graph.edges.length };
@@ -1737,6 +1751,18 @@ function exportGaps(MG, graph) {
       (x.gap > 0 ? `　落差 ${x.gap}` : ''));
   }
   if (noEdge.length > 200) L.push(`\n（只列落差最大的 200 处；完整清单见 \`gaps.json\`）`);
+  L.push('', `## 二·补　白名单里的（${OKED.size} 条，已判「不是缺边」）`, '');
+  L.push('每条都写了为什么。⛔ 为了让这一节变短而加条目 = 刷绿，审阅时逐条看理由。');
+  L.push('');
+  for (const [k, why] of OKED) {
+    const [nd, df] = k.split('>');
+    L.push(`- \`${nd}\` 提到 \`${df}\` —— ${why}`);
+  }
+  if (!OKED.size) L.push('（没有）');
+  if (staleOk.length) {
+    L.push('', `⚠️ **过期白名单 ${staleOk.length} 条**（对应的缺口已经不存在了：改了陈述或加了边）—— 该清：` +
+      staleOk.map((k) => `\`${k}\``).join(' · '));
+  }
   L.push('', `## 三、候选词表里从没被提到的（${never.length} 个）`, '', never.join(' · ') || '（没有）');
 
   return {
@@ -1746,6 +1772,9 @@ function exportGaps(MG, graph) {
       terms: TERMS.length,
       missing: missing.map((r) => ({ term: r.term, total: r.total, nodes: r.mentions.slice(0, 12) })),
       noEdge: noEdge.map((x) => x),
+      noEdgeAll: noEdgeAll.length,
+      noEdgeOk: OKED.size,
+      noEdgeOkStale: staleOk,
       never,
     },
   };

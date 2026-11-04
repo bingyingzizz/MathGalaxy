@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · theorem · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis / Set Theory
+layer 17 · theorem · cluster Equivalent Forms of Completeness of the Reals (`analysis.completeness`) · Mathematical Analysis / Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.real-ordered-field.md` and `proofs/`.

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · proposition · cluster Toposes (`cat.topos`) · Category Theory
+layer 17 · proposition · cluster Toposes (`cat.topos`) · Category Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.pretopos-factorization.md` and `proofs/`.

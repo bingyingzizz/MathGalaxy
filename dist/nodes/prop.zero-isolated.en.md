@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 25 · proposition · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
+layer 26 · proposition · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.zero-isolated.md` and `proofs/`.

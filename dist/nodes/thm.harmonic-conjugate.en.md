@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 21 · theorem · cluster Harmonic Functions (`analysis.harmonic`) · Complex Analysis
+layer 22 · theorem · cluster Harmonic Functions (`analysis.harmonic`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.harmonic-conjugate.md` and `proofs/`.

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 22 · theorem · cluster Continuity and Compactness (`analysis.continuity`) · Mathematical Analysis / Topology
+layer 23 · theorem · cluster Continuity and Compactness (`analysis.continuity`) · Mathematical Analysis / Topology
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.evt.md` and `proofs/`.

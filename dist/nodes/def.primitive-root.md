@@ -1,6 +1,6 @@
 # 原根　`def.primitive-root`
 原根：单位群的生成元
-layer 8 · 定义 · 二次剩余与原根 · 数论
+layer 9 · 定义 · 二次剩余与原根 · 数论
 [在星图里打开](../#n=def.primitive-root)　·　[节点索引](../index.md)
 
 设 $\gcd(g, n) = 1$。若

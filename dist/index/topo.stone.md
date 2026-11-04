@@ -4,16 +4,16 @@
 中心天体 thm.stone-profinite　·　15 个节点　·　根 `../`　·　续页 `index/topo.stone.2.md`
 
 - def.totally-disconnected　完全不连通与极不连通　layer 6
-- prop.totally-disconnected-subspace　全不连通对子空间封闭　layer 7
-- def.boolean-ring　布尔环　layer 8
+- def.boolean-ring　布尔环　layer 9
 - def.profinite　投射有限空间　layer 12
+- prop.totally-disconnected-subspace　全不连通对子空间封闭　layer 13
 - prop.profinite-sets-spaces　投射有限集即投射有限空间　layer 13
-- prop.component-clopen　连通分量是闭开邻域之交　layer 17
-- def.stone-space　全不连通与 Stone 空间　layer 17
-- prop.stonean-basic　极端不连通的基本性质　layer 18
-- prop.td-reflective　全不连通空间是反射子范畴　layer 18
-- prop.stone-reflective　Stone 空间是紧 Hausdorff 空间的反射子范畴　layer 18
-- thm.gleason　Gleason 定理　layer 18
-- thm.boolean-stone　Boolean 环与 Stone 空间等价　layer 18
+- prop.component-clopen　连通分量是闭开邻域之交　layer 18
+- def.stone-space　全不连通与 Stone 空间　layer 18
+- prop.stonean-basic　极端不连通的基本性质　layer 19
+- prop.td-reflective　全不连通空间是反射子范畴　layer 19
+- prop.stone-reflective　Stone 空间是紧 Hausdorff 空间的反射子范畴　layer 19
+- thm.gleason　Gleason 定理　layer 19
+- thm.boolean-stone　Boolean 环与 Stone 空间等价　layer 19
 
 > 续见 `index/topo.stone.2.md`

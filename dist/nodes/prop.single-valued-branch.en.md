@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 22 · proposition · cluster Foundations of Complex Analysis (`analysis.complex`) · Complex Analysis
+layer 29 · proposition · cluster Foundations of Complex Analysis (`analysis.complex`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.single-valued-branch.md` and `proofs/`.

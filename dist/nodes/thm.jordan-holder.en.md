@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · theorem · cluster Composition Series and Solvable Groups (`algebra.solvable`) · Abstract Algebra
+layer 11 · theorem · cluster Composition Series and Solvable Groups (`algebra.solvable`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.jordan-holder.md` and `proofs/`.

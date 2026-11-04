@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 27 · theorem · cluster Polynomials and Factorization (`algebra.polynomial`) · Abstract Algebra / Mathematical Analysis
+layer 28 · theorem · cluster Polynomials and Factorization (`algebra.polynomial`) · Abstract Algebra / Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.fundamental-algebra.md` and `proofs/`.

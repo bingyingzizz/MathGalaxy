@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · corollary · cluster Baire Category and the Three Big Theorems (`fa.baire`) · Functional Analysis
+layer 19 · corollary · cluster Baire Category and the Three Big Theorems (`fa.baire`) · Functional Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/cor.ubp-resonance.md` and `proofs/`.

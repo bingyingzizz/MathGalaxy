@@ -1,6 +1,6 @@
 # 模 n 的阶　`def.order-mod-n`
 模 $n$ 的阶与循环子群
-layer 7 · 定义 · 二次剩余与原根 · 数论
+layer 8 · 定义 · 二次剩余与原根 · 数论
 [在星图里打开](../#n=def.order-mod-n)　·　[节点索引](../index.md)
 
 设 $\gcd(a, n) = 1$。使

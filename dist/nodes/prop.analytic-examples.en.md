@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · proposition · cluster Analytic Rings and Solid Modules (`cond.analytic`) · Condensed Mathematics
+layer 23 · proposition · cluster Analytic Rings and Solid Modules (`cond.analytic`) · Condensed Mathematics
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.analytic-examples.md` and `proofs/`.

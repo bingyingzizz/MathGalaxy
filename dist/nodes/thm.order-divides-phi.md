@@ -1,6 +1,6 @@
 # 阶整除 Euler 函数　`thm.order-divides-phi`
 $\operatorname{ord}_{n}(a) \mid \varphi(n)$
-layer 9 · 定理 · 二次剩余与原根 · 数论
+layer 10 · 定理 · 二次剩余与原根 · 数论
 [在星图里打开](../#n=thm.order-divides-phi)　·　[节点索引](../index.md)
 
 设 $\gcd(a, n) = 1$。则 $\operatorname{ord}_{n}(a) \mid \varphi(n)$；特别地 $a^{\varphi(n)} \equiv 1 \pmod n$（Euler 定理）。

@@ -1,6 +1,6 @@
 # 左不变向量场　`prop.left-invariant-fields`
 左不变向量场与 Lie 代数
-layer 29 · 命题 · Lie 群 · 微分几何
+layer 30 · 命题 · Lie 群 · 微分几何
 [在星图里打开](../#n=prop.left-invariant-fields)　·　[节点索引](../index.md)
 
 **在做什么**：把 Lie 群「在单位元处求导」—— 左平移让单位元处的
