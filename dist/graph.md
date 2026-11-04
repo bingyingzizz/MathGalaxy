@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-04T11:05:51.507Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-04T11:13:53.617Z
 > 15 星系 / 105 星团 / 1540 节点 / 3165 连线（强边 3126，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -29560,7 +29560,7 @@ $$\operatorname{RHom}_{\mathcal{A}}\bigl(\mathcal{A}[S],\ C\bigr) \longrightarro
 
 $$\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}} \subset \operatorname{Mod}^{\mathrm{cond}}_{A}$$
 
-由所有满足「$\operatorname{Hom}_{\mathcal{A}}(\mathcal{A}[S], M) \to M(S)$ 对一切 extremally disconnected $S$ 是同构」的 $A$-模 $M$ 组成。则：
+由所有满足「$\operatorname{Hom}_{A}(\mathcal{A}[S], M) \to M(S)$ 对一切 extremally disconnected $S$ 是同构（⚠ 这里必须是 $\operatorname{Hom}_{A}$，不能写 $\operatorname{Hom}_{\mathcal{A}}$ ——后者要先用 $\mathcal{A}$-模这个**正在被定义**的子范畴，是循环的）」的 $A$-模 $M$ 组成。则：
 
 **(i)** 它是阿贝尔范畴，对一切极限、余极限与扩张稳定；$\mathcal{A}[S]$ 构成一族紧投射生成元；含入有左伴随
 
@@ -34166,9 +34166,11 @@ $$K(\sigma) := \frac{\langle R(X,Y)Y,X\rangle}{\langle X,X\rangle\langle Y,Y\ran
 
 $$K(\sigma) = \langle R(X,Y)Y,X\rangle = R_{1221}\qquad (X = e_{1},\ Y = e_{2}).$$
 
-当 $\dim M = 2$ 时只有一个二维截面（$T_{p}M$ 本身），$K$ 就是**高斯曲率**。若 $K(\sigma)$ 与 $\sigma$ 无关（记作**常截面曲率** $K$），则
+当 $\dim M = 2$ 时只有一个二维截面（$T_{p}M$ 本身），$K$ 就是**高斯曲率**。若在**同一点** $p$ 处 $K(\sigma)$ 与 $\sigma$ 无关（即**逐点常截面曲率**，记那个数为 $K$），则
 
 $$R(X,Y)Z = K\bigl(\langle Y,Z\rangle X-\langle X,Z\rangle Y\bigr).$$
+
+⚠ **逐点 $\ne$ 整体**：那条 $R(X,Y)Z = K(\langle Y,Z\rangle X - \langle X,Z\rangle Y)$ 只在**同一个点** $p$ 上成立。要让 $K$ 成为整块流形的常数还要额外条件：$\dim M \ge 3$ 时由 **Schur 引理**自动成立（逐点常曲率 $\implies$ 整体常曲率）；而 $\dim M = 2$ 时**不成立** —— 椭球面极点处 $K = 4$、赤道处 $K = 1/4$：二维时逐点只有一个截面，「与 $\sigma$ 无关」平凡成立，$K$ 却并非常数。
 
 **为什么它能代表曲率**：截面曲率是最便宜的读数（一个数），但它**决定整个** $R$ —— 由双线性型的极化，$\langle R(X,Y)Z,W\rangle$ 可以由若干截面曲率组合出来。所以「所有截面曲率」与「曲率张量」是同一份信息。
 
@@ -35936,7 +35938,7 @@ $$\mathcal{L}_{[X,Y]} = [\mathcal{L}_{X},\mathcal{L}_{Y}]$$
 
 （括号给出导子的交换子）。
 
-**三类的统一**：函数与形式的拉回是 $\omega \mapsto \varphi_{t}^{\ast}\omega$，向量场没有拉回（要用推前 $\mathrm{d}\varphi_{t}$），所以定义里得按类型选方向。
+**三类的统一**：函数与形式的拉回是 $\omega \mapsto \varphi_{t}^{\ast}\omega$；向量场**沿一般映射**不能拉回（非单射时无定义），只能推前 $\mathrm{d}\varphi_{t}$；但**沿微分同胚** $F$ 拉回是有的：$F^{\ast}Y = (\mathrm{d}F)^{-1} \circ Y \circ F$（取 $F(x) = 2x$、$Y = \partial_{x}$：$F^{\ast}Y = \tfrac{1}{2}\partial_{x}$）。流 $\varphi_{t}$ 正是微分同胚，所以定义里对向量场用的是 $(\varphi_{-t})_{\ast}$，方向与形式相反。
 
 但**结果**是统一的：$\mathcal{L}_{X}$ 是张量代数上的导子，作用在函数上是 $X$，作用在向量场上就是括号 —— 两条都是从同一个「拖回来求导」算出来的。
 

@@ -116,7 +116,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}} \\subset \\operatorname{Mod}^{\\mathrm{cond}}_{A}$$',
         '',
-        '由所有满足「$\\operatorname{Hom}_{\\mathcal{A}}(\\mathcal{A}[S], M) \\to M(S)$ 对一切 extremally disconnected $S$ 是同构」的 $A$-模 $M$ 组成。则：',
+        '由所有满足「$\\operatorname{Hom}_{A}(\\mathcal{A}[S], M) \\to M(S)$ 对一切 extremally disconnected $S$ 是同构（⚠ 这里必须是 $\\operatorname{Hom}_{A}$，不能写 $\\operatorname{Hom}_{\\mathcal{A}}$ ——后者要先用 $\\mathcal{A}$-模这个**正在被定义**的子范畴，是循环的）」的 $A$-模 $M$ 组成。则：',
         '',
         '**(i)** 它是阿贝尔范畴，对一切极限、余极限与扩张稳定；$\\mathcal{A}[S]$ 构成一族紧投射生成元；含入有左伴随',
         '',
