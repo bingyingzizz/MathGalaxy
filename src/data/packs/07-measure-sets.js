@@ -303,7 +303,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['定义', '积', '柱集'],
       statement: [
-        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_\\{\\alpha \\in A\\}$ 是一族可测空间，$X = \\prod_{\\alpha \\in A} X_\\alpha$，投影 $\\pi _\\alpha : X \\to X_\\alpha$。\n\n**积 $\\sigma$代数**定义为',
+        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_{\\alpha \\in A}$ 是一族可测空间，$X = \\prod_{\\alpha \\in A} X_\\alpha$，投影 $\\pi _\\alpha : X \\to X_\\alpha$。\n\n**积 $\\sigma$代数**定义为',
         '',
         '$$\\otimes _{\\alpha \\in A} \\mathcal{M}_\\alpha := \\mathcal{M}(\\{ \\pi _\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal{M}_\\alpha, \\alpha \\in A \\})$$'
       ].join('\n'),
@@ -387,7 +387,7 @@ window.MG = window.MG || {};
         '',
         '$$\\{ B(c, r) : c \\in C_j, r \\in \\mathbb{Q} \\}$$',
         '',
-        '是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\\mathfrak{B}_\\{X_{j}\\}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\\mathfrak{B}_X \\subseteq \\otimes\\mathfrak{B}_\\{X_{j}\\}$。',
+        '是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\\mathfrak{B}_{X_{j}}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\\mathfrak{B}_X \\subseteq \\otimes\\mathfrak{B}_{X_{j}}$。',
         '⚠ 可分性不能省：$\\mathbb{R}^\\mathbb{R}$（不可数积）上，积 $\\sigma$代数真包含于 $Borel \\sigma$代数。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.1']

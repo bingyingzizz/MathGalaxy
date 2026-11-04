@@ -99,7 +99,7 @@
       statement: [
         '集合 $S$ 上的**（二元）运算**就是一个映射',
         '',
-        '$\\ast : S \\times S \\longrightarrow S, \\qquad (a, b) \\longmapsto a \\ast b .$$',
+        '$$\\ast : S \\times S \\longrightarrow S, \\qquad (a, b) \\longmapsto a \\ast b .$$',
         '',
         '「像落在 $S$ 里」这一条就是常说的**封闭性** —— 它是定义的一部分，不是额外要求。',
       ].join('\n'),

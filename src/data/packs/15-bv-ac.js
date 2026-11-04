@@ -228,7 +228,7 @@ window.MG = window.MG || {};
         '$$(3/2)\\alpha - \\varepsilon \\le T_F(x+h) - T_F(x) < \\varepsilon + \\alpha$$',
         '',
         '于是 $\\alpha < 4\\varepsilon$，由 $\\varepsilon$ 任意得 $\\alpha = 0$。∎',
-        '⭐ 这条保证「全变差」这个操作**保持 NBV**：$F \\in NBV \\implies T_F \\in NBV$，正是下一条定理里 $|\\mu _F| = \\mu _\\{T_F\\}$ 的根据。'
+        '⭐ 这条保证「全变差」这个操作**保持 NBV**：$F \\in NBV \\implies T_F \\in NBV$，正是下一条定理里 $|\\mu _F| = \\mu _{T_F}$ 的根据。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.30']
     },
@@ -508,7 +508,7 @@ window.MG = window.MG || {};
         '',
         '（用 NBV 版本的 Jordan 分解，注意右连续与 $F(-\\infty ) = 0$ 都被差保留。）每个递增右连续、$F(-\\infty ) = 0$ 的函数唯一对应一个有限 Borel 测度（取 $\\mu ((a,b]) = F(b) - F(a)$，由 Lebesgue–Stieltjes 那一套扩张）；\n\n四块加起来即得 $\\mu _F$。\n\n**唯一性**来自「$\\mu$ 由它在 $(-\\infty , x]$ 上的值唯一决定」，而后者生成整个 $\\mathfrak{B}_\\mathbb{R}$。',
         '',
-        '**$(3) |\\mu _F| = \\mu _\\{T_F\\}$。** 由**引理**，$F \\in NBV \\implies T_F \\in NBV$，所以 $\\mu_{T_F}$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，',
+        '**$(3) |\\mu _F| = \\mu _{T_F}$。** 由**引理**，$F \\in NBV \\implies T_F \\in NBV$，所以 $\\mu_{T_F}$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，',
         '',
         '$$\\mu_{T_F}((-\\infty, x]) = T_F(x) = \\sup\\{ \\sum|F(x_j) - F(x_{j-1})| \\} = |\\mu_F|((-\\infty, x])$$',
         '',

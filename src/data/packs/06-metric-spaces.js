@@ -274,7 +274,7 @@ window.MG = window.MG || {};
       note: '度量空间里「每个开覆盖有有限子覆盖」与「每个序列有收敛子列」是同一件事；两个方向分开证，合起来才是这条等价。',
       proofs: [
         {
-          label: '紧 $\\implies$ 列紧',
+          label: '紧 ⟹ 列紧',
           text: [
             '设 $\\{x_{n}\\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。',
             '',
@@ -298,7 +298,7 @@ window.MG = window.MG || {};
           ].join('\n')
         },
         {
-          label: '列紧 $\\implies$ 紧',
+          label: '列紧 ⟹ 紧',
           text: [
             '用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。',
             '',
@@ -369,9 +369,9 @@ window.MG = window.MG || {};
       proof: [
         '设 $X$ 列紧，$\\{x_{n}\\}$ 是 $X$ 中的 Cauchy 列。',
         '',
-        '**①** 由列紧，$\\{x_{n}\\}$ 有收敛子列 $x_\\{n_{k}\\} \\to x \\in X$。',
+        '**①** 由列紧，$\\{x_{n}\\}$ 有收敛子列 $x_{n_{k}} \\to x \\in X$。',
         '',
-        '**② Cauchy 列只要有收敛子列，就整体收敛到同一个极限**：给定 $\\varepsilon > 0$，取 $N$ 使 $m, n \\ge N$ 时 $d(x_{m}, x_{n}) < \\varepsilon /2$；\n\n再取 $K$ 使 $k \\ge K$ 时 $n_{k} \\ge N$ 且 $d(x_\\{n_{k}\\}, x) < \\varepsilon /2$。\n\n于是对 $n \\ge N$，取 $k \\ge K$ 使 $n_{k} \\ge N$，得',
+        '**② Cauchy 列只要有收敛子列，就整体收敛到同一个极限**：给定 $\\varepsilon > 0$，取 $N$ 使 $m, n \\ge N$ 时 $d(x_{m}, x_{n}) < \\varepsilon /2$；\n\n再取 $K$ 使 $k \\ge K$ 时 $n_{k} \\ge N$ 且 $d(x_{n_{k}}, x) < \\varepsilon /2$。\n\n于是对 $n \\ge N$，取 $k \\ge K$ 使 $n_{k} \\ge N$，得',
         '',
         '$$d(x_n, x) \\le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \\varepsilon/2 + \\varepsilon/2 = \\varepsilon$$',
         '',
@@ -390,9 +390,9 @@ window.MG = window.MG || {};
       proof: [
         '设 $X$ 紧，$\\{x_{n}\\}$ 是 $X$ 中的 Cauchy 列。要证它收敛。',
         '',
-        '**①** 由「紧 $\\implies$ 列紧」（见那条箭头），$\\{x_{n}\\}$ 有收敛子列 $x_\\{n_{k}\\} \\to x \\in X$。',
+        '**①** 由「紧 $\\implies$ 列紧」（见那条箭头），$\\{x_{n}\\}$ 有收敛子列 $x_{n_{k}} \\to x \\in X$。',
         '',
-        '**② Cauchy 列只要有收敛子列就整体收敛到同一个极限**：给定 $\\varepsilon > 0$，取 $N_{1}$ 使 $m, n \\ge N_{1}$ 时 $d(x_{m}, x_{n}) < \\varepsilon /2$；\n\n取 $K$ 使 $n_{k} \\ge N_{1}$ 且 $d(x_\\{n_{k}\\}, x) < \\varepsilon /2$ 对 $k \\ge K$ 成立。\n\n则对 $n \\ge N_{1}$，取一个 $k \\ge K$ 使 $n_{k} \\ge N_{1}$，得',
+        '**② Cauchy 列只要有收敛子列就整体收敛到同一个极限**：给定 $\\varepsilon > 0$，取 $N_{1}$ 使 $m, n \\ge N_{1}$ 时 $d(x_{m}, x_{n}) < \\varepsilon /2$；\n\n取 $K$ 使 $n_{k} \\ge N_{1}$ 且 $d(x_{n_{k}}, x) < \\varepsilon /2$ 对 $k \\ge K$ 成立。\n\n则对 $n \\ge N_{1}$，取一个 $k \\ge K$ 使 $n_{k} \\ge N_{1}$，得',
         '',
         '$$d(x_n, x) \\le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \\varepsilon/2 + \\varepsilon/2 = \\varepsilon$$',
         '',
@@ -441,7 +441,7 @@ window.MG = window.MG || {};
         '',
         '其中第 $k$ 个子列的项全部落在某个半径 1/k 的球内，因此它任意两项的距离 $< 2/k$。',
         '',
-        '**② 对角线。** 取 $y_{k} = x^\\{(k)\\}_{k}$（第 $k$ 个子列的第 $k$ 项）。则 $\\{y_{k}\\}$ 是 $\\{x_{n}\\}$ 的子列；且对 $k, l \\ge K$，$y_{k}$ 与 $y_{l}$ 都是第 $K$ 个子列的项（下标 $\\ge K$ 的项都在里面），故',
+        '**② 对角线。** 取 $y_{k} = x^{(k)}_{k}$（第 $k$ 个子列的第 $k$ 项）。则 $\\{y_{k}\\}$ 是 $\\{x_{n}\\}$ 的子列；且对 $k, l \\ge K$，$y_{k}$ 与 $y_{l}$ 都是第 $K$ 个子列的项（下标 $\\ge K$ 的项都在里面），故',
         '',
         '$$d(y_k, y_l) < 2/K$$',
         '',

@@ -383,7 +383,7 @@ window.MG = window.MG || {};
       target: 'ax.choice',
       title: '佐恩引理 $\\implies$ 选择公理（路线 $2\\implies1$）',
       proof: [
-        '设 $\\{A_i\\}_\\{i \\in I\\}$ 是一族非空集合。要对它造出一个选择函数。',
+        '设 $\\{A_i\\}_{i \\in I}$ 是一族非空集合。要对它造出一个选择函数。',
         '',
         '**① 舞台：部分选择函数全体**。令',
         '',
@@ -396,18 +396,18 @@ window.MG = window.MG || {};
         '**② 每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{F}$ 是 $\\subseteq$链，令 $f = \\bigcup \\mathcal{D}$。',
         '',
         '$f$ 是函数：若 $(i, a), (i, a\') \\in f$，则它们分别属于某个 $f_{1}, f_{2} \\in \\mathcal{D}$；$\\mathcal{D}$ 是链，不妨设 $f_{1} \\subseteq f_{2}$，于是 $(i, a), (i, a\') \\in f_{2}$，而 $f_{2}$ 是函数，故 $a = a\'$。',
-        '$f \\in \\mathcal{F}$：$\\operatorname{dom} f = \\bigcup _\\{g \\in \\mathcal{D}\\} \\operatorname{dom} g \\subseteq I$，且对 $i \\in \\operatorname{dom} f$ 有 $f(i) \\in A_i$。',
+        '$f \\in \\mathcal{F}$：$\\operatorname{dom} f = \\bigcup _{g \\in \\mathcal{D}} \\operatorname{dom} g \\subseteq I$，且对 $i \\in \\operatorname{dom} f$ 有 $f(i) \\in A_i$。',
         '$f$ 是 $\\mathcal{D}$ 的上界：$f \\supseteq g$ 对一切 $g \\in \\mathcal{D}$ 成立。',
         '',
         '**③ 用佐恩引理**，取 $(\\mathcal{F}, \\subseteq )$ 的极大元 $f$。',
         '',
-        '**④ 极大元必须「定义在全体 $I$ 上」**：若存在 $i_{0} \\in I \\setminus \\operatorname{dom} f$，由 $A_\\{i_{0}\\} \\ne \\emptyset$ 取 $a \\in A_\\{i_{0}\\}$，则',
+        '**④ 极大元必须「定义在全体 $I$ 上」**：若存在 $i_{0} \\in I \\setminus \\operatorname{dom} f$，由 $A_{i_{0}} \\ne \\emptyset$ 取 $a \\in A_{i_{0}}$，则',
         '',
         '$$f\' = f \\cup \\{ (i_0, a) \\}$$',
         '',
         '仍是 $\\mathcal{F}$ 中的元素（$i_{0} \\notin \\operatorname{dom} f$，不破坏函数性），且 $f \\subset f\'$ —— 与 $f$ 的极大性矛盾。故 $\\operatorname{dom} f = I$。',
         '',
-        '**⑤** 于是 $f : I \\to \\bigcup _\\{i \\in I\\} A_i$ 且 $f(i) \\in A_i$ 对一切 $i$ 成立，即 $f$ 是这族集合的选择函数。由族的任意性，AC 成立。∎'
+        '**⑤** 于是 $f : I \\to \\bigcup _{i \\in I} A_i$ 且 $f(i) \\in A_i$ 对一切 $i$ 成立，即 $f$ 是这族集合的选择函数。由族的任意性，AC 成立。∎'
       ].join('\n'),
       note: '「按包含序取极大元，再证明它已经没法再大」—— 这是用佐恩引理造存在性对象的典型手法。'
     }

@@ -98,8 +98,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '直觉：$f$ 可能「在无穷远处爆掉」，但在每个有限范围里都还好。',
-        '例：常函数 1 属于 $L^{1}_{l}oc$ 但不属于 $L^{1}(\\mathbb{R}^{n})$；$1/|x|$ 在 $\\mathbb{R}^{n}$ 上属于 $L^{1}_{l}oc$（$n \\ge 2$ 时不属于 $L^{1}$）。',
-        '⚠ 微分理论里必须是 $L^{1}_{l}oc$ 而不是 $L^{1}$：因为讨论的是**逐点**行为，而局部信息就够。'
+        '例：常函数 1 属于 $L^{1}_{loc}$ 但不属于 $L^{1}(\\mathbb{R}^{n})$；$1/|x|$ 在 $\\mathbb{R}^{n}$ 上属于 $L^{1}_{loc}$（$n \\ge 2$ 时不属于 $L^{1}$）。',
+        '⚠ 微分理论里必须是 $L^{1}_{loc}$ 而不是 $L^{1}$：因为讨论的是**逐点**行为，而局部信息就够。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.4']
     },
@@ -416,7 +416,7 @@ window.MG = window.MG || {};
       target: 'thm.lebesgue-differentiation',
       title: '极大定理 + 连续函数逼近 $\\implies$ Lebesgue 微分定理',
       proof: [
-        '**① 先局部化。** 由 $L^{1}_{l}oc$ 的定义与测度的可数可加性，只需对每个 $N \\in \\mathbb{N}$ 证明在球 $\\{|x| \\le N\\}$ 上几乎处处成立；把 $f$ 换成 $f\\cdot\\chi_{B(N+1, 0)}$ 后即可**设 $f \\in L^1$**。',
+        '**① 先局部化。** 由 $L^{1}_{loc}$ 的定义与测度的可数可加性，只需对每个 $N \\in \\mathbb{N}$ 证明在球 $\\{|x| \\le N\\}$ 上几乎处处成立；把 $f$ 换成 $f\\cdot\\chi_{B(N+1, 0)}$ 后即可**设 $f \\in L^1$**。',
         '',
         '**② 用连续函数逼近。** 给定 $\\varepsilon > 0$，由「$L^{1}$ 里的逼近」，取**连续函数** $g$ 使',
         '',
@@ -456,7 +456,7 @@ window.MG = window.MG || {};
       target: 'thm.lebesgue-set-full',
       title: '微分定理 + 可数稠密子集 $\\implies$ Lebesgue 集几乎处处',
       proof: [
-        '**① 对每个复数 $c$ 用一次微分定理。** 固定 $c \\in \\mathbb{C}$，把微分定理用在函数 $h(x) = |f(x) - c|$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $E_c$，使对 $x \\notin E_c$，',
+        '**① 对每个复数 $c$ 用一次微分定理。** 固定 $c \\in \\mathbb{C}$，把微分定理用在函数 $h(x) = |f(x) - c|$ 上（它是 $L^{1}_{loc}$ 的）：存在零集 $E_c$，使对 $x \\notin E_c$，',
         '',
         '$$\\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - c| dy = |f(x) - c|$$',
         '',
@@ -565,7 +565,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.locally-integrable',
       usedBy: 'def.average-operator',
-      note: '平均算子只在 $L^{1}_{l}oc$ 上定义。'
+      note: '平均算子只在 $L^{1}_{loc}$ 上定义。'
     },
     {
       id: 'def-link.average-maximal',
@@ -579,7 +579,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.locally-integrable',
       usedBy: 'def.maximal-function',
-      note: '极大函数的定义域是 $L^{1}_{l}oc$。'
+      note: '极大函数的定义域是 $L^{1}_{loc}$。'
     },
     {
       id: 'def-link.maximal-theorem-lm',
@@ -628,7 +628,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.locally-integrable',
       usedBy: 'thm.rn-pointwise',
-      note: '证明中间要推出 $f \\in L^{1}_{l}oc$。'
+      note: '证明中间要推出 $f \\in L^{1}_{loc}$。'
     }
   ]
 });
