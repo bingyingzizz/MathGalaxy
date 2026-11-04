@@ -717,7 +717,7 @@ window.MG = window.MG || {};
         '1. $\\mathbb{Q}/\\mathbb{Z}$ 是内射 $\\mathbb{Z}$-模（可除，`thm.pid-injective-divisible`），且是**余生成元**：求值映射',
         '$$A \\longrightarrow \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\operatorname{Hom}_{\\mathbb{Z}}(A, \\mathbb{Q}/\\mathbb{Z}),\\ \\mathbb{Q}/\\mathbb{Z}\\bigr)$$',
         '对每个阿贝尔群 $A$ 都是单射。',
-        '2. 对左 $R$-模 $M$，先有单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$、$m \\mapsto (r \\mapsto r m)$；\n\n取内射 $\\mathbb{Z}$-模 $E$ 与单射 $M \\hookrightarrow E$（第 1 步给出 $E = M^{\\vee\\vee}$），得 $R$-模单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, E)$。',
+        '2. 对左 $R$-模 $M$，先有单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$、$m \\mapsto (r \\mapsto r m)$；\n\n取内射 $\\mathbb{Z}$-模 $E$ 与单射 $M \\hookrightarrow E$，得 $R$-模单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, E)$。\\n\\n⚠ **$E$ 不能取成二次对偶 $M^{\\vee\\vee}$**（$M = \\mathbb{Z}/2$ 时它 $\\cong \\mathbb{Z}/2$，**不可除**，因而不是内射）。正确的取法是**积**：$E := (\\mathbb{Q}/\\mathbb{Z})^{\\operatorname{Hom}_{\\mathbb{Z}}(M,\\mathbb{Q}/\\mathbb{Z})}$ —— 可除群之积仍可除 $\\implies$ $E$ 内射；而 $\\mathbb{Q}/\\mathbb{Z}$ 是余生成元 $\\implies$ 求值映射 $M \\hookrightarrow E$ 单。',
         '3. $\\operatorname{Hom}_{\\mathbb{Z}}(R, E)$ 是**内射** $R$-模。',
         '',
         '于是每个模都有**内射消解** $0 \\to M \\to I^{0} \\to I^{1} \\to \\cdots$。'

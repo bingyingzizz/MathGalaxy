@@ -2785,6 +2785,31 @@ function assertNotation(MG, graph) {
         ` 用了禁用写法${b.why ? `（${b.why}）` : ''} —— 应为 \`${want}\``);
     }
   }
+
+  /* ④ display 公式（`$$…$$`）里的花括号必须配对（v2 §11-E 的 _sweep_dispbrace）——
+     零误报，做成硬门。踩过的例子：`\frac{1}{2` 少一个右括号，KaTeX 会宽容到行末不报错，排版却歪。
+     ⚠ 只查 display：行内公式常有合法的「跨段写」（`A$ 标准正交$\}`），那会误报。 */
+  {
+    const bad = [];
+    const BS = String.fromCharCode(92);
+    for (const it of items) {
+      const t = String(it.text || '');
+      for (const m of t.matchAll(/\$\$([\s\S]*?)\$\$/g)) {
+        let d = 0, ok = true;
+        for (let k = 0; k < m[1].length; k++) {
+          const c = m[1][k];
+          if (c === BS) { k++; continue; }        // 跳过 `{` `}` `\` 等命令
+          if (c === '{') d++;
+          else if (c === '}') { d--; if (d < 0) { ok = false; break; } }
+        }
+        if (!ok || d !== 0) { bad.push(it.id + '.' + it.field + '（' + (d > 0 ? '少 ' + d + ' 个 }' : '多一个 }') + '）'); break; }
+      }
+    }
+    if (bad.length) {
+      errs.push('公式：' + bad.slice(0, 4).join('、') + (bad.length > 4 ? ' 等 ' + bad.length + ' 处' : '') +
+        ' 的 `$$…$$` 里花括号不配对 —— 常见的是一位一位删字符时把右括号删掉了');
+    }
+  }
   return errs;
 }
 

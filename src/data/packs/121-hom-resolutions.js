@@ -348,7 +348,7 @@ window.MG = window.MG || {};
         '',
         '而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。',
         '',
-        '对偶地，它等于 $M$ 看作**右**模时的投射维数：$\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$。'
+        '**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{pd}_{R} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的投射维数」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。'
       ].join('\n'),
       notes: [
         '**与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：',

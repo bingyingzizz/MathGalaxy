@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-04T10:23:29.474Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-04T10:43:42.489Z
 > 15 星系 / 105 星团 / 1540 节点 / 3165 连线（强边 3126，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -25945,7 +25945,7 @@ $$A \longrightarrow \operatorname{Hom}_{\mathbb{Z}}\bigl(\operatorname{Hom}_{\ma
 对每个阿贝尔群 $A$ 都是单射。
 2. 对左 $R$-模 $M$，先有单射 $M \hookrightarrow \operatorname{Hom}_{\mathbb{Z}}(R, M)$、$m \mapsto (r \mapsto r m)$；
 
-取内射 $\mathbb{Z}$-模 $E$ 与单射 $M \hookrightarrow E$（第 1 步给出 $E = M^{\vee\vee}$），得 $R$-模单射 $M \hookrightarrow \operatorname{Hom}_{\mathbb{Z}}(R, E)$。
+取内射 $\mathbb{Z}$-模 $E$ 与单射 $M \hookrightarrow E$，得 $R$-模单射 $M \hookrightarrow \operatorname{Hom}_{\mathbb{Z}}(R, E)$。\n\n⚠ **$E$ 不能取成二次对偶 $M^{\vee\vee}$**（$M = \mathbb{Z}/2$ 时它 $\cong \mathbb{Z}/2$，**不可除**，因而不是内射）。正确的取法是**积**：$E := (\mathbb{Q}/\mathbb{Z})^{\operatorname{Hom}_{\mathbb{Z}}(M,\mathbb{Q}/\mathbb{Z})}$ —— 可除群之积仍可除 $\implies$ $E$ 内射；而 $\mathbb{Q}/\mathbb{Z}$ 是余生成元 $\implies$ 求值映射 $M \hookrightarrow E$ 单。
 3. $\operatorname{Hom}_{\mathbb{Z}}(R, E)$ 是**内射** $R$-模。
 
 于是每个模都有**内射消解** $0 \to M \to I^{0} \to I^{1} \to \cdots$。
@@ -26282,7 +26282,7 @@ $$0 \to M \to I^{0} \to I^{1} \to \cdots \to I^{n} \to 0$$
 
 而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\infty$）。
 
-对偶地，它等于 $M$ 看作**右**模时的投射维数：$\operatorname{id}_{R} M = \operatorname{pd}_{R^{\mathrm{op}}} M$。
+**对偶（不要写错）**：$\operatorname{id}_{R} M = \operatorname{pd}_{R} \operatorname{Hom}_{\mathbb{Z}}(M,\, \mathbb{Q}/\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的投射维数」。\n\n⚠ 不能写成 $\operatorname{id}_{R} M = \operatorname{pd}_{R^{\mathrm{op}}} M$：取 $R = \mathbb{Z}$、$M = \mathbb{Q}$，$\mathbb{Q}$ 可除 $\implies$ $\operatorname{id} = 0$，而 $\operatorname{pd}_{\mathbb{Z}}\mathbb{Q} = 1$（$\mathbb{Q}$ 不投射），两者不等。
 
 **与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：
 
@@ -33459,7 +33459,7 @@ $$X(u, v) = a(u) + v\, b(u), \qquad (u, v) \in I \times \mathbb{R} ,$$
 
 形式化的版本：若 $\varphi : S_{1}\to S_{2}$ 是局部等距，则内蕴量在 $\varphi$ 下不变；反之，一切局部等距都保持的量就是内蕴量。
 
-判别上的经验法则：只用到 $\langle \dot\gamma,\dot\gamma\rangle = 1$、角度、面积这类计算的量是内蕴的；一旦式子里出现曲面的单位法向 $n$ 或第二基本形式，就是外在的。
+判别上的**经验法则（只当前置直觉，不是判据）**：只用到 $\langle \dot\gamma,\dot\gamma\rangle = 1$、角度、面积这类计算的量是内蕴的；出现曲面的单位法向 $n$ 的量通常是外在的。⚠ 但「式子里出现 $II$」**不能**当成外在的判据：$K = \det(II)/\det(I)$ 就用了 $II$，而 $K$ 是**内蕴**的（这正是绝妙定理 `thm.theorema-egregium`）。真正的判据只有定义里那条：在**局部等距**下是否不变。
 
 **内蕴的**：弧长、两条曲线的夹角、区域面积、测地曲率 $k_{g}$、**高斯曲率** $K$、欧拉示性数 $\chi$。
 
@@ -35109,7 +35109,7 @@ $$\Phi(u\cdot g) = \bigl(\pi(u),\ \varphi(u)\,g\bigr).$$
 #### 帧丛　`def.frame-bundle`
 *定义*　帧丛：把向量丛变成主 $\mathrm{GL}(k)$-丛
 
-**在做什么**：向量丛的纤维是**向量空间**（有加法、有零元），主丛的纤维是**群**（有乘法、没有零元）。帧丛就是两者之间那座桥：把每根纤维里的「一组基」而不是「一个向量」取出来当新纤维。
+**在做什么**：向量丛的纤维是**向量空间**（有加法、有零元）；主丛的纤维是 $G$-**挠集**（torsor：$G$ 自由且传递地作用，自身没有典范的单位元 —— 选定一个基点后才**非典范地**认成 $G$）。帧丛就是两者之间那座桥：把每根纤维里的「一组基」而不是「一个向量」取出来当新纤维。
 
 设 $\pi : E \to M$ 是秩 $k$ 的光滑实向量丛。**帧丛** $\mathrm{Fr}(E) \to M$ 的纤维是
 
@@ -37092,9 +37092,9 @@ $$[u, v]_{q,p} := \sum_{i=1}^{n}\Bigl(\frac{\partial q_{i}}{\partial u}\frac{\pa
 
 **与 Poisson 括号的关系**：把 Poisson 括号矩阵 $\bigl(\{u_{i}, u_{j}\}\bigr)$ 记为 $P$，Lagrange 括号矩阵记为 $L$，则
 
-$$L \cdot P = I ,$$
+$$L \cdot P = -I ,$$
 
-即 $L = P^{-1}$ —— 两者互为逆矩阵。
+即 $L = -P^{-1}$ —— 两者**差一个符号**才互为逆矩阵（$n = 1$ 时 $L = P = \begin{pmatrix}0 & 1\cr -1 & 0\end{pmatrix}$，$LP = -I$；一般式即 $\sum_{k} [u_{i},u_{k}]\{u_{k},u_{j}\} = -\delta_{ij}$）。
 
 **正则性的判据**：变换 $(q, p) \mapsto (Q, P)$ 是**正则变换**（辛同胚）$\iff$ 对每个 $i, j$ 有 $[Q_{i}, Q_{j}] = [P_{i}, P_{j}] = 0$ 且 $[Q_{i}, P_{j}] = \delta_{ij}$。
 
