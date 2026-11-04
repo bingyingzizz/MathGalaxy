@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T10:43:42.489Z",
+  "generated": "2026-11-04T11:05:51.507Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -18903,7 +18903,7 @@
     "余标架",
     "曲面论"
    ],
-   "statement": "设 $U_{0} \\subseteq S$ 是曲面上的开集。**活动标架**是三个 $C^{1}$ 向量场 $e_{1}, e_{2}, e_{3}$，使每点的 $(e_{1}, e_{2}, e_{3})$ 都是 $\\mathbb{R}^{3}$ 的标准正交基（随点移动而变，故名「活动」）。**对偶余标架**是\n\n$$\\omega^{i}(v) := \\langle v, e_{i}\\rangle ,\\qquad i = 1,2,3,$$\n\n它们是 $1$-形式，满足 $\\omega^{i}(e_{j}) = \\delta^{i}_{\\ j}$。位置向量的微分按标架展开：\n\n$$\\mathrm{d}r = \\omega^{1}e_{1}+\\omega^{2}e_{2}+\\omega^{3}e_{3}.$$\n\n这叫**焊接方程**（soldering）：它把「$r$ 怎么动」翻译成「沿标架的各分量动多少」。",
+   "statement": "设 $U_{0} \\subseteq S$ 是曲面上的开集。**活动标架**是三个 $C^{1}$ 向量场 $e_{1}, e_{2}, e_{3}$，使每点的 $(e_{1}, e_{2}, e_{3})$ 都是 $\\mathbb{R}^{3}$ 的标准正交基（随点移动而变，故名「活动」）。**对偶余标架**是\n\n$$\\omega^{i} := \\langle \\mathrm{d}r,\\, e_{i}\\rangle ,\\qquad i = 1,2,3,$$\n\n它们是**参数域上**的 $1$-形式（$v$ 要先被 $\\mathrm{d}r$ 送成环境向量，才能和 $e_{i}$ 做内积）。⚠ 对**曲面**，$\\mathrm{d}r$ 落在切平面里，所以 $\\omega^{3} \\equiv 0$；而 $\\omega^{i}(e_{j}) = \\delta^{i}_{\\ j}$ 只对 $j = 1, 2$（切向量）有意义 ——$e_{3}$ 是法向，$\\omega^{3}(e_{3})$ 在这里**没有定义**（只有把 $\\omega^{i}$ 看成$\\mathbb{R}^{3}$ 上形式的拉回时它才有值）。位置向量的微分按标架展开：\n\n$$\\mathrm{d}r = \\omega^{1}e_{1}+\\omega^{2}e_{2}+\\omega^{3}e_{3}.$$\n\n这叫**焊接方程**（soldering）：它把「$r$ 怎么动」翻译成「沿标架的各分量动多少」。",
    "notes": "**为什么值得换一套说法**：坐标路线要算 $r_{uu}, r_{uv}, r_{vv}$ 以及 $n$ 的偏导；标架路线只把 $\\mathrm{d}r$、$\\mathrm{d}e_{i}$ **展开一次**，此后全是 $1$-形式之间的代数（外积、比较系数）。这正是用户要的「用活动标架代替复杂计算」。\n\n**曲面上的标准取法**：$e_{3} = n$（法向），$e_{1}, e_{2}$ 是与 $n$ 正交的单位切向量场。这时 $\\omega^{3} = \\langle \\mathrm{d}r, n\\rangle = 0$：曲面上没有法向增量。\n\n⚠️ $(e_{1}, e_{2})$ 只在局部存在，且不唯一（可差一次转动）。凡要写出来的量都要写成与转动无关的形式（如 $I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$），否则一换标架就变形。\n\n**记号**：$\\omega^{i}$ 的上标是编号、不是幂；$(e_{1}, e_{2}, e_{3})$ 与 $(\\omega^{1}, \\omega^{2}, \\omega^{3})$ 互为对偶对，这是活动标架法的全部记账规则。",
    "refs": [
     "陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 活动标架与余标架",
@@ -23447,7 +23447,7 @@
    "abstract_en": "A tensor field is the smooth version of a multilinear form attached to each point: an $(r,s)$-tensor at $p$ eats $r$ covectors and $s$ vectors and returns a number, and the tensor bundle $T^{(r,s)}M$ collects these into a manifold of dimension $n+n^{r+s}$ whose transition maps are products of Jacobi matrices. Smooth sections of that bundle are the $(r,s)$-tensor fields. Metrics, differential forms, symplectic forms and the curvature tensor are all instances, and because the transition law involves only first derivatives, tensor components never pick up second derivatives.",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "stale",
      "version": "v0.9.3",
      "fields": [
       "abstract",
@@ -23457,10 +23457,12 @@
       "abstract"
      ],
      "fieldStatus": {
-      "abstract": "reviewed",
+      "abstract": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
       "abstract": "v0.9.3#06e55f52"
      }
@@ -23480,7 +23482,7 @@
     "张量丛",
     "多重线性"
    ],
-   "statement": "**在说什么**：把「每点一个多重线性型」做成光滑对象 —— 张量场就是能按矩阵方式逐点记账的那类量；度量、曲率、微分形式全是它的样子。\n\n设 $M$ 是 $n$ 维光滑流形，$p \\in M$。**$(r,s)$ 型张量**是多重线性映射\n\n$$T : \\underbrace{T_{p}^{\\ast}M \\times \\cdots \\times T_{p}^{\\ast}M}_{r} \\times \\underbrace{T_{p}M \\times \\cdots \\times T_{p}M}_{s} \\longrightarrow \\mathbb{R},$$\n\n即吃了 $r$ 个余向量与 $s$ 个向量吐一个数。全体记 $T^{(r,s)}_{p}M$，维数 $n^{r+s}$。**张量丛**是\n\n$$T^{(r,s)}M := \\bigsqcup_{p \\in M} T^{(r,s)}_{p}M ,$$\n\n它是 $n + n^{r+s}$ 维光滑流形，造法与切丛相同：转移映射是 Jacobi 矩阵的 $s$ 次直积与它的逆的 $r$ 次直积（`def.tangent-bundle`）。\n\n$T^{(r,s)}M$ 的光滑截面叫 **$(r,s)$ 型张量场**。在卡里展开\n\n$$T = \\sum T^{i_{1}\\cdots i_{r}}_{\\ \\ j_{1}\\cdots j_{s}}\\ \\partial_{i_{1}} \\otimes \\cdots \\otimes \\partial_{i_{r}} \\otimes \\mathrm{d}x^{j_{1}} \\otimes \\cdots \\otimes \\mathrm{d}x^{j_{s}} ,$$\n\n要求每个分量 $T^{i_{1}\\cdots i_{r}}_{\\ \\ j_{1}\\cdots j_{s}}$ 都是 $U$ 上的光滑函数。分量换卡时每个上标乘一次 $\\partial y/\\partial x$、每个下标乘一次 $\\partial x/\\partial y$。",
+   "statement": "**在说什么**：把「每点一个多重线性型」做成光滑对象 —— 张量场就是能按矩阵方式逐点记账的那类量；度量、曲率、微分形式全是它的样子。\n\n设 $M$ 是 $n$ 维光滑流形，$p \\in M$。**$(r,s)$ 型张量**是多重线性映射\n\n$$T : \\underbrace{T_{p}^{\\ast}M \\times \\cdots \\times T_{p}^{\\ast}M}_{r} \\times \\underbrace{T_{p}M \\times \\cdots \\times T_{p}M}_{s} \\longrightarrow \\mathbb{R},$$\n\n即吃了 $r$ 个余向量与 $s$ 个向量吐一个数。全体记 $T^{(r,s)}_{p}M$，维数 $n^{r+s}$。**张量丛**是\n\n$$T^{(r,s)}M := \\bigsqcup_{p \\in M} T^{(r,s)}_{p}M ,$$\n\n它是 $n + n^{r+s}$ 维光滑流形，造法与切丛相同：转移映射是 **$r$ 个 $J$** 与 **$s$ 个 $(J^{-1})^{\\mathsf T}$** 的直积（切槽按 $J$ 变、余切槽按 $(J^{-1})^{\\mathsf T}$ 变；取 $y = 2x$ 时 $J = 2$，$\\mathrm{d}x$ 的系数要乘 $1/2$，即可验）（`def.tangent-bundle`）。\n\n$T^{(r,s)}M$ 的光滑截面叫 **$(r,s)$ 型张量场**。在卡里展开\n\n$$T = \\sum T^{i_{1}\\cdots i_{r}}_{\\ \\ j_{1}\\cdots j_{s}}\\ \\partial_{i_{1}} \\otimes \\cdots \\otimes \\partial_{i_{r}} \\otimes \\mathrm{d}x^{j_{1}} \\otimes \\cdots \\otimes \\mathrm{d}x^{j_{s}} ,$$\n\n要求每个分量 $T^{i_{1}\\cdots i_{r}}_{\\ \\ j_{1}\\cdots j_{s}}$ 都是 $U$ 上的光滑函数。分量换卡时每个上标乘一次 $\\partial y/\\partial x$、每个下标乘一次 $\\partial x/\\partial y$。",
    "notes": "**四种特殊情况刚好都是见过的对象**：$(0,0)$ 型是光滑函数；$(1,0)$ 型是向量场；$(0,1)$ 型是 $1$-形式；$(0,k)$ 型且对调任两变元变号的就是 $k$-形式（`def.differential-form`）。所以「张量场」是这些概念的共同外壳。\n\n**为什么叫「张量」**：多重线性加逐点定义，导致分量换卡时只乘 Jacobi 矩阵的乘积，**不出现二阶导数**。这条「变换律只含一阶导」是张量与联络系数（$\\Gamma$ 不是张量）的分界线。\n\n**例子**：黎曼度量是 $(0,2)$ 型（`def.riemannian-metric`）；曲率张量是 $(1,3)$ 型，写成 $R_{ijk\\ell}$ 时是用 $g$ 把上标拉下来的 $(0,4)$ 型（`def.curvature-tensor`）；\n\n辛形式是 $(0,2)$ 型且反称闭；\n\nEinstein 张量是 $(0,2)$ 型。\n\n**纤维为什么长得快**：$r+s = 2$、$n = 4$ 时纤维有 $16$ 维，所以「逐点选一个张量」的自由度很快失控 —— 这正是曲率张量的对称性值得单独数一遍的原因：$n^{4} = 256$ 砍到 $20$。\n\n**上标下标要配对**：$\\mathrm{d}x^{i}(\\partial_{j}) = \\delta^{i}_{\\ j}$。写分量时上标配 $\\partial$、下标配 $\\mathrm{d}x$，配错了就会在不该出现 $\\det$ 的地方冒出 $\\det$。\n\n**与 `def.exterior-algebra` 的关系**：每点的外代数就是交错张量的全体；「交错」是在张量丛上加一条对称性要求，然后取截面 —— 所以微分形式是张量场的特例，反之不然。",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 张量场与张量丛",
@@ -24169,7 +24171,7 @@
     "奇异方块",
     "参数化"
    ],
-   "statement": "**在做什么**：把一个标准方块光滑地放进流形，得到一张允许退化的参数片 —— 积分就挂在这样的参数片上，而它的「面」有整齐的编号。\n\n设 $M$ 是 $n$ 维光滑流形。$M$ 里的一个 **$k$ 维奇异方块**是一个映射\n\n$$c : [0,1]^{k}\\longrightarrow M ,$$\n\n它在一个含 $[0,1]^{k}$ 的开集上光滑（等价地：在某张卡里每个分量光滑）。$k = 0$ 时 $[0,1]^{0}$ 是一个点，$0$-方块就是 $M$ 里的一个点。\n\n「**奇异**」说的是 $\\mathrm{d}c_{p}$ 不必满秩：$c$ 可以自交、可以把某个方向压成零；它不必是单射，也不必是浸入。压扁了照样是合法的方块，只是像集不再是子流形。\n\n记 $Q_{k}(M)$ 为 $M$ 里全体 $k$-方块。$M$ 上的 $k$-形式 $\\omega$ 沿 $c$ 拉回到 $[0,1]^{k}$，这就是「形式在方块上积分」的入口。",
+   "statement": "**在做什么**：把一个标准方块光滑地放进流形，得到一张允许退化的参数片 —— 积分就挂在这样的参数片上，而它的「面」有整齐的编号。\n\n设 $M$ 是 $n$ 维光滑流形。$M$ 里的一个 **$k$ 维奇异方块**是一个映射\n\n$$c : [0,1]^{k}\\longrightarrow M ,$$\n\n它在一个含 $[0,1]^{k}$ 的开集上光滑 —— 含义是**逐点**的：每个 $t$ 有邻域落在 $M$ 的某张卡 $(U, \\varphi)$ 里，且 $\\varphi \\circ c$ 的各分量光滑。⛔ 不能写成「在某**一张**卡里各分量光滑」：不同点可以落在不同的卡里（$c(t) = e^{2\\pi i t}$ 绕满整个圆，就没有任何一张卡装得下它的像）。$k = 0$ 时 $[0,1]^{0}$ 是一个点，$0$-方块就是 $M$ 里的一个点。\n\n「**奇异**」说的是 $\\mathrm{d}c_{p}$ 不必满秩：$c$ 可以自交、可以把某个方向压成零；它不必是单射，也不必是浸入。压扁了照样是合法的方块，只是像集不再是子流形。\n\n记 $Q_{k}(M)$ 为 $M$ 里全体 $k$-方块。$M$ 上的 $k$-形式 $\\omega$ 沿 $c$ 拉回到 $[0,1]^{k}$，这就是「形式在方块上积分」的入口。",
    "notes": "**为什么是方块不是单纯形**：单纯形有 $k+1$ 个面（丢一个顶点得到一个），方块有 $2k$ 个面（把某一个坐标钉在两端之一得到一个）。方块赢在两处：面与坐标轴一一对应，于是符号 $(-1)^{i+\\alpha}$ 里的 $i$ 就是轴号；而且方块本身自带 Lebesgue 测度与标准定向，在它上面积分不必另行选取定向。\n\n**光滑到边界**：$c$ 只在闭方块上有定义，所以「光滑」必须解释成「能延拓到某个开邻域上光滑」。这个延拓不必唯一，但任何与积分有关的量都只看 $[0,1]^{k}$ 上的值，而边界是零测集，所以不产生歧义。\n\n**退化不是病**：常值方块（整个 $[0,1]^{k}$ 映成一点）也允许，它对积分贡献零。允许退化换来的是「任意光滑映射都能当方块用」，不必先证明像集是子流形 —— 这是链这套记账比「子流形」省事的地方。\n\n**与切空间的关系**：$\\mathrm{d}c_{p} : \\mathbb{R}^{k}\\to T_{c(p)}M$ 是切映射（`def.tangent-space-manifold` 里那个）。满秩时它是浸入，像集局部是 $k$ 维子流形；不满秩时正是「奇异」二字所指。\n\n**⚠️ 记号**：有的书把方块写成 $c : I^{k}\\to M$ 并默认 $I = [0,1]$，有的用 $[a,b]$。本图一律取 $I = [0,1]$，与 $\\partial c$ 的符号约定配套。",
    "refs": [
     "Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 奇异方块与链",
@@ -25534,7 +25536,7 @@
     "实积分",
     "有理函数"
    ],
-   "statement": "**白话**：分母比分子至少高两次、并且在实轴上没有零点的有理函数，它在整条实轴上的积分等于 $2\\pi i$ 乘上半平面所有极点的留数之和。\n\n设 $R(x) = P(x)/Q(x)$，$P, Q$ 是实系数多项式，$\\deg Q \\ge \\deg P + 2$，且 $Q$ 在 $\\mathbb{R}$ 上无零点。则\n\n$$\\int_{-\\infty}^{\\infty} R(x)\\,\\mathrm{d}x = 2\\pi i \\sum_{\\operatorname{Im} a_k > 0} \\operatorname{Res}(R, a_k),$$\n\n右端对上半平面内的全部极点求和。因为 $R$ 取实值，这个和自动是实数。",
+   "statement": "**白话**：分母比分子至少高两次、并且在实轴上没有零点的有理函数，它在整条实轴上的积分等于 $2\\pi i$ 乘上半平面所有极点的留数之和。\n\n设 $R(x) = P(x)/Q(x)$，$P, Q$ 是实系数多项式，$\\deg Q \\ge \\deg P + 2$，且 $Q$ 在 $\\mathbb{R}$ 上无零点。则\n\n$$\\int_{-\\infty}^{\\infty} R(x)\\,\\mathrm{d}x = 2\\pi i \\sum_{\\operatorname{Im} a_k > 0} \\operatorname{Res}(R, a_k),$$\n\n右端对上半平面内的全部极点求和。因为 $R$ 取实值、左边的积分是**实数**，所以那个留数之和自动是**纯虚数**（要乘上 $2\\pi i$ 才回到实轴）。例：$R = 1/(1+x^{2})$ 在上半平面的唯一极点是 $i$，$\\operatorname{Res}(R,\\, i) = 1/(2i) = -i/2$ 确实是纯虚的，而 $2\\pi i\\cdot(-i/2) = \\pi$。",
    "notes": "⭐ 完整计算一：\n\n$$\\int_{-\\infty}^{\\infty} \\frac{\\mathrm{d}x}{(x^2 + 1)^2} = \\frac{\\pi}{2}.$$\n\n上半平面只有一个极点 $i$，阶为 $2$。用极点留数公式（$m = 2$）：\n\n$$\\operatorname{Res}\\left( \\frac{1}{(z^2+1)^2},\\, i \\right) = \\frac{\\mathrm{d}}{\\mathrm{d}z}\\left[ \\frac{(z - i)^2}{(z^2+1)^2} \\right]_{z=i} = \\frac{\\mathrm{d}}{\\mathrm{d}z}\\left[ \\frac{1}{(z+i)^2} \\right]_{z=i} = \\frac{-2}{(2i)^3} = \\frac{1}{4i}.$$\n\n于是积分 $= 2\\pi i \\cdot \\dfrac{1}{4i} = \\dfrac{\\pi}{2}$。$\\checkmark$\n\n⭐ 完整计算二：\n\n$$\\int_{-\\infty}^{\\infty} \\frac{\\mathrm{d}x}{x^4 + 1} = \\frac{\\pi}{\\sqrt{2}}.$$\n\n$x^4 + 1$ 的根是 $e^{i\\pi/4}, e^{3i\\pi/4}$（上半平面两个）与它们的共轭。\n\n一阶极点的留数：由 $R = 1/(z^4+1)$、$R = p/q$ 且 $q$ 在一阶零点 $a$ 处，$\\operatorname{Res}(R, a) = 1/(4a^3) = -a/4$（因为 $a^4 = -1$）。\n\n两只相加：\n\n$$\\sum \\operatorname{Res} = -\\frac{1}{4}\\left( e^{i\\pi/4} + e^{3i\\pi/4} \\right) = -\\frac{1}{4}\\cdot\\frac{\\sqrt{2}}{2}\\cdot 2i = -\\frac{\\sqrt{2}}{4}\\, i,$$\n\n故积分 $= 2\\pi i \\cdot \\left( -\\dfrac{\\sqrt{2}}{4} i \\right) = \\dfrac{\\pi\\sqrt{2}}{2} = \\dfrac{\\pi}{\\sqrt{2}}$。$\\checkmark$\n\n⚠ $\\deg Q \\ge \\deg P + 2$ 是硬条件：只高一次时 $\\int R$ 是条件收敛的**主值**，大圆弧不再趋于零，公式要改。\n\n⚠ 实轴上的极点必须不存在（否则积分发散）；若有，需要在小半圆上挖洞，取主值。",
    "refs": [
     "王晓光《复变函数》第 23–24 章 · 用留数计算实积分",
@@ -28851,7 +28853,7 @@
     "单纯映射",
     "链映射"
    ],
-   "statement": "设 $K, L$ 是单纯复形。映射 $f : V(K) \\to V(L)$ 叫**单纯映射**（simplicial map），如果\n\n$$\\sigma \\in K \\ \\implies \\ f(\\sigma) \\in L.$$\n\n（$f$ 不要求在每条单纯形上单射；$f(\\sigma)$ 可以比 $\\sigma$ 低维。）单纯映射在几何实现上由「线性延拓」唯一确定：\n\n$$|f|\\left(\\sum_{v} t_{v} v\\right) := \\sum_{v} t_{v} f(v),$$\n\n这是一个连续映射 $|K| \\to |L|$。\n\n**诱导链映射**：在链群上定义 $\\varphi_{\\#} : C_{p}(K) \\to C_{p}(L)$，对 $p$-单纯形 $\\sigma = [v_{0}, \\ldots, v_{p}]$：\n若 $f(\\sigma)$ 是 $p$ 维，则 $\\varphi_{\\#}(\\sigma) := [f(v_{0}), \\ldots, f(v_{p})]$（去掉重复顶点、重排成全序）；若 $\\dim f(\\sigma) < p$，则 $\\varphi_{\\#}(\\sigma) := 0$。再线性延拓。它满足 $\\varphi_{\\#} \\circ \\partial = \\partial \\circ \\varphi_{\\#}$，因此过商给出\n\n$$\\varphi_{*} : H_{p}(K) \\longrightarrow H_{p}(L),\\qquad [z] \\longmapsto [\\varphi_{\\#} z].$$",
+   "statement": "设 $K, L$ 是单纯复形。映射 $f : V(K) \\to V(L)$ 叫**单纯映射**（simplicial map），如果\n\n$$\\sigma \\in K \\ \\implies \\ f(\\sigma) \\in L.$$\n\n（$f$ 不要求在每条单纯形上单射；$f(\\sigma)$ 可以比 $\\sigma$ 低维。）单纯映射在几何实现上由「线性延拓」唯一确定：\n\n$$|f|\\left(\\sum_{v} t_{v} v\\right) := \\sum_{v} t_{v} f(v),$$\n\n这是一个连续映射 $|K| \\to |L|$。\n\n**诱导链映射**：在链群上定义 $\\varphi_{\\#} : C_{p}(K) \\to C_{p}(L)$，对 $p$-单纯形 $\\sigma = [v_{0}, \\ldots, v_{p}]$：\n若 $f(\\sigma)$ 是 $p$ 维，则 $\\varphi_{\\#}(\\sigma) := \\operatorname{sgn}(\\tau)\\cdot [f(v_{0}), \\ldots, f(v_{p})]$——**先去重、再按全序重排**，$\\tau$ 就是这次重排的排列，$\\operatorname{sgn}$ **不能丢**（$f(0) = 1, f(1) = 0$：像的顶点列是 $[1,0]$，重排成 $[0,1]$ 要乘 $-1$；不补符号则 $\\varphi_{\\#}\\partial \\ne \\partial\\varphi_{\\#}$）；若 $\\dim f(\\sigma) < p$，则 $\\varphi_{\\#}(\\sigma) := 0$。再线性延拓。它满足 $\\varphi_{\\#} \\circ \\partial = \\partial \\circ \\varphi_{\\#}$，因此过商给出\n\n$$\\varphi_{*} : H_{p}(K) \\longrightarrow H_{p}(L),\\qquad [z] \\longmapsto [\\varphi_{\\#} z].$$",
    "notes": "**$\\varphi_{*}$ 良定义的理由**：$\\varphi_{\\#}$ 与 $\\partial$ 交换 $\\implies$ 闭链送闭链、边缘送边缘，故「模掉边缘」这一步不被破坏。函子性（$1_{*} = \\operatorname{id}$、$(\\psi \\circ \\varphi)_{*} = \\psi_{*} \\circ \\varphi_{*}$）逐点验证。\n\n⚠️ **单纯映射实在太少**：两个复形之间随便取一个连续映射，一般**不会**把单纯形送到单纯形。最简单的反例：把 $[0, 1]$ 折成自身的「$\\vee$ 形」映射 $t \\mapsto 2t$（$t \\le 1/2$）、$t \\mapsto 2 - 2t$（$t \\ge 1/2$），它是连续的但不是单纯映射（$[v_{0}, v_{1}]$ 的像不是一个单纯形）。\n\n**补救办法**：允许先把定义域**重分**（重心重分）再取单纯映射 —— 这就是**单纯逼近定理**（`thm.simplicial-approximation`）。它也是「奇异同调 $=$ 单纯同调」的技术核心。\n\n💡 记住这个分工：**连续映射**是拓扑世界里的态射，**单纯映射**是组合世界里的态射，两者差一个「重分」的代价。",
    "refs": [
     "Munkres, Elements of Algebraic Topology, Ch. 1 · Simplicial maps",

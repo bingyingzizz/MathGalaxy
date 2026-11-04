@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-04T10:43:42.489Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-04T11:05:51.507Z
 > 15 星系 / 105 星团 / 1540 节点 / 3165 连线（强边 3126，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -4686,7 +4686,7 @@ $$|f|\left(\sum_{v} t_{v} v\right) := \sum_{v} t_{v} f(v),$$
 这是一个连续映射 $|K| \to |L|$。
 
 **诱导链映射**：在链群上定义 $\varphi_{\#} : C_{p}(K) \to C_{p}(L)$，对 $p$-单纯形 $\sigma = [v_{0}, \ldots, v_{p}]$：
-若 $f(\sigma)$ 是 $p$ 维，则 $\varphi_{\#}(\sigma) := [f(v_{0}), \ldots, f(v_{p})]$（去掉重复顶点、重排成全序）；若 $\dim f(\sigma) < p$，则 $\varphi_{\#}(\sigma) := 0$。再线性延拓。它满足 $\varphi_{\#} \circ \partial = \partial \circ \varphi_{\#}$，因此过商给出
+若 $f(\sigma)$ 是 $p$ 维，则 $\varphi_{\#}(\sigma) := \operatorname{sgn}(\tau)\cdot [f(v_{0}), \ldots, f(v_{p})]$——**先去重、再按全序重排**，$\tau$ 就是这次重排的排列，$\operatorname{sgn}$ **不能丢**（$f(0) = 1, f(1) = 0$：像的顶点列是 $[1,0]$，重排成 $[0,1]$ 要乘 $-1$；不补符号则 $\varphi_{\#}\partial \ne \partial\varphi_{\#}$）；若 $\dim f(\sigma) < p$，则 $\varphi_{\#}(\sigma) := 0$。再线性延拓。它满足 $\varphi_{\#} \circ \partial = \partial \circ \varphi_{\#}$，因此过商给出
 
 $$\varphi_{*} : H_{p}(K) \longrightarrow H_{p}(L),\qquad [z] \longmapsto [\varphi_{\#} z].$$
 
@@ -31508,7 +31508,7 @@ $$\int_{-\infty}^{\infty} \frac{\cos(a x)}{x^2 + 1}\,\mathrm{d}x = \pi e^{-a}, \
 
 $$\int_{-\infty}^{\infty} R(x)\,\mathrm{d}x = 2\pi i \sum_{\operatorname{Im} a_k > 0} \operatorname{Res}(R, a_k),$$
 
-右端对上半平面内的全部极点求和。因为 $R$ 取实值，这个和自动是实数。
+右端对上半平面内的全部极点求和。因为 $R$ 取实值、左边的积分是**实数**，所以那个留数之和自动是**纯虚数**（要乘上 $2\pi i$ 才回到实轴）。例：$R = 1/(1+x^{2})$ 在上半平面的唯一极点是 $i$，$\operatorname{Res}(R,\, i) = 1/(2i) = -i/2$ 确实是纯虚的，而 $2\pi i\cdot(-i/2) = \pi$。
 
 ⭐ 完整计算一：
 
@@ -32520,9 +32520,9 @@ $$\operatorname{vol}\left(A_{i} \cap P^{+}\right) = \operatorname{vol}\left(A_{i
 
 设 $U_{0} \subseteq S$ 是曲面上的开集。**活动标架**是三个 $C^{1}$ 向量场 $e_{1}, e_{2}, e_{3}$，使每点的 $(e_{1}, e_{2}, e_{3})$ 都是 $\mathbb{R}^{3}$ 的标准正交基（随点移动而变，故名「活动」）。**对偶余标架**是
 
-$$\omega^{i}(v) := \langle v, e_{i}\rangle ,\qquad i = 1,2,3,$$
+$$\omega^{i} := \langle \mathrm{d}r,\, e_{i}\rangle ,\qquad i = 1,2,3,$$
 
-它们是 $1$-形式，满足 $\omega^{i}(e_{j}) = \delta^{i}_{\ j}$。位置向量的微分按标架展开：
+它们是**参数域上**的 $1$-形式（$v$ 要先被 $\mathrm{d}r$ 送成环境向量，才能和 $e_{i}$ 做内积）。⚠ 对**曲面**，$\mathrm{d}r$ 落在切平面里，所以 $\omega^{3} \equiv 0$；而 $\omega^{i}(e_{j}) = \delta^{i}_{\ j}$ 只对 $j = 1, 2$（切向量）有意义 ——$e_{3}$ 是法向，$\omega^{3}(e_{3})$ 在这里**没有定义**（只有把 $\omega^{i}$ 看成$\mathbb{R}^{3}$ 上形式的拉回时它才有值）。位置向量的微分按标架展开：
 
 $$\mathrm{d}r = \omega^{1}e_{1}+\omega^{2}e_{2}+\omega^{3}e_{3}.$$
 
@@ -35491,7 +35491,7 @@ $$T : \underbrace{T_{p}^{\ast}M \times \cdots \times T_{p}^{\ast}M}_{r} \times \
 
 $$T^{(r,s)}M := \bigsqcup_{p \in M} T^{(r,s)}_{p}M ,$$
 
-它是 $n + n^{r+s}$ 维光滑流形，造法与切丛相同：转移映射是 Jacobi 矩阵的 $s$ 次直积与它的逆的 $r$ 次直积（`def.tangent-bundle`）。
+它是 $n + n^{r+s}$ 维光滑流形，造法与切丛相同：转移映射是 **$r$ 个 $J$** 与 **$s$ 个 $(J^{-1})^{\mathsf T}$** 的直积（切槽按 $J$ 变、余切槽按 $(J^{-1})^{\mathsf T}$ 变；取 $y = 2x$ 时 $J = 2$，$\mathrm{d}x$ 的系数要乘 $1/2$，即可验）（`def.tangent-bundle`）。
 
 $T^{(r,s)}M$ 的光滑截面叫 **$(r,s)$ 型张量场**。在卡里展开
 
@@ -36214,7 +36214,7 @@ $$0 \to \Omega^{\bullet}(M) \to \Omega^{\bullet}(U) \oplus \Omega^{\bullet}(V) \
 
 $$c : [0,1]^{k}\longrightarrow M ,$$
 
-它在一个含 $[0,1]^{k}$ 的开集上光滑（等价地：在某张卡里每个分量光滑）。$k = 0$ 时 $[0,1]^{0}$ 是一个点，$0$-方块就是 $M$ 里的一个点。
+它在一个含 $[0,1]^{k}$ 的开集上光滑 —— 含义是**逐点**的：每个 $t$ 有邻域落在 $M$ 的某张卡 $(U, \varphi)$ 里，且 $\varphi \circ c$ 的各分量光滑。⛔ 不能写成「在某**一张**卡里各分量光滑」：不同点可以落在不同的卡里（$c(t) = e^{2\pi i t}$ 绕满整个圆，就没有任何一张卡装得下它的像）。$k = 0$ 时 $[0,1]^{0}$ 是一个点，$0$-方块就是 $M$ 里的一个点。
 
 「**奇异**」说的是 $\mathrm{d}c_{p}$ 不必满秩：$c$ 可以自交、可以把某个方向压成零；它不必是单射，也不必是浸入。压扁了照样是合法的方块，只是像集不再是子流形。
 
