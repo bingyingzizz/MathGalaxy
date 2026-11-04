@@ -293,9 +293,9 @@ window.MG = window.MG || {};
     {
       id: 'imp.fundamental-algebra',
       kind: 'implication',
-      sources: ['thm.evt', 'thm.ivt', 'thm.factor-theorem'],
+      sources: ['thm.evt', 'thm.factor-theorem'],
       target: 'thm.fundamental-algebra',
-      title: '最值定理 + 介值定理 + 因式定理 $\\implies$ 代数基本定理',
+      title: '最值定理 + 复数的 $k$ 次方根 + 因式定理 $\\implies$ 代数基本定理',
       proof: [
         '设 $p(z) = a_n z^{n} + \\cdots + a_0$，$n \\ge 1$，$a_n \\ne 0$。',
         '',

@@ -45825,7 +45825,7 @@ window.MG = window.MG || {};
       target: 'prop.continuous-bounded-on-compact',
       title: '闭区间紧（Heine–Borel）$\\implies$ 闭区间上的连续函数有界',
       proof: [
-        '在 $\\mathbb{R}$ 上取 $X = [a, b]$。由 Heine–Borel，$[a, b]$ 是 $\\mathbb{R}$ 的有界闭子集，从而是紧的。于是「紧空间上的连续实值函数有界」这条命题**原封不动地**适用于 $X = [a, b]$，结论就是：$[a, b]$ 上的连续函数有界。∎'
+        '设 $X$ 紧、$f : X \\to \\mathbb{R}$ 连续。**① $f(X)$ 是紧的。** 取 $f(X)$ 在 $\\mathbb{R}$ 中的任一开覆盖 $\\{U_{i}\\}_{i \\in I}$，则 $\\{f^{-1}(U_{i})\\}$ 是 $X$ 的开覆盖（$f$ 连续 $\\implies$ 每个原像是开集）；$X$ 紧 $\\implies$ 存在有限 $J \\subseteq I$ 使 $X = \\bigcup_{i \\in J} f^{-1}(U_{i})$，于是 $f(X) \\subseteq \\bigcup_{i \\in J} U_{i}$ —— 这有限个已经覆盖 $f(X)$。所以 $f(X)$ 紧。**② 有界。** 由 `cor.heine-borel`（$\\mathbb{R}$ 中紧 $\\iff$ 有界且闭），$f(X)$ 有界，即存在 $M$ 使 $|f(x)| \\le M$ 对一切 $x \\in X$ 成立。∎'
       ].join('\n'),
       note: '这条边的方向是「一般 $\\implies$ 特例」：命题是紧度量空间的版本，$[a, b]$ 是它的一个实例。图上把它标出来，是因为初等微积分里大家用的都是这个特例。'
     }
@@ -49779,9 +49779,9 @@ window.MG = window.MG || {};
     {
       id: 'imp.fundamental-algebra',
       kind: 'implication',
-      sources: ['thm.evt', 'thm.ivt', 'thm.factor-theorem'],
+      sources: ['thm.evt', 'thm.factor-theorem'],
       target: 'thm.fundamental-algebra',
-      title: '最值定理 + 介值定理 + 因式定理 $\\implies$ 代数基本定理',
+      title: '最值定理 + 复数的 $k$ 次方根 + 因式定理 $\\implies$ 代数基本定理',
       proof: [
         '设 $p(z) = a_n z^{n} + \\cdots + a_0$，$n \\ge 1$，$a_n \\ne 0$。',
         '',
@@ -51982,7 +51982,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.second-derivative-test',
       kind: 'implication',
-      sources: ['thm.taylor-multi', 'thm.sylvester-criterion', 'thm.spectral-theorem'],
+      sources: ['thm.taylor-multi', 'thm.spectral-theorem'],
       target: 'thm.second-derivative-test',
       title: '二阶 Taylor + 正定二次型的估计 $\\implies$ 极值判别',
       proof: [
@@ -57050,15 +57050,17 @@ window.MG = window.MG || {};
       proof: [
         '**必要性**显然：有限生成右理想也是右理想 ✓。',
         '',
-        '**充分性**：要证对一切单射 $M_{1} \\rightarrowtail M$，$M_{1} \\otimes M \\to M \\otimes M$ 单。',
+        '**充分性**：要证 $M$ 作为**左**模平坦：即对一切**右**模的单射 $Q_{1} \\rightarrowtail Q$，$Q_{1} \\otimes_{R} M \\to Q \\otimes_{R} M$ 单。（⚠ 原稿在这里让 $M$ 同时当左模与右模 —— 那只能验证「射入 $M$ 自身」的平坦性，不是定义里的「一切右模」。）',
         '',
-        '**第一步（化到有限生成）**：$M$ 是它有限生成子模的滤过余极限，$(-) \\otimes M$ 保滤过余极限，故只需对有限生成的 $M$ 验证 ✓。',
+        '**第一步（化到有限生成）**：$Q$ 是它有限生成子模的滤过余极限，$(-) \\otimes_{R} M$ 保滤过余极限，故只需对**有限生成**的 $Q$ 验证 ✓。',
         '',
-        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M$，令 $K$ 为 $M_{1}$ 的原像。\n\n两个短正合列 $0 \\to K \\to R^{n} \\to M \\to 0$ 与 $0 \\to M_{1} \\to M \\to 0$ 的张量版本摆成 $3 \\times 3$ 图，用蛇引理：若 $K \\otimes M \\to R^{n} \\otimes M$ 单，则 $M_{1} \\otimes M \\to M \\otimes M$ 单 ✓。',
+        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow Q$，令 $K$ 为 $Q_{1}$ 的原像。\n\n两个短正合列 $0 \\to K \\to R^{n} \\to Q \\to 0$ 与 $0 \\to Q_{1} \\to Q \\to 0$ 的张量版本摆成 $3 \\times 3$ 图，用蛇引理：若 $K \\otimes M \\to R^{n} \\otimes M$ 单，则 $Q_{1} \\otimes M \\to Q \\otimes M$ 单 ✓。',
         '',
-        '**第三步（对 $n$ 归纳）**：只需证对每个有限生成子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
+        '**第三步（对 $n$ 归纳）**：只需证对每个有限生成右子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。' +
+
+        '\\n\\n⚠ **骨架声明**：这一步只在 $R$ **诺特**时直接成立（那时 $K_{1} = K \\cap R^{n-1}$ 自动有限生成）。一般环上 $K_{1}$ 未必有限生成，标准补法是换用「$K$ 在 $R^{n}$ 中的**有限生成子模**上取滤过余极限」的论证（或直接引 Lambek 原文的归纳），**本图没有把这套补法展开** —— 所以下面两行的归纳只当**思路**读，不当完整证明。',
         '- $n = 1$：$K$ 是有限生成右理想，正是假设 ✓。',
-        '- $n > 1$：写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} = K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则 $0 \\to K_{1} \\to K \\to K_{2} \\to 0$ 与 $0 \\to R^{n-1} \\to R^{n} \\to R \\to 0$ 正合。\n\n张量后两列竖直映射（$K_{1} \\to$ 与 $K_{2} \\to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \\otimes M \\to R^{n} \\otimes M$ 单 ✓。\n\n∎',
+        '- $n > 1$：写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} = K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则 $0 \\to K_{1} \\to K \\to K_{2} \\to 0$ 与 $0 \\to R^{n-1} \\to R^{n} \\to R \\to 0$ 正合（**归到诺特情形才严格**，见上面的骨架声明）。\n\n张量后两列竖直映射（$K_{1} \\to$ 与 $K_{2} \\to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \\otimes M \\to R^{n} \\otimes M$ 单 ✓。\n\n∎',
         '',
         '**等价说法的翻译**：由 $0 \\to I \\to R \\to R/I \\to 0$ 与 $\\operatorname{Tor}_{1}^{R}(R, M) = 0$ 得 $\\operatorname{Tor}_{1}^{R}(R/I, M) \\cong \\ker(I \\otimes M \\to M)$，故「$I \\otimes M \\to M$ 单」与「$\\operatorname{Tor}_{1}^{R}(R/I, M) = 0$」是同一句话 ✓。'
       ].join('\n'),
@@ -69400,7 +69402,7 @@ window.MG = window.MG || {};
         '',
         '**第三步：验证 Cauchy–Riemann。** 这两式正是 $u_x = v_y$、$u_y = -v_x$。$u, v \\in C^1$，故 $f := u + iv$ 在 $\\Omega$ 上全纯，且 $\\operatorname{Re} f = u$。',
         '',
-        '**第四步：唯一性。** 若 $\\operatorname{Re} f_1 = \\operatorname{Re} f_2 = u$，令 $g = f_1 - f_2 = i y$（$y$ 实值）。\n\n对 $(0, y)$ 用 Cauchy–Riemann 方程：$0 = y_y$ 与 $0 = -y_x$，故 $y$ 是常数，$g$ 是纯虚常数。',
+        '**第四步：唯一性。** 若 $\\operatorname{Re} f_1 = \\operatorname{Re} f_2 = u$，令 $g = f_1 - f_2 = i w$（$w$ 为实值函数）。\n\n对 $(0, w)$ 用 Cauchy–Riemann 方程：$0 = w_y$ 与 $0 = -w_x$，故 $w$ 是常数，$g$ 是纯虚常数。',
         '',
         '**第五步：单连通不能去掉。** $u(z) = \\ln|z|$ 在 $\\mathbb{C}^{\\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\\operatorname{Log}$，而 $\\operatorname{Log}$ 多值。\n\n等价地：$\\oint_{|z| = 1} \\omega = 2\\pi \\ne 0$，闭形式在这里不恰当。\n\n$\\blacksquare$'
       ].join('\n')
@@ -72415,7 +72417,10 @@ window.MG = window.MG || {};
     { kind: 'implication', sources: ['prop.winding-integral', 'def.contour-integral'], target: 'thm.winding-homotopy',
       title: '同伦 $\\implies$ 绕数不变（连续性 + 整数值）',
       proof: [
-        '设 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 给出同伦，$\\gamma_{s} := H(s, \\cdot)$。',
+        '⛔ **本条为骨架（待重写）**：陈述只要求**连续**同伦 $H$，但围道积分只对**分段 $C^{1}$** 的曲线有定义，' +
+          '而下面那句「$\\gamma_{s}$ 及其导数关于 $s$ 连续（$H$ 光滑）」把 $H$ 悄悄提升成了光滑。' +
+          '补法（本图未展开）：连续同伦可用分段线性的多边形同伦逼近，于是只需在多边形上积分。\n\n' +
+          '设 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 给出同伦，$\\gamma_{s} := H(s, \\cdot)$。',
         '',
         '由 `prop.winding-integral`，$N(s) := n(\\gamma_{s}, a) = \\frac{1}{2\\pi i}\\oint_{\\gamma_{s}}' +
           '\\frac{\\mathrm{d}z}{z-a}$。被积函数在 $\\mathbb{C}\\setminus\\{a\\}$ 上全纯、有界（$H$ 的像紧且不碰 $a$），' +
@@ -73236,7 +73241,7 @@ window.MG = window.MG || {};
         '定义里的 $E_{p}(z) = (1 - z)\\exp(z + z^{2}/2 + \\cdots + z^{p}/p)$：$\\exp$ 那部分由' +
           '`def.complex-elementary` 给出，永不为零，所以 $E_{p}$ 的零点只有 $z = 1$。',
         '',
-        '**估计 $|1 - E_{p}(z)| \\le |z|^{p+1}$（$|z| \\le 1$）**：',
+        '⛔ **本条为骨架（待重写）**：原稿这里用「$|w| \\le 2$」（$w = \\sum_{k=1}^{p} z^{k}/k$）—— 但 $z = 1$ 时 $w$ 是调和和，**可以超过 $2$**，所以那个界不成立；首个等号也漏掉了一个 $z$ 项。可修路线：由 $E_{p}^{\\prime}(z) = -z^{p}e^{S_{p}(z)}$ 配合系数非负性重新估，本图未展开。',
         '',
         '$$1 - E_{p}(z) = (1 - z)\\left[1 - e^{\\,z + \\cdots + z^{p}/p}\\right].$$',
         '',
@@ -75089,7 +75094,7 @@ window.MG = window.MG || {};
         '',
         '$$H_{p}(K) \\cong H_{p}(X) \\cong H_{p}(K\'),$$',
         '',
-        '故两个剖分的 Betti 数 $\\beta_{p}$ 完全相同。再由 `thm.euler-characteristic` 的等式，',
+        '故两个剖分的 Betti 数 $\\beta_{p}$ 完全相同。**秩公式**（对任一有限链复形）：记 $c_{p} = \\operatorname{rank} C_{p}$、$b_{p} = \\operatorname{rank} B_{p}$、$z_{p} = \\operatorname{rank} Z_{p}$，则 $c_{p} = b_{p} + z_{p}$ 且 $z_{p} = b_{p-1} + \\beta_{p}$（$0 \\to Z_{p} \\to B_{p-1} \\to 0$ 正合），于是 $c_{p} = b_{p} + b_{p-1} + \\beta_{p}$。交错求和时 $\\sum (-1)^{p}(b_{p} + b_{p-1}) = 0$ 抵消，故 $\\sum_{p} (-1)^{p}\\alpha_{p} = \\sum_{p} (-1)^{p}\\beta_{p}$ —— 这条只用到链复形的秩关系，不依赖要证的结论。',
         '',
         '$$\\sum_{p} (-1)^{p}\\alpha_{p}(K) = \\sum_{p} (-1)^{p}\\beta_{p},$$',
         '$$\\sum_{p} (-1)^{p}\\alpha_{p}(K\') = \\sum_{p} (-1)^{p}\\beta_{p}.$$',
@@ -84703,6 +84708,7 @@ window.MG = window.MG || {};
       title: '一致等度连续 + 逐点全有界 $\\implies$ 全有界',
       proof: [
         '等度连续在紧度量上自动升为一致等度连续。给 $\\varepsilon$，取 $\\eta > 0$ 使 $\\delta(x,y) < \\eta \\implies d(f(x), f(y)) < \\varepsilon/3$（一切 $f$）。',
+        '⛔ **本条为骨架（待重写）**：端点 `thm.arzela-ascoli-general` 只假设 $K$ **紧**（未必可度量），而下面用了距离与有限 $\\eta$-网 —— 那只在紧**度量**空间里有效；一般紧空间要把「$\\eta$-网」换成等度连续性给出的**有限开邻域覆盖**，并且延拓要按单位分解拼接（原来的「最近网点常值延拓」还不能保证连续）。本图未展开。\n\n' +
         '取有限 $\\eta$-网 $x_1,..,x_N$ 覆盖 $K$。每个 $\\mathcal{H}(x_i)$ 全有界，取有限 $\\varepsilon/3$-网，把这些点合起来得有限集 $T \\subseteq E$。',
         '对每个 $f$ 与每个 $i$ 取 $t_i \\in T$ 使 $d(f(x_i), t_i) < \\varepsilon/3$；由「网点取值落在有限集 $T$ 里」给出**有限**多个候选函数 $\\Phi$。对任意 $f$ 与任意 $x \\in B(x_i, \\eta)$：',
         '',

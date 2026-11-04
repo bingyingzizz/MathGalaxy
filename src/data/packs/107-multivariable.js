@@ -758,7 +758,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.second-derivative-test',
       kind: 'implication',
-      sources: ['thm.taylor-multi', 'thm.sylvester-criterion', 'thm.spectral-theorem'],
+      sources: ['thm.taylor-multi', 'thm.spectral-theorem'],
       target: 'thm.second-derivative-test',
       title: '二阶 Taylor + 正定二次型的估计 $\\implies$ 极值判别',
       proof: [

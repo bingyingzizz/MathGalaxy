@@ -770,7 +770,10 @@
     { kind: 'implication', sources: ['prop.winding-integral', 'def.contour-integral'], target: 'thm.winding-homotopy',
       title: '同伦 $\\implies$ 绕数不变（连续性 + 整数值）',
       proof: [
-        '设 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 给出同伦，$\\gamma_{s} := H(s, \\cdot)$。',
+        '⛔ **本条为骨架（待重写）**：陈述只要求**连续**同伦 $H$，但围道积分只对**分段 $C^{1}$** 的曲线有定义，' +
+          '而下面那句「$\\gamma_{s}$ 及其导数关于 $s$ 连续（$H$ 光滑）」把 $H$ 悄悄提升成了光滑。' +
+          '补法（本图未展开）：连续同伦可用分段线性的多边形同伦逼近，于是只需在多边形上积分。\n\n' +
+          '设 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 给出同伦，$\\gamma_{s} := H(s, \\cdot)$。',
         '',
         '由 `prop.winding-integral`，$N(s) := n(\\gamma_{s}, a) = \\frac{1}{2\\pi i}\\oint_{\\gamma_{s}}' +
           '\\frac{\\mathrm{d}z}{z-a}$。被积函数在 $\\mathbb{C}\\setminus\\{a\\}$ 上全纯、有界（$H$ 的像紧且不碰 $a$），' +

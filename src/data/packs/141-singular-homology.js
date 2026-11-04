@@ -866,7 +866,7 @@
         '',
         '$$H_{p}(K) \\cong H_{p}(X) \\cong H_{p}(K\'),$$',
         '',
-        '故两个剖分的 Betti 数 $\\beta_{p}$ 完全相同。再由 `thm.euler-characteristic` 的等式，',
+        '故两个剖分的 Betti 数 $\\beta_{p}$ 完全相同。**秩公式**（对任一有限链复形）：记 $c_{p} = \\operatorname{rank} C_{p}$、$b_{p} = \\operatorname{rank} B_{p}$、$z_{p} = \\operatorname{rank} Z_{p}$，则 $c_{p} = b_{p} + z_{p}$ 且 $z_{p} = b_{p-1} + \\beta_{p}$（$0 \\to Z_{p} \\to B_{p-1} \\to 0$ 正合），于是 $c_{p} = b_{p} + b_{p-1} + \\beta_{p}$。交错求和时 $\\sum (-1)^{p}(b_{p} + b_{p-1}) = 0$ 抵消，故 $\\sum_{p} (-1)^{p}\\alpha_{p} = \\sum_{p} (-1)^{p}\\beta_{p}$ —— 这条只用到链复形的秩关系，不依赖要证的结论。',
         '',
         '$$\\sum_{p} (-1)^{p}\\alpha_{p}(K) = \\sum_{p} (-1)^{p}\\beta_{p},$$',
         '$$\\sum_{p} (-1)^{p}\\alpha_{p}(K\') = \\sum_{p} (-1)^{p}\\beta_{p}.$$',

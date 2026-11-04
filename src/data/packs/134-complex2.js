@@ -979,7 +979,7 @@ window.MG = window.MG || {};
         '',
         '**第三步：验证 Cauchy–Riemann。** 这两式正是 $u_x = v_y$、$u_y = -v_x$。$u, v \\in C^1$，故 $f := u + iv$ 在 $\\Omega$ 上全纯，且 $\\operatorname{Re} f = u$。',
         '',
-        '**第四步：唯一性。** 若 $\\operatorname{Re} f_1 = \\operatorname{Re} f_2 = u$，令 $g = f_1 - f_2 = i y$（$y$ 实值）。\n\n对 $(0, y)$ 用 Cauchy–Riemann 方程：$0 = y_y$ 与 $0 = -y_x$，故 $y$ 是常数，$g$ 是纯虚常数。',
+        '**第四步：唯一性。** 若 $\\operatorname{Re} f_1 = \\operatorname{Re} f_2 = u$，令 $g = f_1 - f_2 = i w$（$w$ 为实值函数）。\n\n对 $(0, w)$ 用 Cauchy–Riemann 方程：$0 = w_y$ 与 $0 = -w_x$，故 $w$ 是常数，$g$ 是纯虚常数。',
         '',
         '**第五步：单连通不能去掉。** $u(z) = \\ln|z|$ 在 $\\mathbb{C}^{\\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\\operatorname{Log}$，而 $\\operatorname{Log}$ 多值。\n\n等价地：$\\oint_{|z| = 1} \\omega = 2\\pi \\ne 0$，闭形式在这里不恰当。\n\n$\\blacksquare$'
       ].join('\n')
