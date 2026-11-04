@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T12:24:32.207Z",
+  "generated": "2026-11-04T12:26:26.609Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
    "nodes": 1540,
-   "edges": 3165,
-   "strong": 3126,
+   "edges": 3164,
+   "strong": 3125,
    "weak": 39,
    "derived": 33,
    "en_pages": 1536
@@ -83081,14 +83081,6 @@
    "definition": "def.linear-map",
    "usedBy": "thm.quotient-universal-vs",
    "note": "陈述里提到「线性映射」：「则对每个线性映射 （式子） 满足 （式子），存在**唯一**的线性映射 （式子） 使下图交换：…」 —— 读者顺着这个词要落到它的定义上，所以接上。"
-  },
-  {
-   "id": "dep.gap-separable-extension-algebraic-element",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.algebraic-element",
-   "usedBy": "def.separable-extension",
-   "note": "陈述里提到「极小多项式」：「代数扩张 （式子） 叫**可分**（separable），如果每个 （式子） 的极小多项式 （式子） 在 （式子） 上**没有重根**（等价地：…」 —— 读者顺着这个词要落到它的定义上，所以接上。"
   },
   {
    "id": "dep.gap-cgwh-closed-subspace",

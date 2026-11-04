@@ -90,13 +90,6 @@ window.MG.packs.push({
       note: '陈述里提到「线性映射」：「则对每个线性映射 （式子） 满足 （式子），存在**唯一**的线性映射 （式子） 使下图交换：…」 —— 读者顺着这个词要落到它的定义上，所以接上。',
     },
     {
-      id: 'dep.gap-separable-extension-algebraic-element',
-      kind: 'definition',
-      definition: 'def.algebraic-element',
-      usedBy: 'def.separable-extension',
-      note: '陈述里提到「极小多项式」：「代数扩张 （式子） 叫**可分**（separable），如果每个 （式子） 的极小多项式 （式子） 在 （式子） 上**没有重根**（等价地：…」 —— 读者顺着这个词要落到它的定义上，所以接上。',
-    },
-    {
       id: 'dep.gap-cgwh-closed-subspace',
       kind: 'definition',
       definition: 'def.subspace',
