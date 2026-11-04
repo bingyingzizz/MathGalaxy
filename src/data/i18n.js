@@ -26,6 +26,10 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-04',
   nodes: {
+    'def.stiefel-whitney-class': { title_en: "Stiefel–Whitney Class", label_en: "Stiefel–Whitney Class", from: 'explicit' },
+    'prop.orientable-iff-w1': { title_en: "Orientability iff w1 Vanishes", label_en: "Orientability and w1", from: 'explicit' },
+    'def.euler-class': { title_en: "Euler Class", label_en: "Euler Class", from: 'explicit' },
+    'def.pontryagin-class': { title_en: "Pontryagin Class", label_en: "Pontryagin Class", from: 'explicit' },
     'ax.choice': { title_en: 'axiom of choice', label_en: 'axiom of choice', from: 'explicit' },
     'ax.ext': { title_en: 'extensionality', label_en: 'extensionality', from: 'aka' },
     'ax.found': { title_en: 'foundation', label_en: 'foundation', from: 'explicit' },
