@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-04T11:31:23.698Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-04T11:39:32.119Z
 > 15 星系 / 105 星团 / 1540 节点 / 3165 连线（强边 3126，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -8128,7 +8128,7 @@ $$A^{T} J_{0}\, A = J_{0} ,$$
 
 **在做什么**：把 $\lVert u\rVert^{2}\lVert w\rVert^{2} - \langle u,w\rangle^{2}$ 写成「面积的平方」—— 它既是 Cauchy–Schwarz 不等式的等式来源，也是 Gram 行列式的二维情形。
 
-对 $u, w \in \mathbb{R}^{n}$（或任何实内积空间中的两个向量）有**Lagrange 恒等式**
+对 $u, w \in \mathbb{R}^{n}$（或**取了一组正交归一基**的实内积空间）有**Lagrange 恒等式**（⚠ 右边那串坐标式只在正交归一基下才等于左边：取 $\langle x,y\rangle = 4x_{1}y_{1} + x_{2}y_{2}$、$u = (1,0)$、$w = (0,1)$，左边 $= 4$ 而右边 $= 1$；一般基下要用 Gram 矩阵 $G$ 修正）
 
 $$\lVert u\rVert^{2}\lVert w\rVert^{2} - \langle u, w\rangle^{2} = \sum_{1 \le i < j \le n}\bigl(u_{i}w_{j} - u_{j}w_{i}\bigr)^{2} .$$
 
@@ -17135,7 +17135,7 @@ $$T_F(x) := \sup \{ \sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \in \mathbb{N}, -\i
 
 $T_F$ 是递增的 $\mathbb{R} \to [0, +\infty]$。若 $T_F(+\infty) < +\infty$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。
 
-$T_F(b) - T_F(a)$ 称为 $F$ 在 $[a, b]$ 上的全变差；$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。
+若 $T_F(a) < \infty$（即 $F$ 在 $(-\infty, a]$ 上有界变差），则 $T_F(b) - T_F(a)$ 等于 $F$ 在 $[a, b]$ 上的全变差；一般情形要**直接定义** $\operatorname{Var}_{[a,b]}(F) := \sup{\sum_{j} |F(x_{j}) - F(x_{j-1})| : a = x_{0} < \cdots < x_{n} = b}$，⛔ 不能写差值：$F = \sin$ 时 $T_F(a) = T_F(b) = +\infty$，差值是 $\infty - \infty$（无意义），而 $\sin$ 在 $[a,b]$ 上显然有界变差。$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。
 
 直观：$T_F(x)$ 是「沿着图像从 $-\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。
 
@@ -17912,7 +17912,7 @@ $$f := \mu(B)^{-1} \chi_B \operatorname{sgn} g$$
 #### 有界 ⟹ g ∈ L^q　`prop.bounded-functional-gives-lq`
 *命题*　命题：若 $f \mapsto \int fg$ 在简单函数上有界，则 $g \in L^q$
 
-设 $g$ 在 $(X, \mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \in L^1$。记
+设 $1 \le p \le \infty$，$q$ 是它的**共轭指数**（$1/p + 1/q = 1$，约定 $p=1$ 时 $q=\infty$、$p=\infty$ 时 $q=1$）。设 $g$ 在 $(X, \mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \in L^{1}$。记
 
 $$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 \,\right\}$$
 
@@ -31338,7 +31338,7 @@ $$f(z) = \sum_{k=0}^{\infty} \frac{\psi^{(k)}(a)}{k!}\,(z - a)^{k - m},$$
 
 **白话**：沿闭曲线的积分等于 $2\pi i$ 乘上曲线内部所有奇点的留数之和 —— 一个二维的积分问题被压缩成有限个代数计算。
 
-设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 由有限条分段光滑的简单闭曲线组成、取正向。$f$ 在 $\Omega$ 上除有限个点 $z_1, \cdots, z_n$ 外全纯，这些点都是**孤立**奇点且不在 $\partial\Omega$ 上。则
+设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 由有限条分段光滑的简单闭曲线组成、取正向。$f$ 在 $\Omega$ 上除有限个点 $z_1, \cdots, z_n$ 外全纯，这些点都是**孤立**奇点且不在 $\partial\Omega$ 上；并且 $f$ 在 $\overline{\Omega}$ 的某个**邻域**上、除这些点外全纯。（⚠ 最后这一条不能省：只说「奇点不在边界上」不够 —— 例 $\Omega = \mathbb{D}$、$f = 1/(1-z)$，$z = 1$ 落在 $\partial\mathbb{D}$ 上而 $f$ 在那里没有定义，$\oint_{\partial\Omega} f\,dz$ 根本不存在。）则
 
 $$\oint_{\partial\Omega} f(z)\,\mathrm{d}z = 2\pi i \sum_{k=1}^{n} \operatorname{Res}(f, z_k).$$
 
@@ -33701,7 +33701,7 @@ $$\ddot\gamma = \kappa_{n}n+k_{g}\,(n\times\dot\gamma),\qquad \kappa^{2} = k_{g}
 
 白话：**指数映射把「朝哪个方向走多远」变成「最后落在哪一点」** —— 从一个切向量 $v$ 出发、沿测地线走 $1$ 秒，落点就是 $\exp_{p}(v)$。有了它，弯曲曲面在 $p$ 附近就能用平面上的极坐标 $(\rho,\theta)$ 记账。
 
-固定 $p \in S$。由测地线的存在唯一性，每个 $v \in T_{p}S$ 有唯一测地线 $\gamma_{v}$ 满足 $\gamma_{v}(0) = p$、$\dot\gamma_{v}(0) = v$。**指数映射**定义为
+固定 $p \in S$。由测地线的**局部**存在唯一性，每个 $v \in T_{p}S$ 有唯一测地线 $\gamma_{v}$（定义在某个 $t \in (-\varepsilon, \varepsilon)$ 上）满足 $\gamma_{v}(0) = p$、$\dot\gamma_{v}(0) = v$。⚠ 局部唯一性**不保证** $\gamma_{v}$ 能走到 $t = 1$：所以指数映射只在$\operatorname{Dom}(\exp_{p}) := {\, v \in T_{p}S : \gamma_{v} \text{ 在 } t = 1 \text{ 处有定义}\,}$ 上有定义（这是 $T_{p}S$ 中含 $0$ 的**星形开集**；反例：在开圆盘内取 $v = (2, 0, 0)$，测地线走不到 $t = 1$ 就离开了曲面）。**指数映射**定义为
 
 $$\exp_{p}(v) = \gamma_{v}(1) = \gamma_{v/|v|}(|v|),\qquad \exp_{p}(0) = p,$$
 
@@ -36325,7 +36325,7 @@ $$\partial(\partial c) = 0 .$$
 
 **在做什么**：把两个「边界」对齐 —— 一个是方块上按坐标编号定出来的代数边界 $\partial c$，一个是带边流形上按「外法向在前」定出来的几何边界。它们相差的正是那串符号 $(-1)^{i+\alpha}$。
 
-设 $M$ 是定向 $n$ 维带边流形，$c : I^{n}\to M$ 是保向的微分同胚，把 $I^{n}$ 映到自己的像上（像是一个带边的 $n$ 维区域，$I^{n}$ 取标准定向）。
+设 $M$ 是定向 $n$ 维带边流形，$c : I^{n}\to M$ 是保向的微分同胚，把 $I^{n}$ 映到自己的像上（像是一个带边的 $n$ 维区域，$I^{n}$ 取标准定向），**并且方块的边界落在 $\partial M$ 上**：$c(\partial I^{n}) \subseteq \partial M$。（⚠ 这一条不能省：取 $M = \mathbb{R}$、$c(t) = t$，则 $\partial M = \emptyset$，下面说的「$\partial M$ 的像」是空的，整条命题落空。）
 
 则对每个面 $(i,\alpha)$：把 $c_{(i,\alpha)}$ 看成 $\partial M$ 的像上的参数化，**它与 $\partial M$ 的诱导定向相符，当且仅当 $(-1)^{i+\alpha} = +1$**。
 
@@ -37146,7 +37146,7 @@ $(\mathbb{R}^{n},+)$；
 
 $S^{1} \subseteq \mathbb{C}^{\times}$；
 
-任意离散群（$0$ 维）。
+任意**可数**离散群（$0$ 维；⚠ 不可数的离散群如离散 $( \mathbb{R},+ )$ **不第二可数**，按本图 `def.smooth-manifold` 的口径就不是光滑流形）。
 
 **「取逆光滑」其实可以省掉**：只假设乘法光滑，则每个 $L_{g}$、$R_{g}$ 光滑；由隐函数定理 $i$ 在 $e$ 附近光滑，再用 $i = L_{g^{-1}} \circ i \circ R_{g^{-1}}$ 搬到各处。本图按习惯把两条都写进定义，省掉一次对隐函数定理的引用。
 

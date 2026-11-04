@@ -886,7 +886,7 @@ window.MG = window.MG || {};
         '$\\operatorname{SL}(n,\\mathbb{R})$、$\\operatorname{O}(n)$、$\\operatorname{SO}(n)$、$\\operatorname{U}(n)$（由方程切出来，见 `thm.regular-level-set`）；\n\n' +
         '$(\\mathbb{R}^{n},+)$；\n\n' +
         '$S^{1} \\subseteq \\mathbb{C}^{\\times}$；\n\n' +
-        '任意离散群（$0$ 维）。'
+        '任意**可数**离散群（$0$ 维；⚠ 不可数的离散群如离散 $( \\mathbb{R},+ )$ **不第二可数**，按本图 `def.smooth-manifold` 的口径就不是光滑流形）。'
       ].join('\n'),
       notes: [
         '**「取逆光滑」其实可以省掉**：只假设乘法光滑，则每个 $L_{g}$、$R_{g}$ 光滑；由隐函数定理 $i$ 在 $e$ 附近光滑，再用 $i = L_{g^{-1}} \\circ i \\circ R_{g^{-1}}$ 搬到各处。本图按习惯把两条都写进定义，省掉一次对隐函数定理的引用。',

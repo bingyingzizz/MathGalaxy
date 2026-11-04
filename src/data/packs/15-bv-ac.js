@@ -69,7 +69,7 @@ window.MG = window.MG || {};
         '',
         '$T_F$ 是递增的 $\\mathbb{R} \\to [0, +\\infty]$。若 $T_F(+\\infty) < +\\infty$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。',
         '',
-        '$T_F(b) - T_F(a)$ 称为 $F$ 在 $[a, b]$ 上的全变差；$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。'
+        '若 $T_F(a) < \\infty$（即 $F$ 在 $(-\\infty, a]$ 上有界变差），则 $T_F(b) - T_F(a)$ 等于 $F$ 在 $[a, b]$ 上的全变差；一般情形要**直接定义** $\\operatorname{Var}_{[a,b]}(F) := \\sup{\\sum_{j} |F(x_{j}) - F(x_{j-1})| : a = x_{0} < \\cdots < x_{n} = b}$，⛔ 不能写差值：$F = \\sin$ 时 $T_F(a) = T_F(b) = +\\infty$，差值是 $\\infty - \\infty$（无意义），而 $\\sin$ 在 $[a,b]$ 上显然有界变差。$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。'
       ].join('\n'),
       notes: [
         '直观：$T_F(x)$ 是「沿着图像从 $-\\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。',
