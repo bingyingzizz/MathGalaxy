@@ -1274,6 +1274,9 @@ MG.aliases = {
     { id: 'def.primitive-root', en: 'primitive root', aka: ['原根', '本原根'] },
     { id: 'thm.primitive-root-exists', en: 'a primitive root exists modulo a prime', aka: ['模素数原根存在', '单位群循环'] },
     { id: 'def.discrete-log', en: 'discrete logarithm', aka: ['离散对数', '指标'] },
+    /* ⭐ 2026-11-04 三角剖分 / Radó：让 gaps.md 里「三角剖分存在性」这个说法有节点可落 */
+    { id: 'def.triangulation', en: 'triangulation of a space', aka: ['三角剖分', '可三角剖分', '剖分', 'triangulation'] },
+    { id: 'thm.rado', en: 'Rado theorem: every compact surface is triangulable', aka: ['三角剖分存在性', '曲面可三角剖分', 'Rado 定理', 'Radó 定理', 'Radó', 'Rado', 'triangulability of surfaces'] },
 
     /* ================================================== 泛函分析（2026-11-02） */
     /* ⚠️ 这一批的主要作用不是「又名」，是**让搜索能中**：这些节点的名字里带

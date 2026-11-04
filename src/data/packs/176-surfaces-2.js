@@ -107,7 +107,7 @@
         '⚠ **本节点只给骨架，不是完整证明。** 本图的证明分三步，其中**第一步没有证**：',
         '',
         '1. **三角剖分的存在性（Radó 定理）**：每个紧曲面都可三角剖分。' +
-          '⛔ **这是外部输入** —— 本图没有「三角剖分」节点，这一步只有名字，没有证明。',
+          '这一步**不在本图里证**：它自成一个节点（`thm.rado`，陈述 + 骨架），本图只把它当**外部输入**。',
         '2. **组合层面化简**：在三角剖分上做「删去一个三角形」「翻边」这类操作，把三角剖分化成标准形' +
           '（每张面都是三角形、每条边恰好属于两个三角形，且顶点图是「扇」或「花」）。' +
           '这一步是纯组合的，长但初等 —— 本图没有展开。',
@@ -130,9 +130,124 @@
         'Radó, Über den Begriff der Riemannschen Fläche (1925)——三角剖分存在性',
       ],
     },
+
+    /* ---------------------------------------------------------- 三角剖分 */
+    {
+      id: 'def.triangulation',
+      cluster: 'topology.surfaces',
+      type: 'definition',
+      label: '三角剖分',
+      title: '三角剖分（可剖分空间）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '曲面', '单纯复形'],
+      statement: [
+        '设 $X$ 是拓扑空间。$X$ 的一个**三角剖分**是一对 $(K, h)$：',
+        '',
+        '- $K$ 是**单纯复形**（`def.simplicial-complex`），$|K|$ 是它的几何实现；',
+        '- $h : |K| \\to X$ 是一个**同胚**。',
+        '',
+        '若这样的 $(K, h)$ 存在，称 $X$ **可三角剖分**。把每个单形在 $h$ 下的像叫 $X$ 的一个**面**',
+        '（顶点 / 边 / 三角形），于是 $X$ 被写成一堆三角形的并，任意两个三角形只沿**整条边**或一个顶点相交。',
+      ].join('\n'),
+      notes: [
+        '⚠️ 三角剖分是「**组合骨架 + 把它放进空间的那个同胚**」两件东西，不是单纯复形本身。',
+        '所以「$X$ 可剖分」是拓扑性质，而「$K$ 长什么样」是组合数据 —— 两者必须分开看。',
+        '⚠️ 剖分极不唯一：同一个 $S^{2}$ 有无穷多个本质不同的剖分（四面体、八面体、任意细分…）。',
+        '所以任何「用剖分定义」的量，都必须先证**与剖分无关** —— $\\chi$ 那条（`prop.eulerchar-genus`）做的就是这件事。',
+        '⭐ 单向蕴含：单纯复形自己总是可剖分的（取恒等），但**拓扑空间未必能** —— 这正是下一节要说的。',
+        '📌 定义里没要求 $K$ 有限。紧空间上的剖分自动有限；非紧的（比如开曲面）只能用**局部有限**剖分。',
+      ].join('\n\n'),
+      refs: ['Munkres, Topology, Ch. 12', 'Hatcher, Algebraic Topology, §2.1'],
+    },
+
+    /* ---------------------------------------------------------- Radó */
+    {
+      id: 'thm.rado',
+      cluster: 'topology.surfaces',
+      type: 'theorem',
+      label: 'Radó 定理',
+      title: 'Radó 定理：三角剖分存在性（紧曲面可三角剖分）',
+      regions: ['topology'],
+      tags: ['定理', '拓扑', '曲面', '三角剖分'],
+      status: 'skeleton',
+      statement: [
+        '每个**紧曲面**（紧、连通、$2$ 维拓扑流形，可带边界）都可三角剖分（`def.triangulation`）。',
+        '',
+        '等价的常用写法：每个紧连通曲面都同胚于某个**有限**单纯复形的几何实现。',
+      ].join('\n'),
+      notes: [
+        '⚠️ **本节点只给陈述 + 骨架，不是证明。** 它原本在分类定理里被当作「外部输入」一句话带过 ——'
+        + ' 本图把「三角剖分存在性」单列成一个节点，是为了把缺口的形状写清楚，而不是假装证过；',
+        '完整证明在 Radó 原文（1925）里很长，而且它依赖本图还缺的两层地形：紧曲面的**共形结构存在性**',
+        '（Radó 自己的路线，要 uniformization）或**光滑结构存在性**（Munkres / Whitehead 的路线）。',
+        '',
+        '两条经典路线（都只到骨架）：',
+        '1. **复分析路线**：紧可定向曲面可赋一个复结构（成为 Riemann 面），再用分支覆盖 + 有限性得到剖分。',
+        '2. **微分拓扑路线**：每个紧曲面有（本质唯一的）光滑结构，再用 Morse 理论 / 管状邻域割出三角形。',
+        '',
+        '⭐ **这是低维现象，不是普遍事实** —— 这一条最容易被误记成「每个流形都能剖分」：',
+        '',
+        '- $\\dim \\le 2$：Radó (1925)；$\\dim = 3$：Moise (1952)，所以 $\\dim \\le 3$ 都能三角剖分；',
+        '- $\\dim = 4$：**不行** —— Freedman 的 $E_{8}$ 流形紧、拓扑，但不可三角剖分；',
+        '- $\\dim \\ge 5$：有 Kirby–Siebenmann 的充要条件（存在一个上同调障碍，非零就不可剖分）。',
+        '',
+        '⚠️ 与 `thm.simplicial-approximation` 区分：那条说的是「奇异同调 $=$ 单纯同调」，它**假设**已经有剖分；',
+        '这条说的是「剖分存在」。两条常被攬在一起。',
+        '⚠️ 与 `def.smooth-manifold` 区分：光滑流形可剖分是另一个定理（Whitehead），不要拿光滑结构当既成事实。',
+      ].join('\n\n'),
+      refs: [
+        'Radó, Über den Begriff der Riemannschen Fläche (1925)',
+        'Moise, Affine structures in 3-manifolds (1952)',
+        'Freedman, The topology of four-dimensional manifolds (1982)',
+        'Munkres, Topology, Ch. 12',
+      ],
+    },
   ],
 
   edges: [
+    /* -------- 三角剖分：它的两块原料 -------- */
+    {
+      id: 'dep.simpcomp-triangulation',
+      kind: 'definition',
+      definition: 'def.simplicial-complex',
+      usedBy: 'def.triangulation',
+      note: '三角剖分的骨架就是单纯复形；$|K|$ 是它的几何实现。',
+    },
+    {
+      id: 'dep.topmanifold-triangulation',
+      kind: 'definition',
+      definition: 'def.topological-manifold',
+      usedBy: 'def.triangulation',
+      note: '被剖分的对象是拓扑空间（实际上就是曲面）：剖分只用到拓扑，不用光滑结构。',
+    },
+    {
+      id: 'dep.triangulation-rado',
+      kind: 'definition',
+      definition: 'def.triangulation',
+      usedBy: 'thm.rado',
+      note: 'Radó 定理的结论就是「这种 $(K,h)$ 存在」。',
+    },
+    {
+      id: 'dep.compact-rado',
+      kind: 'definition',
+      definition: 'def.compact',
+      usedBy: 'thm.rado',
+      note: '「紧」是 Radó 的必要假设（开曲面也能剖分，但要局部有限的 $K$，证明也不同）。',
+    },
+    {
+      id: 'dep.rado-classification',
+      kind: 'definition',
+      definition: 'thm.rado',
+      usedBy: 'thm.classification-surfaces',
+      note: '分类定理的**第一步**就是它：先有剖分，才能在组合层面做「删三角形 / 翻边」的化简。',
+    },
+    {
+      id: 'dep.triangulation-simphomology',
+      kind: 'definition',
+      definition: 'def.triangulation',
+      usedBy: 'thm.simplicial-approximation',
+      note: '「奇异同调 $=$ 单纯同调」这条**默默假设了**曲面可剖分（要拿剖分算单纯同调）。以前这个假设在图上是隐形的。',
+    },
     /* -------- 拓扑流形的原料 -------- */
     {
       id: 'dep.topology-topmanifold',
