@@ -341,7 +341,8 @@
         '设多边形的内角为 $\\alpha_{1}\\pi, \\ldots, \\alpha_{n}\\pi$（$0 < \\alpha_{k} < 2$），' +
           '顶点按逆时针排列，对应实轴上的点 $x_{1} < x_{2} < \\cdots < x_{n}$。则',
         '',
-        '$$f(z) = A\\int^{z}_{z_{0}} g(\\zeta)\\,\\mathrm{d}\\zeta + B,$$',
+                '（取 $A \\ne 0$，否则 $f \\equiv B$ 是常值、谈不上共形）',
+'$$f(z) = A\\int^{z}_{z_{0}} g(\\zeta)\\,\\mathrm{d}\\zeta + B,$$',
         '',
         '$$g(\\zeta) := \\prod_{k=1}^{n} (\\zeta - x_{k})^{\\alpha_{k} - 1}.$$',
         '',
