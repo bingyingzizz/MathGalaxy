@@ -1278,6 +1278,10 @@ MG.aliases = {
     { id: 'def.triangulation', en: 'triangulation of a space', aka: ['三角剖分', '可三角剖分', '剖分', 'triangulation'] },
     { id: 'thm.rado', en: 'Rado theorem: every compact surface is triangulable', aka: ['三角剖分存在性', '曲面可三角剖分', 'Rado 定理', 'Radó 定理', 'Radó', 'Rado', 'triangulability of surfaces'] },
 
+    /* ⭐ 2026-11-04 Riemann–Hurwitz 三件 */
+    { id: 'def.branched-cover', en: 'branched cover of Riemann surfaces', aka: ['分支覆盖', '分支覆叠', 'branched cover', 'ramified covering'] },
+    { id: 'def.ramification-index', en: 'ramification index', aka: ['分歧指数', '分歧点', '分支点', 'ramification index', 'ramification point'] },
+    { id: 'thm.riemann-hurwitz', en: 'Riemann-Hurwitz formula', aka: ['Riemann-Hurwitz 公式', 'RH 公式', 'Hurwitz 公式', 'Riemann-Hurwitz', 'riemann hurwitz formula'] },
     /* ================================================== 泛函分析（2026-11-02） */
     /* ⚠️ 这一批的主要作用不是「又名」，是**让搜索能中**：这些节点的名字里带
        `G_δ` / `ℓ²` / `ε-δ` 这类符号，人不会照抄；而带连字符的拉丁词（Banach–Steinhaus）

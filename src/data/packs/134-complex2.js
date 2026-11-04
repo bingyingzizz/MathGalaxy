@@ -325,7 +325,7 @@ window.MG = window.MG || {};
       title: '定义：Riemann 曲面（多值函数的「定义域」）',
       regions: ['complex'],
       tags: ['定义', 'Riemann 曲面', '复流形', '单值化'],
-      refs: ['Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
+      refs: ['Ahlfors, Complex Analysis', 'Stein–Shakarchi, Complex Analysis, Ch. 3'],
       statement: [
         '**白话**：Riemann 曲面是把多值函数的各支「叠」在一起得到的一层一层的曲面 —— 在它上面，原本多值的函数变成单值全纯函数；平面上看起来的「绕一圈换一支」，在曲面上就是「走到另一层」。',
         '',
