@@ -15,6 +15,14 @@
 
 - 拓扑流形 | n 维拓扑流形 → def.topological-manifold
 
+- 直纹面 → def.ruled-surface
+
+- 可展曲面 → def.developable-surface
+
+- 可展的判据 → thm.developable-iff-flat
+
+- 常 Gauss 曲率曲面 → thm.constant-gauss-curvature
+
 - 极坐标的 Christoffel 符号 → ex.polar-christoffel
 
 - sl2 的交换子 → ex-sl2-commutator

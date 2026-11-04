@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T04:16:59.763Z",
+ "generated": "2026-11-04T04:28:35.400Z",
  "terms": 76,
  "missing": [
   {
@@ -231,6 +231,32 @@
    ]
   },
   {
+   "term": "偏微分方程",
+   "total": 6,
+   "nodes": [
+    {
+     "id": "thm.frobenius",
+     "c": 2
+    },
+    {
+     "id": "thm.fundamental-theorem-surfaces",
+     "c": 1
+    },
+    {
+     "id": "def.involutive-distribution",
+     "c": 1
+    },
+    {
+     "id": "def.closed-form",
+     "c": 1
+    },
+    {
+     "id": "thm.developable-iff-flat",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "表示论",
    "total": 5,
    "nodes": [
@@ -252,28 +278,6 @@
     },
     {
      "id": "thm.pontryagin-van-kampen",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "偏微分方程",
-   "total": 5,
-   "nodes": [
-    {
-     "id": "thm.frobenius",
-     "c": 2
-    },
-    {
-     "id": "thm.fundamental-theorem-surfaces",
-     "c": 1
-    },
-    {
-     "id": "def.involutive-distribution",
-     "c": 1
-    },
-    {
-     "id": "def.closed-form",
      "c": 1
     }
    ]

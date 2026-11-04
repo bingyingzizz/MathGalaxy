@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1527 节点 / 3106 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1531 节点 / 3120 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -29,11 +29,11 @@
 ### 概率　出现 6 次
 `def.lebesgue-stieltjes` · `thm.cauchy-schwarz` · `def.tangent-distribution` · `def.jacobi-symbol` · `def.convex-function`
 
+### 偏微分方程　出现 6 次
+`thm.frobenius` · `thm.fundamental-theorem-surfaces` · `def.involutive-distribution` · `def.closed-form` · `thm.developable-iff-flat`
+
 ### 表示论　出现 5 次
 `thm.cayley` · `def.flow` · `thm.stone-weierstrass-complex` · `ex-sl2-commutator` · `thm.pontryagin-van-kampen`
-
-### 偏微分方程　出现 5 次
-`thm.frobenius` · `thm.fundamental-theorem-surfaces` · `def.involutive-distribution` · `def.closed-form`
 
 ### 调和形式　出现 3 次
 `def.hodge-star` · `thm.divergence-theorem`

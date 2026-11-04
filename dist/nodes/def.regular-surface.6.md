@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ～弱边 [`def.topological-manifold`](../nodes/def.topological-manifold.md) 拓扑流形
+- 被 [`def.ruled-surface`](../nodes/def.ruled-surface.md) 直纹面 用

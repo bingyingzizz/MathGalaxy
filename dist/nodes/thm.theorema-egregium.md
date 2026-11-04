@@ -11,6 +11,7 @@ $$K_{1}(p) = K_{2}(\varphi(p))\qquad (p \in S_{1}).$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`def.isometry-surface`](../nodes/def.isometry-surface.md) 等距
+- 被 [`thm.developable-iff-flat`](../nodes/thm.developable-iff-flat.md) 可展的判据 用
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.theorema-egregium.3.md](./thm.theorema-egregium.3.md)

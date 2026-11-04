@@ -8,3 +8,7 @@
 - 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用
 - 被 [`ex.sphere-curvature`](../nodes/ex.sphere-curvature.md) 球面的曲率 用
 - 被 [`ex.cylinder-first-form`](../nodes/ex.cylinder-first-form.md) 圆柱的第一基本形式 用
+- 被 [`def.ruled-surface`](../nodes/def.ruled-surface.md) 直纹面 用
+- 被 [`def.developable-surface`](../nodes/def.developable-surface.md) 可展曲面 用
+
+> 续见 [nodes/def.gauss-curvature.5.md](./def.gauss-curvature.5.md)

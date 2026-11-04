@@ -14,3 +14,4 @@
 - thm.theorema-egregium　绝妙定理　layer 32
 - thm.gauss-bonnet　Gauss–Bonnet 定理　layer 32
 - ex.sphere-curvature　球面的曲率　layer 33
+- thm.constant-gauss-curvature　常 Gauss 曲率曲面　layer 33
