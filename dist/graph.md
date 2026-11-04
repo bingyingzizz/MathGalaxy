@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-04T03:50:21.587Z
-> 15 星系 / 105 星团 / 1520 节点 / 3086 连线（强边 3048，弱边 38；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-04T04:16:59.763Z
+> 15 星系 / 105 星团 / 1527 节点 / 3106 连线（强边 3067，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.6 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -2949,6 +2949,25 @@ $$\operatorname{Hom}(S \sqcup T,\ Z) \;\cong\; \operatorname{Hom}(S, Z) \times \
 
 ### 星团：Stone 与 Stonean
 > 造出「不连通的那一半紧 Hausdorff 空间」：全不连通 → Stone 空间 = 投射有限空间 → 极不连通的 Stonean 空间 → Gleason 定理与布尔环表示。
+
+#### profinite 整数 ℤ̂　`def.profinite-integers`
+*定义*　profinite 整数 $\hat{\mathbb{Z}} = \varprojlim_{n} \mathbb{Z}/n$：数论与拓扑的交界
+
+把 $\mathbb{Z}/n\mathbb{Z}$ 都看成离散紧空间，按 $n \mid m$ 时的商映射 $\mathbb{Z}/m \to \mathbb{Z}/n$ 取**逆极限**：
+
+$$\hat{\mathbb{Z}} := \varprojlim_{n \ge 1} \mathbb{Z}/n\mathbb{Z} \;\subseteq\; \prod_{n \ge 1} \mathbb{Z}/n\mathbb{Z}.$$
+
+右边是紧空间之积（Tychonoff），$\hat{\mathbb{Z}}$ 是闭子集（「相容」条件），所以它带**紧 Hausdorff 全不连通**的拓扑 —— 一个 profinite 空间。
+
+**它装的是什么**：$\hat{\mathbb{Z}}$ 的元素是相容序列 $(a_{n})_{n \ge 1}$（$a_{n} \in \mathbb{Z}/n$、$a_{m} \equiv a_{n} \pmod n$）。把整数 $k$ 送成常数序列 $(k \bmod n)_{n}$ 是一个紧嵌入 $\mathbb{Z} \hookrightarrow \hat{\mathbb{Z}}$，像稠密但**不**是全体（`def.profinite` 里「稠密但不满」的标准例子）。
+
+⭐ **CRT 把它拆成素数方向**：$\hat{\mathbb{Z}} \cong \prod_{p} \mathbb{Z}_{p}$（$\mathbb{Z}_{p}$ 是 $p$-进整数）。所以「数论的素数分解」在拓扑侧变成了「紧全不连通空间拆成不可再分的因子」—— 这是数论与拓扑之间**真存在**的那道桥。
+
+📌 **为什么它在凝聚态里重要**：$\hat{\mathbb{Z}}$ 是所有 profinite 空间的「原型」，$\mathbb{Z}[\hat{\mathbb{Z}}]$ 的投射性（`thm.gleason` / `lem.stonean-projective` 那一支）就是从这里看出来的。
+
+⚠ **$\hat{\mathbb{Z}} \ne \mathbb{Z}$**：$\hat{\mathbb{Z}}$ 是不可数紧空间，$\mathbb{Z}$ 是可数离散群。⛔ 不要写成「完备化后相同」—— 它是**新的**对象，含「无限大」方向的相容信息（例如 $\prod_{p}(1 - 1/p)$ 这类）。
+
+参考：Ribes–Zalesskii, Profinite Groups, Ch. 2
 
 #### 连通分量是闭开邻域之交　`prop.component-clopen`
 *命题*　紧 Hausdorff 空间中连通分量 = 闭开邻域之交
@@ -7313,6 +7332,23 @@ $$B = Q^{T} A\, Q = Q^{-1} A\, Q .$$
 ⚠️ 本图 `def.similarity` 讲的是最一般的相似。别把「$A$ 相似于对角阵」与「$A$ 正交相似于对角阵」混起来 —— 前者只要求特征向量**够多**，后者还要求它们**互相垂直**（这就是正规，`def.normal-matrix`）。
 
 参考：Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 酉等价；Axler, Linear Algebra Done Right, 「Operators on Inner Product Spaces」· 谱定理
+
+#### 到坐标平面的投影　`ex.plane-projection`
+*例*　正交投影：$P = \operatorname{diag}(1, 1, 0)$，$P^{2} = P = P^{\ast}$
+
+在 $\mathbb{R}^{3}$（标准内积）里取子空间 $W = \{\, (x, y, 0) \,\}$。到 $W$ 的正交投影是
+
+$$P = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}.$$
+
+**三条性质逐条验**：$P^{2} = P$（幂等）；$P^{\ast} = P$（对称）；$\ker P = \operatorname{span}(e_{3})$、$\operatorname{im} P = W$，且 $\mathbb{R}^{3} = \ker P \oplus \operatorname{im} P$ **正交**直和。反过来：幂等 + 对称 $\implies$ 正交投射（只幂等的话是斜投射，像与核不垂直）。
+
+⭐ **它是最小二乘的几何内核**：$P b = (b_{1}, b_{2}, 0)$ 就是「离 $b$ 最近的 $W$ 中的点」，残差 $b - Pb = (0, 0, b_{3})$ 与 $W$ 正交 —— 这正是 `thm.least-squares` 的法方程的几何内容。一般情形 $W = \operatorname{col}(A)$ 时投影矩阵就是 $A(A^{T}A)^{-1}A^{T}$。
+
+📌 **与伪逆的关系**：$A = P$ 本身是幂等且对称的，所以 $A^{+} = A$（Penrose 四条直接成立）。这说明「投影」在伪逆的语言里是**自伴幂等**那一类。
+
+⚠ **别把投影矩阵当成「去掉一个坐标」**：换一组非标准正交基，矩阵就不再是对角形 —— 「投影」是几何概念，$\operatorname{diag}(1,1,0)$ 只是它在标准基下的样子。
+
+参考：Strang, Linear Algebra and Its Applications, §4.2
 
 ### 星团：多重线性与张量
 > 造出「把双线性型变成线性映射」的机器：双线性型 → **张量积的万有性质** → 张量 ⊣ 内 Hom（伴随）→ 外幂与外代数 → 对称代数 → **行列式 = 最高外幂上的作用**（把行列式的来源统一到外代数）。
@@ -16274,6 +16310,8 @@ $$\forall E \in \mathcal{M}, \mu(E) = 0 \implies \nu(E) = 0$$
 
 显然 $\mu \ll  |\mu|$ 且 $|\mu| \ll  \mu$（对测度 $\mu$ 自身而言）。
 
+📌 例：$\nu(E) := \int_{E} f\,\mathrm{d}\mu$（$f \ge 0$ 可积）满足 $\nu \ll \mu$ 且 $\mathrm{d}\nu/\mathrm{d}\mu = f$；反面是 $\delta_{0} \perp \mu$（质量全在一个零测集上，见 `ex.density-abs-continuous`）。
+
 参考：Folland, Real Analysis, §3.2
 
 #### 绝对连续与变差　`prop.ac-and-variations`
@@ -16543,6 +16581,24 @@ $$|f_1| \frac{d\mu_1}{d\rho} = |f_2| \frac{d\mu_2}{d\rho}\quad  \rho-\text{a.e.}
 由此也得到一个实用的直觉：**全变差就是「把质量取绝对值之后再测一遍」**。
 
 参考：Folland, Real Analysis, §3.3；Rudin, Real and Complex Analysis, Ch. 6
+
+#### 密度型测度绝对连续　`ex.density-abs-continuous`
+*例*　绝对连续：$\nu = f\,\mathrm{d}\mu$ 则 $\nu \ll \mu$，$\mathrm{d}\nu/\mathrm{d}\mu = f$；而 $\delta_{0} \perp \mu$
+
+取 $\mu$ = $[0,1]$ 上的 Lebesgue 测度。
+
+1. 设 $f \in L^{1}(\mu)$、$f \ge 0$，令 $\nu(E) := \int_{E} f\,\mathrm{d}\mu$。则 $\nu \ll \mu$（$\mu(E) = 0 \implies \nu(E) = 0$），且 $\dfrac{\mathrm{d}\nu}{\mathrm{d}\mu} = f$。
+2. 反过来，$\delta_{0}$（$\delta_{0}(E) := 1$ 当 $0 \in E$，否则 $0$）满足 $\delta_{0} \perp \mu$ —— 它把全部质量放在一个 $\mu$-零集上。
+
+**第 1 条为什么显然**：$\mu(E) = 0$ 时积分域是零测集，$\int_{E}f\,\mathrm{d}\mu = 0$。真正的内容是**反方向**：Radon–Nikodym 定理说 $\nu \ll \mu$ 时**一定有**这样的密度（`thm.lebesgue-radon-nikodym`）。
+
+⭐ **第 2 条是「奇异」的样板**：$\delta_{0}$ 与 $\mu$ 互相奇异 —— 取 $A = \{0\}$，则 $\mu(A) = 0$ 而 $\delta_{0}(A) = 1$。Lebesgue 分解 $\nu = \rho + \lambda$（$\rho \ll \mu$、$\lambda \perp \mu$）就是把这一个例子的现象对一般 $\nu$ 说出来。
+
+📌 **同一个测度可以有多种密度表示**：$f$ 改成几乎处处相等的 $g$，$\nu$ 不变。所以 $\mathrm{d}\nu/\mathrm{d}\mu$ 是 $L^{1}$ 里的**类**，不是函数 —— 这一点在链式法则 $\dfrac{\mathrm{d}\nu_{2}}{\mathrm{d}\mu} = \dfrac{\mathrm{d}\nu_{2}}{\mathrm{d}\nu_{1}}\cdot\dfrac{\mathrm{d}\nu_{1}}{\mathrm{d}\mu}$ 里最容易出错（要求 $\nu_{1}$-a.e. 成立）。
+
+⚠ **「绝对连续测度」与「绝对连续函数」是两个概念**：前者是 $\nu \ll \mu$，后者是 $F(x) = \int_{a}^{x} f$（`def.ac-function`）。两者的桥是「$F$ 绝对连续 $\iff$ $\mathrm{d}F = f\,\mathrm{d}x$」（`thm.ftc-lebesgue`），但**名字相同、对象不同**。
+
+参考：Rudin, Real and Complex Analysis, Ch. 6（Lebesgue 分解）
 
 ### 星团：微分定理
 > 造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。
@@ -24034,6 +24090,8 @@ $$H^{n}(X, M^{\bullet}) := R^{n}\Gamma(X, M^{\bullet}),$$
 
 **为什么需要它**：单看 $H^{0}(X, M) = \Gamma(X, M) = M(X)$ 只有整体截面；$H^{1}$ 起才开始记录「层粘不上去」的信息（$H^{1}$ 分类层的主丛 / torsor）。
 
+📌 例：$H^{0}(X;\mathbb{Z})$ 就是整体截面的群；$H^{1}(S^{1};\mathbb{Z}) \cong \mathbb{Z}$（与奇异同调一致，见 `ex.h1-circle`）；层上同调在**细**层（如 $C^{\infty}$ 函数层）上高次为零。
+
 参考：Le Stum, Definition 7.3.1
 
 #### Čech 上同调　`def.cech-cohomology`
@@ -30574,6 +30632,23 @@ $$(d - c)|z|^{2} - 2au - 2bv = (d + c),$$
 
 参考：王晓光《复变函数》· 扩充复平面的拓扑；Ahlfors, Complex Analysis (3rd ed.), Ch. 1 · Complex Numbers
 
+#### ∮dz/z　`ex.contour-1-over-z`
+*例*　$\oint_{|z| = 1} \dfrac{\mathrm{d}z}{z} = 2\pi i$：最简单的「闭而不恰当」
+
+取单位圆 $\gamma(\theta) = e^{i\theta}$（$0 \le \theta \le 2\pi$，逆时针）。则
+
+$$\oint_{\gamma} \frac{\mathrm{d}z}{z} = \int_{0}^{2\pi} \frac{ie^{i\theta}\,\mathrm{d}\theta}{e^{i\theta}} = i\int_{0}^{2\pi}\mathrm{d}\theta = 2\pi i.$$
+
+**它为什么是「基准值」**：任何围道积分的第一步都是把被积函数写成 $\sum a_{k}(z - z_{0})^{k}$，而 $\oint (z - z_{0})^{k}\mathrm{d}z$ 只在 $k = -1$ 时非零（等于 $2\pi i$）。所以这个数就是留数的「单位」。
+
+⭐ **它同时是 $H^{1}(S^{1}) \ne 0$ 的证据**：$\mathrm{d}z/z$ 是闭的（1 维形式，$\mathrm{d}^{2} = 0$ 平凡）但不恰当 —— 恰当的话围道积分必须是 $0$。同调那一侧的说法见 `ex.h1-circle`。
+
+📌 **把它当成绕数**：对任意闭曲线 $\gamma$（不经过 $0$），$\frac{1}{2\pi i}\oint_{\gamma}\mathrm{d}z/z$ 是一个**整数**，就是 $\gamma$ 绕 $0$ 的圈数（`def.winding-number`）。这一条把「积分 = 整数」这个反直觉事实说清楚了。
+
+⚠ **$1/z$ 在 $0$ 处的奇点不能「修掉」**：它是单极点（Laurent 展开有 $z^{-1}$ 项），不是可去奇点 —— 对比 $\sin z/z$（可去，`thm.riemann-removable`）。两条围道积分一个给 $2\pi i$、一个给 $0$，区别全在这一项。
+
+参考：Ahlfors, Complex Analysis, Ch. 4
+
 ### 星团：Cauchy 理论
 > 一套把「全纯」变成「可积、可展开」的机器：Goursat 三角形引理 → Cauchy–Goursat → Cauchy 积分公式 → 高阶导数 → Cauchy 不等式 → Liouville → Morera；再用它造出 Taylor 与 Laurent 展开，由此得到零点的阶、唯一性定理、三类奇点与 Weierstrass 收敛定理。
 
@@ -32716,6 +32791,8 @@ $I$ 是 $\mathbb{R}^{3}$ 的内积沿 $r$ 的**拉回**：$\mathrm{d}r$ 把参�
 
 ⚠️ 换参数化会改 $E,F,G$ 的表达式，$I$ 作为张量不变。正交参数化（$F = 0$）能让公式短一半 —— 那串 $\Gamma$ 就只在那种情形写出来。
 
+📌 例：半径 $R$ 的圆柱用 $r(u,v) = (R\cos u, R\sin u, v)$ 参数化时 $\mathrm{I} = R^{2}\mathrm{d}u^{2} + \mathrm{d}v^{2}$（$E = R^{2}$、$F = 0$、$G = 1$），于是 $K = 0$（见 `ex.cylinder-first-form`）。
+
 参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· 第一基本形式；陈维桓《微分几何讲义》, 「曲面的局部理论」· 第一基本形式
 
 #### Weingarten 变换　`def.weingarten-map`
@@ -33095,6 +33172,25 @@ $$\lVert r_{u}\times r_{v}\rVert^{2} = \lVert r_{u}\rVert^{2}\lVert r_{v}\rVert^
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「曲面」· 定向与法向场；do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 定向
 
+#### 圆柱的第一基本形式　`ex.cylinder-first-form`
+*例*　圆柱面：$\mathrm{I} = R^{2}\,\mathrm{d}u^{2} + \mathrm{d}v^{2}$，$-\!-$ 平坦但**不**与平面等距
+
+半径 $R$ 的圆柱面用 $r(u, v) = (R\cos u,\ R\sin u,\ v)$ 参数化（$0 \le u < 2\pi$、$v \in \mathbb{R}$）。则
+
+$$E = \langle r_{u}, r_{u}\rangle = R^{2},\quad F = \langle r_{u}, r_{v}\rangle = 0,\quad G = \langle r_{v}, r_{v}\rangle = 1,$$
+
+即第一基本形式 $\mathrm{I} = R^{2}\,\mathrm{d}u^{2} + \mathrm{d}v^{2}$，Gauss 曲率 $K = 0$。
+
+**为什么 $K = 0$**：$E, F, G$ 全是常数 $\implies$ 所有 Christoffel 符号为零 $\implies$ 曲率张量为零。直观上圆柱可以「摊平」成矩形而不改变长度与角度 —— 这就是 $K = 0$ 的意思。
+
+⭐ **它是「内蕴 = 外在」的最干净反例素材**：圆柱的 $K = 0$（内蕴平坦），但**它不是平面** ——整块摊平会让 $u$ 方向的边粘起来，所以圆柱与平面只**局部**等距（沿 $u$ 绕一圈后回不到原来的点）。「局部等距」与「整体等距」的区别，在这一个例子里就能看清。
+
+📌 **第二基本形式不为零**：$k_{1} = 1/R$、$k_{2} = 0$ —— 圆柱在 $\mathbb{R}^{3}$ 里是弯的，但两个主曲率一正一「零」使 $K = k_{1}k_{2} = 0$。这直接说明「外在地弯」与「内在地弯」是两件事。
+
+⚠ **参数化的退化**：$u = 0$ 与 $u = 2\pi$ 是同一条母线，所以 $r$ 只是**局部**参数化（整个圆柱要两张图卡或允许周期性）。这与极坐标在 $r = 0$ 处退化是同一类问题（见 `ex.polar-christoffel`）。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, §2-5（圆柱的例子）
+
 ### 星团：内蕴几何
 > 只靠第一基本形式就能读出的东西：测地线、测地曲率、指数映射、Gauss 绝妙定理（$K$ 内蕴）、Gauss–Bonnet。
 
@@ -33170,6 +33266,8 @@ $$2\langle \nabla_{X}Y,Z\rangle = X\langle Y,Z\rangle+Y\langle Z,X\rangle-Z\lang
 **为什么它决定测地线**：测地线方程里唯一的外来数据就是 $\Gamma$，所以「哪些曲线是测地线」完全是 $I$ 的事 —— 这已经是内蕴几何的第一步。
 
 ⚠️ 二维时只有 $2^{3} = 8$ 个记号，但独立的分量由对称性减到 $6$ 个（$k$ 定、$i \le j$）；平坦坐标下它们全为零。
+
+📌 例：极坐标 $(r, \varphi)$ 下 $g = \mathrm{d}r^{2} + r^{2}\mathrm{d}\varphi^{2}$，只有三个非零符号 $\Gamma^{r}_{\varphi\varphi} = -r$、$\Gamma^{\varphi}_{r\varphi} = \Gamma^{\varphi}_{\varphi r} = 1/r$（逐项算见 `ex.polar-christoffel`）。
 
 参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 克里斯托费尔记号；do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 联络系数
 
@@ -33492,6 +33590,8 @@ $$K = \langle R(e_{1},e_{2})e_{2},e_{1}\rangle .$$
 两条路给出同一个数，这就是**绝妙定理**的内容 —— 在那个节点里给证明。
 
 ⚠️ $K$ 是**一个点**上的量，与「曲线的曲率」没有直接大小关系：$K = 1$ 的曲面上可以有曲率为 $0$ 的曲线（测地线），$K = 0$ 的柱面上可以有曲率非零的曲线。
+
+📌 例：半径 $R$ 的球面 $K = 1/R^{2}$（见 `ex.sphere-curvature`）；圆柱 $K = 0$（$k_{1} = 1/R$、$k_{2} = 0$，见 `ex.cylinder-first-form`）；平面 $K = 0$。三个例子正好覆盖 $K$ 的三种符号。
 
 参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯曲率；do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 高斯方程
 
@@ -33937,6 +34037,23 @@ $$K = \frac{1}{R^{2}}, \qquad H = \pm\frac{1}{R}, \qquad k_{1} = k_{2} = \pm\fra
 ⚠ **不要对一般曲面说「$K = 1/R^{2}$ 那种形式」**：只有球面两个主曲率相等。环面上 $K$ 变号（外侧正、内侧负），平面上 $K = 0$。
 
 参考：do Carmo, Differential Geometry of Curves and Surfaces, §3-2
+
+#### 极坐标的 Christoffel 符号　`ex.polar-christoffel`
+*例*　极坐标：$\Gamma^{r}_{\varphi\varphi} = -r$、$\Gamma^{\varphi}_{r\varphi} = 1/r$，其余为零
+
+在 $\mathbb{R}^{2}\setminus\{0\}$ 上取极坐标 $(r, \varphi)$，度量为 $g = \mathrm{d}r^{2} + r^{2}\,\mathrm{d}\varphi^{2}$。则 Christoffel 符号只有三个非零：
+
+$$\Gamma^{r}_{\varphi\varphi} = -r, \qquad \Gamma^{\varphi}_{r\varphi} = \Gamma^{\varphi}_{\varphi r} = \frac{1}{r}.$$
+
+**怎么算**：$g_{rr} = 1$、$g_{\varphi\varphi} = r^{2}$、$g_{r\varphi} = 0$，逆矩阵是 $g^{rr} = 1$、$g^{\varphi\varphi} = r^{-2}$。代入 $\Gamma^{k}_{ij} = \tfrac{1}{2}g^{kl}(\partial_{i}g_{jl} + \partial_{j}g_{il} - \partial_{l}g_{ij})$：唯一非平凡的导数是 $\partial_{r}g_{\varphi\varphi} = 2r$，于是 $\Gamma^{r}_{\varphi\varphi} = -\tfrac12\cdot 1\cdot 2r$、$\Gamma^{\varphi}_{r\varphi} = \tfrac12 \cdot r^{-2}\cdot 2r$，其余项因为 $g$ 与 $\varphi$ 无关而消失。
+
+⭐ **它为什么值得算**：这些符号是「坐标网格本身在弯」的账，不是空间在弯。所以极坐标下测地线方程 $\ddot r - r\dot\varphi^{2} = 0$、$\ddot\varphi + \tfrac{2}{r}\dot r\dot\varphi = 0$ 给出的仍是**直线**（例如 $r\cos\varphi = $ 常数）—— 平坦空间在坏坐标下的曲率必须算成 $0$，这是检验计算的硬检查。
+
+📌 **一致性的证据**：把上面两组符号代进 $R^{r}{}_{\varphi r\varphi} = \partial_{r}\Gamma^{r}_{\varphi\varphi} - \cdots$ 会得到 $0$，与「$\mathbb{R}^{2}$ 平坦」相符。算错一个因子，$R$ 就不为零 —— 这条常用来抓 $1/r$ 与 $-r$ 搞混的错。
+
+⚠ **$r = 0$ 处不能用**：极坐标在原点退化（$\varphi$ 无定义），所以这是**局部**例子；要在全平面谈必须换图卡 —— 这正是「流形的联络由局部数据拼出来」的意思。
+
+参考：do Carmo, Riemannian Geometry, Ch. 2（极坐标的例子）
 
 ### 星团：流形与向量丛
 > 把「曲面」换成一般的流形：图卡与图册 → 光滑映射与光滑结构 → 切丛与向量丛 → 截面、纤维度量 → 定向与体积形式。这一团是后面几团的地基（丛上「多一层结构」的东西在「示性类与丛的分类」那团）。
@@ -34956,6 +35073,7 @@ $$[X,Y] = \sum_{i=1}^{n}\Bigl(\sum_{j=1}^{n}\bigl(X^{j}\partial_{j}Y^{i} - Y^{j}
 **几何含义**：$[X,Y]$ 量「先沿 $X$ 走一步再沿 $Y$ 走一步」与「反序走」的差，除以步长的平方。所以 $[X,Y] = 0$ 意味着两族积分曲线能拼成坐标网 —— 这是 Frobenius 可积性的起点，本图只提。
 
 **与联络的分界**：$\nabla_{X}Y$ 与 $[X,Y]$ 长得像但性质不同 —— 联络是额外结构（`def.affine-connection`），括号是流形自身就有的。无挠条件 $\nabla_{X}Y - \nabla_{Y}X = [X,Y]$ 就是拿这条免费的括号去约束联络。
+📌 例：矩阵群上的括号就是**交换子** $[A,B] = AB - BA$。取 $E,F,H$ 为 $\mathfrak{sl}_{2}$ 的标准基，则 $[E,F] = H$、$[H,E] = 2E$、$[H,F] = -2F$（见 `ex-sl2-commutator`）。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场的 Lie 括号
 
@@ -35482,6 +35600,27 @@ $k = n$ 时 $\mathrm{d}\omega = 0$，故 $\mathcal{L}_{X}\omega = \mathrm{d}\iot
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· Cartan 公式；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 内乘与 Lie 导数的关系
 
+#### sl₂ 的交换子　`ex-sl2-commutator`
+*例*　矩阵交换子：$[E, F] = H$、$[H, E] = 2E$、$[H, F] = -2F$
+
+取
+
+$$E = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},\quad F = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},\quad H = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},$$
+
+在 $[A, B] := AB - BA$ 下，这三个矩阵张成的三维空间对括号封闭，且
+
+$$[E, F] = H, \qquad [H, E] = 2E, \qquad [H, F] = -2F.$$
+
+**逐条验**：$EF = \begin{pmatrix}1&0\\0&0\end{pmatrix}$、$FE = \begin{pmatrix}0&0\\0&1\end{pmatrix}$，相减正是 $H$；$HE = E$、$EH = -E$ $\implies$ $[H,E] = 2E$；同理 $[H,F] = -2F$。
+
+⭐ **为什么这三个是标准例子**：它们就是 $\mathfrak{sl}_{2}$ 的**标准基** —— 「特征值 $2, 0, -2$」的伴随作用让整个表示论可以画在一张图上。本图的 `def.lie-bracket` 说「反称 + Jacobi」，这里能直接看到反称（$[E,E] = 0$）与 Jacobi 恒等式在三元组上成立。
+
+📌 **括号是「换位子的无穷小版」**：对矩阵群，$\exp(tA)\exp(tB)\exp(-tA)\exp(-tB) = I + t^{2}[A,B] + O(t^{3})$ —— 所以交换子测的正是「两个流在多大程度上不交换」。这条式子本图没有节点（`def.lie-group` 的注里提了线性化，没给这条路），这里只作为读法。
+
+⚠ **别把 $[A,B]$ 当成矩阵乘法的「另一种写法」**：$[A,B]$ 与 $AB$ 是完全不同的对象（前者在 $A = B$ 时为零）。Lie 括号也不是结合运算：$[A,[B,C]] \ne [[A,B],C]$ 一般而言 —— 代替结合律的是 Jacobi。
+
+参考：Hall, Lie Groups, Lie Algebras, and Representations, §2.1
+
 ### 星团：微分形式、积分与 de Rham
 > 让「积分」在流形上跑起来：奇异方块与链 → 边界算子与 ∂²=0 → 链上的积分与换元、Stokes 与散度定理 → 体积形式与密度 → de Rham 复形、Poincaré 引理、Mayer–Vietoris，最后到 de Rham 定理。
 
@@ -35523,6 +35662,7 @@ $k < n$ 的形式要积分得先拉回到 $k$ 维子流形上。
 这也是「曲面上 $\mathrm{d}A = \omega^{1}\wedge\omega^{2}$」的来源。
 
 **它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\sqrt{\det g}$。体积形式 = 定向 + 度量，两部分都要交代。
+📌 例：$\mathbb{R}^{3}$ 上的 $\mathrm{d}x\wedge\mathrm{d}y\wedge\mathrm{d}z$；$S^{2}_{R}$ 上取 $R^{2}\sin\theta\,\mathrm{d}\theta\wedge\mathrm{d}\varphi$，它的积分是 $4\pi R^{2}$（正好是球面积）。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 体积形式与定向；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架
 
@@ -53312,6 +53452,82 @@ $\operatorname{Re}s > 1$ 时 $\sum n^{-s}$ **绝对收敛** —— 这是「可�
 
 这一团讲的是「紧生成 + 弱 Hausdorff」，例 1–3 正是在这两条条件下讨论谁留在这个范畴里。
 
+#### 定义引用：「克里斯托费尔记号」→ 极坐标的 Christoffel 符号　`dep.polar-christoffel`
+
+例子的全部内容就是把 $\Gamma^{k}_{ij}$ 的公式代进极坐标度量里算一遍。
+
+#### 定义引用：「测地线」→ 极坐标的 Christoffel 符号　`dep.polar-geodesic`
+
+注里用测地线方程检验「直线仍是直线」，用到测地线的定义（$\ddot\gamma + \Gamma(\dot\gamma,\dot\gamma) = 0$）。
+
+#### 定义引用：「Lie 括号」→ sl₂ 的交换子　`dep.sl2-bracket`
+
+例子算的就是 Lie 括号 $[A,B] = AB - BA$。
+
+#### 定义引用：「Lie 代数」→ sl₂ 的交换子　`dep.sl2-liealg`
+
+「对括号封闭」= 构成 Lie 代数；$\mathfrak{sl}_{2}$ 是标准例子。
+
+#### 定义引用：「复围道积分」→ ∮dz/z　`dep.contour-z`
+
+例子就是一条围道积分的直接计算。
+
+#### 定义引用：「绕数」→ ∮dz/z　`dep.contour-winding`
+
+注里把 $\frac{1}{2\pi i}\oint \mathrm{d}z/z$ 认作绕数 —— 用到绕数的定义。
+
+#### 定义引用：「正交投影」→ 到坐标平面的投影　`dep.plane-proj`
+
+例子给的是正交投影的矩阵，用定义（幂等 + 自伴）逐条验。
+
+#### 定义引用：「最小二乘」→ 到坐标平面的投影　`dep.plane-ls`
+
+注里把它当最小二乘的几何内核（残差与子空间正交）。
+
+#### 定义引用：「第一基本形式」→ 圆柱的第一基本形式　`dep.cyl-first`
+
+例子的结果 $E, F, G$ 就是第一基本形式的系数。
+
+#### 定义引用：「Gauss 曲率」→ 圆柱的第一基本形式　`dep.cyl-gauss`
+
+例子的结论含 `K = 0`，并用 `k1 = 1/R`、`k2 = 0` 解释 —— 用到 Gauss 曲率的定义（两主曲率之积）。
+
+#### 定义引用：「曲面与参数化」→ 圆柱的第一基本形式　`dep.cyl-regsurf`
+
+圆柱是正则曲面的标准例子（参数化 $r(u,v)$ 的 $r_{u} \times r_{v} \ne 0$）。
+
+#### 定义引用：「绝对连续」→ 密度型测度绝对连续　`dep.dens-ac`
+
+例子的第一条就是「$\nu = f\,\mathrm{d}\mu \implies \nu \ll \mu$」。
+
+#### 定义引用：「Radon–Nikodym 导数与 Lebesgue 分解」→ 密度型测度绝对连续　`dep.dens-rn`
+
+「$\mathrm{d}\nu/\mathrm{d}\mu = f$」用的正是 Radon–Nikodym 导数。
+
+#### 定义引用：「测度」→ 体积密度与体积形式　`dep.density-measure`
+
+**跨区域桥（analysis-measure $\leftrightarrow$ diffgeom）**：密度是「能对 Lebesgue 测度积分的量」，它的良定性证明（`prop.volume-density-well-defined`）就是换元公式 + 测度。
+
+#### 定义引用：「良序集」→ 整数的带余除法　`dep.intdiv-wellorder`
+
+**跨区域桥（order-theory $\leftrightarrow$ number）**：带余除法的存在性标准证法取 $\{\, a - qb \ge 0 \,\}$ 的最小元，用的正是 $\mathbb{N}$ 的**良序**性。
+
+#### 定义引用：「投射有限空间」→ profinite 整数 ℤ̂　`dep.zhat-profinite`
+
+**跨区域桥（topology $\leftrightarrow$ number）**：$\hat{\mathbb{Z}}$ 是逆极限经 Tychonoff 得到的紧全不连通空间，即 profinite 空间的一个实例 —— 用到 profinite（Stone）空间的定义。
+
+#### 定义引用：「中国剩余定理」→ profinite 整数 ℤ̂　`dep.zhat-crt`
+
+注里的 $\hat{\mathbb{Z}} \cong \prod_{p}\mathbb{Z}_{p}$ 就是中国剩余定理沿所有 $n$ 取极限。
+
+#### 定义引用：「拓扑流形」→ 光滑流形　`dep.smooth-topo`
+
+光滑流形的定义**从拓扑流形开始**：先要求 Hausdorff、第二可数、每点有同胚于 $\mathbb{R}^{n}$ 开集的图卡，再额外要求换卡是 $C^{\infty}$。所以「拓扑流形」是它的底，少了它连「图卡」都无从谈起。
+
+#### 定义引用：「光滑流形」→ 曲面与参数化　`dep.regsurf-smooth`
+
+正则参数曲面的像 $S = r(U)$ 是 **2 维光滑流形**：$(u, v) \mapsto r(u, v)$ 本身就是一张（整体）图卡，换卡时用参数变换的 $C^{2}$ 性。所以它用到光滑流形的定义。
+
 #### 定义引用：「子集」→ 幂集 𝒫(X)　`dep.subset-powerset`
 
 幂集的元素就是**子集**：$A \in \mathcal{P}(X) \iff A \subseteq X$。
@@ -60590,6 +60806,17 @@ $$\int_{M} K\,\mathrm{d}A = 4\pi(1-g).$$
 
 ⚠ 这只是类比/指向，**不是依赖**：本图没有把「$\zeta$ 在 $\operatorname{Re}s = 1$ 上非零」这条定理单独立节点，所以从 $\zeta$ 推不出素数定理；反方向也不是。要真接上，得先补 Perron 公式与 Wiener–Ikehara 那一套。
 
+#### 拓扑流形 ～ 曲面与参数化　`ana.topo-regsurf`
+*「曲面」的两个意思：内蕴的流形 $\leftrightarrow$ $\mathbb{R}^{3}$ 里的参数曲面*
+
+**同名不同物**：
+- `def.topological-manifold`：内蕴的，只说「局部同胚于 $\mathbb{R}^{n}$」，不假设有外部空间；
+- `def.regular-surface`：外在地放在 $\mathbb{R}^{3}$ 里，由参数化给出，自带法向、第二基本形式、主曲率。
+
+两件事的桥是「正则参数曲面的像**是**光滑流形」（上一条 definition 边），但**不能反过来说**：不是每个 2 维流形都能塞进 $\mathbb{R}^{3}$（可定向闭曲面能、Klein 瓶不能）。
+
+⚠ 所以这里只记类比而非依赖：一边有外部空间，一边没有。
+
 #### 米田嵌入 ～ 紧 Haus 是反射子范畴　`ana.embed-better-world`
 *米田嵌入与 Stone–Čech 紧化：都是「嵌进一个大得多的世界」*
 
@@ -60811,11 +61038,11 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **特征值与 Jordan 型 ↔ 曲面论**　2 条节点级连线
 - **矩阵与行列式 ↔ 曲面论**　2 条节点级连线
 - **活动标架与结构方程 ↔ 曲面论**　12 条节点级连线
-- **内蕴几何 ↔ 曲面论**　17 条节点级连线
+- **内蕴几何 ↔ 曲面论**　19 条节点级连线
 - **内蕴几何 ↔ 拓扑空间的基本语汇**　2 条节点级连线
 - **多元微分 ↔ 内蕴几何**　4 条节点级连线
 - **特征值与 Jordan 型 ↔ 内蕴几何**　2 条节点级连线
-- **内蕴几何 ↔ 流形与向量丛**　9 条节点级连线
+- **内蕴几何 ↔ 流形与向量丛**　10 条节点级连线
 - **积分 ↔ 符号测度与分解**　5 条节点级连线
 - **测度的构造 ↔ 符号测度与分解**　8 条节点级连线
 - **复变函数基础 ↔ 数系的构造**　6 条节点级连线
@@ -60883,7 +61110,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **内积空间与正交性 ↔ 矩阵与行列式**　2 条节点级连线
 - **内积空间与正交性 ↔ 线性映射与秩**　2 条节点级连线
 - **多重线性与张量 ↔ 向量空间与基**　2 条节点级连线
-- **内积空间与正交性 ↔ 矩阵分解与最小二乘**　10 条节点级连线
+- **内积空间与正交性 ↔ 矩阵分解与最小二乘**　11 条节点级连线
 - **矩阵与行列式 ↔ 矩阵分解与最小二乘**　2 条节点级连线
 - **微分形式、积分与 de Rham ↔ 辛流形与 Hamilton 力学**　3 条节点级连线
 - **多重线性与张量 ↔ 辛流形与 Hamilton 力学**　3 条节点级连线

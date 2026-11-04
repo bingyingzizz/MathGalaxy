@@ -6,7 +6,7 @@
 - def.manifold-chart　图卡　layer 8
 - def.topological-manifold　拓扑流形　layer 8
 - prop.maximal-atlas　极大图册　layer 9
-- def.local-trivialization　局部平凡化　layer 9
+- def.local-trivialization　局部平凡化　layer 10
 - def.invariant-polynomial　不变多项式　layer 13
 - def.orientable-manifold　可定向流形　layer 16
 - def.smooth-map　光滑映射　layer 18

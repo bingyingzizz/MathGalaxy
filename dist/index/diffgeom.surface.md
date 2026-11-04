@@ -1,7 +1,7 @@
 # 曲面论 / Theory of Surfaces（diffgeom.surface）· 节点清单（第 1/2 页）
 
 曲面的两张基本形式与它们的关系：切映射与第一基本形式 → 单位法向与 Weingarten 变换 → 第二基本形式 → Gauss 方程与 Codazzi–Mainardi 方程 → Gauss 曲率与主曲率。全部按活动标架推导。
-中心天体 def.first-fundamental-form　·　16 个节点　·　根 `../`　·　续页 `index/diffgeom.surface.2.md`
+中心天体 def.first-fundamental-form　·　17 个节点　·　根 `../`　·　续页 `index/diffgeom.surface.2.md`
 
 - def.regular-surface　曲面与参数化　layer 22
 - def.first-fundamental-form　第一基本形式　layer 27

@@ -10,7 +10,7 @@
 - thm.spectral-matrix　谱定理（矩阵版）　layer 21
 - thm.courant-fischer　Courant–Fischer 极小极大原理　layer 21
 - def.orthogonally-similar　正交相似　layer 23
+- ex.plane-projection　到坐标平面的投影　layer 23
 - thm.spectral-theorem　谱定理（实对称）　layer 24
-- thm.schur-triangularization　Schur 三角化　layer 24
 
 > 续见 `index/algebra.inner.3.md`

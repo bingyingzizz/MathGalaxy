@@ -13,8 +13,10 @@ $q$ 叫**商**，$r$ 叫**余数**。
 - [`def.divides`](../nodes/def.divides.md) 整除：用到了定义 整除　[proofs/e109.definition.md](../proofs/e109.definition.md)
 - [`thm.division-algorithm`](../nodes/thm.division-algorithm.md) 带余除法：整数与多项式：同一个带余除法　[proofs/e120.analogy.md](../proofs/e120.analogy.md)
 
+- …另有入边，续页见 [nodes/thm.int-division.2.md](./thm.int-division.2.md)
+
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/thm.int-division.2.md](./thm.int-division.2.md)
+- …另有出边，续页见 [nodes/thm.int-division.3.md](./thm.int-division.3.md)
 
 refs: 华罗庚《数论导引》§1；Borevich–Shafarevich, Number Theory, Ch. 1
 

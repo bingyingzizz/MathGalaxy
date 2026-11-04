@@ -7,9 +7,9 @@
 - **5 / 6** `def.tangent-bundle` 切丛 · layer 21 · 流形与向量丛
 - **5 / 6** `def.tensor-field` 张量场 · layer 23 · 向量场与 Lie 结构
 - **5 / 6** `thm.de-rham` de Rham 定理 · layer 31 · 微分形式、积分与 de Rham
+- **5 / 5** `def.smooth-manifold` 光滑流形 · layer 9 · 内蕴几何
 - **5 / 5** `def.vs` 线性无关与基 · layer 11 · 向量空间与基
-- **5 / 5** `def.cauchy-null` Cauchy 列与零列 · layer 12 · 数系的构造
 
-（共 1513 个节点在这一榜上有非零计数；这里列前 20 条。）
+（共 1520 个节点在这一榜上有非零计数；这里列前 20 条。）
 
 索引 `hubs.md`。

@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-04T03:50:21.587Z",
+ "generated": "2026-11-04T04:16:59.763Z",
  "terms": 76,
  "missing": [
   {
    "term": "单位圆",
-   "total": 26,
+   "total": 27,
    "nodes": [
     {
      "id": "thm.integral-trig",
@@ -100,7 +100,7 @@
   },
   {
    "term": "角度",
-   "total": 11,
+   "total": 12,
    "nodes": [
     {
      "id": "thm.liouville-formula",
@@ -124,6 +124,10 @@
     },
     {
      "id": "def.inverse-trig",
+     "c": 1
+    },
+    {
+     "id": "ex.cylinder-first-form",
      "c": 1
     },
     {
@@ -227,6 +231,32 @@
    ]
   },
   {
+   "term": "表示论",
+   "total": 5,
+   "nodes": [
+    {
+     "id": "thm.cayley",
+     "c": 1
+    },
+    {
+     "id": "def.flow",
+     "c": 1
+    },
+    {
+     "id": "thm.stone-weierstrass-complex",
+     "c": 1
+    },
+    {
+     "id": "ex-sl2-commutator",
+     "c": 1
+    },
+    {
+     "id": "thm.pontryagin-van-kampen",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "偏微分方程",
    "total": 5,
    "nodes": [
@@ -244,28 +274,6 @@
     },
     {
      "id": "def.closed-form",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "表示论",
-   "total": 4,
-   "nodes": [
-    {
-     "id": "thm.cayley",
-     "c": 1
-    },
-    {
-     "id": "def.flow",
-     "c": 1
-    },
-    {
-     "id": "thm.stone-weierstrass-complex",
-     "c": 1
-    },
-    {
-     "id": "thm.pontryagin-van-kampen",
      "c": 1
     }
    ]

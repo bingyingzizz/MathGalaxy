@@ -11,6 +11,7 @@ layer 22 · 定理 · 矩阵分解与最小二乘 · 抽象代数
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`def.pseudoinverse`](../nodes/def.pseudoinverse.md) 伪逆
+- 被 [`ex.plane-projection`](../nodes/ex.plane-projection.md) 到坐标平面的投影 用
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.least-squares.3.md](./thm.least-squares.3.md)

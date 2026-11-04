@@ -6,16 +6,16 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T03:50:21.587Z",
+  "generated": "2026-11-04T04:16:59.763Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
-   "nodes": 1520,
-   "edges": 3086,
-   "strong": 3048,
-   "weak": 38,
+   "nodes": 1527,
+   "edges": 3106,
+   "strong": 3067,
+   "weak": 39,
    "derived": 33,
-   "en_pages": 1520
+   "en_pages": 1527
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -69,7 +69,7 @@
    "en": "Topology",
    "desc": "开集、连续、紧致与连通；再往上是紧 Hausdorff、Stone 空间与紧生成空间。",
    "color": "#D9649F",
-   "nodeCount": 180
+   "nodeCount": 181
   },
   {
    "id": "algebra",
@@ -77,7 +77,7 @@
    "en": "Abstract Algebra",
    "desc": "群、环、域、模与线性代数；佐恩引理的经典应用场。",
    "color": "#E08A3C",
-   "nodeCount": 206
+   "nodeCount": 208
   },
   {
    "id": "analysis",
@@ -101,7 +101,7 @@
    "en": "Functions of a Real Variable",
    "desc": "换一套更听话的积分：σ-代数 → 测度 → 可测函数 → Lebesgue 积分（单调收敛 / Fatou / 控制收敛）→ 乘积测度与 Fubini → 符号测度与 Radon–Nikodym → 微分定理 → $L^p$ 空间。",
    "color": "#1C86B0",
-   "nodeCount": 145
+   "nodeCount": 146
   },
   {
    "id": "category",
@@ -141,7 +141,7 @@
    "en": "Complex Analysis",
    "desc": "全纯函数与 Cauchy–Riemann、Cauchy 定理与积分公式、幂级数与 Laurent 展开、留数定理与围道积分、共形映射与调和函数。",
    "color": "#3E7FB8",
-   "nodeCount": 88
+   "nodeCount": 89
   },
   {
    "id": "diffgeom",
@@ -149,7 +149,7 @@
    "en": "Differential Geometry",
    "desc": "曲面的活动标架与结构方程、第一与第二基本形式、Gauss–Codazzi、曲率与测地线的内蕴几何。",
    "color": "#C2703F",
-   "nodeCount": 140
+   "nodeCount": 143
   },
   {
    "id": "number",
@@ -157,7 +157,7 @@
    "en": "Number Theory",
    "desc": "整数环的算术：整除与带余除法、辗转相除与 Bézout、素数与唯一分解、同余与剩余类环、中国剩余定理、Euler 函数与 Fermat 小定理。",
    "color": "#6E8B3D",
-   "nodeCount": 40
+   "nodeCount": 41
   }
  ],
  "clusters": [
@@ -404,7 +404,7 @@
    "en": "Inner Product Spaces and Orthogonality",
    "parent": "algebra",
    "desc": "在向量空间上加一把「尺子」：内积 → 诱导范数与距离 → Cauchy–Schwarz → 正交与正交补 → **Gram–Schmidt** 与正交投影 → 伴随算子 → **谱定理**（实对称 / 复正规可正交对角化）→ 二次型与 Sylvester 判据 → 奇异值分解。",
-   "nodeCount": 29,
+   "nodeCount": 30,
    "nodes": [
     "def.inner-product",
     "def.induced-norm",
@@ -434,7 +434,8 @@
     "def.spectral-radius",
     "def.rayleigh-quotient",
     "thm.courant-fischer",
-    "def.orthogonally-similar"
+    "def.orthogonally-similar",
+    "ex.plane-projection"
    ]
   },
   {
@@ -702,8 +703,9 @@
    "en": "Stone and Stonean Spaces",
    "parent": "topology",
    "desc": "造出「不连通的那一半紧 Hausdorff 空间」：全不连通 → Stone 空间 = 投射有限空间 → 极不连通的 Stonean 空间 → Gleason 定理与布尔环表示。",
-   "nodeCount": 15,
+   "nodeCount": 16,
    "nodes": [
+    "def.profinite-integers",
     "prop.component-clopen",
     "def.stone-space",
     "prop.stonean-basic",
@@ -1117,7 +1119,7 @@
    "en": "Signed Measures and Decompositions",
    "parent": "analysis-measure",
    "desc": "造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。",
-   "nodeCount": 19,
+   "nodeCount": 20,
    "nodes": [
     "def.signed-measure",
     "def.positive-negative-null",
@@ -1137,7 +1139,8 @@
     "cor.rn-inverse",
     "def.complex-measure",
     "thm.rn-complex",
-    "prop.total-variation-basics"
+    "prop.total-variation-basics",
+    "ex.density-abs-continuous"
    ]
   },
   {
@@ -2190,7 +2193,7 @@
    "en": "Theory of Surfaces",
    "parent": "diffgeom",
    "desc": "曲面的两张基本形式与它们的关系：切映射与第一基本形式 → 单位法向与 Weingarten 变换 → 第二基本形式 → Gauss 方程与 Codazzi–Mainardi 方程 → Gauss 曲率与主曲率。全部按活动标架推导。",
-   "nodeCount": 16,
+   "nodeCount": 17,
    "nodes": [
     "def.regular-surface",
     "def.first-fundamental-form",
@@ -2207,7 +2210,8 @@
     "prop.curvature-lines",
     "thm.fundamental-theorem-surfaces",
     "def.area-element",
-    "def.orientable-surface"
+    "def.orientable-surface",
+    "ex.cylinder-first-form"
    ]
   },
   {
@@ -2216,7 +2220,7 @@
    "en": "Intrinsic Geometry",
    "parent": "diffgeom",
    "desc": "只靠第一基本形式就能读出的东西：测地线、测地曲率、指数映射、Gauss 绝妙定理（$K$ 内蕴）、Gauss–Bonnet。",
-   "nodeCount": 28,
+   "nodeCount": 29,
    "nodes": [
     "def.intrinsic-quantity",
     "def.isometry-surface",
@@ -2245,7 +2249,8 @@
     "def.ricci-curvature",
     "def.integral-form",
     "thm.stokes",
-    "ex.sphere-curvature"
+    "ex.sphere-curvature",
+    "ex.polar-christoffel"
    ]
   },
   {
@@ -2254,7 +2259,7 @@
    "en": "Foundations of Complex Analysis",
    "parent": "complex",
    "desc": "把「在 ℂ 上做分析」这件事搭起来：复数与复平面 → 全纯与 Cauchy–Riemann → 初等超越函数（指数、三角、对数）→ 多值函数与单值支 → 围道积分与绕数 → 孤立奇点。后面五个团都长在这一团上。",
-   "nodeCount": 22,
+   "nodeCount": 23,
    "nodes": [
     "prop.complex-triangle",
     "def.holomorphic",
@@ -2277,7 +2282,8 @@
     "thm.winding-homotopy",
     "def.riemann-sphere",
     "prop.stereographic-circle",
-    "prop.extended-plane-compact"
+    "prop.extended-plane-compact",
+    "ex.contour-1-over-z"
    ]
   },
   {
@@ -2459,7 +2465,7 @@
    "en": "Vector Fields and Lie Structures",
    "parent": "diffgeom",
    "desc": "在流形上做「微分」的那一套：向量场与 Lie 括号 → 流与流的不变量（Lie 导数、内乘、Cartan 公式）→ 张量场与缩并 → 切分布、对合分布与 Frobenius 定理 → Lie 代数。",
-   "nodeCount": 16,
+   "nodeCount": 17,
    "nodes": [
     "def.differential-map",
     "def.vector-field",
@@ -2476,7 +2482,8 @@
     "thm.flow-local",
     "thm.flow-complete",
     "def.lie-derivative",
-    "thm.cartan-formula"
+    "thm.cartan-formula",
+    "ex-sl2-commutator"
    ]
   },
   {
@@ -19183,7 +19190,7 @@
     "度量"
    ],
    "statement": "曲面的**第一基本形式**是 $T_{p}U$ 上的对称双线性形式\n\n$$I(v,w) := \\langle \\mathrm{d}r(v), \\mathrm{d}r(w)\\rangle .$$\n\n相对参数 $(u,v)$ 它写成 $I = E\\,\\mathrm{d}u^{2}+2F\\,\\mathrm{d}u\\,\\mathrm{d}v+G\\,\\mathrm{d}v^{2}$，其中 $E = \\langle r_{u}, r_{u}\\rangle$、$F = \\langle r_{u}, r_{v}\\rangle$、$G = \\langle r_{v}, r_{v}\\rangle$；\n\n相对正交余标架它写成\n\n$$I = (\\omega^{1})^{2}+(\\omega^{2})^{2}.$$\n\n它给出切向量的长度与夹角、曲线的弧长，以及面积元 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2} = \\sqrt{EG-F^{2}}\\,\\mathrm{d}u\\,\\mathrm{d}v$。",
-   "notes": "$I$ 是 $\\mathbb{R}^{3}$ 的内积沿 $r$ 的**拉回**：$\\mathrm{d}r$ 把参数域的切向量送进切平面，再用 $\\mathbb{R}^{3}$ 的内积量。所以 $I$ 只看见「曲面上的长度」，看不见「曲面怎么弯」—— 弯曲在 $II$ 里。\n\n**为什么正交标架下是两平方和**：$\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ 且 $e_{i}$ 标准正交，故 $\\langle \\mathrm{d}r, \\mathrm{d}r\\rangle = \\sum_{i}(\\omega^{i})^{2}$；\n\n沿曲面 $\\omega^{3} = 0$，只剩两项。\n\n**矩阵**：$(g_{ij}) = \\begin{pmatrix} E & F \\\\ F & G \\end{pmatrix}$，$\\det g = EG-F^{2} > 0$。后面所有「$h$ 相对 $g$ 的特征值」都在用这个矩阵。\n\n⚠️ 换参数化会改 $E,F,G$ 的表达式，$I$ 作为张量不变。正交参数化（$F = 0$）能让公式短一半 —— 那串 $\\Gamma$ 就只在那种情形写出来。",
+   "notes": "$I$ 是 $\\mathbb{R}^{3}$ 的内积沿 $r$ 的**拉回**：$\\mathrm{d}r$ 把参数域的切向量送进切平面，再用 $\\mathbb{R}^{3}$ 的内积量。所以 $I$ 只看见「曲面上的长度」，看不见「曲面怎么弯」—— 弯曲在 $II$ 里。\n\n**为什么正交标架下是两平方和**：$\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ 且 $e_{i}$ 标准正交，故 $\\langle \\mathrm{d}r, \\mathrm{d}r\\rangle = \\sum_{i}(\\omega^{i})^{2}$；\n\n沿曲面 $\\omega^{3} = 0$，只剩两项。\n\n**矩阵**：$(g_{ij}) = \\begin{pmatrix} E & F \\\\ F & G \\end{pmatrix}$，$\\det g = EG-F^{2} > 0$。后面所有「$h$ 相对 $g$ 的特征值」都在用这个矩阵。\n\n⚠️ 换参数化会改 $E,F,G$ 的表达式，$I$ 作为张量不变。正交参数化（$F = 0$）能让公式短一半 —— 那串 $\\Gamma$ 就只在那种情形写出来。\n\n📌 例：半径 $R$ 的圆柱用 $r(u,v) = (R\\cos u, R\\sin u, v)$ 参数化时 $\\mathrm{I} = R^{2}\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$（$E = R^{2}$、$F = 0$、$G = 1$），于是 $K = 0$（见 `ex.cylinder-first-form`）。",
    "refs": [
     "do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· 第一基本形式",
     "陈维桓《微分几何讲义》, 「曲面的局部理论」· 第一基本形式"
@@ -19827,7 +19834,7 @@
     "克里斯托费尔记号"
    ],
    "statement": "白话：在曲面上「把向量沿曲线搬家」要一个规则，这个规则叫**联络**；一旦选了局部坐标，联络就退化成 $2^{3}$ 个函数 $\\Gamma^{k}_{ij}$，它们说「$\\partial_{j}$ 沿 $\\partial_{i}$ 方向搬一点，会多出多少 $\\partial_{k}$ 分量」。\n\n全部内容只用到度量系数 $g_{ij}$ 和它的一阶导数 —— 所以它是最早出现的**内蕴**对象。\n\n设 $(x^{1},x^{2})$ 是曲面 $S$ 的局部坐标，$g_{ij} = \\langle \\partial_{i},\\partial_{j}\\rangle$，$(g^{ij})$ 是 $(g_{ij})$ 的逆矩阵。**克里斯托费尔记号**定义为\n\n$$\\Gamma^{k}_{ij} = \\frac{1}{2}g^{k\\ell}\\left(\\partial_{i}g_{j\\ell}+\\partial_{j}g_{i\\ell}-\\partial_{\\ell}g_{ij}\\right).$$\n\n它是 Levi-Civita 联络在坐标标架下的系数：\n\n$$\\nabla_{\\partial_{i}}\\partial_{j} = \\Gamma^{k}_{ij}\\partial_{k},\\qquad \\Gamma^{k}_{ij} = \\Gamma^{k}_{ji}.$$\n\n（Christoffel symbols。整套内蕴几何的第一台发动机。）",
-   "notes": "**来处只有 Koszul 公式**。「挠率为零」与「保度量」两条要求合起来给出唯一解：\n\n$$2\\langle \\nabla_{X}Y,Z\\rangle = X\\langle Y,Z\\rangle+Y\\langle Z,X\\rangle-Z\\langle X,Y\\rangle+\\langle [X,Y],Z\\rangle-\\langle [Y,Z],X\\rangle+\\langle [Z,X],Y\\rangle.$$\n\n对坐标标架 $[\\partial_{i},\\partial_{j}] = 0$，右端只剩两个导数项，左端是 $2\\Gamma^{\\ell}_{ij}g_{\\ell k}$，解出来就是上面的公式。**推导里只用到 $g_{ij}$ 和它的一阶导数** —— 这是第一个内蕴量。\n\n⚠️ $\\Gamma^{k}_{ij}$ **不是张量**：换坐标时多出一个非齐次的二阶导数项，所以「$\\Gamma$ 在 $p$ 处等于某个数」随坐标变。但「**存在**使 $\\Gamma(p) = 0$ 的坐标」是坐标无关的事实（法坐标），两者的区别是「数值」与「存在性」。\n\n**为什么它决定测地线**：测地线方程里唯一的外来数据就是 $\\Gamma$，所以「哪些曲线是测地线」完全是 $I$ 的事 —— 这已经是内蕴几何的第一步。\n\n⚠️ 二维时只有 $2^{3} = 8$ 个记号，但独立的分量由对称性减到 $6$ 个（$k$ 定、$i \\le j$）；平坦坐标下它们全为零。",
+   "notes": "**来处只有 Koszul 公式**。「挠率为零」与「保度量」两条要求合起来给出唯一解：\n\n$$2\\langle \\nabla_{X}Y,Z\\rangle = X\\langle Y,Z\\rangle+Y\\langle Z,X\\rangle-Z\\langle X,Y\\rangle+\\langle [X,Y],Z\\rangle-\\langle [Y,Z],X\\rangle+\\langle [Z,X],Y\\rangle.$$\n\n对坐标标架 $[\\partial_{i},\\partial_{j}] = 0$，右端只剩两个导数项，左端是 $2\\Gamma^{\\ell}_{ij}g_{\\ell k}$，解出来就是上面的公式。**推导里只用到 $g_{ij}$ 和它的一阶导数** —— 这是第一个内蕴量。\n\n⚠️ $\\Gamma^{k}_{ij}$ **不是张量**：换坐标时多出一个非齐次的二阶导数项，所以「$\\Gamma$ 在 $p$ 处等于某个数」随坐标变。但「**存在**使 $\\Gamma(p) = 0$ 的坐标」是坐标无关的事实（法坐标），两者的区别是「数值」与「存在性」。\n\n**为什么它决定测地线**：测地线方程里唯一的外来数据就是 $\\Gamma$，所以「哪些曲线是测地线」完全是 $I$ 的事 —— 这已经是内蕴几何的第一步。\n\n⚠️ 二维时只有 $2^{3} = 8$ 个记号，但独立的分量由对称性减到 $6$ 个（$k$ 定、$i \\le j$）；平坦坐标下它们全为零。\n\n📌 例：极坐标 $(r, \\varphi)$ 下 $g = \\mathrm{d}r^{2} + r^{2}\\mathrm{d}\\varphi^{2}$，只有三个非零符号 $\\Gamma^{r}_{\\varphi\\varphi} = -r$、$\\Gamma^{\\varphi}_{r\\varphi} = \\Gamma^{\\varphi}_{\\varphi r} = 1/r$（逐项算见 `ex.polar-christoffel`）。",
    "refs": [
     "do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 克里斯托费尔记号",
     "do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 联络系数"
@@ -20304,7 +20311,7 @@
     "曲率张量"
    ],
    "statement": "白话：二维曲面上「曲率」其实只有**一个数**，这个数就是高斯曲率 $K$。这里用曲率张量的一个分量算出它，下一节点（绝妙定理）再说明它和 $k_{1}k_{2}$ 是同一个数。\n\n曲面 $S$ 在点 $p$ 的**高斯曲率**由曲率张量定义为\n\n$$K(p) = \\frac{\\langle R(\\partial_{1},\\partial_{2})\\partial_{2},\\partial_{1}\\rangle}{\\det(g_{ij})} = \\frac{R_{1221}}{g_{11}g_{22}-g_{12}^{2}},$$\n\n（$1,2$ 是局部坐标指标）。在单位正交标架 $e_{1},e_{2}$ 下它退化为\n\n$$K = \\langle R(e_{1},e_{2})e_{2},e_{1}\\rangle .$$\n\n另一方面，若 $h_{ij}$ 是第二基本形式在同一标架下的系数矩阵，则 $K = \\det(h_{ij}) = k_{1}k_{2}$。",
-   "notes": "⚠️ **符号与指标顺序**（本包全包统一）：$R_{ijk\\ell} = \\langle R(\\partial_{i},\\partial_{j})\\partial_{k},\\partial_{\\ell}\\rangle$，于是单位球面（$K = 1$、$g_{ij} = \\delta_{ij}$）上 $R_{1221} = 1$、$R_{1212} = -1$。\n\n很多书写成「$K = R_{1212}/\\det g$」，那用的是另一种指标顺序（或另一种 $R$ 的符号），数学上是同一件事。\n\n**判断约定对不对的检查只有一条：单位球面必须给出 $K = 1$。**\n\n**与缩并写法 $\\frac{1}{2}g^{ik}g^{j\\ell}R_{ijk\\ell}$ 的关系**：二维只有一个独立分量，把四个指标枚举一遍就得到 $K = -\\frac{1}{2}g^{ik}g^{j\\ell}R_{ijk\\ell}$（本包约定下的符号）。两个写法给的是同一个数，差别只在指标顺序带来的负号。\n\n**两条路都通向它**：\n\n- 内蕴方向：$R$ 只含 $g$ 及其一、二阶导数（$\\Gamma$ 一阶、$R$ 含 $\\partial\\Gamma$），所以只要知道 $I$ 就能把 $K$ 算出来；\n- 外在方向：$K = k_{1}k_{2} = \\det(h_{ij})$，用的是两个主曲率。\n\n两条路给出同一个数，这就是**绝妙定理**的内容 —— 在那个节点里给证明。\n\n⚠️ $K$ 是**一个点**上的量，与「曲线的曲率」没有直接大小关系：$K = 1$ 的曲面上可以有曲率为 $0$ 的曲线（测地线），$K = 0$ 的柱面上可以有曲率非零的曲线。",
+   "notes": "⚠️ **符号与指标顺序**（本包全包统一）：$R_{ijk\\ell} = \\langle R(\\partial_{i},\\partial_{j})\\partial_{k},\\partial_{\\ell}\\rangle$，于是单位球面（$K = 1$、$g_{ij} = \\delta_{ij}$）上 $R_{1221} = 1$、$R_{1212} = -1$。\n\n很多书写成「$K = R_{1212}/\\det g$」，那用的是另一种指标顺序（或另一种 $R$ 的符号），数学上是同一件事。\n\n**判断约定对不对的检查只有一条：单位球面必须给出 $K = 1$。**\n\n**与缩并写法 $\\frac{1}{2}g^{ik}g^{j\\ell}R_{ijk\\ell}$ 的关系**：二维只有一个独立分量，把四个指标枚举一遍就得到 $K = -\\frac{1}{2}g^{ik}g^{j\\ell}R_{ijk\\ell}$（本包约定下的符号）。两个写法给的是同一个数，差别只在指标顺序带来的负号。\n\n**两条路都通向它**：\n\n- 内蕴方向：$R$ 只含 $g$ 及其一、二阶导数（$\\Gamma$ 一阶、$R$ 含 $\\partial\\Gamma$），所以只要知道 $I$ 就能把 $K$ 算出来；\n- 外在方向：$K = k_{1}k_{2} = \\det(h_{ij})$，用的是两个主曲率。\n\n两条路给出同一个数，这就是**绝妙定理**的内容 —— 在那个节点里给证明。\n\n⚠️ $K$ 是**一个点**上的量，与「曲线的曲率」没有直接大小关系：$K = 1$ 的曲面上可以有曲率为 $0$ 的曲线（测地线），$K = 0$ 的柱面上可以有曲率非零的曲线。\n\n📌 例：半径 $R$ 的球面 $K = 1/R^{2}$（见 `ex.sphere-curvature`）；圆柱 $K = 0$（$k_{1} = 1/R$、$k_{2} = 0$，见 `ex.cylinder-first-form`）；平面 $K = 0$。三个例子正好覆盖 $K$ 的三种符号。",
    "refs": [
     "do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯曲率",
     "do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 高斯方程"
@@ -20873,7 +20880,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.intrinsic",
-   "layer": 8,
+   "layer": 9,
    "tags": [
     "定义",
     "微分几何",
@@ -21611,7 +21618,7 @@
     "绝对连续"
    ],
    "statement": "设 $\\mu$ 是 $(X, \\mathcal{M})$ 上的测度、$\\nu$ 是符号测度。称 $\\nu$ **关于 $\\mu$ 绝对连续**，记作\n\n$$\\nu \\ll  \\mu, $$\n\n当且仅当**每个 $\\mu$零集都是 $\\nu$零集**：\n\n$$\\forall E \\in \\mathcal{M}, \\mu(E) = 0 \\implies \\nu(E) = 0$$",
-   "notes": "一句话：**$\\mu$ 认为「没有」的地方，$\\nu$ 也必须认为「没有」**。\n\n⚠ 注意这里 $\\mu (E) = 0$ 用的是 $\\mu$（正测度），而 $\\nu (E) = 0$ 用的是符号测度；等价说法是 $|\\nu|(E) = 0$。\n\n显然 $\\mu \\ll  |\\mu|$ 且 $|\\mu| \\ll  \\mu$（对测度 $\\mu$ 自身而言）。",
+   "notes": "一句话：**$\\mu$ 认为「没有」的地方，$\\nu$ 也必须认为「没有」**。\n\n⚠ 注意这里 $\\mu (E) = 0$ 用的是 $\\mu$（正测度），而 $\\nu (E) = 0$ 用的是符号测度；等价说法是 $|\\nu|(E) = 0$。\n\n显然 $\\mu \\ll  |\\mu|$ 且 $|\\mu| \\ll  \\mu$（对测度 $\\mu$ 自身而言）。\n\n📌 例：$\\nu(E) := \\int_{E} f\\,\\mathrm{d}\\mu$（$f \\ge 0$ 可积）满足 $\\nu \\ll \\mu$ 且 $\\mathrm{d}\\nu/\\mathrm{d}\\mu = f$；反面是 $\\delta_{0} \\perp \\mu$（质量全在一个零测集上，见 `ex.density-abs-continuous`）。",
    "refs": [
     "Folland, Real Analysis, §3.2"
    ]
@@ -23412,7 +23419,7 @@
     "交换子"
    ],
    "statement": "**在说什么**：两个向量场各自都不能与另一个「合成」出新的向量场，但它们的交换子可以 —— 两次方向导数相减，二阶项自动抵消，剩下的仍是向量场。这个差值就是 Lie 括号。\n\n设 $X, Y \\in \\mathfrak{X}(M)$。**Lie 括号** $[X,Y]$ 是作用在光滑函数上的算子\n\n$$[X,Y]f := X(Yf) - Y(Xf),\\qquad f \\in C^{\\infty}(M).$$\n\n右边看着用到二阶导数，但二阶偏导可交换，所以 $[X,Y]f$ 只含 $f$ 的一阶导数 —— 于是它仍是向量场。在卡里显式算出\n\n$$[X,Y] = \\sum_{i=1}^{n}\\Bigl(\\sum_{j=1}^{n}\\bigl(X^{j}\\partial_{j}Y^{i} - Y^{j}\\partial_{j}X^{i}\\bigr)\\Bigr)\\frac{\\partial}{\\partial x^{i}} .$$\n\n四条性质（$f,g \\in C^{\\infty}(M)$）：\n\n1. **反称**：$[X,Y] = -[Y,X]$，特别 $[X,X] = 0$；\n2. $\\mathbb{R}$-**双线性**；\n3. **Jacobi 恒等式**：$[X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0$；\n4. **Leibniz 律**：$[X, fY] = (Xf)\\,Y + f\\,[X,Y]$，并且 $[fX, gY] = fg\\,[X,Y] + f(Xg)\\,Y - g(Yf)\\,X$。",
-   "notes": "**为什么结果还是向量场**：$X(Yf)$ 与 $Y(Xf)$ 各自含 $f$ 的二阶导数，在卡里是 $X^{j}\\partial_{j}\\bigl(Y^{i}\\partial_{i}f\\bigr)$ 这类项；\n\n相减时 $\\partial_{j}\\partial_{i}f$ 的系数分别是 $X^{j}Y^{i}$ 与 $Y^{j}X^{i}$，而它对 $i,j$ 对称，所以这两项逐项抵消。\n\n二阶项消失，剩下的是合法的导子。\n\n**第 4 条说明它不是张量**：$[X,Y]$ 对 $Y$ 不是 $C^{\\infty}(M)$-线性的 —— 多出来的 $f(Xg)Y$ 项正是「求两次导」留下的痕迹。所以「两个向量场的括号不能用逐点计算定义」，这是它与一切张量运算（`def.tensor-field`）的根本区别。\n\n**Jacobi 是三件事的合成**：把 Jacobi 写成 $[X,[Y,Z]] = [[X,Y],Z] + [Y,[X,Z]]$，读法是「$[X,\\cdot]$ 是导子」。它不是凭空的规定，而是「括号来自一阶微分算子」的必然结果 —— 展开验证时六项两两抵消，用的是乘积求导。\n\n**几何含义**：$[X,Y]$ 量「先沿 $X$ 走一步再沿 $Y$ 走一步」与「反序走」的差，除以步长的平方。所以 $[X,Y] = 0$ 意味着两族积分曲线能拼成坐标网 —— 这是 Frobenius 可积性的起点，本图只提。\n\n**与联络的分界**：$\\nabla_{X}Y$ 与 $[X,Y]$ 长得像但性质不同 —— 联络是额外结构（`def.affine-connection`），括号是流形自身就有的。无挠条件 $\\nabla_{X}Y - \\nabla_{Y}X = [X,Y]$ 就是拿这条免费的括号去约束联络。",
+   "notes": "**为什么结果还是向量场**：$X(Yf)$ 与 $Y(Xf)$ 各自含 $f$ 的二阶导数，在卡里是 $X^{j}\\partial_{j}\\bigl(Y^{i}\\partial_{i}f\\bigr)$ 这类项；\n\n相减时 $\\partial_{j}\\partial_{i}f$ 的系数分别是 $X^{j}Y^{i}$ 与 $Y^{j}X^{i}$，而它对 $i,j$ 对称，所以这两项逐项抵消。\n\n二阶项消失，剩下的是合法的导子。\n\n**第 4 条说明它不是张量**：$[X,Y]$ 对 $Y$ 不是 $C^{\\infty}(M)$-线性的 —— 多出来的 $f(Xg)Y$ 项正是「求两次导」留下的痕迹。所以「两个向量场的括号不能用逐点计算定义」，这是它与一切张量运算（`def.tensor-field`）的根本区别。\n\n**Jacobi 是三件事的合成**：把 Jacobi 写成 $[X,[Y,Z]] = [[X,Y],Z] + [Y,[X,Z]]$，读法是「$[X,\\cdot]$ 是导子」。它不是凭空的规定，而是「括号来自一阶微分算子」的必然结果 —— 展开验证时六项两两抵消，用的是乘积求导。\n\n**几何含义**：$[X,Y]$ 量「先沿 $X$ 走一步再沿 $Y$ 走一步」与「反序走」的差，除以步长的平方。所以 $[X,Y] = 0$ 意味着两族积分曲线能拼成坐标网 —— 这是 Frobenius 可积性的起点，本图只提。\n\n**与联络的分界**：$\\nabla_{X}Y$ 与 $[X,Y]$ 长得像但性质不同 —— 联络是额外结构（`def.affine-connection`），括号是流形自身就有的。无挠条件 $\\nabla_{X}Y - \\nabla_{Y}X = [X,Y]$ 就是拿这条免费的括号去约束联络。\n📌 例：矩阵群上的括号就是**交换子** $[A,B] = AB - BA$。取 $E,F,H$ 为 $\\mathfrak{sl}_{2}$ 的标准基，则 $[E,F] = H$、$[H,E] = 2E$、$[H,F] = -2F$（见 `ex-sl2-commutator`）。",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场的 Lie 括号"
    ]
@@ -23716,7 +23723,7 @@
     "定向"
    ],
    "statement": "**在说什么**：一个处处不为零的 $n$-形式给出「有向体积」；度量的行列式因子乘上坐标体积形式，就是黎曼体积。\n\n设 $M$ 是 $n$ 维光滑流形。**体积形式**是处处非零的 $n$-形式 $\\omega \\in \\Omega^{n}(M)$（即 $\\omega_{p} \\ne 0$ 对每个 $p$ 成立）。\n\n若 $M$ 还带黎曼度量 $g$（`def.riemannian-metric`）与一个定向，则**黎曼体积形式**在每张保向卡里写成\n\n$$\\mathrm{d}V_{g} := \\sqrt{\\det\\bigl(g_{ij}\\bigr)}\\ \\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n},\\qquad g_{ij} = g\\Bigl(\\frac{\\partial}{\\partial x^{i}},\\frac{\\partial}{\\partial x^{j}}\\Bigr).$$\n\n在**保向正交余标架** $\\{\\theta^{1},\\ldots,\\theta^{n}\\}$（即 $g = \\sum_{i}(\\theta^{i})^{2}$）下它化简成没有系数的样子\n\n$$\\mathrm{d}V_{g} = \\theta^{1}\\wedge\\cdots\\wedge\\theta^{n}.$$\n\n于是可积的函数有体积与积分\n\n$$\\operatorname{vol}(M) := \\int_{M}\\mathrm{d}V_{g},\\qquad \\int_{M}f\\,\\mathrm{d}V_{g},$$\n\n积分按 `def.integral-form` 的「定向形式积分」定义。",
-   "notes": "**为什么必须是最高次形式**：换元公式里 $\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 的系数变换恰好是 $\\det$（保向时无绝对值），与积分换元里出现的 $\\det$ 精确匹配 —— 这就是「形式能积分」的全部理由。\n\n$k < n$ 的形式要积分得先拉回到 $k$ 维子流形上。\n\n**根号是密度、楔积是定向**：$\\sqrt{\\det g}$ 对反向换卡不变（它带的是 $\\lvert\\det\\rvert$），$\\mathrm{d}x^{1}\\wedge\\cdots$ 反向变号。\n\n所以 $\\mathrm{d}V_{g}$ 必须先取定定向才有定义；\n\n无定向时能积的只有密度 $\\lvert\\mathrm{d}V_{g}\\rvert$（面积元 $\\mathrm{d}A$ 就是这种，`def.area-element`）。\n\n**二维退化成面积元**：$\\mathrm{d}V_{g} = \\sqrt{EG - F^{2}}\\,\\mathrm{d}u\\wedge\\mathrm{d}v$，与 `def.area-element` 的 $\\mathrm{d}A$ 逐字相同，只差「要不要把 $\\mathrm{d}u\\wedge\\mathrm{d}v$ 看成带定向的」这一层。\n\n**正交余标架为什么省事**：$g = \\sum(\\theta^{i})^{2}$ 时 $\\det(g_{ij}) = 1$，活动标架法（`def.moving-frame`）里所有体积与曲面积分都用 $\\theta^{1}\\wedge\\cdots$ 写，不再带根号。\n\n这也是「曲面上 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$」的来源。\n\n**它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\\sqrt{\\det g}$。体积形式 = 定向 + 度量，两部分都要交代。",
+   "notes": "**为什么必须是最高次形式**：换元公式里 $\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 的系数变换恰好是 $\\det$（保向时无绝对值），与积分换元里出现的 $\\det$ 精确匹配 —— 这就是「形式能积分」的全部理由。\n\n$k < n$ 的形式要积分得先拉回到 $k$ 维子流形上。\n\n**根号是密度、楔积是定向**：$\\sqrt{\\det g}$ 对反向换卡不变（它带的是 $\\lvert\\det\\rvert$），$\\mathrm{d}x^{1}\\wedge\\cdots$ 反向变号。\n\n所以 $\\mathrm{d}V_{g}$ 必须先取定定向才有定义；\n\n无定向时能积的只有密度 $\\lvert\\mathrm{d}V_{g}\\rvert$（面积元 $\\mathrm{d}A$ 就是这种，`def.area-element`）。\n\n**二维退化成面积元**：$\\mathrm{d}V_{g} = \\sqrt{EG - F^{2}}\\,\\mathrm{d}u\\wedge\\mathrm{d}v$，与 `def.area-element` 的 $\\mathrm{d}A$ 逐字相同，只差「要不要把 $\\mathrm{d}u\\wedge\\mathrm{d}v$ 看成带定向的」这一层。\n\n**正交余标架为什么省事**：$g = \\sum(\\theta^{i})^{2}$ 时 $\\det(g_{ij}) = 1$，活动标架法（`def.moving-frame`）里所有体积与曲面积分都用 $\\theta^{1}\\wedge\\cdots$ 写，不再带根号。\n\n这也是「曲面上 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$」的来源。\n\n**它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\\sqrt{\\det g}$。体积形式 = 定向 + 度量，两部分都要交代。\n📌 例：$\\mathbb{R}^{3}$ 上的 $\\mathrm{d}x\\wedge\\mathrm{d}y\\wedge\\mathrm{d}z$；$S^{2}_{R}$ 上取 $R^{2}\\sin\\theta\\,\\mathrm{d}\\theta\\wedge\\mathrm{d}\\varphi$，它的积分是 $4\\pi R^{2}$（正好是球面积）。",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 体积形式与定向",
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架"
@@ -32757,7 +32764,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "微分几何",
@@ -39633,7 +39640,7 @@
     "topology"
    ],
    "cluster": "topology.surfaces",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "拓扑",
@@ -41701,6 +41708,293 @@
    "notes": "**延拓之后它变成完全积性函数**：$\\chi(ab) = \\chi(a)\\chi(b)$ 对**一切** $a, b$ 成立（包括与 $n$ 不互素的情形 —— 两边都是 $0$）。这一步是「特征标」在数论里好用的原因：它像乘法角色一样可以塞进任何积性表达式。\n\n⭐ **主特征标**：$\\chi_{0}(a) = 1$（$\\gcd(a,n) = 1$）与 $0$ 其它 —— 它的 $L$ 函数就是 $\\zeta(s)$ 去掉那些整除 $n$ 的素数因子。于是「$\\zeta$ 的这些因子」被单独摘出来研究，这正是引入特征标的动机。\n\n📌 **$L$ 函数**：$L(s, \\chi) := \\sum_{n \\ge 1} \\chi(n) n^{-s}$，在 $\\operatorname{Re}s > 1$ 收敛，并且与 $\\zeta$ 一样有 Euler 乘积 $\\prod_{p}(1 - \\chi(p)p^{-s})^{-1}$（同一套几何级数论证，只是每项多了 $\\chi(p)$）。\n\n⚠ **本图的空白**：狄利克雷的**定理**（$\\gcd(a,n) = 1$ 时等差数列 $a, a+n, a+2n, \\ldots$ 里有无穷多素数）要用 $L(s,\\chi)$ 在 $s = 1$ 处非零，那一步（非主特征标的 $L(1,\\chi) \\ne 0$）在本图**没有节点**；这里只到「特征标 + $L$ 函数的定义」。\n\n⚠ **$\\chi$ 的取值不是任意的**：它是有限阿贝尔群 $(\\mathbb{Z}/n)^{\\times}$ 的特征标，所以取值落在单位根里；$\\sum_{a} \\chi(a)$ 在 $\\chi$ 非主时等于 $0$（正交关系）。这条正交性才是「筛出等差数列」的技术核心。",
    "refs": [
     "Apostol, Introduction to Analytic Number Theory, Ch. 6–7"
+   ]
+  },
+  {
+   "id": "ex.polar-christoffel",
+   "type": "example",
+   "label": "极坐标的 Christoffel 符号",
+   "title": "极坐标：$\\Gamma^{r}_{\\varphi\\varphi} = -r$、$\\Gamma^{\\varphi}_{r\\varphi} = 1/r$，其余为零",
+   "title_en": "Christoffel symbols in polar coordinates",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.polar-christoffel.en.md",
+   "region": "diffgeom",
+   "regions": [
+    "diffgeom",
+    "geometry"
+   ],
+   "cluster": "diffgeom.intrinsic",
+   "layer": 30,
+   "tags": [
+    "例",
+    "微分几何",
+    "联络",
+    "极坐标"
+   ],
+   "statement": "在 $\\mathbb{R}^{2}\\setminus\\{0\\}$ 上取极坐标 $(r, \\varphi)$，度量为 $g = \\mathrm{d}r^{2} + r^{2}\\,\\mathrm{d}\\varphi^{2}$。则 Christoffel 符号只有三个非零：\n\n$$\\Gamma^{r}_{\\varphi\\varphi} = -r, \\qquad \\Gamma^{\\varphi}_{r\\varphi} = \\Gamma^{\\varphi}_{\\varphi r} = \\frac{1}{r}.$$",
+   "notes": "**怎么算**：$g_{rr} = 1$、$g_{\\varphi\\varphi} = r^{2}$、$g_{r\\varphi} = 0$，逆矩阵是 $g^{rr} = 1$、$g^{\\varphi\\varphi} = r^{-2}$。代入 $\\Gamma^{k}_{ij} = \\tfrac{1}{2}g^{kl}(\\partial_{i}g_{jl} + \\partial_{j}g_{il} - \\partial_{l}g_{ij})$：唯一非平凡的导数是 $\\partial_{r}g_{\\varphi\\varphi} = 2r$，于是 $\\Gamma^{r}_{\\varphi\\varphi} = -\\tfrac12\\cdot 1\\cdot 2r$、$\\Gamma^{\\varphi}_{r\\varphi} = \\tfrac12 \\cdot r^{-2}\\cdot 2r$，其余项因为 $g$ 与 $\\varphi$ 无关而消失。\n\n⭐ **它为什么值得算**：这些符号是「坐标网格本身在弯」的账，不是空间在弯。所以极坐标下测地线方程 $\\ddot r - r\\dot\\varphi^{2} = 0$、$\\ddot\\varphi + \\tfrac{2}{r}\\dot r\\dot\\varphi = 0$ 给出的仍是**直线**（例如 $r\\cos\\varphi = $ 常数）—— 平坦空间在坏坐标下的曲率必须算成 $0$，这是检验计算的硬检查。\n\n📌 **一致性的证据**：把上面两组符号代进 $R^{r}{}_{\\varphi r\\varphi} = \\partial_{r}\\Gamma^{r}_{\\varphi\\varphi} - \\cdots$ 会得到 $0$，与「$\\mathbb{R}^{2}$ 平坦」相符。算错一个因子，$R$ 就不为零 —— 这条常用来抓 $1/r$ 与 $-r$ 搞混的错。\n\n⚠ **$r = 0$ 处不能用**：极坐标在原点退化（$\\varphi$ 无定义），所以这是**局部**例子；要在全平面谈必须换图卡 —— 这正是「流形的联络由局部数据拼出来」的意思。",
+   "refs": [
+    "do Carmo, Riemannian Geometry, Ch. 2（极坐标的例子）"
+   ]
+  },
+  {
+   "id": "ex-sl2-commutator",
+   "type": "example",
+   "label": "sl₂ 的交换子",
+   "title": "矩阵交换子：$[E, F] = H$、$[H, E] = 2E$、$[H, F] = -2F$",
+   "label_en": "commutator relations in sl2",
+   "title_en": "commutator relations in sl2",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex-sl2-commutator.en.md",
+   "region": "diffgeom",
+   "regions": [
+    "diffgeom",
+    "geometry",
+    "algebra"
+   ],
+   "cluster": "diffgeom.vector",
+   "layer": 25,
+   "tags": [
+    "例",
+    "Lie 代数",
+    "矩阵"
+   ],
+   "statement": "取\n\n$$E = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix},\\quad F = \\begin{pmatrix} 0 & 0 \\\\ 1 & 0 \\end{pmatrix},\\quad H = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix},$$\n\n在 $[A, B] := AB - BA$ 下，这三个矩阵张成的三维空间对括号封闭，且\n\n$$[E, F] = H, \\qquad [H, E] = 2E, \\qquad [H, F] = -2F.$$",
+   "notes": "**逐条验**：$EF = \\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}$、$FE = \\begin{pmatrix}0&0\\\\0&1\\end{pmatrix}$，相减正是 $H$；$HE = E$、$EH = -E$ $\\implies$ $[H,E] = 2E$；同理 $[H,F] = -2F$。\n\n⭐ **为什么这三个是标准例子**：它们就是 $\\mathfrak{sl}_{2}$ 的**标准基** —— 「特征值 $2, 0, -2$」的伴随作用让整个表示论可以画在一张图上。本图的 `def.lie-bracket` 说「反称 + Jacobi」，这里能直接看到反称（$[E,E] = 0$）与 Jacobi 恒等式在三元组上成立。\n\n📌 **括号是「换位子的无穷小版」**：对矩阵群，$\\exp(tA)\\exp(tB)\\exp(-tA)\\exp(-tB) = I + t^{2}[A,B] + O(t^{3})$ —— 所以交换子测的正是「两个流在多大程度上不交换」。这条式子本图没有节点（`def.lie-group` 的注里提了线性化，没给这条路），这里只作为读法。\n\n⚠ **别把 $[A,B]$ 当成矩阵乘法的「另一种写法」**：$[A,B]$ 与 $AB$ 是完全不同的对象（前者在 $A = B$ 时为零）。Lie 括号也不是结合运算：$[A,[B,C]] \\ne [[A,B],C]$ 一般而言 —— 代替结合律的是 Jacobi。",
+   "refs": [
+    "Hall, Lie Groups, Lie Algebras, and Representations, §2.1"
+   ]
+  },
+  {
+   "id": "ex.contour-1-over-z",
+   "type": "example",
+   "label": "∮dz/z",
+   "title": "$\\oint_{|z| = 1} \\dfrac{\\mathrm{d}z}{z} = 2\\pi i$：最简单的「闭而不恰当」",
+   "label_en": "contour integral of 1/z",
+   "title_en": "contour integral of 1/z",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.contour-1-over-z.en.md",
+   "region": "complex",
+   "regions": [
+    "complex"
+   ],
+   "cluster": "analysis.complex",
+   "layer": 20,
+   "tags": [
+    "例",
+    "复分析",
+    "围道积分",
+    "留数"
+   ],
+   "statement": "取单位圆 $\\gamma(\\theta) = e^{i\\theta}$（$0 \\le \\theta \\le 2\\pi$，逆时针）。则\n\n$$\\oint_{\\gamma} \\frac{\\mathrm{d}z}{z} = \\int_{0}^{2\\pi} \\frac{ie^{i\\theta}\\,\\mathrm{d}\\theta}{e^{i\\theta}} = i\\int_{0}^{2\\pi}\\mathrm{d}\\theta = 2\\pi i.$$",
+   "notes": "**它为什么是「基准值」**：任何围道积分的第一步都是把被积函数写成 $\\sum a_{k}(z - z_{0})^{k}$，而 $\\oint (z - z_{0})^{k}\\mathrm{d}z$ 只在 $k = -1$ 时非零（等于 $2\\pi i$）。所以这个数就是留数的「单位」。\n\n⭐ **它同时是 $H^{1}(S^{1}) \\ne 0$ 的证据**：$\\mathrm{d}z/z$ 是闭的（1 维形式，$\\mathrm{d}^{2} = 0$ 平凡）但不恰当 —— 恰当的话围道积分必须是 $0$。同调那一侧的说法见 `ex.h1-circle`。\n\n📌 **把它当成绕数**：对任意闭曲线 $\\gamma$（不经过 $0$），$\\frac{1}{2\\pi i}\\oint_{\\gamma}\\mathrm{d}z/z$ 是一个**整数**，就是 $\\gamma$ 绕 $0$ 的圈数（`def.winding-number`）。这一条把「积分 = 整数」这个反直觉事实说清楚了。\n\n⚠ **$1/z$ 在 $0$ 处的奇点不能「修掉」**：它是单极点（Laurent 展开有 $z^{-1}$ 项），不是可去奇点 —— 对比 $\\sin z/z$（可去，`thm.riemann-removable`）。两条围道积分一个给 $2\\pi i$、一个给 $0$，区别全在这一项。",
+   "refs": [
+    "Ahlfors, Complex Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "ex.plane-projection",
+   "type": "example",
+   "label": "到坐标平面的投影",
+   "title": "正交投影：$P = \\operatorname{diag}(1, 1, 0)$，$P^{2} = P = P^{\\ast}$",
+   "title_en": "orthogonal projection onto a coordinate plane",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.plane-projection.en.md",
+   "region": "algebra",
+   "regions": [
+    "algebra"
+   ],
+   "cluster": "algebra.inner",
+   "layer": 23,
+   "tags": [
+    "例",
+    "线性代数",
+    "投影",
+    "正交"
+   ],
+   "statement": "在 $\\mathbb{R}^{3}$（标准内积）里取子空间 $W = \\{\\, (x, y, 0) \\,\\}$。到 $W$ 的正交投影是\n\n$$P = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 0 \\end{pmatrix}.$$",
+   "notes": "**三条性质逐条验**：$P^{2} = P$（幂等）；$P^{\\ast} = P$（对称）；$\\ker P = \\operatorname{span}(e_{3})$、$\\operatorname{im} P = W$，且 $\\mathbb{R}^{3} = \\ker P \\oplus \\operatorname{im} P$ **正交**直和。反过来：幂等 + 对称 $\\implies$ 正交投射（只幂等的话是斜投射，像与核不垂直）。\n\n⭐ **它是最小二乘的几何内核**：$P b = (b_{1}, b_{2}, 0)$ 就是「离 $b$ 最近的 $W$ 中的点」，残差 $b - Pb = (0, 0, b_{3})$ 与 $W$ 正交 —— 这正是 `thm.least-squares` 的法方程的几何内容。一般情形 $W = \\operatorname{col}(A)$ 时投影矩阵就是 $A(A^{T}A)^{-1}A^{T}$。\n\n📌 **与伪逆的关系**：$A = P$ 本身是幂等且对称的，所以 $A^{+} = A$（Penrose 四条直接成立）。这说明「投影」在伪逆的语言里是**自伴幂等**那一类。\n\n⚠ **别把投影矩阵当成「去掉一个坐标」**：换一组非标准正交基，矩阵就不再是对角形 —— 「投影」是几何概念，$\\operatorname{diag}(1,1,0)$ 只是它在标准基下的样子。",
+   "refs": [
+    "Strang, Linear Algebra and Its Applications, §4.2"
+   ]
+  },
+  {
+   "id": "ex.cylinder-first-form",
+   "type": "example",
+   "label": "圆柱的第一基本形式",
+   "title": "圆柱面：$\\mathrm{I} = R^{2}\\,\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$，$-\\!-$ 平坦但**不**与平面等距",
+   "title_en": "first fundamental form of a cylinder",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.cylinder-first-form.en.md",
+   "region": "diffgeom",
+   "regions": [
+    "diffgeom",
+    "geometry"
+   ],
+   "cluster": "diffgeom.surface",
+   "layer": 31,
+   "tags": [
+    "例",
+    "微分几何",
+    "曲面",
+    "第一基本形式"
+   ],
+   "statement": "半径 $R$ 的圆柱面用 $r(u, v) = (R\\cos u,\\ R\\sin u,\\ v)$ 参数化（$0 \\le u < 2\\pi$、$v \\in \\mathbb{R}$）。则\n\n$$E = \\langle r_{u}, r_{u}\\rangle = R^{2},\\quad F = \\langle r_{u}, r_{v}\\rangle = 0,\\quad G = \\langle r_{v}, r_{v}\\rangle = 1,$$\n\n即第一基本形式 $\\mathrm{I} = R^{2}\\,\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$，Gauss 曲率 $K = 0$。",
+   "notes": "**为什么 $K = 0$**：$E, F, G$ 全是常数 $\\implies$ 所有 Christoffel 符号为零 $\\implies$ 曲率张量为零。直观上圆柱可以「摊平」成矩形而不改变长度与角度 —— 这就是 $K = 0$ 的意思。\n\n⭐ **它是「内蕴 = 外在」的最干净反例素材**：圆柱的 $K = 0$（内蕴平坦），但**它不是平面** ——整块摊平会让 $u$ 方向的边粘起来，所以圆柱与平面只**局部**等距（沿 $u$ 绕一圈后回不到原来的点）。「局部等距」与「整体等距」的区别，在这一个例子里就能看清。\n\n📌 **第二基本形式不为零**：$k_{1} = 1/R$、$k_{2} = 0$ —— 圆柱在 $\\mathbb{R}^{3}$ 里是弯的，但两个主曲率一正一「零」使 $K = k_{1}k_{2} = 0$。这直接说明「外在地弯」与「内在地弯」是两件事。\n\n⚠ **参数化的退化**：$u = 0$ 与 $u = 2\\pi$ 是同一条母线，所以 $r$ 只是**局部**参数化（整个圆柱要两张图卡或允许周期性）。这与极坐标在 $r = 0$ 处退化是同一类问题（见 `ex.polar-christoffel`）。",
+   "refs": [
+    "do Carmo, Differential Geometry of Curves and Surfaces, §2-5（圆柱的例子）"
+   ]
+  },
+  {
+   "id": "ex.density-abs-continuous",
+   "type": "example",
+   "label": "密度型测度绝对连续",
+   "title": "绝对连续：$\\nu = f\\,\\mathrm{d}\\mu$ 则 $\\nu \\ll \\mu$，$\\mathrm{d}\\nu/\\mathrm{d}\\mu = f$；而 $\\delta_{0} \\perp \\mu$",
+   "title_en": "absolutely continuous measures from densities",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.density-abs-continuous.en.md",
+   "region": "analysis-measure",
+   "regions": [
+    "analysis-measure"
+   ],
+   "cluster": "analysis.signed",
+   "layer": 20,
+   "tags": [
+    "例",
+    "测度",
+    "绝对连续",
+    "Radon–Nikodym"
+   ],
+   "statement": "取 $\\mu$ = $[0,1]$ 上的 Lebesgue 测度。\n\n1. 设 $f \\in L^{1}(\\mu)$、$f \\ge 0$，令 $\\nu(E) := \\int_{E} f\\,\\mathrm{d}\\mu$。则 $\\nu \\ll \\mu$（$\\mu(E) = 0 \\implies \\nu(E) = 0$），且 $\\dfrac{\\mathrm{d}\\nu}{\\mathrm{d}\\mu} = f$。\n2. 反过来，$\\delta_{0}$（$\\delta_{0}(E) := 1$ 当 $0 \\in E$，否则 $0$）满足 $\\delta_{0} \\perp \\mu$ —— 它把全部质量放在一个 $\\mu$-零集上。",
+   "notes": "**第 1 条为什么显然**：$\\mu(E) = 0$ 时积分域是零测集，$\\int_{E}f\\,\\mathrm{d}\\mu = 0$。真正的内容是**反方向**：Radon–Nikodym 定理说 $\\nu \\ll \\mu$ 时**一定有**这样的密度（`thm.lebesgue-radon-nikodym`）。\n\n⭐ **第 2 条是「奇异」的样板**：$\\delta_{0}$ 与 $\\mu$ 互相奇异 —— 取 $A = \\{0\\}$，则 $\\mu(A) = 0$ 而 $\\delta_{0}(A) = 1$。Lebesgue 分解 $\\nu = \\rho + \\lambda$（$\\rho \\ll \\mu$、$\\lambda \\perp \\mu$）就是把这一个例子的现象对一般 $\\nu$ 说出来。\n\n📌 **同一个测度可以有多种密度表示**：$f$ 改成几乎处处相等的 $g$，$\\nu$ 不变。所以 $\\mathrm{d}\\nu/\\mathrm{d}\\mu$ 是 $L^{1}$ 里的**类**，不是函数 —— 这一点在链式法则 $\\dfrac{\\mathrm{d}\\nu_{2}}{\\mathrm{d}\\mu} = \\dfrac{\\mathrm{d}\\nu_{2}}{\\mathrm{d}\\nu_{1}}\\cdot\\dfrac{\\mathrm{d}\\nu_{1}}{\\mathrm{d}\\mu}$ 里最容易出错（要求 $\\nu_{1}$-a.e. 成立）。\n\n⚠ **「绝对连续测度」与「绝对连续函数」是两个概念**：前者是 $\\nu \\ll \\mu$，后者是 $F(x) = \\int_{a}^{x} f$（`def.ac-function`）。两者的桥是「$F$ 绝对连续 $\\iff$ $\\mathrm{d}F = f\\,\\mathrm{d}x$」（`thm.ftc-lebesgue`），但**名字相同、对象不同**。",
+   "refs": [
+    "Rudin, Real and Complex Analysis, Ch. 6（Lebesgue 分解）"
+   ]
+  },
+  {
+   "id": "def.profinite-integers",
+   "type": "definition",
+   "label": "profinite 整数 ℤ̂",
+   "title": "profinite 整数 $\\hat{\\mathbb{Z}} = \\varprojlim_{n} \\mathbb{Z}/n$：数论与拓扑的交界",
+   "label_en": "profinite integers",
+   "title_en": "profinite integers",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.profinite-integers.en.md",
+   "region": "topology",
+   "regions": [
+    "topology",
+    "number"
+   ],
+   "cluster": "topo.stone",
+   "layer": 16,
+   "tags": [
+    "定义",
+    "拓扑",
+    "数论",
+    "profinite"
+   ],
+   "statement": "把 $\\mathbb{Z}/n\\mathbb{Z}$ 都看成离散紧空间，按 $n \\mid m$ 时的商映射 $\\mathbb{Z}/m \\to \\mathbb{Z}/n$ 取**逆极限**：\n\n$$\\hat{\\mathbb{Z}} := \\varprojlim_{n \\ge 1} \\mathbb{Z}/n\\mathbb{Z} \\;\\subseteq\\; \\prod_{n \\ge 1} \\mathbb{Z}/n\\mathbb{Z}.$$\n\n右边是紧空间之积（Tychonoff），$\\hat{\\mathbb{Z}}$ 是闭子集（「相容」条件），所以它带**紧 Hausdorff 全不连通**的拓扑 —— 一个 profinite 空间。",
+   "notes": "**它装的是什么**：$\\hat{\\mathbb{Z}}$ 的元素是相容序列 $(a_{n})_{n \\ge 1}$（$a_{n} \\in \\mathbb{Z}/n$、$a_{m} \\equiv a_{n} \\pmod n$）。把整数 $k$ 送成常数序列 $(k \\bmod n)_{n}$ 是一个紧嵌入 $\\mathbb{Z} \\hookrightarrow \\hat{\\mathbb{Z}}$，像稠密但**不**是全体（`def.profinite` 里「稠密但不满」的标准例子）。\n\n⭐ **CRT 把它拆成素数方向**：$\\hat{\\mathbb{Z}} \\cong \\prod_{p} \\mathbb{Z}_{p}$（$\\mathbb{Z}_{p}$ 是 $p$-进整数）。所以「数论的素数分解」在拓扑侧变成了「紧全不连通空间拆成不可再分的因子」—— 这是数论与拓扑之间**真存在**的那道桥。\n\n📌 **为什么它在凝聚态里重要**：$\\hat{\\mathbb{Z}}$ 是所有 profinite 空间的「原型」，$\\mathbb{Z}[\\hat{\\mathbb{Z}}]$ 的投射性（`thm.gleason` / `lem.stonean-projective` 那一支）就是从这里看出来的。\n\n⚠ **$\\hat{\\mathbb{Z}} \\ne \\mathbb{Z}$**：$\\hat{\\mathbb{Z}}$ 是不可数紧空间，$\\mathbb{Z}$ 是可数离散群。⛔ 不要写成「完备化后相同」—— 它是**新的**对象，含「无限大」方向的相容信息（例如 $\\prod_{p}(1 - 1/p)$ 这类）。",
+   "refs": [
+    "Ribes–Zalesskii, Profinite Groups, Ch. 2"
    ]
   },
   {
@@ -53770,7 +54064,7 @@
     "截面函子"
    ],
    "statement": "设 $M^{\\bullet}$ 是景 $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是\n\n$$H^{n}(X, M^{\\bullet}) := R^{n}\\Gamma(X, M^{\\bullet}),$$\n\n其中 $\\Gamma(X, -)$ 是 $X$ 处的**截面函子**。",
-   "notes": "⭐ **一句话**：层上同调就是**截面函子的右导出函子**。$\\Gamma(X,-)$ 左正合但不右正合（层化会捣乱），$R^{n}\\Gamma$ 正是补上断口的那半个。\n\n**为什么需要它**：单看 $H^{0}(X, M) = \\Gamma(X, M) = M(X)$ 只有整体截面；$H^{1}$ 起才开始记录「层粘不上去」的信息（$H^{1}$ 分类层的主丛 / torsor）。",
+   "notes": "⭐ **一句话**：层上同调就是**截面函子的右导出函子**。$\\Gamma(X,-)$ 左正合但不右正合（层化会捣乱），$R^{n}\\Gamma$ 正是补上断口的那半个。\n\n**为什么需要它**：单看 $H^{0}(X, M) = \\Gamma(X, M) = M(X)$ 只有整体截面；$H^{1}$ 起才开始记录「层粘不上去」的信息（$H^{1}$ 分类层的主丛 / torsor）。\n\n📌 例：$H^{0}(X;\\mathbb{Z})$ 就是整体截面的群；$H^{1}(S^{1};\\mathbb{Z}) \\cong \\mathbb{Z}$（与奇异同调一致，见 `ex.h1-circle`）；层上同调在**细**层（如 $C^{\\infty}$ 函数层）上高次为零。",
    "refs": [
     "Le Stum, Definition 7.3.1"
    ]
@@ -83601,6 +83895,167 @@
    "note": "这一团讲的是「紧生成 + 弱 Hausdorff」，例 1–3 正是在这两条条件下讨论谁留在这个范畴里。"
   },
   {
+   "id": "dep.polar-christoffel",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.christoffel-symbol",
+   "usedBy": "ex.polar-christoffel",
+   "note": "例子的全部内容就是把 $\\Gamma^{k}_{ij}$ 的公式代进极坐标度量里算一遍。"
+  },
+  {
+   "id": "dep.polar-geodesic",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.geodesic",
+   "usedBy": "ex.polar-christoffel",
+   "note": "注里用测地线方程检验「直线仍是直线」，用到测地线的定义（$\\ddot\\gamma + \\Gamma(\\dot\\gamma,\\dot\\gamma) = 0$）。"
+  },
+  {
+   "id": "dep.sl2-bracket",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lie-bracket",
+   "usedBy": "ex-sl2-commutator",
+   "note": "例子算的就是 Lie 括号 $[A,B] = AB - BA$。"
+  },
+  {
+   "id": "dep.sl2-liealg",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lie-algebra",
+   "usedBy": "ex-sl2-commutator",
+   "note": "「对括号封闭」= 构成 Lie 代数；$\\mathfrak{sl}_{2}$ 是标准例子。"
+  },
+  {
+   "id": "dep.contour-z",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.contour-integral",
+   "usedBy": "ex.contour-1-over-z",
+   "note": "例子就是一条围道积分的直接计算。"
+  },
+  {
+   "id": "dep.contour-winding",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.winding-number",
+   "usedBy": "ex.contour-1-over-z",
+   "note": "注里把 $\\frac{1}{2\\pi i}\\oint \\mathrm{d}z/z$ 认作绕数 —— 用到绕数的定义。"
+  },
+  {
+   "id": "dep.plane-proj",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.orthogonal-projection",
+   "usedBy": "ex.plane-projection",
+   "note": "例子给的是正交投影的矩阵，用定义（幂等 + 自伴）逐条验。"
+  },
+  {
+   "id": "dep.plane-ls",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.least-squares",
+   "usedBy": "ex.plane-projection",
+   "note": "注里把它当最小二乘的几何内核（残差与子空间正交）。"
+  },
+  {
+   "id": "dep.cyl-first",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.first-fundamental-form",
+   "usedBy": "ex.cylinder-first-form",
+   "note": "例子的结果 $E, F, G$ 就是第一基本形式的系数。"
+  },
+  {
+   "id": "dep.cyl-gauss",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gauss-curvature",
+   "usedBy": "ex.cylinder-first-form",
+   "note": "例子的结论含 `K = 0`，并用 `k1 = 1/R`、`k2 = 0` 解释 —— 用到 Gauss 曲率的定义（两主曲率之积）。"
+  },
+  {
+   "id": "dep.cyl-regsurf",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.regular-surface",
+   "usedBy": "ex.cylinder-first-form",
+   "note": "圆柱是正则曲面的标准例子（参数化 $r(u,v)$ 的 $r_{u} \\times r_{v} \\ne 0$）。"
+  },
+  {
+   "id": "dep.dens-ac",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.absolute-continuity",
+   "usedBy": "ex.density-abs-continuous",
+   "note": "例子的第一条就是「$\\nu = f\\,\\mathrm{d}\\mu \\implies \\nu \\ll \\mu$」。"
+  },
+  {
+   "id": "dep.dens-rn",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rn-derivative",
+   "usedBy": "ex.density-abs-continuous",
+   "note": "「$\\mathrm{d}\\nu/\\mathrm{d}\\mu = f$」用的正是 Radon–Nikodym 导数。"
+  },
+  {
+   "id": "dep.density-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.volume-density",
+   "note": "**跨区域桥（analysis-measure $\\leftrightarrow$ diffgeom）**：密度是「能对 Lebesgue 测度积分的量」，它的良定性证明（`prop.volume-density-well-defined`）就是换元公式 + 测度。"
+  },
+  {
+   "id": "dep.intdiv-wellorder",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.wellorder",
+   "usedBy": "thm.int-division",
+   "note": "**跨区域桥（order-theory $\\leftrightarrow$ number）**：带余除法的存在性标准证法取 $\\{\\, a - qb \\ge 0 \\,\\}$ 的最小元，用的正是 $\\mathbb{N}$ 的**良序**性。"
+  },
+  {
+   "id": "dep.zhat-profinite",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.profinite",
+   "usedBy": "def.profinite-integers",
+   "note": "**跨区域桥（topology $\\leftrightarrow$ number）**：$\\hat{\\mathbb{Z}}$ 是逆极限经 Tychonoff 得到的紧全不连通空间，即 profinite 空间的一个实例 —— 用到 profinite（Stone）空间的定义。"
+  },
+  {
+   "id": "dep.zhat-crt",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.crt",
+   "usedBy": "def.profinite-integers",
+   "note": "注里的 $\\hat{\\mathbb{Z}} \\cong \\prod_{p}\\mathbb{Z}_{p}$ 就是中国剩余定理沿所有 $n$ 取极限。"
+  },
+  {
+   "id": "dep.smooth-topo",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.topological-manifold",
+   "usedBy": "def.smooth-manifold",
+   "note": "光滑流形的定义**从拓扑流形开始**：先要求 Hausdorff、第二可数、每点有同胚于 $\\mathbb{R}^{n}$ 开集的图卡，再额外要求换卡是 $C^{\\infty}$。所以「拓扑流形」是它的底，少了它连「图卡」都无从谈起。"
+  },
+  {
+   "id": "dep.regsurf-smooth",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.smooth-manifold",
+   "usedBy": "def.regular-surface",
+   "note": "正则参数曲面的像 $S = r(U)$ 是 **2 维光滑流形**：$(u, v) \\mapsto r(u, v)$ 本身就是一张（整体）图卡，换卡时用参数变换的 $C^{2}$ 性。所以它用到光滑流形的定义。"
+  },
+  {
+   "id": "ana.topo-regsurf",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.topological-manifold",
+   "b": "def.regular-surface",
+   "title": "「曲面」的两个意思：内蕴的流形 $\\leftrightarrow$ $\\mathbb{R}^{3}$ 里的参数曲面",
+   "note": "**同名不同物**：\n- `def.topological-manifold`：内蕴的，只说「局部同胚于 $\\mathbb{R}^{n}$」，不假设有外部空间；\n- `def.regular-surface`：外在地放在 $\\mathbb{R}^{3}$ 里，由参数化给出，自带法向、第二基本形式、主曲率。\n\n两件事的桥是「正则参数曲面的像**是**光滑流形」（上一条 definition 边），但**不能反过来说**：不是每个 2 维流形都能塞进 $\\mathbb{R}^{3}$（可定向闭曲面能、Klein 瓶不能）。\n\n⚠ 所以这里只记类比而非依赖：一边有外部空间，一边没有。"
+  },
+  {
    "id": "dep.subset-powerset",
    "kind": "definition",
    "strength": "strong",
@@ -94659,7 +95114,7 @@
   {
    "a": "diffgeom.intrinsic",
    "b": "diffgeom.surface",
-   "count": 17,
+   "count": 19,
    "label": "",
    "explicit": false
   },
@@ -94687,7 +95142,7 @@
   {
    "a": "diffgeom.intrinsic",
    "b": "diffgeom.manifold",
-   "count": 9,
+   "count": 10,
    "label": "",
    "explicit": false
   },
@@ -95163,7 +95618,7 @@
   {
    "a": "algebra.inner",
    "b": "algebra.numeric",
-   "count": 10,
+   "count": 11,
    "label": "",
    "explicit": false
   },

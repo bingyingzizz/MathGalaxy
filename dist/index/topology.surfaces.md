@@ -3,7 +3,7 @@
 闭曲面分类之前必须先有地形：连通和（挖球 + 沿边界粘）与亏格（一阶同调的秩的一半）。这两个概念都刻意避开「分类定理」：亏格用同调定义，所以不会绕回分类。下一刀才放拓扑流形 / 闭曲面 / 分类定理。
 中心天体 def.genus　·　11 个节点　·　根 `../`
 
-- def.connected-sum　连通和　layer 9
+- def.connected-sum　连通和　layer 10
 - def.closed-surface　闭曲面　layer 17
 - def.genus　亏格　layer 20
 - ex.sphere　球面 S²　layer 21

@@ -1,9 +1,9 @@
 # 内蕴几何 / Intrinsic Geometry（diffgeom.intrinsic）· 节点清单（第 1/2 页）
 
 只靠第一基本形式就能读出的东西：测地线、测地曲率、指数映射、Gauss 绝妙定理（$K$ 内蕴）、Gauss–Bonnet。
-中心天体 def.geodesic　·　28 个节点　·　根 `../`　·　续页 `index/diffgeom.intrinsic.2.md`
+中心天体 def.geodesic　·　29 个节点　·　根 `../`　·　续页 `index/diffgeom.intrinsic.2.md`
 
-- def.smooth-manifold　光滑流形　layer 8
+- def.smooth-manifold　光滑流形　layer 9
 - def.tangent-space-manifold　切空间　layer 18
 - def.integral-form　形式的积分　layer 18
 - def.affine-connection　仿射联络　layer 25

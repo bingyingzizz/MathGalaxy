@@ -8,7 +8,7 @@
 - analysis.measurable　可测函数与收敛 / Measurable Functions and Convergence　中心天体 def.measurable-function　17 点
 - analysis.integral　积分 / Integration　中心天体 def.integrable　21 点
 - analysis.product　乘积测度与 Fubini / Product Measures and Fubini　中心天体 def.product-measure　11 点
-- analysis.signed　符号测度与分解 / Signed Measures and Decompositions　中心天体 def.signed-measure　19 点
+- analysis.signed　符号测度与分解 / Signed Measures and Decompositions　中心天体 def.signed-measure　20 点
 - analysis.differentiation　微分定理 / Differentiation Theorems　中心天体 def.maximal-function　14 点
 
 > 续见 `index/analysis-measure.2.md`

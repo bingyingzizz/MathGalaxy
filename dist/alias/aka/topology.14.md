@@ -5,6 +5,8 @@
 
 - 克莱因瓶 | 克莱因壶 | Klein 瓶 → ex.klein-bottle
 
+- profinite 整数 | Z hat | ℤ̂ → def.profinite-integers
+
 - 莫比乌斯带 | Moebius band → def.mobius-band
 
 - 圆的同调 | 圆的 H1 → ex.h1-circle

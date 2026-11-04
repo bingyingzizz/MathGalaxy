@@ -17,6 +17,8 @@ $$[\cdot,\cdot] : \mathfrak{g} \times \mathfrak{g} \longrightarrow \mathfrak{g},
 - 被 [`thm.maurer-cartan`](../nodes/thm.maurer-cartan.md) Maurer–Cartan 方程 用
 - 被 [`thm.lie-third`](../nodes/thm.lie-third.md) Lie 第三定理 用
 
+- …另有出边，续页见 [nodes/def.lie-algebra.4.md](./def.lie-algebra.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.lie-algebra.3.md](./def.lie-algebra.3.md)
 

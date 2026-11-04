@@ -25,4 +25,6 @@
 
 - 单位根 | 分圆多项式 | n 次单位根 | roots of unity → def.roots-of-unity
 
+- dz/z 的围道积分 → ex.contour-1-over-z
+
 见 `../../alias.md`。

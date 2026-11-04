@@ -5,6 +5,8 @@
 
 - 离散对数 | 指标 → def.discrete-log
 
+- profinite 整数 | Z hat | ℤ̂ → def.profinite-integers
+
 - 黎曼 zeta 函数 | zeta 函数 | ζ 函数 → def.riemann-zeta
 
 - Euler 乘积 | 欧拉乘积 → thm.euler-product

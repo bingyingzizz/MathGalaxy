@@ -7,3 +7,4 @@
 - 被 [`def.idempotent`](../nodes/def.idempotent.md) 幂等 用
 - 被 [`thm.least-squares`](../nodes/thm.least-squares.md) 最小二乘 用
 - 被 [`thm.projection-subspace`](../nodes/thm.projection-subspace.md) 闭子空间的正交投影 用
+- 被 [`ex.plane-projection`](../nodes/ex.plane-projection.md) 到坐标平面的投影 用

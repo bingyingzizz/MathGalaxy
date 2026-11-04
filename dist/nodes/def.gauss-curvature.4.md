@@ -7,3 +7,4 @@
 - 被 [`thm.gauss-equation`](../nodes/thm.gauss-equation.md) Gauss 方程 用
 - 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用
 - 被 [`ex.sphere-curvature`](../nodes/ex.sphere-curvature.md) 球面的曲率 用
+- 被 [`ex.cylinder-first-form`](../nodes/ex.cylinder-first-form.md) 圆柱的第一基本形式 用

@@ -346,7 +346,9 @@ window.MG = window.MG || {};
         '',
         '**几何含义**：$[X,Y]$ 量「先沿 $X$ 走一步再沿 $Y$ 走一步」与「反序走」的差，除以步长的平方。所以 $[X,Y] = 0$ 意味着两族积分曲线能拼成坐标网 —— 这是 Frobenius 可积性的起点，本图只提。',
         '',
-        '**与联络的分界**：$\\nabla_{X}Y$ 与 $[X,Y]$ 长得像但性质不同 —— 联络是额外结构（`def.affine-connection`），括号是流形自身就有的。无挠条件 $\\nabla_{X}Y - \\nabla_{Y}X = [X,Y]$ 就是拿这条免费的括号去约束联络。'
+        '**与联络的分界**：$\\nabla_{X}Y$ 与 $[X,Y]$ 长得像但性质不同 —— 联络是额外结构（`def.affine-connection`），括号是流形自身就有的。无挠条件 $\\nabla_{X}Y - \\nabla_{Y}X = [X,Y]$ 就是拿这条免费的括号去约束联络。',
+      
+        '📌 例：矩阵群上的括号就是**交换子** $[A,B] = AB - BA$。取 $E,F,H$ 为 $\\mathfrak{sl}_{2}$ 的标准基，则 $[E,F] = H$、$[H,E] = 2E$、$[H,F] = -2F$（见 `ex-sl2-commutator`）。',   /* exnotes:def.lie-bracket */
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场的 Lie 括号'
@@ -644,7 +646,9 @@ window.MG = window.MG || {};
         '',
         '**正交余标架为什么省事**：$g = \\sum(\\theta^{i})^{2}$ 时 $\\det(g_{ij}) = 1$，活动标架法（`def.moving-frame`）里所有体积与曲面积分都用 $\\theta^{1}\\wedge\\cdots$ 写，不再带根号。\n\n这也是「曲面上 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$」的来源。',
         '',
-        '**它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\\sqrt{\\det g}$。体积形式 = 定向 + 度量，两部分都要交代。'
+        '**它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\\sqrt{\\det g}$。体积形式 = 定向 + 度量，两部分都要交代。',
+      
+        '📌 例：$\\mathbb{R}^{3}$ 上的 $\\mathrm{d}x\\wedge\\mathrm{d}y\\wedge\\mathrm{d}z$；$S^{2}_{R}$ 上取 $R^{2}\\sin\\theta\\,\\mathrm{d}\\theta\\wedge\\mathrm{d}\\varphi$，它的积分是 $4\\pi R^{2}$（正好是球面积）。',   /* exnotes:def.volume-form */
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 体积形式与定向',

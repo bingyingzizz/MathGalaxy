@@ -114,7 +114,9 @@ window.MG = window.MG || {};
         '对坐标标架 $[\\partial_{i},\\partial_{j}] = 0$，右端只剩两个导数项，左端是 $2\\Gamma^{\\ell}_{ij}g_{\\ell k}$，解出来就是上面的公式。**推导里只用到 $g_{ij}$ 和它的一阶导数** —— 这是第一个内蕴量。',
         '⚠️ $\\Gamma^{k}_{ij}$ **不是张量**：换坐标时多出一个非齐次的二阶导数项，所以「$\\Gamma$ 在 $p$ 处等于某个数」随坐标变。但「**存在**使 $\\Gamma(p) = 0$ 的坐标」是坐标无关的事实（法坐标），两者的区别是「数值」与「存在性」。',
         '**为什么它决定测地线**：测地线方程里唯一的外来数据就是 $\\Gamma$，所以「哪些曲线是测地线」完全是 $I$ 的事 —— 这已经是内蕴几何的第一步。',
-        '⚠️ 二维时只有 $2^{3} = 8$ 个记号，但独立的分量由对称性减到 $6$ 个（$k$ 定、$i \\le j$）；平坦坐标下它们全为零。'
+        '⚠️ 二维时只有 $2^{3} = 8$ 个记号，但独立的分量由对称性减到 $6$ 个（$k$ 定、$i \\le j$）；平坦坐标下它们全为零。',
+      
+        '📌 例：极坐标 $(r, \\varphi)$ 下 $g = \\mathrm{d}r^{2} + r^{2}\\mathrm{d}\\varphi^{2}$，只有三个非零符号 $\\Gamma^{r}_{\\varphi\\varphi} = -r$、$\\Gamma^{\\varphi}_{r\\varphi} = \\Gamma^{\\varphi}_{\\varphi r} = 1/r$（逐项算见 `ex.polar-christoffel`）。',   /* exnotes:def.christoffel-symbol */
       ].join('\n\n'),
       refs: [
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 克里斯托费尔记号',
@@ -487,7 +489,9 @@ window.MG = window.MG || {};
           '- 外在方向：$K = k_{1}k_{2} = \\det(h_{ij})$，用的是两个主曲率。'
         ].join('\n'),
         '两条路给出同一个数，这就是**绝妙定理**的内容 —— 在那个节点里给证明。',
-        '⚠️ $K$ 是**一个点**上的量，与「曲线的曲率」没有直接大小关系：$K = 1$ 的曲面上可以有曲率为 $0$ 的曲线（测地线），$K = 0$ 的柱面上可以有曲率非零的曲线。'
+        '⚠️ $K$ 是**一个点**上的量，与「曲线的曲率」没有直接大小关系：$K = 1$ 的曲面上可以有曲率为 $0$ 的曲线（测地线），$K = 0$ 的柱面上可以有曲率非零的曲线。',
+      
+        '📌 例：半径 $R$ 的球面 $K = 1/R^{2}$（见 `ex.sphere-curvature`）；圆柱 $K = 0$（$k_{1} = 1/R$、$k_{2} = 0$，见 `ex.cylinder-first-form`）；平面 $K = 0$。三个例子正好覆盖 $K$ 的三种符号。',   /* exnotes:def.gauss-curvature */
       ].join('\n\n'),
       refs: [
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯曲率',

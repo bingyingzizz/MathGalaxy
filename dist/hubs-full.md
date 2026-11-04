@@ -11,8 +11,8 @@
 被最多结论当作前置（出边多）—— 值得优先学熟。
 
 - **30 / 33** `def.limit` 极限 · layer 11 · 图与极限
+- **30 / 31** `def.measure` 测度 · layer 15 · 测度的构造
 - **29 / 32** `def.adjoint` 伴随函子 · layer 9 · 伴随与反射
-- **29 / 30** `def.measure` 测度 · layer 15 · 测度的构造
 - **28 / 31** `def.compact` 紧 · layer 16 · 度量空间
 - **28 / 28** `def.topology` 拓扑空间与开集 · layer 4 · 拓扑空间的基本语汇
 - **27 / 27** `def.group` 群 · layer 7 · 代数结构
@@ -55,10 +55,10 @@
 - **5 / 6** `def.tangent-bundle` 切丛 · layer 21 · 流形与向量丛
 - **5 / 6** `def.tensor-field` 张量场 · layer 23 · 向量场与 Lie 结构
 - **5 / 6** `thm.de-rham` de Rham 定理 · layer 31 · 微分形式、积分与 de Rham
+- **5 / 5** `def.smooth-manifold` 光滑流形 · layer 9 · 内蕴几何
 - **5 / 5** `def.vs` 线性无关与基 · layer 11 · 向量空间与基
-- **5 / 5** `def.cauchy-null` Cauchy 列与零列 · layer 12 · 数系的构造
 
-（共 1513 个节点有非零计数；这里列前 20 条。）
+（共 1520 个节点有非零计数；这里列前 20 条。）
 
 ## 跨领域连接榜
 
@@ -77,11 +77,11 @@
 - **10 团 / 16 节点** `def.hausdorff` Hausdorff 空间 · layer 5 · 分离公理
 - **10 团 / 16 节点** `def.fibered-product` 纤维积 / 纤维余积 · layer 12 · 图与极限
 - **10 团 / 15 节点** `def.vs` 线性无关与基 · layer 11 · 向量空间与基
+- **9 团 / 30 节点** `def.measure` 测度 · layer 15 · 测度的构造
 - **9 团 / 22 节点** `def.functor` 函子 · layer 8 · 函子与自然变换
 - **9 团 / 17 节点** `def.ring` 环 · layer 8 · 代数结构
 - **9 团 / 17 节点** `def.inner-product` 内积 · layer 14 · 内积空间与正交性
 - **9 团 / 13 节点** `def.continuous-map` 连续映射 · layer 5 · 拓扑空间的基本语汇
-- **8 团 / 29 节点** `def.measure` 测度 · layer 15 · 测度的构造
 - **8 团 / 21 节点** `def.chaus` 紧 Hausdorff 空间范畴 · layer 17 · 紧 Hausdorff 空间
 - **8 团 / 19 节点** `def.integrable` 可积 / L¹ · layer 21 · 积分
 

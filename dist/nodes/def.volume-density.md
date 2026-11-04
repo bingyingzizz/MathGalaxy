@@ -11,7 +11,7 @@ layer 30 · 定义 · 微分形式、积分与 de Rham · 微分几何
 - 被 [`def.divergence`](../nodes/def.divergence.md) 散度 用
 - ⇒ [`prop.volume-density-well-defined`](../nodes/prop.volume-density-well-defined.md) 密度与定向无关
 
-- …另有出边，续页见 [nodes/def.volume-density.5.md](./def.volume-density.5.md)
+- …另有出边，续页见 [nodes/def.volume-density.6.md](./def.volume-density.6.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.volume-density.4.md](./def.volume-density.4.md)

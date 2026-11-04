@@ -14,6 +14,8 @@ layer 8 · 定义 · 流形与向量丛 · 微分几何+拓扑学
 ## 它能推出什么 / 谁在用它
 - 被 [`def.closed-surface`](../nodes/def.closed-surface.md) 闭曲面 用
 
+- …另有出边，续页见 [nodes/def.topological-manifold.4.md](./def.topological-manifold.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.topological-manifold.2.md](./def.topological-manifold.2.md)
 

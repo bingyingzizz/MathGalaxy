@@ -6,6 +6,7 @@
 - def.exponential-map　指数映射　layer 30
 - def.gauss-curvature　Gauss 曲率　layer 30
 - thm.stokes　Stokes 定理　layer 30
+- ex.polar-christoffel　极坐标的 Christoffel 符号　layer 30
 - thm.liouville-formula　Liouville 公式　layer 31
 - prop.curvature-split　曲率分解　layer 31
 - lem.gauss-lemma　Gauss 引理　layer 31

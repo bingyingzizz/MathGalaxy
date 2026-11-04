@@ -15,6 +15,12 @@
 
 - 拓扑流形 | n 维拓扑流形 → def.topological-manifold
 
+- 极坐标的 Christoffel 符号 → ex.polar-christoffel
+
+- sl2 的交换子 → ex-sl2-commutator
+
+- 圆柱的第一基本形式 → ex.cylinder-first-form
+
 - 球面的曲率 → ex.sphere-curvature
 
 - 圆的切丛 → ex.s1-tangent-bundle

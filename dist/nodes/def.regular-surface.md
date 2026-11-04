@@ -13,7 +13,7 @@ layer 22 · 定义 · 曲面论 · 微分几何
 - …另有入边，续页见 [nodes/def.regular-surface.3.md](./def.regular-surface.3.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.regular-surface.4.md](./def.regular-surface.4.md)
+- …另有出边，续页见 [nodes/def.regular-surface.5.md](./def.regular-surface.5.md)
 
 refs: do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· 正则曲面与 Gauss 映射；陈维桓《微分几何讲义》, 「曲面的局部理论」· 参数曲面与切平面
 

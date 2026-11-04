@@ -198,7 +198,9 @@ window.MG = window.MG || {};
       notes: [
         '一句话：**$\\mu$ 认为「没有」的地方，$\\nu$ 也必须认为「没有」**。',
         '⚠ 注意这里 $\\mu (E) = 0$ 用的是 $\\mu$（正测度），而 $\\nu (E) = 0$ 用的是符号测度；等价说法是 $|\\nu|(E) = 0$。',
-        '显然 $\\mu \\ll  |\\mu|$ 且 $|\\mu| \\ll  \\mu$（对测度 $\\mu$ 自身而言）。'
+        '显然 $\\mu \\ll  |\\mu|$ 且 $|\\mu| \\ll  \\mu$（对测度 $\\mu$ 自身而言）。',
+      
+        '📌 例：$\\nu(E) := \\int_{E} f\\,\\mathrm{d}\\mu$（$f \\ge 0$ 可积）满足 $\\nu \\ll \\mu$ 且 $\\mathrm{d}\\nu/\\mathrm{d}\\mu = f$；反面是 $\\delta_{0} \\perp \\mu$（质量全在一个零测集上，见 `ex.density-abs-continuous`）。',   /* exnotes:def.absolute-continuity */
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.2']
     },

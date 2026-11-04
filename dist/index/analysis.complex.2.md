@@ -1,6 +1,7 @@
 # 复变函数基础 / Foundations of Complex Analysis（analysis.complex）· 节点清单（第 2/2 页）
 根 `../`　·　第 1 页 `index/analysis.complex.md`
 
+- def.complex-elementary　复数初等函数　layer 21
 - thm.winding-homotopy　绕数的同伦不变性　layer 21
 - prop.stereographic-circle　球极投影保圆且共形　layer 21
 - prop.extended-plane-compact　扩充复平面是紧的　layer 21
