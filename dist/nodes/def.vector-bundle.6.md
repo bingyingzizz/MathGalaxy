@@ -5,3 +5,4 @@
 - 被 [`def.characteristic-class`](../nodes/def.characteristic-class.md) 示性类 用
 - 被 [`def.chern-class`](../nodes/def.chern-class.md) 陈类 用
 - 被 [`def.fiber-bundle`](../nodes/def.fiber-bundle.md) 纤维丛 用
+- 被 [`ex.s1-tangent-bundle`](../nodes/ex.s1-tangent-bundle.md) 圆的切丛是平凡丛 用

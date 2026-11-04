@@ -10,6 +10,9 @@ layer 12 · 定义 · 整除与同余 · 数论
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.divides`](../nodes/def.divides.md) 整除：用到了定义 整除　[proofs/e110.definition.md](../proofs/e110.definition.md)
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.dirichlet-character`](../nodes/def.dirichlet-character.md) 狄利克雷特征标 用
+
 refs: 华罗庚《数论导引》§1
 
 > 说明见 `notes/def.gcd.md`

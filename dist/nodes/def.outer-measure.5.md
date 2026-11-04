@@ -3,5 +3,6 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`thm.caratheodory`](../nodes/thm.caratheodory.md) Carathéodory 定理 用
+- 被 [`thm.riesz-markov`](../nodes/thm.riesz-markov.md) Riesz–Markov 表示 用
 - 被 [`def.caratheodory-measurable`](../nodes/def.caratheodory-measurable.md) μ*-可测集 用
 - 被 [`def.product-measure`](../nodes/def.product-measure.md) 乘积测度 用

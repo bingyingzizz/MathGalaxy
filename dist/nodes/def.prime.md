@@ -10,6 +10,7 @@ layer 12 · 定义 · 整除与同余 · 数论
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.prime-counting`](../nodes/def.prime-counting.md) 素数计数函数 用
+- 被 [`thm.euler-product`](../nodes/thm.euler-product.md) Euler 乘积 用
 
 refs: 华罗庚《数论导引》第一章
 

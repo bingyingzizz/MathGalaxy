@@ -16,4 +16,6 @@ layer 20 · 命题 · 凝聚态集 · 凝聚态数学
 
 refs: Le Stum, An introduction to condensed mathematics, §4
 
+> 说明见 `notes/prop.cond-epi.md`
+
 引用：`prop.cond-epi`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

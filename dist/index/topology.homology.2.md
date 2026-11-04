@@ -5,3 +5,4 @@
 - thm.euler-characteristic　Euler 示性数　layer 23
 - thm.mv-homology　Mayer–Vietoris（同调）　layer 23
 - thm.sphere-homology　球面的同调　layer 24
+- ex.h1-circle　圆的 H¹　layer 24

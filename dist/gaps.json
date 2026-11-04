@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T03:18:53.636Z",
+ "generated": "2026-11-04T03:35:17.973Z",
  "terms": 76,
  "missing": [
   {
@@ -58,7 +58,7 @@
   },
   {
    "term": "三角剖分",
-   "total": 15,
+   "total": 16,
    "nodes": [
     {
      "id": "thm.classification-surfaces",
@@ -90,6 +90,10 @@
     },
     {
      "id": "prop.eulerchar-genus",
+     "c": 1
+    },
+    {
+     "id": "ex.h1-circle",
      "c": 1
     }
    ]
@@ -134,7 +138,7 @@
   },
   {
    "term": "素因子",
-   "total": 7,
+   "total": 8,
    "nodes": [
     {
      "id": "thm.minimal-poly-divisor",
@@ -162,6 +166,10 @@
     },
     {
      "id": "thm.quadratic-reciprocity",
+     "c": 1
+    },
+    {
+     "id": "thm.euler-product",
      "c": 1
     }
    ]
@@ -219,20 +227,6 @@
    ]
   },
   {
-   "term": "莫比乌斯带",
-   "total": 5,
-   "nodes": [
-    {
-     "id": "ex.klein-bottle",
-     "c": 3
-    },
-    {
-     "id": "ex.projective-plane",
-     "c": 2
-    }
-   ]
-  },
-  {
    "term": "偏微分方程",
    "total": 5,
    "nodes": [
@@ -277,6 +271,20 @@
    ]
   },
   {
+   "term": "调和形式",
+   "total": 3,
+   "nodes": [
+    {
+     "id": "def.hodge-star",
+     "c": 2
+    },
+    {
+     "id": "thm.divergence-theorem",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "超积",
    "total": 3,
    "nodes": [
@@ -296,6 +304,20 @@
     },
     {
      "id": "def.trig-function",
+     "c": 1
+    }
+   ]
+  },
+  {
+   "term": "解析数论",
+   "total": 2,
+   "nodes": [
+    {
+     "id": "thm.euclid-infinite-primes",
+     "c": 1
+    },
+    {
+     "id": "thm.euler-product",
      "c": 1
     }
    ]
@@ -325,11 +347,11 @@
    ]
   },
   {
-   "term": "解析数论",
+   "term": "黎曼猜想",
    "total": 1,
    "nodes": [
     {
-     "id": "thm.euclid-infinite-primes",
+     "id": "def.riemann-zeta",
      "c": 1
     }
    ]
@@ -346,16 +368,6 @@
   },
   {
    "term": "Hodge 理论",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "thm.divergence-theorem",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "调和形式",
    "total": 1,
    "nodes": [
     {
@@ -389,12 +401,10 @@
   "三角剖分存在性",
   "zeta 函数",
   "ζ 函数",
-  "黎曼猜想",
   "狄利克雷级数",
   "求根公式",
   "尺规作图",
   "命题逻辑",
-  "幂对象",
   "Riesz–Markov",
   "图论",
   "组合数学",

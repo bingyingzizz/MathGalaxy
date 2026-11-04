@@ -1,7 +1,7 @@
 # 数论函数与素数分布 / Arithmetic Functions and Distribution of Primes（number.functions）· 节点清单（第 1/1 页）
 
 把「算术函数」做成一套可算的东西：积性函数 → 除数函数 τ、σ → Möbius 函数 μ → Möbius 反演 → 素数计数 π、θ、ψ → Чебышёв 估计 → Bertrand 假设 → 素数定理（只给陈述与骨架）。
-中心天体 thm.mobius-inversion　·　10 个节点　·　根 `../`
+中心天体 thm.mobius-inversion　·　13 个节点　·　根 `../`
 
 - def.prime-counting　素数计数函数　layer 13
 - def.multiplicative-function　积性函数　layer 14
@@ -13,3 +13,6 @@
 - thm.bertrand　Bertrand 假设　layer 16
 - thm.mu-sum　Möbius 和的恒等式　layer 17
 - thm.mobius-inversion　Möbius 反演　layer 18
+- def.riemann-zeta　黎曼 ζ 函数　layer 29
+- thm.euler-product　Euler 乘积　layer 30
+- def.dirichlet-character　狄利克雷特征标　layer 30

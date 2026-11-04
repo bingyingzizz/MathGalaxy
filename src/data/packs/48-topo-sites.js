@@ -103,6 +103,11 @@ window.MG = window.MG || {};
       title: '拓扑生成集',
       regions: ['category'],
       tags: ['范畴论', '景', '生成集', '筛'],
+      notes: [
+        '**在说什么**：$G$ 是**拓扑**生成集，指每个对象 $X$ 都容许一个覆盖族，而族里的对象**全部落在 $G$ 里**。',
+        '⭐ 用处：层的条件只需在 $G$ 上验（覆盖由 $G$ 生成）；等价的说法是「$\\{\\, h_{G} \\,\\}_{G \\in G}$ 构成生成元族」。',
+        '⚠ 与范畴论里的**生成元**（要求「Hom 忠实」的那一条，在范畴论那两团）容易混：这里说的只是**景的覆盖**，不是可表函子的忠实性。',
+      ].join('\n'),
       statement: '设 $\\mathcal{C}$ 是景。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
@@ -163,6 +168,11 @@ window.MG = window.MG || {};
       title: '余连续函子',
       regions: ['category'],
       tags: ['范畴论', '景', '余连续', '层'],
+      notes: [
+        '**在说什么**：$g$ **余连续** $\\iff$ 沿 $g$ 把预层推出去、再层化（即 $g^{\\sharp}$）之后**仍然是层**。',
+        '⭐ 为什么需要：景的态射要一对函子（$f^{-1} \\dashv f_{*}$），其中**顺像** $f_{*}$ 存在靠的就是这种「推出去仍落在层里」。',
+        '⚠ 与**连续函子**（`def.continuous-functor`：$f^{-1}$ 把层拉回还是层）方向不同、条件也不同 —— 一个管拉回、一个管推出，景的态射要两边都有，⛔ 别把两条当对偶成同一条。',
+      ].join('\n'),
       statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个景之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -176,6 +186,11 @@ window.MG = window.MG || {};
       title: '诱导拓扑',
       regions: ['category'],
       tags: ['范畴论', '景', '诱导拓扑'],
+      notes: [
+        '**在说什么**：给定**任意**函子 $f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$，在 $\\mathcal{C}$ 上取「使 $f^{-1}$ 连续的最细 Grothendieck 拓扑」。',
+        '⭐ 用处：把任意一个预层层面上的拉回升级成**景的态射**（SGA4 的标准构造）；代价是要重算覆盖，得到的拓扑一般比原来的细。',
+        '⛔ **同名不同物**：拓扑空间里的「诱导拓扑」（子空间拓扑，`def.subspace-topology`）与这里说的**景上的拓扑**毫无关系，只共享中文名。',
+      ].join('\n'),
       statement: '设 $\\mathcal{C}\'$ 是景，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     }

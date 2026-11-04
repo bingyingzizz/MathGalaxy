@@ -3,17 +3,17 @@
 > page 1 `hubs.en.md`
 
 - **30 / 33** `def.limit` limit and colimit · 图与极限
-- **28 / 31** `def.adjoint` Adjunction · 伴随与反射
+- **29 / 32** `def.adjoint` Adjunction · 伴随与反射
+- **29 / 30** `def.measure` measure · 测度的构造
 - **28 / 31** `def.compact` compact · 度量空间
-- **28 / 29** `def.measure` measure · 测度的构造
 
-- **27 / 27** `def.topology` topology · 拓扑空间的基本语汇
-- **26 / 26** `def.group` group · 代数结构
+- **28 / 28** `def.topology` topology · 拓扑空间的基本语汇
+- **27 / 27** `def.group` group · 代数结构
 - **25 / 28** `def.sheaf` sheaf · 层与拓扑
 - **24 / 24** `def.function` mapping · 关系与函数
 
+- **23 / 23** `def.condensed-abelian-group` condensed abelian group · 凝聚态阿贝尔群
 - **22 / 22** `def.functor` functor · 函子与自然变换
-- **22 / 22** `def.condensed-abelian-group` condensed abelian group · 凝聚态阿贝尔群
 - **21 / 22** `def.chaus` compact Hausdorff · 紧 Hausdorff 空间
 - **21 / 21** `def.subset` subset · 集合的构造
 

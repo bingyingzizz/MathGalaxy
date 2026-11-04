@@ -354,6 +354,11 @@ window.MG = window.MG || {};
       title: 'Stone 空间 $\\iff$ 投射有限空间',
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '投射有限'],
+      notes: [
+        '⭐ 这条把**拓扑条件**翻译成**余极限条件**：Stone 空间恰好是「有限离散空间的（滤过）余极限」，也就是**投射有限集**（profinite set）所带的紧拓扑。',
+        '📌 于是 Stone 空间的构造可以先在有限集上验、再取极限 —— 这一招在 `topo.stone` 这一团里反复用。',
+        '⚠ 别把「投射有限」读成「投射对象 + 有限」：这里说的是 $\\varprojlim$ 有限集，与 `thm.gleason` 里「$\\mathbf{CHaus}$ 的投射对象」完全是两码事（那是极不连通）。',
+      ].join('\n'),
       statement: '拓扑空间是 Stone 空间 $\\iff$ 它是投射有限空间。',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
@@ -367,6 +372,11 @@ window.MG = window.MG || {};
       title: 'Gleason 定理：$\\mathbf{CHaus}$ 的投射对象',
       regions: ['topology'],
       tags: ['范畴论', 'Gleason', '投射对象'],
+      notes: [
+        '**在说什么**：紧 Hausdorff 空间里，「对满射有提升性质」（投射对象）的那些**恰好**是 **Stonean**（极不连通）空间。',
+        '⭐ 为什么重要：凝聚态理论里「$\\mathbb{Z}[S]$ 是投射对象 $\\iff$ $S$ 是 Stonean」就是它的直接后果 —— 一个拓扑性质（极不连通）被翻译成一个范畴性质（投射）。',
+        '⚠ 两条分离性要分清：**Stonean**（极不连通：开集的闭包还是开集）严格强于 **Stone**（全不连通）；本图这两个是不同的节点（`def.stone-space` 讲后者）。',
+      ].join('\n'),
       statement: '$\\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },

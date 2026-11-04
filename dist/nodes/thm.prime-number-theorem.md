@@ -12,6 +12,9 @@ $$\lim_{x \to \infty} \frac{\pi(x)}{x / \log x} = 1 .$$
 
 - …另有入边，续页见 [nodes/thm.prime-number-theorem.2.md](./thm.prime-number-theorem.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.prime-number-theorem.3.md](./thm.prime-number-theorem.3.md)
+
 refs: 华罗庚《数论导引》第九、十章；Apostol, Ch. 4, 12
 
 > 说明见 `notes/thm.prime-number-theorem.md`

@@ -4,7 +4,7 @@
 把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。
 
 - cond.set　凝聚态集 / Condensed Sets　中心天体 def.condensed-set　30 点
-- cond.ab　凝聚态阿贝尔群 / Condensed Abelian Groups　中心天体 def.condensed-abelian-group　7 点
+- cond.ab　凝聚态阿贝尔群 / Condensed Abelian Groups　中心天体 def.condensed-abelian-group　8 点
 - cond.topo　拓扑阿贝尔群 / Topological Abelian Groups　中心天体 thm.pontryagin-van-kampen　13 点
 - cond.cohomology　凝聚态导出函子 / Condensed Derived Functors　中心天体 thm.real-banach-chaus-acyclic　11 点
 - cond.ss　Breen–Deligne 谱序列 / Breen-Deligne Spectral Sequences　中心天体 thm.breen-deligne　5 点

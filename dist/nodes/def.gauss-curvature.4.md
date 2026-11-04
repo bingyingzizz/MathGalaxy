@@ -6,3 +6,4 @@
 - ⇒ [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) Gauss–Bonnet 定理
 - 被 [`thm.gauss-equation`](../nodes/thm.gauss-equation.md) Gauss 方程 用
 - 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用
+- 被 [`ex.sphere-curvature`](../nodes/ex.sphere-curvature.md) 球面的曲率 用

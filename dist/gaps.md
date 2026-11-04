@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1506 节点 / 3042 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1520 节点 / 3081 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -14,14 +14,14 @@
 ### 单位圆　出现 26 次
 `thm.integral-trig` · `thm.euler-formula` · `def.normal-curvature` · `def.principal-curvature` · `thm.rodrigues` · `thm.max-modulus` 等 22 个节点
 
-### 三角剖分　出现 15 次
-`thm.classification-surfaces` · `def.singular-homology` · `thm.simplicial-approximation` · `thm.gauss-bonnet` · `def.simplicial-complex` · `thm.euler-characteristic` 等 8 个节点
+### 三角剖分　出现 16 次
+`thm.classification-surfaces` · `def.singular-homology` · `thm.simplicial-approximation` · `thm.gauss-bonnet` · `def.simplicial-complex` · `thm.euler-characteristic` 等 9 个节点
 
 ### 角度　出现 11 次
 `thm.liouville-formula` · `prop.conformal-iff` · `def.isometry` · `def.intrinsic-quantity` · `def.riemannian-metric` · `def.inverse-trig` 等 8 个节点
 
-### 素因子　出现 7 次
-`thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.bertrand` 等 7 个节点
+### 素因子　出现 8 次
+`thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.bertrand` 等 8 个节点
 
 ### Fourier 变换　出现 6 次
 `thm.riemann-lebesgue` · `thm.bounded-extension` · `thm.closed-graph` · `def.pontryagin-dual` · `thm.pontryagin-van-kampen`
@@ -29,14 +29,14 @@
 ### 概率　出现 6 次
 `def.lebesgue-stieltjes` · `thm.cauchy-schwarz` · `def.tangent-distribution` · `def.jacobi-symbol` · `def.convex-function`
 
-### 莫比乌斯带　出现 5 次
-`ex.klein-bottle` · `ex.projective-plane`
-
 ### 偏微分方程　出现 5 次
 `thm.frobenius` · `thm.fundamental-theorem-surfaces` · `def.involutive-distribution` · `def.closed-form`
 
 ### 表示论　出现 4 次
 `thm.cayley` · `def.flow` · `thm.stone-weierstrass-complex` · `thm.pontryagin-van-kampen`
+
+### 调和形式　出现 3 次
+`def.hodge-star` · `thm.divergence-theorem`
 
 ### 超积　出现 3 次
 `thm.compactness`
@@ -44,22 +44,22 @@
 ### 弧度　出现 2 次
 `def.inverse-trig` · `def.trig-function`
 
+### 解析数论　出现 2 次
+`thm.euclid-infinite-primes` · `thm.euler-product`
+
 ### 一阶逻辑的完备性　出现 2 次
 `thm.completeness-first-order` · `def.satisfaction`
 
 ### 幂函数　出现 1 次
 `def.logarithm-branch`
 
-### 解析数论　出现 1 次
-`thm.euclid-infinite-primes`
+### 黎曼猜想　出现 1 次
+`def.riemann-zeta`
 
 ### 模形式　出现 1 次
 `def.symplectic-matrix`
 
 ### Hodge 理论　出现 1 次
-`thm.divergence-theorem`
-
-### 调和形式　出现 1 次
 `thm.divergence-theorem`
 
 ### Radó　出现 1 次
@@ -114,6 +114,6 @@
 
 ⚠️ **过期白名单 1 条**（对应的缺口已经不存在了：改了陈述或加了边）—— 该清：`def.bundle-section>def.differential-form`
 
-## 三、候选词表里从没被提到的（23 个）
+## 三、候选词表里从没被提到的（21 个）
 
-换底公式 · 自然对数 · 反正弦 · 反三角函数 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 黎曼猜想 · 狄利克雷级数 · 求根公式 · 尺规作图 · 命题逻辑 · 幂对象 · Riesz–Markov · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理
+换底公式 · 自然对数 · 反正弦 · 反三角函数 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 狄利克雷级数 · 求根公式 · 尺规作图 · 命题逻辑 · Riesz–Markov · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理

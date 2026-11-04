@@ -14,7 +14,6 @@ $$\cdots \to H^{n}(K) \to H^{n}(L) \to H^{n}(M) \xrightarrow{\ \delta\ } H^{n+1}
 ## 它能推出什么 / 谁在用它
 - ⇒ [`prop.dimension-shift`](../nodes/prop.dimension-shift.md) 维数转移
 - ⇒ [`lem.horseshoe`](../nodes/lem.horseshoe.md) 马蹄引理
-- ⇒ [`prop.low-degree-exact`](../nodes/prop.low-degree-exact.md) 低次正合列
 
 - …另有出边，续页见 [nodes/thm.long-exact.4.md](./thm.long-exact.4.md)
 
@@ -22,5 +21,7 @@ $$\cdots \to H^{n}(K) \to H^{n}(L) \to H^{n}(M) \xrightarrow{\ \delta\ } H^{n+1}
 - …另有入边，续页见 [nodes/thm.long-exact.2.md](./thm.long-exact.2.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §7.1–7.3
+
+> 说明见 `notes/thm.long-exact.md`
 
 引用：`thm.long-exact`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

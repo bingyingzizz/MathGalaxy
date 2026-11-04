@@ -28,6 +28,7 @@
 
 - 该标未标：`def.connected-sum`
 - 该标未标：`def.algebraic-extension`
+- 该标未标：`def.riemann-zeta`
 
 
 ## 五、假设标注（hypotheses）
@@ -35,7 +36,7 @@
 值必须来自 `src/data/hypotheses.js` 的受控词表。第二条**只是提醒**：陈述里命中「假设关键词」却没标注 —— ⛔ 不自动打标（「注里提到」不等于「陈述里的假设」）。
 
 - 词表外取值：（没有）
-- 陈述里出现假设关键词、但没标注：**230** 处
+- 陈述里出现假设关键词、但没标注：**233** 处
 
   - ax.choice  ‹选择公理›
   - def.choicefn  ‹选择公理›
@@ -77,5 +78,5 @@
   - thm.analytic-modules  ‹完备›
   - def.discrete-huber-pair  ‹完备›
   - prop.scheme-embeds-adic  ‹紧›
-  - …还有 190 处
+  - …还有 193 处
 

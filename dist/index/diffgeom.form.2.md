@@ -10,9 +10,9 @@
 - def.volume-form　体积形式　layer 29
 - prop.boundary-sign-convention　边界的符号约定　layer 30
 - def.volume-density　体积密度与体积形式　layer 30
+- def.hodge-star　Hodge 星号　layer 30
 - prop.volume-density-well-defined　密度与定向无关　layer 31
 - def.divergence　散度　layer 31
 - thm.de-rham　de Rham 定理　layer 31
-- def.submanifold-volume　诱导体积　layer 31
 
 > 续见 `index/diffgeom.form.3.md`

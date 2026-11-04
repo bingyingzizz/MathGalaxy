@@ -10,5 +10,6 @@
 - prop.curvature-split　曲率分解　layer 31
 - lem.gauss-lemma　Gauss 引理　layer 31
 - lem.normal-coord-euclidean　法坐标的欧氏性　layer 31
+- ex.sphere-curvature　球面的曲率　layer 31
 - thm.theorema-egregium　绝妙定理　layer 32
 - thm.gauss-bonnet　Gauss–Bonnet 定理　layer 32

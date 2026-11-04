@@ -232,6 +232,11 @@ window.MG = window.MG || {};
       title: '凝聚态集的满态射',
       regions: ['condensed'],
       tags: ['凝聚态', '满态射'],
+      notes: [
+        '**在说什么**：凝聚态集的态射满不满，只要在**自由**紧 Hausdorff 空间 $F$ 上逐个看 $X(F) \\to Y(F)$ 是不是满的，就判完了。',
+        '⭐ 为什么「自由的」那一批就够：自由紧 Hausdorff 空间（$\\beta I$）在 $\\mathrm{Cond}$ 里构成**生成元族**，而拓扑斯里的满态射只需在生成元族上验。',
+        '⚠ 这里的「满」是**层论意义**的满（局部能提升），不是「每个测试空间上都逐点满」—— 后者更强。本条的正确性依赖「$\\mathrm{Cond}$ 是拓扑斯 + 自由紧 Hausdorff 是生成元族」，本图没有把「生成元族 $implies$ 只需在它们上验」单独立节点。',
+      ].join('\n'),
       statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。',
       refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },

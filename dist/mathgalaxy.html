@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1506 nodes, 3042 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1520 nodes, 3081 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1506 nodes, 3042 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1520 nodes, 3081 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -31120,6 +31120,11 @@ window.MG = window.MG || {};
       title: 'Stone 空间 $\\iff$ 投射有限空间',
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '投射有限'],
+      notes: [
+        '⭐ 这条把**拓扑条件**翻译成**余极限条件**：Stone 空间恰好是「有限离散空间的（滤过）余极限」，也就是**投射有限集**（profinite set）所带的紧拓扑。',
+        '📌 于是 Stone 空间的构造可以先在有限集上验、再取极限 —— 这一招在 `topo.stone` 这一团里反复用。',
+        '⚠ 别把「投射有限」读成「投射对象 + 有限」：这里说的是 $\\varprojlim$ 有限集，与 `thm.gleason` 里「$\\mathbf{CHaus}$ 的投射对象」完全是两码事（那是极不连通）。',
+      ].join('\n'),
       statement: '拓扑空间是 Stone 空间 $\\iff$ 它是投射有限空间。',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
@@ -31133,6 +31138,11 @@ window.MG = window.MG || {};
       title: 'Gleason 定理：$\\mathbf{CHaus}$ 的投射对象',
       regions: ['topology'],
       tags: ['范畴论', 'Gleason', '投射对象'],
+      notes: [
+        '**在说什么**：紧 Hausdorff 空间里，「对满射有提升性质」（投射对象）的那些**恰好**是 **Stonean**（极不连通）空间。',
+        '⭐ 为什么重要：凝聚态理论里「$\\mathbb{Z}[S]$ 是投射对象 $\\iff$ $S$ 是 Stonean」就是它的直接后果 —— 一个拓扑性质（极不连通）被翻译成一个范畴性质（投射）。',
+        '⚠ 两条分离性要分清：**Stonean**（极不连通：开集的闭包还是开集）严格强于 **Stone**（全不连通）；本图这两个是不同的节点（`def.stone-space` 讲后者）。',
+      ].join('\n'),
       statement: '$\\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
@@ -32660,6 +32670,11 @@ window.MG = window.MG || {};
       title: '凝聚态集的满态射',
       regions: ['condensed'],
       tags: ['凝聚态', '满态射'],
+      notes: [
+        '**在说什么**：凝聚态集的态射满不满，只要在**自由**紧 Hausdorff 空间 $F$ 上逐个看 $X(F) \\to Y(F)$ 是不是满的，就判完了。',
+        '⭐ 为什么「自由的」那一批就够：自由紧 Hausdorff 空间（$\\beta I$）在 $\\mathrm{Cond}$ 里构成**生成元族**，而拓扑斯里的满态射只需在生成元族上验。',
+        '⚠ 这里的「满」是**层论意义**的满（局部能提升），不是「每个测试空间上都逐点满」—— 后者更强。本条的正确性依赖「$\\mathrm{Cond}$ 是拓扑斯 + 自由紧 Hausdorff 是生成元族」，本图没有把「生成元族 $implies$ 只需在它们上验」单独立节点。',
+      ].join('\n'),
       statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。',
       refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
@@ -33366,6 +33381,11 @@ window.MG = window.MG || {};
       title: '短正合列给出长正合列（蛇引理）',
       regions: ['homology'],
       tags: ['同调代数', '长正合列', '蛇引理'],
+      notes: [
+        '**在说什么**：复形的短正合列 $0 \\to K \\to L \\to M \\to 0$ 给出同调的**长正合列**，中间那个 **连接同态** $\\delta : H^{n}(M) \\to H^{n+1}(K)$ 把上标推高一格。',
+        '⭐ $\\delta$ 怎么造：取 $m \\in H^{n}(M)$ 的代表元，沿满射 $L^{n} \\to M^{n}$ 提升，再取 $d_{L}$ 落到 $K^{n+1}$ —— 要证它与提升的选取无关（差一个上边缘），这一步就是**图追踪**。',
+        '⚠ 与导出函子那条长正合列（导出函子那一团：短正合列 $\\to$ $R^{n}F$ 的长正合列）**不是**同一件事：那条讲的是导出函子，这条讲的是复形自己的同调。',
+      ].join('\n'),
       statement: [
         '设 $\\mathcal{A}$ 是阿贝尔范畴，$0 \\to K \\to L \\to M \\to 0$ 是复形的短正合列。则存在**长正合列**',
         '',
@@ -34073,6 +34093,11 @@ window.MG = window.MG || {};
       title: '弱 Hausdorff 空间',
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', 'CGWH'],
+      notes: [
+        '**在说什么**：要求「从紧 Hausdorff 空间进来的映射，像都闭」—— 一种比 Hausdorff 便宜、但足够用的分离性。',
+        '⭐ 为什么需要它：紧生成空间不强求 Hausdorff，而一旦没有分离性，商与余极限就会跑出好范畴；弱 Hausdorff 刚好保证「紧块的像闭合」，于是 $k\\mathbf{Top}$ 里商与余极限还能算。',
+        '⚠ 强度：Hausdorff $\\implies$ 弱 Hausdorff，**反之不真**。⛔ 别写成等价；也别与 `def.chaus`（紧 + Hausdorff）混，那个条件比它强。',
+      ].join('\n'),
       statement: '拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \\to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
@@ -36045,6 +36070,11 @@ window.MG = window.MG || {};
       title: '拓扑生成集',
       regions: ['category'],
       tags: ['范畴论', '景', '生成集', '筛'],
+      notes: [
+        '**在说什么**：$G$ 是**拓扑**生成集，指每个对象 $X$ 都容许一个覆盖族，而族里的对象**全部落在 $G$ 里**。',
+        '⭐ 用处：层的条件只需在 $G$ 上验（覆盖由 $G$ 生成）；等价的说法是「$\\{\\, h_{G} \\,\\}_{G \\in G}$ 构成生成元族」。',
+        '⚠ 与范畴论里的**生成元**（要求「Hom 忠实」的那一条，在范畴论那两团）容易混：这里说的只是**景的覆盖**，不是可表函子的忠实性。',
+      ].join('\n'),
       statement: '设 $\\mathcal{C}$ 是景。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
@@ -36105,6 +36135,11 @@ window.MG = window.MG || {};
       title: '余连续函子',
       regions: ['category'],
       tags: ['范畴论', '景', '余连续', '层'],
+      notes: [
+        '**在说什么**：$g$ **余连续** $\\iff$ 沿 $g$ 把预层推出去、再层化（即 $g^{\\sharp}$）之后**仍然是层**。',
+        '⭐ 为什么需要：景的态射要一对函子（$f^{-1} \\dashv f_{*}$），其中**顺像** $f_{*}$ 存在靠的就是这种「推出去仍落在层里」。',
+        '⚠ 与**连续函子**（`def.continuous-functor`：$f^{-1}$ 把层拉回还是层）方向不同、条件也不同 —— 一个管拉回、一个管推出，景的态射要两边都有，⛔ 别把两条当对偶成同一条。',
+      ].join('\n'),
       statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个景之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -36118,6 +36153,11 @@ window.MG = window.MG || {};
       title: '诱导拓扑',
       regions: ['category'],
       tags: ['范畴论', '景', '诱导拓扑'],
+      notes: [
+        '**在说什么**：给定**任意**函子 $f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$，在 $\\mathcal{C}$ 上取「使 $f^{-1}$ 连续的最细 Grothendieck 拓扑」。',
+        '⭐ 用处：把任意一个预层层面上的拉回升级成**景的态射**（SGA4 的标准构造）；代价是要重算覆盖，得到的拓扑一般比原来的细。',
+        '⛔ **同名不同物**：拓扑空间里的「诱导拓扑」（子空间拓扑，`def.subspace-topology`）与这里说的**景上的拓扑**毫无关系，只共享中文名。',
+      ].join('\n'),
       statement: '设 $\\mathcal{C}\'$ 是景，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     }
@@ -88052,6 +88092,608 @@ window.MG.packs.push({
       usedBy: 'def.smooth-map',
       note: '命题里的 $C^{\\infty}$ 就是「所有偏导数都存在且连续」—— 光滑性这条定义的真源在这里（流形/坐标卡只引用它）。',
     }
+  ],
+});
+
+</script>
+<script>
+/* ============================================================================
+   内容包 · 例子层补洞（2026-11-04，v2 清单 §2 ③ E4）
+   ----------------------------------------------------------------------------
+   审计点名的三处：**有限域**、**平凡群**、**莫比乌斯带**（克莱因瓶的注里说「两个
+   莫比乌斯带粘起来」却没有这个节点）。再配 4 个 L≥18 核心定义的具体例子：
+
+     `ex.sphere-curvature`   Gauss 曲率（$S^{2}_{R}$ 的 $K = 1/R^{2}$）
+     `ex.s1-tangent-bundle`  切丛（$TS^{1} \cong S^{1} \times \mathbb{R}$，为什么圆是「可平行化」的）
+     `ex.h1-circle`          de Rham / 奇异同调（$H^{1}(S^{1}) \cong \mathbb{R}$，$\mathbb{Z}$ 版是 $\mathbb{Z}$）
+     `ex.sierpinski-space`   拓扑空间（连通但不道路连通、$T_{0}$ 而非 $T_{1}$）
+
+   口径：例子必须**具体到能算** —— 写清对象是什么、运算怎么定义、结论的数值是多少；
+   ⛔ 不写「例如球面」这种没内容的。
+   ========================================================================== */
+(window.MG = window.MG || {}).packs = window.MG.packs || [];
+window.MG.packs.push({
+  name: '例子层：有限域 / 平凡群 / 莫比乌斯带 / 曲率 / 切丛 / H¹(S¹) / Sierpiński',
+
+  nodes: [
+    {
+      id: 'ex.finite-field',
+      cluster: 'algebra.structures',
+      type: 'example',
+      label: '有限域 F_p',
+      title: '有限域：$\\mathbb{F}_{p} = \\mathbb{Z}/p\\mathbb{Z}$，以及 $\\mathbb{F}_{4}$',
+      regions: ['algebra'],
+      tags: ['例', '代数', '域', '有限域'],
+      statement: [
+        '设 $p$ 是素数，则 $\\mathbb{F}_{p} := \\mathbb{Z}/p\\mathbb{Z}$ 在模 $p$ 的加法与乘法下是一个**域**，恰有 $p$ 个元素。',
+        '',
+        '一般地，对素数幂 $q = p^{n}$ 存在（且在同构意义下唯一）含 $q$ 个元素的域 $\\mathbb{F}_{q}$；',
+        '例如 $\\mathbb{F}_{4} = \\mathbb{F}_{2}[x]/(x^{2} + x + 1)$ —— 因为 $x^{2} + x + 1$ 在 $\\mathbb{F}_{2}$ 上没有根，所以它不可约，商是域。',
+      ].join('\n'),
+      notes: [
+        '**为什么 $\\mathbb{Z}/p\\mathbb{Z}$ 是域**：$p$ 素 $\\iff$ $\\mathbb{Z}/p\\mathbb{Z}$ 没有非平凡理想 $\\iff$ 每个非零元可逆。' +
+          '逆元是可以直接算的：$a^{p-1} \\equiv 1 \\pmod p$（Fermat 小定理），所以 $a^{-1} = a^{p-2}$。',
+        '**$\\mathbb{Z}/n\\mathbb{Z}$ 什么时候只是环**：$n = 6$ 时 $2 \\cdot 3 = 0$，两个非零元乘出 $0$ —— 有零因子，不是整环，更不是域。' +
+          '$\\mathbb{Z}/4\\mathbb{Z}$ 里 $2$ 没有逆（$2b \\equiv 1$ 无解）。',
+        '⚠ **「含 $q$ 个元素的域」只在 $q$ 是素数幂时存在**：$\\mathbb{F}_{6}$ 不存在。原因是乘法群 $\\mathbb{F}_{q}^{\\times}$ 是 $q-1$ 阶循环群，' +
+          '而 $\\mathbb{F}_{q}$ 的加法群是 $\\mathbb{F}_{p}$ 上的 $n$ 维向量空间 $implies$ $q = p^{n}$。',
+        '📌 **$\\mathbb{F}_{4}$ 的乘法表**：记 $\\omega = x$，则 $\\omega^{2} = \\omega + 1$、$\\omega^{3} = 1$。于是 $\\mathbb{F}_{4} = \\{0, 1, \\omega, \\omega+1\\}$，' +
+          '非零元构成 3 阶循环群。',
+      ].join('\n\n'),
+      refs: ['Dummit–Foote, Abstract Algebra, §13.1–13.2'],
+    },
+
+    {
+      id: 'ex.trivial-group',
+      cluster: 'algebra.structures',
+      type: 'example',
+      label: '平凡群',
+      title: '平凡群 $\\{e\\}$：群的范畴里的零对象',
+      regions: ['algebra'],
+      tags: ['例', '代数', '群'],
+      statement: [
+        '集合 $\\{e\\}$ 配上唯一的运算 $e \\cdot e := e$ 是一个**群**，叫**平凡群**，常记 $1$ 或 $\\{e\\}$。',
+      ].join('\n'),
+      notes: [
+        '**三条公理逐条验**：结合律 $(ee)e = e(ee) = e$；单位元 $e$；逆元 $e^{-1} = e$（就是它自己）。' +
+          '所以它是最省事的群 —— 任何「所有群都满足」的命题，第一个检验对象都该是它。',
+        '⭐ **它是群的范畴的零对象**：从平凡群到任何群 $G$ 只有一个同态（$e \\mapsto 1_{G}$），从 $G$ 到平凡群也只有一个（常映射）。' +
+          '一个对象既是始对象又是终对象 $\\iff$ 它是零对象。',
+        '⚠ **别与「平凡子群」混**：每个群 $G$ 有两个平凡子群 —— $\\{1\\}$ 与 $G$ 本身；只有一个的时候（$G$ 平凡）才两者重合。',
+        '📌 **反例式的用处**：$-1$ 在平凡群里等于 $1$（因为只有这一个元素），所以「$x^{2} = 1$ 推出 $x = \\pm 1$」在平凡群里退化为一句废话 ——' +
+          '这正是有些命题要把「非平凡群」写进假设的原因。',
+      ].join('\n\n'),
+      refs: ['Dummit–Foote, Abstract Algebra, §1.1'],
+    },
+
+    {
+      id: 'def.mobius-band',
+      cluster: 'topology.surfaces',
+      type: 'definition',
+      label: '莫比乌斯带',
+      title: '莫比乌斯带：$[0,1] \\times [0,1]$ 把一头扭转后粘起来',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '曲面', '不可定向'],
+      statement: [
+        '在正方形 $[0,1] \\times [0,1]$ 上取等价关系：把左边与右边**反向**粘起来，即',
+        '',
+        '$$(0, t) \\sim (1, 1 - t), \\qquad 0 \\le t \\le 1.$$',
+        '',
+        '商空间 $M := ([0,1]\\times[0,1])/\\sim$ 叫**莫比乌斯带**（Möbius band）。',
+      ].join('\n'),
+      notes: [
+        '**与圆柱对照**：圆柱是**同向**粘，$(0, t) \\sim (1, t)$；莫比乌斯带是把一头翻过来再粘（$t \\mapsto 1 - t$）。' +
+          '两者的差别只有这一处，但结论完全不同。',
+        '⭐ **不可定向**：沿中线 $t = 1/2$ 走一圈回来，法向量反向 —— 所以莫比乌斯带**不带**定向。' +
+          '这也是「两两粘起来得到不可定向曲面」的标准材料：$M \\cup_{\\partial} M \\cong$ 克莱因瓶（见 `ex.klein-bottle`）。',
+        '**边界是一条圆**：$\\partial M \\cong S^{1}$（**一条**，不是两条 —— 圆柱的边界才是两条圆）。' +
+          '注意 $\\partial M$ 作为子空间是连通的，这也是「不可定向」的直观来源。',
+        '⚠ **它不能嵌进平面**：$\\mathbb{R}^{2}$ 里没有莫比乌斯带；$\\mathbb{R}^{3}$ 里可以（就是要自交才画得出边界）。' +
+          '而 $\\mathbb{R}^{3}$ 里的实现是**不可定向曲面**的一个例子（`def.orientable-surface` 的另一侧）。',
+        '📌 **Euler 示性数**：$M$ 与圆柱同伦等价（都是 $S^{1}$），所以 $\\chi(M) = \\chi(S^{1}) = 0$ —— 同伦不变量看不出「扭没扭」，' +
+          '可定向性才看得出。',
+      ].join('\n\n'),
+      refs: ['Munkres, Topology, Ch. 12（商空间与曲面）'],
+    },
+
+    {
+      id: 'ex.sphere-curvature',
+      cluster: 'diffgeom.intrinsic',
+      type: 'example',
+      label: '球面的曲率',
+      title: '半径为 $R$ 的球面：$K = 1/R^{2}$，$H = \\pm 1/R$',
+      regions: ['geometry'],
+      tags: ['例', '微分几何', '曲率', '球面'],
+      statement: [
+        '设 $S^{2}_{R} = \\{\\, x \\in \\mathbb{R}^{3} : \\lVert x \\rVert = R \\,\\}$，取向外的单位法向 $n = x/R$。则',
+        '',
+        '$$K = \\frac{1}{R^{2}}, \\qquad H = \\pm\\frac{1}{R}, \\qquad k_{1} = k_{2} = \\pm\\frac{1}{R}.$$',
+      ].join('\n'),
+      notes: [
+        '**怎么算**：取球坐标 $r(\\theta, \\varphi) = R(\\sin\\theta\\cos\\varphi, \\sin\\theta\\sin\\varphi, \\cos\\theta)$，' +
+          '第一基本形式是 $R^{2}\\,\\mathrm{d}\\theta^{2} + R^{2}\\sin^{2}\\theta\\,\\mathrm{d}\\varphi^{2}$，' +
+          '第二基本形式是 $R\\,\\mathrm{d}\\theta^{2} + R\\sin^{2}\\theta\\,\\mathrm{d}\\varphi^{2}$。' +
+          '于是 $k_{1} = k_{2} = 1/R$，$K = k_{1}k_{2} = 1/R^{2}$。',
+        '⭐ **Gauss 的绝妙定理在这里看得最清楚**：$K = 1/R^{2}$ 只用到了 $R$，而 $R$ 是**内蕴**量（测地线距离、面积都能量出来）——' +
+          '尽管上面是用外在的第二基本形式算的。',
+        '📌 **Gauss–Bonnet 对账**：$\\int_{S^{2}_{R}} K\\,\\mathrm{d}A = (1/R^{2})\\cdot 4\\pi R^{2} = 4\\pi = 2\\pi\\chi(S^{2})$，' +
+          '与 $\\chi = 2$ 吻合 —— 而且与 $R$ 无关（曲率变小、面积变大，正好抵消）。',
+        '⚠ **不要对一般曲面说「$K = 1/R^{2}$ 那种形式」**：只有球面两个主曲率相等。' +
+          '环面上 $K$ 变号（外侧正、内侧负），平面上 $K = 0$。',
+      ].join('\n\n'),
+      refs: ['do Carmo, Differential Geometry of Curves and Surfaces, §3-2'],
+    },
+
+    {
+      id: 'ex.s1-tangent-bundle',
+      cluster: 'diffgeom.manifold',
+      type: 'example',
+      label: '圆的切丛是平凡丛',
+      title: '切丛：$TS^{1} \\cong S^{1} \\times \\mathbb{R}$（圆可平行化）',
+      regions: ['geometry'],
+      tags: ['例', '微分几何', '丛', '切丛'],
+      statement: [
+        '把 $S^{1} = \\{\\, z \\in \\mathbb{C} : |z| = 1 \\,\\}$ 看成光滑流形。它的切丛',
+        '',
+        '$$TS^{1} = \\bigsqcup_{z \\in S^{1}} T_{z}S^{1}$$',
+        '',
+        '与乘积 $S^{1} \\times \\mathbb{R}$ 微分同构：把 $(z, \\lambda)$ 送到 $\\lambda\\, iz$（$iz$ 是 $z$ 处的单位切向量）。',
+      ].join('\n'),
+      notes: [
+        '**为什么平凡**：圆上有一个**处处非零**的光滑切向量场 $z \\mapsto iz$，用它把每个切空间标架化，' +
+          '于是 $\\lambda \\mapsto \\lambda iz$ 给出 $T_{z}S^{1} \\cong \\mathbb{R}$ 的**整体**平凡化（不是逐点的、是整体的）。',
+        '⭐ **一般语言**：具有处处非零向量场的流形叫**可平行化**（parallelizable）；圆可平行化，而 $S^{2}$ 不行 ——' +
+          '这就是「毛球定理」（$S^{2}$ 上不存在处处非零的连续切向量场）。',
+        '⚠ **切丛平凡 $\\ne$ 流形平凡**：$TS^{1} \\cong S^{1}\\times\\mathbb{R}$ 但 $S^{1} \\not\\cong \\mathbb{R}$。' +
+          '同样 $TS^{1}$ 与圆柱面作为流形同构，而 $S^{1}$ 不是平面。',
+        '📌 **对照**：$TS^{2}$ **不**平凡（$S^{2}$ 的 Euler 示性数 $\\chi = 2 \\ne 0$，而可平行化流形必有 $\\chi = 0$）。' +
+          '这条「$\\chi = 0$ 才可能可平行化」在 `def.characteristic-class` 那一团里有更系统的说法（Euler 类是 $TS^{2}$ 非平凡的障碍）。',
+      ].join('\n\n'),
+      refs: ['Tu, Introduction to Manifolds, §8（切丛）'],
+    },
+
+    {
+      id: 'ex.h1-circle',
+      cluster: 'topology.homology',
+      type: 'example',
+      label: '圆的 H¹',
+      title: '圆的同调：$H_{1}(S^{1}) = \\mathbb{Z}$、$H^{1}_{\\mathrm{dR}}(S^{1}) = \\mathbb{R}$',
+      regions: ['topology', 'analysis'],
+      tags: ['例', '拓扑', '同调', 'de Rham'],
+      statement: [
+        '$H_{0}(S^{1}) \\cong \\mathbb{Z}$、$H_{1}(S^{1}) \\cong \\mathbb{Z}$，其余为 $0$；对偶地',
+        '',
+        '$$H^{1}_{\\mathrm{dR}}(S^{1}) \\cong \\mathbb{R}, \\qquad \\int_{S^{1}} : H^{1}_{\\mathrm{dR}}(S^{1}) \\longrightarrow \\mathbb{R}$$',
+        '',
+        '是同构（取 $\\mathrm{d}\\theta$ 为生成元）。',
+      ].join('\n'),
+      notes: [
+        '**$H_{1}$ 怎么算**：把圆三角剖分成一个顶点 $v$ 与一条边 $e$（两端都粘到 $v$）。' +
+          '链群 $C_{0} = \\mathbb{Z}v$、$C_{1} = \\mathbb{Z}e$，边缘 $\\partial e = v - v = 0$，于是 $H_{1} = \\ker\\partial_{1}/\\operatorname{im}\\partial_{2} = \\mathbb{Z}e$。',
+        '⭐ **de Rham 侧**：$\\mathrm{d}\\theta$ 是闭的（1 维，$\\mathrm{d}(\\mathrm{d}\\theta) = 0$ 平凡）但**不恰当** ——' +
+          '否则 $\\int_{S^{1}}\\mathrm{d}\\theta = 0$，而它实际等于 $2\\pi$。这条「闭而不恰当」正是 $H^{1} \\ne 0$ 的全部内容。',
+        '📌 **绕数**：对任意闭 1-形式 $\\omega$，$\\frac{1}{2\\pi}\\int_{S^{1}}\\omega \\in \\mathbb{R}$ 是它的「周期」；' +
+          '若 $\\omega$ 是整系数的（如 $\\mathrm{d}\\theta$ 对应 $\\mathbb{Z}$），积分落在 $2\\pi\\mathbb{Z}$ —— 这就是**绕数**的同调解释。',
+        '⚠ **别把 $H_{1}$ 与 $\\pi_{1}$ 混**：$H_{1}(S^{1}) = \\pi_{1}(S^{1})^{\\mathrm{ab}} = \\mathbb{Z}$，两者在这里恰好同构，' +
+          '但一般只差「交换化」（本图没有 Hurewicz 定理的节点，这里只记「一般只差交换化」这条事实）。',
+      ].join('\n\n'),
+      refs: ['Hatcher, Algebraic Topology, §2.1', 'Munkres, Topology, Ch. 12'],
+    },
+
+    {
+      id: 'ex.sierpinski-space',
+      cluster: 'topology.general',
+      type: 'example',
+      label: 'Sierpiński 空间',
+      title: 'Sierpiński 空间 $\\{0,1\\}$：$T_{0}$ 但非 $T_{1}$，连通但非道路连通',
+      regions: ['topology'],
+      tags: ['例', '拓扑', '分离公理', '反例'],
+      statement: [
+        '在两点集 $S = \\{0, 1\\}$ 上取拓扑 $\\mathcal{T} = \\{\\, \\emptyset, \\{1\\}, \\{0,1\\} \\,\\}$（叫 Sierpiński 空间）。',
+      ].join('\n'),
+      notes: [
+        '**$T_{0}$ 但不是 $T_{1}$**：点 $1$ 有开邻域 $\\{1\\}$ 不含 $0$，所以能「分开」这两点（$T_{0}$）；' +
+          '但**反过来不行** —— 任何含 $0$ 的开集都含 $1$（$\\{0\\}$ 不是开集）$implies$ 不是 $T_{1}$，更不是 Hausdorff。',
+        '⭐ **连通但不道路连通**：$\\{0\\}$ 与 $\\{1\\}$ 不构成分离（$\\{0\\}$ 不闭），所以空间连通；' +
+          '但任何连续道路 $\\gamma : [0,1] \\to S$ 的像必须是连通的、且取值只能落在 $\\{0\\}$ 或 $\\{1\\}$ 上（因为 $\\{0,1\\}$ 的连通子集只有单点与全体，而全体不能是单点的像）' +
+          '$implies$ 常值 $implies$ 连不到另一边。',
+        '⚠ **它是 $T_{0}$ 反例的标准来源**：想说明「$T_{0}$ 不蕴含 $T_{1}$」，最省事的例子就是它。' +
+          '本图分离公理那一族（`def.t0-space` $	o$ `def.t1-space` $	o$ …）的分层，就是靠这类例子才不像定义堆砌。',
+        '📌 **它的开集对应「上开」集合**：把 $0 < 1$ 看成序，则开集正好是**上闭集**（$1 \\in U$ 且 $1 \\le x$ $implies$ $x \\in U$）。' +
+          '于是 Sierpiński 空间就是「两点偏序集」的 Alexandrov 拓扑 —— 这也是它在 Domain 理论里出现的原因。',
+      ].join('\n\n'),
+      refs: ['Steen–Seebach, Counterexamples in Topology（Sierpiński space）'],
+    },
+  ],
+
+  edges: [
+    /* 有限域 */
+    { id: 'dep.ff-field', kind: 'definition', definition: 'def.field', usedBy: 'ex.finite-field',
+      note: '$\\mathbb{F}_{p}$ 的定义就是「$\\mathbb{Z}/p\\mathbb{Z}$ 是域」这一条断言 —— 域的定义是它的前提。' },
+    { id: 'dep.ff-ideal', kind: 'definition', definition: 'def.ideal', usedBy: 'ex.finite-field',
+      note: '「$p$ 素 $\\iff$ $(p)$ 是极大理想」用的是**理想**与「商环是域」的判别。' },
+
+    /* 平凡群 */
+    { id: 'dep.trivial-group', kind: 'definition', definition: 'def.group', usedBy: 'ex.trivial-group',
+      note: '先要说清「群」是什么，才谈得上「只有单位元的那个群」。' },
+    { id: 'dep.trivial-subgroup', kind: 'definition', definition: 'def.subgroup', usedBy: 'ex.trivial-group',
+      note: '注里的「平凡子群」用的是子群的定义；$\\{1\\}$ 与 $G$ 是每个群都有的两个。' },
+
+    /* 莫比乌斯带 */
+    { id: 'dep.mobius-quotient', kind: 'definition', definition: 'def.quotient-topology', usedBy: 'def.mobius-band',
+      note: '莫比乌斯带**就是**正方形的商空间 —— 定义里的「粘」正是商拓扑。' },
+    { id: 'dep.mobius-orient', kind: 'definition', definition: 'def.orientable-surface', usedBy: 'def.mobius-band',
+      note: '「不可定向」是相对可定向曲面说的：沿中线走一圈法向反向，所以它落在另一侧。' },
+    { id: 'dep.mobius-klein', kind: 'definition', definition: 'def.mobius-band', usedBy: 'ex.klein-bottle',
+      note: '克莱因瓶的标准构造就是「两个莫比乌斯带沿边界粘起来」—— 此前这条边缺失（注里说了却没有节点）。' },
+
+    /* 球面曲率 */
+    { id: 'dep.spherecurv-K', kind: 'definition', definition: 'def.gauss-curvature', usedBy: 'ex.sphere-curvature',
+      note: '例子的结论就是「$K = 1/R^{2}$」—— 用到 Gauss 曲率的定义（两主曲率之积）。' },
+
+    /* 圆的切丛 */
+    { id: 'dep.s1tangent-bundle', kind: 'definition', definition: 'def.tangent-bundle', usedBy: 'ex.s1-tangent-bundle',
+      note: '例子的对象是 $TS^{1}$，即圆的切丛。' },
+    { id: 'dep.s1tangent-vb', kind: 'definition', definition: 'def.vector-bundle', usedBy: 'ex.s1-tangent-bundle',
+      note: '「与 $S^{1}\\times\\mathbb{R}$ 同构」用的是向量丛的同构（纤维上线性 + 丛映射）。' },
+
+    /* 圆的 H¹ */
+    { id: 'dep.h1-singular', kind: 'definition', definition: 'def.singular-homology', usedBy: 'ex.h1-circle',
+      note: '$H_{1}(S^{1}) = \\mathbb{Z}$ 是奇异同调（等价地单纯同调，本图两个都在）。' },
+    { id: 'dep.h1-derham', kind: 'definition', definition: 'def.de-rham-complex', usedBy: 'ex.h1-circle',
+      note: '「$\\mathrm{d}\\theta$ 闭而不恰当」讲的是 de Rham 复形里的上同调类。' },
+
+    /* Sierpiński */
+    { id: 'dep.sierpinski-top', kind: 'definition', definition: 'def.topology', usedBy: 'ex.sierpinski-space',
+      note: '例子的内容是「在两点集上给一个拓扑」，所以用到拓扑的定义。' },
+    { id: 'dep.sierpinski-conn', kind: 'definition', definition: 'def.connected', usedBy: 'ex.sierpinski-space',
+      note: '「连通但非道路连通」用的是连通与连通分量的定义。' },
+  ],
+});
+
+</script>
+<script>
+/* ============================================================================
+   内容包 · D2 跨领域桥 + E5 经典缺席（2026-11-04，v2 清单 §2 ④⑥）
+   ----------------------------------------------------------------------------
+   审计最刺眼的一条：**凝聚态 $\\leftrightarrow$ 分析 / 测度 / 泛函 = 0 / 0 / 0**（600 个节点之间零边）。
+   这里不去硬连概念对，而是造**真正成立的桥节点**，让两边各自接上来：
+
+     `prop.banach-as-condensed`  Banach 空间（含 Hilbert）经 $S \\mapsto C(S,E)$ 成为凝聚态阿贝尔群
+     `thm.riesz-markov`          $C_{c}(X)^{*} \\cong$ Radon 测度 —— 顺便把「整值测度」接上经典测度
+
+   以及 E5 的两点：
+
+     `def.power-object`          幂对象（笛卡尔闭的「指数对象」那一半）
+     `def.hodge-star`            Hodge 星号 $*$：从度量 + 体积形式**构造**出来（不是「满足性质」引入）
+
+   ⚠ 每条桥的注里都写清「哪一步本图没有自己的节点」，不假装完整。
+   ========================================================================== */
+(window.MG = window.MG || {}).packs = window.MG.packs || [];
+window.MG.packs.push({
+  name: '跨领域桥：Banach → 凝聚态 / Riesz–Markov / 幂对象 / Hodge 星号',
+
+  nodes: [
+    {
+      id: 'prop.banach-as-condensed',
+      cluster: 'cond.ab',
+      type: 'proposition',
+      label: 'Banach 空间都是凝聚态阿贝尔群',
+      title: 'Banach（与 Hilbert）空间经 $S \\mapsto C(S,E)$ 嵌入凝聚态阿贝尔群',
+      regions: ['condensed', 'analysis'],
+      tags: ['命题', '凝聚态', 'Banach', '桥'],
+      statement: [
+        '设 $E$ 是实（或复）Banach 空间。对紧 Hausdorff 空间 $S$ 令',
+        '',
+        '$$\\underline{E}(S) := C(S, E) \\qquad\\text{（$S \\to E$ 的连续映射全体，按逐点运算成群）},$$',
+        '',
+        '则 $\\underline{E}$ 是一个**凝聚态阿贝尔群**。而且 $E \\mapsto \\underline{E}$ 把**有界**线性映射一一对应到凝聚态的态射：',
+        '',
+        '$$\\operatorname{Hom}_{\\mathrm{CondAb}}(\\underline{E}, \\underline{F}) \\;\\cong\\; \\operatorname{Hom}_{\\text{bdd}}(E, F).$$',
+      ].join('\n'),
+      notes: [
+        '**为什么「连续函数」这一定义能装下有界算子**：一个线性映射 $T : E \\to F$ 有界 $\\iff$ 它在每个 $C(S,E)$ 上把「一致范数有界的集合」送到有界集合。' +
+          '凝聚态的结构正是「逐个紧 Hausdorff 空间 $S$ 地看」，于是有界性自然地被 $T$ 的每个 $C(S,E) \\to C(S,F)$ 记录下来。',
+        '⭐ **这就是凝聚态理论的起点动机**：拓扑阿贝尔群范畴太坏（极限/余极限不好、Ext 不好算），' +
+          '但把「测试空间」从点换成一族紧 Hausdorff 空间之后，Banach 空间、Fréchet 空间这些都**原封不动**地住进了一个阿贝尔范畴。',
+        '⚠ **本图的空白**：这里只记陈述与机制。要证的细节（「$\\underline{E}$ 满足层条件」这一条要用 $C(S,E)$ 的一致完备性；' +
+          '全忠实那一条要用 $E$ 的完备性把逐点估计拼成一致估计）**没有在本图展开**，我把它当标准结论引用，出处见 refs。',
+        '📌 **Hilbert 是特例**：$H$ 是 Banach 空间，所以 $\\underline{H}$ 也是凝聚态阿贝尔群 —— 但**别把「$H$ 是固态群」当结论**：' +
+          '固态性是关于 $\\prod_{I}\\mathbb{Z}$ 的紧投射性，与「内积完备」不是一回事。',
+      ].join('\n\n'),
+      refs: ['Clausen–Scholze, Lectures on Condensed Mathematics, Lecture I（拓扑阿贝尔群 → 凝聚态）'],
+    },
+
+    {
+      id: 'thm.riesz-markov',
+      cluster: 'analysis.measure',
+      type: 'theorem',
+      label: 'Riesz–Markov 表示',
+      title: 'Riesz–Markov：$C_{c}(X)^{*} \\cong$ Radon 测度',
+      regions: ['analysis'],
+      tags: ['定理', '测度', '泛函分析', '桥'],
+      status: 'skeleton',
+      statement: [
+        '设 $X$ 是局部紧 Hausdorff 空间，$C_{c}(X)$ 配 sup 范数（连续、紧支的实值函数）。则每个**正**线性泛函 $\\Lambda : C_{c}(X) \\to \\mathbb{R}$ 都唯一地写成',
+        '',
+        '$$\\Lambda(f) = \\int_{X} f \\,\\mathrm{d}\\mu,$$',
+        '',
+        '其中 $\\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\\lVert\\Lambda\\rVert = \\mu(X)$。一般（不必正）的泛函对应符号测度之差。',
+      ].join('\n'),
+      notes: [
+        '**在做什么**：把「对函数做线性赋值」与「对集合量大小」这两件事焊起来 —— 于是测度论里的构造（乘积、推前、RN 导数）都能用泛函语言重述，' +
+          '反过来泛函分析里的对偶结论也能落到测度上。',
+        '**证明骨架**：① 由 $\\Lambda$ 定义集函数 $\\mu_{0}(U) := \\sup\\{\\, \\Lambda(f) : 0 \\le f \\le 1,\\ \\operatorname{supp} f \\subseteq U \\,\\}$；' +
+          '② 证它是外测度、在开集上可加；③ 用 Carathéodory 延拓得到 Borel 测度；④ 用 $X$ 局部紧（Urysohn 引理给「夹逼函数」）证 $\\Lambda(f) = \\int f\\,\\mathrm{d}\\mu$。',
+        '⚠ **本条标骨架**：本图把上面四步作为机制记下，**每一步的细节没有展开**（尤其「开集上可加」那一步要用 $X$ 的局部紧性与有限分割）。' +
+          '需要的工具（`lem.urysohn`、`thm.caratheodory`、`def.outer-measure`）本图都有节点，所以真要补全是可以逐步补的。',
+        '⭐ **与凝聚态的关系**：profinite 集上的「整值测度」$M(S,\\mathbb{Z}) = \\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$' +
+          '就是这条定理的**整值、紧全不连通**版本 —— 见 `def.cond-measure`。两者的差别只在「系数环」与「测试空间」，做法同为「对连续函数做赋值」。',
+      ].join('\n\n'),
+      refs: ['Rudin, Real and Complex Analysis, Ch. 2（Riesz 表示定理）'],
+    },
+
+    {
+      id: 'def.power-object',
+      cluster: 'cat.structure',
+      type: 'definition',
+      label: '幂对象',
+      title: '幂对象 $Y^{X}$：积的左伴随，即「函数空间」的对象化',
+      regions: ['category'],
+      tags: ['定义', '范畴论', '笛卡尔闭'],
+      statement: [
+        '设 $\\mathcal{C}$ 有有限积，$X, Y \\in \\mathcal{C}$。若存在对象 $Y^{X}$ 与态射 $\\operatorname{ev} : Y^{X} \\times X \\to Y$，使得对任意 $Z$ 与任意 $f : Z \\times X \\to Y$，存在**唯一**的 $\\tilde f : Z \\to Y^{X}$ 使',
+        '',
+        '$$\\operatorname{ev} \\circ (\\tilde f \\times \\operatorname{id}_{X}) = f,$$',
+        '',
+        '就说 $Y^{X}$ 是 $Y$ 对 $X$ 的**幂对象**（exponential object），$\\operatorname{ev}$ 叫**求值映射**。',
+      ].join('\n'),
+      notes: [
+        '**等价说法（更好用）**：$Y^{X}$ 就是函子 $-\\times X : \\mathcal{C} \\to \\mathcal{C}$ 的**右伴随**，即',
+        '',
+        '$$\\operatorname{Hom}(Z \\times X,\\, Y) \\;\\cong\\; \\operatorname{Hom}(Z,\\, Y^{X}).$$',
+        '所以「有幂对象」= 「积有右伴随」。',
+        '⭐ **为什么它是「笛卡尔闭」的第二半**：笛卡尔闭 = 有限积 + 幂对象。' +
+          '本图 `prop.cg-cartesian-closed` 说的正是「紧生成空间这一侧有幂对象，只是要把紧开拓扑再 $k$-化一次」。',
+        '⚠ **别与「内部 Hom」混**：$\\mathcal{C}$ 是一般范畴时，$Y^{X}$ 是 $\\mathcal{C}$ 里**真的存在**的那个对象；' +
+          '而内部 Hom（`def.internal-hom`，拓扑斯里那个）是先取 Hom 集再用余极限/层化造出来的。在笛卡尔闭范畴里两者一致，在一般的拓扑斯里只有内部 Hom。',
+        '📌 **$\\mathbf{Set}$ 里的样子**：$Y^{X}$ 就是函数集 $\\operatorname{Hom}_{\\mathbf{Set}}(X,Y)$，' +
+          '$\\operatorname{ev}(f, x) = f(x)$ —— 幂对象就是「把函数收集成一个集合」这件事的对象化。',
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, §IV.6'],
+    },
+
+    {
+      id: 'def.hodge-star',
+      cluster: 'diffgeom.form',
+      type: 'definition',
+      label: 'Hodge 星号',
+      title: 'Hodge 星号 $*$：$\\Omega^{k} \\to \\Omega^{n-k}$，由度量与体积形式**构造**',
+      regions: ['geometry'],
+      tags: ['定义', '微分几何', '微分形式', 'Hodge'],
+      statement: [
+        '设 $(M, g)$ 是可定向 $n$ 维 Riemann 流形，$\\mathrm{vol}$ 是 $g$ 决定的体积形式，$\\langle \\cdot, \\cdot \\rangle$ 是 $k$-形式上由 $g$ 诱导的内积。对 $\\alpha \\in \\Omega^{k}(M)$ 定义 $*\\alpha \\in \\Omega^{n-k}(M)$ 为**唯一**满足',
+        '',
+        '$$\\beta \\wedge *\\alpha \\;=\\; \\langle \\beta, \\alpha \\rangle\\, \\mathrm{vol} \\qquad \\text{对一切 } \\beta \\in \\Omega^{k}(M)$$',
+        '',
+        '的那个 $(n-k)$-形式。',
+      ].join('\n'),
+      notes: [
+        '**为什么存在唯一**：$\\beta \\mapsto \\langle \\beta,\\alpha\\rangle$ 是 $\\Lambda^{k}T_{p}^{\\ast}M$ 上的线性泛函，' +
+          '而 $\\beta \\wedge (-) : \\Lambda^{k} \\to \\Lambda^{n}$ 与 $\\mathrm{vol}$ 一起给出「$\\Lambda^{n-k} \\to \\mathbb{R}$」与「$\\Lambda^{k} \\to \\mathbb{R}$」的**配对**（非退化），' +
+          '于是那个线性泛函唯一地对应一个 $(n-k)$-形式。逐点做、再验证光滑。',
+        '📌 **坐标里的一行公式**：取定向标准正交余标架 $e^{1}, \\ldots, e^{n}$（此时 $\\mathrm{vol} = e^{1}\\wedge\\cdots\\wedge e^{n}$），则',
+        '',
+        '$$*(e^{i_{1}}\\wedge\\cdots\\wedge e^{i_{k}}) \\;=\\; \\operatorname{sgn}(\\sigma)\\, e^{j_{1}}\\wedge\\cdots\\wedge e^{j_{n-k}},$$',
+        '其中 $\\{j\\}$ 是补集、按递增排列，$\\sigma$ 是排列 $(i_1,\\ldots,i_k, j_1,\\ldots,j_{n-k})$ 的符号。',
+        '⭐ **它的用途在下一层**：$\\delta := (-1)^{nk+n+1} *\\mathrm{d}*$（余微分）要用 $*$ 写出来；有了 $\\delta$ 才有 $\\Delta = \\mathrm{d}\\delta + \\delta\\mathrm{d}$ 与**调和形式**，' +
+          '然后才有 Hodge 定理（每个 de Rham 类有唯一调和代表元）。',
+        '⚠ **本图的空白**：余微分 $\\delta$、Laplace–de Rham 算子 $\\Delta$、调和形式、Hodge 定理**都还没有节点** —— ' +
+          '这一条只把其中**可构造的第一块**（$*$）落地；⛔ 不要在这里声称 Hodge 分解已经可用。',
+        '⚠ **依赖定向**：$*$ 依赖 $\\mathrm{vol}$ 的符号，所以 $M$ 不可定向时要在扭曲形式（密度）上工作，那一步本图没有。',
+      ].join('\n\n'),
+      refs: ['Warner, Foundations of Differentiable Manifolds, Ch. 6', 'Tu, Introduction to Manifolds, §17'],
+    },
+  ],
+
+  edges: [
+    /* ④ 桥：凝聚态 $\\leftrightarrow$ 分析 / 泛函 */
+    { id: 'dep.bcd-banach', kind: 'definition', definition: 'def.banach-space', usedBy: 'prop.banach-as-condensed',
+      note: '命题的输入就是 Banach 空间 $E$（要它的完备性来保证 $C(S,E)$ 是 Banach 空间）。' },
+    { id: 'dep.bcd-hilbert', kind: 'definition', definition: 'def.hilbert-space', usedBy: 'prop.banach-as-condensed',
+      note: 'Hilbert 空间是 Banach 空间的特例，所以也走这条桥（注里有说明）。' },
+    { id: 'dep.bcd-condab', kind: 'definition', definition: 'def.condensed-abelian-group', usedBy: 'prop.banach-as-condensed',
+      note: '结论说 $\\underline{E}$ 是**凝聚态阿贝尔群** —— 要用它的定义（紧 Hausdorff 上的层）。' },
+
+    /* ④ 桥：凝聚态 $\\leftrightarrow$ 测度（经 Riesz–Markov 的整值版本） */
+    { id: 'dep.rm-measure', kind: 'definition', definition: 'def.measure', usedBy: 'thm.riesz-markov',
+      note: '结论说「存在一个正则 Borel **测度** $\\mu$」，用到测度的定义。' },
+    { id: 'dep.rm-lc', kind: 'definition', definition: 'def.locally-compact', usedBy: 'thm.riesz-markov',
+      note: '假设是局部紧 Hausdorff —— 局部紧是 Urysohn 夹逼函数存在的前提。' },
+    { id: 'dep.rm-outer', kind: 'definition', definition: 'def.outer-measure', usedBy: 'thm.riesz-markov',
+      note: '证明骨架第 ②③ 步：先造外测度、再用 Carathéodory 延拓。' },
+    { id: 'ana.rm-cond-measure', kind: 'analogy', a: 'def.cond-measure', b: 'thm.riesz-markov',
+      title: '整值测度 $\\leftrightarrow$ Riesz–Markov：同一台机器，换系数环与测试空间',
+      note: '两处都在做「对连续函数做赋值，得到『集合的大小』」这一件事：\n' +
+        '- 经典：$\\Lambda \\in C_{c}(X)^{\\ast}$ $\\rightsquigarrow$ 正则 Borel 测度；\n' +
+        '- 凝聚态：$\\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$，$S$ profinite —— **整值**系数、**紧全不连通**的测试空间。\n\n' +
+        '⚠ 方向不同、范畴不同，所以只记**类比**，不当依赖：经典定理给出「测度」，凝聚态那个对象是**按定义取对偶**得到的。' },
+
+    { id: 'dep.rm-regular', kind: 'definition', definition: 'def.regular-measure', usedBy: 'thm.riesz-markov',
+      note: '结论里那个测度是**正则 Borel 测度**（外正则 + 内正则 + 局部有限），这一条正是「哪一类测度」的限定。' },
+
+    /* ④ 桥：凝聚态 $\\leftrightarrow$ 范畴论（阿贝尔范畴那一条） */
+    { id: 'ana.condab-abeliancat', kind: 'analogy', a: 'thm.condab-ab', b: 'def.abelian-category',
+      title: '凝聚态阿贝尔群 $\\leftrightarrow$ 阿贝尔范畴：都是「好到能算同调」的地方',
+      note: '两处在回答同一个问题：**什么样的范畴里可以放心地做同调代数？**\n' +
+        '- 阿贝尔范畴：核余核都存在、单满都正则 $\\implies$ 蛇引理、长正合列都成立；\n' +
+        '- $\\mathrm{CondAb}$：先是预阿贝尔且满足 AB3–AB6，再靠「有足够多紧投射对象」把 Ext 算得出来（`thm.condab-ab`）。\n\n' +
+        '⚠ 不是蕴含：$\\mathrm{CondAb}$ **是**阿贝尔范畴（`thm.condab-ab` 证明的那部分），所以这是「实例 $\\leftrightarrow$ 一般框架」的类比，不是两个平行理论。' },
+
+    /* ⑥ 幂对象 */
+    { id: 'dep.power-adjoint', kind: 'definition', definition: 'def.adjoint', usedBy: 'def.power-object',
+      note: '幂对象就是 $-\\times X$ 的右伴随 —— 用到伴随的定义（三角恒等式）。' },
+    { id: 'dep.cgcc-power', kind: 'definition', definition: 'def.power-object', usedBy: 'prop.cg-cartesian-closed',
+      note: '「紧生成空间是笛卡尔闭的」= 它有幂对象（且要把紧开拓扑再 $k$-化），用到幂对象的定义。' },
+
+    /* ⑥ Hodge 星号 */
+    { id: 'dep.hodge-g', kind: 'definition', definition: 'def.riemannian-metric', usedBy: 'def.hodge-star',
+      note: '内积 $\\langle\\cdot,\\cdot\\rangle$ 与体积形式都由 $g$ 给出。' },
+    { id: 'dep.hodge-vol', kind: 'definition', definition: 'def.volume-form', usedBy: 'def.hodge-star',
+      note: '定义等式右边就是 $\\mathrm{vol}$：没有体积形式就写不出 $\\beta\\wedge *\\alpha$。' },
+    { id: 'dep.hodge-form', kind: 'definition', definition: 'def.form-on-manifold', usedBy: 'def.hodge-star',
+      note: '$*$ 是 $\\Omega^{k} \\to \\Omega^{n-k}$ 的映射，输入输出都是流形上的微分形式。' },
+  ],
+});
+
+</script>
+<script>
+/* ============================================================================
+   内容包 · E1 数论 $\\leftrightarrow$ 复分析（2026-11-04，v2 清单 §2 ⑤）
+   ----------------------------------------------------------------------------
+   审计里 `number $\\leftrightarrow$ analysis` 的边数是 **0** —— ζ 函数与解析数论整块缺席。
+   这里只补**最小可交付**（4 件），但每件都写清「它是什么 / 证明到哪一步」：
+
+     `def.riemann-zeta`         $\\zeta(s) = \\sum n^{-s}$（$\\operatorname{Re}s > 1$）及其延拓（延拓只记结论，标骨架）
+     `thm.euler-product`        $\\zeta(s) = \\prod_{p} (1 - p^{-s})^{-1}$ —— **数论 $\\leftrightarrow$ 分析的桥**
+     `def.dirichlet-character`  $\\chi : (\\mathbb{Z}/n)^{\\times} \\to \\mathbb{C}^{\\times}$，延拓到 $\\mathbb{Z}/n$
+     `ana.zeta-pnt`             素数定理与 $\\zeta$ 的非零区域（类比，不当依赖）
+
+   ⛔ 不写黎曼猜想（未解决）；只在注里说明它问的是什么。
+   ========================================================================== */
+(window.MG = window.MG || {}).packs = window.MG.packs || [];
+window.MG.packs.push({
+  name: '解析数论的入口：ζ 函数 / Euler 乘积 / 狄利克雷特征标',
+
+  nodes: [
+    {
+      id: 'def.riemann-zeta',
+      cluster: 'number.functions',
+      type: 'definition',
+      label: '黎曼 ζ 函数',
+      title: '黎曼 $\\zeta$ 函数：$\\zeta(s) = \\sum_{n \\ge 1} n^{-s}$（$\\operatorname{Re}s > 1$）',
+      regions: ['number', 'analysis'],
+      tags: ['定义', '数论', '复分析', 'ζ 函数'],
+      statement: [
+        '对 $\\operatorname{Re} s > 1$ 定义',
+        '',
+        '$$\\zeta(s) := \\sum_{n=1}^{\\infty} \\frac{1}{n^{s}} = \\sum_{n=1}^{\\infty} e^{-s\\log n}.$$',
+        '',
+        '这个级数在该半平面上**绝对收敛且内闭一致收敛**，所以 $\\zeta$ 在 $\\{\\operatorname{Re} s > 1\\}$ 上全纯。',
+      ].join('\n'),
+      notes: [
+        '**为什么 $\\operatorname{Re}s > 1$ 就够**：$|n^{-s}| = n^{-\\operatorname{Re}s}$，而 $\\sum n^{-\\sigma}$ 在 $\\sigma > 1$ 收敛（$p$-判别法）。' +
+          '于是 Weierstrass 判别法给出内闭一致收敛 $\\implies$ 逐项求导合法 $\\implies$ 全纯。',
+        '⭐ **延拓（只记结论）**：$\\zeta$ 可以延拓成 $\\mathbb{C}$ 上的亚纯函数，唯一极点是一阶极点 $s = 1$，留数 $1$；' +
+          '并且有函数方程 $\\zeta(s) = 2^{s}\\pi^{s-1}\\sin(\\pi s/2)\\,\\Gamma(1-s)\\,\\zeta(1-s)$。' +
+          '⚠ **这一段本图标骨架**：延拓的标准做法（Euler–Maclaurin 或 theta 函数的 Mellin 变换）在本图没有节点，' +
+          '所以这里只把它当**已知结论**引用，不给证明。',
+        '📌 **$s = 2$ 的值**：$\\zeta(2) = \\pi^{2}/6$（Euler）；偶数处的值都由 Bernoulli 数给出，奇数处至今只知道 $\\zeta(3)$ 无理（Apéry）。',
+        '⚠ **黎曼猜想**（未解决）：所有非平凡零点都在 $\\operatorname{Re}s = 1/2$ 上。本图**不收录**它作为定理，只在这里记一句它问的是什么 —— ' +
+          '📌 它的价值在于：$\\zeta$ 的零点位置**等价于**素数分布的误差项估计，见 `thm.prime-number-theorem`。',
+      ].join('\n\n'),
+      refs: ['Titchmarsh, The Theory of the Riemann Zeta-Function, Ch. 1–2'],
+    },
+
+    {
+      id: 'thm.euler-product',
+      cluster: 'number.functions',
+      type: 'theorem',
+      label: 'Euler 乘积',
+      title: 'Euler 乘积：$\\zeta(s) = \\prod_{p}\\bigl(1 - p^{-s}\\bigr)^{-1}$（$\\operatorname{Re}s > 1$）',
+      regions: ['number', 'analysis'],
+      tags: ['定理', '数论', '复分析', 'ζ 函数', '桥'],
+      statement: [
+        '对 $\\operatorname{Re} s > 1$，',
+        '',
+        '$$\\zeta(s) \\;=\\; \\prod_{p\\ \\text{素数}} \\frac{1}{1 - p^{-s}},$$',
+        '',
+        '右端的无穷乘积绝对收敛。',
+      ].join('\n'),
+      notes: [
+        '**证明（这是本图少见的完整短证明）**：对单个素数，几何级数在 $|p^{-s}| = p^{-\\sigma} < 1$ 时收敛，给出',
+        '',
+        '$$\\frac{1}{1 - p^{-s}} = \\sum_{k \\ge 0} p^{-ks}.$$',
+        '把**前 $N$ 个素数**的这些级数相乘（绝对收敛，可以任意重排）得',
+        '',
+        '$$\\prod_{p \\le N} \\frac{1}{1 - p^{-s}} = \\sum_{n \\in S_{N}} n^{-s},$$',
+        '其中 $S_{N}$ 是「素因子全 $\\le N$」的正整数全体。令 $N \\to \\infty$：$\\sum_{n \\notin S_{N}} |n^{-s}| \\le \\sum_{n > N} n^{-\\sigma} \\to 0$，' +
+          '于是左边趋于 $\\zeta(s)$。∎',
+        '⭐ **为什么说它是「桥」**：左边是**分析**的对象（一个级数、一个复变量函数），右边是**数论**的对象（对素数取乘积）。' +
+          '$\\zeta$ 的每一条解析性质（零点、增长、留数）因此都能翻译成关于素数的陈述 —— 这就是解析数论的全部出发点。',
+        '📌 **算术基本定理在哪儿用了**：$S_{N}$ 里的每个 $n$ 只有**一种**分解方式，所以乘积展式里每项 $n^{-s}$ 恰好出现一次、系数为 $1$。' +
+          '⛔ 若唯一分解失败，这个乘积就**不等于** $\\zeta$。',
+        '⚠ **发散的一侧**：$s \\to 1^{+}$ 时两边都发散（左边是调和级数、右边 $\\prod (1 - 1/p)^{-1}$）—— ' +
+          '这正是「素数有无穷多个」的**解析证明**：乘积若有限则收敛，矛盾。',
+      ].join('\n\n'),
+      refs: ['Apostol, Introduction to Analytic Number Theory, Ch. 11'],
+    },
+
+    {
+      id: 'def.dirichlet-character',
+      cluster: 'number.functions',
+      type: 'definition',
+      label: '狄利克雷特征标',
+      title: '狄利克雷特征标 $\\chi \\bmod n$：$(\\mathbb{Z}/n)^{\\times} \\to \\mathbb{C}^{\\times}$，延拓成完全积性函数',
+      regions: ['number', 'algebra'],
+      tags: ['定义', '数论', '特征标'],
+      statement: [
+        '固定 $n \\ge 1$。**狄利克雷特征标**（mod $n$）是一个群同态',
+        '',
+        '$$\\chi : \\bigl(\\mathbb{Z}/n\\mathbb{Z}\\bigr)^{\\times} \\longrightarrow \\mathbb{C}^{\\times},$$',
+        '',
+        '再把它**延拓**成 $\\mathbb{Z}$ 上的函数：$\\chi(a) := \\chi(a \\bmod n)$ 当 $\\gcd(a,n) = 1$，否则 $\\chi(a) := 0$。',
+      ].join('\n'),
+      notes: [
+        '**延拓之后它变成完全积性函数**：$\\chi(ab) = \\chi(a)\\chi(b)$ 对**一切** $a, b$ 成立（包括与 $n$ 不互素的情形 —— 两边都是 $0$）。' +
+          '这一步是「特征标」在数论里好用的原因：它像乘法角色一样可以塞进任何积性表达式。',
+        '⭐ **主特征标**：$\\chi_{0}(a) = 1$（$\\gcd(a,n) = 1$）与 $0$ 其它 —— 它的 $L$ 函数就是 $\\zeta(s)$ 去掉那些整除 $n$ 的素数因子。' +
+          '于是「$\\zeta$ 的这些因子」被单独摘出来研究，这正是引入特征标的动机。',
+        '📌 **$L$ 函数**：$L(s, \\chi) := \\sum_{n \\ge 1} \\chi(n) n^{-s}$，在 $\\operatorname{Re}s > 1$ 收敛，' +
+          '并且与 $\\zeta$ 一样有 Euler 乘积 $\\prod_{p}(1 - \\chi(p)p^{-s})^{-1}$（同一套几何级数论证，只是每项多了 $\\chi(p)$）。',
+        '⚠ **本图的空白**：狄利克雷的**定理**（$\\gcd(a,n) = 1$ 时等差数列 $a, a+n, a+2n, \\ldots$ 里有无穷多素数）要用 $L(s,\\chi)$ 在 $s = 1$ 处非零，' +
+          '那一步（非主特征标的 $L(1,\\chi) \\ne 0$）在本图**没有节点**；这里只到「特征标 + $L$ 函数的定义」。',
+        '⚠ **$\\chi$ 的取值不是任意的**：它是有限阿贝尔群 $(\\mathbb{Z}/n)^{\\times}$ 的特征标，所以取值落在单位根里；' +
+          '$\\sum_{a} \\chi(a)$ 在 $\\chi$ 非主时等于 $0$（正交关系）。这条正交性才是「筛出等差数列」的技术核心。',
+      ].join('\n\n'),
+      refs: ['Apostol, Introduction to Analytic Number Theory, Ch. 6–7'],
+    },
+  ],
+
+  edges: [
+    /* ζ 的成立靠级数与复分析 */
+    { id: 'dep.zeta-series', kind: 'definition', definition: 'def.series', usedBy: 'def.riemann-zeta',
+      note: '$\\zeta$ 的**定义**就是一条级数；收敛性用的是级数收敛的一般判别。' },
+    { id: 'dep.zeta-absconv', kind: 'definition', definition: 'def.absolute-convergence', usedBy: 'def.riemann-zeta',
+      note: '$\\operatorname{Re}s > 1$ 时 $\\sum n^{-s}$ **绝对收敛** —— 这是「可以重排、可以逐项求导」的依据。' },
+    { id: 'dep.zeta-holo', kind: 'definition', definition: 'def.holomorphic', usedBy: 'def.riemann-zeta',
+      note: '结论「$\\zeta$ 在该半平面上全纯」用的是全纯的定义（内闭一致收敛 $\\implies$ 全纯）。' },
+    { id: 'dep.zeta-continuation', kind: 'definition', definition: 'def.analytic-continuation', usedBy: 'def.riemann-zeta',
+      note: '注里说的「延拓到 $\\mathbb{C}$、唯一极点在 $s = 1$」正是**解析延拓**这一概念的应用。' },
+
+    /* Euler 乘积：数论 $\\leftrightarrow$ 分析 */
+    { id: 'dep.euler-zeta', kind: 'definition', definition: 'def.riemann-zeta', usedBy: 'thm.euler-product',
+      note: '命题讲的就是 $\\zeta$ 的乘积表示，输入是 $\\zeta$ 的定义。' },
+    { id: 'dep.euler-prime', kind: 'definition', definition: 'def.prime', usedBy: 'thm.euler-product',
+      note: '乘积遍历的是**素数**；「每个 $n$ 只有一种素数分解」是展式里每项系数为 $1$ 的唯一原因。' },
+    { id: 'dep.euler-gcd', kind: 'definition', definition: 'def.gcd', usedBy: 'def.dirichlet-character',
+      note: '特征标的延拓用「$\\gcd(a,n) = 1$」来分情况 —— 用到最大公因数的定义。' },
+    { id: 'dep.euler-grouphom', kind: 'definition', definition: 'def.group-hom', usedBy: 'def.dirichlet-character',
+      note: '特征标**就是**一个群同态 $(\\mathbb{Z}/n)^{\\times} \\to \\mathbb{C}^{\\times}$。' },
+    { id: 'dep.euler-congruence', kind: 'definition', definition: 'def.congruence', usedBy: 'def.dirichlet-character',
+      note: '「mod $n$ 的类」「$a \\bmod n$」用的都是同余的语言。' },
+    { id: 'dep.dirichlet-zeta', kind: 'definition', definition: 'def.riemann-zeta', usedBy: 'def.dirichlet-character',
+      note: '注里「主特征标的 $L$ 函数就是 $\\zeta$ 去掉整除 $n$ 的素数因子」直接用到 $\\zeta$ 的 Euler 乘积。' },
+
+    /* 与素数定理的关系：只记类比 */
+    { id: 'ana.zeta-pnt', kind: 'analogy', a: 'def.riemann-zeta', b: 'thm.prime-number-theorem',
+      title: '$\\zeta$ 的零点 $\\leftrightarrow$ 素数定理：同一件事的两种说法',
+      note: '两条说的是同一件事的两侧：\n' +
+        '- `thm.prime-number-theorem` 说 $\\pi(x) \\sim x/\\log x$（**素数怎么分布**）；\n' +
+        '- $\\zeta$ 的解析性质（在 $s = 1$ 处的极点、在 $\\operatorname{Re}s = 1$ 上不为零）**给出**这条渐近（**函数怎么长**）。\n\n' +
+        '⚠ 这只是类比/指向，**不是依赖**：本图没有把「$\\zeta$ 在 $\\operatorname{Re}s = 1$ 上非零」这条定理单独立节点，' +
+        '所以从 $\\zeta$ 推不出素数定理；反方向也不是。要真接上，得先补 Perron 公式与 Wiener–Ikehara 那一套。',
+    },
   ],
 });
 
