@@ -7,16 +7,16 @@
 - 数理逻辑　`alias/aka/logic.md` 0+7
 - 集合论　`alias/set-theory.md` / `alias/aka/set-theory.md` 25+60
 - 序理论　`alias/order-theory.md` / `alias/aka/order-theory.md` 10+16
-- 拓扑学　`alias/topology.md` / `alias/aka/topology.md` 48+164
-- 抽象代数　`alias/algebra.md` / `alias/aka/algebra.md` 16+179
-- 数学分析　`alias/analysis.md` / `alias/aka/analysis.md` 48+271
+- 拓扑学　`alias/topology.md` / `alias/aka/topology.md` 48+167
+- 抽象代数　`alias/algebra.md` / `alias/aka/algebra.md` 16+182
+- 数学分析　`alias/analysis.md` / `alias/aka/analysis.md` 48+276
 - 泛函分析　`alias/aka/functional-analysis.md` 0+54
-- 实变函数　`alias/analysis-measure.md` / `alias/aka/analysis-measure.md` 37+144
-- 范畴论　`alias/category.md` / `alias/aka/category.md` 63+204
+- 实变函数　`alias/analysis-measure.md` / `alias/aka/analysis-measure.md` 37+145
+- 范畴论　`alias/category.md` / `alias/aka/category.md` 63+205
 - 同调代数　`alias/homology.md` / `alias/aka/homology.md` 47+160
-- 凝聚态数学　`alias/condensed.md` / `alias/aka/condensed.md` 40+108
+- 凝聚态数学　`alias/condensed.md` / `alias/aka/condensed.md` 40+109
 - 解析空间　`alias/aka/analytic.md` 0+15
 - 复变函数　`alias/aka/complex.md` 0+80
-- 微分几何　`alias/diffgeom.md` / `alias/aka/diffgeom.md` 3+68
-- 数论　`alias/number.md` / `alias/aka/number.md` 1+37
+- 微分几何　`alias/diffgeom.md` / `alias/aka/diffgeom.md` 3+71
+- 数论　`alias/number.md` / `alias/aka/number.md` 1+40
 

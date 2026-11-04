@@ -6,16 +6,16 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T03:42:14.334Z",
+  "generated": "2026-11-04T03:50:21.587Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
    "nodes": 1520,
-   "edges": 3083,
-   "strong": 3045,
+   "edges": 3086,
+   "strong": 3048,
    "weak": 38,
    "derived": 33,
-   "en_pages": 1506
+   "en_pages": 1520
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -41126,6 +41126,24 @@
    "type": "example",
    "label": "有限域 F_p",
    "title": "有限域：$\\mathbb{F}_{p} = \\mathbb{Z}/p\\mathbb{Z}$，以及 $\\mathbb{F}_{4}$",
+   "label_en": "finite field",
+   "title_en": "finite field",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.finite-field.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -41149,6 +41167,24 @@
    "type": "example",
    "label": "平凡群",
    "title": "平凡群 $\\{e\\}$：群的范畴里的零对象",
+   "label_en": "trivial group",
+   "title_en": "trivial group",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.trivial-group.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -41171,6 +41207,24 @@
    "type": "definition",
    "label": "莫比乌斯带",
    "title": "莫比乌斯带：$[0,1] \\times [0,1]$ 把一头扭转后粘起来",
+   "label_en": "Möbius band",
+   "title_en": "Möbius band",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.mobius-band.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -41194,6 +41248,24 @@
    "type": "example",
    "label": "球面的曲率",
    "title": "半径为 $R$ 的球面：$K = 1/R^{2}$，$H = \\pm 1/R$",
+   "label_en": "curvature of a sphere",
+   "title_en": "curvature of a sphere",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.sphere-curvature.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom",
@@ -41218,6 +41290,24 @@
    "type": "example",
    "label": "圆的切丛是平凡丛",
    "title": "切丛：$TS^{1} \\cong S^{1} \\times \\mathbb{R}$（圆可平行化）",
+   "label_en": "tangent bundle of the circle",
+   "title_en": "tangent bundle of the circle",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.s1-tangent-bundle.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom",
@@ -41242,6 +41332,24 @@
    "type": "example",
    "label": "圆的 H¹",
    "title": "圆的同调：$H_{1}(S^{1}) = \\mathbb{Z}$、$H^{1}_{\\mathrm{dR}}(S^{1}) = \\mathbb{R}$",
+   "label_en": "homology of the circle",
+   "title_en": "homology of the circle",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.h1-circle.en.md",
    "region": "topology",
    "regions": [
     "topology",
@@ -41267,6 +41375,24 @@
    "type": "example",
    "label": "Sierpiński 空间",
    "title": "Sierpiński 空间 $\\{0,1\\}$：$T_{0}$ 但非 $T_{1}$，连通但非道路连通",
+   "label_en": "Sierpiński space",
+   "title_en": "Sierpiński space",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.sierpinski-space.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -41290,6 +41416,23 @@
    "type": "proposition",
    "label": "Banach 空间都是凝聚态阿贝尔群",
    "title": "Banach（与 Hilbert）空间经 $S \\mapsto C(S,E)$ 嵌入凝聚态阿贝尔群",
+   "title_en": "Banach spaces are condensed abelian groups",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.banach-as-condensed.en.md",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -41315,6 +41458,23 @@
    "label": "Riesz–Markov 表示",
    "title": "Riesz–Markov：$C_{c}(X)^{*} \\cong$ Radon 测度",
    "status": "skeleton",
+   "title_en": "Riesz–Markov representation theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.riesz-markov.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -41339,6 +41499,24 @@
    "type": "definition",
    "label": "幂对象",
    "title": "幂对象 $Y^{X}$：积的左伴随，即「函数空间」的对象化",
+   "label_en": "power object",
+   "title_en": "power object",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.power-object.en.md",
    "region": "category",
    "regions": [
     "category"
@@ -41361,6 +41539,24 @@
    "type": "definition",
    "label": "Hodge 星号",
    "title": "Hodge 星号 $*$：$\\Omega^{k} \\to \\Omega^{n-k}$，由度量与体积形式**构造**",
+   "label_en": "Hodge star",
+   "title_en": "Hodge star",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.hodge-star.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom",
@@ -41386,6 +41582,24 @@
    "type": "definition",
    "label": "黎曼 ζ 函数",
    "title": "黎曼 $\\zeta$ 函数：$\\zeta(s) = \\sum_{n \\ge 1} n^{-s}$（$\\operatorname{Re}s > 1$）",
+   "label_en": "Riemann zeta function",
+   "title_en": "Riemann zeta function",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.riemann-zeta.en.md",
    "region": "number",
    "regions": [
     "number",
@@ -41410,6 +41624,24 @@
    "type": "theorem",
    "label": "Euler 乘积",
    "title": "Euler 乘积：$\\zeta(s) = \\prod_{p}\\bigl(1 - p^{-s}\\bigr)^{-1}$（$\\operatorname{Re}s > 1$）",
+   "label_en": "Euler product",
+   "title_en": "Euler product",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.euler-product.en.md",
    "region": "number",
    "regions": [
     "number",
@@ -41435,6 +41667,24 @@
    "type": "definition",
    "label": "狄利克雷特征标",
    "title": "狄利克雷特征标 $\\chi \\bmod n$：$(\\mathbb{Z}/n)^{\\times} \\to \\mathbb{C}^{\\times}$，延拓成完全积性函数",
+   "label_en": "Dirichlet character",
+   "title_en": "Dirichlet character",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.dirichlet-character.en.md",
    "region": "number",
    "regions": [
     "number",
@@ -49195,7 +49445,7 @@
     "topology"
    ],
    "cluster": "topo.cg",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "拓扑",
     "紧生成",
@@ -83325,6 +83575,30 @@
    "b": "thm.prime-number-theorem",
    "title": "$\\zeta$ 的零点 $\\leftrightarrow$ 素数定理：同一件事的两种说法",
    "note": "两条说的是同一件事的两侧：\n- `thm.prime-number-theorem` 说 $\\pi(x) \\sim x/\\log x$（**素数怎么分布**）；\n- $\\zeta$ 的解析性质（在 $s = 1$ 处的极点、在 $\\operatorname{Re}s = 1$ 上不为零）**给出**这条渐近（**函数怎么长**）。\n\n⚠ 这只是类比/指向，**不是依赖**：本图没有把「$\\zeta$ 在 $\\operatorname{Re}s = 1$ 上非零」这条定理单独立节点，所以从 $\\zeta$ 推不出素数定理；反方向也不是。要真接上，得先补 Perron 公式与 Wiener–Ikehara 那一套。"
+  },
+  {
+   "id": "dep.cgex-lc",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.locally-compact",
+   "usedBy": "ex.cg-examples",
+   "note": "例 1 的假设就是「**局部紧 Hausdorff** 空间是紧生成的」—— 用到局部紧的定义（每点有紧邻域）。"
+  },
+  {
+   "id": "dep.cgex-ktx",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.k-topology",
+   "usedBy": "ex.cg-examples",
+   "note": "例 3 的补救办法是 $k$-化：$\\mathbb{R}^{I}$ 不紧生成，但 $k(\\mathbb{R}^{I})$ 是 —— 用到 $k$-拓扑的定义。"
+  },
+  {
+   "id": "dep.cgex-wh",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.weak-hausdorff",
+   "usedBy": "ex.cg-examples",
+   "note": "这一团讲的是「紧生成 + 弱 Hausdorff」，例 1–3 正是在这两条条件下讨论谁留在这个范畴里。"
   },
   {
    "id": "dep.subset-powerset",

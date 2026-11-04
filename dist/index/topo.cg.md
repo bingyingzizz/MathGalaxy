@@ -13,6 +13,5 @@
 - prop.compact-open-discrete　离散时函数空间是积　layer 18
 - prop.cg-function-space　函数空间弱 Hausdorff　layer 18
 - prop.continuous-map-space-metric　紧 Hausdorff 上的函数空间是度量空间　layer 18
-- ex.cg-examples　紧生成空间的例子　layer 19
 
 > 续见 `index/topo.cg.2.md`

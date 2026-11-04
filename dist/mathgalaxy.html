@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1520 nodes, 3083 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1520 nodes, 3086 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1520 nodes, 3083 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1520 nodes, 3086 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -13476,6 +13476,20 @@ MG.aliases = {
     { id: 'def.binary-operation', en: 'binary operation', aka: ['二元运算', '二元算子', '封闭运算'] },
     { id: 'def.group-order', en: 'order of a group', aka: ['群的阶', '元素的阶', '阶（群论）'] },
     { id: 'def.tan-cot-sec', en: 'tangent, cotangent, secant, cosecant', aka: ['正切', '余切', '正割', '余割', 'tan', 'cot', 'sec', 'csc'] },
+    { id: 'ex.finite-field', en: 'finite field', aka: ['有限域', 'F_p', '素域'] },
+    { id: 'ex.trivial-group', en: 'trivial group', aka: ['平凡群'] },
+    { id: 'def.mobius-band', en: 'Möbius band', aka: ['莫比乌斯带', 'Moebius band'] },
+    { id: 'ex.sphere-curvature', en: 'curvature of a sphere', aka: ['球面的曲率'] },
+    { id: 'ex.s1-tangent-bundle', en: 'tangent bundle of the circle', aka: ['圆的切丛'] },
+    { id: 'ex.h1-circle', en: 'homology of the circle', aka: ['圆的同调', '圆的 H1'] },
+    { id: 'ex.sierpinski-space', en: 'Sierpiński space', aka: ['Sierpinski 空间', 'Sierpiński 空间'] },
+    { id: 'prop.banach-as-condensed', en: 'Banach spaces are condensed abelian groups', aka: ['Banach 空间是凝聚态阿贝尔群'] },
+    { id: 'thm.riesz-markov', en: 'Riesz–Markov representation theorem', aka: ['Riesz-Markov 表示定理', 'Riesz–Markov 表示'] },
+    { id: 'def.power-object', en: 'power object', aka: ['幂对象', '指数对象'] },
+    { id: 'def.hodge-star', en: 'Hodge star', aka: ['Hodge 星号', 'Hodge star operator'] },
+    { id: 'def.riemann-zeta', en: 'Riemann zeta function', aka: ['黎曼 zeta 函数', 'zeta 函数', 'ζ 函数'] },
+    { id: 'thm.euler-product', en: 'Euler product', aka: ['Euler 乘积', '欧拉乘积'] },
+    { id: 'def.dirichlet-character', en: 'Dirichlet character', aka: ['狄利克雷特征标'] },
     { id: 'def.inverse-trig', en: 'inverse trigonometric functions', aka: ['反三角函数', '反正弦', '反余弦', '反正切', 'arcsin', 'arccos', 'arctan'] },
   ],
 
@@ -14008,6 +14022,7 @@ MG.i18n = {
     'def.differential-map': { title_en: 'Differential of a Smooth Map', label_en: 'Differential', from: 'manual' },
     'def.direct-sum': { title_en: 'direct sum and complement', label_en: 'direct sum and complement', from: 'explicit' },
     'def.directional-derivative': { title_en: 'Directional Derivative', label_en: 'Directional Derivative', from: 'manual' },
+    'def.dirichlet-character': { title_en: 'Dirichlet character', label_en: 'Dirichlet character', from: 'explicit' },
     'def.discrete-adic-space': { title_en: 'discrete adic space', label_en: 'discrete adic space', from: 'explicit' },
     'def.discrete-family': { title_en: 'Discrete Family of Sets', label_en: 'Discrete Family', from: 'manual' },
     'def.discrete-huber-pair': { title_en: 'discrete Huber pair', label_en: 'discrete Huber pair', from: 'explicit' },
@@ -14120,6 +14135,7 @@ MG.i18n = {
     'def.hessian': { title_en: 'Hessian Matrix', label_en: 'Hessian', from: 'manual' },
     'def.higher-derivative': { title_en: 'higher derivatives and C-k functions', label_en: null, from: 'explicit' },
     'def.hilbert-space': { title_en: 'Hilbert space', label_en: 'Hilbert space', from: 'explicit' },
+    'def.hodge-star': { title_en: 'Hodge star', label_en: 'Hodge star', from: 'explicit' },
     'def.holomorphic': { title_en: 'Holomorphic Function', label_en: 'Holomorphic Function', from: 'manual' },
     'def.homeomorphism': { title_en: 'homeomorphism', label_en: 'homeomorphism', from: 'aka' },
     'def.homotopy': { title_en: 'homotopy', label_en: 'homotopy', from: 'explicit' },
@@ -14217,6 +14233,7 @@ MG.i18n = {
     'def.metrizable': { title_en: 'Metrizable Space', label_en: 'Metrizable Space', from: 'manual' },
     'def.minimal-poly': { title_en: 'minimal polynomial', label_en: 'minimal polynomial', from: 'explicit' },
     'def.mobius': { title_en: 'Möbius Transformation', label_en: 'Möbius Transformation', from: 'manual' },
+    'def.mobius-band': { title_en: 'Möbius band', label_en: 'Möbius band', from: 'explicit' },
     'def.mobius-function': { title_en: 'Möbius function', label_en: 'Möbius function', from: 'explicit' },
     'def.module': { title_en: 'module', label_en: 'module', from: 'aka' },
     'def.mono': { title_en: 'monomorphism, epimorphism and isomorphism', label_en: null, from: 'explicit' },
@@ -14279,6 +14296,7 @@ MG.i18n = {
     'def.positive-definite-matrix': { title_en: 'Positive Definite Matrix', label_en: 'Positive Definite Matrix', from: 'manual' },
     'def.positive-negative-null': { title_en: 'positive, negative and null sets', label_en: 'positive, negative and null sets', from: 'explicit' },
     'def.power': { title_en: 'integer powers', label_en: 'integer powers', from: 'explicit' },
+    'def.power-object': { title_en: 'power object', label_en: 'power object', from: 'explicit' },
     'def.power-series': { title_en: 'power series', label_en: 'power series', from: 'explicit' },
     'def.power-set': { title_en: 'power set', label_en: 'power set', from: 'aka' },
     'def.pre-analytic-ring': { title_en: 'pre-analytic ring', label_en: 'pre-analytic ring', from: 'explicit' },
@@ -14337,6 +14355,7 @@ MG.i18n = {
     'def.riemann-sphere': { title_en: 'Riemann sphere', label_en: 'Riemann sphere', from: 'aka' },
     'def.riemann-sum': { title_en: 'Riemann Sum', label_en: 'Riemann Sum', from: 'manual' },
     'def.riemann-surface': { title_en: 'Riemann surface', label_en: 'Riemann surface', from: 'explicit' },
+    'def.riemann-zeta': { title_en: 'Riemann zeta function', label_en: 'Riemann zeta function', from: 'explicit' },
     'def.riemannian-metric': { title_en: 'Riemannian Metric', label_en: 'Riemannian Metric', from: 'manual' },
     'def.right-derived-functor': { title_en: 'right derived functor', label_en: 'right derived functor', from: 'aka' },
     'def.ring': { title_en: 'ring', label_en: 'ring', from: 'aka' },
@@ -14472,14 +14491,20 @@ MG.i18n = {
     'ex.connected-lc-ext': { title_en: 'Connected Locally Compact to Discrete Has Only First Ext', label_en: 'Connected Group Ext', from: 'manual' },
     'ex.divisible-groups': { title_en: 'Examples of Divisible Groups', label_en: 'Divisible Groups', from: 'manual' },
     'ex.finite-banach-rhom': { title_en: 'Derived Hom between Finite-Dimensional Banach Spaces', label_en: 'Finite Banach RHom', from: 'manual' },
+    'ex.finite-field': { title_en: 'finite field', label_en: 'finite field', from: 'explicit' },
     'ex.flat-not-projective': { title_en: 'Flat but Not Projective', label_en: 'Flat Not Projective', from: 'manual' },
+    'ex.h1-circle': { title_en: 'homology of the circle', label_en: 'homology of the circle', from: 'explicit' },
     'ex.kan-extension': { title_en: 'Kan extensions: colimits and right adjoints', label_en: null, from: 'aka' },
     'ex.klein-bottle': { title_en: 'Klein bottle', label_en: 'Klein bottle', from: 'explicit' },
     'ex.nonlc-rhom': { title_en: 'Derived Hom in the Non-Locally-Compact Case', label_en: 'Non-Locally-Compact RHom', from: 'manual' },
     'ex.projective-plane': { title_en: 'projective plane', label_en: 'projective plane', from: 'explicit' },
+    'ex.s1-tangent-bundle': { title_en: 'tangent bundle of the circle', label_en: 'tangent bundle of the circle', from: 'explicit' },
+    'ex.sierpinski-space': { title_en: 'Sierpiński space', label_en: 'Sierpiński space', from: 'explicit' },
     'ex.solid-tensor-computations': { title_en: 'computations with solid tensor products', label_en: null, from: 'explicit' },
     'ex.sphere': { title_en: 'sphere', label_en: 'sphere', from: 'explicit' },
+    'ex.sphere-curvature': { title_en: 'curvature of a sphere', label_en: 'curvature of a sphere', from: 'explicit' },
     'ex.torus': { title_en: 'torus', label_en: 'torus', from: 'explicit' },
+    'ex.trivial-group': { title_en: 'trivial group', label_en: 'trivial group', from: 'explicit' },
     'lem.ac-subset-bv': { title_en: 'absolutely continuous implies bounded variation', label_en: null, from: 'explicit' },
     'lem.adapted-frame': { title_en: 'Adapted Frame', label_en: 'Adapted Frame', from: 'manual' },
     'lem.almost-orthogonal': { title_en: 'almost orthogonal lemma', label_en: 'almost orthogonal lemma', from: 'explicit' },
@@ -14559,6 +14584,7 @@ MG.i18n = {
     'prop.analytic-base-change': { title_en: 'base change for analytic rings', label_en: 'base change for analytic rings', from: 'explicit' },
     'prop.analytic-examples': { title_en: 'examples of analytic rings', label_en: 'examples of analytic rings', from: 'explicit' },
     'prop.baire-characterizations': { title_en: 'equivalent characterisations of Baire spaces', label_en: null, from: 'explicit' },
+    'prop.banach-as-condensed': { title_en: 'Banach spaces are condensed abelian groups', label_en: null, from: 'explicit' },
     'prop.banach-stone-acyclic': { title_en: 'Banach Groups Are Acyclic on Stone Spaces', label_en: 'Banach on Stone', from: 'manual' },
     'prop.bialgebra-examples': { title_en: 'examples of bialgebras', label_en: 'examples of bialgebras', from: 'explicit' },
     'prop.bicomplex-spectral': { title_en: 'a bicomplex gives a spectral sequence', label_en: null, from: 'explicit' },
@@ -15060,6 +15086,7 @@ MG.i18n = {
     'thm.euler-criterion': { title_en: 'Euler criterion', label_en: 'Euler criterion', from: 'explicit' },
     'thm.euler-formula': { title_en: 'Euler\'s formula', label_en: 'Euler\'s formula', from: 'explicit' },
     'thm.euler-formula-surface': { title_en: 'Euler\'s Formula for Principal Curvatures', label_en: 'Euler\'s Formula', from: 'manual' },
+    'thm.euler-product': { title_en: 'Euler product', label_en: 'Euler product', from: 'explicit' },
     'thm.euler-theorem': { title_en: 'Euler theorem', label_en: 'Euler theorem', from: 'explicit' },
     'thm.evt': { title_en: 'extreme value theorem', label_en: 'extreme value theorem', from: 'explicit' },
     'thm.exact-couple-spectral': { title_en: 'exact couples give spectral sequences', label_en: null, from: 'explicit' },
@@ -15257,6 +15284,7 @@ MG.i18n = {
     'thm.riemann-removable': { title_en: 'Riemann\'s Removable Singularity Theorem', label_en: 'Removable Singularity', from: 'manual' },
     'thm.riesz-ball-compact': { title_en: 'the closed unit ball is compact iff finite dimensional', label_en: null, from: 'explicit' },
     'thm.riesz-hilbert': { title_en: 'Riesz representation theorem for Hilbert spaces', label_en: null, from: 'explicit' },
+    'thm.riesz-markov': { title_en: 'Riesz–Markov representation theorem', label_en: null, from: 'explicit' },
     'thm.riesz-representation-lp': { title_en: 'Riesz representation theorem for Lp', label_en: null, from: 'explicit' },
     'thm.right-adjoint-criterion': { title_en: 'adjoint functor existence', label_en: 'adjoint functor existence', from: 'aka' },
     'thm.right-adjoint-preserves-limits': { title_en: 'Right Adjoints Preserve Limits', label_en: 'RAPL', from: 'manual' },
@@ -88698,6 +88726,38 @@ window.MG.packs.push({
         '⚠ 这只是类比/指向，**不是依赖**：本图没有把「$\\zeta$ 在 $\\operatorname{Re}s = 1$ 上非零」这条定理单独立节点，' +
         '所以从 $\\zeta$ 推不出素数定理；反方向也不是。要真接上，得先补 Perron 公式与 Wiener–Ikehara 那一套。',
     },
+  ],
+});
+
+</script>
+<script>
+/* ============================================================================
+   内容包 · 薄接线补洞（2026-11-04，`clustercheck --thin` 第一次扫出来的）
+   ----------------------------------------------------------------------------
+   `ex.cg-examples`（紧生成空间的例子）此前只挂了一条 `def.compactly-generated → 它`。
+   例子应该至少两条：一条指向它印证的概念，再有一条横向的（它用到的别的概念）。
+   这里补三条，都在它的正文里真的有内容支撑：
+
+     `def.locally-compact`   例 1 的假设就是「局部紧 Hausdorff」
+     `def.k-topology`        例 3 的补救：$k$-化把 $\mathbb{R}^{I}$ 换成 $k(\mathbb{R}^{I})$
+     `def.weak-hausdorff`    这一团（紧生成 + 弱 Hausdorff）的成对定义
+
+   ⚠ 为什么不把判据放宽、而是补边：一条边的例子在图上像「悬着的注记」，
+   顺着它既上不去也下不来；而例子的价值恰恰在「把定义与别的东西勾在一起」。
+   ========================================================================== */
+(window.MG = window.MG || {}).packs = window.MG.packs || [];
+window.MG.packs.push({
+  name: '薄接线补洞：紧生成空间的例子',
+
+  nodes: [],
+
+  edges: [
+    { id: 'dep.cgex-lc', kind: 'definition', definition: 'def.locally-compact', usedBy: 'ex.cg-examples',
+      note: '例 1 的假设就是「**局部紧 Hausdorff** 空间是紧生成的」—— 用到局部紧的定义（每点有紧邻域）。' },
+    { id: 'dep.cgex-ktx', kind: 'definition', definition: 'def.k-topology', usedBy: 'ex.cg-examples',
+      note: '例 3 的补救办法是 $k$-化：$\\mathbb{R}^{I}$ 不紧生成，但 $k(\\mathbb{R}^{I})$ 是 —— 用到 $k$-拓扑的定义。' },
+    { id: 'dep.cgex-wh', kind: 'definition', definition: 'def.weak-hausdorff', usedBy: 'ex.cg-examples',
+      note: '这一团讲的是「紧生成 + 弱 Hausdorff」，例 1–3 正是在这两条条件下讨论谁留在这个范畴里。' },
   ],
 });
 

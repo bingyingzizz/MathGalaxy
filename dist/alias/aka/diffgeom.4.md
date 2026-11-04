@@ -15,4 +15,10 @@
 
 - 拓扑流形 | n 维拓扑流形 → def.topological-manifold
 
+- 球面的曲率 → ex.sphere-curvature
+
+- 圆的切丛 → ex.s1-tangent-bundle
+
+- Hodge 星号 | Hodge star operator → def.hodge-star
+
 见 `../../alias.md`。

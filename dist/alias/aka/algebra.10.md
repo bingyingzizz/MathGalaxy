@@ -17,4 +17,10 @@
 
 - 群的阶 | 元素的阶 | 阶（群论） → def.group-order
 
+- 有限域 | F_p | 素域 → ex.finite-field
+
+- 平凡群 → ex.trivial-group
+
+- 狄利克雷特征标 → def.dirichlet-character
+
 见 `../../alias.md`。

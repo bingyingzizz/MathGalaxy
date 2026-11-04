@@ -29,4 +29,6 @@
 
 - 同构 | 可逆态射 | 同构映射 | isomorphic → def.isomorphism
 
+- 幂对象 | 指数对象 → def.power-object
+
 见 `../../alias.md`。
