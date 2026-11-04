@@ -12,7 +12,7 @@
    ⚠️ **通名归位**（审计 §10 第②刀）：`def.orientable-surface` 是「$\mathbb{R}^{3}$ 里被参数化覆盖的
       可定向曲面」，通名「可定向曲面」应当让给拓扑侧。这里把它改名成
       「$\mathbb{R}^{3}$ 中的可定向曲面」，两者之间**只连类比边**（外在 vs 内蕴，不是同一件事）。
-   ⚠️ 分类定理**只给骨架**：Radó 的「曲面可三角剖分」是**外部输入**（本图没有三角剖分节点），
+   ⚠️ 分类定理**只给骨架**：Radó 的「曲面可三角剖分」是**外部输入**（现在自成一个骨架节点 `thm.rado`，但本图不证它），
       所以 `status: 'skeleton'`，并在注里明说哪一步是本图没证的。
    ========================================================================== */
 (window.MG.packs = window.MG.packs || []).push({
@@ -191,9 +191,9 @@
         '- $\\dim = 4$：**不行** —— Freedman 的 $E_{8}$ 流形紧、拓扑，但不可三角剖分；',
         '- $\\dim \\ge 5$：有 Kirby–Siebenmann 的充要条件（存在一个上同调障碍，非零就不可剖分）。',
         '',
-        '⚠️ 与 `thm.simplicial-approximation` 区分：那条说的是「奇异同调 $=$ 单纯同调」，它**假设**已经有剖分；',
+        '⚠️ 与「单纯逼近定理」（奇异同调 $=$ 单纯同调）区分：那条**假设**已经有剖分；',
         '这条说的是「剖分存在」。两条常被攬在一起。',
-        '⚠️ 与 `def.smooth-manifold` 区分：光滑流形可剖分是另一个定理（Whitehead），不要拿光滑结构当既成事实。',
+        '⚠️ 与「光滑流形」区分：光滑流形可剖分是另一个定理（Whitehead），不要拿光滑结构当既成事实。',
       ].join('\n\n'),
       refs: [
         'Radó, Über den Begriff der Riemannschen Fläche (1925)',
@@ -206,6 +206,30 @@
 
   edges: [
     /* -------- 三角剖分：它的两块原料 -------- */
+    /* -------- 2026-11-04 clustercheck 抓出来的漏接（三角刨分 / Radó） -------- */
+    {
+      id: 'dep.topology-triangulation',
+      kind: 'definition',
+      definition: 'def.topology',
+      usedBy: 'def.triangulation',
+      note: '三角刨分的定义域是**拓扑空间**（同胚是有拓扑才能谈的）。' +
+        '之前这条没接，所以「拓扑空间」在三角刨分那里只是个词。',
+    },
+    {
+      id: 'dep.triangulation-eulerchar',
+      kind: 'definition',
+      definition: 'def.triangulation',
+      usedBy: 'prop.eulerchar-genus',
+      note: '“chi 与刨分无关”这条命题本身就**得先有刨分**（chi 是用刨分算出来的），' +
+        '而且它做的正是三角刨分那条注里说的「用刨分定义的量先证与刨分无关」。',
+    },
+    {
+      id: 'dep.topmanifold-rado',
+      kind: 'definition',
+      definition: 'def.topological-manifold',
+      usedBy: 'thm.rado',
+      note: 'Radó 的主角是「紧曲面」= 2 维拓扑流形 + 紧（可带边界），所以它直接用拓扑流形这条定义。',
+    },
     {
       id: 'dep.simpcomp-triangulation',
       kind: 'definition',
