@@ -51629,7 +51629,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', '微积分', '多元', '秩'],
       statement: [
-        '设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，且 Jacobi 矩阵的秩在 $U$ 上**恒等于** $r$（即 $\\operatorname{rank} Df(x) = r$ 对一切 $x \\in U$）。\n\n则对每个 $a \\in U$，存在 $a$ 附近的光滑坐标变换 $\\varphi$ 与 $f(a)$ 附近的光滑坐标变换 $\\psi$，使',
+        '设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，且 Jacobi 矩阵的秩在 $U$ 上**恒等于** $r$（即 $\\operatorname{rank} Df(x) = r$ 对一切 $x \\in U$）。\n\n则对每个 $a \\in U$，存在 $a$ 附近的 **$C^{1}$ 坐标变换** $\\varphi$ 与 $f(a)$ 附近的 **$C^{1}$ 坐标变换** $\\psi$，使（⚠ 坐标的光滑程度跟着 $f$ 走：$f \\in C^{1}$ 只给 $C^{1}$ 坐标；$f \\in C^{k}$ 给 $C^{k}$，$C^{\\infty}$ 才给光滑坐标）',
         '',
         '$$\\psi \\circ f \\circ \\varphi^{-1} (x_1, \\ldots, x_n) = (x_1, \\ldots, x_r, 0, \\ldots, 0)$$'
       ].join('\n'),
@@ -51675,7 +51675,7 @@ window.MG = window.MG || {};
         '点 $c \\in \\mathbb{R}^{m}$ 叫 $f$ 的**正则值**，当且仅当对每个 $x \\in f^{-1}(c)$，$Df(x)$ 都**满射**；\n\n' +
         '否则叫**临界值**。',
         '',
-        '若 $c$ 是正则值且 $f^{-1}(c) \\ne \\emptyset$，则 $f^{-1}(c)$ 是 $\\mathbb{R}^{n}$ 的 $n - m$ 维**子流形**：每点附近它都能写成光滑函数的图像（等价地，每点附近它能由 $m$ 个独立的方程「解出」$m$ 个坐标）。'
+        '若 $c$ 是正则值且 $f^{-1}(c) \\ne \\emptyset$，则 $f^{-1}(c)$ 是 $\\mathbb{R}^{n}$ 的 $n - m$ 维**子流形**：每点附近它都能写成**一个 $C^{1}$ 函数的图像**（等价地，每点附近它能由 $m$ 个独立的方程「解出」$m$ 个坐标）。⚠ 这里只假设了 $f \\in C^{1}$，所以得到的是 **$C^{1}$ 子流形**；若 $f$ 是 $C^{\\infty}$，同一个论证给出 $C^{\\infty}$ 子流形（正则值定理的常见叙述默认了光滑性）。'
       ].join('\n'),
       notes: '⭐ 「正则值的原像是流形」是整条微分流形理论的入口 —— 它把**解方程**变成了**描述几何对象**。\n\n⭐ 标准例题：$f(x) = \\|x\\|^{2}$（$\\mathbb{R}^{n} \\to \\mathbb{R}$）的梯度 $\\nabla f(x) = 2x$ 只在原点为零，故 $c > 0$ 是正则值，于是 $f^{-1}(c)$ 是 $(n-1)$ 维子流形 —— **球面是流形**这件事就是这么来的。\n\n⚠ $c = 0$ 是临界值（唯一临界点是原点且 $f(0) = 0$），而 $f^{-1}(0) = \\{0\\}$ 恰好是 $0$ 维流形 —— 临界值的原像**可能**仍是流形，只是定理不保证。\n\n判别一个点是正则点比判别临界点容易得多，这正是定理的实用之处。\n\n⭐ 与 `thm.sard` 合起来才有完整图景：正则值多、原像是流形、临界值零测 —— 于是「几乎每个水平集都是流形」。\n\n证明全文在边上（隐函数定理 + 局部选主元把 $f$ 的 $m$ 个分量当成坐标）。',
       refs: ['Guillemin–Pollack, Differential Topology, §1', 'Spivak, Calculus on Manifolds, Ch. 2']
@@ -51711,11 +51711,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '微积分', '流形'],
       statement: [
-        '设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}$ 是 $C^{k+2}$（$k \\ge 1$），$a$ 是 $f$ 的**非退化临界点**（即 $\\nabla f(a) = 0$ 且 $\\det H_f(a) \\ne 0$）。\n\n记 $H_f(a)$ 的负特征值个数为 $k$。\n\n则存在 $a$ 附近的光滑坐标 $u = (u_1, \\ldots, u_n)$（$u(a) = 0$）使',
+        '设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}$ 是 $C^{m+2}$（$m \\ge 1$），$a$ 是 $f$ 的**非退化临界点**（即 $\\nabla f(a) = 0$ 且 $\\det H_f(a) \\ne 0$）。\n\n记 $H_f(a)$ 的负特征值个数为 $\\lambda$（**Morse 指标**；⚠ 不要与光滑度用同一个字母）。\n\n则存在 $a$ 附近的 **$C^{m}$ 坐标** $u = (u_1, \\ldots, u_n)$（$u(a) = 0$）使（⚠ 坐标光滑度跟着 $f$ 走：$f \\in C^{m+2}$ 只给 $C^{m}$；$f$ 光滑才给光滑坐标）',
         '',
-        '$$f = f(a) - u_1^{2} - \\cdots - u_k^{2} + u_{k+1}^{2} + \\cdots + u_n^{2}$$',
+        '$$f = f(a) - u_1^{2} - \\cdots - u_{\\lambda}^{2} + u_{\\lambda+1}^{2} + \\cdots + u_n^{2}$$',
         '',
-        '$k$ 叫 $f$ 在 $a$ 的 **Morse 指数**。'
+        '$\\lambda$ 叫 $f$ 在 $a$ 的 **Morse 指数**。'
       ].join('\n'),
       notes: '⭐ 这是一条**分类定理**：非退化临界点附近，函数只由一个数字 $k$ 决定局部形状。\n\n于是「鞍点」不再是模糊的日常词，而是 $k$ 的一个取值（$k = 0$ 极小、$k = n$ 极大、$0 < k < n$ 鞍点）。\n\n⭐ 证明两步：\n1. 把 $f(x) - f(a)$ 写成 $\\sum_{i,j} h_{ij}(x)\\,(x_i - a_i)(x_j - a_j)$，其中 $h_{ij}$ 光滑且 $h_{ij}(a) = \\frac{1}{2}\\partial_i\\partial_j f(a)$ —— 做法是对 $\\varphi(t) = f(a + t(x-a))$ 用一维 Taylor 并把余项写成积分 $\\int_0^1 (1-t)\\,\\varphi\'\'(t)\\,dt$，于是 $h_{ij}$ 显式地是积分、自动光滑；\n\n\n2. 对**光滑变化的对称矩阵** $h(x)$ 做配方（Gram–Schmidt 的光滑版本），把 $\\sum h_{ij} y_i y_j$ 化成 $\\pm$ 平方和。\n\n⭐ 第 2 步里负号个数不变 —— 这正是 **Sylvester 惯性定律**（`def.quadratic-form` 那一带的二次型理论），而且它保证 $k$ 与坐标选取无关。\n\n⚠ 「非退化」不能去：$f = x^{4}$ 在原点是退化临界点，局部形状既不是 $+u^{2}$ 也不是 $-u^{2}$，Morse 引理不适用。\n\n⭐ 用途：Morse 理论（用临界点与指数重建流形的同调）—— 这是微积分通向 `homology` 那片星空的又一条路。',
       refs: ['Milnor, Morse Theory, §2', 'Guillemin–Pollack, Differential Topology, §1']
@@ -65992,7 +65992,7 @@ window.MG = window.MG || {};
         '',
         '$$(Xf)(p) := \\mathrm{d}f_{p}\\bigl(X_{p}\\bigr) = \\sum_{i} X^{i}(p)\\,\\frac{\\partial f}{\\partial x^{i}}(p),$$',
         '',
-        '于是 $X$ 是 $C^{\\infty}(M)$ 上的**导子**：$X(fg) = f\\,Xg + g\\,Xf$。反过来每个导子都来自唯一的向量场。',
+        '当 $X$ **光滑**时，$X$ 是 $C^{\\infty}(M)$ 上的**导子**：$X(fg) = f\\,Xg + g\\,Xf$；反过来每个导子都来自唯一的**光滑**向量场。⚠ 只满足 $\\pi \\circ X = \\mathrm{id}$ 的**任意截面**不行：$X = |x|\\partial_{x}$ 是截面，但取 $f = x$ 就有 $Xf = |x| \\notin C^{\\infty}$。',
         '',
         '$X$ 在 $p$ 处**为零**指 $X_{p} = 0_{p}$；$X$ 的**支集**是 $\\overline{\\{p \\in M : X_{p} \\ne 0\\}}$。'
       ].join('\n'),
