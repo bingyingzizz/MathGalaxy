@@ -1,5 +1,7 @@
 # 别名 → 节点 · 复变函数
-根 `../../`　·　索引 `../../alias.md`
+根 `../../`　·　索引 `../../alias.md`　·　问法在 `../complex.md`
+
+- 调和函数 → def.harmonic
 
 - 扩充复平面是紧的 → prop.extended-plane-compact
 

@@ -27,6 +27,7 @@ window.MG.packs.push({
       title: 'Banach（与 Hilbert）空间经 $S \\mapsto C(S,E)$ 嵌入凝聚态阿贝尔群',
       regions: ['condensed', 'analysis'],
       tags: ['命题', '凝聚态', 'Banach', '桥'],
+      status: 'skeleton',
       statement: [
         '设 $E$ 是实（或复）Banach 空间。对紧 Hausdorff 空间 $S$ 令',
         '',

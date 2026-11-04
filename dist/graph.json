@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T04:28:35.400Z",
+  "generated": "2026-11-04T04:38:10.811Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -41427,6 +41427,7 @@
    "type": "proposition",
    "label": "Banach 空间都是凝聚态阿贝尔群",
    "title": "Banach（与 Hilbert）空间经 $S \\mapsto C(S,E)$ 嵌入凝聚态阿贝尔群",
+   "status": "skeleton",
    "title_en": "Banach spaces are condensed abelian groups",
    "translations": {
     "en": {
@@ -48453,6 +48454,7 @@
    "type": "proposition",
    "label": "凝聚态集满态射的判据",
    "title": "凝聚态集的满态射",
+   "status": "skeleton",
    "label_en": "Epimorphisms",
    "title_en": "Epimorphisms of Condensed Sets",
    "translations": {

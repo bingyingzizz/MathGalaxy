@@ -1467,6 +1467,10 @@ MG.aliases = {
     { id: 'def.binary-operation', en: 'binary operation', aka: ['二元运算', '二元算子', '封闭运算'] },
     { id: 'def.group-order', en: 'order of a group', aka: ['群的阶', '元素的阶', '阶（群论）'] },
     { id: 'def.tan-cot-sec', en: 'tangent, cotangent, secant, cosecant', aka: ['正切', '余切', '正割', '余割', 'tan', 'cot', 'sec', 'csc'] },
+    { id: 'def.ruled-surface', en: 'ruled surface', aka: ['直纹面'] },
+    { id: 'def.developable-surface', en: 'developable surface', aka: ['可展曲面'] },
+    { id: 'thm.developable-iff-flat', en: 'criterion for developable surfaces', aka: ['可展的判据'] },
+    { id: 'thm.constant-gauss-curvature', en: 'surfaces of constant Gauss curvature', aka: ['常 Gauss 曲率曲面'] },
     { id: 'ex.polar-christoffel', en: 'Christoffel symbols in polar coordinates', aka: ['极坐标的 Christoffel 符号'] },
     { id: 'ex-sl2-commutator', en: 'commutator relations in sl2', aka: ['sl2 的交换子'] },
     { id: 'ex.contour-1-over-z', en: 'contour integral of 1/z', aka: ['dz/z 的围道积分'] },
@@ -1564,6 +1568,24 @@ MG.aliases = {
   /* --------------------------------------------------------- 问题钩子 */
   /* `q` 是**问法**（写成一句人话或一个说法都行），`to` 是该看的节点。 */
   hooks: [
+    /* — 日常问法：数论 / 微分几何 / 分析（2026-11-04 补，见 _tools/_hooks.mjs）— */
+    { q: '两个数为什么一定有最大公因数', to: ['thm.euclid-algorithm', 'def.gcd'] },
+    { q: '0.999… 是不是等于 1', to: ['def.real', 'thm.real-ordered-field'] },
+    { q: '为什么复变函数一次可导就无穷次可导', to: ['thm.cauchy-higher-derivative', 'def.holomorphic'] },
+    { q: '留数是怎么算出来的', to: ['def.residue', 'prop.residue-at-pole'] },
+    { q: '除以零', to: ['def.field', 'def.ring'] },
+    { q: '无穷大', to: ['def.extended-real', 'ax.inf'] },
+    { q: '为什么不能除以零', to: ['def.field', 'def.ring'] },
+    { q: '余数是怎么算出来的', to: ['thm.int-division'] },
+    { q: '为什么球面摊不平', to: ['thm.theorema-egregium', 'def.gauss-curvature'] },
+    { q: '圆柱和平面到底差在哪', to: ['ex.cylinder-first-form', 'def.gauss-curvature'] },
+    { q: '莫比乌斯带为什么只有一个面', to: ['def.mobius-band'] },
+    { q: '为什么地图画在纸上一定会变形', to: ['thm.theorema-egregium'] },
+    { q: '无穷大算不算一个数', to: ['def.extended-real', 'ax.inf'] },
+    { q: '为什么调和级数会发散', to: ['def.series', 'thm.kummer'] },
+    { q: '为什么可以用 Zorn 引理', to: ['lem.zorn', 'ax.choice'] },
+    { q: '能不能给每个集合都排个序', to: ['def.wellorder', 'thm.wellordering'] },
+    { q: '为什么曲线可以积出复数的周长', to: ['thm.cauchy-integral-formula', 'def.contour-integral'] },
     /* — 积分与极限 — */
     { q: '什么时候积分和极限能换顺序', to: ['thm.mct', 'lem.fatou', 'thm.dct', 'thm.fubini-tonelli'] },
     { q: '积分和极限交换的条件', to: ['thm.dct', 'thm.mct', 'lem.fatou'] },
