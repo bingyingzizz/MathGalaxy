@@ -354,6 +354,8 @@ window.MG = window.MG || {};
       id: 'lem.gauss-lemma',
       cluster: 'diffgeom.intrinsic',
       type: 'lemma',
+      /* 同词不同物（已核对）—— 与 lem.gauss-qr 不是同一个概念，别合并。 */
+      distinctFrom: ['lem.gauss-qr'],
       status: 'skeleton',
       label: 'Gauss 引理',
       title: 'Gauss 引理与测地极坐标',
@@ -419,6 +421,8 @@ window.MG = window.MG || {};
       id: 'def.curvature-tensor',
       cluster: 'diffgeom.intrinsic',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemann-surface 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemann-surface'],
       label: 'Riemann 曲率张量',
       title: 'Riemann 曲率张量与局部平坦性',
       regions: ['diffgeom'],

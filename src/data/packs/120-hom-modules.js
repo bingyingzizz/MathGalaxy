@@ -645,6 +645,8 @@ window.MG = window.MG || {};
       id: 'prop.divisible-quotient',
       cluster: 'hom.injective',
       type: 'proposition',
+      /* 同词不同物（已核对）—— 与 ex.divisible-groups 不是同一个概念，别合并。 */
+      distinctFrom: ['ex.divisible-groups'],
       label: '可除群的商',
       title: '可除群的商仍可除',
       regions: ['homology'],
@@ -670,6 +672,8 @@ window.MG = window.MG || {};
       id: 'ex.divisible-groups',
       cluster: 'hom.injective',
       type: 'example',
+      /* 同词不同物（已核对）—— 与 prop.divisible-quotient 不是同一个概念，别合并。 */
+      distinctFrom: ['prop.divisible-quotient'],
       label: '可除群的例子',
       title: '例子：$\\mathbb{Q}$、$\\mathbb{Q}/\\mathbb{Z}$ 与 Prüfer 群',
       regions: ['homology'],
@@ -701,6 +705,8 @@ window.MG = window.MG || {};
       id: 'thm.mod-enough-injectives',
       cluster: 'hom.injective',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.pushforward-enough-injectives 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.pushforward-enough-injectives'],
       label: '足够多内射对象',
       title: '$R\\text{-}\\mathbf{Mod}$ 有足够多的内射对象',
       regions: ['homology'],

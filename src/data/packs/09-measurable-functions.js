@@ -89,6 +89,8 @@ window.MG = window.MG || {};
       id: 'def.lebesgue-measurable',
       cluster: 'analysis.measurable',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lebesgue-set 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lebesgue-set'],
       label: 'Lebesgue 可测',
       title: 'Lebesgue 可测 / Borel 可测（$\\mathbb{R} \\to \\mathbb{C}$ 的情形）',
       regions: ['analysis'],

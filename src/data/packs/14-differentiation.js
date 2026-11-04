@@ -224,6 +224,8 @@ window.MG = window.MG || {};
       id: 'def.lebesgue-set',
       cluster: 'analysis.differentiation',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lebesgue-measurable 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lebesgue-measurable'],
       label: 'Lebesgue 集',
       title: 'Lebesgue 集 $L_f$',
       regions: ['analysis'],

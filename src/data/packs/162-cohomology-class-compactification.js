@@ -28,6 +28,8 @@ window.MG = window.MG || {};
       id: 'def.cohomology-class',
       cluster: 'hom.cohomology',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.cohomological-functor 不是同一个概念，别合并。 */
+      distinctFrom: ['def.cohomological-functor'],
       status: 'skeleton',
       label: '上同调类',
       title: '上同调类：闭链模掉边缘',

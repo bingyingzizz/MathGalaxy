@@ -271,6 +271,9 @@ function exportJSON(MG, graph) {
          ⛔ 只标「不完全」的 —— 缺省就是 complete，别把 1400 多个节点全写上。 */
       status: n.status || undefined,
       hypotheses: Array.isArray(n.hypotheses) && n.hypotheses.length ? n.hypotheses : undefined,
+      distinctFrom: Array.isArray(n.distinctFrom) && n.distinctFrom.length ? n.distinctFrom : undefined,
+      /* refs 的可信度（I4）：字符串里自认「⚠ 存疑 / 未核实」的，现算成一个字段，供检索/渲染区分。 */
+      refsStatus: (n.refs || []).some((r) => /⚠|存疑|未核实|待核|不见章号/.test(String(r))) ? 'unverified' : undefined,
       /* 英文名（T1.1）：由 src/data/i18n.js 提供、graph.js 挂到节点上。
          缺省 = 没有 ⇒ 消费方按 label_en → title_en → 中文 label 回落。 */
       label_en: n.label_en || undefined,
@@ -1476,6 +1479,8 @@ function auditContent(MG, graph) {
       const [la, a] = labs[i], [lb, b] = labs[j];
       if (a.id === b.id || !nearLabel(la, lb)) continue;
       if (adj.get(a.id).has(b.id)) continue;
+      /* 已用 distinctFrom 明确「同词不同物」⇒ 不再是噪音（I3）。 */
+      if ((a.distinctFrom || []).includes(b.id) || (b.distinctFrom || []).includes(a.id)) continue;
       nearPairs.push([a, b]);
     }
   }

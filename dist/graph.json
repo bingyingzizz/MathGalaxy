@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T02:46:04.802Z",
+  "generated": "2026-11-04T02:52:18.753Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -6021,6 +6021,9 @@
    "type": "definition",
    "label": "Lebesgue 可测",
    "title": "Lebesgue 可测 / Borel 可测（$\\mathbb{R} \\to \\mathbb{C}$ 的情形）",
+   "distinctFrom": [
+    "def.lebesgue-set"
+   ],
    "label_en": "Lebesgue measurable set",
    "title_en": "Lebesgue measurable set",
    "translations": {
@@ -15816,6 +15819,9 @@
    "type": "proposition",
    "label": "可除群的商",
    "title": "可除群的商仍可除",
+   "distinctFrom": [
+    "ex.divisible-groups"
+   ],
    "label_en": "Divisible Quotients",
    "title_en": "Quotients of Divisible Groups",
    "translations": {
@@ -15859,6 +15865,9 @@
    "type": "example",
    "label": "可除群的例子",
    "title": "例子：$\\mathbb{Q}$、$\\mathbb{Q}/\\mathbb{Z}$ 与 Prüfer 群",
+   "distinctFrom": [
+    "prop.divisible-quotient"
+   ],
    "label_en": "Divisible Groups",
    "title_en": "Examples of Divisible Groups",
    "translations": {
@@ -15902,6 +15911,9 @@
    "type": "theorem",
    "label": "足够多内射对象",
    "title": "$R\\text{-}\\mathbf{Mod}$ 有足够多的内射对象",
+   "distinctFrom": [
+    "thm.pushforward-enough-injectives"
+   ],
    "label_en": "Enough Injectives",
    "title_en": "Modules Have Enough Injectives",
    "translations": {
@@ -17702,6 +17714,9 @@
    "type": "theorem",
    "label": "足够多内射层",
    "title": "阿贝尔层范畴有足够多内射对象",
+   "distinctFrom": [
+    "thm.mod-enough-injectives"
+   ],
    "label_en": "Enough Injectives",
    "title_en": "Abelian Sheaves Have Enough Injectives",
    "translations": {
@@ -17914,6 +17929,9 @@
    "type": "definition",
    "label": "étale 空间",
    "title": "étale 空间（espace étalé）",
+   "distinctFrom": [
+    "def.etale-sheaf"
+   ],
    "label_en": "Étale Space",
    "title_en": "Étale Space",
    "translations": {
@@ -17957,6 +17975,9 @@
    "type": "definition",
    "label": "étale 层",
    "title": "$X_{\\text{et}}$ 上的 étale 层",
+   "distinctFrom": [
+    "def.etale-space"
+   ],
    "label_en": "Étale Sheaf",
    "title_en": "Étale Sheaf",
    "translations": {
@@ -19029,6 +19050,9 @@
    "type": "lemma",
    "label": "第二基本形式对称",
    "title": "第二基本形式的系数矩阵对称",
+   "distinctFrom": [
+    "def.second-fundamental-form"
+   ],
    "label_en": "Second Form Symmetry",
    "title_en": "Symmetry of the Second Fundamental Form",
    "translations": {
@@ -19198,6 +19222,9 @@
    "type": "definition",
    "label": "第二基本形式",
    "title": "第二基本形式",
+   "distinctFrom": [
+    "lem.second-form-symmetric"
+   ],
    "label_en": "Second Fundamental Form",
    "title_en": "Second Fundamental Form",
    "translations": {
@@ -19495,6 +19522,9 @@
    "type": "theorem",
    "label": "Euler 公式",
    "title": "Euler 公式",
+   "distinctFrom": [
+    "thm.euler-formula"
+   ],
    "label_en": "Euler's Formula",
    "title_en": "Euler's Formula for Principal Curvatures",
    "translations": {
@@ -20094,6 +20124,9 @@
    "label": "Gauss 引理",
    "title": "Gauss 引理与测地极坐标",
    "status": "skeleton",
+   "distinctFrom": [
+    "lem.gauss-qr"
+   ],
    "label_en": "Gauss's Lemma",
    "title_en": "Gauss's Lemma",
    "translations": {
@@ -20179,6 +20212,9 @@
    "type": "definition",
    "label": "Riemann 曲率张量",
    "title": "Riemann 曲率张量与局部平坦性",
+   "distinctFrom": [
+    "def.riemann-surface"
+   ],
    "label_en": "Riemann Tensor",
    "title_en": "Riemann Curvature Tensor",
    "translations": {
@@ -20930,6 +20966,9 @@
    "type": "definition",
    "label": "Riemann 度量",
    "title": "Riemann 度量",
+   "distinctFrom": [
+    "def.riemann-sum"
+   ],
    "label_en": "Riemannian Metric",
    "title_en": "Riemannian Metric",
    "translations": {
@@ -21525,6 +21564,9 @@
    "type": "definition",
    "label": "绝对连续",
    "title": "绝对连续（Absolute Continuity $\\nu \\ll \\mu$）",
+   "distinctFrom": [
+    "def.ac-function"
+   ],
    "label_en": "absolutely continuous",
    "title_en": "absolutely continuous",
    "translations": {
@@ -22567,6 +22609,9 @@
    "type": "theorem",
    "label": "Cauchy 不等式",
    "title": "定理：Cauchy 不等式",
+   "distinctFrom": [
+    "def.cauchy-sequence"
+   ],
    "label_en": "Cauchy's Inequality",
    "title_en": "Cauchy's Inequality",
    "translations": {
@@ -23318,6 +23363,9 @@
    "type": "definition",
    "label": "Lie 括号",
    "title": "向量场的 Lie 括号",
+   "distinctFrom": [
+    "def.lie-group"
+   ],
    "label_en": "Lie Bracket",
    "title_en": "Lie Bracket",
    "translations": {
@@ -23877,6 +23925,11 @@
    "type": "definition",
    "label": "Lie 群",
    "title": "Lie 群",
+   "distinctFrom": [
+    "def.lie-bracket",
+    "def.lie-algebra",
+    "def.lie-derivative"
+   ],
    "label_en": "Lie Group",
    "title_en": "Lie Group",
    "translations": {
@@ -23920,6 +23973,9 @@
    "type": "definition",
    "label": "Lie 代数",
    "title": "Lie 代数",
+   "distinctFrom": [
+    "def.lie-group"
+   ],
    "label_en": "Lie Algebra",
    "title_en": "Lie Algebra",
    "translations": {
@@ -25037,6 +25093,10 @@
    "type": "definition",
    "label": "Riemann 曲面",
    "title": "定义：Riemann 曲面（多值函数的「定义域」）",
+   "distinctFrom": [
+    "def.curvature-tensor",
+    "def.riemann-sum"
+   ],
    "label_en": "Riemann surface",
    "title_en": "Riemann surface",
    "translations": {
@@ -26119,6 +26179,9 @@
    "type": "definition",
    "label": "Lie 导数",
    "title": "Lie 导数",
+   "distinctFrom": [
+    "def.lie-group"
+   ],
    "label_en": "Lie derivative",
    "title_en": "Lie derivative",
    "translations": {
@@ -27788,6 +27851,9 @@
    "type": "definition",
    "label": "Lebesgue 集",
    "title": "Lebesgue 集 $L_f$",
+   "distinctFrom": [
+    "def.lebesgue-measurable"
+   ],
    "label_en": "Lebesgue point",
    "title_en": "Lebesgue point",
    "translations": {
@@ -28556,6 +28622,7 @@
    "label": "van Kampen 定理",
    "title": "Seifert–van Kampen：把 $\\pi_{1}$ 从两块拼起来",
    "status": "skeleton",
+   "refsStatus": "unverified",
    "label_en": "van Kampen theorem",
    "title_en": "van Kampen theorem",
    "translations": {
@@ -31417,6 +31484,9 @@
    "type": "lemma",
    "label": "Gauss 引理（二次剩余）",
    "title": "Gauss 引理：$\\left(\\frac{a}{p}\\right) = (-1)^{\\mu}$",
+   "distinctFrom": [
+    "lem.gauss-lemma"
+   ],
    "title_en": "Gauss lemma on quadratic residues",
    "translations": {
     "en": {
@@ -32237,6 +32307,9 @@
    "type": "definition",
    "label": "绝对连续函数",
    "title": "绝对连续函数",
+   "distinctFrom": [
+    "def.absolute-continuity"
+   ],
    "label_en": "absolutely continuous function",
    "title_en": "absolutely continuous function",
    "translations": {
@@ -32639,6 +32712,7 @@
    "type": "definition",
    "label": "局部平凡化",
    "title": "局部平凡化：把丛的一块摊平成一个乘积",
+   "refsStatus": "unverified",
    "label_en": "Local Trivialization",
    "title_en": "Local Trivialization",
    "statement_en": "**What it does**: this is the whole reason a bundle is called a bundle — locally it can always be flattened into a product. The clause \"every point has a neighbourhood such that…\" in the definitions of fiber bundles, vector bundles, principal bundles and covering spaces is exactly this statement.\n\nLet $\\pi : E\\to B$ be a continuous surjection, $F$ a topological space and $U\\subseteq B$ an open set. A continuous map\n\n$$\\Phi : \\pi^{-1}(U)\\longrightarrow U\\times F$$\n\nis called a **local trivialization** of $\\pi$ over $U$ if $\\Phi$ is a homeomorphism and commutes with the projection:\n\n$$\\operatorname{pr}_{1}\\circ\\Phi = \\pi .$$\n\nThus $\\Phi$ flattens the piece of the bundle over $U$ into the **trivial product** $U\\times F$: each fiber $E_{b} := \\pi^{-1}(b)$ is sent to $\\{b\\}\\times F$, and is therefore homeomorphic to $F$. If every point of $B$ has such an open neighbourhood with a local trivialization, $\\pi$ is called **locally trivial**.\n\n**Smooth case**: when $E, B, F$ are smooth manifolds and $\\pi$ is smooth, one replaces \"homeomorphism\" by \"**diffeomorphism**\" in the definition; that is the local trivialization of a smooth bundle — without it even the tangent bundle would not be a smooth bundle.",
@@ -32738,6 +32812,7 @@
    "type": "definition",
    "label": "主丛",
    "title": "主丛：纤维就是结构群本身的纤维丛",
+   "refsStatus": "unverified",
    "label_en": "Principal Bundle",
    "title_en": "Principal Bundle",
    "statement_en": "**What it says**: the most self-referential class of fiber bundles — the fiber is not an arbitrary manifold but the structure group $G$ itself, and $G$ acts freely on the bundle from the right. Every vector bundle can be built from a principal bundle (by taking an associated bundle).\n\nLet $G$ be a Lie group, $P, B$ smooth manifolds and $\\pi : P\\to B$ smooth. A **principal $G$-bundle** over $P$ is the fiber bundle $\\pi$ together with a **right action** of $G$ on $P$\n\n$$P\\times G\\longrightarrow P,\\qquad (u,g)\\longmapsto u\\cdot g ,$$\n\nsuch that\n\n1. **fibers are preserved**: $\\pi(u\\cdot g) = \\pi(u)$;\n2. **the action is free and transitive on each fiber**: $u\\cdot g = u \\iff g = e$, and any two points of the same fiber $P_{b}$ differ by a right multiplication (so $P_{b}$ is homeomorphic to $G$);\n3. **it is locally trivial and $G$-equivariant**: every point has a neighbourhood $U$ and a diffeomorphism $\\Phi : \\pi^{-1}(U)\\to U\\times G$, written $\\Phi(u) = \\bigl(\\pi(u),\\varphi(u)\\bigr)$, satisfying\n\n$$\\Phi(u\\cdot g) = \\bigl(\\pi(u),\\ \\varphi(u)\\,g\\bigr).$$\n\nThe fiber is then $G$ (right multiplication $g\\mapsto hg$ carries it into itself), and so is the structure group $G$. The **frame bundle** gives the most used examples: for a vector bundle $E\\to B$ of rank $k$, the bundle of frames is a principal $\\operatorname{GL}(k,\\mathbb{R})$-bundle — this is the bridge between vector bundles and principal bundles.",
@@ -33473,6 +33548,7 @@
    "type": "definition",
    "label": "迷向子空间",
    "title": "迷向子空间：整块都互相正交的子空间",
+   "refsStatus": "unverified",
    "label_en": "Isotropic Subspace",
    "title_en": "Isotropic Subspace",
    "translations": {
@@ -33516,6 +33592,7 @@
    "type": "definition",
    "label": "双曲平面",
    "title": "双曲平面：最标准的一块迷向构件",
+   "refsStatus": "unverified",
    "label_en": "Hyperbolic Plane",
    "title_en": "Hyperbolic Plane",
    "translations": {
@@ -33646,6 +33723,7 @@
    "type": "theorem",
    "label": "Witt 消去定理",
    "title": "Witt 消去：非退化型的分解是唯一的",
+   "refsStatus": "unverified",
    "label_en": "Witt Cancellation Theorem",
    "title_en": "Witt Cancellation Theorem",
    "translations": {
@@ -33903,6 +33981,10 @@
    "type": "definition",
    "label": "矩阵范数",
    "title": "矩阵范数与算子范数",
+   "distinctFrom": [
+    "prop.matrix-category"
+   ],
+   "refsStatus": "unverified",
    "label_en": "Matrix Norm",
    "title_en": "Matrix Norm",
    "translations": {
@@ -33987,6 +34069,7 @@
    "type": "theorem",
    "label": "QR 分解",
    "title": "QR 分解：把列正交化写成三角矩阵",
+   "refsStatus": "unverified",
    "label_en": "QR Decomposition",
    "title_en": "QR Decomposition",
    "translations": {
@@ -34029,6 +34112,7 @@
    "type": "theorem",
    "label": "最小二乘",
    "title": "最小二乘：无解时求最近的解",
+   "refsStatus": "unverified",
    "label_en": "Least Squares",
    "title_en": "Least Squares",
    "translations": {
@@ -34072,6 +34156,7 @@
    "type": "definition",
    "label": "伪逆",
    "title": "Moore–Penrose 伪逆：不可逆矩阵的「逆」",
+   "refsStatus": "unverified",
    "label_en": "Moore-Penrose Pseudoinverse",
    "title_en": "Moore-Penrose Pseudoinverse",
    "translations": {
@@ -34115,6 +34200,7 @@
    "type": "definition",
    "label": "辛形式",
    "title": "辛形式：非退化交错双线性型",
+   "refsStatus": "unverified",
    "label_en": "Symplectic Form",
    "title_en": "Symplectic Form",
    "translations": {
@@ -34158,6 +34244,7 @@
    "type": "definition",
    "label": "辛基",
    "title": "辛基：让辛形式变成标准形的那组基",
+   "refsStatus": "unverified",
    "label_en": "Symplectic Basis",
    "title_en": "Symplectic Basis",
    "translations": {
@@ -34202,6 +34289,7 @@
    "label": "辛标准形定理",
    "title": "辛标准形定理：维数必偶，且总有辛基",
    "status": "skeleton",
+   "refsStatus": "unverified",
    "label_en": "Symplectic Normal Form Theorem",
    "title_en": "Symplectic Normal Form Theorem",
    "translations": {
@@ -34245,6 +34333,7 @@
    "type": "definition",
    "label": "Lagrange 子空间",
    "title": "Lagrange 子空间：维数刚好一半的极大迷向子空间",
+   "refsStatus": "unverified",
    "label_en": "Lagrangian Subspace",
    "title_en": "Lagrangian Subspace",
    "translations": {
@@ -34288,6 +34377,7 @@
    "type": "definition",
    "label": "辛矩阵与辛群",
    "title": "辛矩阵与辛群 $\\mathrm{Sp}(2n)$",
+   "refsStatus": "unverified",
    "title_en": "Symplectic Matrix and Symplectic Group",
    "translations": {
     "en": {
@@ -34373,6 +34463,7 @@
    "type": "definition",
    "label": "辛流形",
    "title": "辛流形：闭的非退化 2-形式",
+   "refsStatus": "unverified",
    "label_en": "Symplectic Manifold",
    "title_en": "Symplectic Manifold",
    "translations": {
@@ -34417,6 +34508,7 @@
    "label": "Darboux 定理",
    "title": "Darboux 定理：辛流形局部都长一样",
    "status": "skeleton",
+   "refsStatus": "unverified",
    "label_en": "Darboux’s Theorem",
    "title_en": "Darboux’s Theorem",
    "translations": {
@@ -34460,6 +34552,7 @@
    "type": "definition",
    "label": "Hamilton 向量场",
    "title": "Hamilton 向量场：由函数生出流",
+   "refsStatus": "unverified",
    "label_en": "Hamiltonian Vector Field",
    "title_en": "Hamiltonian Vector Field",
    "translations": {
@@ -34503,6 +34596,7 @@
    "type": "definition",
    "label": "Poisson 括号",
    "title": "Poisson 括号：函数之间的辛配对",
+   "refsStatus": "unverified",
    "label_en": "Poisson Bracket",
    "title_en": "Poisson Bracket",
    "translations": {
@@ -34546,6 +34640,7 @@
    "type": "definition",
    "label": "Lagrange 子流形",
    "title": "Lagrange 子流形：维数刚好一半的辛子流形",
+   "refsStatus": "unverified",
    "label_en": "Lagrangian Submanifold",
    "title_en": "Lagrangian Submanifold",
    "translations": {
@@ -34589,6 +34684,7 @@
    "type": "definition",
    "label": "Lagrange 括号",
    "title": "Lagrange 括号：Poisson 括号的逆矩阵",
+   "refsStatus": "unverified",
    "label_en": "Lagrange Bracket",
    "title_en": "Lagrange Bracket",
    "translations": {
@@ -34632,6 +34728,7 @@
    "type": "definition",
    "label": "T0 空间",
    "title": "T0 空间（Kolmogorov）：点可被开集区分",
+   "refsStatus": "unverified",
    "label_en": "T0 Space",
    "title_en": "T0 Space",
    "translations": {
@@ -34675,6 +34772,7 @@
    "type": "definition",
    "label": "T1 空间",
    "title": "T1 空间（Fréchet）：单点是闭集",
+   "refsStatus": "unverified",
    "label_en": "T1 Space",
    "title_en": "T1 Space",
    "translations": {
@@ -34718,6 +34816,7 @@
    "type": "definition",
    "label": "内部",
    "title": "内部：闭包的对偶",
+   "refsStatus": "unverified",
    "label_en": "Interior",
    "title_en": "Interior",
    "translations": {
@@ -34761,6 +34860,7 @@
    "type": "definition",
    "label": "T3 空间",
    "title": "T3：单点与闭集可以分开",
+   "refsStatus": "unverified",
    "label_en": "T3 Space",
    "title_en": "T3 Space",
    "translations": {
@@ -34804,6 +34904,7 @@
    "type": "definition",
    "label": "正则空间",
    "title": "正则空间 = $T_{3} + T_{1}$",
+   "refsStatus": "unverified",
    "label_en": "Regular Space",
    "title_en": "Regular Space",
    "translations": {
@@ -34847,6 +34948,7 @@
    "type": "definition",
    "label": "T3.5 空间",
    "title": "T3.5：单点与闭集可由连续函数分开",
+   "refsStatus": "unverified",
    "label_en": "T3.5 Space",
    "title_en": "T3.5 Space",
    "translations": {
@@ -34890,6 +34992,7 @@
    "type": "definition",
    "label": "完全正则空间",
    "title": "完全正则空间 = $T_{3.5} + T_{1}$（Tychonoff 空间）",
+   "refsStatus": "unverified",
    "label_en": "Completely Regular Space",
    "title_en": "Completely Regular Space",
    "translations": {
@@ -34934,6 +35037,7 @@
    "type": "definition",
    "label": "完全正规空间",
    "title": "完全正规空间（T5）：连子空间都正规",
+   "refsStatus": "unverified",
    "label_en": "Completely Normal Space",
    "title_en": "Completely Normal Space",
    "translations": {
@@ -34978,6 +35082,7 @@
    "label": "完美正规空间",
    "title": "完美正规空间（T6）：每个闭集都可数交开集",
    "status": "skeleton",
+   "refsStatus": "unverified",
    "label_en": "Perfectly Normal Space",
    "title_en": "Perfectly Normal Space",
    "translations": {
@@ -35022,6 +35127,7 @@
    "type": "definition",
    "label": "闭链",
    "title": "闭链与上闭链：被微分杀掉的元素",
+   "refsStatus": "unverified",
    "label_en": "Cycles and Cocycles",
    "title_en": "Cycles and Cocycles",
    "translations": {
@@ -35065,6 +35171,7 @@
    "type": "definition",
    "label": "边缘",
    "title": "边缘与上边缘：被微分打出来的元素",
+   "refsStatus": "unverified",
    "label_en": "Boundaries and Coboundaries",
    "title_en": "Boundaries and Coboundaries",
    "translations": {
@@ -35878,6 +35985,7 @@
    "type": "definition",
    "label": "闭形式",
    "title": "闭形式：外微分为零的微分形式",
+   "refsStatus": "unverified",
    "label_en": "Closed Form",
    "title_en": "Closed Form",
    "translations": {
@@ -35921,6 +36029,7 @@
    "type": "definition",
    "label": "恰当形式",
    "title": "恰当形式：某个形式的微分",
+   "refsStatus": "unverified",
    "label_en": "Exact Form",
    "title_en": "Exact Form",
    "translations": {
@@ -35965,6 +36074,7 @@
    "label": "有理标准形",
    "title": "有理标准形：任意域上都成立的标准形",
    "status": "skeleton",
+   "refsStatus": "unverified",
    "label_en": "Rational Canonical Form",
    "title_en": "Rational Canonical Form",
    "translations": {
@@ -36008,6 +36118,7 @@
    "type": "definition",
    "label": "域的特征",
    "title": "域的特征：$1$ 加多少次回到 $0$",
+   "refsStatus": "unverified",
    "label_en": "Characteristic of a Field",
    "title_en": "Characteristic of a Field",
    "translations": {
@@ -37210,6 +37321,10 @@
    "label": "上同调类",
    "title": "上同调类：闭链模掉边缘",
    "status": "skeleton",
+   "distinctFrom": [
+    "def.cohomological-functor"
+   ],
+   "refsStatus": "unverified",
    "label_en": "Cohomology Class",
    "title_en": "Cohomology Class",
    "translations": {
@@ -37253,6 +37368,7 @@
    "type": "definition",
    "label": "零调复形",
    "title": "零调复形：同调处处为零",
+   "refsStatus": "unverified",
    "label_en": "Acyclic Complex",
    "title_en": "Acyclic Complex",
    "translations": {
@@ -37296,6 +37412,7 @@
    "type": "definition",
    "label": "紧化",
    "title": "紧化：把空间塞进紧空间里",
+   "refsStatus": "unverified",
    "label_en": "Compactification",
    "title_en": "Compactification",
    "translations": {
@@ -37339,6 +37456,7 @@
    "type": "definition",
    "label": "一点紧化",
    "title": "一点紧化：只补一个无穷远点",
+   "refsStatus": "unverified",
    "label_en": "One-Point Compactification",
    "title_en": "One-Point Compactification",
    "translations": {
@@ -37382,6 +37500,7 @@
    "type": "definition",
    "label": "网",
    "title": "网与网的收敛：一般拓扑里的序列",
+   "refsStatus": "unverified",
    "label_en": "Net",
    "title_en": "Net",
    "translations": {
@@ -37425,6 +37544,7 @@
    "type": "definition",
    "label": "滤子",
    "title": "滤子与超滤子：收敛的另一套语言",
+   "refsStatus": "unverified",
    "label_en": "Filter and Ultrafilter",
    "title_en": "Filter and Ultrafilter",
    "translations": {
@@ -38424,6 +38544,7 @@
    "type": "definition",
    "label": "帧丛",
    "title": "帧丛：把向量丛变成主 $\\mathrm{GL}(k)$-丛",
+   "refsStatus": "unverified",
    "label_en": "Frame Bundle",
    "title_en": "Frame Bundle",
    "translations": {
@@ -38467,6 +38588,7 @@
    "type": "definition",
    "label": "配丛",
    "title": "配丛：主 $G$-丛配上一个 $G$-作用得到的新丛",
+   "refsStatus": "unverified",
    "label_en": "Associated Bundle",
    "title_en": "Associated Bundle",
    "translations": {
@@ -38640,6 +38762,7 @@
    "type": "definition",
    "label": "结构群",
    "title": "结构群：转移函数允许落在哪个群",
+   "refsStatus": "unverified",
    "label_en": "Structure Group",
    "title_en": "Structure Group",
    "translations": {
@@ -48159,6 +48282,9 @@
    "type": "definition",
    "label": "上同调函子",
    "title": "上同调函子",
+   "distinctFrom": [
+    "def.cohomology-class"
+   ],
    "label_en": "cohomological functor",
    "title_en": "cohomological functor",
    "translations": {
@@ -61553,6 +61679,9 @@
    "type": "proposition",
    "label": "矩阵范畴",
    "title": "命题：$\\operatorname{Mat}(k)$ 是小范畴，与有限维向量空间等价",
+   "distinctFrom": [
+    "def.matrix-norm"
+   ],
    "label_en": "the matrix category",
    "title_en": "the matrix category",
    "translations": {
@@ -62483,6 +62612,10 @@
    "type": "definition",
    "label": "Cauchy 列",
    "title": "Cauchy 列",
+   "distinctFrom": [
+    "thm.cauchy-inequality",
+    "thm.series-product"
+   ],
    "label_en": "Cauchy sequence",
    "title_en": "Cauchy sequence",
    "translations": {
@@ -63757,6 +63890,11 @@
    "type": "definition",
    "label": "Riemann 和",
    "title": "Riemann 和（标记和）",
+   "distinctFrom": [
+    "def.riemannian-metric",
+    "def.riemann-surface",
+    "def.riemann-integrable"
+   ],
    "label_en": "Riemann Sum",
    "title_en": "Riemann Sum",
    "translations": {
@@ -63835,6 +63973,9 @@
    "type": "definition",
    "label": "Riemann 可积",
    "title": "Riemann 可积与积分 $\\int_a^b f$",
+   "distinctFrom": [
+    "def.riemann-sum"
+   ],
    "label_en": "Riemann Integrable",
    "title_en": "Riemann Integrable Function",
    "translations": {
@@ -64915,6 +65056,9 @@
    "type": "theorem",
    "label": "Cauchy 乘积",
    "title": "定理：绝对收敛级数的 Cauchy 乘积",
+   "distinctFrom": [
+    "def.cauchy-sequence"
+   ],
    "label_en": "Cauchy product of series",
    "title_en": "Cauchy product of series",
    "translations": {
@@ -65594,6 +65738,9 @@
    "type": "theorem",
    "label": "Euler 公式",
    "title": "定理：$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$",
+   "distinctFrom": [
+    "thm.euler-formula-surface"
+   ],
    "label_en": "Euler's formula",
    "title_en": "Euler's formula",
    "translations": {

@@ -39,6 +39,8 @@
       status: n.status || null,
       /* 假设（T14/I6）：受控词表在 src/data/hypotheses.js；只标「陈述里真的作为假设出现」的。 */
       hypotheses: Array.isArray(n.hypotheses) ? n.hypotheses.slice() : [],
+      /* 同词不同物标记（I3）：与这些 id 名字像但**不是**同一个概念（已人工核对）。 */
+      distinctFrom: Array.isArray(n.distinctFrom) ? n.distinctFrom.slice() : [],
       pack: packName,
       /* 布局结果 */
       x: 0, y: 0,

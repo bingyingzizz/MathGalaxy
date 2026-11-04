@@ -306,6 +306,14 @@ function cmdShow(ids, opt) {
     }
     if (n.tags && n.tags.length) console.log(C.dim('tags: ' + n.tags.join(' / ')));
     /* 假设（T14/I6）：按假设检索是研究者最常用的一维 */
+    /* I3：同词不同物（名字像但不是同一个概念）—— 研究者最容易引错的地方 */
+    if (n.distinctFrom && n.distinctFrom.length) {
+      console.log(C.dim('同词不同物: ' + n.distinctFrom.join(' / ') + '（别合并、别互相引）'));
+    }
+    /* I4：refs 里自认「存疑 / 未核实」的，写论文前要回查原书 */
+    if (n.refsStatus === 'unverified') {
+      console.log(C.y('⚠ refs: 至少一条自认未核实（存疑 / 待核），引用前请回查原书'));
+    }
     if (n.hypotheses && n.hypotheses.length) {
       console.log(C.dim('假设: ' + n.hypotheses.join(' / ')));
     }

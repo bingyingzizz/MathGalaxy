@@ -298,9 +298,9 @@
         }
       });
 
-      html += section(tf('由本节点推出的结论（{n}）', { n: out.length }),
+      html += section(tf('往下推 → 本节点推出它们（{n}）', { n: out.length }),
         listOrNone(out, tf('暂无')));
-      html += section(tf('推出本节点的结论（{n}）', { n: inc.length }),
+      html += section(tf('往上追 ← 它们推出本节点（{n}）', { n: inc.length }),
         listOrNone(inc, tf('暂无（可能是原始公理或定义）')));
       html += section(tf('等价命题（{n}）', { n: eqs.length }),
         listOrNone(eqs, tf('暂无')));

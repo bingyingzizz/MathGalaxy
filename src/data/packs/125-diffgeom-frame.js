@@ -207,6 +207,8 @@ window.MG = window.MG || {};
       id: 'lem.second-form-symmetric',
       cluster: 'diffgeom.frame',
       type: 'lemma',
+      /* 同词不同物（已核对）—— 与 def.second-fundamental-form 不是同一个概念，别合并。 */
+      distinctFrom: ['def.second-fundamental-form'],
       label: '第二基本形式对称',
       title: '第二基本形式的系数矩阵对称',
       regions: ['diffgeom'],
@@ -335,6 +337,8 @@ window.MG = window.MG || {};
       id: 'def.second-fundamental-form',
       cluster: 'diffgeom.surface',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 lem.second-form-symmetric 不是同一个概念，别合并。 */
+      distinctFrom: ['lem.second-form-symmetric'],
       label: '第二基本形式',
       title: '第二基本形式',
       regions: ['diffgeom'],
@@ -548,6 +552,8 @@ window.MG = window.MG || {};
       id: 'thm.euler-formula-surface',
       cluster: 'diffgeom.surface',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.euler-formula 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.euler-formula'],
       label: 'Euler 公式',
       title: 'Euler 公式',
       regions: ['diffgeom'],

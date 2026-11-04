@@ -319,6 +319,8 @@ window.MG = window.MG || {};
       id: 'def.cohomological-functor',
       cluster: 'hom.cohomology',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.cohomology-class 不是同一个概念，别合并。 */
+      distinctFrom: ['def.cohomology-class'],
       label: '上同调函子',
       title: '上同调函子',
       regions: ['homology'],

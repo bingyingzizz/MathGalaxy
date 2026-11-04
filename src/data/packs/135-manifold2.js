@@ -704,6 +704,8 @@ window.MG = window.MG || {};
       id: 'def.lie-derivative',
       cluster: 'diffgeom.vector',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-group 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-group'],
       label: 'Lie 导数',
       title: 'Lie 导数',
       regions: ['diffgeom'],

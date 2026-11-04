@@ -46,6 +46,8 @@ window.MG = window.MG || {};
       id: 'def.riemann-sum',
       cluster: 'analysis.riemann',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemannian-metric / def.riemann-surface / def.riemann-integrable 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemannian-metric', 'def.riemann-surface', 'def.riemann-integrable'],
       label: 'Riemann 和',
       title: 'Riemann 和（标记和）',
       regions: ['analysis'],
@@ -84,6 +86,8 @@ window.MG = window.MG || {};
       id: 'def.riemann-integrable',
       cluster: 'analysis.riemann',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemann-sum 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemann-sum'],
       label: 'Riemann 可积',
       title: 'Riemann 可积与积分 $\\int_a^b f$',
       regions: ['analysis'],

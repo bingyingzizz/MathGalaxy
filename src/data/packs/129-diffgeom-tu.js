@@ -533,6 +533,8 @@ window.MG = window.MG || {};
       id: 'def.riemannian-metric',
       cluster: 'diffgeom.intrinsic',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemann-sum 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemann-sum'],
       label: 'Riemann 度量',
       title: 'Riemann 度量',
       regions: ['diffgeom'],

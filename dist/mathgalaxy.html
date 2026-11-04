@@ -2860,6 +2860,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
       status: n.status || null,
       /* 假设（T14/I6）：受控词表在 src/data/hypotheses.js；只标「陈述里真的作为假设出现」的。 */
       hypotheses: Array.isArray(n.hypotheses) ? n.hypotheses.slice() : [],
+      /* 同词不同物标记（I3）：与这些 id 名字像但**不是**同一个概念（已人工核对）。 */
+      distinctFrom: Array.isArray(n.distinctFrom) ? n.distinctFrom.slice() : [],
       pack: packName,
       /* 布局结果 */
       x: 0, y: 0,
@@ -9767,9 +9769,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
         }
       });
 
-      html += section(tf('由本节点推出的结论（{n}）', { n: out.length }),
+      html += section(tf('往下推 → 本节点推出它们（{n}）', { n: out.length }),
         listOrNone(out, tf('暂无')));
-      html += section(tf('推出本节点的结论（{n}）', { n: inc.length }),
+      html += section(tf('往上追 ← 它们推出本节点（{n}）', { n: inc.length }),
         listOrNone(inc, tf('暂无（可能是原始公理或定义）')));
       html += section(tf('等价命题（{n}）', { n: eqs.length }),
         listOrNone(eqs, tf('暂无')));
@@ -17435,8 +17437,8 @@ MG.uiEn = {
     '被推出': 'implied by',
     '推出': 'implies',
     '用于': 'used by',
-    '由本节点推出的结论（{n}）': 'Consequences of this node ({n})',
-    '推出本节点的结论（{n}）': 'What implies this node ({n})',
+    '往下推 → 本节点推出它们（{n}）': 'Downstream → consequences of this node ({n})',
+    '往上追 ← 它们推出本节点（{n}）': 'Upstream ← what implies this node ({n})',
     '等价命题（{n}）': 'Equivalent statements ({n})',
     '类比 / 思想相通（{n}）': 'Analogies / shared ideas ({n})',
     '⚠️ 弱边：不是逻辑蕴含，只提供联想线索': '⚠️ Weak edge: not a logical implication, only a hint for inspiration',
@@ -21338,6 +21340,8 @@ window.MG = window.MG || {};
       id: 'def.lebesgue-measurable',
       cluster: 'analysis.measurable',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lebesgue-set 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lebesgue-set'],
       label: 'Lebesgue 可测',
       title: 'Lebesgue 可测 / Borel 可测（$\\mathbb{R} \\to \\mathbb{C}$ 的情形）',
       regions: ['analysis'],
@@ -23532,6 +23536,8 @@ window.MG = window.MG || {};
       id: 'def.absolute-continuity',
       cluster: 'analysis.signed',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.ac-function 不是同一个概念，别合并。 */
+      distinctFrom: ['def.ac-function'],
       label: '绝对连续',
       title: '绝对连续（Absolute Continuity $\\nu \\ll \\mu$）',
       regions: ['analysis'],
@@ -24395,6 +24401,8 @@ window.MG = window.MG || {};
       id: 'def.lebesgue-set',
       cluster: 'analysis.differentiation',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lebesgue-measurable 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lebesgue-measurable'],
       label: 'Lebesgue 集',
       title: 'Lebesgue 集 $L_f$',
       regions: ['analysis'],
@@ -25122,6 +25130,8 @@ window.MG = window.MG || {};
       id: 'def.ac-function',
       cluster: 'analysis.bv',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.absolute-continuity 不是同一个概念，别合并。 */
+      distinctFrom: ['def.absolute-continuity'],
       label: '绝对连续函数',
       title: '绝对连续函数',
       regions: ['analysis'],
@@ -33330,6 +33340,8 @@ window.MG = window.MG || {};
       id: 'def.cohomological-functor',
       cluster: 'hom.cohomology',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.cohomology-class 不是同一个概念，别合并。 */
+      distinctFrom: ['def.cohomology-class'],
       label: '上同调函子',
       title: '上同调函子',
       regions: ['homology'],
@@ -44377,6 +44389,8 @@ window.MG = window.MG || {};
       id: 'prop.matrix-category',
       cluster: 'cat.basic',
       type: 'proposition',
+      /* 同词不同物（已核对）—— 与 def.matrix-norm 不是同一个概念，别合并。 */
+      distinctFrom: ['def.matrix-norm'],
       label: '矩阵范畴',
       title: '命题：$\\operatorname{Mat}(k)$ 是小范畴，与有限维向量空间等价',
       regions: ['category'],
@@ -44934,6 +44948,8 @@ window.MG = window.MG || {};
       id: 'def.cauchy-sequence',
       cluster: 'analysis.real',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 thm.cauchy-inequality / thm.series-product 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.cauchy-inequality', 'thm.series-product'],
       label: 'Cauchy 列',
       title: 'Cauchy 列',
       regions: ['analysis'],
@@ -46216,6 +46232,8 @@ window.MG = window.MG || {};
       id: 'def.riemann-sum',
       cluster: 'analysis.riemann',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemannian-metric / def.riemann-surface / def.riemann-integrable 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemannian-metric', 'def.riemann-surface', 'def.riemann-integrable'],
       label: 'Riemann 和',
       title: 'Riemann 和（标记和）',
       regions: ['analysis'],
@@ -46254,6 +46272,8 @@ window.MG = window.MG || {};
       id: 'def.riemann-integrable',
       cluster: 'analysis.riemann',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemann-sum 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemann-sum'],
       label: 'Riemann 可积',
       title: 'Riemann 可积与积分 $\\int_a^b f$',
       regions: ['analysis'],
@@ -47130,6 +47150,8 @@ window.MG = window.MG || {};
       id: 'thm.series-product',
       cluster: 'analysis.series',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 def.cauchy-sequence 不是同一个概念，别合并。 */
+      distinctFrom: ['def.cauchy-sequence'],
       label: 'Cauchy 乘积',
       title: '定理：绝对收敛级数的 Cauchy 乘积',
       regions: ['analysis'],
@@ -47710,6 +47732,8 @@ window.MG = window.MG || {};
       id: 'thm.euler-formula',
       cluster: 'analysis.uniform',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.euler-formula-surface 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.euler-formula-surface'],
       label: 'Euler 公式',
       title: '定理：$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$',
       regions: ['analysis'],
@@ -56533,6 +56557,8 @@ window.MG = window.MG || {};
       id: 'prop.divisible-quotient',
       cluster: 'hom.injective',
       type: 'proposition',
+      /* 同词不同物（已核对）—— 与 ex.divisible-groups 不是同一个概念，别合并。 */
+      distinctFrom: ['ex.divisible-groups'],
       label: '可除群的商',
       title: '可除群的商仍可除',
       regions: ['homology'],
@@ -56558,6 +56584,8 @@ window.MG = window.MG || {};
       id: 'ex.divisible-groups',
       cluster: 'hom.injective',
       type: 'example',
+      /* 同词不同物（已核对）—— 与 prop.divisible-quotient 不是同一个概念，别合并。 */
+      distinctFrom: ['prop.divisible-quotient'],
       label: '可除群的例子',
       title: '例子：$\\mathbb{Q}$、$\\mathbb{Q}/\\mathbb{Z}$ 与 Prüfer 群',
       regions: ['homology'],
@@ -56589,6 +56617,8 @@ window.MG = window.MG || {};
       id: 'thm.mod-enough-injectives',
       cluster: 'hom.injective',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.pushforward-enough-injectives 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.pushforward-enough-injectives'],
       label: '足够多内射对象',
       title: '$R\\text{-}\\mathbf{Mod}$ 有足够多的内射对象',
       regions: ['homology'],
@@ -59049,6 +59079,8 @@ window.MG = window.MG || {};
       id: 'thm.pushforward-enough-injectives',
       cluster: 'hom.sheafcoh',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.mod-enough-injectives 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.mod-enough-injectives'],
       label: '足够多内射层',
       title: '阿贝尔层范畴有足够多内射对象',
       regions: ['homology', 'category'],
@@ -59272,6 +59304,8 @@ window.MG = window.MG || {};
       id: 'def.etale-space',
       cluster: 'hom.sheafcoh',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.etale-sheaf 不是同一个概念，别合并。 */
+      distinctFrom: ['def.etale-sheaf'],
       label: 'étale 空间',
       title: 'étale 空间（espace étalé）',
       regions: ['homology', 'topology'],
@@ -59300,6 +59334,8 @@ window.MG = window.MG || {};
       id: 'def.etale-sheaf',
       cluster: 'hom.sheafcoh',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.etale-space 不是同一个概念，别合并。 */
+      distinctFrom: ['def.etale-space'],
       label: 'étale 层',
       title: '$X_{\\text{et}}$ 上的 étale 层',
       regions: ['homology', 'algebra'],
@@ -61067,6 +61103,8 @@ window.MG = window.MG || {};
       id: 'lem.second-form-symmetric',
       cluster: 'diffgeom.frame',
       type: 'lemma',
+      /* 同词不同物（已核对）—— 与 def.second-fundamental-form 不是同一个概念，别合并。 */
+      distinctFrom: ['def.second-fundamental-form'],
       label: '第二基本形式对称',
       title: '第二基本形式的系数矩阵对称',
       regions: ['diffgeom'],
@@ -61195,6 +61233,8 @@ window.MG = window.MG || {};
       id: 'def.second-fundamental-form',
       cluster: 'diffgeom.surface',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 lem.second-form-symmetric 不是同一个概念，别合并。 */
+      distinctFrom: ['lem.second-form-symmetric'],
       label: '第二基本形式',
       title: '第二基本形式',
       regions: ['diffgeom'],
@@ -61408,6 +61448,8 @@ window.MG = window.MG || {};
       id: 'thm.euler-formula-surface',
       cluster: 'diffgeom.surface',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.euler-formula 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.euler-formula'],
       label: 'Euler 公式',
       title: 'Euler 公式',
       regions: ['diffgeom'],
@@ -62329,6 +62371,8 @@ window.MG = window.MG || {};
       id: 'lem.gauss-lemma',
       cluster: 'diffgeom.intrinsic',
       type: 'lemma',
+      /* 同词不同物（已核对）—— 与 lem.gauss-qr 不是同一个概念，别合并。 */
+      distinctFrom: ['lem.gauss-qr'],
       status: 'skeleton',
       label: 'Gauss 引理',
       title: 'Gauss 引理与测地极坐标',
@@ -62394,6 +62438,8 @@ window.MG = window.MG || {};
       id: 'def.curvature-tensor',
       cluster: 'diffgeom.intrinsic',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemann-surface 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemann-surface'],
       label: 'Riemann 曲率张量',
       title: 'Riemann 曲率张量与局部平坦性',
       regions: ['diffgeom'],
@@ -63427,6 +63473,8 @@ window.MG = window.MG || {};
       id: 'def.riemannian-metric',
       cluster: 'diffgeom.intrinsic',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.riemann-sum 不是同一个概念，别合并。 */
+      distinctFrom: ['def.riemann-sum'],
       label: 'Riemann 度量',
       title: 'Riemann 度量',
       regions: ['diffgeom'],
@@ -64708,6 +64756,8 @@ window.MG = window.MG || {};
       id: 'thm.cauchy-inequality',
       cluster: 'analysis.cauchy',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 def.cauchy-sequence 不是同一个概念，别合并。 */
+      distinctFrom: ['def.cauchy-sequence'],
       label: 'Cauchy 不等式',
       title: '定理：Cauchy 不等式',
       regions: ['complex'],
@@ -65818,6 +65868,8 @@ window.MG = window.MG || {};
       id: 'def.lie-bracket',
       cluster: 'diffgeom.vector',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-group 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-group'],
       label: 'Lie 括号',
       title: '向量场的 Lie 括号',
       regions: ['diffgeom'],
@@ -66359,6 +66411,8 @@ window.MG = window.MG || {};
       id: 'def.lie-group',
       cluster: 'diffgeom.lieg',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-bracket / def.lie-algebra / def.lie-derivative 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-bracket', 'def.lie-algebra', 'def.lie-derivative'],
       label: 'Lie 群',
       title: 'Lie 群',
       regions: ['diffgeom'],
@@ -66406,6 +66460,8 @@ window.MG = window.MG || {};
       id: 'def.lie-algebra',
       cluster: 'diffgeom.vector',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-group 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-group'],
       label: 'Lie 代数',
       title: 'Lie 代数',
       regions: ['diffgeom'],
@@ -68533,6 +68589,8 @@ window.MG = window.MG || {};
       id: 'def.riemann-surface',
       cluster: 'analysis.complex',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.curvature-tensor / def.riemann-sum 不是同一个概念，别合并。 */
+      distinctFrom: ['def.curvature-tensor', 'def.riemann-sum'],
       label: 'Riemann 曲面',
       title: '定义：Riemann 曲面（多值函数的「定义域」）',
       regions: ['complex'],
@@ -70161,6 +70219,8 @@ window.MG = window.MG || {};
       id: 'def.lie-derivative',
       cluster: 'diffgeom.vector',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-group 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-group'],
       label: 'Lie 导数',
       title: 'Lie 导数',
       regions: ['diffgeom'],
@@ -77401,6 +77461,8 @@ window.MG = window.MG || {};
       id: 'lem.gauss-qr',
       cluster: 'number.quadratic',
       type: 'lemma',
+      /* 同词不同物（已核对）—— 与 lem.gauss-lemma 不是同一个概念，别合并。 */
+      distinctFrom: ['lem.gauss-lemma'],
       label: 'Gauss 引理（二次剩余）',
       title: 'Gauss 引理：$\\left(\\frac{a}{p}\\right) = (-1)^{\\mu}$',
       regions: ['number'],
@@ -79650,6 +79712,8 @@ window.MG = window.MG || {};
       id: 'def.matrix-norm',
       cluster: 'algebra.numeric',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 prop.matrix-category 不是同一个概念，别合并。 */
+      distinctFrom: ['prop.matrix-category'],
       label: '矩阵范数',
       title: '矩阵范数与算子范数',
       regions: ['algebra'],
@@ -81558,6 +81622,8 @@ window.MG = window.MG || {};
       id: 'def.cohomology-class',
       cluster: 'hom.cohomology',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.cohomological-functor 不是同一个概念，别合并。 */
+      distinctFrom: ['def.cohomological-functor'],
       status: 'skeleton',
       label: '上同调类',
       title: '上同调类：闭链模掉边缘',

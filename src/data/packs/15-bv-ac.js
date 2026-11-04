@@ -316,6 +316,8 @@ window.MG = window.MG || {};
       id: 'def.ac-function',
       cluster: 'analysis.bv',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.absolute-continuity 不是同一个概念，别合并。 */
+      distinctFrom: ['def.absolute-continuity'],
       label: '绝对连续函数',
       title: '绝对连续函数',
       regions: ['analysis'],

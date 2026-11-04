@@ -620,6 +620,8 @@ window.MG = window.MG || {};
       id: 'thm.pushforward-enough-injectives',
       cluster: 'hom.sheafcoh',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.mod-enough-injectives 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.mod-enough-injectives'],
       label: '足够多内射层',
       title: '阿贝尔层范畴有足够多内射对象',
       regions: ['homology', 'category'],
@@ -843,6 +845,8 @@ window.MG = window.MG || {};
       id: 'def.etale-space',
       cluster: 'hom.sheafcoh',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.etale-sheaf 不是同一个概念，别合并。 */
+      distinctFrom: ['def.etale-sheaf'],
       label: 'étale 空间',
       title: 'étale 空间（espace étalé）',
       regions: ['homology', 'topology'],
@@ -871,6 +875,8 @@ window.MG = window.MG || {};
       id: 'def.etale-sheaf',
       cluster: 'hom.sheafcoh',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.etale-space 不是同一个概念，别合并。 */
+      distinctFrom: ['def.etale-space'],
       label: 'étale 层',
       title: '$X_{\\text{et}}$ 上的 étale 层',
       regions: ['homology', 'algebra'],

@@ -108,6 +108,8 @@ window.MG = window.MG || {};
       id: 'prop.matrix-category',
       cluster: 'cat.basic',
       type: 'proposition',
+      /* 同词不同物（已核对）—— 与 def.matrix-norm 不是同一个概念，别合并。 */
+      distinctFrom: ['def.matrix-norm'],
       label: '矩阵范畴',
       title: '命题：$\\operatorname{Mat}(k)$ 是小范畴，与有限维向量空间等价',
       regions: ['category'],

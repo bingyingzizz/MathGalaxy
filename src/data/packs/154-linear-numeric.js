@@ -26,6 +26,8 @@ window.MG = window.MG || {};
       id: 'def.matrix-norm',
       cluster: 'algebra.numeric',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 prop.matrix-category 不是同一个概念，别合并。 */
+      distinctFrom: ['prop.matrix-category'],
       label: '矩阵范数',
       title: '矩阵范数与算子范数',
       regions: ['algebra'],

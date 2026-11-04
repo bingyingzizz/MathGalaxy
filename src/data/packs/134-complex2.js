@@ -319,6 +319,8 @@ window.MG = window.MG || {};
       id: 'def.riemann-surface',
       cluster: 'analysis.complex',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.curvature-tensor / def.riemann-sum 不是同一个概念，别合并。 */
+      distinctFrom: ['def.curvature-tensor', 'def.riemann-sum'],
       label: 'Riemann 曲面',
       title: '定义：Riemann 曲面（多值函数的「定义域」）',
       regions: ['complex'],

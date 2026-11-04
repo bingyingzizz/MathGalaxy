@@ -108,6 +108,8 @@ window.MG = window.MG || {};
       id: 'def.cauchy-sequence',
       cluster: 'analysis.real',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 thm.cauchy-inequality / thm.series-product 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.cauchy-inequality', 'thm.series-product'],
       label: 'Cauchy 列',
       title: 'Cauchy 列',
       regions: ['analysis'],

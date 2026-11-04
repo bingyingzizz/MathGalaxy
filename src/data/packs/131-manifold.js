@@ -313,6 +313,8 @@ window.MG = window.MG || {};
       id: 'def.lie-bracket',
       cluster: 'diffgeom.vector',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-group 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-group'],
       label: 'Lie 括号',
       title: '向量场的 Lie 括号',
       regions: ['diffgeom'],
@@ -854,6 +856,8 @@ window.MG = window.MG || {};
       id: 'def.lie-group',
       cluster: 'diffgeom.lieg',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-bracket / def.lie-algebra / def.lie-derivative 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-bracket', 'def.lie-algebra', 'def.lie-derivative'],
       label: 'Lie 群',
       title: 'Lie 群',
       regions: ['diffgeom'],
@@ -901,6 +905,8 @@ window.MG = window.MG || {};
       id: 'def.lie-algebra',
       cluster: 'diffgeom.vector',
       type: 'definition',
+      /* 同词不同物（已核对）—— 与 def.lie-group 不是同一个概念，别合并。 */
+      distinctFrom: ['def.lie-group'],
       label: 'Lie 代数',
       title: 'Lie 代数',
       regions: ['diffgeom'],

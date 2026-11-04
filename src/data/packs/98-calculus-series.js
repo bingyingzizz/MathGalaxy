@@ -240,6 +240,8 @@ window.MG = window.MG || {};
       id: 'thm.series-product',
       cluster: 'analysis.series',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 def.cauchy-sequence 不是同一个概念，别合并。 */
+      distinctFrom: ['def.cauchy-sequence'],
       label: 'Cauchy 乘积',
       title: '定理：绝对收敛级数的 Cauchy 乘积',
       regions: ['analysis'],

@@ -322,6 +322,8 @@ window.MG = window.MG || {};
       id: 'thm.euler-formula',
       cluster: 'analysis.uniform',
       type: 'theorem',
+      /* 同词不同物（已核对）—— 与 thm.euler-formula-surface 不是同一个概念，别合并。 */
+      distinctFrom: ['thm.euler-formula-surface'],
       label: 'Euler 公式',
       title: '定理：$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$',
       regions: ['analysis'],

@@ -93,6 +93,8 @@ window.MG = window.MG || {};
       id: 'lem.gauss-qr',
       cluster: 'number.quadratic',
       type: 'lemma',
+      /* 同词不同物（已核对）—— 与 lem.gauss-lemma 不是同一个概念，别合并。 */
+      distinctFrom: ['lem.gauss-lemma'],
       label: 'Gauss 引理（二次剩余）',
       title: 'Gauss 引理：$\\left(\\frac{a}{p}\\right) = (-1)^{\\mu}$',
       regions: ['number'],
