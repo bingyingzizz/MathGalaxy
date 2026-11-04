@@ -114,7 +114,7 @@ window.MG.packs.push({
       cluster: 'diffgeom.form',
       type: 'definition',
       label: 'Hodge 星号',
-      title: 'Hodge 星号 $*$：$\\Omega^{k} \\to \\Omega^{n-k}$，由度量与体积形式**构造**',
+      title: 'Hodge 星号 $*$：$\\Omega^{k} \\to \\Omega^{n-k}$，由度量与体积形式构造',
       regions: ['geometry'],
       tags: ['定义', '微分几何', '微分形式', 'Hodge'],
       statement: [

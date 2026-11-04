@@ -73,7 +73,7 @@ window.MG = window.MG || {};
         '',
         '在该邻域上成立。这组坐标叫 **Darboux 坐标**（正则坐标）。',
         '',
-        '**与 Riemann 几何的尖锐对照**：Riemann 度量**做不到**这一点 —— 曲率是局部不变量，$n \\ge 2$ 时任何度量都不能局部化成 $\\delta_{ij}$。而辛形式**永远**能。'
+        '**与 Riemann 几何的尖锐对照**：Riemann 度量**一般做不到**这一点 —— 曲率是局部不变量，只有**曲率恒为零**（平坦）的度量才能局部化成 $\\delta_{ij}$。而辛形式**永远**能。'
       ].join('\n'),
       notes: [
         '**证明骨架**（Moser 技巧）：先由线性代数（`thm.symplectic-normal-form`）在 $p$ 点找辛基，沿径向把 $\\omega$ 拉成 $\\omega_{0}$；再用 Moser 同伦 $\\omega_{t} = (1-t)\\omega_{0} + t\\omega$ 构造一个流，其生成向量场 $X_{t}$ 由 $\\iota_{X_{t}}\\omega_{t} = -\\theta$ 解出（$\\theta$ 是 $\\omega - \\omega_{0}$ 的原函数，闭性在这里用上）。\n\n积分这个流就得到所需的微分同胚。\n\n**关键是 $\\omega_{t}$ 始终非退化** —— 这靠「$\\omega_{0}$ 与 $\\omega$ 在 $p$ 点一致 + 邻域足够小」。',

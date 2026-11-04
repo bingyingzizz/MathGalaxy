@@ -140,7 +140,7 @@ window.MG.packs.push({
       cluster: 'diffgeom.surface',
       type: 'example',
       label: '圆柱的第一基本形式',
-      title: '圆柱面：$\\mathrm{I} = R^{2}\\,\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$，$-\\!-$ 平坦但**不**与平面等距',
+      title: '圆柱面：$\\mathrm{I} = R^{2}\\,\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$，$-\\!-$ 平坦但不与平面等距',
       regions: ['geometry'],
       tags: ['例', '微分几何', '曲面', '第一基本形式'],
       statement: [

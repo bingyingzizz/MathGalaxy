@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-04T11:53:56.344Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-04T12:24:32.207Z
 > 15 星系 / 105 星团 / 1540 节点 / 3165 连线（强边 3126，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -17135,7 +17135,7 @@ $$T_F(x) := \sup \{ \sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \in \mathbb{N}, -\i
 
 $T_F$ 是递增的 $\mathbb{R} \to [0, +\infty]$。若 $T_F(+\infty) < +\infty$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。
 
-若 $T_F(a) < \infty$（即 $F$ 在 $(-\infty, a]$ 上有界变差），则 $T_F(b) - T_F(a)$ 等于 $F$ 在 $[a, b]$ 上的全变差；一般情形要**直接定义** $\operatorname{Var}_{[a,b]}(F) := \sup{\sum_{j} |F(x_{j}) - F(x_{j-1})| : a = x_{0} < \cdots < x_{n} = b}$，⛔ 不能写差值：$F = \sin$ 时 $T_F(a) = T_F(b) = +\infty$，差值是 $\infty - \infty$（无意义），而 $\sin$ 在 $[a,b]$ 上显然有界变差。$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。
+若 $T_F(a) < \infty$（即 $F$ 在 $(-\infty, a]$ 上有界变差），则 $T_F(b) - T_F(a)$ 等于 $F$ 在 $[a, b]$ 上的全变差；一般情形要**直接定义** $\operatorname{Var}_{[a,b]}(F) := \sup\Bigl\{\sum_{j}\lvert F(x_{j}) - F(x_{j-1})\rvert : a = x_{0} < \cdots < x_{n} = b\Bigr\}$，⛔ 不能写差值：$F = \sin$ 时 $T_F(a) = T_F(b) = +\infty$，差值是 $\infty - \infty$（无意义），而 $\sin$ 在 $[a,b]$ 上显然有界变差。$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。
 
 直观：$T_F(x)$ 是「沿着图像从 $-\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。
 
@@ -17152,15 +17152,15 @@ $T_F$ 是递增的 $\mathbb{R} \to [0, +\infty]$。若 $T_F(+\infty) < +\infty$�
 2. $BV$ 是 $\mathbb{C}$向量空间。
 3. 若 $F$ 实可微且 $F'$ 有界，则对一切 $-\infty < a < b < \infty$ 有 $F \in BV([a,b])$。
 4. $F(x) = \sin x$：对任何紧区间 $[a,b]$，$F \in BV([a,b])$。
-5. $F(x) = xsin(1/x)$（$x \ne 0$），$F(0) = 0$：若 $0 \in [a,b]$，则 $F \in BV([a,b])$。
+5. $F(x) = \lvert x\rvert^{3/2}\sin(1/x)$（$x \ne 0$），$F(0) = 0$：若 $0 \in [a,b]$，则 $F \in BV([a,b])$。
 
 **逐条验证。** 记 $T_{F}(x) := \sup\bigl\{\sum_{j=1}^{n}|F(x_{j})-F(x_{j-1})| : -\infty < x_{0} < \cdots < x_{n} = x\bigr\}$。
 1. **有界递增**：任意划分的变差和 $\sum_{j}(F(x_{j})-F(x_{j-1})) = F(b)-F(a)$（telescoping，绝对值可以去掉），故 $T_{F}(x) = F(x)-F(-\infty)$ 有限 ✓。
 2. **$BV$ 是 $\mathbb{C}$-向量空间**：逐点 $|(F+G)(x_{j})-(F+G)(x_{j-1})| \le |\Delta F| + |\Delta G|$，对划分取上确界得 $T_{F+G} \le T_{F}+T_{G} < \infty$ ✓；数乘同理 ✓。
 3. **可微 + $F'$ 有界**：$|F'| \le M$ 时由中值定理 $|F(x_{j})-F(x_{j-1})| \le M(x_{j}-x_{j-1})$，故 $T_{F}(b)-T_{F}(a) \le M(b-a) < \infty$ ✓。
 4. **$\sin x$**：$|\sin'| \le 1$，套上 3 ✓。
-5. **$x\sin(1/x)$**（$x \ne 0$，$F(0)=0$）：在紧区间上 $F$ 可微且 $F'$ 局部有界，同上得有限全变差 ✓。
-**分界线**：$F(x) = \sin(1/x)$（$x \ne 0$，$F(0) = 0$）**不属于** $BV$ —— 在 $0$ 附近振幅不衰减，取划分逼近 $0$ 时 $\sum|\Delta F|$ 像调和级数那样发散 ✓。∎
+5. **$\lvert x\rvert^{3/2}\sin(1/x)$**（$x \ne 0$，$F^{\prime}(0)=0$）：$F^{\prime}$ 在 $0$ 附近**无界**（$\sim -\lvert x\rvert^{-1/2}\cos(1/x)$），第 3 条用不上；但 $\lvert F^{\prime}\rvert \lesssim \tfrac{3}{2}\lvert x\rvert^{1/2}+\lvert x\rvert^{-1/2}$ 在 $0$ 附近可积，$F$ 在 $[\varepsilon,b]$ 上绝对连续，故 $\operatorname{Var}_{[0,b]}(F) \le \int_{0}^{b}\lvert F^{\prime}\rvert < \infty$ ✓。⚠️ 指数不能降到 $1$：$x\sin(1/x)$ **不属于** $BV$（见下面的分界线）。
+**分界线**：$F(x) = \sin(1/x)$（$x \ne 0$，$F(0) = 0$）**不属于** $BV$ —— 在 $0$ 附近振幅不衰减，取划分逼近 $0$ 时 $\sum|\Delta F|$ 像调和级数那样发散 ✓。同一个判据下 $F(x) = x\sin(1/x)$ **也**不属于 $BV$：取 $p_{k} = \frac{1}{2k\pi+\pi/2}$、$q_{k} = \frac{1}{2k\pi+3\pi/2}$（$\sin(1/p_{k}) = 1$、$\sin(1/q_{k}) = -1$），则 $\lvert F(p_{k})-F(q_{k})\rvert = p_{k}+q_{k} \sim \frac{1}{\pi k}$，故 $\sum_{k}\lvert F(p_{k})-F(q_{k})\rvert$ 像调和级数一样发散。一般地，$x^{a}\sin(x^{-b})$ 属于 $BV$ 的判据是 $a > b$，$a = b = 1$ 正好落在失败那一侧。∎
 ⭐ 所以「振荡」本身不碍事，**振幅衰减**才是 $BV$ 与「无限振荡」的分界。
 
 第 4、5 两个例子是「振荡型」的：函数本身有界、但导数在某个点附近爆掉或无限振荡。它们仍然有界变差 —— 说明**BV 比「$C^{1}$」宽得多**。
@@ -17174,11 +17174,9 @@ $T_F$ 是递增的 $\mathbb{R} \to [0, +\infty]$。若 $T_F(+\infty) < +\infty$�
 #### T_F ± F 递增　`lem.variation-monotone`
 *引理*　引理：实值有界变差函数的 $T_F + F$ 与 $T_F - F$ 都递增
 
-设 $F$ 是**实值**有界变差函数。则 $T_F + F$ 与 $T_F - F$
+设 $F$ 是**实值**有界变差函数。则 $T_F + F$ 与 $T_F - F$ 都是**递增**函数，即
 
-$$T_F + F\quad \text{and}\quad  T_F - F$$
-
-都是**递增**函数。
+$$x < y \implies T_F(y)+F(y) \ge T_F(x)+F(x),\qquad T_F(y)-F(y) \ge T_F(x)-F(x) .$$
 
 证明：设 $x < y$，任给 $\varepsilon > 0$，取分划 $x_0 < \cdots < x_n = x$ 使 $\sum|F(x_j) - F(x_{j-1})| \ge T_F(x) - \varepsilon$，再补上点 $y$ 与 $x$ 之间的比较：
 
@@ -17230,7 +17228,7 @@ $$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$
 
 **(d)** $F$ 的不连续点至多可数；
 
-**(e)** 令 $G(x) = F(x+)$，则 $F'$ 与 $G'$ 处处存在且相等（a.e.）。
+**(e)** 令 $G(x) = F(x+)$，则 $F'$ 与 $G'$ **几乎处处**存在且相等。⚠️ 不能写「处处」：$F \in BV$ 只保证 $F^{\prime}$ a.e. 存在（同一条 (d) 就是这么说）。
 
 全部由「$F = G - H$」化归到递增函数：递增函数的单侧极限显然存在；不连续点可数由单调函数那条定理；a.e. 可导也由那条定理（差的导数 $=$ 导数的差）。
 
@@ -33378,7 +33376,7 @@ $$\lVert r_{u}\times r_{v}\rVert^{2} = \lVert r_{u}\rVert^{2}\lVert r_{v}\rVert^
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「曲面」· 定向与法向场；do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 定向
 
 #### 圆柱的第一基本形式　`ex.cylinder-first-form`
-*例*　圆柱面：$\mathrm{I} = R^{2}\,\mathrm{d}u^{2} + \mathrm{d}v^{2}$，$-\!-$ 平坦但**不**与平面等距
+*例*　圆柱面：$\mathrm{I} = R^{2}\,\mathrm{d}u^{2} + \mathrm{d}v^{2}$，$-\!-$ 平坦但不与平面等距
 
 半径 $R$ 的圆柱面用 $r(u, v) = (R\cos u,\ R\sin u,\ v)$ 参数化（$0 \le u < 2\pi$、$v \in \mathbb{R}$）。则
 
@@ -34121,7 +34119,7 @@ $$\nabla_{X}Y = \sum_{k}\Bigl(X^{j}\partial_{j}Y^{k}+\Gamma^{k}_{ij}X^{i}Y^{j}\B
 
 $$\dim = \frac{n^{2}\bigl(n^{2}-1\bigr)}{12}:\qquad n = 2:\ 1,\quad n = 3:\ 6,\quad n = 4:\ 20 .$$
 
-无指标的说法：$R(X,Y,Z,W) := \langle R(X,Y)Z,W\rangle$ 是 $\bigwedge^{2}T_{p}M$ 上的对称双线性型（前两条给反称、第三条给对称），第四条再削掉 $\binom{n}{3}$ 维。
+无指标的说法：$R(X,Y,Z,W) := \langle R(X,Y)Z,W\rangle$ 是 $\bigwedge^{2}T_{p}M$ 上的对称双线性型（前两条给反称、第三条给对称），第四条再削掉 $\binom{n}{4}$ 维。
 
 **前两条的来源不同**：对 $X,Y$ 的反称是定义里 $[\nabla_{X},\nabla_{Y}]$ 的直接结果；对 $Z,W$ 的反称要用**保度量**（$\nabla g = 0$）—— 先证 $\langle R(X,Y)Z,Z\rangle = 0$ 再极化。
 
@@ -36915,7 +36913,7 @@ $$H^{k}_{dR}(M) := Z^{k}(M) \big/ B^{k}(M) ,$$
 参考：Tu, An Introduction to Manifolds（⚠️ 章节未核实，只记书名）· 闭形式与恰当形式；Bott–Tu, Differential Forms in Algebraic Topology（⚠️ 章节未核实，只记书名）
 
 #### Hodge 星号　`def.hodge-star`
-*定义*　Hodge 星号 $*$：$\Omega^{k} \to \Omega^{n-k}$，由度量与体积形式**构造**
+*定义*　Hodge 星号 $*$：$\Omega^{k} \to \Omega^{n-k}$，由度量与体积形式构造
 
 设 $(M, g)$ 是可定向 $n$ 维 Riemann 流形，$\mathrm{vol}$ 是 $g$ 决定的体积形式，$\langle \cdot, \cdot \rangle$ 是 $k$-形式上由 $g$ 诱导的内积。对 $\alpha \in \Omega^{k}(M)$ 定义 $*\alpha \in \Omega^{n-k}(M)$ 为**唯一**满足
 
@@ -36983,7 +36981,7 @@ $$\omega = \sum_{i=1}^{n} dq_{i} \wedge dp_{i}$$
 
 在该邻域上成立。这组坐标叫 **Darboux 坐标**（正则坐标）。
 
-**与 Riemann 几何的尖锐对照**：Riemann 度量**做不到**这一点 —— 曲率是局部不变量，$n \ge 2$ 时任何度量都不能局部化成 $\delta_{ij}$。而辛形式**永远**能。
+**与 Riemann 几何的尖锐对照**：Riemann 度量**一般做不到**这一点 —— 曲率是局部不变量，只有**曲率恒为零**（平坦）的度量才能局部化成 $\delta_{ij}$。而辛形式**永远**能。
 
 **证明骨架**（Moser 技巧）：先由线性代数（`thm.symplectic-normal-form`）在 $p$ 点找辛基，沿径向把 $\omega$ 拉成 $\omega_{0}$；再用 Moser 同伦 $\omega_{t} = (1-t)\omega_{0} + t\omega$ 构造一个流，其生成向量场 $X_{t}$ 由 $\iota_{X_{t}}\omega_{t} = -\theta$ 解出（$\theta$ 是 $\omega - \omega_{0}$ 的原函数，闭性在这里用上）。
 
@@ -45116,7 +45114,7 @@ $$\nabla^{2}Z(X,Y)-\nabla^{2}Z(Y,X) = \nabla_{X}\nabla_{Y}Z-\nabla_{Y}\nabla_{X}
 
 **计数**：(1)(2) 说明 $R$ 可看成 $\bigwedge^{2}T_{p}M$ 上的双线性型，(4) 说明它对称，故有 $\frac{N(N+1)}{2}$ 个分量（$N = \binom{n}{2}$）；
 
-再扣掉 (3) 给出的 $\binom{n}{3}$ 个独立关系，得 $\frac{n^{2}(n^{2}-1)}{12}$。
+再扣掉 (3) 给出的 $\binom{n}{4}$ 个独立关系，得 $\frac{n^{2}(n^{2}-1)}{12}$。（关系数是 $\binom{n}{4}$，不是 $\binom{n}{3}$：$n = 4$ 时 $\binom{4}{2} = 6$ 个配对数给出 $\frac{6\cdot7}{2} = 21$，扣 $\binom{4}{4} = 1$ 得 $20 = \frac{16\cdot15}{12}$ ✓；$n = 3$ 时 $\binom{3}{4} = 0$、恰 $6 = \frac{9\cdot8}{12}$ ✓。）
 
 ∎
 
@@ -48635,13 +48633,13 @@ $$\int |g(y) - f(y)| dy < \varepsilon$$
 
 **④ 把差值压住。** 对任意 $x$，
 
-$$\sup_{r>0} |A_r f(x) - f(x)| = \sup_r |A_r(f - g)(x) + (A_r g - g)(x) + (g - f)(x)| \le H(f - g)(x) + |f - g|(x)$$
+$$\limsup_{r\to0^{+}} |A_{r}f(x) - f(x)| \le \limsup_{r\to0^{+}}\bigl(|A_{r}(f-g)(x)| + |A_{r}g(x)-g(x)| + |(g-f)(x)|\bigr) \le H(f-g)(x) + |f-g|(x),$$
 
-（第一项用 $|A_r(f-g)| \le A_r|f-g| \le H(f-g)$，第二项由 ③ 取 $r \to 0$）。
+（第一项用 $|A_r(f-g)| \le A_r|f-g| \le H(f-g)$，它对**一切** $r>0$ 成立；第二项由 ③ 得 $A_r g(x) \to g(x)$（$r \to 0^{+}$），于是在 $\limsup$ 里消失）。⚠️ 这里必须是 $\limsup_{r\to0^{+}}$ 而**不是** $\sup_{r>0}$：$r$ 大时 $A_r g(x)$ 与 $g(x)$ 没有关系，$\sup$ 版本的上界是假的。
 
 **⑤ 估计坏集。** 令
 
-$$E_\alpha = \{x : \sup_{r>0} |A_r f(x) - f(x)| > \alpha\}$$
+$$E_{\alpha} = \bigl\{x : \limsup_{r\to0^{+}} |A_{r}f(x) - f(x)| > \alpha\bigr\}$$
 
 由 ④，$E_\alpha \subseteq F_{\alpha/2} \cup \{x : H(f-g)(x) > \alpha/2\}$，其中 $F_{\alpha/2} = \{|f - g| > \alpha/2\}$。于是
 
