@@ -133,23 +133,32 @@ window.MG = window.MG || {};
 
     {
       id: 'def.compact',
-      cluster: 'topology.metric',
+      cluster: 'topology.general',
       type: 'definition',
       label: '紧',
-      title: '紧空间',
+      title: '紧空间（开覆盖定义）',
       regions: ['topology'],
       tags: ['定义', '紧', '开覆盖'],
       statement: [
-        '距离空间 $(X, d)$ **紧**，当且仅当 $X$ 的每个**开覆盖**都有有限子覆盖。展开说：若族 $\\{U_i\\}_{i \\in I}$ 满足「每个 $U_i$ 都是开集」且 $X = \\bigcup_{i \\in I} U_i$，则存在有限个下标使',
+        '设 $X$ 是**拓扑空间**。$X$ **紧**，当且仅当它的每个**开覆盖**都有有限子覆盖：若族 $\\{U_{i}\\}_{i \\in I}$ 满足「每个 $U_{i}$ 都是开集」且 $X = \\bigcup_{i \\in I} U_{i}$，则存在有限个下标使',
         '',
-        '$$X = \\bigcup_{k=1}^{n} U_{i_k}$$'
+        '$$X = \\bigcup_{k=1}^{n} U_{i_{k}}.$$',
+        '',
+        '子集 $K \\subseteq X$ 叫**紧集**，如果 $K$ 配子空间拓扑后是紧空间。'
       ].join('\n'),
       notes: [
-        '紧性是**拓扑**性质，只依赖开集，跟 $d$ 的具体取值无关。',
-        '例子：$\\mathbb{R}$ 中的闭区间 [a, b] 紧（Heine–Borel）；$\\mathbb{R}$ 本身不紧（{(-n, n)} 没有有限子覆盖）；(0, 1] 不紧。',
-        '紧性的一个常用等价形式：**有限交性质** —— 若一族闭集的任意有限子族都有交，则整族的交非空。'
+        '⭐ **只用到开集**：定义里没有任何度量、也没有 $\\mathbb{R}^{n}$ —— 紧性是纯拓扑性质，' +
+          '所以它在连续映射下保持、在同胚下不变（`def.continuous-map` / `def.homeomorphism`）。',
+        '📌 **等价形式（闭集版）**：每个有限交性质都满足的闭集族必有非空交 —— ' +
+          '即「$\\{F_{i}\\}$ 闭且任意有限子族交非空 $\\implies$ 全族交非空」。这一条在反证时最常用。',
+        '📌 **度量空间里的样子**：距离空间上「紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界」' +
+          '（`thm.metric-compact-equiv`）—— 那是**定理**（用度量才证得出来），不是定义的一部分。' +
+          '一般拓扑空间里列紧严格更强，两者不等价。',
+        '例子：$[a, b] \\subseteq \\mathbb{R}$ 紧（Heine–Borel，`cor.heine-borel`）；' +
+          '$\\mathbb{R}$ 不紧（$\\{(-n, n)\\}$ 没有有限子覆盖）；$(0, 1]$ 不紧。' +
+          '一般拓扑里的标准例子见 `def.chaus`、`thm.tykhonov`（任意积仍紧）。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology, §26']
+      refs: ['Munkres, Topology, §26（紧空间）']
     },
 
     {
@@ -265,7 +274,7 @@ window.MG = window.MG || {};
       note: '度量空间里「每个开覆盖有有限子覆盖」与「每个序列有收敛子列」是同一件事；两个方向分开证，合起来才是这条等价。',
       proofs: [
         {
-          label: '紧 ⇒ 列紧',
+          label: '紧 $\\implies$ 列紧',
           text: [
             '设 $\\{x_{n}\\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。',
             '',
@@ -289,7 +298,7 @@ window.MG = window.MG || {};
           ].join('\n')
         },
         {
-          label: '列紧 ⇒ 紧',
+          label: '列紧 $\\implies$ 紧',
           text: [
             '用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。',
             '',
