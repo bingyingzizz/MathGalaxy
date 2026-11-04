@@ -45605,7 +45605,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['定理', '连续', '紧'],
       statement: [
-        '设 $X$ 是紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\\min}, x_{\\max} \\in X$，使对一切 $x \\in X$ 有',
+        '设 $X$ 是**非空**的紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\\min}, x_{\\max} \\in X$，使对一切 $x \\in X$ 有',
         '',
         '$$f(x_{\\min}) \\le f(x) \\le f(x_{\\max})$$'
       ].join('\n'),
@@ -45898,7 +45898,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
-        '设 $f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\\xi \\in (a, b)$ 使',
+        '设 $a < b$，$f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\\xi \\in (a, b)$ 使',
         '',
         '$$f\'(\\xi) = 0$$'
       ].join('\n'),
@@ -45914,7 +45914,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
-        '设 $f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\\xi \\in (a, b)$ 使',
+        '设 $a < b$，$f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\\xi \\in (a, b)$ 使',
         '',
         '$$f(b) - f(a) = f\'(\\xi)\\,(b - a)$$',
         '',
@@ -45932,7 +45932,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
-        '设 $f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g\'(x) \\ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\\xi \\in (a, b)$ 使',
+        '设 $a < b$，$f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g\'(x) \\ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\\xi \\in (a, b)$ 使',
         '',
         '$$\\frac{f(b) - f(a)}{g(b) - g(a)} = \\frac{f\'(\\xi)}{g\'(\\xi)}$$'
       ].join('\n'),
@@ -50691,7 +50691,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $A \\in M_n(\\mathbb{R})$ 对称。记 $D_k$ 为 $A$ 的**左上角** $k \\times k$ 子矩阵的行列式（**顺序主子式**）。则',
         '',
-        '$$D_1 > 0,\\quad D_2 > 0,\\quad \\ldots,\\quad D_n > 0$$'
+        '$$A\\ \\text{ 正定} \\iff D_1 > 0,\\quad D_2 > 0,\\quad \\ldots,\\quad D_n > 0.$$'
       ].join('\n'),
       notes: '⭐ 这是**最便宜**的正定性判据：只算 $n$ 个行列式（实际算时用消元法顺带得到），不必求特征值。\n\n⭐ 用途直接可见：多元微分里 $f$ 的 **Hessian 矩阵正定 $\\implies$ 局部极小**（`thm.second-derivative-test`）；\n\n线性代数里「$A$ 正定 $\\iff$ 存在 Cholesky 分解 $A = LL^{\\mathsf{T}}$」。\n\n⚠ 只能看**顺序**主子式（左上角那一串），不能只看「所有主子式」或随便挑几个。\n\n反过来：所有顺序主子式为正 $\\implies$ 正定，但如果只是「所有主子式非负」那只是半正定。',
       refs: ['Horn–Johnson, Matrix Analysis, Ch. 7']
@@ -51526,7 +51526,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '度量空间', '不动点', '完备'],
       statement: [
-        '设 $(X, d)$ 是**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射。则',
+        '设 $(X, d)$ 是**非空**的**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射。则',
         '',
         '- $T$ 有**唯一**不动点 $x^{\\ast} \\in X$（即 $Tx^{\\ast} = x^{\\ast}$）；',
         '- 对**任意**初值 $x_0 \\in X$，迭代列 $x_{k+1} := T x_k$ 收敛到 $x^{\\ast}$；',
@@ -51571,7 +51571,7 @@ window.MG = window.MG || {};
         '',
         '$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{invertible}$$',
         '',
-        '（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使',
+        '（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$、$b$ 的开邻域 $W \\subseteq \\mathbb{R}^{m}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to W$ 使',
         '',
         '$$g(a) = b, \\qquad F\\bigl(x,\\ g(x)\\bigr) = 0 \\quad (x \\in V)$$',
         '',
@@ -53718,7 +53718,7 @@ window.MG = window.MG || {};
       tags: ['定理', '导数', '运算'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 5'],
       statement: [
-        '设 $f, g$ 在 $x_0$ 可导，$c \\in \\mathbb{R}$。则',
+        '设 $f$ 在 $x_0$ 可导、$g$ 在 $f(x_0)$ 可导（下面前四条只需 $f, g$ 各自在 $x_0$ 可导），$c \\in \\mathbb{R}$。则',
         '',
         '$$(f \\pm g)\'(x_0) = f\'(x_0) \\pm g\'(x_0), \\qquad (cf)\'(x_0) = c\\,f\'(x_0),$$',
         '',
@@ -53895,7 +53895,7 @@ window.MG = window.MG || {};
       target: 'thm.geometric-series',
       title: '部分和公式 + Bernoulli $\\implies$ 几何级数',
       proof: [
-        '**$|q| < 1$。** 部分和（$q \\ne 1$）',
+        '**$|q| < 1$。** 若 $q = 0$，则 $s_N = 1$ 对一切 $N$ 成立，收敛到 $1$ ✓；下面设 $q \\ne 0$（此时 $q \\ne 1$ 自动成立）。部分和',
         '',
         '$$s_N = \\sum_{n=0}^{N} q^{n} = \\frac{1 - q^{N+1}}{1 - q}.$$',
         '',
@@ -68526,7 +68526,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：全纯函数沿闭曲线「转了几圈」，正好等于曲线内部的零点个数减去极点个数（都按重数算）—— 数辐角的变化量就等于数零极点。',
         '',
-        '设 $\\gamma$ 是分段光滑闭曲线，$\\Omega$ 含 $\\gamma$ 及其内部，$f$ 在 $\\Omega$ 上除有限个极点外全纯，且在 $\\gamma$ 上既无零点也无极点。则',
+        '设 $\\gamma$ 是**正向、简单**的分段光滑闭曲线（逆时针、不自交），$\\Omega$ 含 $\\gamma$ 及其内部，$f$ 在 $\\Omega$ 上除有限个极点外全纯，且在 $\\gamma$ 上既无零点也无极点。则',
         '',
         '$$\\frac{1}{2\\pi i}\\oint_{\\gamma} \\frac{f\'(z)}{f(z)}\\,\\mathrm{d}z = Z - P = n(f \\circ \\gamma,\\, 0),$$',
         '',
@@ -68541,7 +68541,12 @@ window.MG = window.MG || {};
         '',
         '⭐ 顺带的结论：$Z - P$ 对曲线的微小形变**不变**（只要形变过程中不扫过零点或极点），因为它是整数且连续变化。',
         '',
-        '📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。'
+        '📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。',
+        '',
+        '⚠ **「简单」不能省**：断言的是未加权的 $Z - P$，只有**正向简单**闭曲线才成立。' +
+          '一般闭曲线的正确写法是按绕数加权：$\\dfrac{1}{2\\pi i}\\oint_{\\gamma}\\dfrac{f\'}{f} = \\sum_k m_k\\,n(\\gamma, a_k) - \\sum_j n_j\\,n(\\gamma, b_j)$' +
+          '（$a_k$ 为零点、$b_j$ 为极点，$n$ 是绕数，见 `def.winding-number` / `prop.winding-integral`）——' +
+          '右边那个 $n(f\\circ\\gamma, 0)$ 一直是**加权**量，所以等式两端只在「每个内部点绕数 $=1$」时变成 $Z - P$。'
       ].join('\n'),
     },
     {
@@ -68556,7 +68561,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：如果两个全纯函数在闭曲线的边界上，「扰动项」的模严格小于「主项」的模，那么加上扰动不会改变曲线内部的零点个数。',
         '',
-        '设 $\\gamma$ 是分段光滑闭曲线，$f, g$ 在 $\\gamma$ 及其内部全纯，且在 $\\gamma$ 上处处',
+        '设 $\\gamma$ 是**正向、简单**的分段光滑闭曲线（逆时针、不自交），$f, g$ 在 $\\gamma$ 及其内部全纯，且在 $\\gamma$ 上处处',
         '',
         '$$|g(z)| < |f(z)|.$$',
         '',
@@ -68569,7 +68574,10 @@ window.MG = window.MG || {};
         '',
         '⚠ 条件必须**严格**、而且要在**整条边界**上成立。等号是可以出事的位置：$f = z$、$g = -z$ 在 $|z| = 1$ 上有 $|g| = |f|$，$f$ 与 $f + g = 0$ 的零点数完全不同。',
         '',
-        '📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。'
+        '📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。',
+        '',
+        '⚠ **「简单」不能省**：断言的是「内部零点个数相等」（未加权）。对一般闭曲线，正确的结论要按绕数加权 —— ' +
+          '而按幅角原理 $\\dfrac{1}{2\\pi i}\\oint f\'/f$ 给出的本来就是加权和，两端只在「内部每个点绕数 $= 1$」时才相等（见 `thm.argument-principle` 的注）。'
       ].join('\n'),
     },
     {

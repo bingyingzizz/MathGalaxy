@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-04T07:44:26.961Z",
+  "generated": "2026-11-04T08:09:54.878Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -9965,7 +9965,7 @@
     "内积",
     "判别法"
    ],
-   "statement": "设 $A \\in M_n(\\mathbb{R})$ 对称。记 $D_k$ 为 $A$ 的**左上角** $k \\times k$ 子矩阵的行列式（**顺序主子式**）。则\n\n$$D_1 > 0,\\quad D_2 > 0,\\quad \\ldots,\\quad D_n > 0$$",
+   "statement": "设 $A \\in M_n(\\mathbb{R})$ 对称。记 $D_k$ 为 $A$ 的**左上角** $k \\times k$ 子矩阵的行列式（**顺序主子式**）。则\n\n$$A\\ \\text{ 正定} \\iff D_1 > 0,\\quad D_2 > 0,\\quad \\ldots,\\quad D_n > 0.$$",
    "notes": "⭐ 这是**最便宜**的正定性判据：只算 $n$ 个行列式（实际算时用消元法顺带得到），不必求特征值。\n\n⭐ 用途直接可见：多元微分里 $f$ 的 **Hessian 矩阵正定 $\\implies$ 局部极小**（`thm.second-derivative-test`）；\n\n线性代数里「$A$ 正定 $\\iff$ 存在 Cholesky 分解 $A = LL^{\\mathsf{T}}$」。\n\n⚠ 只能看**顺序**主子式（左上角那一串），不能只看「所有主子式」或随便挑几个。\n\n反过来：所有顺序主子式为正 $\\implies$ 正定，但如果只是「所有主子式非负」那只是半正定。",
    "refs": [
     "Horn–Johnson, Matrix Analysis, Ch. 7"
@@ -10948,7 +10948,7 @@
     "不动点",
     "完备"
    ],
-   "statement": "设 $(X, d)$ 是**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射。则\n\n- $T$ 有**唯一**不动点 $x^{\\ast} \\in X$（即 $Tx^{\\ast} = x^{\\ast}$）；\n- 对**任意**初值 $x_0 \\in X$，迭代列 $x_{k+1} := T x_k$ 收敛到 $x^{\\ast}$；\n- 并有先验误差估计与后验误差估计\n\n$$d(x_k, x^{\\ast}) \\le \\frac{q^{k}}{1 - q}\\, d(x_0, x_1), \\qquad d(x_k, x^{\\ast}) \\le \\frac{q}{1 - q}\\, d(x_k, x_{k-1})$$",
+   "statement": "设 $(X, d)$ 是**非空**的**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射。则\n\n- $T$ 有**唯一**不动点 $x^{\\ast} \\in X$（即 $Tx^{\\ast} = x^{\\ast}$）；\n- 对**任意**初值 $x_0 \\in X$，迭代列 $x_{k+1} := T x_k$ 收敛到 $x^{\\ast}$；\n- 并有先验误差估计与后验误差估计\n\n$$d(x_k, x^{\\ast}) \\le \\frac{q^{k}}{1 - q}\\, d(x_0, x_1), \\qquad d(x_k, x^{\\ast}) \\le \\frac{q}{1 - q}\\, d(x_k, x_{k-1})$$",
    "notes": "⭐ 这是分析里罕见的**三合一**定理：它同时给出存在性、唯一性**和算法**（迭代）**与误差估计**。\n\n绝大多数存在性定理只说「有」，这一条说「怎么找、找多准」。\n\n⚠ 两个前提都不能去：\n- 去掉**完备性**：$(0,1]$ 不完备，$T(x) = x/2$ 是压缩，但不动点 $0$ 不在空间里；\n\n\n- 去掉 $q < 1$：`def.contraction` 里的 $x + 1/x$ 就是反例。\n\n⭐ 用它的标准套路（后面两条大定理都用）：把「解方程 $f(x) = y$」改写成「找 $\\Phi_y$ 的不动点」，其中 $\\Phi_y(x) := x - f(x) + y$ 在小球上是压缩 —— 于是「解存在」变成「球完备 + 压缩」。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
@@ -11033,7 +11033,7 @@
     "多元",
     "隐函数"
    ],
-   "statement": "设 $U \\subseteq \\mathbb{R}^{n} \\times \\mathbb{R}^{m}$ 开，$F : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \\in U$ 满足 $F(a, b) = 0$，且 $D_y F(a, b)$ **可逆**：\n\n$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{invertible}$$\n\n（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使\n\n$$g(a) = b, \\qquad F\\bigl(x,\\ g(x)\\bigr) = 0 \\quad (x \\in V)$$\n\n并且\n\n$$Dg(x) = - \\bigl( D_y F(x, g(x)) \\bigr)^{-1} D_x F(x, g(x))$$",
+   "statement": "设 $U \\subseteq \\mathbb{R}^{n} \\times \\mathbb{R}^{m}$ 开，$F : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \\in U$ 满足 $F(a, b) = 0$，且 $D_y F(a, b)$ **可逆**：\n\n$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{invertible}$$\n\n（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$、$b$ 的开邻域 $W \\subseteq \\mathbb{R}^{m}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to W$ 使\n\n$$g(a) = b, \\qquad F\\bigl(x,\\ g(x)\\bigr) = 0 \\quad (x \\in V)$$\n\n并且\n\n$$Dg(x) = - \\bigl( D_y F(x, g(x)) \\bigr)^{-1} D_x F(x, g(x))$$",
    "notes": "⭐ 一句话：**方程 $F(x, y) = 0$ 在 $D_yF$ 可逆处可以唯一地解出 $y = g(x)$，而且解出来的映射自动是 $C^{1}$**。\n\n这就是「隐函数」这个名字的全部内容 —— 它把「隐式地由方程确定」变成了「真的存在一个函数」。\n\n⭐ 它是**逆映射定理的换装**：把 $F$ 拼成 $\\Phi(x, y) := (x, F(x, y))$，则 $D\\Phi$ 是块上三角矩阵，$\\det D\\Phi = \\det D_y F$，故可逆性等价；\n\n而 $\\Phi$ 的逆必然是形状 $(x, y) \\mapsto (x, h(x, y))$，取 $g(x) := h(x, 0)$ 就得到要的隐函数。\n\n两个定理是同一件事的两种说法。\n\n⚠ $D_yF$ 可逆这个条件**本质**：$F(x, y) = x^{2} - y^{2}$ 在 $(0,0)$ 处 $D_yF = 0$，方程 $x^{2} = y^{2}$ 在原点附近解不出唯一的 $y = g(x)$（有 $y = \\pm x$ 两支）。\n\n⭐ $Dg$ 的公式不必背：对 $F(x, g(x)) = 0$ 两边求导、用链式法则即可 —— $D_xF + D_yF \\cdot Dg = 0$，解出 $Dg$。\n\n证明全文在边上。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
@@ -12967,7 +12967,7 @@
     "导数",
     "运算"
    ],
-   "statement": "设 $f, g$ 在 $x_0$ 可导，$c \\in \\mathbb{R}$。则\n\n$$(f \\pm g)'(x_0) = f'(x_0) \\pm g'(x_0), \\qquad (cf)'(x_0) = c\\,f'(x_0),$$\n\n$$(fg)'(x_0) = f'(x_0)\\,g(x_0) + f(x_0)\\,g'(x_0),$$\n\n$$\\left(\\frac{f}{g}\\right)'(x_0) = \\frac{f'(x_0)\\,g(x_0) - f(x_0)\\,g'(x_0)}{g(x_0)^{2}} \\quad (g(x_0) \\ne 0),$$\n\n$$(g \\circ f)'(x_0) = g'(f(x_0))\\,f'(x_0).$$",
+   "statement": "设 $f$ 在 $x_0$ 可导、$g$ 在 $f(x_0)$ 可导（下面前四条只需 $f, g$ 各自在 $x_0$ 可导），$c \\in \\mathbb{R}$。则\n\n$$(f \\pm g)'(x_0) = f'(x_0) \\pm g'(x_0), \\qquad (cf)'(x_0) = c\\,f'(x_0),$$\n\n$$(fg)'(x_0) = f'(x_0)\\,g(x_0) + f(x_0)\\,g'(x_0),$$\n\n$$\\left(\\frac{f}{g}\\right)'(x_0) = \\frac{f'(x_0)\\,g(x_0) - f(x_0)\\,g'(x_0)}{g(x_0)^{2}} \\quad (g(x_0) \\ne 0),$$\n\n$$(g \\circ f)'(x_0) = g'(f(x_0))\\,f'(x_0).$$",
    "notes": "⭐ 乘积法则的证明要点是**加一项减一项**：$f(x)g(x) - f(x_0)g(x_0) = [f(x) - f(x_0)]\\,g(x) + f(x_0)[g(x) - g(x_0)]$。\n\n第一项里的 $g(x)$ 要用「可导 $\\implies$ 连续」换成 $g(x_0)$ —— 这就是为什么 `prop.differentiable-implies-continuous` 必须排在它前面。\n\n⚠ 链式法则**不能**直接写 $\\dfrac{\\Delta g}{\\Delta f}\\cdot\\dfrac{\\Delta f}{\\Delta x}$：$\\Delta f$ 可能为 $0$（$f$ 在 $x_0$ 附近取值相同），分母会消失。\n\n正确写法是把 $g$ 的增量写成「线性主部 + 余项」：$g(y) - g(y_0) = [g'(y_0) + \\varepsilon(y)]\\,(y - y_0)$，其中 $\\varepsilon(y) \\to 0$。\n\n⭐ 商法则由乘积法则与 $\\left(\\dfrac{1}{g}\\right)' = -\\dfrac{g'}{g^{2}}$ 合成；\n\n后者是把 $\\dfrac{1}{g(x)} - \\dfrac{1}{g(x_0)} = -\\dfrac{g(x) - g(x_0)}{g(x)g(x_0)}$ 除以 $x - x_0$ 再取极限。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 5"
@@ -24863,8 +24863,8 @@
     "极点",
     "绕数"
    ],
-   "statement": "**白话**：全纯函数沿闭曲线「转了几圈」，正好等于曲线内部的零点个数减去极点个数（都按重数算）—— 数辐角的变化量就等于数零极点。\n\n设 $\\gamma$ 是分段光滑闭曲线，$\\Omega$ 含 $\\gamma$ 及其内部，$f$ 在 $\\Omega$ 上除有限个极点外全纯，且在 $\\gamma$ 上既无零点也无极点。则\n\n$$\\frac{1}{2\\pi i}\\oint_{\\gamma} \\frac{f'(z)}{f(z)}\\,\\mathrm{d}z = Z - P = n(f \\circ \\gamma,\\, 0),$$\n\n其中 $Z$ 是 $f$ 在 $\\gamma$ 内部的零点个数（按重数计），$P$ 是极点个数（按阶数计），$n$ 是绕数。",
-   "notes": "⭐ 特例最常见：$f$ 在内部**全纯**时 $P = 0$，于是 $\\oint_{\\gamma} f'/f = 2\\pi i Z$ —— 「零点个数」变成一个积分。\n\n⭐ 几何读法：$f \\circ \\gamma$ 是一条绕 $0$ 的闭曲线，$Z - P$ 就是它绕 $0$ 的圈数。零点把像曲线往外「拧」一圈，极点往里「拧」一圈。\n\n⚠ 边界上不能有零点和极点 —— 否则 $f'/f$ 在 $\\gamma$ 上无定义，积分根本不存在。\n\n⭐ 顺带的结论：$Z - P$ 对曲线的微小形变**不变**（只要形变过程中不扫过零点或极点），因为它是整数且连续变化。\n\n📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。",
+   "statement": "**白话**：全纯函数沿闭曲线「转了几圈」，正好等于曲线内部的零点个数减去极点个数（都按重数算）—— 数辐角的变化量就等于数零极点。\n\n设 $\\gamma$ 是**正向、简单**的分段光滑闭曲线（逆时针、不自交），$\\Omega$ 含 $\\gamma$ 及其内部，$f$ 在 $\\Omega$ 上除有限个极点外全纯，且在 $\\gamma$ 上既无零点也无极点。则\n\n$$\\frac{1}{2\\pi i}\\oint_{\\gamma} \\frac{f'(z)}{f(z)}\\,\\mathrm{d}z = Z - P = n(f \\circ \\gamma,\\, 0),$$\n\n其中 $Z$ 是 $f$ 在 $\\gamma$ 内部的零点个数（按重数计），$P$ 是极点个数（按阶数计），$n$ 是绕数。",
+   "notes": "⭐ 特例最常见：$f$ 在内部**全纯**时 $P = 0$，于是 $\\oint_{\\gamma} f'/f = 2\\pi i Z$ —— 「零点个数」变成一个积分。\n\n⭐ 几何读法：$f \\circ \\gamma$ 是一条绕 $0$ 的闭曲线，$Z - P$ 就是它绕 $0$ 的圈数。零点把像曲线往外「拧」一圈，极点往里「拧」一圈。\n\n⚠ 边界上不能有零点和极点 —— 否则 $f'/f$ 在 $\\gamma$ 上无定义，积分根本不存在。\n\n⭐ 顺带的结论：$Z - P$ 对曲线的微小形变**不变**（只要形变过程中不扫过零点或极点），因为它是整数且连续变化。\n\n📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。\n\n⚠ **「简单」不能省**：断言的是未加权的 $Z - P$，只有**正向简单**闭曲线才成立。一般闭曲线的正确写法是按绕数加权：$\\dfrac{1}{2\\pi i}\\oint_{\\gamma}\\dfrac{f'}{f} = \\sum_k m_k\\,n(\\gamma, a_k) - \\sum_j n_j\\,n(\\gamma, b_j)$（$a_k$ 为零点、$b_j$ 为极点，$n$ 是绕数，见 `def.winding-number` / `prop.winding-integral`）——右边那个 $n(f\\circ\\gamma, 0)$ 一直是**加权**量，所以等式两端只在「每个内部点绕数 $=1$」时变成 $Z - P$。",
    "refs": [
     "王晓光《复变函数》· 辐角原理",
     "Ahlfors, Complex Analysis · 辐角原理与 Rouché 定理",
@@ -24905,8 +24905,8 @@
     "Rouché",
     "零点个数"
    ],
-   "statement": "**白话**：如果两个全纯函数在闭曲线的边界上，「扰动项」的模严格小于「主项」的模，那么加上扰动不会改变曲线内部的零点个数。\n\n设 $\\gamma$ 是分段光滑闭曲线，$f, g$ 在 $\\gamma$ 及其内部全纯，且在 $\\gamma$ 上处处\n\n$$|g(z)| < |f(z)|.$$\n\n则 $f$ 与 $f + g$ 在 $\\gamma$ 内部有同样多的零点（都按重数计）。",
-   "notes": "⭐ 用途：数零点不用解方程，只要在边界上比大小。\n\n例：$f(z) = -5z^3$、$g(z) = z^7 + z - 2$，在 $|z| = 1$ 上 $|g| \\le 1 + 1 + 2 = 4 < 5 = |f|$，故 $z^7 - 5z^3 + z - 2$ 在 $|z| < 1$ 内恰有 $3$ 个零点（与 $-5z^3$ 相同）。\n\n⭐ 代数基本定理的另一条证明：$f(z) = a_n z^n$、$g(z) = a_{n-1}z^{n-1} + \\cdots + a_0$，在 $|z| = R$ 上取 $R$ 充分大就有 $|g| < |f|$，于是 $p$ 与 $a_n z^n$ 在 $|z| < R$ 内零点数相同，都是 $n$ 个。\n\n⚠ 条件必须**严格**、而且要在**整条边界**上成立。等号是可以出事的位置：$f = z$、$g = -z$ 在 $|z| = 1$ 上有 $|g| = |f|$，$f$ 与 $f + g = 0$ 的零点数完全不同。\n\n📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。",
+   "statement": "**白话**：如果两个全纯函数在闭曲线的边界上，「扰动项」的模严格小于「主项」的模，那么加上扰动不会改变曲线内部的零点个数。\n\n设 $\\gamma$ 是**正向、简单**的分段光滑闭曲线（逆时针、不自交），$f, g$ 在 $\\gamma$ 及其内部全纯，且在 $\\gamma$ 上处处\n\n$$|g(z)| < |f(z)|.$$\n\n则 $f$ 与 $f + g$ 在 $\\gamma$ 内部有同样多的零点（都按重数计）。",
+   "notes": "⭐ 用途：数零点不用解方程，只要在边界上比大小。\n\n例：$f(z) = -5z^3$、$g(z) = z^7 + z - 2$，在 $|z| = 1$ 上 $|g| \\le 1 + 1 + 2 = 4 < 5 = |f|$，故 $z^7 - 5z^3 + z - 2$ 在 $|z| < 1$ 内恰有 $3$ 个零点（与 $-5z^3$ 相同）。\n\n⭐ 代数基本定理的另一条证明：$f(z) = a_n z^n$、$g(z) = a_{n-1}z^{n-1} + \\cdots + a_0$，在 $|z| = R$ 上取 $R$ 充分大就有 $|g| < |f|$，于是 $p$ 与 $a_n z^n$ 在 $|z| < R$ 内零点数相同，都是 $n$ 个。\n\n⚠ 条件必须**严格**、而且要在**整条边界**上成立。等号是可以出事的位置：$f = z$、$g = -z$ 在 $|z| = 1$ 上有 $|g| = |f|$，$f$ 与 $f + g = 0$ 的零点数完全不同。\n\n📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。\n\n⚠ **「简单」不能省**：断言的是「内部零点个数相等」（未加权）。对一般闭曲线，正确的结论要按绕数加权 —— 而按幅角原理 $\\dfrac{1}{2\\pi i}\\oint f'/f$ 给出的本来就是加权和，两端只在「内部每个点绕数 $= 1$」时才相等（见 `thm.argument-principle` 的注）。",
    "refs": [
     "王晓光《复变函数》· Rouché 定理",
     "Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm"
@@ -64521,7 +64521,7 @@
     "连续",
     "紧"
    ],
-   "statement": "设 $X$ 是紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\\min}, x_{\\max} \\in X$，使对一切 $x \\in X$ 有\n\n$$f(x_{\\min}) \\le f(x) \\le f(x_{\\max})$$",
+   "statement": "设 $X$ 是**非空**的紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\\min}, x_{\\max} \\in X$，使对一切 $x \\in X$ 有\n\n$$f(x_{\\min}) \\le f(x) \\le f(x_{\\max})$$",
    "notes": "⭐ 「有界」与「取到最值」是两件事，这也是图上把它们分成两个节点的原因：有界只说明 $\\sup f(X)$ 是**有限的**，取到最值说明这个上确界**被某个点实打实地达到**。\n\n紧性负责后者。\n\n⚠ 换成开区间立刻失败：$f(x) = x$ 在 $(0, 1)$ 上有界，却既取不到最大值也取不到最小值。\n\n⭐ 在 $\\mathbb{R}$ 上的常用形式：**闭区间 $[a, b]$ 上的连续函数取到最值** —— 证明的第一步是「闭区间紧」（Heine–Borel）。\n\n初等微积分里求极值的整套流程（找驻点 + 比端点）就建立在这条上。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 4"
@@ -64836,7 +64836,7 @@
     "定理",
     "导数"
    ],
-   "statement": "设 $f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\\xi \\in (a, b)$ 使\n\n$$f'(\\xi) = 0$$",
+   "statement": "设 $a < b$，$f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\\xi \\in (a, b)$ 使\n\n$$f'(\\xi) = 0$$",
    "notes": "⭐ 几何内容：两端等高时，中间必有一个水平切线点。\n\n它是中值定理家族里**唯一需要紧性**的一条（用最值定理找内部极值点），后面几条都是它换一件衣服。\n\n⚠ 两个前提同样不能丢：「$[a, b]$ 上连续」保证最值存在（紧性），「$(a, b)$ 内可导」保证那个极值点是内点、可以用 Fermat 引理。\n\n$f(a) = f(b)$ 若换成 $f(a) \\ne f(b)$ 就是 Lagrange 中值定理。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 5"
@@ -64875,7 +64875,7 @@
     "定理",
     "导数"
    ],
-   "statement": "设 $f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\\xi \\in (a, b)$ 使\n\n$$f(b) - f(a) = f'(\\xi)\\,(b - a)$$\n\n等价地 $f'(\\xi) = \\dfrac{f(b) - f(a)}{b - a}$：**平均变化率必在某点被瞬时变化率取到**。",
+   "statement": "设 $a < b$，$f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\\xi \\in (a, b)$ 使\n\n$$f(b) - f(a) = f'(\\xi)\\,(b - a)$$\n\n等价地 $f'(\\xi) = \\dfrac{f(b) - f(a)}{b - a}$：**平均变化率必在某点被瞬时变化率取到**。",
    "notes": "⭐ 这是整个微分学的**总开关**：凡是要「从逐点的导数信息推出整体结论」的定理，第一个动作都是「用中值定理把差写成导数」。\n\n单调性判据、常函数判据、L'Hôpital、Taylor 公式、凸性判据，全都是它的推论。\n\n⚠ **$\\xi$ 不可控**：定理只保证存在，不说在哪 —— 这就是为什么中值定理不能用来**计算** $f(b) - f(a)$，只能用来证明不等式与结构性质。\n\n⚠ 一般情形的反例说明「连续」不能丢：$f(x) = x$ 在 $[0, 1] \\setminus \\{1/2\\}$ 上加一点跳跃就能让平均斜率无处可取。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 5",
@@ -64915,7 +64915,7 @@
     "定理",
     "导数"
    ],
-   "statement": "设 $f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g'(x) \\ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\\xi \\in (a, b)$ 使\n\n$$\\frac{f(b) - f(a)}{g(b) - g(a)} = \\frac{f'(\\xi)}{g'(\\xi)}$$",
+   "statement": "设 $a < b$，$f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g'(x) \\ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\\xi \\in (a, b)$ 使\n\n$$\\frac{f(b) - f(a)}{g(b) - g(a)} = \\frac{f'(\\xi)}{g'(\\xi)}$$",
    "notes": "⭐ 它不是 Lagrange 的「取 $g(x) = x$」那么简单：把两个函数的增量**同时**用同一个点 $\\xi$ 表示出来，这是 L'Hôpital 法则能成立的全部理由。\n\n⚠ $g' \\ne 0$ 的条件不可省 —— 它同时保证 $g(b) \\ne g(a)$（由 Rolle 定理），分母才有意义。\n\n⚠ 参数曲线读法：$t \\mapsto (g(t), f(t))$ 是一条曲线，结论说的是曲线在某个内点处的切线**平行于**两端点的连线 —— 与 Lagrange 的「平行于弦」是同一个几何意思，只是现在弦不必是函数的图像。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 5"
@@ -70016,7 +70016,7 @@
    ],
    "target": "thm.geometric-series",
    "title": "部分和公式 + Bernoulli $\\implies$ 几何级数",
-   "proof": "**$|q| < 1$。** 部分和（$q \\ne 1$）\n\n$$s_N = \\sum_{n=0}^{N} q^{n} = \\frac{1 - q^{N+1}}{1 - q}.$$\n\n要证 $q^{N} \\to 0$。写 $1/|q| = 1 + h$（$h > 0$）。由 Bernoulli，$(1 + h)^{N} \\ge 1 + Nh$，故\n\n$$|q|^{N} \\le \\frac{1}{1 + Nh} \\le \\frac{1}{Nh}.$$\n\n给定 $\\varepsilon > 0$，由 `cor.archimedean-epsilon` 取 $N$ 使 $1/(Nh) < \\varepsilon$。于是 $s_N \\to 1/(1-q)$。\n\n**$|q| \\ge 1$。** 此时 $|q^{n}| \\ge 1$，通项不趋于 $0$，由级数收敛的必要条件（`thm.cauchy-criterion-series`）发散。$\\blacksquare$",
+   "proof": "**$|q| < 1$。** 若 $q = 0$，则 $s_N = 1$ 对一切 $N$ 成立，收敛到 $1$ ✓；下面设 $q \\ne 0$（此时 $q \\ne 1$ 自动成立）。部分和\n\n$$s_N = \\sum_{n=0}^{N} q^{n} = \\frac{1 - q^{N+1}}{1 - q}.$$\n\n要证 $q^{N} \\to 0$。写 $1/|q| = 1 + h$（$h > 0$）。由 Bernoulli，$(1 + h)^{N} \\ge 1 + Nh$，故\n\n$$|q|^{N} \\le \\frac{1}{1 + Nh} \\le \\frac{1}{Nh}.$$\n\n给定 $\\varepsilon > 0$，由 `cor.archimedean-epsilon` 取 $N$ 使 $1/(Nh) < \\varepsilon$。于是 $s_N \\to 1/(1-q)$。\n\n**$|q| \\ge 1$。** 此时 $|q^{n}| \\ge 1$，通项不趋于 $0$，由级数收敛的必要条件（`thm.cauchy-criterion-series`）发散。$\\blacksquare$",
    "note": ""
   },
   {

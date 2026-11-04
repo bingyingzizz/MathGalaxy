@@ -60,7 +60,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['定理', '连续', '紧'],
       statement: [
-        '设 $X$ 是紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\\min}, x_{\\max} \\in X$，使对一切 $x \\in X$ 有',
+        '设 $X$ 是**非空**的紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\\min}, x_{\\max} \\in X$，使对一切 $x \\in X$ 有',
         '',
         '$$f(x_{\\min}) \\le f(x) \\le f(x_{\\max})$$'
       ].join('\n'),

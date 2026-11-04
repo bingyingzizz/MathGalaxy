@@ -302,7 +302,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '度量空间', '不动点', '完备'],
       statement: [
-        '设 $(X, d)$ 是**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射。则',
+        '设 $(X, d)$ 是**非空**的**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射。则',
         '',
         '- $T$ 有**唯一**不动点 $x^{\\ast} \\in X$（即 $Tx^{\\ast} = x^{\\ast}$）；',
         '- 对**任意**初值 $x_0 \\in X$，迭代列 $x_{k+1} := T x_k$ 收敛到 $x^{\\ast}$；',
@@ -347,7 +347,7 @@ window.MG = window.MG || {};
         '',
         '$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{invertible}$$',
         '',
-        '（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使',
+        '（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$、$b$ 的开邻域 $W \\subseteq \\mathbb{R}^{m}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to W$ 使',
         '',
         '$$g(a) = b, \\qquad F\\bigl(x,\\ g(x)\\bigr) = 0 \\quad (x \\in V)$$',
         '',

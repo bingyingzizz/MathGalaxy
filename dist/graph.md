@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-04T07:44:26.961Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-04T08:09:54.878Z
 > 15 星系 / 105 星团 / 1540 节点 / 3165 连线（强边 3126，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -7083,7 +7083,7 @@ $$q(x) := x^{\mathsf{T}} A\, x = \sum_{i, j} a_{ij}\, x_i x_j \in \mathbb{R}, \q
 
 设 $A \in M_n(\mathbb{R})$ 对称。记 $D_k$ 为 $A$ 的**左上角** $k \times k$ 子矩阵的行列式（**顺序主子式**）。则
 
-$$D_1 > 0,\quad D_2 > 0,\quad \ldots,\quad D_n > 0$$
+$$A\ \text{ 正定} \iff D_1 > 0,\quad D_2 > 0,\quad \ldots,\quad D_n > 0.$$
 
 ⭐ 这是**最便宜**的正定性判据：只算 $n$ 个行列式（实际算时用消元法顺带得到），不必求特征值。
 
@@ -11137,7 +11137,7 @@ $f$ 连续给出 $f(x_{n_k}) \to f(x^{*})$，而收敛的数列有界，于是�
 #### 最值定理　`thm.evt`
 *定理*　最值定理
 
-设 $X$ 是紧度量空间，$f : X \to \mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\min}, x_{\max} \in X$，使对一切 $x \in X$ 有
+设 $X$ 是**非空**的紧度量空间，$f : X \to \mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\min}, x_{\max} \in X$，使对一切 $x \in X$ 有
 
 $$f(x_{\min}) \le f(x) \le f(x_{\max})$$
 
@@ -11275,7 +11275,7 @@ $x_0$ 根本不在定义域里时（如 $1/x$ 在 $0$）不算以 $0$ 为定义�
 #### 求导法则　`thm.derivative-rules`
 *定理*　定理：求导的四则运算与链式法则
 
-设 $f, g$ 在 $x_0$ 可导，$c \in \mathbb{R}$。则
+设 $f$ 在 $x_0$ 可导、$g$ 在 $f(x_0)$ 可导（下面前四条只需 $f, g$ 各自在 $x_0$ 可导），$c \in \mathbb{R}$。则
 
 $$(f \pm g)'(x_0) = f'(x_0) \pm g'(x_0), \qquad (cf)'(x_0) = c\,f'(x_0),$$
 
@@ -11362,7 +11362,7 @@ $$f'(x_0) = 0$$
 #### Rolle 中值定理　`thm.rolle`
 *定理*　Rolle 中值定理（Rolle's Theorem）
 
-设 $f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\xi \in (a, b)$ 使
+设 $a < b$，$f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\xi \in (a, b)$ 使
 
 $$f'(\xi) = 0$$
 
@@ -11379,7 +11379,7 @@ $f(a) = f(b)$ 若换成 $f(a) \ne f(b)$ 就是 Lagrange 中值定理。
 #### Lagrange 中值定理　`thm.mvt`
 *定理*　Lagrange 中值定理
 
-设 $f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\xi \in (a, b)$ 使
+设 $a < b$，$f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\xi \in (a, b)$ 使
 
 $$f(b) - f(a) = f'(\xi)\,(b - a)$$
 
@@ -11398,7 +11398,7 @@ $$f(b) - f(a) = f'(\xi)\,(b - a)$$
 #### Cauchy 中值定理　`thm.cauchy-mvt`
 *定理*　Cauchy 中值定理（广义中值定理）
 
-设 $f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g'(x) \ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\xi \in (a, b)$ 使
+设 $a < b$，$f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g'(x) \ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\xi \in (a, b)$ 使
 
 $$\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}$$
 
@@ -13059,7 +13059,7 @@ $$d(Tx, Ty) \le q\, d(x, y) \qquad (x, y \in X)$$
 #### 压缩映射原理　`thm.banach-fixed-point`
 *定理*　定理（Banach）：完备度量空间上的压缩映射有唯一不动点
 
-设 $(X, d)$ 是**完备**度量空间（`def.complete`），$T : X \to X$ 是以 $q < 1$ 为系数的压缩映射。则
+设 $(X, d)$ 是**非空**的**完备**度量空间（`def.complete`），$T : X \to X$ 是以 $q < 1$ 为系数的压缩映射。则
 
 - $T$ 有**唯一**不动点 $x^{\ast} \in X$（即 $Tx^{\ast} = x^{\ast}$）；
 - 对**任意**初值 $x_0 \in X$，迭代列 $x_{k+1} := T x_k$ 收敛到 $x^{\ast}$；
@@ -13125,7 +13125,7 @@ $f(x, y) = (e^{x}\cos y,\ e^{x}\sin y)$ 的 $\det Df = e^{2x} \ne 0$ 处处成�
 
 $$F(a, b) = 0, \qquad D_y F(a, b) \in M_m(\mathbb{R})\ \text{invertible}$$
 
-（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \subseteq \mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \to \mathbb{R}^{m}$ 使
+（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \subseteq \mathbb{R}^{n}$、$b$ 的开邻域 $W \subseteq \mathbb{R}^{m}$ 与**唯一**的 $C^{1}$ 映射 $g : V \to W$ 使
 
 $$g(a) = b, \qquad F\bigl(x,\ g(x)\bigr) = 0 \quad (x \in V)$$
 
@@ -31363,7 +31363,7 @@ $$\oint_{\partial\Omega} f\,\mathrm{d}z = \sum_{k=1}^{n} \oint_{|\zeta - z_k| = 
 
 **白话**：全纯函数沿闭曲线「转了几圈」，正好等于曲线内部的零点个数减去极点个数（都按重数算）—— 数辐角的变化量就等于数零极点。
 
-设 $\gamma$ 是分段光滑闭曲线，$\Omega$ 含 $\gamma$ 及其内部，$f$ 在 $\Omega$ 上除有限个极点外全纯，且在 $\gamma$ 上既无零点也无极点。则
+设 $\gamma$ 是**正向、简单**的分段光滑闭曲线（逆时针、不自交），$\Omega$ 含 $\gamma$ 及其内部，$f$ 在 $\Omega$ 上除有限个极点外全纯，且在 $\gamma$ 上既无零点也无极点。则
 
 $$\frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z = Z - P = n(f \circ \gamma,\, 0),$$
 
@@ -31379,6 +31379,8 @@ $$\frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z = Z - P = n(f \
 
 📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。
 
+⚠ **「简单」不能省**：断言的是未加权的 $Z - P$，只有**正向简单**闭曲线才成立。一般闭曲线的正确写法是按绕数加权：$\dfrac{1}{2\pi i}\oint_{\gamma}\dfrac{f'}{f} = \sum_k m_k\,n(\gamma, a_k) - \sum_j n_j\,n(\gamma, b_j)$（$a_k$ 为零点、$b_j$ 为极点，$n$ 是绕数，见 `def.winding-number` / `prop.winding-integral`）——右边那个 $n(f\circ\gamma, 0)$ 一直是**加权**量，所以等式两端只在「每个内部点绕数 $=1$」时变成 $Z - P$。
+
 参考：王晓光《复变函数》· 辐角原理；Ahlfors, Complex Analysis · 辐角原理与 Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
 
 #### Rouché 定理　`thm.rouche`
@@ -31386,7 +31388,7 @@ $$\frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z = Z - P = n(f \
 
 **白话**：如果两个全纯函数在闭曲线的边界上，「扰动项」的模严格小于「主项」的模，那么加上扰动不会改变曲线内部的零点个数。
 
-设 $\gamma$ 是分段光滑闭曲线，$f, g$ 在 $\gamma$ 及其内部全纯，且在 $\gamma$ 上处处
+设 $\gamma$ 是**正向、简单**的分段光滑闭曲线（逆时针、不自交），$f, g$ 在 $\gamma$ 及其内部全纯，且在 $\gamma$ 上处处
 
 $$|g(z)| < |f(z)|.$$
 
@@ -31401,6 +31403,8 @@ $$|g(z)| < |f(z)|.$$
 ⚠ 条件必须**严格**、而且要在**整条边界**上成立。等号是可以出事的位置：$f = z$、$g = -z$ 在 $|z| = 1$ 上有 $|g| = |f|$，$f$ 与 $f + g = 0$ 的零点数完全不同。
 
 📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。
+
+⚠ **「简单」不能省**：断言的是「内部零点个数相等」（未加权）。对一般闭曲线，正确的结论要按绕数加权 —— 而按幅角原理 $\dfrac{1}{2\pi i}\oint f'/f$ 给出的本来就是加权和，两端只在「内部每个点绕数 $= 1$」时才相等（见 `thm.argument-principle` 的注）。
 
 参考：王晓光《复变函数》· Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
 
@@ -41619,7 +41623,7 @@ $$(\sin x)' = \sum_{k \ge 0} \frac{(-1)^{k}(2k+1)x^{2k}}{(2k+1)!} = \cos x, \qqu
 #### 级数收敛 + Bernoulli 不等式 + Archimedes 的 ε 形式与取整 ⟹ 几何级数　`imp.geometric-series`
 *部分和公式 + Bernoulli $\implies$ 几何级数*
 
-**$|q| < 1$。** 部分和（$q \ne 1$）
+**$|q| < 1$。** 若 $q = 0$，则 $s_N = 1$ 对一切 $N$ 成立，收敛到 $1$ ✓；下面设 $q \ne 0$（此时 $q \ne 1$ 自动成立）。部分和
 
 $$s_N = \sum_{n=0}^{N} q^{n} = \frac{1 - q^{N+1}}{1 - q}.$$
 

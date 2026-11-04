@@ -85,7 +85,7 @@ window.MG = window.MG || {};
       tags: ['定理', '导数', '运算'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 5'],
       statement: [
-        '设 $f, g$ 在 $x_0$ 可导，$c \\in \\mathbb{R}$。则',
+        '设 $f$ 在 $x_0$ 可导、$g$ 在 $f(x_0)$ 可导（下面前四条只需 $f, g$ 各自在 $x_0$ 可导），$c \\in \\mathbb{R}$。则',
         '',
         '$$(f \\pm g)\'(x_0) = f\'(x_0) \\pm g\'(x_0), \\qquad (cf)\'(x_0) = c\\,f\'(x_0),$$',
         '',
@@ -262,7 +262,7 @@ window.MG = window.MG || {};
       target: 'thm.geometric-series',
       title: '部分和公式 + Bernoulli $\\implies$ 几何级数',
       proof: [
-        '**$|q| < 1$。** 部分和（$q \\ne 1$）',
+        '**$|q| < 1$。** 若 $q = 0$，则 $s_N = 1$ 对一切 $N$ 成立，收敛到 $1$ ✓；下面设 $q \\ne 0$（此时 $q \\ne 1$ 自动成立）。部分和',
         '',
         '$$s_N = \\sum_{n=0}^{N} q^{n} = \\frac{1 - q^{N+1}}{1 - q}.$$',
         '',

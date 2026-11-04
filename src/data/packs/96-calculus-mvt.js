@@ -63,7 +63,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
-        '设 $f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\\xi \\in (a, b)$ 使',
+        '设 $a < b$，$f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\\xi \\in (a, b)$ 使',
         '',
         '$$f\'(\\xi) = 0$$'
       ].join('\n'),
@@ -79,7 +79,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
-        '设 $f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\\xi \\in (a, b)$ 使',
+        '设 $a < b$，$f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\\xi \\in (a, b)$ 使',
         '',
         '$$f(b) - f(a) = f\'(\\xi)\\,(b - a)$$',
         '',
@@ -97,7 +97,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
-        '设 $f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g\'(x) \\ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\\xi \\in (a, b)$ 使',
+        '设 $a < b$，$f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g\'(x) \\ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\\xi \\in (a, b)$ 使',
         '',
         '$$\\frac{f(b) - f(a)}{g(b) - g(a)} = \\frac{f\'(\\xi)}{g\'(\\xi)}$$'
       ].join('\n'),
