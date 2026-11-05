@@ -73,7 +73,7 @@ window.MG = window.MG || {};
         '',
         '高阶偏导写成 $\\partial^{\\alpha} f = \\partial_1^{\\alpha_1} \\cdots \\partial_n^{\\alpha_n} f$（$\\alpha = (\\alpha_1, \\ldots, \\alpha_n)$ 是多重指标，$|\\alpha| = \\alpha_1 + \\cdots + \\alpha_n$）。'
       ].join('\n'),
-      notes: '⚠ 偏导数存在**什么也保证不了**：$f(x, y) = xy/(x^{2} + y^{2})$（原点补 $f(0,0) = 0$）在原点两个偏导都存在（都等于 $0$），但沿 $y = x$ 趋近时 $f \\to 1/2 \\ne f(0,0)$ —— 它连**连续**都不成立。\n\n⭐ 病根是一个不对称：偏导存在是 $2n$ 个**一维**条件，而可微（`def.total-differential`）是**一个** $n$ 维条件。\n\n一维条件再多也堆不出 $n$ 维结论。\n\n⭐ 反过来，$C^{1}$（偏导存在**且连续**）就足以推出可微 —— 这条是实践中最常用的充分条件，证明见 `def.total-differential` 的说明。\n\n⭐ 在 $\\mathbb{R}^n$ 这种「坐标里长出来的空间」上偏导是免费的；\n\n到了**流形**或 **Banach 空间**上，「坐标」本身要先花力气造出来，那时才有方向导数与可微性的讨论。',
+      notes: '⚠ 偏导数存在**什么也保证不了**：$f(x, y) = xy/(x^{2} + y^{2})$（原点补 $f(0,0) = 0$）在原点两个偏导都存在（都等于 $0$），但沿 $y = x$ 趋近时 $f \\to 1/2 \\ne f(0,0)$ —— 它连**连续**都不成立。\n\n⭐ 病根是一个不对称：偏导存在是 $n$ 个**一维**条件（标量 $f$；向量值 $f:\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ 是 $mn$ 个），而可微（`def.total-differential`）是**一个** $n$ 维条件。\n\n一维条件再多也堆不出 $n$ 维结论。\n\n⭐ 反过来，$C^{1}$（偏导存在**且连续**）就足以推出可微 —— 这条是实践中最常用的充分条件，证明见 `def.total-differential` 的说明。\n\n⭐ 在 $\\mathbb{R}^n$ 这种「坐标里长出来的空间」上偏导是免费的；\n\n到了**流形**或 **Banach 空间**上，「坐标」本身要先花力气造出来，那时才有方向导数与可微性的讨论。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Spivak, Calculus on Manifolds, Ch. 2']
     },
     {
@@ -131,7 +131,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nabla f(a) = \\bigl( \\partial_1 f(a), \\ldots, \\partial_n f(a) \\bigr)^{\\mathsf{T}}$$'
       ].join('\n'),
-      notes: '⭐ 一句话：**梯度是把对偶向量用内积「搬回来」的产物**。\n\n$Df(a)$ 天生住在对偶空间 $(\\mathbb{R}^{n})^{\\ast}$ 里，而「搬回来」需要一个内积 —— 换个内积，同一个 $Df(a)$ 就给出**不同**的梯度向量。\n\n⭐ 这也是微分几何里必须区分 $df$（余切向量）与 $\\nabla f$（切向量）的原因：$df$ 不依赖任何度量，$\\nabla f$ 依赖。\n\n⭐ 几何内容（都靠 Cauchy–Schwarz，`thm.cauchy-schwarz`）：\n- $D_v f(a) = \\langle \\nabla f(a), v \\rangle$；\n\n\n- 在**单位**方向里，$v = \\nabla f(a)/\\|\\nabla f(a)\\|$ 给出最大的方向导数 $\\|\\nabla f(a)\\|$（上升最快）；\n\n\n- $\\nabla f(a)$ 垂直于过 $a$ 的等值面 $\\{f = c\\}$（因为沿等值面的方向导数为零）。\n\n⚠ 「梯度指向上升最快」只在**标准内积**下成立；\n\n换了内积，「最快」要按那个内积重新度量（这也是最优化里预处理 / 牛顿法的出发点）。',
+      notes: '⭐ 一句话：**梯度是把对偶向量用内积「搬回来」的产物**。\n\n$Df(a)$ 天生住在对偶空间 $(\\mathbb{R}^{n})^{\\ast}$ 里，而「搬回来」需要一个内积 —— 换个内积，同一个 $Df(a)$ 就给出**不同**的梯度向量。\n\n⭐ 这也是微分几何里必须区分 $df$（余切向量）与 $\\nabla f$（切向量）的原因：$df$ 不依赖任何度量，$\\nabla f$ 依赖。\n\n⭐ 几何内容（都靠 Cauchy–Schwarz，`thm.cauchy-schwarz`）：\n- $D_v f(a) = \\langle \\nabla f(a), v \\rangle$；\n\n\n- 在**单位**方向里（当 $\\nabla f(a) \\ne 0$ 时），$v = \\nabla f(a)/\\|\\nabla f(a)\\|$ 给出最大的方向导数 $\\|\\nabla f(a)\\|$（上升最快）；\n\n\n- $\\nabla f(a)$ 垂直于过 $a$ 的等值面 $\\{f = c\\}$（因为沿等值面的方向导数为零）。\n\n⚠ 「梯度指向上升最快」只在**标准内积**下成立；\n\n换了内积，「最快」要按那个内积重新度量（这也是最优化里预处理 / 牛顿法的出发点）。',
       refs: ['Spivak, Calculus on Manifolds, Ch. 2', 'Rudin, Principles of Mathematical Analysis, Ch. 9']
     },
     {
@@ -271,7 +271,7 @@ window.MG = window.MG || {};
         '- $H_f(a)$ **不定**（同时有正、负特征值）$\\implies$ $a$ 既非局部极小也非局部极大（**鞍点**）；',
         '- $H_f(a)$ 半定或退化（有零特征值）$\\implies$ **本判据失效**，需要更高阶的信息。'
       ].join('\n'),
-      notes: '⭐ 这是「微积分 $\\times$ 线性代数」在本科阶段最漂亮的一次交汇：**判极值 = 判二次型正定**，而后者有现成的算法（`thm.sylvester-criterion` 的顺序主子式，或 `thm.spectral-theorem` 的特征值符号）。\n\n⚠ 「半定」那一档真的没有结论，两个反例：\n- $f = x^{4} + y^{4}$ 在原点 $H = 0$（半定），但原点是严格极小；\n\n\n- $f = x^{4} - y^{4}$ 在原点同样 $H = 0$，但原点是鞍点。\n\n\n所以判据失效不是「证法不够好」，而是信息真的不足。\n\n⚠ 反过来，正定只给**局部**极小：$f(x) = x^{2}(1 + x^{2})$ 在原点正定但整体有别的极小点。\n\n证明全文在边上（$k=2$ 的 Taylor + 正定二次型的估计 $h^{\\mathsf{T}}Hh \\ge \\lambda_{\\min}\\|h\\|^{2}$；\n\n不定那一档用正负特征向量各走一步）。',
+      notes: '⭐ 这是「微积分 $\\times$ 线性代数」在本科阶段最漂亮的一次交汇：**判极值 = 判二次型正定**，而后者有现成的算法（`thm.sylvester-criterion` 的顺序主子式，或 `thm.spectral-theorem` 的特征值符号）。\n\n⚠ 「半定」那一档真的没有结论，两个反例：\n- $f = x^{4} + y^{4}$ 在原点 $H = 0$（半定），但原点是严格极小；\n\n\n- $f = x^{4} - y^{4}$ 在原点同样 $H = 0$，但原点是鞍点。\n\n\n所以判据失效不是「证法不够好」，而是信息真的不足。\n\n⚠ 反过来，正定只给**局部**极小：$f(x) = x^{2} - x^{4}$ 在原点 $f\'\'(0) = 2 > 0$（局部极小），但全局最小值在 $x = \\pm 1/\\sqrt{2}$ 处（值为 $-1/4$）—— 所以「局部极小」推不出「全局极小」。\n\n证明全文在边上（$k=2$ 的 Taylor + 正定二次型的估计 $h^{\\mathsf{T}}Hh \\ge \\lambda_{\\min}\\|h\\|^{2}$；\n\n不定那一档用正负特征向量各走一步）。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Spivak, Calculus on Manifolds, Ch. 2']
     },
 
@@ -331,7 +331,7 @@ window.MG = window.MG || {};
         '',
         '$$Dg(y) = \\bigl( Df(g(y)) \\bigr)^{-1}$$'
       ].join('\n'),
-      notes: '⭐ 定理的形状值得记：**局部可逆 $\\iff$ $Df(a)$ 可逆**，而且「逆映射的导数 = 导数的逆」。\n\n后半句完全是线性代数的操作 —— 一旦把 $f$ 局部看成「线性映射加高阶小量」，求逆自然落在 $Df$ 上。\n\n⚠ 「局部」不能去掉。\n\n$f(x, y) = (e^{x}\\cos y,\\ e^{x}\\sin y)$ 的 $\\det Df = e^{2x} \\ne 0$ 处处成立，但 $f$ 整体远非单射（$y$ 有周期 $2\\pi$）。\n\n⚠ 定理只保证 $C^{1}$；\n\n但由 $Dg = (Df \\circ g)^{-1}$ 立即得：$f$ 光滑 $\\implies$ $g$ 光滑（$Df\\circ g$ 光滑、求逆是光滑运算）。\n\n这就是「$f$ 是微分同胚 $\\implies$ $f^{-1}$ 也是」。\n\n⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的；\n\n在 Banach 空间里它是**另一条定理**（泛函分析的 `开映射定理`，与本图的「非常数全纯函数是开映射」同名但不同物，且尚未收录），不能从这里免费得到。\n\n⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。\n\n证明全文在边上（化归到 $Df(a) = I$，用压缩映射原理造出 $f$ 的局部逆，再从 $f \\circ g = \\mathrm{id}$ 反解 $Dg$）。',
+      notes: '⭐ 定理的形状值得记：**局部可逆 $\\iff$ $Df(a)$ 可逆**，而且「逆映射的导数 = 导数的逆」。\n\n后半句完全是线性代数的操作 —— 一旦把 $f$ 局部看成「线性映射加高阶小量」，求逆自然落在 $Df$ 上。\n\n⚠ 「局部」不能去掉。\n\n$f(x, y) = (e^{x}\\cos y,\\ e^{x}\\sin y)$ 的 $\\det Df = e^{2x} \\ne 0$ 处处成立，但 $f$ 整体远非单射（$y$ 有周期 $2\\pi$）。\n\n⚠ 定理只保证 $C^{1}$；\n\n但由 $Dg = (Df \\circ g)^{-1}$ 立即得：$f$ 光滑 $\\implies$ $g$ 光滑（$Df\\circ g$ 光滑、求逆是光滑运算）。\n\n这就是「$f$ 是微分同胚 $\\implies$ $f^{-1}$ 也是」。\n\n⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维与 Banach 空间里都是**免费**的（逆映射定理本身就给出局部同胚，局部同胚自然把开集映成开集）。⚠ 别和泛函分析的「**开映射定理**」搞混：那条讲的是满射有界线性算子是开映射，与本图的「非常数全纯函数是开映射」同名不同物。\n\n⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。\n\n证明全文在边上（化归到 $Df(a) = I$，用压缩映射原理造出 $f$ 的局部逆，再从 $f \\circ g = \\mathrm{id}$ 反解 $Dg$）。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Spivak, Calculus on Manifolds, Ch. 2', 'Lang, Undergraduate Analysis, Ch. XVI']
     },
     {
@@ -511,7 +511,7 @@ window.MG = window.MG || {};
         '',
         '是 $\\mathbb{R}^{m}$ 中的**零测集**（`def.null-set`，Lebesgue 测度为零）。'
       ].join('\n'),
-      notes: '⭐ Sard 说「**临界值极其稀少**」：几乎每个值都是正则值，于是几乎每个水平集是子流形（`thm.regular-value`）。\n\n这一条把「正则性」从「碰巧成立的假设」变成「几乎必然成立的事实」——这是微分拓扑里所有「一般位置」论证的根基。\n\n⚠ 光滑性（或足够高阶）是必要的：$n = m = 1$ 且 $f$ 只是 $C^{1}$ 时有反例（Whitney 构造的 $C^{1}$ 函数把临界值映满一个区间）。\n\nSard 给出的门槛是 $C^{k}$、$k > n - m$。\n\n⭐ 常被引用的推论：任意 $n$ 维流形可以嵌入 $\\mathbb{R}^{2n}$（用 Sard 制造一个「一般位置」的映射），以及 Borsuk–Ulam 型结论、Morse 理论里「几乎所有函数所有临界点都非退化」。\n\n⚠ **本节点只给证明提纲，不声称给出完整证明** —— 完整证明相当重（对 $m$ 归纳、Whitney 分解、外层用 Fubini 定理把零测性降维）。\n\n提纲与出处：\n1. $m = 1$：对 $n$ 归纳，把 $U$ 切成可数多个小方块，在每个方块上把 $f$ 展成一阶 Taylor，用「临界点处 $Df(x) = 0$」把小方块的像控制住；\n\n\n2. 一般 $m$：改用「临界点按 $\\operatorname{rank}$ 分层」（Whitney 分解），每层用 Fubini 降到低维情形，再对 $\\operatorname{rank}$ 归纳。\n\n\n细节见 Milnor《Topology from the Differentiable Viewpoint》§3 与 Sternberg《Lectures on Differential Geometry》§II.3。\n\n∎',
+      notes: '⭐ Sard 说「**临界值极其稀少**」：几乎每个值都是正则值，于是几乎每个水平集是子流形（`thm.regular-value`）。\n\n这一条把「正则性」从「碰巧成立的假设」变成「几乎必然成立的事实」——这是微分拓扑里所有「一般位置」论证的根基。\n\n⚠ 光滑性（或足够高阶）是必要的：$n - m \\ge 1$ 且只假设 $C^{1}$ 时有反例（如 $n = 2$、$m = 1$：Whitney 构造的 $C^{1}$ 函数把临界值映满一个区间）；$n = m = 1$ 时门槛 $k > 0$，$C^{1}$ 就够，一维的临界值集确实零测。\n\nSard 给出的门槛是 $C^{k}$、$k > n - m$。\n\n⭐ 常被引用的推论：任意 $n$ 维流形可以嵌入 $\\mathbb{R}^{2n}$（用 Sard 制造一个「一般位置」的映射），以及 Borsuk–Ulam 型结论、Morse 理论里「几乎所有函数所有临界点都非退化」。\n\n⚠ **本节点只给证明提纲，不声称给出完整证明** —— 完整证明相当重（对 $m$ 归纳、Whitney 分解、外层用 Fubini 定理把零测性降维）。\n\n提纲与出处：\n1. $m = 1$：对 $n$ 归纳，把 $U$ 切成可数多个小方块，在每个方块上把 $f$ 展成一阶 Taylor，用「临界点处 $Df(x) = 0$」把小方块的像控制住；\n\n\n2. 一般 $m$：改用「临界点按 $\\operatorname{rank}$ 分层」（Whitney 分解），每层用 Fubini 降到低维情形，再对 $\\operatorname{rank}$ 归纳。\n\n\n细节见 Milnor《Topology from the Differentiable Viewpoint》§3 与 Sternberg《Lectures on Differential Geometry》§II.3。\n\n∎',
       refs: ['Milnor, Topology from the Differentiable Viewpoint, §3', 'Sternberg, Lectures on Differential Geometry, §II.3', 'Guillemin–Pollack, Differential Topology, §2']
     }
   ],

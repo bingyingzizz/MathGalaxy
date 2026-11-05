@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T11:50:05.151Z",
+  "generated": "2026-11-05T11:54:32.135Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -7475,7 +7475,7 @@
     "线性代数"
    ],
    "statement": "线性映射 $T : V \\to W$ 叫**线性同构**，当且仅当 $T$ 是**双射**。此时记 $V \\cong W$，并称 $V$ 与 $W$ 同构。\n\n**基本事实**：$\\dim_K V = n < \\infty$ 时，$V \\cong K^{n}$（取一组基，$v \\mapsto [v]_{\\mathcal{B}}$ 就是同构）。更一般地，\n\n$$V \\cong W \\iff \\dim V = \\dim W$$\n\n（「$\\iff$」的右到左这一半在有限维时成立；无限维时仍成立，只是「维数」要按基的势来理解。）",
-   "notes": "⭐ 这条「基本事实」是整个有限维线性代数的**取消论**：同构类只由维数决定，所以「$n$ 维向量空间」只有一个（在同构意义下）。\n\n于是研究所有有限维向量空间 = 研究所有 $K^{n}$。\n\n⚠ 无限维时结论只在一半成立：等势的基给出同构，但同构当然也给出等势的基 —— 所以其实两个方向都对，只是「维数」要按基的势来理解（见「维数良定义」）。\n\n⭐ 在范畴语言里：$V \\mapsto \\dim V$ 把 $K\\text{-}\\mathbf{Vect}$ 的有限维对象与基数对应起来，加法范畴的结构因此退化成线性代数的具体计算。",
+   "notes": "⭐ 这条「基本事实」是整个有限维线性代数的**取消论**：同构类只由维数决定，所以「$n$ 维向量空间」只有一个（在同构意义下）。\n\n于是研究所有有限维向量空间 = 研究所有 $K^{n}$。\n\n⚠ 无限维时两个方向都对（等势的基给出同构，同构当然也给出等势的基），只是「维数」要按基的势来理解（见「维数良定义」）。\n\n⭐ 在范畴语言里：$V \\mapsto \\dim V$ 把 $K\\text{-}\\mathbf{Vect}$ 的有限维对象与基数对应起来，加法范畴的结构因此退化成线性代数的具体计算。",
    "refs": [
     "Lang, Linear Algebra"
    ]
@@ -10459,7 +10459,7 @@
     "多元"
    ],
    "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 是开集，$f : U \\to \\mathbb{R}^{m}$，$a \\in U$。$f$ 在 $a$ 处关于第 $j$ 个变元的**偏导数**是（若该极限存在）\n\n$$\\frac{\\partial f}{\\partial x_j}(a) := \\lim_{h \\to 0} \\frac{f(a + h e_j) - f(a)}{h}$$\n\n其中 $e_j$ 是第 $j$ 个标准基向量。也就是说，**只让第 $j$ 个坐标动**，其余固定，就是一个一元导数。\n\n高阶偏导写成 $\\partial^{\\alpha} f = \\partial_1^{\\alpha_1} \\cdots \\partial_n^{\\alpha_n} f$（$\\alpha = (\\alpha_1, \\ldots, \\alpha_n)$ 是多重指标，$|\\alpha| = \\alpha_1 + \\cdots + \\alpha_n$）。",
-   "notes": "⚠ 偏导数存在**什么也保证不了**：$f(x, y) = xy/(x^{2} + y^{2})$（原点补 $f(0,0) = 0$）在原点两个偏导都存在（都等于 $0$），但沿 $y = x$ 趋近时 $f \\to 1/2 \\ne f(0,0)$ —— 它连**连续**都不成立。\n\n⭐ 病根是一个不对称：偏导存在是 $2n$ 个**一维**条件，而可微（`def.total-differential`）是**一个** $n$ 维条件。\n\n一维条件再多也堆不出 $n$ 维结论。\n\n⭐ 反过来，$C^{1}$（偏导存在**且连续**）就足以推出可微 —— 这条是实践中最常用的充分条件，证明见 `def.total-differential` 的说明。\n\n⭐ 在 $\\mathbb{R}^n$ 这种「坐标里长出来的空间」上偏导是免费的；\n\n到了**流形**或 **Banach 空间**上，「坐标」本身要先花力气造出来，那时才有方向导数与可微性的讨论。",
+   "notes": "⚠ 偏导数存在**什么也保证不了**：$f(x, y) = xy/(x^{2} + y^{2})$（原点补 $f(0,0) = 0$）在原点两个偏导都存在（都等于 $0$），但沿 $y = x$ 趋近时 $f \\to 1/2 \\ne f(0,0)$ —— 它连**连续**都不成立。\n\n⭐ 病根是一个不对称：偏导存在是 $n$ 个**一维**条件（标量 $f$；向量值 $f:\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ 是 $mn$ 个），而可微（`def.total-differential`）是**一个** $n$ 维条件。\n\n一维条件再多也堆不出 $n$ 维结论。\n\n⭐ 反过来，$C^{1}$（偏导存在**且连续**）就足以推出可微 —— 这条是实践中最常用的充分条件，证明见 `def.total-differential` 的说明。\n\n⭐ 在 $\\mathbb{R}^n$ 这种「坐标里长出来的空间」上偏导是免费的；\n\n到了**流形**或 **Banach 空间**上，「坐标」本身要先花力气造出来，那时才有方向导数与可微性的讨论。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
     "Spivak, Calculus on Manifolds, Ch. 2"
@@ -10583,7 +10583,7 @@
     "多元"
    ],
    "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}$ 在 $a$ 可微。\n\n则 $Df(a)$ 是 $\\mathbb{R}^{n} \\to \\mathbb{R}$ 的线性映射，即对偶空间 $(\\mathbb{R}^{n})^{\\ast}$ 中的元素。\n\n由 $\\mathbb{R}^{n}$ 的标准内积与 Riesz 表示，存在**唯一**的 $\\nabla f(a) \\in \\mathbb{R}^{n}$ 使\n\n$$Df(a)(v) = \\langle \\nabla f(a),\\ v \\rangle \\qquad (v \\in \\mathbb{R}^{n})$$\n\n它叫 $f$ 在 $a$ 的**梯度**。在标准内积与标准基下\n\n$$\\nabla f(a) = \\bigl( \\partial_1 f(a), \\ldots, \\partial_n f(a) \\bigr)^{\\mathsf{T}}$$",
-   "notes": "⭐ 一句话：**梯度是把对偶向量用内积「搬回来」的产物**。\n\n$Df(a)$ 天生住在对偶空间 $(\\mathbb{R}^{n})^{\\ast}$ 里，而「搬回来」需要一个内积 —— 换个内积，同一个 $Df(a)$ 就给出**不同**的梯度向量。\n\n⭐ 这也是微分几何里必须区分 $df$（余切向量）与 $\\nabla f$（切向量）的原因：$df$ 不依赖任何度量，$\\nabla f$ 依赖。\n\n⭐ 几何内容（都靠 Cauchy–Schwarz，`thm.cauchy-schwarz`）：\n- $D_v f(a) = \\langle \\nabla f(a), v \\rangle$；\n\n\n- 在**单位**方向里，$v = \\nabla f(a)/\\|\\nabla f(a)\\|$ 给出最大的方向导数 $\\|\\nabla f(a)\\|$（上升最快）；\n\n\n- $\\nabla f(a)$ 垂直于过 $a$ 的等值面 $\\{f = c\\}$（因为沿等值面的方向导数为零）。\n\n⚠ 「梯度指向上升最快」只在**标准内积**下成立；\n\n换了内积，「最快」要按那个内积重新度量（这也是最优化里预处理 / 牛顿法的出发点）。",
+   "notes": "⭐ 一句话：**梯度是把对偶向量用内积「搬回来」的产物**。\n\n$Df(a)$ 天生住在对偶空间 $(\\mathbb{R}^{n})^{\\ast}$ 里，而「搬回来」需要一个内积 —— 换个内积，同一个 $Df(a)$ 就给出**不同**的梯度向量。\n\n⭐ 这也是微分几何里必须区分 $df$（余切向量）与 $\\nabla f$（切向量）的原因：$df$ 不依赖任何度量，$\\nabla f$ 依赖。\n\n⭐ 几何内容（都靠 Cauchy–Schwarz，`thm.cauchy-schwarz`）：\n- $D_v f(a) = \\langle \\nabla f(a), v \\rangle$；\n\n\n- 在**单位**方向里（当 $\\nabla f(a) \\ne 0$ 时），$v = \\nabla f(a)/\\|\\nabla f(a)\\|$ 给出最大的方向导数 $\\|\\nabla f(a)\\|$（上升最快）；\n\n\n- $\\nabla f(a)$ 垂直于过 $a$ 的等值面 $\\{f = c\\}$（因为沿等值面的方向导数为零）。\n\n⚠ 「梯度指向上升最快」只在**标准内积**下成立；\n\n换了内积，「最快」要按那个内积重新度量（这也是最优化里预处理 / 牛顿法的出发点）。",
    "refs": [
     "Spivak, Calculus on Manifolds, Ch. 2",
     "Rudin, Principles of Mathematical Analysis, Ch. 9"
@@ -10870,7 +10870,7 @@
     "线性代数"
    ],
    "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}$ 是 $C^{2}$，$a \\in U$ 是**临界点**（$\\nabla f(a) = 0$）。则\n\n- $H_f(a)$ **正定** $\\implies$ $a$ 是 $f$ 的局部严格极小点；\n- $H_f(a)$ **负定** $\\implies$ $a$ 是 $f$ 的局部严格极大点；\n- $H_f(a)$ **不定**（同时有正、负特征值）$\\implies$ $a$ 既非局部极小也非局部极大（**鞍点**）；\n- $H_f(a)$ 半定或退化（有零特征值）$\\implies$ **本判据失效**，需要更高阶的信息。",
-   "notes": "⭐ 这是「微积分 $\\times$ 线性代数」在本科阶段最漂亮的一次交汇：**判极值 = 判二次型正定**，而后者有现成的算法（`thm.sylvester-criterion` 的顺序主子式，或 `thm.spectral-theorem` 的特征值符号）。\n\n⚠ 「半定」那一档真的没有结论，两个反例：\n- $f = x^{4} + y^{4}$ 在原点 $H = 0$（半定），但原点是严格极小；\n\n\n- $f = x^{4} - y^{4}$ 在原点同样 $H = 0$，但原点是鞍点。\n\n\n所以判据失效不是「证法不够好」，而是信息真的不足。\n\n⚠ 反过来，正定只给**局部**极小：$f(x) = x^{2}(1 + x^{2})$ 在原点正定但整体有别的极小点。\n\n证明全文在边上（$k=2$ 的 Taylor + 正定二次型的估计 $h^{\\mathsf{T}}Hh \\ge \\lambda_{\\min}\\|h\\|^{2}$；\n\n不定那一档用正负特征向量各走一步）。",
+   "notes": "⭐ 这是「微积分 $\\times$ 线性代数」在本科阶段最漂亮的一次交汇：**判极值 = 判二次型正定**，而后者有现成的算法（`thm.sylvester-criterion` 的顺序主子式，或 `thm.spectral-theorem` 的特征值符号）。\n\n⚠ 「半定」那一档真的没有结论，两个反例：\n- $f = x^{4} + y^{4}$ 在原点 $H = 0$（半定），但原点是严格极小；\n\n\n- $f = x^{4} - y^{4}$ 在原点同样 $H = 0$，但原点是鞍点。\n\n\n所以判据失效不是「证法不够好」，而是信息真的不足。\n\n⚠ 反过来，正定只给**局部**极小：$f(x) = x^{2} - x^{4}$ 在原点 $f''(0) = 2 > 0$（局部极小），但全局最小值在 $x = \\pm 1/\\sqrt{2}$ 处（值为 $-1/4$）—— 所以「局部极小」推不出「全局极小」。\n\n证明全文在边上（$k=2$ 的 Taylor + 正定二次型的估计 $h^{\\mathsf{T}}Hh \\ge \\lambda_{\\min}\\|h\\|^{2}$；\n\n不定那一档用正负特征向量各走一步）。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
     "Spivak, Calculus on Manifolds, Ch. 2"
@@ -10995,7 +10995,7 @@
     "反函数"
    ],
    "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{n}$ 是 $C^{1}$，$a \\in U$ 且 $Df(a)$ **可逆**。\n\n则存在 $a$ 的开邻域 $V \\subseteq U$ 与 $f(a)$ 的开邻域 $W$，使限制 $f\\bigl|_{V}$ 是 $V \\to W$ 的**双射**，\n\n$$f\\bigl|_{V} : V \\to W \\quad \\text{bijective},$$\n\n且其逆 $g := (f\\bigl|_{V})^{-1} : W \\to V$ 也是 $C^{1}$，并且对一切 $y \\in W$\n\n$$Dg(y) = \\bigl( Df(g(y)) \\bigr)^{-1}$$",
-   "notes": "⭐ 定理的形状值得记：**局部可逆 $\\iff$ $Df(a)$ 可逆**，而且「逆映射的导数 = 导数的逆」。\n\n后半句完全是线性代数的操作 —— 一旦把 $f$ 局部看成「线性映射加高阶小量」，求逆自然落在 $Df$ 上。\n\n⚠ 「局部」不能去掉。\n\n$f(x, y) = (e^{x}\\cos y,\\ e^{x}\\sin y)$ 的 $\\det Df = e^{2x} \\ne 0$ 处处成立，但 $f$ 整体远非单射（$y$ 有周期 $2\\pi$）。\n\n⚠ 定理只保证 $C^{1}$；\n\n但由 $Dg = (Df \\circ g)^{-1}$ 立即得：$f$ 光滑 $\\implies$ $g$ 光滑（$Df\\circ g$ 光滑、求逆是光滑运算）。\n\n这就是「$f$ 是微分同胚 $\\implies$ $f^{-1}$ 也是」。\n\n⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的；\n\n在 Banach 空间里它是**另一条定理**（泛函分析的 `开映射定理`，与本图的「非常数全纯函数是开映射」同名但不同物，且尚未收录），不能从这里免费得到。\n\n⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。\n\n证明全文在边上（化归到 $Df(a) = I$，用压缩映射原理造出 $f$ 的局部逆，再从 $f \\circ g = \\mathrm{id}$ 反解 $Dg$）。",
+   "notes": "⭐ 定理的形状值得记：**局部可逆 $\\iff$ $Df(a)$ 可逆**，而且「逆映射的导数 = 导数的逆」。\n\n后半句完全是线性代数的操作 —— 一旦把 $f$ 局部看成「线性映射加高阶小量」，求逆自然落在 $Df$ 上。\n\n⚠ 「局部」不能去掉。\n\n$f(x, y) = (e^{x}\\cos y,\\ e^{x}\\sin y)$ 的 $\\det Df = e^{2x} \\ne 0$ 处处成立，但 $f$ 整体远非单射（$y$ 有周期 $2\\pi$）。\n\n⚠ 定理只保证 $C^{1}$；\n\n但由 $Dg = (Df \\circ g)^{-1}$ 立即得：$f$ 光滑 $\\implies$ $g$ 光滑（$Df\\circ g$ 光滑、求逆是光滑运算）。\n\n这就是「$f$ 是微分同胚 $\\implies$ $f^{-1}$ 也是」。\n\n⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维与 Banach 空间里都是**免费**的（逆映射定理本身就给出局部同胚，局部同胚自然把开集映成开集）。⚠ 别和泛函分析的「**开映射定理**」搞混：那条讲的是满射有界线性算子是开映射，与本图的「非常数全纯函数是开映射」同名不同物。\n\n⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。\n\n证明全文在边上（化归到 $Df(a) = I$，用压缩映射原理造出 $f$ 的局部逆，再从 $f \\circ g = \\mathrm{id}$ 反解 $Dg$）。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
     "Spivak, Calculus on Manifolds, Ch. 2",
@@ -11369,7 +11369,7 @@
     "测度"
    ],
    "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{m}$ 是 $C^{k}$ 且 $k > n - m$（$C^{\\infty}$ 时自然满足）。则 $f$ 的**临界值**全体\n\n$$f\\bigl( \\{ x \\in U : \\operatorname{rank} Df(x) < m \\} \\bigr) \\subseteq \\mathbb{R}^{m}$$\n\n是 $\\mathbb{R}^{m}$ 中的**零测集**（`def.null-set`，Lebesgue 测度为零）。",
-   "notes": "⭐ Sard 说「**临界值极其稀少**」：几乎每个值都是正则值，于是几乎每个水平集是子流形（`thm.regular-value`）。\n\n这一条把「正则性」从「碰巧成立的假设」变成「几乎必然成立的事实」——这是微分拓扑里所有「一般位置」论证的根基。\n\n⚠ 光滑性（或足够高阶）是必要的：$n = m = 1$ 且 $f$ 只是 $C^{1}$ 时有反例（Whitney 构造的 $C^{1}$ 函数把临界值映满一个区间）。\n\nSard 给出的门槛是 $C^{k}$、$k > n - m$。\n\n⭐ 常被引用的推论：任意 $n$ 维流形可以嵌入 $\\mathbb{R}^{2n}$（用 Sard 制造一个「一般位置」的映射），以及 Borsuk–Ulam 型结论、Morse 理论里「几乎所有函数所有临界点都非退化」。\n\n⚠ **本节点只给证明提纲，不声称给出完整证明** —— 完整证明相当重（对 $m$ 归纳、Whitney 分解、外层用 Fubini 定理把零测性降维）。\n\n提纲与出处：\n1. $m = 1$：对 $n$ 归纳，把 $U$ 切成可数多个小方块，在每个方块上把 $f$ 展成一阶 Taylor，用「临界点处 $Df(x) = 0$」把小方块的像控制住；\n\n\n2. 一般 $m$：改用「临界点按 $\\operatorname{rank}$ 分层」（Whitney 分解），每层用 Fubini 降到低维情形，再对 $\\operatorname{rank}$ 归纳。\n\n\n细节见 Milnor《Topology from the Differentiable Viewpoint》§3 与 Sternberg《Lectures on Differential Geometry》§II.3。\n\n∎",
+   "notes": "⭐ Sard 说「**临界值极其稀少**」：几乎每个值都是正则值，于是几乎每个水平集是子流形（`thm.regular-value`）。\n\n这一条把「正则性」从「碰巧成立的假设」变成「几乎必然成立的事实」——这是微分拓扑里所有「一般位置」论证的根基。\n\n⚠ 光滑性（或足够高阶）是必要的：$n - m \\ge 1$ 且只假设 $C^{1}$ 时有反例（如 $n = 2$、$m = 1$：Whitney 构造的 $C^{1}$ 函数把临界值映满一个区间）；$n = m = 1$ 时门槛 $k > 0$，$C^{1}$ 就够，一维的临界值集确实零测。\n\nSard 给出的门槛是 $C^{k}$、$k > n - m$。\n\n⭐ 常被引用的推论：任意 $n$ 维流形可以嵌入 $\\mathbb{R}^{2n}$（用 Sard 制造一个「一般位置」的映射），以及 Borsuk–Ulam 型结论、Morse 理论里「几乎所有函数所有临界点都非退化」。\n\n⚠ **本节点只给证明提纲，不声称给出完整证明** —— 完整证明相当重（对 $m$ 归纳、Whitney 分解、外层用 Fubini 定理把零测性降维）。\n\n提纲与出处：\n1. $m = 1$：对 $n$ 归纳，把 $U$ 切成可数多个小方块，在每个方块上把 $f$ 展成一阶 Taylor，用「临界点处 $Df(x) = 0$」把小方块的像控制住；\n\n\n2. 一般 $m$：改用「临界点按 $\\operatorname{rank}$ 分层」（Whitney 分解），每层用 Fubini 降到低维情形，再对 $\\operatorname{rank}$ 归纳。\n\n\n细节见 Milnor《Topology from the Differentiable Viewpoint》§3 与 Sternberg《Lectures on Differential Geometry》§II.3。\n\n∎",
    "refs": [
     "Milnor, Topology from the Differentiable Viewpoint, §3",
     "Sternberg, Lectures on Differential Geometry, §II.3",
@@ -18907,7 +18907,7 @@
     "余标架",
     "曲面论"
    ],
-   "statement": "设 $U_{0} \\subseteq S$ 是曲面上的开集。**活动标架**是三个 $C^{1}$ 向量场 $e_{1}, e_{2}, e_{3}$，使每点的 $(e_{1}, e_{2}, e_{3})$ 都是 $\\mathbb{R}^{3}$ 的标准正交基（随点移动而变，故名「活动」）。**对偶余标架**是\n\n$$\\omega^{i} := \\langle \\mathrm{d}r,\\, e_{i}\\rangle ,\\qquad i = 1,2,3,$$\n\n它们是**参数域上**的 $1$-形式（$v$ 要先被 $\\mathrm{d}r$ 送成环境向量，才能和 $e_{i}$ 做内积）。⚠ 对**曲面**，$\\mathrm{d}r$ 落在切平面里，所以 $\\omega^{3} \\equiv 0$；而 $\\omega^{i}(e_{j}) = \\delta^{i}_{\\ j}$ 只对 $j = 1, 2$（切向量）有意义 ——$e_{3}$ 是法向，$\\omega^{3}(e_{3})$ 在这里**没有定义**（只有把 $\\omega^{i}$ 看成$\\mathbb{R}^{3}$ 上形式的拉回时它才有值）。位置向量的微分按标架展开：\n\n$$\\mathrm{d}r = \\omega^{1}e_{1}+\\omega^{2}e_{2}+\\omega^{3}e_{3}.$$\n\n这叫**焊接方程**（soldering）：它把「$r$ 怎么动」翻译成「沿标架的各分量动多少」。",
+   "statement": "设 $U_{0} \\subseteq S$ 是曲面上的开集。**活动标架**是三个 $C^{1}$ 向量场 $e_{1}, e_{2}, e_{3}$，使每点的 $(e_{1}, e_{2}, e_{3})$ 都是 $\\mathbb{R}^{3}$ 的标准正交基（随点移动而变，故名「活动」）。**对偶余标架**是\n\n$$\\omega^{i} := \\langle \\mathrm{d}r,\\, e_{i}\\rangle ,\\qquad i = 1,2,3,$$\n\n它们是**参数域上**的 $1$-形式（$v$ 要先被 $\\mathrm{d}r$ 送成环境向量，才能和 $e_{i}$ 做内积）。⚠ 对**曲面**，$\\mathrm{d}r$ 落在切平面里，所以 $\\omega^{3} \\equiv 0$；而 $\\omega^{i}(e_{j}) = \\delta^{i}_{\\ j}$ 要读作「参数域上的 $\\omega^{i}$ 与**拉回到参数域的**切向量 $e_{j}$ 配对」—— $\\omega^{i}$ 定义在参数域 $U$ 上、$e_{j}$ 是环境向量，只有 $j = 1, 2$（切向）落在配对域里；$e_{3}$ 是法向，$\\omega^{3}(e_{3})$ 在这里**没有定义**。位置向量的微分按标架展开：\n\n$$\\mathrm{d}r = \\omega^{1}e_{1}+\\omega^{2}e_{2}+\\omega^{3}e_{3}.$$\n\n这叫**焊接方程**（soldering）：它把「$r$ 怎么动」翻译成「沿标架的各分量动多少」。",
    "notes": "**为什么值得换一套说法**：坐标路线要算 $r_{uu}, r_{uv}, r_{vv}$ 以及 $n$ 的偏导；标架路线只把 $\\mathrm{d}r$、$\\mathrm{d}e_{i}$ **展开一次**，此后全是 $1$-形式之间的代数（外积、比较系数）。这正是用户要的「用活动标架代替复杂计算」。\n\n**曲面上的标准取法**：$e_{3} = n$（法向），$e_{1}, e_{2}$ 是与 $n$ 正交的单位切向量场。这时 $\\omega^{3} = \\langle \\mathrm{d}r, n\\rangle = 0$：曲面上没有法向增量。\n\n⚠️ $(e_{1}, e_{2})$ 只在局部存在，且不唯一（可差一次转动）。凡要写出来的量都要写成与转动无关的形式（如 $I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$），否则一换标架就变形。\n\n**记号**：$\\omega^{i}$ 的上标是编号、不是幂；$(e_{1}, e_{2}, e_{3})$ 与 $(\\omega^{1}, \\omega^{2}, \\omega^{3})$ 互为对偶对，这是活动标架法的全部记账规则。",
    "refs": [
     "陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 活动标架与余标架",
@@ -20686,7 +20686,7 @@
     "余切"
    ],
    "statement": "**在做什么**：把「在每点吃进 $k$ 个切向量、吐出一个数，并且对换两个变元要变号」这件事做成光滑对象 —— 微分形式就是流形上那类能被拉回、能被积分的量。\n\n设 $U\\subseteq\\mathbb{R}^{n}$ 开。$U$ 上的 **$k$-形式**是一个映射 $\\omega$，给每点 $p\\in U$ 一个**交错** $k$-线性型\n\n$$\\omega_{p} : (\\mathbb{R}^{n})^{k}\\longrightarrow\\mathbb{R},$$\n\n并且它在标准坐标下的系数光滑：\n\n$$\\omega = \\sum_{i_{1}<\\cdots<i_{k}}a_{i_{1}\\cdots i_{k}}(x)\\,\\mathrm{d}x^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}x^{i_{k}} ,\\qquad a_{I}\\in C^{\\infty}(U),$$\n\n其中 $\\mathrm{d}x^{i}(v) := v^{i}$ 是坐标函数的微分，$\\wedge$ 是外积（$\\mathrm{d}x^{i}\\wedge\\mathrm{d}x^{j} = -\\mathrm{d}x^{j}\\wedge\\mathrm{d}x^{i}$）。全体记 $\\Omega^{k}(U)$。\n\n$\\Omega^{0}(U) = C^{\\infty}(U)$（函数就是 $0$-形式）；$k>n$ 时 $\\Omega^{k}(U) = 0$；$k$-形式是 $\\binom{n}{k}$ 个光滑函数的组合。\n\n**楔积**逐点定义：$(\\omega\\wedge\\eta)_{p} := \\omega_{p}\\wedge\\eta_{p}$，于是 $\\Omega^{\\bullet}(U)$ 是分次交换代数。",
-   "notes": "**与外代数的关系**：每点 $\\omega_{p}\\in\\bigwedge^{k}(\\mathbb{R}^{n})^{\\ast}$，所以 $k$-形式就是「$\\bigwedge^{k}(\\mathbb{R}^{n})^{\\ast}$-值的光滑函数」。\n\n外代数给代数结构，光滑性给分析结构；\n\n两者合起来才能定义 $\\mathrm{d}$（`def.exterior-derivative`）。\n\n**与一般多重线性型的区别**：一般 $k$ 重线性型有 $n^{k}$ 个分量，加上交错性之后只剩 $\\binom{n}{k}$ 个 —— 这正是它能被积分的原因（`def.integral-form`）。\n\n**低次形式的通俗身份**（$n = 3$）：$0$-形式是函数；$1$-形式 $P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y+R\\,\\mathrm{d}z$ 是做功与环量；$2$-形式是通量；$3$-形式是密度。梯度、旋度、散度是同一个 $\\mathrm{d}$ 在不同次数上的样子。\n\n⚠️ **方向**：形式沿映射**反**着走（拉回，`prop.pullback-forms`），向量场沿映射**正**着走（前推，且要求映射可逆）。这是形式比向量场好用的根本原因。\n\n**流形上**：把 $\\mathbb{R}^{n}$ 换成 $n$ 维流形 $M$，只需在某张卡上用坐标微分写开，再用转移映射的光滑性说明「是 $k$-形式」与卡无关 —— 与 `def.tangent-space-manifold` 里「切向量与卡无关」是同一套论证。",
+   "notes": "**与外代数的关系**：每点 $\\omega_{p}\\in\\bigwedge^{k}(\\mathbb{R}^{n})^{\\ast}$，所以 $k$-形式就是「$\\bigwedge^{k}(\\mathbb{R}^{n})^{\\ast}$-值的光滑函数」。\n\n外代数给代数结构，光滑性给分析结构；\n\n两者合起来才能定义 $\\mathrm{d}$（`def.exterior-derivative`）。\n\n**与一般多重线性型的区别**：一般 $k$ 重线性型有 $n^{k}$ 个分量，加上交错性之后只剩 $\\binom{n}{k}$ 个 —— 这正是它能被积分的原因（`def.integral-form`）。\n\n**低次形式的通俗身份**（$n = 3$）：$0$-形式是函数；$1$-形式 $P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y+R\\,\\mathrm{d}z$ 是做功与环量；$2$-形式是通量；$3$-形式是密度。梯度、旋度、散度是同一个 $\\mathrm{d}$ 在不同次数上的样子。\n\n⚠️ **方向**：形式沿映射**反**着走（拉回，`prop.pullback-forms`），向量场沿映射**正**着走（前推：沿**微分同胚**，或在 $F$-相关时）。这是形式比向量场好用的根本原因。\n\n**流形上**：把 $\\mathbb{R}^{n}$ 换成 $n$ 维流形 $M$，只需在某张卡上用坐标微分写开，再用转移映射的光滑性说明「是 $k$-形式」与卡无关 —— 与 `def.tangent-space-manifold` 里「切向量与卡无关」是同一套论证。",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式」· 微分形式的定义与楔积",
     "do Carmo, Differential Forms and Applications, 第 1 章「微分形式」· 形式与楔积"
@@ -20772,7 +20772,7 @@
     "链映射"
    ],
    "statement": "**在做什么**：把形式沿着光滑映射「搬回去」—— 这是形式特有的能力（向量场只能正着推），也是「$\\mathrm{d}$ 与坐标无关」的正式说法。\n\n设 $F : U\\to V$ 是开集间的 $C^{\\infty}$ 映射，$\\omega$ 是 $V$ 上的 $k$-形式。**拉回** $F^{\\ast}\\omega$ 是 $U$ 上的 $k$-形式，定义为\n\n$$(F^{\\ast}\\omega)_{p}(v_{1},\\ldots,v_{k}) := \\omega_{F(p)}\\bigl(\\mathrm{d}F_{p}(v_{1}),\\ldots,\\mathrm{d}F_{p}(v_{k})\\bigr).$$\n\n于是 $F^{\\ast}$ 把 $\\Omega^{k}(V)$ 送到 $\\Omega^{k}(U)$，且满足\n\n1. **线性**：$F^{\\ast}(a\\omega+b\\eta) = a\\,F^{\\ast}\\omega+b\\,F^{\\ast}\\eta$；对函数 $F^{\\ast}f = f\\circ F$；\n2. **保楔积**：$F^{\\ast}(\\omega\\wedge\\eta) = F^{\\ast}\\omega\\wedge F^{\\ast}\\eta$；\n3. **与 $\\mathrm{d}$ 交换**：$F^{\\ast}(\\mathrm{d}\\omega) = \\mathrm{d}(F^{\\ast}\\omega)$；\n4. **保复合**：$(G\\circ F)^{\\ast} = F^{\\ast}\\circ G^{\\ast}$，$(\\operatorname{id})^{\\ast} = \\operatorname{id}$。\n\n前两条说 $F^{\\ast}$ 是分次代数同态，第三条说它还是链映射；合起来：**$F^{\\ast}$ 是微分分次代数的同态**。",
-   "notes": "**方向**：$F : U\\to V$ 给出的是 $F^{\\ast} : \\Omega^{k}(V)\\to\\Omega^{k}(U)$，与 $F$ 反向。这就是「形式是协变的」的确切含义；也是它能沿任意光滑映射定义，而向量场的前推要求 $F$ 是微分同胚的原因。\n\n**（3）是核心**：它等价于「$\\mathrm{d}$ 不依赖坐标」。唯一的实质内容是链式法则，剩下的由 (2) 与 $\\mathrm{d}^{2}=0$ 收尾（证明在边上）。\n\n**几何里的用法**：曲面参数化 $r : U\\to\\mathbb{R}^{3}$ 把 $\\mathbb{R}^{3}$ 上的形式拉回 $U$。\n\n第一基本形式与面积元都是拉回的样子：$I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$、$\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$。\n\n曲面论能用形式写，全靠这一条。\n\n⚠️ **拉回不保积分的方向**：$\\int_{U}F^{\\ast}\\omega = \\int_{F(U)}\\omega$ 只在 $F$ 是保向微分同胚、且形式的次数等于维数时成立（换元公式，`def.integral-form`）。\n\n⚠️ (4) 的次序不能记反：复合 $G\\circ F$ 的拉回是 $F^{\\ast}\\circ G^{\\ast}$，先拉后面那个。",
+   "notes": "**方向**：$F : U\\to V$ 给出的是 $F^{\\ast} : \\Omega^{k}(V)\\to\\Omega^{k}(U)$，与 $F$ 反向。这就是「形式是协变的」的确切含义；也是它能沿任意光滑映射定义，而向量场的前推一般要求 $F$ 是微分同胚（或只在 $F$-相关时能推到像上）的原因。\n\n**（3）是核心**：它等价于「$\\mathrm{d}$ 不依赖坐标」。唯一的实质内容是链式法则，剩下的由 (2) 与 $\\mathrm{d}^{2}=0$ 收尾（证明在边上）。\n\n**几何里的用法**：曲面参数化 $r : U\\to\\mathbb{R}^{3}$ 把 $\\mathbb{R}^{3}$ 上的形式拉回 $U$。\n\n第一基本形式与面积元都是拉回的样子：$I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$、$\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$。\n\n曲面论能用形式写，全靠这一条。\n\n⚠️ **拉回不保积分的方向**：$\\int_{U}F^{\\ast}\\omega = \\int_{F(U)}\\omega$ 只在 $F$ 是保向微分同胚、且形式的次数等于维数时成立（换元公式，`def.integral-form`）。\n\n⚠️ (4) 的次序不能记反：复合 $G\\circ F$ 的拉回是 $F^{\\ast}\\circ G^{\\ast}$，先拉后面那个。",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式」· 拉回及其性质",
     "do Carmo, Differential Forms and Applications, 第 1 章「微分形式」· 拉回"
@@ -30156,7 +30156,7 @@
     "整除",
     "算法"
    ],
-   "statement": "设 $a, b \\in \\mathbb{Z}$ 不全为零。置 $r_{-1} = a$、$r_{0} = b$，反复做带余除法\n\n$$r_{i-1} = q_{i}\\, r_{i} + r_{i+1}, \\qquad 0 \\le r_{i+1} < r_{i} .$$\n\n余数严格下降，故存在 $n$ 使 $r_{n+1} = 0$；此时 $r_{n} = \\gcd(a, b)$，且 $r_{n}$ 可写成 $u a + v b$（$u, v \\in \\mathbb{Z}$）：把每步的余数逐次回代即得。",
+   "statement": "设 $a, b \\in \\mathbb{Z}$ 不全为零。先取绝对值（$a, b$ 可为负）；$b = 0$ 时直接返回 $|a|$，否则置 $r_{-1} = |a|$、$r_{0} = |b|$，反复做带余除法\n\n$$r_{i-1} = q_{i}\\, r_{i} + r_{i+1}, \\qquad 0 \\le r_{i+1} < r_{i} .$$\n\n余数严格下降，故存在 $n$ 使 $r_{n+1} = 0$；此时 $r_{n} = \\gcd(a, b)$，且 $r_{n}$ 可写成 $u a + v b$（$u, v \\in \\mathbb{Z}$）：把每步的余数逐次回代即得。",
    "notes": "这是初等数论里**唯一不依赖唯一分解**的工具：$\\gcd$ 的存在性与 Bézout 系数都从它出来，而算术基本定理反过来要用 $\\gcd$。\n\n\n\n复杂度：余数至少按 Fibonacci 速度下降，步数 $O(\\log \\min(|a|, |b|))$ —— 最坏输入正是相邻 Fibonacci 数（Lamé 定理）。\n\n\n\n在 $K[x]$ 里同样成立（用次数代替绝对值），所以「$\\mathbb{Z}$ 与 $K[x]$ 都是 Euclid 整环」是同一句话。",
    "refs": [
     "华罗庚《数论导引》§1"
@@ -30196,7 +30196,7 @@
     "整除"
    ],
    "statement": "设 $a, b \\in \\mathbb{Z}$ 不全为零。**最大公因数** $\\gcd(a, b)$ 是同时整除 $a$ 与 $b$ 的正整数中最大的那个。\n\n等价刻画（不预设存在性）：$\\gcd(a, b)$ 是集合 $\\{\\, ua + vb : u, v \\in \\mathbb{Z} \\,\\}$ 中最小的正整数。",
-   "notes": "两个刻画为什么等价：一方面 $\\gcd$ 整除 $ua + vb$ 的每个元素，所以它 $\\le$ 最小正元；另一方面最小正元整除 $a$ 与 $b$（用带余除法把余数写成更小的 $a - q(ua+vb)$ 形式，只能为零），所以它就是最大的公因数。\n\n\n\n「最小正元素」这个刻画只在一维整环成立（$\\mathbb{Z}$、$K[x]$）；一般的 gcd 整环里 $\\gcd$ 存在但未必是线性组合（Bézout 性质是更强的条件）。",
+   "notes": "两个刻画为什么等价：一方面 $\\gcd$ 整除 $ua + vb$ 的每个元素，所以它 $\\le$ 最小正元；另一方面最小正元整除 $a$ 与 $b$（用带余除法把余数写成更小的 $a - q(ua+vb)$ 形式，只能为零），所以它就是最大的公因数。\n\n\n\n「最小正元素」这个刻画要求**Bézout 整环**（$\\mathbb{Z}$、$K[x]$），不是「一维」就够：$R = K[t^{2}, t^{3}]$ 是一维整环，$\\gcd(t^{2}, t^{3}) = 1$，但 $ut^{2} + vt^{3}$ 的常数项恒为零，永远不等于 $1$。一般的 gcd 整环里 $\\gcd$ 存在但未必是线性组合。",
    "refs": [
     "华罗庚《数论导引》§1"
    ]
@@ -30354,7 +30354,7 @@
     "唯一分解",
     "定理"
    ],
-   "statement": "每个整数 $n > 1$ 都能唯一地写成\n\n$$n = p_{1}^{e_{1}} p_{2}^{e_{2}} \\cdots p_{r}^{e_{r}},$$\n\n其中 $p_{1} < p_{2} < \\cdots < p_{r}$ 是素数，$e_{i} \\ge 1$。",
+   "statement": "每个整数 $n > 1$ 都能唯一地写成\n\n$$n = p_{1}^{e_{1}} p_{2}^{e_{2}} \\cdots p_{r}^{e_{r}},$$\n\n其中 $p_{1} < p_{2} < \\cdots < p_{r}$ 是素数，$e_{i} \\in \\mathbb{Z}_{\\ge 1}$。",
    "notes": "存在性：对 $n$ 归纳 —— $n$ 是素数则完事；否则 $n = ab$ 且 $1 < a, b < n$，对 $a, b$ 各用归纳假设再合并。\n\n\n\n唯一性：用 Euclid 引理（$p \\mid ab \\implies p \\mid a$ 或 $p \\mid b$）。这是唯一分解整环（UFD）的标准论证。\n\n\n\n代数里的抽象版本是「$\\mathbb{Z}$ 是唯一分解整环」：$K[x]$ 也有（`thm.poly-ufd`），$\\mathbb{Z}[\\sqrt{-5}]$ 没有（$6 = 2\\cdot 3 = (1+\\sqrt{-5})(1-\\sqrt{-5})$）。\n\n层级：Euclid 整环 $\\implies$ UFD $\\implies$ gcd 整环。",
    "refs": [
     "华罗庚《数论导引》§1"
@@ -30434,7 +30434,7 @@
     "环"
    ],
    "statement": "记 $\\mathbb{Z}/n\\mathbb{Z} = \\{[0], [1], \\cdots, [n-1]\\}$，其中 $[a]$ 是 $a$ 所在的同余类，运算由代表元定义：\n\n$$[a] + [b] := [a + b], \\qquad [a]\\,[b] := [ab] .$$\n\n它是一个有单位元的交换环，叫**剩余类环**（模 $n$ 的整数环）。",
-   "notes": "良定义性就是 `def.congruence` 的相容性：换代表元不改变结果。\n\n\n\n$\\mathbb{Z}/n\\mathbb{Z}$ 是域 $\\iff$ $n$ 是素数（$n = p$ 时记 $\\mathbb{F}_{p}$）：$n$ 合数时取 $n = ab$，$[a][b] = 0$ 而两者非零，有零因子。\n\n\n\n单位群 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times} = \\{[a] : \\gcd(a, n) = 1\\}$ 有 $\\varphi(n)$ 个元素 —— 这个群的大小就是 Euler 定理里那个指数。",
+   "notes": "良定义性就是 `def.congruence` 的相容性：换代表元不改变结果。\n\n\n\n对 $n \\ge 1$：$\\mathbb{Z}/n\\mathbb{Z}$ 是域 $\\iff$ $n$ 是素数（$n = p$ 时记 $\\mathbb{F}_{p}$；$n = 1$ 给零环，不是域）：$n$ 合数时取 $n = ab$，$[a][b] = 0$ 而两者非零，有零因子。\n\n\n\n单位群 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times} = \\{[a] : \\gcd(a, n) = 1\\}$ 有 $\\varphi(n)$ 个元素 —— 这个群的大小就是 Euler 定理里那个指数。",
    "refs": [
     "华罗庚《数论导引》§2"
    ]
@@ -30474,7 +30474,7 @@
     "定理"
    ],
    "statement": "设 $n_{1}, \\cdots, n_{k}$ 两两互素，$N = n_{1} \\cdots n_{k}$。则\n\n$$\\mathbb{Z}/N\\mathbb{Z} \\;\\cong\\; \\mathbb{Z}/n_{1}\\mathbb{Z} \\times \\cdots \\times \\mathbb{Z}/n_{k}\\mathbb{Z}, \\qquad [a] \\longmapsto ([a], \\cdots, [a])$$\n\n是环同构。等价说法：同余方程组 $x \\equiv a_{i} \\pmod{n_{i}}$（$i = 1, \\cdots, k$）对任意右端都有解，且解模 $N$ 唯一。",
-   "notes": "存在性（构造式）：由 Bézout，取 $e_{i}$ 满足 $e_{i} \\equiv 1 \\pmod{n_{i}}$、$e_{i} \\equiv 0 \\pmod{n_{j}}$（$j \\ne i$），即 $e_{i} = (N/n_{i})\\,u_{i}$，其中 $u_{i}(N/n_{i}) \\equiv 1 \\pmod{n_{i}}$；\n\n于是 $x = \\sum_{i} a_{i} e_{i}$ 就是解。\n\n\n\n唯一性：两个解之差被每个 $n_{i}$ 整除，而 $n_{i}$ 两两互素，故被 $N$ 整除。\n\n\n\n互素条件不能去掉：$x \\equiv 0 \\pmod 2$ 与 $x \\equiv 1 \\pmod 4$ 无解。\n\n\n\n实际用处是把模 $N$ 的问题拆成模素数幂的问题 —— 乘性函数的公式就是靠它。",
+   "notes": "存在性（构造式）：由 Bézout，取 $e_{i}$ 满足 $e_{i} \\equiv 1 \\pmod{n_{i}}$、$e_{i} \\equiv 0 \\pmod{n_{j}}$（$j \\ne i$），即 $e_{i} = (N/n_{i})\\,u_{i}$，其中 $u_{i}(N/n_{i}) \\equiv 1 \\pmod{n_{i}}$（要求 $n_{i} \\ne 0$，否则 $N/n_{i}$ 无定义）；\n\n于是 $x = \\sum_{i} a_{i} e_{i}$ 就是解。\n\n\n\n唯一性：两个解之差被每个 $n_{i}$ 整除，而 $n_{i}$ 两两互素，故被 $N$ 整除。\n\n\n\n互素条件不能去掉：$x \\equiv 0 \\pmod 2$ 与 $x \\equiv 1 \\pmod 4$ 无解。\n\n\n\n实际用处是把模 $N$ 的问题拆成模素数幂的问题 —— 乘性函数的公式就是靠它。",
    "refs": [
     "华罗庚《数论导引》§2"
    ]
@@ -30512,7 +30512,7 @@
     "数论",
     "数论函数"
    ],
-   "statement": "对 $n \\ge 1$，$\\varphi(n)$ 是 $1, 2, \\cdots, n$ 中与 $n$ 互素的整数个数：\n\n$$\\varphi(n) = \\#\\{\\, 1 \\le a \\le n : \\gcd(a, n) = 1 \\,\\} .$$\n\n若 $n = p_{1}^{e_{1}} \\cdots p_{r}^{e_{r}}$，则\n\n$$\\varphi(n) = n \\prod_{i=1}^{r} \\left( 1 - \\frac{1}{p_{i}} \\right).$$",
+   "statement": "对 $n \\ge 1$，$\\varphi(n)$ 是 $1, 2, \\cdots, n$ 中与 $n$ 互素的整数个数：\n\n$$\\varphi(n) = \\#\\{\\, 1 \\le a \\le n : \\gcd(a, n) = 1 \\,\\} .$$\n\n若 $n = p_{1}^{e_{1}} \\cdots p_{r}^{e_{r}}$（$p_{i}$ **两两不同**；$n = 1$ 取空积），则\n\n$$\\varphi(n) = n \\prod_{i=1}^{r} \\left( 1 - \\frac{1}{p_{i}} \\right).$$",
    "notes": "公式分两步：先有 $\\varphi(p^{e}) = p^{e} - p^{e-1}$（$1$ 到 $p^{e}$ 里被 $p$ 整除的有 $p^{e-1}$ 个）；再有乘性 $\\varphi(mn) = \\varphi(m)\\varphi(n)$（$\\gcd(m,n) = 1$ 时），由中国剩余定理把单位群拆成直积即得。\n\n\n\n$\\varphi$ 是第一个**积性函数**的例子：$f(mn) = f(m)f(n)$ 对互素的 $m, n$ 成立。数论导引第三章整章在讲这类函数（$\\tau$、$\\sigma$、$\\mu$）。\n\n\n\n$\\varphi(n)$ 也是分圆多项式 $\\Phi_{n}$ 的次数 —— 这条联系在 Galois 理论那边会再用到。",
    "refs": [
     "华罗庚《数论导引》第三章"
@@ -30634,8 +30634,8 @@
     "素数",
     "推论"
    ],
-   "statement": "$p$ 是素数 $\\iff$ $(p - 1)! \\equiv -1 \\pmod p$。",
-   "notes": "必要性：在 $(\\mathbb{Z}/p\\mathbb{Z})^{\\times}$ 里，除 $[1]$ 与 $[-1]$ 之外每个元素与自己的逆不同（$a^{2} = 1 \\implies a = \\pm 1$，因为 $p$ 素时 $x^{2} - 1$ 至多两个根），于是它们两两配对，乘起来剩 $-1$。\n\n\n\n充分性：若 $n > 4$ 合数，写 $n = ab$、$1 < a, b < n$，则 $a, b$ 都出现在 $(n-1)!$ 里，故 $n \\mid (n-1)!$，不可能 $\\equiv -1$；$n = 4$ 单独看：$3! = 6 \\equiv 2 \\not\\equiv -1$。\n\n\n\n它是「素数」的**等价判据**，但计算量是 $O(p)$ 次乘法，实用价值为零 —— 价值在理论：这是 $\\mathbb{Z}/p\\mathbb{Z}$ 为域的组合式刻画。",
+   "statement": "整数 $p \\ge 2$：$p$ 是素数 $\\iff$ $(p - 1)! \\equiv -1 \\pmod p$。",
+   "notes": "必要性：在 $(\\mathbb{Z}/p\\mathbb{Z})^{\\times}$ 里，除 $[1]$ 与 $[-1]$ 之外每个元素与自己的逆不同（$a^{2} = 1 \\implies a = \\pm 1$，因为 $p$ 素时 $x^{2} - 1$ 至多两个根），于是它们两两配对，乘起来剩 $-1$。\n\n\n\n充分性：若 $n > 4$ 合数且**不是完全平方**，写 $n = ab$、$1 < a < b < n$，则 $a, b$ 都出现在 $(n-1)!$ 里，故 $n \\mid (n-1)!$，不可能 $\\equiv -1$。若 $n = a^{2}$（$a > 2$），$(n-1)!$ 里 $a$ 只出现**一次**，不能只用它 —— 改用 $a$ 与 $2a$（$2a < a^{2} = n$，因为 $a > 2$），两个因子都在 $(n-1)!$ 里，故仍有 $n \\mid (n-1)!$。$n = 4$ 单独看：$3! = 6 \\equiv 2 \\not\\equiv -1$。\n\n\n\n它是「素数」的**等价判据**，但计算量是 $O(p)$ 次乘法，实用价值为零 —— 价值在理论：这是 $\\mathbb{Z}/p\\mathbb{Z}$ 为域的组合式刻画。",
    "refs": [
     "华罗庚《数论导引》§2"
    ]
@@ -35505,7 +35505,7 @@
     "稠密",
     "简单函数"
    ],
-   "statement": "设 $1 \\le p < \\infty$。**紧支集的简单函数**在 $L^p$ 中稠密（$p = \\infty$ 时不成立）。",
+   "statement": "设 $1 \\le p < \\infty$。**有限测度支撑的简单函数**在 $L^p$ 中稠密（$p = \\infty$ 时不成立；一般测度空间没有「紧支」这个概念 —— 要保留「紧支」得假设 $X$ 局部紧、$\\mu$ 是 Radon 测度）。",
    "notes": "证明：对 $f \\in L^p$，取简单函数列 $\\{f_n\\}$ 使 $f_n \\to f$ a.e. 且 $|f_n| \\le |f|$（简单函数逼近定理给的就是这个形状）。于是 $f_n \\in L^p$，且\n\n\n\n$$|f_n - f|^p \\le 2^p |f|^p \\in L^1$$\n\n\n\n由 DCT 得 $\\|f_n - f\\|_p \\to 0$。$f_n$ 是简单函数、支撑集有限 —— 这就是要的稠密性。∎\n\n⚠ **$p = \\infty$ 时这条失效**：$L^\\infty$ 里的简单函数是「有限个值」，均匀逼近一个连续函数办不到（例如 $\\sin$ 型或一般的连续函数）。",
    "refs": [
     "Folland, Real Analysis, §6.1"
@@ -35933,8 +35933,8 @@
     "有界泛函",
     "L^q"
    ],
-   "statement": "设 $1 \\le p \\le \\infty$，$q$ 是它的**共轭指数**（$1/p + 1/q = 1$，约定 $p=1$ 时 $q=\\infty$、$p=\\infty$ 时 $q=1$）。设 $g$ 在 $(X, \\mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \\in L^{1}$。记\n\n$$M_g(g) := \\sup \\left\\{ \\, \\left| \\int fg \\right| : f \\in \\Sigma,\\ \\|f\\|_p = 1 \\,\\right\\}$$\n\n（$\\Sigma$ $=$ 有限支集简单函数全体。）若 $M_g(g) < \\infty$，且\n\n- $\\{x : g(x) \\ne 0\\}$ 是 **$\\sigma$有限** 的，**或**\n- $\\mu$ 是**半有限**的，\n\n则 $g \\in L^q$，且 $M_g(g) = \\|g\\|_q$。",
-   "notes": "这条是下一个大定理（$(L^p)^* \\cong L^q$）的技术准备：它说「泛函有界」这件事本身就已经把 $g$ 逼进了 $L^q$。\n\n证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\\int fg| \\le M_g(g)$；Step 2 处理 $q < \\infty$；Step 3 处理 $q = \\infty$。\n\n⚠ 两个前提条件（$\\sigma$有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。",
+   "statement": "设 $1 \\le p \\le \\infty$，$q$ 是它的**共轭指数**（$1/p + 1/q = 1$，约定 $p=1$ 时 $q=\\infty$、$p=\\infty$ 时 $q=1$）。设 $g$ 在 $(X, \\mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \\in L^{1}$。记\n\n$$M(g) := \\sup \\left\\{ \\, \\left| \\int fg \\right| : f \\in \\Sigma,\\ \\|f\\|_p = 1 \\,\\right\\}$$\n\n（$\\Sigma$ $=$ 有限支集简单函数全体。）若 $M(g) < \\infty$，且\n\n- $\\{x : g(x) \\ne 0\\}$ 是 **$\\sigma$有限** 的，**或**\n- $\\mu$ 是**半有限**的，\n\n则 $g \\in L^q$，且 $M(g) = \\|g\\|_q$。",
+   "notes": "这条是下一个大定理（$(L^p)^* \\cong L^q$）的技术准备：它说「泛函有界」这件事本身就已经把 $g$ 逼进了 $L^q$。\n\n证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\\int fg| \\le M(g)$；Step 2 处理 $q < \\infty$；Step 3 处理 $q = \\infty$。\n\n⚠ 两个前提条件（$\\sigma$有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。",
    "refs": [
     "Folland, Real Analysis, Theorem 6.14"
    ]
@@ -36019,7 +36019,7 @@
     "对偶"
    ],
    "statement": "设 $1 < p < \\infty$。则\n\n$$L^p \\cong (L^p)^{**}$$\n\n即 $L^p$ 是**自反**的 Banach 空间。",
-   "notes": "**证明。** 设 $1 < p < \\infty$，$q$ 是共轭指数（$\\frac1p+\\frac1q = 1$，于是也有 $1 < q < \\infty$）。\n- 由「$L^{p}$ 的对偶是 $L^{q}$」（Riesz 表示）：$(L^{p})^{*} \\cong L^{q}$ ✓；\n- 把同一条定理用在 $q$ 上：$(L^{q})^{*} \\cong L^{p}$ ✓；\n- 于是\n$$(L^{p})^{**} \\cong (L^{q})^{*} \\cong L^{p},$$\n即 $L^{p}$ **自反** ✓。∎\n⚠️ $p = 1$ 与 $p = \\infty$ 时**不**自反：$(L^{1})^{*} \\cong L^{\\infty}$，而 $(L^{\\infty})^{*}$ 严格大于 $L^{1}$（有非绝对连续的函数）✓。\n⭐ 自反的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Eberlein–Šmulian），这是 $L^{p}$ 上变分 / 存在性论证的常用工具。\n\n把对偶定理用两次即可：$(L^p)^* \\cong L^q$，而 $q$ 的共轭又回到 $p$，故 $(L^p)^{**} \\cong (L^q)^* \\cong L^p$。\n\n⚠ $p = 1$ 与 $p = \\infty$ 时**不**自反。\n\n⭐ 自反性的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Banach–Alaoglu / Eberlein–Šmulian），这是变分法与 PDE 里取极限的基本工具。",
+   "notes": "**证明。** 设 $1 < p < \\infty$，$q$ 是共轭指数（$\\frac1p+\\frac1q = 1$，于是也有 $1 < q < \\infty$）。\n- 由「$L^{p}$ 的对偶是 $L^{q}$」（Riesz 表示）：$(L^{p})^{*} \\cong L^{q}$ ✓；\n- 把同一条定理用在 $q$ 上：$(L^{q})^{*} \\cong L^{p}$ ✓；\n- 于是\n$$(L^{p})^{**} \\cong (L^{q})^{*} \\cong L^{p},$$\n即 $L^{p}$ **自反** ✓。∎\n⚠️ $p = 1$ 与 $p = \\infty$ 时**不**自反：$(L^{1})^{*} \\cong L^{\\infty}$，而 $(L^{\\infty})^{*}$ 严格大于 $L^{1}$（存在**非绝对连续的有限可加测度**，或 $C[0,1]$ 上的 Hahn–Banach 泛函）✓。\n⭐ 自反的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Eberlein–Šmulian），这是 $L^{p}$ 上变分 / 存在性论证的常用工具。",
    "refs": [
     "Folland, Real Analysis, §6.2"
    ]
@@ -39050,7 +39050,7 @@
     "定义",
     "实数"
    ],
-   "statement": "$\\mathbb{R}$ 的**区间**是满足下式的子集 $I$：\n\n$$a, b \\in I,\\ a \\le x \\le b \\implies x \\in I$$\n\n即「中间不空」。常见的有界区间写成\n\n$$(a, b), \\quad [a, b], \\quad [a, b), \\quad (a, b]$$\n\n按端点是否取到区分；另有 $(-\\infty, b)$、$(a, +\\infty)$、$\\mathbb{R}$ 等无界区间，以及单点集 $[a, a]$。\n\n体积就是长度：$m((a, b]) = b - a$。",
+   "statement": "$\\mathbb{R}$ 的**区间**是满足下式的子集 $I$：\n\n$$a, b \\in I,\\ a \\le x \\le b \\implies x \\in I$$\n\n即「中间不空」。常见的有界区间写成\n\n$$(a, b), \\quad [a, b], \\quad [a, b), \\quad (a, b]$$\n\n按端点是否取到区分；另有 $(-\\infty, b)$、$(a, +\\infty)$、$\\mathbb{R}$ 等无界区间，以及单点集 $[a, a]$。\n\n**长度**（Lebesgue 测度 $m$ 的约定）就是 $b - a$（要求 $a \\le b$；$a > b$ 时 $(a, b] = \\emptyset$，要另行约定）。",
    "notes": "⭐ **半开区间 $\\{ (a, b] : a < b \\}$ 是构造 Lebesgue–Stieltjes 测度时的起点**：它本身只是一个基本类，做有限不交并就得到环，长度在那个环上已经是预测度。\n\n为什么要用半开而不是开区间：不交并的长度好算 —— $[a, b) \\sqcup [b, c) = [a, c)$ 在开区间上不成立。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 2"
@@ -39209,7 +39209,7 @@
     "导数"
    ],
    "statement": "$F : (a, b) \\to \\mathbb{C}$ 在 $x_0 \\in (a, b)$ **可导**，当且仅当极限\n\n$$F'(x_0) := \\lim_{h \\to 0} \\frac{F(x_0 + h) - F(x_0)}{h}$$\n\n存在（有限）。这个数叫 $F$ 在 $x_0$ 的**导数**。\n\n在 $(a, b)$ 上处处可导，就得到一个函数 $F'$；称 $F$ **可导**。\n\n若不要求极限存在而允许 $\\pm\\infty$，得到的是**广义导数**，单调函数的导数理论要用它。",
-   "notes": "⭐ 微分理论关心的是**逐点**行为，所以定义域常常收缩到 $L^1_{loc}$ 而不是 $L^1$。\n\n要点（本星图 BV / AC 那一段全靠它们）：\n- 可导 $\\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。\n\n\n- 单调函数**几乎处处可导**，且 $F' \\ge 0$ a.e.。\n\n\n- 可导**不保证** $F(b) - F(a) = \\int_a^b F'$（Cantor 函数就是反例）；\n\n等式成立要加绝对连续。",
+   "notes": "⭐ 微分理论关心的是**逐点**行为，所以定义域常常收缩到 $L^1_{loc}$ 而不是 $L^1$。\n\n要点（本星图 BV / AC 那一段全靠它们）：\n- 可导 $\\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。\n\n\n- 单调**递增**函数**几乎处处可导**，且 $F' \\ge 0$ a.e.（递减时 $F' \\le 0$）。\n\n\n- **a.e. 可导也不保证** $F(b) - F(a) = \\int_a^b F'$（Cantor 函数处处连续、a.e. 可导且 $F' = 0$ a.e.，但 $F(1) - F(0) = 1 \\ne 0$；注意它**不是处处可导**：$1/3$ 处两侧差商 $0$ 与 $(3/2)^{k} \\to \\infty$ 不等）；\n\n等式成立要加绝对连续。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 5"
    ]
@@ -64004,7 +64004,7 @@
     "极限"
    ],
    "statement": "设 $x_n \\to x$、$y_n \\to y$（有限），$c \\in \\mathbb{R}$。则\n\n- $x_n \\pm y_n \\to x \\pm y$，$c\\,x_n \\to c\\,x$，$x_n y_n \\to xy$；\n- 若 $y \\ne 0$，则当 $n$ 充分大时 $y_n \\ne 0$，且 $x_n / y_n \\to x / y$；\n- $|x_n| \\to |x|$；\n- **保序性**：若存在 $N_0$ 使 $n \\ge N_0$ 时 $x_n \\le y_n$，则 $x \\le y$。\n\n函数版逐字照搬（把「存在 $N$」换成「存在 $\\delta$」）。",
-   "notes": "⭐ 这一组是**运算律**：它说的是「取极限」这个操作与四则运算交换。\n\n整个分析学的计算都建立在它上面。\n\n⚠ 保序性只能得到 $\\le$，得不到 $<$：例 $0 < 1/n$ 对一切 $n$ 成立，但极限 $0 \\le 0$。\n\n**严格不等号在取极限时会被抹平**。\n\n⚠ 「极限存在则唯一」「收敛则必有界」也出自同一定义，写法与数列版一模一样。",
+   "notes": "⭐ 这一组是**运算律**：它说的是「取极限」这个操作与四则运算交换。\n\n整个分析学的计算都建立在它上面。\n\n⚠ 保序性只能得到 $\\le$，得不到 $<$：例 $0 < 1/n$ 对一切 $n$ 成立，但极限 $0 \\le 0$。\n\n**严格不等号在取极限时会被抹平**。\n\n⚠ 「极限存在则唯一」「收敛则**局部**有界」也出自同一定义（函数版只保证在 $x_0$ 的某去心邻域内有界：$f(x) = x$、$x_0 = 0$ 时极限存在，但 $f$ 在全定义域无界）。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 3"
    ]
@@ -64086,7 +64086,7 @@
     "极限"
    ],
    "statement": "对实数列 $\\{x_n\\}$，令\n\n$$\\limsup_{n \\to \\infty} x_n := \\lim_{n \\to \\infty} \\Bigl( \\sup_{k \\ge n} x_k \\Bigr), \\qquad \\liminf_{n \\to \\infty} x_n := \\lim_{n \\to \\infty} \\Bigl( \\inf_{k \\ge n} x_k \\Bigr)$$\n\n（$n \\mapsto \\sup_{k \\ge n} x_k$ 单调递减、$n \\mapsto \\inf_{k \\ge n} x_k$ 单调递增，所以在 $\\overline{\\mathbb{R}}$ 里的这两个极限**总是存在**。）\n\n并且数列的极限存在（允许取值 $\\pm\\infty$），当且仅当上下极限相等，即\n\n$$\\liminf_{n \\to \\infty} x_n = \\limsup_{n \\to \\infty} x_n$$",
-   "notes": "⭐ 上极限就是「所有收敛子列的极限之中最大的那个」（把 $\\pm \\infty$ 也算进来）—— 于是**每个**实数列都有上下极限，而只有收敛的数列才有极限：上下极限是极限的**放宽版**。\n\n⭐ 测度论里它们的出场方式很关键：Fatou 引理就是 $\\int \\liminf f_n \\le \\liminf \\int f_n$ —— 那里用不了「极限」，因为 $f_n$ 未必收敛。\n\n⚠ $\\limsup$ 与 $\\sup$ 不是一回事：$\\sup_n x_n$ 是全体项的上确界，$\\limsup_n x_n$ 只看**尾部**，所以对 $x_n = (-1)^{n}$ 有 $\\sup x_n = 1$ 而 $\\limsup x_n = 1$、$\\liminf x_n = -1$。",
+   "notes": "⭐ 上极限就是「所有收敛子列的极限之中最大的那个」（把 $\\pm \\infty$ 也算进来）—— 于是**每个**实数列都有上下极限，而只有收敛的数列才有极限：上下极限是极限的**放宽版**。\n\n⭐ 测度论里它们的出场方式很关键：Fatou 引理就是 $\\int \\liminf f_n \\le \\liminf \\int f_n$（**要求 $f_n \\ge 0$**，或 $f_n \\ge g \\in L^{1}$；否则反例：$\\mathbb{R}$ 上 $f_n = -\\mathbf{1}_{[n,n+1)}$ 时左端 $0$、右端 $-1$）—— 那里用不了「极限」，因为 $f_n$ 未必收敛。\n\n⚠ $\\limsup$ 与 $\\sup$ 不是一回事：$\\sup_n x_n$ 是全体项的上确界，$\\limsup_n x_n$ 只看**尾部**，所以对 $x_n = (-1)^{n}$ 有 $\\sup x_n = 1$ 而 $\\limsup x_n = 1$、$\\liminf x_n = -1$。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 3"
    ]
@@ -80003,7 +80003,7 @@
    ],
    "target": "prop.bounded-functional-gives-lq",
    "title": "Hölder + 有界性 $\\implies$ $g \\in L^q$",
-   "proof": "**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M_g(g)$。**\n\n设 $f$ 有限支可测、$\\|f\\|_p = 1$。取**有限支简单函数列** $\\{f_n\\} \\to f$ a.e.，且 $|f_n| \\le |f|$、$|f_n| \\le \\|f\\|_\\infty \\chi_E$（$E$ 是 $f$ 的支集，有限测度）。由 **DCT**，\n\n$$\\left| \\int fg \\right| = \\lim_n \\left| \\int f_n g \\right| \\le M_g(g)$$\n\n**Step 2：$q < \\infty$。** 不妨设 $g \\ne 0$，且设 $\\{g \\ne 0\\}$ $\\sigma$有限（$\\mu$ 半有限时这一点自动成立）。\n\n先说明**必须**有 $\\mu(\\{|g| > \\varepsilon\\}) < \\infty$（对一切 $\\varepsilon > 0$）：否则设 $E_\\varepsilon = \\{|g| > \\varepsilon\\}$ 测度无穷，对任意 $C$ 取 $B \\subseteq E_\\varepsilon$ 使 $C < \\mu(B) < \\infty$，令\n\n$$f = \\mu(B)^{-1/q} \\chi_B \\operatorname{sgn} g, \\qquad \\|f\\|_p = 1$$\n\n则 $\\left| \\int fg \\right| = \\mu(B)^{-1/q} \\int_B |g| > \\varepsilon \\, \\mu(B)^{1/p} > \\varepsilon C^{1/p}$，令 $C \\to \\infty$ 就与 $M_g(g) < \\infty$ 矛盾。\n\n于是可取 $\\{E_n\\} \\uparrow \\{g \\ne 0\\}$，$\\mu(E_n) < \\infty$；再取简单 $\\varphi_n \\to g$、$|\\varphi_n| \\le |g|$，令 $g_n := \\varphi_n \\chi_{E_n}$，则 $g_n \\to g$、$|g_n| \\le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。\n\n令\n\n$$f_n := \\frac{|g_n|^{q-1} \\operatorname{sgn} g_n}{\\|g_n\\|_q^{\\,q-1}}, \\qquad \\|f_n\\|_p = 1$$\n\n则 $f_n$ 有限支，由 Step 1 可用。于是\n\n$$\\|g\\|_q \\le \\lim_n \\|g_n\\|_q = \\lim_n \\int f_n g_n \\le \\lim_n \\int |f_n g| = \\lim_n \\int f_n g \\le M_g(g)$$\n\n（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。\n\n**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。\n\n若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。\n\n故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；\n\n反方向由 Hölder。\n\n∎",
+   "proof": "**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M(g)$。**\n\n设 $f$ 有限支可测、$\\|f\\|_p = 1$。取**有限支简单函数列** $\\{f_n\\} \\to f$ a.e.，且 $|f_n| \\le |f|$、$|f_n| \\le \\|f\\|_\\infty \\chi_E$（$E$ 是 $f$ 的支集，有限测度）。由 **DCT**，\n\n$$\\left| \\int fg \\right| = \\lim_n \\left| \\int f_n g \\right| \\le M(g)$$\n\n**Step 2：$q < \\infty$。** 不妨设 $g \\ne 0$，且设 $\\{g \\ne 0\\}$ $\\sigma$有限（$\\mu$ 半有限时这一点自动成立）。\n\n先说明**必须**有 $\\mu(\\{|g| > \\varepsilon\\}) < \\infty$（对一切 $\\varepsilon > 0$）：否则设 $E_\\varepsilon = \\{|g| > \\varepsilon\\}$ 测度无穷，对任意 $C$ 取 $B \\subseteq E_\\varepsilon$ 使 $C < \\mu(B) < \\infty$，令\n\n$$f = \\mu(B)^{-1/q} \\chi_B \\operatorname{sgn} g, \\qquad \\|f\\|_p = 1$$\n\n则 $\\left| \\int fg \\right| = \\mu(B)^{-1/q} \\int_B |g| > \\varepsilon \\, \\mu(B)^{1/p} > \\varepsilon C^{1/p}$，令 $C \\to \\infty$ 就与 $M(g) < \\infty$ 矛盾。\n\n于是可取 $\\{E_n\\} \\uparrow \\{g \\ne 0\\}$，$\\mu(E_n) < \\infty$；再取简单 $\\varphi_n \\to g$、$|\\varphi_n| \\le |g|$，令 $g_n := \\varphi_n \\chi_{E_n}$，则 $g_n \\to g$、$|g_n| \\le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。\n\n令\n\n$$f_n := \\frac{|g_n|^{q-1} \\operatorname{sgn} g_n}{\\|g_n\\|_q^{\\,q-1}}, \\qquad \\|f_n\\|_p = 1$$\n\n则 $f_n$ 有限支，由 Step 1 可用。于是\n\n$$\\|g\\|_q \\le \\lim_n \\|g_n\\|_q = \\lim_n \\int f_n g_n \\le \\lim_n \\int |f_n g| = \\lim_n \\int f_n g \\le M(g)$$\n\n（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M(g) < \\infty$，$g \\in L^q$；反向不等式 $M(g) \\le \\|g\\|_q$ 由 Hölder。\n\n**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。\n\n若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。\n\n故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；\n\n反方向由 Hölder。\n\n∎",
    "note": ""
   },
   {

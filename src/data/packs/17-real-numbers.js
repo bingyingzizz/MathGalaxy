@@ -63,7 +63,7 @@ window.MG = window.MG || {};
         '',
         '按端点是否取到区分；另有 $(-\\infty, b)$、$(a, +\\infty)$、$\\mathbb{R}$ 等无界区间，以及单点集 $[a, a]$。',
         '',
-        '体积就是长度：$m((a, b]) = b - a$。'
+        '**长度**（Lebesgue 测度 $m$ 的约定）就是 $b - a$（要求 $a \\le b$；$a > b$ 时 $(a, b] = \\emptyset$，要另行约定）。'
       ].join('\n'),
       notes: '⭐ **半开区间 $\\{ (a, b] : a < b \\}$ 是构造 Lebesgue–Stieltjes 测度时的起点**：它本身只是一个基本类，做有限不交并就得到环，长度在那个环上已经是预测度。\n\n为什么要用半开而不是开区间：不交并的长度好算 —— $[a, b) \\sqcup [b, c) = [a, c)$ 在开区间上不成立。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 2']
@@ -157,7 +157,7 @@ window.MG = window.MG || {};
         '',
         '若不要求极限存在而允许 $\\pm\\infty$，得到的是**广义导数**，单调函数的导数理论要用它。'
       ].join('\n'),
-      notes: '⭐ 微分理论关心的是**逐点**行为，所以定义域常常收缩到 $L^1_{loc}$ 而不是 $L^1$。\n\n要点（本星图 BV / AC 那一段全靠它们）：\n- 可导 $\\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。\n\n\n- 单调函数**几乎处处可导**，且 $F\' \\ge 0$ a.e.。\n\n\n- 可导**不保证** $F(b) - F(a) = \\int_a^b F\'$（Cantor 函数就是反例）；\n\n等式成立要加绝对连续。',
+      notes: '⭐ 微分理论关心的是**逐点**行为，所以定义域常常收缩到 $L^1_{loc}$ 而不是 $L^1$。\n\n要点（本星图 BV / AC 那一段全靠它们）：\n- 可导 $\\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。\n\n\n- 单调**递增**函数**几乎处处可导**，且 $F\' \\ge 0$ a.e.（递减时 $F\' \\le 0$）。\n\n\n- **a.e. 可导也不保证** $F(b) - F(a) = \\int_a^b F\'$（Cantor 函数处处连续、a.e. 可导且 $F\' = 0$ a.e.，但 $F(1) - F(0) = 1 \\ne 0$；注意它**不是处处可导**：$1/3$ 处两侧差商 $0$ 与 $(3/2)^{k} \\to \\infty$ 不等）；\n\n等式成立要加绝对连续。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 5']
     },
     {

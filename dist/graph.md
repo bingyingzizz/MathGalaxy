@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T11:50:05.151Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T11:54:32.135Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -9255,7 +9255,7 @@ $$V \cong W \iff \dim V = \dim W$$
 
 于是研究所有有限维向量空间 = 研究所有 $K^{n}$。
 
-⚠ 无限维时结论只在一半成立：等势的基给出同构，但同构当然也给出等势的基 —— 所以其实两个方向都对，只是「维数」要按基的势来理解（见「维数良定义」）。
+⚠ 无限维时两个方向都对（等势的基给出同构，同构当然也给出等势的基），只是「维数」要按基的势来理解（见「维数良定义」）。
 
 ⭐ 在范畴语言里：$V \mapsto \dim V$ 把 $K\text{-}\mathbf{Vect}$ 的有限维对象与基数对应起来，加法范畴的结构因此退化成线性代数的具体计算。
 
@@ -10237,7 +10237,7 @@ $$(a, b), \quad [a, b], \quad [a, b), \quad (a, b]$$
 
 按端点是否取到区分；另有 $(-\infty, b)$、$(a, +\infty)$、$\mathbb{R}$ 等无界区间，以及单点集 $[a, a]$。
 
-体积就是长度：$m((a, b]) = b - a$。
+**长度**（Lebesgue 测度 $m$ 的约定）就是 $b - a$（要求 $a \le b$；$a > b$ 时 $(a, b] = \emptyset$，要另行约定）。
 
 ⭐ **半开区间 $\{ (a, b] : a < b \}$ 是构造 Lebesgue–Stieltjes 测度时的起点**：它本身只是一个基本类，做有限不交并就得到环，长度在那个环上已经是预测度。
 
@@ -10338,10 +10338,10 @@ $$F'(x_0) := \lim_{h \to 0} \frac{F(x_0 + h) - F(x_0)}{h}$$
 - 可导 $\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。
 
 
-- 单调函数**几乎处处可导**，且 $F' \ge 0$ a.e.。
+- 单调**递增**函数**几乎处处可导**，且 $F' \ge 0$ a.e.（递减时 $F' \le 0$）。
 
 
-- 可导**不保证** $F(b) - F(a) = \int_a^b F'$（Cantor 函数就是反例）；
+- **a.e. 可导也不保证** $F(b) - F(a) = \int_a^b F'$（Cantor 函数处处连续、a.e. 可导且 $F' = 0$ a.e.，但 $F(1) - F(0) = 1 \ne 0$；注意它**不是处处可导**：$1/3$ 处两侧差商 $0$ 与 $(3/2)^{k} \to \infty$ 不等）；
 
 等式成立要加绝对连续。
 
@@ -10432,7 +10432,7 @@ $$\lim_{x \to x_0} g(x) = \lim_{x \to x_0} h(x) = L$$
 
 **严格不等号在取极限时会被抹平**。
 
-⚠ 「极限存在则唯一」「收敛则必有界」也出自同一定义，写法与数列版一模一样。
+⚠ 「极限存在则唯一」「收敛则**局部**有界」也出自同一定义（函数版只保证在 $x_0$ 的某去心邻域内有界：$f(x) = x$、$x_0 = 0$ 时极限存在，但 $f$ 在全定义域无界）。
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
@@ -10474,7 +10474,7 @@ $$\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n$$
 
 ⭐ 上极限就是「所有收敛子列的极限之中最大的那个」（把 $\pm \infty$ 也算进来）—— 于是**每个**实数列都有上下极限，而只有收敛的数列才有极限：上下极限是极限的**放宽版**。
 
-⭐ 测度论里它们的出场方式很关键：Fatou 引理就是 $\int \liminf f_n \le \liminf \int f_n$ —— 那里用不了「极限」，因为 $f_n$ 未必收敛。
+⭐ 测度论里它们的出场方式很关键：Fatou 引理就是 $\int \liminf f_n \le \liminf \int f_n$（**要求 $f_n \ge 0$**，或 $f_n \ge g \in L^{1}$；否则反例：$\mathbb{R}$ 上 $f_n = -\mathbf{1}_{[n,n+1)}$ 时左端 $0$、右端 $-1$）—— 那里用不了「极限」，因为 $f_n$ 未必收敛。
 
 ⚠ $\limsup$ 与 $\sup$ 不是一回事：$\sup_n x_n$ 是全体项的上确界，$\limsup_n x_n$ 只看**尾部**，所以对 $x_n = (-1)^{n}$ 有 $\sup x_n = 1$ 而 $\limsup x_n = 1$、$\liminf x_n = -1$。
 
@@ -12755,7 +12755,7 @@ $$\frac{\partial f}{\partial x_j}(a) := \lim_{h \to 0} \frac{f(a + h e_j) - f(a)
 
 ⚠ 偏导数存在**什么也保证不了**：$f(x, y) = xy/(x^{2} + y^{2})$（原点补 $f(0,0) = 0$）在原点两个偏导都存在（都等于 $0$），但沿 $y = x$ 趋近时 $f \to 1/2 \ne f(0,0)$ —— 它连**连续**都不成立。
 
-⭐ 病根是一个不对称：偏导存在是 $2n$ 个**一维**条件，而可微（`def.total-differential`）是**一个** $n$ 维条件。
+⭐ 病根是一个不对称：偏导存在是 $n$ 个**一维**条件（标量 $f$；向量值 $f:\mathbb{R}^{n} \to \mathbb{R}^{m}$ 是 $mn$ 个），而可微（`def.total-differential`）是**一个** $n$ 维条件。
 
 一维条件再多也堆不出 $n$ 维结论。
 
@@ -12854,7 +12854,7 @@ $Df(a)$ 天生住在对偶空间 $(\mathbb{R}^{n})^{\ast}$ 里，而「搬回来
 - $D_v f(a) = \langle \nabla f(a), v \rangle$；
 
 
-- 在**单位**方向里，$v = \nabla f(a)/\|\nabla f(a)\|$ 给出最大的方向导数 $\|\nabla f(a)\|$（上升最快）；
+- 在**单位**方向里（当 $\nabla f(a) \ne 0$ 时），$v = \nabla f(a)/\|\nabla f(a)\|$ 给出最大的方向导数 $\|\nabla f(a)\|$（上升最快）；
 
 
 - $\nabla f(a)$ 垂直于过 $a$ 的等值面 $\{f = c\}$（因为沿等值面的方向导数为零）。
@@ -13031,7 +13031,7 @@ $k = 2$ 的公式里 $D^{2}f(a)(h,h)$ 就是 $\sum_{i,j} \partial_i \partial_j f
 
 所以判据失效不是「证法不够好」，而是信息真的不足。
 
-⚠ 反过来，正定只给**局部**极小：$f(x) = x^{2}(1 + x^{2})$ 在原点正定但整体有别的极小点。
+⚠ 反过来，正定只给**局部**极小：$f(x) = x^{2} - x^{4}$ 在原点 $f''(0) = 2 > 0$（局部极小），但全局最小值在 $x = \pm 1/\sqrt{2}$ 处（值为 $-1/4$）—— 所以「局部极小」推不出「全局极小」。
 
 证明全文在边上（$k=2$ 的 Taylor + 正定二次型的估计 $h^{\mathsf{T}}Hh \ge \lambda_{\min}\|h\|^{2}$；
 
@@ -13114,9 +13114,7 @@ $f(x, y) = (e^{x}\cos y,\ e^{x}\sin y)$ 的 $\det Df = e^{2x} \ne 0$ 处处成�
 
 这就是「$f$ 是微分同胚 $\implies$ $f^{-1}$ 也是」。
 
-⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的；
-
-在 Banach 空间里它是**另一条定理**（泛函分析的 `开映射定理`，与本图的「非常数全纯函数是开映射」同名但不同物，且尚未收录），不能从这里免费得到。
+⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维与 Banach 空间里都是**免费**的（逆映射定理本身就给出局部同胚，局部同胚自然把开集映成开集）。⚠ 别和泛函分析的「**开映射定理**」搞混：那条讲的是满射有界线性算子是开映射，与本图的「非常数全纯函数是开映射」同名不同物。
 
 ⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。
 
@@ -13362,7 +13360,7 @@ $$f\bigl( \{ x \in U : \operatorname{rank} Df(x) < m \} \bigr) \subseteq \mathbb
 
 这一条把「正则性」从「碰巧成立的假设」变成「几乎必然成立的事实」——这是微分拓扑里所有「一般位置」论证的根基。
 
-⚠ 光滑性（或足够高阶）是必要的：$n = m = 1$ 且 $f$ 只是 $C^{1}$ 时有反例（Whitney 构造的 $C^{1}$ 函数把临界值映满一个区间）。
+⚠ 光滑性（或足够高阶）是必要的：$n - m \ge 1$ 且只假设 $C^{1}$ 时有反例（如 $n = 2$、$m = 1$：Whitney 构造的 $C^{1}$ 函数把临界值映满一个区间）；$n = m = 1$ 时门槛 $k > 0$，$C^{1}$ 就够，一维的临界值集确实零测。
 
 Sard 给出的门槛是 $C^{k}$、$k > n - m$。
 
@@ -17632,7 +17630,7 @@ $$\left\| F - \sum_{k \le n} f_k \right\|_p^p = \int \left| F - \sum_{k \le n} f
 #### 紧支简单函数稠密　`prop.dense-simple-compact-support`
 *命题*　命题：紧支集简单函数在 $L^p$ 中稠密
 
-设 $1 \le p < \infty$。**紧支集的简单函数**在 $L^p$ 中稠密（$p = \infty$ 时不成立）。
+设 $1 \le p < \infty$。**有限测度支撑的简单函数**在 $L^p$ 中稠密（$p = \infty$ 时不成立；一般测度空间没有「紧支」这个概念 —— 要保留「紧支」得假设 $X$ 局部紧、$\mu$ 是 Radon 测度）。
 
 证明：对 $f \in L^p$，取简单函数列 $\{f_n\}$ 使 $f_n \to f$ a.e. 且 $|f_n| \le |f|$（简单函数逼近定理给的就是这个形状）。于是 $f_n \in L^p$，且
 
@@ -17932,18 +17930,18 @@ $$f := \mu(B)^{-1} \chi_B \operatorname{sgn} g$$
 
 设 $1 \le p \le \infty$，$q$ 是它的**共轭指数**（$1/p + 1/q = 1$，约定 $p=1$ 时 $q=\infty$、$p=\infty$ 时 $q=1$）。设 $g$ 在 $(X, \mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \in L^{1}$。记
 
-$$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 \,\right\}$$
+$$M(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 \,\right\}$$
 
-（$\Sigma$ $=$ 有限支集简单函数全体。）若 $M_g(g) < \infty$，且
+（$\Sigma$ $=$ 有限支集简单函数全体。）若 $M(g) < \infty$，且
 
 - $\{x : g(x) \ne 0\}$ 是 **$\sigma$有限** 的，**或**
 - $\mu$ 是**半有限**的，
 
-则 $g \in L^q$，且 $M_g(g) = \|g\|_q$。
+则 $g \in L^q$，且 $M(g) = \|g\|_q$。
 
 这条是下一个大定理（$(L^p)^* \cong L^q$）的技术准备：它说「泛函有界」这件事本身就已经把 $g$ 逼进了 $L^q$。
 
-证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\int fg| \le M_g(g)$；Step 2 处理 $q < \infty$；Step 3 处理 $q = \infty$。
+证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\int fg| \le M(g)$；Step 2 处理 $q < \infty$；Step 3 处理 $q = \infty$。
 
 ⚠ 两个前提条件（$\sigma$有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。
 
@@ -17989,14 +17987,8 @@ $$L^p \cong (L^p)^{**}$$
 - 于是
 $$(L^{p})^{**} \cong (L^{q})^{*} \cong L^{p},$$
 即 $L^{p}$ **自反** ✓。∎
-⚠️ $p = 1$ 与 $p = \infty$ 时**不**自反：$(L^{1})^{*} \cong L^{\infty}$，而 $(L^{\infty})^{*}$ 严格大于 $L^{1}$（有非绝对连续的函数）✓。
+⚠️ $p = 1$ 与 $p = \infty$ 时**不**自反：$(L^{1})^{*} \cong L^{\infty}$，而 $(L^{\infty})^{*}$ 严格大于 $L^{1}$（存在**非绝对连续的有限可加测度**，或 $C[0,1]$ 上的 Hahn–Banach 泛函）✓。
 ⭐ 自反的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Eberlein–Šmulian），这是 $L^{p}$ 上变分 / 存在性论证的常用工具。
-
-把对偶定理用两次即可：$(L^p)^* \cong L^q$，而 $q$ 的共轭又回到 $p$，故 $(L^p)^{**} \cong (L^q)^* \cong L^p$。
-
-⚠ $p = 1$ 与 $p = \infty$ 时**不**自反。
-
-⭐ 自反性的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Banach–Alaoglu / Eberlein–Šmulian），这是变分法与 PDE 里取极限的基本工具。
 
 参考：Folland, Real Analysis, §6.2
 
@@ -32554,7 +32546,7 @@ $$\operatorname{vol}\left(A_{i} \cap P^{+}\right) = \operatorname{vol}\left(A_{i
 
 $$\omega^{i} := \langle \mathrm{d}r,\, e_{i}\rangle ,\qquad i = 1,2,3,$$
 
-它们是**参数域上**的 $1$-形式（$v$ 要先被 $\mathrm{d}r$ 送成环境向量，才能和 $e_{i}$ 做内积）。⚠ 对**曲面**，$\mathrm{d}r$ 落在切平面里，所以 $\omega^{3} \equiv 0$；而 $\omega^{i}(e_{j}) = \delta^{i}_{\ j}$ 只对 $j = 1, 2$（切向量）有意义 ——$e_{3}$ 是法向，$\omega^{3}(e_{3})$ 在这里**没有定义**（只有把 $\omega^{i}$ 看成$\mathbb{R}^{3}$ 上形式的拉回时它才有值）。位置向量的微分按标架展开：
+它们是**参数域上**的 $1$-形式（$v$ 要先被 $\mathrm{d}r$ 送成环境向量，才能和 $e_{i}$ 做内积）。⚠ 对**曲面**，$\mathrm{d}r$ 落在切平面里，所以 $\omega^{3} \equiv 0$；而 $\omega^{i}(e_{j}) = \delta^{i}_{\ j}$ 要读作「参数域上的 $\omega^{i}$ 与**拉回到参数域的**切向量 $e_{j}$ 配对」—— $\omega^{i}$ 定义在参数域 $U$ 上、$e_{j}$ 是环境向量，只有 $j = 1, 2$（切向）落在配对域里；$e_{3}$ 是法向，$\omega^{3}(e_{3})$ 在这里**没有定义**。位置向量的微分按标架展开：
 
 $$\mathrm{d}r = \omega^{1}e_{1}+\omega^{2}e_{2}+\omega^{3}e_{3}.$$
 
@@ -32858,7 +32850,7 @@ $\Omega^{0}(U) = C^{\infty}(U)$（函数就是 $0$-形式）；$k>n$ 时 $\Omega
 
 **低次形式的通俗身份**（$n = 3$）：$0$-形式是函数；$1$-形式 $P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z$ 是做功与环量；$2$-形式是通量；$3$-形式是密度。梯度、旋度、散度是同一个 $\mathrm{d}$ 在不同次数上的样子。
 
-⚠️ **方向**：形式沿映射**反**着走（拉回，`prop.pullback-forms`），向量场沿映射**正**着走（前推，且要求映射可逆）。这是形式比向量场好用的根本原因。
+⚠️ **方向**：形式沿映射**反**着走（拉回，`prop.pullback-forms`），向量场沿映射**正**着走（前推：沿**微分同胚**，或在 $F$-相关时）。这是形式比向量场好用的根本原因。
 
 **流形上**：把 $\mathbb{R}^{n}$ 换成 $n$ 维流形 $M$，只需在某张卡上用坐标微分写开，再用转移映射的光滑性说明「是 $k$-形式」与卡无关 —— 与 `def.tangent-space-manifold` 里「切向量与卡无关」是同一套论证。
 
@@ -32938,7 +32930,7 @@ $$(F^{\ast}\omega)_{p}(v_{1},\ldots,v_{k}) := \omega_{F(p)}\bigl(\mathrm{d}F_{p}
 
 前两条说 $F^{\ast}$ 是分次代数同态，第三条说它还是链映射；合起来：**$F^{\ast}$ 是微分分次代数的同态**。
 
-**方向**：$F : U\to V$ 给出的是 $F^{\ast} : \Omega^{k}(V)\to\Omega^{k}(U)$，与 $F$ 反向。这就是「形式是协变的」的确切含义；也是它能沿任意光滑映射定义，而向量场的前推要求 $F$ 是微分同胚的原因。
+**方向**：$F : U\to V$ 给出的是 $F^{\ast} : \Omega^{k}(V)\to\Omega^{k}(U)$，与 $F$ 反向。这就是「形式是协变的」的确切含义；也是它能沿任意光滑映射定义，而向量场的前推一般要求 $F$ 是微分同胚（或只在 $F$-相关时能推到像上）的原因。
 
 **（3）是核心**：它等价于「$\mathrm{d}$ 不依赖坐标」。唯一的实质内容是链式法则，剩下的由 (2) 与 $\mathrm{d}^{2}=0$ 收尾（证明在边上）。
 
@@ -38022,7 +38014,7 @@ $K[x]$ 上的对应定理是 `thm.division-algorithm`：同一个证明结构，
 #### 辗转相除法　`thm.euclid-algorithm`
 *定理*　Euclid 算法：余数严格下降，必停
 
-设 $a, b \in \mathbb{Z}$ 不全为零。置 $r_{-1} = a$、$r_{0} = b$，反复做带余除法
+设 $a, b \in \mathbb{Z}$ 不全为零。先取绝对值（$a, b$ 可为负）；$b = 0$ 时直接返回 $|a|$，否则置 $r_{-1} = |a|$、$r_{0} = |b|$，反复做带余除法
 
 $$r_{i-1} = q_{i}\, r_{i} + r_{i+1}, \qquad 0 \le r_{i+1} < r_{i} .$$
 
@@ -38051,7 +38043,7 @@ $$r_{i-1} = q_{i}\, r_{i} + r_{i+1}, \qquad 0 \le r_{i+1} < r_{i} .$$
 
 
 
-「最小正元素」这个刻画只在一维整环成立（$\mathbb{Z}$、$K[x]$）；一般的 gcd 整环里 $\gcd$ 存在但未必是线性组合（Bézout 性质是更强的条件）。
+「最小正元素」这个刻画要求**Bézout 整环**（$\mathbb{Z}$、$K[x]$），不是「一维」就够：$R = K[t^{2}, t^{3}]$ 是一维整环，$\gcd(t^{2}, t^{3}) = 1$，但 $ut^{2} + vt^{3}$ 的常数项恒为零，永远不等于 $1$。一般的 gcd 整环里 $\gcd$ 存在但未必是线性组合。
 
 参考：华罗庚《数论导引》§1
 
@@ -38119,7 +38111,7 @@ $N > 1$ 必有素因数 $p$，而 $p \ne p_{i}$（否则 $p \mid N$ 且 $p \mid 
 
 $$n = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{r}^{e_{r}},$$
 
-其中 $p_{1} < p_{2} < \cdots < p_{r}$ 是素数，$e_{i} \ge 1$。
+其中 $p_{1} < p_{2} < \cdots < p_{r}$ 是素数，$e_{i} \in \mathbb{Z}_{\ge 1}$。
 
 存在性：对 $n$ 归纳 —— $n$ 是素数则完事；否则 $n = ab$ 且 $1 < a, b < n$，对 $a, b$ 各用归纳假设再合并。
 
@@ -38167,7 +38159,7 @@ $$[a] + [b] := [a + b], \qquad [a]\,[b] := [ab] .$$
 
 
 
-$\mathbb{Z}/n\mathbb{Z}$ 是域 $\iff$ $n$ 是素数（$n = p$ 时记 $\mathbb{F}_{p}$）：$n$ 合数时取 $n = ab$，$[a][b] = 0$ 而两者非零，有零因子。
+对 $n \ge 1$：$\mathbb{Z}/n\mathbb{Z}$ 是域 $\iff$ $n$ 是素数（$n = p$ 时记 $\mathbb{F}_{p}$；$n = 1$ 给零环，不是域）：$n$ 合数时取 $n = ab$，$[a][b] = 0$ 而两者非零，有零因子。
 
 
 
@@ -38184,7 +38176,7 @@ $$\mathbb{Z}/N\mathbb{Z} \;\cong\; \mathbb{Z}/n_{1}\mathbb{Z} \times \cdots \tim
 
 是环同构。等价说法：同余方程组 $x \equiv a_{i} \pmod{n_{i}}$（$i = 1, \cdots, k$）对任意右端都有解，且解模 $N$ 唯一。
 
-存在性（构造式）：由 Bézout，取 $e_{i}$ 满足 $e_{i} \equiv 1 \pmod{n_{i}}$、$e_{i} \equiv 0 \pmod{n_{j}}$（$j \ne i$），即 $e_{i} = (N/n_{i})\,u_{i}$，其中 $u_{i}(N/n_{i}) \equiv 1 \pmod{n_{i}}$；
+存在性（构造式）：由 Bézout，取 $e_{i}$ 满足 $e_{i} \equiv 1 \pmod{n_{i}}$、$e_{i} \equiv 0 \pmod{n_{j}}$（$j \ne i$），即 $e_{i} = (N/n_{i})\,u_{i}$，其中 $u_{i}(N/n_{i}) \equiv 1 \pmod{n_{i}}$（要求 $n_{i} \ne 0$，否则 $N/n_{i}$ 无定义）；
 
 于是 $x = \sum_{i} a_{i} e_{i}$ 就是解。
 
@@ -38209,7 +38201,7 @@ $$\mathbb{Z}/N\mathbb{Z} \;\cong\; \mathbb{Z}/n_{1}\mathbb{Z} \times \cdots \tim
 
 $$\varphi(n) = \#\{\, 1 \le a \le n : \gcd(a, n) = 1 \,\} .$$
 
-若 $n = p_{1}^{e_{1}} \cdots p_{r}^{e_{r}}$，则
+若 $n = p_{1}^{e_{1}} \cdots p_{r}^{e_{r}}$（$p_{i}$ **两两不同**；$n = 1$ 取空积），则
 
 $$\varphi(n) = n \prod_{i=1}^{r} \left( 1 - \frac{1}{p_{i}} \right).$$
 
@@ -38268,13 +38260,13 @@ $$a^{p-1} \equiv 1 \pmod p ,$$
 #### Wilson 定理　`cor.wilson`
 *推论*　Wilson 定理：用阶乘同余判定素数
 
-$p$ 是素数 $\iff$ $(p - 1)! \equiv -1 \pmod p$。
+整数 $p \ge 2$：$p$ 是素数 $\iff$ $(p - 1)! \equiv -1 \pmod p$。
 
 必要性：在 $(\mathbb{Z}/p\mathbb{Z})^{\times}$ 里，除 $[1]$ 与 $[-1]$ 之外每个元素与自己的逆不同（$a^{2} = 1 \implies a = \pm 1$，因为 $p$ 素时 $x^{2} - 1$ 至多两个根），于是它们两两配对，乘起来剩 $-1$。
 
 
 
-充分性：若 $n > 4$ 合数，写 $n = ab$、$1 < a, b < n$，则 $a, b$ 都出现在 $(n-1)!$ 里，故 $n \mid (n-1)!$，不可能 $\equiv -1$；$n = 4$ 单独看：$3! = 6 \equiv 2 \not\equiv -1$。
+充分性：若 $n > 4$ 合数且**不是完全平方**，写 $n = ab$、$1 < a < b < n$，则 $a, b$ 都出现在 $(n-1)!$ 里，故 $n \mid (n-1)!$，不可能 $\equiv -1$。若 $n = a^{2}$（$a > 2$），$(n-1)!$ 里 $a$ 只出现**一次**，不能只用它 —— 改用 $a$ 与 $2a$（$2a < a^{2} = n$，因为 $a > 2$），两个因子都在 $(n-1)!$ 里，故仍有 $n \mid (n-1)!$。$n = 4$ 单独看：$3! = 6 \equiv 2 \not\equiv -1$。
 
 
 
@@ -51483,11 +51475,11 @@ $>$ ⭐ 这一段是「用逐点收敛的定理（MCT / DCT）去证范数收敛
 #### Hölder 不等式 + 对偶配对 φ_g ⟹ 有界 ⟹ g ∈ L^q　`imp.bounded-gives-lq`
 *Hölder + 有界性 $\implies$ $g \in L^q$*
 
-**Step 1：有限支可测的 $f$ 也满足 $|\int fg| \le M_g(g)$。**
+**Step 1：有限支可测的 $f$ 也满足 $|\int fg| \le M(g)$。**
 
 设 $f$ 有限支可测、$\|f\|_p = 1$。取**有限支简单函数列** $\{f_n\} \to f$ a.e.，且 $|f_n| \le |f|$、$|f_n| \le \|f\|_\infty \chi_E$（$E$ 是 $f$ 的支集，有限测度）。由 **DCT**，
 
-$$\left| \int fg \right| = \lim_n \left| \int f_n g \right| \le M_g(g)$$
+$$\left| \int fg \right| = \lim_n \left| \int f_n g \right| \le M(g)$$
 
 **Step 2：$q < \infty$。** 不妨设 $g \ne 0$，且设 $\{g \ne 0\}$ $\sigma$有限（$\mu$ 半有限时这一点自动成立）。
 
@@ -51495,7 +51487,7 @@ $$\left| \int fg \right| = \lim_n \left| \int f_n g \right| \le M_g(g)$$
 
 $$f = \mu(B)^{-1/q} \chi_B \operatorname{sgn} g, \qquad \|f\|_p = 1$$
 
-则 $\left| \int fg \right| = \mu(B)^{-1/q} \int_B |g| > \varepsilon \, \mu(B)^{1/p} > \varepsilon C^{1/p}$，令 $C \to \infty$ 就与 $M_g(g) < \infty$ 矛盾。
+则 $\left| \int fg \right| = \mu(B)^{-1/q} \int_B |g| > \varepsilon \, \mu(B)^{1/p} > \varepsilon C^{1/p}$，令 $C \to \infty$ 就与 $M(g) < \infty$ 矛盾。
 
 于是可取 $\{E_n\} \uparrow \{g \ne 0\}$，$\mu(E_n) < \infty$；再取简单 $\varphi_n \to g$、$|\varphi_n| \le |g|$，令 $g_n := \varphi_n \chi_{E_n}$，则 $g_n \to g$、$|g_n| \le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。
 
@@ -51505,9 +51497,9 @@ $$f_n := \frac{|g_n|^{q-1} \operatorname{sgn} g_n}{\|g_n\|_q^{\,q-1}}, \qquad \|
 
 则 $f_n$ 有限支，由 Step 1 可用。于是
 
-$$\|g\|_q \le \lim_n \|g_n\|_q = \lim_n \int f_n g_n \le \lim_n \int |f_n g| = \lim_n \int f_n g \le M_g(g)$$
+$$\|g\|_q \le \lim_n \|g_n\|_q = \lim_n \int f_n g_n \le \lim_n \int |f_n g| = \lim_n \int f_n g \le M(g)$$
 
-（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\operatorname{sgn}$ 的消失。）故 $\|g\|_q \le M_g(g) < \infty$，$g \in L^q$；反向不等式 $M_g(g) \le \|g\|_q$ 由 Hölder。
+（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\operatorname{sgn}$ 的消失。）故 $\|g\|_q \le M(g) < \infty$，$g \in L^q$；反向不等式 $M(g) \le \|g\|_q$ 由 Hölder。
 
 **Step 3：$q = \infty$。** 对 $\varepsilon > 0$ 令 $A = \{|g(x)| \ge M_\infty(g) + \varepsilon\}$。
 

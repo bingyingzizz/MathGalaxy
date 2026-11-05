@@ -171,7 +171,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '稠密', '简单函数'],
       statement: [
-        '设 $1 \\le p < \\infty$。**紧支集的简单函数**在 $L^p$ 中稠密（$p = \\infty$ 时不成立）。'
+        '设 $1 \\le p < \\infty$。**有限测度支撑的简单函数**在 $L^p$ 中稠密（$p = \\infty$ 时不成立；一般测度空间没有「紧支」这个概念 —— 要保留「紧支」得假设 $X$ 局部紧、$\\mu$ 是 Radon 测度）。'
       ].join('\n'),
       notes: [
         '证明：对 $f \\in L^p$，取简单函数列 $\\{f_n\\}$ 使 $f_n \\to f$ a.e. 且 $|f_n| \\le |f|$（简单函数逼近定理给的就是这个形状）。于是 $f_n \\in L^p$，且',
@@ -464,18 +464,18 @@ window.MG = window.MG || {};
       statement: [
         '设 $1 \\le p \\le \\infty$，$q$ 是它的**共轭指数**（$1/p + 1/q = 1$，约定 $p=1$ 时 $q=\\infty$、$p=\\infty$ 时 $q=1$）。设 $g$ 在 $(X, \\mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \\in L^{1}$。记',
         '',
-        '$$M_g(g) := \\sup \\left\\{ \\, \\left| \\int fg \\right| : f \\in \\Sigma,\\ \\|f\\|_p = 1 \\,\\right\\}$$',
+        '$$M(g) := \\sup \\left\\{ \\, \\left| \\int fg \\right| : f \\in \\Sigma,\\ \\|f\\|_p = 1 \\,\\right\\}$$',
         '',
-        '（$\\Sigma$ $=$ 有限支集简单函数全体。）若 $M_g(g) < \\infty$，且',
+        '（$\\Sigma$ $=$ 有限支集简单函数全体。）若 $M(g) < \\infty$，且',
         '',
         '- $\\{x : g(x) \\ne 0\\}$ 是 **$\\sigma$有限** 的，**或**',
         '- $\\mu$ 是**半有限**的，',
         '',
-        '则 $g \\in L^q$，且 $M_g(g) = \\|g\\|_q$。'
+        '则 $g \\in L^q$，且 $M(g) = \\|g\\|_q$。'
       ].join('\n'),
       notes: [
         '这条是下一个大定理（$(L^p)^* \\cong L^q$）的技术准备：它说「泛函有界」这件事本身就已经把 $g$ 逼进了 $L^q$。',
-        '证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\\int fg| \\le M_g(g)$；Step 2 处理 $q < \\infty$；Step 3 处理 $q = \\infty$。',
+        '证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\\int fg| \\le M(g)$；Step 2 处理 $q < \\infty$；Step 3 处理 $q = \\infty$。',
         '⚠ 两个前提条件（$\\sigma$有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 6.14']
@@ -525,10 +525,7 @@ window.MG = window.MG || {};
         '即 $L^p$ 是**自反**的 Banach 空间。'
       ].join('\n'),
       notes: [
-        ['**证明。** 设 $1 < p < \\infty$，$q$ 是共轭指数（$\\frac1p+\\frac1q = 1$，于是也有 $1 < q < \\infty$）。','- 由「$L^{p}$ 的对偶是 $L^{q}$」（Riesz 表示）：$(L^{p})^{*} \\cong L^{q}$ ✓；','- 把同一条定理用在 $q$ 上：$(L^{q})^{*} \\cong L^{p}$ ✓；','- 于是','$$(L^{p})^{**} \\cong (L^{q})^{*} \\cong L^{p},$$','即 $L^{p}$ **自反** ✓。∎','⚠️ $p = 1$ 与 $p = \\infty$ 时**不**自反：$(L^{1})^{*} \\cong L^{\\infty}$，而 $(L^{\\infty})^{*}$ 严格大于 $L^{1}$（有非绝对连续的函数）✓。','⭐ 自反的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Eberlein–Šmulian），这是 $L^{p}$ 上变分 / 存在性论证的常用工具。'].join('\n'),
-        '把对偶定理用两次即可：$(L^p)^* \\cong L^q$，而 $q$ 的共轭又回到 $p$，故 $(L^p)^{**} \\cong (L^q)^* \\cong L^p$。',
-        '⚠ $p = 1$ 与 $p = \\infty$ 时**不**自反。',
-        '⭐ 自反性的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Banach–Alaoglu / Eberlein–Šmulian），这是变分法与 PDE 里取极限的基本工具。'
+        ['**证明。** 设 $1 < p < \\infty$，$q$ 是共轭指数（$\\frac1p+\\frac1q = 1$，于是也有 $1 < q < \\infty$）。','- 由「$L^{p}$ 的对偶是 $L^{q}$」（Riesz 表示）：$(L^{p})^{*} \\cong L^{q}$ ✓；','- 把同一条定理用在 $q$ 上：$(L^{q})^{*} \\cong L^{p}$ ✓；','- 于是','$$(L^{p})^{**} \\cong (L^{q})^{*} \\cong L^{p},$$','即 $L^{p}$ **自反** ✓。∎','⚠️ $p = 1$ 与 $p = \\infty$ 时**不**自反：$(L^{1})^{*} \\cong L^{\\infty}$，而 $(L^{\\infty})^{*}$ 严格大于 $L^{1}$（存在**非绝对连续的有限可加测度**，或 $C[0,1]$ 上的 Hahn–Banach 泛函）✓。','⭐ 自反的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Eberlein–Šmulian），这是 $L^{p}$ 上变分 / 存在性论证的常用工具。'].join('\n'),
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §6.2']
     }
@@ -635,11 +632,11 @@ window.MG = window.MG || {};
       target: 'prop.bounded-functional-gives-lq',
       title: 'Hölder + 有界性 $\\implies$ $g \\in L^q$',
       proof: [
-        '**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M_g(g)$。**',
+        '**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M(g)$。**',
         '',
         '设 $f$ 有限支可测、$\\|f\\|_p = 1$。取**有限支简单函数列** $\\{f_n\\} \\to f$ a.e.，且 $|f_n| \\le |f|$、$|f_n| \\le \\|f\\|_\\infty \\chi_E$（$E$ 是 $f$ 的支集，有限测度）。由 **DCT**，',
         '',
-        '$$\\left| \\int fg \\right| = \\lim_n \\left| \\int f_n g \\right| \\le M_g(g)$$',
+        '$$\\left| \\int fg \\right| = \\lim_n \\left| \\int f_n g \\right| \\le M(g)$$',
         '',
         '**Step 2：$q < \\infty$。** 不妨设 $g \\ne 0$，且设 $\\{g \\ne 0\\}$ $\\sigma$有限（$\\mu$ 半有限时这一点自动成立）。',
         '',
@@ -647,7 +644,7 @@ window.MG = window.MG || {};
         '',
         '$$f = \\mu(B)^{-1/q} \\chi_B \\operatorname{sgn} g, \\qquad \\|f\\|_p = 1$$',
         '',
-        '则 $\\left| \\int fg \\right| = \\mu(B)^{-1/q} \\int_B |g| > \\varepsilon \\, \\mu(B)^{1/p} > \\varepsilon C^{1/p}$，令 $C \\to \\infty$ 就与 $M_g(g) < \\infty$ 矛盾。',
+        '则 $\\left| \\int fg \\right| = \\mu(B)^{-1/q} \\int_B |g| > \\varepsilon \\, \\mu(B)^{1/p} > \\varepsilon C^{1/p}$，令 $C \\to \\infty$ 就与 $M(g) < \\infty$ 矛盾。',
         '',
         '于是可取 $\\{E_n\\} \\uparrow \\{g \\ne 0\\}$，$\\mu(E_n) < \\infty$；再取简单 $\\varphi_n \\to g$、$|\\varphi_n| \\le |g|$，令 $g_n := \\varphi_n \\chi_{E_n}$，则 $g_n \\to g$、$|g_n| \\le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。\n\n令',
         '',
@@ -655,9 +652,9 @@ window.MG = window.MG || {};
         '',
         '则 $f_n$ 有限支，由 Step 1 可用。于是',
         '',
-        '$$\\|g\\|_q \\le \\lim_n \\|g_n\\|_q = \\lim_n \\int f_n g_n \\le \\lim_n \\int |f_n g| = \\lim_n \\int f_n g \\le M_g(g)$$',
+        '$$\\|g\\|_q \\le \\lim_n \\|g_n\\|_q = \\lim_n \\int f_n g_n \\le \\lim_n \\int |f_n g| = \\lim_n \\int f_n g \\le M(g)$$',
         '',
-        '（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。',
+        '（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M(g) < \\infty$，$g \\in L^q$；反向不等式 $M(g) \\le \\|g\\|_q$ 由 Hölder。',
         '',
         '**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。\n\n' +
         '若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。\n\n' +
