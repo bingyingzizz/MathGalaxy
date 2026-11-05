@@ -176,7 +176,7 @@ window.MG.packs.push({
         '📌 **绕数**：对任意闭 1-形式 $\\omega$，$\\frac{1}{2\\pi}\\int_{S^{1}}\\omega \\in \\mathbb{R}$ 是它的「周期」；' +
           '若 $\\omega$ 是整系数的（如 $\\mathrm{d}\\theta$ 对应 $\\mathbb{Z}$），积分落在 $2\\pi\\mathbb{Z}$ —— 这就是**绕数**的同调解释。',
         '⚠ **别把 $H_{1}$ 与 $\\pi_{1}$ 混**：$H_{1}(S^{1}) = \\pi_{1}(S^{1})^{\\mathrm{ab}} = \\mathbb{Z}$，两者在这里恰好同构，' +
-          '两者在这里恰好同构。一般情形要**道路连通**并取基点，才有 $H_{1} \\cong \\pi_{1}^{\\mathrm{ab}}$；非道路连通时按分支取直和（$S^{1} \\sqcup S^{1}$ 的 $\\pi_{1}^{\\mathrm{ab}} = \\mathbb{Z}$ 而 $H_{1} = \\mathbb{Z}^{2}$）。本图没有 Hurewicz 定理的节点，这里只记这条事实。',
+          '一般情形要**道路连通**并取基点，才有 $H_{1} \\cong \\pi_{1}^{\\mathrm{ab}}$；非道路连通时按分支取直和（$S^{1} \\sqcup S^{1}$ 的 $\\pi_{1}^{\\mathrm{ab}} = \\mathbb{Z}$ 而 $H_{1} = \\mathbb{Z}^{2}$）。本图没有 Hurewicz 定理的节点，这里只记这条事实。',
       ].join('\n\n'),
       refs: ['Hatcher, Algebraic Topology, §2.1', 'Munkres, Topology, Ch. 12'],
     },

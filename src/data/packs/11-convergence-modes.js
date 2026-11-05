@@ -44,7 +44,7 @@ window.MG = window.MG || {};
         '',
         '⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。',
         '⚠ **a.e. 收敛与依测度收敛互不包含**：$\\text{a.e.} \\implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 $\\nRightarrow$ a.e.（见反例 iv）。',
-        '⚠ $L^{1}$ 收敛 $\\nRightarrow$ a.e. 收敛，a.e. 收敛 + 控制函数 $\\implies L^{1}$ 收敛（这就是 DCT）。'
+        '⚠ $L^{1}$ 收敛 $\\nRightarrow$ a.e. 收敛，a.e. 收敛 + 存在**可积**控制函数 $g \\in L^{1}$（$|f_n| \\le g$ a.e.）$\\implies L^{1}$ 收敛（这就是 DCT；只有「有界」不够：$\\mathbb{R}$ 上 $f_n \\equiv 1/n$、$g \\equiv 1$ 时 $f_n \\to 0$ 处处，但 $\\int|f_n| = \\infty$）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.4']
     },
@@ -119,7 +119,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。',
         '证明的工具是 Borel–Cantelli 型的推理：造出 $\\sum_k \\mu(E_k) < \\infty$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。',
-        '这也是 Riesz 定理（a.e. 收敛 $\\iff$ 依测度收敛 + 子列）的那一半。'
+        '这也是 Riesz 定理「依测度收敛 $\\implies$ 存在子列 a.e. 收敛」的那一半（反向不成立：a.e. 收敛推不出依测度收敛，除非空间是有限测度的）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.30']
     },

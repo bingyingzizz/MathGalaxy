@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T11:43:47.214Z",
+  "generated": "2026-11-05T11:50:05.151Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -5232,7 +5232,7 @@
     "可数可加"
    ],
    "statement": "设 $\\mathcal{M}$ 是 $X$ 上的 $\\sigma$代数。函数 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 是一个**测度**，当且仅当\n\n- **(i)**　$\\mu(\\emptyset) = 0$\n- **(ii) 可数可加**：若 $\\{E_{j}\\}$ 是 $\\mathcal{M}$ 中两两不交的集合列，则\n\n$$\\mu( \\bigcup_{j=1}^{\\infty} E_j ) = \\sum_{j=1}^{\\infty} \\mu(E_j)$$\n\n$(X, \\mathcal{M}, \\mu )$ 称为**测度空间**。",
-   "notes": "(i) 看起来多余（由 (ii) 取 $E_{j} = \\emptyset$ 立刻得到），写出来是为了排除「恒取 $\\infty$」这种没有意义的解，同时保证 (ii) 中的级数不是 $\\infty - \\infty$。\n\n**可数可加是本定义唯一有实质内容的要求**：它把「大小」从有限可加提升到可数可加，代价是允许取值为 $\\infty$。\n\n⚠ 允许 $\\mu (E) = +\\infty$ 是必要的：$\\mathbb{R}$ 的 Lebesgue 测度就是 $\\infty$。\n\n\n\n**各方向用到的假设**（测度两公理是定义，可数可加比有限可加强）：\n- 测度 $\\iff$ 非负扩展实值函数满足 (i)、(ii)：定义展开，无需 $\\sigma$ 有限性或完备测度假设；定义域须为 $\\sigma$ 代数。\n- 可数可加 $\\implies$ 有限可加：需同时用 $\\mu(\\emptyset)=0$，将有限不交列补空集；有限可加加下连续则可反推可数可加，用部分并取极限。\n- (ii) 本身不能推出 (i)：恒取 $+\\infty$ 满足扩展非负实数意义的可数可加，却不满足空集取零；若有某个集合测度有限，才可借它与空集的不交并推出 (i)。\n- 有限可加不足以成为测度：在 $\\mathbb{N}$ 的有限余有限代数上，有限集取零、余有限集取一，有限可加但单点的不交并破坏可数可加；这同时提醒该定义域还不是 $\\sigma$ 代数。\n",
+   "notes": "(i) **独立于** (ii)，(ii) 本身**推不出**它：恒取 $+\\infty$ 满足可数可加却不满足空集取零（取 $E_j \\equiv \\emptyset$ 得到的是 $\\mu(\\emptyset) = +\\infty \\cdot \\mu(\\emptyset)$，两端都合法）。写出来是为了排除恒取 $\\infty$ 这种没有意义的解，同时保证 (ii) 中的级数不是 $\\infty - \\infty$。\n\n**可数可加是本定义唯一有实质内容的要求**：它把「大小」从有限可加提升到可数可加，代价是允许取值为 $\\infty$。\n\n⚠ 允许 $\\mu (E) = +\\infty$ 是必要的：$\\mathbb{R}$ 的 Lebesgue 测度就是 $\\infty$。\n\n\n\n**各方向用到的假设**（测度两公理是定义，可数可加比有限可加强）：\n- 测度 $\\iff$ 非负扩展实值函数满足 (i)、(ii)：定义展开，无需 $\\sigma$ 有限性或完备测度假设；定义域须为 $\\sigma$ 代数。\n- 可数可加 $\\implies$ 有限可加：需同时用 $\\mu(\\emptyset)=0$，将有限不交列补空集；有限可加加下连续则可反推可数可加，用部分并取极限。\n- (ii) 本身不能推出 (i)：恒取 $+\\infty$ 满足扩展非负实数意义的可数可加，却不满足空集取零；若有某个集合测度有限，才可借它与空集的不交并推出 (i)。\n- 有限可加不足以成为测度：在 $\\mathbb{N}$ 的有限余有限代数上，有限集取零、余有限集取一，有限可加但单点的不交并破坏可数可加；这同时提醒该定义域还不是 $\\sigma$ 代数。\n",
    "refs": [
     "Halmos, Measure Theory, §9",
     "Folland, Real Analysis, §1.2"
@@ -5276,7 +5276,7 @@
     "预测度",
     "环"
    ],
-   "statement": "若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 仍满足测度的两条：\n\n$$\\mu(\\emptyset) = 0, \\quad  E_j \\cap E_k = \\emptyset\\ (j \\ne k) \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$\n\n则称 $\\mu$ 是 $\\mathcal{M}$ 上的**预测度**。",
+   "statement": "若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 仍满足测度的两条：\n\n$$\\mu(\\emptyset) = 0, \\quad E_j \\cap E_k = \\emptyset\\ (j \\ne k),\\ \\bigcup_j E_j \\in \\mathcal{M} \\implies \\mu\\Bigl(\\bigcup_j E_j\\Bigr) = \\sum_j \\mu(E_j)$$\n\n则称 $\\mu$ 是 $\\mathcal{M}$ 上的**预测度**。",
    "notes": "为什么要有这个中间概念：$\\mathbb{R}$ 上半开区间 (a, b] 的全体只是一个基本类，它的有限不交并构成一个环，还不是 $\\sigma$代数 —— 但这时已经能定义长度了，那就是预测度。\n\nCarathéodory 扩张定理的作用就是把预测度从环一路提升到生成的 $\\sigma$代数上。所以「**先造预测度，再扩张**」是构造测度的标准两步走。",
    "refs": [
     "Halmos, Measure Theory, §9",
@@ -5318,7 +5318,7 @@
     "有限可加"
    ],
    "statement": "若 $\\mu$ 只满足 (i) 与**有限**可加性：\n\n$$A, B \\in \\mathcal{M},\\ A \\cap B = \\emptyset \\implies \\mu(A \\cup B) = \\mu(A) + \\mu(B)$$\n（由归纳，可推到任意有限多个不交集合），\n\n则 $\\mu$ 称为**有限可加测度**。",
-   "notes": "它比预测度还弱：预测度是可数可加的（只是定义域是环），有限可加测度只要求有限可加。\n\n⚠ 有限可加 $\\ne$ 可数可加：在 $\\mathbb{N}$ 上定义 $\\mu (E) = 0$（$E$ 有限）、$\\mu (E) = +\\infty$（$E$ 无限），它是有限可加的，但对 $\\bigcup _{n} \\{n\\} = \\mathbb{N}$ 不满足可数可加。\n\n历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，但那样连「长度」都构造不出来。",
+   "notes": "它比预测度还弱：预测度是可数可加的（只是定义域是环），有限可加测度只要求有限可加。\n\n⚠ 有限可加 $\\ne$ 可数可加：在 $\\mathbb{N}$ 上定义 $\\mu (E) = 0$（$E$ 有限）、$\\mu (E) = +\\infty$（$E$ 无限），它是有限可加的，但对 $\\bigcup _{n} \\{n\\} = \\mathbb{N}$ 不满足可数可加。\n\n历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，；问题不在构造长度（Lebesgue 测度本身就有限可加，$m((a,b]) = b - a$ 就是长度），而在于有限可加**不足以支撑可数极限定理**（MCT、DCT、Fubini 全都要塌）。",
    "refs": [
     "Halmos, Measure Theory, §9"
    ]
@@ -5359,7 +5359,7 @@
     "半有限"
    ],
    "statement": "设 $(X, \\mathcal{M}, \\mu )$ 是测度空间。\n\n- **有限**：$\\mu(X) < \\infty$\n- **$\\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$X = \\bigcup_{j=1}^{\\infty} E_j, \\quad  \\mu(E_j) < \\infty$\n- **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：\n\n$$\\forall E \\in \\mathcal{M}, \\mu(E) = \\infty \\implies \\exists F \\subseteq E, F \\in \\mathcal{M}, 0 < \\mu(F) < \\infty$$",
-   "notes": "$\\text{有限} \\implies \\sigma-\\text{有限} \\implies\\text{ 半有限}$，两个箭头都不可逆。\n\n$\\sigma$有限是**最常用的技术假设**：$\\mathbb{R}$ 上的 Lebesgue 测度 $\\sigma$有限（$\\mathbb{R} = \\bigcup _{n} [-n, n]$），而计数测度在 $\\mathbb{R}$ 上不是 $\\sigma$有限的。\n\n很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\\sigma$有限。\n\n半有限比 $\\sigma$有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是半有限的极端反例。",
+   "notes": "$\\text{有限} \\implies \\sigma-\\text{有限} \\implies\\text{ 半有限}$，两个箭头都不可逆。\n\n$\\sigma$有限是**最常用的技术假设**：$\\mathbb{R}$ 上的 Lebesgue 测度 $\\sigma$有限（$\\mathbb{R} = \\bigcup _{n} [-n, n]$），而计数测度在 $\\mathbb{R}$ 上不是 $\\sigma$有限的。\n\n很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\\sigma$有限。\n\n半有限比 $\\sigma$有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是**非半有限**的极端例子（有 $\\infty$ 测度集却没有正有限子集）。",
    "refs": [
     "Folland, Real Analysis, §1.2"
    ]
@@ -5558,12 +5558,13 @@
      "fieldStatus": {
       "abstract": "stale",
       "statement": "stale",
-      "notes": "reviewed",
+      "notes": "stale",
       "name": "derived"
      },
      "staleFields": [
       "abstract",
-      "statement"
+      "statement",
+      "notes"
      ],
      "basedOn": {
       "abstract": "v0.9.3#57c392f3",
@@ -5586,7 +5587,7 @@
     "次可加"
    ],
    "statement": "设 $X$ 是集合（不要求非空：空集时幂集只有空集，三条公理照样成立）。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当\n\n- $\\mu^*(\\emptyset) = 0$\n- **单调**：$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$\n- **可数次可加**：$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$",
-   "notes": "外测度定义在**全体**子集上（$\\mathcal{P}(X)$，不是某个 $\\sigma$代数），代价是它只有**次**可加性。\n\n所以外测度不是测度 —— 它太大了，连 $\\mathcal{P}(X)$ 上都没有可加性。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。\n\nLebesgue 最初构造的就是外测度：$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$。\n\n\n\n**三条里哪条是“硬”的**（外测度的三条不对称 —— 一条是规范化，一条是免费的，一条是真条件）：\n\n- $\\mu^{*}(\\emptyset) = 0$：**规范化**，只为让后面的 $0 \\le \\mu^{*}$ 有意义（否则常数 $+\\infty$ 也满足后两条）。\n- **单调**：**几乎是免费的**，但要用**可数次可加**来推：$B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$，所以单调性本身常被列成公理以省去这步；在具体构造（Carathéodory 外测度）里它是直接验证的。\n- **可数次可加**：**这才是真条件**，也是唯一有内容的 —— 它把「单点测度」与「可数运算」绑在一起。⚠️ 注意它是**不等式**：外测度**不**可加（对不交并可加才是测度，那是 Carathéodory 可测集上的额外结论）。\n\n**两个必须分清的点**：\n\n- **外测度定义在 $\\mathcal{P}(X)$ 上**（所有子集），而测度（`def.measure`）只定义在 $\\sigma$-代数上 —— 这是外测度作为「构造工具」的全部意义：先在全部子集上给一个粗略的「大小」，再挑出那些「可加」的子集作为可测集。\n- **单调 + 可数次可加 不蕴含「对可数并取值等于极限」**：外测度在递增并上只保证 $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$，等式要靠下连续性，而那需要可测性 —— 这正是 Carathéodory 条件要补的东西。\n\n⚠️ 记号：$\\mu^{*}$ 上的星号表示「在 $\\mathcal{P}(X)$ 上」，不是「关于某个东西的对偶」。有些书用 $m^{*}$、$\\nu^{*}$。",
+   "notes": "外测度定义在**全体**子集上（$\\mathcal{P}(X)$，不是某个 $\\sigma$代数），代价是它只有**次**可加性。\n\n所以外测度**不一定是**测度 —— 一般不能保证可加性（原因也不是「它太大」：$X = \\{x\\}$ 上的计数测度既满足外测度公理、又是真测度）。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。\n\nLebesgue 最初构造的就是外测度：$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$。\n\n\n\n**三条里哪条是“硬”的**（外测度的三条不对称 —— 一条是规范化，一条是免费的，一条是真条件）：\n\n- $\\mu^{*}(\\emptyset) = 0$：**规范化**，只为让后面的 $0 \\le \\mu^{*}$ 有意义（否则常数 $+\\infty$ 也满足后两条）。\n- **单调**：**独立于**可数次可加 —— 后者 + 规范化**推不出**它（$X = {a,b}$、$\\mu^{*}(\\emptyset) = \\mu^{*}(X) = 0$、$\\mu^{*}(\\{a\\}) = \\mu^{*}(\\{b\\}) = 1$ 满足次可加却不单调）；在 Carathéodory 外测度的具体构造里它是直接验证的。\n- **可数次可加**：**这才是真条件**，也是唯一有内容的 —— 它把「单点测度」与「可数运算」绑在一起。⚠️ 注意它是**不等式**：外测度**不**可加（对不交并可加才是测度，那是 Carathéodory 可测集上的额外结论）。\n\n**两个必须分清的点**：\n\n- **外测度定义在 $\\mathcal{P}(X)$ 上**（所有子集），而测度（`def.measure`）只定义在 $\\sigma$-代数上 —— 这是外测度作为「构造工具」的全部意义：先在全部子集上给一个粗略的「大小」，再挑出那些「可加」的子集作为可测集。\n- **单调 + 可数次可加 不蕴含「对可数并取值等于极限」**：单调性给的是 $\\lim_n \\mu^{*}(A_{n}) \\le \\mu^{*}(\\bigcup_n A_n)$（$\\le$ 的另一边是次可加性，对一般的递增并不成立），等式要靠下连续性，而那需要可测性 —— 这正是 Carathéodory 条件要补的东西。\n\n⚠️ 记号：$\\mu^{*}$ 上的星号表示「在 $\\mathcal{P}(X)$ 上」，不是「关于某个东西的对偶」。有些书用 $m^{*}$、$\\nu^{*}$。",
    "refs": [
     "Halmos, Measure Theory, §11",
     "Folland, Real Analysis, §1.4"
@@ -5801,7 +5802,7 @@
     "扩张"
    ],
    "statement": "设 $\\mu _{0}$ 是代数 $\\mathfrak{A}$ 上的预测度，$\\mu := \\mu^{*}|_\\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\\nu$ 是 $\\mathcal{M}(\\mathfrak{A})$ 上**另一个**扩张 $\\mu _{0}$ 的测度，则\n\n$$\\nu(E) \\le \\mu(E)\\quad  \\forall E \\in \\mathcal{M}(\\mathfrak{A})$$\n\n且当 $\\mu(E) < \\infty$ 时等号成立；进而，若 $\\mu$ 是 $\\sigma$有限的，则 $\\nu = \\mu$。",
-   "notes": "要点：**Carathéodory 扩张是「最大」的那一个**。\n\n原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。\n\n⚠ 不 $\\sigma$有限时唯一性会**失效**：$\\mathbb{R}$ 上取 $\\mathfrak{A} =$ 有限并的半开区间，$\\mu _{0} = Lebesgue$ 长度限制在 $\\mathfrak{A}$ 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。\n\n$\\sigma$有限性正是用来堵住这种漏洞的。\n\n构造测度的标准收尾就是这一条：**先造预测度（好造），再扩张（Carathéodory 保证存在），最后用 $\\sigma$有限保证唯一**。",
+   "notes": "要点：**Carathéodory 扩张是「最大」的那一个**。\n\n原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。\n\n⚠ 不 $\\sigma$有限时唯一性会**失效**（$\\mathbb{R}$ 上的 Lebesgue 长度是 $\\sigma$ 有限的，换不掉）：取 $\\mathfrak{A} =$ 有限不交并的半开区间、$\\mu _{0}((a,b]) = +\\infty$（$a < b$），它不 $\\sigma$ 有限（每段都是 $\\infty$）。两个扩张：$\\mu _{1}(E) = +\\infty$（$E \\ne \\emptyset$）、$\\mu _{1}(\\emptyset) = 0$；另一个 $\\mu _{2}(E) = 0$（$E$ 是 Lebesgue 零集）、否则 $+\\infty$。它们在 $\\mathfrak{A}$ 上都取 $\\infty$，却在单点集上分道扬镳。\n\n$\\sigma$有限性正是用来堵住这种漏洞的。\n\n构造测度的标准收尾就是这一条：**先造预测度（好造），再扩张（Carathéodory 保证存在），最后用 $\\sigma$有限保证唯一**。",
    "refs": [
     "Halmos, Measure Theory, §13",
     "Folland, Real Analysis, Theorem 1.14"
@@ -5841,7 +5842,7 @@
     "Lebesgue–Stieltjes",
     "预测度"
    ],
-   "statement": "设 $F : \\mathbb{R} \\to \\mathbb{R}$ 是**递增**且**右连续**的函数。在半开区间的全体上定义\n\n$$\\mu_0( (a, b] ) = F(b) - F(a)$$\n\n（并规定 $\\mu _{0}(\\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的代数 $\\mathfrak{A}$ 上。）则 $\\mu _{0}$ 是 $\\mathfrak{A}$ 上的一个**预测度**。",
+   "statement": "设 $F : \\mathbb{R} \\to \\mathbb{R}$ 是**递增**且**右连续**的函数。在半开区间的全体上定义\n\n$$\\mu_0( (a, b] ) = F(b) - F(a)$$\n\n（并规定 $\\mu _{0}(\\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的**环** $\\mathfrak{A}$ 上（它不含 $\\mathbb{R}$、对补集不封闭 —— 是环不是代数）。）则 $\\mu _{0}$ 是 $\\mathfrak{A}$ 上的一个**预测度**。",
    "notes": "**证明。** 记 $\\mathfrak{A}$ 为有限不交并 $\\bigsqcup_{j=1}^{n}(a_{j}, b_{j}]$ 全体，$\\mu_{0}\\bigl(\\bigsqcup_{j}(a_{j},b_{j}]\\bigr) := \\sum_{j}\\bigl(F(b_{j})-F(a_{j})\\bigr)$。\n- **良定义**：半开区间的不交并分解，本质上就是把端点排成一串 $a_{1} < b_{1} \\le a_{2} < \\cdots$；把两种分解细化到公共细分，用 $F$ 的值在端点上的 telescoping 求和即可看出 $\\mu_{0}$ 与分解无关 ✓；空并给 $\\mu_{0}(\\emptyset) = 0$ ✓。\n- **有限可加**：把两个不交并拼起来直接相加 ✓。\n- **可数可加（右连续在这里上场）**：设 $(a, b] = \\bigsqcup_{j \\ge 1}(a_{j}, b_{j}]$。\n  **$\\ge$**：对每个 $n$ 有 $(a,b] \\supseteq \\bigsqcup_{j \\le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \\ge \\sum_{j \\le n}\\bigl(F(b_{j})-F(a_{j})\\bigr)$，令 $n \\to \\infty$ ✓；\n  **$\\le$**：给 $\\varepsilon > 0$。\n\n**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \\varepsilon 2^{-j}$；\n\n再用右连续取 $\\delta > 0$ 使 $F(a+\\delta) < F(a) + \\varepsilon$。\n\n开区间族 $\\{(a_{j}, c_{j})\\}$ 覆盖紧集 $[a+\\delta, b]$，抽有限子覆盖并按端点排序相加，得\n$$F(b) - F(a) \\le 2\\varepsilon + \\sum_{j}\\bigl(F(b_{j}) - F(a_{j})\\bigr),$$\n令 $\\varepsilon \\to 0$ 即得 ✓。∎\n⭐ 取 $F(x) = x$ 就回到长度 $\\mu_{0}((a,b]) = b-a$ —— 这正是 Lebesgue 测度的出发点。\n\n**右连续正是用来保证可数可加性的**：若 (a, b] 是 $(a_{j}, b_{j}]$ 的不交并，把 $b_{j}$ 从左边逼近 $b_{j}$ 就能得到单调性的不等式。\n\n取 $F(x) = x$ 就回到长度 $\\mu _{0}((a, b]) = b - a$ —— 也就是 Lebesgue 测度的出发点。\n\n⚠ 半开区间 (a, b] 比开区间好用：它们做不交并时端点不重叠，$\\mu _{0}$ 的加法好验。用 [a, b) 也一样，只是右连续要换成左连续。",
    "refs": [
     "Folland, Real Analysis, Theorem 1.16"
@@ -5963,7 +5964,7 @@
     "可测函数"
    ],
    "statement": "设 $(X, \\mathcal{M})$ 与 $(Y, \\mathcal{N})$ 是可测空间。函数 $f : X \\to Y$ 是 **$(\\mathcal{M}, \\mathcal{N})$可测的**，当且仅当每个可测集的原像可测：\n\n$$f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{N}$$",
-   "notes": "为什么用「原像」而不是「像」：原像对交、并、补全部保持（$f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。\n\n等价说法（当 $Y$ 是拓扑空间、$\\mathcal{N} = \\mathfrak{B}_Y$ 时）：$f$ 可测 $\\iff$ 每个开集的原像可测。\n\n⚠ 「在 $E$ 上可测」是相对说法：$f$ 在 $E$ 上可测 $\\iff$ $f|_E$ 关于子空间 $\\sigma$代数 $\\mathcal{M}_E$ 可测。\n\n\n\n**四种刻画，代价在于“用哪一族集合去测”**：\n\n- 原像把**开集**拉回可测 $\\iff$ 原像把 **Borel 集**拉回可测：$(\\Leftarrow)$ 显然；$(\\implies)$ 要用「原像保持 $\\sigma$-代数运算」这一条（因为 Borel 集由开集生成）。\n- $\\iff$ **所有水平集 $\\{x : f(x) > a\\}$ 可测**（$a \\in \\mathbb{R}$）：**这是最常用的判据**，只需检验一族生成元，不必检验所有开集。⚠️ 用 $\\{f > a\\}$ 还是 $\\{f \\ge a\\}$ 都行，但要**统一**（混用会漏掉端点情形）。\n- $\\iff$ **$f^{+}, f^{-}$ 都可测**：把实值拆成正负部，非负情形再用 $\\{f > a\\}$。\n\n⚠️ **必须的假设是“靶空间带 Borel $\\sigma$-代数”**：$\\mathbb{R}$ 上的可测性永远是相对于某个 $\\sigma$-代数说的；对 $\\overline{\\mathbb{R}}$（含 $\\pm\\infty$）要额外约定 $\\pm\\infty$ 的原像。\n⚠️ **复合可测函数不必然可测**：$f$ 可测、$g$ Borel 可测 $\\implies$ $g \\circ f$ 可测；但 $g$ 只 Lebesgue 可测时不一定 —— 这是「Borel 可测」与「Lebesgue 可测」必须区分的原因。\n",
+   "notes": "为什么用「原像」而不是「像」：原像对交、并、补全部保持（$f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。\n\n等价说法（当 $Y$ 是拓扑空间、$\\mathcal{N} = \\mathfrak{B}_Y$ 时）：$f$ 可测 $\\iff$ 每个开集的原像可测。\n\n⚠ 「在 $E$ 上可测」是相对说法：$f$ 在 $E$ 上可测 $\\iff$ $f|_E$ 关于子空间 $\\sigma$代数 $\\mathcal{M}_E$ 可测。\n\n\n\n**四种刻画，代价在于“用哪一族集合去测”**：\n\n- 原像把**开集**拉回可测 $\\iff$ 原像把 **Borel 集**拉回可测：$(\\Leftarrow)$ 显然；$(\\implies)$ 要用「原像保持 $\\sigma$-代数运算」这一条（因为 Borel 集由开集生成）。\n- $\\iff$ **所有水平集 $\\{x : f(x) > a\\}$ 可测**（$a \\in \\mathbb{R}$）：**这是最常用的判据**，只需检验一族生成元，不必检验所有开集。⚠️ 用 $\\{f > a\\}$ 还是 $\\{f \\ge a\\}$ 都行，**混用也无妨**（$\\{f > a\\} = \\bigcup_{q \\in \\mathbb{Q}, q > a} H_q$，每个 $H_q$ 取两种形式之一都能还原）。\n- $\\iff$ **$f^{+}, f^{-}$ 都可测**：把实值拆成正负部，非负情形再用 $\\{f > a\\}$。\n\n⚠️ **必须的假设是“靶空间带 Borel $\\sigma$-代数”**：$\\mathbb{R}$ 上的可测性永远是相对于某个 $\\sigma$-代数说的；对 $\\overline{\\mathbb{R}}$（含 $\\pm\\infty$）也**不必**额外约定：$\\{f = +\\infty\\} = \\bigcap_n \\{f > n\\}$、$\\{f = -\\infty\\} = \\bigcap_n \\{f \\le -n\\}$ 由水平集自动可测。\n⚠️ **复合可测函数不必然可测**：$f$ 可测、$g$ Borel 可测 $\\implies$ $g \\circ f$ 可测；但 $g$ 只 Lebesgue 可测时不一定 —— 这是「Borel 可测」与「Lebesgue 可测」必须区分的原因。\n",
    "refs": [
     "Folland, Real Analysis, §2.1",
     "Halmos, Measure Theory, §18"
@@ -6172,7 +6173,7 @@
     "sup",
     "极限"
    ],
-   "statement": "以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。\n\n- **和与积**：$f + g$、$fg$ 可测；\n- **逐点上确界**：可数族 $\\{f_j\\}_{j\\in\\mathbb{N}}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；\n- **有限个取大**：$f, g$ 可测 $\\implies$ $\\max_{f, g}$ 可测；\n- **极限**：若 $\\lim_j f_j$ 逐点存在，则它是可测的。",
+   "statement": "以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。\n\n- **和与积**：$f + g$、$fg$ 在**有定义处**可测（$\\overline{\\mathbb{R}}$ 值时要躲开 $\\infty - \\infty$ 与 $0 \\cdot \\infty$；$\\mathbb{C}$ 值无此问题）；\n- **逐点上确界**：可数族 $\\{f_j\\}_{j\\in\\mathbb{N}}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；\n- **有限个取大**：$f, g$ 可测 $\\implies$ $\\max\\{f, g\\}$ 可测；\n- **极限**：若 $\\lim_j f_j$ 逐点存在，则它是可测的。",
    "notes": "$\\sup_j f_j$ 的关键：$(\\sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty])$ 是可数并，故可测。（取 $(a, +\\infty]$ 这族生成元就够了。）\n\nmax 是 sup 的有限特例（把不够的地方补成 $-\\infty$）。\n\n极限：$\\liminf_j f_j = \\sup_n \\inf_{j\\ge n} f_j$，而 inf 可以由 sup 取负得到（$\\inf f_j = -\\sup_{-f_j}$），所以极限是可测函数经过可数次 sup/inf 得到的。\n\n和与积：把 $\\sup_j f_j$ 的做法搬到 $\\{f+g > a\\}$ 上（用有理数把 $f > q > a - g$ 拆开），或先对简单函数验证再逼近。\n\n⭐ 这条命题是**整个积分理论的地基**：它保证「可测函数取极限之后仍然可测」，而后面 MCT / Fatou / DCT 全都是在取极限。",
    "refs": [
     "Folland, Real Analysis, Prop. 2.7"
@@ -12441,7 +12442,7 @@
     "依测度"
    ],
    "statement": "设 $f_n, f : X \\to \\mathbb{C}$ 可测，$X$ 带测度 $\\mu$。\n\n- **一致收敛** $f_n \\rightrightarrows  f$：$\\forall\\varepsilon > 0, \\exists N > 0, \\forall x \\in X, n > N \\implies |f_n(x) - f(x)| < \\varepsilon$\n- **几乎处处收敛** $f_n \\to f$ a.e.：存在零集 $E$ 使 $f_n(x) \\to f(x)$ 对一切 $x \\in X \\setminus E$ 成立\n- **依测度收敛** $f_n \\to f$ 依测度：$\\forall\\varepsilon > 0, \\forall\\delta > 0, \\exists N, \\forall n > N : \\mu(\\{x : |f_n(x) - f(x)| > \\delta\\}) < \\varepsilon$\n- **$L^{1}$ 收敛**：$\\int |f_n - f| d\\mu \\to 0$\n- **近一致收敛**：$\\forall\\varepsilon > 0$，存在 $E$ 使 $\\mu(E) < \\varepsilon$ 且 $f_n \\rightrightarrows  f$ 在 $E^c$ 上一致",
-   "notes": "强弱关系（都能画成箭头）：\n\n\n\n$$\\text{一致} \\implies\\text{ 近一致} \\implies \\text{a.e.}$$\n\n$$\\text{一致} \\implies\\text{ 近一致} \\implies\\text{ 依测度}$$\n\n$$L^1 \\implies\\text{ 依测度}$$\n\n\n\n⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。\n\n⚠ **a.e. 收敛与依测度收敛互不包含**：$\\text{a.e.} \\implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 $\\nRightarrow$ a.e.（见反例 iv）。\n\n⚠ $L^{1}$ 收敛 $\\nRightarrow$ a.e. 收敛，a.e. 收敛 + 控制函数 $\\implies L^{1}$ 收敛（这就是 DCT）。",
+   "notes": "强弱关系（都能画成箭头）：\n\n\n\n$$\\text{一致} \\implies\\text{ 近一致} \\implies \\text{a.e.}$$\n\n$$\\text{一致} \\implies\\text{ 近一致} \\implies\\text{ 依测度}$$\n\n$$L^1 \\implies\\text{ 依测度}$$\n\n\n\n⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。\n\n⚠ **a.e. 收敛与依测度收敛互不包含**：$\\text{a.e.} \\implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 $\\nRightarrow$ a.e.（见反例 iv）。\n\n⚠ $L^{1}$ 收敛 $\\nRightarrow$ a.e. 收敛，a.e. 收敛 + 存在**可积**控制函数 $g \\in L^{1}$（$|f_n| \\le g$ a.e.）$\\implies L^{1}$ 收敛（这就是 DCT；只有「有界」不够：$\\mathbb{R}$ 上 $f_n \\equiv 1/n$、$g \\equiv 1$ 时 $f_n \\to 0$ 处处，但 $\\int|f_n| = \\infty$）。",
    "refs": [
     "Folland, Real Analysis, §2.4"
    ]
@@ -12564,7 +12565,7 @@
     "Borel–Cantelli"
    ],
    "statement": "若 $\\{f_n\\}$ 依测度 Cauchy，则存在可测函数 $f$ 使\n\n$$f_n \\xrightarrow{\\ \\mu\\ } f$$\n\n并且存在**子列** $\\{f_{n_j}\\}$ 使\n\n$$f_{n_j} \\to f\\quad  \\text{a.e.}$$",
-   "notes": "⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。\n\n证明的工具是 Borel–Cantelli 型的推理：造出 $\\sum_k \\mu(E_k) < \\infty$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。\n\n这也是 Riesz 定理（a.e. 收敛 $\\iff$ 依测度收敛 + 子列）的那一半。",
+   "notes": "⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。\n\n证明的工具是 Borel–Cantelli 型的推理：造出 $\\sum_k \\mu(E_k) < \\infty$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。\n\n这也是 Riesz 定理「依测度收敛 $\\implies$ 存在子列 a.e. 收敛」的那一半（反向不成立：a.e. 收敛推不出依测度收敛，除非空间是有限测度的）。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.30"
    ]
@@ -33666,7 +33667,7 @@
     "Witt"
    ],
    "statement": "**在做什么**：这是「一块不可再分的迷向结构」—— 两个迷向向量，互相不为零地配对。非退化型的结构定理说：任何型都是「非迷向的」加若干块这个。\n\n设 $\\beta$ 是 $V$ 上的对称双线性型。二维子空间 $H = \\operatorname{span}(u, w)$ 叫**双曲平面**，若\n\n$$\\beta(u, u) = 0, \\qquad \\beta(w, w) = 0, \\qquad \\beta(u, w) = 1 .$$\n\n在这组基下 $\\beta$ 的矩阵是\n\n$$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0\\end{pmatrix} ,$$\n\n它非退化（行列式 $-1$），且明显有迷向向量（$u, w$ 都是）。\n\n**用途**：任何非退化对称型的空间都能正交分解为若干个双曲平面再加一块**非迷向**的空间；双曲平面的个数就是 Witt 指标。",
-   "notes": "**为什么叫「双曲」**：在这块平面上 $q(xu + yw) = 2xy$，等值线 等值线 $xy = c$（$c$ 为常数） 是双曲线。这与「$x^{2} - y^{2}$ 型」是同一件事，只是基选得让 $q$ 更好看。\n\n⭐ **它是「正交基不存在」的最小反例**：在这块平面上 $u + w$ 与 $u - w$ 恰是一组**正交基**（$\\beta$ 在它下面是 $\\operatorname{diag}(2, -2)$，两者都**不迷向**）—— 所以「迷向」并不等于「没有正交基」。\n\n⚠️ 交错型的对应物就是「辛平面」：$\\beta(u,w) = 1$（无需 $\\beta(u,u) = \\beta(w,w) = 0$，因为交错型自动如此）。所以辛空间永远能拆成辛平面，维数必为偶数 —— 这是「辛空间维数偶」的真正原因。\n\n⚠️ 一块双曲平面**自身**是非退化的，但它的内部**含两条迷向直线**（不是每个向量都迷向：$u + w$ 的 $\\beta = 2$）—— 所以「迷向」与「退化」完全不是一回事（另见 `def.isotropic-subspace` 的注）。",
+   "notes": "**为什么叫「双曲」**：在这块平面上 $q(xu + yw) = 2xy$，等值线 $xy = c$（$c$ 为常数）是双曲线。这与「$x^{2} - y^{2}$ 型」是同一件事，只是基选得让 $q$ 更好看。\n\n⭐ **它是「正交基不存在」的最小反例**：在这块平面上 $u + w$ 与 $u - w$ 恰是一组**正交基**（$\\beta$ 在它下面是 $\\operatorname{diag}(2, -2)$，两者都**不迷向**）—— 所以「迷向」并不等于「没有正交基」。\n\n⚠️ 交错型的对应物就是「辛平面」：$\\beta(u,w) = 1$（无需 $\\beta(u,u) = \\beta(w,w) = 0$，因为交错型自动如此）。所以辛空间永远能拆成辛平面，维数必为偶数 —— 这是「辛空间维数偶」的真正原因。\n\n⚠️ 一块双曲平面**自身**是非退化的，但它的内部**含两条迷向直线**（不是每个向量都迷向：$u + w$ 的 $\\beta = 2$）—— 所以「迷向」与「退化」完全不是一回事（另见 `def.isotropic-subspace` 的注）。",
    "refs": [
     "Hoffman–Kunze, Linear Algebra, 「Bilinear Forms」· 双曲平面",
     "Chevalley, The Algebraic Theory of Spinors（⚠️ 章名未核实，只记书名）"
@@ -40170,7 +40171,7 @@
     "曲面"
    ],
    "statement": "克莱因瓶 $K$ 是 $\\mathbb{RP}^{2} \\# \\mathbb{RP}^{2}$（两个射影平面的连通和），也是「正方形对边按一同一反粘合」得到的商空间。它是一个**闭不可定向曲面**，不可定向亏格 $k = 2$，$\\chi(K) = 0$。",
-   "notes": "⭐ **两种等价描述**：① 正方形：一对对边**同向**粘（像 $T^{2}$）、另一对**反向**粘；② 两个莫比乌斯带沿边界粘起来。两种说法给出同一个曲面（本图只记结论，不证）。\n\n⭐ **$\\chi = 0$**：$2 - k = 2 - 2 = 0$。注意这与**环面**相同 ——所以「$\\chi = 0$」这条信息本身不足以认出克莱因瓶，还得看可定向性。这两个曲面是「同一张 $\\chi$、两种拓扑型」的典型例子。\n\n⚠ **仍然嵌不进 $\\mathbb{R}^{3}$**：任何紧无边的不可定向闭曲面都嵌不进 $\\mathbb{R}^{3}$。那个著名的「瓶脖子穿过瓶身」的玻璃模型是一个**浸入**（自交的像），不是嵌入。\n\n📌 $H_{1}(K;\\mathbb{Z}) \\cong \\mathbb{Z} \\oplus \\mathbb{Z}/2$，$H_{2} = 0$，故 $\\chi = 1 - 1 + 0 = 0$。\n\n⚠ 克莱因瓶 = 两个**莫比乌斯带**沿边界粘起来（本图已有「莫比乌斯带」这一节点，但两者之间还差一条连线）。",
+   "notes": "⭐ **两种等价描述**：① 正方形：一对对边**同向**粘（像 $T^{2}$）、另一对**反向**粘；② 两个莫比乌斯带沿边界粘起来。两种说法给出同一个曲面（本图只记结论，不证）。\n\n⭐ **$\\chi = 0$**：$2 - k = 2 - 2 = 0$。注意这与**环面**相同 ——所以「$\\chi = 0$」这条信息本身不足以认出克莱因瓶，还得看可定向性。这两个曲面是「同一张 $\\chi$、两种拓扑型」的典型例子。\n\n⚠ **仍然嵌不进 $\\mathbb{R}^{3}$**：任何紧无边的不可定向闭曲面都嵌不进 $\\mathbb{R}^{3}$。那个著名的「瓶脖子穿过瓶身」的玻璃模型是一个**浸入**（自交的像），不是嵌入。\n\n📌 $H_{1}(K;\\mathbb{Z}) \\cong \\mathbb{Z} \\oplus \\mathbb{Z}/2$，$H_{2} = 0$，故 $\\chi = 1 - 1 + 0 = 0$。\n\n⚠ 克莱因瓶 = 两个**莫比乌斯带**沿边界粘起来（`def.mobius-band`）。",
    "refs": [
     "Munkres, Topology, Ch. 12"
    ]
@@ -40985,7 +40986,7 @@
     "定义",
     "零集"
    ],
-   "statement": "设 $(X, \\mathcal{M}, \\mu)$ 是测度空间。称一个关于点 $x$ 的命题 $P(x)$ **几乎处处成立**（记 a.e.），当且仅当\n\n$$\\exists E \\in \\mathcal{M}:\\ \\mu(E) = 0\\ \\wedge \\ \\forall x \\in X \\setminus E,\\ P(x) .$$\n\n即：**使命题不成立的那些点构成一个零集**。\n\n常见的用法：$f = g$ a.e.（$\\{f \\ne g\\}$ 是零集）、$f_n \\to f$ a.e.（不收敛的点是零集）、$F' = 0$ a.e.。",
+   "statement": "设 $(X, \\mathcal{M}, \\mu)$ 是测度空间。称一个关于点 $x$ 的命题 $P(x)$ **几乎处处成立**（记 a.e.），当且仅当\n\n$$\\exists E \\in \\mathcal{M}:\\ \\mu(E) = 0\\ \\wedge \\ \\forall x \\in X \\setminus E,\\ P(x) .$$\n\n即：**失败点集包含在某个可测零集中**（它本身未必可测 —— 非完备空间里 Cantor 集的非 Borel 子集就是反例；完备化之后两者才等价）。\n\n常见的用法：$f = g$ a.e.（$\\{f \\ne g\\}$ 是零集）、$f_n \\to f$ a.e.（不收敛的点是零集）、$F' = 0$ a.e.。",
    "notes": "⭐ a.e. 是 Lebesgue 理论的**润滑剂**：$L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），几乎所有收敛定理（MCT、Fatou、DCT 的 a.e. 版本、Egorov）都只要求 a.e. 收敛 —— 因为零集上的取值对积分没有贡献。\n\n⚠ 「a.e. 相等」与「处处相等」是不同的关系：$\\int |f| = 0 \\implies f = 0$ a.e.（而不是处处 0）。\n\n\n⚠ 零集的**子集**未必可测，除非测度空间完备 —— 这就是「完备化」要解决的问题。",
    "refs": [
     "Rudin, Real and Complex Analysis, Ch. 1"
@@ -41479,7 +41480,7 @@
     "de Rham"
    ],
    "statement": "$H_{0}(S^{1}) \\cong \\mathbb{Z}$、$H_{1}(S^{1}) \\cong \\mathbb{Z}$，其余为 $0$；对偶地\n\n$$H^{1}_{\\mathrm{dR}}(S^{1}) \\cong \\mathbb{R}, \\qquad \\int_{S^{1}} : H^{1}_{\\mathrm{dR}}(S^{1}) \\longrightarrow \\mathbb{R}$$\n\n是同构（取 $\\mathrm{d}\\theta$ 为生成元）。",
-   "notes": "**$H_{1}$ 怎么算**：把圆按 **CW（$\\Delta$-复形）** 方式剖分成一个顶点 $v$ 与一条**闭边** $e$（两端都粘到 $v$ —— 抽象单纯复形的一条边必须有两个**不同**顶点，所以这是胞腔模型，不是单纯剖分）。链群 $C_{0} = \\mathbb{Z}v$、$C_{1} = \\mathbb{Z}e$，边缘 $\\partial e = v - v = 0$，于是 $H_{1} = \\ker\\partial_{1}/\\operatorname{im}\\partial_{2} = \\mathbb{Z}e$。\n\n⭐ **de Rham 侧**：$\\mathrm{d}\\theta$ 是闭的（1 维，$\\mathrm{d}(\\mathrm{d}\\theta) = 0$ 平凡）但**不恰当** ——否则 $\\int_{S^{1}}\\mathrm{d}\\theta = 0$，而它实际等于 $2\\pi$。这条「闭而不恰当」正是 $H^{1} \\ne 0$ 的全部内容。\n\n📌 **绕数**：对任意闭 1-形式 $\\omega$，$\\frac{1}{2\\pi}\\int_{S^{1}}\\omega \\in \\mathbb{R}$ 是它的「周期」；若 $\\omega$ 是整系数的（如 $\\mathrm{d}\\theta$ 对应 $\\mathbb{Z}$），积分落在 $2\\pi\\mathbb{Z}$ —— 这就是**绕数**的同调解释。\n\n⚠ **别把 $H_{1}$ 与 $\\pi_{1}$ 混**：$H_{1}(S^{1}) = \\pi_{1}(S^{1})^{\\mathrm{ab}} = \\mathbb{Z}$，两者在这里恰好同构，两者在这里恰好同构。一般情形要**道路连通**并取基点，才有 $H_{1} \\cong \\pi_{1}^{\\mathrm{ab}}$；非道路连通时按分支取直和（$S^{1} \\sqcup S^{1}$ 的 $\\pi_{1}^{\\mathrm{ab}} = \\mathbb{Z}$ 而 $H_{1} = \\mathbb{Z}^{2}$）。本图没有 Hurewicz 定理的节点，这里只记这条事实。",
+   "notes": "**$H_{1}$ 怎么算**：把圆按 **CW（$\\Delta$-复形）** 方式剖分成一个顶点 $v$ 与一条**闭边** $e$（两端都粘到 $v$ —— 抽象单纯复形的一条边必须有两个**不同**顶点，所以这是胞腔模型，不是单纯剖分）。链群 $C_{0} = \\mathbb{Z}v$、$C_{1} = \\mathbb{Z}e$，边缘 $\\partial e = v - v = 0$，于是 $H_{1} = \\ker\\partial_{1}/\\operatorname{im}\\partial_{2} = \\mathbb{Z}e$。\n\n⭐ **de Rham 侧**：$\\mathrm{d}\\theta$ 是闭的（1 维，$\\mathrm{d}(\\mathrm{d}\\theta) = 0$ 平凡）但**不恰当** ——否则 $\\int_{S^{1}}\\mathrm{d}\\theta = 0$，而它实际等于 $2\\pi$。这条「闭而不恰当」正是 $H^{1} \\ne 0$ 的全部内容。\n\n📌 **绕数**：对任意闭 1-形式 $\\omega$，$\\frac{1}{2\\pi}\\int_{S^{1}}\\omega \\in \\mathbb{R}$ 是它的「周期」；若 $\\omega$ 是整系数的（如 $\\mathrm{d}\\theta$ 对应 $\\mathbb{Z}$），积分落在 $2\\pi\\mathbb{Z}$ —— 这就是**绕数**的同调解释。\n\n⚠ **别把 $H_{1}$ 与 $\\pi_{1}$ 混**：$H_{1}(S^{1}) = \\pi_{1}(S^{1})^{\\mathrm{ab}} = \\mathbb{Z}$，两者在这里恰好同构，一般情形要**道路连通**并取基点，才有 $H_{1} \\cong \\pi_{1}^{\\mathrm{ab}}$；非道路连通时按分支取直和（$S^{1} \\sqcup S^{1}$ 的 $\\pi_{1}^{\\mathrm{ab}} = \\mathbb{Z}$ 而 $H_{1} = \\mathbb{Z}^{2}$）。本图没有 Hurewicz 定理的节点，这里只记这条事实。",
    "refs": [
     "Hatcher, Algebraic Topology, §2.1",
     "Munkres, Topology, Ch. 12"
@@ -41604,7 +41605,7 @@
     "泛函分析",
     "桥"
    ],
-   "statement": "设 $X$ 是局部紧 Hausdorff 空间，$C_{c}(X)$ 配 sup 范数（连续、紧支的实值函数）。则每个**正**线性泛函 $\\Lambda : C_{c}(X) \\to \\mathbb{R}$ 都唯一地写成\n\n$$\\Lambda(f) = \\int_{X} f \\,\\mathrm{d}\\mu,$$\n\n其中 $\\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\\lVert\\Lambda\\rVert = \\mu(X)$。一般（不必正）的泛函对应符号测度之差。",
+   "statement": "设 $X$ 是局部紧 Hausdorff 空间，$C_{c}(X)$ 配 sup 范数（连续、紧支的实值函数）。则每个**正**线性泛函 $\\Lambda : C_{c}(X) \\to \\mathbb{R}$ 都唯一地写成\n\n$$\\Lambda(f) = \\int_{X} f \\,\\mathrm{d}\\mu,$$\n\n其中 $\\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\\lVert\\Lambda\\rVert = \\mu(X)$。一般（不必正）的泛函要**先假设有界**（对 $\\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。",
    "notes": "**在做什么**：把「对函数做线性赋值」与「对集合量大小」这两件事焊起来 —— 于是测度论里的构造（乘积、推前、RN 导数）都能用泛函语言重述，反过来泛函分析里的对偶结论也能落到测度上。\n\n**证明骨架**：① 由 $\\Lambda$ 定义集函数 $\\mu_{0}(U) := \\sup\\{\\, \\Lambda(f) : 0 \\le f \\le 1,\\ \\operatorname{supp} f \\subseteq U \\,\\}$；② 证它是外测度、在开集上可加；③ 用 Carathéodory 延拓得到 Borel 测度；④ 用 $X$ 局部紧（Urysohn 引理给「夹逼函数」）证 $\\Lambda(f) = \\int f\\,\\mathrm{d}\\mu$。\n\n⚠ **本条标骨架**：本图把上面四步作为机制记下，**每一步的细节没有展开**（尤其「开集上可加」那一步要用 $X$ 的局部紧性与有限分割）。需要的工具（`lem.urysohn`、`thm.caratheodory`、`def.outer-measure`）本图都有节点，所以真要补全是可以逐步补的。\n\n⭐ **与凝聚态的关系**：profinite 集上的「整值测度」$M(S,\\mathbb{Z}) = \\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$就是这条定理的**整值、紧全不连通**版本 —— 见 `def.cond-measure`。两者的差别只在「系数环」与「测试空间」，做法同为「对连续函数做赋值」。",
    "refs": [
     "Rudin, Real and Complex Analysis, Ch. 2（Riesz 表示定理）"

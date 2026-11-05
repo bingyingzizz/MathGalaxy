@@ -37,7 +37,7 @@ window.MG = window.MG || {};
         '$(X, \\mathcal{M}, \\mu )$ 称为**测度空间**。'
       ].join('\n'),
       notes: [
-        '(i) 看起来多余（由 (ii) 取 $E_{j} = \\emptyset$ 立刻得到），写出来是为了排除「恒取 $\\infty$」这种没有意义的解，同时保证 (ii) 中的级数不是 $\\infty - \\infty$。',
+        '(i) **独立于** (ii)，(ii) 本身**推不出**它：恒取 $+\\infty$ 满足可数可加却不满足空集取零（取 $E_j \\equiv \\emptyset$ 得到的是 $\\mu(\\emptyset) = +\\infty \\cdot \\mu(\\emptyset)$，两端都合法）。写出来是为了排除恒取 $\\infty$ 这种没有意义的解，同时保证 (ii) 中的级数不是 $\\infty - \\infty$。',
         '**可数可加是本定义唯一有实质内容的要求**：它把「大小」从有限可加提升到可数可加，代价是允许取值为 $\\infty$。',
         '⚠ 允许 $\\mu (E) = +\\infty$ 是必要的：$\\mathbb{R}$ 的 Lebesgue 测度就是 $\\infty$。',
         ,
@@ -61,7 +61,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 仍满足测度的两条：',
         '',
-        '$$\\mu(\\emptyset) = 0, \\quad  E_j \\cap E_k = \\emptyset\\ (j \\ne k) \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$',
+        '$$\\mu(\\emptyset) = 0, \\quad E_j \\cap E_k = \\emptyset\\ (j \\ne k),\\ \\bigcup_j E_j \\in \\mathcal{M} \\implies \\mu\\Bigl(\\bigcup_j E_j\\Bigr) = \\sum_j \\mu(E_j)$$',
         '',
         '则称 $\\mu$ 是 $\\mathcal{M}$ 上的**预测度**。'
       ].join('\n'),
@@ -90,7 +90,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '它比预测度还弱：预测度是可数可加的（只是定义域是环），有限可加测度只要求有限可加。',
-        '⚠ 有限可加 $\\ne$ 可数可加：在 $\\mathbb{N}$ 上定义 $\\mu (E) = 0$（$E$ 有限）、$\\mu (E) = +\\infty$（$E$ 无限），它是有限可加的，但对 $\\bigcup _{n} \\{n\\} = \\mathbb{N}$ 不满足可数可加。\n\n历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，但那样连「长度」都构造不出来。'
+        '⚠ 有限可加 $\\ne$ 可数可加：在 $\\mathbb{N}$ 上定义 $\\mu (E) = 0$（$E$ 有限）、$\\mu (E) = +\\infty$（$E$ 无限），它是有限可加的，但对 $\\bigcup _{n} \\{n\\} = \\mathbb{N}$ 不满足可数可加。\n\n历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，；问题不在构造长度（Lebesgue 测度本身就有限可加，$m((a,b]) = b - a$ 就是长度），而在于有限可加**不足以支撑可数极限定理**（MCT、DCT、Fubini 全都要塌）。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §9']
     },
@@ -115,7 +115,7 @@ window.MG = window.MG || {};
       notes: [
         '$\\text{有限} \\implies \\sigma-\\text{有限} \\implies\\text{ 半有限}$，两个箭头都不可逆。',
         '$\\sigma$有限是**最常用的技术假设**：$\\mathbb{R}$ 上的 Lebesgue 测度 $\\sigma$有限（$\\mathbb{R} = \\bigcup _{n} [-n, n]$），而计数测度在 $\\mathbb{R}$ 上不是 $\\sigma$有限的。\n\n很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\\sigma$有限。',
-        '半有限比 $\\sigma$有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是半有限的极端反例。'
+        '半有限比 $\\sigma$有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是**非半有限**的极端例子（有 $\\infty$ 测度集却没有正有限子集）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §1.2']
     },
@@ -240,19 +240,19 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '外测度定义在**全体**子集上（$\\mathcal{P}(X)$，不是某个 $\\sigma$代数），代价是它只有**次**可加性。',
-        '所以外测度不是测度 —— 它太大了，连 $\\mathcal{P}(X)$ 上都没有可加性。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。',
+        '所以外测度**不一定是**测度 —— 一般不能保证可加性（原因也不是「它太大」：$X = \\{x\\}$ 上的计数测度既满足外测度公理、又是真测度）。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。',
         'Lebesgue 最初构造的就是外测度：$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$。',
         ,
         '**三条里哪条是“硬”的**（外测度的三条不对称 —— 一条是规范化，一条是免费的，一条是真条件）：\n' +
         '\n' +
         '- $\\mu^{*}(\\emptyset) = 0$：**规范化**，只为让后面的 $0 \\le \\mu^{*}$ 有意义（否则常数 $+\\infty$ 也满足后两条）。\n' +
-        '- **单调**：**几乎是免费的**，但要用**可数次可加**来推：$B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$，所以单调性本身常被列成公理以省去这步；在具体构造（Carathéodory 外测度）里它是直接验证的。\n' +
+        '- **单调**：**独立于**可数次可加 —— 后者 + 规范化**推不出**它（$X = {a,b}$、$\\mu^{*}(\\emptyset) = \\mu^{*}(X) = 0$、$\\mu^{*}(\\{a\\}) = \\mu^{*}(\\{b\\}) = 1$ 满足次可加却不单调）；在 Carathéodory 外测度的具体构造里它是直接验证的。\n' +
         '- **可数次可加**：**这才是真条件**，也是唯一有内容的 —— 它把「单点测度」与「可数运算」绑在一起。⚠️ 注意它是**不等式**：外测度**不**可加（对不交并可加才是测度，那是 Carathéodory 可测集上的额外结论）。\n' +
         '\n' +
         '**两个必须分清的点**：\n' +
         '\n' +
         '- **外测度定义在 $\\mathcal{P}(X)$ 上**（所有子集），而测度（`def.measure`）只定义在 $\\sigma$-代数上 —— 这是外测度作为「构造工具」的全部意义：先在全部子集上给一个粗略的「大小」，再挑出那些「可加」的子集作为可测集。\n' +
-        '- **单调 + 可数次可加 不蕴含「对可数并取值等于极限」**：外测度在递增并上只保证 $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$，等式要靠下连续性，而那需要可测性 —— 这正是 Carathéodory 条件要补的东西。\n' +
+        '- **单调 + 可数次可加 不蕴含「对可数并取值等于极限」**：单调性给的是 $\\lim_n \\mu^{*}(A_{n}) \\le \\mu^{*}(\\bigcup_n A_n)$（$\\le$ 的另一边是次可加性，对一般的递增并不成立），等式要靠下连续性，而那需要可测性 —— 这正是 Carathéodory 条件要补的东西。\n' +
         '\n' +
         '⚠️ 记号：$\\mu^{*}$ 上的星号表示「在 $\\mathcal{P}(X)$ 上」，不是「关于某个东西的对偶」。有些书用 $m^{*}$、$\\nu^{*}$。'
       ].join('\n\n'),
@@ -370,7 +370,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '要点：**Carathéodory 扩张是「最大」的那一个**。\n\n原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。',
-        '⚠ 不 $\\sigma$有限时唯一性会**失效**：$\\mathbb{R}$ 上取 $\\mathfrak{A} =$ 有限并的半开区间，$\\mu _{0} = Lebesgue$ 长度限制在 $\\mathfrak{A}$ 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。\n\n$\\sigma$有限性正是用来堵住这种漏洞的。',
+        '⚠ 不 $\\sigma$有限时唯一性会**失效**（$\\mathbb{R}$ 上的 Lebesgue 长度是 $\\sigma$ 有限的，换不掉）：取 $\\mathfrak{A} =$ 有限不交并的半开区间、$\\mu _{0}((a,b]) = +\\infty$（$a < b$），它不 $\\sigma$ 有限（每段都是 $\\infty$）。两个扩张：$\\mu _{1}(E) = +\\infty$（$E \\ne \\emptyset$）、$\\mu _{1}(\\emptyset) = 0$；另一个 $\\mu _{2}(E) = 0$（$E$ 是 Lebesgue 零集）、否则 $+\\infty$。它们在 $\\mathfrak{A}$ 上都取 $\\infty$，却在单点集上分道扬镳。\n\n$\\sigma$有限性正是用来堵住这种漏洞的。',
         '构造测度的标准收尾就是这一条：**先造预测度（好造），再扩张（Carathéodory 保证存在），最后用 $\\sigma$有限保证唯一**。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §13', 'Folland, Real Analysis, Theorem 1.14']
@@ -389,7 +389,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mu_0( (a, b] ) = F(b) - F(a)$$',
         '',
-        '（并规定 $\\mu _{0}(\\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的代数 $\\mathfrak{A}$ 上。）则 $\\mu _{0}$ 是 $\\mathfrak{A}$ 上的一个**预测度**。'
+        '（并规定 $\\mu _{0}(\\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的**环** $\\mathfrak{A}$ 上（它不含 $\\mathbb{R}$、对补集不封闭 —— 是环不是代数）。）则 $\\mu _{0}$ 是 $\\mathfrak{A}$ 上的一个**预测度**。'
       ].join('\n'),
       notes: [
         ['**证明。** 记 $\\mathfrak{A}$ 为有限不交并 $\\bigsqcup_{j=1}^{n}(a_{j}, b_{j}]$ 全体，$\\mu_{0}\\bigl(\\bigsqcup_{j}(a_{j},b_{j}]\\bigr) := \\sum_{j}\\bigl(F(b_{j})-F(a_{j})\\bigr)$。','- **良定义**：半开区间的不交并分解，本质上就是把端点排成一串 $a_{1} < b_{1} \\le a_{2} < \\cdots$；把两种分解细化到公共细分，用 $F$ 的值在端点上的 telescoping 求和即可看出 $\\mu_{0}$ 与分解无关 ✓；空并给 $\\mu_{0}(\\emptyset) = 0$ ✓。','- **有限可加**：把两个不交并拼起来直接相加 ✓。','- **可数可加（右连续在这里上场）**：设 $(a, b] = \\bigsqcup_{j \\ge 1}(a_{j}, b_{j}]$。','  **$\\ge$**：对每个 $n$ 有 $(a,b] \\supseteq \\bigsqcup_{j \\le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \\ge \\sum_{j \\le n}\\bigl(F(b_{j})-F(a_{j})\\bigr)$，令 $n \\to \\infty$ ✓；','  **$\\le$**：给 $\\varepsilon > 0$。\n\n**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \\varepsilon 2^{-j}$；\n\n再用右连续取 $\\delta > 0$ 使 $F(a+\\delta) < F(a) + \\varepsilon$。\n\n开区间族 $\\{(a_{j}, c_{j})\\}$ 覆盖紧集 $[a+\\delta, b]$，抽有限子覆盖并按端点排序相加，得','$$F(b) - F(a) \\le 2\\varepsilon + \\sum_{j}\\bigl(F(b_{j}) - F(a_{j})\\bigr),$$','令 $\\varepsilon \\to 0$ 即得 ✓。∎','⭐ 取 $F(x) = x$ 就回到长度 $\\mu_{0}((a,b]) = b-a$ —— 这正是 Lebesgue 测度的出发点。'].join('\n'),
