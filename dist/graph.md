@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T06:45:06.446Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T06:48:25.218Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -4823,7 +4823,7 @@ $$H_{p}(X) := \ker\partial_{p}\, \big/\, \operatorname{im}\partial_{p+1}$$
 #### 约化同调　`def.reduced-homology`
 *定义*　约化同调 $\tilde{H}_{p}$：把「单点也有一个洞」修掉
 
-设 $X \ne \emptyset$。定义**增广映射**（即「把每个点都算作 $1$」）
+设 $X$ 是任意拓扑空间（**不必非空**：$X = \emptyset$ 时各 $S_{n} = 0$，增广映射是 $0 \to \mathbb{Z}$，下面公式仍给出 $\tilde H_{p}(\emptyset) = 0$）。定义**增广映射**（即「把每个点都算作 $1$」）
 
 $$\varepsilon : S_{0}(X) \longrightarrow \mathbb{Z},\qquad \varepsilon\left(\sum_{x} n_{x}\, x\right) := \sum_{x} n_{x}.$$
 
@@ -14988,7 +14988,7 @@ $$\mu_0(E) := \sup \{ \mu(F) : F \subseteq E, F \in \mathcal{M}, \mu(F) < \infty
 #### 外测度　`def.outer-measure`
 *定义*　外测度
 
-设 $X$ 是非空集合。函数 $\mu^* : \mathcal{P}(X) \to [0, +\infty]$ 是一个**外测度**，当且仅当
+设 $X$ 是集合（不要求非空：空集时幂集只有空集，三条公理照样成立）。函数 $\mu^* : \mathcal{P}(X) \to [0, +\infty]$ 是一个**外测度**，当且仅当
 
 - $\mu^*(\emptyset) = 0$
 - **单调**：$A \subseteq B \implies \mu^*(A) \le \mu^*(B)$
@@ -34520,7 +34520,7 @@ $TS^{2}$ 与 $S^{2} \times \mathbb{R}^{2}$ 不同胚 —— 理由是球面上�
 
 **在说什么**：把「每点挂一个向量空间、并且挂得光滑」这件事公理化 —— 切丛、余切丛、张量丛都是它的例子。判据是「局部长得像 $U \times \mathbb{R}^{k}$」。
 
-设 $M$ 是光滑流形。一个**秩 $k$ 的光滑向量丛**是光滑映射 $\pi : E \to M$，连同两件事：
+设 $M$ 是光滑流形。一个**秩 $k$ 的光滑向量丛**是映射 $\pi : E \to M$（**不要求先假定 $\pi$ 光滑**：由局部平凡化 $\operatorname{pr}_{1}\circ\Phi = \pi$ 与 $\operatorname{pr}_{1}$ 光滑即得），连同两件事：
 
 1. 每根**纤维** $E_{p} := \pi^{-1}(p)$ 上给定 $k$ 维实向量空间结构；
 2. **局部平凡化**：每点有开邻域 $U$ 与微分同胚 $\Phi : \pi^{-1}(U) \to U \times \mathbb{R}^{k}$，使 $\Phi$ 与投影交换（$\operatorname{pr}_{1} \circ \Phi = \pi$），且在每个纤维上是线性同构。

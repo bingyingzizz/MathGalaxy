@@ -20855,7 +20855,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '外测度', '次可加'],
       statement: [
-        '设 $X$ 是非空集合。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当',
+        '设 $X$ 是集合（不要求非空：空集时幂集只有空集，三条公理照样成立）。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当',
         '',
         '- $\\mu^*(\\emptyset) = 0$',
         '- **单调**：$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$',
@@ -66142,7 +66142,7 @@ window.MG = window.MG || {};
       statement: [
         '**在说什么**：把「每点挂一个向量空间、并且挂得光滑」这件事公理化 —— 切丛、余切丛、张量丛都是它的例子。判据是「局部长得像 $U \\times \\mathbb{R}^{k}$」。',
         '',
-        '设 $M$ 是光滑流形。一个**秩 $k$ 的光滑向量丛**是光滑映射 $\\pi : E \\to M$，连同两件事：',
+        '设 $M$ 是光滑流形。一个**秩 $k$ 的光滑向量丛**是映射 $\\pi : E \\to M$（**不要求先假定 $\\pi$ 光滑**：由局部平凡化 $\\operatorname{pr}_{1}\\circ\\Phi = \\pi$ 与 $\\operatorname{pr}_{1}$ 光滑即得），连同两件事：',
         '',
         ['1. 每根**纤维** $E_{p} := \\pi^{-1}(p)$ 上给定 $k$ 维实向量空间结构；',
          '2. **局部平凡化**：每点有开邻域 $U$ 与微分同胚 $\\Phi : \\pi^{-1}(U) \\to U \\times \\mathbb{R}^{k}$，使 $\\Phi$ 与投影交换（$\\operatorname{pr}_{1} \\circ \\Phi = \\pi$），且在每个纤维上是线性同构。'].join('\n'),
@@ -74597,7 +74597,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['代数拓扑', '约化同调', '增广'],
       statement: [
-        '设 $X \\ne \\emptyset$。定义**增广映射**（即「把每个点都算作 $1$」）',
+        '设 $X$ 是任意拓扑空间（**不必非空**：$X = \\emptyset$ 时各 $S_{n} = 0$，增广映射是 $0 \\to \\mathbb{Z}$，下面公式仍给出 $\\tilde H_{p}(\\emptyset) = 0$）。定义**增广映射**（即「把每个点都算作 $1$」）',
         '',
         '$$\\varepsilon : S_{0}(X) \\longrightarrow \\mathbb{Z},\\qquad \\varepsilon\\left(\\sum_{x} n_{x}\\, x\\right) := \\sum_{x} n_{x}.$$',
         '',

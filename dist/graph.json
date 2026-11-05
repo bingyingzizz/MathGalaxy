@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T06:45:06.446Z",
+  "generated": "2026-11-05T06:48:25.218Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -5542,7 +5542,7 @@
    "notes_en": "An outer measure is defined on **all** subsets ($\\mathcal{P}(X)$, not on some $\\sigma$-algebra); the price is that it only has **sub**additivity.\n\nSo an outer measure is not a measure — it is too large even to be additive on $\\mathcal{P}(X)$. Carathéodory's idea is to single out the sets that \"behave well\" (the next definition); on those the outer measure does become a genuine measure.\n\nWhat Lebesgue first constructed was an outer measure: $\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.**Which of the three conditions is \"hard\"** (the three are asymmetric \\u2014 one is normalisation, one is almost free, one is a real condition):\n\n- $\\mu^{*}(\\emptyset) = 0$: **normalisation**, there only so that $0 \\le \\mu^{*}$ below is meaningful (otherwise the constant $+\\infty$ would satisfy the other two).\n- **Monotonicity**: **almost free**, but deriving it uses countable subadditivity: $B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$; monotonicity is usually listed as an axiom to save that step, and in a concrete construction (Carath\\u00E9odory) it is verified directly.\n- **Countable subadditivity**: **this is the real condition**, the only one with content \\u2014 it ties \"the size of one set\" to \"countable operations\". \\u26A0 Note that it is an **inequality**: an outer measure is **not** additive (additivity on disjoint unions is what makes it a measure, and that is an extra conclusion on Carath\\u00E9odory-measurable sets).\n\n**Two distinctions that must stay separate**:\n\n- **An outer measure is defined on $\\mathcal{P}(X)$** (all subsets), whereas a measure (`def.measure`) is defined only on a $\\sigma$-algebra \\u2014 that is the whole point of an outer measure as a **construction device**: first put a crude \"size\" on all subsets, then single out the subsets on which it is additive.\n- **Monotone plus countably subadditive does not say \"the value on a countable union is the limit\"**: on increasing unions an outer measure only guarantees $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$; equality needs continuity from below, hence measurability \\u2014 exactly what the Carath\\u00E9odory condition supplies.\n\n\\u26A0 Notation: the star in $\\mu^{*}$ means \"defined on $\\mathcal{P}(X)$\", not \"dual of something\". Some books write $m^{*}$ or $\\nu^{*}$.",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "stale",
      "version": "v0.9.3",
      "fields": [
       "abstract",
@@ -5556,12 +5556,15 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "reviewed",
-      "statement": "reviewed",
+      "abstract": "stale",
+      "statement": "stale",
       "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract",
+      "statement"
+     ],
      "basedOn": {
       "abstract": "v0.9.3#57c392f3",
       "statement": "v0.9.3#24d3359e",
@@ -5582,7 +5585,7 @@
     "外测度",
     "次可加"
    ],
-   "statement": "设 $X$ 是非空集合。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当\n\n- $\\mu^*(\\emptyset) = 0$\n- **单调**：$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$\n- **可数次可加**：$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$",
+   "statement": "设 $X$ 是集合（不要求非空：空集时幂集只有空集，三条公理照样成立）。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当\n\n- $\\mu^*(\\emptyset) = 0$\n- **单调**：$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$\n- **可数次可加**：$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$",
    "notes": "外测度定义在**全体**子集上（$\\mathcal{P}(X)$，不是某个 $\\sigma$代数），代价是它只有**次**可加性。\n\n所以外测度不是测度 —— 它太大了，连 $\\mathcal{P}(X)$ 上都没有可加性。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。\n\nLebesgue 最初构造的就是外测度：$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$。\n\n\n\n**三条里哪条是“硬”的**（外测度的三条不对称 —— 一条是规范化，一条是免费的，一条是真条件）：\n\n- $\\mu^{*}(\\emptyset) = 0$：**规范化**，只为让后面的 $0 \\le \\mu^{*}$ 有意义（否则常数 $+\\infty$ 也满足后两条）。\n- **单调**：**几乎是免费的**，但要用**可数次可加**来推：$B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$，所以单调性本身常被列成公理以省去这步；在具体构造（Carathéodory 外测度）里它是直接验证的。\n- **可数次可加**：**这才是真条件**，也是唯一有内容的 —— 它把「单点测度」与「可数运算」绑在一起。⚠️ 注意它是**不等式**：外测度**不**可加（对不交并可加才是测度，那是 Carathéodory 可测集上的额外结论）。\n\n**两个必须分清的点**：\n\n- **外测度定义在 $\\mathcal{P}(X)$ 上**（所有子集），而测度（`def.measure`）只定义在 $\\sigma$-代数上 —— 这是外测度作为「构造工具」的全部意义：先在全部子集上给一个粗略的「大小」，再挑出那些「可加」的子集作为可测集。\n- **单调 + 可数次可加 不蕴含「对可数并取值等于极限」**：外测度在递增并上只保证 $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$，等式要靠下连续性，而那需要可测性 —— 这正是 Carathéodory 条件要补的东西。\n\n⚠️ 记号：$\\mu^{*}$ 上的星号表示「在 $\\mathcal{P}(X)$ 上」，不是「关于某个东西的对偶」。有些书用 $m^{*}$、$\\nu^{*}$。",
    "refs": [
     "Halmos, Measure Theory, §11",
@@ -23525,7 +23528,7 @@
     "局部平凡化",
     "转移函数"
    ],
-   "statement": "**在说什么**：把「每点挂一个向量空间、并且挂得光滑」这件事公理化 —— 切丛、余切丛、张量丛都是它的例子。判据是「局部长得像 $U \\times \\mathbb{R}^{k}$」。\n\n设 $M$ 是光滑流形。一个**秩 $k$ 的光滑向量丛**是光滑映射 $\\pi : E \\to M$，连同两件事：\n\n1. 每根**纤维** $E_{p} := \\pi^{-1}(p)$ 上给定 $k$ 维实向量空间结构；\n2. **局部平凡化**：每点有开邻域 $U$ 与微分同胚 $\\Phi : \\pi^{-1}(U) \\to U \\times \\mathbb{R}^{k}$，使 $\\Phi$ 与投影交换（$\\operatorname{pr}_{1} \\circ \\Phi = \\pi$），且在每个纤维上是线性同构。\n\n$E$ 叫**全空间**，$M$ 叫**底**，$\\dim E = \\dim M + k$。两条平凡化 $\\Phi_{\\alpha}, \\Phi_{\\beta}$ 在重叠处给出**转移函数**\n\n$$g_{\\alpha\\beta} : U_{\\alpha} \\cap U_{\\beta} \\longrightarrow \\operatorname{GL}(k,\\mathbb{R}),\\qquad g_{\\alpha\\beta}(p) := \\Phi_{\\alpha,p} \\circ \\Phi_{\\beta,p}^{-1} ,$$\n\n它光滑，并满足**上闭链条件**\n\n$$g_{\\alpha\\alpha} = 1,\\qquad g_{\\alpha\\beta}\\,g_{\\beta\\gamma}\\,g_{\\gamma\\alpha} = 1 ,$$\n\n后者在 $U_{\\alpha} \\cap U_{\\beta} \\cap U_{\\gamma}$ 上成立。反过来，给定开覆盖与满足上闭链条件的光滑 $g_{\\alpha\\beta}$，可以粘出一个向量丛。",
+   "statement": "**在说什么**：把「每点挂一个向量空间、并且挂得光滑」这件事公理化 —— 切丛、余切丛、张量丛都是它的例子。判据是「局部长得像 $U \\times \\mathbb{R}^{k}$」。\n\n设 $M$ 是光滑流形。一个**秩 $k$ 的光滑向量丛**是映射 $\\pi : E \\to M$（**不要求先假定 $\\pi$ 光滑**：由局部平凡化 $\\operatorname{pr}_{1}\\circ\\Phi = \\pi$ 与 $\\operatorname{pr}_{1}$ 光滑即得），连同两件事：\n\n1. 每根**纤维** $E_{p} := \\pi^{-1}(p)$ 上给定 $k$ 维实向量空间结构；\n2. **局部平凡化**：每点有开邻域 $U$ 与微分同胚 $\\Phi : \\pi^{-1}(U) \\to U \\times \\mathbb{R}^{k}$，使 $\\Phi$ 与投影交换（$\\operatorname{pr}_{1} \\circ \\Phi = \\pi$），且在每个纤维上是线性同构。\n\n$E$ 叫**全空间**，$M$ 叫**底**，$\\dim E = \\dim M + k$。两条平凡化 $\\Phi_{\\alpha}, \\Phi_{\\beta}$ 在重叠处给出**转移函数**\n\n$$g_{\\alpha\\beta} : U_{\\alpha} \\cap U_{\\beta} \\longrightarrow \\operatorname{GL}(k,\\mathbb{R}),\\qquad g_{\\alpha\\beta}(p) := \\Phi_{\\alpha,p} \\circ \\Phi_{\\beta,p}^{-1} ,$$\n\n它光滑，并满足**上闭链条件**\n\n$$g_{\\alpha\\alpha} = 1,\\qquad g_{\\alpha\\beta}\\,g_{\\beta\\gamma}\\,g_{\\gamma\\alpha} = 1 ,$$\n\n后者在 $U_{\\alpha} \\cap U_{\\beta} \\cap U_{\\gamma}$ 上成立。反过来，给定开覆盖与满足上闭链条件的光滑 $g_{\\alpha\\beta}$，可以粘出一个向量丛。",
    "notes": "**为什么「局部平凡」不够，还要上闭链**：局部平凡只说明「每块都像乘积」；真正决定丛的是**怎么粘**，而粘法就记在 $g_{\\alpha\\beta}$ 里。\n\n上闭链条件是「粘得自洽」的充要条件，也把丛与 1-上链的上同调类 $H^{1}(M;\\operatorname{GL}(k,\\mathbb{R}))$ 联系起来 —— 这一点本图只提不证。\n\n**例子**：$TM$ 是秩 $n$ 的（`def.tangent-bundle`）；$M \\times \\mathbb{R}^{k}$ 叫**平凡丛**；余切丛 $T^{\\ast}M$ 与 $(r,s)$ 型张量丛（`def.tensor-field`）；\n\n$S^{1}$ 上的 Möbius 带是秩 $1$ 的非平凡丛，$S^{1} \\times \\mathbb{R}$ 是平凡的 —— 两者局部一样，整体不同。\n\n**换结构群就是换丛**：$\\operatorname{GL}(k,\\mathbb{R})$ 换成 $\\operatorname{O}(k)$ 得欧氏丛（配了纤维度量），换成 $\\operatorname{GL}(k,\\mathbb{C})$ 得复向量丛，换成 $\\operatorname{GL}(k,\\mathbb{Z})$ 得平坦丛。\n\n$TM$ 的结构群能缩到 $\\operatorname{O}(n)$，靠的是「总可配黎曼度量」（`prop.bundle-metric`）—— 这不是自动的。\n\n**秩 $1$ 叫线丛**：$S^{1}$ 上的 Möbius 线丛、$\\mathbb{RP}^{1}$ 上的 tautological 线丛、$S^{2}$ 上的 Hopf 线丛是最常用的三个。线丛的同构类由 $H^{2}$ 里一个类（第一陈类）刻画，这是拓扑进入几何的入口。\n\n**记号**：$\\pi$ 同时是投影与圆周率，本图里 $\\pi : E \\to M$ 一律是投影；$\\operatorname{pr}_{1}$ 是乘积到第一因子的投影；$\\Phi_{\\alpha,p}$ 记 $\\Phi_{\\alpha}$ 限制在纤维 $E_{p}$ 上的线性同构。",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 向量丛与局部平凡化"
@@ -29062,7 +29065,7 @@
     "约化同调",
     "增广"
    ],
-   "statement": "设 $X \\ne \\emptyset$。定义**增广映射**（即「把每个点都算作 $1$」）\n\n$$\\varepsilon : S_{0}(X) \\longrightarrow \\mathbb{Z},\\qquad \\varepsilon\\left(\\sum_{x} n_{x}\\, x\\right) := \\sum_{x} n_{x}.$$\n\n由于 $\\partial_{1}\\sigma = \\sigma \\circ d_{1} - \\sigma \\circ d_{0}$ 的两个系数一正一负，有 $\\varepsilon \\circ \\partial_{1} = 0$，于是可以把它接在 $0$-链后面，得到**增广链复形**\n\n$$S_{1}(X) \\xrightarrow{\\ \\partial\\ } S_{0}(X) \\xrightarrow{\\ \\varepsilon\\ } \\mathbb{Z} \\to 0$$\n\n（左边继续接 $S_{2}, S_{3}, \\ldots$）。**约化同调**定义为这个延长后复形的同调：\n\n$$\\tilde{H}_{p}(X) := H_{p}(X) \\quad (p \\ge 1),$$\n$$\\tilde{H}_{0}(X) := \\ker\\varepsilon \\big/ \\operatorname{im}\\partial_{1}.$$",
+   "statement": "设 $X$ 是任意拓扑空间（**不必非空**：$X = \\emptyset$ 时各 $S_{n} = 0$，增广映射是 $0 \\to \\mathbb{Z}$，下面公式仍给出 $\\tilde H_{p}(\\emptyset) = 0$）。定义**增广映射**（即「把每个点都算作 $1$」）\n\n$$\\varepsilon : S_{0}(X) \\longrightarrow \\mathbb{Z},\\qquad \\varepsilon\\left(\\sum_{x} n_{x}\\, x\\right) := \\sum_{x} n_{x}.$$\n\n由于 $\\partial_{1}\\sigma = \\sigma \\circ d_{1} - \\sigma \\circ d_{0}$ 的两个系数一正一负，有 $\\varepsilon \\circ \\partial_{1} = 0$，于是可以把它接在 $0$-链后面，得到**增广链复形**\n\n$$S_{1}(X) \\xrightarrow{\\ \\partial\\ } S_{0}(X) \\xrightarrow{\\ \\varepsilon\\ } \\mathbb{Z} \\to 0$$\n\n（左边继续接 $S_{2}, S_{3}, \\ldots$）。**约化同调**定义为这个延长后复形的同调：\n\n$$\\tilde{H}_{p}(X) := H_{p}(X) \\quad (p \\ge 1),$$\n$$\\tilde{H}_{0}(X) := \\ker\\varepsilon \\big/ \\operatorname{im}\\partial_{1}.$$",
    "notes": "**为什么要有它**：单点 $\\{p\\}$ 的 $H_{0} = \\mathbb{Z}$ —— 一个点看起来「有一个洞」。用约化同调，单点的**全部**约化同调都是 $0$，于是「$S^{n}$ 只有一个非平凡同调」这类陈述才干净（`thm.sphere-homology`）。\n\n**与普通同调的关系**：$X \\ne \\emptyset$ 时，$\\varepsilon$ 是满射（任取一点 $x$，$\\varepsilon(x) = 1$），由商群的短正合列 $0 \\to \\ker\\varepsilon \\to S_{0} \\to \\mathbb{Z} \\to 0$ 与同调的长正合列，得\n\n$$H_{0}(X) \\cong \\tilde{H}_{0}(X) \\oplus \\mathbb{Z}.$$\n\n高维没有这个差别：$\\tilde{H}_{p} = H_{p}$ 对 $p \\ge 1$。\n\n**「增广」的几何意义**：$\\varepsilon$ 取出的是一条 $0$-链的总系数（「净点数」）。商掉它相当于**把整个空间压成一个点**再取同调 —— 这也解释了为什么单点的约化同调全为零。\n\n⚠️ 空空间的约定各家不同（有的让 $\\tilde{H}_{-1}(\\emptyset) = \\mathbb{Z}$）。本团一律设 $X \\ne \\emptyset$，避开这个技术细节。",
    "refs": [
     "Munkres, Elements of Algebraic Topology, Ch. 4 · reduced homology",

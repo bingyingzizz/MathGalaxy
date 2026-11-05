@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.outer-measure)　·　[Chinese page (authoritative)](./def.outer-measure.md)
 
-## Statement · **reviewed**
+## Statement · **stale**
 Let $X$ be a non-empty set. A function $\mu^* : \mathcal{P}(X) \to [0, +\infty]$ is an **outer measure** iff
 
 - $\mu^*(\emptyset) = 0$

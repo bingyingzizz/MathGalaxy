@@ -349,7 +349,7 @@
       regions: ['topology'],
       tags: ['代数拓扑', '约化同调', '增广'],
       statement: [
-        '设 $X \\ne \\emptyset$。定义**增广映射**（即「把每个点都算作 $1$」）',
+        '设 $X$ 是任意拓扑空间（**不必非空**：$X = \\emptyset$ 时各 $S_{n} = 0$，增广映射是 $0 \\to \\mathbb{Z}$，下面公式仍给出 $\\tilde H_{p}(\\emptyset) = 0$）。定义**增广映射**（即「把每个点都算作 $1$」）',
         '',
         '$$\\varepsilon : S_{0}(X) \\longrightarrow \\mathbb{Z},\\qquad \\varepsilon\\left(\\sum_{x} n_{x}\\, x\\right) := \\sum_{x} n_{x}.$$',
         '',

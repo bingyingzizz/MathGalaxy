@@ -232,7 +232,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '外测度', '次可加'],
       statement: [
-        '设 $X$ 是非空集合。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当',
+        '设 $X$ 是集合（不要求非空：空集时幂集只有空集，三条公理照样成立）。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当',
         '',
         '- $\\mu^*(\\emptyset) = 0$',
         '- **单调**：$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$',
