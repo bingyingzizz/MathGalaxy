@@ -377,18 +377,17 @@
 ⚠️ 另有两处在 `161-functional-analysis.js` 的**包头部注释**里（不进图），说明这手误是**习惯性**的。
 👉 **建议把 `_ctrlscan.mjs` 接进 build 硬门**，否则下一批还会再来。
 
-### 4.6 🟡 别名与可发现性
+### 4.6 🟢 别名与可发现性（2026-11-05 已修第一批）
 
-✅ **实测复现**：`mg find` 查 `西尔维斯特` `罗尔` `博雷尔集` `托内利` `龙格` `施瓦茨` **全部 0 命中**，
-而 `thm.sylvester-criterion` / `thm.rolle` / `def.borel` / `thm.fubini-tonelli` / `thm.runge` / `lem.schwarz` **节点都在**。
-（40 个常用音译里 **19 个**落空。）
+✅ **已修**：`mg find` 查 `西尔维斯特` `罗尔` `博雷尔集` `托内利` `龙格` `施瓦茨` 现在全部命中；
+16 个常用音译 + 34 个补充覆盖已写进 `aliases.js`（aka 3493→3555；label 未动）。
 
-- **78 个节点**「拉丁人名 + aka 零汉字」，跨 33 个星团
-- **3 组**节点 aka 几乎一样（`def.simplicial` 抢了 `def.simplex-category` 的三个）
-- **32 处** aka 撞别人 label
-- ✅ **实测**：`def.norm` 与 `def.normed-space` 把同一组范数公理**写了两遍**（前者 3 条编号，后者 4 条公式）
+- ⚠️ `_tools/_noalias_cjk.mjs` 报的「78 个 aka 零汉字」是**正则漏读的假数**（`id` 与 `aka` 之间有 `en:` 的条目抓不到）；vm 实载后**真·零中文 aka = 0**。真实缺口是「常用音译覆盖」，不是「78 个节点没中文」。
+- 3 组抢别名已归位（`def.simplicial`→`def.simplex-category`、`def.mono`→`def.isomorphism`、`thm.long-exact`→`thm.snake-lemma`，英文 `snake lemma` 保留共享）。
+- aka 撞 label：31 → **14**；剩下 14 处是「同名不同物/真重叠」，需要**消歧注/分节点**，不是删 alias。
+- ⏳ `def.norm` 与 `def.normed-space` 仍把同一组范数公理写了两遍（内容问题，待 FIX-008）。
+- ⏳ 真没有节点的 5 个：维塔利 / 索伯列夫 / 施图尔 / 盖尔芳德 / 麦克劳林（登记为 gaps）。
 
-⚠️ 修法只动 `src/data/aliases.js`（纯数据、零风险），但**要重钉 `searchcheck`**。
 
 ### 4.7 🟡 结构层
 
