@@ -30,7 +30,7 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定义', '集合运算'],
       statement: [
-        '设 $\\mathcal{A}$ 是一族集合（$A$ 的**并**与**交**是它只有两个成员时的特例）：',
+        '设 $\\mathcal{A}$ 是一族集合（**取交时要求 $\\mathcal{A} \\ne \\emptyset$**：$\\bigcap\\emptyset$ 会是「全体集合」的类而不成集合；$A$ 的**并**与**交**是它只有两个成员时的特例）：',
         '',
         '$$\\bigcup \\mathcal{A} := \\{ x : \\exists A \\in \\mathcal{A},\\ x \\in A \\}$$',
         '$$\\bigcap \\mathcal{A} := \\{ x : \\forall A \\in \\mathcal{A},\\ x \\in A \\}$$',
@@ -39,7 +39,7 @@ window.MG = window.MG || {};
         '',
         '显然 $A \\cap B \\subseteq A \\subseteq A \\cup B$。'
       ].join('\n'),
-      notes: '由并集公理，$\\bigcup \\mathcal{A}$ 是集合；$\\bigcap \\mathcal{A}$ 由分离公理模式取出。\n\n⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\\sigma$-环、$\\sigma$-代数、单调类都是这么定义的）。\n\n⚠ 分配律对任意族都成立：$A \\cap \\bigcup_i B_i = \\bigcup_i (A \\cap B_i)$；\n\n补与并、交的交换就是 De Morgan 律。',
+      notes: '由并集公理，$\\bigcup \\mathcal{A}$ 是集合（$\\mathcal{A} = \\emptyset$ 时它就是 $\\emptyset$）；取 $\\mathcal{A} \\ne \\emptyset$ 并任取 $A_{0} \\in \\mathcal{A}$，则 $\\bigcap \\mathcal{A} = \\{\\, x \\in A_{0} : \\forall A \\in \\mathcal{A},\\ x \\in A \\,\\}$ 由分离公理模式取出 —— 这就是「非空」不能省的原因。\n\n⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\\sigma$-环、$\\sigma$-代数、单调类都是这么定义的）。\n\n⚠ 分配律对任意族都成立：$A \\cap \\bigcup_i B_i = \\bigcup_i (A \\cap B_i)$；\n\n补与并、交的交换就是 De Morgan 律。',
       refs: ['Kunen, Set Theory, I.5']
     },
     {

@@ -502,7 +502,7 @@
       regions: ['complex'],
       tags: ['复变函数', 'Riemann 映射', '单连通', '共形映射', '正规族'],
       statement: [
-        '设 $\\Omega \\subset \\mathbb{C}$ 是**单连通**区域，$z_{0} \\in \\Omega$。则存在唯一的双全纯映射',
+        '设 $\\Omega \\subset \\mathbb{C}$ 是**单连通**区域且 $\\Omega \\ne \\mathbb{C}$，$z_{0} \\in \\Omega$。则存在唯一的双全纯映射',
         '',
         '$$f : \\Omega \\longrightarrow \\mathbb{D} = \\{\\, |z| < 1 \\,\\}$$',
         '',

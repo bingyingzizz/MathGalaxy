@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T09:46:18.958Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T10:31:50.142Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -431,7 +431,7 @@ $$\forall A \forall B \exists C \forall z [ z \in C \leftrightarrow  \exists a \
 #### 并集与交集　`def.union-inter`
 *定义*　并集 / 交集
 
-设 $\mathcal{A}$ 是一族集合（$A$ 的**并**与**交**是它只有两个成员时的特例）：
+设 $\mathcal{A}$ 是一族集合（**取交时要求 $\mathcal{A} \ne \emptyset$**：$\bigcap\emptyset$ 会是「全体集合」的类而不成集合；$A$ 的**并**与**交**是它只有两个成员时的特例）：
 
 $$\bigcup \mathcal{A} := \{ x : \exists A \in \mathcal{A},\ x \in A \}$$
 $$\bigcap \mathcal{A} := \{ x : \forall A \in \mathcal{A},\ x \in A \}$$
@@ -440,7 +440,7 @@ $$\bigcap \mathcal{A} := \{ x : \forall A \in \mathcal{A},\ x \in A \}$$
 
 显然 $A \cap B \subseteq A \subseteq A \cup B$。
 
-由并集公理，$\bigcup \mathcal{A}$ 是集合；$\bigcap \mathcal{A}$ 由分离公理模式取出。
+由并集公理，$\bigcup \mathcal{A}$ 是集合（$\mathcal{A} = \emptyset$ 时它就是 $\emptyset$）；取 $\mathcal{A} \ne \emptyset$ 并任取 $A_{0} \in \mathcal{A}$，则 $\bigcap \mathcal{A} = \{\, x \in A_{0} : \forall A \in \mathcal{A},\ x \in A \,\}$ 由分离公理模式取出 —— 这就是「非空」不能省的原因。
 
 ⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\sigma$-环、$\sigma$-代数、单调类都是这么定义的）。
 
@@ -27913,7 +27913,7 @@ $y(F)$ 是 $M''$ 里的**紧 Hausdorff** 子集（$F$ 紧、$M''$ 弱 Hausdorff 
 
 局部紧 Hausdorff 阿贝尔群构成的范畴是**预阿贝尔**的，但**不是阿贝尔**范畴。
 
-具体地：核 = 通常的核带子空间拓扑；余核 = 商群 $N/f(M)$ 带商拓扑；但态射**不必是严格的** ——
+具体地：核 = 通常的核带子空间拓扑；余核 = 商群 $N/\overline{f(M)}$ 带商拓扑（须商掉**闭包**，否则商拓扑不是 Hausdorff）；但态射**不必是严格的** ——
 
 $$\mathrm{id} : \mathbb{R}^{\mathrm{disc}} \longrightarrow \mathbb{R}$$
 
@@ -27928,7 +27928,7 @@ $\mathbb{R}^{\mathrm{disc}} \to \mathbb{R}$ 是单态射（它同构于自己的
 于是「余核的核」不是原来的对象，严格性破掉。
 
 **证明。**
-- **预阿贝尔**：有有限积与有限余积（积 = 积群配积拓扑；余积 = 直和配「余积拓扑」）、核与余核都存在 —— 核是通常的核配**子空间拓扑**；余核是 $N/f(M)$ 配**商拓扑**（商群配商拓扑仍是局部紧 Hausdorff，因为 $f(M)$ 未必闭、商掉的是它的闭包……取 $N/\overline{f(M)}$ 的那一套标准处理）✓。
+- **预阿贝尔**：有有限积与有限余积（积 = 积群配积拓扑；余积 = 直和配「余积拓扑」）、核与余核都存在 —— 核是通常的核配**子空间拓扑**；余核是 $N/\overline{f(M)}$ 配**商拓扑**（$f(M)$ 未必闭，必须商掉**闭包**：对闭子群商群配商拓扑才是局部紧 Hausdorff）✓。
 - **不是阿贝尔**：取 $\mathrm{id} : \mathbb{R}^{\mathrm{disc}} \to \mathbb{R}$。
 
 它连续（离散拓扑比欧氏拓扑细）且是单射，故是单态射；
@@ -28295,26 +28295,19 @@ $$\|s - ds'\| \le \|s-t\| + K\|dt\| + \frac{\varepsilon}{2} = K\|ds\| + \Bigl(\|
 #### 相邻两条 K-有界 推出 正合　`prop.k-bounded-implies-exact`
 *命题*　$K$-有界正合（相邻两处）$\implies$ 通常正合
 
-设 $M^{\bullet}$ 是 **Banach** 阿贝尔群复形。若它在 $M^{n-1}$ 与 $M^{n}$ 两处都 $K$-有界正合，则它在 $M^{n}$ 处（通常意义下）**正合**。
+设 $M^{\bullet}$ 是 **Banach** 阿贝尔群复形。若它在 $M^{n-1}$ 与 $M^{n}$ 两处都 $K$-有界正合，**且 $\operatorname{im} d^{n+1}$ 是 $M^{n}$ 的闭子空间**（即 $d^{n+1}$ 有闭值域），则它在 $M^{n}$ 处（通常意义下）**正合**。
 
-**这是「定量 $\implies$ 定性」的核心一步。** 给定闭链 $s \in M^{n}$（即 $d^{n}s = 0$），要造出 $s' \in M^{n+1}$ 使 $ds' = s$。
+**这是「定量 $\implies$ 定性」的核心一步 —— 但必须先补一条闭性假设。** 给定闭链 $s \in M^{n}$（即 $d^{n}s = 0$），要证 $s \in \operatorname{im} d^{n+1}$。
 
-**造法（几何级数）**。
+**证明（只要两步）。** 由 $M^{n}$ 处的 $K$-有界正合，对每个 $\varepsilon > 0$ 都存在 $s' \in M^{n+1}$ 使 $\|s - d^{n+1}s'\| \le K\|d^{n}s\| + \varepsilon = \varepsilon$（末步用了 $d^{n}s = 0$）。$\varepsilon$ 任意，故 $s$ 落在 $\operatorname{im} d^{n+1}$ 的**闭包**里。
 
-由上一条 $K$-有界条件，先取一个几乎的原像 $s'_{1}$，误差 $e_{1} = s - ds'_{1}$ 满足 $\|e_{1}\| \le K\|ds\| + \varepsilon = \varepsilon$（用了 $ds = 0$）。
+由**假设 $\operatorname{im} d^{n+1}$ 闭**，闭包就是它自己，于是 $s \in \operatorname{im} d^{n+1}$；反向包含 $\operatorname{im} d^{n+1} \subseteq \ker d^{n}$ 由 $d \circ d = 0$ 给出。故 $\ker d^{n} = \operatorname{im} d^{n+1}$，即正合。∎
 
-现在 $e_{1}$ 又是 $M^{n}$ 里的闭链（因为 $de_{1} = ds - d^{2}s'_{1} = 0$），可以对它再取一次几乎的原像，误差 $\le \varepsilon/2$，如此迭代。
+⚠️ **闭值域这条不能省**：$\ell^{2}$ 上取 $d(x_{j}) := (x_{j}/j)$，$\operatorname{im} d$ 稠密而不闭，此时 $K$-有界正合可以成立却没有正合 —— **稠密正合 $\ne$ 正合**。
 
-**关键的第二处 $K$-有界**：为保证迭代出的 $s'_{i}$ 本身**收敛**，每一步都要用 $M^{n-1}$ 处的 $K$-有界正合把「原像之间差了多少」控制住 —— 这样 $\|s'_{i} - s'_{i+1}\|$ 被一个几何级数控制，$M^{n+1}$ 完备保证极限存在。
+⚠️ **原版证明错在哪**：它想把 $M^{n+1}$ 处的 $K$-有界性用在 $s'_{i+1} - s'_{i}$ 上，写成 $\|s'_{i+1} - s'_{i}\| \le K\|d(s'_{i+1}-s'_{i})\| + \varepsilon$。但定义给的是**另一头**的估计（把 $\|s - ds'\|$ 压到 $K\|ds\| + \varepsilon$），它**不能**把 $\|s'\|$ 本身界住 —— 所以那个几何级数并不收敛。
 
-**结论**：$s' = \sum_{i \ge 1}(s'_{i+1} - s'_{i})$ 的收敛和的 $d$ 正好是 $s$。于是每个闭链都是边界，即正合。
-
-**严格写法。** 设 $s \in M^{n}$、$ds = 0$。
-- 由 $M^{n}$ 处 $K$-有界，取 $s'_{1} \in M^{n+1}$ 使 $\|s - ds'_{1}\| \le \frac{1}{2^{2}}$；误差 $e_{1} := s - ds'_{1}$ 满足 $de_{1} = 0$，故对 $e_{1}$ 再用一次得 $s'_{2} \in M^{n+1}$ 使 $\|e_{1} - d(s'_{2}-s'_{1})\| \le \frac{1}{2^{3}}$，如此递推，得 $s'_{i}$ 与 $e_{i} = s - ds'_{i}$，$\|e_{i}\| \le 2^{-i-1}$。
-- **这一步用到「相邻两处」**：要控制 $\|s'_{i+1} - s'_{i}\|$ 本身（而不只是它的边界），得把 $M^{n+1}$ 处的 $K$-有界性用在元素 $s'_{i+1}-s'_{i}$ 上：
-$$\|s'_{i+1} - s'_{i}\| \le K\,\|d(s'_{i+1}-s'_{i})\| + \frac{1}{2^{i+1}} \le \frac{K}{2^{i}} + \frac{1}{2^{i+1}} .$$
-- 于是 $(s'_{i})$ 是 **Cauchy 列**，$M^{n+1}$ 完备给出极限 $s' := \lim_{i} s'_{i}$。
-- $d$ 连续，故 $ds' = \lim_{i} ds'_{i} = \lim_{i}(s - e_{i}) = s$（因 $\|e_{i}\| \to 0$）。∎
+📌 想要**带界的具体原像**，用开映射定理：$\operatorname{im} d^{n+1}$ 闭、$M^{n+1}$ Banach，故 $d^{n+1} : M^{n+1} \twoheadrightarrow \operatorname{im} d^{n+1}$ 是开映射，于是存在 $c$ 使每个 $z \in \operatorname{im} d^{n+1}$ 都有原像 $w$ 满足 $\|w\| \le c\|z\|$。这才是「被控制住的原像」的正确来源。
 
 参考：Le Stum, Proposition 8.2.3
 
@@ -31759,7 +31752,7 @@ $f$ 在圆内有 $m \ge 1$ 个零点（按阶计），所以 $f + w$ 在圆内�
 #### Riemann 映射定理　`thm.riemann-mapping`
 *定理*　Riemann 映射定理：单连通真区域双全纯等价于单位圆盘
 
-设 $\Omega \subset \mathbb{C}$ 是**单连通**区域，$z_{0} \in \Omega$。则存在唯一的双全纯映射
+设 $\Omega \subset \mathbb{C}$ 是**单连通**区域且 $\Omega \ne \mathbb{C}$，$z_{0} \in \Omega$。则存在唯一的双全纯映射
 
 $$f : \Omega \longrightarrow \mathbb{D} = \{\, |z| < 1 \,\}$$
 
@@ -33914,9 +33907,9 @@ $$K(p) = \frac{3}{\pi}\lim_{\rho\to0}\frac{2\pi\rho-L(\rho)}{\rho^{3}}.$$
 
 设 $M \subseteq \mathbb{R}^{3}$ 是紧致、可定向的曲面（允许带分段光滑边界）。则
 
-$$\int_{M}K\,\mathrm{d}A+\int_{\partial M}k_{g}\,\mathrm{d}s = 2\pi\chi(M),$$
+$$\int_{M}K\,\mathrm{d}A+\int_{\partial M}k_{g}\,\mathrm{d}s+\sum_{i}(\pi-\alpha_{i}) = 2\pi\chi(M),$$
 
-其中 $\chi(M)$ 是欧拉示性数，$\mathrm{d}A$ 是面积元，$\partial M$ 取使 $M$ 落在左侧的定向。特别地，**闭**曲面（$\partial M = \emptyset$）上
+其中 $\chi(M)$ 是欧拉示性数，$\mathrm{d}A$ 是面积元，$\partial M$ 取使 $M$ 落在左侧的定向，$\alpha_{1}, \ldots, \alpha_{m}$ 是分段光滑边界在**角点**处的内角（边界光滑时角点集为空，那一项和就是 $0$）。特别地，**闭**曲面（$\partial M = \emptyset$）上
 
 $$\int_{M}K\,\mathrm{d}A = 2\pi\chi(M).$$
 
@@ -33924,9 +33917,9 @@ $$\int_{M}K\,\mathrm{d}A = 2\pi\chi(M).$$
 
 **局部版是核心**（Gauss–Bonnet）：对由一条分段光滑简单闭曲线围成的区域 $D$，
 
-$$\int_{D}K\,\mathrm{d}A+\int_{\partial D}k_{g}\,\mathrm{d}s = 2\pi .$$
+$$\int_{D}K\,\mathrm{d}A+\int_{\partial D}k_{g}\,\mathrm{d}s+\sum_{i}(\pi-\alpha_{i}) = 2\pi .$$
 
-整体版就是把它沿三角剖分求和，角落项在求和时自动整理成 $2\pi\chi$。详细的提纲在边上。
+（$\alpha_{i}$ 是 $\partial D$ 在角点处的内角。）整体版就是把它沿三角剖分求和，角落项在求和时自动整理成 $2\pi\chi$。详细的提纲在边上。
 
 **测地三角形的特例**：若 $\partial T$ 的三条边都是测地线（$k_{g}\equiv0$），则 $\alpha_{1}+\alpha_{2}+\alpha_{3}-\pi = \int_{T}K\,\mathrm{d}A$ —— 内角和超出 $\pi$ 的部分，正好是高斯曲率的总量。
 
@@ -44691,15 +44684,15 @@ $$K = -\frac{1}{G}\left(\frac{G_{\rho\rho}}{2}-\frac{G_{\rho}^{2}}{4G}\right) = 
 **第一步（局部版）：简单闭曲线围成的区域。** 设 $D$ 由分段光滑简单闭曲线 $\partial D$ 围成，取正交单位标架与联络形式 $\omega^{1}_{2}$。
 
 由刘维尔公式（或等价地 $k_{g} = \frac{\mathrm{d}\theta}{\mathrm{d}s}-\omega^{1}_{2}(\dot\gamma)$），
-$$\int_{\partial D}k_{g}\,\mathrm{d}s = \int_{\partial D}\mathrm{d}\theta-\int_{\partial D}\omega^{1}_{2} = 2\pi-\int_{D}\mathrm{d}\omega^{1}_{2}.$$
-第一项是切线转角定理：简单闭曲线的切方向恰好转一整圈，$\int\mathrm{d}\theta = 2\pi$（分段光滑也一样，顶点处的外角补齐即可）。
+$$\int_{\partial D}k_{g}\,\mathrm{d}s = \int_{\partial D}\mathrm{d}\theta-\int_{\partial D}\omega^{1}_{2} = 2\pi-\sum_{i}(\pi-\alpha_{i})-\int_{D}\mathrm{d}\omega^{1}_{2}.$$
+第一项是切线转角定理：简单闭曲线的切方向恰好转一整圈，$\int\mathrm{d}\theta + \sum_{i}(\pi - \alpha_{i}) = 2\pi$（$\alpha_{i}$ 是顶点处的内角：顶点处的转角要用外角 $\pi - \alpha_{i}$ 补齐，分段光滑时也成立）。
 
 第二项用斯托克斯公式。
 
 再由高斯方程 $\mathrm{d}\omega^{1}_{2} = K\,\omega^{1}\wedge\omega^{2} = K\,\mathrm{d}A$ 得
-$$\int_{\partial D}k_{g}\,\mathrm{d}s = 2\pi-\int_{D}K\,\mathrm{d}A,$$
+$$\int_{\partial D}k_{g}\,\mathrm{d}s = 2\pi-\sum_{i}(\pi-\alpha_{i})-\int_{D}K\,\mathrm{d}A,$$
 移项即得
-$$\int_{D}K\,\mathrm{d}A+\int_{\partial D}k_{g}\,\mathrm{d}s = 2\pi .$$
+$$\int_{D}K\,\mathrm{d}A+\int_{\partial D}k_{g}\,\mathrm{d}s+\sum_{i}(\pi-\alpha_{i}) = 2\pi .$$
 **第二步：三角剖分求和。** 把 $M$ 剖分成 $F$ 个三角形，$E$ 条边（内部 $E_{i}$、边界 $E_{b}$），$V$ 个顶点（内部 $V_{i}$、边界 $V_{b}$）。对每个三角形 $T$ 用局部版。三角形是三边都是测地线段时最简单；一般情形把局部版写成带内角 $\beta_{j}$ 的形式：
 $$\int_{T}K\,\mathrm{d}A+\int_{\partial T}k_{g}\,\mathrm{d}s = \beta_{1}+\beta_{2}+\beta_{3}-\pi .$$
 （这就是第一步的局部版：把 $\int\mathrm{d}\theta = 2\pi$ 换成「沿三角形边界的转角 = $2\pi-$ 外角和 = 内角和 $-\pi$」。）
