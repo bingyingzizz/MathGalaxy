@@ -159,10 +159,13 @@
          2026-10-17 给相机加了内缩之后，这里必须跟着读 availRect()，
          否则 {rel:…} 的阈值全部和「用户看到的那一档」错位
          （正是 config 注释里那条铁律：同一个量不许在两个文件里各算一遍）。 */
-      /* ⛔ 2026-10-19：LOD 基准改用**整个视口**，不再扣 UI 边距。平板图上实测：
-         1200×640 的视口被扣掉 330 宽图例 + 2×130 padding 之后 k₀ 掉到 ≈0.04，
-         而相机实际停在 0.060 ⇒ r=k/k₀ 被抬到 1.5，全景漏出节点与推出线。
-         基准只该回答「内容铺满一屏是多少」，不该跟着 UI 覆盖率漂。 */
+      /* ⛔ 这里必须和 camera.fit() 用**同一块可用矩形**（而不是整个视口）：
+         「适配全部」按 availRect 停相机，LOD 的 r=1 也必须按同一个 availRect 算，
+         否则用户点「适配全部」时 r ≠ 1，全景档当场就错位。
+         2026-10-19 曾试着改成整个视口，结果 1200×640 上 r 被抬到 1.5（见下）；
+         真正的解法不是让基准跟 UI 无关，而是让**用户没滚轮时 r 不变** ——
+         app 的 keepRelZoom() 在视口/内缩变化时按新旧 k₀ 等比缩放 cam.k（ENG-001）。
+         基准只该回答「内容铺满一屏是多少」；UI 覆盖率一变，由相机那边补偿。 */
       var av = (typeof c.availRect === 'function') ? c.availRect() : { w: vw, h: vh };
       var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh, av.w, av.h].join(',');
       if (key === fitKKey) return fitKCache;
@@ -2625,7 +2628,30 @@
       labelBudget: function () { return nodeNameBudget(); },
       /* 诊断用：当前帧的 LOD 读数（档位 / 三档名字 / 定义线系数）。
          ⚠️ 只读快照，别拿它当状态改 —— holdTier 的真源在 computeLod 里。 */
-      fitZoom: fitZoom,                                  // 给 paintKey 现算 r=k/kFit 用
+      fitZoom: fitZoom,                                  // 「适配全部」的 k₀（与 LOD 同一口径）
+      /* ⭐ ENG-001：位图缓存（worldbitmap）的绘制输入里必须带这一项。
+         它现算 LOD，把**烘焙真正读的那几个闸门**压成一个短串：
+           · nodeDot    —— 全景不画点（r=1.32~1.42 淡入）
+           · nodeEdge   —— 节点级细线
+           · trunkEdge  —— 主干边
+           · clusterLink—— 团级聚合线
+         以前 app 自己用 Math.round(r*4)（0.25 一档）：nodeDot 的闸门整个落在同一档里
+         （r=1.30 与 r=1.36 同为 5）⇒ 位图按旧档烘好后不再重烘，实时层又被 staticHidden
+         挡住 ⇒ 屏幕上留下「全景里的圆点」。⛔ 别在 app 里再算一遍 r：同一个量两处各算
+         一次就会漂（HANDOVER 2.8）。
+         ⚠️ 这里调用 computeLod() 是刻意的：paintKey 在 frame() 里、renderer.draw() 之前算，
+         直接读 lodA 会读到**上一帧**的档位 ⇒ 滚轮停在临界点那一帧会把旧档烘进去。 */
+      lodPaintKey: function () {
+        computeLod();
+        return [
+          lodA.nodeDot > 0.02 ? 1 : 0,
+          lodA.nodeEdge > 0.02 ? 1 : 0,
+          lodA.trunkEdge > 0.02 ? 1 : 0,
+          lodA.clusterLink > 0.02 ? 1 : 0,
+          Math.round((lodA.rRel || 1) * 4),
+          lodA.tier
+        ].join(':');
+      },
       lodState: function () {
         return {
           k: camNow().k, rRel: lodA.rRel || 1,
@@ -2635,6 +2661,9 @@
           trunkName: lodA.trunkName, clusterLink: lodA.clusterLink,
           /* 2026-10-2x：判「黑线为什么淡了」要读的两个喂给 alpha 的系数 */
           nodeEdge: lodA.nodeEdge, edgeFloor: lodA.edgeFloor,
+          /* ⭐ ENG-001：全景档是否在画节点（0 = 只有云/板块/领域，1 = 圆点全开）。
+             验收「视口变了但没滚轮 ⇒ nodeDot 仍为 0」直接读它。 */
+          nodeDot: lodA.nodeDot,
           labelCount: prof.labelCount
         };
       },

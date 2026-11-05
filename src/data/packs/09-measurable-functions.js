@@ -149,7 +149,7 @@ window.MG = window.MG || {};
         '以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。',
         '',
         '- **和与积**：$f + g$、$fg$ 可测；',
-        '- **逐点上确界**：$\\{f_j\\}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；',
+        '- **逐点上确界**：可数族 $\\{f_j\\}_{j\\in\\mathbb{N}}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；',
         '- **有限个取大**：$f, g$ 可测 $\\implies$ $\\max_{f, g}$ 可测；',
         '- **极限**：若 $\\lim_j f_j$ 逐点存在，则它是可测的。'
       ].join('\n'),

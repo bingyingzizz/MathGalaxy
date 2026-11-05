@@ -173,9 +173,13 @@
       return graph.nodes.length + '|' + vis.hiddenCount() + '|'
         + (C.showDefinitionLines ? 1 : 0) + (C.showLabels ? 1 : 0) + (C.exploreMode ? 1 : 0) + '|'
         + (C.hideParallelImplications ? 1 : 0) + (C.showAllEdges ? 1 : 0) + '|'
-        /* ⚠️ LOD 档位（r=k/kFit）必须进绘制输入：全景不画节点/边/箭头，
-           相机一变就得重烘，否则位图继续显示「上一档」的内容（踩过）。 */
-        + Math.round((cam.k / Math.max(1e-6, renderer.fitZoom())) * 4) + '|'
+        /* ⚠️ LOD 档位必须进绘制输入：全景不画节点/边/箭头，
+           相机一变就得重烘，否则位图继续显示「上一档」的内容（踩过）。
+           ⭐ ENG-001：不再在这里自己算 r —— 判据由 renderer.lodPaintKey() 给
+           （它现算 LOD 并把**烘焙真正读的那几个闸门**写进 key）。自己算一遍的结果是：
+           r 按 0.25 分档、nodeDot 的闸门（r=1.32~1.42）落在同一档里，
+           于是「全景的圆点」被烘进位图后不再重烘，用户没滚轮也擦不掉。 */
+        + renderer.lodPaintKey() + '|'
         + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
     }
     var rafId = 0;
@@ -310,7 +314,46 @@
     /** 把最新内缩交给相机（相机再传给 renderer 的 fitZoom ⇒ k₀ 同一口径） */
     function syncInsets() { cam.setInsets(uiInsets()); }
 
+    /* ⭐⭐ ENG-001：视口 / 可用区变了、用户没滚轮 ⇒ rRel = cam.k / fitZoom() 必须原地不动。
+       LOD 每一档都按 rRel 判（renderer.computeLod），而 fitZoom() 跟着**视口 + 可用区**走：
+       窗口一缩、图例一折、说明条一展，k₀ 就变；cam.k 若不动，r 会被抬高一截
+       ⇒ 全景档被误判成放大档，一千多个圆点全画出来（用户 2026-11-05 报的现象）。
+       做法：按 p = 新k₀/旧k₀ 等比缩放 cam.k（夹到 min/max），并把变化前可用区中心的
+       世界点 (wx,wy) 放回新可用区中心。见 camera.remapViewport。 */
+    function keepRelZoom(prevFit, prevK, av0, wx, wy) {
+      if (!(prevFit > 0) || !(prevK > 0) || !(cam.viewW > 1)) return false;
+      var nf = renderer.fitZoom();
+      if (!(nf > 0) || !isFinite(nf)) return false;
+      return cam.remapViewport(nf / prevFit, av0, wx, wy);
+    }
+
+    /** 量一次可用区并**保持相对缩放**。
+        图例折叠 / 说明条展开都会改 k₀，却不触发 window.resize —— 这条入口补上那一刀。 */
+    function syncInsetsKeepZoom() {
+      var fit0 = 0, k0 = cam.k, av0 = null, w0 = null;
+      try {
+        if (cam.viewW > 1 && cam.k > 0) {
+          fit0 = renderer.fitZoom();
+          av0 = cam.availRect();
+          w0 = cam.toWorld(av0.cx, av0.cy);
+        }
+      } catch (e) { fit0 = 0; }
+      syncInsets();
+      if (fit0 > 0 && w0) keepRelZoom(fit0, k0, av0, w0.x, w0.y);
+    }
+
     function resize() {
+      /* ⭐ 先让「窄屏折图例 / 展开说明」落到 DOM：它改可用区，必须和视口变化一起算进
+         **同一次** k₀ 归一化。否则图例在 resize 之后才折，k₀ 变了而 cam.k 没动 ⇒
+         用户没滚轮却换档（ENG-001 的一个子路径）。 */
+      syncNarrowLegend();
+      /* 记下变化前的基准：旧视口 + 旧可用区的 k₀、相机 k、可用区中心的世界点 */
+      var fit0 = 0, k0 = cam.k, av0 = null, w0 = null;
+      try {
+        fit0 = renderer.fitZoom();
+        av0 = cam.availRect();
+        w0 = cam.toWorld(av0.cx, av0.cy);
+      } catch (e) { fit0 = 0; }
       var s = renderer.resize();
       /* ⛔ 2026-10-19：**dpr 在这里才真正决定画布像素数**（云雾层、读图层、主画布都按它）。
          之前只在 renderer 里夹了一次，这里仍用原始 devicePixelRatio ⇒ 角标 2.5、
@@ -321,6 +364,9 @@
       readEl.width = Math.max(1, Math.round(s.w * dpr));
       readEl.height = Math.max(1, Math.round(s.h * dpr));
       syncInsets();
+      /* ⭐ 视口变了 ⇒ k₀ 变了：按旧/新 k₀ 等比缩放 cam.k 并重新居中。
+         用户没滚轮 ⇒ rRel 不变 ⇒ LOD 档位不变；内容也不会再偏到左上角。 */
+      if (fit0 > 0 && w0) keepRelZoom(fit0, k0, av0, w0.x, w0.y);
       requestDraw();
     }
     global.addEventListener('resize', resize);
@@ -898,8 +944,9 @@
       for (var i = 0; i < boxes.length; i++) {
         boxes[i].checked = !hid[boxes[i].getAttribute('data-ui')];
       }
-      /* 关掉 / 打开图例与说明条会改变可用画布 ⇒ 重新量内缩（顺带让 LOD 的 k₀ 跟上）。 */
-      if (cam.viewW > 1) { syncInsets(); requestDraw(); }
+      /* 关掉 / 打开图例与说明条会改变可用画布 ⇒ 重新量内缩（顺带让 LOD 的 k₀ 跟上）。
+         ⭐ 必须用 syncInsetsKeepZoom：否则 k₀ 变了而 cam.k 不动，用户没滚轮也会换 LOD 档。 */
+      if (cam.viewW > 1) { syncInsetsKeepZoom(); requestDraw(); }
     }
     function toggleUI(k, visible) {
       var hid = uiHidden();
@@ -1514,8 +1561,10 @@
       setTimeout(function () { armed = true; }, 1200);
       det.addEventListener('toggle', function () {
         if (armed) det.setAttribute('data-user', '1');
-        /* 说明条展开 / 收起 ⇒ 底部内缩变了 ⇒ 相机可用区与 LOD 的 k₀ 都要跟上。 */
-        syncInsets();
+        /* 说明条展开 / 收起 ⇒ 底部内缩变了 ⇒ 相机可用区与 LOD 的 k₀ 都要跟上。
+           ⭐ 用 syncInsetsKeepZoom：用户点的是「展开说明」，不是「缩放星图」，
+             相对缩放 k/k₀ 必须原地不动，否则下一帧就换 LOD 档。 */
+        syncInsetsKeepZoom();
         requestDraw();
       });
     })();
@@ -1628,7 +1677,9 @@
                            能整块表达就整块，剩下的才写 id，所以整块开关的链接很短
         &dl=0 &lb=0 &ex=1  定义线 / 名字 / 探索（弱边）的开关
         &ae=1              全部连线（跨星团长线 + 跨板块聚合线也画）
-        &v=<k>,<cx>,<cy>   相机的缩放与世界中心（写的时候按屏幕中心算，换窗口也对得上）
+        &v=<k>,<cx>,<cy>   相机的缩放与世界中心（旧格式：绝对 k，只按原视口还原得对）
+        &vr=<r>,<cx>,<cy>  相机的**相对缩放** r=k/k₀ 与世界中心（新格式，v2）
+                           换视口 / 换设备打开也对得上：k 恢复成「当前 k₀ × r」
         &fps=1             右下角显示诊断角标（帧耗时 / 连线层耗时 / dpr / canvas 尺寸）
 
       ⭐ 这两个是 **query 参数**（不是 hash），因为它们改的是「用哪种语言」，
@@ -1709,7 +1760,13 @@
       if (hide.length) p.push('hide=' + hide.join(','));
       if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
       var c = camCenter();
-      p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
+      /* ⭐ ENG-001：写**相对缩放** r = k/k₀，不写绝对 k。
+         绝对 k 只在「同一个视口」里还原得对：换视口后同一个 k 的 r 变了，
+         LOD 会把全景误判成放大档（用户 2026-11-05 报的现象；深链 / 刷新都会踩到）。
+         ⚠️ token 用 `vr=`（v2）：旧的 `#v=<k>,…` 仍然按绝对 k 解析，不砸已有链接。 */
+      var rHash = renderer.fitZoom();
+      p.push('vr=' + (rHash > 0 ? (cam.k / rHash).toFixed(4) : '1') +
+        ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
       return p.join('&');
     }
 
@@ -1811,7 +1868,7 @@
         if (i > 0) kv[part.slice(0, i)] = part.slice(i + 1);
       });
       if (!Object.keys(kv).length) return false;
-      var hasCam = !!kv.v;
+      var hasCam = !!kv.v || !!kv.vr;
       var isView = hasCam || kv.ly != null || kv.tr != null || kv.sub != null ||
         kv.hide != null || kv.dl != null || kv.lb != null || kv.ex != null ||
         kv.ae != null;
@@ -1862,12 +1919,28 @@
         if (kv.q != null) search.applyQuery(dec(kv.q));
 
         if (hasCam) {
-          var pq = dec(kv.v).split(',');
-          var k = parseFloat(pq[0]), x = parseFloat(pq[1]), y = parseFloat(pq[2]);
-          if (isFinite(k) && isFinite(x) && isFinite(y)) {
-            cam.stopAnimation();
-            cam.k = U.clamp(k, C.camera.minZoom, C.camera.maxZoom);
-            cam.centerOn(x, y);
+          /* ⭐ ENG-001：`vr=` 是 v2 格式，写的是**相对缩放** r = k/k₀。
+             恢复时 k = 当前 k₀ × r —— 换视口打开同一个链接，用户的「放大到 2 倍」
+             还是 2 倍，不会被当成 r=3 而漏出全景圆点。
+             `v=` 是旧格式（绝对 k）：只能按原样还原（当它按当前视口写的）；
+             新链接不再生成它。 */
+          if (kv.vr != null) {
+            var pr = dec(kv.vr).split(',');
+            var relK = parseFloat(pr[0]), vx = parseFloat(pr[1]), vy = parseFloat(pr[2]);
+            var fk0 = renderer.fitZoom();
+            if (isFinite(relK) && relK > 0 && isFinite(vx) && isFinite(vy) && fk0 > 0) {
+              cam.stopAnimation();
+              cam.k = U.clamp(fk0 * relK, C.camera.minZoom, C.camera.maxZoom);
+              cam.centerOn(vx, vy);
+            }
+          } else {
+            var pq = dec(kv.v).split(',');
+            var k = parseFloat(pq[0]), x = parseFloat(pq[1]), y = parseFloat(pq[2]);
+            if (isFinite(k) && isFinite(x) && isFinite(y)) {
+              cam.stopAnimation();
+              cam.k = U.clamp(k, C.camera.minZoom, C.camera.maxZoom);
+              cam.centerOn(x, y);
+            }
           }
         }
         hashState.last = h;
@@ -2199,14 +2272,19 @@
       var bb = (live.length && live.length < graph.nodes.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
+      /* ⭐ ENG-001：存/取相机都按「相对缩放」归一化。
+         kFitZoom 是 renderer.fitZoom()（LOD 的 k₀，与视口/可用区同一口径）。
+         存档里同时记 k 与当时的 kFitZoom ⇒ 换视口重开时 r = k/kFitZoom 不变，
+         相机不会被当成「用户滚了滚轮」。 */
+      var kFitZoom = renderer.fitZoom();
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
       if (!applyHash()) {
         /* 上次看到哪儿了？有记录就直接还原（不再播「全部适配」那段动画）。
            ⚠️ 只在没有深链时才用 —— URL 里的 #n= / #v= 优先级更高。 */
-        var savedCam = MG.layoutCache ? MG.layoutCache.loadCam(graph) : null;
+        var savedCam = MG.layoutCache ? MG.layoutCache.loadCam(graph, kFitZoom) : null;
         if (savedCam) {
           cam.k = U.clamp(savedCam.k, C.camera.minZoom, C.camera.maxZoom);
-          cam.tx = savedCam.tx; cam.ty = savedCam.ty;
+          cam.centerOn(savedCam.cx, savedCam.cy);
         } else {
           // 初始视角：先稍微留白，再平滑推进到「全部适配」
           cam.k = fitK * 0.72;
@@ -2225,14 +2303,15 @@
     /* ---------------------------------------------------- 相机持久化
        「上次看到哪」单独存（`mathgalaxy.camera.v1`）：下次打开直接回到那一屏，
        不再每次从「全部适配」重新播动画。
-       ⚠️ 只在**没有深链**时写：带 #n= / #v= 打开时镜头由深链决定，
+       ⚠️ 只在**没有深链**时写：带 #n= / #v= / #vr= 打开时镜头由深链决定，
           这时写回会把用户的深链视角覆盖成旧镜头。 */
     (function persistCam() {
       if (!MG.layoutCache) return;
       var timer = 0;
       function saveNow() {
-        if (location.hash && /(^|[#&])(n|v)=/.test(location.hash)) return;
-        try { MG.layoutCache.saveCam(cam); } catch (e) { /* 忽略 */ }
+        if (location.hash && /(^|[#&])(n|v|vr)=/.test(location.hash)) return;
+        /* ⭐ 存「相对缩放」的基准：k 与当时的 fitZoom 一起写，换视口重开时才能归一化。 */
+        try { MG.layoutCache.saveCam(cam, renderer.fitZoom()); } catch (e) { /* 忽略 */ }
       }
       /* 停手后再存（拖动/缩放过程中不写，省 IO） */
       MG.onCameraSettle = function () {

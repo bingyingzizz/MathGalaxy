@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T09:25:46.886Z",
+  "generated": "2026-11-05T09:46:18.958Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -6172,7 +6172,7 @@
     "sup",
     "极限"
    ],
-   "statement": "以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。\n\n- **和与积**：$f + g$、$fg$ 可测；\n- **逐点上确界**：$\\{f_j\\}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；\n- **有限个取大**：$f, g$ 可测 $\\implies$ $\\max_{f, g}$ 可测；\n- **极限**：若 $\\lim_j f_j$ 逐点存在，则它是可测的。",
+   "statement": "以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。\n\n- **和与积**：$f + g$、$fg$ 可测；\n- **逐点上确界**：可数族 $\\{f_j\\}_{j\\in\\mathbb{N}}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；\n- **有限个取大**：$f, g$ 可测 $\\implies$ $\\max_{f, g}$ 可测；\n- **极限**：若 $\\lim_j f_j$ 逐点存在，则它是可测的。",
    "notes": "$\\sup_j f_j$ 的关键：$(\\sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty])$ 是可数并，故可测。（取 $(a, +\\infty]$ 这族生成元就够了。）\n\nmax 是 sup 的有限特例（把不够的地方补成 $-\\infty$）。\n\n极限：$\\liminf_j f_j = \\sup_n \\inf_{j\\ge n} f_j$，而 inf 可以由 sup 取负得到（$\\inf f_j = -\\sup_{-f_j}$），所以极限是可测函数经过可数次 sup/inf 得到的。\n\n和与积：把 $\\sup_j f_j$ 的做法搬到 $\\{f+g > a\\}$ 上（用有理数把 $f > q > a - g$ 拆开），或先对简单函数验证再逼近。\n\n⭐ 这条命题是**整个积分理论的地基**：它保证「可测函数取极限之后仍然可测」，而后面 MCT / Fatou / DCT 全都是在取极限。",
    "refs": [
     "Folland, Real Analysis, Prop. 2.7"
@@ -9155,7 +9155,7 @@
     "线性代数",
     "谱"
    ],
-   "statement": "设 $\\dim V = n < \\infty$，$T : V \\to V$ 线性，$\\lambda_1, \\ldots, \\lambda_m$ 是它在 $K$ 中互异的特征值。则下列命题等价：\n\n**(1)** $T$ **可对角化**：存在基使 $T$ 的矩阵是对角阵；\n\n**(2)** $V = E_{\\lambda_1} \\oplus \\cdots \\oplus E_{\\lambda_m}$，即特征向量张成整个 $V$；\n\n**(3)** $\\sum_i \\dim E_{\\lambda_i} = n$（几何重数之和达到 $n$）；\n\n**(4)** 每个特征值的几何重数等于代数重数；\n\n**(5)** 存在**互异**的 $\\lambda_i$ 使 $T$ 满足 $\\prod_i (T - \\lambda_i I) = 0$（即 $T$ 被一个无重根的多项式零化）。",
+   "statement": "设 $\\dim V = n < \\infty$，$T : V \\to V$ 线性，$T$ 的**特征多项式在 $K$ 上完全分裂**，$\\lambda_1, \\ldots, \\lambda_m$ 是它在 $K$ 中互异的特征值。则下列命题等价：\n\n**(1)** $T$ **可对角化**：存在基使 $T$ 的矩阵是对角阵；\n\n**(2)** $V = E_{\\lambda_1} \\oplus \\cdots \\oplus E_{\\lambda_m}$，即特征向量张成整个 $V$；\n\n**(3)** $\\sum_i \\dim E_{\\lambda_i} = n$（几何重数之和达到 $n$）；\n\n**(4)** 每个特征值的几何重数等于代数重数；\n\n**(5)** 存在**互异**的 $\\lambda_i$ 使 $T$ 满足 $\\prod_i (T - \\lambda_i I) = 0$（即 $T$ 被一个无重根的多项式零化）。",
    "notes": "**四条里前三条只是重述，第四条才用到特征多项式**：\n\n- (1) $\\iff$ (2)：**几乎只是定义改写**（可对角化 = 有特征向量组成的基）。\n- (2) $\\iff$ (3)：**纯线性代数**（$\\sum \\dim E_{\\lambda_i} = n$ 且和是直和 $\\iff$ 张成 $V$）。不需要特征多项式、不需要代数闭。\n- (3) $\\iff$ (4)：**这一步要用「几何重数 $\\le$ 代数重数」**，而那要**特征多项式**（把 $T - \\lambda I$ 的幂零部分算维数）。$\\sum$ 几何重数 $= n$ 与「每个都取等」等价，因为总和 $\\le \\sum$ 代数重数 $= n$。\n\n⚠️ **必须的假设**：有限维 + **特征多项式在 $K$ 中分裂**（全部特征值落在 $K$ 里）。缺了后者，$T$ 在 $K$ 上可能根本没有特征值（例如 $\\mathbb{R}$ 上的旋转 $90^{\\circ}$），此时 (2)(3)(4) 都空转 —— 正确的说法是「在代数闭包上可对角化 $\\iff$ 极小多项式无重根」。\n",
    "refs": [
     "Hoffman–Kunze, Linear Algebra, Ch. 6"
@@ -9400,8 +9400,8 @@
     "线性代数",
     "内积"
    ],
-   "statement": "设 $V$ 是 $K$-向量空间（$K = \\mathbb{R}$ 或 $\\mathbb{C}$）。映射\n\n$$\\langle \\cdot, \\cdot \\rangle : V \\times V \\longrightarrow K$$\n\n叫 $V$ 上的**内积**，当且仅当对一切 $u, v, w \\in V$、$c \\in K$：\n\n- **对第一变元线性**：$\\langle u + c\\,w, v \\rangle = \\langle u, v \\rangle + c\\langle w, v \\rangle$；\n- **共轭对称**：$\\langle v, u \\rangle = \\overline{\\langle u, v \\rangle}$（$K = \\mathbb{R}$ 时就是对称）；\n- **正定**：$\\langle v, v \\rangle \\ge 0$，且 $\\langle v, v \\rangle = 0 \\iff v = 0$。\n\n配上内积的 $V$ 叫**内积空间**。实数情形下内积就是正定对称双线性型。\n\n标准例子：$K^{n}$ 上的内积 $\\langle x, y \\rangle := \\sum_i \\overline{x_i}\\, y_i$。",
-   "notes": "⭐ 复数情形下**不能要求双线性**：若 $\\langle u, v \\rangle$ 对两个变元都线性，则 $\\langle i v, i v \\rangle = i^{2}\\langle v, v \\rangle = -\\langle v, v \\rangle$ 恒为负，与正定矛盾。\n\n所以复数情形只能是**一个变元线性、另一个共轭线性**（叫**半双线性**或 sesquilinear）。\n\n⭐ 哪一边写成共轭是**约定**：本图取「第一变元线性、第二变元共轭线性」的**物理约定**（与图上别处一致）。\n\n换个约定所有公式共轭一下，不改变内容。\n\n⚠ 正定性是内积与「一般双线性型」的分水岭：正定才有「长度」可言，才有 Cauchy–Schwarz、才有正交投影。\n\n丢掉正定（只留对称双线性）得到的是**二次型**那一套（见 `def.quadratic-form`），丢掉对称得到的是**辛形式**。\n\n\n\n**各方向用到的假设**（公理定义免费，衍生性质须保留正定性）：\n- 内积 $\\iff$ 所列三条公理是定义展开；实数情形与正定对称双线性型等价，因为对称性把第一变元线性传给第二变元。\n- 复数情形第一变元线性加共轭对称 $\\implies$ 第二变元共轭线性，只需代数计算；原文标准例子 $\\sum_i\\overline{x_i}y_i$ 却取第二变元线性，与所列约定相反，须核对。\n- 正定内积 $\\implies$ 范数及 Cauchy–Schwarz 用非负二次表达式，不要求有限维或完备；反向从任意范数恢复内积则需要平行四边形恒等式。\n- 正定性不能删：$\\mathbb R^2$ 上 $x_1y_1-x_2y_2$ 对称双线性，却有非零向量自配对为零，不能定义范数。\n",
+   "statement": "设 $V$ 是 $K$-向量空间（$K = \\mathbb{R}$ 或 $\\mathbb{C}$）。映射\n\n$$\\langle \\cdot, \\cdot \\rangle : V \\times V \\longrightarrow K$$\n\n叫 $V$ 上的**内积**，当且仅当对一切 $u, v, w \\in V$、$c \\in K$：\n\n- **对第一变元线性**：$\\langle u + c\\,w, v \\rangle = \\langle u, v \\rangle + c\\langle w, v \\rangle$；\n- **共轭对称**：$\\langle v, u \\rangle = \\overline{\\langle u, v \\rangle}$（$K = \\mathbb{R}$ 时就是对称）；\n- **正定**：$\\langle v, v \\rangle \\ge 0$，且 $\\langle v, v \\rangle = 0 \\iff v = 0$。\n\n配上内积的 $V$ 叫**内积空间**。实数情形下内积就是正定对称双线性型。\n\n标准例子：$K^{n}$ 上的内积 $\\langle x, y \\rangle := \\sum_i x_i\\, \\overline{y_i}$。",
+   "notes": "⭐ 复数情形下**不能要求双线性**：若 $\\langle u, v \\rangle$ 对两个变元都线性，则 $\\langle i v, i v \\rangle = i^{2}\\langle v, v \\rangle = -\\langle v, v \\rangle$ 恒为负，与正定矛盾。\n\n所以复数情形只能是**一个变元线性、另一个共轭线性**（叫**半双线性**或 sesquilinear）。\n\n⭐ 哪一边写成共轭是**约定**：本图取「第一变元线性、第二变元共轭线性」的**本图约定**（与图上别处一致）。\n\n换个约定所有公式共轭一下，不改变内容。\n\n⚠ 正定性是内积与「一般双线性型」的分水岭：正定才有「长度」可言，才有 Cauchy–Schwarz、才有正交投影。\n\n丢掉正定（只留对称双线性）得到的是**二次型**那一套（见 `def.quadratic-form`），丢掉对称得到的是**辛形式**。\n\n\n\n**各方向用到的假设**（公理定义免费，衍生性质须保留正定性）：\n- 内积 $\\iff$ 所列三条公理是定义展开；实数情形与正定对称双线性型等价，因为对称性把第一变元线性传给第二变元。\n- 复数情形第一变元线性加共轭对称 $\\implies$ 第二变元共轭线性，只需代数计算；标准例子 $\\sum_i x_i\\overline{y_i}$ 与所列约定一致。\n- 正定内积 $\\implies$ 范数及 Cauchy–Schwarz 用非负二次表达式，不要求有限维或完备；反向从任意范数恢复内积则需要平行四边形恒等式。\n- 正定性不能删：$\\mathbb R^2$ 上 $x_1y_1-x_2y_2$ 对称双线性，却有非零向量自配对为零，不能定义范数。\n",
    "refs": [
     "Hoffman–Kunze, Linear Algebra, Ch. 8",
     "Roman, Advanced Linear Algebra, Ch. 11"
@@ -12481,7 +12481,7 @@
     "收敛",
     "依测度"
    ],
-   "statement": "在 $\\mathbb{R}$（或 [0, 1]）上取 Lebesgue 测度。\n\n- **(i)** $f_n = n^{-1} \\chi_{(0, n)}$：$f_n \\rightrightarrows  0$ **一致**收敛。\n- **(ii)** $f_n = \\chi_{(n, n+1)}$：$f_n \\to 0$ **逐点**（因而 a.e.），但**不一致**（$\\sup_x |f_n| = 1$），也不 $L^{1}$ 收敛（$\\int f_n = 1 \\nrightarrow  0$）。\n- **(iii)** $f_n = n \\chi_{[0, 1/n]}$：$f_n \\to 0$ a.e.（也依测度收敛，因为 $\\mu(\\{|f_n| > \\delta\\}) = 1/n \\to 0$），但**不 $L^{1}$ 收敛**（$\\int f_n = 1$ 对一切 $n$）。\n- **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——\n\n$$f_1 = \\chi_{[0,1]}, f_2 = \\chi_{[0,1/2]}, f_3 = \\chi_{[1/2,1]}, f_4 = \\chi_{[0,1/4]}, \\cdots$$\n即 $f_n = \\chi_{[j/2^k, (j+1)/2^k]}$（$n = 2^k + j$）：它**依测度**收敛到 0，但对**任何** $x \\in [0,1]$ 都**不**收敛。",
+   "statement": "在 $\\mathbb{R}$ 上取 Lebesgue 测度。\n\n- **(i)** $f_n = n^{-1} \\chi_{(0, n)}$：$f_n \\rightrightarrows  0$ **一致**收敛。\n- **(ii)** $f_n = \\chi_{(n, n+1)}$：$f_n \\to 0$ **逐点**（因而 a.e.），但**不一致**（$\\sup_x |f_n| = 1$），也不 $L^{1}$ 收敛（$\\int f_n = 1 \\nrightarrow  0$）。\n- **(iii)** $f_n = n \\chi_{[0, 1/n]}$：$f_n \\to 0$ a.e.（也依测度收敛，因为 $\\mu(\\{|f_n| > \\delta\\}) = 1/n \\to 0$），但**不 $L^{1}$ 收敛**（$\\int f_n = 1$ 对一切 $n$）。\n- **(iv) 二进制填充**（在 $[0,1] \\subset \\mathbb{R}$ 上）：把越来越小的区间排成一列 ——\n\n$$f_1 = \\chi_{[0,1]}, f_2 = \\chi_{[0,1/2]}, f_3 = \\chi_{[1/2,1]}, f_4 = \\chi_{[0,1/4]}, \\cdots$$\n即 $f_n = \\chi_{[j/2^k, (j+1)/2^k]}$（$n = 2^k + j$）：它**依测度**收敛到 0，但对**任何** $x \\in [0,1]$ 都**不**收敛。",
    "notes": "**四个例子逐条验证。**\n- **(i) 一致但不 $L^{1}$**：$f_{n} = \\frac1n\\chi_{(0,n)}$，$\\sup_{x}|f_{n}(x)| = \\frac1n \\to 0$，故**一致收敛** ✓；\n\n但 $\\int f_{n}\\,\\mathrm{d}m = 1 \\not\\to 0$，所以**不 $L^{1}$ 收敛** ✓（质量往外跑，越来越扁越来越长）。\n- **(ii) 逐点但不一致、不 $L^{1}$**：$f_{n} = \\chi_{(n, n+1)}$，对每个固定的 $x$，$n > x$ 之后 $f_{n}(x) = 0$，故**逐点（因而 a.e.）收敛到 $0$** ✓；\n\n但 $\\sup_{x}|f_{n}| = 1$ 不趋于 $0$ $\\implies$ **不一致收敛** ✓，且 $\\int f_{n} = 1 \\not\\to 0$ $\\implies$ 不 $L^{1}$ 收敛 ✓。\n- **(iii) a.e. 但不 $L^{1}$、也不被可积函数控制**：$f_{n} = n\\,\\chi_{(0, 1/n)}$，逐点收敛到 $0$ ✓，但 $\\int f_{n} = 1$；\n\n任何可积控制函数 $g$ 都要满足 $g \\ge n\\chi_{(0,1/n)}$ 无穷多次，从而 $\\int g = \\infty$ $\\implies$ **控制收敛定理里的控制函数不能省** ✓。\n- **(iv) 依测度但不 a.e.**：把 $[0,1]$ 按 $2^{-m}$ 等分（$m = 1, 2, \\ldots$），第 $m$ 层依次取各单位区间的特征函数排成一列 $f_{1}, f_{2}, \\ldots$。\n\n$m(E_{n}) = 2^{-m} \\to 0$ $\\implies$ **依测度收敛** ✓；\n\n但每个点都被无穷多次盖住、也被无穷多次漏掉，故 $f_{n}(x)$ 对每个 $x$ **都不收敛** ✓。\n\n∎\n⭐ 机制：**区间越来越窄，但位置不停地搬家** —— 质量在每一处只停留一瞬，所以处处不收敛，而出错集合的测度趋于零。\n\n(iii) 是「a.e. 收敛 $\\nRightarrow L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。\n\n(iv) 是「依测度收敛 $\\nRightarrow$ a.e. 收敛」的标准反例。它的机制很值得记住：**每次取一个越来越窄的区间，但位置不停地搬家** —— 质量在每一处都只停留一瞬间，所以每点都不收敛，但「出错集合」的测度趋于 0。\n\n⭐ 这四个例子基本覆盖了所有反方向的护栏：一致最强、依测度最弱、a.e. 与 $L^{1}$ 各自独立。",
    "refs": [
     "Folland, Real Analysis, §2.4"
@@ -16411,7 +16411,7 @@
     "维数",
     "对偶"
    ],
-   "statement": "设 $M$ 是 $R$-模。说 $\\operatorname{id}_{R} M \\le n$，如果 $M$ 有一条**长度 $n$ 的内射消解**，即存在正合列\n\n$$0 \\to M \\to I^{0} \\to I^{1} \\to \\cdots \\to I^{n} \\to 0$$\n\n而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。\n\n**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{pd}_{R} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的投射维数」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。",
+   "statement": "设 $M$ 是 $R$-模。说 $\\operatorname{id}_{R} M \\le n$，如果 $M$ 有一条**长度 $n$ 的内射消解**，即存在正合列\n\n$$0 \\to M \\to I^{0} \\to I^{1} \\to \\cdots \\to I^{n} \\to 0$$\n\n而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。\n\n**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{fd}_{R^{\\mathrm{op}}} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。",
    "notes": "**与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：\n\n\n\n- $\\operatorname{id}_{R} M = 0 \\iff M$ 内射；\n\n- $\\operatorname{id}_{R} M \\le n \\iff \\operatorname{Ext}^{k}_{R}(N, M) = 0$ 对一切 $N$ 与 $k > n$ 成立（注意是**第二个**变量）；\n\n- $\\operatorname{id}_{R} M$ 等于使 $\\operatorname{Ext}^{n}_{R}(-, M)$ 不全为零的最大 $n$。\n\n**例子（$\\mathbb{Z}$ 上）**：$\\mathbb{Q}$ 内射（可除群）故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Q} = 0$；\n\n$\\mathbb{Z}$ 不内射，而 $0 \\to \\mathbb{Z} \\to \\mathbb{Q} \\to \\mathbb{Q}/\\mathbb{Z} \\to 0$ 是长度 $1$ 的内射消解，故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Z} = 1$ ✓。\n\n⭐ **为什么两边都要有**：算 $\\operatorname{Ext}^{n}(M, N)$ 时，用 $M$ 的**投射**消解（左边）或用 $N$ 的**内射**消解（右边）都行；两边分别由 $\\operatorname{pd} M$ 与 $\\operatorname{id} N$ 决定难易，于是「$\\operatorname{Ext}^{n}(M, -) = 0$（$n > \\operatorname{pd} M$）」与「$\\operatorname{Ext}^{n}(-, N) = 0$（$n > \\operatorname{id} N$）」同时成立。",
    "refs": [
     "Rotman, An Introduction to Homological Algebra (2nd ed.), 维数（dimensions）的部分 · 内射维数",
@@ -16583,7 +16583,7 @@
     "Tor",
     "合冲"
    ],
-   "statement": "设 $0 \\to K \\to P \\xrightarrow{\\ \\pi\\ } M \\to 0$ 是 $R$-模的短正合列，且 $P$ **投射**（等价地：$K$ 是 $M$ 的一个合冲）。则对一切 $n \\ge 0$ 与任意 $R$-模 $N$：\n\n$$\\operatorname{Ext}^{n+1}_{R}(M, N) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(K, N), \\qquad \\operatorname{Tor}_{n+1}^{R}(M, N) \\;\\cong\\; \\operatorname{Tor}_{n}^{R}(K, N).$$\n\n反复使用即得：对 $k \\ge 0$，$\\operatorname{Ext}^{n+k}_{R}(M, N) \\cong \\operatorname{Ext}^{n}_{R}(\\Omega^{k}M, N)$（$n \\ge 1$）。",
+   "statement": "设 $0 \\to K \\to P \\xrightarrow{\\ \\pi\\ } M \\to 0$ 是 $R$-模的短正合列，且 $P$ **投射**（等价地：$K$ 是 $M$ 的一个合冲）。则对一切 $n \\ge 1$ 与任意 $R$-模 $N$：\n\n$$\\operatorname{Ext}^{n+1}_{R}(M, N) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(K, N), \\qquad \\operatorname{Tor}_{n+1}^{R}(M, N) \\;\\cong\\; \\operatorname{Tor}_{n}^{R}(K, N).$$\n\n反复使用即得：对 $k \\ge 0$，$\\operatorname{Ext}^{n+k}_{R}(M, N) \\cong \\operatorname{Ext}^{n}_{R}(\\Omega^{k}M, N)$（$n \\ge 1$）。",
    "notes": "**证明（Ext 一侧：用 $N$ 的内射消解）。** 取 $N$ 的内射消解 $N \\to I^{\\bullet}$。$I^{k}$ 内射使 $\\operatorname{Hom}(-, I^{k})$ 正合，故把短正合列逐项作用后得到**复形的短正合列**（方向相反）\n$$0 \\to \\operatorname{Hom}(M, I^{\\bullet}) \\to \\operatorname{Hom}(P, I^{\\bullet}) \\to \\operatorname{Hom}(K, I^{\\bullet}) \\to 0 .$$\n取它的上同调长正合列\n$$\\cdots \\to \\operatorname{Ext}^{n}(M, N) \\to \\operatorname{Ext}^{n}(P, N) \\to \\operatorname{Ext}^{n}(K, N) \\xrightarrow{\\ \\delta\\ } \\operatorname{Ext}^{n+1}(M, N) \\to \\operatorname{Ext}^{n+1}(P, N) \\to \\cdots$$\n而 $P$ 投射使 $\\operatorname{Ext}^{k}(P, N) = 0$（$k \\ge 1$），于是每一段都退化成同构：$\\delta$ 是双射，即 $\\operatorname{Ext}^{n+1}(M, N) \\cong \\operatorname{Ext}^{n}(K, N)$ ✓。\n**Tor 一侧（对偶：把短正合列张量 $N$）。** $\\otimes$ 右正合，故张量后 $P\\otimes N \\to M\\otimes N$ 仍满；左端的单射可以断掉，那正是 $\\operatorname{Tor}$ 冒出来的地方。取长正合列\n$$\\cdots \\to \\operatorname{Tor}_{n+1}(P, N) \\to \\operatorname{Tor}_{n+1}(M, N) \\to \\operatorname{Tor}_{n}(K, N) \\to \\operatorname{Tor}_{n}(P, N) \\to \\cdots$$\n$P$ 投射 $\\implies$ 平坦 $\\implies$ $\\operatorname{Tor}_{k}(P, N) = 0$（$k \\ge 1$），于是 $\\operatorname{Tor}_{n+1}(M, N) \\cong \\operatorname{Tor}_{n}(K, N)$ ✓。∎\n\n⭐ **为什么它叫「转移」**：把「$M$ 的 $n+1$ 次不变量」换成「它的合冲的 $n$ 次不变量」。\n\n于是任何关于 $\\operatorname{Ext}^{n}$ 的陈述都能**逐次降维**，直到落在 $\\operatorname{Ext}^{0} = \\operatorname{Hom}$ 或 $\\operatorname{Ext}^{1}$ 上 —— 这两个是唯一「看得见元素」的层次。\n\n⚠️ 条件「$P$ 投射」不能省：$\\operatorname{Ext}^{n+1}(M,N)\\cong\\operatorname{Ext}^n(K,N)$ 的证明完全靠 $P$ 的那一项消失。对一般短正合列只有一条**五段长正合列**，不是同构。\n\n**与合冲联用**：$\\operatorname{Ext}^{n}(M, N) \\cong \\operatorname{Ext}^{1}(\\Omega^{n-1}M, N)$，配上「一阶扩展的分类」，就把高次 Ext 变成了「$N$ 被 $\\Omega^{n-1}M$ 的扩张」。",
    "refs": [
     "Rotman, An Introduction to Homological Algebra (2nd ed.), Ext 与 Tor 的部分 · 维数转移（dimension shift）",
@@ -16626,7 +16626,7 @@
     "导出范畴",
     "平衡函子"
    ],
-   "statement": "设 $P_{\\bullet} \\twoheadrightarrow M$ 是 $M$ 的投射消解（取删除消解），$M \\to I^{\\bullet}$ 是内射消解。则对每个 $R$-模 $N$ 与每个 $n \\ge 0$：\n\n$$H^{n}\\bigl(\\operatorname{Hom}_{R}(P_{\\bullet}, N)\\bigr) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(M, N) \\;\\cong\\; H^{n}\\bigl(\\operatorname{Hom}_{R}(M, I^{\\bullet})\\bigr).$$\n\n也就是说：$\\operatorname{Ext}$ 既可以用**第一个变量**的投射消解算（左边），也可以用**第二个变量**的内射消解算（右边），两边给出同一个群。",
+   "statement": "设 $P_{\\bullet} \\twoheadrightarrow M$ 是 $M$ 的投射消解（取删除消解），$N \\to I^{\\bullet}$ 是 $N$ 的内射消解（$N$ 为任意 $R$-模）。则对每个 $n \\ge 0$：\n\n$$H^{n}\\bigl(\\operatorname{Hom}_{R}(P_{\\bullet}, N)\\bigr) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(M, N) \\;\\cong\\; H^{n}\\bigl(\\operatorname{Hom}_{R}(M, I^{\\bullet})\\bigr).$$\n\n也就是说：$\\operatorname{Ext}$ 既可以用**第一个变量**的投射消解算（左边），也可以用**第二个变量**的内射消解算（右边），两边给出同一个群。",
    "notes": "**证明（把两种算法都认成导出范畴里的同一个 Hom）。** 由 $\\operatorname{Ext}$ 的定义，$\\operatorname{Ext}^{n}_{R}(M, N) = \\operatorname{Hom}_{D(R)}(M, N[n])$，其中 $N$ 支在 $0$ 次。\n- **右边**：由「Ext 就是 RHom」，$H^{n}(\\operatorname{Hom}(M, I^{\\bullet})) = R^{n}\\operatorname{Hom}(M, N) = \\operatorname{Ext}^{n}(M, N)$ ✓。\n- **左边**：由「内射复形就是导出范畴」的对偶版本，$K^{-}(\\mathcal{P}) \\to D^{-}(R\\text{-}\\mathbf{Mod})$ 是等价，故 $P_{\\bullet}$ 在导出范畴里代表 $M$、$\\operatorname{Hom}_{K}(P_{\\bullet}, N[n]) = \\operatorname{Hom}_{D}(P_{\\bullet}, N[n])$ ✓。\n\n而 $H^{n}(\\operatorname{Hom}(P_{\\bullet}, N)) = \\operatorname{Hom}_{K}(P_{\\bullet}, N[n])$（同调第 $n$ 层就是「同伦类」那一步的标准换算）✓，于是左边也等于 $\\operatorname{Hom}_{D}(M, N[n])$ ✓。\n两条路落在同一个导出 Hom 上，所以两边相等 ✓。∎\n\n⭐ **实用价值**：挑好算的那一边。$M$ 有很短的（甚至两项的）投射消解时用左边 —— PID、正则局部环、Koszul 情形都是这样；$N$ 有很短的内射消解时用右边 —— 可除群、$\\mathbb{Q}/\\mathbb{Z}$ 这类。两边都不短时才需要谱序列。\n\n📌 **一般化的说法**：$\\operatorname{Hom}$ 是「在（投射, 内射）上平衡的双函子」，于是它的导出函子可以用任一侧的消解算。同一条道理对 $\\otimes$ 也成立 —— 那正是「挠积」两侧一致（交换环上）的来源。\n\n⚠️ 两边相等的前提是**两个消解都存在**（有足够多投射、有足够多内射）。不满足时只能谈导出范畴里的 Hom，不能谈消解。",
    "refs": [
     "Rotman, An Introduction to Homological Algebra (2nd ed.), Ext 与 Tor 的部分 · 平衡函子（balanced functor）与两边的 Ext 一致",
@@ -17059,7 +17059,7 @@
     "投射对象",
     "内射对象"
    ],
-   "statement": "设 $\\mathcal{C}$ 是**小阿贝尔**范畴，$E : \\mathcal{C} \\to A\\text{-}\\mathbf{Mod}$ 是 Freyd–Mitchell 嵌入（全忠实、正合）。则\n\n1. $E$ **正合**：保有限极限与有限余极限，把核、余核、像与短正合列原样搬过去；\n2. $E$ **反射**投射与内射对象：若 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射，则 $P$ 在 $\\mathcal{C}$ 里投射（内射同理：$EI$ 内射 $\\implies$ $I$ 内射）；\n3. 于是「某个对象在 $\\mathcal{C}$ 里投射 / 内射」这件事，可以搬到模范畴里判 —— 那边有元素、有直和项、有显式的自由模，判起来容易得多。\n\n这是「追元素」最常用的那一步的精确形式：**难点在 $\\mathcal{C}$，验算放在 $A\\text{-}\\mathbf{Mod}$**。",
+   "statement": "设 $\\mathcal{C}$ 是**小阿贝尔**范畴，$E : \\mathcal{C} \\to A\\text{-}\\mathbf{Mod}$ 是 Freyd–Mitchell 嵌入（全忠实、正合）。则\n\n1. $E$ **正合**：保有限极限与有限余极限，把核、余核、像与短正合列原样搬过去；\n2. $E$ **反射**投射与内射对象：若 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射，则 $P$ 在 $\\mathcal{C}$ 里投射（内射同理：$EI$ 内射 $\\implies$ $I$ 内射）；\n3. 于是第 2 点直接给出**充分条件**：要认定 $P$ 在 $\\mathcal{C}$ 里投射（或 $I$ 内射），只需验 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射（$EI$ 内射）—— 那边有元素、有直和项、有显式的自由模，判起来容易得多。\n\n这是「追元素」最常用的那一步的精确形式：**难点在 $\\mathcal{C}$，验算放在 $A\\text{-}\\mathbf{Mod}$**。",
    "notes": "**证明（只用到「全忠实 + 正合」）。**\n**① 正合。** 这是 Freyd–Mitchell 定理陈述的一部分（正合 = 保有限极限与有限余极限），于是核、余核、像、短正合列都被原样搬过去 ✓。\n**② 反射投射。** 设 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射，即 $\\operatorname{Hom}_{A\\text{-}\\mathbf{Mod}}(EP, -)$ 正合。把它限制到 $E$ 的像上仍然正合；而 $E$ 全忠实给出自然同构\n$$\\operatorname{Hom}_{\\mathcal{C}}(P, X) \\;\\cong\\; \\operatorname{Hom}_{A\\text{-}\\mathbf{Mod}}(EP, EX),$$\n所以 $\\operatorname{Hom}_{\\mathcal{C}}(P, -)$ 正合 ✓，即 $P$ 在 $\\mathcal{C}$ 里投射 ✓。（用到的只有「$E$ 全忠实」—— 一个满射被 $E$ 送到满射是因为 $E$ 正合、保商。）\n**③ 反射内射。** 对偶：$\\operatorname{Hom}_{\\mathcal{C}}(-, I) \\cong \\operatorname{Hom}(-, EI)$，$EI$ 内射使右边把单态射送到满态射；而 $E$ 正合把 $\\mathcal{C}$ 里的单态射送到单态射，于是左边也如此 ✓。\n**④ 注意方向。** 上面证的是「模范畴里投射 $\\implies$ $\\mathcal{C}$ 里投射」，用起来正好：想在 $\\mathcal{C}$ 里认定 $P$ 投射，就到 $A\\text{-}\\mathbf{Mod}$ 里验 $EP$ 投射。∎\n\n⭐ **为什么「反射」这个方向才是好用的那一半**：模范畴里判投射有现成手段（直和项、$\\operatorname{Ext}^{1}$ 消失、Baer 型判据），而在抽象的小阿贝尔范畴里几乎没办法下手。反射把「$\\mathcal{C}$ 里的难题」变成「模范畴里的易题」。\n\n⚠️ **另一半（$\\mathcal{C}$ 里投射 $\\implies EP$ 投射）不是本条断言的东西**，它也不是「全忠实 + 正合」这两条能直接给出的：要得到它得额外用嵌入的具体构造（Mitchell 的构造是「取 Hom 进模范畴」的米田型函子，在标准构造下这一半确实成立）。本图不在此处主张它 —— 需要时请引用具体构造。\n\n⚠️ **不要过度承诺**：$E$ 一般**不**保无穷余积与无穷积（除非另加 AB4 之类的完备性条件）。所以「用余积造的构造」（例如生成元的自由消解）不能无条件搬过去。\n\n📌 与 Giraud 定理的分工：Giraud 把拓扑斯嵌成预层范畴的正合反射子范畴；Freyd–Mitchell 把小阿贝尔范畴嵌成模范畴的全忠实正合子范畴。两条都是「找一个具体的大范畴装下自己」，本条补的是「装进去之后，哪些性质可以往回搬」。",
    "refs": [
     "Freyd, Abelian Categories (1964), 嵌入定理（full embedding theorem）的部分",
@@ -24434,8 +24434,8 @@
     "积分",
     "双线性"
    ],
-   "statement": "**在做什么**：把「链上的积分」说成一个配对 —— 左边是链、右边是形式、结果是一个数，两头都线性。这条双线性是后面所有求和与拆分的许可证。\n\n设 $c$ 是 $M$ 上的 $k$-链，$\\omega,\\eta$ 是 $k$-形式，$a,b\\in\\mathbb{R}$。则\n\n$$\\int_{c}(a\\,\\omega+b\\,\\eta) = a\\int_{c}\\omega+b\\int_{c}\\eta ,\\qquad \\int_{a\\,c+b\\,c'}\\omega = a\\int_{c}\\omega+b\\int_{c'}\\omega .$$\n\n特别地 $\\int_{-c}\\omega = -\\int_{c}\\omega$（系数为 $-1$ 的链就是「反向走」）。\n\n于是积分是一个双线性配对\n\n$$C_{k}(M)\\times\\Omega^{k}(M)\\longrightarrow\\mathbb{R},$$\n\n左边是几何的（方块与它们的和），右边是对偶的（形式与它们的和）。",
-   "notes": "**为什么这条值得单独立一个节点**：它是所有「拆开算」的操作的合法依据 —— 把 $\\omega$ 拆成分量、把链拆成方块、把区域拆成小块，用的都是这两条线性。没有它，Stokes 定理只能对单块陈述，说不出「对链成立」。\n\n**配对的观点**：$\\Omega^{k}(M)$ 是实数域上的向量空间（维数无穷），$C_{k}(M)$ 是自由阿贝尔群；两者配对到 $\\mathbb{R}$，且各自线性。\n\n对偶的方向是「$\\mathrm{d}$ 升次数、$\\partial$ 降次数」，而 $\\int$ 正是把这一对对偶串起来的那个括号（`thm.stokes-chain`）。\n\n**⚠️ 反对称性不是「反对称」**：$\\int_{-c} = -\\int_{c}$ 说的是链的系数为负，不是「交换两个变元变号」。链与形式之间不存在交换律 —— 它们的类型不同。\n\n**⚠️ 系数域**：链的系数在 $\\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\\mathbb{R}$ 里。这里两者都按实数看待，取整数值只是链的记账习惯；讨论同调时会回到 $\\mathbb{Z}$。",
+   "statement": "**在做什么**：把「链上的积分」说成一个配对 —— 左边是链、右边是形式、结果是一个数，两头都线性。这条双线性是后面所有求和与拆分的许可证。\n\n设 $c$ 是 $M$ 上的 $k$-链，$\\omega,\\eta$ 是 $k$-形式，$a,b\\in\\mathbb{Z}$。则\n\n$$\\int_{c}(a\\,\\omega+b\\,\\eta) = a\\int_{c}\\omega+b\\int_{c}\\eta ,\\qquad \\int_{a\\,c+b\\,c'}\\omega = a\\int_{c}\\omega+b\\int_{c'}\\omega .$$\n\n特别地 $\\int_{-c}\\omega = -\\int_{c}\\omega$（系数为 $-1$ 的链就是「反向走」）。\n\n于是积分是一个双线性配对\n\n$$C_{k}(M)\\times\\Omega^{k}(M)\\longrightarrow\\mathbb{R},$$\n\n左边是几何的（方块与它们的和），右边是对偶的（形式与它们的和）。",
+   "notes": "**为什么这条值得单独立一个节点**：它是所有「拆开算」的操作的合法依据 —— 把 $\\omega$ 拆成分量、把链拆成方块、把区域拆成小块，用的都是这两条线性。没有它，Stokes 定理只能对单块陈述，说不出「对链成立」。\n\n**配对的观点**：$\\Omega^{k}(M)$ 是实数域上的向量空间（维数无穷），$C_{k}(M)$ 是自由阿贝尔群；两者配对到 $\\mathbb{R}$，且各自线性。\n\n对偶的方向是「$\\mathrm{d}$ 升次数、$\\partial$ 降次数」，而 $\\int$ 正是把这一对对偶串起来的那个括号（`thm.stokes-chain`）。\n\n**⚠️ 反对称性不是「反对称」**：$\\int_{-c} = -\\int_{c}$ 说的是链的系数为负，不是「交换两个变元变号」。链与形式之间不存在交换律 —— 它们的类型不同。\n\n**⚠️ 系数域**：链的系数在 $\\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\\mathbb{R}$ 里。这里的 $a,b$ 取 $\\mathbb{Z}$ 中的整数（整系数线性组合仍是链）；若要实数系数，须先把链群写成 $C_{k}(M;\\mathbb{R})$。",
    "refs": [
     "Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链上积分的线性",
     "Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链与形式的配对"
@@ -26558,7 +26558,7 @@
     "绕数",
     "Cauchy 定理"
    ],
-   "statement": "设 $\\gamma_{0}, \\gamma_{1}$ 是 $\\mathbb{C} \\setminus \\{a\\}$ 中同伦的闭曲线（同伦 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$两端分别给出 $\\gamma_{0}, \\gamma_{1}$）。则\n\n$$n(\\gamma_{0}, a) = n(\\gamma_{1}, a).$$\n\n推论（Cauchy 定理的同伦形式）：$f$ 在区域 $\\Omega$ 上全纯，$\\gamma_{0}, \\gamma_{1}$ 在 $\\Omega$ 内同伦，则 $\\displaystyle\\oint_{\\gamma_{0}} f\\,\\mathrm{d}z = \\oint_{\\gamma_{1}} f\\,\\mathrm{d}z$。",
+   "statement": "设 $\\gamma_{0}, \\gamma_{1}$ 是 $\\mathbb{C} \\setminus \\{a\\}$ 中同伦的闭曲线（同伦 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 两端分别给出 $\\gamma_{0}, \\gamma_{1}$，且对每个 $s \\in [0,1]$，$H(\\cdot, s)$ 是闭曲线，即 $H(0, s) = H(1, s)$）。则\n\n$$n(\\gamma_{0}, a) = n(\\gamma_{1}, a).$$\n\n推论（Cauchy 定理的同伦形式）：$f$ 在区域 $\\Omega$ 上全纯，$\\gamma_{0}, \\gamma_{1}$ 在 $\\Omega$ 内同伦，则 $\\displaystyle\\oint_{\\gamma_{0}} f\\,\\mathrm{d}z = \\oint_{\\gamma_{1}} f\\,\\mathrm{d}z$。",
    "notes": "**绕数部分的证明**：对同伦参数 $s$ 定义 $N(s) := n(H(s, \\cdot), a)$。由积分表示 $N(s) = \\frac{1}{2\\pi i}\\oint_{H(s,\\cdot)} \\mathrm{d}z/(z-a)$，被积函数与积分域都连续依赖 $s$，故 $N$ 连续；而 $N$ 只取整数值，连续 + 取整 $\\implies$ 常值。于是 $N(0) = N(1)$。\n\n**Cauchy 形式**：因为 $\\Omega$ 单连通化之后 $f\\,\\mathrm{d}z$ 可以沿同伦「连续形变而积分不变」，逐 $s$ 求导即得 $\\frac{\\mathrm{d}}{\\mathrm{d}s}\\oint_{H(s,\\cdot)} f\\,\\mathrm{d}z = 0$；这条路与「$f$ 有原函数」是同一条，见 `prop.single-valued-branch`。\n\n⭐ **它是复分析和拓扑之间的第一根铰链**：绕数是同伦不变量，于是「全纯 $\\implies$ 围道积分只看同伦类」，这就是为什么 Cauchy 定理对**任何**能把曲线缩成一点的情形都成立，而不需要区域是凸的。Brouwer 不动点定理（`thm.brouwer-fixed-point`）的复分析证明直接把这条用在 $\\gamma(t) = e^{2\\pi i t}$ 上。\n\n⚠️ 同伦必须在 $\\mathbb{C}\\setminus\\{a\\}$ 里进行：允许穿过 $a$ 的话绕数会跳。",
    "refs": [
     "王晓光《复变函数》· 复围道积分的同伦不变性",
@@ -27466,7 +27466,7 @@
     "因子分解",
     "整函数的阶"
    ],
-   "statement": "设 $f$ 是**有限阶** $\\rho$ 的整函数，零点为 $\\{a_{n}\\}$（按重数计）。则\n\n$$f(z) = z^{m} e^{P(z)} \\prod_{n} E_{p}\\left(\\frac{z}{a_{n}}\\right),$$\n\n其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。\n\n特别地：阶 $\\rho < 1$ 的整函数没有零点（除非恒为零）—— 因为此时 $p = 0$ 要求$\\sum |a_{n}|^{-1} < \\infty$，而零点再多也只能是有限个。",
+   "statement": "设 $f$ 是**有限阶** $\\rho$ 的整函数，零点为 $\\{a_{n}\\}$（按重数计）。则\n\n$$f(z) = z^{m} e^{P(z)} \\prod_{n} E_{p}\\left(\\frac{z}{a_{n}}\\right),$$\n\n其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。\n\n特别地：$\\rho < 1$ 时 $p = 0$，故 $\\sum |a_{n}|^{-1} < \\infty$（这不表示零点有限：$\\prod_{n}(1 - z/n^{2})$ 的阶为 $\\frac{1}{2}$、仍有无穷多零点）。",
    "notes": "**证明思路（骨架）**：\n\n**第一步：零点密度。** 由 Jensen 公式$n(R) \\log 2 \\le \\log M(2R) + O(1)$，而 $\\log M(2R) = O(R^{\\rho + \\varepsilon})$，故 $n(R) = O(R^{\\rho+\\varepsilon})$，于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$。\n\n这一步说明**统一取 $p = \\lfloor \\rho \\rfloor$ 就够**。\n\n**第二步：除掉零点。** 令 $\\Phi(z) := f(z)\\big/\\prod E_{p}(z/a_{n})$，则 $\\Phi$ 无零点、且仍是有限阶（乘积的贡献被初等因子的估计压住）。\n\n**第三步：无零点的有限阶整函数 = $e^{\\text{多项式}}$。** 写 $\\Phi = e^{h}$（单连通，`prop.single-valued-branch`），则 $\\operatorname{Re} h = \\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式，得 $h$ 是次数 $\\le \\rho$ 的多项式。∎\n\n⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化、并把自由度压成一个多项式。Picard 小定理在有限阶情形就靠它证。\n\n⚠️ 「有限阶」不能省。无穷阶整函数照样能分解（Weierstrass），但指数部分不再是多项式，而且没有这么强的结论。",
    "refs": [
     "王晓光《复变函数》· Hadamard 分解定理",
@@ -35293,7 +35293,7 @@
     "Lp",
     "范数"
    ],
-   "statement": "固定测度空间 $(X, \\mathcal{M}, \\mu)$。对可测 $f$ 与 $0 < p < \\infty$ 定义**准范数**\n\n$$\\|f\\|_p := \\left[ \\int |f|^p \\, d\\mu \\right]^{1/p}$$\n⚠ **只有 $p \\ge 1$ 时它才真的是范数**（$0 < p < 1$ 时三角不等式**不成立**：取不交的 $A, B$、$f = \\chi_{A}$、$g = \\chi_{B}$、$p = \\tfrac{1}{2}$，则 $\\|f+g\\|_p = 2$ 而 $\\|f\\|_p + \\|g\\|_p = 1 + 1 = 2$ —— 换成 $f = g = \\lambda\\chi_{A}$ 就能看到严格不等式破：$\\|f+g\\|_p = (2\\lambda)^{p}/\\mu(A)^{1/p}$ 与 $2\\lambda\\mu(A)^{1/p}$ 之比为 $2^{p-1} > 1$）。所以 $p \\in (0,1)$ 时通常只记作 $L^{p}$ 空间（度量 $d(f,g) = \\|f-g\\|_p^{p}$ 下完备），**不称赋范空间**。\n\n以及\n\n$$L^p(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} :\\ \\|f\\|_p < \\infty\\,\\}$$\n其中 $f$ 是**可测**函数。\n⚠ 严格说 $L^{p}$ 是上面那个集合**按「a.e. 相等」取商**之后的类空间 —— 否则 $\\|f\\|_p = 0$ 只说明 $f = 0$ a.e.，范数的第一条公理就过不去。（本图下文照惯例把等价类写成函数。）",
+   "statement": "固定测度空间 $(X, \\mathcal{M}, \\mu)$。对可测 $f$ 与 $0 < p < \\infty$ 定义**准范数**\n\n$$\\|f\\|_p := \\left[ \\int |f|^p \\, d\\mu \\right]^{1/p}$$\n⚠ **只有 $p \\ge 1$ 时它才真的是范数**（$0 < p < 1$ 时三角不等式**不成立**：取不交的 $A, B$ 且 $\\mu(A) = \\mu(B) = 1$，令 $f = \\chi_{A}$、$g = \\chi_{B}$、$p = \\tfrac{1}{2}$，则 $\\|f+g\\|_p = (\\mu(A)+\\mu(B))^{1/p} = 2^{2} = 4$ 而 $\\|f\\|_p + \\|g\\|_p = 1 + 1 = 2$）。所以 $p \\in (0,1)$ 时通常只记作 $L^{p}$ 空间（度量 $d(f,g) = \\|f-g\\|_p^{p}$ 下完备），**不称赋范空间**。\n\n以及\n\n$$L^p(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} :\\ \\|f\\|_p < \\infty\\,\\}$$\n其中 $f$ 是**可测**函数。\n⚠ 严格说 $L^{p}$ 是上面那个集合**按「a.e. 相等」取商**之后的类空间 —— 否则 $\\|f\\|_p = 0$ 只说明 $f = 0$ a.e.，范数的第一条公理就过不去。（本图下文照惯例把等价类写成函数。）",
    "notes": "基本事实（都可直接验证）：\n\n\n\n- $\\|f\\|_p = 0 \\iff f = 0$ a.e.；\n- $\\|cf\\|_p = |c| \\, \\|f\\|_p$；\n- $f, g \\in L^p \\implies f + g \\in L^p$（这一步用 $|f+g|^p \\le 2^p(|f|^p + |g|^p)$）。\n\n\n\n⚠ **$p < 1$ 时三角不等式失效**，所以那时 $L^p$ 只是拟范数空间（虽然它仍然是完备的）。\n\n和 $L^1$ 一样，$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），这正是 $\\|f\\|_p = 0 \\implies f = 0$ 得以成立的前提。",
    "refs": [
     "Folland, Real Analysis, §6.1"
@@ -36274,7 +36274,7 @@
     "度量"
    ],
    "statement": "令 $d(x, y) := \\|x - y\\|$。则 $d$ 是 $E$ 上的距离，并且\n\n- **平移不变**：$d(x + z,\\ y + z) = d(x, y)$；\n- **齐次**：$d(\\lambda x,\\ \\lambda y) = |\\lambda|\\,d(x, y)$；\n- 每个球 $B(x, r)$ 都是**凸**的。\n\n反过来，若距离满足平移不变与齐次，则 $\\|x\\| := d(x, 0)$ 是范数，且它诱导回这个距离。",
-   "notes": "这条说清了「赋范」比「度量」多出来的是什么：**平移不变 + 齐次 + 球凸**。所以「这个度量是否来自范数」是一个有内容的问题（反例：$\\min(d, 1)$ 与 $\\sum_i 2^{-i}\\frac{|x_i - y_i|}{1 + |x_i - y_i|}$ 都不平移不变）。\n\n⭐ 球凸这一条后面要用两次：凸集上的最近点（Hilbert 的投影定理）、以及「开球的像是否开」（开映射定理）。",
+   "notes": "这条说清了「赋范」比「度量」多出来的是什么：**平移不变 + 齐次 + 球凸**。所以「这个度量是否来自范数」是一个有内容的问题（反例：$\\min(d, 1)$ 与 $\\sum_i 2^{-i}\\frac{|x_i - y_i|}{1 + |x_i - y_i|}$ 都**平移不变**，缺的是**齐次性**：前者取 $x = 1, y = 0, \\lambda = 2$ 得 $1 \\ne 2$）。\n\n⭐ 球凸这一条后面要用两次：凸集上的最近点（Hilbert 的投影定理）、以及「开球的像是否开」（开映射定理）。",
    "refs": [
     "Rudin, Functional Analysis · 赋范空间与有限维"
    ]
@@ -36314,7 +36314,7 @@
     "范数"
    ],
    "statement": "设 $p, q$ 是 $E$ 上两个范数。称 $p$ **强于** $q$（记 $q \\preceq p$），若存在 $C > 0$ 使\n\n$$q(x) \\le C\\,p(x) \\qquad \\forall x \\in E .$$\n\n若互相强于，称 $p$ 与 $q$ **等价**，记 $p \\sim q$。",
-   "notes": "- (a) 等价- (b) 诱导同一个拓扑- (c) 同一批 Cauchy 列- (d) 同一批收敛列。\n\n⚠️ 强弱不对称，而且方向和直觉相反：**强**范数（$p$ 大）的球更小、开集更少、收敛更难、Cauchy 列更多。所以「换成强范数」会**减少**收敛的东西 —— 这也是为什么要挑最弱的、够用的范数（例如弱拓扑）。\n\n⚠️ 等价不保完备性以外的一切：两个等价范数下完备性一样（Cauchy 列集合相同），但**极值问题**的答案可以不同（球不同）。",
+   "notes": "- (a) 等价- (b) 诱导同一个拓扑- (c) 同一批 Cauchy 列- (d) 同一批收敛列。\n\n⚠️ 强弱不对称，而且方向和直觉相反：**强**范数（$p$ 大）的球更小、开集**更多**、收敛更难、Cauchy 列**更少**。所以「换成强范数」会**减少**收敛的东西 —— 这也是为什么要挑最弱的、够用的范数（例如弱拓扑）。\n\n⚠️ 等价不保完备性以外的一切：两个等价范数下完备性一样（Cauchy 列集合相同），但**极值问题**的答案可以不同（球不同）。",
    "refs": [
     "Rudin, Functional Analysis · 赋范空间与有限维"
    ]
@@ -36438,7 +36438,7 @@
     "有限维"
    ],
    "statement": "赋范空间 $E$ 的闭单位球 $B_E = \\{x \\in E : \\|x\\| \\le 1\\}$ 紧 $\\iff$ $\\dim E < \\infty$。",
-   "notes": "「$\\Longleftarrow$」：有限维时所有范数等价（`thm.norm-equiv-finite-dim`），于是可以用 $\\|\\cdot\\|_\\infty$ 的坐标球来判断紧性；\n\n而坐标球 $\\overline{B}^{\\infty}(0,1) = [-1,1]^{n}$ 是有界闭集，由 Heine–Borel（`cor.heine-borel`）紧。\n\n∎\n\n「$\\implies$」：若 $\\dim E = \\infty$，用 Riesz 引理（`lem.almost-orthogonal`）递归造单位向量 $\\|e_n - e_m\\| \\ge 1/2$（$n \\ne m$），这样的序列没有收敛子列，于是闭单位球不列紧、因而不紧。\n\n\n\n⭐ 这一条是「有限维  当且仅当  局部紧」的一半：有限维赋范空间局部紧，无穷维的**从不**局部紧。它也是「有界闭集紧」只在有限维成立的精确版本 —— 无穷维里 Heine–Borel 失效。",
+   "notes": "「$\\Longleftarrow$」：有限维时所有范数等价（`thm.norm-equiv-finite-dim`），于是可以用 $\\|\\cdot\\|_\\infty$ 的坐标球来判断紧性；\n\n而坐标球 $\\overline{B}^{\\infty}(0,1)$ 是有界闭集（实情形就是 $[-1,1]^{n}$；复情形是单位多圆柱，看作 $\\mathbb{R}^{2n}$ 的闭有界集），由 Heine–Borel（`cor.heine-borel`）紧。\n\n∎\n\n「$\\implies$」：若 $\\dim E = \\infty$，用 Riesz 引理（`lem.almost-orthogonal`）递归造单位向量 $\\|e_n - e_m\\| \\ge 1/2$（$n \\ne m$），这样的序列没有收敛子列，于是闭单位球不列紧、因而不紧。\n\n\n\n⭐ 这一条是「有限维  当且仅当  局部紧」的一半：有限维赋范空间局部紧，无穷维的**从不**局部紧。它也是「有界闭集紧」只在有限维成立的精确版本 —— 无穷维里 Heine–Borel 失效。",
    "refs": [
     "Rudin, Functional Analysis · 赋范空间与有限维",
     "Riesz 1918"
@@ -36478,7 +36478,7 @@
     "算子范数"
    ],
    "statement": "设 $u : E \\to F$ 线性。称 $u$ **有界**，若存在 $C$ 使 $\\|u(x)\\| \\le C\\|x\\|$ 对一切 $x$ 成立。全体记 $B(E, F)$，并记 $B(E) := B(E, E)$。定义\n\n$$\\|u\\| := \\sup_{\\|x\\| \\le 1} \\|u(x)\\| = \\sup_{\\|x\\| = 1} \\|u(x)\\| = \\sup_{x \\ne 0} \\frac{\\|u(x)\\|}{\\|x\\|} ,$$\n\n它使 $B(E, F)$ 成为赋范空间（$E = 0$ 时约定 $\\|u\\| = 0$）。",
-   "notes": "⚠️ **名字是个历史误会**：这里「有界」**不是**「函数有界」（只有 $E = 0$ 时才等价）。真正的含义是「把有界集送到有界集」，等价于**连续**（下一条）。读老书时别被这个名字带歪。\n\n⚠️ 三个 sup 相等要求 $E \\ne 0$（否则球面空集、sup 无意义）。\n\n⭐ 无穷维里 $L(E, F) \\ne B(E, F)$：不连续的线性算子确实存在（要用选择公理造）。所以本图把「线性」与「有界」分成两个节点：$L(E,F)$ 是**代数**上的 Hom，$B(E,F)$ 是其中连续的那部分。",
+   "notes": "⚠️ **名字是个历史误会**：这里「有界」**不是**「函数有界」：线性映射作为函数有界 $\\iff$ 它是零映射（任意 $E \\ne 0$ 的零映射都符合）。真正的含义是「把有界集送到有界集」，等价于**连续**（下一条）。读老书时别被这个名字带歪。\n\n⚠️ 三个 sup 相等要求 $E \\ne 0$（否则球面空集、sup 无意义）。\n\n⭐ $E$ 无穷维且 $F \\ne \\{0\\}$ 时 $L(E, F) \\ne B(E, F)$：不连续的线性算子确实存在（要用选择公理造）。所以本图把「线性」与「有界」分成两个节点：$L(E,F)$ 是**代数**上的 Hom，$B(E,F)$ 是其中连续的那部分。",
    "refs": [
     "Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数"
    ]
@@ -36555,7 +36555,7 @@
     "有界算子",
     "Banach 代数"
    ],
-   "statement": "设 $u \\in B(E, F)$，$v \\in B(F, G)$。则 $v \\circ u \\in B(E, G)$ 且\n\n$$\\|v \\circ u\\| \\le \\|v\\| \\, \\|u\\| .$$\n\n特别地 $B(E)$ 是**赋范代数**（乘法连续），且 $\\|\\mathrm{id}\\| = 1$。",
+   "statement": "设 $u \\in B(E, F)$，$v \\in B(F, G)$。则 $v \\circ u \\in B(E, G)$ 且\n\n$$\\|v \\circ u\\| \\le \\|v\\| \\, \\|u\\| .$$\n\n特别地 $B(E)$ 是**赋范代数**（乘法连续）；$E \\ne \\{0\\}$ 时 $\\|\\mathrm{id}\\| = 1$。",
    "notes": "一句话：$\\|vu(x)\\| \\le \\|v\\|\\,\\|u(x)\\| \\le \\|v\\|\\,\\|u\\|\\,\\|x\\|$。\n\n⚠️ $B(E)$ 一般**不交换**（$\\dim E \\ge 2$ 时），所以它是「非交换 Banach 代数」的原型，而不是函数代数的类比对象。\n\n$\\|\\cdot\\|$ 是**次可乘**的（submultiplicative）——这条不等式就是「Banach 代数」定义里的第二条，也是 Neumann 级数能收敛的唯一依据。",
    "refs": [
     "Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数"
@@ -36595,7 +36595,7 @@
     "Banach 代数"
    ],
    "statement": "结合代数 $\\mathcal{A}$ 配范数 $\\|\\cdot\\|$ 叫 **Banach 代数**，若\n\n1. $(\\mathcal{A}, \\|\\cdot\\|)$ 是 Banach 空间；\n2. 乘法次可乘：$\\|xy\\| \\le \\|x\\|\\,\\|y\\|$。\n\n若还有单位元且 $\\|1\\| = 1$，叫**含单位 Banach 代数**。",
-   "notes": "2 保证乘法连续（双线性 + 有界）。\n\n例：$B(E)$（$E$ Banach）、$C(K)$（上确界范数）、$L^1(\\mathbb{R})$（卷积乘法）、$\\ell^1(\\mathbb{Z})$、以及 $C^*$-代数（再要一条 $\\|x^* x\\| = \\|x\\|^2$）。\n\n⭐ 这一族是「把分析问题化成代数问题」的通用容器：Gelfand 理论（交换 Banach 代数 $\\cong C(\\text{极大理想空间})$）就是从这条定义出发的。",
+   "notes": "2 保证乘法连续（双线性 + 有界）。\n\n例：$B(E)$（$E$ Banach）、$C(K)$（$K$ 紧 Hausdorff、上确界范数）、$L^1(\\mathbb{R})$（卷积乘法）、$\\ell^1(\\mathbb{Z})$、以及 $C^*$-代数（再要一条 $\\|x^* x\\| = \\|x\\|^2$）。\n\n⭐ 这一族是「把分析问题化成代数问题」的通用容器：Gelfand 理论（**半单**交换 Banach 代数 $\\cong C(\\text{极大理想空间})$；一般情形只给同态，核是 Jacobson 根）就是从这条定义出发的。",
    "refs": [
     "Rudin, Functional Analysis · 赋范空间与有界算子"
    ]
@@ -36793,7 +36793,7 @@
     "基数"
    ],
    "statement": "拓扑空间（特别地赋范空间）$E$ 叫**可分**，若它含一个可数稠密子集。",
-   "notes": "**可分的**：$\\ell^p(\\mathbb{N})$（$1 \\le p < \\infty$）、$L^p(\\Omega)$、$C(K)$（$K$ 紧度量）、任何有限维空间。\n\n**不可分的**：$\\ell^\\infty(\\mathbb{N})$。证法：取 $A = \\{(e_n) : e_n = \\pm 1\\}$（$2^{\\aleph_0}$ 个点），任意两点距离 $\\ge 2$，故半径 $1$ 的两两不交球有不可数多个 —— 可数稠密集顶多覆盖可数多个。\n\n⭐ 讲义里那句「不可分 $\\implies$ 不能由一个可数集作为代数生成」很值得记：它把「基」的直觉挡在门外 —— $\\ell^\\infty$ 连可数 Schauder 基都没有（见「Schauder 基」）。\n\n⚠️ 可分性对**闭子空间**遗传、对**商**遗传，但对连续像不一定、对乘积不遗传（$\\mathbb{R}^{\\mathbb{R}}$ 不可分）。",
+   "notes": "**可分的**：$\\ell^p(\\mathbb{N})$（$1 \\le p < \\infty$）、$L^p(\\Omega)$（Lebesgue 测度、$1 \\le p < \\infty$）、$C(K)$（$K$ 紧度量）、任何有限维空间。\n\n**不可分的**：$\\ell^\\infty(\\mathbb{N})$。证法：取 $A = \\{(e_n) : e_n = \\pm 1\\}$（$2^{\\aleph_0}$ 个点），任意两点距离 $\\ge 2$，故半径 $1$ 的两两不交球有不可数多个 —— 可数稠密集顶多覆盖可数多个。\n\n⭐ 讲义里那句「不可分 $\\implies$ 不能由一个可数集作为代数生成」很值得记：它把「基」的直觉挡在门外 —— $\\ell^\\infty$ 连可数 Schauder 基都没有（见「Schauder 基」）。\n\n⚠️ 可分性对**连续像**遗传（$D$ 可数稠密 $\\implies$ $f(D)$ 在 $f(X)$ 中稠密）；在**度量空间**里对子空间也遗传，但一般拓扑空间不成立（$D$ 不可数、开集全取含 $p$ 的集合时，$X = D \\cup \\{p\\}$ 可分而闭子空间 $D$ 是不可数离散空间）。乘积也不遗传：$\\{0,1\\}^{I}$（$|I| > 2^{\\aleph_0}$）不可分，而 $\\mathbb{R}^{\\mathbb{R}}$ **反而可分**。",
    "refs": [
     "Conway, A Course in Functional Analysis · Hilbert 空间与正交基"
    ]
@@ -36833,7 +36833,7 @@
     "可分空间"
    ],
    "statement": "赋范空间 $E$ 的序列 $(e_n)_{n \\in \\mathbb{N}}$ 叫 **Schauder 基**，若对每个 $x \\in E$ 存在**唯一**的标量列 $(a_n)$ 使\n\n$$x = \\sum_{n=1}^{\\infty} a_n e_n \\qquad (\\text{按范数收敛}) .$$",
-   "notes": "🆚 **Hamel 基（代数基）**：只允许**有限**线性组合。无穷维 Banach 空间的 Hamel 基一定**不可数**（Baire 纲定理的经典应用：若可数，则 $E$ 是可数个有限维闭子空间之并，与 Baire 矛盾）。\n\nSchauder 基要求的是**级数收敛**，所以可以是可数的；而且 Schauder 基 $\\implies$ **可分**（有理系数的有限组合稠密）。\n\n⚠️ 「有 Schauder 基」曾长期是开放问题：Enflo (1973) 造出无 Schauder 基的可分 Banach 空间，所以它**不能**当成默认假设。\n\n⚠️ 与 Hilbert 空间的「正交基」不同：Schauder 基不要求正交、也不要求唯一性来自内积；Hilbert 空间里正交基一定是 Schauder 基，反之不然。",
+   "notes": "🆚 **Hamel 基（代数基）**：只允许**有限**线性组合。无穷维 Banach 空间的 Hamel 基一定**不可数**（Baire 纲定理的经典应用：若可数，则 $E$ 是可数个有限维闭子空间之并，与 Baire 矛盾）。\n\nSchauder 基要求的是**级数收敛**，所以可以是可数的；而且 Schauder 基 $\\implies$ **可分**（有理系数的有限组合稠密）。\n\n⚠️ 「有 Schauder 基」曾长期是开放问题：Enflo (1973) 造出无 Schauder 基的可分 Banach 空间，所以它**不能**当成默认假设。\n\n⚠️ 与 Hilbert 空间的「正交基」不同：Schauder 基不要求正交、也不要求唯一性来自内积。Hilbert 空间里**可数**正交归一基（枚举后）一定是 Schauder 基，反之不然；不可数指标集的 $\\ell^2(I)$ 有完备正交归一族，但任何序列只涉及可数多个坐标，闭张成漏掉其余基向量 —— 那不是 Schauder 基（该空间也不可分）。",
    "refs": [
     "Conway, A Course in Functional Analysis · Hilbert 空间与正交基",
     "Enflo, Acta Math. 130 (1973)"
@@ -38749,7 +38749,7 @@
     "振荡"
    ],
    "statement": "**在说什么**：高频振荡把积分抹平。它既是 Fourier 级数收敛性的第一步，也是「Riemann 可积函数在频率轴上衰减」的定量说法。\n\n设 $f$ 在 $[a, b]$ 上 **Riemann 可积**。则\n\n$$\\lim_{|\\lambda| \\to \\infty} \\int_{a}^{b} f(x)\\, e^{i\\lambda x}\\, dx = 0 .$$\n\n取实部、虚部（或把 $e^{i\\lambda x}$ 换成 $\\cos \\lambda x$、$\\sin \\lambda x$）就是最常见的两条形式：**Fourier 系数 $\\hat{f}(n) \\to 0$（$|n| \\to \\infty$）**。",
-   "notes": "**证明（阶梯函数逼近）。** 分三步，核心是「可积函数可以用阶梯函数一致逼近到任意精度」。\n\n\n\n① **阶梯函数**：设 $\\psi = \\sum_{k} c_{k}\\,\\mathbf{1}_{[x_{k-1}, x_{k}]}$ 是阶梯函数。直接算\n\n\n\n$$\\int_{a}^{b} \\psi(x)\\,e^{i\\lambda x}dx = \\sum_{k} c_{k}\\int_{x_{k-1}}^{x_{k}} e^{i\\lambda x}dx = \\sum_{k} c_{k}\\,\\frac{e^{i\\lambda x_{k}} - e^{i\\lambda x_{k-1}}}{i\\lambda} ,$$\n\n\n\n右端绝对值不超过 $\\frac{2\\sum_{k}|c_{k}|}{|\\lambda|} \\to 0$。所以结论对阶梯函数成立。\n\n\n\n② **逼近**：对 $\\varepsilon > 0$，取阶梯函数 $\\psi$ 使 $\\int_{a}^{b}|f - \\psi| < \\varepsilon/2$（Riemann 可积的定义直接给这一步：可积函数被阶梯函数在 $L^{1}$ 意义下逼近）。\n\n\n\n③ **合并**：\n\n\n\n$$\\Bigl|\\int_{a}^{b} f e^{i\\lambda x}\\Bigr| \\le \\int_{a}^{b} |f - \\psi| + \\Bigl|\\int_{a}^{b}\\psi\\, e^{i\\lambda x}\\Bigr| < \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} ,$$\n\n\n\n最后一个不等号对足够大的 $|\\lambda|$ 成立（由①）。$\\square$\n\n\n\n**为什么它重要**：Fourier 系数趋于 $0$ 是 Fourier 级数收敛理论的入口（Riemann–Lebesgue 本身不足以给出逐点收敛，那需要 Dirichlet 核与分段光滑性）；在测度论里它升级成「$L^{1}$ 函数的 Fourier 变换在无穷远处趋于 $0$」（$L^{1}$ 情形的 Riemann–Lebesgue），进一步就是「$L^{2}$ 里 Fourier 变换是酉算子」。\n\n\n\n⚠️ **名字里两个人都要提**：只说「Riemann 引理」或「Lebesgue 引理」都不对（后者另有所指：可积的 Lebesgue 判据）。本图把它记作 `thm.riemann-lebesgue`，与 `thm.riemann-lebesgue-criterion`（可积  $\\iff$  不连续点零测，那是 **Lebesgue 判据**）是两个不同的东西 —— 搜的时候容易撞。\n\n⚠️ **「Riemann 可积」不能换成「有界」**：反例是 $f = \\mathbf{1}_{\\mathbb{Q}}$（Dirichlet 函数）—— 有界但不 Riemann 可积，且它的「积分」没有意义，定理无从谈起。至于 Lebesgue 可积情形，同样的证明用 $L^{1}$ 逼近（简单函数代替阶梯函数）即可。",
+   "notes": "**证明（阶梯函数逼近）。** 分三步，核心是「可积函数可以用阶梯函数在 $L^{1}$ 意义下逼近到任意精度」。\n\n\n\n① **阶梯函数**：设 $\\psi = \\sum_{k} c_{k}\\,\\mathbf{1}_{[x_{k-1}, x_{k}]}$ 是阶梯函数。直接算\n\n\n\n$$\\int_{a}^{b} \\psi(x)\\,e^{i\\lambda x}dx = \\sum_{k} c_{k}\\int_{x_{k-1}}^{x_{k}} e^{i\\lambda x}dx = \\sum_{k} c_{k}\\,\\frac{e^{i\\lambda x_{k}} - e^{i\\lambda x_{k-1}}}{i\\lambda} ,$$\n\n\n\n右端绝对值不超过 $\\frac{2\\sum_{k}|c_{k}|}{|\\lambda|} \\to 0$。所以结论对阶梯函数成立。\n\n\n\n② **逼近**：对 $\\varepsilon > 0$，取阶梯函数 $\\psi$ 使 $\\int_{a}^{b}|f - \\psi| < \\varepsilon/2$（Riemann 可积的定义直接给这一步：可积函数被阶梯函数在 $L^{1}$ 意义下逼近）。\n\n\n\n③ **合并**：\n\n\n\n$$\\Bigl|\\int_{a}^{b} f e^{i\\lambda x}\\Bigr| \\le \\int_{a}^{b} |f - \\psi| + \\Bigl|\\int_{a}^{b}\\psi\\, e^{i\\lambda x}\\Bigr| < \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} ,$$\n\n\n\n最后一个不等号对足够大的 $|\\lambda|$ 成立（由①）。$\\square$\n\n\n\n**为什么它重要**：Fourier 系数趋于 $0$ 是 Fourier 级数收敛理论的入口（Riemann–Lebesgue 本身不足以给出逐点收敛，那需要 Dirichlet 核与分段光滑性）；在测度论里它升级成「$L^{1}$ 函数的 Fourier 变换在无穷远处趋于 $0$」（$L^{1}$ 情形的 Riemann–Lebesgue），进一步就是「$L^{2}$ 里 Fourier 变换是酉算子」。\n\n\n\n⚠️ **名字里两个人都要提**：只说「Riemann 引理」或「Lebesgue 引理」都不对（后者另有所指：可积的 Lebesgue 判据）。本图把它记作 `thm.riemann-lebesgue`，与 `thm.riemann-lebesgue-criterion`（可积  $\\iff$  不连续点零测，那是 **Lebesgue 判据**）是两个不同的东西 —— 搜的时候容易撞。\n\n⚠️ **「Riemann 可积」不能换成「有界」**：反例是 $f = \\mathbf{1}_{\\mathbb{Q}}$（Dirichlet 函数）—— 有界但不 Riemann 可积，且它的「积分」没有意义，定理无从谈起。至于 Lebesgue 可积情形，同样的证明用 $L^{1}$ 逼近（简单函数代替阶梯函数）即可。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 6（振荡与逼近）",
     "Zygmund, Trigonometric Series"
@@ -38967,8 +38967,8 @@
     "微分",
     "有界算子"
    ],
-   "statement": "**在做什么**：把「导数是一个线性映射」这句话搬到赋范空间上。关键不是「$f$ 有多光滑」，而是 **「线性主部」必须是连续的**（即有界算子）—— 这一条是赋范空间版本与有限维版本唯一实质的差别。\n\n设 $E, F$ 是赋范空间，$\\Omega \\subseteq E$ 开，$f : \\Omega \\to F$，$a \\in \\Omega$。称 $f$ 在 $a$ 处 **Fréchet 可微**，若存在**有界线性算子** $T \\in B(E, F)$ 使\n\n$$f(a + h) = f(a) + T h + o(\\|h\\|) \\qquad (\\|h\\| \\to 0),$$\n\n即\n\n$$\\lim_{\\|h\\| \\to 0} \\frac{\\|f(a+h) - f(a) - Th\\|}{\\|h\\|} = 0 .$$\n\n这样的 $T$ 若存在则**唯一**（取 $h = t v$、$t \\to 0$ 即看出 $T$ 在每条射线上被钉死），记 $f'(a) := T \\in B(E, F)$。\n\n**与 Gâteaux 导数的区别**：Gâteaux 导数只要求沿每条射线 $t \\mapsto f(a + tv)$ 的导数存在（得到一个线性映射，甚至未必连续）；Fréchet 可微则要求**一致的**余项估计。于是\n\n$$\\text{Fréchet 可微} \\implies \\text{Gâteaux 可微，且两者相等} ,$$\n\n反过来不成立（Gâteaux 导数的存在不保证余项一致小）。",
-   "notes": "**为什么要求 $T$ 有界**：$E$ 无穷维时「线性」不足以谈极限 —— 无界线性算子照样能写下 $f(a) + Th$，但它在 $a$ 处根本不连续，$o(\\|h\\|)$ 的估计不可能成立。所以定义里把 $B(E,F)$ 写死，**不是偷懒**：有限维时自动满足，无穷维时是实质条件。\n\n**几个基本事实**（证明与一元情形同构，只是把绝对值换成范数）：\n\n\n\n- **链式法则**：$f$ 在 $a$、$g$ 在 $f(a)$ 处 Fréchet 可微 $\\implies$ $g \\circ f$ 在 $a$ 处可微，且 $(g\\circ f)'(a) = g'(f(a)) \\circ f'(a)$（算子的复合，注意顺序）；\n\n- **可微 $\\implies$ 连续**；\n\n- **中值不等式**：$\\|f(b) - f(a)\\| \\le \\sup_{[a,b]}\\|f'\\| \\cdot \\|b - a\\|$ —— 这是把一元中值定理搬过来时**唯一能用的形式**（等号形式不再成立，因为有界线性算子不能「取某点处的值」）；\n\n- **逆映射定理（Banach 版）**（`thm.inverse-function-banach`）：$f'(a)$ **可逆**（作为 $B(E,F)$ 的元素，从而 $E \\cong F$）+ 连续可微 $\\implies$ $f$ 在 $a$ 附近是局部同胚。那条定理的假设就写在这个导数上。\n\n⚠️ **与另外两个「导数」的分工**：`def.derivative` 是一元实函数；`def.total-differential` 是 $\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ 的全微分（Jacobian 矩阵）；流形之间的微分是 `def.differential-map`（切空间之间的线性映射）。本节点是**赋范空间之间**的版本 —— 它把前两个都收成特例（有限维时 $f'(a)$ 就是 Jacobian 矩阵）。\n\n⚠️ **高阶导数**要小心：$f'' (a)$ 是 $B(E, B(E,F)) \\cong B(E \\times E, F)$ 的元素（双线性型），不是「二阶矩阵」。赋范空间上写 Taylor 公式（`thm.taylor`）时必须按这个理解。",
+   "statement": "**在做什么**：把「导数是一个线性映射」这句话搬到赋范空间上。关键不是「$f$ 有多光滑」，而是 **「线性主部」必须是连续的**（即有界算子）—— 这一条是赋范空间版本与有限维版本唯一实质的差别。\n\n设 $E, F$ 是赋范空间，$\\Omega \\subseteq E$ 开，$f : \\Omega \\to F$，$a \\in \\Omega$。称 $f$ 在 $a$ 处 **Fréchet 可微**，若存在**有界线性算子** $T \\in B(E, F)$ 使\n\n$$f(a + h) = f(a) + T h + o(\\|h\\|) \\qquad (\\|h\\| \\to 0),$$\n\n即\n\n$$\\lim_{\\|h\\| \\to 0} \\frac{\\|f(a+h) - f(a) - Th\\|}{\\|h\\|} = 0 .$$\n\n这样的 $T$ 若存在则**唯一**（取 $h = t v$、$t \\to 0$ 即看出 $T$ 在每条射线上被钉死），记 $f'(a) := T \\in B(E, F)$。\n\n**与 Gâteaux 导数的区别**：Gâteaux 导数只要求沿每条射线 $t \\mapsto f(a + tv)$ 的导数存在 —— 但各方向导数存在并不保证「关于方向线性」，也未必连续（若把「线性」额外写进定义，才是通常所说的 Gâteaux 导数）；Fréchet 可微则要求**一致的**余项估计。于是\n\n$$\\text{Fréchet 可微} \\implies \\text{Gâteaux 可微，且两者相等} ,$$\n\n反过来不成立（Gâteaux 导数的存在不保证余项一致小）。",
+   "notes": "**为什么要求 $T$ 有界**：$E$ 无穷维时「线性」不足以谈极限。⚠ 但要注意：余项条件本身**不排除无界主部**（取 $E = c_{00}$ 配 $\\ell^2$ 范数、$T(x) = \\sum n x_n$、$f = T$，则余项恒为 $0$）。把 $B(E,F)$ 写死的真正作用，是让「可微 $\\implies$ 连续」成立；否则 $f$ 可能根本不连续。有限维时自动满足，无穷维时是实质条件。\n\n**几个基本事实**（证明与一元情形同构，只是把绝对值换成范数）：\n\n\n\n- **链式法则**：$f$ 在 $a$、$g$ 在 $f(a)$ 处 Fréchet 可微 $\\implies$ $g \\circ f$ 在 $a$ 处可微，且 $(g\\circ f)'(a) = g'(f(a)) \\circ f'(a)$（算子的复合，注意顺序）；\n\n- **可微 $\\implies$ 连续**；\n\n- **中值不等式**（需 $[a,b] \\subseteq \\Omega$，且 $f$ 在整条线段上连续、内部可微）：$\\|f(b) - f(a)\\| \\le \\sup_{[a,b]}\\|f'\\| \\cdot \\|b - a\\|$ —— 这是把一元中值定理搬过来时**唯一能用的形式**（等号形式不再成立，因为有界线性算子不能「取某点处的值」）；\n\n- **逆映射定理（Banach 版）**（`thm.inverse-function-banach`）：$f'(a)$ **可逆**（作为 $B(E,F)$ 的元素，从而 $E \\cong F$）+ 连续可微 $\\implies$ $f$ 在 $a$ 附近是局部同胚。那条定理的假设就写在这个导数上。\n\n⚠️ **与另外两个「导数」的分工**：`def.derivative` 是一元实函数；`def.total-differential` 是 $\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ 的全微分（Jacobian 矩阵）；流形之间的微分是 `def.differential-map`（切空间之间的线性映射）。本节点是**赋范空间之间**的版本 —— 它把前两个都收成特例（有限维时 $f'(a)$ 就是 Jacobian 矩阵）。\n\n⚠️ **高阶导数**要小心：$f'' (a)$ 是 $B(E, B(E,F))$ 的元素，它与「$E \\times E$ 上的**有界双线性映射**」空间等距同构 —— 注意**不是** $B(E \\times E, F)$：那按定义是有界**线性**映射，$E = F = \\mathbb{R}$ 时它是一维，而 $D^{2}(x^{2})(v,w) = 2vw$ 并不对 $(v,w)$ 线性。赋范空间上写 Taylor 公式（`thm.taylor`）时必须按这个理解。",
    "refs": [
     "Rudin, Functional Analysis · Fréchet 导数",
     "Brezis, Functional Analysis, Sobolev Spaces and PDE · 微分"
@@ -52712,7 +52712,7 @@
     "滤过余极限",
     "形式余极限"
    ],
-   "statement": "范畴 $\\mathcal{C}$ 的一个 **Ind-对象**「$\\varinjlim_{i \\in I} X_{i}$」是一个**滤过图** $(X_{i})_{i \\in I}$。它们组成范畴 $\\operatorname{Ind}(\\mathcal{C})$，其 Hom 为\n\n$$\\operatorname{Hom}_{\\operatorname{Ind}(\\mathcal{C})}\\Bigl(\\text{“}\\varinjlim_{i \\in I} X_{i}\\text{”},\\ \\text{“}\\varinjlim_{j \\in J} Y_{j}\\text{”}\\Bigr) \\;=\\; \\varinjlim_{j \\in J}\\ \\varprojlim_{i \\in I}\\ \\operatorname{Hom}_{\\mathcal{C}}(X_{i}, Y_{j}).$$",
+   "statement": "范畴 $\\mathcal{C}$ 的一个 **Ind-对象**「$\\varinjlim_{i \\in I} X_{i}$」是一个**滤过图** $(X_{i})_{i \\in I}$。它们组成范畴 $\\operatorname{Ind}(\\mathcal{C})$，其 Hom 为\n\n$$\\operatorname{Hom}_{\\operatorname{Ind}(\\mathcal{C})}\\Bigl(\\text{“}\\varinjlim_{i \\in I} X_{i}\\text{”},\\ \\text{“}\\varinjlim_{j \\in J} Y_{j}\\text{”}\\Bigr) \\;=\\; \\varprojlim_{j \\in J}\\ \\varinjlim_{i \\in I}\\ \\operatorname{Hom}_{\\mathcal{C}}(X_{i}, Y_{j}).$$",
    "notes": "**读法**：引号里的 $\\varinjlim X_{i}$ 是**形式记法** —— 对象是「滤过图」本身，不是它的余极限（余极限可能压根不存在）。\n\n**公式为什么长这样**：要给两个形式余极限之间的映射，先固定 $j$，对每个 $i$ 给一条 $X_{i} \\to Y_{j}$ 且与 $i$ 的变动相容（这就是 $\\varprojlim_{i}$），再对 $j$ 取滤过余极限（$Y_{j}$ 越往后越大，晚给的映射可以「补」上早先的）。\n\n**例子**：$\\operatorname{Ind}(\\mathbf{FinSet})$ 是「所有集合」（每个集合都是它有限子集的滤过余极限）；$K$-理论的「向量丛按直和/余极限补全」用的也是它。\n\n📌 对偶地有 **Pro-对象**：把滤过图换成**余滤过**图，得到 $\\operatorname{Pro}(\\mathcal{C})$（profinite 空间就是 $\\operatorname{Pro}(\\mathbf{FinSet})$）。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.3"
@@ -52836,7 +52836,7 @@
     "直和",
     "加法范畴"
    ],
-   "statement": "范畴 $\\mathcal{C}$ 里的对象 $0$ 叫**零对象**，如果它**既是终对象又是始对象**（等价地 $\\operatorname{End}(0) = \\{ \\mathrm{id} \\}$，唯一的自同态是零）。\n\n一族对象 $(M_{i})_{i \\in I}$ 的**双积**（biproduct）是「积与余积恰好重合」的对象，记 $\\bigoplus_{i \\in I} M_{i}$；代数里就叫**直和**。",
+   "statement": "范畴 $\\mathcal{C}$ 里的对象 $0$ 叫**零对象**，如果它**既是终对象又是始对象**。\n\n一族对象 $(M_{i})_{i \\in I}$ 的**双积**（biproduct）是「积与余积恰好重合」的对象，记 $\\bigoplus_{i \\in I} M_{i}$；代数里就叫**直和**。",
    "notes": "**零对象给出零态射**：任意 $X \\to Y$ 都可以经 $X \\to 0 \\to Y$ 分解，得到的态射记 $0_{X,Y}$。所有「$f = 0$」「$f \\ne 0$」的说法都靠它。\n\n**双积为什么会重合**：在**预加性**范畴里，积与余积只要存在就自动一致（两个泛性质能互相满足），所以可以只谈一个。$M \\oplus N$ 的元素形式上写成 $f + g$（从 $M$ 与 $N$ 各来一条）。\n\n⚠️ 零对象在**不一定有**的范畴里可能不存在（如 $\\mathbf{Set}$：空集是始对象，但终对象是单点集，两者不同）。$\\mathbf{Ab}$、$A\\text{-}\\mathbf{Mod}$ 里当然是同一个 $\\{0\\}$。",
    "refs": [
     "Le Stum, Definition 5.1.4"
@@ -53293,7 +53293,7 @@
     "态射",
     "左正合"
    ],
-   "statement": "**景的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \\dashv f_{*}$。",
+   "statement": "**景的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。若 $f^{-1}$ 另有右伴随 $f_{*}$，则记 $f^{-1} \\dashv f_{*}$。",
    "notes": "⭐ **一对伴随**：$f^{-1} \\dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。\n\n**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在景这一层先保有限极限。\n\n**几何直觉**：空间之间的连续映射给出景的态射；景的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「景」换成「层范畴」。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
@@ -65277,7 +65277,7 @@
     "定义",
     "积分"
    ],
-   "statement": "闭区间 $[a, b]$ 的一个**分割**是一组有限点\n\n$$P = \\{ a = x_0 < x_1 < \\cdots < x_n = b \\}$$\n\n第 $i$ 个小区间记 $I_i := [x_{i-1}, x_i]$，长度记 $\\Delta x_i := x_i - x_{i-1}$。分割的**模**是\n\n$$\\|P\\| := \\max_{1 \\le i \\le n} \\Delta x_i$$\n\n若 $P \\subseteq P'$（把 $P$ 的点全放进 $P'$，可能还添了新点），称 $P'$ 是 $P$ 的**加细**。任意两个分割 $P, Q$ 都有公共加细 $P \\cup Q$。",
+   "statement": "设 $a < b$。闭区间 $[a, b]$ 的一个**分割**是一组有限点\n\n$$P = \\{ a = x_0 < x_1 < \\cdots < x_n = b \\}$$\n\n第 $i$ 个小区间记 $I_i := [x_{i-1}, x_i]$，长度记 $\\Delta x_i := x_i - x_{i-1}$。分割的**模**是\n\n$$\\|P\\| := \\max_{1 \\le i \\le n} \\Delta x_i$$\n\n若 $P \\subseteq P'$（把 $P$ 的点全放进 $P'$，可能还添了新点），称 $P'$ 是 $P$ 的**加细**。任意两个分割 $P, Q$ 都有公共加细 $P \\cup Q$。",
    "notes": "⭐ **有限**是刻意的：Riemann 积分只切有限刀。\n\nLebesgue 那一侧才允许可数无穷多块 —— 那正是两者差别的一个来源。\n\n⚠ 记号里的 $x_i$ 是分割点，与函数自变量无关；\n\n$\\Delta x_i$ 是长度，不是函数值之差。\n\n⭐ 加细的作用：分割越细，上和越小、下和越大（见「上和与下和」的注释）—— 它们是单调的，所以可以取确界。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 6",
@@ -65323,7 +65323,7 @@
     "积分"
    ],
    "statement": "设 $f : [a, b] \\to \\mathbb{R}$（**不要求有界**），$P = \\{ x_0 < \\cdots < x_n \\}$ 是分割，并在每个小区间里各取一个**标记点** $\\xi_i \\in I_i$。**Riemann 和**是\n\n$$S(f, P, \\xi) := \\sum_{i=1}^{n} f(\\xi_i)\\,\\Delta x_i$$\n\n它依赖三样东西：$f$、分割 $P$、以及标记点 $\\xi_1, \\ldots, \\xi_n$ 的取法。\n\n⚠️ **有界性在这里用不上**：每个 $f(\\xi_i)$ 都是实数，有限和总有定义。有界性要到讨论「Riemann **可积**」时才需要 —— 那里的 Darboux 上下和才要 $\\sup/\\inf$ 有限。",
-   "notes": "⭐ 几何读法：把每一小段上的「高」取成 $f(\\xi_i)$，得到 $n$ 个矩形，$S$ 就是它们的面积之和。**标记点的取法**是这套理论里唯一的自由 —— 可积的定义之所以要「对任意取法都成立」，就是为了让这个自由消失。\n\n⚠ $f$ 必须有界：否则某个 $f(\\xi_i)$ 可以任意大，和没有意义。",
+   "notes": "⭐ 几何读法：把每一小段上的「高」取成 $f(\\xi_i)$，得到 $n$ 个矩形，$S$ 就是它们的面积之和。**标记点的取法**是这套理论里唯一的自由 —— 可积的定义之所以要「对任意取法都成立」，就是为了让这个自由消失。\n\n⚠ 无界时 Riemann 和**仍然有定义**（有限个实数之和），但有界性是可积性讨论的前提：Darboux 上下和要 $\\sup/\\inf$ 有限。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 6"
    ]
@@ -65484,7 +65484,7 @@
     "可积性"
    ],
    "statement": "设 $f$ 在 $[a, b]$ 上有界。则 $f$ 可积，当且仅当对每个 $\\varepsilon > 0$ 都存在分割 $P$ 使\n\n$$U(f, P) - L(f, P) = \\sum_{i} \\omega_i\\,\\Delta x_i < \\varepsilon$$\n\n（$\\omega_i$ 是 $f$ 在第 $i$ 段上的振幅。）并且此时两种定义（标记和极限 / Darboux 确界）给出的积分值相同。",
-   "notes": "⭐ **振幅和可以任意小**是全书最有用的一句可积性判据：一切「某个函数可积」的证明都是把它化归成振幅和的估计。\n\n⭐ 用法示例：连续函数用**一致连续**控制 $\\omega_i$；\n\n单调函数用等距分割让 $\\sum \\omega_i \\Delta x_i \\le (f(b) - f(a))\\|P\\|$。\n\n⚠ 判据只要求**存在**一个分割使振幅和够小，不要求所有分割 —— 因为振幅和随加细单调不增。",
+   "notes": "⭐ **振幅和可以任意小**是全书最有用的一句可积性判据：一切「某个函数可积」的证明都是把它化归成振幅和的估计。\n\n⭐ 用法示例：连续函数用**一致连续**控制 $\\omega_i$；\n\n**单调递增**函数用等距分割让 $\\sum \\omega_i \\Delta x_i \\le (f(b) - f(a))\\|P\\|$（递减时右端取绝对值）。\n\n⚠ 判据只要求**存在**一个分割使振幅和够小，不要求所有分割 —— 因为振幅和随加细单调不增。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 6",
     "Spivak, Calculus, Ch. 13"
@@ -65646,7 +65646,7 @@
     "不等式"
    ],
    "statement": "设 $f, g$ 在 $[a, b]$ 上可积。\n\n- **保序**：若 $f(x) \\le g(x)$ 处处成立，则 $\\int_a^b f \\le \\int_a^b g$；特别地 $f \\ge 0 \\implies \\int_a^b f \\ge 0$。\n- **绝对值**：$|f|$ 可积，且\n\n$$\\Bigl| \\int_a^b f \\Bigr| \\le \\int_a^b |f|$$\n\n- **基本估计**：若 $|f(x)| \\le M$ 处处成立，则 $\\bigl| \\int_a^b f \\bigr| \\le M\\,(b - a)$。",
-   "notes": "⭐ 保序性听起来平凡，但它是**一切积分不等式**的源头：要证 $\\int f \\le \\int g$，只需逐点证明 $f \\le g$。\n\n⚠ 保序是**非严格**的：逐点严格不等推不出积分严格不等（$f = 0$、$g$ 只在一点为正的例子）。\n\n⭐ $|f|$ 可积是 Riemann 特有的现象（Lebesgue 那边 $f$ 可积直接蕴含 $|f|$ 可积）；\n\n反过来 $|f|$ 可积不蕴含 $f$ 可积 —— $f$ 取 $1$ 与 $-1$ 在有理/无理处交替时，$|f| \\equiv 1$ 可积而 $f$ 不可积。",
+   "notes": "⭐ 保序性听起来平凡，但它是**一切积分不等式**的源头：要证 $\\int f \\le \\int g$，只需逐点证明 $f \\le g$。\n\n⚠ 保序得到的**非严格**不等号不能升级：$f \\le g$ 且只在一点上 $f < g$，仍有 $\\int_a^b f = \\int_a^b g$（改一个点的函数值不改变 Riemann 积分）。\n\n⭐ $|f|$ 可积是 Riemann 特有的现象（Lebesgue 那边 $f$ 可积直接蕴含 $|f|$ 可积）；\n\n反过来 $|f|$ 可积不蕴含 $f$ 可积 —— $f$ 取 $1$ 与 $-1$ 在有理/无理处交替时，$|f| \\equiv 1$ 可积而 $f$ 不可积。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 6"
    ]
@@ -65804,7 +65804,7 @@
     "积分"
    ],
    "statement": "设 $F, G : [a, b] \\to \\mathbb{R}$ 可导、$F', G'$ 可积。则\n\n$$\\int_a^b F G' = F(b)G(b) - F(a)G(a) - \\int_a^b F' G$$\n\n（写成惯用的形式：$\\int_a^b u\\,dv = uv\\bigr|_a^b - \\int_a^b v\\,du$。）",
-   "notes": "⭐ 它同样是**乘积求导法则反着写**：$(FG)' = F'G + FG'$，两边积分再用 Newton–Leibniz。\n\n⚠ 里外里验证的常见错误：把 $F(b)G(b) - F(a)G(a)$ 写成 $(FG)(b - a)$ —— 那是「乘积的积分」，不是「乘积的端点差」。\n\n⭐ 分部积分最有价值的形态是「移项」：$\\int F G' = FG\\bigr|_a^b - \\int F'G$ 把难积的一方挪到另一边。\n\n在 Lebesgue 那一侧它对应「弱导数 / 分布意义下的求导」那一整套。",
+   "notes": "⭐ 它同样是**乘积求导法则反着写**：$(FG)' = F'G + FG'$，两边积分再用 Newton–Leibniz。\n\n⚠ 里外里验证的常见错误：把 $F(b)G(b) - F(a)G(a)$ 写成 $(FG)(b - a)$ —— 那表示「$FG$ 在点 $b - a$ 处的值」（或 $(b-a)$ 乘以 $FG$），既不是「乘积的端点差」，也不是「乘积的积分」。\n\n⭐ 分部积分最有价值的形态是「移项」：$\\int F G' = FG\\bigr|_a^b - \\int F'G$ 把难积的一方挪到另一边。\n\n在 Lebesgue 那一侧它对应「弱导数 / 分布意义下的求导」那一整套。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 6"
    ]

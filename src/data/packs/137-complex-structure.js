@@ -189,8 +189,8 @@
       regions: ['complex'],
       tags: ['复变函数', '同伦', '绕数', 'Cauchy 定理'],
       statement: [
-        '设 $\\gamma_{0}, \\gamma_{1}$ 是 $\\mathbb{C} \\setminus \\{a\\}$ 中同伦的闭曲线（同伦 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$' +
-          '两端分别给出 $\\gamma_{0}, \\gamma_{1}$）。则',
+        '设 $\\gamma_{0}, \\gamma_{1}$ 是 $\\mathbb{C} \\setminus \\{a\\}$ 中同伦的闭曲线（同伦 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 两端分别给出 $\\gamma_{0}, \\gamma_{1}$，且对每个 $s \\in [0,1]$，$H(\\cdot, s)$ 是闭曲线，即 $H(0, s) = H(1, s)$' +
+          '）。则',
         '',
         '$$n(\\gamma_{0}, a) = n(\\gamma_{1}, a).$$',
         '',

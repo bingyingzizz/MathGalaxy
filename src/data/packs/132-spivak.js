@@ -326,7 +326,7 @@ window.MG = window.MG || {};
       statement: [
         '**在做什么**：把「链上的积分」说成一个配对 —— 左边是链、右边是形式、结果是一个数，两头都线性。这条双线性是后面所有求和与拆分的许可证。',
         '',
-        '设 $c$ 是 $M$ 上的 $k$-链，$\\omega,\\eta$ 是 $k$-形式，$a,b\\in\\mathbb{R}$。则',
+        '设 $c$ 是 $M$ 上的 $k$-链，$\\omega,\\eta$ 是 $k$-形式，$a,b\\in\\mathbb{Z}$。则',
         '',
         '$$\\int_{c}(a\\,\\omega+b\\,\\eta) = a\\int_{c}\\omega+b\\int_{c}\\eta ,\\qquad \\int_{a\\,c+b\\,c\'}\\omega = a\\int_{c}\\omega+b\\int_{c\'}\\omega .$$',
         '',
@@ -345,7 +345,7 @@ window.MG = window.MG || {};
         '',
         '**⚠️ 反对称性不是「反对称」**：$\\int_{-c} = -\\int_{c}$ 说的是链的系数为负，不是「交换两个变元变号」。链与形式之间不存在交换律 —— 它们的类型不同。',
         '',
-        '**⚠️ 系数域**：链的系数在 $\\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\\mathbb{R}$ 里。这里两者都按实数看待，取整数值只是链的记账习惯；讨论同调时会回到 $\\mathbb{Z}$。'
+        '**⚠️ 系数域**：链的系数在 $\\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\\mathbb{R}$ 里。这里的 $a,b$ 取 $\\mathbb{Z}$ 中的整数（整系数线性组合仍是链）；若要实数系数，须先把链群写成 $C_{k}(M;\\mathbb{R})$。'
       ].join('\n'),
       refs: [
         'Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链上积分的线性',

@@ -80,7 +80,7 @@ window.MG = window.MG || {};
       statement: [
         '范畴 $\\mathcal{C}$ 的一个 **Ind-对象**「$\\varinjlim_{i \\in I} X_{i}$」是一个**滤过图** $(X_{i})_{i \\in I}$。它们组成范畴 $\\operatorname{Ind}(\\mathcal{C})$，其 Hom 为',
         '',
-        '$$\\operatorname{Hom}_{\\operatorname{Ind}(\\mathcal{C})}\\Bigl(\\text{“}\\varinjlim_{i \\in I} X_{i}\\text{”},\\ \\text{“}\\varinjlim_{j \\in J} Y_{j}\\text{”}\\Bigr) \\;=\\; \\varinjlim_{j \\in J}\\ \\varprojlim_{i \\in I}\\ \\operatorname{Hom}_{\\mathcal{C}}(X_{i}, Y_{j}).$$'
+        '$$\\operatorname{Hom}_{\\operatorname{Ind}(\\mathcal{C})}\\Bigl(\\text{“}\\varinjlim_{i \\in I} X_{i}\\text{”},\\ \\text{“}\\varinjlim_{j \\in J} Y_{j}\\text{”}\\Bigr) \\;=\\; \\varprojlim_{j \\in J}\\ \\varinjlim_{i \\in I}\\ \\operatorname{Hom}_{\\mathcal{C}}(X_{i}, Y_{j}).$$'
       ].join('\n'),
       notes: [
         '**读法**：引号里的 $\\varinjlim X_{i}$ 是**形式记法** —— 对象是「滤过图」本身，不是它的余极限（余极限可能压根不存在）。',
@@ -147,7 +147,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '零对象', '双积', '直和', '加法范畴'],
       statement: [
-        '范畴 $\\mathcal{C}$ 里的对象 $0$ 叫**零对象**，如果它**既是终对象又是始对象**（等价地 $\\operatorname{End}(0) = \\{ \\mathrm{id} \\}$，唯一的自同态是零）。',
+        '范畴 $\\mathcal{C}$ 里的对象 $0$ 叫**零对象**，如果它**既是终对象又是始对象**。',
         '',
         '一族对象 $(M_{i})_{i \\in I}$ 的**双积**（biproduct）是「积与余积恰好重合」的对象，记 $\\bigoplus_{i \\in I} M_{i}$；代数里就叫**直和**。'
       ].join('\n'),

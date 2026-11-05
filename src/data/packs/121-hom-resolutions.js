@@ -348,7 +348,7 @@ window.MG = window.MG || {};
         '',
         '而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。',
         '',
-        '**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{pd}_{R} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的投射维数」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。'
+        '**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{fd}_{R^{\\mathrm{op}}} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。'
       ].join('\n'),
       notes: [
         '**与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：',
@@ -501,7 +501,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', '维数转移', 'Ext', 'Tor', '合冲'],
       statement: [
-        '设 $0 \\to K \\to P \\xrightarrow{\\ \\pi\\ } M \\to 0$ 是 $R$-模的短正合列，且 $P$ **投射**（等价地：$K$ 是 $M$ 的一个合冲）。则对一切 $n \\ge 0$ 与任意 $R$-模 $N$：',
+        '设 $0 \\to K \\to P \\xrightarrow{\\ \\pi\\ } M \\to 0$ 是 $R$-模的短正合列，且 $P$ **投射**（等价地：$K$ 是 $M$ 的一个合冲）。则对一切 $n \\ge 1$ 与任意 $R$-模 $N$：',
         '',
         '$$\\operatorname{Ext}^{n+1}_{R}(M, N) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(K, N), \\qquad \\operatorname{Tor}_{n+1}^{R}(M, N) \\;\\cong\\; \\operatorname{Tor}_{n}^{R}(K, N).$$',
         '',
@@ -536,7 +536,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['定理', 'Ext', '消解', '导出范畴', '平衡函子'],
       statement: [
-        '设 $P_{\\bullet} \\twoheadrightarrow M$ 是 $M$ 的投射消解（取删除消解），$M \\to I^{\\bullet}$ 是内射消解。则对每个 $R$-模 $N$ 与每个 $n \\ge 0$：',
+        '设 $P_{\\bullet} \\twoheadrightarrow M$ 是 $M$ 的投射消解（取删除消解），$N \\to I^{\\bullet}$ 是 $N$ 的内射消解（$N$ 为任意 $R$-模）。则对每个 $n \\ge 0$：',
         '',
         '$$H^{n}\\bigl(\\operatorname{Hom}_{R}(P_{\\bullet}, N)\\bigr) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(M, N) \\;\\cong\\; H^{n}\\bigl(\\operatorname{Hom}_{R}(M, I^{\\bullet})\\bigr).$$',
         '',
@@ -917,7 +917,7 @@ window.MG = window.MG || {};
         '',
         '1. $E$ **正合**：保有限极限与有限余极限，把核、余核、像与短正合列原样搬过去；',
         '2. $E$ **反射**投射与内射对象：若 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射，则 $P$ 在 $\\mathcal{C}$ 里投射（内射同理：$EI$ 内射 $\\implies$ $I$ 内射）；',
-        '3. 于是「某个对象在 $\\mathcal{C}$ 里投射 / 内射」这件事，可以搬到模范畴里判 —— 那边有元素、有直和项、有显式的自由模，判起来容易得多。',
+        '3. 于是第 2 点直接给出**充分条件**：要认定 $P$ 在 $\\mathcal{C}$ 里投射（或 $I$ 内射），只需验 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射（$EI$ 内射）—— 那边有元素、有直和项、有显式的自由模，判起来容易得多。',
         '',
         '这是「追元素」最常用的那一步的精确形式：**难点在 $\\mathcal{C}$，验算放在 $A\\text{-}\\mathbf{Mod}$**。'
       ].join('\n'),

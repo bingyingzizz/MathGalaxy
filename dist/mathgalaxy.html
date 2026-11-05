@@ -2779,6 +2779,43 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
         cam.centerOn((bbox.minX + bbox.maxX) / 2, (bbox.minY + bbox.maxY) / 2);
       },
 
+      /* ⭐ 视口 / 可用区变了、但用户**没滚轮** ⇒ 保持「相对缩放」k/k₀ 不变。
+         为什么必须有这一步：LOD 的档位判据是 r = k / fitZoom()（见 renderer.computeLod），
+         fitZoom() 跟着视口与可用区走。窗口一缩、图例一折、说明条一展，k₀ 就变；
+         若 cam.k 不动，r 会被抬高一截 ⇒ 全景档被误判成「放大」，把上千个点画出来
+         （用户 2026-11-05 报的「没动滚轮却识别我在不同的缩放大小」）。
+         做法：按 p = 新k₀/旧k₀ 等比缩放 k（夹到 min/max），再把**变化前可用区中心的世界点**
+         (wx,wy) 放回新可用区中心 —— 顺手修掉「resize 之后内容偏到左上角」。
+         ⚠️ 动画中的关键帧也一起换算：tick() 每帧按 k0/tx0 → k1/tx1 插值，
+            只改当前机位的话下一帧就会被拉回旧基准。 */
+      remapViewport: function (p, av0, wx, wy) {
+        if (!(p > 0) || !isFinite(p) || !isFinite(wx) || !isFinite(wy)) return false;
+        var av = availRect();
+        var c0x = (av0 && isFinite(av0.cx)) ? av0.cx : av.cx;
+        var c0y = (av0 && isFinite(av0.cy)) ? av0.cy : av.cy;
+        var k2 = U.clamp(cam.k * p, CFG.minZoom, CFG.maxZoom);
+        cam.k = k2;
+        cam.tx = av.cx - wx * k2;
+        cam.ty = av.cy - wy * k2;
+        var a = cam._anim;
+        if (a) {
+          function remapKF(tx, ty, kk) {
+            if (!(kk > 0) || !isFinite(tx) || !isFinite(ty)) return null;
+            var k3 = U.clamp(kk * p, CFG.minZoom, CFG.maxZoom);
+            return {
+              k: k3,
+              tx: av.cx - ((c0x - tx) / kk) * k3,
+              ty: av.cy - ((c0y - ty) / kk) * k3
+            };
+          }
+          var s0 = remapKF(a.tx0, a.ty0, a.k0);
+          var s1 = remapKF(a.tx1, a.ty1, a.k1);
+          if (s0) { a.k0 = s0.k; a.tx0 = s0.tx; a.ty0 = s0.ty; }
+          if (s1) { a.k1 = s1.k; a.tx1 = s1.tx; a.ty1 = s1.ty; }
+        }
+        return true;
+      },
+
       /* --------------------------------------------------------- 动画 */
       /** 平滑移动到目标视角；target = {k, cx, cy}（cx,cy 为世界中心） */
       animateTo: function (target, ms) {
@@ -3722,32 +3759,54 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
   }
 
   /* -------------------------------------------------------------- 相机 */
-  /* 「上次看到哪」也存一下：否则每次刷新都从「全部适配」重新开始动画。 */
-  function saveCam(cam) {
+  /* 「上次看到哪」也存一下：否则每次刷新都从「全部适配」重新开始动画。
+     ⭐⭐ ENG-001：**必须存「相对缩放」**。
+        以前只存 k/tx/ty。换一个视口重开时，同一个 k 对应的 r = k/k₀ 完全变了
+        （视口小 ⇒ k₀ 小 ⇒ r 被抬到 1.3+）⇒ LOD 把全景误判成放大档，一千多个点全画出来。
+        现在存 k 的同时记下当时的 k₀（fitK）与可用区中心的世界点 (cx,cy)：
+        · k / fitK = 用户真正的「相对缩放」，与视口无关；
+        · (cx,cy) 是世界坐标，与视口无关 —— 恢复时对新视口 `centerOn` 即可。
+        `v` 是格式版本：未来改字段就 +1，旧记录自动作废（宁可回到默认视角，不可用错缩放）。 */
+  var CAM_V = 2;
+  function saveCam(cam, fitK) {
     if (!cam || !isFinite(cam.k) || cam.k <= 0) return false;
-    return writeJSON(CAM_KEY, { k: cam.k, tx: cam.tx, ty: cam.ty });
+    if (!(fitK > 0) || !isFinite(fitK)) return false;
+    if (typeof cam.availRect !== 'function' || typeof cam.toWorld !== 'function') return false;
+    var av = cam.availRect();
+    var w = cam.toWorld(av.cx, av.cy);
+    if (!isFinite(w.x) || !isFinite(w.y)) return false;
+    return writeJSON(CAM_KEY, {
+      v: CAM_V, k: cam.k, fitK: fitK, cx: w.x, cy: w.y,
+      /* 视口尺寸只做诊断；恢复不读它（读了就又跟视口绑死了） */
+      vw: cam.viewW, vh: cam.viewH
+    });
   }
 
-  /** 读出相机的历史值；没有 / 不合法 / 明显跑到世界外面 ⇒ null */
-  function loadCam(graph) {
+  /** 读出相机并**按当前视口归一化**；没有 / 不合法 / 明显跑到世界外面 ⇒ null。
+      返回 { k, cx, cy }：k 已按 r = 存的 k / 存的 fitK 换算到当前 k₀，
+      调用方拿到后 `cam.k = k; cam.centerOn(cx, cy)`。 */
+  function loadCam(graph, fitK) {
     var d = readJSON(CAM_KEY);
-    if (!d) return null;
+    if (!d || d.v !== CAM_V) return null;
     /* ⚠️ 不能只用 isFinite：JSON 把 NaN 写成 null，而 isFinite(null) 是 **true**
        （Number(null) === 0）—— 这样坏值会一路流进来。必须逐字段查 typeof。 */
-    if (typeof d.k !== 'number' || typeof d.tx !== 'number' || typeof d.ty !== 'number') return null;
-    if (!isFinite(d.k) || !isFinite(d.tx) || !isFinite(d.ty)) return null;
-    if (d.k <= 0) return null;
+    if (typeof d.k !== 'number' || typeof d.fitK !== 'number' ||
+      typeof d.cx !== 'number' || typeof d.cy !== 'number') return null;
+    if (!isFinite(d.k) || !isFinite(d.fitK) || !isFinite(d.cx) || !isFinite(d.cy)) return null;
+    if (!(d.k > 0) || !(d.fitK > 0) || !(fitK > 0) || !isFinite(fitK)) return null;
+    /* r 的合理范围：1/16 ~ 16 倍 k₀。这是「坏值/旧格式」的闸门，不是审美限制；
+       真正的上下限仍由 camera.minZoom / maxZoom 夹（调用方做）。 */
+    var r = d.k / d.fitK;
+    if (!isFinite(r) || r < 1 / 16 || r > 16) return null;
     var bb = graph.bbox && graph.bbox();
     if (bb) {
-      /* 反解视图中心的世界坐标，要求它落在内容包围盒里（放宽一圈） */
+      /* 世界中心要求落在内容包围盒里（放宽一圈）—— 存档换了内容/设备时别乱跳 */
       var pad = 0.5 * Math.max(bb.maxX - bb.minX, bb.maxY - bb.minY) + 2000;
-      var cx = (d.tx * -1) / d.k, cy = (d.ty * -1) / d.k;
-      /* 注意：tx/ty 是屏幕平移量，视图中心 ≈ (-tx/k, -ty/k) + 视口中心/k，
-         这里只做粗略的合理性检查，真正的边界由 clamp 保证。 */
-      if (!isFinite(cx) || !isFinite(cy)) return null;
-      if (Math.abs(cx) > pad + 1e6 || Math.abs(cy) > pad + 1e6) return null;
+      var mx = (bb.minX + bb.maxX) / 2, my = (bb.minY + bb.maxY) / 2;
+      var halfW = (bb.maxX - bb.minX) / 2 + pad, halfH = (bb.maxY - bb.minY) / 2 + pad;
+      if (Math.abs(d.cx - mx) > halfW || Math.abs(d.cy - my) > halfH) return null;
     }
-    return d;
+    return { k: fitK * r, cx: d.cx, cy: d.cy };
   }
 
   MG.layoutCache = {
@@ -5261,10 +5320,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
          2026-10-17 给相机加了内缩之后，这里必须跟着读 availRect()，
          否则 {rel:…} 的阈值全部和「用户看到的那一档」错位
          （正是 config 注释里那条铁律：同一个量不许在两个文件里各算一遍）。 */
-      /* ⛔ 2026-10-19：LOD 基准改用**整个视口**，不再扣 UI 边距。平板图上实测：
-         1200×640 的视口被扣掉 330 宽图例 + 2×130 padding 之后 k₀ 掉到 ≈0.04，
-         而相机实际停在 0.060 ⇒ r=k/k₀ 被抬到 1.5，全景漏出节点与推出线。
-         基准只该回答「内容铺满一屏是多少」，不该跟着 UI 覆盖率漂。 */
+      /* ⛔ 这里必须和 camera.fit() 用**同一块可用矩形**（而不是整个视口）：
+         「适配全部」按 availRect 停相机，LOD 的 r=1 也必须按同一个 availRect 算，
+         否则用户点「适配全部」时 r ≠ 1，全景档当场就错位。
+         2026-10-19 曾试着改成整个视口，结果 1200×640 上 r 被抬到 1.5（见下）；
+         真正的解法不是让基准跟 UI 无关，而是让**用户没滚轮时 r 不变** ——
+         app 的 keepRelZoom() 在视口/内缩变化时按新旧 k₀ 等比缩放 cam.k（ENG-001）。
+         基准只该回答「内容铺满一屏是多少」；UI 覆盖率一变，由相机那边补偿。 */
       var av = (typeof c.availRect === 'function') ? c.availRect() : { w: vw, h: vh };
       var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh, av.w, av.h].join(',');
       if (key === fitKKey) return fitKCache;
@@ -7727,7 +7789,30 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
       labelBudget: function () { return nodeNameBudget(); },
       /* 诊断用：当前帧的 LOD 读数（档位 / 三档名字 / 定义线系数）。
          ⚠️ 只读快照，别拿它当状态改 —— holdTier 的真源在 computeLod 里。 */
-      fitZoom: fitZoom,                                  // 给 paintKey 现算 r=k/kFit 用
+      fitZoom: fitZoom,                                  // 「适配全部」的 k₀（与 LOD 同一口径）
+      /* ⭐ ENG-001：位图缓存（worldbitmap）的绘制输入里必须带这一项。
+         它现算 LOD，把**烘焙真正读的那几个闸门**压成一个短串：
+           · nodeDot    —— 全景不画点（r=1.32~1.42 淡入）
+           · nodeEdge   —— 节点级细线
+           · trunkEdge  —— 主干边
+           · clusterLink—— 团级聚合线
+         以前 app 自己用 Math.round(r*4)（0.25 一档）：nodeDot 的闸门整个落在同一档里
+         （r=1.30 与 r=1.36 同为 5）⇒ 位图按旧档烘好后不再重烘，实时层又被 staticHidden
+         挡住 ⇒ 屏幕上留下「全景里的圆点」。⛔ 别在 app 里再算一遍 r：同一个量两处各算
+         一次就会漂（HANDOVER 2.8）。
+         ⚠️ 这里调用 computeLod() 是刻意的：paintKey 在 frame() 里、renderer.draw() 之前算，
+         直接读 lodA 会读到**上一帧**的档位 ⇒ 滚轮停在临界点那一帧会把旧档烘进去。 */
+      lodPaintKey: function () {
+        computeLod();
+        return [
+          lodA.nodeDot > 0.02 ? 1 : 0,
+          lodA.nodeEdge > 0.02 ? 1 : 0,
+          lodA.trunkEdge > 0.02 ? 1 : 0,
+          lodA.clusterLink > 0.02 ? 1 : 0,
+          Math.round((lodA.rRel || 1) * 4),
+          lodA.tier
+        ].join(':');
+      },
       lodState: function () {
         return {
           k: camNow().k, rRel: lodA.rRel || 1,
@@ -7737,6 +7822,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
           trunkName: lodA.trunkName, clusterLink: lodA.clusterLink,
           /* 2026-10-2x：判「黑线为什么淡了」要读的两个喂给 alpha 的系数 */
           nodeEdge: lodA.nodeEdge, edgeFloor: lodA.edgeFloor,
+          /* ⭐ ENG-001：全景档是否在画节点（0 = 只有云/板块/领域，1 = 圆点全开）。
+             验收「视口变了但没滚轮 ⇒ nodeDot 仍为 0」直接读它。 */
+          nodeDot: lodA.nodeDot,
           labelCount: prof.labelCount
         };
       },
@@ -21530,7 +21618,7 @@ window.MG = window.MG || {};
         '以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。',
         '',
         '- **和与积**：$f + g$、$fg$ 可测；',
-        '- **逐点上确界**：$\\{f_j\\}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；',
+        '- **逐点上确界**：可数族 $\\{f_j\\}_{j\\in\\mathbb{N}}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；',
         '- **有限个取大**：$f, g$ 可测 $\\implies$ $\\max_{f, g}$ 可测；',
         '- **极限**：若 $\\lim_j f_j$ 逐点存在，则它是可测的。'
       ].join('\n'),
@@ -22672,12 +22760,12 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['反例', '收敛', '依测度'],
       statement: [
-        '在 $\\mathbb{R}$（或 [0, 1]）上取 Lebesgue 测度。',
+        '在 $\\mathbb{R}$ 上取 Lebesgue 测度。',
         '',
         '- **(i)** $f_n = n^{-1} \\chi_{(0, n)}$：$f_n \\rightrightarrows  0$ **一致**收敛。',
         '- **(ii)** $f_n = \\chi_{(n, n+1)}$：$f_n \\to 0$ **逐点**（因而 a.e.），但**不一致**（$\\sup_x |f_n| = 1$），也不 $L^{1}$ 收敛（$\\int f_n = 1 \\nrightarrow  0$）。',
         '- **(iii)** $f_n = n \\chi_{[0, 1/n]}$：$f_n \\to 0$ a.e.（也依测度收敛，因为 $\\mu(\\{|f_n| > \\delta\\}) = 1/n \\to 0$），但**不 $L^{1}$ 收敛**（$\\int f_n = 1$ 对一切 $n$）。',
-        '- **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——',
+        '- **(iv) 二进制填充**（在 $[0,1] \\subset \\mathbb{R}$ 上）：把越来越小的区间排成一列 ——',
         '',
         '$$f_1 = \\chi_{[0,1]}, f_2 = \\chi_{[0,1/2]}, f_3 = \\chi_{[1/2,1]}, f_4 = \\chi_{[0,1/4]}, \\cdots$$',
         '即 $f_n = \\chi_{[j/2^k, (j+1)/2^k]}$（$n = 2^k + j$）：它**依测度**收敛到 0，但对**任何** $x \\in [0,1]$ 都**不**收敛。'
@@ -25634,7 +25722,7 @@ window.MG = window.MG || {};
         '固定测度空间 $(X, \\mathcal{M}, \\mu)$。对可测 $f$ 与 $0 < p < \\infty$ 定义**准范数**',
         '',
         '$$\\|f\\|_p := \\left[ \\int |f|^p \\, d\\mu \\right]^{1/p}$$',
-        '⚠ **只有 $p \\ge 1$ 时它才真的是范数**（$0 < p < 1$ 时三角不等式**不成立**：取不交的 $A, B$、$f = \\chi_{A}$、$g = \\chi_{B}$、$p = \\tfrac{1}{2}$，则 $\\|f+g\\|_p = 2$ 而 $\\|f\\|_p + \\|g\\|_p = 1 + 1 = 2$ —— 换成 $f = g = \\lambda\\chi_{A}$ 就能看到严格不等式破：$\\|f+g\\|_p = (2\\lambda)^{p}/\\mu(A)^{1/p}$ 与 $2\\lambda\\mu(A)^{1/p}$ 之比为 $2^{p-1} > 1$）。所以 $p \\in (0,1)$ 时通常只记作 $L^{p}$ 空间（度量 $d(f,g) = \\|f-g\\|_p^{p}$ 下完备），**不称赋范空间**。',
+        '⚠ **只有 $p \\ge 1$ 时它才真的是范数**（$0 < p < 1$ 时三角不等式**不成立**：取不交的 $A, B$ 且 $\\mu(A) = \\mu(B) = 1$，令 $f = \\chi_{A}$、$g = \\chi_{B}$、$p = \\tfrac{1}{2}$，则 $\\|f+g\\|_p = (\\mu(A)+\\mu(B))^{1/p} = 2^{2} = 4$ 而 $\\|f\\|_p + \\|g\\|_p = 1 + 1 = 2$）。所以 $p \\in (0,1)$ 时通常只记作 $L^{p}$ 空间（度量 $d(f,g) = \\|f-g\\|_p^{p}$ 下完备），**不称赋范空间**。',
         '',
         '以及',
         '',
@@ -35887,7 +35975,7 @@ window.MG = window.MG || {};
       statement: [
         '范畴 $\\mathcal{C}$ 的一个 **Ind-对象**「$\\varinjlim_{i \\in I} X_{i}$」是一个**滤过图** $(X_{i})_{i \\in I}$。它们组成范畴 $\\operatorname{Ind}(\\mathcal{C})$，其 Hom 为',
         '',
-        '$$\\operatorname{Hom}_{\\operatorname{Ind}(\\mathcal{C})}\\Bigl(\\text{“}\\varinjlim_{i \\in I} X_{i}\\text{”},\\ \\text{“}\\varinjlim_{j \\in J} Y_{j}\\text{”}\\Bigr) \\;=\\; \\varinjlim_{j \\in J}\\ \\varprojlim_{i \\in I}\\ \\operatorname{Hom}_{\\mathcal{C}}(X_{i}, Y_{j}).$$'
+        '$$\\operatorname{Hom}_{\\operatorname{Ind}(\\mathcal{C})}\\Bigl(\\text{“}\\varinjlim_{i \\in I} X_{i}\\text{”},\\ \\text{“}\\varinjlim_{j \\in J} Y_{j}\\text{”}\\Bigr) \\;=\\; \\varprojlim_{j \\in J}\\ \\varinjlim_{i \\in I}\\ \\operatorname{Hom}_{\\mathcal{C}}(X_{i}, Y_{j}).$$'
       ].join('\n'),
       notes: [
         '**读法**：引号里的 $\\varinjlim X_{i}$ 是**形式记法** —— 对象是「滤过图」本身，不是它的余极限（余极限可能压根不存在）。',
@@ -35954,7 +36042,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '零对象', '双积', '直和', '加法范畴'],
       statement: [
-        '范畴 $\\mathcal{C}$ 里的对象 $0$ 叫**零对象**，如果它**既是终对象又是始对象**（等价地 $\\operatorname{End}(0) = \\{ \\mathrm{id} \\}$，唯一的自同态是零）。',
+        '范畴 $\\mathcal{C}$ 里的对象 $0$ 叫**零对象**，如果它**既是终对象又是始对象**。',
         '',
         '一族对象 $(M_{i})_{i \\in I}$ 的**双积**（biproduct）是「积与余积恰好重合」的对象，记 $\\bigoplus_{i \\in I} M_{i}$；代数里就叫**直和**。'
       ].join('\n'),
@@ -36249,7 +36337,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '景', '态射', '左正合'],
       statement: [
-        '**景的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}\'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \\dashv f_{*}$。'
+        '**景的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}\'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。若 $f^{-1}$ 另有右伴随 $f_{*}$，则记 $f^{-1} \\dashv f_{*}$。'
       ].join('\n'),
       notes: [
         '⭐ **一对伴随**：$f^{-1} \\dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。',
@@ -46401,7 +46489,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [
-        '闭区间 $[a, b]$ 的一个**分割**是一组有限点',
+        '设 $a < b$。闭区间 $[a, b]$ 的一个**分割**是一组有限点',
         '',
         '$$P = \\{ a = x_0 < x_1 < \\cdots < x_n = b \\}$$',
         '',
@@ -46431,7 +46519,7 @@ window.MG = window.MG || {};
         '',
         '它依赖三样东西：$f$、分割 $P$、以及标记点 $\\xi_1, \\ldots, \\xi_n$ 的取法。\n\n⚠️ **有界性在这里用不上**：每个 $f(\\xi_i)$ 都是实数，有限和总有定义。有界性要到讨论「Riemann **可积**」时才需要 —— 那里的 Darboux 上下和才要 $\\sup/\\inf$ 有限。'
       ].join('\n'),
-      notes: '⭐ 几何读法：把每一小段上的「高」取成 $f(\\xi_i)$，得到 $n$ 个矩形，$S$ 就是它们的面积之和。**标记点的取法**是这套理论里唯一的自由 —— 可积的定义之所以要「对任意取法都成立」，就是为了让这个自由消失。\n\n⚠ $f$ 必须有界：否则某个 $f(\\xi_i)$ 可以任意大，和没有意义。',
+      notes: '⭐ 几何读法：把每一小段上的「高」取成 $f(\\xi_i)$，得到 $n$ 个矩形，$S$ 就是它们的面积之和。**标记点的取法**是这套理论里唯一的自由 —— 可积的定义之所以要「对任意取法都成立」，就是为了让这个自由消失。\n\n⚠ 无界时 Riemann 和**仍然有定义**（有限个实数之和），但有界性是可积性讨论的前提：Darboux 上下和要 $\\sup/\\inf$ 有限。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 6']
     },
     {
@@ -46511,7 +46599,7 @@ window.MG = window.MG || {};
         '',
         '（$\\omega_i$ 是 $f$ 在第 $i$ 段上的振幅。）并且此时两种定义（标记和极限 / Darboux 确界）给出的积分值相同。'
       ].join('\n'),
-      notes: '⭐ **振幅和可以任意小**是全书最有用的一句可积性判据：一切「某个函数可积」的证明都是把它化归成振幅和的估计。\n\n⭐ 用法示例：连续函数用**一致连续**控制 $\\omega_i$；\n\n单调函数用等距分割让 $\\sum \\omega_i \\Delta x_i \\le (f(b) - f(a))\\|P\\|$。\n\n⚠ 判据只要求**存在**一个分割使振幅和够小，不要求所有分割 —— 因为振幅和随加细单调不增。',
+      notes: '⭐ **振幅和可以任意小**是全书最有用的一句可积性判据：一切「某个函数可积」的证明都是把它化归成振幅和的估计。\n\n⭐ 用法示例：连续函数用**一致连续**控制 $\\omega_i$；\n\n**单调递增**函数用等距分割让 $\\sum \\omega_i \\Delta x_i \\le (f(b) - f(a))\\|P\\|$（递减时右端取绝对值）。\n\n⚠ 判据只要求**存在**一个分割使振幅和够小，不要求所有分割 —— 因为振幅和随加细单调不增。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 6', 'Spivak, Calculus, Ch. 13']
     },
     {
@@ -46600,7 +46688,7 @@ window.MG = window.MG || {};
         '',
         '- **基本估计**：若 $|f(x)| \\le M$ 处处成立，则 $\\bigl| \\int_a^b f \\bigr| \\le M\\,(b - a)$。'
       ].join('\n'),
-      notes: '⭐ 保序性听起来平凡，但它是**一切积分不等式**的源头：要证 $\\int f \\le \\int g$，只需逐点证明 $f \\le g$。\n\n⚠ 保序是**非严格**的：逐点严格不等推不出积分严格不等（$f = 0$、$g$ 只在一点为正的例子）。\n\n⭐ $|f|$ 可积是 Riemann 特有的现象（Lebesgue 那边 $f$ 可积直接蕴含 $|f|$ 可积）；\n\n反过来 $|f|$ 可积不蕴含 $f$ 可积 —— $f$ 取 $1$ 与 $-1$ 在有理/无理处交替时，$|f| \\equiv 1$ 可积而 $f$ 不可积。',
+      notes: '⭐ 保序性听起来平凡，但它是**一切积分不等式**的源头：要证 $\\int f \\le \\int g$，只需逐点证明 $f \\le g$。\n\n⚠ 保序得到的**非严格**不等号不能升级：$f \\le g$ 且只在一点上 $f < g$，仍有 $\\int_a^b f = \\int_a^b g$（改一个点的函数值不改变 Riemann 积分）。\n\n⭐ $|f|$ 可积是 Riemann 特有的现象（Lebesgue 那边 $f$ 可积直接蕴含 $|f|$ 可积）；\n\n反过来 $|f|$ 可积不蕴含 $f$ 可积 —— $f$ 取 $1$ 与 $-1$ 在有理/无理处交替时，$|f| \\equiv 1$ 可积而 $f$ 不可积。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 6']
     },
     {
@@ -46676,7 +46764,7 @@ window.MG = window.MG || {};
         '',
         '（写成惯用的形式：$\\int_a^b u\\,dv = uv\\bigr|_a^b - \\int_a^b v\\,du$。）'
       ].join('\n'),
-      notes: '⭐ 它同样是**乘积求导法则反着写**：$(FG)\' = F\'G + FG\'$，两边积分再用 Newton–Leibniz。\n\n⚠ 里外里验证的常见错误：把 $F(b)G(b) - F(a)G(a)$ 写成 $(FG)(b - a)$ —— 那是「乘积的积分」，不是「乘积的端点差」。\n\n⭐ 分部积分最有价值的形态是「移项」：$\\int F G\' = FG\\bigr|_a^b - \\int F\'G$ 把难积的一方挪到另一边。\n\n在 Lebesgue 那一侧它对应「弱导数 / 分布意义下的求导」那一整套。',
+      notes: '⭐ 它同样是**乘积求导法则反着写**：$(FG)\' = F\'G + FG\'$，两边积分再用 Newton–Leibniz。\n\n⚠ 里外里验证的常见错误：把 $F(b)G(b) - F(a)G(a)$ 写成 $(FG)(b - a)$ —— 那表示「$FG$ 在点 $b - a$ 处的值」（或 $(b-a)$ 乘以 $FG$），既不是「乘积的端点差」，也不是「乘积的积分」。\n\n⭐ 分部积分最有价值的形态是「移项」：$\\int F G\' = FG\\bigr|_a^b - \\int F\'G$ 把难积的一方挪到另一边。\n\n在 Lebesgue 那一侧它对应「弱导数 / 分布意义下的求导」那一整套。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 6']
     },
     {
@@ -50043,7 +50131,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['定理', '线性代数', '谱'],
       statement: [
-        '设 $\\dim V = n < \\infty$，$T : V \\to V$ 线性，$\\lambda_1, \\ldots, \\lambda_m$ 是它在 $K$ 中互异的特征值。则下列命题等价：',
+        '设 $\\dim V = n < \\infty$，$T : V \\to V$ 线性，$T$ 的**特征多项式在 $K$ 上完全分裂**，$\\lambda_1, \\ldots, \\lambda_m$ 是它在 $K$ 中互异的特征值。则下列命题等价：',
         '',
         '**(1)** $T$ **可对角化**：存在基使 $T$ 的矩阵是对角阵；',
         '',
@@ -50410,14 +50498,14 @@ window.MG = window.MG || {};
         '',
         '配上内积的 $V$ 叫**内积空间**。实数情形下内积就是正定对称双线性型。',
         '',
-        '标准例子：$K^{n}$ 上的内积 $\\langle x, y \\rangle := \\sum_i \\overline{x_i}\\, y_i$。'
+        '标准例子：$K^{n}$ 上的内积 $\\langle x, y \\rangle := \\sum_i x_i\\, \\overline{y_i}$。'
       ].join('\n'),
       notes: [
-        '⭐ 复数情形下**不能要求双线性**：若 $\\langle u, v \\rangle$ 对两个变元都线性，则 $\\langle i v, i v \\rangle = i^{2}\\langle v, v \\rangle = -\\langle v, v \\rangle$ 恒为负，与正定矛盾。\n\n所以复数情形只能是**一个变元线性、另一个共轭线性**（叫**半双线性**或 sesquilinear）。\n\n⭐ 哪一边写成共轭是**约定**：本图取「第一变元线性、第二变元共轭线性」的**物理约定**（与图上别处一致）。\n\n换个约定所有公式共轭一下，不改变内容。\n\n⚠ 正定性是内积与「一般双线性型」的分水岭：正定才有「长度」可言，才有 Cauchy–Schwarz、才有正交投影。\n\n丢掉正定（只留对称双线性）得到的是**二次型**那一套（见 `def.quadratic-form`），丢掉对称得到的是**辛形式**。',
+        '⭐ 复数情形下**不能要求双线性**：若 $\\langle u, v \\rangle$ 对两个变元都线性，则 $\\langle i v, i v \\rangle = i^{2}\\langle v, v \\rangle = -\\langle v, v \\rangle$ 恒为负，与正定矛盾。\n\n所以复数情形只能是**一个变元线性、另一个共轭线性**（叫**半双线性**或 sesquilinear）。\n\n⭐ 哪一边写成共轭是**约定**：本图取「第一变元线性、第二变元共轭线性」的**本图约定**（与图上别处一致）。\n\n换个约定所有公式共轭一下，不改变内容。\n\n⚠ 正定性是内积与「一般双线性型」的分水岭：正定才有「长度」可言，才有 Cauchy–Schwarz、才有正交投影。\n\n丢掉正定（只留对称双线性）得到的是**二次型**那一套（见 `def.quadratic-form`），丢掉对称得到的是**辛形式**。',
         ,
         '**各方向用到的假设**（公理定义免费，衍生性质须保留正定性）：\n' +
         '- 内积 $\\iff$ 所列三条公理是定义展开；实数情形与正定对称双线性型等价，因为对称性把第一变元线性传给第二变元。\n' +
-        '- 复数情形第一变元线性加共轭对称 $\\implies$ 第二变元共轭线性，只需代数计算；原文标准例子 $\\sum_i\\overline{x_i}y_i$ 却取第二变元线性，与所列约定相反，须核对。\n' +
+        '- 复数情形第一变元线性加共轭对称 $\\implies$ 第二变元共轭线性，只需代数计算；标准例子 $\\sum_i x_i\\overline{y_i}$ 与所列约定一致。\n' +
         '- 正定内积 $\\implies$ 范数及 Cauchy–Schwarz 用非负二次表达式，不要求有限维或完备；反向从任意范数恢复内积则需要平行四边形恒等式。\n' +
         '- 正定性不能删：$\\mathbb R^2$ 上 $x_1y_1-x_2y_2$ 对称双线性，却有非零向量自配对为零，不能定义范数。\n'
       ].join('\n\n'),
@@ -57641,7 +57729,7 @@ window.MG = window.MG || {};
         '',
         '而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。',
         '',
-        '**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{pd}_{R} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的投射维数」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。'
+        '**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{fd}_{R^{\\mathrm{op}}} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。'
       ].join('\n'),
       notes: [
         '**与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：',
@@ -57794,7 +57882,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', '维数转移', 'Ext', 'Tor', '合冲'],
       statement: [
-        '设 $0 \\to K \\to P \\xrightarrow{\\ \\pi\\ } M \\to 0$ 是 $R$-模的短正合列，且 $P$ **投射**（等价地：$K$ 是 $M$ 的一个合冲）。则对一切 $n \\ge 0$ 与任意 $R$-模 $N$：',
+        '设 $0 \\to K \\to P \\xrightarrow{\\ \\pi\\ } M \\to 0$ 是 $R$-模的短正合列，且 $P$ **投射**（等价地：$K$ 是 $M$ 的一个合冲）。则对一切 $n \\ge 1$ 与任意 $R$-模 $N$：',
         '',
         '$$\\operatorname{Ext}^{n+1}_{R}(M, N) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(K, N), \\qquad \\operatorname{Tor}_{n+1}^{R}(M, N) \\;\\cong\\; \\operatorname{Tor}_{n}^{R}(K, N).$$',
         '',
@@ -57829,7 +57917,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['定理', 'Ext', '消解', '导出范畴', '平衡函子'],
       statement: [
-        '设 $P_{\\bullet} \\twoheadrightarrow M$ 是 $M$ 的投射消解（取删除消解），$M \\to I^{\\bullet}$ 是内射消解。则对每个 $R$-模 $N$ 与每个 $n \\ge 0$：',
+        '设 $P_{\\bullet} \\twoheadrightarrow M$ 是 $M$ 的投射消解（取删除消解），$N \\to I^{\\bullet}$ 是 $N$ 的内射消解（$N$ 为任意 $R$-模）。则对每个 $n \\ge 0$：',
         '',
         '$$H^{n}\\bigl(\\operatorname{Hom}_{R}(P_{\\bullet}, N)\\bigr) \\;\\cong\\; \\operatorname{Ext}^{n}_{R}(M, N) \\;\\cong\\; H^{n}\\bigl(\\operatorname{Hom}_{R}(M, I^{\\bullet})\\bigr).$$',
         '',
@@ -58210,7 +58298,7 @@ window.MG = window.MG || {};
         '',
         '1. $E$ **正合**：保有限极限与有限余极限，把核、余核、像与短正合列原样搬过去；',
         '2. $E$ **反射**投射与内射对象：若 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射，则 $P$ 在 $\\mathcal{C}$ 里投射（内射同理：$EI$ 内射 $\\implies$ $I$ 内射）；',
-        '3. 于是「某个对象在 $\\mathcal{C}$ 里投射 / 内射」这件事，可以搬到模范畴里判 —— 那边有元素、有直和项、有显式的自由模，判起来容易得多。',
+        '3. 于是第 2 点直接给出**充分条件**：要认定 $P$ 在 $\\mathcal{C}$ 里投射（或 $I$ 内射），只需验 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射（$EI$ 内射）—— 那边有元素、有直和项、有显式的自由模，判起来容易得多。',
         '',
         '这是「追元素」最常用的那一步的精确形式：**难点在 $\\mathcal{C}$，验算放在 $A\\text{-}\\mathbf{Mod}$**。'
       ].join('\n'),
@@ -67740,7 +67828,7 @@ window.MG = window.MG || {};
       statement: [
         '**在做什么**：把「链上的积分」说成一个配对 —— 左边是链、右边是形式、结果是一个数，两头都线性。这条双线性是后面所有求和与拆分的许可证。',
         '',
-        '设 $c$ 是 $M$ 上的 $k$-链，$\\omega,\\eta$ 是 $k$-形式，$a,b\\in\\mathbb{R}$。则',
+        '设 $c$ 是 $M$ 上的 $k$-链，$\\omega,\\eta$ 是 $k$-形式，$a,b\\in\\mathbb{Z}$。则',
         '',
         '$$\\int_{c}(a\\,\\omega+b\\,\\eta) = a\\int_{c}\\omega+b\\int_{c}\\eta ,\\qquad \\int_{a\\,c+b\\,c\'}\\omega = a\\int_{c}\\omega+b\\int_{c\'}\\omega .$$',
         '',
@@ -67759,7 +67847,7 @@ window.MG = window.MG || {};
         '',
         '**⚠️ 反对称性不是「反对称」**：$\\int_{-c} = -\\int_{c}$ 说的是链的系数为负，不是「交换两个变元变号」。链与形式之间不存在交换律 —— 它们的类型不同。',
         '',
-        '**⚠️ 系数域**：链的系数在 $\\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\\mathbb{R}$ 里。这里两者都按实数看待，取整数值只是链的记账习惯；讨论同调时会回到 $\\mathbb{Z}$。'
+        '**⚠️ 系数域**：链的系数在 $\\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\\mathbb{R}$ 里。这里的 $a,b$ 取 $\\mathbb{Z}$ 中的整数（整系数线性组合仍是链）；若要实数系数，须先把链群写成 $C_{k}(M;\\mathbb{R})$。'
       ].join('\n'),
       refs: [
         'Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链上积分的线性',
@@ -71890,8 +71978,8 @@ window.MG = window.MG || {};
       regions: ['complex'],
       tags: ['复变函数', '同伦', '绕数', 'Cauchy 定理'],
       statement: [
-        '设 $\\gamma_{0}, \\gamma_{1}$ 是 $\\mathbb{C} \\setminus \\{a\\}$ 中同伦的闭曲线（同伦 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$' +
-          '两端分别给出 $\\gamma_{0}, \\gamma_{1}$）。则',
+        '设 $\\gamma_{0}, \\gamma_{1}$ 是 $\\mathbb{C} \\setminus \\{a\\}$ 中同伦的闭曲线（同伦 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 两端分别给出 $\\gamma_{0}, \\gamma_{1}$，且对每个 $s \\in [0,1]$，$H(\\cdot, s)$ 是闭曲线，即 $H(0, s) = H(1, s)$' +
+          '）。则',
         '',
         '$$n(\\gamma_{0}, a) = n(\\gamma_{1}, a).$$',
         '',
@@ -73101,8 +73189,8 @@ window.MG = window.MG || {};
         '其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数' +
           '（不再像 Weierstrass 那样逐个选）。',
         '',
-        '特别地：阶 $\\rho < 1$ 的整函数没有零点（除非恒为零）—— 因为此时 $p = 0$ 要求' +
-          '$\\sum |a_{n}|^{-1} < \\infty$，而零点再多也只能是有限个。',
+        '特别地：$\\rho < 1$ 时 $p = 0$，故 ' +
+          '$\\sum |a_{n}|^{-1} < \\infty$（这不表示零点有限：$\\prod_{n}(1 - z/n^{2})$ 的阶为 $\\frac{1}{2}$、仍有无穷多零点）。',
       ].join('\n'),
       notes: [
         '**证明思路（骨架）**：',
@@ -82448,7 +82536,7 @@ window.MG = window.MG || {};
         '取实部、虚部（或把 $e^{i\\lambda x}$ 换成 $\\cos \\lambda x$、$\\sin \\lambda x$）就是最常见的两条形式：**Fourier 系数 $\\hat{f}(n) \\to 0$（$|n| \\to \\infty$）**。'
       ].join('\n'),
       notes: [
-        '**证明（阶梯函数逼近）。** 分三步，核心是「可积函数可以用阶梯函数一致逼近到任意精度」。',
+        '**证明（阶梯函数逼近）。** 分三步，核心是「可积函数可以用阶梯函数在 $L^{1}$ 意义下逼近到任意精度」。',
         '',
         '① **阶梯函数**：设 $\\psi = \\sum_{k} c_{k}\\,\\mathbf{1}_{[x_{k-1}, x_{k}]}$ 是阶梯函数。直接算',
         '',
@@ -82814,22 +82902,22 @@ window.MG = window.MG || {};
         '',
         '这样的 $T$ 若存在则**唯一**（取 $h = t v$、$t \\to 0$ 即看出 $T$ 在每条射线上被钉死），记 $f\'(a) := T \\in B(E, F)$。',
         '',
-        '**与 Gâteaux 导数的区别**：Gâteaux 导数只要求沿每条射线 $t \\mapsto f(a + tv)$ 的导数存在（得到一个线性映射，甚至未必连续）；Fréchet 可微则要求**一致的**余项估计。于是',
+        '**与 Gâteaux 导数的区别**：Gâteaux 导数只要求沿每条射线 $t \\mapsto f(a + tv)$ 的导数存在 —— 但各方向导数存在并不保证「关于方向线性」，也未必连续（若把「线性」额外写进定义，才是通常所说的 Gâteaux 导数）；Fréchet 可微则要求**一致的**余项估计。于是',
         '',
         '$$\\text{Fréchet 可微} \\implies \\text{Gâteaux 可微，且两者相等} ,$$',
         '',
         '反过来不成立（Gâteaux 导数的存在不保证余项一致小）。'
       ].join('\n'),
       notes: [
-        '**为什么要求 $T$ 有界**：$E$ 无穷维时「线性」不足以谈极限 —— 无界线性算子照样能写下 $f(a) + Th$，但它在 $a$ 处根本不连续，$o(\\|h\\|)$ 的估计不可能成立。所以定义里把 $B(E,F)$ 写死，**不是偷懒**：有限维时自动满足，无穷维时是实质条件。',
+        '**为什么要求 $T$ 有界**：$E$ 无穷维时「线性」不足以谈极限。⚠ 但要注意：余项条件本身**不排除无界主部**（取 $E = c_{00}$ 配 $\\ell^2$ 范数、$T(x) = \\sum n x_n$、$f = T$，则余项恒为 $0$）。把 $B(E,F)$ 写死的真正作用，是让「可微 $\\implies$ 连续」成立；否则 $f$ 可能根本不连续。有限维时自动满足，无穷维时是实质条件。',
         '**几个基本事实**（证明与一元情形同构，只是把绝对值换成范数）：',
         '',
         '- **链式法则**：$f$ 在 $a$、$g$ 在 $f(a)$ 处 Fréchet 可微 $\\implies$ $g \\circ f$ 在 $a$ 处可微，且 $(g\\circ f)\'(a) = g\'(f(a)) \\circ f\'(a)$（算子的复合，注意顺序）；',
         '- **可微 $\\implies$ 连续**；',
-        '- **中值不等式**：$\\|f(b) - f(a)\\| \\le \\sup_{[a,b]}\\|f\'\\| \\cdot \\|b - a\\|$ —— 这是把一元中值定理搬过来时**唯一能用的形式**（等号形式不再成立，因为有界线性算子不能「取某点处的值」）；',
+        '- **中值不等式**（需 $[a,b] \\subseteq \\Omega$，且 $f$ 在整条线段上连续、内部可微）：$\\|f(b) - f(a)\\| \\le \\sup_{[a,b]}\\|f\'\\| \\cdot \\|b - a\\|$ —— 这是把一元中值定理搬过来时**唯一能用的形式**（等号形式不再成立，因为有界线性算子不能「取某点处的值」）；',
         '- **逆映射定理（Banach 版）**（`thm.inverse-function-banach`）：$f\'(a)$ **可逆**（作为 $B(E,F)$ 的元素，从而 $E \\cong F$）+ 连续可微 $\\implies$ $f$ 在 $a$ 附近是局部同胚。那条定理的假设就写在这个导数上。',
         '⚠️ **与另外两个「导数」的分工**：`def.derivative` 是一元实函数；`def.total-differential` 是 $\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ 的全微分（Jacobian 矩阵）；流形之间的微分是 `def.differential-map`（切空间之间的线性映射）。本节点是**赋范空间之间**的版本 —— 它把前两个都收成特例（有限维时 $f\'(a)$ 就是 Jacobian 矩阵）。',
-        '⚠️ **高阶导数**要小心：$f\'\' (a)$ 是 $B(E, B(E,F)) \\cong B(E \\times E, F)$ 的元素（双线性型），不是「二阶矩阵」。赋范空间上写 Taylor 公式（`thm.taylor`）时必须按这个理解。'
+        '⚠️ **高阶导数**要小心：$f\'\' (a)$ 是 $B(E, B(E,F))$ 的元素，它与「$E \\times E$ 上的**有界双线性映射**」空间等距同构 —— 注意**不是** $B(E \\times E, F)$：那按定义是有界**线性**映射，$E = F = \\mathbb{R}$ 时它是一维，而 $D^{2}(x^{2})(v,w) = 2vw$ 并不对 $(v,w)$ 线性。赋范空间上写 Taylor 公式（`thm.taylor`）时必须按这个理解。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · Fréchet 导数', 'Brezis, Functional Analysis, Sobolev Spaces and PDE · 微分']
     }
@@ -83166,7 +83254,7 @@ window.MG = window.MG || {};
         '反过来，若距离满足平移不变与齐次，则 $\\|x\\| := d(x, 0)$ 是范数，且它诱导回这个距离。'
       ].join('\n'),
       notes: [
-        '这条说清了「赋范」比「度量」多出来的是什么：**平移不变 + 齐次 + 球凸**。所以「这个度量是否来自范数」是一个有内容的问题（反例：$\\min(d, 1)$ 与 $\\sum_i 2^{-i}\\frac{|x_i - y_i|}{1 + |x_i - y_i|}$ 都不平移不变）。',
+        '这条说清了「赋范」比「度量」多出来的是什么：**平移不变 + 齐次 + 球凸**。所以「这个度量是否来自范数」是一个有内容的问题（反例：$\\min(d, 1)$ 与 $\\sum_i 2^{-i}\\frac{|x_i - y_i|}{1 + |x_i - y_i|}$ 都**平移不变**，缺的是**齐次性**：前者取 $x = 1, y = 0, \\lambda = 2$ 得 $1 \\ne 2$）。',
         '⭐ 球凸这一条后面要用两次：凸集上的最近点（Hilbert 的投影定理）、以及「开球的像是否开」（开映射定理）。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · 赋范空间与有限维'],
@@ -83193,7 +83281,7 @@ window.MG = window.MG || {};
         '- (b) 诱导同一个拓扑' +
         '- (c) 同一批 Cauchy 列' +
         '- (d) 同一批收敛列。',
-        '⚠️ 强弱不对称，而且方向和直觉相反：**强**范数（$p$ 大）的球更小、开集更少、收敛更难、Cauchy 列更多。所以「换成强范数」会**减少**收敛的东西 —— 这也是为什么要挑最弱的、够用的范数（例如弱拓扑）。',
+        '⚠️ 强弱不对称，而且方向和直觉相反：**强**范数（$p$ 大）的球更小、开集**更多**、收敛更难、Cauchy 列**更少**。所以「换成强范数」会**减少**收敛的东西 —— 这也是为什么要挑最弱的、够用的范数（例如弱拓扑）。',
         '⚠️ 等价不保完备性以外的一切：两个等价范数下完备性一样（Cauchy 列集合相同），但**极值问题**的答案可以不同（球不同）。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · 赋范空间与有限维'],
@@ -83260,7 +83348,7 @@ window.MG = window.MG || {};
         '赋范空间 $E$ 的闭单位球 $B_E = \\{x \\in E : \\|x\\| \\le 1\\}$ 紧 $\\iff$ $\\dim E < \\infty$。'
       ].join('\n'),
       notes: [
-        '「$\\Longleftarrow$」：有限维时所有范数等价（`thm.norm-equiv-finite-dim`），于是可以用 $\\|\\cdot\\|_\\infty$ 的坐标球来判断紧性；\n\n而坐标球 $\\overline{B}^{\\infty}(0,1) = [-1,1]^{n}$ 是有界闭集，由 Heine–Borel（`cor.heine-borel`）紧。\n\n∎',
+        '「$\\Longleftarrow$」：有限维时所有范数等价（`thm.norm-equiv-finite-dim`），于是可以用 $\\|\\cdot\\|_\\infty$ 的坐标球来判断紧性；\n\n而坐标球 $\\overline{B}^{\\infty}(0,1)$ 是有界闭集（实情形就是 $[-1,1]^{n}$；复情形是单位多圆柱，看作 $\\mathbb{R}^{2n}$ 的闭有界集），由 Heine–Borel（`cor.heine-borel`）紧。\n\n∎',
         '「$\\implies$」：若 $\\dim E = \\infty$，用 Riesz 引理（`lem.almost-orthogonal`）递归造单位向量 $\\|e_n - e_m\\| \\ge 1/2$（$n \\ne m$），这样的序列没有收敛子列，于是闭单位球不列紧、因而不紧。',
         '',
         '⭐ 这一条是「有限维  当且仅当  局部紧」的一半：有限维赋范空间局部紧，无穷维的**从不**局部紧。它也是「有界闭集紧」只在有限维成立的精确版本 —— 无穷维里 Heine–Borel 失效。'
@@ -83285,9 +83373,9 @@ window.MG = window.MG || {};
         '它使 $B(E, F)$ 成为赋范空间（$E = 0$ 时约定 $\\|u\\| = 0$）。'
       ].join('\n'),
       notes: [
-        '⚠️ **名字是个历史误会**：这里「有界」**不是**「函数有界」（只有 $E = 0$ 时才等价）。真正的含义是「把有界集送到有界集」，等价于**连续**（下一条）。读老书时别被这个名字带歪。',
+        '⚠️ **名字是个历史误会**：这里「有界」**不是**「函数有界」：线性映射作为函数有界 $\\iff$ 它是零映射（任意 $E \\ne 0$ 的零映射都符合）。真正的含义是「把有界集送到有界集」，等价于**连续**（下一条）。读老书时别被这个名字带歪。',
         '⚠️ 三个 sup 相等要求 $E \\ne 0$（否则球面空集、sup 无意义）。',
-        '⭐ 无穷维里 $L(E, F) \\ne B(E, F)$：不连续的线性算子确实存在（要用选择公理造）。所以本图把「线性」与「有界」分成两个节点：$L(E,F)$ 是**代数**上的 Hom，$B(E,F)$ 是其中连续的那部分。'
+        '⭐ $E$ 无穷维且 $F \\ne \\{0\\}$ 时 $L(E, F) \\ne B(E, F)$：不连续的线性算子确实存在（要用选择公理造）。所以本图把「线性」与「有界」分成两个节点：$L(E,F)$ 是**代数**上的 Hom，$B(E,F)$ 是其中连续的那部分。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数'],
     },
@@ -83346,7 +83434,7 @@ window.MG = window.MG || {};
         '',
         '$$\\|v \\circ u\\| \\le \\|v\\| \\, \\|u\\| .$$',
         '',
-        '特别地 $B(E)$ 是**赋范代数**（乘法连续），且 $\\|\\mathrm{id}\\| = 1$。'
+        '特别地 $B(E)$ 是**赋范代数**（乘法连续）；$E \\ne \\{0\\}$ 时 $\\|\\mathrm{id}\\| = 1$。'
       ].join('\n'),
       notes: [
         '一句话：$\\|vu(x)\\| \\le \\|v\\|\\,\\|u(x)\\| \\le \\|v\\|\\,\\|u\\|\\,\\|x\\|$。',
@@ -83375,8 +83463,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '2 保证乘法连续（双线性 + 有界）。',
-        '例：$B(E)$（$E$ Banach）、$C(K)$（上确界范数）、$L^1(\\mathbb{R})$（卷积乘法）、$\\ell^1(\\mathbb{Z})$、以及 $C^*$-代数（再要一条 $\\|x^* x\\| = \\|x\\|^2$）。',
-        '⭐ 这一族是「把分析问题化成代数问题」的通用容器：Gelfand 理论（交换 Banach 代数 $\\cong C(\\text{极大理想空间})$）就是从这条定义出发的。'
+        '例：$B(E)$（$E$ Banach）、$C(K)$（$K$ 紧 Hausdorff、上确界范数）、$L^1(\\mathbb{R})$（卷积乘法）、$\\ell^1(\\mathbb{Z})$、以及 $C^*$-代数（再要一条 $\\|x^* x\\| = \\|x\\|^2$）。',
+        '⭐ 这一族是「把分析问题化成代数问题」的通用容器：Gelfand 理论（**半单**交换 Banach 代数 $\\cong C(\\text{极大理想空间})$；一般情形只给同态，核是 Jacobson 根）就是从这条定义出发的。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · 赋范空间与有界算子'],
     },
@@ -83485,10 +83573,10 @@ window.MG = window.MG || {};
         '拓扑空间（特别地赋范空间）$E$ 叫**可分**，若它含一个可数稠密子集。'
       ].join('\n'),
       notes: [
-        '**可分的**：$\\ell^p(\\mathbb{N})$（$1 \\le p < \\infty$）、$L^p(\\Omega)$、$C(K)$（$K$ 紧度量）、任何有限维空间。',
+        '**可分的**：$\\ell^p(\\mathbb{N})$（$1 \\le p < \\infty$）、$L^p(\\Omega)$（Lebesgue 测度、$1 \\le p < \\infty$）、$C(K)$（$K$ 紧度量）、任何有限维空间。',
         '**不可分的**：$\\ell^\\infty(\\mathbb{N})$。证法：取 $A = \\{(e_n) : e_n = \\pm 1\\}$（$2^{\\aleph_0}$ 个点），任意两点距离 $\\ge 2$，故半径 $1$ 的两两不交球有不可数多个 —— 可数稠密集顶多覆盖可数多个。',
         '⭐ 讲义里那句「不可分 $\\implies$ 不能由一个可数集作为代数生成」很值得记：它把「基」的直觉挡在门外 —— $\\ell^\\infty$ 连可数 Schauder 基都没有（见「Schauder 基」）。',
-        '⚠️ 可分性对**闭子空间**遗传、对**商**遗传，但对连续像不一定、对乘积不遗传（$\\mathbb{R}^{\\mathbb{R}}$ 不可分）。'
+        '⚠️ 可分性对**连续像**遗传（$D$ 可数稠密 $\\implies$ $f(D)$ 在 $f(X)$ 中稠密）；在**度量空间**里对子空间也遗传，但一般拓扑空间不成立（$D$ 不可数、开集全取含 $p$ 的集合时，$X = D \\cup \\{p\\}$ 可分而闭子空间 $D$ 是不可数离散空间）。乘积也不遗传：$\\{0,1\\}^{I}$（$|I| > 2^{\\aleph_0}$）不可分，而 $\\mathbb{R}^{\\mathbb{R}}$ **反而可分**。'
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
     },
@@ -83511,7 +83599,7 @@ window.MG = window.MG || {};
         '🆚 **Hamel 基（代数基）**：只允许**有限**线性组合。无穷维 Banach 空间的 Hamel 基一定**不可数**（Baire 纲定理的经典应用：若可数，则 $E$ 是可数个有限维闭子空间之并，与 Baire 矛盾）。',
         'Schauder 基要求的是**级数收敛**，所以可以是可数的；而且 Schauder 基 $\\implies$ **可分**（有理系数的有限组合稠密）。',
         '⚠️ 「有 Schauder 基」曾长期是开放问题：Enflo (1973) 造出无 Schauder 基的可分 Banach 空间，所以它**不能**当成默认假设。',
-        '⚠️ 与 Hilbert 空间的「正交基」不同：Schauder 基不要求正交、也不要求唯一性来自内积；Hilbert 空间里正交基一定是 Schauder 基，反之不然。'
+        '⚠️ 与 Hilbert 空间的「正交基」不同：Schauder 基不要求正交、也不要求唯一性来自内积。Hilbert 空间里**可数**正交归一基（枚举后）一定是 Schauder 基，反之不然；不可数指标集的 $\\ell^2(I)$ 有完备正交归一族，但任何序列只涉及可数多个坐标，闭张成漏掉其余基向量 —— 那不是 Schauder 基（该空间也不可分）。'
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Enflo, Acta Math. 130 (1973)'],
     },
@@ -94058,9 +94146,13 @@ MG.trunk = [
       return graph.nodes.length + '|' + vis.hiddenCount() + '|'
         + (C.showDefinitionLines ? 1 : 0) + (C.showLabels ? 1 : 0) + (C.exploreMode ? 1 : 0) + '|'
         + (C.hideParallelImplications ? 1 : 0) + (C.showAllEdges ? 1 : 0) + '|'
-        /* ⚠️ LOD 档位（r=k/kFit）必须进绘制输入：全景不画节点/边/箭头，
-           相机一变就得重烘，否则位图继续显示「上一档」的内容（踩过）。 */
-        + Math.round((cam.k / Math.max(1e-6, renderer.fitZoom())) * 4) + '|'
+        /* ⚠️ LOD 档位必须进绘制输入：全景不画节点/边/箭头，
+           相机一变就得重烘，否则位图继续显示「上一档」的内容（踩过）。
+           ⭐ ENG-001：不再在这里自己算 r —— 判据由 renderer.lodPaintKey() 给
+           （它现算 LOD 并把**烘焙真正读的那几个闸门**写进 key）。自己算一遍的结果是：
+           r 按 0.25 分档、nodeDot 的闸门（r=1.32~1.42）落在同一档里，
+           于是「全景的圆点」被烘进位图后不再重烘，用户没滚轮也擦不掉。 */
+        + renderer.lodPaintKey() + '|'
         + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
     }
     var rafId = 0;
@@ -94195,7 +94287,46 @@ MG.trunk = [
     /** 把最新内缩交给相机（相机再传给 renderer 的 fitZoom ⇒ k₀ 同一口径） */
     function syncInsets() { cam.setInsets(uiInsets()); }
 
+    /* ⭐⭐ ENG-001：视口 / 可用区变了、用户没滚轮 ⇒ rRel = cam.k / fitZoom() 必须原地不动。
+       LOD 每一档都按 rRel 判（renderer.computeLod），而 fitZoom() 跟着**视口 + 可用区**走：
+       窗口一缩、图例一折、说明条一展，k₀ 就变；cam.k 若不动，r 会被抬高一截
+       ⇒ 全景档被误判成放大档，一千多个圆点全画出来（用户 2026-11-05 报的现象）。
+       做法：按 p = 新k₀/旧k₀ 等比缩放 cam.k（夹到 min/max），并把变化前可用区中心的
+       世界点 (wx,wy) 放回新可用区中心。见 camera.remapViewport。 */
+    function keepRelZoom(prevFit, prevK, av0, wx, wy) {
+      if (!(prevFit > 0) || !(prevK > 0) || !(cam.viewW > 1)) return false;
+      var nf = renderer.fitZoom();
+      if (!(nf > 0) || !isFinite(nf)) return false;
+      return cam.remapViewport(nf / prevFit, av0, wx, wy);
+    }
+
+    /** 量一次可用区并**保持相对缩放**。
+        图例折叠 / 说明条展开都会改 k₀，却不触发 window.resize —— 这条入口补上那一刀。 */
+    function syncInsetsKeepZoom() {
+      var fit0 = 0, k0 = cam.k, av0 = null, w0 = null;
+      try {
+        if (cam.viewW > 1 && cam.k > 0) {
+          fit0 = renderer.fitZoom();
+          av0 = cam.availRect();
+          w0 = cam.toWorld(av0.cx, av0.cy);
+        }
+      } catch (e) { fit0 = 0; }
+      syncInsets();
+      if (fit0 > 0 && w0) keepRelZoom(fit0, k0, av0, w0.x, w0.y);
+    }
+
     function resize() {
+      /* ⭐ 先让「窄屏折图例 / 展开说明」落到 DOM：它改可用区，必须和视口变化一起算进
+         **同一次** k₀ 归一化。否则图例在 resize 之后才折，k₀ 变了而 cam.k 没动 ⇒
+         用户没滚轮却换档（ENG-001 的一个子路径）。 */
+      syncNarrowLegend();
+      /* 记下变化前的基准：旧视口 + 旧可用区的 k₀、相机 k、可用区中心的世界点 */
+      var fit0 = 0, k0 = cam.k, av0 = null, w0 = null;
+      try {
+        fit0 = renderer.fitZoom();
+        av0 = cam.availRect();
+        w0 = cam.toWorld(av0.cx, av0.cy);
+      } catch (e) { fit0 = 0; }
       var s = renderer.resize();
       /* ⛔ 2026-10-19：**dpr 在这里才真正决定画布像素数**（云雾层、读图层、主画布都按它）。
          之前只在 renderer 里夹了一次，这里仍用原始 devicePixelRatio ⇒ 角标 2.5、
@@ -94206,6 +94337,9 @@ MG.trunk = [
       readEl.width = Math.max(1, Math.round(s.w * dpr));
       readEl.height = Math.max(1, Math.round(s.h * dpr));
       syncInsets();
+      /* ⭐ 视口变了 ⇒ k₀ 变了：按旧/新 k₀ 等比缩放 cam.k 并重新居中。
+         用户没滚轮 ⇒ rRel 不变 ⇒ LOD 档位不变；内容也不会再偏到左上角。 */
+      if (fit0 > 0 && w0) keepRelZoom(fit0, k0, av0, w0.x, w0.y);
       requestDraw();
     }
     global.addEventListener('resize', resize);
@@ -94783,8 +94917,9 @@ MG.trunk = [
       for (var i = 0; i < boxes.length; i++) {
         boxes[i].checked = !hid[boxes[i].getAttribute('data-ui')];
       }
-      /* 关掉 / 打开图例与说明条会改变可用画布 ⇒ 重新量内缩（顺带让 LOD 的 k₀ 跟上）。 */
-      if (cam.viewW > 1) { syncInsets(); requestDraw(); }
+      /* 关掉 / 打开图例与说明条会改变可用画布 ⇒ 重新量内缩（顺带让 LOD 的 k₀ 跟上）。
+         ⭐ 必须用 syncInsetsKeepZoom：否则 k₀ 变了而 cam.k 不动，用户没滚轮也会换 LOD 档。 */
+      if (cam.viewW > 1) { syncInsetsKeepZoom(); requestDraw(); }
     }
     function toggleUI(k, visible) {
       var hid = uiHidden();
@@ -95399,8 +95534,10 @@ MG.trunk = [
       setTimeout(function () { armed = true; }, 1200);
       det.addEventListener('toggle', function () {
         if (armed) det.setAttribute('data-user', '1');
-        /* 说明条展开 / 收起 ⇒ 底部内缩变了 ⇒ 相机可用区与 LOD 的 k₀ 都要跟上。 */
-        syncInsets();
+        /* 说明条展开 / 收起 ⇒ 底部内缩变了 ⇒ 相机可用区与 LOD 的 k₀ 都要跟上。
+           ⭐ 用 syncInsetsKeepZoom：用户点的是「展开说明」，不是「缩放星图」，
+             相对缩放 k/k₀ 必须原地不动，否则下一帧就换 LOD 档。 */
+        syncInsetsKeepZoom();
         requestDraw();
       });
     })();
@@ -95513,7 +95650,9 @@ MG.trunk = [
                            能整块表达就整块，剩下的才写 id，所以整块开关的链接很短
         &dl=0 &lb=0 &ex=1  定义线 / 名字 / 探索（弱边）的开关
         &ae=1              全部连线（跨星团长线 + 跨板块聚合线也画）
-        &v=<k>,<cx>,<cy>   相机的缩放与世界中心（写的时候按屏幕中心算，换窗口也对得上）
+        &v=<k>,<cx>,<cy>   相机的缩放与世界中心（旧格式：绝对 k，只按原视口还原得对）
+        &vr=<r>,<cx>,<cy>  相机的**相对缩放** r=k/k₀ 与世界中心（新格式，v2）
+                           换视口 / 换设备打开也对得上：k 恢复成「当前 k₀ × r」
         &fps=1             右下角显示诊断角标（帧耗时 / 连线层耗时 / dpr / canvas 尺寸）
 
       ⭐ 这两个是 **query 参数**（不是 hash），因为它们改的是「用哪种语言」，
@@ -95594,7 +95733,13 @@ MG.trunk = [
       if (hide.length) p.push('hide=' + hide.join(','));
       if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
       var c = camCenter();
-      p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
+      /* ⭐ ENG-001：写**相对缩放** r = k/k₀，不写绝对 k。
+         绝对 k 只在「同一个视口」里还原得对：换视口后同一个 k 的 r 变了，
+         LOD 会把全景误判成放大档（用户 2026-11-05 报的现象；深链 / 刷新都会踩到）。
+         ⚠️ token 用 `vr=`（v2）：旧的 `#v=<k>,…` 仍然按绝对 k 解析，不砸已有链接。 */
+      var rHash = renderer.fitZoom();
+      p.push('vr=' + (rHash > 0 ? (cam.k / rHash).toFixed(4) : '1') +
+        ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
       return p.join('&');
     }
 
@@ -95696,7 +95841,7 @@ MG.trunk = [
         if (i > 0) kv[part.slice(0, i)] = part.slice(i + 1);
       });
       if (!Object.keys(kv).length) return false;
-      var hasCam = !!kv.v;
+      var hasCam = !!kv.v || !!kv.vr;
       var isView = hasCam || kv.ly != null || kv.tr != null || kv.sub != null ||
         kv.hide != null || kv.dl != null || kv.lb != null || kv.ex != null ||
         kv.ae != null;
@@ -95747,12 +95892,28 @@ MG.trunk = [
         if (kv.q != null) search.applyQuery(dec(kv.q));
 
         if (hasCam) {
-          var pq = dec(kv.v).split(',');
-          var k = parseFloat(pq[0]), x = parseFloat(pq[1]), y = parseFloat(pq[2]);
-          if (isFinite(k) && isFinite(x) && isFinite(y)) {
-            cam.stopAnimation();
-            cam.k = U.clamp(k, C.camera.minZoom, C.camera.maxZoom);
-            cam.centerOn(x, y);
+          /* ⭐ ENG-001：`vr=` 是 v2 格式，写的是**相对缩放** r = k/k₀。
+             恢复时 k = 当前 k₀ × r —— 换视口打开同一个链接，用户的「放大到 2 倍」
+             还是 2 倍，不会被当成 r=3 而漏出全景圆点。
+             `v=` 是旧格式（绝对 k）：只能按原样还原（当它按当前视口写的）；
+             新链接不再生成它。 */
+          if (kv.vr != null) {
+            var pr = dec(kv.vr).split(',');
+            var relK = parseFloat(pr[0]), vx = parseFloat(pr[1]), vy = parseFloat(pr[2]);
+            var fk0 = renderer.fitZoom();
+            if (isFinite(relK) && relK > 0 && isFinite(vx) && isFinite(vy) && fk0 > 0) {
+              cam.stopAnimation();
+              cam.k = U.clamp(fk0 * relK, C.camera.minZoom, C.camera.maxZoom);
+              cam.centerOn(vx, vy);
+            }
+          } else {
+            var pq = dec(kv.v).split(',');
+            var k = parseFloat(pq[0]), x = parseFloat(pq[1]), y = parseFloat(pq[2]);
+            if (isFinite(k) && isFinite(x) && isFinite(y)) {
+              cam.stopAnimation();
+              cam.k = U.clamp(k, C.camera.minZoom, C.camera.maxZoom);
+              cam.centerOn(x, y);
+            }
           }
         }
         hashState.last = h;
@@ -96084,14 +96245,19 @@ MG.trunk = [
       var bb = (live.length && live.length < graph.nodes.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
+      /* ⭐ ENG-001：存/取相机都按「相对缩放」归一化。
+         kFitZoom 是 renderer.fitZoom()（LOD 的 k₀，与视口/可用区同一口径）。
+         存档里同时记 k 与当时的 kFitZoom ⇒ 换视口重开时 r = k/kFitZoom 不变，
+         相机不会被当成「用户滚了滚轮」。 */
+      var kFitZoom = renderer.fitZoom();
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
       if (!applyHash()) {
         /* 上次看到哪儿了？有记录就直接还原（不再播「全部适配」那段动画）。
            ⚠️ 只在没有深链时才用 —— URL 里的 #n= / #v= 优先级更高。 */
-        var savedCam = MG.layoutCache ? MG.layoutCache.loadCam(graph) : null;
+        var savedCam = MG.layoutCache ? MG.layoutCache.loadCam(graph, kFitZoom) : null;
         if (savedCam) {
           cam.k = U.clamp(savedCam.k, C.camera.minZoom, C.camera.maxZoom);
-          cam.tx = savedCam.tx; cam.ty = savedCam.ty;
+          cam.centerOn(savedCam.cx, savedCam.cy);
         } else {
           // 初始视角：先稍微留白，再平滑推进到「全部适配」
           cam.k = fitK * 0.72;
@@ -96110,14 +96276,15 @@ MG.trunk = [
     /* ---------------------------------------------------- 相机持久化
        「上次看到哪」单独存（`mathgalaxy.camera.v1`）：下次打开直接回到那一屏，
        不再每次从「全部适配」重新播动画。
-       ⚠️ 只在**没有深链**时写：带 #n= / #v= 打开时镜头由深链决定，
+       ⚠️ 只在**没有深链**时写：带 #n= / #v= / #vr= 打开时镜头由深链决定，
           这时写回会把用户的深链视角覆盖成旧镜头。 */
     (function persistCam() {
       if (!MG.layoutCache) return;
       var timer = 0;
       function saveNow() {
-        if (location.hash && /(^|[#&])(n|v)=/.test(location.hash)) return;
-        try { MG.layoutCache.saveCam(cam); } catch (e) { /* 忽略 */ }
+        if (location.hash && /(^|[#&])(n|v|vr)=/.test(location.hash)) return;
+        /* ⭐ 存「相对缩放」的基准：k 与当时的 fitZoom 一起写，换视口重开时才能归一化。 */
+        try { MG.layoutCache.saveCam(cam, renderer.fitZoom()); } catch (e) { /* 忽略 */ }
       }
       /* 停手后再存（拖动/缩放过程中不写，省 IO） */
       MG.onCameraSettle = function () {
