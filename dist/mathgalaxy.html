@@ -8993,17 +8993,42 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
       return false;
     }
 
-    /* ---------------------------------------------------------- 比较键
-       ⭐ 名字比较一律走 key()：小写 → 各种破折号统一成 '-' → **去掉所有空白**。
-       为什么必须这样（2026-11-02 用户实测）：
+    /* ---------------------------------------------------------- 比较键（两把）
+       ⭐ 名字比较走两把键：
+         key()   —— 小写 → 各种破折号统一成**空格** → 空白压成一个空格 → 去首尾。
+                    保留空格是为了**不把相邻的词粘在一起**：否则 `kC` 会撞上
+                    「Grothendieck category」的 `k c` 边界、`NBV` 会撞上 `f \in BV`。
+         keySq() —— key() 再去掉空格。只用在「精确 / 前缀」两档：
+                    `RiemannLebesgue`、`Riemann映照定理` 这种**不带空格**的写法
+                    也应当命中 `Riemann–Lebesgue 引理`。
+       为什么必须这样（2026-11-02 用户实测 · 2026-11-05 复核）：
          · 库里写 `Riemann–Lebesgue`（en dash），用户敲 `Riemann-Lebesgue`（ASCII '-'）；
          · 库里写 `Banach–Steinhaus`，用户敲 `Banach-Steinhaus`；
          · 用户还可能敲 `RiemannLebesgue`、`Riemann Lebesgue`（带不带空格）。
        这几种写法在**人**看来是同一个词，在字符串比较里却是四个不同的词。
-       归一化之后就都撞得上了。 */
-    var DASHES = /[‐‑‒–—―−﹘﹣－]/g;
+       ⚠️ 2026-11-05 修：原来是 `.replace(/s+/g, '')` —— **少了一个反斜杠**，
+       匹配的是字母 `s` 而不是空白：所有 `s` 被删（`Steinhaus` → `teinhau`），
+       空白却从没被去掉。⛔ 别写回单反斜杠。 */
+    var DASHES = /[‐‑‒–—―−﹘﹣－-]/g;
     function key(s) {
-      return String(s == null ? '' : s).toLowerCase().replace(DASHES, '-').replace(/s+/g, '');
+      return String(s == null ? '' : s).toLowerCase().replace(DASHES, ' ').replace(/\s+/g, ' ').trim();
+    }
+    function keySq(s) { return key(s).replace(/ /g, ''); }
+
+    /* 无空格写法（`RiemannLebesgue`、`Riemann映照定理`）的匹配：
+       只有当查询正好等于「名字开头的若干**完整词**」拼起来时才算命中。
+       返回 2 = 拼完整个名字（算精确）；1 = 只是开头（算前缀）；0 = 不匹配。
+       ⛔ 不能用「压缩后 indexOf」—— 那会让 `kc` 撞上「k closed」（kclosed）、
+          `nbv` 撞上 `f \in bv`（finbv），全是跨词边界粘出来的假命中。 */
+    function sqPrefixHit(v, qs) {
+      if (!qs || !v) return 0;
+      var toks = v.split(' '), acc = '';
+      for (var i = 0; i < toks.length; i++) {
+        acc += toks[i];
+        if (acc === qs) return i === toks.length - 1 ? 2 : 1;
+        if (acc.length > qs.length) return 0;
+      }
+      return 0;
     }
 
     function termsOf(q) {
@@ -9054,35 +9079,40 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
           搜 `zorn` 会让「选择公理」压过「佐恩引理」—— 实测就是这个结果，
           而 `Zorn's Lemma` 才是那个名字。别名再准也只是别名。 */
     function score(entry, q) {
-      /* ⚠️ q 是**词**（可能带空格），比较前也要走 key() */
-      var qk = key(q);
+      /* ⚠️ q 是**词**（可能带空格），比较前也要走 key() / keySq() */
+      var qk = key(q), qs = keySq(q);
+      if (!qk) return 0;
       var nf = [entry.kLabel, entry.kTitle, entry.kLabelEn, entry.kTitleEn];
       var i, v, exact = false, prefix = false, has = false;
       for (i = 0; i < nf.length; i++) {
-        v = String(nf[i] || '').toLowerCase();
+        v = String(nf[i] || '');
         if (!v) continue;
+        var sp = sqPrefixHit(v, qs);
+        /* ⛔ 「含」只看带空格的键：压缩键会把相邻的词粘起来 */
         if (v.indexOf(qk) >= 0) has = true;
-        if (v === qk) exact = true;
-        if (v.indexOf(qk) === 0) prefix = true;
+        if (v === qk || sp === 2) exact = true;
+        if (v.indexOf(qk) === 0 || sp === 1) prefix = true;
       }
       var aka = entry.kAka || [], akaExact = false, akaHas = false;
       for (i = 0; i < aka.length; i++) {
         v = String(aka[i] || '');
         if (!v) continue;
-        if (v === qk) akaExact = true;
+        var sap = sqPrefixHit(v, qs);
+        if (v === qk || sap === 2) akaExact = true;
         if (v.indexOf(qk) >= 0) akaHas = true;
       }
       var id = entry.node.id.toLowerCase();
+      var idk = key(id);
       var s = 0;
       if (exact) s = 1000;
-      else if (id === qk) s = 850;
+      else if (idk === qk) s = 850;
       else if (prefix) s = 500;
       else if (akaExact) s = 400;
       else if (has) s = 260;
       /* id 里含（`prop.measurable-closure` 这类）—— id 是英文词干，英文查询的实际
          检索面之一。⛔ 别把这档删掉：删了之后「只有 id 里有这个英文词」的节点会
          掉到「正文里提过一句」的节点后面（2026-10-16 实测过）。 */
-      else if (id.indexOf(qk) >= 0) s = 240;
+      else if (idk.indexOf(qk) >= 0) s = 240;
       else if (akaHas) s = 150;
       else if (String((entry.node.tags || []).join(' ')).toLowerCase().indexOf(q) >= 0) s = 110;
       else if (entry.node.type.toLowerCase().indexOf(q) >= 0) s = 60;
@@ -9098,29 +9128,33 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
        拿到的分几乎一样。拆词是必要的（要支持多词），但不该抹掉「这就是它的名字」。
        这里给整条查询单算一次，命中正名时给一个**高于任意词组合**的分。 */
     function nameScore(entry, q) {
-      var qk = key(q);
+      var qk = key(q), qs = keySq(q);
+      if (!qk) return 0;
       var nf = [entry.kLabel, entry.kTitle, entry.kLabelEn, entry.kTitleEn];
       var best = 0, i, v;
       for (i = 0; i < nf.length; i++) {
         v = String(nf[i] || '');
         if (!v) continue;
-        if (v === qk) best = Math.max(best, 3000);
-        else if (v.indexOf(qk) === 0) best = Math.max(best, 1800);   /* 前缀：查询是名字的开头 */
+        var sp = sqPrefixHit(v, qs);
+        if (v === qk || sp === 2) best = Math.max(best, 3000);
+        else if (v.indexOf(qk) === 0 || sp === 1) best = Math.max(best, 1800);   /* 前缀：查询是名字的开头 */
       }
       var aka = entry.kAka || [];
       for (i = 0; i < aka.length; i++) {
         v = String(aka[i] || '');
         if (!v) continue;
-        if (v === qk) best = Math.max(best, 2600);
-        else if (v.indexOf(qk) === 0) best = Math.max(best, 1500);
+        var sap = sqPrefixHit(v, qs);
+        if (v === qk || sap === 2) best = Math.max(best, 2600);
+        else if (v.indexOf(qk) === 0 || sap === 1) best = Math.max(best, 1500);
       }
       /* id 的末段也算名字：lem.zorn 的正文名是「佐恩引理」，用户敲 zorn 时它才是原主；
          而 aka 里挂了 Zorn 的 ax.choice 不该压过它。
          （2026-11-02 实测：只按 label/aka 加正名权重，会让 ax.choice 顶掉 lem.zorn。） */
       var idLow = entry.node.id.toLowerCase();
       var tail = idLow.split('.').pop();
-      if (tail === qk) best = Math.max(best, 2800);
-      else if (idLow.replace(/^[a-z]+\./, '') === qk) best = Math.max(best, 900);
+      var tailk = key(tail);
+      if (tailk === qk) best = Math.max(best, 2800);
+      else if (key(idLow.replace(/^[a-z]+\./, '')) === qk) best = Math.max(best, 900);
       return best;
     }
 

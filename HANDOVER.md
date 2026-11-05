@@ -45,7 +45,7 @@
 | `bun tools/_katexcheck.mjs` | ✅ **2815 个 `$$…$$`，失败 0** |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 12/12 |
-| `bun tools/searchcheck.mjs` | ✅ 29/29 —— ⚠️ **但它抓不到 §4.1 那个搜索 bug** |
+| `bun tools/searchcheck.mjs` | ✅ **31/31** —— 2026-11-05 补了 2 条「带空格」基准，§4.1 那个 bug 本身也被钉住了 |
 | `bun tools/_slashcheck.mjs` | ✅ 0 处 |
 | `bun _tools/_ctrlscan.mjs` | ❌ **5 处控制字符仍在**（§4.5） |
 
@@ -263,14 +263,16 @@
 > 完整清单在 `_audit/问题清单-v2-2026-11-03.md`（8886 行，§24 是待修总表，§58.5 是硬错表）。
 > 下面只写**最该先动的**，以及**我亲手验过的争点**。
 
-### 4.1 🔴🔴 最急：`src/core/search.js:219` 的 `key()` 笔误
+### 4.1 ✅ 2026-11-05 已修：`src/core/search.js` 的 `key()` 笔误
 
-```js
-// 现在（错）
-.replace(DASHES, '-').replace(/s+/g, '')
-// 应该是
-.replace(DASHES, '').replace(/\s+/g, '')
-```
+> **修法（不是把空格全删掉）**：`key()` 改成「破折号 → 空格、空白压成一个、去首尾」；
+> 另加 `keySq()` + `sqPrefixHit()` 处理 `RiemannLebesgue` / `Riemann映照定理` 这种**无空格**写法
+> （只认「名字开头若干**完整词**的拼接」）。
+> ⚠️ 试过的错法：把空格和破折号**全删**——会跨词边界粘出假命中：`kC` 撞上「Grothendieck category」、
+> `NBV` 撞上 `f \in BV`（两条都是 2026-11-05 实测）。所以「含」判断必须用带空格的键。
+> **验收**：`searchcheck` 31/31（新增 `Riemann Lebesgue` / `RiemannLebesgue` 两条基准）；
+> 真页面 cdp 输入「Riemann Lebesgue」→ 第一条 `thm.riemann-lebesgue` 且高亮（`_audit/_boot/search-space.png`）。
+> 下面保留原始诊断，供复盘。
 
 `/s+/` 匹配**字母 s**，不是空白。两个后果：
 
@@ -288,10 +290,10 @@
 'Riemann Lebesgue'  → ❌ 空
 ```
 
-⚠️ **为什么 `searchcheck` 29/29 绿也抓不到**：基准钉的是 `{ q: 'Riemann映照定理', top: ['thm.riemann-mapping'] }`，
+⚠️ **当时 `searchcheck` 29/29 绿也抓不到**：基准钉的是 `{ q: 'Riemann映照定理', top: ['thm.riemann-mapping'] }`，
 而上次的修法是**在 `aliases.js` 里加无空格别名兜住**。**基准钉在别名上，没钉在 `key()` 归一化上。**
 
-⇒ 改法不只是修那一行，**必须给 `searchcheck` 补一条「带空格」的基准**，否则下次还会退回。
+⇒ 改法不只是修那一行，**必须给 `searchcheck` 补一条「带空格」的基准**，否则下次还会退回。✅ 2026-11-05 已补两条。
 
 ### 4.2 🔴 凸性一族：补 4 个节点 + 1 处扩充
 
