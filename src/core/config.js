@@ -537,11 +537,85 @@
     font: '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif',
     monoFont: 'ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace',
 
+    /* ⭐⭐ 2026-11-05 主题（ENG-003）：**纸/墨两端**跟主题走的颜色都在这里。
+       语义色（nodeTypes / 领域色 / 星团色）**不跟主题变** —— 它们是图例、搜索、
+       面板徽章共用的身份色，改了就「同一颗星在图例和画布上不是一个颜色」。
+       CSS 侧负责 DOM（`[data-theme]` + 变量表，见 src/ui/styles.css）；
+       canvas 侧读这里（名字药丸 / 文字墨色 / 描边环 / 边）。
+       ⛔ 名字一律用 rgb 串（`U.rgba()` 会把它和 alpha 拼起来），跟 edgeStyles 的老写法一致。 */
+    schemes: {
+      light: {
+        ink: '#1C1C1E', inkSoft: '#6B7178', inkFaint: '#A5ABB3',
+        nameBg: '255,255,255',           // 名字药丸底（alpha 由调用点给）
+        ring: '255,255,255',             // 点 / 箭头 / 字描边环（= 纸色）
+        labelHalo: 'rgba(255,255,255,0.92)',
+        bg: '#FFFFFF',
+        edgeImplication: '#1C1C1E', edgeEquivalence: '#1C1C1E',
+        edgeDefinition: '60, 112, 245', edgeAnalogy: '138, 106, 214',
+        spineColor: 'B4661A', derived: '#E0446B', read: '#2E9E5B'
+      },
+      dark: {
+        ink: '#E8EDF6', inkSoft: '#AEB8C8', inkFaint: '#7E8899',
+        nameBg: '20,24,32',
+        ring: '11,14,20',                // = 深色纸，点在深底上不会被白圈糊住
+        labelHalo: 'rgba(11,14,20,0.92)',
+        bg: '#0B0E14',
+        edgeImplication: '#D7DEEA', edgeEquivalence: '#D7DEEA',
+        edgeDefinition: '130, 170, 255', edgeAnalogy: '185, 166, 255',
+        spineColor: 'E8A45C', derived: '#FF7A9C', read: '#58D08D'
+      }
+    },
+    /* 当前解析后的方案（'light' | 'dark'）与用户选择（'light' | 'dark' | 'auto'）。
+       ⚠️ 两个不是一个东西：`auto` 解析成 dark 时，设置里的下拉必须还显示 auto。 */
+    scheme: 'light',
+    mode: 'auto',
+
+    /** 把方案套到 `MG.theme` 的活动字段上（原地改，别换对象：
+        模块里 `T.edgeStyles` / `T.derivedEdge` 都是按引用读的）。 */
+    applyScheme: function (name) {
+      var s = this.schemes[name] || this.schemes.light;
+      this.scheme = (name === 'dark') ? 'dark' : 'light';
+      this.ink = s.ink; this.inkSoft = s.inkSoft; this.inkFaint = s.inkFaint;
+      this.nameBg = s.nameBg; this.ring = s.ring; this.labelHalo = s.labelHalo;
+      this.bg = s.bg;
+      this.spineColor = s.spineColor;
+      this.readColor = s.read;
+      var E = this.edgeStyles;
+      if (E) {
+        E.implication.color = s.edgeImplication;
+        E.equivalence.color = s.edgeEquivalence;
+        E.definition.color = s.edgeDefinition;
+        E.analogy.color = s.edgeAnalogy;
+      }
+      if (this.derivedEdge) this.derivedEdge.color = s.derived;
+      return this;
+    },
+
+    /* 兼容旧字段（有些探针/脚本会读）：值由 applyScheme 维护。 */
     ink: '#1C1C1E',
     inkSoft: '#6B7178',
     inkFaint: '#A5ABB3',
-    labelHalo: 'rgba(255,255,255,0.92)'
+    labelHalo: 'rgba(255,255,255,0.92)',
+    nameBg: '255,255,255',
+    ring: '255,255,255',
+    spineColor: 'B4661A',
+    readColor: '#2E9E5B'
   };
+
+  /* 开页先把方案定下来（内联脚本已经按 ?theme / localStorage / auto 把 <html data-theme> 设好）。
+     ⚠️ 放在这里而不是 app.js：渲染第一帧之前，MG.theme 必须已经是正确的那一套。
+     ⛔ build.mjs 也会加载本文件（Node 里没有 document）—— 必须容错。 */
+  (function initScheme() {
+    var resolved = 'light';
+    try {
+      if (typeof document !== 'undefined' && document.documentElement) {
+        resolved = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+        var mode = document.documentElement.dataset.themeMode;
+        if (mode === 'light' || mode === 'dark' || mode === 'auto') MG.theme.mode = mode;
+      }
+    } catch (e) { /* 忽略 */ }
+    MG.theme.applyScheme(resolved);
+  })();
 
   /** 取节点类型样式（未知类型回落到 definition）
       ⭐ T2.4：界面英文模式下 `name` 直接换成 `nameEn` —— 这样图例 / 搜索下拉 /

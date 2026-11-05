@@ -1023,7 +1023,7 @@
         octx.beginPath();
         octx.arc(p.x, p.y, r + 3.1, 0, Math.PI * 2);
         octx.lineWidth = 2.1;
-        octx.strokeStyle = U.rgba('#2E9E5B', 0.88 * a);
+        octx.strokeStyle = U.rgba(T.readColor || '#2E9E5B', 0.88 * a);
         octx.stroke();
         for (var w = 0; w < 2; w++) {
           var ph = (pulse + w * 0.5) % 1;
@@ -1031,7 +1031,7 @@
           octx.beginPath();
           octx.arc(p.x, p.y, r + 3.1 + ph * 11, 0, Math.PI * 2);
           octx.lineWidth = 1.8;
-          octx.strokeStyle = U.rgba('#2E9E5B', 0.9 * fd * a);
+          octx.strokeStyle = U.rgba(T.readColor || '#2E9E5B', 0.9 * fd * a);
           octx.stroke();
         }
       }
@@ -1174,7 +1174,7 @@
         var fs = pick.fs, m = pick.m, bw = m.bw, bh = m.bh, tw = m.tw, ls = m.ls;
         var cy = pick.slot.y;
         ctx.globalAlpha = a;
-        ctx.fillStyle = 'rgba(255,255,255,0.94)';
+        ctx.fillStyle = 'rgba(' + T.nameBg + ',0.94)';
         ctx.beginPath();
         roundPath(ctx, p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);
         ctx.fill();
@@ -1232,7 +1232,7 @@
         var fs = pick.fs, m = pick.m, bw = m.bw, bh = m.bh, tw = m.tw, ls = m.ls;
         var cy = pick.slot.y;
         ctx.globalAlpha = a;
-        ctx.fillStyle = 'rgba(255,255,255,0.86)';
+        ctx.fillStyle = 'rgba(' + T.nameBg + ',0.86)';
         ctx.beginPath();
         roundPath(ctx, p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);        ctx.fill();
         ctx.strokeStyle = U.rgba(r.color, 0.55);
@@ -1242,7 +1242,7 @@
         var chars = text.split('');
         var total = tw + ls * (chars.length - 1);
         var cx = p.x - total / 2;
-        ctx.fillStyle = 'rgba(26,28,34,0.92)';
+        ctx.fillStyle = U.rgba(T.ink, 0.92);
         ctx.textAlign = 'left';
         chars.forEach(function (ch) {
           ctx.fillText(ch, cx, cy + 0.5);
@@ -1425,14 +1425,14 @@
         var fs = pick.fs, m = pick.m, bw = m.bw, bh = m.bh;
         var y = pick.slot.y;
         ctx.globalAlpha = a;
-        ctx.fillStyle = 'rgba(255,255,255,0.88)';
+        ctx.fillStyle = 'rgba(' + T.nameBg + ',0.88)';
         ctx.beginPath();
         roundPath(ctx, p.x - bw / 2, y - bh / 2, bw, bh, bh / 2);
         ctx.fill();
         var g = view.graph.galaxyOf(c);
         if (g) { ctx.strokeStyle = U.rgba(g.color, 0.5); ctx.lineWidth = 1.2; ctx.stroke(); }
         // 深色字，保证在云上读得清
-        ctx.fillStyle = 'rgba(30,32,40,0.90)';
+        ctx.fillStyle = U.rgba(T.ink, 0.90);
         ctx.fillText(text, p.x, y + 0.5);
         ctx.globalAlpha = 1;
         prof.labelCount++;                   // 星团名也是一个「画上去的标签」
@@ -1739,7 +1739,7 @@
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.lineWidth = 3.5;
-        ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + T.ring + ',' + (0.95 * a).toFixed(3) + ')';
         ctx.strokeText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
         ctx.fillStyle = U.rgba(T.edgeStyles.equivalence.color, 0.92 * a);
         ctx.fillText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
@@ -1819,7 +1819,7 @@
       ctx.fillStyle = U.rgba(st.color, a);
       ctx.fill();
       ctx.lineWidth = Math.max(1.2, C.node.ringWidth * Math.min(1, camNow().k + 0.35));
-      ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
+      ctx.strokeStyle = 'rgba(' + T.ring + ',' + (0.95 * a).toFixed(3) + ')';
       ctx.stroke();
 
       // 选中 / 悬停的外环
@@ -1935,11 +1935,11 @@
         ctx.font = '600 ' + L.fs + 'px ' + T.font;
         var alpha = L.alpha;
         ctx.lineWidth = Math.max(2.5, L.fs * 0.28);
-        ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + T.ring + ',' + (0.9 * alpha).toFixed(3) + ')';
         ctx.strokeText(L.text, L.x, L.y);
         ctx.fillStyle = (L.rank <= 1)
           ? U.rgba(MG.typeStyle(L.type).color, alpha)
-          : 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
+          : U.rgba(T.ink, alpha);
         ctx.fillText(L.text, L.x, L.y);
         prof.labelCount++;
       });
@@ -2090,9 +2090,12 @@
       var s = view.searchIds ? Object.keys(view.searchIds).join(',') : '';
       /* ⭐ ENG-002：`displayEpoch` 必须进 key。它一变（localizeDisplay 重算显示名，
          比如外部内容包并入、或数据里的名字被改）离屏标签层里贴的就是**旧文字**；
-         以前只清文本宽度缓存、没让这一层失效 ⇒ 名字要等下一次机位变化才更新。 */
+         以前只清文本宽度缓存、没让这一层失效 ⇒ 名字要等下一次机位变化才更新。
+         ⭐ ENG-003：主题也进 key —— 墨色/药丸底/描边环都随主题变，
+            标签层里存的是**上一套颜色的像素**，不进 key 就会一直贴旧色。 */
       return f + '|' + h + '|' + s + '|' + (C.showLabels ? '1' : '0') + '|'
-        + (MG.displayLang || 'zh') + '|' + (MG.displayEpoch || 0) + '|' + sigEpoch;
+        + (MG.displayLang || 'zh') + '|' + (MG.displayEpoch || 0) + '|'
+        + (T.scheme || 'light') + '|' + sigEpoch;
     }
 
     /** 回放：把离屏标签层整块按 (dx,dy) 搬一次 —— 零测量、零避让、零重排 */
@@ -2455,9 +2458,9 @@
 
         var alpha = a * 0.92 * nameAlpha;
         ctx.lineWidth = Math.max(2.5, fs * 0.28);
-        ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + T.ring + ',' + (0.9 * alpha).toFixed(3) + ')';
         ctx.strokeText(text, x, y);
-        ctx.fillStyle = 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
+        ctx.fillStyle = U.rgba(T.ink, alpha);
         ctx.fillText(text, x, y);
         prof.labelCount++;                    // 节点名：真正画上去了才算一条
         nodeDrawn++;

@@ -51,6 +51,11 @@ MG.uiEn = {
 
     /* ------------------------------------------------------ 设置窗口 */
     '设置': 'Settings',
+    '外观': 'Appearance',
+    '主题': 'Theme',
+    '浅色': 'Light',
+    '深色': 'Dark',
+    '跟随浏览器主题': 'Follow system',
     '关闭设置': 'Close settings',
     '关闭（Esc）': 'Close (Esc)',
     '界面元素': 'Interface elements',

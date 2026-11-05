@@ -30,6 +30,25 @@
      各家浏览器都吃；换成 %3C 那种反而在 file:// 下偶发不显示。 -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M9 9 23 15 12 24' stroke='%234f7cf5' stroke-width='1.7' fill='none' opacity='.5'/><circle cx='9' cy='9' r='3.2' fill='%234f7cf5'/><circle cx='23' cy='15' r='3.2' fill='%234f7cf5'/><circle cx='12' cy='24' r='3.2' fill='%234f7cf5'/></svg>">
 <link rel="stylesheet" href="src/ui/styles.css" />
+<!-- ⭐ 主题第一帧脚本（ENG-003）：必须在加载样式与任何模块之前跑。
+     优先级：?theme= → localStorage → auto（跟随 prefers-color-scheme）。
+     mode 存 data-theme-mode（light/dark/auto），解析值存 data-theme（light/dark）；
+     设置里的下拉读 mode，不读解析值。 -->
+<script>
+(function () {
+  try {
+    var q = /[?&]theme=(light|dark|auto)\b/.exec(location.search || '');
+    var stored = null;
+    try { stored = localStorage.getItem('mathgalaxy.theme'); } catch (e) {}
+    var mode = q ? q[1] : (stored === 'light' || stored === 'dark' || stored === 'auto' ? stored : 'auto');
+    var dark = mode === 'dark' || (mode === 'auto' && window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var de = document.documentElement;
+    de.dataset.theme = dark ? 'dark' : 'light';
+    de.dataset.themeMode = mode;
+  } catch (e) {}
+})();
+</script>
 <!-- KaTeX：数学排版。CSS 与 JS 都放 src/ui/，字体在 src/ui/fonts/（与 CSS 同目录，file:// 也能加载） -->
 <link rel="stylesheet" href="src/ui/katex.min.css" />
 
@@ -40,7 +59,7 @@
 #mg-loading {
   position: fixed; inset: 0; z-index: 200;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: #fff; color: #1c1c1e;
+  background: var(--bg, #fff); color: var(--ink, #1c1c1e);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
                "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -73,11 +92,11 @@
 #mgl-name { font-size: 17px; font-weight: 600; letter-spacing: .16em; }
 #mgl-text {
   margin-top: 9px; min-height: 1.25em;
-  font-size: 12.5px; letter-spacing: .04em; color: #7b818b;
+  font-size: 12.5px; letter-spacing: .04em; color: var(--ink-soft, #7b818b);
 }
 #mgl-bar {
   margin-top: 20px; width: 176px; height: 3px; border-radius: 3px;
-  background: rgba(79, 124, 245, .13); overflow: hidden;
+  background: var(--accent-bg, rgba(79, 124, 245, .13)); overflow: hidden;
 }
 /* ⚠️ 进度条只动 transform（走合成器）：主线程在 computeLayout 里卡死 4 秒时，
       scaleX 照样在动；换成 width / background-position 就会冻住，看着像挂了。
@@ -93,7 +112,7 @@
 @keyframes mgl-creep { from { transform: scaleX(.04); } to { transform: scaleX(.88); } }
 #mg-loading.mgl-real #mgl-fill { animation: none; transition: transform .35s ease-out; }
 #mg-loading.mgl-fail #mgl-fill { background: #d0483c; }
-#mgl-hint { margin-top: 26px; font-size: 11px; letter-spacing: .14em; color: #b7bcc4; }
+#mgl-hint { margin-top: 26px; font-size: 11px; letter-spacing: .14em; color: var(--ink-faint, #b7bcc4); }
 
 @media (prefers-reduced-motion: reduce) {
   #mgl-mark i { animation: none; opacity: .8; }
@@ -295,6 +314,15 @@ window.MG = window.MG || {};
     <button id="settings-close" type="button" title="关闭（Esc）" data-t-title="关闭（Esc）" aria-label="关闭设置" data-t-aria="关闭设置">×</button>
   </div>
   <div class="set-body">
+    <div class="set-title" data-t="外观">外观</div>
+    <label class="set-row set-row-select"><span data-t="主题">主题</span>
+      <select id="set-theme" aria-label="主题">
+        <option value="light" data-t="浅色">浅色</option>
+        <option value="dark" data-t="深色">深色</option>
+        <option value="auto" data-t="跟随浏览器主题">跟随浏览器主题</option>
+      </select>
+    </label>
+    <div class="set-sep"></div>
     <div class="set-title" data-t="界面元素">界面元素</div>
     <label class="set-row"><input type="checkbox" data-ui="search" checked> <span data-t="搜索框">搜索框</span></label>
     <label class="set-row"><input type="checkbox" data-ui="legend" checked> <span data-t="图例（左下）">图例（左下）</span></label>

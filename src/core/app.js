@@ -286,6 +286,7 @@
         if (!firstPainted) {
           firstPainted = true;
           if (MG.loading) MG.loading.done();
+          try { global.__mgReady = true; } catch (e) {}   // embed 契约：第一帧画完后置 true
         }
       }
       drawProf.ms += performance.now() - tp; drawProf.n++;
@@ -976,12 +977,56 @@
       if (on) {
         syncReadShow();                      // 复选框跟着 state 走（可能在别处被改过）
         syncReadNote();                      // 「没能保存」那行也现算一次
+        var tsel = document.getElementById('set-theme');
+        if (tsel) tsel.value = MG.theme.mode; // 下拉显示的是「用户选的」，不是解析后的 dark/light
         if (settingsClose) settingsClose.focus();
       } else if (settingsEl.contains(document.activeElement)) {
         settingsBtn.focus();
       }
     }
     applyUI();              // 开页就按上次的选择摆好
+
+    /* ---------------------------------------------- 主题（ENG-003） */
+    var THEME_KEY = 'mathgalaxy.theme';
+    var themeMQ = global.matchMedia ? global.matchMedia('(prefers-color-scheme: dark)') : null;
+    function resolveTheme(mode) {
+      if (mode === 'dark') return 'dark';
+      if (mode === 'light') return 'light';
+      return (themeMQ && themeMQ.matches) ? 'dark' : 'light';
+    }
+    function applyTheme(name, persist) {
+      var mode = (name === 'light' || name === 'dark' || name === 'auto') ? name : 'auto';
+      var resolved = resolveTheme(mode);
+      try {
+        document.documentElement.dataset.theme = resolved;
+        document.documentElement.dataset.themeMode = mode;
+      } catch (e) {}
+      MG.theme.mode = mode;
+      MG.theme.applyScheme(resolved);
+      if (persist) { try { localStorage.setItem(THEME_KEY, mode); } catch (e) {} }
+      var sel = document.getElementById('set-theme');
+      if (sel) sel.value = mode;
+      /* 静态位图里烘的是旧颜色 ⇒ 必须重烘一张；光 requestDraw 只重画实时层 */
+      if (bitmap && bitmap.bakeNow) { try { bitmap.bakeNow(); } catch (e) {} }
+      requestDraw();
+      return mode;
+    }
+    function syncTheme() {
+      var mode = 'auto';
+      try {
+        var m = document.documentElement.dataset.themeMode;
+        if (m === 'light' || m === 'dark' || m === 'auto') mode = m;
+      } catch (e) {}
+      applyTheme(mode, false);
+    }
+    syncTheme();
+    if (themeMQ) {
+      var onThemeMQ = function () { if (MG.theme.mode === 'auto') applyTheme('auto', false); };
+      if (themeMQ.addEventListener) themeMQ.addEventListener('change', onThemeMQ);
+      else if (themeMQ.addListener) themeMQ.addListener(onThemeMQ);
+    }
+    var themeSel = document.getElementById('set-theme');
+    if (themeSel) themeSel.addEventListener('change', function () { applyTheme(themeSel.value, true); });
 
     settingsBtn.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -2414,6 +2459,7 @@
       setMargin: function (v) { if (bitmap) bitmap.setMargin(v); requestDraw(); },
       setBand: function (v) { if (bitmap) bitmap.setBand(v); requestDraw(); },
       setZoomMs: function (v) { if (bitmap) bitmap.setZoomMs(v); requestDraw(); },
+      setTheme: function (name) { return applyTheme(name, true); },
       get bitmap() { return bitmap ? bitmap.state() : null; },
       rebuild: function () { start(); },
       get graph() { return view.graph; },
