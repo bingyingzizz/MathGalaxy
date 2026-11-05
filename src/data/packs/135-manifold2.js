@@ -95,9 +95,9 @@ window.MG = window.MG || {};
         '',
         '**生成元不唯一，秩唯一**：把 $k$ 个生成元按任意光滑 $\\operatorname{GL}(k,\\mathbb{R})$-值函数矩阵线性组合，仍是生成元。所以「光滑」是分布的性质，不是某一组场的性质 —— 与 `def.vector-field` 里「换卡乘 Jacobi 矩阵」是同一类记账。',
         '',
-        '**与辛几何、接触几何的接口**：秩 $n-1$ 的分布常写成某个处处非零 $1$-形式的核 $\\ker\\omega$；辛流形上 $\\ker(\\iota_{X}\\omega)$ 是 $X$ 的**辛正交补**（秩 $n-1$，含 $X$ 本身，因为 $\\omega(X,X) = 0$，见 `def.interior-product`）。\n\n这些核分布可不可积，正是 Frobenius（`thm.frobenius`）要判的事。',
+        '**与辛几何、接触几何的接口**：秩 $n-1$ 的分布常写成某个处处非零 $1$-形式的核 $\\ker\\omega$；辛流形上 $\\ker(\\iota_{X}\\omega)$ 是 $X$ 的**辛正交补**，在 $X \\ne 0$ 的开集上秩 $n-1$（含 $X$ 本身，因为 $\\omega(X,X) = 0$，见 `def.interior-product`）；$X$ 有零点时秩会跳（$\\mathbb{R}^{2}$ 上 $X = x\\partial_{x}$ 在 $x = 0$ 处核是整个切空间）。\n\n这些核分布可不可积，正是 Frobenius（`thm.frobenius`）要判的事。',
         '',
-        '⚠️ 记号冲突：$\\Gamma(\\mathcal{D})$ 记「落在 $\\mathcal{D}$ 里的向量场的全体」，它是 $C^{\\infty}(M)$-模而不是向量空间；本图沿用 `def.bundle-section` 的 $\\Gamma$。'
+        '⚠️ 记号冲突：$\\Gamma(\\mathcal{D})$ 记「落在 $\\mathcal{D}$ 里的向量场的全体」，它**既是实向量空间、也是** $C^{\\infty}(M)$-模（逐点加法与实数倍封闭，「模」是比「向量空间」多出来的那层结构）；本图沿用 `def.bundle-section` 的 $\\Gamma$。'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 切分布与光滑性',
@@ -139,7 +139,7 @@ window.MG = window.MG || {};
         '所以**线分布永远可积**（`thm.frobenius`）；\n\n' +
         '可积性是从秩 $2$ 才开始的问题 —— 这与「一个一阶常微分方程总有解、一阶偏微分方程组才有障碍」是同一句话。',
         '',
-        '**为什么对合是「正确」的条件**：若有积分流形 $N$（`def.integral-manifold`），则「$X, Y$ 落在 $\\mathcal{D}$ 里」等于「$X, Y$ 是 $N$ 上的向量场」，于是 $[X,Y]$ 必落在 $TN = \\mathcal{D}$ 里 —— 对合是必要条件，而且它只用括号就能验。\n\nFrobenius 定理说它也是**充分**的。',
+        '**为什么对合是「正确」的条件**：若**每点**都经过一块积分流形 $N$（`def.integral-manifold`）—— 不是「存在一块」就够 —— 则对落在 $\\mathcal{D}$ 里的 $X, Y$ 与任一点 $p$，取过 $p$ 的 $N$，$X, Y$ 限制在 $N$ 上就是 $N$ 的向量场，于是 $[X,Y]_{p} \\in T_{p}N = \\mathcal{D}_{p}$。对合因此是必要条件，而且它只用括号就能验。\n\nFrobenius 定理说它也是**充分**的。',
         '',
         '**反例（Heisenberg 接触分布）**：$\\mathbb{R}^{3}$ 上令 $\\mathcal{D} = \\ker\\omega$，$\\omega = \\mathrm{d}z - x\\,\\mathrm{d}y$。\n\n$X = \\partial_{x}$ 与 $Y = \\partial_{y} + x\\,\\partial_{z}$ 满足 $\\omega(X) = 0$、$\\omega(Y) = -x + x = 0$，所以它们是 $\\mathcal{D}$ 的生成元；\n\n但',
         '',
@@ -513,7 +513,7 @@ window.MG = window.MG || {};
         '',
         '**$(1,1)$ 型时就是取迹**：$\\mathrm{C}^{1}_{\\ 1}T = \\operatorname{tr}T$（把 $T$ 看成逐点的线性变换 $T_{p}M \\to T_{p}M$）。\n\n所以缩并是取迹的推广，`def.trace` 里那条「$\\operatorname{tr}(AB) = \\operatorname{tr}(BA)$」在这里读作「缩并的次序可以调换」。',
         '',
-        '**例子**：曲率张量是 $(1,3)$ 型的，缩并一次（上标与第二个下标）得 Ricci 张量（`def.ricci-curvature`），再缩并一次得标量曲率。Einstein 张量是 Ricci 张量与 $g$ 的组合 —— 所以「曲率的三个层次」就是「缩并 $0/1/2$ 次」。',
+        '**例子**：曲率张量是 $(1,3)$ 型的，缩并一次（上标与第二个下标）得 Ricci 张量（`def.ricci-curvature`）。⚠️ Ricci 是 $(0,2)$ 型、没有上标，**不能**直接再缩并一次 —— 要先用逆度量升一个指标：$S = g^{ij}\\mathrm{Ric}_{ij}$（直接相加是错的：单位球面上 $1 + \\sin^{2}\\theta \\ne 2$）。Einstein 张量Einstein 张量是 Ricci 张量与 $g$ 的组合 —— 所以「曲率的三个层次」就是「缩并 $0/1/2$ 次」。',
         '',
         '**与坐标无关**：换卡时上标各乘一次 $\\partial y/\\partial x$、下标各乘一次 $\\partial x/\\partial y$；被缩的那一对恰好一个上标一个下标，两个 Jacobi 矩阵互逆，乘起来是 $\\delta$。\n\n这一步是「缩并是张量运算」的全部内容（对照 `def.tensor-field` 的 notes：变化律只含一阶导）。',
         '',
@@ -586,7 +586,7 @@ window.MG = window.MG || {};
         '',
         '$$\\dot\\gamma(t) = X\\bigl(\\gamma(t)\\bigr)\\qquad (t \\in J).$$',
         '',
-        '**流**：$X$ 的流是光滑映射 $\\varphi : \\mathcal{W} \\to M$，其中 $\\mathcal{W} \\subseteq \\mathbb{R}\\times M$ 是开集、$\\{0\\}\\times M \\subseteq \\mathcal{W}$，满足',
+        '**流**：$X$ 的流是光滑映射 $\\varphi : \\mathcal{W} \\to M$，其中 $\\mathcal{W} \\subseteq \\mathbb{R}\\times M$ 是开集、$\\{0\\}\\times M \\subseteq \\mathcal{W}$，**且每个 $\\mathcal{W}_{p} := \\{t : (t,p) \\in \\mathcal{W}\\}$ 是含 $0$ 的区间**（只要求开集不够：把 $\\mathcal{W}$ 取成三段互不相连的区间、每段各自给一段解，方程与初值全满足，但 $\\varphi_{2} \\ne \\varphi_{1} \\circ \\varphi_{1}$），满足',
         '',
         '$$\\varphi(0,p) = p,\\qquad \\frac{\\partial}{\\partial t}\\varphi(t,p) = X\\bigl(\\varphi(t,p)\\bigr),$$',
         '',
@@ -783,11 +783,11 @@ window.MG = window.MG || {};
         '',
         '**它是「同伦算子」的原型**：$\\mathrm{d}\\iota_{X} + \\iota_{X}\\mathrm{d} = \\mathcal{L}_{X}$ 的形状与 Poincaré 引理的 $\\mathrm{d}K + K\\mathrm{d} = \\operatorname{id}$（`lem.poincare-lemma`）完全一样 —— 都把「求导」拆成两条链映射之和。\n\n差别在于 $\\mathcal{L}_{X}$ 不必是 $\\operatorname{id}$：给定 $\\mathcal{L}_{X}$ 后想解 $\\iota_{X}\\omega = \\eta$，就是一个「同伦方程」。',
         '',
-        '**为什么物理里爱用它**：$\\mathcal{L}_{X}$ 是沿流的变化率，$\\mathrm{d}\\iota_{X}$ 与 $\\iota_{X}\\mathrm{d}$ 分掉了「恰当部分」与「闭部分」。像「场的对称性」这类陈述（$\\mathcal{L}_{X}F = 0$）以及规范变换的存在性，都从这条公式出发。',
+        '**为什么物理里爱用它**：$\\mathcal{L}_{X}$ 是沿流的变化率，$\\mathrm{d}\\iota_{X}$ 给出**恰当**部分，而 $\\iota_{X}\\mathrm{d}$ 一般**不闭**（$\\mathbb{R}^{2}$、$X = \\partial_{x}$、$\\omega = x^{2}\\mathrm{d}y$ 时 $\\iota_{X}\\mathrm{d}\\omega = 2x\\,\\mathrm{d}y$，$\\mathrm{d}(2x\\,\\mathrm{d}y) = 2\\,\\mathrm{d}x \\wedge \\mathrm{d}y \\ne 0$）。像「场的对称性」这类陈述（$\\mathcal{L}_{X}F = 0$）以及规范变换的存在性，都从这条公式出发。',
         '',
         '**两个边界情形**：$k = 0$ 时 $\\iota_{X}f = 0$，故 $\\mathcal{L}_{X}f = \\iota_{X}\\mathrm{d}f = \\mathrm{d}f(X) = Xf$，与 `def.lie-derivative` 的第一条一致；\n\n$k = n$ 时 $\\mathrm{d}\\omega = 0$，故 $\\mathcal{L}_{X}\\omega = \\mathrm{d}\\iota_{X}\\omega$ 恰当 —— 这是「体积沿流的变率等于散度乘体积」那条公式的起点。',
         '',
-        '⚠️ 符号约定：本图的 $\\iota_{X}$ 用「塞进第一个槽」的约定，故 $(\\mathcal{L}_{X}\\omega)(Y) = X\\omega(Y) - \\omega([X,Y])$；若有人把内乘定义成「塞进最后一个槽」，那 Cartan 公式要补一个 $(-1)^{k}$。抄公式前先看对方的内乘约定。',
+        '⚠️ 符号约定：本图的 $\\iota_{X}$ 用「塞进第一个槽」的约定，故 $(\\mathcal{L}_{X}\\omega)(Y) = X\\omega(Y) - \\omega([X,Y])$；若把内乘改成「塞进最后一个槽」的 $j_{X} := (-1)^{k-1}\\iota_{X}$，两项要**分别**换号：$\\mathcal{L}_{X}\\omega = (-1)^{k-1}\\mathrm{d}(j_{X}\\omega) + (-1)^{k}j_{X}(\\mathrm{d}\\omega)$ —— 整体乘一个 $(-1)^{k}$ 是错的（$\\mathbb{R}^{1}$ 上 $\\omega = x\\,\\mathrm{d}x$ 会得到 $-\\mathrm{d}x$，真实是 $+\\mathrm{d}x$）。抄公式前先看对方的内乘约定。',
         ,
         '**各方向用到的假设**（逐形式恒等式与算子恒等式等价，实质在局部微分运算）：\n' +
         '- 对每个 $\\omega$ 成立 $\\iff$ 算子相等：纯属算子相等的定义展开，无额外假设。\n' +
