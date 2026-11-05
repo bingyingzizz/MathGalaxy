@@ -199,7 +199,7 @@ window.MG = window.MG || {};
         '$$X_1 \\times_{X_0} X_2 = \\{(x_1, x_2) \\in X_1 \\times X_2 : f_1(x_1) = f_2(x_2)\\}, \\qquad X_1 \\cup_{X_0} X_2 = (X_1 \\sqcup X_2)/\\!\\sim$$',
         '',
         '其中 $\\sim$ 由 $f_1(x_0) \\sim f_2(x_0)$（$x_0 \\in X_0$）生成。$\\mathbf{Top}$ 里拉回取子空间拓扑、推出取商拓扑。',
-        '$\\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \\to S$、$g: Y \\to S$ 拼成 $\\varphi : X \\oplus Y \\to S$，$(x,y) \\mapsto f(x) - g(y)$，则推出 $= \\operatorname{coker} \\varphi$、拉回 $= \\ker \\varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。'
+        '$\\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \\to S$、$g: Y \\to S$ 拼成 $\\varphi : X \\oplus Y \\to S$，$(x,y) \\mapsto f(x) - g(y)$，则推出 $= \\operatorname{coker} \\varphi$、拉回 $= \\ker \\varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。\n\n📌 范畴语境的「拉回」就是纤维积（这里）；**微分形式**的拉回是 `prop.pullback-form-manifold`。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },

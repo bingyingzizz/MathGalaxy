@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T10:56:11.277Z",
+  "generated": "2026-11-05T10:59:13.972Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -4651,7 +4651,7 @@
     "代数"
    ],
    "statement": "设 $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是 $X$ 的一族子集。\n\n$\\mathfrak{A}$ 是**环**（ring），当且仅当它对有限并封闭、且对差封闭：\n\n$$A, B \\in \\mathfrak{A} \\implies A \\cup B \\in \\mathfrak{A}, \\quad A \\setminus B \\in \\mathfrak{A}$$\n\n$\\mathfrak{A}$ 是**代数**（algebra），当且仅当 $\\mathfrak{A}$ 是环、且含全集：\n\n$$X \\in \\mathfrak{A}$$\n\n**代数 $=$ 环 $X \\in \\mathfrak{A}$**。「把整个 $X$ 放进去」是唯一的差别。",
-   "notes": "环加上 $X \\in \\mathfrak{A}$ 之后，差就自动升级成补：$A^c = X \\setminus A \\in \\mathfrak{A}$。所以**代数**也等价于「对有限并、对补封闭」。\n\n⚠ 这里的「环」是**集合环**（ring of sets），和抽象代数里的 ring 只是同名，毫无关系。\n\n把「有限」都升级成「可数」，就得到 **$\\sigma$环** 与 **$\\sigma$代数** —— 另开两条节点写。",
+   "notes": "环加上 $X \\in \\mathfrak{A}$ 之后，差就自动升级成补：$A^c = X \\setminus A \\in \\mathfrak{A}$。所以**代数**也等价于「对有限并、对补封闭」。\n\n⚠ 这里的「环」是**集合环**（ring of sets），和抽象代数里的 ring 只是同名，毫无关系。\n\n把「有限」都升级成「可数」，就得到 **$\\sigma$环** 与 **$\\sigma$代数** —— 另开两条节点写。\n\n📌 本图的「环」不加限定时常指**代数环** `def.ring`；本节点讲的是**集合环**（对并与差封闭的集族），两者只是同名。",
    "refs": [
     "Halmos, Measure Theory, §4",
     "Folland, Real Analysis, §1.2"
@@ -7068,7 +7068,7 @@
     "控制函数"
    ],
    "statement": "设 $\\{f_n\\} \\subseteq L^1$，$f_n \\to f$ a.e.，且存在**控制函数** $g \\in L^1$ 使\n\n$$|f_n| \\le g\\quad  \\text{a.e.}\\quad  \\forall n$$\n\n则 $f \\in L^1$ 且\n\n$$\\int f = \\lim_{n\\to\\infty} \\int f_n$$",
-   "notes": "⭐ 这是实际计算里**用得最多**的收敛定理。三个条件缺一不可：\n\n\n\n$\\cdot \\text{a.e.}$ 收敛 —— 不能去掉（$\\chi_{[n,n+1]}$ 反例）；\n\n$\\cdot$ 控制函数 $g \\in L^{1}$ —— 不能去掉（$n\\chi_{[0,1/n]}$ 在 [0,1] 上每点趋于 0，但积分为 1）；\n\n$\\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度空间上）。\n\n\n\n为什么叫「控制」：$g$ 把所有 $f_{n}$ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。",
+   "notes": "⭐ 这是实际计算里**用得最多**的收敛定理。三个条件缺一不可：\n\n\n\n$\\cdot \\text{a.e.}$ 收敛 —— 不能去掉（$\\chi_{[n,n+1]}$ 反例）；\n\n$\\cdot$ 控制函数 $g \\in L^{1}$ —— 不能去掉（$n\\chi_{[0,1/n]}$ 在 [0,1] 上每点趋于 0，但积分为 1）；\n\n$\\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度空间上）。\n\n\n\n为什么叫「控制」：$g$ 把所有 $f_{n}$ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。\n\n📌 「积分与极限交换」在这里指**控制收敛**（逐点收敛 + 可积控制函数）；一致收敛下的交换是 `thm.uniform-limit-integral`。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.24"
    ],
@@ -10375,7 +10375,7 @@
     "泛函",
     "范数"
    ],
-   "statement": "设 $V$ 是 $K$-向量空间（$K = \\mathbb{R}$ 或 $\\mathbb{C}$）。映射 $\\|\\cdot\\| : V \\to \\mathbb{R}$ 叫 $V$ 上的**范数**，当且仅当对一切 $v, w \\in V$、$c \\in K$：\n\n$$\\|v\\| \\ge 0, \\qquad \\|v\\| = 0 \\iff v = 0; \\qquad \\|cv\\| = |c|\\,\\|v\\|; \\qquad \\|v + w\\| \\le \\|v\\| + \\|w\\|$$\n\n配了范数的 $V$ 叫**赋范空间**。它按 $d(v, w) := \\|v - w\\|$ 成为度量空间，于是「收敛」「连续」「完备」「紧」这些说法全都继承过来。",
+   "statement": "设 $V$ 是 $K$-向量空间（$K = \\mathbb{R}$ 或 $\\mathbb{C}$）。$V$ 上的**范数**就是「范数」（`def.norm`）里定义的那三条公理在 $V$ 上的实例。\n\n（正定、绝对齐次、三角不等式；公理原文见 `def.norm`，此处不再重写。）\n\n配了范数的 $V$ 叫**赋范空间**。它按 $d(v, w) := \\|v - w\\|$ 成为度量空间，于是「收敛」「连续」「完备」「紧」这些说法全都继承过来。",
    "notes": "⭐ 范数是「长度」的公理化。\n\n三条公理里**只有三角不等式不是逐点的** —— 它管的是「能不能绕路」，也正是它把范数与凸性绑在一起（单位球是凸的）。\n\n⭐ 与内积的关系是单向的：内积 $\\implies$ 范数（`def.induced-norm`），但范数来自内积**当且仅当**满足**平行四边形法则** $\\|v+w\\|^{2} + \\|v-w\\|^{2} = 2\\|v\\|^{2} + 2\\|w\\|^{2}$。\n\n所以「有长度」比「有夹角」弱。\n\n⚠ 有限维时所有范数**等价**（诱导同一个拓扑、同一套收敛列）；\n\n无限维则不然 —— 这正是泛函分析开始变难的地方。\n\n⭐ 本图在凝聚态那一片另有 `def.semi-normed-ab-group`（半范数阿贝尔群）：那里的系数不是向量空间而是拓扑阿贝尔群，所以只能要半范数。",
    "refs": [
     "Rudin, Functional Analysis, Ch. 1",
@@ -20728,7 +20728,7 @@
     "闭形式"
    ],
    "statement": "**在做什么**：给形式配一个导数，把 $k$-形式送到 $(k+1)$-形式，并满足 $\\mathrm{d}^{2} = 0$ —— 这一步把微积分写成不依赖坐标的样子。\n\n设 $\\omega = \\sum_{I}a_{I}\\,\\mathrm{d}x^{I}$ 是 $U$ 上的 $k$-形式，其中 $\\mathrm{d}x^{I} := \\mathrm{d}x^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}x^{i_{k}}$。**外微分**定义为\n\n$$\\mathrm{d}\\omega := \\sum_{I}\\mathrm{d}a_{I}\\wedge\\mathrm{d}x^{I} = \\sum_{I}\\sum_{j=1}^{n}\\frac{\\partial a_{I}}{\\partial x^{j}}\\,\\mathrm{d}x^{j}\\wedge\\mathrm{d}x^{I}.$$\n\n对函数（$0$-形式）它就是全微分 $\\mathrm{d}f = \\sum_{j}\\partial_{j}f\\,\\mathrm{d}x^{j}$。基本性质：\n\n1. $\\mathbb{R}$-线性：$\\mathrm{d}(a\\omega+b\\eta) = a\\,\\mathrm{d}\\omega+b\\,\\mathrm{d}\\eta$；\n2. **分次 Leibniz 律**：$\\omega$ 是 $k$-形式时 $\\mathrm{d}(\\omega\\wedge\\eta) = \\mathrm{d}\\omega\\wedge\\eta+(-1)^{k}\\omega\\wedge\\mathrm{d}\\eta$；\n3. **$\\mathrm{d}^{2} = 0$**：混合偏导可交换的直接推论；\n4. 与坐标选取无关（等价说法：与拉回交换，见 `prop.pullback-forms`）。\n\n$\\mathrm{d}\\omega = 0$ 的 $\\omega$ 叫**闭形式**，$\\omega = \\mathrm{d}\\eta$ 的叫**恰当形式**。\n\n由 $\\mathrm{d}^{2}=0$，恰当必闭；\n\n反之不成立（$\\mathbb{R}^{2}\\setminus\\{0\\}$ 上的 $\\frac{x\\,\\mathrm{d}y-y\\,\\mathrm{d}x}{x^{2}+y^{2}}$ 闭而不恰当）。",
-   "notes": "**$\\mathrm{d}$ 是什么代数对象**：外代数上的**反导子** —— 次数 $+1$、分次 Leibniz、平方为零。这三条唯一确定它，所以不必背公式，记住这三条即可。\n\n**$\\mathrm{d}^{2}=0$ 与结构方程同源**：曲面的结构方程也是 $\\mathrm{d}^{2}=0$ 的读数（`thm.structure-equations`）。形式语言的好处是把「混合偏导可交换」与「标架可积」写成同一条等式。\n\n**三个经典算子的统一**（$n=3$）：$\\mathrm{d}$ 在 $0$-形式上给出梯度（作为 $1$-形式）、在 $1$-形式上给出旋度（作为 $2$-形式）、在 $2$-形式上给出散度（作为 $3$-形式）。于是 $\\mathrm{d}^{2}=0$ 就是「旋度的散度为零」与「梯度的旋度为零」。\n\n⚠️ **不能对向量场取 $\\mathrm{d}$**：$\\mathrm{d}$ 只作用在形式上。对向量场求导要额外的结构（联络，`def.affine-connection`），得到的是协变导数而不是外微分。\n\n⚠️ 同一个 $\\mathrm{d}$ 也用来记全微分、弧长元素、积分测度，这是记号的历史包袱。本图里 $\\mathrm{d}\\omega$ 一律指外微分，$\\mathrm{d}s$、$\\mathrm{d}A$ 各有所指（`def.arc-length`、`def.area-element`）。\n\n\n\n**三条性质里“$\\mathrm{d}^{2} = 0$”是唯一有内容的**（另外两条几乎只是“要求它是导子”）：\n\n- **$\\mathbb{R}$-线性**与**分次 Leibniz 律**：**只确定 $\\mathrm{d}$ 在基上的作用**。真正把它钉死的是「$\\mathrm{d}(\\mathrm{d}x^{j}) = 0$」这一条约定 —— 有了它，$\\mathrm{d}$ 在 $\\mathrm{d}x^{I}$ 上就完全由 Leibniz 律决定。\n- **$\\mathrm{d}^{2} = 0$**：**这是全部内容的所在**，等价于**偏导可交换**（$\\partial_{j}\\partial_{k} = \\partial_{k}\\partial_{j}$，Clairaut 定理）。⚠️ 所以「外微分」在 $C^{2}$ 类上才成立：$C^{1}$ 但二阶不可交换的函数会破坏它。\n- **与 Lie 导数的关系** $\\mathrm{d} = $「反对称化」：Cartan 公式 $\\mathcal{L}_{X} = \\mathrm{d}\\iota_{X} + \\iota_{X}\\mathrm{d}$ 把这三种运算焊在一起（`thm.cartan-formula`）。\n\n⚠️ **三种等价定义，代价不同**：坐标公式（本节，最具体但依赖坐标）、公理化（Leibniz + $\\mathrm{d}^{2}=0$ + 与函数一致，需要证明存在唯一）、无坐标的「$[\\omega](X_{0},\\ldots,X_{k}) = \\sum(-1)^{i}X_{i}\\omega(\\ldots)$」形式（最几何，直接给出内蕴性）。它们等价，但**最后一种才说明 $\\mathrm{d}$ 与坐标无关**。\n⚠️ **$\\mathrm{d}$ 不是张量性的**：它不满足 $\\mathrm{d}(f\\omega) = f\\,\\mathrm{d}\\omega$（差一项 $\\mathrm{d}f\\wedge\\omega$）。这正是它不能定义在一般张量场上、只能定义在**形式**上的原因。\n\n\n\n\n**各方向用到的假设**（坐标公式与公理刻画须指定函数上的作用）：\n- 坐标公式 $\\implies$ 函数的全微分及分次 Leibniz 律：用偏导乘积法则和楔积符号规则。\n- 坐标公式 $\\implies$ $\\mathrm d^2=0$：需混合偏导交换，系数为 $C^2$ 足够；一次外微分本身只需 $C^1$。\n- 公理刻画 $\\implies$ 坐标公式：还必须要求在函数上等于全微分；否则零算子也满足线性、分次 Leibniz 及平方为零，不能唯一确定外微分。\n- 恰当 $\\implies$ 闭用平方为零；闭 $\\implies$ 恰当需额外局部或整体条件，如星形开集的 Poincaré 引理；穿孔平面的角形式给出整体反例。\n",
+   "notes": "**$\\mathrm{d}$ 是什么代数对象**：外代数上的**反导子** —— 次数 $+1$、分次 Leibniz、平方为零。这三条唯一确定它，所以不必背公式，记住这三条即可。\n\n**$\\mathrm{d}^{2}=0$ 与结构方程同源**：曲面的结构方程也是 $\\mathrm{d}^{2}=0$ 的读数（`thm.structure-equations`）。形式语言的好处是把「混合偏导可交换」与「标架可积」写成同一条等式。\n\n**三个经典算子的统一**（$n=3$）：$\\mathrm{d}$ 在 $0$-形式上给出梯度（作为 $1$-形式）、在 $1$-形式上给出旋度（作为 $2$-形式）、在 $2$-形式上给出散度（作为 $3$-形式）。于是 $\\mathrm{d}^{2}=0$ 就是「旋度的散度为零」与「梯度的旋度为零」。\n\n⚠️ **不能对向量场取 $\\mathrm{d}$**：$\\mathrm{d}$ 只作用在形式上。对向量场求导要额外的结构（联络，`def.affine-connection`），得到的是协变导数而不是外微分。\n\n⚠️ 同一个 $\\mathrm{d}$ 也用来记全微分、弧长元素、积分测度，这是记号的历史包袱。本图里 $\\mathrm{d}\\omega$ 一律指外微分，$\\mathrm{d}s$、$\\mathrm{d}A$ 各有所指（`def.arc-length`、`def.area-element`）。\n\n\n\n**三条性质里“$\\mathrm{d}^{2} = 0$”是唯一有内容的**（另外两条几乎只是“要求它是导子”）：\n\n- **$\\mathbb{R}$-线性**与**分次 Leibniz 律**：**只确定 $\\mathrm{d}$ 在基上的作用**。真正把它钉死的是「$\\mathrm{d}(\\mathrm{d}x^{j}) = 0$」这一条约定 —— 有了它，$\\mathrm{d}$ 在 $\\mathrm{d}x^{I}$ 上就完全由 Leibniz 律决定。\n- **$\\mathrm{d}^{2} = 0$**：**这是全部内容的所在**，等价于**偏导可交换**（$\\partial_{j}\\partial_{k} = \\partial_{k}\\partial_{j}$，Clairaut 定理）。⚠️ 所以「外微分」在 $C^{2}$ 类上才成立：$C^{1}$ 但二阶不可交换的函数会破坏它。\n- **与 Lie 导数的关系** $\\mathrm{d} = $「反对称化」：Cartan 公式 $\\mathcal{L}_{X} = \\mathrm{d}\\iota_{X} + \\iota_{X}\\mathrm{d}$ 把这三种运算焊在一起（`thm.cartan-formula`）。\n\n⚠️ **三种等价定义，代价不同**：坐标公式（本节，最具体但依赖坐标）、公理化（Leibniz + $\\mathrm{d}^{2}=0$ + 与函数一致，需要证明存在唯一）、无坐标的「$[\\omega](X_{0},\\ldots,X_{k}) = \\sum(-1)^{i}X_{i}\\omega(\\ldots)$」形式（最几何，直接给出内蕴性）。它们等价，但**最后一种才说明 $\\mathrm{d}$ 与坐标无关**。\n⚠️ **$\\mathrm{d}$ 不是张量性的**：它不满足 $\\mathrm{d}(f\\omega) = f\\,\\mathrm{d}\\omega$（差一项 $\\mathrm{d}f\\wedge\\omega$）。这正是它不能定义在一般张量场上、只能定义在**形式**上的原因。\n\n\n\n\n**各方向用到的假设**（坐标公式与公理刻画须指定函数上的作用）：\n- 坐标公式 $\\implies$ 函数的全微分及分次 Leibniz 律：用偏导乘积法则和楔积符号规则。\n- 坐标公式 $\\implies$ $\\mathrm d^2=0$：需混合偏导交换，系数为 $C^2$ 足够；一次外微分本身只需 $C^1$。\n- 公理刻画 $\\implies$ 坐标公式：还必须要求在函数上等于全微分；否则零算子也满足线性、分次 Leibniz 及平方为零，不能唯一确定外微分。\n- 恰当 $\\implies$ 闭用平方为零；闭 $\\implies$ 恰当需额外局部或整体条件，如星形开集的 Poincaré 引理；穿孔平面的角形式给出整体反例。\n\n📌 本节点是**欧氏开集**上的外微分；流形上的版本见 `prop.exterior-derivative-manifold`。\n",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式」· 外微分与闭形式",
     "do Carmo, Differential Forms and Applications, 第 1 章「微分形式」· 外微分"
@@ -35893,7 +35893,7 @@
     "对偶"
    ],
    "statement": "设 $p, q$ 共轭。则\n\n- 若 $1 \\le q < \\infty$，$g \\in L^q$，就有 $\\|\\varphi_g\\| = \\|g\\|_q$；\n- 若 $\\mu$ 是**半有限**的，$q = \\infty$ 时同样成立。",
-   "notes": "证明的要点是**构造一个把 $\\varphi_g$ 的范数顶满的 $f$**。\n\n\n\n**$q < \\infty$ 时**：由 Hölder 已有 $\\|\\varphi_g\\| \\le \\|g\\|_q$；反向取\n\n\n\n$$f := \\frac{|g|^{q-1} \\operatorname{sgn} g}{\\|g\\|_q^{\\,q-1}}$$\n\n\n\n直接算得 $\\|f\\|_p^p = \\dfrac{\\int |g|^q}{\\int |g|^q} = 1$，于是\n\n\n\n$$\\|\\varphi_g\\| \\ge \\int fg = \\|g\\|_q$$\n\n**$q = 1$ 时**取 $f = \\operatorname{sgn} g$（范数 1），得 $\\int fg = \\|g\\|_1$。\n\n**$q = \\infty$ 时**要用到半有限性：对任意 $\\varepsilon > 0$，集合 $A = \\{|g(x)| > \\|g\\|_\\infty - \\varepsilon\\}$ 有正测度；由半有限性取 $B \\subseteq A$ 使 $0 < \\mu(B) < \\infty$，令\n\n\n\n$$f := \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$$\n\n\n\n则 $\\|f\\|_1 = 1$ 而 $\\|\\varphi_g\\| \\ge \\int fg = \\dfrac{1}{\\mu(B)} \\int_B |g| \\ge \\|g\\|_\\infty - \\varepsilon$。由 $\\varepsilon$ 任意即得。∎",
+   "notes": "证明的要点是**构造一个把 $\\varphi_g$ 的范数顶满的 $f$**。\n\n\n\n**$q < \\infty$ 时**：由 Hölder 已有 $\\|\\varphi_g\\| \\le \\|g\\|_q$；反向取\n\n\n\n$$f := \\frac{|g|^{q-1} \\operatorname{sgn} g}{\\|g\\|_q^{\\,q-1}}$$\n\n\n\n直接算得 $\\|f\\|_p^p = \\dfrac{\\int |g|^q}{\\int |g|^q} = 1$，于是\n\n\n\n$$\\|\\varphi_g\\| \\ge \\int fg = \\|g\\|_q$$\n\n**$q = 1$ 时**取 $f = \\operatorname{sgn} g$（范数 1），得 $\\int fg = \\|g\\|_1$。\n\n**$q = \\infty$ 时**要用到半有限性：对任意 $\\varepsilon > 0$，集合 $A = \\{|g(x)| > \\|g\\|_\\infty - \\varepsilon\\}$ 有正测度；由半有限性取 $B \\subseteq A$ 使 $0 < \\mu(B) < \\infty$，令\n\n\n\n$$f := \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$$\n\n\n\n则 $\\|f\\|_1 = 1$ 而 $\\|\\varphi_g\\| \\ge \\int fg = \\dfrac{1}{\\mu(B)} \\int_B |g| \\ge \\|g\\|_\\infty - \\varepsilon$。由 $\\varepsilon$ 任意即得。∎\n\n📌 这里的「等距」指 Banach 对偶之间的**等距同构**；度量空间的等距映射是 `def.isometry-surface`。",
    "refs": [
     "Folland, Real Analysis, Prop. 6.8"
    ]
@@ -36235,7 +36235,7 @@
     "范数"
    ],
    "statement": "设 $E$ 是 $\\mathbb{K}$（$\\mathbb{K} = \\mathbb{R}$ 或 $\\mathbb{C}$）上的向量空间。函数 $\\|\\cdot\\| : E \\to [0, +\\infty)$ 叫**范数**，若\n\n1. $\\|x\\| = 0 \\iff x = 0$；\n2. $\\|\\lambda x\\| = |\\lambda|\\,\\|x\\|$；\n3. $\\|x + y\\| \\le \\|x\\| + \\|y\\|$。\n\n带范数的空间叫**赋范空间**。只满足 2、3（允许非零元素有零范数）叫**半范数**。",
-   "notes": "范数比距离多的是**线性**：它只记住「离原点多远」，距离由平移得到（见「范数诱导的距离」）。所以赋范空间是「有原点、有尺度、平移不变」的度量空间。\n\n⚠️ 半范数不等于范数：商掉零范数子空间才成为范数（$L^p$ 的构造里「$\\|f\\|_p = 0$ 只说明 $f = 0$ a.e.」就是这件事，见「$L^p$ 范数」）。\n\n\n\n**各方向用到的假设**（范数公理中的等价与由公理推出的事实要分开）：\n- 范数 $\\iff$ 满足三条公理：两方向都是定义展开，不要求完备性或有限维。\n- $x=0\\implies\\|x\\|=0$：由绝对齐次性取标量零即得；反向是正定性公理，不能从齐次性和三角不等式推出。\n- 半范数 $\\implies$ 范数仅在零空间为零时成立；非零空间上的零函数是反例。商掉零空间所得范数的良定义用三角不等式，不用选择公理。\n",
+   "notes": "范数比距离多的是**线性**：它只记住「离原点多远」，距离由平移得到（见「范数诱导的距离」）。所以赋范空间是「有原点、有尺度、平移不变」的度量空间。\n\n⚠️ 半范数不等于范数：商掉零范数子空间才成为范数（$L^p$ 的构造里「$\\|f\\|_p = 0$ 只说明 $f = 0$ a.e.」就是这件事，见「$L^p$ 范数」）。\n\n\n\n**各方向用到的假设**（范数公理中的等价与由公理推出的事实要分开）：\n- 范数 $\\iff$ 满足三条公理：两方向都是定义展开，不要求完备性或有限维。\n- $x=0\\implies\\|x\\|=0$：由绝对齐次性取标量零即得；反向是正定性公理，不能从齐次性和三角不等式推出。\n- 半范数 $\\implies$ 范数仅在零空间为零时成立；非零空间上的零函数是反例。商掉零空间所得范数的良定义用三角不等式，不用选择公理。\n\n📌 本图的「**赋范空间**」是 `def.normed-space`；本节点只定义范数本身。\n",
    "refs": [
     "Rudin, Functional Analysis · 赋范空间与有限维",
     "Rudin, Functional Analysis, Ch. 1"
@@ -36676,7 +36676,7 @@
     "有界泛函"
    ],
    "statement": "赋范空间 $E$ 的**对偶空间**指\n\n$$E^* := B(E, \\mathbb{K}) , \\qquad \\|\\varphi\\| := \\sup_{\\|x\\| \\le 1} |\\varphi(x)| .$$\n\n由「$B(E,F)$ 完备」，$E^*$ 永远是 Banach 空间。",
-   "notes": "⚠️ 与**代数对偶** $E^\\vee = \\operatorname{Hom}(E, \\mathbb{K})$ 区分：无穷维时 $E^* \\subset E^\\vee$，不连续的线性泛函属于后者而不属于前者（要选择公理才能造出来）。本图里 `def.dual-space` 是有限维的对偶（那时两者相同）。\n\n⭐ 对偶是把「空间」变成「函数」的唯一正经通道：弱拓扑、Riesz 表示、Hahn–Banach、对偶配对全在 $E^*$ 上进行。",
+   "notes": "⚠️ 与**代数对偶** $E^\\vee = \\operatorname{Hom}(E, \\mathbb{K})$ 区分：无穷维时 $E^* \\subset E^\\vee$，不连续的线性泛函属于后者而不属于前者（要选择公理才能造出来）。本图里 `def.dual-space` 是有限维的对偶（那时两者相同）。\n\n⭐ 对偶是把「空间」变成「函数」的唯一正经通道：弱拓扑、Riesz 表示、Hahn–Banach、对偶配对全在 $E^*$ 上进行。\n\n📌 通名「对偶空间」见 `def.dual-space`；本节点专指 **Banach 对偶** $E^{*} = B(E, \\mathbb{K})$。",
    "refs": [
     "Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数"
    ]
@@ -37076,7 +37076,7 @@
     "正交补"
    ],
    "statement": "设 $H$ 是 Hilbert 空间，$E \\subseteq H$ 是**闭**子空间。则\n\n1. $y = P_E(x) \\iff y \\in E$ 且 $x - y \\in E^\\perp$；\n2. $P_E$ 线性，且 $\\|P_E\\| \\le 1$（$E \\ne 0$ 时为 $1$）；\n3. 正交分解 $H = E \\oplus E^\\perp$，且 $\\|x\\|^2 = \\|x - P_E x\\|^2 + \\|P_E x\\|^2$。",
-   "notes": "证法：由凸闭集投影，(1) 的「$\\implies$」把 $z$ 换成 $\\pm z$ 消掉实部得 $\\operatorname{Re}\\langle x - y, z\\rangle \\le 0$ 对所有 $z \\in E$，即 $x - y \\perp E$；\n\n「$\\Longleftarrow$」用 $\\|x - z\\|^2 = \\|x - y\\|^2 + \\|y - z\\|^2 \\ge \\|x - y\\|^2$。\n\n(2) 用 $\\alpha_1 x_1 + \\alpha_2 x_2 - \\alpha_1 P x_1 - \\alpha_2 P x_2 \\perp E$。\n\n(3) 勾股定理。\n\n⚠️ 「$E$ 闭」不能去掉：$E = $ 有限支撑序列在 $\\ell^2$ 里稠密但不闭，最近点存在但**不落在 $E$ 里**，正交分解也失效。\n\n⭐ 这条是 Hilbert 空间与一般 Banach 空间的最大区别之一：一般 Banach 空间里闭子空间不一定有补（$c_0 \\subset \\ell^\\infty$ 就没有），所以「投影」这个词在 Banach 空间里不能乱用。\n\n\n\n**各方向用到的假设**（正交刻画不靠完备性，全局分解靠投影存在）：\n- 最近点 $\\implies$ 正交：用子空间中任意实数倍方向作变分；复空间还须用纯虚数倍方向，才能从实部为零推出内积为零。\n- $y\\in E$ 且 $x-y\\in E^\\perp\\implies y=P_E x$：由勾股恒等式直接得唯一最小点，不要求闭性或完备性；正交补本身的条件才是定义展开。\n- 每个 $x$ 都有正交分解：调用 `thm.projection-convex`，用 Hilbert 完备性与 $E$ 闭；线性由分解唯一性推出，范数界由勾股恒等式推出。\n- 闭性不能删：$E=c_{00}\\subset\\ell^2$ 时，对 $x\\in\\ell^2\\setminus c_{00}$ 距离为零却不取到，故不存在 $E$ 中最近点。\n",
+   "notes": "证法：由凸闭集投影，(1) 的「$\\implies$」把 $z$ 换成 $\\pm z$ 消掉实部得 $\\operatorname{Re}\\langle x - y, z\\rangle \\le 0$ 对所有 $z \\in E$，即 $x - y \\perp E$；\n\n「$\\Longleftarrow$」用 $\\|x - z\\|^2 = \\|x - y\\|^2 + \\|y - z\\|^2 \\ge \\|x - y\\|^2$。\n\n(2) 用 $\\alpha_1 x_1 + \\alpha_2 x_2 - \\alpha_1 P x_1 - \\alpha_2 P x_2 \\perp E$。\n\n(3) 勾股定理。\n\n⚠️ 「$E$ 闭」不能去掉：$E = $ 有限支撑序列在 $\\ell^2$ 里稠密但不闭，最近点存在但**不落在 $E$ 里**，正交分解也失效。\n\n⭐ 这条是 Hilbert 空间与一般 Banach 空间的最大区别之一：一般 Banach 空间里闭子空间不一定有补（$c_0 \\subset \\ell^\\infty$ 就没有），所以「投影」这个词在 Banach 空间里不能乱用。\n\n\n\n**各方向用到的假设**（正交刻画不靠完备性，全局分解靠投影存在）：\n- 最近点 $\\implies$ 正交：用子空间中任意实数倍方向作变分；复空间还须用纯虚数倍方向，才能从实部为零推出内积为零。\n- $y\\in E$ 且 $x-y\\in E^\\perp\\implies y=P_E x$：由勾股恒等式直接得唯一最小点，不要求闭性或完备性；正交补本身的条件才是定义展开。\n- 每个 $x$ 都有正交分解：调用 `thm.projection-convex`，用 Hilbert 完备性与 $E$ 闭；线性由分解唯一性推出，范数界由勾股恒等式推出。\n- 闭性不能删：$E=c_{00}\\subset\\ell^2$ 时，对 $x\\in\\ell^2\\setminus c_{00}$ 距离为零却不取到，故不存在 $E$ 中最近点。\n\n📌 「正交投影」的定义在 `def.orthogonal-projection`；本节点讲的是「投影像恰是闭子空间」这条。\n",
    "refs": [
     "Conway, A Course in Functional Analysis · Hilbert 空间与正交基"
    ]
@@ -37115,7 +37115,7 @@
     "对偶空间"
    ],
    "statement": "设 $H$ 是 Hilbert 空间，$\\varphi \\in H^*$。则存在**唯一**的 $y \\in H$ 使\n\n$$\\varphi(x) = \\langle x, y\\rangle \\qquad \\forall x \\in H , \\qquad \\text{且} \\ \\|y\\| = \\|\\varphi\\| .$$\n\n于是 $y \\mapsto \\langle \\cdot, y\\rangle$ 是 $H \\to H^*$ 的等距同构（复情形为共轭线性）。",
-   "notes": "证法：$\\varphi = 0$ 取 $y = 0$。\n\n否则 $E = \\ker\\varphi$ 是**闭真**子空间，由正交分解取 $0 \\ne z \\in E^\\perp$，令 $y = \\overline{\\varphi(z)}\\, z / \\|z\\|^2$；\n\n则 $x \\mapsto \\langle x, y\\rangle$ 与 $\\varphi$ 在 $E$ 上都为 $0$、在 $z$ 上相等，而 $H = E \\oplus \\mathbb{K} z$，故相等。\n\n$\\|y\\| = \\|\\varphi\\|$ 由 $\\|\\varphi\\| = \\sup_{\\|x\\| \\le 1} |\\langle x, y\\rangle| = \\|y\\|$。\n\n⭐ 意义：**Hilbert 空间是自己的对偶**（共轭线性）。Banach 空间一般不是：$(\\ell^1)^* = \\ell^\\infty$、$(\\ell^\\infty)^* \\supsetneq \\ell^1$。这让 Hilbert 空间在「像有限维」这条路上走得最远：泛函与向量可以互换。\n\n⚠️ 共轭线性：$\\alpha y \\mapsto \\bar\\alpha\\,\\varphi$。所以严格说不是「同构」而是「共轭等距同构」（anti-linear isometry）。\n\n⚠️ 别与 $L^p$ 的 Riesz 表示混淆：那是 $(L^p)^* \\cong L^q$（$1<p<\\infty$，$1/p + 1/q = 1$），靠 Hölder 不等式；这条靠正交分解。两者只共享名字。",
+   "notes": "证法：$\\varphi = 0$ 取 $y = 0$。\n\n否则 $E = \\ker\\varphi$ 是**闭真**子空间，由正交分解取 $0 \\ne z \\in E^\\perp$，令 $y = \\overline{\\varphi(z)}\\, z / \\|z\\|^2$；\n\n则 $x \\mapsto \\langle x, y\\rangle$ 与 $\\varphi$ 在 $E$ 上都为 $0$、在 $z$ 上相等，而 $H = E \\oplus \\mathbb{K} z$，故相等。\n\n$\\|y\\| = \\|\\varphi\\|$ 由 $\\|\\varphi\\| = \\sup_{\\|x\\| \\le 1} |\\langle x, y\\rangle| = \\|y\\|$。\n\n⭐ 意义：**Hilbert 空间是自己的对偶**（共轭线性）。Banach 空间一般不是：$(\\ell^1)^* = \\ell^\\infty$、$(\\ell^\\infty)^* \\supsetneq \\ell^1$。这让 Hilbert 空间在「像有限维」这条路上走得最远：泛函与向量可以互换。\n\n⚠️ 共轭线性：$\\alpha y \\mapsto \\bar\\alpha\\,\\varphi$。所以严格说不是「同构」而是「共轭等距同构」（anti-linear isometry）。\n\n⚠️ 别与 $L^p$ 的 Riesz 表示混淆：那是 $(L^p)^* \\cong L^q$（$1<p<\\infty$，$1/p + 1/q = 1$），靠 Hölder 不等式；这条靠正交分解。两者只共享名字。\n\n📌 本图另有一条 **Lp 版**的 Riesz 表示：`thm.riesz-representation-lp`（$(L^{p})^{*} \\cong L^{q}$）。",
    "refs": [
     "Conway, A Course in Functional Analysis · Hilbert 空间与正交基"
    ]
@@ -39089,7 +39089,7 @@
     "极限"
    ],
    "statement": "数列 $\\{x_n\\} \\subseteq \\mathbb{R}$ **收敛到** $x$（记 $x_n \\to x$ 或 $\\lim_{n \\to \\infty} x_n = x$），当且仅当\n\n$$\\forall \\varepsilon > 0, \\exists N, \\forall n \\ge N : |x_n - x| < \\varepsilon$$\n\n即：不管给出多小的 $\\varepsilon$，从某一项之后，所有项都落在 $x$ 的 $\\varepsilon$ 邻域里。\n\n不收敛的数列叫**发散**。",
-   "notes": "⭐ 这就是「$\\varepsilon$-$N$ 语言」：把「越来越近」翻译成可以逐条检验的条件。\n\n整个分析学的证明都建立在这个格式上。\n\n基本性质（都由定义直接验证）：\n- 极限**唯一**；\n\n\n- 收敛数列**有界**；\n\n\n- 四则运算与极限可交换（分母极限非零时）。\n\n⚠ 「有界」不保证收敛（$(-1)^n$）；\n\n「$\\varepsilon$ 固定、$N$ 往后」的顺序不能换。",
+   "notes": "⭐ 这就是「$\\varepsilon$-$N$ 语言」：把「越来越近」翻译成可以逐条检验的条件。\n\n整个分析学的证明都建立在这个格式上。\n\n基本性质（都由定义直接验证）：\n- 极限**唯一**；\n\n\n- 收敛数列**有界**；\n\n\n- 四则运算与极限可交换（分母极限非零时）。\n\n⚠ 「有界」不保证收敛（$(-1)^n$）；\n\n「$\\varepsilon$ 固定、$N$ 往后」的顺序不能换。\n\n📌 本图说「极限」时默认指**序列极限**（这里）；范畴意义的极限/余极限是 `def.limit`。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 3"
    ]
@@ -40251,7 +40251,7 @@
     "域论"
    ],
    "statement": "设 $K/F$ 是域扩张，$\\alpha \\in K$。称 $\\alpha$ 在 $F$ 上**代数**，如果存在**非零**多项式 $f \\in F[x]$ 使\n\n$$f(\\alpha) = 0 ;$$\n\n否则叫**超越**。\n\n若 $\\alpha$ 代数，则集合 $\\{\\, f \\in F[x] : f(\\alpha) = 0 \\,\\}$ 是 $F[x]$ 的**非零理想**，它由唯一一个**首一**多项式 $m_{\\alpha}$ 生成，叫 $\\alpha$ 在 $F$ 上的**极小多项式**；$\\deg m_{\\alpha}$ 叫 $\\alpha$ 的**次数**。",
-   "notes": "⭐ **为什么那个集合是理想**：它非空（代数）、对加法与乘 $F[x]$ 中任意多项式封闭（代入 $\\alpha$ 后仍是 $0$）。$F[x]$ 是主理想整环，所以它 $= (m_{\\alpha})$；再取首一代表就得唯一性。\n\n⭐ **极小多项式是「$\\alpha$ 满足的最低条件」**：它不可约（若 $m = gh$ 且次数都更小，则 $g(\\alpha)h(\\alpha) = 0$，域里无零因子，故其中一个已 $0$，与极小性矛盾）。于是\n\n\n\n$$F[x]/(m_{\\alpha}) \\;\\cong\\; F(\\alpha), \\qquad [F(\\alpha):F] = \\deg m_{\\alpha}.$$\n\n\n\n这条同构是整条链的引擎：**「造扩域」与「模掉多项式」是同一件事**。\n\n⭐ 例子：$\\alpha = \\sqrt{2}$ 在 $\\mathbb{Q}$ 上：$m = x^{2} - 2$，次数 2；$\\alpha = \\sqrt[3]{2}$：$m = x^{3} - 2$，次数 3；$\\pi$、$e$ 在 $\\mathbb{Q}$ 上**超越**（Hermite / Lindemann，本图未收）。\n\n⚠ **极小多项式依赖基域**：$\\sqrt{2}$ 在 $\\mathbb{Q}$ 上次数 2，但在 $\\mathbb{Q}(\\sqrt{2})$ 上次数 $1$。说「$\\alpha$ 的次数」时必须先指明基域。",
+   "notes": "⭐ **为什么那个集合是理想**：它非空（代数）、对加法与乘 $F[x]$ 中任意多项式封闭（代入 $\\alpha$ 后仍是 $0$）。$F[x]$ 是主理想整环，所以它 $= (m_{\\alpha})$；再取首一代表就得唯一性。\n\n⭐ **极小多项式是「$\\alpha$ 满足的最低条件」**：它不可约（若 $m = gh$ 且次数都更小，则 $g(\\alpha)h(\\alpha) = 0$，域里无零因子，故其中一个已 $0$，与极小性矛盾）。于是\n\n\n\n$$F[x]/(m_{\\alpha}) \\;\\cong\\; F(\\alpha), \\qquad [F(\\alpha):F] = \\deg m_{\\alpha}.$$\n\n\n\n这条同构是整条链的引擎：**「造扩域」与「模掉多项式」是同一件事**。\n\n⭐ 例子：$\\alpha = \\sqrt{2}$ 在 $\\mathbb{Q}$ 上：$m = x^{2} - 2$，次数 2；$\\alpha = \\sqrt[3]{2}$：$m = x^{3} - 2$，次数 3；$\\pi$、$e$ 在 $\\mathbb{Q}$ 上**超越**（Hermite / Lindemann，本图未收）。\n\n⚠ **极小多项式依赖基域**：$\\sqrt{2}$ 在 $\\mathbb{Q}$ 上次数 2，但在 $\\mathbb{Q}(\\sqrt{2})$ 上次数 $1$。说「$\\alpha$ 的次数」时必须先指明基域。\n\n📌 本节点讲**代数元**的极小多项式；**线性算子**的极小多项式是 `def.minimal-poly`。",
    "refs": [
     "Lang, Algebra, Ch. V §1",
     "Hungerford, Algebra, Ch. V §1"
@@ -43007,7 +43007,7 @@
     "子空间"
    ],
    "statement": "设 $(X, \\mathcal{T})$ 是拓扑空间，$Y \\subseteq X$。$Y$ 上的**子空间拓扑**取\n\n$$\\mathcal{T}_{Y} := \\{\\, U \\cap Y : U \\in \\mathcal{T} \\,\\}$$\n\n这样得到的拓扑是使含入映射 $Y \\hookrightarrow X$ 连续的最粗拓扑。",
-   "notes": "直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。",
+   "notes": "直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。\n\n📌 本图另有 `def.induced-topology` 记同一件事（疑似重复，两条暂并存，等拍板合并）。",
    "refs": [
     "Munkres, Topology"
    ]
@@ -43047,7 +43047,7 @@
     "商"
    ],
    "statement": "设 $(X, \\mathcal{T})$ 是拓扑空间，$\\pi : X \\twoheadrightarrow Y$ 是满射。$Y$ 上的**商拓扑**取\n\n$$\\mathcal{T}_{Y} := \\{\\, V \\subseteq Y : \\pi^{-1}(V) \\in \\mathcal{T} \\,\\}$$\n\n这是使 $\\pi$ 连续的最细拓扑；带这个拓扑的 $Y$ 叫 $X$ 的**商空间**。",
-   "notes": "直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。\n\n商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。",
+   "notes": "直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。\n\n商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。\n\n📌 拓扑语境的「商空间」是这里；**向量空间**的商空间是 `def.quotient-vs`。",
    "refs": [
     "Munkres, Topology"
    ]
@@ -45037,7 +45037,7 @@
     "拉回"
    ],
    "statement": "形状为 $X_1 \\xrightarrow{f_1} X_0 \\xleftarrow{f_2} X_2$ 的图的极限叫**纤维积**，记 $X_1 \\times_{X_0} X_2$，也叫 $f_1$ 沿 $f_2$ 的**拉回**。它补成一个交换方块\n\n$$\\begin{array}{ccc} X_1 \\times_{X_0} X_2 & \\longrightarrow & X_2 \\\\ \\downarrow & & \\downarrow f_2 \\\\ X_1 & \\xrightarrow{f_1} & X_0 \\end{array}$$\n\n这样的方块叫**笛卡尔的**。对偶地，图的余极限叫**纤维余积**，也叫**推出**。",
-   "notes": "直观：拉回是「在底 $X_0$ 上匹配之后的积」—— 解方程 $f_1(x_1) = f_2(x_2)$；推出是「把 $X_1, X_2$ 在 $X_0$ 的像上粘起来」。\n\n例（$\\mathbf{Set}$）：\n\n\n\n$$X_1 \\times_{X_0} X_2 = \\{(x_1, x_2) \\in X_1 \\times X_2 : f_1(x_1) = f_2(x_2)\\}, \\qquad X_1 \\cup_{X_0} X_2 = (X_1 \\sqcup X_2)/\\!\\sim$$\n\n\n\n其中 $\\sim$ 由 $f_1(x_0) \\sim f_2(x_0)$（$x_0 \\in X_0$）生成。$\\mathbf{Top}$ 里拉回取子空间拓扑、推出取商拓扑。\n\n$\\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \\to S$、$g: Y \\to S$ 拼成 $\\varphi : X \\oplus Y \\to S$，$(x,y) \\mapsto f(x) - g(y)$，则推出 $= \\operatorname{coker} \\varphi$、拉回 $= \\ker \\varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。",
+   "notes": "直观：拉回是「在底 $X_0$ 上匹配之后的积」—— 解方程 $f_1(x_1) = f_2(x_2)$；推出是「把 $X_1, X_2$ 在 $X_0$ 的像上粘起来」。\n\n例（$\\mathbf{Set}$）：\n\n\n\n$$X_1 \\times_{X_0} X_2 = \\{(x_1, x_2) \\in X_1 \\times X_2 : f_1(x_1) = f_2(x_2)\\}, \\qquad X_1 \\cup_{X_0} X_2 = (X_1 \\sqcup X_2)/\\!\\sim$$\n\n\n\n其中 $\\sim$ 由 $f_1(x_0) \\sim f_2(x_0)$（$x_0 \\in X_0$）生成。$\\mathbf{Top}$ 里拉回取子空间拓扑、推出取商拓扑。\n\n$\\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \\to S$、$g: Y \\to S$ 拼成 $\\varphi : X \\oplus Y \\to S$，$(x,y) \\mapsto f(x) - g(y)$，则推出 $= \\operatorname{coker} \\varphi$、拉回 $= \\ker \\varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。\n\n📌 范畴语境的「拉回」就是纤维积（这里）；**微分形式**的拉回是 `prop.pullback-form-manifold`。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.3"
    ]
@@ -58162,7 +58162,7 @@
     "同伦"
    ],
    "statement": "设 $\\mathcal{A}$ 是阿贝尔范畴，$I^{\\bullet} \\to M$、$J^{\\bullet} \\to N$ 是 $\\mathcal{C}^{+}(\\mathcal{A})$ 中的**内射消解**（$I^{n}$、$J^{n}$ 内射、有界下方、拟同构于 $M$、$N$）。\n\n则对每个态射 $f : M \\to N$：\n\n1. **存在**复形态射 $F : I^{\\bullet} \\to J^{\\bullet}$ 提升 $f$（即诱导 $H^{0}(F) = f$）；\n2. 任何两个这样的提升**同伦**。",
-   "notes": "**证明（比较定理的标准两步）。**\n**① 存在性（逐层抬升）。** 第 $0$ 层：$M = Z^{0}_{I} \\hookrightarrow I^{0}$ 是单态射（因为 $I^{-1} = 0$），复合 $M \\xrightarrow{\\ f\\ } N \\to J^{0}$ 沿这个单态射由 $J^{0}$ 的**内射性**抬成 $F^{0} : I^{0} \\to J^{0}$ ✓。\n归纳步：设已构造 $F^{0}, \\ldots, F^{n}$，且对 $k \\le n$ 有 $F^{k}d^{k-1}_{I} = d^{k-1}_{J}F^{k-1}$。\n\n要构造 $F^{n+1}$ 只需在**上边缘** $B^{n+1}_{I} = \\operatorname{im}d^{n}_{I}$ 上定下它的取值，因为 $B^{n+1}_{I}\\hookrightarrow I^{n+1}$ 是单态射。\n\n关键观察：$n \\ge 1$ 时 $H^{n}(I^{\\bullet}) = 0$，即 $Z^{n}_{I} = B^{n}_{I}$ —— 于是 $F^{n}$ 在 $Z^{n}_{I}$ 上的取值已经由前一层定下、且落在 $Z^{n}_{J}$ 里（$n \\ge 1$ 时它等于 $d^{n-1}_{J}F^{n-1}$，$n = 0$ 时改用增广处的交换性）✓。\n\n因此 $d^{n}_{J}F^{n}$ 在 $\\ker d^{n}_{I}$ 上为零，从而沿 $B^{n+1}_{I} \\hookrightarrow I^{n+1}$ 分解；\n\n再用 $J^{n+1}$ 的**内射性**把它抬成 $F^{n+1} : I^{n+1}\\to J^{n+1}$ ✓。\n\n有界下方保证这个过程在某个 $n$ 之后终止 ✓。\n**② 同伦唯一性。** 设 $F, G$ 都提升 $f$。\n\n差 $F - G$ 在 $H^{0}$ 上诱导 $0$，于是可以用**同样的逐层抬升**造同伦 $s^{n} : I^{n}\\to J^{n-1}$：每一层的方程 $F^{n}-G^{n} = s^{n+1}d^{n}_{I} + d^{n-1}_{J}s^{n}$ 都是一个「沿单态射抬升」的问题，仍由 $J^{n-1}$ 的内射性解决；\n\n起点处 $F^{0}-G^{0}$ 在 $M$ 上为零，故它分解过 $I^{0}/M = B^{1}_{I}$ ✓。\n\n于是 $F \\sim G$ ✓。\n\n∎\n\n⭐ 两条合起来就是**内射消解在同伦意义下唯一**：$\\operatorname{Hom}(M,N)$ 中的态射可以提升成复形态射、且提升在同伦意义下唯一。所以「用内射消解算右导出函子」与消解的选取无关 —— 这是 $R^{n}F$ 良定义的全部依据。",
+   "notes": "**证明（比较定理的标准两步）。**\n**① 存在性（逐层抬升）。** 第 $0$ 层：$M = Z^{0}_{I} \\hookrightarrow I^{0}$ 是单态射（因为 $I^{-1} = 0$），复合 $M \\xrightarrow{\\ f\\ } N \\to J^{0}$ 沿这个单态射由 $J^{0}$ 的**内射性**抬成 $F^{0} : I^{0} \\to J^{0}$ ✓。\n归纳步：设已构造 $F^{0}, \\ldots, F^{n}$，且对 $k \\le n$ 有 $F^{k}d^{k-1}_{I} = d^{k-1}_{J}F^{k-1}$。\n\n要构造 $F^{n+1}$ 只需在**上边缘** $B^{n+1}_{I} = \\operatorname{im}d^{n}_{I}$ 上定下它的取值，因为 $B^{n+1}_{I}\\hookrightarrow I^{n+1}$ 是单态射。\n\n关键观察：$n \\ge 1$ 时 $H^{n}(I^{\\bullet}) = 0$，即 $Z^{n}_{I} = B^{n}_{I}$ —— 于是 $F^{n}$ 在 $Z^{n}_{I}$ 上的取值已经由前一层定下、且落在 $Z^{n}_{J}$ 里（$n \\ge 1$ 时它等于 $d^{n-1}_{J}F^{n-1}$，$n = 0$ 时改用增广处的交换性）✓。\n\n因此 $d^{n}_{J}F^{n}$ 在 $\\ker d^{n}_{I}$ 上为零，从而沿 $B^{n+1}_{I} \\hookrightarrow I^{n+1}$ 分解；\n\n再用 $J^{n+1}$ 的**内射性**把它抬成 $F^{n+1} : I^{n+1}\\to J^{n+1}$ ✓。\n\n有界下方保证这个过程在某个 $n$ 之后终止 ✓。\n**② 同伦唯一性。** 设 $F, G$ 都提升 $f$。\n\n差 $F - G$ 在 $H^{0}$ 上诱导 $0$，于是可以用**同样的逐层抬升**造同伦 $s^{n} : I^{n}\\to J^{n-1}$：每一层的方程 $F^{n}-G^{n} = s^{n+1}d^{n}_{I} + d^{n-1}_{J}s^{n}$ 都是一个「沿单态射抬升」的问题，仍由 $J^{n-1}$ 的内射性解决；\n\n起点处 $F^{0}-G^{0}$ 在 $M$ 上为零，故它分解过 $I^{0}/M = B^{1}_{I}$ ✓。\n\n于是 $F \\sim G$ ✓。\n\n∎\n\n⭐ 两条合起来就是**内射消解在同伦意义下唯一**：$\\operatorname{Hom}(M,N)$ 中的态射可以提升成复形态射、且提升在同伦意义下唯一。所以「用内射消解算右导出函子」与消解的选取无关 —— 这是 $R^{n}F$ 良定义的全部依据。\n\n📌 这里的「比较定理」指**内射消解提升**的比较；同调代数里那个比较定理是 `thm.comparison-theorem`。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §7.1"
    ]

@@ -40,7 +40,7 @@ window.MG = window.MG || {};
         '**各方向用到的假设**（范数公理中的等价与由公理推出的事实要分开）：\n' +
         '- 范数 $\\iff$ 满足三条公理：两方向都是定义展开，不要求完备性或有限维。\n' +
         '- $x=0\\implies\\|x\\|=0$：由绝对齐次性取标量零即得；反向是正定性公理，不能从齐次性和三角不等式推出。\n' +
-        '- 半范数 $\\implies$ 范数仅在零空间为零时成立；非零空间上的零函数是反例。商掉零空间所得范数的良定义用三角不等式，不用选择公理。\n'
+        '- 半范数 $\\implies$ 范数仅在零空间为零时成立；非零空间上的零函数是反例。商掉零空间所得范数的良定义用三角不等式，不用选择公理。\n\n📌 本图的「**赋范空间**」是 `def.normed-space`；本节点只定义范数本身。\n'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · 赋范空间与有限维', 'Rudin, Functional Analysis, Ch. 1'],
     },
@@ -317,7 +317,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠️ 与**代数对偶** $E^\\vee = \\operatorname{Hom}(E, \\mathbb{K})$ 区分：无穷维时 $E^* \\subset E^\\vee$，不连续的线性泛函属于后者而不属于前者（要选择公理才能造出来）。本图里 `def.dual-space` 是有限维的对偶（那时两者相同）。',
-        '⭐ 对偶是把「空间」变成「函数」的唯一正经通道：弱拓扑、Riesz 表示、Hahn–Banach、对偶配对全在 $E^*$ 上进行。'
+        '⭐ 对偶是把「空间」变成「函数」的唯一正经通道：弱拓扑、Riesz 表示、Hahn–Banach、对偶配对全在 $E^*$ 上进行。\n\n📌 通名「对偶空间」见 `def.dual-space`；本节点专指 **Banach 对偶** $E^{*} = B(E, \\mathbb{K})$。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数'],
     },
@@ -593,7 +593,7 @@ window.MG = window.MG || {};
         '- 最近点 $\\implies$ 正交：用子空间中任意实数倍方向作变分；复空间还须用纯虚数倍方向，才能从实部为零推出内积为零。\n' +
         '- $y\\in E$ 且 $x-y\\in E^\\perp\\implies y=P_E x$：由勾股恒等式直接得唯一最小点，不要求闭性或完备性；正交补本身的条件才是定义展开。\n' +
         '- 每个 $x$ 都有正交分解：调用 `thm.projection-convex`，用 Hilbert 完备性与 $E$ 闭；线性由分解唯一性推出，范数界由勾股恒等式推出。\n' +
-        '- 闭性不能删：$E=c_{00}\\subset\\ell^2$ 时，对 $x\\in\\ell^2\\setminus c_{00}$ 距离为零却不取到，故不存在 $E$ 中最近点。\n'
+        '- 闭性不能删：$E=c_{00}\\subset\\ell^2$ 时，对 $x\\in\\ell^2\\setminus c_{00}$ 距离为零却不取到，故不存在 $E$ 中最近点。\n\n📌 「正交投影」的定义在 `def.orthogonal-projection`；本节点讲的是「投影像恰是闭子空间」这条。\n'
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
     },
@@ -618,7 +618,7 @@ window.MG = window.MG || {};
         '证法：$\\varphi = 0$ 取 $y = 0$。\n\n否则 $E = \\ker\\varphi$ 是**闭真**子空间，由正交分解取 $0 \\ne z \\in E^\\perp$，令 $y = \\overline{\\varphi(z)}\\, z / \\|z\\|^2$；\n\n则 $x \\mapsto \\langle x, y\\rangle$ 与 $\\varphi$ 在 $E$ 上都为 $0$、在 $z$ 上相等，而 $H = E \\oplus \\mathbb{K} z$，故相等。\n\n$\\|y\\| = \\|\\varphi\\|$ 由 $\\|\\varphi\\| = \\sup_{\\|x\\| \\le 1} |\\langle x, y\\rangle| = \\|y\\|$。',
         '⭐ 意义：**Hilbert 空间是自己的对偶**（共轭线性）。Banach 空间一般不是：$(\\ell^1)^* = \\ell^\\infty$、$(\\ell^\\infty)^* \\supsetneq \\ell^1$。这让 Hilbert 空间在「像有限维」这条路上走得最远：泛函与向量可以互换。',
         '⚠️ 共轭线性：$\\alpha y \\mapsto \\bar\\alpha\\,\\varphi$。所以严格说不是「同构」而是「共轭等距同构」（anti-linear isometry）。',
-        '⚠️ 别与 $L^p$ 的 Riesz 表示混淆：那是 $(L^p)^* \\cong L^q$（$1<p<\\infty$，$1/p + 1/q = 1$），靠 Hölder 不等式；这条靠正交分解。两者只共享名字。'
+        '⚠️ 别与 $L^p$ 的 Riesz 表示混淆：那是 $(L^p)^* \\cong L^q$（$1<p<\\infty$，$1/p + 1/q = 1$），靠 Hölder 不等式；这条靠正交分解。两者只共享名字。\n\n📌 本图另有一条 **Lp 版**的 Riesz 表示：`thm.riesz-representation-lp`（$(L^{p})^{*} \\cong L^{q}$）。'
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
     },

@@ -42,7 +42,7 @@
 | 命令 | 结果 |
 |---|---|
 | `bun tools/build.mjs` | ✅ 全绿，工作树零 diff |
-| `bun tools/_katexcheck.mjs` | ✅ **2814 个 `$$…$$`，失败 0**（FIX-005 删掉 #13 里那条错不等式 ⇒ 少 1 块） |
+| `bun tools/_katexcheck.mjs` | ✅ **2813 个 `$$…$$`，失败 0**（FIX-005 删 #13 错不等式、FIX-009 删 def.normed-space 重复的 4 条公理 ⇒ 2815→2814→2813） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 12/12 |
 | `bun tools/searchcheck.mjs` | ✅ **31/31** —— 2026-11-05 补了 2 条「带空格」基准，§4.1 那个 bug 本身也被钉住了 |

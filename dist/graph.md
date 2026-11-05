@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T10:56:11.277Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T10:59:13.972Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -1748,6 +1748,8 @@ $$\mathcal{T}_{Y} := \{\, U \cap Y : U \in \mathcal{T} \,\}$$
 
 直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \subseteq \mathbb{R}$ 在自身中是闭的，在 $\mathbb{R}$ 中不是。
 
+📌 本图另有 `def.induced-topology` 记同一件事（疑似重复，两条暂并存，等拍板合并）。
+
 参考：Munkres, Topology
 
 #### 商拓扑　`def.quotient-topology`
@@ -1762,6 +1764,8 @@ $$\mathcal{T}_{Y} := \{\, V \subseteq Y : \pi^{-1}(V) \in \mathcal{T} \,\}$$
 直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。
 
 商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。
+
+📌 拓扑语境的「商空间」是这里；**向量空间**的商空间是 `def.quotient-vs`。
 
 参考：Munkres, Topology
 
@@ -9748,6 +9752,8 @@ $$F[x]/(m_{\alpha}) \;\cong\; F(\alpha), \qquad [F(\alpha):F] = \deg m_{\alpha}.
 
 ⚠ **极小多项式依赖基域**：$\sqrt{2}$ 在 $\mathbb{Q}$ 上次数 2，但在 $\mathbb{Q}(\sqrt{2})$ 上次数 $1$。说「$\alpha$ 的次数」时必须先指明基域。
 
+📌 本节点讲**代数元**的极小多项式；**线性算子**的极小多项式是 `def.minimal-poly`。
+
 参考：Lang, Algebra, Ch. V §1；Hungerford, Algebra, Ch. V §1
 
 #### 代数扩张　`def.algebraic-extension`
@@ -10268,6 +10274,8 @@ $$\forall \varepsilon > 0, \exists N, \forall n \ge N : |x_n - x| < \varepsilon$
 ⚠ 「有界」不保证收敛（$(-1)^n$）；
 
 「$\varepsilon$ 固定、$N$ 往后」的顺序不能换。
+
+📌 本图说「极限」时默认指**序列极限**（这里）；范畴意义的极限/余极限是 `def.limit`。
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
@@ -12699,9 +12707,9 @@ $$\exp(i\theta) = e^{i\theta} = \cos\theta + i\sin\theta$$
 #### 赋范空间　`def.normed-space`
 *定义*　赋范空间
 
-设 $V$ 是 $K$-向量空间（$K = \mathbb{R}$ 或 $\mathbb{C}$）。映射 $\|\cdot\| : V \to \mathbb{R}$ 叫 $V$ 上的**范数**，当且仅当对一切 $v, w \in V$、$c \in K$：
+设 $V$ 是 $K$-向量空间（$K = \mathbb{R}$ 或 $\mathbb{C}$）。$V$ 上的**范数**就是「范数」（`def.norm`）里定义的那三条公理在 $V$ 上的实例。
 
-$$\|v\| \ge 0, \qquad \|v\| = 0 \iff v = 0; \qquad \|cv\| = |c|\,\|v\|; \qquad \|v + w\| \le \|v\| + \|w\|$$
+（正定、绝对齐次、三角不等式；公理原文见 `def.norm`，此处不再重写。）
 
 配了范数的 $V$ 叫**赋范空间**。它按 $d(v, w) := \|v - w\|$ 成为度量空间，于是「收敛」「连续」「完备」「紧」这些说法全都继承过来。
 
@@ -13407,6 +13415,8 @@ Sard 给出的门槛是 $C^{k}$、$k > n - m$。
 - $x=0\implies\|x\|=0$：由绝对齐次性取标量零即得；反向是正定性公理，不能从齐次性和三角不等式推出。
 - 半范数 $\implies$ 范数仅在零空间为零时成立；非零空间上的零函数是反例。商掉零空间所得范数的良定义用三角不等式，不用选择公理。
 
+📌 本图的「**赋范空间**」是 `def.normed-space`；本节点只定义范数本身。
+
 参考：Rudin, Functional Analysis · 赋范空间与有限维；Rudin, Functional Analysis, Ch. 1
 
 #### 范数诱导的距离　`prop.norm-induces-metric`
@@ -13618,6 +13628,8 @@ $$E^* := B(E, \mathbb{K}) , \qquad \|\varphi\| := \sup_{\|x\| \le 1} |\varphi(x)
 ⚠️ 与**代数对偶** $E^\vee = \operatorname{Hom}(E, \mathbb{K})$ 区分：无穷维时 $E^* \subset E^\vee$，不连续的线性泛函属于后者而不属于前者（要选择公理才能造出来）。本图里 `def.dual-space` 是有限维的对偶（那时两者相同）。
 
 ⭐ 对偶是把「空间」变成「函数」的唯一正经通道：弱拓扑、Riesz 表示、Hahn–Banach、对偶配对全在 $E^*$ 上进行。
+
+📌 通名「对偶空间」见 `def.dual-space`；本节点专指 **Banach 对偶** $E^{*} = B(E, \mathbb{K})$。
 
 参考：Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数
 
@@ -13912,6 +13924,8 @@ $$\|y_n - y_m\|^2 = 2\|x - y_n\|^2 + 2\|x - y_m\|^2 - 4\Bigl\| x - \tfrac{y_n + 
 - 每个 $x$ 都有正交分解：调用 `thm.projection-convex`，用 Hilbert 完备性与 $E$ 闭；线性由分解唯一性推出，范数界由勾股恒等式推出。
 - 闭性不能删：$E=c_{00}\subset\ell^2$ 时，对 $x\in\ell^2\setminus c_{00}$ 距离为零却不取到，故不存在 $E$ 中最近点。
 
+📌 「正交投影」的定义在 `def.orthogonal-projection`；本节点讲的是「投影像恰是闭子空间」这条。
+
 参考：Conway, A Course in Functional Analysis · Hilbert 空间与正交基
 
 #### Riesz 表示（Hilbert）　`thm.riesz-hilbert`
@@ -13936,6 +13950,8 @@ $\|y\| = \|\varphi\|$ 由 $\|\varphi\| = \sup_{\|x\| \le 1} |\langle x, y\rangle
 ⚠️ 共轭线性：$\alpha y \mapsto \bar\alpha\,\varphi$。所以严格说不是「同构」而是「共轭等距同构」（anti-linear isometry）。
 
 ⚠️ 别与 $L^p$ 的 Riesz 表示混淆：那是 $(L^p)^* \cong L^q$（$1<p<\infty$，$1/p + 1/q = 1$），靠 Hölder 不等式；这条靠正交分解。两者只共享名字。
+
+📌 本图另有一条 **Lp 版**的 Riesz 表示：`thm.riesz-representation-lp`（$(L^{p})^{*} \cong L^{q}$）。
 
 参考：Conway, A Course in Functional Analysis · Hilbert 空间与正交基
 
@@ -14599,6 +14615,8 @@ $$X \in \mathfrak{A}$$
 ⚠ 这里的「环」是**集合环**（ring of sets），和抽象代数里的 ring 只是同名，毫无关系。
 
 把「有限」都升级成「可数」，就得到 **$\sigma$环** 与 **$\sigma$代数** —— 另开两条节点写。
+
+📌 本图的「环」不加限定时常指**代数环** `def.ring`；本节点讲的是**集合环**（对并与差封闭的集族），两者只是同名。
 
 参考：Halmos, Measure Theory, §4；Folland, Real Analysis, §1.2
 
@@ -15989,6 +16007,8 @@ $\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度�
 
 
 为什么叫「控制」：$g$ 把所有 $f_{n}$ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。
+
+📌 「积分与极限交换」在这里指**控制收敛**（逐点收敛 + 可积控制函数）；一致收敛下的交换是 `thm.uniform-limit-integral`。
 
 参考：Folland, Real Analysis, Theorem 2.24
 
@@ -17907,6 +17927,8 @@ $$f := \mu(B)^{-1} \chi_B \operatorname{sgn} g$$
 
 则 $\|f\|_1 = 1$ 而 $\|\varphi_g\| \ge \int fg = \dfrac{1}{\mu(B)} \int_B |g| \ge \|g\|_\infty - \varepsilon$。由 $\varepsilon$ 任意即得。∎
 
+📌 这里的「等距」指 Banach 对偶之间的**等距同构**；度量空间的等距映射是 `def.isometry-surface`。
+
 参考：Folland, Real Analysis, Prop. 6.8
 
 #### 有界 ⟹ g ∈ L^q　`prop.bounded-functional-gives-lq`
@@ -18805,6 +18827,8 @@ $$X_1 \times_{X_0} X_2 = \{(x_1, x_2) \in X_1 \times X_2 : f_1(x_1) = f_2(x_2)\}
 其中 $\sim$ 由 $f_1(x_0) \sim f_2(x_0)$（$x_0 \in X_0$）生成。$\mathbf{Top}$ 里拉回取子空间拓扑、推出取商拓扑。
 
 $\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \to S$、$g: Y \to S$ 拼成 $\varphi : X \oplus Y \to S$，$(x,y) \mapsto f(x) - g(y)$，则推出 $= \operatorname{coker} \varphi$、拉回 $= \ker \varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。
+
+📌 范畴语境的「拉回」就是纤维积（这里）；**微分形式**的拉回是 `prop.pullback-form-manifold`。
 
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
@@ -23357,6 +23381,8 @@ $(\Longrightarrow)$ 设 $f : I^{\bullet} \to J^{\bullet}$ 是拟同构。
 ∎
 
 ⭐ 两条合起来就是**内射消解在同伦意义下唯一**：$\operatorname{Hom}(M,N)$ 中的态射可以提升成复形态射、且提升在同伦意义下唯一。所以「用内射消解算右导出函子」与消解的选取无关 —— 这是 $R^{n}F$ 良定义的全部依据。
+
+📌 这里的「比较定理」指**内射消解提升**的比较；同调代数里那个比较定理是 `thm.comparison-theorem`。
 
 参考：Le Stum, An introduction to condensed mathematics, §7.1
 
@@ -32893,6 +32919,8 @@ $\mathrm{d}\omega = 0$ 的 $\omega$ 叫**闭形式**，$\omega = \mathrm{d}\eta$
 - 坐标公式 $\implies$ $\mathrm d^2=0$：需混合偏导交换，系数为 $C^2$ 足够；一次外微分本身只需 $C^1$。
 - 公理刻画 $\implies$ 坐标公式：还必须要求在函数上等于全微分；否则零算子也满足线性、分次 Leibniz 及平方为零，不能唯一确定外微分。
 - 恰当 $\implies$ 闭用平方为零；闭 $\implies$ 恰当需额外局部或整体条件，如星形开集的 Poincaré 引理；穿孔平面的角形式给出整体反例。
+
+📌 本节点是**欧氏开集**上的外微分；流形上的版本见 `prop.exterior-derivative-manifold`。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式」· 外微分与闭形式；do Carmo, Differential Forms and Applications, 第 1 章「微分形式」· 外微分
 

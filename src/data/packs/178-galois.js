@@ -83,7 +83,7 @@
           '$\\alpha = \\sqrt[3]{2}$：$m = x^{3} - 2$，次数 3；' +
           '$\\pi$、$e$ 在 $\\mathbb{Q}$ 上**超越**（Hermite / Lindemann，本图未收）。',
         '⚠ **极小多项式依赖基域**：$\\sqrt{2}$ 在 $\\mathbb{Q}$ 上次数 2，但在 $\\mathbb{Q}(\\sqrt{2})$ 上次数 $1$。' +
-          '说「$\\alpha$ 的次数」时必须先指明基域。',
+          '说「$\\alpha$ 的次数」时必须先指明基域。\n\n📌 本节点讲**代数元**的极小多项式；**线性算子**的极小多项式是 `def.minimal-poly`。',
       ].join('\n\n'),
       refs: ['Lang, Algebra, Ch. V §1', 'Hungerford, Algebra, Ch. V §1'],
     },

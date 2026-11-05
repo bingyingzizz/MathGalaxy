@@ -448,7 +448,7 @@ window.MG = window.MG || {};
         '',
         '$$f := \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$$',
         '',
-        '则 $\\|f\\|_1 = 1$ 而 $\\|\\varphi_g\\| \\ge \\int fg = \\dfrac{1}{\\mu(B)} \\int_B |g| \\ge \\|g\\|_\\infty - \\varepsilon$。由 $\\varepsilon$ 任意即得。∎'
+        '则 $\\|f\\|_1 = 1$ 而 $\\|\\varphi_g\\| \\ge \\int fg = \\dfrac{1}{\\mu(B)} \\int_B |g| \\ge \\|g\\|_\\infty - \\varepsilon$。由 $\\varepsilon$ 任意即得。∎\n\n📌 这里的「等距」指 Banach 对偶之间的**等距同构**；度量空间的等距映射是 `def.isometry-surface`。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 6.8']
     },
