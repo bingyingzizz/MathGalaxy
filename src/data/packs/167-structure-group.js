@@ -49,7 +49,7 @@ window.MG = window.MG || {};
         '',
         '$$g_{\\alpha\\alpha} = \\mathrm{id}, \\qquad g_{\\alpha\\beta}\\, g_{\\beta\\gamma}\\, g_{\\gamma\\alpha} = \\mathrm{id} \\quad \\text{在}\\ U_{\\alpha\\beta\\gamma}\\ \\text{上} .$$',
         '',
-        '**反过来**（丛的粘合构造）：给定覆盖 $\\{U_{\\alpha}\\}$、纤维 $F$ 与满足上闭链条件的一族 $g_{\\alpha\\beta}$，在不交并 $\\bigsqcup_{\\alpha} U_{\\alpha} \\times F$ 上令',
+        '**反过来**（丛的粘合构造）：给定覆盖 $\\{U_{\\alpha}\\}$、纤维 $F$ 与满足上闭链条件的一族 $g_{\\alpha\\beta}$（并且每个 $(b, y) \\mapsto g_{\\alpha\\beta}(b)y$ **连续 / 光滑**、逐纤维是同胚 / 微分同胚 —— 缺了连续性，商空间甚至可能不 Hausdorff），在不交并 $\\bigsqcup_{\\alpha} U_{\\alpha} \\times F$ 上令',
         '',
         '$$(b, y) \\sim (b,\\ g_{\\alpha\\beta}(b)\\,y) \\quad (b \\in U_{\\alpha\\beta}) ,$$',
         '',

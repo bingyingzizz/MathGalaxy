@@ -259,11 +259,11 @@ window.MG = window.MG || {};
         '',
         '$$\\oint_\\gamma f(z)\\,\\mathrm{d}z = 0.$$',
         '',
-        '多连通的情形：设 $\\gamma_0, \\gamma_1, \\cdots, \\gamma_n$ 是 $\\Omega$ 内分段光滑的简单闭曲线，$\\gamma_1, \\cdots, \\gamma_n$ 各自在 $\\gamma_0$ 的内部且互不相交，$f$ 在它们围成的（多连通）区域上全纯。则',
+        '多连通的情形：设 $\\gamma_0, \\gamma_1, \\cdots, \\gamma_n$ 是 $\\Omega$ 内分段光滑的简单闭曲线，$\\gamma_1, \\cdots, \\gamma_n$ 各自在 $\\gamma_0$ 的内部且互不相交，**全部取逆时针定向**，$f$ 在包含它们围成的**闭区域**的某个开集上全纯（只要求「区域上全纯」不够：曲线本身要落在定义域里）。则',
         '',
         '$$\\oint_{\\gamma_0} f\\,\\mathrm{d}z = \\sum_{k=1}^{n} \\oint_{\\gamma_k} f\\,\\mathrm{d}z.$$'
       ].join('\n'),
-      notes: '⚠ 「单连通」不能丢。\n\n$f(z) = 1/z$ 在 $\\mathbb{C} \\setminus \\{0\\}$ 上全纯，可是 $\\oint_{|z| = 1} \\mathrm{d}z/z = 2\\pi i \\ne 0$。\n\n那个洞就是障碍 —— 它的存在让绕数能被感知到。\n\n⭐ 等价说法：全纯函数的围道积分**同伦不变**（路径在区域里连续形变，积分不变）；\n\n单连通 = 区域内所有闭曲线都同伦于一点。\n\n⭐ 立刻的推论：单连通区域上的全纯函数**有原函数**（取 $F(z) = \\int_{z_0}^{z} f\\,\\mathrm{d}z$，由 Cauchy 定理知与路径无关，再由 $F\' = f$）。\n\n这在实分析里没有对应物 —— $1/x$ 在 $\\mathbb{R} \\setminus \\{0\\}$ 上就没有原函数。\n\n⚠ 名字里的 Goursat：Cauchy 1825 年的原始证明要求 $f\'$ 连续（走 Green 公式）；\n\nGoursat 后来用三角形分割去掉了这个假设。\n\n现代教材因此把它当成**全纯的基本定理**：结论不是从更强的假设换来的。'
+      notes: '⚠ 「单连通」不能丢。\n\n$f(z) = 1/z$ 在 $\\mathbb{C} \\setminus \\{0\\}$ 上全纯，可是 $\\oint_{|z| = 1} \\mathrm{d}z/z = 2\\pi i \\ne 0$。\n\n那个洞就是障碍 —— 它的存在让绕数能被感知到。\n\n⭐ 等价说法：全纯函数的围道积分**同伦不变**（路径在区域里连续形变，积分不变）；\n\n单连通 = 区域内所有闭曲线都同伦于一点。\n\n⭐ 立刻的推论：单连通区域上的全纯函数**有原函数**（取 $F(z) = \\int_{z_0}^{z} f\\,\\mathrm{d}z$，由 Cauchy 定理知与路径无关，再由 $F\' = f$）。\n\n这在实分析里没有**干净的**对应物：$F(x) = \\log|x|$ 确实是 $1/x$ 在 $\\mathbb{R} \\setminus \\{0\\}$ 上的原函数 —— 差别在于 $\\mathbb{R} \\setminus \\{0\\}$ **不连通**，「沿路径积分与路径无关」在这里失效（绕 $0$ 一圈的积分不为零）。\n\n⚠ 名字里的 Goursat：Cauchy 1825 年的原始证明要求 $f\'$ 连续（走 Green 公式）；\n\nGoursat 后来用三角形分割去掉了这个假设。\n\n现代教材因此把它当成**全纯的基本定理**：结论不是从更强的假设换来的。'
     },
 
     /* ------------------------------------------------ Cauchy 公式 */
@@ -284,7 +284,7 @@ window.MG = window.MG || {};
         '',
         '$$f(z) = \\frac{1}{2\\pi i}\\oint_{\\partial\\Omega} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta.$$',
         '',
-        '更一般地，若 $\\gamma$ 是区域内的闭曲线、$f$ 在 $\\gamma$ 内部及 $\\gamma$ 上全纯，则上式对 $\\gamma$ 内部任一点 $z$ 成立。'
+        '更一般地，若 $\\gamma$ 是区域内的**简单**闭曲线、$f$ 在 $\\gamma$ 内部及 $\\gamma$ 上全纯，则上式对 $\\gamma$ 内部任一点 $z$ 成立（一般闭曲线要写成 $\\operatorname{Ind}(\\gamma, z)f(z) = \\frac{1}{2\\pi i}\\oint_\\gamma \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta$）。'
       ].join('\n'),
       notes: '⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\\overline{B(z, r)}$，在剩下的二连通区域 $\\Omega_r$ 上对 $g(\\zeta) = f(\\zeta)/(\\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\\oint_{\\partial\\Omega} g = \\oint_{|\\zeta - z| = r} g$。\n\n再把 $g$ 拆成两块：$\\dfrac{f(z)}{\\zeta - z} + \\dfrac{f(\\zeta) - f(z)}{\\zeta - z}$。\n\n第一块的积分算出 $2\\pi i f(z)$；\n\n第二块的被积函数在 $\\zeta = z$ 处有极限 $f\'(z)$（因而有界），由 ML 不等式其积分不超过 $(\\text{常数}) \\cdot 2\\pi r \\to 0$。\n\n⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。\n\n⚠ 被积函数 $f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\\Omega$ 上。\n\n挖洞不是技巧，是必须的。'
     },
@@ -332,7 +332,7 @@ window.MG = window.MG || {};
         '',
         '$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{R^n}\\,M(R).$$'
       ].join('\n'),
-      notes: '⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\\mathrm{d}\\zeta|$ 的总长是 $2\\pi r$，分母是 $r^{n+1}$）：\n\n$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot M(r) \\cdot \\frac{2\\pi r}{r^{n+1}} = \\frac{n!\\,M(r)}{r^n},$$\n\n再令 $r \\to R$ 即得。\n\n⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。\n\n⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $B(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。\n\n⭐ 反向也有内容：若 $|f| \\le M$ 在全平面成立，则 $|f^{(n)}(0)| \\le n! M/R^n$ 对**一切** $R$ 成立，令 $R \\to \\infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。'
+      notes: '⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\\mathrm{d}\\zeta|$ 的总长是 $2\\pi r$，分母是 $r^{n+1}$）：\n\n$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot M(r) \\cdot \\frac{2\\pi r}{r^{n+1}} = \\frac{n!\\,M(r)}{r^n},$$\n\n再令 $r \\to R$ 即得。\n\n⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。\n\n⚠ 上界里的 $R$ 受**最近奇点**限制：$R \\le \\operatorname{dist}(z_0, \\text{奇点集})$；整函数（如 $e^{z}$、多项式）没有奇点，$R$ 可以**任意大** —— 这正是 Liouville 的来源。\n\n⭐ 反向也有内容：若 $|f| \\le M$ 在全平面成立，则对每个 $n \\ge 1$ 与**一切** $R$：$|f^{(n)}(0)| \\le n! M/R^{n}$，令 $R \\to \\infty$ 得 $f^{(n)}(0) = 0$ —— 对 $n \\ge 1$ 这正是 Liouville（$n = 0$ 只给 $|f(0)| \\le M$，什么也推不出）。'
     },
     {
       id: 'thm.liouville',
@@ -352,7 +352,7 @@ window.MG = window.MG || {};
         '',
         '则 $f$ 是常数。'
       ].join('\n'),
-      notes: '⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $B(z, R)$ 上全纯，故 $|f\'(z)| \\le M/R$。\n\n令 $R \\to \\infty$ 得 $f\'(z) = 0$；\n\n由 $z$ 任意，$f\' \\equiv 0$；\n\n区域连通，故 $f$ 是常数。\n\n⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，\n\n$$f(z) - f(0) = \\frac{1}{2\\pi i}\\oint_{|\\zeta| = R}\\left( \\frac{1}{\\zeta - z} - \\frac{1}{\\zeta} \\right) f(\\zeta)\\,\\mathrm{d}\\zeta,$$\n\n估计得 $|f(z) - f(0)| \\le \\dfrac{M|z|}{R - |z|} \\to 0$（$R \\to \\infty$），故 $f(z) = f(0)$。\n\n⚠ 有界性不能随便放松：$e^z$ 在右半平面有界，但在全平面无界。\n\n反过来，若只知 $|f(z)| \\le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。\n\n⭐ 与实分析对照：$\\sin x$ 在 $\\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\\infty$ 函数」强得多。'
+      notes: '⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $B(z, R)$ 上全纯，故 $|f\'(z)| \\le M/R$。\n\n令 $R \\to \\infty$ 得 $f\'(z) = 0$；\n\n由 $z$ 任意，$f\' \\equiv 0$；\n\n区域连通，故 $f$ 是常数。\n\n⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，\n\n$$f(z) - f(0) = \\frac{1}{2\\pi i}\\oint_{|\\zeta| = R}\\left( \\frac{1}{\\zeta - z} - \\frac{1}{\\zeta} \\right) f(\\zeta)\\,\\mathrm{d}\\zeta,$$\n\n估计得 $|f(z) - f(0)| \\le \\dfrac{M|z|}{R - |z|} \\to 0$（$R \\to \\infty$），故 $f(z) = f(0)$。\n\n⚠ 有界性不能随便放松：$e^{z}$ 在**左**半平面有界（$|e^{z}| \\le 1$），但在全平面无界。\n\n反过来，若只知 $|f(z)| \\le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。\n\n⭐ 与实分析对照：$\\sin x$ 在 $\\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\\infty$ 函数」强得多。'
     },
     {
       id: 'thm.max-modulus',
@@ -412,7 +412,7 @@ window.MG = window.MG || {};
         '',
         '且在 $A_{r,R}(a)$ 内（在每个紧子集上）收敛的级数，称为**以 $a$ 为中心的 Laurent 级数**。右端第一块叫**正则部分**，第二块（负幂次之和）叫**主部**（principal part）。'
       ].join('\n'),
-      notes: '⭐ 两块各有各的收敛范围：正则部分在 $|z - a| < R$ 内收敛，主部在 $|z - a| > r$ 内收敛，交起来正好是**环域** —— 这就是为什么 Laurent 级数的自然舞台是环而不是圆盘。\n\n⚠ 主部才是「奇点信息」的载体：主部为零对应可去奇点；\n\n主部只有有限项对应极点（项数为 $m$ 时叫 $m$ 阶）；\n\n主部有无穷多项对应本性奇点。\n\n所以孤立奇点的三分法，本质上是按主部的形状分的。\n\n📌 书里先做「Laurent 分解」：环域上的全纯函数可以拆成「内圆盘上全纯的一项」加「外域（含无穷远）上全纯的一项」，再由这两项各自的展开合成 Laurent 级数。'
+      notes: '⭐ 两块各有各的收敛范围：正则部分在 $|z - a| < R$ 内收敛，主部在 $|z - a| > r$ 内收敛，交起来正好是**环域** —— 这就是为什么 Laurent 级数的自然舞台是环而不是圆盘。\n\n⚠ 下面三分法都要求 $a$ 是**孤立奇点**（在某个穿孔圆盘 $0 < |z - a| < R$ 上全纯）；否则主部的形状不反映奇点类型 —— 例如 $|z| > 1$ 上的 Laurent 展开主部有无穷多项，而 $0$ 处 $f$ 全纯。主部为零对应可去奇点；\n\n主部只有有限项对应**极点**（阶数 = 主部里**最大负幂**的绝对值：若从 $(z - a)^{-m}$ 起步就叫 $m$ 阶 —— **不是**非零项的个数，$z^{-3}$ 只有一项却是三阶极点）；\n\n主部有无穷多项对应本性奇点。\n\n所以孤立奇点的三分法，本质上是按主部的形状分的。\n\n📌 书里先做「Laurent 分解」：环域上的全纯函数可以拆成「内圆盘上全纯的一项」加「外域（含无穷远）上全纯的一项」，再由这两项各自的展开合成 Laurent 级数。'
     },
     {
       id: 'thm.laurent',
@@ -479,7 +479,7 @@ window.MG = window.MG || {};
         '',
         '则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $B(a, r)$ 上的全纯延拓。'
       ].join('\n'),
-      notes: '⭐ 证明：对 $z \\in B(a, r) \\setminus \\{a\\}$ 与充分小的 $\\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\\varepsilon(z)$，其中 $I_r$ 是沿 $|\\zeta - a| = r$ 的积分（在 $B(a, r)$ 上全纯），$I_\\varepsilon$ 是沿 $|\\zeta - a| = \\varepsilon$ 的积分。\n\n估计\n\n$$|I_\\varepsilon(z)| \\le \\frac{\\varepsilon \\, \\|f\\|_{\\partial B(a, \\varepsilon)}}{|z - a| - \\varepsilon} \\longrightarrow 0 \\qquad (\\varepsilon \\to 0),$$\n\n最后一步用的正是条件 $(z - a) f(z) \\to 0$。\n\n但 $I_\\varepsilon(z)$ 与 $\\varepsilon \\in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。\n\n于是 $f = I_r$ 在 $B(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。\n\n⭐ 用途：它让「可去奇点」真的可以当没有。\n\n例如 $\\sin z / z$ 在 $0$ 处补成 $1$，于是 $\\sin z / z$ 就是整函数；\n\n$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \\psi(z)$」都要靠它。\n\n⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。\n\n真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。'
+      notes: '⭐ 证明：对 $z \\in B(a, r) \\setminus \\{a\\}$ 与充分小的 $\\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\\varepsilon(z)$，其中 $I_{\\rho}$ 是沿 $|\\zeta - a| = \\rho$ 的积分（**取 $\\rho < r$** —— 圆周 $|\\zeta - a| = r$ 本身不在定义域里；$I_{\\rho}$ 在 $B(a, \\rho)$ 上全纯），$I_\\varepsilon$ 是沿 $|\\zeta - a| = \\varepsilon$ 的积分。\n\n估计\n\n$$|I_\\varepsilon(z)| \\le \\frac{\\varepsilon \\, \\|f\\|_{\\partial B(a, \\varepsilon)}}{|z - a| - \\varepsilon} \\longrightarrow 0 \\qquad (\\varepsilon \\to 0),$$\n\n最后一步用的正是条件 $(z - a) f(z) \\to 0$。\n\n但 $I_\\varepsilon(z)$ 与 $\\varepsilon \\in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。\n\n于是 $f = I_{\\rho}$ 在 $B(a, \\rho)$ 上全纯，补上 $f(a) := I_{\\rho}(a)$ 即可（$\\rho < r$ 任取，各 $\\rho$ 给的值一致）。\n\n⭐ 用途：它让「可去奇点」真的可以当没有。\n\n例如 $\\sin z / z$ 在 $0$ 处补成 $1$，于是 $\\sin z / z$ 就是整函数；\n\n$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \\psi(z)$」都要靠它。\n\n⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。\n\n真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。'
     },
 
     /* ------------------------------------------------------ 留数 */

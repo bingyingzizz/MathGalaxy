@@ -44,7 +44,7 @@ window.MG = window.MG || {};
         '**最低一条的含义**：$w_{1}(E) = 0$ 当且仅当 $E$ **可定向**（见 `prop.orientable-iff-w1`）。'
       ].join('\n'),
       notes: [
-        '**怎么算出来（与陈类对照）**：把实丛 $E$ 复化得 $E \\otimes \\mathbb{C}$，它是复丛，有陈类 $c_{i}$。**Pontryagin 类**取 $p_{i} = (-1)^{i}c_{2i}(E\\otimes\\mathbb{C})$；而 $w_{i}$ 是 $c_{i}$ 模 $2$ 的「影子」：$w_{i}(E) \\equiv c_{i}(E\\otimes\\mathbb{C}) \\bmod 2$（这条给出可计算的定义，公理版只是它的最小刻画）。⚠️ 严格陈述要用 Thom–Wu 或 Steenrod 平方才能把模 $2$ 讲清楚，本图不展开。',
+        '**怎么算出来（与陈类对照）**：把实丛 $E$ 复化得 $E \\otimes \\mathbb{C}$，它是复丛，有陈类 $c_{i}$。**Pontryagin 类**取 $p_{i} = (-1)^{i}c_{2i}(E\\otimes\\mathbb{C})$；而 $w_{i}$ 是 $c_{i}$ 模 $2$ 的「影子」：$\\rho_{2}\\bigl(c_{i}(E\\otimes\\mathbb{C})\\bigr) = w_{i}(E)^{2}$（**次数要对**：$w_{i} \\in H^{i}$ 而 $c_{i} \\in H^{2i}$，所以是 $c_{i}$ 的模 $2$ 约化等于 $w_{i}$ 的**平方**，不是 $w_{i}$ 本身；公理版只是它的最小刻画）。⚠️ 严格陈述要用 Thom–Wu 或 Steenrod 平方才能把模 $2$ 讲清楚，本图不展开。',
         '**为什么系数是 $\\mathbb{Z}/2$ 而不是 $\\mathbb{Z}$**：实丛没有「复数相位」，其示性类天然带 $2$-挠。用 $\\mathbb{Z}$ 系数时 $p_{i}$ 只能取到偶次类、且丢掉奇次信息；这正是 $w_{2}$ 与 $p_{1}$ 分工的原因（$w_{2}$ 还能测「非 Spin」这类纯 $2$-挠现象）。',
         '⚠️ **$w_{i}$ 不能用来判同构**：它只给必要条件（$w \\ne w\' \\implies E \\not\\cong E\'$）。所有平凡丛的 $w$ 都是 $1$，但 $w = 1$ 的丛未必平凡。',
         '⚠️ **$w_{1}$ 与「定向」的等价是本图最常用的那条**：见 `prop.orientable-iff-w1`，它把「结构群可从 $\\mathrm{GL}(k)$ 约化到 $\\mathrm{SO}(k)$」翻译成一个上同调类的消失。'
@@ -72,8 +72,8 @@ window.MG = window.MG || {};
         '**对切丛**：$M$ 可定向（`def.orientable-manifold`）$\\iff$ $w_{1}(TM) = 0$。'
       ].join('\n'),
       notes: [
-        '**为什么是 $w_{1}$ 而不是别的**：约化 $\\mathrm{GL}(k) \\rightsquigarrow \\mathrm{SO}(k)$ 等价于「转移函数（`def.transition-function`）可以全部取在 $\\mathrm{SO}(k)$ 里」，即行列式处处为正。而行列式取值 $\\pm 1$ 给出一个 $\\mathbb{Z}/2$-值上闭链 —— 那正是 $w_{1}$：它记的是「绕一圈回来符号是否翻转」。所以 $w_{1} = 0$ 就是「能统一符号」。',
-        '⭐ **同一件事的三种说法**：$w_{1} = 0$ $\\iff$ 存在处处非零的 $k$-形式（体积形式，`def.orientable-manifold`）$\\iff$ 定向双重覆叠 $\\tilde B \\to B$ 分裂（有截面）。三者互为翻译，但**计算上只有第一条方便** —— 它就是这条命题的价值。',
+        '**为什么是 $w_{1}$ 而不是别的**：约化 $\\mathrm{GL}(k) \\rightsquigarrow \\mathrm{SO}(k)$ 等价于「转移函数（`def.transition-function`）可以全部取在 $\\mathrm{SO}(k)$ 里」，即行列式处处为正 —— 这只给 $\\mathrm{GL}^{+}(k)$；要再配纤维度量才能约化到 $\\mathrm{SO}(k)$（两步不等价：秩 $1$ 平凡丛取转移函数 $(2)$ 行列式为正但不在 $\\mathrm{SO}(1)$ 里）。而行列式取值 $\\pm 1$ 给出一个 $\\mathbb{Z}/2$-值上闭链 —— 那正是 $w_{1}$：它记的是「绕一圈回来符号是否翻转」。所以 $w_{1} = 0$ 就是「能统一符号」。',
+        '⭐ **同一件事的三种说法**：$w_{1} = 0$ $\\iff$ $\\Lambda^{k}E^{*}$ 有处处非零的截面（$E = TB$ 时它正是体积形式，`def.orientable-manifold`）$\\iff$ 定向双重覆叠 $\\tilde B \\to B$ 分裂（有截面）。三者互为翻译，但**计算上只有第一条方便** —— 它就是这条命题的价值。',
         '⚠️ **$w_{1}$ 不为零的例子要能举**：$\\mathbb{RP}^{2}$ 的切丛 $w_{1} \\ne 0$（不可定向），$\\mathbb{RP}^{2}$ 上的 tautological 线丛 $w_{1} \\ne 0$。而 $S^{2}$、环面都可定向。',
         '⚠️ **别把它推成「$w_{2} = 0 \\iff$ Spin 结构」**：$w_{2} = 0$ 只是 Spin 结构存在的**先决条件**，还要一个整系数（$\\beta w_{2}$ 型）条件配合。这是「障碍的层级」问题，不是一条等价就能解决的。'
       ].join('\n\n'),
@@ -100,7 +100,7 @@ window.MG = window.MG || {};
         '**基本性质**：',
         '',
         '1. **自然性**：$e(f^{*}E) = f^{*}e(E)$；',
-        '2. **与顶陈类的关系**：$e(E) = c_{m}(E \\otimes \\mathbb{C})$（$k = 2m$ 时；⚠️ 见注的符号约定）；',
+        '2. **与 Pontryagin 类的关系**：$p_{m}(E) = e(E)^{2}$（$k = 2m$ 时）；\n\n$E$ **本身是复丛**时才有 $e(E) = c_{m}(E)$（实丛复化后 $c_{2m}(E\\otimes\\mathbb{C})$ 与 $e(E)^{2}$ 至多差一个符号，见注）；',
         '3. **Gauss–Bonnet（曲面情形）**：$\\Sigma$ 为闭可定向曲面时',
         '',
         '$$\\int_{\\Sigma} e(T\\Sigma) = \\chi(\\Sigma) ,$$',
@@ -110,7 +110,7 @@ window.MG = window.MG || {};
       notes: [
         '**为什么用 Pfaffian 而不是行列式**：$\\det$ 在 $\\mathrm{SO}(k)$ 共轭下也不变，但它对反对称矩阵是**完全平方**，取 $\\sqrt{\\det}$ 有符号歧义；$\\operatorname{Pf}$ 对 $\\mathrm{SO}(k)$ 不变而**对 $\\mathrm{O}(k)$ 变号** —— 那个符号**正好**记的事「定向」。所以 Pfaffian 是唯一能把「定向」编码进去的不变多项式（`def.invariant-polynomial` 在 $\\mathfrak{o}(k)$ 上的版本）。',
         '⭐ **它为什么只在偶数秩时存在**：Pfaffian 只对偶数阶反对称矩阵有定义。$k$ 为奇数时 $e(E)$ 按定义为 $0$ —— 这与「奇数维闭流形的 Euler 示性数为零」（Poincaré 对偶的推论）一致。',
-        '⚠️ **符号约定要留意**：$e(E) = c_{m}(E\\otimes\\mathbb{C})$ 与 $e(E) = (-1)^{m}c_{m}(E\\otimes\\mathbb{C})$ 两种约定都在用（差 $(-1)^{m}$，取决于曲率与 Pfaffian 的符号）。本图取 $\\operatorname{Pf}(F/2\\pi)$ 直接定义，不做换算。',
+        '⚠️ **不要把 $e$ 直接当成 $c_{m}$**：无歧义的那条是 $p_{m}(E) = e(E)^{2}$；而复化丛上 $c_{2m}(E\\otimes\\mathbb{C})$ 与 $e(E)^{2}$ 之间可能差一个 $(-1)^{m}$（取决于曲率与 Pfaffian 的符号约定）。本图取 $\\operatorname{Pf}(F/2\\pi)$ 直接定义 $e$，不做换算。',
         '⚠️ **$e(E) \\ne 0$ 的用处**：它常用来证「某丛非平凡」。例如 $S^{2}$ 的切丛满足 $\\int e(T S^{2}) = 2 \\ne 0$，所以 $T S^{2}$ 不是平凡丛 —— 这是「$S^{2}$ 不能平行化」的示性类证明（比用 $\\chi = 2$ 更本质）。'
       ].join('\n\n'),
       refs: ['Milnor–Stasheff, Characteristic Classes · Euler 类', 'Bott–Tu, Differential Forms in Algebraic Topology']
@@ -136,11 +136,11 @@ window.MG = window.MG || {};
         '1. $p_{0} = 1$；',
         '2. **自然性**：$p_{i}(f^{*}E) = f^{*}p_{i}(E)$；',
         '3. **Whitney 乘积公式**（模 $2$-挠才严格成立）$p(E \\oplus E\') = p(E) \\smile p(E\')$；',
-        '4. **复丛的实化**：若 $E = F_{\\mathbb{R}}$ 是复丛 $F$ 的实化，则 $p_{i}(E) = (-1)^{i}c_{i}(F)^{2}$ 型关系（**$p$ 丢掉了 $c$ 的奇次信息**，这正是「实化丢相位」的表现）。'
+        '4. **复丛的实化**：若 $E = F_{\\mathbb{R}}$ 是复丛 $F$ 的实化，则 $p_{i}(F_{\\mathbb{R}}) = (-1)^{i}\\, c_{2i}(F \\oplus \\overline{F})$（**一般不是** $c_{i}(F)^{2}$；对线丛 $F$ 才有 $p_{1}=c_{1}^{2}$，秩 $m$ 复丛的顶类 $p_{m}=c_{m}^{2}$；例：$F = \\mathcal{O}(1) \\to \\mathbb{CP}^{2}$ 时 $p_{1} = c_{1}^{2} = h^{2}$）。**$p$ 丢掉了 $c$ 的奇次信息**，这正是「实化丢相位」的表现。'
       ].join('\n'),
       notes: [
         '**为什么只取偶次**：复化 $E\\otimes\\mathbb{C}$ 带一个**共轭**结构（把 $i$ 变成 $-i$），于是 $c_{2i+1}(E\\otimes\\mathbb{C}) = -c_{2i+1}$ 型地成对抵消（在 $\\mathbb{Z}$ 系数下变成 $2$-挠元）。所以整系数里只剩偶次是真不变量，奇次的信息要用 $\\mathbb{Z}/2$ 的 $w_{i}$ 去补 —— **这就是 $w$ 与 $p$ 的分工**。',
-        '⚠️ **$p_{1}$ 的一个具体例子**：$S^{4}$ 上的切丛满足 $\\int_{S^{4}} p_{1}(TS^{4}) = \\pm 2\\chi$ 型关系（符号看约定），非零 —— 所以 $TS^{4}$ 非平凡。更著名的是 $\\mathbb{CP}^{2}$ 的 $p_{1}$ 与符号差定理（signature theorem）：$\\sigma(M) = \\frac{1}{3}\\int p_{1}$（四维闭可定向流形），这是 Hirzebruch 指标定理的特例。',
+        '⚠️ **$S^{4}$ 反而是「$p_{1}$ 为零」的例子**：$S^{4}$ 稳定可平行化（$TS^{4} \\oplus \\underline{\\mathbb{R}} \\cong \\underline{\\mathbb{R}}^{5}$），故 $p_{1}(TS^{4}) = 0$；它非平凡要靠 Euler 类检出（$e(TS^{4}) = \\chi(S^{4}) = 2 \\ne 0$）。更著名的是 $\\mathbb{CP}^{2}$ 的 $p_{1}$ 与符号差定理（signature theorem）：$\\sigma(M) = \\frac{1}{3}\\int p_{1}$（四维闭可定向流形），这是 Hirzebruch 指标定理的特例。',
         '⚠️ **Whitney 公式的 $2$-挠警告**：$p(E\\oplus E\') = p(E)p(E\')$ 在 $H^{*}(B;\\mathbb{Z})$ 里**只对模 $2$-挠**成立（严格版要写到 $H^{*}(B;\\mathbb{Z})/\\text{挠}$，或用 $\\mathbb{Z}[1/2]$ 系数）。这一点与陈类形成鲜明对照（陈类的 Whitney 公式是无条件的）—— 因为复化会引入 $2$-挠。',
         '⚠️ **三种实示性类的角色**：$w_{i}$（$\\mathbb{Z}/2$，全维数、能测定向与 Spin）、$e$（$\\mathbb{Z}$，只在可定向且偶数秩、顶维）、$p_{i}$（$\\mathbb{Z}$，$4$ 的倍数维、丢奇次信息）。三者不互相包含 —— 判断某个实丛非平凡时，可能要几种一起用。'
       ].join('\n\n'),

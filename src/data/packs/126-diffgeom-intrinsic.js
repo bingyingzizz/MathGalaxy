@@ -861,15 +861,15 @@ window.MG = window.MG || {};
         '把所有三角形相加：',
         [
           '- **边的项**：每条内部边被两个三角形各走一次、方向相反，$\\int k_{g}$ 相消；边界边只走一次，留下 $\\int_{\\partial M}k_{g}$；',
-          '- **角的项**：内部顶点周围的内角合起来恰是 $2\\pi$，每个内部顶点贡献 $2\\pi$；边界顶点周围的内角合起来是 $\\pi$，每个边界顶点贡献 $\\pi$。'
+          '- **角的项**：内部顶点周围的内角合起来恰是 $2\\pi$，每个内部顶点贡献 $2\\pi$；**边界顶点**周围的内角合起来是 $\\alpha_{v}$（分段光滑边界在该角点处的内角），全部边界顶点贡献 $\\sum_{v\\in\\partial M}\\alpha_{v}$。⚠️ 只有光滑边界才有 $\\alpha_{v} = \\pi$、才退化回 $\\pi V_{b}$。'
         ].join('\n'),
         '于是',
-        '$$\\int_{M}K\\,\\mathrm{d}A+\\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi V_{i}+\\pi V_{b}-\\pi F .$$',
+        '$$\\int_{M}K\\,\\mathrm{d}A+\\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi V_{i}+\\sum_{v\\in\\partial M}\\alpha_{v}-\\pi F .$$\n\n两边同时加上 $\\sum_{v\\in\\partial M}(\\pi-\\alpha_{v})$（共 $V_{b}$ 个边界顶点，$\\sum_v \\pi = \\pi V_{b}$），左端就补出角点项：',
         '**第三步：把右端认成 $2\\pi\\chi$。** 每个三角形有三条边，内部边被数两次、边界边被数一次：$3F = 2E_{i}+E_{b}$，而 $E_{b} = V_{b}$（边界的每条边对应一段）。于是',
         '$$E = E_{i}+E_{b} = \\frac{3F-E_{b}}{2}+E_{b} = \\frac{3F+V_{b}}{2},$$',
         '$$2\\pi\\left(V-E+F\\right) = 2\\pi\\left(V_{i}+V_{b}-\\frac{3F+V_{b}}{2}+F\\right) = 2\\pi V_{i}+\\pi V_{b}-\\pi F .$$',
         '两端相同，且 $V-E+F = \\chi(M)$ 与剖分无关，故',
-        '$$\\int_{M}K\\,\\mathrm{d}A+\\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi\\chi(M).$$',
+        '$$\\int_{M}K\\,\\mathrm{d}A+\\int_{\\partial M}k_{g}\\,\\mathrm{d}s+\\sum_{v\\in\\partial M}(\\pi-\\alpha_{v}) = 2\\pi\\chi(M).$$',
         '**第四步：闭曲面的特例与数值。** $\\partial M = \\emptyset$ 时边界项消失，得 $\\int_{M}K\\,\\mathrm{d}A = 2\\pi\\chi(M)$。\n\n' +
         '球面 $\\chi = 2$ 给出 $\\int K\\,\\mathrm{d}A = 4\\pi$（$K = 1/R^{2}$、面积 $4\\pi R^{2}$，相符）；\n\n' +
         '环面 $\\chi = 0$ 给出 $\\int K = 0$（环面的外侧 $K > 0$、内侧 $K < 0$，正好抵消）；\n\n' +

@@ -398,6 +398,8 @@
 | 边 id 由全局序号派生 | ✅ **179 条形如 `e<数字>`**（`e16.definition` 这种）；222 个公开 proofs 页依赖它 ⇒ 内容一变 id 就漂 |
 | 骨架边无从标记 | 33 条 |
 
+⚠️ **节点页贴近 1300 B 上限**（2026-11-05 实测）：`def.manifold-chart` **1291**、`def.interior` **1284**、`thm.cauchy-inequality` **1282**、`def.orientable-manifold` **1272**、`thm.gauss-bonnet` **1268**、`def.transition-function` **1266** —— 再往这些陈述加一句就会红。
+
 ### 4.8 ⬜ 未动的大块
 
 | 块 | 规模 | 备注 |
