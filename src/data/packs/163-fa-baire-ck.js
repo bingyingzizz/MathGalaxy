@@ -46,7 +46,7 @@ window.MG = window.MG || {};
         '$A \\subseteq X$ 叫**第一纲集**（meager，贫集），若 $A$ 可写成可数个无处稠密集之并；不是第一纲的叫**第二纲集**。称 $A$ **剩余**（residual），若 $A^c$ 第一纲。'
       ].join('\n'),
       notes: [
-        '「纲」是「大小」的第三种口径，既不是基数也不是测度：$\\mathbb{Q}$ 可数、稠密但是第一纲（每个单点无处稠密）；Cantor 集不可数、测度为零但是第一纲（它本身无处稠密）；$[0,1] \\setminus \\mathbb{Q}$ 是第二纲且剩余。',
+        '「纲」是「大小」的第三种口径，既不是基数也不是测度：$\\mathbb{Q}$ 可数、稠密但是第一纲（每个单点无处稠密）；Cantor 集不可数、测度为零但是第一纲（它本身无处稠密）；$[0,1] \\setminus \\mathbb{Q}$ **在子空间 $[0,1]$ 中**是第二纲且剩余（在 $\\mathbb{R}$ 里它不剩余：补集含区间 $(1,2)$，不是第一纲）。',
         '⚠️ 第二纲 $\\ne$ 稠密：$[0,1] \\cup \\{2\\}$ 也是第二纲。',
         '⭐ 用法：想说「几乎所有点都满足 $P$」，就去证 $\\{x : \\neg P(x)\\}$ 第一纲。在无穷维里这比测度论更顺手（很多函数空间没有自然测度，但有 Baire 纲）。'
       ].join('\n\n'),
@@ -64,8 +64,8 @@ window.MG = window.MG || {};
         '$A$ 叫 **$G_\\delta$ 集**，若 $A$ 是可数个开集之交；叫 **$F_\\sigma$ 集**，若 $A$ 是可数个闭集之并。'
       ].join('\n'),
       notes: [
-        '在度量空间里单点闭、开集是可数多个球的并，所以「闭 $\\subseteq F_\\sigma$」「开 $\\subseteq G_\\delta$」。',
-        '⭐ Baire 之后，「稠密 $G_\\delta$」是「几乎全部的点」的标准写法：连续点集、可微点集、$C[0,1]$ 里无处可微函数的全体，全是稠密 $G_\\delta$。'
+        '在度量空间里单点闭、开集是可数多个球的并（**需可分**：不可数离散度量空间里，不可数开集不能是可数球的并），所以「闭 $\\subseteq F_\\sigma$」「开 $\\subseteq G_\\delta$」。',
+        '⭐ Baire 之后，「稠密 $G_\\delta$」是「几乎全部的点」的标准写法：对**连续函数列的逐点极限** $f$，其连续点集是稠密 $G_\\delta$（无条件成立的只有这条 —— 「可微点集」不行：$f = \\mathbf{1}_{\\mathbb{Q}}$ 的连续点集与可微点集都是空集）；$C[0,1]$ 里无处可微函数的全体也是稠密 $G_\\delta$。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
@@ -169,7 +169,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '证法：设 $O_n$ 在 $\\Omega$ 里稠密开，写 $O_n = \\Omega \\cap O_n\'$（$O_n\'$ 在 $X$ 中开）。\n\n' +
-        '则 $O_n\' \\cup \\Omega^c$ 在 $X$ 中**稠密开**；\n\n' +
+        '则 $O_n\' \\cup (X \\setminus \\overline{\\Omega})$ 在 $X$ 中**稠密开**（并上的是开集 $X \\setminus \\overline{\\Omega}$；$\\Omega^{c}$ 本身不必开 —— $\\Omega = (0,1)$、$O_n\' = (0,1) \\setminus \\{1/m\\}$ 时 $\\Omega^{c}$ 会让并集丢掉 $0$ 的邻域）；\n\n' +
         '于是 $\\bigcap_n(O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密，与 $\\Omega$ 相交得 $\\bigcap_n O_n$ 在 $\\Omega$ 稠密。',
         '⭐ 用处：开映射定理要在开集上做局部论证、UBP 要看开子集，这条保证「局部化之后 Baire 性质不丢」。'
       ].join('\n\n'),
@@ -184,7 +184,7 @@ window.MG = window.MG || {};
       regions: ['functional-analysis'],
       tags: ['Baire 纲', '三大定理'],
       statement: [
-        '设 $X$ 是 Baire 空间，$F_n \\subseteq X$ 闭，且 $X = \\bigcup_n F_n$。则 $\\bigcup_n \\operatorname{int} F_n$ 在 $X$ 中**稠密**。特别地，至少有一个 $F_n$ 有非空内部。'
+        '设 $X$ 是 Baire 空间，$F_n \\subseteq X$ 闭，且 $X = \\bigcup_n F_n$。则 $\\bigcup_n \\operatorname{int} F_n$ 在 $X$ 中**稠密**。特别地，若 $X \\ne \\emptyset$，则至少有一个 $F_n$ 有非空内部（空空间满足 Baire 前提，但每个 $F_n$ 的内部都是空的）。'
       ].join('\n'),
       notes: [
         '这是把「有一块闭集能被盖住」变成「有一个球里的东西一致地被控制」—— 正是 UBP 与开映射定理要的那一句。',
@@ -275,7 +275,7 @@ window.MG = window.MG || {};
         '其中 $B_E, B_F$ 是闭单位球。更弱的假设也够：$u(E)$ 在 $F$ 中第二纲即可（$F$ 完备时满射自动满足，故通常只写满射）。'
       ].join('\n'),
       notes: [
-        '**证明。** 分两步：先用纲定理把「像」撑到含一个球（此时只用到 $E$ 完备），再用 $E$ 的完备性把闭包去掉。',
+        '**证明。** 分两步：先用纲定理把「像」撑到含一个球（此时只用到 **$F$** 完备），再用 **$E$** 的完备性把闭包去掉。',
         '**第一步：$\\overline{u(B_E)}$ 含 $0$ 的邻域。** 因为 $E = \\bigcup_{k \\ge 1} k\\,B_E$，作用 $u$ 得',
         '$$F = u(E) = \\bigcup_{k \\ge 1} u(k B_E) \\subseteq \\bigcup_{k \\ge 1} \\overline{u(k B_E)} .$$',
         '若每个 $\\overline{u(k B_E)}$ 都无处稠密，$F$ 就是可数个无处稠密集之并，与「$F$ 完备 $\\implies$ 第二纲」矛盾。所以某个 $k$ 使 $\\overline{u(k B_E)}$ 含内点：存在 $y_0$ 与 $\\delta > 0$ 使 $B_F(y_0, \\delta) \\subseteq \\overline{u(k B_E)}$。',
@@ -287,7 +287,7 @@ window.MG = window.MG || {};
         '$$\\|x_n\\| < 2^{-n}, \\qquad \\Bigl\\| y - u\\Bigl(\\sum_{j \\le n} x_j\\Bigr) \\Bigr\\| < r\\,2^{-n} .$$',
         '因为 $\\sum \\|x_n\\| < 1$ 而 $E$ **完备**，级数 $x := \\sum_{n} x_n$ 收敛，且 $\\|x\\| < 1$。又 $u$ 连续，故 $u(x) = \\lim_n u(\\sum_{j\\le n} x_j) = y$。于是 $y = u(x)$ 且 $\\|x\\| < 1$，即 $y \\in u(B_E)$。',
         '**第三步：收尾。** 任取开集 $\\Omega \\subseteq E$ 与 $x \\in \\Omega$，取 $\\rho > 0$ 使 $B(x, \\rho) \\subseteq \\Omega$。由齐次性 $u(B(x,\\rho)) = u(x) + \\rho\\, u(B_E) \\supseteq u(x) + \\rho r B_F$，这是 $u(x)$ 的一个邻域，含于 $u(\\Omega)$。故 $u(\\Omega)$ 开。$\\square$',
-        '**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：$E$ 不完备时恒等映射 $(C[0,1], \\|\\cdot\\|_\\infty) \\to (C[0,1], \\|\\cdot\\|_1)$ 是连续双射但不开；$F$ 不完备的反例见闭图像定理那一条的注。',
+        '**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：$E$ **靶** $F = (C[0,1], \\|\\cdot\\|_1)$ 不完备时恒等映射 $(C[0,1], \\|\\cdot\\|_\\infty) \\to (C[0,1], \\|\\cdot\\|_1)$ 是连续双射但不开（$E = (C[0,1], \\|\\cdot\\|_\\infty)$ 其实是完备的）；$F$ 不完备的反例见闭图像定理那一条的注。',
         '**与闭图像定理的关系。** 第二步的「完备性去掉闭包」是这条定理真正的技术核心；闭图像定理反过来把它当工具用（先证 $\\pi_1^{-1}$ 有界，再用它得到 $u$ 有界）。所以这两条不是彼此独立的：**开映射 $\\implies$ 逆算子 $\\implies$ 闭图像**。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis, 2.11']

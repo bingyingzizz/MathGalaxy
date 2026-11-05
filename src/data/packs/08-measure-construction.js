@@ -362,7 +362,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '唯一性', '扩张'],
       statement: [
-        '设 $\\mu _{0}$ 是代数 $\\mathfrak{A}$ 上的预测度，$\\mu := \\mu^{*}|_\\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\\nu$ 是 $\\mathcal{M}(\\mathfrak{A})$ 上**另一个**扩张 $\\mu _{0}$ 的测度，则',
+        '设 $\\mu _{0}$ 是**环** $\\mathfrak{A}$ 上的预测度（Carathéodory 唯一性对环已成立；$\\mathfrak{A}$ 是代数时是特例），$\\mu := \\mu^{*}|_\\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\\nu$ 是 $\\mathcal{M}(\\mathfrak{A})$ 上**另一个**扩张 $\\mu _{0}$ 的测度，则',
         '',
         '$$\\nu(E) \\le \\mu(E)\\quad  \\forall E \\in \\mathcal{M}(\\mathfrak{A})$$',
         '',

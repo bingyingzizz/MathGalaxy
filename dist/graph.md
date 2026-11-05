@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T11:54:32.135Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T11:58:56.230Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -14285,7 +14285,7 @@ $$B_n f(x) := \sum_{k=0}^{n} \binom{n}{k} f\!\left(\frac{k}{n}\right) x^k (1 - x
 
 $A \subseteq X$ 叫**第一纲集**（meager，贫集），若 $A$ 可写成可数个无处稠密集之并；不是第一纲的叫**第二纲集**。称 $A$ **剩余**（residual），若 $A^c$ 第一纲。
 
-「纲」是「大小」的第三种口径，既不是基数也不是测度：$\mathbb{Q}$ 可数、稠密但是第一纲（每个单点无处稠密）；Cantor 集不可数、测度为零但是第一纲（它本身无处稠密）；$[0,1] \setminus \mathbb{Q}$ 是第二纲且剩余。
+「纲」是「大小」的第三种口径，既不是基数也不是测度：$\mathbb{Q}$ 可数、稠密但是第一纲（每个单点无处稠密）；Cantor 集不可数、测度为零但是第一纲（它本身无处稠密）；$[0,1] \setminus \mathbb{Q}$ **在子空间 $[0,1]$ 中**是第二纲且剩余（在 $\mathbb{R}$ 里它不剩余：补集含区间 $(1,2)$，不是第一纲）。
 
 ⚠️ 第二纲 $\ne$ 稠密：$[0,1] \cup \{2\}$ 也是第二纲。
 
@@ -14298,9 +14298,9 @@ $A \subseteq X$ 叫**第一纲集**（meager，贫集），若 $A$ 可写成可�
 
 $A$ 叫 **$G_\delta$ 集**，若 $A$ 是可数个开集之交；叫 **$F_\sigma$ 集**，若 $A$ 是可数个闭集之并。
 
-在度量空间里单点闭、开集是可数多个球的并，所以「闭 $\subseteq F_\sigma$」「开 $\subseteq G_\delta$」。
+在度量空间里单点闭、开集是可数多个球的并（**需可分**：不可数离散度量空间里，不可数开集不能是可数球的并），所以「闭 $\subseteq F_\sigma$」「开 $\subseteq G_\delta$」。
 
-⭐ Baire 之后，「稠密 $G_\delta$」是「几乎全部的点」的标准写法：连续点集、可微点集、$C[0,1]$ 里无处可微函数的全体，全是稠密 $G_\delta$。
+⭐ Baire 之后，「稠密 $G_\delta$」是「几乎全部的点」的标准写法：对**连续函数列的逐点极限** $f$，其连续点集是稠密 $G_\delta$（无条件成立的只有这条 —— 「可微点集」不行：$f = \mathbf{1}_{\mathbb{Q}}$ 的连续点集与可微点集都是空集）；$C[0,1]$ 里无处可微函数的全体也是稠密 $G_\delta$。
 
 参考：Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）
 
@@ -14399,7 +14399,7 @@ $X$ Baire、$\Omega \subseteq X$ 开 $\implies$ $\Omega$（带子空间拓扑）
 
 证法：设 $O_n$ 在 $\Omega$ 里稠密开，写 $O_n = \Omega \cap O_n'$（$O_n'$ 在 $X$ 中开）。
 
-则 $O_n' \cup \Omega^c$ 在 $X$ 中**稠密开**；
+则 $O_n' \cup (X \setminus \overline{\Omega})$ 在 $X$ 中**稠密开**（并上的是开集 $X \setminus \overline{\Omega}$；$\Omega^{c}$ 本身不必开 —— $\Omega = (0,1)$、$O_n' = (0,1) \setminus \{1/m\}$ 时 $\Omega^{c}$ 会让并集丢掉 $0$ 的邻域）；
 
 于是 $\bigcap_n(O_n' \cup \Omega^c)$ 在 $X$ 稠密，与 $\Omega$ 相交得 $\bigcap_n O_n$ 在 $\Omega$ 稠密。
 
@@ -14410,7 +14410,7 @@ $X$ Baire、$\Omega \subseteq X$ 开 $\implies$ $\Omega$（带子空间拓扑）
 #### 闭覆盖的内点　`lem.countable-closed-cover`
 *引理*　可数个闭集覆盖 $X$ $\implies$ 内点之并稠密
 
-设 $X$ 是 Baire 空间，$F_n \subseteq X$ 闭，且 $X = \bigcup_n F_n$。则 $\bigcup_n \operatorname{int} F_n$ 在 $X$ 中**稠密**。特别地，至少有一个 $F_n$ 有非空内部。
+设 $X$ 是 Baire 空间，$F_n \subseteq X$ 闭，且 $X = \bigcup_n F_n$。则 $\bigcup_n \operatorname{int} F_n$ 在 $X$ 中**稠密**。特别地，若 $X \ne \emptyset$，则至少有一个 $F_n$ 有非空内部（空空间满足 Baire 前提，但每个 $F_n$ 的内部都是空的）。
 
 这是把「有一块闭集能被盖住」变成「有一个球里的东西一致地被控制」—— 正是 UBP 与开映射定理要的那一句。
 
@@ -14489,7 +14489,7 @@ $R = \bigcap_k \Omega_k$ 是 $G_\delta$。
 $$u(B_E) \supseteq r\, B_F ,$$
 其中 $B_E, B_F$ 是闭单位球。更弱的假设也够：$u(E)$ 在 $F$ 中第二纲即可（$F$ 完备时满射自动满足，故通常只写满射）。
 
-**证明。** 分两步：先用纲定理把「像」撑到含一个球（此时只用到 $E$ 完备），再用 $E$ 的完备性把闭包去掉。
+**证明。** 分两步：先用纲定理把「像」撑到含一个球（此时只用到 **$F$** 完备），再用 **$E$** 的完备性把闭包去掉。
 
 **第一步：$\overline{u(B_E)}$ 含 $0$ 的邻域。** 因为 $E = \bigcup_{k \ge 1} k\,B_E$，作用 $u$ 得
 
@@ -14513,7 +14513,7 @@ $$\|x_n\| < 2^{-n}, \qquad \Bigl\| y - u\Bigl(\sum_{j \le n} x_j\Bigr) \Bigr\| <
 
 **第三步：收尾。** 任取开集 $\Omega \subseteq E$ 与 $x \in \Omega$，取 $\rho > 0$ 使 $B(x, \rho) \subseteq \Omega$。由齐次性 $u(B(x,\rho)) = u(x) + \rho\, u(B_E) \supseteq u(x) + \rho r B_F$，这是 $u(x)$ 的一个邻域，含于 $u(\Omega)$。故 $u(\Omega)$ 开。$\square$
 
-**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：$E$ 不完备时恒等映射 $(C[0,1], \|\cdot\|_\infty) \to (C[0,1], \|\cdot\|_1)$ 是连续双射但不开；$F$ 不完备的反例见闭图像定理那一条的注。
+**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：$E$ **靶** $F = (C[0,1], \|\cdot\|_1)$ 不完备时恒等映射 $(C[0,1], \|\cdot\|_\infty) \to (C[0,1], \|\cdot\|_1)$ 是连续双射但不开（$E = (C[0,1], \|\cdot\|_\infty)$ 其实是完备的）；$F$ 不完备的反例见闭图像定理那一条的注。
 
 **与闭图像定理的关系。** 第二步的「完备性去掉闭包」是这条定理真正的技术核心；闭图像定理反过来把它当工具用（先证 $\pi_1^{-1}$ 有界，再用它得到 $u$ 有界）。所以这两条不是彼此独立的：**开映射 $\implies$ 逆算子 $\implies$ 闭图像**。
 
@@ -15107,7 +15107,7 @@ $$\mathfrak{A} \subseteq \mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$$
 #### 扩张的唯一性　`thm.caratheodory-uniqueness`
 *定理*　定理：Carathéodory 扩张是最大的，σ-有限时唯一
 
-设 $\mu _{0}$ 是代数 $\mathfrak{A}$ 上的预测度，$\mu := \mu^{*}|_\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上**另一个**扩张 $\mu _{0}$ 的测度，则
+设 $\mu _{0}$ 是**环** $\mathfrak{A}$ 上的预测度（Carathéodory 唯一性对环已成立；$\mathfrak{A}$ 是代数时是特例），$\mu := \mu^{*}|_\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上**另一个**扩张 $\mu _{0}$ 的测度，则
 
 $$\nu(E) \le \mu(E)\quad  \forall E \in \mathcal{M}(\mathfrak{A})$$
 
@@ -25194,7 +25194,7 @@ $0 \to \mathbb{Z} \xrightarrow{\;2\;} \mathbb{Z}$ 是正合列，取 $N = \mathb
 
 $$\operatorname{Hom}_{R}\bigl(M \otimes_{R} N,\ P\bigr) \;\cong\; \operatorname{Hom}_{R}\bigl(M,\ \operatorname{Hom}_{R}(N, P)\bigr), \qquad f \longmapsto \bigl(m \mapsto (n \mapsto f(m \otimes n))\bigr),$$
 
-即函子 $(-) \otimes_{R} N$ 是 $\operatorname{Hom}_{R}(N, -)$ 的**左伴随**：
+即函子 $(-) \otimes_{R} N$（值域是 $\mathbf{Ab}$）的左伴随是 $\operatorname{Hom}_{\mathbb{Z}}(N, -)$（带 $R$-作用）；下面那个 $R$-线性版本要求 $N$ 是 $(R,R)$-**双模**：
 
 $$(-) \otimes_{R} N \;\dashv\; \operatorname{Hom}_{R}(N, -).$$
 
@@ -25363,7 +25363,7 @@ $$M_{1} \otimes_{R} N \xrightarrow{\;f \otimes 1\;} M \otimes_{R} N \xrightarrow
 
 ⚠️ **左端会丢**：$0 \to \mathbb{Z} \xrightarrow{\;2\;} \mathbb{Z} \to \mathbb{Z}/2 \to 0$ 张量 $N = \mathbb{Z}/2$ 之后，$\mathbb{Z} \otimes \mathbb{Z}/2 \xrightarrow{\;2\;} \mathbb{Z} \otimes \mathbb{Z}/2$ 是零映射，不再单射。
 
-⭐ 于是「右正合」是白送的、**左正合才是性质**，而那个性质的名字就叫平坦。丢掉的左端不是凭空消失：它是 $\operatorname{Tor}_{1}^{R}(M_{2}, N)$（见 `prop.flat-equivalences`）。
+⭐ 于是「右正合」是白送的、**左正合才是性质**，而那个性质的名字就叫平坦。丢掉的左端不是凭空消失：它是连接映射 $\operatorname{Tor}_{1}^{R}(M_{2}, N) \to M_{1} \otimes N$ 的**像**（不能直接把「丢掉的核」等同于 $\operatorname{Tor}_{1}$：分裂列 $0 \to \mathbb{Z}/2 \to (\mathbb{Z}/2)^{2} \to \mathbb{Z}/2 \to 0$ 张量后仍分裂、核为零，而 $\operatorname{Tor}_{1}(\mathbb{Z}/2, \mathbb{Z}/2) = \mathbb{Z}/2$）。
 
 参考：Cartan–Eilenberg, Homological Algebra, Chapter II, right exactness of the tensor product；Rotman, An Introduction to Homological Algebra (2nd ed.), Chapter 2, exactness properties of the tensor product
 
@@ -25494,21 +25494,21 @@ $$I \otimes_{R} M \longrightarrow M, \qquad a \otimes m \longmapsto a m$$
 
 **证明（反方向，三步）**：
 
-**第一步（化到有限生成）**：$M$ 是它的有限生成子模的滤过余极限，$(-)\otimes N$ 保滤过余极限，而单射在滤过余极限下封闭，故只需对有限生成的 $M$ 验证。
+**第一步（把**检验对象**有限生成化）**：待判的 $M$ **固定不动**。不能靠「$M$ 是有限生成子模的滤过余极限」把 $M$ 缩成有限生成 —— 有限生成性不传给子模（$R = k[x,y]$ 平坦，但理想 $(x,y)$ 不平坦）。真正要缩的是待验的映射：只需对**有限生成**子模 $K \subseteq R^{n}$ 验证 $K \otimes M \to R^{n} \otimes M$ 单射。
 
-**第二步（化到自由模的子模）**：取满射 $R^{n} \twoheadrightarrow M$，令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \to K \to R^{n} \to M \to 0$。
+**第二步（化到自由模的子模）**：取满射 $R^{n} \twoheadrightarrow M_{1}$（$M_{1}$ 是 $M$ 的有限生成子模），令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \to K \to R^{n} \to M_{1} \to 0$。
 
 把两个列各自张量后比较，「$K \otimes M \to R^{n} \otimes M$ 单」蕴含「$M_{1} \otimes M \to M \otimes M$ 单」（蛇引理）。
 
 于是只需证：对每个**有限生成**子模 $K \subseteq R^{n}$，$K \otimes M \to R^{n} \otimes M$ 单。
 
-**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \oplus R$，令 $K_{1} := K \cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则有短正合列
+**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \oplus R$，令 $K_{1} := K \cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想）。⚠️ $K_{1}$ **未必有限生成**（$K$ 有限生成不保证交子模有限生成 —— 非 Noether 环上有反例），所以归纳假设不能直接用在 $K_{1}$ 上；要么先对 $K_{1}$ 再作一次有限生成化，要么**限定 $R$ 是 Noether 环**。在该前提下，有短正合列
 
 $$0 \to K_{1} \to K \to K_{2} \to 0, \qquad 0 \to R^{n-1} \to R^{n} \to R \to 0 .$$
 
 张量后得到 $3 \times 3$ 图：左右两列的竖直映射按归纳假设与 $n = 1$ 情形是单射，于是由蛇引理中间那一列也单射 ✓。∎
 
-⚠️ 「有限生成」不能换成「主理想」：只检验主理想 $(a)$ 上的单射性，得到的是**无挠**，比平坦弱 —— 反例 $(x, y) \subseteq k[x, y]$ 见 `prop.flat-domain-torsionfree`。
+⚠️ 「有限生成」不能换成「主理想」：只检验主理想 $(a)$ 上的单射性，得到的是**无挠**（且这条只在**整环**上成立：$R = \mathbb{Z}/4$、$M = R/(2)$ 时「非零因子作用单射」成立，但 $(2) \otimes M \to M$ 是零映射）—— 比平坦弱，反例 $(x, y) \subseteq k[x, y]$ 见 `prop.flat-domain-torsionfree`。
 
 ⭐ **实用价值**：判定某个 $R$-模平坦时，只需在有限生成理想上算一次除法。交换 Noether 环上一切理想都有限生成，于是判据直接变成「对一切理想」。
 
@@ -25602,7 +25602,7 @@ $$\operatorname{Tor}_{n}^{R}(M, N) \;\cong\; \operatorname{Tor}_{n}^{R}(N, M).$$
 $$E_{p,q}^{1} = H_{q}\bigl(P_{p}\otimes Q_{\bullet}\bigr) = \begin{cases} P_{p}\otimes N , & q = 0 \\ 0 , & q \ne 0 \end{cases}$$
 （因为 $Q_{\bullet} \to N$ 是消解、$P_{p}$ 平坦，张量后仍正合）✓。
 
-于是谱序列在 $E^{1}$ 页就只剩一行，退化，得 $H_{n}(T_{\bullet}) \cong H_{n}(P_{\bullet}\otimes N) = \operatorname{Tor}_{n}^{R}(M, N)$ ✓。
+于是谱序列在 $E^{1}$ 页就只剩一行 —— 但一行仍可能有非零的 $d^{1}$（如该行是 $\mathbb{Z} \xrightarrow{2} \mathbb{Z}$），所以要看**这一行的同调**（也就是 $E^{2}$），此时才退化，得 $H_{n}(T_{\bullet}) \cong H_{n}(P_{\bullet}\otimes N) = \operatorname{Tor}_{n}^{R}(M, N)$ ✓。
 再按**列**过滤（交换环上 $P\otimes Q \cong Q\otimes P$，双复形转置）：同一步计算给出 $H_{n}(T_{\bullet}) \cong H_{n}(Q_{\bullet}\otimes M) = \operatorname{Tor}_{n}^{R}(N, M)$ ✓。
 
 同一个 $H_{n}(T_{\bullet})$ 被算出两次，故两者同构 ✓。
@@ -25611,9 +25611,9 @@ $$E_{p,q}^{1} = H_{q}\bigl(P_{p}\otimes Q_{\bullet}\bigr) = \begin{cases} P_{p}\
 
 ⚠️ **「交换」不能省**：非交换时 $M\otimes_{R} N$ 只在 $M$ 右、$N$ 左时有定义，$N\otimes_{R} M$ 一般**根本没有定义**。
 
-错的方向是「$\operatorname{Tor}_{n}^{R}(M,N) \cong \operatorname{Tor}_{n}^{R^{\mathrm{op}}}(N,M)$」这种带对偶环的写法。
+**换序必须同时换到反环**：$\operatorname{Tor}_{n}^{R}(M,N) \cong \operatorname{Tor}_{n}^{R^{\mathrm{op}}}(N,M)$（把右 $R$-模的消解看成左 $R^{\mathrm{op}}$-模的消解，逐项交换即得）—— 这条是**对的**；错的是**不带 $R^{\mathrm{op}}$** 的写法。
 
-⭐ 这条的实际用处：**计算时可以任选一边做消解**。例如算 $\operatorname{Tor}_{n}^{R}(R/I, N)$ 时，通常用 $R/I$ 的两项消解（$0 \to I \to R \to R/I \to 0$）更省事 —— 有了对称性就知道这等价于对 $N$ 取消解。
+⭐ 这条的实际用处：**计算时可以任选一边做消解**。例如算 $\operatorname{Tor}_{n}^{R}(R/I, N)$ 时，通常用 $R/I$ 的两项消解（$0 \to I \to R \to R/I \to 0$）更省事 —— 但这**要求 $I$ 投射（或至少平坦）**，否则这两项复形算不对高次 Tor：$R = k[\varepsilon]/\varepsilon^{2}$、$I = (\varepsilon)$、$N = k$ 时 $\operatorname{Tor}_{2}(k,k) = k$ 会被算成 $0$ —— 有了对称性就知道这等价于对 $N$ 取消解。
 
 参考：Rotman, An Introduction to Homological Algebra (2nd ed.), Ext 与 Tor 的部分 · Tor 在交换环上的对称性；Weibel, An Introduction to Homological Algebra, 关于 Tor 的对称性（symmetry）的部分
 
@@ -25641,12 +25641,12 @@ $$\operatorname{Tor}_{1}^{R}(F,\ M/M_{1}) \to F\otimes M_{1} \to F\otimes M \to 
 
 **三条里 (2)$\implies$(3) 是唯一要归纳的，(1)$\iff$(2) 只是定义**：
 
-- (1) $\iff$ (2)：**定义展开**（平坦 = $(-)\otimes F$ 正合 = $\operatorname{Tor}_{1}$ 恒消失）。
+- (1) $\iff$ (2)：**要用一次长正合列**（平坦 = $(-)\otimes F$ 正合；它与「$\operatorname{Tor}_{1}$ 恒消失」的等价由 $\operatorname{Tor}$ 的长正合列给出，不是纯定义展开）。
 - (2) $\implies$ (3)：**这一步要用“维数偏移”**：若 $\operatorname{Tor}_{1}(F, N) = 0$ 对一切 $N$，则取 $N$ 的短正合列，用长正合列归纳得 $\operatorname{Tor}_{n} = 0$。⚠️ 需要「长正合列」这一工具（`thm.long-exact` 的 Tor 版本）。
 - (3) $\implies$ (2)：**特例**（$n = 1$）。
 
 ⚠️ **与“投射”的对照**：投射 $\iff$ $\operatorname{Ext}^{n}(M,-) = 0$ 对所有 $n \ge 1$；平坦 $\iff$ $\operatorname{Tor}_{n}(-,N) = 0$ 对所有 $n \ge 1$。两者形状对称，但**平坦比投射弱**（投射 $\implies$ 平坦，反之不成立；反例：$\mathbb{Q}$ 在 $\mathbb{Z}$ 上平坦但不投射）。
-⚠️ $\operatorname{Tor}$ 对**两个变元**都可以算：本节用 $F$ 在左、$N$ 在右；换了顺序结果同构（$\operatorname{Tor}$ 平衡）。
+⚠️ $\operatorname{Tor}$ 对**两个变元**都可以算：本节用 $F$ 在左、$N$ 在右；换了顺序结果同构（$\operatorname{Tor}$ 平衡）—— 但非交换环上必须同时换到反环：$\operatorname{Tor}_{n}^{R}(M,N) \cong \operatorname{Tor}_{n}^{R^{\mathrm{op}}}(N,M)$（如 $R = M_{2}(k)$ 时，按原结构 $N$ 与 $M$ 根本不在同一侧）。
 
 
 **各方向用到的假设**（平坦的定义是张量正合，Tor 判据需要导出工具）：
@@ -25673,7 +25673,7 @@ $$\operatorname{Tor}_{1}^{\mathbb{Z}}\bigl(\mathbb{Q}/\mathbb{Z},\ A\bigr) \;\co
 
 其中 $A_{\mathrm{tors}}$ 是**挠子群**，即被某个正整数杀死的元素全体。更一般地，$R$ 是整环、$K$ 是分式域时，$\operatorname{Tor}_{1}^{R}(K/R, M) \cong M_{\mathrm{tors}}$。
 
-**证明（一条两项消解 + 一次长正合列）。** $\mathbb{Q}/\mathbb{Z}$ 有长度 $1$ 的自由消解
+**证明（一条两项消解 + 一次长正合列）。** $\mathbb{Q}/\mathbb{Z}$ 有长度 $1$ 的**平坦**消解（$\mathbb{Q}$ 不是自由 $\mathbb{Z}$-模 —— 非零可除群没有基）
 $$0 \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{Q}/\mathbb{Z} \to 0 ,$$
 （$\mathbb{Z} \hookrightarrow \mathbb{Q}$ 单、$\mathbb{Q} \twoheadrightarrow \mathbb{Q}/\mathbb{Z}$ 满，核恰好是 $\mathbb{Z}$）。张量 $A$ 取长正合列：
 $$\operatorname{Tor}_{1}^{\mathbb{Z}}(\mathbb{Q}, A) \to \operatorname{Tor}_{1}^{\mathbb{Z}}(\mathbb{Q}/\mathbb{Z}, A) \to \mathbb{Z}\otimes A \xrightarrow{\ \alpha\ } \mathbb{Q}\otimes A .$$
@@ -25690,7 +25690,7 @@ $$a\otimes 1 = a\otimes\Bigl(k\cdot\frac{1}{k}\Bigr) = (ka)\otimes\frac{1}{k} = 
 
 ⭐ **读法**：$\mathbb{Q}/\mathbb{Z}$ 是「所有有限阶循环群 $\mathbb{Z}/k$ 装在一起的容器」，而 $\operatorname{Tor}_{1}(\mathbb{Q}/\mathbb{Z}, A)$ 恰好把 $A$ 里所有有限阶的元素挑出来。
 
-同一条现象在 $\operatorname{Hom}$ 那一侧对应 $\operatorname{Hom}(\mathbb{Q}/\mathbb{Z}, A) = A_{\mathrm{tors}}$（对偶的那一半，Pontryagin 对偶里到处在用）。
+⚠️ 别把它搬到 $\operatorname{Hom}$ 那一侧：$\operatorname{Hom}(\mathbb{Q}/\mathbb{Z}, A)$ **一般不是** $A_{\mathrm{tors}}$（$A = \mathbb{Z}/2$ 时它为零 —— 任意 $h$ 满足 $h(x) = 2h(x/2) = 0$）。对偶那一侧的正确对应是 $\operatorname{Hom}(\mathbb{Z}/n, A) \cong A[n]$。
 
 📌 **一个健康检查**：若 $A$ 无挠（例如 $A = \mathbb{Z}$、$\mathbb{Q}$、$\mathbb{R}$），结论说 $\operatorname{Tor}_{1}^{\mathbb{Z}}(\mathbb{Q}/\mathbb{Z}, A) = 0$ —— 与「无挠 $\iff$ 平坦（PID 上）」一致 ✓。
 
@@ -25735,7 +25735,7 @@ Lazard 的补救办法是**把有限呈现模也收进系统**：对每个有限
 #### 张量函子的刻画　`thm.watts`
 *定理*　保直和的右正合函子都同构于张量函子
 
-设 $R$ 是**交换环**，$F : R\text{-}\mathbf{Mod} \to R\text{-}\mathbf{Mod}$ 是**右正合**的加性函子，且 $F$ 与**任意直和**交换（$F\bigl(\bigoplus_{i} M_{i}\bigr) \cong \bigoplus_{i} F(M_{i})$，自然）。
+设 $R$ 是**交换环**，$F : R\text{-}\mathbf{Mod} \to R\text{-}\mathbf{Mod}$ 是**右正合**的 **$R$-线性**加性函子（只有加性不够：复共轭扭曲 $F(M)$，标量作用取 $a \cdot m = \bar a m$，它加性、正合、保直和，却不 $R$-线性，结论也不成立），且 $F$ 与**任意直和**交换（$F\bigl(\bigoplus_{i} M_{i}\bigr) \cong \bigoplus_{i} F(M_{i})$，自然）。
 
 则存在自然同构
 

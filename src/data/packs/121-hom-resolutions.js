@@ -687,11 +687,11 @@ window.MG = window.MG || {};
         [
           '**证明（双复形的两种算法）。** 取 $M, N$ 各自的投射消解 $P_{\\bullet} \\twoheadrightarrow M$、$Q_{\\bullet} \\twoheadrightarrow N$，作双复形 $P \\otimes Q$（$p$ 次行为 $P_{p}\\otimes Q_{q}$），取全复形 $T_{\\bullet}$。\n\n对它按**行**过滤：',
           '$$E_{p,q}^{1} = H_{q}\\bigl(P_{p}\\otimes Q_{\\bullet}\\bigr) = \\begin{cases} P_{p}\\otimes N , & q = 0 \\\\ 0 , & q \\ne 0 \\end{cases}$$',
-          '（因为 $Q_{\\bullet} \\to N$ 是消解、$P_{p}$ 平坦，张量后仍正合）✓。\n\n于是谱序列在 $E^{1}$ 页就只剩一行，退化，得 $H_{n}(T_{\\bullet}) \\cong H_{n}(P_{\\bullet}\\otimes N) = \\operatorname{Tor}_{n}^{R}(M, N)$ ✓。',
+          '（因为 $Q_{\\bullet} \\to N$ 是消解、$P_{p}$ 平坦，张量后仍正合）✓。\n\n于是谱序列在 $E^{1}$ 页就只剩一行 —— 但一行仍可能有非零的 $d^{1}$（如该行是 $\\mathbb{Z} \\xrightarrow{2} \\mathbb{Z}$），所以要看**这一行的同调**（也就是 $E^{2}$），此时才退化，得 $H_{n}(T_{\\bullet}) \\cong H_{n}(P_{\\bullet}\\otimes N) = \\operatorname{Tor}_{n}^{R}(M, N)$ ✓。',
           '再按**列**过滤（交换环上 $P\\otimes Q \\cong Q\\otimes P$，双复形转置）：同一步计算给出 $H_{n}(T_{\\bullet}) \\cong H_{n}(Q_{\\bullet}\\otimes M) = \\operatorname{Tor}_{n}^{R}(N, M)$ ✓。\n\n同一个 $H_{n}(T_{\\bullet})$ 被算出两次，故两者同构 ✓。\n\n∎'
         ].join('\n'),
-        '⚠️ **「交换」不能省**：非交换时 $M\\otimes_{R} N$ 只在 $M$ 右、$N$ 左时有定义，$N\\otimes_{R} M$ 一般**根本没有定义**。\n\n错的方向是「$\\operatorname{Tor}_{n}^{R}(M,N) \\cong \\operatorname{Tor}_{n}^{R^{\\mathrm{op}}}(N,M)$」这种带对偶环的写法。',
-        '⭐ 这条的实际用处：**计算时可以任选一边做消解**。例如算 $\\operatorname{Tor}_{n}^{R}(R/I, N)$ 时，通常用 $R/I$ 的两项消解（$0 \\to I \\to R \\to R/I \\to 0$）更省事 —— 有了对称性就知道这等价于对 $N$ 取消解。'
+        '⚠️ **「交换」不能省**：非交换时 $M\\otimes_{R} N$ 只在 $M$ 右、$N$ 左时有定义，$N\\otimes_{R} M$ 一般**根本没有定义**。\n\n**换序必须同时换到反环**：$\\operatorname{Tor}_{n}^{R}(M,N) \\cong \\operatorname{Tor}_{n}^{R^{\\mathrm{op}}}(N,M)$（把右 $R$-模的消解看成左 $R^{\\mathrm{op}}$-模的消解，逐项交换即得）—— 这条是**对的**；错的是**不带 $R^{\\mathrm{op}}$** 的写法。',
+        '⭐ 这条的实际用处：**计算时可以任选一边做消解**。例如算 $\\operatorname{Tor}_{n}^{R}(R/I, N)$ 时，通常用 $R/I$ 的两项消解（$0 \\to I \\to R \\to R/I \\to 0$）更省事 —— 但这**要求 $I$ 投射（或至少平坦）**，否则这两项复形算不对高次 Tor：$R = k[\\varepsilon]/\\varepsilon^{2}$、$I = (\\varepsilon)$、$N = k$ 时 $\\operatorname{Tor}_{2}(k,k) = k$ 会被算成 $0$ —— 有了对称性就知道这等价于对 $N$ 取消解。'
       ].join('\n\n'),
       refs: [
         'Rotman, An Introduction to Homological Algebra (2nd ed.), Ext 与 Tor 的部分 · Tor 在交换环上的对称性',
@@ -726,12 +726,12 @@ window.MG = window.MG || {};
         ,
         '**三条里 (2)$\\implies$(3) 是唯一要归纳的，(1)$\\iff$(2) 只是定义**：\n' +
         '\n' +
-        '- (1) $\\iff$ (2)：**定义展开**（平坦 = $(-)\\otimes F$ 正合 = $\\operatorname{Tor}_{1}$ 恒消失）。\n' +
+        '- (1) $\\iff$ (2)：**要用一次长正合列**（平坦 = $(-)\\otimes F$ 正合；它与「$\\operatorname{Tor}_{1}$ 恒消失」的等价由 $\\operatorname{Tor}$ 的长正合列给出，不是纯定义展开）。\n' +
         '- (2) $\\implies$ (3)：**这一步要用“维数偏移”**：若 $\\operatorname{Tor}_{1}(F, N) = 0$ 对一切 $N$，则取 $N$ 的短正合列，用长正合列归纳得 $\\operatorname{Tor}_{n} = 0$。⚠️ 需要「长正合列」这一工具（`thm.long-exact` 的 Tor 版本）。\n' +
         '- (3) $\\implies$ (2)：**特例**（$n = 1$）。\n' +
         '\n' +
         '⚠️ **与“投射”的对照**：投射 $\\iff$ $\\operatorname{Ext}^{n}(M,-) = 0$ 对所有 $n \\ge 1$；平坦 $\\iff$ $\\operatorname{Tor}_{n}(-,N) = 0$ 对所有 $n \\ge 1$。两者形状对称，但**平坦比投射弱**（投射 $\\implies$ 平坦，反之不成立；反例：$\\mathbb{Q}$ 在 $\\mathbb{Z}$ 上平坦但不投射）。\n' +
-        '⚠️ $\\operatorname{Tor}$ 对**两个变元**都可以算：本节用 $F$ 在左、$N$ 在右；换了顺序结果同构（$\\operatorname{Tor}$ 平衡）。\n',
+        '⚠️ $\\operatorname{Tor}$ 对**两个变元**都可以算：本节用 $F$ 在左、$N$ 在右；换了顺序结果同构（$\\operatorname{Tor}$ 平衡）—— 但非交换环上必须同时换到反环：$\\operatorname{Tor}_{n}^{R}(M,N) \\cong \\operatorname{Tor}_{n}^{R^{\\mathrm{op}}}(N,M)$（如 $R = M_{2}(k)$ 时，按原结构 $N$ 与 $M$ 根本不在同一侧）。\n',
         ,
         '**各方向用到的假设**（平坦的定义是张量正合，Tor 判据需要导出工具）：\n' +
         '- 平坦 $\\iff$ $F\\otimes_R-$ 正合才是定义展开；(1) $\\implies$ (3) 还要用左模 $N$ 的投射消解计算 Tor，及正合函子保持消解的正合性。\n' +
@@ -765,7 +765,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         [
-          '**证明（一条两项消解 + 一次长正合列）。** $\\mathbb{Q}/\\mathbb{Z}$ 有长度 $1$ 的自由消解',
+          '**证明（一条两项消解 + 一次长正合列）。** $\\mathbb{Q}/\\mathbb{Z}$ 有长度 $1$ 的**平坦**消解（$\\mathbb{Q}$ 不是自由 $\\mathbb{Z}$-模 —— 非零可除群没有基）',
           '$$0 \\to \\mathbb{Z} \\to \\mathbb{Q} \\to \\mathbb{Q}/\\mathbb{Z} \\to 0 ,$$',
           '（$\\mathbb{Z} \\hookrightarrow \\mathbb{Q}$ 单、$\\mathbb{Q} \\twoheadrightarrow \\mathbb{Q}/\\mathbb{Z}$ 满，核恰好是 $\\mathbb{Z}$）。张量 $A$ 取长正合列：',
           '$$\\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}, A) \\to \\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}/\\mathbb{Z}, A) \\to \\mathbb{Z}\\otimes A \\xrightarrow{\\ \\alpha\\ } \\mathbb{Q}\\otimes A .$$',
@@ -774,7 +774,7 @@ window.MG = window.MG || {};
           '$$a\\otimes 1 = a\\otimes\\Bigl(k\\cdot\\frac{1}{k}\\Bigr) = (ka)\\otimes\\frac{1}{k} = 0 ;$$',
           '反之若 $a\\otimes 1 = 0$，则由张量积的显式构造（或「$\\mathbb{Q}$ 上有限个分母的通分」）存在 $k \\ge 1$ 使 $ka = 0$ ✓。\n\n于是 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A) \\cong A_{\\mathrm{tors}}$ ✓。\n\n∎'
         ].join('\n'),
-        '⭐ **读法**：$\\mathbb{Q}/\\mathbb{Z}$ 是「所有有限阶循环群 $\\mathbb{Z}/k$ 装在一起的容器」，而 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A)$ 恰好把 $A$ 里所有有限阶的元素挑出来。\n\n同一条现象在 $\\operatorname{Hom}$ 那一侧对应 $\\operatorname{Hom}(\\mathbb{Q}/\\mathbb{Z}, A) = A_{\\mathrm{tors}}$（对偶的那一半，Pontryagin 对偶里到处在用）。',
+        '⭐ **读法**：$\\mathbb{Q}/\\mathbb{Z}$ 是「所有有限阶循环群 $\\mathbb{Z}/k$ 装在一起的容器」，而 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A)$ 恰好把 $A$ 里所有有限阶的元素挑出来。\n\n⚠️ 别把它搬到 $\\operatorname{Hom}$ 那一侧：$\\operatorname{Hom}(\\mathbb{Q}/\\mathbb{Z}, A)$ **一般不是** $A_{\\mathrm{tors}}$（$A = \\mathbb{Z}/2$ 时它为零 —— 任意 $h$ 满足 $h(x) = 2h(x/2) = 0$）。对偶那一侧的正确对应是 $\\operatorname{Hom}(\\mathbb{Z}/n, A) \\cong A[n]$。',
         '📌 **一个健康检查**：若 $A$ 无挠（例如 $A = \\mathbb{Z}$、$\\mathbb{Q}$、$\\mathbb{R}$），结论说 $\\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}/\\mathbb{Z}, A) = 0$ —— 与「无挠 $\\iff$ 平坦（PID 上）」一致 ✓。',
         '⚠️ 这里 **$\\operatorname{Tor}_{1}$ 而不是 $\\operatorname{Tor}_{0}$**：$\\operatorname{Tor}_{0}(\\mathbb{Q}/\\mathbb{Z}, A) = (\\mathbb{Q}/\\mathbb{Z})\\otimes A$，那是另一个东西（一般非零、且和挠元无关）。'
       ].join('\n\n'),
@@ -827,7 +827,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['定理', 'Watts', '右正合', '张量函子', '直和'],
       statement: [
-        '设 $R$ 是**交换环**，$F : R\\text{-}\\mathbf{Mod} \\to R\\text{-}\\mathbf{Mod}$ 是**右正合**的加性函子，且 $F$ 与**任意直和**交换（$F\\bigl(\\bigoplus_{i} M_{i}\\bigr) \\cong \\bigoplus_{i} F(M_{i})$，自然）。\n\n则存在自然同构',
+        '设 $R$ 是**交换环**，$F : R\\text{-}\\mathbf{Mod} \\to R\\text{-}\\mathbf{Mod}$ 是**右正合**的 **$R$-线性**加性函子（只有加性不够：复共轭扭曲 $F(M)$，标量作用取 $a \\cdot m = \\bar a m$，它加性、正合、保直和，却不 $R$-线性，结论也不成立），且 $F$ 与**任意直和**交换（$F\\bigl(\\bigoplus_{i} M_{i}\\bigr) \\cong \\bigoplus_{i} F(M_{i})$，自然）。\n\n则存在自然同构',
         '',
         '$$F(M) \\;\\cong\\; M \\otimes_{R} F(R) ,$$',
         '',

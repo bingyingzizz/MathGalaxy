@@ -112,7 +112,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{R}\\bigl(M \\otimes_{R} N,\\ P\\bigr) \\;\\cong\\; \\operatorname{Hom}_{R}\\bigl(M,\\ \\operatorname{Hom}_{R}(N, P)\\bigr), \\qquad f \\longmapsto \\bigl(m \\mapsto (n \\mapsto f(m \\otimes n))\\bigr),$$',
         '',
-        '即函子 $(-) \\otimes_{R} N$ 是 $\\operatorname{Hom}_{R}(N, -)$ 的**左伴随**：',
+        '即函子 $(-) \\otimes_{R} N$（值域是 $\\mathbf{Ab}$）的左伴随是 $\\operatorname{Hom}_{\\mathbb{Z}}(N, -)$（带 $R$-作用）；下面那个 $R$-线性版本要求 $N$ 是 $(R,R)$-**双模**：',
         '',
         '$$(-) \\otimes_{R} N \\;\\dashv\\; \\operatorname{Hom}_{R}(N, -).$$'
       ].join('\n'),
@@ -284,7 +284,7 @@ window.MG = window.MG || {};
         '**证明（伴随路线，最快）**：由 `thm.hom-tensor-adjunction-mod`，$(-) \\otimes_{R} N \\dashv \\operatorname{Hom}_{R}(N, -)$。\n\n左伴随保所有余极限，而余核是两项图的余极限，故 $(-) \\otimes N$ 保余核 —— 对加法函子来说「保余核」正是「把短正合列送成 $M_{1} \\otimes N \\to M \\otimes N \\to M_{2} \\otimes N \\to 0$ 正合」✓。',
         '**直接算也行**：$g$ 满蕴含 $g \\otimes 1$ 满（每个 $m_{2} \\otimes n$ 有原像 $m \\otimes n$）；核：由 $\\ker g = \\operatorname{im} f$，满足 $g(m) = 0$ 的 $m$ 可写 $f(m_{1})$，于是纯张量 $m \\otimes n = (f \\otimes 1)(m_{1} \\otimes n)$，一般元素按双加性拆开即得 $\\ker(g \\otimes 1) \\subseteq \\operatorname{im}(f \\otimes 1)$；\n\n反向由 $g f = 0$ ✓。',
         '⚠️ **左端会丢**：$0 \\to \\mathbb{Z} \\xrightarrow{\\;2\\;} \\mathbb{Z} \\to \\mathbb{Z}/2 \\to 0$ 张量 $N = \\mathbb{Z}/2$ 之后，$\\mathbb{Z} \\otimes \\mathbb{Z}/2 \\xrightarrow{\\;2\\;} \\mathbb{Z} \\otimes \\mathbb{Z}/2$ 是零映射，不再单射。',
-        '⭐ 于是「右正合」是白送的、**左正合才是性质**，而那个性质的名字就叫平坦。丢掉的左端不是凭空消失：它是 $\\operatorname{Tor}_{1}^{R}(M_{2}, N)$（见 `prop.flat-equivalences`）。'
+        '⭐ 于是「右正合」是白送的、**左正合才是性质**，而那个性质的名字就叫平坦。丢掉的左端不是凭空消失：它是连接映射 $\\operatorname{Tor}_{1}^{R}(M_{2}, N) \\to M_{1} \\otimes N$ 的**像**（不能直接把「丢掉的核」等同于 $\\operatorname{Tor}_{1}$：分裂列 $0 \\to \\mathbb{Z}/2 \\to (\\mathbb{Z}/2)^{2} \\to \\mathbb{Z}/2 \\to 0$ 张量后仍分裂、核为零，而 $\\operatorname{Tor}_{1}(\\mathbb{Z}/2, \\mathbb{Z}/2) = \\mathbb{Z}/2$）。'
       ].join('\n\n'),
       refs: [
         'Cartan–Eilenberg, Homological Algebra, Chapter II, right exactness of the tensor product',
@@ -441,12 +441,12 @@ window.MG = window.MG || {};
       notes: [
         '**为什么这是强化**：平坦的定义要对**一切**单射检验；`prop.flat-equivalences` 第 4 条已经把它压到「理想」；Lambek 再压到「**有限生成**理想」—— 后者常常是可数的一批，能逐个算。',
         '**证明（反方向，三步）**：',
-        '**第一步（化到有限生成）**：$M$ 是它的有限生成子模的滤过余极限，$(-)\\otimes N$ 保滤过余极限，而单射在滤过余极限下封闭，故只需对有限生成的 $M$ 验证。',
-        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M$，令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \\to K \\to R^{n} \\to M \\to 0$。\n\n把两个列各自张量后比较，「$K \\otimes M \\to R^{n} \\otimes M$ 单」蕴含「$M_{1} \\otimes M \\to M \\otimes M$ 单」（蛇引理）。\n\n于是只需证：对每个**有限生成**子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
-        '**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} := K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则有短正合列',
+        '**第一步（把**检验对象**有限生成化）**：待判的 $M$ **固定不动**。不能靠「$M$ 是有限生成子模的滤过余极限」把 $M$ 缩成有限生成 —— 有限生成性不传给子模（$R = k[x,y]$ 平坦，但理想 $(x,y)$ 不平坦）。真正要缩的是待验的映射：只需对**有限生成**子模 $K \\subseteq R^{n}$ 验证 $K \\otimes M \\to R^{n} \\otimes M$ 单射。',
+        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M_{1}$（$M_{1}$ 是 $M$ 的有限生成子模），令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \\to K \\to R^{n} \\to M_{1} \\to 0$。\n\n把两个列各自张量后比较，「$K \\otimes M \\to R^{n} \\otimes M$ 单」蕴含「$M_{1} \\otimes M \\to M \\otimes M$ 单」（蛇引理）。\n\n于是只需证：对每个**有限生成**子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
+        '**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} := K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想）。⚠️ $K_{1}$ **未必有限生成**（$K$ 有限生成不保证交子模有限生成 —— 非 Noether 环上有反例），所以归纳假设不能直接用在 $K_{1}$ 上；要么先对 $K_{1}$ 再作一次有限生成化，要么**限定 $R$ 是 Noether 环**。在该前提下，有短正合列',
         '$$0 \\to K_{1} \\to K \\to K_{2} \\to 0, \\qquad 0 \\to R^{n-1} \\to R^{n} \\to R \\to 0 .$$',
         '张量后得到 $3 \\times 3$ 图：左右两列的竖直映射按归纳假设与 $n = 1$ 情形是单射，于是由蛇引理中间那一列也单射 ✓。∎',
-        '⚠️ 「有限生成」不能换成「主理想」：只检验主理想 $(a)$ 上的单射性，得到的是**无挠**，比平坦弱 —— 反例 $(x, y) \\subseteq k[x, y]$ 见 `prop.flat-domain-torsionfree`。',
+        '⚠️ 「有限生成」不能换成「主理想」：只检验主理想 $(a)$ 上的单射性，得到的是**无挠**（且这条只在**整环**上成立：$R = \\mathbb{Z}/4$、$M = R/(2)$ 时「非零因子作用单射」成立，但 $(2) \\otimes M \\to M$ 是零映射）—— 比平坦弱，反例 $(x, y) \\subseteq k[x, y]$ 见 `prop.flat-domain-torsionfree`。',
         '⭐ **实用价值**：判定某个 $R$-模平坦时，只需在有限生成理想上算一次除法。交换 Noether 环上一切理想都有限生成，于是判据直接变成「对一切理想」。'
       ].join('\n\n'),
       refs: [
