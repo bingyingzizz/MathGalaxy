@@ -978,7 +978,7 @@
         syncReadShow();                      // 复选框跟着 state 走（可能在别处被改过）
         syncReadNote();                      // 「没能保存」那行也现算一次
         var tsel = document.getElementById('set-theme');
-        if (tsel) tsel.value = MG.theme.mode; // 下拉显示的是「用户选的」，不是解析后的 dark/light
+        if (tsel) tsel.value = (MG.theme && MG.theme.mode) || 'auto'; // 下拉显示的是「用户选的」，不是解析后的 dark/light
         if (settingsClose) settingsClose.focus();
       } else if (settingsEl.contains(document.activeElement)) {
         settingsBtn.focus();
@@ -1001,8 +1001,10 @@
         document.documentElement.dataset.theme = resolved;
         document.documentElement.dataset.themeMode = mode;
       } catch (e) {}
-      MG.theme.mode = mode;
-      MG.theme.applyScheme(resolved);
+      if (MG.theme) {
+        MG.theme.mode = mode;
+        if (MG.theme.applyScheme) MG.theme.applyScheme(resolved);
+      }
       if (persist) { try { localStorage.setItem(THEME_KEY, mode); } catch (e) {} }
       var sel = document.getElementById('set-theme');
       if (sel) sel.value = mode;
@@ -1021,7 +1023,7 @@
     }
     syncTheme();
     if (themeMQ) {
-      var onThemeMQ = function () { if (MG.theme.mode === 'auto') applyTheme('auto', false); };
+      var onThemeMQ = function () { if (MG.theme && MG.theme.mode === 'auto') applyTheme('auto', false); };
       if (themeMQ.addEventListener) themeMQ.addEventListener('change', onThemeMQ);
       else if (themeMQ.addListener) themeMQ.addListener(onThemeMQ);
     }

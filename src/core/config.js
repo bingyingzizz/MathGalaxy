@@ -614,7 +614,7 @@
         if (mode === 'light' || mode === 'dark' || mode === 'auto') MG.theme.mode = mode;
       }
     } catch (e) { /* 忽略 */ }
-    MG.theme.applyScheme(resolved);
+    if (MG.theme && MG.theme.applyScheme) MG.theme.applyScheme(resolved);
   })();
 
   /** 取节点类型样式（未知类型回落到 definition）
