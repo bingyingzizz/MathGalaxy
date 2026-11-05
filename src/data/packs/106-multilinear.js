@@ -31,9 +31,9 @@ window.MG = window.MG || {};
         '',
         '$$B(v + cv\', w) = B(v, w) + c\\,B(v\', w), \\qquad B(v, w + cw\') = B(v, w) + c\\,B(v, w\')$$',
         '',
-        '$V = W$、$U = K$ 时叫 $V$ 上的**双线性型**。记全体为 $\\operatorname{Bil}(V, W; U)$，它按逐点运算构成 $K$-向量空间。',
+        '$V = W$、$U = K$ 时叫 $V$ 上的**双线性型**。记全体为 $\\operatorname{Bil}(V, W; U)$，按逐点运算构成 $K$-向量空间。',
         '',
-        '特例：内积（正定对称）、辛形式（非退化交错）、二次型的极化（对称）都是双线性型。'
+        '特例：**实**内积（正定对称）、辛形式（非退化交错）、二次型的极化（对称）都是双线性型。⚠ **复**内积不是双线性型，而是 **Hermite 半双线性**（如 $h(i,1)=-i$）。'
       ].join('\n'),
       notes: '⭐ 双线性「比线性弱」：$B$ 不是 $V \\times W \\to U$ 的线性映射（$V \\times W$ 上的线性要求 $B(v + v\', w + w\') = B(v,w) + B(v\',w\')$，一般不对）。\n\n这正是张量积要解决的问题 —— **把双线性「翻译」成线性**。\n\n⭐ 固定一组基后，$\\operatorname{Bil}(V, W; K) \\cong M_{m \\times n}(K)$（取 $B(e_i, f_j)$），与「矩阵就是双线性型的系数」一致。\n\n⭐ $\\operatorname{Bil}(V, W; U) \\cong \\operatorname{Hom}(V \\otimes W, U)$ —— 这就是万有性质那一条。',
       refs: ['Lang, Algebra, Ch. XVI', 'Roman, Advanced Linear Algebra, Ch. 14']
@@ -155,7 +155,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['定义', '线性代数', '张量'],
       statement: [
-        '与外幂平行地，对称幂定义为 $V^{\\otimes k}$ 商掉由 $v \\otimes w - w \\otimes v$ 张成的子空间，记像为 $v \\cdot w$（交换）；再把各次直和起来得**对称代数**',
+        '与外幂平行地：把**张量代数** $T^{\\bullet}V$ 商掉由 $v \\otimes w - w \\otimes v$ 生成的**齐次双边理想**，它的**第 $k$ 次部分**就叫**对称幂** $\\operatorname{Sym}^{k}V$（记像为 $v \\cdot w$，交换）；各次直和起来得**对称代数**',
         '',
         '$$\\operatorname{Sym}^{\\bullet} V := \\bigoplus_{k \\ge 0} \\operatorname{Sym}^{k} V$$',
         '',

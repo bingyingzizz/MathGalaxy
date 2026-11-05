@@ -75,7 +75,7 @@ window.MG = window.MG || {};
         '**为什么是 $w_{1}$ 而不是别的**：约化 $\\mathrm{GL}(k) \\rightsquigarrow \\mathrm{SO}(k)$ 等价于「转移函数（`def.transition-function`）可以全部取在 $\\mathrm{SO}(k)$ 里」，即行列式处处为正 —— 这只给 $\\mathrm{GL}^{+}(k)$；要再配纤维度量才能约化到 $\\mathrm{SO}(k)$（两步不等价：秩 $1$ 平凡丛取转移函数 $(2)$ 行列式为正但不在 $\\mathrm{SO}(1)$ 里）。而行列式取值 $\\pm 1$ 给出一个 $\\mathbb{Z}/2$-值上闭链 —— 那正是 $w_{1}$：它记的是「绕一圈回来符号是否翻转」。所以 $w_{1} = 0$ 就是「能统一符号」。',
         '⭐ **同一件事的三种说法**：$w_{1} = 0$ $\\iff$ $\\Lambda^{k}E^{*}$ 有处处非零的截面（$E = TB$ 时它正是体积形式，`def.orientable-manifold`）$\\iff$ 定向双重覆叠 $\\tilde B \\to B$ 分裂（有截面）。三者互为翻译，但**计算上只有第一条方便** —— 它就是这条命题的价值。',
         '⚠️ **$w_{1}$ 不为零的例子要能举**：$\\mathbb{RP}^{2}$ 的切丛 $w_{1} \\ne 0$（不可定向），$\\mathbb{RP}^{2}$ 上的 tautological 线丛 $w_{1} \\ne 0$。而 $S^{2}$、环面都可定向。',
-        '⚠️ **别把它推成「$w_{2} = 0 \\iff$ Spin 结构」**：$w_{2} = 0$ 只是 Spin 结构存在的**先决条件**，还要一个整系数（$\\beta w_{2}$ 型）条件配合。这是「障碍的层级」问题，不是一条等价就能解决的。'
+        '⚠️ **Spin 与 Spin$^{c}$ 要分开**：丛**已定向**后，**Spin 结构 $\\iff w_{2} = 0$**（这是充要条件，不是先决条件）；**Spin$^{c}$ 结构**才多一条整系数条件 —— 障碍是 $W_{3} := \\beta w_{2}$（整系数 Bockstein），即 Spin$^{c} \\iff W_{3} = 0$。'
       ].join('\n\n'),
       refs: ['Milnor–Stasheff, Characteristic Classes · 第一 Stiefel–Whitney 类与定向', 'Bott–Tu, Differential Forms in Algebraic Topology']
     },
@@ -125,7 +125,7 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', 'Pontryagin 类', '示性类', '复化'],
       statement: [
-        '**在做什么**：实丛本身没有「$\\mathbb{Z}$ 系数」的示性类（只有 $\\mathbb{Z}/2$ 的 $w_{i}$ 与可定向时的 $e$）。取复化 $E \\otimes \\mathbb{C}$ 之后就有整系数陈类了 —— **取其中偶次的那几个**，就是 Pontryagin 类。',
+        '**在做什么**：实丛一般没有「$\\mathbb{Z}$ 系数」的示性类 —— 例外是**可定向偶秩的顶维欧拉类** $e$（整系数、只在顶维）；$w_{i}$ 是 $\\mathbb{Z}/2$ 系数的，$p_{i}$ 要**复化之后**才取。取复化 $E \\otimes \\mathbb{C}$ 之后就有整系数陈类了 —— **取其中偶次的那几个**，就是 Pontryagin 类。',
         '',
         '设 $E \\to B$ 是秩 $k$ 的实向量丛。第 $i$ 个 **Pontryagin 类**定义为',
         '',
