@@ -35,7 +35,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：一个连续函数，只要沿每个闭三角形（等价地每个小矩形）的积分都是零，它就是全纯的 —— 这是 Cauchy 定理的逆命题。',
         '',
-        '设 $\\Omega \\subset \\mathbb{C}$ 是区域，$f: \\Omega \\to \\mathbb{C}$ **连续**。若对每个闭三角形 $T \\subset \\Omega$ 都有',
+        '设 $\\Omega \\subset \\mathbb{C}$ 是**开集**（不需要连通 —— 全纯性逐点检验，在每点的小圆盘上做 Morera 即可），$f: \\Omega \\to \\mathbb{C}$ **连续**。若对每个闭三角形 $T \\subset \\Omega$ 都有',
         '',
         '$$\\oint_{\\partial T} f(\\zeta)\\,\\mathrm{d}\\zeta = 0,$$',
         '',

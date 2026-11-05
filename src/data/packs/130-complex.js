@@ -221,7 +221,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int_{\\partial\\Omega} f(z)\\,\\mathrm{d}z = 2i \\iint_{\\Omega} \\frac{\\partial f}{\\partial \\bar z}(z)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$',
         '',
-        '特别地，若 $f$ 全纯**且 $f\'$ 连续**，则右端为零，即 $\\displaystyle\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = 0$。'
+        '特别地，若 $f$ 全纯（**不必再写「$f\'$ 连续」**：全纯函数的导数仍全纯、因而连续），则右端为零，即 $\\displaystyle\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = 0$。'
       ].join('\n'),
       notes: '⭐ 这就是 Green 公式的直接翻译。\n\nGreen 公式：$\\oint_{\\partial\\Omega}(P\\,\\mathrm{d}x + Q\\,\\mathrm{d}y) = \\iint_\\Omega (Q_x - P_y)\\,\\mathrm{d}x\\mathrm{d}y$。\n\n把积分拆成 $\\oint (u\\,\\mathrm{d}x - v\\,\\mathrm{d}y) + i\\oint (v\\,\\mathrm{d}x + u\\,\\mathrm{d}y)$，两次对上号得 $\\iint [-(u_y + v_x)] + i\\iint(u_x - v_y)$ —— 而 $2i f_{\\bar z}$ 逐项算出来正是 $-(u_y + v_x) + i(u_x - v_y)$。\n\n⭐ 它在分量上就是 CR 方程的**积分版**：全纯 $\\iff f_{\\bar z} = 0 \\implies$ 右端为零。\n\n⚠ 这条引理**不是免费的**：Green 公式要求 $P, Q$（从而 $f$）在闭包 $\\overline{\\Omega}$ 上 $C^1$。\n\n全纯只保证 $f$ 可微，**不保证 $f\'$ 连续** —— 这个缺口由 Goursat 的三角形分割补上。'
     },

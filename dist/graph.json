@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T06:48:25.218Z",
+  "generated": "2026-11-05T06:52:36.774Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -22470,7 +22470,7 @@
     "Green 公式",
     "Cauchy 定理"
    ],
-   "statement": "**白话**：沿闭曲线的复积分，可以换算成曲线内部面积上的一个二重积分，被积的正是 $\\partial f/\\partial \\bar z$ —— 于是「全纯 $\\implies$ 积分为零」变成了「被积函数是 $0$」。\n\n设 $\\Omega$ 是有界区域，边界 $\\partial\\Omega$ 是一条分段光滑的简单闭曲线、取正向（逆时针）。若 $f \\in C^1(\\overline{\\Omega})$，则\n\n$$\\int_{\\partial\\Omega} f(z)\\,\\mathrm{d}z = 2i \\iint_{\\Omega} \\frac{\\partial f}{\\partial \\bar z}(z)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$\n\n特别地，若 $f$ 全纯**且 $f'$ 连续**，则右端为零，即 $\\displaystyle\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = 0$。",
+   "statement": "**白话**：沿闭曲线的复积分，可以换算成曲线内部面积上的一个二重积分，被积的正是 $\\partial f/\\partial \\bar z$ —— 于是「全纯 $\\implies$ 积分为零」变成了「被积函数是 $0$」。\n\n设 $\\Omega$ 是有界区域，边界 $\\partial\\Omega$ 是一条分段光滑的简单闭曲线、取正向（逆时针）。若 $f \\in C^1(\\overline{\\Omega})$，则\n\n$$\\int_{\\partial\\Omega} f(z)\\,\\mathrm{d}z = 2i \\iint_{\\Omega} \\frac{\\partial f}{\\partial \\bar z}(z)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$\n\n特别地，若 $f$ 全纯（**不必再写「$f'$ 连续」**：全纯函数的导数仍全纯、因而连续），则右端为零，即 $\\displaystyle\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = 0$。",
    "notes": "⭐ 这就是 Green 公式的直接翻译。\n\nGreen 公式：$\\oint_{\\partial\\Omega}(P\\,\\mathrm{d}x + Q\\,\\mathrm{d}y) = \\iint_\\Omega (Q_x - P_y)\\,\\mathrm{d}x\\mathrm{d}y$。\n\n把积分拆成 $\\oint (u\\,\\mathrm{d}x - v\\,\\mathrm{d}y) + i\\oint (v\\,\\mathrm{d}x + u\\,\\mathrm{d}y)$，两次对上号得 $\\iint [-(u_y + v_x)] + i\\iint(u_x - v_y)$ —— 而 $2i f_{\\bar z}$ 逐项算出来正是 $-(u_y + v_x) + i(u_x - v_y)$。\n\n⭐ 它在分量上就是 CR 方程的**积分版**：全纯 $\\iff f_{\\bar z} = 0 \\implies$ 右端为零。\n\n⚠ 这条引理**不是免费的**：Green 公式要求 $P, Q$（从而 $f$）在闭包 $\\overline{\\Omega}$ 上 $C^1$。\n\n全纯只保证 $f$ 可微，**不保证 $f'$ 连续** —— 这个缺口由 Goursat 的三角形分割补上。",
    "refs": [
     "王晓光《复变函数》笔记，第 7 章 · Cauchy 定理",
@@ -24782,7 +24782,7 @@
     "Morera",
     "全纯判据"
    ],
-   "statement": "**白话**：一个连续函数，只要沿每个闭三角形（等价地每个小矩形）的积分都是零，它就是全纯的 —— 这是 Cauchy 定理的逆命题。\n\n设 $\\Omega \\subset \\mathbb{C}$ 是区域，$f: \\Omega \\to \\mathbb{C}$ **连续**。若对每个闭三角形 $T \\subset \\Omega$ 都有\n\n$$\\oint_{\\partial T} f(\\zeta)\\,\\mathrm{d}\\zeta = 0,$$\n\n则 $f$ 在 $\\Omega$ 上全纯；并且 $f'$ 也全纯，$f$ 在每点都有 Taylor 展开。\n\n把「闭三角形」换成「边平行于坐标轴的闭矩形」，结论不变（矩形沿一条对角线分成两个三角形）。",
+   "statement": "**白话**：一个连续函数，只要沿每个闭三角形（等价地每个小矩形）的积分都是零，它就是全纯的 —— 这是 Cauchy 定理的逆命题。\n\n设 $\\Omega \\subset \\mathbb{C}$ 是**开集**（不需要连通 —— 全纯性逐点检验，在每点的小圆盘上做 Morera 即可），$f: \\Omega \\to \\mathbb{C}$ **连续**。若对每个闭三角形 $T \\subset \\Omega$ 都有\n\n$$\\oint_{\\partial T} f(\\zeta)\\,\\mathrm{d}\\zeta = 0,$$\n\n则 $f$ 在 $\\Omega$ 上全纯；并且 $f'$ 也全纯，$f$ 在每点都有 Taylor 展开。\n\n把「闭三角形」换成「边平行于坐标轴的闭矩形」，结论不变（矩形沿一条对角线分成两个三角形）。",
    "notes": "⭐ 用途：这是**判定全纯**最省事的工具 —— 不需要先验可微，只要「连续」加「某个积分恒为零」。全纯性被换成了一条积分方程。\n\n⭐ 最常用的推论：**内闭一致收敛的全纯函数列，其极限必全纯**。因为 $\\partial T$ 是紧的，$\\oint_{\\partial T} f_k = 0$ 可以取极限得 $\\oint_{\\partial T} f = 0$，再喂给 Morera。Hurwitz 定理是这条的「零点版」。\n\n⚠ 连续性不能省。少了它，同样的积分条件推不出可微。\n\n⚠ 假设里的「所有三角形」也不能换成「所有圆周」：只知道圆周上的积分为零，不足以保证全纯。\n\n📌 与 Cauchy–Goursat 定理合起来：$f$ 连续时，「$f$ 全纯」与「$f$ 沿每个闭三角形积分恒为零」是**等价**的两句话。",
    "refs": [
     "王晓光《复变函数》· Cauchy 定理的逆命题",

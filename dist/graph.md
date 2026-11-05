@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T06:48:25.218Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T06:52:36.774Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -30440,7 +30440,7 @@ Cauchy 定理说的正是「全纯时它忽然只依赖端点，闭路上为 $0$
 
 $$\int_{\partial\Omega} f(z)\,\mathrm{d}z = 2i \iint_{\Omega} \frac{\partial f}{\partial \bar z}(z)\,\mathrm{d}x\,\mathrm{d}y.$$
 
-特别地，若 $f$ 全纯**且 $f'$ 连续**，则右端为零，即 $\displaystyle\oint_{\partial\Omega} f\,\mathrm{d}z = 0$。
+特别地，若 $f$ 全纯（**不必再写「$f'$ 连续」**：全纯函数的导数仍全纯、因而连续），则右端为零，即 $\displaystyle\oint_{\partial\Omega} f\,\mathrm{d}z = 0$。
 
 ⭐ 这就是 Green 公式的直接翻译。
 
@@ -31150,7 +31150,7 @@ $z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)
 
 **白话**：一个连续函数，只要沿每个闭三角形（等价地每个小矩形）的积分都是零，它就是全纯的 —— 这是 Cauchy 定理的逆命题。
 
-设 $\Omega \subset \mathbb{C}$ 是区域，$f: \Omega \to \mathbb{C}$ **连续**。若对每个闭三角形 $T \subset \Omega$ 都有
+设 $\Omega \subset \mathbb{C}$ 是**开集**（不需要连通 —— 全纯性逐点检验，在每点的小圆盘上做 Morera 即可），$f: \Omega \to \mathbb{C}$ **连续**。若对每个闭三角形 $T \subset \Omega$ 都有
 
 $$\oint_{\partial T} f(\zeta)\,\mathrm{d}\zeta = 0,$$
 
