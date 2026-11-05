@@ -69,7 +69,7 @@ window.MG = window.MG || {};
         '',
         '（结合律是从 $G$ 里继承的，不必重查。）'
       ].join('\n'),
-      notes: '两条合起来可写成一条：$a, b \\in H \\implies a b^{-1} \\in H$。\n\n任意多个子群的交仍是子群；但**并**一般不是 —— 这也是「由 $S$ 生成的子群 $\\langle S \\rangle$」要定义成「含 $S$ 的一切子群的交」的原因。',
+      notes: '两条合起来可写成一条：$H \\ne \\emptyset$ 且 $a, b \\in H \\implies a b^{-1} \\in H$（缺了 $H \\ne \\emptyset$ 会空真：$H = \\emptyset \\subseteq G$ 满足全称条件，却不是子群）。\n\n任意多个子群的交仍是子群；但**并**一般不是 —— 这也是「由 $S$ 生成的子群 $\\langle S \\rangle$」要定义成「含 $S$ 的一切子群的交」的原因。',
       refs: ['Lang, Algebra']
     },
 
