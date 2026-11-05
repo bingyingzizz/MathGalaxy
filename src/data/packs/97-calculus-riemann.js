@@ -53,11 +53,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [
-        '设 $f : [a, b] \\to \\mathbb{R}$ 有界，$P = \\{ x_0 < \\cdots < x_n \\}$ 是分割，并在每个小区间里各取一个**标记点** $\\xi_i \\in I_i$。**Riemann 和**是',
+        '设 $f : [a, b] \\to \\mathbb{R}$（**不要求有界**），$P = \\{ x_0 < \\cdots < x_n \\}$ 是分割，并在每个小区间里各取一个**标记点** $\\xi_i \\in I_i$。**Riemann 和**是',
         '',
         '$$S(f, P, \\xi) := \\sum_{i=1}^{n} f(\\xi_i)\\,\\Delta x_i$$',
         '',
-        '它依赖三样东西：$f$、分割 $P$、以及标记点 $\\xi_1, \\ldots, \\xi_n$ 的取法。'
+        '它依赖三样东西：$f$、分割 $P$、以及标记点 $\\xi_1, \\ldots, \\xi_n$ 的取法。\n\n⚠️ **有界性在这里用不上**：每个 $f(\\xi_i)$ 都是实数，有限和总有定义。有界性要到讨论「Riemann **可积**」时才需要 —— 那里的 Darboux 上下和才要 $\\sup/\\inf$ 有限。'
       ].join('\n'),
       notes: '⭐ 几何读法：把每一小段上的「高」取成 $f(\\xi_i)$，得到 $n$ 个矩形，$S$ 就是它们的面积之和。**标记点的取法**是这套理论里唯一的自由 —— 可积的定义之所以要「对任意取法都成立」，就是为了让这个自由消失。\n\n⚠ $f$ 必须有界：否则某个 $f(\\xi_i)$ 可以任意大，和没有意义。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 6']

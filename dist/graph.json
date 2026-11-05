@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T06:43:06.578Z",
+  "generated": "2026-11-05T06:45:06.446Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -33014,7 +33014,7 @@
     "正交矩阵",
     "等距"
    ],
-   "statement": "**在做什么**：把「保持长度与夹角」这件事写成矩阵条件。复情形叫**酉**，实情形叫**正交** —— 同一个条件在两种域上的两副面孔。\n\n设 $U \\in M_{n}(\\mathbb{C})$。称 $U$ 是**酉矩阵**，若\n\n$$U^{*}U = UU^{*} = I ,$$\n\n等价地 $U^{-1} = U^{*}$。实方阵 $Q \\in M_{n}(\\mathbb{R})$ 满足 $Q^{T}Q = I$ 时叫**正交矩阵**。\n\n**等价刻画**：以下三条等价 —— (i) $U$ 酉；(ii) $U$ 的**列**构成标准正交基；(iii) 对一切 $x, y$ 有 $\\langle Ux, Uy\\rangle = \\langle x, y\\rangle$。\n\n于是酉矩阵保持内积、从而保持范数（$\\lVert Ux\\rVert = \\lVert x\\rVert$）与距离；$\\lvert\\det U\\rvert = 1$。全体酉矩阵构成群 $U(n)$，正交矩阵构成 $O(n)$。",
+   "statement": "**在做什么**：把「保持长度与夹角」这件事写成矩阵条件。复情形叫**酉**，实情形叫**正交** —— 同一个条件在两种域上的两副面孔。\n\n设 $U \\in M_{n}(\\mathbb{C})$。称 $U$ 是**酉矩阵**，若\n\n$$U^{*}U = I ,$$\n\n⚠️ 有限阶时**只需这一个等式**：$U^{*}U = I$ 已说明 $U$ 单射，方阵单射即可逆，于是 $U^{*} = U^{-1}$，再右乘 $U$ 得 $UU^{*} = I$（反过来用 $UU^{*} = I$ 一样）。等价地 $U^{-1} = U^{*}$。实方阵 $Q \\in M_{n}(\\mathbb{R})$ 满足 $Q^{T}Q = I$ 时叫**正交矩阵**。\n\n**等价刻画**：以下三条等价 —— (i) $U$ 酉；(ii) $U$ 的**列**构成标准正交基；(iii) 对一切 $x, y$ 有 $\\langle Ux, Uy\\rangle = \\langle x, y\\rangle$。\n\n于是酉矩阵保持内积、从而保持范数（$\\lVert Ux\\rVert = \\lVert x\\rVert$）与距离；$\\lvert\\det U\\rvert = 1$。全体酉矩阵构成群 $U(n)$，正交矩阵构成 $O(n)$。",
    "notes": "**「酉」这个名字**：$U^{*}U = I$ 在实情形退化成正交（$\\perp$ 的意思），复数情形中文取「酉」（对应英文 unitary，源自拉丁语 unus「一」）。术语不重要，条件是同一个。\n\n**为什么列是标准正交基就够了**：$U^{*}U = I$ 的第 $(j,k)$ 项就是「第 $j$ 列与第 $k$ 列的内积 = $\\delta_{jk}$」。所以「酉」= 「把标准正交基送到标准正交基」，这是最省事的判据。\n\n**与 `def.isometry` 的关系**：酉矩阵正是「在标准正交基下、保内积的线性映射」的矩阵。⚠️ 保内积的算子（等距）与酉矩阵在标准正交基下才一一对应；换基之后矩阵不再酉，但算子仍保内积。\n\n⭐ **对数值的意义**：酉变换不放大误差（$\\lVert Ux\\rVert = \\lVert x\\rVert$），所以「酉相似」是最稳定的相似 —— 这也是 Schur 三角化与 SVD 都选酉变换的原因。",
    "refs": [
     "Axler, Linear Algebra Done Right, 「Operators on Inner Product Spaces」· 等距",
@@ -34531,7 +34531,7 @@
     "辛",
     "2-形式"
    ],
-   "statement": "**在做什么**：把辛向量空间「铺到流形上」。每一处切空间都带一个辛形式，而且要求这些形式**整体闭**（$d\\omega = 0$）—— 那一条微分条件就是整个辛几何的刚性来源。\n\n设 $M$ 是偶数维光滑流形。$M$ 上的**辛形式**是一个 2-形式 $\\omega \\in \\Omega^{2}(M)$，满足\n\n1. **闭**：$d\\omega = 0$；\n2. **非退化**：对每点 $p$，$\\omega_{p} : T_{p}M \\times T_{p}M \\to \\mathbb{R}$ 非退化（`def.symplectic-form` 的流形版）。\n\n称 $(M, \\omega)$ 为**辛流形**。由非退化性知 $\\dim M = 2n$（`thm.symplectic-normal-form` 逐点成立）。\n\n**标准例子**：$\\mathbb{R}^{2n} = T^{*}\\mathbb{R}^{n}$（余切丛）上取\n\n$$\\omega_{0} = \\sum_{i=1}^{n} dq_{i} \\wedge dp_{i} ,$$\n\n这就是经典力学的相空间。",
+   "statement": "**在做什么**：把辛向量空间「铺到流形上」。每一处切空间都带一个辛形式，而且要求这些形式**整体闭**（$d\\omega = 0$）—— 那一条微分条件就是整个辛几何的刚性来源。\n\n设 $M$ 是光滑流形（**不必先假设偶数维**，见下面的收尾）。$M$ 上的**辛形式**是一个 2-形式 $\\omega \\in \\Omega^{2}(M)$，满足\n\n1. **闭**：$d\\omega = 0$；\n2. **非退化**：对每点 $p$，$\\omega_{p} : T_{p}M \\times T_{p}M \\to \\mathbb{R}$ 非退化（`def.symplectic-form` 的流形版）。\n\n称 $(M, \\omega)$ 为**辛流形**。由非退化性知 $\\dim M = 2n$（`thm.symplectic-normal-form` 逐点成立）。\n\n**标准例子**：$\\mathbb{R}^{2n} = T^{*}\\mathbb{R}^{n}$（余切丛）上取\n\n$$\\omega_{0} = \\sum_{i=1}^{n} dq_{i} \\wedge dp_{i} ,$$\n\n这就是经典力学的相空间。",
    "notes": "⚠️ **「闭」这条不能去**：非退化 2-形式总是逐点存在（余切丛上就有），但「闭」是**整体**条件。去掉它得到的是「近辛流形」（almost symplectic），那门理论完全不同 —— 你甚至可以只要求「有非退化 2-形式」而不要求可积性。\n\n⭐ **为什么物理学需要它**：$\\omega$ 给出「Hamilton 流」（`def.hamiltonian-vector-field`），而 $d\\omega = 0$ 保证这些流**保持 $\\omega$**（Lie 导数 $\\mathcal{L}_{X_{H}}\\omega = 0$）—— 这就是 Liouville 定理（相体积守恒）的根子。\n\n⚠️ 辛流形**必可定向**（$\\omega^{n}$ 是无处为零的体积形式），但**不必**是 Kähler：Kähler 还要额外的复结构与相容度量。辛几何是比 Kähler 更宽的一层。\n\n⚠️ 紧辛流形有强限制：$[\\omega] \\in H^{2}(M)$ 非零（否则 $\\omega$ 是恰当的、与最大非退化性矛盾 —— 这是「辛流形不能是 $S^{2n}$，$n \\ge 2$」的原因）。本图不展开上同调论证。",
    "refs": [
     "Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛流形",
@@ -65319,7 +65319,7 @@
     "定义",
     "积分"
    ],
-   "statement": "设 $f : [a, b] \\to \\mathbb{R}$ 有界，$P = \\{ x_0 < \\cdots < x_n \\}$ 是分割，并在每个小区间里各取一个**标记点** $\\xi_i \\in I_i$。**Riemann 和**是\n\n$$S(f, P, \\xi) := \\sum_{i=1}^{n} f(\\xi_i)\\,\\Delta x_i$$\n\n它依赖三样东西：$f$、分割 $P$、以及标记点 $\\xi_1, \\ldots, \\xi_n$ 的取法。",
+   "statement": "设 $f : [a, b] \\to \\mathbb{R}$（**不要求有界**），$P = \\{ x_0 < \\cdots < x_n \\}$ 是分割，并在每个小区间里各取一个**标记点** $\\xi_i \\in I_i$。**Riemann 和**是\n\n$$S(f, P, \\xi) := \\sum_{i=1}^{n} f(\\xi_i)\\,\\Delta x_i$$\n\n它依赖三样东西：$f$、分割 $P$、以及标记点 $\\xi_1, \\ldots, \\xi_n$ 的取法。\n\n⚠️ **有界性在这里用不上**：每个 $f(\\xi_i)$ 都是实数，有限和总有定义。有界性要到讨论「Riemann **可积**」时才需要 —— 那里的 Darboux 上下和才要 $\\sup/\\inf$ 有限。",
    "notes": "⭐ 几何读法：把每一小段上的「高」取成 $f(\\xi_i)$，得到 $n$ 个矩形，$S$ 就是它们的面积之和。**标记点的取法**是这套理论里唯一的自由 —— 可积的定义之所以要「对任意取法都成立」，就是为了让这个自由消失。\n\n⚠ $f$ 必须有界：否则某个 $f(\\xi_i)$ 可以任意大，和没有意义。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 6"
