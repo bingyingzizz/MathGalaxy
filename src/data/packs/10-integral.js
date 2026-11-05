@@ -270,7 +270,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f : X \\to \\overline{\\mathbb{R}}$ 可测，记正部与负部',
         '',
-        '$$f^+ = \\max_{f, 0}, \\quad  f^- = \\max_{-f, 0}$$',
+        '$$f^{+} = \\max\\{f, 0\\}, \\qquad f^{-} = \\max\\{-f, 0\\}$$',
         '',
         '（两者都属于 $L^{+}$，且 $f = f^+ - f^-$、$|f| = f^+ + f^-$。）若 $\\int f^+$ 与 $\\int f^-$ 中**至少一个有限**，定义',
         '',
@@ -309,7 +309,7 @@ window.MG = window.MG || {};
         '**三条等价里“$\\int|f| < \\infty$”最好用，但它要求先有 $f^{\\pm}$**：\n' +
         '\n' +
         '- $f$ 可积 $\\iff$ $\\int f^{+} < \\infty$ 且 $\\int f^{-} < \\infty$：**这是定义**（把 $f$ 拆成正负部，各自是**非负**可测函数，用非负情形的积分）。\n' +
-        '- $\\iff$ $\\int \\lvert f\\rvert < \\infty$：**一步**（$\\lvert f\\rvert = f^{+} + f^{-}$），**要用非负积分的可加性**。⚠️ 反过来「$\\int f$ 有限」**不**推出可积 —— 若 $f^{+}$ 与 $f^{-}$ 都是 $+\\infty$，则 $\\int f$ 无定义（不是 $0$），这正是「可积」必须要求绝对可积的原因。\n' +
+        '- $\\iff$ $\\int \\lvert f\\rvert < \\infty$：**一步**（$\\lvert f\\rvert = f^{+} + f^{-}$），**要用非负积分的可加性**。⚠️ 「$\\int f$ 有限」与可积**不是**同一件事：$\\int f$ 若为**有限的实数**，则 $f^{\\pm}$ 都有限、$f$ 必可积；危险的是 $\\int f^{+} = \\int f^{-} = +\\infty$ 时 $\\int f$ **无定义**（不是 $0$）—— 那当然不算可积。这正是「可积」必须要求绝对可积的原因。\n' +
         '- $f$ **可测**且 $\\lvert f\\rvert \\le g$、$g$ 可积 $\\implies$ $f$ 可积：**这一步要单调性**（`prop.integral-order`）。\n' +
         '\n' +
         '⚠️ **必须的假设**：**$f$ 可测**（不可测函数谈不上积分）。与 **Riemann 可积**的差别：Riemann 要求有界 + 不连续点零测（`thm.riemann-lebesgue-criterion`），而 Lebesgue 可积**不要求有界**（$1/\\sqrt{x}$ 在 $(0,1]$ 上 Lebesgue 可积）；反之有界 Riemann 可积必 Lebesgue 可积（`prop.riemann-implies-lebesgue`）。\n'
@@ -354,7 +354,7 @@ window.MG = window.MG || {};
         '$$| \\int f d\\mu | \\le \\int |f| d\\mu$$'
       ].join('\n'),
       notes: [
-        ['**证明。** 若 $\\int f\\,\\mathrm{d}\\mu = 0$ 则两边都是 $0$。否则——','- **实值**：取 $\\alpha := \\operatorname{sgn}\\bigl(\\int f\\,\\mathrm{d}\\mu\\bigr) \\in \\{\\pm1\\}$，则 $\\alpha\\int f = \\bigl|\\int f\\bigr|$，于是','$$\\Bigl|\\int f\\,\\mathrm{d}\\mu\\Bigr| = \\alpha\\int f\\,\\mathrm{d}\\mu = \\int \\alpha f\\,\\mathrm{d}\\mu \\le \\int |f|\\,\\mathrm{d}\\mu;$$','- **复值**：取 $\\alpha := e^{-i\\theta}$，$\\theta := \\arg\\int f\\,\\mathrm{d}\\mu$。则 $\\alpha\\int f = \\bigl|\\int f\\bigr|$ 是实数，而','$$\\Bigl|\\int f\\,\\mathrm{d}\\mu\\Bigr| = \\int \\alpha f\\,\\mathrm{d}\\mu = \\int \\operatorname{Re}(\\alpha f)\\,\\mathrm{d}\\mu \\le \\int |\\alpha f|\\,\\mathrm{d}\\mu = \\int|f|\\,\\mathrm{d}\\mu,$$','中间那步用的是「$u \\le v$ 逐点 $\\implies \\int u \\le \\int v$」（实值情形）以及 $\\operatorname{Re}(z) \\le |z|$ ✓。∎'].join('\n'),
+        ['**证明。** 若 $\\int f\\,\\mathrm{d}\\mu = 0$ 则**左边是 $0$、右边非负**（$\\int |f|$ 未必为 $0$：$f = \\chi_{[0,1/2]} - \\chi_{(1/2,1]}$ 给 $\\int f = 0$、$\\int |f| = 1$）。否则——','- **实值**：取 $\\alpha := \\operatorname{sgn}\\bigl(\\int f\\,\\mathrm{d}\\mu\\bigr) \\in \\{\\pm1\\}$，则 $\\alpha\\int f = \\bigl|\\int f\\bigr|$，于是','$$\\Bigl|\\int f\\,\\mathrm{d}\\mu\\Bigr| = \\alpha\\int f\\,\\mathrm{d}\\mu = \\int \\alpha f\\,\\mathrm{d}\\mu \\le \\int |f|\\,\\mathrm{d}\\mu;$$','- **复值**：取 $\\alpha := e^{-i\\theta}$，$\\theta := \\arg\\int f\\,\\mathrm{d}\\mu$。则 $\\alpha\\int f = \\bigl|\\int f\\bigr|$ 是实数，而','$$\\Bigl|\\int f\\,\\mathrm{d}\\mu\\Bigr| = \\int \\alpha f\\,\\mathrm{d}\\mu = \\int \\operatorname{Re}(\\alpha f)\\,\\mathrm{d}\\mu \\le \\int |\\alpha f|\\,\\mathrm{d}\\mu = \\int|f|\\,\\mathrm{d}\\mu,$$','中间那步用的是「$u \\le v$ 逐点 $\\implies \\int u \\le \\int v$」（实值情形）以及 $\\operatorname{Re}(z) \\le |z|$ ✓。∎'].join('\n'),
 '复情形：取 $\\alpha = e^{-i\\theta}$ 使 $\\alpha\\int f$ 是实数且等于 $|\\int f|$，则 $|\\int f| = \\int \\alpha f = \\int \\operatorname{Re}(\\alpha f) \\le \\int|\\alpha f| = \\int|f|$。'].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.22']
     },
@@ -412,7 +412,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'DCT', '控制函数'],
       statement: [
-        '设 $\\{f_n\\} \\subseteq L^1$，$f_n \\to f$ a.e.，且存在**控制函数** $g \\in L^1$ 使',
+        '设 $\\{f_n\\} \\subseteq L^1$，$f$ **可测**，$f_n \\to f$ a.e.，且存在**控制函数** $g \\in L^1$ 使',
         '',
         '$$|f_n| \\le g\\quad  \\text{a.e.}\\quad  \\forall n$$',
         '',
@@ -423,8 +423,8 @@ window.MG = window.MG || {};
       notes: [
         '⭐ 这是实际计算里**用得最多**的收敛定理。三个条件缺一不可：',
         '',
-        '$\\cdot \\text{a.e.}$ 收敛 —— 不能去掉（$\\chi_{[n,n+1]}$ 反例）；',
-        '$\\cdot$ 控制函数 $g \\in L^{1}$ —— 不能去掉（$n\\chi_{[0,1/n]}$ 在 [0,1] 上每点趋于 0，但积分为 1）；',
+        '$\\cdot \\text{a.e.}$ 收敛 —— 不能去掉（单点概率空间上 $f_{n} = (-1)^{n}$：被 $g \\equiv 1$ 控制，但函数与积分都不收敛）；',
+        '$\\cdot$ 控制函数 $g \\in L^{1}$ —— 不能去掉（$n\\chi_{[0,1/n]}$ 在 $[0,1]$ 上**几乎处处**趋于 $0$（$x = 0$ 处不收敛），积分却恒为 $1$；另一个例子 $\\chi_{[n,n+1]}$ **处处**收敛于 $0$，积分恒为 $1$ 却不趋于 $0$，坏在没有可积控制函数 —— 任何控制函数都得 $\\ge 1$ 于整个 $\\mathbb{R}$）；',
         '$\\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度空间上）。',
         '',
         '为什么叫「控制」：$g$ 把所有 $f_{n}$ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。\n\n📌 「积分与极限交换」在这里指**控制收敛**（逐点收敛 + 可积控制函数）；一致收敛下的交换是 `thm.uniform-limit-integral`。'
@@ -450,7 +450,7 @@ window.MG = window.MG || {};
         '$$\\int \\sum_{j=1}^{\\infty} f_j = \\sum_{j=1}^{\\infty} \\int f_j$$'
       ].join('\n'),
       notes: [
-        '与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** $\\sum \\int |f_{j}| < \\infty$ —— 用可积性换来「允许有正有负」。',
+        '与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里是**充分**条件（不是必要）：单点概率空间上 $f_{j} = (-1)^{j+1}/j$ 时 $\\sum \\int |f_{j}| = \\infty$，但 $\\sum \\int f_{j}$ 收敛、逐项积分仍成立 —— 用可积性换来的是「允许有正有负」的便利。',
         '这是 Fubini–Tonelli 定理证明里的关键工具。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.25']

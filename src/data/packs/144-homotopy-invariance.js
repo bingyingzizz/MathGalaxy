@@ -43,11 +43,11 @@
         '⭐ **它是「同伦」在代数侧的翻译**：拓扑里的同伦是「两映射之间的一条连续形变」，' +
           '链复形里没有空间可形变，于是把形变换成一个**升一次**的同态 $P$。' +
           '$\\partial P + P\\partial$ 这个组合恰好是「链复形的同伦」应该有的样子：' +
-          '它与 $\\partial$ 反交换，于是把闭链送到边缘。',
+          '它与 $\\partial$ **交换**（$\\partial T = T\\partial$，所以 $T$ 是链映射），于是把闭链送到边缘；反交换的是 $P$ 与 $\\partial$ 的逐项关系（$\\partial P = T - P\\partial$）。',
         '',
-        '⚠️ 链同伦不是等价关系：$f$ 与 $g$ 链同伦、$g$ 与 $h$ 链同伦不能推出 $f$ 与 $h$ 链同伦' +
-          '（$P + Q$ 差一个符号，要对上得调整）。但「存在链同伦」在链映射的集合上确实给出对称的' +
-          '关系，同伦范畴就是把它们形式地变成同构。',
+        '✅ 链同伦**是**等价关系：自反取 $0$、对称取 $-P$、传递取 $P + Q$（$\\partial(P+Q) + (P+Q)\\partial = (g - f) + (h - g) = h - f$）。' +
+          '所以「链同伦类」才是同伦范畴里真正的态射；' +
+          '把链同伦类形式地当作同构，就得到同伦范畴。',
       ].join('\n'),
       refs: [
         'Munkres, Elements of Algebraic Topology, Ch. 1（chain homotopy / 链映射与同伦）',
@@ -77,7 +77,7 @@
         '',
         '**几何图像**：一个奇异单形 $\\sigma : \\Delta^{n} \\to X$ 与 $F$ 一起给出「棱柱」' +
           '$F \\circ (\\sigma \\times \\mathrm{id}) : \\Delta^{n} \\times [0,1] \\to Y$。\n\n' +
-          '棱柱有 $n+2$ 个面：$n+1$ 个「侧面」加底（$f \\circ \\sigma$）和顶（$g \\circ \\sigma$）。\n\n' +
+          '棱柱有 $n+3$ 个面：$n+1$ 个「侧面」加底（$f \\circ \\sigma$）和顶（$g \\circ \\sigma$）—— $n+1+2 = n+3$，$n = 1$ 时正方形确有 $4$ 条边。\n\n' +
           '把 $\\Delta^{n} \\times [0,1]$ 三角剖分成 $n+1$ 个 $\\Delta^{n+1}$，按定向取侧面之和：',
         '',
         '$$P_{n}(\\sigma) := \\sum_{i=0}^{n} (-1)^{i}\\, F \\circ (\\sigma \\times \\mathrm{id})' +
@@ -89,7 +89,7 @@
           '定向相反 $\\implies$ 抵消；剩下「底 + 顶 + 一圈侧面」。而那一圈侧面恰好是 $P(\\partial\\sigma)$' +
           '（因为 $\\partial\\sigma$ 的单形正好对应棱柱的侧面）。于是',
         '',
-        '$$\\partial P(\\sigma) = g \\circ \\sigma - f \\circ \\sigma + P(\\partial \\sigma),$$',
+        '$$\\partial P(\\sigma) = g \\circ \\sigma - f \\circ \\sigma - P(\\partial \\sigma),$$',
         '',
         '即 $\\partial P + P\\partial = g_{\\#} - f_{\\#}$。由 `def.chain-homotopy`，' +
           '$f$ 与 $g$ 在同调上诱导同一同态。∎',

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05T11:34:30.698Z",
+ "generated": "2026-11-05T11:38:43.320Z",
  "terms": 76,
  "missing": [
   {
@@ -137,6 +137,40 @@
    ]
   },
   {
+   "term": "概率",
+   "total": 8,
+   "nodes": [
+    {
+     "id": "def.lebesgue-stieltjes",
+     "c": 2
+    },
+    {
+     "id": "thm.dct",
+     "c": 1
+    },
+    {
+     "id": "thm.termwise-L1",
+     "c": 1
+    },
+    {
+     "id": "thm.cauchy-schwarz",
+     "c": 1
+    },
+    {
+     "id": "def.tangent-distribution",
+     "c": 1
+    },
+    {
+     "id": "def.jacobi-symbol",
+     "c": 1
+    },
+    {
+     "id": "def.convex-function",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "Fourier 变换",
    "total": 6,
    "nodes": [
@@ -158,32 +192,6 @@
     },
     {
      "id": "thm.pontryagin-van-kampen",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "概率",
-   "total": 6,
-   "nodes": [
-    {
-     "id": "def.lebesgue-stieltjes",
-     "c": 2
-    },
-    {
-     "id": "thm.cauchy-schwarz",
-     "c": 1
-    },
-    {
-     "id": "def.tangent-distribution",
-     "c": 1
-    },
-    {
-     "id": "def.jacobi-symbol",
-     "c": 1
-    },
-    {
-     "id": "def.convex-function",
      "c": 1
     }
    ]

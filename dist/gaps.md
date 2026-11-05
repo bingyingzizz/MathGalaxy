@@ -20,11 +20,11 @@
 ### 素因子　出现 8 次
 `thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.bertrand` 等 8 个节点
 
+### 概率　出现 8 次
+`def.lebesgue-stieltjes` · `thm.dct` · `thm.termwise-L1` · `thm.cauchy-schwarz` · `def.tangent-distribution` · `def.jacobi-symbol` 等 7 个节点
+
 ### Fourier 变换　出现 6 次
 `thm.riemann-lebesgue` · `thm.bounded-extension` · `thm.closed-graph` · `def.pontryagin-dual` · `thm.pontryagin-van-kampen`
-
-### 概率　出现 6 次
-`def.lebesgue-stieltjes` · `thm.cauchy-schwarz` · `def.tangent-distribution` · `def.jacobi-symbol` · `def.convex-function`
 
 ### 偏微分方程　出现 6 次
 `thm.frobenius` · `thm.fundamental-theorem-surfaces` · `def.involutive-distribution` · `def.closed-form` · `thm.developable-iff-flat`

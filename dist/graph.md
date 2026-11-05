@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T11:34:30.698Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T11:38:43.320Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -4636,7 +4636,7 @@ $$\Delta^{p} := \left\{ (t_{0}, \ldots, t_{p}) \in \mathbb{R}^{p+1} : \sum_{i} t
 $$d_{i}(t_{0}, \ldots, t_{p-1}) := (t_{0}, \ldots, t_{i-1}, 0, t_{i}, \ldots, t_{p-1}).$$
 
 它的像是「跳过第 $i$ 个顶点」的那个 $(p-1)$-面；这些像的并就是**边界** $\partial\Delta^{p}$。
-（$p = 0$ 时 $\Delta^{0}$ 是单点，$d_{0}$ 把它放进 $\Delta^{1}$ 的一个端点。）
+（定义只对 $p \ge 1$ 有意义；$p = 1$ 时 $d_{0}$ 把 $\Delta^{0} = \{e_{1}\}$ 放进 $\Delta^{1}$ 的端点 $e_{1}$。$p = 0$ 需要的面映射是 $d_{i} : \Delta^{-1} \to \Delta^{0}$，$\Delta^{-1}$ 没有定义。）
 
 **面映射的恒等式**（后面 $\partial^{2} = 0$ 全靠它）：对 $i < j$ 有
 
@@ -4658,9 +4658,9 @@ $$d_{j} \circ d_{i} = d_{i} \circ d_{j-1} : \Delta^{p-2} \to \Delta^{p}.$$
 $$\sigma \in K,\ \ \emptyset \ne \tau \subseteq \sigma \ \implies \ \tau \in K.$$
 
 即：属于 $K$ 的成员叫**单纯形**，它的非空子集也必须在 $K$ 里（**闭包性质**）。
-$\sigma$ 的**维数**定义成 $\dim\sigma := \#\sigma - 1$；$K$ 的维数是 $\max_{\sigma \in K}\dim\sigma$。维数为 $0, 1, 2$ 的单纯形分别叫**顶点、棱、三角形**。
+$\sigma$ 的**维数**定义成 $\dim\sigma := \#\sigma - 1$；$K$ 的维数是 $\sup_{\sigma \in K}\dim\sigma$（可能为 $+\infty$：$V = \mathbb{N}$ 且 $K$ 取全部非空有限子集时没有最大维数；维数有界时才写 $\max$）。维数为 $0, 1, 2$ 的单纯形分别叫**顶点、棱、三角形**。
 
-**几何实现**：把顶点集嵌进 $\mathbb{R}^{V}$，令
+**几何实现**：把顶点集按**标准实现** $v \mapsto e_{v}$ 放进 $\mathbb{R}^{V}$（不能取任意嵌入 —— 三顶点共线时三条边的并只是一条线段，$H_{1}$ 就错了），令
 
 $$|K| := \bigcup_{\sigma \in K} \operatorname{conv}\{\, v : v \in \sigma \,\} \subseteq \mathbb{R}^{V},$$
 
@@ -4696,7 +4696,7 @@ $$\varphi_{*} : H_{p}(K) \longrightarrow H_{p}(L),\qquad [z] \longmapsto [\varph
 
 **$\varphi_{*}$ 良定义的理由**：$\varphi_{\#}$ 与 $\partial$ 交换 $\implies$ 闭链送闭链、边缘送边缘，故「模掉边缘」这一步不被破坏。函子性（$1_{*} = \operatorname{id}$、$(\psi \circ \varphi)_{*} = \psi_{*} \circ \varphi_{*}$）逐点验证。
 
-⚠️ **单纯映射实在太少**：两个复形之间随便取一个连续映射，一般**不会**把单纯形送到单纯形。最简单的反例：把 $[0, 1]$ 折成自身的「$\vee$ 形」映射 $t \mapsto 2t$（$t \le 1/2$）、$t \mapsto 2 - 2t$（$t \ge 1/2$），它是连续的但不是单纯映射（$[v_{0}, v_{1}]$ 的像不是一个单纯形）。
+⚠️ **单纯映射实在太少**：两个复形之间随便取一个连续映射，一般**不会**把单纯形送到单纯形。最简单的反例：把 $[0, 1]$ 折成自身的「$\vee$ 形」映射 $t \mapsto 2t$（$t \le 1/2$）、$t \mapsto 2 - 2t$（$t \ge 1/2$），它是连续的但不是单纯映射 —— 真正的理由不是「像不是一个单纯形」（像恰好是整个 $[0,1]$），而是**顶点延拓不符**：端点都映到 $0$，顶点映射的线性延拓应恒为 $0$，可中点 $1/2$ 映到了 $1$。
 
 **补救办法**：允许先把定义域**重分**（重心重分）再取单纯映射 —— 这就是**单纯逼近定理**（`thm.simplicial-approximation`）。它也是「奇异同调 $=$ 单纯同调」的技术核心。
 
@@ -4749,7 +4749,7 @@ $$\partial_{p-1} \circ \partial_{p} = 0.$$
 
 **$\partial^{2} = 0$ 的证明骨架**：把 $\partial\partial\sigma$ 写成双重求和，每项对应「删两个顶点 $i < j$」。
 
-这一项在两次展开里出现**两次**：一次系数是 $(-1)^{i}(-1)^{j-1}$（先删 $j$ 再删 $i$），另一次是 $(-1)^{j}(-1)^{i}$（先删 $i$ 再删 $j$）——两者相差一个符号，恰好相消。
+这一项在两次展开里出现**两次**：一次系数是 $(-1)^{i}(-1)^{j-1}$（**先删 $i$、再删已降为 $j-1$ 的那个 $j$**），另一次是 $(-1)^{j}(-1)^{i}$（**先删 $j$、再删 $i$**）——两者相差一个符号，恰好相消。
 
 用的是面映射恒等式 $d_{j}d_{i} = d_{i}d_{j-1}$（$i < j$）。
 
@@ -4783,7 +4783,7 @@ $$[z] = 0 \iff z \in B_{p},$$
 
 **有限复形时 $H_{p}$ 是有限生成的**：$\mathbb{Z}$ 是主理想整环，自由模的子模仍自由，所以 $H_{p} \cong \mathbb{Z}^{\beta_{p}} \oplus (\text{挠部})$，$\beta_{p}$ 叫 **Betti 数**。挠部（如 $\mathbb{Z}/2$）是「扭了一下」的洞，$\mathbb{R}$ 系数的同调看不见它。
 
-💡 与 $\pi_{1}$ 的分工：$\pi_{1}$ 非阿贝尔、难算、只管一维；$H_{p}$ 是阿贝尔群、对每个维数都有、而且有长正合列这类强工具。两者通过 Hurewicz 同态联系（$H_{1}$ 是 $\pi_{1}$ 的阿贝尔化，见 `def.singular-homology` 的弱边）。
+💡 与 $\pi_{1}$ 的分工：$\pi_{1}$ 非阿贝尔、难算、只管一维；$H_{p}$ 是阿贝尔群、对每个维数都有、而且有长正合列这类强工具。两者通过 Hurewicz 同态联系（对**道路连通**空间，$H_{1}$ 是 $\pi_{1}$ 的阿贝尔化，见 `def.singular-homology` 的弱边；非道路连通时按分支取直和 —— $S^{1} \sqcup S^{1}$ 的 $\pi_{1}^{\mathrm{ab}} = \mathbb{Z}$ 而 $H_{1} = \mathbb{Z}^{2}$）。
 
 参考：Munkres, Elements of Algebraic Topology, Ch. 2 · Simplicial Homology；Hatcher, Algebraic Topology, Ch. 2 §2.1 · simplicial homology groups
 
@@ -4848,7 +4848,7 @@ $$H_{0}(X) \cong \tilde{H}_{0}(X) \oplus \mathbb{Z}.$$
 
 高维没有这个差别：$\tilde{H}_{p} = H_{p}$ 对 $p \ge 1$。
 
-**「增广」的几何意义**：$\varepsilon$ 取出的是一条 $0$-链的总系数（「净点数」）。商掉它相当于**把整个空间压成一个点**再取同调 —— 这也解释了为什么单点的约化同调全为零。
+**「增广」的几何意义**：$\varepsilon$ 取出的是一条 $0$-链的总系数（「净点数」）。商掉它相当于**去掉 $H_{0}$ 里一个 $\mathbb{Z}$ 直和因子**（不是把空间压成一个点：$\tilde{H}_{1}(S^{1}) = \mathbb{Z}$，而单点的 $H_{1} = 0$）。这也解释了为什么单点的约化同调全为零。
 
 ⚠️ 空空间的约定各家不同（有的让 $\tilde{H}_{-1}(\emptyset) = \mathbb{Z}$）。本团一律设 $X \ne \emptyset$，避开这个技术细节。
 
@@ -4893,7 +4893,7 @@ $$\tilde{H}_{p}(S^{n}) = \mathbb{Z} \ (p = n),\qquad \tilde{H}_{p}(S^{n}) = 0 \ 
 ① 取两个**开**集 $U := S^{n} \setminus \{\text{南极}\}$、$V := S^{n} \setminus \{\text{北极}\}$，它们都同胚于 $\mathbb{R}^{n}$，可缩，故所有约化同调为零（同伦不变性：恒等 $\simeq$ 常值，而常值映射在约化同调上是零）；
 ② $U \cap V = S^{n} \setminus \{\text{两极}\}$ 沿经线**形变收缩**到赤道 $S^{n-1}$，故 $\tilde{H}_{p}(U \cap V) \cong \tilde{H}_{p}(S^{n-1})$；
 ③ 代入 Mayer–Vietoris（`thm.mv-homology`）的约化版，两个可缩块的项为零，得对每个 $p$
-$$\tilde{H}_{p}(S^{n}) \cong \tilde{H}_{p}(S^{n-1}),$$
+$$\tilde{H}_{p}(S^{n}) \cong \tilde{H}_{p-1}(S^{n-1}) \qquad (p \ge 1),$$
 ④ 从 $S^{0}$ 出发归纳即得结论。
 
 ⚠️ 第 ② 步用到了**同调的同伦不变性**，而第 ③ 步用到 MV —— 本图里 MV 那条边的证明本身也只是骨架。所以这条定理在图上离「可逐行复现」还有一段距离，如实标注。
@@ -4946,7 +4946,7 @@ $$\partial_{*}[c] := [\partial c] \in H_{p-1}(A).$$
 
 ⚠️ **本图的证明是骨架**：上面只写「短正合列 $+$ 追图」的构造，不逐行写三轮正合性验证——那是标准的图追踪，写全要一整页。结构是完整的，细节请查 `refs`。
 
-**为什么同调有这条而同伦没有这么方便**：$\pi_{n}$ 的长正合列需要纤维化条件（空间得好）；同调的这条只要 $A \subseteq X$ 是任意子空间。这是「链的复形」比「同伦群」好用的核心区别之一。
+**为什么同调有这条而同伦没有这么方便**：**相对**同伦群的长正合列对任意子空间对 $(X, A)$ 都成立，不需要纤维化；要小心的是「把相对群换成商空间 $X/A$ 的绝对群」那一步，它才需要 $(X, A)$ 是好的对（NDR / 余纤维化）。同调的这条只要 $A \subseteq X$ 是任意子空间。这是「链的复形」比「同伦群」好用的核心区别之一。
 
 💡 用法：把大空间的同调拆成「小空间 $+$ 相对部分」，用已知的算未知的（`thm.mv-homology` 就是这么来的）。
 
@@ -4964,7 +4964,7 @@ $$\xrightarrow{\ \partial_{*}\ } H_{p-1}(U \cap V)$$
 
 $$\Phi[z] := (i_{*}[z],\ -j_{*}[z]),\qquad \Psi[a, b] := [a + b].$$
 
-把 $H$ 换成约化同调 $\tilde{H}$，同样的序列照样成立。
+把 $H$ 换成约化同调 $\tilde{H}$，只要 $U \cap V \ne \emptyset$，同样的序列照样成立（否则 $\tilde{H}_{0}$ 那段不正合：$X = \{a, b\}$、$U = \{a\}$、$V = \{b\}$ 时 $\tilde{H}_{0}(U) = \tilde{H}_{0}(V) = 0$ 而 $\tilde{H}_{0}(X) = \mathbb{Z}$）。
 
 ⚠️ **本图的证明是骨架**。结构与关键的一步：
 ① 记 $S_{*}(U) + S_{*}(V) \subseteq S_{*}(X)$ 为「落在 $U$ 里的」与「落在 $V$ 里的」奇异单纯形共同生成的子复形；有短正合列 $0 \to S_{*}(U \cap V) \to S_{*}(U) \oplus S_{*}(V) \to S_{*}(U) + S_{*}(V) \to 0$；
@@ -5005,7 +5005,7 @@ $$H_{p}(K) \;\cong\; H_{p}(|K|) \qquad \forall p.$$
 ① **重分不改变同调**：重心重分给出链映射 $\operatorname{sd} : C_{*}(K) \to C_{*}(K')$（把每个单纯形映成「以它的重心为锥顶、锥在它的一个面上」的链，符号由顶点全序决定），它诱导同调同构——构造一条反向链同伦即可（关键事实：重分后每个小单纯形的顶点集都落在原来某个单纯形里）；
 ② **切细到落进星里**：取 $L$ 的**星形**开覆盖 $\{\operatorname{st}(w)\}_{w \in V(L)}$。$f$ 连续、$|K|$ 紧，故由 Lebesgue 数可取 $m$ 使 $K^{(m)}$ 的每个单纯形的像都落在**同一个** $\operatorname{st}(w)$ 里；
 ③ **选顶点得单纯映射**：可以把 $K^{(m)}$ 的每个顶点 $v$ 送到某个使 $|f|(v) \in \operatorname{st}(w)$ 的 $w$，并且选得使每条单纯形的顶点像构成 $L$ 的一个单纯形（星形覆盖保证这一点能做）；
-④ **同伦**：$\operatorname{st}(w)$ 是凸的，所以 $|g|(x)$ 与 $f(x)$ 之间的线段整个留在里面，$H(x, t) := (1 - t)|g|(x) + t f(x)$ 是有定义的连续同伦。
+④ **同伦**：由构造，$f(x)$ 与 $|g|(x)$ 落在**同一个单纯形**里（$w$ 取自 $f(x)$ 所在单纯形的顶点，而 $|g|(x) \in \operatorname{st}(w)$），单纯形是凸的，所以两点间的线段整个留在里面，（⚠️ 注意**开星本身一般不凸**：只有边 $[w,a],[w,b]$ 而没有三角形 $[w,a,b]$ 时，$\frac{1}{2}(w+a)$ 与 $\frac{1}{2}(w+b)$ 都在 $\operatorname{st}(w)$ 里，中点却不在 $|K|$ 里。）$H(x, t) := (1 - t)|g|(x) + t f(x)$ 是有定义的连续同伦。
 
 ⚠️ ① 与 ④ 的技术细节（符号追踪、链同伦的显式公式）本图**没有**写出来，这是本节最容易被低估的地方。
 
@@ -5032,9 +5032,9 @@ $$g(z) - f(z) = \partial' P(z) + P\partial(z) = \partial' P(z),$$
 
 即 $g(z) - f(z)$ 是 $D$ 中的**边缘**，于是它代表的同调类是 $0$。也就是说 $[g(z)] = [f(z)]$，对每个闭链成立 —— 正是 $f_{*} = g_{*}$。∎
 
-⭐ **它是「同伦」在代数侧的翻译**：拓扑里的同伦是「两映射之间的一条连续形变」，链复形里没有空间可形变，于是把形变换成一个**升一次**的同态 $P$。$\partial P + P\partial$ 这个组合恰好是「链复形的同伦」应该有的样子：它与 $\partial$ 反交换，于是把闭链送到边缘。
+⭐ **它是「同伦」在代数侧的翻译**：拓扑里的同伦是「两映射之间的一条连续形变」，链复形里没有空间可形变，于是把形变换成一个**升一次**的同态 $P$。$\partial P + P\partial$ 这个组合恰好是「链复形的同伦」应该有的样子：它与 $\partial$ **交换**（$\partial T = T\partial$，所以 $T$ 是链映射），于是把闭链送到边缘；反交换的是 $P$ 与 $\partial$ 的逐项关系（$\partial P = T - P\partial$）。
 
-⚠️ 链同伦不是等价关系：$f$ 与 $g$ 链同伦、$g$ 与 $h$ 链同伦不能推出 $f$ 与 $h$ 链同伦（$P + Q$ 差一个符号，要对上得调整）。但「存在链同伦」在链映射的集合上确实给出对称的关系，同伦范畴就是把它们形式地变成同构。
+✅ 链同伦**是**等价关系：自反取 $0$、对称取 $-P$、传递取 $P + Q$（$\partial(P+Q) + (P+Q)\partial = (g - f) + (h - g) = h - f$）。所以「链同伦类」才是同伦范畴里真正的态射；把链同伦类形式地当作同构，就得到同伦范畴。
 
 参考：Munkres, Elements of Algebraic Topology, Ch. 1（chain homotopy / 链映射与同伦）；Hatcher, Algebraic Topology, Ch. 2.1 · Chain complexes and homology
 
@@ -5051,7 +5051,7 @@ $$f_{*} = g_{*} : H_{n}(X) \to H_{n}(Y).$$
 
 **几何图像**：一个奇异单形 $\sigma : \Delta^{n} \to X$ 与 $F$ 一起给出「棱柱」$F \circ (\sigma \times \mathrm{id}) : \Delta^{n} \times [0,1] \to Y$。
 
-棱柱有 $n+2$ 个面：$n+1$ 个「侧面」加底（$f \circ \sigma$）和顶（$g \circ \sigma$）。
+棱柱有 $n+3$ 个面：$n+1$ 个「侧面」加底（$f \circ \sigma$）和顶（$g \circ \sigma$）—— $n+1+2 = n+3$，$n = 1$ 时正方形确有 $4$ 条边。
 
 把 $\Delta^{n} \times [0,1]$ 三角剖分成 $n+1$ 个 $\Delta^{n+1}$，按定向取侧面之和：
 
@@ -5061,7 +5061,7 @@ $$P_{n}(\sigma) := \sum_{i=0}^{n} (-1)^{i}\, F \circ (\sigma \times \mathrm{id})
 
 **关键计算**：对 $P$ 取边缘 $\partial$，每个「内部面」被相邻两个三角块各算一次、定向相反 $\implies$ 抵消；剩下「底 + 顶 + 一圈侧面」。而那一圈侧面恰好是 $P(\partial\sigma)$（因为 $\partial\sigma$ 的单形正好对应棱柱的侧面）。于是
 
-$$\partial P(\sigma) = g \circ \sigma - f \circ \sigma + P(\partial \sigma),$$
+$$\partial P(\sigma) = g \circ \sigma - f \circ \sigma - P(\partial \sigma),$$
 
 即 $\partial P + P\partial = g_{\#} - f_{\#}$。由 `def.chain-homotopy`，$f$ 与 $g$ 在同调上诱导同一同态。∎
 
@@ -5080,13 +5080,13 @@ $$H^{1}_{\mathrm{dR}}(S^{1}) \cong \mathbb{R}, \qquad \int_{S^{1}} : H^{1}_{\mat
 
 是同构（取 $\mathrm{d}\theta$ 为生成元）。
 
-**$H_{1}$ 怎么算**：把圆三角剖分成一个顶点 $v$ 与一条边 $e$（两端都粘到 $v$）。链群 $C_{0} = \mathbb{Z}v$、$C_{1} = \mathbb{Z}e$，边缘 $\partial e = v - v = 0$，于是 $H_{1} = \ker\partial_{1}/\operatorname{im}\partial_{2} = \mathbb{Z}e$。
+**$H_{1}$ 怎么算**：把圆按 **CW（$\Delta$-复形）** 方式剖分成一个顶点 $v$ 与一条**闭边** $e$（两端都粘到 $v$ —— 抽象单纯复形的一条边必须有两个**不同**顶点，所以这是胞腔模型，不是单纯剖分）。链群 $C_{0} = \mathbb{Z}v$、$C_{1} = \mathbb{Z}e$，边缘 $\partial e = v - v = 0$，于是 $H_{1} = \ker\partial_{1}/\operatorname{im}\partial_{2} = \mathbb{Z}e$。
 
 ⭐ **de Rham 侧**：$\mathrm{d}\theta$ 是闭的（1 维，$\mathrm{d}(\mathrm{d}\theta) = 0$ 平凡）但**不恰当** ——否则 $\int_{S^{1}}\mathrm{d}\theta = 0$，而它实际等于 $2\pi$。这条「闭而不恰当」正是 $H^{1} \ne 0$ 的全部内容。
 
 📌 **绕数**：对任意闭 1-形式 $\omega$，$\frac{1}{2\pi}\int_{S^{1}}\omega \in \mathbb{R}$ 是它的「周期」；若 $\omega$ 是整系数的（如 $\mathrm{d}\theta$ 对应 $\mathbb{Z}$），积分落在 $2\pi\mathbb{Z}$ —— 这就是**绕数**的同调解释。
 
-⚠ **别把 $H_{1}$ 与 $\pi_{1}$ 混**：$H_{1}(S^{1}) = \pi_{1}(S^{1})^{\mathrm{ab}} = \mathbb{Z}$，两者在这里恰好同构，但一般只差「交换化」（本图没有 Hurewicz 定理的节点，这里只记「一般只差交换化」这条事实）。
+⚠ **别把 $H_{1}$ 与 $\pi_{1}$ 混**：$H_{1}(S^{1}) = \pi_{1}(S^{1})^{\mathrm{ab}} = \mathbb{Z}$，两者在这里恰好同构，两者在这里恰好同构。一般情形要**道路连通**并取基点，才有 $H_{1} \cong \pi_{1}^{\mathrm{ab}}$；非道路连通时按分支取直和（$S^{1} \sqcup S^{1}$ 的 $\pi_{1}^{\mathrm{ab}} = \mathbb{Z}$ 而 $H_{1} = \mathbb{Z}^{2}$）。本图没有 Hurewicz 定理的节点，这里只记这条事实。
 
 参考：Hatcher, Algebraic Topology, §2.1；Munkres, Topology, Ch. 12
 
@@ -7932,7 +7932,7 @@ $$P^{T} A\, P = \operatorname{diag}(\underbrace{1,\ldots,1}_{p},\ \underbrace{-1
 
 且 $p, q, z$ 由 $A$ 唯一确定（`def.inertia-index`）。
 
-**推论（合同分类）**：两个实对称矩阵合同 $\iff$ 它们有相同的 $(p, q)$。
+**推论（合同分类）**：**同阶**的两个实对称矩阵合同 $\iff$ 它们有相同的 $(p, q)$（阶不同时连矩阵乘法都做不了：$[1]$ 与 $\operatorname{diag}(1,0)$ 都有 $(p,q) = (1,0)$ 却不合同）。
 
 **推论（正定性）**：$A$ 正定 $\iff p = n$ $\iff$ $A$ 合同于 $I$。
 
@@ -15861,7 +15861,7 @@ $$\{f > 0\} = \bigcup_{n \ge 1}\bigl\{f > \tfrac1n\bigr\},$$
 
 设 $f : X \to \overline{\mathbb{R}}$ 可测，记正部与负部
 
-$$f^+ = \max_{f, 0}, \quad  f^- = \max_{-f, 0}$$
+$$f^{+} = \max\{f, 0\}, \qquad f^{-} = \max\{-f, 0\}$$
 
 （两者都属于 $L^{+}$，且 $f = f^+ - f^-$、$|f| = f^+ + f^-$。）若 $\int f^+$ 与 $\int f^-$ 中**至少一个有限**，定义
 
@@ -15897,7 +15897,7 @@ $f$ **可积** $\iff \int |f| d\mu < \infty$
 **三条等价里“$\int|f| < \infty$”最好用，但它要求先有 $f^{\pm}$**：
 
 - $f$ 可积 $\iff$ $\int f^{+} < \infty$ 且 $\int f^{-} < \infty$：**这是定义**（把 $f$ 拆成正负部，各自是**非负**可测函数，用非负情形的积分）。
-- $\iff$ $\int \lvert f\rvert < \infty$：**一步**（$\lvert f\rvert = f^{+} + f^{-}$），**要用非负积分的可加性**。⚠️ 反过来「$\int f$ 有限」**不**推出可积 —— 若 $f^{+}$ 与 $f^{-}$ 都是 $+\infty$，则 $\int f$ 无定义（不是 $0$），这正是「可积」必须要求绝对可积的原因。
+- $\iff$ $\int \lvert f\rvert < \infty$：**一步**（$\lvert f\rvert = f^{+} + f^{-}$），**要用非负积分的可加性**。⚠️ 「$\int f$ 有限」与可积**不是**同一件事：$\int f$ 若为**有限的实数**，则 $f^{\pm}$ 都有限、$f$ 必可积；危险的是 $\int f^{+} = \int f^{-} = +\infty$ 时 $\int f$ **无定义**（不是 $0$）—— 那当然不算可积。这正是「可积」必须要求绝对可积的原因。
 - $f$ **可测**且 $\lvert f\rvert \le g$、$g$ 可积 $\implies$ $f$ 可积：**这一步要单调性**（`prop.integral-order`）。
 
 ⚠️ **必须的假设**：**$f$ 可测**（不可测函数谈不上积分）。与 **Riemann 可积**的差别：Riemann 要求有界 + 不连续点零测（`thm.riemann-lebesgue-criterion`），而 Lebesgue 可积**不要求有界**（$1/\sqrt{x}$ 在 $(0,1]$ 上 Lebesgue 可积）；反之有界 Riemann 可积必 Lebesgue 可积（`prop.riemann-implies-lebesgue`）。
@@ -15933,7 +15933,7 @@ $$\int|af+bg| \le |a|\int|f| + |b|\int|g| < \infty,$$
 
 $$| \int f d\mu | \le \int |f| d\mu$$
 
-**证明。** 若 $\int f\,\mathrm{d}\mu = 0$ 则两边都是 $0$。否则——
+**证明。** 若 $\int f\,\mathrm{d}\mu = 0$ 则**左边是 $0$、右边非负**（$\int |f|$ 未必为 $0$：$f = \chi_{[0,1/2]} - \chi_{(1/2,1]}$ 给 $\int f = 0$、$\int |f| = 1$）。否则——
 - **实值**：取 $\alpha := \operatorname{sgn}\bigl(\int f\,\mathrm{d}\mu\bigr) \in \{\pm1\}$，则 $\alpha\int f = \bigl|\int f\bigr|$，于是
 $$\Bigl|\int f\,\mathrm{d}\mu\Bigr| = \alpha\int f\,\mathrm{d}\mu = \int \alpha f\,\mathrm{d}\mu \le \int |f|\,\mathrm{d}\mu;$$
 - **复值**：取 $\alpha := e^{-i\theta}$，$\theta := \arg\int f\,\mathrm{d}\mu$。则 $\alpha\int f = \bigl|\int f\bigr|$ 是实数，而
@@ -15982,7 +15982,7 @@ $$f = g\quad  \mu-\text{a.e.}$$
 #### 控制收敛定理　`thm.dct`
 *定理*　控制收敛定理
 
-设 $\{f_n\} \subseteq L^1$，$f_n \to f$ a.e.，且存在**控制函数** $g \in L^1$ 使
+设 $\{f_n\} \subseteq L^1$，$f$ **可测**，$f_n \to f$ a.e.，且存在**控制函数** $g \in L^1$ 使
 
 $$|f_n| \le g\quad  \text{a.e.}\quad  \forall n$$
 
@@ -15994,9 +15994,9 @@ $$\int f = \lim_{n\to\infty} \int f_n$$
 
 
 
-$\cdot \text{a.e.}$ 收敛 —— 不能去掉（$\chi_{[n,n+1]}$ 反例）；
+$\cdot \text{a.e.}$ 收敛 —— 不能去掉（单点概率空间上 $f_{n} = (-1)^{n}$：被 $g \equiv 1$ 控制，但函数与积分都不收敛）；
 
-$\cdot$ 控制函数 $g \in L^{1}$ —— 不能去掉（$n\chi_{[0,1/n]}$ 在 [0,1] 上每点趋于 0，但积分为 1）；
+$\cdot$ 控制函数 $g \in L^{1}$ —— 不能去掉（$n\chi_{[0,1/n]}$ 在 $[0,1]$ 上**几乎处处**趋于 $0$（$x = 0$ 处不收敛），积分却恒为 $1$；另一个例子 $\chi_{[n,n+1]}$ **处处**收敛于 $0$，积分恒为 $1$ 却不趋于 $0$，坏在没有可积控制函数 —— 任何控制函数都得 $\ge 1$ 于整个 $\mathbb{R}$）；
 
 $\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度空间上）。
 
@@ -16019,7 +16019,7 @@ $$\sum_{j=1}^{\infty} \int |f_j| d\mu < \infty$$
 
 $$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f_j$$
 
-与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** $\sum \int |f_{j}| < \infty$ —— 用可积性换来「允许有正有负」。
+与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里是**充分**条件（不是必要）：单点概率空间上 $f_{j} = (-1)^{j+1}/j$ 时 $\sum \int |f_{j}| = \infty$，但 $\sum \int f_{j}$ 收敛、逐项积分仍成立 —— 用可积性换来的是「允许有正有负」的便利。
 
 这是 Fubini–Tonelli 定理证明里的关键工具。
 
@@ -33285,8 +33285,6 @@ $$F = 0,\qquad M = 0 .$$
 $$(EM-FL)\,\mathrm{d}u^{2}+(EN-GL)\,\mathrm{d}u\,\mathrm{d}v+(FN-GM)\,\mathrm{d}v^{2} = 0 .$$
 
 ⭐ **它的用处**：只要 $F = M = 0$，所有公式都塌成对角形（$k_{1} = L/E$、$k_{2} = N/G$，Euler 公式里的 $\theta$ 就是坐标方向的夹角）—— 所以传统路线先找曲率线网再算。本包不需要：标架一取就是正交的。
-
-📌 **注意**：在「曲率线网下」写了两个形如 $L = HE$、$N = HG$ 的等式。按本包的符号核对，那一对只在 $k_{1} = k_{2}$（脐点）时成立；一般情形应是 $k_{1} = L/E$、$k_{2} = N/G$、$H = (k_{1}+k_{2})/2$。按标准记号写在这里。
 
 参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 曲率线与渐近线；陈维桓《微分几何讲义》, 「曲面的局部理论」· 曲率线网
 
