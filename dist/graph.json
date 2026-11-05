@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T06:52:36.774Z",
+  "generated": "2026-11-05T09:25:46.886Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -41519,7 +41519,7 @@
     "反例"
    ],
    "statement": "在两点集 $S = \\{0, 1\\}$ 上取拓扑 $\\mathcal{T} = \\{\\, \\emptyset, \\{1\\}, \\{0,1\\} \\,\\}$（叫 Sierpiński 空间）。",
-   "notes": "**$T_{0}$ 但不是 $T_{1}$**：点 $1$ 有开邻域 $\\{1\\}$ 不含 $0$，所以能「分开」这两点（$T_{0}$）；但**反过来不行** —— 任何含 $0$ 的开集都含 $1$（$\\{0\\}$ 不是开集）$implies$ 不是 $T_{1}$，更不是 Hausdorff。\n\n⭐ **连通但不道路连通**：$\\{0\\}$ 与 $\\{1\\}$ 不构成分离（$\\{0\\}$ 不闭），所以空间连通；但任何连续道路 $\\gamma : [0,1] \\to S$ 的像必须是连通的、且取值只能落在 $\\{0\\}$ 或 $\\{1\\}$ 上（因为 $\\{0,1\\}$ 的连通子集只有单点与全体，而全体不能是单点的像）$implies$ 常值 $implies$ 连不到另一边。\n\n⚠ **它是 $T_{0}$ 反例的标准来源**：想说明「$T_{0}$ 不蕴含 $T_{1}$」，最省事的例子就是它。本图分离公理那一族（`def.t0-space` $\to$ `def.t1-space` $\to$ …）的分层，就是靠这类例子才不像定义堆砌。\n\n📌 **它的开集对应「上开」集合**：把 $0 < 1$ 看成序，则开集正好是**上闭集**（$1 \\in U$ 且 $1 \\le x$ $implies$ $x \\in U$）。于是 Sierpiński 空间就是「两点偏序集」的 Alexandrov 拓扑 —— 这也是它在 Domain 理论里出现的原因。",
+   "notes": "**$T_{0}$ 但不是 $T_{1}$**：点 $1$ 有开邻域 $\\{1\\}$ 不含 $0$，所以能「分开」这两点（$T_{0}$）；但**反过来不行** —— 任何含 $0$ 的开集都含 $1$（$\\{0\\}$ 不是开集）$implies$ 不是 $T_{1}$，更不是 Hausdorff。\n\n⭐ **连通但不道路连通**：$\\{0\\}$ 与 $\\{1\\}$ 不构成分离（$\\{0\\}$ 不闭），所以空间连通；但任何连续道路 $\\gamma : [0,1] \\to S$ 的像必须是连通的、且取值只能落在 $\\{0\\}$ 或 $\\{1\\}$ 上（因为 $\\{0,1\\}$ 的连通子集只有单点与全体，而全体不能是单点的像）$implies$ 常值 $implies$ 连不到另一边。\n\n⚠ **它是 $T_{0}$ 反例的标准来源**：想说明「$T_{0}$ 不蕴含 $T_{1}$」，最省事的例子就是它。本图分离公理那一族（`def.t0-space` $\\to$ `def.t1-space` $\\to$ …）的分层，就是靠这类例子才不像定义堆砌。\n\n📌 **它的开集对应「上开」集合**：把 $0 < 1$ 看成序，则开集正好是**上闭集**（$1 \\in U$ 且 $1 \\le x$ $implies$ $x \\in U$）。于是 Sierpiński 空间就是「两点偏序集」的 Alexandrov 拓扑 —— 这也是它在 Domain 理论里出现的原因。",
    "refs": [
     "Steen–Seebach, Counterexamples in Topology（Sierpiński space）"
    ]
@@ -76188,7 +76188,7 @@
    ],
    "target": "thm.borsuk-ulam",
    "title": "反证：奇映射的度既是奇数又必须是 0",
-   "proof": "设连续 $f : S^{2} \\to \\mathbb{R}^{2}$ 满足 $f(x) \\ne f(-x)$ 处处成立。令\n\n$$g(x) := \\frac{f(x) - f(-x)}{|f(x) - f(-x)|} \\in S^{1},$$\n\n则 $g$ 连续且 $g(-x) = -g(x)$（奇映射）。\n\n**第一步**：把 $g$ 限制到赤道 $S^{1} \\subset S^{2}$，得连续奇映射 $\\bar g : S^{1} \\to S^{1}$。奇映射在 $S^{1}$ 上的**度**必为奇数：由 $\\bar g(e^{i(t+\\pi)}) = -\\bar g(e^{it})$ 可提升为 $\\theta(t + \\pi) = \\theta(t) + \\pi + 2k\\pi$，故 $\\theta(t + 2\\pi) = \\theta(t) + 2\\pi + 4k\\pi$，度为 $1 + 2k$。\n\n**第二步**：$\\bar g$ 可延拓到上半球面（$g$ 本来就定义在整个 $S^{2}$ 上），而可延拓到圆盘上的映射度为 $0$（延拓给出同伦到常值）。\n\n两步矛盾（奇数 $\ne$ 0），故必有 $x$ 使 $f(x) = f(-x)$。∎",
+   "proof": "设连续 $f : S^{2} \\to \\mathbb{R}^{2}$ 满足 $f(x) \\ne f(-x)$ 处处成立。令\n\n$$g(x) := \\frac{f(x) - f(-x)}{|f(x) - f(-x)|} \\in S^{1},$$\n\n则 $g$ 连续且 $g(-x) = -g(x)$（奇映射）。\n\n**第一步**：把 $g$ 限制到赤道 $S^{1} \\subset S^{2}$，得连续奇映射 $\\bar g : S^{1} \\to S^{1}$。奇映射在 $S^{1}$ 上的**度**必为奇数：由 $\\bar g(e^{i(t+\\pi)}) = -\\bar g(e^{it})$ 可提升为 $\\theta(t + \\pi) = \\theta(t) + \\pi + 2k\\pi$，故 $\\theta(t + 2\\pi) = \\theta(t) + 2\\pi + 4k\\pi$，度为 $1 + 2k$。\n\n**第二步**：$\\bar g$ 可延拓到上半球面（$g$ 本来就定义在整个 $S^{2}$ 上），而可延拓到圆盘上的映射度为 $0$（延拓给出同伦到常值）。\n\n两步矛盾（奇数 $\\ne$ 0），故必有 $x$ 使 $f(x) = f(-x)$。∎",
    "note": "Borsuk–Ulam 与 Brouwer 是同一枚硬币的两面；这里走「度」这条线。"
   },
   {
@@ -80436,7 +80436,7 @@
    "target": "thm.locally-compact-baire",
    "title": "球套法换成紧邻域链",
    "proof": "设 $X$ 局部紧 Hausdorff，$O_n$ 稠密开。任给非空开 $U$，因 $O_1$ 稠密有 $U \\cap O_1 \\ne \\emptyset$；取 $x_1 \\in U \\cap O_1$ 与其**紧**邻域 $V_1 \\subseteq U \\cap O_1$（局部紧 Hausdorff 有紧邻域基）。\n归纳：已有 $V_n$，取 $x_{n+1} \\in \\operatorname{int}V_n \\cap O_{n+1}$ 与紧邻域 $V_{n+1} \\subseteq \\operatorname{int}V_n \\cap O_{n+1}$。\n紧集族 $\\{V_n\\}$ 嵌套且每个非空，由**有限交性质** $\\bigcap_n V_n \\ne \\emptyset$；取 $x \\in \\bigcap V_n$，则 $x \\in U$ 且 $x \\in O_n$ 对一切 $n$。\n\n故 $\\bigcap O_n$ 与任意非空开 $U$ 相交。\n\n$\\blacksquare$",
-   "note": "与完备度量的证明逐字对应，唯一的替换是「半径 $\\to 0$」$\to$「紧集的有限交性质」。这也说明 Baire 纲根本不依赖度量。"
+   "note": "与完备度量的证明逐字对应，唯一的替换是「半径 $\\to 0$」$\\to$「紧集的有限交性质」。这也说明 Baire 纲根本不依赖度量。"
   },
   {
    "id": "imp.fa-baire-pointwise",
@@ -80607,7 +80607,7 @@
    "target": "thm.ck-complete",
    "title": "一致度量的完备性来自 $E$ 的完备性",
    "proof": "设 $(f_n)$ 是 $(C(K,E), \\Delta)$ 中的 Cauchy 列。给 $x$：$d(f_n(x), f_m(x)) \\le \\Delta(f_n, f_m) \\to 0$，故 $(f_n(x))$ 在 $E$ 中 Cauchy，$E$ 完备给出极限 $f(x)$。\n$f_n \\to f$ 在 $\\Delta$ 下：给 $\\varepsilon$，取 $N$ 使 $n, m \\ge N \\implies \\Delta(f_n, f_m) < \\varepsilon/2$；\n\n固定 $x$ 令 $m \\to \\infty$ 得 $d(f_n(x), f(x)) \\le \\varepsilon/2$，再对 $x$ 取上确界。\n$f$ 连续：$d(f(x), f(y)) \\le \\Delta(f, f_n) + d(f_n(x), f_n(y)) + \\Delta(f_n, f)$。$\\blacksquare$",
-   "note": "这三步（逐点取极限 $\to$ 一致收敛 $\to$ 保连续）是「一致收敛」语言的万能模板。"
+   "note": "这三步（逐点取极限 $\\to$ 一致收敛 $\\to$ 保连续）是「一致收敛」语言的万能模板。"
   },
   {
    "id": "imp.fa-equi-uniform",

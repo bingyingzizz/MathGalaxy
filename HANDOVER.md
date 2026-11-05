@@ -317,16 +317,27 @@
 
 ### 4.3 🔴 $\int_E f\,\mathrm{d}\mu$ 没有定义节点
 
-✅ **实测：11 个节点正文里在用 $\int_E$**（`prop.integrals-equal-iff` · `def.signed-measure` ·
-`def.absolute-continuity` · `thm.ac-epsilon-delta` · `prop.integral-gives-ac` · `cor.ac-integral-continuity` ·
-`prop.rn-chain-rule` · `prop.total-variation-basics` · `prop.L1-signed` · `cor.integral-is-ac-nbv` ·
-`ex.density-abs-continuous`）。
+✅ **2026-11-05 AUD-002 实测：14 个节点在用**（旧的「11」只数了 `\int_E` 的字面量，漏了 `\int_{E_n}` 这类）：
+`prop.integrals-equal-iff` · `def.signed-measure` · `def.absolute-continuity` · `thm.ac-epsilon-delta` ·
+`prop.integral-gives-ac` · `cor.ac-integral-continuity` · `prop.rn-chain-rule` · `prop.total-variation-basics` ·
+`prop.L1-signed` · `cor.integral-is-ac-nbv` · `ex.density-abs-continuous` · `prop.simple-integral-props` ·
+`thm.differentiation-general` · `thm.rn-pointwise`。
 
-`def.integral-lebesgue` 存在但**不含 $\int_E$ 的定义**。另缺：Lebesgue 侧**一般情形的保序**与 $A\mapsto\int_A f$ **可加**。
+⚠️ **`def.integral-lebesgue` 并不存在**（旧交接书写错了）：Lebesgue 积分拆在
+`def.integral-simple` / `def.integral-nonneg` / `def.integral-complex` 三处，**三处都不含 $\int_E$ 的定义**。
+另缺：Lebesgue 侧**一般情形的保序**与 $A\mapsto\int_A f$ **可加**。
 
 **还有一座死桥**：`prop.riemann-implies-lebesgue` ✅ **实测出边 = 0** —— 没人消费它。
 
-### 4.4 🔴 硬错 19 条：**2 条已修，17 条未修**
+### 4.4 🔴 硬错 19 条：**2 已修 / 3 部分 / 14 未修**（AUD-002 2026-11-05 对账）
+
+> **AUD-002 的唯一口径**（以仓库实体为准）：
+> **2 已修**（#1 `prop.bv-examples`、#10 `thm.darboux`）·
+> **3 部分**（#7 `prop.mitchell-exactness`、#14 `thm.diagonalizable`、#17 `def.inner-product` —— 注里认了错/加了警告，陈述没改）·
+> **14 未修**。
+> 逐条原句 + 最小改法见 `_audit/review/2026-11-05-status-reconciliation.md` A.1。
+> ⚠️ **别把「重复边」「`prop.bv-regularity` 处处」算进这 19 条**：两条修复属实，但不在 §58.5 的表内。
+> ⚠️ `prop.k-bounded-implies-exact` 是 19 条里的 #13，不是「表外琐碎」（旧交接书重复列了）。
 
 我逐条 `mg show` 抽验过（§58.5 有整张表）：
 
@@ -335,20 +346,22 @@
 | `prop.bv-examples` | ✅ **已修**（改成 $\lvert x\rvert^{3/2}\sin(1/x)$） |
 | `thm.darboux` | ✅ **已修**（假命题已删干净） |
 | `def.ind-object` | ❌ 仍是 `\varinjlim_{j}\varprojlim_{i}`（应为 `\varprojlim_j \varinjlim_i`） |
-| `def.injective-dimension` | ❌ 仍写 `\mathrm{pd}`（应为 **`\mathrm{fd}`**） |
+| `def.injective-dimension` | ❌ 仍写 `\mathrm{pd}`（应为 **`\mathrm{fd}_{R^{\mathrm{op}}}`**） |
 | `prop.dimension-shift` | ❌ 仍「对一切 $n\ge0$」（应为 $n\ge1$） |
 | `def.zero-object` | ❌「等价地 $\operatorname{End}(0)=\{\mathrm{id}\}$」仍假 |
-| `prop.mitchell-exactness` | ❌ 第 3 条「可搬到模范畴里判」仍越界 |
+| `prop.mitchell-exactness` | 🟡 **部分**（注里认了反方向不成立，陈述第 3 点「可搬到模范畴里判」仍越界） |
 | `prop.measurable-closure` | ❌「$\sup_j f_j$ 可测」仍漏「**可数**」 |
 | `thm.ext-balanced` | ❌ 仍「$M\to I^\bullet$ 是内射消解」（应为 **$N$ 的**） |
+| `thm.diagonalizable` | 🟡 **部分**（注里加了「必须特征多项式分裂」的警告，陈述仍称五条等价） |
 | `prop.integral-chain-linear` | ❌ 仍 $a,b\in\mathbb R$（链要 $\mathbb Z$ 系数） |
+| `def.inner-product` | 🟡 **部分**（注里自认「须核对」，例子 $\sum\overline{x_i}y_i$ 与「第一变元线性」相反） |
 | `thm.hadamard-factorization` | ❌「特别地：阶 $\rho<1$ 没有零点」仍假 |
 | `thm.winding-homotopy` | ❌ 同伦仍未要求**全程是闭曲线** |
-| 其余 7 条 | 见 §58.5 |
+| 其余 5 条 | 见 §58.5 |
 
-**另有 4 条琐碎**（都未修）：
-`def.union-inter`（$\bigcap\varnothing$ 不是集合）· `thm.riemann-mapping`（缺 $\Omega\ne\mathbb C$）·
-`prop.k-bounded-implies-exact`（稠密正合 ≠ 正合）· `prop.lc-ab-preabelian`（余核须商去**闭包**）。
+**另有 3 条表外琐碎**（都不在 19 表内）：
+`def.union-inter`（$\bigcap\varnothing$ 不是集合）· `thm.riemann-mapping`（陈述缺 $\Omega\ne\mathbb C$）·
+`prop.lc-ab-preabelian`（余核须商去**闭包**）。
 
 ### 4.5 🔴 被吃掉的反斜杠还剩 **6 处**，两种坏法
 

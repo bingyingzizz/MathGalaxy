@@ -665,7 +665,7 @@ window.MG = window.MG || {};
         '归纳：已有 $V_n$，取 $x_{n+1} \\in \\operatorname{int}V_n \\cap O_{n+1}$ 与紧邻域 $V_{n+1} \\subseteq \\operatorname{int}V_n \\cap O_{n+1}$。',
         '紧集族 $\\{V_n\\}$ 嵌套且每个非空，由**有限交性质** $\\bigcap_n V_n \\ne \\emptyset$；取 $x \\in \\bigcap V_n$，则 $x \\in U$ 且 $x \\in O_n$ 对一切 $n$。\n\n故 $\\bigcap O_n$ 与任意非空开 $U$ 相交。\n\n$\\blacksquare$'
       ].join('\n'),
-      note: '与完备度量的证明逐字对应，唯一的替换是「半径 $\\to 0$」$	o$「紧集的有限交性质」。这也说明 Baire 纲根本不依赖度量。'
+      note: '与完备度量的证明逐字对应，唯一的替换是「半径 $\\to 0$」$\\to$「紧集的有限交性质」。这也说明 Baire 纲根本不依赖度量。'
     },
     {
       id: 'imp.fa-baire-pointwise',
@@ -852,7 +852,7 @@ window.MG = window.MG || {};
         '$f_n \\to f$ 在 $\\Delta$ 下：给 $\\varepsilon$，取 $N$ 使 $n, m \\ge N \\implies \\Delta(f_n, f_m) < \\varepsilon/2$；\n\n固定 $x$ 令 $m \\to \\infty$ 得 $d(f_n(x), f(x)) \\le \\varepsilon/2$，再对 $x$ 取上确界。',
         '$f$ 连续：$d(f(x), f(y)) \\le \\Delta(f, f_n) + d(f_n(x), f_n(y)) + \\Delta(f_n, f)$。$\\blacksquare$'
       ].join('\n'),
-      note: '这三步（逐点取极限 $	o$ 一致收敛 $	o$ 保连续）是「一致收敛」语言的万能模板。'
+      note: '这三步（逐点取极限 $\\to$ 一致收敛 $\\to$ 保连续）是「一致收敛」语言的万能模板。'
     },
     {
       id: 'imp.fa-equi-uniform',
