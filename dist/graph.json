@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T05:27:10.649Z",
+  "generated": "2026-11-05T05:31:09.085Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -94970,7 +94970,7 @@
    ],
    "target": "thm.lhopital",
    "title": "Cauchy 中值定理 $\\implies$ L'Hôpital 法则",
-   "proof": "先讲 $0/0$ 型在 $x \\to x_0^{+}$ 的情形。\n\n把 $f, g$ 在 $x_0$ 处补充定义为 $f(x_0) = g(x_0) = 0$，则它们在 $[x_0, x]$ 上连续、在 $(x_0, x)$ 内可导。\n\n对区间 $[x_0, x]$ 用 Cauchy 中值定理：存在 $\\xi \\in (x_0, x)$ 使\n\n$$\\frac{f(x)}{g(x)} = \\frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \\frac{f'(\\xi)}{g'(\\xi)}$$\n\n当 $x \\to x_0^{+}$ 时 $\\xi \\to x_0^{+}$，故右端的极限就是 $\\lim_{x \\to x_0^{+}} f'(x) / g'(x)$。左邻域与双侧的情形同法。\n\n$\\infty/\\infty$ 型要多一步：对给定的 $\\varepsilon > 0$，先用 $g$ 在 $x_0$ 附近的单调性挑一个 $x_1$，把 $|g|$ 压得足够大，再用 Cauchy 中值定理处理 $[x_1, x]$，最后让 $x_1 \\to x_0$。∎",
+   "proof": "先讲 $0/0$ 型在 $x \\to x_0^{+}$ 的情形。\n\n把 $f, g$ 在 $x_0$ 处补充定义为 $f(x_0) = g(x_0) = 0$，则它们在 $[x_0, x]$ 上连续、在 $(x_0, x)$ 内可导。\n\n对区间 $[x_0, x]$ 用 Cauchy 中值定理：存在 $\\xi \\in (x_0, x)$ 使\n\n$$\\frac{f(x)}{g(x)} = \\frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \\frac{f'(\\xi)}{g'(\\xi)}$$\n\n当 $x \\to x_0^{+}$ 时 $\\xi \\to x_0^{+}$，故右端的极限就是 $\\lim_{x \\to x_0^{+}} f'(x) / g'(x)$。左邻域与双侧的情形同法。\n\n$\\infty/\\infty$ 型要多一步（$f, g \\to \\infty$、$g^{\\prime} \\ne 0$ 于 $x_0$ 右侧、$\\lim f^{\\prime}/g^{\\prime} = L$ 存在）。\n\n给定 $\\varepsilon > 0$，先取 $\\delta_1 > 0$ 使 $t \\in (x_0, x_0+\\delta_1)$ 上 $\\lvert f^{\\prime}(t)/g^{\\prime}(t) - L\\rvert < \\varepsilon/3$ 且 $g^{\\prime}(t) \\ne 0$。\n\n**先固定** $y \\in (x_0, x_0+\\delta_1)$，再让 $x$ 靠近 $x_0$。对 $[y, x]$ 用 Cauchy 中值定理（分母不为零：若 $g(x) = g(y)$，Rolle 会逼出某个 $g^{\\prime} = 0$），得 $\\xi \\in (y,x)$ 使 $\\dfrac{f(x)-f(y)}{g(x)-g(y)} = \\dfrac{f^{\\prime}(\\xi)}{g^{\\prime}(\\xi)}$。把 $f(x)$ 写成 $[f(x)-f(y)] + f(y)$：\n\n$$\\frac{f(x)}{g(x)} - L = \\Bigl(\\frac{f^{\\prime}(\\xi)}{g^{\\prime}(\\xi)} - L\\Bigr)\\cdot\\frac{g(x)-g(y)}{g(x)} + L\\cdot\\frac{-g(y)}{g(x)} + \\frac{f(y)}{g(x)} .$$\n\n三项分别压住：① 系数 $< \\varepsilon/3$，而 $\\frac{g(x)-g(y)}{g(x)} = 1 - \\frac{g(y)}{g(x)} \\to 1$，故 $x$ 够靠近 $x_0$ 时该因子 $\\le 2$（**这就是「控制常数项」那一步**）；②③ 的分子 $f(y), g(y)$ 是**固定的**，而 $\\lvert g(x)\\rvert \\to \\infty$，故两项各自 $< \\varepsilon/6$。\n\n于是 $x_0 < x < x_0+\\delta$ 时 $\\lvert f(x)/g(x) - L\\rvert < 2\\varepsilon/3 + \\varepsilon/3 = \\varepsilon$。∎\n\n⚠️ 顺序不能颠倒：① 的因子是 $1 - g(y)/g(x)$ 而**不是** $1$，所以必须「**先定 $y$、再让 $x \\to x_0^{+}$**」；反过来先放 $x \\to x_0$ 就没有可用的界（$g(y)$ 会跟着动）。",
    "note": "注意证明里 $\\xi$ **依赖**于 $x$ —— 但这不妨碍取极限，因为 $x \\to x_0$ 时 $\\xi$ 被夹在 $x_0$ 与 $x$ 之间，必然也趋于 $x_0$。"
   },
   {
