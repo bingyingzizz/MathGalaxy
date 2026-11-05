@@ -91,17 +91,17 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'proposition',
       label: '仿紧性与单位分解',
-      title: '命题：仿紧 Hausdorff / 正规 $\\iff$ 单位分解存在',
+      title: '命题：仿紧 Hausdorff / 正规 $\\implies$ 单位分解存在',
       regions: ['topology'],
       tags: ['命题', '拓扑', '仿紧', '正规', '单位分解'],
       statement: [
         '对拓扑空间 $X$：',
         '',
-        '1. $X$ 是**仿紧 Hausdorff** 空间 $\\iff$ 每个开覆盖都有一族从属于它的**单位分解**；',
-        '2. $X$ 是**正规**空间 $\\iff$ 每个**局部有限**开覆盖都有一族从属于它的单位分解。'
+        '1. $X$ 是**仿紧 Hausdorff** 空间 $\\implies$ 每个开覆盖都有一族从属于它的**单位分解**（逆向需补分离假设：至少两点的平凡拓扑里常函数 $1$ 就是单位分解，但空间既非 Hausdorff 也非 $T_1$）；',
+        '2. $X$ 是**正规**空间 $\\implies$ 每个**局部有限**开覆盖都有一族从属于它的单位分解（逆向同样需 $T_1$/Hausdorff）。'
       ].join('\n'),
       notes: [
-        ['**证明（两个方向）。**','**$(\\Longleftarrow)$ 单位分解给出局部有限的加细。** 设 $\\{\\rho_{i}\\}$ 是从属于覆盖 $\\{U_{i}\\}$ 的单位分解。\n\n由单位分解的定义，$\\operatorname{supp}\\rho_{i} \\subseteq U_{i}$ 且这族支撑是**局部有限**的 ✓；\n\n于是 $\\{ \\rho_{i}^{-1}\\bigl((0,1]\\bigr) \\}$ 是 $\\{U_{i}\\}$ 的一个开加细，且仍然局部有限（每个点是有限多个支撑之外的点）✓ —— 这正是仿紧（在 Hausdorff 前提下）要求的「每个开覆盖都有局部有限开加细」。\n\n正规的情形同理（局部有限覆盖取局部有限的 $\\{\\operatorname{supp}\\rho_{i}\\}$）✓。','**$(\\Longrightarrow)$ 用正规性逐步造 $\\rho_{i}$。**','- 先取一个**局部有限**的开加细 $\\{V_{i}\\}$（仿紧的定义；正规的情形直接取自局部有限覆盖本身）✓；','- 正规性给出：存在开集 $W_{i}$ 使 $\\overline{W_{i}} \\subseteq V_{i}$ 且 $\\{W_{i}\\}$ 仍覆盖 $X$（这是正规空间的标准「收缩」引理，由 Urysohn 引理或它的变体得到）✓；','- 对每对 $(\\overline{W_{i}}, X \\setminus V_{i})$（不交闭集）用 **Urysohn 引理**取连续函数 $g_{i} : X \\to [0,1]$ 使 $g_{i}|_{\\overline{W_{i}}} = 1$、$g_{i}|_{X\\setminus V_{i}} = 0$ ✓；','- 令 $g := \\sum_{i} g_{i}$：局部有限性保证这是**局部有限和**，故 $g$ 连续 ✓，且因为 $\\{W_{i}\\}$ 覆盖 $X$，每点处 $g \\ge 1$（至少一项为 1）✓；','- 取 $\\rho_{i} := g_{i}/g$ ✓：非负、和恒为 1、$\\operatorname{supp}\\rho_{i} \\subseteq V_{i} \\subseteq U_{i}$，且支撑仍局部有限 ✓。','于是得到从属于原覆盖的单位分解 ✓。∎'].join('\n'),
+        ['**证明（两个方向）。**','**$(\\Longleftarrow)$ 单位分解给出局部有限的加细。** 设 $\\{\\rho_{i}\\}$ 是从属于覆盖 $\\{U_{i}\\}$ 的单位分解。\n\n由单位分解的定义，$\\operatorname{supp}\\rho_{i} \\subseteq U_{i}$ 且这族支撑是**局部有限**的 ✓；\n\n于是 $\\{ \\rho_{i}^{-1}\\bigl((0,1]\\bigr) \\}$ 是 $\\{U_{i}\\}$ 的一个开加细，且仍然局部有限（每个点是有限多个支撑之外的点）✓ —— 这正是仿紧（在 Hausdorff 前提下）要求的「每个开覆盖都有局部有限开加细」。\n\n正规的情形同理（局部有限覆盖取局部有限的 $\\{\\operatorname{supp}\\rho_{i}\\}$）✓。','**$(\\Longrightarrow)$ 用正规性逐步造 $\\rho_{i}$。**','- 先取一个**局部有限**的开加细 $\\{V_{i}\\}$（仿紧的定义；正规的情形直接取自局部有限覆盖本身）✓；','- 正规性给出：存在开集 $W_{i}$ 使 $\\overline{W_{i}} \\subseteq V_{i}$ 且 $\\{W_{i}\\}$ 仍覆盖 $X$（这是正规空间的标准「收缩」引理，由 Urysohn 引理或它的变体得到）✓；','- ⚠️ 只收缩一次不够：$g_i$ 在 $X\\setminus V_i$ 上为零只给 $\\operatorname{supp} g_i \\subseteq \\overline{V_i}$。**再收缩一层**：取开集 $O_i$ 使 $\\overline{W_i} \\subseteq O_i \\subseteq \\overline{O_i} \\subseteq V_i$（正规性再用一次），对 $(\\overline{W_i}, X \\setminus O_i)$ 用 **Urysohn 引理**取 $g_i : X \\to [0,1]$，$g_i|_{\\overline{W_i}} = 1$、$g_i|_{X\\setminus O_i} = 0$ —— 于是 $\\operatorname{supp} g_i \\subseteq \\overline{O_i} \\subseteq V_i$ ✓；','- 令 $g := \\sum_{i} g_{i}$：局部有限性保证这是**局部有限和**，故 $g$ 连续 ✓，且因为 $\\{W_{i}\\}$ 覆盖 $X$，每点处 $g \\ge 1$（至少一项为 1）✓；','- 取 $\\rho_{i} := g_{i}/g$ ✓：非负、和恒为 1、$\\operatorname{supp}\\rho_{i} \\subseteq V_{i} \\subseteq U_{i}$，且支撑仍局部有限 ✓。','于是得到从属于原覆盖的单位分解 ✓。∎'].join('\n'),
         '⭐ 这条是**延拓定理的引擎**：单位分解把「局部定义的东西」加权求和成整体定义的函数 —— Tietze / Dugundji 型延拓、流形上的积分与 Stokes 定理，用的都是这一招。',
         '⚠️ **局部有限不能省**：没有局部有限性，$\\sum \\rho_{i} = 1$ 只是一个「点态」的断言，逐点求和出来的函数未必连续。',
         ,

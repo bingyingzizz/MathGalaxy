@@ -133,7 +133,7 @@ window.MG = window.MG || {};
         '$\\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；',
         '',
         '于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $\\mathcal{M} \\otimes  \\mathcal{N}$。',
-        '最后把「有限」推广到「$\\sigma$有限」：取 $X \\times Y = \\bigcup (X_i \\times Y_i)$，对每个 $E \\cap (X_i \\times Y_i)$ 用已经证好的有限情形，再用 MCT 求和。'
+        '最后把「有限」推广到「$\\sigma$有限」：取 $X = \\bigcup_i X_i$、$Y = \\bigcup_j Y_j$（各段测度有限），则 $X \\times Y = \\bigcup_{i,j} (X_i \\times Y_j)$；对每个 $E \\cap (X_i \\times Y_j)$ 用已经证好的有限情形，再用 MCT 求和。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.36']
     },
@@ -165,7 +165,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。',
         '**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。',
-        '⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$ 之类，两个累次积分会互为相反数。',
+        '⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $f(x, y) = (x^2 - y^2) / (x^2 + y^2)^2$，两个累次积分分别是 $\\pi/4$ 与 $-\\pi/4$（幂次取 $3$ 时两端都发散、给不出这个值）。',
         '⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37']
@@ -194,7 +194,7 @@ window.MG = window.MG || {};
       notes: [
         '为什么需要这一条：**$\\mu \\times \\nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\\lambda$ 里，而不是 $\\mathcal{M}\\otimes\\mathcal{N}$ 里。',
         '代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\\mathcal{L}$ 里多出来的那些集合只在零集上有区别。',
-        '证明的核心：先证 $f \\ge 0$。\n\n若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}\\otimes\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。\n\n$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。\n\n**应该是核心思想，其余都类似**。'
+        '证明的核心：先证 $f \\ge 0$。\n\n若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}\\otimes\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。\n\n$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi_G$ ✓（由集合版 Tonelli，$H_x$ 对 **a.e.** $x$ 零测；再由 $\\mu$ 完备，$G_x \\subseteq H_x$ 在这些 $x$ 处可测且零测 —— 只是 a.e.，**不是每条**：$G = \\{0\\}\\times[0,1]$ 在 $x = 0$ 处的截口测度是 $1$）。\n\n**应该是核心思想，其余都类似**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.39']
     },

@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T11:58:56.230Z",
+  "generated": "2026-11-05T12:21:40.547Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -5109,7 +5109,7 @@
     "生成"
    ],
    "statement": "设每个 $\\mathcal{M}_\\alpha = \\mathcal{M}(\\mathcal{E}_\\alpha )$（即 $\\mathcal{M}_\\alpha$ 由 $\\mathcal{E}_\\alpha$ 生成）。令\n\n$$\\mathcal{F} = \\{ \\pi _\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal{E}_\\alpha, \\alpha \\in A \\}$$\n\n则\n\n$$\\otimes _{\\alpha \\in A} \\mathcal{M}_\\alpha = \\mathcal{M}(\\mathcal{F})$$",
-   "notes": "意义：算积 $\\sigma$代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 $\\mathcal{M}_\\alpha$ 搬进来。\n\n典型用法：$\\mathbb{R}$ 上取 $\\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\\mathfrak{B}_\\mathbb{R}$），于是 $\\mathfrak{B}_\\mathbb{R} \\otimes \\mathfrak{B}_\\mathbb{R}$ 已经由形如 $(a, b] \\times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。\n\n证明是「生成」的通用套路：两边都等于「包含 $\\mathcal{F}$ 的最小 $\\sigma$代数」，各自验证 $\\mathcal{F} \\subseteq$ 一边、另一边 $\\subseteq \\mathcal{F}$。",
+   "notes": "意义：算积 $\\sigma$代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 $\\mathcal{M}_\\alpha$ 搬进来。\n\n典型用法：$\\mathbb{R}$ 上取 $\\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\\mathfrak{B}_\\mathbb{R}$），于是 $\\mathfrak{B}_\\mathbb{R} \\otimes \\mathfrak{B}_\\mathbb{R}$ 已经由形如 $(a, b] \\times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。\n\n证明是「生成」的通用套路：两边都等于「包含 $\\mathcal{F}$ 的最小 $\\sigma$ 代数」，验证只需**一个**方向 —— $\\mathcal{F} \\subseteq$ 积 $\\sigma$ 代数，且每个 $\\{E : \\pi_\\alpha^{-1}(E) \\in \\sigma(\\mathcal{F})\\}$ 是含 $\\mathcal{E}_\\alpha$ 的 $\\sigma$ 代数，故含 $\\mathcal{M}_\\alpha$，由此积 $\\sigma$ 代数 $\\subseteq \\sigma(\\mathcal{F})$。（⚠️ 反向的 $\\sigma(\\mathcal{F}) \\subseteq \\mathcal{F}$ 是**假**的，别那样写。）",
    "refs": [
     "Folland, Real Analysis, §2.1"
    ]
@@ -5191,7 +5191,7 @@
     "可分"
    ],
    "statement": "若每个 $X_j$ 都**可分**，则积 $\\sigma$-代数与 Borel $\\sigma$-代数重合：\n\n$\\bigotimes_{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_{X}$",
-   "notes": "**证明。**\n- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。\n- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。\n  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。\n两边互包即得等号。∎\n⚠️ **可分性不能省**：$\\mathbb{R}^{\\mathbb{R}}$（不可数积）上，积 $\\sigma$代数**真包含于** Borel $\\sigma$代数 —— 那些「只看可数多个坐标」的集合撑不满 Borel 结构。\n\n$\\subseteq$ 的原因很直接：投影 $\\pi _{j}$ 连续，所以 $\\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\\mathfrak{B}_X$ 里。\n\n反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则\n\n\n\n$$\\{ B(c, r) : c \\in C_j, r \\in \\mathbb{Q} \\}$$\n\n\n\n是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\\mathfrak{B}_{X_{j}}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\\mathfrak{B}_X \\subseteq \\otimes\\mathfrak{B}_{X_{j}}$。\n\n⚠ 可分性不能省：$\\mathbb{R}^\\mathbb{R}$（不可数积）上，积 $\\sigma$代数真包含于 $Borel \\sigma$代数。",
+   "notes": "**证明。**\n- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。\n- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。\n  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。\n两边互包即得等号。∎\n⚠️ **积的可数性不能省**：$\\mathbb{R}^{\\mathbb{R}}$ 是**不可数积**，其积 $\\sigma$ 代数**真包含于** Borel $\\sigma$ 代数（每个因子 $\\mathbb{R}$ 都可分，坏在积不可数）；充分条件是「每个因子可分 **且** 积可数」。\n\n$\\subseteq$ 的原因很直接：投影 $\\pi _{j}$ 连续，所以 $\\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\\mathfrak{B}_X$ 里。\n\n反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则\n\n\n\n$$\\{ B(c, r) : c \\in C_j, r \\in \\mathbb{Q} \\}$$\n\n\n\n是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\\mathfrak{B}_{X_{j}}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\\mathfrak{B}_X \\subseteq \\otimes\\mathfrak{B}_{X_{j}}$。\n\n⚠ 可分性不能省：$\\mathbb{R}^\\mathbb{R}$（不可数积）上，积 $\\sigma$代数真包含于 $Borel \\sigma$代数。",
    "refs": [
     "Folland, Real Analysis, §2.1"
    ]
@@ -5843,7 +5843,7 @@
     "预测度"
    ],
    "statement": "设 $F : \\mathbb{R} \\to \\mathbb{R}$ 是**递增**且**右连续**的函数。在半开区间的全体上定义\n\n$$\\mu_0( (a, b] ) = F(b) - F(a)$$\n\n（并规定 $\\mu _{0}(\\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的**环** $\\mathfrak{A}$ 上（它不含 $\\mathbb{R}$、对补集不封闭 —— 是环不是代数）。）则 $\\mu _{0}$ 是 $\\mathfrak{A}$ 上的一个**预测度**。",
-   "notes": "**证明。** 记 $\\mathfrak{A}$ 为有限不交并 $\\bigsqcup_{j=1}^{n}(a_{j}, b_{j}]$ 全体，$\\mu_{0}\\bigl(\\bigsqcup_{j}(a_{j},b_{j}]\\bigr) := \\sum_{j}\\bigl(F(b_{j})-F(a_{j})\\bigr)$。\n- **良定义**：半开区间的不交并分解，本质上就是把端点排成一串 $a_{1} < b_{1} \\le a_{2} < \\cdots$；把两种分解细化到公共细分，用 $F$ 的值在端点上的 telescoping 求和即可看出 $\\mu_{0}$ 与分解无关 ✓；空并给 $\\mu_{0}(\\emptyset) = 0$ ✓。\n- **有限可加**：把两个不交并拼起来直接相加 ✓。\n- **可数可加（右连续在这里上场）**：设 $(a, b] = \\bigsqcup_{j \\ge 1}(a_{j}, b_{j}]$。\n  **$\\ge$**：对每个 $n$ 有 $(a,b] \\supseteq \\bigsqcup_{j \\le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \\ge \\sum_{j \\le n}\\bigl(F(b_{j})-F(a_{j})\\bigr)$，令 $n \\to \\infty$ ✓；\n  **$\\le$**：给 $\\varepsilon > 0$。\n\n**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \\varepsilon 2^{-j}$；\n\n再用右连续取 $\\delta > 0$ 使 $F(a+\\delta) < F(a) + \\varepsilon$。\n\n开区间族 $\\{(a_{j}, c_{j})\\}$ 覆盖紧集 $[a+\\delta, b]$，抽有限子覆盖并按端点排序相加，得\n$$F(b) - F(a) \\le 2\\varepsilon + \\sum_{j}\\bigl(F(b_{j}) - F(a_{j})\\bigr),$$\n令 $\\varepsilon \\to 0$ 即得 ✓。∎\n⭐ 取 $F(x) = x$ 就回到长度 $\\mu_{0}((a,b]) = b-a$ —— 这正是 Lebesgue 测度的出发点。\n\n**右连续正是用来保证可数可加性的**：若 (a, b] 是 $(a_{j}, b_{j}]$ 的不交并，把 $b_{j}$ 从左边逼近 $b_{j}$ 就能得到单调性的不等式。\n\n取 $F(x) = x$ 就回到长度 $\\mu _{0}((a, b]) = b - a$ —— 也就是 Lebesgue 测度的出发点。\n\n⚠ 半开区间 (a, b] 比开区间好用：它们做不交并时端点不重叠，$\\mu _{0}$ 的加法好验。用 [a, b) 也一样，只是右连续要换成左连续。",
+   "notes": "**证明。** 记 $\\mathfrak{A}$ 为有限不交并 $\\bigsqcup_{j=1}^{n}(a_{j}, b_{j}]$ 全体，$\\mu_{0}\\bigl(\\bigsqcup_{j}(a_{j},b_{j}]\\bigr) := \\sum_{j}\\bigl(F(b_{j})-F(a_{j})\\bigr)$。\n- **良定义**：半开区间的不交并分解，本质上就是把端点排成一串 $a_{1} < b_{1} \\le a_{2} < \\cdots$；把两种分解细化到公共细分，用 $F$ 的值在端点上的 telescoping 求和即可看出 $\\mu_{0}$ 与分解无关 ✓；空并给 $\\mu_{0}(\\emptyset) = 0$ ✓。\n- **有限可加**：把两个不交并拼起来直接相加 ✓。\n- **可数可加（右连续在这里上场）**：设 $(a, b] = \\bigsqcup_{j \\ge 1}(a_{j}, b_{j}]$。\n  **$\\ge$**：对每个 $n$ 有 $(a,b] \\supseteq \\bigsqcup_{j \\le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \\ge \\sum_{j \\le n}\\bigl(F(b_{j})-F(a_{j})\\bigr)$，令 $n \\to \\infty$ ✓；\n  **$\\le$**：给 $\\varepsilon > 0$。\n\n**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \\varepsilon 2^{-j}$；\n\n再用右连续取 $\\delta > 0$ 使 $F(a+\\delta) < F(a) + \\varepsilon$。\n\n开区间族 $\\{(a_{j}, c_{j})\\}$ 覆盖紧集 $[a+\\delta, b]$，抽有限子覆盖并按端点排序相加，得\n$$F(b) - F(a) \\le 2\\varepsilon + \\sum_{j}\\bigl(F(b_{j}) - F(a_{j})\\bigr),$$\n令 $\\varepsilon \\to 0$ 即得 ✓。∎\n⭐ 取 $F(x) = x$ 就回到长度 $\\mu_{0}((a,b]) = b-a$ —— 这正是 Lebesgue 测度的出发点。\n\n**右连续正是用来保证可数可加性的**：若 (a, b] 是 $(a_{j}, b_{j}]$ 的不交并，把 $b_{j}$ 从左边逼近 $b_{j}$ 就能得到单调性的不等式。\n\n（$F$ 只要求**递增右连续**；跳变点给的正是原子：$\\mu _{0}(\\{x\\}) = F(x) - F(x^{-})$。）\n\n⚠ 半开区间 (a, b] 比开区间好用：它们做不交并时端点不重叠，$\\mu _{0}$ 的加法好验。用 [a, b) 也一样，只是右连续要换成左连续。",
    "refs": [
     "Folland, Real Analysis, Theorem 1.16"
    ]
@@ -7789,7 +7789,7 @@
     "线性代数"
    ],
    "statement": "设 $V$ 是 $K$-向量空间。$V$ 的**对偶空间**定义为从 $V$ 到 $K$ 的线性映射全体：\n\n$$V^{\\ast} := \\operatorname{Hom}_K(V, K)$$\n\n其中元素叫**线性泛函**。$V^{\\ast}$ 按逐点和与逐点数乘成为向量空间。\n\n若 $T : V \\to W$ 线性，定义**转置**（或对偶）映射\n\n$$T^{\\ast} : W^{\\ast} \\to V^{\\ast}, \\qquad \\varphi \\longmapsto \\varphi \\circ T$$\n\n它线性，且 $(S \\circ T)^{\\ast} = T^{\\ast} \\circ S^{\\ast}$（**反变**）。",
-   "notes": "⭐ 注意方向：$T : V \\to W$ 的对偶 $T^{\\ast}$ 是 $W^{\\ast} \\to V^{\\ast}$，**箭头反过来**。\n\n这就是「对偶」这一词的全部含义，也与 $(-)^{\\ast}$ 作为反变函子的地位一致。\n\n⭐ 有限维时 $V \\cong V^{\\ast}$（等维），但**没有自然的同构** —— 要找同构必须先选一组基。\n\n而 $V \\cong V^{\\ast\\ast}$ 有自然同构 $v \\mapsto (\\varphi \\mapsto \\varphi(v))$，这是「对偶的对偶回到自己」。\n\n⚠ 无限维时 $V^{\\ast}$ 严格大于 $V$（$\\dim V^{\\ast} = |K|^{\\dim V}$），所以上述同构不成立。",
+   "notes": "⭐ 注意方向：$T : V \\to W$ 的对偶 $T^{\\ast}$ 是 $W^{\\ast} \\to V^{\\ast}$，**箭头反过来**。\n\n这就是「对偶」这一词的全部含义，也与 $(-)^{\\ast}$ 作为反变函子的地位一致。\n\n⭐ 有限维时 $V \\cong V^{\\ast}$（等维），但**没有自然的同构** —— 要找同构必须先选一组基。\n\n而 $V \\cong V^{\\ast\\ast}$ 有自然同构 $v \\mapsto (\\varphi \\mapsto \\varphi(v))$，这是「对偶的对偶回到自己」。\n\n⚠ 无限维时 $V^{\\ast}$ 严格大于 $V$：$\\dim V^{\\ast} = |K|^{\\dim V}$ 是 **Erdős–Kaplansky** 的基数定理（依赖 AC；$|V^{\\ast}| = |K|^{\\dim V}$ 是初等的，但「维数等于这个基数」不是），所以上述同构不成立。",
    "refs": [
     "Lang, Linear Algebra",
     "Hoffman–Kunze, Linear Algebra, Ch. 3"
@@ -14905,7 +14905,7 @@
     "截口"
    ],
    "statement": "设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 都是 **$\\sigma$有限**的，$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$。则\n\n- $x \\mapsto \\nu(E_x)$ 在 $X$ 上可测；\n- $y \\mapsto \\mu(E^y)$ 在 $Y$ 上可测；\n\n并且\n\n$$\\mu \\times \\nu(E) = \\int_X \\nu(E_x) d\\mu(x) = \\int_Y \\mu(E^y) d\\nu(y)$$",
-   "notes": "这是 Fubini 定理的「集合版本」—— 把函数换成指示函数就是 Fubini。\n\n证明的结构：先设 $\\mu$、$\\nu$ **有限**，令\n\n\n\n$$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} :\\text{ 上面两条都成立}\\}$$\n\n\n\n- 矩形 $E = A \\times B$：$\\nu(E_x) = \\chi_A(x) \\nu(B)$，立刻成立；\n\n$\\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；\n\n\n\n于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $\\mathcal{M} \\otimes  \\mathcal{N}$。\n\n最后把「有限」推广到「$\\sigma$有限」：取 $X \\times Y = \\bigcup (X_i \\times Y_i)$，对每个 $E \\cap (X_i \\times Y_i)$ 用已经证好的有限情形，再用 MCT 求和。",
+   "notes": "这是 Fubini 定理的「集合版本」—— 把函数换成指示函数就是 Fubini。\n\n证明的结构：先设 $\\mu$、$\\nu$ **有限**，令\n\n\n\n$$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} :\\text{ 上面两条都成立}\\}$$\n\n\n\n- 矩形 $E = A \\times B$：$\\nu(E_x) = \\chi_A(x) \\nu(B)$，立刻成立；\n\n$\\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；\n\n\n\n于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $\\mathcal{M} \\otimes  \\mathcal{N}$。\n\n最后把「有限」推广到「$\\sigma$有限」：取 $X = \\bigcup_i X_i$、$Y = \\bigcup_j Y_j$（各段测度有限），则 $X \\times Y = \\bigcup_{i,j} (X_i \\times Y_j)$；对每个 $E \\cap (X_i \\times Y_j)$ 用已经证好的有限情形，再用 MCT 求和。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.36"
    ]
@@ -14947,7 +14947,7 @@
     "重积分"
    ],
    "statement": "设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 是 **$\\sigma$有限**的测度空间。\n\n**(a) Tonelli（非负情形，无附加条件）**：若 $f \\in L^+(X \\times Y)$，则\n\n$$\\int f_x d\\nu \\in L^+(X), \\quad  \\int f^y d\\mu \\in L^+(Y)$$\n\n且\n\n$$\\int f d(\\mu \\times \\nu) = \\int_X ( \\int_Y f(x, y) d\\nu(y) ) d\\mu(x) = \\int_Y ( \\int_X f(x, y) d\\mu(x) ) d\\nu(y)$$\n\n**(b) Fubini（可积情形）**：若 $f \\in L^1(\\mu \\times \\nu)$，则\n\n- $f_x \\in L^1(\\nu)$ 对 a.e. x 成立，$f^y \\in L^1(\\mu)$ 对 a.e. y 成立；\n- $\\int f_x d\\nu \\in L^1(\\mu)$、$\\int f^y d\\mu \\in L^1(\\nu)$（都在 a.e. 意义下有定义）；\n- 上面那两个三重等式同样成立。",
-   "notes": "⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。\n\n**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。\n\n⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$ 之类，两个累次积分会互为相反数。\n\n⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。",
+   "notes": "⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。\n\n**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。\n\n⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $f(x, y) = (x^2 - y^2) / (x^2 + y^2)^2$，两个累次积分分别是 $\\pi/4$ 与 $-\\pi/4$（幂次取 $3$ 时两端都发散、给不出这个值）。\n\n⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.37"
    ],
@@ -14991,7 +14991,7 @@
     "完备化"
    ],
    "statement": "设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 都是**完备**的 $\\sigma$有限测度空间，$(X \\times Y, \\mathcal{L}, \\lambda)$ 是\n\n$$(X \\times Y, \\mathcal{M} \\otimes  \\mathcal{N}, \\mu \\times \\nu)$$\n\n的**完备化**。设 $f$ 是 $\\mathcal{L}$可测的。\n\n- 若 $f \\ge 0$ 或 $f \\in L^1(\\lambda)$：$f_x$ 对 a.e. x 是 $\\mathcal{N}$可测的，$f^y$ 对 a.e. y 是 $\\mathcal{M}$可测的；\n- 若 $f \\in L^1(\\lambda)$：$f_x$、$f^y$ 对 a.e. 的 $x$、$y$ 可积；并且 $x \\mapsto \\int f_x d\\nu$、$y \\mapsto \\int f^y d\\mu$ 可测；\n- 此时\n\n$$\\int f d\\lambda = \\int_X ( \\int_Y f d\\nu ) d\\mu = \\int_Y ( \\int_X f d\\mu ) d\\nu$$",
-   "notes": "为什么需要这一条：**$\\mu \\times \\nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\\lambda$ 里，而不是 $\\mathcal{M}\\otimes\\mathcal{N}$ 里。\n\n代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\\mathcal{L}$ 里多出来的那些集合只在零集上有区别。\n\n证明的核心：先证 $f \\ge 0$。\n\n若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}\\otimes\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。\n\n$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。\n\n**应该是核心思想，其余都类似**。",
+   "notes": "为什么需要这一条：**$\\mu \\times \\nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\\lambda$ 里，而不是 $\\mathcal{M}\\otimes\\mathcal{N}$ 里。\n\n代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\\mathcal{L}$ 里多出来的那些集合只在零集上有区别。\n\n证明的核心：先证 $f \\ge 0$。\n\n若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}\\otimes\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。\n\n$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi_G$ ✓（由集合版 Tonelli，$H_x$ 对 **a.e.** $x$ 零测；再由 $\\mu$ 完备，$G_x \\subseteq H_x$ 在这些 $x$ 处可测且零测 —— 只是 a.e.，**不是每条**：$G = \\{0\\}\\times[0,1]$ 在 $x = 0$ 处的截口测度是 $1$）。\n\n**应该是核心思想，其余都类似**。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.39"
    ]
@@ -18175,7 +18175,7 @@
     "局部有限"
    ],
    "statement": "$X$ 的一族子集 $\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 叫**离散的**，如果每个点都有**开邻域**至多与**一个**成员相交：对每个 $x \\in X$ 都存在开集 $U \\ni x$，使\n\n$$\\#\\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\} \\le 1.$$\n\n离散 $\\implies$ 局部有限 $\\implies$ 点有限；两个反向都不成立。",
-   "notes": "**成员必两两不交**：若 $x \\in A_{s} \\cap A_{t}$ 而 $s \\ne t$，则 $x$ 的任何邻域都碰到两个成员，与离散矛盾。所以离散族比局部有限族「更散」：连相交都不许。\n\n**「离散」这个词有两层意思**（容易混）：本节点说的是「**族**离散」；另一种说法「$A \\subseteq X$ 是离散子集」指的是单点族 $\\{\\, \\{ a \\} : a \\in A \\,\\}$ 离散（等价于 $a$ 们在子空间拓扑下是离散的、且 $A$ 在 $X$ 里没有聚点）。\n\n仿紧与度量化里用到的一律是「族」的那一层。\n\n⭐ Bing 的度量化定理就是拿「$\\sigma$-离散基」当假设的 —— 它比「$\\sigma$-局部有限基」更紧，但证明里更容易控制（离散族的闭包族仍然离散）。",
+   "notes": "**成员必两两不交**：若 $x \\in A_{s} \\cap A_{t}$ 而 $s \\ne t$，则 $x$ 的任何邻域都碰到两个成员，与离散矛盾。所以离散族比局部有限族「更散」：连相交都不许。\n\n**「离散」这个词有两层意思**（容易混）：本节点说的是「**族**离散」；另一种说法「$A \\subseteq X$ 是离散子集」只要求**子空间拓扑离散**：$A = \\{1/n\\}$ 在 $\\mathbb{R}$ 里是离散子空间，但 $0$ 是聚点、单点族并不离散；在 $T_1$ 空间里它才等价于「$A$ 闭 $+$ 单点族离散」。\n\n仿紧与度量化里用到的一律是「族」的那一层。\n\n⭐ Bing 的度量化定理就是拿「$\\sigma$-离散基」当假设的 —— 它比「$\\sigma$-局部有限基」更紧，但证明里更容易控制（离散族的闭包族仍然离散）。",
    "refs": [
     "Munkres, Topology (2nd ed.), Section 39",
     "Engelking, General Topology, Ch. 5"
@@ -18259,7 +18259,7 @@
     "加细"
    ],
    "statement": "设 $\\mathcal{U} = \\{ U_{i} \\}_{i \\in I}$ 与 $\\mathcal{V} = \\{ V_{s} \\}_{s \\in S}$ 都是 $X$ 的覆盖。$\\mathcal{V}$ 是 $\\mathcal{U}$ 的**加细**，如果每个 $V_{s}$ 都落在某个 $U_{i}$ 里：\n\n$$\\forall s \\in S,\\ \\exists i \\in I :\\quad V_{s} \\subseteq U_{i}.$$\n\n不要求指标集相同，也不要求单射：多个 $V_{s}$ 可以落在同一个 $U_{i}$ 里。\n\n若 $\\mathcal{V}$ 的成员全是开集（闭集），叫**开加细**（**闭加细**）；若 $\\mathcal{V}$ 作为族局部有限（$\\sigma$-局部有限、离散），就叫**局部有限加细**（相应地 $\\sigma$-局部有限加细、离散加细）。",
-   "notes": "**「加细」和「局部有限」是两条独立的要求**，这才是仿紧不平凡的原因：\n\n- 想细就能细：$\\{\\, \\{ x \\} : x \\in X \\,\\}$ 永远是最细的加细；\n- 想局部有限也不难：$\\{\\, X \\,\\}$ 只有一个成员，当然局部有限；\n- 但要**同时又细、又开、又局部有限**，就等价于仿紧 —— 仿紧因此是一条真正的结构条件，而不是可以随手满足的技术语。\n\n⚠️ 加细是**覆盖之间**的关系，不是集合之间的包含：$\\mathcal{V}$ 加细 $\\mathcal{U}$ 时，$\\mathcal{V}$ 完全可以有更多、更小的成员。",
+   "notes": "**「加细」和「局部有限」是两条独立的要求**，这才是仿紧不平凡的原因：\n\n- 想细就能细：$\\{\\, \\{ x \\} : x \\in X \\,\\}$ 永远是最细的加细；\n- 想局部有限也不难：$\\{\\, X \\,\\}$ 只有一个成员，当然局部有限；\n- 但「**每个**开覆盖都有同时又细、又开、又局部有限的加细」才等价于仿紧 —— 单点覆盖 $\\{\\{\\{x\\}\\}\\}$ 没有开加细（成员本身不一定开），所以「存在某个覆盖有」毫无内容。仿紧因此是一条真正的结构条件。\n\n⚠️ 加细是**覆盖之间**的关系，不是集合之间的包含：$\\mathcal{V}$ 加细 $\\mathcal{U}$ 时，$\\mathcal{V}$ 完全可以有更多、更小的成员。",
    "refs": [
     "Munkres, Topology (2nd ed.), Section 39"
    ]
@@ -18300,7 +18300,7 @@
     "局部有限"
    ],
    "statement": "拓扑空间 $X$ 叫**仿紧的**，如果它的**每个开覆盖都有局部有限的开加细**：对每个开覆盖 $\\mathcal{U}$，都存在开覆盖 $\\mathcal{V}$，使\n\n$$\\mathcal{V}\\ \\text{refines}\\ \\mathcal{U}\\quad\\text{and}\\quad \\mathcal{V}\\ \\text{is locally finite}.$$\n\n⚠️ **约定**：本图**不**把 Hausdorff 并进「仿紧」的定义（有些书并进去）。需要分离性时一律显式写「仿紧 Hausdorff」。",
-   "notes": "**在层级里的位置**：紧 $\\implies$ 仿紧（有限子覆盖当然是局部有限的）；仿紧 Hausdorff $\\implies$ 正规 $\\implies$ 正则 $\\implies$ Hausdorff（本包的定理）；度量空间 $\\implies$ 仿紧（Stone 定理）。\n\n⭐ **它换来了什么**：单位分解（于是光滑化、流形上的积分与 Stokes、延拓定理都有工具），以及层论里「Čech 上同调等于层上同调」在细部上要的那点局部有限性。流形按定义第二可数，于是自动仿紧 —— 这就是分析里从不担心这件事的原因。\n\n**遗传性**：**开**子空间与**闭**子空间都继承仿紧性（开子空间：把 $X \\setminus Y$ 补进覆盖再求交；闭子空间：把开覆盖的成员与闭子空间求交）。一般的子空间不必仿紧。\n\n⚠️ 反方向全断：正规空间不必仿紧 —— $[0, \\omega_{1})$（第一不可数序数以下的全体序数）是正规的、可数紧的却不紧，而「可数紧 $+$ 仿紧 $\\implies$ 紧」，所以它不仿紧。",
+   "notes": "**在层级里的位置**：紧 $\\implies$ 仿紧（有限子覆盖当然是局部有限的）；仿紧 Hausdorff $\\implies$ 正规 $\\implies$ 正则 $\\implies$ Hausdorff（本包的定理）；度量空间 $\\implies$ 仿紧（Stone 定理）。\n\n⭐ **它换来了什么**：单位分解（于是光滑化、流形上的积分与 Stokes、延拓定理都有工具），以及层论里「Čech 上同调等于层上同调」在细部上要的那点局部有限性。流形按定义第二可数，于是自动仿紧 —— 这就是分析里从不担心这件事的原因。\n\n**遗传性**：**开**子空间与**闭**子空间都继承仿紧性（开子空间 $Y$：**不能**把 $X\\setminus Y$ 补进覆盖 —— 它不必开；正确做法是先用 $Y$ 开、把各成员在 $X$ 里开扩张，把覆盖提升为 $X$ 的开覆盖，再取局部有限开加细并与 $Y$ 求交；闭子空间：把开覆盖的成员与闭子空间求交）。一般的子空间不必仿紧。\n\n⚠️ 反方向全断：正规空间不必仿紧 —— $[0, \\omega_{1})$（第一不可数序数以下的全体序数）是正规的、可数紧的却不紧，而「可数紧 $+$ 仿紧 $\\implies$ 紧」，所以它不仿紧。",
    "refs": [
     "Munkres, Topology (2nd ed.), Section 41",
     "Engelking, General Topology, Ch. 5"
@@ -18472,7 +18472,7 @@
     "判别法"
    ],
    "statement": "设 $X$ 是**正则**空间。则 $X$ **仿紧**，当且仅当它的每个开覆盖都有**局部有限的加细**（加细的成员不必是开集）：\n\n$X$ **仿紧** $\\iff$ 每个开覆盖都有局部有限的加细",
-   "notes": "**$(\\Longleftarrow)$ 才是内容，$(\\implies)$ 是废话**：仿紧的加细按定义就是局部有限的，而开加细当然是加细。所以这条定理的全部难点在一句话 —— **把「不必开」的局部有限加细撑成开加细，同时不毁掉局部有限性**。\n**思路（Michael）**：给定开覆盖 $\\mathcal{U}$ 与它的局部有限加细 $\\{ E_{s} \\}$。\n- 先做归约：由局部有限可设加细是**点有限**的（局部有限 $\\implies$ 点有限）；\n- 逐点撑开：对 $x \\in E_{s}$，正则性给出开集 $O_{x}$ 使 $x \\in O_{x} \\subseteq \\overline{O_{x}} \\subseteq$ 覆盖中含 $E_{s}$ 的那个成员，再令 $V_{s} := \\bigcup \\{\\, O_{x} : x \\in E_{s} \\,\\}$；\n\n\n- 此时 $\\{ V_{s} \\}$ 已经是**开加细并覆盖 $X$**，但一般**不再局部有限**（$V_{s} \\supseteq E_{s}$，一个邻域可能碰到很多 $V_{s}$ 而只碰到很少 $E_{s}$）；\n- 收尾：用点有限性把每一族成员**重新排序**，把第 $s$ 个换成「$E_{s}$ 挖掉前面那些开膨胀的闭包，再取内部」，新族就既开、又覆盖、又局部有限。\n**收尾引理（Michael）**：正则空间中，若开覆盖有局部有限加细，则它有局部有限的**开**加细。证明用「良序化 + 逐个膨胀」：把加细的成员良序化，依次膨胀进覆盖中对应的成员，每次只膨胀到尚未被前面成员盖住的点；局部有限性由原族的局部有限性接管（每点有邻域只碰到有限多个原成员，膨胀也只发生在这些成员里）。取这条引理即得仿紧。∎\n\n⭐ **当判据用的姿势**：实际验证仿紧时，往往只先拿到「闭的 / 不必开的 / 加细但很粗」的东西 —— 这时配上正则性就够，不必再构造开加细。本图的闭加细命题就是往这个方向走的。\n\n⚠️ **前提「正则」只在 $(\\Longleftarrow)$ 用到**；$(\\implies)$ 不需要任何分离性。\n\n⚠️ 定理里的「加细」如果是**闭**加细，结论同样成立（闭加细是加细的特例）—— 所以「正则 $+$ 每个开覆盖有局部有限闭加细」$\\implies$ 仿紧，这条常被当成仿紧的实用判据。",
+   "notes": "**$(\\Longleftarrow)$ 才是内容，$(\\implies)$ 是废话**：仿紧的加细按定义就是局部有限的，而开加细当然是加细。所以这条定理的全部难点在一句话 —— **把「不必开」的局部有限加细撑成开加细，同时不毁掉局部有限性**。\n**思路（Michael）**：给定开覆盖 $\\mathcal{U}$ 与它的局部有限加细 $\\{ E_{s} \\}$。\n- 先做归约：由局部有限可设加细是**点有限**的（局部有限 $\\implies$ 点有限）；\n- 逐点撑开：对 $x \\in E_{s}$，正则性给出开集 $O_{x}$ 使 $x \\in O_{x} \\subseteq \\overline{O_{x}} \\subseteq$ 覆盖中含 $E_{s}$ 的那个成员，再令 $V_{s} := \\bigcup \\{\\, O_{x} : x \\in E_{s} \\,\\}$；\n\n\n- 此时 $\\{ V_{s} \\}$ 已经是**开加细并覆盖 $X$**，但一般**不再局部有限**（$V_{s} \\supseteq E_{s}$，一个邻域可能碰到很多 $V_{s}$ 而只碰到很少 $E_{s}$）；\n- ⚠️ 这一步**不能**这样收尾：「把第 $s$ 个换成 $E_s$ 挖掉前面开膨胀的闭包再取内部」是错的（$\\mathbb{R}$ 上 $E_1 = \\{0\\}$、$E_2 = \\mathbb{R} \\setminus \\{0\\}$ 时 $E_1$ 与 $E_2 \\setminus \\overline{V_1}$ 的内部都是空集，什么都不覆盖）；正确的收尾用下面那条**收尾引理（Michael）**。\n**收尾引理（Michael）**：正则空间中，若开覆盖有局部有限加细，则它有局部有限的**开**加细。证明用「良序化 + 逐个膨胀」：把加细的成员良序化，依次膨胀进覆盖中对应的成员，每次只膨胀到尚未被前面成员盖住的点；局部有限性由原族的局部有限性接管（每点有邻域只碰到有限多个原成员，膨胀也只发生在这些成员里）。取这条引理即得仿紧。∎\n\n⭐ **当判据用的姿势**：实际验证仿紧时，往往只先拿到「闭的 / 不必开的 / 加细但很粗」的东西 —— 这时配上正则性就够，不必再构造开加细。本图的闭加细命题就是往这个方向走的。\n\n⚠️ **前提「正则」只在 $(\\Longleftarrow)$ 用到**；$(\\implies)$ 不需要任何分离性。\n\n⚠️ 定理里的「加细」如果是**闭**加细，结论同样成立（闭加细是加细的特例）—— 所以「正则 $+$ 每个开覆盖有局部有限闭加细」$\\implies$ 仿紧，这条常被当成仿紧的实用判据。",
    "refs": [
     "Michael, A note on paracompact spaces, Proc. Amer. Math. Soc. 4 (1953)",
     "Engelking, General Topology, Ch. 5"
@@ -18515,7 +18515,7 @@
     "连续函数"
    ],
    "statement": "设 $\\mathcal{U} = \\{ U_{i} \\}_{i \\in I}$ 是 $X$ 的开覆盖。一族连续函数 $\\rho_{i} : X \\to [0, 1]$（$i \\in I$）叫**从属于 $\\mathcal{U}$ 的单位分解**，如果\n1. **支撑在成员里**：$\\operatorname{supp} \\rho_{i} := \\overline{\\{\\, x : \\rho_{i}(x) \\ne 0 \\,\\}} \\subseteq U_{i}$；\n2. **支撑族局部有限**：$\\{\\, \\operatorname{supp} \\rho_{i} \\,\\}_{i \\in I}$ 是局部有限的族；\n3. **和恒为 1**：$\\sum_{i \\in I} \\rho_{i}(x) = 1$ 对每个 $x \\in X$ 成立。\n\n由 2，每点附近只有有限多个 $\\rho_{i}$ 不恒为零，所以 3 里的和是**局部有限和**：它逐点有意义，并且作为函数连续（有限个连续函数之和）。",
-   "notes": "**它是「把局部的信息粘成整体」的机器**：若每个 $f_{i}$ 只在 $U_{i}$ 附近有定义，就把它们乘上 $\\rho_{i}$ 再相加，得到整体定义的对象；光滑情形取 $\\rho_{i}$ 光滑，就是流形上光滑化的那一招。\n\n**支撑为什么要取闭包**：若改成「$\\rho_{i}$ 在 $U_{i}$ **之外**恒为零」，这套语言在取极限时不稳定（零点集可能跑到 $U_{i}$ 外面去）；取闭包之后「在哪里为零」对极限稳定，局部有限性才有地方落脚。\n\n**它与仿紧的关系（两边都能走）**：$\\{\\, \\rho_{i}^{-1}((0, 1]) \\,\\}$ 是 $\\mathcal{U}$ 的局部有限**开**加细，所以「任意开覆盖都有从属单位分解」蕴含「有局部有限开加细」；\n\n反方向由本包的收缩引理 $+$ Urysohn 引理给出。\n\n61 号包里已有的 prop.paracompact-partition-unity 说的正是这两条合起来。\n\n⚠️ 单说「单位分解」没有意义：它必须**从属于某个覆盖**。同一个空间上换一个覆盖，能拿到的单位分解完全不同（最粗的情形：$\\mathcal{U} = \\{\\, X \\,\\}$，取 $\\rho \\equiv 1$ 就够了）。",
+   "notes": "**它是「把局部的信息粘成整体」的机器**：若每个 $f_{i}$ 只在 $U_{i}$ 附近有定义，就把它们乘上 $\\rho_{i}$ 再相加，得到整体定义的对象；光滑情形取 $\\rho_{i}$ 光滑，就是流形上光滑化的那一招。\n\n**支撑为什么要取闭包**：若改成「$\\rho_{i}$ 在 $U_{i}$ **之外**恒为零」，这套语言在取极限时不稳定（零点集可能跑到 $U_{i}$ 外面去）；取闭包之后 $\\operatorname{supp}$ 才是**闭集**，局部有限性才有地方落脚。（⚠️ 但它**不对取极限稳定**：$f_n = \\max(f - 1/n, 0) \\to f$ 一致收敛而 $\\operatorname{supp} f = [0,1] \\not\\subseteq U = (0,1)$；只有当所有支撑含于同一个闭集 $F \\subseteq U$ 时才稳定。）\n\n**它与仿紧的关系（两边都能走）**：$\\{\\, \\rho_{i}^{-1}((0, 1]) \\,\\}$ 是 $\\mathcal{U}$ 的局部有限**开**加细，所以「任意开覆盖都有从属单位分解」蕴含「有局部有限开加细」；\n\n反方向由本包的收缩引理 $+$ Urysohn 引理给出。\n\n61 号包里已有的 prop.paracompact-partition-unity 说的正是这两条合起来。\n\n⚠️ 单说「单位分解」没有意义：它必须**从属于某个覆盖**。同一个空间上换一个覆盖，能拿到的单位分解完全不同（最粗的情形：$\\mathcal{U} = \\{\\, X \\,\\}$，取 $\\rho \\equiv 1$ 就够了）。",
    "refs": [
     "Munkres, Topology (2nd ed.), Section 41",
     "Engelking, General Topology, Ch. 5"
@@ -35506,7 +35506,7 @@
     "简单函数"
    ],
    "statement": "设 $1 \\le p < \\infty$。**有限测度支撑的简单函数**在 $L^p$ 中稠密（$p = \\infty$ 时不成立；一般测度空间没有「紧支」这个概念 —— 要保留「紧支」得假设 $X$ 局部紧、$\\mu$ 是 Radon 测度）。",
-   "notes": "证明：对 $f \\in L^p$，取简单函数列 $\\{f_n\\}$ 使 $f_n \\to f$ a.e. 且 $|f_n| \\le |f|$（简单函数逼近定理给的就是这个形状）。于是 $f_n \\in L^p$，且\n\n\n\n$$|f_n - f|^p \\le 2^p |f|^p \\in L^1$$\n\n\n\n由 DCT 得 $\\|f_n - f\\|_p \\to 0$。$f_n$ 是简单函数、支撑集有限 —— 这就是要的稠密性。∎\n\n⚠ **$p = \\infty$ 时这条失效**：$L^\\infty$ 里的简单函数是「有限个值」，均匀逼近一个连续函数办不到（例如 $\\sin$ 型或一般的连续函数）。",
+   "notes": "证明：对 $f \\in L^p$，取简单函数列 $\\{f_n\\}$ 使 $f_n \\to f$ a.e. 且 $|f_n| \\le |f|$（简单函数逼近定理给的就是这个形状）。于是 $f_n \\in L^p$，且\n\n\n\n$$|f_n - f|^p \\le 2^p |f|^p \\in L^1$$\n\n\n\n由 DCT 得 $\\|f_n - f\\|_p \\to 0$。$f_n$ 是简单函数、支撑集有限 —— 这就是要的稠密性。∎\n\n⚠ **$p = \\infty$ 时这条失效**：$L^\\infty$ 只看**逐点大小**、不看测度大小，而这里的简单函数还要求**有限测度支撑** —— $f \\equiv 1$ 与任何有限测度支撑的函数在支撑之外相差 $1$，一致逼近办不到。（**一般的**简单函数在 $L^\\infty$ 里是稠密的：按值域分层截断即可一致逼近，见 `thm.linf-properties`(e)；失效的是「有限测度支撑」这个附加要求。）",
    "refs": [
     "Folland, Real Analysis, §6.1"
    ]
@@ -58294,12 +58294,12 @@
    "id": "prop.paracompact-partition-unity",
    "type": "proposition",
    "label": "仿紧性与单位分解",
-   "title": "命题：仿紧 Hausdorff / 正规 $\\iff$ 单位分解存在",
+   "title": "命题：仿紧 Hausdorff / 正规 $\\implies$ 单位分解存在",
    "title_en": "paracompactness and partitions of unity",
    "abstract_en": "For a topological space $X$: $X$ is paracompact Hausdorff exactly when every open cover has a subordinate partition of unity, and $X$ is normal exactly when every locally finite open cover has one. In one direction the supports of the partition give a locally finite open refinement of the cover; in the other, normality produces the functions one at a time. This is the standard bridge from local data to global objects, for instance from local metrics to a Riemannian metric.",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "stale",
      "version": "v0.9.3",
      "fields": [
       "abstract",
@@ -58309,10 +58309,12 @@
       "abstract"
      ],
      "fieldStatus": {
-      "abstract": "reviewed",
+      "abstract": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
       "abstract": "v0.9.3#32f06eb0"
      }
@@ -58332,8 +58334,8 @@
     "正规",
     "单位分解"
    ],
-   "statement": "对拓扑空间 $X$：\n\n1. $X$ 是**仿紧 Hausdorff** 空间 $\\iff$ 每个开覆盖都有一族从属于它的**单位分解**；\n2. $X$ 是**正规**空间 $\\iff$ 每个**局部有限**开覆盖都有一族从属于它的单位分解。",
-   "notes": "**证明（两个方向）。**\n**$(\\Longleftarrow)$ 单位分解给出局部有限的加细。** 设 $\\{\\rho_{i}\\}$ 是从属于覆盖 $\\{U_{i}\\}$ 的单位分解。\n\n由单位分解的定义，$\\operatorname{supp}\\rho_{i} \\subseteq U_{i}$ 且这族支撑是**局部有限**的 ✓；\n\n于是 $\\{ \\rho_{i}^{-1}\\bigl((0,1]\\bigr) \\}$ 是 $\\{U_{i}\\}$ 的一个开加细，且仍然局部有限（每个点是有限多个支撑之外的点）✓ —— 这正是仿紧（在 Hausdorff 前提下）要求的「每个开覆盖都有局部有限开加细」。\n\n正规的情形同理（局部有限覆盖取局部有限的 $\\{\\operatorname{supp}\\rho_{i}\\}$）✓。\n**$(\\Longrightarrow)$ 用正规性逐步造 $\\rho_{i}$。**\n- 先取一个**局部有限**的开加细 $\\{V_{i}\\}$（仿紧的定义；正规的情形直接取自局部有限覆盖本身）✓；\n- 正规性给出：存在开集 $W_{i}$ 使 $\\overline{W_{i}} \\subseteq V_{i}$ 且 $\\{W_{i}\\}$ 仍覆盖 $X$（这是正规空间的标准「收缩」引理，由 Urysohn 引理或它的变体得到）✓；\n- 对每对 $(\\overline{W_{i}}, X \\setminus V_{i})$（不交闭集）用 **Urysohn 引理**取连续函数 $g_{i} : X \\to [0,1]$ 使 $g_{i}|_{\\overline{W_{i}}} = 1$、$g_{i}|_{X\\setminus V_{i}} = 0$ ✓；\n- 令 $g := \\sum_{i} g_{i}$：局部有限性保证这是**局部有限和**，故 $g$ 连续 ✓，且因为 $\\{W_{i}\\}$ 覆盖 $X$，每点处 $g \\ge 1$（至少一项为 1）✓；\n- 取 $\\rho_{i} := g_{i}/g$ ✓：非负、和恒为 1、$\\operatorname{supp}\\rho_{i} \\subseteq V_{i} \\subseteq U_{i}$，且支撑仍局部有限 ✓。\n于是得到从属于原覆盖的单位分解 ✓。∎\n\n⭐ 这条是**延拓定理的引擎**：单位分解把「局部定义的东西」加权求和成整体定义的函数 —— Tietze / Dugundji 型延拓、流形上的积分与 Stokes 定理，用的都是这一招。\n\n⚠️ **局部有限不能省**：没有局部有限性，$\\sum \\rho_{i} = 1$ 只是一个「点态」的断言，逐点求和出来的函数未必连续。\n\n\n\n**各方向用到的假设**（单位分解的构造用正规性，逆向不能凭空产生分离公理）：\n- 仿紧 Hausdorff $\\implies$ 每个开覆盖有从属单位分解：用仿紧 Hausdorff 推正规、局部有限加细与收缩引理、Urysohn 引理；须再收缩以保证支撑包含于原开集。\n- 每个开覆盖有从属单位分解 $\\implies$ 有局部有限开加细：取各函数的正值集，直接用单位分解支撑局部有限及和为一；得到仿紧性，Hausdorff 必须另作前提，不能由此推出。\n- 正规 $\\implies$ 每个局部有限开覆盖有从属单位分解：用局部有限收缩、Urysohn 及局部有限函数和归一化；不要求所有覆盖都有局部有限加细。\n- 逆向用覆盖 $\\{X\\setminus A,X\\setminus B\\}$ 分离不交闭集 $A,B$，得到裸的闭集分离性质；要得本库含 $T_1$ 的正规空间，仍须另加 $T_1$。\n- 缺失的分离前提有反例：至少两点的不可分拓扑每个开覆盖都含整个空间，以常函数一便有从属单位分解，却既不 Hausdorff 也不 $T_1$。原陈述的两条逆向须据此补条件。\n",
+   "statement": "对拓扑空间 $X$：\n\n1. $X$ 是**仿紧 Hausdorff** 空间 $\\implies$ 每个开覆盖都有一族从属于它的**单位分解**（逆向需补分离假设：至少两点的平凡拓扑里常函数 $1$ 就是单位分解，但空间既非 Hausdorff 也非 $T_1$）；\n2. $X$ 是**正规**空间 $\\implies$ 每个**局部有限**开覆盖都有一族从属于它的单位分解（逆向同样需 $T_1$/Hausdorff）。",
+   "notes": "**证明（两个方向）。**\n**$(\\Longleftarrow)$ 单位分解给出局部有限的加细。** 设 $\\{\\rho_{i}\\}$ 是从属于覆盖 $\\{U_{i}\\}$ 的单位分解。\n\n由单位分解的定义，$\\operatorname{supp}\\rho_{i} \\subseteq U_{i}$ 且这族支撑是**局部有限**的 ✓；\n\n于是 $\\{ \\rho_{i}^{-1}\\bigl((0,1]\\bigr) \\}$ 是 $\\{U_{i}\\}$ 的一个开加细，且仍然局部有限（每个点是有限多个支撑之外的点）✓ —— 这正是仿紧（在 Hausdorff 前提下）要求的「每个开覆盖都有局部有限开加细」。\n\n正规的情形同理（局部有限覆盖取局部有限的 $\\{\\operatorname{supp}\\rho_{i}\\}$）✓。\n**$(\\Longrightarrow)$ 用正规性逐步造 $\\rho_{i}$。**\n- 先取一个**局部有限**的开加细 $\\{V_{i}\\}$（仿紧的定义；正规的情形直接取自局部有限覆盖本身）✓；\n- 正规性给出：存在开集 $W_{i}$ 使 $\\overline{W_{i}} \\subseteq V_{i}$ 且 $\\{W_{i}\\}$ 仍覆盖 $X$（这是正规空间的标准「收缩」引理，由 Urysohn 引理或它的变体得到）✓；\n- ⚠️ 只收缩一次不够：$g_i$ 在 $X\\setminus V_i$ 上为零只给 $\\operatorname{supp} g_i \\subseteq \\overline{V_i}$。**再收缩一层**：取开集 $O_i$ 使 $\\overline{W_i} \\subseteq O_i \\subseteq \\overline{O_i} \\subseteq V_i$（正规性再用一次），对 $(\\overline{W_i}, X \\setminus O_i)$ 用 **Urysohn 引理**取 $g_i : X \\to [0,1]$，$g_i|_{\\overline{W_i}} = 1$、$g_i|_{X\\setminus O_i} = 0$ —— 于是 $\\operatorname{supp} g_i \\subseteq \\overline{O_i} \\subseteq V_i$ ✓；\n- 令 $g := \\sum_{i} g_{i}$：局部有限性保证这是**局部有限和**，故 $g$ 连续 ✓，且因为 $\\{W_{i}\\}$ 覆盖 $X$，每点处 $g \\ge 1$（至少一项为 1）✓；\n- 取 $\\rho_{i} := g_{i}/g$ ✓：非负、和恒为 1、$\\operatorname{supp}\\rho_{i} \\subseteq V_{i} \\subseteq U_{i}$，且支撑仍局部有限 ✓。\n于是得到从属于原覆盖的单位分解 ✓。∎\n\n⭐ 这条是**延拓定理的引擎**：单位分解把「局部定义的东西」加权求和成整体定义的函数 —— Tietze / Dugundji 型延拓、流形上的积分与 Stokes 定理，用的都是这一招。\n\n⚠️ **局部有限不能省**：没有局部有限性，$\\sum \\rho_{i} = 1$ 只是一个「点态」的断言，逐点求和出来的函数未必连续。\n\n\n\n**各方向用到的假设**（单位分解的构造用正规性，逆向不能凭空产生分离公理）：\n- 仿紧 Hausdorff $\\implies$ 每个开覆盖有从属单位分解：用仿紧 Hausdorff 推正规、局部有限加细与收缩引理、Urysohn 引理；须再收缩以保证支撑包含于原开集。\n- 每个开覆盖有从属单位分解 $\\implies$ 有局部有限开加细：取各函数的正值集，直接用单位分解支撑局部有限及和为一；得到仿紧性，Hausdorff 必须另作前提，不能由此推出。\n- 正规 $\\implies$ 每个局部有限开覆盖有从属单位分解：用局部有限收缩、Urysohn 及局部有限函数和归一化；不要求所有覆盖都有局部有限加细。\n- 逆向用覆盖 $\\{X\\setminus A,X\\setminus B\\}$ 分离不交闭集 $A,B$，得到裸的闭集分离性质；要得本库含 $T_1$ 的正规空间，仍须另加 $T_1$。\n- 缺失的分离前提有反例：至少两点的不可分拓扑每个开覆盖都含整个空间，以常函数一便有从属单位分解，却既不 Hausdorff 也不 $T_1$。原陈述的两条逆向须据此补条件。\n",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §8.3"
    ]

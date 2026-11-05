@@ -335,7 +335,7 @@ window.MG = window.MG || {};
       notes: [
         '意义：算积 $\\sigma$代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 $\\mathcal{M}_\\alpha$ 搬进来。',
         '典型用法：$\\mathbb{R}$ 上取 $\\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\\mathfrak{B}_\\mathbb{R}$），于是 $\\mathfrak{B}_\\mathbb{R} \\otimes \\mathfrak{B}_\\mathbb{R}$ 已经由形如 $(a, b] \\times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。',
-        '证明是「生成」的通用套路：两边都等于「包含 $\\mathcal{F}$ 的最小 $\\sigma$代数」，各自验证 $\\mathcal{F} \\subseteq$ 一边、另一边 $\\subseteq \\mathcal{F}$。'
+        '证明是「生成」的通用套路：两边都等于「包含 $\\mathcal{F}$ 的最小 $\\sigma$ 代数」，验证只需**一个**方向 —— $\\mathcal{F} \\subseteq$ 积 $\\sigma$ 代数，且每个 $\\{E : \\pi_\\alpha^{-1}(E) \\in \\sigma(\\mathcal{F})\\}$ 是含 $\\mathcal{E}_\\alpha$ 的 $\\sigma$ 代数，故含 $\\mathcal{M}_\\alpha$，由此积 $\\sigma$ 代数 $\\subseteq \\sigma(\\mathcal{F})$。（⚠️ 反向的 $\\sigma(\\mathcal{F}) \\subseteq \\mathcal{F}$ 是**假**的，别那样写。）'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.1']
     },
@@ -381,7 +381,7 @@ window.MG = window.MG || {};
         '$\\bigotimes_{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_{X}$'
       ].join('\n'),
       notes: [
-        ['**证明。**','- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。','- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。','  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。','两边互包即得等号。∎','⚠️ **可分性不能省**：$\\mathbb{R}^{\\mathbb{R}}$（不可数积）上，积 $\\sigma$代数**真包含于** Borel $\\sigma$代数 —— 那些「只看可数多个坐标」的集合撑不满 Borel 结构。'].join('\n'),
+        ['**证明。**','- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。','- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。','  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。','两边互包即得等号。∎','⚠️ **积的可数性不能省**：$\\mathbb{R}^{\\mathbb{R}}$ 是**不可数积**，其积 $\\sigma$ 代数**真包含于** Borel $\\sigma$ 代数（每个因子 $\\mathbb{R}$ 都可分，坏在积不可数）；充分条件是「每个因子可分 **且** 积可数」。'].join('\n'),
         '$\\subseteq$ 的原因很直接：投影 $\\pi _{j}$ 连续，所以 $\\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\\mathfrak{B}_X$ 里。',
         '反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则',
         '',
