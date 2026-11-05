@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T05:54:40.881Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T06:01:48.867Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -29671,7 +29671,7 @@ $$j_! : D(A_\blacksquare) \longrightarrow D((A,\mathbb{Z})_\blacksquare),$$
 
 ⭐ 证明骨架（$A = \mathbb{Z}[T]$ 的情形）：把 $A_\infty := \mathbb{Z}((T^{-1}))$ 看成「$\operatorname{Spec} A$ 边界附近的函数」，它有短正合列
 
-$$0 \to \mathbb{Z}[[U]] \otimes_{\mathbb{Z}} A \xrightarrow{U \mapsto T^{-1}} \mathbb{Z}[[U]] \otimes_{\mathbb{Z}} A \to A_\infty \to 0,$$
+$$0 \to \mathbb{Z}[[U]] \otimes_{\mathbb{Z}} A \xrightarrow{1 - \mathrm{shift}\otimes T} \mathbb{Z}[[U]] \otimes_{\mathbb{Z}} A \to A_\infty \to 0,$$
 
 从而 $A_\infty$ 紧、幂等（幂等 = $A_\infty \otimes^{L} A_\infty \cong A_\infty$，即「乘两次等于乘一次」）、且 $\operatorname{RHom}_A(A_\infty, C) = 0$ 对一切由 $\prod A$ 的直和构成的复形成立；
 
@@ -42105,7 +42105,7 @@ $$\operatorname{RHom}(\mathbb{Z}_\blacksquare[S], C) \cong \operatorname{RHom}_{
 设 $A = \mathbb{Z}[T]$，$A_\infty = \mathbb{Z}((T^{-1}))$。
 
 **① $A_\infty$ 紧。** 有短正合列
-$$0 \to \mathbb{Z}[[U]] \otimes A \xrightarrow{U \mapsto T^{-1}} \mathbb{Z}[[U]] \otimes A \to A_\infty \to 0,$$
+$$0 \to \mathbb{Z}[[U]] \otimes A \xrightarrow{1 - \mathrm{shift}\otimes T} \mathbb{Z}[[U]] \otimes A \to A_\infty \to 0,$$
 前两项在 $\operatorname{Mod}^{cond}_{(A,\mathbb{Z})^{\blacksquare}}$ 中紧投射（它们是 $\prod_I \mathbb{Z} \otimes A$ 的形状），故 $A_\infty$ 紧。
 
 **② $A_\infty$ 幂等。** 由 ① 的表现直接算 $A_\infty \otimes^L A_\infty \cong A_\infty$。
@@ -42113,8 +42113,8 @@ $$0 \to \mathbb{Z}[[U]] \otimes A \xrightarrow{U \mapsto T^{-1}} \mathbb{Z}[[U]]
 于是「$A_\infty$-模」构成 $D((A,\mathbb{Z})^{\blacksquare})$ 的全子范畴，$\mathbb{Z}((T^{-1})) \otimes A$ 是其中的紧生成元。
 
 **③ 对 $\prod_I A$ 型系数的消没。** 设 $C$ 的各项是若干 $\prod_I A$ 的直和，则 $\operatorname{RHom}_A(A_\infty, C) = 0$。化到 $C = A$：用 ① 的消解，$\operatorname{RHom}_A(A_\infty, A)$ 由复形
-$$A[U^{-1}]/A \xrightarrow{U - T^{-1}} A[U^{-1}]/A$$
-计算，该映射是单射，故复形无环。有余核时再对 $\prod$ 逐项处理。
+$$A[U^{-1}]/A \xrightarrow{1 - \mathrm{shift}\otimes T} A[U^{-1}]/A$$
+计算。⚠️ 两项复形 $M \xrightarrow{f} M$ **无环要求 $f$ 是同构**（既要 $\ker f = 0$、也要 $\operatorname{coker} f = 0$），**不是单射就够** —— 原文只写了「是单射，故无环」。这里 $1 - \mathrm{shift}\otimes T$ 在 $A[U^{-1}]/A$ 上的可逆性，本图**未验证**。有余核时再对 $\prod$ 逐项处理。
 
 **④ 余核是 $A_\infty$-模。** $\operatorname{coker}\big(\prod_I \mathbb{Z} \otimes A \to \prod_I A\big)$ 是 $A_\infty$-模：把它写成
 $$\operatorname{coker}\Big(\prod_I \mathbb{Z}[[T^{-1}]] \otimes_{\mathbb{Z}[[T^{-1}]]} \mathbb{Z}((T^{-1})) \to \prod_I \mathbb{Z}((T^{-1}))\Big),$$
@@ -42128,13 +42128,15 @@ $$\operatorname{RHom}_A(\textstyle\prod_I \mathbb{Z} \otimes A, C) \cong \operat
 
 **⑥ 全忠实与 $j_!$。** ⑤ 给出 $j^\ast : D(A^{\blacksquare}) \to D((A,\mathbb{Z})^{\blacksquare})$ 全忠实；
 
-其左伴随 $j^\ast = -\otimes^L_{(A,\mathbb{Z})^{\blacksquare}} A^{\blacksquare}$ 由 `prop.analytic-base-change`。
+其左伴随记作 $j_! = -\otimes^L_{(A,\mathbb{Z})^{\blacksquare}} A^{\blacksquare}$（由 `prop.analytic-base-change`；⚠️ 不能再写成 $j^\ast$ —— 同一个符号在前面刚被用来表示 $D(A^{\blacksquare}) \to D((A,\mathbb{Z})^{\blacksquare})$，方向相反）。
 
 $\ker j^\ast$ 恰为 $A_\infty$-模（Observation 8.10）。
 
 定义
 $$j_! M := M \otimes_{A \otimes^L \mathbb{Z}^{\blacksquare}} (A_\infty/A)[-1],$$
 由 ②③ 它穿过 $D(A^{\blacksquare})$、全忠实，且是 $j^\ast$ 的左伴随（Observation 8.11）。
+
+⚠️ 与上面那个 $j_! = -\otimes^L_{(A,\mathbb{Z})^{\blacksquare}} A^{\blacksquare}$ **必须一致**：两者都该是 $j^\ast$ 的左伴随，而 $A^{\blacksquare}$ 作为 $(A,\mathbb{Z})^{\blacksquare}$-模落在三角 $A\otimes^L\mathbb{Z}^{\blacksquare} \to A^{\blacksquare} \to (A_\infty/A)[-1] \to$ 里，故两个公式在 $\ker j^\ast$ 上应给同一个函子。⚠️ 这个一致性本图**未逐条验**。
 
 **⑦ 一般 $A$。** Noether 归一化给满射 $R = \mathbb{Z}[X_1,\ldots,X_n] \to A$，$A$ 是有限 $R$-模，故 $\prod_I A \cong \prod_I R \otimes_R A$、$A^{\blacksquare} = (A,R)^{\blacksquare}$。
 
@@ -42280,6 +42282,8 @@ $\blacksquare$
 
 #### adic 结构层是层 + 解析环的 base change ⟹ 导出范畴按无穷范畴粘合　`imp.adic-gluing`
 *结构层 + 局部化的全忠实 $\implies$ $\infty$-范畴粘合*
+
+⚠️ **先摆清这条边证的是什么**（本图自查）：**陈述（`thm.adic-gluing`）要的是 $U \mapsto D((\mathcal{O}_X(U),\mathcal{O}_X^+(U))_\blacksquare)$ 是 $\infty$-范畴层**（导出范畴的下降）；而下面的论证是**普通（1-范畴）层面**的粘合 —— adic 空间的层性、全忠实、纤维积、覆盖细化。两者**不是同一件事**：从「仿射开集的导出范畴能粘」到「整个 $X$ 上的 $D$ 是 $\infty$-范畴层」，要额外做**导出下降**（把 Čech 神经每个交叠处的基变换换成导出张量，并证明那个 $\infty$-极限确实算作 $D(\mathcal{O}_{X,\blacksquare})$），这一步本图**没有证** —— 陈述所引的那条定理就是它，而本图手上没有那一节的原文。所以本边只算「几何侧的准备」，不是那条定理的证明。
 
 **记号。** $\mathcal{C}$ = 离散 Huber 对构成的景，覆盖取「标准覆盖」；$\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。
 

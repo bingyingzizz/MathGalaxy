@@ -308,6 +308,8 @@ window.MG = window.MG || {};
       target: 'thm.adic-gluing',
       title: '结构层 + 局部化的全忠实 $\\implies$ $\\infty$-范畴粘合',
       proof: [
+        '⚠️ **先摆清这条边证的是什么**（本图自查）：**陈述（`thm.adic-gluing`）要的是 $U \\mapsto D((\\mathcal{O}_X(U),\\mathcal{O}_X^+(U))_\\blacksquare)$ 是 $\\infty$-范畴层**（导出范畴的下降）；而下面的论证是**普通（1-范畴）层面**的粘合 —— adic 空间的层性、全忠实、纤维积、覆盖细化。两者**不是同一件事**：从「仿射开集的导出范畴能粘」到「整个 $X$ 上的 $D$ 是 $\\infty$-范畴层」，要额外做**导出下降**（把 Čech 神经每个交叠处的基变换换成导出张量，并证明那个 $\\infty$-极限确实算作 $D(\\mathcal{O}_{X,\\blacksquare})$），这一步本图**没有证** —— 陈述所引的那条定理就是它，而本图手上没有那一节的原文。所以本边只算「几何侧的准备」，不是那条定理的证明。',
+        '',
         '**记号。** $\\mathcal{C}$ = 离散 Huber 对构成的景，覆盖取「标准覆盖」；$\\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。\n\n函子 $\\Phi : X \\mapsto (|X|, \\mathcal{O}_X)$ 从离散 adic 空间到 $\\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。',
         '',
         '**第一步：$\\operatorname{Spec}$ 是层。** 对标准覆盖 $\\{(A,A^+) \\to (A_i,A_i^+)\\}$，$\\operatorname{Spec}$ 的粘合条件逐点验证：覆盖在拓扑空间层面是开覆盖，结构层由 $A \\to \\varprojlim A_i$ 的完全性给出（Prop 10.1(a)）。',
