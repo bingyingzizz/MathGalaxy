@@ -42,7 +42,7 @@
 | 命令 | 结果 |
 |---|---|
 | `bun tools/build.mjs` | ✅ 全绿，工作树零 diff |
-| `bun tools/_katexcheck.mjs` | ✅ **2813 个 `$$…$$`，失败 0**（FIX-005 删 #13 错不等式、FIX-009 删 def.normed-space 重复的 4 条公理 ⇒ 2815→2814→2813） |
+| `bun tools/_katexcheck.mjs` | ✅ **2812 个 `$$…$$`，失败 0**（FIX-005 删 #13 错不等式、FIX-009 删 def.normed-space 重复公理、FIX-011 删 `P^*AP` 块 ⇒ 2815→2814→2813→2812） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 12/12 |
 | `bun tools/searchcheck.mjs` | ✅ **31/31** —— 2026-11-05 补了 2 条「带空格」基准，§4.1 那个 bug 本身也被钉住了 |
@@ -398,7 +398,7 @@
 | 边 id 由全局序号派生 | ✅ **179 条形如 `e<数字>`**（`e16.definition` 这种）；222 个公开 proofs 页依赖它 ⇒ 内容一变 id 就漂 |
 | 骨架边无从标记 | 33 条 |
 
-⚠️ **节点页贴近 1300 B 上限**（2026-11-05 实测）：`def.manifold-chart` **1291**、`def.interior` **1284**、`thm.cauchy-inequality` **1282**、`def.orientable-manifold` **1272**、`thm.gauss-bonnet` **1268**、`def.transition-function` **1266** —— 再往这些陈述加一句就会红。
+⚠️ **节点页贴近 1300 B 上限**（2026-11-05 实测）：`thm.tensor-universal-property` **1300（顶格）**、`def.manifold-chart` **1291**、`def.interior` **1284**、`thm.cauchy-inequality` **1282**、`def.orientable-manifold` **1272**、`thm.gauss-bonnet` **1268**、`def.transition-function` **1266**、`def.gram-matrix` / `def.bilinear-form` 也接近 —— 再往这些陈述加一句就会红。
 
 ### 4.8 ⬜ 未动的大块
 
@@ -406,11 +406,17 @@
 |---|---|---|
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
-| 精读覆盖率 | 已 **814 / 1540（52.9%）** | 还剩 **726 条**没逐条精读 |
+| 精读覆盖率 | 已 **1051 / 1540（68.2%）**（v2 §39–§72） | 还剩 489 条没逐条精读 |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门
 （被它拦过：给 `def.outer-measure` 陈述加 3 条行内公式、英文没跟，当场红）。
+
+### 4.9 🟢 纯文本 `$` 与拖动样式（2026-11-05）
+
+- **`$` 硬门**：`assertNotation()` 现在除 node 的 `label/tags/refs` 外，还查 `MG.clusters/regions/sectors` 的 `name`/`en`。起因：星团 `fa.ck` 的 `name` 写成 `$C(K)$ 与 Stone–Weierstrass`，渲染层原样画 `$`（用户截图）。
+- **渲染防御**：`src/core/i18n.js` 的 `plainName()` 对显示副本剥除 `$`，每字段只 warn 一次；`localizeDisplay` / `labelOf` / `clusterName` / `regionName` 全覆盖；`renderer.labelSig` 加 `MG.displayEpoch`（否则离屏标签层不刷新）。
+- **拖动样式**：`html.dragging .floating{...}`（拖动时实色 / 去 backdrop 模糊）**已删、keep**。实测（CDP 真鼠标 70 步 ×2，4070Ti dpr1/dpr2/软合成）帧率无可测差异；有规则时拖动起止面板跳变一次（平均 |ΔRGB|≈4.55/255，变亮）。平板 Adreno 735 未测；要恢复就贴 `styles.css` 注释里的 5 行回滚片段。
 
 ---
 

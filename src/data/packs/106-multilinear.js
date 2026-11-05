@@ -35,7 +35,7 @@ window.MG = window.MG || {};
         '',
         '特例：**实**内积（正定对称）、辛形式（非退化交错）、二次型的极化（对称）都是双线性型。⚠ **复**内积不是双线性型，而是 **Hermite 半双线性**（如 $h(i,1)=-i$）。'
       ].join('\n'),
-      notes: '⭐ 双线性「比线性弱」：$B$ 不是 $V \\times W \\to U$ 的线性映射（$V \\times W$ 上的线性要求 $B(v + v\', w + w\') = B(v,w) + B(v\',w\')$，一般不对）。\n\n这正是张量积要解决的问题 —— **把双线性「翻译」成线性**。\n\n⭐ 固定一组基后，$\\operatorname{Bil}(V, W; K) \\cong M_{m \\times n}(K)$（取 $B(e_i, f_j)$），与「矩阵就是双线性型的系数」一致。\n\n⭐ $\\operatorname{Bil}(V, W; U) \\cong \\operatorname{Hom}(V \\otimes W, U)$ —— 这就是万有性质那一条。',
+      notes: '⭐ 双线性「比线性弱」：$B$ **一般不是** $V \\times W \\to U$ 的线性映射（零映射是唯一的例外；$V \\times W$ 上的线性要求 $B(v + v\', w + w\') = B(v,w) + B(v\',w\')$，一般不对）。\n\n这正是张量积要解决的问题 —— **把双线性「翻译」成线性**。\n\n⭐ $\\dim V, \\dim W < \\infty$ 时，固定一组基有 $\\operatorname{Bil}(V, W; K) \\cong M_{m \\times n}(K)$（取 $B(e_i, f_j)$），与「矩阵就是双线性型的系数」一致。\n\n⭐ $\\operatorname{Bil}(V, W; U) \\cong \\operatorname{Hom}(V \\otimes W, U)$ —— 这就是万有性质那一条。',
       refs: ['Lang, Algebra, Ch. XVI', 'Roman, Advanced Linear Algebra, Ch. 14']
     },
     {
@@ -69,7 +69,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['定理', '线性代数', '张量'],
       statement: [
-        '对每个线性映射（更一般地：双线性映射）$B : V \\times W \\to U$，存在**唯一**的线性映射',
+        '对每个**双线性映射** $B : V \\times W \\to U$（积空间上的线性映射未必双线性，如 $B(v,w) = v$），存在**唯一**的线性映射',
         '',
         '$$\\widetilde{B} : V \\otimes W \\to U, \\qquad \\widetilde{B}(v \\otimes w) = B(v, w)$$',
         '',
@@ -119,7 +119,7 @@ window.MG = window.MG || {};
         '',
         '$$v \\wedge v = 0, \\qquad v \\wedge w = -\\, w \\wedge v$$',
         '',
-        '并且 $\\dim \\bigwedge^{k} V = \\binom{n}{k}$（$n = \\dim V$）；$k > n$ 时 $\\bigwedge^{k}V = 0$。'
+        '并且当 $n = \\dim V < \\infty$ 时 $\\dim \\bigwedge^{k} V = \\binom{n}{k}$；$k > n$ 时 $\\bigwedge^{k}V = 0$。'
       ].join('\n'),
       notes: '⭐ 几何含义：$\\dim V = n$ 时 $\\bigwedge^{n} V$ 是**一维**的，而 $v_1 \\wedge \\cdots \\wedge v_n$ 正是「这 $n$ 个向量张成的平行体的有向体积」——它的系数就是行列式。\n\n⭐ 交错性是「商掉」实现的：$v \\wedge v = 0$（把 $v \\otimes v$ 送进商），这正是 `def.alternating-form` 那一条里「两个变元相等则为零」。\n\n⚠ 特征 $2$ 的域里 $v \\wedge w = -w \\wedge v$ 与 $v \\wedge w = w \\wedge v$ 是同一句话（$-1 = 1$），交错与对称不再可分。\n\n本图默认 $\\operatorname{char} K \\ne 2$。',
       refs: ['Lang, Algebra, Ch. XIX', 'Roman, Advanced Linear Algebra, Ch. 14']

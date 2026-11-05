@@ -2674,6 +2674,18 @@ function assertNotation(MG, graph) {
     for (const r of (n.refs || [])) if (String(r).includes('$')) errs.push(`纯文本字段：\`${n.id}\` 的 refs 含 $ —— ${String(r).slice(0, 60)}`);
   }
 
+  /* ⭐ 2026-11-05：星团 / 领域 / 板块的 name / en 也是纯文本字段。
+     fa.ck 的 name 曾写成 $C(K)$ 与 Stone–Weierstrass，渲染层只能原样画 $ —— 构建必须拦。
+     渲染层另有 i18n.plainName() 的剥除 + warn 防御，这里是硬门。 */
+  for (const [kind, arr] of [['星团', MG.clusters], ['领域', MG.regions], ['板块', MG.sectors]]) {
+    for (const x of (arr || [])) {
+      for (const f of ['name', 'en']) {
+        if (x[f] != null && String(x[f]).includes('$'))
+          errs.push(`纯文本字段：${kind}「${x.id}」的 ${f} 含 $ —— ${String(x[f]).slice(0, 60)}`);
+      }
+    }
+  }
+
   if (!MG.notation) return errs;
 
   const fields = N.bareUnicode || {};

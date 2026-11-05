@@ -164,7 +164,7 @@ window.MG = window.MG || {};
         '',
         '这样得到的拓扑是使含入映射 $Y \\hookrightarrow X$ 连续的最粗拓扑。'
       ].join('\n'),
-      notes: '直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。\n\n📌 本图另有 `def.induced-topology` 记同一件事（疑似重复，两条暂并存，等拍板合并）。',
+      notes: '直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。\n\n📌 本图另有 `def.induced-topology`，但那是**同名不同物**：它指景上由函子诱导的 Grothendieck 拓扑，与子空间拓扑只共享中文名（不合并）。',
       refs: ['Munkres, Topology']
     },
     {

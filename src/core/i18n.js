@@ -88,11 +88,39 @@
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
+  /* ⭐⭐ ENG-002（2026-11-05）：纯文本显示名的 `$` 防御。
+     `label`（节点）/ `name`（星团 / 领域 / 板块）按约定是**纯文本**，不过 markdown / KaTeX；
+     写了 `$…$` 只会把美元符号原样画在画布上（踩过：星团 `fa.ck` 的名字写成
+     「$C(K)$ 与 Stone–Weierstrass」，图上就真长这样）。
+     这里做两件事：
+       ① **剥除**：显示副本里去掉所有 `$`（画布 / 面板 / 搜索 / 图例同一个口径）；
+       ② **报警**：同一个字段只喊一次（kind + id + 原文前 100 字），让数据侧能修源头。
+     ⛔ 只动**显示副本**（`labelShow` / `nameShow` 与 `labelOf` 的返回值），绝不改 data 原字段。
+     ⛔ `title` / `statement` / `note` 不在此列：它们**允许**数学，走 KaTeX。
+     ⛔ 不「还原公式」：这些字段本就不该有公式，剥掉 `$` 后剩下的就是人写的纯文本。 */
+  var dollarWarned = 0, dollarSeen = Object.create(null);
+  function plainName(s, kind, id) {
+    var t = String(s == null ? '' : s);
+    if (t.indexOf('$') < 0) return t;
+    var key = kind + ':' + String(id);
+    if (!dollarSeen[key]) {
+      dollarSeen[key] = 1;
+      dollarWarned++;
+      if (dollarWarned <= 20) {
+        console.warn('[数学星图] 纯文本字段含 `$`（已从显示名剥除，请改数据）：'
+          + kind + ' `' + id + '` → ' + t.slice(0, 100));
+      } else if (dollarWarned === 21) {
+        console.warn('[数学星图] 纯文本字段含 `$` 的还有更多，后面不再逐条报。');
+      }
+    }
+    return t.replace(/\$/g, '');
+  }
+
   /** 节点显示名：英文模式优先 label_en → title_en → 中文 label */
   function labelOf(n) {
     if (!n) return '';
-    if (lang === 'en') return n.label_en || n.title_en || n.label || n.id;
-    return n.label || n.id;
+    if (lang === 'en') return plainName(n.label_en || n.title_en || n.label || n.id, 'node.label', n.id);
+    return plainName(n.label || n.id, 'node.label', n.id);
   }
   /** 节点正式名（面板大标题用）：英文模式优先 title_en → label_en → 中文 title */
   function titleOf(n) {
@@ -106,8 +134,12 @@
     if (!n) return typeof idOrNode === 'string' ? idOrNode : '';
     return labelOf(n);
   }
-  function clusterName(c) { return !c ? '' : (lang === 'en' ? (c.en || c.name) : c.name); }
-  function regionName(r) { return !r ? '' : (lang === 'en' ? (r.en || r.name) : r.name); }
+  function clusterName(c) {
+    return !c ? '' : plainName(lang === 'en' ? (c.en || c.name) : c.name, 'cluster.name', c.id);
+  }
+  function regionName(r) {
+    return !r ? '' : plainName(lang === 'en' ? (r.en || r.name) : r.name, 'region.name', r.id);
+  }
 
   /** index.html 里写死的静态文案：一次性按属性填 */
   function applyStatic(root) {
@@ -137,17 +169,18 @@
     var useEn = MG.displayLang === 'en';
     var n = 0;
     (graph.nodes || []).forEach(function (x) {
-      x.labelShow = useEn ? (x.label_en || x.title_en || x.label || x.id) : (x.label || x.id);
+      x.labelShow = plainName(useEn ? (x.label_en || x.title_en || x.label || x.id) : (x.label || x.id),
+        'node.label', x.id);
       n++;
     });
     (graph.clusters || []).forEach(function (c) {
-      c.nameShow = useEn ? (c.en || c.name) : c.name;
+      c.nameShow = plainName(useEn ? (c.en || c.name) : c.name, 'cluster.name', c.id);
     });
     (graph.regions || []).forEach(function (r) {
-      r.nameShow = useEn ? (r.en || r.name) : r.name;
+      r.nameShow = plainName(useEn ? (r.en || r.name) : r.name, 'region.name', r.id);
     });
     (graph.sectors || []).forEach(function (s) {
-      s.nameShow = useEn ? (s.en || s.name) : s.name;
+      s.nameShow = plainName(useEn ? (s.en || s.name) : s.name, 'sector.name', s.id);
     });
     MG.displayEpoch = (MG.displayEpoch || 0) + 1;
     /* 文本量缓存：键里已经带 displayLang（见 renderer.js 的 textCacheKey），

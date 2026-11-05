@@ -2088,8 +2088,11 @@
       var f = view.focus ? (view.focus.type + ':' + view.focus.id) : '';
       var h = (view.hover && view.hover.type === 'node') ? view.hover.id : '';
       var s = view.searchIds ? Object.keys(view.searchIds).join(',') : '';
+      /* ⭐ ENG-002：`displayEpoch` 必须进 key。它一变（localizeDisplay 重算显示名，
+         比如外部内容包并入、或数据里的名字被改）离屏标签层里贴的就是**旧文字**；
+         以前只清文本宽度缓存、没让这一层失效 ⇒ 名字要等下一次机位变化才更新。 */
       return f + '|' + h + '|' + s + '|' + (C.showLabels ? '1' : '0') + '|'
-        + (MG.displayLang || 'zh') + '|' + sigEpoch;
+        + (MG.displayLang || 'zh') + '|' + (MG.displayEpoch || 0) + '|' + sigEpoch;
     }
 
     /** 回放：把离屏标签层整块按 (dx,dy) 搬一次 —— 零测量、零避让、零重排 */

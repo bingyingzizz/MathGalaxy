@@ -48,9 +48,10 @@
     }
 
     /* ------------------------------------------------------- 指针按下 */
-    /* 手势期间给 <html> 挂 .dragging：浮动 UI 那一层 backdrop 模糊在「背后 canvas 每帧都变」
-       时是合成器的固定开销，拖动/缩放期间先关掉（样式见 styles.css，⛔ 不加 transition）。
-       滚轮没有起止事件 ⇒ 用一个短去抖计时器收尾。 */
+    /* 手势期间给 <html> 挂 .dragging：**现在没有样式消费者** —— 2026-11-05 复核后
+       去掉了「拖动期间关 backdrop 模糊」那条规则（同机 A/B 无帧率差异，见 styles.css 注释）。
+       这个 class 留作**钩子**（将来要加拖动态样式直接写 `html.dragging …` 即可）。
+       滚轮没有起止事件 ⇒ 用一个短去抖计时器收尾（顺带补一帧，见下面的注释）。 */
     var dragStateTimer = 0, dragStateOn = false;
     function setDragState(on, holdMs) {
       if (on) {

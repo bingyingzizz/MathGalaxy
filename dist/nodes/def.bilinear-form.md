@@ -7,7 +7,7 @@ layer 13 · 定义 · 多重线性与张量 · 抽象代数
 
 $$B(v + cv', w) = B(v, w) + c\,B(v', w), \qquad B(v, w + cw') = B(v, w) + c\,B(v, w')$$
 
-$V = W$、$U = K$ 时叫 $V$ 上的**双线性型**。记全体为 $\operatorname{Bil}(V, W; U)$，它按逐点运算构成 $K$-向量空间。
+$V = W$、$U = K$ 时叫 $V$ 上的**双线性型**。记全体为 $\operatorname{Bil}(V, W; U)$，按逐点运算构成 $K$-向量空间。
 > 陈述续见 [nodes/def.bilinear-form.2.md](./def.bilinear-form.2.md)
 
 

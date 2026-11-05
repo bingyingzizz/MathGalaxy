@@ -55,10 +55,6 @@ html, body {
 
 /* ---------- 浮动 UI 通用 ---------- */
 .floating {
-  /* ⚠️ 拖动/缩放期间 JS 会给 <html> 挂 .dragging：那时关掉 backdrop-filter 并换成接近不透明的
-     实色背景。原因：浮动 UI 是 fixed 的、拖动时它自己不动，而背后的 canvas 每帧都在变
-     ⇒ 合成器每帧都要重新模糊 backdrop。⛔ 不要给 backdrop-filter 加 transition，
-     过渡本身就会产生每帧成本。 */
   position: fixed;
   z-index: 10;
   background: var(--glass);
@@ -69,13 +65,21 @@ html, body {
   box-shadow: var(--shadow-sm);
 }
 
-/* 拖动 / 缩放 / 平移进行时：浮动 UI 换成接近不透明的实色，去掉 backdrop 模糊。
-   ⛔ 这里不许加 transition（过渡期间每帧都要重新模糊，等于没省）。 */
-html.dragging .floating {
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  background: rgba(255, 255, 255, 0.94);
-}
+/* ⛔ 2026-11-05 去掉了「拖动时把 .floating 换成不透明实色、关掉 backdrop 模糊」那条规则。
+   复核（引擎会话 2026-11-05，同机 A/B，CDP 真鼠标拖动 70 步，每臂 2 次）：
+     · 帧率：**没有可测差异**。
+         GPU（RTX 4070 Ti，rAF 不锁帧）dpr1：无规则 4.28 / 4.33 ms ｜ 有规则 4.22 / 4.21；
+                                            dpr2：无规则 4.25 / 4.20 ｜ 有规则 4.23 / 4.22。
+         软件合成（--disable-gpu）：两臂都卡在 60 fps 上限（16.67 ms），无差异。
+       原始 commit 4a110a80 自己记的也是「p95 收益未证实（−7%，低于 15% 门槛）」。
+     · 视觉：有规则时拖动开始/结束面板会**跳变一次**（blur 关→开；背景 86% → 94% 白）；
+       在有内容的背景上实测平均 |ΔRGB| = 4.55/255（≈1.8%，方向是变亮，不是「闪白」）。
+       无规则则拖动期间**完全不跳**。
+   ⚠️ 平板（Adreno 735）没实测。若那边拖动掉帧，恢复下面这 5 行即可：
+        html.dragging .floating { -webkit-backdrop-filter: none; backdrop-filter: none;
+                                  background: rgba(255,255,255,.94); }
+   JS 那边 interaction.js 仍然会给 <html> 挂 .dragging（现在没有样式消费者），
+   留着无副作用（将来要加别的拖动态样式还能用）。 */
 
 /* ---------- 搜索 ---------- */
 #search-box {
