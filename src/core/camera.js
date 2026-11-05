@@ -14,8 +14,9 @@
        （用户 2026-10-17 报的「图有一截藏在侧栏后面」）。
        内缩由 app 量 DOM **实体**（getBoundingClientRect / display）后 setInsets 传进来 ——
        引擎不认识界面，也不该猜宽度。
-       ⛔ 可用矩形只在这里算一处：renderer.fitZoom() 的 k₀ 也必须读 availRect()，
-          两处各算一遍就会像 layout.stat.radius / background.paintRegion 那样漂。 */
+       ⛔ 可用矩形只在这里算一处：相机（fit / centerOn / animateTo）用它。
+           ⚠️ LOD 的基准**不再**读它 —— ENG-001（2026-11-05 用户拍板）之后 LOD 用
+           与视口无关的固定参考基准 renderer.lodK0，否则图例一折 / 说明条一展就会换档。 */
     var insets = { left: 0, right: 0, top: 0, bottom: 0 };
 
     function availRect() {
@@ -117,39 +118,25 @@
         cam.centerOn((bbox.minX + bbox.maxX) / 2, (bbox.minY + bbox.maxY) / 2);
       },
 
-      /* ⭐ 视口 / 可用区变了、但用户**没滚轮** ⇒ 保持「相对缩放」k/k₀ 不变。
-         为什么必须有这一步：LOD 的档位判据是 r = k / fitZoom()（见 renderer.computeLod），
-         fitZoom() 跟着视口与可用区走。窗口一缩、图例一折、说明条一展，k₀ 就变；
-         若 cam.k 不动，r 会被抬高一截 ⇒ 全景档被误判成「放大」，把上千个点画出来
-         （用户 2026-11-05 报的「没动滚轮却识别我在不同的缩放大小」）。
-         做法：按 p = 新k₀/旧k₀ 等比缩放 k（夹到 min/max），再把**变化前可用区中心的世界点**
-         (wx,wy) 放回新可用区中心 —— 顺手修掉「resize 之后内容偏到左上角」。
-         ⚠️ 动画中的关键帧也一起换算：tick() 每帧按 k0/tx0 → k1/tx1 插值，
-            只改当前机位的话下一帧就会被拉回旧基准。 */
-      remapViewport: function (p, av0, wx, wy) {
-        if (!(p > 0) || !isFinite(p) || !isFinite(wx) || !isFinite(wy)) return false;
+      /* ⭐⭐ 视口 / 可用区变了、但用户**没滚轮** ⇒ **只平移，不改 k**。
+         用户 2026-11-05 拍板：「同一个显示大小（k = CSS px / 世界单位）在任何视口下
+         都对应同一个缩放值；窗口变化只改变可见范围，不改变 k、不改变 LOD 档」。
+         所以这里只做一件事：把**变化前可用区中心的世界点** (wx,wy) 放回新可用区中心
+         ⇒ 内容不会偏到左上角，k 一动不动（屏幕上的点/字大小不变）。
+         LOD 的基准也已改成与视口无关的 renderer.lodK0，窗口变化不再换档。
+         ⚠️ 动画中的关键帧也要平移同样的位移：tick() 每帧按 k0/tx0 → k1/tx1 插值，
+            只改当前机位的话下一帧就会被拉回旧的中心。 */
+      keepCenter: function (av0, wx, wy) {
+        if (!isFinite(wx) || !isFinite(wy)) return false;
         var av = availRect();
-        var c0x = (av0 && isFinite(av0.cx)) ? av0.cx : av.cx;
-        var c0y = (av0 && isFinite(av0.cy)) ? av0.cy : av.cy;
-        var k2 = U.clamp(cam.k * p, CFG.minZoom, CFG.maxZoom);
-        cam.k = k2;
-        cam.tx = av.cx - wx * k2;
-        cam.ty = av.cy - wy * k2;
+        cam.tx = av.cx - wx * cam.k;
+        cam.ty = av.cy - wy * cam.k;
         var a = cam._anim;
         if (a) {
-          function remapKF(tx, ty, kk) {
-            if (!(kk > 0) || !isFinite(tx) || !isFinite(ty)) return null;
-            var k3 = U.clamp(kk * p, CFG.minZoom, CFG.maxZoom);
-            return {
-              k: k3,
-              tx: av.cx - ((c0x - tx) / kk) * k3,
-              ty: av.cy - ((c0y - ty) / kk) * k3
-            };
-          }
-          var s0 = remapKF(a.tx0, a.ty0, a.k0);
-          var s1 = remapKF(a.tx1, a.ty1, a.k1);
-          if (s0) { a.k0 = s0.k; a.tx0 = s0.tx; a.ty0 = s0.ty; }
-          if (s1) { a.k1 = s1.k; a.tx1 = s1.tx; a.ty1 = s1.ty; }
+          var dx = av.cx - ((av0 && isFinite(av0.cx)) ? av0.cx : av.cx);
+          var dy = av.cy - ((av0 && isFinite(av0.cy)) ? av0.cy : av.cy);
+          a.tx0 += dx; a.ty0 += dy;
+          a.tx1 += dx; a.ty1 += dy;
         }
         return true;
       },

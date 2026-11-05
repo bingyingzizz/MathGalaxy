@@ -88,6 +88,12 @@
     var world = null, wW = 0, wH = 0;
     var last = { k: -1, tx: 0, ty: 0, dpr: 0, vw: 0, vh: 0 };
     var lastMove = 0, lastTransform = '', lastKey = '', speed = 0, speedMax = 0;
+    /* ⭐ ENG-001：最近一次 tick 收到的绘制输入 key。
+       `runBake`（同步全烘）以前把 `lastKey` 写进 snap —— 而 lastKey 只在「开一轮」时更新，
+       于是「停稳后由定时器补烘」烘出来的图带着**上一轮的 key**：
+       下一帧一比对就又 stale ⇒ 白重烘一次，或者（更糟）判断永远对不上。
+       同步全烘必须用「此刻的」key。 */
+    var seenKey = '';
     var lastBakeT = 0;                   // 上一次「出图完成」的时刻（缩放手势的限频基准）
     var slackFall = 0, lastSlack = 0;    // 「余量每帧在掉多少」的衰减峰值（缩放/加速拖动）
     var rlLog = [];                      // 近若干次「画布重新分配」（W×H 变了）—— 排查抖动用
@@ -294,7 +300,7 @@
       if (gen !== buildGen) { stats.skipped++; return; }
       /* ⚠️ 顺序要紧：先用**新快照**写定位，再显示、再换代。烘完没有下一帧，
          等下一帧才定位会让新图带着上一世的 transform 显示（实测整层错位）。 */
-      snap = { ready: true, rect: r, mode: pick.mode, scale: s.scale, k: k, dpr: dpr, rev: ++rev, key: lastKey };
+      snap = { ready: true, rect: r, mode: pick.mode, scale: s.scale, k: k, dpr: dpr, rev: ++rev, key: seenKey };
       cur = idx;
       elRect[idx] = r; elScale[idx] = s.scale; elTrans[idx] = '';
       setClip(idx, 0, 0);                  // 刚烘出来的那一代必须整张可见（它可能刚被换过来用）
@@ -586,6 +592,7 @@
             ⛔ 别把 lazy 做成「整帧不 tick」—— 那就是把落位也省掉了。 */
     function tick(cam, dpr, paintKey, opt) {
       var lazy = !!(opt && opt.lazy);
+      if (paintKey != null) seenKey = paintKey;   // 同步全烘（runBake）要写「此刻的」key
       if (!els[0]) attach();
       dpr = Math.max(1, dpr || 1);
       var k = cam.k;

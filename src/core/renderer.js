@@ -131,7 +131,7 @@
       var L = C.lod;
       var spec = L.tierBound || [1.03, 2.03, 4.90];
       var h = L.tierHysteresis == null ? 0.05 : L.tierHysteresis;
-      var k0 = fitZoom();
+      var k0 = lodK0();                    // ⛔ 只认固定参考基准（与实时视口无关）
       while (holdTier < spec.length && k > spec[holdTier] * k0 * (1 + h)) holdTier++;
       while (holdTier > 0 && k < spec[holdTier - 1] * k0 * (1 - h)) holdTier--;
       return holdTier;
@@ -139,44 +139,35 @@
 
     /* ------------------------------------------------------------------
        LOD 阈值换算（写法见 config.lod 的注释）
-         { rel: [a,b] } → 乘以「适配全部」的缩放 k₀
+         { rel: [a,b] } → 乘以 lodK0（固定参考视口下「适配全部」的 k）
          { px:  [a,b] } → 屏幕上相邻两点的像素距离 ÷ idealDist
        ------------------------------------------------------------------ */
-    var fitKCache = 0, fitKKey = '';
+    var lodK0Cache = 0, lodK0Key = '';
 
-    /** 「适配全部」时相机该停在哪 —— 和 cam.fit() 用同一套公式 */
-    function fitZoom() {
+    /** LOD 的唯一基准 k₀ —— **与实时视口无关**。
+        ⭐⭐ ENG-001（2026-11-05 用户拍板）：同一个 k（CSS px / 世界单位）在任何窗口大小下
+        必须落在同一 LOD 档；窗口变化只改变「看得到多少」，不改变「放大到几倍」。
+        所以基准只能是**固定参考视口 1600×900 + 固定参考内缩**算出来的「适配全部」k
+        （config.lod.ref）—— ⛔ 绝不读 cam.viewW / viewH / availRect：
+        读了就又跟视口绑死，窗口一变 k₀ 就变 ⇒ 用户没滚轮却换了档（这就是旧 bug 的根）。
+        参考内缩取桌面实测值，使桌面开页那一档 r≈1，config.lod 里 10+ 处 {rel:…}
+        阈值全部沿用旧标定。 */
+    function lodK0() {
       var bb = view.graph.bbox();
-      /* ⚠️ LOD 的 `{rel:…}` 规格（10 处，含包络 envelopeIn/Out）是按「适配全部」的 k₀ 定的倍数，
-         所以这里必须用**视口**尺寸，不能用 W/H —— 烘焙时 W/H 是那张大画布的像素尺寸
-         （比如 3312×2056 或 4186×3552），跟视口差一大截 ⇒ 两条路算出的 LOD 完全不是一回事，
-         于是「包络在星图里和实拍不一样浓/干脆看不见」。
-         判据要用 camNow().viewW/viewH（staticCam 也带这两个字段）。 */
-      var c = camNow();
-      var vw = c.viewW || W, vh = c.viewH || H;
-      /* ⭐ 与 camera.fit() 用**同一块可用矩形**（扣掉左栏 / 底部说明条）。
-         以前这里按整个视口算 k₀，而「适配全部」按视口算 ⇒ 两边一致；
-         2026-10-17 给相机加了内缩之后，这里必须跟着读 availRect()，
-         否则 {rel:…} 的阈值全部和「用户看到的那一档」错位
-         （正是 config 注释里那条铁律：同一个量不许在两个文件里各算一遍）。 */
-      /* ⛔ 这里必须和 camera.fit() 用**同一块可用矩形**（而不是整个视口）：
-         「适配全部」按 availRect 停相机，LOD 的 r=1 也必须按同一个 availRect 算，
-         否则用户点「适配全部」时 r ≠ 1，全景档当场就错位。
-         2026-10-19 曾试着改成整个视口，结果 1200×640 上 r 被抬到 1.5（见下）；
-         真正的解法不是让基准跟 UI 无关，而是让**用户没滚轮时 r 不变** ——
-         app 的 keepRelZoom() 在视口/内缩变化时按新旧 k₀ 等比缩放 cam.k（ENG-001）。
-         基准只该回答「内容铺满一屏是多少」；UI 覆盖率一变，由相机那边补偿。 */
-      var av = (typeof c.availRect === 'function') ? c.availRect() : { w: vw, h: vh };
-      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh, av.w, av.h].join(',');
-      if (key === fitKKey) return fitKCache;
-      var pad = Math.min(C.camera.fitPadding, Math.min(av.w, av.h) * 0.18);
-      var aw = Math.max(40, av.w - pad * 2), ah = Math.max(40, av.h - pad * 2);
+      var ref = C.lod.ref || {};
+      var vw = ref.w || 1600, vh = ref.h || 900;
+      var left = ref.left || 0, bottom = ref.bottom || 0;
+      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh, left, bottom].join(',');
+      if (key === lodK0Key) return lodK0Cache;
+      var aw0 = Math.max(40, vw - left), ah0 = Math.max(40, vh - bottom);
+      var pad = Math.min(C.camera.fitPadding, Math.min(aw0, ah0) * 0.18);
+      var aw = Math.max(40, aw0 - pad * 2), ah = Math.max(40, ah0 - pad * 2);
       var w = Math.max(1, bb.maxX - bb.minX), h = Math.max(1, bb.maxY - bb.minY);
-      fitKCache = U.clamp(Math.min(aw / w, ah / h),
+      lodK0Cache = U.clamp(Math.min(aw / w, ah / h),
         Math.max(C.camera.minZoom, C.camera.fitMinZoom),
         Math.min(C.camera.maxZoom, C.camera.maxFitZoom));
-      fitKKey = key;
-      return fitKCache;
+      lodK0Key = key;
+      return lodK0Cache;
     }
 
     /** 把 config 里的阈值写法换算成绝对 k */
@@ -185,7 +176,7 @@
         var d = C.layout.idealDist || 120;
         return [spec.px[0] / d, spec.px[1] / d];
       }
-      var k0 = fitZoom();
+      var k0 = lodK0();
       return [spec.rel[0] * k0, spec.rel[1] * k0];
     }
 
@@ -249,15 +240,14 @@
       var mid = smoothstep(dIn[0], dIn[1], k) * (1 - smoothstep(dOut[0], dOut[1], k));
       var floor = C.edge.definitionMidScale == null ? 0.60 : C.edge.definitionMidScale;
       lodA.defDim = 1 - (1 - floor) * mid;
-      /* ⭐⭐ 2026-10-18 Stage 1b：闸门换 **r = k / kFit**（与缩放尺度无关）。
+      /* ⭐⭐ 2026-10-18 Stage 1b：闸门换 **r = k / k₀**（与缩放尺度无关）。
          绝对 k 会把「适配全部」和「放大到某个 k」混为一谈：世界盒一变，
-         同样的 k 就是另一个缩放档，全景反而把节点名全放出来（labelCount=92）。 */
-      var kFit0 = 0;
-      /* ⛔ 2026-10-19：**不再用缓存的 kFit0**。平板/换屏/横竖屏之后 fitZoom 会变，
-         而缓存的旧值会让 r=k/kFit 偏移 —— 表现就是「平板上全图还看得见节点和推出线，
-         电脑上却是干净的全景」。fitZoom 只是一次除法，每帧现算不心疼。 */
-      kFit0 = (function () { try { return fitZoom(); } catch (e) { return 0; } })();
-      var rRel = kFit0 > 0 ? k / kFit0 : 1;
+         同样的 k 就是另一个缩放档，全景反而把节点名全放出来（labelCount=92）。
+         ⭐⭐ ENG-001：k₀ 现在是**固定参考视口**的 lodK0（与实时视口无关）——
+            同一个 k 在任何窗口大小下 r 相同 ⇒ LOD 相同（用户 2026-11-05 拍板）。 */
+      var k0Ref = 0;
+      k0Ref = (function () { try { return lodK0(); } catch (e) { return 0; } })();
+      var rRel = k0Ref > 0 ? k / k0Ref : 1;
       lodA.rRel = rRel;
       /* ⭐ 2026-10-19：线的「最低可见度」只能是 r 的**一条连续曲线** —— 原来全景顶 0.30、
          中景顶 0.34、近景靠 px 闸门自然满值，三段拼出来就是「蓝→淡→蓝」的台阶。 */
@@ -897,19 +887,15 @@
       /* ⚠️ staticCam 必须是「够用的相机」：凡是用 camNow() 的地方都会拿到它，
          所以要带上 toScreen（traceEnvelope 用）。以前这里没有它、而 drawEnvelopes
          传的是 view.cam（实时相机）⇒ 烘焙里的包络一直按实时机位画，是错的。 */
-      /* ⚠️ viewW/viewH 必须是**视口**尺寸（不是画布尺寸 W/H）——fitZoom() 靠它算
-         「适配全部」的 k₀，而 LOD 的 {rel:…} 规格（10 处）是 k₀ 的倍数。
-         填成画布尺寸 ⇒ 烘焙的 LOD 与实时画完全对不上（表现：包络等软色层浓度不对/看不见）。
-         裁剪用的是 W/H 全局量，与这里无关，所以两种口径不会打架。 */
+      /* ⚠️ staticCam 只是「够用的相机」：LOD 的 k₀ 现在走固定参考视口（lodK0），
+         已经**不再读**视口尺寸 / availRect；这两个字段留着是因为别的实时画路径
+         习惯从 camNow() 上取它们（删掉会静默变成 undefined）。 */
       staticCam = {
         k: scale, tx: -rect.minX * scale, ty: -rect.minY * scale,
         /* ⭐ 烘焙的 LOD 必须按**真实相机 k** 判，不能按 scale（= k×dpr）——
            见 computeLod 开头那段。缺省（老调用方只传四个参数）退回 scale。 */
         lodK: (lodK > 0 ? lodK : scale),
         viewW: view.cam.viewW, viewH: view.cam.viewH,
-        /* ⚠️ fitZoom() 现在按「可用矩形」算 k₀（与 camera.fit 同一套）。
-           烘焙时相机是这张假对象，所以必须把同一个 availRect 递过去 ——
-           漏了就会退回「整个视口」口径，烘出来的 LOD 和实时画对不上。 */
         availRect: function () { return view.cam.availRect(); },
         toScreen: function (x, y) { return { x: x * this.k + this.tx, y: y * this.k + this.ty }; }
       };
@@ -1469,7 +1455,7 @@
      *    所以定义线相交处由「更深」变成「同样深浅」—— 观感反而更干净。
      */
     function drawEdges(list) {
-      /* ⭐ 线条三档（r = k/kFit）：定义引用线**只在 L3（r ≥ 2.8）**画。
+      /* ⭐ 线条三档（r = k/lodK0）：定义引用线**只在 L3（r ≥ 2.8）**画。
          L0 一条不画、L1–L2 只画推出/等价骨架 —— 都在 drawEdgeOne 里判。
          「全部连线」绕过所有闸门。 */
       /* 只有**定义引用线**走「合并描边」的快路径：它占全部连线 89%（1244/1391），
@@ -1652,8 +1638,8 @@
                  和缩放到哪一档无关（任何缩放下同一条边的浓淡都是同一个值）。
              ⭐ 近景**保留连续下限**：`edgeFloor` 在 r=2.8 处正好是 0.75，而节点级的
                `nodeEdge` 要等「节点间距 36~66 px」（k 0.30~0.55）才亮起来 ——
-               手机上 kFit≈0.06 ⇒ 那是 r≈5~9。于是 r 2.8→5 这一段黑线被 nodeEdge=0
-               掐成**一条都不画**，与 r<2.8 的 0.75 之间是一道断崖（实测 2.79→2.81
+               按 lodK0≈0.128 换算就是 r≈2.35~4.3。于是 r 2.8→4.3 这一段黑线被
+               nodeEdge=0 掐成**一条都不画**，与 r<2.8 的 0.75 之间是一道断崖（实测 2.79→2.81
                一步之内：203 条 drawn@0.75 变成 4 条 drawn + 166 条 faded）。
                近景不该比中景更淡 ⇒ 下限与中景同一条曲线（lodA.edgeFloor）。
              ⛔ 带 `!view.focus`：聚焦时 alphaForEdge 会把无关的边压到 dimEdge，
@@ -2628,7 +2614,7 @@
       labelBudget: function () { return nodeNameBudget(); },
       /* 诊断用：当前帧的 LOD 读数（档位 / 三档名字 / 定义线系数）。
          ⚠️ 只读快照，别拿它当状态改 —— holdTier 的真源在 computeLod 里。 */
-      fitZoom: fitZoom,                                  // 「适配全部」的 k₀（与 LOD 同一口径）
+      lodK0: lodK0,                                     // LOD 的唯一基准（固定参考视口，与实时视口无关）
       /* ⭐ ENG-001：位图缓存（worldbitmap）的绘制输入里必须带这一项。
          它现算 LOD，把**烘焙真正读的那几个闸门**压成一个短串：
            · nodeDot    —— 全景不画点（r=1.32~1.42 淡入）

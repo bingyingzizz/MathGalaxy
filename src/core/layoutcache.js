@@ -173,44 +173,38 @@
 
   /* -------------------------------------------------------------- 相机 */
   /* 「上次看到哪」也存一下：否则每次刷新都从「全部适配」重新开始动画。
-     ⭐⭐ ENG-001：**必须存「相对缩放」**。
-        以前只存 k/tx/ty。换一个视口重开时，同一个 k 对应的 r = k/k₀ 完全变了
-        （视口小 ⇒ k₀ 小 ⇒ r 被抬到 1.3+）⇒ LOD 把全景误判成放大档，一千多个点全画出来。
-        现在存 k 的同时记下当时的 k₀（fitK）与可用区中心的世界点 (cx,cy)：
-        · k / fitK = 用户真正的「相对缩放」，与视口无关；
-        · (cx,cy) 是世界坐标，与视口无关 —— 恢复时对新视口 `centerOn` 即可。
-        `v` 是格式版本：未来改字段就 +1，旧记录自动作废（宁可回到默认视角，不可用错缩放）。 */
+     ⭐⭐ ENG-001（2026-11-05 用户拍板）：**存绝对 k + 世界中心**。
+        k 就是「CSS px / 世界单位」，与视口无关；换窗口重开必须还是同一个显示大小
+        （窗口变化只改「看得到多少」，不改 k、不改 LOD 档）。
+        以前存 k/tx/ty —— tx/ty 是屏幕像素平移量，只有**同一个视口**才还原得对；
+        现在改存可用区中心的世界坐标 (cx,cy)，恢复时对新视口 `centerOn` 即可。
+        `v` 是格式版本：v2 起是 {k, cx, cy}。旧 v1 没有世界中心 ⇒ 返回 null（回默认视角）。 */
   var CAM_V = 2;
-  function saveCam(cam, fitK) {
+  function saveCam(cam) {
     if (!cam || !isFinite(cam.k) || cam.k <= 0) return false;
-    if (!(fitK > 0) || !isFinite(fitK)) return false;
     if (typeof cam.availRect !== 'function' || typeof cam.toWorld !== 'function') return false;
     var av = cam.availRect();
     var w = cam.toWorld(av.cx, av.cy);
     if (!isFinite(w.x) || !isFinite(w.y)) return false;
     return writeJSON(CAM_KEY, {
-      v: CAM_V, k: cam.k, fitK: fitK, cx: w.x, cy: w.y,
+      v: CAM_V, k: cam.k, cx: w.x, cy: w.y,
       /* 视口尺寸只做诊断；恢复不读它（读了就又跟视口绑死了） */
       vw: cam.viewW, vh: cam.viewH
     });
   }
 
-  /** 读出相机并**按当前视口归一化**；没有 / 不合法 / 明显跑到世界外面 ⇒ null。
-      返回 { k, cx, cy }：k 已按 r = 存的 k / 存的 fitK 换算到当前 k₀，
-      调用方拿到后 `cam.k = k; cam.centerOn(cx, cy)`。 */
-  function loadCam(graph, fitK) {
+  /** 读出相机；没有 / 不合法 / 明显跑到世界外面 ⇒ null。
+      返回 { k, cx, cy }：k 是**绝对缩放**（与视口无关），调用方拿到后
+      `cam.k = clamp(k); cam.centerOn(cx, cy)`。
+      ⚠️ 旧 v2 记录里若有 fitK 一律忽略 —— 不再乘当前视口的 fit。 */
+  function loadCam(graph) {
     var d = readJSON(CAM_KEY);
     if (!d || d.v !== CAM_V) return null;
     /* ⚠️ 不能只用 isFinite：JSON 把 NaN 写成 null，而 isFinite(null) 是 **true**
        （Number(null) === 0）—— 这样坏值会一路流进来。必须逐字段查 typeof。 */
-    if (typeof d.k !== 'number' || typeof d.fitK !== 'number' ||
-      typeof d.cx !== 'number' || typeof d.cy !== 'number') return null;
-    if (!isFinite(d.k) || !isFinite(d.fitK) || !isFinite(d.cx) || !isFinite(d.cy)) return null;
-    if (!(d.k > 0) || !(d.fitK > 0) || !(fitK > 0) || !isFinite(fitK)) return null;
-    /* r 的合理范围：1/16 ~ 16 倍 k₀。这是「坏值/旧格式」的闸门，不是审美限制；
-       真正的上下限仍由 camera.minZoom / maxZoom 夹（调用方做）。 */
-    var r = d.k / d.fitK;
-    if (!isFinite(r) || r < 1 / 16 || r > 16) return null;
+    if (typeof d.k !== 'number' || typeof d.cx !== 'number' || typeof d.cy !== 'number') return null;
+    if (!isFinite(d.k) || !isFinite(d.cx) || !isFinite(d.cy)) return null;
+    if (!(d.k > 0)) return null;
     var bb = graph.bbox && graph.bbox();
     if (bb) {
       /* 世界中心要求落在内容包围盒里（放宽一圈）—— 存档换了内容/设备时别乱跳 */
@@ -219,7 +213,7 @@
       var halfW = (bb.maxX - bb.minX) / 2 + pad, halfH = (bb.maxY - bb.minY) / 2 + pad;
       if (Math.abs(d.cx - mx) > halfW || Math.abs(d.cy - my) > halfH) return null;
     }
-    return { k: fitK * r, cx: d.cx, cy: d.cy };
+    return { k: d.k, cx: d.cx, cy: d.cy };
   }
 
   MG.layoutCache = {
