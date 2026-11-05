@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T05:20:30.377Z",
+  "generated": "2026-11-05T05:27:10.649Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -75052,8 +75052,8 @@
    ],
    "target": "thm.mittag-leffler",
    "title": "亚纯函数的定义 $\\implies$ Mittag-Leffler 定理（只给证明骨架）",
-   "proof": "⚠ 这一条只记**证明骨架**，不是逐行完整的证明：完整证明要用 Runge 逼近或 Weierstrass 收敛因子，属于逼近论的内容，这里不展开。\n\n**第一步：先排成一个没有聚点的序列。** 假设里 $\\{a_k\\}$ 在 $\\Omega$ 内没有聚点，把它按 $|a_k|$ 从小到大排好（若序列有限，直接减去有限和即可，没有收敛问题）。\n\n**第二步：造一个「差不多对」的候选。** 取\n\n$$F(z) := \\sum_{k=1}^{\\infty} P_k\\left( \\frac{1}{z - a_k} \\right).$$\n\n若这个级数在每个紧集上一致收敛，它就直接是答案：在每个 $a_k$ 附近只有 $P_k$ 那一项有极点，其余各项全纯。\n\n**第三步：修正发散。** 一般地级数并不收敛。取一列紧集 $K_n \\nearrow \\Omega$，对每个 $k$ 在 $a_k$ 处把 $P_k$ 减去它的 Taylor 多项式 $T_k$（次数足够高），使得\n\n$$\\left| P_k\\left( \\frac{1}{z - a_k} \\right) - T_k(z) \\right| \\le 2^{-k} \\qquad (z \\in K_k).$$\n\n这样的 $T_k$ 存在，因为 $P_k$ 在 $a_k$ 之外全纯，可以在 $K_k$ 上用 Taylor 展开逼近。\n\n**第四步：收敛与主部。** 修正后的级数 $\\sum_k (P_k - T_k)$ 在每个 $K_n$ 上一致收敛（从第 $n$ 项起每项都 $\\le 2^{-k}$）。而减去的 $T_k$ 在 $a_k$ 处全纯、不影响主部，故极限函数在 $a_k$ 处的主部仍是 $P_k$。\n\n**第五步：唯一性。** 两个解之差处处全纯（极点与主部都被消掉），是 $\\Omega$ 上的整函数。$\\blacksquare$",
-   "note": "⚠ 这条边给的是「结构 + 关键构造」，第三步的逼近细节（$T_k$ 的存在性）依赖 Runge 逼近，这里没有证。"
+   "proof": "⚠ 这一条只记**证明骨架**，不是逐行完整的证明：完整证明要用 Runge 逼近或 Weierstrass 收敛因子，属于逼近论的内容，这里不展开。\n\n**第一步：先排成一个没有聚点的序列。** 假设里 $\\{a_k\\}$ 在 $\\Omega$ 内没有聚点，把它用**紧集穷竭**列出来：取紧集 $K_{n}\\nearrow\\Omega$（$\\bigcup_{n}K_{n}=\\Omega$），每个 $K_{n}$ 里只含有限多个 $a_{k}$（没有聚点），于是按「首次进入 $K_{n}$ 的次序」就能列成 $a_{1},a_{2},\\ldots$。（若序列有限，直接减去有限和即可，没有收敛问题。）⚠️ **不能按 $\\lvert a_{k}\\rvert$ 排序**：$\\Omega=\\{\\,0<\\lvert z\\rvert<1\\,\\}$、$a_{k}=\\frac{1}{k+1}$ 在 $\\Omega$ 内没有聚点，却根本没有模最小的那一个。\n\n**第二步：造一个「差不多对」的候选。** 取\n\n$$F(z) := \\sum_{k=1}^{\\infty} P_k\\left( \\frac{1}{z - a_k} \\right).$$\n\n若这个级数在每个紧集上一致收敛，它就直接是答案：在每个 $a_k$ 附近只有 $P_k$ 那一项有极点，其余各项全纯。\n\n**第三步：修正发散。** 一般地级数并不收敛。取一列紧集 $K_n \\nearrow \\Omega$，对每个 $k$ 减去一个**在 $\\Omega$ 上全纯**的修正项 $T_{k}$（取成极点在 $\\hat{\\mathbb{C}}\\setminus\\Omega$ 里的有理函数），使得\n\n$$\\left| P_k\\left( \\frac{1}{z - a_k} \\right) - T_k(z) \\right| \\le 2^{-k} \\qquad (z \\in K_k).$$\n\n这样的 $T_{k}$ 由 **Runge 逼近定理**给出：$K_{k}$ 紧、$P_{k}(1/(z-a_{k}))$ 在 $K_{k}$ 的某邻域上全纯，Runge 先在 $K_{k}$ 上把它逼近成极点在 $\\hat{\\mathbb{C}}\\setminus K_{k}$ 的有理函数，再把落在 $\\Omega$ 内的极点沿道路挪到 $\\hat{\\mathbb{C}}\\setminus\\Omega$（挪极点时用同一套 Runge）。⚠️ 两处不能那样写：① 取 $a_{k}$ 处的 **Taylor 多项式**没有意义 —— $a_{k}$ 本来就是极点，$P_{k}$ 在那里并不全纯；② 也**不能**用多项式在围住 $a_{k}$ 的圆周上逼近 $1/(z-a_{k})$ —— 若多项式 $P$ 在 $\\lvert z-a_{k}\\rvert=1$ 上使 $\\sup\\lvert P-1/(z-a_{k})\\rvert<1$，则 $(z-a_{k})P(z)$ 一致逼近 $1$，但左边是多项式且在 $z=a_{k}$ 为零，于是 $\\frac{1}{2\\pi i}\\oint_{\\lvert z-a_{k}\\rvert=1}\\frac{(z-a_{k})P(z)}{z-a_{k}}\\,\\mathrm{d}z=0$ 而 $\\frac{1}{2\\pi i}\\oint\\frac{\\mathrm{d}z}{z-a_{k}}=1$，矛盾（差的最大模必 $\\ge 1$）。\n\n**第四步：收敛与主部。** 修正后的级数 $\\sum_k (P_k - T_k)$ 在每个 $K_n$ 上一致收敛（从第 $n$ 项起每项都 $\\le 2^{-k}$）。而减去的 $T_k$ 在 $a_k$ 处全纯、不影响主部，故极限函数在 $a_k$ 处的主部仍是 $P_k$。\n\n**第五步：唯一性。** 两个解之差处处全纯（极点与主部都被消掉），是 $\\Omega$ 上的整函数。$\\blacksquare$",
+   "note": "⚠ 这条边给的是「结构 $+$ 关键构造」：第三步的存在性依赖 **Runge 逼近定理**（这里只引不证），「把极点从 $\\Omega$ 内挪到 $\\hat{\\mathbb{C}}\\setminus\\Omega$」那一步也没有展开。"
   },
   {
    "id": "imp.jordan-lemma",
