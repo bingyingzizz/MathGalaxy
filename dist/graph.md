@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T06:04:36.081Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-05T06:43:06.578Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -7035,7 +7035,7 @@ $$T = U \Lambda\, U^{\dagger}, \qquad U^{\dagger}U = I,\ \Lambda = \operatorname
 
 - $T$ 自伴 $\iff$ 所有特征值**实**；
 - $T$ 酉 $\iff$ 所有特征值**模长为 1**；
-- $T$ 是正交投影 $\iff$ 特征值全在 $\{0, 1\}$ 中且 $T$ 自伴。
+- $T$ 是正交投影 $\iff$ 特征值全在 $\{0, 1\}$ 中（在「$T$ 正规」这个前提下**不必**再要求 $T$ 自伴：谱落在 $\mathbb{R}$ 里的正规算子自动自伴）。
 
 ⭐ 这三条「$T$ 的性质 $\iff$ 特征值的性质」是谱定理最有用的副产品：把一个**算子**的问题翻译成一组**数**的问题。
 
@@ -26009,7 +26009,7 @@ $$\cdots \longrightarrow P_{2} \longrightarrow P_{1} \longrightarrow P_{0} \long
 
 $$\cdots \to P_{1} \xrightarrow{\ d_{1}\ } P_{0} \xrightarrow{\ \varepsilon_{P}\ } M \to 0, \qquad \cdots \to Q_{1} \xrightarrow{\ e_{1}\ } Q_{0} \xrightarrow{\ \varepsilon_{Q}\ } N \to 0$$
 
-是两条**投射消解**。则：
+其中 $P_{\bullet}$ 是**投射**消解、$Q_{\bullet}$ 只需是**正合**消解（$Q_{n}$ 的投射性用不到，标准教材常习惯性地两条都写成投射的）。则：
 
 1. 存在**链映射** $\varphi : P_{\bullet} \to Q_{\bullet}$ 提升 $f$：即 $\varepsilon_{Q}\varphi_{0} = f\varepsilon_{P}$，且 $\varphi_{n-1}d_{n} = e_{n}\varphi_{n}$ 对一切 $n \ge 1$；
 
@@ -33622,9 +33622,11 @@ $$\frac{\mathrm{d}^{2}x^{k}}{\mathrm{d}s^{2}}+\Gamma^{k}_{ij}(\gamma(s))\frac{\m
 
 并且解光滑依赖于初值 $(p,v)$，还满足齐次性
 
-$$\gamma_{cv}(t) = \gamma_{v}(ct)\qquad (c > 0).$$
+$$\gamma_{cv}(t) = \gamma_{v}(ct)\qquad (c \in \mathbb{R}),$$
 
 于是从任意一点沿任意方向都能出发，而「出发速度的大小」只决定走多快、不决定走哪条。
+
+⚠️ 齐次性里**不需要** $c > 0$：$c = 0$ 时右边是常值曲线；$c < 0$ 时是沿同一条测地线**反向**走（把 $s \mapsto cs$ 代入测地线方程即可，方程对仿射重参数化不变）。所以 $c \in \mathbb{R}$ 全成立，只要两边参数都落在定义域内。
 
 **这是纯 ODE 定理**：测地线方程是一阶化之后的方程组 $\dot x^{k} = u^{k}$、$\dot u^{k} = -\Gamma^{k}_{ij}(x)u^{i}u^{j}$，右端关于 $(x,u)$ 光滑（$\Gamma$ 光滑），于是 Picard–Lindelöf 给出局部存在唯一，解对初值的光滑依赖由同一套定理的加强版给出。
 

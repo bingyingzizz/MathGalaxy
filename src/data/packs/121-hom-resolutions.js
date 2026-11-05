@@ -38,7 +38,7 @@ window.MG = window.MG || {};
         '',
         '$$\\cdots \\to P_{1} \\xrightarrow{\\ d_{1}\\ } P_{0} \\xrightarrow{\\ \\varepsilon_{P}\\ } M \\to 0, \\qquad \\cdots \\to Q_{1} \\xrightarrow{\\ e_{1}\\ } Q_{0} \\xrightarrow{\\ \\varepsilon_{Q}\\ } N \\to 0$$',
         '',
-        '是两条**投射消解**。则：',
+        '其中 $P_{\\bullet}$ 是**投射**消解、$Q_{\\bullet}$ 只需是**正合**消解（$Q_{n}$ 的投射性用不到，标准教材常习惯性地两条都写成投射的）。则：',
         '',
         '1. 存在**链映射** $\\varphi : P_{\\bullet} \\to Q_{\\bullet}$ 提升 $f$：即 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$，且 $\\varphi_{n-1}d_{n} = e_{n}\\varphi_{n}$ 对一切 $n \\ge 1$；\n\n',
         '2. 任意两个提升 $\\varphi, \\psi$ **链同伦**：存在 $s_{n} : P_{n} \\to Q_{n+1}$ 使',

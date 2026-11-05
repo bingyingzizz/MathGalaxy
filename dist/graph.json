@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-05T06:04:36.081Z",
+  "generated": "2026-11-05T06:43:06.578Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -9883,7 +9883,7 @@
     "内积",
     "谱"
    ],
-   "statement": "设 $V$ 是有限维**复**内积空间，$T : V \\to V$ **正规**（$T^{\\ast}T = TT^{\\ast}$）。则存在 $V$ 的**标准正交基**使 $T$ 是对角阵：\n\n$$T = U \\Lambda\\, U^{\\dagger}, \\qquad U^{\\dagger}U = I,\\ \\Lambda = \\operatorname{diag}(\\lambda_1, \\ldots, \\lambda_n)$$\n\n并且：\n\n- $T$ 自伴 $\\iff$ 所有特征值**实**；\n- $T$ 酉 $\\iff$ 所有特征值**模长为 1**；\n- $T$ 是正交投影 $\\iff$ 特征值全在 $\\{0, 1\\}$ 中且 $T$ 自伴。",
+   "statement": "设 $V$ 是有限维**复**内积空间，$T : V \\to V$ **正规**（$T^{\\ast}T = TT^{\\ast}$）。则存在 $V$ 的**标准正交基**使 $T$ 是对角阵：\n\n$$T = U \\Lambda\\, U^{\\dagger}, \\qquad U^{\\dagger}U = I,\\ \\Lambda = \\operatorname{diag}(\\lambda_1, \\ldots, \\lambda_n)$$\n\n并且：\n\n- $T$ 自伴 $\\iff$ 所有特征值**实**；\n- $T$ 酉 $\\iff$ 所有特征值**模长为 1**；\n- $T$ 是正交投影 $\\iff$ 特征值全在 $\\{0, 1\\}$ 中（在「$T$ 正规」这个前提下**不必**再要求 $T$ 自伴：谱落在 $\\mathbb{R}$ 里的正规算子自动自伴）。",
    "notes": "⭐ 这三条「$T$ 的性质 $\\iff$ 特征值的性质」是谱定理最有用的副产品：把一个**算子**的问题翻译成一组**数**的问题。\n\n⭐ 复正规是实对称与实正交的共同推广：只要在复域上做，两者都能对角化；在实数域上就只能对对称的那些做。\n\n⚠ 投影那条只在**自伴**时成立：一般的幂等算子（射影）不能酉对角化。\n\n\n\n**各方向用到的假设**（谱的数值判据建立在复正规谱定理上）：\n- 酉对角化 $\\implies$ 正规：对角矩阵与其伴随交换，直接计算即可；正规 $\\implies$ 酉对角化则用有限维复谱定理及复域上特征值存在性。\n- 在该对角化下，自伴 $\\iff$ 特征值全实、酉 $\\iff$ 特征值模长全为 $1$，均是伴随的逐项计算；反向不能脱离正规假设。\n- 正交投影 $\\implies$ 自伴且谱在 $\\{0,1\\}$，用幂等性；反向由自伴谱分解得到幂等，因而是正交投影。在本节点已假定正规时，谱在 $\\{0,1\\}$ 本身已足够。\n- 非正规 Jordan 块 $\\left(\\begin{smallmatrix}1&1\\\\0&1\\end{smallmatrix}\\right)$ 谱全实且模长为 $1$，却既不自伴也不酉；实平面非平凡旋转无实特征基，说明复域条件有作用。\n",
    "refs": [
     "Roman, Advanced Linear Algebra, Ch. 11"
@@ -16066,7 +16066,7 @@
     "链同伦",
     "提升"
    ],
-   "statement": "设 $R$ 是环，$M, N$ 是 $R$-模，$f : M \\to N$ 是模同态。又设\n\n$$\\cdots \\to P_{1} \\xrightarrow{\\ d_{1}\\ } P_{0} \\xrightarrow{\\ \\varepsilon_{P}\\ } M \\to 0, \\qquad \\cdots \\to Q_{1} \\xrightarrow{\\ e_{1}\\ } Q_{0} \\xrightarrow{\\ \\varepsilon_{Q}\\ } N \\to 0$$\n\n是两条**投射消解**。则：\n\n1. 存在**链映射** $\\varphi : P_{\\bullet} \\to Q_{\\bullet}$ 提升 $f$：即 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$，且 $\\varphi_{n-1}d_{n} = e_{n}\\varphi_{n}$ 对一切 $n \\ge 1$；\n\n\n2. 任意两个提升 $\\varphi, \\psi$ **链同伦**：存在 $s_{n} : P_{n} \\to Q_{n+1}$ 使\n$$\\varphi_{n} - \\psi_{n} = e_{n+1}s_{n} + s_{n-1}d_{n},$$\n其中约定 $s_{-1} = 0$，并把 $e_{0}$ 读作 $\\varepsilon_{Q}$、$d_{0}$ 读作 $\\varepsilon_{P}$。",
+   "statement": "设 $R$ 是环，$M, N$ 是 $R$-模，$f : M \\to N$ 是模同态。又设\n\n$$\\cdots \\to P_{1} \\xrightarrow{\\ d_{1}\\ } P_{0} \\xrightarrow{\\ \\varepsilon_{P}\\ } M \\to 0, \\qquad \\cdots \\to Q_{1} \\xrightarrow{\\ e_{1}\\ } Q_{0} \\xrightarrow{\\ \\varepsilon_{Q}\\ } N \\to 0$$\n\n其中 $P_{\\bullet}$ 是**投射**消解、$Q_{\\bullet}$ 只需是**正合**消解（$Q_{n}$ 的投射性用不到，标准教材常习惯性地两条都写成投射的）。则：\n\n1. 存在**链映射** $\\varphi : P_{\\bullet} \\to Q_{\\bullet}$ 提升 $f$：即 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$，且 $\\varphi_{n-1}d_{n} = e_{n}\\varphi_{n}$ 对一切 $n \\ge 1$；\n\n\n2. 任意两个提升 $\\varphi, \\psi$ **链同伦**：存在 $s_{n} : P_{n} \\to Q_{n+1}$ 使\n$$\\varphi_{n} - \\psi_{n} = e_{n+1}s_{n} + s_{n-1}d_{n},$$\n其中约定 $s_{-1} = 0$，并把 $e_{0}$ 读作 $\\varepsilon_{Q}$、$d_{0}$ 读作 $\\varepsilon_{P}$。",
    "notes": "**证明（一）存在性：逐层抬升。**\n第 $0$ 层：$f\\varepsilon_{P} : P_{0} \\to N$ 沿满射 $\\varepsilon_{Q} : Q_{0} \\twoheadrightarrow N$ 抬升。\n\n$P_{0}$ 投射，故存在 $\\varphi_{0} : P_{0} \\to Q_{0}$ 使 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$ ✓。\n归纳步：设 $\\varphi_{n} : P_{n} \\to Q_{n}$ 已造好，且 $e_{n}\\varphi_{n} = \\varphi_{n-1}d_{n}$。\n\n要造 $\\varphi_{n+1}$，只需使 $e_{n+1}\\varphi_{n+1} = \\varphi_{n}d_{n+1}$。\n\n令 $\\theta := \\varphi_{n}d_{n+1} : P_{n+1} \\to Q_{n}$，算一下：\n$$e_{n}\\theta = e_{n}\\varphi_{n}d_{n+1} = \\varphi_{n-1}d_{n}d_{n+1} = 0,$$\n所以 $\\operatorname{im}\\theta \\subseteq \\ker e_{n} = \\operatorname{im} e_{n+1}$（两端的复形都正合）✓。\n\n沿满射 $Q_{n+1} \\twoheadrightarrow \\operatorname{im} e_{n+1}$ 用 $P_{n+1}$ 的投射性抬升 $\\theta$，得 $\\varphi_{n+1}$ ✓。\n\n**（二）同伦唯一性：同样的抬升，目标换成「同伦方程」。** 记 $\\Delta_{n} := \\varphi_{n} - \\psi_{n}$。\n$n = 0$：$\\varepsilon_{Q}\\Delta_{0} = f\\varepsilon_{P} - f\\varepsilon_{P} = 0$，故 $\\operatorname{im}\\Delta_{0} \\subseteq \\ker\\varepsilon_{Q} = \\operatorname{im} e_{1}$ ✓，沿 $Q_{1} \\twoheadrightarrow \\operatorname{im} e_{1}$ 抬升得 $s_{0}$，即 $e_{1}s_{0} = \\Delta_{0}$ ✓。\n归纳步：设 $s_{0}, \\ldots, s_{n-1}$ 已使 $\\Delta_{k} = e_{k+1}s_{k} + s_{k-1}d_{k}$（$k < n$）。令 $\\Delta_{n}^{\\circ} := \\Delta_{n} - s_{n-1}d_{n}$，则\n$$e_{n}\\Delta_{n}^{\\circ} = e_{n}\\Delta_{n} - \\bigl(\\Delta_{n-1} - s_{n-2}d_{n-1}\\bigr)d_{n} = \\bigl(e_{n}\\varphi_{n} - \\varphi_{n-1}d_{n}\\bigr) - \\bigl(e_{n}\\psi_{n} - \\psi_{n-1}d_{n}\\bigr) = 0,$$\n于是 $\\operatorname{im}\\Delta_{n}^{\\circ} \\subseteq \\operatorname{im} e_{n+1}$ ✓，再抬升一次得 $s_{n}$。逐层下去就得到整族同伦 ✓。∎\n\n⭐ **意义**：消解**不唯一**，但「唯一到链同伦」已经够用 —— 导出函子、$\\operatorname{Ext}$、$\\operatorname{Tor}$ 都只依赖消解的同伦类，于是它们的定义与消解选取无关。没有这条，整套求导机械都无定义。\n\n⚠️ 结论**只到同伦**，不到同构：同一模的两条投射消解可以差一个可缩复形（例如一条消解与它的「直和一条形如 $0 \\to P \\xrightarrow{1} P \\to 0$ 的可缩复形」）。这不是缺陷，反而是导出范畴里「同构」的正确含义。\n\n**对偶版本**：内射消解之间的提升有同样两条，只是抬升方向反过来（用内射对象的延拓性质），见「内射消解之间的提升」。\n\n⚠️ 用到的只有「每一项投射」与「两端正合」；**不需要**选择公理之外的东西，也不要求环交换。",
    "refs": [
     "Rotman, An Introduction to Homological Algebra (2nd ed.), 关于消解（resolutions）的部分 · 比较定理（Comparison Theorem）",
@@ -19974,7 +19974,7 @@
     "测地线",
     "常微分方程"
    ],
-   "statement": "白话：**从任意一点、朝任意方向，都能画出唯一一条「笔直走」的曲线（测地线）** —— 至少在一小段上。这是解二阶常微分方程的存在唯一性，没有任何几何玄机；它的用途是把「方向」变成「位置」（下一站的指数映射）。\n\n对任意 $p \\in S$ 与任意 $v \\in T_{p}S$，存在 $\\varepsilon > 0$ 与唯一的测地线 $\\gamma_{v} : (-\\varepsilon,\\varepsilon)\\to S$ 使 $\\gamma_{v}(0) = p$、$\\dot\\gamma_{v}(0) = v$。\n\n并且解光滑依赖于初值 $(p,v)$，还满足齐次性\n\n$$\\gamma_{cv}(t) = \\gamma_{v}(ct)\\qquad (c > 0).$$\n\n于是从任意一点沿任意方向都能出发，而「出发速度的大小」只决定走多快、不决定走哪条。",
+   "statement": "白话：**从任意一点、朝任意方向，都能画出唯一一条「笔直走」的曲线（测地线）** —— 至少在一小段上。这是解二阶常微分方程的存在唯一性，没有任何几何玄机；它的用途是把「方向」变成「位置」（下一站的指数映射）。\n\n对任意 $p \\in S$ 与任意 $v \\in T_{p}S$，存在 $\\varepsilon > 0$ 与唯一的测地线 $\\gamma_{v} : (-\\varepsilon,\\varepsilon)\\to S$ 使 $\\gamma_{v}(0) = p$、$\\dot\\gamma_{v}(0) = v$。\n\n并且解光滑依赖于初值 $(p,v)$，还满足齐次性\n\n$$\\gamma_{cv}(t) = \\gamma_{v}(ct)\\qquad (c \\in \\mathbb{R}),$$\n\n于是从任意一点沿任意方向都能出发，而「出发速度的大小」只决定走多快、不决定走哪条。\n\n⚠️ 齐次性里**不需要** $c > 0$：$c = 0$ 时右边是常值曲线；$c < 0$ 时是沿同一条测地线**反向**走（把 $s \\mapsto cs$ 代入测地线方程即可，方程对仿射重参数化不变）。所以 $c \\in \\mathbb{R}$ 全成立，只要两边参数都落在定义域内。",
    "notes": "**这是纯 ODE 定理**：测地线方程是一阶化之后的方程组 $\\dot x^{k} = u^{k}$、$\\dot u^{k} = -\\Gamma^{k}_{ij}(x)u^{i}u^{j}$，右端关于 $(x,u)$ 光滑（$\\Gamma$ 光滑），于是 Picard–Lindelöf 给出局部存在唯一，解对初值的光滑依赖由同一套定理的加强版给出。\n\n**齐次性为什么成立**：方程在 $s\\mapsto cs$ 下齐二次，$t\\mapsto\\gamma_{v}(ct)$ 与 $t\\mapsto\\gamma_{cv}(t)$ 满足同一个初值问题，由唯一性即得。**这条齐次性是指数映射能定义出来的唯一理由**。\n\n**整体存在不必**：解只保证延拓到极大区间，可能在有限时间「跑出曲面」（例如 $\\mathbb{R}^{2}\\setminus\\{0\\}$ 上的直线，或开曲面上走向无穷远的测地线）。紧致曲面才自动完备（Hopf–Rinow 的整体版本）。\n\n⚠️ 「唯一」是**在同一条曲线**意义下的唯一；换一个仿射参数得到的仍是同一条曲线的重参数化，不是另一个解。",
    "refs": [
     "do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 测地线的存在与唯一性",
