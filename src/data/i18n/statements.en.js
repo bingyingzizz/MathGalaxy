@@ -539,7 +539,7 @@ MG.i18nStatements = {
     'thm.monotone-class': {
       statement: {
         en:
-        'Let $\\mathcal{E} \\subseteq \\mathcal{P}(X)$. Then\n\n' +
+        'Let $\\mathcal{E} \\subseteq \\mathcal{P}(X)$ with $\\mathcal{E} \\ne \\emptyset$. Then\n\n' +
         '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff ' +
         '\\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ ' +
         '\\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$',

@@ -29,7 +29,7 @@ window.MG = window.MG || {};
       notes: [
         '它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。',
         '基本类的作用是当**砖块**：把它的元素做成有限不交并，就得到一个环 —— 这正是下面那条性质 (5)。',
-        '典型例子：半开区间族 $\\{ (a, b] : a < b \\}$ 是 $\\mathbb{R}$ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个代数。',
+        '典型例子：半开区间族 $\\{ (a, b] : a < b \\}$ 是 $\\mathbb{R}$ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个**环**（不是代数：它不含 $X = \\mathbb{R}$，对补集也不封闭 —— 见 `prop.ls-premeasure`）。',
         ,
         '**各方向用到的假设**（基本类给出生成环的砖块，而不是环本身）：\n' +
         '- 基本类 $\\implies$ 交封闭、差可拆为有限不交并：只是定义展开，不要求含全集。\n' +
@@ -165,7 +165,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '基本类', '代数', '封闭性'],
       statement: [
-        '(1) 基本类包含 $\\emptyset$。',
+        '(1) 由基本类**生成的环**（(5) 里的 $\\mathfrak{A}$）包含 $\\emptyset$ —— 它是**空并**；基本类本身**未必**含 $\\emptyset$（例：$\\mathcal{E} = \\{A\\}$、$A \\ne \\emptyset$ 满足基本类定义，但 $\\emptyset \\notin \\mathcal{E}$）。',
         '',
         '(2) 代数与 $\\sigma$-代数对**有限交**、**可数交**封闭。',
         '',
@@ -180,8 +180,8 @@ window.MG = window.MG || {};
         '（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$-环 的判据」里。）'
       ].join('\n'),
       notes: [
-        ['**证明。**','(1) 取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset \\in \\mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。','(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；\n\n可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。\n\n（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）','(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。','(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。','- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；','- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；','- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎'].join('\n'),
-        '(1)：取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset$ 要能被拆成不交并，只能是空并。',
+        ['**证明。**','(1) $\\emptyset$ 是**空的不交并**（$n = 0$），按 (5) 的定义直接属于 $\\mathfrak{A}$ ✓。⚠️ 不能取 $A \\in \\mathfrak{A}$ 用 $A \\setminus A$ 来证：基本类只要求「差能拆成有限不交并」，并不对差封闭，而且基本类本身根本不必含空集。','(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；\n\n可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。\n\n（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）','(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。','(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。','- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；','- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；','- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎'].join('\n'),
+        '(1)：空并就是 $n = 0$ 的情形，直接属于 $\\mathfrak{A}$；基本类不含 $\\emptyset$ 也无妨。',
         '(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \\setminus \\bigcup B_{j}$** 这种相对补。',
         '(5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。',
         '这几条性质的实际用途：**验证一个族是 $\\sigma$代数时，只需查「含 $X$」「对补」「对可数并」三条**，其余全部免费。'
@@ -251,7 +251,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '单调类', '生成'],
       statement: [
-        '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。则',
+        '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$ 且 $\\mathcal{E} \\ne \\emptyset$。则',
         '',
         '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$'
       ].join('\n'),

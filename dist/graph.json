@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-06T04:54:01.825Z",
+  "generated": "2026-11-06T04:59:23.670Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -4612,7 +4612,7 @@
     "测度论"
    ],
    "statement": "设 $X$ 是集合，$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$。$\\mathfrak{A}$ 是 $X$ 上的一个**基本类**，当且仅当\n\n- 对**交**封闭：$A, B \\in \\mathfrak{A} \\implies A \\cap B \\in \\mathfrak{A}$\n- 差可以拆开：$A, B \\in \\mathfrak{A} \\implies A \\setminus B$ 是 $\\mathfrak{A}$ 中**有限多个两两不交集合之并**",
-   "notes": "它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。\n\n基本类的作用是当**砖块**：把它的元素做成有限不交并，就得到一个环 —— 这正是下面那条性质 (5)。\n\n典型例子：半开区间族 $\\{ (a, b] : a < b \\}$ 是 $\\mathbb{R}$ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个代数。\n\n\n\n**各方向用到的假设**（基本类给出生成环的砖块，而不是环本身）：\n- 基本类 $\\implies$ 交封闭、差可拆为有限不交并：只是定义展开，不要求含全集。\n- 基本类 $\\implies$ 有限不交并组成一个环：要反复用交封闭及差的有限分解，把两个表示共同细分；不需要选择公理。\n- 环 $\\implies$ 基本类：差本身就是一个元素，分解免费；反向不能省去取有限并这一步，半开区间族一般不对并封闭。\n",
+   "notes": "它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。\n\n基本类的作用是当**砖块**：把它的元素做成有限不交并，就得到一个环 —— 这正是下面那条性质 (5)。\n\n典型例子：半开区间族 $\\{ (a, b] : a < b \\}$ 是 $\\mathbb{R}$ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个**环**（不是代数：它不含 $X = \\mathbb{R}$，对补集也不封闭 —— 见 `prop.ls-premeasure`）。\n\n\n\n**各方向用到的假设**（基本类给出生成环的砖块，而不是环本身）：\n- 基本类 $\\implies$ 交封闭、差可拆为有限不交并：只是定义展开，不要求含全集。\n- 基本类 $\\implies$ 有限不交并组成一个环：要反复用交封闭及差的有限分解，把两个表示共同细分；不需要选择公理。\n- 环 $\\implies$ 基本类：差本身就是一个元素，分解免费；反向不能省去取有限并这一步，半开区间族一般不对并封闭。\n",
    "refs": [
     "Halmos, Measure Theory, §4"
    ]
@@ -4819,8 +4819,8 @@
     "代数",
     "封闭性"
    ],
-   "statement": "(1) 基本类包含 $\\emptyset$。\n\n(2) 代数与 $\\sigma$-代数对**有限交**、**可数交**封闭。\n\n(3) $\\mathfrak{A}$ 是 $\\sigma$-代数 $\\iff$ $\\mathfrak{A}$ 对**可数并**与**取补**都封闭。\n\n(5) 若 $\\mathcal{E}$ 是**基本类**，则「$\\mathcal{E}$ 中有限多个两两不交集合之并」全体\n\n$\\mathfrak{A} = \\{ E_1 \\cup \\cdots \\cup E_n : E_1, \\ldots, E_n \\in \\mathcal{E}$ 两两不交 $\\}$\n\n是一个**环**。\n\n（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$-环 的判据」里。）",
-   "notes": "**证明。**\n(1) 取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset \\in \\mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。\n(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；\n\n可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。\n\n（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）\n(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。\n(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。\n- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；\n- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；\n- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎\n\n(1)：取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset$ 要能被拆成不交并，只能是空并。\n\n(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \\setminus \\bigcup B_{j}$** 这种相对补。\n\n(5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。\n\n这几条性质的实际用途：**验证一个族是 $\\sigma$代数时，只需查「含 $X$」「对补」「对可数并」三条**，其余全部免费。",
+   "statement": "(1) 由基本类**生成的环**（(5) 里的 $\\mathfrak{A}$）包含 $\\emptyset$ —— 它是**空并**；基本类本身**未必**含 $\\emptyset$（例：$\\mathcal{E} = \\{A\\}$、$A \\ne \\emptyset$ 满足基本类定义，但 $\\emptyset \\notin \\mathcal{E}$）。\n\n(2) 代数与 $\\sigma$-代数对**有限交**、**可数交**封闭。\n\n(3) $\\mathfrak{A}$ 是 $\\sigma$-代数 $\\iff$ $\\mathfrak{A}$ 对**可数并**与**取补**都封闭。\n\n(5) 若 $\\mathcal{E}$ 是**基本类**，则「$\\mathcal{E}$ 中有限多个两两不交集合之并」全体\n\n$\\mathfrak{A} = \\{ E_1 \\cup \\cdots \\cup E_n : E_1, \\ldots, E_n \\in \\mathcal{E}$ 两两不交 $\\}$\n\n是一个**环**。\n\n（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$-环 的判据」里。）",
+   "notes": "**证明。**\n(1) $\\emptyset$ 是**空的不交并**（$n = 0$），按 (5) 的定义直接属于 $\\mathfrak{A}$ ✓。⚠️ 不能取 $A \\in \\mathfrak{A}$ 用 $A \\setminus A$ 来证：基本类只要求「差能拆成有限不交并」，并不对差封闭，而且基本类本身根本不必含空集。\n(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；\n\n可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。\n\n（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）\n(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。\n(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。\n- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；\n- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；\n- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎\n\n(1)：空并就是 $n = 0$ 的情形，直接属于 $\\mathfrak{A}$；基本类不含 $\\emptyset$ 也无妨。\n\n(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \\setminus \\bigcup B_{j}$** 这种相对补。\n\n(5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。\n\n这几条性质的实际用途：**验证一个族是 $\\sigma$代数时，只需查「含 $X$」「对补」「对可数并」三条**，其余全部免费。",
    "refs": [
     "Halmos, Measure Theory, §4"
    ]
@@ -4938,11 +4938,11 @@
    "label_en": "monotone class theorem",
    "title_en": "monotone class theorem",
    "abstract_en": "For $\\mathcal{E} \\subseteq \\mathcal{P}(X)$, the $\\sigma$-algebra generated by $\\mathcal{E}$ equals the monotone class generated by $\\mathcal{E}$ if complements of members of $\\mathcal{E}$ and unions of two members of $\\mathcal{E}$ lie in that monotone class. With \"$\\mathcal{E}$ is an algebra\" this is the standard monotone class theorem; the form above weakens that hypothesis to the two closure conditions, and the proof is the same two-step argument with the monotone class as the running object.",
-   "statement_en": "Let $\\mathcal{E} \\subseteq \\mathcal{P}(X)$. Then\n\n$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$",
+   "statement_en": "Let $\\mathcal{E} \\subseteq \\mathcal{P}(X)$ with $\\mathcal{E} \\ne \\emptyset$. Then\n\n$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$",
    "notes_en": "**This is the combined \"standard + strengthened\" version.**\n\n**Standard version** (Halmos §6 / Folland 2.37): if $\\mathcal{A}$ is an **algebra** then $\\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$.\n\nWhat is stated above is the **strengthened version**: \"$\\mathcal{E}$ is an algebra\" is replaced by two weaker conditions — the **complements** and the **unions** of sets in $\\mathcal{E}$ only have to land in $\\mathfrak{m}(\\mathcal{E})$. The proof is still the usual three steps of the monotone class theorem:\n\n**①** Let $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$. It contains $\\mathcal{E}$ (first condition), and is itself a monotone class ($\\mathfrak{m}$ is monotone $\\implies$ limits stay in $\\mathfrak{m}$; complements use one decreasing limit) $\\implies \\mathcal{K}_{1} = \\mathfrak{m}$, i.e. $\\mathfrak{m}$ is closed under **complements**.\n\n**②** Fix $A \\in \\mathcal{E}$ and let $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$. By the second condition $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$.\n\n**③** Fix $B \\in \\mathfrak{m}$ and let $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$. By ②, $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$, i.e. $\\mathfrak{m}$ is closed under **unions**.\n\nHence $\\mathfrak{m}$ is closed under $\\cup$ and complements, and is a monotone class $\\implies$ $\\mathfrak{m}$ is a $\\sigma$-algebra $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$; the reverse inclusion always holds, so the two sides are equal. (One needs $\\mathcal{E} \\ne \\emptyset$, otherwise $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$.)\n\n⚠ Replacing $\\cup$ by $\\cap$ or $\\setminus$ gives the same conclusion — once complements are available, the various closure properties imply each other, so the symbol used here does not affect whether the theorem is true.\n\n**How it is used** (the same for either version): to prove that a property holds for all sets in $\\mathcal{M}(\\mathcal{E})$, it suffices to ($i$) prove it for $\\mathcal{E}$ and (ii) prove that \"it holds\" is preserved by increasing unions and decreasing intersections — then the sets for which it holds form a monotone class containing $\\mathcal{E}$, hence one containing $\\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$. Uniqueness of the measure extension, the section formula for product measures and the approximation of measurable functions all follow this pattern.\n\n⚠ It is a sister result of \"the criterion for a ring to be a $\\sigma$-ring\": that one says ring $+$ monotone $\\implies$ $\\sigma$-ring, this one says algebra $\\implies$ monotone class and $\\sigma$-algebra coincide.",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "stale",
      "version": "v0.9.3",
      "fields": [
       "abstract",
@@ -4956,12 +4956,15 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "reviewed",
-      "statement": "reviewed",
+      "abstract": "stale",
+      "statement": "stale",
       "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract",
+      "statement"
+     ],
      "basedOn": {
       "abstract": "v0.9.3#d6fb12ae",
       "statement": "v0.9.3#48f20867",
@@ -4982,7 +4985,7 @@
     "单调类",
     "生成"
    ],
-   "statement": "设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。则\n\n$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$",
+   "statement": "设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$ 且 $\\mathcal{E} \\ne \\emptyset$。则\n\n$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$",
    "notes": "**这一条是「标准版 + 加强版」合起来的那一个版本。**\n\n**标准版**（Halmos §6 / Folland 2.37）：$\\mathcal{A}$ 是**代数** $\\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$。\n\n上面陈述的是**加强版**：把「$\\mathcal{E}$ 是代数」换成两条更弱的条件——$\\mathcal{E}$ 中集合的**补**与**并**落进 $\\mathfrak{m}(\\mathcal{E})$ 就行。证明仍是单调类定理那三步：\n\n**①** 令 $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$。\n\n它含 $\\mathcal{E}$（第一条条件），且本身是单调类（$\\mathfrak{m}$ 单调 $\\implies$ 极限仍在 $\\mathfrak{m}$；\n\n补用一次递减极限）$\\implies \\mathcal{K}_{1} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**补**封闭。\n\n**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。\n\n由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。\n\n**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。\n\n由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。\n\n于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；\n\n反向恒成立，两边相等。\n\n（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）\n\n⚠ 把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。\n\n**用法**（不论哪个版本都一样）：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。\n\n测度扩张的唯一性、乘积测度的截口公式、可测函数的逼近，用的都是这个模式。\n\n⚠ 与「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 $+$ 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。",
    "refs": [
     "Halmos, Measure Theory, §6",
@@ -64658,7 +64661,7 @@
     "紧"
    ],
    "statement": "设 $X$ 是紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ 在 $X$ 上**一致连续**。\n\n特别地：闭区间 $[a, b]$ 上的连续函数一致连续。",
-   "notes": "⭐ 这条把「连续」升级成「一致连续」的唯一代价是**紧性** —— 它让 $\\delta$ 可以从「逐点选」变成「一次性选」，这是初等微积分里一切「先取有限子覆盖再取最小 $\\delta$」的证明的模板。\n\n⚠ 换成开区间立刻失败：$f(x) = 1/x$ 在 $(0, 1)$ 上连续但一致连续 —— 越靠近 $0$ 需要越小的 $\\delta$，而 $0$ 不在定义域里，无处安放这个下界。\n\n⭐ 直接用途：Riemann 可积性（分割的振幅和可以一致地小下去）、函数列的一致收敛、参数积分。",
+   "notes": "⭐ 这条把「连续」升级成「一致连续」的唯一代价是**紧性** —— 它让 $\\delta$ 可以从「逐点选」变成「一次性选」，这是初等微积分里一切「先取有限子覆盖再取最小 $\\delta$」的证明的模板。\n\n⚠ 换成开区间立刻失败：$f(x) = 1/x$ 在 $(0, 1)$ 上连续但**不**一致连续 —— 越靠近 $0$ 需要越小的 $\\delta$，而 $0$ 不在定义域里，无处安放这个下界。\n\n⭐ 直接用途：Riemann 可积性（分割的振幅和可以一致地小下去）、函数列的一致收敛、参数积分。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 4"
    ]
@@ -90082,8 +90085,8 @@
    "strength": "weak",
    "a": "thm.product",
    "b": "thm.omega",
-   "title": "「幂集造容器 + 分离筛内容」——同一个证明模板",
-   "note": "这两个证明的骨架**一模一样**，只是塞进去的东西不同：\n\n**$\\omega$ 的构造**：先用幂集公理做出 $\\mathcal{P}(I)$；再从里面**筛出**所有归纳子集，取交。\n\n**$A \\times B$ 的构造**：先用幂集公理做出 $\\mathcal{P}(\\mathcal{P}(A \\cup B))$；再从里面**筛出**那些形如 (a,b) 的元素。\n\n**共同的招**：集合论里「我想造一个由某种东西组成的集合」时，\n永远不能直接写 `$\\{ x : \\varphi (x) \\}$`（那是罗素悖论）。正确的姿势是两步——\n**先找一个确定足够大的容器，再用分离公理模式从里面挑**。\n\n💡 看到「想造一个集合但不知道怎么下手」时，回来想想这两步。"
+   "title": "「先找容器、再用分离筛」——同一个证明模板",
+   "note": "这两个证明的骨架**一模一样**，只是塞进去的东西不同：\n\n**$\\omega$ 的构造**：无穷公理给出一个归纳集 $I$（这已经是容器，**不需要幂集**）；再从 $I$ 里用分离公理模式**筛出**「属于一切归纳子集」的那些元素，即取最小封闭族。\n\n**$A \\times B$ 的构造**：先用幂集公理做出 $\\mathcal{P}(\\mathcal{P}(A \\cup B))$；再从里面**筛出**那些形如 (a,b) 的元素。\n\n**共同的招**：集合论里「我想造一个由某种东西组成的集合」时，\n永远不能直接写 `$\\{ x : \\varphi (x) \\}$`（那是罗素悖论）。正确的姿势是两步——\n**先找一个确定足够大的容器，再用分离公理模式从里面挑**。\n\n💡 看到「想造一个集合但不知道怎么下手」时，回来想想这两步。"
   },
   {
    "id": "ana.tame-infinite",

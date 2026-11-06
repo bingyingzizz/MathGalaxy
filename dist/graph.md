@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:54:01.825Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:59:23.670Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -11202,7 +11202,7 @@ $$f(\xi) = 0$$
 
 ⭐ 这条把「连续」升级成「一致连续」的唯一代价是**紧性** —— 它让 $\delta$ 可以从「逐点选」变成「一次性选」，这是初等微积分里一切「先取有限子覆盖再取最小 $\delta$」的证明的模板。
 
-⚠ 换成开区间立刻失败：$f(x) = 1/x$ 在 $(0, 1)$ 上连续但一致连续 —— 越靠近 $0$ 需要越小的 $\delta$，而 $0$ 不在定义域里，无处安放这个下界。
+⚠ 换成开区间立刻失败：$f(x) = 1/x$ 在 $(0, 1)$ 上连续但**不**一致连续 —— 越靠近 $0$ 需要越小的 $\delta$，而 $0$ 不在定义域里，无处安放这个下界。
 
 ⭐ 直接用途：Riemann 可积性（分割的振幅和可以一致地小下去）、函数列的一致收敛、参数积分。
 
@@ -14578,7 +14578,7 @@ $$u = \pi_2 \circ \pi_1^{-1}$$
 
 基本类的作用是当**砖块**：把它的元素做成有限不交并，就得到一个环 —— 这正是下面那条性质 (5)。
 
-典型例子：半开区间族 $\{ (a, b] : a < b \}$ 是 $\mathbb{R}$ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个代数。
+典型例子：半开区间族 $\{ (a, b] : a < b \}$ 是 $\mathbb{R}$ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个**环**（不是代数：它不含 $X = \mathbb{R}$，对补集也不封闭 —— 见 `prop.ls-premeasure`）。
 
 
 
@@ -14695,7 +14695,7 @@ $$\{E_j\}_{j=1}^{\infty} \searrow  \implies \bigcap_{j=1}^{\infty} E_j \in \math
 #### 集合族的基本性质　`prop.set-class-properties`
 *命题*　命题：基本类 / 环 / σ-代数的几条基本性质
 
-(1) 基本类包含 $\emptyset$。
+(1) 由基本类**生成的环**（(5) 里的 $\mathfrak{A}$）包含 $\emptyset$ —— 它是**空并**；基本类本身**未必**含 $\emptyset$（例：$\mathcal{E} = \{A\}$、$A \ne \emptyset$ 满足基本类定义，但 $\emptyset \notin \mathcal{E}$）。
 
 (2) 代数与 $\sigma$-代数对**有限交**、**可数交**封闭。
 
@@ -14710,7 +14710,7 @@ $\mathfrak{A} = \{ E_1 \cup \cdots \cup E_n : E_1, \ldots, E_n \in \mathcal{E}$ 
 （第 (4) 条因为本身是一条定理，单独列在「环 $\implies \sigma$-环 的判据」里。）
 
 **证明。**
-(1) 取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset \in \mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。
+(1) $\emptyset$ 是**空的不交并**（$n = 0$），按 (5) 的定义直接属于 $\mathfrak{A}$ ✓。⚠️ 不能取 $A \in \mathfrak{A}$ 用 $A \setminus A$ 来证：基本类只要求「差能拆成有限不交并」，并不对差封闭，而且基本类本身根本不必含空集。
 (2) 代数：$A_{1}, \ldots, A_{n} \in \mathfrak{A}$ 时 $A_{1}\cap\cdots\cap A_{n} = X \setminus \bigl(\bigcup_{i}(X\setminus A_{i})\bigr) \in \mathfrak{A}$（补 + 有限并）✓；
 
 可数交由 $\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。
@@ -14722,7 +14722,7 @@ $\mathfrak{A} = \{ E_1 \cup \cdots \cup E_n : E_1, \ldots, E_n \in \mathcal{E}$ 
 - **对差封闭**：$A \setminus B$ 逐块做差，同样拆成有限不交并 ✓；
 - 含 $\emptyset$（空并）✓。于是 $\mathfrak{A}$ 是一个**环** ✓。∎
 
-(1)：取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset$ 要能被拆成不交并，只能是空并。
+(1)：空并就是 $n = 0$ 的情形，直接属于 $\mathfrak{A}$；基本类不含 $\emptyset$ 也无妨。
 
 (2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \setminus \bigcup B_{j}$** 这种相对补。
 
@@ -14776,7 +14776,7 @@ $\mathcal{M}(\mathcal{E})$ 称为**由 $\mathcal{E}$ 生成的 $\sigma$-代数**
 #### 单调类定理　`thm.monotone-class`
 *定理*　单调类定理
 
-设 $\mathcal{E} \subseteq \mathcal{P}(X)$。则
+设 $\mathcal{E} \subseteq \mathcal{P}(X)$ 且 $\mathcal{E} \ne \emptyset$。则
 
 $$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E})\ \wedge\ \forall A, B \in \mathcal{E} : A \cup B \in \mathfrak{m}(\mathcal{E})$$
 
@@ -61577,11 +61577,11 @@ $\beta X$ 里**紧 Hausdorff 的一切好性质都有**（Tychonoff 方块给的
 💡 卡在「这个范畴 / 这个空间里根本没有我要的那个东西」时，回来想想这两条。
 
 #### 笛卡尔积存在 ～ 自然数集存在　`ana.sep-container`
-*「幂集造容器 + 分离筛内容」——同一个证明模板*
+*「先找容器、再用分离筛」——同一个证明模板*
 
 这两个证明的骨架**一模一样**，只是塞进去的东西不同：
 
-**$\omega$ 的构造**：先用幂集公理做出 $\mathcal{P}(I)$；再从里面**筛出**所有归纳子集，取交。
+**$\omega$ 的构造**：无穷公理给出一个归纳集 $I$（这已经是容器，**不需要幂集**）；再从 $I$ 里用分离公理模式**筛出**「属于一切归纳子集」的那些元素，即取最小封闭族。
 
 **$A \times B$ 的构造**：先用幂集公理做出 $\mathcal{P}(\mathcal{P}(A \cup B))$；再从里面**筛出**那些形如 (a,b) 的元素。
 
