@@ -29,7 +29,7 @@ window.MG = window.MG || {};
       notes: [
         '为什么这个条件自然：由算术基本定理，$n$ 唯一分解成素数幂之积，而这些素数幂两两互素 —— 所以积性函数完全由它在素数幂 $p^{e}$ 上的值决定。这就把「$n$ 的全体」上的函数压成「每个素数一列」的数据。',
         '',
-        '完全积性更强：还要求 $f(p^{e}) = f(p)^{e}$。\n\n$\\mu$、$\\varphi$、$\\tau$、$\\sigma$ 都积性；只有 $\\mu$ 与「$\\mathrm{id}$」「$1$」是完全积性，$\\varphi$、$\\tau$、$\\sigma$ 不是（例如 $\\varphi(4) = 2 \\ne \\varphi(2)^{2} = 1$）。',
+        '完全积性更强：还要求 $f(p^{e}) = f(p)^{e}$。\n\n$\\mu$、$\\varphi$、$\\tau$、$\\sigma$ 都只是**积性**，**没有一个是完全积性**：$\\mu(4) = 0 \\ne \\mu(2)^{2} = 1$、$\\varphi(4) = 2 \\ne \\varphi(2)^{2} = 1$。完全积性的典型例子是 $\\mathrm{id}$ 与常函数 $1$（以及它们的乘积、Dirichlet 特征标）。',
         '',
         '两个积性函数的**狄利克雷卷积**仍积性 —— 这是后面 Möbius 反演的代数背景。',
       ].join('\n\n'),
@@ -183,7 +183,7 @@ window.MG = window.MG || {};
         '',
         '$$\\psi(x) = \\sum_{n \\le x} \\Lambda(n), \\qquad \\Lambda(n) = \\begin{cases}\\log p, & n = p^{k},\\\\ 0, & \\text{否则}\\end{cases}$$',
         '',
-        '（$\\Lambda$ 叫 von Mangoldt 函数），而 $\\log n! = \\sum_{n \\le x}\\Lambda(n)\\lfloor x/n\\rfloor$ 把 $\\psi$ 与阶乘直接连起来。\n\n三者的关系是 $\\theta \\le \\psi \\le \\theta + O(\\sqrt{x}\\log x)$ 与 $\\pi(x) \\sim \\theta(x)/\\log x$ —— 所以「三者同阶」这句话本身就是定理。',
+        '（$\\Lambda$ 叫 von Mangoldt 函数），而 $\\log n! = \\sum_{m \\le n}\\Lambda(m)\\lfloor n/m\\rfloor = \\sum_{m \\le n}\\psi(n/m)$ 把 $\\psi$ 与阶乘直接连起来。\n\n三者的关系是 $\\theta \\le \\psi \\le \\theta + O(\\sqrt{x}\\log x)$ 与 $\\pi(x) \\sim \\theta(x)/\\log x$ —— 所以「三者同阶」这句话本身就是定理。',
         '',
         '⭐ 人名按原文字母写：**Чебышёв**（不用音译，也不用英文拼法 Chebyshev）—— 这是本项目的口径。',
       ].join('\n\n'),
