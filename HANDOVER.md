@@ -35,14 +35,14 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | 本次提交后本地 `main` ahead 16（未 push；origin 仍停在 `0d20279a`） |
+| 工作树 | 本次提交后本地 `main` ahead 17（未 push；origin 仍停在 `0d20279a`） |
 
 ### 门禁 · 我 2026-11-06 全跑过
 
 | 命令 | 结果 |
 |---|---|
 | `bun tools/build.mjs` | ✅ 全绿（1540 节点 / 3169 边，所有页 ≤1300 B） |
-| `bun tools/_katexcheck.mjs` | ✅ **2865 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889） |
+| `bun tools/_katexcheck.mjs` | ✅ **2889 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
 | `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按第 7 批重钉为 894；fubini 12；Noether 14） |
@@ -592,7 +592,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 |---|---|
 | **本交接书** | `H:\MathGalaxy\HANDOVER.md`（本文件，唯一） |
 | **仓库规矩**（进目录自动注入） | `H:\MathGalaxy\AGENTS.md` |
-| **审读报告真源**（12062 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§110 各批 |
+| **审读报告真源**（12157 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§111 各批 |
 | 审读回执 | `_audit/_proofs/out-*.txt`（`P-*.txt` 是对应提示词） |
 | 用户手写笔记原件 | `_pdf/`（167 MB）· 转写 `_pdf/凝聚态数学笔记-转写.md` |
 | 散文式规则 | `CONTRIBUTING.md`（人看的）· `README.md` · `policy.md` |

@@ -145,10 +145,10 @@
     { kind: 'implication', sources: ['thm.homotopy-invariance'], target: 'thm.sphere-homology',
       title: '球面同调的归纳要用「可缩 $\\implies$ 同调平凡」',
       proof: [
-        '`thm.sphere-homology` 的证明把 $S^{n}$ 拆成两个闭半球 $D^{n}_{+} \\cup D^{n}_{-}$，' +
-          '再用对 $(S^{n}, D^{n}_{+})$ 的长正合列与归纳。',
+        '`thm.sphere-homology` 的证明把 $S^{n}$ 拆成两个**开**半球 $U = S^{n} \\setminus \\{\\text{北极 } N\\}$、$V = S^{n} \\setminus \\{\\text{南极 } S\\}$（各自经球极投影同胚于 $\\mathbb{R}^{n}$，可缩），' +
+          '再用**约化** Mayer–Vietoris 与对 $\\tilde{H}_{p}(S^{n-1})$ 的归纳。',
         '',
-        '**缺的那一步**：两个半球各自可缩，因此它们的恒等映射与「常值映射」同伦；' +
+        '**缺的那一步**：两个开半球各自可缩，因此它们的恒等映射与「常值映射」同伦；' +
           '由 `thm.homotopy-invariance`，恒等诱导的同态等于常值映射诱导的同态，' +
           '而后者经过 $\\tilde H_{k}(\\text{pt}) = 0$ 分解，故 $\\tilde H_{k}(D^{n}) = 0$。',
         '',
