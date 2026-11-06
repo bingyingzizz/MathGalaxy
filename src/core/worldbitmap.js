@@ -75,6 +75,15 @@
        世界图一次烘完，**平移期零重烘**。实测一次世界烘 ≈ 2.2 倍区域烘，且只在停手后发生。 */
     var worldPxMax = opt.worldPxMax == null ? 16e6 : opt.worldPxMax;
     var worldSideMax = opt.worldSideMax == null ? 6144 : opt.worldSideMax;
+    /* ⭐⭐ 世界档的**边框余量**（烘焙画布像素，约等于 CSS px × m/dpr）。
+       没有它：世界矩形 = graph.bbox()，而节点的圆心可以正好落在 bbox 边上
+       ⇒ 那一半圆 / 从它出发的贝塞尔外凸（PAD_EDGE=140）/ 箭头全被烘焙画布裁掉
+       （用户报「节点被世界大小的边界截掉一半」）。
+       140 与渲染器的 PAD_EDGE 同源：贝塞尔外凸 90 + 箭头 17 + 线宽/抗锯齿。
+       注意这是**画布像素**，不是世界单位：世界 padding = worldPadPx/(k·m)，
+       所以小 k 时自动变大（永远等价于 140 CSS px），大 k 时不会把画布撑爆。
+       ⛔ 别改成固定世界单位：k=0.1 时 140 世界单位只有 14px，挡不住外凸。 */
+    var worldPadPx = opt.worldPadPx == null ? 150 : Math.max(0, Number(opt.worldPadPx) || 0);
     var enabled = opt.enabled !== false;
     /* Phase B 区域模式开关（默认打开；关掉时 k > 世界单图上限仍走实时画）。 */
     var regionOn = !!opt.region;
@@ -125,21 +134,39 @@
       wW = Math.max(1, bb.maxX - bb.minX);
       wH = Math.max(1, bb.maxY - bb.minY);
     }
+    /** 世界档矩形 = 内容 bbox ⊕ 边框余量（余量按「画布像素」给，再折回世界单位）。
+        ⭐ 没有余量时 bbox 边上的节点只烘出半个圆（见 worldPadPx 的注释）。 */
+    function worldRectFor(k, dpr) {
+      var m = Math.min(Math.max(1, dpr || 1), 2);
+      var pad = (k > 0) ? worldPadPx / (k * m) : 0;
+      return {
+        minX: world.minX - pad, minY: world.minY - pad,
+        maxX: world.maxX + pad, maxY: world.maxY + pad
+      };
+    }
     /** 世界单图能覆盖的最大 k = 「边长 ≤ worldSideMax 且 面积 ≤ worldPxMax」能撑到的那个 k。
         ⚠️ dpr 必须算进去（像素尺寸 = 世界长 × k × min(dpr,2)）。
         ⛔ **判据必须和 tooBig() 完全一致** —— 曾经写成 `max(worldK(), min(sideK, areaK))`，
         而 worldK() 是**没算 dpr 的**边长口径 ⇒ 手机上（dpr≥2）它盖过了预算 ⇒
         rectFor 说是「世界档」、tooBig 又嫌太大 ⇒ **一张也烘不出来** ⇒ 卡在旧快照上、
-        周围永远不渲染（用户实测：手机「先缩小再拖动」就中招；电脑 dpr=1 所以从不复现）。 */
+        周围永远不渲染（用户实测：手机「先缩小再拖动」就中招；电脑 dpr=1 所以从不复现）。
+        ⭐ 边框余量也进预算：内容宽 = wW·k·d + 2·worldPadPx（余量项与 k 无关），
+        所以面积约束是一个一元二次方程，不能沿用 sqrt(A/(wW·wH))/d。 */
     function worldKMax(dpr) {
       var d = Math.min(Math.max(1, dpr || 1), 2);
       var len = Math.max(wW, wH) * d;
+      var pad2 = 2 * worldPadPx;
       /* 预算被关掉（`&worldpx=0` / setWorldBudget(0)）= 退回「世界图必须装进 maxSide 阶梯」的老口径 */
-      if (!(worldPxMax > 0)) return (maxSide() / len) * 0.999;
-      var sideK = worldSideMax > 0 ? worldSideMax / len : Infinity;
-      var areaK = Math.sqrt(worldPxMax / (wW * wH)) / d;
+      if (!(worldPxMax > 0)) return ((maxSide() - pad2) / len) * 0.999;
+      var sideK = worldSideMax > 0 ? (worldSideMax - pad2) / len : Infinity;
+      /* (wW·k·d + 2P)(wH·k·d + 2P) ≤ A  ⇒  a·k² + b·k + c ≤ 0 */
+      var a = wW * wH * d * d;
+      var b = 2 * worldPadPx * d * (wW + wH);
+      var c = 4 * worldPadPx * worldPadPx - worldPxMax;
+      var disc = b * b - 4 * a * c;
+      var areaK = disc > 0 ? (-b + Math.sqrt(disc)) / (2 * a) : 0;
       /* ×0.999：留一点余量，免得正好卡在预算边界上被 ceil 顶出去 */
-      return Math.min(sideK, areaK) * 0.999;
+      return Math.max(0, Math.min(sideK, areaK)) * 0.999;
     }
 
     function mkEl(gen) {
@@ -195,7 +222,7 @@
     /** 该用哪个矩形：装得下就整个世界；装不下就「视口 ⊕ 余量」 */
     function rectFor(k, tx, ty, dpr, vw, vh) {
       if (!(k > 0)) return null;
-      if (k <= worldKMax(dpr) * 1.0001) return { r: world, mode: 'world' };
+      if (k <= worldKMax(dpr) * 1.0001) return { r: worldRectFor(k, dpr), mode: 'world' };
       if (!regionOn) return null;      // Phase B 未开启：高倍率不烘（交实时画）
       /* ⚠️ **先把像素尺寸定死**（吸附到 8 设备像素的格），再换算成世界矩形。
          否则矩形宽度每烘一次都会因 ceil 抖动 1px ⇒ 画布 backing store 反复重新分配
@@ -747,6 +774,11 @@
         worldSideMax = side == null ? 0 : Math.max(0, Number(side) || 0);
         snap.ready = false; scheduleBake();
       },
+      /* 世界图边框余量（画布像素；A/B 用：0 = 复现「bbox 边上半切节点」） */
+      setWorldPad: function (v) {
+        worldPadPx = Math.max(0, Number(v) || 0);
+        snap.ready = false; scheduleBake();
+      },
       get margin() { return marginPx; },
       get band() { return bandPx; },
       get region() { return regionOn; },
@@ -766,7 +798,7 @@
           speed: Math.round(speed), zoomMs: zoomMs, 距上次出图: Math.round(now() - lastBakeT), 分配日志: rlLog, 掉: Math.round(slackFall),
           不可能: failKey,
           worldK: +worldKMax(snap.dpr || last.dpr).toFixed(4), maxSide: maxSide(), tier: ti,
-          worldPx: worldPxMax, worldSide: worldSideMax,
+          worldPx: worldPxMax, worldSide: worldSideMax, worldPad: worldPadPx,
           covered: snap.ready ? rectCoversView(snap.rect) : false,
           slack: snap.ready ? Math.round(slackOf(snap.rect)) : null,
           size: snap.ready ? Math.round((snap.rect.maxX - snap.rect.minX) * snap.scale) + 'x'

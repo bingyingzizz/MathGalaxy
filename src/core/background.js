@@ -31,93 +31,168 @@
     minX -= (w - (maxX - minX)) / 2;
     minY -= (h - (maxY - minY)) / 2;
 
-    var scale = bc.texScale;
+    /* 纹理分辨率：按世界尺寸自适应。
+       ⚠️ 曾固定成 1024×768（还按 4:3 硬拉成一块方形的世界区域 ⇒ 撒点被拉成椭圆），
+       实际只有 6.9 世界单位/像素；同样的世界尺寸下，配置里的 texScale 是 0.19。
+       现在按 texScale 取，再用 maxSide / maxPixels 兜底 —— 既拿到像素预算内的细节，
+       又不会超 GPU 纹理上限（部分环境只有 4096）或吃出几十 MB 内存。 */
+    var maxSide = bc.texMaxSide || 2048;
+    var maxPx = bc.texMaxPixels || 4200000;
+    var sr = Math.min(bc.texScale || 0.19,
+      maxSide / Math.max(w, h),
+      Math.sqrt(maxPx / (w * h)));
+    sr = Math.max(0.02, sr);
+    var TW = Math.max(128, Math.round(w * sr));
+    var TH = Math.max(128, Math.round(h * sr));
+    var sx = TW / w, sy = TH / h;
+
     var cv = document.createElement('canvas');
-    cv.width = Math.max(64, Math.round(w * scale));
-    cv.height = Math.max(64, Math.round(h * scale));
-    var ctx = cv.getContext('2d');
+    cv.width = TW; cv.height = TH;
+    var ctx = cv.getContext('2d', { willReadFrequently: true });
+    ctx.globalCompositeOperation = 'lighter';
+    /* 世界坐标 → 纹理像素。下面一律用世界单位画（渐变的半径也交给 CTM 缩放），
+       不再手算 scx/scy —— 分辨率改了也不会漏改一处。 */
+    ctx.setTransform(sx, 0, 0, sy, -minX * sx, -minY * sy);
 
-    // 世界坐标 → 纹理像素
-    ctx.setTransform(scale, 0, 0, scale, -minX * scale, -minY * scale);
-
-    /* ⭐⭐ Stage 1b：**不再画任何圆形云盘**（星团盘 / 领域盘 / 板块盘全删）。
-       改成节点泼溅密度场：每个节点按所属领域色泼一个半径 40 世界单位、
-       中心 α 0.03、边缘 0 的径向渐变，整体模糊一次（smoothTexture）。
-       910 × 0.03 叠加最浓处 ≈ 0.94，不会过曝。 */
-    /* ⭐⭐ 归一化领域色场（Stage 1b）：颜色 = Σ(rgb·a) / Σa，alpha = 1−exp(−k·Σa)。
-       为什么必须归一化：一堆独立径向渐变直接叠起来会浑浊、圆边互相打断 —— 眼睛看到
-       的就是「一堆透明圆」。归一化后颜色只由「这一像素周围各领域的权重比」决定，
-       形状是自由有机的，没有圆边。 */
-    var CW = 1024, CH = 768;
-    var cvC = document.createElement('canvas'), cvW = document.createElement('canvas');
-    cvC.width = CW; cvC.height = CH; cvW.width = CW; cvW.height = CH;
-    var ctxC = cvC.getContext('2d'), ctxW = cvW.getContext('2d');
-    ctxC.globalCompositeOperation = 'lighter';
-    ctxW.globalCompositeOperation = 'lighter';
-    var scx = CW / w, scy = CH / h;
-    var drawn = 0;
-    /* ⭐ 2026-10-19：**领域大云**这一层（5a840a9 配方里最关键的一层，之前漏了）。
-       每节点小雾只够做颗粒；整块领域的色底要靠这一层，两层叠起来才是连续渐变。 */
+    /* ⭐ 领域大云：整块领域的色底（每节点小雾只够做颗粒）。 */
     (graph.regions || []).forEach(function (reg) {
       if (!reg.stat) return;
       var rgb0 = U.hexToRgb(reg.color || '#7A8699');
-      var pr0 = Math.max(4, reg.stat.radius * 0.72 * scx);
-      var px0 = (reg.stat.cx - minX) * scx, py0 = (reg.stat.cy - minY) * scy;
-      var g0 = ctxC.createRadialGradient(px0, py0, 0, px0, py0, pr0);
+      var pr0 = Math.max(4, reg.stat.radius * 1.02);
+      var g0 = ctx.createRadialGradient(reg.stat.cx, reg.stat.cy, 0, reg.stat.cx, reg.stat.cy, pr0);
       var s0 = rgb0.r + ',' + rgb0.g + ',' + rgb0.b + ',';
-      g0.addColorStop(0, 'rgba(' + s0 + '0.10)');
-      g0.addColorStop(0.55, 'rgba(' + s0 + '0.055)');
+      g0.addColorStop(0, 'rgba(' + s0 + '0.085)');
+      g0.addColorStop(0.45, 'rgba(' + s0 + '0.055)');
+      g0.addColorStop(0.72, 'rgba(' + s0 + '0.022)');
+      g0.addColorStop(0.88, 'rgba(' + s0 + '0.008)');
       g0.addColorStop(1, 'rgba(' + s0 + '0)');
-      ctxC.fillStyle = g0;
-      ctxC.beginPath(); ctxC.arc(px0, py0, pr0, 0, Math.PI * 2); ctxC.fill();
+      ctx.fillStyle = g0;
+      ctx.beginPath(); ctx.arc(reg.stat.cx, reg.stat.cy, pr0, 0, Math.PI * 2); ctx.fill();
     });
+    /* ⭐ 节点泼溅：加法叠加成密度场（颜色 = 各领域色按落点叠加，浓淡由 Σalpha 给出）。 */
+    var drawn = 0;
     (graph.nodes || []).forEach(function (n) {
       if (!ok(n.id)) return;
       var rid = (n.regions && n.regions[0]) || '';
       var reg = graph.regionById && graph.regionById[rid];
       var hex = (reg && reg.color) || '#7A8699';
       var rgb = U.hexToRgb(hex);
-      var sr = (bc.splatRadius == null ? 130 : bc.splatRadius);   // 世界单位
-      var px = (n.x - minX) * scx, py = (n.y - minY) * scy;
-      var pr = Math.max(2, sr * scx);
-      var gC = ctxC.createRadialGradient(px, py, 0, px, py, pr);
-      gC.addColorStop(0, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.05)');
+      var pr = Math.max(2, (bc.splatRadius == null ? 150 : bc.splatRadius));   // 世界单位
+      var gC = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, pr);
+      /* ⚠️ 曲线必须有「尾巴」：以前是 0.05 → 0 的直线渐变，单个撒点的边缘是一条
+         斜率突变（−a/R → 0）的圆弧 —— 1540 个叠起来，每个都留下一个看得见的圆边，
+         整片云像一堆肥皂泡（用户原话「看着星云有点难看」）。
+         这里在 0.78 之后把透明度压到 0.014 → 0.005 → 0，斜率平滑接到 0。 */
+      gC.addColorStop(0, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.050)');
+      gC.addColorStop(0.35, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.042)');
+      gC.addColorStop(0.60, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.028)');
+      gC.addColorStop(0.78, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.014)');
+      gC.addColorStop(0.90, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.005)');
       gC.addColorStop(1, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
-      ctxC.fillStyle = gC;
-      ctxC.beginPath(); ctxC.arc(px, py, pr, 0, Math.PI * 2); ctxC.fill();
-      var gW = ctxW.createRadialGradient(px, py, 0, px, py, pr);
-      gW.addColorStop(0, 'rgba(255,255,255,0.05)');
-      gW.addColorStop(1, 'rgba(255,255,255,0)');
-      ctxW.fillStyle = gW;
-      ctxW.beginPath(); ctxW.arc(px, py, pr, 0, Math.PI * 2); ctxW.fill();
+      ctx.fillStyle = gC;
+      ctx.beginPath(); ctx.arc(n.x, n.y, pr, 0, Math.PI * 2); ctx.fill();
       drawn++;
     });
-    /* 合成：读回两条通道，逐像素归一化（1024×768 ≈ 79 万像素，一次 ~40ms） */
-    var outCv = document.createElement('canvas');
-    outCv.width = CW; outCv.height = CH;
-    var octx = outCv.getContext('2d');
-    var img = octx.createImageData(CW, CH);
-    var dC = ctxC.getImageData(0, 0, CW, CH).data;
-    var dW = ctxW.getImageData(0, 0, CW, CH).data;
-    var o = img.data;
-    /* ⭐ 2026-10-19：回到**加法叠加**（5a840a9 那套配方）——
-       不再做 alpha = 1−exp(−K·Σw) 的饱和压缩。饱和会把浓淡压平，
-       于是每一块地方都是一片均匀的色块；直接取画布叠加出来的 alpha，
-       才是「越靠中心越浓、越往外越淡」的连续过渡。 */
-    for (var pi = 0; pi < o.length; pi += 4) {
-      o[pi] = dC[pi]; o[pi + 1] = dC[pi + 1]; o[pi + 2] = dC[pi + 2];
-      o[pi + 3] = dC[pi + 3];
-    }
-    octx.putImageData(img, 0, 0);
-    var cdrawn = 0;
+
+    /* ⭐ 粒子化：把密度场的**低密度尾巴**改成离散颗粒。
+       原来整片云都是连续 alpha ⇒ 最外侧一圈是一条浓度平滑掉到 0 的「边」，
+       放大看是一整块糊雾的硬轮廓。现在按 alpha 决定保留概率：
+       中心（α ≥ particleEdge）保持连续；越往外点越稀，到 α→0 时几乎只剩零星颗粒。
+       期望墨量保持不变（out = A^γ · α^(1−γ)，p = (α/A)^γ），所以整体浓淡不变，
+       只是边缘从「一条边」变成「一层散开的粒子」。
+
+       ⚠️ 顺序必须是「先模糊、后点粒子」：早先把 stipple 放在 smoothTexture 之前，
+       每个粒子只有 2~4 texel，再被 blur(1.6) 抹平 ⇒ 屏幕上根本看不出颗粒，
+       等于白做。现在雾先糊好、dither 抹掉，再在干净的雾上戳粒子。 */
+    var tex = smoothTexture(cv, bc.texBlur == null ? 1.6 : bc.texBlur);
+    var tctx = tex.getContext('2d');
+    var img = tctx.getImageData(0, 0, tex.width, tex.height);
+    stipple(img.data, tex.width, tex.height, bc, sx);
+    tctx.putImageData(img, 0, 0);
 
     return {
-      canvas: smoothTexture(outCv, 1.2),
+      canvas: tex,
       x: minX, y: minY, w: w, h: h,
       scale: 1,
       regions: drawn,
-      clusters: cdrawn
+      clusters: 0
     };
+  }
+
+  /**
+   * 把密度场外侧的低 alpha 区打散成粒子。
+   * 在 texel 网格上取格子（世界尺寸 ≈ particleCell）：格内 alpha 决定「这里留不留粒子、
+   * 留多亮」，粒子的**位置用哈希抖动**，不落在格心 —— 否则整片云是一张规则的网点纸
+   * （实测：不抖动时 k=0.5 看上去像印刷半调）。粒子是带余弦衰减的圆点，不是方块。
+   * 哈希按格子坐标算：同一张图每次建纹理都长一样，不会抖。
+   */
+  function stipple(d, W, H, bc, sx) {
+    var edge = bc.particleEdge == null ? 0.10 : bc.particleEdge;
+    if (!(edge > 0)) return;
+    var gamma = bc.particleGamma == null ? 0.75 : bc.particleGamma;
+    var cell = Math.max(2, Math.round((bc.particleCell || 6) * sx));
+    var A = Math.max(1, Math.min(255, Math.round(edge * 255)));
+    var Ag = Math.pow(A / 255, gamma);
+    var invA = 1 / A;
+    var rad = cell * 0.46;
+    var rad2 = rad * rad;
+    var half = cell * 0.5;
+    var cols = Math.ceil(W / cell), rows = Math.ceil(H / cell);
+    var dots = new Uint8Array(cols * rows);   // 每格决定：0 = 不留粒子，否则 = 粒子中心 alpha
+
+    /* 第 1 遍：在**原始** alpha 上做决定（抖动点取原图，不能先抹再取）。 */
+    for (var gy = 0, gyi = 0; gy + cell <= H; gy += cell, gyi++) {
+      for (var gx = 0, gxi = 0; gx + cell <= W; gx += cell, gxi++) {
+        var jx = gx + half + (hash01(gx + 11, gy + 3) - 0.5) * cell * 0.9;
+        var jy = gy + half + (hash01(gx + 47, gy + 29) - 0.5) * cell * 0.9;
+        var px = Math.min(W - 1, Math.max(0, Math.round(jx)));
+        var py = Math.min(H - 1, Math.max(0, Math.round(jy)));
+        var a = d[((py * W + px) << 2) + 3];
+        if (!a || a >= A) continue;             // 内部：保持连续的雾
+        var af = a / 255;
+        var p = Math.pow(af * 255 * invA, gamma);   // 保留概率
+        if (hash01(gx + 101, gy + 197) >= p) continue;
+        dots[gyi * cols + gxi] = Math.max(1, Math.round(255 * Ag * Math.pow(af, 1 - gamma)));
+      }
+    }
+
+    /* 第 2 遍：把连续雾里 alpha 低于阈值的那部分**抹掉** —— 否则边缘仍是那层糊雾，
+       粒子只是加在上面（第一版就是这个病：4× 放大看，粒子背后还有一条连续的边）。
+       逐像素按真实 alpha 抹，边界沿着浓度等值线走，不是格子的台阶。 */
+    for (var i = 3; i < d.length; i += 4) if (d[i] < A) d[i] = 0;
+
+    /* 第 3 遍：把留下的粒子盖成带余弦衰减的圆点（可能压到相邻格子，只取更亮的值）。 */
+    for (var ry = 0, ryi = 0; ry + cell <= H; ry += cell, ryi++) {
+      for (var rx = 0, rxi = 0; rx + cell <= W; rx += cell, rxi++) {
+        var na = dots[ryi * cols + rxi];
+        if (!na) continue;
+        var dx0 = rx + half + (hash01(rx + 11, ry + 3) - 0.5) * cell * 0.9;
+        var dy0 = ry + half + (hash01(rx + 47, ry + 29) - 0.5) * cell * 0.9;
+        var x0 = Math.max(0, Math.floor(dx0 - rad)), x1 = Math.min(W - 1, Math.ceil(dx0 + rad));
+        var y0 = Math.max(0, Math.floor(dy0 - rad)), y1 = Math.min(H - 1, Math.ceil(dy0 + rad));
+        for (var yy = y0; yy <= y1; yy++) {
+          var dy = yy + 0.5 - dy0;
+          var base = (yy * W) << 2;
+          for (var xx = x0; xx <= x1; xx++) {
+            var dx = xx + 0.5 - dx0;
+            var d2 = dx * dx + dy * dy;
+            if (d2 > rad2) continue;
+            var f = 0.5 + 0.5 * Math.cos(Math.PI * Math.sqrt(d2) / rad);  // 中心 1、边缘 0
+            var ai = base + (xx << 2) + 3;
+            var v = Math.round(na * f);
+            if (v > d[ai]) d[ai] = v;
+          }
+        }
+      }
+    }
+  }
+
+  /* 稳定哈希 → [0,1)。Math.imul 避免 32 位溢出的浮点误差。 */
+  function hash01(x, y) {
+    var h = Math.imul(x, 374761393) + Math.imul(y, 668265263);
+    h = Math.imul(h ^ (h >>> 13), 1274126177);
+    h = h ^ (h >>> 16);
+    return (h >>> 0) / 4294967296;
   }
 
   /**
@@ -140,6 +215,8 @@
     if (!(r > 0)) return src;
     var out = document.createElement('canvas');
     out.width = src.width; out.height = src.height;
+    /* ⚠️ 不要把这张画布设成 willReadFrequently：它是每帧都要重铺的纹理，
+       要留在 GPU 上。粒子化那一次 getImageData 是一次性开销，值得换。 */
     var ctx = out.getContext('2d');
     ctx.imageSmoothingEnabled = true;
     if ('filter' in ctx) {

@@ -2460,6 +2460,7 @@
       setRegion: function (v) { if (bitmap) bitmap.setRegion(v); requestDraw(); },
       setMargin: function (v) { if (bitmap) bitmap.setMargin(v); requestDraw(); },
       setBand: function (v) { if (bitmap) bitmap.setBand(v); requestDraw(); },
+      setWorldPad: function (v) { if (bitmap) bitmap.setWorldPad(v); requestDraw(); },
       setZoomMs: function (v) { if (bitmap) bitmap.setZoomMs(v); requestDraw(); },
       setTheme: function (name) { return applyTheme(name, true); },
       get bitmap() { return bitmap ? bitmap.state() : null; },
