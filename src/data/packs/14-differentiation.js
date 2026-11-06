@@ -629,6 +629,32 @@ window.MG = window.MG || {};
       definition: 'def.locally-integrable',
       usedBy: 'thm.rn-pointwise',
       note: '证明中间要推出 $f \\in L^{1}_{loc}$。'
+    },
+
+    {
+      id: 'imp.dct-average-continuous',
+      kind: 'implication',
+      sources: ['thm.dct'],
+      target: 'lem.average-continuous',
+      title: '控制收敛定理 $\\implies$ 平均算子联合连续',
+      proof: [
+        '**① 只有一段需要交换极限与积分。** 把 $A_{r}f(x) - A_{r_0}f(x_0)$ 按球拆成',
+        '',
+        '$\\frac{1}{m(B(x,r))}\\int \\bigl(\\chi_{B(x,r)} - \\chi_{B(x_0,r_0)}\\bigr) f + \\Bigl(\\frac{1}{m(B(x,r))} - \\frac{1}{m(B(x_0,r_0))}\\Bigr) \\int_{B(x_0,r_0)} f .$',
+        '',
+        '第二段是「有界系数趋于 $0$ 乘以一个固定常数」，不用定理；第一段要证 $\\int (\\chi_{B(x_k,r_k)} - \\chi_{B(x_0,r_0)}) f \\to 0$。$f$ 只在 $L^1_{loc}$ 里、没有连续性可用，所以必须**把极限搬进积分号**。',
+        '',
+        '**② 被积函数几乎处处收敛。** 设 $y \\notin \\partial B(x_0,r_0)$（球面是零测集）。若 $|y - x_0| < r_0$，取 $\\varepsilon = r_0 - |y - x_0| > 0$，则当 $|x_k - x_0| < \\varepsilon/2$、$|r_k - r_0| < \\varepsilon/2$ 时 $|y - x_k| < r_k$，两侧特征函数都等于 $1$；若 $|y - x_0| > r_0$，同样的扰动下两侧都等于 $0$。于是',
+        '',
+        '$\\chi_{B(x_k,r_k)}(y) \\longrightarrow \\chi_{B(x_0,r_0)}(y) \\qquad \\text{a.e. } y .$',
+        '',
+        '**③ 控制函数一致有界，DCT 收尾。** $k$ 充分大时 $r_k < r_0 + 1/2$、$|x_k - x_0| < 1/2$，于是 $B(x_k, r_k) \\subseteq B(x_0, r_0+1)$，从而',
+        '',
+        '$|\\chi_{B(x_k,r_k)}(y) - \\chi_{B(x_0,r_0)}(y)|\\,|f(y)| \\le \\chi_{B(x_0, r_0+1)}(y)\\,|f(y)| \\in L^1 .$',
+        '',
+        '由**控制收敛定理**（本步唯一的外部定理）得第一段积分趋于 $0$；再乘上有界系数 $1/m(B(x_k,r_k)) \\to 1/m(B(x_0,r_0)) > 0$，两段合起来即 $A_{r_k}f(x_k) \\to A_{r_0}f(x_0)$。∎'
+      ].join('\n'),
+      note: '这一步之外全是球与特征函数的初等估计：拆项、a.e. 收敛、找控制函数。**DCT 是唯一的外部定理**，也是把「$L^1_{loc}$ 里没有逐点信息」这个困难一次性消掉的地方。'
     }
   ]
 });

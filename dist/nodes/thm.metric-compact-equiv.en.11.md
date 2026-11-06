@@ -2,11 +2,7 @@
 English entry · root `../`
 [in graph](../#n=thm.metric-compact-equiv)　·　[Chinese page (authoritative)](./thm.metric-compact-equiv.md)
 
-> Proofs of the edges are still Chinese only: `proofs/`; the Chinese page remains authoritative.
+of (the other is (b) implies (a)). For each $n$ one picks a $1/n$-ball containing infinitely many terms, and shrinks layer by layer.
+- (c) $\implies$ (b): **no choice needed** (diagonal argument: using $1/n$-nets, keep at each layer a ball with infinitely many terms, take the diagonal subsequence — it is Cauchy — and converge by completeness).
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Sequentially_compact_space · nLab: https://ncatlab.org/nlab/show/compact+space
-
-
-Cite: `thm.metric-compact-equiv` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
-
+> 续见 nodes/thm.metric-compact-equiv.en.12.md

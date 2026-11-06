@@ -380,5 +380,13 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    {
+      id: 'def-link.simplex-category-simplicial',
+      kind: 'definition',
+      definition: 'def.simplex-category',
+      usedBy: 'def.simplicial',
+      note: '单纯对象是 $\\Delta^{\\mathrm{op}}$ 上的图，索引范畴正是 `def.simplex-category`；本节点陈述为了自足把 $\\Delta$ 的骨架重述了一遍，正式定义以那个节点为准。'
+    }
+  ]
 });

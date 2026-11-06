@@ -334,7 +334,7 @@ MG.i18nAbstracts = {
       'In a metric space the following are equivalent: compact, sequentially compact, and ' +
       'complete together with totally bounded. The skeleton lives in the implications: ' +
       'compact implies sequentially compact; sequentially compact implies totally bounded ' +
-      '(the one place dependent choice is used) and complete; sequentially compact implies ' +
+      '(one of two places dependent choice is used; the other is (b) implies (a)) and complete; sequentially compact implies ' +
       'compact by the "bad ball" argument; complete and totally bounded implies sequentially ' +
       'compact by diagonalisation. In general topological spaces **both implications fail** — ' +
       'sequential compactness is a metric-space luxury (counterexamples: $\\{0,1\\}^{I}$ and $[0,\\omega_1)$).',

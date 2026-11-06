@@ -86,7 +86,6 @@ window.MG = window.MG || {};
       id: 'prop.exterior-derivative-manifold',
       cluster: 'diffgeom.form',
       type: 'proposition',
-      status: 'skeleton',
       label: '外微分',
       title: '外微分：流形上的存在唯一性与图卡无关',
       regions: ['diffgeom'],
@@ -106,10 +105,16 @@ window.MG = window.MG || {};
         '其中 $\\mathrm{d}x^{I} := \\mathrm{d}x^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}x^{i_{k}}$，而 $\\mathrm{d}a_{I}$ 是函数 $a_{I}$ 的微分。于是「$\\mathrm{d}$ 与图卡无关」不是额外假设，而是这条命题的结论。'
       ].join('\n'),
       notes: [
-        '**证明的两半**：存在性 = 「图卡上按公式定义 + 重叠处一致 + 用单位分解拼成整体」；唯一性 = 「局部公式 + 反导子公理 + $\\mathrm{d}^{2}=0$」。骨架在边上，⚠️ 收尾那一步（单位分解的拼接为什么只有有限项、为什么拼出来的东西仍满足 (3)(4)）只给到提纲。',
-        '**这是 Tu 的处理顺序**：先有开集上的坐标公式（`def.exterior-derivative`），再用「与拉回交换」（`prop.pullback-forms` 的第 3 条）证明图卡无关。也可以反过来把「与拉回交换」当公理（一堆教材这么做），但那样就得另证存在性，且难以看出 $\\mathrm{d}$ 为什么长这样。',
+        '**证明策略**：先在一个图卡内证明「坐标公式满足四条公理」，再证明「满足四条公理的算子被坐标公式唯一决定」；最后由「图卡重叠处两个公式都是满足公理的算子」推出它们一致，把局部公式拼成整体。关键点：**不需要单位分解** —— 单位分解是给「局部数据在重叠处不一致」的场合用的，这里局部公式在重叠处自动一致。',
+        '**引理 A（图卡内唯一性）**：设 $U \\subseteq \\mathbb{R}^{n}$ 是开集，$D$ 是 $\\Omega^{\\bullet}(U)$ 上满足 (1)–(4) 的算子。则对 $\\omega = \\sum_{I} a_{I}\\,\\mathrm{d}x^{I}$ 有 $D\\omega = \\sum_{I}\\mathrm{d}a_{I}\\wedge\\mathrm{d}x^{I}$。**证明**：$0$-形式由 (1) 直接给出。看单项 $a\\,\\mathrm{d}x^{I}$，$I = (i_{1} < \\cdots < i_{k})$：$\\mathrm{d}x^{i} = \\mathrm{d}(x^{i})$（对坐标函数用 (1)），由 (4) 得 $D(\\mathrm{d}x^{i}) = D^{2}(x^{i}) = 0$；再由 (3) 归纳得 $D(\\mathrm{d}x^{I}) = 0$。于是 $D(a\\,\\mathrm{d}x^{I}) = \\mathrm{d}a\\wedge\\mathrm{d}x^{I} + a\\,D(\\mathrm{d}x^{I}) = \\mathrm{d}a\\wedge\\mathrm{d}x^{I}$；由 (2) 线性拼起来即得。$\\square$',
+        '**引理 B（坐标公式满足公理）**：在 $U$ 上定义 $D(\\sum_{I} a_{I}\\,\\mathrm{d}x^{I}) := \\sum_{I}\\mathrm{d}a_{I}\\wedge\\mathrm{d}x^{I}$。**证明**：(2) 显然。(1)：$Df = \\sum_{i}\\partial_{i}f\\,\\mathrm{d}x^{i}$，这正是 $f$ 的微分（$\\mathrm{d}f_{p}(v) = v(f)$）。(3)：只需对单项 $a\\,\\mathrm{d}x^{I}$ 与 $b\\,\\mathrm{d}x^{J}$ 验，$D(ab\\,\\mathrm{d}x^{I}\\wedge\\mathrm{d}x^{J}) = (b\\,\\mathrm{d}a + a\\,\\mathrm{d}b)\\wedge\\mathrm{d}x^{I}\\wedge\\mathrm{d}x^{J} = (\\mathrm{d}a\\wedge\\mathrm{d}x^{I})\\wedge(b\\,\\mathrm{d}x^{J}) + (-1)^{k}a\\,\\mathrm{d}x^{I}\\wedge(\\mathrm{d}b\\wedge\\mathrm{d}x^{J}),$ 中间用了 $\\mathrm{d}x^{I}\\wedge\\mathrm{d}b = (-1)^{k}\\mathrm{d}b\\wedge\\mathrm{d}x^{I}$。(4)：先看函数，$D^{2}f = \\sum_{i}D(\\partial_{i}f)\\wedge\\mathrm{d}x^{i} = \\sum_{i,j}\\partial_{j}\\partial_{i}f\\,\\mathrm{d}x^{j}\\wedge\\mathrm{d}x^{i} = 0$，因为 $\\mathrm{d}x^{j}\\wedge\\mathrm{d}x^{i} = -\\mathrm{d}x^{i}\\wedge\\mathrm{d}x^{j}$，而混合偏导 $\\partial_{j}\\partial_{i}f = \\partial_{i}\\partial_{j}f$（Clairaut）。再看单项 $a\\,\\mathrm{d}x^{I}$：由 (3) 与已证的 $D(\\mathrm{d}x^{I}) = 0$，$D^{2}(a\\,\\mathrm{d}x^{I}) = D(\\mathrm{d}a\\wedge\\mathrm{d}x^{I}) = D^{2}a\\wedge\\mathrm{d}x^{I} = 0$。$\\square$',
+        '**整体构造（存在性）**：取 $M$ 的图卡覆盖 $\\{(U_{\\alpha}, x_{\\alpha})\\}$。在每张图卡上用引理 B 定义算子 $D_{\\alpha}$。若 $U_{\\alpha}\\cap U_{\\beta}\\ne\\emptyset$，在重叠开集上 $D_{\\alpha}$ 与 $D_{\\beta}$ 都满足 (1)–(4)；由引理 A（在 $x_{\\alpha}$ 坐标下）$D_{\\beta} = D_{\\alpha}$。故所有 $D_{\\alpha}$ 拼成一个整体算子 $\\mathrm{d}$：对 $\\omega\\in\\Omega^{k}(M)$，$\\mathrm{d}\\omega$ 在 $U_{\\alpha}$ 上定义为 $D_{\\alpha}(\\omega|_{U_{\\alpha}})$；重叠处一致，故良定义。(1)–(4) 都是局部性质，已逐图卡验证，故整体成立。',
+        '**唯一性**：设 $\\mathrm{d}^{\\prime}$ 是满足 (1)–(4) 的另一族算子。对任意图卡 $(U,x)$，$\\mathrm{d}^{\\prime}$ 限制在 $U$ 上满足 (1)–(4)，由引理 A 它等于坐标公式，即等于 $\\mathrm{d}$。$U$ 任意，故 $\\mathrm{d}^{\\prime} = \\mathrm{d}$。∎',
+        '**「与图卡无关」到底指什么**：第 4 步说明换图卡算出的两个公式在重叠处相等 —— 因为它们都是满足公理的算子，而引理 A 说这样的算子只有一个。真正把 $\\mathrm{d}$ 钉死的是 (3)+(4)：(1) 给函数上的值，(3) 让 $\\mathrm{d}$ 穿过楔积，(4) 杀掉 $\\mathrm{d}x^{I}$ 的导数。',
+        '**与 Tu 的路线对照**：Tu 先用 `prop.pullback-forms` 的第 3 条（与拉回交换）证图卡无关；这里改用「公理唯一性」证。两条路线都对，且都不需要单位分解 —— 这也说明 `thm.smooth-partition-unity` 在本条里不是必需品。',
         '⭐ 有了这一条，`def.de-rham-complex` 里那串 $\\Omega^{k}(M)\\xrightarrow{\\ \\mathrm{d}\\ }\\Omega^{k+1}(M)$ 才真的是一串映射 —— 在这条之前，那串东西只是记号。',
-        '⚠️ 顺带钉住一个常见误解：$\\mathrm{d}$ 不依赖**度量**，也不依赖**联络**。它是光滑结构本身给出的算子；联络（`def.affine-connection`）与它无关，两者能凑出公式纯属巧合之外的对称性。'
+        '⚠️ 顺带钉住一个常见误解：$\\mathrm{d}$ 不依赖**度量**，也不依赖**联络**。它是光滑结构本身给出的算子；联络（`def.affine-connection`）与它无关，两者能凑出公式纯属巧合之外的对称性。',
+        '⚠️ **本图缺的节点**：$\\mathrm{d}^{2}=0$ 的函数情形用到了 Clairaut 定理（混合偏导对称），本图没有这个节点，故在此直接以经典微积分事实使用。'
       ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 外微分与图卡无关性'
@@ -120,7 +125,6 @@ window.MG = window.MG || {};
       id: 'prop.pullback-form-manifold',
       cluster: 'diffgeom.form',
       type: 'proposition',
-      status: 'skeleton',
       label: '拉回',
       title: '拉回：流形之间光滑映射的拉回',
       regions: ['diffgeom'],
@@ -140,13 +144,16 @@ window.MG = window.MG || {};
         '于是 $F^{\\ast} : \\Omega^{\\bullet}(N)\\to\\Omega^{\\bullet}(M)$ 是**微分分次代数**的同态。'
       ].join('\n'),
       notes: [
-        '**证明的路线**：$T_{p}M$ 上的交错型在坐标基 $\\mathrm{d}x^{I}$ 上线性展开，于是只需在单项 $\\omega = \\mathrm{d}y^{I}$ 上验 —— 而那正是链式法则加「$\\mathrm{d}^{2}=0$」的机械计算，再用上一句的线性拼回去。骨架在边上。',
-        '**它和「$\\mathrm{d}$ 良定」互为因果**：开集间那条（`prop.pullback-forms`）已经证过 (3)，流形上用图卡局部化即可；反过来，正因为 $\\mathrm{d}$ 与拉回交换、而拉回只用链式法则定义，$\\mathrm{d}$ 才不依赖坐标（`prop.exterior-derivative-manifold`）。\n\n两条一起看，才知道谁也不是循环论证 —— 开集上的 (3) 是初等的。',
-        '⭐ 这一条是 de Rham 上同调「是函子」的全部内容：$F$ 光滑 $\\implies$ $F^{\\ast}$ 与 $\\mathrm{d}$ 交换 $\\implies$ $F^{\\ast}$ 下到商空间，得 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(N)\\to H^{k}_{\\mathrm{dR}}(M)$。\n\n方向是反的，这正是「上同调反变」的意思。',
-        '⚠️ 与向量场的对照：向量场**不能**沿任意光滑映射拉回（要 $F$ 是微分同胚才能前推），形式可以。这个不对称不是技术缺陷，而是「形式是 $T^{\\ast}M$ 的截面、向量场是 $TM$ 的截面」的直接后果。'
+        '**证明分四步**：先说明 $F^{\\ast}\\omega$ 确实是光滑的 $k$-形式，再逐条验证 (1)–(4)，最后 (2)+(3) 合起来说明它是微分分次代数同态。所有等式都是逐点验证 —— 形式逐点定义，所以「逐点相等」就是「形式相等」。',
+        '**光滑性**：取 $M$ 的图卡 $(U,x)$ 与 $N$ 的图卡 $(V,y)$，且 $F(U)\\subseteq V$。在 $y$ 坐标下 $\\omega = \\sum_{I} a_{I}\\,\\mathrm{d}y^{I}$，$F$ 写成 $y = F(x) = (F^{1}(x), \\ldots, F^{n}(x))$。则 $F^{\\ast}\\omega = \\sum_{I}(a_{I}\\circ F)\\,\\mathrm{d}F^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}F^{i_{k}},\\qquad \\mathrm{d}F^{i} = \\sum_{j}\\frac{\\partial F^{i}}{\\partial x^{j}}\\,\\mathrm{d}x^{j}.$ 右端系数是光滑函数的积与和，故 $F^{\\ast}\\omega$ 在 $U$ 上光滑；图卡 $U$ 覆盖 $M$，故整体光滑。（这里 $\\mathrm{d}F$ 与 `def.differential-map` 的微分是同一个东西：$\\mathrm{d}F_{p}$ 是切映。）\n\n**逐条验证**：(1) $\\mathbb{R}$-线性由 $\\omega\\mapsto\\omega_{F(p)}(\\mathrm{d}F_{p}\\cdot)$ 对 $\\omega$ 线性得到；函数的拉回 $(F^{\\ast}f)(p) = f(F(p)) = (f\\circ F)(p)$ 就是定义。\n\n(2) **保楔积**：固定 $p$，记 $L = \\mathrm{d}F_{p} : T_{p}M\\to T_{F(p)}N$。对 $v_{1},\\ldots,v_{k+l}\\in T_{p}M$，用楔积的洗牌公式（对 $(k,l)$-洗牌 $\\sigma$ 求和）：$(L^{\\ast}\\alpha\\wedge L^{\\ast}\\beta)(v) = \\sum_{\\sigma}\\operatorname{sgn}(\\sigma)\\,(L^{\\ast}\\alpha)(v_{\\sigma(1)},\\ldots)(L^{\\ast}\\beta)(v_{\\sigma(k+1)},\\ldots) = \\sum_{\\sigma}\\operatorname{sgn}(\\sigma)\\,\\alpha(Lv_{\\sigma(1)},\\ldots)\\beta(Lv_{\\sigma(k+1)},\\ldots) = (\\alpha\\wedge\\beta)(Lv_{1},\\ldots,Lv_{k+l}) = L^{\\ast}(\\alpha\\wedge\\beta)(v).$ 取 $\\alpha = \\omega_{F(p)}$、$\\beta = \\eta_{F(p)}$，即得 (2)。\n\n(3) **与 $\\mathrm{d}$ 交换**：两边都逐点定义，用图卡化到 $\\mathbb{R}^{n}$ 的开集。由线性只需验单项 $\\omega = a\\,\\mathrm{d}y^{I}$。此时 $F^{\\ast}\\omega = (a\\circ F)\\,\\mathrm{d}F^{I}$，其中 $\\mathrm{d}F^{I} = \\mathrm{d}F^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}F^{i_{k}}$。由反导子与 $\\mathrm{d}^{2}F^{i} = 0$（$F^{i}$ 是函数）：$\\mathrm{d}(F^{\\ast}\\omega) = \\mathrm{d}(a\\circ F)\\wedge\\mathrm{d}F^{I} + (a\\circ F)\\,\\mathrm{d}(\\mathrm{d}F^{I}) = \\mathrm{d}(a\\circ F)\\wedge\\mathrm{d}F^{I}.$ 链式法则给 $\\mathrm{d}(a\\circ F) = \\sum_{j}(\\partial_{j}a\\circ F)\\,\\mathrm{d}F^{j}$，代回：$\\mathrm{d}(F^{\\ast}\\omega) = \\sum_{j}(\\partial_{j}a\\circ F)\\,\\mathrm{d}F^{j}\\wedge\\mathrm{d}F^{I} = F^{\\ast}\\Bigl(\\sum_{j}\\partial_{j}a\\,\\mathrm{d}y^{j}\\wedge\\mathrm{d}y^{I}\\Bigr) = F^{\\ast}(\\mathrm{d}a\\wedge\\mathrm{d}y^{I}) = F^{\\ast}(\\mathrm{d}\\omega),$ 末步用了 $\\mathrm{d}\\omega = \\mathrm{d}a\\wedge\\mathrm{d}y^{I} + a\\,\\mathrm{d}(\\mathrm{d}y^{I}) = \\mathrm{d}a\\wedge\\mathrm{d}y^{I}$。\n\n(4) **保复合**：链式法则给 $\\mathrm{d}(G\\circ F)_{p} = \\mathrm{d}G_{F(p)}\\circ\\mathrm{d}F_{p}$，于是 $((G\\circ F)^{\\ast}\\omega)_{p}(v_{1},\\ldots) = \\omega_{G(F(p))}\\bigl(\\mathrm{d}G_{F(p)}\\mathrm{d}F_{p}v_{1},\\ldots\\bigr) = (F^{\\ast}(G^{\\ast}\\omega))_{p}(v_{1},\\ldots).$ $(\\operatorname{id})^{\\ast} = \\operatorname{id}$ 显然。∎',
+        '**小结**：(1)+(2) 说 $F^{\\ast}$ 是分次代数同态，(3) 说它与微分交换，(4) 说它保复合 —— 合起来，$F^{\\ast}$ 是微分分次代数之间的（反变）映射。',
+        '⭐ 这一条是 de Rham 上同调「是函子」的全部内容：$F^{\\ast}$ 与 $\\mathrm{d}$ 交换，故把闭形式送到闭形式、把恰当形式送到恰当形式，从而下到商空间 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(N)\\to H^{k}_{\\mathrm{dR}}(M)$。方向是反的，这正是「上同调反变」的意思。',
+        '⚠️ 与向量场的对照：向量场**不能**沿任意光滑映射拉回（要 $F$ 是微分同胚才能前推），形式可以。这个不对称不是技术缺陷，而是「形式是 $T^{\\ast}M$ 的截面、向量场是 $TM$ 的截面」的直接后果。',
+        '⚠️ **本图缺的节点/边**：(3) 里 $\\mathrm{d}(\\mathrm{d}F^{I}) = 0$ 用到「$\\mathrm{d}^{2} = 0$」（函数情形即 Clairaut 定理），本图没有 Clairaut 节点；洗牌公式也没有独立节点，故在此写全。若日后加这两条，可改为引用。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 拉回 F* 与它保持的运算'
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 拉回 F* 与它保持的运算',
+        'Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 14 · Differential Forms'
       ]
     },
 

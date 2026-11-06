@@ -14,6 +14,9 @@ $$[n] := n + 1 := \{\, 0, 1, \ldots, n \,\} \qquad (n \in \mathbb{N}),$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.category`](../nodes/def.category.md) 范畴：用到了定义 范畴　[proofs/def-dep.simplexcat-category.md](../proofs/def-dep.simplexcat-category.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.simplex-category.3.md](./def.simplex-category.3.md)
+
 refs: Le Stum, An introduction to condensed mathematics, §1.3；May, Simplicial Objects in Algebraic Topology
 
 > 说明见 `notes/def.simplex-category.md`

@@ -2,9 +2,8 @@
 English entry · root `../`
 [in graph](../#n=thm.metric-compact-equiv)　·　[Chinese page (authoritative)](./thm.metric-compact-equiv.md)
 
- Cover by all balls of radius $\varepsilon$; a finite subcover is a finite $\varepsilon$-net.
-- (b) $\implies$ (a): **uses only total boundedness, not the axiom of choice** (the "bad ball" argument: if no finite cover existed, one would build recursively a sequence with pairwise distances $\ge \varepsilon$, which has no convergent subsequence).
-- (b) $\implies$ (c), "complete": **no choice needed** (the limit of the convergent subsequence is the limit of the Cauchy sequence).
-- (b) $\implies$ (c), "totally bounded": **this step really uses countable choice (DC)** — the only place in the whole proof. For each $n$ one p
+- (a) $\implies$ (b): **no choice needed.** If no subsequence converged, every $y$ would have an open neighbourhood $U_{y}$ containing $x_{n}$ for only finitely many $n$ — otherwise the balls of radius $1/k$ around $y$ would give a subsequence converging to $y$, with the indices picked greedily from $\mathbb{N}$. Compactness makes finitely many $U_{y}$ cover the space, so only finitely many indices occur — contradiction.
+- (a) $\implies$ (c), "complete": **no choice needed.** A Cauchy sequence with a convergent subsequence converges, and to the same point.
+- (a) $\implies$ (c), "totally bounded": **no choice needed.**
 
 > 续见 nodes/thm.metric-compact-equiv.en.10.md

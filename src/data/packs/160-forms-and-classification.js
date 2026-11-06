@@ -96,7 +96,6 @@ window.MG = window.MG || {};
       id: 'thm.rational-canonical-form',
       cluster: 'algebra.spectral',
       type: 'theorem',
-      status: 'skeleton',
       label: '有理标准形',
       title: '有理标准形：任意域上都成立的标准形',
       regions: ['algebra'],
@@ -118,12 +117,18 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **为什么叫「有理」**：历史上指 $K = \\mathbb{Q}$ 的情形 —— 正是「特征多项式在 $\\mathbb{Q}$ 上不分裂」的典型场合。名字沿用下来，现在指「对任意域都成立」。',
-        '**与极小多项式的关系**：不变因子 $d_{s}$ 就是矩阵的**极小多项式**，$d_{1} d_{2} \\cdots d_{s}$ 是特征多项式。所以两个多项式链在有理标准形里被**同时**编码 —— 这是它比 Jordan 形更「代数」的地方。',
-        '⚠️ **实矩阵的坑**：$A \\in M_{n}(\\mathbb{R})$ 的特征值可能是复数，所以「实 Jordan 形」只能给到 $1\\times1$ 与 $2\\times2$ 块（复特征值成对出现）。\n\n要对 $\\mathbb{R}$ 上的矩阵讲唯一标准形，有两条路：实 Jordan 形（带 $2\\times2$ 块）或有理标准形（纯 $\\mathbb{R}$ 系数）。\n\n本图 `thm.jordan-canonical-form` 讲的是复情形。',
-        '⚠️ **本条的证明**走「$K[x]$-模」：$M_{n}(K)$ 的相似类 $\\leftrightarrow$ $K[x]$-模 $K^{n}$ 的同构类，再用 $K[x]$ 是 PID $\\implies$ 有限生成模分解为循环模（主分解定理）$\\implies$ 每个循环模由 $d_{i}$ 决定。\n\n**这条路线正是 PID 上的结构定理**，所以两个定理其实是一件事。\n\n本图只给陈述与骨架。'
+        '**第一步：把矩阵变成模**。把 $V = K^{n}$ 看成 $K[x]$-模，规定 $x \\cdot v := Av$。于是 $K[x]$-子模就是 $A$-不变子空间，$K[x]$-模同构就是相似：$A \\sim B$ 当且仅当 $V_{A} \\cong V_{B}$。由 Cayley–Hamilton（`thm.cayley-hamilton`）$\\chi_{A}(A) = 0$，故 $\\chi_{A} \\in \\operatorname{Ann}(V)$，$V$ 是**挠模**；又 $\\dim_{K} V = n$ 给出有限生成。',
+        '**引理 1（Smith 标准形，$K[x]$ 版）**：设 $R = K[x]$。任意 $m \\times n$ 矩阵 $M$ 经初等行/列变换可化成 $\\operatorname{diag}(d_{1}, \\ldots, d_{r}, 0, \\ldots, 0)$，其中 $d_{1} \\mid d_{2} \\mid \\cdots \\mid d_{r}$ 非零，$r = \\operatorname{rank} M$。**证明**：在所有与 $M$ 等价的矩阵中，取「非零元素的最小次数」$\\delta$ 最小的一个；把达到 $\\delta$ 的元素挪到 $(1,1)$，记作 $a$。若第一列某元素 $b$ 不被 $a$ 整除，作带余除法 $b = qa + r$（$\\deg r < \\delta$），把第 1 行乘 $-q$ 加到该行，得到含次数更小非零元的等价矩阵，与 $\\delta$ 的最小性矛盾；故 $a$ 整除第一列全部元素，用行变换清空第一列。同理用列变换清空第一行。若余下子块有元素不被 $a$ 整除，把该行加到第 1 行、再用列变换减去 $a$ 的倍数，又得到次数更小的非零元，矛盾；故 $a$ 整除整个余下子块。对余下子块归纳，得 $\\operatorname{diag}(a, e_{1}, \\ldots)$；初等变换不改变「全部元素生成的理想」，故 $a \\mid e_{1}$，整除链成立。$\\square$',
+        '**引理 2（结构定理，只用引理 1）**：设 $M$ 是有限生成 $R$-模。取生成元 $x_{1}, \\ldots, x_{n}$，得满射 $R^{n} \\to M$，其核由列向量 $a_{1}, \\ldots, a_{m} \\in R^{n}$ 生成，即 $M \\cong \\operatorname{coker}(A)$，$A = (a_{1} \\cdots a_{m})$。对 $A$ 取 Smith 标准形：存在可逆矩阵 $P, Q$ 使 $PAQ = \\operatorname{diag}(d_{1}, \\ldots, d_{r}, 0)$。可逆矩阵只是换基，故 $\\operatorname{coker}(A) \\cong \\operatorname{coker}(PAQ) \\cong R^{n-r} \\oplus R/(d_{1}) \\oplus \\cdots \\oplus R/(d_{r})$：第 $i$ 个坐标方向被 $d_{i} e_{i}$ 生成，$i > r$ 的方向不被任何关系碰到。$\\square$',
+        '**存在性**：对 $V_{A}$ 用引理 2。因 $V$ 挠，自由部分必须为零：若 $R^{n-r} \\ne 0$，取 $e_{1}$，则 $\\chi_{A} e_{1} \\ne 0$，与 $\\chi_{A} \\in \\operatorname{Ann}(V)$ 矛盾。再删去单位 $d_{i}$（此时 $R/(d_{i}) = 0$），得 $V \\cong \\bigoplus_{i=1}^{s} R/(d_{i})$，其中 $d_{1} \\mid \\cdots \\mid d_{s}$ 非单位首一多项式。',
+        '**从循环模到友矩阵**：在 $R/(d)$（$d = x^{m} + a_{m-1}x^{m-1} + \\cdots + a_{0}$）中取 $K$-基 $1, x, \\ldots, x^{m-1}$。乘 $x$ 把前 $m-1$ 个基向量送到下一个，把 $x^{m-1}$ 送到 $x^{m} \\equiv -(a_{0} + a_{1}x + \\cdots + a_{m-1}x^{m-1})$。该算子在这组基下的矩阵正是 $C_{d}$（次对角线全 $1$，最后一列 $(-a_{0}, \\ldots, -a_{m-1})^{T}$）。把各循环块的基拼起来，$A$ 相似于 $\\operatorname{diag}(C_{d_{1}}, \\ldots, C_{d_{s}})$。',
+        '**唯一性**：设 $\\bigoplus_{i} R/(d_{i}) \\cong \\bigoplus_{j} R/(e_{j})$，两条链都整除。对不可约 $p \\in K[x]$ 与 $k \\ge 1$，令 $M[p^{k}] := \\{m : p^{k}m = 0\\}$ —— 这是由 $M$ 本身决定的子模，不依赖分解。对 $R/(d)$，写 $d = p^{v}u$、$p \\nmid u$，由中国剩余定理 $R/(d) \\cong R/(p^{v}) \\oplus R/(u)$，故 $R/(d)[p^{k}] \\cong R/(p^{\\min(k,v)})$。于是 $M[p^{k}] \\cong \\bigoplus_{i} R/(p^{\\min(k, v_{p}(d_{i}))})$；把 $p^{k-1}M[p^{k}]/p^{k}M[p^{k}]$ 看成 $R/(p)$-向量空间，其维数恰为「$v_{p}(d_{i}) \\ge k$ 的 $i$ 的个数」$c_{k}(p)$。这个维数由 $M$ 决定，故所有 $c_{k}(p)$ 由 $M$ 决定，从而 $v_{p}(d_{i}) = \\#\\{k : c_{k}(p) \\ge i\\}$ 由 $M$ 决定；对每个 $p$ 都如此，$d_{i}$ 就由 $M$ 决定。',
+        '**收尾：极小多项式与特征多项式**：每个 $C_{d}$ 的特征多项式与极小多项式都是 $d$（对 $R/(d)$ 上乘 $x$ 的算子，$d$ 是零化多项式且次数最小：$1, x, \\ldots, x^{m-1}$ 线性无关，而 $x^{m}$ 已落入它们的张成）。分块对角矩阵的特征多项式是各块之积 $d_{1}\\cdots d_{s}$；极小多项式是各块极小多项式的最小公倍，整除链下即 $d_{s}$。这正是「$d_{s}$ 是极小多项式、$d_{1}\\cdots d_{s}$ 是特征多项式」的来历。∎',
+        '⚠️ **本图缺的节点/边**：证明用到 Cayley–Hamilton（有节点，但没有连到本条）与「$K[x]$ 上有限生成模的结构定理」（本图没有这个节点），所以两条引理连同证明一起写在这里，而不是引用一条并不存在的边。'
       ].join('\n\n'),
       refs: [
-        'Hoffman–Kunze, Linear Algebra（⚠️ 章节未核实，只记书名）· 有理标准形',
+        'Hoffman–Kunze, Linear Algebra, Ch. 7（The Rational and Jordan Forms）· 有理标准形',
+        'Dummit–Foote, Abstract Algebra, Ch. 12（Modules over Principal Ideal Domains）· 主理想整环上的模',
         '北大《高等代数》· 有理标准形'
       ]
     },

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T07:58:31.438Z
-> 15 星系 / 105 星团 / 1540 节点 / 3167 连线（强边 3128，弱边 39；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T08:11:13.913Z
+> 15 星系 / 105 星团 / 1540 节点 / 3169 连线（强边 3130，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.8 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -6766,21 +6766,23 @@ $$C_{d} := \begin{pmatrix} 0 & & & & -a_{0} \\ 1 & 0 & & & -a_{1} \\ & \ddots & 
 
 ⭐ **为什么叫「有理」**：历史上指 $K = \mathbb{Q}$ 的情形 —— 正是「特征多项式在 $\mathbb{Q}$ 上不分裂」的典型场合。名字沿用下来，现在指「对任意域都成立」。
 
-**与极小多项式的关系**：不变因子 $d_{s}$ 就是矩阵的**极小多项式**，$d_{1} d_{2} \cdots d_{s}$ 是特征多项式。所以两个多项式链在有理标准形里被**同时**编码 —— 这是它比 Jordan 形更「代数」的地方。
+**第一步：把矩阵变成模**。把 $V = K^{n}$ 看成 $K[x]$-模，规定 $x \cdot v := Av$。于是 $K[x]$-子模就是 $A$-不变子空间，$K[x]$-模同构就是相似：$A \sim B$ 当且仅当 $V_{A} \cong V_{B}$。由 Cayley–Hamilton（`thm.cayley-hamilton`）$\chi_{A}(A) = 0$，故 $\chi_{A} \in \operatorname{Ann}(V)$，$V$ 是**挠模**；又 $\dim_{K} V = n$ 给出有限生成。
 
-⚠️ **实矩阵的坑**：$A \in M_{n}(\mathbb{R})$ 的特征值可能是复数，所以「实 Jordan 形」只能给到 $1\times1$ 与 $2\times2$ 块（复特征值成对出现）。
+**引理 1（Smith 标准形，$K[x]$ 版）**：设 $R = K[x]$。任意 $m \times n$ 矩阵 $M$ 经初等行/列变换可化成 $\operatorname{diag}(d_{1}, \ldots, d_{r}, 0, \ldots, 0)$，其中 $d_{1} \mid d_{2} \mid \cdots \mid d_{r}$ 非零，$r = \operatorname{rank} M$。**证明**：在所有与 $M$ 等价的矩阵中，取「非零元素的最小次数」$\delta$ 最小的一个；把达到 $\delta$ 的元素挪到 $(1,1)$，记作 $a$。若第一列某元素 $b$ 不被 $a$ 整除，作带余除法 $b = qa + r$（$\deg r < \delta$），把第 1 行乘 $-q$ 加到该行，得到含次数更小非零元的等价矩阵，与 $\delta$ 的最小性矛盾；故 $a$ 整除第一列全部元素，用行变换清空第一列。同理用列变换清空第一行。若余下子块有元素不被 $a$ 整除，把该行加到第 1 行、再用列变换减去 $a$ 的倍数，又得到次数更小的非零元，矛盾；故 $a$ 整除整个余下子块。对余下子块归纳，得 $\operatorname{diag}(a, e_{1}, \ldots)$；初等变换不改变「全部元素生成的理想」，故 $a \mid e_{1}$，整除链成立。$\square$
 
-要对 $\mathbb{R}$ 上的矩阵讲唯一标准形，有两条路：实 Jordan 形（带 $2\times2$ 块）或有理标准形（纯 $\mathbb{R}$ 系数）。
+**引理 2（结构定理，只用引理 1）**：设 $M$ 是有限生成 $R$-模。取生成元 $x_{1}, \ldots, x_{n}$，得满射 $R^{n} \to M$，其核由列向量 $a_{1}, \ldots, a_{m} \in R^{n}$ 生成，即 $M \cong \operatorname{coker}(A)$，$A = (a_{1} \cdots a_{m})$。对 $A$ 取 Smith 标准形：存在可逆矩阵 $P, Q$ 使 $PAQ = \operatorname{diag}(d_{1}, \ldots, d_{r}, 0)$。可逆矩阵只是换基，故 $\operatorname{coker}(A) \cong \operatorname{coker}(PAQ) \cong R^{n-r} \oplus R/(d_{1}) \oplus \cdots \oplus R/(d_{r})$：第 $i$ 个坐标方向被 $d_{i} e_{i}$ 生成，$i > r$ 的方向不被任何关系碰到。$\square$
 
-本图 `thm.jordan-canonical-form` 讲的是复情形。
+**存在性**：对 $V_{A}$ 用引理 2。因 $V$ 挠，自由部分必须为零：若 $R^{n-r} \ne 0$，取 $e_{1}$，则 $\chi_{A} e_{1} \ne 0$，与 $\chi_{A} \in \operatorname{Ann}(V)$ 矛盾。再删去单位 $d_{i}$（此时 $R/(d_{i}) = 0$），得 $V \cong \bigoplus_{i=1}^{s} R/(d_{i})$，其中 $d_{1} \mid \cdots \mid d_{s}$ 非单位首一多项式。
 
-⚠️ **本条的证明**走「$K[x]$-模」：$M_{n}(K)$ 的相似类 $\leftrightarrow$ $K[x]$-模 $K^{n}$ 的同构类，再用 $K[x]$ 是 PID $\implies$ 有限生成模分解为循环模（主分解定理）$\implies$ 每个循环模由 $d_{i}$ 决定。
+**从循环模到友矩阵**：在 $R/(d)$（$d = x^{m} + a_{m-1}x^{m-1} + \cdots + a_{0}$）中取 $K$-基 $1, x, \ldots, x^{m-1}$。乘 $x$ 把前 $m-1$ 个基向量送到下一个，把 $x^{m-1}$ 送到 $x^{m} \equiv -(a_{0} + a_{1}x + \cdots + a_{m-1}x^{m-1})$。该算子在这组基下的矩阵正是 $C_{d}$（次对角线全 $1$，最后一列 $(-a_{0}, \ldots, -a_{m-1})^{T}$）。把各循环块的基拼起来，$A$ 相似于 $\operatorname{diag}(C_{d_{1}}, \ldots, C_{d_{s}})$。
 
-**这条路线正是 PID 上的结构定理**，所以两个定理其实是一件事。
+**唯一性**：设 $\bigoplus_{i} R/(d_{i}) \cong \bigoplus_{j} R/(e_{j})$，两条链都整除。对不可约 $p \in K[x]$ 与 $k \ge 1$，令 $M[p^{k}] := \{m : p^{k}m = 0\}$ —— 这是由 $M$ 本身决定的子模，不依赖分解。对 $R/(d)$，写 $d = p^{v}u$、$p \nmid u$，由中国剩余定理 $R/(d) \cong R/(p^{v}) \oplus R/(u)$，故 $R/(d)[p^{k}] \cong R/(p^{\min(k,v)})$。于是 $M[p^{k}] \cong \bigoplus_{i} R/(p^{\min(k, v_{p}(d_{i}))})$；把 $p^{k-1}M[p^{k}]/p^{k}M[p^{k}]$ 看成 $R/(p)$-向量空间，其维数恰为「$v_{p}(d_{i}) \ge k$ 的 $i$ 的个数」$c_{k}(p)$。这个维数由 $M$ 决定，故所有 $c_{k}(p)$ 由 $M$ 决定，从而 $v_{p}(d_{i}) = \#\{k : c_{k}(p) \ge i\}$ 由 $M$ 决定；对每个 $p$ 都如此，$d_{i}$ 就由 $M$ 决定。
 
-本图只给陈述与骨架。
+**收尾：极小多项式与特征多项式**：每个 $C_{d}$ 的特征多项式与极小多项式都是 $d$（对 $R/(d)$ 上乘 $x$ 的算子，$d$ 是零化多项式且次数最小：$1, x, \ldots, x^{m-1}$ 线性无关，而 $x^{m}$ 已落入它们的张成）。分块对角矩阵的特征多项式是各块之积 $d_{1}\cdots d_{s}$；极小多项式是各块极小多项式的最小公倍，整除链下即 $d_{s}$。这正是「$d_{s}$ 是极小多项式、$d_{1}\cdots d_{s}$ 是特征多项式」的来历。∎
 
-参考：Hoffman–Kunze, Linear Algebra（⚠️ 章节未核实，只记书名）· 有理标准形；北大《高等代数》· 有理标准形
+⚠️ **本图缺的节点/边**：证明用到 Cayley–Hamilton（有节点，但没有连到本条）与「$K[x]$ 上有限生成模的结构定理」（本图没有这个节点），所以两条引理连同证明一起写在这里，而不是引用一条并不存在的边。
+
+参考：Hoffman–Kunze, Linear Algebra, Ch. 7（The Rational and Jordan Forms）· 有理标准形；Dummit–Foote, Abstract Algebra, Ch. 12（Modules over Principal Ideal Domains）· 主理想整环上的模；北大《高等代数》· 有理标准形
 
 ### 星团：内积空间与正交性
 > 在向量空间上加一把「尺子」：内积 → 诱导范数与距离 → Cauchy–Schwarz → 正交与正交补 → **Gram–Schmidt** 与正交投影 → 伴随算子 → **谱定理**（实对称 / 复正规可正交对角化）→ 二次型与 Sylvester 判据 → 奇异值分解。
@@ -8925,7 +8927,7 @@ $$x_0 + \ker A = \{\, x_0 + u : u \in \ker A \,\}$$
 
 ⚠ 「有解 $\iff$ $\operatorname{rank} A = \operatorname{rank}(A \mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。
 
-别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。
+别把它误记成「rank A = m」：一般 m 行 n 列矩阵，rank A = m 只说明 A 行满秩、对每个 b 都有解；唯一解要 rank A = n。只有方阵（m=n）时两者才重合。
 
 **四条里哪条是“定理”、哪条只是重述**（这一组常被当成四条并列，其实最后一条依赖前两条）：
 
@@ -31140,19 +31142,19 @@ $$f(z) = \frac{1}{2\pi i}\oint_{\partial\Omega} \frac{f(\zeta)}{\zeta - z}\,\mat
 
 更一般地，若 $\gamma$ 是区域内的**简单**闭曲线、$f$ 在 $\gamma$ 内部及 $\gamma$ 上全纯，则上式对 $\gamma$ 内部任一点 $z$ 成立（一般闭曲线要写成 $\operatorname{Ind}(\gamma, z)f(z) = \frac{1}{2\pi i}\oint_\gamma \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta$）。
 
-⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\overline{B(z, r)}$，在剩下的二连通区域 $\Omega_r$ 上对 $g(\zeta) = f(\zeta)/(\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\oint_{\partial\Omega} g = \oint_{|\zeta - z| = r} g$。
+⭐ **核心是挖洞**：被积函数 $g(\zeta) = f(\zeta)/(\zeta - z)$ 在 $\zeta = z$ 处没有定义，所以不能把 Cauchy 定理直接用在整块 $\Omega$ 上。固定 $z \in \Omega$，令 $d = \operatorname{dist}(z, \partial\Omega) > 0$，取 $0 < r < d$，挖去闭圆盘 $\overline{B(z,r)}$，得二连通区域 $\Omega_{r} = \Omega \setminus \overline{B(z,r)}$。$g$ 在 $\Omega_{r}$ 上全纯（分母处处非零），由多连通 Cauchy–Goursat 定理（`thm.cauchy-goursat`）$\oint_{\partial\Omega_{r}} g\,\mathrm{d}\zeta = 0$。边界 $\partial\Omega_{r}$ 由外边界 $\partial\Omega$（正向）与内圆 $|\zeta - z| = r$（负向）组成，移项得 $\oint_{\partial\Omega} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta = \oint_{|\zeta - z| = r} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta.$
 
-再把 $g$ 拆成两块：$\dfrac{f(z)}{\zeta - z} + \dfrac{f(\zeta) - f(z)}{\zeta - z}$。
+**拆出主项**：在右端把被积函数写成 $\frac{f(\zeta)}{\zeta - z} = \frac{f(z)}{\zeta - z} + \frac{f(\zeta) - f(z)}{\zeta - z}.$ 第一项的积分用 $\zeta = z + re^{i\theta}$ 直接算：$\oint_{|\zeta - z| = r} \frac{\mathrm{d}\zeta}{\zeta - z} = \int_{0}^{2\pi} \frac{ire^{i\theta}}{re^{i\theta}}\,\mathrm{d}\theta = 2\pi i$，故贡献 $2\pi i\,f(z)$。
 
-第一块的积分算出 $2\pi i f(z)$；
+**第二项随 $r \to 0$ 消失**：$f$ 在 $z$ 全纯，故 $\lim_{\zeta \to z}\frac{f(\zeta) - f(z)}{\zeta - z} = f'(z)$；特别地存在 $M$ 与 $\rho > 0$，使 $|\zeta - z| < \rho$ 时该商有界 $\le M$。于是对 $0 < r < \min(\rho, d)$，由 ML 不等式 $\left|\oint_{|\zeta - z| = r} \frac{f(\zeta) - f(z)}{\zeta - z}\,\mathrm{d}\zeta\right| \le M\cdot 2\pi r \longrightarrow 0.$
 
-第二块的被积函数在 $\zeta = z$ 处有极限 $f'(z)$（因而有界），由 ML 不等式其积分不超过 $(\text{常数}) \cdot 2\pi r \to 0$。
+**收尾**：外边界积分与 $r$ 无关（上面的等式对一切 $0 < r < d$ 成立），让 $r \to 0$ 得 $\oint_{\partial\Omega}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta = 2\pi i\,f(z)$，即所求。∎
 
-⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。
+**一般闭曲线**：若 $\gamma$ 不包围 $z$，在 $\gamma$ 外部的区域上用同一论证得 $\oint_{\gamma} = 0$；若 $\gamma$ 包围 $z$，在外边界与内圆之间的环域上同理论，得到带绕数的形式 $\operatorname{Ind}(\gamma, z)\,f(z) = \frac{1}{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta$。
 
-⚠ 被积函数 $f(\zeta)/(\zeta - z)$ 在 $\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\Omega$ 上。
+⭐ **枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor/Laurent 展开、留数定理 —— 本星系几乎所有结论都从这里长出来。
 
-挖洞不是技巧，是必须的。
+⚠ 被积函数 $f(\zeta)/(\zeta - z)$ 在 $\zeta = z$ 处**不**全纯，这正是「挖洞」不是技巧、而是必须的原因。
 
 参考：王晓光《复变函数》笔记，第 8 章 · Cauchy 积分公式；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
 
@@ -37036,13 +37038,25 @@ $n = 3$ 时：$\Omega^{0}$ 维数 $1$、$\Omega^{1}$ 与 $\Omega^{2}$ 都是 $3$
 $$\mathrm{d}\Bigl(\sum_{I}a_{I}\,\mathrm{d}x^{I}\Bigr) = \sum_{I}\mathrm{d}a_{I}\wedge\mathrm{d}x^{I},$$
 其中 $\mathrm{d}x^{I} := \mathrm{d}x^{i_{1}}\wedge\cdots\wedge\mathrm{d}x^{i_{k}}$，而 $\mathrm{d}a_{I}$ 是函数 $a_{I}$ 的微分。于是「$\mathrm{d}$ 与图卡无关」不是额外假设，而是这条命题的结论。
 
-**证明的两半**：存在性 = 「图卡上按公式定义 + 重叠处一致 + 用单位分解拼成整体」；唯一性 = 「局部公式 + 反导子公理 + $\mathrm{d}^{2}=0$」。骨架在边上，⚠️ 收尾那一步（单位分解的拼接为什么只有有限项、为什么拼出来的东西仍满足 (3)(4)）只给到提纲。
+**证明策略**：先在一个图卡内证明「坐标公式满足四条公理」，再证明「满足四条公理的算子被坐标公式唯一决定」；最后由「图卡重叠处两个公式都是满足公理的算子」推出它们一致，把局部公式拼成整体。关键点：**不需要单位分解** —— 单位分解是给「局部数据在重叠处不一致」的场合用的，这里局部公式在重叠处自动一致。
 
-**这是 Tu 的处理顺序**：先有开集上的坐标公式（`def.exterior-derivative`），再用「与拉回交换」（`prop.pullback-forms` 的第 3 条）证明图卡无关。也可以反过来把「与拉回交换」当公理（一堆教材这么做），但那样就得另证存在性，且难以看出 $\mathrm{d}$ 为什么长这样。
+**引理 A（图卡内唯一性）**：设 $U \subseteq \mathbb{R}^{n}$ 是开集，$D$ 是 $\Omega^{\bullet}(U)$ 上满足 (1)–(4) 的算子。则对 $\omega = \sum_{I} a_{I}\,\mathrm{d}x^{I}$ 有 $D\omega = \sum_{I}\mathrm{d}a_{I}\wedge\mathrm{d}x^{I}$。**证明**：$0$-形式由 (1) 直接给出。看单项 $a\,\mathrm{d}x^{I}$，$I = (i_{1} < \cdots < i_{k})$：$\mathrm{d}x^{i} = \mathrm{d}(x^{i})$（对坐标函数用 (1)），由 (4) 得 $D(\mathrm{d}x^{i}) = D^{2}(x^{i}) = 0$；再由 (3) 归纳得 $D(\mathrm{d}x^{I}) = 0$。于是 $D(a\,\mathrm{d}x^{I}) = \mathrm{d}a\wedge\mathrm{d}x^{I} + a\,D(\mathrm{d}x^{I}) = \mathrm{d}a\wedge\mathrm{d}x^{I}$；由 (2) 线性拼起来即得。$\square$
+
+**引理 B（坐标公式满足公理）**：在 $U$ 上定义 $D(\sum_{I} a_{I}\,\mathrm{d}x^{I}) := \sum_{I}\mathrm{d}a_{I}\wedge\mathrm{d}x^{I}$。**证明**：(2) 显然。(1)：$Df = \sum_{i}\partial_{i}f\,\mathrm{d}x^{i}$，这正是 $f$ 的微分（$\mathrm{d}f_{p}(v) = v(f)$）。(3)：只需对单项 $a\,\mathrm{d}x^{I}$ 与 $b\,\mathrm{d}x^{J}$ 验，$D(ab\,\mathrm{d}x^{I}\wedge\mathrm{d}x^{J}) = (b\,\mathrm{d}a + a\,\mathrm{d}b)\wedge\mathrm{d}x^{I}\wedge\mathrm{d}x^{J} = (\mathrm{d}a\wedge\mathrm{d}x^{I})\wedge(b\,\mathrm{d}x^{J}) + (-1)^{k}a\,\mathrm{d}x^{I}\wedge(\mathrm{d}b\wedge\mathrm{d}x^{J}),$ 中间用了 $\mathrm{d}x^{I}\wedge\mathrm{d}b = (-1)^{k}\mathrm{d}b\wedge\mathrm{d}x^{I}$。(4)：先看函数，$D^{2}f = \sum_{i}D(\partial_{i}f)\wedge\mathrm{d}x^{i} = \sum_{i,j}\partial_{j}\partial_{i}f\,\mathrm{d}x^{j}\wedge\mathrm{d}x^{i} = 0$，因为 $\mathrm{d}x^{j}\wedge\mathrm{d}x^{i} = -\mathrm{d}x^{i}\wedge\mathrm{d}x^{j}$，而混合偏导 $\partial_{j}\partial_{i}f = \partial_{i}\partial_{j}f$（Clairaut）。再看单项 $a\,\mathrm{d}x^{I}$：由 (3) 与已证的 $D(\mathrm{d}x^{I}) = 0$，$D^{2}(a\,\mathrm{d}x^{I}) = D(\mathrm{d}a\wedge\mathrm{d}x^{I}) = D^{2}a\wedge\mathrm{d}x^{I} = 0$。$\square$
+
+**整体构造（存在性）**：取 $M$ 的图卡覆盖 $\{(U_{\alpha}, x_{\alpha})\}$。在每张图卡上用引理 B 定义算子 $D_{\alpha}$。若 $U_{\alpha}\cap U_{\beta}\ne\emptyset$，在重叠开集上 $D_{\alpha}$ 与 $D_{\beta}$ 都满足 (1)–(4)；由引理 A（在 $x_{\alpha}$ 坐标下）$D_{\beta} = D_{\alpha}$。故所有 $D_{\alpha}$ 拼成一个整体算子 $\mathrm{d}$：对 $\omega\in\Omega^{k}(M)$，$\mathrm{d}\omega$ 在 $U_{\alpha}$ 上定义为 $D_{\alpha}(\omega|_{U_{\alpha}})$；重叠处一致，故良定义。(1)–(4) 都是局部性质，已逐图卡验证，故整体成立。
+
+**唯一性**：设 $\mathrm{d}^{\prime}$ 是满足 (1)–(4) 的另一族算子。对任意图卡 $(U,x)$，$\mathrm{d}^{\prime}$ 限制在 $U$ 上满足 (1)–(4)，由引理 A 它等于坐标公式，即等于 $\mathrm{d}$。$U$ 任意，故 $\mathrm{d}^{\prime} = \mathrm{d}$。∎
+
+**「与图卡无关」到底指什么**：第 4 步说明换图卡算出的两个公式在重叠处相等 —— 因为它们都是满足公理的算子，而引理 A 说这样的算子只有一个。真正把 $\mathrm{d}$ 钉死的是 (3)+(4)：(1) 给函数上的值，(3) 让 $\mathrm{d}$ 穿过楔积，(4) 杀掉 $\mathrm{d}x^{I}$ 的导数。
+
+**与 Tu 的路线对照**：Tu 先用 `prop.pullback-forms` 的第 3 条（与拉回交换）证图卡无关；这里改用「公理唯一性」证。两条路线都对，且都不需要单位分解 —— 这也说明 `thm.smooth-partition-unity` 在本条里不是必需品。
 
 ⭐ 有了这一条，`def.de-rham-complex` 里那串 $\Omega^{k}(M)\xrightarrow{\ \mathrm{d}\ }\Omega^{k+1}(M)$ 才真的是一串映射 —— 在这条之前，那串东西只是记号。
 
 ⚠️ 顺带钉住一个常见误解：$\mathrm{d}$ 不依赖**度量**，也不依赖**联络**。它是光滑结构本身给出的算子；联络（`def.affine-connection`）与它无关，两者能凑出公式纯属巧合之外的对称性。
+
+⚠️ **本图缺的节点**：$\mathrm{d}^{2}=0$ 的函数情形用到了 Clairaut 定理（混合偏导对称），本图没有这个节点，故在此直接以经典微积分事实使用。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 外微分与图卡无关性
 
@@ -37062,19 +37076,27 @@ $$(F^{\ast}\omega)_{p}(v_{1},\ldots,v_{k}) := \omega_{F(p)}\bigl(\mathrm{d}F_{p}
 
 于是 $F^{\ast} : \Omega^{\bullet}(N)\to\Omega^{\bullet}(M)$ 是**微分分次代数**的同态。
 
-**证明的路线**：$T_{p}M$ 上的交错型在坐标基 $\mathrm{d}x^{I}$ 上线性展开，于是只需在单项 $\omega = \mathrm{d}y^{I}$ 上验 —— 而那正是链式法则加「$\mathrm{d}^{2}=0$」的机械计算，再用上一句的线性拼回去。骨架在边上。
+**证明分四步**：先说明 $F^{\ast}\omega$ 确实是光滑的 $k$-形式，再逐条验证 (1)–(4)，最后 (2)+(3) 合起来说明它是微分分次代数同态。所有等式都是逐点验证 —— 形式逐点定义，所以「逐点相等」就是「形式相等」。
 
-**它和「$\mathrm{d}$ 良定」互为因果**：开集间那条（`prop.pullback-forms`）已经证过 (3)，流形上用图卡局部化即可；反过来，正因为 $\mathrm{d}$ 与拉回交换、而拉回只用链式法则定义，$\mathrm{d}$ 才不依赖坐标（`prop.exterior-derivative-manifold`）。
+**光滑性**：取 $M$ 的图卡 $(U,x)$ 与 $N$ 的图卡 $(V,y)$，且 $F(U)\subseteq V$。在 $y$ 坐标下 $\omega = \sum_{I} a_{I}\,\mathrm{d}y^{I}$，$F$ 写成 $y = F(x) = (F^{1}(x), \ldots, F^{n}(x))$。则 $F^{\ast}\omega = \sum_{I}(a_{I}\circ F)\,\mathrm{d}F^{i_{1}}\wedge\cdots\wedge\mathrm{d}F^{i_{k}},\qquad \mathrm{d}F^{i} = \sum_{j}\frac{\partial F^{i}}{\partial x^{j}}\,\mathrm{d}x^{j}.$ 右端系数是光滑函数的积与和，故 $F^{\ast}\omega$ 在 $U$ 上光滑；图卡 $U$ 覆盖 $M$，故整体光滑。（这里 $\mathrm{d}F$ 与 `def.differential-map` 的微分是同一个东西：$\mathrm{d}F_{p}$ 是切映。）
 
-两条一起看，才知道谁也不是循环论证 —— 开集上的 (3) 是初等的。
+**逐条验证**：(1) $\mathbb{R}$-线性由 $\omega\mapsto\omega_{F(p)}(\mathrm{d}F_{p}\cdot)$ 对 $\omega$ 线性得到；函数的拉回 $(F^{\ast}f)(p) = f(F(p)) = (f\circ F)(p)$ 就是定义。
 
-⭐ 这一条是 de Rham 上同调「是函子」的全部内容：$F$ 光滑 $\implies$ $F^{\ast}$ 与 $\mathrm{d}$ 交换 $\implies$ $F^{\ast}$ 下到商空间，得 $F^{\ast} : H^{k}_{\mathrm{dR}}(N)\to H^{k}_{\mathrm{dR}}(M)$。
+(2) **保楔积**：固定 $p$，记 $L = \mathrm{d}F_{p} : T_{p}M\to T_{F(p)}N$。对 $v_{1},\ldots,v_{k+l}\in T_{p}M$，用楔积的洗牌公式（对 $(k,l)$-洗牌 $\sigma$ 求和）：$(L^{\ast}\alpha\wedge L^{\ast}\beta)(v) = \sum_{\sigma}\operatorname{sgn}(\sigma)\,(L^{\ast}\alpha)(v_{\sigma(1)},\ldots)(L^{\ast}\beta)(v_{\sigma(k+1)},\ldots) = \sum_{\sigma}\operatorname{sgn}(\sigma)\,\alpha(Lv_{\sigma(1)},\ldots)\beta(Lv_{\sigma(k+1)},\ldots) = (\alpha\wedge\beta)(Lv_{1},\ldots,Lv_{k+l}) = L^{\ast}(\alpha\wedge\beta)(v).$ 取 $\alpha = \omega_{F(p)}$、$\beta = \eta_{F(p)}$，即得 (2)。
 
-方向是反的，这正是「上同调反变」的意思。
+(3) **与 $\mathrm{d}$ 交换**：两边都逐点定义，用图卡化到 $\mathbb{R}^{n}$ 的开集。由线性只需验单项 $\omega = a\,\mathrm{d}y^{I}$。此时 $F^{\ast}\omega = (a\circ F)\,\mathrm{d}F^{I}$，其中 $\mathrm{d}F^{I} = \mathrm{d}F^{i_{1}}\wedge\cdots\wedge\mathrm{d}F^{i_{k}}$。由反导子与 $\mathrm{d}^{2}F^{i} = 0$（$F^{i}$ 是函数）：$\mathrm{d}(F^{\ast}\omega) = \mathrm{d}(a\circ F)\wedge\mathrm{d}F^{I} + (a\circ F)\,\mathrm{d}(\mathrm{d}F^{I}) = \mathrm{d}(a\circ F)\wedge\mathrm{d}F^{I}.$ 链式法则给 $\mathrm{d}(a\circ F) = \sum_{j}(\partial_{j}a\circ F)\,\mathrm{d}F^{j}$，代回：$\mathrm{d}(F^{\ast}\omega) = \sum_{j}(\partial_{j}a\circ F)\,\mathrm{d}F^{j}\wedge\mathrm{d}F^{I} = F^{\ast}\Bigl(\sum_{j}\partial_{j}a\,\mathrm{d}y^{j}\wedge\mathrm{d}y^{I}\Bigr) = F^{\ast}(\mathrm{d}a\wedge\mathrm{d}y^{I}) = F^{\ast}(\mathrm{d}\omega),$ 末步用了 $\mathrm{d}\omega = \mathrm{d}a\wedge\mathrm{d}y^{I} + a\,\mathrm{d}(\mathrm{d}y^{I}) = \mathrm{d}a\wedge\mathrm{d}y^{I}$。
+
+(4) **保复合**：链式法则给 $\mathrm{d}(G\circ F)_{p} = \mathrm{d}G_{F(p)}\circ\mathrm{d}F_{p}$，于是 $((G\circ F)^{\ast}\omega)_{p}(v_{1},\ldots) = \omega_{G(F(p))}\bigl(\mathrm{d}G_{F(p)}\mathrm{d}F_{p}v_{1},\ldots\bigr) = (F^{\ast}(G^{\ast}\omega))_{p}(v_{1},\ldots).$ $(\operatorname{id})^{\ast} = \operatorname{id}$ 显然。∎
+
+**小结**：(1)+(2) 说 $F^{\ast}$ 是分次代数同态，(3) 说它与微分交换，(4) 说它保复合 —— 合起来，$F^{\ast}$ 是微分分次代数之间的（反变）映射。
+
+⭐ 这一条是 de Rham 上同调「是函子」的全部内容：$F^{\ast}$ 与 $\mathrm{d}$ 交换，故把闭形式送到闭形式、把恰当形式送到恰当形式，从而下到商空间 $F^{\ast} : H^{k}_{\mathrm{dR}}(N)\to H^{k}_{\mathrm{dR}}(M)$。方向是反的，这正是「上同调反变」的意思。
 
 ⚠️ 与向量场的对照：向量场**不能**沿任意光滑映射拉回（要 $F$ 是微分同胚才能前推），形式可以。这个不对称不是技术缺陷，而是「形式是 $T^{\ast}M$ 的截面、向量场是 $TM$ 的截面」的直接后果。
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 拉回 F* 与它保持的运算
+⚠️ **本图缺的节点/边**：(3) 里 $\mathrm{d}(\mathrm{d}F^{I}) = 0$ 用到「$\mathrm{d}^{2} = 0$」（函数情形即 Clairaut 定理），本图没有 Clairaut 节点；洗牌公式也没有独立节点，故在此写全。若日后加这两条，可改为引用。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 拉回 F* 与它保持的运算；Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 14 · Differential Forms
 
 #### 闭形式　`def.closed-form`
 *定义*　闭形式：外微分为零的微分形式
@@ -49117,6 +49139,27 @@ $L^{1}(\nu )$ 的定义直接搬用 $L^{1}(|\nu |)$。
 
 证明中间要推出 $f \in L^{1}_{loc}$。
 
+#### 控制收敛定理 ⟹ 平均算子联合连续　`imp.dct-average-continuous`
+*控制收敛定理 $\implies$ 平均算子联合连续*
+
+**① 只有一段需要交换极限与积分。** 把 $A_{r}f(x) - A_{r_0}f(x_0)$ 按球拆成
+
+$\frac{1}{m(B(x,r))}\int \bigl(\chi_{B(x,r)} - \chi_{B(x_0,r_0)}\bigr) f + \Bigl(\frac{1}{m(B(x,r))} - \frac{1}{m(B(x_0,r_0))}\Bigr) \int_{B(x_0,r_0)} f .$
+
+第二段是「有界系数趋于 $0$ 乘以一个固定常数」，不用定理；第一段要证 $\int (\chi_{B(x_k,r_k)} - \chi_{B(x_0,r_0)}) f \to 0$。$f$ 只在 $L^1_{loc}$ 里、没有连续性可用，所以必须**把极限搬进积分号**。
+
+**② 被积函数几乎处处收敛。** 设 $y \notin \partial B(x_0,r_0)$（球面是零测集）。若 $|y - x_0| < r_0$，取 $\varepsilon = r_0 - |y - x_0| > 0$，则当 $|x_k - x_0| < \varepsilon/2$、$|r_k - r_0| < \varepsilon/2$ 时 $|y - x_k| < r_k$，两侧特征函数都等于 $1$；若 $|y - x_0| > r_0$，同样的扰动下两侧都等于 $0$。于是
+
+$\chi_{B(x_k,r_k)}(y) \longrightarrow \chi_{B(x_0,r_0)}(y) \qquad \text{a.e. } y .$
+
+**③ 控制函数一致有界，DCT 收尾。** $k$ 充分大时 $r_k < r_0 + 1/2$、$|x_k - x_0| < 1/2$，于是 $B(x_k, r_k) \subseteq B(x_0, r_0+1)$，从而
+
+$|\chi_{B(x_k,r_k)}(y) - \chi_{B(x_0,r_0)}(y)|\,|f(y)| \le \chi_{B(x_0, r_0+1)}(y)\,|f(y)| \in L^1 .$
+
+由**控制收敛定理**（本步唯一的外部定理）得第一段积分趋于 $0$；再乘上有界系数 $1/m(B(x_k,r_k)) \to 1/m(B(x_0,r_0)) > 0$，两段合起来即 $A_{r_k}f(x_k) \to A_{r_0}f(x_0)$。∎
+
+> 这一步之外全是球与特征函数的初等估计：拆项、a.e. 收敛、找控制函数。**DCT 是唯一的外部定理**，也是把「$L^1_{loc}$ 里没有逐点信息」这个困难一次性消掉的地方。
+
 #### 定义引用：「连续映射」→ 映射同伦　`e51.definition`
 
 同伦 $F : X \times [0, 1] \to Y$ 本身要求**联合连续**（在乘积拓扑下），不是「对每个 $t$ 各自连续」。
@@ -55368,6 +55411,10 @@ $$f = \beta_B \circ G(h) \circ \beta_A^{-1} : A \to B$$
 **本质满**见「定义」处的注解：等价的两个范畴之间对象差一个同构，这正是 $F$ 本质满。∎
 
 > 这条把「范畴等价」这件看起来要靠造函子的事，换成了两个**可以逐点检查**的条件：Hom 集上双射 + 对象层差一个同构。实际用的时候几乎都走这一条。
+
+#### 定义引用：「单纯形范畴」→ 单纯对象　`def-link.simplex-category-simplicial`
+
+单纯对象是 $\Delta^{\mathrm{op}}$ 上的图，索引范畴正是 `def.simplex-category`；本节点陈述为了自足把 $\Delta$ 的骨架重述了一遍，正式定义以那个节点为准。
 
 #### 米田引理 ⟹ 表示的两个定义等价　`imp.yoneda-criterion`
 *米田引理 $\implies$ 表示的两个定义等价*
@@ -62181,7 +62228,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **集合的构造 ↔ 同调群**　2 条节点级连线
 - **代数结构 ↔ 同调群**　2 条节点级连线
 - **复形与导出三角 ↔ 同调群**　6 条节点级连线
-- **微分定理 ↔ 积分**　3 条节点级连线
+- **微分定理 ↔ 积分**　4 条节点级连线
 - **微分定理 ↔ 符号测度与分解**　4 条节点级连线
 - **代数结构 ↔ 整除与同余**　3 条节点级连线
 - **群作用与置换 ↔ 整除与同余**　2 条节点级连线

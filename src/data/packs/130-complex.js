@@ -271,7 +271,6 @@ window.MG = window.MG || {};
       id: 'thm.cauchy-integral-formula',
       cluster: 'analysis.cauchy',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Cauchy 积分公式',
       title: '定理：Cauchy 积分公式',
       regions: ['complex'],
@@ -286,7 +285,7 @@ window.MG = window.MG || {};
         '',
         '更一般地，若 $\\gamma$ 是区域内的**简单**闭曲线、$f$ 在 $\\gamma$ 内部及 $\\gamma$ 上全纯，则上式对 $\\gamma$ 内部任一点 $z$ 成立（一般闭曲线要写成 $\\operatorname{Ind}(\\gamma, z)f(z) = \\frac{1}{2\\pi i}\\oint_\\gamma \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta$）。'
       ].join('\n'),
-      notes: '⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\\overline{B(z, r)}$，在剩下的二连通区域 $\\Omega_r$ 上对 $g(\\zeta) = f(\\zeta)/(\\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\\oint_{\\partial\\Omega} g = \\oint_{|\\zeta - z| = r} g$。\n\n再把 $g$ 拆成两块：$\\dfrac{f(z)}{\\zeta - z} + \\dfrac{f(\\zeta) - f(z)}{\\zeta - z}$。\n\n第一块的积分算出 $2\\pi i f(z)$；\n\n第二块的被积函数在 $\\zeta = z$ 处有极限 $f\'(z)$（因而有界），由 ML 不等式其积分不超过 $(\\text{常数}) \\cdot 2\\pi r \\to 0$。\n\n⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。\n\n⚠ 被积函数 $f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\\Omega$ 上。\n\n挖洞不是技巧，是必须的。'
+      notes: '⭐ **核心是挖洞**：被积函数 $g(\\zeta) = f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处没有定义，所以不能把 Cauchy 定理直接用在整块 $\\Omega$ 上。固定 $z \\in \\Omega$，令 $d = \\operatorname{dist}(z, \\partial\\Omega) > 0$，取 $0 < r < d$，挖去闭圆盘 $\\overline{B(z,r)}$，得二连通区域 $\\Omega_{r} = \\Omega \\setminus \\overline{B(z,r)}$。$g$ 在 $\\Omega_{r}$ 上全纯（分母处处非零），由多连通 Cauchy–Goursat 定理（`thm.cauchy-goursat`）$\\oint_{\\partial\\Omega_{r}} g\\,\\mathrm{d}\\zeta = 0$。边界 $\\partial\\Omega_{r}$ 由外边界 $\\partial\\Omega$（正向）与内圆 $|\\zeta - z| = r$（负向）组成，移项得 $\\oint_{\\partial\\Omega} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta = \\oint_{|\\zeta - z| = r} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta.$\n\n**拆出主项**：在右端把被积函数写成 $\\frac{f(\\zeta)}{\\zeta - z} = \\frac{f(z)}{\\zeta - z} + \\frac{f(\\zeta) - f(z)}{\\zeta - z}.$ 第一项的积分用 $\\zeta = z + re^{i\\theta}$ 直接算：$\\oint_{|\\zeta - z| = r} \\frac{\\mathrm{d}\\zeta}{\\zeta - z} = \\int_{0}^{2\\pi} \\frac{ire^{i\\theta}}{re^{i\\theta}}\\,\\mathrm{d}\\theta = 2\\pi i$，故贡献 $2\\pi i\\,f(z)$。\n\n**第二项随 $r \\to 0$ 消失**：$f$ 在 $z$ 全纯，故 $\\lim_{\\zeta \\to z}\\frac{f(\\zeta) - f(z)}{\\zeta - z} = f\'(z)$；特别地存在 $M$ 与 $\\rho > 0$，使 $|\\zeta - z| < \\rho$ 时该商有界 $\\le M$。于是对 $0 < r < \\min(\\rho, d)$，由 ML 不等式 $\\left|\\oint_{|\\zeta - z| = r} \\frac{f(\\zeta) - f(z)}{\\zeta - z}\\,\\mathrm{d}\\zeta\\right| \\le M\\cdot 2\\pi r \\longrightarrow 0.$\n\n**收尾**：外边界积分与 $r$ 无关（上面的等式对一切 $0 < r < d$ 成立），让 $r \\to 0$ 得 $\\oint_{\\partial\\Omega}\\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta = 2\\pi i\\,f(z)$，即所求。∎\n\n**一般闭曲线**：若 $\\gamma$ 不包围 $z$，在 $\\gamma$ 外部的区域上用同一论证得 $\\oint_{\\gamma} = 0$；若 $\\gamma$ 包围 $z$，在外边界与内圆之间的环域上同理论，得到带绕数的形式 $\\operatorname{Ind}(\\gamma, z)\\,f(z) = \\frac{1}{2\\pi i}\\oint_{\\gamma}\\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta$。\n\n⭐ **枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor/Laurent 展开、留数定理 —— 本星系几乎所有结论都从这里长出来。\n\n⚠ 被积函数 $f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处**不**全纯，这正是「挖洞」不是技巧、而是必须的原因。'
     },
     {
       id: 'thm.cauchy-higher-derivative',
