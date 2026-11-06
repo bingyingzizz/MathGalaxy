@@ -234,7 +234,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.filtered-complex-spectral'],
       target: 'prop.filtered-first-page',
-      title: '下有界过滤复形给出谱序列 $\\implies$ 第一页是分次片的同调',
+      title: '两侧有界过滤复形给出谱序列 $\\implies$ 第一页是分次片的同调',
       proof: [
         '那条定理给出 $E^{0}_{p,q} = \\operatorname{Gr}^{p}K^{p+q}$ ✓，而第 $0$ 页的微分正是过滤商上诱导的微分 ✓；取同调即得 $E^{1}_{p,q} = H^{p+q}(\\operatorname{Gr}^{p}K^{\\bullet})$ ✓。∎'
       ].join('\n')

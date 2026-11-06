@@ -348,7 +348,7 @@ window.MG = window.MG || {};
         '',
         '而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。',
         '',
-        '**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{fd}_{R^{\\mathrm{op}}} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。'
+        '**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{fd}_{R^{\\mathrm{op}}} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\n\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。'
       ].join('\n'),
       notes: [
         '**与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：',
@@ -426,11 +426,11 @@ window.MG = window.MG || {};
           '$(3) \\implies (4)$：取 $k = n+1$ ✓。',
           '$(4) \\implies (1)$：取任意投射消解并算出 $K := \\Omega^{n}M$。由**维数转移**（连用 $n$ 次）得 $\\operatorname{Ext}^{1}_{R}(K, N) \\cong \\operatorname{Ext}^{n+1}_{R}(M, N)$，对一切 $N$ 为零 ✓。',
           '而「$\\operatorname{Ext}^{1}_{R}(K, -)$ 恒为零」迫使 $K$ 投射：若 $K$ 不投射，取满射 $F \\twoheadrightarrow K$（$F$ 自由），它不分裂，于是由「一阶扩展的分类」得到 $\\operatorname{Ext}^{1}_{R}(K, \\ker) \\ne 0$，矛盾 ✓。\n\n于是 $M$ 有一条长度 $n$ 的投射消解 ✓，即 $(1)$。',
-          '$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎',
+          '$(1) \\iff (2)$：固定一条消解时是定义重述；换成另一条消解要用 Schanuel 引理（合冲稳定性）才能把「第 $n$ 合冲投射」说成与消解无关 ✓。∎',
         ,
         '**四条里 2 $\\implies$ 3 是唯一的「实质一步」，且它要长正合列 + 归纳**：\n' +
         '\n' +
-        '- (1) $\\iff$ (2)：**定义展开**（$\\mathrm{pd} \\le n$ 就是「有长度 $n$ 的投射消解」，等价于第 $n$ 合冲投射）。\n' +
+        '- (1) $\\iff$ (2)：**固定一条消解**时是定义展开（$\\mathrm{pd} \\le n$ 就是「有长度 $n$ 的投射消解」）；但「第 $n$ 合冲投射」要**跨消解**才成陈述，靠的是 **Schanuel 引理 / 合冲稳定性**（`prop.syzygy-stability`），不是定义展开。\n' +
         '- (2) $\\implies$ (3)：**这一步是真内容**。用投射消解 $\\cdots \\to P_{1} \\to P_{0} \\to M \\to 0$ 算 $\\operatorname{Ext}$：$\\operatorname{Ext}^{k}(M,N)$ 是消解上同调，而长度 $n$ 的消解在 $k > n$ 处没有项，故为零。⚠️ 这里要用「**投射消解可用来算 $\\operatorname{Ext}$**」这一条（维数偏移/平衡性），它本身要证。\n' +
         '- (3) $\\implies$ (4)：**特例**（$k = n+1$）。\n' +
         '- (4) $\\implies$ (2)：**这一步要用「维数偏移」反向**：若 $\\operatorname{Ext}^{n+1}(M, -)$ 恒为零，取一个长度 $n$ 的部分消解，其第 $n$ 合冲 $K$ 满足 $\\operatorname{Ext}^{1}(K, -) = 0$，于是 $K$ 投射（`prop.ext-projective-vanishes` 的反向）。**⚠️ 这一步用到「$\\operatorname{Ext}^{1} = 0 \\implies$ 投射」在模范畴里成立**（不需要额外假设，因为模范畴有足够多投射）；在更一般的阿贝尔范畴里要小心。\n' +
@@ -1248,7 +1248,7 @@ window.MG = window.MG || {};
         '$(3) \\implies (4)$：取 $k = n+1$ ✓。',
         '$(4) \\implies (1)$：由维数转移连用 $n$ 次，$\\operatorname{Ext}^{n+1}_{R}(M, N) \\cong \\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, N)$ ✓（这里用到「用投射消解算与用内射消解算给出同一个群」，即两种算法一致，所以维数转移的两个方向都可靠）。',
         '条件 (4) 于是说的是 $\\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, -)$ 恒为零。\n\n若 $\\Omega^{n}M$ 不投射，取自由模盖住它得 $0 \\to L \\to F \\to \\Omega^{n}M \\to 0$，它不分裂，由「一阶扩展的分类」这条路对应 $\\operatorname{Ext}^{1}(\\Omega^{n}M, L)$ 里的**非零**类，矛盾 ✓。\n\n故 $\\Omega^{n}M$ 投射，即 (1) ✓。',
-        '$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎'
+        '$(1) \\iff (2)$：固定一条消解时是定义重述；换成另一条消解要用 Schanuel 引理（合冲稳定性）才能把「第 $n$ 合冲投射」说成与消解无关 ✓。∎'
       ].join('\n')
     },
     {

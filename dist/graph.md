@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:42:29.112Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:45:24.563Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -16153,20 +16153,6 @@ $\bigotimes_{j=1}^{\infty} \mathfrak{B}_{X_j} = \mathfrak{B}_{X}$
 两边互包即得等号。∎
 ⚠️ **积的可数性不能省**：$\mathbb{R}^{\mathbb{R}}$ 是**不可数积**，其积 $\sigma$ 代数**真包含于** Borel $\sigma$ 代数（每个因子 $\mathbb{R}$ 都可分，坏在积不可数）；充分条件是「每个因子可分 **且** 积可数」。
 
-$\subseteq$ 的原因很直接：投影 $\pi _{j}$ 连续，所以 $\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\mathfrak{B}_X$ 里。
-
-反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则
-
-
-
-$$\{ B(c, r) : c \in C_j, r \in \mathbb{Q} \}$$
-
-
-
-是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\mathfrak{B}_{X_{j}}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\mathfrak{B}_X \subseteq \otimes\mathfrak{B}_{X_{j}}$。
-
-⚠ 可分性不能省：$\mathbb{R}^\mathbb{R}$（不可数积）上，积 $\sigma$代数真包含于 $Borel \sigma$代数。
-
 参考：Folland, Real Analysis, §2.1
 
 #### 乘积测度　`def.product-measure`
@@ -24911,7 +24897,7 @@ $$\widehat{\mathcal{C}}(\mathbf{Ab}) := \operatorname{Hom}(\mathcal{C}^{\mathrm{
 
 
 
-顺带一条：$\mathbb{Z}\cdot X$ 在 $\mathcal{T}(\mathbf{Ab})$ 里**投射**（先看预层：$M \mapsto \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot h_{X}, M) \cong M(X)$ 在预层上是正合的）。
+顺带一条：$\mathbb{Z}\cdot X$ 是**生成元**、而且**平坦**；但它**不是**投射 —— $\operatorname{Hom}(\mathbb{Z}\cdot X, -) \cong \Gamma(X, -)$（整体截面）只左正合，取不分裂的层短正合列 $0 \to \mathcal{F} \to \mathcal{G} \to \mathcal{H} \to 0$ 即知不满。投射性只在**预层**范畴成立（那里 $\operatorname{Hom}(\mathbb{Z}\cdot h_{X}, -) \cong (-)(X)$ 正合，见 `prop.presheaf-free-projective`）。
 
 参考：Le Stum, An introduction to condensed mathematics, §5.3
 
@@ -25050,7 +25036,7 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M\bigr) = \operatorna
 
 ⚠️ **一般不是逐点算的**：层化会改动取值，「逐点自由再层化」与「自由」只有在层条件不碍事的时候才重合。
 
-📌 例：$\mathbb{Z}\cdot \mathbf{1} \cong \mathbb{Z}$（常层）；$\mathbb{Z}\cdot X$ 永远是**投射**对象的候选（它是自由的）。
+📌 例：$\mathbb{Z}\cdot \mathbf{1} \cong \mathbb{Z}$（常层）。⚠️ 但它**不是**投射对象：层范畴里 $\operatorname{Hom}(\mathbb{Z}\cdot X, -) \cong M(X)$ 只左正合，「自由 $\implies$ 投射」只在**预层**范畴成立（`prop.presheaf-free-projective`）。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 5.18, Exercise 5.24
 
@@ -26312,7 +26298,9 @@ $$0 \to M \to I^{0} \to I^{1} \to \cdots \to I^{n} \to 0$$
 
 而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\infty$）。
 
-**对偶（不要写错）**：$\operatorname{id}_{R} M = \operatorname{fd}_{R^{\mathrm{op}}} \operatorname{Hom}_{\mathbb{Z}}(M,\, \mathbb{Q}/\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\n\n⚠ 不能写成 $\operatorname{id}_{R} M = \operatorname{pd}_{R^{\mathrm{op}}} M$：取 $R = \mathbb{Z}$、$M = \mathbb{Q}$，$\mathbb{Q}$ 可除 $\implies$ $\operatorname{id} = 0$，而 $\operatorname{pd}_{\mathbb{Z}}\mathbb{Q} = 1$（$\mathbb{Q}$ 不投射），两者不等。
+**对偶（不要写错）**：$\operatorname{id}_{R} M = \operatorname{fd}_{R^{\mathrm{op}}} \operatorname{Hom}_{\mathbb{Z}}(M,\, \mathbb{Q}/\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。
+
+⚠ 不能写成 $\operatorname{id}_{R} M = \operatorname{pd}_{R^{\mathrm{op}}} M$：取 $R = \mathbb{Z}$、$M = \mathbb{Q}$，$\mathbb{Q}$ 可除 $\implies$ $\operatorname{id} = 0$，而 $\operatorname{pd}_{\mathbb{Z}}\mathbb{Q} = 1$（$\mathbb{Q}$ 不投射），两者不等。
 
 **与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：
 
@@ -26386,11 +26374,11 @@ $(4) \implies (1)$：取任意投射消解并算出 $K := \Omega^{n}M$。由**�
 而「$\operatorname{Ext}^{1}_{R}(K, -)$ 恒为零」迫使 $K$ 投射：若 $K$ 不投射，取满射 $F \twoheadrightarrow K$（$F$ 自由），它不分裂，于是由「一阶扩展的分类」得到 $\operatorname{Ext}^{1}_{R}(K, \ker) \ne 0$，矛盾 ✓。
 
 于是 $M$ 有一条长度 $n$ 的投射消解 ✓，即 $(1)$。
-$(1) \iff (2)$ 是合冲的定义重述 ✓。∎
+$(1) \iff (2)$：固定一条消解时是定义重述；换成另一条消解要用 Schanuel 引理（合冲稳定性）才能把「第 $n$ 合冲投射」说成与消解无关 ✓。∎
 
 **四条里 2 $\implies$ 3 是唯一的「实质一步」，且它要长正合列 + 归纳**：
 
-- (1) $\iff$ (2)：**定义展开**（$\mathrm{pd} \le n$ 就是「有长度 $n$ 的投射消解」，等价于第 $n$ 合冲投射）。
+- (1) $\iff$ (2)：**固定一条消解**时是定义展开（$\mathrm{pd} \le n$ 就是「有长度 $n$ 的投射消解」）；但「第 $n$ 合冲投射」要**跨消解**才成陈述，靠的是 **Schanuel 引理 / 合冲稳定性**（`prop.syzygy-stability`），不是定义展开。
 - (2) $\implies$ (3)：**这一步是真内容**。用投射消解 $\cdots \to P_{1} \to P_{0} \to M \to 0$ 算 $\operatorname{Ext}$：$\operatorname{Ext}^{k}(M,N)$ 是消解上同调，而长度 $n$ 的消解在 $k > n$ 处没有项，故为零。⚠️ 这里要用「**投射消解可用来算 $\operatorname{Ext}$**」这一条（维数偏移/平衡性），它本身要证。
 - (3) $\implies$ (4)：**特例**（$k = n+1$）。
 - (4) $\implies$ (2)：**这一步要用「维数偏移」反向**：若 $\operatorname{Ext}^{n+1}(M, -)$ 恒为零，取一个长度 $n$ 的部分消解，其第 $n$ 合冲 $K$ 满足 $\operatorname{Ext}^{1}(K, -) = 0$，于是 $K$ 投射（`prop.ext-projective-vanishes` 的反向）。**⚠️ 这一步用到「$\operatorname{Ext}^{1} = 0 \implies$ 投射」在模范畴里成立**（不需要额外假设，因为模范畴有足够多投射）；在更一般的阿贝尔范畴里要小心。
@@ -43263,7 +43251,7 @@ $(4) \implies (1)$：由维数转移连用 $n$ 次，$\operatorname{Ext}^{n+1}_{
 若 $\Omega^{n}M$ 不投射，取自由模盖住它得 $0 \to L \to F \to \Omega^{n}M \to 0$，它不分裂，由「一阶扩展的分类」这条路对应 $\operatorname{Ext}^{1}(\Omega^{n}M, L)$ 里的**非零**类，矛盾 ✓。
 
 故 $\Omega^{n}M$ 投射，即 (1) ✓。
-$(1) \iff (2)$ 是合冲的定义重述 ✓。∎
+$(1) \iff (2)$：固定一条消解时是定义重述；换成另一条消解要用 Schanuel 引理（合冲稳定性）才能把「第 $n$ 合冲投射」说成与消解无关 ✓。∎
 
 #### 合冲比较引理 ⟹ 合冲的稳定性　`imp-link.schanuel-syzstab`
 *合冲比较引理（逐层使用）$\implies$ 合冲在相差投射直和项下唯一*
@@ -56235,12 +56223,12 @@ $$\cong C\bigl((X \times Y)(\cdot),\ Z\bigr) ✓$$
 命题的对象就是双复形连它的全复形。
 
 #### 过滤复形给出谱序列 ⟹ 双复形给出谱序列　`imp-link.filt-bicss`
-*下有界过滤复形给出谱序列 $\implies$ 双复形给出谱序列*
+*两侧有界过滤复形给出谱序列 $\implies$ 双复形给出谱序列*
 
 在全复形 $K^{n} = \bigoplus_{p+q=n} K^{p,q}$ 上取**逐列过滤**
 $$F^{p}K^{n} \;:=\; \bigoplus_{i+j=n,\ i \ge p} K^{i,j}$$
 （$p$ 越大剩下的越少，所以这是**递降**过滤）✓。
-**下有界性**：$p \le$ 两个方向的下界时 $F^{p}K^{n} = K^{n}$ ✓，于是这个过滤下有界，可以套「下有界过滤复形给出谱序列」✓。
+**两侧有界**：$p$ 小于两个方向的下界时 $F^{p}K^{n} = K^{n}$、大于上界时 $F^{p}K^{n} = 0$ ✓，于是这个过滤两侧有界，可以套「两侧有界过滤复形给出谱序列」✓。
 **识别第 $0$ 页**：$\operatorname{Gr}^{p}K^{p+q} = F^{p}K^{p+q}/F^{p+1}K^{p+q} = K^{p,q}$ ✓，所以 $E^{0}_{p,q} = K^{p,q}$ ✓。
 **收敛**：那条定理直接给出 $E^{0}_{p,q} \implies H^{p+q}(K^{\bullet})$ ✓。∎
 
@@ -56437,7 +56425,7 @@ $F$ 自由因而投射，$F \to f(S)$ 可提升为 $F \to S \hookrightarrow X$ �
 公式里的分次片就是过滤商。
 
 #### 过滤复形给出谱序列 ⟹ 过滤复形的第一页　`imp-link.filteredss-firstpage`
-*下有界过滤复形给出谱序列 $\implies$ 第一页是分次片的同调*
+*两侧有界过滤复形给出谱序列 $\implies$ 第一页是分次片的同调*
 
 那条定理给出 $E^{0}_{p,q} = \operatorname{Gr}^{p}K^{p+q}$ ✓，而第 $0$ 页的微分正是过滤商上诱导的微分 ✓；取同调即得 $E^{1}_{p,q} = H^{p+q}(\operatorname{Gr}^{p}K^{\bullet})$ ✓。∎
 

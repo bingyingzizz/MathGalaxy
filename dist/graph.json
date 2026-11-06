@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-06T04:42:29.112Z",
+  "generated": "2026-11-06T04:45:24.563Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -5191,7 +5191,7 @@
     "可分"
    ],
    "statement": "若每个 $X_j$ 都**可分**，则积 $\\sigma$-代数与 Borel $\\sigma$-代数重合：\n\n$\\bigotimes_{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_{X}$",
-   "notes": "**证明。**\n- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。\n- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。\n  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。\n两边互包即得等号。∎\n⚠️ **积的可数性不能省**：$\\mathbb{R}^{\\mathbb{R}}$ 是**不可数积**，其积 $\\sigma$ 代数**真包含于** Borel $\\sigma$ 代数（每个因子 $\\mathbb{R}$ 都可分，坏在积不可数）；充分条件是「每个因子可分 **且** 积可数」。\n\n$\\subseteq$ 的原因很直接：投影 $\\pi _{j}$ 连续，所以 $\\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\\mathfrak{B}_X$ 里。\n\n反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则\n\n\n\n$$\\{ B(c, r) : c \\in C_j, r \\in \\mathbb{Q} \\}$$\n\n\n\n是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\\mathfrak{B}_{X_{j}}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\\mathfrak{B}_X \\subseteq \\otimes\\mathfrak{B}_{X_{j}}$。\n\n⚠ 可分性不能省：$\\mathbb{R}^\\mathbb{R}$（不可数积）上，积 $\\sigma$代数真包含于 $Borel \\sigma$代数。",
+   "notes": "**证明。**\n- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。\n- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。\n  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。\n两边互包即得等号。∎\n⚠️ **积的可数性不能省**：$\\mathbb{R}^{\\mathbb{R}}$ 是**不可数积**，其积 $\\sigma$ 代数**真包含于** Borel $\\sigma$ 代数（每个因子 $\\mathbb{R}$ 都可分，坏在积不可数）；充分条件是「每个因子可分 **且** 积可数」。",
    "refs": [
     "Folland, Real Analysis, §2.1"
    ]
@@ -16412,7 +16412,7 @@
     "维数",
     "对偶"
    ],
-   "statement": "设 $M$ 是 $R$-模。说 $\\operatorname{id}_{R} M \\le n$，如果 $M$ 有一条**长度 $n$ 的内射消解**，即存在正合列\n\n$$0 \\to M \\to I^{0} \\to I^{1} \\to \\cdots \\to I^{n} \\to 0$$\n\n而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。\n\n**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{fd}_{R^{\\mathrm{op}}} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\\n\\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。",
+   "statement": "设 $M$ 是 $R$-模。说 $\\operatorname{id}_{R} M \\le n$，如果 $M$ 有一条**长度 $n$ 的内射消解**，即存在正合列\n\n$$0 \\to M \\to I^{0} \\to I^{1} \\to \\cdots \\to I^{n} \\to 0$$\n\n而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\\infty$）。\n\n**对偶（不要写错）**：$\\operatorname{id}_{R} M = \\operatorname{fd}_{R^{\\mathrm{op}}} \\operatorname{Hom}_{\\mathbb{Z}}(M,\\, \\mathbb{Q}/\\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。\n\n⚠ 不能写成 $\\operatorname{id}_{R} M = \\operatorname{pd}_{R^{\\mathrm{op}}} M$：取 $R = \\mathbb{Z}$、$M = \\mathbb{Q}$，$\\mathbb{Q}$ 可除 $\\implies$ $\\operatorname{id} = 0$，而 $\\operatorname{pd}_{\\mathbb{Z}}\\mathbb{Q} = 1$（$\\mathbb{Q}$ 不投射），两者不等。",
    "notes": "**与投射维数完全对称**，但方向反了：消解朝**右**延伸，因为内射对象是「能接收映射」的那一侧。逐条对照：\n\n\n\n- $\\operatorname{id}_{R} M = 0 \\iff M$ 内射；\n\n- $\\operatorname{id}_{R} M \\le n \\iff \\operatorname{Ext}^{k}_{R}(N, M) = 0$ 对一切 $N$ 与 $k > n$ 成立（注意是**第二个**变量）；\n\n- $\\operatorname{id}_{R} M$ 等于使 $\\operatorname{Ext}^{n}_{R}(-, M)$ 不全为零的最大 $n$。\n\n**例子（$\\mathbb{Z}$ 上）**：$\\mathbb{Q}$ 内射（可除群）故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Q} = 0$；\n\n$\\mathbb{Z}$ 不内射，而 $0 \\to \\mathbb{Z} \\to \\mathbb{Q} \\to \\mathbb{Q}/\\mathbb{Z} \\to 0$ 是长度 $1$ 的内射消解，故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Z} = 1$ ✓。\n\n⭐ **为什么两边都要有**：算 $\\operatorname{Ext}^{n}(M, N)$ 时，用 $M$ 的**投射**消解（左边）或用 $N$ 的**内射**消解（右边）都行；两边分别由 $\\operatorname{pd} M$ 与 $\\operatorname{id} N$ 决定难易，于是「$\\operatorname{Ext}^{n}(M, -) = 0$（$n > \\operatorname{pd} M$）」与「$\\operatorname{Ext}^{n}(-, N) = 0$（$n > \\operatorname{id} N$）」同时成立。",
    "refs": [
     "Rotman, An Introduction to Homological Algebra (2nd ed.), 维数（dimensions）的部分 · 内射维数",
@@ -16499,7 +16499,7 @@
     "合冲"
    ],
    "statement": "设 $M$ 是 $R$-模、$n \\ge 0$。下列条件**等价**：\n\n1. $\\operatorname{pd}_{R} M \\le n$；\n2. 第 $n$ 合冲 $\\Omega^{n}M$ **投射**（等价地：$M$ 有长度 $n$ 的投射消解）；\n3. 对一切 $R$-模 $N$ 与一切 $k > n$：$\\operatorname{Ext}^{k}_{R}(M, N) = 0$；\n4. 对一切 $R$-模 $N$：$\\operatorname{Ext}^{n+1}_{R}(M, N) = 0$。\n\n对偶地：$\\operatorname{id}_{R} M \\le n$ 当且仅当 $\\operatorname{Ext}^{k}_{R}(N, M) = 0$ 对一切 $N$ 与一切 $k > n$ 成立。",
-   "notes": "**证明。**\n$(1) \\implies (3)$：取长度 $n$ 的投射消解 $P_{\\bullet}$，则删除消解在 $k > n$ 处为零，故 $\\operatorname{Hom}(P_{\\bullet}, N)$ 在 $k > n$ 次也为零，上同调自然为零 ✓（用到了「用投射消解算与用内射消解算给出同一个群」，见「扩展群的双边算法」）。\n$(3) \\implies (4)$：取 $k = n+1$ ✓。\n$(4) \\implies (1)$：取任意投射消解并算出 $K := \\Omega^{n}M$。由**维数转移**（连用 $n$ 次）得 $\\operatorname{Ext}^{1}_{R}(K, N) \\cong \\operatorname{Ext}^{n+1}_{R}(M, N)$，对一切 $N$ 为零 ✓。\n而「$\\operatorname{Ext}^{1}_{R}(K, -)$ 恒为零」迫使 $K$ 投射：若 $K$ 不投射，取满射 $F \\twoheadrightarrow K$（$F$ 自由），它不分裂，于是由「一阶扩展的分类」得到 $\\operatorname{Ext}^{1}_{R}(K, \\ker) \\ne 0$，矛盾 ✓。\n\n于是 $M$ 有一条长度 $n$ 的投射消解 ✓，即 $(1)$。\n$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎\n\n**四条里 2 $\\implies$ 3 是唯一的「实质一步」，且它要长正合列 + 归纳**：\n\n- (1) $\\iff$ (2)：**定义展开**（$\\mathrm{pd} \\le n$ 就是「有长度 $n$ 的投射消解」，等价于第 $n$ 合冲投射）。\n- (2) $\\implies$ (3)：**这一步是真内容**。用投射消解 $\\cdots \\to P_{1} \\to P_{0} \\to M \\to 0$ 算 $\\operatorname{Ext}$：$\\operatorname{Ext}^{k}(M,N)$ 是消解上同调，而长度 $n$ 的消解在 $k > n$ 处没有项，故为零。⚠️ 这里要用「**投射消解可用来算 $\\operatorname{Ext}$**」这一条（维数偏移/平衡性），它本身要证。\n- (3) $\\implies$ (4)：**特例**（$k = n+1$）。\n- (4) $\\implies$ (2)：**这一步要用「维数偏移」反向**：若 $\\operatorname{Ext}^{n+1}(M, -)$ 恒为零，取一个长度 $n$ 的部分消解，其第 $n$ 合冲 $K$ 满足 $\\operatorname{Ext}^{1}(K, -) = 0$，于是 $K$ 投射（`prop.ext-projective-vanishes` 的反向）。**⚠️ 这一步用到「$\\operatorname{Ext}^{1} = 0 \\implies$ 投射」在模范畴里成立**（不需要额外假设，因为模范畴有足够多投射）；在更一般的阿贝尔范畴里要小心。\n\n⚠️ **$n = 0$ 的情形**：$\\mathrm{pd} M \\le 0$ $\\iff$ $M$ 投射 $\\iff$ $\\operatorname{Ext}^{k}(M,-) = 0$ 对所有 $k \\ge 1$。别把「$\\operatorname{Ext}^{1} = 0$ 就投射」当成对**任意** $n$ 都有：只有 $n = 0$（即 $\\operatorname{Ext}^{1}$）这一档如此。\n\n\n**各方向用到的假设**（模范畴中的维数转移判据）：\n- (1) $\\iff$ 存在长度 $n$ 的投射消解是定义；若 (2) 指任意已选消解的第 $n$ 合冲，则独立于消解的结论还需 Schanuel 引理或维数转移，不能全算作定义。\n- (2) $\\implies$ (3)：截断投射消解并用它计算 $\\operatorname{Ext}$，须用消解计算定理；(3) $\\implies$ (4) 只是取 $k=n+1$，免费。\n- (4) $\\implies$ (2)：维数转移把条件化为 $\\operatorname{Ext}^1(\\Omega^nM,N)=0$ 对所有 $N$ 成立，再由短正合列分裂判投射；模范畴有足够多投射，不要求环是 PID。\n- 对所有 $N$ 的量词不能改成某个 $N$：取 $N=0$ 时消失对任意 $M$ 成立；例如 $\\mathbb Z/2$ 并非投射 $\\mathbb Z$-模。\n\n\n⭐ **实用形式**：验维数时通常只算**一个**群 —— $\\operatorname{Ext}^{n+1}_{R}(M, N)$ 对一切 $N$ 为零即可，不必逐层算。反过来，想知道 $\\operatorname{pd}$ 到底多大，就找出一个使 $\\operatorname{Ext}^{n}$ 非零的 $N$。\n\n⚠️ **两个方向别记反**：$\\operatorname{pd}_{R} M$ 管的是 $\\operatorname{Ext}(M, -)$（**第一个**变量），$\\operatorname{id}_{R} N$ 管的是 $\\operatorname{Ext}(-, N)$（**第二个**变量）。\n\n📌 一个立刻的推论：$R$ 是半单环 $\\iff$ 每个模都投射 $\\iff \\operatorname{gl.dim} R = 0$。",
+   "notes": "**证明。**\n$(1) \\implies (3)$：取长度 $n$ 的投射消解 $P_{\\bullet}$，则删除消解在 $k > n$ 处为零，故 $\\operatorname{Hom}(P_{\\bullet}, N)$ 在 $k > n$ 次也为零，上同调自然为零 ✓（用到了「用投射消解算与用内射消解算给出同一个群」，见「扩展群的双边算法」）。\n$(3) \\implies (4)$：取 $k = n+1$ ✓。\n$(4) \\implies (1)$：取任意投射消解并算出 $K := \\Omega^{n}M$。由**维数转移**（连用 $n$ 次）得 $\\operatorname{Ext}^{1}_{R}(K, N) \\cong \\operatorname{Ext}^{n+1}_{R}(M, N)$，对一切 $N$ 为零 ✓。\n而「$\\operatorname{Ext}^{1}_{R}(K, -)$ 恒为零」迫使 $K$ 投射：若 $K$ 不投射，取满射 $F \\twoheadrightarrow K$（$F$ 自由），它不分裂，于是由「一阶扩展的分类」得到 $\\operatorname{Ext}^{1}_{R}(K, \\ker) \\ne 0$，矛盾 ✓。\n\n于是 $M$ 有一条长度 $n$ 的投射消解 ✓，即 $(1)$。\n$(1) \\iff (2)$：固定一条消解时是定义重述；换成另一条消解要用 Schanuel 引理（合冲稳定性）才能把「第 $n$ 合冲投射」说成与消解无关 ✓。∎\n\n**四条里 2 $\\implies$ 3 是唯一的「实质一步」，且它要长正合列 + 归纳**：\n\n- (1) $\\iff$ (2)：**固定一条消解**时是定义展开（$\\mathrm{pd} \\le n$ 就是「有长度 $n$ 的投射消解」）；但「第 $n$ 合冲投射」要**跨消解**才成陈述，靠的是 **Schanuel 引理 / 合冲稳定性**（`prop.syzygy-stability`），不是定义展开。\n- (2) $\\implies$ (3)：**这一步是真内容**。用投射消解 $\\cdots \\to P_{1} \\to P_{0} \\to M \\to 0$ 算 $\\operatorname{Ext}$：$\\operatorname{Ext}^{k}(M,N)$ 是消解上同调，而长度 $n$ 的消解在 $k > n$ 处没有项，故为零。⚠️ 这里要用「**投射消解可用来算 $\\operatorname{Ext}$**」这一条（维数偏移/平衡性），它本身要证。\n- (3) $\\implies$ (4)：**特例**（$k = n+1$）。\n- (4) $\\implies$ (2)：**这一步要用「维数偏移」反向**：若 $\\operatorname{Ext}^{n+1}(M, -)$ 恒为零，取一个长度 $n$ 的部分消解，其第 $n$ 合冲 $K$ 满足 $\\operatorname{Ext}^{1}(K, -) = 0$，于是 $K$ 投射（`prop.ext-projective-vanishes` 的反向）。**⚠️ 这一步用到「$\\operatorname{Ext}^{1} = 0 \\implies$ 投射」在模范畴里成立**（不需要额外假设，因为模范畴有足够多投射）；在更一般的阿贝尔范畴里要小心。\n\n⚠️ **$n = 0$ 的情形**：$\\mathrm{pd} M \\le 0$ $\\iff$ $M$ 投射 $\\iff$ $\\operatorname{Ext}^{k}(M,-) = 0$ 对所有 $k \\ge 1$。别把「$\\operatorname{Ext}^{1} = 0$ 就投射」当成对**任意** $n$ 都有：只有 $n = 0$（即 $\\operatorname{Ext}^{1}$）这一档如此。\n\n\n**各方向用到的假设**（模范畴中的维数转移判据）：\n- (1) $\\iff$ 存在长度 $n$ 的投射消解是定义；若 (2) 指任意已选消解的第 $n$ 合冲，则独立于消解的结论还需 Schanuel 引理或维数转移，不能全算作定义。\n- (2) $\\implies$ (3)：截断投射消解并用它计算 $\\operatorname{Ext}$，须用消解计算定理；(3) $\\implies$ (4) 只是取 $k=n+1$，免费。\n- (4) $\\implies$ (2)：维数转移把条件化为 $\\operatorname{Ext}^1(\\Omega^nM,N)=0$ 对所有 $N$ 成立，再由短正合列分裂判投射；模范畴有足够多投射，不要求环是 PID。\n- 对所有 $N$ 的量词不能改成某个 $N$：取 $N=0$ 时消失对任意 $M$ 成立；例如 $\\mathbb Z/2$ 并非投射 $\\mathbb Z$-模。\n\n\n⭐ **实用形式**：验维数时通常只算**一个**群 —— $\\operatorname{Ext}^{n+1}_{R}(M, N)$ 对一切 $N$ 为零即可，不必逐层算。反过来，想知道 $\\operatorname{pd}$ 到底多大，就找出一个使 $\\operatorname{Ext}^{n}$ 非零的 $N$。\n\n⚠️ **两个方向别记反**：$\\operatorname{pd}_{R} M$ 管的是 $\\operatorname{Ext}(M, -)$（**第一个**变量），$\\operatorname{id}_{R} N$ 管的是 $\\operatorname{Ext}(-, N)$（**第二个**变量）。\n\n📌 一个立刻的推论：$R$ 是半单环 $\\iff$ 每个模都投射 $\\iff \\operatorname{gl.dim} R = 0$。",
    "refs": [
     "Rotman, An Introduction to Homological Algebra (2nd ed.), 维数（dimensions）的部分 · 维数的 Ext 消失刻画",
     "Weibel, An Introduction to Homological Algebra, 关于投射维数与 Ext 消失的部分"
@@ -50013,7 +50013,7 @@
    "notes_en": "The proof has three parts:\n\n- **Abelian**: first verify componentwise in the presheaf category $\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ (there one simply has pointwise abelian groups) — concretely, for an arbitrary morphism $u$ verify $\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$; then transport these identities back to the sheaf category along the **exact reflection** (sheafification). The same argument gives exactness of filtered colimits.\n- **All limits and colimits exist**: because the sheaf category is a reflective subcategory of the presheaf category.\n- **Small set of generators**: if $S$ is a small set of generators of $\\mathcal{T}$, then $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$ — their coproduct is a generator.\n\nOne more fact along the way: $\\mathbb{Z}\\cdot X$ is **projective** in $\\mathcal{T}(\\mathbf{Ab})$ (look at presheaves first: $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ is exact on presheaves).",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "stale",
      "version": "v0.9.3",
      "fields": [
       "abstract",
@@ -50027,12 +50027,15 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "reviewed",
+      "abstract": "stale",
       "statement": "reviewed",
-      "notes": "reviewed",
+      "notes": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract",
+      "notes"
+     ],
      "basedOn": {
       "abstract": "v0.9.3#3239a1df",
       "statement": "v0.9.3#f13b85f8",
@@ -50053,7 +50056,7 @@
     "Grothendieck 范畴"
    ],
    "statement": "若 $\\mathcal{T}$ 是拓扑斯，则 $\\mathcal{T}$ 上的阿贝尔层所成范畴 $\\mathcal{T}(\\mathbf{Ab})$ 是 **Grothendieck 范畴**：它有小的生成元集、有所有余极限、且滤过余极限正合。",
-   "notes": "证明分三段：\n\n\n\n- **阿贝尔**：先在预层范畴 $\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ 里逐分量验证（那里就是逐点的阿贝尔群）—— 具体的，对任意态射 $u$ 验证 $\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$；\n\n再沿**正合反射**（层化）把这些等式运回层范畴。\n\n滤过余极限正合同理。\n- **所有极限与余极限存在**：因为层范畴是预层范畴的反射子范畴。\n- **小生成元集**：若 $S$ 是 $\\mathcal{T}$ 的小生成元集，则 $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ 生成 $\\mathcal{T}(\\mathbf{Ab})$ —— 它们的余积就是生成元。\n\n\n\n顺带一条：$\\mathbb{Z}\\cdot X$ 在 $\\mathcal{T}(\\mathbf{Ab})$ 里**投射**（先看预层：$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ 在预层上是正合的）。",
+   "notes": "证明分三段：\n\n\n\n- **阿贝尔**：先在预层范畴 $\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ 里逐分量验证（那里就是逐点的阿贝尔群）—— 具体的，对任意态射 $u$ 验证 $\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$；\n\n再沿**正合反射**（层化）把这些等式运回层范畴。\n\n滤过余极限正合同理。\n- **所有极限与余极限存在**：因为层范畴是预层范畴的反射子范畴。\n- **小生成元集**：若 $S$ 是 $\\mathcal{T}$ 的小生成元集，则 $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ 生成 $\\mathcal{T}(\\mathbf{Ab})$ —— 它们的余积就是生成元。\n\n\n\n顺带一条：$\\mathbb{Z}\\cdot X$ 是**生成元**、而且**平坦**；但它**不是**投射 —— $\\operatorname{Hom}(\\mathbb{Z}\\cdot X, -) \\cong \\Gamma(X, -)$（整体截面）只左正合，取不分裂的层短正合列 $0 \\to \\mathcal{F} \\to \\mathcal{G} \\to \\mathcal{H} \\to 0$ 即知不满。投射性只在**预层**范畴成立（那里 $\\operatorname{Hom}(\\mathbb{Z}\\cdot h_{X}, -) \\cong (-)(X)$ 正合，见 `prop.presheaf-free-projective`）。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §5.3"
    ],
@@ -59285,7 +59288,7 @@
     "Z[X]"
    ],
    "statement": "设 $\\mathcal{T}$ 是拓扑斯。遗忘函子\n\n$$\\mathcal{T}(\\mathbf{Ab}) \\longrightarrow \\mathcal{T}$$\n\n（把阿贝尔层忘成底集合层）有**左伴随**，记作\n\n$$\\mathbb{Z}\\cdot(-) : \\mathcal{T} \\longrightarrow \\mathcal{T}(\\mathbf{Ab}), \\qquad X \\longmapsto \\mathbb{Z}\\cdot X,$$\n后者也记作 $\\mathbb{Z}[X]$。\n\n它由**万有性质**刻画：对 $X \\in \\mathcal{T}$ 与 $M \\in \\mathcal{T}(\\mathbf{Ab})$，\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{T}}(X,\\ M) = M(X).$$",
-   "notes": "**怎么造。** 先逐点自由化、再层化：把 $X$ 看成预层，取预层 $U \\mapsto \\mathbb{Z}\\cdot X(U)$（逐点自由阿贝尔群），再层化：\n\n$$\\mathbb{Z}\\cdot X \\;:=\\; \\bigl(U \\mapsto \\mathbb{Z}\\cdot X(U)\\bigr)^{\\#}.$$\n\n**为什么这就对。** 预层那一层是逐点的：函子范畴里的伴随逐点造，而 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的遗忘函子有左伴随 $E \\mapsto \\mathbb{Z}\\cdot E$（自由阿贝尔群）✓，于是 $\\widehat{\\mathcal{C}}(\\mathbf{Ab}) \\to \\widehat{\\mathcal{C}}$ 的左伴随即逐点自由 ✓。\n\n到层这一层，用「层化 $\\dashv$ 含入」把伴随传下去 ✓：\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) = \\operatorname{Hom}_{\\widehat{\\mathcal{C}}(\\mathbf{Ab})}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) \\cong \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(X,\\ M) = M(X) ✓$$\n\n（$M$ 本身是层，所以在预层那边的 Hom 与层这边的 Hom 一样）。∎\n\n⭐ **用处**：$\\mathbb{Z}\\cdot X$ 是「把一个空间/层当自由生成元看」的装置。\n\nČech 复形就是 $\\check{C}^{\\bullet}(X, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$；\n\n层上同调则是 $H^{n}(X, M) = \\operatorname{Ext}^{n}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M)$ ✓。\n\n⚠️ **一般不是逐点算的**：层化会改动取值，「逐点自由再层化」与「自由」只有在层条件不碍事的时候才重合。\n\n📌 例：$\\mathbb{Z}\\cdot \\mathbf{1} \\cong \\mathbb{Z}$（常层）；$\\mathbb{Z}\\cdot X$ 永远是**投射**对象的候选（它是自由的）。",
+   "notes": "**怎么造。** 先逐点自由化、再层化：把 $X$ 看成预层，取预层 $U \\mapsto \\mathbb{Z}\\cdot X(U)$（逐点自由阿贝尔群），再层化：\n\n$$\\mathbb{Z}\\cdot X \\;:=\\; \\bigl(U \\mapsto \\mathbb{Z}\\cdot X(U)\\bigr)^{\\#}.$$\n\n**为什么这就对。** 预层那一层是逐点的：函子范畴里的伴随逐点造，而 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的遗忘函子有左伴随 $E \\mapsto \\mathbb{Z}\\cdot E$（自由阿贝尔群）✓，于是 $\\widehat{\\mathcal{C}}(\\mathbf{Ab}) \\to \\widehat{\\mathcal{C}}$ 的左伴随即逐点自由 ✓。\n\n到层这一层，用「层化 $\\dashv$ 含入」把伴随传下去 ✓：\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) = \\operatorname{Hom}_{\\widehat{\\mathcal{C}}(\\mathbf{Ab})}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) \\cong \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(X,\\ M) = M(X) ✓$$\n\n（$M$ 本身是层，所以在预层那边的 Hom 与层这边的 Hom 一样）。∎\n\n⭐ **用处**：$\\mathbb{Z}\\cdot X$ 是「把一个空间/层当自由生成元看」的装置。\n\nČech 复形就是 $\\check{C}^{\\bullet}(X, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$；\n\n层上同调则是 $H^{n}(X, M) = \\operatorname{Ext}^{n}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M)$ ✓。\n\n⚠️ **一般不是逐点算的**：层化会改动取值，「逐点自由再层化」与「自由」只有在层条件不碍事的时候才重合。\n\n📌 例：$\\mathbb{Z}\\cdot \\mathbf{1} \\cong \\mathbb{Z}$（常层）。⚠️ 但它**不是**投射对象：层范畴里 $\\operatorname{Hom}(\\mathbb{Z}\\cdot X, -) \\cong M(X)$ 只左正合，「自由 $\\implies$ 投射」只在**预层**范畴成立（`prop.presheaf-free-projective`）。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 5.18, Exercise 5.24"
    ]
@@ -71640,7 +71643,7 @@
    ],
    "target": "prop.pd-vanishing",
    "title": "维数转移 + 一阶扩展的分类 $\\implies$ 投射维数的消失刻画",
-   "proof": "$(1) \\implies (3)$：长度 $n$ 的投射消解在 $k > n$ 处为零，于是 $\\operatorname{Hom}(P_{\\bullet}, N)$ 在 $k > n$ 处为零，上同调为零 ✓。\n$(3) \\implies (4)$：取 $k = n+1$ ✓。\n$(4) \\implies (1)$：由维数转移连用 $n$ 次，$\\operatorname{Ext}^{n+1}_{R}(M, N) \\cong \\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, N)$ ✓（这里用到「用投射消解算与用内射消解算给出同一个群」，即两种算法一致，所以维数转移的两个方向都可靠）。\n条件 (4) 于是说的是 $\\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, -)$ 恒为零。\n\n若 $\\Omega^{n}M$ 不投射，取自由模盖住它得 $0 \\to L \\to F \\to \\Omega^{n}M \\to 0$，它不分裂，由「一阶扩展的分类」这条路对应 $\\operatorname{Ext}^{1}(\\Omega^{n}M, L)$ 里的**非零**类，矛盾 ✓。\n\n故 $\\Omega^{n}M$ 投射，即 (1) ✓。\n$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎",
+   "proof": "$(1) \\implies (3)$：长度 $n$ 的投射消解在 $k > n$ 处为零，于是 $\\operatorname{Hom}(P_{\\bullet}, N)$ 在 $k > n$ 处为零，上同调为零 ✓。\n$(3) \\implies (4)$：取 $k = n+1$ ✓。\n$(4) \\implies (1)$：由维数转移连用 $n$ 次，$\\operatorname{Ext}^{n+1}_{R}(M, N) \\cong \\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, N)$ ✓（这里用到「用投射消解算与用内射消解算给出同一个群」，即两种算法一致，所以维数转移的两个方向都可靠）。\n条件 (4) 于是说的是 $\\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, -)$ 恒为零。\n\n若 $\\Omega^{n}M$ 不投射，取自由模盖住它得 $0 \\to L \\to F \\to \\Omega^{n}M \\to 0$，它不分裂，由「一阶扩展的分类」这条路对应 $\\operatorname{Ext}^{1}(\\Omega^{n}M, L)$ 里的**非零**类，矛盾 ✓。\n\n故 $\\Omega^{n}M$ 投射，即 (1) ✓。\n$(1) \\iff (2)$：固定一条消解时是定义重述；换成另一条消解要用 Schanuel 引理（合冲稳定性）才能把「第 $n$ 合冲投射」说成与消解无关 ✓。∎",
    "note": ""
   },
   {
@@ -86997,8 +87000,8 @@
     "thm.filtered-complex-spectral"
    ],
    "target": "prop.bicomplex-spectral",
-   "title": "下有界过滤复形给出谱序列 $\\implies$ 双复形给出谱序列",
-   "proof": "在全复形 $K^{n} = \\bigoplus_{p+q=n} K^{p,q}$ 上取**逐列过滤**\n$$F^{p}K^{n} \\;:=\\; \\bigoplus_{i+j=n,\\ i \\ge p} K^{i,j}$$\n（$p$ 越大剩下的越少，所以这是**递降**过滤）✓。\n**下有界性**：$p \\le$ 两个方向的下界时 $F^{p}K^{n} = K^{n}$ ✓，于是这个过滤下有界，可以套「下有界过滤复形给出谱序列」✓。\n**识别第 $0$ 页**：$\\operatorname{Gr}^{p}K^{p+q} = F^{p}K^{p+q}/F^{p+1}K^{p+q} = K^{p,q}$ ✓，所以 $E^{0}_{p,q} = K^{p,q}$ ✓。\n**收敛**：那条定理直接给出 $E^{0}_{p,q} \\implies H^{p+q}(K^{\\bullet})$ ✓。∎",
+   "title": "两侧有界过滤复形给出谱序列 $\\implies$ 双复形给出谱序列",
+   "proof": "在全复形 $K^{n} = \\bigoplus_{p+q=n} K^{p,q}$ 上取**逐列过滤**\n$$F^{p}K^{n} \\;:=\\; \\bigoplus_{i+j=n,\\ i \\ge p} K^{i,j}$$\n（$p$ 越大剩下的越少，所以这是**递降**过滤）✓。\n**两侧有界**：$p$ 小于两个方向的下界时 $F^{p}K^{n} = K^{n}$、大于上界时 $F^{p}K^{n} = 0$ ✓，于是这个过滤两侧有界，可以套「两侧有界过滤复形给出谱序列」✓。\n**识别第 $0$ 页**：$\\operatorname{Gr}^{p}K^{p+q} = F^{p}K^{p+q}/F^{p+1}K^{p+q} = K^{p,q}$ ✓，所以 $E^{0}_{p,q} = K^{p,q}$ ✓。\n**收敛**：那条定理直接给出 $E^{0}_{p,q} \\implies H^{p+q}(K^{\\bullet})$ ✓。∎",
    "note": ""
   },
   {
@@ -87337,7 +87340,7 @@
     "thm.filtered-complex-spectral"
    ],
    "target": "prop.filtered-first-page",
-   "title": "下有界过滤复形给出谱序列 $\\implies$ 第一页是分次片的同调",
+   "title": "两侧有界过滤复形给出谱序列 $\\implies$ 第一页是分次片的同调",
    "proof": "那条定理给出 $E^{0}_{p,q} = \\operatorname{Gr}^{p}K^{p+q}$ ✓，而第 $0$ 页的微分正是过滤商上诱导的微分 ✓；取同调即得 $E^{1}_{p,q} = H^{p+q}(\\operatorname{Gr}^{p}K^{\\bullet})$ ✓。∎",
    "note": ""
   },
