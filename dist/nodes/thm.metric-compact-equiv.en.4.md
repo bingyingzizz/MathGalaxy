@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=thm.metric-compact-equiv)　·　[Chinese page (authoritative)](./thm.metric-compact-equiv.md)
 
-## Notes · **reviewed**
+## Notes · **stale**
 The whole logical skeleton is in the arrows (click an arrow to see its proof):
 
 - compact $\implies$ sequentially compact

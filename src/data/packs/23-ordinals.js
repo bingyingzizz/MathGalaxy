@@ -166,7 +166,7 @@ window.MG = window.MG || {};
       notes: [
         '证明只有一行：若 $\\mathrm{On}$ 是集合，则它是**传递的**（序数的元素还是序数），$\\in$ 在它上面是**良序**（三歧性给出可比性），于是 $\\mathrm{On}$ 本身就是一个序数，从而 $\\mathrm{On} \\in \\mathrm{On}$ —— 与序数不能自属矛盾（$\\in$ 在序数上是良序，不允许 $\\in$-循环）。',
         '⭐ 这正是 **Hartogs 定理**的另一面：序数多到装不进任何集合。「存在不能单射进 $X$ 的序数」与「序数全体不构成集合」说的是同一件事。',
-        '⚠ 与 Russell 悖论的关系：两者都是「把某个『全体』当成集合」引起的矛盾。在 ZFC 里它们的解决方式也一样 —— 那个「全体」不是集合，不是集合，因此分离公理模式根本无从下手。'
+        '⚠ 与 Russell 悖论的关系：两者都是「把某个『全体』当成集合」引起的矛盾。在 ZFC 里它们的解决方式也一样 —— 那个「全体」不是集合，因此分离公理模式根本无从下手。'
       ].join('\n\n'),
       refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.2']
     }
@@ -229,7 +229,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.recursion-wellorder',
       kind: 'implication',
-      sources: ['def.wellorder'],
+      sources: ['def.wellorder', 'ax.repl', 'ax.sep'],
       target: 'thm.recursion-wellorder',
       title: '良序性 $\\implies$ 递归定理',
       proof: [
@@ -245,7 +245,7 @@ window.MG = window.MG || {};
         '',
         '$$R = \\{ (w, y) : \\text{存在函数} f \\text{ 定义在} W_{< w} \\text{ 上、满足递归式，且} y = G(f) \\}$$',
         '',
-        '它是集合：候选的 $f$ 都是 $W_{< w} \\times V$ 的子集，先由幂集公理拿到 $\\mathcal{P}(W \\times V)$，再用分离公理模式从里面筛出满足条件的那些（$V$ 取一个足够大的集合即可，例如 $G$ 的值域之并的幂集的幂集）。\n\n由 ①，对每个 $w$ 至多一个 $y$，所以 $R$ **是单值的**，即 $R$ 是一个函数。',
+        '由 ①，对每个 $w \\in W$ 至多一个 $y$ 使 $(w, y) \\in R$，所以 $R$ **是单值的**。\n\n**$R$ 是集合。** 对固定 $w$ 考察公式 $\\varphi(w, y)$：「存在 $f$ 定义在 $W_{< w}$ 上、满足递归式，且 $y = G(f)$」。先用分离公理模式把 $W$ 缩到 $W^{\\prime} = \\{w \\in W : \\exists y\\,\\varphi(w, y)\\}$，再对 $W^{\\prime}$ 用**替换公理模式**（$\\varphi$ 在 $W^{\\prime}$ 上单值，正是 ① 保证的）得 $Y = \\{y : \\exists w \\in W,\\ (w, y) \\in R\\}$ 是集合 —— 这一步**不需要**「$G$ 的值域」是集合（$G$ 可以是真类函数，它的「值域」根本取不到），替换公理模式正是为这种逐点收集准备的；最后用分离公理模式从 $W \\times Y$ 中筛出 $R$。',
         '',
         '**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \\notin \\operatorname{dom}\\, R$。\n\n则 $W_{< w} \\subseteq \\operatorname{dom}\\, R$，于是 $f := R \\upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \\prec w$，由 $v \\in \\operatorname{dom}\\, R$ 及单值性得 $f(v) = G(f \\upharpoonright W_{< v})$）。\n\n于是 $(w, G(f)) \\in R$，与 $w \\notin \\operatorname{dom}\\, R$ 矛盾。',
         '',
@@ -253,7 +253,7 @@ window.MG = window.MG || {};
         '',
         '**④ 超限归纳。** 设 $W \\setminus S$ 非空，取它的最小元 $w$。则 $W_{< w} \\subseteq S$，由假设 $w \\in S$，矛盾。故 $S = W$。∎'
       ].join('\n'),
-      note: '① 是唯一性、②③ 是存在性。整个证明里**只用**了良序性、幂集公理和分离公理模式 —— 没有用到选择公理。这是它能在 ZF 里安全使用的原因。'
+      note: '① 是唯一性、②③ 是存在性。整个证明里**只用**了良序性、替换公理模式与分离公理模式 —— 没有用选择公理，也没有用幂集公理。② 对 $G$ 是**真类函数**的情形照样成立：收集 $y = G(f)$ 靠的是替换公理模式，而不是「$G$ 的值域之并的幂集」—— 真类函数没有这个值域。'
     },
 
     {

@@ -57,7 +57,7 @@ window.MG = window.MG || {};
         '',
         '$$\\iota : G \\longrightarrow G$$',
         '',
-        '使下方方块交换（$\\iota$ 就是「取逆」），则称 $G$ 是 $\\mathcal{C}$ 里的**群对象**：',
+        '使下方方块交换、**且两条复合都等于** $G \\xrightarrow{!_G} 1 \\xrightarrow{\\varepsilon} G$（$!_G$ 到终对象唯一、$\\varepsilon$ 是幺元），则称 $G$ 是 $\\mathcal{C}$ 里的**群对象**：',
         '',
         '$$\\begin{array}{ccc} G & \\xrightarrow{\\;(\\iota,\\ \\mathrm{id})\\;} & G \\times G \\\\[2pt] {\\scriptstyle (\\mathrm{id},\\ \\iota)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle \\mu} \\\\[2pt] G \\times G & \\xrightarrow[\\;\\mu\\;]{} & G \\end{array}$$',
         '',

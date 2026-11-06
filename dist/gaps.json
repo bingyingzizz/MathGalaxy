@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T04:59:23.670Z",
+ "generated": "2026-11-06T07:22:07.260Z",
  "terms": 76,
  "missing": [
   {
@@ -347,9 +347,10 @@
  ],
  "noEdge": [],
  "noEdgeAll": 37,
- "noEdgeOk": 38,
+ "noEdgeOk": 39,
  "noEdgeOkStale": [
-  "def.bundle-section>def.differential-form"
+  "def.bundle-section>def.differential-form",
+  "def.injective-dimension>def.projective-dimension"
  ],
  "never": [
   "换底公式",

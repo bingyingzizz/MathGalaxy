@@ -22,11 +22,11 @@
 
 **这不是 wiki，不是博客。** 它是一张星空。
 
-### 实测状态（2026-11-05，`bun tools/mg.mjs stat`）
+### 实测状态（2026-11-06，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1540 节点 / 3164 边 · maxLayer 38
-强边 3125 · 弱边（类比）39 · 推论（layer:false）33
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1540 节点 / 3167 边 · maxLayer 38
+强边 3128 · 弱边（类比）39 · 推论（layer:false）33
 英文页 1536 · 别名 1346 组 · 问法钩子 217 条
 ```
 
@@ -35,19 +35,19 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean，`## main...origin/main`（已推齐） |
+| 工作树 | clean，本地 `main` ahead 6（未 push；origin 仍停在 `0d20279a`） |
 
-### 六道门 · 我 2026-11-05 全跑过
+### 六道门 · 我 2026-11-06 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿，工作树零 diff |
-| `bun tools/_katexcheck.mjs` | ✅ **2812 个 `$$…$$`，失败 0**（FIX-005 删 #13 错不等式、FIX-009 删 def.normed-space 重复公理、FIX-011 删 `P^*AP` 块 ⇒ 2815→2814→2813→2812） |
+| `bun tools/build.mjs` | ✅ 全绿（1540 节点 / 3167 边，所有页 ≤1300 B） |
+| `bun tools/_katexcheck.mjs` | ✅ **2825 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 12/12 |
-| `bun tools/searchcheck.mjs` | ✅ **31/31** —— 2026-11-05 补了 2 条「带空格」基准，§4.1 那个 bug 本身也被钉住了 |
+| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按 FIX-028 重钉为 883） |
 | `bun tools/_slashcheck.mjs` | ✅ 0 处 |
-| `bun _tools/_ctrlscan.mjs` | ❌ **5 处控制字符仍在**（§4.5） |
+| `bun _tools/_ctrlscan.mjs` | ✅ 0 处（2026-11-06 复跑；§4.5 的 5 处已在后续修复中清掉） |
 
 ---
 
@@ -429,7 +429,7 @@
 |---|---|---|
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
-| 精读覆盖率 | 已 **1051 / 1540（68.2%）**（v2 §39–§72） | 还剩 489 条没逐条精读 |
+| 精读覆盖率 | **回执 1540 / 1540（100%）**；本会话逐团深读 **57 团 / 760 条**（v2 §39–§103） | 其余 48 团 / 780 条来自 §19–§59 早期批次；旧的 1051/1502/1527 是按团 id 倒推的估计，不再用 |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门
@@ -591,7 +591,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 |---|---|
 | **本交接书** | `H:\MathGalaxy\HANDOVER.md`（本文件，唯一） |
 | **仓库规矩**（进目录自动注入） | `H:\MathGalaxy\AGENTS.md` |
-| **审读报告真源**（8886 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§59 各批 |
+| **审读报告真源**（11673 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§104 各批 |
 | 审读回执 | `_audit/_proofs/out-*.txt`（`P-*.txt` 是对应提示词） |
 | 用户手写笔记原件 | `_pdf/`（167 MB）· 转写 `_pdf/凝聚态数学笔记-转写.md` |
 | 散文式规则 | `CONTRIBUTING.md`（人看的）· `README.md` · `policy.md` |
@@ -640,4 +640,4 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 
 ---
 
-**最后更新**：2026-11-05 · 与任何旧交接文档冲突时以本文件为准
+**最后更新**：2026-11-06 · 与任何旧交接文档冲突时以本文件为准

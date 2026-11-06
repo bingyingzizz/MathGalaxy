@@ -60,7 +60,8 @@ MG.gaps = {
     { node: 'prop.cg-kclosed-quotient', def: 'def.quotient-vs', why: '**同名不同物**：这里是拓扑的**商空间**（$k$-闭商），那个节点是向量空间的商 $V/U$。' },
     { node: 'def.separable-extension', def: 'def.minimal-poly', why: '**同名不同物**：可分扩张里的「极小多项式」是**代数元**的（`def.algebraic-element`，已连），不是**算子**的 `def.minimal-poly`（$\\mu_{T}$）。' },
     { node: 'prop.tensor-functor-properties', def: 'def.tensor-product-vs', why: '**同名不同物**：本命题讲的是**模**的张量积（`def.tensor-module`，已连），不是向量空间的张量积。' },
-    { node: 'ex.ab-of-categories', def: 'def.lie-group', why: '例子行「Ab(Manifold) = 阿贝尔 Lie 群」是**列答案**，不是依赖。' }
+    { node: 'ex.ab-of-categories', def: 'def.lie-group', why: '例子行「Ab(Manifold) = 阿贝尔 Lie 群」是**列答案**，不是依赖。' },
+    { node: 'def.injective-dimension', def: 'def.projective-dimension', why: '陈述用的是平坦维数 fd（图里还没有 `def.flat-dimension`）；pd 只是对偶侧的类比，不是定义依赖 —— 陈述里提到 pd 的那句恰好是「不能写成 pd」的反例。' }
   ],
   /* C3 白名单（2026-11-04）：`dist/gaps.md` 第二节里判为「不是缺边」的那些。
      判据只有三种：顺带/对照式提及、同名不同物、以及「加上会成环」。

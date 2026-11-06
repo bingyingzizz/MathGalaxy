@@ -10,10 +10,10 @@
 - **6 / 6** `prop.quasi-compact-properties` 拟紧的性质 · layer 18 · 拓扑斯
 - **6 / 6** `def.form-on-manifold` 微分形式 · layer 21 · 微分形式、积分与 de Rham
 - **6 / 6** `thm.radical-solvable` 根式可解 与 伽罗瓦群可解 · layer 21 · Galois 理论
+- **6 / 6** `thm.schur-triangularization` Schur 三角化 · layer 29 · 内积空间与正交性
 - **6 / 6** `def.submanifold-volume` 诱导体积 · layer 31 · 微分形式、积分与 de Rham
 - **6 / 6** `thm.gauss-bonnet` Gauss–Bonnet 定理 · layer 33 · 内蕴几何
 - **6 / 6** `def.euler-class` Euler 类 · layer 38 · 流形与向量丛
 - **6 / 5** `lem.zorn` Zorn 引理 · layer 8 · 选择原理
-- **6 / 5** `prop.paracompact-partition-unity` 仿紧性与单位分解 · layer 17 · 仿紧与单位分解
 
 > 续见 hubs/big.2.md

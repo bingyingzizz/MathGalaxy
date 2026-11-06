@@ -31,7 +31,7 @@
 - **18 / 18** `def.cochain-complex` 上链复形 · layer 11 · 复形与导出三角
 - **18 / 18** `def.sheaf-cohomology` 层上同调 · layer 17 · 层上同调
 
-（共 947 个节点有非零计数；这里列前 20 条。）
+（共 948 个节点有非零计数；这里列前 20 条。）
 
 ## 综合结论榜
 
@@ -45,6 +45,7 @@
 - **6 / 6** `prop.quasi-compact-properties` 拟紧的性质 · layer 18 · 拓扑斯
 - **6 / 6** `def.form-on-manifold` 微分形式 · layer 21 · 微分形式、积分与 de Rham
 - **6 / 6** `thm.radical-solvable` 根式可解 与 伽罗瓦群可解 · layer 21 · Galois 理论
+- **6 / 6** `thm.schur-triangularization` Schur 三角化 · layer 29 · 内积空间与正交性
 - **6 / 6** `def.submanifold-volume` 诱导体积 · layer 31 · 微分形式、积分与 de Rham
 - **6 / 6** `thm.gauss-bonnet` Gauss–Bonnet 定理 · layer 33 · 内蕴几何
 - **6 / 6** `def.euler-class` Euler 类 · layer 38 · 流形与向量丛
@@ -56,7 +57,6 @@
 - **5 / 6** `def.tangent-bundle` 切丛 · layer 21 · 流形与向量丛
 - **5 / 6** `def.tensor-field` 张量场 · layer 23 · 向量场与 Lie 结构
 - **5 / 6** `thm.de-rham` de Rham 定理 · layer 31 · 微分形式、积分与 de Rham
-- **5 / 5** `def.smooth-manifold` 光滑流形 · layer 9 · 内蕴几何
 
 （共 1533 个节点有非零计数；这里列前 20 条。）
 
@@ -85,5 +85,5 @@
 - **8 团 / 21 节点** `def.chaus` 紧 Hausdorff 空间范畴 · layer 17 · 紧 Hausdorff 空间
 - **8 团 / 19 节点** `def.integrable` 可积 / L¹ · layer 21 · 积分
 
-（共 947 个节点有非零计数；这里列前 20 条。）
+（共 948 个节点有非零计数；这里列前 20 条。）
 

@@ -124,7 +124,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '幺半群对象', '群对象', '环对象', '保有限积'],
       statement: [
-        '若 $F : \\mathcal{C} \\to \\mathcal{D}$ **保有限积**（含终对象），则它把',
+        '若 $F : \\mathcal{C} \\to \\mathcal{D}$ **保有限积**（含终对象），则',
         '',
         '$F$ 把**幺半群对象**送到幺半群对象、**群对象**送到群对象、**环对象**送到环对象。',
         '',

@@ -359,7 +359,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**证明。** $(-)^{\\mathrm{disc}}$ 是遗忘函子的**左伴随** ✓，左伴随保余极限、特别地保直和 ✓。∎',
-        '⚠️ 对**积**不成立：$(-)^{\\mathrm{disc}}$ 是左伴随，一般不保积 —— 这正是「离散化会把无限直积换成直和」的那件事。'
+        '⚠️ 对**积**不成立：$(-)^{\\mathrm{disc}}$ 是左伴随，一般不保积。但差**不是**「直积换成直和」：$\\prod_i M_i^{\\mathrm{disc}}$ 严格大于 $(\\prod_i M_i)^{\\mathrm{disc}}$，多出来的是「**各坐标分别局部常值、但联合不局部常值**」的族。例：$S$ 取 Cantor 集、$M_i = \\mathbb{Z}/2$ —— 每个坐标函数 $S \\to M_i$ 都局部常值，而「逐位取值」的联合映射 $S \\to \\prod_i M_i$ 不局部常值：左边有、右边没有。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 6.3']
     },
@@ -379,7 +379,7 @@ window.MG = window.MG || {};
         '$$\\underline{M/N} \\;\\cong\\; \\underline{M}\\big/\\underline{N}.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 正合列 $0 \\to N \\to M \\to M/N \\to 0$ 里，$N$ 闭保证 $M/N$ 是 Hausdorff 的局部紧群 ✓；而「拓扑阿贝尔群 $\\mapsto$ 凝聚态阿贝尔群」是**保所有极限**的函子 ✓，它把商的余核送到余核 ✓。于是拓扑意义下的商与凝聚态意义下的商对上 ✓。∎',
+        '**证明（思路）。** 正合列 $0 \\to N \\to M \\to M/N \\to 0$ 里，$N$ 闭保证 $M/N$ 是 Hausdorff 的局部紧群 ✓。\n\n要证 $\\underline{M}/\\underline{N} \\cong \\underline{M/N}$。⚠️ 不能写「保极限 $\\implies$ 送余核」——保极限只给**核**。正确两步：\n\n① CondAb 的余核 = 「逐点商」预层 $U \\mapsto \\underline{M}(U)/\\underline{N}(U)$ 的**层化**；\n\n② 层化后与常层 $\\underline{M/N}$ 一致 —— 这一步不能靠普适的范畴论证，而是 LCA 群的一条标准事实：闭子群嵌入 $N \\hookrightarrow M$ 在凝聚态阿贝尔群里仍给出短正合列 $0 \\to \\underline{N} \\to \\underline{M} \\to \\underline{M/N} \\to 0$（Clausen–Scholze《Lectures on Condensed Mathematics》Lecture 3：$\\mathrm{LCA} \\hookrightarrow \\mathrm{Cond(Ab)}$ 全忠实且正合）；等价地说，层化把「逐点商」预层补成 $C(S, M/N)$。**本图不展开层化的计算**，完整论证见 Le Stum, Exercise 6.5 ✓。\n\n拼起来即得同构 ✓。∎',
         '📌 用处：算凝聚态阿贝尔群时，**可以先在拓扑这一侧把商算好再离散化**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 6.5']

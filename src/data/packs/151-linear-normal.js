@@ -246,7 +246,6 @@ window.MG = window.MG || {};
       id: 'thm.schur-triangularization',
       cluster: 'algebra.inner',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Schur 三角化',
       title: 'Schur 三角化：任何复方阵都酉相似于上三角',
       regions: ['algebra'],
@@ -265,7 +264,19 @@ window.MG = window.MG || {};
         '**特例**：$A$ 正规时 $T$ 必是对角阵 —— 这就是谱定理（`thm.spectral-matrix`）。'
       ].join('\n'),
       notes: [
-        '**证明骨架**：对 $n$ 归纳。\n\n取特征向量 $x$（$\\lVert x\\rVert = 1$），补成标准正交基 $U_{1} = (x, \\ldots)$，则 $U_{1}^{*}AU_{1} = \\begin{pmatrix} \\lambda & * \\\\ 0 & A_{1}\\end{pmatrix}$；\n\n对 $A_{1}$ 用归纳假设，再拼回去。\n\n**关键**是「补成标准正交基」这一步 —— 它保证变换是酉的，从而是稳定的。',
+        '**证明**（对 $n$ 归纳）。$n = 1$ 时取 $U = (1)$ 即可。设 $n \\ge 2$。',
+        '',
+        '**取特征向量**：特征多项式 $\\chi_{A}(t) = \\det(tI - A)$ 是 $n$ 次复系数多项式，由**代数基本定理**它有根 $\\lambda$；于是存在 $0 \\ne x \\in \\mathbb{C}^{n}$ 使 $Ax = \\lambda x$。把 $x$ 单位化，仍记 $x$，$\\lVert x\\rVert = 1$。',
+        '',
+        '**补成标准正交基**：由 **Gram–Schmidt**，把 $x$ 扩充为 $\\mathbb{C}^{n}$ 的标准正交基 $u_{1} = x, u_{2}, \\ldots, u_{n}$。令 $U_{1} := (u_{1}, \\ldots, u_{n})$（以它们为列），则 $U_{1}$ 是酉矩阵，且 $U_{1}^{*}u_{j} = e_{j}$。于是 $U_{1}^{*}AU_{1}$ 的第一列是 $U_{1}^{*}Ax = \\lambda U_{1}^{*}x = \\lambda e_{1}$：它的形状是「左上角 $\\lambda$、左下角全 $0$、右下角一个 $(n-1)$ 阶块 $A_{1}$、右上角某个行向量 $w^{*}$」。',
+        '',
+        '**归纳**：对 $A_{1}$ 用归纳假设，存在 $(n-1)$ 阶酉矩阵 $V$ 使 $V^{*}A_{1}V = T_{1}$ 为上三角。令 $U_{2} := \\operatorname{diag}(1, V)$、$U := U_{1}U_{2}$。$U_{2}$ 酉（分块对角，两块都酉），故 $U$ 酉；把 $U_{2}$ 从左右两侧作用到 $U_{1}^{*}AU_{1}$ 上，左上角 $\\lambda$ 不变、右上角变成 $w^{*}V$、左下角仍是 $0$、右下角变成 $V^{*}A_{1}V = T_{1}$ —— 所以 $U^{*}AU$ 是上三角 ✓。',
+        '',
+        '**对角元是特征值**：$U^{*}AU$ 与 $A$ 相似，故特征多项式相同；分块上三角矩阵（左上 $\\lambda$、右下 $A_{1}$、左下 $0$）的特征多项式是 $(t - \\lambda)\\chi_{A_{1}}(t)$，所以 $U^{*}AU$ 的对角元全体作为多重集恰是 $\\operatorname{spec}(A)$ —— 其中 $T_{1}$ 的对角元是 $A_{1}$ 的特征值（归纳假设），而 $\\operatorname{spec}(A) = \\{\\lambda\\} \\cup \\operatorname{spec}(A_{1})$。',
+        '',
+        '**按指定次序排列**：每一步先取指定次序中最靠前的那个尚未安排的特征值 $\\lambda$（它在 $\\operatorname{spec}(A)$ 中，故有特征向量），对 $A_{1}$ 归纳时用指定次序在 $A_{1}$ 上诱导的次序。于是对角元的次序可以事先指定 ✓。',
+        '',
+        '**实情形的注**：非实复特征值成对共轭出现，取实部与虚部得到不变 2 维实子空间，同样的归纳给出实 Schur 形（对角块 $1\\times 1$ 或 $2\\times 2$），这里不展开。∎',
         '⭐ **为什么它比 Jordan 标准形更常用**：Jordan 形用任意相似（$P^{-1}AP$），理论上漂亮但 $P$ 可能病态到无法计算；Schur 用酉相似（$U^{*}AU$），条件数永远是 1。所以**数值线性代数一律用 Schur，不用 Jordan**。',
         '**它给出谱定理的捷径**：若 $A$ 正规且 $U^{*}AU = T$ 上三角，则 $T$ 也正规；而上三角且正规 $\\implies$ 必是对角阵（比较 $(TT^{*})_{11}$ 的两边即得第一行除对角元外全零，再归纳）。',
         '⚠️ 实情形**不能**做成实对角/实三角到「只有 $1\\times1$ 块」的程度：旋转 $90^\\circ$ 那个例子说明 $2\\times 2$ 块躲不掉。'
@@ -430,7 +441,6 @@ window.MG = window.MG || {};
       id: 'thm.courant-fischer',
       cluster: 'algebra.inner',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Courant–Fischer 极小极大原理',
       title: 'Courant–Fischer：第 $k$ 个特征值的变分刻画',
       regions: ['algebra'],
@@ -447,7 +457,21 @@ window.MG = window.MG || {};
         '**推论（Weyl 单调性）**：若 $A \\le B$（即 $B - A$ 半正定），则 $\\lambda_{k}(A) \\le \\lambda_{k}(B)$ 对每个 $k$ 成立。'
       ].join('\n'),
       notes: [
-        '**证明骨架（一侧）**：取 $S_{0} = \\operatorname{span}(u_{1},\\ldots,u_{k})$（前 $k$ 个特征向量），在它上面 $\\min R_A = \\lambda_k$ 取到于 $u_k$，于是「$\\max$ 至少是 $\\lambda_k$」。\n\n另一侧：任取 $\\dim S = k$，它与 $\\operatorname{span}(u_k, \\ldots, u_n)$ 的维数和 $> n$，必有交，取交里的单位向量即得 $\\min_{S} R_A \\le \\lambda_k$。\n\n两个不等式合起来就是等号。',
+        '**证明**（谱定理 + 子空间维数计数）。由谱定理，存在 $\\mathbb{C}^{n}$ 的标准正交基 $u_{1}, \\ldots, u_{n}$ 与实数 $\\lambda_{1} \\ge \\cdots \\ge \\lambda_{n}$ 使 $Au_{i} = \\lambda_{i}u_{i}$。对 $x = \\sum_{i} c_{i}u_{i} \\ne 0$，',
+        '',
+        '$$R_{A}(x) = \\frac{\\langle Ax, x\\rangle}{\\langle x, x\\rangle} = \\frac{\\sum_{i} \\lambda_{i}|c_{i}|^{2}}{\\sum_{i} |c_{i}|^{2}}$$',
+        '',
+        '是 $\\lambda_{1}, \\ldots, \\lambda_{n}$ 的加权平均（权 $|c_{i}|^{2} \\ge 0$ 不全为零）。',
+        '',
+        '**第一等式**。上界：任取 $\\dim S = k$。$S$ 与 $\\operatorname{span}(u_{k}, \\ldots, u_{n})$ 的维数之和是 $k + (n-k+1) = n+1 > n$，故有交，取交中单位向量 $x$；它的 $c_{1} = \\cdots = c_{k-1} = 0$，故 $R_{A}(x)$ 是 $\\lambda_{k}, \\ldots, \\lambda_{n}$ 的加权平均，$\\le \\lambda_{k}$。于是 $\\min_{S} R_{A} \\le \\lambda_{k}$ 对一切 $S$ 成立，取 $\\max$ 得 $\\le \\lambda_{k}$。',
+        '',
+        '下界：取 $S_{0} = \\operatorname{span}(u_{1}, \\ldots, u_{k})$。$S_{0}$ 中的 $x$ 满足 $c_{k+1} = \\cdots = c_{n} = 0$，故 $R_{A}(x)$ 是 $\\lambda_{1}, \\ldots, \\lambda_{k}$ 的加权平均，$\\ge \\lambda_{k}$；取 $x = u_{k}$ 得等号。于是 $\\min_{S_{0}} R_{A} = \\lambda_{k}$，取 $\\max$ 得 $\\ge \\lambda_{k}$。两边合起来即第一等式 ✓。',
+        '',
+        '**第二等式**。上界：任取 $\\dim T = n-k+1$。$T$ 与 $\\operatorname{span}(u_{1}, \\ldots, u_{k})$ 的维数之和 $> n$，故有交，取交中单位向量 $x$；它的 $c_{k+1} = \\cdots = c_{n} = 0$，故 $R_{A}(x) \\ge \\lambda_{k}$，于是 $\\max_{T} R_{A} \\ge \\lambda_{k}$ 对一切 $T$ 成立，取 $\\min$ 得 $\\ge \\lambda_{k}$。',
+        '',
+        '下界：取 $T_{0} = \\operatorname{span}(u_{k}, \\ldots, u_{n})$（维数 $n-k+1$）。$T_{0}$ 中的 $x$ 满足 $c_{1} = \\cdots = c_{k-1} = 0$，故 $R_{A}(x) \\le \\lambda_{k}$，且 $x = u_{k}$ 取等号；于是 $\\max_{T_{0}} R_{A} = \\lambda_{k}$，取 $\\min$ 得 $\\le \\lambda_{k}$。两边合起来即第二等式 ✓。',
+        '',
+        '**Weyl 单调性**：$A \\le B$ 指 $B - A$ 半正定，故对一切 $x \\ne 0$ 有 $R_{A}(x) \\le R_{B}(x)$。于是对每个 $k$，$\\min_{\\dim S = k} R_{A} \\le \\min_{\\dim S = k} R_{B}$（逐点比较），再取 $\\max$ 得 $\\lambda_{k}(A) \\le \\lambda_{k}(B)$ ✓。∎',
         '⭐ **它为什么重要**：把「特征值是方程的根」换成「特征值是某个优化问题的值」，于是特征值有了**连续性**（子空间族是紧的）与**单调性**（Weyl）。扰动理论、数值特征值算法、图谱理论全都建立在这条上。',
         '**与 SVD 的连接**：对 $A^{*}A$ 用这条，就得到奇异值的变分刻画 $\\sigma_k = \\max_{\\dim S=k}\\min_{x\\in S}\\lVert Ax\\rVert/\\lVert x\\rVert$ —— 这是「低秩逼近最优」的严格依据（Eckart–Young）。',
         '⚠️ 前提是 **Hermite**（或实对称）。一般矩阵没有实谱，Rayleigh 商也不是实的，这套不等式不成立；那种情形要用奇异值代替特征值。'
@@ -561,6 +585,45 @@ window.MG = window.MG || {};
       note: '「复正规可酉对角化」的矩阵表述就是这一条。' },
     { id: 'dep.ln-trace-spectral', kind: 'definition',
       definition: 'def.spectral-radius', usedBy: 'def.trace',
-      note: '迹等于特征值之和；谱半径给的是「模最大的那个」，两者从不同角度记账。' }
+      note: '迹等于特征值之和；谱半径给的是「模最大的那个」，两者从不同角度记账。' },
+    /* ---------- 补缺边（FIX-026）：FTA / Gram–Schmidt / 谱定理 → Schur、Courant–Fischer ---------- */
+    {
+      id: 'imp.fa-schur',
+      kind: 'implication',
+      sources: ['thm.fundamental-algebra'],
+      target: 'thm.schur-triangularization',
+      title: '代数基本定理 $\\Longrightarrow$ 复方阵可三角化',
+      proof: [
+        '**① FTA 给特征值**。特征多项式 $\\chi_{A}(t) = \\det(tI - A)$ 是 $n$ 次复系数多项式，由**代数基本定理**它有根 $\\lambda$；于是 $A - \\lambda I$ 奇异，存在单位向量 $x$ 使 $Ax = \\lambda x$。',
+        '**② 归纳**。在基 $(x, u_{2}, \\ldots, u_{n})$ 下 $A$ 的矩阵是分块上三角：左上角是 $\\lambda$，第一列除它之外全为 $0$（这正是 $Ax = \\lambda x$ 的直接结果），右下角是 $(n-1)$ 阶块 $A_{1}$。对 $(n-1)$ 阶的 $A_{1}$ 用归纳假设 —— 每一步同样要 FTA 保证下一个特征值存在。于是 $A$ 相似于上三角。',
+        '**③ 反过来也对**。若每个复方阵都可三角化，取多项式 $p$ 的友矩阵 $C_{p}$（它的特征多项式就是 $p$）：$C_{p}$ 上三角化后特征多项式是一串一次因子的乘积，故 $p$ 在 $\\mathbb{C}$ 上有根 —— 即 FTA。所以「$\\mathbb{C}$ 代数闭」与「复方阵都可三角化」是同一件事；酉相似（$U^{*}$ 而不只是 $P^{-1}$）另需正交化，见下一条边。∎',
+      ].join('\n\n'),
+    },
+
+    {
+      id: 'imp.gram-schmidt-schur',
+      kind: 'implication',
+      sources: ['thm.gram-schmidt', 'thm.fundamental-algebra'],
+      target: 'thm.schur-triangularization',
+      title: 'Gram–Schmidt $\\Longrightarrow$ 酉相似（Schur 的「酉」那一半）',
+      proof: [
+        '**① 每一步都要正交基**。Schur 归纳取单位特征向量 $u_{1} = x$（存在性由**代数基本定理**保证 —— $\\chi_{A}$ 有复根；Gram–Schmidt 只把基**酉化**），再把 $(x, e_{2}, \\ldots, e_{n})$ 用 **Gram–Schmidt** 正交化成酉基 $U_{1} = (u_{1}, \\ldots, u_{n})$；正交性 $u_{1}^{*}u_{j} = 0$（$j \\ge 2$）让 $U_{1}^{*}AU_{1}$ 的左下角整块为零。',
+        '**② 拼起来**。对 $A_{1}$（$u_{1}^{\\perp} \\cong \\mathbb{C}^{n-1}$ 上的压缩）归纳得 $(n-1)$ 阶酉矩阵 $V$，令 $U_{2} = \\operatorname{diag}(1, V)$、$U = U_{1}U_{2}$：两块都酉故 $U$ 酉，于是 $U^{*}AU = T$ 上三角 ✓。',
+        '**③ 为什么非要 GS**。不用正交化只能得到「相似于上三角」（任意基就够，见上一条边），得不到 $U^{-1} = U^{*}$；数值线性代数要 Schur 而不要 Jordan，图的就是这个条件数为 $1$ 的换基。∎',
+      ].join('\n\n'),
+    },
+
+    {
+      id: 'imp.spectral-courant-fischer',
+      kind: 'implication',
+      sources: ['thm.spectral-theorem'],
+      target: 'thm.courant-fischer',
+      title: '谱定理 $\\Longrightarrow$ Courant–Fischer（Rayleigh 商 + 维数计数）',
+      proof: [
+        '**① Rayleigh 商是加权平均**。谱定理给标准正交特征基 $u_{1}, \\ldots, u_{n}$，$Au_{i} = \\lambda_{i}u_{i}$，$\\lambda_{1} \\ge \\cdots \\ge \\lambda_{n}$；对 $x = \\sum c_{i}u_{i} \\ne 0$ 有 $R_{A}(x) = \\sum \\lambda_{i}|c_{i}|^{2} \\big/\\ \\sum |c_{i}|^{2}$，即以 $|c_{i}|^{2}$ 为权的加权平均。',
+        '**② 上界**。任取 $\\dim S = k$：$S$ 与 $\\operatorname{span}(u_{k}, \\ldots, u_{n})$ 的维数之和 $k + (n - k + 1) > n$，故有交，交中非零向量满足 $c_{1} = \\cdots = c_{k-1} = 0$，于是 $R_{A} \\le \\lambda_{k}$；所以 $\\min_{S} R_{A} \\le \\lambda_{k}$ 对一切 $\\dim S = k$ 的 $S$ 成立。',
+        '**③ 下界与取等**。取 $S_{0} = \\operatorname{span}(u_{1}, \\ldots, u_{k})$：其上 $c_{k+1} = \\cdots = c_{n} = 0$，故 $R_{A} \\ge \\lambda_{k}$，且 $x = u_{k}$ 取到等号。两边合起来得 $\\max_{\\dim S = k} \\min_{S} R_{A} = \\lambda_{k}$；把 $S$ 与维数 $n - k + 1$ 的 $T$ 对调（同样靠维数计数）、取 $T_{0} = \\operatorname{span}(u_{k}, \\ldots, u_{n})$ 验证取等，即得第二等式。∎',
+      ].join('\n\n'),
+    },
   ]
 });

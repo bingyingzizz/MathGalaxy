@@ -21,7 +21,7 @@ window.MG = window.MG || {};
       title: '命题：各代数范畴里的自由对象',
       regions: ['category'],
       tags: ['命题', '自由对象', '幺半群', '群', '环', '模'],
-      statement: '「自由」在几个代数范畴里的样子：$\\mathbf{Mon}$ 里是以 $X$ 为生成元的**字幺半群**；$\\mathbf{Gr}$ 里是**字群**（允许消去）；$\\mathbf{Rng}$ 里是非交换多项式环；\n\n$G\\text{-}\\mathbf{Set}$ 里是 $G$ 本身（正则作用）；\n\n$A\\text{-}\\mathbf{Mod}$ 里是 $A^{(X)}$；\n\n$k\\text{-}\\mathbf{Alg}$ 里是**张量代数**。',
+      statement: '「自由」在几个代数范畴里的样子：$\\mathbf{Mon}$ 里是以 $X$ 为生成元的**字幺半群**；$\\mathbf{Gr}$ 里是**字群**（允许消去）；$\\mathbf{Rng}$ 里是非交换多项式环；\n\n$G\\text{-}\\mathbf{Set}$ 里是 $G \\times X$（**左**正则作用 $g \\cdot (h, x) = (gh, x)$；$X$ 为单点时就退化成 $G$ 本身）；\n\n$A\\text{-}\\mathbf{Mod}$ 里是 $A^{(X)}$；\n\n$k\\text{-}\\mathbf{Alg}$ 里是**张量代数**。',
       notes: '**证明。** 逐条核对自由对象的万有性质 $\\operatorname{Hom}(FX, -) \\cong \\operatorname{Hom}_{\\mathbf{Set}}\\bigl(X, U(-)\\bigr)$ ✓。∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.8']
     },
@@ -73,7 +73,7 @@ window.MG = window.MG || {};
       title: '命题：$\\operatorname{Op}(k\\text{-}\\mathbf{Mod}) \\simeq k[T]\\text{-}\\mathbf{Mod}$',
       regions: ['category'],
       tags: ['命题', '算子', '模', '自同态'],
-      statement: '记 $\\operatorname{Op}(\\mathcal{C}) \\subseteq \\operatorname{Mor}(\\mathcal{C})$ 为由「域 = 余域」的态射组成的**满子范畴**（带算子的对象）。\n\n$k$ 交换时 $\\operatorname{Op}(k\\text{-}\\mathbf{Mod}) \\simeq k[T]\\text{-}\\mathbf{Mod}$。',
+      statement: '记 $\\operatorname{Op}(\\mathcal{C}) \\subseteq \\operatorname{Mor}(\\mathcal{C})$ 为由「**定义域 = 余定义域**」的态射组成的**满子范畴**（带算子的对象）。\n\n$k$ 交换时 $\\operatorname{Op}(k\\text{-}\\mathbf{Mod}) \\simeq k[T]\\text{-}\\mathbf{Mod}$。',
       notes: '**证明。** 「$k$-模 $M$ 带上一个自同态 $T : M \\to M$」与「$k[T]$-模结构」是同一份数据（$T$ 给出 $k[T] \\to \\operatorname{End}(M)$）✓。∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.13']
     },

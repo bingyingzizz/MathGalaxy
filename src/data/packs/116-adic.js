@@ -30,20 +30,20 @@ window.MG = window.MG || {};
       tags: ['定义', '解析几何', 'adic'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1'],
       statement: [
-        '白话：**Huber pair = 一个环 $A$，加上「哪些元素算有界」这个额外指定 $A^+$**。\n\n经典理论里 $A$ 带拓扑、$A^+$ 是它的「单位球」；本图只做**离散**版本 —— $A$ 不带拓扑，「有界」完全由 $A^+$ 这个子环说了算。\n\n它要造的对象是「$A$ 的 adic 谱」，即下一节点那个 $\\operatorname{Spa}$。',
+        '白话：**Huber pair = 环 $A$ + 「哪些元素算有界」的指定 $A^+$**。\n\n经典理论里 $A$ 带拓扑；本图只做**离散**版本 —— 「有界」完全由子环 $A^+$ 说了算。\n\n它要造的是 $A$ 的 adic 谱（即下一节点的 $\\operatorname{Spa}$）。',
         '',
         '一个**离散 Huber pair** 是一对 $(A, A^+)$：',
         '',
-        '- $A$ 是离散环（不带拓扑，见 `def.ring`）；',
-        '- $A^+ \\subseteq A$ 是**整闭**子环（$A$ 中在 $A^+$ 上整的元素仍属于 $A^+$；「整」= 满足一个首一多项式方程，像 $\\sqrt{2}$ 在 $\\mathbb{Z}$ 上整）。',
+        '- $A$ 是离散环（见 `def.ring`）；',
+        '- $A^+ \\subseteq A$ 是**整闭**子环（$A$ 中在 $A^+$ 上整的元素仍属于 $A^+$；「整」= 满足一个首一多项式方程）。',
         '',
-        '它给出一个解析环（解析环是 `def.analytic-ring` 里的东西；这里只需知道它是「$A$ 的完备模版本」）：',
+        '它给出一个解析环（见 `def.analytic-ring`；此处只需知道它「**决定哪些模算完备**」）：',
         '',
         '$$(A, A^+)_\\blacksquare := \\varinjlim_{(B,B^+) \\to (A,A^+)} (B, B^+)_\\blacksquare,$$',
         '',
-        '余极限跑遍所有「$B$ 与 $B^+$ 都有限生成 $\\mathbb{Z}$-代数」的子对 $(B,B^+) \\subseteq (A,A^+)$。'
+        '余极限跑遍所有「$B$ 与 $B^+$ 都有限生成 $\\mathbb{Z}$-代数」的子对 $(B,B^+) \\subseteq (A,A^+)$。这不是循环定义：有限型子对用已知的完备化构造，一般情形按左 Kan 扩张取这条余极限（详见注）。'
       ].join('\n'),
-      notes: '⭐ 为什么需要 $A^+$：解析几何里「有界」不是 $A$ 自带的，要**额外指定**哪些元素算「$\\le 1$」。\n\n$A^+$ 就是「单位球的整数模型」。\n\n⭐ 两个极端：$(A, A)$（「一切都有界」）与 $(A, \\widetilde{\\mathbb{Z}})$（「代数整数才有界」，$\\widetilde{\\mathbb{Z}}$ 是 $\\mathbb{Z}$ 在 $A$ 中的整闭包）。\n\n前者给出概形 $\\operatorname{Spec} A$ 的 adic 化，后者给出「去掉阿基米德部分」的版本。\n\n⚠ 定义里 $A$ 不要求拓扑 —— 这是「离散」二字的含义。\n\n经典 Huber 对允许一般拓扑环，本图只做离散情形（足够覆盖 $\\mathbb{Z}$ 上有限型的算术场景）。'
+      notes: '⭐ 为什么需要 $A^+$：解析几何里「有界」不是 $A$ 自带的，要**额外指定**哪些元素算「$\\le 1$」。\n\n$A^+$ 就是「单位球的整数模型」。\n\n⭐ 两个极端：$(A, A)$（「一切都有界」）与 $(A, \\widetilde{\\mathbb{Z}})$（「代数整数才有界」，$\\widetilde{\\mathbb{Z}}$ 是 $\\mathbb{Z}$ 在 $A$ 中的整闭包）。\n\n前者给出概形 $\\operatorname{Spec} A$ 的 adic 化，后者给出「去掉阿基米德部分」的版本。\n\n⚠ 公式 $\\varinjlim$ 里的 $(B,B^+)_\\blacksquare$ **不是**又在用左边定义：$(B,B^+)$ **有限型**时它由通常的完备化构造直接给出（右边因此不递归）；一般 $(A,A^+)$ 的取值按**左 Kan 扩张**定义为这条余极限 —— 这就是「解析环 = 决定哪些模算完备的结构」的那层意思。\n\n⚠ 定义里 $A$ 不要求拓扑 —— 这是「离散」二字的含义。\n\n经典 Huber 对允许一般拓扑环，本图只做离散情形（足够覆盖 $\\mathbb{Z}$ 上有限型的算术场景）。'
     },
     {
       id: 'def.adic-spectrum',
@@ -74,9 +74,9 @@ window.MG = window.MG || {};
         '',
         '$$U\\!\\left(\\tfrac{g_1, \\ldots, g_n}{f}\\right) := \\bigl\\{\\, x : |g_i(x)| \\le |f(x)| \\ne 0\\ \\forall i\\, \\bigr\\}.$$',
         '',
-        '这些有理开集构成一组基，$\\operatorname{Spa}(A,A^+)$ 是 **spectral space**（谱空间：同胚于某个环的素谱的拓扑空间；等价刻画是「紧、$T_0$、有紧开集作基」）。'
+        '这些有理开集构成一组基，$\\operatorname{Spa}(A,A^+)$ 是 **spectral space**（谱空间：同胚于某环的素谱；等价刻画是「紧、**sober**、紧开集构成基」）。'
       ].join('\n'),
-      notes: '⭐ 赋值满足**强三角不等式** $|x+y| \\le \\max(|x|,|y|)$，这是非阿基米德的标志；换成 $\\le |x| + |y|$ 就是阿基米德的（复几何那一边），那是另一套理论。\n\n⭐ 有理开集是「$|g_i| \\le |f|$」定义的区域 —— 直觉上就是「$g_i/f$ 有界」的 locus。\n\n它们既开又紧（quasicompact），这正是 adic 空间比概形好用的地方：仿射开集自带紧性。\n\n⚠ $\\operatorname{Spa}(A,A^+)$ 一般**不是** Hausdorff 的，它是 spectral（紧、$T_0$、有开集基）。\n\n所以不能拿度量空间的直觉套它。'
+      notes: '⭐ 赋值满足**强三角不等式** $|x+y| \\le \\max(|x|,|y|)$，这是非阿基米德的标志；换成 $\\le |x| + |y|$ 就是阿基米德的（复几何那一边），那是另一套理论。\n\n⭐ 有理开集是「$|g_i| \\le |f|$」定义的区域 —— 直觉上就是「$g_i/f$ 有界」的 locus。\n\n它们既开又紧（quasicompact），这正是 adic 空间比概形好用的地方：仿射开集自带紧性。\n\n⚠ $\\operatorname{Spa}(A,A^+)$ 一般**不是** Hausdorff 的，它是 spectral（紧、**sober**、**紧开集**构成基，且紧开集对有限交封闭）。\n\n所以不能拿度量空间的直觉套它。'
     },
     {
       id: 'prop.huber-subring-recovery',
@@ -90,7 +90,7 @@ window.MG = window.MG || {};
       statement: [
         '白话：**$A^+$ 看着像「额外数据」，其实由谱自己决定** —— 「整闭子环 $A^+$」与「谱里形如 $\\bigcap U_{1,f}$ 的那块子集 $U$」一一对应。所以 $(A,A^+)$ 与「环 $A$ 加上谱里的一块区域」是同一件事，这就是把环论翻译成几何的那一步。',
         '',
-        '记 $\\operatorname{Spv}(A) := \\operatorname{Spa}(A, \\widetilde{\\mathbb{Z}})$ 为 $A$ 上全部赋值等价类（取「最大的」$A^+$，即 $\\mathbb{Z}$ 在 $A$ 中的整闭包，所以什么赋值都不被筛掉）。则',
+        '记 $\\operatorname{Spv}(A) := \\operatorname{Spa}(A, \\widetilde{\\mathbb{Z}})$ 为 $A$ 上全部赋值等价类（取「**最小的**」$A^+$，即 $\\mathbb{Z}$ 在 $A$ 中的整闭包 —— 它含在一切赋值的单位球里；$A^+$ 越小筛得越少，故什么赋值都不被筛掉）。则',
         '',
         '$$A^+ \\longmapsto U = \\operatorname{Spa}(A, A^+) = \\bigcap_{f \\in A^+} U_{1,f} \\subseteq \\operatorname{Spv}(A),$$',
         '',
@@ -100,7 +100,7 @@ window.MG = window.MG || {};
         '',
         '特别地 $A^+ = \\{f \\in A : \\forall x \\in \\operatorname{Spa}(A,A^+),\\ |f(x)| \\le 1\\}$。'
       ].join('\n'),
-      notes: '⭐ 这条说明：**$A^+$ 不是额外数据，而是谱上的「单位球截面」**。\n\n换句话说，$(A,A^+)$ 与「$A$ 加上一个谱的开闭子集」是同一件事 —— 这正是把环论翻译成几何的地方。\n\n⚠ 一般 $A^+$ 不可能是任意子环：必须整闭。\n\n反例：$A = \\mathbb{Z}[T]$、$A^+ = \\mathbb{Z}[T^2]$ 不整闭（$T$ 在 $\\mathbb{Z}[T^2]$ 上整），对应的子集并不是某个 $\\operatorname{Spa}$。\n\n📌 证明用赋值环的存在性（扎里斯基引理）：若 $f \\notin A^+$，在 $A^+[1/f]$ 里取素理想，再取支配它的赋值环，得到 $|f| > 1$ 的点。'
+      notes: '⭐ 这条说明：**$A^+$ 不是额外数据，而是谱上的「单位球截面」**。\n\n换句话说，$(A,A^+)$ 与「$A$ 加上一个谱的开闭子集」是同一件事 —— 这正是把环论翻译成几何的地方。\n\n⚠ 一般 $A^+$ 不可能是任意子环：必须整闭。\n\n反例：$A = \\mathbb{Z}[T]$、$A^+ = \\mathbb{Z}[T^2]$ 不整闭（$T$ 在 $\\mathbb{Z}[T^2]$ 上整），对应的子集并不是某个**整闭**子环的 $\\operatorname{Spa}$（逆映射会把它还原成整闭包 $\\widetilde{\\mathbb{Z}[T^{2}]} \\ne \\mathbb{Z}[T^{2}]$）。\n\n⭐ 为什么它是**最小**的：整闭子环总含 $\\mathbb{Z}\\cdot 1$，故必含 $\\widetilde{\\mathbb{Z}}$（整元素对整闭子环封闭）；而整元素在**一切**赋值下满足 $|a| \\le 1$ —— 若 $|a| > 1$，则 $a^{n} + c_{n-1}a^{n-1} + \\cdots + c_{0} = 0$（$c_{i} \\in \\mathbb{Z}$，故 $|c_{i}| \\le 1$）的左端被 $a^{n}$ 支配，不可能为 $0$。所以它含在一切单位球里，取它时筛掉的点最少。\n\n📌 证明用赋值环的存在性（扎里斯基引理）：若 $f \\notin A^+$，在 $A^+[1/f]$ 里取素理想，再取支配它的赋值环，得到 $|f| > 1$ 的点。'
     },
     {
       id: 'prop.rational-localization',
@@ -181,7 +181,7 @@ window.MG = window.MG || {};
         ,
         '**各方向用到的假设**（局部模型是定义，赋值与概形的比较另有内容）：\n' +
         '- 离散 adic 空间 $\\iff$ 每点有邻域同构于所列三元组模型：两方向是定义展开；同构必须同时保持拓扑、环层和逐点赋值类。\n' +
-        '- 离散 Huber pair $\\implies$ 仿射模型可用于此定义：须先有其结构层及有理局部化的层性质，不能只由写出 $\\operatorname{Spa}$ 符号获得；具体构造条件此处不确定，待核。\n' +
+        '- 离散 Huber pair $\\implies$ 仿射模型可用于此定义：须先有其结构层及有理局部化的层性质，不能只由写出 $\\operatorname{Spa}$ 符号获得。\n' +
         '- 相容的仿射模型 $\\implies$ 整体空间：用开子集上的环层及赋值粘合和重叠同构的余循环条件，并非任意集合粘合都成立。\n' +
         '- 概形映射的赋值环描述 $\\iff$ 相应 adic 点：还要使用赋值的支撑、剩余域及赋值环扩张的比较，属于额外表示结论，不是局部模型定义直接展开；一般三元组也不能因此视为来自概形。\n'
       ].join('\n'),
@@ -204,7 +204,7 @@ window.MG = window.MG || {};
         '',
         '在 $X$ 分离时是**开浸入**；在 $X$ **固有**时是同构。'
       ].join('\n'),
-      notes: '⭐ 这条把「分离 / 固有」翻译成 adic 语言：固有概形的 adic 化与「相对 $R$ 的 adic 化」完全一致，于是后面可以用 $X_{\\mathrm{ad}/R}$ 上的层来计算 $X$ 上的东西。\n\n⭐ 证明就是赋值判据：有限型时局部是开浸入；\n\n点集上的单射 / 双射正是分离 / 固有的赋值判据。\n\n⚠ 反过来不成立：adic 空间比概形多得多（$\\operatorname{Spa}(\\mathbb{Z}_p, \\mathbb{Z}_p)$ 就不是某个概形的 adic 化）。'
+      notes: '⭐ 这条把「分离 / 固有」翻译成 adic 语言：固有概形的 adic 化与「相对 $R$ 的 adic 化」完全一致，于是后面可以用 $X_{\\mathrm{ad}/R}$ 上的层来计算 $X$ 上的东西。\n\n⭐ 证明就是赋值判据：有限型时局部是开浸入；\n\n点集上的单射 / 双射正是分离 / 固有的赋值判据。\n\n⚠ 反过来不成立：adic 空间比概形多得多。但**不能**拿 $\\operatorname{Spa}(\\mathbb{Z}_p, \\mathbb{Z}_p)$ 当反例 —— 它正是 $(\\operatorname{Spec}\\mathbb{Z}_p)_{\\mathrm{ad}}$（本团的离散 adic 化就取 $\\operatorname{Spa}(A,A)$）。要举反例得用 $A^{+} \\ne A$ 的离散对：$\\operatorname{Spa}(\\mathbb{Q}_p, \\mathbb{Z}_p)$ 按本图的定义是**合法**的离散 Huber 对（$A = \\mathbb{Q}_p$ 取离散拓扑、$A^{+} = \\mathbb{Z}_p$ 整闭），但它不是任何概形的 adic 化 —— 概形的（绝对）adic 化在仿射局部是 $(A, A)$，而这里 $A^{+} \\ne A$。'
     },
     {
       id: 'thm.adic-gluing',
@@ -228,7 +228,7 @@ window.MG = window.MG || {};
         '',
         '取同伦范畴得到三角范畴，记作 $D(\\mathcal{O}_{X,\\blacksquare})$。'
       ].join('\n'),
-      notes: '⚠ **为什么必须上 $\\infty$-范畴**：在阿贝尔层面粘不起来 —— 有理开集上的基变换 $-\\otimes_{(A,A^+)_\\blacksquare} (\\mathcal{O}_X(U),\\mathcal{O}_X^+(U))_\\blacksquare$ 不正合。\n\n具体例子：$(A,A^+) = (\\mathbb{F}_p[T], \\mathbb{F}_p)$，取有理开集「$|T| \\le 1$」，此时 $(\\mathcal{O}_X(U),\\mathcal{O}_X^+(U)) = (\\mathbb{F}_p[T], \\mathbb{F}_p[T])$，而单射 $\\mathbb{F}_p[T] \\hookrightarrow \\mathbb{F}_p((T^{-1}))$ 在基变换后变成 $\\mathbb{F}_p[T] \\to 0$。\n\n\\n\\n⭐ 证明思路与概形的 Zariski 下降平行：局部化可交换、局部为零则整体为零；\n\n在导出范畴上把这两条做成粘合数据，再升到 $\\infty$-范畴（同伦之间的同伦要留住）。\n\n\\n\\n📌 原文 Lectures IX–X（pp. 62–70）。'
+      notes: '⚠ **为什么必须上 $\\infty$-范畴**：在阿贝尔层面粘不起来 —— 有理开集上的基变换 $-\\otimes_{(A,A^+)_\\blacksquare} (\\mathcal{O}_X(U),\\mathcal{O}_X^+(U))_\\blacksquare$ 不正合。\n\n具体例子：$(A,A^+) = (\\mathbb{F}_p[T], \\mathbb{F}_p)$，取有理开集「$|T| \\le 1$」，此时 $(\\mathcal{O}_X(U),\\mathcal{O}_X^+(U)) = (\\mathbb{F}_p[T], \\mathbb{F}_p[T])$，而单射 $\\mathbb{F}_p[T] \\hookrightarrow \\mathbb{F}_p((T^{-1}))$ 在基变换后变成 $\\mathbb{F}_p[T] \\to 0$。\n\n⭐ 证明思路与概形的 Zariski 下降平行：局部化可交换、局部为零则整体为零；\n\n在导出范畴上把这两条做成粘合数据，再升到 $\\infty$-范畴（同伦之间的同伦要留住）。\n\n📌 原文 Lectures IX–X（pp. 62–70）。'
     }
   ],
 

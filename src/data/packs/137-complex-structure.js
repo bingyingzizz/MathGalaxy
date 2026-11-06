@@ -603,29 +603,9 @@
           '则存在 $z \\in \\overline{\\mathbb{D}}$ 使 $f(z) = z$。',
       ].join('\n'),
       notes: [
-        '**复分析证明（用绕数）**：反设 $f$ 没有不动点，即 $f(z) \\ne z$ 处处成立。' +
-          '对每个 $z \\in \\overline{\\mathbb{D}}$，从 $f(z)$ 出发沿射线经过 $z$ 打到边界，定义',
-        '',
-        '$$r(z) := f(z) + t(z)\\left(z - f(z)\\right),\\qquad t(z) \\ge 1 \\text{ 由 } |r(z)| = 1 \\text{ 唯一确定}.$$',
-        '',
-          '解一元二次方程可得 $t$ 连续依赖 $z$，且 $z \\in S^{1}$ 时 $r(z) = z$。于是 $r : \\overline{\\mathbb{D}} \\to S^{1}$ 是**收缩**' +
-          '（$r|_{S^{1}} = \\mathrm{id}$）。',
-        '',
-        '现在看闭曲线 $\\gamma(t) := e^{2\\pi i t}$（$t \\in [0,1]$）。一方面 $r \\circ \\gamma$ 的像落在 $S^{1}$ 里，' +
-          '而 $S^{1}$ 上的闭曲线由 $t \\mapsto (r\\circ\\gamma)(t)/|(r\\circ\\gamma)(t)|$ 给出……更干脆地用绕数：$\\gamma$ 绕 $0$ 的绕数是 $1$；\n\n' +
-          '$r \\circ \\gamma$ 与 $\\gamma$ 在 $\\mathbb{C}\\setminus\\{0\\}$ 中同伦（$H(s,t) := r((1-s)\\gamma(t) + s\\, r(\\gamma(t)))$……这个同伦不可用，改用下面的口径）：',
-        '',
-        '⭐ **标准口径**：$r \\circ \\gamma$ 是 $S^{1}$ 上的闭曲线，且 $r$ 把整个圆盘映进 $S^{1}$，' +
-          '故 $r \\circ \\gamma$ 在 $S^{1}$ 内可缩为常值（同伦 $H(s,t) = r((1-s)\\gamma(t))$ 的像始终在 $S^{1}$ 内，' +
-          '而 $S^{1}$ 不是单连通的……）。**这一句需要拓扑输入**，纯复分析的严格版本走的是另一条路：',
-        '',
-        '**改用辐角原理的版本**：若有连续无处为零的 $r : \\overline{\\mathbb{D}} \\to S^{1}$ 且 $r|_{S^{1}} = \\mathrm{id}$，' +
-          '则由 `prop.single-valued-branch`（$\\mathbb{D}$ 单连通），$r$ 有全纯的对数型提升——但 $r$ 只是连续，不是全纯。\n\n' +
-          '所以复分析路线实际证的是**全纯**版本（$f$ 全纯时用 Rouché：$f(z) - z$ 与 $-z$ 在 $|z| = 1$ 上比较，$|f| \\le 1 = |{-z}|$，边界上不能有零点，故 $f - z$ 与 $-z$ 在圆盘内零点数相同，即至少一个）。',
-        '',
-        '⚠️ **诚实标注**：连续版本的 Brouwer 定理**不能**只靠复分析得到 —— 需要拓扑（$S^{1}$ 不是收缩核，' +
-          '即 $\\pi_{1}(S^{1}) = \\mathbb{Z} \\ne 0$）。本图把这条记作「绕数同伦不变性 + $\\pi_1(S^1)\\ne 0$」的推论，' +
-          '证明骨架给到这里，深层输入（基本群）不在本图范围内。全纯版本见下方边上的证明。',
+        '⚠ 连续情形的证明需要拓扑输入：$\\pi_{1}(S^{1}) \\cong \\mathbb{Z}$ —— 等价地，$S^{1}$ 不是 $\\overline{\\mathbb{D}}$ 的收缩核（否则把收缩与含入复合，得 $S^{1}$ 的基本群为 $0$，而它是 $\\mathbb{Z}$）。本图不展开。',
+
+        '全纯情形由边上的证明给出：Rouché（`thm.rouche`）比较 $f - z$ 与 $-z$ 在 $|z| = 1$ 上的行为，得圆盘内恰有（$f$ 的）一个零点 —— 即不动点。',
       ].join('\n'),
       refs: [
         '王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）',
@@ -691,8 +671,11 @@
       notes: [
         '**证明（由 Borsuk–Ulam）**：平面由单位法向 $u \\in S^{2}$ 与偏移 $t \\in \\mathbb{R}$ 决定，记 ' +
           '$P(u, t) := \\{\\, x : \\langle x, u\\rangle = t \\,\\}$。\n\n' +
-          '对固定 $u$，函数 $t \\mapsto \\operatorname{vol}(A_{i} \\cap \\{\\langle x, u\\rangle \\le t\\})$ 连续、从 $0$ 增到 $\\operatorname{vol}(A_{i})$，故存在唯一的 $t_{i}(u)$ 平分 $A_{i}$；\n\n' +
-          '且 $t_{i}(-u) = -t_{i}(u)$（法向反向，平面不变而「正侧」互换）。',
+          '对固定 $u$，函数 $F_{i}(t) := \\operatorname{vol}(A_{i} \\cap \\{\\langle x, u\\rangle \\le t\\})$ 连续、从 $0$ 增到 $\\operatorname{vol}(A_{i})$。$A_{i}$ 有**原子**时 $F_{i}$ 会整段跳，可能**跳过** $\\operatorname{vol}(A_{i})/2$，所以「存在唯一的平面把 $A_{i}$ 平分」不成立；改用中位数：',
+
+        '$$t_{i}(u) := \\inf\\left\\{t : \\operatorname{vol}(A_{i} \\cap \\{\\langle x, u\\rangle \\le t\\}) \\ge \\tfrac{1}{2}\\operatorname{vol}(A_{i})\\right\\},$$',
+
+        '它由 $F_{i}$ 的连续性存在、作为 $\\inf$ 唯一，且 $t_{i}(-u) = -t_{i}(u)$（法向反向，平面不变而「正侧」互换）。\n\n一般可测集用**无原子／光滑**情形逼近：先对 $\\partial A_{i}$ 光滑（或半代数）的情形做，再用体积的连续性取极限。',
         '',
         '于是 $u \\mapsto (t_{1}(u) - t_{3}(u),\\ t_{2}(u) - t_{3}(u)) \\in \\mathbb{R}^{2}$ 是连续映射，' +
           '由 **Borsuk–Ulam**（`thm.borsuk-ulam`），存在 $u$ 使 $f(u) = f(-u) = -f(u)$，即 $f(u) = 0$，' +

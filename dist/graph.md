@@ -1,9 +1,9 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:59:23.670Z
-> 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T07:22:07.260Z
+> 15 星系 / 105 星团 / 1540 节点 / 3167 连线（强边 3128，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
-> ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
+> ⛔ **这是全量 bulk 导出（约 3.8 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
 > 而且同一地址反复抓也只会拿到同样的开头。**要检索请走 `llms.txt` 里的检索协议**：
 > `index.md` → `index/<星团id>.md` → `nodes/<节点id>.md`。
@@ -66,7 +66,7 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 - $\vDash \implies \vdash$（**完备性**，Gödel 1930）：**这才是内容**。经典证明是 Henkin 构造：把一致的理论扩充成**极大一致**理论、对每个存在式加一个见证常元、再用项本身当元素造出项模型。
 
-⚠ **这里的「完备性」与「完备空间 / 完备测度」毫无关系**（那三个是 完备空间 / 完备测度 那一族）—— 同一个中文词的第五个意思，读的时候要认清。
+⚠ **这里的「完备性」与「完备空间 / 完备测度 / 序完备」那一族毫无关系** —— 同一个中文词在不同分支里有不同意思，读的时候要认清。
 
 ⚠ 一阶逻辑的完备性**不**违背 Gödel 不完备性定理：后者说的是「足够强的理论（如 PA/ZFC）里存在既不能证也不能证伪的**句子**」，那是关于**理论**的，不是关于逻辑的。
 
@@ -87,7 +87,7 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 ⭐ **它是「一阶逻辑不能表达有限性」的根据**：让 $\Gamma$ 是「域 + 特征 0 + 有限」的无穷多条，每个有限子集都能在某个有限域里满足，于是整体有模型 —— 一个**无限**的「有限域」。同样地，「自然数标准模型」不能被一阶公理刻画：非标准分析就是这条定理的直接产物。
 
-⚠ **与拓扑的紧致（`def.compact`）只是名字像**：那条说的是「每个开覆盖有有限子覆盖」，这条说的是「有限可满足 $\implies$ 整体可满足」。两者**没有任何边**（要连也只能是类比）。
+⚠ **与拓扑的紧致（`def.compact`）只是名字像**：那条说的是「每个开覆盖有有限子覆盖」，这条说的是「有限可满足 $\implies$ 整体可满足」。两者只连**类比边**，不当作定理依赖。
 
 参考：Enderton, A Mathematical Introduction to Logic, Ch. 2.5；Chang–Keisler, Model Theory
 
@@ -96,7 +96,7 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 **一阶语言** $\mathcal{L}$ 由一张**符号表**给定，符号分两类：
 
-- **逻辑符号**（所有一阶语言共用）：可数多个**变元** $v_{0}, v_{1}, v_{2}, \ldots$；连接词 $\neg$；量词 $\forall$；等号 $=$；括号。
+- **逻辑符号**（所有一阶语言共用）：可数多个**变元** $v_{0}, v_{1}, v_{2}, \ldots$；连接词 $\neg, \wedge$（$\vee, \to$ 为缩写）；量词 $\forall$（$\exists$ 为缩写）；等号 $=$；括号。
 - **非逻辑符号**（每个语言自己的）：**常元符号**、**$n$ 元函数符号**、**$n$ 元关系符号**，每一种都带一个确定的元数 $n$。
 
 由符号表，用三条**语法规则**生成全部的**项**与**公式**：
@@ -107,7 +107,7 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 例：$\mathcal{L} = \{ \in \}$（$\in$ 是一个二元关系符号）就是**集合论的语言** —— ZFC 的全部公理都写在这门语言里。
 
-⭐⭐ **这是星图里唯一的「原始层」对象。** 别的东西都是「由更下面的东西造出来」的，一阶语言不是 —— 它是**写公理用的那门语言**，比 ZFC 本身更原始。
+⭐⭐ **这是星图里唯一「元数学」层面的原始对象**：ZF 的五条公理、空集与本条同处最底层，但只有它不是对象语言的一部分 —— 它是**写公理用的那门语言**，比 ZFC 本身更原始。
 
 所以它跟 ZF 公理同在最底下的几层，**不往上连依赖边**：真要连，「公式」就得先在 ZFC 内部由集合造出来，而那要用 ZFC 的公理，可公理模式本身又需要公式 —— 直接成环。
 
@@ -557,8 +557,7 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 在 ZFC 里「映射就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。
 
 ⚠ 两个容易混的地方：
-- 「$f$ 是映射」不要求 $A$ 上处处有定义；要求了才写 $f : A \to B$（即 $\operatorname{dom} f = A$）。
-
+- 本图把**映射**定义为全定义（$\operatorname{dom} f = A$）：凡写 $f : A \to B$ 都默认全定义；只定义在子集上的叫**部分映射**，本图不单列。
 
 - 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。
 
@@ -1284,7 +1283,7 @@ $$\alpha \in \beta, \qquad \alpha = \beta, \qquad \beta \in \alpha$$
 
 ⭐ 这正是 **Hartogs 定理**的另一面：序数多到装不进任何集合。「存在不能单射进 $X$ 的序数」与「序数全体不构成集合」说的是同一件事。
 
-⚠ 与 Russell 悖论的关系：两者都是「把某个『全体』当成集合」引起的矛盾。在 ZFC 里它们的解决方式也一样 —— 那个「全体」不是集合，不是集合，因此分离公理模式根本无从下手。
+⚠ 与 Russell 悖论的关系：两者都是「把某个『全体』当成集合」引起的矛盾。在 ZFC 里它们的解决方式也一样 —— 那个「全体」不是集合，因此分离公理模式根本无从下手。
 
 参考：Kunen, Set Theory, I.11；Jech, Set Theory, 2.2
 
@@ -1459,10 +1458,10 @@ AC 与 ZF 独立：Gödel (1938) 证明 $Con(ZF) \to Con(ZF + AC)$，Cohen (1963
 
 设 $F$ 是一个集合族，且 $\emptyset \notin F$。
 
-$f$ 是 $F$ 的**选择函数**，当且仅当
+$f$ 是 $F$ 的**选择函数**，当且仅当下面两条**都**成立：
 
-$f$ 是函数，$\operatorname{dom} f = F$；
-$\forall X \in F, f(X) \in X$。
+(i) $f$ 是函数，且 $\operatorname{dom} f = F$；
+(ii) $\forall X \in F$，$f(X) \in X$。
 
 即：$f$ 从 $F$ 的每一个成员里各挑出一个元素。
 
@@ -2087,11 +2086,9 @@ $$f(x) = 0, \qquad f|_{F} \equiv 1 .$$
 
 ⚠️ **度量空间都是完美正规**：$d(x, F)$ 连续，$F = \{\, x : d(x, F) = 0 \,\}$，而 $\{\, x : d(x,F) < 1/n \,\}$ 是一列开集 —— 于是闭集 = 可数交开集 ✓。所以 $T_{6}$ 在分析里几乎总是自动成立，在一般拓扑里才是真条件。
 
-⚠️ **$T_{6} \implies T_{5}$ 不是白给的**：要用「可数交开集」把分离集分开（可数交的构造给出一列连续函数，拼起来做分离）。本图只记链的方向与骨架。
+⚠️ **$T_{6} \implies T_{5}$ 不是白给的**：要用「可数交开集」把闭集写成零点集（Urysohn 引理 + $2^{-n}$ 加权级数），再在子空间上用 $f/(f+g)$ 做分离 —— 完整证明见本文件里「完美正规 $\implies$ 完全正规」那条边（已补齐）。
 
 ⚠️ **约定**：完美正规的定义已经含正规，所以自动含 $T_{1}$，不需要再补 $T_{1}$。
-
-
 
 **各方向用到的假设**（取补等价免费，零点集刻画需要正规性）：
 - 完美正规 $\iff$ 正规且每个闭集是 $G_\delta$：本库定义展开，正规已含 $T_1$。
@@ -2607,33 +2604,43 @@ $$\forall\{x_n\} \subseteq X,\ \exists\{x_{n_k}\},\ \exists x \in X : x_{n_k} \t
 
 即 $X$ 紧 $\iff$ $X$ 列紧 $\iff$ $X$ 完备 $+$ 全有界。
 
-**每个方向用什么、要不要额外假设**（这张清单就是“等价”的全部内容）：
+**证明**（绕一圈：(a) $\implies$ (b) $\implies$ (c) $\implies$ (b) $\implies$ (a)）：
 
 
 
-- (a) $\implies$ (b)：**不需要任何假设**。取有限子覆盖后，用鸽笼原理挑出落在同一个覆盖成员里的子列（Lebesgue 数或直接归纳），再在该成员内取收敛子列。
+**① (a) $\implies$ (b)：紧 $\implies$ 列紧。** 设 $\{x_{n}\}$ 是 $X$ 中的序列，反设它没有收敛子列。令 $S = \{x_{n} : n \in \mathbb{N}\}$。$S$ 必无限：$S$ 有限时某个点出现无穷多次，给出常子列，它收敛。又对每个 $y \in X$ 存在 $\varepsilon_{y} > 0$ 使 $B(y, \varepsilon_{y})$ 只含 $S$ 中有限多个点：否则存在 $y$ 使每个球都含 $S$ 中无限多个点，于是可取 $n_{1} < n_{2} < \cdots$ 使 $x_{n_{k}} \in B(y, 1/k)$，得到收敛于 $y$ 的子列，矛盾。于是每个 $y \notin S$ 有开邻域不碰 $S$（把 $B(y, \varepsilon_{y})$ 里那有限个 $S$ 中的点去掉），故 $S$ 是闭集。开覆盖
 
-- (a) $\implies$ (c) 的「完备」：**不需要额外假设**。Cauchy 列若有收敛子列，则整列收敛到同一点。
+$$\{B(y, \varepsilon_{y})\}_{y \in X} \cup \{X \setminus S\}$$
 
-- (a) $\implies$ (c) 的「全有界」：**不需要额外假设**。开覆盖取所有半径 $\varepsilon$ 的球，有限子覆盖就是有限 $\varepsilon$-网。
-
-- (b) $\implies$ (a)：**只用全有界，不用选择公理**（“坏球”法：若不可有限覆盖，则递归造出两两距离 $\ge \varepsilon$ 的序列，它没有收敛子列）。
-
-- (b) $\implies$ (c) 的「完备」：**不需要额外假设**（收敛子列的极限给出 Cauchy 列的极限）。
-
-- (b) $\implies$ (c) 的「全有界」：**这一步实质用到可数选择（DC）** —— 整段里唯一一处。做法是对每个 $n$ 选一个不含无穷子列的 $1/n$-球，逐层收缩。
-
-- (c) $\implies$ (b)：**不需要选择公理**（对角线法：用 $1/n$-网逐层取含无穷多项的球，取对角子列，它是 Cauchy 列；再用完备性收敛）。
+有有限子覆盖：其中每个 $B(y, \varepsilon_{y})$ 只含 $S$ 中有限多个点，$X \setminus S$ 不含 $S$ 的点，所以这个子覆盖总共只盖住 $S$ 中有限多个点 —— 与 $S$ 无限矛盾。故 $\{x_{n}\}$ 有收敛子列 ✓。
 
 
 
-**骨架**：于是闭环 (a) $\implies$ (b) $\implies$ (c) $\implies$ (b) $\implies$ (a)，三个概念打通。注意 (b) $\implies$ (c) 拆成两半之后，只有「全有界」那一半需要 DC —— 这就是为什么「紧 = 完备 + 全有界」在 ZF 里要小心陈述，而「紧 = 列紧」在度量空间里几乎是免费的。
+**② (b) $\implies$ (c)：列紧 $\implies$ 完备 + 全有界。** **完备**：设 $\{x_{n}\}$ Cauchy，由 (b) 有子列 $x_{n_{k}} \to x$。任给 $\varepsilon > 0$，取 $N$ 使 $n, m \ge N$ 时 $d(x_{n}, x_{m}) < \varepsilon/2$，再取 $k$ 使 $n_{k} \ge N$ 且 $d(x_{n_{k}}, x) < \varepsilon/2$；则 $n \ge N$ 时 $d(x_{n}, x) \le d(x_{n}, x_{n_{k}}) + d(x_{n_{k}}, x) < \varepsilon$，故 $x_{n} \to x$ ✓。**全有界**：反设存在 $\varepsilon > 0$ 使 $X$ 没有有限的 $\varepsilon$-网。取 $x_{1} \in X$；若 $x_{1}, \ldots, x_{n}$ 已取好且两两距离 $\ge \varepsilon$，则 $\{x_{1}, \ldots, x_{n}\}$ 不是 $\varepsilon$-网，故存在 $x_{n+1}$ 使 $d(x_{n+1}, x_{i}) \ge \varepsilon$（$i \le n$）。如此得到两两距离 $\ge \varepsilon$ 的序列，它没有 Cauchy 子列、更没有收敛子列 —— 与 (b) 矛盾 ✓。⚠️ 这里的递归取点用**可数选择**（DC）。
 
 
 
-⚠️ **三个词缺一不可的地方**：「紧 $\iff$ 完备 $+$ 全有界」里的两个条件分别负责什么，见上方清单：完备负责「缩到的点在空间里」，全有界负责「有子列可缩」。
+**③ (c) $\implies$ (b)：完备 + 全有界 $\implies$ 列紧。** 设 $\{x_{n}\}$ 是 $X$ 中的序列。对每个 $k$，全有界给有限多个半径 $1/k$ 的球盖住 $X$。归纳构造无限下标集 $\mathbb{N} = S_{0} \supseteq S_{1} \supseteq S_{2} \supseteq \cdots$：给定无限集 $S_{k-1}$，由有限覆盖必有一个球 $B(y_{k}, 1/k)$ 含 $\{x_{n} : n \in S_{k-1}\}$ 中无限多个点，令 $S_{k}$ 为这些下标。再取 $n_{k} \in S_{k}$ 为大于 $n_{k-1}$ 的最小下标（$S_{k}$ 无限，必存在；这条规则不用选择公理）。对 $k \le l$ 有 $x_{n_{k}}, x_{n_{l}} \in B(y_{k}, 1/k)$（$S_{l} \subseteq S_{k}$），故 $d(x_{n_{k}}, x_{n_{l}}) \le 2/k$：$\{x_{n_{k}}\}$ 是 Cauchy 列，由完备性收敛 ✓。
 
-⚠️ **一般拓扑空间里只有 (a) $\implies$ (b)**，反向不成立 —— 列紧是度量空间特有的好运气。反例是 $[0, \omega_{1})$ 上的序拓扑（列紧但不紧）。
+
+
+**④ (b) $\implies$ (a)：列紧 $\implies$ 紧。** 由 ② 已知 $X$ 全有界。反设开覆盖 $\mathcal{U}$ 没有有限子覆盖。称 $E \subseteq X$ **坏**，若它不能被 $\mathcal{U}$ 中有限多个成员盖住；则 $X$ 坏。**坏性可下传到一个小球**：设 $E$ 坏，而 $X$ 被有限多个半径 $r$ 的球 $B_{1}, \ldots, B_{m}$ 盖住；若每个 $E \cap B_{j}$ 都能被有限多个成员盖住，则 $E = \bigcup_{j} (E \cap B_{j})$ 也能，矛盾，故某个 $E \cap B_{j}$ 坏。从 $E_{0} := X$ 出发，用半径 $2^{-k}$ 的有限覆盖逐层取坏球 $E_{k} := E_{k-1} \cap B_{k}$；则 $E_{k}$ 的直径 $\le 2^{1-k}$，且每层只需在有限多个球里挑一个（规定取编号最小的坏球），不用选择公理。取 $x_{k} \in E_{k}$（坏集非空）。对 $k \le l$ 有 $x_{k}, x_{l} \in E_{k}$，故 $d(x_{k}, x_{l}) \le 2^{1-k} \to 0$：$\{x_{k}\}$ 是 Cauchy 列，由完备性 $x_{k} \to x$。因 $\mathcal{U}$ 覆盖，$x \in U$ 对某个 $U \in \mathcal{U}$ 成立；取 $r > 0$ 使 $B(x, r) \subseteq U$。对足够大的 $k$，直径 $E_{k} < r/2$ 且 $d(x_{k}, x) < r/2$，于是 $E_{k} \subseteq B(x, r) \subseteq U$ —— 一个成员就盖住了坏集 $E_{k}$，矛盾 ✓。⚠️ 逐层取点 $x_{k} \in E_{k}$ 也用 DC（与 ② 同一种用法）。
+
+
+
+**闭环**：(a) $\implies$ (b) $\implies$ (c) $\implies$ (b) $\implies$ (a) ✓。注意 (b) $\implies$ (c) 拆成两半后，只有「全有界」那一半需要 DC；「完备」不需要。∎
+
+
+
+⚠️ **两个条件各管什么**：完备负责「缩到的点在空间里」，全有界负责「有子列可缩」；缺一不可（例：$\mathbb{R}$ 完备但不全有界，$(0, 1)$ 全有界但不完备）。
+
+⚠️ **一般拓扑空间里两个方向都不成立**：
+
+(a) $\implies$ (b) 的反例：取 $I = 2^{\mathbb{N}}$，对 $A \in \{0, 1\}^{\mathbb{N}}$ 令 $x_{n}(A) = A(n)$（于是 $x_{n} \in \{0, 1\}^{I}$）；$\{0, 1\}^{I}$ 由 Tychonoff 定理**紧**。对任意子列 $n_{k}$，取 $A$ 使 $A(n_{2j}) = 1$、$A(n_{2j+1}) = 0$，则 $x_{n_{k}}(A)$ 在 $1$ 与 $0$ 之间来回震荡、不收敛，故无收敛子列 —— **不是列紧**。
+
+(b) $\implies$ (a) 的反例是 $[0, \omega_{1})$ 上的序拓扑：任何序列都有收敛子列（可数个可数序数有上界，从而落进某个紧的 $[0, \alpha]$），但 $\{[0, \alpha) : \alpha < \omega_{1}\}$ 是开覆盖、没有有限子覆盖 —— **列紧但不紧**。
+
+⚠ 度量空间里两者才等价 —— 列紧是度量空间特有的好运气。
 
 参考：Munkres, Topology, §28 与 §43
 
@@ -7316,13 +7323,31 @@ $$U^{*}AU = T ,$$
 
 **特例**：$A$ 正规时 $T$ 必是对角阵 —— 这就是谱定理（`thm.spectral-matrix`）。
 
-**证明骨架**：对 $n$ 归纳。
+**证明**（对 $n$ 归纳）。$n = 1$ 时取 $U = (1)$ 即可。设 $n \ge 2$。
 
-取特征向量 $x$（$\lVert x\rVert = 1$），补成标准正交基 $U_{1} = (x, \ldots)$，则 $U_{1}^{*}AU_{1} = \begin{pmatrix} \lambda & * \\ 0 & A_{1}\end{pmatrix}$；
 
-对 $A_{1}$ 用归纳假设，再拼回去。
 
-**关键**是「补成标准正交基」这一步 —— 它保证变换是酉的，从而是稳定的。
+**取特征向量**：特征多项式 $\chi_{A}(t) = \det(tI - A)$ 是 $n$ 次复系数多项式，由**代数基本定理**它有根 $\lambda$；于是存在 $0 \ne x \in \mathbb{C}^{n}$ 使 $Ax = \lambda x$。把 $x$ 单位化，仍记 $x$，$\lVert x\rVert = 1$。
+
+
+
+**补成标准正交基**：由 **Gram–Schmidt**，把 $x$ 扩充为 $\mathbb{C}^{n}$ 的标准正交基 $u_{1} = x, u_{2}, \ldots, u_{n}$。令 $U_{1} := (u_{1}, \ldots, u_{n})$（以它们为列），则 $U_{1}$ 是酉矩阵，且 $U_{1}^{*}u_{j} = e_{j}$。于是 $U_{1}^{*}AU_{1}$ 的第一列是 $U_{1}^{*}Ax = \lambda U_{1}^{*}x = \lambda e_{1}$：它的形状是「左上角 $\lambda$、左下角全 $0$、右下角一个 $(n-1)$ 阶块 $A_{1}$、右上角某个行向量 $w^{*}$」。
+
+
+
+**归纳**：对 $A_{1}$ 用归纳假设，存在 $(n-1)$ 阶酉矩阵 $V$ 使 $V^{*}A_{1}V = T_{1}$ 为上三角。令 $U_{2} := \operatorname{diag}(1, V)$、$U := U_{1}U_{2}$。$U_{2}$ 酉（分块对角，两块都酉），故 $U$ 酉；把 $U_{2}$ 从左右两侧作用到 $U_{1}^{*}AU_{1}$ 上，左上角 $\lambda$ 不变、右上角变成 $w^{*}V$、左下角仍是 $0$、右下角变成 $V^{*}A_{1}V = T_{1}$ —— 所以 $U^{*}AU$ 是上三角 ✓。
+
+
+
+**对角元是特征值**：$U^{*}AU$ 与 $A$ 相似，故特征多项式相同；分块上三角矩阵（左上 $\lambda$、右下 $A_{1}$、左下 $0$）的特征多项式是 $(t - \lambda)\chi_{A_{1}}(t)$，所以 $U^{*}AU$ 的对角元全体作为多重集恰是 $\operatorname{spec}(A)$ —— 其中 $T_{1}$ 的对角元是 $A_{1}$ 的特征值（归纳假设），而 $\operatorname{spec}(A) = \{\lambda\} \cup \operatorname{spec}(A_{1})$。
+
+
+
+**按指定次序排列**：每一步先取指定次序中最靠前的那个尚未安排的特征值 $\lambda$（它在 $\operatorname{spec}(A)$ 中，故有特征向量），对 $A_{1}$ 归纳时用指定次序在 $A_{1}$ 上诱导的次序。于是对角元的次序可以事先指定 ✓。
+
+
+
+**实情形的注**：非实复特征值成对共轭出现，取实部与虚部得到不变 2 维实子空间，同样的归纳给出实 Schur 形（对角块 $1\times 1$ 或 $2\times 2$），这里不展开。∎
 
 ⭐ **为什么它比 Jordan 标准形更常用**：Jordan 形用任意相似（$P^{-1}AP$），理论上漂亮但 $P$ 可能病态到无法计算；Schur 用酉相似（$U^{*}AU$），条件数永远是 1。所以**数值线性代数一律用 Schur，不用 Jordan**。
 
@@ -7472,11 +7497,35 @@ $$\lambda_{k} = \max_{\dim S = k}\ \min_{0 \ne x \in S} R_{A}(x) = \min_{\dim T 
 
 **推论（Weyl 单调性）**：若 $A \le B$（即 $B - A$ 半正定），则 $\lambda_{k}(A) \le \lambda_{k}(B)$ 对每个 $k$ 成立。
 
-**证明骨架（一侧）**：取 $S_{0} = \operatorname{span}(u_{1},\ldots,u_{k})$（前 $k$ 个特征向量），在它上面 $\min R_A = \lambda_k$ 取到于 $u_k$，于是「$\max$ 至少是 $\lambda_k$」。
+**证明**（谱定理 + 子空间维数计数）。由谱定理，存在 $\mathbb{C}^{n}$ 的标准正交基 $u_{1}, \ldots, u_{n}$ 与实数 $\lambda_{1} \ge \cdots \ge \lambda_{n}$ 使 $Au_{i} = \lambda_{i}u_{i}$。对 $x = \sum_{i} c_{i}u_{i} \ne 0$，
 
-另一侧：任取 $\dim S = k$，它与 $\operatorname{span}(u_k, \ldots, u_n)$ 的维数和 $> n$，必有交，取交里的单位向量即得 $\min_{S} R_A \le \lambda_k$。
 
-两个不等式合起来就是等号。
+
+$$R_{A}(x) = \frac{\langle Ax, x\rangle}{\langle x, x\rangle} = \frac{\sum_{i} \lambda_{i}|c_{i}|^{2}}{\sum_{i} |c_{i}|^{2}}$$
+
+
+
+是 $\lambda_{1}, \ldots, \lambda_{n}$ 的加权平均（权 $|c_{i}|^{2} \ge 0$ 不全为零）。
+
+
+
+**第一等式**。上界：任取 $\dim S = k$。$S$ 与 $\operatorname{span}(u_{k}, \ldots, u_{n})$ 的维数之和是 $k + (n-k+1) = n+1 > n$，故有交，取交中单位向量 $x$；它的 $c_{1} = \cdots = c_{k-1} = 0$，故 $R_{A}(x)$ 是 $\lambda_{k}, \ldots, \lambda_{n}$ 的加权平均，$\le \lambda_{k}$。于是 $\min_{S} R_{A} \le \lambda_{k}$ 对一切 $S$ 成立，取 $\max$ 得 $\le \lambda_{k}$。
+
+
+
+下界：取 $S_{0} = \operatorname{span}(u_{1}, \ldots, u_{k})$。$S_{0}$ 中的 $x$ 满足 $c_{k+1} = \cdots = c_{n} = 0$，故 $R_{A}(x)$ 是 $\lambda_{1}, \ldots, \lambda_{k}$ 的加权平均，$\ge \lambda_{k}$；取 $x = u_{k}$ 得等号。于是 $\min_{S_{0}} R_{A} = \lambda_{k}$，取 $\max$ 得 $\ge \lambda_{k}$。两边合起来即第一等式 ✓。
+
+
+
+**第二等式**。上界：任取 $\dim T = n-k+1$。$T$ 与 $\operatorname{span}(u_{1}, \ldots, u_{k})$ 的维数之和 $> n$，故有交，取交中单位向量 $x$；它的 $c_{k+1} = \cdots = c_{n} = 0$，故 $R_{A}(x) \ge \lambda_{k}$，于是 $\max_{T} R_{A} \ge \lambda_{k}$ 对一切 $T$ 成立，取 $\min$ 得 $\ge \lambda_{k}$。
+
+
+
+下界：取 $T_{0} = \operatorname{span}(u_{k}, \ldots, u_{n})$（维数 $n-k+1$）。$T_{0}$ 中的 $x$ 满足 $c_{1} = \cdots = c_{k-1} = 0$，故 $R_{A}(x) \le \lambda_{k}$，且 $x = u_{k}$ 取等号；于是 $\max_{T_{0}} R_{A} = \lambda_{k}$，取 $\min$ 得 $\le \lambda_{k}$。两边合起来即第二等式 ✓。
+
+
+
+**Weyl 单调性**：$A \le B$ 指 $B - A$ 半正定，故对一切 $x \ne 0$ 有 $R_{A}(x) \le R_{B}(x)$。于是对每个 $k$，$\min_{\dim S = k} R_{A} \le \min_{\dim S = k} R_{B}$（逐点比较），再取 $\max$ 得 $\lambda_{k}(A) \le \lambda_{k}(B)$ ✓。∎
 
 ⭐ **它为什么重要**：把「特征值是方程的根」换成「特征值是某个优化问题的值」，于是特征值有了**连续性**（子空间族是紧的）与**单调性**（Weyl）。扰动理论、数值特征值算法、图谱理论全都建立在这条上。
 
@@ -7936,13 +7985,27 @@ $$P^{T} A\, P = \operatorname{diag}(\underbrace{1,\ldots,1}_{p},\ \underbrace{-1
 
 **推论（正定性）**：$A$ 正定 $\iff p = n$ $\iff$ $A$ 合同于 $I$。
 
-**证明骨架**：存在性用配方法（对 $n$ 归纳：先找一个 $q(e) \ne 0$ 的向量，把它所在的二维平面上的交叉项消掉，剩下正交补上归纳）。
+**证明**。设 $q(x) = x^{T}Ax$ 是 $A$ 对应的二次型、$\beta(x, y) = x^{T}Ay$ 是它的对称双线性型。
 
-**唯一性**是真正的要点：若有两组对角形，要证 $p$ 相同 —— 反设 $p > p'$，考虑「$A$ 的正定子空间」与「$B$ 的负半定子空间」，它们的维数和 $> n$ $\implies$ 有交，于是同一个 $x \ne 0$ 同时满足 $x^{T}Ax > 0$ 与 $x^{T}Bx \le 0$，而合同变换下 $x^{T}Ax$ 与 $x^{T}Bx$ 符号必须一致 —— 矛盾。
 
-⭐ **这个唯一性论证是「维数计数」的典范**：不去算变换矩阵，而是比较两个子空间的维数。同一个套路在 `thm.courant-fischer` 里也用过。
 
-**它和谱定理的关系**：谱定理（`thm.spectral-matrix`）也给出对角化，但用的是**正交**变换。惯性定理只要**可逆**变换，代价是看不到特征值、只看到符号 —— 更粗，但对「分类」正好够。
+**存在性（配方法）**。对 $n$ 归纳。$n = 0$ 或 $q \equiv 0$ 时 $A = 0$，取 $P = I$、$p = q = 0$。否则存在 $e$ 使 $q(e) \ne 0$。令 $W := \{v : \beta(e, v) = 0\}$。因 $\beta(e, e) = q(e) \ne 0$，有 $V = \operatorname{span}(e) \oplus W$：任意 $v$ 可写成 $v = \frac{\beta(e, v)}{\beta(e, e)}e + \bigl(v - \frac{\beta(e, v)}{\beta(e, e)}e\bigr)$，第二项落在 $W$ 中。把 $e$ 换成 $e/\sqrt{|q(e)|}$（仍记 $e$），则 $q(e) = \pm 1$；在基 $e$ 与 $W$ 的一组基下，$q$ 是 $\pm x_{1}^{2}$ 与 $q|_{W}$ 的正交直和（交叉项全为零）。对维数 $n-1$ 的 $W$ 用归纳假设，$q|_{W} \cong \operatorname{diag}(1^{p'}, -1^{q'}, 0^{z'})$；拼起来即得对角形 ✓。
+
+
+
+**唯一性（维数计数）**。设 $A$ 合同于 $D = \operatorname{diag}(I_{p}, -I_{q}, 0_{z})$ 与 $D' = \operatorname{diag}(I_{p'}, -I_{q'}, 0_{z'})$，即存在可逆 $Q$ 使 $D' = Q^{T}DQ$。反设 $p > p'$。在 $D'$ 的坐标下取 $E := \{x : x_{1} = \cdots = x_{p'} = 0\}$，$\dim E = n - p'$；在 $D$ 的坐标下取 $U := \{y : y_{p+1} = \cdots = y_{n} = 0\}$，$\dim U = p$。子空间 $Q(E)$ 与 $U$ 的维数和 $= (n-p') + p > n$，故有交；取 $0 \ne y \in Q(E) \cap U$，令 $x := Q^{-1}y \in E$。则 $x \ne 0$，且 $x^{T}D'x = \sum_{i > p'} d'_{i} x_{i}^{2} \le 0$（$D'$ 第 $i$ 个对角元在 $i > p'$ 时 $\le 0$）；另一方面 $y^{T}Dy = x^{T}Q^{T}DQx = x^{T}D'x$，而 $y \in U$、$y \ne 0$ 给出 $y^{T}Dy = \sum_{i \le p} y_{i}^{2} > 0$ —— 矛盾。故 $p \le p'$；交换 $D, D'$ 同理得 $p' \le p$，即 $p = p'$。对 $-A$ 用同一论证得 $q = q'$，再由秩 $p+q+z = n$ 得 $z = z'$ ✓。
+
+
+
+**合同分类**。合同是等价关系，且上面的论证表明合同变换保持 $(p, q)$：同阶实对称矩阵合同 $\iff$ 它们有相同的惯性指数。
+
+
+
+**正定性**。$p = n$ 时 $D = I$，$A = Q^{-T}Q^{-1}$ 正定。反之设 $A$ 正定而 $D$ 有非正方向（$q > 0$ 或 $z > 0$）：取 $z \ne 0$ 使 $z^{T}Dz \le 0$，令 $x := Qz \ne 0$，则 $x^{T}Ax = z^{T}Dz \le 0$，与正定性矛盾；故 $q = z = 0$，$p = n$ ✓。∎
+
+⭐ **这个唯一性论证是「维数计数」的典范**：不去算变换矩阵，而是比较两个子空间的维数。同一个套路在 Courant–Fischer 极小极大原理里也用过。
+
+**它和谱定理的关系**：矩阵版谱定理也给出对角化，但用的是**正交**变换。惯性定理只要**可逆**变换，代价是看不到特征值、只看到符号 —— 更粗，但对「分类」正好够。
 
 ⚠️ 复情形**没有**这个唯一性：$\mathbb{C}$ 上任何非退化对称型都合同于 $I$（因为 $\sqrt{c}$ 存在），只剩秩一个不变量。所以「惯性定理是实情形的特权」。
 
@@ -9147,7 +9210,7 @@ $$p(z) = c\,(z - z_1)^{e_1} \cdots (z - z_m)^{e_m}, \qquad c \in \mathbb{C}^{\ti
 
 图上把它的 `regions` 标成 `analysis` + `algebra` 就是这个原因。
 
-⭐ 证明骨架（图上走的是这条路）：
+⭐ 证明（图上走的是这条路）：
 1. $|p(z)| \to +\infty$ 当 $|z| \to \infty$，所以在某个闭圆盘上由**最值定理**取到最小值 $m \ge 0$；
 
 
@@ -9163,10 +9226,10 @@ $$p(z) = c\,(z - z_1)^{e_1} \cdots (z - z_m)^{e_m}, \qquad c \in \mathbb{C}^{\ti
 **各方向用到的假设**（等价形式的互推是代数，复数有根才是核心定理）：
 - 每个非常数多项式有根 $\iff$ 域代数闭：按代数闭域的通常定义展开免费；这里只处理域上的一元多项式。
 - 有根 $\implies$ 分解为一次因子：用因式定理与次数归纳；反向对非常数的分解直接取根，不另需分析。
-- 不可约多项式均一次 $\iff$ 完全分裂：用域上多项式环的不可约分解；唯一性用 $\mathbb C[z]$ 唯一分解，根须互异、重数正整数，并约定因子次序无关，常数用空乘积。
+- 不可约多项式均一次 $\iff$ 完全分裂：用域上多项式环的不可约分解；唯一性用 $\mathbb C[z]$ 唯一分解，根按重数计、重数为正整数，并约定因子次序无关，常数用空乘积。
 - 复多项式确实有根：本页证明用闭圆盘紧性、连续函数最值定理及复数极形式取方向；换成 $\mathbb R$，$z^2+1$ 就没有根，不能删去底域条件。
 
-参考：Lang, Algebra, Ch. IV；Rudin, Real and Complex Analysis, Ch. 10
+参考：Lang, Algebra, Ch. IV；Rudin, Real and Complex Analysis, Ch. 10；Ahlfors, Complex Analysis, Ch. 4；Stein–Shakarchi, Complex Analysis, Ch. 3
 
 #### 不可约多项式　`def.irreducible-poly`
 *定义*　不可约多项式
@@ -19305,7 +19368,7 @@ $$\begin{array}{ccc} G\times G\times G & \xrightarrow{\;\mu \times \mathrm{id}\;
 
 $$\iota : G \longrightarrow G$$
 
-使下方方块交换（$\iota$ 就是「取逆」），则称 $G$ 是 $\mathcal{C}$ 里的**群对象**：
+使下方方块交换、**且两条复合都等于** $G \xrightarrow{!_G} 1 \xrightarrow{\varepsilon} G$（$!_G$ 到终对象唯一、$\varepsilon$ 是幺元），则称 $G$ 是 $\mathcal{C}$ 里的**群对象**：
 
 $$\begin{array}{ccc} G & \xrightarrow{\;(\iota,\ \mathrm{id})\;} & G \times G \\[2pt] {\scriptstyle (\mathrm{id},\ \iota)}\big\downarrow & & \big\downarrow{\scriptstyle \mu} \\[2pt] G \times G & \xrightarrow[\;\mu\;]{} & G \end{array}$$
 
@@ -19352,7 +19415,7 @@ $$\begin{array}{ccc} G & \xrightarrow{\;(\iota,\ \mathrm{id})\;} & G \times G \\
 #### 保有限积的函子作用于代数对象　`prop.functor-preserves-monoid-objects`
 *命题*　命题：$F$ 保有限积 $\implies F$ 诱导 $\mathrm{Mon}(\mathcal{C}) \to \mathrm{Mon}(\mathcal{D})$
 
-若 $F : \mathcal{C} \to \mathcal{D}$ **保有限积**（含终对象），则它把
+若 $F : \mathcal{C} \to \mathcal{D}$ **保有限积**（含终对象），则
 
 $F$ 把**幺半群对象**送到幺半群对象、**群对象**送到群对象、**环对象**送到环对象。
 
@@ -19373,7 +19436,7 @@ $F$ 保有限积（特别地保 $G \times G$ 与 $\mathbf{1}$），把这些态�
 
 「自由」在几个代数范畴里的样子：$\mathbf{Mon}$ 里是以 $X$ 为生成元的**字幺半群**；$\mathbf{Gr}$ 里是**字群**（允许消去）；$\mathbf{Rng}$ 里是非交换多项式环；
 
-$G\text{-}\mathbf{Set}$ 里是 $G$ 本身（正则作用）；
+$G\text{-}\mathbf{Set}$ 里是 $G \times X$（**左**正则作用 $g \cdot (h, x) = (gh, x)$；$X$ 为单点时就退化成 $G$ 本身）；
 
 $A\text{-}\mathbf{Mod}$ 里是 $A^{(X)}$；
 
@@ -19386,7 +19449,7 @@ $k\text{-}\mathbf{Alg}$ 里是**张量代数**。
 #### 带算子的对象就是模　`prop.op-category-is-modules`
 *命题*　命题：$\operatorname{Op}(k\text{-}\mathbf{Mod}) \simeq k[T]\text{-}\mathbf{Mod}$
 
-记 $\operatorname{Op}(\mathcal{C}) \subseteq \operatorname{Mor}(\mathcal{C})$ 为由「域 = 余域」的态射组成的**满子范畴**（带算子的对象）。
+记 $\operatorname{Op}(\mathcal{C}) \subseteq \operatorname{Mor}(\mathcal{C})$ 为由「**定义域 = 余定义域**」的态射组成的**满子范畴**（带算子的对象）。
 
 $k$ 交换时 $\operatorname{Op}(k\text{-}\mathbf{Mod}) \simeq k[T]\text{-}\mathbf{Mod}$。
 
@@ -26298,7 +26361,7 @@ $$0 \to M \to I^{0} \to I^{1} \to \cdots \to I^{n} \to 0$$
 
 而每项 $I^{k}$ 都内射。$M$ 的**内射维数** $\operatorname{id}_{R} M$ 是使此式成立的最小 $n$（不存在则记 $\infty$）。
 
-**对偶（不要写错）**：$\operatorname{id}_{R} M = \operatorname{fd}_{R^{\mathrm{op}}} \operatorname{Hom}_{\mathbb{Z}}(M,\, \mathbb{Q}/\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd）」。
+**对偶（不要写错）**：$\operatorname{id}_{R} M = \operatorname{fd}_{R^{\mathrm{op}}} \operatorname{Hom}_{\mathbb{Z}}(M,\, \mathbb{Q}/\mathbb{Z})$ —— 即「取特征对偶之后**同侧**的平坦维数（fd；本图未单列平坦维数节点）」。
 
 ⚠ 不能写成 $\operatorname{id}_{R} M = \operatorname{pd}_{R^{\mathrm{op}}} M$：取 $R = \mathbb{Z}$、$M = \mathbb{Q}$，$\mathbb{Q}$ 可除 $\implies$ $\operatorname{id} = 0$，而 $\operatorname{pd}_{\mathbb{Z}}\mathbb{Q} = 1$（$\mathbb{Q}$ 不投射），两者不等。
 
@@ -27774,7 +27837,7 @@ $$\Bigl(\bigoplus_{i \in I} M_{i}\Bigr)^{\mathrm{disc}} \;\cong\; \bigoplus_{i \
 
 **证明。** $(-)^{\mathrm{disc}}$ 是遗忘函子的**左伴随** ✓，左伴随保余极限、特别地保直和 ✓。∎
 
-⚠️ 对**积**不成立：$(-)^{\mathrm{disc}}$ 是左伴随，一般不保积 —— 这正是「离散化会把无限直积换成直和」的那件事。
+⚠️ 对**积**不成立：$(-)^{\mathrm{disc}}$ 是左伴随，一般不保积。但差**不是**「直积换成直和」：$\prod_i M_i^{\mathrm{disc}}$ 严格大于 $(\prod_i M_i)^{\mathrm{disc}}$，多出来的是「**各坐标分别局部常值、但联合不局部常值**」的族。例：$S$ 取 Cantor 集、$M_i = \mathbb{Z}/2$ —— 每个坐标函数 $S \to M_i$ 都局部常值，而「逐位取值」的联合映射 $S \to \prod_i M_i$ 不局部常值：左边有、右边没有。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 6.3
 
@@ -27785,7 +27848,15 @@ $$\Bigl(\bigoplus_{i \in I} M_{i}\Bigr)^{\mathrm{disc}} \;\cong\; \bigoplus_{i \
 
 $$\underline{M/N} \;\cong\; \underline{M}\big/\underline{N}.$$
 
-**证明。** 正合列 $0 \to N \to M \to M/N \to 0$ 里，$N$ 闭保证 $M/N$ 是 Hausdorff 的局部紧群 ✓；而「拓扑阿贝尔群 $\mapsto$ 凝聚态阿贝尔群」是**保所有极限**的函子 ✓，它把商的余核送到余核 ✓。于是拓扑意义下的商与凝聚态意义下的商对上 ✓。∎
+**证明（思路）。** 正合列 $0 \to N \to M \to M/N \to 0$ 里，$N$ 闭保证 $M/N$ 是 Hausdorff 的局部紧群 ✓。
+
+要证 $\underline{M}/\underline{N} \cong \underline{M/N}$。⚠️ 不能写「保极限 $\implies$ 送余核」——保极限只给**核**。正确两步：
+
+① CondAb 的余核 = 「逐点商」预层 $U \mapsto \underline{M}(U)/\underline{N}(U)$ 的**层化**；
+
+② 层化后与常层 $\underline{M/N}$ 一致 —— 这一步不能靠普适的范畴论证，而是 LCA 群的一条标准事实：闭子群嵌入 $N \hookrightarrow M$ 在凝聚态阿贝尔群里仍给出短正合列 $0 \to \underline{N} \to \underline{M} \to \underline{M/N} \to 0$（Clausen–Scholze《Lectures on Condensed Mathematics》Lecture 3：$\mathrm{LCA} \hookrightarrow \mathrm{Cond(Ab)}$ 全忠实且正合）；等价地说，层化把「逐点商」预层补成 $C(S, M/N)$。**本图不展开层化的计算**，完整论证见 Le Stum, Exercise 6.5 ✓。
+
+拼起来即得同构 ✓。∎
 
 📌 用处：算凝聚态阿贝尔群时，**可以先在拓扑这一侧把商算好再离散化**。
 
@@ -29749,22 +29820,22 @@ $$0 \to \mathbb{R}_{\ell^1}[S] \to E \to \mathbb{R}_{\ell^1}[S] \to 0,$$
 #### 离散 Huber pair　`def.discrete-huber-pair`
 *定义*　离散 Huber pair
 
-白话：**Huber pair = 一个环 $A$，加上「哪些元素算有界」这个额外指定 $A^+$**。
+白话：**Huber pair = 环 $A$ + 「哪些元素算有界」的指定 $A^+$**。
 
-经典理论里 $A$ 带拓扑、$A^+$ 是它的「单位球」；本图只做**离散**版本 —— $A$ 不带拓扑，「有界」完全由 $A^+$ 这个子环说了算。
+经典理论里 $A$ 带拓扑；本图只做**离散**版本 —— 「有界」完全由子环 $A^+$ 说了算。
 
-它要造的对象是「$A$ 的 adic 谱」，即下一节点那个 $\operatorname{Spa}$。
+它要造的是 $A$ 的 adic 谱（即下一节点的 $\operatorname{Spa}$）。
 
 一个**离散 Huber pair** 是一对 $(A, A^+)$：
 
-- $A$ 是离散环（不带拓扑，见 `def.ring`）；
-- $A^+ \subseteq A$ 是**整闭**子环（$A$ 中在 $A^+$ 上整的元素仍属于 $A^+$；「整」= 满足一个首一多项式方程，像 $\sqrt{2}$ 在 $\mathbb{Z}$ 上整）。
+- $A$ 是离散环（见 `def.ring`）；
+- $A^+ \subseteq A$ 是**整闭**子环（$A$ 中在 $A^+$ 上整的元素仍属于 $A^+$；「整」= 满足一个首一多项式方程）。
 
-它给出一个解析环（解析环是 `def.analytic-ring` 里的东西；这里只需知道它是「$A$ 的完备模版本」）：
+它给出一个解析环（见 `def.analytic-ring`；此处只需知道它「**决定哪些模算完备**」）：
 
 $$(A, A^+)_\blacksquare := \varinjlim_{(B,B^+) \to (A,A^+)} (B, B^+)_\blacksquare,$$
 
-余极限跑遍所有「$B$ 与 $B^+$ 都有限生成 $\mathbb{Z}$-代数」的子对 $(B,B^+) \subseteq (A,A^+)$。
+余极限跑遍所有「$B$ 与 $B^+$ 都有限生成 $\mathbb{Z}$-代数」的子对 $(B,B^+) \subseteq (A,A^+)$。这不是循环定义：有限型子对用已知的完备化构造，一般情形按左 Kan 扩张取这条余极限（详见注）。
 
 ⭐ 为什么需要 $A^+$：解析几何里「有界」不是 $A$ 自带的，要**额外指定**哪些元素算「$\le 1$」。
 
@@ -29773,6 +29844,8 @@ $A^+$ 就是「单位球的整数模型」。
 ⭐ 两个极端：$(A, A)$（「一切都有界」）与 $(A, \widetilde{\mathbb{Z}})$（「代数整数才有界」，$\widetilde{\mathbb{Z}}$ 是 $\mathbb{Z}$ 在 $A$ 中的整闭包）。
 
 前者给出概形 $\operatorname{Spec} A$ 的 adic 化，后者给出「去掉阿基米德部分」的版本。
+
+⚠ 公式 $\varinjlim$ 里的 $(B,B^+)_\blacksquare$ **不是**又在用左边定义：$(B,B^+)$ **有限型**时它由通常的完备化构造直接给出（右边因此不递归）；一般 $(A,A^+)$ 的取值按**左 Kan 扩张**定义为这条余极限 —— 这就是「解析环 = 决定哪些模算完备的结构」的那层意思。
 
 ⚠ 定义里 $A$ 不要求拓扑 —— 这是「离散」二字的含义。
 
@@ -29809,7 +29882,7 @@ $$\operatorname{Spa}(A, A^+) := \bigl\{\, |\cdot| : A \to \Gamma \cup \{0\} \ \b
 
 $$U\!\left(\tfrac{g_1, \ldots, g_n}{f}\right) := \bigl\{\, x : |g_i(x)| \le |f(x)| \ne 0\ \forall i\, \bigr\}.$$
 
-这些有理开集构成一组基，$\operatorname{Spa}(A,A^+)$ 是 **spectral space**（谱空间：同胚于某个环的素谱的拓扑空间；等价刻画是「紧、$T_0$、有紧开集作基」）。
+这些有理开集构成一组基，$\operatorname{Spa}(A,A^+)$ 是 **spectral space**（谱空间：同胚于某环的素谱；等价刻画是「紧、**sober**、紧开集构成基」）。
 
 ⭐ 赋值满足**强三角不等式** $|x+y| \le \max(|x|,|y|)$，这是非阿基米德的标志；换成 $\le |x| + |y|$ 就是阿基米德的（复几何那一边），那是另一套理论。
 
@@ -29817,7 +29890,7 @@ $$U\!\left(\tfrac{g_1, \ldots, g_n}{f}\right) := \bigl\{\, x : |g_i(x)| \le |f(x
 
 它们既开又紧（quasicompact），这正是 adic 空间比概形好用的地方：仿射开集自带紧性。
 
-⚠ $\operatorname{Spa}(A,A^+)$ 一般**不是** Hausdorff 的，它是 spectral（紧、$T_0$、有开集基）。
+⚠ $\operatorname{Spa}(A,A^+)$ 一般**不是** Hausdorff 的，它是 spectral（紧、**sober**、**紧开集**构成基，且紧开集对有限交封闭）。
 
 所以不能拿度量空间的直觉套它。
 
@@ -29828,7 +29901,7 @@ $$U\!\left(\tfrac{g_1, \ldots, g_n}{f}\right) := \bigl\{\, x : |g_i(x)| \le |f(x
 
 白话：**$A^+$ 看着像「额外数据」，其实由谱自己决定** —— 「整闭子环 $A^+$」与「谱里形如 $\bigcap U_{1,f}$ 的那块子集 $U$」一一对应。所以 $(A,A^+)$ 与「环 $A$ 加上谱里的一块区域」是同一件事，这就是把环论翻译成几何的那一步。
 
-记 $\operatorname{Spv}(A) := \operatorname{Spa}(A, \widetilde{\mathbb{Z}})$ 为 $A$ 上全部赋值等价类（取「最大的」$A^+$，即 $\mathbb{Z}$ 在 $A$ 中的整闭包，所以什么赋值都不被筛掉）。则
+记 $\operatorname{Spv}(A) := \operatorname{Spa}(A, \widetilde{\mathbb{Z}})$ 为 $A$ 上全部赋值等价类（取「**最小的**」$A^+$，即 $\mathbb{Z}$ 在 $A$ 中的整闭包 —— 它含在一切赋值的单位球里；$A^+$ 越小筛得越少，故什么赋值都不被筛掉）。则
 
 $$A^+ \longmapsto U = \operatorname{Spa}(A, A^+) = \bigcap_{f \in A^+} U_{1,f} \subseteq \operatorname{Spv}(A),$$
 
@@ -29844,7 +29917,9 @@ $$U \longmapsto A^+ = \{\, f \in A : \forall x \in U,\ |f(x)| \le 1 \,\}.$$
 
 ⚠ 一般 $A^+$ 不可能是任意子环：必须整闭。
 
-反例：$A = \mathbb{Z}[T]$、$A^+ = \mathbb{Z}[T^2]$ 不整闭（$T$ 在 $\mathbb{Z}[T^2]$ 上整），对应的子集并不是某个 $\operatorname{Spa}$。
+反例：$A = \mathbb{Z}[T]$、$A^+ = \mathbb{Z}[T^2]$ 不整闭（$T$ 在 $\mathbb{Z}[T^2]$ 上整），对应的子集并不是某个**整闭**子环的 $\operatorname{Spa}$（逆映射会把它还原成整闭包 $\widetilde{\mathbb{Z}[T^{2}]} \ne \mathbb{Z}[T^{2}]$）。
+
+⭐ 为什么它是**最小**的：整闭子环总含 $\mathbb{Z}\cdot 1$，故必含 $\widetilde{\mathbb{Z}}$（整元素对整闭子环封闭）；而整元素在**一切**赋值下满足 $|a| \le 1$ —— 若 $|a| > 1$，则 $a^{n} + c_{n-1}a^{n-1} + \cdots + c_{0} = 0$（$c_{i} \in \mathbb{Z}$，故 $|c_{i}| \le 1$）的左端被 $a^{n}$ 支配，不可能为 $0$。所以它含在一切单位球里，取它时筛掉的点最少。
 
 📌 证明用赋值环的存在性（扎里斯基引理）：若 $f \notin A^+$，在 $A^+[1/f]$ 里取素理想，再取支配它的赋值环，得到 $|f| > 1$ 的点。
 
@@ -29931,7 +30006,7 @@ $$\begin{array}{ccc} \operatorname{Spec} K & \to & X \\ \downarrow & & \downarro
 
 **各方向用到的假设**（局部模型是定义，赋值与概形的比较另有内容）：
 - 离散 adic 空间 $\iff$ 每点有邻域同构于所列三元组模型：两方向是定义展开；同构必须同时保持拓扑、环层和逐点赋值类。
-- 离散 Huber pair $\implies$ 仿射模型可用于此定义：须先有其结构层及有理局部化的层性质，不能只由写出 $\operatorname{Spa}$ 符号获得；具体构造条件此处不确定，待核。
+- 离散 Huber pair $\implies$ 仿射模型可用于此定义：须先有其结构层及有理局部化的层性质，不能只由写出 $\operatorname{Spa}$ 符号获得。
 - 相容的仿射模型 $\implies$ 整体空间：用开子集上的环层及赋值粘合和重叠同构的余循环条件，并非任意集合粘合都成立。
 - 概形映射的赋值环描述 $\iff$ 相应 adic 点：还要使用赋值的支撑、剩余域及赋值环扩张的比较，属于额外表示结论，不是局部模型定义直接展开；一般三元组也不能因此视为来自概形。
 
@@ -29956,7 +30031,7 @@ $$X_{\mathrm{ad}} \longrightarrow X_{\mathrm{ad}/R}$$
 
 点集上的单射 / 双射正是分离 / 固有的赋值判据。
 
-⚠ 反过来不成立：adic 空间比概形多得多（$\operatorname{Spa}(\mathbb{Z}_p, \mathbb{Z}_p)$ 就不是某个概形的 adic 化）。
+⚠ 反过来不成立：adic 空间比概形多得多。但**不能**拿 $\operatorname{Spa}(\mathbb{Z}_p, \mathbb{Z}_p)$ 当反例 —— 它正是 $(\operatorname{Spec}\mathbb{Z}_p)_{\mathrm{ad}}$（本团的离散 adic 化就取 $\operatorname{Spa}(A,A)$）。要举反例得用 $A^{+} \ne A$ 的离散对：$\operatorname{Spa}(\mathbb{Q}_p, \mathbb{Z}_p)$ 按本图的定义是**合法**的离散 Huber 对（$A = \mathbb{Q}_p$ 取离散拓扑、$A^{+} = \mathbb{Z}_p$ 整闭），但它不是任何概形的 adic 化 —— 概形的（绝对）adic 化在仿射局部是 $(A, A)$，而这里 $A^{+} \ne A$。
 
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.6
 
@@ -29979,11 +30054,11 @@ $$D\bigl((\mathcal{O}_X, \mathcal{O}_X^+)_\blacksquare\bigr),$$
 
 具体例子：$(A,A^+) = (\mathbb{F}_p[T], \mathbb{F}_p)$，取有理开集「$|T| \le 1$」，此时 $(\mathcal{O}_X(U),\mathcal{O}_X^+(U)) = (\mathbb{F}_p[T], \mathbb{F}_p[T])$，而单射 $\mathbb{F}_p[T] \hookrightarrow \mathbb{F}_p((T^{-1}))$ 在基变换后变成 $\mathbb{F}_p[T] \to 0$。
 
-\n\n⭐ 证明思路与概形的 Zariski 下降平行：局部化可交换、局部为零则整体为零；
+⭐ 证明思路与概形的 Zariski 下降平行：局部化可交换、局部为零则整体为零；
 
 在导出范畴上把这两条做成粘合数据，再升到 $\infty$-范畴（同伦之间的同伦要留住）。
 
-\n\n📌 原文 Lectures IX–X（pp. 62–70）。
+📌 原文 Lectures IX–X（pp. 62–70）。
 
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Theorem 9.8
 
@@ -32451,23 +32526,8 @@ $$\#\left(\mathbb{C} \setminus f(U)\right) \le 1.$$
 
 设 $f : \overline{\mathbb{D}} \to \overline{\mathbb{D}}$ 连续（$\overline{\mathbb{D}} = \{\, |z| \le 1 \,\}$）。则存在 $z \in \overline{\mathbb{D}}$ 使 $f(z) = z$。
 
-**复分析证明（用绕数）**：反设 $f$ 没有不动点，即 $f(z) \ne z$ 处处成立。对每个 $z \in \overline{\mathbb{D}}$，从 $f(z)$ 出发沿射线经过 $z$ 打到边界，定义
-
-$$r(z) := f(z) + t(z)\left(z - f(z)\right),\qquad t(z) \ge 1 \text{ 由 } |r(z)| = 1 \text{ 唯一确定}.$$
-
-解一元二次方程可得 $t$ 连续依赖 $z$，且 $z \in S^{1}$ 时 $r(z) = z$。于是 $r : \overline{\mathbb{D}} \to S^{1}$ 是**收缩**（$r|_{S^{1}} = \mathrm{id}$）。
-
-现在看闭曲线 $\gamma(t) := e^{2\pi i t}$（$t \in [0,1]$）。一方面 $r \circ \gamma$ 的像落在 $S^{1}$ 里，而 $S^{1}$ 上的闭曲线由 $t \mapsto (r\circ\gamma)(t)/|(r\circ\gamma)(t)|$ 给出……更干脆地用绕数：$\gamma$ 绕 $0$ 的绕数是 $1$；
-
-$r \circ \gamma$ 与 $\gamma$ 在 $\mathbb{C}\setminus\{0\}$ 中同伦（$H(s,t) := r((1-s)\gamma(t) + s\, r(\gamma(t)))$……这个同伦不可用，改用下面的口径）：
-
-⭐ **标准口径**：$r \circ \gamma$ 是 $S^{1}$ 上的闭曲线，且 $r$ 把整个圆盘映进 $S^{1}$，故 $r \circ \gamma$ 在 $S^{1}$ 内可缩为常值（同伦 $H(s,t) = r((1-s)\gamma(t))$ 的像始终在 $S^{1}$ 内，而 $S^{1}$ 不是单连通的……）。**这一句需要拓扑输入**，纯复分析的严格版本走的是另一条路：
-
-**改用辐角原理的版本**：若有连续无处为零的 $r : \overline{\mathbb{D}} \to S^{1}$ 且 $r|_{S^{1}} = \mathrm{id}$，则由 `prop.single-valued-branch`（$\mathbb{D}$ 单连通），$r$ 有全纯的对数型提升——但 $r$ 只是连续，不是全纯。
-
-所以复分析路线实际证的是**全纯**版本（$f$ 全纯时用 Rouché：$f(z) - z$ 与 $-z$ 在 $|z| = 1$ 上比较，$|f| \le 1 = |{-z}|$，边界上不能有零点，故 $f - z$ 与 $-z$ 在圆盘内零点数相同，即至少一个）。
-
-⚠️ **诚实标注**：连续版本的 Brouwer 定理**不能**只靠复分析得到 —— 需要拓扑（$S^{1}$ 不是收缩核，即 $\pi_{1}(S^{1}) = \mathbb{Z} \ne 0$）。本图把这条记作「绕数同伦不变性 + $\pi_1(S^1)\ne 0$」的推论，证明骨架给到这里，深层输入（基本群）不在本图范围内。全纯版本见下方边上的证明。
+⚠ 连续情形的证明需要拓扑输入：$\pi_{1}(S^{1}) \cong \mathbb{Z}$ —— 等价地，$S^{1}$ 不是 $\overline{\mathbb{D}}$ 的收缩核（否则把收缩与含入复合，得 $S^{1}$ 的基本群为 $0$，而它是 $\mathbb{Z}$）。本图不展开。
+全纯情形由边上的证明给出：Rouché（`thm.rouche`）比较 $f - z$ 与 $-z$ 在 $|z| = 1$ 上的行为，得圆盘内恰有（$f$ 的）一个零点 —— 即不动点。
 
 参考：王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）；Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · Brouwer’s Fixed-Point Theorem；Hatcher, Algebraic Topology, §1.1 · 基本群（圆周的基本群是 ℤ，用覆叠空间证）；§2.2 · Brouwer 不动点定理
 
@@ -32509,9 +32569,11 @@ $$\operatorname{vol}\left(A_{i} \cap P^{+}\right) = \operatorname{vol}\left(A_{i
 
 **证明（由 Borsuk–Ulam）**：平面由单位法向 $u \in S^{2}$ 与偏移 $t \in \mathbb{R}$ 决定，记 $P(u, t) := \{\, x : \langle x, u\rangle = t \,\}$。
 
-对固定 $u$，函数 $t \mapsto \operatorname{vol}(A_{i} \cap \{\langle x, u\rangle \le t\})$ 连续、从 $0$ 增到 $\operatorname{vol}(A_{i})$，故存在唯一的 $t_{i}(u)$ 平分 $A_{i}$；
+对固定 $u$，函数 $F_{i}(t) := \operatorname{vol}(A_{i} \cap \{\langle x, u\rangle \le t\})$ 连续、从 $0$ 增到 $\operatorname{vol}(A_{i})$。$A_{i}$ 有**原子**时 $F_{i}$ 会整段跳，可能**跳过** $\operatorname{vol}(A_{i})/2$，所以「存在唯一的平面把 $A_{i}$ 平分」不成立；改用中位数：
+$$t_{i}(u) := \inf\left\{t : \operatorname{vol}(A_{i} \cap \{\langle x, u\rangle \le t\}) \ge \tfrac{1}{2}\operatorname{vol}(A_{i})\right\},$$
+它由 $F_{i}$ 的连续性存在、作为 $\inf$ 唯一，且 $t_{i}(-u) = -t_{i}(u)$（法向反向，平面不变而「正侧」互换）。
 
-且 $t_{i}(-u) = -t_{i}(u)$（法向反向，平面不变而「正侧」互换）。
+一般可测集用**无原子／光滑**情形逼近：先对 $\partial A_{i}$ 光滑（或半代数）的情形做，再用体积的连续性取极限。
 
 于是 $u \mapsto (t_{1}(u) - t_{3}(u),\ t_{2}(u) - t_{3}(u)) \in \mathbb{R}^{2}$ 是连续映射，由 **Borsuk–Ulam**（`thm.borsuk-ulam`），存在 $u$ 使 $f(u) = f(-u) = -f(u)$，即 $f(u) = 0$，也就是 $t_{1}(u) = t_{2}(u) = t_{3}(u)$ —— 同一个平面同时平分三块。∎
 
@@ -36961,13 +37023,13 @@ $$\omega_{0} = \sum_{i=1}^{n} dq_{i} \wedge dp_{i} ,$$
 
 这就是经典力学的相空间。
 
-⚠️ **「闭」这条不能去**：非退化 2-形式总是逐点存在（余切丛上就有），但「闭」是**整体**条件。去掉它得到的是「近辛流形」（almost symplectic），那门理论完全不同 —— 你甚至可以只要求「有非退化 2-形式」而不要求可积性。
+⚠️ **「闭」这条不能去**：非退化 2-形式总是逐点存在（余切丛上就有），但「闭」是**整体**条件。去掉它得到的是「近辛流形」（almost symplectic）：有非退化 2-形式而不要求闭（那门理论完全不同）。⚠ 「可积」是 almost complex 结构的性质 —— 要再配一个 almost complex 结构才谈得上，与近辛本身的定义无关。$S^{6}$ 是「近辛但非辛」的标准例子。
 
 ⭐ **为什么物理学需要它**：$\omega$ 给出「Hamilton 流」（`def.hamiltonian-vector-field`），而 $d\omega = 0$ 保证这些流**保持 $\omega$**（Lie 导数 $\mathcal{L}_{X_{H}}\omega = 0$）—— 这就是 Liouville 定理（相体积守恒）的根子。
 
 ⚠️ 辛流形**必可定向**（$\omega^{n}$ 是无处为零的体积形式），但**不必**是 Kähler：Kähler 还要额外的复结构与相容度量。辛几何是比 Kähler 更宽的一层。
 
-⚠️ 紧辛流形有强限制：$[\omega] \in H^{2}(M)$ 非零（否则 $\omega$ 是恰当的、与最大非退化性矛盾 —— 这是「辛流形不能是 $S^{2n}$，$n \ge 2$」的原因）。本图不展开上同调论证。
+⚠️ 紧辛流形有强限制：$[\omega] \in H^{2}(M)$ 非零（否则 $\omega=d\theta$ 使 $\omega^{n}=d(\theta\wedge\omega^{n-1})$ 恰当、积分为零，与「$\omega^{n}$ 是无处为零的体积形式」矛盾 —— 这是「辛流形不能是 $S^{2n}$，$n \ge 2$」的原因）。本图不展开上同调论证。
 
 参考：Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛流形；McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）
 
@@ -37005,7 +37067,7 @@ $$\omega = \sum_{i=1}^{n} dq_{i} \wedge dp_{i}$$
 
 设 $(M, \omega)$ 是辛流形，$H \in C^{\infty}(M)$。由 $\omega$ 非退化，存在唯一的向量场 $X_{H}$ 使
 
-$$\iota_{X_{H}}\omega = -dH ,$$
+$$\iota_{X_{H}}\omega = +dH ,$$
 
 称 $X_{H}$ 为 $H$ 的 **Hamilton 向量场**（$\iota$ 是内乘，见 `def.interior-product`）。它的积分曲线满足**Hamilton 方程**：在 Darboux 坐标下
 
@@ -37015,7 +37077,7 @@ $$\dot{q}_{i} = \frac{\partial H}{\partial p_{i}}, \qquad \dot{p}_{i} = -\frac{\
 
 ⚠️ **符号约定五花八门**：$\iota_{X_{H}}\omega = dH$、$= -dH$、$\omega(X_{H}, \cdot) = dH$ 三种都在用，差一个整体符号（等价于 $H \mapsto -H$）。
 
-本图取 $\iota_{X_{H}}\omega = -dH$，与 Arnold 一致；
+本图取 $\iota_{X_{H}}\omega = +dH$：Arnold 用 $\sum dp_{i}\wedge dq_{i}$ 配 $-dH$，本包的 $\omega_{0}=\sum dq_{i}\wedge dp_{i}$ 与它差一个号，故取 $+dH$；
 
 换书时**必须重新核对 Hamilton 方程的符号**。
 
@@ -37050,7 +37112,7 @@ $$\{f, g\} = \sum_{i=1}^{n}\Bigl(\frac{\partial f}{\partial q_{i}}\frac{\partial
 
 **它是「$H$ 能否守恒」的判据**：$\frac{d}{dt}f = \{f, H\}$。所以 $f$ 是运动常数 $\iff$ $\{f, H\} = 0$。力学里的「守恒量」全部由这条代数条件刻画 —— 这也是 Noether 定理的辛版本（对称性 $\implies$ 守恒量）。
 
-⭐ **$C^{\infty}(M)$ 因此是 Lie 代数**：括号给出 Lie 括号，而 Hamilton 映射 $H \mapsto X_{H}$ 是 Lie 代数同态（差一个符号），即 $[X_{f}, X_{g}] = X_{\{f,g\}}$（注意 $\{f,g\}$ 与 $-[f,g]$ 的符号约定）。
+⭐ **$C^{\infty}(M)$ 因此是 Lie 代数**：括号给出 Lie 括号，而 Hamilton 映射 $H \mapsto X_{H}$ 是**反** Lie 同态（保线性、翻括号），即 $[X_{f}, X_{g}] = -X_{\{f,g\}}$。
 
 这条把「函数代数」与「向量场代数」焊在一起。
 
@@ -37098,7 +37160,7 @@ $$\{f, g\} = \sum_{i=1}^{n}\Bigl(\frac{\partial f}{\partial q_{i}}\frac{\partial
 - **等价说法的方向**：逐点看 $T_{p}L$ 是 Lagrange 子空间 $\iff$ $L$ 是 Lagrange 子流形（$L$ 浸入、且 $\omega|_L = 0$、$\dim = n$）。$(\Leftarrow)$ 逐点显然；$(\implies)$ 要「$L$ 的维数是常数」，这一点由浸入保证。
 
 ⚠️ **闭合性不是定义的一部分**：$L$ 不必闭、不必紧、也不必嵌入（可以只是浸入、甚至多重覆叠）。物理里的 Bohr–Sommerfeld 条件用的就是这种“不必嵌入”的 Lagrange 子流形。
-⚠️ **「局部是函数的图像」这个等价只在 $L$ 投影到某个 Lagrange 叶层是局部同胚时成立**（$p\,\mathrm{d}q$ 的恰当性），不是全局性质 —— 所以“生成函数”只局部存在。
+⚠️ **「局部是函数的图像」这个等价只在投影 $\pi:L\to Q$（$Q$ 为某个 Lagrange 子空间所在的零截面）为局部微分同胚时成立**（$p\,\mathrm{d}q$ 的恰当性），不是全局性质 —— 所以“生成函数”只局部存在。
 
 
 
@@ -37136,7 +37198,7 @@ Poisson 后来才发现「对偶的那个括号」满足优美的 Jacobi 恒等�
 
 ⭐ **几何意义**：Lagrange 括号量的是「$u$、$v$ 的等值曲线族在相空间里围出的面积」。所以它天然是「面积」的语言，而 Poisson 括号是「流」的语言 —— 这就是为什么正则变换的条件用 Lagrange 括号写更直观（它直接说「面积不变」）。
 
-⚠️ **$L = P^{-1}$ 只在同一个坐标系下比较时成立**：写这两个矩阵必须用**同一组** $(u, v)$ 作基，否则无可比性。这条是最容易记错的地方。
+⚠️ **$L = -P^{-1}$ 只在同一个坐标系下比较时成立**：写这两个矩阵必须用**同一组** $(u, v)$ 作基，否则无可比性。这条是最容易记错的地方。
 
 ⚠️ 符号：有书把 Lagrange 括号写成 $\{u,v\}$（与 Poisson 撞），也有写 $[u,v]_{q,p}$ 的。本图用后者，下标标明参照坐标。
 
@@ -37781,9 +37843,77 @@ $$\left(\frac{-1}{p}\right) = (-1)^{\frac{p-1}{2}}, \qquad \left(\frac{2}{p}\rig
 
 
 
-⚠ 本节点只给陈述与路线，完整证明不在本图（它依赖二次型的类群或曲线计数，量级上属于另一章）。
+**证明（Gauss 引理 + 矩形计数，初等）。** 记 $P = \frac{p-1}{2}$、$Q = \frac{q-1}{2}$。对 $1 \le x \le P$ 记 $m_{x} := \left\lfloor \frac{qx}{p} \right\rfloor$，$r_{x}$ 为 $qx$ 模 $p$ 的最小正剩余（$1 \le r_{x} \le p-1$，因为 $p \nmid qx$）。
 
-参考：华罗庚《数论导引》第四章
+
+
+**第一步：Gauss 引理。** 令 $\varepsilon_{x} = 1$（当 $r_{x} < p/2$）或 $-1$（当 $r_{x} > p/2$），并令 $s_{x} = r_{x}$（前一种）或 $s_{x} = p - r_{x}$（后一种），则 $1 \le s_{x} \le P$。断言 $x \mapsto s_{x}$ 是 $\{1, \ldots, P\}$ 的置换：若 $s_{x} = s_{y}$，则 $r_{x} \equiv \pm r_{y} \pmod p$，即 $qx \equiv \pm qy \pmod p$；$q$ 在模 $p$ 下可逆，故 $x \equiv \pm y \pmod p$；而 $1 \le x, y \le P$ 且 $p$ 是奇数，$x \equiv -y$ 会给出 $x + y = p$，与 $x + y \le 2P = p - 1$ 矛盾，故 $x = y$ ✓。
+
+
+
+于是把 $\{qx\}_{x \le P}$ 换成最小正剩余再取符号，得到
+
+
+
+$$\prod_{x=1}^{P} qx \equiv \prod_{x=1}^{P} (\varepsilon_{x} s_{x}) = \Bigl( \prod_{x} \varepsilon_{x} \Bigr) \Bigl( \prod_{x} s_{x} \Bigr) \equiv \Bigl( \prod_{x} \varepsilon_{x} \Bigr) P! \pmod p .$$
+
+
+
+左边 $= q^{P} P!$，约去 $P!$（$p \nmid P!$）得 $q^{P} \equiv \prod_{x} \varepsilon_{x} = (-1)^{\mu}$，其中 $\mu = \#\{x : r_{x} > p/2\}$。由 **`lem.gauss-qr`**（Gauss 引理），$\left(\frac{q}{p}\right) = (-1)^{\mu}$，所以
+
+
+
+$$\left(\frac{q}{p}\right) = (-1)^{\mu} .$$
+
+
+
+**第二步：$\mu$ 与 $\sum m_{x}$ 同奇偶。** 由 $r_{x} = qx - p m_{x}$ 与 $\sum_{x} s_{x} = \sum_{x=1}^{P} x = \frac{P(P+1)}{2}$，一方面
+
+
+
+$$\sum_{x} s_{x} = \sum_{x} r_{x} + \sum_{r_{x} > p/2} (p - 2r_{x}) ,$$
+
+
+
+另一方面 $\sum_{x} r_{x} = q\sum_{x} x - p \sum_{x} m_{x}$。把这些代入并两边模 $2$：$\sum_{r_{x} > p/2}(p - 2r_{x}) \equiv p\mu \equiv \mu \pmod 2$，$q \sum_{x} x \equiv \sum_{x} x \pmod 2$，于是
+
+
+
+$$\sum_{x} x \equiv \sum_{x} x + \sum_{x} m_{x} + \mu \pmod 2 ,$$
+
+
+
+消去 $\sum_{x} x$ 得 $\sum_{x} m_{x} \equiv \mu \pmod 2$。故
+
+
+
+$$\left(\frac{q}{p}\right) = (-1)^{\mu} = (-1)^{\sum_{x=1}^{P} \lfloor qx/p \rfloor} .$$
+
+
+
+**第三步：矩形计数。** 在矩形 $R = \{(x, y) \in \mathbb{Z}^{2} : 1 \le x \le P,\ 1 \le y \le Q\}$（共 $PQ$ 个整点）里，直线 $qx = py$ 不含任何整点：$p \mid qx$ 且 $p \nmid q$ 给出 $p \mid x$，但 $1 \le x \le P < p$，矛盾。故 $R$ 分成 $R_{-} = \{qx - py > 0\}$ 与 $R_{+} = \{qx - py < 0\}$ 两部分，$|R| = |R_{-}| + |R_{+}| = PQ$。
+
+
+
+对固定 $x$，$\{y : 1 \le y \le Q,\ qx - py > 0\} = \{y : y < qx/p\}$ 恰有 $\min(Q, \lfloor qx/p \rfloor)$ 个元素；而 $qx/p \le qP/p = \frac{q(p-1)}{2p} < \frac{q}{2}$，故 $\lfloor qx/p \rfloor \le \frac{q-1}{2} = Q$，这个数就是 $\lfloor qx/p \rfloor$。于是 $|R_{-}| = \sum_{x=1}^{P} \lfloor qx/p \rfloor$。对称地（交换 $p \leftrightarrow q$、$x \leftrightarrow y$）$|R_{+}| = \sum_{y=1}^{Q} \lfloor py/q \rfloor$。因此
+
+
+
+$$\sum_{x=1}^{P} \left\lfloor \frac{qx}{p} \right\rfloor + \sum_{y=1}^{Q} \left\lfloor \frac{py}{q} \right\rfloor = PQ .$$
+
+
+
+**第四步：合并。** 把第二步用在 $(p, q)$ 与 $(q, p)$ 两个方向上，再代入第三步：
+
+
+
+$$\left(\frac{q}{p}\right)\left(\frac{p}{q}\right) = (-1)^{PQ} = (-1)^{\frac{p-1}{2}\cdot\frac{q-1}{2}} ,$$
+
+
+
+这正是要证的二次互反律 ✓。∎
+
+参考：华罗庚《数论导引》第四章；Ireland–Rosen, A Classical Introduction to Modern Number Theory, Ch. 5
 
 #### Jacobi 符号　`def.jacobi-symbol`
 *定义*　Jacobi 符号：把 Legendre 符号乘起来
@@ -39922,11 +40052,15 @@ $$f = q\,(x - a) + r, \qquad \deg r < 1$$
 
 $$p(z_0 + w) = p(z_0) + c_k w^{k} + O(w^{k+1}), \qquad c_k \ne 0, \ k \ge 1$$
 
-（$k$ 是第一个非零项的阶。）取 $w = t\,\zeta$，其中 $\zeta^{k} = -p(z_0)/c_k$ 的一个 $k$ 次方根、$t > 0$ 很小。由**复数开 $k$ 次方**，这样的 $\zeta$ 总存在。则
+（$k$ 是第一个非零项的阶。）取 $w = t\,\zeta$，其中 $\zeta$ 是 $-p(z_0)/c_k$ 的一个 $k$ 次方根、$t > 0$ 很小。由**复数开 $k$ 次方**，这样的 $\zeta$ 总存在。于是 $c_k w^{k} = c_k t^{k}\zeta^{k} = -t^{k}p(z_0)$，代回展开式得
 
-$$|p(z_0 + t\zeta)|^{2} = |p(z_0)|^{2}\Bigl( 1 - \frac{2t^{k}}{|p(z_0)|} + O(t^{k+1}) \Bigr) < |p(z_0)|^{2}$$
+$$p(z_0 + t\zeta) = p(z_0)(1 - t^{k}) + O(t^{k+1}) .$$
 
-对充分小的 $t$ 成立，与 $z_0$ 的最小性矛盾。
+取模方（$0 < t < 1$ 时 $|1 - t^{k}| = 1 - t^{k}$）：
+
+$$|p(z_0 + t\zeta)|^{2} = |p(z_0)|^{2}\bigl( 1 - 2t^{k} + O(t^{k+1}) \bigr) < |p(z_0)|^{2}$$
+
+对充分小的 $t$ 成立（$m = |p(z_0)| > 0$，故 $-2t^{k}m^{2}$ 压过 $O(t^{k+1})$），与 $z_0$ 的最小性矛盾。
 3. 故 $m = 0$，即 $p(z_0) = 0$：$p$ 有根。
 4. **归纳得完全分解**：由因式定理 $p = (z - z_0) p_1$，$\deg p_1 = n - 1$，对 $p_1$ 重复第 1–3 步，$n$ 步之后 $p$ 分解成 $n$ 个一次因子之积（常数因子提到最前）。
 5. **唯一性**：由 $K[x]$ 是唯一分解整环（同一次序与常数因子之外唯一），也由「根的个数不超过次数」直接得到。∎
@@ -50129,6 +50263,15 @@ $|H| = k$：这 $k$ 个元素互不相同（若 $[a]^{i} = [a]^{j}$，$0 \le i <
 
 **④ 收尾**：$\sum \psi(d) = \sum \varphi(d)$ 且逐项 $\psi(d) \le \varphi(d)$，故每项相等；特别地 $\psi(p-1) = \varphi(p-1) > 0$。存在阶为 $p-1$ 的元素 —— 即原根，共 $\varphi(p-1)$ 个。
 
+#### Gauss 引理（二次剩余） ⟹ 二次互反律　`imp.gauss-qr-quadratic-reciprocity`
+*Gauss 引理 $\Longrightarrow$ 二次互反律（数矩形里的整点）*
+
+**① Eisenstein 形式**。Gauss 引理（`lem.gauss-qr`）给 $(q/p) = (-1)^{\mu}$，$\mu$ 是 $q, 2q, \ldots, \frac{p-1}{2}q$ 的最小正剩余里 $> p/2$ 的个数。把它换成更好数的形式：由「大于 $p/2$ 的剩余 $r$ 换成 $p - r$ 后得到 $1, \ldots, \frac{p-1}{2}$ 的一个排列」比较两边之和，得 $\mu \equiv \sum_{i=1}^{(p-1)/2} \lfloor iq/p \rfloor$（模 $2$：比较两边之和得 $\mu \equiv (1-q)\frac{p^{2}-1}{8} + S$，其中 $S = \sum_{i}\lfloor iq/p \rfloor$、$\frac{p^{2}-1}{8}$ 是整数、$q-1$ 是偶数，故第一项为偶，$\mu \equiv S$）。
+
+**② 两个和数的是什么**。固定 $i \le \frac{p-1}{2}$，矩形里满足 $j p < i q$ 的 $j \ge 1$ 恰有 $\lfloor iq/p \rfloor$ 个（因为 $iq/p < q/2$，它们自动 $\le \frac{q-1}{2}$）。所以 $\sum_{i} \lfloor iq/p \rfloor$ 数的是直线 $p y = q x$ **下方**的整点数，$\sum_{j} \lfloor jp/q \rfloor$ 数**上方**的整点数。
+
+**③ 相加**。矩形 $\{1 \le i \le \frac{p-1}{2}\} \times \{1 \le j \le \frac{q-1}{2}\}$ 共有 $\frac{p-1}{2} \cdot \frac{q-1}{2}$ 个整点，且没有点落在直线上（$iq = jp$、$p \ne q$ 为素数、$i < p$，矛盾），故两和相加恰是这个数。代回 ①：$\left(\frac{q}{p}\right)\left(\frac{p}{q}\right) = (-1)^{\frac{p-1}{2}\cdot\frac{q-1}{2}}$。∎
+
 #### 定义引用：「选择函数」→ Zorn 引理　`e161.definition`
 
 Zorn 引理与选择公理等价（`imp.zorn-choice`）：证明里要从族里挑元素，用的就是选择函数。
@@ -50180,21 +50323,43 @@ $$\mathcal{S} := \{\, S' \subseteq S : S'\ \text{闭},\ f|_{S'}\ \text{仍满} \
 #### Zorn 引理 ⟹ 内射的理想判据　`imp.zorn-baer`
 *Zorn 引理：Baer 判据的极大延拓*
 
-设 $Q$ 满足「到理想上的同态都能延拓」。要证 $Q$ 内射，只需对任意单射 $A \hookrightarrow B$ 与同态 $f : A \to Q$ 造延拓。
+设 $R$ 是含幺环、$I$ 是左 $R$-模，且满足 **Baer 条件**：对每个左理想 $J \subseteq R$ 与每个 $R$-线性映射 $h : J \to I$，存在 $x \in I$ 使 $h(r) = rx$ 对一切 $r \in J$ 成立。要证 $I$ 内射。
 
-令
 
-$$\mathcal{S} := \{\, (A', f') : A \subseteq A' \subseteq B,\ f' : A' \to Q\ \text{同态且延拓}\ f \,\},$$
 
-按「$A'$ 更大」排序。链的上界取并：$(\bigcup A'_{\alpha},\ f')$，其中 $f'$ 在 $A'_{\alpha}$ 上用 $f'_{\alpha}$ 定义 —— 良定义因为链上的延拓彼此相容。
+**第一步：化归。** 按定义，$I$ 内射 $\iff$ 对每个单射 $A \hookrightarrow B$ 与每个 $R$-线性 $f : A \to I$，存在 $R$-线性 $f_{1} : B \to I$ 使 $f_{1}|_{A} = f$。所以只需对任意包含 $A \subseteq B$ 与任意 $f : A \to I$ 造出到 $B$ 的延拓。
 
-由 Zorn 引理取极大元 $(A_{0}, f_{0})$。
 
-若 $A_{0} \ne B$，取 $b \in B \setminus A_{0}$，令 $I := \{ r \in R : rb \in A_{0} + Rb \}$ 型理想（具体：$I = \{r : rb \in A_{0}\}$ 调整后是理想），由**假设**（对理想的延拓性质）把 $f_{0}$ 延到 $A_{0} + Rb$ —— 与极大性矛盾。
 
-故 $A_{0} = B$。
+**第二步：Zorn 取极大延拓。** 令
 
-⚠ 上面中段的理想构造是**骨架**（细节取决于 $A_{0}$ 是否含 $Rb$ 的写法），结论与路线是标准的；完整论证见 Rotman《An Introduction to Homological Algebra》§3.1。
+$$\mathcal{S} := \{\, (C, g) : A \subseteq C \subseteq B,\ g : C \to I\ \text{是 } R\text{-线性映射且 } g|_{A} = f \,\},$$
+
+按 $(C, g) \le (C', g') \iff C \subseteq C'$ 且 $g'|_{C} = g$ 排序。$\mathcal{S} \ne \emptyset$（含 $(A, f)$）。任一链 $\{(C_{\alpha}, g_{\alpha})\}$ 有上界：令 $C^{*} := \bigcup_{\alpha} C_{\alpha}$、$g^{*}(c) := g_{\alpha}(c)$（$c \in C_{\alpha}$）。良定义：若 $c \in C_{\alpha} \cap C_{\beta}$，链中必有 $C_{\alpha} \subseteq C_{\beta}$ 或反之，而两个延拓在交集上一致。$g^{*}$ 是 $R$-线性的（运算落在链中某个成员上验证），且 $g^{*}|_{A} = f$，故 $(C^{*}, g^{*})$ 是上界。由 **Zorn 引理** 取极大元 $(A_{0}, f_{0})$。
+
+
+
+**第三步：极大元定义在整个 $B$ 上。** 反设 $A_{0} \ne B$，取 $b \in B \setminus A_{0}$，令
+
+$$J := \{\, r \in R : rb \in A_{0} \,\}, \qquad h : J \to I,\quad h(r) := f_{0}(rb).$$
+
+$J$ 是左理想：$0 \in J$；$r, r' \in J$ 时 $(r - r')b = rb - r'b \in A_{0}$；$s \in R$ 时 $(sr)b = s(rb) \in A_{0}$。$h$ 良定义（$rb \in A_{0}$）且 $R$-线性：$h(r + r') = h(r) + h(r')$、$h(sr) = f_{0}(srb) = s f_{0}(rb) = s h(r)$。
+
+
+
+**第四步：用 Baer 条件跳一步。** 由假设，存在 $x \in I$ 使 $h(r) = rx$（$\forall r \in J$）。令 $A_{1} := A_{0} + Rb = \{\, a + rb : a \in A_{0},\ r \in R \,\}$（$B$ 的 $R$-子模），定义
+
+$$f_{1} : A_{1} \to I,\qquad f_{1}(a + rb) := f_{0}(a) + rx.$$
+
+**良定义**：若 $a + rb = a' + r'b$，则 $(r - r')b = a' - a \in A_{0}$，故 $r - r' \in J$，于是
+
+$$rx - r'x = (r - r')x = h(r - r') = f_{0}((r - r')b) = f_{0}(a' - a) = f_{0}(a') - f_{0}(a),$$
+
+即 $f_{0}(a) + rx = f_{0}(a') + r'x$ ✓。**$R$-线性**：$f_{1}(s(a + rb)) = f_{0}(sa) + (sr)x = s f_{0}(a) + s(rx) = s f_{1}(a + rb)$，加法同理 ✓。又 $f_{1}|_{A_{0}} = f_{0}$（取 $r = 0$），故 $(A_{1}, f_{1}) \in \mathcal{S}$ 严格大于 $(A_{0}, f_{0})$ —— 与极大性矛盾。
+
+
+
+所以 $A_{0} = B$，$f_{0}$ 就是 $f$ 到 $B$ 的延拓。由于 $A \hookrightarrow B$ 与 $f$ 任意，$I$ 内射 ✓。∎
 
 #### Zorn 引理 ⟹ 积分流形　`imp.zorn-foliation`
 *Zorn 引理：叶状结构的整体存在*
@@ -50749,6 +50914,33 @@ Rayleigh 商只对 Hermite（实对称）矩阵有实值、有极值意义。
 
 迹等于特征值之和；谱半径给的是「模最大的那个」，两者从不同角度记账。
 
+#### 代数基本定理 ⟹ Schur 三角化　`imp.fa-schur`
+*代数基本定理 $\Longrightarrow$ 复方阵可三角化*
+
+**① FTA 给特征值**。特征多项式 $\chi_{A}(t) = \det(tI - A)$ 是 $n$ 次复系数多项式，由**代数基本定理**它有根 $\lambda$；于是 $A - \lambda I$ 奇异，存在单位向量 $x$ 使 $Ax = \lambda x$。
+
+**② 归纳**。在基 $(x, u_{2}, \ldots, u_{n})$ 下 $A$ 的矩阵是分块上三角：左上角是 $\lambda$，第一列除它之外全为 $0$（这正是 $Ax = \lambda x$ 的直接结果），右下角是 $(n-1)$ 阶块 $A_{1}$。对 $(n-1)$ 阶的 $A_{1}$ 用归纳假设 —— 每一步同样要 FTA 保证下一个特征值存在。于是 $A$ 相似于上三角。
+
+**③ 反过来也对**。若每个复方阵都可三角化，取多项式 $p$ 的友矩阵 $C_{p}$（它的特征多项式就是 $p$）：$C_{p}$ 上三角化后特征多项式是一串一次因子的乘积，故 $p$ 在 $\mathbb{C}$ 上有根 —— 即 FTA。所以「$\mathbb{C}$ 代数闭」与「复方阵都可三角化」是同一件事；酉相似（$U^{*}$ 而不只是 $P^{-1}$）另需正交化，见下一条边。∎
+
+#### Gram–Schmidt 正交化 + 代数基本定理 ⟹ Schur 三角化　`imp.gram-schmidt-schur`
+*Gram–Schmidt $\Longrightarrow$ 酉相似（Schur 的「酉」那一半）*
+
+**① 每一步都要正交基**。Schur 归纳取单位特征向量 $u_{1} = x$（存在性由**代数基本定理**保证 —— $\chi_{A}$ 有复根；Gram–Schmidt 只把基**酉化**），再把 $(x, e_{2}, \ldots, e_{n})$ 用 **Gram–Schmidt** 正交化成酉基 $U_{1} = (u_{1}, \ldots, u_{n})$；正交性 $u_{1}^{*}u_{j} = 0$（$j \ge 2$）让 $U_{1}^{*}AU_{1}$ 的左下角整块为零。
+
+**② 拼起来**。对 $A_{1}$（$u_{1}^{\perp} \cong \mathbb{C}^{n-1}$ 上的压缩）归纳得 $(n-1)$ 阶酉矩阵 $V$，令 $U_{2} = \operatorname{diag}(1, V)$、$U = U_{1}U_{2}$：两块都酉故 $U$ 酉，于是 $U^{*}AU = T$ 上三角 ✓。
+
+**③ 为什么非要 GS**。不用正交化只能得到「相似于上三角」（任意基就够，见上一条边），得不到 $U^{-1} = U^{*}$；数值线性代数要 Schur 而不要 Jordan，图的就是这个条件数为 $1$ 的换基。∎
+
+#### 谱定理（实对称） ⟹ Courant–Fischer 极小极大原理　`imp.spectral-courant-fischer`
+*谱定理 $\Longrightarrow$ Courant–Fischer（Rayleigh 商 + 维数计数）*
+
+**① Rayleigh 商是加权平均**。谱定理给标准正交特征基 $u_{1}, \ldots, u_{n}$，$Au_{i} = \lambda_{i}u_{i}$，$\lambda_{1} \ge \cdots \ge \lambda_{n}$；对 $x = \sum c_{i}u_{i} \ne 0$ 有 $R_{A}(x) = \sum \lambda_{i}|c_{i}|^{2} \big/\ \sum |c_{i}|^{2}$，即以 $|c_{i}|^{2}$ 为权的加权平均。
+
+**② 上界**。任取 $\dim S = k$：$S$ 与 $\operatorname{span}(u_{k}, \ldots, u_{n})$ 的维数之和 $k + (n - k + 1) > n$，故有交，交中非零向量满足 $c_{1} = \cdots = c_{k-1} = 0$，于是 $R_{A} \le \lambda_{k}$；所以 $\min_{S} R_{A} \le \lambda_{k}$ 对一切 $\dim S = k$ 的 $S$ 成立。
+
+**③ 下界与取等**。取 $S_{0} = \operatorname{span}(u_{1}, \ldots, u_{k})$：其上 $c_{k+1} = \cdots = c_{n} = 0$，故 $R_{A} \ge \lambda_{k}$，且 $x = u_{k}$ 取到等号。两边合起来得 $\max_{\dim S = k} \min_{S} R_{A} = \lambda_{k}$；把 $S$ 与维数 $n - k + 1$ 的 $T$ 对调（同样靠维数计数）、取 $T_{0} = \operatorname{span}(u_{k}, \ldots, u_{n})$ 验证取等，即得第二等式。∎
+
 #### 定义引用：「双线性型」→ 双线性型的矩阵　`dep.bf-matrix-bf`
 
 矩阵表示是双线性型的坐标写法，先有双线性型。
@@ -51039,7 +51231,7 @@ Lagrange 子空间的本质是「极大全迷向子空间」。
 
 #### 定义引用：「辛流形」→ Hamilton 向量场　`dep.hvf-sm`
 
-$\iota_{X_H}\omega = -dH$ 里的 $\omega$ 是辛流形的辛形式。
+$\iota_{X_H}\omega = +dH$ 里的 $\omega$ 是辛流形的辛形式。
 
 #### 定义引用：「向量场」→ Hamilton 向量场　`dep.hvf-vf`
 
@@ -51219,15 +51411,23 @@ $X$ 本身是 $X$ 的一个子空间（取子空间拓扑时 $X$ 的开集族不
 
 > 「强 $\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。
 
-#### 完美正规空间 ⟹ 完全正规空间　`imp.pn-cn`
+#### 完美正规空间 + Urysohn 引理 ⟹ 完全正规空间　`imp.pn-cn`
 
-**骨架**：完美正规是**遗传**的 —— 若 $X$ 完美正规、$H \subseteq X$ 是子空间，则 $H$ 也完美正规：$H$ 正规（这一步要用「每个闭集是 $G_{\delta}$」把闭集写成可数交开集，再逐项与 $H$ 取交构造分离开集，是本条真正的技术核心）；
+设 $X$ 完美正规（正规，且每个闭集都是 $G_{\delta}$），$H \subseteq X$ 任意。要证 $H$ 正规。
 
-且 $F$ 在 $X$ 中是 $G_{\delta}$ 时 $F \cap H$ 在 $H$ 中是 $G_{\delta}$（把每一个开集与 $H$ 取交即可）。
+**第一步：每个闭集都是零点集。** 设 $F \subseteq X$ 闭，写成 $F = \bigcap_{n \ge 1} U_{n}$，$U_{n}$ 开；把 $U_{n}$ 换成 $U_{1} \cap \cdots \cap U_{n}$ 可设 $\{U_{n}\}$ 递减，$F$ 不变。对每个 $n$，$F$ 与 $X \setminus U_{n}$ 是不交闭集，由 $X$ 正规与 **`lem.urysohn`** 存在连续 $f_{n} : X \to [0, 1]$ 使 $f_{n}|_{F} = 0$、$f_{n}|_{X \setminus U_{n}} = 1$。令
+$$f := \sum_{n \ge 1} 2^{-n} f_{n} .$$
+级数被 $\sum 2^{-n} = 1$ 一致控制，故 $f$ 连续且 $0 \le f \le 1$。由于每一项非负，$f(x) = 0 \iff f_{n}(x) = 0$ 对一切 $n$ 成立 $\iff x \in \bigcap_{n} U_{n} = F$。所以 $F = f^{-1}(0)$ 是零点集 ✓。
 
-于是每个子空间 $H$ 都正规，即 $X$ 完全正规 ✓。∎
+**第二步：子空间中的不交闭集。** 设 $A, B$ 是 $H$ 的不交闭集。由子空间拓扑，存在 $X$ 中的闭集 $F, G$ 使 $A = F \cap H$、$B = G \cap H$。由第一步，$F = f^{-1}(0)$、$G = g^{-1}(0)$，其中 $f, g : X \to [0, 1]$ 连续。
 
-⚠️ 本条只给骨架：完整证明属一般拓扑的标准练习（「完美正规 $\implies$ 遗传正规」）。
+**第三步：在 $H$ 上分离。** 在 $H$ 上 $f + g > 0$：若 $f(x) = g(x) = 0$，则 $x \in F \cap G \cap H = A \cap B = \emptyset$，矛盾。令
+$$h := \frac{f}{f + g}\Big|_{H} : H \to [0, 1] .$$
+$h$ 连续；$x \in A$ 时 $f(x) = 0$，故 $h(x) = 0$；$x \in B$ 时 $g(x) = 0$，而 $f(x) > 0$（否则 $x \in F \cap G \cap H = A \cap B$），故 $h(x) = 1$。取
+$$U := h^{-1}\bigl([0, 1/3)\bigr), \qquad V := h^{-1}\bigl((2/3, 1]\bigr) ,$$
+则 $U, V$ 是 $H$ 中不交开集，$A \subseteq U$、$B \subseteq V$。由 $A, B$ 任意，$H$ 正规 ✓（这一步只用「两个不交闭集可被连续函数分离 $\implies$ 正规」的初等方向）。
+
+**第四步：$H$ 任意。** 完全正规要求每个子空间都正规；$H \subseteq X$ 是任取的，故 $X$ 完全正规 ✓。∎
 
 #### 距离空间 ⟹ 完美正规空间　`imp.metric-pn`
 
@@ -53261,43 +53461,43 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「一致收敛」→ 简单函数逼近　`dep.gap-simple-approximation-uniform-convergence`
 
-陈述里提到「一致收敛」：「并且**在 （式子） 有界的集合上还是一致收敛**」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「一致收敛」：「并且**在 $f$ 有界的集合上还是一致收敛**」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「逐点收敛」→ 简单函数逼近　`dep.gap-simple-approximation-pointwise-convergence`
 
-陈述里提到「逐点收敛」：「**(b)** 一般地（（式子） 可测），可取简单函数列使绝对值逐点递增、且逐点收敛到 （式子）：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「逐点收敛」：「**(b)** 一般地（$f : X \to \mathbb{C}$ 可测），可取简单函数列使绝对值逐点递增、且逐点收敛到 $f$：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「子空间」→ 商空间　`dep.gap-quotient-vs-subspace`
 
-陈述里提到「子空间」：「设 （式子） 是子空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「子空间」：「设 $U \subseteq V$ 是子空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「线性映射」→ 商空间　`dep.gap-quotient-vs-linear-map`
 
-陈述里提到「线性映射」：「商映射 （式子）、（式子） 是满的线性映射，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「线性映射」：「商映射 $\pi : V \to V/U$、$v \mapsto v + U$ 是满的线性映射，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「解析延拓」→ 单值支的存在判据　`dep.gap-single-valued-branch-analytic-continuation`
 
-陈述里提到「解析延拓」：「若 （式子） 来自解析延拓，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「解析延拓」：「若 $F$ 来自解析延拓，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「道路同伦」→ 提升定理　`dep.gap-lifting-path-homotopy`
 
-陈述里提到「道路同伦」：「若 （式子） 是道路同伦（两端固定），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「道路同伦」：「若 $F$ 是道路同伦（两端固定），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「体积形式」→ Hamilton 向量场　`dep.gap-hamiltonian-vector-field-volume-form`
 
-陈述里提到「体积形式」：「**关键性质**：（式子）（（式子） 的流保持 （式子）），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「体积形式」：「**关键性质**：$\mathcal{L}_{X_{H}}\omega = 0$（$H$ 的流保持 $\omega$），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 生成元给出阿贝尔层的生成元　`dep.gap-generators-abelian-sheaves-topos`
 
-陈述里提到「拓扑斯」：「设 （式子） 是拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「设 $\mathcal{T}$ 是拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「子空间」→ 商空间的万有性质　`dep.gap-quotient-universal-vs-subspace`
 
-陈述里提到「子空间」：「设 （式子） 是子空间、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「子空间」：「设 $U \subseteq V$ 是子空间、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「线性映射」→ 商空间的万有性质　`dep.gap-quotient-universal-vs-linear-map`
 
-陈述里提到「线性映射」：「则对每个线性映射 （式子） 满足 （式子），存在**唯一**的线性映射 （式子） 使下图交换：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「线性映射」：「则对每个线性映射 $T : V \to W$ 满足 $U \subseteq \ker T$，存在**唯一**的线性映射 $\overline{T} : V/U \to W$ 使下图交换：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「子空间」→ 弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　`dep.gap-cgwh-closed-subspace`
 
@@ -53309,7 +53509,7 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「凝聚态阿贝尔群」→ 自由固态群是大乘积　`dep.gap-free-solid-product-condensed-abelian-group`
 
-陈述里提到「凝聚态阿贝尔群」：「对任意 profinite 集 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态阿贝尔群」：「对任意 profinite 集 $S$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态阿贝尔群」→ 固态化把超覆盖变成正合列　`dep.gap-solid-hypercover-condensed-abelian-group`
 
@@ -53317,11 +53517,11 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「固态阿贝尔群」→ 自由固态群是固态的　`dep.gap-free-solid-solid-solid-group`
 
-陈述里提到「固态阿贝尔群」：「对任意 profinite 集 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「固态阿贝尔群」：「对任意 profinite 集 $S$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「线性映射」→ 标量限制　`dep.gap-scalar-restriction-linear-map`
 
-陈述里提到「线性映射」：「态射上取恒等（（式子）-线性映射当然是 （式子）-线性的），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「线性映射」：「态射上取恒等（$S$-线性映射当然是 $R$-线性的），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「活动标架」→ 曲率与挠率　`dep.gap-frenet-frame-moving-frame`
 
@@ -53329,27 +53529,27 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「预标准拓扑」→ 拟紧的性质　`dep.gap-quasi-compact-properties-precanonical-topology`
 
-陈述里提到「预标准拓扑」：「3. 预拓扑斯 （式子）（配预标准拓扑）上的层 （式子） 拟紧 （式子） 存在满射 （式子） 且 （式子）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「预标准拓扑」：「3. 预拓扑斯 $\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\iff$ 存在满射 $X \to F$ 且 $X \in \mathcal{C}$」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 拟紧的性质　`dep.gap-quasi-compact-properties-topos`
 
-陈述里提到「拓扑斯」：「3. 预拓扑斯 （式子）（配预标准拓扑）上的层 （式子） 拟紧 （式子） 存在满射 （式子） 且 （式子）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「3. 预拓扑斯 $\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\iff$ 存在满射 $X \to F$ 且 $X \in \mathcal{C}$」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态阿贝尔群」→ CondAb 由有限表现投射对象生成　`dep.gap-condab-generated-condensed-abelian-group`
 
-陈述里提到「凝聚态阿贝尔群」：「（式子） 由**有限表现的投射**凝聚态阿贝尔群生成」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态阿贝尔群」：「$\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拟同构」→ K(A) 允许分式演算　`dep.gap-k-calculus-fractions-quasi-iso`
 
-陈述里提到「拟同构」：「（式子） 关于**拟同构**这一族态射同时允许**左**与**右分式演算**」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拟同构」：「$K(\mathcal{A})$ 关于**拟同构**这一族态射同时允许**左**与**右分式演算**」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 切片拓扑斯　`dep.gap-slice-topos-topos`
 
-陈述里提到「拓扑斯」：「1. （式子） **余连续**，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「1. $j_{T}$ **余连续**，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「向量空间」→ 商空间　`dep.gap-quotient-vs-vector-space`
 
-陈述里提到「向量空间」：「这两条**与代表元的选取无关**（因为 （式子） 是子空间），于是 （式子） 成为一个 （式子）-向量空间，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「向量空间」：「这两条**与代表元的选取无关**（因为 $U$ 是子空间），于是 $V / U$ 成为一个 $K$-向量空间，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「极小多项式」→ 相似　`dep.gap-similarity-minimal-poly`
 
@@ -53365,11 +53565,11 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「第二基本形式」→ Gauss 曲率　`dep.gap-gauss-curvature-second-fundamental-form`
 
-陈述里提到「第二基本形式」：「另一方面，若 （式子） 是第二基本形式在同一标架下的系数矩阵，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「第二基本形式」：「另一方面，若 $h_{ij}$ 是第二基本形式在同一标架下的系数矩阵，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「全纯函数」→ 调和函数　`dep.gap-harmonic-holomorphic`
 
-陈述里提到「全纯函数」：「等价的刻画（局部）：（式子） 是某个全纯函数的实部（圆盘上总可以，单连通区域上也可以，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「全纯函数」：「等价的刻画（局部）：$u$ 是某个全纯函数的实部（圆盘上总可以，单连通区域上也可以，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「惯性指数」→ 合同矩阵　`dep.gap-congruent-matrices-inertia-index`
 
@@ -53377,19 +53577,19 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「Hilbert 空间」→ 可分 Hilbert 空间等距于 ℓ²　`dep.gap-separable-hilbert-is-l2-hilbert-space`
 
-陈述里提到「Hilbert 空间」：「设 （式子） 是 Hilbert 空间，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「Hilbert 空间」：「设 $H$ 是 Hilbert 空间，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 可表示性的下降　`dep.gap-representable-quotient-topos`
 
-陈述里提到「拓扑斯」：「设 （式子） 是拓扑斯（配标准拓扑）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「设 $\mathcal{T}$ 是拓扑斯（配标准拓扑）」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「标准拓扑」→ 拟紧的性质　`dep.gap-quasi-compact-properties-canonical-topology`
 
-陈述里提到「标准拓扑」：「1. 景 （式子） 中 （式子） 拟紧 （式子） （式子） 在标准拓扑下拟紧」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「标准拓扑」：「1. 景 $\mathcal{C}$ 中 $X$ 拟紧 $\iff$ $X$ 在标准拓扑下拟紧」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「预拓扑斯」→ 拟紧的性质　`dep.gap-quasi-compact-properties-pretopos`
 
-陈述里提到「预拓扑斯」：「3. 预拓扑斯 （式子）（配预标准拓扑）上的层 （式子） 拟紧 （式子） 存在满射 （式子） 且 （式子）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「预拓扑斯」：「3. 预拓扑斯 $\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\iff$ 存在满射 $X \to F$ 且 $X \in \mathcal{C}$」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「自由紧 Hausdorff 空间」→ Cond 有足够多投射对象　`dep.gap-cond-projectives-free-compact-hausdorff`
 
@@ -53401,19 +53601,19 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「拓扑阿贝尔群」→ Ab(C) 的例子　`dep.gap-ab-of-categories-topo-ab-group`
 
-陈述里提到「拓扑阿贝尔群」：「- （式子） = **拓扑阿贝尔群**」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑阿贝尔群」：「- $\mathrm{Ab}(\mathbf{Top})$ = **拓扑阿贝尔群**」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拟同构」→ 内射消解之间的提升　`dep.gap-injective-resolution-lift-quasi-iso`
 
-陈述里提到「拟同构」：「设 （式子） 是阿贝尔范畴，（式子）、（式子） 是 （式子） 中的**内射消解**（（式子）、（式子） 内射、有界下方、拟同构于 （式子）、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拟同构」：「设 $\mathcal{A}$ 是阿贝尔范畴，$I^{\bullet} \to M$、$J^{\bullet} \to N$ 是 $\mathcal{C}^{+}(\mathcal{A})$ 中的**内射消解**（$I^{n}$、$J^{n}$ 内射、有界下方、拟同构于 $M$、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态集」→ 开覆盖给出覆盖　`dep.gap-open-covering-covering-condensed-set`
 
-陈述里提到「凝聚态集」：「若 （式子） 是拓扑空间 （式子） 的**开覆盖**（（式子） 开），则把每个 （式子） 看成凝聚态集时，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态集」：「若 $X = \bigcup_{i \in I} X_{i}$ 是拓扑空间 $X$ 的**开覆盖**（$X_i$ 开），则把每个 $X_i$ 看成凝聚态集时，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「表示函子」→ 有余幂则可表示函子有伴随　`dep.gap-copowers-give-adjoint-representable`
 
-陈述里提到「表示函子」：「若小范畴 （式子） 有**余幂**，则每个可表示函子 （式子） 都有左伴随：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「表示函子」：「若小范畴 $\mathcal{C}$ 有**余幂**，则每个可表示函子 $h_{X}$ 都有左伴随：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「特征多项式」→ 相似　`dep.gap-similarity-char-poly`
 
@@ -53429,19 +53629,19 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「固态阿贝尔群」→ 固态群构成阿贝尔子范畴　`dep.gap-solid-abelian-solid-group`
 
-陈述里提到「固态阿贝尔群」：「设 （式子） 是固态阿贝尔群的全子范畴」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「固态阿贝尔群」：「设 $\mathbf{Solid} \subset \operatorname{Cond}(\mathbf{Ab})$ 是固态阿贝尔群的全子范畴」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「导出范畴」→ 固态群构成阿贝尔子范畴　`dep.gap-solid-abelian-derived-category`
 
-陈述里提到「导出范畴」：「白话：**固态子范畴 （式子） 是一个「像模范畴一样好用」的地方** —— 它有足够多的紧投射对象（（式子）），所以能造张量积、Ext、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「导出范畴」：「白话：**固态子范畴 $\mathbf{Solid}$ 是一个「像模范畴一样好用」的地方** —— 它有足够多的紧投射对象（$\prod_I \mathbb{Z}$），所以能造张量积、Ext、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「线性映射」→ 不变量函子　`dep.gap-invariant-functor-linear-map`
 
-陈述里提到「线性映射」：「对 （式子） 记 （式子） 为 （式子）-线性映射 （式子）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「线性映射」：「对 $g \in G$ 记 $g - 1 : M \to M$ 为 $R$-线性映射 $m \mapsto g \cdot m - m$」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「切映射」→ 曲面与参数化　`dep.gap-regular-surface-differential-map`
 
-陈述里提到「切映射」：「切映射 （式子） 由 （式子）、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「切映射」：「切映射 $\mathrm{d}r\colon T_{p}U \to T_{r(p)}S$ 由 $\mathrm{d}r(\partial_{u}) = r_{u}$、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「Jacobi 矩阵」→ 切丛　`dep.gap-tangent-bundle-jacobian`
 
@@ -53449,55 +53649,55 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「线性同构」→ 向量丛　`dep.gap-vector-bundle-linear-isomorphism`
 
-陈述里提到「线性同构」：「2. **局部平凡化**：每点有开邻域 （式子） 与微分同胚 （式子），使 （式子） 与投影交换（（式子）），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「线性同构」：「2. **局部平凡化**：每点有开邻域 $U$ 与微分同胚 $\Phi : \pi^{-1}(U) \to U \times \mathbb{R}^{k}$，使 $\Phi$ 与投影交换（$\operatorname{pr}_{1} \circ \Phi = \pi$），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「闭形式」→ Cartan 公式　`dep.gap-cartan-formula-closed-form`
 
-陈述里提到「闭形式」：「2. 在闭形式上有 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「闭形式」：「2. 在闭形式上有 $\mathcal{L}_{X}\omega = \mathrm{d}\iota_{X}\omega$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「恰当形式」→ Cartan 公式　`dep.gap-cartan-formula-exact-form`
 
-陈述里提到「恰当形式」：「3. （式子） 保持闭形式空间与恰当形式空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「恰当形式」：「3. $\mathcal{L}_{X}$ 保持闭形式空间与恰当形式空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「Jacobi 矩阵」→ 微分形式　`dep.gap-form-on-manifold-jacobian`
 
-陈述里提到「Jacobi 矩阵」：「而两张图卡重叠处的两组系数由 Jacobi 矩阵的 （式子） 阶子式互相换算 —— 子式光滑，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「Jacobi 矩阵」：「而两张图卡重叠处的两组系数由 Jacobi 矩阵的 $k$ 阶子式互相换算 —— 子式光滑，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「向量丛」→ 纤维丛　`dep.gap-fiber-bundle-vector-bundle`
 
-陈述里提到「向量丛」：「**在说什么**：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「向量丛」：「**在说什么**：向量丛只要求「纤维是向量空间」」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「特征多项式」→ 特征子空间　`dep.gap-eigenspace-char-poly`
 
-陈述里提到「特征多项式」：「而 （式子） 在特征多项式里的重数叫**代数重数**」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「特征多项式」：「而 $\lambda$ 在特征多项式里的重数叫**代数重数**」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「正则满态射」→ 万有关系　`dep.gap-universal-colimit-regular-epi`
 
-陈述里提到「正则满态射」：「2. 正则满态射 （式子） 叫**万有的**，如果对任意 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「正则满态射」：「2. 正则满态射 $f : X \to Y$ 叫**万有的**，如果对任意 $Y' \to Y$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「标准拓扑」→ 可表示性的下降　`dep.gap-representable-quotient-canonical-topology`
 
-陈述里提到「标准拓扑」：「设 （式子） 是拓扑斯（配标准拓扑）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「标准拓扑」：「设 $\mathcal{T}$ 是拓扑斯（配标准拓扑）」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 拟紧对象　`dep.gap-quasi-compact-topos`
 
-陈述里提到「拓扑斯」：「在拓扑斯中，等价的说法是：任给满射 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「在拓扑斯中，等价的说法是：任给满射 $\coprod_{i \in I} X_{i} \to X$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「核与余核」→ 复形范畴是加法范畴　`dep.gap-complex-additive-kernel-cokernel`
 
-陈述里提到「核与余核」：「- 核与余核也**逐项**取：（式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「核与余核」：「- 核与余核也**逐项**取：$(\ker f)^{n} = \ker f^{n}$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态集」→ Hom 预层是层　`dep.gap-hom-presheaf-sheaf-condensed-set`
 
-陈述里提到「凝聚态集」：「设 （式子） 是拓扑空间、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态集」：「设 $X$ 是拓扑空间、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「线性同构」→ 直和与补空间　`dep.gap-direct-sum-linear-isomorphism`
 
-陈述里提到「线性同构」：「映射 （式子） 是线性同构 （式子）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「线性同构」：「映射 $(u, w) \mapsto u + w$ 是线性同构 $U \times W \cong V$」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「核与像」→ 不变子空间　`dep.gap-invariant-subspace-kernel-image-vs`
 
-陈述里提到「核与像」：「（式子） 的核与像也都是 （式子）-不变的」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「核与像」：「$T$ 的核与像也都是 $T$-不变的」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「行列式」→ 相似　`dep.gap-similarity-determinant`
 
@@ -53509,39 +53709,35 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「固态阿贝尔群」→ 固态复形与导出范畴　`dep.gap-solid-derived-solid-group`
 
-陈述里提到「固态阿贝尔群」：「复形 （式子） 固态当且仅当所有 （式子） 都是固态阿贝尔群」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「固态阿贝尔群」：「复形 $C$ 固态当且仅当所有 $H^i(C)$ 都是固态阿贝尔群」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「张量积」→ 张量积的函子性质　`dep.gap-tensor-functor-properties-tensor-module`
 
-陈述里提到「张量积」：「张量积是一个**双函子** （式子），并且：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「张量积」：「张量积是一个**双函子** $\otimes_{R} : \mathbf{Mod}\text{-}R \times R\text{-}\mathbf{Mod} \to \mathbf{Ab}$，并且：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「单位根」→ 可除群的例子　`dep.gap-divisible-groups-roots-of-unity`
 
-陈述里提到「单位根」：「3. **Prüfer （式子）-群** （式子）（（式子） 次单位根全体），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
-
-#### 定义引用：「投射维数」→ 内射维数　`dep.gap-injective-dimension-projective-dimension`
-
-陈述里提到「平坦维数」（fd，与投射维数 pd 是同一套维数的两侧）：「对偶地，它等于 （式子） 看作**右**模时的平坦维数：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「单位根」：「3. **Prüfer $p$-群** $\mathbb{Z}[1/p]/\mathbb{Z}$（$p^{k}$ 次单位根全体），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「删除消解」→ 挠积　`dep.gap-tor-deleted-resolution`
 
-陈述里提到「删除消解」：「设 （式子） 是环，（式子） 是右 （式子）-模、（式子） 是左 （式子）-模，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「删除消解」：「设 $R$ 是环，$M$ 是右 $R$-模、$N$ 是左 $R$-模，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「右导出函子」→ 群上同调　`dep.gap-group-cohomology-right-derived-functor`
 
-陈述里提到「右导出函子」：「群 （式子） 系数在 （式子） 里的**第 （式子） 个上同调群**是**不变量函子的右导出函子**：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「右导出函子」：「群 $G$ 系数在 $M$ 里的**第 $n$ 个上同调群**是**不变量函子的右导出函子**：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「连续映射」→ étale 空间　`dep.gap-etale-space-continuous-map`
 
-陈述里提到「连续映射」：「连续映射 （式子） 叫 **étale 映射**（局部同胚），如果每个 （式子） 都有开邻域 （式子） 使得 （式子） 是 （式子） 中的开集、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「连续映射」：「连续映射 $p : E \to X$ 叫 **étale 映射**（局部同胚），如果每个 $e \in E$ 都有开邻域 $V \ni e$ 使得 $p(V)$ 是 $X$ 中的开集、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「第二基本形式」→ 内蕴量　`dep.gap-intrinsic-quantity-second-fundamental-form`
 
-陈述里提到「第二基本形式」：「一旦式子里出现曲面的单位法向 （式子） 或第二基本形式，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里用 $II$ 提到第二基本形式：「⚠ 但「式子里出现 $II$」**不能**当成外在的判据：$K = \det(II)/\det(I)$ 就用了 $II$，而 $K$ 是**内蕴**的」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「绝对收敛」→ 符号测度　`dep.gap-signed-measure-absolute-convergence`
 
-陈述里提到「绝对收敛」：「其中右边的级数**绝对收敛**（在 （式子） 时）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「绝对收敛」：「其中右边的级数**绝对收敛**（在 $|\nu(\bigsqcup_j E_j)| < \infty$ 时）」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「闭形式」→ Poincaré 引理　`dep.gap-poincare-lemma-closed-form`
 
@@ -53549,7 +53745,7 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「光滑映射」→ 带边流形　`dep.gap-boundary-manifold-smooth-map`
 
-陈述里提到「光滑映射」：「（式子） 自带一个 （式子） 维**无边**光滑流形结构：把每张卡与 （式子） 求交，（式子） 限制成 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「光滑映射」：「$\partial M$ 自带一个 $(n-1)$ 维**无边**光滑流形结构：把每张卡与 $\partial\mathbb{H}^{n}$ 求交，$\varphi$ 限制成 $U\cap\partial M\to\{x^{n} = 0\}\cong\mathbb{R}^{n-1}$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「体积形式」→ 体积密度与体积形式　`dep.gap-volume-density-volume-form`
 
@@ -53557,11 +53753,11 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「奇异链」→ 奇异同调群　`dep.gap-singular-homology-singular-chain`
 
-陈述里提到「奇异链」：「全体奇异 （式子）-单纯形为基的自由阿贝尔群记 （式子）（**奇异链群**）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「奇异链」：「全体奇异 $p$-单纯形为基的自由阿贝尔群记 $S_{p}(X)$（**奇异链群**）」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「光滑流形」→ 局部平凡化　`dep.gap-local-trivialization-smooth-manifold`
 
-陈述里提到「光滑流形」：「**光滑情形**：（式子） 都是光滑流形、（式子） 光滑时，定义里把「同胚」换成「**微分同胚**」，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「光滑流形」：「**光滑情形**：$E, B, F$ 都是光滑流形、$\pi$ 光滑时，定义里把「同胚」换成「**微分同胚**」，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「正规矩阵」→ Schur 三角化　`dep.gap-schur-triangularization-normal-matrix`
 
@@ -53573,23 +53769,23 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「Banach 空间」→ B(E,F) 完备　`dep.gap-bounded-operators-banach-banach-space`
 
-陈述里提到「Banach 空间」：「则 （式子） 是 Banach 空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「Banach 空间」：「则 $(B(E, F), \|\cdot\|)$ 是 Banach 空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「Banach 空间」→ 有界算子的延拓　`dep.gap-bounded-extension-banach-space`
 
-陈述里提到「Banach 空间」：「设 （式子） 都是 Banach 空间，（式子） 是**稠密**子空间，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「Banach 空间」：「设 $E, F$ 都是 Banach 空间，$G \subseteq E$ 是**稠密**子空间，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「Hilbert 空间」→ 凸闭集的最近点　`dep.gap-projection-convex-hilbert-space`
 
-陈述里提到「Hilbert 空间」：「设 （式子） 是 Hilbert 空间，（式子） 非空、**凸**、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「Hilbert 空间」：「设 $H$ 是 Hilbert 空间，$C \subseteq H$ 非空、**凸**、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「局部紧 Hausdorff 空间」→ Baire 纲定理　`dep.gap-baire-locally-compact`
 
-陈述里提到「局部紧 Hausdorff 空间」：「设 （式子） 是完备度量空间（或局部紧 Hausdorff 空间）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「局部紧 Hausdorff 空间」：「设 $X$ 是完备度量空间（或局部紧 Hausdorff 空间）」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「分裂域」→ 伽罗瓦群　`dep.gap-galois-group-splitting-field`
 
-陈述里提到「分裂域」：「对多项式 （式子），常记 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「分裂域」：「对多项式 $f \in F[x]$，常记 $\operatorname{Gal}(f) := \operatorname{Gal}(K/F)$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「自然变换」→ 图与交换图　`dep.gap-commutative-diagram-natural-transformation`
 
@@ -53605,7 +53801,7 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「自由紧 Hausdorff 空间」→ 自由表示　`dep.gap-free-presentation-free-compact-hausdorff`
 
-陈述里提到「自由紧 Hausdorff 空间」：「1. （式子） 是自由紧 Hausdorff 空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「自由紧 Hausdorff 空间」：「1. $F$ 是自由紧 Hausdorff 空间」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「有效等价关系」→ 万有关系　`dep.gap-universal-colimit-effective-equivalence`
 
@@ -53613,75 +53809,75 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「预拓扑斯」→ 子对象构成有界格　`dep.gap-subobject-lattice-pretopos`
 
-陈述里提到「预拓扑斯」：「设 （式子） 是预拓扑斯，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「预拓扑斯」：「设 $\mathcal{C}$ 是预拓扑斯，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「预标准拓扑」→ 预标准拓扑下的层　`dep.gap-precanonical-sheaf-precanonical-topology`
 
-陈述里提到「预标准拓扑」：「设 （式子） 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「预标准拓扑」：「设 $\mathcal{C}$ 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 预标准拓扑下的层　`dep.gap-precanonical-sheaf-topos`
 
-陈述里提到「拓扑斯」：「设 （式子） 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「设 $\mathcal{C}$ 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「预标准拓扑」→ 单满在层化后不变　`dep.gap-precanonical-mono-epi-precanonical-topology`
 
-陈述里提到「预标准拓扑」：「设 （式子） 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「预标准拓扑」：「设 $\mathcal{C}$ 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 单满在层化后不变　`dep.gap-precanonical-mono-epi-topos`
 
-陈述里提到「拓扑斯」：「设 （式子） 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「设 $\mathcal{C}$ 是预拓扑斯、…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 拓扑斯上的层即保极限的预层　`dep.gap-topos-sheaf-limits-topos`
 
-陈述里提到「拓扑斯」：「拓扑斯 （式子）（配标准拓扑）上的预层 （式子） 是层 （式子） （式子） 保持所有极限」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「拓扑斯 $\mathcal{T}$（配标准拓扑）上的预层 $F : \mathcal{T}^{\mathrm{op}} \to \mathbf{Set}$ 是层 $\iff$ $F$ 保持所有极限」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「预拓扑」→ 拟紧的性质　`dep.gap-quasi-compact-properties-pretopology`
 
-陈述里提到「预拓扑」：「3. 预拓扑斯 （式子）（配预标准拓扑）上的层 （式子） 拟紧 （式子） 存在满射 （式子） 且 （式子）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「预拓扑」：「3. 预拓扑斯 $\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\iff$ 存在满射 $X \to F$ 且 $X \in \mathcal{C}$」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「拓扑斯」→ 拟分离对象　`dep.gap-quasi-separated-topos`
 
-陈述里提到「拓扑斯」：「拓扑斯 （式子） 的对象 （式子） 叫**拟分离的**，如果任给 （式子）、（式子）（其中 （式子） 都拟紧），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「拓扑斯 $\mathcal{T}$ 的对象 $X$ 叫**拟分离的**，如果任给 $Y \to X$、$Z \to X$（其中 $Y, Z$ 都拟紧），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态集」→ 底拓扑空间　`dep.gap-underlying-topological-space-condensed-set`
 
-陈述里提到「凝聚态集」：「凝聚态集 （式子） 的**底拓扑空间** （式子） 取集合 （式子）（在单点空间处的截面），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态集」：「凝聚态集 $X$ 的**底拓扑空间** $X(\cdot)$ 取集合 $X(\ast)$（在单点空间处的截面），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态阿贝尔群」→ Stonean 给出有限表现投射对象　`dep.gap-stonean-projective-condensed-abelian-group`
 
-陈述里提到「凝聚态阿贝尔群」：「则自由凝聚态阿贝尔群 （式子） 是**有限表现**的**投射**凝聚态阿贝尔群」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态阿贝尔群」：「则自由凝聚态阿贝尔群 $\mathbb{Z}\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「上同调函子」→ 长正合列　`dep.gap-long-exact-cohomological-functor`
 
-陈述里提到「上同调函子」：「推论：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「上同调函子」：「推论：$H^{n} : \mathbf{K}(\mathcal{A}) \to \mathcal{A}$ 是**上同调函子**」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「二元运算」→ 群　`dep.gap-group-binary-operation`
 
-陈述里提到「二元运算」：「设 （式子） 是**集合**，（式子） 是 （式子） 上的**二元运算**（即函数 （式子），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「二元运算」：「设 $G$ 是**集合**，$\cdot$ 是 $G$ 上的**二元运算**（即函数 $G \times G \to G$，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态阿贝尔群」→ 连续同态与内部 Hom　`dep.gap-continuous-hom-condensed-condensed-abelian-group`
 
-陈述里提到「凝聚态阿贝尔群」：「若 （式子） 是两个拓扑阿贝尔群、且 （式子） **紧生成**，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态阿贝尔群」：「若 $M, N$ 是两个拓扑阿贝尔群、且 $M$ **紧生成**，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态集」→ 拟分离即含入的滤过余极限　`dep.gap-qseparated-ind-inclusions-condensed-set`
 
-陈述里提到「凝聚态集」：「凝聚态集 （式子） 是**拟分离**的 （式子） 它可以写成」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态集」：「凝聚态集 $X$ 是**拟分离**的 $\iff$ 它可以写成」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态集」→ 拟分离 推出 底空间弱 Hausdorff　`dep.gap-qseparated-underlying-weak-hausdorff-condensed-set`
 
-陈述里提到「凝聚态集」：「若凝聚态集 （式子） 拟分离，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态集」：「若凝聚态集 $X$ 拟分离，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态阿贝尔群」→ Stone 上常系数零调　`dep.gap-stone-constant-acyclic-condensed-abelian-group`
 
-陈述里提到「凝聚态阿贝尔群」：「设 （式子） 是 **Stone 空间**（紧、Hausdorff、全不连通），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态阿贝尔群」：「设 $S$ 是 **Stone 空间**（紧、Hausdorff、全不连通），…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「Banach 空间」→ Tietze 延拓（Banach 值）　`dep.gap-tietze-banach-banach-space`
 
-陈述里提到「Banach 空间」：「设 （式子） 是**正规**拓扑空间，（式子） 是**紧**子集，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「Banach 空间」：「设 $X$ 是**正规**拓扑空间，$K \subseteq X$ 是**紧**子集，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「凝聚态集」→ 可数递增余极限是拟分离的　`dep.gap-countable-colimit-qseparated-condensed-set`
 
-陈述里提到「凝聚态集」：「1. （式子） 作为凝聚态集是**拟分离**的」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「凝聚态集」：「1. $X$ 作为凝聚态集是**拟分离**的」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「自由紧 Hausdorff 空间」→ 不交并是紧 Hausdorff 的余积　`dep.gap-coproduct-chaus-free-compact-hausdorff`
 
@@ -53689,23 +53885,23 @@ $$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
 
 #### 定义引用：「拓扑斯」→ 晶体层就是 X 上的层　`dep.gap-crystalline-sheaf-equiv-topos`
 
-陈述里提到「拓扑斯」：「2. 于是 （式子）（（式子） 上的 étale 空间范畴）（式子） 晶体层 （式子） （式子） 上的层 —— 特别地 （式子） 是拓扑斯，…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「拓扑斯」：「2. 于是 $\mathbf{Et}(X)$（$X$ 上的 étale 空间范畴）$\simeq$ 晶体层 $\simeq$ $X$ 上的层 —— 特别地 $\mathbf{Et}(X)$ 是拓扑斯」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「晶体层」→ 晶体层就是 X 上的层　`dep.gap-crystalline-sheaf-equiv-crystalline-sheaf`
 
-陈述里提到「晶体层」：「1. **实化** （式子） 给出 （式子） 上的**晶体层**与 （式子） 上的**层**之间的等价」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「晶体层」：「1. **实化** $\mathcal{F} \mapsto \mathcal{F}_{X}$ 给出 $\mathbf{Top}_{/X}$ 上的**晶体层**与 $X$ 上的**层**之间的等价」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「子范畴」→ Z-模就是阿贝尔群　`dep.gap-zmod-is-ab-subcategory`
 
-陈述里提到「子范畴」：「更一般地 （式子） 的全子范畴（要求 （式子） 的像落在中心里）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「子范畴」：「更一般地 $k\text{-}\mathbf{Alg} \simeq k\backslash\mathbf{Rng}$ 的全子范畴（要求 $k$ 的像落在中心里）」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「向量空间」→ 矩阵范畴　`dep.gap-matrix-category-vector-space`
 
-陈述里提到「向量空间」：「（式子） 是域时 （式子） 有限维 （式子）-向量空间范畴（**等价但不同构**）」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「向量空间」：「$k$ 是域时 $\operatorname{Mat}(k) \simeq$ 有限维 $k$-向量空间范畴（**等价但不同构**）」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「单侧极限」→ 间断点分类　`dep.gap-discontinuity-types-function-limit-onesided`
 
-陈述里提到「单侧极限」：「称 （式子） 是 （式子） 的**间断点**，并按两个单侧极限是否存在分成两类：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
+陈述里提到「单侧极限」：「称 $x_0$ 是 $f$ 的**间断点**，并按两个单侧极限是否存在分成两类：…」 —— 读者顺着这个词要落到它的定义上，所以接上。
 
 #### 定义引用：「光滑映射」→ 向量丛　`dep.gap-vector-bundle-smooth-map`
 
@@ -54812,7 +55008,7 @@ Hartogs 定理陈述里的「不能单射进 $X$ 的序数」直接用到序数�
 
 证明良序定理时用超限递归沿良序一步步往下取元素。
 
-#### 良序集 ⟹ 超限递归　`imp.recursion-wellorder`
+#### 良序集 + 替换公理模式 + 分离公理模式 ⟹ 超限递归　`imp.recursion-wellorder`
 *良序性 $\implies$ 递归定理*
 
 设 $(W, \preceq )$ 是良序集，$G$ 任给。记 $W_{< w} = \{ v \in W : v \prec w \}$。
@@ -54831,9 +55027,9 @@ $$f(v) = G\big( f \upharpoonright W_{< v} \big) = G\big( g \upharpoonright W_{< 
 
 $$R = \{ (w, y) : \text{存在函数} f \text{ 定义在} W_{< w} \text{ 上、满足递归式，且} y = G(f) \}$$
 
-它是集合：候选的 $f$ 都是 $W_{< w} \times V$ 的子集，先由幂集公理拿到 $\mathcal{P}(W \times V)$，再用分离公理模式从里面筛出满足条件的那些（$V$ 取一个足够大的集合即可，例如 $G$ 的值域之并的幂集的幂集）。
+由 ①，对每个 $w \in W$ 至多一个 $y$ 使 $(w, y) \in R$，所以 $R$ **是单值的**。
 
-由 ①，对每个 $w$ 至多一个 $y$，所以 $R$ **是单值的**，即 $R$ 是一个函数。
+**$R$ 是集合。** 对固定 $w$ 考察公式 $\varphi(w, y)$：「存在 $f$ 定义在 $W_{< w}$ 上、满足递归式，且 $y = G(f)$」。先用分离公理模式把 $W$ 缩到 $W^{\prime} = \{w \in W : \exists y\,\varphi(w, y)\}$，再对 $W^{\prime}$ 用**替换公理模式**（$\varphi$ 在 $W^{\prime}$ 上单值，正是 ① 保证的）得 $Y = \{y : \exists w \in W,\ (w, y) \in R\}$ 是集合 —— 这一步**不需要**「$G$ 的值域」是集合（$G$ 可以是真类函数，它的「值域」根本取不到），替换公理模式正是为这种逐点收集准备的；最后用分离公理模式从 $W \times Y$ 中筛出 $R$。
 
 **③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \notin \operatorname{dom}\, R$。
 
@@ -54845,7 +55041,7 @@ $$R = \{ (w, y) : \text{存在函数} f \text{ 定义在} W_{< w} \text{ 上、�
 
 **④ 超限归纳。** 设 $W \setminus S$ 非空，取它的最小元 $w$。则 $W_{< w} \subseteq S$，由假设 $w \in S$，矛盾。故 $S = W$。∎
 
-> ① 是唯一性、②③ 是存在性。整个证明里**只用**了良序性、幂集公理和分离公理模式 —— 没有用到选择公理。这是它能在 ZF 里安全使用的原因。
+> ① 是唯一性、②③ 是存在性。整个证明里**只用**了良序性、替换公理模式与分离公理模式 —— 没有用选择公理，也没有用幂集公理。② 对 $G$ 是**真类函数**的情形照样成立：收集 $y = G(f)$ 靠的是替换公理模式，而不是「$G$ 的值域之并的幂集」—— 真类函数没有这个值域。
 
 #### 序数 + 正则公理 ⟹ 序数可比　`imp.ordinal-trichotomy`
 *序数的定义 $\implies$ 三歧性*
@@ -61851,6 +62047,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **微分形式、积分与 de Rham ↔ Lie 群**　3 条节点级连线
 - **内积空间与正交性 ↔ 矩阵与行列式**　2 条节点级连线
 - **内积空间与正交性 ↔ 线性映射与秩**　2 条节点级连线
+- **内积空间与正交性 ↔ 多项式与因式分解**　2 条节点级连线
 - **多重线性与张量 ↔ 向量空间与基**　2 条节点级连线
 - **内积空间与正交性 ↔ 矩阵分解与最小二乘**　11 条节点级连线
 - **矩阵与行列式 ↔ 矩阵分解与最小二乘**　2 条节点级连线
@@ -61929,7 +62126,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **实数完备性的等价刻画 ↔ 数系的构造**　2 条节点级连线
 - **序结构 ↔ 序数与超限**　3 条节点级连线
 - **基数与等势 ↔ 序数与超限**　3 条节点级连线
-- **序数与超限 ↔ ZFC 公理系统**　2 条节点级连线
+- **序结构 ↔ ZFC 公理系统**　2 条节点级连线
+- **序数与超限 ↔ ZFC 公理系统**　3 条节点级连线
 - **一阶语言与公式 ↔ ZFC 公理系统**　3 条节点级连线
 - **伴随与反射 ↔ 图与极限**　13 条节点级连线
 - **伴随与反射 ↔ 函子与自然变换**　8 条节点级连线

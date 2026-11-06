@@ -44,10 +44,10 @@ window.MG = window.MG || {};
         '这就是经典力学的相空间。'
       ].join('\n'),
       notes: [
-        '⚠️ **「闭」这条不能去**：非退化 2-形式总是逐点存在（余切丛上就有），但「闭」是**整体**条件。去掉它得到的是「近辛流形」（almost symplectic），那门理论完全不同 —— 你甚至可以只要求「有非退化 2-形式」而不要求可积性。',
+        '⚠️ **「闭」这条不能去**：非退化 2-形式总是逐点存在（余切丛上就有），但「闭」是**整体**条件。去掉它得到的是「近辛流形」（almost symplectic）：有非退化 2-形式而不要求闭（那门理论完全不同）。⚠ 「可积」是 almost complex 结构的性质 —— 要再配一个 almost complex 结构才谈得上，与近辛本身的定义无关。$S^{6}$ 是「近辛但非辛」的标准例子。',
         '⭐ **为什么物理学需要它**：$\\omega$ 给出「Hamilton 流」（`def.hamiltonian-vector-field`），而 $d\\omega = 0$ 保证这些流**保持 $\\omega$**（Lie 导数 $\\mathcal{L}_{X_{H}}\\omega = 0$）—— 这就是 Liouville 定理（相体积守恒）的根子。',
         '⚠️ 辛流形**必可定向**（$\\omega^{n}$ 是无处为零的体积形式），但**不必**是 Kähler：Kähler 还要额外的复结构与相容度量。辛几何是比 Kähler 更宽的一层。',
-        '⚠️ 紧辛流形有强限制：$[\\omega] \\in H^{2}(M)$ 非零（否则 $\\omega$ 是恰当的、与最大非退化性矛盾 —— 这是「辛流形不能是 $S^{2n}$，$n \\ge 2$」的原因）。本图不展开上同调论证。'
+        '⚠️ 紧辛流形有强限制：$[\\omega] \\in H^{2}(M)$ 非零（否则 $\\omega=d\\theta$ 使 $\\omega^{n}=d(\\theta\\wedge\\omega^{n-1})$ 恰当、积分为零，与「$\\omega^{n}$ 是无处为零的体积形式」矛盾 —— 这是「辛流形不能是 $S^{2n}$，$n \\ge 2$」的原因）。本图不展开上同调论证。'
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛流形',
@@ -100,7 +100,7 @@ window.MG = window.MG || {};
         '',
         '设 $(M, \\omega)$ 是辛流形，$H \\in C^{\\infty}(M)$。由 $\\omega$ 非退化，存在唯一的向量场 $X_{H}$ 使',
         '',
-        '$$\\iota_{X_{H}}\\omega = -dH ,$$',
+        '$$\\iota_{X_{H}}\\omega = +dH ,$$',
         '',
         '称 $X_{H}$ 为 $H$ 的 **Hamilton 向量场**（$\\iota$ 是内乘，见 `def.interior-product`）。它的积分曲线满足**Hamilton 方程**：在 Darboux 坐标下',
         '',
@@ -110,7 +110,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠️ **符号约定五花八门**：$\\iota_{X_{H}}\\omega = dH$、$= -dH$、$\\omega(X_{H}, \\cdot) = dH$ 三种都在用，差一个整体符号（等价于 $H \\mapsto -H$）。\n\n' +
-        '本图取 $\\iota_{X_{H}}\\omega = -dH$，与 Arnold 一致；\n\n' +
+        '本图取 $\\iota_{X_{H}}\\omega = +dH$：Arnold 用 $\\sum dp_{i}\\wedge dq_{i}$ 配 $-dH$，本包的 $\\omega_{0}=\\sum dq_{i}\\wedge dp_{i}$ 与它差一个号，故取 $+dH$；\n\n' +
         '换书时**必须重新核对 Hamilton 方程的符号**。',
         '⭐ **「函数 $\\implies$ 向量场」是辛几何独有的**：一般流形上函数只能求微分（$dH$，一个 1-形式），要有向量场就需要一个「把 1-形式变成向量场」的同构 —— 那正是 $\\omega$ 干的事（$\\flat : TM \\to T^{*}M$，$v \\mapsto \\iota_{v}\\omega$）。\n\nRiemann 度量也能这么干（音乐同构），但得到的流不保持度量。',
         '⚠️ **Hamilton 向量场 $\\ne$ 任意向量场**：它是 $H$ 的「梯度旋转 90°」。\n\n判据：$\\iota_{X}\\omega$ 是**闭**的（即 $d(\\iota_X\\omega)=0$）。\n\n不闭的叫「局部 Hamilton 向量场」，闭的叫「辛向量场」—— 多数书不区分（因为 $H^{1}(M) = 0$ 时两者一致）。',
@@ -145,7 +145,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**它是「$H$ 能否守恒」的判据**：$\\frac{d}{dt}f = \\{f, H\\}$。所以 $f$ 是运动常数 $\\iff$ $\\{f, H\\} = 0$。力学里的「守恒量」全部由这条代数条件刻画 —— 这也是 Noether 定理的辛版本（对称性 $\\implies$ 守恒量）。',
-        '⭐ **$C^{\\infty}(M)$ 因此是 Lie 代数**：括号给出 Lie 括号，而 Hamilton 映射 $H \\mapsto X_{H}$ 是 Lie 代数同态（差一个符号），即 $[X_{f}, X_{g}] = X_{\\{f,g\\}}$（注意 $\\{f,g\\}$ 与 $-[f,g]$ 的符号约定）。\n\n这条把「函数代数」与「向量场代数」焊在一起。',
+        '⭐ **$C^{\\infty}(M)$ 因此是 Lie 代数**：括号给出 Lie 括号，而 Hamilton 映射 $H \\mapsto X_{H}$ 是**反** Lie 同态（保线性、翻括号），即 $[X_{f}, X_{g}] = -X_{\\{f,g\\}}$。\n\n这条把「函数代数」与「向量场代数」焊在一起。',
         '⚠️ **Poisson 括号比辛结构更宽**：非退化性不是必需的 —— 允许退化的 Poisson 括号给的是 **Poisson 流形**（例如 Lie 代数对偶 $\\mathfrak{g}^{*}$ 上的 Lie–Poisson 括号）。辛流形是 Poisson 流形的特例（非退化的那个）。本图只收辛的那一支。',
         '⚠️ **与量子力学的关系**：Dirac 的对应规则是 $\\{f,g\\} \\mapsto \\frac{1}{i\\hbar}[\\hat{f}, \\hat{g}]$。这不是定理（没有唯一量子化），但它解释了为什么 Jacobi 恒等式必须成立 —— 它对应交换子的 Jacobi 恒等式。'
       ].join('\n\n'),
@@ -191,7 +191,7 @@ window.MG = window.MG || {};
         '- **等价说法的方向**：逐点看 $T_{p}L$ 是 Lagrange 子空间 $\\iff$ $L$ 是 Lagrange 子流形（$L$ 浸入、且 $\\omega|_L = 0$、$\\dim = n$）。$(\\Leftarrow)$ 逐点显然；$(\\implies)$ 要「$L$ 的维数是常数」，这一点由浸入保证。\n' +
         '\n' +
         '⚠️ **闭合性不是定义的一部分**：$L$ 不必闭、不必紧、也不必嵌入（可以只是浸入、甚至多重覆叠）。物理里的 Bohr–Sommerfeld 条件用的就是这种“不必嵌入”的 Lagrange 子流形。\n' +
-        '⚠️ **「局部是函数的图像」这个等价只在 $L$ 投影到某个 Lagrange 叶层是局部同胚时成立**（$p\\,\\mathrm{d}q$ 的恰当性），不是全局性质 —— 所以“生成函数”只局部存在。\n',
+        '⚠️ **「局部是函数的图像」这个等价只在投影 $\\pi:L\\to Q$（$Q$ 为某个 Lagrange 子空间所在的零截面）为局部微分同胚时成立**（$p\\,\\mathrm{d}q$ 的恰当性），不是全局性质 —— 所以“生成函数”只局部存在。\n',
         ,
         '**各方向用到的假设**（逐点定义免费，生成函数须有横截条件）：\n' +
         '- $\\dim L=n$ 且 $\\omega|_L=0$ $\\iff$ 各切空间是 Lagrange 子空间，是对浸入的切映射逐点展开定义；不要求 $L$ 闭、紧或嵌入。\n' +
@@ -231,7 +231,7 @@ window.MG = window.MG || {};
       notes: [
         '**为什么历史上先有 Lagrange 括号**：变分法与正则变换的研究（Lagrange 的《分析力学》）先出现，那时还没有「辛流形」这个概念。\n\nPoisson 后来才发现「对偶的那个括号」满足优美的 Jacobi 恒等式，于是成了现代形式化的主角。\n\n**两个括号记的是同一份信息**（互为逆），只是 Lagrange 的那个不满足 Jacobi，所以现在只当工具用。',
         '⭐ **几何意义**：Lagrange 括号量的是「$u$、$v$ 的等值曲线族在相空间里围出的面积」。所以它天然是「面积」的语言，而 Poisson 括号是「流」的语言 —— 这就是为什么正则变换的条件用 Lagrange 括号写更直观（它直接说「面积不变」）。',
-        '⚠️ **$L = P^{-1}$ 只在同一个坐标系下比较时成立**：写这两个矩阵必须用**同一组** $(u, v)$ 作基，否则无可比性。这条是最容易记错的地方。',
+        '⚠️ **$L = -P^{-1}$ 只在同一个坐标系下比较时成立**：写这两个矩阵必须用**同一组** $(u, v)$ 作基，否则无可比性。这条是最容易记错的地方。',
         '⚠️ 符号：有书把 Lagrange 括号写成 $\\{u,v\\}$（与 Poisson 撞），也有写 $[u,v]_{q,p}$ 的。本图用后者，下标标明参照坐标。'
       ].join('\n\n'),
       refs: [
@@ -270,7 +270,7 @@ window.MG = window.MG || {};
 
     { id: 'dep.hvf-sm', kind: 'definition',
       definition: 'def.symplectic-manifold', usedBy: 'def.hamiltonian-vector-field',
-      note: '$\\iota_{X_H}\\omega = -dH$ 里的 $\\omega$ 是辛流形的辛形式。' },
+      note: '$\\iota_{X_H}\\omega = +dH$ 里的 $\\omega$ 是辛流形的辛形式。' },
     { id: 'dep.hvf-vf', kind: 'definition',
       definition: 'def.vector-field', usedBy: 'def.hamiltonian-vector-field',
       note: '$X_H$ 本身就是向量场。' },
