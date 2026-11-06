@@ -1,8 +1,12 @@
-# 亚纯函数的定义 $\implies$ Mittag-Leffler 定理（只给证明骨架）
+# 亚纯函数的定义 $\implies$ Mittag-Leffler 定理（Runge 构造）
 `imp.mittag-leffler` · 推出 · strong 边 · 根 `../`
 
 `def.entire-meromorphic` 整函数与亚纯函数 → `thm.mittag-leffler` Mittag-Leffler 定理
 
-=1$ 上使 $\sup\lvert P-1/(z-a_{k})\rvert<1$，则 $(z-a_{k})P(z)$ 一致逼近 $1$，但左边是多项式且在 $z=a_{k}$ 为零，于是 $\frac{1}{2\pi i}\oint_{\lvert z-a_{k}\rvert=1}\frac{(z-a_{k})P(z)}{z-a_{k}}\,\mathrm{d}z=0$ 而 $\frac{1}{2\pi i}\oint\frac{\mathrm{d}z}{z-a_{k}}=1$，矛盾（差的最大模必 $\ge 1$）。
+$$|P_k-T_k|<2\cdot 2^{-k}\qquad(z\in K_{n_k}).$$
 
-> 续见 proofs/imp.mittag-leffler.7.md
+**第四步：级数与主部。** 令 $f=\sum_k(P_k-T_k)$。在 $K_m$ 上只有有限多个 $k$ 满足 $n_k<m$；其余项由 $K_m\subset K_{n_k}$ 得 $|P_k-T_k|<2\cdot2^{-k}$，故级数在 $K_m$ 上一致收敛（Weierstrass 判别法）。在 $a_k$ 处，$T_k$ 与所有 $P_j$（$j\ne k$）全纯，故 $f-P_k$ 全纯，主部正是 $P_k$。
+
+**第五步：唯一性。** 两个解之差在 $\Omega$ 上无极点，是整函数。$\blacksquare$
+
+> 证明只引用本图的 `thm.runge`（其陈述已包含「极点预先指定」）与紧集穷竭；Runge 本身在图中另有完整证明。目标节点注里有逐步展开，并指出两处常见错误（在 $a_k$ 处取 Taylor 多项式、用多项式在绕 $a_k$ 的圆周上逼近 $1/(z-a_k)$）。

@@ -201,7 +201,6 @@ window.MG = window.MG || {};
       id: 'thm.frobenius',
       cluster: 'diffgeom.vector',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Frobenius 定理',
       title: 'Frobenius 定理',
       regions: ['diffgeom'],
@@ -220,34 +219,52 @@ window.MG = window.MG || {};
         '',
         '$$\\omega \\wedge \\mathrm{d}\\omega = 0,$$',
         '',
-        '这就是经典教材里的 Frobenius 条件；本图只陈述这一支，不展开。'
+        '这是经典教材里的 Frobenius 条件，它的证明就是下面 (1)$\\iff$(2) 的流盒论证在超平面分布上的具体计算。'
       ].join('\n'),
       notes: [
-        '**证明的骨架**（详细提纲写在两条边上）：(2)$\\implies$(3)$\\implies$(1) 与 (2)$\\implies$(4) 都是一行计算，内容全在 (1)$\\implies$(2) —— 先把一个生成元拉直成 $\\partial_{1}$（用局部流 + 流盒定理），再在横截超曲面上**降秩归纳**。\n\n' +
-        '关键技巧是：把其余生成元换成「没有 $\\partial_{1}$ 分量」的新生成元，于是它们的括号也落在其余生成元张成的空间里（这一步只在对合时才做得到）；\n\n' +
-        '最后沿 $\\partial_{1}$ 把坐标平移出去，用一个线性 ODE 的初值问题把「相切」验完。',
+        '**证明结构**：四条等价里 (2) 是引擎。两条完整证明边是 `imp.mf2-frobenius-flat`（(1)$\\implies$(2) 的流盒加降秩归纳）与 `imp.mf2-frobenius-integral`（(2)$\\implies$(3)、(3)$\\implies$(1)、(2)$\\implies$(4)）。下面把主线逐步写清，可以独立阅读。',
         '',
-        '**条件是最优的**：反例就是接触分布（`def.involutive-distribution` 的 notes 里那个）—— 它光滑、秩 $2$、处处非零，就是不对合，于是任何曲面都装不下它。所以「对合」不是技术假设，是充要条件的一半。',
+        '**一、(1)$\\implies$(2)：流盒 + 降秩归纳。** 取 $p$，在 $p$ 的邻域取光滑生成元 $X_{1},\\ldots,X_{k}$，它们处处独立。',
         '',
-        '**「局部」不能升成「整体」**：定理给的是每点附近有叶片坐标，**不**保证整体上有坐标把 $\\mathcal{D}$ 拉直成 $\\mathbb{R}^{n}$ 的坐标面（那要求叶空间本身是乘积流形）。稠密叶（环面上的无理斜率线）就是反例：局部全是直线，整体却绕回来稠密。',
+        '1. 由 `thm.flow-local`，把 $X_{1}$ 沿其局部流拉直：存在坐标 $(y^{1},\\ldots,y^{n})$ 使 $X_{1}=\\partial_{1}$（流盒定理）。',
+        '2. 把其余生成元写成 $X_{i}=a_{i}\\,\\partial_{1}+Y_{i}$（$i\\ge2$），其中 $Y_{i}$ 只含 $\\partial_{2},\\ldots,\\partial_{n}$ 分量。因为 $\\mathrm{d}y^{1}$ 是闭形式，',
         '',
-        '**分析版本**：Frobenius 等价于「一阶线性偏微分方程组 $\\partial_{i}f = \\sum_{j} a^{j}_{i}\\partial_{j}f$（$i > k$）局部可解」的相容性条件。\n\n相容性条件就是对合，而它恰好是「混合偏导可交换」（$\\mathrm{d}^{2} = 0$）的读法 —— 与 `def.exterior-derivative` 的 notes 里那句「$\\mathrm{d}^{2} = 0$ 与结构方程同源」是同一件事。',
+        '$$\\mathrm{d}y^{1}\\bigl([\\partial_{1},Y_{i}]\\bigr)=\\partial_{1}\\bigl(\\mathrm{d}y^{1}(Y_{i})\\bigr)-Y_{i}\\bigl(\\mathrm{d}y^{1}(\\partial_{1})\\bigr)=0,$$',
         '',
-        '**口径**：本图用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I \\subseteq \\Omega^{\\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\\mathcal{D}$ 的形式生成的理想）。本图不引入理想语言，以免两套记号打架。',
+        '所以 $[\\partial_{1},Y_{i}]$ 仍只含 $\\partial_{2},\\ldots,\\partial_{n}$ 分量。',
+        '3. 对合性给出 $[X_{1},X_{i}]=[\\partial_{1},a_{i}\\partial_{1}+Y_{i}]=(\\partial_{1}a_{i})\\partial_{1}+[\\partial_{1},Y_{i}]$ 落在 $\\mathcal{D}=\\operatorname{span}\\{\\partial_{1},Y_{2},\\ldots,Y_{k}\\}$ 里；比较 $\\partial_{1}$ 分量并利用上一步，得',
         '',
-        '⚠️ 定理的 $k = n$ 情形平凡（$\\mathcal{D} = TM$ 总对合、任意坐标都平坦），$k = 0$ 也平凡；**有内容的只有 $1 \\le k \\le n-1$**，而 $k = 1$ 又总是对合（见 `def.involutive-distribution`）。\n\n所以真正的例子从「$2 \\le k \\le n-1$」才开始。',
-        ,
-        '**四条里“对合”是唯一的假设，其余三条是它的等价翻译**（这条定理的全部难度在 1$\\implies$2）：\n' +
-        '\n' +
-        '- (1) $\\iff$ (2)：**这是定理的实质**。$(\\Leftarrow)$ 一行（坐标面 $\\partial_{1},\\ldots,\\partial_{k}$ 的括号为零）；$(\\implies)$ 是 Frobenius 的**分析核心**：对 $k$ 归纳，把“沿 $\\partial_{1}$ 的流”与“补方向上的分布”交替使用，构造出 $x^{k+1},\\ldots,x^{n}$ 使它们的方向与 $\\mathcal{D}$ 相切为零。⚠️ 这一步**需要 $\\mathcal{D}$ 的光滑性**（要 Picard–Lindelöf 解 ODE），只在 $C^{1}$ 以下会出现反例。\n' +
-        '- (1) $\\iff$ (3)：**局部可积 = 对合的局部形式**（由 2 直接得到积分流形 $x^{k+1}=\\cdots=x^{n}=0$）。\n' +
-        '- (3) $\\iff$ (4)：**这一步要用集合论的“极大连通积分流形的并”**（Zorn 或等价的取并论证）+ 局部可积保证叶在局部不打架。⚠️ 需要 $M$ 仿紧/第二可数，否则“极大连通”可能构造不好（一般流形定义里已含第二可数，所以常被忽略）。\n' +
-        '\n' +
-        '⚠️ **最常见的误用**：把“对合”当成“可积”的充分条件用在**非光滑**分布上。§1 的光滑性是必须的：存在 $C^{1}$ 分布处处不对合却处处有积分曲面（经典的“不可积性”例子）。\n'
+        '$$\\partial_{1}a_{i}=0,\\qquad [\\partial_{1},Y_{i}]\\in\\operatorname{span}\\{Y_{2},\\ldots,Y_{k}\\}.$$',
+        '',
+        '后一式说明：横截超曲面 $S=\\{y^{1}=0\\}$ 上的分布 $\\mathcal{D}_{S}=\\operatorname{span}\\{Y_{2},\\ldots,Y_{k}\\}$ 对合（秩 $k-1$）。',
+        '4. 对 $k$ 归纳（$k=1$ 时 $\\partial_{1}$ 本身就是答案）。由归纳假设，$S$ 上有坐标 $(x^{2},\\ldots,x^{n})$ 使 $\\mathcal{D}_{S}$ 由 $\\partial_{2},\\ldots,\\partial_{k}$ 生成。用 $X_{1}=\\partial_{1}$ 的流把 $S$ 的坐标沿 $x^{1}$ 方向平移，得到 $p$ 邻域上的坐标 $(x^{1},x^{2},\\ldots,x^{n})$。',
+        '5. 在这组坐标里 $[\\partial_{1},\\partial_{a}]=0$（$a\\ge2$），把 $Y_{i}$ 写成 $Y_{i}=\\sum_{a\\ge2}f^{a}_{i}\\,\\partial_{a}$；由 $[\\partial_{1},Y_{i}]\\in\\operatorname{span}\\{Y_{j}\\}$ 没有 $\\partial_{1}$ 分量、且 $[\\partial_{1},\\partial_{a}]=0$，得到 $\\partial_{1}f^{a}_{i}=0$。在 $x^{1}=0$ 的切片上 $Y_{i}=\\partial_{i}$（$i=2,\\ldots,k$ 由归纳假设），故 $f^{a}_{i}=\\delta^{a}_{i}$ 与 $x^{1}$ 无关，即 $Y_{i}=\\partial_{i}$ 在整个邻域成立。于是',
+        '',
+        '$$\\mathcal{D}=\\operatorname{span}\\{\\partial_{1},\\ldots,\\partial_{k}\\}.\\qquad\\blacksquare$$',
+        '',
+        '**二、(2)$\\implies$(3)：** 在平坦坐标里，$N=\\{x^{k+1}=\\cdots=x^{n}=0\\}$ 的切空间恰由 $\\partial_{1},\\ldots,\\partial_{k}$ 张成，故 $N$ 是 $k$ 维积分流形，过 $p$。$\\square$',
+        '',
+        '**三、(3)$\\implies$(1)：** 若 $X,Y$ 在 $p$ 处与某积分流形 $N$ 相切，则 $[X,Y]_{p}$ 也与 $N$ 相切（括号的自然性：$[X,Y]$ 只依赖 $X,Y$ 的一阶信息，把 $X,Y$ 延拓成与 $N$ 相切的向量场后括号仍在 $TN$ 中，见 `def.lie-bracket`）。故 $\\mathcal{D}$ 对合。$\\square$',
+        '',
+        '**四、(2)$\\implies$(4)：** 每个点有坐标片 $N_{q}$；取所有连通积分流形的集合，按包含关系用 Zorn 引理取极大元（链的并仍是连通积分流形：局部上它就是坐标片的一部分，光滑性沿链保持）。极大元互不相交（否则两者的并仍是连通积分流形）且覆盖 $M$。需要 $M$ 第二可数，以保证叶的集合可数、构造良好；流形定义里已含这一条。$\\square$',
+        '',
+        '**五、$k=n-1$ 与 $\\omega\\wedge\\mathrm{d}\\omega=0$ 的计算。** 设 $\\mathcal{D}=\\ker\\omega$，$\\omega$ 处处非零。对 $X,Y\\in\\ker\\omega$，',
+        '',
+        '$$\\mathrm{d}\\omega(X,Y)=X\\omega(Y)-Y\\omega(X)-\\omega([X,Y])=-\\omega([X,Y]).$$',
+        '',
+        '故对合（$[X,Y]\\in\\ker\\omega$）当且仅当 $\\mathrm{d}\\omega$ 在 $\\ker\\omega\\times\\ker\\omega$ 上恒为零。而 $\\mathrm{d}\\omega$ 在 $\\ker\\omega$ 上为零当且仅当 $\\mathrm{d}\\omega=\\omega\\wedge\\alpha$（某个 $1$-形式 $\\alpha$），这又当且仅当 $\\omega\\wedge\\mathrm{d}\\omega=0$（两边用同一个 $\\alpha$ 展开即知）。$\\square$',
+        '',
+        '**六、条件是最优的。** 反例是接触分布（见 `def.involutive-distribution` 的注）：它光滑、秩 $2$、处处非零，却不对合，于是任何曲面都装不下它。所以「对合」不是技术假设，而是充要条件的一半。',
+        '',
+        '**七、「局部」不能升成「整体」。** 定理给的是每点附近有叶片坐标，**不**保证整体上有坐标把 $\\mathcal{D}$ 拉直成 $\\mathbb{R}^{n}$ 的坐标面（那要求叶空间本身是乘积流形）。环面上无理斜率线的叶稠密，就是反例：局部全是直线，整体却绕回来稠密。',
+        '',
+        '**八、分析版本与光滑性。** Frobenius 等价于「一阶线性偏微分方程组 $\\partial_{i}f=\\sum_{j}a^{j}_{i}\\partial_{j}f$（$i>k$）局部可解」的相容性条件；相容性就是对合，也正是 $\\mathrm{d}^{2}=0$ 的读法。第 1 步用 Picard–Lindelöf 解 ODE，所以 $\\mathcal{D}$ 必须光滑（至少 $C^{2}$ 才能谈括号）；$C^{1}$ 以下会出现「处处不对合却处处有积分曲面」的反例。',
+        '',
+        '**九、口径。** 本图用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I\\subseteq\\Omega^{\\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\\mathcal{D}$ 的形式生成的理想）。本图不引入理想语言，以免两套记号打架。$k=n$ 与 $k=0$ 平凡；$k=1$ 总对合，真正的例子从 $2\\le k\\le n-1$ 开始。'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· Frobenius 定理与叶状结构',
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 一阶偏微分方程组的相容性'
+        'Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 19 · Distributions and Foliations'
       ]
     },
 
@@ -1258,7 +1275,7 @@ window.MG = window.MG || {};
         '',
         '故 $[X,Y]$ 落在 $\\mathrm{d}i(TN) = \\mathcal{D}$ 里 —— 对合成立。',
         '',
-        '**(2)$\\implies$(4)。** 把平坦坐标里所有形如 $\\{x^{k+1} = c^{k+1},\\ldots,x^{n} = c^{n}\\}$ 的切片按「过同一点则重合」粘起来：由 `def.integral-manifold` 的 notes 里的局部唯一性，粘出来的是一族互不相交的极大连通积分流形，覆盖 $M$（每点在自己的卡里落在一片切片上）。\n\n（这一步的严格写法要对「所有的叶」用一个极大的不相交族取并，属于集合论层面的手续，本图只给口径。）',
+        '**(2)$\\implies$(4)。** 把平坦坐标里所有形如 $\\{x^{k+1} = c^{k+1},\\ldots,x^{n} = c^{n}\\}$ 的切片按「过同一点则重合」粘起来：由 `def.integral-manifold` 的 notes 里的局部唯一性，粘出来的是一族互不相交的极大连通积分流形，覆盖 $M$（每点在自己的卡里落在一片切片上）。\n\n严格写出来：在 $M$ 上定义关系 $p\\sim q$ 当且仅当存在分段光滑曲线 $\\gamma:[0,1]\\to M$ 使 $\\gamma(0)=p$、$\\gamma(1)=q$ 且 $\\gamma\'(t)\\in\\mathcal{D}_{\\gamma(t)}$（称**$\\mathcal{D}$-曲线**）。这是等价关系（曲线首尾拼接）。\n\n对 $p\\in M$，取过 $p$ 的平坦坐标卡 $(U,\\varphi)$ 与切片 $S=\\{x^{k+1}=\\cdots=x^{n}=0\\}$：$S$ 上每点都可由 $p$ 出发的 $\\mathcal{D}$-曲线到达，故 $S$ 含于 $p$ 的等价类 $L$。所有这样的切片给出 $L$ 的一个图册（转移映射是平坦坐标之间光滑映射的限制），于是 $L$ 是连通浸入子流形、$TL=\\mathcal{D}|_{L}$。由定义 $L$ 极大：任何含 $p$ 的积分流形 $N$ 中的曲线都是 $\\mathcal{D}$-曲线，故 $N\\subset L$。这些 $L$ 互不相交、覆盖 $M$，即得叶状结构。（$M$ 第二可数，故每个 $L$ 的图册可取可数子族，$L$ 是第二可数流形；它是 $M$ 的浸入子流形。）\n',
         '',
         '**为什么 (1) 是本定理的核心**：(2)、(3)、(4) 都是「存在某个几何对象」，而 (1) 只是「有限个括号的封闭性」。定理真正说的是：**一条纯代数的条件等价于一条纯几何的结论** —— 前者有限步可验，后者要解偏微分方程组。∎'
       ].join('\n')

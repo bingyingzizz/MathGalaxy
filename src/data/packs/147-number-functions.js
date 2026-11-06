@@ -289,7 +289,7 @@ window.MG = window.MG || {};
         '$$-\\frac{\\zeta\'(s)}{\\zeta(s)} = \\sum_{n \\ge 1} \\Lambda(n)\\,n^{-s} = s\\int_{1}^{\\infty} \\psi(t)\\,t^{-s-1}\\,\\mathrm{d}t \\qquad (\\operatorname{Re} s > 1),$$',
         '最后一个等号由 Abel 求和（分部积分）得到：$\\sum_{n \\le x}\\Lambda(n) = \\psi(x)$。于是 $\\psi$ 的 Mellin 变换就是 $-\\zeta\'/(s\\zeta)$；由命题 A，它在 $\\{\\operatorname{Re} s \\ge 1\\}$ 上除 $s = 1$ 外全纯，而 $s = 1$ 是单极点、留数为 $1$（因为 $\\zeta$ 在 $1$ 附近形如 $1/(s-1) + O(1)$，故 $-\\zeta\'/\\zeta \\sim 1/(s-1)$）。把命题 B 用于 $f = \\psi$（$\\psi$ 非负、单调不减）得 $\\psi(x) \\sim x$，再由上面的等价性得素数定理。',
         '⚠️ **缺的正是命题 A 与命题 B 的证明**：命题 A 需要 $\\zeta$ 的解析延拓（Euler–Maclaurin 或 Abel 求和）、$\\zeta(1+it) \\ne 0$ 的经典论证（$3 + 4\\cos\\theta + \\cos 2\\theta \\ge 0$ 推出 $\\zeta(1+it) \\ne 0$）；命题 B 是 Ingham/Newman 的 Tauber 定理，需要围道积分与增长估计。两者都不在「中等档」的篇幅内，本图不硬编——这就是本节点保留 skeleton 的原因。',
-        '⭐ Riemann 假设（$\\zeta$ 的非平凡零点全在 $\\operatorname{Re} s = 1/2$）就是把命题 B 的误差压到 $O(\\sqrt{x}\\log x)$ 的命题，至今未解。',
+        '⭐ Riemann 假设（$\\zeta$ 的非平凡零点全在 $\\operatorname{Re} s = 1/2$）下，$\\psi(x) = x + O(\\sqrt{x}\\log^{2}x)$、$\\pi(x) = \\operatorname{li}(x) + O(\\sqrt{x}\\log x)$；至今未解。',
         '**等价形式 $p_{n} \\sim n\\log n$**：由 $\\pi(p_{n}) = n$ 与 $\\pi(x) \\sim x/\\log x$ 直接代入（$x = p_{n}$：$n \\sim p_{n}/\\log p_{n}$，再解出 $p_{n} \\sim n\\log n$；这一步只用 $\\pi(x) \\sim x/\\log x$，不需要额外解析输入）。',
       ].join('\n\n'),
       refs: [
@@ -449,7 +449,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.nt-pnt',
       kind: 'implication',
-      sources: ['def.prime-counting'],
+      sources: ['def.prime-counting', 'def.riemann-zeta', 'thm.euler-product'],
       target: 'thm.prime-number-theorem',
       title: '素数定理：$\\zeta$ 在 $\\operatorname{Re}\\,s = 1$ 上无零点',
       proof: [
@@ -465,7 +465,7 @@ window.MG = window.MG || {};
         '',
         '**④ 收尾。** 由 ②，每个非平凡零点满足 $\\operatorname{Re}\\rho < 1$（准确说是 $0 < \\operatorname{Re}\\rho < 1$）。⚠️ 注意 $\\lvert\\rho\\rvert$ 本身**没有上界** —— 高度 $\\le T$ 的零点个数是 $\\frac{T}{2\\pi}\\log\\frac{T}{2\\pi e}+O(\\log T)$，随 $T$ 增长；所以不能用 $\\lvert\\rho\\rvert\\le 1$。每项 $x^{\\rho} = x^{\\operatorname{Re}\\rho}$（乘一个模长因子）确实严格低于 $x$，但「每项都 $o(x)$」推不出「求和也是 $o(x)$」：必须按高度把零点分段、用上面那个计数把段内项数与 $\\lvert\\rho\\rvert$ 一起压住（这一步才是本条的真正难点，本图不展开）。得 $\\sum_{\\rho}x^{\\rho}/\\rho = o(x)$，于是 $\\psi(x) \\sim x$；\n\n再由 $\\psi \\sim \\theta$（Abel 部分求和）与 $\\theta(x) = \\sum_{p\\le x}\\log p \\sim \\pi(x)\\log x$（因为 $\\sum_{p\\le x}\\log p = \\pi(x)\\log x - \\int_{2}^{x}\\frac{\\pi(t)}{t}\\,\\mathrm{d}t$ 再分部求和）得 $\\pi(x) \\sim x/\\log x$。',
         '',
-        '⛔ 本节点**只给陈述与骨架**，证明的每一步（尤其 ② 与 ③ 的截断估计）都不在本图 —— 它需要复分析整章（`complex` 星系那一条线）。要真正做完，得先有 $\\zeta$、$\\Gamma$、Perron 公式与零点计数，那是另一个量级的工作。',
+        '⛔ 本节点注已补出完整的 $\\psi$/$\\theta$/$\\pi$ 等价链与 Abel 求和；边 proof 仍是骨架，真正缺的是命题 A（$\\zeta$ 延拓 $+$ $\\operatorname{Re} s = 1$ 无零点）与命题 B（Tauber 收尾），故这里不勾 ∎。',
       ].join('\n\n'),
     },
 

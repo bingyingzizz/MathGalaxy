@@ -13,7 +13,7 @@ layer 22 · 定理 · 测度的构造 · 实变函数+数学分析
 - …另有入边，续页见 [nodes/thm.riesz-markov.3.md](./thm.riesz-markov.3.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/thm.riesz-markov.4.md](./thm.riesz-markov.4.md)
+- …另有出边，续页见 [nodes/thm.riesz-markov.5.md](./thm.riesz-markov.5.md)
 
 refs: Rudin, Real and Complex Analysis (3rd ed.), Ch. 2 · Riesz Representation Theorem（定理 2.14）；Folland, Real Analysis, Ch. 7 · Riesz Representation Theorem；Bauer, Measure and Integration Theory, Ch. 7 · Riesz–Markov–Kakutani
 

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T10:45:36.343Z
-> 15 星系 / 105 星团 / 1540 节点 / 3169 连线（强边 3130，弱边 39；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T11:01:53.904Z
+> 15 星系 / 105 星团 / 1540 节点 / 3170 连线（强边 3131，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -5162,7 +5162,7 @@ $$f(x) \;\in\; \bigcap_{i=0}^{p} \operatorname{st}_{L}\big(g(v_{i})\big).$$
 
 - 重心重分链映射 $\operatorname{sd}^{m} : C_{*}(K) \to C_{*}(K^{(m)})$ 与 $\iota_{m}$ 满足 $\iota_{m}\,\operatorname{sd}^{m} = \iota$（重分不改变几何实现，链级上是细分），且 $\operatorname{sd}^{m}$ 诱导同调同构（反向链同伦：每个重分后的单纯形落在原单纯形里，锥构造给出）。
 
-⚠️ **这里缺一步（本图未写）**：$\iota_{*}\,g_{*}\,\operatorname{sd}^{m}_{*} = \iota_{*}$ 只给出 $\iota_{*}$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g_{*}\operatorname{sd}^{m}_{*}$ 可逆，而那正是要证的。要闭合，得显式造出链映射 $r : S_{*}(|K|) \to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\,\iota = \operatorname{id}$、$\iota\,r \simeq \operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。∎
+⚠️ **这里缺一步（本图未写）**：$\iota_{*}\,g_{*}\,\operatorname{sd}^{m}_{*} = \iota_{*}$ 只给出 $\iota_{*}$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g_{*}\operatorname{sd}^{m}_{*}$ 可逆，而那正是要证的。要闭合，得显式造出链映射 $r : S_{*}(|K|) \to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\,\iota = \operatorname{id}$、$\iota\,r \simeq \operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。
 
 **⚠️ 技术细节**：上面用了「单纯映射诱导链映射」「链同伦的棱柱构造」两件标准机器（见 `def.chain-homotopy`、`thm.homotopy-invariance`）。若把 $C_{*}$ 取成**有序**链群，$g$ 在退化时可能把单纯形压扁，链映射的符号要按顶点顺序处理；本图的同调均按有序链群的商（去掉退化）定义，此处不展开符号。
 
@@ -15596,7 +15596,7 @@ $$\mu(U) := \sup\Big\{\, \Lambda(f) : f \in C_{c}(X),\ 0 \le f \le 1,\ \operator
 
 $$\mu(U \cup V) \le \mu(U) + \mu(V).$$
 
-证明：取 $f \in C_{c}$，$0 \le f \le 1$，$K := \operatorname{supp} f \subseteq U \cup V$。$K \setminus V$ 是紧集且含于开集 $U$，由 Urysohn 引理（`lem.urysohn`）存在 $\varphi \in C_{c}(X)$，$0 \le \varphi \le 1$，$\varphi = 1$ 于 $K \setminus V$，$\operatorname{supp} \varphi \subseteq U$。于是
+证明：取 $f \in C_{c}$，$0 \le f \le 1$，$K := \operatorname{supp} f \subseteq U \cup V$。$K \setminus V$ 是紧集且含于开集 $U$，先取**单点紧化** $X^{+} = X \cup \{\infty\}$：$X$ 局部紧 Hausdorff $\Longrightarrow$ $X^{+}$ 紧 Hausdorff $\Longrightarrow$ $X^{+}$ 正规，故可在 $X^{+}$ 内对紧集 $K \setminus V$ 与开集 $U$ 用 Urysohn 引理（`lem.urysohn`，要的是**正规**而非局部紧），得 $\varphi^{+} : X^{+} \to [0,1]$ 使 $\varphi^{+} = 1$ 于 $K\setminus V$、$\varphi^{+} = 0$ 于 $X^{+}\setminus U$。限制回 $X$ 得 $\varphi := \varphi^{+}|_{X} \in C_{c}(X)$，且 $\operatorname{supp} \varphi \subseteq U$、$\varphi = 1$ 于 $K\setminus V$。于是
 
 $$f = f\varphi + f(1 - \varphi),\qquad \operatorname{supp}(f\varphi) \subseteq U,\qquad \operatorname{supp}\big(f(1 - \varphi)\big) \subseteq V$$
 
@@ -15618,7 +15618,7 @@ $$\Lambda(f) + \Lambda(g) = \Lambda(f + g) \le \mu(U \cup V).$$
 
 $$\mu^{*}(E) := \inf\big\{\, \mu(U) : E \subseteq U,\ U\ \text{开} \,\big\}.$$
 
-它是外测度：单调、$\mu^{*}(\emptyset) = 0$、可数次可加（覆盖的并仍是开覆盖，用 $\mu$ 在开集上的次可加性逐项控制）。
+它是外测度：单调与 $\mu^{*}(\emptyset) = 0$ 显然。**可数次可加**：取 $E_{n} \subseteq U_{n}$（$U_{n}$ 开），由引理 2 的有限次可加性（对并归纳），对紧集 $K \Subset \bigcup_{n} U_{n}$ 取有限子覆盖 $U_{n_{1}},\ldots,U_{n_{k}}$ 得 $\mu(K) \le \sum_{i} \mu(U_{n_{i}}) \le \sum_{n} \mu(U_{n})$；对 $K$（即对可行函数）取上确界得 $\mu(\bigcup_{n}U_{n}) \le \sum_{n}\mu(U_{n})$，再对 $E \subseteq \bigcup_{n}U_{n}$ 取下确界即得 $\mu^{*}$ 的可数次可加性。
 
 **引理 4（开集是 Carathéodory 可测的）**：对任意 $A \subseteq X$ 与开集 $U$，
 
@@ -15636,13 +15636,13 @@ $$\mu^{*}(A \cap U) + \mu^{*}(A \setminus U) \le \mu^{*}(A).$$
 
 $$\Lambda(f) = \int_{X} f\,\mathrm{d}\mu .$$
 
-标准做法：先对 $0 \le f \le 1$、$K = \operatorname{supp} f$ 取 $K$ 的有限开覆盖，使 $f$ 在每个覆盖成员上的振幅 $< \varepsilon$；用从属于它的单位分解（`def.partition-of-unity`、`prop.paracompact-partition-unity`）造出两个连续函数
+标准做法：先对 $0 \le f \le 1$、$K = \operatorname{supp} f$ 取 $K$ 的**有限**开覆盖 $\{U_{i}\}$，使 $f$ 在每个成员上的振幅 $< \varepsilon$；再取紧支 bump $\varphi_{i} \prec U_{i}$，因覆盖有限、在 $K$ 上归一化 $\sum_{i} \varphi_{i} = 1$ 即可（这正是 `def.partition-of-unity` 在有限覆盖下的情形，无需仿紧性），据此造出两个连续函数
 
 $$g \le f \le h,\qquad \Lambda(h) - \Lambda(g) < \varepsilon,\qquad \int (h - g)\,\mathrm{d}\mu < \varepsilon,$$
 
 再对 $g, h$ 用第一步的「$\mu(U) = \sup \Lambda$」把 $\Lambda$ 与 $\int$ 的差压到 $\varepsilon$，从而 $|\Lambda(f) - \int f\,\mathrm{d}\mu| \le 2\varepsilon$。这一步的估计（覆盖的选取、单位分解的支集控制、$\int(h-g)$ 的上界）本图**没有写全**，故保留 skeleton。
 
-**唯一性**：若两个正则 Borel 测度给出同一个 $\Lambda$，则对开集 $U$ 与 $f \prec U$，$\int f\,\mathrm{d}\mu_{1} = \Lambda(f) = \int f\,\mathrm{d}\mu_{2}$；取 $f \uparrow \chi_{U}$ 的 Urysohn 逼近（局部紧 $+$ $\sigma$-紧的通常假设下）得 $\mu_{1}(U) = \mu_{2}(U)$，再由正则性得两测度相等。
+**唯一性**：若两个正则 Borel 测度给出同一个 $\Lambda$，则对开集 $U$ 与 $f \prec U$，$\int f\,\mathrm{d}\mu_{1} = \Lambda(f) = \int f\,\mathrm{d}\mu_{2}$；对紧集 $K \Subset U$，用单点紧化后的 Urysohn 引理取 $f \prec U$、$f = 1$ 于 $K$，得 $\mu_{1}(K) \le \Lambda(f) \le \mu_{2}(U)$；先对 $K$ 取上确界（内正则）、再对 $U$ 取下确界（外正则），即得 $\mu_{1}(U) = \mu_{2}(U)$，从而两测度相等。
 
 **范数**：若 $X$ 紧，$\mu(X) = \sup\{\Lambda(f) : 0 \le f \le 1\} = \lVert\Lambda\rVert$（正泛函在 $f \le 1$ 上的上确界就是范数）；$X$ 不紧时也可能有限（如有限总质量的测度），此时两端仍相等；也可能同为 $+\infty$。
 
@@ -31941,7 +31941,7 @@ $f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \le |f|$，Rouché 就把 $f
 参考：王晓光《复变函数》· Hurwitz 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
 
 #### Mittag-Leffler 定理　`thm.mittag-leffler`
-*定理*　定理：Mittag-Leffler 定理（只陈述）
+*定理*　定理：Mittag-Leffler 定理（主部插值）
 
 **白话**：给定一串没有聚点的点和每个点处的一截「极点主部」，总能造出一个亚纯函数，使它在这些点处的行为恰好就是给定的那些主部。
 
@@ -31953,19 +31953,51 @@ $$P_k\left( \frac{1}{z - a_k} \right) = \sum_{j=1}^{m_k} \frac{c_{k j}}{(z - a_k
 
 ⭐ 一句话：这是「按主部插值」的存在定理。Weierstrass 乘积定理是它的**零点**版，Mittag-Leffler 是**极点**版 —— 一个指定零点的位置与重数，一个指定极点的位置与主部。
 
-⚠ 本条只**陈述**结论。完整证明要用 Runge 逼近或 Weierstrass 收敛因子逐项修正，属于逼近论，这里不展开；边上只记证明的骨架。
+**证明（Runge 版，完整写下来）。** 全程只用本图已有的 `thm.runge`（极点预先指定的形式）与紧集穷竭，不引用外部结果。
 
-⭐ 收敛的障碍在哪：极点无穷多个时 $\sum_k P_k$ 一般处处发散。修正的办法是逐项减去一个在 $a_k$ 附近全纯的函数（通常是 $P_k$ 在 $a_k$ 处的 Taylor 多项式），把它在越来越大的紧集上压得足够小。
+**第 0 步：约定。** $\Omega\subset\mathbb{C}$ 是区域；极点列 $\{a_k\}$ 在 $\Omega$ 内无聚点；主部记作 $P_k(w)=\sum_{j=1}^{m_k}c_{kj}w^{j}$，实际使用的是 $P_k\bigl(1/(z-a_k)\bigr)$。
+
+**第 1 步：紧集穷竭与分层。** 令
+
+$$K_n=\bigl\{\,z\in\Omega:\ |z|\le n,\ \operatorname{dist}(z,\partial\Omega)\ge 1/n\,\bigr\}$$
+
+（约定 $\operatorname{dist}(z,\emptyset)=+\infty$，故 $\Omega=\mathbb{C}$ 时 $K_n=\overline{B}(0,n)$）。则每个 $K_n$ 紧、$K_n$ 含于 $K_{n+1}$ 的内部、$\bigcup_n K_n=\Omega$。由无聚点性，每个 $K_n$ 只含有限多个 $a_k$。令 $L_k=\min\{\,n:\ a_k\in K_n\,\}$，则 $L_k\to\infty$。记 $n_k=L_k-1$，就有
+
+$$a_k\notin K_{n_k},\qquad n_k\to\infty.$$
+
+**引理（穷竭的几何性质）。** $\mathbb{C}\setminus K_n$ 的每个**有界**连通分支都含 $\partial\Omega$ 的点。
+
+*证明。* 由定义，补集包含于 $\{\operatorname{dist}(z,\partial\Omega)<1/n\}\cup\{|z|>n\}$。集合 $\{|z|>n\}$ 整个落在补集里且连通无界，所以任何与它相交的补集分支必无界；于是有界分支必含于 $\{\operatorname{dist}<1/n\}$。而 $\{\operatorname{dist}<1/n\}=\bigcup_{w\in\partial\Omega}B(w,1/n)$，它的每个连通分支都是若干个这种球的并、因而含某个球心 $w\in\partial\Omega$；该分支落在补集里，故它就是所在补集分支的一部分。$\square$
+
+**第 2 步：Runge 逼近（预先指定极点）。** 本图 `thm.runge` 的陈述是：$K\subset\Omega$ 紧、$f$ 在 $K$ 的某邻域全纯，则 $f$ 在 $K$ 上可被有理函数一致逼近，且极点可**预先指定**在 $\mathbb{C}\setminus K$ 的每个连通分支里各取一点。下面只用它的这个形式。
+
+**第 3 步：造修正项。** 固定 $k$。$P_k\bigl(1/(z-a_k)\bigr)$ 在 $K_{n_k}$ 的邻域全纯（因为 $a_k\notin K_{n_k}$）。对 $\mathbb{C}\setminus K_{n_k}$ 的每个分支取一点：有界分支由引理取 $s\in\partial\Omega\subset\mathbb{C}\setminus\Omega$；无界分支任取一点。由第 2 步，存在有理函数 $R_k$，极点在所取的点上，且
+
+$$\left|P_k\!\left(\frac{1}{z-a_k}\right)-R_k(z)\right|<2^{-k}\qquad(z\in K_{n_k}).$$
+
+无界分支那个极点可以去掉：设它是 $s$、对应的部分分式项为 $c/(z-s)^{j}$，令 $|s|\to\infty$，则 $|c|/|z-s|^{j}\to0$ 在 $K_{n_k}$ 上一致成立；把 $s$ 取得足够大再去掉该项，误差仍小于 $2^{-k}$。于是得到有理函数 $T_k$，它的极点全在 $\mathbb{C}\setminus\Omega$ 里，因而 $T_k$ 在 $\Omega$ 上全纯，且
+
+$$|P_k-T_k|<2\cdot2^{-k}\qquad(z\in K_{n_k}).$$
+
+**第 4 步：级数收敛。** 令 $f=\sum_{k=1}^{\infty}(P_k-T_k)$。在任一 $K_m$ 上：使 $n_k<m$ 的 $k$ 只有有限多个（$n_k\to\infty$）；对其余的 $k$ 有 $K_m\subset K_{n_k}$，故 $|P_k-T_k|<2\cdot2^{-k}$。由 Weierstrass 判别法，级数在 $K_m$ 上一致收敛。于是 $f$ 在 $\Omega\setminus\{a_k\}$ 上全纯。
+
+**第 5 步：主部正确。** 固定 $k$。$T_k$ 及所有 $P_j$（$j\ne k$）在 $a_k$ 处全纯（$a_j\ne a_k$），故 $f-P_k$ 在 $a_k$ 的某邻域全纯；即 $f$ 在 $a_k$ 处的主部正是 $P_k$。
+
+**第 6 步：唯一性。** 若 $f_1,f_2$ 都满足，则 $f_1-f_2$ 在 $\Omega$ 上处处全纯（所有极点与主部相消），是 $\Omega$ 上的整函数。$\blacksquare$
+
+⚠ **两处不能那样写**：① 取 $a_k$ 处的 **Taylor 多项式**没有意义 —— $a_k$ 本身是极点，$P_k$ 在那里不全纯；② 也不能用多项式在围住 $a_k$ 的圆周上逼近 $1/(z-a_k)$：若多项式 $Q$ 在 $|z-a_k|=1$ 上使 $\sup|Q-1/(z-a_k)|<1$，则 $(z-a_k)Q(z)$ 一致逼近 $1$，但左边是多项式且在 $a_k$ 为零，于是 $\frac{1}{2\pi i}\oint (z-a_k)Q(z)/(z-a_k)\,\mathrm{d}z=0$ 而 $\frac{1}{2\pi i}\oint \mathrm{d}z/(z-a_k)=1$，矛盾。
+
+⭐ **收敛的障碍在哪**：极点无穷多个时 $\sum_k P_k$ 一般处处发散；修正的办法是逐项减去在 $a_k$ 附近全纯的 $T_k$，把它在越来越大的紧集上压小。注意**不能按 $|a_k|$ 排序**：$\Omega=\{0<|z|<1\}$、$a_k=1/(k+1)$ 在 $\Omega$ 内无聚点，但没有模最小的点。
 
 ⭐ 例子（经典的两个）：
 
 $$\pi^2 \csc^2(\pi z) = \sum_{n \in \mathbb{Z}} \frac{1}{(z - n)^2}, \qquad \pi \cot(\pi z) = \frac{1}{z} + \sum_{n \ne 0} \left( \frac{1}{z - n} + \frac{1}{n} \right).$$
 
-第二个里的 $+1/n$ 就是收敛因子。
+第二个里的 $+1/n$ 就是收敛因子（正是第 3 步「减去全纯修正项」的具体形式）。
 
 📌 与留数的接口：主部里的一次项系数 $c_{k 1}$ 正是 $\operatorname{Res}(f, a_k)$，所以 Mittag-Leffler 也可以读成「任意指定留数与高阶主部」。
 
-参考：王晓光《复变函数》· Mittag-Leffler 定理；Stein–Shakarchi, Complex Analysis · 整函数与亚纯函数
+参考：王晓光《复变函数》· Mittag-Leffler 定理；Stein–Shakarchi, Complex Analysis · 整函数与亚纯函数；Ahlfors, Complex Analysis, Ch. 5 · Entire and Meromorphic Functions
 
 #### Jordan 引理　`lem.jordan`
 *引理*　引理：Jordan 引理（大圆弧上的指数衰减）
@@ -32563,7 +32595,7 @@ $$f(z) = A\int_{z_{0}}^{z} g(\zeta)\,\mathrm{d}\zeta + B.$$
 
 **引理 A（Carathéodory–Osgood，Jordan 区域情形）**：Jordan 区域到单位圆盘的共形映射连续延拓为闭包同胚。多边形是 Jordan 区域，故 $F$ 的边界对应成立。
 
-**引理 B（简单性与绕数）**：若 $F$ 在 $\mathbb{H}$ 内局部共形、连续到边界，且边界曲线在每个边内部的绕数恰当，则 $F$ 单叶。标准做法是把多边形沿边反射拼接，用 Schwarz 反射（`thm.schwarz-reflection`）延拓 $F$ 并数覆盖重数；这一步同时给出（i）与（ii）。
+**引理 B（简单性与绕数）**：设 $F$ 在 $\mathbb{H}$ 内局部共形、连续到 $\partial\mathbb{H}$；若 $F(\partial\mathbb{H})$ 是简单闭曲线、$F(\mathbb{H})$ 落在其内部，且对该内部的每个 $w$，$F - w$ 在 $\partial\mathbb{H}$ 上的绕数为 $1$，则 $F$ 单叶。标准做法是把多边形沿边反射拼接，用 Schwarz 反射（`thm.schwarz-reflection`）延拓 $F$ 并数覆盖重数；这一步同时给出（i）与（ii）。
 
 **为什么是这些指数**：沿实轴走过 $x_{k}$ 时，$\arg f'$ 跳变 $\pi(\alpha_{k} - 1)$，恰好把切向转过去 $\pi - \alpha_{k}\pi$ —— 正是外角。
 
@@ -35837,9 +35869,9 @@ $$g_{\alpha\beta}(U_{\alpha\beta}) \subseteq G \quad \text{对一切}\ \alpha, \
 参考：Milnor–Stasheff, Characteristic Classes · 结构群；Tu, Differential Geometry（⚠️ 章名未核实，只记书名）
 
 #### 示性类　`def.characteristic-class`
-*定义*　示性类：向量丛到上同调的函子
+*定义*　示性类：向量丛到上同调的自然变换
 
-**要解决什么问题**：丛的同构类由 $\check{H}^{1}(B; \mathrm{GL}(k))$ 分类（`thm.bundle-classification`），但那个集合是非阿贝尔的、没法直接算。示性类把「丛」翻译成「上同调类」—— 上同调是群，能算，于是「两个丛不同构」有了可验证的判据。
+**要解决什么问题**：丛的同构类由 $\check{H}^{1}(B; \mathrm{GL}(k))$ 分类（`thm.bundle-classification`），但那个集合非阿贝尔、没法直接算。示性类把「丛」翻译成「上同调类」—— 上同调是群，能算，于是「两个丛不同构」有了可验证的判据。
 
 设 $E \to B$ 是光滑流形上的秩 $k$ 实向量丛。$E$ 的**示性类**（characteristic class）是一族对应
 
@@ -35847,47 +35879,35 @@ $$c_{i}(E) \in H^{i}(B; \Lambda),$$
 
 （$\Lambda$ 取 $\mathbb{Z}$、$\mathbb{Z}/2$ 或 $\mathbb{R}$，看具体类）满足两条公理：
 
-1. **自然性**：对任意光滑映射 $f : B' \to B$ 有 $c_{i}(f^{*}E) = f^{*}c_{i}(E)$；
-2. **同构不变**：$E \cong E'$ $\implies$ $c_{i}(E) = c_{i}(E')$。
+1. **自然性**：对任意光滑映射 $f : B_{1} \to B_{2}$ 有 $c_{i}(f^{*}E) = f^{*}c_{i}(E)$；
+2. **同构不变**：$E \cong E_{1}$ $\implies$ $c_{i}(E) = c_{i}(E_{1})$。
 
 因此示性类是**从「$B$ 上的向量丛」到「$B$ 的上同调」的自然变换**。
 
-**两条最基本的**：
+**两条最基本的示性类**（都要再加规范化才唯一）：
 
-- 秩 $k$ 实丛的 **Stiefel–Whitney 类** $w_{i}(E) \in H^{i}(B; \mathbb{Z}/2)$（$i = 0, \ldots, k$），$w_{1}(E) \ne 0$ 当且仅当 $E$ 不可定向；
-- 秩 $k$ 复丛的 **陈类** $c_{i}(E) \in H^{2i}(B; \mathbb{Z})$（$i = 0, \ldots, k$），$c_{1}$ 是那个「第一障碍」。
+- 秩 $k$ 实丛的 **Stiefel–Whitney 类** $w_{i}(E) \in H^{i}(B; \mathbb{Z}/2)$（$0 \le i \le k$），规范化为 $w_{0}(E) = 1$、$i > k$ 时 $w_{i}(E) = 0$，并要求 Whitney 和公式 $w(E \oplus F) = w(E) \smile w(F)$（其中 $w = \sum_{i} w_{i}$）；
+- 秩 $k$ 复丛的 **陈类** $c_{i}(E) \in H^{2i}(B; \mathbb{Z})$（$0 \le i \le k$），同样 $c_{0}(E) = 1$、$i > k$ 时 $c_{i}(E) = 0$，并要求 $c(E \oplus F) = c(E) \smile c(F)$。
 
-**为什么它接在分类定理后面**：分类定理把丛变成 $\check{H}^{1}(B; G)$（一个只带基点、没有群结构的集合），示性类把它接到 $H^{\bullet}(B)$（真正的环）。这样做的代价是**丢失信息**：不同的丛可以有相同的示性类（例如所有平凡丛的示性类都平凡）。所以示性类是**必要条件、不是充分条件** —— 它的用处是「证明两个丛不同构」，不是「证明同构」。
+自然性、同构不变、$w_{0} = c_{0} = 1$ 与 Whitney 公式，再加上一条定标条件（例如「Möbius 线丛的 $w_{1}$ 非零」与「复射影空间上 tautological 线丛的 $c_{1}$ 取标准生成元」），**唯一确定** SW 类与陈类。存在性与唯一性属于示性类的公理刻画定理（分类空间上计算 $H^{\bullet}(\mathrm{BO}(k))$ 与 $H^{\bullet}(\mathrm{BU}(k))$），本节点只给定义与用法，不证这条定理。
 
-**和「换结构群」的关系**：示性类正是结构群约化的**障碍**。最典型的一条：$w_{1}(E) = 0$ 等价于 $E$ 的结构群可从 $\mathrm{GL}(k)$ 约化到 $\mathrm{SO}(k)$（即可定向，见 `def.orientable-manifold`）；同理 $w_{2} = 0$ 是 $\mathrm{Spin}$ 结构存在的先决条件（还有一条额外的整系数条件）。这与 `def.structure-group` 的注里说的「能不能约化是障碍理论问题」是同一件事的两面。
+**定义的展开**：把每个空间 $B$ 上的向量丛看成一个范畴（态射是拉回），示性类就是这个范畴到分次环 $H^{\bullet}(B;\Lambda)$ 的自然变换。两条公理合起来只说「拉回与上同调拉回相容」，并**不**指定任何具体数值：零变换也满足它们。所以「示性类」是一族满足公理的对应，具体到 SW 类或陈类，必须再补规范化与 Whitney 公式（上面陈述里已写）。
 
-**怎么算出来**：实用算法是 **陈–Weil 理论** —— 在丛上取一个联络（`def.connection-form`），算它的曲率形式，示性类就是曲率形式的多项式（不变量），并且**与联络的选取无关**（差一个恰当形式）。本图只到「联络 / 曲率形式」为止，陈–Weil 同态、分裂原理、示性类的公理刻画都**未收录**。
+**为什么需要 Whitney 公式**：它把丛的直和分解变成类的乘法，从而「线丛的类」决定一切（分裂原理）。例如复线丛 $L$ 有 $c(L) = 1 + c_{1}(L)$，一般复丛用形式分裂 $E \cong \bigoplus L_{i}$ 定义 $c(E) = \prod (1 + c_{1}(L_{i}))$，再证明与分裂无关。实丛用同样的办法，只是系数换成 $\mathbb{Z}/2$。
 
-⚠️ **示性类不是丛的不变量，是「丛的同构类」的不变量**：同一个类可以由不同丛给出，所以它给的是 $\check{H}^{1} \to H^{\bullet}$ 的**映射**，不是同构。若想要「完全」不变量，需要用 $K$ 理论或更细的工具。
+**和结构群约化的关系（障碍，不是判据）**：对实丛，$w_{1}(E) = 0$ 当且仅当 $E$ 可定向，即结构群可从 $\mathrm{GL}(k)$ 约化到 $\mathrm{SO}(k)$（`prop.orientable-iff-w1`）；这是等价，不是单向障碍。若 $E$ 已定向，则它带有 $\mathrm{Spin}(k)$ 结构当且仅当 $w_{2}(E) = 0$（双覆盖的提升障碍）。对光滑流形 $M$，旋结构存在当且仅当 $w_{1}(TM) = 0$ 且 $w_{2}(TM) = 0$。⚠ 不要把「某个类消失」一般地当成结构群可约化的充要条件：$w_{2} = 0$ 对**未定向**丛不够，必须先有 $w_{1} = 0$。
 
-⚠️ **特征类 / 示性类 / characteristic class 是同一个东西**的中英几种叫法；注意别与「域的特征」（`def.characteristic`）混淆 —— 那个是 $\mathrm{char}\,K$。
+**至少一个例子**：Möbius 带 $M$ 的切丛（或它的 tautological 线丛）不可定向（`def.mobius-band`），故 $w_{1}(TM) \ne 0$；这给出「$w_{1}$ 非零所以不能定向」的具体读数。复线丛方面，$\mathbb{CP}^{1}$ 上的 tautological 线丛 $\mathcal{O}(-1)$ 满足 $\int_{\mathbb{CP}^{1}} c_{1}(\mathcal{O}(-1)) = -1$（`prop.chern-class-line-bundle`），于是它的任何正整数次幂都给出不同的陈类 —— 这就是「用示性类区分丛」的样板。
 
+**怎么算**：实用算法是 **陈–Weil 理论** —— 在丛上取一个联络（`def.connection-form`），算曲率形式，示性类就是曲率形式的多项式（不变量），并且与联络的选取无关（差一个恰当形式）。本图的 `def.chern-class` 就是陈–Weil 版定义。分裂原理、公理刻画、$K$ 理论细化都没有展开。
 
+⚠ **示性类不是完全不变量**：不同的丛可以有相同的示性类（所有平凡丛的示性类都平凡；更微妙的例子需要 $K$ 理论才能分开）。所以它只能**证不同构**：$c_{i}(E) \ne c_{i}(E_{1})$ 推出 $E \not\cong E_{1}$；反过来不成立。
 
-**两条公理不够唯一地确定示性类 —— 这是它最容易误解的地方**：
+⚠ **名称**：示性类、特征类、characteristic class 是同一个东西；别与「域的特征」$\mathrm{char}\,K$（`def.characteristic`）混淆。
 
-- **自然性**：把「丛的拉回」与「上同调的拉回」对齐。这是**函子性**，不给具体数值。
-- **同构不变**：只保证它是丛的**同构类**的函数。
-- ⚠️ 两条加起来仍有无穷多解（$c_{1}$ 的任何多项式都满足），所以真正的定义要再补**规范化**（例如 $w_{0} = 1$、$c_{0} = 1$，以及“高阶类在被直和分解时的乘性”，或等价的“万有丛上取定生成元”）。**本节只给了公理骨架，没有钉死归一化** —— 这是有意为之，规范化的完整陈述属于 陈–Weil 理论。
+⚠ **Euler 类不是 SW 类**：Euler 类 $e(E) \in H^{k}(B;\mathbb{Z})$ 取整数值，$w_{k}(E)$ 是 $e(E)$ 模 $2$ 的约化；$TS^{2}$ 的 $w_{1} = w_{2} = 0$ 但 $e(TS^{2}) = \chi(S^{2}) = 2 \ne 0$，这正是「整系数类能看见、$\mathbb{Z}/2$ 类看不见」的例子。
 
-⚠️ **方向只能“证不同构”**：$c_{i}(E) \ne c_{i}(E')$ $\implies$ $E \not\cong E'$；反之不成立（不同丛可以有相同示性类）。所以示性类是**必要条件**，不构成分类。
-⚠️ **与结构群约化的关系是“障碍”而非“判据”**：$w_{1}(E) = 0$ $\iff$ 可定向（这条是等价）；但 $w_{2} = 0$ 只是 $\mathrm{Spin}$ 结构存在的**先决条件**，还要一个整系数条件。别把「某类消失」当成分结构存在的充要条件。
-
-
-
-
-**各方向用到的假设**（自然性定义免费，障碍判据另有定理）：
-- 同构不变的类赋值满足拉回自然性 $\iff$ 它给出丛同构类函子到上同调函子的自然变换，是定义展开；这两条不唯一确定具体示性类，零赋值也满足。
-- 丛同构 $\implies$ 各示性类相同只用同构不变性；类不同 $\implies$ 不同构是其逆否命题。反向不免费，例如 $TS^2$ 与平凡实二平面丛的 Stiefel–Whitney 类全相同，但 Euler 类不同，故不同构。
-- 对实向量丛，$w_1=0$ $\iff$ 可定向是定向障碍定理；约化到 $\mathrm{SO}(k)$ 还使用流形上度量的存在，后者可由单位分解构造。
-- 已定向实丛具有 Spin 提升 $\iff$ $w_2=0$，是双覆盖提升的障碍理论结论；原注所谓还需额外整系数条件不适用于通常 Spin 判据。未定向时须先要求 $w_1=0$。
-
-参考：Milnor–Stasheff, Characteristic Classes · 示性类；Bott–Tu, Differential Forms in Algebraic Topology
+参考：Milnor–Stasheff, Characteristic Classes · 示性类；Bott–Tu, Differential Forms in Algebraic Topology · 陈–Weil 理论
 
 #### 陈–Weil 同态　`thm.chern-weil`
 *定理*　陈–Weil 同态：用曲率算出的上同调类与联络无关
@@ -36337,37 +36357,49 @@ $$\{x^{k+1} = c^{k+1},\ \ldots,\ x^{n} = c^{n}\}$$
 
 $$\omega \wedge \mathrm{d}\omega = 0,$$
 
-这就是经典教材里的 Frobenius 条件；本图只陈述这一支，不展开。
+这是经典教材里的 Frobenius 条件，它的证明就是下面 (1)$\iff$(2) 的流盒论证在超平面分布上的具体计算。
 
-**证明的骨架**（详细提纲写在两条边上）：(2)$\implies$(3)$\implies$(1) 与 (2)$\implies$(4) 都是一行计算，内容全在 (1)$\implies$(2) —— 先把一个生成元拉直成 $\partial_{1}$（用局部流 + 流盒定理），再在横截超曲面上**降秩归纳**。
+**证明结构**：四条等价里 (2) 是引擎。两条完整证明边是 `imp.mf2-frobenius-flat`（(1)$\implies$(2) 的流盒加降秩归纳）与 `imp.mf2-frobenius-integral`（(2)$\implies$(3)、(3)$\implies$(1)、(2)$\implies$(4)）。下面把主线逐步写清，可以独立阅读。
 
-关键技巧是：把其余生成元换成「没有 $\partial_{1}$ 分量」的新生成元，于是它们的括号也落在其余生成元张成的空间里（这一步只在对合时才做得到）；
+**一、(1)$\implies$(2)：流盒 + 降秩归纳。** 取 $p$，在 $p$ 的邻域取光滑生成元 $X_{1},\ldots,X_{k}$，它们处处独立。
 
-最后沿 $\partial_{1}$ 把坐标平移出去，用一个线性 ODE 的初值问题把「相切」验完。
+1. 由 `thm.flow-local`，把 $X_{1}$ 沿其局部流拉直：存在坐标 $(y^{1},\ldots,y^{n})$ 使 $X_{1}=\partial_{1}$（流盒定理）。
+2. 把其余生成元写成 $X_{i}=a_{i}\,\partial_{1}+Y_{i}$（$i\ge2$），其中 $Y_{i}$ 只含 $\partial_{2},\ldots,\partial_{n}$ 分量。因为 $\mathrm{d}y^{1}$ 是闭形式，
 
-**条件是最优的**：反例就是接触分布（`def.involutive-distribution` 的 notes 里那个）—— 它光滑、秩 $2$、处处非零，就是不对合，于是任何曲面都装不下它。所以「对合」不是技术假设，是充要条件的一半。
+$$\mathrm{d}y^{1}\bigl([\partial_{1},Y_{i}]\bigr)=\partial_{1}\bigl(\mathrm{d}y^{1}(Y_{i})\bigr)-Y_{i}\bigl(\mathrm{d}y^{1}(\partial_{1})\bigr)=0,$$
 
-**「局部」不能升成「整体」**：定理给的是每点附近有叶片坐标，**不**保证整体上有坐标把 $\mathcal{D}$ 拉直成 $\mathbb{R}^{n}$ 的坐标面（那要求叶空间本身是乘积流形）。稠密叶（环面上的无理斜率线）就是反例：局部全是直线，整体却绕回来稠密。
+所以 $[\partial_{1},Y_{i}]$ 仍只含 $\partial_{2},\ldots,\partial_{n}$ 分量。
+3. 对合性给出 $[X_{1},X_{i}]=[\partial_{1},a_{i}\partial_{1}+Y_{i}]=(\partial_{1}a_{i})\partial_{1}+[\partial_{1},Y_{i}]$ 落在 $\mathcal{D}=\operatorname{span}\{\partial_{1},Y_{2},\ldots,Y_{k}\}$ 里；比较 $\partial_{1}$ 分量并利用上一步，得
 
-**分析版本**：Frobenius 等价于「一阶线性偏微分方程组 $\partial_{i}f = \sum_{j} a^{j}_{i}\partial_{j}f$（$i > k$）局部可解」的相容性条件。
+$$\partial_{1}a_{i}=0,\qquad [\partial_{1},Y_{i}]\in\operatorname{span}\{Y_{2},\ldots,Y_{k}\}.$$
 
-相容性条件就是对合，而它恰好是「混合偏导可交换」（$\mathrm{d}^{2} = 0$）的读法 —— 与 `def.exterior-derivative` 的 notes 里那句「$\mathrm{d}^{2} = 0$ 与结构方程同源」是同一件事。
+后一式说明：横截超曲面 $S=\{y^{1}=0\}$ 上的分布 $\mathcal{D}_{S}=\operatorname{span}\{Y_{2},\ldots,Y_{k}\}$ 对合（秩 $k-1$）。
+4. 对 $k$ 归纳（$k=1$ 时 $\partial_{1}$ 本身就是答案）。由归纳假设，$S$ 上有坐标 $(x^{2},\ldots,x^{n})$ 使 $\mathcal{D}_{S}$ 由 $\partial_{2},\ldots,\partial_{k}$ 生成。用 $X_{1}=\partial_{1}$ 的流把 $S$ 的坐标沿 $x^{1}$ 方向平移，得到 $p$ 邻域上的坐标 $(x^{1},x^{2},\ldots,x^{n})$。
+5. 在这组坐标里 $[\partial_{1},\partial_{a}]=0$（$a\ge2$），把 $Y_{i}$ 写成 $Y_{i}=\sum_{a\ge2}f^{a}_{i}\,\partial_{a}$；由 $[\partial_{1},Y_{i}]\in\operatorname{span}\{Y_{j}\}$ 没有 $\partial_{1}$ 分量、且 $[\partial_{1},\partial_{a}]=0$，得到 $\partial_{1}f^{a}_{i}=0$。在 $x^{1}=0$ 的切片上 $Y_{i}=\partial_{i}$（$i=2,\ldots,k$ 由归纳假设），故 $f^{a}_{i}=\delta^{a}_{i}$ 与 $x^{1}$ 无关，即 $Y_{i}=\partial_{i}$ 在整个邻域成立。于是
 
-**口径**：本图用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I \subseteq \Omega^{\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\mathcal{D}$ 的形式生成的理想）。本图不引入理想语言，以免两套记号打架。
+$$\mathcal{D}=\operatorname{span}\{\partial_{1},\ldots,\partial_{k}\}.\qquad\blacksquare$$
 
-⚠️ 定理的 $k = n$ 情形平凡（$\mathcal{D} = TM$ 总对合、任意坐标都平坦），$k = 0$ 也平凡；**有内容的只有 $1 \le k \le n-1$**，而 $k = 1$ 又总是对合（见 `def.involutive-distribution`）。
+**二、(2)$\implies$(3)：** 在平坦坐标里，$N=\{x^{k+1}=\cdots=x^{n}=0\}$ 的切空间恰由 $\partial_{1},\ldots,\partial_{k}$ 张成，故 $N$ 是 $k$ 维积分流形，过 $p$。$\square$
 
-所以真正的例子从「$2 \le k \le n-1$」才开始。
+**三、(3)$\implies$(1)：** 若 $X,Y$ 在 $p$ 处与某积分流形 $N$ 相切，则 $[X,Y]_{p}$ 也与 $N$ 相切（括号的自然性：$[X,Y]$ 只依赖 $X,Y$ 的一阶信息，把 $X,Y$ 延拓成与 $N$ 相切的向量场后括号仍在 $TN$ 中，见 `def.lie-bracket`）。故 $\mathcal{D}$ 对合。$\square$
 
-**四条里“对合”是唯一的假设，其余三条是它的等价翻译**（这条定理的全部难度在 1$\implies$2）：
+**四、(2)$\implies$(4)：** 每个点有坐标片 $N_{q}$；取所有连通积分流形的集合，按包含关系用 Zorn 引理取极大元（链的并仍是连通积分流形：局部上它就是坐标片的一部分，光滑性沿链保持）。极大元互不相交（否则两者的并仍是连通积分流形）且覆盖 $M$。需要 $M$ 第二可数，以保证叶的集合可数、构造良好；流形定义里已含这一条。$\square$
 
-- (1) $\iff$ (2)：**这是定理的实质**。$(\Leftarrow)$ 一行（坐标面 $\partial_{1},\ldots,\partial_{k}$ 的括号为零）；$(\implies)$ 是 Frobenius 的**分析核心**：对 $k$ 归纳，把“沿 $\partial_{1}$ 的流”与“补方向上的分布”交替使用，构造出 $x^{k+1},\ldots,x^{n}$ 使它们的方向与 $\mathcal{D}$ 相切为零。⚠️ 这一步**需要 $\mathcal{D}$ 的光滑性**（要 Picard–Lindelöf 解 ODE），只在 $C^{1}$ 以下会出现反例。
-- (1) $\iff$ (3)：**局部可积 = 对合的局部形式**（由 2 直接得到积分流形 $x^{k+1}=\cdots=x^{n}=0$）。
-- (3) $\iff$ (4)：**这一步要用集合论的“极大连通积分流形的并”**（Zorn 或等价的取并论证）+ 局部可积保证叶在局部不打架。⚠️ 需要 $M$ 仿紧/第二可数，否则“极大连通”可能构造不好（一般流形定义里已含第二可数，所以常被忽略）。
+**五、$k=n-1$ 与 $\omega\wedge\mathrm{d}\omega=0$ 的计算。** 设 $\mathcal{D}=\ker\omega$，$\omega$ 处处非零。对 $X,Y\in\ker\omega$，
 
-⚠️ **最常见的误用**：把“对合”当成“可积”的充分条件用在**非光滑**分布上。§1 的光滑性是必须的：存在 $C^{1}$ 分布处处不对合却处处有积分曲面（经典的“不可积性”例子）。
+$$\mathrm{d}\omega(X,Y)=X\omega(Y)-Y\omega(X)-\omega([X,Y])=-\omega([X,Y]).$$
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· Frobenius 定理与叶状结构；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 一阶偏微分方程组的相容性
+故对合（$[X,Y]\in\ker\omega$）当且仅当 $\mathrm{d}\omega$ 在 $\ker\omega\times\ker\omega$ 上恒为零。而 $\mathrm{d}\omega$ 在 $\ker\omega$ 上为零当且仅当 $\mathrm{d}\omega=\omega\wedge\alpha$（某个 $1$-形式 $\alpha$），这又当且仅当 $\omega\wedge\mathrm{d}\omega=0$（两边用同一个 $\alpha$ 展开即知）。$\square$
+
+**六、条件是最优的。** 反例是接触分布（见 `def.involutive-distribution` 的注）：它光滑、秩 $2$、处处非零，却不对合，于是任何曲面都装不下它。所以「对合」不是技术假设，而是充要条件的一半。
+
+**七、「局部」不能升成「整体」。** 定理给的是每点附近有叶片坐标，**不**保证整体上有坐标把 $\mathcal{D}$ 拉直成 $\mathbb{R}^{n}$ 的坐标面（那要求叶空间本身是乘积流形）。环面上无理斜率线的叶稠密，就是反例：局部全是直线，整体却绕回来稠密。
+
+**八、分析版本与光滑性。** Frobenius 等价于「一阶线性偏微分方程组 $\partial_{i}f=\sum_{j}a^{j}_{i}\partial_{j}f$（$i>k$）局部可解」的相容性条件；相容性就是对合，也正是 $\mathrm{d}^{2}=0$ 的读法。第 1 步用 Picard–Lindelöf 解 ODE，所以 $\mathcal{D}$ 必须光滑（至少 $C^{2}$ 才能谈括号）；$C^{1}$ 以下会出现「处处不对合却处处有积分曲面」的反例。
+
+**九、口径。** 本图用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I\subseteq\Omega^{\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\mathcal{D}$ 的形式生成的理想）。本图不引入理想语言，以免两套记号打架。$k=n$ 与 $k=0$ 平凡；$k=1$ 总对合，真正的例子从 $2\le k\le n-1$ 开始。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· Frobenius 定理与叶状结构；Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 19 · Distributions and Foliations
 
 #### 缩并　`def.tensor-contraction`
 *定义*　张量缩并
@@ -38330,7 +38362,7 @@ $$-\frac{\zeta'(s)}{\zeta(s)} = \sum_{n \ge 1} \Lambda(n)\,n^{-s} = s\int_{1}^{\
 
 ⚠️ **缺的正是命题 A 与命题 B 的证明**：命题 A 需要 $\zeta$ 的解析延拓（Euler–Maclaurin 或 Abel 求和）、$\zeta(1+it) \ne 0$ 的经典论证（$3 + 4\cos\theta + \cos 2\theta \ge 0$ 推出 $\zeta(1+it) \ne 0$）；命题 B 是 Ingham/Newman 的 Tauber 定理，需要围道积分与增长估计。两者都不在「中等档」的篇幅内，本图不硬编——这就是本节点保留 skeleton 的原因。
 
-⭐ Riemann 假设（$\zeta$ 的非平凡零点全在 $\operatorname{Re} s = 1/2$）就是把命题 B 的误差压到 $O(\sqrt{x}\log x)$ 的命题，至今未解。
+⭐ Riemann 假设（$\zeta$ 的非平凡零点全在 $\operatorname{Re} s = 1/2$）下，$\psi(x) = x + O(\sqrt{x}\log^{2}x)$、$\pi(x) = \operatorname{li}(x) + O(\sqrt{x}\log x)$；至今未解。
 
 **等价形式 $p_{n} \sim n\log n$**：由 $\pi(p_{n}) = n$ 与 $\pi(x) \sim x/\log x$ 直接代入（$x = p_{n}$：$n \sim p_{n}/\log p_{n}$，再解出 $p_{n} \sim n\log n$；这一步只用 $\pi(x) \sim x/\log x$，不需要额外解析输入）。
 
@@ -47904,29 +47936,23 @@ $$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta.
 **第五步：最小值。** $-u$ 仍调和，对它用前四步即得最小值那一半。$\blacksquare$
 
 #### 整函数与亚纯函数 ⟹ Mittag-Leffler 定理　`imp.mittag-leffler`
-*亚纯函数的定义 $\implies$ Mittag-Leffler 定理（只给证明骨架）*
+*亚纯函数的定义 $\implies$ Mittag-Leffler 定理（Runge 构造）*
 
-⚠ 这一条只记**证明骨架**，不是逐行完整的证明：完整证明要用 Runge 逼近或 Weierstrass 收敛因子，属于逼近论的内容，这里不展开。
+**证明思路**：把「逐项减修正项」写成紧集穷竭上的估计。细节展开在目标节点 `thm.mittag-leffler` 的注里，这里给出可独立阅读的完整论证与关键估计。
 
-**第一步：先排成一个没有聚点的序列。** 假设里 $\{a_k\}$ 在 $\Omega$ 内没有聚点，把它用**紧集穷竭**列出来：取紧集 $K_{n}\nearrow\Omega$（$\bigcup_{n}K_{n}=\Omega$），每个 $K_{n}$ 里只含有限多个 $a_{k}$（没有聚点），于是按「首次进入 $K_{n}$ 的次序」就能列成 $a_{1},a_{2},\ldots$。（若序列有限，直接减去有限和即可，没有收敛问题。）⚠️ **不能按 $\lvert a_{k}\rvert$ 排序**：$\Omega=\{\,0<\lvert z\rvert<1\,\}$、$a_{k}=\frac{1}{k+1}$ 在 $\Omega$ 内没有聚点，却根本没有模最小的那一个。
+**第一步：穷竭与分层。** 取 $K_n=\{z\in\Omega: |z|\le n,\ \operatorname{dist}(z,\partial\Omega)\ge1/n\}$（$\Omega=\mathbb{C}$ 时取 $\overline{B}(0,n)$）。则 $K_n$ 紧、$K_n\subset\operatorname{int}K_{n+1}$、$\bigcup K_n=\Omega$，且每个 $K_n$ 只含有限多个 $a_k$。令 $L_k=\min\{n: a_k\in K_n\}$、$n_k=L_k-1$，则 $a_k\notin K_{n_k}$ 且 $n_k\to\infty$。⚠️ 不能按 $|a_k|$ 排序：$\Omega=\{0<|z|<1\}$、$a_k=1/(k+1)$ 无聚点但没有模最小的点。
 
-**第二步：造一个「差不多对」的候选。** 取
+**第二步：补集分支的几何。** $\mathbb{C}\setminus K_n$ 的每个有界连通分支都含 $\partial\Omega$ 的点：补集含于 $\{\operatorname{dist}<1/n\}\cup\{|z|>n\}$，$\{|z|>n\}$ 连通无界，故有界分支落在 $\{\operatorname{dist}<1/n\}$ 里，而它的每个连通分支含某个球心 $w\in\partial\Omega$。
 
-$$F(z) := \sum_{k=1}^{\infty} P_k\left( \frac{1}{z - a_k} \right).$$
+**第三步：用 Runge 造修正项。** 固定 $k$。$P_k(1/(z-a_k))$ 在 $K_{n_k}$ 的邻域全纯。对 $\mathbb{C}\setminus K_{n_k}$ 的每个分支取一点：有界分支取 $\partial\Omega$ 上的点；无界分支任取一点。由 `thm.runge`（极点可预先指定在 $\mathbb{C}\setminus K$ 各分支），存在有理函数 $R_k$，极点在所取的点上，且 $|P_k-R_k|<2^{-k}$ 于 $K_{n_k}$。无界分支的极点可去掉：它的贡献形如 $c/(z-s)^j$，$|s|\to\infty$ 时在 $K_{n_k}$ 上一致趋于零。故得 $T_k$，极点在 $\mathbb{C}\setminus\Omega$，$T_k$ 在 $\Omega$ 全纯，且
 
-若这个级数在每个紧集上一致收敛，它就直接是答案：在每个 $a_k$ 附近只有 $P_k$ 那一项有极点，其余各项全纯。
+$$|P_k-T_k|<2\cdot 2^{-k}\qquad(z\in K_{n_k}).$$
 
-**第三步：修正发散。** 一般地级数并不收敛。取一列紧集 $K_n \nearrow \Omega$，对每个 $k$ 减去一个**在 $\Omega$ 上全纯**的修正项 $T_{k}$（取成极点在 $\hat{\mathbb{C}}\setminus\Omega$ 里的有理函数），使得
+**第四步：级数与主部。** 令 $f=\sum_k(P_k-T_k)$。在 $K_m$ 上只有有限多个 $k$ 满足 $n_k<m$；其余项由 $K_m\subset K_{n_k}$ 得 $|P_k-T_k|<2\cdot2^{-k}$，故级数在 $K_m$ 上一致收敛（Weierstrass 判别法）。在 $a_k$ 处，$T_k$ 与所有 $P_j$（$j\ne k$）全纯，故 $f-P_k$ 全纯，主部正是 $P_k$。
 
-$$\left| P_k\left( \frac{1}{z - a_k} \right) - T_k(z) \right| \le 2^{-k} \qquad (z \in K_k).$$
+**第五步：唯一性。** 两个解之差在 $\Omega$ 上无极点，是整函数。$\blacksquare$
 
-这样的 $T_{k}$ 由 **Runge 逼近定理**给出：$K_{k}$ 紧、$P_{k}(1/(z-a_{k}))$ 在 $K_{k}$ 的某邻域上全纯，Runge 先在 $K_{k}$ 上把它逼近成极点在 $\hat{\mathbb{C}}\setminus K_{k}$ 的有理函数，再把落在 $\Omega$ 内的极点沿道路挪到 $\hat{\mathbb{C}}\setminus\Omega$（挪极点时用同一套 Runge）。⚠️ 两处不能那样写：① 取 $a_{k}$ 处的 **Taylor 多项式**没有意义 —— $a_{k}$ 本来就是极点，$P_{k}$ 在那里并不全纯；② 也**不能**用多项式在围住 $a_{k}$ 的圆周上逼近 $1/(z-a_{k})$ —— 若多项式 $P$ 在 $\lvert z-a_{k}\rvert=1$ 上使 $\sup\lvert P-1/(z-a_{k})\rvert<1$，则 $(z-a_{k})P(z)$ 一致逼近 $1$，但左边是多项式且在 $z=a_{k}$ 为零，于是 $\frac{1}{2\pi i}\oint_{\lvert z-a_{k}\rvert=1}\frac{(z-a_{k})P(z)}{z-a_{k}}\,\mathrm{d}z=0$ 而 $\frac{1}{2\pi i}\oint\frac{\mathrm{d}z}{z-a_{k}}=1$，矛盾（差的最大模必 $\ge 1$）。
-
-**第四步：收敛与主部。** 修正后的级数 $\sum_k (P_k - T_k)$ 在每个 $K_n$ 上一致收敛（从第 $n$ 项起每项都 $\le 2^{-k}$）。而减去的 $T_k$ 在 $a_k$ 处全纯、不影响主部，故极限函数在 $a_k$ 处的主部仍是 $P_k$。
-
-**第五步：唯一性。** 两个解之差处处全纯（极点与主部都被消掉），是 $\Omega$ 上的整函数。$\blacksquare$
-
-> ⚠ 这条边给的是「结构 $+$ 关键构造」：第三步的存在性依赖 **Runge 逼近定理**（这里只引不证），「把极点从 $\Omega$ 内挪到 $\hat{\mathbb{C}}\setminus\Omega$」那一步也没有展开。
+> 证明只引用本图的 `thm.runge`（其陈述已包含「极点预先指定」）与紧集穷竭；Runge 本身在图中另有完整证明。目标节点注里有逐步展开，并指出两处常见错误（在 $a_k$ 处取 Taylor 多项式、用多项式在绕 $a_k$ 的圆周上逼近 $1/(z-a_k)$）。
 
 #### 复围道积分 ⟹ Jordan 引理　`imp.jordan-lemma`
 *围道积分 $\implies$ Jordan 引理*
@@ -48345,7 +48371,10 @@ $$\mathrm{d}i\bigl([X_{N},Y_{N}]_{p}\bigr) = \bigl[\mathrm{d}i(X_{N}),\ \mathrm{
 
 **(2)$\implies$(4)。** 把平坦坐标里所有形如 $\{x^{k+1} = c^{k+1},\ldots,x^{n} = c^{n}\}$ 的切片按「过同一点则重合」粘起来：由 `def.integral-manifold` 的 notes 里的局部唯一性，粘出来的是一族互不相交的极大连通积分流形，覆盖 $M$（每点在自己的卡里落在一片切片上）。
 
-（这一步的严格写法要对「所有的叶」用一个极大的不相交族取并，属于集合论层面的手续，本图只给口径。）
+严格写出来：在 $M$ 上定义关系 $p\sim q$ 当且仅当存在分段光滑曲线 $\gamma:[0,1]\to M$ 使 $\gamma(0)=p$、$\gamma(1)=q$ 且 $\gamma'(t)\in\mathcal{D}_{\gamma(t)}$（称**$\mathcal{D}$-曲线**）。这是等价关系（曲线首尾拼接）。
+
+对 $p\in M$，取过 $p$ 的平坦坐标卡 $(U,\varphi)$ 与切片 $S=\{x^{k+1}=\cdots=x^{n}=0\}$：$S$ 上每点都可由 $p$ 出发的 $\mathcal{D}$-曲线到达，故 $S$ 含于 $p$ 的等价类 $L$。所有这样的切片给出 $L$ 的一个图册（转移映射是平坦坐标之间光滑映射的限制），于是 $L$ 是连通浸入子流形、$TL=\mathcal{D}|_{L}$。由定义 $L$ 极大：任何含 $p$ 的积分流形 $N$ 中的曲线都是 $\mathcal{D}$-曲线，故 $N\subset L$。这些 $L$ 互不相交、覆盖 $M$，即得叶状结构。（$M$ 第二可数，故每个 $L$ 的图册可取可数子族，$L$ 是第二可数流形；它是 $M$ 的浸入子流形。）
+
 
 **为什么 (1) 是本定理的核心**：(2)、(3)、(4) 都是「存在某个几何对象」，而 (1) 只是「有限个括号的封闭性」。定理真正说的是：**一条纯代数的条件等价于一条纯几何的结论** —— 前者有限步可验，后者要解偏微分方程组。∎
 
@@ -50037,7 +50066,9 @@ $\operatorname{st}$ 的关键性质（这一步唯一的组合输入）：$\bigc
 
 ⚠️ **不能写「$\operatorname{st}(w)$ 是凸的」**：开星一般是若干含 $w$ 的单纯形的并，**并不凸** —— 取 $L$ 为三角形的边界、$w = e_{0}$，则 $\operatorname{st}(e_{0})$ 是两条线段之并，成「V」形。真正用到的是**单个单纯形**的凸性。
 
-**收尾**：由 ④，$|g| \simeq f$，故两者在奇异同调上诱导同一映射；而 $|g|$ 是有限复形之间的单纯映射，它的效果在 ① 的意义下与 $g$ 的链映射一致。把 $m$ 次重分都按 ① 抵消掉，即得 $H_{p}(K) \cong H_{p}(|K|)$。∎
+**收尾**：由 ④，$|g| \simeq f$，故两者在奇异同调上诱导同一映射；而 $|g|$ 是有限复形之间的单纯映射，它的效果在 ① 的意义下与 $g$ 的链映射一致。把 $m$ 次重分都按 ① 抵消掉，即得 $H_{p}(K) \cong H_{p}(|K|)$。
+
+⚠️ 本边依赖 ① 的链级缺口（$S_{*}(|K|)\to C_{*}(|K|)$ 的链映射与两侧链同伦），因此不勾 ∎。
 
 > ⚠️ 本图未写完整链映射 $S_{*}(|K|)\to C_{*}(|K|)$ 与两侧链同伦，① 只给梗概；③ 的顶点选择细节见节点注（符号另见 `def.chain-homotopy`）。两处都是本节最容易出错的地方。
 
@@ -50783,7 +50814,7 @@ $$\frac{4^{n}}{2n+1} \le (2n)^{\sqrt{2n}}\,4^{2n/3} \iff 4^{n/3} \le (2n)^{\sqrt
 
 ⚠ 这是骨架：三段计数里最容易错的是「$2n/3 < p \le n$ 不贡献」（上面已改正）；更细的分段与小 $n$ 的逐个验证没有逐条写。完整证明见华罗庚《数论导引》第九章。
 
-#### 素数计数函数 ⟹ 素数定理　`imp.nt-pnt`
+#### 素数计数函数 + 黎曼 ζ 函数 + Euler 乘积 ⟹ 素数定理　`imp.nt-pnt`
 *素数定理：$\zeta$ 在 $\operatorname{Re}\,s = 1$ 上无零点*
 
 **① $\zeta$ 的解析延拓。** 对 $\operatorname{Re}\,s > 1$，$\zeta(s) = \sum_{n\ge1} n^{-s} = \prod_{p}(1 - p^{-s})^{-1}$（Euler 乘积，靠唯一分解）。
@@ -50814,7 +50845,7 @@ $$\psi(x) = x - \sum_{\rho}\frac{x^{\rho}}{\rho} - \log 2\pi - \tfrac{1}{2}\log(
 
 
 
-⛔ 本节点**只给陈述与骨架**，证明的每一步（尤其 ② 与 ③ 的截断估计）都不在本图 —— 它需要复分析整章（`complex` 星系那一条线）。要真正做完，得先有 $\zeta$、$\Gamma$、Perron 公式与零点计数，那是另一个量级的工作。
+⛔ 本节点注已补出完整的 $\psi$/$\theta$/$\pi$ 等价链与 Abel 求和；边 proof 仍是骨架，真正缺的是命题 A（$\zeta$ 延拓 $+$ $\operatorname{Re} s = 1$ 无零点）与命题 B（Tauber 收尾），故这里不勾 ∎。
 
 #### 定义引用：「同余」→ 二次剩余　`e147.definition`
 
@@ -54815,6 +54846,10 @@ Hilbert 空间是 Banach 空间的特例，所以也走这条桥（注里有说�
 #### 定义引用：「微分形式」→ Hodge 星号　`dep.hodge-form`
 
 $*$ 是 $\Omega^{k} \to \Omega^{n-k}$ 的映射，输入输出都是流形上的微分形式。
+
+#### 定义引用：「单位分解」→ Riesz–Markov 表示　`dep.rm-pou`
+
+表示引理用有限覆盖上的紧支单位分解把 $f$ 上下夹住；本图只记依赖，表示引理本身仍未写全。
 
 #### 定义引用：「级数收敛」→ 黎曼 ζ 函数　`dep.zeta-series`
 
