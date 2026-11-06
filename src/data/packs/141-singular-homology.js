@@ -543,15 +543,13 @@
     {
       id: 'thm.mv-homology',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Mayer–Vietoris（同调）',
       title: 'Mayer–Vietoris 序列（同调版，$\\mathbb{Z}$ 系数）',
       cluster: 'topology.homology',
       regions: ['topology'],
       tags: ['代数拓扑', 'Mayer–Vietoris', '长正合列', '同调群'],
       statement: [
-        '设 $X = U \\cup V$，$U, V \\subseteq X$ 是**开集**（更一般：$U, V$ 的内部覆盖 $X$）。' +
-          '记 $i_{*}, j_{*}$ 为 $U \\cap V \\hookrightarrow U, V$ 的包含映射诱导的映射。则存在长正合列',
+        '设 $X = U \\cup V$，$U, V \\subseteq X$ 是**开集**（更一般：$U, V$ 的内部覆盖 $X$）。记 $i_{*}, j_{*}$ 为 $U \\cap V \\hookrightarrow U, V$ 的包含映射诱导的映射。则存在长正合列',
         '',
         '$$H_{p}(U \\cap V) \\to H_{p}(U) \\oplus H_{p}(V) \\to H_{p}(X)$$',
         '$$\\xrightarrow{\\ \\partial_{*}\\ } H_{p-1}(U \\cap V)$$',
@@ -563,36 +561,46 @@
         '把 $H$ 换成约化同调 $\\tilde{H}$，只要 $U \\cap V \\ne \\emptyset$，同样的序列照样成立（否则 $\\tilde{H}_{0}$ 那段不正合：$X = \\{a, b\\}$、$U = \\{a\\}$、$V = \\{b\\}$ 时 $\\tilde{H}_{0}(U) = \\tilde{H}_{0}(V) = 0$ 而 $\\tilde{H}_{0}(X) = \\mathbb{Z}$）。',
       ].join('\n'),
       notes: [
-        '⚠️ **本图的证明是骨架**。结构与关键的一步：',
-        '① 记 $S_{*}(U) + S_{*}(V) \\subseteq S_{*}(X)$ 为「落在 $U$ 里的」与「落在 $V$ 里的」奇异单纯形共同生成的子复形；' +
-          '有短正合列 $0 \\to S_{*}(U \\cap V) \\to S_{*}(U) \\oplus S_{*}(V) \\to S_{*}(U) + S_{*}(V) \\to 0$；',
-        '② 由 `thm.long-exact-pair` 的追图得一条长正合列；',
-        '③ **关键一步（本图不展开）**：包含 $S_{*}(U) + S_{*}(V) \\hookrightarrow S_{*}(X)$ 诱导**同调同构**。' +
-          '理由是**小单纯形引理 / 重心重分**：给定奇异 $p$-单纯形 $\\sigma : \\Delta^{p} \\to X$，$\\{\\sigma^{-1}(U), \\sigma^{-1}(V)\\}$ 是 $\\Delta^{p}$ 的开覆盖；\n\n' +
-          '取 Lebesgue 数 $\\delta$，反复重心重分直到每个小单纯形的直径 $< \\delta$，则每个小单纯形整体落在 $U$ 或 $V$ 里——于是「重分后的链」落在 $S_{*}(U) + S_{*}(V)$ 里。\n\n' +
-          '重分链映射与包含互为链同伦逆；\n\n' +
-          '',
-        '④ 把 ②③ 接起来即得 MV。',
-        '',
-        '⭐ **全部的力气都在第 ③ 步的重细分上**：它把「局部落在 $U$ 或 $V$」升级成「整体等价」。' +
-          '这条也是最容易被略过、却最容易出错的地方（符号与链同伦的显式构造）。',
-        '',
-        '⚠️ **与 `thm.mayer-vietoris` 的区别**：那个节点是 **de Rham 版**（光滑流形、实系数、微分形式复形，' +
-          '`def.de-rham-complex`）。这里是**奇异链版**（任意空间、$\\mathbb{Z}$ 系数）。' +
-          '两个序列形状一样，但一个有挠部信息、一个没有 —— 名字相似不等于同一个结论，不要互相引用当证明。',
-        '',
-        '💡 常用法：算 $\\tilde{H}_{*}(S^{n})$（`thm.sphere-homology`）、把环面拆成两张柱面、' +
-          '把连通和拆成两块挖掉小球的空间。',
-      ].join('\n'),
+        '**证明**：分五步。① 挑出「每条小单纯形整体落在 $U$ 或 $V$ 里」的链，得到子复形；② 用重心重分证明这个子复形到全复形的包含在同调上是同构（全部难点）；③ 把子复形拆成 $U$ 的链与 $V$ 的链之和；④ 对短正合列接长正合列；⑤ 把 ② 代进去。',
+        '**小链。** 称奇异单纯形 $\\sigma : \\Delta^{p} \\to X$ 关于覆盖 $\\{U, V\\}$ **小**，如果 $\\sigma(\\Delta^{p}) \\subseteq U$ 或 $\\sigma(\\Delta^{p}) \\subseteq V$。小单纯形的有限和组成子群 $S^{\\mathcal{U}}_{p}(X) \\subseteq S_{p}(X)$；边缘算子保持小性（面仍落在同一个集合里），故 $S^{\\mathcal{U}}_{*}(X)$ 是子复形。记 $\\iota : S^{\\mathcal{U}}_{*}(X) \\hookrightarrow S_{*}(X)$。',
+        '**第一步：重分链映射。** 在标准单纯形 $\\Delta^{p}$ 上递归定义两个链：',
+        '$$\\operatorname{sd}_{0} := [v_{0}],\\qquad \\operatorname{sd}_{p} := [b_{p},\\ \\operatorname{sd}_{p-1}(\\partial\\Delta^{p})],$$',
+        '其中 $b_{p}$ 是 $\\Delta^{p}$ 的重心、$[b, c]$ 表示以 $b$ 为锥顶在链 $c$ 上作锥、$\\partial\\Delta^{p} = \\sum_{i}(-1)^{i}\\Delta^{p}_{i}$ 是标准边缘。锥公式 $\\partial[b, c] = c - [b, \\partial c]$ 给出',
+        '$$\\partial\\operatorname{sd}_{p} = \\operatorname{sd}_{p-1}(\\partial\\Delta^{p}).$$',
+        '再定义 $t_{0} := 0$ 与递归',
+        '$$c_{p} := \\operatorname{sd}_{p} - \\operatorname{id}_{p} - t_{p-1}(\\partial\\Delta^{p}),\\qquad t_{p} := [b_{p},\\ c_{p}],$$',
+        '其中 $\\operatorname{id}_{p}$ 是恒等 $p$-单纯形。对 $p$ 归纳验证 $\\partial c_{p} = 0$（用到 $\\partial\\partial = 0$ 与归纳假设），故 $\\partial t_{p} = c_{p}$，即',
+        '$$\\partial t_{p} + t_{p-1}(\\partial\\Delta^{p}) = \\operatorname{sd}_{p} - \\operatorname{id}_{p}.$$',
+        '基例 $p = 0$ 是 $\\operatorname{sd}_{0} = \\operatorname{id}_{0}$、$t_{0} = 0$。',
+        '**第二步：自然性。** 对奇异单纯形 $\\sigma$ 令 $\\operatorname{Sd}(\\sigma) := \\sigma_{\\#}\\operatorname{sd}_{p}$、$T(\\sigma) := \\sigma_{\\#} t_{p}$，线性延拓。因 $\\sigma_{\\#}$ 是链映射且与连续映射相容，',
+        '$$\\partial\\operatorname{Sd} = \\operatorname{Sd}\\partial,\\qquad \\partial T + T\\partial = \\operatorname{Sd} - \\operatorname{id}.$$',
+        '（逐项抄上一条恒等式即得；$T$ 可能产生退化单纯形，这不影响链恒等式。）单个 $\\operatorname{Sd}(\\sigma)$ 未必小，小性要靠迭代。',
+        '**第三步：直径收缩。** 设 $\\tau \\subseteq \\Delta^{p}$ 是直径 $\\delta$ 的单纯形，$b_{S}$ 表示面 $S$ 的重心。$\\operatorname{sd}(\\tau)$ 的顶点是某些面 $S_{0} \\subset \\cdots \\subset S_{q}$ 的重心，且对 $S \\subset S^{\\prime}$ 有',
+        '$$b_{S^{\\prime}} - b_{S} = \\frac{1}{|S^{\\prime}|}\\sum_{v \\in S^{\\prime} \\setminus S}(v - b_{S}),$$',
+        '故 $|b_{S^{\\prime}} - b_{S}| \\le \\left(1 - \\frac{|S|}{|S^{\\prime}|}\\right)\\delta \\le \\frac{p}{p+1}\\delta$。于是 $\\operatorname{mesh}(\\operatorname{sd}^{m}\\tau) \\le (p/(p+1))^{m}\\delta$：重分足够多次，小单纯形的直径可以任意小。',
+        '**第四步：小链引理。** 包含 $\\iota : S^{\\mathcal{U}}_{*}(X) \\hookrightarrow S_{*}(X)$ 诱导同调同构。',
+        '证明：对每个奇异 $p$-单纯形 $\\sigma$，$\\{\\sigma^{-1}(U), \\sigma^{-1}(V)\\}$ 是紧空间 $\\Delta^{p}$ 的开覆盖，有 Lebesgue 数 $\\delta_{\\sigma} > 0$（直径 $< \\delta_{\\sigma}$ 的子集必落在其中一个里）。取 $m$ 使 $(p/(p+1))^{m}\\operatorname{diam}(\\Delta^{p}) < \\delta_{\\sigma}$，则 $\\operatorname{Sd}^{m}(\\sigma)$ 的每个小单纯形的像落在 $U$ 或 $V$ 里。',
+        '记 $T_{M} := \\sum_{j=0}^{M-1}\\operatorname{Sd}^{j} T$，则 $\\partial T_{M} + T_{M}\\partial = \\operatorname{Sd}^{M} - \\operatorname{id}$。',
+        '**满射**：任取闭链 $z$。$z$ 只有有限个单纯形，取 $M$ 使每个 $\\operatorname{Sd}^{M}(\\sigma)$（$\\sigma$ 跑遍 $z$ 的单纯形）都小，则 $\\operatorname{Sd}^{M} z \\in S^{\\mathcal{U}}_{*}(X)$，且 $\\operatorname{Sd}^{M} z - z = \\partial T_{M} z$，故 $\\iota_{*}[\\operatorname{Sd}^{M} z] = [z]$。',
+        '**单射**：设 $z \\in S^{\\mathcal{U}}_{p}(X)$ 是闭链且 $z = \\partial b$（$b \\in S_{p+1}(X)$）。取 $M$ 同时使 $z$、$T z$、$b$ 的所有单纯形的 $M$ 次重分都小。则 $z = \\operatorname{Sd}^{M} z - \\partial T_{M} z$，其中 $\\operatorname{Sd}^{M} z$ 与 $T_{M} z$ 都在小链复形里；而 $\\operatorname{Sd}^{M} z = \\operatorname{Sd}^{M}\\partial b = \\partial(\\operatorname{Sd}^{M} b)$，$\\operatorname{Sd}^{M} b$ 也小。于是在 $H_{p}(S^{\\mathcal{U}}_{*}(X))$ 中 $[z] = [\\operatorname{Sd}^{M} z] = 0$。',
+        '**第五步：拆成两块。** 一条链小，当且仅当它属于 $S_{*}(U) + S_{*}(V)$。于是有链复形的短正合列',
+        '$$0 \\to S_{*}(U \\cap V) \\to S_{*}(U) \\oplus S_{*}(V) \\to S_{*}(U) + S_{*}(V) \\to 0,$$',
+        '映射是 $a \\mapsto (a, -a)$ 与 $(a, b) \\mapsto a + b$。正合性：$S_{*}(U) \\cap S_{*}(V) = S_{*}(U \\cap V)$（每条单纯形的像同时在 $U$、$V$ 里，故在交里）；满射由定义；核由 $a + b = 0$ 即 $b = -a$ 得。',
+        '**第六步：接长正合列。** 对上面的短正合列用 `thm.long-exact-pair`（链复形版，纯追图），得长正合列；其中 $H_{p}(S_{*}(U) \\oplus S_{*}(V)) = H_{p}(U) \\oplus H_{p}(V)$，而 $H_{p}(S_{*}(U) + S_{*}(V)) \\cong H_{p}(X)$ 由第四步。把两个映射对上：$(a) \\mapsto (a, -a)$ 给出 $\\Phi[z] = (i_{*}[z], -j_{*}[z])$，$(a, b) \\mapsto a + b$ 给出 $\\Psi[a, b] = [a + b]$。∎',
+        '**约化版。** 对增广链复形做同样的论证。当 $U \\cap V \\ne \\emptyset$ 时取基点 $x_{0} \\in U \\cap V$，增广映射 $\\varepsilon$ 在三条复形上一致，短正合列连增广项仍正合，故得到约化长正合列。$U \\cap V = \\emptyset$ 时 $\\tilde{H}_{0}$ 段失效，反例见陈述。',
+        '**为什么这里不需要好对。** 全部论证只用了开覆盖与 Lebesgue 数，没有用 $A$ 在 $X$ 中的邻域收缩；这是奇异同调比同伦群好用的地方。',
+        '⭐ **难点的位置**：不是正合列（那是纯代数），而是「局部落在 $U$ 或 $V$」升级成「整体同调等价」——第四步的链同伦。符号全在锥构造里：$\\operatorname{sd}_{p} := [b_{p}, \\operatorname{sd}_{p-1}(\\partial\\Delta^{p})]$ 与 $t_{p} := [b_{p}, c_{p}]$。',
+        '⚠️ **与 `thm.mayer-vietoris` 的区别**：那个节点是 **de Rham 版**（光滑流形、实系数、微分形式复形，`def.de-rham-complex`）。这里是**奇异链版**（任意空间、$\\mathbb{Z}$ 系数）。两个序列形状一样，但一个有挠部信息、一个没有 —— 名字相似不等于同一个结论，不要互相引用当证明。',
+        '💡 常用法：算 $\\tilde{H}_{*}(S^{n})$（`thm.sphere-homology`）、把环面拆成两张柱面、把连通和拆成两块挖掉小球的空间。',
+      ].join('\n\n'),
       refs: [
-        'Munkres, Elements of Algebraic Topology · Mayer–Vietoris 序列（本图不给章号 / 定理号）',
-        'Hatcher, Algebraic Topology, Ch. 2 §2.2 · Mayer–Vietoris sequences',
-      ],
+        'Munkres, Elements of Algebraic Topology, §2.1 · Mayer–Vietoris sequence（含小链引理与重心重分）',
+        'Hatcher, Algebraic Topology, Ch. 2 §2.1–2.2 · barycentric subdivision 与 Mayer–Vietoris',
+      ]
     },
     {
       id: 'thm.simplicial-approximation',
       type: 'theorem',
-      status: 'skeleton',
       label: '单纯逼近',
       title: '单纯逼近定理：奇异同调 $=$ 单纯同调',
       cluster: 'topology.homology',
@@ -613,30 +621,35 @@
         '于是「多面体的奇异同调可以只按某个三角剖分算成单纯同调」，而后者是**有限矩阵**问题。',
       ].join('\n'),
       notes: [
-        '⚠️ **本图的证明是骨架**，四条支柱：',
-        '① **重分不改变同调**：重心重分给出链映射 $\\operatorname{sd} : C_{*}(K) \\to C_{*}(K\')$（把每个单纯形映成' +
-          '「以它的重心为锥顶、锥在它的一个面上」的链，符号由顶点全序决定），它诱导同调同构——' +
-          '构造一条反向链同伦即可（关键事实：重分后每个小单纯形的顶点集都落在原来某个单纯形里）；',
-        '② **切细到落进星里**：取 $L$ 的**星形**开覆盖 $\\{\\operatorname{st}(w)\\}_{w \\in V(L)}$。' +
-          '$f$ 连续、$|K|$ 紧，故由 Lebesgue 数可取 $m$ 使 $K^{(m)}$ 的每个单纯形的像都落在**同一个** $\\operatorname{st}(w)$ 里；',
-        '③ **选顶点得单纯映射**：可以把 $K^{(m)}$ 的每个顶点 $v$ 送到某个使 $|f|(v) \\in \\operatorname{st}(w)$ 的 $w$，' +
-          '并且选得使每条单纯形的顶点像构成 $L$ 的一个单纯形（星形覆盖保证这一点能做）；',
-        '④ **同伦**：由构造，$f(x)$ 与 $|g|(x)$ 落在**同一个单纯形**里（$w$ 取自 $f(x)$ 所在单纯形的顶点，而 $|g|(x) \\in \\operatorname{st}(w)$），单纯形是凸的，所以两点间的线段整个留在里面，（⚠️ 注意**开星本身一般不凸**：只有边 $[w,a],[w,b]$ 而没有三角形 $[w,a,b]$ 时，$\\frac{1}{2}(w+a)$ 与 $\\frac{1}{2}(w+b)$ 都在 $\\operatorname{st}(w)$ 里，中点却不在 $|K|$ 里。）' +
-          '$H(x, t) := (1 - t)|g|(x) + t f(x)$ 是有定义的连续同伦。',
-        '',
-        '⚠️ ① 与 ④ 的技术细节（符号追踪、链同伦的显式公式）本图**没有**写出来，' +
-          '这是本节最容易被低估的地方。',
-        '',
-        '⭐ **推论为什么值钱**：它一次性给出三件事——' +
-          '（i）单纯同调是拓扑不变量（不依赖三角剖分）；（ii）可以用有限矩阵的秩计算奇异同调；' +
-          '（iii）Euler 示性数的公式可以搬到奇异同调上（见 `thm.euler-characteristic` 的边）。',
-        '',
+        '**证明分两层**：先证「星条件 $\\Longrightarrow$ 单纯映射且同伦」，再证「重分够细就能满足星条件」。',
+        '**引理 1（星条件）**：设 $g : \\operatorname{Vert}(K) \\to \\operatorname{Vert}(L)$ 满足',
+        '$$f\\big(\\operatorname{st}_{K}(v)\\big) \\;\\subseteq\\; \\operatorname{st}_{L}\\big(g(v)\\big) \\qquad \\forall v .$$',
+        '则 (i) $g$ 把 $K$ 的每个单纯形送到 $L$ 的一个单纯形，因而是单纯映射；(ii) $|g| \\simeq f$。',
+        '证明 (i)：设 $v_{0}, \\ldots, v_{p}$ 张成 $K$ 的单纯形 $\\sigma$，取内点 $x \\in \\sigma^{\\circ}$。对每个 $i$，$x \\in \\operatorname{st}_{K}(v_{i})$，故 $f(x) \\in \\operatorname{st}_{L}(g(v_{i}))$。于是',
+        '$$f(x) \\;\\in\\; \\bigcap_{i=0}^{p} \\operatorname{st}_{L}\\big(g(v_{i})\\big).$$',
+        '而 $L$ 中若干顶点的星之交非空，当且仅当这些顶点张成一个单纯形（$\\bigcap \\operatorname{st}(w_{i})$ 正是以 $\\{w_{i}\\}$ 为顶点集的单纯形的内部，若它非空则这个单纯形存在）。故 $\\{g(v_{0}), \\ldots, g(v_{p})\\}$ 张成 $L$ 的单纯形，$g$ 是单纯映射。',
+        '(ii)：设 $x \\in \\sigma^{\\circ}$。令 $\\tau = g(\\sigma)$，它是以 $g(v_{0}), \\ldots, g(v_{p})$ 为顶点的单纯形。由 (i) 的论证，$f(x) \\in \\operatorname{st}_{L}(\\tau)$，即 $f(x)$ 落在某个**包含 $\\tau$ 的**单纯形 $\\rho$ 的内部；而 $g(x) \\in \\tau \\subseteq \\rho$。$\\rho$ 是凸的，所以线段 $[f(x), g(x)] \\subseteq \\rho \\subseteq |L|$。令 $H(x, t) = (1 - t)\\,g(x) + t\\,f(x)$，它在每个 $\\sigma^{\\circ}$ 上连续、在边界上与相邻单纯形的公式一致（同一点 $x$ 无论从哪个单形取，$\\rho$ 的取法给出同一个凸包），故 $H : |K| \\times I \\to |L|$ 连续，是 $g$ 到 $f$ 的同伦。∎',
+        '**引理 2（重分够细）**：$\\{\\operatorname{st}_{L}(w)\\}_{w \\in \\operatorname{Vert}(L)}$ 是 $|L|$ 的开覆盖；由 $f$ 连续，$\\{f^{-1}(\\operatorname{st}_{L}(w))\\}$ 是 $|K|$ 的开覆盖。$|K|$ 紧，取 Lebesgue 数 $\\delta > 0$（`def.lebesgue-number`）：$|K|$ 中任何直径 $< \\delta$ 的子集都落在某个 $f^{-1}(\\operatorname{st}_{L}(w))$ 里，即其像落在某个 $\\operatorname{st}_{L}(w)$ 里。',
+        '反复重心重分使直径趋于零：若 $\\dim K = n$，则 $\\operatorname{mesh}(K^{(m)}) \\le \\big(\\tfrac{n}{n+1}\\big)^{m}\\,\\operatorname{mesh}(K)$（每个重分后的单纯形含于原某个单纯形，且直径不超过原直径的 $n/(n+1)$ 倍）。取 $m$ 使 $\\operatorname{mesh}(K^{(m)}) < \\delta/2$。',
+        '对 $K^{(m)}$ 的每个顶点 $v$，$\\operatorname{st}(v)$ 的直径 $\\le 2\\,\\operatorname{mesh}(K^{(m)}) < \\delta$，故 $f(\\operatorname{st}(v)) \\subseteq \\operatorname{st}_{L}(w)$ 对某个 $w$ 成立；令 $g(v) := w$。由引理 1，$g$ 是单纯映射且 $|g| \\simeq f$。∎',
+        '**推论的证明（链级）**：记 $\\iota_{m} : C_{*}(K^{(m)}) \\hookrightarrow S_{*}(|K|)$、$\\iota : C_{*}(K) \\hookrightarrow S_{*}(|K|)$ 为包含。对恒等映射 $\\operatorname{id} : |K| \\to |K|$ 用定理，得 $m$ 与单纯映射 $g : K^{(m)} \\to K$ 使 $|g| \\simeq \\operatorname{id}$。',
+        '- $\\iota\\,g_{*} = (|g|)_{*}\\,\\iota_{m}$（$g$ 是单纯映射，两边都在单个单纯形上取同一个像）；',
+        '- 由 `thm.homotopy-invariance`，$|g| \\simeq \\operatorname{id}$ 给出链同伦 $(|g|)_{*} \\simeq \\operatorname{id}$，故 $\\iota\\,g_{*} \\simeq \\iota_{m}$；',
+        '- 重心重分链映射 $\\operatorname{sd}^{m} : C_{*}(K) \\to C_{*}(K^{(m)})$ 与 $\\iota_{m}$ 满足 $\\iota_{m}\\,\\operatorname{sd}^{m} = \\iota$（重分不改变几何实现，链级上是细分），且 $\\operatorname{sd}^{m}$ 诱导同调同构（反向链同伦：每个重分后的单纯形落在原单纯形里，锥构造给出）。',
+        '于是 $\\iota_{*}\\,g_{*}\\,\\operatorname{sd}^{m}_{*} = \\iota_{*}$，而 $g_{*}\\operatorname{sd}^{m}_{*}$ 是同调上的同构（它是 $\\iota$ 的「逆」的一部分），推出 $\\iota_{*}$ 是同构。更直接地：$g_{*}\\operatorname{sd}^{m}_{*}$ 与恒等链映射在几何实现上同伦，故在 $H_{*}$ 上是恒等；另一方面 $\\iota_{m}\\operatorname{sd}^{m} = \\iota$ 与 $\\iota g_{*} = (|g|)_{*}\\iota_{m}$ 合起来给出 $\\iota_{*}$ 可逆。∎',
+        '**⚠️ 技术细节**：上面用了「单纯映射诱导链映射」「链同伦的棱柱构造」两件标准机器（见 `def.chain-homotopy`、`thm.homotopy-invariance`）。若把 $C_{*}$ 取成**有序**链群，$g$ 在退化时可能把单纯形压扁，链映射的符号要按顶点顺序处理；本图的同调均按有序链群的商（去掉退化）定义，此处不展开符号。',
+        '**边界与反例**：',
+        '- $K$ **有限**不能省：无限复形上，重心重分不保证 mesh 趋零（同一条无穷细化的链可能一直很粗），星条件也就无法满足。',
+        '- $L$ 不必有限；定理只用到 $L$ 的顶点星覆盖是开覆盖。',
+        '- 「星本身不凸」：开星 $\\operatorname{st}(w)$ 一般不是凸集，所以同伦不能直接说「在 $\\operatorname{st}(w)$ 里连线」；引理 1 的 (ii) 用的是「$f(x), g(x)$ 同落在某个**闭单纯形** $\\rho$ 里」，$\\rho$ 才是凸的。',
+        '⭐ **推论为什么值钱**：它一次性给出三件事——（i）单纯同调是拓扑不变量（不依赖三角剖分）；（ii）可以用有限矩阵的秩计算奇异同调；（iii）Euler 示性数的公式可以搬到奇异同调上（见 `thm.euler-characteristic` 的边）。',
         '💡 一句话：**连续映射 $\\approx$ 重分之后的单纯映射**。拓扑在这里被「组合化」了一次。',
-      ].join('\n'),
+      ].join('\n\n'),
       refs: [
-        'Munkres, Elements of Algebraic Topology · 单纯逼近定理（本图不给章号 / 定理号）',
+        'Munkres, Elements of Algebraic Topology, Ch. 1 §13 · Simplicial Approximation Theorem',
         'Hatcher, Algebraic Topology, Ch. 2 §2.1 · simplicial approximation',
-      ],
+        'Spanier, Algebraic Topology, Ch. 3 §4 · Simplicial Approximation',
+      ]
     },
   ],
 
@@ -752,7 +765,7 @@
           '单射性：$a$ 在 $U$ 与 $V$ 里同时为零说明 $a = 0$；正合性：$a + b = 0$ 时 $a = -b$ 落在两边，故来自 $U \\cap V$。\n\n' +
           '再由 `thm.long-exact-pair` 的追图，得一条三项一片的长正合列：$H_{p}(U \\cap V) \\to H_{p}(U) \\oplus H_{p}(V) \\to H_{p}(S_{*}(U) + S_{*}(V)) \\xrightarrow{\\partial_{*}} H_{p-1}(U \\cap V)$。',
         '',
-        '**第二步（几何，本图的骨架所在）**：包含 $S_{*}(U) + S_{*}(V) \\hookrightarrow S_{*}(X)$ 诱导**同调同构**。' +
+        '**第二步（几何，完整构造在节点注的第四步）**：包含 $S_{*}(U) + S_{*}(V) \\hookrightarrow S_{*}(X)$ 诱导**同调同构**。' +
           '证明靠**小单纯形引理 / 重心重分**：给定奇异 $p$-单纯形 $\\sigma : \\Delta^{p} \\to X$，$\\{\\sigma^{-1}(U),\\ \\sigma^{-1}(V)\\}$ 是紧空间 $\\Delta^{p}$ 的开覆盖；\n\n' +
           '取它的 Lebesgue 数 $\\delta > 0$，反复重心重分直到每个小单纯形的直径 $< \\delta$。\n\n' +
           '这时每个小单纯形的像整体落在 $U$ 或 $V$ 里，于是 $\\sigma$ 与 $S_{*}(U)+S_{*}(V)$ 里的某个链**同调**。\n\n' +

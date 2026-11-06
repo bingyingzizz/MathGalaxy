@@ -72635,7 +72635,6 @@ window.MG = window.MG || {};
     {
       id: 'thm.brouwer-fixed-point',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Brouwer 不动点定理（圆盘）',
       title: 'Brouwer 不动点定理：闭圆盘到自身的连续映射必有不动点',
       cluster: 'analysis.topology-app',
@@ -72646,15 +72645,27 @@ window.MG = window.MG || {};
           '则存在 $z \\in \\overline{\\mathbb{D}}$ 使 $f(z) = z$。',
       ].join('\n'),
       notes: [
-        '⚠ 连续情形的证明需要拓扑输入：$\\pi_{1}(S^{1}) \\cong \\mathbb{Z}$ —— 等价地，$S^{1}$ 不是 $\\overline{\\mathbb{D}}$ 的收缩核（否则把收缩与含入复合，得 $S^{1}$ 的基本群为 $0$，而它是 $\\mathbb{Z}$）。本图不展开。',
-
-        '全纯情形由边上的证明给出：Rouché（`thm.rouche`）比较 $f - z$ 与 $-z$ 在 $|z| = 1$ 上的行为，得圆盘内恰有（$f$ 的）一个零点 —— 即不动点。',
-      ].join('\n'),
+        '**证明（连续情形）**：反设 $f$ 处处没有不动点，即 $f(z) \\ne z$ 对一切 $z \\in \\overline{\\mathbb{D}}$。对每个 $z$ 定义',
+        '$$r(z) := z + t(z)\\,(z - f(z)),$$',
+        '其中',
+        '$$a(z) := \\langle z,\\ z - f(z)\\rangle,\\qquad b(z) := |z - f(z)|^{2} > 0,$$',
+        '$$t(z) := \\frac{-a(z) + \\sqrt{a(z)^{2} + b(z)\\,(1 - |z|^{2})}}{b(z)}.$$',
+        '**为什么 $r$ 落在 $S^{1}$ 上**：把 $|z + t(z - f(z))|^{2} = 1$ 展开成',
+        '$$b(z)\\,t^{2} + 2a(z)\\,t + (|z|^{2} - 1) = 0,$$',
+        '而 $t(z)$ 正是这个二次方程的非负根（$b > 0$；因为 $1 - |z|^{2} \\ge 0$，根号下 $\\ge a^{2}$，故根号 $\\ge |a| \\ge -a$，所以 $t \\ge 0$）。于是 $|r(z)| = 1$。',
+        '**$r$ 连续**：$f$ 连续，$a, b$ 由内积与模算出，仍是连续函数；$b(z) \\ge |z - f(z)|^{2}$ 处处 $> 0$，开方与除法都不出问题。',
+        '**$r$ 在边界上是恒等**：若 $|z| = 1$，则 $a(z) = \\langle z, z - f(z)\\rangle = 1 - \\langle z, f(z)\\rangle \\ge 0$（因 $|f(z)| \\le 1$），代入 $t(z)$ 得 $t(z) = 0$，于是 $r(z) = z$。',
+        '所以 $r : \\overline{\\mathbb{D}} \\to S^{1}$ 是一个连续收缩（$r|_{S^{1}} = \\operatorname{id}$），与 `thm.no-retraction-disk` 矛盾。故 $f$ 必有不动点。∎',
+        '**为什么不能只用复分析**：上面的 $r$ 只用到 $f$ 连续。真正的拓扑输入是 $\\pi_{1}(S^{1}) \\cong \\mathbb{Z}$：`thm.no-retraction-disk` 的证明是函子性一行 —— 若有收缩 $r$，则 $r_{*} \\circ i_{*} = \\operatorname{id}_{\\mathbb{Z}}$ 会穿过 $\\pi_{1}(\\overline{\\mathbb{D}}) = 1$。',
+        '**全纯情形的另一条路（Rouché）**：若 $f$ 在 $\\mathbb{D}$ 上全纯、连续到边界、且 $|f| \\le 1$，则在 $|z| = 1$ 上 $|f(z) - z| \\ge |z| - |f(z)| \\ge 0$，且等号只在 $f(z) = z$ 时出现（那已是不动点）；否则 $f - z$ 在边界无零点。由 `thm.rouche` 比较 $f - z$ 与 $-z$（$|-z| = 1 > |f|$），后者在 $\\mathbb{D}$ 内恰有一个零点，故 $f - z$ 也恰有一个零点。这条只覆盖全纯情形。',
+        '💡 **等价说法**：$\\overline{\\mathbb{D}}$ 不能连续收缩到 $S^{1}$；Brouwer 定理与「$S^{1}$ 不是圆盘的收缩核」是同一件事的两种写法（见 `thm.borsuk-ulam`、`thm.no-retraction-disk` 那条边）。',
+      ].join('\n\n'),
       refs: [
         '王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）',
         'Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · Brouwer’s Fixed-Point Theorem',
         'Hatcher, Algebraic Topology, §1.1 · 基本群（圆周的基本群是 ℤ，用覆叠空间证）；§2.2 · Brouwer 不动点定理',
-      ],
+        'Munkres, Topology (2nd ed.), Ch. 9 · Retractions and Fixed Points',
+      ]
     },
     {
       id: 'thm.borsuk-ulam',
@@ -74267,7 +74278,6 @@ window.MG = window.MG || {};
     {
       id: 'thm.van-kampen',
       type: 'theorem',
-      status: 'skeleton',
       label: 'van Kampen 定理',
       title: 'Seifert–van Kampen：把 $\\pi_{1}$ 从两块拼起来',
       cluster: 'topology.fg',
@@ -74291,39 +74301,37 @@ window.MG = window.MG || {};
           '而两组像之间**只有**来自 $G$ 的关系。',
       ].join('\n'),
       notes: [
+        '**证明**：分四步。两处关键的技术输入是「紧性 $+$ Lebesgue 数」与「$U \\cap V$ 道路连通」。',
+        '**第一步（分解闭道路）**：设 $\\alpha : I \\to X$ 是 $x_{0}$ 处的闭道路。对开覆盖 $\\{U, V\\}$ 用 `def.lebesgue-number`：存在 $\\delta > 0$，使 $\\alpha$ 的每个直径 $< \\delta$ 的子区间都落在 $U$ 或 $V$ 里。取分点 $0 = t_{0} < t_{1} < \\cdots < t_{n} = 1$ 细分到 $t_{i} - t_{i-1} < \\delta$，记 $\\alpha_{i} = \\alpha|_{[t_{i-1}, t_{i}]}$，每段落在 $U$ 或 $V$ 中。因为 $U \\cap V$ 道路连通，可在 $U \\cap V$ 中取从 $x_{0}$ 到 $\\alpha(t_{i})$ 的道路 $\\beta_{i}$（$\\beta_{0} = \\beta_{n} = $ 常值）。把 $\\beta_{i}$ 看成 $U$ 中的道路或 $V$ 中的道路都可以（它整个在 $U \\cap V$ 里）。于是',
+        '$$\\alpha \\;\\simeq_{x_{0}}\\; \\prod_{i=1}^{n} \\big(\\beta_{i-1}^{-1} \\alpha_{i} \\beta_{i}\\big),$$',
+        '右边每个因子是**完全落在 $U$ 或 $V$ 里**的、以 $x_{0}$ 为基点的闭道路。其实这里只需要 $\\alpha_{i}$ 落在 $U$ 或 $V$、$\\beta_{i}$ 落在 $U \\cap V$：乘积的每一项写成 (在 $U$ 中) 或 (在 $V$ 中) 的环路。',
+        '**第二步（满射）**：令 $\\Phi : \\pi_{1}(U) * \\pi_{1}(V) \\to \\pi_{1}(X)$ 由两个包含诱导的群同态给出（自由积的泛性质）。第一步说明每个 $[\\alpha] \\in \\pi_{1}(X)$ 都是若干 $\\Phi$-像的乘积，故 $\\Phi$ 满射。记 $q : \\pi_{1}(U) * \\pi_{1}(V) \\to P := (\\pi_{1}(U) * \\pi_{1}(V))/N$ 为商映射。由于对 $\\gamma \\in G$，$\\Phi(i_{*}\\gamma \\cdot j_{*}\\gamma^{-1}) = [\\gamma]\\,[\\gamma]^{-1} = 1$，有 $N \\subseteq \\ker \\Phi$，故 $\\Phi$ 下降为',
+        '$$\\bar{\\Phi} : P \\longrightarrow \\pi_{1}(X).$$',
+        '它仍是满射。下面构造它的逆。',
+        '**第三步（定义 $\\Psi$ 并证良定义）**：对 $X$ 中从 $x_{0}$ 到 $x_{0}$ 的闭道路 $\\alpha$，按第一步取分解，把对应的字（每个因子按它所在的 $U$ 或 $V$ 取类）记为 $W(\\alpha) \\in P$。需要证明 $W(\\alpha)$ 不依赖分解，且在定端同伦下不变。',
+        '**3a（细分不变）**：两个分解有公共细分（取并集分点）。只需检查「把一个 $U$-段或 $V$-段再切开一点」不改变 $W$。设 $\\alpha_{i}$ 落在 $U$，在 $y = \\alpha(s)$ 处切开，并取 $U \\cap V$ 中的连接道路 $\\beta_{y}$。在 $\\pi_{1}(U)$ 中有',
+        '$$\\beta_{i-1}^{-1}\\alpha_{i}\\beta_{i} \\;=\\; \\big(\\beta_{i-1}^{-1}\\alpha_{i}^{\\prime}\\beta_{y}\\big)\\big(\\beta_{y}^{-1}\\alpha_{i}^{\\prime\\prime}\\beta_{i}\\big),$$',
+        '（$\\alpha_{i}^{\\prime}, \\alpha_{i}^{\\prime\\prime}$ 是两段），这是 $\\pi_{1}(U)$ 中的等式；若该段本在 $V$，同样的等式在 $\\pi_{1}(V)$ 中成立。所以 $W$ 在细分下不变。',
+        '**3b（同伦不变）**：设 $H : I \\times I \\to X$ 是 $\\alpha$ 到 $\\alpha^{\\prime}$ 的定端同伦。$H^{-1}(U), H^{-1}(V)$ 是 $I^{2}$ 的开覆盖，取 Lebesgue 数 $\\varepsilon$，把 $I^{2}$ 切成边长 $< \\varepsilon$ 的小方格网格，使每个小方格的像落在 $U$ 或 $V$ 中。',
+        '给每个网格顶点 $v$ 选一条从 $x_{0}$ 到 $H(v)$ 的连接道路：若 $H(v) \\in U \\cap V$，取在 $U \\cap V$ 中；若 $H(v) \\in U \\setminus V$，取在 $U$ 中（此时**所有**含 $v$ 的小方格的像都在 $U$ 里，因为若某格在 $V$，则 $v$ 的像也在 $V$，矛盾）；若 $H(v) \\in V \\setminus U$，对称地取在 $V$ 中。于是每个小方格 $c$ 的四条边（用两端的连接道路共轭到 $x_{0}$）给出的环路**整条落在**同一个开集（$U$ 或 $V$）里，并且这个环路就是 $c$ 的边界在 $X$ 中的像，它在那个开集里**零伦**（$c$ 是圆盘，$c$ 的像提供零伦）。故该小方格贡献的字在 $\\pi_{1}(U)$（或 $\\pi_{1}(V)$）中等于 $1$。',
+        '把所有小方格的字按 $\\pi_{1}(U) * \\pi_{1}(V)$ 相乘：**内部边成对反向出现、连接道路相同，全部相消**；剩下的只有外边界。外边界由 $\\alpha$（底边）、$\\alpha^{\\prime-1}$（顶边）和两条退化边（定端同伦，$H$ 在两条竖边上恒等于 $x_{0}$，对应常值道路，贡献单位）组成。于是 $W(\\alpha)\\,W(\\alpha^{\\prime})^{-1} = 1$ 在 $P$ 中，即 $W(\\alpha) = W(\\alpha^{\\prime})$。',
+        '所以 $\\Psi([\\alpha]) := W(\\alpha)$ 是 $\\pi_{1}(X, x_{0}) \\to P$ 的良定义映射。它还是**同态**：两条闭道路首尾相接，公共端点处的连接道路取同一条即可，字相乘。',
+        '**第四步（互逆）**：$\\Psi \\circ \\bar{\\Phi} = \\operatorname{id}_{P}$：只需在自由积的生成元（一个落在 $U$ 或 $V$ 里的环路）上验证。若环路整个在 $U$ 里，按第一步取不细分（或细分后每段都在 $U$）的分解，得到的字就是它自己在 $\\pi_{1}(U)$ 中的类，故成立；对 $V$ 同理，而自由积的生成元生成整个 $P$。$\\bar{\\Phi} \\circ \\Psi = \\operatorname{id}_{\\pi_{1}(X)}$：第一步已经说明 $\\alpha$ 与「$W(\\alpha)$ 对应的环路之积」定端同伦，取 $\\Phi$ 即得。于是 $\\bar{\\Phi}$ 是同构。∎',
         '**两个常用特例**：',
         '- $G = 1$（交叠单连通）$\\implies$ $\\pi_{1}(X) \\cong \\pi_{1}(U) * \\pi_{1}(V)$（自由积，一般非阿贝尔、无限）；',
         '- $\\pi_{1}(U) = \\pi_{1}(V) = 1$ $\\implies$ $\\pi_{1}(X) = 1$（**与 $G$ 无关**，见 `cor.pi1-sphere`）。',
-        '',
-        '⚠️ **假设不能省**：$U, V$ 要求**开**（更一般：内部覆盖 $X$）是为了能用 Lebesgue 数把闭道路切细；' +
-          '$U \\cap V$ 道路连通是为了「换基点」不带来额外信息。反例：把 $S^{1}$ 拆成两段开弧，' +
-          '交叠是两个不连通的开弧，公式就失效。',
-        '',
-        '⚠️ **本证明是骨架，不是逐行证明**（如实标注）。结构是：',
-        '① 用 Lebesgue 数把任意闭道路 $\\alpha$ 切成小段，每段落在 $U$ 或 $V$ 里；',
-        '② 由「小段所在的开片里没有洞」，把每段替换成落在 $U$ 或 $V$ 中的道路，得 $\\alpha \\simeq_{p}$ 一串交替的 $U$-段与 $V$-段；',
-        '③ 这个分解定义出满同态 $\\Phi : \\pi_{1}(U) * \\pi_{1}(V) \\twoheadrightarrow \\pi_{1}(X)$，' +
-          '且 $N \\subseteq \\ker\\Phi$；',
-        '④ 反向：给一个 $\\Phi(\\text{字}) = 1$ 的同伦，再用同样的切细手法把同伦也切成小块，' +
-          '证明该字在 $N$ 里。这一步是**最长的**，本图没有逐条写。',
-        '',
-        '💡 一句记法：**交叠是「胶水」，$\\pi_{1}$ 沿着胶水做余极限**。所谓 amalgamated product 就是群范畴里的推出（pushout）。',
-        ,
-        '**定理有两个版本，假设不同**（这决定了它能不能用）：\n' +
-        '\n' +
-        '- **群胚版本（无假设）**：对任意开覆盖 $\\{U, V\\}$，基本**群胚**的推出给出 $\\Pi_{1}(X)$。**不需要 $U \\cap V$ 连通、不需要 $U,V$ 道路连通** —— 这是最干净的版本。\n' +
-        '- **基本群版本（本节陈述的）**：要 $\\pi_{1}(X) \\cong \\pi_{1}(U) *_{\\pi_{1}(U\\cap V)} \\pi_{1}(V)$，需要**$U$、$V$、$U \\cap V$ 都道路连通**且**含基点**。⚠️ 缺了交集的道路连通性，右端算的是「群胚的推出在基点处的分量」，与左端**可能不同**。\n' +
-        '\n' +
-        '**推导里两处用到假设**：\n' +
-        '- 「$\\pi_{1}(U) * \\pi_{1}(V) \\to \\pi_{1}(X)$ 满」：要用**覆盖的道路连通性 + 紧性**（把一条环路按覆盖切成有限段，每段落在一个开集里）—— 这一步用 $X$ 的紧性/覆盖的 Lebesgue 数（`def.lebesgue-number`）。\n' +
-        '- 「核是 $N$」：要把每个「跨过 $U\\cap V$ 的跳」写成 $\\pi_{1}(U\\cap V)$ 的元素，**这一步用 $U \\cap V$ 道路连通**。\n' +
-        '\n' +
-        '⚠️ **最常见的误用**：拿覆盖 $\\{U, V\\}$ 但 $U \\cap V$ 不连通（例如圆周的两个开弧）就直接套公式。正确做法是改用**群胚版本**，或把覆盖细到交集连通。\n'
-      ].join('\n'),
+        '⚠️ **假设不能省**：$U, V$ 要求**开**（更一般：内部覆盖 $X$）是为了能用 Lebesgue 数把闭道路切细；$U \\cap V$ 道路连通是为了「换基点」不带来额外信息。反例：把 $S^{1}$ 拆成两段开弧，交叠是两个不连通的开弧，公式就失效。',
+        '**定理有两个版本，假设不同**（这决定了它能不能用）：',
+        '- **群胚版本（无假设）**：对任意开覆盖 $\\{U, V\\}$，基本**群胚**的推出给出 $\\Pi_{1}(X)$。**不需要 $U \\cap V$ 连通、不需要 $U,V$ 道路连通** —— 这是最干净的版本。',
+        '- **基本群版本（本节陈述的）**：要 $\\pi_{1}(X) \\cong \\pi_{1}(U) *_{\\pi_{1}(U\\cap V)} \\pi_{1}(V)$，需要**$U$、$V$、$U \\cap V$ 都道路连通**且**含基点**。⚠️ 缺了交集的道路连通性，右端算的是「群胚的推出在基点处的分量」，与左端**可能不同**。',
+        '⚠️ **最常见的误用**：拿覆盖 $\\{U, V\\}$ 但 $U \\cap V$ 不连通（例如圆周的两个开弧）就直接套公式。正确做法是改用**群胚版本**，或把覆盖细到交集连通。',
+        '💡 一句记法：**交叠是「胶水」，$\\pi_{1}$ 沿着胶水做余极限**。所谓融合积就是群范畴里的推出。',
+      ].join('\n\n'),
       refs: [
-        'Munkres, Topology (2nd ed.), 论 Seifert–van Kampen 定理的那一章（本图不给章号 / 节号，见存疑清单）',
         'Hatcher, Algebraic Topology, Ch. 1 §1.2 · Van Kampen Theorem',
-      ],
+        'Munkres, Topology (2nd ed.), Ch. 9 §70 · Seifert–van Kampen Theorem',
+        'Bredon, Topology and Geometry, Ch. III · 基本群与 van Kampen',
+      ]
     },
     {
       id: 'cor.pi1-sphere',
@@ -75131,15 +75139,13 @@ window.MG = window.MG || {};
     {
       id: 'thm.mv-homology',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Mayer–Vietoris（同调）',
       title: 'Mayer–Vietoris 序列（同调版，$\\mathbb{Z}$ 系数）',
       cluster: 'topology.homology',
       regions: ['topology'],
       tags: ['代数拓扑', 'Mayer–Vietoris', '长正合列', '同调群'],
       statement: [
-        '设 $X = U \\cup V$，$U, V \\subseteq X$ 是**开集**（更一般：$U, V$ 的内部覆盖 $X$）。' +
-          '记 $i_{*}, j_{*}$ 为 $U \\cap V \\hookrightarrow U, V$ 的包含映射诱导的映射。则存在长正合列',
+        '设 $X = U \\cup V$，$U, V \\subseteq X$ 是**开集**（更一般：$U, V$ 的内部覆盖 $X$）。记 $i_{*}, j_{*}$ 为 $U \\cap V \\hookrightarrow U, V$ 的包含映射诱导的映射。则存在长正合列',
         '',
         '$$H_{p}(U \\cap V) \\to H_{p}(U) \\oplus H_{p}(V) \\to H_{p}(X)$$',
         '$$\\xrightarrow{\\ \\partial_{*}\\ } H_{p-1}(U \\cap V)$$',
@@ -75151,36 +75157,46 @@ window.MG = window.MG || {};
         '把 $H$ 换成约化同调 $\\tilde{H}$，只要 $U \\cap V \\ne \\emptyset$，同样的序列照样成立（否则 $\\tilde{H}_{0}$ 那段不正合：$X = \\{a, b\\}$、$U = \\{a\\}$、$V = \\{b\\}$ 时 $\\tilde{H}_{0}(U) = \\tilde{H}_{0}(V) = 0$ 而 $\\tilde{H}_{0}(X) = \\mathbb{Z}$）。',
       ].join('\n'),
       notes: [
-        '⚠️ **本图的证明是骨架**。结构与关键的一步：',
-        '① 记 $S_{*}(U) + S_{*}(V) \\subseteq S_{*}(X)$ 为「落在 $U$ 里的」与「落在 $V$ 里的」奇异单纯形共同生成的子复形；' +
-          '有短正合列 $0 \\to S_{*}(U \\cap V) \\to S_{*}(U) \\oplus S_{*}(V) \\to S_{*}(U) + S_{*}(V) \\to 0$；',
-        '② 由 `thm.long-exact-pair` 的追图得一条长正合列；',
-        '③ **关键一步（本图不展开）**：包含 $S_{*}(U) + S_{*}(V) \\hookrightarrow S_{*}(X)$ 诱导**同调同构**。' +
-          '理由是**小单纯形引理 / 重心重分**：给定奇异 $p$-单纯形 $\\sigma : \\Delta^{p} \\to X$，$\\{\\sigma^{-1}(U), \\sigma^{-1}(V)\\}$ 是 $\\Delta^{p}$ 的开覆盖；\n\n' +
-          '取 Lebesgue 数 $\\delta$，反复重心重分直到每个小单纯形的直径 $< \\delta$，则每个小单纯形整体落在 $U$ 或 $V$ 里——于是「重分后的链」落在 $S_{*}(U) + S_{*}(V)$ 里。\n\n' +
-          '重分链映射与包含互为链同伦逆；\n\n' +
-          '',
-        '④ 把 ②③ 接起来即得 MV。',
-        '',
-        '⭐ **全部的力气都在第 ③ 步的重细分上**：它把「局部落在 $U$ 或 $V$」升级成「整体等价」。' +
-          '这条也是最容易被略过、却最容易出错的地方（符号与链同伦的显式构造）。',
-        '',
-        '⚠️ **与 `thm.mayer-vietoris` 的区别**：那个节点是 **de Rham 版**（光滑流形、实系数、微分形式复形，' +
-          '`def.de-rham-complex`）。这里是**奇异链版**（任意空间、$\\mathbb{Z}$ 系数）。' +
-          '两个序列形状一样，但一个有挠部信息、一个没有 —— 名字相似不等于同一个结论，不要互相引用当证明。',
-        '',
-        '💡 常用法：算 $\\tilde{H}_{*}(S^{n})$（`thm.sphere-homology`）、把环面拆成两张柱面、' +
-          '把连通和拆成两块挖掉小球的空间。',
-      ].join('\n'),
+        '**证明**：分五步。① 挑出「每条小单纯形整体落在 $U$ 或 $V$ 里」的链，得到子复形；② 用重心重分证明这个子复形到全复形的包含在同调上是同构（全部难点）；③ 把子复形拆成 $U$ 的链与 $V$ 的链之和；④ 对短正合列接长正合列；⑤ 把 ② 代进去。',
+        '**小链。** 称奇异单纯形 $\\sigma : \\Delta^{p} \\to X$ 关于覆盖 $\\{U, V\\}$ **小**，如果 $\\sigma(\\Delta^{p}) \\subseteq U$ 或 $\\sigma(\\Delta^{p}) \\subseteq V$。小单纯形的有限和组成子群 $S^{\\mathcal{U}}_{p}(X) \\subseteq S_{p}(X)$；边缘算子保持小性（面仍落在同一个集合里），故 $S^{\\mathcal{U}}_{*}(X)$ 是子复形。记 $\\iota : S^{\\mathcal{U}}_{*}(X) \\hookrightarrow S_{*}(X)$。',
+        '**第一步：重分链映射。** 在标准单纯形 $\\Delta^{p}$ 上递归定义两个链：',
+        '$$\\operatorname{sd}_{0} := [v_{0}],\\qquad \\operatorname{sd}_{p} := [b_{p},\\ \\operatorname{sd}_{p-1}(\\partial\\Delta^{p})],$$',
+        '其中 $b_{p}$ 是 $\\Delta^{p}$ 的重心、$[b, c]$ 表示以 $b$ 为锥顶在链 $c$ 上作锥、$\\partial\\Delta^{p} = \\sum_{i}(-1)^{i}\\Delta^{p}_{i}$ 是标准边缘。锥公式 $\\partial[b, c] = c - [b, \\partial c]$ 给出',
+        '$$\\partial\\operatorname{sd}_{p} = \\operatorname{sd}_{p-1}(\\partial\\Delta^{p}).$$',
+        '再定义 $t_{0} := 0$ 与递归',
+        '$$c_{p} := \\operatorname{sd}_{p} - \\operatorname{id}_{p} - t_{p-1}(\\partial\\Delta^{p}),\\qquad t_{p} := [b_{p},\\ c_{p}],$$',
+        '其中 $\\operatorname{id}_{p}$ 是恒等 $p$-单纯形。对 $p$ 归纳验证 $\\partial c_{p} = 0$（用到 $\\partial\\partial = 0$ 与归纳假设），故 $\\partial t_{p} = c_{p}$，即',
+        '$$\\partial t_{p} + t_{p-1}(\\partial\\Delta^{p}) = \\operatorname{sd}_{p} - \\operatorname{id}_{p}.$$',
+        '基例 $p = 0$ 是 $\\operatorname{sd}_{0} = \\operatorname{id}_{0}$、$t_{0} = 0$。',
+        '**第二步：自然性。** 对奇异单纯形 $\\sigma$ 令 $\\operatorname{Sd}(\\sigma) := \\sigma_{\\#}\\operatorname{sd}_{p}$、$T(\\sigma) := \\sigma_{\\#} t_{p}$，线性延拓。因 $\\sigma_{\\#}$ 是链映射且与连续映射相容，',
+        '$$\\partial\\operatorname{Sd} = \\operatorname{Sd}\\partial,\\qquad \\partial T + T\\partial = \\operatorname{Sd} - \\operatorname{id}.$$',
+        '（逐项抄上一条恒等式即得；$T$ 可能产生退化单纯形，这不影响链恒等式。）单个 $\\operatorname{Sd}(\\sigma)$ 未必小，小性要靠迭代。',
+        '**第三步：直径收缩。** 设 $\\tau \\subseteq \\Delta^{p}$ 是直径 $\\delta$ 的单纯形，$b_{S}$ 表示面 $S$ 的重心。$\\operatorname{sd}(\\tau)$ 的顶点是某些面 $S_{0} \\subset \\cdots \\subset S_{q}$ 的重心，且对 $S \\subset S^{\\prime}$ 有',
+        '$$b_{S^{\\prime}} - b_{S} = \\frac{1}{|S^{\\prime}|}\\sum_{v \\in S^{\\prime} \\setminus S}(v - b_{S}),$$',
+        '故 $|b_{S^{\\prime}} - b_{S}| \\le \\left(1 - \\frac{|S|}{|S^{\\prime}|}\\right)\\delta \\le \\frac{p}{p+1}\\delta$。于是 $\\operatorname{mesh}(\\operatorname{sd}^{m}\\tau) \\le (p/(p+1))^{m}\\delta$：重分足够多次，小单纯形的直径可以任意小。',
+        '**第四步：小链引理。** 包含 $\\iota : S^{\\mathcal{U}}_{*}(X) \\hookrightarrow S_{*}(X)$ 诱导同调同构。',
+        '证明：对每个奇异 $p$-单纯形 $\\sigma$，$\\{\\sigma^{-1}(U), \\sigma^{-1}(V)\\}$ 是紧空间 $\\Delta^{p}$ 的开覆盖，有 Lebesgue 数 $\\delta_{\\sigma} > 0$（直径 $< \\delta_{\\sigma}$ 的子集必落在其中一个里）。取 $m$ 使 $(p/(p+1))^{m}\\operatorname{diam}(\\Delta^{p}) < \\delta_{\\sigma}$，则 $\\operatorname{Sd}^{m}(\\sigma)$ 的每个小单纯形的像落在 $U$ 或 $V$ 里。',
+        '记 $T_{M} := \\sum_{j=0}^{M-1}\\operatorname{Sd}^{j} T$，则 $\\partial T_{M} + T_{M}\\partial = \\operatorname{Sd}^{M} - \\operatorname{id}$。',
+        '**满射**：任取闭链 $z$。$z$ 只有有限个单纯形，取 $M$ 使每个 $\\operatorname{Sd}^{M}(\\sigma)$（$\\sigma$ 跑遍 $z$ 的单纯形）都小，则 $\\operatorname{Sd}^{M} z \\in S^{\\mathcal{U}}_{*}(X)$，且 $\\operatorname{Sd}^{M} z - z = \\partial T_{M} z$，故 $\\iota_{*}[\\operatorname{Sd}^{M} z] = [z]$。',
+        '**单射**：设 $z \\in S^{\\mathcal{U}}_{p}(X)$ 是闭链且 $z = \\partial b$（$b \\in S_{p+1}(X)$）。取 $M$ 同时使 $z$、$T z$、$b$ 的所有单纯形的 $M$ 次重分都小。则 $z = \\operatorname{Sd}^{M} z - \\partial T_{M} z$，其中 $\\operatorname{Sd}^{M} z$ 与 $T_{M} z$ 都在小链复形里；而 $\\operatorname{Sd}^{M} z = \\operatorname{Sd}^{M}\\partial b = \\partial(\\operatorname{Sd}^{M} b)$，$\\operatorname{Sd}^{M} b$ 也小。于是在 $H_{p}(S^{\\mathcal{U}}_{*}(X))$ 中 $[z] = [\\operatorname{Sd}^{M} z] = 0$。',
+        '**第五步：拆成两块。** 一条链小，当且仅当它属于 $S_{*}(U) + S_{*}(V)$。于是有链复形的短正合列',
+        '$$0 \\to S_{*}(U \\cap V) \\to S_{*}(U) \\oplus S_{*}(V) \\to S_{*}(U) + S_{*}(V) \\to 0,$$',
+        '映射是 $a \\mapsto (a, -a)$ 与 $(a, b) \\mapsto a + b$。正合性：$S_{*}(U) \\cap S_{*}(V) = S_{*}(U \\cap V)$（每条单纯形的像同时在 $U$、$V$ 里，故在交里）；满射由定义；核由 $a + b = 0$ 即 $b = -a$ 得。',
+        '**第六步：接长正合列。** 对上面的短正合列用 `thm.long-exact-pair`（链复形版，纯追图），得长正合列；其中 $H_{p}(S_{*}(U) \\oplus S_{*}(V)) = H_{p}(U) \\oplus H_{p}(V)$，而 $H_{p}(S_{*}(U) + S_{*}(V)) \\cong H_{p}(X)$ 由第四步。把两个映射对上：$(a) \\mapsto (a, -a)$ 给出 $\\Phi[z] = (i_{*}[z], -j_{*}[z])$，$(a, b) \\mapsto a + b$ 给出 $\\Psi[a, b] = [a + b]$。∎',
+        '**约化版。** 对增广链复形做同样的论证。当 $U \\cap V \\ne \\emptyset$ 时取基点 $x_{0} \\in U \\cap V$，增广映射 $\\varepsilon$ 在三条复形上一致，短正合列连增广项仍正合，故得到约化长正合列。$U \\cap V = \\emptyset$ 时 $\\tilde{H}_{0}$ 段失效，反例见陈述。',
+        '**为什么这里不需要好对。** 全部论证只用了开覆盖与 Lebesgue 数，没有用 $A$ 在 $X$ 中的邻域收缩；这是奇异同调比同伦群好用的地方。',
+        '⭐ **难点的位置**：不是正合列（那是纯代数），而是「局部落在 $U$ 或 $V$」升级成「整体同调等价」——第四步的链同伦。符号全在锥构造里：$\\operatorname{sd}_{p} := [b_{p}, \\operatorname{sd}_{p-1}(\\partial\\Delta^{p})]$ 与 $t_{p} := [b_{p}, c_{p}]$。',
+        '⚠️ **与 `thm.mayer-vietoris` 的区别**：那个节点是 **de Rham 版**（光滑流形、实系数、微分形式复形，`def.de-rham-complex`）。这里是**奇异链版**（任意空间、$\\mathbb{Z}$ 系数）。两个序列形状一样，但一个有挠部信息、一个没有 —— 名字相似不等于同一个结论，不要互相引用当证明。',
+        '💡 常用法：算 $\\tilde{H}_{*}(S^{n})$（`thm.sphere-homology`）、把环面拆成两张柱面、把连通和拆成两块挖掉小球的空间。',
+      ].join('\n\n'),
       refs: [
-        'Munkres, Elements of Algebraic Topology · Mayer–Vietoris 序列（本图不给章号 / 定理号）',
-        'Hatcher, Algebraic Topology, Ch. 2 §2.2 · Mayer–Vietoris sequences',
-      ],
+        'Munkres, Elements of Algebraic Topology, §2.1 · Mayer–Vietoris sequence（含小链引理与重心重分）',
+        'Hatcher, Algebraic Topology, Ch. 2 §2.1–2.2 · barycentric subdivision 与 Mayer–Vietoris',
+      ]
     },
     {
       id: 'thm.simplicial-approximation',
       type: 'theorem',
-      status: 'skeleton',
       label: '单纯逼近',
       title: '单纯逼近定理：奇异同调 $=$ 单纯同调',
       cluster: 'topology.homology',
@@ -75201,30 +75217,35 @@ window.MG = window.MG || {};
         '于是「多面体的奇异同调可以只按某个三角剖分算成单纯同调」，而后者是**有限矩阵**问题。',
       ].join('\n'),
       notes: [
-        '⚠️ **本图的证明是骨架**，四条支柱：',
-        '① **重分不改变同调**：重心重分给出链映射 $\\operatorname{sd} : C_{*}(K) \\to C_{*}(K\')$（把每个单纯形映成' +
-          '「以它的重心为锥顶、锥在它的一个面上」的链，符号由顶点全序决定），它诱导同调同构——' +
-          '构造一条反向链同伦即可（关键事实：重分后每个小单纯形的顶点集都落在原来某个单纯形里）；',
-        '② **切细到落进星里**：取 $L$ 的**星形**开覆盖 $\\{\\operatorname{st}(w)\\}_{w \\in V(L)}$。' +
-          '$f$ 连续、$|K|$ 紧，故由 Lebesgue 数可取 $m$ 使 $K^{(m)}$ 的每个单纯形的像都落在**同一个** $\\operatorname{st}(w)$ 里；',
-        '③ **选顶点得单纯映射**：可以把 $K^{(m)}$ 的每个顶点 $v$ 送到某个使 $|f|(v) \\in \\operatorname{st}(w)$ 的 $w$，' +
-          '并且选得使每条单纯形的顶点像构成 $L$ 的一个单纯形（星形覆盖保证这一点能做）；',
-        '④ **同伦**：由构造，$f(x)$ 与 $|g|(x)$ 落在**同一个单纯形**里（$w$ 取自 $f(x)$ 所在单纯形的顶点，而 $|g|(x) \\in \\operatorname{st}(w)$），单纯形是凸的，所以两点间的线段整个留在里面，（⚠️ 注意**开星本身一般不凸**：只有边 $[w,a],[w,b]$ 而没有三角形 $[w,a,b]$ 时，$\\frac{1}{2}(w+a)$ 与 $\\frac{1}{2}(w+b)$ 都在 $\\operatorname{st}(w)$ 里，中点却不在 $|K|$ 里。）' +
-          '$H(x, t) := (1 - t)|g|(x) + t f(x)$ 是有定义的连续同伦。',
-        '',
-        '⚠️ ① 与 ④ 的技术细节（符号追踪、链同伦的显式公式）本图**没有**写出来，' +
-          '这是本节最容易被低估的地方。',
-        '',
-        '⭐ **推论为什么值钱**：它一次性给出三件事——' +
-          '（i）单纯同调是拓扑不变量（不依赖三角剖分）；（ii）可以用有限矩阵的秩计算奇异同调；' +
-          '（iii）Euler 示性数的公式可以搬到奇异同调上（见 `thm.euler-characteristic` 的边）。',
-        '',
+        '**证明分两层**：先证「星条件 $\\Longrightarrow$ 单纯映射且同伦」，再证「重分够细就能满足星条件」。',
+        '**引理 1（星条件）**：设 $g : \\operatorname{Vert}(K) \\to \\operatorname{Vert}(L)$ 满足',
+        '$$f\\big(\\operatorname{st}_{K}(v)\\big) \\;\\subseteq\\; \\operatorname{st}_{L}\\big(g(v)\\big) \\qquad \\forall v .$$',
+        '则 (i) $g$ 把 $K$ 的每个单纯形送到 $L$ 的一个单纯形，因而是单纯映射；(ii) $|g| \\simeq f$。',
+        '证明 (i)：设 $v_{0}, \\ldots, v_{p}$ 张成 $K$ 的单纯形 $\\sigma$，取内点 $x \\in \\sigma^{\\circ}$。对每个 $i$，$x \\in \\operatorname{st}_{K}(v_{i})$，故 $f(x) \\in \\operatorname{st}_{L}(g(v_{i}))$。于是',
+        '$$f(x) \\;\\in\\; \\bigcap_{i=0}^{p} \\operatorname{st}_{L}\\big(g(v_{i})\\big).$$',
+        '而 $L$ 中若干顶点的星之交非空，当且仅当这些顶点张成一个单纯形（$\\bigcap \\operatorname{st}(w_{i})$ 正是以 $\\{w_{i}\\}$ 为顶点集的单纯形的内部，若它非空则这个单纯形存在）。故 $\\{g(v_{0}), \\ldots, g(v_{p})\\}$ 张成 $L$ 的单纯形，$g$ 是单纯映射。',
+        '(ii)：设 $x \\in \\sigma^{\\circ}$。令 $\\tau = g(\\sigma)$，它是以 $g(v_{0}), \\ldots, g(v_{p})$ 为顶点的单纯形。由 (i) 的论证，$f(x) \\in \\operatorname{st}_{L}(\\tau)$，即 $f(x)$ 落在某个**包含 $\\tau$ 的**单纯形 $\\rho$ 的内部；而 $g(x) \\in \\tau \\subseteq \\rho$。$\\rho$ 是凸的，所以线段 $[f(x), g(x)] \\subseteq \\rho \\subseteq |L|$。令 $H(x, t) = (1 - t)\\,g(x) + t\\,f(x)$，它在每个 $\\sigma^{\\circ}$ 上连续、在边界上与相邻单纯形的公式一致（同一点 $x$ 无论从哪个单形取，$\\rho$ 的取法给出同一个凸包），故 $H : |K| \\times I \\to |L|$ 连续，是 $g$ 到 $f$ 的同伦。∎',
+        '**引理 2（重分够细）**：$\\{\\operatorname{st}_{L}(w)\\}_{w \\in \\operatorname{Vert}(L)}$ 是 $|L|$ 的开覆盖；由 $f$ 连续，$\\{f^{-1}(\\operatorname{st}_{L}(w))\\}$ 是 $|K|$ 的开覆盖。$|K|$ 紧，取 Lebesgue 数 $\\delta > 0$（`def.lebesgue-number`）：$|K|$ 中任何直径 $< \\delta$ 的子集都落在某个 $f^{-1}(\\operatorname{st}_{L}(w))$ 里，即其像落在某个 $\\operatorname{st}_{L}(w)$ 里。',
+        '反复重心重分使直径趋于零：若 $\\dim K = n$，则 $\\operatorname{mesh}(K^{(m)}) \\le \\big(\\tfrac{n}{n+1}\\big)^{m}\\,\\operatorname{mesh}(K)$（每个重分后的单纯形含于原某个单纯形，且直径不超过原直径的 $n/(n+1)$ 倍）。取 $m$ 使 $\\operatorname{mesh}(K^{(m)}) < \\delta/2$。',
+        '对 $K^{(m)}$ 的每个顶点 $v$，$\\operatorname{st}(v)$ 的直径 $\\le 2\\,\\operatorname{mesh}(K^{(m)}) < \\delta$，故 $f(\\operatorname{st}(v)) \\subseteq \\operatorname{st}_{L}(w)$ 对某个 $w$ 成立；令 $g(v) := w$。由引理 1，$g$ 是单纯映射且 $|g| \\simeq f$。∎',
+        '**推论的证明（链级）**：记 $\\iota_{m} : C_{*}(K^{(m)}) \\hookrightarrow S_{*}(|K|)$、$\\iota : C_{*}(K) \\hookrightarrow S_{*}(|K|)$ 为包含。对恒等映射 $\\operatorname{id} : |K| \\to |K|$ 用定理，得 $m$ 与单纯映射 $g : K^{(m)} \\to K$ 使 $|g| \\simeq \\operatorname{id}$。',
+        '- $\\iota\\,g_{*} = (|g|)_{*}\\,\\iota_{m}$（$g$ 是单纯映射，两边都在单个单纯形上取同一个像）；',
+        '- 由 `thm.homotopy-invariance`，$|g| \\simeq \\operatorname{id}$ 给出链同伦 $(|g|)_{*} \\simeq \\operatorname{id}$，故 $\\iota\\,g_{*} \\simeq \\iota_{m}$；',
+        '- 重心重分链映射 $\\operatorname{sd}^{m} : C_{*}(K) \\to C_{*}(K^{(m)})$ 与 $\\iota_{m}$ 满足 $\\iota_{m}\\,\\operatorname{sd}^{m} = \\iota$（重分不改变几何实现，链级上是细分），且 $\\operatorname{sd}^{m}$ 诱导同调同构（反向链同伦：每个重分后的单纯形落在原单纯形里，锥构造给出）。',
+        '于是 $\\iota_{*}\\,g_{*}\\,\\operatorname{sd}^{m}_{*} = \\iota_{*}$，而 $g_{*}\\operatorname{sd}^{m}_{*}$ 是同调上的同构（它是 $\\iota$ 的「逆」的一部分），推出 $\\iota_{*}$ 是同构。更直接地：$g_{*}\\operatorname{sd}^{m}_{*}$ 与恒等链映射在几何实现上同伦，故在 $H_{*}$ 上是恒等；另一方面 $\\iota_{m}\\operatorname{sd}^{m} = \\iota$ 与 $\\iota g_{*} = (|g|)_{*}\\iota_{m}$ 合起来给出 $\\iota_{*}$ 可逆。∎',
+        '**⚠️ 技术细节**：上面用了「单纯映射诱导链映射」「链同伦的棱柱构造」两件标准机器（见 `def.chain-homotopy`、`thm.homotopy-invariance`）。若把 $C_{*}$ 取成**有序**链群，$g$ 在退化时可能把单纯形压扁，链映射的符号要按顶点顺序处理；本图的同调均按有序链群的商（去掉退化）定义，此处不展开符号。',
+        '**边界与反例**：',
+        '- $K$ **有限**不能省：无限复形上，重心重分不保证 mesh 趋零（同一条无穷细化的链可能一直很粗），星条件也就无法满足。',
+        '- $L$ 不必有限；定理只用到 $L$ 的顶点星覆盖是开覆盖。',
+        '- 「星本身不凸」：开星 $\\operatorname{st}(w)$ 一般不是凸集，所以同伦不能直接说「在 $\\operatorname{st}(w)$ 里连线」；引理 1 的 (ii) 用的是「$f(x), g(x)$ 同落在某个**闭单纯形** $\\rho$ 里」，$\\rho$ 才是凸的。',
+        '⭐ **推论为什么值钱**：它一次性给出三件事——（i）单纯同调是拓扑不变量（不依赖三角剖分）；（ii）可以用有限矩阵的秩计算奇异同调；（iii）Euler 示性数的公式可以搬到奇异同调上（见 `thm.euler-characteristic` 的边）。',
         '💡 一句话：**连续映射 $\\approx$ 重分之后的单纯映射**。拓扑在这里被「组合化」了一次。',
-      ].join('\n'),
+      ].join('\n\n'),
       refs: [
-        'Munkres, Elements of Algebraic Topology · 单纯逼近定理（本图不给章号 / 定理号）',
+        'Munkres, Elements of Algebraic Topology, Ch. 1 §13 · Simplicial Approximation Theorem',
         'Hatcher, Algebraic Topology, Ch. 2 §2.1 · simplicial approximation',
-      ],
+        'Spanier, Algebraic Topology, Ch. 3 §4 · Simplicial Approximation',
+      ]
     },
   ],
 
@@ -75340,7 +75361,7 @@ window.MG = window.MG || {};
           '单射性：$a$ 在 $U$ 与 $V$ 里同时为零说明 $a = 0$；正合性：$a + b = 0$ 时 $a = -b$ 落在两边，故来自 $U \\cap V$。\n\n' +
           '再由 `thm.long-exact-pair` 的追图，得一条三项一片的长正合列：$H_{p}(U \\cap V) \\to H_{p}(U) \\oplus H_{p}(V) \\to H_{p}(S_{*}(U) + S_{*}(V)) \\xrightarrow{\\partial_{*}} H_{p-1}(U \\cap V)$。',
         '',
-        '**第二步（几何，本图的骨架所在）**：包含 $S_{*}(U) + S_{*}(V) \\hookrightarrow S_{*}(X)$ 诱导**同调同构**。' +
+        '**第二步（几何，完整构造在节点注的第四步）**：包含 $S_{*}(U) + S_{*}(V) \\hookrightarrow S_{*}(X)$ 诱导**同调同构**。' +
           '证明靠**小单纯形引理 / 重心重分**：给定奇异 $p$-单纯形 $\\sigma : \\Delta^{p} \\to X$，$\\{\\sigma^{-1}(U),\\ \\sigma^{-1}(V)\\}$ 是紧空间 $\\Delta^{p}$ 的开覆盖；\n\n' +
           '取它的 Lebesgue 数 $\\delta > 0$，反复重心重分直到每个小单纯形的直径 $< \\delta$。\n\n' +
           '这时每个小单纯形的像整体落在 $U$ 或 $V$ 里，于是 $\\sigma$ 与 $S_{*}(U)+S_{*}(V)$ 里的某个链**同调**。\n\n' +
@@ -75825,35 +75846,50 @@ window.MG = window.MG || {};
         '设多边形的内角为 $\\alpha_{1}\\pi, \\ldots, \\alpha_{n}\\pi$（$0 < \\alpha_{k} < 2$），' +
           '顶点按逆时针排列，对应实轴上的点 $x_{1} < x_{2} < \\cdots < x_{n}$。则',
         '',
-                '（取 $A \\ne 0$，否则 $f \\equiv B$ 是常值、谈不上共形）',
-'$$f(z) = A\\int^{z}_{z_{0}} g(\\zeta)\\,\\mathrm{d}\\zeta + B,$$',
+        '$$f(z) = A\\int^{z}_{z_{0}} g(\\zeta)\\,\\mathrm{d}\\zeta + B,\\qquad g(\\zeta) := \\prod_{k=1}^{n} (\\zeta - x_{k})^{\\alpha_{k} - 1},$$',
         '',
-        '$$g(\\zeta) := \\prod_{k=1}^{n} (\\zeta - x_{k})^{\\alpha_{k} - 1}.$$',
-        '',
-        '把 $\\mathbb{H}$ 共形地映成该多边形内部，且 $f(x_{k})$ 是第 $k$ 个顶点。',
+        '把 $\\mathbb{H}$ 共形地映成该多边形内部，且 $f(x_{k})$ 是第 $k$ 个顶点（取 $A \\ne 0$，否则 $f \\equiv B$ 是常值、谈不上共形）。',
         '常数 $A, B$ 决定大小、旋转与位置。',
       ].join('\n'),
       notes: [
-        '**为什么是这些指数**：$f\'(z) = A\\prod(\\zeta - x_{k})^{\\alpha_{k}-1}$ 在实轴上' +
-          '$x_{k}$ 附近的行为决定了转角的度。沿着实轴走过 $x_{k}$ 时，$\\arg f\'$ 跳变' +
-          '$\\pi(\\alpha_{k} - 1)$，恰好把切向转过去 $\\pi - \\alpha_{k}\\pi$ —— 正是外角。',
-        '',
-        '**证明骨架**：先证「若 $f$ 是把 $\\mathbb{H}$ 映成多边形的共形映射，则 $f\'$ 必有上述形式」' +
-          '（用 Schwarz 反射原理 `thm.schwarz-reflection` 把 $f$ 越过每段边延拓，得到 $f\'$ ' +
-          '在每个 $x_{k}$ 的局部形状），再证反方向的积分确实收敛并给出多边形。',
-        '',
-        '⭐ **它是「造映射」的工业级工具**：机翼、渠道、电容器这些工程问题都归结为' +
-          '「先把区域近似成多边形，再用 S–C 公式搬到半平面」——搬到半平面之后 Laplace 方程的' +
-          '解就有现成的形式（Poisson 积分，`thm.poisson-formula`）。',
-        '',
-        '⚠️ **三个参数定不下来**：$x_{k}$ 里可以任选三个（分式线性变换的自由度），' +
-          '$A, B$ 由多边形的位置与大小定 —— 实际计算就是解这几个方程。',
-      ].join('\n'),
+        '⚠️ **本节点仍标 skeleton**：下面只完整证明了「**形式**」这一半（若共形映射存在，则它必有这个形状）；「**存在性**」那一半（这个积分确实单叶地映满多边形）本图不写，缺的两步在末尾点明。',
+        '**记号**：外角和给出 $\\sum_{k=1}^{n}(1 - \\alpha_{k}) = 2$，等价于',
+        '$$\\sum_{k=1}^{n} (\\alpha_{k} - 1) = -2.$$',
+        '这个 $-2$ 正是 $g(\\zeta) = O(\\zeta^{-2})$ 的来源，也是积分在无穷远收敛的原因。',
+        '**第一部分：形式唯一性（完整证明）**',
+        '命题：设 $f : \\mathbb{H} \\to P$ 是把上半平面共形映成多边形内部的映射，$f$ 连续到边界、把 $x_{k}$ 送到第 $k$ 个顶点，则存在 $A \\ne 0$、$B$，使 $f\'(z) = A\\,g(z)$。',
+        '证明分五小步。',
+        '（1）**规范化**：把 $\\infty \\in \\partial\\mathbb{H}$ 选在不是任何顶点原像的位置（圆 $\\partial\\mathbb{H}$ 上除去有限个顶点原像后仍有点，用 $\\operatorname{Aut}(\\mathbb{H})$ 把它送到 $\\infty$）。于是 $\\infty$ 对应的是多边形某条边的内部，而不是顶点。',
+        '（2）**角点的局部形状**：在 $x_{k}$ 附近，$f$ 有展开',
+        '$$f(z) - f(x_{k}) = (z - x_{k})^{\\alpha_{k}}\\,h_{k}(z),\\qquad h_{k}\\ \\text{在}\\ x_{k}\\ \\text{附近全纯且}\\ h_{k}(x_{k}) \\ne 0.$$',
+        '理由：把角的两边所在直线作反射，角的两侧被「展开」；等价地，令 $w = (f - f(x_{k}))^{1/\\alpha_{k}}$，它把角展成半平面，再用 Schwarz 反射（`thm.schwarz-reflection`）把 $f$ 延拓过 $x_{k}$，局部即得上式。',
+        '（3）**跨边延拓**：每条边 $f((x_{k}, x_{k+1}))$ 是直线段。沿这线段把多边形反射，同时把 $\\mathbb{H}$ 沿 $(x_{k}, x_{k+1})$ 反射；由 Schwarz 反射，$f$ 解析延拓过整个开区间 $(x_{k}, x_{k+1})$。定义',
+        '$$\\varphi(z) := \\frac{f\'(z)}{g(z)} = \\frac{f\'(z)}{\\prod_{k=1}^{n}(z - x_{k})^{\\alpha_{k}-1}}.$$',
+        '由（2），$\\varphi$ 在 $x_{k}$ 处有可去奇点且 $\\varphi(x_{k}) = h_{k}(x_{k}) \\ne 0$；由跨边反射，$\\varphi(\\bar z) = \\overline{\\varphi(z)}$，故 $\\varphi$ 延拓成 $\\mathbb{C}$ 上的整函数。',
+        '（4）**$\\varphi$ 无零点**：$\\mathbb{H}$ 内 $f\' \\ne 0$（共形）；每个开区间 $(x_{k}, x_{k+1})$ 上 $f$ 的参数化导数非零（边是直线段，$f$ 是双射）；由反射式，下半平面也无零点；角点处由（2）。故 $\\varphi$ 是处处非零的整函数。',
+        '（5）**$\\varphi$ 在无穷远有有限非零极限**：由（1），$\\infty$ 映到某条边内部，跨这条边反射给出 $f$ 在 $\\infty$ 的邻域内全纯；在坐标 $w = 1/z$ 下 $f$ 在 $w = 0$ 全纯，故 $f\'(z) = O(z^{-2})$。另一方面 $g(z) = \\prod(z - x_{k})^{\\alpha_{k}-1} = z^{-2}\\,(1 + O(1/z))$（用了指数和 $-2$）。于是 $\\varphi(z) \\to A \\ne 0$（$A$ 是某个非零常数），$\\varphi$ 在 $\\infty$ 有可去奇点。',
+        '于是 $\\varphi$ 与 $1/\\varphi$ 都是整函数且在 $\\infty$ 有界，由 Liouville 定理 $\\varphi \\equiv A$。积分得',
+        '$$f(z) = A\\int_{z_{0}}^{z} g(\\zeta)\\,\\mathrm{d}\\zeta + B.$$',
+        '这就证明了公式的**形式**（这一半完整）。',
+        '**第二部分：存在性（未完成，缺两步）**',
+        '反过来给定多边形与 $x_{k}$，令 $F(z) = A\\int^{z}_{z_{0}} g(\\zeta)\\,\\mathrm{d}\\zeta + B$。已知：',
+        '- $F\' = A g$ 在 $\\mathbb{H}$ 上无零点，故 $F$ 是局部共形的；',
+        '- 在每个区间 $(x_{k}, x_{k+1})$ 上 $\\arg g$ 是常值（因为 $(x - x_{k})$ 的辐角只取 $0$ 或 $\\pi$，符号由 $x > x_{k}$ 决定），故 $F$ 把每个区间映成一条直线段；走过 $x_{k}$ 时 $\\arg F\'$ 跳变 $\\pi(\\alpha_{k}-1)$，即内角为 $\\alpha_{k}\\pi$；',
+        '- $g(\\zeta) = O(\\zeta^{-2})$，积分在 $\\pm\\infty$ 都收敛，$F$ 连续到 $\\partial\\mathbb{H}$ 的整个边界（含 $\\infty$）。',
+        '⚠️ 缺的两步（本图不写，因此保留 skeleton）：',
+        '（i）**边界曲线的简单性**：要证 $F(\\partial\\mathbb{H})$ 是简单闭折线（无自交）。仅凭「分段直线 + 内角正确」不够——同一组内角可以有自交的折线；标准证法要把多边形沿边反射、用 Schwarz 反射把 $F$ 解析延拓到拼接区域，再证延拓是单值的、逐块覆盖平面。',
+        '（ii）**辐角原理收尾**：确认边界简单后，对固定内点 $w \\in P$ 数 $F - w$ 在 $\\mathbb{H}$ 内的零点：边界上 $F - w$ 无零点，$F(\\partial\\mathbb{H})$ 绕 $w$ 的绕数为 $1$，故恰有一个原像，$F$ 是双射，从而共形。',
+        '这两步分别需要 Carathéodory 边界对应（多边形情形的连续延拓）与反射拼接的细致论证；本图没有相应节点，也没有把论证写全，故不勾 ∎。',
+        '**为什么是这些指数**：沿实轴走过 $x_{k}$ 时，$\\arg f\'$ 跳变 $\\pi(\\alpha_{k} - 1)$，恰好把切向转过去 $\\pi - \\alpha_{k}\\pi$ —— 正是外角。',
+        '⭐ **它是「造映射」的工业级工具**：机翼、渠道、电容器这些工程问题都归结为「先把区域近似成多边形，再用 S–C 公式搬到半平面」——搬到半平面之后 Laplace 方程的解就有现成的形式（Poisson 积分，`thm.poisson-formula`）。',
+        '⚠️ **三个参数定不下来**：$x_{k}$ 里可以任选三个（分式线性变换的自由度），$A, B$ 由多边形的位置与大小定 —— 实际计算就是解这几个方程。',
+      ].join('\n\n'),
       refs: [
-        '王晓光《复变函数》· 共形映射（多边形区域）',
-        'Ahlfors, Complex Analysis (3rd ed.), Ch. 6 · Conformal Mapping（Schwarz–Christoffel）',
+        'Ahlfors, Complex Analysis (3rd ed.), Ch. 6 §2 · Schwarz–Christoffel formula',
         'Driscoll–Trefethen, Schwarz–Christoffel Mapping, Cambridge, Ch. 1–2',
-      ],
+        'Nehari, Conformal Mapping, Ch. VI · Polygon mappings',
+        '王晓光《复变函数》· 共形映射（多边形区域）',
+      ]
     },
     {
       id: 'prop.joukowski',
@@ -90346,40 +90382,50 @@ window.MG = window.MG || {};
       title: 'Riemann–Hurwitz：分支覆盖下亏格怎么变',
       regions: ['topology', 'complex'],
       tags: ['定理', 'Riemann 面', '亏格', '曲面'],
-      status: 'skeleton',
       statement: [
-        '设 $p : Y \\to X$ 是紧 Riemann 面之间的 $d$ 次**分支覆盖**（`def.branched-cover`），$g_{X}, g_{Y}$ 是两边的亏格（`def.genus`），$\\{e_{q}\\}$ 是分歧指数（`def.ramification-index`）。则',
+        '设 $p : Y \\to X$ 是紧 Riemann 面之间的 $d$ 次**分支覆盖**（`def.branched-cover`），$g_{X}, g_{Y}$ 是两边的亏格（`def.genus`），$\\{e_{q}\\}$ 是分歧指数（`def.ramification-index`）。记',
         '',
-        '$$2g_{Y} - 2 = d\\,(2g_{X} - 2) + \\sum_{q \\in Y} (e_{q} - 1) .$$',
+        '$$R := \\sum_{q \\in Y} (e_{q} - 1)$$',
+        '',
+        '（分歧除子的次数：按 $e_q - 1$ 计，**不是**分支点个数）。则',
+        '',
+        '$$2g_{Y} - 2 = d\\,(2g_{X} - 2) + R .$$',
         '',
         '换成 Euler 示性数的写法更整齐（`prop.eulerchar-genus`）：',
         '',
-        '$$\\chi(Y) = d\\,\\chi(X) - \\sum_{q \\in Y}(e_{q} - 1) .$$',
+        '$$\\chi(Y) = d\\,\\chi(X) - R .$$',
       ].join('\n'),
       notes: [
-        '⚠️ **本节点只给陈述与结构，不是完整证明。** 证明要用两件本图还没细做的东西：',
-        '',
-        '1. **拉回剖分**：把 $X$ 的一个三角剖分沿 $p$ 拉回成 $Y$ 的三角剖分（这要用三角剖分的局部结构 + 紧性）。',
-        '2. **分支点局部计数**：在一个分支点附近，$d$ 个原像里有 $e_{q}$ 个「粘成一点」，于是顶点数少了 $e_{q} - 1$；把所有点加起来就是求和号。',
-        '',
-        '两步拼起来就是 $\\chi(Y) = d\\,\\chi(X) - \\sum(e_{q}-1)$，再用 $\\chi = 2 - 2g$ 换回亏格。',
-        '⭐ **两个立刻可用的推论**：',
-        '',
-        '- $g_{Y} \\ge g_{X}$（$d \\ge 1$、求和项 $\\ge 0$）；等号当且仅当 $d(2g_{X} - 2) + R = 2g_{X} - 2$（**不**只有「$d = 1$ 且无分歧」：$z^{2} : \\mathbb{P}^{1} \\to \\mathbb{P}^{1}$ 有 $d = 2$、$R = 2$，仍给 $g_{Y} = g_{X} = 0$）；',
-        '- **算亏格**：$\\mathbb{P}^{1}$ 上 $d$ 次分支覆盖的亏格由「分支点总分歧量」决定。经典例子：超椭圆曲线',
-        '',
-        '$$y^{2} = \\prod_{i=1}^{2g+2}(x - a_{i})$$',
-        '',
-        '是 $\\mathbb{P}^{1}$ 的 $2$ 次分支覆盖、恰有 $2g+2$ 个分支点（每个 $e = 2$），代入得 $2g_{Y} - 2 = 2(-2) + (2g+2) \\implies g_{Y} = g$。',
-        '⚠️ 与 `thm.gauss-bonnet` 分工：GB 是 $\\chi$ 的**积分**版本（曲率），RH 是 $\\chi$ 的**乘性**版本（覆盖次数）——',
-        '两者通过同一个 $\\chi$ 相认，但谁也不能替代谁。',
-        '📌 出处：Riemann (1857) 的原型 + Hurwitz (1891) 的公式化；现代叙述见 Miranda Ch. II §2。',
+        '**证明**：核心是「把 $X$ 的一个三角剖分沿 $p$ 拉成 $Y$ 的一个有限 CW 剖分，再数 $0,1,2$ 维胞腔」。',
+        '**记号**：$B \\subset X$ 是分支点集（有限），$p^{-1}(B)$ 是分歧点集；对 $r \\in X$ 记 $p^{-1}(r) = \\{q_{1}, \\ldots, q_{m_{r}}\\}$，则 `def.ramification-index` 的求和恒等式给出',
+        '$$\\sum_{i=1}^{m_{r}} e_{q_{i}} = d,\\qquad\\text{即}\\qquad m_{r} = d - \\sum_{i}(e_{q_{i}} - 1).$$',
+        '特别地 $r \\notin B$ 时 $m_{r} = d$。',
+        '**引理（适配三角剖分）**：存在 $X$ 的有限三角剖分 $K$，使 (i) $B$ 中每个点都是 $K$ 的顶点；(ii) 对 $K$ 的每个开单纯形 $\\sigma$，$p^{-1}(\\sigma) \\to \\sigma$ 是 $d$ 重覆叠，且每个连通分支同胚地映到 $\\sigma$。',
+        '证明：对 $X$ 的每点取「适配图卡」：$x \\notin B$ 时取使 $p$ 平凡化的图卡 $U_{x}$（$p^{-1}(U_{x}) \\cong U_{x} \\times \\{1, \\ldots, d\\}$）；$b \\in B$ 时取以 $b$ 为原点的图卡，使 $p$ 呈 $z \\mapsto z^{e_{q}}$ 的形状。这些开集覆盖紧空间 $X$，取有限子覆盖。曲面论的标准事实：$X$ 有有限三角剖分，且可取得从属于这个有限开覆盖、并把指定的有限点集 $B$ 全部取为顶点（先给 $X$ 任一三角剖分，再在 $B$ 处做重心重分并把 $B$ 细化成顶点，最后用 Lebesgue 数保证每个闭单纯形落在某个覆盖成员里）。于是每个开单纯形 $\\sigma$ 落在某个适配图卡 $U$ 里。若 $U$ 无分支，$p$ 在 $U$ 上平凡，结论成立；若 $U$ 是以 $b$ 为原点的分歧图卡，则 $\\sigma$ 不含 $b$（$b$ 已是顶点，开单纯形不含顶点），而 $U \\setminus \\{b\\}$ 上的 $p$ 是覆叠映射，$\\sigma$ 单连通，故覆叠在 $\\sigma$ 上平凡。',
+        '**引理（拉回剖分与计数）**：把 $Y$ 写成 $X$ 的开单纯形的原像之并：$0$-胞腔 $=$ 顶点原像，$1$-胞腔 $=$ 开边的原像分支，$2$-胞腔 $=$ 开面的原像分支。这是一个有限 CW 剖分，且',
+        '$$V_{Y} = d\\,V_{X} - R,\\qquad E_{Y} = d\\,E_{X},\\qquad F_{Y} = d\\,F_{X}.$$',
+        '证明：$1$-胞腔与 $2$-胞腔部分由上一个引理直接给出（每个开边/开面有 $d$ 个分支）。$0$-胞腔：对每个顶点 $x$，原像个数是 $m_{x}$；对 $x \\notin B$ 它是 $d$，对 $x = b \\in B$ 它是 $d - \\sum_{q|b}(e_{q} - 1)$。求和',
+        '$$V_{Y} = \\sum_{x \\in V_{X}} m_{x} = d\\,V_{X} - \\sum_{b \\in B}\\sum_{q|b}(e_{q} - 1) = d\\,V_{X} - R,$$',
+        '因为只有分歧点使 $e_{q} > 1$，非分歧点对 $R$ 的贡献是 $0$，而 $R$ 按定义就是全部分歧点求和。',
+        '「这是 CW 剖分」需要说明 2-胞腔的闭包是闭圆盘：在分歧点的模型 $z \\mapsto z^{e}$ 下，$e$ 个扇区（2-胞腔）共享顶点 $q$，每个扇区的闭包是一个闭三角形，$e$ 个扇区拼成 $q$ 的一个邻域圆盘；在非分歧点同理。于是每个 2-胞腔的闭包是闭圆盘，贴合映射连续，确实给出有限 CW 结构。',
+        '**收尾**：CW 剖分的 Euler 示性数按胞腔数计算，',
+        '$$\\chi(Y) = V_{Y} - E_{Y} + F_{Y} = d(V_{X} - E_{X} + F_{X}) - R = d\\,\\chi(X) - R.$$',
+        '再用 `prop.eulerchar-genus` 把 $\\chi(X) = 2 - 2g_{X}$、$\\chi(Y) = 2 - 2g_{Y}$ 代入，即得 $2g_{Y} - 2 = d(2g_{X} - 2) + R$。∎',
+        '**等号条件（$g_{Y} = g_{X}$ 到底什么时候成立）**：由 $2g_{Y} - 2 = d(2g_{X} - 2) + R$，$g_{Y} = g_{X}$ 等价于',
+        '$$d\\,(2g_{X} - 2) + R = 2g_{X} - 2,\\qquad\\text{即}\\qquad (d - 1)(2g_{X} - 2) = -R.$$',
+        '因为 $d \\ge 1$、$R \\ge 0$，分三种情形：',
+        '- $g_{X} \\ge 2$：$(d - 1)(2g_{X} - 2) \\ge 0$，要等于 $-R \\le 0$，只能 $d = 1$ 且 $R = 0$（双全纯）。',
+        '- $g_{X} = 1$：$0 = -R$，故 $R = 0$；$d$ 任意（环面的无分歧覆叠）。',
+        '- $g_{X} = 0$：等式变成 $R = 2d - 2$。$d = 2$ 时 $R = 2$，例如两个 $e = 2$ 的分支点；$z^{2} : \\mathbb{P}^{1} \\to \\mathbb{P}^{1}$ 正是这种情形（$d = 2$、两个分支点、$R = 2$），仍有 $g_{Y} = g_{X} = 0$。',
+        '⚠️ **不要把 $R$ 和「分支点个数」混用**：一个分支点 $b$ 贡献的是 $\\sum_{q|b}(e_{q} - 1) = d - m_{b}$，可以大于 $1$（例如 $z^{3}$ 在 $0$ 处 $e = 3$，贡献 $2$）。也不要把「$g_{Y} = g_{X}$」直接说成「$d = 1$ 且无分歧」——$g_{X} = 0$ 的反例正是 $z^{2}$。',
+        '**例子（超椭圆曲线）**：$y^{2} = \\prod_{i=1}^{2g+2}(x - a_{i})$ 定义 $\\mathbb{P}^{1}$ 的 $2$ 次分支覆盖，分支点是 $2g+2$ 个互不相同的 $a_{i}$（每个 $e = 2$，贡献 $1$），故 $R = 2g + 2$。代入：$2g_{Y} - 2 = 2(-2) + (2g + 2) = 2g - 2$，即 $g_{Y} = g$。',
+        '⚠️ **依赖**：收尾用了 `prop.eulerchar-genus`（本图该节点仍是 skeleton），以及「紧曲面有有限三角剖分」这一标准事实（`thm.rado` 也是 skeleton）。本证明没有用到闭曲面分类。',
       ].join('\n\n'),
       refs: [
         'Hurwitz, Über Riemannsche Flächen mit gegebenen Verzweigungspunkten (1891)',
         'Miranda, Algebraic Curves and Riemann Surfaces, Ch. II §2',
         'Forster, Lectures on Riemann Surfaces, §17',
-      ],
+      ]
     },
   ],
 

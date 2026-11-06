@@ -592,7 +592,6 @@
     {
       id: 'thm.brouwer-fixed-point',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Brouwer 不动点定理（圆盘）',
       title: 'Brouwer 不动点定理：闭圆盘到自身的连续映射必有不动点',
       cluster: 'analysis.topology-app',
@@ -603,15 +602,27 @@
           '则存在 $z \\in \\overline{\\mathbb{D}}$ 使 $f(z) = z$。',
       ].join('\n'),
       notes: [
-        '⚠ 连续情形的证明需要拓扑输入：$\\pi_{1}(S^{1}) \\cong \\mathbb{Z}$ —— 等价地，$S^{1}$ 不是 $\\overline{\\mathbb{D}}$ 的收缩核（否则把收缩与含入复合，得 $S^{1}$ 的基本群为 $0$，而它是 $\\mathbb{Z}$）。本图不展开。',
-
-        '全纯情形由边上的证明给出：Rouché（`thm.rouche`）比较 $f - z$ 与 $-z$ 在 $|z| = 1$ 上的行为，得圆盘内恰有（$f$ 的）一个零点 —— 即不动点。',
-      ].join('\n'),
+        '**证明（连续情形）**：反设 $f$ 处处没有不动点，即 $f(z) \\ne z$ 对一切 $z \\in \\overline{\\mathbb{D}}$。对每个 $z$ 定义',
+        '$$r(z) := z + t(z)\\,(z - f(z)),$$',
+        '其中',
+        '$$a(z) := \\langle z,\\ z - f(z)\\rangle,\\qquad b(z) := |z - f(z)|^{2} > 0,$$',
+        '$$t(z) := \\frac{-a(z) + \\sqrt{a(z)^{2} + b(z)\\,(1 - |z|^{2})}}{b(z)}.$$',
+        '**为什么 $r$ 落在 $S^{1}$ 上**：把 $|z + t(z - f(z))|^{2} = 1$ 展开成',
+        '$$b(z)\\,t^{2} + 2a(z)\\,t + (|z|^{2} - 1) = 0,$$',
+        '而 $t(z)$ 正是这个二次方程的非负根（$b > 0$；因为 $1 - |z|^{2} \\ge 0$，根号下 $\\ge a^{2}$，故根号 $\\ge |a| \\ge -a$，所以 $t \\ge 0$）。于是 $|r(z)| = 1$。',
+        '**$r$ 连续**：$f$ 连续，$a, b$ 由内积与模算出，仍是连续函数；$b(z) \\ge |z - f(z)|^{2}$ 处处 $> 0$，开方与除法都不出问题。',
+        '**$r$ 在边界上是恒等**：若 $|z| = 1$，则 $a(z) = \\langle z, z - f(z)\\rangle = 1 - \\langle z, f(z)\\rangle \\ge 0$（因 $|f(z)| \\le 1$），代入 $t(z)$ 得 $t(z) = 0$，于是 $r(z) = z$。',
+        '所以 $r : \\overline{\\mathbb{D}} \\to S^{1}$ 是一个连续收缩（$r|_{S^{1}} = \\operatorname{id}$），与 `thm.no-retraction-disk` 矛盾。故 $f$ 必有不动点。∎',
+        '**为什么不能只用复分析**：上面的 $r$ 只用到 $f$ 连续。真正的拓扑输入是 $\\pi_{1}(S^{1}) \\cong \\mathbb{Z}$：`thm.no-retraction-disk` 的证明是函子性一行 —— 若有收缩 $r$，则 $r_{*} \\circ i_{*} = \\operatorname{id}_{\\mathbb{Z}}$ 会穿过 $\\pi_{1}(\\overline{\\mathbb{D}}) = 1$。',
+        '**全纯情形的另一条路（Rouché）**：若 $f$ 在 $\\mathbb{D}$ 上全纯、连续到边界、且 $|f| \\le 1$，则在 $|z| = 1$ 上 $|f(z) - z| \\ge |z| - |f(z)| \\ge 0$，且等号只在 $f(z) = z$ 时出现（那已是不动点）；否则 $f - z$ 在边界无零点。由 `thm.rouche` 比较 $f - z$ 与 $-z$（$|-z| = 1 > |f|$），后者在 $\\mathbb{D}$ 内恰有一个零点，故 $f - z$ 也恰有一个零点。这条只覆盖全纯情形。',
+        '💡 **等价说法**：$\\overline{\\mathbb{D}}$ 不能连续收缩到 $S^{1}$；Brouwer 定理与「$S^{1}$ 不是圆盘的收缩核」是同一件事的两种写法（见 `thm.borsuk-ulam`、`thm.no-retraction-disk` 那条边）。',
+      ].join('\n\n'),
       refs: [
         '王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）',
         'Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · Brouwer’s Fixed-Point Theorem',
         'Hatcher, Algebraic Topology, §1.1 · 基本群（圆周的基本群是 ℤ，用覆叠空间证）；§2.2 · Brouwer 不动点定理',
-      ],
+        'Munkres, Topology (2nd ed.), Ch. 9 · Retractions and Fixed Points',
+      ]
     },
     {
       id: 'thm.borsuk-ulam',
