@@ -2,7 +2,7 @@
    内容包 · 数论：数论函数与素数分布（第二批 10 点）
    --------------------------------------------------------------------------
    积性函数 → τ / σ → Möbius 函数 → Möbius 反演 → π(x) / θ(x) / ψ(x)
-   → Чебышёв 估计 → Bertrand 假设 → 素数定理（只给陈述与骨架）。
+   → Чебышёв 估计 → Bertrand 假设 → 素数定理（陈述 + 解析主定理缺口）。
    ⭐ 人名用原文字母：Чебышёв 用西里尔，Bertrand / Möbius / Riemann 用拉丁。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -264,18 +264,40 @@ window.MG = window.MG || {};
         '等价形式：$\\theta(x) \\sim x$、$\\psi(x) \\sim x$、$p_{n} \\sim n\\log n$（$p_{n}$ 是第 $n$ 个素数）。',
       ].join('\n'),
       notes: [
-        '⛔ **这条只有陈述与骨架，证明不在本图**：所有已知证明都要复分析或等价的重型工具（Riemann 的 $\\zeta$ 函数、或 Selberg–Erdős 的初等证明 —— 后者虽叫「初等」，但论证极长）。',
-        '',
-        '主流路线（Riemann 1859）的骨架：',
-        '',
-        '1. $\\zeta(s) = \\sum n^{-s}$ 在 $\\operatorname{Re}\\,s > 1$ 全纯，经解析延拓成为亚纯函数，唯一极点在 $s = 1$（留数 $1$）；',
-        '2. $\\zeta$ 在直线 $\\operatorname{Re}\\,s = 1$ 上无零点 —— 这一步就是素数定理的全部难点；',
-        '3. 由 Perron 公式 / 显式公式把 $\\psi(x)$ 写成 $x - \\sum_{\\rho} x^{\\rho}/\\rho + \\cdots$，零点 $\\rho$ 的位置决定误差项；',
-        '4. 由 ② 得 $\\psi(x) \\sim x$，再由 $\\psi \\sim \\theta \\sim \\pi\\log$ 的等价性得 $\\pi(x) \\sim x/\\log x$。',
-        '',
-        '⭐ Riemann 假设（$\\operatorname{Re}\\,\\rho = 1/2$）就是把 ③ 的误差压到 $O(\\sqrt{x}\\log x)$ 的命题，至今未解。',
+        '⚠️ **本节点仍标 skeleton**：下面把「素数定理 $\\iff$ $\\psi(x) \\sim x$」这一段**完整证明**，并把剩下的解析主定理写成可检验的命题；但那条解析主定理（$\\zeta$ 在 $\\operatorname{Re} s = 1$ 上无零点 $+$ Tauber 型收尾）本图没有展开，所以不勾 ∎。',
+        '**记号**：$\\Lambda(n) = \\log p$（$n = p^{k}$）或 $0$（其它），',
+        '$$\\psi(x) = \\sum_{n \\le x} \\Lambda(n),\\qquad \\theta(x) = \\sum_{p \\le x} \\log p,\\qquad \\pi(x) = \\#\\{p \\le x\\}.$$',
+        '**引理 1（$\\psi$ 与 $\\theta$ 的关系）**：',
+        '$$\\psi(x) = \\sum_{k \\ge 1} \\theta\\big(x^{1/k}\\big).$$',
+        '证明：按 $n = p^{k}$ 的 $k$ 分组，$p^{k} \\le x \\iff p \\le x^{1/k}$，每组贡献 $\\log p$，求和即 $\\theta(x^{1/k})$；$k > \\log_{2} x$ 时 $x^{1/k} < 2$，对应项为 $0$。∎',
+        '**引理 2（$\\psi \\sim x \\iff \\theta \\sim x$）**：由引理 1，',
+        '$$0 \\le \\psi(x) - \\theta(x) = \\sum_{k=2}^{\\lfloor \\log_{2} x \\rfloor} \\theta\\big(x^{1/k}\\big) \\le \\sum_{k=2}^{\\lfloor \\log_{2} x \\rfloor} x^{1/k}\\log x \\le (\\log_{2} x)\\,\\sqrt{x}\\,\\log x = o(x).$$',
+        '所以 $\\psi(x) = \\theta(x) + o(x)$，两者相差 $o(x)$，故 $\\psi(x) \\sim x$ 与 $\\theta(x) \\sim x$ 等价。∎',
+        '**引理 3（Abel 变换）**：',
+        '$$\\theta(x) = \\pi(x)\\log x - \\int_{2}^{x} \\frac{\\pi(t)}{t}\\,\\mathrm{d}t,\\qquad \\pi(x) = \\frac{\\theta(x)}{\\log x} + \\int_{2}^{x} \\frac{\\theta(t)}{t\\log^{2} t}\\,\\mathrm{d}t.$$',
+        '证明：对 Stieltjes 积分 $\\sum_{p \\le x} f(p) = \\pi(x)f(x) - \\int_{2}^{x} \\pi(t)\\,\\mathrm{d}f(t)$ 分别取 $f = \\log$ 与 $f = 1/\\log$，分部积分即得。∎',
+        '**引理 4（$\\theta \\sim x \\iff \\pi \\sim x/\\log x$）**：',
+        '- 若 $\\theta(x) \\sim x$：由引理 3 第二式，$\\pi(x) = \\frac{x(1+o(1))}{\\log x} + \\int_{2}^{x}\\frac{t(1+o(1))}{t\\log^{2}t}\\,\\mathrm{d}t$。主项是 $x/\\log x$；积分 $\\int_{2}^{x}\\frac{\\mathrm{d}t}{\\log^{2} t} = o\\big(\\frac{x}{\\log x}\\big)$（因为 $\\log^{2} t$ 增长比 $\\log t$ 快），故 $\\pi(x) \\sim x/\\log x$。',
+        '- 若 $\\pi(x) \\sim x/\\log x$：由引理 3 第一式，$\\theta(x) = \\pi(x)\\log x - \\int_{2}^{x}\\frac{\\pi(t)}{t}\\,\\mathrm{d}t = x + o(x) - \\int_{2}^{x}\\frac{(1+o(1))\\,\\mathrm{d}t}{\\log t}$。而 $\\int_{2}^{x}\\frac{\\mathrm{d}t}{\\log t} = o(x)$（对数积分 $\\operatorname{li}(x) = O(x/\\log x)$），故 $\\theta(x) \\sim x$。∎',
+        '于是素数定理 $\\pi(x) \\sim x/\\log x$ 与 $\\psi(x) \\sim x$ 等价（引理 2 + 引理 4）。',
+        '**剩下的解析主定理（本图未展开，正是 skeleton 的原因）**：',
+        '命题 A（$\\zeta$ 的解析延拓与无零点）：$\\zeta(s) = \\sum_{n \\ge 1} n^{-s}$（$\\operatorname{Re} s > 1$）可亚纯延拓到包含 $\\{\\operatorname{Re} s \\ge 1\\}$ 的开集，唯一极点是 $s = 1$ 处的单极点、留数 $1$；且 $\\zeta(1 + it) \\ne 0$ 对一切 $t \\in \\mathbb{R}$。',
+        '命题 B（Tauber 型收尾）：设 $f : [1, \\infty) \\to \\mathbb{R}$ 非负、单调不减，且其 Mellin 变换',
+        '$$g(s) = \\int_{1}^{\\infty} f(t)\\,t^{-s-1}\\,\\mathrm{d}t$$',
+        '在 $\\operatorname{Re} s > 1$ 收敛，并解析延拓到 $\\{\\operatorname{Re} s \\ge 1\\}$ 的一个邻域，除 $s = 1$ 处单极点（留数 $1$）外全纯，则 $f(x) \\sim x$。',
+        '**这两个命题怎么接上**：$\\zeta$ 的 Euler 乘积取对数再求导给出',
+        '$$-\\frac{\\zeta\'(s)}{\\zeta(s)} = \\sum_{n \\ge 1} \\Lambda(n)\\,n^{-s} = s\\int_{1}^{\\infty} \\psi(t)\\,t^{-s-1}\\,\\mathrm{d}t \\qquad (\\operatorname{Re} s > 1),$$',
+        '最后一个等号由 Abel 求和（分部积分）得到：$\\sum_{n \\le x}\\Lambda(n) = \\psi(x)$。于是 $\\psi$ 的 Mellin 变换就是 $-\\zeta\'/(s\\zeta)$；由命题 A，它在 $\\{\\operatorname{Re} s \\ge 1\\}$ 上除 $s = 1$ 外全纯，而 $s = 1$ 是单极点、留数为 $1$（因为 $\\zeta$ 在 $1$ 附近形如 $1/(s-1) + O(1)$，故 $-\\zeta\'/\\zeta \\sim 1/(s-1)$）。把命题 B 用于 $f = \\psi$（$\\psi$ 非负、单调不减）得 $\\psi(x) \\sim x$，再由上面的等价性得素数定理。',
+        '⚠️ **缺的正是命题 A 与命题 B 的证明**：命题 A 需要 $\\zeta$ 的解析延拓（Euler–Maclaurin 或 Abel 求和）、$\\zeta(1+it) \\ne 0$ 的经典论证（$3 + 4\\cos\\theta + \\cos 2\\theta \\ge 0$ 推出 $\\zeta(1+it) \\ne 0$）；命题 B 是 Ingham/Newman 的 Tauber 定理，需要围道积分与增长估计。两者都不在「中等档」的篇幅内，本图不硬编——这就是本节点保留 skeleton 的原因。',
+        '⭐ Riemann 假设（$\\zeta$ 的非平凡零点全在 $\\operatorname{Re} s = 1/2$）就是把命题 B 的误差压到 $O(\\sqrt{x}\\log x)$ 的命题，至今未解。',
+        '**等价形式 $p_{n} \\sim n\\log n$**：由 $\\pi(p_{n}) = n$ 与 $\\pi(x) \\sim x/\\log x$ 直接代入（$x = p_{n}$：$n \\sim p_{n}/\\log p_{n}$，再解出 $p_{n} \\sim n\\log n$；这一步只用 $\\pi(x) \\sim x/\\log x$，不需要额外解析输入）。',
       ].join('\n\n'),
-      refs: ['华罗庚《数论导引》第九、十章', 'Apostol, Ch. 4, 12'],
+      refs: [
+        'Apostol, Introduction to Analytic Number Theory, Ch. 4（Abel 变换与等价形式）、Ch. 12（Perron 公式与素数定理）',
+        '华罗庚《数论导引》第九、十章',
+        'Ingham, The Distribution of Prime Numbers, Ch. II–IV（Tauber 定理与 Riemann zeta 的零点）',
+        'Newman, Analytic Number Theory, Ch. 3（Tauber 型定理）',
+      ]
     },
   ],
 

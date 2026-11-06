@@ -6,3 +6,5 @@
 - [`def.outer-measure`](../nodes/def.outer-measure.md) 外测度：用到了定义 外测度　[proofs/dep.rm-outer.md](../proofs/dep.rm-outer.md)
 - [`def.cond-measure`](../nodes/def.cond-measure.md) 整值测度：整值测度 $\leftrightarrow$ Riesz–Markov：同一台机器，换系数环与测试空间　[proofs/ana.rm-cond-measure.md](../proofs/ana.rm-cond-measure.md)
 - [`def.regular-measure`](../nodes/def.regular-measure.md) 正则 Borel 测度：用到了定义 正则 Borel 测度　[proofs/dep.rm-regular.md](../proofs/dep.rm-regular.md)
+
+> 续见 [nodes/thm.riesz-markov.4.md](./thm.riesz-markov.4.md)

@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T10:38:08.669Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T10:45:36.343Z
 > 15 星系 / 105 星团 / 1540 节点 / 3169 连线（强边 3130，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -15580,17 +15580,75 @@ $$\exists E \in \mathcal{M}:\ \mu(E) = 0\ \wedge \ \forall x \in X \setminus E,\
 
 $$\Lambda(f) = \int_{X} f \,\mathrm{d}\mu,$$
 
-其中 $\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\lVert\Lambda\rVert = \mu(X)$。一般（不必正）的泛函要**先假设有界**（对 $\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。
+其中 $\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\lVert\Lambda\rVert = \mu(X)$（$X$ 紧时就是 $\mu(X)$；$X$ 不紧时两端都可以是 $+\infty$）。一般（不必正）的泛函要**先假设有界**（对 $\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。
 
-**在做什么**：把「对函数做线性赋值」与「对集合量大小」这两件事焊起来 —— 于是测度论里的构造（乘积、推前、RN 导数）都能用泛函语言重述，反过来泛函分析里的对偶结论也能落到测度上。
+⚠️ **本节点仍标 skeleton**：下面写出测度构造中可独立验证的部分（开集上的定义、单调/次可加/不交可加、外测度）；Carathéodory 可测性的标准证明与最后的表示引理都未写全，所以不勾 ∎。
 
-**证明骨架**：① 由 $\Lambda$ 定义集函数 $\mu_{0}(U) := \sup\{\, \Lambda(f) : 0 \le f \le 1,\ \operatorname{supp} f \subseteq U \,\}$；② 证它是外测度、在开集上可加；③ 用 Carathéodory 延拓得到 Borel 测度；④ 用 $X$ 局部紧（Urysohn 引理给「夹逼函数」）证 $\Lambda(f) = \int f\,\mathrm{d}\mu$。
+**第一步：在开集上定义 $\mu$**。对开集 $U \subseteq X$ 令
 
-⚠ **本条标骨架**：本图把上面四步作为机制记下，**每一步的细节没有展开**（尤其「开集上可加」那一步要用 $X$ 的局部紧性与有限分割）。需要的工具（`lem.urysohn`、`thm.caratheodory`、`def.outer-measure`）本图都有节点，所以真要补全是可以逐步补的。
+$$\mu(U) := \sup\Big\{\, \Lambda(f) : f \in C_{c}(X),\ 0 \le f \le 1,\ \operatorname{supp} f \subseteq U \,\Big\},$$
 
-⭐ **与凝聚态的关系**：profinite 集上的「整值测度」$M(S,\mathbb{Z}) = \operatorname{Hom}_{\mathbb{Z}}(C(S,\mathbb{Z}),\mathbb{Z})$就是这条定理的**整值、紧全不连通**版本 —— 见 `def.cond-measure`。两者的差别只在「系数环」与「测试空间」，做法同为「对连续函数做赋值」。
+并约定 $\mu(\emptyset) = 0$。这里 $\operatorname{supp} f \subseteq U$ 是包含关系（$f$ 的支集紧，故 $\mu(U)$ 是「用紧支函数逼近 $U$」的上确界）。
 
-参考：Rudin, Real and Complex Analysis, Ch. 2（Riesz 表示定理）
+**引理 1（单调）**：$U \subseteq V$ $\Longrightarrow$ $\mu(U) \le \mu(V)$。显然（可行集变大）。∎
+
+**引理 2（两次可加）**：对任意开集 $U, V$，
+
+$$\mu(U \cup V) \le \mu(U) + \mu(V).$$
+
+证明：取 $f \in C_{c}$，$0 \le f \le 1$，$K := \operatorname{supp} f \subseteq U \cup V$。$K \setminus V$ 是紧集且含于开集 $U$，由 Urysohn 引理（`lem.urysohn`）存在 $\varphi \in C_{c}(X)$，$0 \le \varphi \le 1$，$\varphi = 1$ 于 $K \setminus V$，$\operatorname{supp} \varphi \subseteq U$。于是
+
+$$f = f\varphi + f(1 - \varphi),\qquad \operatorname{supp}(f\varphi) \subseteq U,\qquad \operatorname{supp}\big(f(1 - \varphi)\big) \subseteq V$$
+
+（第二式：在 $K \setminus V$ 上 $1 - \varphi = 0$，故支集落在 $K \cap V$ 里；$K$ 外的点 $f = 0$）。两者都满足 $0 \le \cdot \le 1$，故
+
+$$\Lambda(f) = \Lambda(f\varphi) + \Lambda\big(f(1 - \varphi)\big) \le \mu(U) + \mu(V).$$
+
+对 $f$ 取上确界即得。∎
+
+**引理 3（不交可加）**：若 $U \cap V = \emptyset$，则 $\mu(U \cup V) = \mu(U) + \mu(V)$。
+
+证明：取 $f \prec U$、$g \prec V$（即 $0 \le f,g \le 1$，支集分别在 $U$、$V$ 里）。因支集不交，$f + g$ 满足 $0 \le f + g \le 1$ 且 $\operatorname{supp}(f+g) \subseteq U \cup V$，故
+
+$$\Lambda(f) + \Lambda(g) = \Lambda(f + g) \le \mu(U \cup V).$$
+
+对 $f, g$ 分别取上确界得 $\mu(U) + \mu(V) \le \mu(U \cup V)$；反向不等式由引理 2。∎
+
+**第二步：外测度与可测性**。对任意 $E \subseteq X$ 令
+
+$$\mu^{*}(E) := \inf\big\{\, \mu(U) : E \subseteq U,\ U\ \text{开} \,\big\}.$$
+
+它是外测度：单调、$\mu^{*}(\emptyset) = 0$、可数次可加（覆盖的并仍是开覆盖，用 $\mu$ 在开集上的次可加性逐项控制）。
+
+**引理 4（开集是 Carathéodory 可测的）**：对任意 $A \subseteq X$ 与开集 $U$，
+
+$$\mu^{*}(A \cap U) + \mu^{*}(A \setminus U) \le \mu^{*}(A).$$
+
+证明（标准 Carathéodory 延拓，本图只记路线）：要证开集 $U$ 可测，等价于对任意 $A$ 有
+
+$$\mu^{*}(A \cap U) + \mu^{*}(A \setminus U) \le \mu^{*}(A).$$
+
+严格证明要先证 $\mu$ 在开集上内正则（用紧集从内部逼近），再对 $A$ 的开覆盖作分解；本图不展开这两步，故这里只记路线，不勾 ∎。
+
+**第三步：Carathéodory 延拓（标准定理，本图未展开引理 4 的证明）**。若引理 4 成立，所有开集（从而所有 Borel 集）都是 $\mu^{*}$-可测的；把 $\mu^{*}$ 限制到 Borel $\sigma$-代数上，得到 Borel 测度 $\mu$。对开集 $U$，$\mu(U) = \mu^{*}(U)$（$U$ 自身就是覆盖），与第一步的定义一致。
+
+**第四步（未完成）：表示引理**。要证对每个 $f \in C_{c}(X)$，
+
+$$\Lambda(f) = \int_{X} f\,\mathrm{d}\mu .$$
+
+标准做法：先对 $0 \le f \le 1$、$K = \operatorname{supp} f$ 取 $K$ 的有限开覆盖，使 $f$ 在每个覆盖成员上的振幅 $< \varepsilon$；用从属于它的单位分解（`def.partition-of-unity`、`prop.paracompact-partition-unity`）造出两个连续函数
+
+$$g \le f \le h,\qquad \Lambda(h) - \Lambda(g) < \varepsilon,\qquad \int (h - g)\,\mathrm{d}\mu < \varepsilon,$$
+
+再对 $g, h$ 用第一步的「$\mu(U) = \sup \Lambda$」把 $\Lambda$ 与 $\int$ 的差压到 $\varepsilon$，从而 $|\Lambda(f) - \int f\,\mathrm{d}\mu| \le 2\varepsilon$。这一步的估计（覆盖的选取、单位分解的支集控制、$\int(h-g)$ 的上界）本图**没有写全**，故保留 skeleton。
+
+**唯一性**：若两个正则 Borel 测度给出同一个 $\Lambda$，则对开集 $U$ 与 $f \prec U$，$\int f\,\mathrm{d}\mu_{1} = \Lambda(f) = \int f\,\mathrm{d}\mu_{2}$；取 $f \uparrow \chi_{U}$ 的 Urysohn 逼近（局部紧 $+$ $\sigma$-紧的通常假设下）得 $\mu_{1}(U) = \mu_{2}(U)$，再由正则性得两测度相等。
+
+**范数**：若 $X$ 紧，$\mu(X) = \sup\{\Lambda(f) : 0 \le f \le 1\} = \lVert\Lambda\rVert$（正泛函在 $f \le 1$ 上的上确界就是范数）；$X$ 不紧时也可能有限（如有限总质量的测度），此时两端仍相等；也可能同为 $+\infty$。
+
+⭐ **与凝聚态的关系**：profinite 集上的「整值测度」$M(S,\mathbb{Z}) = \operatorname{Hom}_{\mathbb{Z}}(C(S,\mathbb{Z}),\mathbb{Z})$ 就是这条定理的**整值、紧全不连通**版本 —— 见 `def.cond-measure`。两者的差别只在「系数环」与「测试空间」，做法同为「对连续函数做赋值」。
+
+参考：Rudin, Real and Complex Analysis (3rd ed.), Ch. 2 · Riesz Representation Theorem（定理 2.14）；Folland, Real Analysis, Ch. 7 · Riesz Representation Theorem；Bauer, Measure and Integration Theory, Ch. 7 · Riesz–Markov–Kakutani
 
 ### 星团：可测函数与收敛
 > 造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。
@@ -32501,7 +32559,11 @@ $$f(z) = A\int_{z_{0}}^{z} g(\zeta)\,\mathrm{d}\zeta + B.$$
 
 （ii）**辐角原理收尾**：确认边界简单后，对固定内点 $w \in P$ 数 $F - w$ 在 $\mathbb{H}$ 内的零点：边界上 $F - w$ 无零点，$F(\partial\mathbb{H})$ 绕 $w$ 的绕数为 $1$，故恰有一个原像，$F$ 是双射，从而共形。
 
-这两步分别需要 Carathéodory 边界对应（多边形情形的连续延拓）与反射拼接的细致论证；本图没有相应节点，也没有把论证写全，故不勾 ∎。
+这两步各需要一条外部引理，本图都没有节点、也没有写全，故不勾 ∎：
+
+**引理 A（Carathéodory–Osgood，Jordan 区域情形）**：Jordan 区域到单位圆盘的共形映射连续延拓为闭包同胚。多边形是 Jordan 区域，故 $F$ 的边界对应成立。
+
+**引理 B（简单性与绕数）**：若 $F$ 在 $\mathbb{H}$ 内局部共形、连续到边界，且边界曲线在每个边内部的绕数恰当，则 $F$ 单叶。标准做法是把多边形沿边反射拼接，用 Schwarz 反射（`thm.schwarz-reflection`）延拓 $F$ 并数覆盖重数；这一步同时给出（i）与（ii）。
 
 **为什么是这些指数**：沿实轴走过 $x_{k}$ 时，$\arg f'$ 跳变 $\pi(\alpha_{k} - 1)$，恰好把切向转过去 $\pi - \alpha_{k}\pi$ —— 正是外角。
 
@@ -38218,27 +38280,61 @@ $$\lim_{x \to \infty} \frac{\pi(x)}{x / \log x} = 1 .$$
 
 等价形式：$\theta(x) \sim x$、$\psi(x) \sim x$、$p_{n} \sim n\log n$（$p_{n}$ 是第 $n$ 个素数）。
 
-⛔ **这条只有陈述与骨架，证明不在本图**：所有已知证明都要复分析或等价的重型工具（Riemann 的 $\zeta$ 函数、或 Selberg–Erdős 的初等证明 —— 后者虽叫「初等」，但论证极长）。
+⚠️ **本节点仍标 skeleton**：下面把「素数定理 $\iff$ $\psi(x) \sim x$」这一段**完整证明**，并把剩下的解析主定理写成可检验的命题；但那条解析主定理（$\zeta$ 在 $\operatorname{Re} s = 1$ 上无零点 $+$ Tauber 型收尾）本图没有展开，所以不勾 ∎。
 
+**记号**：$\Lambda(n) = \log p$（$n = p^{k}$）或 $0$（其它），
 
+$$\psi(x) = \sum_{n \le x} \Lambda(n),\qquad \theta(x) = \sum_{p \le x} \log p,\qquad \pi(x) = \#\{p \le x\}.$$
 
-主流路线（Riemann 1859）的骨架：
+**引理 1（$\psi$ 与 $\theta$ 的关系）**：
 
+$$\psi(x) = \sum_{k \ge 1} \theta\big(x^{1/k}\big).$$
 
+证明：按 $n = p^{k}$ 的 $k$ 分组，$p^{k} \le x \iff p \le x^{1/k}$，每组贡献 $\log p$，求和即 $\theta(x^{1/k})$；$k > \log_{2} x$ 时 $x^{1/k} < 2$，对应项为 $0$。∎
 
-1. $\zeta(s) = \sum n^{-s}$ 在 $\operatorname{Re}\,s > 1$ 全纯，经解析延拓成为亚纯函数，唯一极点在 $s = 1$（留数 $1$）；
+**引理 2（$\psi \sim x \iff \theta \sim x$）**：由引理 1，
 
-2. $\zeta$ 在直线 $\operatorname{Re}\,s = 1$ 上无零点 —— 这一步就是素数定理的全部难点；
+$$0 \le \psi(x) - \theta(x) = \sum_{k=2}^{\lfloor \log_{2} x \rfloor} \theta\big(x^{1/k}\big) \le \sum_{k=2}^{\lfloor \log_{2} x \rfloor} x^{1/k}\log x \le (\log_{2} x)\,\sqrt{x}\,\log x = o(x).$$
 
-3. 由 Perron 公式 / 显式公式把 $\psi(x)$ 写成 $x - \sum_{\rho} x^{\rho}/\rho + \cdots$，零点 $\rho$ 的位置决定误差项；
+所以 $\psi(x) = \theta(x) + o(x)$，两者相差 $o(x)$，故 $\psi(x) \sim x$ 与 $\theta(x) \sim x$ 等价。∎
 
-4. 由 ② 得 $\psi(x) \sim x$，再由 $\psi \sim \theta \sim \pi\log$ 的等价性得 $\pi(x) \sim x/\log x$。
+**引理 3（Abel 变换）**：
 
+$$\theta(x) = \pi(x)\log x - \int_{2}^{x} \frac{\pi(t)}{t}\,\mathrm{d}t,\qquad \pi(x) = \frac{\theta(x)}{\log x} + \int_{2}^{x} \frac{\theta(t)}{t\log^{2} t}\,\mathrm{d}t.$$
 
+证明：对 Stieltjes 积分 $\sum_{p \le x} f(p) = \pi(x)f(x) - \int_{2}^{x} \pi(t)\,\mathrm{d}f(t)$ 分别取 $f = \log$ 与 $f = 1/\log$，分部积分即得。∎
 
-⭐ Riemann 假设（$\operatorname{Re}\,\rho = 1/2$）就是把 ③ 的误差压到 $O(\sqrt{x}\log x)$ 的命题，至今未解。
+**引理 4（$\theta \sim x \iff \pi \sim x/\log x$）**：
 
-参考：华罗庚《数论导引》第九、十章；Apostol, Ch. 4, 12
+- 若 $\theta(x) \sim x$：由引理 3 第二式，$\pi(x) = \frac{x(1+o(1))}{\log x} + \int_{2}^{x}\frac{t(1+o(1))}{t\log^{2}t}\,\mathrm{d}t$。主项是 $x/\log x$；积分 $\int_{2}^{x}\frac{\mathrm{d}t}{\log^{2} t} = o\big(\frac{x}{\log x}\big)$（因为 $\log^{2} t$ 增长比 $\log t$ 快），故 $\pi(x) \sim x/\log x$。
+
+- 若 $\pi(x) \sim x/\log x$：由引理 3 第一式，$\theta(x) = \pi(x)\log x - \int_{2}^{x}\frac{\pi(t)}{t}\,\mathrm{d}t = x + o(x) - \int_{2}^{x}\frac{(1+o(1))\,\mathrm{d}t}{\log t}$。而 $\int_{2}^{x}\frac{\mathrm{d}t}{\log t} = o(x)$（对数积分 $\operatorname{li}(x) = O(x/\log x)$），故 $\theta(x) \sim x$。∎
+
+于是素数定理 $\pi(x) \sim x/\log x$ 与 $\psi(x) \sim x$ 等价（引理 2 + 引理 4）。
+
+**剩下的解析主定理（本图未展开，正是 skeleton 的原因）**：
+
+命题 A（$\zeta$ 的解析延拓与无零点）：$\zeta(s) = \sum_{n \ge 1} n^{-s}$（$\operatorname{Re} s > 1$）可亚纯延拓到包含 $\{\operatorname{Re} s \ge 1\}$ 的开集，唯一极点是 $s = 1$ 处的单极点、留数 $1$；且 $\zeta(1 + it) \ne 0$ 对一切 $t \in \mathbb{R}$。
+
+命题 B（Tauber 型收尾）：设 $f : [1, \infty) \to \mathbb{R}$ 非负、单调不减，且其 Mellin 变换
+
+$$g(s) = \int_{1}^{\infty} f(t)\,t^{-s-1}\,\mathrm{d}t$$
+
+在 $\operatorname{Re} s > 1$ 收敛，并解析延拓到 $\{\operatorname{Re} s \ge 1\}$ 的一个邻域，除 $s = 1$ 处单极点（留数 $1$）外全纯，则 $f(x) \sim x$。
+
+**这两个命题怎么接上**：$\zeta$ 的 Euler 乘积取对数再求导给出
+
+$$-\frac{\zeta'(s)}{\zeta(s)} = \sum_{n \ge 1} \Lambda(n)\,n^{-s} = s\int_{1}^{\infty} \psi(t)\,t^{-s-1}\,\mathrm{d}t \qquad (\operatorname{Re} s > 1),$$
+
+最后一个等号由 Abel 求和（分部积分）得到：$\sum_{n \le x}\Lambda(n) = \psi(x)$。于是 $\psi$ 的 Mellin 变换就是 $-\zeta'/(s\zeta)$；由命题 A，它在 $\{\operatorname{Re} s \ge 1\}$ 上除 $s = 1$ 外全纯，而 $s = 1$ 是单极点、留数为 $1$（因为 $\zeta$ 在 $1$ 附近形如 $1/(s-1) + O(1)$，故 $-\zeta'/\zeta \sim 1/(s-1)$）。把命题 B 用于 $f = \psi$（$\psi$ 非负、单调不减）得 $\psi(x) \sim x$，再由上面的等价性得素数定理。
+
+⚠️ **缺的正是命题 A 与命题 B 的证明**：命题 A 需要 $\zeta$ 的解析延拓（Euler–Maclaurin 或 Abel 求和）、$\zeta(1+it) \ne 0$ 的经典论证（$3 + 4\cos\theta + \cos 2\theta \ge 0$ 推出 $\zeta(1+it) \ne 0$）；命题 B 是 Ingham/Newman 的 Tauber 定理，需要围道积分与增长估计。两者都不在「中等档」的篇幅内，本图不硬编——这就是本节点保留 skeleton 的原因。
+
+⭐ Riemann 假设（$\zeta$ 的非平凡零点全在 $\operatorname{Re} s = 1/2$）就是把命题 B 的误差压到 $O(\sqrt{x}\log x)$ 的命题，至今未解。
+
+**等价形式 $p_{n} \sim n\log n$**：由 $\pi(p_{n}) = n$ 与 $\pi(x) \sim x/\log x$ 直接代入（$x = p_{n}$：$n \sim p_{n}/\log p_{n}$，再解出 $p_{n} \sim n\log n$；这一步只用 $\pi(x) \sim x/\log x$，不需要额外解析输入）。
+
+参考：Apostol, Introduction to Analytic Number Theory, Ch. 4（Abel 变换与等价形式）、Ch. 12（Perron 公式与素数定理）；华罗庚《数论导引》第九、十章；Ingham, The Distribution of Prime Numbers, Ch. II–IV（Tauber 定理与 Riemann zeta 的零点）；Newman, Analytic Number Theory, Ch. 3（Tauber 型定理）
 
 #### 黎曼 ζ 函数　`def.riemann-zeta`
 *定义*　黎曼 $\zeta$ 函数：$\zeta(s) = \sum_{n \ge 1} n^{-s}$（$\operatorname{Re}s > 1$）
@@ -54694,7 +54790,7 @@ Hilbert 空间是 Banach 空间的特例，所以也走这条桥（注里有说�
 
 #### 定义引用：「外测度」→ Riesz–Markov 表示　`dep.rm-outer`
 
-证明骨架第 ②③ 步：先造外测度、再用 Carathéodory 延拓。
+证明第 ②③ 步：先造外测度、再用 Carathéodory 延拓（这两步在节点注里已写全；仍缺的是最后的表示引理）。
 
 #### 定义引用：「正则 Borel 测度」→ Riesz–Markov 表示　`dep.rm-regular`
 
