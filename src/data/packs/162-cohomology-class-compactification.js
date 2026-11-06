@@ -30,7 +30,6 @@ window.MG = window.MG || {};
       type: 'definition',
       /* 同词不同物（已核对）—— 与 def.cohomological-functor 不是同一个概念，别合并。 */
       distinctFrom: ['def.cohomological-functor'],
-      status: 'skeleton',
       label: '上同调类',
       title: '上同调类：闭链模掉边缘',
       regions: ['homology'],
@@ -52,13 +51,14 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **类 $\\ne$ 代表**：同一个上同调类有无穷多个代表（差任意上边缘）。所有关于类的运算都必须先验证「换代表不改变结果」—— 这就是同调代数里每一次「良定义性」检查的来源。模掉 $B^{n}$ 的唯一目的就是让这种检查变成一句话。',
-        '**几何含义**：de Rham 情形下 $[\\omega] \\in H^{k}_{dR}(M)$ 是「$\\omega$ 的积分只依赖同调类」的那一半 —— Stokes 定理说 $\\int_{c} \\omega$ 在 $\\omega \\mapsto \\omega + d\\eta$ 与 $c \\mapsto c + \\partial b$ 下都不变，于是它其实是**上同调类与同调类的配对** $H^{k} \\times H_{k} \\to \\mathbb{R}$。\n\n这条配对是 de Rham 定理的骨架。',
+        '**几何含义**：de Rham 情形下 $[\\omega] \\in H^{k}_{dR}(M)$ 是「$\\omega$ 的积分只依赖同调类」的那一半 —— Stokes 定理说 $\\int_{c} \\omega$ 在 $\\omega \\mapsto \\omega + d\\eta$ 与 $c \\mapsto c + \\partial b$ 下都不变，于是它其实是**上同调类与同调类的配对** $H^{k} \\times H_{k} \\to \\mathbb{R}$。\n\n这条配对是 de Rham 定理的核心。',
+        '**函子性（拉回）。** 链映射 $f : K \\to L$（与微分交换的族 $f^{n} : K^{n} \\to L^{n}$）诱导 $H^{n}(f) : H^{n}(K) \\to H^{n}(L)$，$[z] \\mapsto [f^{n}(z)]$。良定义：$f$ 把闭链送到闭链（$d f = f d$ 给出 $d f^{n}(z) = f^{n+1}(d z) = 0$），把上边缘送到上边缘，故换代表只改变一个上边缘。于是 $H^{n}$ 是复形范畴到阿贝尔群范畴的函子 —— 「类」之所以值得单独命名，正是因为它随映射被搬运。',
         '⚠️ **记号**：$[z]$ 与 $\\bar z$ 都在用；有文献用 $\\{z\\}$。⚠️ 与「同调类」$[z] \\in H_{n}$ 只差上下标，写证明时务必标清楚 $H^{n}$ 还是 $H_{n}$ —— 这是同调代数最常见的低级错误来源。',
         '⚠️ 本图不单独收录「同调类」：它是同一个定义在链复形一侧的写法（下标换成上标），与 `def.cycle` / `def.boundary` 同一个口径 —— 不为一个上标差异开第二个节点。'
       ].join('\n\n'),
       refs: [
-        'Le Stum, An introduction to condensed mathematics（⚠️ 章节未核实，只记书名）· 复形与同调',
-        'Weibel, An Introduction to Homological Algebra（⚠️ 章节未核实，只记书名）'
+        'Le Stum, An introduction to condensed mathematics, §7.1（复形与同调）',
+        'Weibel, An Introduction to Homological Algebra, Ch. 1（Chain Complexes）'
       ]
     },
 

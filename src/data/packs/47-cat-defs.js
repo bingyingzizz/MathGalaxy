@@ -45,7 +45,6 @@ window.MG = window.MG || {};
       id: 'def.simplex-category',
       cluster: 'cat.limit',
       type: 'definition',
-      status: 'skeleton',
       label: '单纯形范畴',
       title: '单纯形范畴 $\\Delta$',
       regions: ['category'],
@@ -62,10 +61,27 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么要它**：单纯对象就是 $\\Delta^{\\mathrm{op}}$ 上的图（见「单纯对象」）。这一条把「一个空间在 $n$ 维的骨架」组织成范畴语言 —— $[n]$ 是 $n$-单形，面映射是「取第 $i$ 个面」，退化映射是「把单形压扁」。',
-        '**$\\Delta$ 的态射全都能写成面映射与退化映射的复合**，而且它们满足**单纯恒等式**（$\\delta^{j}\\delta^{i} = \\delta^{i}\\delta^{j-1}$ 等）。所以定义单纯对象时只要给出这两族映射就够 —— 这正是「单纯集 = 一族集合 + 面 + 退化」那种写法的来源。',
-        '⚠️ 记号在各书里不统一：有的用 $[n] = \\{0, \\ldots, n\\}$（本图取这个），有的用 $\\Delta^{n}$ 指标准的几何 $n$-单形（那是**几何实现**那边的对象，不是这里的指标）。'
+        '**每个态射都有唯一的单-满分解**：单调映射 $f : [m] \\to [n]$ 唯一地写成',
+        '',
+        '$$[m] \\twoheadrightarrow \\operatorname{im}(f) \\hookrightarrow [n],$$',
+        '',
+        '即先做满射（在每根纤维里只留一个代表），再做单射。满射段是一串退化映射的复合，单射段是一串面映射的复合 —— 这就是下面「两族生成」的确切含义。',
+        '**完整单纯恒等式**（本图取 $\\delta^{i}$ 跳过 $i$、$\\sigma^{i}$ 合并 $i,i+1$ 的约定）：',
+        '',
+        '- $\\delta^{j}\\delta^{i} = \\delta^{i}\\delta^{j-1}$（$i < j$）；',
+        '- $\\sigma^{j}\\sigma^{i} = \\sigma^{i}\\sigma^{j-1}$（$i < j$）；',
+        '- $\\sigma^{j}\\delta^{i} = \\delta^{i}\\sigma^{j-1}$（$i < j$）；',
+        '- $\\sigma^{j}\\delta^{i} = 1$（$i = j$ 或 $i = j+1$）；',
+        '- $\\sigma^{j}\\delta^{i} = \\delta^{i-1}\\sigma^{j}$（$i > j+1$）。',
+        '',
+        '前两族说明「同一类的映射复合时，指标从后往前递减」；后三族说明「面与退化交错时，要么换序、要么相消」。所有关于单纯对象的论证，本质上都只是把这五条恒等式代进去。',
+        '**为什么就这些**：$\\Delta$ 等价于**有限非空全序集**范畴 $\\mathbf{Ord}_{\\mathrm{fin}}$ 的骨架 —— 每个有限非空全序集都唯一同构于某个 $[n]$，而保序映射就是全体态射。所以「单纯形范畴」不是人为造出来的指标集，而是「有限全序集及其保序映射」这件事的最小表示。',
+        '⚠️ 记号在各书里不统一：有的用 $[n] = \\{0, \\ldots, n\\}$（本图取这个），有的用 $\\Delta^{n}$ 指标准的几何 $n$-单形（那是**几何实现**那边的对象，不是这里的指标）。有的书把 $\\delta^{i}$ 定义成「插入」而不是「跳过」$i$，恒等式里的指标会整体平移一格 —— 引用恒等式前先核对约定。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
+      refs: [
+        'Le Stum, An introduction to condensed mathematics, §1.3',
+        'May, Simplicial Objects in Algebraic Topology'
+      ]
     },
 
     /* ---------------------------------------------------- Ind-对象 */

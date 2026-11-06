@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T07:42:42.893Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T07:58:31.438Z
 > 15 星系 / 105 星团 / 1540 节点 / 3167 连线（强边 3128，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.8 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -915,15 +915,33 @@ $$(ac + bd) - (ad + bc) = pq > 0,$$
 
 - $n \mapsto n/1$ 把 $\mathbb{Z}$ 嵌入 $\mathbb{Q}$，保持运算与序。
 
-⭐ 证明的骨架：**良定义**（$a/b = a'/b'$ 时两种算法结果相同）用 $\mathbb{Z}$ 的整环消去律；**域公理**逐条搬到代表元上（$\mathbb{Z}$ 是交换环，`thm.int-ring`）；
+**证明。** 逐条验证 `def.rat` 里的运算与序。约定分母取正：把 $a/b$ 的分子分母同时变号得到同一个类，故每个类都有 $b > 0$ 的代表。
 
-**逆元**是 $(a/b)^{-1} = b/a$（$a \ne 0$，交换性使 $a b = b a \ne 0$ 自动成立，这里用到无零因子）；
+**① 运算良定义。** 设 $a/b = a'/b'$、$c/d = c'/d'$，即 $ab' = a'b$、$cd' = c'd$（分母非零）。加法：第一式乘 $dd'$、第二式乘 $bb'$ 后相加，得 $(ad + bc)b'd' = (a'd' + b'c')bd$，即加法与代表元无关。乘法：两式相乘，得 $(ac)(b'd') = (a'c')(bd)$。
 
-**序**在 $b, d > 0$ 的表示下就是 $ad \le bc$，换代表元时两边同乘正元 $b'd'$ 不改变不等号。
+**② 域公理。** 逐项搬到代表元上，全部化成 $\mathbb{Z}$ 的环公理（`thm.int-ring`）。例如加法结合律：$(a/b + c/d) + e/f$ 与 $a/b + (c/d + e/f)$ 都等于 $(adf + bcf + bde)/(bdf)$；分配律同理。零元是 $0/1$，幺元是 $1/1$，加法逆元是 $(-a)/b$。$0/1 \ne 1/1$，因为 $0 \cdot 1 \ne 1 \cdot 1$。
 
-⭐ 到这一步「四则运算齐全 + 有序」全部落实，但**不完备**：$\{q \in \mathbb{Q} : q^{2} < 2\}$ 有上界却没有上确界。
+**③ 乘法逆元。** 若 $a/b \ne 0$，则 $a \ne 0$（否则 $a/b = 0/1$）。取 $b/a$；由 $\mathbb{Z}$ 无零因子，$a \ne 0$、$b \ne 0$ 给出 $ab \ne 0$，分母合法。且 $(a/b)(b/a) = ab/ba = 1/1$（交换律）。
 
-这不是缺陷，正是 `def.real` 要把它补成 $\mathbb{R}$ 的理由。
+**④ 序良定义。** 对 $b, d > 0$ 定义 $a/b \le c/d :\iff ad \le bc$。若 $a/b = a'/b'$、$c/d = c'/d'$（$b,d,b',d' > 0$），则 $ab' = a'b$、$cd' = c'd$。由 $b'd' > 0$ 与 $bd > 0$，
+
+$$ad \le bc \iff adb'd' \le bcb'd' \iff a'd'(bd) \le b'c'(bd) \iff a'd' \le b'c' ,$$
+
+故 $\le$ 与代表元无关。
+
+**⑤ 全序。** 对任意 $a/b, c/d$（$b, d > 0$），$\mathbb{Z}$ 的三分律给出 $ad < bc$、$ad = bc$、$ad > bc$ 恰有一种成立，分别对应 $<$、$=$、$>$。故 $\le$ 是全序；反对称性来自「$ad \le bc$ 且 $bc \le ad$」推出 $ad = bc$。
+
+**⑥ 与加法相容。** 设 $a/b \le c/d$，即 $ad \le bc$。对任意 $e/f$（$f > 0$），
+
+$$\frac{a}{b} + \frac{e}{f} = \frac{af + be}{bf}, \qquad \frac{c}{d} + \frac{e}{f} = \frac{cf + de}{df}.$$
+
+交叉相乘：$(af + be)df \le (cf + de)bf \iff adf^2 + bedf \le cbf^2 + debf$。混合项 $bedf = debf$ 相消，得 $f^2(ad - bc) \le 0$，即 $ad \le bc$，成立。
+
+**⑦ 与乘法相容。** 设 $a/b \le c/d$ 且 $0 \le e/f$（$f > 0$，故 $e \ge 0$）。则 $ae/(bf) \le ce/(df) \iff aedf \le cebf$。若 $e = 0$ 两边都是 $0$；若 $e > 0$，两边同除正元 $ef$ 得 $ad \le cb$，成立。
+
+**⑧ 嵌入。** $n \mapsto n/1$ 是单射（$n/1 = m/1 \iff n = m$），且 $(m+n)/1 = m/1 + n/1$、$(mn)/1 = (m/1)(n/1)$、$m \le n \iff m/1 \le n/1$。故 $\mathbb{Z}$ 保运算保序地嵌入 $\mathbb{Q}$。∎
+
+**⑨ 补一句：为什么它还不是 $\mathbb{R}$。** 集合 $S = \{q \in \mathbb{Q} : q^2 < 2\}$ 有上界（例如 $2$）却没有上确界。若 $q_0 = \sup S$ 存在：$q_0^2 < 2$ 时由稠密性可在 $q_0$ 右侧取到 $q \in S$，与上界矛盾；$q_0^2 > 2$ 时可取到比 $q_0$ 小的上界，与「最小」矛盾。故只能 $q_0^2 = 2$，但 $q^2 = 2$ 在 $\mathbb{Q}$ 中无解（$q = m/n$ 既约时 $m^2 = 2n^2$ 迫使 $2 \mid m$，进而 $2 \mid n$，矛盾）。这正是 `def.real` 要把 $\mathbb{Q}$ 补成 $\mathbb{R}$ 的理由。
 
 参考：Kunen, Set Theory, Ch. I；Enderton, Elements of Set Theory, Ch. 4
 
@@ -4762,16 +4780,16 @@ $$\partial_{p-1} \circ \partial_{p} = 0.$$
 
 于是约定 $Z_{p} := \ker\partial_{p}$（**闭链**）、$B_{p} := \operatorname{im}\partial_{p+1}$（**边缘**），并且 $B_{p} \subseteq Z_{p}$，即 $(C_{*}, \partial)$ 是一个**链复形**。
 
-**$\partial^{2} = 0$ 的证明骨架**：把 $\partial\partial\sigma$ 写成双重求和，每项对应「删两个顶点 $i < j$」。
-
-这一项在两次展开里出现**两次**：一次系数是 $(-1)^{i}(-1)^{j-1}$（**先删 $i$、再删已降为 $j-1$ 的那个 $j$**），另一次是 $(-1)^{j}(-1)^{i}$（**先删 $j$、再删 $i$**）——两者相差一个符号，恰好相消。
-
-用的是面映射恒等式 $d_{j}d_{i} = d_{i}d_{j-1}$（$i < j$）。
-
+**证明 $\partial^{2} = 0$。** 设 $\sigma = [v_{0}, \ldots, v_{p}]$，$p \ge 1$，并记 $\sigma_{\hat{i}}$ 为删去 $v_{i}$ 得到的 $(p-1)$-面。把 $\partial\sigma = \sum_{i=0}^{p}(-1)^{i}\sigma_{\hat{i}}$ 再展开一次：
+$$\partial\partial\sigma = \sum_{j=0}^{p-1}\sum_{i=0}^{p}(-1)^{i}(-1)^{j}\,\sigma_{\hat{i},\hat{j}} ,$$
+其中 $\sigma_{\hat{i},\hat{j}}$ 表示同时删去 $v_{i}$ 与 $v_{j}$（与先后次序无关），内层求和里的 $j$ 是删去 $v_{i}$ 之后的**新编号**，所以只到 $p-1$。
+**每个 $(p-2)$-面恰出现两次。** 固定 $i < j$，看删去 $v_{i}, v_{j}$ 得到的那个面：
+- **先删 $i$、再删 $j$**：第一次符号 $(-1)^{i}$；此时 $v_{j}$ 在新编号里是第 $j-1$ 位，第二次符号 $(-1)^{j-1}$。合计 $(-1)^{i+j-1}$。
+- **先删 $j$、再删 $i$**：第一次符号 $(-1)^{j}$；因 $i < j$，$v_{i}$ 的编号不变，第二次符号 $(-1)^{i}$。合计 $(-1)^{i+j}$。
+两个符号相差一个负号，故这两项相加为零。$\partial\partial\sigma$ 里也没有别的项 —— 两次不可能删同一个顶点。所以 $\partial\partial\sigma = 0$。对链线性延拓，即得 $\partial_{p-1} \circ \partial_{p} = 0$（并约定 $\partial_{0} = 0$）。∎
+等价的书账方式：面映射满足单纯恒等式 $d_{j}d_{i} = d_{i}d_{j-1}$（$i < j$），而上式的全部内容就是这条恒等式加上「两个编号互换后 $(-1)$ 的指数差 $1$」。
 ⭐ **符号 $(-1)^{i}$ 就是为这件事选的**。换别的符号约定也行，只要全篇一致；不一致的后果是 $\partial^{2} \ne 0$，整台机器立刻失效。
-
 **几个小情形**：$\partial_{0} = 0$（顶点没有更低维的面）；$\partial_{1}[v_{0}, v_{1}] = [v_{1}] - [v_{0}]$；$\partial_{2}[v_{0}, v_{1}, v_{2}] = [v_{1}, v_{2}] - [v_{0}, v_{2}] + [v_{0}, v_{1}]$（三角形三条边，中间那条带负号 —— 定向）。
-
 💡 一句话：$\partial$ 与 $\partial^{2} = 0$ 这一对，就是整个同调论的**全部代数输入**；剩下的一切（商群、长正合列、Mayer–Vietoris）都是这两条的推论。
 
 参考：Munkres, Elements of Algebraic Topology, Ch. 1 · The boundary operator；Hatcher, Algebraic Topology, Ch. 2 §2.1 · the boundary map and d^2 = 0
@@ -17009,29 +17027,31 @@ $$A_r f(x) := \frac{1}{m(B(x, r))} \int_{B(x, r)} f(y) dy$$
 
 设 $f \in L^1_{loc}$。则 $A_r f(x)$ 作为 $(r, x)$ 的函数是**联合连续**的。
 
-证明的骨架：把积分写成
+**证明。** 记 $m$ 为 Lebesgue 测度，$\omega_n := m(B(0,1))$，则 $m(B(x,r)) = \omega_n r^n$。只要对任意满足 $r_k > 0$、$(x_k, r_k) \to (x_0, r_0)$ 的序列证明 $A_{r_k} f(x_k) \to A_{r_0} f(x_0)$，即得联合连续。
 
+**第一步：拆项。** 把差写成
 
+$$A_r f(x) - A_{r_0} f(x_0) = \frac{1}{m(B(x,r))}\int_{\mathbb{R}^n} \bigl(\chi_{B(x,r)} - \chi_{B(x_0,r_0)}\bigr) f + \Bigl(\frac{1}{m(B(x,r))} - \frac{1}{m(B(x_0,r_0))}\Bigr)\int_{B(x_0,r_0)} f .$$
 
-$$\int_{B(x, r)} f(y) dy = \int_{\mathbb{R}^n} \chi_{B(x, r)}(y) f(y) dy$$
+第二项趋于 $0$：$\omega_n r_k^n \to \omega_n r_0^n > 0$，故系数趋于 $0$，而 $\int_{B(x_0,r_0)} f$ 是固定常数。
 
+**第二步：找控制函数。** 取 $\delta = 1/2$：若 $|x - x_0| < 1/2$、$|r - r_0| < 1/2$，则 $r < r_0 + 1/2$，且 $|y - x| < r$ 推出
 
+$$|y - x_0| \le |y - x| + |x - x_0| < r + 1/2 < r_0 + 1,$$
 
-于是只需证 $\chi_{B(x, r)} \to \chi_{B(x_0, r_0)}$（当 $(x, r) \to (x_0, r_0)$）在足够好的意义上成立，再用 DCT。
+即 $B(x,r) \subseteq B(x_0, r_0 + 1)$。于是对这样的 $(x,r)$ 与一切 $y$，
 
-分两块看（取目标点 $(r_0, x_0)$）：
+$$|\chi_{B(x,r)}(y) - \chi_{B(x_0,r_0)}(y)|\,|f(y)| \le \chi_{B(x_0, r_0+1)}(y)\,|f(y)| \in L^1.$$
 
+**第三步：逐点收敛 a.e.。** 球面 $\partial B(x_0, r_0)$ 是零测集。设 $y \notin \partial B(x_0, r_0)$。
 
+- 若 $|y - x_0| < r_0$：取 $\varepsilon = r_0 - |y - x_0| > 0$；当 $|x - x_0| < \varepsilon/2$、$|r - r_0| < \varepsilon/2$ 时 $|y - x| \le |y - x_0| + |x - x_0| < r_0 - \varepsilon/2 < r$，故 $\chi_{B(x,r)}(y) = 1 = \chi_{B(x_0,r_0)}(y)$。
 
-$\cdot$ 若 $y$ 在球内：$\varepsilon := r_0 - |y - x_0| > 0$；当 $|x - x_0| < \varepsilon/2$ 且 $|r - r_0| < \varepsilon/2$ 时 $|y - x| < r$，故 $\chi = 1$；
+- 若 $|y - x_0| > r_0$：取 $\varepsilon = |y - x_0| - r_0 > 0$；同样的小扰动下 $|y - x| > r_0 + \varepsilon/2 > r$，故 $\chi_{B(x,r)}(y) = 0 = \chi_{B(x_0,r_0)}(y)$。
 
-$\cdot$ 若 $y$ 在球外：$\varepsilon := |y - x_0| - r_0 > 0$；同样的小扰动下 $|y - x| > r$，故 $\chi = 0$。
+所以 $\chi_{B(x_k,r_k)} \to \chi_{B(x_0,r_0)}$ 关于 $y$ 几乎处处成立。
 
-
-
-两边合起来说明：对**几乎处处的** $y$（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。
-
-控制函数取 $\chi_{B(x_0, r_0+1)}(y)\cdot|f(y)| \in L^1$，由 **DCT** 得连续性。∎
+**第四步：控制收敛。** 由第二、三步与 DCT，$\int (\chi_{B(x_k,r_k)} - \chi_{B(x_0,r_0)}) f \to 0$；系数 $1/m(B(x_k,r_k))$ 有界且趋于 $1/m(B(x_0,r_0))$，故第一项趋于 $0$。加上第二项，得 $A_{r_k} f(x_k) \to A_{r_0} f(x_0)$。∎
 
 参考：Folland, Real Analysis, Lemma 3.16
 
@@ -18820,11 +18840,11 @@ $$[0], \ [1], \ [2], \ \ldots, \ [n], \ \ldots$$
 而 $[n] \to [m]$ 的态射取全体**单调映射**（不要求 $n \le m$，也不要求严格）。$\Delta$ 的全体态射由两类生成：
 
 - **面映射** $\delta^{i} : [n-1] \to [n]$：跳过第 $i$ 个点（$i = 0, \ldots, n$）；
-- **退化映射** $\sigma^{i} : [n] \to [n-1]$：重复第 $i$ 个点。
+- **退化映射** $\sigma^{i} : [n] \to [n-1]$：把 $i$ 与 $i+1$ 合并（等价地，插入一个重复点）。
 
 只保留面映射的子范畴记 $\Delta_{\mathrm{inj}}$，只保留退化映射的记 $\Delta_{\mathrm{surj}}$。$\mathcal{C}$ 中的**单纯对象**是图
 
-$$X : \Delta^{\mathrm{op}} \longrightarrow \mathcal{C}$$
+$$X : \Delta^{\mathrm{op}} \longrightarrow \mathcal{C},$$
 
 只保留面映射的图（$\Delta_{\mathrm{inj}}^{\mathrm{op}} \to \mathcal{C}$）叫**半单纯对象**。
 
@@ -18832,9 +18852,44 @@ $$X : \Delta^{\mathrm{op}} \longrightarrow \mathcal{C}$$
 
 于是 $\Delta$ 是「所有标准单纯形及其贴合方式」的骨架，$\Delta^{\mathrm{op}} \to \mathcal{C}$ 的一个图就是把一串层层相套的单纯形安进 $\mathcal{C}$ 里 —— 这是把空间编码成代数数据的最省事的办法。
 
-取 $\mathcal{C} = \mathbf{Set}$，$X([n])$ 就是「$n$ 维单纯形的集合」，$X(\delta^i)$ 给出「第 $i$ 个面」，$X(\sigma^i)$ 给出「退化」。
+**展开写法**：记 $X_{n} := X([n])$，并把 $\Delta^{\mathrm{op}}$ 里的箭头反向后记为
 
-参考：Le Stum, An introduction to condensed mathematics, §1.3
+
+
+$$d_{i} := X(\delta^{i}) : X_{n} \longrightarrow X_{n-1}, \qquad s_{i} := X(\sigma^{i}) : X_{n} \longrightarrow X_{n+1}.$$
+
+
+
+它们满足与单纯恒等式对偶的**面-退化关系**：
+
+
+
+- $d_{i} d_{j} = d_{j-1} d_{i}$（$i < j$）；
+
+- $s_{i} s_{j} = s_{j-1} s_{i}$（$i < j$）；
+
+- $d_{i} s_{j} = s_{j-1} d_{i}$（$i < j$）；
+
+- $d_{i} s_{j} = 1$（$i = j$ 或 $i = j+1$）；
+
+- $d_{i} s_{j} = s_{j} d_{i-1}$（$i > j+1$）。
+
+
+
+所以「单纯对象」在纸面上永远是一串对象 $X_{0}, X_{1}, \ldots$ 加上面映射 $d_{i}$ 与退化映射 $s_{i}$ —— 范畴语言只是把这串数据与其相容性一次说清。
+
+**例 1（标准单纯形）**：$X = \operatorname{Hom}_{\Delta}(-,[n])$ 是单纯集，$X_{k}$ 恰是「$[k]$ 中的保序嵌入数」，几何实现就是标准的 $n$-单形。
+
+**例 2（奇异单纯集）**：拓扑空间 $T$ 给出 $S_{\bullet}(T) : [n] \mapsto \operatorname{Hom}_{\mathbf{Top}}(\Delta^{n}, T)$，即「$T$ 中的 $n$-奇异单形」；它的链群就是奇异链群。所以奇异同调不是另一套理论，而是单纯对象取链复形。
+
+**例 3（单纯集 = 预层）**：$\mathcal{C} = \mathbf{Set}$ 时，单纯对象就是 $\Delta^{\mathrm{op}}$ 上的预层（presheaf）。几何实现是余极限 $|X| = \varinjlim_{[k] \to X} \Delta^{k}$（把每个 $k$-单形按面关系粘起来）—— 「$X$ 在 $k$ 维有几个单形、怎么粘」全由 $X_{k}$ 与 $d_{i}, s_{i}$ 记录。
+
+⚠️ **三个易混**：
+- 「单纯集」(simplicial set) 与「单纯复形」(simplicial complex) 不是一回事：前者是 $\Delta^{\mathrm{op}}$ 上的预层（允许一个单形有多个顶点、允许退化单形），后者是一族有限子集并满足闭包条件。
+- 半单纯对象只保留面映射 $d_{i}$，丢掉退化 $s_{i}$；它足以定义同调（$\partial = \sum (-1)^{i} d_{i}$），但不足以做同伦论。
+- 「余单纯对象」是把 $\Delta$ 换成 $\Delta^{\mathrm{op}}$（图 $\Delta \to \mathcal{C}$），上同调的指标方向由此而来。
+
+参考：Le Stum, An introduction to condensed mathematics, §1.3；May, Simplicial Objects in Algebraic Topology
 
 #### 锥　`def.cone`
 *定义*　锥与余锥
@@ -19140,11 +19195,39 @@ $$[n] := n + 1 := \{\, 0, 1, \ldots, n \,\} \qquad (n \in \mathbb{N}),$$
 
 **为什么要它**：单纯对象就是 $\Delta^{\mathrm{op}}$ 上的图（见「单纯对象」）。这一条把「一个空间在 $n$ 维的骨架」组织成范畴语言 —— $[n]$ 是 $n$-单形，面映射是「取第 $i$ 个面」，退化映射是「把单形压扁」。
 
-**$\Delta$ 的态射全都能写成面映射与退化映射的复合**，而且它们满足**单纯恒等式**（$\delta^{j}\delta^{i} = \delta^{i}\delta^{j-1}$ 等）。所以定义单纯对象时只要给出这两族映射就够 —— 这正是「单纯集 = 一族集合 + 面 + 退化」那种写法的来源。
+**每个态射都有唯一的单-满分解**：单调映射 $f : [m] \to [n]$ 唯一地写成
 
-⚠️ 记号在各书里不统一：有的用 $[n] = \{0, \ldots, n\}$（本图取这个），有的用 $\Delta^{n}$ 指标准的几何 $n$-单形（那是**几何实现**那边的对象，不是这里的指标）。
 
-参考：Le Stum, An introduction to condensed mathematics, §1.3
+
+$$[m] \twoheadrightarrow \operatorname{im}(f) \hookrightarrow [n],$$
+
+
+
+即先做满射（在每根纤维里只留一个代表），再做单射。满射段是一串退化映射的复合，单射段是一串面映射的复合 —— 这就是下面「两族生成」的确切含义。
+
+**完整单纯恒等式**（本图取 $\delta^{i}$ 跳过 $i$、$\sigma^{i}$ 合并 $i,i+1$ 的约定）：
+
+
+
+- $\delta^{j}\delta^{i} = \delta^{i}\delta^{j-1}$（$i < j$）；
+
+- $\sigma^{j}\sigma^{i} = \sigma^{i}\sigma^{j-1}$（$i < j$）；
+
+- $\sigma^{j}\delta^{i} = \delta^{i}\sigma^{j-1}$（$i < j$）；
+
+- $\sigma^{j}\delta^{i} = 1$（$i = j$ 或 $i = j+1$）；
+
+- $\sigma^{j}\delta^{i} = \delta^{i-1}\sigma^{j}$（$i > j+1$）。
+
+
+
+前两族说明「同一类的映射复合时，指标从后往前递减」；后三族说明「面与退化交错时，要么换序、要么相消」。所有关于单纯对象的论证，本质上都只是把这五条恒等式代进去。
+
+**为什么就这些**：$\Delta$ 等价于**有限非空全序集**范畴 $\mathbf{Ord}_{\mathrm{fin}}$ 的骨架 —— 每个有限非空全序集都唯一同构于某个 $[n]$，而保序映射就是全体态射。所以「单纯形范畴」不是人为造出来的指标集，而是「有限全序集及其保序映射」这件事的最小表示。
+
+⚠️ 记号在各书里不统一：有的用 $[n] = \{0, \ldots, n\}$（本图取这个），有的用 $\Delta^{n}$ 指标准的几何 $n$-单形（那是**几何实现**那边的对象，不是这里的指标）。有的书把 $\delta^{i}$ 定义成「插入」而不是「跳过」$i$，恒等式里的指标会整体平移一格 —— 引用恒等式前先核对约定。
+
+参考：Le Stum, An introduction to condensed mathematics, §1.3；May, Simplicial Objects in Algebraic Topology
 
 #### Ind-对象　`def.ind-object`
 *定义*　Ind-对象与 $\operatorname{Ind}(\mathcal{C})$
@@ -22003,8 +22086,6 @@ $$\operatorname{Hom}_{\mathcal{C}}(P, X) \;\cong\; \operatorname{Hom}_{A\text{-}
 
 - **预加法范畴**（$\mathbf{Ab}$-范畴）是每个 $\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；
 - **零对象**是 $\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \oplus M_{2}$，如果存在 $p_{k} : M \to M_{k}$、$i_{k} : M_{k} \to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；
-
-
 - **加法范畴**是有零对象与所有直和的预加法范畴（等价地：所有有限积、或所有有限余积存在，此时二者存在且相等）；
 - **预阿贝尔范畴**是每个态射都有核与余核的加法范畴（等价地：所有有限极限与有限余极限存在）；
 - **阿贝尔范畴**是满足下列**等价**条件之一的预阿贝尔范畴：
@@ -22020,9 +22101,7 @@ $$\operatorname{Hom}_{\mathcal{C}}(P, X) \;\cong\; \operatorname{Hom}_{A\text{-}
 
 而 $\mathbf{AbTop}$ **不是**（$\mathbb{Z}^{\mathrm{disc}} \to \mathbb{Z}^{\mathrm{coarse}}$ 这个恒等映射不严格），$\mathbf{AbHaus}$ 也不是。
 
-阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。
-
-
+阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供零对象与直和这两样加法结构，还不足以谈「像」。
 
 **四条里哪条是“真公理”、哪条是它的推论**（阿贝尔范畴的这组等价常被并列，其实第 4 条最弱也最像“公理”，前三条各有代价）：
 
@@ -22036,6 +22115,8 @@ $$\operatorname{Hom}_{\mathcal{C}}(P, X) \;\cong\; \operatorname{Hom}_{A\text{-}
 ⚠️ **另两处易错**：
 - 「加法范畴」的定义里「所有直和」与「所有有限积」等价，但**要预加法**为前提（一般范畴里有限积与有限余积不必重合）。
 - 「有所有有限极限与余极限」是 (2) 那一行的说法，它**不**蕴含阿贝尔性（例如 $\mathbf{Set}$ 有有限极限与余积，却远非阿贝尔）—— 差别正在「不交、万有、有效」这些附加条件。
+
+📌 **实践里怎么用**：最常验证的是 (3)。一旦每个映射都有「满射接单射」的像分解，就可以定义正合列、作蛇引理、取导出函子 —— 同调代数整套机器从这里开动。
 
 参考：Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
@@ -23663,13 +23744,15 @@ $$[z] = 0 \iff z \ \text{是上边缘} .$$
 
 **几何含义**：de Rham 情形下 $[\omega] \in H^{k}_{dR}(M)$ 是「$\omega$ 的积分只依赖同调类」的那一半 —— Stokes 定理说 $\int_{c} \omega$ 在 $\omega \mapsto \omega + d\eta$ 与 $c \mapsto c + \partial b$ 下都不变，于是它其实是**上同调类与同调类的配对** $H^{k} \times H_{k} \to \mathbb{R}$。
 
-这条配对是 de Rham 定理的骨架。
+这条配对是 de Rham 定理的核心。
+
+**函子性（拉回）。** 链映射 $f : K \to L$（与微分交换的族 $f^{n} : K^{n} \to L^{n}$）诱导 $H^{n}(f) : H^{n}(K) \to H^{n}(L)$，$[z] \mapsto [f^{n}(z)]$。良定义：$f$ 把闭链送到闭链（$d f = f d$ 给出 $d f^{n}(z) = f^{n+1}(d z) = 0$），把上边缘送到上边缘，故换代表只改变一个上边缘。于是 $H^{n}$ 是复形范畴到阿贝尔群范畴的函子 —— 「类」之所以值得单独命名，正是因为它随映射被搬运。
 
 ⚠️ **记号**：$[z]$ 与 $\bar z$ 都在用；有文献用 $\{z\}$。⚠️ 与「同调类」$[z] \in H_{n}$ 只差上下标，写证明时务必标清楚 $H^{n}$ 还是 $H_{n}$ —— 这是同调代数最常见的低级错误来源。
 
 ⚠️ 本图不单独收录「同调类」：它是同一个定义在链复形一侧的写法（下标换成上标），与 `def.cycle` / `def.boundary` 同一个口径 —— 不为一个上标差异开第二个节点。
 
-参考：Le Stum, An introduction to condensed mathematics（⚠️ 章节未核实，只记书名）· 复形与同调；Weibel, An Introduction to Homological Algebra（⚠️ 章节未核实，只记书名）
+参考：Le Stum, An introduction to condensed mathematics, §7.1（复形与同调）；Weibel, An Introduction to Homological Algebra, Ch. 1（Chain Complexes）
 
 #### 同调　`def.cohomology`
 *定义*　同调
@@ -36466,11 +36549,11 @@ $$\partial(\partial c) = 0 .$$
 按 $\partial$ 的定义，这件事对每条链都必须成立，所以只需对单个方块证明；再用线性延拓推广到链。
 
 **几何上的意思**：一条曲线段的两个端点，各自没有端点；一个方块的四条边，边角的顶点在两条边里各出现一次、符号相反，正好抵消。高维是同一件事的组合版本：每个 $(k-2)$ 维的「棱」被两个不同的面共用，两处的符号相反。
-
-**与 $\mathrm{d}^{2} = 0$ 的对称性**：$\partial$ 把维数降一，$\mathrm{d}$ 把次数升一，两者都平方为零，而且 $\int$ 把 $\partial$ 与 $\mathrm{d}$ 配成对偶（`thm.stokes-chain`）。这条对称性是整个链上的微积分的骨架。
-
+**证明（对单个方块）。** 记 $\varepsilon_{i,\alpha}$ 为「把第 $i$ 个坐标钉在 $\alpha$ 上并删去」。则 $\partial = \sum_{i,\alpha}(-1)^{i+\alpha}\varepsilon_{i,\alpha}$，其中 $i$ 是**当前元组**里的位置下标。展开两次：
+$$\partial\partial c = \sum_{i,\alpha}\sum_{j,\beta}(-1)^{i+\alpha}(-1)^{j+\beta}\,\varepsilon_{j,\beta}\varepsilon_{i,\alpha}c .$$
+固定的两个坐标 $(i,\alpha)$、$(\ell,\beta)$（$i \ne \ell$）在总和里出现两次：先 $i$ 后 $\ell$，以及先 $\ell$ 后 $i$。两种次序的符号指数分别是 $i+\alpha+\ell'+\beta$ 与 $\ell+\beta+i'+\alpha$，其中 $\ell' = \ell - [\ell > i]$、$i' = i - [i > \ell]$（记号 $[\ell > i]$ 在条件成立时取 $1$、否则取 $0$）。若 $\ell < i$，第二式比第一式少 $1$；若 $\ell > i$，第二式比第一式多 $1$。两种情形下两项符号都相反，相消。故 $\partial(\partial c) = 0$；对链线性延拓，得 $\partial^{2} = 0$。∎
+**与 $\mathrm{d}^{2} = 0$ 的对称性**：$\partial$ 把维数降一，$\mathrm{d}$ 把次数升一，两者都平方为零，而且 $\int$ 把 $\partial$ 与 $\mathrm{d}$ 配成对偶（`thm.stokes-chain`）。这条对称性是整个链上的微积分的支柱。
 **⚠️ 别指望「取一次面再取一次面」总是有定义**：第二步是在 $(k-1)$ 个坐标里取，编号已经变过一次了。证明里的全部内容就是把这个「编号移位」算清 —— 这也是初学者写错符号的固定位置。
-
 **⚠️ 反例的边界在哪**：若把符号换成不随 $i$ 变的（比如全部取 $+1$），$(k-2)$ 维棱会被两个面各算一次、符号相同，和不为零。所以 $(-1)^{i+\alpha}$ 这个「交替性」是必需的，不是装饰。
 
 参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 边界的平方为零；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链复形
@@ -41750,27 +41833,26 @@ $$m + S(n) = S(m + n) = S(n + m) = n + S(m) = S(n) + m,$$
 #### 有理数 ℚ + ℤ 是交换整环 ⟹ ℚ 是有序域　`imp.rat-ordered-field`
 *商构造 + $\mathbb{Z}$ 是整环 $\implies$ $\mathbb{Q}$ 是有序域*
 
-**良定义。** 设 $a/b = a'/b'$、$c/d = c'/d'$（即 $ab' = a'b$、$cd' = c'd$，且分母非零）。
+**① 运算良定义。** 设 $a/b = a'/b'$、$c/d = c'/d'$，即 $ab' = a'b$、$cd' = c'd$（分母非零）。
 
-加法：要证 $(ad + bc)(b'd') = (a'd' + b'c')(bd)$，把 $ab' = a'b$ 乘 $dd'$、$cd' = c'd$ 乘 $bb'$，相加即得。
+加法：第一式乘 $dd'$、第二式乘 $bb'$ 后相加，得 $(ad + bc)b'd' = (a'd' + b'c')bd$。
 
-乘法同理（用 $ac b'd' = a'c' bd$）。
+乘法：两式相乘，得 $(ac)(b'd') = (a'c')(bd)$。
+**② 域公理。** 结合、交换、分配逐项搬到代表元，全部化成 $\mathbb{Z}$ 的环公理（`thm.int-ring`）。
 
-**域公理。** 全部搬到代表元上，就是 $\mathbb{Z}$ 的环公理（`thm.int-ring`）；加法逆元 $-a/b = (-a)/b$。
+零元是 $0/1$、幺元是 $1/1$、加法逆元是 $(-a)/b$；$0/1 \ne 1/1$ 因为 $0 \cdot 1 \ne 1 \cdot 1$。
 
-**乘法逆元。** $a/b \ne 0$ 即 $a \ne 0$，此时 $(a/b)(b/a) = ab/ba = 1$（交换性用上了；$b a \ne 0$ 用到 $\mathbb{Z}$ 无零因子）。
+例如分配律：$\frac{a}{b}\left(\frac{c}{d} + \frac{e}{f}\right)$ 与 $\frac{ac}{bd} + \frac{ae}{bf}$ 都等于 $\frac{acf + bde}{bdf}$。
+**③ 乘法逆元。** $a/b \ne 0$ 即 $a \ne 0$；由 $\mathbb{Z}$ 无零因子，$ab \ne 0$，故 $b/a$ 合法，且 $(a/b)(b/a) = ab/ba = 1/1$。
+**④ 序良定义。** 对 $b, d > 0$ 定义 $a/b \le c/d :\iff ad \le bc$。
 
-**序。** 把每个元素写成 $b > 0$ 的 $a/b$（分母取相反数即可）。
+换代表元时两边同乘正元 $b'd'$ 与 $bd$，由 $\mathbb{Z}$ 的序相容性不等号不变。
+**⑤ 全序与两条相容性。** 三分律逐项给出全序。
 
-定义 $a/b \le c/d :\iff ad \le bc$。
+加法：交叉相乘后混合项 $bedf = debf$ 相消，剩 $f^2(ad - bc) \le 0$。
 
-良定义：换代表元时两边同乘正元 $b'd' > 0$，由 `thm.int-ring` 的序相容性不等号不变。
-
-全序与两条相容性逐项验证（加法直接；
-
-乘法用 $bd > 0$ 时同乘正数保序）。
-
-**嵌入。** $n \mapsto n/1$，保持运算与序。$\blacksquare$
+乘法：$0 \le e/f$ 时 $aedf \le cebf$；$e = 0$ 平凡，$e > 0$ 时两边除以 $ef > 0$ 回到 $ad \le cb$。
+**⑥ 嵌入。** $n \mapsto n/1$ 保 $+$、$\cdot$、$\le$，且为单射。∎
 
 #### 数列极限 + 序与四则运算 ⟹ 极限的基本性质　`imp.limit-basic`
 *$\varepsilon$-$N$ 定义 $\implies$ 极限的基本性质*

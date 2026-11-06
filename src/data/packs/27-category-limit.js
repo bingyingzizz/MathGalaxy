@@ -49,7 +49,6 @@ window.MG = window.MG || {};
       id: 'def.simplicial',
       cluster: 'cat.limit',
       type: 'definition',
-      status: 'skeleton',
       label: '单纯对象',
       title: '单纯对象',
       regions: ['category'],
@@ -62,19 +61,38 @@ window.MG = window.MG || {};
         '而 $[n] \\to [m]$ 的态射取全体**单调映射**（不要求 $n \\le m$，也不要求严格）。$\\Delta$ 的全体态射由两类生成：',
         '',
         '- **面映射** $\\delta^{i} : [n-1] \\to [n]$：跳过第 $i$ 个点（$i = 0, \\ldots, n$）；',
-        '- **退化映射** $\\sigma^{i} : [n] \\to [n-1]$：重复第 $i$ 个点。',
+        '- **退化映射** $\\sigma^{i} : [n] \\to [n-1]$：把 $i$ 与 $i+1$ 合并（等价地，插入一个重复点）。',
         '',
         '只保留面映射的子范畴记 $\\Delta_{\\mathrm{inj}}$，只保留退化映射的记 $\\Delta_{\\mathrm{surj}}$。$\\mathcal{C}$ 中的**单纯对象**是图',
         '',
-        '$$X : \\Delta^{\\mathrm{op}} \\longrightarrow \\mathcal{C}$$',
+        '$$X : \\Delta^{\\mathrm{op}} \\longrightarrow \\mathcal{C},$$',
         '',
         '只保留面映射的图（$\\Delta_{\\mathrm{inj}}^{\\mathrm{op}} \\to \\mathcal{C}$）叫**半单纯对象**。'
       ].join('\n'),
       notes: [
         '把 $[n]$ 画成一个顶点数 $n+1$ 的标准单纯形，面映射就是「贴一个面」，退化映射就是「把一个顶点压扁」。\n\n于是 $\\Delta$ 是「所有标准单纯形及其贴合方式」的骨架，$\\Delta^{\\mathrm{op}} \\to \\mathcal{C}$ 的一个图就是把一串层层相套的单纯形安进 $\\mathcal{C}$ 里 —— 这是把空间编码成代数数据的最省事的办法。',
-        '取 $\\mathcal{C} = \\mathbf{Set}$，$X([n])$ 就是「$n$ 维单纯形的集合」，$X(\\delta^i)$ 给出「第 $i$ 个面」，$X(\\sigma^i)$ 给出「退化」。'
+        '**展开写法**：记 $X_{n} := X([n])$，并把 $\\Delta^{\\mathrm{op}}$ 里的箭头反向后记为',
+        '',
+        '$$d_{i} := X(\\delta^{i}) : X_{n} \\longrightarrow X_{n-1}, \\qquad s_{i} := X(\\sigma^{i}) : X_{n} \\longrightarrow X_{n+1}.$$',
+        '',
+        '它们满足与单纯恒等式对偶的**面-退化关系**：',
+        '',
+        '- $d_{i} d_{j} = d_{j-1} d_{i}$（$i < j$）；',
+        '- $s_{i} s_{j} = s_{j-1} s_{i}$（$i < j$）；',
+        '- $d_{i} s_{j} = s_{j-1} d_{i}$（$i < j$）；',
+        '- $d_{i} s_{j} = 1$（$i = j$ 或 $i = j+1$）；',
+        '- $d_{i} s_{j} = s_{j} d_{i-1}$（$i > j+1$）。',
+        '',
+        '所以「单纯对象」在纸面上永远是一串对象 $X_{0}, X_{1}, \\ldots$ 加上面映射 $d_{i}$ 与退化映射 $s_{i}$ —— 范畴语言只是把这串数据与其相容性一次说清。',
+        '**例 1（标准单纯形）**：$X = \\operatorname{Hom}_{\\Delta}(-,[n])$ 是单纯集，$X_{k}$ 恰是「$[k]$ 中的保序嵌入数」，几何实现就是标准的 $n$-单形。',
+        '**例 2（奇异单纯集）**：拓扑空间 $T$ 给出 $S_{\\bullet}(T) : [n] \\mapsto \\operatorname{Hom}_{\\mathbf{Top}}(\\Delta^{n}, T)$，即「$T$ 中的 $n$-奇异单形」；它的链群就是奇异链群。所以奇异同调不是另一套理论，而是单纯对象取链复形。',
+        '**例 3（单纯集 = 预层）**：$\\mathcal{C} = \\mathbf{Set}$ 时，单纯对象就是 $\\Delta^{\\mathrm{op}}$ 上的预层（presheaf）。几何实现是余极限 $|X| = \\varinjlim_{[k] \\to X} \\Delta^{k}$（把每个 $k$-单形按面关系粘起来）—— 「$X$ 在 $k$ 维有几个单形、怎么粘」全由 $X_{k}$ 与 $d_{i}, s_{i}$ 记录。',
+        '⚠️ **三个易混**：\n- 「单纯集」(simplicial set) 与「单纯复形」(simplicial complex) 不是一回事：前者是 $\\Delta^{\\mathrm{op}}$ 上的预层（允许一个单形有多个顶点、允许退化单形），后者是一族有限子集并满足闭包条件。\n- 半单纯对象只保留面映射 $d_{i}$，丢掉退化 $s_{i}$；它足以定义同调（$\\partial = \\sum (-1)^{i} d_{i}$），但不足以做同伦论。\n- 「余单纯对象」是把 $\\Delta$ 换成 $\\Delta^{\\mathrm{op}}$（图 $\\Delta \\to \\mathcal{C}$），上同调的指标方向由此而来。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
+      refs: [
+        'Le Stum, An introduction to condensed mathematics, §1.3',
+        'May, Simplicial Objects in Algebraic Topology'
+      ]
     },
 
     /* ---------------------------------------------------------- 锥 */

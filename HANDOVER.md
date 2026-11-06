@@ -35,14 +35,14 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | 本次提交后 clean，本地 `main` ahead 7（未 push；origin 仍停在 `0d20279a`） |
+| 工作树 | 本次提交后 clean，本地 `main` ahead 8（未 push；origin 仍停在 `0d20279a`） |
 
 ### 门禁 · 我 2026-11-06 全跑过
 
 | 命令 | 结果 |
 |---|---|
 | `bun tools/build.mjs` | ✅ 全绿（1540 节点 / 3167 边，所有页 ≤1300 B） |
-| `bun tools/_katexcheck.mjs` | ✅ **2826 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826） |
+| `bun tools/_katexcheck.mjs` | ✅ **2834 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 12/12 |
 | `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按 FIX-023c 重钉为 884；Noether 13→14） |
@@ -430,6 +430,7 @@
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
 | 精读覆盖率 | **回执 1540 / 1540（100%）**；本会话逐团深读 **57 团 / 760 条**（v2 §39–§103） | 其余 48 团 / 780 条来自 §19–§59 早期批次；旧的 1051/1502/1527 是按团 id 倒推的估计，不再用 |
+| **skeleton 证明** | **47 节点 / 19 条边**（2026-11-06 第 2 批后；标准 6、中等 27、研究 14） | 第 1 批 8 条、第 2 批 8 条已补；研究级需专人/多轮 |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门

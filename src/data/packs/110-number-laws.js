@@ -80,7 +80,6 @@ window.MG = window.MG || {};
       id: 'thm.rat-ordered-field',
       cluster: 'set.numbers',
       type: 'theorem',
-      status: 'skeleton',
       label: 'ℚ 是有序域',
       title: '定理：$\\mathbb{Q}$ 是有序域（$\\mathbb{Q}$ is an Ordered Field）',
       regions: ['set-theory'],
@@ -95,7 +94,22 @@ window.MG = window.MG || {};
         '',
         '- $n \\mapsto n/1$ 把 $\\mathbb{Z}$ 嵌入 $\\mathbb{Q}$，保持运算与序。'
       ].join('\n'),
-      notes: '⭐ 证明的骨架：**良定义**（$a/b = a\'/b\'$ 时两种算法结果相同）用 $\\mathbb{Z}$ 的整环消去律；**域公理**逐条搬到代表元上（$\\mathbb{Z}$ 是交换环，`thm.int-ring`）；\n\n**逆元**是 $(a/b)^{-1} = b/a$（$a \\ne 0$，交换性使 $a b = b a \\ne 0$ 自动成立，这里用到无零因子）；\n\n**序**在 $b, d > 0$ 的表示下就是 $ad \\le bc$，换代表元时两边同乘正元 $b\'d\'$ 不改变不等号。\n\n⭐ 到这一步「四则运算齐全 + 有序」全部落实，但**不完备**：$\\{q \\in \\mathbb{Q} : q^{2} < 2\\}$ 有上界却没有上确界。\n\n这不是缺陷，正是 `def.real` 要把它补成 $\\mathbb{R}$ 的理由。'
+      notes: [
+        '**证明。** 逐条验证 `def.rat` 里的运算与序。约定分母取正：把 $a/b$ 的分子分母同时变号得到同一个类，故每个类都有 $b > 0$ 的代表。',
+        '**① 运算良定义。** 设 $a/b = a\'/b\'$、$c/d = c\'/d\'$，即 $ab\' = a\'b$、$cd\' = c\'d$（分母非零）。加法：第一式乘 $dd\'$、第二式乘 $bb\'$ 后相加，得 $(ad + bc)b\'d\' = (a\'d\' + b\'c\')bd$，即加法与代表元无关。乘法：两式相乘，得 $(ac)(b\'d\') = (a\'c\')(bd)$。',
+        '**② 域公理。** 逐项搬到代表元上，全部化成 $\\mathbb{Z}$ 的环公理（`thm.int-ring`）。例如加法结合律：$(a/b + c/d) + e/f$ 与 $a/b + (c/d + e/f)$ 都等于 $(adf + bcf + bde)/(bdf)$；分配律同理。零元是 $0/1$，幺元是 $1/1$，加法逆元是 $(-a)/b$。$0/1 \\ne 1/1$，因为 $0 \\cdot 1 \\ne 1 \\cdot 1$。',
+        '**③ 乘法逆元。** 若 $a/b \\ne 0$，则 $a \\ne 0$（否则 $a/b = 0/1$）。取 $b/a$；由 $\\mathbb{Z}$ 无零因子，$a \\ne 0$、$b \\ne 0$ 给出 $ab \\ne 0$，分母合法。且 $(a/b)(b/a) = ab/ba = 1/1$（交换律）。',
+        '**④ 序良定义。** 对 $b, d > 0$ 定义 $a/b \\le c/d :\\iff ad \\le bc$。若 $a/b = a\'/b\'$、$c/d = c\'/d\'$（$b,d,b\',d\' > 0$），则 $ab\' = a\'b$、$cd\' = c\'d$。由 $b\'d\' > 0$ 与 $bd > 0$，',
+        '$$ad \\le bc \\iff adb\'d\' \\le bcb\'d\' \\iff a\'d\'(bd) \\le b\'c\'(bd) \\iff a\'d\' \\le b\'c\' ,$$',
+        '故 $\\le$ 与代表元无关。',
+        '**⑤ 全序。** 对任意 $a/b, c/d$（$b, d > 0$），$\\mathbb{Z}$ 的三分律给出 $ad < bc$、$ad = bc$、$ad > bc$ 恰有一种成立，分别对应 $<$、$=$、$>$。故 $\\le$ 是全序；反对称性来自「$ad \\le bc$ 且 $bc \\le ad$」推出 $ad = bc$。',
+        '**⑥ 与加法相容。** 设 $a/b \\le c/d$，即 $ad \\le bc$。对任意 $e/f$（$f > 0$），',
+        '$$\\frac{a}{b} + \\frac{e}{f} = \\frac{af + be}{bf}, \\qquad \\frac{c}{d} + \\frac{e}{f} = \\frac{cf + de}{df}.$$',
+        '交叉相乘：$(af + be)df \\le (cf + de)bf \\iff adf^2 + bedf \\le cbf^2 + debf$。混合项 $bedf = debf$ 相消，得 $f^2(ad - bc) \\le 0$，即 $ad \\le bc$，成立。',
+        '**⑦ 与乘法相容。** 设 $a/b \\le c/d$ 且 $0 \\le e/f$（$f > 0$，故 $e \\ge 0$）。则 $ae/(bf) \\le ce/(df) \\iff aedf \\le cebf$。若 $e = 0$ 两边都是 $0$；若 $e > 0$，两边同除正元 $ef$ 得 $ad \\le cb$，成立。',
+        '**⑧ 嵌入。** $n \\mapsto n/1$ 是单射（$n/1 = m/1 \\iff n = m$），且 $(m+n)/1 = m/1 + n/1$、$(mn)/1 = (m/1)(n/1)$、$m \\le n \\iff m/1 \\le n/1$。故 $\\mathbb{Z}$ 保运算保序地嵌入 $\\mathbb{Q}$。∎',
+        '**⑨ 补一句：为什么它还不是 $\\mathbb{R}$。** 集合 $S = \\{q \\in \\mathbb{Q} : q^2 < 2\\}$ 有上界（例如 $2$）却没有上确界。若 $q_0 = \\sup S$ 存在：$q_0^2 < 2$ 时由稠密性可在 $q_0$ 右侧取到 $q \\in S$，与上界矛盾；$q_0^2 > 2$ 时可取到比 $q_0$ 小的上界，与「最小」矛盾。故只能 $q_0^2 = 2$，但 $q^2 = 2$ 在 $\\mathbb{Q}$ 中无解（$q = m/n$ 既约时 $m^2 = 2n^2$ 迫使 $2 \\mid m$，进而 $2 \\mid n$，矛盾）。这正是 `def.real` 要把 $\\mathbb{Q}$ 补成 $\\mathbb{R}$ 的理由。'
+      ].join('\n\n')
     }
   ],
 
@@ -152,19 +166,12 @@ window.MG = window.MG || {};
       target: 'thm.rat-ordered-field',
       title: '商构造 + $\\mathbb{Z}$ 是整环 $\\implies$ $\\mathbb{Q}$ 是有序域',
       proof: [
-        '**良定义。** 设 $a/b = a\'/b\'$、$c/d = c\'/d\'$（即 $ab\' = a\'b$、$cd\' = c\'d$，且分母非零）。\n\n加法：要证 $(ad + bc)(b\'d\') = (a\'d\' + b\'c\')(bd)$，把 $ab\' = a\'b$ 乘 $dd\'$、$cd\' = c\'d$ 乘 $bb\'$，相加即得。\n\n乘法同理（用 $ac b\'d\' = a\'c\' bd$）。',
-        '',
-        '**域公理。** 全部搬到代表元上，就是 $\\mathbb{Z}$ 的环公理（`thm.int-ring`）；加法逆元 $-a/b = (-a)/b$。',
-        '',
-        '**乘法逆元。** $a/b \\ne 0$ 即 $a \\ne 0$，此时 $(a/b)(b/a) = ab/ba = 1$（交换性用上了；$b a \\ne 0$ 用到 $\\mathbb{Z}$ 无零因子）。',
-        '',
-        '**序。** 把每个元素写成 $b > 0$ 的 $a/b$（分母取相反数即可）。\n\n' +
-        '定义 $a/b \\le c/d :\\iff ad \\le bc$。\n\n' +
-        '良定义：换代表元时两边同乘正元 $b\'d\' > 0$，由 `thm.int-ring` 的序相容性不等号不变。\n\n' +
-        '全序与两条相容性逐项验证（加法直接；\n\n' +
-        '乘法用 $bd > 0$ 时同乘正数保序）。',
-        '',
-        '**嵌入。** $n \\mapsto n/1$，保持运算与序。$\\blacksquare$'
+        '**① 运算良定义。** 设 $a/b = a\'/b\'$、$c/d = c\'/d\'$，即 $ab\' = a\'b$、$cd\' = c\'d$（分母非零）。\n\n加法：第一式乘 $dd\'$、第二式乘 $bb\'$ 后相加，得 $(ad + bc)b\'d\' = (a\'d\' + b\'c\')bd$。\n\n乘法：两式相乘，得 $(ac)(b\'d\') = (a\'c\')(bd)$。',
+        '**② 域公理。** 结合、交换、分配逐项搬到代表元，全部化成 $\\mathbb{Z}$ 的环公理（`thm.int-ring`）。\n\n零元是 $0/1$、幺元是 $1/1$、加法逆元是 $(-a)/b$；$0/1 \\ne 1/1$ 因为 $0 \\cdot 1 \\ne 1 \\cdot 1$。\n\n例如分配律：$\\frac{a}{b}\\left(\\frac{c}{d} + \\frac{e}{f}\\right)$ 与 $\\frac{ac}{bd} + \\frac{ae}{bf}$ 都等于 $\\frac{acf + bde}{bdf}$。',
+        '**③ 乘法逆元。** $a/b \\ne 0$ 即 $a \\ne 0$；由 $\\mathbb{Z}$ 无零因子，$ab \\ne 0$，故 $b/a$ 合法，且 $(a/b)(b/a) = ab/ba = 1/1$。',
+        '**④ 序良定义。** 对 $b, d > 0$ 定义 $a/b \\le c/d :\\iff ad \\le bc$。\n\n换代表元时两边同乘正元 $b\'d\'$ 与 $bd$，由 $\\mathbb{Z}$ 的序相容性不等号不变。',
+        '**⑤ 全序与两条相容性。** 三分律逐项给出全序。\n\n加法：交叉相乘后混合项 $bedf = debf$ 相消，剩 $f^2(ad - bc) \\le 0$。\n\n乘法：$0 \\le e/f$ 时 $aedf \\le cebf$；$e = 0$ 平凡，$e > 0$ 时两边除以 $ef > 0$ 回到 $ad \\le cb$。',
+        '**⑥ 嵌入。** $n \\mapsto n/1$ 保 $+$、$\\cdot$、$\\le$，且为单射。∎'
       ].join('\n')
     }
   ]

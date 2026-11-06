@@ -37,6 +37,8 @@
 - 该标未标：`def.algebraic-extension`
 - 该标未标：`def.riemann-zeta`
 - 该标未标：`thm.developable-iff-flat`
+- 该标未标：`def.simplicial`
+- 该标未标：`def.simplex-category`
 
 
 ## 五、假设标注（hypotheses）
