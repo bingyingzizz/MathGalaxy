@@ -524,7 +524,6 @@ window.MG = window.MG || {};
       id: 'thm.stone-weierstrass-complex',
       cluster: 'fa.ck',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Stone–Weierstrass（复情形）',
       title: 'Stone–Weierstrass 定理（复情形）',
       regions: ['functional-analysis'],
@@ -533,9 +532,12 @@ window.MG = window.MG || {};
         '设 $K$ 紧 Hausdorff，$A \\subseteq C(K, \\mathbb{C})$ 是含单位的子代数、分离点，且**对共轭封闭**（$f \\in A \\implies \\bar f \\in A$）。则 $\\overline A = C(K, \\mathbb{C})$。'
       ].join('\n'),
       notes: [
-        '归结到实情形：$\\operatorname{Re}\\, f = (f + \\bar f)/2$、$\\operatorname{Im}\\, f = (f - \\bar f)/(2i)$ 都在 $A$ 里。',
-        '⚠️ 「对共轭封闭」不能去掉：取 $A = $ 圆盘代数 $\\mathrm{Alg}(z) \\subseteq C(S^1, \\mathbb{C})$（含单位、分离点），则 $\\bar z \\notin \\overline A$ —— 因为 $\\int_{S^1} p(z)\\,\\bar z\\,dz = 0$ 对一切多项式 $p$ 成立（Cauchy 定理），而 $\\int_{S^1} \\bar z\\,\\bar z\\,dz \\ne 0$。',
-        '⭐ 讲义在这里接上了表示论：紧群 $G$ 的矩阵系数 $e_{ij}$ 生成 $C(G)$（因 $\\{e_{ij}\\}$ 对共轭封闭），且 $\\Delta : C(G) \\to C(G) \\otimes C(G)$，$e_{ij} \\mapsto \\sum_k e_{ik} \\otimes e_{kj}$ —— Peter–Weyl 的代数骨架。'
+        '**证明**。关键是取 $A$ 的**实值部分**，把问题交回实情形。令 \n\n$$B := \\{f \\in A : f = \\bar f\\} = A \\cap C(K, \\mathbb{R}).$$\n\n',
+        '**第一步：$B$ 是含单位的实子代数、分离点**。$1 \\in A$ 且实值，故 $1 \\in B$；$B$ 对加法、乘法与实标量乘法封闭（实值函数的运算仍在 $A$ 里且仍实值）。分离点：任取 $x \\ne y$，由 $A$ 分离点存在 $f \\in A$ 使 $f(x) \\ne f(y)$；若 $\\operatorname{Re} f(x) \\ne \\operatorname{Re} f(y)$，用 $\\operatorname{Re} f \\in B$；否则必有 $\\operatorname{Im} f(x) \\ne \\operatorname{Im} f(y)$，用 $\\operatorname{Im} f \\in B$。而 $\\operatorname{Re} f = (f + \\bar f)/2$、$\\operatorname{Im} f = (f - \\bar f)/(2i)$ 由共轭封闭落在 $A$ 里，且是实值函数，故在 $B$ 里。于是 $B$ 分离 $K$ 上的点。',
+        '**第二步：用实情形**。$B$ 是 $C(K, \\mathbb{R})$ 的含单位、分离点的子代数，由 `thm.stone-weierstrass`（实 Stone–Weierstrass）得 $\\overline B = C(K, \\mathbb{R})$（上确界范数）。',
+        '**第三步：拼回复值函数**。任取 $f \\in C(K, \\mathbb{C})$，写 $f = \\operatorname{Re} f + i\\operatorname{Im} f$，其中 $\\operatorname{Re} f, \\operatorname{Im} f \\in C(K, \\mathbb{R})$。取 $g_n, h_n \\in B$ 使 $g_n \\to \\operatorname{Re} f$、$h_n \\to \\operatorname{Im} f$ 一致。则 $g_n + i h_n \\in A$（$A$ 对复标量乘法与加法封闭），且 \n\n$$\\lVert f - (g_n + i h_n)\\rVert_\\infty \\le \\lVert \\operatorname{Re} f - g_n\\rVert_\\infty + \\lVert \\operatorname{Im} f - h_n\\rVert_\\infty \\to 0 .$$\n\n 故 $f \\in \\overline A$，即 $\\overline A = C(K, \\mathbb{C})$。∎',
+        '⚠️ **「对共轭封闭」不能去掉**：取 $A = \\mathrm{Alg}(z) \\subseteq C(S^{1}, \\mathbb{C})$（$S^{1}$ 上多项式代数在一致范数下的闭包，即圆盘代数），它含单位、分离点，但不含 $\\bar z$。若 $\\bar z \\in \\overline A$，就有多项式 $p_n$ 使 $p_n \\to \\bar z$ 一致；但对每个 $n$，$p_n(z)\\,z$ 在 $S^{1}$ 上全纯延拓到单位圆盘、由 Cauchy 定理 $\\int_{S^{1}} p_n(z)\\,z\\,dz = 0$，而一致收敛给 $\\int_{S^{1}} p_n(z)\\,z\\,dz \\to \\int_{S^{1}} \\bar z\\, z\\,dz = \\int_{S^{1}} 1\\,dz = 2\\pi i \\ne 0$，矛盾。',
+        '⭐ **与表示论的联系**：紧群 $G$ 的矩阵系数 $e_{ij}$ 生成 $C(G)$（因 $\\{e_{ij}\\}$ 对共轭封闭），且 $\\Delta : C(G) \\to C(G) \\otimes C(G)$，$e_{ij} \\mapsto \\sum_k e_{ik} \\otimes e_{kj}$ —— 这是 Peter–Weyl 的代数基础。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理'],
     },
@@ -914,11 +916,12 @@ window.MG = window.MG || {};
       target: 'thm.stone-weierstrass-complex',
       title: '实情形 $\\implies$ 复情形（多一条共轭封闭）',
       proof: [
-        '令 $A_{\\mathbb{R}} := \\{\\operatorname{Re}\\,f : f \\in A\\}$。\n\n对共轭封闭 $\\implies$ $\\operatorname{Re}\\,f = (f + \\bar f)/2 \\in A$、$\\operatorname{Im}\\,f \\in A$；\n\n而 $f = \\operatorname{Re}\\,f + i\\,\\operatorname{Im}\\,f$。',
-        '$A_{\\mathbb{R}}$ 是含单位的实子代数（$\\operatorname{Re}(fg)$ 是实部的多项式组合）且分离点。由实情形 $\\overline{A_{\\mathbb{R}}} = C(K,\\mathbb{R})$。',
-        '于是任意 $f \\in C(K,\\mathbb{C})$ 的实部、虚部都能被 $A$ 中元素逼近，故 $f \\in \\overline A$。$\\blacksquare$'
+        '令 $B := \\{f \\in A : f = \\bar f\\} = A \\cap C(K, \\mathbb{R})$。注意**不能**直接取 $\\{\\operatorname{Re} f : f \\in A\\}$：它对乘法不封闭（$\\operatorname{Re}(fg)$ 一般不是 $\\operatorname{Re} f$ 与 $\\operatorname{Re} g$ 的多项式）。$B$ 才是子代数。',
+        '**$B$ 是含单位的实子代数、分离点。** $1 \\in B$；$B$ 对加法、乘法、实标量乘法封闭。分离点：任取 $x \\ne y$，由 $A$ 分离点存在 $f \\in A$ 使 $f(x) \\ne f(y)$；若 $\\operatorname{Re} f(x) \\ne \\operatorname{Re} f(y)$ 用 $\\operatorname{Re} f \\in B$，否则 $\\operatorname{Im} f(x) \\ne \\operatorname{Im} f(y)$，用 $\\operatorname{Im} f \\in B$。这里 $\\operatorname{Re} f = (f + \\bar f)/2$、$\\operatorname{Im} f = (f - \\bar f)/(2i)$ 由共轭封闭落在 $A$ 里，且实值。',
+        '**实情形。** 由实 Stone–Weierstrass（`thm.stone-weierstrass`），$B$ 在 $C(K, \\mathbb{R})$ 中稠密。',
+        '**拼回。** 任取 $f \\in C(K, \\mathbb{C})$，则 $\\operatorname{Re} f, \\operatorname{Im} f \\in B$（上面已证它们是 $A$ 中的实值函数），故存在 $g_n, h_n \\in B$ 使 $g_n \\to \\operatorname{Re} f$、$h_n \\to \\operatorname{Im} f$ 一致；$g_n + i h_n \\in A$ 且一致收敛到 $f$。所以 $f \\in \\overline A$。$\\blacksquare$'
       ].join('\n'),
-      note: '反例（圆盘代数 $\\mathrm{Alg}(z)$）缺的正是「对共轭封闭」：$\\bar z$ 不在闭包里。'
+      note: '反例（圆盘代数 $\\mathrm{Alg}(z)$）缺的正是「对共轭封闭」：若多项式 $p_n \\to \\bar z$ 一致，则 $\\int_{S^{1}} p_n(z)\\,z\\,dz = 0$（Cauchy），但极限给 $\\int_{S^{1}} \\bar z\\,z\\,dz = 2\\pi i \\ne 0$。'
     },
 
     /* ------------------------------------------------ 定义引用（跨团/跨领域） */    { id: 'def-link.fa-metric-normind', kind: 'definition', definition: 'def.metric-space', usedBy: 'prop.norm-induces-metric',

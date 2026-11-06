@@ -358,7 +358,6 @@ window.MG = window.MG || {};
       type: 'lemma',
       /* 同词不同物（已核对）—— 与 lem.gauss-qr 不是同一个概念，别合并。 */
       distinctFrom: ['lem.gauss-qr'],
-      status: 'skeleton',
       label: 'Gauss 引理',
       title: 'Gauss 引理与测地极坐标',
       regions: ['diffgeom'],
@@ -373,9 +372,12 @@ window.MG = window.MG || {};
         '$$I = \\mathrm{d}\\rho^{2}+G(\\rho,\\theta)\\,\\mathrm{d}\\theta^{2},\\qquad \\sqrt{G} = \\rho+O(\\rho^{3}).$$'
       ].join('\n'),
       notes: [
-        '**证明骨架（细节在边上）**：沿测地线对 $\\langle \\partial_{\\rho},\\partial_{\\theta}\\rangle$ 求 $\\rho$ 的导数，第一项因测地线为零，第二项用 $[\\partial_{\\rho},\\partial_{\\theta}] = 0$ 与 $|\\partial_{\\rho}| = 1$ 化成 $\\frac{1}{2}\\partial_{\\theta}\\langle \\partial_{\\rho},\\partial_{\\rho}\\rangle = 0$。\n\n' +
-        '于是这个内积沿 $\\rho$ 是常数；\n\n' +
-        '$\\rho\\to0$ 时 $\\partial_{\\theta}\\to0$，常数只能是 $0$。',
+        '**证明**。把 $w$ 与 $T_{p}S$ 中的向量等同。取测地变分 \n\n$$f(t,s) = \\exp_{p}\\bigl(t(v + sw)\\bigr),\\qquad t \\in [0,1],\\ |s| \\text{ 充分小}.$$\n\n 对每个固定的 $s$，$t \\mapsto f(t,s)$ 是以 $v + sw$ 为初速度的测地线，故 $\\nabla_{\\partial_{t}}\\partial_{t} = 0$。记 $E(t) = \\langle \\partial_{t}, \\partial_{s}\\rangle$。',
+        '**第一步：$E$ 的导数**。由 Levi-Civita 联络的度量相容性与无挠性（$\\nabla_{\\partial_{t}}\\partial_{s} = \\nabla_{\\partial_{s}}\\partial_{t}$）：\n\n$$\\frac{d}{dt}E = \\langle \\nabla_{\\partial_{t}}\\partial_{t}, \\partial_{s}\\rangle + \\langle \\partial_{t}, \\nabla_{\\partial_{t}}\\partial_{s}\\rangle = \\langle \\partial_{t}, \\nabla_{\\partial_{s}}\\partial_{t}\\rangle = \\frac{1}{2}\\partial_{s}\\lVert \\partial_{t}\\rVert^{2}.$$\n\n',
+        '**第二步：右侧是常数**。$\\partial_{t}f(t,s) = (\\mathrm{d}\\exp_{p})_{t(v+sw)}(v+sw)$，故 $\\lVert \\partial_{t}\\rVert = \\lVert v + sw\\rVert = \\sqrt{\\lVert v\\rVert^{2} + 2s\\langle v,w\\rangle + s^{2}\\lVert w\\rVert^{2}}$ 与 $t$ 无关；于是在 $s = 0$ 处 $\\partial_{s}\\lVert \\partial_{t}\\rVert^{2} = 2\\langle v,w\\rangle$，对一切 $t$ 相同。',
+        '**第三步：积分**。$E(0) = \\langle v, \\partial_{s}f(0,0)\\rangle = 0$，因为 $f(0,s) = \\exp_{p}(0) = p$ 不随 $s$ 变。于是 \n\n$$E(1) = E(0) + \\int_{0}^{1} \\langle v, w\\rangle\\,dt = \\langle v, w\\rangle .$$\n\n 而 $\\partial_{t}f(1,0) = (\\mathrm{d}\\exp_{p})_{v}(v)$、$\\partial_{s}f(1,0) = (\\mathrm{d}\\exp_{p})_{v}(w)$，故 $E(1) = \\langle (\\mathrm{d}\\exp_{p})_{v}(v), (\\mathrm{d}\\exp_{p})_{v}(w)\\rangle$，即所求。∎',
+        '**推论一（测地圆与测地线正交）**：取 $w \\perp v$，得 $\\langle (\\mathrm{d}\\exp_{p})_{v}(v), (\\mathrm{d}\\exp_{p})_{v}(w)\\rangle = 0$。径向速度 $(\\mathrm{d}\\exp_{p})_{v}(v)$ 就是测地线的切向量，而 $w$ 沿测地圆方向，故径向测地线与以 $p$ 为心的测地圆正交。',
+        '**推论二（极坐标展开）**：取 $v = \\rho u$（$u$ 单位向量）、$w \\perp v$，令 $J(\\rho) = (\\mathrm{d}\\exp_{p})_{\\rho u}(\\rho w)$。则 $J(0) = 0$、$J^{\\prime}(0) = w$，且 $J$ 是沿测地线 $t \\mapsto \\exp_{p}(tu)$ 的 Jacobi 场：$J^{\\prime\\prime} + R(J, u)u = 0$（这里 $J^{\\prime}$ 是沿测地线的协变导数）。由 $J(0) = 0$ 泰勒展开得 $J(\\rho) = \\rho w + O(\\rho^{3})$，故 $\\sqrt{G} = \\lVert J\\rVert = \\rho\\lVert w\\rVert + O(\\rho^{3}) = \\rho + O(\\rho^{3})$（$w$ 取单位）。',
         '⚠️ **$v$ 必须落在 $\\operatorname{Dom}(\\exp_{p})$ 里**：$\\exp_{p}(v)$ 只在 $\\gamma_{v}$ 能走到 $t = 1$ 时才有定义（见 `def.exponential-map`）。取开圆盘内的 $p$ 与 $v = (2,0,0)$：测地线在 $t = 1$ 之前就离开了曲面，$\\exp_{p}(v)$ 与 $(\\mathrm{d}\\exp_{p})_{v}$ 都无从谈起。',
         '**同一个引理的两种说法**：几何说法是「径向 $\\perp$ 球面」（高斯引理的本来面貌）；坐标说法是「$F\\equiv0$」（测地极坐标下的展开）。而 $E = |\\partial_{\\rho}|^{2} = 1$ 只是因为 $\\rho$ 是弧长。',
         '⭐ **这是整门内蕴几何的枢纽**：它把「测地线」翻译成「坐标线」，于是 $I$ 在测地极坐标下只剩**一个**未知函数 $G$。而 $G$ 的展开系数就是曲率：',
@@ -864,7 +866,7 @@ window.MG = window.MG || {};
           '- **角的项**：内部顶点周围的内角合起来恰是 $2\\pi$，每个内部顶点贡献 $2\\pi$；**边界顶点**周围的内角合起来是 $\\alpha_{v}$（分段光滑边界在该角点处的内角），全部边界顶点贡献 $\\sum_{v\\in\\partial M}\\alpha_{v}$。⚠️ 只有光滑边界才有 $\\alpha_{v} = \\pi$、才退化回 $\\pi V_{b}$。'
         ].join('\n'),
         '于是',
-        '$$\\int_{M}K\\,\\mathrm{d}A+\\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi V_{i}+\\sum_{v\\in\\partial M}\\alpha_{v}-\\pi F .$$\n\n两边同时加上 $\\sum_{v\\in\\partial M}(\\pi-\\alpha_{v})$（共 $V_{b}$ 个边界顶点，$\\sum_v \\pi = \\pi V_{b}$），左端就补出角点项：',
+        '\n\n$$\\int_{M}K\\,\\mathrm{d}A+\\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi V_{i}+\\sum_{v\\in\\partial M}\\alpha_{v}-\\pi F .$$\n\n\n\n两边同时加上 $\\sum_{v\\in\\partial M}(\\pi-\\alpha_{v})$（共 $V_{b}$ 个边界顶点，$\\sum_v \\pi = \\pi V_{b}$），左端就补出角点项：',
         '**第三步：把右端认成 $2\\pi\\chi$。** 每个三角形有三条边，内部边被数两次、边界边被数一次：$3F = 2E_{i}+E_{b}$，而 $E_{b} = V_{b}$（边界的每条边对应一段）。于是',
         '$$E = E_{i}+E_{b} = \\frac{3F-E_{b}}{2}+E_{b} = \\frac{3F+V_{b}}{2},$$',
         '$$2\\pi\\left(V-E+F\\right) = 2\\pi\\left(V_{i}+V_{b}-\\frac{3F+V_{b}}{2}+F\\right) = 2\\pi V_{i}+\\pi V_{b}-\\pi F .$$',

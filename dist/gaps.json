@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-06T08:42:44.842Z",
+ "generated": "2026-11-06T09:02:00.402Z",
  "terms": 76,
  "missing": [
   {
    "term": "单位圆",
-   "total": 27,
+   "total": 28,
    "nodes": [
     {
      "id": "thm.integral-trig",

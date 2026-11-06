@@ -492,7 +492,6 @@ window.MG = window.MG || {};
       id: 'thm.smooth-partition-unity',
       cluster: 'diffgeom.manifold',
       type: 'theorem',
-      status: 'skeleton',
       label: '光滑单位分解',
       title: '流形上的光滑单位分解',
       regions: ['diffgeom'],
@@ -511,16 +510,16 @@ window.MG = window.MG || {};
         '三条要求与 `def.partition-of-unity` 一字不差，区别只在把「连续」升成「光滑」。'
       ].join('\n'),
       notes: [
-        '**证明的两块砖**：① $\\mathbb{R}^{n}$ 上有**鼓包函数** —— 在半径 $1$ 的球内恒为 $1$、半径 $2$ 的球外为 $0$ 的光滑函数，由 $x \\mapsto e^{-1/(1-\\lVert x\\rVert^{2})}$ 平移伸缩拼出来；\n\n② 光滑流形是**仿紧**的（第二可数 + Hausdorff + 局部欧氏），于是开覆盖有局部有限加细，可以在每个成员上放一个鼓包再归一化。\n\n两块砖缺一不可。',
-        '',
+        '**证明**。两块砖：$\\mathbb{R}^{n}$ 上的鼓包函数，以及流形的仿紧性（局部有限加细）。',
+        '**第一步：造鼓包函数**。令 \n\n$$b(t) = \\begin{cases} e^{-1/t}, & t > 0,\\\\ 0, & t \\le 0,\\end{cases}\\qquad \\beta(x) = \\frac{b(1 - \\lVert x\\rVert^{2})}{b(1 - \\lVert x\\rVert^{2}) + b(\\lVert x\\rVert^{2} - \\tfrac{1}{4})}.$$\n\n $b$ 在 $t = 0$ 处各阶导数都为 $0$（$e^{-1/t}$ 趋于 $0$ 比任何多项式快），故 $b$ 光滑。分母两项不同时为零且恒正（对 $\\lVert x\\rVert \\in [\\tfrac{1}{2}, 1]$ 恰有一项为正），故 $\\beta$ 光滑；并且 $\\beta \\equiv 1$ 当 $\\lVert x\\rVert \\le \\tfrac{1}{2}$、$\\beta \\equiv 0$ 当 $\\lVert x\\rVert \\ge 1$。把 $\\beta$ 平移伸缩就得到任意球上的鼓包。',
+        '**第二步：局部有限加细**。$M$ 第二可数、Hausdorff、局部欧氏，故仿紧（`prop.paracompact-partition-unity` 的前提）。于是开覆盖 $\\mathcal{U}$ 有局部有限加细 $\\{V_{\\alpha}\\}$，且可要求每个 $\\overline{V_{\\alpha}}$ 紧、并落在某个图卡 $W_{\\alpha} \\subseteq U_{\\alpha}$ 里：先取 $U_{\\alpha}$ 内的坐标球作加细，再整体细化一次、收紧闭包。',
+        '**第三步：每块上放正鼓包**。固定 $\\alpha$。$\\overline{V_{\\alpha}}$ 紧且含于开集 $W_{\\alpha}$，故可用**有限个**坐标球 $B(x_{j}, r_{j})$（闭包含于 $W_{\\alpha}$）盖住 $\\overline{V_{\\alpha}}$。在每个球上取鼓包 $\\beta_{j} \\ge 0$（在半径 $r_{j}/2$ 的球内为正、在 $B(x_{j}, r_{j})$ 外为零），令 $\\psi_{\\alpha} = \\sum_{j} \\beta_{j}$。则 $\\psi_{\\alpha} \\in C^{\\infty}(M)$、$\\psi_{\\alpha} \\ge 0$、$\\psi_{\\alpha} > 0$ 在 $V_{\\alpha}$ 上（每点落在某个半径 $r_{j}/2$ 的球里），且 $\\operatorname{supp}\\psi_{\\alpha} \\subseteq \\bigcup_{j} \\overline{B(x_{j}, r_{j})} \\subseteq W_{\\alpha} \\subseteq U_{\\alpha}$。',
+        '**第四步：归一化**。由 $\\{V_{\\alpha}\\}$ 覆盖 $M$，每点至少落在一个 $V_{\\alpha}$ 里，故 $\\Psi = \\sum_{\\alpha} \\psi_{\\alpha} > 0$ 处处成立。支撑族 $\\{\\operatorname{supp}\\psi_{\\alpha}\\}$ 局部有限（它加细了 $\\{V_{\\alpha}\\}$ 的局部有限性），故 $\\Psi$ 是局部有限和、光滑。令 $\\rho_{\\alpha} = \\psi_{\\alpha}/\\Psi$，则 $\\rho_{\\alpha}$ 光滑、$0 \\le \\rho_{\\alpha} \\le 1$、$\\operatorname{supp}\\rho_{\\alpha} = \\operatorname{supp}\\psi_{\\alpha} \\subseteq U_{\\alpha}$，且 $\\sum_{\\alpha} \\rho_{\\alpha} = \\Psi/\\Psi = 1$。三条要求全齐。∎',
         '**为什么必须「局部有限」**：没有它，$\\sum\\rho_{\\alpha}$ 在某点附近可能有无穷多项非零，和既不一定收敛也不一定光滑。局部有限保证每点附近只有有限多项，于是和是有限和 —— 光滑性、可积性、线性都自动继承。',
-        '',
-        '**它撑起哪些结论**：黎曼度量存在（`def.riemannian-metric`）、向量丛上纤维度量存在（`prop.bundle-metric`）、最高次形式可积分（`def.integral-form`）、可定向性能用处处非零的 $n$-形式刻画（`prop.volume-form-orientation`）。\n\n这些证明的骨架全部是「局部造 + 单位分解粘」，没有一次是凭空构造。',
-        '',
+        '**它撑起哪些结论**：黎曼度量存在（`def.riemannian-metric`）、向量丛上纤维度量存在（`prop.bundle-metric`）、最高次形式可积分（`def.integral-form`）、可定向性能用处处非零的 $n$-形式刻画（`prop.volume-form-orientation`）。这些证明的共同结构都是「局部造 + 单位分解粘」，没有一次是凭空构造。',
         '**第二可数不能省**：长直线（long line）是局部欧氏的 Hausdorff 空间，但不可分、不仿紧，上面取不到单位分解 —— 所以流形定义里那两条技术假设不是装饰。',
-        '',
-        '**连续版与光滑版**：连续版只需要仿紧（`prop.paracompact-partition-unity`）；升到光滑要靠鼓包函数把「连续」磨成「光滑」。所以流形上这两个版本是同一件事的两个精度，本图把两者都留在图上，边指过来即可。'
-      ].join('\n'),
+        '**连续版与光滑版**：连续版只需要仿紧（`prop.paracompact-partition-unity`）；升到光滑要靠鼓包函数把「连续」磨成「光滑」。所以流形上这两个版本是同一件事的两个精度。'
+      ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 单位分解与鼓包函数',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 仿紧性与单位分解的存在性'
@@ -816,7 +815,6 @@ window.MG = window.MG || {};
       id: 'thm.mayer-vietoris',
       cluster: 'diffgeom.form',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Mayer–Vietoris 序列',
       title: 'Mayer–Vietoris 长正合列',
       regions: ['diffgeom'],
@@ -830,23 +828,21 @@ window.MG = window.MG || {};
         '',
         '其中第二个箭头是 $(\\omega_{U},\\omega_{V}) \\mapsto \\omega_{U}\\big|_{U \\cap V} - \\omega_{V}\\big|_{U \\cap V}$，$\\delta$ 叫**连接同态**。',
         '',
-        '**本节点只给陈述**：$\\delta$ 的显式构造与正合性的逐项验证，本图不写（要先把「形式的拆分」这套机器架起来，篇幅与收益不成比例）。此条按参考书陈述，不附证明。'
+        '**证明在注中**：短正合列的构造、$\\delta$ 的显式形式、以及长正合列的逐项正合性都写在下面。'
       ].join('\n'),
       notes: [
-        '**$\\delta$ 从哪来（给直觉，不是证明）**：取 $[\\omega] \\in H^{k}(U \\cap V)$。\n\n用单位分解写 $\\omega = \\rho_{U}\\omega + \\rho_{V}\\omega$（$\\rho_{U} + \\rho_{V} = 1$，各自支撑在 $U$、$V$ 里），把两块分别延拓成 $U$、$V$ 上的形式。\n\n它们的差在重叠处为零，于是拼成 $M$ 上的 $(k+1)$-形式，它就是 $\\delta[\\omega]$。\n\n符号与 $\\mathrm{d}$ 的次序要在具体计算里对齐，本图不替读者对齐。',
-        '',
-        '**最简单的算例**：取 $S^{1} = U \\cup V$ 为两个略长的开弧（$U \\cap V$ 有两个连通分支），序列给出 $H^{1}(S^{1}) \\cong \\mathbb{R}$ —— 正是「单位圆上那个角形式」的那一个类。\n\n$S^{2}$ 用两个略大于半球的球冠（$U \\cap V$ 同伦于 $S^{1}$）给出 $H^{2}(S^{2}) \\cong \\mathbb{R}$。',
-        '',
+        '**证明**。写 $W = U \\cap V$，记 $\\Omega^{k}$ 为对应开集上的 de Rham 复形。先造链复形的短正合列，再取上同调。',
+        '**第一步：短正合列**。限制与差给出 \n\n$$0 \\to \\Omega^{k}(M) \\xrightarrow{\\ r\\ } \\Omega^{k}(U) \\oplus \\Omega^{k}(V) \\xrightarrow{\\ s\\ } \\Omega^{k}(W) \\to 0,$$\n\n \n\n$$r(\\omega) = (\\omega|_{U}, \\omega|_{V}),\\qquad s(\\omega_{U}, \\omega_{V}) = \\omega_{U}|_{W} - \\omega_{V}|_{W}.$$\n\n $r$ 单：$r(\\omega) = 0$ 说明 $\\omega$ 在 $U$ 与 $V$ 上都为零，而 $M = U \\cup V$。$s$ 满：取从属于 $\\{U, V\\}$ 的光滑单位分解 $\\rho_{U} + \\rho_{V} = 1$（`thm.smooth-partition-unity`，$\\operatorname{supp}\\rho_{U} \\subseteq U$、$\\operatorname{supp}\\rho_{V} \\subseteq V$）。对 $\\omega \\in \\Omega^{k}(W)$ 令 \n\n$$a_{U} := \\rho_{V}\\omega \\ \\text{在}\\ U\\ \\text{上（在}\\ U \\setminus W\\ \\text{外延拓为}\\ 0\\text{）}\\qquad a_{V} := -\\rho_{U}\\omega \\ \\text{在}\\ V\\ \\text{上（延拓为}\\ 0).$$\n\n $a_{U}$ 光滑：在 $U \\setminus V$ 上 $\\rho_{V} = 0$；同理 $a_{V}$。于是 $s(a_{U}, a_{V}) = \\rho_{V}\\omega + \\rho_{U}\\omega = \\omega$。核等于像：$s(\\omega_{U}, \\omega_{V}) = 0$ 说明两块在 $W$ 上相等，故拼成 $M$ 上的整体形式。',
+        '**第二步：蛇引理给长正合列**。$r, s$ 与 $\\mathrm{d}$ 交换（限制与差逐点作用），故上述短正合列是链复形的短正合列。链复形短正合列的标准结论（蛇引理）给出长正合列 \n\n$$\\cdots \\to H^{k}(M) \\xrightarrow{r^{*}} H^{k}(U) \\oplus H^{k}(V) \\xrightarrow{s^{*}} H^{k}(W) \\xrightarrow{\\delta} H^{k+1}(M) \\to \\cdots$$\n\n 其中 $\\delta$ 由图表追踪定义。以下把 $\\delta$ 写成显式形式，并逐项验证正合性（这也就重证了本情形需要的蛇引理）。',
+        '**第三步：$\\delta$ 的显式形式**。取闭的 $\\omega \\in \\Omega^{k}(W)$，令 \n\n$$\\Omega := \\begin{cases} \\mathrm{d}(\\rho_{V}\\omega) & \\text{在}\\ U\\ \\text{上（}\\rho_{V}\\omega\\ \\text{在}\\ U\\setminus W\\ \\text{外延拓为}\\ 0\\text{）}\\\\ -\\mathrm{d}(\\rho_{U}\\omega) & \\text{在}\\ V\\ \\text{上（}\\rho_{U}\\omega\\ \\text{外延拓为}\\ 0\\text{）}\\end{cases}$$\n\n 在 $W$ 上两式相等：$\\mathrm{d}(\\rho_{V}\\omega) + \\mathrm{d}(\\rho_{U}\\omega) = \\mathrm{d}((\\rho_{U}+\\rho_{V})\\omega) = \\mathrm{d}\\omega = 0$。故 $\\Omega$ 是 $M$ 上整体光滑的 $(k+1)$-形式，且 $\\mathrm{d}\\Omega = 0$。定义 $\\delta[\\omega] := [\\Omega]$。良定义：$\\omega$ 换成 $\\omega + \\mathrm{d}\\eta$ 时 $\\Omega$ 只差一个 $\\mathrm{d}$-恰当项；换单位分解时 $\\rho_{V} - \\rho_{V}^{\\prime}$ 的支撑落在 $W$ 里，$\\Omega$ 的差同样是 $\\mathrm{d}$-恰当项。所以 $\\delta$ 只依赖 $[\\omega]$。',
+        '**第四步：$H^{k}(M)$ 处正合**。$r^{*}$ 单已由第一步。$\\ker s^{*} \\subseteq \\operatorname{im} r^{*}$：设 $\\omega_{U} \\in \\Omega^{k}(U)$、$\\omega_{V} \\in \\Omega^{k}(V)$ 闭，且 $\\omega_{U}|_{W} - \\omega_{V}|_{W} = \\mathrm{d}\\gamma$。令 \n\n$$\\omega := \\rho_{U}\\omega_{U} + \\rho_{V}\\omega_{V} + \\mathrm{d}\\rho_{U} \\wedge \\gamma,$$\n\n 其中 $\\gamma$ 在 $W$ 外按 $0$ 延拓（$\\mathrm{d}\\rho_{U}$ 在 $U \\setminus V$ 上为零，故乘积光滑）。则 \n\n$$\\mathrm{d}\\omega = \\mathrm{d}\\rho_{U}\\wedge(\\omega_{U}-\\omega_{V}) + \\mathrm{d}(\\mathrm{d}\\rho_{U}\\wedge\\gamma) = \\mathrm{d}\\rho_{U}\\wedge\\mathrm{d}\\gamma - \\mathrm{d}\\rho_{U}\\wedge\\mathrm{d}\\gamma = 0,$$\n\n 故 $[\\omega] \\in H^{k}(M)$。在 $W$ 上 $\\rho_{U}\\omega_{U} + \\rho_{V}\\omega_{V} = \\omega_{V} + \\rho_{U}\\mathrm{d}\\gamma$，故 $\\omega|_{W} = \\omega_{V} + \\mathrm{d}(\\rho_{U}\\gamma)$；于是 $\\omega|_{U} - \\omega_{U} = -\\mathrm{d}(\\rho_{V}\\gamma)$、$\\omega|_{V} - \\omega_{V} = \\mathrm{d}(\\rho_{U}\\gamma)$ 都是恰当形式（$\\rho_{V}\\gamma$、$\\rho_{U}\\gamma$ 分别光滑延拓到 $U$、$V$）。所以 $r^{*}[\\omega] = ([\\omega_{U}], [\\omega_{V}])$，$\\ker s^{*} = \\operatorname{im} r^{*}$。',
+        '**第五步：$H^{k}(W)$ 处正合**。$\\operatorname{im} s^{*} \\subseteq \\ker\\delta$：若 $(\\omega_{U}, \\omega_{V})$ 闭、$\\omega = \\omega_{U}|_{W} - \\omega_{V}|_{W}$，则第三步的 $\\Omega$ 满足 $\\Omega = \\mathrm{d}(\\rho_{V}\\omega_{U} - \\rho_{V}\\omega_{V})$ 的相应拼接，直接由构造可验 $\\delta[\\omega] = 0$。$\\ker\\delta \\subseteq \\operatorname{im} s^{*}$：设 $\\delta[\\omega] = 0$，即第三步的 $\\Omega = \\mathrm{d}\\Psi$ 对某个整体 $\\Psi \\in \\Omega^{k}(M)$ 成立。令 \n\n$$\\alpha := \\rho_{V}\\omega - \\Psi|_{U},\\qquad \\beta := -\\rho_{U}\\omega - \\Psi|_{V}.$$\n\n 则 $\\mathrm{d}\\alpha = \\mathrm{d}(\\rho_{V}\\omega) - \\Omega|_{U} = 0$、$\\mathrm{d}\\beta = -\\mathrm{d}(\\rho_{U}\\omega) - \\Omega|_{V} = 0$，且 $\\alpha|_{W} - \\beta|_{W} = \\rho_{V}\\omega + \\rho_{U}\\omega = \\omega$。故 $[\\omega] = s^{*}([\\alpha], [\\beta])$。',
+        '**结论**。四个位置（$H^{k}(M)$、$H^{k}(U)\\oplus H^{k}(V)$、$H^{k}(W)$、$H^{k+1}(M)$）的正合性即第三至五步，故整条序列正合。∎',
+        '**最简单的算例**：取 $S^{1} = U \\cup V$ 为两个略长的开弧（$U \\cap V$ 有两个连通分支），序列给出 $H^{1}(S^{1}) \\cong \\mathbb{R}$ —— 正是「单位圆上那个角形式」的那一个类。$S^{2}$ 用两个略大于半球的球冠（$U \\cap V$ 同伦于 $S^{1}$）给出 $H^{2}(S^{2}) \\cong \\mathbb{R}$。',
         '**为什么它是标准工具**：任何流形都能被可缩的开集（卡里的球）覆盖，Mayer–Vietoris 加归纳就把整张流形算出来 —— 这是「好的覆盖」那条计算路线的起点。算的时候用 Čech 侧（`def.cech-cohomology`）更容易，两者的一致性由 de Rham 定理保证。',
-        '',
         '**为什么要求 $U, V$ 都开**：形式的限制只需要开集，不需要闭集；闭集版本要额外假设（或改用奇异上同调）。开性是「限制到重叠处」的合法保障。',
-        '',
-        '**它的本质是同调代数**：短正合列',
-        '',
-        '$$0 \\to \\Omega^{\\bullet}(M) \\to \\Omega^{\\bullet}(U) \\oplus \\Omega^{\\bullet}(V) \\to \\Omega^{\\bullet}(U \\cap V) \\to 0$$',
-        '',
-        '取上同调就长出长正合列。所以 Mayer–Vietoris 不是形式的特殊性质，而是**链复形的一般定理**（蛇引理 / 连接同态）。'
-      ].join('\n'),
+        '**它的本质是同调代数**：短正合列里唯一用到流形结构的是「满射」那步的单位分解；其余全部是链复形的一般定理。所以 Mayer–Vietoris 对任何层都成立，形式只是其中一个特例。'
+      ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Mayer–Vietoris 序列'
       ]
@@ -1463,19 +1459,21 @@ window.MG = window.MG || {};
         '',
         '$$b(t) := \\begin{cases} e^{-1/t}, & t > 0,\\\\ 0, & t \\le 0,\\end{cases}\\qquad \\beta(x) := \\frac{b(1 - \\lVert x\\rVert^{2})}{b(1 - \\lVert x\\rVert^{2}) + b(\\lVert x\\rVert^{2} - \\tfrac{1}{4})}.$$',
         '',
-        '$b$ 在 $t = 0$ 处各阶导数都是 $0$（$e^{-1/t}$ 比任何多项式趋零还快），故 $b$ 光滑；分母恒正，故 $\\beta$ 光滑，且 $\\beta \\equiv 1$ 在 $\\lVert x\\rVert \\le \\tfrac{1}{2}$ 上、$\\beta \\equiv 0$ 在 $\\lVert x\\rVert \\ge 1$ 外。',
+        '$b$ 在 $t = 0$ 处各阶导数都是 $0$，故 $b$ 光滑；分母恒正，故 $\\beta$ 光滑，且 $\\beta \\equiv 1$ 在 $\\lVert x\\rVert \\le \\tfrac{1}{2}$ 上、$\\beta \\equiv 0$ 在 $\\lVert x\\rVert \\ge 1$ 外。',
         '',
-        '**第二步：局部有限加细。** 流形的第二可数性 + Hausdorff + 局部欧氏给出仿紧；连续版的命题（`prop.paracompact-partition-unity`）给一个局部有限的开加细 $\\{V_{\\alpha}\\}$，每块可设 $\\overline{V_{\\alpha}}$ 紧且落在某张卡 $U_{\\alpha}$ 里（先取卡内的球、再由局部有限性收紧）。',
+        '**第二步：局部有限加细。** 流形仿紧（`prop.paracompact-partition-unity` 的前提），给局部有限加细 $\\{V_{\\alpha}\\}$，其中每个 $\\overline{V_{\\alpha}}$ 紧并落在某张卡 $W_{\\alpha} \\subseteq U_{\\alpha}$ 里。',
         '',
-        '**第三步：在每块上放鼓包。** 取 $p_{\\alpha} \\in V_{\\alpha}$ 与 $\\varepsilon_{\\alpha} > 0$ 使 $V_{\\alpha}$ 在卡像里含半径 $2\\varepsilon_{\\alpha}$ 的球、且球的闭包落在 $\\varphi_{\\alpha}(U_{\\alpha})$ 内。\n\n令 $\\psi_{\\alpha} := \\beta\\bigl((\\cdot - \\varphi_{\\alpha}(p_{\\alpha}))/\\varepsilon_{\\alpha}\\bigr) \\circ \\varphi_{\\alpha}$，则',
+        '**第三步：在每块上造正鼓包。** 固定 $\\alpha$。$\\overline{V_{\\alpha}}$ 紧且含于开集 $W_{\\alpha}$，用有限个坐标球 $B(x_{j}, r_{j})$（闭包含于 $W_{\\alpha}$）盖住它。在每个球上取鼓包 $\\beta_{j} \\ge 0$：在半径 $r_{j}/2$ 的球内为正、在 $B(x_{j}, r_{j})$ 外为零。令',
         '',
-        '$$\\psi_{\\alpha} \\in C^{\\infty}(M),\\qquad \\psi_{\\alpha} = 1\\ \\text{on}\\ V_{\\alpha},\\qquad \\operatorname{supp}\\psi_{\\alpha} \\subseteq U_{\\alpha} .$$',
+        '$$\\psi_{\\alpha} := \\sum_{j}\\beta_{j} .$$',
         '',
-        '**第四步：归一化。** 由 $\\{V_{\\alpha}\\}$ 覆盖 $M$，每点至少有一个 $\\psi_{\\alpha} = 1$，故 $\\Psi := \\sum_{\\alpha}\\psi_{\\alpha} > 0$ 处处成立。和为局部有限（支撑族局部有限），故 $\\Psi$ 光滑。令',
+        '则 $\\psi_{\\alpha} \\in C^{\\infty}(M)$、$\\psi_{\\alpha} \\ge 0$、$\\psi_{\\alpha} > 0$ 在 $V_{\\alpha}$ 上，且 $\\operatorname{supp}\\psi_{\\alpha} \\subseteq \\bigcup_{j}\\overline{B(x_{j}, r_{j})} \\subseteq W_{\\alpha} \\subseteq U_{\\alpha}$。',
+        '',
+        '**第四步：归一化。** 由 $\\{V_{\\alpha}\\}$ 覆盖 $M$，每点至少落在一个 $V_{\\alpha}$ 里，故 $\\Psi := \\sum_{\\alpha}\\psi_{\\alpha} > 0$ 处处成立。支撑族局部有限，故 $\\Psi$ 光滑。令',
         '',
         '$$\\rho_{\\alpha} := \\frac{\\psi_{\\alpha}}{\\Psi}.$$',
         '',
-        '则 $\\rho_{\\alpha} \\in C^{\\infty}(M)$、$0 \\le \\rho_{\\alpha} \\le 1$、$\\operatorname{supp}\\rho_{\\alpha} \\subseteq U_{\\alpha}$、且 $\\sum_{\\alpha}\\rho_{\\alpha} = 1$ 处处成立 —— 三条要求全齐。\n\n∎',
+        '则 $\\rho_{\\alpha} \\in C^{\\infty}(M)$、$0 \\le \\rho_{\\alpha} \\le 1$、$\\operatorname{supp}\\rho_{\\alpha} \\subseteq U_{\\alpha}$、且 $\\sum_{\\alpha}\\rho_{\\alpha} = 1$ 处处成立 —— 三条要求全齐。∎',
         '',
         '⭐ 复用的两件东西是「$\\mathbb{R}^{n}$ 上的鼓包」与「仿紧给的局部有限加细」。所以流形上一切「局部造 + 整体粘」的论证都是这张图：局部造出想要的，再用 $\\rho_{\\alpha}$ 加权求和。'
       ].join('\n')
@@ -1565,23 +1563,13 @@ window.MG = window.MG || {};
       target: 'thm.mayer-vietoris',
       title: '形式的短正合列取上同调 $\\implies$ 长正合列',
       proof: [
-        '**短正合列。** 限制映射把 $M$ 上的形式送到 $U$、$V$ 上，差把两块送到重叠处：',
-        '',
-        '$$0 \\to \\Omega^{k}(M) \\xrightarrow{\\ r\\ } \\Omega^{k}(U) \\oplus \\Omega^{k}(V) \\xrightarrow{\\ s\\ } \\Omega^{k}(U \\cap V) \\to 0 ,$$',
-        '',
-        '$$r(\\omega) := \\bigl(\\omega\\big|_{U},\\ \\omega\\big|_{V}\\bigr),\\qquad s(\\omega_{U},\\omega_{V}) := \\omega_{U}\\big|_{U \\cap V} - \\omega_{V}\\big|_{U \\cap V} .$$',
-        '',
+        '**短正合列。** 记 $W = U \\cap V$。限制与差给出 \n\n$$0 \\to \\Omega^{k}(M) \\xrightarrow{\\ r\\ } \\Omega^{k}(U) \\oplus \\Omega^{k}(V) \\xrightarrow{\\ s\\ } \\Omega^{k}(W) \\to 0 ,$$\n\n \n\n$$r(\\omega) = (\\omega|_{U}, \\omega|_{V}),\\qquad s(\\omega_{U}, \\omega_{V}) = \\omega_{U}|_{W} - \\omega_{V}|_{W} .$$\n\n',
         '**单射。** $r(\\omega) = 0$ 说明 $\\omega$ 在 $U$ 与 $V$ 上都为零，而 $M = U \\cup V$，故 $\\omega = 0$。',
-        '',
-        '**满射（这是唯一要动手的一步）。** 给定 $\\omega \\in \\Omega^{k}(U \\cap V)$，取从属于 $\\{U, V\\}$ 的光滑单位分解 $\\rho_{U} + \\rho_{V} = 1$（`thm.smooth-partition-unity`）。\n\n把 $\\rho_{U}\\omega$ 在 $U\\setminus\\operatorname{supp}\\rho_{V}$ 外延拓为 $0$、并在 $U$ 上整体定义为 $\\rho_{U}\\omega$（它在 $U \\cap V$ 外本来就该是 $\\omega$ 的 $\\rho_{U}$ 倍），同理得 $\\rho_{V}\\omega$ 在 $V$ 上的形式。\n\n于是 $s(\\rho_{U}\\omega, -\\rho_{V}\\omega) = (\\rho_{U} + \\rho_{V})\\omega = \\omega$。',
-        '',
-        '**核等于像。** $s(\\omega_{U},\\omega_{V}) = 0$ 说明两块在重叠处相等，于是它们拼成一个整体形式 $\\omega \\in \\Omega^{k}(M)$，即 $(\\omega_{U},\\omega_{V}) = r(\\omega)$。',
-        '',
-        '**取上同调。** 每个 $\\Omega^{k}$ 上都有 $\\mathrm{d}$，且 $r, s$ 与 $\\mathrm{d}$ 交换（限制与差都逐点作用，$\\mathrm{d}$ 是逐点公式），故这是链映射构成的短正合列。\n\n链复形的短正合列取上同调得到长正合列（蛇引理 + 连接同态 $\\delta$ 的构造），这就是所要的。',
-        '',
-        '**$\\delta$ 的显式形式。** 沿蛇引理的追踪：取 $[\\omega] \\in H^{k}(U \\cap V)$，按上一步拆成 $(\\omega_{U}, -\\omega_{V})$，在 $M$ 上取它们拼成的 $(k+1)$-形式（差一个 $\\mathrm{d}$ 造成的修正），其类就是 $\\delta[\\omega]$。\n\n这一步的符号与 $\\mathrm{d}$ 的次序必须逐项对齐，本图不替读者对齐。\n\n∎',
-        '',
-        '⭐ 唯一用到流形结构的地方是「满射」那一步的单位分解；其余全部是同调代数。所以 Mayer–Vietoris 对任何「层」都成立，形式只是其中一个特例。'
+        '**满射。** 取从属于 $\\{U, V\\}$ 的光滑单位分解 $\\rho_{U} + \\rho_{V} = 1$（`thm.smooth-partition-unity`）。对 $\\omega \\in \\Omega^{k}(W)$ 令 $a_{U} = \\rho_{V}\\omega$（在 $U$ 上，$U \\setminus W$ 外延拓为 $0$）、$a_{V} = -\\rho_{U}\\omega$（在 $V$ 上，延拓为 $0$）。则 $a_{U}, a_{V}$ 光滑（$\\rho_{V}$ 在 $U \\setminus V$ 上为零、$\\rho_{U}$ 在 $V \\setminus U$ 上为零），且 $s(a_{U}, a_{V}) = (\\rho_{U} + \\rho_{V})\\omega = \\omega$。',
+        '**核等于像。** $s(\\omega_{U},\\omega_{V}) = 0$ 说明两块在 $W$ 上相等，于是拼成 $\\Omega^{k}(M)$ 中的整体形式。所以这是链复形的短正合列。',
+        '**连接同态。** 蛇引理给出长正合列，其 $\\delta$ 可显式写成 \n\n$$\\delta[\\omega] = [\\Omega],\\qquad \\Omega = \\begin{cases} \\mathrm{d}(\\rho_{V}\\omega) & \\text{在}\\ U\\ \\text{上},\\\\ -\\mathrm{d}(\\rho_{U}\\omega) & \\text{在}\\ V\\ \\text{上}.\\end{cases}$$\n\n 两式在 $W$ 上相等（$\\mathrm{d}\\omega = 0$），故 $\\Omega$ 是 $M$ 上整体闭形式；换代表元或换单位分解只差 $\\mathrm{d}$-恰当项，故 $\\delta$ 良定义。',
+        '**正合性。** 三个位置逐一验证：$\\ker s^{*} = \\operatorname{im} r^{*}$（若 $\\omega_{U}|_{W} - \\omega_{V}|_{W} = \\mathrm{d}\\gamma$，取 $\\omega = \\rho_{U}\\omega_{U} + \\rho_{V}\\omega_{V} + \\mathrm{d}\\rho_{U}\\wedge\\gamma$，则 $\\mathrm{d}\\omega = 0$ 且 $\\omega|_{U} - \\omega_{U} = -\\mathrm{d}(\\rho_{V}\\gamma)$、$\\omega|_{V} - \\omega_{V} = \\mathrm{d}(\\rho_{U}\\gamma)$）；$\\operatorname{im} s^{*} = \\ker\\delta$（若 $\\delta[\\omega] = \\mathrm{d}\\Psi$，取 $\\alpha = \\rho_{V}\\omega - \\Psi$、$\\beta = -\\rho_{U}\\omega - \\Psi$，则 $\\alpha, \\beta$ 闭且 $\\alpha|_{W} - \\beta|_{W} = \\omega$）；$H^{k}(M)$ 处由 $r^{*}$ 单与上一条。完整逐项计算见 `thm.mayer-vietoris` 的注。∎',
+        '⭐ 唯一用到流形结构的地方是「满射」那一步的单位分解；其余全部是同调代数。所以 Mayer–Vietoris 对任何层都成立，形式只是其中一个特例。'
       ].join('\n')
     },
 

@@ -59,7 +59,6 @@ window.MG = window.MG || {};
       id: 'thm.darboux',
       cluster: 'diffgeom.symplectic',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Darboux 定理',
       title: 'Darboux 定理：辛流形局部都长一样',
       regions: ['diffgeom'],
@@ -76,14 +75,21 @@ window.MG = window.MG || {};
         '**与 Riemann 几何的尖锐对照**：Riemann 度量**一般做不到**这一点 —— 曲率是局部不变量，只有**曲率恒为零**（平坦）的度量才能局部化成 $\\delta_{ij}$。而辛形式**永远**能。'
       ].join('\n'),
       notes: [
-        '**证明骨架**（Moser 技巧）：先由线性代数（`thm.symplectic-normal-form`）在 $p$ 点找辛基，沿径向把 $\\omega$ 拉成 $\\omega_{0}$；再用 Moser 同伦 $\\omega_{t} = (1-t)\\omega_{0} + t\\omega$ 构造一个流，其生成向量场 $X_{t}$ 由 $\\iota_{X_{t}}\\omega_{t} = -\\theta$ 解出（$\\theta$ 是 $\\omega - \\omega_{0}$ 的原函数，闭性在这里用上）。\n\n积分这个流就得到所需的微分同胚。\n\n**关键是 $\\omega_{t}$ 始终非退化** —— 这靠「$\\omega_{0}$ 与 $\\omega$ 在 $p$ 点一致 + 邻域足够小」。',
+        '**证明**（Moser 技巧）。目标：在 $p$ 附近把 $\\omega$ 拉成常系数形式 $\\omega_{0} = \\sum_{i=1}^{n} dq_{i} \\wedge dp_{i}$。分五步，每一步都在一个足够小的图卡里做。',
+        '**第一步：辛基存在（线性代数）**。设 $(V, \\omega)$ 是 $2n$ 维辛空间。取 $e_{1} \\ne 0$，由非退化性存在 $f_{1}$ 使 $\\omega(e_{1}, f_{1}) \\ne 0$，伸缩 $f_{1}$ 使 $\\omega(e_{1}, f_{1}) = 1$（交错性给 $\\omega(e_{1}, e_{1}) = 0$）。令 $W = \\{v : \\omega(e_{1}, v) = \\omega(f_{1}, v) = 0\\}$。对任意 $v$，$v - \\omega(v, f_{1})e_{1} + \\omega(v, e_{1})f_{1} \\in W$，故 $V = \\operatorname{span}(e_{1}, f_{1}) \\oplus W$；又 $\\omega|_{W}$ 非退化，对 $\\dim W$ 归纳即得辛基 $e_{1}, \\ldots, e_{n}, f_{1}, \\ldots, f_{n}$（`def.symplectic-basis`）。∎',
+        '**第二步：造 $\\omega_{0}$，使 $\\omega_{0}(p) = \\omega(p)$**。在 $T_{p}M$ 上取第一步的辛基 $e_{i}, f_{i}$，即 $\\omega_{p}(e_{i}, f_{j}) = \\delta_{ij}$、其余配对为零。取以 $p$ 为心的图卡 $(U, x)$（$x(p) = 0$），令 $q_{i}, p_{i}$ 为对偶基给出的坐标，$\\omega_{0} = \\sum_{i=1}^{n} dq_{i} \\wedge dp_{i}$。则 $\\omega_{0}$ 常系数、闭、非退化，且 $\\omega_{0}(p) = \\omega_{p}$。',
+        '**第三步：Moser 同伦与 $\\theta$**。令 $\\eta = \\omega - \\omega_{0}$。它是 $U$ 上的闭 2-形式，且 $\\eta(p) = 0$。把 $U$ 取成以 $p$ 为心的球（星形、可缩）；由 `lem.poincare-lemma`（$k = 2 \\ge 1$）存在 1-形式 $\\theta \\in \\Omega^{1}(U)$ 使 $\\eta = d\\theta$。对 $t \\in [0, 1]$ 令 $\\omega_{t} = \\omega_{0} + t\\eta$。每个 $\\omega_{t}$ 都闭，且由 $\\eta(p) = 0$ 得 $\\omega_{t}(p) = \\omega(p)$ 与 $t$ 无关。非退化性是开条件，$[0, 1]$ 紧，故可把 $U$ 再缩小，使**所有** $\\omega_{t}$（$t \\in [0, 1]$）都非退化。',
+        '**第四步：解方程并积分成流**。每个 $\\omega_{t}$ 非退化，故线性映射 $X \\mapsto \\iota_{X}\\omega_{t}$ 是 $T_{x}M \\to T_{x}^{*}M$ 的同构，存在唯一光滑向量场 $X_{t}$ 满足 $\\iota_{X_{t}}\\omega_{t} = -\\theta$，且 $X_{t}$ 光滑依赖于 $(t, x)$。把 $t$ 看成额外坐标，在 $M \\times \\mathbb{R}$ 上对向量场 $(X_{t}, \\partial_{t})$ 用 `thm.flow-local`，得到 $p$ 附近定义在 $[0, 1]$ 上的局部流 $\\varphi_{t}$，满足 $\\varphi_{0} = \\operatorname{id}$ 与 $\\frac{d}{dt}\\varphi_{t}(x) = X_{t}(\\varphi_{t}(x))$。必要时再缩小 $U$，使 $\\varphi_{t}$ 对 $t \\in [0, 1]$ 都有定义。',
+        '**第五步：$\\varphi_{1}^{*}\\omega = \\omega_{0}$**。对 $t$ 求导，用 Cartan 公式 $\\mathcal{L}_{X} = d\\iota_{X} + \\iota_{X}d$ 与 $\\frac{d}{dt}\\omega_{t} = \\eta$：\n\n$$\\frac{d}{dt}\\bigl(\\varphi_{t}^{*}\\omega_{t}\\bigr) = \\varphi_{t}^{*}\\bigl(\\mathcal{L}_{X_{t}}\\omega_{t} + \\tfrac{d}{dt}\\omega_{t}\\bigr) = \\varphi_{t}^{*}\\bigl(d\\iota_{X_{t}}\\omega_{t} + \\iota_{X_{t}}d\\omega_{t} + \\eta\\bigr).$$\n\n 由 $d\\omega_{t} = 0$、$\\iota_{X_{t}}\\omega_{t} = -\\theta$、$\\eta = d\\theta$，括号内等于 $-d\\theta + 0 + d\\theta = 0$。所以 $\\varphi_{t}^{*}\\omega_{t}$ 不随 $t$ 变，等于 $t = 0$ 时的 $\\varphi_{0}^{*}\\omega_{0} = \\omega_{0}$；取 $t = 1$ 得 $\\varphi_{1}^{*}\\omega = \\omega_{0}$。于是 $(q_{i} \\circ \\varphi_{1}^{-1},\\, p_{i} \\circ \\varphi_{1}^{-1})$ 就是 $\\varphi_{1}(U)$ 上的 Darboux 坐标。∎',
+        '📌 **这条证明依赖什么**：非退化性（解 $X_{t}$）、闭性（$\\omega_{t}$ 闭、$\\eta$ 有原函数 $\\theta$）、图卡可缩（`lem.poincare-lemma`）、以及 ODE 的局部流（`thm.flow-local`）。$\\omega_{0}$ 与 $\\omega$ 在 $p$ 点相同是关键：否则 $\\omega_{t}$ 在 $p$ 点可能退化，Moser 流走不动。本图 `thm.symplectic-normal-form` 目前只给线性代数版的证明提纲；这里把需要的辛基存在性重证了一遍，证明不依赖那个节点。',
         '⭐ **这条定理是辛几何的「分水岭」**：它意味着不能用局部坐标区分辛流形，所以所有辛不变量（Gromov–Witten 不变量、Floer 同调、容量）都是**整体**的。Riemann 几何靠局部（曲率）起家，辛几何只能靠整体。',
         '⚠️ 定理**不**说「辛流形都微分同胚于 $\\mathbb{R}^{2n}$」：只给局部坐标，整体拓扑（如 $T^{2}$ 上的面积形式）不受约束。这是最常见的误读。',
         '⚠️ Darboux 这个名字在数学里有三处：本定理（辛几何）、Darboux 判据/上和下和（`thm.darboux-criterion`，Riemann 积分）、Darboux 定理（实分析：导函数有介值性）。三者无关。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· Darboux 定理',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics · Darboux 定理',
+        'McDuff–Salamon, Introduction to Symplectic Topology',
+        'da Silva, Lectures on Symplectic Geometry'
       ]
     },
 
@@ -300,6 +306,21 @@ window.MG = window.MG || {};
       note: '两个括号互为逆矩阵 —— 定义里必须先把 Poisson 括号矩阵写出来。' },
     { id: 'dep.lb-cotb', kind: 'definition',
       definition: 'def.cotangent-bundle', usedBy: 'def.lagrange-bracket',
-      note: '$(q, p)$ 是余切丛上的 Darboux 坐标。' }
+      note: '$(q, p)$ 是余切丛上的 Darboux 坐标。' },
+
+    /* ---------- Darboux：两处外部依赖（联合来源） ---------- */
+    {
+      id: 'imp.darboux',
+      kind: 'implication',
+      sources: ['lem.poincare-lemma', 'thm.flow-local'],
+      target: 'thm.darboux',
+      title: 'Poincaré 引理 + 局部流 $\\implies$ Moser 同伦给出 Darboux 坐标',
+      proof: [
+        '**① 闭形式找原函数**。取 $p$ 的球状图卡 $(U,x)$，在 $T_{p}M$ 上取辛基、用对偶坐标造出 $\\omega_{0}=\\sum_{i=1}^{n}dq_{i}\\wedge dp_{i}$，使 $\\omega_{0}(p)=\\omega_{p}$。令 $\\eta=\\omega-\\omega_{0}$：它闭，且 $\\eta(p)=0$。$U$ 可缩、$k=2\\ge1$，由 Poincaré 引理（`lem.poincare-lemma`）存在 $\\theta\\in\\Omega^{1}(U)$ 使 $\\eta=d\\theta$。',
+        '**② Moser 同伦**。令 $\\omega_{t}=\\omega_{0}+t\\eta$。$\\eta(p)=0$ 使 $\\omega_{t}(p)$ 与 $t$ 无关；非退化性是开条件而 $[0,1]$ 紧，故可再缩小 $U$，使**所有** $\\omega_{t}$ 都非退化。于是每点有唯一 $X_{t}$ 满足 $\\iota_{X_{t}}\\omega_{t}=-\\theta$，且 $(t,x)\\mapsto X_{t}(x)$ 光滑（$\\omega_{t}$ 光滑、逆映射由 Cramer 公式光滑）。',
+        '**③ 积分成流**。在 $M\\times\\mathbb{R}$ 上对 $(X_{t},\\partial_{t})$ 用局部流的存在唯一性（`thm.flow-local`），得 $p$ 附近定义在 $[0,1]$ 上的 $\\varphi_{t}$，$\\varphi_{0}=\\operatorname{id}$。由 Cartan 公式与 $d\\omega_{t}=0$ 得 $\\frac{d}{dt}(\\varphi_{t}^{*}\\omega_{t})=\\varphi_{t}^{*}(\\mathcal{L}_{X_{t}}\\omega_{t}+\\eta)=\\varphi_{t}^{*}(d\\iota_{X_{t}}\\omega_{t}+\\eta)=\\varphi_{t}^{*}(-d\\theta+d\\theta)=0$，故 $\\varphi_{1}^{*}\\omega=\\varphi_{0}^{*}\\omega_{0}=\\omega_{0}$；$(q_{i}\\circ\\varphi_{1}^{-1},\\,p_{i}\\circ\\varphi_{1}^{-1})$ 就是 Darboux 坐标。∎',
+      ].join('\n\n'),
+      note: '完整证明（含辛基的线性代数那一步）在本节点的 notes 里；这条边只记两处外部依赖：可缩图卡上的 Poincaré 引理、时变向量场的局部流。`thm.symplectic-normal-form` 只给线性版提纲，不作依赖。',
+    }
   ]
 });

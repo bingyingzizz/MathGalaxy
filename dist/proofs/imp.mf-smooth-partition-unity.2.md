@@ -3,10 +3,10 @@
 
 `prop.paracompact-partition-unity` 仿紧性与单位分解 + `def.partition-of-unity` 单位分解 → `thm.smooth-partition-unity` 光滑单位分解
 
-**第二步：局部有限加细。** 流形的第二可数性 + Hausdorff + 局部欧氏给出仿紧；连续版的命题（`prop.paracompact-partition-unity`）给一个局部有限的开加细 $\{V_{\alpha}\}$，每块可设 $\overline{V_{\alpha}}$ 紧且落在某张卡 $U_{\alpha}$ 里（先取卡内的球、再由局部有限性收紧）。
+**第三步：在每块上造正鼓包。** 固定 $\alpha$。$\overline{V_{\alpha}}$ 紧且含于开集 $W_{\alpha}$，用有限个坐标球 $B(x_{j}, r_{j})$（闭包含于 $W_{\alpha}$）盖住它。在每个球上取鼓包 $\beta_{j} \ge 0$：在半径 $r_{j}/2$ 的球内为正、在 $B(x_{j}, r_{j})$ 外为零。令
 
-**第三步：在每块上放鼓包。** 取 $p_{\alpha} \in V_{\alpha}$ 与 $\varepsilon_{\alpha} > 0$ 使 $V_{\alpha}$ 在卡像里含半径 $2\varepsilon_{\alpha}$ 的球、且球的闭包落在 $\varphi_{\alpha}(U_{\alpha})$ 内。
+$$\psi_{\alpha} := \sum_{j}\beta_{j} .$$
 
-令 $\psi_{\alpha} := \beta\bigl((\cdot - \varphi_{\alpha}(p_{\alpha}))/\varepsilon_{\alpha}\bigr) \circ \varphi_{\alpha}$，则
+则 $\psi_{\alpha} \in C^{\infty}(M)$、$\psi_{\alpha} \ge 0$、$\psi_{\alpha} > 0$ 在 $V_{\alpha}$ 上，且 $\operatorname{supp}\psi_{\alpha} \subseteq \bigcup_{j}\overline{B(x_{j}, r_{j})} \subseteq W_{\alpha} \subseteq U_{\alpha}$。
 
 > 续见 proofs/imp.mf-smooth-partition-unity.3.md

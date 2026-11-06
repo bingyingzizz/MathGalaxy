@@ -309,13 +309,13 @@
         '$f$ 的根可以用**根式**（四则运算与开 $n$ 次方）从 $F$ 的元素表示出来 $\\iff$ $\\operatorname{Gal}(K/F)$ 是**可解群**。',
       ].join('\n'),
       notes: [
-        '**证明**。先把「根式可解」说清楚：存在域塔 $F=F_{0}\\subseteq F_{1}\\subseteq\\cdots\\subseteq F_{m}$，$F_{i+1}=F_{i}(\\alpha_{i})$、$\\alpha_{i}^{n_{i}}\\in F_{i}$，且 $K\\subseteq F_{m}$。char 0 下 $K/F$ 是伽罗瓦扩张（分裂域 + 可分）。两个方向分别证。',
-        '**引理（Kummer 一步）**：设 $F$ 含本原 $m$ 次单位根 $\\zeta$，$E/F$ 是 $m$ 次循环扩张，则 $E=F(\\beta)$ 且 $\\beta^{m}\\in F$。证明：取生成元 $\\sigma$，把 $\\sigma$ 看成 $F$-线性变换。$\\sigma^{m}=1$，而 $x^{m}-1$ 在 $F$ 上分裂且无重根，故 $\\sigma$ 可对角化；又 $\\sigma$ 的阶为 $m$，故其特征值的阶的最小公倍数为 $m$，其中必有一个本原 $m$ 次单位根 $\\zeta^{k}$。取对应的特征向量 $\\beta$：$\\sigma(\\beta)=\\zeta^{k}\\beta$。于是 $\\sigma(\\beta^{m})=\\beta^{m}$，$\\beta^{m}$ 在 $\\sigma$ 的固定域里；循环扩张的固定域恰为 $F$，故 $\\beta^{m}\\in F$。又 $\\beta\\notin F$（否则 $\\sigma(\\beta)=\\beta$），故 $E=F(\\beta)$。∎',
+        '**证明**。先把「根式可解」说清楚：存在域塔 $F=F_{0}\\subseteq F_{1}\\subseteq\\cdots\\subseteq F_{m}$，$F_{i}=F_{i-1}(\\alpha_{i})$、$\\alpha_{i}^{n_{i}}\\in F_{i-1}$（$1\\le i\\le m$），且 $K\\subseteq F_{m}$。char 0 下 $K/F$ 是伽罗瓦扩张（分裂域 + 可分）。两个方向分别证。',
+        '**引理（Kummer 一步）**：设 $F$ 含本原 $m$ 次单位根 $\\zeta$，$E/F$ 是 $m$ 次循环扩张，则 $E=F(\\beta)$ 且 $\\beta^{m}\\in F$。证明：取生成元 $\\sigma$，把 $\\sigma$ 看成 $F$-线性变换。$\\sigma^{m}=1$，而 $x^{m}-1$ 在 $F$ 上分裂且无重根，故 $\\sigma$ 可对角化；又 $\\sigma$ 的阶为 $m$，故其特征值的阶的最小公倍数为 $m$，其中必有一个本原 $m$ 次单位根 $\\zeta^{k}$。取对应的特征向量 $\\beta$：$\\sigma(\\beta)=\\zeta^{k}\\beta$。于是 $\\sigma(\\beta^{m})=\\beta^{m}$，$\\beta^{m}$ 在 $\\sigma$ 的固定域里；循环扩张的固定域恰为 $F$，故 $\\beta^{m}\\in F$。又 $\\beta\\notin F$（否则 $\\sigma(\\beta)=\\beta$）。由于 $\\zeta^{k}$ 本原，$\\sigma^{d}(\\beta)=\\beta$ 当且仅当 $m\\mid d$；故 $F(\\beta)$ 的固定子群只含单位元，$[F(\\beta):F]=m$，从而 $E=F(\\beta)$。∎',
         '**$\\Leftarrow$（群可解 $\\implies$ 根式可解）**：设 $G=\\operatorname{Gal}(K/F)$ 可解。先假设 $F$ 含本原 $n$ 次单位根，$n=|G|$；对 $|G|$ 归纳。$|G|=1$ 时 $K=F$，无事可做。设 $|G|>1$。可解群有极大的真正规子群 $H$，此时 $G/H$ 单且交换，故是素数阶 $p$ 的循环群。令 $E=K^{H}$，伽罗瓦对应给 $[E:F]=p$、$\\operatorname{Gal}(E/F)=G/H$ 循环。$F$ 含 $\\zeta_{p}$，由 Kummer 一步，$E=F(\\beta)$、$\\beta^{p}\\in F$。另一方面 $K/E$ 伽罗瓦、群为 $H$，$H$ 可解且 $|H|<|G|$；$E$ 含本原 $|H|$ 次单位根（$|H|$ 整除 $n$），归纳假设给出从 $E$ 到 $K$ 的根式塔。把它接在一步 $F\\subseteq E$ 之后，就是 $K$ 在 $F$ 上的根式塔。',
         '**去掉单位根假设**：一般 $F$ 未必含 $\\zeta_{n}$。取 $N$ 为 $1,2,\\ldots,n$ 的公倍数（例如 $n!$），令 $F_{1}=F(\\zeta_{N})$、$K_{1}=K(\\zeta_{N})$。$K_{1}/F_{1}$ 伽罗瓦，限制映射 $\\operatorname{Gal}(K_{1}/F_{1})\\to\\operatorname{Gal}(K/F)$ 是单射，故 $G_{1}=\\operatorname{Gal}(K_{1}/F_{1})$ 可解且 $|G_{1}|\\le n$。$F_{1}$ 含所有次数 $\\le n$ 的单位根，特别是 $\\zeta_{|G_{1}|}$；上面已证的情形给出 $K_{1}$ 在 $F_{1}$ 上的根式塔。又 $F\\subseteq F_{1}=F(\\zeta_{N})$ 本身是一步根式扩张（$\\zeta_{N}^{N}=1\\in F$）。两段接起来，$K\\subseteq K_{1}$ 含在 $F$ 的根式塔中，故 $f$ 的根根式可解。',
-        '**$\\implies$（根式可解 $\\implies$ 群可解）**：设 $F=F_{0}\\subseteq\\cdots\\subseteq F_{m}$ 是根式塔、$K\\subseteq F_{m}$、$\\alpha_{i}^{n_{i}}\\in F_{i}$。取 $N$ 为各 $n_{i}$ 的公倍数，令 $F^{\\prime}=F(\\zeta_{N})$、$E_{i}=F_{i}(\\zeta_{N})$；则 $E_{i}=E_{i-1}(\\alpha_{i})$、$\\alpha_{i}^{n_{i}}\\in E_{i-1}$，仍是根式塔，且底域 $E_{0}=F^{\\prime}$ 含 $\\zeta_{n_{i}}$。令 $M$ 为 $E_{m}$ 在 $F^{\\prime}$ 上的伽罗瓦闭包（各生成元极小多项式之积的分裂域），则 $M/F^{\\prime}$ 伽罗瓦，且 $K^{\\prime}=K(\\zeta_{N})\\subseteq M$。',
-        '**逐层加闭包**：令 $M_{i}$ 为 $E_{i}$ 的所有 $F^{\\prime}$-共轭生成的合成域，则 $M_{0}=F^{\\prime}$、$M_{m}=M$，且每个 $M_{i}/F^{\\prime}$ 伽罗瓦。关键是 $M_{i}$ 由 $M_{i-1}$ 添加若干 $\\alpha_{i}$ 的共轭 $\\beta$ 得到，而 $\\beta^{n_{i}}\\in M_{i-1}$：写 $\\beta=\\sigma(\\alpha_{i})$，则 $\\beta^{n_{i}}=\\sigma(\\alpha_{i}^{n_{i}})$；因 $\\alpha_{i}^{n_{i}}\\in F_{i}=F_{i-1}(\\alpha_{i-1})$，有 $\\sigma(\\alpha_{i}^{n_{i}})\\in\\sigma(F_{i-1})\\bigl(\\sigma(\\alpha_{i-1})\\bigr)\\subseteq M_{i-1}\\cdot M_{i-1}=M_{i-1}$（$\\sigma(F_{i-1})\\subseteq\\sigma(E_{i-1})\\subseteq M_{i-1}$，$\\sigma(\\alpha_{i-1})\\in\\sigma(E_{i-1})\\subseteq M_{i-1}$）。于是 $M_{i}/M_{i-1}$ 由若干 $n_{i}$ 次根生成，且 $\\zeta_{n_{i}}\\in F^{\\prime}\\subseteq M_{i-1}$，它是 Kummer 扩张：任意 $\\tau\\in\\operatorname{Gal}(M_{i}/M_{i-1})$ 把每个生成元 $\\beta$ 送到 $\\zeta_{n_{i}}^{k_{\\beta}}\\beta$，$\\tau\\mapsto(k_{\\beta})_{\\beta}$ 是到 $(\\mathbb{Z}/n_{i})^{r}$ 的单同态，故 $\\operatorname{Gal}(M_{i}/M_{i-1})$ 交换。',
-        '**可解列**：因 $M_{i}/F^{\\prime}$ 伽罗瓦，$\\operatorname{Gal}(M/M_{i})\\trianglelefteq\\operatorname{Gal}(M/F^{\\prime})$，且商同构于 $\\operatorname{Gal}(M_{i}/M_{i-1})$，交换。于是 $\\operatorname{Gal}(M/F^{\\prime})\\ \\trianglerighteq\\ \\operatorname{Gal}(M/M_{1})\\ \\trianglerighteq\\ \\cdots\\ \\trianglerighteq\\ \\operatorname{Gal}(M/M_{m})=1$ 是正规列，各商交换，故 $\\operatorname{Gal}(M/F^{\\prime})$ 可解。',
+        '**$\\implies$（根式可解 $\\implies$ 群可解）**：设 $F=F_{0}\\subseteq\\cdots\\subseteq F_{m}$ 是根式塔、$K\\subseteq F_{m}$、$\\alpha_{i}^{n_{i}}\\in F_{i-1}$。取 $N$ 为各 $n_{i}$ 的公倍数，令 $F^{\\prime}=F(\\zeta_{N})$、$E_{i}=F_{i}(\\zeta_{N})$；则 $E_{i}=E_{i-1}(\\alpha_{i})$、$\\alpha_{i}^{n_{i}}\\in E_{i-1}$，仍是根式塔，且底域 $E_{0}=F^{\\prime}$ 含 $\\zeta_{n_{i}}$。令 $M$ 为 $E_{m}$ 在 $F^{\\prime}$ 上的伽罗瓦闭包（各生成元极小多项式之积的分裂域），则 $M/F^{\\prime}$ 伽罗瓦，且 $K^{\\prime}=K(\\zeta_{N})\\subseteq M$。',
+        '**逐层加闭包**：令 $M_{i}$ 为 $E_{i}$ 的所有 $F^{\\prime}$-共轭生成的合成域，则 $M_{0}=F^{\\prime}$、$M_{m}=M$，且每个 $M_{i}/F^{\\prime}$ 伽罗瓦。关键是 $M_{i}$ 由 $M_{i-1}$ 添加若干 $\\alpha_{i}$ 的共轭 $\\beta$ 得到，$\\beta^{n_{i}}\\in M_{i-1}$：写 $\\beta=\\sigma(\\alpha_{i})$，则 $\\beta^{n_{i}}=\\sigma(\\alpha_{i}^{n_{i}})\\in\\sigma(F_{i-1})\\subseteq M_{i-1}$。于是 $M_{i}/M_{i-1}$ 由若干 $n_{i}$ 次根生成，且 $\\zeta_{n_{i}}\\in F^{\\prime}\\subseteq M_{i-1}$，它是 Kummer 扩张：任意 $\\tau\\in\\operatorname{Gal}(M_{i}/M_{i-1})$ 把每个生成元 $\\beta$ 送到 $\\zeta_{n_{i}}^{k_{\\beta}}\\beta$，$\\tau\\mapsto(k_{\\beta})_{\\beta}$ 是到 $(\\mathbb{Z}/n_{i})^{r}$ 的单同态，故 $\\operatorname{Gal}(M_{i}/M_{i-1})$ 交换。',
+        '**可解列**：因 $M_{i}/M_{i-1}$ 伽罗瓦，$\\operatorname{Gal}(M/M_{i})\\trianglelefteq\\operatorname{Gal}(M/M_{i-1})$，且商同构于 $\\operatorname{Gal}(M_{i}/M_{i-1})$，交换。于是 $\\operatorname{Gal}(M/F^{\\prime})\\ \\trianglerighteq\\ \\operatorname{Gal}(M/M_{1})\\ \\trianglerighteq\\ \\cdots\\ \\trianglerighteq\\ \\operatorname{Gal}(M/M_{m})=1$ 是正规列，各商交换，故 $\\operatorname{Gal}(M/F^{\\prime})$ 可解。',
         '**回到 $K$**：$K^{\\prime}/F$ 伽罗瓦（两个正规扩张的合成），限制映射 $\\operatorname{Gal}(M/F^{\\prime})\\to\\operatorname{Gal}(K^{\\prime}/F^{\\prime})$ 满射，故 $\\operatorname{Gal}(K^{\\prime}/F^{\\prime})$ 可解。又有正合列 $1\\to\\operatorname{Gal}(K^{\\prime}/F^{\\prime})\\to\\operatorname{Gal}(K^{\\prime}/F)\\to\\operatorname{Gal}(F^{\\prime}/F)\\to1$（分圆扩张伽罗瓦，限制满射），两端可解、$\\operatorname{Gal}(F^{\\prime}/F)$ 交换，故 $\\operatorname{Gal}(K^{\\prime}/F)$ 可解。最后 $\\operatorname{Gal}(K/F)$ 是 $\\operatorname{Gal}(K^{\\prime}/F)$ 的商：$K^{\\prime}/F$ 正规，$K$ 的每个 $F$-自同构都可延拓到 $K^{\\prime}$。可解群的商可解，故 $\\operatorname{Gal}(K/F)$ 可解。∎',
         '⭐ **为什么必须 char 0**：两个方向都用了「$x^{m}-1$ 无重根」（从而 $\\sigma$ 可对角化）与可分性。char $p$ 时纯开方扩张要换成 Artin–Schreier 扩张 $x^{p}-x-a$，结论要改写。',
         '📌 **这条定理是「五次方程」那条线的唯一入口**：它把「有没有根式公式」这个分析/代数混着的问题，换成一个纯群论问题（$S_{n}$ 可解 $\\iff n\\le4$，见「对称群的可解性」）。注意反过来用时要说清：$\\operatorname{Gal}(f)$ 不可解 $\\implies$ 无根式解；而不是「方程无解」。'
@@ -335,7 +335,6 @@
       title: 'Abel–Ruffini：一般五次方程无根式解',
       regions: ['algebra'],
       tags: ['定理', '代数', '域论', '群论'],
-      status: 'skeleton',
       statement: [
         '存在有理系数的五次多项式 $f \\in \\mathbb{Q}[x]$，它的根**不能**用四则运算与开方从 $\\mathbb{Q}$ 的元素表示；' +
           '更准确地说，$\\operatorname{Gal}(f) \\cong S_{5}$，而 $S_{5}$ 不可解。',
@@ -343,19 +342,15 @@
         '因此**不存在**用根式写出一般五次方程根的通用公式（Abel–Ruffini，1824）。',
       ].join('\n'),
       notes: [
-        '⚠ **骨架**，但这一步的拼装很短，本图的零件已经齐了：',
-        '1. 取 $f = x^{5} - 4x + 2$（或任何 $\\operatorname{Gal}(f) = S_{5}$ 的五次多项式）—— ' +
-          '需要一条判据（模 $p$ 的分解型定出伽罗瓦群的循环子群），本图未收；',
-        '2. $S_{5}$ 不可解（$A_{5}$ 单且非交换，见「对称群的可解性」）；',
-        '3. 由 `thm.radical-solvable`，$\\operatorname{Gal}(f)$ 不可解 $\\implies$ 无根式解。',
-        '⭐ **精确的说法**：不是「五次方程没有解」，是「**没有用根式写出的通用公式**」——' +
-          '根当然存在（代数基本定理），只是写不成开方的组合。有些特殊的五次方程有根式解' +
-          '（例如 $x^{5} - 2 = 0$，伽罗瓦群是循环群）。',
-        '⭐ **为什么是 5**：$S_{4}$ 可解（$A_{4}$ 可解），所以四次还有 Ferrari 公式；' +
-          '$A_{5}$ 是**最小的非交换单群**，可解性在这里第一次断掉 —— 数字 5 的全部特殊性就在这。',
-        '📌 这条定理在图上终于接上了：以前「$S_{5}$ 不可解」是一句孤立的话，' +
-          '没有一条线通向「所以五次方程没有根式解」。现在那条线是：' +
-          '$\\operatorname{Gal}(f)$ 的可解性 $\\to$ 根式可解那条定理 $\\to$ 本条。',
+        '**证明**。取 $f = x^{5} - 4x + 2$，分四步：$f$ 不可约 $\\implies$ 伽罗瓦群传递且含 5-循环；$f$ 恰有三个实根 $\\implies$ 复共轭给出换位；5-循环与换位生成 $S_{5}$；最后用 `thm.radical-solvable` 与 `prop.sn-solvable`。',
+        '**第一步：$f$ 在 $\\mathbb{Q}$ 上不可约**。反设 $f = gh$，其中 $g, h \\in \\mathbb{Z}[x]$ 本原、$1 \\le \\deg g \\le 4$（Gauss 引理把 $\\mathbb{Q}[x]$ 的分解搬到 $\\mathbb{Z}[x]$）。模 $2$ 约化：$f \\equiv x^{5} \\pmod 2$，因为 $-4x$ 与 $2$ 都被 $2$ 整除。$\\mathbb{F}_{2}[x]$ 是唯一分解整环，$x^{5}$ 的非常数首一因子只有 $x^{k}$，故 $\\bar g = x^{k}$、$\\bar h = x^{5-k}$（$1 \\le k \\le 4$）。于是 $g(0) \\equiv h(0) \\equiv 0 \\pmod 2$，即 $4 \\mid g(0)h(0) = f(0) = 2$，矛盾。故 $f$ 不可约。∎',
+        '**第二步：$G = \\operatorname{Gal}(f)$ 传递且含 5-循环**。不可约多项式的伽罗瓦群在根集上传递：任取两根 $\\alpha, \\beta$，$\\mathbb{Q}(\\alpha) \\cong \\mathbb{Q}[x]/(f) \\cong \\mathbb{Q}(\\beta)$ 给出一个把 $\\alpha$ 送到 $\\beta$ 的 $\\mathbb{Q}$-嵌入，再延拓到分裂域。传递群的轨道大小 $5$ 整除 $|G|$，故 $5 \\mid |G|$；由 Cauchy 定理，$G$ 含 5 阶元，而 $S_{5}$ 中的 5 阶元恰是 5-循环。记其中一个为 $\\sigma$。',
+        '**第三步：$G$ 含一个换位**。$f^{\\prime}(x) = 5x^{4} - 4$，唯一临界点为 $\\pm\\alpha$，$\\alpha = (4/5)^{1/4} \\in (3/4, 1)$。$f$ 在 $(-\\infty, -\\alpha)$ 与 $(\\alpha, \\infty)$ 上递增、在 $(-\\alpha, \\alpha)$ 上递减。又 $\\alpha^{5} = \\tfrac{4}{5}\\alpha$，故 $f(\\alpha) = 2 - \\tfrac{16}{5}\\alpha < 2 - \\tfrac{16}{5}\\cdot\\tfrac{3}{4} = -\\tfrac{2}{5} < 0$，而 $f(-\\alpha) = 2 + \\tfrac{16}{5}\\alpha > 0$；且 $x \\to -\\infty$ 时 $f \\to -\\infty$，$x \\to +\\infty$ 时 $f \\to +\\infty$。由介值定理与上述单调性，$f$ 恰有三个实根，分别落在 $(-\\infty, -\\alpha)$、$(-\\alpha, \\alpha)$、$(\\alpha, \\infty)$ 内。复共轭 $\\tau$ 固定这三个实根、交换剩下两个非实根，所以 $\\tau \\in G$ 是一个换位（奇置换）。',
+        '**第四步：$\\langle \\sigma, \\tau \\rangle = S_{5}$**。把 $\\sigma$ 写成 $(0\\,1\\,2\\,3\\,4)$。换位 $\\tau = (a\\,b)$ 的两个点在 5-循环上的距离只可能是 $1$ 或 $2$（距离 $d$ 与 $5-d$ 等价）。若距离为 $1$，$\\sigma^{k}\\tau\\sigma^{-k}$ 给出全部相邻换位 $(i\\,i+1)$，它们生成 $S_{5}$。若距离为 $2$，不妨取 $\\tau = (0\\,2)$：共轭给出 $(0\\,2), (1\\,3), (2\\,4), (3\\,0), (4\\,1)$。由 $(0\\,2)$ 与 $(2\\,4)$ 得乘积 $(0\\,4\\,2)$，于是 $\\{0, 2, 4\\}$ 上的 $S_{3}$（含换位 $(0\\,2)$）落在 $G$ 里；$S_{3}$ 与 5-循环合起来使 $|G|$ 被 $6$ 与 $5$ 整除，故 $30 \\mid |G|$。$G$ 含奇置换，不能等于 $A_{5}$（$S_{5}$ 中唯一的指数 2 子群），所以 $|G| = 120$、$G = S_{5}$。',
+        '**收尾**。于是 $\\operatorname{Gal}(f) \\cong S_{5}$。由 `prop.sn-solvable`，$S_{5}$ 不可解；由 `thm.radical-solvable`（特征 $0$，底域 $\\mathbb{Q}$），根式可解当且仅当伽罗瓦群可解。所以 $f$ 的根不能由 $\\mathbb{Q}$ 的元素经四则运算与开方写出，特别地不存在一般的五次根式公式。∎',
+        '⭐ **精确的说法**：不是「五次方程没有解」，而是「**没有用根式写出的通用公式**」。根当然存在（代数基本定理），只是写不成开方的组合。有些特殊的五次方程有根式解，例如 $x^{5} - 2 = 0$，它的伽罗瓦群是循环群。',
+        '⭐ **为什么是 5**：$S_{4}$ 可解（$A_{4}$ 可解），所以四次还有 Ferrari 公式；$A_{5}$ 是最小的非交换单群，可解性在这里第一次断掉。数字 5 的全部特殊性就在这一处。',
+        '📌 **图上的位置**：这条定理的链条是「$\\operatorname{Gal}(f)$ 的可解性」（`prop.sn-solvable`）$\\to$「根式可解当且仅当群可解」（`thm.radical-solvable`）$\\to$ 本条。反过来用时要说清：不可解 $\\implies$ 无根式解，而不是「方程无解」。',
       ].join('\n\n'),
       refs: ['Lang, Algebra, Ch. VI §6', 'Stewart, Galois Theory, Ch. 24'],
     },

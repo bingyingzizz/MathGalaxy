@@ -3,14 +3,10 @@
 
 `prop.paracompact-partition-unity` 仿紧性与单位分解 + `def.partition-of-unity` 单位分解 → `thm.smooth-partition-unity` 光滑单位分解
 
-$$\psi_{\alpha} \in C^{\infty}(M),\qquad \psi_{\alpha} = 1\ \text{on}\ V_{\alpha},\qquad \operatorname{supp}\psi_{\alpha} \subseteq U_{\alpha} .$$
-
-**第四步：归一化。** 由 $\{V_{\alpha}\}$ 覆盖 $M$，每点至少有一个 $\psi_{\alpha} = 1$，故 $\Psi := \sum_{\alpha}\psi_{\alpha} > 0$ 处处成立。和为局部有限（支撑族局部有限），故 $\Psi$ 光滑。令
+**第四步：归一化。** 由 $\{V_{\alpha}\}$ 覆盖 $M$，每点至少落在一个 $V_{\alpha}$ 里，故 $\Psi := \sum_{\alpha}\psi_{\alpha} > 0$ 处处成立。支撑族局部有限，故 $\Psi$ 光滑。令
 
 $$\rho_{\alpha} := \frac{\psi_{\alpha}}{\Psi}.$$
 
-则 $\rho_{\alpha} \in C^{\infty}(M)$、$0 \le \rho_{\alpha} \le 1$、$\operatorname{supp}\rho_{\alpha} \subseteq U_{\alpha}$、且 $\sum_{\alpha}\rho_{\alpha} = 1$ 处处成立 —— 三条要求全齐。
+则 $\rho_{\alpha} \in C^{\infty}(M)$、$0 \le \rho_{\alpha} \le 1$、$\operatorname{supp}\rho_{\alpha} \subseteq U_{\alpha}$、且 $\sum_{\alpha}\rho_{\alpha} = 1$ 处处成立 —— 三条要求全齐。∎
 
-∎
-
-> 续见 proofs/imp.mf-smooth-partition-unity.4.md
+⭐ 复用的两件东西是「$\mathbb{R}^{n}$ 上的鼓包」与「仿紧给的局部有限加细」。所以流形上一切「局部造 + 整体粘」的论证都是这张图：局部造出想要的，再用 $\rho_{\alpha}$ 加权求和。

@@ -508,7 +508,7 @@ window.MG = window.MG || {};
       statement: [
         '**在做什么**：给一台「批量生产流形」的机器 —— 一个方程组的解集，只要导数满秩，就是光滑流形，维数 = 变量数减方程数。这是分析通往几何的那座桥。',
         '',
-        '设 $U\\subseteq\\mathbb{R}^{n}$ 开，$F = (F^{1},\\ldots,F^{m}) : U\\to\\mathbb{R}^{m}$ 是 $C^{\\infty}$，$c\\in\\mathbb{R}^{m}$。若对每个 $p\\in M := F^{-1}(c)$，微分',
+        '设 $U\\subseteq\\mathbb{R}^{n}$ 开，$F = (F^{1},\\ldots,F^{m}) : U\\to\\mathbb{R}^{m}$ 是 $C^{\\infty}$，$c\\in\\mathbb{R}^{m}$。若 $M := F^{-1}(c) \\ne \\emptyset$，且对每个 $p\\in M$，微分',
         '',
         '$$\\mathrm{d}F_{p} : \\mathbb{R}^{n}\\longrightarrow\\mathbb{R}^{m}$$',
         '',
