@@ -75,6 +75,10 @@ bun tools/publish.mjs
 - ⛔ **不要 `git add -A`** —— 只 add 自己改的路径。
 - 中文提交信息：写进文件再 `git commit -F <文件>`（避免 BOM/编码问题）。
 - 仓库保持干净：`_*`、`dist-site/`、`_pdf/`、`_tools/` 都不进版本库。
+- **提交前会自动查「过时数字」**：`.githooks/pre-commit` 会跑 `bun tools/doccheck.mjs`，
+  文档里写死的节点数 / 连线数 / 版本号与 `dist/graph.json` 对不上就拦下这次提交。
+  新克隆后先跑一次 `bun tools/install-hooks.mjs`（它把 `core.hooksPath` 指到 `.githooks`）。
+  真需要跳过用 `git commit --no-verify`，但别习惯性用。
 
 ---
 

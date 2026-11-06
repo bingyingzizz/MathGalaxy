@@ -1,0 +1,53 @@
+#!/bin/sh
+# 数学星图 · 提交前体检（2026-11-06 起）
+#
+# 为什么有这一层：文档里写死的规模数字会随内容增长变成假话。
+#   · 上一个真实案例：个人主页 README 写着「9 星系 / 709 节点」，三周后全过期；
+#   · 仓库里也刚抓到两处：README「13 个星系 · 77 个星团」、HANDOVER「强边 3128」。
+# doccheck 以 dist/graph.json 的 meta.counts 为唯一判据，对不上就拦下这次提交。
+#
+# 安装：bun tools/install-hooks.mjs（把 core.hooksPath 指到 .githooks）
+# 跳过：git commit --no-verify（知道自己在干什么的时候）
+set -u
+
+root=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+cd "$root" || exit 0
+
+find_bun() {
+  if [ -n "${MG_BUN:-}" ] && [ -x "$MG_BUN" ]; then echo "$MG_BUN"; return; fi
+  if command -v bun >/dev/null 2>&1; then command -v bun; return; fi
+  for c in "$HOME/.bun/bin/bun.exe" \
+           "/c/Users/MSI/.cherrystudio/bin/bun.exe" \
+           "/c/Users/MSI/.bun/bin/bun.exe"; do
+    if [ -x "$c" ]; then echo "$c"; return; fi
+  done
+  echo ""
+}
+
+BUN=$(find_bun)
+if [ -z "$BUN" ]; then
+  echo "⚠ 找不到 bun，跳过 doccheck（设 MG_BUN=... 指定）" >&2
+  exit 0
+fi
+
+"$BUN" tools/doccheck.mjs || {
+  echo "" >&2
+  echo "✗ 文档里的数字和 dist/graph.json 对不上，提交已拦下。" >&2
+  echo "  真值现成的：bun tools/mg.mjs stat（或看 dist/graph.json 的 meta.counts）。" >&2
+  echo "  改数字，或改成不写死数字的说法。" >&2
+  echo "  子集统计 / 历史引用可以用 <!-- stalecheck:ignore 一句理由 --> 标掉。" >&2
+  echo "  （确认没事也可以 git commit --no-verify）" >&2
+  exit 1
+}
+
+# 改了内容却没带 dist：提醒一句，不拦 —— 构建可能还在跑。
+staged=$(git diff --cached --name-only)
+case "$staged" in
+  *src/data/*|*src/core/*)
+    case "$staged" in
+      *dist/*) ;;
+      *) echo "⚠ 暂存区里有 src/ 改动但没有 dist/ —— 提交前记得跑 bun tools/build.mjs" >&2 ;;
+    esac ;;
+esac
+
+exit 0
