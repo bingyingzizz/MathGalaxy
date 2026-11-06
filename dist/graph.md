@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T11:42:11.462Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T11:54:58.506Z
 > 15 星系 / 105 星团 / 1546 节点 / 3187 连线（强边 3145，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -70,11 +70,11 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 **推论**：若 $\Gamma\cup\{\sigma\}$ 不一致，则 $\Gamma\vdash\neg\sigma$；特别地，若 $\Gamma\cup\{\neg\varphi\}$ 不一致，则 $\Gamma\vdash\varphi$。证明：演绎定理给 $\Gamma\vdash\sigma\to\psi$ 与 $\Gamma\vdash\sigma\to\neg\psi$，而 $(\sigma\to\psi)\to((\sigma\to\neg\psi)\to\neg\sigma)$ 是重言式，分离两次即得 $\Gamma\vdash\neg\sigma$。
 
-**第四步：极大一致扩张。** 引理：每个一致语句集 $\Gamma$ 可扩张为极大一致语句集 $\Gamma^{*}$。证明：枚举所有语句 $\psi_0,\psi_1,\ldots$；令 $\Gamma_0=\Gamma$，若 $\Gamma_n\cup\{\psi_n\}$ 一致则 $\Gamma_{n+1}=\Gamma_n\cup\{\psi_n\}$，否则 $\Gamma_{n+1}=\Gamma_n$；令 $\Gamma^{*}=\bigcup_n\Gamma_n$。一致性：若 $\Gamma^{*}$ 不一致，则某个证明只用到有限多条假设，它们全在某个 $\Gamma_n$ 中，与 $\Gamma_n$ 一致矛盾。极大性：若 $\psi_n\notin\Gamma^{*}$，则 $\Gamma_n\cup\{\psi_n\}$ 不一致，由推论得 $\Gamma_n\vdash\neg\psi_n$，故 $\Gamma^{*}\vdash\neg\psi_n$。由此：对每个语句恰有 $\psi\in\Gamma^{*}$ 或 $\neg\psi\in\Gamma^{*}$；$\Gamma^{*}$ 对 $\vdash$ 封闭（若 $\Gamma^{*}\vdash\psi$ 而 $\psi\notin\Gamma^{*}$，则 $\neg\psi\in\Gamma^{*}$，与一致性矛盾）；$\Gamma^{*}$ 含全部逻辑公理。
+**第四步：极大一致扩张。** 引理：每个一致语句集 $\Gamma$ 可扩张为极大一致语句集 $\Gamma^{*}$。证明：按序数枚举所有语句 $\{\psi_\alpha:\alpha<\kappa\}$；令 $\Gamma_0=\Gamma$，若 $\Gamma_\alpha\cup\{\psi_\alpha\}$ 一致则 $\Gamma_{\alpha+1}=\Gamma_\alpha\cup\{\psi_\alpha\}$，否则 $\Gamma_{\alpha+1}=\Gamma_\alpha$，极限序数取并；令 $\Gamma^{*}=\bigcup_{\alpha<\kappa}\Gamma_\alpha$。一致性：若 $\Gamma^{*}$ 不一致，则某个证明只用到有限多条假设，它们全在某个 $\Gamma_\alpha$ 中，与 $\Gamma_\alpha$ 一致矛盾。极大性：若 $\psi_\alpha\notin\Gamma^{*}$，则 $\Gamma_\alpha\cup\{\psi_\alpha\}$ 不一致，由推论得 $\Gamma_\alpha\vdash\neg\psi_\alpha$，故 $\Gamma^{*}\vdash\neg\psi_\alpha$。由此：对每个语句恰有 $\psi\in\Gamma^{*}$ 或 $\neg\psi\in\Gamma^{*}$；$\Gamma^{*}$ 对 $\vdash$ 封闭（若 $\Gamma^{*}\vdash\psi$ 而 $\psi\notin\Gamma^{*}$，则 $\neg\psi\in\Gamma^{*}$，与一致性矛盾）；$\Gamma^{*}$ 含全部逻辑公理。
 
-**第五步：Henkin 见证。** 在语言中添可数无穷多新常元 $c_0,c_1,\ldots$，得 $\mathcal{L}^{+}$。把 $\mathcal{L}^{+}$ 中所有形如 $\exists x\,\theta(x)$ 的语句枚举为 $\xi_0,\xi_1,\ldots$。递归造 $\Gamma_n$：若 $\Gamma_n\cup\{\xi_n\}$ 一致且 $\xi_n=\exists x\,\theta(x)$，取第一个未用过的 $c_k$，令 $\Gamma_{n+1}=\Gamma_n\cup\{\theta(c_k)\}$；否则 $\Gamma_{n+1}=\Gamma_n$。
+**第五步：Henkin 见证。** 设 $|\mathcal{L}|=\kappa$。添 $\kappa$ 个新常元 $\{c_\beta:\beta<\kappa\}$ 得 $\mathcal{L}^{+}$，把 $\mathcal{L}^{+}$ 中所有形如 $\exists x\,\theta(x)$ 的语句按序数枚举为 $\{\xi_\alpha:\alpha<\kappa\}$。**按序数超限递归**造 $\Gamma_\alpha$：若 $\Gamma_\alpha\cup\{\xi_\alpha\}$ 一致且 $\xi_\alpha=\exists x\,\theta(x)$，取一个未用过的 $c_\beta$，令 $\Gamma_{\alpha+1}=\Gamma_\alpha\cup\{\theta(c_\beta)\}$；否则 $\Gamma_{\alpha+1}=\Gamma_\alpha$，极限序数取并。
 
-各 $\Gamma_n$ 一致：若 $\Gamma_n\cup\{\theta(c_k)\}$ 不一致，推论给 $\Gamma_n\vdash\neg\theta(c_k)$；$c_k$ 不出现在 $\Gamma_n$ 中，把 $c_k$ 换成证明中未出现的变元 $y$ 并推广，得 $\Gamma_n\vdash\forall y\,\neg\theta(y)$，再由 (Q1) 与命题逻辑得 $\Gamma_n\vdash\neg\exists x\,\theta(x)$，与「$\Gamma_n\cup\{\xi_n\}$ 一致」矛盾。于是 $\Gamma_\omega=\bigcup_n\Gamma_n$ 一致（有限特征），再由第四步扩为极大一致 $\Gamma^{*}$。见证性质：若 $\exists x\,\theta\in\Gamma^{*}$ 且编号为 $n$，则 $\Gamma_n\cup\{\exists x\,\theta\}\subseteq\Gamma^{*}$ 一致，故第 $n$ 步添了 $\theta(c_k)$，即 $\theta(c_k)\in\Gamma^{*}$。
+各 $\Gamma_\alpha$ 一致（对 $\alpha$ 归纳，极限步用有限特征）：若 $\Gamma_\alpha\cup\{\theta(c_\beta)\}$ 不一致，推论给 $\Gamma_\alpha\vdash\neg\theta(c_\beta)$；$c_\beta$ 不出现在 $\Gamma_\alpha$ 中，把 $c_\beta$ 换成证明中未出现的变元 $y$ 并推广，得 $\Gamma_\alpha\vdash\forall y\,\neg\theta(y)$，再由 (Q1) 与命题逻辑得 $\Gamma_\alpha\vdash\neg\exists x\,\theta(x)$，与「$\Gamma_\alpha\cup\{\xi_\alpha\}$ 一致」矛盾。于是 $\Gamma_\kappa=\bigcup_{\alpha<\kappa}\Gamma_\alpha$ 一致（有限特征），再由第四步扩为极大一致 $\Gamma^{*}$。见证性质：若 $\exists x\,\theta\in\Gamma^{*}$ 且编号为 $\alpha$，则 $\Gamma_\alpha\cup\{\exists x\,\theta\}\subseteq\Gamma^{*}$ 一致，故第 $\alpha$ 步添了 $\theta(c_\beta)$，即 $\theta(c_\beta)\in\Gamma^{*}$。
 
 **第六步：项模型。** 在 $\mathcal{L}^{+}$ 上，对闭项 $t,s$ 定义 $t\sim s\iff\Gamma^{*}\vdash t=s$；由 (E1)(E2) 这是等价关系。令 $A$ 为闭项的 $\sim$-类全体。常元 $c^{\mathfrak{A}}:=[c]$；函数符号 $f^{\mathfrak{A}}([t_1],\ldots,[t_n]):=[f(t_1,\ldots,t_n)]$；关系符号 $R^{\mathfrak{A}}([t_1],\ldots,[t_n])$ 为真 $\iff\Gamma^{*}\vdash R(t_1,\ldots,t_n)$。良定义用 (E2)：若 $t_i\sim s_i$，逐步代入得 $\Gamma^{*}\vdash f(t)=f(s)$ 与 $\Gamma^{*}\vdash R(t)\leftrightarrow R(s)$。等词解释成相等：$[t]=[s]\iff t\sim s$。
 
@@ -84,7 +84,7 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 **第八步：收尾。** 第七步给出 $\mathfrak{A}\vDash\Gamma^{*}$，故 $\Gamma$ 有模型。于是对语句：若 $\Gamma\not\vdash\varphi$，则 $\Gamma\cup\{\neg\varphi\}$ 一致（否则推论给 $\Gamma\vdash\varphi$），由第五至七步有模型 $\mathfrak{A}\vDash\Gamma\cup\{\neg\varphi\}$，即 $\Gamma\not\vDash\varphi$。逆否即 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$；与第二步合起来即 $\Gamma\vdash\varphi\iff\Gamma\vDash\varphi$。一般公式由第一步化到语句。∎
 
-**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。Henkin 扩张每一步取「第一个未使用的常元」，所以可数语言下不需要选择公理；不可数语言要把枚举换成超限递归，那一步用选择公理。推论：紧致性定理（每个有限子集有模型 $\implies$ 整个理论有模型）由 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。
+**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。上面全程对**任意基数** $|\mathcal{L}|=\kappa$ 成立：添 $\kappa$ 个新常元、按序数超限递归造极大一致集，所以陈述不受基数限制。可数语言下每步取「第一个未使用的常元」是确定的，不需要选择公理；一般 $\kappa$ 下要同时挑出 $\kappa$ 个互不相同的常元，那一步用选择公理。推论：紧致性定理（每个有限子集有模型 $\implies$ 整个理论有模型）由 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。
 
 参考：Enderton, A Mathematical Introduction to Logic, Ch. 2.5；Kunen, Set Theory, Ch. I
 
@@ -26541,7 +26541,9 @@ $$A \longrightarrow \operatorname{Hom}_{\mathbb{Z}}\bigl(\operatorname{Hom}_{\ma
 对每个阿贝尔群 $A$ 都是单射。
 2. 对左 $R$-模 $M$，先有单射 $M \hookrightarrow \operatorname{Hom}_{\mathbb{Z}}(R, M)$、$m \mapsto (r \mapsto r m)$；
 
-取内射 $\mathbb{Z}$-模 $E$ 与单射 $M \hookrightarrow E$，得 $R$-模单射 $M \hookrightarrow \operatorname{Hom}_{\mathbb{Z}}(R, E)$。\n\n⚠ **$E$ 不能取成二次对偶 $M^{\vee\vee}$**（$M = \mathbb{Z}/2$ 时它 $\cong \mathbb{Z}/2$，**不可除**，因而不是内射）。正确的取法是**积**：$E := (\mathbb{Q}/\mathbb{Z})^{\operatorname{Hom}_{\mathbb{Z}}(M,\mathbb{Q}/\mathbb{Z})}$ —— 可除群之积仍可除 $\implies$ $E$ 内射；而 $\mathbb{Q}/\mathbb{Z}$ 是余生成元 $\implies$ 求值映射 $M \hookrightarrow E$ 单。
+取内射 $\mathbb{Z}$-模 $E$ 与单射 $M \hookrightarrow E$，得 $R$-模单射 $M \hookrightarrow \operatorname{Hom}_{\mathbb{Z}}(R, E)$。
+
+⚠ **$E$ 不能取成二次对偶 $M^{\vee\vee}$**（$M = \mathbb{Z}/2$ 时它 $\cong \mathbb{Z}/2$，**不可除**，因而不是内射）。正确的取法是**积**：$E := (\mathbb{Q}/\mathbb{Z})^{\operatorname{Hom}_{\mathbb{Z}}(M,\mathbb{Q}/\mathbb{Z})}$ —— 可除群之积仍可除 $\implies$ $E$ 内射；而 $\mathbb{Q}/\mathbb{Z}$ 是余生成元 $\implies$ 求值映射 $M \hookrightarrow E$ 单。
 3. $\operatorname{Hom}_{\mathbb{Z}}(R, E)$ 是**内射** $R$-模。
 
 于是每个模都有**内射消解** $0 \to M \to I^{0} \to I^{1} \to \cdots$。
@@ -28250,13 +28252,21 @@ $$\underline{E}(S) := C(S, E) \qquad\text{（$S \to E$ 的连续映射全体，�
 
 $$\operatorname{Hom}_{\mathrm{CondAb}}(\underline{E}, \underline{F}) \;\cong\; \operatorname{Hom}_{\text{bdd}}(E, F).$$
 
-**为什么「连续函数」这一定义能装下有界算子**：一个线性映射 $T : E \to F$ 有界 $\iff$ 它在每个 $C(S,E)$ 上把「一致范数有界的集合」送到有界集合。凝聚态的结构正是「逐个紧 Hausdorff 空间 $S$ 地看」，于是有界性自然地被 $T$ 的每个 $C(S,E) \to C(S,F)$ 记录下来。
+**约定**：$\mathrm{CondAb}$ 是紧 Hausdorff 空间上（覆盖 = 有限联合满射族）的阿贝尔群层；限制映射把 $f\in C(S,E)$ 送到 $f\circ u$。$E$ 是 Banach 空间，范数记 $\|\cdot\|$；$C(S,E)$ 取上确界范数，因 $E$ 完备它是 Banach 空间，特别地按逐点加法是阿贝尔群。
 
-⭐ **这就是凝聚态理论的起点动机**：拓扑阿贝尔群范畴太坏（极限/余极限不好、Ext 不好算），但把「测试空间」从点换成一族紧 Hausdorff 空间之后，Banach 空间、Fréchet 空间这些都**原封不动**地住进了一个阿贝尔范畴。
+**第一步：$\underline{E}$ 满足层条件。** 取有限联合满射 $\{q_i:S_i\to S\}$，验证 $\underline{E}(S)\longrightarrow \prod_i \underline{E}(S_i)\rightrightarrows \prod_{i,j}\underline{E}(S_i\times_S S_j)$ 是等化子。**单性**：若 $f,g$ 在每个 $S_i$ 上相同，则对 $s\in S$ 取 $i$ 与 $x\in S_i$ 使 $q_i(x)=s$，得 $f(s)=f(q_i(x))=g(q_i(x))=g(s)$。**粘接**：给相容的 $f_i\in C(S_i,E)$，令 $f(s):=f_i(x)$（$q_i(x)=s$）；若 $x\in S_i$、$y\in S_j$ 是同一 $s$ 的两个抬升，则 $(x,y)\in S_i\times_S S_j$，相容性给 $f_i(x)=f_j(y)$，故 $f$ 良定义。**连续性**：$q:=\coprod_i q_i:\coprod_i S_i\to S$ 是紧空间到 Hausdorff 空间的连续满射，故闭、从而是商映射；$f\circ q$ 在每一块 $S_i$ 上等于 $f_i$，连续，由商性质 $f$ 连续。最后，逐点加法与限制相容（限制是群同态），故 $\underline{E}$ 是 CHaus 上的阿贝尔群层，即 $\underline{E}\in\mathrm{CondAb}$。
 
-⚠ **本图的空白**：这里只记陈述与机制。要证的细节（「$\underline{E}$ 满足层条件」这一条要用 $C(S,E)$ 的一致完备性；全忠实那一条要用 $E$ 的完备性把逐点估计拼成一致估计）**没有在本图展开**，我把它当标准结论引用，出处见 refs。
+**第二步：有界 $T$ 给出凝聚态态射。** 设 $T:E\to F$ 有界。对每个 $S$ 令 $T_S(f):=T\circ f$；则 $\|T_S f\|\le \|T\|\,\|f\|$，故 $T_S$ 连续，且它是群同态。对 $u:S_1\to S_2$ 有 $T_{S_1}(f\circ u)=T_{S_2}(f)\circ u$，故 $(T_S)_S$ 与限制映射相容，给出 $\mathrm{CondAb}$ 的态射 $\underline{T}:\underline{E}\to\underline{F}$；恒等与复合逐点保持，故 $T\mapsto \underline{T}$ 是函子性的。
 
-📌 **Hilbert 是特例**：$H$ 是 Banach 空间，所以 $\underline{H}$ 也是凝聚态阿贝尔群 —— 但**别把「$H$ 是固态群」当结论**：固态性是关于 $\prod_{I}\mathbb{Z}$ 的紧投射性，与「内积完备」不是一回事。
+**第三步：任何凝聚态态射都有界。** 设 $\varphi:\underline{E}\to\underline{F}$。令 $T:=\varphi_{\mathrm{pt}}:E\to F$（用 $\underline{E}(\mathrm{pt})=C(\mathrm{pt},E)\cong E$）。先证 $T$ 是 $\mathbb{R}$-线性的：$\varphi$ 是阿贝尔群同态，给 $T(x+y)=T(x)+T(y)$；对 $r\in\mathbb{R}$，数乘映射 $m_r:E\to E$ 是 $\underline{E}$ 的自同态，自然性 $\varphi\circ \underline{m_r}=\underline{m_r}\circ\varphi$ 给 $T(rx)=r\,T(x)$。再反设 $T$ 无界：取 $u_n\in E$ 使 $\|u_n\|\le 1$、$\|T u_n\|\ge n^{2}$。令 $S:=\{0\}\cup\{u_n/n:n\ge 1\}\subset E$；因 $\|u_n/n\|\le 1/n\to 0$，$S$ 是 $E$ 的紧子集（收敛到 $0$ 的序列加极限点）。包含映射 $f:S\hookrightarrow E$ 连续，故 $\varphi_S(f)\in C(S,F)$。但由自然性（用常值映射 $s:\mathrm{pt}\to S$）与 $\mathbb{R}$-线性，$\varphi_S(f)(u_n/n)=\varphi_{\mathrm{pt}}\bigl(f(u_n/n)\bigr)=T(u_n/n)=T(u_n)/n,$ 其范数 $\ge n$，而 $u_n/n\to 0$，与 $\varphi_S(f)$ 在 $0$ 连续矛盾。故 $T$ 有界。
+
+**第四步：两个构造互逆。** 给定有界 $T$，$\underline{T}_{\mathrm{pt}}(x)=T(x)$，故 $T\mapsto\underline{T}\mapsto T$ 是恒等。给定 $\varphi$，第三步给有界 $T=\varphi_{\mathrm{pt}}$；对任意 $S$、$f\in C(S,E)$、$s\in S$，用常值映射 $s:\mathrm{pt}\to S$ 的自然性得 $\varphi_S(f)(s)=\varphi_{\mathrm{pt}}\bigl(f(s)\bigr)=T\bigl(f(s)\bigr)=\underline{T}_S(f)(s),$ 故 $\varphi=\underline{T}$。于是 $T\mapsto\underline{T}$ 是双射 $\operatorname{Hom}_{\mathrm{bdd}}(E,F)\xrightarrow{\ \sim\ }\operatorname{Hom}_{\mathrm{CondAb}}(\underline{E},\underline{F})$。∎
+
+**备注**：证明真正用到 Banach 完备性的只有「$C(S,E)$ 是 Banach 空间」这一句（层条件本身对任意 Hausdorff 拓扑向量空间 $E$ 都成立：粘接出的 $f$ 只要连续即可）；第三步用的是 $E,F$ 的范数。逐点群结构使层条件与群运算自动相容，这正是「凝聚态阿贝尔群 = CHaus 上阿贝尔群层」这一定义要检查的全部内容。
+
+⭐ **这就是凝聚态理论的起点动机**：拓扑阿贝尔群范畴太坏（极限/余极限不好、Ext 不好算），但把「测试空间」从点换成一族紧 Hausdorff 空间之后，Banach 空间、Fréchet 空间这些都原封不动地住进了一个阿贝尔范畴。
+
+📌 **Hilbert 是特例**：$H$ 是 Banach 空间，所以 $\underline{H}$ 也是凝聚态阿贝尔群 —— 但别把「$H$ 是固态群」当结论：固态性是关于 $\prod_{I}\mathbb{Z}$ 的紧投射性，与「内积完备」不是一回事。
 
 参考：Clausen–Scholze, Lectures on Condensed Mathematics, Lecture I（拓扑阿贝尔群 → 凝聚态）
 
@@ -37505,23 +37515,18 @@ $$\Phi^{k} : H^{k}_{\mathrm{dR}}(M) \longrightarrow H^{k}_{\mathrm{sing}}(M;\mat
 
 $\Phi^{k}$ 与拉回相容，故 $k \mapsto \Phi^{k}$ 是一族自然同构：$H^{\bullet}_{\mathrm{dR}}$ 与 $H^{\bullet}_{\mathrm{sing}}$ 是同一个函子的两种算法。
 
-**证明路线的骨架**（细节写在边上）：
-
-1. **配对先良定义**：$\int_{c}\omega$ 只依赖 $[\omega]$ 与 $[c]$ —— 换 $c$ 为同调等价的链差一个边界，而闭形式在边界上的积分为零（`thm.stokes-chain` 的一个方向）；
-
-换 $\omega$ 为相差 $\mathrm{d}\eta$ 的形式，差为 $\int_{c}\mathrm{d}\eta = \int_{\partial c}\eta = 0$（同一条 Stokes 的另一个方向）。
-2. **认成层上同调**：$\Omega^{\bullet}$ 是常层 $\underline{\mathbb{R}}$ 的消解（正合性逐点成立，逐点核为 $\mathbb{R}$，就是 Poincaré 引理 `lem.poincare-lemma`），于是 $H^{\bullet}_{\mathrm{dR}}(M) \cong H^{\bullet}(M;\underline{\mathbb{R}})$。
-3. **Čech–de Rham 双复形**：取「好的覆盖」，把 $\check{C}^{p}(\mathfrak{U},\Omega^{q})$ 排成双复形（横向 Čech 微分、纵向 $\mathrm{d}$），两条谱序列算出同一个全上同调，得到 $H^{\bullet}_{\mathrm{dR}}(M) \cong \check{H}^{\bullet}(M;\underline{\mathbb{R}})$。
-4. **Čech = 层上同调**：仿紧流形上 $\check{H}^{\bullet} \cong H^{\bullet}$（`thm.paracompact-cech-equals-sheaf`）。
-5. **层上同调 = 奇异上同调**：常层的层上同调由「同伦不变 $+$ 单点的值 $+$ 长正合列」唯一确定，奇异上同调满足同一组公理 —— 两者同构（代数拓扑的标准定理，本图不证）。
-
-**为什么它是定理而不是定义**：两边的复形长得完全不同（一边是光滑形式、一边是拓扑单形），能对上不是形式化的。核心内容是第 2 步：「$\Omega^{\bullet}$ 是常层的消解」—— 也就是 Poincaré 引理的**整体化**。
-
-**推论**：$H^{k}_{\mathrm{dR}}$ 是同伦不变量（函子性 + 同伦不变），紧流形上每个 $H^{k}_{\mathrm{dR}}$ 有限维，$k > \dim M$ 时为零。所以「闭而不恰当的形式有多少种」是纯拓扑数据 —— Betti 数。
-
-**与 131 那三条 de Rham 节点接得上**：$H^{0}$ 数连通分支（`thm.de-rham-h0`）、局部为零（`lem.poincare-lemma`）、加减开集有长正合列（`thm.mayer-vietoris`）—— 这三条恰好是上面路线里第 2、5 步的局部版本。
-
-⚠️ **本图的折衷**：这里给的是路线与关键计算，**不**给逐字证明。Čech–de Rham 双复形的谱序列论证、以及「层上同调 = 奇异上同调」都需要单独篇幅；这一条与 `thm.solid-abelian` 那批深定理同一口径：**结构 + 关键计算 + 出处**，如实声明。
+**本节点仍标 skeleton**：de Rham 定理在本图没有逐字证明。下面把证明拆成六步，明确标出哪一步本图可完整验证、哪一步需要外部定理（并写明缺的是哪条），以便将来补节点时逐条对账。
+**第 0 步：约定。** 光滑奇异链 $C^{\infty}_{\bullet}(M)$：每个单形 $\sigma:\Delta^{k}\to M$ 光滑、且延拓到 $\Delta^{k}$ 的一个棱柱邻域（于是每个面光滑）。$\Omega^{q}$ 是 $q$-形式层，$\mathrm{d}$ 是层复形微分。$\Gamma(M,\Omega^{\bullet})=\Omega^{\bullet}(M)$ 是 de Rham 复形。
+**第 1 步：配对良定义（本图可完整验证）。** 先注意 $\int_{c}\omega$ 对**连续**奇异链没有定义（$c$ 未必光滑，$\omega$ 只在光滑切向量上有值），所以换到光滑奇异链。两条不变性都来自 `thm.stokes-chain`：$\omega$ 闭、$c=\partial b$ 时 $\int_{c}\omega=\int_{b}\mathrm{d}\omega=0$；$\omega=\mathrm{d}\eta$ 时 $\int_{c}\mathrm{d}\eta=\int_{\partial c}\eta=0$（$c$ 为闭链）。于是 $\Phi^{k}([\omega])([c])=\int_{c}\omega$ 良定义，且显然 $\mathbb{R}$-双线性。
+**第 2 步：$\Omega^{\bullet}$ 是常层 $\underline{\mathbb{R}}$ 的消解（本图可完整验证正合性）。** 逐点正合 = Poincaré 引理（`lem.poincare-lemma`）；$\ker(\mathrm{d}:\Omega^{0}\to\Omega^{1})$ 是局部常函数层 $\underline{\mathbb{R}}$。再由 $\Omega^{q}$ 是细层、仿紧流形上细层无高阶上同调（Godement 引理），得 $H^{k}_{\mathrm{dR}}(M)=H^{k}\bigl(\Gamma(M,\Omega^{\bullet})\bigr)\cong H^{k}(M;\underline{\mathbb{R}}).$ 这一步的**正合性**可逐字验证；**细层无环**是外部引理（缺口 D）。
+**第 3 步：Čech–de Rham 双复形。** 取好覆盖 $\mathfrak{U}=\{U_\alpha\}$（每点有可缩邻域基）。把 $\check{C}^{p}(\mathfrak{U},\Omega^{q})$ 排成双复形，横微分是 Čech 上边缘 $\delta$、纵微分是 $\mathrm{d}$。全复形 $\operatorname{Tot}$ 的上同调可按两条方向算：先对 $\mathrm{d}$ 取上同调（每列 $\Omega^{\bullet}(U_{p})$ 由 Poincaré 引理正合，只剩 $q=0$ 的 $H^{0}_{\mathrm{dR}}(U_{p})=\mathbb{R}$）得 $E_{1}^{p,0}=\check{C}^{p}(\mathfrak{U};\underline{\mathbb{R}})$，故 $H^{\bullet}(\operatorname{Tot})\cong\check{H}^{\bullet}(\mathfrak{U};\underline{\mathbb{R}})$；先对 $\delta$ 取上同调（$\Omega^{q}$ 细、好覆盖上 Čech 复形在 $p>0$ 正合）得 $E_{1}^{0,q}=\Omega^{q}(M)$，故 $H^{\bullet}(\operatorname{Tot})\cong H^{\bullet}_{\mathrm{dR}}(M)$。于是 $H^{\bullet}_{\mathrm{dR}}(M)\cong\check{H}^{\bullet}(\mathfrak{U};\underline{\mathbb{R}})$。需要 **缺口 B（好覆盖存在）** 与 **缺口 C（双复形谱序列）**。
+**第 4 步：Čech = 层上同调。** 仿紧空间上 $\check{H}^{\bullet}(\mathfrak{U};\underline{\mathbb{R}})\cong H^{\bullet}(M;\underline{\mathbb{R}})$（`thm.paracompact-cech-equals-sheaf`）。⚠️ 该节点**本身仍是 skeleton**：它给出「细层推出软层、软层无环、零调消解」的路线，但把 Godement 引理与比较引理留作缺口；所以这一步在本图也不是已证事实，记 **缺口 E**。
+**第 5 步：层上同调 = 奇异上同调。** 两者都是「同伦不变 + 单点值与 $\mathbb{R}$ 一致 + 对好覆盖有长正合列」的函子，由 Eilenberg–Steenrod 唯一性定理自然同构。本图没有这条公理化唯一性的节点与证明，记 **缺口 F**。
+**第 6 步：$\Phi$ 与这些同构一致（自然性）。** 需要验证链级映射 $\omega\mapsto\bigl(c\mapsto\int_{c}\omega\bigr)$ 与第 2–3 步造出的同构复合后相等，以及它对拉回自然（$\int_{f_{*}c}f^{*}\omega=\int_{c}\omega$）。Stokes 给交换性，但逐字核对（尤其光滑链与连续链的过渡）未做，记 **缺口 G**。
+**缺口汇总**：(A) 光滑奇异链 $\simeq$ 连续奇异链（单纯逼近 + 光滑化）；(B) 光滑流形上好覆盖存在（测地凸邻域、凸半径）；(C) 双复形谱序列的收敛定理（本图只有 `def.spectral-sequence`、`thm.filtered-complex-spectral`、`cor.cech-cohomology-spectral` 等零件）；(D) 细层无环（Godement）；(E) Čech = 层上同调（`thm.paracompact-cech-equals-sheaf` 仍 skeleton）；(F) 层上同调 = 奇异上同调（Eilenberg–Steenrod 唯一性）；(G) Stokes 兼容性与自然性的逐字核对。**第 1、2 步的正合性可完整验证，其余是外部标准定理，本图未证，故不勾 ∎，保留 skeleton。**
+**为什么它是定理而不是定义**：两边复形完全不同（光滑形式 vs 拓扑单形），能对上不是形式化的；核心是第 2 步「$\Omega^{\bullet}$ 是常层的消解」= Poincaré 引理的整体化。
+**推论**：$H^{k}_{\mathrm{dR}}$ 同伦不变；紧流形上每个 $H^{k}_{\mathrm{dR}}$ 有限维、$k>\dim M$ 时为零。故「闭而不恰当的形式有多少种」是纯拓扑数据（Betti 数）。
+**与 131 那三条 de Rham 节点接得上**：$H^{0}$ 数连通分支（`thm.de-rham-h0`）、局部为零（`lem.poincare-lemma`）、加减开集有长正合列（`thm.mayer-vietoris`）—— 这三条正是第 2、5 步的局部版本。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 定理；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理与 Mayer–Vietoris 序列
 
@@ -43850,7 +43855,9 @@ $$0 \longrightarrow M \xrightarrow{\;\cdot r\;} M$$
 
 两个短正合列 $0 \to K \to R^{n} \to Q \to 0$ 与 $0 \to Q_{1} \to Q \to 0$ 的张量版本摆成 $3 \times 3$ 图，用蛇引理：若 $K \otimes M \to R^{n} \otimes M$ 单，则 $Q_{1} \otimes M \to Q \otimes M$ 单 ✓。
 
-**第三步（对 $n$ 归纳）**：只需证对每个有限生成右子模 $K \subseteq R^{n}$，$K \otimes M \to R^{n} \otimes M$ 单。\n\n⚠ **骨架声明**：这一步只在 $R$ **诺特**时直接成立（那时 $K_{1} = K \cap R^{n-1}$ 自动有限生成）。一般环上 $K_{1}$ 未必有限生成，标准补法是换用「$K$ 在 $R^{n}$ 中的**有限生成子模**上取滤过余极限」的论证（或直接引 Lambek 原文的归纳），**本图没有把这套补法展开** —— 所以下面两行的归纳只当**思路**读，不当完整证明。
+**第三步（对 $n$ 归纳）**：只需证对每个有限生成右子模 $K \subseteq R^{n}$，$K \otimes M \to R^{n} \otimes M$ 单。
+
+⚠ **骨架声明**：这一步只在 $R$ **诺特**时直接成立（那时 $K_{1} = K \cap R^{n-1}$ 自动有限生成）。一般环上 $K_{1}$ 未必有限生成，标准补法是换用「$K$ 在 $R^{n}$ 中的**有限生成子模**上取滤过余极限」的论证（或直接引 Lambek 原文的归纳），**本图没有把这套补法展开** —— 所以下面两行的归纳只当**思路**读，不当完整证明。
 - $n = 1$：$K$ 是有限生成右理想，正是假设 ✓。
 - $n > 1$：写 $R^{n} = R^{n-1} \oplus R$，令 $K_{1} = K \cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的投影（$R$ 的有限生成**右**理想 —— 与判据里的右理想同侧；$K \subseteq R^{n}$ 按右子模记账），则 $0 \to K_{1} \to K \to K_{2} \to 0$ 与 $0 \to R^{n-1} \to R^{n} \to R \to 0$ 正合（**归到诺特情形才严格**，见上面的骨架声明）。
 
@@ -44590,7 +44597,7 @@ $$H^{n}(X, \mathcal{M}) = H^{n}\bigl(\Gamma(X, \check{\mathcal{C}}^{\bullet})\bi
 
 **第五步：去掉局部有限。** 一般开覆盖取局部有限细化 $\mathfrak{V} \preceq \mathfrak{U}$；细化映射 $\check{H}^{n}(\mathfrak{U}, \mathcal{M}) \to \check{H}^{n}(\mathfrak{V}, \mathcal{M})$ 与到 $H^{n}(X, \mathcal{M})$ 的规范映射相容，而后者已是同构，故沿覆盖取余极限仍得同构。
 
-∎
+⚠️ **这是路线梗概，不是完整证明**：第三步「软层对 $\Gamma$ 无环」与第四步「无环消解算导出函子（Leray 零调性）」本图都还没有节点，这里只以引理形式引用；节点因此保持 skeleton，本边不勾 ∎。
 
 ⚠️ 三个零件（Čech 正合、软性、软层无环）都**用到了仿紧性**：它同时提供「局部有限细化」与「单位分解」。去掉仿紧性，第一步或第二步会坏，结论就未必成立。
 
@@ -49475,7 +49482,9 @@ $$\left|1 - E_{p_{n}}\!\left(\frac{z}{a_{n}}\right)\right| \le \left|\frac{z}{a_
 
 **除掉零点后的增长**：令 $\Phi := f\big/\prod E_{p}(z/a_{n})$。乘积部分在每个 $|z| = r$ 上被$\exp(C r^{\rho+\varepsilon})$ 控制（初等因子估计逐项相加），故 $\Phi$ 仍是有限阶且无零点。
 
-**指数是多项式**：$\Phi = e^{h}$（`prop.single-valued-branch`），$\operatorname{Re} h = \log|\Phi| = O(r^{\rho+\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），得 $|h(z)| = O(r^{\rho+\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\deg > \rho$ 时全为零。∎
+**指数是多项式**：$\Phi = e^{h}$（`prop.single-valued-branch`），$\operatorname{Re} h = \log|\Phi| = O(r^{\rho+\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），得 $|h(z)| = O(r^{\rho+\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\deg > \rho$ 时全为零。
+
+⚠️ **路线梗概**：上一步「乘积部分被 $\exp(C r^{\rho+\varepsilon})$ 控制，故 $\Phi$ 仍有限阶」默认了典范乘积的**阶下界**（要由 $n(r)$ 的上界估出乘积的增长不超过 $f$ 本身），这一步本图未写；故本边不勾 ∎。
 
 > Hadamard = Weierstrass 乘积 + 增长阶：因子统一、指数退化成多项式。
 

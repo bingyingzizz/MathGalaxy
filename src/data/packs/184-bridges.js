@@ -27,7 +27,6 @@ window.MG.packs.push({
       title: 'Banach（与 Hilbert）空间经 $S \\mapsto C(S,E)$ 嵌入凝聚态阿贝尔群',
       regions: ['condensed', 'analysis'],
       tags: ['命题', '凝聚态', 'Banach', '桥'],
-      status: 'skeleton',
       statement: [
         '设 $E$ 是实（或复）Banach 空间。对紧 Hausdorff 空间 $S$ 令',
         '',
@@ -38,14 +37,14 @@ window.MG.packs.push({
         '$$\\operatorname{Hom}_{\\mathrm{CondAb}}(\\underline{E}, \\underline{F}) \\;\\cong\\; \\operatorname{Hom}_{\\text{bdd}}(E, F).$$',
       ].join('\n'),
       notes: [
-        '**为什么「连续函数」这一定义能装下有界算子**：一个线性映射 $T : E \\to F$ 有界 $\\iff$ 它在每个 $C(S,E)$ 上把「一致范数有界的集合」送到有界集合。' +
-          '凝聚态的结构正是「逐个紧 Hausdorff 空间 $S$ 地看」，于是有界性自然地被 $T$ 的每个 $C(S,E) \\to C(S,F)$ 记录下来。',
-        '⭐ **这就是凝聚态理论的起点动机**：拓扑阿贝尔群范畴太坏（极限/余极限不好、Ext 不好算），' +
-          '但把「测试空间」从点换成一族紧 Hausdorff 空间之后，Banach 空间、Fréchet 空间这些都**原封不动**地住进了一个阿贝尔范畴。',
-        '⚠ **本图的空白**：这里只记陈述与机制。要证的细节（「$\\underline{E}$ 满足层条件」这一条要用 $C(S,E)$ 的一致完备性；' +
-          '全忠实那一条要用 $E$ 的完备性把逐点估计拼成一致估计）**没有在本图展开**，我把它当标准结论引用，出处见 refs。',
-        '📌 **Hilbert 是特例**：$H$ 是 Banach 空间，所以 $\\underline{H}$ 也是凝聚态阿贝尔群 —— 但**别把「$H$ 是固态群」当结论**：' +
-          '固态性是关于 $\\prod_{I}\\mathbb{Z}$ 的紧投射性，与「内积完备」不是一回事。',
+        '**约定**：$\\mathrm{CondAb}$ 是紧 Hausdorff 空间上（覆盖 = 有限联合满射族）的阿贝尔群层；限制映射把 $f\\in C(S,E)$ 送到 $f\\circ u$。$E$ 是 Banach 空间，范数记 $\\|\\cdot\\|$；$C(S,E)$ 取上确界范数，因 $E$ 完备它是 Banach 空间，特别地按逐点加法是阿贝尔群。',
+        '**第一步：$\\underline{E}$ 满足层条件。** 取有限联合满射 $\\{q_i:S_i\\to S\\}$，验证 $\\underline{E}(S)\\longrightarrow \\prod_i \\underline{E}(S_i)\\rightrightarrows \\prod_{i,j}\\underline{E}(S_i\\times_S S_j)$ 是等化子。**单性**：若 $f,g$ 在每个 $S_i$ 上相同，则对 $s\\in S$ 取 $i$ 与 $x\\in S_i$ 使 $q_i(x)=s$，得 $f(s)=f(q_i(x))=g(q_i(x))=g(s)$。**粘接**：给相容的 $f_i\\in C(S_i,E)$，令 $f(s):=f_i(x)$（$q_i(x)=s$）；若 $x\\in S_i$、$y\\in S_j$ 是同一 $s$ 的两个抬升，则 $(x,y)\\in S_i\\times_S S_j$，相容性给 $f_i(x)=f_j(y)$，故 $f$ 良定义。**连续性**：$q:=\\coprod_i q_i:\\coprod_i S_i\\to S$ 是紧空间到 Hausdorff 空间的连续满射，故闭、从而是商映射；$f\\circ q$ 在每一块 $S_i$ 上等于 $f_i$，连续，由商性质 $f$ 连续。最后，逐点加法与限制相容（限制是群同态），故 $\\underline{E}$ 是 CHaus 上的阿贝尔群层，即 $\\underline{E}\\in\\mathrm{CondAb}$。',
+        '**第二步：有界 $T$ 给出凝聚态态射。** 设 $T:E\\to F$ 有界。对每个 $S$ 令 $T_S(f):=T\\circ f$；则 $\\|T_S f\\|\\le \\|T\\|\\,\\|f\\|$，故 $T_S$ 连续，且它是群同态。对 $u:S_1\\to S_2$ 有 $T_{S_1}(f\\circ u)=T_{S_2}(f)\\circ u$，故 $(T_S)_S$ 与限制映射相容，给出 $\\mathrm{CondAb}$ 的态射 $\\underline{T}:\\underline{E}\\to\\underline{F}$；恒等与复合逐点保持，故 $T\\mapsto \\underline{T}$ 是函子性的。',
+        '**第三步：任何凝聚态态射都有界。** 设 $\\varphi:\\underline{E}\\to\\underline{F}$。令 $T:=\\varphi_{\\mathrm{pt}}:E\\to F$（用 $\\underline{E}(\\mathrm{pt})=C(\\mathrm{pt},E)\\cong E$）。先证 $T$ 是 $\\mathbb{R}$-线性的：$\\varphi$ 是阿贝尔群同态，给 $T(x+y)=T(x)+T(y)$；对 $r\\in\\mathbb{R}$，数乘映射 $m_r:E\\to E$ 是 $\\underline{E}$ 的自同态，自然性 $\\varphi\\circ \\underline{m_r}=\\underline{m_r}\\circ\\varphi$ 给 $T(rx)=r\\,T(x)$。再反设 $T$ 无界：取 $u_n\\in E$ 使 $\\|u_n\\|\\le 1$、$\\|T u_n\\|\\ge n^{2}$。令 $S:=\\{0\\}\\cup\\{u_n/n:n\\ge 1\\}\\subset E$；因 $\\|u_n/n\\|\\le 1/n\\to 0$，$S$ 是 $E$ 的紧子集（收敛到 $0$ 的序列加极限点）。包含映射 $f:S\\hookrightarrow E$ 连续，故 $\\varphi_S(f)\\in C(S,F)$。但由自然性（用常值映射 $s:\\mathrm{pt}\\to S$）与 $\\mathbb{R}$-线性，$\\varphi_S(f)(u_n/n)=\\varphi_{\\mathrm{pt}}\\bigl(f(u_n/n)\\bigr)=T(u_n/n)=T(u_n)/n,$ 其范数 $\\ge n$，而 $u_n/n\\to 0$，与 $\\varphi_S(f)$ 在 $0$ 连续矛盾。故 $T$ 有界。',
+        '**第四步：两个构造互逆。** 给定有界 $T$，$\\underline{T}_{\\mathrm{pt}}(x)=T(x)$，故 $T\\mapsto\\underline{T}\\mapsto T$ 是恒等。给定 $\\varphi$，第三步给有界 $T=\\varphi_{\\mathrm{pt}}$；对任意 $S$、$f\\in C(S,E)$、$s\\in S$，用常值映射 $s:\\mathrm{pt}\\to S$ 的自然性得 $\\varphi_S(f)(s)=\\varphi_{\\mathrm{pt}}\\bigl(f(s)\\bigr)=T\\bigl(f(s)\\bigr)=\\underline{T}_S(f)(s),$ 故 $\\varphi=\\underline{T}$。于是 $T\\mapsto\\underline{T}$ 是双射 $\\operatorname{Hom}_{\\mathrm{bdd}}(E,F)\\xrightarrow{\\ \\sim\\ }\\operatorname{Hom}_{\\mathrm{CondAb}}(\\underline{E},\\underline{F})$。∎',
+        '**备注**：证明真正用到 Banach 完备性的只有「$C(S,E)$ 是 Banach 空间」这一句（层条件本身对任意 Hausdorff 拓扑向量空间 $E$ 都成立：粘接出的 $f$ 只要连续即可）；第三步用的是 $E,F$ 的范数。逐点群结构使层条件与群运算自动相容，这正是「凝聚态阿贝尔群 = CHaus 上阿贝尔群层」这一定义要检查的全部内容。',
+        '⭐ **这就是凝聚态理论的起点动机**：拓扑阿贝尔群范畴太坏（极限/余极限不好、Ext 不好算），但把「测试空间」从点换成一族紧 Hausdorff 空间之后，Banach 空间、Fréchet 空间这些都原封不动地住进了一个阿贝尔范畴。',
+        '📌 **Hilbert 是特例**：$H$ 是 Banach 空间，所以 $\\underline{H}$ 也是凝聚态阿贝尔群 —— 但别把「$H$ 是固态群」当结论：固态性是关于 $\\prod_{I}\\mathbb{Z}$ 的紧投射性，与「内积完备」不是一回事。',
       ].join('\n\n'),
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics, Lecture I（拓扑阿贝尔群 → 凝聚态）'],
     },

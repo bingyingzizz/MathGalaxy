@@ -717,7 +717,7 @@ window.MG = window.MG || {};
         '1. $\\mathbb{Q}/\\mathbb{Z}$ 是内射 $\\mathbb{Z}$-模（可除，`thm.pid-injective-divisible`），且是**余生成元**：求值映射',
         '$$A \\longrightarrow \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\operatorname{Hom}_{\\mathbb{Z}}(A, \\mathbb{Q}/\\mathbb{Z}),\\ \\mathbb{Q}/\\mathbb{Z}\\bigr)$$',
         '对每个阿贝尔群 $A$ 都是单射。',
-        '2. 对左 $R$-模 $M$，先有单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$、$m \\mapsto (r \\mapsto r m)$；\n\n取内射 $\\mathbb{Z}$-模 $E$ 与单射 $M \\hookrightarrow E$，得 $R$-模单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, E)$。\\n\\n⚠ **$E$ 不能取成二次对偶 $M^{\\vee\\vee}$**（$M = \\mathbb{Z}/2$ 时它 $\\cong \\mathbb{Z}/2$，**不可除**，因而不是内射）。正确的取法是**积**：$E := (\\mathbb{Q}/\\mathbb{Z})^{\\operatorname{Hom}_{\\mathbb{Z}}(M,\\mathbb{Q}/\\mathbb{Z})}$ —— 可除群之积仍可除 $\\implies$ $E$ 内射；而 $\\mathbb{Q}/\\mathbb{Z}$ 是余生成元 $\\implies$ 求值映射 $M \\hookrightarrow E$ 单。',
+        '2. 对左 $R$-模 $M$，先有单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$、$m \\mapsto (r \\mapsto r m)$；\n\n取内射 $\\mathbb{Z}$-模 $E$ 与单射 $M \\hookrightarrow E$，得 $R$-模单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, E)$。\n\n⚠ **$E$ 不能取成二次对偶 $M^{\\vee\\vee}$**（$M = \\mathbb{Z}/2$ 时它 $\\cong \\mathbb{Z}/2$，**不可除**，因而不是内射）。正确的取法是**积**：$E := (\\mathbb{Q}/\\mathbb{Z})^{\\operatorname{Hom}_{\\mathbb{Z}}(M,\\mathbb{Q}/\\mathbb{Z})}$ —— 可除群之积仍可除 $\\implies$ $E$ 内射；而 $\\mathbb{Q}/\\mathbb{Z}$ 是余生成元 $\\implies$ 求值映射 $M \\hookrightarrow E$ 单。',
         '3. $\\operatorname{Hom}_{\\mathbb{Z}}(R, E)$ 是**内射** $R$-模。',
         '',
         '于是每个模都有**内射消解** $0 \\to M \\to I^{0} \\to I^{1} \\to \\cdots$。'
@@ -1005,7 +1005,7 @@ window.MG = window.MG || {};
         '',
         '**第三步（对 $n$ 归纳）**：只需证对每个有限生成右子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。' +
 
-        '\\n\\n⚠ **骨架声明**：这一步只在 $R$ **诺特**时直接成立（那时 $K_{1} = K \\cap R^{n-1}$ 自动有限生成）。一般环上 $K_{1}$ 未必有限生成，标准补法是换用「$K$ 在 $R^{n}$ 中的**有限生成子模**上取滤过余极限」的论证（或直接引 Lambek 原文的归纳），**本图没有把这套补法展开** —— 所以下面两行的归纳只当**思路**读，不当完整证明。',
+        '\n\n⚠ **骨架声明**：这一步只在 $R$ **诺特**时直接成立（那时 $K_{1} = K \\cap R^{n-1}$ 自动有限生成）。一般环上 $K_{1}$ 未必有限生成，标准补法是换用「$K$ 在 $R^{n}$ 中的**有限生成子模**上取滤过余极限」的论证（或直接引 Lambek 原文的归纳），**本图没有把这套补法展开** —— 所以下面两行的归纳只当**思路**读，不当完整证明。',
         '- $n = 1$：$K$ 是有限生成右理想，正是假设 ✓。',
         '- $n > 1$：写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} = K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的投影（$R$ 的有限生成**右**理想 —— 与判据里的右理想同侧；$K \\subseteq R^{n}$ 按右子模记账），则 $0 \\to K_{1} \\to K \\to K_{2} \\to 0$ 与 $0 \\to R^{n-1} \\to R^{n} \\to R \\to 0$ 正合（**归到诺特情形才严格**，见上面的骨架声明）。\n\n张量后两列竖直映射（$K_{1} \\to$ 与 $K_{2} \\to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \\otimes M \\to R^{n} \\otimes M$ 单 ✓。\n\n∎',
         '',

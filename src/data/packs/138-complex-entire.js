@@ -562,7 +562,7 @@
         '',
         '**指数是多项式**：$\\Phi = e^{h}$（`prop.single-valued-branch`），$\\operatorname{Re} h = \\log|\\Phi| = ' +
           'O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），' +
-          '得 $|h(z)| = O(r^{\\rho+\\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\\deg > \\rho$ 时全为零。∎',
+          '得 $|h(z)| = O(r^{\\rho+\\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\\deg > \\rho$ 时全为零。\n\n⚠️ **路线梗概**：上一步「乘积部分被 $\\exp(C r^{\\rho+\\varepsilon})$ 控制，故 $\\Phi$ 仍有限阶」默认了典范乘积的**阶下界**（要由 $n(r)$ 的上界估出乘积的增长不超过 $f$ 本身），这一步本图未写；故本边不勾 ∎。',
       ].join('\n'),
       note: 'Hadamard = Weierstrass 乘积 + 增长阶：因子统一、指数退化成多项式。' },
 
