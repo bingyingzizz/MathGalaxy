@@ -281,7 +281,7 @@ window.MG = window.MG || {};
         '（右端那个 $\\to 0$ 永远正合；缺的只有左端的 $0$。）'
       ].join('\n'),
       notes: [
-        '**证明（伴随路线，最快）**：由 `thm.hom-tensor-adjunction-mod`，$(-) \\otimes_{R} N \\dashv \\operatorname{Hom}_{R}(N, -)$。\n\n左伴随保所有余极限，而余核是两项图的余极限，故 $(-) \\otimes N$ 保余核 —— 对加法函子来说「保余核」正是「把短正合列送成 $M_{1} \\otimes N \\to M \\otimes N \\to M_{2} \\otimes N \\to 0$ 正合」✓。',
+        '**证明（伴随路线，最快）**：由 `thm.hom-tensor-adjunction-mod`，$(-) \\otimes_{R} N \\dashv \\operatorname{Hom}_{\\mathbb{Z}}(N, -)$（值域是 $\\mathbf{Ab}$，右伴随取 $\\mathbb{Z}$-线性同态）。\n\n左伴随保所有余极限，而余核是两项图的余极限，故 $(-) \\otimes N$ 保余核 —— 对加法函子来说「保余核」正是「把短正合列送成 $M_{1} \\otimes N \\to M \\otimes N \\to M_{2} \\otimes N \\to 0$ 正合」✓。',
         '**直接算也行**：$g$ 满蕴含 $g \\otimes 1$ 满（每个 $m_{2} \\otimes n$ 有原像 $m \\otimes n$）；核：由 $\\ker g = \\operatorname{im} f$，满足 $g(m) = 0$ 的 $m$ 可写 $f(m_{1})$，于是纯张量 $m \\otimes n = (f \\otimes 1)(m_{1} \\otimes n)$，一般元素按双加性拆开即得 $\\ker(g \\otimes 1) \\subseteq \\operatorname{im}(f \\otimes 1)$；\n\n反向由 $g f = 0$ ✓。',
         '⚠️ **左端会丢**：$0 \\to \\mathbb{Z} \\xrightarrow{\\;2\\;} \\mathbb{Z} \\to \\mathbb{Z}/2 \\to 0$ 张量 $N = \\mathbb{Z}/2$ 之后，$\\mathbb{Z} \\otimes \\mathbb{Z}/2 \\xrightarrow{\\;2\\;} \\mathbb{Z} \\otimes \\mathbb{Z}/2$ 是零映射，不再单射。',
         '⭐ 于是「右正合」是白送的、**左正合才是性质**，而那个性质的名字就叫平坦。丢掉的左端不是凭空消失：它是连接映射 $\\operatorname{Tor}_{1}^{R}(M_{2}, N) \\to M_{1} \\otimes N$ 的**像**（不能直接把「丢掉的核」等同于 $\\operatorname{Tor}_{1}$：分裂列 $0 \\to \\mathbb{Z}/2 \\to (\\mathbb{Z}/2)^{2} \\to \\mathbb{Z}/2 \\to 0$ 张量后仍分裂、核为零，而 $\\operatorname{Tor}_{1}(\\mathbb{Z}/2, \\mathbb{Z}/2) = \\mathbb{Z}/2$）。'
@@ -430,7 +430,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['定理', '同调代数', '平坦', '理想', '判据'],
       statement: [
-        '设 $R$ 是含幺环，$M$ 是**左** $R$-模。则 $M$ 平坦，当且仅当：对每个**有限生成右理想** $I \\subseteq R$，乘法映射',
+        '设 $R$ 是**含幺 Noether 环**，$M$ 是**左** $R$-模。（一般含幺环上判据仍成立，但下面的归纳证明要用「子模仍有限生成」；非 Noether 情形需改用滤过余极限，本节点不展开。）则 $M$ 平坦，当且仅当：对每个**有限生成右理想** $I \\subseteq R$，乘法映射',
         '',
         '$$I \\otimes_{R} M \\longrightarrow M, \\qquad a \\otimes m \\longmapsto a m$$',
         '',
@@ -442,8 +442,8 @@ window.MG = window.MG || {};
         '**为什么这是强化**：平坦的定义要对**一切**单射检验；`prop.flat-equivalences` 第 4 条已经把它压到「理想」；Lambek 再压到「**有限生成**理想」—— 后者常常是可数的一批，能逐个算。',
         '**证明（反方向，三步）**：',
         '**第一步（把**检验对象**有限生成化）**：待判的 $M$ **固定不动**。不能靠「$M$ 是有限生成子模的滤过余极限」把 $M$ 缩成有限生成 —— 有限生成性不传给子模（$R = k[x,y]$ 平坦，但理想 $(x,y)$ 不平坦）。真正要缩的是待验的映射：只需对**有限生成**子模 $K \\subseteq R^{n}$ 验证 $K \\otimes M \\to R^{n} \\otimes M$ 单射。',
-        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M_{1}$（$M_{1}$ 是 $M$ 的有限生成子模），令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \\to K \\to R^{n} \\to M_{1} \\to 0$。\n\n把两个列各自张量后比较，「$K \\otimes M \\to R^{n} \\otimes M$ 单」蕴含「$M_{1} \\otimes M \\to M \\otimes M$ 单」（蛇引理）。\n\n于是只需证：对每个**有限生成**子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
-        '**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} := K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想）。⚠️ $K_{1}$ **未必有限生成**（$K$ 有限生成不保证交子模有限生成 —— 非 Noether 环上有反例），所以归纳假设不能直接用在 $K_{1}$ 上；要么先对 $K_{1}$ 再作一次有限生成化，要么**限定 $R$ 是 Noether 环**。在该前提下，有短正合列',
+        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M_{1}$（$M_{1}$ 是 $M$ 的有限生成子模），令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \\to K \\to R^{n} \\to M_{1} \\to 0$。\n\n把两个列各自张量后比较：$K \\otimes M \\to R^{n} \\otimes M \\to M_{1} \\otimes M \\to 0$ 正合，故「$K \\otimes M \\to R^{n} \\otimes M$ 单」等价于「$R^{n} \\otimes M \\to M_{1} \\otimes M$ 单」（蛇引理）。\n\n于是只需证：对每个**有限生成**子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
+        '**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} := K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的投影（$R$ 的有限生成**右**理想 —— 与判据里的右理想同侧；$K \\subseteq R^{n}$ 按右子模记账）。⚠️ $K_{1}$ **未必有限生成**（$K$ 有限生成不保证交子模有限生成 —— 非 Noether 环上有反例），所以归纳假设不能直接用在 $K_{1}$ 上；要么先对 $K_{1}$ 再作一次有限生成化，要么**限定 $R$ 是 Noether 环**。在该前提下，有短正合列',
         '$$0 \\to K_{1} \\to K \\to K_{2} \\to 0, \\qquad 0 \\to R^{n-1} \\to R^{n} \\to R \\to 0 .$$',
         '张量后得到 $3 \\times 3$ 图：左右两列的竖直映射按归纳假设与 $n = 1$ 情形是单射，于是由蛇引理中间那一列也单射 ✓。∎',
         '⚠️ 「有限生成」不能换成「主理想」：只检验主理想 $(a)$ 上的单射性，得到的是**无挠**（且这条只在**整环**上成立：$R = \\mathbb{Z}/4$、$M = R/(2)$ 时「非零因子作用单射」成立，但 $(2) \\otimes M \\to M$ 是零映射）—— 比平坦弱，反例 $(x, y) \\subseteq k[x, y]$ 见 `prop.flat-domain-torsionfree`。',
@@ -900,7 +900,7 @@ window.MG = window.MG || {};
       target: 'prop.tensor-right-exact',
       title: '左伴随保余极限 $\\implies$ 张量右正合',
       proof: [
-        '由伴随 $(-) \\otimes_{R} N \\dashv \\operatorname{Hom}_{R}(N, -)$，左伴随保**所有**余极限。',
+        '由伴随 $(-) \\otimes_{R} N \\dashv \\operatorname{Hom}_{\\mathbb{Z}}(N, -)$（值域是 $\\mathbf{Ab}$，右伴随取 $\\mathbb{Z}$-线性同态），左伴随保**所有**余极限。',
         '',
         '而余核是两项图的余极限：$\\operatorname{coker}(f) = \\mathrm{colim}\\bigl(M_{1} \\xrightarrow{f} M\\bigr)$。故 $(-) \\otimes N$ 保余核 ✓。',
         '',
@@ -1007,7 +1007,7 @@ window.MG = window.MG || {};
 
         '\\n\\n⚠ **骨架声明**：这一步只在 $R$ **诺特**时直接成立（那时 $K_{1} = K \\cap R^{n-1}$ 自动有限生成）。一般环上 $K_{1}$ 未必有限生成，标准补法是换用「$K$ 在 $R^{n}$ 中的**有限生成子模**上取滤过余极限」的论证（或直接引 Lambek 原文的归纳），**本图没有把这套补法展开** —— 所以下面两行的归纳只当**思路**读，不当完整证明。',
         '- $n = 1$：$K$ 是有限生成右理想，正是假设 ✓。',
-        '- $n > 1$：写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} = K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则 $0 \\to K_{1} \\to K \\to K_{2} \\to 0$ 与 $0 \\to R^{n-1} \\to R^{n} \\to R \\to 0$ 正合（**归到诺特情形才严格**，见上面的骨架声明）。\n\n张量后两列竖直映射（$K_{1} \\to$ 与 $K_{2} \\to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \\otimes M \\to R^{n} \\otimes M$ 单 ✓。\n\n∎',
+        '- $n > 1$：写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} = K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的投影（$R$ 的有限生成**右**理想 —— 与判据里的右理想同侧；$K \\subseteq R^{n}$ 按右子模记账），则 $0 \\to K_{1} \\to K \\to K_{2} \\to 0$ 与 $0 \\to R^{n-1} \\to R^{n} \\to R \\to 0$ 正合（**归到诺特情形才严格**，见上面的骨架声明）。\n\n张量后两列竖直映射（$K_{1} \\to$ 与 $K_{2} \\to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \\otimes M \\to R^{n} \\otimes M$ 单 ✓。\n\n∎',
         '',
         '**等价说法的翻译**：由 $0 \\to I \\to R \\to R/I \\to 0$ 与 $\\operatorname{Tor}_{1}^{R}(R, M) = 0$ 得 $\\operatorname{Tor}_{1}^{R}(R/I, M) \\cong \\ker(I \\otimes M \\to M)$，故「$I \\otimes M \\to M$ 单」与「$\\operatorname{Tor}_{1}^{R}(R/I, M) = 0$」是同一句话 ✓。'
       ].join('\n'),

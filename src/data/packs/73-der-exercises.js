@@ -73,7 +73,7 @@ window.MG = window.MG || {};
         '$$0 \\longrightarrow E^{1,0}_{2} \\longrightarrow H^{1} \\longrightarrow E^{0,1}_{2} \\xrightarrow{\\ d_{2}\\ } E^{2,0}_{2} \\longrightarrow H^{2}.$$'
       ].join('\n'),
       notes: [
-        '**证明（逐页核对）。** 第一象限里 $d_{2} : E^{0,1}_{2} \\to E^{2,0}_{2}$ 是这两项唯一可能的非零微分 ✓；$E^{1,0}$ 与 $E^{0,1}$ 都活到 $E^{\\infty}$（没有更低的 $q$ 可以被打到）✓。\n\n把 $E^{\\infty}_{1,0} = \\operatorname{Gr}^{1}H^{1}$、$E^{\\infty}_{0,1} = \\operatorname{Gr}^{0}H^{1}$ 连同 $E^{\\infty}_{2,0} = \\operatorname{Gr}^{2}H^{2}$ 的过滤逐项拼起来，就得到上面这条链 ✓。\n\n∎',
+        '**证明（逐页核对）。** 第一象限里 $d_{2} : E^{0,1}_{2} \\to E^{2,0}_{2}$ 是这两项唯一可能的非零微分 ✓；$E^{1,0}_{\\infty} = E^{1,0}_{2}$、$E^{0,1}_{\\infty} = \\ker d_{2}$、$E^{2,0}_{\\infty} = \\operatorname{coker} d_{2}$（$d_{2} : E^{0,1}_{2} \\to E^{2,0}_{2}$ 是唯一可能的非零微分，$E^{0,1}$ 会被它打掉一部分）✓。\n\n把 $E^{\\infty}_{1,0} = \\operatorname{Gr}^{1}H^{1}$、$E^{\\infty}_{0,1} = \\operatorname{Gr}^{0}H^{1}$ 连同 $E^{\\infty}_{2,0} = \\operatorname{Gr}^{2}H^{2}$ 的过滤逐项拼起来，就得到上面这条链 ✓。\n\n∎',
         '⭐ 用处：这是「谱序列直接给出低次正合列」的标准工具，$H^{1}$ 与 $H^{2}$ 的低次项就从这里读出来。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.30']

@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-05T12:21:40.547Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:42:29.112Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -14401,7 +14401,7 @@ $X$ Baire、$\Omega \subseteq X$ 开 $\implies$ $\Omega$（带子空间拓扑）
 
 则 $O_n' \cup (X \setminus \overline{\Omega})$ 在 $X$ 中**稠密开**（并上的是开集 $X \setminus \overline{\Omega}$；$\Omega^{c}$ 本身不必开 —— $\Omega = (0,1)$、$O_n' = (0,1) \setminus \{1/m\}$ 时 $\Omega^{c}$ 会让并集丢掉 $0$ 的邻域）；
 
-于是 $\bigcap_n(O_n' \cup \Omega^c)$ 在 $X$ 稠密，与 $\Omega$ 相交得 $\bigcap_n O_n$ 在 $\Omega$ 稠密。
+于是 $\bigcap_n(O_n' \cup (X \setminus \overline{\Omega}))$ 在 $X$ 稠密，与 $\Omega$ 相交得 $\bigcap_n O_n$ 在 $\Omega$ 稠密。
 
 ⭐ 用处：开映射定理要在开集上做局部论证、UBP 要看开子集，这条保证「局部化之后 Baire 性质不丢」。
 
@@ -14513,7 +14513,7 @@ $$\|x_n\| < 2^{-n}, \qquad \Bigl\| y - u\Bigl(\sum_{j \le n} x_j\Bigr) \Bigr\| <
 
 **第三步：收尾。** 任取开集 $\Omega \subseteq E$ 与 $x \in \Omega$，取 $\rho > 0$ 使 $B(x, \rho) \subseteq \Omega$。由齐次性 $u(B(x,\rho)) = u(x) + \rho\, u(B_E) \supseteq u(x) + \rho r B_F$，这是 $u(x)$ 的一个邻域，含于 $u(\Omega)$。故 $u(\Omega)$ 开。$\square$
 
-**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：$E$ **靶** $F = (C[0,1], \|\cdot\|_1)$ 不完备时恒等映射 $(C[0,1], \|\cdot\|_\infty) \to (C[0,1], \|\cdot\|_1)$ 是连续双射但不开（$E = (C[0,1], \|\cdot\|_\infty)$ 其实是完备的）；$F$ 不完备的反例见闭图像定理那一条的注。
+**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：**靶** $F = (C[0,1], \|\cdot\|_1)$ 不完备时恒等映射 $(C[0,1], \|\cdot\|_\infty) \to (C[0,1], \|\cdot\|_1)$ 是连续双射但不开（$E = (C[0,1], \|\cdot\|_\infty)$ 其实是完备的）—— 上面这个恒等映射就是 $F$ 不完备的反例本身。
 
 **与闭图像定理的关系。** 第二步的「完备性去掉闭包」是这条定理真正的技术核心；闭图像定理反过来把它当工具用（先证 $\pi_1^{-1}$ 有界，再用它得到 $u$ 有界）。所以这两条不是彼此独立的：**开映射 $\implies$ 逆算子 $\implies$ 闭图像**。
 
@@ -23807,7 +23807,7 @@ $$H^{p+q}\bigl(\operatorname{Gr}^{p}K\bigr) \xrightarrow{\ k\ } H^{p+q+1}\bigl(F
 
 设 $\mathcal{A}$ 是阿贝尔范畴。$M \in \mathcal{A}$ 上的（**递降**）**过滤**是 $M$ 的子对象沿 $(\mathbb{Z}, \ge)$ 的图：
 
-$$\cdots \subseteq F^{n}M \subseteq F^{n+1}M \subseteq \cdots \subseteq M$$
+$$\cdots \supseteq F^{n}M \supseteq F^{n+1}M \supseteq \cdots \supseteq M$$
 
 总假定过滤是**穷尽的**（$\bigcup_{n} F^{n}M = M$）与**分离的**（$\bigcap_{n} F^{n}M = 0$）；若 $n \ll 0$ 时 $F^{n}M = M$ 且 $n \gg 0$ 时 $F^{n}M = 0$，叫**有限的**。
 
@@ -23848,15 +23848,15 @@ $$F^{p}H^{n} := \operatorname{im}\bigl(H^{n}(F^{p}K) \to H^{n}(K)\bigr)$$
 参考：Le Stum, An introduction to condensed mathematics, §7.2
 
 #### 过滤复形给出谱序列　`thm.filtered-complex-spectral`
-*定理*　下有界过滤复形 $\implies$ 谱序列
+*定理*　两侧有界过滤复形 $\implies$ 谱序列
 
-设 $K^{\bullet}$ 是**带过滤**的复形（递降过滤 $F^{p}K^{\bullet}$），且**下有界**（对每个 $n$，$p \ll 0$ 时 $F^{p}K^{n} = K^{n}$）。则存在谱序列
+设 $K^{\bullet}$ 是**带过滤**的复形（递降过滤 $F^{p}K^{\bullet}$），且**两侧有界**（对每个 $n$：$p \ll 0$ 时 $F^{p}K^{n} = K^{n}$，且 $p \gg 0$ 时 $F^{p}K^{n} = 0$ —— 只有前者不够，$Z^{p,q}_{r}$ 的稳定靠后者）。则存在谱序列
 
 $$E^{p,q}_{0} = \operatorname{Gr}^{p}K^{p+q} \;\Longrightarrow\; H^{p+q}(K^{\bullet}).$$
 
 **构造（逐页逼近的真身）。** 对 $r \ge 0$ 定义两族子对象
 $$Z^{p,q}_{r} := F^{p}K^{p+q} \cap (d^{p+q})^{-1}\bigl(F^{p+r}K^{p+q+1}\bigr), \qquad B^{p,q}_{r} := F^{p}K^{p+q} \cap d^{p+q-1}\bigl(F^{p-r+1}K^{p+q-1}\bigr),$$
-并令 $E^{p,q}_{r} := Z^{p,q}_{r}/B^{p,q}_{r}$。逐条读：
+并令 $E^{p,q}_{r} := Z^{p,q}_{r}/\bigl(B^{p,q}_{r} + Z^{p+1,q-1}_{r-1}\bigr)$（约定 $Z^{p,q}_{0} = F^{p}K^{p+q}$、$Z^{p,q}_{-1} = 0$；分母必须含 $Z^{p+1,q-1}_{r-1}$ 这一「更深过滤层」的代表元，否则 $E_{1}$ 会多出本该为零的项）。逐条读：
 - $r = 0$：$Z^{p,q}_{0} = F^{p}K^{p+q}$、$B^{p,q}_{0} = F^{p+1}K^{p+q}$，所以 $E^{p,q}_{0} = \operatorname{Gr}^{p}K^{p+q}$ —— **第一页就是把过滤一层层切开**；
 - $r = 1$：$Z^{p,q}_{1}$ 是 $\operatorname{Gr}^{p}K^{p+q}$ 里的闭上链、$B^{p,q}_{1}$ 是边界，故 $E^{p,q}_{1} = H^{p+q}(\operatorname{Gr}^{p}K^{\bullet})$；
 - 一般地，$d$ 把 $Z^{p,q}_{r}$ 送进 $Z^{p+r,q-r+1}_{r}$ 并把 $B^{p,q}_{r}$ 送进 $B^{p+r,q-r+1}_{r}$，因此下降为微分 $d_{r} : E^{p,q}_{r} \to E^{p+r,q-r+1}_{r}$，而**第 $r+1$ 页就是第 $r$ 页对 $d_{r}$ 取同调**：$E_{r+1} = H(E_{r}, d_{r})$。
@@ -23879,7 +23879,7 @@ $$d^{p+1,q} \circ d^{p,q} = 0, \qquad d'^{p,q+1} \circ d'^{p,q} = 0, \qquad d'^{
 
 前两条说「每个方向各自是复形」；**第三条说两个方向的微分交换**（差一个符号，视约定）。
 
-⭐ **怎么把它变成一个普通复形**：取**全复形** $K^{n} := \bigoplus_{p+q=n} K^{p,q}$，微分 $d + d'$（带符号）。于是双复形的同调与「逐行算完再逐列算」的关系，正是给出谱序列的地方。
+⭐ **怎么把它变成一个普通复形**：取**全复形** $K^{n} := \bigoplus_{p+q=n} K^{p,q}$（要求该直和存在：一般 $mathcal{A}$ 未必有可数直和 —— 有限维 $k$-向量空间范畴里每条对角线都可以有无穷多个非零项，此时全复形不存在；或用「每条对角线只有有限多个非零项」的版本），微分 $d + d'$（带符号）。于是双复形的同调与「逐行算完再逐列算」的关系，正是给出谱序列的地方。
 
 **典型来源**：把复形作内射消解时自然会得到双复形（$I^{p,q}$ 里 $p$ 是原复形的次数、$q$ 是消解的次数）。**Grothendieck 谱序列**就是从它来的。
 
@@ -23888,14 +23888,14 @@ $$d^{p+1,q} \circ d^{p,q} = 0, \qquad d'^{p,q+1} \circ d'^{p,q} = 0, \qquad d'^{
 #### Grothendieck 谱序列　`cor.grothendieck-spectral`
 *推论*　Grothendieck 谱序列
 
-设 $\mathcal{A} \xrightarrow{F} \mathcal{A}' \xrightarrow{G} \mathcal{A}''$ 是加法函子，$\mathcal{A}, \mathcal{A}'$ **有足够多内射**、且 $F$ 把内射对象送到 $G$-零调对象。则存在谱序列
+设 $\mathcal{A} \xrightarrow{F} \mathcal{A}' \xrightarrow{G} \mathcal{A}''$ 是**左正合**加法函子，$\mathcal{A}, \mathcal{A}'$ **有足够多内射**、且 $F$ 把内射对象送到 $G$-零调对象。则存在谱序列（⚠️ 左正合不能省：$F = \operatorname{Hom}(\mathbb{Z}/2, -)$、$G = -\otimes \mathbb{Z}/2$ 时 $G$ 把内射全杀掉，$E_{2}$ 全零，而 $GF \cong F$ 给 $R^{0}(GF)(\mathbb{Z}/2) = \mathbb{Z}/2$）
 
 $$E^{p,q}_{2} = R^{p}G\bigl(R^{q}F(M)\bigr) \;\Longrightarrow\; R^{p+q}(G \circ F)(M).$$
 
 ⭐ **它的用处**：想算复合函子的导出函子 $R^{n}(G \circ F)$，可以**先算 $R^{q}F$、再算 $R^{p}G$**，中间用谱序列把两层的贡献拼起来。这是同调代数里最基本的「两步走」工具。
 
 **证明（双复形 + 两个谱序列）。** 取 $M$ 的内射消解 $I^{\bullet}$，令 $A^{\bullet} := F I^{\bullet}$。
-- 由假设，$I^{n}$ 内射，故 $FI^{n}$ 是 $G$-零调的，所以 $A^{\bullet}$ 是 $FM$ 的一个**由 $G$-零调对象组成的**右消解，于是 $R(G\circ F)M = G A^{\bullet}$ 在导出范畴里（Leray 零调性），即 $R^{n}(G\circ F)M = H^{n}(GA^{\bullet})$；
+- 由假设，$I^{n}$ 内射，故 $FI^{n}$ 是 $G$-零调的，由 $F$ **左正合**得 $0 \to FM \to FI^{\bullet}$ 正合，所以 $A^{\bullet} = FI^{\bullet}$ 是 $FM$ 的右消解、且各项由 $G$-零调对象组成（⚠️ 这一步用的正是左正合；没有它，$FI^{\bullet}$ 只表示 $RF(M)$、未必消解 $FM$），于是 $R(G\circ F)M = G A^{\bullet}$ 在导出范畴里（Leray 零调性），即 $R^{n}(G\circ F)M = H^{n}(GA^{\bullet})$；
 
 
 - 再对 $A^{\bullet}$ 取 **Cartan–Eilenberg 分解** $J^{\bullet,\bullet}$（每个 $J^{p,\bullet}$ 是 $A^{p}$ 的 $G$-零调消解，横竖两方向的同调都算得出来）；
@@ -23959,7 +23959,7 @@ $$E^{0,q}_{r} = E^{0,q}_{r+1} = \cdots = E^{0,q}_{\infty} ✓$$
 
 $$0 \longrightarrow E^{1,0}_{2} \longrightarrow H^{1} \longrightarrow E^{0,1}_{2} \xrightarrow{\ d_{2}\ } E^{2,0}_{2} \longrightarrow H^{2}.$$
 
-**证明（逐页核对）。** 第一象限里 $d_{2} : E^{0,1}_{2} \to E^{2,0}_{2}$ 是这两项唯一可能的非零微分 ✓；$E^{1,0}$ 与 $E^{0,1}$ 都活到 $E^{\infty}$（没有更低的 $q$ 可以被打到）✓。
+**证明（逐页核对）。** 第一象限里 $d_{2} : E^{0,1}_{2} \to E^{2,0}_{2}$ 是这两项唯一可能的非零微分 ✓；$E^{1,0}_{\infty} = E^{1,0}_{2}$、$E^{0,1}_{\infty} = \ker d_{2}$、$E^{2,0}_{\infty} = \operatorname{coker} d_{2}$（$d_{2} : E^{0,1}_{2} \to E^{2,0}_{2}$ 是唯一可能的非零微分，$E^{0,1}$ 会被它打掉一部分）✓。
 
 把 $E^{\infty}_{1,0} = \operatorname{Gr}^{1}H^{1}$、$E^{\infty}_{0,1} = \operatorname{Gr}^{0}H^{1}$ 连同 $E^{\infty}_{2,0} = \operatorname{Gr}^{2}H^{2}$ 的过滤逐项拼起来，就得到上面这条链 ✓。
 
@@ -24011,7 +24011,7 @@ $$R^{n}G\bigl(F(K)\bigr) \;\cong\; R^{n}(G \circ F)(K);$$
 
 ∎
 
-⭐ 用处：**第一象限**谱序列里，这条图画出来一眼就能看出哪些项会活到 $E_{\infty}$（比如 $E^{0,q}$ 只可能被从左上来的箭头打到）。
+⭐ 用处：**第一象限**谱序列里，这条图画出来一眼就能看出哪些项会活到 $E_{\infty}$（比如第一象限里 $E^{0,q}$ **没有**入微分 —— 源 $(-r, q+r-1)$ 恒为零，但它可能有非零的**出**微分，照样会被打掉）。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 7.28
 
@@ -25353,7 +25353,7 @@ $$M_{1} \otimes_{R} N \xrightarrow{\;f \otimes 1\;} M \otimes_{R} N \xrightarrow
 
 （右端那个 $\to 0$ 永远正合；缺的只有左端的 $0$。）
 
-**证明（伴随路线，最快）**：由 `thm.hom-tensor-adjunction-mod`，$(-) \otimes_{R} N \dashv \operatorname{Hom}_{R}(N, -)$。
+**证明（伴随路线，最快）**：由 `thm.hom-tensor-adjunction-mod`，$(-) \otimes_{R} N \dashv \operatorname{Hom}_{\mathbb{Z}}(N, -)$（值域是 $\mathbf{Ab}$，右伴随取 $\mathbb{Z}$-线性同态）。
 
 左伴随保所有余极限，而余核是两项图的余极限，故 $(-) \otimes N$ 保余核 —— 对加法函子来说「保余核」正是「把短正合列送成 $M_{1} \otimes N \to M \otimes N \to M_{2} \otimes N \to 0$ 正合」✓。
 
@@ -25482,7 +25482,7 @@ $I$ 是 $R$ 的理想，作为 $R$-模显然无挠；但它不平坦 —— $x, 
 #### 只需有限生成理想　`thm.lambek`
 *定理*　Lambek 判据（平坦性只需对有限生成理想检验）
 
-设 $R$ 是含幺环，$M$ 是**左** $R$-模。则 $M$ 平坦，当且仅当：对每个**有限生成右理想** $I \subseteq R$，乘法映射
+设 $R$ 是**含幺 Noether 环**，$M$ 是**左** $R$-模。（一般含幺环上判据仍成立，但下面的归纳证明要用「子模仍有限生成」；非 Noether 情形需改用滤过余极限，本节点不展开。）则 $M$ 平坦，当且仅当：对每个**有限生成右理想** $I \subseteq R$，乘法映射
 
 $$I \otimes_{R} M \longrightarrow M, \qquad a \otimes m \longmapsto a m$$
 
@@ -25498,11 +25498,11 @@ $$I \otimes_{R} M \longrightarrow M, \qquad a \otimes m \longmapsto a m$$
 
 **第二步（化到自由模的子模）**：取满射 $R^{n} \twoheadrightarrow M_{1}$（$M_{1}$ 是 $M$ 的有限生成子模），令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \to K \to R^{n} \to M_{1} \to 0$。
 
-把两个列各自张量后比较，「$K \otimes M \to R^{n} \otimes M$ 单」蕴含「$M_{1} \otimes M \to M \otimes M$ 单」（蛇引理）。
+把两个列各自张量后比较：$K \otimes M \to R^{n} \otimes M \to M_{1} \otimes M \to 0$ 正合，故「$K \otimes M \to R^{n} \otimes M$ 单」等价于「$R^{n} \otimes M \to M_{1} \otimes M$ 单」（蛇引理）。
 
 于是只需证：对每个**有限生成**子模 $K \subseteq R^{n}$，$K \otimes M \to R^{n} \otimes M$ 单。
 
-**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \oplus R$，令 $K_{1} := K \cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想）。⚠️ $K_{1}$ **未必有限生成**（$K$ 有限生成不保证交子模有限生成 —— 非 Noether 环上有反例），所以归纳假设不能直接用在 $K_{1}$ 上；要么先对 $K_{1}$ 再作一次有限生成化，要么**限定 $R$ 是 Noether 环**。在该前提下，有短正合列
+**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \oplus R$，令 $K_{1} := K \cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的投影（$R$ 的有限生成**右**理想 —— 与判据里的右理想同侧；$K \subseteq R^{n}$ 按右子模记账）。⚠️ $K_{1}$ **未必有限生成**（$K$ 有限生成不保证交子模有限生成 —— 非 Noether 环上有反例），所以归纳假设不能直接用在 $K_{1}$ 上；要么先对 $K_{1}$ 再作一次有限生成化，要么**限定 $R$ 是 Noether 环**。在该前提下，有短正合列
 
 $$0 \to K_{1} \to K \to K_{2} \to 0, \qquad 0 \to R^{n-1} \to R^{n} \to R \to 0 .$$
 
@@ -25639,7 +25639,7 @@ $(2) \implies (1)$：任取单射 $f : M_{1} \rightarrowtail M$，要证 $F\otim
 $$\operatorname{Tor}_{1}^{R}(F,\ M/M_{1}) \to F\otimes M_{1} \to F\otimes M \to F\otimes M/M_{1} \to 0 ,$$
 左端为零（条件 2），故 $F\otimes M_{1} \to F\otimes M$ 是**单射** ✓，即 $F\otimes -$ 正合 ✓。∎
 
-**三条里 (2)$\implies$(3) 是唯一要归纳的，(1)$\iff$(2) 只是定义**：
+**三条里 (2)$\implies$(3) 是唯一要归纳的；(1)$\iff$(2) 要用一次长正合列**：
 
 - (1) $\iff$ (2)：**要用一次长正合列**（平坦 = $(-)\otimes F$ 正合；它与「$\operatorname{Tor}_{1}$ 恒消失」的等价由 $\operatorname{Tor}$ 的长正合列给出，不是纯定义展开）。
 - (2) $\implies$ (3)：**这一步要用“维数偏移”**：若 $\operatorname{Tor}_{1}(F, N) = 0$ 对一切 $N$，则取 $N$ 的短正合列，用长正合列归纳得 $\operatorname{Tor}_{n} = 0$。⚠️ 需要「长正合列」这一工具（`thm.long-exact` 的 Tor 版本）。
@@ -26703,7 +26703,7 @@ $$s_{n}[g_{0}|\cdots|g_{n}] := [1|g_{0}|\cdots|g_{n}] \qquad (n \ge 0), \qquad s
 #### 用标准消解计算群上同调　`prop.group-cohom-compute`
 *命题*　用标准消解计算：$H^{n}(G, M) = H^{n}\bigl(C^{\bullet}(G, M)\bigr)$
 
-设 $M$ 是 $G$-模。令
+设 $M$ 是 **$R[G]$-模**（$G$-模就是 $\mathbb{Z}[G]$-模；这里写 $\operatorname{Hom}_{R[G]}$，所以 $M$ 必须是 $R[G]$-模 —— 取 $R = \mathbb{Z}$ 就回到普通的 $G$-模）。令
 
 $$C^{n}(G, M) := \operatorname{Hom}_{R[G]}\bigl(B_{n},\ M\bigr) \;\cong\; \bigl\{\, c : G^{n} \to M \,\bigr\}$$
 
@@ -26801,7 +26801,7 @@ $$g \cdot a := \tilde g\, a\, \tilde g^{-1}, \qquad \tilde g \in \pi^{-1}(g),$$
 **良定义性**：若 $\tilde g^{\prime} = \tilde g\, i(a_{0})$，则 $\tilde g^{\prime} a \tilde g^{\prime -1} = \tilde g a_{0} a a_{0}^{-1} \tilde g^{-1} = \tilde g a \tilde g^{-1}$ —— 这一步**正好用了 $A$ 交换**。
 
 **三类扩张，分别由不同的东西管**：
-- **分裂的**（有群同态截面 $G \to E$）：$E \cong A \rtimes_{\varphi} G$；截面的选择由 $H^{1}(G, A)$ 管。
+- **分裂的**（有群同态截面 $G \to E$）：$E \cong A \rtimes_{\varphi} G$；分裂扩张**本身只有一个同构类**；$H^{1}(G, A)$ 管的是**截面的选择**（固定半直积下截面的共轭类）。
 - **一般的**：由 $H^{2}(G, A)$ 管（见「二维上同调分类群扩张」）。
 - **$G$ 在 $A$ 上作用平凡**：此时扩张就是「$A$ 被 $G$ 的阿贝尔扩张」，由 $\operatorname{Ext}^{1}_{\mathbb{Z}}(G, A)$ 分类 —— 这一档与 $H^{2}$ 在作用平凡时重合。
 
@@ -26864,7 +26864,7 @@ $$(a_{1}, g_{1})(a_{2}, g_{2}) := \bigl(a_{1} + g_{1} a_{2} + c(g_{1}, g_{2}),\ 
 
 高次上同调对应的是更高阶的结合性障碍（$A_{\infty}$ 结构那一套），这里不需要。
 
-**与 $\operatorname{Ext}$ 的关系**：当 $G$ 在 $A$ 上**作用平凡**时，扩张就是阿贝尔语境里的「$A$ 被 $G$ 的扩张」，由 $\operatorname{Ext}^{1}_{\mathbb{Z}}(G, A)$ 分类；
+**与 $\operatorname{Ext}$ 的关系**：当 $G$ 在 $A$ 上**作用平凡**时，$H^{2}(G, A) \cong \operatorname{Ext}^{1}_{\mathbb{Z}}(G^{\mathrm{ab}}, A) \oplus \operatorname{Hom}(H_{2}(G), A)$ —— **不是**只有 $\operatorname{Ext}^{1}$：$G = \mathbb{Z}^{2}$、$A = \mathbb{Z}$ 时 $\operatorname{Ext}^{1}(\mathbb{Z}^{2}, \mathbb{Z}) = 0$，但 Heisenberg 扩张 $1 \to \mathbb{Z} \to H \to \mathbb{Z}^{2} \to 1$ 不分裂、对应 $H^{2} \cong \mathbb{Z} \ne 0$；只有 $H_{2}(G) = 0$（如自由群）时才退化为 $\operatorname{Ext}^{1}$；
 
 一般情形 $H^{2}(G, A)$ 更大 —— 它同时记录了作用不平凡的拼法。
 
@@ -26881,7 +26881,7 @@ $$(a_{1}, g_{1})(a_{2}, g_{2}) := \bigl(a_{1} + g_{1} a_{2} + c(g_{1}, g_{2}),\ 
 - 上圈 $\implies$ 扩张：对归一化上圈，题中乘法直接验证群公理；一般上圈须先归一化，不能默认单位元总是 $(0,1)$。
 - 两种构造互逆：须把扩张等价限定为在核 $A$ 与商 $G$ 上都是恒等的同构；差一个上边界才给出这种等价，并非任意抽象群同构。
 - 零类 $\iff$ 分裂：同态截面给出零上圈；反向用上边界调整截面。这需要固定作用，不要求作用平凡。
-- 阿贝尔核不可省，否则普通群上同调不适用；作用平凡也只保证中心扩张，不能推出阿贝尔扩张。例：整数 Heisenberg 群是 $\mathbb Z^2$ 的中心扩张而非阿贝尔群，故原注把此类扩张全归为 $\operatorname{Ext}^1_{\mathbb Z}$ 分类不成立。
+- 阿贝尔核不可省，否则普通群上同调不适用；作用平凡也只保证中心扩张，不能推出阿贝尔扩张。例：整数 Heisenberg 群是 $\mathbb Z^2$ 的中心扩张而非阿贝尔群，所以不能把此类扩张全归为 $\operatorname{Ext}^1_{\mathbb Z}$ 分类（本注已按 ^2$ 的一般公式写）。
 
 参考：Weibel, An Introduction to Homological Algebra, Section 6.5（扩张与二维上同调）；Rotman, An Introduction to Homological Algebra —— 群上同调一章
 
@@ -26912,7 +26912,7 @@ $$i\bigl(d(g_{1}g_{2})\bigr) s(g_{1}g_{2}) = i\bigl(d(g_{1})\bigr) s(g_{1})\, i\
 
 $$s(g) \longmapsto i(a)^{-1} s(g) i(a) = i\bigl(g \cdot a - a\bigr)\, s(g),$$
 
-也就是把 $d$ 换成 $d + (g \mapsto g \cdot a - a)$ —— 恰好加上一个**主**交叉同态。反过来任何保持 $i$ 与 $\pi$ 的扩张同构都能写成这样的共轭，于是 $A$-共轭类恰是 $H^{1}$ 的元素。∎
+也就是把 $d$ 换成 $d + (g \mapsto g \cdot a - a)$ —— 恰好加上一个**主**交叉同态。反过来，**$A$-内共轭**（即用 $A$ 中元素做的共轭）都能写成这样；但保持 $i$ 与 $\pi$ 的**任意**自同构不必是内共轭（分裂扩张 $G \times A$ 上 $(g,a) \mapsto (g, a + \varphi(g))$、$\varphi \in \operatorname{Hom}(G,A)$ 非主，就是反例），于是 $A$-共轭类恰是 $H^{1}$ 的元素。∎
 
 ⚠️⚠️ **最容易误读的一条**：$H^{1}(G, A)$ **不是**「分裂扩张的同构类」。
 
@@ -26922,7 +26922,7 @@ $H^{1}$ 分类的是**截面（分裂方式）的选择**。
 
 举例最清楚：$G = A = \mathbb{Z}/2$、作用平凡时 $H^{1} = \operatorname{Hom}(\mathbb{Z}/2, \mathbb{Z}/2) = \mathbb{Z}/2 \ne 0$，而分裂扩张只有 $\mathbb{Z}/2 \times \mathbb{Z}/2$ 一个同构类。
 
-⭐ **分工**：$H^{2}$ 管「拼得上拼不上」，$H^{1}$ 管「拼法内部还能怎么挪」。这也解释了作用的平凡化为何让 $H^{1}$ 变大而不是变小 —— 截面可以自由地在直积的两条腿上错动。
+⭐ **分工**：$H^{2}$ 管「拼得上拼不上」，$H^{1}$ 管「拼法内部还能怎么挪」。这也说明作用改变时 $H^{1}$ 可大可小（$G = C_{2}$ 以符号作用在 $\mathbb{Z}$ 上时 $H^{1} = \mathbb{Z}/2$，改成平凡作用后 $H^{1} = \operatorname{Hom}(C_{2}, \mathbb{Z}) = 0$ —— 反而变小了） —— 截面可以自由地在直积的两条腿上错动。
 
 **各方向用到的假设**（固定分裂扩张及一个基准截面后，分类的是截面）：
 - 同态截面 $s'$ $\implies$ 交叉同态：用 $s'(g)s(g)^{-1}\in i(A)$ 唯一定义 $d(g)$，同态条件展开即上圈关系；基准截面已经给定，不另用选择公理。
@@ -26952,7 +26952,7 @@ $$0 \to \ker\delta^{0} \to M \to \ker\delta^{1} \to \ker\delta^{1}\big/\operator
 
 写出来就是它 —— 三段正合各只用到定义。
 
-**「作用平凡」那句**：$\delta^{0} m$ 是常函数 $g \mapsto g m - m$；作用平平时恒为 $0$，于是 $B^{1} = 0$、$Z^{1} = \operatorname{Hom}(G, M)$。
+**「作用平凡」那句**：$\delta^{0} m$ 是函数 $g \mapsto g m - m$（**不是常函数**：$G = C_{2}$ 符号作用、$m = 1$ 时它在 $1$ 处取 $0$、在生成元处取 $-2$）；只有作用平平时才恒为 $0$，于是 $B^{1} = 0$、$Z^{1} = \operatorname{Hom}(G, M)$。
 
 **第二行是长正合列的头几项**：$0 \to A \to B \to C \to 0$ 取右导出函子（$R^{0} = (-)^{G}$、$R^{1} = H^{1}$）得到的长正合列，按定义就是这一段；连接同态 $\partial$ 把「$C$ 的不动点」送到「$A$ 的一维上同调」。
 
@@ -42813,7 +42813,7 @@ Baer 判据的全部内容就是「把任意单射 $A \rightarrowtail B$ 换成�
 #### 张量与内同态的伴随 ⟹ 张量函子右正合　`imp.tensor-right-exact`
 *左伴随保余极限 $\implies$ 张量右正合*
 
-由伴随 $(-) \otimes_{R} N \dashv \operatorname{Hom}_{R}(N, -)$，左伴随保**所有**余极限。
+由伴随 $(-) \otimes_{R} N \dashv \operatorname{Hom}_{\mathbb{Z}}(N, -)$（值域是 $\mathbf{Ab}$，右伴随取 $\mathbb{Z}$-线性同态），左伴随保**所有**余极限。
 
 而余核是两项图的余极限：$\operatorname{coker}(f) = \mathrm{colim}\bigl(M_{1} \xrightarrow{f} M\bigr)$。故 $(-) \otimes N$ 保余核 ✓。
 
@@ -42909,7 +42909,7 @@ $$0 \longrightarrow M \xrightarrow{\;\cdot r\;} M$$
 
 **第三步（对 $n$ 归纳）**：只需证对每个有限生成右子模 $K \subseteq R^{n}$，$K \otimes M \to R^{n} \otimes M$ 单。\n\n⚠ **骨架声明**：这一步只在 $R$ **诺特**时直接成立（那时 $K_{1} = K \cap R^{n-1}$ 自动有限生成）。一般环上 $K_{1}$ 未必有限生成，标准补法是换用「$K$ 在 $R^{n}$ 中的**有限生成子模**上取滤过余极限」的论证（或直接引 Lambek 原文的归纳），**本图没有把这套补法展开** —— 所以下面两行的归纳只当**思路**读，不当完整证明。
 - $n = 1$：$K$ 是有限生成右理想，正是假设 ✓。
-- $n > 1$：写 $R^{n} = R^{n-1} \oplus R$，令 $K_{1} = K \cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则 $0 \to K_{1} \to K \to K_{2} \to 0$ 与 $0 \to R^{n-1} \to R^{n} \to R \to 0$ 正合（**归到诺特情形才严格**，见上面的骨架声明）。
+- $n > 1$：写 $R^{n} = R^{n-1} \oplus R$，令 $K_{1} = K \cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的投影（$R$ 的有限生成**右**理想 —— 与判据里的右理想同侧；$K \subseteq R^{n}$ 按右子模记账），则 $0 \to K_{1} \to K \to K_{2} \to 0$ 与 $0 \to R^{n-1} \to R^{n} \to R \to 0$ 正合（**归到诺特情形才严格**，见上面的骨架声明）。
 
 张量后两列竖直映射（$K_{1} \to$ 与 $K_{2} \to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \otimes M \to R^{n} \otimes M$ 单 ✓。
 

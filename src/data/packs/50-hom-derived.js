@@ -305,18 +305,18 @@ window.MG = window.MG || {};
       cluster: 'hom.spectral',
       type: 'theorem',
       label: '过滤复形给出谱序列',
-      title: '下有界过滤复形 $\\implies$ 谱序列',
+      title: '两侧有界过滤复形 $\\implies$ 谱序列',
       regions: ['homology'],
       tags: ['同调代数', '谱序列', '过滤', '下有界'],
       statement: [
-        '设 $K^{\\bullet}$ 是**带过滤**的复形（递降过滤 $F^{p}K^{\\bullet}$），且**下有界**（对每个 $n$，$p \\ll 0$ 时 $F^{p}K^{n} = K^{n}$）。则存在谱序列',
+        '设 $K^{\\bullet}$ 是**带过滤**的复形（递降过滤 $F^{p}K^{\\bullet}$），且**两侧有界**（对每个 $n$：$p \\ll 0$ 时 $F^{p}K^{n} = K^{n}$，且 $p \\gg 0$ 时 $F^{p}K^{n} = 0$ —— 只有前者不够，$Z^{p,q}_{r}$ 的稳定靠后者）。则存在谱序列',
         '',
         '$$E^{p,q}_{0} = \\operatorname{Gr}^{p}K^{p+q} \\;\\Longrightarrow\\; H^{p+q}(K^{\\bullet}).$$'
       ].join('\n'),
       notes: [
         ['**构造（逐页逼近的真身）。** 对 $r \\ge 0$ 定义两族子对象',
           '$$Z^{p,q}_{r} := F^{p}K^{p+q} \\cap (d^{p+q})^{-1}\\bigl(F^{p+r}K^{p+q+1}\\bigr), \\qquad B^{p,q}_{r} := F^{p}K^{p+q} \\cap d^{p+q-1}\\bigl(F^{p-r+1}K^{p+q-1}\\bigr),$$',
-          '并令 $E^{p,q}_{r} := Z^{p,q}_{r}/B^{p,q}_{r}$。逐条读：',
+          '并令 $E^{p,q}_{r} := Z^{p,q}_{r}/\\bigl(B^{p,q}_{r} + Z^{p+1,q-1}_{r-1}\\bigr)$（约定 $Z^{p,q}_{0} = F^{p}K^{p+q}$、$Z^{p,q}_{-1} = 0$；分母必须含 $Z^{p+1,q-1}_{r-1}$ 这一「更深过滤层」的代表元，否则 $E_{1}$ 会多出本该为零的项）。逐条读：',
           '- $r = 0$：$Z^{p,q}_{0} = F^{p}K^{p+q}$、$B^{p,q}_{0} = F^{p+1}K^{p+q}$，所以 $E^{p,q}_{0} = \\operatorname{Gr}^{p}K^{p+q}$ —— **第一页就是把过滤一层层切开**；',
           '- $r = 1$：$Z^{p,q}_{1}$ 是 $\\operatorname{Gr}^{p}K^{p+q}$ 里的闭上链、$B^{p,q}_{1}$ 是边界，故 $E^{p,q}_{1} = H^{p+q}(\\operatorname{Gr}^{p}K^{\\bullet})$；',
           '- 一般地，$d$ 把 $Z^{p,q}_{r}$ 送进 $Z^{p+r,q-r+1}_{r}$ 并把 $B^{p,q}_{r}$ 送进 $B^{p+r,q-r+1}_{r}$，因此下降为微分 $d_{r} : E^{p,q}_{r} \\to E^{p+r,q-r+1}_{r}$，而**第 $r+1$ 页就是第 $r$ 页对 $d_{r}$ 取同调**：$E_{r+1} = H(E_{r}, d_{r})$。',
@@ -343,7 +343,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '前两条说「每个方向各自是复形」；**第三条说两个方向的微分交换**（差一个符号，视约定）。',
-        '⭐ **怎么把它变成一个普通复形**：取**全复形** $K^{n} := \\bigoplus_{p+q=n} K^{p,q}$，微分 $d + d\'$（带符号）。于是双复形的同调与「逐行算完再逐列算」的关系，正是给出谱序列的地方。',
+        '⭐ **怎么把它变成一个普通复形**：取**全复形** $K^{n} := \\bigoplus_{p+q=n} K^{p,q}$（要求该直和存在：一般 $mathcal{A}$ 未必有可数直和 —— 有限维 $k$-向量空间范畴里每条对角线都可以有无穷多个非零项，此时全复形不存在；或用「每条对角线只有有限多个非零项」的版本），微分 $d + d\'$（带符号）。于是双复形的同调与「逐行算完再逐列算」的关系，正是给出谱序列的地方。',
         '**典型来源**：把复形作内射消解时自然会得到双复形（$I^{p,q}$ 里 $p$ 是原复形的次数、$q$ 是消解的次数）。**Grothendieck 谱序列**就是从它来的。',
       ].join('\n\n'),
       refs: ['Le Stum, Definition 7.2.17'],
@@ -358,14 +358,14 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '谱序列', 'Grothendieck', '复合函子'],
       statement: [
-        '设 $\\mathcal{A} \\xrightarrow{F} \\mathcal{A}\' \\xrightarrow{G} \\mathcal{A}\'\'$ 是加法函子，$\\mathcal{A}, \\mathcal{A}\'$ **有足够多内射**、且 $F$ 把内射对象送到 $G$-零调对象。则存在谱序列',
+        '设 $\\mathcal{A} \\xrightarrow{F} \\mathcal{A}\' \\xrightarrow{G} \\mathcal{A}\'\'$ 是**左正合**加法函子，$\\mathcal{A}, \\mathcal{A}\'$ **有足够多内射**、且 $F$ 把内射对象送到 $G$-零调对象。则存在谱序列（⚠️ 左正合不能省：$F = \\operatorname{Hom}(\\mathbb{Z}/2, -)$、$G = -\\otimes \\mathbb{Z}/2$ 时 $G$ 把内射全杀掉，$E_{2}$ 全零，而 $GF \\cong F$ 给 $R^{0}(GF)(\\mathbb{Z}/2) = \\mathbb{Z}/2$）',
         '',
         '$$E^{p,q}_{2} = R^{p}G\\bigl(R^{q}F(M)\\bigr) \\;\\Longrightarrow\\; R^{p+q}(G \\circ F)(M).$$'
       ].join('\n'),
       notes: [
         '⭐ **它的用处**：想算复合函子的导出函子 $R^{n}(G \\circ F)$，可以**先算 $R^{q}F$、再算 $R^{p}G$**，中间用谱序列把两层的贡献拼起来。这是同调代数里最基本的「两步走」工具。',
         ['**证明（双复形 + 两个谱序列）。** 取 $M$ 的内射消解 $I^{\\bullet}$，令 $A^{\\bullet} := F I^{\\bullet}$。',
-          '- 由假设，$I^{n}$ 内射，故 $FI^{n}$ 是 $G$-零调的，所以 $A^{\\bullet}$ 是 $FM$ 的一个**由 $G$-零调对象组成的**右消解，于是 $R(G\\circ F)M = G A^{\\bullet}$ 在导出范畴里（Leray 零调性），即 $R^{n}(G\\circ F)M = H^{n}(GA^{\\bullet})$；\n\n',
+          '- 由假设，$I^{n}$ 内射，故 $FI^{n}$ 是 $G$-零调的，由 $F$ **左正合**得 $0 \\to FM \\to FI^{\\bullet}$ 正合，所以 $A^{\\bullet} = FI^{\\bullet}$ 是 $FM$ 的右消解、且各项由 $G$-零调对象组成（⚠️ 这一步用的正是左正合；没有它，$FI^{\\bullet}$ 只表示 $RF(M)$、未必消解 $FM$），于是 $R(G\\circ F)M = G A^{\\bullet}$ 在导出范畴里（Leray 零调性），即 $R^{n}(G\\circ F)M = H^{n}(GA^{\\bullet})$；\n\n',
           '- 再对 $A^{\\bullet}$ 取 **Cartan–Eilenberg 分解** $J^{\\bullet,\\bullet}$（每个 $J^{p,\\bullet}$ 是 $A^{p}$ 的 $G$-零调消解，横竖两方向的同调都算得出来）；',
           '- 双复形的两个谱序列：按 $p$ 先过滤收敛到 $H^{p+q}(G J^{\\bullet,\\bullet}) = R^{p+q}(G\\circ F)M$，而它的 $E_{2}$ 页是「先竖后横」算出来的 $R^{p}G\\bigl(H^{q}(A^{\\bullet})\\bigr) = R^{p}G\\bigl(R^{q}FM\\bigr)$；\n\n另一个谱序列（先横后竖）因为每列都是零调消解而在 $E_{2}$ 页退化，两边收敛到同一个东西。\n\n∎',
           '细节在前两条里：Cartan–Eilenberg 分解的存在性，双复形谱序列的收敛与 $E_{2}$ 页的识别。'

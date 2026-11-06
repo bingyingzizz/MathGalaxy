@@ -724,7 +724,7 @@ window.MG = window.MG || {};
           '$$\\operatorname{Tor}_{1}^{R}(F,\\ M/M_{1}) \\to F\\otimes M_{1} \\to F\\otimes M \\to F\\otimes M/M_{1} \\to 0 ,$$',
           '左端为零（条件 2），故 $F\\otimes M_{1} \\to F\\otimes M$ 是**单射** ✓，即 $F\\otimes -$ 正合 ✓。∎',
         ,
-        '**三条里 (2)$\\implies$(3) 是唯一要归纳的，(1)$\\iff$(2) 只是定义**：\n' +
+        '**三条里 (2)$\\implies$(3) 是唯一要归纳的；(1)$\\iff$(2) 要用一次长正合列**：\n' +
         '\n' +
         '- (1) $\\iff$ (2)：**要用一次长正合列**（平坦 = $(-)\\otimes F$ 正合；它与「$\\operatorname{Tor}_{1}$ 恒消失」的等价由 $\\operatorname{Tor}$ 的长正合列给出，不是纯定义展开）。\n' +
         '- (2) $\\implies$ (3)：**这一步要用“维数偏移”**：若 $\\operatorname{Tor}_{1}(F, N) = 0$ 对一切 $N$，则取 $N$ 的短正合列，用长正合列归纳得 $\\operatorname{Tor}_{n} = 0$。⚠️ 需要「长正合列」这一工具（`thm.long-exact` 的 Tor 版本）。\n' +

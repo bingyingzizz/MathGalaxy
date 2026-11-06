@@ -170,7 +170,7 @@ window.MG = window.MG || {};
       notes: [
         '证法：设 $O_n$ 在 $\\Omega$ 里稠密开，写 $O_n = \\Omega \\cap O_n\'$（$O_n\'$ 在 $X$ 中开）。\n\n' +
         '则 $O_n\' \\cup (X \\setminus \\overline{\\Omega})$ 在 $X$ 中**稠密开**（并上的是开集 $X \\setminus \\overline{\\Omega}$；$\\Omega^{c}$ 本身不必开 —— $\\Omega = (0,1)$、$O_n\' = (0,1) \\setminus \\{1/m\\}$ 时 $\\Omega^{c}$ 会让并集丢掉 $0$ 的邻域）；\n\n' +
-        '于是 $\\bigcap_n(O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密，与 $\\Omega$ 相交得 $\\bigcap_n O_n$ 在 $\\Omega$ 稠密。',
+        '于是 $\\bigcap_n(O_n\' \\cup (X \\setminus \\overline{\\Omega}))$ 在 $X$ 稠密，与 $\\Omega$ 相交得 $\\bigcap_n O_n$ 在 $\\Omega$ 稠密。',
         '⭐ 用处：开映射定理要在开集上做局部论证、UBP 要看开子集，这条保证「局部化之后 Baire 性质不丢」。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
@@ -287,7 +287,7 @@ window.MG = window.MG || {};
         '$$\\|x_n\\| < 2^{-n}, \\qquad \\Bigl\\| y - u\\Bigl(\\sum_{j \\le n} x_j\\Bigr) \\Bigr\\| < r\\,2^{-n} .$$',
         '因为 $\\sum \\|x_n\\| < 1$ 而 $E$ **完备**，级数 $x := \\sum_{n} x_n$ 收敛，且 $\\|x\\| < 1$。又 $u$ 连续，故 $u(x) = \\lim_n u(\\sum_{j\\le n} x_j) = y$。于是 $y = u(x)$ 且 $\\|x\\| < 1$，即 $y \\in u(B_E)$。',
         '**第三步：收尾。** 任取开集 $\\Omega \\subseteq E$ 与 $x \\in \\Omega$，取 $\\rho > 0$ 使 $B(x, \\rho) \\subseteq \\Omega$。由齐次性 $u(B(x,\\rho)) = u(x) + \\rho\\, u(B_E) \\supseteq u(x) + \\rho r B_F$，这是 $u(x)$ 的一个邻域，含于 $u(\\Omega)$。故 $u(\\Omega)$ 开。$\\square$',
-        '**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：$E$ **靶** $F = (C[0,1], \\|\\cdot\\|_1)$ 不完备时恒等映射 $(C[0,1], \\|\\cdot\\|_\\infty) \\to (C[0,1], \\|\\cdot\\|_1)$ 是连续双射但不开（$E = (C[0,1], \\|\\cdot\\|_\\infty)$ 其实是完备的）；$F$ 不完备的反例见闭图像定理那一条的注。',
+        '**两条假设各管什么。** $F$ 完备只用在第一步（要纲定理）；$E$ 完备只用在第二步（要级数收敛）。两个缺一不可：**靶** $F = (C[0,1], \\|\\cdot\\|_1)$ 不完备时恒等映射 $(C[0,1], \\|\\cdot\\|_\\infty) \\to (C[0,1], \\|\\cdot\\|_1)$ 是连续双射但不开（$E = (C[0,1], \\|\\cdot\\|_\\infty)$ 其实是完备的）—— 上面这个恒等映射就是 $F$ 不完备的反例本身。',
         '**与闭图像定理的关系。** 第二步的「完备性去掉闭包」是这条定理真正的技术核心；闭图像定理反过来把它当工具用（先证 $\\pi_1^{-1}$ 有界，再用它得到 $u$ 有界）。所以这两条不是彼此独立的：**开映射 $\\implies$ 逆算子 $\\implies$ 闭图像**。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis, 2.11']
