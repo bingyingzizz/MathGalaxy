@@ -811,7 +811,7 @@ window.MG = window.MG || {};
         '',
         '$$E_{r}^{p,q} = Z_{r}^{p,q} \\big/ B_{r}^{p,q}, \\qquad Z_{r}^{p,q} := F^{p}K^{p+q} \\cap d^{-1}\\bigl(F^{p+r}K^{p+q+1}\\bigr), \\qquad B_{r}^{p,q} := F^{p}K^{p+q} \\cap d\\bigl(F^{p-r+1}K^{p+q-1}\\bigr),$$',
         '',
-        '即**与直接构造给出同一个谱序列**；过滤下有界时收敛到 $E_{\\infty}^{p,q} = \\operatorname{Gr}^{p} H^{p+q}(K)$。'
+        '即**与直接构造给出同一个谱序列**；过滤两侧有界时收敛到 $E_{\\infty}^{p,q} = \\operatorname{Gr}^{p} H^{p+q}(K)$。'
       ].join('\n'),
       notes: [
         '**这一条是把两条路焊在一起的螺丝。**',
@@ -833,7 +833,7 @@ window.MG = window.MG || {};
         '',
         '⭐ **实用价值**：想算某个谱序列时，挑好算的那条路走。**双复形**的情形通常用直接构造（两个方向的过滤各给一台，比较 $E_{2}$ 页即可，见 `prop.bicomplex-spectral`）；而**一般正合偶**（同伦群、Bockstein、Gysin 那类）只有正合偶这条路 —— 那里根本没有一个复形可以过滤。',
         '',
-        '⚠️ 收敛仍要**下有界**（或至少「对每个 $(p,q)$，$r$ 充分大时 $Z_{r}$、$B_{r}$ 稳定」）。无界复形的谱序列可以「不收敛到任何东西」，别默认那个符号一定成立。'
+        '⚠️ 收敛仍要**两侧有界**（或至少「对每个 $(p,q)$，$r$ 充分大时 $Z_{r}$、$B_{r}$ 稳定」——只有 $p \\ll 0$ 一侧不够）。无界复形的谱序列可以「不收敛到任何东西」，别默认那个符号一定成立。'
       ].join('\n')
     },
 
@@ -1272,7 +1272,7 @@ window.MG = window.MG || {};
         '- $r = 2$：$d_{1} = jk$ 就是「连接同态 + 落到 $\\operatorname{Gr}^{p+1}$」，其核商掉 $d_{1}$ 的像正好把 $Z_{1}$ 放宽到 $d^{-1}(F^{p+2}K)$ —— 即 $Z_{2}/B_{2}$。✓',
         '- 归纳步：$Z_{r+1}$ 比 $Z_{r}$ 放宽一层（$d$ 允许再跳一格）、$B_{r+1}$ 比 $B_{r}$ 放宽一层（前一步允许再远一格），而导出偶的三条公式代入后给出**逐字相同**的两个递推。这一步只用到 $d^{2}=0$ 与核 / 余核的泛性质，无额外输入。∎',
         '',
-        '**第四步：收敛。** 过滤下有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$；\n\n而 $D_{\\infty}^{p,q} = \\bigcap_{r} \\operatorname{im}\\bigl(H^{p+q}(F^{p+r}K) \\to H^{p+q}(F^{p}K)\\bigr) = \\operatorname{im}\\bigl(H^{p+q}(F^{p}K) \\to H^{p+q}(K)\\bigr) = F^{p}H^{p+q}(K)$（下有界时这个递降链在每格上稳定到一个偏序集里的极限，而 $\\bigcup_{p} F^{p}K = K$ 让它落在那条映射的像上）。\n\n于是 $E_{\\infty}^{p,q} = F^{p}H^{p+q}/F^{p+1}H^{p+q} = \\operatorname{Gr}^{p}H^{p+q}(K)$。\n\n∎'
+        '**第四步：收敛。** 过滤两侧有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$；\n\n而 $D_{\\infty}^{p,q} = \\bigcap_{r} \\operatorname{im}\\bigl(H^{p+q}(F^{p+r}K) \\to H^{p+q}(F^{p}K)\\bigr) = \\operatorname{im}\\bigl(H^{p+q}(F^{p}K) \\to H^{p+q}(K)\\bigr) = F^{p}H^{p+q}(K)$（下有界时这个递降链在每格上稳定到一个偏序集里的极限，而 $\\bigcup_{p} F^{p}K = K$ 让它落在那条映射的像上）。\n\n于是 $E_{\\infty}^{p,q} = F^{p}H^{p+q}/F^{p+1}H^{p+q} = \\operatorname{Gr}^{p}H^{p+q}(K)$。\n\n∎'
       ].join('\n'),
       note: '两条路的差别只在「$Z_{r}/B_{r}$ 的递推怎么打包」：直接构造把递推写在 $E_{r}$ 上，正合偶把递推交给导出机制；两者给出的 $E_{r}$ 与微分逐页相同。'
     },

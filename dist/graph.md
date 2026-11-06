@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:48:12.514Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T04:54:01.825Z
 > 15 星系 / 105 星团 / 1540 节点 / 3164 连线（强边 3125，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.7 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -288,7 +288,7 @@ $$\forall A \exists P \forall x [ x \in P \leftrightarrow  x \subseteq A ]$$
 
 $$\exists I [ \emptyset \in I \wedge  \forall x ( x \in I \to x \cup \{ x \} \in I ) ]$$
 
-公理本身只要求 $I$ **非空**且对后继封闭；写成 $\emptyset \in I$ 只是为了好看，$\emptyset$ 是原始对象（见「空集」）。
+$\emptyset \in I$ 这一项**不能省**：$I = \omega \setminus \{0\}$ 非空、对后继封闭（$x \ne 0 \implies S(x) \ne 0$），却不含 $\emptyset$ —— 「非空 + 对后继封闭」推不出 $\emptyset \in I$。（$\emptyset$ 是原始对象，见「空集」。）
 这条公理宣告了无穷集合的存在，是从中构造自然数集 $\omega$ 的唯一来源。
 
 没有它，$V_\omega$ 就是一个模型，所有集合都有限，算术只能在有界范围内进行。
@@ -705,7 +705,7 @@ $A$ 在 $\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $
 
 **它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\aleph (X) \to X$ 的单射，与 $\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\alpha < \aleph (X)$ 处停止。
 
-**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。
+**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。⚠️ 这**不能**由「在 Hartogs 定理里取 $X =$ 全体序数」得到 —— 定理只对**集合** $X$ 陈述，真类不能代入。正确论证：若 $\mathrm{On}$ 是集合，则它是传递的 $\in$-良序集、故本身是一个序数，于是 $\mathrm{On} \in \mathrm{On}$，与 $\in$ 的良基性矛盾。
 
 参考：Hartogs (1915)；Kunen, Set Theory, I.11；Jech, The Axiom of Choice, Ch. 2
 
@@ -716,7 +716,7 @@ $A$ 在 $\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $
 
 集合 $A$ **可数**，当且仅当存在双射 $A \to \mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \ldots$，一个不漏、一个不重）。
 
-既有限又可数的情形合起来叫**至多可数**：$A$ 至多可数 $\iff$ 存在单射 $A \to \mathbb{N}$。
+**有限或可数**的情形合起来叫**至多可数**：$A$ 至多可数 $\iff$ 存在单射 $A \to \mathbb{N}$。（有限集没有到 $\mathbb{N}$ 的双射，所以按上面的定义它**不**可数，但它是至多可数 —— 两个词不能混。）
 
 不是至多可数的集合叫**不可数**。
 
@@ -847,7 +847,7 @@ $$\omega = \{ \emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyse
 
 把 $\in$ 读作 $<$，$\langle \omega , \in \rangle$ 就是自然数系 $\langle \mathbb{N}, <\rangle$。
 
-$\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。
+$\omega$ 同时也是最小的极限序数。构造它只需**无穷公理 + 分离公理模式**（**用不到幂集**：$\omega$ 是「属于一切归纳子集」的那些元素，用分离直接从归纳集里取即可）。
 
 参考：Kunen, Set Theory, I.5
 
@@ -23759,7 +23759,7 @@ $$D_{1}^{p,q} := H^{p+q}\bigl(F^{p}K\bigr), \qquad E_{1}^{p,q} := H^{p+q}\bigl(\
 
 $$E_{r}^{p,q} = Z_{r}^{p,q} \big/ B_{r}^{p,q}, \qquad Z_{r}^{p,q} := F^{p}K^{p+q} \cap d^{-1}\bigl(F^{p+r}K^{p+q+1}\bigr), \qquad B_{r}^{p,q} := F^{p}K^{p+q} \cap d\bigl(F^{p-r+1}K^{p+q-1}\bigr),$$
 
-即**与直接构造给出同一个谱序列**；过滤下有界时收敛到 $E_{\infty}^{p,q} = \operatorname{Gr}^{p} H^{p+q}(K)$。
+即**与直接构造给出同一个谱序列**；过滤两侧有界时收敛到 $E_{\infty}^{p,q} = \operatorname{Gr}^{p} H^{p+q}(K)$。
 
 **这一条是把两条路焊在一起的螺丝。**
 
@@ -23784,7 +23784,7 @@ $$H^{p+q}\bigl(\operatorname{Gr}^{p}K\bigr) \xrightarrow{\ k\ } H^{p+q+1}\bigl(F
 
 ⭐ **实用价值**：想算某个谱序列时，挑好算的那条路走。**双复形**的情形通常用直接构造（两个方向的过滤各给一台，比较 $E_{2}$ 页即可，见 `prop.bicomplex-spectral`）；而**一般正合偶**（同伦群、Bockstein、Gysin 那类）只有正合偶这条路 —— 那里根本没有一个复形可以过滤。
 
-⚠️ 收敛仍要**下有界**（或至少「对每个 $(p,q)$，$r$ 充分大时 $Z_{r}$、$B_{r}$ 稳定」）。无界复形的谱序列可以「不收敛到任何东西」，别默认那个符号一定成立。
+⚠️ 收敛仍要**两侧有界**（或至少「对每个 $(p,q)$，$r$ 充分大时 $Z_{r}$、$B_{r}$ 稳定」——只有 $p \ll 0$ 一侧不够）。无界复形的谱序列可以「不收敛到任何东西」，别默认那个符号一定成立。
 
 参考：Weibel, An Introduction to Homological Algebra, Section 5.4（过滤复形的谱序列）；Cartan–Eilenberg, Homological Algebra —— 过滤复形与谱序列一章
 
@@ -38312,24 +38312,19 @@ $$x \cap \{ A \} = \emptyset$$
 
 > 把同样的论证用在任意有限 $\in$循环 $A_{0} \ni A_{1} \ni \cdots \ni A_{n} = A_{0}$ 上，取集合 $\{A_{0}$ …$A_{n-1}\}$（可由配对公理反复构造），也能得到矛盾。
 
-#### 无穷公理 + 幂集公理 + 分离公理模式 ⟹ 自然数集存在　`imp.inf-to-omega`
-*无穷公理 + 幂集公理 + 分离公理模式 $\implies \omega$ 存在*
+#### 无穷公理 + 分离公理模式 ⟹ 自然数集存在　`imp.inf-to-omega`
+*无穷公理 + 分离公理模式 $\implies \omega$ 存在*
 
 1. 由无穷公理取一个归纳集 $I$。称 $J \subseteq I$ 是**归纳的**，若 $\emptyset \in J$ 且 $\forall x (x \in J \to x \cup \{x\} \in J)$。
-2. 由幂集公理，$\mathcal{P}(I)$ 是集合；再用分离公理模式取
+2. **不需要幂集公理**：分离公理模式的公式里本来就允许对集合量化，故可直接从 $I$ 里取出交（不用先把 $\mathcal{P}(I)$ 或归纳子集之族造出来）。令
 
-$$S = \{ J \in \mathcal{P}(I) : J\text{ 是归纳集} \}$$
 
-$S$ 非空（$I \in S$）。
-
-3. 再对 $\mathcal{P}(I)$ 用一次分离公理模式，令
-
-$$\omega = \{ x \in I : \forall J ( J \in S \to x \in J ) \}$$
+$$\omega = \{ x \in I : \forall J \bigl( (J \subseteq I \wedge J\text{ 是归纳的}) \to x \in J \bigr) \}$$
 
 即 $\omega$ 是所有归纳子集的交。
 
-4. $\omega$ 是归纳集：$\emptyset$ 属于每个 $J \in S$，故 $\emptyset \in \omega$；若 $x \in \omega$，则 $x$ 属于每个 $J \in S$，从而 $x \cup \{x\}$ 属于每个 $J \in S$，故 $x \cup \{x\} \in \omega$。
-5. $\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \cap I$ 也是归纳集且 $K \cap I \in S$，由 $\omega$ 的定义 $\omega \subseteq K \cap I \subseteq K$。
+4. $\omega$ 是归纳集：$\emptyset$ 属于每个归纳子集 $J \subseteq I$，故 $\emptyset \in \omega$；若 $x \in \omega$，则 $x$ 属于每个归纳子集 $J \subseteq I$，从而 $x \cup \{x\}$ 属于每个归纳子集 $J \subseteq I$，故 $x \cup \{x\} \in \omega$。
+5. $\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \cap I$ 也是归纳集且 $K \cap I \subseteq I$，由 $\omega$ 的定义 $\omega \subseteq K \cap I \subseteq K$。
 
 故 $\omega$ 是最小归纳集，即自然数集。∎
 
@@ -43701,7 +43696,7 @@ $$E_{r}^{p,q} = Z_{r}^{p,q}\big/ B_{r}^{p,q}, \qquad Z_{r}^{p,q} = F^{p}K^{p+q} 
 - $r = 2$：$d_{1} = jk$ 就是「连接同态 + 落到 $\operatorname{Gr}^{p+1}$」，其核商掉 $d_{1}$ 的像正好把 $Z_{1}$ 放宽到 $d^{-1}(F^{p+2}K)$ —— 即 $Z_{2}/B_{2}$。✓
 - 归纳步：$Z_{r+1}$ 比 $Z_{r}$ 放宽一层（$d$ 允许再跳一格）、$B_{r+1}$ 比 $B_{r}$ 放宽一层（前一步允许再远一格），而导出偶的三条公式代入后给出**逐字相同**的两个递推。这一步只用到 $d^{2}=0$ 与核 / 余核的泛性质，无额外输入。∎
 
-**第四步：收敛。** 过滤下有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\infty}^{p,q} = D_{\infty}^{p,q}/D_{\infty}^{p+1,q-1}$；
+**第四步：收敛。** 过滤两侧有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\infty}^{p,q} = D_{\infty}^{p,q}/D_{\infty}^{p+1,q-1}$；
 
 而 $D_{\infty}^{p,q} = \bigcap_{r} \operatorname{im}\bigl(H^{p+q}(F^{p+r}K) \to H^{p+q}(F^{p}K)\bigr) = \operatorname{im}\bigl(H^{p+q}(F^{p}K) \to H^{p+q}(K)\bigr) = F^{p}H^{p+q}(K)$（下有界时这个递降链在每格上稳定到一个偏序集里的极限，而 $\bigcup_{p} F^{p}K = K$ 让它落在那条映射的像上）。
 

@@ -128,7 +128,7 @@ window.MG = window.MG || {};
         '若 $\\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\\alpha$，即 $\\alpha \\in A = \\alpha$ —— 与序数不能自属矛盾。\n\n' +
         '故 $\\alpha$ 不能单射进 $X$。',
         '**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\\aleph (X) \\to X$ 的单射，与 $\\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\\alpha < \\aleph (X)$ 处停止。',
-        '**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。'
+        '**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。⚠️ 这**不能**由「在 Hartogs 定理里取 $X =$ 全体序数」得到 —— 定理只对**集合** $X$ 陈述，真类不能代入。正确论证：若 $\\mathrm{On}$ 是集合，则它是传递的 $\\in$-良序集、故本身是一个序数，于是 $\\mathrm{On} \\in \\mathrm{On}$，与 $\\in$ 的良基性矛盾。'
       ].join('\n\n'),
       refs: ['Hartogs (1915)', 'Kunen, Set Theory, I.11', 'Jech, The Axiom of Choice, Ch. 2']
     }

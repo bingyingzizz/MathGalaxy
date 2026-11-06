@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-06T04:48:12.514Z",
+  "generated": "2026-11-06T04:54:01.825Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -2990,10 +2990,10 @@
    "title": "无穷公理",
    "label_en": "infinity",
    "title_en": "infinity",
-   "statement_en": "There exists an \"inductive set\" — a set containing $\\emptyset$ and closed under the successor operation:\n\n$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\nThe axiom itself only asks that $I$ be **non-empty** and closed under successor; writing $\\emptyset \\in I$ is just for looks, since $\\emptyset$ is a primitive object (see \"the empty set\"). This axiom asserts the existence of an infinite set, and is the only source from which the set of natural numbers $\\omega$ is built.",
+   "statement_en": "There exists an \"inductive set\" — a set containing $\\emptyset$ and closed under the successor operation:\n\n$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\nThe clause $\\emptyset \\in I$ **cannot be dropped**: $I = \\omega \\setminus \\{0\\}$ is non-empty and closed under successor ($x \\ne 0 \\implies S(x) \\ne 0$), yet it does not contain $\\emptyset$ — \"non-empty + closed under successor\" does not force $\\emptyset \\in I$. ($\\emptyset$ is a primitive object, see \"the empty set\"). This axiom asserts the existence of an infinite set, and is the only source from which the set of natural numbers $\\omega$ is built.",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "stale",
      "version": "v0.9.3",
      "fields": [
       "statement",
@@ -3003,10 +3003,12 @@
       "statement"
      ],
      "fieldStatus": {
-      "statement": "reviewed",
+      "statement": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "statement"
+     ],
      "basedOn": {
       "statement": "v0.9.3#ccdf2115"
      }
@@ -3024,7 +3026,7 @@
     "归纳集",
     "自然数"
    ],
-   "statement": "存在一个「归纳集」——含有 $\\emptyset$ 且对后继封闭的集合：\n\n$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\n公理本身只要求 $I$ **非空**且对后继封闭；写成 $\\emptyset \\in I$ 只是为了好看，$\\emptyset$ 是原始对象（见「空集」）。\n这条公理宣告了无穷集合的存在，是从中构造自然数集 $\\omega$ 的唯一来源。",
+   "statement": "存在一个「归纳集」——含有 $\\emptyset$ 且对后继封闭的集合：\n\n$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\n$\\emptyset \\in I$ 这一项**不能省**：$I = \\omega \\setminus \\{0\\}$ 非空、对后继封闭（$x \\ne 0 \\implies S(x) \\ne 0$），却不含 $\\emptyset$ —— 「非空 + 对后继封闭」推不出 $\\emptyset \\in I$。（$\\emptyset$ 是原始对象，见「空集」。）\n这条公理宣告了无穷集合的存在，是从中构造自然数集 $\\omega$ 的唯一来源。",
    "notes": "没有它，$V_\\omega$ 就是一个模型，所有集合都有限，算术只能在有界范围内进行。\n\n记号方面：$x \\cup \\{x\\}$ 由配对公理与并集公理写出来，它们与这条公理、以及 $\\emptyset$，都在同一层地基上 —— 地基内部的相互引用不画成依赖边。",
    "refs": [
     "Kunen, Set Theory, I.5"
@@ -3562,7 +3564,7 @@
     "序数"
    ],
    "statement": "存在**最小归纳集** $\\omega$：它含有 $\\emptyset$，对 $x \\mapsto x \\cup \\{x\\}$ 封闭，且含于一切归纳集之中：\n\n$$\\omega = \\{ \\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}, \\{\\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}\\}, \\ldots  \\}$$\n\n把 $\\in$ 读作 $<$，$\\langle \\omega , \\in \\rangle$ 就是自然数系 $\\langle \\mathbb{N}, <\\rangle$。",
-   "notes": "$\\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。",
+   "notes": "$\\omega$ 同时也是最小的极限序数。构造它只需**无穷公理 + 分离公理模式**（**用不到幂集**：$\\omega$ 是「属于一切归纳子集」的那些元素，用分离直接从归纳集里取即可）。",
    "refs": [
     "Kunen, Set Theory, I.5"
    ]
@@ -4115,7 +4117,7 @@
     "不需要选择公理"
    ],
    "statement": "对任意集合 $X$，都存在一个**不能单射进 $X$** 的序数；取其中最小的那个，记作 $\\aleph (X)$，叫做 $X$ 的 **Hartogs 数**（Hartogs 序数）。\n\n$$\\forall X \\exists\\alpha \\bigl[\\, \\neg(\\alpha \\hookrightarrow  X)\\ \\wedge \\alpha = \\aleph(X)\\ \\wedge \\forall\\beta < \\alpha,\\ \\beta \\hookrightarrow  X\\, \\bigr]$$",
-   "notes": "⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \\implies$ 良序定理」「$AC \\implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。\n\n**证明思路**（全在 ZF 内）：设 $\\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\\mathcal{W} \\subseteq \\mathcal{P}(X \\times X)$。\n\n任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；\n\n由替换公理，这些序型构成一个集合 $A$。\n\n$A$ 在 $\\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\\alpha$**。\n\n若 $\\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\\alpha$，即 $\\alpha \\in A = \\alpha$ —— 与序数不能自属矛盾。\n\n故 $\\alpha$ 不能单射进 $X$。\n\n**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\\aleph (X) \\to X$ 的单射，与 $\\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\\alpha < \\aleph (X)$ 处停止。\n\n**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。",
+   "notes": "⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \\implies$ 良序定理」「$AC \\implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。\n\n**证明思路**（全在 ZF 内）：设 $\\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\\mathcal{W} \\subseteq \\mathcal{P}(X \\times X)$。\n\n任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；\n\n由替换公理，这些序型构成一个集合 $A$。\n\n$A$ 在 $\\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\\alpha$**。\n\n若 $\\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\\alpha$，即 $\\alpha \\in A = \\alpha$ —— 与序数不能自属矛盾。\n\n故 $\\alpha$ 不能单射进 $X$。\n\n**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\\aleph (X) \\to X$ 的单射，与 $\\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\\alpha < \\aleph (X)$ 处停止。\n\n**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。⚠️ 这**不能**由「在 Hartogs 定理里取 $X =$ 全体序数」得到 —— 定理只对**集合** $X$ 陈述，真类不能代入。正确论证：若 $\\mathrm{On}$ 是集合，则它是传递的 $\\in$-良序集、故本身是一个序数，于是 $\\mathrm{On} \\in \\mathrm{On}$，与 $\\in$ 的良基性矛盾。",
    "refs": [
     "Hartogs (1915)",
     "Kunen, Set Theory, I.11",
@@ -17955,8 +17957,8 @@
     "正合偶",
     "连接同态"
    ],
-   "statement": "设 $K$ 是带**递降过滤** $F^{p}K$ 的复形（$d$ 保过滤，即 $d(F^{p}K^{n}) \\subseteq F^{p}K^{n+1}$）。对每个 $p$ 有复形的短正合列\n\n$$0 \\longrightarrow F^{p+1}K \\longrightarrow F^{p}K \\longrightarrow \\operatorname{Gr}^{p}K \\longrightarrow 0 .$$\n\n把它们的**长正合列**在一切 $p$ 上并排，得到正合偶\n\n$$D_{1}^{p,q} := H^{p+q}\\bigl(F^{p}K\\bigr), \\qquad E_{1}^{p,q} := H^{p+q}\\bigl(\\operatorname{Gr}^{p}K\\bigr),$$\n\n其中 $i$ 由含入 $F^{p+1}K \\hookrightarrow F^{p}K$ 诱导、$j$ 由商映射诱导、$k$ 是长正合列的**连接同态**。它给出的谱序列满足\n\n$$E_{r}^{p,q} = Z_{r}^{p,q} \\big/ B_{r}^{p,q}, \\qquad Z_{r}^{p,q} := F^{p}K^{p+q} \\cap d^{-1}\\bigl(F^{p+r}K^{p+q+1}\\bigr), \\qquad B_{r}^{p,q} := F^{p}K^{p+q} \\cap d\\bigl(F^{p-r+1}K^{p+q-1}\\bigr),$$\n\n即**与直接构造给出同一个谱序列**；过滤下有界时收敛到 $E_{\\infty}^{p,q} = \\operatorname{Gr}^{p} H^{p+q}(K)$。",
-   "notes": "**这一条是把两条路焊在一起的螺丝。**\n\n- **一条路**（图上已有）：直接对过滤复形定义 $Z^{p,q}_{r}$、$B^{p,q}_{r}$，验证 $E_{r+1} = H(E_{r}, d_{r})$、收敛到 $\\operatorname{Gr}^{p}H^{p+q}$ —— 见 `thm.filtered-complex-spectral`。\n- **另一条路**（这一条）：把长正合列的「三项正合」打包成正合偶，让正合偶的导出机制自动生成谱序列 —— 见 `thm.exact-couple-spectral`。\n\n**两条路为什么是同一个。**\n\n① **第一页相同**：两边都是 $E_{1}^{p,q} = H^{p+q}(\\operatorname{Gr}^{p}K)$。\n\n② **第一微分相同**：导出偶的 $d_{1} = j k$ 是\n\n$$H^{p+q}\\bigl(\\operatorname{Gr}^{p}K\\bigr) \\xrightarrow{\\ k\\ } H^{p+q+1}\\bigl(F^{p+1}K\\bigr) \\xrightarrow{\\ j\\ } H^{p+q+1}\\bigl(\\operatorname{Gr}^{p+1}K\\bigr),$$\n\n即「连接同态 + 落到关联分次」，这正是直接构造里 $\\operatorname{Gr}^{p} \\to \\operatorname{Gr}^{p+1}$ 的那个微分，其落点 $(p+1, q)$ 与 $d_{r}$ 的规律 $(r, 1-r)$ 在 $r = 1$ 时吻合。\n\n③ **逐叶归纳**：把 $D_{r}$、$E_{r}$ 用 $Z_{r}/B_{r}$ 显式写出（$D_{r}^{p,q}$ 是「$F^{p}$ 里 $d$ 至少跳 $r$ 步仍留在 $F^{p+r-1}$ 内的那些类」），代入导出偶的三条公式，得到的就是上面的 $Z_{r}^{p,q}$、$B_{r}^{p,q}$。\n\n归纳步只用到 $d^{2} = 0$ 与核 / 余核的泛性质，没有额外输入。\n\n∎\n\n⭐ **实用价值**：想算某个谱序列时，挑好算的那条路走。**双复形**的情形通常用直接构造（两个方向的过滤各给一台，比较 $E_{2}$ 页即可，见 `prop.bicomplex-spectral`）；而**一般正合偶**（同伦群、Bockstein、Gysin 那类）只有正合偶这条路 —— 那里根本没有一个复形可以过滤。\n\n⚠️ 收敛仍要**下有界**（或至少「对每个 $(p,q)$，$r$ 充分大时 $Z_{r}$、$B_{r}$ 稳定」）。无界复形的谱序列可以「不收敛到任何东西」，别默认那个符号一定成立。",
+   "statement": "设 $K$ 是带**递降过滤** $F^{p}K$ 的复形（$d$ 保过滤，即 $d(F^{p}K^{n}) \\subseteq F^{p}K^{n+1}$）。对每个 $p$ 有复形的短正合列\n\n$$0 \\longrightarrow F^{p+1}K \\longrightarrow F^{p}K \\longrightarrow \\operatorname{Gr}^{p}K \\longrightarrow 0 .$$\n\n把它们的**长正合列**在一切 $p$ 上并排，得到正合偶\n\n$$D_{1}^{p,q} := H^{p+q}\\bigl(F^{p}K\\bigr), \\qquad E_{1}^{p,q} := H^{p+q}\\bigl(\\operatorname{Gr}^{p}K\\bigr),$$\n\n其中 $i$ 由含入 $F^{p+1}K \\hookrightarrow F^{p}K$ 诱导、$j$ 由商映射诱导、$k$ 是长正合列的**连接同态**。它给出的谱序列满足\n\n$$E_{r}^{p,q} = Z_{r}^{p,q} \\big/ B_{r}^{p,q}, \\qquad Z_{r}^{p,q} := F^{p}K^{p+q} \\cap d^{-1}\\bigl(F^{p+r}K^{p+q+1}\\bigr), \\qquad B_{r}^{p,q} := F^{p}K^{p+q} \\cap d\\bigl(F^{p-r+1}K^{p+q-1}\\bigr),$$\n\n即**与直接构造给出同一个谱序列**；过滤两侧有界时收敛到 $E_{\\infty}^{p,q} = \\operatorname{Gr}^{p} H^{p+q}(K)$。",
+   "notes": "**这一条是把两条路焊在一起的螺丝。**\n\n- **一条路**（图上已有）：直接对过滤复形定义 $Z^{p,q}_{r}$、$B^{p,q}_{r}$，验证 $E_{r+1} = H(E_{r}, d_{r})$、收敛到 $\\operatorname{Gr}^{p}H^{p+q}$ —— 见 `thm.filtered-complex-spectral`。\n- **另一条路**（这一条）：把长正合列的「三项正合」打包成正合偶，让正合偶的导出机制自动生成谱序列 —— 见 `thm.exact-couple-spectral`。\n\n**两条路为什么是同一个。**\n\n① **第一页相同**：两边都是 $E_{1}^{p,q} = H^{p+q}(\\operatorname{Gr}^{p}K)$。\n\n② **第一微分相同**：导出偶的 $d_{1} = j k$ 是\n\n$$H^{p+q}\\bigl(\\operatorname{Gr}^{p}K\\bigr) \\xrightarrow{\\ k\\ } H^{p+q+1}\\bigl(F^{p+1}K\\bigr) \\xrightarrow{\\ j\\ } H^{p+q+1}\\bigl(\\operatorname{Gr}^{p+1}K\\bigr),$$\n\n即「连接同态 + 落到关联分次」，这正是直接构造里 $\\operatorname{Gr}^{p} \\to \\operatorname{Gr}^{p+1}$ 的那个微分，其落点 $(p+1, q)$ 与 $d_{r}$ 的规律 $(r, 1-r)$ 在 $r = 1$ 时吻合。\n\n③ **逐叶归纳**：把 $D_{r}$、$E_{r}$ 用 $Z_{r}/B_{r}$ 显式写出（$D_{r}^{p,q}$ 是「$F^{p}$ 里 $d$ 至少跳 $r$ 步仍留在 $F^{p+r-1}$ 内的那些类」），代入导出偶的三条公式，得到的就是上面的 $Z_{r}^{p,q}$、$B_{r}^{p,q}$。\n\n归纳步只用到 $d^{2} = 0$ 与核 / 余核的泛性质，没有额外输入。\n\n∎\n\n⭐ **实用价值**：想算某个谱序列时，挑好算的那条路走。**双复形**的情形通常用直接构造（两个方向的过滤各给一台，比较 $E_{2}$ 页即可，见 `prop.bicomplex-spectral`）；而**一般正合偶**（同伦群、Bockstein、Gysin 那类）只有正合偶这条路 —— 那里根本没有一个复形可以过滤。\n\n⚠️ 收敛仍要**两侧有界**（或至少「对每个 $(p,q)$，$r$ 充分大时 $Z_{r}$、$B_{r}$ 稳定」——只有 $p \\ll 0$ 一侧不够）。无界复形的谱序列可以「不收敛到任何东西」，别默认那个符号一定成立。",
    "refs": [
     "Weibel, An Introduction to Homological Algebra, Section 5.4（过滤复形的谱序列）",
     "Cartan–Eilenberg, Homological Algebra —— 过滤复形与谱序列一章"
@@ -40946,7 +40948,7 @@
     "基数",
     "可数"
    ],
-   "statement": "设 $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$ 是自然数集。\n\n集合 $A$ **可数**，当且仅当存在双射 $A \\to \\mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \\ldots$，一个不漏、一个不重）。\n\n既有限又可数的情形合起来叫**至多可数**：$A$ 至多可数 $\\iff$ 存在单射 $A \\to \\mathbb{N}$。\n\n不是至多可数的集合叫**不可数**。",
+   "statement": "设 $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$ 是自然数集。\n\n集合 $A$ **可数**，当且仅当存在双射 $A \\to \\mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \\ldots$，一个不漏、一个不重）。\n\n**有限或可数**的情形合起来叫**至多可数**：$A$ 至多可数 $\\iff$ 存在单射 $A \\to \\mathbb{N}$。（有限集没有到 $\\mathbb{N}$ 的双射，所以按上面的定义它**不**可数，但它是至多可数 —— 两个词不能混。）\n\n不是至多可数的集合叫**不可数**。",
    "notes": "⭐ 这一条撑起了两大块内容：\n- **$\\sigma$-环 / $\\sigma$-代数 / 单调类**：可数并、可数交里的「可数」就是它；\n- **测度的可数可加**：$\\mu(\\bigcup_n E_n) = \\sum_n \\mu(E_n)$ 里的下标集要可数。\n\n基本事实：$\\mathbb{N} \\times \\mathbb{N}$ 可数；\n\n至多可多个可数集的并仍可数；\n\n$\\mathbb{R}$ 不可数（Cantor 对角线法）。\n\n⚠ 「可数」不是「数得完」：$\\mathbb{N}$ 自己就可数但数不完。",
    "refs": [
     "Kunen, Set Theory, I.6"
@@ -54451,7 +54453,7 @@
     "同调代数",
     "谱序列",
     "过滤",
-    "下有界"
+    "两侧有界"
    ],
    "statement": "设 $K^{\\bullet}$ 是**带过滤**的复形（递降过滤 $F^{p}K^{\\bullet}$），且**两侧有界**（对每个 $n$：$p \\ll 0$ 时 $F^{p}K^{n} = K^{n}$，且 $p \\gg 0$ 时 $F^{p}K^{n} = 0$ —— 只有前者不够，$Z^{p,q}_{r}$ 的稳定靠后者）。则存在谱序列\n\n$$E^{p,q}_{0} = \\operatorname{Gr}^{p}K^{p+q} \\;\\Longrightarrow\\; H^{p+q}(K^{\\bullet}).$$",
    "notes": "**构造（逐页逼近的真身）。** 对 $r \\ge 0$ 定义两族子对象\n$$Z^{p,q}_{r} := F^{p}K^{p+q} \\cap (d^{p+q})^{-1}\\bigl(F^{p+r}K^{p+q+1}\\bigr), \\qquad B^{p,q}_{r} := F^{p}K^{p+q} \\cap d^{p+q-1}\\bigl(F^{p-r+1}K^{p+q-1}\\bigr),$$\n并令 $E^{p,q}_{r} := Z^{p,q}_{r}/\\bigl(B^{p,q}_{r} + Z^{p+1,q-1}_{r-1}\\bigr)$（约定 $Z^{p,q}_{0} = F^{p}K^{p+q}$、$Z^{p,q}_{-1} = 0$；分母必须含 $Z^{p+1,q-1}_{r-1}$ 这一「更深过滤层」的代表元，否则 $E_{1}$ 会多出本该为零的项）。逐条读：\n- $r = 0$：$Z^{p,q}_{0} = F^{p}K^{p+q}$、$B^{p,q}_{0} = F^{p+1}K^{p+q}$，所以 $E^{p,q}_{0} = \\operatorname{Gr}^{p}K^{p+q}$ —— **第一页就是把过滤一层层切开**；\n- $r = 1$：$Z^{p,q}_{1}$ 是 $\\operatorname{Gr}^{p}K^{p+q}$ 里的闭上链、$B^{p,q}_{1}$ 是边界，故 $E^{p,q}_{1} = H^{p+q}(\\operatorname{Gr}^{p}K^{\\bullet})$；\n- 一般地，$d$ 把 $Z^{p,q}_{r}$ 送进 $Z^{p+r,q-r+1}_{r}$ 并把 $B^{p,q}_{r}$ 送进 $B^{p+r,q-r+1}_{r}$，因此下降为微分 $d_{r} : E^{p,q}_{r} \\to E^{p+r,q-r+1}_{r}$，而**第 $r+1$ 页就是第 $r$ 页对 $d_{r}$ 取同调**：$E_{r+1} = H(E_{r}, d_{r})$。\n- **收敛**：$r$ 增大时 $Z^{p,q}_{r}$ 递升、$B^{p,q}_{r}$ 递降；因为过滤**两侧有界**（$p \\ll 0$ 与 $p \\gg 0$ 两侧都要求），「$d$ 跳得够远」这件事在有限步后就空了，所以每个 $(p,q)$ 上 $Z^{p,q}_{r}$ 与 $B^{p,q}_{r}$ 都**稳定**，极限就是 $H^{p+q}(K^{\\bullet})$ 配上诱导过滤后的关联分次。\n\n∎\n\n⭐ **读法**：先把带过滤的复形「按层切碎」（取关联分次 $\\operatorname{Gr}^{p}$），算出每层的同调当第一页；然后微分一页一页地把它们拼回去，收敛到**原来的**同调。\n\n⚠️ 「**两侧有界**」这个条件不能省 —— 只有 $p \\ll 0$ 一侧不够：$Z^{p,q}_{r}$ 的稳定还要 $p \\gg 0$ 时 $F^{p}K^{n} = 0$（否则 $Z_{r}$ 会一直长下去；也不是每个谱序列都收敛）。",
@@ -67228,12 +67230,11 @@
    "strength": "strong",
    "sources": [
     "ax.inf",
-    "ax.power",
     "ax.sep"
    ],
    "target": "thm.omega",
-   "title": "无穷公理 + 幂集公理 + 分离公理模式 $\\implies \\omega$ 存在",
-   "proof": "1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。\n2. 由幂集公理，$\\mathcal{P}(I)$ 是集合；再用分离公理模式取\n\n$$S = \\{ J \\in \\mathcal{P}(I) : J\\text{ 是归纳集} \\}$$\n\n$S$ 非空（$I \\in S$）。\n\n3. 再对 $\\mathcal{P}(I)$ 用一次分离公理模式，令\n\n$$\\omega = \\{ x \\in I : \\forall J ( J \\in S \\to x \\in J ) \\}$$\n\n即 $\\omega$ 是所有归纳子集的交。\n\n4. $\\omega$ 是归纳集：$\\emptyset$ 属于每个 $J \\in S$，故 $\\emptyset \\in \\omega$；若 $x \\in \\omega$，则 $x$ 属于每个 $J \\in S$，从而 $x \\cup \\{x\\}$ 属于每个 $J \\in S$，故 $x \\cup \\{x\\} \\in \\omega$。\n5. $\\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \\cap I$ 也是归纳集且 $K \\cap I \\in S$，由 $\\omega$ 的定义 $\\omega \\subseteq K \\cap I \\subseteq K$。\n\n故 $\\omega$ 是最小归纳集，即自然数集。∎",
+   "title": "无穷公理 + 分离公理模式 $\\implies \\omega$ 存在",
+   "proof": "1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。\n2. **不需要幂集公理**：分离公理模式的公式里本来就允许对集合量化，故可直接从 $I$ 里取出交（不用先把 $\\mathcal{P}(I)$ 或归纳子集之族造出来）。令\n\n\n$$\\omega = \\{ x \\in I : \\forall J \\bigl( (J \\subseteq I \\wedge J\\text{ 是归纳的}) \\to x \\in J \\bigr) \\}$$\n\n即 $\\omega$ 是所有归纳子集的交。\n\n4. $\\omega$ 是归纳集：$\\emptyset$ 属于每个归纳子集 $J \\subseteq I$，故 $\\emptyset \\in \\omega$；若 $x \\in \\omega$，则 $x$ 属于每个归纳子集 $J \\subseteq I$，从而 $x \\cup \\{x\\}$ 属于每个归纳子集 $J \\subseteq I$，故 $x \\cup \\{x\\} \\in \\omega$。\n5. $\\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \\cap I$ 也是归纳集且 $K \\cap I \\subseteq I$，由 $\\omega$ 的定义 $\\omega \\subseteq K \\cap I \\subseteq K$。\n\n故 $\\omega$ 是最小归纳集，即自然数集。∎",
    "note": ""
   },
   {
@@ -71871,7 +71872,7 @@
    ],
    "target": "prop.filtered-complex-exact-couple",
    "title": "长正合列打包成正合偶 $\\implies$ 与直接构造同一个谱序列",
-   "proof": "**第一步：构造偶。** 对每个 $p$ 有复形的短正合列 $0 \\to F^{p+1}K \\to F^{p}K \\to \\operatorname{Gr}^{p}K \\to 0$。取长正合列\n\n$$\\cdots \\to H^{n}(F^{p+1}K) \\xrightarrow{\\ i\\ } H^{n}(F^{p}K) \\xrightarrow{\\ j\\ } H^{n}(\\operatorname{Gr}^{p}K) \\xrightarrow{\\ k\\ } H^{n+1}(F^{p+1}K) \\to \\cdots$$\n\n并把 $H^{p+q}$ 认成双次数 $(p,q)$ 的分量：$D_{1}^{p,q} := H^{p+q}(F^{p}K)$、$E_{1}^{p,q} := H^{p+q}(\\operatorname{Gr}^{p}K)$。于是\n\n$$i : D_{1}^{p,q} \\to D_{1}^{p-1,q+1} \\ (\\text{等价地 } D_{1}^{p+1,q-1} \\to D_{1}^{p,q}), \\qquad j : D_{1}^{p,q} \\to E_{1}^{p,q}, \\qquad k : E_{1}^{p,q} \\to D_{1}^{p+1,q} .$$\n\n**正合性**：三角形的三处正合恰好就是长正合列中相邻三项的正合性（$\\operatorname{im} i = \\ker j$ 是「$F^{p+1} \\to F^{p} \\to \\operatorname{Gr}^{p}$ 处正合」，$\\operatorname{im} j = \\ker k$、$\\operatorname{im} k = \\ker i$ 同理）。\n\n故这是一个正合偶。\n\n∎\n\n**第二步：由定理得谱序列。** 由 `thm.exact-couple-spectral`，它给出谱序列，微分 $d_{r} : E_{r}^{p,q} \\to E_{r}^{p+r,q-r+1}$。∎\n\n**第三步：与直接构造逐页一致。** 对 $r$ 归纳证明\n\n$$E_{r}^{p,q} = Z_{r}^{p,q}\\big/ B_{r}^{p,q}, \\qquad Z_{r}^{p,q} = F^{p}K^{p+q} \\cap d^{-1}(F^{p+r}K^{p+q+1}), \\qquad B_{r}^{p,q} = F^{p}K^{p+q} \\cap d(F^{p-r+1}K^{p+q-1}) .$$\n\n- $r = 1$：$Z_{1} = F^{p}K \\cap d^{-1}(F^{p+1}K)$、$B_{1} = F^{p}K \\cap d(F^{p}K)$，商就是 $H^{p+q}(\\operatorname{Gr}^{p}K)$ —— 与第一步的 $E_{1}$ 相同。✓\n- $r = 2$：$d_{1} = jk$ 就是「连接同态 + 落到 $\\operatorname{Gr}^{p+1}$」，其核商掉 $d_{1}$ 的像正好把 $Z_{1}$ 放宽到 $d^{-1}(F^{p+2}K)$ —— 即 $Z_{2}/B_{2}$。✓\n- 归纳步：$Z_{r+1}$ 比 $Z_{r}$ 放宽一层（$d$ 允许再跳一格）、$B_{r+1}$ 比 $B_{r}$ 放宽一层（前一步允许再远一格），而导出偶的三条公式代入后给出**逐字相同**的两个递推。这一步只用到 $d^{2}=0$ 与核 / 余核的泛性质，无额外输入。∎\n\n**第四步：收敛。** 过滤下有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$；\n\n而 $D_{\\infty}^{p,q} = \\bigcap_{r} \\operatorname{im}\\bigl(H^{p+q}(F^{p+r}K) \\to H^{p+q}(F^{p}K)\\bigr) = \\operatorname{im}\\bigl(H^{p+q}(F^{p}K) \\to H^{p+q}(K)\\bigr) = F^{p}H^{p+q}(K)$（下有界时这个递降链在每格上稳定到一个偏序集里的极限，而 $\\bigcup_{p} F^{p}K = K$ 让它落在那条映射的像上）。\n\n于是 $E_{\\infty}^{p,q} = F^{p}H^{p+q}/F^{p+1}H^{p+q} = \\operatorname{Gr}^{p}H^{p+q}(K)$。\n\n∎",
+   "proof": "**第一步：构造偶。** 对每个 $p$ 有复形的短正合列 $0 \\to F^{p+1}K \\to F^{p}K \\to \\operatorname{Gr}^{p}K \\to 0$。取长正合列\n\n$$\\cdots \\to H^{n}(F^{p+1}K) \\xrightarrow{\\ i\\ } H^{n}(F^{p}K) \\xrightarrow{\\ j\\ } H^{n}(\\operatorname{Gr}^{p}K) \\xrightarrow{\\ k\\ } H^{n+1}(F^{p+1}K) \\to \\cdots$$\n\n并把 $H^{p+q}$ 认成双次数 $(p,q)$ 的分量：$D_{1}^{p,q} := H^{p+q}(F^{p}K)$、$E_{1}^{p,q} := H^{p+q}(\\operatorname{Gr}^{p}K)$。于是\n\n$$i : D_{1}^{p,q} \\to D_{1}^{p-1,q+1} \\ (\\text{等价地 } D_{1}^{p+1,q-1} \\to D_{1}^{p,q}), \\qquad j : D_{1}^{p,q} \\to E_{1}^{p,q}, \\qquad k : E_{1}^{p,q} \\to D_{1}^{p+1,q} .$$\n\n**正合性**：三角形的三处正合恰好就是长正合列中相邻三项的正合性（$\\operatorname{im} i = \\ker j$ 是「$F^{p+1} \\to F^{p} \\to \\operatorname{Gr}^{p}$ 处正合」，$\\operatorname{im} j = \\ker k$、$\\operatorname{im} k = \\ker i$ 同理）。\n\n故这是一个正合偶。\n\n∎\n\n**第二步：由定理得谱序列。** 由 `thm.exact-couple-spectral`，它给出谱序列，微分 $d_{r} : E_{r}^{p,q} \\to E_{r}^{p+r,q-r+1}$。∎\n\n**第三步：与直接构造逐页一致。** 对 $r$ 归纳证明\n\n$$E_{r}^{p,q} = Z_{r}^{p,q}\\big/ B_{r}^{p,q}, \\qquad Z_{r}^{p,q} = F^{p}K^{p+q} \\cap d^{-1}(F^{p+r}K^{p+q+1}), \\qquad B_{r}^{p,q} = F^{p}K^{p+q} \\cap d(F^{p-r+1}K^{p+q-1}) .$$\n\n- $r = 1$：$Z_{1} = F^{p}K \\cap d^{-1}(F^{p+1}K)$、$B_{1} = F^{p}K \\cap d(F^{p}K)$，商就是 $H^{p+q}(\\operatorname{Gr}^{p}K)$ —— 与第一步的 $E_{1}$ 相同。✓\n- $r = 2$：$d_{1} = jk$ 就是「连接同态 + 落到 $\\operatorname{Gr}^{p+1}$」，其核商掉 $d_{1}$ 的像正好把 $Z_{1}$ 放宽到 $d^{-1}(F^{p+2}K)$ —— 即 $Z_{2}/B_{2}$。✓\n- 归纳步：$Z_{r+1}$ 比 $Z_{r}$ 放宽一层（$d$ 允许再跳一格）、$B_{r+1}$ 比 $B_{r}$ 放宽一层（前一步允许再远一格），而导出偶的三条公式代入后给出**逐字相同**的两个递推。这一步只用到 $d^{2}=0$ 与核 / 余核的泛性质，无额外输入。∎\n\n**第四步：收敛。** 过滤两侧有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$；\n\n而 $D_{\\infty}^{p,q} = \\bigcap_{r} \\operatorname{im}\\bigl(H^{p+q}(F^{p+r}K) \\to H^{p+q}(F^{p}K)\\bigr) = \\operatorname{im}\\bigl(H^{p+q}(F^{p}K) \\to H^{p+q}(K)\\bigr) = F^{p}H^{p+q}(K)$（下有界时这个递降链在每格上稳定到一个偏序集里的极限，而 $\\bigcup_{p} F^{p}K = K$ 让它落在那条映射的像上）。\n\n于是 $E_{\\infty}^{p,q} = F^{p}H^{p+q}/F^{p+1}H^{p+q} = \\operatorname{Gr}^{p}H^{p+q}(K)$。\n\n∎",
    "note": "两条路的差别只在「$Z_{r}/B_{r}$ 的递推怎么打包」：直接构造把递推写在 $E_{r}$ 上，正合偶把递推交给导出机制；两者给出的 $E_{r}$ 与微分逐页相同。"
   },
   {

@@ -212,7 +212,7 @@ window.MG = window.MG || {};
         '',
         '把 $\\in$ 读作 $<$，$\\langle \\omega , \\in \\rangle$ 就是自然数系 $\\langle \\mathbb{N}, <\\rangle$。'
       ].join('\n'),
-      notes: '$\\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。',
+      notes: '$\\omega$ 同时也是最小的极限序数。构造它只需**无穷公理 + 分离公理模式**（**用不到幂集**：$\\omega$ 是「属于一切归纳子集」的那些元素，用分离直接从归纳集里取即可）。',
       refs: ['Kunen, Set Theory, I.5']
     },
 
@@ -298,28 +298,23 @@ window.MG = window.MG || {};
     {
       id: 'imp.inf-to-omega',
       kind: 'implication',
-      sources: ['ax.inf', 'ax.power', 'ax.sep'],
+      sources: ['ax.inf', 'ax.sep'],
       target: 'thm.omega',
-      title: '无穷公理 + 幂集公理 + 分离公理模式 $\\implies \\omega$ 存在',
+      title: '无穷公理 + 分离公理模式 $\\implies \\omega$ 存在',
       proof: [
         [
           '1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。',
-          '2. 由幂集公理，$\\mathcal{P}(I)$ 是集合；再用分离公理模式取',
+          '2. **不需要幂集公理**：分离公理模式的公式里本来就允许对集合量化，故可直接从 $I$ 里取出交（不用先把 $\\mathcal{P}(I)$ 或归纳子集之族造出来）。令',
         ].join('\n'),
         '',
-        '$$S = \\{ J \\in \\mathcal{P}(I) : J\\text{ 是归纳集} \\}$$',
         '',
-        '$S$ 非空（$I \\in S$）。',
-        '',
-        '3. 再对 $\\mathcal{P}(I)$ 用一次分离公理模式，令',
-        '',
-        '$$\\omega = \\{ x \\in I : \\forall J ( J \\in S \\to x \\in J ) \\}$$',
+        '$$\\omega = \\{ x \\in I : \\forall J \\bigl( (J \\subseteq I \\wedge J\\text{ 是归纳的}) \\to x \\in J \\bigr) \\}$$',
         '',
         '即 $\\omega$ 是所有归纳子集的交。',
         '',
         [
-          '4. $\\omega$ 是归纳集：$\\emptyset$ 属于每个 $J \\in S$，故 $\\emptyset \\in \\omega$；若 $x \\in \\omega$，则 $x$ 属于每个 $J \\in S$，从而 $x \\cup \\{x\\}$ 属于每个 $J \\in S$，故 $x \\cup \\{x\\} \\in \\omega$。',
-          '5. $\\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \\cap I$ 也是归纳集且 $K \\cap I \\in S$，由 $\\omega$ 的定义 $\\omega \\subseteq K \\cap I \\subseteq K$。',
+          '4. $\\omega$ 是归纳集：$\\emptyset$ 属于每个归纳子集 $J \\subseteq I$，故 $\\emptyset \\in \\omega$；若 $x \\in \\omega$，则 $x$ 属于每个归纳子集 $J \\subseteq I$，从而 $x \\cup \\{x\\}$ 属于每个归纳子集 $J \\subseteq I$，故 $x \\cup \\{x\\} \\in \\omega$。',
+          '5. $\\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \\cap I$ 也是归纳集且 $K \\cap I \\subseteq I$，由 $\\omega$ 的定义 $\\omega \\subseteq K \\cap I \\subseteq K$。',
         ].join('\n'),
         '',
         '故 $\\omega$ 是最小归纳集，即自然数集。∎'

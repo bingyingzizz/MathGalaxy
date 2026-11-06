@@ -1234,9 +1234,11 @@ MG.i18nStatements = {
         'There exists an "inductive set" — a set containing $\\emptyset$ and closed under the ' +
         'successor operation:\n\n' +
         '$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\n' +
-        'The axiom itself only asks that $I$ be **non-empty** and closed under successor; writing ' +
-        '$\\emptyset \\in I$ is just for looks, since $\\emptyset$ is a primitive object (see "the ' +
-        'empty set"). This axiom asserts the existence of an infinite set, and is the only source ' +
+        'The clause $\\emptyset \\in I$ **cannot be dropped**: $I = \\omega \\setminus \\{0\\}$ is non-empty ' +
+        'and closed under successor ($x \\ne 0 \\implies S(x) \\ne 0$), yet it does not contain ' +
+        '$\\emptyset$ — "non-empty + closed under successor" does not force $\\emptyset \\in I$. ' +
+        '($\\emptyset$ is a primitive object, see "the empty set"). This axiom asserts ' +
+        'the existence of an infinite set, and is the only source ' +
         'from which the set of natural numbers $\\omega$ is built.',
         status: 'reviewed', basedOn: 'v0.9.3#ccdf2115', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
