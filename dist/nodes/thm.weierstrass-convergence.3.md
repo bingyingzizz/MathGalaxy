@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`thm.montel`](../nodes/thm.montel.md) Montel 定理
+- ⇒ [`thm.weierstrass-product`](../nodes/thm.weierstrass-product.md) Weierstrass 乘积定理

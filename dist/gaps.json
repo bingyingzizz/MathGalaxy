@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T09:02:00.402Z",
+ "generated": "2026-11-06T09:17:13.216Z",
  "terms": 76,
  "missing": [
   {
@@ -100,7 +100,7 @@
   },
   {
    "term": "素因子",
-   "total": 8,
+   "total": 9,
    "nodes": [
     {
      "id": "thm.minimal-poly-divisor",
@@ -120,6 +120,10 @@
     },
     {
      "id": "thm.mu-sum",
+     "c": 1
+    },
+    {
+     "id": "thm.chebyshev-estimate",
      "c": 1
     },
     {

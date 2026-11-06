@@ -425,11 +425,10 @@
     },
     {
       id: 'thm.sphere-homology',
+      cluster: 'topology.homology',
       type: 'theorem',
-      status: 'skeleton',
       label: '球面的同调',
       title: '$H_{p}(S^{n})$：只有在 $p = 0$ 与 $p = n$ 处非平凡',
-      cluster: 'topology.homology',
       regions: ['topology'],
       tags: ['代数拓扑', '同调群', '球面', 'Betti 数'],
       statement: [
@@ -443,29 +442,26 @@
         '$$\\tilde{H}_{p}(S^{n}) = \\mathbb{Z} \\ (p = n),\\qquad \\tilde{H}_{p}(S^{n}) = 0 \\ (p \\ne n).$$',
       ].join('\n'),
       notes: [
-        '**$n = 0$ 要单独看清**：$S^{0}$ 是两点，由 `prop.h0-components`，$H_{0}(S^{0}) = \\mathbb{Z}^{2}$，' +
-          '约化后 $\\tilde{H}_{0}(S^{0}) = \\mathbb{Z}$ —— 与 $p = n$ 的约定吻合，所以它是归纳法的**基础情形**。',
-        '',
-        '⚠️ **证明是骨架**，正式证明请查 `refs`。结构与关键步骤：',
-        '① 取两个**开**集 $U := S^{n} \\setminus \\{\\text{南极}\\}$、$V := S^{n} \\setminus \\{\\text{北极}\\}$，' +
-          '它们都同胚于 $\\mathbb{R}^{n}$，可缩，故所有约化同调为零（同伦不变性：恒等 $\\simeq$ 常值，' +
-          '而常值映射在约化同调上是零）；',
-        '② $U \\cap V = S^{n} \\setminus \\{\\text{两极}\\}$ 沿经线**形变收缩**到赤道 $S^{n-1}$，' +
-          '故 $\\tilde{H}_{p}(U \\cap V) \\cong \\tilde{H}_{p}(S^{n-1})$；',
-        '③ 代入 Mayer–Vietoris（`thm.mv-homology`）的约化版，两个可缩块的项为零，得对每个 $p$',
-        '$$\\tilde{H}_{p}(S^{n}) \\cong \\tilde{H}_{p-1}(S^{n-1}) \\qquad (p \\ge 1),$$',
-        '④ 从 $S^{0}$ 出发归纳即得结论。',
-        '',
-        '⚠️ 第 ② 步用到了**同调的同伦不变性**，而第 ③ 步用到 MV —— 本图里 MV 那条边的证明本身也只是骨架。' +
-          '所以这条定理在图上离「可逐行复现」还有一段距离，如实标注。',
-        '',
-        '⭐ **意义**：这是「同调看得见 $n$ 维的洞」的精确表述。对比 `cor.pi1-sphere`（$\\pi_{1}(S^{n}) = 1$ 对 $n \\ge 2$）——' +
-          '$\\pi_{1}$ 只看见 $n = 1$ 那一层，$H_{n}$ 看见每一层。当然 $\\pi_{n}$ 也看得见（那是另一套理论）。',
-      ].join('\n'),
+        '**证明**：对 $n$ 归纳，使用约化同调（`def.reduced-homology`）与约化 Mayer–Vietoris（`thm.mv-homology`）。约定 $S^{n} \\subset \\mathbb{R}^{n+1}$，北极 $N := (0, \\ldots, 0, 1)$、南极 $S := -N$。',
+        '**基础情形 $n = 0$。** $S^{0} = \\{\\pm 1\\}$ 是两个点，由 `prop.h0-components`，$H_{0}(S^{0}) = \\mathbb{Z}^{2}$，故 $\\tilde{H}_{0}(S^{0}) = \\mathbb{Z}$；$p > 0$ 时 $\\tilde{H}_{p}(S^{0}) = 0$。',
+        '**归纳步。** 设 $n \\ge 1$，令 $U := S^{n} \\setminus \\{S\\}$、$V := S^{n} \\setminus \\{N\\}$；两者都是开集。',
+        '**$U, V$ 可缩。** 对 $U$ 用同伦',
+        '$$H_{s}(x) := \\frac{(1-s)x + sN}{\\lVert (1-s)x + sN \\rVert}\\qquad (x \\in U,\\ s \\in [0,1]).$$',
+        '分母不为零：$(1-s)x + sN = 0$ 迫使 $\\lVert x \\rVert = s/(1-s) = 1$，即 $x = S$（端点 $s = 1$ 时分子为 $N \\ne 0$），而 $S \\notin U$。故 $H_{0} = \\mathrm{id}_{U}$、$H_{1} \\equiv N$，$U$ 可缩；同理 $V$ 可缩。由同伦不变性（`thm.homotopy-invariance`），可缩空间的约化同调全为零，故 $\\tilde{H}_{p}(U) = \\tilde{H}_{p}(V) = 0$ 对一切 $p$。',
+        '**交集形变收缩到赤道。** $U \\cap V = S^{n} \\setminus \\{N, S\\}$。把点写成 $(x, t)$，其中 $x \\in \\mathbb{R}^{n}$、$t \\in (-1, 1)$、$\\lVert x \\rVert^{2} + t^{2} = 1$；因 $t \\ne \\pm 1$，故 $x \\ne 0$。令',
+        '$$H_{s}(x, t) := \\frac{(x,\\, s t)}{\\sqrt{\\lVert x \\rVert^{2} + s^{2} t^{2}}}\\qquad (s \\in [0,1]).$$',
+        '它连续、取值仍在 $S^{n}$ 上：$H_{0}(x, t) = (x/\\lVert x \\rVert, 0)$ 落在赤道 $S^{n-1}$ 上，$H_{1} = \\mathrm{id}$，且 $H_{s}$ 把赤道映到赤道。故 $S^{n-1}$ 是 $U \\cap V$ 的形变收缩核，从而 $\\tilde{H}_{p}(U \\cap V) \\cong \\tilde{H}_{p}(S^{n-1})$（同伦不变性）。',
+        '**约化 Mayer–Vietoris。** $U \\cup V = S^{n}$ 且 $U \\cap V \\ne \\emptyset$，故有长正合列',
+        '$$\\cdots \\to \\tilde{H}_{p}(U \\cap V) \\to \\tilde{H}_{p}(U) \\oplus \\tilde{H}_{p}(V) \\to \\tilde{H}_{p}(S^{n}) \\to \\tilde{H}_{p-1}(U \\cap V) \\to \\cdots$$',
+        '中间项全为零，于是对每个 $p \\ge 1$，$\\tilde{H}_{p}(S^{n}) \\cong \\tilde{H}_{p-1}(S^{n-1})$；对 $p = 0$，序列末端 $\\tilde{H}_{0}(U) \\oplus \\tilde{H}_{0}(V) \\to \\tilde{H}_{0}(S^{n}) \\to 0$ 给出 $\\tilde{H}_{0}(S^{n}) = 0$（$n \\ge 1$ 时 $S^{n}$ 道路连通）。',
+        '**归纳结论。** 由基础情形与递归式，$\\tilde{H}_{p}(S^{n}) = \\mathbb{Z}$ 当 $p = n$，否则为 $0$。',
+        '**回到非约化同调。** $n \\ge 1$ 时 $S^{n}$ 道路连通，故 $H_{0}(S^{n}) = \\mathbb{Z}$（即 $\\tilde{H}_{0} = 0$）；$p \\ge 1$ 时 $H_{p} = \\tilde{H}_{p}$。于是 $H_{0}(S^{n}) = \\mathbb{Z}$、$H_{n}(S^{n}) = \\mathbb{Z}$，其余 $H_{p}(S^{n}) = 0$。∎',
+        '⭐ **意义**：这是「同调看得见 $n$ 维的洞」的精确表述。对比 `cor.pi1-sphere`（$\\pi_{1}(S^{n}) = 1$ 对 $n \\ge 2$）—— $\\pi_{1}$ 只看见 $n = 1$ 那一层，$H_{n}$ 看见每一层（当然 $\\pi_{n}$ 也看得见，那是另一套理论）。',
+      ].join('\n\n'),
       refs: [
         'Munkres, Elements of Algebraic Topology · 球面的同调（用 Mayer–Vietoris 归纳）',
         'Hatcher, Algebraic Topology, Ch. 2 §2.2 · homology of spheres',
-      ],
+      ]
     },
     {
       id: 'thm.euler-characteristic',
@@ -506,16 +502,14 @@
     },
     {
       id: 'thm.long-exact-pair',
+      cluster: 'topology.homology',
       type: 'theorem',
-      status: 'skeleton',
       label: '对的长正合列',
       title: '拓扑对 (X, A) 的长正合列',
-      cluster: 'topology.homology',
       regions: ['topology'],
       tags: ['代数拓扑', '长正合列', '相对同调', '连接同态'],
       statement: [
-        '一个**拓扑对**就是一个子空间对 $A \\subseteq X$。由于 $A$ 里的奇异单纯形自动也是 $X$ 里的，' +
-          '$S_{*}(A) \\subseteq S_{*}(X)$ 是**子复形**；定义**相对链群**与**相对同调群**',
+        '一个**拓扑对**就是一个子空间对 $A \\subseteq X$。由于 $A$ 里的奇异单纯形自动也是 $X$ 里的，$S_{*}(A) \\subseteq S_{*}(X)$ 是**子复形**；定义**相对链群**与**相对同调群**',
         '',
         '$$S_{p}(X, A) := S_{p}(X) \\big/ S_{p}(A),$$',
         '$$H_{p}(X, A) := \\ker\\bar\\partial \\big/ \\operatorname{im}\\bar\\partial.$$',
@@ -525,31 +519,26 @@
         '$$\\cdots \\to H_{p}(A) \\to H_{p}(X) \\to H_{p}(X, A)$$',
         '$$\\xrightarrow{\\ \\partial_{*}\\ } H_{p-1}(A) \\to \\cdots$$',
         '',
-        '其中 $\\partial_{*}$ 叫**连接同态**。序列对一切子空间对成立，**不需要** $A$ 是闭的、开的好子空间，' +
-          '也不需要任何「余纤维化」条件。',
+        '其中 $\\partial_{*}$ 叫**连接同态**。序列对一切子空间对成立，**不需要** $A$ 是闭的、开的好子空间，也不需要任何「余纤维化」条件。',
       ].join('\n'),
       notes: [
-        '**连接同态怎么定义**：取 $[c] \\in H_{p}(X, A)$，代表元 $c \\in S_{p}(X)$ 满足「相对闭」的条件 ' +
-          '$\\bar\\partial[c] = 0$，即 $\\partial c \\in S_{p-1}(A)$。令',
-        '',
-        '$$\\partial_{*}[c] := [\\partial c] \\in H_{p-1}(A).$$',
-        '',
-        '要验证三件事：$\\partial c$ 确实是闭链（$\\partial\\partial c = 0$）；换代表元不改变类；' +
-          '在三个位置 $H_{p}(X), H_{p}(X,A), H_{p-1}(A)$ 上分别验证正合性。',
-        '',
-        '⚠️ **本图的证明是骨架**：上面只写「短正合列 $+$ 追图」的构造，不逐行写三轮正合性验证——' +
-          '那是标准的图追踪，写全要一整页。结构是完整的，细节请查 `refs`。',
-        '',
-        '**为什么同调有这条而同伦没有这么方便**：**相对**同伦群的长正合列对任意子空间对 $(X, A)$ 都成立，不需要纤维化；' +
-          '要小心的是「把相对群换成商空间 $X/A$ 的绝对群」那一步，它才需要 $(X, A)$ 是好的对（NDR / 余纤维化）。同调的这条只要 $A \\subseteq X$ 是任意子空间。' +
-          '这是「链的复形」比「同伦群」好用的核心区别之一。',
-        '',
+        '**证明**：记 $i : S_{*}(A) \\hookrightarrow S_{*}(X)$ 为包含、$q : S_{*}(X) \\twoheadrightarrow S_{*}(X, A) := S_{*}(X)/S_{*}(A)$ 为商映射。两者都是链映射，且对每个 $p$',
+        '$$0 \\to S_{p}(A) \\xrightarrow{\\ i\\ } S_{p}(X) \\xrightarrow{\\ q\\ } S_{p}(X, A) \\to 0$$',
+        '是短正合列。同调长正合列由此短正合列得到；下面把连接同态和三个正合位写全。',
+        '**连接同态。** 取 $[c] \\in H_{p}(X, A)$，其中 $c \\in S_{p}(X)$ 且 $\\bar\\partial[c] = 0$，即 $\\partial c \\in S_{p-1}(A)$。令 $\\partial_{*}[c] := [\\partial c] \\in H_{p-1}(A)$。',
+        '良定义：$\\partial\\partial c = 0$，故 $\\partial c$ 是 $A$ 中的闭链；若 $c^{\\prime} - c = \\partial d + a$（$d \\in S_{p+1}(X)$、$a \\in S_{p}(A)$），则 $\\partial c^{\\prime} - \\partial c = \\partial a$ 是 $A$ 中的边缘，同调类不变。',
+        '**正合性。** 记 $j_{*} : H_{p}(A) \\to H_{p}(X)$、$q_{*} : H_{p}(X) \\to H_{p}(X, A)$ 为诱导映射。',
+        '**(a) $\\operatorname{im} j_{*} = \\ker q_{*}$。** 若 $[c] = j_{*}[a]$（$a$ 是 $A$ 中的闭链），则 $q_{*}[c] = [q(a)] = 0$，因为 $a \\in S_{*}(A)$ 在商复形里就是 $0$。反之设 $q_{*}[c] = 0$，即 $q(c) = \\partial b$ 对某个 $b \\in S_{p+1}(X)$；则 $q(c - \\partial b) = 0$，故 $c - \\partial b \\in S_{p}(A)$，且 $\\partial(c - \\partial b) = 0$，于是 $[c] = j_{*}[c - \\partial b]$。',
+        '**(b) $\\operatorname{im} q_{*} = \\ker \\partial_{*}$。** 若 $[c] = q_{*}[z]$ 且 $z$ 是 $X$ 中的闭链，则 $\\partial c = \\partial z = 0$，故 $\\partial_{*}[c] = 0$。反之设 $\\partial_{*}[c] = 0$，即 $\\partial c = \\partial a$ 对某个 $a \\in S_{p-1}(A)$；令 $z := c - a$，则 $\\partial z = 0$ 且 $q(z) = q(c)$，故 $[c] = q_{*}[z]$。',
+        '**(c) $\\operatorname{im} \\partial_{*} = \\ker j_{*}$。** 若 $[c]$ 来自相对同调，则 $j_{*}(\\partial_{*}[c]) = [\\partial c]$，而 $\\partial c$ 在 $X$ 中是边缘，故为 $0$。反之若 $a \\in S_{p-1}(A)$ 是闭链且 $j_{*}[a] = 0$，即 $a = \\partial b$ 对某个 $b \\in S_{p}(X)$；则 $b$ 相对闭（$\\partial b = a \\in S_{*}(A)$），且 $\\partial_{*}[b] = [\\partial b] = [a]$。',
+        '三条正合性合起来就是长正合列；整个论证只用到 $S_{*}(A) \\subseteq S_{*}(X)$ 是子复形，没有用到 $A$ 的闭性、开性或任何附加条件。∎',
+        '**为什么同调有这条而同伦没有这么方便**：**相对**同伦群的长正合列对任意子空间对 $(X, A)$ 都成立，不需要纤维化；要小心的是「把相对群换成商空间 $X/A$ 的绝对群」那一步，它才需要 $(X, A)$ 是好的对（NDR / 余纤维化）。同调的这条只要 $A \\subseteq X$ 是任意子空间。这是「链的复形」比「同伦群」好用的核心区别之一。',
         '💡 用法：把大空间的同调拆成「小空间 $+$ 相对部分」，用已知的算未知的（`thm.mv-homology` 就是这么来的）。',
-      ].join('\n'),
+      ].join('\n\n'),
       refs: [
         'Munkres, Elements of Algebraic Topology · 对 (X, A) 的长正合列（本图不给章号 / 定理号）',
         'Hatcher, Algebraic Topology, Ch. 2 §2.1 · the long exact sequence of a pair',
-      ],
+      ]
     },
     {
       id: 'thm.mv-homology',

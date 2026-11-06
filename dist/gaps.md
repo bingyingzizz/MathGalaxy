@@ -17,8 +17,8 @@
 ### 角度　出现 12 次
 `thm.liouville-formula` · `prop.conformal-iff` · `def.isometry` · `def.intrinsic-quantity` · `def.riemannian-metric` · `def.inverse-trig` 等 9 个节点
 
-### 素因子　出现 8 次
-`thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.bertrand` 等 8 个节点
+### 素因子　出现 9 次
+`thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.chebyshev-estimate` 等 9 个节点
 
 ### 概率　出现 8 次
 `def.lebesgue-stieltjes` · `thm.dct` · `thm.termwise-L1` · `thm.cauchy-schwarz` · `def.tangent-distribution` · `def.jacobi-symbol` 等 7 个节点

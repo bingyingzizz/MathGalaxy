@@ -100,7 +100,6 @@ window.MG = window.MG || {};
       id: 'thm.symplectic-normal-form',
       cluster: 'algebra.multilinear',
       type: 'theorem',
-      status: 'skeleton',
       label: '辛标准形定理',
       title: '辛标准形定理：维数必偶，且总有辛基',
       regions: ['algebra'],
@@ -117,8 +116,15 @@ window.MG = window.MG || {};
         '**与对称型的对照**：实对称型由惯性指数 $(p, q)$ 分类（`thm.sylvester-law-inertia`），非退化情形按 $p + q = n$ 共 **$n+1$** 类（允许退化则是 $(n+1)(n+2)/2$ 类）；辛形式只有**一个**不变量 —— 维数。'
       ].join('\n'),
       notes: [
-        '**证明骨架**：取 $e_{1} \\ne 0$，由非退化性存在 $f_{1}$ 使 $\\omega(e_{1}, f_{1}) = 1$；则 $\\operatorname{span}(e_{1}, f_{1})$ 是一块非退化辛平面，且 $V = \\operatorname{span}(e_{1},f_{1}) \\oplus \\operatorname{span}(e_{1},f_{1})^{\\perp}$（正交补仍是辛空间）。\n\n对维数归纳即可。\n\n**维数必偶**是这条归纳的副产物。',
-        '⭐ **为什么比对称型简单**：对称型要化成对角形，得处理「同一个数能不能开平方」的问题（所以 $\\mathbb{R}$ 上分正负、$\\mathbb{C}$ 上只剩秩）；交错型的标准形 $J_{0}$ 里只有 $0$ 和 $\\pm 1$，**没有待开方的系数**。这就是「辛几何在任意域（char$\\ne$2）上都长一样」的原因。',
+        '**证明**：对 $\\dim V$ 归纳。$\\dim V = 0$ 时取空基即可。设 $\\dim V > 0$，先取 $0 \\ne e_{1} \\in V$。',
+        '**第一步：造一条双曲平面。** 若对一切 $u$ 都有 $\\omega(e_{1}, u) = 0$，则 $e_{1}$ 落在 $\\omega$ 的根（radical）里，与「非退化」矛盾；所以存在 $u \\in V$ 使 $\\omega(e_{1}, u) \\ne 0$。令 $f_{1} := u / \\omega(e_{1}, u)$，则 $\\omega(e_{1}, f_{1}) = 1$，且 $\\omega(f_{1}, e_{1}) = -1$。',
+        '**第二步：$V = W \\oplus W^{\\perp}$，其中 $W := \\operatorname{span}(e_{1}, f_{1})$。** 先看 $W \\cap W^{\\perp}$：若 $v = a e_{1} + b f_{1}$ 且 $\\omega(v, e_{1}) = \\omega(v, f_{1}) = 0$，则 $\\omega(v, e_{1}) = -b$、$\\omega(v, f_{1}) = a$，故 $a = b = 0$。再证 $V = W + W^{\\perp}$：对 $v \\in V$ 令',
+        '$$p(v) := \\omega(v, f_{1})\\, e_{1} - \\omega(v, e_{1})\\, f_{1},$$',
+        '则 $\\omega(p(v), e_{1}) = \\omega(v, e_{1})$、$\\omega(p(v), f_{1}) = \\omega(v, f_{1})$，于是 $v - p(v)$ 与 $e_{1}, f_{1}$ 都正交，落在 $W^{\\perp}$ 里。故 $V = W \\oplus W^{\\perp}$。',
+        '**第三步：$W^{\\perp}$ 上 $\\omega$ 仍非退化。** 若 $v \\in W^{\\perp}$ 且 $\\omega(v, W^{\\perp}) = 0$，则连同 $\\omega(v, W) = 0$ 得 $\\omega(v, V) = 0$，故 $v = 0$。',
+        '**第四步：归纳。** 由第二步 $\\dim W^{\\perp} = \\dim V - 2$，由第三步 $(W^{\\perp}, \\omega|_{W^{\\perp}})$ 仍是辛空间。对它用归纳假设得辛基 $e_{2}, \\ldots, e_{n}, f_{2}, \\ldots, f_{n}$；补上 $e_{1}, f_{1}$ 就是 $V$ 的辛基。于是 $\\dim V = 2n$ 为偶数，且 $\\omega$ 在这组基下的矩阵是 $J_{0}$。∎',
+        '**分类的收尾**：若 $(V, \\omega)$ 与 $(V^{\\prime}, \\omega^{\\prime})$ 同维数 $2n$，分别取辛基 $e_{i}, f_{i}$ 与 $e^{\\prime}_{i}, f^{\\prime}_{i}$，令 $T(e_{i}) = e^{\\prime}_{i}$、$T(f_{i}) = f^{\\prime}_{i}$ 并线性延拓。$T$ 把一组基送到一组基，故是同构；又 $\\omega^{\\prime}(Te_{i}, Tf_{j}) = \\delta_{ij} = \\omega(e_{i}, f_{j})$，而两边都是交错双线性形式、在基对上取值相同，故 $\\omega^{\\prime}(Tu, Tv) = \\omega(u, v)$ 对一切 $u, v$ 成立：$T$ 是等距同构。∎',
+        '⭐ **为什么比对称型简单**：对称型要化成对角形，得处理「同一个数能不能开平方」的问题（所以 $\\mathbb{R}$ 上分正负、$\\mathbb{C}$ 上只剩秩）；交错型的标准形 $J_{0}$ 里只有 $0$ 和 $\\pm 1$，**没有待开方的系数**。这就是「辛几何在任意域（$\\operatorname{char} \\ne 2$）上都长一样」的原因。',
         '⚠️ **奇数维时只有退化交错型**：比如 $\\mathbb{R}^{3}$ 上取 $\\omega$ 的秩必为偶数，所以要么退化、要么为零。这与「$\\mathbb{R}^{3}$ 上内积很多」形成鲜明对照。',
         '⚠️ 这条定理是**辛流形上 Darboux 定理的线性影子**：局部看每一点切空间都是标准辛空间，拼起来就是「局部没有不变量」。辛几何之所以「硬」（刚性），正是因为局部平凡、所有信息都在整体。'
       ].join('\n\n'),

@@ -56,56 +56,42 @@
     },
     {
       id: 'thm.homotopy-invariance',
+      cluster: 'topology.homology',
       type: 'theorem',
-      status: 'skeleton',
       label: '同伦不变性',
       title: '同伦不变性：$f \\simeq g$ 蕴含 $f_{*} = g_{*}$（棱柱算子）',
-      cluster: 'topology.homology',
       regions: ['topology'],
       tags: ['代数拓扑', '同调', '同伦不变性', '棱柱算子'],
       statement: [
-        '设 $X, Y$ 是拓扑空间，$f, g : X \\to Y$ 连续且**同伦**：存在连续 $F : X \\times [0,1] \\to Y$ ' +
-          '使 $F(\\cdot, 0) = f$、$F(\\cdot, 1) = g$。则对每个 $n$，',
+        '设 $X, Y$ 是拓扑空间，$f, g : X \\to Y$ 连续且**同伦**：存在连续 $F : X \\times [0,1] \\to Y$ 使 $F(\\cdot, 0) = f$、$F(\\cdot, 1) = g$。则对每个 $n$，',
         '',
         '$$f_{*} = g_{*} : H_{n}(X) \\to H_{n}(Y).$$',
         '',
-        '推论：同伦等价的空间有同构的同调群（同调是**同伦不变量**）。',
+        '推论：同伦等价的空间有同构的同调群（同调是**同伦不变量**）。'
       ].join('\n'),
       notes: [
-        '**证明（棱柱算子）**：只需造一条链同伦' +
-          '$P_{n} : S_{n}(X) \\to S_{n+1}(Y)$，使 $\\partial P + P\\partial = g_{\\#} - f_{\\#}$。',
-        '',
-        '**几何图像**：一个奇异单形 $\\sigma : \\Delta^{n} \\to X$ 与 $F$ 一起给出「棱柱」' +
-          '$F \\circ (\\sigma \\times \\mathrm{id}) : \\Delta^{n} \\times [0,1] \\to Y$。\n\n' +
-          '棱柱有 $n+3$ 个面：$n+1$ 个「侧面」加底（$f \\circ \\sigma$）和顶（$g \\circ \\sigma$）—— $n+1+2 = n+3$，$n = 1$ 时正方形确有 $4$ 条边。\n\n' +
-          '把 $\\Delta^{n} \\times [0,1]$ 三角剖分成 $n+1$ 个 $\\Delta^{n+1}$，按定向取侧面之和：',
-        '',
-        '$$P_{n}(\\sigma) := \\sum_{i=0}^{n} (-1)^{i}\\, F \\circ (\\sigma \\times \\mathrm{id})' +
-          ' \\circ \\tau_{i},$$',
-        '',
-        '其中 $\\tau_{i} := [v_{0}, \\ldots, v_{i}, w_{i}, \\ldots, w_{n}]$ 是棱柱剖分出的第 $i$ 块。',
-        '',
-        '**关键计算**：对 $P$ 取边缘 $\\partial$，每个「内部面」被相邻两个三角块各算一次、' +
-          '定向相反 $\\implies$ 抵消；剩下「底 + 顶 + 一圈侧面」。而那一圈侧面恰好是 $P(\\partial\\sigma)$' +
-          '（因为 $\\partial\\sigma$ 的单形正好对应棱柱的侧面）。于是',
-        '',
-        '$$\\partial P(\\sigma) = g \\circ \\sigma - f \\circ \\sigma - P(\\partial \\sigma),$$',
-        '',
-        '即 $\\partial P + P\\partial = g_{\\#} - f_{\\#}$。由 `def.chain-homotopy`，' +
-          '$f$ 与 $g$ 在同调上诱导同一同态。∎',
-        '',
-        '⭐ **这一步正是整条链缺的那环**：`thm.sphere-homology` 的归纳法（把 $S^{n}$ 拆成两个半球）' +
-          '要用「两个半球各自可缩 $\\implies$ 它们的恒等映射与常值映射在同调上相同」。没有这条，' +
-          '那个归纳只能算「算出来是 0 和 $\\mathbb{Z}$」，不能说「所以球面同调就是这样」。',
-        '',
-        '⚠️ 本节点写的是**完整构造 + 关键抵消**；那一步「内部面两两抵消」在书上是逐个下标验算的，' +
-          '这里给的是可复现的骨架（每个面的定向按 $(-1)^{i}$ 交替，抵消的机制写清楚了）。',
-      ].join('\n'),
+        '**证明**：只需造一族同态 $P_{n} : S_{n}(X) \\to S_{n+1}(Y)$，使 $\\partial P_{n} + P_{n-1}\\partial = g_{\\#} - f_{\\#}$；再引用 `def.chain-homotopy` 即得 $f_{*} = g_{*}$。下面把 $P_{n}$ 造出来并验证这条等式。',
+        '**棱柱与剖分。** 记 $\\Delta^{n}$ 的顶点为 $e_{0}, \\ldots, e_{n}$，把 $\\Delta^{n} \\times [0,1]$ 的顶点写成 $v_{j} := (e_{j}, 0)$、$w_{j} := (e_{j}, 1)$。把棱柱三角剖分成 $n+1$ 个 $(n+1)$-单纯形：对 $i = 0, \\ldots, n$，令 $\\tau_{i} : \\Delta^{n+1} \\to \\Delta^{n} \\times [0,1]$ 为把标准顶点依次送到',
+        '$$[v_{0}, \\ldots, v_{i}, w_{i}, \\ldots, w_{n}]$$',
+        '的仿射映射（第 $i$ 块）。对生成元 $\\sigma : \\Delta^{n} \\to X$ 定义',
+        '$$P_{n}(\\sigma) := \\sum_{i=0}^{n} (-1)^{i}\\, F \\circ (\\sigma \\times \\mathrm{id}) \\circ \\tau_{i},$$',
+        '再线性延拓到 $S_{n}(X)$。',
+        '**边界计算。** 把 $\\tau_{i}$ 的顶点依次记为 $u_{0}, \\ldots, u_{n+1}$（即 $v_{0}, \\ldots, v_{i}, w_{i}, \\ldots, w_{n}$）。在 $\\partial\\tau_{i}$ 中，删去第 $r$ 个顶点的面带符号 $(-1)^{r}$。逐项看 $\\partial P_{n}(\\sigma)$：',
+        '① **内部面。** 从 $\\tau_{i}$ 删去 $w_{i}$（位置 $i+1$，符号 $(-1)^{i+1}$）与从 $\\tau_{i+1}$ 删去 $v_{i+1}$（位置 $i+1$，符号 $(-1)^{i+1}$）得到同一个面 $[v_{0}, \\ldots, v_{i}, w_{i+1}, \\ldots, w_{n}]$。它在 $\\partial P_{n}(\\sigma)$ 中的两个系数分别是 $(-1)^{i}(-1)^{i+1} = -1$ 与 $(-1)^{i+1}(-1)^{i+1} = +1$，相消。$i = 0, \\ldots, n-1$ 共 $n$ 对面全部消掉。',
+        '② **两端。** $\\tau_{0}$ 删去 $v_{0}$（符号 $+1$）得 $[w_{0}, \\ldots, w_{n}]$，即 $g \\circ \\sigma$；$\\tau_{n}$ 删去 $w_{n}$（位置 $n+1$，符号 $(-1)^{n+1}$）得 $[v_{0}, \\ldots, v_{n}]$，即 $f \\circ \\sigma$，再乘 $P_{n}$ 的系数 $(-1)^{n}$，得 $-f \\circ \\sigma$。',
+        '③ **侧面。** 剩下的是删去某个 $v_{j}$（$j < i$）或某个 $w_{j}$（$j > i$）的面。对 $j < i$：该面在 $\\partial\\tau_{i}$ 中的符号是 $(-1)^{j}$，在 $\\partial P_{n}(\\sigma)$ 中的总系数是 $(-1)^{i+j}$；而在棱柱 $\\Delta^{n-1} \\times [0,1]$ 的剖分里，它正是 $d_{j}\\sigma$ 的第 $(i-1)$ 块，在 $P_{n-1}(d_{j}\\sigma)$ 中的系数是 $(-1)^{i-1}$，再乘 $\\partial\\sigma$ 中 $d_{j}$ 的符号 $(-1)^{j}$，得 $(-1)^{i+j-1} = -(-1)^{i+j}$。对 $j > i$：该面在 $\\partial\\tau_{i}$ 中的符号是 $(-1)^{j+1}$，总系数是 $(-1)^{i+j+1}$；它对应 $d_{j}\\sigma$ 的第 $i$ 块，在 $P_{n-1}(d_{j}\\sigma)$ 中系数为 $(-1)^{i}(-1)^{j} = (-1)^{i+j}$，同样是相反数。所以侧面之和恰为 $-P_{n-1}(\\partial\\sigma)$。',
+        '合并 ①–③ 得',
+        '$$\\partial P_{n}(\\sigma) = g \\circ \\sigma - f \\circ \\sigma - P_{n-1}(\\partial \\sigma),$$',
+        '即 $\\partial P_{n} + P_{n-1}\\partial = g_{\\#} - f_{\\#}$（约定 $P_{-1} = 0$；$n = 0$ 时 $\\tau_{0} = [v_{0}, w_{0}]$，①③ 都不出现，公式直接给出 $g\\sigma - f\\sigma$）。由 `def.chain-homotopy`，$f$ 与 $g$ 在同调上诱导同一同态。∎',
+        '**同伦等价的情形**：若 $f : X \\to Y$ 与 $h : Y \\to X$ 满足 $h \\circ f \\simeq \\mathrm{id}_{X}$、$f \\circ h \\simeq \\mathrm{id}_{Y}$，则 $h_{*}f_{*} = \\mathrm{id}$、$f_{*}h_{*} = \\mathrm{id}$，故 $f_{*}$ 是同构。',
+        '⭐ **这一步是球面同调归纳的支点**：`thm.sphere-homology` 把 $S^{n}$ 拆成两个可缩半球，需要「恒等映射与常值映射在同调上相同」——那正是本定理的直接推论（可缩空间里 $\\mathrm{id} \\simeq \\text{常值}$）。',
+        '⚠️ 上面 ③ 的两行就是「内部面抵消」的逐下标验算；$n = 1$ 时可以手验：正方形剖成两块三角形，四个侧面正好是 $\\partial\\sigma$ 的两块棱柱。',
+      ].join('\n\n'),
       refs: [
         'Munkres, Elements of Algebraic Topology, Ch. 1（the prism operator / homotopy invariance）',
         'Hatcher, Algebraic Topology, Ch. 2.1 · Homotopy invariance（Theorem 2.10）',
         'Spanier, Algebraic Topology, Ch. 4 · Homology theory',
-      ],
+      ]
     },
   ],
 

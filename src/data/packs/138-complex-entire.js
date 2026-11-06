@@ -542,7 +542,7 @@
       ].join('\n'),
       note: '这条估计就是「取 p 让级数收敛」的全部依据。' },
 
-    { kind: 'implication', sources: ['def.elementary-factor', 'prop.jensen', 'def.entire-order'],
+    { kind: 'implication', sources: ['def.elementary-factor', 'thm.weierstrass-convergence'],
       target: 'thm.weierstrass-product',
       title: '逐点选 $p_{n}$ 保证内闭一致收敛，乘积即成整函数',
       proof: [
@@ -557,8 +557,7 @@
         '而 $\\sum |a_{n}|^{-(p_{n}+1)}$ 收敛，故乘积在 $|z| \\le R$ 上一致收敛到一个无零点全纯函数。',
         '',
         '**零点**：每个因子只在 $z = a_{n}$ 处为零，重数等于该点在序列中出现的次数；' +
-          '再乘上 $z^{m}$ 补齐 $0$ 处的重数。由 `prop.jensen` 与阶的估计（`def.entire-order`）可保证' +
-          '选出的 $p_{n}$ 不至于过大而使乘积不收敛。∎',
+          '再乘上 $z^{m}$ 补齐 $0$ 处的重数。上述估计说明乘积在紧集上一致收敛；由 `thm.weierstrass-convergence`，极限全纯，故乘积为整函数。∎',
       ].join('\n'),
       note: 'Weierstrass 乘积 = 「零点可任意指定」；剩下的自由度正是 $e^{g}$。' },
 

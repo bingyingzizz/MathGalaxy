@@ -35,17 +35,17 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | 本次提交后本地 `main` ahead 13（未 push；origin 仍停在 `0d20279a`） |
+| 工作树 | 本次提交后本地 `main` ahead 14（未 push；origin 仍停在 `0d20279a`） |
 
 ### 门禁 · 我 2026-11-06 全跑过
 
 | 命令 | 结果 |
 |---|---|
 | `bun tools/build.mjs` | ✅ 全绿（1540 节点 / 3169 边，所有页 ≤1300 B） |
-| `bun tools/_katexcheck.mjs` | ✅ **2849 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849） |
+| `bun tools/_katexcheck.mjs` | ✅ **2865 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
-| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按第 5 批重钉为 889；Noether 14） |
+| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按第 6 批重钉为 890；fubini 12；Noether 14） |
 | `bun tools/_slashcheck.mjs` | ✅ 0 处 |
 | `node tools/dupkeys.mjs` | ✅ 0 处（同对象内 `notes`/`note`/`regions` 重复键会静默覆盖；FIX-023c 后加入常规门） |
 
@@ -419,7 +419,7 @@
 | 自环 / 空端点 / 互推 | ✅ 全 0 |
 | 有 `proof` 但无 `status` 的边 | **627 条** |
 | 边 id 由全局序号派生 | ✅ **179 条形如 `e<数字>`**（`e16.definition` 这种）；222 个公开 proofs 页依赖它 ⇒ 内容一变 id 就漂 |
-| 骨架边无从标记 | 33 条 |
+| 骨架边无独立 status | **第 1 批报告口径 19 条**（图本身没有 edge status，不能从 `dist` 复跑；旧「33 条」已弃用） |
 
 ⚠️ **节点页贴近 1300 B 上限**（2026-11-05 实测）：`thm.tensor-universal-property` **1300（顶格）**、`def.manifold-chart` **1291**、`def.interior` **1284**、`thm.cauchy-inequality` **1282**、`def.orientable-manifold` **1272**、`thm.gauss-bonnet` **1268**、`def.transition-function` **1266**、`def.gram-matrix` / `def.bilinear-form` 也接近 —— 再往这些陈述加一句就会红。
 
@@ -430,7 +430,7 @@
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
 | 精读覆盖率 | **回执 1540 / 1540（100%）**；本会话逐团深读 **57 团 / 760 条**（v2 §39–§103） | 其余 48 团 / 780 条来自 §19–§59 早期批次；旧的 1051/1502/1527 是按团 id 倒推的估计，不再用 |
-| **skeleton 证明** | **31 节点 / 19 条边**（2026-11-06 第 5 批后；标准 2（Euler 示性数阻塞）、中等 15、研究 14） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条已补；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
+| **skeleton 证明** | **25 节点 / 19 条边**（2026-11-06 第 6 批后；标准 2（Euler 示性数阻塞）、中等 8、研究 15；边数按第 1 批报告口径，图不可查询） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条已补；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门
@@ -592,7 +592,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 |---|---|
 | **本交接书** | `H:\MathGalaxy\HANDOVER.md`（本文件，唯一） |
 | **仓库规矩**（进目录自动注入） | `H:\MathGalaxy\AGENTS.md` |
-| **审读报告真源**（11892 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§107 各批 |
+| **审读报告真源**（11998 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§109 各批 |
 | 审读回执 | `_audit/_proofs/out-*.txt`（`P-*.txt` 是对应提示词） |
 | 用户手写笔记原件 | `_pdf/`（167 MB）· 转写 `_pdf/凝聚态数学笔记-转写.md` |
 | 散文式规则 | `CONTRIBUTING.md`（人看的）· `README.md` · `policy.md` |

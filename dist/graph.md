@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T09:02:00.402Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T09:17:13.216Z
 > 15 星系 / 105 星团 / 1540 节点 / 3169 连线（强边 3130，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.8 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -4920,18 +4920,35 @@ $$H_{p}(S^{n}) = 0 \quad (p \ne 0, n).$$
 
 $$\tilde{H}_{p}(S^{n}) = \mathbb{Z} \ (p = n),\qquad \tilde{H}_{p}(S^{n}) = 0 \ (p \ne n).$$
 
-**$n = 0$ 要单独看清**：$S^{0}$ 是两点，由 `prop.h0-components`，$H_{0}(S^{0}) = \mathbb{Z}^{2}$，约化后 $\tilde{H}_{0}(S^{0}) = \mathbb{Z}$ —— 与 $p = n$ 的约定吻合，所以它是归纳法的**基础情形**。
+**证明**：对 $n$ 归纳，使用约化同调（`def.reduced-homology`）与约化 Mayer–Vietoris（`thm.mv-homology`）。约定 $S^{n} \subset \mathbb{R}^{n+1}$，北极 $N := (0, \ldots, 0, 1)$、南极 $S := -N$。
 
-⚠️ **证明是骨架**，正式证明请查 `refs`。结构与关键步骤：
-① 取两个**开**集 $U := S^{n} \setminus \{\text{南极}\}$、$V := S^{n} \setminus \{\text{北极}\}$，它们都同胚于 $\mathbb{R}^{n}$，可缩，故所有约化同调为零（同伦不变性：恒等 $\simeq$ 常值，而常值映射在约化同调上是零）；
-② $U \cap V = S^{n} \setminus \{\text{两极}\}$ 沿经线**形变收缩**到赤道 $S^{n-1}$，故 $\tilde{H}_{p}(U \cap V) \cong \tilde{H}_{p}(S^{n-1})$；
-③ 代入 Mayer–Vietoris（`thm.mv-homology`）的约化版，两个可缩块的项为零，得对每个 $p$
-$$\tilde{H}_{p}(S^{n}) \cong \tilde{H}_{p-1}(S^{n-1}) \qquad (p \ge 1),$$
-④ 从 $S^{0}$ 出发归纳即得结论。
+**基础情形 $n = 0$。** $S^{0} = \{\pm 1\}$ 是两个点，由 `prop.h0-components`，$H_{0}(S^{0}) = \mathbb{Z}^{2}$，故 $\tilde{H}_{0}(S^{0}) = \mathbb{Z}$；$p > 0$ 时 $\tilde{H}_{p}(S^{0}) = 0$。
 
-⚠️ 第 ② 步用到了**同调的同伦不变性**，而第 ③ 步用到 MV —— 本图里 MV 那条边的证明本身也只是骨架。所以这条定理在图上离「可逐行复现」还有一段距离，如实标注。
+**归纳步。** 设 $n \ge 1$，令 $U := S^{n} \setminus \{S\}$、$V := S^{n} \setminus \{N\}$；两者都是开集。
 
-⭐ **意义**：这是「同调看得见 $n$ 维的洞」的精确表述。对比 `cor.pi1-sphere`（$\pi_{1}(S^{n}) = 1$ 对 $n \ge 2$）——$\pi_{1}$ 只看见 $n = 1$ 那一层，$H_{n}$ 看见每一层。当然 $\pi_{n}$ 也看得见（那是另一套理论）。
+**$U, V$ 可缩。** 对 $U$ 用同伦
+
+$$H_{s}(x) := \frac{(1-s)x + sN}{\lVert (1-s)x + sN \rVert}\qquad (x \in U,\ s \in [0,1]).$$
+
+分母不为零：$(1-s)x + sN = 0$ 迫使 $\lVert x \rVert = s/(1-s) = 1$，即 $x = S$（端点 $s = 1$ 时分子为 $N \ne 0$），而 $S \notin U$。故 $H_{0} = \mathrm{id}_{U}$、$H_{1} \equiv N$，$U$ 可缩；同理 $V$ 可缩。由同伦不变性（`thm.homotopy-invariance`），可缩空间的约化同调全为零，故 $\tilde{H}_{p}(U) = \tilde{H}_{p}(V) = 0$ 对一切 $p$。
+
+**交集形变收缩到赤道。** $U \cap V = S^{n} \setminus \{N, S\}$。把点写成 $(x, t)$，其中 $x \in \mathbb{R}^{n}$、$t \in (-1, 1)$、$\lVert x \rVert^{2} + t^{2} = 1$；因 $t \ne \pm 1$，故 $x \ne 0$。令
+
+$$H_{s}(x, t) := \frac{(x,\, s t)}{\sqrt{\lVert x \rVert^{2} + s^{2} t^{2}}}\qquad (s \in [0,1]).$$
+
+它连续、取值仍在 $S^{n}$ 上：$H_{0}(x, t) = (x/\lVert x \rVert, 0)$ 落在赤道 $S^{n-1}$ 上，$H_{1} = \mathrm{id}$，且 $H_{s}$ 把赤道映到赤道。故 $S^{n-1}$ 是 $U \cap V$ 的形变收缩核，从而 $\tilde{H}_{p}(U \cap V) \cong \tilde{H}_{p}(S^{n-1})$（同伦不变性）。
+
+**约化 Mayer–Vietoris。** $U \cup V = S^{n}$ 且 $U \cap V \ne \emptyset$，故有长正合列
+
+$$\cdots \to \tilde{H}_{p}(U \cap V) \to \tilde{H}_{p}(U) \oplus \tilde{H}_{p}(V) \to \tilde{H}_{p}(S^{n}) \to \tilde{H}_{p-1}(U \cap V) \to \cdots$$
+
+中间项全为零，于是对每个 $p \ge 1$，$\tilde{H}_{p}(S^{n}) \cong \tilde{H}_{p-1}(S^{n-1})$；对 $p = 0$，序列末端 $\tilde{H}_{0}(U) \oplus \tilde{H}_{0}(V) \to \tilde{H}_{0}(S^{n}) \to 0$ 给出 $\tilde{H}_{0}(S^{n}) = 0$（$n \ge 1$ 时 $S^{n}$ 道路连通）。
+
+**归纳结论。** 由基础情形与递归式，$\tilde{H}_{p}(S^{n}) = \mathbb{Z}$ 当 $p = n$，否则为 $0$。
+
+**回到非约化同调。** $n \ge 1$ 时 $S^{n}$ 道路连通，故 $H_{0}(S^{n}) = \mathbb{Z}$（即 $\tilde{H}_{0} = 0$）；$p \ge 1$ 时 $H_{p} = \tilde{H}_{p}$。于是 $H_{0}(S^{n}) = \mathbb{Z}$、$H_{n}(S^{n}) = \mathbb{Z}$，其余 $H_{p}(S^{n}) = 0$。∎
+
+⭐ **意义**：这是「同调看得见 $n$ 维的洞」的精确表述。对比 `cor.pi1-sphere`（$\pi_{1}(S^{n}) = 1$ 对 $n \ge 2$）—— $\pi_{1}$ 只看见 $n = 1$ 那一层，$H_{n}$ 看见每一层（当然 $\pi_{n}$ 也看得见，那是另一套理论）。
 
 参考：Munkres, Elements of Algebraic Topology · 球面的同调（用 Mayer–Vietoris 归纳）；Hatcher, Algebraic Topology, Ch. 2 §2.2 · homology of spheres
 
@@ -4971,13 +4988,25 @@ $$\xrightarrow{\ \partial_{*}\ } H_{p-1}(A) \to \cdots$$
 
 其中 $\partial_{*}$ 叫**连接同态**。序列对一切子空间对成立，**不需要** $A$ 是闭的、开的好子空间，也不需要任何「余纤维化」条件。
 
-**连接同态怎么定义**：取 $[c] \in H_{p}(X, A)$，代表元 $c \in S_{p}(X)$ 满足「相对闭」的条件 $\bar\partial[c] = 0$，即 $\partial c \in S_{p-1}(A)$。令
+**证明**：记 $i : S_{*}(A) \hookrightarrow S_{*}(X)$ 为包含、$q : S_{*}(X) \twoheadrightarrow S_{*}(X, A) := S_{*}(X)/S_{*}(A)$ 为商映射。两者都是链映射，且对每个 $p$
 
-$$\partial_{*}[c] := [\partial c] \in H_{p-1}(A).$$
+$$0 \to S_{p}(A) \xrightarrow{\ i\ } S_{p}(X) \xrightarrow{\ q\ } S_{p}(X, A) \to 0$$
 
-要验证三件事：$\partial c$ 确实是闭链（$\partial\partial c = 0$）；换代表元不改变类；在三个位置 $H_{p}(X), H_{p}(X,A), H_{p-1}(A)$ 上分别验证正合性。
+是短正合列。同调长正合列由此短正合列得到；下面把连接同态和三个正合位写全。
 
-⚠️ **本图的证明是骨架**：上面只写「短正合列 $+$ 追图」的构造，不逐行写三轮正合性验证——那是标准的图追踪，写全要一整页。结构是完整的，细节请查 `refs`。
+**连接同态。** 取 $[c] \in H_{p}(X, A)$，其中 $c \in S_{p}(X)$ 且 $\bar\partial[c] = 0$，即 $\partial c \in S_{p-1}(A)$。令 $\partial_{*}[c] := [\partial c] \in H_{p-1}(A)$。
+
+良定义：$\partial\partial c = 0$，故 $\partial c$ 是 $A$ 中的闭链；若 $c^{\prime} - c = \partial d + a$（$d \in S_{p+1}(X)$、$a \in S_{p}(A)$），则 $\partial c^{\prime} - \partial c = \partial a$ 是 $A$ 中的边缘，同调类不变。
+
+**正合性。** 记 $j_{*} : H_{p}(A) \to H_{p}(X)$、$q_{*} : H_{p}(X) \to H_{p}(X, A)$ 为诱导映射。
+
+**(a) $\operatorname{im} j_{*} = \ker q_{*}$。** 若 $[c] = j_{*}[a]$（$a$ 是 $A$ 中的闭链），则 $q_{*}[c] = [q(a)] = 0$，因为 $a \in S_{*}(A)$ 在商复形里就是 $0$。反之设 $q_{*}[c] = 0$，即 $q(c) = \partial b$ 对某个 $b \in S_{p+1}(X)$；则 $q(c - \partial b) = 0$，故 $c - \partial b \in S_{p}(A)$，且 $\partial(c - \partial b) = 0$，于是 $[c] = j_{*}[c - \partial b]$。
+
+**(b) $\operatorname{im} q_{*} = \ker \partial_{*}$。** 若 $[c] = q_{*}[z]$ 且 $z$ 是 $X$ 中的闭链，则 $\partial c = \partial z = 0$，故 $\partial_{*}[c] = 0$。反之设 $\partial_{*}[c] = 0$，即 $\partial c = \partial a$ 对某个 $a \in S_{p-1}(A)$；令 $z := c - a$，则 $\partial z = 0$ 且 $q(z) = q(c)$，故 $[c] = q_{*}[z]$。
+
+**(c) $\operatorname{im} \partial_{*} = \ker j_{*}$。** 若 $[c]$ 来自相对同调，则 $j_{*}(\partial_{*}[c]) = [\partial c]$，而 $\partial c$ 在 $X$ 中是边缘，故为 $0$。反之若 $a \in S_{p-1}(A)$ 是闭链且 $j_{*}[a] = 0$，即 $a = \partial b$ 对某个 $b \in S_{p}(X)$；则 $b$ 相对闭（$\partial b = a \in S_{*}(A)$），且 $\partial_{*}[b] = [\partial b] = [a]$。
+
+三条正合性合起来就是长正合列；整个论证只用到 $S_{*}(A) \subseteq S_{*}(X)$ 是子复形，没有用到 $A$ 的闭性、开性或任何附加条件。∎
 
 **为什么同调有这条而同伦没有这么方便**：**相对**同伦群的长正合列对任意子空间对 $(X, A)$ 都成立，不需要纤维化；要小心的是「把相对群换成商空间 $X/A$ 的绝对群」那一步，它才需要 $(X, A)$ 是好的对（NDR / 余纤维化）。同调的这条只要 $A \subseteq X$ 是任意子空间。这是「链的复形」比「同伦群」好用的核心区别之一。
 
@@ -5080,27 +5109,37 @@ $$f_{*} = g_{*} : H_{n}(X) \to H_{n}(Y).$$
 
 推论：同伦等价的空间有同构的同调群（同调是**同伦不变量**）。
 
-**证明（棱柱算子）**：只需造一条链同伦$P_{n} : S_{n}(X) \to S_{n+1}(Y)$，使 $\partial P + P\partial = g_{\#} - f_{\#}$。
+**证明**：只需造一族同态 $P_{n} : S_{n}(X) \to S_{n+1}(Y)$，使 $\partial P_{n} + P_{n-1}\partial = g_{\#} - f_{\#}$；再引用 `def.chain-homotopy` 即得 $f_{*} = g_{*}$。下面把 $P_{n}$ 造出来并验证这条等式。
 
-**几何图像**：一个奇异单形 $\sigma : \Delta^{n} \to X$ 与 $F$ 一起给出「棱柱」$F \circ (\sigma \times \mathrm{id}) : \Delta^{n} \times [0,1] \to Y$。
+**棱柱与剖分。** 记 $\Delta^{n}$ 的顶点为 $e_{0}, \ldots, e_{n}$，把 $\Delta^{n} \times [0,1]$ 的顶点写成 $v_{j} := (e_{j}, 0)$、$w_{j} := (e_{j}, 1)$。把棱柱三角剖分成 $n+1$ 个 $(n+1)$-单纯形：对 $i = 0, \ldots, n$，令 $\tau_{i} : \Delta^{n+1} \to \Delta^{n} \times [0,1]$ 为把标准顶点依次送到
 
-棱柱有 $n+3$ 个面：$n+1$ 个「侧面」加底（$f \circ \sigma$）和顶（$g \circ \sigma$）—— $n+1+2 = n+3$，$n = 1$ 时正方形确有 $4$ 条边。
+$$[v_{0}, \ldots, v_{i}, w_{i}, \ldots, w_{n}]$$
 
-把 $\Delta^{n} \times [0,1]$ 三角剖分成 $n+1$ 个 $\Delta^{n+1}$，按定向取侧面之和：
+的仿射映射（第 $i$ 块）。对生成元 $\sigma : \Delta^{n} \to X$ 定义
 
 $$P_{n}(\sigma) := \sum_{i=0}^{n} (-1)^{i}\, F \circ (\sigma \times \mathrm{id}) \circ \tau_{i},$$
 
-其中 $\tau_{i} := [v_{0}, \ldots, v_{i}, w_{i}, \ldots, w_{n}]$ 是棱柱剖分出的第 $i$ 块。
+再线性延拓到 $S_{n}(X)$。
 
-**关键计算**：对 $P$ 取边缘 $\partial$，每个「内部面」被相邻两个三角块各算一次、定向相反 $\implies$ 抵消；剩下「底 + 顶 + 一圈侧面」。而那一圈侧面恰好是 $P(\partial\sigma)$（因为 $\partial\sigma$ 的单形正好对应棱柱的侧面）。于是
+**边界计算。** 把 $\tau_{i}$ 的顶点依次记为 $u_{0}, \ldots, u_{n+1}$（即 $v_{0}, \ldots, v_{i}, w_{i}, \ldots, w_{n}$）。在 $\partial\tau_{i}$ 中，删去第 $r$ 个顶点的面带符号 $(-1)^{r}$。逐项看 $\partial P_{n}(\sigma)$：
 
-$$\partial P(\sigma) = g \circ \sigma - f \circ \sigma - P(\partial \sigma),$$
+① **内部面。** 从 $\tau_{i}$ 删去 $w_{i}$（位置 $i+1$，符号 $(-1)^{i+1}$）与从 $\tau_{i+1}$ 删去 $v_{i+1}$（位置 $i+1$，符号 $(-1)^{i+1}$）得到同一个面 $[v_{0}, \ldots, v_{i}, w_{i+1}, \ldots, w_{n}]$。它在 $\partial P_{n}(\sigma)$ 中的两个系数分别是 $(-1)^{i}(-1)^{i+1} = -1$ 与 $(-1)^{i+1}(-1)^{i+1} = +1$，相消。$i = 0, \ldots, n-1$ 共 $n$ 对面全部消掉。
 
-即 $\partial P + P\partial = g_{\#} - f_{\#}$。由 `def.chain-homotopy`，$f$ 与 $g$ 在同调上诱导同一同态。∎
+② **两端。** $\tau_{0}$ 删去 $v_{0}$（符号 $+1$）得 $[w_{0}, \ldots, w_{n}]$，即 $g \circ \sigma$；$\tau_{n}$ 删去 $w_{n}$（位置 $n+1$，符号 $(-1)^{n+1}$）得 $[v_{0}, \ldots, v_{n}]$，即 $f \circ \sigma$，再乘 $P_{n}$ 的系数 $(-1)^{n}$，得 $-f \circ \sigma$。
 
-⭐ **这一步正是整条链缺的那环**：`thm.sphere-homology` 的归纳法（把 $S^{n}$ 拆成两个半球）要用「两个半球各自可缩 $\implies$ 它们的恒等映射与常值映射在同调上相同」。没有这条，那个归纳只能算「算出来是 0 和 $\mathbb{Z}$」，不能说「所以球面同调就是这样」。
+③ **侧面。** 剩下的是删去某个 $v_{j}$（$j < i$）或某个 $w_{j}$（$j > i$）的面。对 $j < i$：该面在 $\partial\tau_{i}$ 中的符号是 $(-1)^{j}$，在 $\partial P_{n}(\sigma)$ 中的总系数是 $(-1)^{i+j}$；而在棱柱 $\Delta^{n-1} \times [0,1]$ 的剖分里，它正是 $d_{j}\sigma$ 的第 $(i-1)$ 块，在 $P_{n-1}(d_{j}\sigma)$ 中的系数是 $(-1)^{i-1}$，再乘 $\partial\sigma$ 中 $d_{j}$ 的符号 $(-1)^{j}$，得 $(-1)^{i+j-1} = -(-1)^{i+j}$。对 $j > i$：该面在 $\partial\tau_{i}$ 中的符号是 $(-1)^{j+1}$，总系数是 $(-1)^{i+j+1}$；它对应 $d_{j}\sigma$ 的第 $i$ 块，在 $P_{n-1}(d_{j}\sigma)$ 中系数为 $(-1)^{i}(-1)^{j} = (-1)^{i+j}$，同样是相反数。所以侧面之和恰为 $-P_{n-1}(\partial\sigma)$。
 
-⚠️ 本节点写的是**完整构造 + 关键抵消**；那一步「内部面两两抵消」在书上是逐个下标验算的，这里给的是可复现的骨架（每个面的定向按 $(-1)^{i}$ 交替，抵消的机制写清楚了）。
+合并 ①–③ 得
+
+$$\partial P_{n}(\sigma) = g \circ \sigma - f \circ \sigma - P_{n-1}(\partial \sigma),$$
+
+即 $\partial P_{n} + P_{n-1}\partial = g_{\#} - f_{\#}$（约定 $P_{-1} = 0$；$n = 0$ 时 $\tau_{0} = [v_{0}, w_{0}]$，①③ 都不出现，公式直接给出 $g\sigma - f\sigma$）。由 `def.chain-homotopy`，$f$ 与 $g$ 在同调上诱导同一同态。∎
+
+**同伦等价的情形**：若 $f : X \to Y$ 与 $h : Y \to X$ 满足 $h \circ f \simeq \mathrm{id}_{X}$、$f \circ h \simeq \mathrm{id}_{Y}$，则 $h_{*}f_{*} = \mathrm{id}$、$f_{*}h_{*} = \mathrm{id}$，故 $f_{*}$ 是同构。
+
+⭐ **这一步是球面同调归纳的支点**：`thm.sphere-homology` 把 $S^{n}$ 拆成两个可缩半球，需要「恒等映射与常值映射在同调上相同」——那正是本定理的直接推论（可缩空间里 $\mathrm{id} \simeq \text{常值}$）。
+
+⚠️ 上面 ③ 的两行就是「内部面抵消」的逐下标验算；$n = 1$ 时可以手验：正方形剖成两块三角形，四个侧面正好是 $\partial\sigma$ 的两块棱柱。
 
 参考：Munkres, Elements of Algebraic Topology, Ch. 1（the prism operator / homotopy invariance）；Hatcher, Algebraic Topology, Ch. 2.1 · Homotopy invariance（Theorem 2.10）；Spanier, Algebraic Topology, Ch. 4 · Homology theory
 
@@ -8166,13 +8205,23 @@ $$J_{0} = \begin{pmatrix} 0 & I_{n} \\ -I_{n} & 0\end{pmatrix} ,$$
 
 **与对称型的对照**：实对称型由惯性指数 $(p, q)$ 分类（`thm.sylvester-law-inertia`），非退化情形按 $p + q = n$ 共 **$n+1$** 类（允许退化则是 $(n+1)(n+2)/2$ 类）；辛形式只有**一个**不变量 —— 维数。
 
-**证明骨架**：取 $e_{1} \ne 0$，由非退化性存在 $f_{1}$ 使 $\omega(e_{1}, f_{1}) = 1$；则 $\operatorname{span}(e_{1}, f_{1})$ 是一块非退化辛平面，且 $V = \operatorname{span}(e_{1},f_{1}) \oplus \operatorname{span}(e_{1},f_{1})^{\perp}$（正交补仍是辛空间）。
+**证明**：对 $\dim V$ 归纳。$\dim V = 0$ 时取空基即可。设 $\dim V > 0$，先取 $0 \ne e_{1} \in V$。
 
-对维数归纳即可。
+**第一步：造一条双曲平面。** 若对一切 $u$ 都有 $\omega(e_{1}, u) = 0$，则 $e_{1}$ 落在 $\omega$ 的根（radical）里，与「非退化」矛盾；所以存在 $u \in V$ 使 $\omega(e_{1}, u) \ne 0$。令 $f_{1} := u / \omega(e_{1}, u)$，则 $\omega(e_{1}, f_{1}) = 1$，且 $\omega(f_{1}, e_{1}) = -1$。
 
-**维数必偶**是这条归纳的副产物。
+**第二步：$V = W \oplus W^{\perp}$，其中 $W := \operatorname{span}(e_{1}, f_{1})$。** 先看 $W \cap W^{\perp}$：若 $v = a e_{1} + b f_{1}$ 且 $\omega(v, e_{1}) = \omega(v, f_{1}) = 0$，则 $\omega(v, e_{1}) = -b$、$\omega(v, f_{1}) = a$，故 $a = b = 0$。再证 $V = W + W^{\perp}$：对 $v \in V$ 令
 
-⭐ **为什么比对称型简单**：对称型要化成对角形，得处理「同一个数能不能开平方」的问题（所以 $\mathbb{R}$ 上分正负、$\mathbb{C}$ 上只剩秩）；交错型的标准形 $J_{0}$ 里只有 $0$ 和 $\pm 1$，**没有待开方的系数**。这就是「辛几何在任意域（char$\ne$2）上都长一样」的原因。
+$$p(v) := \omega(v, f_{1})\, e_{1} - \omega(v, e_{1})\, f_{1},$$
+
+则 $\omega(p(v), e_{1}) = \omega(v, e_{1})$、$\omega(p(v), f_{1}) = \omega(v, f_{1})$，于是 $v - p(v)$ 与 $e_{1}, f_{1}$ 都正交，落在 $W^{\perp}$ 里。故 $V = W \oplus W^{\perp}$。
+
+**第三步：$W^{\perp}$ 上 $\omega$ 仍非退化。** 若 $v \in W^{\perp}$ 且 $\omega(v, W^{\perp}) = 0$，则连同 $\omega(v, W) = 0$ 得 $\omega(v, V) = 0$，故 $v = 0$。
+
+**第四步：归纳。** 由第二步 $\dim W^{\perp} = \dim V - 2$，由第三步 $(W^{\perp}, \omega|_{W^{\perp}})$ 仍是辛空间。对它用归纳假设得辛基 $e_{2}, \ldots, e_{n}, f_{2}, \ldots, f_{n}$；补上 $e_{1}, f_{1}$ 就是 $V$ 的辛基。于是 $\dim V = 2n$ 为偶数，且 $\omega$ 在这组基下的矩阵是 $J_{0}$。∎
+
+**分类的收尾**：若 $(V, \omega)$ 与 $(V^{\prime}, \omega^{\prime})$ 同维数 $2n$，分别取辛基 $e_{i}, f_{i}$ 与 $e^{\prime}_{i}, f^{\prime}_{i}$，令 $T(e_{i}) = e^{\prime}_{i}$、$T(f_{i}) = f^{\prime}_{i}$ 并线性延拓。$T$ 把一组基送到一组基，故是同构；又 $\omega^{\prime}(Te_{i}, Tf_{j}) = \delta_{ij} = \omega(e_{i}, f_{j})$，而两边都是交错双线性形式、在基对上取值相同，故 $\omega^{\prime}(Tu, Tv) = \omega(u, v)$ 对一切 $u, v$ 成立：$T$ 是等距同构。∎
+
+⭐ **为什么比对称型简单**：对称型要化成对角形，得处理「同一个数能不能开平方」的问题（所以 $\mathbb{R}$ 上分正负、$\mathbb{C}$ 上只剩秩）；交错型的标准形 $J_{0}$ 里只有 $0$ 和 $\pm 1$，**没有待开方的系数**。这就是「辛几何在任意域（$\operatorname{char} \ne 2$）上都长一样」的原因。
 
 ⚠️ **奇数维时只有退化交错型**：比如 $\mathbb{R}^{3}$ 上取 $\omega$ 的秩必为偶数，所以要么退化、要么为零。这与「$\mathbb{R}^{3}$ 上内积很多」形成鲜明对照。
 
@@ -10074,7 +10123,7 @@ $f$ 的根可以用**根式**（四则运算与开 $n$ 次方）从 $F$ 的元�
 
 **第三步：$G$ 含一个换位**。$f^{\prime}(x) = 5x^{4} - 4$，唯一临界点为 $\pm\alpha$，$\alpha = (4/5)^{1/4} \in (3/4, 1)$。$f$ 在 $(-\infty, -\alpha)$ 与 $(\alpha, \infty)$ 上递增、在 $(-\alpha, \alpha)$ 上递减。又 $\alpha^{5} = \tfrac{4}{5}\alpha$，故 $f(\alpha) = 2 - \tfrac{16}{5}\alpha < 2 - \tfrac{16}{5}\cdot\tfrac{3}{4} = -\tfrac{2}{5} < 0$，而 $f(-\alpha) = 2 + \tfrac{16}{5}\alpha > 0$；且 $x \to -\infty$ 时 $f \to -\infty$，$x \to +\infty$ 时 $f \to +\infty$。由介值定理与上述单调性，$f$ 恰有三个实根，分别落在 $(-\infty, -\alpha)$、$(-\alpha, \alpha)$、$(\alpha, \infty)$ 内。复共轭 $\tau$ 固定这三个实根、交换剩下两个非实根，所以 $\tau \in G$ 是一个换位（奇置换）。
 
-**第四步：$\langle \sigma, \tau \rangle = S_{5}$**。把 $\sigma$ 写成 $(0\,1\,2\,3\,4)$。换位 $\tau = (a\,b)$ 的两个点在 5-循环上的距离只可能是 $1$ 或 $2$（距离 $d$ 与 $5-d$ 等价）。若距离为 $1$，$\sigma^{k}\tau\sigma^{-k}$ 给出全部相邻换位 $(i\,i+1)$，它们生成 $S_{5}$。若距离为 $2$，不妨取 $\tau = (0\,2)$：共轭给出 $(0\,2), (1\,3), (2\,4), (3\,0), (4\,1)$。由 $(0\,2)$ 与 $(2\,4)$ 得乘积 $(0\,4\,2)$，于是 $\{0, 2, 4\}$ 上的 $S_{3}$（含换位 $(0\,2)$）落在 $G$ 里；$S_{3}$ 与 5-循环合起来使 $|G|$ 被 $6$ 与 $5$ 整除，故 $30 \mid |G|$。$G$ 含奇置换，不能等于 $A_{5}$（$S_{5}$ 中唯一的指数 2 子群），所以 $|G| = 120$、$G = S_{5}$。
+**第四步：$\langle \sigma, \tau \rangle = S_{5}$**。把 $\sigma$ 写成 $(0\,1\,2\,3\,4)$。换位 $\tau = (a\,b)$ 的两个点在 5-循环上的距离只可能是 $1$ 或 $2$（距离 $d$ 与 $5-d$ 等价）。若距离为 $1$，$\sigma^{k}\tau\sigma^{-k}$ 给出全部相邻换位 $(i\,i+1)$，它们生成 $S_{5}$。若距离为 $2$，不妨取 $\tau = (0\,2)$：共轭给出 $(0\,2), (1\,3), (2\,4), (3\,0), (4\,1)$。由 $(0\,2)$ 与 $(2\,4)$ 得乘积 $(0\,4\,2)$，于是 $\{0, 2, 4\}$ 上的 $S_{3}$（含换位 $(0\,2)$）落在 $G$ 里；$S_{3}$ 与 5-循环合起来使 $|G|$ 被 $6$ 与 $5$ 整除，故 $30 \mid |G|$。若 $|G|=30$，则 $G$ 是 $S_{5}$ 的指数 $4$ 子群，给出非平凡同态 $S_{5}\to S_{4}$；其核是 $S_{5}$ 的非平凡正规子群，只能是 $A_{5}$，但 $|A_{5}|=60>24=|S_{4}|$，矛盾。故 $|G|\ne30$。$G$ 含奇置换，不能等于 $A_{5}$（$S_{5}$ 中唯一的指数 2 子群），所以 $|G| = 120$、$G = S_{5}$。
 
 **收尾**。于是 $\operatorname{Gal}(f) \cong S_{5}$。由 `prop.sn-solvable`，$S_{5}$ 不可解；由 `thm.radical-solvable`（特征 $0$，底域 $\mathbb{Q}$），根式可解当且仅当伽罗瓦群可解。所以 $f$ 的根不能由 $\mathbb{Q}$ 的元素经四则运算与开方写出，特别地不存在一般的五次根式公式。∎
 
@@ -34901,7 +34950,7 @@ $$b(t) = \begin{cases} e^{-1/t}, & t > 0,\\ 0, & t \le 0,\end{cases}\qquad \beta
 
 **第二步：局部有限加细**。$M$ 第二可数、Hausdorff、局部欧氏，故仿紧（`prop.paracompact-partition-unity` 的前提）。于是开覆盖 $\mathcal{U}$ 有局部有限加细 $\{V_{\alpha}\}$，且可要求每个 $\overline{V_{\alpha}}$ 紧、并落在某个图卡 $W_{\alpha} \subseteq U_{\alpha}$ 里：先取 $U_{\alpha}$ 内的坐标球作加细，再整体细化一次、收紧闭包。
 
-**第三步：每块上放正鼓包**。固定 $\alpha$。$\overline{V_{\alpha}}$ 紧且含于开集 $W_{\alpha}$，故可用**有限个**坐标球 $B(x_{j}, r_{j})$（闭包含于 $W_{\alpha}$）盖住 $\overline{V_{\alpha}}$。在每个球上取鼓包 $\beta_{j} \ge 0$（在半径 $r_{j}/2$ 的球内为正、在 $B(x_{j}, r_{j})$ 外为零），令 $\psi_{\alpha} = \sum_{j} \beta_{j}$。则 $\psi_{\alpha} \in C^{\infty}(M)$、$\psi_{\alpha} \ge 0$、$\psi_{\alpha} > 0$ 在 $V_{\alpha}$ 上（每点落在某个半径 $r_{j}/2$ 的球里），且 $\operatorname{supp}\psi_{\alpha} \subseteq \bigcup_{j} \overline{B(x_{j}, r_{j})} \subseteq W_{\alpha} \subseteq U_{\alpha}$。
+**第三步：每块上放正鼓包**。固定 $\alpha$。$\overline{V_{\alpha}}$ 紧且含于开集 $W_{\alpha}$，故可取其有限覆盖 $B(x_{j}, s_{j})$，并取 $s_{j}>0$ 使 $B(x_{j}, 2s_{j}) \subseteq W_{\alpha}$；令 $r_{j}=2s_{j}$，则 $B(x_{j}, r_{j}/2)$ 仍覆盖 $\overline{V_{\alpha}}$ 且 $B(x_{j}, r_{j}) \subseteq W_{\alpha}$。在每个球上取鼓包 $\beta_{j} \ge 0$（在 $B(x_{j}, r_{j}/2)$ 内为正、在 $B(x_{j}, r_{j})$ 外为零），令 $\psi_{\alpha} = \sum_{j} \beta_{j}$。则 $\psi_{\alpha} \in C^{\infty}(M)$、$\psi_{\alpha} \ge 0$、$\psi_{\alpha} > 0$ 在 $V_{\alpha}$ 上（每点落在某个 $B(x_{j}, r_{j}/2)$ 里），且 $\operatorname{supp}\psi_{\alpha} \subseteq \bigcup_{j} \overline{B(x_{j}, r_{j})} \subseteq W_{\alpha} \subseteq U_{\alpha}$。
 
 **第四步：归一化**。由 $\{V_{\alpha}\}$ 覆盖 $M$，每点至少落在一个 $V_{\alpha}$ 里，故 $\Psi = \sum_{\alpha} \psi_{\alpha} > 0$ 处处成立。支撑族 $\{\operatorname{supp}\psi_{\alpha}\}$ 局部有限（它加细了 $\{V_{\alpha}\}$ 的局部有限性），故 $\Psi$ 是局部有限和、光滑。令 $\rho_{\alpha} = \psi_{\alpha}/\Psi$，则 $\rho_{\alpha}$ 光滑、$0 \le \rho_{\alpha} \le 1$、$\operatorname{supp}\rho_{\alpha} = \operatorname{supp}\psi_{\alpha} \subseteq U_{\alpha}$，且 $\sum_{\alpha} \rho_{\alpha} = \Psi/\Psi = 1$。三条要求全齐。∎
 
@@ -36788,19 +36837,35 @@ $$\int_{I^{k}}\mathrm{d}\eta = \int_{\partial I^{k}}\eta ,$$
 
 $k = 1$ 时它就是微积分基本定理：$\int_{0}^{1}F^{\prime}(t)\,\mathrm{d}t = F(1)-F(0)$。
 
-**证明的骨架**：把 $\eta$ 按缺哪个 $\mathrm{d}x^{j}$ 拆成 $k$ 项，每项是一个一元积分；$\mathrm{d}\eta$ 是 $\sum_{j}\partial_{j}f_{j}$。
+**证明**：把 $\eta$ 按缺哪个 $\mathrm{d}x^{j}$ 唯一地写成
 
-对每个 $j$ 用一元基本定理把 $x^{j}$ 那层积完，剩下的正好是第 $j$ 个坐标两端的面积分之差。
+$$\eta = \sum_{j=1}^{k}(-1)^{j-1} f_{j}\,\mathrm{d}x^{1}\wedge\cdots\wedge\widehat{\mathrm{d}x^{j}}\wedge\cdots\wedge\mathrm{d}x^{k},$$
 
-右边逐面拉回时只有 $j$ 与面号相同的那一项活着 —— 两个符号相乘恰好对上。
+其中 $f_{j}$ 是含 $I^{k}$ 的开集上的光滑函数（带帽表示略去该因子）。
 
-完整计算见边 `imp.spivak-cube-stokes`。
+**左边。** 逐项求外微分：$\mathrm{d}f_{j}$ 与其余因子相楔时，只有 $\mathrm{d}x^{j}$ 那一项存活，且
+
+$$\mathrm{d}\left((-1)^{j-1} f_{j}\,\mathrm{d}x^{1}\wedge\cdots\widehat{\mathrm{d}x^{j}}\cdots\wedge\mathrm{d}x^{k}\right) = \partial_{j} f_{j}\,\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k},$$
+
+故 $\mathrm{d}\eta = \sum_{j=1}^{k}\partial_{j} f_{j}\,\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}$。由 Fubini 与一元微积分基本定理（先对 $x^{j}$ 积分，其余坐标记作 $y$）：
+
+$$\int_{I^{k}}\mathrm{d}\eta = \sum_{j=1}^{k}\int_{I^{k-1}}\left[f_{j}\big|_{x^{j}=1} - f_{j}\big|_{x^{j}=0}\right]\mathrm{d}y.$$
+
+**右边。** 按 `def.boundary-operator`，$\partial I^{k} = \sum_{i=1}^{k}\sum_{\alpha=0}^{1}(-1)^{i+\alpha} I^{k}_{(i,\alpha)}$。在第 $(i,\alpha)$ 面上 $\mathrm{d}x^{i}$ 的拉回为 $0$，故只有 $j = i$ 的项存活：
+
+$$I^{k}_{(i,\alpha)}{}^{*}\eta = (-1)^{i-1} f_{i}\big|_{x^{i}=\alpha}\,\mathrm{d}y^{1}\wedge\cdots\wedge\mathrm{d}y^{k-1},$$
+
+其中 $y$ 是面上剩余的 $k-1$ 个坐标（按原次序）。于是
+
+$$\int_{\partial I^{k}}\eta = \sum_{i=1}^{k}\sum_{\alpha=0}^{1}(-1)^{i+\alpha}(-1)^{i-1}\int_{I^{k-1}} f_{i}\big|_{x^{i}=\alpha}\,\mathrm{d}y = \sum_{i=1}^{k}\int_{I^{k-1}}\left[f_{i}\big|_{x^{i}=1} - f_{i}\big|_{x^{i}=0}\right]\mathrm{d}y,$$
+
+最后一步用了 $(-1)^{i+\alpha+i-1} = (-1)^{\alpha+1}$：$\alpha=1$ 给 $+1$、$\alpha=0$ 给 $-1$。
+
+两边逐项相同，故 $\int_{I^{k}}\mathrm{d}\eta = \int_{\partial I^{k}}\eta$。$k = 1$ 时 $\eta = f$、$\mathrm{d}\eta = f^{\prime}\mathrm{d}x$，两边分别给 $\int_{0}^{1} f^{\prime} = f(1) - f(0)$ 与 $f(1) - f(0)$，符号约定自洽。∎
 
 **为什么这一块必须先做**：一般方块 $c$ 上的情形全靠拉回（$c^{\ast}\mathrm{d} = \mathrm{d}c^{\ast}$），拉回之后就是本引理。所以本引理是链版 Stokes 的**唯一**实质内容，其余都是翻译。
 
-**⚠️ 符号最容易错的地方**：$\eta$ 写成 $\sum_{j}(-1)^{j-1}f_{j}\mathrm{d}x^{1}\wedge\cdots\widehat{\mathrm{d}x^{j}}\cdots\wedge\mathrm{d}x^{k}$（带帽表示略去该因子）时，$\mathrm{d}\eta = \sum_{j}\partial_{j}f_{j}\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}$ 里**没有**额外符号。
-
-若这里多写一个 $(-1)^{j-1}$，右边就会整个错位面。
+**⚠️ 符号最容易错的地方**：$\eta$ 写成 $\sum_{j}(-1)^{j-1}f_{j}\mathrm{d}x^{1}\wedge\cdots\widehat{\mathrm{d}x^{j}}\cdots\wedge\mathrm{d}x^{k}$（带帽表示略去该因子）时，$\mathrm{d}\eta = \sum_{j}\partial_{j}f_{j}\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}$ 里**没有**额外符号。若这里多写一个 $(-1)^{j-1}$，右边就会整个错位面。
 
 **⚠️ 边界上的零测集**：$\eta$ 只要求定义在开集上、连续到边界；逐面拉回时用的是 $\eta$ 在面上的值，而 $\partial I^{k}$ 是零测集，所以积分不受延拓方式影响。
 
@@ -37892,21 +37957,43 @@ $$c_{1}\,\frac{x}{\log x} < \pi(x) < c_{2}\,\frac{x}{\log x} .$$
 
 （$\pi(x) \asymp x/\log x$；初等证明给出的常数例如 $0.3$ 与 $6$。）
 
-**证明骨架**（只靠二项式系数，不用复分析）：
+**证明**：只用人均一次的二项式系数估计。记 $\theta(x) := \sum_{p \le x} \log p$（和只取素数 $p \le x$）。下面先对整数 $x$ 证明 $0.3\,x/\log x < \pi(x) < 6\,x/\log x$，最后把结论推到实数。
 
+**下界。** 对整数 $n \ge 1$ 令 $N := \binom{2n}{n}$。由 $\sum_{k=0}^{2n}\binom{2n}{k} = 4^{n}$、且 $\binom{2n}{n}$ 是其中最大的一项，得
 
+$$\frac{4^{n}}{2n+1} \le N \le 4^{n}.$$
 
-1. 取 $N = \binom{2n}{n}$。它在 $\dfrac{4^{n}}{2n+1} \le N \le 4^{n}$ 之间（中间项最大 + 二项式和为 $4^{n}$）。
+另一方面，把 $N$ 按素因子分解。由勒让德公式
 
-2. 把 $N$ 分解：$n < p \le 2n$ 的素数都整除 $N$（它们在分子里出现、分母里不出现），于是 $\prod_{n < p \le 2n} p \le N \le 4^{n}$ —— 取对数得 $\theta(2n) - \theta(n) \le 2n\log 2$。
+$$v_{p}(N) = \sum_{k \ge 1}\left(\left\lfloor\frac{2n}{p^{k}}\right\rfloor - 2\left\lfloor\frac{n}{p^{k}}\right\rfloor\right),$$
 
-3. 反方向用 $N$ 的 $p$-进指数：$v_{p}(N) = \sum_{k}\left(\lfloor 2n/p^{k}\rfloor - 2\lfloor n/p^{k}\rfloor\right) \le \log(2n)/\log p$，累乘得 $N \le (2n)^{\pi(2n)}$，与下界 $N \ge 4^{n}/(2n+1)$ 合并即得 $\pi(2n) \ge c\,n/\log n$。
+每一项只能是 $0$ 或 $1$，而满足 $p^{k} \le 2n$ 的 $k$ 至多 $\log(2n)/\log p$ 个，故 $v_{p}(N) \le \log(2n)/\log p$，即 $p^{v_{p}(N)} \le 2n$。于是
 
-4. 从 $2n$ 过渡到一般的 $x$：用 $\theta$ 的单调性与 $\pi$ 的分段常数性质夹住。
+$$N = \prod_{p \le 2n} p^{v_{p}(N)} \le (2n)^{\pi(2n)}.$$
 
+与 $N \ge 4^{n}/(2n+1)$ 合并、取对数：
 
+$$\pi(2n) \ge \frac{n\log 4 - \log(2n+1)}{\log(2n)} = \frac{\log 4}{2}\cdot\frac{2n}{\log(2n)} - \frac{\log(2n+1)}{\log(2n)}.$$
 
-⚠ 这是**骨架**：每一步的常数没有仔细优化，第四步的区间处理也略去了。完整证明见华罗庚《数论导引》第九章。
+对 $x := 2n \ge 16$，有 $\log(2n+1)/\log(2n) \le 2$，而 $2\log x/x \le 2\log 16/16 < 0.7$；于是 $\pi(x) \ge 1.386\,x/\log x - 2 \ge (1.386 - 0.693)\,x/\log x > 0.3\,x/\log x$。对奇数 $x = 2n+1 \ge 17$，$\pi(x) \ge \pi(2n)$，且 $x/\log x \ge 2n/\log(2n)$，同样成立。
+
+**上界。** 先估计 $\theta$。对偶数 $n = 2r$，区间 $(r, 2r]$ 里的素数之积整除 $\binom{2r}{r} \le 4^{r}$，故
+
+$$\theta(2r) - \theta(r) \le 2r\log 2.$$
+
+对奇数 $n = 2r+1$，区间 $(r+1, 2r+1]$ 里的素数之积整除 $\binom{2r+1}{r}$；因为奇次二项式系数成对相等，$2\binom{2r+1}{r} \le 2^{2r+1}$，故 $\binom{2r+1}{r} \le 2^{2r}$，即
+
+$$\theta(2r+1) - \theta(r+1) \le 2r\log 2.$$
+
+两式合起来给出 $\theta(n) \le n\log 4$（对 $n$ 归纳，基础情形 $n = 1, 2$ 直接检查）。现在数素数：$\pi(\sqrt{x}) \le \sqrt{x}$；而每个 $\sqrt{x} < p \le x$ 满足 $\log p \ge \tfrac12\log x$，这样的 $p$ 至多 $(\theta(x) - \theta(\sqrt{x}))/\tfrac12\log x$ 个。于是对整数 $x \ge 2$，
+
+$$\pi(x) \le \sqrt{x} + \frac{2\theta(x)}{\log x} \le \sqrt{x} + \frac{4x\log 2}{\log x}.$$
+
+对 $x \ge 16$，$\log x \le \sqrt{x}$，故 $\sqrt{x} \le x/\log x$，从而 $\pi(x) \le (1 + 4\log 2)\,x/\log x < 6\,x/\log x$。对 $2 \le x < 16$，$6x/\log x > 17$，而 $\pi(x) \le 6$，结论当然成立。
+
+**从整数到实数。** 设 $x \ge 2$ 实，令 $m := \lfloor x \rfloor$。$\pi(x) = \pi(m)$。当 $m \ge 16$ 时，$t/\log t$ 在 $[16, \infty)$ 上递增，故 $x/\log x \ge m/\log m$，上下界从整数情形直接迁移；当 $m < 16$ 时逐个整数检查即可（$\pi$ 分段常数，$t/\log t$ 在 $[3, \infty)$ 上递增）。∎
+
+**为什么够用**：这两个常数只用于「$\pi(x)$ 与 $x/\log x$ 同阶」这一定性结论；把常数改进到任意精度是 Chebyshev 原始论文的工作，把上界推到 $\pi(x) \sim x/\log x$ 则需要复分析（素数定理，见 `thm.prime-number-theorem`）。
 
 参考：华罗庚《数论导引》第九章；Apostol, Ch. 4
 
@@ -45019,7 +45106,7 @@ $$\langle (\mathrm{d}\exp_{p})_{v}(v),(\mathrm{d}\exp_{p})_{v}(w)\rangle = \lamb
 这正是 Gauss 引理。
 **$\sqrt G$ 的展开。** $G = |\partial_{\theta}|^{2}$。
 
-$(-\rho,\theta+\pi)$ 与 $(\rho,\theta)$ 是同一点，故 $G$ 在 $\rho$ 方向上是偶的（$\theta$ 上差 $\pi$），Taylor 展开只有 $\rho$ 的偶次项：$G = \rho^{2}+c_{4}\rho^{4}+O(\rho^{6})$，即 $\sqrt G = \rho+O(\rho^{3})$。
+由 $(\mathrm{d}\exp_{p})_{0}=\mathrm{id}$，$G/\rho^{2}\to1$（$\rho\to0$），且 $G/\rho^{2}$ 在极坐标下光滑，故它等于 $1+O(\rho^{2})$：$G = \rho^{2}+c_{4}\rho^{4}+O(\rho^{6})$，即 $\sqrt G = \rho+O(\rho^{3})$。
 
 二次项系数为 $1$ 是因为 $(\mathrm{d}\exp_{p})_{0} = \mathrm{id}$：$\rho = 0$ 处的一阶行为就是欧氏的。
 
@@ -46764,7 +46851,7 @@ $b$ 在 $t = 0$ 处各阶导数都是 $0$，故 $b$ 光滑；分母恒正，故 
 
 **第二步：局部有限加细。** 流形仿紧（`prop.paracompact-partition-unity` 的前提），给局部有限加细 $\{V_{\alpha}\}$，其中每个 $\overline{V_{\alpha}}$ 紧并落在某张卡 $W_{\alpha} \subseteq U_{\alpha}$ 里。
 
-**第三步：在每块上造正鼓包。** 固定 $\alpha$。$\overline{V_{\alpha}}$ 紧且含于开集 $W_{\alpha}$，用有限个坐标球 $B(x_{j}, r_{j})$（闭包含于 $W_{\alpha}$）盖住它。在每个球上取鼓包 $\beta_{j} \ge 0$：在半径 $r_{j}/2$ 的球内为正、在 $B(x_{j}, r_{j})$ 外为零。令
+**第三步：在每块上造正鼓包。** 固定 $\alpha$。$\overline{V_{\alpha}}$ 紧且含于开集 $W_{\alpha}$，取其有限覆盖 $B(x_{j}, s_{j})$，并取 $s_{j}>0$ 使 $B(x_{j}, 2s_{j}) \subseteq W_{\alpha}$；令 $r_{j}=2s_{j}$，则 $B(x_{j}, r_{j}/2)$ 仍覆盖 $\overline{V_{\alpha}}$ 且 $B(x_{j}, r_{j}) \subseteq W_{\alpha}$。在每个球上取鼓包 $\beta_{j} \ge 0$：在 $B(x_{j}, r_{j}/2)$ 内为正、在 $B(x_{j}, r_{j})$ 外为零。令
 
 $$\psi_{\alpha} := \sum_{j}\beta_{j} .$$
 
@@ -48932,7 +49019,7 @@ $$1 - E_{p}(z) = (1 - z)\left[1 - e^{\,z + \cdots + z^{p}/p}\right].$$
 
 > 这条估计就是「取 p 让级数收敛」的全部依据。
 
-#### Weierstrass 初等因子 + Jensen 公式 + 整函数的阶与型 ⟹ Weierstrass 乘积定理　`e26.implication`
+#### Weierstrass 初等因子 + Weierstrass 收敛性定理 ⟹ Weierstrass 乘积定理　`e26.implication`
 *逐点选 $p_{n}$ 保证内闭一致收敛，乘积即成整函数*
 
 给定零点列 $a_{n} \to \infty$。对每个 $n$ 取 $p_{n}$ 使 $\sum_{n} |a_{n}|^{-(p_{n}+1)} < \infty$（例如 $p_{n} = n$ 即可，因为 $|a_{n}| \to \infty$）。
@@ -48943,7 +49030,7 @@ $$\left|1 - E_{p_{n}}\!\left(\frac{z}{a_{n}}\right)\right| \le \left|\frac{z}{a_
 
 而 $\sum |a_{n}|^{-(p_{n}+1)}$ 收敛，故乘积在 $|z| \le R$ 上一致收敛到一个无零点全纯函数。
 
-**零点**：每个因子只在 $z = a_{n}$ 处为零，重数等于该点在序列中出现的次数；再乘上 $z^{m}$ 补齐 $0$ 处的重数。由 `prop.jensen` 与阶的估计（`def.entire-order`）可保证选出的 $p_{n}$ 不至于过大而使乘积不收敛。∎
+**零点**：每个因子只在 $z = a_{n}$ 处为零，重数等于该点在序列中出现的次数；再乘上 $z^{m}$ 补齐 $0$ 处的重数。上述估计说明乘积在紧集上一致收敛；由 `thm.weierstrass-convergence`，极限全纯，故乘积为整函数。∎
 
 > Weierstrass 乘积 = 「零点可任意指定」；剩下的自由度正是 $e^{g}$。
 
@@ -62343,7 +62430,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **活动标架与结构方程 ↔ 向量场与 Lie 结构**　2 条节点级连线
 - **平坦模 ↔ 消解与维数**　2 条节点级连线
 - **共形映射与正规族 ↔ 留数与辐角原理**　2 条节点级连线
-- **Cauchy 理论 ↔ 解析延拓与整函数**　7 条节点级连线
+- **Cauchy 理论 ↔ 解析延拓与整函数**　8 条节点级连线
 - **复变函数基础 ↔ 解析延拓与整函数**　3 条节点级连线
 - **关系与函数 ↔ 基本群**　2 条节点级连线
 - **基本群 ↔ 拓扑空间的基本语汇**　4 条节点级连线

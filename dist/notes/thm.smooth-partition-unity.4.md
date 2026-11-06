@@ -1,8 +1,8 @@
 # 光滑单位分解　`thm.smooth-partition-unity`　·　说明
 根 `../`
 
-**它撑起哪些结论**：黎曼度量存在（`def.riemannian-metric`）、向量丛上纤维度量存在（`prop.bundle-metric`）、最高次形式可积分（`def.integral-form`）、可定向性能用处处非零的 $n$-形式刻画（`prop.volume-form-orientation`）。这些证明的共同结构都是「局部造 + 单位分解粘」，没有一次是凭空构造。
+**第四步：归一化**。由 $\{V_{\alpha}\}$ 覆盖 $M$，每点至少落在一个 $V_{\alpha}$ 里，故 $\Psi = \sum_{\alpha} \psi_{\alpha} > 0$ 处处成立。支撑族 $\{\operatorname{supp}\psi_{\alpha}\}$ 局部有限（它加细了 $\{V_{\alpha}\}$ 的局部有限性），故 $\Psi$ 是局部有限和、光滑。令 $\rho_{\alpha} = \psi_{\alpha}/\Psi$，则 $\rho_{\alpha}$ 光滑、$0 \le \rho_{\alpha} \le 1$、$\operatorname{supp}\rho_{\alpha} = \operatorname{supp}\psi_{\alpha} \subseteq U_{\alpha}$，且 $\sum_{\alpha} \rho_{\alpha} = \Psi/\Psi = 1$。三条要求全齐。∎
 
-**第二可数不能省**：长直线（long line）是局部欧氏的 Hausdorff 空间，但不可分、不仿紧，上面取不到单位分解 —— 所以流形定义里那两条技术假设不是装饰。
+**为什么必须「局部有限」**：没有它，$\sum\rho_{\alpha}$ 在某点附近可能有无穷多项非零，和既不一定收敛也不一定光滑。局部有限保证每点附近只有有限多项，于是和是有限和 —— 光滑性、可积性、线性都自动继承。
 
-**连续版与光滑版**：连续版只需要仿紧（`prop.paracompact-partition-unity`）；升到光滑要靠鼓包函数把「连续」磨成「光滑」。所以流形上这两个版本是同一件事的两个精度。
+> 续见 notes/thm.smooth-partition-unity.5.md
