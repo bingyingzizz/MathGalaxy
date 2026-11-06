@@ -297,7 +297,7 @@ window.MG = window.MG || {};
         '',
         '$$\\cos\' = -\\sin, \\qquad \\sin\' = \\cos, \\qquad \\cos 0 = 1, \\qquad \\sin 0 = 0$$'
       ].join('\n'),
-      notes: '⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。',
+      notes: '⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。\n\n⭐ 两个级数在全平面收敛的证明见 `imp.trig-series-radius`（Cauchy–Hadamard + 阶乘增长估计）。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 8']
     },
     {
@@ -559,6 +559,20 @@ window.MG = window.MG || {};
         '（这里第 1 步的求和是 Abel 求和法的核心 —— 它与 Abel–Dirichlet 判别法同源：都是把一个级数换成它的部分和的加权平均。）'
       ].join('\n'),
       note: '「$(1-x)\\sum s_n x^{n}$」这个改写把 $\\{s_n\\}$ 的**收敛性**变成了权重 $(1-x)x^{n}$ 的**平均** —— 权重之和恰为 $1$，所以极限读起来就是「$s_n$ 的加权平均趋于 $s$」。'
+    },
+    {
+      id: 'imp.trig-series-radius',
+      kind: 'implication',
+      sources: ['thm.convergence-radius'],
+      target: 'def.trig-function',
+      title: 'Cauchy–Hadamard 公式 $\\implies$ sin/cos 的收敛半径为 $+\\infty$',
+      proof: [
+        '只对 $\\cos$ 写；$\\sin$ 的系数是 $1/(2k+1)!$，估计完全相同。',
+        '$\\cos z$ 的系数为 $a_{2k} = (-1)^{k}/(2k)!$，其余 $a_n = 0$。对 $n = 2k$，由 $(2k)! = \\prod_{j=1}^{2k} j \\ge (k+1)^{k}$（后 $k$ 个因子每个至少为 $k+1$）得',
+        '$$|a_{2k}|^{1/(2k)} = ((2k)!)^{-1/(2k)} \\le (k+1)^{-1/2} \\to 0.$$',
+        '故 $\\limsup_{n} |a_n|^{1/n} = 0$，由 Cauchy–Hadamard 公式得 $R = 1/0 = +\\infty$。对 $\\sin$ 用 $(2k+1)! \\ge (k+1)^{k+1}$ 同法；结论是这两个级数在整个复平面上绝对收敛。∎'
+      ].join('\n'),
+      note: '这里只需要系数估计，不需要复变函数理论；$\\cos$ 与 $\\sin$ 因此都是整函数。'
     },
     {
       id: 'imp.euler-formula',

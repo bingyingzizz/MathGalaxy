@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T11:14:48.806Z",
+ "generated": "2026-11-06T11:42:11.462Z",
  "terms": 76,
  "missing": [
   {
@@ -305,16 +305,12 @@
    ]
   },
   {
-   "term": "一阶逻辑的完备性",
+   "term": "命题逻辑",
    "total": 2,
    "nodes": [
     {
      "id": "thm.completeness-first-order",
-     "c": 1
-    },
-    {
-     "id": "def.satisfaction",
-     "c": 1
+     "c": 2
     }
    ]
   },
@@ -339,6 +335,16 @@
    ]
   },
   {
+   "term": "一阶逻辑的完备性",
+   "total": 1,
+   "nodes": [
+    {
+     "id": "def.satisfaction",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "Hodge 理论",
    "total": 1,
    "nodes": [
@@ -349,8 +355,36 @@
    ]
   }
  ],
- "noEdge": [],
- "noEdgeAll": 37,
+ "noEdge": [
+  {
+   "node": "def.module-category",
+   "nodeLabel": "模范畴",
+   "nodeLayer": 10,
+   "def": "def.linear-map",
+   "defLabel": "线性映射",
+   "defLayer": 12,
+   "gap": 2
+  },
+  {
+   "node": "def.category-of-groups",
+   "nodeLabel": "群范畴",
+   "nodeLayer": 8,
+   "def": "def.subcategory",
+   "defLabel": "子范畴",
+   "defLayer": 8,
+   "gap": 0
+  },
+  {
+   "node": "def.category-of-abelian-groups",
+   "nodeLabel": "阿贝尔群范畴",
+   "nodeLayer": 8,
+   "def": "def.subcategory",
+   "defLabel": "子范畴",
+   "defLayer": 8,
+   "gap": 0
+  }
+ ],
+ "noEdgeAll": 40,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",
@@ -367,7 +401,6 @@
   "模形式",
   "求根公式",
   "尺规作图",
-  "命题逻辑",
   "Riesz–Markov",
   "图论",
   "组合数学",

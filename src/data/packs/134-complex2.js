@@ -1046,7 +1046,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.entire-meromorphic', 'thm.runge', 'thm.weierstrass-convergence'],
       target: 'thm.mittag-leffler',
-      title: '亚纯函数的定义 $\\implies$ Mittag-Leffler 定理（Runge 构造）',
+      title: 'Runge 定理与 Weierstrass 分解 $\\implies$ Mittag-Leffler',
       proof: [
         '**证明思路**：把「逐项减修正项」写成紧集穷竭上的估计。细节展开在目标节点 `thm.mittag-leffler` 的注里，这里给出可独立阅读的完整论证与关键估计。',
         '',

@@ -1,4 +1,4 @@
-# 亚纯函数的定义 $\implies$ Mittag-Leffler 定理（Runge 构造）
+# Runge 定理与 Weierstrass 分解 $\implies$ Mittag-Leffler
 `imp.mittag-leffler` · 推出 · strong 边 · 根 `../`
 
 `def.entire-meromorphic` 整函数与亚纯函数 + `thm.runge` Runge 逼近定理 + `thm.weierstrass-convergence` Weierstrass 收敛性定理 → `thm.mittag-leffler` Mittag-Leffler 定理

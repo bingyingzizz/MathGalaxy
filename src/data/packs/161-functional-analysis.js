@@ -523,6 +523,44 @@ window.MG = window.MG || {};
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Jordan–von Neumann, Ann. of Math. 36 (1935)'],
     },
 
+    /* ------------------------------------------- 凸集与星形集 */
+    {
+      id: 'def.convex-set',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '凸集',
+      title: '凸集：任意两点的连线不跑出集合',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '凸组合'],
+      statement: [
+        '设 $V$ 是实向量空间，$C \\subseteq V$。称 $C$ 为**凸集**，若 $C \\ne \\emptyset$ 且对任意 $x, y \\in C$、$t \\in [0,1]$，',
+        '',
+        '$$(1-t)x + ty \\in C.$$',
+        '',
+        '等价地：$C$ 包含任意两点之间的整条线段。'
+      ].join('\n'),
+      notes: '⭐ 凸性只用**仿射结构**，不需要范数或内积；在无穷维里它是「极小元存在」的关键假设（见 thm.projection-convex）。\n\n⚠ 本图约定凸集非空：空集会让「任意两点」条件真空成立，不适合当作凸集。\n\n💡 凸组合、凸包、分离定理都从这里出发。',
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
+    },
+    {
+      id: 'def.star-shaped',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '星形集',
+      title: '星形集：存在一个能看见全集合的点',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '星形'],
+      statement: [
+        '设 $V$ 是实向量空间，$S \\subseteq V$。称 $S$ 为**星形集**，若存在 $x_{0} \\in S$，使对每个 $x \\in S$ 与 $t \\in [0,1]$，',
+        '',
+        '$$(1-t)x_{0} + t x \\in S.$$',
+        '',
+        '这样的 $x_{0}$ 叫 $S$ 的一个**星点**（star center）。'
+      ].join('\n'),
+      notes: '⭐ 凸集一定是星形集：任取 $x_{0} \\in C$，凸性给出整条线段。反之不然：平面里的十字形关于中心星形，却不凸。\n\n⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。',
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
+    },
+
     /* ------------------------------------------------- 凸闭集上的投影 */
     {
       id: 'thm.projection-convex',
@@ -779,5 +817,20 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    { kind: 'definition', definition: 'def.vector-space', usedBy: 'def.convex-set',
+      note: '凸集是向量空间的子集；凸性只用仿射结构，不用范数。' },
+    { kind: 'definition', definition: 'def.convex-set', usedBy: 'thm.projection-convex',
+      note: '投影定理的核心假设：凸、闭、非空。' },
+    { kind: 'definition', definition: 'def.star-shaped', usedBy: 'lem.poincare-lemma',
+      note: 'Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。' },
+    { kind: 'implication', sources: ['def.convex-set'], target: 'def.star-shaped',
+      title: '凸集 $\\implies$ 星形集',
+      proof: [
+        '设 $C \\ne \\emptyset$ 凸，取 $x_{0} \\in C$。对任意 $x \\in C$、$t \\in [0,1]$，由凸性 $(1-t)x_{0} + tx \\in C$。',
+        '这正是星形集关于 $x_{0}$ 的定义，故 $C$ 是星形集。∎'
+      ].join('\n'),
+      note: '逆命题不成立：十字形星形但不凸。'
+    }
+  ]
 });

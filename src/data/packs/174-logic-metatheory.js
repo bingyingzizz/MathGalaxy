@@ -4,7 +4,7 @@
    病灶：满足关系 ⊨（满足关系 ⊨）的**出边是 0** —— 语义是终点站；
    而「⊢（可证明性）**全库没有节点**」，尽管 满足关系 ⊨ 的注把 ⊨ vs ⊢
    当成核心对照物。紧致性定理 / 完备性定理只活在注里。
-   ⇒ 逻辑区只有「语法 + 语义」，没有「证明论」，也没有把两者连起来的定理。
+   $\\implies$ 逻辑区只有「语法 + 语义」，没有「证明论」，也没有把两者连起来的定理。
 
    补三个节点 + 接线。⛔ 逻辑侧**接拓扑只能走类比边**（审计已验证：已有的
    `def.compact → … → def.formula` 路径意味着任何「逻辑节点 definition 依赖拓扑节点」
@@ -54,7 +54,6 @@
       id: 'thm.completeness-first-order',
       cluster: 'logic.fol',
       type: 'theorem',
-      status: 'skeleton',
       label: '完备性定理',
       title: '一阶逻辑完备性定理（Gödel）：$\\Gamma \\vdash \\varphi \\iff \\Gamma \\vDash \\varphi$',
       regions: ['logic'],
@@ -67,18 +66,21 @@
         '即：**可证明**与**在所有模型中都真**是同一件事。等价的形式：$\\Gamma$ 有模型 $\\iff$ $\\Gamma$ 一致。',
       ].join('\n'),
       notes: [
-        '⭐ **两个方向的分量完全不同**：',
-        '- $\\vdash \\implies \\vDash$（**可靠性** / soundness）：公理都是永真的、推理规则保持真值，' +
-          '所以逐条归纳即可 —— 这一段是**免费的**，也是「证明能保证正确」的全部依据。',
-        '- $\\vDash \\implies \\vdash$（**完备性**，Gödel 1930）：**这才是内容**。经典证明是 Henkin 构造：' +
-          '把一致的理论扩充成**极大一致**理论、对每个存在式加一个见证常元、再用项本身当元素造出项模型。',
-        '⚠ **这里的「完备性」与「完备空间 / 完备测度 / 序完备」那一族毫无关系** —— ' +
-          '同一个中文词在不同分支里有不同意思，读的时候要认清。',
-        '⚠ 一阶逻辑的完备性**不**违背 Gödel 不完备性定理：后者说的是「足够强的理论（如 PA/ZFC）里存在' +
-          '既不能证也不能证伪的**句子**」，那是关于**理论**的，不是关于逻辑的。',
-        '📌 本图只给陈述与证明骨架（Henkin 构造的三个动作），没有把项模型展开成节点。',
+        '**约定**：$\\vdash$ 取 `def.provability` 的 Hilbert 型系统（分离规则 + 推广），逻辑公理取标准模式：命题公理 (A1) $\\psi\\to(\\chi\\to\\psi)$、(A2) $(\\psi\\to(\\chi\\to\\theta))\\to((\\psi\\to\\chi)\\to(\\psi\\to\\theta))$、(A3) $(\\neg\\chi\\to\\neg\\psi)\\to(\\psi\\to\\chi)$；量词公理 (Q1) $\\forall x\\,\\psi\\to\\psi[t/x]$（$t$ 对 $x$ 可代入）、(Q2) $\\forall x(\\psi\\to\\chi)\\to(\\psi\\to\\forall x\\,\\chi)$（$x\\notin\\operatorname{FV}(\\psi)$）；等词公理 (E1) $x=x$、(E2) $x=y\\to(\\psi\\to\\psi[y/x])$。`def.provability` 没有逐条列出公理表，这里按标准取法固定一套；换等价系统不改变 $\\vdash$。$\\Gamma$ **不一致**指存在 $\\psi$ 使 $\\Gamma\\vdash\\psi$ 且 $\\Gamma\\vdash\\neg\\psi$，它等价于 $\\Gamma\\vdash\\neg(\\theta\\to\\theta)$。',
+        '**第一步：化到语句。** 对 $\\Gamma\\cup\\{\\varphi\\}$ 中出现的每个自由变元 $x$ 添一个新常元 $c_x$，把公式里的 $x$ 全换成 $c_x$，得 $\\Gamma_c,\\varphi_c$。则 (i) $\\Gamma\\vdash\\varphi\\iff\\Gamma_c\\vdash\\varphi_c$：把证明里的 $c_x$ 换回自由变元 $x$（公理模式对代入封闭，分离与推广保持形状），反向把 $x$ 换成 $c_x$；(ii) $\\Gamma\\vDash\\varphi\\iff\\Gamma_c\\vDash\\varphi_c$：$\\mathcal{L}_c$ 的结构就是「$\\mathcal{L}$ 的结构 + 一个赋值」，反之每个赋值唯一延拓。所以只需对**语句**证明。',
+        '**第二步：可靠性（$\\vdash\\implies\\vDash$）。** 逐条验证：命题公理是重言式；(Q1) 若 $\\forall x\\,\\psi$ 在 $\\mathfrak{A}$ 中真，则 $\\psi[t/x]$ 对每个 $t$ 的解释真；(Q2) 在 $x\\notin\\operatorname{FV}(\\psi)$ 时，若 $\\forall x(\\psi\\to\\chi)$ 与 $\\psi$ 真，则对每个 $a$ 有 $\\chi$ 真；(E1)(E2) 是等词的标准语义。分离规则保持「真」，推广保持「对所有赋值真」。对证明长度归纳得 $\\Gamma\\vdash\\varphi\\implies\\Gamma\\vDash\\varphi$。',
+        '**第三步：演绎定理（语句版）。** 若 $\\sigma$ 是语句且 $\\Gamma\\cup\\{\\sigma\\}\\vdash\\psi$，则 $\\Gamma\\vdash\\sigma\\to\\psi$。对推导长度归纳：若该步是公理或 $\\Gamma$ 中公式 $\\theta$，用 (A1) $\\theta\\to(\\sigma\\to\\theta)$ 与分离规则；若是分离规则，用 (A2)；若是推广 $\\theta\\mapsto\\forall x\\,\\theta$，归纳假设给 $\\Gamma\\vdash\\sigma\\to\\theta$，推广得 $\\Gamma\\vdash\\forall x(\\sigma\\to\\theta)$，再由 (Q2)（$\\sigma$ 无自由 $x$）与分离规则得 $\\Gamma\\vdash\\sigma\\to\\forall x\\,\\theta$。∎',
+        '**推论**：若 $\\Gamma\\cup\\{\\sigma\\}$ 不一致，则 $\\Gamma\\vdash\\neg\\sigma$；特别地，若 $\\Gamma\\cup\\{\\neg\\varphi\\}$ 不一致，则 $\\Gamma\\vdash\\varphi$。证明：演绎定理给 $\\Gamma\\vdash\\sigma\\to\\psi$ 与 $\\Gamma\\vdash\\sigma\\to\\neg\\psi$，而 $(\\sigma\\to\\psi)\\to((\\sigma\\to\\neg\\psi)\\to\\neg\\sigma)$ 是重言式，分离两次即得 $\\Gamma\\vdash\\neg\\sigma$。',
+        '**第四步：极大一致扩张。** 引理：每个一致语句集 $\\Gamma$ 可扩张为极大一致语句集 $\\Gamma^{*}$。证明：枚举所有语句 $\\psi_0,\\psi_1,\\ldots$；令 $\\Gamma_0=\\Gamma$，若 $\\Gamma_n\\cup\\{\\psi_n\\}$ 一致则 $\\Gamma_{n+1}=\\Gamma_n\\cup\\{\\psi_n\\}$，否则 $\\Gamma_{n+1}=\\Gamma_n$；令 $\\Gamma^{*}=\\bigcup_n\\Gamma_n$。一致性：若 $\\Gamma^{*}$ 不一致，则某个证明只用到有限多条假设，它们全在某个 $\\Gamma_n$ 中，与 $\\Gamma_n$ 一致矛盾。极大性：若 $\\psi_n\\notin\\Gamma^{*}$，则 $\\Gamma_n\\cup\\{\\psi_n\\}$ 不一致，由推论得 $\\Gamma_n\\vdash\\neg\\psi_n$，故 $\\Gamma^{*}\\vdash\\neg\\psi_n$。由此：对每个语句恰有 $\\psi\\in\\Gamma^{*}$ 或 $\\neg\\psi\\in\\Gamma^{*}$；$\\Gamma^{*}$ 对 $\\vdash$ 封闭（若 $\\Gamma^{*}\\vdash\\psi$ 而 $\\psi\\notin\\Gamma^{*}$，则 $\\neg\\psi\\in\\Gamma^{*}$，与一致性矛盾）；$\\Gamma^{*}$ 含全部逻辑公理。',
+        '**第五步：Henkin 见证。** 在语言中添可数无穷多新常元 $c_0,c_1,\\ldots$，得 $\\mathcal{L}^{+}$。把 $\\mathcal{L}^{+}$ 中所有形如 $\\exists x\\,\\theta(x)$ 的语句枚举为 $\\xi_0,\\xi_1,\\ldots$。递归造 $\\Gamma_n$：若 $\\Gamma_n\\cup\\{\\xi_n\\}$ 一致且 $\\xi_n=\\exists x\\,\\theta(x)$，取第一个未用过的 $c_k$，令 $\\Gamma_{n+1}=\\Gamma_n\\cup\\{\\theta(c_k)\\}$；否则 $\\Gamma_{n+1}=\\Gamma_n$。',
+        '各 $\\Gamma_n$ 一致：若 $\\Gamma_n\\cup\\{\\theta(c_k)\\}$ 不一致，推论给 $\\Gamma_n\\vdash\\neg\\theta(c_k)$；$c_k$ 不出现在 $\\Gamma_n$ 中，把 $c_k$ 换成证明中未出现的变元 $y$ 并推广，得 $\\Gamma_n\\vdash\\forall y\\,\\neg\\theta(y)$，再由 (Q1) 与命题逻辑得 $\\Gamma_n\\vdash\\neg\\exists x\\,\\theta(x)$，与「$\\Gamma_n\\cup\\{\\xi_n\\}$ 一致」矛盾。于是 $\\Gamma_\\omega=\\bigcup_n\\Gamma_n$ 一致（有限特征），再由第四步扩为极大一致 $\\Gamma^{*}$。见证性质：若 $\\exists x\\,\\theta\\in\\Gamma^{*}$ 且编号为 $n$，则 $\\Gamma_n\\cup\\{\\exists x\\,\\theta\\}\\subseteq\\Gamma^{*}$ 一致，故第 $n$ 步添了 $\\theta(c_k)$，即 $\\theta(c_k)\\in\\Gamma^{*}$。',
+        '**第六步：项模型。** 在 $\\mathcal{L}^{+}$ 上，对闭项 $t,s$ 定义 $t\\sim s\\iff\\Gamma^{*}\\vdash t=s$；由 (E1)(E2) 这是等价关系。令 $A$ 为闭项的 $\\sim$-类全体。常元 $c^{\\mathfrak{A}}:=[c]$；函数符号 $f^{\\mathfrak{A}}([t_1],\\ldots,[t_n]):=[f(t_1,\\ldots,t_n)]$；关系符号 $R^{\\mathfrak{A}}([t_1],\\ldots,[t_n])$ 为真 $\\iff\\Gamma^{*}\\vdash R(t_1,\\ldots,t_n)$。良定义用 (E2)：若 $t_i\\sim s_i$，逐步代入得 $\\Gamma^{*}\\vdash f(t)=f(s)$ 与 $\\Gamma^{*}\\vdash R(t)\\leftrightarrow R(s)$。等词解释成相等：$[t]=[s]\\iff t\\sim s$。',
+        '**第七步：真值引理。** 对每个公式 $\\psi(x_1,\\ldots,x_m)$ 与任意闭项 $t_1,\\ldots,t_m$：$\\mathfrak{A}\\vDash\\psi[\\bar t]$（赋值 $x_i\\mapsto[t_i]$）$\\iff$ $\\Gamma^{*}\\vdash\\psi(t_1,\\ldots,t_m)$。对 $\\psi$ 的结构归纳：原子公式按第六步；$\\neg$ 用极大性（对每个语句恰有它或它的否定在 $\\Gamma^{*}$）；$\\wedge$ 用 $\\Gamma^{*}$ 对 $\\vdash$ 封闭与重言式 $\\psi\\to(\\chi\\to\\psi\\wedge\\chi)$、$\\psi\\wedge\\chi\\to\\psi$、$\\psi\\wedge\\chi\\to\\chi$。',
+        '量词情形：先注意对任意闭项 $t$，$\\Gamma^{*}\\vdash\\forall x\\,\\psi\\to\\psi(t)$（(Q1) 加分离规则）。($\\Leftarrow$) 若 $\\forall x\\,\\psi\\in\\Gamma^{*}$，则每个实例 $\\psi(t)\\in\\Gamma^{*}$，归纳假设给 $\\mathfrak{A}\\vDash\\psi[\\bar t]$ 对所有 $[t]$，故 $\\mathfrak{A}\\vDash\\forall x\\,\\psi$。($\\implies$) 若 $\\forall x\\,\\psi\\notin\\Gamma^{*}$，则 $\\neg\\forall x\\,\\psi\\in\\Gamma^{*}$；命题逻辑（用 (Q1)）给 $\\Gamma^{*}\\vdash\\exists x\\,\\neg\\psi$，见证性质给 $c$ 使 $\\neg\\psi(c)\\in\\Gamma^{*}$，归纳假设给 $\\mathfrak{A}\\vDash\\neg\\psi[\\bar c]$，故 $\\mathfrak{A}\\not\\vDash\\forall x\\,\\psi$。',
+        '**第八步：收尾。** 第七步给出 $\\mathfrak{A}\\vDash\\Gamma^{*}$，故 $\\Gamma$ 有模型。于是对语句：若 $\\Gamma\\not\\vdash\\varphi$，则 $\\Gamma\\cup\\{\\neg\\varphi\\}$ 一致（否则推论给 $\\Gamma\\vdash\\varphi$），由第五至七步有模型 $\\mathfrak{A}\\vDash\\Gamma\\cup\\{\\neg\\varphi\\}$，即 $\\Gamma\\not\\vDash\\varphi$。逆否即 $\\Gamma\\vDash\\varphi\\implies\\Gamma\\vdash\\varphi$；与第二步合起来即 $\\Gamma\\vdash\\varphi\\iff\\Gamma\\vDash\\varphi$。一般公式由第一步化到语句。∎',
+        '**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。Henkin 扩张每一步取「第一个未使用的常元」，所以可数语言下不需要选择公理；不可数语言要把枚举换成超限递归，那一步用选择公理。推论：紧致性定理（每个有限子集有模型 $\\implies$ 整个理论有模型）由 $\\Gamma\\vDash\\varphi\\implies\\Gamma\\vdash\\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。',
       ].join('\n\n'),
-      refs: ['Enderton, A Mathematical Introduction to Logic, Ch. 2.5', 'Kunen, Set Theory, Ch. I'],
+      refs: ['Enderton, A Mathematical Introduction to Logic, Ch. 2.5', 'Kunen, Set Theory, Ch. I']
     },
 
     {

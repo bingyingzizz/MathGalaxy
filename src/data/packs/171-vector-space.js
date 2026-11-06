@@ -47,7 +47,7 @@
         '⭐ 常见的三个例子：$K^{n}$（分量运算逐条验证）；$K[X]$ 与 $M_{n}(K)$（加法就是逐项加）；' +
         '函数空间 $\\{f : S \\to K\\}$（点态运算）—— 三个都是「同一套验证」的重复。'
       ].join('\n\n'),
-      refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 2'],
+      refs: ['Lang, Algebra', 'Hoffman–Kunze, Ch. 2'],
     },
   ],
 

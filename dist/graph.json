@@ -6,14 +6,14 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-06T11:14:48.806Z",
+  "generated": "2026-11-06T11:42:11.462Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
-   "nodes": 1540,
-   "edges": 3170,
-   "strong": 3131,
-   "weak": 39,
+   "nodes": 1546,
+   "edges": 3187,
+   "strong": 3145,
+   "weak": 42,
    "derived": 33,
    "en_pages": 1536
   },
@@ -69,7 +69,7 @@
    "en": "Topology",
    "desc": "开集、连续、紧致与连通；再往上是紧 Hausdorff、Stone 空间与紧生成空间。",
    "color": "#D9649F",
-   "nodeCount": 186
+   "nodeCount": 187
   },
   {
    "id": "algebra",
@@ -77,7 +77,7 @@
    "en": "Abstract Algebra",
    "desc": "群、环、域、模与线性代数；佐恩引理的经典应用场。",
    "color": "#E08A3C",
-   "nodeCount": 208
+   "nodeCount": 211
   },
   {
    "id": "analysis",
@@ -85,7 +85,7 @@
    "en": "Mathematical Analysis",
    "desc": "从实数出发的初等分析：极限与完备性、连续与紧性、中值定理与 Taylor、多元微分与逆映射定理、级数、一致收敛，顶点是 Riemann 积分与 Newton–Leibniz 公式。",
    "color": "#3AA8D8",
-   "nodeCount": 302
+   "nodeCount": 303
   },
   {
    "id": "functional-analysis",
@@ -93,7 +93,7 @@
    "en": "Functional Analysis",
    "desc": "把「函数」本身当点：赋范空间与 Banach 空间、有界线性算子与对偶、$H^*\\cong H$ 的 Hilbert 空间，再用 Baire 纲一次抽出三大定理（一致有界 / 开映射 / 闭图像）。",
    "color": "#2C7FA8",
-   "nodeCount": 54
+   "nodeCount": 56
   },
   {
    "id": "analysis-measure",
@@ -109,7 +109,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。",
    "color": "#B03A5B",
-   "nodeCount": 209
+   "nodeCount": 211
   },
   {
    "id": "homology",
@@ -117,7 +117,7 @@
    "en": "Homological Algebra",
    "desc": "加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。",
    "color": "#C89A2B",
-   "nodeCount": 223
+   "nodeCount": 224
   },
   {
    "id": "condensed",
@@ -325,7 +325,7 @@
    "en": "Algebraic Structures",
    "parent": "algebra",
    "desc": "造出代数语言本身：**群** = 集合 + 运算 + 公理 → 子群 → 正规子群 → 商群 → 第一同构定理；再往上叠**域**（= 两个阿贝尔群 + 分配律）与**有序域**。",
-   "nodeCount": 25,
+   "nodeCount": 26,
    "nodes": [
     "prop.group-basic",
     "prop.ideal-basic",
@@ -346,6 +346,7 @@
     "def.ring",
     "def.ideal",
     "def.module",
+    "def.module-category",
     "prop.ring-localization",
     "ex.algebra-categories",
     "prop.abelianization",
@@ -1255,11 +1256,13 @@
    "en": "Hilbert Spaces",
    "parent": "functional-analysis",
    "desc": "范数来自内积的那一类：平行四边形法则把它挑出来 → 凸闭集上有投影 → $H^*\\cong\\overline H$（Riesz）→ 伴随算子 → 正交基与 $\\ell^2$。",
-   "nodeCount": 12,
+   "nodeCount": 14,
    "nodes": [
     "def.hilbert-space",
     "thm.polarization",
     "thm.parallelogram-inner-product",
+    "def.convex-set",
+    "def.star-shaped",
     "thm.projection-convex",
     "thm.projection-subspace",
     "thm.riesz-hilbert",
@@ -1321,7 +1324,7 @@
    "en": "Categories and Diagrams",
    "parent": "category",
    "desc": "造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。",
-   "nodeCount": 19,
+   "nodeCount": 21,
    "nodes": [
     "def.isomorphism",
     "def.universe",
@@ -1330,6 +1333,8 @@
     "def.graph-morphism",
     "def.category",
     "def.section-retraction",
+    "def.category-of-groups",
+    "def.category-of-abelian-groups",
     "def.localization",
     "prop.calculus-of-fractions",
     "prop.localization-hom-colim",
@@ -2592,7 +2597,7 @@
    "en": "Homology Groups",
    "parent": "topology",
    "desc": "把「这个空间有几个 n 维的洞」变成一个可计算的阿贝尔群：标准单纯形 → 单纯复形 → 链群与边缘算子（∂² = 0）→ 单纯同调 → 奇异同调 → 约化同调与 H₀ → 对的长正合列 → Mayer–Vietoris → 球面的同调 → Euler 示性数；最后用单纯逼近把「奇异」与「单纯」缝成同一个东西。",
-   "nodeCount": 17,
+   "nodeCount": 18,
    "nodes": [
     "def.standard-simplex",
     "def.simplicial-complex",
@@ -2607,6 +2612,7 @@
     "thm.euler-characteristic",
     "thm.long-exact-pair",
     "thm.mv-homology",
+    "def.barycentric-subdivision",
     "thm.simplicial-approximation",
     "def.chain-homotopy",
     "thm.homotopy-invariance",
@@ -17839,7 +17845,7 @@
     "单位分解"
    ],
    "statement": "设 $X$ 是**仿紧 Hausdorff** 空间（仿紧性的定义与等价刻画见拓扑那一团的 `def.paracompact`）。则对任意阿贝尔层 $\\mathcal{M}$ 与任意 $n \\ge 0$，\n\n$$\\check{H}^{n}(X, \\mathcal{M}) \\;\\cong\\; H^{n}(X, \\mathcal{M}) .$$\n\n更强的形式：对每个**局部有限**的开覆盖 $\\mathfrak{U}$，规范映射 $\\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) \\to H^{n}(X, \\mathcal{M})$ 已经是同构；一般覆盖先取局部有限的开细化。",
-   "notes": "**标准证明的三个零件。**\n\n**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令\n\n$$\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr),$$\n\n其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。\n\n$\\mathcal{M}$ 是层，故 Čech 正合性可逐点验证；于是 $\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是 $\\mathcal{M}$ 的一个消解，且取整体截面就回到 $\\check{C}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。\n\n**② 每一项是软的。** 仿紧 Hausdorff 上，局部有限覆盖配**单位分解**（见 `prop.paracompact-partition-unity`）：单位分解可以把 $j_{*}(\\mathcal{M}|_{U})$ 型的层按覆盖成员劈开，于是 $\\check{\\mathcal{C}}^{p}$ 是**细的**（fine，带从属于 $\\mathfrak{U}$ 的分割）；\n\n细层在仿紧空间上**软**，而软层对 $\\Gamma$ **无环**（软层可以「局部化到闭集」，再用单位分解把整体截面拼出来）。\n\n**③ 无环消解算导出函子。** 由 ① ②，$\\check{\\mathcal{C}}^{\\bullet}$ 是一个由 $\\Gamma$-无环层组成的消解；由 Leray 零调性（零调消解算右导出函子），\n\n$$H^{n}(X, \\mathcal{M}) = H^{n}\\bigl(\\Gamma(X, \\check{\\mathcal{C}}^{\\bullet})\\bigr) = \\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) .$$\n\n再沿覆盖取余极限（Čech 上同调按定义就是沿覆盖的滤过余极限）得到一般结论。∎\n\n⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。\n\n同一个结论，两套互不依赖的机制。\n\n⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。\n\n📌 这一条是**深层定理**，上面给的是标准论证的骨架（三个零件各自都是完整的陈述）；逐步细节见 Godement 的原始处理。",
+   "notes": "**标准证明的三个零件。** 下面把能逐字核验的部分写出来；写不动的两条明确标成缺口 —— 本节点因此仍标 `status: 'skeleton'`。\n\n**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr)$，其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。\n\n**① 的证明。** 只需逐点看茎。固定 $x$，取 $i$ 使 $x \\in U_{i}$。在茎上定义收缩同伦 $h^{p} : (\\check{\\mathcal{C}}^{p})_{x} \\to (\\check{\\mathcal{C}}^{p-1})_{x}$：对 $\\sigma \\in (\\check{\\mathcal{C}}^{p})_{x}$ 令 $(h\\sigma)_{i_{0} \\cdots i_{p-1}} := \\sigma_{i\\,i_{0} \\cdots i_{p-1}}$（其余分量取 $0$，在 $x$ 的充分小邻域里 $U_{i}$ 一直可用）。直接按 Čech 微分 $\\delta$ 的符号计算得 $\\delta h + h \\delta = \\operatorname{id}$（$p \\ge 1$），而 $p = 0$ 时 $\\delta h = \\operatorname{id}$ 正是增广映射 $\\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x}$。所以增广复形 $0 \\to \\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x} \\to (\\check{\\mathcal{C}}^{1})_{x} \\to \\cdots$ 正合；逐点正合即层正合。取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$，故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。\n\n**② 每一项是软的：细层部分已证。** 仿紧 Hausdorff 上，局部有限覆盖配单位分解（`prop.paracompact-partition-unity`）。先证「细 $\\implies$ 软」：设 $\\mathcal{F}$ 是细层，$F \\subseteq X$ 闭，$s \\in \\mathcal{F}(F)$。每个 $x \\in F$ 有邻域 $U_{x}$ 与 $s_{x} \\in \\mathcal{F}(U_{x})$ 使 $s_{x}|_{F \\cap U_{x}} = s$；把 $\\{U_{x}\\}_{x \\in F} \\cup \\{X \\setminus F\\}$ 取局部有限加细并配单位分解 $\\{\\rho_{j}\\}$。令 $s_{j} \\in \\mathcal{F}(V_{j})$ 是相应局部截面；在 $V_{j}$ 外把 $\\rho_{j} s_{j}$ 延拓为 $0$（$\\operatorname{supp} \\rho_{j} \\subseteq V_{j}$ 保证相容），则 $\\tilde{s} := \\sum_{j} \\rho_{j} s_{j}$ 是 $X$ 上的整体截面（局部有限和），且在 $F$ 上等于 $s$。所以 $\\mathcal{F}$ 软。\n\n**② 的缺口：软层无环。** 还需要引理：仿紧 Hausdorff 上，软层 $\\mathcal{M}$ 满足 $H^{n}(X, \\mathcal{M}) = 0$（$n \\ge 1$）。标准证明（Godement）走典范软消解 $0 \\to \\mathcal{M} \\to C^{0}(\\mathcal{M}) \\to C^{1}(\\mathcal{M}) \\to \\cdots$，逐项用单位分解把闭集上的截面拼成整体；本图没有这条引理的节点，也没有把「$C^{q}(\\mathcal{M})$ 软」与「软消解算导出函子」两步展开。\n\n**③ 的缺口：零调消解算导出函子。** 还需标准同调代数引理：若 $0 \\to \\mathcal{M} \\to \\mathcal{A}^{0} \\to \\mathcal{A}^{1} \\to \\cdots$ 是消解且每个 $\\mathcal{A}^{q}$ 是 $\\Gamma$-无环（即 $H^{n}(X, \\mathcal{A}^{q}) = 0$，$n \\ge 1$），则 $H^{n}(X, \\mathcal{M}) \\cong H^{n}\\bigl(\\Gamma(X, \\mathcal{A}^{\\bullet})\\bigr)$。证明是与内射消解比较（比较引理 + 逐项填图），本图同样未单列节点。\n\n**结论**：把 ② 的软层无环与 ③ 的零调消解补上，取 $\\mathcal{A}^{\\bullet} = \\check{\\mathcal{C}}^{\\bullet}$ 即得 $H^{n}(X,\\mathcal{M}) \\cong \\check{H}^{n}(\\mathfrak{U},\\mathcal{M})$；再沿局部有限覆盖取余极限即得定理。⚠ 本节点**仍标 skeleton**：缺口就是上面两条标准引理（① 与「细 $\\implies$ 软」已在注中证完）。\n\n⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。\n\n⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。",
    "refs": [
     "Godement, Topologie algébrique et théorie des faisceaux —— 仿紧空间上的软层与 Čech 上同调",
     "Iversen, Cohomology of Sheaves —— Čech 上同调与层上同调的比较"
@@ -27457,18 +27463,19 @@
    "en_page": "nodes/thm.hadamard-factorization.en.md",
    "region": "complex",
    "regions": [
-    "complex"
+    "complex",
+    "analysis"
    ],
    "cluster": "analysis.entire",
    "layer": 28,
    "tags": [
-    "复变函数",
+    "复分析",
+    "整函数",
     "Hadamard",
-    "因子分解",
-    "整函数的阶"
+    "因子分解"
    ],
    "statement": "设 $f$ 是**有限阶** $\\rho$ 的整函数，零点为 $\\{a_{n}\\}$（按重数计）。则\n\n$$f(z) = z^{m} e^{P(z)} \\prod_{n} E_{p}\\left(\\frac{z}{a_{n}}\\right),$$\n\n其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。\n\n特别地：$\\rho < 1$ 时 $p = 0$，故 $\\sum |a_{n}|^{-1} < \\infty$（这不表示零点有限：$\\prod_{n}(1 - z/n^{2})$ 的阶为 $\\frac{1}{2}$、仍有无穷多零点）。",
-   "notes": "**证明思路（骨架）**：\n\n**第一步：零点密度。** 由 Jensen 公式$n(R) \\log 2 \\le \\log M(2R) + O(1)$，而 $\\log M(2R) = O(R^{\\rho + \\varepsilon})$，故 $n(R) = O(R^{\\rho+\\varepsilon})$，于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$。\n\n这一步说明**统一取 $p = \\lfloor \\rho \\rfloor$ 就够**。\n\n**第二步：除掉零点。** 令 $\\Phi(z) := f(z)\\big/\\prod E_{p}(z/a_{n})$，则 $\\Phi$ 无零点、且仍是有限阶（乘积的贡献被初等因子的估计压住）。\n\n**第三步：无零点的有限阶整函数 = $e^{\\text{多项式}}$。** 写 $\\Phi = e^{h}$（单连通，`prop.single-valued-branch`），则 $\\operatorname{Re} h = \\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式，得 $h$ 是次数 $\\le \\rho$ 的多项式。∎\n\n⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化、并把自由度压成一个多项式。Picard 小定理在有限阶情形就靠它证。\n\n⚠️ 「有限阶」不能省。无穷阶整函数照样能分解（Weierstrass），但指数部分不再是多项式，而且没有这么强的结论。",
+   "notes": "**约定**：$f$ 整、有限阶 $\\rho$；零点 $a_{n}\\ne 0$（按重数计），$z=0$ 处的零点重数为 $m$；$n(r)$ 是模 $\\le r$ 的零点个数，$M(r)=\\max_{|z|=r}|f(z)|$，$E_{p}(w)=(1-w)e^{w+w^{2}/2+\\cdots+w^{p}/p}$。取 $p=\\lfloor\\rho\\rfloor$（$\\rho<1$ 时 $p=0$），于是 $p+1>\\rho$。\n\n**第一步：零点密度（完整）。** 对 $f/z^{m}$ 用 Jensen 公式（`prop.jensen`，此时原点值非零）：$n(R)\\log 2 \\le \\log M(2R)-\\log|f(0)|+O(1)$。有限阶给 $\\log M(2R)\\le C\\,R^{\\rho+\\varepsilon}$，故 $n(R)\\le C\\,R^{\\rho+\\varepsilon}$。于是对任何 $\\sigma>\\rho$，分部求和给 $\\sum_{n}|a_{n}|^{-\\sigma}=\\sigma\\int_{0}^{\\infty}n(r)\\,r^{-\\sigma-1}\\,\\mathrm{d}r<\\infty$（$n(r)$ 在 $r<|a_{1}|$ 时为 $0$，无边界项）。特别地 $\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。\n\n**第二步：乘积收敛（完整）。** 对 $|w|\\le 1/2$，$\\log E_{p}(w)=-\\sum_{k>p}w^{k}/k$，故 $|E_{p}(w)-1|\\le C_{p}|w|^{p+1}$。给定 $R$：只有有限个 $|a_{n}|\\le 2R$；对其余项 $|z/a_{n}|\\le 1/2$，于是 $\\sum_{|a_{n}|>2R}|z/a_{n}|^{p+1}\\le R^{p+1}\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。故 $\\prod_{n}E_{p}(z/a_{n})$ 在 $|z|\\le R$ 上一致收敛，定义出一个整函数。\n\n**第三步：商无零点（完整）。** 令 $\\Phi(z):=f(z)\\big/\\bigl(z^{m}\\prod_{n}E_{p}(z/a_{n})\\bigr)$。每个 $a_{n}$ 处 $E_{p}(z/a_{n})$ 恰有一阶零点，与 $f$ 的零点相消；其它点 $f\\ne 0$ 而乘积非零。故 $\\Phi$ 整、处处非零。\n\n**第四步：$\\Phi$ 的阶 $\\le\\rho$（缺口）。** 需要对 $|z|=r$ 的两条估计 $\\log|\\prod_{n}E_{p}(z/a_{n})|\\le C\\,r^{\\rho+\\varepsilon}$ 与 $\\ge -C\\,r^{\\rho+\\varepsilon}$。上界可按 $|a_{n}|\\le 2r$、$|a_{n}|>2r$ 拆分，配合 $n(t)\\le C t^{\\rho+\\varepsilon}$ 与分部求和证出；**下界在 $z$ 靠近某个零点 $a_{n}$ 时必须单独书账**（用 $|f|$ 在该点的零点阶数与 $|E_{p}|$ 的一阶零点相消，把「$\\log|P|$ 的负值」与「$\\log|f|$ 的负值」配对），本图没有把这一步写全。这就是本节点仍标 `status: 'skeleton'` 的缺口。\n\n**第五步：无零点 $\\implies$ 指数（完整）。** $\\Phi$ 整、无零点，$\\mathbb{C}$ 单连通，由 `prop.single-valued-branch` 存在整函数 $h$ 使 $\\Phi=e^{h}$。\n\n**第六步：Borel–Carathéodory（完整证明）。** 引理：若 $g$ 在 $|z|\\le R$ 全纯、$g(0)=0$、$\\operatorname{Re} g\\le A$（$A>0$），则对 $|z|=r<R$，$|g(z)|\\le 2Ar/(R-r)$。证明：$\\varphi:=g/(2A-g)$ 在 $|z|\\le R$ 全纯（分母的实部 $\\ge A$），且 $|\\varphi|\\le 1$ —— 因为 $|g|^{2}\\le(2A-\\operatorname{Re} g)^{2}+(\\operatorname{Im} g)^{2}$ 等价于 $\\operatorname{Re} g\\le A$；又 $\\varphi(0)=0$。Schwarz 引理（`lem.schwarz`）给 $|\\varphi(z)|\\le r/R$，于是 $|g|=\\bigl|2A\\varphi/(1+\\varphi)\\bigr|\\le 2A|\\varphi|/(1-|\\varphi|)\\le 2Ar/(R-r)$。∎\n\n**第七步：$h$ 是多项式（完整，条件于第四步）。** 由第四步，$\\operatorname{Re}(h-h(0))=\\log|\\Phi|-\\operatorname{Re} h(0)\\le C R^{\\rho+\\varepsilon}$。对 $g=h-h(0)$ 在 $|z|\\le R$ 用第六步，取 $r=R/2$：$|h(z)-h(0)|\\le 2C R^{\\rho+\\varepsilon}$（$|z|\\le R/2$）。再由 Cauchy 估计（`thm.cauchy-inequality`），对 $k>\\rho$，$|h^{(k)}(0)|\\le k!\\,C R^{\\rho+\\varepsilon}/(R/2)^{k}\\to 0$（$R\\to\\infty$，取 $\\varepsilon<k-\\rho$），故 $h^{(k)}(0)=0$：$h$ 是次数 $\\le\\lfloor\\rho\\rfloor$ 的多项式。\n\n**结论**：若补上第四步的下界估计，则 $f=z^{m}e^{h}\\prod_{n}E_{p}(z/a_{n})=z^{m}e^{P}\\prod_{n}E_{p}(z/a_{n})$，即得 Hadamard 分解。⚠ 本节点**仍标 skeleton**：缺的正是「典范乘积的阶 $\\le\\rho$」的下界（在零点附近的局部书账）；第一、二、三、五、六、七步都已写全。\n\n⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化（同一个 $p$）、并把自由度压成一个多项式 $P$。$\\rho<1$ 时 $p=0$，$\\sum|a_{n}|^{-1}<\\infty$，但零点仍可无穷（$\\prod(1-z/n^{2})$ 的阶为 $1/2$）。⚠ 「有限阶」不能省：无穷阶整函数照样有 Weierstrass 乘积，但指数部分不再是多项式，结论也没有这么强。",
    "refs": [
     "王晓光《复变函数》· Hadamard 分解定理",
     "Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §3.3 · Hadamard’s Factorization Theorem",
@@ -29280,6 +29287,29 @@
    ]
   },
   {
+   "id": "def.barycentric-subdivision",
+   "type": "definition",
+   "label": "重心重分",
+   "title": "重心重分：把单纯形再切细",
+   "region": "topology",
+   "regions": [
+    "topology"
+   ],
+   "cluster": "topology.homology",
+   "layer": 17,
+   "tags": [
+    "代数拓扑",
+    "单纯复形",
+    "重心重分"
+   ],
+   "statement": "设 $K$ 是单纯复形。$K$ 的**一阶重心重分** $K^{(1)}$ 的顶点是 $K$ 的所有非空单纯形 $\\sigma$ 的重心 $\\hat\\sigma$；$\\hat\\sigma_{0}, \\ldots, \\hat\\sigma_{p}$ 张成 $K^{(1)}$ 的一个 $p$-单纯形，当且仅当\n\n$$\\sigma_{0} \\subset \\sigma_{1} \\subset \\cdots \\subset \\sigma_{p}$$\n\n是 $K$ 中的严格链。几何实现满足 $|K^{(1)}| = |K|$。",
+   "notes": "⭐ 重分不改变几何实现，但把单纯形切细：若 $\\dim K = n$，则 $\\operatorname{mesh}(K^{(1)}) \\le \\frac{n}{n+1}\\operatorname{mesh}(K)$，反复重分可使直径任意小。\n\n⭐ 它是单纯逼近定理的第二步：重分够细，星条件才成立（见 thm.simplicial-approximation）。\n\n⚠ 新顶点是「单纯形的重心」，不是原顶点；顶点数一般远多于 $K$。",
+   "refs": [
+    "Munkres, Elements of Algebraic Topology, Ch. 1 §13",
+    "Hatcher, Algebraic Topology, Ch. 2 §2.1"
+   ]
+  },
+  {
    "id": "thm.simplicial-approximation",
    "type": "theorem",
    "label": "单纯逼近",
@@ -29315,7 +29345,7 @@
     "同调群"
    ],
    "statement": "设 $K, L$ 是单纯复形，$K$ **有限**，$f : |K| \\to |L|$ 连续。记 $K^{(m)}$ 为 $K$ 的 $m$ 次**重心重分**（$|K^{(m)}| = |K|$，单纯形直径按固定比例缩小）。则存在 $m \\ge 1$ 与**单纯映射**\n\n$$g : K^{(m)} \\longrightarrow L$$\n\n使 $|g| \\simeq f$（$|g|$ 与 $f$ 同伦）。这样的 $g$ 叫 $f$ 的一个**单纯逼近**。\n\n**推论**：设 $K$ 是有限单纯复形。则包含映射 $C_{*}(K) \\hookrightarrow S_{*}(|K|)$ 诱导同构\n\n$$H_{p}(K) \\;\\cong\\; H_{p}(|K|) \\qquad \\forall p.$$\n\n于是「多面体的奇异同调可以只按某个三角剖分算成单纯同调」，而后者是**有限矩阵**问题。",
-   "notes": "**证明分两层**：先证「星条件 $\\Longrightarrow$ 单纯映射且同伦」，再证「重分够细就能满足星条件」。\n\n**引理 1（星条件）**：设 $g : \\operatorname{Vert}(K) \\to \\operatorname{Vert}(L)$ 满足\n\n$$f\\big(\\operatorname{st}_{K}(v)\\big) \\;\\subseteq\\; \\operatorname{st}_{L}\\big(g(v)\\big) \\qquad \\forall v .$$\n\n则 (i) $g$ 把 $K$ 的每个单纯形送到 $L$ 的一个单纯形，因而是单纯映射；(ii) $|g| \\simeq f$。\n\n证明 (i)：设 $v_{0}, \\ldots, v_{p}$ 张成 $K$ 的单纯形 $\\sigma$，取内点 $x \\in \\sigma^{\\circ}$。对每个 $i$，$x \\in \\operatorname{st}_{K}(v_{i})$，故 $f(x) \\in \\operatorname{st}_{L}(g(v_{i}))$。于是\n\n$$f(x) \\;\\in\\; \\bigcap_{i=0}^{p} \\operatorname{st}_{L}\\big(g(v_{i})\\big).$$\n\n而 $L$ 中若干顶点的星之交非空，当且仅当这些顶点张成一个单纯形（$\\bigcap \\operatorname{st}(w_{i})$ 正是以 $\\{w_{i}\\}$ 为顶点集的单纯形的内部，若它非空则这个单纯形存在）。故 $\\{g(v_{0}), \\ldots, g(v_{p})\\}$ 张成 $L$ 的单纯形，$g$ 是单纯映射。\n\n(ii)：设 $x \\in \\sigma^{\\circ}$。令 $\\tau = g(\\sigma)$，它是以 $g(v_{0}), \\ldots, g(v_{p})$ 为顶点的单纯形。由 (i) 的论证，$f(x) \\in \\operatorname{st}_{L}(\\tau)$，即 $f(x)$ 落在某个**包含 $\\tau$ 的**单纯形 $\\rho$ 的内部；而 $g(x) \\in \\tau \\subseteq \\rho$。$\\rho$ 是凸的，所以线段 $[f(x), g(x)] \\subseteq \\rho \\subseteq |L|$。令 $H(x, t) = (1 - t)\\,g(x) + t\\,f(x)$，它在每个 $\\sigma^{\\circ}$ 上连续、在边界上与相邻单纯形的公式一致（同一点 $x$ 无论从哪个单形取，$\\rho$ 的取法给出同一个凸包），故 $H : |K| \\times I \\to |L|$ 连续，是 $g$ 到 $f$ 的同伦。∎\n\n**引理 2（重分够细）**：$\\{\\operatorname{st}_{L}(w)\\}_{w \\in \\operatorname{Vert}(L)}$ 是 $|L|$ 的开覆盖；由 $f$ 连续，$\\{f^{-1}(\\operatorname{st}_{L}(w))\\}$ 是 $|K|$ 的开覆盖。$|K|$ 紧，取 Lebesgue 数 $\\delta > 0$（`def.lebesgue-number`）：$|K|$ 中任何直径 $< \\delta$ 的子集都落在某个 $f^{-1}(\\operatorname{st}_{L}(w))$ 里，即其像落在某个 $\\operatorname{st}_{L}(w)$ 里。\n\n反复重心重分使直径趋于零：若 $\\dim K = n$，则 $\\operatorname{mesh}(K^{(m)}) \\le \\big(\\tfrac{n}{n+1}\\big)^{m}\\,\\operatorname{mesh}(K)$（每个重分后的单纯形含于原某个单纯形，且直径不超过原直径的 $n/(n+1)$ 倍）。取 $m$ 使 $\\operatorname{mesh}(K^{(m)}) < \\delta/2$。\n\n对 $K^{(m)}$ 的每个顶点 $v$，$\\operatorname{st}(v)$ 的直径 $\\le 2\\,\\operatorname{mesh}(K^{(m)}) < \\delta$，故 $f(\\operatorname{st}(v)) \\subseteq \\operatorname{st}_{L}(w)$ 对某个 $w$ 成立；令 $g(v) := w$。由引理 1，$g$ 是单纯映射且 $|g| \\simeq f$。∎\n\n**推论的证明（链级）**：记 $\\iota_{m} : C_{*}(K^{(m)}) \\hookrightarrow S_{*}(|K|)$、$\\iota : C_{*}(K) \\hookrightarrow S_{*}(|K|)$ 为包含。对恒等映射 $\\operatorname{id} : |K| \\to |K|$ 用定理，得 $m$ 与单纯映射 $g : K^{(m)} \\to K$ 使 $|g| \\simeq \\operatorname{id}$。\n\n- $\\iota\\,g_{*} = (|g|)_{*}\\,\\iota_{m}$（$g$ 是单纯映射，两边都在单个单纯形上取同一个像）；\n\n- 由 `thm.homotopy-invariance`，$|g| \\simeq \\operatorname{id}$ 给出链同伦 $(|g|)_{*} \\simeq \\operatorname{id}$，故 $\\iota\\,g_{*} \\simeq \\iota_{m}$；\n\n- 重心重分链映射 $\\operatorname{sd}^{m} : C_{*}(K) \\to C_{*}(K^{(m)})$ 与 $\\iota_{m}$ 满足 $\\iota_{m}\\,\\operatorname{sd}^{m} = \\iota$（重分不改变几何实现，链级上是细分），且 $\\operatorname{sd}^{m}$ 诱导同调同构（反向链同伦：每个重分后的单纯形落在原单纯形里，锥构造给出）。\n\n⚠️ **这里缺一步（本图未写）**：$\\iota_{*}\\,g_{*}\\,\\operatorname{sd}^{m}_{*} = \\iota_{*}$ 只给出 $\\iota_{*}$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g_{*}\\operatorname{sd}^{m}_{*}$ 可逆，而那正是要证的。要闭合，得显式造出链映射 $r : S_{*}(|K|) \\to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\\,\\iota = \\operatorname{id}$、$\\iota\\,r \\simeq \\operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。\n\n**⚠️ 技术细节**：上面用了「单纯映射诱导链映射」「链同伦的棱柱构造」两件标准机器（见 `def.chain-homotopy`、`thm.homotopy-invariance`）。若把 $C_{*}$ 取成**有序**链群，$g$ 在退化时可能把单纯形压扁，链映射的符号要按顶点顺序处理；本图的同调均按有序链群的商（去掉退化）定义，此处不展开符号。\n\n**边界与反例**：\n\n- $K$ **有限**不能省：无限复形上，重心重分不保证 mesh 趋零（同一条无穷细化的链可能一直很粗），星条件也就无法满足。\n\n- $L$ 不必有限；定理只用到 $L$ 的顶点星覆盖是开覆盖。\n\n- 「星本身不凸」：开星 $\\operatorname{st}(w)$ 一般不是凸集，所以同伦不能直接说「在 $\\operatorname{st}(w)$ 里连线」；引理 1 的 (ii) 用的是「$f(x), g(x)$ 同落在某个**闭单纯形** $\\rho$ 里」，$\\rho$ 才是凸的。\n\n⭐ **推论为什么值钱**：它一次性给出三件事——（i）单纯同调是拓扑不变量（不依赖三角剖分）；（ii）可以用有限矩阵的秩计算奇异同调；（iii）Euler 示性数的公式可以搬到奇异同调上（见 `thm.euler-characteristic` 的边）。\n\n💡 一句话：**连续映射 $\\approx$ 重分之后的单纯映射**。拓扑在这里被「组合化」了一次。",
+   "notes": "**证明分两层**：先证「星条件 $\\Longrightarrow$ 单纯映射且同伦」，再证「重分够细就能满足星条件」。\n\n**引理 1（星条件）**：设 $g : \\operatorname{Vert}(K) \\to \\operatorname{Vert}(L)$ 满足\n\n$$f\\big(\\operatorname{st}_{K}(v)\\big) \\;\\subseteq\\; \\operatorname{st}_{L}\\big(g(v)\\big) \\qquad \\forall v .$$\n\n则 (i) $g$ 把 $K$ 的每个单纯形送到 $L$ 的一个单纯形，因而是单纯映射；(ii) $|g| \\simeq f$。\n\n证明 (i)：设 $v_{0}, \\ldots, v_{p}$ 张成 $K$ 的单纯形 $\\sigma$，取内点 $x \\in \\sigma^{\\circ}$。对每个 $i$，$x \\in \\operatorname{st}_{K}(v_{i})$，故 $f(x) \\in \\operatorname{st}_{L}(g(v_{i}))$。于是\n\n$$f(x) \\;\\in\\; \\bigcap_{i=0}^{p} \\operatorname{st}_{L}\\big(g(v_{i})\\big).$$\n\n而 $L$ 中若干顶点的星之交非空，当且仅当这些顶点张成一个单纯形（$\\bigcap \\operatorname{st}(w_{i})$ 正是以 $\\{w_{i}\\}$ 为顶点集的单纯形的内部，若它非空则这个单纯形存在）。故 $\\{g(v_{0}), \\ldots, g(v_{p})\\}$ 张成 $L$ 的单纯形，$g$ 是单纯映射。\n\n(ii)：设 $x \\in \\sigma^{\\circ}$。令 $\\tau = g(\\sigma)$，它是以 $g(v_{0}), \\ldots, g(v_{p})$ 为顶点的单纯形。由 (i) 的论证，$f(x) \\in \\operatorname{st}_{L}(\\tau)$，即 $f(x)$ 落在某个**包含 $\\tau$ 的**单纯形 $\\rho$ 的内部；而 $g(x) \\in \\tau \\subseteq \\rho$。$\\rho$ 是凸的，所以线段 $[f(x), g(x)] \\subseteq \\rho \\subseteq |L|$。令 $H(x, t) = (1 - t)\\,g(x) + t\\,f(x)$，它在每个 $\\sigma^{\\circ}$ 上连续、在边界上与相邻单纯形的公式一致（同一点 $x$ 无论从哪个单形取，$\\rho$ 的取法给出同一个凸包），故 $H : |K| \\times I \\to |L|$ 连续，是 $g$ 到 $f$ 的同伦。∎\n\n**引理 2（重分够细）**：$\\{\\operatorname{st}_{L}(w)\\}_{w \\in \\operatorname{Vert}(L)}$ 是 $|L|$ 的开覆盖；由 $f$ 连续，$\\{f^{-1}(\\operatorname{st}_{L}(w))\\}$ 是 $|K|$ 的开覆盖。$|K|$ 紧，取 Lebesgue 数 $\\delta > 0$（`def.lebesgue-number`）：$|K|$ 中任何直径 $< \\delta$ 的子集都落在某个 $f^{-1}(\\operatorname{st}_{L}(w))$ 里，即其像落在某个 $\\operatorname{st}_{L}(w)$ 里。\n\n反复重心重分使直径趋于零：若 $\\dim K = n$，则 $\\operatorname{mesh}(K^{(m)}) \\le \\big(\\tfrac{n}{n+1}\\big)^{m}\\,\\operatorname{mesh}(K)$（每个重分后的单纯形含于原某个单纯形，且直径不超过原直径的 $n/(n+1)$ 倍）。取 $m$ 使 $\\operatorname{mesh}(K^{(m)}) < \\delta/2$。\n\n对 $K^{(m)}$ 的每个顶点 $v$，$\\operatorname{st}(v)$ 的直径 $\\le 2\\,\\operatorname{mesh}(K^{(m)}) < \\delta$，故 $f(\\operatorname{st}(v)) \\subseteq \\operatorname{st}_{L}(w)$ 对某个 $w$ 成立；令 $g(v) := w$。由引理 1，$g$ 是单纯映射且 $|g| \\simeq f$。∎\n\n**推论的证明（链级）**：记 $\\iota_{m} : C_{*}(K^{(m)}) \\hookrightarrow S_{*}(|K|)$、$\\iota : C_{*}(K) \\hookrightarrow S_{*}(|K|)$ 为包含。对恒等映射 $\\operatorname{id} : |K| \\to |K|$ 用定理，得 $m$ 与单纯映射 $g : K^{(m)} \\to K$ 使 $|g| \\simeq \\operatorname{id}$。\n\n- $\\iota\\,g_{*} = (|g|)_{*}\\,\\iota_{m}$（$g$ 是单纯映射，两边都在单个单纯形上取同一个像）；\n\n- 由 `thm.homotopy-invariance`，$|g| \\simeq \\operatorname{id}$ 给出链同伦 $(|g|)_{*} \\simeq \\operatorname{id}$，故 $\\iota\\,g_{*} \\simeq \\iota_{m}$；\n\n- 重心重分链映射 $\\operatorname{sd}^{m} : C_{*}(K) \\to C_{*}(K^{(m)})$ 与 $\\iota_{m}$ 满足 $\\iota_{m}\\,\\operatorname{sd}^{m} = \\iota$（重分不改变几何实现，链级上是细分），且 $\\operatorname{sd}^{m}$ 诱导同调同构（反向链同伦：每个重分后的单纯形落在原单纯形里，锥构造给出）。\n\n⚠️ **这里缺一步（本图未写）**：$\\iota\\,g\\,\\mathrm{sd}^{m} = \\iota$ 只给出 $\\iota$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g\\,\\mathrm{sd}^{m}$ 可逆，而那正是要证的（公式里为排版省略了诱导映射的星号下标）。要闭合，得显式造出链映射 $r : S_{*}(|K|) \\to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\\,\\iota = \\operatorname{id}$、$\\iota\\,r \\simeq \\operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。\n\n**⚠️ 技术细节**：上面用了「单纯映射诱导链映射」「链同伦的棱柱构造」两件标准机器（见 `def.chain-homotopy`、`thm.homotopy-invariance`）。若把 $C_{*}$ 取成**有序**链群，$g$ 在退化时可能把单纯形压扁，链映射的符号要按顶点顺序处理；本图的同调均按有序链群的商（去掉退化）定义，此处不展开符号。\n\n**边界与反例**：\n\n- $K$ **有限**不能省：无限复形上，重心重分不保证 mesh 趋零（同一条无穷细化的链可能一直很粗），星条件也就无法满足。\n\n- $L$ 不必有限；定理只用到 $L$ 的顶点星覆盖是开覆盖。\n\n- 「星本身不凸」：开星 $\\operatorname{st}(w)$ 一般不是凸集，所以同伦不能直接说「在 $\\operatorname{st}(w)$ 里连线」；引理 1 的 (ii) 用的是「$f(x), g(x)$ 同落在某个**闭单纯形** $\\rho$ 里」，$\\rho$ 才是凸的。\n\n⭐ **推论为什么值钱**：它一次性给出三件事——（i）单纯同调是拓扑不变量（不依赖三角剖分）；（ii）可以用有限矩阵的秩计算奇异同调；（iii）Euler 示性数的公式可以搬到奇异同调上（见 `thm.euler-characteristic` 的边）。\n\n💡 一句话：**连续映射 $\\approx$ 重分之后的单纯映射**。拓扑在这里被「组合化」了一次。",
    "refs": [
     "Munkres, Elements of Algebraic Topology, Ch. 1 §13 · Simplicial Approximation Theorem",
     "Hatcher, Algebraic Topology, Ch. 2 §2.1 · simplicial approximation",
@@ -36988,6 +37018,50 @@
    ]
   },
   {
+   "id": "def.convex-set",
+   "type": "definition",
+   "label": "凸集",
+   "title": "凸集：任意两点的连线不跑出集合",
+   "region": "functional-analysis",
+   "regions": [
+    "functional-analysis"
+   ],
+   "cluster": "fa.hilbert",
+   "layer": 10,
+   "tags": [
+    "泛函分析",
+    "凸集",
+    "凸组合"
+   ],
+   "statement": "设 $V$ 是实向量空间，$C \\subseteq V$。称 $C$ 为**凸集**，若 $C \\ne \\emptyset$ 且对任意 $x, y \\in C$、$t \\in [0,1]$，\n\n$$(1-t)x + ty \\in C.$$\n\n等价地：$C$ 包含任意两点之间的整条线段。",
+   "notes": "⭐ 凸性只用**仿射结构**，不需要范数或内积；在无穷维里它是「极小元存在」的关键假设（见 thm.projection-convex）。\n\n⚠ 本图约定凸集非空：空集会让「任意两点」条件真空成立，不适合当作凸集。\n\n💡 凸组合、凸包、分离定理都从这里出发。",
+   "refs": [
+    "Conway, A Course in Functional Analysis · Hilbert 空间与正交基"
+   ]
+  },
+  {
+   "id": "def.star-shaped",
+   "type": "definition",
+   "label": "星形集",
+   "title": "星形集：存在一个能看见全集合的点",
+   "region": "functional-analysis",
+   "regions": [
+    "functional-analysis"
+   ],
+   "cluster": "fa.hilbert",
+   "layer": 11,
+   "tags": [
+    "泛函分析",
+    "凸集",
+    "星形"
+   ],
+   "statement": "设 $V$ 是实向量空间，$S \\subseteq V$。称 $S$ 为**星形集**，若存在 $x_{0} \\in S$，使对每个 $x \\in S$ 与 $t \\in [0,1]$，\n\n$$(1-t)x_{0} + t x \\in S.$$\n\n这样的 $x_{0}$ 叫 $S$ 的一个**星点**（star center）。",
+   "notes": "⭐ 凸集一定是星形集：任取 $x_{0} \\in C$，凸性给出整条线段。反之不然：平面里的十字形关于中心星形，却不凸。\n\n⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。",
+   "refs": [
+    "Conway, A Course in Functional Analysis · Hilbert 空间与正交基"
+   ]
+  },
+  {
    "id": "thm.projection-convex",
    "type": "theorem",
    "label": "凸闭集的最近点",
@@ -39487,8 +39561,8 @@
    "statement": "设 $K$ 是**域**。$K$ 上的**向量空间**（也叫**线性空间**）是一个集合 $V$，配两种运算\n\n$$\\text{加法}: V \\times V \\to V,\\qquad \\text{标量乘法}: K \\times V \\to V,$$\n\n使得 $(V, +)$ 是**阿贝尔群**，并且对一切 $a, b \\in K$、$u, v \\in V$：\n\n- $a(u + v) = au + av$（标量对向量和的分配律）；\n- $(a + b)v = av + bv$（向量对标量和的分配律）；\n- $(ab)v = a(bv)$（标量乘法的结合）；\n- $1 \\cdot v = v$（单位律）。\n\n$V$ 的零元记 $0$，$v$ 的加法逆元记 $-v$；$V$ 的元素叫**向量**，$K$ 的元素叫**标量**。",
    "notes": "⭐ **它是由两块现成的东西拼出来的，不是新公理**：$(V, +)$ 是**阿贝尔群**（`def.group`），$K$ 是**域**（`def.field`），两者靠「标量乘法」这条**作用**连起来。所以「向量空间」= 群 + 域 + 一个作用 + 四条混合律。\n\n⭐ **它就是 $R = K$ 时的模**：把域放宽成环，上面四条混合律原样有意义（见「模的张量积」那一族）。向量空间比一般模好使，只因为 $K$ 里**每个非零元都可逆** —— 于是「线性无关」能被补成「基」，而模一般没有基。\n\n⚠ **基与维数不在这里**：本节点只说「什么叫向量空间」。线性无关 / 张成 / 基见 `def.vs`，维数良定义见 `thm.dimension`，存在性（每个向量空间都有基）见 `thm.vsbasis`。\n\n⚠ 常说的「八条公理」是把加法那四条也写出来；这里把加法那半收进「阿贝尔群」，所以只剩四条要写。\n\n⭐ 常见的三个例子：$K^{n}$（分量运算逐条验证）；$K[X]$ 与 $M_{n}(K)$（加法就是逐项加）；函数空间 $\\{f : S \\to K\\}$（点态运算）—— 三个都是「同一套验证」的重复。",
    "refs": [
-    "Lang, Linear Algebra",
-    "Hoffman–Kunze, Linear Algebra, Ch. 2"
+    "Lang, Algebra",
+    "Hoffman–Kunze, Ch. 2"
    ]
   },
   {
@@ -39537,7 +39611,6 @@
    "type": "theorem",
    "label": "完备性定理",
    "title": "一阶逻辑完备性定理（Gödel）：$\\Gamma \\vdash \\varphi \\iff \\Gamma \\vDash \\varphi$",
-   "status": "skeleton",
    "label_en": "Gödel completeness theorem",
    "title_en": "Gödel completeness theorem",
    "translations": {
@@ -39568,7 +39641,7 @@
     "元定理"
    ],
    "statement": "设 $\\Gamma$ 是一组公式，$\\varphi$ 是公式。则\n\n$$\\Gamma \\vdash \\varphi \\iff \\Gamma \\vDash \\varphi,$$\n\n即：**可证明**与**在所有模型中都真**是同一件事。等价的形式：$\\Gamma$ 有模型 $\\iff$ $\\Gamma$ 一致。",
-   "notes": "⭐ **两个方向的分量完全不同**：\n\n- $\\vdash \\implies \\vDash$（**可靠性** / soundness）：公理都是永真的、推理规则保持真值，所以逐条归纳即可 —— 这一段是**免费的**，也是「证明能保证正确」的全部依据。\n\n- $\\vDash \\implies \\vdash$（**完备性**，Gödel 1930）：**这才是内容**。经典证明是 Henkin 构造：把一致的理论扩充成**极大一致**理论、对每个存在式加一个见证常元、再用项本身当元素造出项模型。\n\n⚠ **这里的「完备性」与「完备空间 / 完备测度 / 序完备」那一族毫无关系** —— 同一个中文词在不同分支里有不同意思，读的时候要认清。\n\n⚠ 一阶逻辑的完备性**不**违背 Gödel 不完备性定理：后者说的是「足够强的理论（如 PA/ZFC）里存在既不能证也不能证伪的**句子**」，那是关于**理论**的，不是关于逻辑的。\n\n📌 本图只给陈述与证明骨架（Henkin 构造的三个动作），没有把项模型展开成节点。",
+   "notes": "**约定**：$\\vdash$ 取 `def.provability` 的 Hilbert 型系统（分离规则 + 推广），逻辑公理取标准模式：命题公理 (A1) $\\psi\\to(\\chi\\to\\psi)$、(A2) $(\\psi\\to(\\chi\\to\\theta))\\to((\\psi\\to\\chi)\\to(\\psi\\to\\theta))$、(A3) $(\\neg\\chi\\to\\neg\\psi)\\to(\\psi\\to\\chi)$；量词公理 (Q1) $\\forall x\\,\\psi\\to\\psi[t/x]$（$t$ 对 $x$ 可代入）、(Q2) $\\forall x(\\psi\\to\\chi)\\to(\\psi\\to\\forall x\\,\\chi)$（$x\\notin\\operatorname{FV}(\\psi)$）；等词公理 (E1) $x=x$、(E2) $x=y\\to(\\psi\\to\\psi[y/x])$。`def.provability` 没有逐条列出公理表，这里按标准取法固定一套；换等价系统不改变 $\\vdash$。$\\Gamma$ **不一致**指存在 $\\psi$ 使 $\\Gamma\\vdash\\psi$ 且 $\\Gamma\\vdash\\neg\\psi$，它等价于 $\\Gamma\\vdash\\neg(\\theta\\to\\theta)$。\n\n**第一步：化到语句。** 对 $\\Gamma\\cup\\{\\varphi\\}$ 中出现的每个自由变元 $x$ 添一个新常元 $c_x$，把公式里的 $x$ 全换成 $c_x$，得 $\\Gamma_c,\\varphi_c$。则 (i) $\\Gamma\\vdash\\varphi\\iff\\Gamma_c\\vdash\\varphi_c$：把证明里的 $c_x$ 换回自由变元 $x$（公理模式对代入封闭，分离与推广保持形状），反向把 $x$ 换成 $c_x$；(ii) $\\Gamma\\vDash\\varphi\\iff\\Gamma_c\\vDash\\varphi_c$：$\\mathcal{L}_c$ 的结构就是「$\\mathcal{L}$ 的结构 + 一个赋值」，反之每个赋值唯一延拓。所以只需对**语句**证明。\n\n**第二步：可靠性（$\\vdash\\implies\\vDash$）。** 逐条验证：命题公理是重言式；(Q1) 若 $\\forall x\\,\\psi$ 在 $\\mathfrak{A}$ 中真，则 $\\psi[t/x]$ 对每个 $t$ 的解释真；(Q2) 在 $x\\notin\\operatorname{FV}(\\psi)$ 时，若 $\\forall x(\\psi\\to\\chi)$ 与 $\\psi$ 真，则对每个 $a$ 有 $\\chi$ 真；(E1)(E2) 是等词的标准语义。分离规则保持「真」，推广保持「对所有赋值真」。对证明长度归纳得 $\\Gamma\\vdash\\varphi\\implies\\Gamma\\vDash\\varphi$。\n\n**第三步：演绎定理（语句版）。** 若 $\\sigma$ 是语句且 $\\Gamma\\cup\\{\\sigma\\}\\vdash\\psi$，则 $\\Gamma\\vdash\\sigma\\to\\psi$。对推导长度归纳：若该步是公理或 $\\Gamma$ 中公式 $\\theta$，用 (A1) $\\theta\\to(\\sigma\\to\\theta)$ 与分离规则；若是分离规则，用 (A2)；若是推广 $\\theta\\mapsto\\forall x\\,\\theta$，归纳假设给 $\\Gamma\\vdash\\sigma\\to\\theta$，推广得 $\\Gamma\\vdash\\forall x(\\sigma\\to\\theta)$，再由 (Q2)（$\\sigma$ 无自由 $x$）与分离规则得 $\\Gamma\\vdash\\sigma\\to\\forall x\\,\\theta$。∎\n\n**推论**：若 $\\Gamma\\cup\\{\\sigma\\}$ 不一致，则 $\\Gamma\\vdash\\neg\\sigma$；特别地，若 $\\Gamma\\cup\\{\\neg\\varphi\\}$ 不一致，则 $\\Gamma\\vdash\\varphi$。证明：演绎定理给 $\\Gamma\\vdash\\sigma\\to\\psi$ 与 $\\Gamma\\vdash\\sigma\\to\\neg\\psi$，而 $(\\sigma\\to\\psi)\\to((\\sigma\\to\\neg\\psi)\\to\\neg\\sigma)$ 是重言式，分离两次即得 $\\Gamma\\vdash\\neg\\sigma$。\n\n**第四步：极大一致扩张。** 引理：每个一致语句集 $\\Gamma$ 可扩张为极大一致语句集 $\\Gamma^{*}$。证明：枚举所有语句 $\\psi_0,\\psi_1,\\ldots$；令 $\\Gamma_0=\\Gamma$，若 $\\Gamma_n\\cup\\{\\psi_n\\}$ 一致则 $\\Gamma_{n+1}=\\Gamma_n\\cup\\{\\psi_n\\}$，否则 $\\Gamma_{n+1}=\\Gamma_n$；令 $\\Gamma^{*}=\\bigcup_n\\Gamma_n$。一致性：若 $\\Gamma^{*}$ 不一致，则某个证明只用到有限多条假设，它们全在某个 $\\Gamma_n$ 中，与 $\\Gamma_n$ 一致矛盾。极大性：若 $\\psi_n\\notin\\Gamma^{*}$，则 $\\Gamma_n\\cup\\{\\psi_n\\}$ 不一致，由推论得 $\\Gamma_n\\vdash\\neg\\psi_n$，故 $\\Gamma^{*}\\vdash\\neg\\psi_n$。由此：对每个语句恰有 $\\psi\\in\\Gamma^{*}$ 或 $\\neg\\psi\\in\\Gamma^{*}$；$\\Gamma^{*}$ 对 $\\vdash$ 封闭（若 $\\Gamma^{*}\\vdash\\psi$ 而 $\\psi\\notin\\Gamma^{*}$，则 $\\neg\\psi\\in\\Gamma^{*}$，与一致性矛盾）；$\\Gamma^{*}$ 含全部逻辑公理。\n\n**第五步：Henkin 见证。** 在语言中添可数无穷多新常元 $c_0,c_1,\\ldots$，得 $\\mathcal{L}^{+}$。把 $\\mathcal{L}^{+}$ 中所有形如 $\\exists x\\,\\theta(x)$ 的语句枚举为 $\\xi_0,\\xi_1,\\ldots$。递归造 $\\Gamma_n$：若 $\\Gamma_n\\cup\\{\\xi_n\\}$ 一致且 $\\xi_n=\\exists x\\,\\theta(x)$，取第一个未用过的 $c_k$，令 $\\Gamma_{n+1}=\\Gamma_n\\cup\\{\\theta(c_k)\\}$；否则 $\\Gamma_{n+1}=\\Gamma_n$。\n\n各 $\\Gamma_n$ 一致：若 $\\Gamma_n\\cup\\{\\theta(c_k)\\}$ 不一致，推论给 $\\Gamma_n\\vdash\\neg\\theta(c_k)$；$c_k$ 不出现在 $\\Gamma_n$ 中，把 $c_k$ 换成证明中未出现的变元 $y$ 并推广，得 $\\Gamma_n\\vdash\\forall y\\,\\neg\\theta(y)$，再由 (Q1) 与命题逻辑得 $\\Gamma_n\\vdash\\neg\\exists x\\,\\theta(x)$，与「$\\Gamma_n\\cup\\{\\xi_n\\}$ 一致」矛盾。于是 $\\Gamma_\\omega=\\bigcup_n\\Gamma_n$ 一致（有限特征），再由第四步扩为极大一致 $\\Gamma^{*}$。见证性质：若 $\\exists x\\,\\theta\\in\\Gamma^{*}$ 且编号为 $n$，则 $\\Gamma_n\\cup\\{\\exists x\\,\\theta\\}\\subseteq\\Gamma^{*}$ 一致，故第 $n$ 步添了 $\\theta(c_k)$，即 $\\theta(c_k)\\in\\Gamma^{*}$。\n\n**第六步：项模型。** 在 $\\mathcal{L}^{+}$ 上，对闭项 $t,s$ 定义 $t\\sim s\\iff\\Gamma^{*}\\vdash t=s$；由 (E1)(E2) 这是等价关系。令 $A$ 为闭项的 $\\sim$-类全体。常元 $c^{\\mathfrak{A}}:=[c]$；函数符号 $f^{\\mathfrak{A}}([t_1],\\ldots,[t_n]):=[f(t_1,\\ldots,t_n)]$；关系符号 $R^{\\mathfrak{A}}([t_1],\\ldots,[t_n])$ 为真 $\\iff\\Gamma^{*}\\vdash R(t_1,\\ldots,t_n)$。良定义用 (E2)：若 $t_i\\sim s_i$，逐步代入得 $\\Gamma^{*}\\vdash f(t)=f(s)$ 与 $\\Gamma^{*}\\vdash R(t)\\leftrightarrow R(s)$。等词解释成相等：$[t]=[s]\\iff t\\sim s$。\n\n**第七步：真值引理。** 对每个公式 $\\psi(x_1,\\ldots,x_m)$ 与任意闭项 $t_1,\\ldots,t_m$：$\\mathfrak{A}\\vDash\\psi[\\bar t]$（赋值 $x_i\\mapsto[t_i]$）$\\iff$ $\\Gamma^{*}\\vdash\\psi(t_1,\\ldots,t_m)$。对 $\\psi$ 的结构归纳：原子公式按第六步；$\\neg$ 用极大性（对每个语句恰有它或它的否定在 $\\Gamma^{*}$）；$\\wedge$ 用 $\\Gamma^{*}$ 对 $\\vdash$ 封闭与重言式 $\\psi\\to(\\chi\\to\\psi\\wedge\\chi)$、$\\psi\\wedge\\chi\\to\\psi$、$\\psi\\wedge\\chi\\to\\chi$。\n\n量词情形：先注意对任意闭项 $t$，$\\Gamma^{*}\\vdash\\forall x\\,\\psi\\to\\psi(t)$（(Q1) 加分离规则）。($\\Leftarrow$) 若 $\\forall x\\,\\psi\\in\\Gamma^{*}$，则每个实例 $\\psi(t)\\in\\Gamma^{*}$，归纳假设给 $\\mathfrak{A}\\vDash\\psi[\\bar t]$ 对所有 $[t]$，故 $\\mathfrak{A}\\vDash\\forall x\\,\\psi$。($\\implies$) 若 $\\forall x\\,\\psi\\notin\\Gamma^{*}$，则 $\\neg\\forall x\\,\\psi\\in\\Gamma^{*}$；命题逻辑（用 (Q1)）给 $\\Gamma^{*}\\vdash\\exists x\\,\\neg\\psi$，见证性质给 $c$ 使 $\\neg\\psi(c)\\in\\Gamma^{*}$，归纳假设给 $\\mathfrak{A}\\vDash\\neg\\psi[\\bar c]$，故 $\\mathfrak{A}\\not\\vDash\\forall x\\,\\psi$。\n\n**第八步：收尾。** 第七步给出 $\\mathfrak{A}\\vDash\\Gamma^{*}$，故 $\\Gamma$ 有模型。于是对语句：若 $\\Gamma\\not\\vdash\\varphi$，则 $\\Gamma\\cup\\{\\neg\\varphi\\}$ 一致（否则推论给 $\\Gamma\\vdash\\varphi$），由第五至七步有模型 $\\mathfrak{A}\\vDash\\Gamma\\cup\\{\\neg\\varphi\\}$，即 $\\Gamma\\not\\vDash\\varphi$。逆否即 $\\Gamma\\vDash\\varphi\\implies\\Gamma\\vdash\\varphi$；与第二步合起来即 $\\Gamma\\vdash\\varphi\\iff\\Gamma\\vDash\\varphi$。一般公式由第一步化到语句。∎\n\n**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。Henkin 扩张每一步取「第一个未使用的常元」，所以可数语言下不需要选择公理；不可数语言要把枚举换成超限递归，那一步用选择公理。推论：紧致性定理（每个有限子集有模型 $\\implies$ 整个理论有模型）由 $\\Gamma\\vDash\\varphi\\implies\\Gamma\\vdash\\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。",
    "refs": [
     "Enderton, A Mathematical Introduction to Logic, Ch. 2.5",
     "Kunen, Set Theory, Ch. I"
@@ -39816,7 +39889,7 @@
     "曲面"
    ],
    "statement": "设 $S$ 是**闭曲面**（`def.closed-surface`）。则 $S$ 同胚于下列之一，且这些互不同胚：\n\n- **球面** $S^{2}$；\n- $g$ 个**环面**的连通和 $T^{2}\\#\\cdots\\# T^{2}$（$g \\ge 1$），这叫**可定向**闭曲面，亏格 $g$；\n- $k$ 个**射影平面**的连通和 $\\mathbb{RP}^{2}\\#\\cdots\\# \\mathbb{RP}^{2}$（$k \\ge 1$），这叫**不可定向**闭曲面，不可定向亏格 $k$。\n\n并且两族互不重合：可定向与不可定向的闭曲面（除球面外）永不**同胚**。",
-   "notes": "⚠ **本节点保持 status: skeleton。** 分类定理是一条长链，本图目前只闭合了「读出标准形」这一步；前两步（三角剖分存在性、组合归类）都还是空白。下面把三步写到能核对的程度，并标明哪一步是本图空白。\n\n**证明的三步**：(1) 三角剖分存在 —— `thm.rado`（仍 skeleton），本图把它当外部输入；(2) **组合归类**（本图空白）—— 把任意闭连通曲面的有限三角剖分化成标准形，精确陈述见下；(3) 读出标准形 —— 标准形只由「可定向性 + $\\chi$」决定，且互不同胚（本注后面完整写出）。\n\n**第二步的精确陈述（组合分类引理）**：设 $K$ 是有限三角剖分的闭连通曲面。则可用有限次下列操作把它化成标准形：\n\n- 2–2 翻边：一条边两侧的两个三角形换成另两个三角形，顶点集不变；\n\n- 切-粘（cut-and-paste）：沿一条闭曲线剪开再粘回，改变剖分但保持同胚型；\n\n- 删除边界三角形：剖分出现「只贴一条边的三角形」时把它去掉。\n\n标准形分两类：**可定向**是 $4g$ 边形，边按 $a_{1}b_{1}a_{1}^{-1}b_{1}^{-1}\\cdots a_{g}b_{g}a_{g}^{-1}b_{g}^{-1}$ 配对；**不可定向**是 $2k$ 边形（$k\\ge1$），边按 $c_{1}c_{1}c_{2}c_{2}\\cdots c_{k}c_{k}$ 配对。\n\n**为什么这一步本图不勾 ∎**：上面只是引理的陈述与证明路线。完整证明是有限归纳加分类讨论（Munkres Ch. 12 约 30 页；Massey Ch. 1 §5）：先把剖分化为「一个多边形加边配对」，再按相邻配对边同向或反向分两类做切粘，最后对配对边数归纳；终止性由标准形的「配对边数严格下降」保证。这段 case analysis（尤其不可定向情形与顶点图的退化情形）本图没有节点、也没有逐条写出 —— 写「略」会让人误以为整条链已闭合。所以 Radó 与这一步都留空，本节点保持 skeleton。\n\n**第三步（完整可查）**：标准形的 $\\chi$ 直接数。可定向 $4g$ 边形取中心扇形三角剖分：顶点 $2$（中心 + 一个边界顶点类）、边 $2g$（配对边界边）$+4g$（辐条）$=6g$、面 $4g$，故 $\\chi=2-6g+4g=2-2g$；不可定向 $2k$ 边形同理得 $\\chi=2-k$。两族在（可定向性，$\\chi$）上互不重合：可定向侧 $\\chi=2-2g\\le2$ 且为偶数，$g=(2-\\chi)/2$；不可定向侧 $\\chi=2-k\\le1$。$\\chi$ 是同胚不变量（`thm.euler-characteristic`），所以标准形互不同胚。\n\n⭐ **判据（可定向侧）**：$g=\\tfrac{1}{2}\\operatorname{rank}H_{1}(S;\\mathbb{Z})$（`def.genus`），且 $\\chi(S)=2-2g$（`prop.eulerchar-genus`，仍 skeleton：它的「任意曲面化到标准形」那一步正是本节点的第 2 步）。所以「两个闭可定向曲面同胚当且仅当亏格相同当且仅当 $\\chi$ 相同」—— 分类定理说的「只有一个整数不变量」。\n\n⭐ **判据（不可定向侧）**：$\\chi(S)=2-k$，而 $H_{1}(S;\\mathbb{Z})\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$（`prop.eulerchar-nonorientable`，仍 skeleton，缺口同上）。$k$ 由「$H_{1}$ 的自由秩加一」与「有没有 $2$-挠」一起定出。\n\n📌 Gauss–Bonnet（`thm.gauss-bonnet`）通过 $\\chi$ 与本定理相认：$\\int K\\,\\mathrm{d}A=2\\pi\\chi=4\\pi(1-g)$。\n\n**本图空白清单**：第二步的组合分类引理（核心）、Radó 定理的证明。补上二者之后，第三步即可直接接上。\n\n⚠ **注意**：「每个闭曲面都是某标准形的连通和」是分类定理的**结论**，不是定义；本图不把它当前提。",
+   "notes": "⚠ **本节点保持 status: skeleton。** 分类定理是一条长链，本图目前只闭合了「读出标准形」这一步；前两步（三角剖分存在性、组合归类）都还是空白。下面把三步写到能核对的程度，并标明哪一步是本图空白。\n\n**证明的三步**：(1) 三角剖分存在 —— `thm.rado`（仍 skeleton），本图把它当外部输入；(2) **组合归类**（本图空白）—— 把任意闭连通曲面的有限三角剖分化成标准形，证明路线见下；(3) 读出标准形 —— 标准形只由「可定向性 + $\\chi$」决定，且互不同胚（本注后面完整写出）。\n\n**第二步的证明路线（本图未写完整）**：设 $K$ 是有限三角剖分的闭连通曲面。下面的操作清单是证明路线，不是完整证明（终止性与退化情形见本节末）。\n\n- 2–2 翻边：一条边两侧的两个三角形换成另两个三角形，顶点集不变；\n\n- 切-粘（cut-and-paste）：沿一条闭曲线剪开再粘回，改变剖分但保持同胚型；\n\n- 删除边界三角形：剖分出现「只贴一条边的三角形」时把它去掉。\n\n标准形分两类：**可定向**是 $4g$ 边形，边按 $a_{1}b_{1}a_{1}^{-1}b_{1}^{-1}\\cdots a_{g}b_{g}a_{g}^{-1}b_{g}^{-1}$ 配对；**不可定向**是 $2k$ 边形（$k\\ge1$），边按 $c_{1}c_{1}c_{2}c_{2}\\cdots c_{k}c_{k}$ 配对。\n\n**为什么这一步本图不勾 ∎**：上面只是引理的陈述与证明路线。完整证明是有限归纳加分类讨论（Munkres Ch. 12 约 30 页；Massey Ch. 1 §5）：先把剖分化为「一个多边形加边配对」，再按相邻配对边同向或反向分两类做切粘，最后对配对边数归纳；终止性由标准形的「配对边数严格下降」保证。这段 case analysis（尤其不可定向情形与顶点图的退化情形）本图没有节点、也没有逐条写出 —— 写「略」会让人误以为整条链已闭合。所以 Radó 与这一步都留空，本节点保持 skeleton。\n\n**第三步（完整可查）**：标准形的 $\\chi$ 直接数。可定向 $4g$ 边形取中心扇形三角剖分：顶点 $2$（中心 + 一个边界顶点类）、边 $2g$（配对边界边）$+4g$（辐条）$=6g$、面 $4g$，故 $\\chi=2-6g+4g=2-2g$；不可定向 $2k$ 边形同理得 $\\chi=2-k$。两族在（可定向性，$\\chi$）上互不重合：可定向侧 $\\chi=2-2g\\le2$ 且为偶数，$g=(2-\\chi)/2$；不可定向侧 $\\chi=2-k\\le1$。$\\chi$ 是同胚不变量（`thm.euler-characteristic`），所以标准形互不同胚。\n\n⭐ **判据（可定向侧）**：$g=\\tfrac{1}{2}\\operatorname{rank}H_{1}(S;\\mathbb{Z})$（`def.genus`），且 $\\chi(S)=2-2g$（`prop.eulerchar-genus`，仍 skeleton：它的「任意曲面化到标准形」那一步正是本节点的第 2 步）。所以「两个闭可定向曲面同胚当且仅当亏格相同当且仅当 $\\chi$ 相同」—— 分类定理说的「只有一个整数不变量」。\n\n⭐ **判据（不可定向侧）**：$\\chi(S)=2-k$，而 $H_{1}(S;\\mathbb{Z})\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$（`prop.eulerchar-nonorientable`，仍 skeleton，缺口同上）。$k$ 由「$H_{1}$ 的自由秩加一」与「有没有 $2$-挠」一起定出。\n\n📌 Gauss–Bonnet（`thm.gauss-bonnet`）通过 $\\chi$ 与本定理相认：$\\int K\\,\\mathrm{d}A=2\\pi\\chi=4\\pi(1-g)$。\n\n**本图空白清单**：第二步的组合分类引理（核心）、Radó 定理的证明。补上二者之后，第三步即可直接接上。\n\n⚠ **注意**：「每个闭曲面都是某标准形的连通和」是分类定理的**结论**，不是定义；本图不把它当前提。",
    "refs": [
     "Munkres, Topology, Ch. 12（Classification of Surfaces）",
     "Massey, A Basic Course in Algebraic Topology, Ch. 1",
@@ -39901,7 +39974,7 @@
     "三角剖分"
    ],
    "statement": "每个**紧曲面**（紧、连通、$2$ 维拓扑流形，可带边界）都可三角剖分（`def.triangulation`）。\n\n等价的常用写法：每个紧连通曲面都同胚于某个**有限**单纯复形的几何实现。",
-   "notes": "⚠ **本节点保持 status: skeleton。** 这不是写漏：Radó 定理的证明需要本图没有的一整层地形（见下面的空白清单）。本图把它单列成节点，是为了让「闭曲面分类」依赖链里的缺口形状可见，而不是假装证过。\n\n**定理**：每个紧曲面（紧、连通、2 维拓扑流形，可带边界）都可三角剖分；等价地，同胚于某个有限单纯复形的几何实现。\n\n**本图能确认的部分**：(1) 若剖分存在，则可取有限 —— 紧性给出有限个图卡，局部有限剖分在紧空间上只有有限个非空单形；(2) 剖分不唯一 —— 同一曲面有无穷多个本质不同的剖分（`def.triangulation` 的注）；(3) 分类定理只把它当作第一步用（`thm.classification-surfaces`），不把它当作结论。\n\n**路线 A（复分析）**：先在曲面上造复结构（成为 Riemann 面），再取非常值亚纯函数 $f$，把 $S^{2}$ 的三角剖分沿 $f$ 拉回。需要的输入：Riemann 面上亚纯函数存在性（Riemann–Roch）与分支覆盖的局部模型 $z\\mapsto z^{m}$。⚠ 本图内部不能拿 `thm.riemann-hurwitz` 来补这一步 —— 那条定理的证明已经假设了 $X$ 有三角剖分，用它证 Radó 是循环论证。\n\n**路线 B（微分拓扑）**：先证紧曲面有（本质唯一的）光滑结构（Radó 本人、Munkres、Whitehead），再用 Morse 理论或管状邻域把曲面拆成柄，柄的粘接给出有限多边形剖分。需要的输入：光滑结构存在性、Morse 函数存在性、柄分解。本图都没有节点。\n\n**为什么这是低维现象**：$\\dim\\le2$ 时成立（Radó 1925）；$\\dim=3$ 也成立（Moise 1952）；$\\dim=4$ **不成立** —— Freedman 的 $E_{8}$ 流形紧、拓扑，但不可三角剖分；$\\dim\\ge5$ 有 Kirby–Siebenmann 的上同调障碍。所以「每个流形都能剖分」是错的，本节点只处理 2 维。\n\n⚠ **两条常见混淆**：① 与「单纯逼近定理」区分：那条假设已有剖分，结论是奇异同调等于单纯同调（`thm.simplicial-approximation`）；本节点说的是剖分存在。② 与「光滑流形」区分：光滑流形可剖分是另一个定理（Whitehead），不能把光滑结构当既成事实。\n\n**本图空白清单**（缺任意一条都补不上 Radó）：(i) 紧曲面的光滑结构或复结构存在性；(ii) Morse 理论或柄分解；(iii) 或等价的 uniformization 定理。三者都没有节点，所以本节点保持 skeleton，不勾 ∎。",
+   "notes": "⚠ **本节点保持 status: skeleton。** 这不是写漏：Radó 定理的证明需要本图没有的一整层地形（见下面的空白清单）。本图把它单列成节点，是为了让「闭曲面分类」依赖链里的缺口形状可见，而不是假装证过。\n\n**定理**：每个紧曲面（紧、连通、2 维拓扑流形，可带边界）都可三角剖分；等价地，同胚于某个有限单纯复形的几何实现。\n\n**本图能确认的部分**：(1) 若剖分存在，则可取有限 —— 紧性给出有限个图卡，局部有限剖分在紧空间上只有有限个非空单形；(2) 剖分不唯一 —— 同一曲面有无穷多个本质不同的剖分（`def.triangulation` 的注）；(3) 分类定理只把它当作第一步用（`thm.classification-surfaces`），不把它当作结论。\n\n**路线 A（复分析）**：先造复结构（成为 Riemann 面），再取非常值亚纯函数 $f$，把 $S^{2}$ 的三角剖分沿 $f$ 拉回。**可定向**时直接在 $S$ 上造复结构；**不可定向**时先取**可定向双覆盖** $\\widetilde S\\to S$（它可定向），在 $\\widetilde S$ 上造复结构并拉回剖分，再对 $S=\\widetilde S/\\mathbb Z_{2}$ 取商剖分（分支点处用局部模型 $z\\mapsto z^{2}$）。需要的输入：Riemann 面上亚纯函数存在性（Riemann–Roch）与分支覆盖的局部模型 $z\\mapsto z^{m}$。⚠ 本图内部不能拿 `thm.riemann-hurwitz` 来补这一步 —— 那条定理的证明已经假设了 $X$ 有三角剖分，用它证 Radó 是循环论证。\n\n**路线 B（微分拓扑）**：先证紧曲面有（本质唯一的）光滑结构（Radó 本人、Munkres、Whitehead），再用 Morse 理论或管状邻域把曲面拆成柄，柄的粘接给出有限多边形剖分。需要的输入：光滑结构存在性、Morse 函数存在性、柄分解。本图都没有节点。\n\n**为什么这是低维现象**：$\\dim\\le2$ 时成立（Radó 1925）；$\\dim=3$ 也成立（Moise 1952）；$\\dim=4$ **不成立** —— Freedman 的 $E_{8}$ 流形紧、拓扑，但不可三角剖分；$\\dim\\ge5$ 有 Kirby–Siebenmann 的上同调障碍。所以「每个流形都能剖分」是错的，本节点只处理 2 维。\n\n⚠ **两条常见混淆**：① 与「单纯逼近定理」区分：那条假设已有剖分，结论是奇异同调等于单纯同调（`thm.simplicial-approximation`）；本节点说的是剖分存在。② 与「光滑流形」区分：光滑流形可剖分是另一个定理（Whitehead），不能把光滑结构当既成事实。\n\n**本图空白清单**（缺任意一条都补不上 Radó）：(i) 紧曲面的光滑结构或复结构存在性；(ii) Morse 理论或柄分解；(iii) 或等价的 uniformization 定理。三者都没有节点，所以本节点保持 skeleton，不勾 ∎。",
    "refs": [
     "Radó, Über den Begriff der Riemannschen Fläche (1925)",
     "Moise, Affine structures in 3-manifolds (1952)",
@@ -39987,8 +40060,8 @@
     "曲面",
     "同调"
    ],
-   "statement": "设 $S$ 是**闭不可定向曲面**，且 $S \\cong \\mathbb{RP}^{2}\\#\\cdots\\#\\mathbb{RP}^{2}$（$k$ 个，见 `thm.classification-surfaces`；$k$ 叫**不可定向亏格**）。则\n\n$$\\chi(S) = 2 - k .$$",
-   "notes": "⚠ **本节点保持 status: skeleton。** 与可定向侧同因：缺口是「任意闭不可定向曲面化到标准形」这一步（`thm.classification-surfaces` 仍 skeleton），以及 $H_{1}$、$H_{2}$ 的结构定理。下面写满能写的部分。\n\n**一、标准形计数（完整）**：$k$ 个射影平面的连通和画成 $2k$ 边形，边按 $c_{1}c_{1}c_{2}c_{2}\\cdots c_{k}c_{k}$ 配对（$k\\ge1$）；中心扇形三角剖分：顶点 $2$、边 $k$（配对边界边）$+2k$（辐条）$=3k$、面 $2k$，故 $\\chi=2-3k+2k=2-k$。$k=1$ 给 $\\chi(\\mathbb{RP}^{2})=1$；$k=2$ 给 $\\chi(\\text{克莱因瓶})=0$。\n\n**二、同调为什么是 $k$ 而不是 $2k$**：不可定向闭曲面的 $H_{1}$ 有挠部，$H_{1}(S;\\mathbb{Z})\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$，故 $\\operatorname{rank}H_{1}=k-1$；又 $H_{2}(S;\\mathbb{Z})=0$（不可定向紧曲面没有整体基本类）。代入 $\\chi=\\sum_{i}(-1)^{i}\\beta_{i}$ 得 $1-(k-1)+0=2-k$，与组合计数一致。⚠ 这两条同调事实（$H_{1}$ 结构、$H_{2}=0$）本图没有节点，只在此以定理形式引用。\n\n**标准形上的 $H_{1}$ 推导（完整）**：用 van Kampen（`thm.van-kampen`）对 $2k$ 边形的一个顶点取开覆盖，得 $\\pi_{1}=\\langle c_{1},\\ldots,c_{k}\\mid c_{1}^{2}\\cdots c_{k}^{2}=1\\rangle$；交换化后 $H_{1}\\cong\\mathbb{Z}^{k}/(2(c_{1}+\\cdots+c_{k}))\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$。这一步只处理标准形，桥到一般曲面仍靠分类定理。\n\n**三、连通和公式**：$\\chi(M\\#N)=\\chi(M)+\\chi(N)-2$（证明见 `prop.eulerchar-genus` 的注）。由 $\\chi(\\mathbb{RP}^{2})=1$ 归纳得 $k$ 个射影平面的连通和 $\\chi=2-k$。\n\n**四、缺口**：上述只对标准形成立。任意闭不可定向曲面要先用分类定理归到标准形，$H_{1}$ 结构与 $H_{2}=0$ 也要在一般曲面上证；本图这两块都空缺，故不删 status、不勾 ∎。\n\n⚠ **「亏格」这个词在不可定向侧不能照搬**：`def.genus` 只对可定向定义（除以 $2$ 依赖 $H_{1}$ 自由秩为偶数）。不可定向侧的标准量是 $k$，关系是 $\\chi=2-k$。\n\n⭐ 读数：$\\mathbb{RP}^{2}$ 的 $k=1$、$\\chi=1$；克莱因瓶的 $k=2$、$\\chi=0$；三个射影平面的连通和 $k=3$、$\\chi=-1$。",
+   "statement": "设 $S$ 是**闭不可定向曲面**，且已化为**标准形**：$k$ 个 $\\mathbb{RP}^{2}$ 的连通和（$k\\ge1$，见 `thm.classification-surfaces`；$k$ 叫**不可定向亏格**）。则\n\n$$\\chi(S) = 2 - k .$$",
+   "notes": "⚠ **本节点保持 status: skeleton。** **本陈述只验证标准形**：一般闭不可定向曲面须先由分类定理化到标准形，那一步仍是 skeleton（`thm.classification-surfaces`）；此外 $H_{1}$、$H_{2}$ 的结构定理本图也还没有节点。下面写满能写的部分。\n\n**一、标准形计数（完整）**：$k$ 个射影平面的连通和画成 $2k$ 边形，边按 $c_{1}c_{1}c_{2}c_{2}\\cdots c_{k}c_{k}$ 配对（$k\\ge1$）；中心扇形三角剖分：顶点 $2$、边 $k$（配对边界边）$+2k$（辐条）$=3k$、面 $2k$，故 $\\chi=2-3k+2k=2-k$。$k=1$ 给 $\\chi(\\mathbb{RP}^{2})=1$；$k=2$ 给 $\\chi(\\text{克莱因瓶})=0$。\n\n**二、同调为什么是 $k$ 而不是 $2k$**：不可定向闭曲面的 $H_{1}$ 有挠部，$H_{1}(S;\\mathbb{Z})\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$，故 $\\operatorname{rank}H_{1}=k-1$；又 $H_{2}(S;\\mathbb{Z})=0$（不可定向紧曲面没有整体基本类）。代入 $\\chi=\\sum_{i}(-1)^{i}\\beta_{i}$ 得 $1-(k-1)+0=2-k$，与组合计数一致。⚠ 这两条同调事实（$H_{1}$ 结构、$H_{2}=0$）本图没有节点，只在此以定理形式引用。\n\n**标准形上的 $H_{1}$ 推导（完整）**：用 van Kampen（`thm.van-kampen`）对 $2k$ 边形的一个顶点取开覆盖，得 $\\pi_{1}=\\langle c_{1},\\ldots,c_{k}\\mid c_{1}^{2}\\cdots c_{k}^{2}=1\\rangle$；交换化后 $H_{1}\\cong\\mathbb{Z}^{k}/(2(c_{1}+\\cdots+c_{k}))\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$。这一步只处理标准形，桥到一般曲面仍靠分类定理。\n\n**三、连通和公式**：$\\chi(M\\#N)=\\chi(M)+\\chi(N)-2$（证明见 `prop.eulerchar-genus` 的注）。由 $\\chi(\\mathbb{RP}^{2})=1$ 归纳得 $k$ 个射影平面的连通和 $\\chi=2-k$。\n\n**四、缺口**：陈述已限定在标准形（一般曲面要先由分类定理归到标准形）。剩下的空白是 $H_{1}$ 结构与 $H_{2}=0$ 在一般闭不可定向曲面上的证明 —— 本图两者都没有节点，故不删 status、不勾 ∎。\n\n⚠ **「亏格」这个词在不可定向侧不能照搬**：`def.genus` 只对可定向定义（除以 $2$ 依赖 $H_{1}$ 自由秩为偶数）。不可定向侧的标准量是 $k$，关系是 $\\chi=2-k$。\n\n⭐ 读数：$\\mathbb{RP}^{2}$ 的 $k=1$、$\\chi=1$；克莱因瓶的 $k=2$、$\\chi=0$；三个射影平面的连通和 $k=3$、$\\chi=-1$。",
    "refs": [
     "Munkres, Topology, Ch. 12",
     "Massey, A Basic Course in Algebraic Topology, Ch. 1"
@@ -41160,7 +41233,7 @@
     "analysis"
    ],
    "cluster": "analysis.real-calc",
-   "layer": 18,
+   "layer": 23,
    "tags": [
     "定义",
     "分析",
@@ -41201,7 +41274,7 @@
     "analysis"
    ],
    "cluster": "analysis.real-calc",
-   "layer": 18,
+   "layer": 23,
    "tags": [
     "定义",
     "分析",
@@ -44539,6 +44612,53 @@
    "notes": "两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.1"
+   ]
+  },
+  {
+   "id": "def.category-of-groups",
+   "type": "definition",
+   "label": "群范畴",
+   "title": "群范畴 $\\mathbf{Grp}$",
+   "region": "category",
+   "regions": [
+    "category",
+    "algebra"
+   ],
+   "cluster": "cat.basic",
+   "layer": 8,
+   "tags": [
+    "范畴论",
+    "群",
+    "群同态"
+   ],
+   "statement": "**群范畴** $\\mathbf{Grp}$：对象是群，态射是群同态，复合是映射复合，单位是恒等同态。\n\n它有**遗忘函子** $\\mathbf{Grp}\\to\\mathbf{Set}$；交换群构成全子范畴 $\\mathbf{Ab}$，有限群构成全子范畴 $\\mathbf{FinGrp}$。",
+   "notes": "**不是阿贝尔范畴**：$\\hom_{\\mathbf{Grp}}(G,H)$ 一般没有群结构（不能逐点相加），所以不能像 $A\\text{-}\\mathbf{Mod}$ 那样做同调代数。\n\n**单态射 = 单同态**，**满态射 = 满同态**。积是直积，余积是自由积；零对象只有平凡群，所以 $\\mathbf{Grp}$ 不是加性范畴。\n\n笛卡尔积给出对称幺半结构，单位元是平凡群；但它不是笛卡尔闭的（$\\hom(G,H)$ 一般不能自然成为群）。",
+   "refs": [
+    "Mac Lane, Categories for the Working Mathematician, Ch. I, II"
+   ]
+  },
+  {
+   "id": "def.category-of-abelian-groups",
+   "type": "definition",
+   "label": "阿贝尔群范畴",
+   "title": "阿贝尔群范畴 $\\mathbf{Ab}$",
+   "region": "category",
+   "regions": [
+    "category",
+    "algebra"
+   ],
+   "cluster": "cat.basic",
+   "layer": 8,
+   "tags": [
+    "范畴论",
+    "阿贝尔群",
+    "阿贝尔范畴"
+   ],
+   "statement": "**阿贝尔群范畴** $\\mathbf{Ab}$：对象是阿贝尔群，态射是群同态；它是 $\\mathbf{Grp}$ 的**全子范畴**。\n\n遗忘函子 $\\mathbf{Ab}\\to\\mathbf{Set}$ 把阿贝尔群送到其底层集合；$\\mathbb Z\\text{-}\\mathbf{Mod}$ 与 $\\mathbf{Ab}$ 等价。",
+   "notes": "**阿贝尔范畴的原型**：有核、余核，单/满态射都严格；$\\hom(A,B)$ 逐点加法构成阿贝尔群。\n\n**足够投射/内射对象**：自由阿贝尔群投射；$\\mathbb Q/\\mathbb Z$ 给出内射余生成元，每个阿贝尔群都能嵌入内射群。\n\n**张量积**给出对称幺半结构，单位元是 $\\mathbb Z$；$\\hom(A,B)$ 又是阿贝尔群，所以 $\\mathbf{Ab}$ 还是对称幺半闭的。\n\n与 $A\\text{-}\\mathbf{Mod}$ 的关系：$\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$，这是「模」统一「阿贝尔群」的最基本例子。",
+   "refs": [
+    "Mac Lane, Categories for the Working Mathematician, Ch. I, II",
+    "Weibel, An Introduction to Homological Algebra, Ch. 1"
    ]
   },
   {
@@ -48767,7 +48887,6 @@
    "type": "proposition",
    "label": "凝聚态集满态射的判据",
    "title": "凝聚态集的满态射",
-   "status": "skeleton",
    "label_en": "Epimorphisms",
    "title_en": "Epimorphisms of Condensed Sets",
    "translations": {
@@ -48797,7 +48916,7 @@
     "满态射"
    ],
    "statement": "凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。",
-   "notes": "**在说什么**：凝聚态集的态射满不满，只要在**自由**紧 Hausdorff 空间 $F$ 上逐个看 $X(F) \\to Y(F)$ 是不是满的，就判完了。\n⭐ 为什么「自由的」那一批就够：自由紧 Hausdorff 空间（$\\beta I$）在 $\\mathrm{Cond}$ 里构成**生成元族**，而拓扑斯里的满态射只需在生成元族上验。\n⚠ 这里的「满」是**层论意义**的满（局部能提升），不是「每个测试空间上都逐点满」—— 后者更强。本条的正确性依赖「$\\mathrm{Cond}$ 是拓扑斯 + 自由紧 Hausdorff 是生成元族」，本图没有把「生成元族 $implies$ 只需在它们上验」单独立节点。",
+   "notes": "**结论**：$p:X\\to Y$ 在 $\\mathrm{Cond}$ 中满，当且仅当对每个自由紧 Hausdorff 空间 $F=\\beta I$，$X(F)\\to Y(F)$ 是满射。下面两个方向都证完。\n\n**引理 1（层里的满 = 局部可提升）**：景上的层范畴中，$p:X\\to Y$ 满 $\\iff$ 对每个对象 $S$ 与每个 $y\\in Y(S)$，存在覆盖 $\\{S_i\\to S\\}$ 与 $x_i\\in X(S_i)$，使 $p(x_i)=y|_{S_i}$。\n\n证明：($\\Leftarrow$) 设 $g,h:Y\\to Z$ 且 $g\\circ p=h\\circ p$。对任意 $S,y$，取覆盖与提升 $x_i$；层的局部性给出 $g(y)|_{S_i}=g(p(x_i))=h(p(x_i))=h(y)|_{S_i}$，故 $g(y)=h(y)$，即 $p$ 满。\n\n($\\implies$) 令 $\\operatorname{Im}(p)$ 为预层 $S\\mapsto\\{\\,y\\in Y(S):\\text{存在覆盖与局部提升}\\,\\}$ 的层化。它是 $Y$ 的子层，$p$ 分解为 $X\\to\\operatorname{Im}(p)\\hookrightarrow Y$：第一支按层化的普遍性质是满的，第二支是单的。$p$ 满迫使单支也满 —— 若 $u,v:\\operatorname{Im}(p)\\to Z$ 满足 $u\\circ m=v\\circ m$，则 $u\\circ p=v\\circ p$，故 $u=v$。拓扑斯中「单 + 满 $\\implies$ 同构」，于是 $\\operatorname{Im}(p)=Y$：每个 $y$ 都局部可提升。\n\n**引理 2（自由紧 Hausdorff 是投射对象）**：$\\beta I$ 在 $\\mathbf{CHaus}$ 中对满射投射 —— 每个满射 $q:U\\to\\beta I$ 都有截面（见 `prop.free-projective`）。\n\n**($\\implies$)** 设 $p$ 满，取 $y\\in Y(F)$，$F=\\beta I$。引理 1 给有限覆盖 $\\{u_i:F_i\\to F\\}$ 与 $x_i\\in X(F_i)$，使 $p(x_i)=y|_{F_i}$。令 $U=\\coprod_i F_i$，$q:U\\to F$ 为联合映射；覆盖意味着 $q$ 满。把 $x_i$ 拼成 $x\\in X(U)\\cong\\prod_i X(F_i)$，则 $p(x)=q^{*}(y)$。引理 2 给截面 $s:F\\to U$，于是 $x_F:=s^{*}(x)\\in X(F)$ 满足 $p(x_F)=s^{*}q^{*}(y)=y$。所以 $X(F)\\to Y(F)$ 满。\n\n**($\\Leftarrow$)** 设每个自由 $F$ 上 $X(F)\\to Y(F)$ 满。取任意 $S$ 与 $y\\in Y(S)$。由 `prop.chaus-quotient-of-free`，存在满射 $q:\\beta I\\to S$。拉回得 $q^{*}(y)\\in Y(\\beta I)$，假设给 $x\\in X(\\beta I)$ 使 $p(x)=q^{*}(y)$；于是 $q$ 就是一个覆盖、$x$ 是 $y$ 在其上的提升。由引理 1，$p$ 满。\n\n**说明**：证明只用到三件事 —— 层范畴里「满 = 局部可提升」、自由紧 Hausdorff 空间在 $\\mathbf{CHaus}$ 中投射、以及每个紧 Hausdorff 空间都是自由紧 Hausdorff 空间的商。引理 1 的「单 + 满 $\\implies$ 同构」是拓扑斯里的标准事实（单态射是其余核对的等化子，满态射使余核对相等）。$\\mathrm{Cond}$ 的覆盖取有限不交并（`prop.fchaus-pretopology`），故引理 1 中的覆盖确实是有限族。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §4"
    ]
@@ -51907,6 +52026,31 @@
    "refs": [
     "Freyd, Abelian Categories (1964)",
     "Mitchell, The full imbedding theorem (1964)"
+   ]
+  },
+  {
+   "id": "def.module-category",
+   "type": "definition",
+   "label": "模范畴",
+   "title": "模范畴 $A\\text{-}\\mathbf{Mod}$",
+   "region": "algebra",
+   "regions": [
+    "algebra",
+    "homology"
+   ],
+   "cluster": "algebra.structures",
+   "layer": 10,
+   "tags": [
+    "模",
+    "范畴",
+    "阿贝尔范畴",
+    "同调代数"
+   ],
+   "statement": "设 $A$ 是含幺环。**左 $A$-模范畴** $A\\text{-}\\mathbf{Mod}$ 的对象是左 $A$-模，态射是 $A$-线性映射，复合与单位逐点定义。\n\n右 $A$-模构成 $\\mathbf{Mod}\\text{-}A$；$A$ 交换时两者等价。",
+   "notes": "**同调代数的样板间**：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴，有核、余核、单满态射严格；自由模给出足够投射对象，Baer 判据给出足够内射对象，还是 Grothendieck 范畴。\n\n**特例**：$\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$；$k$ 是域时 $k\\text{-}\\mathbf{Mod}$ 就是 $\\mathbf{Vect}_k$。\n\n**Freyd–Mitchell**：小阿贝尔范畴可全忠实、正合地嵌入某个 $A\\text{-}\\mathbf{Mod}$，所以「在模范畴里追元素」是合法的推广。",
+   "refs": [
+    "Lang, Algebra",
+    "Weibel, An Introduction to Homological Algebra, Ch. 1"
    ]
   },
   {
@@ -67069,14 +67213,14 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 17,
+   "layer": 22,
    "tags": [
     "定义",
     "幂级数",
     "初等函数"
    ],
    "statement": "对 $z \\in \\mathbb{C}$，定义\n\n$$\\cos z := \\sum_{k=0}^{\\infty} \\frac{(-1)^{k}}{(2k)!}\\, z^{2k}, \\qquad \\sin z := \\sum_{k=0}^{\\infty} \\frac{(-1)^{k}}{(2k+1)!}\\, z^{2k+1}$$\n\n两个级数对每个 $z$ 都绝对收敛（收敛半径 $+\\infty$），并且\n\n$$\\cos' = -\\sin, \\qquad \\sin' = \\cos, \\qquad \\cos 0 = 1, \\qquad \\sin 0 = 0$$",
-   "notes": "⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。",
+   "notes": "⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。\n\n⭐ 两个级数在全平面收敛的证明见 `imp.trig-series-radius`（Cauchy–Hadamard + 阶乘增长估计）。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 8"
    ]
@@ -67109,7 +67253,7 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 18,
+   "layer": 23,
    "tags": [
     "定义",
     "初等函数"
@@ -67151,7 +67295,7 @@
     "analysis"
    ],
    "cluster": "analysis.uniform",
-   "layer": 18,
+   "layer": 23,
    "tags": [
     "定理",
     "复",
@@ -75043,7 +75187,7 @@
     "thm.weierstrass-convergence"
    ],
    "target": "thm.mittag-leffler",
-   "title": "亚纯函数的定义 $\\implies$ Mittag-Leffler 定理（Runge 构造）",
+   "title": "Runge 定理与 Weierstrass 分解 $\\implies$ Mittag-Leffler",
    "proof": "**证明思路**：把「逐项减修正项」写成紧集穷竭上的估计。细节展开在目标节点 `thm.mittag-leffler` 的注里，这里给出可独立阅读的完整论证与关键估计。\n\n**第一步：穷竭与分层。** 取 $K_n=\\{z\\in\\Omega: |z|\\le n,\\ \\operatorname{dist}(z,\\partial\\Omega)\\ge1/n\\}$（$\\Omega=\\mathbb{C}$ 时取 $\\overline{B}(0,n)$）。则 $K_n$ 紧、$K_n\\subset\\operatorname{int}K_{n+1}$、$\\bigcup K_n=\\Omega$，且每个 $K_n$ 只含有限多个 $a_k$。令 $L_k=\\min\\{n: a_k\\in K_n\\}$、$n_k=L_k-1$（约定 $K_0=\\emptyset$；$L_k=1$ 时 $n_k=0$，$a_k\\notin K_0$ 自动成立），则 $a_k\\notin K_{n_k}$ 且 $n_k\\to\\infty$。⚠️ 不能按 $|a_k|$ 排序：$\\Omega=\\{0<|z|<1\\}$、$a_k=1/(k+1)$ 无聚点但没有模最小的点。\n\n**第二步：补集分支的几何。** $\\mathbb{C}\\setminus K_n$ 的每个有界连通分支都含 $\\partial\\Omega$ 的点：补集含于 $\\{\\operatorname{dist}<1/n\\}\\cup\\{|z|>n\\}$，$\\{|z|>n\\}$ 连通无界，故有界分支落在 $\\{\\operatorname{dist}<1/n\\}$ 里，而它的每个连通分支含某个球心 $w\\in\\partial\\Omega$。\n\n**第三步：用 Runge 造修正项。** 固定 $k$。$P_k(1/(z-a_k))$ 在 $K_{n_k}$ 的邻域全纯。对 $\\mathbb{C}\\setminus K_{n_k}$ 的每个分支取一点：有界分支取 $\\partial\\Omega$ 上的点；无界分支任取一点。由 `thm.runge`（极点可预先指定在 $\\mathbb{C}\\setminus K$ 各分支），存在有理函数 $R_k$，极点在所取的点上，且 $|P_k-R_k|<2^{-k}$ 于 $K_{n_k}$。无界分支的极点可去掉：它的贡献形如 $c/(z-s)^j$，$|s|\\to\\infty$ 时在 $K_{n_k}$ 上一致趋于零。故得 $T_k$，极点在 $\\mathbb{C}\\setminus\\Omega$，$T_k$ 在 $\\Omega$ 全纯，且\n\n$$|P_k-T_k|<2\\cdot 2^{-k}\\qquad(z\\in K_{n_k}).$$\n\n**第四步：级数与主部。** 令 $f=\\sum_k(P_k-T_k)$。在 $K_m$ 上只有有限多个 $k$ 满足 $n_k<m$；其余项由 $K_m\\subset K_{n_k}$ 得 $|P_k-T_k|<2\\cdot2^{-k}$，故级数在 $K_m$ 上一致收敛（Weierstrass 判别法）。在 $a_k$ 处，$T_k$ 与所有 $P_j$（$j\\ne k$）全纯，故 $f-P_k$ 全纯，主部正是 $P_k$。\n\n**第五步：唯一性。** 两个解之差在 $\\Omega$ 上无极点，是整函数。$\\blacksquare$",
    "note": "证明只引用本图的 `thm.runge`（其陈述已包含「极点预先指定」）与紧集穷竭；Runge 本身在图中另有完整证明。目标节点注里有逐步展开，并指出两处常见错误（在 $a_k$ 处取 Taylor 多项式、用多项式在绕 $a_k$ 的圆周上逼近 $1/(z-a_k)$）。"
   },
@@ -76875,12 +77019,45 @@
    "id": "e68.definition",
    "kind": "definition",
    "strength": "strong",
+   "definition": "def.simplicial-complex",
+   "usedBy": "def.barycentric-subdivision",
+   "note": "重心重分是单纯复形上的操作；新顶点是原复形中非空单纯形的重心。"
+  },
+  {
+   "id": "e69.definition",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.barycentric-subdivision",
+   "usedBy": "thm.simplicial-approximation",
+   "note": "单纯逼近定理的第二步是反复重心重分，使网格直径小于 Lebesgue 数。"
+  },
+  {
+   "id": "e70.definition",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.barycentric-subdivision",
+   "usedBy": "thm.mv-homology",
+   "note": "Mayer–Vietoris 的小链论证用重心重分把链细化到覆盖里。"
+  },
+  {
+   "id": "e71.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.standard-simplex",
+   "b": "def.simplex-category",
+   "title": "",
+   "note": "标准单纯形 $\\Delta^{p}$ 与单纯形范畴的对象 $[p]$ 是同一组面/退化数据的两个模型：前者是几何实现，后者是组合索引。单纯复形用前者，单纯对象用后者。"
+  },
+  {
+   "id": "e72.definition",
+   "kind": "definition",
+   "strength": "strong",
    "definition": "def.standard-simplex",
    "usedBy": "def.simplicial-complex",
    "note": "复形里的一个 $p$-单纯形就是「$\\Delta^{p}$ 在仿射无关点集上的线性像」的顶点集；闭包性质 $\\emptyset \\ne \\tau \\subseteq \\sigma$ 对应「取某个面 $d_{i}$」。"
   },
   {
-   "id": "e69.definition",
+   "id": "e73.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.standard-simplex",
@@ -76888,7 +77065,7 @@
    "note": "边缘算子里的 $[v_{0}, \\ldots, \\widehat{v_{i}}, \\ldots, v_{p}]$ 就是「跳过第 $i$ 个顶点」，即把面映射 $d_{i}$ 用在有序顶点上。"
   },
   {
-   "id": "e70.definition",
+   "id": "e74.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.simplicial-complex",
@@ -76896,7 +77073,7 @@
    "note": "单纯映射是**顶点层面**的映射；只要它把每个单纯形送进某个单纯形，$|f|$ 就由线性延拓唯一确定。"
   },
   {
-   "id": "e71.definition",
+   "id": "e75.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.simplicial-complex",
@@ -76904,7 +77081,7 @@
    "note": "链群的基就是 $K$ 的全体 $p$-单纯形——所以「复形是什么」决定了「链群是什么」。"
   },
   {
-   "id": "e72.definition",
+   "id": "e76.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.chain-group",
@@ -76912,7 +77089,7 @@
    "note": "$\\partial_{p} : C_{p}(K) \\to C_{p-1}(K)$ 只在**基**上规定，再线性延拓。这正是自由阿贝尔群的用处：基上的规定自动给出唯一的群同态，不需要任何相容性验证。"
   },
   {
-   "id": "e73.definition",
+   "id": "e77.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.simplicial-boundary",
@@ -76920,7 +77097,7 @@
    "note": "$Z_{p} := \\ker\\partial_{p}$、$B_{p} := \\operatorname{im}\\partial_{p+1}$；$\\partial^{2} = 0$ 保证 $B_{p} \\subseteq Z_{p}$，商群才做得出来。没有 $\\partial^{2} = 0$，同调无定义。"
   },
   {
-   "id": "e74.definition",
+   "id": "e78.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.simplicial-homology",
@@ -76928,7 +77105,7 @@
    "note": "$\\varphi_{*}$ 的定义要用同调群；而它良定义靠 $\\varphi_{\\#}\\partial = \\partial\\varphi_{\\#}$：闭链送闭链、边缘送边缘，故过商这一步不被破坏。"
   },
   {
-   "id": "e75.definition",
+   "id": "e79.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.simplicial-homology",
@@ -76936,7 +77113,7 @@
    "note": "整套定义逐字照搬，只换两处：基从「$p$-单纯形」换成「连续映射 $\\Delta^{p} \\to X$」，边缘从「删顶点」换成「复合 $d_{i}$」。"
   },
   {
-   "id": "e76.definition",
+   "id": "e80.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.singular-homology",
@@ -76944,7 +77121,7 @@
    "note": "约化同调只是在 $S_{0}$ 后面多接一个增广 $\\varepsilon : S_{0} \\to \\mathbb{Z}$；$p \\ge 1$ 的部分与奇异同调完全一致。"
   },
   {
-   "id": "e77.implication",
+   "id": "e81.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -76956,7 +77133,7 @@
    "note": "整条论证只用到「$\\partial$ 作用在一条道路上给出两端之差」这一个事实。"
   },
   {
-   "id": "e78.implication",
+   "id": "e82.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -76968,7 +77145,7 @@
    "note": "关键在于「相对闭链」的定义恰好保证 $\\partial c$ 掉进 $S_{p-1}(A)$ —— 连接同态就是这样被逼出来的。"
   },
   {
-   "id": "e79.definition",
+   "id": "e83.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.exact-sequence",
@@ -76976,7 +77153,7 @@
    "note": "「长正合列」就是 `def.exact-sequence` 意义上的正合：每处 $\\operatorname{im} = \\ker$。⚠️ 这里的链由**同调群**连成，不是链复形本身——正合性说的是这三个映射的像与核相等。"
   },
   {
-   "id": "e80.implication",
+   "id": "e84.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -76988,7 +77165,7 @@
    "note": "⭐ 第二步是全部难点：没有重细分，「局部在 $U$ 或 $V$」与「整体同调等价」之间没有桥。"
   },
   {
-   "id": "e81.implication",
+   "id": "e85.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77001,7 +77178,7 @@
    "note": "这条链子用到了「同伦不变性」（写在 `def.singular-homology` 的陈述里）与 MV 的骨架证明，如实标注。"
   },
   {
-   "id": "e82.implication",
+   "id": "e86.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77014,7 +77191,7 @@
    "note": "「相消」是这条定理的全部内容：边缘群 $b_{p}$ 在相邻两项里符号相反，数得再多也看不见。"
   },
   {
-   "id": "e83.implication",
+   "id": "e87.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77027,7 +77204,7 @@
    "note": "⚠️ 本图未写完整链映射 $S_{*}(|K|)\\to C_{*}(|K|)$ 与两侧链同伦，① 只给梗概；③ 的顶点选择细节见节点注（符号另见 `def.chain-homotopy`）。两处都是本节最容易出错的地方。"
   },
   {
-   "id": "e84.implication",
+   "id": "e88.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77039,7 +77216,7 @@
    "note": "没有这一条，$\\chi$ 只是「某个三角剖分上数单纯形」的结果，换个剖分就可能有别的值。"
   },
   {
-   "id": "e85.analogy",
+   "id": "e89.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.fundamental-group",
@@ -77048,7 +77225,7 @@
    "note": "本图**没有** Hurewicz 定理这个节点，所以这条只能作为**联想线索**记在这里，不当依赖边用。（硬事实：$X$ 道路连通时 $H_{1}(X) \\cong \\pi_{1}(X)^{\\mathrm{ab}}$，即「忘掉非交换性之后两者一致」。）\n\n**相通之处（一句话）**：两者都在数「一维的洞」——一条闭道路若不能缩，它就代表一个非平凡元素；把它当成一条闭 $1$-链看，它非零当且仅当它不是某块 $2$ 链的边界。**同一个圈，两种读法。**\n\n**差别（这才是关键）**：\n- $\\pi_{1}$ 非阿贝尔，记得「先绕 A 再绕 B」与「先绕 B 再绕 A」的区别；$H_{1}$ 是阿贝尔群，一律抹平。所以 $H_{1}$ 便宜得多（有长正合列、有 MV、能用矩阵算），$\\pi_{1}$ 强得多。\n- $H_{1}$ 看得见挠部：$\\mathbb{RP}^{2}$ 的 $\\pi_{1} = \\mathbb{Z}/2$ 而 $H_{1} = \\mathbb{Z}/2$；但环面 $T^{2}$ 的 $\\pi_{1} = \\mathbb{Z}^{2} = H_{1}$，两者在这里完全一样。\n\n**招数上的相通**：两边证「不是零」的手法一模一样 —— 造一个**同态**（$\\pi_{1} \\to \\mathbb{Z}$ 的度数、$H_{1} \\to \\mathbb{Z}$ 的取系数），让候选对象在它下面不为零。`thm.pi1-circle` 用度数，`thm.sphere-homology` 用 MV 把一个类逼出来，本质是同一件事。\n\n💡 卡在「这个圈到底能不能缩」时：先算便宜的 $H_{1}$（能算）；若 $H_{1} = 0$ 而你想推翻，就得回到 $\\pi_{1}$（可能是完美群，$H_{1}$ 看不见）。反过来若 $H_{1} \\ne 0$，$\\pi_{1}$ 必定非平凡，这条捷径几乎每次都值得先试。"
   },
   {
-   "id": "e86.implication",
+   "id": "e90.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77060,7 +77237,7 @@
    "note": "交比之所以值得定义，就是因为它是 $\\operatorname{PGL}(2,\\mathbb{C})$ 下唯一的不变量。"
   },
   {
-   "id": "e87.implication",
+   "id": "e91.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77073,7 +77250,7 @@
    "note": "把「共圆」翻译成「一个复数是不是实数」——这是复数几何的基本动作。"
   },
   {
-   "id": "e88.implication",
+   "id": "e92.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77085,7 +77262,7 @@
    "note": "「三点定变换」既给出存在性，也给了算法。"
   },
   {
-   "id": "e89.implication",
+   "id": "e93.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77098,7 +77275,7 @@
    "note": "「保圆」这条在扩充平面里只有一句话：直线也算圆。"
   },
   {
-   "id": "e90.implication",
+   "id": "e94.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77111,7 +77288,7 @@
    "note": "对称 $\\ne$ 到圆心等距；对称是反演，距离的**乘积**固定。"
   },
   {
-   "id": "e91.implication",
+   "id": "e95.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77124,7 +77301,7 @@
    "note": "造映射时最好用的一条：定几对对称点，变换就被逼出来了。"
   },
   {
-   "id": "e92.implication",
+   "id": "e96.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77136,7 +77313,7 @@
    "note": "群结构解释了「三点定变换」：等号左边的群在扩充平面上是 3-可迁的。"
   },
   {
-   "id": "e93.implication",
+   "id": "e97.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77149,7 +77326,7 @@
    "note": "这一张表是「共形映射」这一章的实用核心。"
   },
   {
-   "id": "e94.implication",
+   "id": "e98.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77162,7 +77339,7 @@
    "note": "代数分类（迹的平方除以行列式）与几何分类（在双曲平面里怎么动）在这里对上。"
   },
   {
-   "id": "e95.implication",
+   "id": "e99.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77175,7 +77352,7 @@
    "note": "S–C 公式 = 反射原理 + 对 $f'$ 的局部形状分析。"
   },
   {
-   "id": "e96.implication",
+   "id": "e100.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77187,7 +77364,7 @@
    "note": "机翼剖面 = 一个过 $z=1$ 的圆在 Joukowski 映射下的像。"
   },
   {
-   "id": "e97.implication",
+   "id": "e101.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77200,7 +77377,7 @@
    "note": "它给 S–C 公式的「$x_{k}$ 对应顶点」提供了合法性。"
   },
   {
-   "id": "e98.implication",
+   "id": "e102.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77212,7 +77389,7 @@
    "note": "补上这一个点之后，「直线」与「圆」、「整函数」与「在 $\\infty$ 处亚纯」都各自合成一类。"
   },
   {
-   "id": "e99.implication",
+   "id": "e103.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77224,7 +77401,7 @@
    "note": "「球面上的圆 $\\to$ 平面上的圆或直线」就是保圆性的来源。"
   },
   {
-   "id": "e100.implication",
+   "id": "e104.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77236,7 +77413,7 @@
    "note": "这条让「$\\infty$ 处的奇点」有了拓扑意义。"
   },
   {
-   "id": "e101.definition",
+   "id": "e105.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.riemann-sphere",
@@ -77244,7 +77421,7 @@
    "note": "分式线性变换的完整定义域是 $\\widehat{\\mathbb{C}}$：在 $z = -d/c$ 处取 $\\infty$，在 $\\infty$ 处取 $a/c$。"
   },
   {
-   "id": "e102.implication",
+   "id": "e106.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77256,7 +77433,7 @@
    "note": "链同伦是「同伦」在纯代数侧的对应物：没有空间可形变，就形变映射本身。"
   },
   {
-   "id": "e103.implication",
+   "id": "e107.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77268,7 +77445,7 @@
    "note": "棱柱算子把「连续形变」翻译成「链同伦」——这就是同伦不变性的全部内容。"
   },
   {
-   "id": "e104.implication",
+   "id": "e108.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77280,7 +77457,7 @@
    "note": "同伦给形变，链同伦给代数：$F$ 就是那根桥。"
   },
   {
-   "id": "e105.implication",
+   "id": "e109.implication",
    "kind": "implication",
    "strength": "strong",
    "sources": [
@@ -77292,7 +77469,7 @@
    "note": "这条补上了子 agent 交付时自己标注的「最薄弱一环」。"
   },
   {
-   "id": "e106.definition",
+   "id": "e110.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.int",
@@ -77300,7 +77477,7 @@
    "note": "整数 $\\mathbb{Z}$ 是整除关系的载体：$a \\mid b$ 的定义直接落在 $\\mathbb{Z}$ 的元素上。"
   },
   {
-   "id": "e107.definition",
+   "id": "e111.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ideal",
@@ -77308,7 +77485,7 @@
    "note": "整除就是主理想的包含：$a \\mid b \\iff (b) \\subseteq (a)$。这条把初等数论与环论对齐。"
   },
   {
-   "id": "e108.definition",
+   "id": "e112.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.divides",
@@ -77316,7 +77493,7 @@
    "note": "带余除法的陈述里直接用了「整除」：$b \\ne 0$，$r < |b|$，而 $a - qb = r$ 就是「$b$ 除 $a$ 的余数」。"
   },
   {
-   "id": "e109.definition",
+   "id": "e113.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.divides",
@@ -77324,7 +77501,7 @@
    "note": "最大公因数的定义是「同时整除 $a$ 与 $b$ 的最大正整数」—— 没有整除就没有公因数。"
   },
   {
-   "id": "e110.definition",
+   "id": "e114.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.divides",
@@ -77332,7 +77509,7 @@
    "note": "素数的定义是「正因数只有 $1$ 与 $p$」，这本身就是用整除写的。"
   },
   {
-   "id": "e111.definition",
+   "id": "e115.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.divides",
@@ -77340,7 +77517,7 @@
    "note": "同余的定义只用一件事：$n \\mid (a-b)$。"
   },
   {
-   "id": "e112.definition",
+   "id": "e116.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.congruence",
@@ -77348,7 +77525,7 @@
    "note": "剩余类环的元素就是同余类，运算是「代表元运算 + 证明良定义」。"
   },
   {
-   "id": "e113.definition",
+   "id": "e117.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.quotient-set",
@@ -77356,7 +77533,7 @@
    "note": "把同余类收成元素，就是取商集：$\\mathbb{Z}/n\\mathbb{Z} = \\mathbb{Z}/{\\sim}$。"
   },
   {
-   "id": "e114.definition",
+   "id": "e118.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ring",
@@ -77364,7 +77541,7 @@
    "note": "$\\mathbb{Z}/n\\mathbb{Z}$ 是环：加法、乘法、单位元全由 $\\mathbb{Z}$ 的运算导出，环公理逐条继承。"
   },
   {
-   "id": "e115.definition",
+   "id": "e119.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.zmodn",
@@ -77372,7 +77549,7 @@
    "note": "中国剩余定理说的是「剩余类环的直积分解」—— 陈述里两个对象都是 $\\mathbb{Z}/n\\mathbb{Z}$。"
   },
   {
-   "id": "e116.definition",
+   "id": "e120.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.zmodn",
@@ -77380,7 +77557,7 @@
    "note": "$\\varphi(n)$ 就是单位群 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 的阶。"
   },
   {
-   "id": "e117.definition",
+   "id": "e121.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.group",
@@ -77388,7 +77565,7 @@
    "note": "单位群是群：Euler 定理的证明只用到「有限群的元素阶整除群阶」。"
   },
   {
-   "id": "e118.definition",
+   "id": "e122.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "thm.lagrange",
@@ -77492,7 +77669,7 @@
    "note": ""
   },
   {
-   "id": "e119.analogy",
+   "id": "e123.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.int-division",
@@ -77501,7 +77678,7 @@
    "note": "两边的证明结构一模一样：$\\mathbb{Z}$ 上按绝对值下降，$K[x]$ 上按次数下降；结论都是「商 + 余，余比除数小」。\n\n\n\n差异只在「小」怎么量：$\\mathbb{Z}$ 是全序，$K[x]$ 只用次数（系数任意）。这也说明为什么两者都叫 **Euclid 整环** —— 有欧几里得函数就够了。\n\n\n\n后续也同步：$\\mathbb{Z}$ 有辗转相除就有 gcd，进而就是 UFD；$K[x]$ 有完全相同的链条（`thm.poly-ufd`）。"
   },
   {
-   "id": "e120.analogy",
+   "id": "e124.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.fundamental-arithmetic",
@@ -77510,7 +77687,7 @@
    "note": "两边的定理一字不差，只把「素数」换成「不可约多项式」、把「绝对值」换成「次数」。\n\n\n\n但 UFD 不是自动的：$\\mathbb{Z}[\\sqrt{-5}]$ 与 $K[x, y]$ 都不是 UFD。反例的形状也一样 —— 同一个元素有两条真分解。"
   },
   {
-   "id": "e121.definition",
+   "id": "e125.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ring",
@@ -77518,7 +77695,7 @@
    "note": "整环是「交换、含幺、无零因子」的环 —— 三个条件全是对 `def.ring` 的追加。"
   },
   {
-   "id": "e122.definition",
+   "id": "e126.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ring",
@@ -77526,7 +77703,7 @@
    "note": "不可约与素都要「可逆元」和「整除」，两者都只在环里才有意义。"
   },
   {
-   "id": "e123.definition",
+   "id": "e127.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.irreducible-element",
@@ -77534,7 +77711,7 @@
    "note": "UFD 的定义直接用「不可约元」与「相伴」：分解的唯一性就是在相伴意义下的唯一性。"
   },
   {
-   "id": "e124.definition",
+   "id": "e128.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.int-domain",
@@ -77542,7 +77719,7 @@
    "note": "UFD 是整环：没有无零因子这个前提，「分解」与「约分」都不成立，唯一性无从谈起。"
   },
   {
-   "id": "e125.definition",
+   "id": "e129.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.int-domain",
@@ -77550,7 +77727,7 @@
    "note": "gcd 整环是整环：「最大公因子」用整除做下界，而无零因子才使整除正常（$0$ 不做因子）。"
   },
   {
-   "id": "e126.definition",
+   "id": "e130.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.int-domain",
@@ -77558,7 +77735,7 @@
    "note": "Euclid 整环是整环，外加一个满足带余除法的欧几里得函数。"
   },
   {
-   "id": "e127.definition",
+   "id": "e131.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.int-domain",
@@ -77566,7 +77743,7 @@
    "note": "Bézout 整环是整环：条件落在「有限生成理想是主理想」上。"
   },
   {
-   "id": "e128.definition",
+   "id": "e132.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ideal",
@@ -77574,7 +77751,7 @@
    "note": "PID 的定义就是「每个理想都是主理想」—— 没有理想这个概念写不出来。"
   },
   {
-   "id": "e129.definition",
+   "id": "e133.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ideal",
@@ -77582,7 +77759,7 @@
    "note": "互素是理想的加法条件：$I + J = A$。"
   },
   {
-   "id": "e130.definition",
+   "id": "e134.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ideal",
@@ -77590,7 +77767,7 @@
    "note": "定理的两个对象 $I, J$ 都是理想，商 $A/I$ 是商环。"
   },
   {
-   "id": "e131.definition",
+   "id": "e135.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "thm.first-iso",
@@ -77598,7 +77775,7 @@
    "note": "同构的存在性直接由第一同构定理给出：核是 $I \\cap J$。"
   },
   {
-   "id": "e132.definition",
+   "id": "e136.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ufd",
@@ -77606,7 +77783,7 @@
    "note": "算术基本定理就是「$\\mathbb{Z}$ 是 UFD」这句话在整数上的展开。"
   },
   {
-   "id": "e133.definition",
+   "id": "e137.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.ufd",
@@ -77614,7 +77791,7 @@
    "note": "$K[x]$ 是 UFD —— 定理本身是在验证这个定义。"
   },
   {
-   "id": "e134.definition",
+   "id": "e138.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.euclidean-domain",
@@ -77670,7 +77847,7 @@
    "note": ""
   },
   {
-   "id": "e135.analogy",
+   "id": "e139.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.crt",
@@ -77679,7 +77856,7 @@
    "note": "两边的陈述结构相同：模数互素 $\\implies$ 商环分解成直积。\n\n\n\n数论版的「$n_{i}$ 两两互素」= 环论版的「理想两两互素 $I_{i} + I_{j} = A$」（因为 $(m) + (n) = (\\gcd(m,n))$）；数论版的 $N = n_{1}\\cdots n_{k}$ = 环论版的 $\\bigcap I_{i}$（互素时等于乘积 $I_{1}\\cdots I_{k}$）。\n\n\n\n差异只在证明工具：数论版用 Bézout 造 $e_{i}$，环论版用「$1 = u + v$」造幂等元 $e$ —— 其实是同一件事。"
   },
   {
-   "id": "e136.analogy",
+   "id": "e140.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.bezout",
@@ -77688,7 +77865,7 @@
    "note": "数论版的 Bézout 说「$\\gcd(a,b)$ 是 $a,b$ 的整系数组合」，这需要 $\\mathbb{Z}$ 的特殊性（Euclid 算法）。\n\n\n\n把它当作**公理式的性质**来定义一个环类，就是 Bézout 整环：每个有限生成理想都是主理想。$\\mathbb{Z}$、$K[x]$ 满足；$\\mathbb{Z}[x]$ 不满足（$\\gcd(2,x)=1$ 却不是线性组合）。\n\n\n\n所以「Bézout」在图里出现两次是对的：一次是 $\\mathbb{Z}$ 上的定理，一次是整环上的类名 —— 后者包含了前者，也包含了 $K[x]$。"
   },
   {
-   "id": "e137.definition",
+   "id": "e141.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "thm.crt",
@@ -77696,7 +77873,7 @@
    "note": "Möbius 函数的积性用中国剩余定理：互素的 $m,n$ 的素因子集不相交，$\\mu(mn) = \\mu(m)\\mu(n)$。"
   },
   {
-   "id": "e138.definition",
+   "id": "e142.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "thm.fundamental-arithmetic",
@@ -77704,7 +77881,7 @@
    "note": "积性函数的「确定方式」直接来自唯一分解：函数值由各素数幂上的值决定。"
   },
   {
-   "id": "e139.definition",
+   "id": "e143.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "thm.fundamental-arithmetic",
@@ -77712,7 +77889,7 @@
    "note": "公式靠唯一分解：$n$ 的因数与「指数向量」一一对应。"
   },
   {
-   "id": "e140.definition",
+   "id": "e144.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.prime",
@@ -77720,7 +77897,7 @@
    "note": "$\\pi(x)$ 数的是素数，$\\theta$、$\\psi$ 按对数给素数加权。"
   },
   {
-   "id": "e141.definition",
+   "id": "e145.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.multiplicative-function",
@@ -77728,7 +77905,7 @@
    "note": "$\\tau$ 与 $\\sigma$ 是积性函数的头两个例子。"
   },
   {
-   "id": "e142.definition",
+   "id": "e146.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.prime-counting",
@@ -77736,7 +77913,7 @@
    "note": "估计的对象就是 $\\pi(x)$；证明里还要用 $\\theta$ 做过渡。"
   },
   {
-   "id": "e143.definition",
+   "id": "e147.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.prime-counting",
@@ -77744,7 +77921,7 @@
    "note": "定理是 $\\pi(x)$ 的渐近式。"
   },
   {
-   "id": "e144.definition",
+   "id": "e148.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.mobius-function",
@@ -77752,7 +77929,7 @@
    "note": "这条恒等式是 $\\mu$ 的定义直接算出来的（按「由互异素因子组成的因数」求和）。"
   },
   {
-   "id": "e145.definition",
+   "id": "e149.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "thm.mu-sum",
@@ -77846,7 +78023,7 @@
    "note": ""
   },
   {
-   "id": "e146.analogy",
+   "id": "e150.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.divisor-function",
@@ -77855,7 +78032,7 @@
    "note": "四个函数都满足 $f(mn) = f(m)f(n)$（互素时），都由「素数幂上的值」决定，公式都是乘积形状。\n\n\n\n差别只在素数幂上的取值：$\\tau(p^{e}) = e+1$（数指数）、$\\sigma(p^{e}) = 1 + p + \\cdots + p^{e}$（等比和）、$\\varphi(p^{e}) = p^{e} - p^{e-1}$（扣除被 $p$ 整除的）、$\\mu(p^{e}) = 0\\ (e\\ge2)$、$-1\\ (e=1)$（只记素因子个数）。\n\n\n\n所以「积性函数」这条定义是四个具体公式的共同外壳 —— 与「张量场是向量场、微分形式、度量的共同外壳」是同一种组织方式。"
   },
   {
-   "id": "e147.definition",
+   "id": "e151.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.congruence",
@@ -77863,7 +78040,7 @@
    "note": "二次剩余的陈述就是同余方程 $x^{2} \\equiv a$ 有没有解。"
   },
   {
-   "id": "e148.definition",
+   "id": "e152.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.quadratic-residue",
@@ -77871,7 +78048,7 @@
    "note": "Legendre 符号把「是不是剩余」编码成 $\\pm 1$。"
   },
   {
-   "id": "e149.definition",
+   "id": "e153.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.legendre-symbol",
@@ -77879,7 +78056,7 @@
    "note": "判别法的结论就是 Legendre 符号的显式公式。"
   },
   {
-   "id": "e150.definition",
+   "id": "e154.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.legendre-symbol",
@@ -77887,7 +78064,7 @@
    "note": "引理给的是 Legendre 符号的另一个算法（数 $\\mu$ 的奇偶）。"
   },
   {
-   "id": "e151.definition",
+   "id": "e155.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.legendre-symbol",
@@ -77895,7 +78072,7 @@
    "note": "互反律说的是两个 Legendre 符号之间的关系。"
   },
   {
-   "id": "e152.definition",
+   "id": "e156.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.jacobi-symbol",
@@ -77903,7 +78080,7 @@
    "note": "计算法则全部是 Jacobi 符号的乘法/移项性质。"
   },
   {
-   "id": "e153.definition",
+   "id": "e157.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.legendre-symbol",
@@ -77911,7 +78088,7 @@
    "note": "Jacobi 符号是把 Legendre 符号按素因子幂乘起来。"
   },
   {
-   "id": "e154.definition",
+   "id": "e158.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.order-mod-n",
@@ -77919,7 +78096,7 @@
    "note": "原根的定义就是「阶等于 $\\varphi(n)$」。"
   },
   {
-   "id": "e155.definition",
+   "id": "e159.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.group",
@@ -77927,7 +78104,7 @@
    "note": "阶就是元素在单位群里的阶 —— 群论概念在模算术里的坐标。"
   },
   {
-   "id": "e156.definition",
+   "id": "e160.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.primitive-root",
@@ -77935,7 +78112,7 @@
    "note": "离散对数以原根为底，唯一性来自「生成元」。"
   },
   {
-   "id": "e157.definition",
+   "id": "e161.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "thm.primitive-root-exists",
@@ -77943,7 +78120,7 @@
    "note": "原根存在，离散对数才有定义。"
   },
   {
-   "id": "e158.definition",
+   "id": "e162.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.multiplicative-function",
@@ -77999,7 +78176,7 @@
    "note": ""
   },
   {
-   "id": "e159.analogy",
+   "id": "e163.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.jacobi-symbol",
@@ -78020,7 +78197,7 @@
    "note": ""
   },
   {
-   "id": "e160.definition",
+   "id": "e164.definition",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.choicefn",
@@ -80251,6 +80428,42 @@
    "note": "定义走 $\\mathbb{Z} \\to K$ 这个环同态，要先有环与理想。"
   },
   {
+   "id": "e165.definition",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.vector-space",
+   "usedBy": "def.convex-set",
+   "note": "凸集是向量空间的子集；凸性只用仿射结构，不用范数。"
+  },
+  {
+   "id": "e166.definition",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.convex-set",
+   "usedBy": "thm.projection-convex",
+   "note": "投影定理的核心假设：凸、闭、非空。"
+  },
+  {
+   "id": "e167.definition",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.star-shaped",
+   "usedBy": "lem.poincare-lemma",
+   "note": "Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。"
+  },
+  {
+   "id": "e168.implication",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.convex-set"
+   ],
+   "target": "def.star-shaped",
+   "title": "凸集 $\\implies$ 星形集",
+   "proof": "设 $C \\ne \\emptyset$ 凸，取 $x_{0} \\in C$。对任意 $x \\in C$、$t \\in [0,1]$，由凸性 $(1-t)x_{0} + tx \\in C$。\n这正是星形集关于 $x_{0}$ 的定义，故 $C$ 是星形集。∎",
+   "note": "逆命题不成立：十字形星形但不凸。"
+  },
+  {
    "id": "dep.cc-hom",
    "kind": "definition",
    "strength": "strong",
@@ -81774,7 +81987,7 @@
    "note": "线性同构 = 双射的线性映射；两端的结构就是向量空间结构。"
   },
   {
-   "id": "e161.analogy",
+   "id": "e169.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.first-iso",
@@ -81783,7 +81996,7 @@
    "note": "两个节点一个说「群同态 $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$」，一个说「线性映射 $V/\\ker T \\cong \\operatorname{im} T$」。\n\n**谁也没推出谁**（群不是向量空间、向量空间加法群也不决定标量乘法），但证明**逐字一样**：良定义 $\\to$ 同态（线性）$\\to$ 双射。群版那条的注已经把这件事写明了：「它其实是『集合 + 运算 + 公理』这套格式的通用定理，不是群的专利」。\n\n⭐ 所以这条只能当**类比**：想要真正的一次性说法，得有「阿贝尔范畴里的第一同构定理」那个节点。"
   },
   {
-   "id": "e162.analogy",
+   "id": "e170.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.mayer-vietoris",
@@ -81792,7 +82005,7 @@
    "note": "同一条长正合列，一个在 de Rham 上同调（`thm.mayer-vietoris`，微分几何侧），一个在奇异同调（`thm.mv-homology`，代数拓扑侧）。\n\n⚠ 两边此前**都是叶子**：几何侧不知道拓扑侧已经有同一条列，反之亦然。本图尚未收「奇异上同调 = de Rham」那座桥（de Rham 定理只在光滑流形上），所以这里只记类比。"
   },
   {
-   "id": "e163.analogy",
+   "id": "e171.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.riesz-representation-lp",
@@ -81813,7 +82026,7 @@
    "note": ""
   },
   {
-   "id": "e164.analogy",
+   "id": "e172.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.taylor",
@@ -81874,7 +82087,7 @@
    "note": ""
   },
   {
-   "id": "e165.analogy",
+   "id": "e173.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.compactness",
@@ -81883,7 +82096,7 @@
    "note": "名字撞车，机制不同：拓扑的紧是**开覆盖**的有限性，逻辑的紧是**有限可满足**推出整体可满足。\n\n⚠ 但两者不是毫无关系：用 Stone 空间（`def.stone-space`），命题逻辑的紧致性可以从「$\\{0,1\\}^{\\text{公式集}}$ 紧」推出来 —— 本图没有把这条路径做成节点，所以这里只记类比。\n\n⛔ 不能做成 definition：已有的 `def.compact → … → def.formula` 路径意味着反向接线会成环。"
   },
   {
-   "id": "e166.analogy",
+   "id": "e174.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.compactness",
@@ -81892,7 +82105,7 @@
    "note": "两条都在说「**局部/有限**的都行 $\\implies$ 整体也行」：\n\nTychonoff 是每个坐标空间的紧性拼出乘积空间的紧性；紧致性定理是每个有限子集有模型拼出整体有模型。\n\n在 Boolean 代数 / Stone 对偶下它们确实相通（命题逻辑的紧致性可由 Cantor 空间紧得出），但那需要把 Stone 表示对偶做到逻辑层 —— 本图还没做，所以只记类比。"
   },
   {
-   "id": "e167.analogy",
+   "id": "e175.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.provability",
@@ -81933,7 +82146,7 @@
    "note": "「$g$ 就是几个环面的连通和」这个直觉要靠连通和才说得出来；但那件事本身是**定理**（分类定理，下一刀），定义里不用它。"
   },
   {
-   "id": "e168.analogy",
+   "id": "e176.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.genus",
@@ -82094,7 +82307,7 @@
    "note": "不同胚性用 $\\chi$ 作不变量（$\\chi$ 在同胚下不变）。⚠ 这条用的是**定理**当原理：`thm.euler-characteristic` 说「数单纯形 = 数 Betti 数」，正好给出 $\\chi$ 的组合与同调两种算法。"
   },
   {
-   "id": "e169.analogy",
+   "id": "e177.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.closed-surface",
@@ -82439,7 +82652,7 @@
    "note": "$S_{5}$ 不可解（$A_{5}$ 单且非交换）—— 图里那句孤立的话，现在终于有下游了。"
   },
   {
-   "id": "e170.analogy",
+   "id": "e178.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.galois-group",
@@ -82544,7 +82757,7 @@
    "note": "可分性是**代数扩张**的性质（超越扩张上「极小多项式」都无从谈起）。"
   },
   {
-   "id": "e171.analogy",
+   "id": "e179.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.minimal-poly",
@@ -82553,7 +82766,7 @@
    "note": "写法**一模一样**：取 $\\{\\, p : p(\\text{对象}) = 0 \\,\\}$，验证它是 $K[x]$ 的**非零理想**，再由 $K[x]$ 是主理想整环取**首一生成元**。\n\n- 算子的（`def.minimal-poly`）：对象是线性算子 $T$，非零理由来自 Cayley–Hamilton（$\\chi_{T}$ 零化 $T$）；\n\n- 元素的（`def.algebraic-element`）：对象是扩域里的 $\\alpha$，非零理由来自「代数」这个前提本身。\n\n⚠ 别混：$\\mu_{T}$ 的**次数**刻画算子的可对角化性；$m_{\\alpha}$ 的**次数**是 $[F(\\alpha):F]$。同一个名字、同一套论证、完全不同的用途 —— 这类同名不同物只能用类比边，不能连依赖。"
   },
   {
-   "id": "e172.analogy",
+   "id": "e180.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.galois-group",
@@ -82754,7 +82967,7 @@
    "note": "球面是连通和的**单位元**（$S^{2}\\# M \\cong M$）—— 这句话要用连通和才说得出来，所以这个例子的说明依赖连通和。"
   },
   {
-   "id": "e173.analogy",
+   "id": "e181.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.closed-surface",
@@ -82763,7 +82976,7 @@
    "note": "**同名不同物**，这正是审计 B2 点出的那件事：\n\n- `def.regular-surface` 说的是「$U \\subseteq \\mathbb{R}^{2}$ 经 $r$ 打到 $\\mathbb{R}^{3}$ 的像」，自带**嵌入、度量、曲率**；\n\n- 本节点只说「紧、连通、无边界、局部同胚于 $\\mathbb{R}^{2}$」，**没有任何外部空间**。\n\n所以「球面」在两边指的不是一回事：一边是 $\\mathbb{R}^{3}$ 里的单位球面（有面积、有 Gauss 曲率），一边是抽象的 $S^{2}$（只有拓扑）。\n\n⛔ 不能连 definition/implication：一边嵌在 $\\mathbb{R}^{3}$ 里、一边不嵌，没有谁是谁的前提。"
   },
   {
-   "id": "e174.analogy",
+   "id": "e182.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.closed-surface",
@@ -82772,7 +82985,7 @@
    "note": "**同名不同物**，而且维数说法都不一样：\n\n- 拓扑曲面是**实 2 维**（局部同胚于 $\\mathbb{R}^{2}$）；\n\n- Riemann 曲面是**复 1 维**（局部双全纯于 $\\mathbb{C}$ 的开集），它额外带一个**复结构**。\n\n⭐ 每个 Riemann 曲面都是拓扑曲面（忘记复结构即可），但反过来不成立 —— 球面恰好只有**一个**复结构（Riemann 映射定理的推论），环面却有一整族（模空间）。这条差别正是「复结构是额外数据」的体现。\n\n⛔ 不能连 implication：本图的 Riemann 曲面是从「一维复流形」定义的，而闭曲面是从拓扑定义的，两边的前提不同（真要连得先有「忘记复结构」这个函子）。"
   },
   {
-   "id": "e175.analogy",
+   "id": "e183.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "thm.classification-surfaces",
@@ -82781,7 +82994,7 @@
    "note": "一边是**纯拓扑**的分类（闭曲面由 $g$ 或 $k$ 决定，等价地由 $\\chi$ 与可定向性决定），一边是**几何**的等式（$\\int_{M} K\\,\\mathrm{d}A = 2\\pi\\chi(M)$）。\n\n把两者拼起来就得到微分几何里最有名的一句：**曲率的总量只由亏格决定** ——\n\n\n\n$$\\int_{M} K\\,\\mathrm{d}A = 4\\pi(1-g).$$\n\n\n\n球面（$g=0$）必须是 $4\\pi$，环面（$g=1$）必须是 $0$ —— 无论怎么把环面捏变形，只要不同胚就改不了。\n\n⚠ 本图**没有**那条「组合」命题（$\\int K = 4\\pi(1-g)$）的节点，所以这里只连类比；⛔ 也不连 implication：分类定理不推出 Gauss–Bonnet（后者要度量）。"
   },
   {
-   "id": "e176.analogy",
+   "id": "e184.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "prop.eulerchar-nonorientable",
@@ -83046,7 +83259,7 @@
    "note": "「每个向量空间都有基」的主语就是向量空间（而且证明要用 Zorn，见那条边）。"
   },
   {
-   "id": "e177.analogy",
+   "id": "e185.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.subspace",
@@ -84151,7 +84364,7 @@
    "note": "$\\mathbb{R}$ 是**完备有序域**：这里的完备是**序完备**（有上确界），它与「度量完备」（Cauchy 列收敛）在 $\\mathbb{R}$ 上等价 —— 但那要一条定理，不是定义。⚠ 两个「完备」不是同一个概念，只是在这条线上恰好重合。"
   },
   {
-   "id": "e178.analogy",
+   "id": "e186.analogy",
    "kind": "analogy",
    "strength": "weak",
    "a": "def.complete",
@@ -85840,6 +86053,47 @@
    "note": "替换公理模式把 $A$ 中每个 $x$ 在公式 $\\varphi (x, y, p)$ 下的像收集起来 —— 这一步做的就是**代入**。"
   },
   {
+   "id": "def-link.category-groups",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.category-of-groups",
+   "note": "群范畴就是「对象为群、态射为群同态」的范畴，是 def.category 的标准例子。"
+  },
+  {
+   "id": "def-link.group-groups",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.group",
+   "usedBy": "def.category-of-groups",
+   "note": "群范畴的对象类正是全体群。"
+  },
+  {
+   "id": "def-link.category-abelian-groups",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.category-of-abelian-groups",
+   "note": "阿贝尔群范畴是另一个标准例子；它还是 def.category-of-groups 的全子范畴。"
+  },
+  {
+   "id": "def-link.group-abelian-groups",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.group",
+   "usedBy": "def.category-of-abelian-groups",
+   "note": "阿贝尔群是群的特例，对象类取 def.group 中交换的那些。"
+  },
+  {
+   "id": "analogy.grp-ab",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.category-of-groups",
+   "b": "def.category-of-abelian-groups",
+   "title": "",
+   "note": "Ab 是 Grp 的全子范畴；把群运算再加交换律就得到阿贝尔群。"
+  },
+  {
    "id": "def-link.gu-universe",
    "kind": "definition",
    "strength": "strong",
@@ -86184,13 +86438,13 @@
    "strength": "strong",
    "sources": [
     "def.sheaf",
-    "prop.cond-projectives",
-    "def.free-presentation"
+    "prop.free-projective",
+    "prop.chaus-quotient-of-free"
    ],
    "target": "prop.cond-epi",
    "title": "满态射在自由空间上逐点检验",
-   "proof": "**（$\\Longleftarrow$）** 显然：若每个 $X(F) \\to Y(F)$ 都满，则层之间的这个态射在每个自由对象上满，由「生成元集判定满态射」的一般道理即得它在 $\\mathrm{Cond}$ 里是满态射。∎\n\n**（$\\Longrightarrow$）** 设 $p : X \\to Y$ 是满态射，先证它「局部满」。取**像**\n\n$$\\operatorname{Im}(p)(S) := \\{\\, y \\in Y(S) \\ :\\ \\exists \\text{ 覆盖 } (S_{i} \\to S),\\ \\exists x \\in X(S_{i}),\\ p(x) = y|_{S_{i}} \\,\\}$$\n\n它是 $Y$ 的一个子层。由定义，$p$ 的每个值都落在 $\\operatorname{Im}(p)$ 里，即 $\\operatorname{Im}(p) \\hookrightarrow Y$ 是满态射；而它同时是单态射，故（层里单满即同构）$\\operatorname{Im}(p) = Y$。也就是说：**$p$ 局部满**。\n\n现在取 $F \\in \\mathbf{FCHaus}$ 与 $y \\in Y(F)$。\n\n由局部满，存在 $F$ 的覆盖，在其每一块 $F_{i}$ 上有 $x_{i} \\in X(F_{i})$ 使 $p(x_{i}) = y|_{F_{i}}$。\n\n$\\mathbf{FCHaus}$ 上的覆盖由**有限不交并**给出，而 $F$ 是自由的、余积在它上面就是无交并，所以可以直接把有限块上的 $x_{i}$ 拼起来（这正是「保有限积」那一条）：\n\n$$x := (x_{i})_{i} \\in \\prod_{i} X(F_{i}) \\;\\cong\\; X\\Bigl(\\coprod_{i} F_{i}\\Bigr) \\;=\\; X(F)$$\n\n并且 $p(x) = y$。所以 $X(F) \\to Y(F)$ 是满射。∎",
-   "note": "「满 = 局部满 = 局部可提升」是层论里的通用逻辑；而 $\\mathbf{FCHaus}$ 上的覆盖是**有限不交并**，所以局部终于能拼成整体 —— 这就是为什么探针只需要自由对象。"
+   "proof": "**约定**：$\\mathrm{Cond}$ 是 $\\mathbf{CHaus}$ 上的层，覆盖取有限联合满射族。$p:X\\to Y$ 表示凝聚态集的态射。\n\n**引理（满 = 局部可提升）** 在层范畴中，$p$ 满 $\\iff$ 每个 $y\\in Y(S)$ 都有覆盖 $\\{S_i\\to S\\}$ 与 $x_i\\in X(S_i)$ 使 $p(x_i)=y|_{S_i}$。($\\Leftarrow$) 用层的局部性：若 $g p=h p$，则逐块 $g(y)=h(y)$。($\\implies$) 取 $\\operatorname{Im}(p)$ 为「局部可提升的 $y$」所成预层的层化；$p$ 经 $X\\to\\operatorname{Im}(p)\\hookrightarrow Y$ 分解，第二支是单的；$p$ 满迫使它满，而拓扑斯中单 + 满为同构，故 $\\operatorname{Im}(p)=Y$。\n\n**($\\Leftarrow$)** 设每个自由 $F$ 上 $X(F)\\to Y(F)$ 满。取 $y\\in Y(S)$，由 `prop.chaus-quotient-of-free` 取满射 $q:\\beta I\\to S$。假设给 $x\\in X(\\beta I)$ 使 $p(x)=q^{*}(y)$；则 $q$ 是覆盖、$x$ 是 $y$ 的提升，引理给出 $p$ 满。\n\n**($\\implies$)** 设 $p$ 满，取 $F=\\beta I$ 与 $y\\in Y(F)$。引理给有限覆盖 $\\{u_i:F_i\\to F\\}$ 与 $x_i\\in X(F_i)$。令 $U=\\coprod_i F_i$，$q:U\\to F$ 为联合映射（满）。把 $x_i$ 拼成 $x\\in X(U)\\cong\\prod_i X(F_i)$，则 $p(x)=q^{*}(y)$。由 `prop.free-projective`，$\\beta I$ 在 $\\mathbf{CHaus}$ 中对满射投射，故 $q$ 有截面 $s:F\\to U$。令 $x_F=s^{*}(x)\\in X(F)$，则 $p(x_F)=s^{*}q^{*}(y)=y$。于是 $X(F)\\to Y(F)$ 满。∎\n\n**注意**：不能把 $X(\\coprod_i F_i)$ 直接当成 $X(F)$ —— 覆盖的联合映射一般不是同构，它只满。缺的那一步正是自由空间的投射性（引理 2），不是「有限不交并等于原空间」。",
+   "note": "「满 = 局部满 = 局部可提升」是层论里的通用逻辑；而自由紧 Hausdorff 空间在 $\\mathbf{CHaus}$ 中投射，所以有限覆盖上的提升可以沿截面拉回成整个 $F$ 上的提升 —— 这就是为什么探针只需要自由对象。"
   },
   {
    "id": "imp.top-cond-adjoint",
@@ -86232,6 +86486,31 @@
    "title": "短正合列 $\\implies$ 长正合列",
    "proof": "设 $0 \\to K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\to 0$ 是复形的短正合列。\n\n**第一步：短正合列给出导出三角。** 考虑 $f$ 的映射锥的含入 $L \\to M(f)$。由 $g \\circ f = 0$ 与短正合列的泛性质，有一条自然映射\n\n$$M(f) \\longrightarrow M, \\qquad (k^{n+1}, l^{n}) \\mapsto g^{n}(l^{n})$$\n\n它是复形态射（与微分交换，因为 $g \\circ d_{L} = d_{M} \\circ g$ 且 $g \\circ f = 0$）。由短正合列上逐项的正合性（五引理），这条映射是**拟同构**，于是三角\n\n$$K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ \\delta\\ } K[1]$$\n\n在 $\\mathbf{K}(\\mathcal{A})$ 中是**导出的**。∎\n\n**第二步：旋转并取同调。** 把上一步的三角反复旋转，得到一族导出三角\n\n$$K[n] \\to L[n] \\to M[n] \\to K[n+1], \\qquad (n \\in \\mathbb{Z})$$\n\n对每个这样的三角作用同调函子 $H^{0}$：因为 $H^{0}$ 是上同调函子，序列\n\n$$H^{0}(K[n]) \\to H^{0}(L[n]) \\to H^{0}(M[n])$$\n\n正合，而 $H^{0}(K[n]) = H^{n}(K)$（位移的性质）。把这些正合的三项片段在连接同态 $\\delta$ 处首尾相接，就得到长正合列\n\n$$\\cdots \\to H^{n}(K) \\to H^{n}(L) \\to H^{n}(M) \\xrightarrow{\\ \\delta\\ } H^{n+1}(K) \\to \\cdots$$\n\n∎\n\n**连接同态 $\\delta$ 是从哪来的。** 它就是三角里的第三条腿 $M \\to K[1]$ 取同调之后的样子：一个 $H^{n}(M) \\to H^{n+1}(K)$ 的映射，把「$M$ 里的元素」送上「$K$ 的下一个同调」。它之所以存在，唯一的原因就是**映射锥给了第三条腿** —— 短正合列本身只给出前两条腿。∎",
    "note": "经典证明用蛇引理，这里用映射锥 + 旋转。两条路都通，但后者的好处是：**连接同态是什么**这件事，一眼就能看出来。"
+  },
+  {
+   "id": "def-link.category-module-category",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.module-category",
+   "note": "模范畴是「对象为模、态射为模同态」的范畴，是 def.category 在代数里的标准例子。"
+  },
+  {
+   "id": "def-link.module-module-category",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.module",
+   "usedBy": "def.module-category",
+   "note": "模范畴的对象类正是全体左 A-模。"
+  },
+  {
+   "id": "analogy.module-category-abelian",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.module-category",
+   "b": "def.category-of-abelian-groups",
+   "title": "",
+   "note": "Z-Mod 与 Ab 等价：整系数模就是阿贝尔群，这是模范畴与阿贝尔群范畴的共同特例。"
   },
   {
    "id": "def-link.kernel-eq",
@@ -95610,6 +95889,18 @@
    "note": "「$(1-x)\\sum s_n x^{n}$」这个改写把 $\\{s_n\\}$ 的**收敛性**变成了权重 $(1-x)x^{n}$ 的**平均** —— 权重之和恰为 $1$，所以极限读起来就是「$s_n$ 的加权平均趋于 $s$」。"
   },
   {
+   "id": "imp.trig-series-radius",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.convergence-radius"
+   ],
+   "target": "def.trig-function",
+   "title": "Cauchy–Hadamard 公式 $\\implies$ sin/cos 的收敛半径为 $+\\infty$",
+   "proof": "只对 $\\cos$ 写；$\\sin$ 的系数是 $1/(2k+1)!$，估计完全相同。\n$\\cos z$ 的系数为 $a_{2k} = (-1)^{k}/(2k)!$，其余 $a_n = 0$。对 $n = 2k$，由 $(2k)! = \\prod_{j=1}^{2k} j \\ge (k+1)^{k}$（后 $k$ 个因子每个至少为 $k+1$）得\n$$|a_{2k}|^{1/(2k)} = ((2k)!)^{-1/(2k)} \\le (k+1)^{-1/2} \\to 0.$$\n故 $\\limsup_{n} |a_n|^{1/n} = 0$，由 Cauchy–Hadamard 公式得 $R = 1/0 = +\\infty$。对 $\\sin$ 用 $(2k+1)! \\ge (k+1)^{k+1}$ 同法；结论是这两个级数在整个复平面上绝对收敛。∎",
+   "note": "这里只需要系数估计，不需要复变函数理论；$\\cos$ 与 $\\sin$ 因此都是整函数。"
+  },
+  {
    "id": "imp.euler-formula",
    "kind": "implication",
    "strength": "strong",
@@ -97069,7 +97360,7 @@
   {
    "a": "algebra.structures",
    "b": "cat.basic",
-   "count": 2,
+   "count": 6,
    "label": "",
    "explicit": false
   },

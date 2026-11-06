@@ -186,10 +186,91 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。',
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
+    },
+
+    /* -------------------------------------------------------- 群范畴 */
+    {
+      id: 'def.category-of-groups',
+      cluster: 'cat.basic',
+      type: 'definition',
+      label: '群范畴',
+      title: '群范畴 $\\mathbf{Grp}$',
+      regions: ['category', 'algebra'],
+      tags: ['范畴论', '群', '群同态'],
+      statement: [
+        '**群范畴** $\\mathbf{Grp}$：对象是群，态射是群同态，复合是映射复合，单位是恒等同态。',
+        '',
+        '它有**遗忘函子** $\\mathbf{Grp}\\to\\mathbf{Set}$；交换群构成全子范畴 $\\mathbf{Ab}$，有限群构成全子范畴 $\\mathbf{FinGrp}$。'
+      ].join('\n'),
+      notes: [
+        '**不是阿贝尔范畴**：$\\hom_{\\mathbf{Grp}}(G,H)$ 一般没有群结构（不能逐点相加），所以不能像 $A\\text{-}\\mathbf{Mod}$ 那样做同调代数。',
+        '**单态射 = 单同态**，**满态射 = 满同态**。积是直积，余积是自由积；零对象只有平凡群，所以 $\\mathbf{Grp}$ 不是加性范畴。',
+        '笛卡尔积给出对称幺半结构，单位元是平凡群；但它不是笛卡尔闭的（$\\hom(G,H)$ 一般不能自然成为群）。'
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. I, II']
+    },
+
+    /* -------------------------------------------------------- 阿贝尔群范畴 */
+    {
+      id: 'def.category-of-abelian-groups',
+      cluster: 'cat.basic',
+      type: 'definition',
+      label: '阿贝尔群范畴',
+      title: '阿贝尔群范畴 $\\mathbf{Ab}$',
+      regions: ['category', 'algebra'],
+      tags: ['范畴论', '阿贝尔群', '阿贝尔范畴'],
+      statement: [
+        '**阿贝尔群范畴** $\\mathbf{Ab}$：对象是阿贝尔群，态射是群同态；它是 $\\mathbf{Grp}$ 的**全子范畴**。',
+        '',
+        '遗忘函子 $\\mathbf{Ab}\\to\\mathbf{Set}$ 把阿贝尔群送到其底层集合；$\\mathbb Z\\text{-}\\mathbf{Mod}$ 与 $\\mathbf{Ab}$ 等价。'
+      ].join('\n'),
+      notes: [
+        '**阿贝尔范畴的原型**：有核、余核，单/满态射都严格；$\\hom(A,B)$ 逐点加法构成阿贝尔群。',
+        '**足够投射/内射对象**：自由阿贝尔群投射；$\\mathbb Q/\\mathbb Z$ 给出内射余生成元，每个阿贝尔群都能嵌入内射群。',
+        '**张量积**给出对称幺半结构，单位元是 $\\mathbb Z$；$\\hom(A,B)$ 又是阿贝尔群，所以 $\\mathbf{Ab}$ 还是对称幺半闭的。',
+        '与 $A\\text{-}\\mathbf{Mod}$ 的关系：$\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$，这是「模」统一「阿贝尔群」的最基本例子。'
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. I, II', 'Weibel, An Introduction to Homological Algebra, Ch. 1']
     }
   ],
 
   edges: [
+
+    {
+      id: 'def-link.category-groups',
+      kind: 'definition',
+      definition: 'def.category',
+      usedBy: 'def.category-of-groups',
+      note: '群范畴就是「对象为群、态射为群同态」的范畴，是 def.category 的标准例子。'
+    },
+    {
+      id: 'def-link.group-groups',
+      kind: 'definition',
+      definition: 'def.group',
+      usedBy: 'def.category-of-groups',
+      note: '群范畴的对象类正是全体群。'
+    },
+    {
+      id: 'def-link.category-abelian-groups',
+      kind: 'definition',
+      definition: 'def.category',
+      usedBy: 'def.category-of-abelian-groups',
+      note: '阿贝尔群范畴是另一个标准例子；它还是 def.category-of-groups 的全子范畴。'
+    },
+    {
+      id: 'def-link.group-abelian-groups',
+      kind: 'definition',
+      definition: 'def.group',
+      usedBy: 'def.category-of-abelian-groups',
+      note: '阿贝尔群是群的特例，对象类取 def.group 中交换的那些。'
+    },
+    {
+      id: 'analogy.grp-ab',
+      kind: 'analogy',
+      a: 'def.category-of-groups',
+      b: 'def.category-of-abelian-groups',
+      note: 'Ab 是 Grp 的全子范畴；把群运算再加交换律就得到阿贝尔群。'
+    },
 
     /* ------------------------------------------------------- 宇宙公理 */
     /* 「宇宙」这个定义是公理陈述的前提：不先知道那四条封闭性，

@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1540 节点 / 3170 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1546 节点 / 3187 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -9,7 +9,7 @@
 
 ⚠️ 第二节会误报（「顺嘴提一句」也算），所以只列出来给人看，不做断言。
 
-## 一、提到了但没有节点（15 个）
+## 一、提到了但没有节点（16 个）
 
 ### 单位圆　出现 29 次
 `thm.integral-trig` · `thm.euler-formula` · `def.normal-curvature` · `def.principal-curvature` · `thm.rodrigues` · `thm.max-modulus` 等 25 个节点
@@ -44,8 +44,8 @@
 ### 解析数论　出现 2 次
 `thm.euclid-infinite-primes` · `thm.euler-product`
 
-### 一阶逻辑的完备性　出现 2 次
-`thm.completeness-first-order` · `def.satisfaction`
+### 命题逻辑　出现 2 次
+`thm.completeness-first-order`
 
 ### 幂函数　出现 1 次
 `def.logarithm-branch`
@@ -53,12 +53,17 @@
 ### 黎曼猜想　出现 1 次
 `def.riemann-zeta`
 
+### 一阶逻辑的完备性　出现 1 次
+`def.satisfaction`
+
 ### Hodge 理论　出现 1 次
 `thm.divergence-theorem`
 
-## 二、陈述用到更深的定义却没有边（0 处）
+## 二、陈述用到更深的定义却没有边（3 处）
 
-（没有）
+- `def.module-category`（模范畴 · L10）用到 `def.linear-map`（线性映射 · L12）　落差 2
+- `def.category-of-groups`（群范畴 · L8）用到 `def.subcategory`（子范畴 · L8）
+- `def.category-of-abelian-groups`（阿贝尔群范畴 · L8）用到 `def.subcategory`（子范畴 · L8）
 
 ## 二·补　白名单里的（39 条，已判「不是缺边」）
 
@@ -106,6 +111,6 @@
 
 ⚠️ **过期白名单 2 条**（对应的缺口已经不存在了：改了陈述或加了边）—— 该清：`def.bundle-section>def.differential-form` · `def.injective-dimension>def.projective-dimension`
 
-## 三、候选词表里从没被提到的（21 个）
+## 三、候选词表里从没被提到的（20 个）
 
-换底公式 · 自然对数 · 反正弦 · 反三角函数 · zeta 函数 · ζ 函数 · 狄利克雷级数 · 模形式 · 求根公式 · 尺规作图 · 命题逻辑 · Riesz–Markov · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理
+换底公式 · 自然对数 · 反正弦 · 反三角函数 · zeta 函数 · ζ 函数 · 狄利克雷级数 · 模形式 · 求根公式 · 尺规作图 · Riesz–Markov · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理

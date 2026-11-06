@@ -15,23 +15,23 @@
 - **29 / 32** `def.adjoint` 伴随函子 · layer 9 · 伴随与反射
 - **29 / 32** `def.compact` 紧 · layer 16 · 拓扑空间的基本语汇
 - **29 / 29** `def.topology` 拓扑空间与开集 · layer 4 · 拓扑空间的基本语汇
-- **27 / 27** `def.group` 群 · layer 7 · 代数结构
+- **29 / 29** `def.group` 群 · layer 7 · 代数结构
 - **25 / 28** `def.sheaf` 层 · layer 15 · 层与拓扑
 - **24 / 24** `def.function` 映射 · layer 5 · 关系与函数
 - **23 / 23** `def.condensed-abelian-group` 凝聚态阿贝尔群 · layer 19 · 凝聚态阿贝尔群
 - **22 / 22** `def.functor` 函子 · layer 8 · 函子与自然变换
 - **21 / 22** `def.chaus` 紧 Hausdorff 空间范畴 · layer 17 · 紧 Hausdorff 空间
 - **21 / 21** `def.subset` 子集 · layer 1 · 集合的构造
+- **21 / 21** `def.category` 范畴 · layer 7 · 范畴与图
 - **20 / 21** `def.projective-object` 投射 / 内射对象 · layer 14 · 紧 Hausdorff 空间
 - **20 / 21** `def.topos` 拓扑斯 · layer 17 · 拓扑斯
 - **20 / 21** `def.condensed-set` 凝聚态集 · layer 18 · 凝聚态集
 - **20 / 20** `def.abs` 绝对值 |x| · layer 10 · 实数的运算与不等式
 - **19 / 20** `def.integrable` 可积 / L¹ · layer 21 · 积分
-- **18 / 18** `def.category` 范畴 · layer 7 · 范畴与图
 - **18 / 18** `def.cochain-complex` 上链复形 · layer 11 · 复形与导出三角
 - **18 / 18** `def.sheaf-cohomology` 层上同调 · layer 17 · 层上同调
 
-（共 951 个节点有非零计数；这里列前 20 条。）
+（共 955 个节点有非零计数；这里列前 20 条。）
 
 ## 综合结论榜
 
@@ -58,14 +58,14 @@
 - **5 / 6** `def.tensor-field` 张量场 · layer 23 · 向量场与 Lie 结构
 - **5 / 6** `thm.de-rham` de Rham 定理 · layer 31 · 微分形式、积分与 de Rham
 
-（共 1533 个节点有非零计数；这里列前 20 条。）
+（共 1539 个节点有非零计数；这里列前 20 条。）
 
 ## 跨领域连接榜
 
 下游节点横跨的星团最多 —— 位置枢纽，但**不**代表该先学。
 
+- **16 团 / 29 节点** `def.group` 群 · layer 7 · 代数结构
 - **16 团 / 24 节点** `def.function` 映射 · layer 5 · 关系与函数
-- **15 团 / 27 节点** `def.group` 群 · layer 7 · 代数结构
 - **14 团 / 29 节点** `def.topology` 拓扑空间与开集 · layer 4 · 拓扑空间的基本语汇
 - **14 团 / 29 节点** `def.compact` 紧 · layer 16 · 拓扑空间的基本语汇
 - **13 团 / 20 节点** `def.projective-object` 投射 / 内射对象 · layer 14 · 紧 Hausdorff 空间
@@ -79,11 +79,11 @@
 - **10 团 / 15 节点** `def.vs` 线性无关与基 · layer 11 · 向量空间与基
 - **9 团 / 30 节点** `def.measure` 测度 · layer 15 · 测度的构造
 - **9 团 / 22 节点** `def.functor` 函子 · layer 8 · 函子与自然变换
+- **9 团 / 21 节点** `def.category` 范畴 · layer 7 · 范畴与图
 - **9 团 / 17 节点** `def.ring` 环 · layer 8 · 代数结构
 - **9 团 / 17 节点** `def.inner-product` 内积 · layer 14 · 内积空间与正交性
 - **9 团 / 13 节点** `def.continuous-map` 连续映射 · layer 5 · 拓扑空间的基本语汇
 - **8 团 / 21 节点** `def.chaus` 紧 Hausdorff 空间范畴 · layer 17 · 紧 Hausdorff 空间
-- **8 团 / 19 节点** `def.integrable` 可积 / L¹ · layer 21 · 积分
 
-（共 951 个节点有非零计数；这里列前 20 条。）
+（共 955 个节点有非零计数；这里列前 20 条。）
 

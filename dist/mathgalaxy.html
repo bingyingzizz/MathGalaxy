@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1540 nodes, 3170 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1546 nodes, 3187 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1540 nodes, 3170 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1546 nodes, 3187 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -29814,10 +29814,91 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。',
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
+    },
+
+    /* -------------------------------------------------------- 群范畴 */
+    {
+      id: 'def.category-of-groups',
+      cluster: 'cat.basic',
+      type: 'definition',
+      label: '群范畴',
+      title: '群范畴 $\\mathbf{Grp}$',
+      regions: ['category', 'algebra'],
+      tags: ['范畴论', '群', '群同态'],
+      statement: [
+        '**群范畴** $\\mathbf{Grp}$：对象是群，态射是群同态，复合是映射复合，单位是恒等同态。',
+        '',
+        '它有**遗忘函子** $\\mathbf{Grp}\\to\\mathbf{Set}$；交换群构成全子范畴 $\\mathbf{Ab}$，有限群构成全子范畴 $\\mathbf{FinGrp}$。'
+      ].join('\n'),
+      notes: [
+        '**不是阿贝尔范畴**：$\\hom_{\\mathbf{Grp}}(G,H)$ 一般没有群结构（不能逐点相加），所以不能像 $A\\text{-}\\mathbf{Mod}$ 那样做同调代数。',
+        '**单态射 = 单同态**，**满态射 = 满同态**。积是直积，余积是自由积；零对象只有平凡群，所以 $\\mathbf{Grp}$ 不是加性范畴。',
+        '笛卡尔积给出对称幺半结构，单位元是平凡群；但它不是笛卡尔闭的（$\\hom(G,H)$ 一般不能自然成为群）。'
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. I, II']
+    },
+
+    /* -------------------------------------------------------- 阿贝尔群范畴 */
+    {
+      id: 'def.category-of-abelian-groups',
+      cluster: 'cat.basic',
+      type: 'definition',
+      label: '阿贝尔群范畴',
+      title: '阿贝尔群范畴 $\\mathbf{Ab}$',
+      regions: ['category', 'algebra'],
+      tags: ['范畴论', '阿贝尔群', '阿贝尔范畴'],
+      statement: [
+        '**阿贝尔群范畴** $\\mathbf{Ab}$：对象是阿贝尔群，态射是群同态；它是 $\\mathbf{Grp}$ 的**全子范畴**。',
+        '',
+        '遗忘函子 $\\mathbf{Ab}\\to\\mathbf{Set}$ 把阿贝尔群送到其底层集合；$\\mathbb Z\\text{-}\\mathbf{Mod}$ 与 $\\mathbf{Ab}$ 等价。'
+      ].join('\n'),
+      notes: [
+        '**阿贝尔范畴的原型**：有核、余核，单/满态射都严格；$\\hom(A,B)$ 逐点加法构成阿贝尔群。',
+        '**足够投射/内射对象**：自由阿贝尔群投射；$\\mathbb Q/\\mathbb Z$ 给出内射余生成元，每个阿贝尔群都能嵌入内射群。',
+        '**张量积**给出对称幺半结构，单位元是 $\\mathbb Z$；$\\hom(A,B)$ 又是阿贝尔群，所以 $\\mathbf{Ab}$ 还是对称幺半闭的。',
+        '与 $A\\text{-}\\mathbf{Mod}$ 的关系：$\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$，这是「模」统一「阿贝尔群」的最基本例子。'
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. I, II', 'Weibel, An Introduction to Homological Algebra, Ch. 1']
     }
   ],
 
   edges: [
+
+    {
+      id: 'def-link.category-groups',
+      kind: 'definition',
+      definition: 'def.category',
+      usedBy: 'def.category-of-groups',
+      note: '群范畴就是「对象为群、态射为群同态」的范畴，是 def.category 的标准例子。'
+    },
+    {
+      id: 'def-link.group-groups',
+      kind: 'definition',
+      definition: 'def.group',
+      usedBy: 'def.category-of-groups',
+      note: '群范畴的对象类正是全体群。'
+    },
+    {
+      id: 'def-link.category-abelian-groups',
+      kind: 'definition',
+      definition: 'def.category',
+      usedBy: 'def.category-of-abelian-groups',
+      note: '阿贝尔群范畴是另一个标准例子；它还是 def.category-of-groups 的全子范畴。'
+    },
+    {
+      id: 'def-link.group-abelian-groups',
+      kind: 'definition',
+      definition: 'def.group',
+      usedBy: 'def.category-of-abelian-groups',
+      note: '阿贝尔群是群的特例，对象类取 def.group 中交换的那些。'
+    },
+    {
+      id: 'analogy.grp-ab',
+      kind: 'analogy',
+      a: 'def.category-of-groups',
+      b: 'def.category-of-abelian-groups',
+      note: 'Ab 是 Grp 的全子范畴；把群运算再加交换律就得到阿贝尔群。'
+    },
 
     /* ------------------------------------------------------- 宇宙公理 */
     /* 「宇宙」这个定义是公理陈述的前提：不先知道那四条封闭性，
@@ -33246,13 +33327,17 @@ window.MG = window.MG || {};
       title: '凝聚态集的满态射',
       regions: ['condensed'],
       tags: ['凝聚态', '满态射'],
-      notes: [
-        '**在说什么**：凝聚态集的态射满不满，只要在**自由**紧 Hausdorff 空间 $F$ 上逐个看 $X(F) \\to Y(F)$ 是不是满的，就判完了。',
-        '⭐ 为什么「自由的」那一批就够：自由紧 Hausdorff 空间（$\\beta I$）在 $\\mathrm{Cond}$ 里构成**生成元族**，而拓扑斯里的满态射只需在生成元族上验。',
-        '⚠ 这里的「满」是**层论意义**的满（局部能提升），不是「每个测试空间上都逐点满」—— 后者更强。本条的正确性依赖「$\\mathrm{Cond}$ 是拓扑斯 + 自由紧 Hausdorff 是生成元族」，本图没有把「生成元族 $implies$ 只需在它们上验」单独立节点。',
-      ].join('\n'),
-      status: 'skeleton',
       statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。',
+      notes: [
+        '**结论**：$p:X\\to Y$ 在 $\\mathrm{Cond}$ 中满，当且仅当对每个自由紧 Hausdorff 空间 $F=\\beta I$，$X(F)\\to Y(F)$ 是满射。下面两个方向都证完。',
+        '**引理 1（层里的满 = 局部可提升）**：景上的层范畴中，$p:X\\to Y$ 满 $\\iff$ 对每个对象 $S$ 与每个 $y\\in Y(S)$，存在覆盖 $\\{S_i\\to S\\}$ 与 $x_i\\in X(S_i)$，使 $p(x_i)=y|_{S_i}$。',
+        '证明：($\\Leftarrow$) 设 $g,h:Y\\to Z$ 且 $g\\circ p=h\\circ p$。对任意 $S,y$，取覆盖与提升 $x_i$；层的局部性给出 $g(y)|_{S_i}=g(p(x_i))=h(p(x_i))=h(y)|_{S_i}$，故 $g(y)=h(y)$，即 $p$ 满。',
+        '($\\implies$) 令 $\\operatorname{Im}(p)$ 为预层 $S\\mapsto\\{\\,y\\in Y(S):\\text{存在覆盖与局部提升}\\,\\}$ 的层化。它是 $Y$ 的子层，$p$ 分解为 $X\\to\\operatorname{Im}(p)\\hookrightarrow Y$：第一支按层化的普遍性质是满的，第二支是单的。$p$ 满迫使单支也满 —— 若 $u,v:\\operatorname{Im}(p)\\to Z$ 满足 $u\\circ m=v\\circ m$，则 $u\\circ p=v\\circ p$，故 $u=v$。拓扑斯中「单 + 满 $\\implies$ 同构」，于是 $\\operatorname{Im}(p)=Y$：每个 $y$ 都局部可提升。',
+        '**引理 2（自由紧 Hausdorff 是投射对象）**：$\\beta I$ 在 $\\mathbf{CHaus}$ 中对满射投射 —— 每个满射 $q:U\\to\\beta I$ 都有截面（见 `prop.free-projective`）。',
+        '**($\\implies$)** 设 $p$ 满，取 $y\\in Y(F)$，$F=\\beta I$。引理 1 给有限覆盖 $\\{u_i:F_i\\to F\\}$ 与 $x_i\\in X(F_i)$，使 $p(x_i)=y|_{F_i}$。令 $U=\\coprod_i F_i$，$q:U\\to F$ 为联合映射；覆盖意味着 $q$ 满。把 $x_i$ 拼成 $x\\in X(U)\\cong\\prod_i X(F_i)$，则 $p(x)=q^{*}(y)$。引理 2 给截面 $s:F\\to U$，于是 $x_F:=s^{*}(x)\\in X(F)$ 满足 $p(x_F)=s^{*}q^{*}(y)=y$。所以 $X(F)\\to Y(F)$ 满。',
+        '**($\\Leftarrow$)** 设每个自由 $F$ 上 $X(F)\\to Y(F)$ 满。取任意 $S$ 与 $y\\in Y(S)$。由 `prop.chaus-quotient-of-free`，存在满射 $q:\\beta I\\to S$。拉回得 $q^{*}(y)\\in Y(\\beta I)$，假设给 $x\\in X(\\beta I)$ 使 $p(x)=q^{*}(y)$；于是 $q$ 就是一个覆盖、$x$ 是 $y$ 在其上的提升。由引理 1，$p$ 满。',
+        '**说明**：证明只用到三件事 —— 层范畴里「满 = 局部可提升」、自由紧 Hausdorff 空间在 $\\mathbf{CHaus}$ 中投射、以及每个紧 Hausdorff 空间都是自由紧 Hausdorff 空间的商。引理 1 的「单 + 满 $\\implies$ 同构」是拓扑斯里的标准事实（单态射是其余核对的等化子，满态射使余核对相等）。$\\mathrm{Cond}$ 的覆盖取有限不交并（`prop.fchaus-pretopology`），故引理 1 中的覆盖确实是有限族。∎'
+      ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
@@ -33555,25 +33640,21 @@ window.MG = window.MG || {};
     {
       id: 'imp.cond-epi',
       kind: 'implication',
-      sources: ['def.sheaf', 'prop.cond-projectives', 'def.free-presentation'],
+      sources: ['def.sheaf', 'prop.free-projective', 'prop.chaus-quotient-of-free'],
       target: 'prop.cond-epi',
       title: '满态射在自由空间上逐点检验',
       proof: [
-        '**（$\\Longleftarrow$）** 显然：若每个 $X(F) \\to Y(F)$ 都满，则层之间的这个态射在每个自由对象上满，由「生成元集判定满态射」的一般道理即得它在 $\\mathrm{Cond}$ 里是满态射。∎',
+        '**约定**：$\\mathrm{Cond}$ 是 $\\mathbf{CHaus}$ 上的层，覆盖取有限联合满射族。$p:X\\to Y$ 表示凝聚态集的态射。',
         '',
-        '**（$\\Longrightarrow$）** 设 $p : X \\to Y$ 是满态射，先证它「局部满」。取**像**',
+        '**引理（满 = 局部可提升）** 在层范畴中，$p$ 满 $\\iff$ 每个 $y\\in Y(S)$ 都有覆盖 $\\{S_i\\to S\\}$ 与 $x_i\\in X(S_i)$ 使 $p(x_i)=y|_{S_i}$。($\\Leftarrow$) 用层的局部性：若 $g p=h p$，则逐块 $g(y)=h(y)$。($\\implies$) 取 $\\operatorname{Im}(p)$ 为「局部可提升的 $y$」所成预层的层化；$p$ 经 $X\\to\\operatorname{Im}(p)\\hookrightarrow Y$ 分解，第二支是单的；$p$ 满迫使它满，而拓扑斯中单 + 满为同构，故 $\\operatorname{Im}(p)=Y$。',
         '',
-        '$$\\operatorname{Im}(p)(S) := \\{\\, y \\in Y(S) \\ :\\ \\exists \\text{ 覆盖 } (S_{i} \\to S),\\ \\exists x \\in X(S_{i}),\\ p(x) = y|_{S_{i}} \\,\\}$$',
+        '**($\\Leftarrow$)** 设每个自由 $F$ 上 $X(F)\\to Y(F)$ 满。取 $y\\in Y(S)$，由 `prop.chaus-quotient-of-free` 取满射 $q:\\beta I\\to S$。假设给 $x\\in X(\\beta I)$ 使 $p(x)=q^{*}(y)$；则 $q$ 是覆盖、$x$ 是 $y$ 的提升，引理给出 $p$ 满。',
         '',
-        '它是 $Y$ 的一个子层。由定义，$p$ 的每个值都落在 $\\operatorname{Im}(p)$ 里，即 $\\operatorname{Im}(p) \\hookrightarrow Y$ 是满态射；而它同时是单态射，故（层里单满即同构）$\\operatorname{Im}(p) = Y$。也就是说：**$p$ 局部满**。',
+        '**($\\implies$)** 设 $p$ 满，取 $F=\\beta I$ 与 $y\\in Y(F)$。引理给有限覆盖 $\\{u_i:F_i\\to F\\}$ 与 $x_i\\in X(F_i)$。令 $U=\\coprod_i F_i$，$q:U\\to F$ 为联合映射（满）。把 $x_i$ 拼成 $x\\in X(U)\\cong\\prod_i X(F_i)$，则 $p(x)=q^{*}(y)$。由 `prop.free-projective`，$\\beta I$ 在 $\\mathbf{CHaus}$ 中对满射投射，故 $q$ 有截面 $s:F\\to U$。令 $x_F=s^{*}(x)\\in X(F)$，则 $p(x_F)=s^{*}q^{*}(y)=y$。于是 $X(F)\\to Y(F)$ 满。∎',
         '',
-        '现在取 $F \\in \\mathbf{FCHaus}$ 与 $y \\in Y(F)$。\n\n由局部满，存在 $F$ 的覆盖，在其每一块 $F_{i}$ 上有 $x_{i} \\in X(F_{i})$ 使 $p(x_{i}) = y|_{F_{i}}$。\n\n$\\mathbf{FCHaus}$ 上的覆盖由**有限不交并**给出，而 $F$ 是自由的、余积在它上面就是无交并，所以可以直接把有限块上的 $x_{i}$ 拼起来（这正是「保有限积」那一条）：',
-        '',
-        '$$x := (x_{i})_{i} \\in \\prod_{i} X(F_{i}) \\;\\cong\\; X\\Bigl(\\coprod_{i} F_{i}\\Bigr) \\;=\\; X(F)$$',
-        '',
-        '并且 $p(x) = y$。所以 $X(F) \\to Y(F)$ 是满射。∎'
+        '**注意**：不能把 $X(\\coprod_i F_i)$ 直接当成 $X(F)$ —— 覆盖的联合映射一般不是同构，它只满。缺的那一步正是自由空间的投射性（引理 2），不是「有限不交并等于原空间」。'
       ].join('\n'),
-      note: '「满 = 局部满 = 局部可提升」是层论里的通用逻辑；而 $\\mathbf{FCHaus}$ 上的覆盖是**有限不交并**，所以局部终于能拼成整体 —— 这就是为什么探针只需要自由对象。'
+      note: '「满 = 局部满 = 局部可提升」是层论里的通用逻辑；而自由紧 Hausdorff 空间在 $\\mathbf{CHaus}$ 中投射，所以有限覆盖上的提升可以沿截面拉回成整个 $F$ 上的提升 —— 这就是为什么探针只需要自由对象。'
     },
 
     /* -------------------------------------------- Top → Cond 的伴随 */
@@ -35653,10 +35734,55 @@ window.MG = window.MG || {};
         '**与 Giraud 定理对照**：Giraud 是把**拓扑斯**说成「预层范畴的正合反射子范畴」，Freyd–Mitchell 是把**小阿贝尔范畴**说成「模范畴的全忠实正合子范畴」—— 两条定理是同一个思路（「找一个具体的大范畴把自己装进去」）在不同结构上的版本。'
       ].join('\n\n'),
       refs: ['Freyd, Abelian Categories (1964)', 'Mitchell, The full imbedding theorem (1964)']
+    },
+
+    /* -------------------------------------------------------- 模范畴 */
+    {
+      id: 'def.module-category',
+      cluster: 'algebra.structures',
+      type: 'definition',
+      label: '模范畴',
+      title: '模范畴 $A\\text{-}\\mathbf{Mod}$',
+      regions: ['algebra', 'homology'],
+      tags: ['模', '范畴', '阿贝尔范畴', '同调代数'],
+      statement: [
+        '设 $A$ 是含幺环。**左 $A$-模范畴** $A\\text{-}\\mathbf{Mod}$ 的对象是左 $A$-模，态射是 $A$-线性映射，复合与单位逐点定义。',
+        '',
+        '右 $A$-模构成 $\\mathbf{Mod}\\text{-}A$；$A$ 交换时两者等价。'
+      ].join('\n'),
+      notes: [
+        '**同调代数的样板间**：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴，有核、余核、单满态射严格；自由模给出足够投射对象，Baer 判据给出足够内射对象，还是 Grothendieck 范畴。',
+        '**特例**：$\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$；$k$ 是域时 $k\\text{-}\\mathbf{Mod}$ 就是 $\\mathbf{Vect}_k$。',
+        '**Freyd–Mitchell**：小阿贝尔范畴可全忠实、正合地嵌入某个 $A\\text{-}\\mathbf{Mod}$，所以「在模范畴里追元素」是合法的推广。'
+      ].join('\n\n'),
+      refs: ['Lang, Algebra', 'Weibel, An Introduction to Homological Algebra, Ch. 1']
     }
   ],
 
-  edges: []
+  edges: [
+
+    {
+      id: 'def-link.category-module-category',
+      kind: 'definition',
+      definition: 'def.category',
+      usedBy: 'def.module-category',
+      note: '模范畴是「对象为模、态射为模同态」的范畴，是 def.category 在代数里的标准例子。'
+    },
+    {
+      id: 'def-link.module-module-category',
+      kind: 'definition',
+      definition: 'def.module',
+      usedBy: 'def.module-category',
+      note: '模范畴的对象类正是全体左 A-模。'
+    },
+    {
+      id: 'analogy.module-category-abelian',
+      kind: 'analogy',
+      a: 'def.module-category',
+      b: 'def.category-of-abelian-groups',
+      note: 'Z-Mod 与 Ab 等价：整系数模就是阿贝尔群，这是模范畴与阿贝尔群范畴的共同特例。'
+    }
+  ]
 });
 
 </script>
@@ -48347,7 +48473,7 @@ window.MG = window.MG || {};
         '',
         '$$\\cos\' = -\\sin, \\qquad \\sin\' = \\cos, \\qquad \\cos 0 = 1, \\qquad \\sin 0 = 0$$'
       ].join('\n'),
-      notes: '⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。',
+      notes: '⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。\n\n⭐ 两个级数在全平面收敛的证明见 `imp.trig-series-radius`（Cauchy–Hadamard + 阶乘增长估计）。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 8']
     },
     {
@@ -48609,6 +48735,20 @@ window.MG = window.MG || {};
         '（这里第 1 步的求和是 Abel 求和法的核心 —— 它与 Abel–Dirichlet 判别法同源：都是把一个级数换成它的部分和的加权平均。）'
       ].join('\n'),
       note: '「$(1-x)\\sum s_n x^{n}$」这个改写把 $\\{s_n\\}$ 的**收敛性**变成了权重 $(1-x)x^{n}$ 的**平均** —— 权重之和恰为 $1$，所以极限读起来就是「$s_n$ 的加权平均趋于 $s$」。'
+    },
+    {
+      id: 'imp.trig-series-radius',
+      kind: 'implication',
+      sources: ['thm.convergence-radius'],
+      target: 'def.trig-function',
+      title: 'Cauchy–Hadamard 公式 $\\implies$ sin/cos 的收敛半径为 $+\\infty$',
+      proof: [
+        '只对 $\\cos$ 写；$\\sin$ 的系数是 $1/(2k+1)!$，估计完全相同。',
+        '$\\cos z$ 的系数为 $a_{2k} = (-1)^{k}/(2k)!$，其余 $a_n = 0$。对 $n = 2k$，由 $(2k)! = \\prod_{j=1}^{2k} j \\ge (k+1)^{k}$（后 $k$ 个因子每个至少为 $k+1$）得',
+        '$$|a_{2k}|^{1/(2k)} = ((2k)!)^{-1/(2k)} \\le (k+1)^{-1/2} \\to 0.$$',
+        '故 $\\limsup_{n} |a_n|^{1/n} = 0$，由 Cauchy–Hadamard 公式得 $R = 1/0 = +\\infty$。对 $\\sin$ 用 $(2k+1)! \\ge (k+1)^{k+1}$ 同法；结论是这两个级数在整个复平面上绝对收敛。∎'
+      ].join('\n'),
+      note: '这里只需要系数估计，不需要复变函数理论；$\\cos$ 与 $\\sin$ 因此都是整函数。'
     },
     {
       id: 'imp.euler-formula',
@@ -59794,28 +59934,16 @@ window.MG = window.MG || {};
         '更强的形式：对每个**局部有限**的开覆盖 $\\mathfrak{U}$，规范映射 $\\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) \\to H^{n}(X, \\mathcal{M})$ 已经是同构；一般覆盖先取局部有限的开细化。'
       ].join('\n'),
       notes: [
-        '**标准证明的三个零件。**',
-        '',
-        '**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令',
-        '',
-        '$$\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr),$$',
-        '',
-        '其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。\n\n$\\mathcal{M}$ 是层，故 Čech 正合性可逐点验证；于是 $\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是 $\\mathcal{M}$ 的一个消解，且取整体截面就回到 $\\check{C}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
-        '',
-        '**② 每一项是软的。** 仿紧 Hausdorff 上，局部有限覆盖配**单位分解**（见 `prop.paracompact-partition-unity`）：单位分解可以把 $j_{*}(\\mathcal{M}|_{U})$ 型的层按覆盖成员劈开，于是 $\\check{\\mathcal{C}}^{p}$ 是**细的**（fine，带从属于 $\\mathfrak{U}$ 的分割）；\n\n细层在仿紧空间上**软**，而软层对 $\\Gamma$ **无环**（软层可以「局部化到闭集」，再用单位分解把整体截面拼出来）。',
-        '',
-        '**③ 无环消解算导出函子。** 由 ① ②，$\\check{\\mathcal{C}}^{\\bullet}$ 是一个由 $\\Gamma$-无环层组成的消解；由 Leray 零调性（零调消解算右导出函子），',
-        '',
-        '$$H^{n}(X, \\mathcal{M}) = H^{n}\\bigl(\\Gamma(X, \\check{\\mathcal{C}}^{\\bullet})\\bigr) = \\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) .$$',
-        '',
-        '再沿覆盖取余极限（Čech 上同调按定义就是沿覆盖的滤过余极限）得到一般结论。∎',
-        '',
-        '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。\n\n同一个结论，两套互不依赖的机制。',
-        '',
-        '⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。',
-        '',
-        '📌 这一条是**深层定理**，上面给的是标准论证的骨架（三个零件各自都是完整的陈述）；逐步细节见 Godement 的原始处理。'
-      ].join('\n')
+        '**标准证明的三个零件。** 下面把能逐字核验的部分写出来；写不动的两条明确标成缺口 —— 本节点因此仍标 `status: \'skeleton\'`。',
+        '**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr)$，其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。',
+        '**① 的证明。** 只需逐点看茎。固定 $x$，取 $i$ 使 $x \\in U_{i}$。在茎上定义收缩同伦 $h^{p} : (\\check{\\mathcal{C}}^{p})_{x} \\to (\\check{\\mathcal{C}}^{p-1})_{x}$：对 $\\sigma \\in (\\check{\\mathcal{C}}^{p})_{x}$ 令 $(h\\sigma)_{i_{0} \\cdots i_{p-1}} := \\sigma_{i\\,i_{0} \\cdots i_{p-1}}$（其余分量取 $0$，在 $x$ 的充分小邻域里 $U_{i}$ 一直可用）。直接按 Čech 微分 $\\delta$ 的符号计算得 $\\delta h + h \\delta = \\operatorname{id}$（$p \\ge 1$），而 $p = 0$ 时 $\\delta h = \\operatorname{id}$ 正是增广映射 $\\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x}$。所以增广复形 $0 \\to \\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x} \\to (\\check{\\mathcal{C}}^{1})_{x} \\to \\cdots$ 正合；逐点正合即层正合。取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$，故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
+        '**② 每一项是软的：细层部分已证。** 仿紧 Hausdorff 上，局部有限覆盖配单位分解（`prop.paracompact-partition-unity`）。先证「细 $\\implies$ 软」：设 $\\mathcal{F}$ 是细层，$F \\subseteq X$ 闭，$s \\in \\mathcal{F}(F)$。每个 $x \\in F$ 有邻域 $U_{x}$ 与 $s_{x} \\in \\mathcal{F}(U_{x})$ 使 $s_{x}|_{F \\cap U_{x}} = s$；把 $\\{U_{x}\\}_{x \\in F} \\cup \\{X \\setminus F\\}$ 取局部有限加细并配单位分解 $\\{\\rho_{j}\\}$。令 $s_{j} \\in \\mathcal{F}(V_{j})$ 是相应局部截面；在 $V_{j}$ 外把 $\\rho_{j} s_{j}$ 延拓为 $0$（$\\operatorname{supp} \\rho_{j} \\subseteq V_{j}$ 保证相容），则 $\\tilde{s} := \\sum_{j} \\rho_{j} s_{j}$ 是 $X$ 上的整体截面（局部有限和），且在 $F$ 上等于 $s$。所以 $\\mathcal{F}$ 软。',
+        '**② 的缺口：软层无环。** 还需要引理：仿紧 Hausdorff 上，软层 $\\mathcal{M}$ 满足 $H^{n}(X, \\mathcal{M}) = 0$（$n \\ge 1$）。标准证明（Godement）走典范软消解 $0 \\to \\mathcal{M} \\to C^{0}(\\mathcal{M}) \\to C^{1}(\\mathcal{M}) \\to \\cdots$，逐项用单位分解把闭集上的截面拼成整体；本图没有这条引理的节点，也没有把「$C^{q}(\\mathcal{M})$ 软」与「软消解算导出函子」两步展开。',
+        '**③ 的缺口：零调消解算导出函子。** 还需标准同调代数引理：若 $0 \\to \\mathcal{M} \\to \\mathcal{A}^{0} \\to \\mathcal{A}^{1} \\to \\cdots$ 是消解且每个 $\\mathcal{A}^{q}$ 是 $\\Gamma$-无环（即 $H^{n}(X, \\mathcal{A}^{q}) = 0$，$n \\ge 1$），则 $H^{n}(X, \\mathcal{M}) \\cong H^{n}\\bigl(\\Gamma(X, \\mathcal{A}^{\\bullet})\\bigr)$。证明是与内射消解比较（比较引理 + 逐项填图），本图同样未单列节点。',
+        '**结论**：把 ② 的软层无环与 ③ 的零调消解补上，取 $\\mathcal{A}^{\\bullet} = \\check{\\mathcal{C}}^{\\bullet}$ 即得 $H^{n}(X,\\mathcal{M}) \\cong \\check{H}^{n}(\\mathfrak{U},\\mathcal{M})$；再沿局部有限覆盖取余极限即得定理。⚠ 本节点**仍标 skeleton**：缺口就是上面两条标准引理（① 与「细 $\\implies$ 软」已在注中证完）。',
+        '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。',
+        '⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。'
+      ].join('\n\n'),
     },
 
     /* ======================================================================
@@ -69985,7 +70113,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.entire-meromorphic', 'thm.runge', 'thm.weierstrass-convergence'],
       target: 'thm.mittag-leffler',
-      title: '亚纯函数的定义 $\\implies$ Mittag-Leffler 定理（Runge 构造）',
+      title: 'Runge 定理与 Weierstrass 分解 $\\implies$ Mittag-Leffler',
       proof: [
         '**证明思路**：把「逐项减修正项」写成紧集穷竭上的估计。细节展开在目标节点 `thm.mittag-leffler` 的注里，这里给出可独立阅读的完整论证与关键估计。',
         '',
@@ -73569,49 +73697,35 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.hadamard-factorization',
+      cluster: 'analysis.entire',
       type: 'theorem',
       status: 'skeleton',
       label: 'Hadamard 分解定理',
       title: 'Hadamard 分解定理：有限阶整函数的因子分解',
-      cluster: 'analysis.entire',
-      regions: ['complex'],
-      tags: ['复变函数', 'Hadamard', '因子分解', '整函数的阶'],
+      regions: ['analysis'],
+      tags: ['复分析', '整函数', 'Hadamard', '因子分解'],
+      refs: ['王晓光《复变函数》· Hadamard 分解定理', 'Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §3.3 · Hadamard’s Factorization Theorem', 'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.4 · Hadamard’s factorization theorem'],
       statement: [
         '设 $f$ 是**有限阶** $\\rho$ 的整函数，零点为 $\\{a_{n}\\}$（按重数计）。则',
         '',
         '$$f(z) = z^{m} e^{P(z)} \\prod_{n} E_{p}\\left(\\frac{z}{a_{n}}\\right),$$',
         '',
-        '其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数' +
-          '（不再像 Weierstrass 那样逐个选）。',
+        '其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。',
         '',
-        '特别地：$\\rho < 1$ 时 $p = 0$，故 ' +
-          '$\\sum |a_{n}|^{-1} < \\infty$（这不表示零点有限：$\\prod_{n}(1 - z/n^{2})$ 的阶为 $\\frac{1}{2}$、仍有无穷多零点）。',
+        '特别地：$\\rho < 1$ 时 $p = 0$，故 $\\sum |a_{n}|^{-1} < \\infty$（这不表示零点有限：$\\prod_{n}(1 - z/n^{2})$ 的阶为 $\\frac{1}{2}$、仍有无穷多零点）。'
       ].join('\n'),
       notes: [
-        '**证明思路（骨架）**：',
-        '',
-        '**第一步：零点密度。** 由 Jensen 公式$n(R) \\log 2 \\le \\log M(2R) + O(1)$，' +
-          '而 $\\log M(2R) = O(R^{\\rho + \\varepsilon})$，故 $n(R) = O(R^{\\rho+\\varepsilon})$，于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$。\n\n' +
-          '这一步说明**统一取 $p = \\lfloor \\rho \\rfloor$ 就够**。',
-        '',
-        '**第二步：除掉零点。** 令 $\\Phi(z) := f(z)\\big/\\prod E_{p}(z/a_{n})$，则 $\\Phi$ 无零点、且仍是有限阶' +
-          '（乘积的贡献被初等因子的估计压住）。',
-        '',
-        '**第三步：无零点的有限阶整函数 = $e^{\\text{多项式}}$。** 写 $\\Phi = e^{h}$（单连通，`prop.single-valued-branch`），' +
-          '则 $\\operatorname{Re} h = \\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式，' +
-          '得 $h$ 是次数 $\\le \\rho$ 的多项式。∎',
-        '',
-        '⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化、并把自由度压成一个多项式。' +
-          'Picard 小定理在有限阶情形就靠它证。',
-        '',
-        '⚠️ 「有限阶」不能省。无穷阶整函数照样能分解（Weierstrass），但指数部分不再是多项式，' +
-          '而且没有这么强的结论。',
-      ].join('\n'),
-      refs: [
-        '王晓光《复变函数》· Hadamard 分解定理',
-        'Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §3.3 · Hadamard’s Factorization Theorem',
-        'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.4 · Hadamard’s factorization theorem',
-      ],
+        '**约定**：$f$ 整、有限阶 $\\rho$；零点 $a_{n}\\ne 0$（按重数计），$z=0$ 处的零点重数为 $m$；$n(r)$ 是模 $\\le r$ 的零点个数，$M(r)=\\max_{|z|=r}|f(z)|$，$E_{p}(w)=(1-w)e^{w+w^{2}/2+\\cdots+w^{p}/p}$。取 $p=\\lfloor\\rho\\rfloor$（$\\rho<1$ 时 $p=0$），于是 $p+1>\\rho$。',
+        '**第一步：零点密度（完整）。** 对 $f/z^{m}$ 用 Jensen 公式（`prop.jensen`，此时原点值非零）：$n(R)\\log 2 \\le \\log M(2R)-\\log|f(0)|+O(1)$。有限阶给 $\\log M(2R)\\le C\\,R^{\\rho+\\varepsilon}$，故 $n(R)\\le C\\,R^{\\rho+\\varepsilon}$。于是对任何 $\\sigma>\\rho$，分部求和给 $\\sum_{n}|a_{n}|^{-\\sigma}=\\sigma\\int_{0}^{\\infty}n(r)\\,r^{-\\sigma-1}\\,\\mathrm{d}r<\\infty$（$n(r)$ 在 $r<|a_{1}|$ 时为 $0$，无边界项）。特别地 $\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。',
+        '**第二步：乘积收敛（完整）。** 对 $|w|\\le 1/2$，$\\log E_{p}(w)=-\\sum_{k>p}w^{k}/k$，故 $|E_{p}(w)-1|\\le C_{p}|w|^{p+1}$。给定 $R$：只有有限个 $|a_{n}|\\le 2R$；对其余项 $|z/a_{n}|\\le 1/2$，于是 $\\sum_{|a_{n}|>2R}|z/a_{n}|^{p+1}\\le R^{p+1}\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。故 $\\prod_{n}E_{p}(z/a_{n})$ 在 $|z|\\le R$ 上一致收敛，定义出一个整函数。',
+        '**第三步：商无零点（完整）。** 令 $\\Phi(z):=f(z)\\big/\\bigl(z^{m}\\prod_{n}E_{p}(z/a_{n})\\bigr)$。每个 $a_{n}$ 处 $E_{p}(z/a_{n})$ 恰有一阶零点，与 $f$ 的零点相消；其它点 $f\\ne 0$ 而乘积非零。故 $\\Phi$ 整、处处非零。',
+        '**第四步：$\\Phi$ 的阶 $\\le\\rho$（缺口）。** 需要对 $|z|=r$ 的两条估计 $\\log|\\prod_{n}E_{p}(z/a_{n})|\\le C\\,r^{\\rho+\\varepsilon}$ 与 $\\ge -C\\,r^{\\rho+\\varepsilon}$。上界可按 $|a_{n}|\\le 2r$、$|a_{n}|>2r$ 拆分，配合 $n(t)\\le C t^{\\rho+\\varepsilon}$ 与分部求和证出；**下界在 $z$ 靠近某个零点 $a_{n}$ 时必须单独书账**（用 $|f|$ 在该点的零点阶数与 $|E_{p}|$ 的一阶零点相消，把「$\\log|P|$ 的负值」与「$\\log|f|$ 的负值」配对），本图没有把这一步写全。这就是本节点仍标 `status: \'skeleton\'` 的缺口。',
+        '**第五步：无零点 $\\implies$ 指数（完整）。** $\\Phi$ 整、无零点，$\\mathbb{C}$ 单连通，由 `prop.single-valued-branch` 存在整函数 $h$ 使 $\\Phi=e^{h}$。',
+        '**第六步：Borel–Carathéodory（完整证明）。** 引理：若 $g$ 在 $|z|\\le R$ 全纯、$g(0)=0$、$\\operatorname{Re} g\\le A$（$A>0$），则对 $|z|=r<R$，$|g(z)|\\le 2Ar/(R-r)$。证明：$\\varphi:=g/(2A-g)$ 在 $|z|\\le R$ 全纯（分母的实部 $\\ge A$），且 $|\\varphi|\\le 1$ —— 因为 $|g|^{2}\\le(2A-\\operatorname{Re} g)^{2}+(\\operatorname{Im} g)^{2}$ 等价于 $\\operatorname{Re} g\\le A$；又 $\\varphi(0)=0$。Schwarz 引理（`lem.schwarz`）给 $|\\varphi(z)|\\le r/R$，于是 $|g|=\\bigl|2A\\varphi/(1+\\varphi)\\bigr|\\le 2A|\\varphi|/(1-|\\varphi|)\\le 2Ar/(R-r)$。∎',
+        '**第七步：$h$ 是多项式（完整，条件于第四步）。** 由第四步，$\\operatorname{Re}(h-h(0))=\\log|\\Phi|-\\operatorname{Re} h(0)\\le C R^{\\rho+\\varepsilon}$。对 $g=h-h(0)$ 在 $|z|\\le R$ 用第六步，取 $r=R/2$：$|h(z)-h(0)|\\le 2C R^{\\rho+\\varepsilon}$（$|z|\\le R/2$）。再由 Cauchy 估计（`thm.cauchy-inequality`），对 $k>\\rho$，$|h^{(k)}(0)|\\le k!\\,C R^{\\rho+\\varepsilon}/(R/2)^{k}\\to 0$（$R\\to\\infty$，取 $\\varepsilon<k-\\rho$），故 $h^{(k)}(0)=0$：$h$ 是次数 $\\le\\lfloor\\rho\\rfloor$ 的多项式。',
+        '**结论**：若补上第四步的下界估计，则 $f=z^{m}e^{h}\\prod_{n}E_{p}(z/a_{n})=z^{m}e^{P}\\prod_{n}E_{p}(z/a_{n})$，即得 Hadamard 分解。⚠ 本节点**仍标 skeleton**：缺的正是「典范乘积的阶 $\\le\\rho$」的下界（在零点附近的局部书账）；第一、二、三、五、六、七步都已写全。',
+        '⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化（同一个 $p$）、并把自由度压成一个多项式 $P$。$\\rho<1$ 时 $p=0$，$\\sum|a_{n}|^{-1}<\\infty$，但零点仍可无穷（$\\prod(1-z/n^{2})$ 的阶为 $1/2$）。⚠ 「有限阶」不能省：无穷阶整函数照样有 Weierstrass 乘积，但指数部分不再是多项式，结论也没有这么强。'
+      ].join('\n\n'),
     },
 
     /* ---------------------------------------------------------------- §D */
@@ -75357,6 +75471,24 @@ window.MG = window.MG || {};
       ]
     },
     {
+      id: 'def.barycentric-subdivision',
+      cluster: 'topology.homology',
+      type: 'definition',
+      label: '重心重分',
+      title: '重心重分：把单纯形再切细',
+      regions: ['topology'],
+      tags: ['代数拓扑', '单纯复形', '重心重分'],
+      statement: [
+        '设 $K$ 是单纯复形。$K$ 的**一阶重心重分** $K^{(1)}$ 的顶点是 $K$ 的所有非空单纯形 $\\sigma$ 的重心 $\\hat\\sigma$；$\\hat\\sigma_{0}, \\ldots, \\hat\\sigma_{p}$ 张成 $K^{(1)}$ 的一个 $p$-单纯形，当且仅当',
+        '',
+        '$$\\sigma_{0} \\subset \\sigma_{1} \\subset \\cdots \\subset \\sigma_{p}$$',
+        '',
+        '是 $K$ 中的严格链。几何实现满足 $|K^{(1)}| = |K|$。'
+      ].join('\n'),
+      notes: '⭐ 重分不改变几何实现，但把单纯形切细：若 $\\dim K = n$，则 $\\operatorname{mesh}(K^{(1)}) \\le \\frac{n}{n+1}\\operatorname{mesh}(K)$，反复重分可使直径任意小。\n\n⭐ 它是单纯逼近定理的第二步：重分够细，星条件才成立（见 thm.simplicial-approximation）。\n\n⚠ 新顶点是「单纯形的重心」，不是原顶点；顶点数一般远多于 $K$。',
+      refs: ['Munkres, Elements of Algebraic Topology, Ch. 1 §13', 'Hatcher, Algebraic Topology, Ch. 2 §2.1']
+    },
+    {
       id: 'thm.simplicial-approximation',
       type: 'theorem',
       label: '单纯逼近',
@@ -75394,7 +75526,7 @@ window.MG = window.MG || {};
         '- $\\iota\\,g_{*} = (|g|)_{*}\\,\\iota_{m}$（$g$ 是单纯映射，两边都在单个单纯形上取同一个像）；',
         '- 由 `thm.homotopy-invariance`，$|g| \\simeq \\operatorname{id}$ 给出链同伦 $(|g|)_{*} \\simeq \\operatorname{id}$，故 $\\iota\\,g_{*} \\simeq \\iota_{m}$；',
         '- 重心重分链映射 $\\operatorname{sd}^{m} : C_{*}(K) \\to C_{*}(K^{(m)})$ 与 $\\iota_{m}$ 满足 $\\iota_{m}\\,\\operatorname{sd}^{m} = \\iota$（重分不改变几何实现，链级上是细分），且 $\\operatorname{sd}^{m}$ 诱导同调同构（反向链同伦：每个重分后的单纯形落在原单纯形里，锥构造给出）。',
-        '⚠️ **这里缺一步（本图未写）**：$\\iota_{*}\\,g_{*}\\,\\operatorname{sd}^{m}_{*} = \\iota_{*}$ 只给出 $\\iota_{*}$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g_{*}\\operatorname{sd}^{m}_{*}$ 可逆，而那正是要证的。要闭合，得显式造出链映射 $r : S_{*}(|K|) \\to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\\,\\iota = \\operatorname{id}$、$\\iota\\,r \\simeq \\operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。',
+        '⚠️ **这里缺一步（本图未写）**：$\\iota\\,g\\,\\mathrm{sd}^{m} = \\iota$ 只给出 $\\iota$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g\\,\\mathrm{sd}^{m}$ 可逆，而那正是要证的（公式里为排版省略了诱导映射的星号下标）。要闭合，得显式造出链映射 $r : S_{*}(|K|) \\to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\\,\\iota = \\operatorname{id}$、$\\iota\\,r \\simeq \\operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。',
         '**⚠️ 技术细节**：上面用了「单纯映射诱导链映射」「链同伦的棱柱构造」两件标准机器（见 `def.chain-homotopy`、`thm.homotopy-invariance`）。若把 $C_{*}$ 取成**有序**链群，$g$ 在退化时可能把单纯形压扁，链映射的符号要按顶点顺序处理；本图的同调均按有序链群的商（去掉退化）定义，此处不展开符号。',
         '**边界与反例**：',
         '- $K$ **有限**不能省：无限复形上，重心重分不保证 mesh 趋零（同一条无穷细化的链可能一直很粗），星条件也就无法满足。',
@@ -75412,6 +75544,15 @@ window.MG = window.MG || {};
   ],
 
   edges: [
+    { kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.barycentric-subdivision',
+      note: '重心重分是单纯复形上的操作；新顶点是原复形中非空单纯形的重心。' },
+    { kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.simplicial-approximation',
+      note: '单纯逼近定理的第二步是反复重心重分，使网格直径小于 Lebesgue 数。' },
+    { kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.mv-homology',
+      note: 'Mayer–Vietoris 的小链论证用重心重分把链细化到覆盖里。' },
+    { kind: 'analogy', a: 'def.standard-simplex', b: 'def.simplex-category',
+      note: '标准单纯形 $\\Delta^{p}$ 与单纯形范畴的对象 $[p]$ 是同一组面/退化数据的两个模型：前者是几何实现，后者是组合索引。单纯复形用前者，单纯对象用后者。' },
+
     /* ------------------------------------------------ §A 单纯复形与链复形 */
     { kind: 'definition', definition: 'def.standard-simplex', usedBy: 'def.simplicial-complex',
       note: '复形里的一个 $p$-单纯形就是「$\\Delta^{p}$ 在仿射无关点集上的线性像」的顶点集；' +
@@ -84302,6 +84443,44 @@ window.MG = window.MG || {};
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Jordan–von Neumann, Ann. of Math. 36 (1935)'],
     },
 
+    /* ------------------------------------------- 凸集与星形集 */
+    {
+      id: 'def.convex-set',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '凸集',
+      title: '凸集：任意两点的连线不跑出集合',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '凸组合'],
+      statement: [
+        '设 $V$ 是实向量空间，$C \\subseteq V$。称 $C$ 为**凸集**，若 $C \\ne \\emptyset$ 且对任意 $x, y \\in C$、$t \\in [0,1]$，',
+        '',
+        '$$(1-t)x + ty \\in C.$$',
+        '',
+        '等价地：$C$ 包含任意两点之间的整条线段。'
+      ].join('\n'),
+      notes: '⭐ 凸性只用**仿射结构**，不需要范数或内积；在无穷维里它是「极小元存在」的关键假设（见 thm.projection-convex）。\n\n⚠ 本图约定凸集非空：空集会让「任意两点」条件真空成立，不适合当作凸集。\n\n💡 凸组合、凸包、分离定理都从这里出发。',
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
+    },
+    {
+      id: 'def.star-shaped',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '星形集',
+      title: '星形集：存在一个能看见全集合的点',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '星形'],
+      statement: [
+        '设 $V$ 是实向量空间，$S \\subseteq V$。称 $S$ 为**星形集**，若存在 $x_{0} \\in S$，使对每个 $x \\in S$ 与 $t \\in [0,1]$，',
+        '',
+        '$$(1-t)x_{0} + t x \\in S.$$',
+        '',
+        '这样的 $x_{0}$ 叫 $S$ 的一个**星点**（star center）。'
+      ].join('\n'),
+      notes: '⭐ 凸集一定是星形集：任取 $x_{0} \\in C$，凸性给出整条线段。反之不然：平面里的十字形关于中心星形，却不凸。\n\n⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。',
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
+    },
+
     /* ------------------------------------------------- 凸闭集上的投影 */
     {
       id: 'thm.projection-convex',
@@ -84558,7 +84737,22 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    { kind: 'definition', definition: 'def.vector-space', usedBy: 'def.convex-set',
+      note: '凸集是向量空间的子集；凸性只用仿射结构，不用范数。' },
+    { kind: 'definition', definition: 'def.convex-set', usedBy: 'thm.projection-convex',
+      note: '投影定理的核心假设：凸、闭、非空。' },
+    { kind: 'definition', definition: 'def.star-shaped', usedBy: 'lem.poincare-lemma',
+      note: 'Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。' },
+    { kind: 'implication', sources: ['def.convex-set'], target: 'def.star-shaped',
+      title: '凸集 $\\implies$ 星形集',
+      proof: [
+        '设 $C \\ne \\emptyset$ 凸，取 $x_{0} \\in C$。对任意 $x \\in C$、$t \\in [0,1]$，由凸性 $(1-t)x_{0} + tx \\in C$。',
+        '这正是星形集关于 $x_{0}$ 的定义，故 $C$ 是星形集。∎'
+      ].join('\n'),
+      note: '逆命题不成立：十字形星形但不凸。'
+    }
+  ]
 });
 
 </script>
@@ -85736,7 +85930,7 @@ window.MG = window.MG || {};
         '⭐ 常见的三个例子：$K^{n}$（分量运算逐条验证）；$K[X]$ 与 $M_{n}(K)$（加法就是逐项加）；' +
         '函数空间 $\\{f : S \\to K\\}$（点态运算）—— 三个都是「同一套验证」的重复。'
       ].join('\n\n'),
-      refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 2'],
+      refs: ['Lang, Algebra', 'Hoffman–Kunze, Ch. 2'],
     },
   ],
 
@@ -85939,7 +86133,7 @@ window.MG = window.MG || {};
    病灶：满足关系 ⊨（满足关系 ⊨）的**出边是 0** —— 语义是终点站；
    而「⊢（可证明性）**全库没有节点**」，尽管 满足关系 ⊨ 的注把 ⊨ vs ⊢
    当成核心对照物。紧致性定理 / 完备性定理只活在注里。
-   ⇒ 逻辑区只有「语法 + 语义」，没有「证明论」，也没有把两者连起来的定理。
+   $\\implies$ 逻辑区只有「语法 + 语义」，没有「证明论」，也没有把两者连起来的定理。
 
    补三个节点 + 接线。⛔ 逻辑侧**接拓扑只能走类比边**（审计已验证：已有的
    `def.compact → … → def.formula` 路径意味着任何「逻辑节点 definition 依赖拓扑节点」
@@ -85989,7 +86183,6 @@ window.MG = window.MG || {};
       id: 'thm.completeness-first-order',
       cluster: 'logic.fol',
       type: 'theorem',
-      status: 'skeleton',
       label: '完备性定理',
       title: '一阶逻辑完备性定理（Gödel）：$\\Gamma \\vdash \\varphi \\iff \\Gamma \\vDash \\varphi$',
       regions: ['logic'],
@@ -86002,18 +86195,21 @@ window.MG = window.MG || {};
         '即：**可证明**与**在所有模型中都真**是同一件事。等价的形式：$\\Gamma$ 有模型 $\\iff$ $\\Gamma$ 一致。',
       ].join('\n'),
       notes: [
-        '⭐ **两个方向的分量完全不同**：',
-        '- $\\vdash \\implies \\vDash$（**可靠性** / soundness）：公理都是永真的、推理规则保持真值，' +
-          '所以逐条归纳即可 —— 这一段是**免费的**，也是「证明能保证正确」的全部依据。',
-        '- $\\vDash \\implies \\vdash$（**完备性**，Gödel 1930）：**这才是内容**。经典证明是 Henkin 构造：' +
-          '把一致的理论扩充成**极大一致**理论、对每个存在式加一个见证常元、再用项本身当元素造出项模型。',
-        '⚠ **这里的「完备性」与「完备空间 / 完备测度 / 序完备」那一族毫无关系** —— ' +
-          '同一个中文词在不同分支里有不同意思，读的时候要认清。',
-        '⚠ 一阶逻辑的完备性**不**违背 Gödel 不完备性定理：后者说的是「足够强的理论（如 PA/ZFC）里存在' +
-          '既不能证也不能证伪的**句子**」，那是关于**理论**的，不是关于逻辑的。',
-        '📌 本图只给陈述与证明骨架（Henkin 构造的三个动作），没有把项模型展开成节点。',
+        '**约定**：$\\vdash$ 取 `def.provability` 的 Hilbert 型系统（分离规则 + 推广），逻辑公理取标准模式：命题公理 (A1) $\\psi\\to(\\chi\\to\\psi)$、(A2) $(\\psi\\to(\\chi\\to\\theta))\\to((\\psi\\to\\chi)\\to(\\psi\\to\\theta))$、(A3) $(\\neg\\chi\\to\\neg\\psi)\\to(\\psi\\to\\chi)$；量词公理 (Q1) $\\forall x\\,\\psi\\to\\psi[t/x]$（$t$ 对 $x$ 可代入）、(Q2) $\\forall x(\\psi\\to\\chi)\\to(\\psi\\to\\forall x\\,\\chi)$（$x\\notin\\operatorname{FV}(\\psi)$）；等词公理 (E1) $x=x$、(E2) $x=y\\to(\\psi\\to\\psi[y/x])$。`def.provability` 没有逐条列出公理表，这里按标准取法固定一套；换等价系统不改变 $\\vdash$。$\\Gamma$ **不一致**指存在 $\\psi$ 使 $\\Gamma\\vdash\\psi$ 且 $\\Gamma\\vdash\\neg\\psi$，它等价于 $\\Gamma\\vdash\\neg(\\theta\\to\\theta)$。',
+        '**第一步：化到语句。** 对 $\\Gamma\\cup\\{\\varphi\\}$ 中出现的每个自由变元 $x$ 添一个新常元 $c_x$，把公式里的 $x$ 全换成 $c_x$，得 $\\Gamma_c,\\varphi_c$。则 (i) $\\Gamma\\vdash\\varphi\\iff\\Gamma_c\\vdash\\varphi_c$：把证明里的 $c_x$ 换回自由变元 $x$（公理模式对代入封闭，分离与推广保持形状），反向把 $x$ 换成 $c_x$；(ii) $\\Gamma\\vDash\\varphi\\iff\\Gamma_c\\vDash\\varphi_c$：$\\mathcal{L}_c$ 的结构就是「$\\mathcal{L}$ 的结构 + 一个赋值」，反之每个赋值唯一延拓。所以只需对**语句**证明。',
+        '**第二步：可靠性（$\\vdash\\implies\\vDash$）。** 逐条验证：命题公理是重言式；(Q1) 若 $\\forall x\\,\\psi$ 在 $\\mathfrak{A}$ 中真，则 $\\psi[t/x]$ 对每个 $t$ 的解释真；(Q2) 在 $x\\notin\\operatorname{FV}(\\psi)$ 时，若 $\\forall x(\\psi\\to\\chi)$ 与 $\\psi$ 真，则对每个 $a$ 有 $\\chi$ 真；(E1)(E2) 是等词的标准语义。分离规则保持「真」，推广保持「对所有赋值真」。对证明长度归纳得 $\\Gamma\\vdash\\varphi\\implies\\Gamma\\vDash\\varphi$。',
+        '**第三步：演绎定理（语句版）。** 若 $\\sigma$ 是语句且 $\\Gamma\\cup\\{\\sigma\\}\\vdash\\psi$，则 $\\Gamma\\vdash\\sigma\\to\\psi$。对推导长度归纳：若该步是公理或 $\\Gamma$ 中公式 $\\theta$，用 (A1) $\\theta\\to(\\sigma\\to\\theta)$ 与分离规则；若是分离规则，用 (A2)；若是推广 $\\theta\\mapsto\\forall x\\,\\theta$，归纳假设给 $\\Gamma\\vdash\\sigma\\to\\theta$，推广得 $\\Gamma\\vdash\\forall x(\\sigma\\to\\theta)$，再由 (Q2)（$\\sigma$ 无自由 $x$）与分离规则得 $\\Gamma\\vdash\\sigma\\to\\forall x\\,\\theta$。∎',
+        '**推论**：若 $\\Gamma\\cup\\{\\sigma\\}$ 不一致，则 $\\Gamma\\vdash\\neg\\sigma$；特别地，若 $\\Gamma\\cup\\{\\neg\\varphi\\}$ 不一致，则 $\\Gamma\\vdash\\varphi$。证明：演绎定理给 $\\Gamma\\vdash\\sigma\\to\\psi$ 与 $\\Gamma\\vdash\\sigma\\to\\neg\\psi$，而 $(\\sigma\\to\\psi)\\to((\\sigma\\to\\neg\\psi)\\to\\neg\\sigma)$ 是重言式，分离两次即得 $\\Gamma\\vdash\\neg\\sigma$。',
+        '**第四步：极大一致扩张。** 引理：每个一致语句集 $\\Gamma$ 可扩张为极大一致语句集 $\\Gamma^{*}$。证明：枚举所有语句 $\\psi_0,\\psi_1,\\ldots$；令 $\\Gamma_0=\\Gamma$，若 $\\Gamma_n\\cup\\{\\psi_n\\}$ 一致则 $\\Gamma_{n+1}=\\Gamma_n\\cup\\{\\psi_n\\}$，否则 $\\Gamma_{n+1}=\\Gamma_n$；令 $\\Gamma^{*}=\\bigcup_n\\Gamma_n$。一致性：若 $\\Gamma^{*}$ 不一致，则某个证明只用到有限多条假设，它们全在某个 $\\Gamma_n$ 中，与 $\\Gamma_n$ 一致矛盾。极大性：若 $\\psi_n\\notin\\Gamma^{*}$，则 $\\Gamma_n\\cup\\{\\psi_n\\}$ 不一致，由推论得 $\\Gamma_n\\vdash\\neg\\psi_n$，故 $\\Gamma^{*}\\vdash\\neg\\psi_n$。由此：对每个语句恰有 $\\psi\\in\\Gamma^{*}$ 或 $\\neg\\psi\\in\\Gamma^{*}$；$\\Gamma^{*}$ 对 $\\vdash$ 封闭（若 $\\Gamma^{*}\\vdash\\psi$ 而 $\\psi\\notin\\Gamma^{*}$，则 $\\neg\\psi\\in\\Gamma^{*}$，与一致性矛盾）；$\\Gamma^{*}$ 含全部逻辑公理。',
+        '**第五步：Henkin 见证。** 在语言中添可数无穷多新常元 $c_0,c_1,\\ldots$，得 $\\mathcal{L}^{+}$。把 $\\mathcal{L}^{+}$ 中所有形如 $\\exists x\\,\\theta(x)$ 的语句枚举为 $\\xi_0,\\xi_1,\\ldots$。递归造 $\\Gamma_n$：若 $\\Gamma_n\\cup\\{\\xi_n\\}$ 一致且 $\\xi_n=\\exists x\\,\\theta(x)$，取第一个未用过的 $c_k$，令 $\\Gamma_{n+1}=\\Gamma_n\\cup\\{\\theta(c_k)\\}$；否则 $\\Gamma_{n+1}=\\Gamma_n$。',
+        '各 $\\Gamma_n$ 一致：若 $\\Gamma_n\\cup\\{\\theta(c_k)\\}$ 不一致，推论给 $\\Gamma_n\\vdash\\neg\\theta(c_k)$；$c_k$ 不出现在 $\\Gamma_n$ 中，把 $c_k$ 换成证明中未出现的变元 $y$ 并推广，得 $\\Gamma_n\\vdash\\forall y\\,\\neg\\theta(y)$，再由 (Q1) 与命题逻辑得 $\\Gamma_n\\vdash\\neg\\exists x\\,\\theta(x)$，与「$\\Gamma_n\\cup\\{\\xi_n\\}$ 一致」矛盾。于是 $\\Gamma_\\omega=\\bigcup_n\\Gamma_n$ 一致（有限特征），再由第四步扩为极大一致 $\\Gamma^{*}$。见证性质：若 $\\exists x\\,\\theta\\in\\Gamma^{*}$ 且编号为 $n$，则 $\\Gamma_n\\cup\\{\\exists x\\,\\theta\\}\\subseteq\\Gamma^{*}$ 一致，故第 $n$ 步添了 $\\theta(c_k)$，即 $\\theta(c_k)\\in\\Gamma^{*}$。',
+        '**第六步：项模型。** 在 $\\mathcal{L}^{+}$ 上，对闭项 $t,s$ 定义 $t\\sim s\\iff\\Gamma^{*}\\vdash t=s$；由 (E1)(E2) 这是等价关系。令 $A$ 为闭项的 $\\sim$-类全体。常元 $c^{\\mathfrak{A}}:=[c]$；函数符号 $f^{\\mathfrak{A}}([t_1],\\ldots,[t_n]):=[f(t_1,\\ldots,t_n)]$；关系符号 $R^{\\mathfrak{A}}([t_1],\\ldots,[t_n])$ 为真 $\\iff\\Gamma^{*}\\vdash R(t_1,\\ldots,t_n)$。良定义用 (E2)：若 $t_i\\sim s_i$，逐步代入得 $\\Gamma^{*}\\vdash f(t)=f(s)$ 与 $\\Gamma^{*}\\vdash R(t)\\leftrightarrow R(s)$。等词解释成相等：$[t]=[s]\\iff t\\sim s$。',
+        '**第七步：真值引理。** 对每个公式 $\\psi(x_1,\\ldots,x_m)$ 与任意闭项 $t_1,\\ldots,t_m$：$\\mathfrak{A}\\vDash\\psi[\\bar t]$（赋值 $x_i\\mapsto[t_i]$）$\\iff$ $\\Gamma^{*}\\vdash\\psi(t_1,\\ldots,t_m)$。对 $\\psi$ 的结构归纳：原子公式按第六步；$\\neg$ 用极大性（对每个语句恰有它或它的否定在 $\\Gamma^{*}$）；$\\wedge$ 用 $\\Gamma^{*}$ 对 $\\vdash$ 封闭与重言式 $\\psi\\to(\\chi\\to\\psi\\wedge\\chi)$、$\\psi\\wedge\\chi\\to\\psi$、$\\psi\\wedge\\chi\\to\\chi$。',
+        '量词情形：先注意对任意闭项 $t$，$\\Gamma^{*}\\vdash\\forall x\\,\\psi\\to\\psi(t)$（(Q1) 加分离规则）。($\\Leftarrow$) 若 $\\forall x\\,\\psi\\in\\Gamma^{*}$，则每个实例 $\\psi(t)\\in\\Gamma^{*}$，归纳假设给 $\\mathfrak{A}\\vDash\\psi[\\bar t]$ 对所有 $[t]$，故 $\\mathfrak{A}\\vDash\\forall x\\,\\psi$。($\\implies$) 若 $\\forall x\\,\\psi\\notin\\Gamma^{*}$，则 $\\neg\\forall x\\,\\psi\\in\\Gamma^{*}$；命题逻辑（用 (Q1)）给 $\\Gamma^{*}\\vdash\\exists x\\,\\neg\\psi$，见证性质给 $c$ 使 $\\neg\\psi(c)\\in\\Gamma^{*}$，归纳假设给 $\\mathfrak{A}\\vDash\\neg\\psi[\\bar c]$，故 $\\mathfrak{A}\\not\\vDash\\forall x\\,\\psi$。',
+        '**第八步：收尾。** 第七步给出 $\\mathfrak{A}\\vDash\\Gamma^{*}$，故 $\\Gamma$ 有模型。于是对语句：若 $\\Gamma\\not\\vdash\\varphi$，则 $\\Gamma\\cup\\{\\neg\\varphi\\}$ 一致（否则推论给 $\\Gamma\\vdash\\varphi$），由第五至七步有模型 $\\mathfrak{A}\\vDash\\Gamma\\cup\\{\\neg\\varphi\\}$，即 $\\Gamma\\not\\vDash\\varphi$。逆否即 $\\Gamma\\vDash\\varphi\\implies\\Gamma\\vdash\\varphi$；与第二步合起来即 $\\Gamma\\vdash\\varphi\\iff\\Gamma\\vDash\\varphi$。一般公式由第一步化到语句。∎',
+        '**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。Henkin 扩张每一步取「第一个未使用的常元」，所以可数语言下不需要选择公理；不可数语言要把枚举换成超限递归，那一步用选择公理。推论：紧致性定理（每个有限子集有模型 $\\implies$ 整个理论有模型）由 $\\Gamma\\vDash\\varphi\\implies\\Gamma\\vdash\\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。',
       ].join('\n\n'),
-      refs: ['Enderton, A Mathematical Introduction to Logic, Ch. 2.5', 'Kunen, Set Theory, Ch. I'],
+      refs: ['Enderton, A Mathematical Introduction to Logic, Ch. 2.5', 'Kunen, Set Theory, Ch. I']
     },
 
     {
@@ -86386,8 +86582,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠ **本节点保持 status: skeleton。** 分类定理是一条长链，本图目前只闭合了「读出标准形」这一步；前两步（三角剖分存在性、组合归类）都还是空白。下面把三步写到能核对的程度，并标明哪一步是本图空白。',
-        '**证明的三步**：(1) 三角剖分存在 —— `thm.rado`（仍 skeleton），本图把它当外部输入；(2) **组合归类**（本图空白）—— 把任意闭连通曲面的有限三角剖分化成标准形，精确陈述见下；(3) 读出标准形 —— 标准形只由「可定向性 + $\\chi$」决定，且互不同胚（本注后面完整写出）。',
-        '**第二步的精确陈述（组合分类引理）**：设 $K$ 是有限三角剖分的闭连通曲面。则可用有限次下列操作把它化成标准形：',
+        '**证明的三步**：(1) 三角剖分存在 —— `thm.rado`（仍 skeleton），本图把它当外部输入；(2) **组合归类**（本图空白）—— 把任意闭连通曲面的有限三角剖分化成标准形，证明路线见下；(3) 读出标准形 —— 标准形只由「可定向性 + $\\chi$」决定，且互不同胚（本注后面完整写出）。',
+        '**第二步的证明路线（本图未写完整）**：设 $K$ 是有限三角剖分的闭连通曲面。下面的操作清单是证明路线，不是完整证明（终止性与退化情形见本节末）。',
         '- 2–2 翻边：一条边两侧的两个三角形换成另两个三角形，顶点集不变；',
         '- 切-粘（cut-and-paste）：沿一条闭曲线剪开再粘回，改变剖分但保持同胚型；',
         '- 删除边界三角形：剖分出现「只贴一条边的三角形」时把它去掉。',
@@ -86455,7 +86651,7 @@ window.MG = window.MG || {};
         '⚠ **本节点保持 status: skeleton。** 这不是写漏：Radó 定理的证明需要本图没有的一整层地形（见下面的空白清单）。本图把它单列成节点，是为了让「闭曲面分类」依赖链里的缺口形状可见，而不是假装证过。',
         '**定理**：每个紧曲面（紧、连通、2 维拓扑流形，可带边界）都可三角剖分；等价地，同胚于某个有限单纯复形的几何实现。',
         '**本图能确认的部分**：(1) 若剖分存在，则可取有限 —— 紧性给出有限个图卡，局部有限剖分在紧空间上只有有限个非空单形；(2) 剖分不唯一 —— 同一曲面有无穷多个本质不同的剖分（`def.triangulation` 的注）；(3) 分类定理只把它当作第一步用（`thm.classification-surfaces`），不把它当作结论。',
-        '**路线 A（复分析）**：先在曲面上造复结构（成为 Riemann 面），再取非常值亚纯函数 $f$，把 $S^{2}$ 的三角剖分沿 $f$ 拉回。需要的输入：Riemann 面上亚纯函数存在性（Riemann–Roch）与分支覆盖的局部模型 $z\\mapsto z^{m}$。⚠ 本图内部不能拿 `thm.riemann-hurwitz` 来补这一步 —— 那条定理的证明已经假设了 $X$ 有三角剖分，用它证 Radó 是循环论证。',
+        '**路线 A（复分析）**：先造复结构（成为 Riemann 面），再取非常值亚纯函数 $f$，把 $S^{2}$ 的三角剖分沿 $f$ 拉回。**可定向**时直接在 $S$ 上造复结构；**不可定向**时先取**可定向双覆盖** $\\widetilde S\\to S$（它可定向），在 $\\widetilde S$ 上造复结构并拉回剖分，再对 $S=\\widetilde S/\\mathbb Z_{2}$ 取商剖分（分支点处用局部模型 $z\\mapsto z^{2}$）。需要的输入：Riemann 面上亚纯函数存在性（Riemann–Roch）与分支覆盖的局部模型 $z\\mapsto z^{m}$。⚠ 本图内部不能拿 `thm.riemann-hurwitz` 来补这一步 —— 那条定理的证明已经假设了 $X$ 有三角剖分，用它证 Radó 是循环论证。',
         '**路线 B（微分拓扑）**：先证紧曲面有（本质唯一的）光滑结构（Radó 本人、Munkres、Whitehead），再用 Morse 理论或管状邻域把曲面拆成柄，柄的粘接给出有限多边形剖分。需要的输入：光滑结构存在性、Morse 函数存在性、柄分解。本图都没有节点。',
         '**为什么这是低维现象**：$\\dim\\le2$ 时成立（Radó 1925）；$\\dim=3$ 也成立（Moise 1952）；$\\dim=4$ **不成立** —— Freedman 的 $E_{8}$ 流形紧、拓扑，但不可三角剖分；$\\dim\\ge5$ 有 Kirby–Siebenmann 的上同调障碍。所以「每个流形都能剖分」是错的，本节点只处理 2 维。',
         '⚠ **两条常见混淆**：① 与「单纯逼近定理」区分：那条假设已有剖分，结论是奇异同调等于单纯同调（`thm.simplicial-approximation`）；本节点说的是剖分存在。② 与「光滑流形」区分：光滑流形可剖分是另一个定理（Whitehead），不能把光滑结构当既成事实。',
@@ -86686,18 +86882,18 @@ window.MG = window.MG || {};
       tags: ['命题', '拓扑', '曲面', '同调'],
       status: 'skeleton',
       statement: [
-        '设 $S$ 是**闭不可定向曲面**，且 $S \\cong \\mathbb{RP}^{2}\\#\\cdots\\#\\mathbb{RP}^{2}$（$k$ 个，' +
+        '设 $S$ 是**闭不可定向曲面**，且已化为**标准形**：$k$ 个 $\\mathbb{RP}^{2}$ 的连通和（$k\\ge1$，' +
           '见 `thm.classification-surfaces`；$k$ 叫**不可定向亏格**）。则',
         '',
         '$$\\chi(S) = 2 - k .$$',
       ].join('\n'),
       notes: [
-        '⚠ **本节点保持 status: skeleton。** 与可定向侧同因：缺口是「任意闭不可定向曲面化到标准形」这一步（`thm.classification-surfaces` 仍 skeleton），以及 $H_{1}$、$H_{2}$ 的结构定理。下面写满能写的部分。',
+        '⚠ **本节点保持 status: skeleton。** **本陈述只验证标准形**：一般闭不可定向曲面须先由分类定理化到标准形，那一步仍是 skeleton（`thm.classification-surfaces`）；此外 $H_{1}$、$H_{2}$ 的结构定理本图也还没有节点。下面写满能写的部分。',
         '**一、标准形计数（完整）**：$k$ 个射影平面的连通和画成 $2k$ 边形，边按 $c_{1}c_{1}c_{2}c_{2}\\cdots c_{k}c_{k}$ 配对（$k\\ge1$）；中心扇形三角剖分：顶点 $2$、边 $k$（配对边界边）$+2k$（辐条）$=3k$、面 $2k$，故 $\\chi=2-3k+2k=2-k$。$k=1$ 给 $\\chi(\\mathbb{RP}^{2})=1$；$k=2$ 给 $\\chi(\\text{克莱因瓶})=0$。',
         '**二、同调为什么是 $k$ 而不是 $2k$**：不可定向闭曲面的 $H_{1}$ 有挠部，$H_{1}(S;\\mathbb{Z})\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$，故 $\\operatorname{rank}H_{1}=k-1$；又 $H_{2}(S;\\mathbb{Z})=0$（不可定向紧曲面没有整体基本类）。代入 $\\chi=\\sum_{i}(-1)^{i}\\beta_{i}$ 得 $1-(k-1)+0=2-k$，与组合计数一致。⚠ 这两条同调事实（$H_{1}$ 结构、$H_{2}=0$）本图没有节点，只在此以定理形式引用。',
         '**标准形上的 $H_{1}$ 推导（完整）**：用 van Kampen（`thm.van-kampen`）对 $2k$ 边形的一个顶点取开覆盖，得 $\\pi_{1}=\\langle c_{1},\\ldots,c_{k}\\mid c_{1}^{2}\\cdots c_{k}^{2}=1\\rangle$；交换化后 $H_{1}\\cong\\mathbb{Z}^{k}/(2(c_{1}+\\cdots+c_{k}))\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$。这一步只处理标准形，桥到一般曲面仍靠分类定理。',
         '**三、连通和公式**：$\\chi(M\\#N)=\\chi(M)+\\chi(N)-2$（证明见 `prop.eulerchar-genus` 的注）。由 $\\chi(\\mathbb{RP}^{2})=1$ 归纳得 $k$ 个射影平面的连通和 $\\chi=2-k$。',
-        '**四、缺口**：上述只对标准形成立。任意闭不可定向曲面要先用分类定理归到标准形，$H_{1}$ 结构与 $H_{2}=0$ 也要在一般曲面上证；本图这两块都空缺，故不删 status、不勾 ∎。',
+        '**四、缺口**：陈述已限定在标准形（一般曲面要先由分类定理归到标准形）。剩下的空白是 $H_{1}$ 结构与 $H_{2}=0$ 在一般闭不可定向曲面上的证明 —— 本图两者都没有节点，故不删 status、不勾 ∎。',
         '⚠ **「亏格」这个词在不可定向侧不能照搬**：`def.genus` 只对可定向定义（除以 $2$ 依赖 $H_{1}$ 自由秩为偶数）。不可定向侧的标准量是 $k$，关系是 $\\chi=2-k$。',
         '⭐ 读数：$\\mathbb{RP}^{2}$ 的 $k=1$、$\\chi=1$；克莱因瓶的 $k=2$、$\\chi=0$；三个射影平面的连通和 $k=3$、$\\chi=-1$。',
       ].join('\n\n'),

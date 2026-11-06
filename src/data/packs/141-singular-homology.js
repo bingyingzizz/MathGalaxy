@@ -599,6 +599,24 @@
       ]
     },
     {
+      id: 'def.barycentric-subdivision',
+      cluster: 'topology.homology',
+      type: 'definition',
+      label: '重心重分',
+      title: '重心重分：把单纯形再切细',
+      regions: ['topology'],
+      tags: ['代数拓扑', '单纯复形', '重心重分'],
+      statement: [
+        '设 $K$ 是单纯复形。$K$ 的**一阶重心重分** $K^{(1)}$ 的顶点是 $K$ 的所有非空单纯形 $\\sigma$ 的重心 $\\hat\\sigma$；$\\hat\\sigma_{0}, \\ldots, \\hat\\sigma_{p}$ 张成 $K^{(1)}$ 的一个 $p$-单纯形，当且仅当',
+        '',
+        '$$\\sigma_{0} \\subset \\sigma_{1} \\subset \\cdots \\subset \\sigma_{p}$$',
+        '',
+        '是 $K$ 中的严格链。几何实现满足 $|K^{(1)}| = |K|$。'
+      ].join('\n'),
+      notes: '⭐ 重分不改变几何实现，但把单纯形切细：若 $\\dim K = n$，则 $\\operatorname{mesh}(K^{(1)}) \\le \\frac{n}{n+1}\\operatorname{mesh}(K)$，反复重分可使直径任意小。\n\n⭐ 它是单纯逼近定理的第二步：重分够细，星条件才成立（见 thm.simplicial-approximation）。\n\n⚠ 新顶点是「单纯形的重心」，不是原顶点；顶点数一般远多于 $K$。',
+      refs: ['Munkres, Elements of Algebraic Topology, Ch. 1 §13', 'Hatcher, Algebraic Topology, Ch. 2 §2.1']
+    },
+    {
       id: 'thm.simplicial-approximation',
       type: 'theorem',
       label: '单纯逼近',
@@ -636,7 +654,7 @@
         '- $\\iota\\,g_{*} = (|g|)_{*}\\,\\iota_{m}$（$g$ 是单纯映射，两边都在单个单纯形上取同一个像）；',
         '- 由 `thm.homotopy-invariance`，$|g| \\simeq \\operatorname{id}$ 给出链同伦 $(|g|)_{*} \\simeq \\operatorname{id}$，故 $\\iota\\,g_{*} \\simeq \\iota_{m}$；',
         '- 重心重分链映射 $\\operatorname{sd}^{m} : C_{*}(K) \\to C_{*}(K^{(m)})$ 与 $\\iota_{m}$ 满足 $\\iota_{m}\\,\\operatorname{sd}^{m} = \\iota$（重分不改变几何实现，链级上是细分），且 $\\operatorname{sd}^{m}$ 诱导同调同构（反向链同伦：每个重分后的单纯形落在原单纯形里，锥构造给出）。',
-        '⚠️ **这里缺一步（本图未写）**：$\\iota_{*}\\,g_{*}\\,\\operatorname{sd}^{m}_{*} = \\iota_{*}$ 只给出 $\\iota_{*}$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g_{*}\\operatorname{sd}^{m}_{*}$ 可逆，而那正是要证的。要闭合，得显式造出链映射 $r : S_{*}(|K|) \\to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\\,\\iota = \\operatorname{id}$、$\\iota\\,r \\simeq \\operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。',
+        '⚠️ **这里缺一步（本图未写）**：$\\iota\\,g\\,\\mathrm{sd}^{m} = \\iota$ 只给出 $\\iota$ 的一个右逆候选，推不出它可逆 —— 除非先知道 $g\\,\\mathrm{sd}^{m}$ 可逆，而那正是要证的（公式里为排版省略了诱导映射的星号下标）。要闭合，得显式造出链映射 $r : S_{*}(|K|) \\to C_{*}(K)$（把足够细的奇异链搬回单纯链）与两侧链同伦 $r\\,\\iota = \\operatorname{id}$、$\\iota\\,r \\simeq \\operatorname{id}$；**这两条链同伦就是本图在链级上的空白**。上面引理的星条件与重分证明本身是完整的，缺的只是这副链条齿轮。',
         '**⚠️ 技术细节**：上面用了「单纯映射诱导链映射」「链同伦的棱柱构造」两件标准机器（见 `def.chain-homotopy`、`thm.homotopy-invariance`）。若把 $C_{*}$ 取成**有序**链群，$g$ 在退化时可能把单纯形压扁，链映射的符号要按顶点顺序处理；本图的同调均按有序链群的商（去掉退化）定义，此处不展开符号。',
         '**边界与反例**：',
         '- $K$ **有限**不能省：无限复形上，重心重分不保证 mesh 趋零（同一条无穷细化的链可能一直很粗），星条件也就无法满足。',
@@ -654,6 +672,15 @@
   ],
 
   edges: [
+    { kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.barycentric-subdivision',
+      note: '重心重分是单纯复形上的操作；新顶点是原复形中非空单纯形的重心。' },
+    { kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.simplicial-approximation',
+      note: '单纯逼近定理的第二步是反复重心重分，使网格直径小于 Lebesgue 数。' },
+    { kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.mv-homology',
+      note: 'Mayer–Vietoris 的小链论证用重心重分把链细化到覆盖里。' },
+    { kind: 'analogy', a: 'def.standard-simplex', b: 'def.simplex-category',
+      note: '标准单纯形 $\\Delta^{p}$ 与单纯形范畴的对象 $[p]$ 是同一组面/退化数据的两个模型：前者是几何实现，后者是组合索引。单纯复形用前者，单纯对象用后者。' },
+
     /* ------------------------------------------------ §A 单纯复形与链复形 */
     { kind: 'definition', definition: 'def.standard-simplex', usedBy: 'def.simplicial-complex',
       note: '复形里的一个 $p$-单纯形就是「$\\Delta^{p}$ 在仿射无关点集上的线性像」的顶点集；' +

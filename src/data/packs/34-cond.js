@@ -232,13 +232,17 @@ window.MG = window.MG || {};
       title: '凝聚态集的满态射',
       regions: ['condensed'],
       tags: ['凝聚态', '满态射'],
-      notes: [
-        '**在说什么**：凝聚态集的态射满不满，只要在**自由**紧 Hausdorff 空间 $F$ 上逐个看 $X(F) \\to Y(F)$ 是不是满的，就判完了。',
-        '⭐ 为什么「自由的」那一批就够：自由紧 Hausdorff 空间（$\\beta I$）在 $\\mathrm{Cond}$ 里构成**生成元族**，而拓扑斯里的满态射只需在生成元族上验。',
-        '⚠ 这里的「满」是**层论意义**的满（局部能提升），不是「每个测试空间上都逐点满」—— 后者更强。本条的正确性依赖「$\\mathrm{Cond}$ 是拓扑斯 + 自由紧 Hausdorff 是生成元族」，本图没有把「生成元族 $implies$ 只需在它们上验」单独立节点。',
-      ].join('\n'),
-      status: 'skeleton',
       statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。',
+      notes: [
+        '**结论**：$p:X\\to Y$ 在 $\\mathrm{Cond}$ 中满，当且仅当对每个自由紧 Hausdorff 空间 $F=\\beta I$，$X(F)\\to Y(F)$ 是满射。下面两个方向都证完。',
+        '**引理 1（层里的满 = 局部可提升）**：景上的层范畴中，$p:X\\to Y$ 满 $\\iff$ 对每个对象 $S$ 与每个 $y\\in Y(S)$，存在覆盖 $\\{S_i\\to S\\}$ 与 $x_i\\in X(S_i)$，使 $p(x_i)=y|_{S_i}$。',
+        '证明：($\\Leftarrow$) 设 $g,h:Y\\to Z$ 且 $g\\circ p=h\\circ p$。对任意 $S,y$，取覆盖与提升 $x_i$；层的局部性给出 $g(y)|_{S_i}=g(p(x_i))=h(p(x_i))=h(y)|_{S_i}$，故 $g(y)=h(y)$，即 $p$ 满。',
+        '($\\implies$) 令 $\\operatorname{Im}(p)$ 为预层 $S\\mapsto\\{\\,y\\in Y(S):\\text{存在覆盖与局部提升}\\,\\}$ 的层化。它是 $Y$ 的子层，$p$ 分解为 $X\\to\\operatorname{Im}(p)\\hookrightarrow Y$：第一支按层化的普遍性质是满的，第二支是单的。$p$ 满迫使单支也满 —— 若 $u,v:\\operatorname{Im}(p)\\to Z$ 满足 $u\\circ m=v\\circ m$，则 $u\\circ p=v\\circ p$，故 $u=v$。拓扑斯中「单 + 满 $\\implies$ 同构」，于是 $\\operatorname{Im}(p)=Y$：每个 $y$ 都局部可提升。',
+        '**引理 2（自由紧 Hausdorff 是投射对象）**：$\\beta I$ 在 $\\mathbf{CHaus}$ 中对满射投射 —— 每个满射 $q:U\\to\\beta I$ 都有截面（见 `prop.free-projective`）。',
+        '**($\\implies$)** 设 $p$ 满，取 $y\\in Y(F)$，$F=\\beta I$。引理 1 给有限覆盖 $\\{u_i:F_i\\to F\\}$ 与 $x_i\\in X(F_i)$，使 $p(x_i)=y|_{F_i}$。令 $U=\\coprod_i F_i$，$q:U\\to F$ 为联合映射；覆盖意味着 $q$ 满。把 $x_i$ 拼成 $x\\in X(U)\\cong\\prod_i X(F_i)$，则 $p(x)=q^{*}(y)$。引理 2 给截面 $s:F\\to U$，于是 $x_F:=s^{*}(x)\\in X(F)$ 满足 $p(x_F)=s^{*}q^{*}(y)=y$。所以 $X(F)\\to Y(F)$ 满。',
+        '**($\\Leftarrow$)** 设每个自由 $F$ 上 $X(F)\\to Y(F)$ 满。取任意 $S$ 与 $y\\in Y(S)$。由 `prop.chaus-quotient-of-free`，存在满射 $q:\\beta I\\to S$。拉回得 $q^{*}(y)\\in Y(\\beta I)$，假设给 $x\\in X(\\beta I)$ 使 $p(x)=q^{*}(y)$；于是 $q$ 就是一个覆盖、$x$ 是 $y$ 在其上的提升。由引理 1，$p$ 满。',
+        '**说明**：证明只用到三件事 —— 层范畴里「满 = 局部可提升」、自由紧 Hausdorff 空间在 $\\mathbf{CHaus}$ 中投射、以及每个紧 Hausdorff 空间都是自由紧 Hausdorff 空间的商。引理 1 的「单 + 满 $\\implies$ 同构」是拓扑斯里的标准事实（单态射是其余核对的等化子，满态射使余核对相等）。$\\mathrm{Cond}$ 的覆盖取有限不交并（`prop.fchaus-pretopology`），故引理 1 中的覆盖确实是有限族。∎'
+      ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
@@ -541,25 +545,21 @@ window.MG = window.MG || {};
     {
       id: 'imp.cond-epi',
       kind: 'implication',
-      sources: ['def.sheaf', 'prop.cond-projectives', 'def.free-presentation'],
+      sources: ['def.sheaf', 'prop.free-projective', 'prop.chaus-quotient-of-free'],
       target: 'prop.cond-epi',
       title: '满态射在自由空间上逐点检验',
       proof: [
-        '**（$\\Longleftarrow$）** 显然：若每个 $X(F) \\to Y(F)$ 都满，则层之间的这个态射在每个自由对象上满，由「生成元集判定满态射」的一般道理即得它在 $\\mathrm{Cond}$ 里是满态射。∎',
+        '**约定**：$\\mathrm{Cond}$ 是 $\\mathbf{CHaus}$ 上的层，覆盖取有限联合满射族。$p:X\\to Y$ 表示凝聚态集的态射。',
         '',
-        '**（$\\Longrightarrow$）** 设 $p : X \\to Y$ 是满态射，先证它「局部满」。取**像**',
+        '**引理（满 = 局部可提升）** 在层范畴中，$p$ 满 $\\iff$ 每个 $y\\in Y(S)$ 都有覆盖 $\\{S_i\\to S\\}$ 与 $x_i\\in X(S_i)$ 使 $p(x_i)=y|_{S_i}$。($\\Leftarrow$) 用层的局部性：若 $g p=h p$，则逐块 $g(y)=h(y)$。($\\implies$) 取 $\\operatorname{Im}(p)$ 为「局部可提升的 $y$」所成预层的层化；$p$ 经 $X\\to\\operatorname{Im}(p)\\hookrightarrow Y$ 分解，第二支是单的；$p$ 满迫使它满，而拓扑斯中单 + 满为同构，故 $\\operatorname{Im}(p)=Y$。',
         '',
-        '$$\\operatorname{Im}(p)(S) := \\{\\, y \\in Y(S) \\ :\\ \\exists \\text{ 覆盖 } (S_{i} \\to S),\\ \\exists x \\in X(S_{i}),\\ p(x) = y|_{S_{i}} \\,\\}$$',
+        '**($\\Leftarrow$)** 设每个自由 $F$ 上 $X(F)\\to Y(F)$ 满。取 $y\\in Y(S)$，由 `prop.chaus-quotient-of-free` 取满射 $q:\\beta I\\to S$。假设给 $x\\in X(\\beta I)$ 使 $p(x)=q^{*}(y)$；则 $q$ 是覆盖、$x$ 是 $y$ 的提升，引理给出 $p$ 满。',
         '',
-        '它是 $Y$ 的一个子层。由定义，$p$ 的每个值都落在 $\\operatorname{Im}(p)$ 里，即 $\\operatorname{Im}(p) \\hookrightarrow Y$ 是满态射；而它同时是单态射，故（层里单满即同构）$\\operatorname{Im}(p) = Y$。也就是说：**$p$ 局部满**。',
+        '**($\\implies$)** 设 $p$ 满，取 $F=\\beta I$ 与 $y\\in Y(F)$。引理给有限覆盖 $\\{u_i:F_i\\to F\\}$ 与 $x_i\\in X(F_i)$。令 $U=\\coprod_i F_i$，$q:U\\to F$ 为联合映射（满）。把 $x_i$ 拼成 $x\\in X(U)\\cong\\prod_i X(F_i)$，则 $p(x)=q^{*}(y)$。由 `prop.free-projective`，$\\beta I$ 在 $\\mathbf{CHaus}$ 中对满射投射，故 $q$ 有截面 $s:F\\to U$。令 $x_F=s^{*}(x)\\in X(F)$，则 $p(x_F)=s^{*}q^{*}(y)=y$。于是 $X(F)\\to Y(F)$ 满。∎',
         '',
-        '现在取 $F \\in \\mathbf{FCHaus}$ 与 $y \\in Y(F)$。\n\n由局部满，存在 $F$ 的覆盖，在其每一块 $F_{i}$ 上有 $x_{i} \\in X(F_{i})$ 使 $p(x_{i}) = y|_{F_{i}}$。\n\n$\\mathbf{FCHaus}$ 上的覆盖由**有限不交并**给出，而 $F$ 是自由的、余积在它上面就是无交并，所以可以直接把有限块上的 $x_{i}$ 拼起来（这正是「保有限积」那一条）：',
-        '',
-        '$$x := (x_{i})_{i} \\in \\prod_{i} X(F_{i}) \\;\\cong\\; X\\Bigl(\\coprod_{i} F_{i}\\Bigr) \\;=\\; X(F)$$',
-        '',
-        '并且 $p(x) = y$。所以 $X(F) \\to Y(F)$ 是满射。∎'
+        '**注意**：不能把 $X(\\coprod_i F_i)$ 直接当成 $X(F)$ —— 覆盖的联合映射一般不是同构，它只满。缺的那一步正是自由空间的投射性（引理 2），不是「有限不交并等于原空间」。'
       ].join('\n'),
-      note: '「满 = 局部满 = 局部可提升」是层论里的通用逻辑；而 $\\mathbf{FCHaus}$ 上的覆盖是**有限不交并**，所以局部终于能拼成整体 —— 这就是为什么探针只需要自由对象。'
+      note: '「满 = 局部满 = 局部可提升」是层论里的通用逻辑；而自由紧 Hausdorff 空间在 $\\mathbf{CHaus}$ 中投射，所以有限覆盖上的提升可以沿截面拉回成整个 $F$ 上的提升 —— 这就是为什么探针只需要自由对象。'
     },
 
     /* -------------------------------------------- Top → Cond 的伴随 */

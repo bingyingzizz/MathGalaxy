@@ -3,6 +3,6 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.power-set`](../nodes/def.power-set.md) 幂集 𝒫(X)：用到了定义 幂集 𝒫(X)　[proofs/e43.definition.md](../proofs/e43.definition.md)
-- [`def.standard-simplex`](../nodes/def.standard-simplex.md) 标准单纯形：用到了定义 标准单纯形　[proofs/e68.definition.md](../proofs/e68.definition.md)
+- [`def.standard-simplex`](../nodes/def.standard-simplex.md) 标准单纯形：用到了定义 标准单纯形　[proofs/e72.definition.md](../proofs/e72.definition.md)
 
 > 续见 [nodes/def.simplicial-complex.4.md](./def.simplicial-complex.4.md)

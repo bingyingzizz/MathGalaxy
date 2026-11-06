@@ -120,8 +120,53 @@ window.MG = window.MG || {};
         '**与 Giraud 定理对照**：Giraud 是把**拓扑斯**说成「预层范畴的正合反射子范畴」，Freyd–Mitchell 是把**小阿贝尔范畴**说成「模范畴的全忠实正合子范畴」—— 两条定理是同一个思路（「找一个具体的大范畴把自己装进去」）在不同结构上的版本。'
       ].join('\n\n'),
       refs: ['Freyd, Abelian Categories (1964)', 'Mitchell, The full imbedding theorem (1964)']
+    },
+
+    /* -------------------------------------------------------- 模范畴 */
+    {
+      id: 'def.module-category',
+      cluster: 'algebra.structures',
+      type: 'definition',
+      label: '模范畴',
+      title: '模范畴 $A\\text{-}\\mathbf{Mod}$',
+      regions: ['algebra', 'homology'],
+      tags: ['模', '范畴', '阿贝尔范畴', '同调代数'],
+      statement: [
+        '设 $A$ 是含幺环。**左 $A$-模范畴** $A\\text{-}\\mathbf{Mod}$ 的对象是左 $A$-模，态射是 $A$-线性映射，复合与单位逐点定义。',
+        '',
+        '右 $A$-模构成 $\\mathbf{Mod}\\text{-}A$；$A$ 交换时两者等价。'
+      ].join('\n'),
+      notes: [
+        '**同调代数的样板间**：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴，有核、余核、单满态射严格；自由模给出足够投射对象，Baer 判据给出足够内射对象，还是 Grothendieck 范畴。',
+        '**特例**：$\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$；$k$ 是域时 $k\\text{-}\\mathbf{Mod}$ 就是 $\\mathbf{Vect}_k$。',
+        '**Freyd–Mitchell**：小阿贝尔范畴可全忠实、正合地嵌入某个 $A\\text{-}\\mathbf{Mod}$，所以「在模范畴里追元素」是合法的推广。'
+      ].join('\n\n'),
+      refs: ['Lang, Algebra', 'Weibel, An Introduction to Homological Algebra, Ch. 1']
     }
   ],
 
-  edges: []
+  edges: [
+
+    {
+      id: 'def-link.category-module-category',
+      kind: 'definition',
+      definition: 'def.category',
+      usedBy: 'def.module-category',
+      note: '模范畴是「对象为模、态射为模同态」的范畴，是 def.category 在代数里的标准例子。'
+    },
+    {
+      id: 'def-link.module-module-category',
+      kind: 'definition',
+      definition: 'def.module',
+      usedBy: 'def.module-category',
+      note: '模范畴的对象类正是全体左 A-模。'
+    },
+    {
+      id: 'analogy.module-category-abelian',
+      kind: 'analogy',
+      a: 'def.module-category',
+      b: 'def.category-of-abelian-groups',
+      note: 'Z-Mod 与 Ab 等价：整系数模就是阿贝尔群，这是模范畴与阿贝尔群范畴的共同特例。'
+    }
+  ]
 });

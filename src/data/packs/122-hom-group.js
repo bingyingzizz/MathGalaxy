@@ -681,28 +681,16 @@ window.MG = window.MG || {};
         '更强的形式：对每个**局部有限**的开覆盖 $\\mathfrak{U}$，规范映射 $\\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) \\to H^{n}(X, \\mathcal{M})$ 已经是同构；一般覆盖先取局部有限的开细化。'
       ].join('\n'),
       notes: [
-        '**标准证明的三个零件。**',
-        '',
-        '**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令',
-        '',
-        '$$\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr),$$',
-        '',
-        '其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。\n\n$\\mathcal{M}$ 是层，故 Čech 正合性可逐点验证；于是 $\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是 $\\mathcal{M}$ 的一个消解，且取整体截面就回到 $\\check{C}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
-        '',
-        '**② 每一项是软的。** 仿紧 Hausdorff 上，局部有限覆盖配**单位分解**（见 `prop.paracompact-partition-unity`）：单位分解可以把 $j_{*}(\\mathcal{M}|_{U})$ 型的层按覆盖成员劈开，于是 $\\check{\\mathcal{C}}^{p}$ 是**细的**（fine，带从属于 $\\mathfrak{U}$ 的分割）；\n\n细层在仿紧空间上**软**，而软层对 $\\Gamma$ **无环**（软层可以「局部化到闭集」，再用单位分解把整体截面拼出来）。',
-        '',
-        '**③ 无环消解算导出函子。** 由 ① ②，$\\check{\\mathcal{C}}^{\\bullet}$ 是一个由 $\\Gamma$-无环层组成的消解；由 Leray 零调性（零调消解算右导出函子），',
-        '',
-        '$$H^{n}(X, \\mathcal{M}) = H^{n}\\bigl(\\Gamma(X, \\check{\\mathcal{C}}^{\\bullet})\\bigr) = \\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) .$$',
-        '',
-        '再沿覆盖取余极限（Čech 上同调按定义就是沿覆盖的滤过余极限）得到一般结论。∎',
-        '',
-        '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。\n\n同一个结论，两套互不依赖的机制。',
-        '',
-        '⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。',
-        '',
-        '📌 这一条是**深层定理**，上面给的是标准论证的骨架（三个零件各自都是完整的陈述）；逐步细节见 Godement 的原始处理。'
-      ].join('\n')
+        '**标准证明的三个零件。** 下面把能逐字核验的部分写出来；写不动的两条明确标成缺口 —— 本节点因此仍标 `status: \'skeleton\'`。',
+        '**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr)$，其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。',
+        '**① 的证明。** 只需逐点看茎。固定 $x$，取 $i$ 使 $x \\in U_{i}$。在茎上定义收缩同伦 $h^{p} : (\\check{\\mathcal{C}}^{p})_{x} \\to (\\check{\\mathcal{C}}^{p-1})_{x}$：对 $\\sigma \\in (\\check{\\mathcal{C}}^{p})_{x}$ 令 $(h\\sigma)_{i_{0} \\cdots i_{p-1}} := \\sigma_{i\\,i_{0} \\cdots i_{p-1}}$（其余分量取 $0$，在 $x$ 的充分小邻域里 $U_{i}$ 一直可用）。直接按 Čech 微分 $\\delta$ 的符号计算得 $\\delta h + h \\delta = \\operatorname{id}$（$p \\ge 1$），而 $p = 0$ 时 $\\delta h = \\operatorname{id}$ 正是增广映射 $\\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x}$。所以增广复形 $0 \\to \\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x} \\to (\\check{\\mathcal{C}}^{1})_{x} \\to \\cdots$ 正合；逐点正合即层正合。取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$，故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
+        '**② 每一项是软的：细层部分已证。** 仿紧 Hausdorff 上，局部有限覆盖配单位分解（`prop.paracompact-partition-unity`）。先证「细 $\\implies$ 软」：设 $\\mathcal{F}$ 是细层，$F \\subseteq X$ 闭，$s \\in \\mathcal{F}(F)$。每个 $x \\in F$ 有邻域 $U_{x}$ 与 $s_{x} \\in \\mathcal{F}(U_{x})$ 使 $s_{x}|_{F \\cap U_{x}} = s$；把 $\\{U_{x}\\}_{x \\in F} \\cup \\{X \\setminus F\\}$ 取局部有限加细并配单位分解 $\\{\\rho_{j}\\}$。令 $s_{j} \\in \\mathcal{F}(V_{j})$ 是相应局部截面；在 $V_{j}$ 外把 $\\rho_{j} s_{j}$ 延拓为 $0$（$\\operatorname{supp} \\rho_{j} \\subseteq V_{j}$ 保证相容），则 $\\tilde{s} := \\sum_{j} \\rho_{j} s_{j}$ 是 $X$ 上的整体截面（局部有限和），且在 $F$ 上等于 $s$。所以 $\\mathcal{F}$ 软。',
+        '**② 的缺口：软层无环。** 还需要引理：仿紧 Hausdorff 上，软层 $\\mathcal{M}$ 满足 $H^{n}(X, \\mathcal{M}) = 0$（$n \\ge 1$）。标准证明（Godement）走典范软消解 $0 \\to \\mathcal{M} \\to C^{0}(\\mathcal{M}) \\to C^{1}(\\mathcal{M}) \\to \\cdots$，逐项用单位分解把闭集上的截面拼成整体；本图没有这条引理的节点，也没有把「$C^{q}(\\mathcal{M})$ 软」与「软消解算导出函子」两步展开。',
+        '**③ 的缺口：零调消解算导出函子。** 还需标准同调代数引理：若 $0 \\to \\mathcal{M} \\to \\mathcal{A}^{0} \\to \\mathcal{A}^{1} \\to \\cdots$ 是消解且每个 $\\mathcal{A}^{q}$ 是 $\\Gamma$-无环（即 $H^{n}(X, \\mathcal{A}^{q}) = 0$，$n \\ge 1$），则 $H^{n}(X, \\mathcal{M}) \\cong H^{n}\\bigl(\\Gamma(X, \\mathcal{A}^{\\bullet})\\bigr)$。证明是与内射消解比较（比较引理 + 逐项填图），本图同样未单列节点。',
+        '**结论**：把 ② 的软层无环与 ③ 的零调消解补上，取 $\\mathcal{A}^{\\bullet} = \\check{\\mathcal{C}}^{\\bullet}$ 即得 $H^{n}(X,\\mathcal{M}) \\cong \\check{H}^{n}(\\mathfrak{U},\\mathcal{M})$；再沿局部有限覆盖取余极限即得定理。⚠ 本节点**仍标 skeleton**：缺口就是上面两条标准引理（① 与「细 $\\implies$ 软」已在注中证完）。',
+        '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。',
+        '⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。'
+      ].join('\n\n'),
     },
 
     /* ======================================================================

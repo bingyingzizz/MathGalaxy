@@ -12,10 +12,12 @@ $$[n] := n + 1 := \{\, 0, 1, \ldots, n \,\} \qquad (n \in \mathbb{N}),$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.category`](../nodes/def.category.md) 范畴：用到了定义 范畴　[proofs/def-dep.simplexcat-category.md](../proofs/def-dep.simplexcat-category.md)
+- [`def.standard-simplex`](../nodes/def.standard-simplex.md) 标准单纯形：e71.analogy　[proofs/e71.analogy.md](../proofs/e71.analogy.md)
+
+- …另有入边，续页见 [nodes/def.simplex-category.3.md](./def.simplex-category.3.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.simplex-category.3.md](./def.simplex-category.3.md)
+- …另有出边，续页见 [nodes/def.simplex-category.4.md](./def.simplex-category.4.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.3；May, Simplicial Objects in Algebraic Topology
 

@@ -327,49 +327,35 @@
     },
     {
       id: 'thm.hadamard-factorization',
+      cluster: 'analysis.entire',
       type: 'theorem',
       status: 'skeleton',
       label: 'Hadamard 分解定理',
       title: 'Hadamard 分解定理：有限阶整函数的因子分解',
-      cluster: 'analysis.entire',
-      regions: ['complex'],
-      tags: ['复变函数', 'Hadamard', '因子分解', '整函数的阶'],
+      regions: ['analysis'],
+      tags: ['复分析', '整函数', 'Hadamard', '因子分解'],
+      refs: ['王晓光《复变函数》· Hadamard 分解定理', 'Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §3.3 · Hadamard’s Factorization Theorem', 'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.4 · Hadamard’s factorization theorem'],
       statement: [
         '设 $f$ 是**有限阶** $\\rho$ 的整函数，零点为 $\\{a_{n}\\}$（按重数计）。则',
         '',
         '$$f(z) = z^{m} e^{P(z)} \\prod_{n} E_{p}\\left(\\frac{z}{a_{n}}\\right),$$',
         '',
-        '其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数' +
-          '（不再像 Weierstrass 那样逐个选）。',
+        '其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。',
         '',
-        '特别地：$\\rho < 1$ 时 $p = 0$，故 ' +
-          '$\\sum |a_{n}|^{-1} < \\infty$（这不表示零点有限：$\\prod_{n}(1 - z/n^{2})$ 的阶为 $\\frac{1}{2}$、仍有无穷多零点）。',
+        '特别地：$\\rho < 1$ 时 $p = 0$，故 $\\sum |a_{n}|^{-1} < \\infty$（这不表示零点有限：$\\prod_{n}(1 - z/n^{2})$ 的阶为 $\\frac{1}{2}$、仍有无穷多零点）。'
       ].join('\n'),
       notes: [
-        '**证明思路（骨架）**：',
-        '',
-        '**第一步：零点密度。** 由 Jensen 公式$n(R) \\log 2 \\le \\log M(2R) + O(1)$，' +
-          '而 $\\log M(2R) = O(R^{\\rho + \\varepsilon})$，故 $n(R) = O(R^{\\rho+\\varepsilon})$，于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$。\n\n' +
-          '这一步说明**统一取 $p = \\lfloor \\rho \\rfloor$ 就够**。',
-        '',
-        '**第二步：除掉零点。** 令 $\\Phi(z) := f(z)\\big/\\prod E_{p}(z/a_{n})$，则 $\\Phi$ 无零点、且仍是有限阶' +
-          '（乘积的贡献被初等因子的估计压住）。',
-        '',
-        '**第三步：无零点的有限阶整函数 = $e^{\\text{多项式}}$。** 写 $\\Phi = e^{h}$（单连通，`prop.single-valued-branch`），' +
-          '则 $\\operatorname{Re} h = \\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式，' +
-          '得 $h$ 是次数 $\\le \\rho$ 的多项式。∎',
-        '',
-        '⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化、并把自由度压成一个多项式。' +
-          'Picard 小定理在有限阶情形就靠它证。',
-        '',
-        '⚠️ 「有限阶」不能省。无穷阶整函数照样能分解（Weierstrass），但指数部分不再是多项式，' +
-          '而且没有这么强的结论。',
-      ].join('\n'),
-      refs: [
-        '王晓光《复变函数》· Hadamard 分解定理',
-        'Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §3.3 · Hadamard’s Factorization Theorem',
-        'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.4 · Hadamard’s factorization theorem',
-      ],
+        '**约定**：$f$ 整、有限阶 $\\rho$；零点 $a_{n}\\ne 0$（按重数计），$z=0$ 处的零点重数为 $m$；$n(r)$ 是模 $\\le r$ 的零点个数，$M(r)=\\max_{|z|=r}|f(z)|$，$E_{p}(w)=(1-w)e^{w+w^{2}/2+\\cdots+w^{p}/p}$。取 $p=\\lfloor\\rho\\rfloor$（$\\rho<1$ 时 $p=0$），于是 $p+1>\\rho$。',
+        '**第一步：零点密度（完整）。** 对 $f/z^{m}$ 用 Jensen 公式（`prop.jensen`，此时原点值非零）：$n(R)\\log 2 \\le \\log M(2R)-\\log|f(0)|+O(1)$。有限阶给 $\\log M(2R)\\le C\\,R^{\\rho+\\varepsilon}$，故 $n(R)\\le C\\,R^{\\rho+\\varepsilon}$。于是对任何 $\\sigma>\\rho$，分部求和给 $\\sum_{n}|a_{n}|^{-\\sigma}=\\sigma\\int_{0}^{\\infty}n(r)\\,r^{-\\sigma-1}\\,\\mathrm{d}r<\\infty$（$n(r)$ 在 $r<|a_{1}|$ 时为 $0$，无边界项）。特别地 $\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。',
+        '**第二步：乘积收敛（完整）。** 对 $|w|\\le 1/2$，$\\log E_{p}(w)=-\\sum_{k>p}w^{k}/k$，故 $|E_{p}(w)-1|\\le C_{p}|w|^{p+1}$。给定 $R$：只有有限个 $|a_{n}|\\le 2R$；对其余项 $|z/a_{n}|\\le 1/2$，于是 $\\sum_{|a_{n}|>2R}|z/a_{n}|^{p+1}\\le R^{p+1}\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。故 $\\prod_{n}E_{p}(z/a_{n})$ 在 $|z|\\le R$ 上一致收敛，定义出一个整函数。',
+        '**第三步：商无零点（完整）。** 令 $\\Phi(z):=f(z)\\big/\\bigl(z^{m}\\prod_{n}E_{p}(z/a_{n})\\bigr)$。每个 $a_{n}$ 处 $E_{p}(z/a_{n})$ 恰有一阶零点，与 $f$ 的零点相消；其它点 $f\\ne 0$ 而乘积非零。故 $\\Phi$ 整、处处非零。',
+        '**第四步：$\\Phi$ 的阶 $\\le\\rho$（缺口）。** 需要对 $|z|=r$ 的两条估计 $\\log|\\prod_{n}E_{p}(z/a_{n})|\\le C\\,r^{\\rho+\\varepsilon}$ 与 $\\ge -C\\,r^{\\rho+\\varepsilon}$。上界可按 $|a_{n}|\\le 2r$、$|a_{n}|>2r$ 拆分，配合 $n(t)\\le C t^{\\rho+\\varepsilon}$ 与分部求和证出；**下界在 $z$ 靠近某个零点 $a_{n}$ 时必须单独书账**（用 $|f|$ 在该点的零点阶数与 $|E_{p}|$ 的一阶零点相消，把「$\\log|P|$ 的负值」与「$\\log|f|$ 的负值」配对），本图没有把这一步写全。这就是本节点仍标 `status: \'skeleton\'` 的缺口。',
+        '**第五步：无零点 $\\implies$ 指数（完整）。** $\\Phi$ 整、无零点，$\\mathbb{C}$ 单连通，由 `prop.single-valued-branch` 存在整函数 $h$ 使 $\\Phi=e^{h}$。',
+        '**第六步：Borel–Carathéodory（完整证明）。** 引理：若 $g$ 在 $|z|\\le R$ 全纯、$g(0)=0$、$\\operatorname{Re} g\\le A$（$A>0$），则对 $|z|=r<R$，$|g(z)|\\le 2Ar/(R-r)$。证明：$\\varphi:=g/(2A-g)$ 在 $|z|\\le R$ 全纯（分母的实部 $\\ge A$），且 $|\\varphi|\\le 1$ —— 因为 $|g|^{2}\\le(2A-\\operatorname{Re} g)^{2}+(\\operatorname{Im} g)^{2}$ 等价于 $\\operatorname{Re} g\\le A$；又 $\\varphi(0)=0$。Schwarz 引理（`lem.schwarz`）给 $|\\varphi(z)|\\le r/R$，于是 $|g|=\\bigl|2A\\varphi/(1+\\varphi)\\bigr|\\le 2A|\\varphi|/(1-|\\varphi|)\\le 2Ar/(R-r)$。∎',
+        '**第七步：$h$ 是多项式（完整，条件于第四步）。** 由第四步，$\\operatorname{Re}(h-h(0))=\\log|\\Phi|-\\operatorname{Re} h(0)\\le C R^{\\rho+\\varepsilon}$。对 $g=h-h(0)$ 在 $|z|\\le R$ 用第六步，取 $r=R/2$：$|h(z)-h(0)|\\le 2C R^{\\rho+\\varepsilon}$（$|z|\\le R/2$）。再由 Cauchy 估计（`thm.cauchy-inequality`），对 $k>\\rho$，$|h^{(k)}(0)|\\le k!\\,C R^{\\rho+\\varepsilon}/(R/2)^{k}\\to 0$（$R\\to\\infty$，取 $\\varepsilon<k-\\rho$），故 $h^{(k)}(0)=0$：$h$ 是次数 $\\le\\lfloor\\rho\\rfloor$ 的多项式。',
+        '**结论**：若补上第四步的下界估计，则 $f=z^{m}e^{h}\\prod_{n}E_{p}(z/a_{n})=z^{m}e^{P}\\prod_{n}E_{p}(z/a_{n})$，即得 Hadamard 分解。⚠ 本节点**仍标 skeleton**：缺的正是「典范乘积的阶 $\\le\\rho$」的下界（在零点附近的局部书账）；第一、二、三、五、六、七步都已写全。',
+        '⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化（同一个 $p$）、并把自由度压成一个多项式 $P$。$\\rho<1$ 时 $p=0$，$\\sum|a_{n}|^{-1}<\\infty$，但零点仍可无穷（$\\prod(1-z/n^{2})$ 的阶为 $1/2$）。⚠ 「有限阶」不能省：无穷阶整函数照样有 Weierstrass 乘积，但指数部分不再是多项式，结论也没有这么强。'
+      ].join('\n\n'),
     },
 
     /* ---------------------------------------------------------------- §D */
