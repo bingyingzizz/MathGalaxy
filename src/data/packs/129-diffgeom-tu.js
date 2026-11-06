@@ -501,7 +501,6 @@ window.MG = window.MG || {};
       id: 'thm.regular-level-set',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
-      status: 'skeleton',
       label: '正则水平集定理',
       title: '正则水平集定理',
       regions: ['diffgeom'],
@@ -520,15 +519,19 @@ window.MG = window.MG || {};
         '特别地 $m = 1$ 时：$\\nabla F(p)\\ne 0$ 的每个正则值 $c$ 的原像是 $(n-1)$ 维光滑流形（**超曲面**）。'
       ].join('\n'),
       notes: [
+        '**证明**：设 $M = F^{-1}(c)$。三步：逐点造卡、说明这些卡拼成图册、再算切空间。',
+        '**第一步：逐点造卡**。取 $p_{0}\\in M$。$\\mathrm{d}F_{p_{0}}$ 满射，故存在 $m$ 个坐标（重排后不妨取最后 $m$ 个，记 $x = (u,v)\\in\\mathbb{R}^{n-m}\\times\\mathbb{R}^{m}$）使 $\\det\\Bigl(\\frac{\\partial F^{i}}{\\partial v^{j}}(p_{0})\\Bigr)_{i,j=1}^{m} \\ne 0 .$ 隐函数定理给出：$u_{0}$ 的开邻域 $W\\subseteq\\mathbb{R}^{n-m}$、$v_{0}$ 的开邻域 $V\\subseteq\\mathbb{R}^{m}$ 与 $C^{\\infty}$ 映射 $g : W\\to V$，使 $g(u_{0}) = v_{0}$，且 $M\\cap(W\\times V) = \\{(u,g(u)) : u\\in W\\}.$ 于是 $\\varphi : M\\cap(W\\times V)\\to W$，$(u,g(u))\\mapsto u$ 是双射，逆 $u\\mapsto (u,g(u))$ 光滑；它把 $M$ 的开集同胚地送到开集 $W$，是一张 $n-m$ 维图卡。',
+        '**第二步：图册**。$M\\subseteq\\mathbb{R}^{n}$ 是第二可数空间的子空间，故 Lindelöf；上述图卡（它们的定义域是 $M$ 的开集）覆盖 $M$，故可取出可数子覆盖。两张卡重叠处 $\\varphi_{\\beta}\\circ\\varphi_{\\alpha}^{-1}(u) = \\psi\\bigl(u, g_{\\alpha}(u)\\bigr),$ 其中 $\\psi$ 是坐标投影（线性映射，光滑）、$g_{\\alpha}$ 光滑，复合仍光滑；故转移映射 $C^{\\infty}$。$M$ 从 $\\mathbb{R}^{n}$ 继承 Hausdorff 与第二可数性，于是是 $n-m$ 维光滑流形。',
+        '**第三步：切空间**。若 $\\gamma : (-\\varepsilon,\\varepsilon)\\to M$ 光滑、$\\gamma(0)=p$，则 $F\\circ\\gamma\\equiv c$，链式法则给 $\\mathrm{d}F_{p}\\bigl(\\dot{\\gamma}(0)\\bigr) = 0$，故 $T_{p}M\\subseteq\\ker\\mathrm{d}F_{p}$。反过来，上面那张卡给出 $\\dim T_{p}M = n-m$；秩定理（秩 $m$）给出 $\\dim\\ker\\mathrm{d}F_{p} = n-m$。两边同维且前者包含于后者，故相等。∎',
         '**例子**：$F(x) = \\lVert x\\rVert^{2}$，它在 $F^{-1}(1) = S^{n-1}$ 上梯度为 $2x\\ne 0$，故球面是流形。\n\n$F = \\det$，$\\mathrm{d}\\det_{A}(B) = \\operatorname{tr}(A^{-1}B)$（$\\det A = 1$ 时），在 $\\mathrm{SL}(n,\\mathbb{R})$ 上非零，故 $\\mathrm{SL}(n,\\mathbb{R})$ 是 $n^{2}-1$ 维流形。',
         '**满射条件不能丢**：$F(x,y) = xy$、$c = 0$，$\\mathrm{d}F$ 在原点为零，而 $F^{-1}(0)$ 是两条相交直线 —— 交点附近不是流形。',
-        '**证明骨架**：每点用隐函数定理把 $m$ 个变量解成另 $n-m$ 个变量的光滑函数，于是 $M$ 局部是图 $\\{(x,g(x))\\}$，图就是一张卡；重叠处的转移映射是光滑映射的限制，故相容。\n\n切空间由「$F\\circ\\gamma\\equiv c$ 求导」得 $\\mathrm{d}F_{p}(\\gamma\'(0)) = 0$，再比维数。',
-        '⚠️ **正则性是相对 $F$ 说的**：$c$ 不是正则值时原像可能是奇点集（$xy = 0$ 就是）。同一个 $M$ 可以用不同的 $F$ 表示，只要找得到一个 $F$ 使 $c$ 是正则值就够了。',
+        '⚠️ **正则性是相对 $F$ 说的**：$c$ 不是正则值时原像可能是奇点集（$xy = 0$ 就是）。同一个 $M$ 可以用不同的 $F$ 表示，只要找得到一个 $F$ 使 $c$ 是正则值就够了（比如 $S^{n-1}$ 也可写成 $\\lVert x\\rVert - 1 = 0$ 的水平集）。',
         '**它把两块连起来**：左边是多元微积分（隐函数定理），右边是几何（流形与切空间）。所以「微分几何离别的板块太远」在这一点上可以直接反驳 —— 水平集定理就是显式的桥。'
       ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「流形」· 正则水平集与隐函数定理',
-        'Tu, An Introduction to Manifolds, 「Manifolds」· 正则水平集定理'
+        'Tu, An Introduction to Manifolds, 「Manifolds」· 正则水平集定理',
+        'Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 5 · Submanifolds'
       ]
     },
 

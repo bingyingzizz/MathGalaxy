@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **1540 nodes / 3169 edges** across **15 galaxies and 105 clusters** (content `v0.9.3`).
+> **1540 nodes / 3168 edges** across **15 galaxies and 105 clusters** (content `v0.9.3`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >
@@ -675,8 +675,8 @@ python -m http.server 8000     # 然后访问 http://localhost:8000
 
 ## 目前内置的内容
 
-**13 个星系 · 77 个星团 · 一千二百多个节点**（同时属于两个星系的节点会在两边各计一次）。
-**这只是现在的样子 —— 内容还在长，所以这里不写死具体数字**（权威数字以 `llms.txt` / `dist/graph.json` 的 `meta.counts` 为准）。
+**星系 → 星团 → 节点**，三层都点得开；同属两个星系的节点会在两边各计一次。
+**内容还在长，所以这里不写死具体数字**（权威数字以 `llms.txt` / `dist/graph.json` 的 `meta.counts` 为准）。
 
 | 星系 | 大致是从哪到哪 |
 |---|---|

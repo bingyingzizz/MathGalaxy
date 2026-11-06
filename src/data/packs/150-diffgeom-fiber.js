@@ -111,7 +111,7 @@ window.MG = window.MG || {};
         '**整体构造（存在性）**：取 $M$ 的图卡覆盖 $\\{(U_{\\alpha}, x_{\\alpha})\\}$。在每张图卡上用引理 B 定义算子 $D_{\\alpha}$。若 $U_{\\alpha}\\cap U_{\\beta}\\ne\\emptyset$，在重叠开集上 $D_{\\alpha}$ 与 $D_{\\beta}$ 都满足 (1)–(4)；由引理 A（在 $x_{\\alpha}$ 坐标下）$D_{\\beta} = D_{\\alpha}$。故所有 $D_{\\alpha}$ 拼成一个整体算子 $\\mathrm{d}$：对 $\\omega\\in\\Omega^{k}(M)$，$\\mathrm{d}\\omega$ 在 $U_{\\alpha}$ 上定义为 $D_{\\alpha}(\\omega|_{U_{\\alpha}})$；重叠处一致，故良定义。(1)–(4) 都是局部性质，已逐图卡验证，故整体成立。',
         '**唯一性**：设 $\\mathrm{d}^{\\prime}$ 是满足 (1)–(4) 的另一族算子。对任意图卡 $(U,x)$，$\\mathrm{d}^{\\prime}$ 限制在 $U$ 上满足 (1)–(4)，由引理 A 它等于坐标公式，即等于 $\\mathrm{d}$。$U$ 任意，故 $\\mathrm{d}^{\\prime} = \\mathrm{d}$。∎',
         '**「与图卡无关」到底指什么**：第 4 步说明换图卡算出的两个公式在重叠处相等 —— 因为它们都是满足公理的算子，而引理 A 说这样的算子只有一个。真正把 $\\mathrm{d}$ 钉死的是 (3)+(4)：(1) 给函数上的值，(3) 让 $\\mathrm{d}$ 穿过楔积，(4) 杀掉 $\\mathrm{d}x^{I}$ 的导数。',
-        '**与 Tu 的路线对照**：Tu 先用 `prop.pullback-forms` 的第 3 条（与拉回交换）证图卡无关；这里改用「公理唯一性」证。两条路线都对，且都不需要单位分解 —— 这也说明 `thm.smooth-partition-unity` 在本条里不是必需品。',
+        '**与 Tu 的路线对照**：Tu 先用 `prop.pullback-forms` 的第 3 条（与拉回交换）证图卡无关；这里改用「公理唯一性」证。两条路线都对，且都不需要单位分解 —— 这也说明光滑单位分解在本条里不是必需品。',
         '⭐ 有了这一条，`def.de-rham-complex` 里那串 $\\Omega^{k}(M)\\xrightarrow{\\ \\mathrm{d}\\ }\\Omega^{k+1}(M)$ 才真的是一串映射 —— 在这条之前，那串东西只是记号。',
         '⚠️ 顺带钉住一个常见误解：$\\mathrm{d}$ 不依赖**度量**，也不依赖**联络**。它是光滑结构本身给出的算子；联络（`def.affine-connection`）与它无关，两者能凑出公式纯属巧合之外的对称性。',
         '⚠️ **本图缺的节点**：$\\mathrm{d}^{2}=0$ 的函数情形用到了 Clairaut 定理（混合偏导对称），本图没有这个节点，故在此直接以经典微积分事实使用。'
@@ -324,9 +324,6 @@ window.MG = window.MG || {};
     { id: 'dep.mf3-dm-form', kind: 'definition',
       definition: 'def.form-on-manifold', usedBy: 'prop.exterior-derivative-manifold',
       note: '命题的主语就是 $\\Omega^{k}(M)$ 上的算子族。' },
-    { id: 'dep.mf3-dm-pou', kind: 'definition',
-      definition: 'thm.smooth-partition-unity', usedBy: 'prop.exterior-derivative-manifold',
-      note: '把图卡上的局部定义拼成整体，靠单位分解 —— 存在性那一半的收尾。' },
 
     { id: 'dep.mf3-pbm-form', kind: 'definition',
       definition: 'def.form-on-manifold', usedBy: 'prop.pullback-form-manifold',

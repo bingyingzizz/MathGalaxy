@@ -135,7 +135,6 @@
     {
       id: 'thm.runge',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Runge 逼近定理',
       title: 'Runge 逼近定理：没有洞的区域上，全纯函数可以用多项式逼近',
       cluster: 'analysis.entire',
@@ -152,27 +151,21 @@
           '且这些有理函数的极点可以预先指定在 $\\mathbb{C}\\setminus K$ 的每个连通分支里各取一点。',
       ].join('\n'),
       notes: [
-        '**证明思路（骨架）**：先把「在紧集上逼近」化归成「用 Cauchy 积分表示 + 离散化积分」。' +
-          '由 Cauchy 积分公式，$f(z) = \\frac{1}{2\\pi i}\\oint_{\\Gamma}' +
-          '\\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta$，把积分用 Riemann 和逼近，' +
-          '得到形如 $\\sum_{j} \\frac{c_{j}}{\\zeta_{j} - z}$ 的有理函数（极点在 $\\Gamma$ 上）。',
-        '',
-        '第二步是**把极点挪出去**：$\\frac{1}{\\zeta - z}$ 关于 $z$ 在 $K$ 上可以展开成幂级数（$|z| < |\\zeta|$），' +
-          '于是「极点在洞外」的有理函数能用多项式一致逼近 —— 这一步靠「$\\mathbb{C}\\setminus K$ 连通」' +
-          '保证洞外的点可以被「推到无穷远」。有洞时推不出去，只能停在有理函数。∎',
-        '',
-        '⭐ **它和 Mittag-Leffler（`thm.mittag-leffler`）、Weierstrass 乘积（`thm.weierstrass-product`）是三兄弟**：' +
-          'Runge 管「逼近」、Mittag-Leffler 管「造指定主部」、Weierstrass 管「造指定零点」。' +
-          '三者都回答同一个问题：**在区域上能造出什么样的全纯/亚纯函数**。',
-        '',
-        '⚠️ 「$\\mathbb{C}\\setminus K$ 连通」不能去掉：$K = $ 单位圆周时 $\\frac{1}{z}$ 在圆周附近全纯，' +
-          '但它在 $K$ 上不能被多项式一致逼近（否则由最大模原理会推出一件不可能的事）。',
-      ].join('\n'),
+        '**证明**：分四步 —— ①把 $f$ 写成 $K$ 外一条「方格边界」上的 Cauchy 积分；②把积分离散成极点在 $K$ 外的有理函数；③把这些极点沿 $\\mathbb{C}\\setminus K$ 里的道路推到指定位置；④无洞时再推到无穷远，展开成多项式。',
+        '**引理 A（Cauchy 表示）**：设 $K$ 紧、$V$ 是 $K$ 的开邻域、$f$ 在 $V$ 上全纯。则存在有限个闭正方形之并 $S$ 与它的正向边界 $\\Gamma = \\partial S$，使 $K \\subset \\operatorname{int} S,\\qquad S \\subset V,\\qquad f(z) = \\frac{1}{2\\pi i}\\int_{\\Gamma}\\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta\\quad(z\\in K).$ 证明：$d := \\operatorname{dist}(K,\\mathbb{C}\\setminus V) > 0$。取边长为 $h$ 的方格网，$h\\sqrt{2} < d$；令 $S$ 为所有与 $K$ 相交的闭方格之并。则 $K\\subset\\operatorname{int} S$，且 $S$ 的每点距 $K$ 不超过 $h\\sqrt{2} < d$，故 $S\\subset V$。把每个方格的边界逆时针定向后相加，公共边上的积分相消，得 $\\Gamma = \\partial S$。对 $z\\in K\\subset\\operatorname{int} S$，函数 $h(\\zeta) := (f(\\zeta)-f(z))/(\\zeta - z)$（在 $\\zeta = z$ 处补充定义为 $f\'(z)$）在 $S$ 的一个邻域上全纯，故在每个方格上用 Cauchy–Goursat（`thm.cauchy-goursat`）有 $\\int_{\\partial Q} h = 0$，相加得 $\\int_{\\Gamma} h = 0$。于是 $\\int_{\\Gamma}\\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta = f(z)\\int_{\\Gamma}\\frac{\\mathrm{d}\\zeta}{\\zeta - z} = 2\\pi i\\, f(z)\\,\\operatorname{Ind}_{\\Gamma}(z) = 2\\pi i\\,f(z),$ 末步用「有界区域正向边界在其内点的指数为 $1$」（指数在 $\\mathbb{C}\\setminus\\Gamma$ 的每个连通分支上为常数，且在无界分支为 $0$）。',
+        '**第一步：离散化积分**。$\\Gamma$ 是紧集且 $\\Gamma\\cap K = \\emptyset$，故 $g(\\zeta,z) := f(\\zeta)/(\\zeta - z)$ 在 $\\Gamma\\times K$ 上连续，从而一致连续。把 $\\Gamma$ 的每条边等分成小段，小段长 $<\\delta$，取中点 $\\zeta_{j}$、增量 $\\Delta\\zeta_{j}$，作 Riemann 和 $R(z) := \\frac{1}{2\\pi i}\\sum_{j}\\frac{f(\\zeta_{j})}{\\zeta_{j} - z}\\,\\Delta\\zeta_{j}.$ 由一致连续性，取 $\\delta$ 足够小可使 $\\sup_{z\\in K}\\Bigl|\\frac{1}{2\\pi i}\\int_{\\Gamma} g(\\zeta,z)\\,\\mathrm{d}\\zeta - R(z)\\Bigr| < \\frac{\\varepsilon}{2}.$ $R$ 是有理函数，极点只在中点 $\\zeta_{j}\\in\\Gamma\\subset\\mathbb{C}\\setminus K$。',
+        '**第二步：推极点**。设 $b,b^{\\prime}$ 在 $\\mathbb{C}\\setminus K$ 的同一连通分支 $\\Omega$ 内。取 $\\Omega$ 中的折线连接 $b$ 到 $b^{\\prime}$，在折线上取点 $b = b_{0}, b_{1}, \\ldots, b_{N} = b^{\\prime}$，使 $|b_{i+1} - b_{i}| < \\operatorname{dist}(b_{i},K)$。对 $z\\in K$，$|b_{i}-z| \\ge \\operatorname{dist}(b_{i},K) > |b_{i+1}-b_{i}|$，故几何级数 $\\frac{1}{b_{i+1} - z} = \\frac{1}{b_{i} - z}\\cdot\\frac{1}{1 - \\frac{b_{i}-b_{i+1}}{b_{i}-z}} = \\sum_{k=0}^{\\infty}\\frac{(b_{i}-b_{i+1})^{k}}{(b_{i}-z)^{k+1}}$ 在 $K$ 上一致收敛（公比 $\\le q_{i} < 1$）。截断到 $k\\le N_{i}$ 即把 $1/(b_{i+1}-z)$ 用「极点只在 $b_{i}$」的有理函数一致逼近到任意精度。逐步搬运，$1/(b-z)$ 可被「极点只在 $b^{\\prime}$」的有理函数一致逼近；对这些基本项线性组合，即得任意有理函数在 $K$ 上的一致逼近（极点逐次搬完）。',
+        '**第三步：无洞时得到多项式**。若 $\\mathbb{C}\\setminus K$ 连通，它是无界连通开集。取 $b^{\\prime}$ 使 $|b^{\\prime}| > 2\\max_{z\\in K}|z|$。对 $z\\in K$，$|z/b^{\\prime}| \\le 1/2$，故 $\\frac{1}{b^{\\prime} - z} = \\frac{1}{b^{\\prime}}\\sum_{k=0}^{\\infty}\\Bigl(\\frac{z}{b^{\\prime}}\\Bigr)^{k}$ 在 $K$ 上一致收敛，截断即多项式。于是 $f$ 在 $K$ 上被多项式一致逼近到 $\\varepsilon$。',
+        '**一般情形**：$\\mathbb{C}\\setminus K$ 的每个连通分支 $\\Omega$ 里预先取一点 $b_{\\Omega}$。第一步给极点在 $\\Gamma$ 上的有理函数 $R$；$\\Gamma\\subset\\mathbb{C}\\setminus K$，每个极点落在某个分支 $\\Omega$ 里，用第二步把它搬到 $b_{\\Omega}$。有限个极点、每步误差任意小，故 $R$ 被极点在 $\\{b_{\\Omega}\\}$ 的有理函数一致逼近到 $\\varepsilon/2$，与第一步的 $\\varepsilon/2$ 合并即得结论。∎',
+        '⭐ **它和 Mittag-Leffler（`thm.mittag-leffler`）、Weierstrass 乘积（`thm.weierstrass-product`）是三兄弟**：Runge 管「逼近」、Mittag-Leffler 管「造指定主部」、Weierstrass 管「造指定零点」。三者都回答同一个问题：**在区域上能造出什么样的全纯/亚纯函数**。',
+        '⚠️ 「$\\mathbb{C}\\setminus K$ 连通」不能去掉：$K = $ 单位圆周时 $1/z$ 在圆周附近全纯，但它在 $K$ 上不能被多项式一致逼近（否则由最大模原理，$1/z$ 会延拓成 $\\{|z|\\le 1\\}$ 上的全纯函数，与 $z=0$ 处的奇点矛盾）。',
+        '⚠️ 本图没有单独收录「Riemann 和的路径积分」「指数（绕数）在边界上的取值为 1」的节点，故引理 A 里把这两点写全；`thm.cauchy-goursat` 是本图已有的节点。'
+      ].join('\n\n'),
       refs: [
         '王晓光《复变函数》· Runge 定理与有理函数逼近',
         'Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §2 · Runge’s Theorem',
-        'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.3 · Runge’s theorem',
-      ],
+        'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.3 · Runge’s theorem'
+      ]
     },
 
     /* ---------------------------------------------------------------- §B */
@@ -300,7 +293,6 @@
     {
       id: 'thm.weierstrass-product',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Weierstrass 乘积定理',
       title: 'Weierstrass 乘积定理：给定零点就能造出整函数',
       cluster: 'analysis.entire',
@@ -317,28 +309,21 @@
         '于是：**整函数的零点（连同重数）可以任意指定**，剩下的自由度只是一个「无零点的整函数」$e^{g}$。',
       ].join('\n'),
       notes: [
-        '**证明（骨架）**：',
-        '',
-        '**第一步：选 $p_{n}$。** 由初等因子的估计 $|1 - E_{p}(z)| \\le |z|^{p+1}$（$|z| \\le 1$），' +
-          '只要 $\\sum_{n} |z/a_{n}|^{p_{n}+1}$ 在每个 $|z| \\le R$ 上收敛，乘积就内闭一致收敛。\n\n' +
-          '因为 $a_{n} \\to \\infty$，对每个 $n$ 取 $p_{n}$ 使 $\\sum |a_{n}|^{-(p_{n}+1)} < \\infty$ 总做得到（例如取 $p_{n} = n$）。',
-        '',
-        '**第二步：乘积是整函数。** 内闭一致收敛的乘积，在每个紧集上只有有限个因子可能为零，' +
-          '其余部分一致收敛到无零点全纯函数（用 `thm.weierstrass-convergence` 的乘积版），故极限全纯。',
-        '',
-        '**第三步：零点恰好是 $\\{a_{n}\\}$。** 每个 $E_{p_{n}}(z/a_{n})$ 只在 $z = a_{n}$ 处为零，' +
-          '次数等于 $a_{n}$ 在序列里出现的次数。∎',
-        '',
-        '⭐ **它是「整函数 = 零点 $\\times$ 无零点」的分解**。和 Mittag-Leffler（`thm.mittag-leffler`）对照着看最清楚：' +
-          '一个管**零点**（乘法），一个管**主部/极点**（加法）。',
-        '',
+        '**证明**：先把序列里等于 $0$ 的项拿掉（它们只贡献 $z^{m}$ 这个因子），余下的仍记为 $a_{n}\\ne 0$；初等因子取 $E_{p}(z) = (1-z)\\exp\\Bigl(z + \\frac{z^{2}}{2} + \\cdots + \\frac{z^{p}}{p}\\Bigr),\\qquad E_{0}(z) = 1-z .$',
+        '**引理 1（初等因子的估计）**：$|z|\\le \\frac{1}{2}$ 时 $|1 - E_{p}(z)| \\le 2|z|^{p+1}$。证明：$|z|<1$ 时 $\\log E_{p}(z) = -\\sum_{k>p} z^{k}/k$，故 $|\\log E_{p}(z)| \\le \\sum_{k>p}\\frac{|z|^{k}}{k} \\le \\frac{|z|^{p+1}}{(p+1)(1-|z|)} \\le 2|z|^{p+1};$ 又 $|1-e^{w}|\\le 2|w|$（$|w|\\le 1$），取 $w = \\log E_{p}(z)$ 即得（$p=0$ 时直接有 $1-E_{0}(z) = z$）。',
+        '**引理 2（乘积收敛）**：若 $u_{n}$ 在区域上全纯、$\\sum_{n}|u_{n}|$ 在每个紧集上一致收敛，则 $\\prod_{n}(1+u_{n})$ 在每个紧集上一致收敛到一个全纯函数 $F$，且 $F$ 的零点恰为各因子 $1+u_{n}$ 的零点（重数相加）。理由：部分乘积一致 Cauchy（望远镜估计 $|\\prod_{n\\le N}-\\prod_{n\\le M}| \\le \\prod(1+|u_{n}|)\\bigl(e^{\\sum_{n>\\min}|u_{n}|}-1\\bigr)$），极限全纯由 `thm.weierstrass-convergence`；在非零点处最终 $|u_{n}|\\le 1/2$，故 $|1+u_{n}|\\ge 1/2$，乘积不为零。',
+        '**第一步：选 $p_{n}$ 使乘积收敛**。取 $p_{n} = n$。任给 $R>0$，因 $a_{n}\\to\\infty$，存在 $N$ 使 $n\\ge N$ 时 $|a_{n}|\\ge 2R$；则 $|z|\\le R$、$n\\ge N$ 时 $|z/a_{n}|\\le 1/2$，由引理 1 $\\bigl|1 - E_{n}(z/a_{n})\\bigr| \\le 2\\Bigl(\\frac{R}{|a_{n}|}\\Bigr)^{n+1} \\le 2\\cdot 2^{-(n+1)},$ 故 $\\sum_{n}\\bigl|1 - E_{n}(z/a_{n})\\bigr|$ 在 $|z|\\le R$ 上一致收敛。由引理 2，$F(z) := \\prod_{n=1}^{\\infty} E_{n}(z/a_{n})$ 是整函数，零点恰为各 $a_{n}$、重数等于 $a_{n}$ 在序列中的重数。',
+        '**第二步：补上 $z^{m}$**。令 $f_{0}(z) := z^{m}F(z)$。则 $f_{0}$ 整、零点恰为 $\\{a_{n}\\}$（含重数）：$0$ 的重数为 $m$，其余点由 $F$ 给出。',
+        '**第三步：去掉无零点因子**。$F$ 处处不为零，故 $F\'/F$ 整；令 $g_{0}(z) := \\int_{0}^{1}\\frac{F\'(tz)}{F(tz)}\\,z\\,\\mathrm{d}t .$ 被积函数连续，$g_{0}$ 整；且 $g_{0}\'(z) = F\'(z)/F(z)$（对积分号下求导，或用 $g_{0}(z) = \\int_{0}^{z}F\'(\\zeta)/F(\\zeta)\\,\\mathrm{d}\\zeta$ 沿线段、Cauchy 定理保证与路径无关）。于是 $(F e^{-g_{0}})\' = 0$，故 $F = C e^{g_{0}}$，$C\\ne 0$；写 $C = e^{c}$、$g := g_{0} + c$，得 $F = e^{g}$。合起来 $f_{0}(z) = z^{m}e^{g(z)}\\prod_{n=1}^{\\infty}E_{n}(z/a_{n}),$ 即所求。∎',
+        '⭐ **它是「整函数 = 零点 $\\times$ 无零点」的分解**。和 Mittag-Leffler（`thm.mittag-leffler`）对照着看最清楚：一个管**零点**（乘法），一个管**主部/极点**（加法）。',
         '⚠️ 乘积的具体形式**不唯一**（$p_{n}$ 可以取大一点），所以定理说的是「存在」，不是「唯一」。',
-      ].join('\n'),
+        '⚠️ 本图没有单独收录「初等因子」与「Hurwitz 定理」的节点，故引理 1、2 在此写全；若日后加节点，可改为引用 `def.elementary-factor`。'
+      ].join('\n\n'),
       refs: [
         '王晓光《复变函数》· Weierstrass 乘积定理',
         'Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §3.1 · The Weierstrass Product Theorem',
-        'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.4 · Theorem (Weierstrass)',
-      ],
+        'Stein–Shakarchi, Complex Analysis, Ch. 8 §8.4 · Theorem (Weierstrass)'
+      ]
     },
     {
       id: 'thm.hadamard-factorization',

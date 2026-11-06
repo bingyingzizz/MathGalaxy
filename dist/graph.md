@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T08:11:13.913Z
-> 15 星系 / 105 星团 / 1540 节点 / 3169 连线（强边 3130，弱边 39；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T08:32:06.467Z
+> 15 星系 / 105 星团 / 1540 节点 / 3168 连线（强边 3129，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.8 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -6766,17 +6766,17 @@ $$C_{d} := \begin{pmatrix} 0 & & & & -a_{0} \\ 1 & 0 & & & -a_{1} \\ & \ddots & 
 
 ⭐ **为什么叫「有理」**：历史上指 $K = \mathbb{Q}$ 的情形 —— 正是「特征多项式在 $\mathbb{Q}$ 上不分裂」的典型场合。名字沿用下来，现在指「对任意域都成立」。
 
-**第一步：把矩阵变成模**。把 $V = K^{n}$ 看成 $K[x]$-模，规定 $x \cdot v := Av$。于是 $K[x]$-子模就是 $A$-不变子空间，$K[x]$-模同构就是相似：$A \sim B$ 当且仅当 $V_{A} \cong V_{B}$。由 Cayley–Hamilton（`thm.cayley-hamilton`）$\chi_{A}(A) = 0$，故 $\chi_{A} \in \operatorname{Ann}(V)$，$V$ 是**挠模**；又 $\dim_{K} V = n$ 给出有限生成。
+**第一步：把矩阵变成模**。把 $V = K^{n}$ 看成 $K[x]$-模，规定 $x \cdot v := Av$。于是 $K[x]$-子模就是 $A$-不变子空间，$K[x]$-模同构就是相似：$A \sim B$ 当且仅当 $V_{A} \cong V_{B}$。由 Cayley–Hamilton 定理 $\chi_{A}(A) = 0$，故 $\chi_{A} \in \operatorname{Ann}(V)$，$V$ 是**挠模**；又 $\dim_{K} V = n$ 给出有限生成。
 
 **引理 1（Smith 标准形，$K[x]$ 版）**：设 $R = K[x]$。任意 $m \times n$ 矩阵 $M$ 经初等行/列变换可化成 $\operatorname{diag}(d_{1}, \ldots, d_{r}, 0, \ldots, 0)$，其中 $d_{1} \mid d_{2} \mid \cdots \mid d_{r}$ 非零，$r = \operatorname{rank} M$。**证明**：在所有与 $M$ 等价的矩阵中，取「非零元素的最小次数」$\delta$ 最小的一个；把达到 $\delta$ 的元素挪到 $(1,1)$，记作 $a$。若第一列某元素 $b$ 不被 $a$ 整除，作带余除法 $b = qa + r$（$\deg r < \delta$），把第 1 行乘 $-q$ 加到该行，得到含次数更小非零元的等价矩阵，与 $\delta$ 的最小性矛盾；故 $a$ 整除第一列全部元素，用行变换清空第一列。同理用列变换清空第一行。若余下子块有元素不被 $a$ 整除，把该行加到第 1 行、再用列变换减去 $a$ 的倍数，又得到次数更小的非零元，矛盾；故 $a$ 整除整个余下子块。对余下子块归纳，得 $\operatorname{diag}(a, e_{1}, \ldots)$；初等变换不改变「全部元素生成的理想」，故 $a \mid e_{1}$，整除链成立。$\square$
 
-**引理 2（结构定理，只用引理 1）**：设 $M$ 是有限生成 $R$-模。取生成元 $x_{1}, \ldots, x_{n}$，得满射 $R^{n} \to M$，其核由列向量 $a_{1}, \ldots, a_{m} \in R^{n}$ 生成，即 $M \cong \operatorname{coker}(A)$，$A = (a_{1} \cdots a_{m})$。对 $A$ 取 Smith 标准形：存在可逆矩阵 $P, Q$ 使 $PAQ = \operatorname{diag}(d_{1}, \ldots, d_{r}, 0)$。可逆矩阵只是换基，故 $\operatorname{coker}(A) \cong \operatorname{coker}(PAQ) \cong R^{n-r} \oplus R/(d_{1}) \oplus \cdots \oplus R/(d_{r})$：第 $i$ 个坐标方向被 $d_{i} e_{i}$ 生成，$i > r$ 的方向不被任何关系碰到。$\square$
+**引理 2（结构定理）**：设 $M$ 是有限生成 $R$-模。取生成元 $x_{1}, \ldots, x_{n}$，得满射 $R^{n} \to M$，其核由有限多个列向量 $a_{1}, \ldots, a_{m} \in R^{n}$ 生成（$K[x]$ 是 PID 故为 Noether 环，PID 上自由模的子模有限生成 —— 标准事实，本图未单列节点），即 $M \cong \operatorname{coker}(A)$，$A = (a_{1} \cdots a_{m})$。对 $A$ 取 Smith 标准形：存在可逆矩阵 $P, Q$ 使 $PAQ = \operatorname{diag}(d_{1}, \ldots, d_{r}, 0)$。可逆矩阵只是换基，故 $\operatorname{coker}(A) \cong \operatorname{coker}(PAQ) \cong R^{n-r} \oplus R/(d_{1}) \oplus \cdots \oplus R/(d_{r})$：第 $i$ 个坐标方向被 $d_{i} e_{i}$ 生成，$i > r$ 的方向不被任何关系碰到。$\square$
 
 **存在性**：对 $V_{A}$ 用引理 2。因 $V$ 挠，自由部分必须为零：若 $R^{n-r} \ne 0$，取 $e_{1}$，则 $\chi_{A} e_{1} \ne 0$，与 $\chi_{A} \in \operatorname{Ann}(V)$ 矛盾。再删去单位 $d_{i}$（此时 $R/(d_{i}) = 0$），得 $V \cong \bigoplus_{i=1}^{s} R/(d_{i})$，其中 $d_{1} \mid \cdots \mid d_{s}$ 非单位首一多项式。
 
 **从循环模到友矩阵**：在 $R/(d)$（$d = x^{m} + a_{m-1}x^{m-1} + \cdots + a_{0}$）中取 $K$-基 $1, x, \ldots, x^{m-1}$。乘 $x$ 把前 $m-1$ 个基向量送到下一个，把 $x^{m-1}$ 送到 $x^{m} \equiv -(a_{0} + a_{1}x + \cdots + a_{m-1}x^{m-1})$。该算子在这组基下的矩阵正是 $C_{d}$（次对角线全 $1$，最后一列 $(-a_{0}, \ldots, -a_{m-1})^{T}$）。把各循环块的基拼起来，$A$ 相似于 $\operatorname{diag}(C_{d_{1}}, \ldots, C_{d_{s}})$。
 
-**唯一性**：设 $\bigoplus_{i} R/(d_{i}) \cong \bigoplus_{j} R/(e_{j})$，两条链都整除。对不可约 $p \in K[x]$ 与 $k \ge 1$，令 $M[p^{k}] := \{m : p^{k}m = 0\}$ —— 这是由 $M$ 本身决定的子模，不依赖分解。对 $R/(d)$，写 $d = p^{v}u$、$p \nmid u$，由中国剩余定理 $R/(d) \cong R/(p^{v}) \oplus R/(u)$，故 $R/(d)[p^{k}] \cong R/(p^{\min(k,v)})$。于是 $M[p^{k}] \cong \bigoplus_{i} R/(p^{\min(k, v_{p}(d_{i}))})$；把 $p^{k-1}M[p^{k}]/p^{k}M[p^{k}]$ 看成 $R/(p)$-向量空间，其维数恰为「$v_{p}(d_{i}) \ge k$ 的 $i$ 的个数」$c_{k}(p)$。这个维数由 $M$ 决定，故所有 $c_{k}(p)$ 由 $M$ 决定，从而 $v_{p}(d_{i}) = \#\{k : c_{k}(p) \ge i\}$ 由 $M$ 决定；对每个 $p$ 都如此，$d_{i}$ 就由 $M$ 决定。
+**唯一性**：设 $\bigoplus_{i} R/(d_{i}) \cong \bigoplus_{j} R/(e_{j})$，两条链都整除。对不可约 $p \in K[x]$ 与 $k \ge 1$，令 $M[p^{k}] := \{m : p^{k}m = 0\}$ —— 这是由 $M$ 本身决定的子模，不依赖分解。对 $R/(d)$，写 $d = p^{v}u$、$p \nmid u$，由中国剩余定理 $R/(d) \cong R/(p^{v}) \oplus R/(u)$，故 $R/(d)[p^{k}] \cong R/(p^{\min(k,v)})$。于是 $M[p^{k}] \cong \bigoplus_{i} R/(p^{\min(k, v_{p}(d_{i}))})$；把 $p^{k-1}M[p^{k}]/p^{k}M[p^{k}]$ 看成 $R/(p)$-向量空间，其维数恰为「$v_{p}(d_{i}) \ge k$ 的 $i$ 的个数」$c_{k}(p)$。这个维数由 $M$ 决定，故所有 $c_{k}(p)$ 由 $M$ 决定。注意整除链是**递增**的 $d_{1}\mid d_{2}\mid\cdots\mid d_{s}$，故 $v_{p}(d_{1})\le\cdots\le v_{p}(d_{s})$；把 $c_{k}(p)$ 从大端读：$\#\{k : c_{k}(p)\ge i\}$ 数的是「满足 $v_{p}(d_{j})\ge k$ 的 $j$ 至少有 $i$ 个」的那些 $k$，而 $j$ 单调递增，所以它等于 $v_{p}(d_{s-i+1})$。于是 $v_{p}(d_{s-i+1}) = \#\{k : c_{k}(p) \ge i\}$ 由 $M$ 决定（$i=1$ 对应链上最大的 $d_{s}$）；对每个 $p$ 都如此，全部 $d_{i}$ 就由 $M$ 决定。
 
 **收尾：极小多项式与特征多项式**：每个 $C_{d}$ 的特征多项式与极小多项式都是 $d$（对 $R/(d)$ 上乘 $x$ 的算子，$d$ 是零化多项式且次数最小：$1, x, \ldots, x^{m-1}$ 线性无关，而 $x^{m}$ 已落入它们的张成）。分块对角矩阵的特征多项式是各块之积 $d_{1}\cdots d_{s}$；极小多项式是各块极小多项式的最小公倍，整除链下即 $d_{s}$。这正是「$d_{s}$ 是极小多项式、$d_{1}\cdots d_{s}$ 是特征多项式」的来历。∎
 
@@ -10008,11 +10008,21 @@ $$f(\sigma(\alpha)) = \sigma(f(\alpha)) = \sigma(0) = 0$$
 
 $$\operatorname{Gal}(E/F) \;\cong\; G \big/ \operatorname{Gal}(K/E).$$
 
-⚠ **本节点只给骨架**（`status: skeleton`）。完整证明分两大段，本图只写路线：
+**证明**：核心是 Artin 定理（有限自同构群的阶 = 大域对固定域的次数）。先证三个引理，再逐条推。记 $K^{H} := \{x\in K : \sigma(x)=x\ \text{对一切}\ \sigma\in H\}$。
 
-1. **反向单射**：$E \mapsto \operatorname{Gal}(K/E)$ 显然反序；要证「$E = K^{\operatorname{Gal}(K/E)}$」—— 这一步用伽罗瓦条件 + Artin 的线性无关性引理（不同自同构线性无关），是本图的空白。
+**引理 1（Dedekind 线性无关）**：域 $K$ 的两两不同的自同构 $\sigma_{1},\ldots,\sigma_{n}$，作为 $K\to K$ 的函数，在 $K$ 上线性无关。证明：设 $\sum_{i}c_{i}\sigma_{i}=0$ 是非零关系、非零系数个数 $r$ 最少；则 $r\ge 2$ 且 $c_{1},\ldots,c_{r}\ne 0$（重排后）。取 $x\in K$ 使 $\sigma_{1}(x)\ne\sigma_{2}(x)$。对任意 $y$，把关系作用在 $xy$ 上得 $\sum c_{i}\sigma_{i}(x)\sigma_{i}(y)=0$，再减去 $\sigma_{1}(x)\sum c_{i}\sigma_{i}(y)=0$，得 $\sum_{i\ge 2}c_{i}\bigl(\sigma_{i}(x)-\sigma_{1}(x)\bigr)\sigma_{i}(y)=0.$ 这是非零关系（$i=2$ 项系数 $c_{2}(\sigma_{2}(x)-\sigma_{1}(x))\ne 0$），非零系数个数 $\le r-1$，矛盾。
 
-2. **满射**：任一子群 $H \le G$ 都要是某个中间域的固定群，即 $H = \operatorname{Gal}(K/K^{H})$，且 $[K : K^{H}] = |H|$（Artin 定理）。
+**引理 2**：$|\operatorname{Aut}(K/F)|\le [K:F]$。证明：设 $m=[K:F]$，取 $F$-基 $e_{1},\ldots,e_{m}$。若 $n>m$ 个不同自同构 $\sigma_{1},\ldots,\sigma_{n}$ 存在，则 $K^{m}$ 中 $n$ 个向量 $\bigl(\sigma_{i}(e_{1}),\ldots,\sigma_{i}(e_{m})\bigr)$ 线性相关：存在不全为零的 $c_{i}\in K$ 使 $\sum_{i}c_{i}\sigma_{i}(e_{j})=0$ 对每个 $j$，于是 $\sum_{i}c_{i}\sigma_{i}=0$ 在 $K$ 上成立，违背引理 1。
+
+**引理 3（Artin 定理）**：设 $G$ 是 $K$ 的有限自同构群、$n=|G|$、$F=K^{G}$。则 $[K:F]=n$。证明分两步。先证 $[K:F]\le n$：反设 $m=[K:F]>n$，取 $F$-线性无关的 $x_{1},\ldots,x_{n+1}\in K$。方程组 $\sum_{j=1}^{n+1}\sigma_{i}(x_{j})c_{j}=0$（$i=1,\ldots,n$）是 $n$ 个方程、$n+1$ 个未知量，有非零解 $c\in K^{n+1}$。在所有非零解中取非零分量个数 $r$ 最小者。$r\ge 2$：若只有 $c_{j}\ne 0$，由 $\sigma_{1}=\operatorname{id}$ 的方程得 $c_{j}x_{j}=0$，与 $x_{j}\ne 0$ 矛盾。重排并伸缩，使 $c_{r}=1$（于是 $c_{r}\in F$）；若此时所有分量都落在 $F$，则由 $\sigma_{1}=\operatorname{id}$ 的方程 $\sum c_{j}x_{j}=0$ 与 $x_{j}$ 的 $F$-线性无关得所有 $c_{j}=0$，与非零解矛盾。故有某个分量 $\notin F$，它必不是第 $r$ 个；重排前 $r-1$ 个分量使 $c_{1}\notin F$。取 $\tau\in G$ 使 $\tau(c_{1})\ne c_{1}$。把方程组逐项作用 $\tau$，并由 $\{\tau\sigma_{i}\}=\{\sigma_{i}\}$ 重排，知 $\bigl(\tau(c_{j})\bigr)$ 也是解；相减得解 $d_{j}=c_{j}-\tau(c_{j})$：$d_{r}=0$、$d_{1}\ne 0$，故非零分量个数 $\le r-1$，矛盾。于是 $[K:F]\le n$。再证 $n\le[K:F]$：$G\subseteq\operatorname{Aut}(K/F)$，由引理 2 得 $n\le|\operatorname{Aut}(K/F)|\le[K:K^{G}]=[K:F]$。合起来 $[K:F]=n$。∎
+
+**回到定理**。先说明 $K^{G}=F$：$K/F$ 正规且可分，若 $\alpha\notin F$，其极小多项式在 $K$ 中分裂且有另一个根 $\beta\ne\alpha$（可分性保证无重根、正规性保证其它根都在 $K$），$F$-嵌入 $\alpha\mapsto\beta$ 由正规性延拓为 $K$ 的自同构，它移动 $\alpha$。故固定域恰为 $F$，引理 3 给出 $[K:F] = |G|.$ 对中间域 $E$，$K/E$ 仍有限伽罗瓦（正规、可分都继承），故 $|\operatorname{Gal}(K/E)|=[K:E]$。
+
+**反序双射**。记 $\Phi(E)=\operatorname{Gal}(K/E)$。反序显然：$E_{1}\subseteq E_{2}$ 时，固定 $E_{2}$ 的自同构也固定 $E_{1}$。单射：若 $\Phi(E_{1})=\Phi(E_{2})=H$，把引理 3 用于 $K$ 与 $H$ 得 $[K:K^{H}]=|H|$；而 $[K:E_{i}]=|\Phi(E_{i})|=|H|$，且 $E_{i}\subseteq K^{H}$，次数相等故 $E_{i}=K^{H}$，于是 $E_{1}=E_{2}$。满射：任给子群 $H\le G$，令 $E=K^{H}$；引理 3 给 $[K:E]=|H|$，而 $H\subseteq\operatorname{Gal}(K/E)$ 且 $|\operatorname{Gal}(K/E)|=[K:E]=|H|$，故 $H=\operatorname{Gal}(K/E)=\Phi(E)$。
+
+**次数与指数**。$[K:E]=|\operatorname{Gal}(K/E)|$ 已证；由 $[K:F]=[K:E][E:F]$ 与 $[K:F]=|G|$ 得 $[E:F]=\frac{|G|}{|\operatorname{Gal}(K/E)|}=[G:\operatorname{Gal}(K/E)].$
+
+**正规性**。$E/F$ 正规 $\iff$ 对每个 $\sigma\in G$ 有 $\sigma(E)=E$。理由：若 $E/F$ 正规、$\sigma\in G$，则 $\sigma|_{E}$ 是 $E$ 到代数闭包里的 $F$-嵌入，正规性迫使 $\sigma(E)\subseteq E$，次数相同故相等；反之若 $\sigma(E)=E$ 对一切 $\sigma$，则 $E$ 中元素的每个共轭仍在 $E$，故 $E/F$ 正规。又 $\operatorname{Gal}(K/\sigma(E))=\sigma\operatorname{Gal}(K/E)\sigma^{-1},$ 于是 $\operatorname{Gal}(K/E)\trianglelefteq G \iff \operatorname{Gal}(K/\sigma(E))=\operatorname{Gal}(K/E)\ \text{对一切}\ \sigma \iff \sigma(E)=E\ \text{对一切}\ \sigma \iff E/F\ \text{正规},$ 中间一步用双射的单射性。最后，限制映射 $G\to\operatorname{Gal}(E/F)$ 是满射（$E/F$ 正规，$E$ 的 $F$-自同构可延拓到 $K$），核为 $\operatorname{Gal}(K/E)$，故 $\operatorname{Gal}(E/F)\cong G/\operatorname{Gal}(K/E)$。∎
 
 ⭐ **第三条（正规 $\iff$ 正规子群）是这条定理最有用的部分**：它把「域扩张的正规性」这个看起来抽象的条件，翻译成「对应的子群正规」。五次方程那条线就是靠它把「域的可解性」降成「群的可解性」。
 
@@ -10027,15 +10037,25 @@ $$\operatorname{Gal}(E/F) \;\cong\; G \big/ \operatorname{Gal}(K/E).$$
 
 $f$ 的根可以用**根式**（四则运算与开 $n$ 次方）从 $F$ 的元素表示出来 $\iff$ $\operatorname{Gal}(K/F)$ 是**可解群**。
 
-⚠ **骨架**。两个方向各有一条主线，本图只记路线：
+**证明**。先把「根式可解」说清楚：存在域塔 $F=F_{0}\subseteq F_{1}\subseteq\cdots\subseteq F_{m}$，$F_{i+1}=F_{i}(\alpha_{i})$、$\alpha_{i}^{n_{i}}\in F_{i}$，且 $K\subseteq F_{m}$。char 0 下 $K/F$ 是伽罗瓦扩张（分裂域 + 可分）。两个方向分别证。
 
-- **$\Leftarrow$（可解 $\implies$ 根式可解）**：把可解列 $G = G_{0} \trianglerighteq G_{1} \trianglerighteq \cdots \trianglerighteq \{e\}$ 翻译成域塔 $F = E_{0} \subseteq E_{1} \subseteq \cdots \subseteq K$，每一步商群是循环群；循环扩张在 char 0 下可以靠**添加单位根 + Kummer 理论**用开方实现。
+**引理（Kummer 一步）**：设 $F$ 含本原 $m$ 次单位根 $\zeta$，$E/F$ 是 $m$ 次循环扩张，则 $E=F(\beta)$ 且 $\beta^{m}\in F$。证明：取生成元 $\sigma$，把 $\sigma$ 看成 $F$-线性变换。$\sigma^{m}=1$，而 $x^{m}-1$ 在 $F$ 上分裂且无重根，故 $\sigma$ 可对角化；又 $\sigma$ 的阶为 $m$，故其特征值的阶的最小公倍数为 $m$，其中必有一个本原 $m$ 次单位根 $\zeta^{k}$。取对应的特征向量 $\beta$：$\sigma(\beta)=\zeta^{k}\beta$。于是 $\sigma(\beta^{m})=\beta^{m}$，$\beta^{m}$ 在 $\sigma$ 的固定域里；循环扩张的固定域恰为 $F$，故 $\beta^{m}\in F$。又 $\beta\notin F$（否则 $\sigma(\beta)=\beta$），故 $E=F(\beta)$。∎
 
-- **$\implies$（根式可解 $\implies$ 可解）**：反过来，把根式塔翻译成群塔，用「循环扩张的伽罗瓦群是循环群」（这一步又靠伽罗瓦对应 + `thm.solvable-quotients`），拼出可解列。
+**$\Leftarrow$（群可解 $\implies$ 根式可解）**：设 $G=\operatorname{Gal}(K/F)$ 可解。先假设 $F$ 含本原 $n$ 次单位根，$n=|G|$；对 $|G|$ 归纳。$|G|=1$ 时 $K=F$，无事可做。设 $|G|>1$。可解群有极大的真正规子群 $H$，此时 $G/H$ 单且交换，故是素数阶 $p$ 的循环群。令 $E=K^{H}$，伽罗瓦对应给 $[E:F]=p$、$\operatorname{Gal}(E/F)=G/H$ 循环。$F$ 含 $\zeta_{p}$，由 Kummer 一步，$E=F(\beta)$、$\beta^{p}\in F$。另一方面 $K/E$ 伽罗瓦、群为 $H$，$H$ 可解且 $|H|<|G|$；$E$ 含本原 $|H|$ 次单位根（$|H|$ 整除 $n$），归纳假设给出从 $E$ 到 $K$ 的根式塔。把它接在一步 $F\subseteq E$ 之后，就是 $K$ 在 $F$ 上的根式塔。
 
-⭐ **为什么必须 char 0**：可解 $\implies$ 根式那一步要用 $n$ 次单位根与 Kummer 理论；char $p$ 时 $x^{p} - x - a$ 这类 Artin–Schreier 扩张取代了纯开方扩张，结论要改写。
+**去掉单位根假设**：一般 $F$ 未必含 $\zeta_{n}$。取 $N$ 为 $1,2,\ldots,n$ 的公倍数（例如 $n!$），令 $F_{1}=F(\zeta_{N})$、$K_{1}=K(\zeta_{N})$。$K_{1}/F_{1}$ 伽罗瓦，限制映射 $\operatorname{Gal}(K_{1}/F_{1})\to\operatorname{Gal}(K/F)$ 是单射，故 $G_{1}=\operatorname{Gal}(K_{1}/F_{1})$ 可解且 $|G_{1}|\le n$。$F_{1}$ 含所有次数 $\le n$ 的单位根，特别是 $\zeta_{|G_{1}|}$；上面已证的情形给出 $K_{1}$ 在 $F_{1}$ 上的根式塔。又 $F\subseteq F_{1}=F(\zeta_{N})$ 本身是一步根式扩张（$\zeta_{N}^{N}=1\in F$）。两段接起来，$K\subseteq K_{1}$ 含在 $F$ 的根式塔中，故 $f$ 的根根式可解。
 
-📌 这条定理是「五次方程」那条线**唯一的入口**：它把「有没有根式公式」这个分析/代数混着的问题，换成一个纯群论问题（$S_{n}$ 可解 $\iff n \le 4$，见「对称群的可解性」）。
+**$\implies$（根式可解 $\implies$ 群可解）**：设 $F=F_{0}\subseteq\cdots\subseteq F_{m}$ 是根式塔、$K\subseteq F_{m}$、$\alpha_{i}^{n_{i}}\in F_{i}$。取 $N$ 为各 $n_{i}$ 的公倍数，令 $F^{\prime}=F(\zeta_{N})$、$E_{i}=F_{i}(\zeta_{N})$；则 $E_{i}=E_{i-1}(\alpha_{i})$、$\alpha_{i}^{n_{i}}\in E_{i-1}$，仍是根式塔，且底域 $E_{0}=F^{\prime}$ 含 $\zeta_{n_{i}}$。令 $M$ 为 $E_{m}$ 在 $F^{\prime}$ 上的伽罗瓦闭包（各生成元极小多项式之积的分裂域），则 $M/F^{\prime}$ 伽罗瓦，且 $K^{\prime}=K(\zeta_{N})\subseteq M$。
+
+**逐层加闭包**：令 $M_{i}$ 为 $E_{i}$ 的所有 $F^{\prime}$-共轭生成的合成域，则 $M_{0}=F^{\prime}$、$M_{m}=M$，且每个 $M_{i}/F^{\prime}$ 伽罗瓦。关键是 $M_{i}$ 由 $M_{i-1}$ 添加若干 $\alpha_{i}$ 的共轭 $\beta$ 得到，而 $\beta^{n_{i}}\in M_{i-1}$：写 $\beta=\sigma(\alpha_{i})$，则 $\beta^{n_{i}}=\sigma(\alpha_{i}^{n_{i}})$；因 $\alpha_{i}^{n_{i}}\in F_{i}=F_{i-1}(\alpha_{i-1})$，有 $\sigma(\alpha_{i}^{n_{i}})\in\sigma(F_{i-1})\bigl(\sigma(\alpha_{i-1})\bigr)\subseteq M_{i-1}\cdot M_{i-1}=M_{i-1}$（$\sigma(F_{i-1})\subseteq\sigma(E_{i-1})\subseteq M_{i-1}$，$\sigma(\alpha_{i-1})\in\sigma(E_{i-1})\subseteq M_{i-1}$）。于是 $M_{i}/M_{i-1}$ 由若干 $n_{i}$ 次根生成，且 $\zeta_{n_{i}}\in F^{\prime}\subseteq M_{i-1}$，它是 Kummer 扩张：任意 $\tau\in\operatorname{Gal}(M_{i}/M_{i-1})$ 把每个生成元 $\beta$ 送到 $\zeta_{n_{i}}^{k_{\beta}}\beta$，$\tau\mapsto(k_{\beta})_{\beta}$ 是到 $(\mathbb{Z}/n_{i})^{r}$ 的单同态，故 $\operatorname{Gal}(M_{i}/M_{i-1})$ 交换。
+
+**可解列**：因 $M_{i}/F^{\prime}$ 伽罗瓦，$\operatorname{Gal}(M/M_{i})\trianglelefteq\operatorname{Gal}(M/F^{\prime})$，且商同构于 $\operatorname{Gal}(M_{i}/M_{i-1})$，交换。于是 $\operatorname{Gal}(M/F^{\prime})\ \trianglerighteq\ \operatorname{Gal}(M/M_{1})\ \trianglerighteq\ \cdots\ \trianglerighteq\ \operatorname{Gal}(M/M_{m})=1$ 是正规列，各商交换，故 $\operatorname{Gal}(M/F^{\prime})$ 可解。
+
+**回到 $K$**：$K^{\prime}/F$ 伽罗瓦（两个正规扩张的合成），限制映射 $\operatorname{Gal}(M/F^{\prime})\to\operatorname{Gal}(K^{\prime}/F^{\prime})$ 满射，故 $\operatorname{Gal}(K^{\prime}/F^{\prime})$ 可解。又有正合列 $1\to\operatorname{Gal}(K^{\prime}/F^{\prime})\to\operatorname{Gal}(K^{\prime}/F)\to\operatorname{Gal}(F^{\prime}/F)\to1$（分圆扩张伽罗瓦，限制满射），两端可解、$\operatorname{Gal}(F^{\prime}/F)$ 交换，故 $\operatorname{Gal}(K^{\prime}/F)$ 可解。最后 $\operatorname{Gal}(K/F)$ 是 $\operatorname{Gal}(K^{\prime}/F)$ 的商：$K^{\prime}/F$ 正规，$K$ 的每个 $F$-自同构都可延拓到 $K^{\prime}$。可解群的商可解，故 $\operatorname{Gal}(K/F)$ 可解。∎
+
+⭐ **为什么必须 char 0**：两个方向都用了「$x^{m}-1$ 无重根」（从而 $\sigma$ 可对角化）与可分性。char $p$ 时纯开方扩张要换成 Artin–Schreier 扩张 $x^{p}-x-a$，结论要改写。
+
+📌 **这条定理是「五次方程」那条线的唯一入口**：它把「有没有根式公式」这个分析/代数混着的问题，换成一个纯群论问题（$S_{n}$ 可解 $\iff n\le4$，见「对称群的可解性」）。注意反过来用时要说清：$\operatorname{Gal}(f)$ 不可解 $\implies$ 无根式解；而不是「方程无解」。
 
 参考：Lang, Algebra, Ch. VI §6；Hungerford, Algebra, Ch. V §5；Artin, Galois Theory
 
@@ -14574,13 +14594,19 @@ $$\operatorname{cont}(f) := \{x : f \text{ 在 } x \text{ 连续}\}$$
 
 是**稠密 $G_\delta$**。特别地 $f$ 至少在一个稠密 $G_\delta$ 上连续。
 
-证法（骨架）：令 $F_{n,k} = \{x : \|f_i(x) - f_j(x)\| \le 1/k\ (\forall i, j \ge n)\}$，它是闭集且 $X = \bigcup_n F_{n,k}$；
+**证明**：记 $d$ 为 $E$ 的度量。对 $k\in\mathbb{N}$ 与 $n\in\mathbb{N}$，令 $F_{n,k} := \Bigl\{x\in X : d\bigl(f_{i}(x),f_{j}(x)\bigr) \le \frac{1}{k}\ \text{ 对一切 } i,j\ge n\Bigr\}.$ 每个 $F_{n,k}$ 是闭集：它是连续函数 $x\mapsto d(f_{i}(x),f_{j}(x))$ 在闭集 $[0,1/k]$ 下的原像之交。
 
-由 Baire，$O_k := \bigcup_n \operatorname{int} F_{n,k}$ 稠密开。
+**覆盖**：对每个固定的 $k$，$X = \bigcup_{n} F_{n,k}$ —— 因为 $f_{n}(x)$ 收敛故是 Cauchy 列，所以每个 $x$ 落进某个 $F_{n,k}$。
 
-令 $O := \bigcap_k O_k$（稠密 $G_\delta$），在 $O$ 上用「$x$ 落在一个 $\operatorname{int} F_{n,k}$ 里 $\implies$ 邻域上 $f_n$ 一致接近」得连续性。
+**稠密**：令 $O_{k} := \bigcup_{n}\operatorname{int} F_{n,k}$，它是开集。证它稠密：取非空开集 $U\subseteq X$。$U$ 作为 Baire 空间的非空开子集仍是 Baire 空间，而 $U = \bigcup_{n}(U\cap F_{n,k})$ 是可数个在 $U$ 中闭的集的并，故某个 $U\cap F_{n,k}$ 在 $U$ 中有内点：存在非空开 $V\subseteq U$、$V\subseteq F_{n,k}$。$V$ 也是 $X$ 中的开集，故 $V\subseteq\operatorname{int}F_{n,k}$，于是 $U\cap O_{k}\supseteq V\ne\emptyset$。故 $O_{k}$ 稠密。
 
-⚠️ 逐点极限**不必**连续（$f_n(x) = x^n$ 在 $[0,1]$ 上）；它只是「连续点很多」。
+**稠密 $G_\delta$**：$O := \bigcap_{k} O_{k}$ 是可数个稠密开集之交，由 Baire 纲定理（`thm.baire`）仍稠密，且是 $G_\delta$。下面证 $O\subseteq\operatorname{cont}(f)$。
+
+**在 $O$ 上连续**：取 $x\in O$、$\varepsilon>0$。取 $k$ 使 $1/k < \varepsilon/3$。因 $x\in O_{k}$，存在 $n$ 使 $x\in\operatorname{int}F_{n,k}$，取开邻域 $U\ni x$、$U\subseteq F_{n,k}$。因 $f_{n}(x)\to f(x)$，取 $m\ge n$ 使 $d(f_{m}(x),f(x)) < \varepsilon/3$。$f_{m}$ 在 $x$ 连续，取开邻域 $V\subseteq U$、$x\in V$，使 $y\in V$ 时 $d(f_{m}(y),f_{m}(x)) < \varepsilon/3$。对 $y\in V$ 三项估计：$d(f(y),f_{m}(y)) = \lim_{i\to\infty} d(f_{i}(y),f_{m}(y)) \le \frac{1}{k} < \frac{\varepsilon}{3}\quad(\text{因 } y\in F_{n,k},\ m\ge n),$ 于是 $d(f(y),f(x)) \le d(f(y),f_{m}(y)) + d(f_{m}(y),f_{m}(x)) + d(f_{m}(x),f(x)) < \varepsilon.$ 故 $f$ 在 $x$ 连续，$O\subseteq\operatorname{cont}(f)$，特别地 $\operatorname{cont}(f)$ 稠密。
+
+**$\operatorname{cont}(f)$ 是 $G_\delta$**：对 $k\in\mathbb{N}$ 令 $A_{k} := \bigcup\{U\subseteq X \text{ 开} : \operatorname{diam} f(U) \le 1/k\}$，它是开集。若 $f$ 在 $x$ 连续，则对每个 $k$ 存在 $x$ 的邻域 $U$ 使 $\operatorname{diam}f(U) \le 1/k$，故 $x\in A_{k}$；反之若 $x\in\bigcap_{k}A_{k}$，给 $\varepsilon>0$ 取 $k$ 使 $1/k<\varepsilon$，则存在开邻域 $U\ni x$ 使 $\operatorname{diam}f(U)\le 1/k<\varepsilon$，即 $f$ 在 $x$ 连续。故 $\operatorname{cont}(f) = \bigcap_{k}A_{k}$ 是 $G_\delta$。∎
+
+⚠️ 逐点极限**不必**连续（$f_{n}(x) = x^{n}$ 在 $[0,1]$ 上，极限在 $x=1$ 处不连续）；定理说的是「连续点很多」，不是「处处连续」。
 
 ⭐ 同一模板的经典产物：$C[0,1]$ 里「处处不可微」的函数构成稠密 $G_\delta$（Banach 1931）。
 
@@ -18842,7 +18868,7 @@ $$[0], \ [1], \ [2], \ \ldots, \ [n], \ \ldots$$
 而 $[n] \to [m]$ 的态射取全体**单调映射**（不要求 $n \le m$，也不要求严格）。$\Delta$ 的全体态射由两类生成：
 
 - **面映射** $\delta^{i} : [n-1] \to [n]$：跳过第 $i$ 个点（$i = 0, \ldots, n$）；
-- **退化映射** $\sigma^{i} : [n] \to [n-1]$：把 $i$ 与 $i+1$ 合并（等价地，插入一个重复点）。
+- **退化映射** $\sigma^{i} : [n+1] \to [n]$：把 $i$ 与 $i+1$ 合并（等价地，插入一个重复点）。
 
 只保留面映射的子范畴记 $\Delta_{\mathrm{inj}}$，只保留退化映射的记 $\Delta_{\mathrm{surj}}$。$\mathcal{C}$ 中的**单纯对象**是图
 
@@ -31150,7 +31176,7 @@ $$f(z) = \frac{1}{2\pi i}\oint_{\partial\Omega} \frac{f(\zeta)}{\zeta - z}\,\mat
 
 **收尾**：外边界积分与 $r$ 无关（上面的等式对一切 $0 < r < d$ 成立），让 $r \to 0$ 得 $\oint_{\partial\Omega}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta = 2\pi i\,f(z)$，即所求。∎
 
-**一般闭曲线**：若 $\gamma$ 不包围 $z$，在 $\gamma$ 外部的区域上用同一论证得 $\oint_{\gamma} = 0$；若 $\gamma$ 包围 $z$，在外边界与内圆之间的环域上同理论，得到带绕数的形式 $\operatorname{Ind}(\gamma, z)\,f(z) = \frac{1}{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta$。
+**一般闭曲线**：若 $\gamma$ 不包围 $z$，在 $\gamma$ 内部的区域上用 Cauchy 定理得 $\oint_{\gamma} = 0$；若 $\gamma$ 包围 $z$，在外边界与内圆之间的环域上同理论，得到带绕数的形式 $\operatorname{Ind}(\gamma, z)\,f(z) = \frac{1}{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta$。
 
 ⭐ **枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor/Laurent 展开、留数定理 —— 本星系几乎所有结论都从这里长出来。
 
@@ -32496,13 +32522,23 @@ $$\sup_{z \in K} |f(z) - p(z)| < \varepsilon.$$
 
 一般情形（$\mathbb{C}\setminus K$ 有洞）：$f$ 可以用**有理函数**逼近，且这些有理函数的极点可以预先指定在 $\mathbb{C}\setminus K$ 的每个连通分支里各取一点。
 
-**证明思路（骨架）**：先把「在紧集上逼近」化归成「用 Cauchy 积分表示 + 离散化积分」。由 Cauchy 积分公式，$f(z) = \frac{1}{2\pi i}\oint_{\Gamma}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta$，把积分用 Riemann 和逼近，得到形如 $\sum_{j} \frac{c_{j}}{\zeta_{j} - z}$ 的有理函数（极点在 $\Gamma$ 上）。
+**证明**：分四步 —— ①把 $f$ 写成 $K$ 外一条「方格边界」上的 Cauchy 积分；②把积分离散成极点在 $K$ 外的有理函数；③把这些极点沿 $\mathbb{C}\setminus K$ 里的道路推到指定位置；④无洞时再推到无穷远，展开成多项式。
 
-第二步是**把极点挪出去**：$\frac{1}{\zeta - z}$ 关于 $z$ 在 $K$ 上可以展开成幂级数（$|z| < |\zeta|$），于是「极点在洞外」的有理函数能用多项式一致逼近 —— 这一步靠「$\mathbb{C}\setminus K$ 连通」保证洞外的点可以被「推到无穷远」。有洞时推不出去，只能停在有理函数。∎
+**引理 A（Cauchy 表示）**：设 $K$ 紧、$V$ 是 $K$ 的开邻域、$f$ 在 $V$ 上全纯。则存在有限个闭正方形之并 $S$ 与它的正向边界 $\Gamma = \partial S$，使 $K \subset \operatorname{int} S,\qquad S \subset V,\qquad f(z) = \frac{1}{2\pi i}\int_{\Gamma}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta\quad(z\in K).$ 证明：$d := \operatorname{dist}(K,\mathbb{C}\setminus V) > 0$。取边长为 $h$ 的方格网，$h\sqrt{2} < d$；令 $S$ 为所有与 $K$ 相交的闭方格之并。则 $K\subset\operatorname{int} S$，且 $S$ 的每点距 $K$ 不超过 $h\sqrt{2} < d$，故 $S\subset V$。把每个方格的边界逆时针定向后相加，公共边上的积分相消，得 $\Gamma = \partial S$。对 $z\in K\subset\operatorname{int} S$，函数 $h(\zeta) := (f(\zeta)-f(z))/(\zeta - z)$（在 $\zeta = z$ 处补充定义为 $f'(z)$）在 $S$ 的一个邻域上全纯，故在每个方格上用 Cauchy–Goursat（`thm.cauchy-goursat`）有 $\int_{\partial Q} h = 0$，相加得 $\int_{\Gamma} h = 0$。于是 $\int_{\Gamma}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta = f(z)\int_{\Gamma}\frac{\mathrm{d}\zeta}{\zeta - z} = 2\pi i\, f(z)\,\operatorname{Ind}_{\Gamma}(z) = 2\pi i\,f(z),$ 末步用「有界区域正向边界在其内点的指数为 $1$」（指数在 $\mathbb{C}\setminus\Gamma$ 的每个连通分支上为常数，且在无界分支为 $0$）。
+
+**第一步：离散化积分**。$\Gamma$ 是紧集且 $\Gamma\cap K = \emptyset$，故 $g(\zeta,z) := f(\zeta)/(\zeta - z)$ 在 $\Gamma\times K$ 上连续，从而一致连续。把 $\Gamma$ 的每条边等分成小段，小段长 $<\delta$，取中点 $\zeta_{j}$、增量 $\Delta\zeta_{j}$，作 Riemann 和 $R(z) := \frac{1}{2\pi i}\sum_{j}\frac{f(\zeta_{j})}{\zeta_{j} - z}\,\Delta\zeta_{j}.$ 由一致连续性，取 $\delta$ 足够小可使 $\sup_{z\in K}\Bigl|\frac{1}{2\pi i}\int_{\Gamma} g(\zeta,z)\,\mathrm{d}\zeta - R(z)\Bigr| < \frac{\varepsilon}{2}.$ $R$ 是有理函数，极点只在中点 $\zeta_{j}\in\Gamma\subset\mathbb{C}\setminus K$。
+
+**第二步：推极点**。设 $b,b^{\prime}$ 在 $\mathbb{C}\setminus K$ 的同一连通分支 $\Omega$ 内。取 $\Omega$ 中的折线连接 $b$ 到 $b^{\prime}$，在折线上取点 $b = b_{0}, b_{1}, \ldots, b_{N} = b^{\prime}$，使 $|b_{i+1} - b_{i}| < \operatorname{dist}(b_{i},K)$。对 $z\in K$，$|b_{i}-z| \ge \operatorname{dist}(b_{i},K) > |b_{i+1}-b_{i}|$，故几何级数 $\frac{1}{b_{i+1} - z} = \frac{1}{b_{i} - z}\cdot\frac{1}{1 - \frac{b_{i}-b_{i+1}}{b_{i}-z}} = \sum_{k=0}^{\infty}\frac{(b_{i}-b_{i+1})^{k}}{(b_{i}-z)^{k+1}}$ 在 $K$ 上一致收敛（公比 $\le q_{i} < 1$）。截断到 $k\le N_{i}$ 即把 $1/(b_{i+1}-z)$ 用「极点只在 $b_{i}$」的有理函数一致逼近到任意精度。逐步搬运，$1/(b-z)$ 可被「极点只在 $b^{\prime}$」的有理函数一致逼近；对这些基本项线性组合，即得任意有理函数在 $K$ 上的一致逼近（极点逐次搬完）。
+
+**第三步：无洞时得到多项式**。若 $\mathbb{C}\setminus K$ 连通，它是无界连通开集。取 $b^{\prime}$ 使 $|b^{\prime}| > 2\max_{z\in K}|z|$。对 $z\in K$，$|z/b^{\prime}| \le 1/2$，故 $\frac{1}{b^{\prime} - z} = \frac{1}{b^{\prime}}\sum_{k=0}^{\infty}\Bigl(\frac{z}{b^{\prime}}\Bigr)^{k}$ 在 $K$ 上一致收敛，截断即多项式。于是 $f$ 在 $K$ 上被多项式一致逼近到 $\varepsilon$。
+
+**一般情形**：$\mathbb{C}\setminus K$ 的每个连通分支 $\Omega$ 里预先取一点 $b_{\Omega}$。第一步给极点在 $\Gamma$ 上的有理函数 $R$；$\Gamma\subset\mathbb{C}\setminus K$，每个极点落在某个分支 $\Omega$ 里，用第二步把它搬到 $b_{\Omega}$。有限个极点、每步误差任意小，故 $R$ 被极点在 $\{b_{\Omega}\}$ 的有理函数一致逼近到 $\varepsilon/2$，与第一步的 $\varepsilon/2$ 合并即得结论。∎
 
 ⭐ **它和 Mittag-Leffler（`thm.mittag-leffler`）、Weierstrass 乘积（`thm.weierstrass-product`）是三兄弟**：Runge 管「逼近」、Mittag-Leffler 管「造指定主部」、Weierstrass 管「造指定零点」。三者都回答同一个问题：**在区域上能造出什么样的全纯/亚纯函数**。
 
-⚠️ 「$\mathbb{C}\setminus K$ 连通」不能去掉：$K = $ 单位圆周时 $\frac{1}{z}$ 在圆周附近全纯，但它在 $K$ 上不能被多项式一致逼近（否则由最大模原理会推出一件不可能的事）。
+⚠️ 「$\mathbb{C}\setminus K$ 连通」不能去掉：$K = $ 单位圆周时 $1/z$ 在圆周附近全纯，但它在 $K$ 上不能被多项式一致逼近（否则由最大模原理，$1/z$ 会延拓成 $\{|z|\le 1\}$ 上的全纯函数，与 $z=0$ 处的奇点矛盾）。
+
+⚠️ 本图没有单独收录「Riemann 和的路径积分」「指数（绕数）在边界上的取值为 1」的节点，故引理 A 里把这两点写全；`thm.cauchy-goursat` 是本图已有的节点。
 
 参考：王晓光《复变函数》· Runge 定理与有理函数逼近；Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §2 · Runge’s Theorem；Stein–Shakarchi, Complex Analysis, Ch. 8 §8.3 · Runge’s theorem
 
@@ -32586,19 +32622,23 @@ $$f(z) = z^{m} e^{g(z)} \prod_{n=1}^{\infty} E_{p_{n}}\left(\frac{z}{a_{n}}\righ
 
 于是：**整函数的零点（连同重数）可以任意指定**，剩下的自由度只是一个「无零点的整函数」$e^{g}$。
 
-**证明（骨架）**：
+**证明**：先把序列里等于 $0$ 的项拿掉（它们只贡献 $z^{m}$ 这个因子），余下的仍记为 $a_{n}\ne 0$；初等因子取 $E_{p}(z) = (1-z)\exp\Bigl(z + \frac{z^{2}}{2} + \cdots + \frac{z^{p}}{p}\Bigr),\qquad E_{0}(z) = 1-z .$
 
-**第一步：选 $p_{n}$。** 由初等因子的估计 $|1 - E_{p}(z)| \le |z|^{p+1}$（$|z| \le 1$），只要 $\sum_{n} |z/a_{n}|^{p_{n}+1}$ 在每个 $|z| \le R$ 上收敛，乘积就内闭一致收敛。
+**引理 1（初等因子的估计）**：$|z|\le \frac{1}{2}$ 时 $|1 - E_{p}(z)| \le 2|z|^{p+1}$。证明：$|z|<1$ 时 $\log E_{p}(z) = -\sum_{k>p} z^{k}/k$，故 $|\log E_{p}(z)| \le \sum_{k>p}\frac{|z|^{k}}{k} \le \frac{|z|^{p+1}}{(p+1)(1-|z|)} \le 2|z|^{p+1};$ 又 $|1-e^{w}|\le 2|w|$（$|w|\le 1$），取 $w = \log E_{p}(z)$ 即得（$p=0$ 时直接有 $1-E_{0}(z) = z$）。
 
-因为 $a_{n} \to \infty$，对每个 $n$ 取 $p_{n}$ 使 $\sum |a_{n}|^{-(p_{n}+1)} < \infty$ 总做得到（例如取 $p_{n} = n$）。
+**引理 2（乘积收敛）**：若 $u_{n}$ 在区域上全纯、$\sum_{n}|u_{n}|$ 在每个紧集上一致收敛，则 $\prod_{n}(1+u_{n})$ 在每个紧集上一致收敛到一个全纯函数 $F$，且 $F$ 的零点恰为各因子 $1+u_{n}$ 的零点（重数相加）。理由：部分乘积一致 Cauchy（望远镜估计 $|\prod_{n\le N}-\prod_{n\le M}| \le \prod(1+|u_{n}|)\bigl(e^{\sum_{n>\min}|u_{n}|}-1\bigr)$），极限全纯由 `thm.weierstrass-convergence`；在非零点处最终 $|u_{n}|\le 1/2$，故 $|1+u_{n}|\ge 1/2$，乘积不为零。
 
-**第二步：乘积是整函数。** 内闭一致收敛的乘积，在每个紧集上只有有限个因子可能为零，其余部分一致收敛到无零点全纯函数（用 `thm.weierstrass-convergence` 的乘积版），故极限全纯。
+**第一步：选 $p_{n}$ 使乘积收敛**。取 $p_{n} = n$。任给 $R>0$，因 $a_{n}\to\infty$，存在 $N$ 使 $n\ge N$ 时 $|a_{n}|\ge 2R$；则 $|z|\le R$、$n\ge N$ 时 $|z/a_{n}|\le 1/2$，由引理 1 $\bigl|1 - E_{n}(z/a_{n})\bigr| \le 2\Bigl(\frac{R}{|a_{n}|}\Bigr)^{n+1} \le 2\cdot 2^{-(n+1)},$ 故 $\sum_{n}\bigl|1 - E_{n}(z/a_{n})\bigr|$ 在 $|z|\le R$ 上一致收敛。由引理 2，$F(z) := \prod_{n=1}^{\infty} E_{n}(z/a_{n})$ 是整函数，零点恰为各 $a_{n}$、重数等于 $a_{n}$ 在序列中的重数。
 
-**第三步：零点恰好是 $\{a_{n}\}$。** 每个 $E_{p_{n}}(z/a_{n})$ 只在 $z = a_{n}$ 处为零，次数等于 $a_{n}$ 在序列里出现的次数。∎
+**第二步：补上 $z^{m}$**。令 $f_{0}(z) := z^{m}F(z)$。则 $f_{0}$ 整、零点恰为 $\{a_{n}\}$（含重数）：$0$ 的重数为 $m$，其余点由 $F$ 给出。
+
+**第三步：去掉无零点因子**。$F$ 处处不为零，故 $F'/F$ 整；令 $g_{0}(z) := \int_{0}^{1}\frac{F'(tz)}{F(tz)}\,z\,\mathrm{d}t .$ 被积函数连续，$g_{0}$ 整；且 $g_{0}'(z) = F'(z)/F(z)$（对积分号下求导，或用 $g_{0}(z) = \int_{0}^{z}F'(\zeta)/F(\zeta)\,\mathrm{d}\zeta$ 沿线段、Cauchy 定理保证与路径无关）。于是 $(F e^{-g_{0}})' = 0$，故 $F = C e^{g_{0}}$，$C\ne 0$；写 $C = e^{c}$、$g := g_{0} + c$，得 $F = e^{g}$。合起来 $f_{0}(z) = z^{m}e^{g(z)}\prod_{n=1}^{\infty}E_{n}(z/a_{n}),$ 即所求。∎
 
 ⭐ **它是「整函数 = 零点 $\times$ 无零点」的分解**。和 Mittag-Leffler（`thm.mittag-leffler`）对照着看最清楚：一个管**零点**（乘法），一个管**主部/极点**（加法）。
 
 ⚠️ 乘积的具体形式**不唯一**（$p_{n}$ 可以取大一点），所以定理说的是「存在」，不是「唯一」。
+
+⚠️ 本图没有单独收录「初等因子」与「Hurwitz 定理」的节点，故引理 1、2 在此写全；若日后加节点，可改为引用 `def.elementary-factor`。
 
 参考：王晓光《复变函数》· Weierstrass 乘积定理；Ahlfors, Complex Analysis (3rd ed.), Ch. 8 §3.1 · The Weierstrass Product Theorem；Stein–Shakarchi, Complex Analysis, Ch. 8 §8.4 · Theorem (Weierstrass)
 
@@ -34237,21 +34277,25 @@ $$T_{p}M = \ker\mathrm{d}F_{p}\qquad (p\in M).$$
 
 特别地 $m = 1$ 时：$\nabla F(p)\ne 0$ 的每个正则值 $c$ 的原像是 $(n-1)$ 维光滑流形（**超曲面**）。
 
+**证明**：设 $M = F^{-1}(c)$。三步：逐点造卡、说明这些卡拼成图册、再算切空间。
+
+**第一步：逐点造卡**。取 $p_{0}\in M$。$\mathrm{d}F_{p_{0}}$ 满射，故存在 $m$ 个坐标（重排后不妨取最后 $m$ 个，记 $x = (u,v)\in\mathbb{R}^{n-m}\times\mathbb{R}^{m}$）使 $\det\Bigl(\frac{\partial F^{i}}{\partial v^{j}}(p_{0})\Bigr)_{i,j=1}^{m} \ne 0 .$ 隐函数定理给出：$u_{0}$ 的开邻域 $W\subseteq\mathbb{R}^{n-m}$、$v_{0}$ 的开邻域 $V\subseteq\mathbb{R}^{m}$ 与 $C^{\infty}$ 映射 $g : W\to V$，使 $g(u_{0}) = v_{0}$，且 $M\cap(W\times V) = \{(u,g(u)) : u\in W\}.$ 于是 $\varphi : M\cap(W\times V)\to W$，$(u,g(u))\mapsto u$ 是双射，逆 $u\mapsto (u,g(u))$ 光滑；它把 $M$ 的开集同胚地送到开集 $W$，是一张 $n-m$ 维图卡。
+
+**第二步：图册**。$M\subseteq\mathbb{R}^{n}$ 是第二可数空间的子空间，故 Lindelöf；上述图卡（它们的定义域是 $M$ 的开集）覆盖 $M$，故可取出可数子覆盖。两张卡重叠处 $\varphi_{\beta}\circ\varphi_{\alpha}^{-1}(u) = \psi\bigl(u, g_{\alpha}(u)\bigr),$ 其中 $\psi$ 是坐标投影（线性映射，光滑）、$g_{\alpha}$ 光滑，复合仍光滑；故转移映射 $C^{\infty}$。$M$ 从 $\mathbb{R}^{n}$ 继承 Hausdorff 与第二可数性，于是是 $n-m$ 维光滑流形。
+
+**第三步：切空间**。若 $\gamma : (-\varepsilon,\varepsilon)\to M$ 光滑、$\gamma(0)=p$，则 $F\circ\gamma\equiv c$，链式法则给 $\mathrm{d}F_{p}\bigl(\dot{\gamma}(0)\bigr) = 0$，故 $T_{p}M\subseteq\ker\mathrm{d}F_{p}$。反过来，上面那张卡给出 $\dim T_{p}M = n-m$；秩定理（秩 $m$）给出 $\dim\ker\mathrm{d}F_{p} = n-m$。两边同维且前者包含于后者，故相等。∎
+
 **例子**：$F(x) = \lVert x\rVert^{2}$，它在 $F^{-1}(1) = S^{n-1}$ 上梯度为 $2x\ne 0$，故球面是流形。
 
 $F = \det$，$\mathrm{d}\det_{A}(B) = \operatorname{tr}(A^{-1}B)$（$\det A = 1$ 时），在 $\mathrm{SL}(n,\mathbb{R})$ 上非零，故 $\mathrm{SL}(n,\mathbb{R})$ 是 $n^{2}-1$ 维流形。
 
 **满射条件不能丢**：$F(x,y) = xy$、$c = 0$，$\mathrm{d}F$ 在原点为零，而 $F^{-1}(0)$ 是两条相交直线 —— 交点附近不是流形。
 
-**证明骨架**：每点用隐函数定理把 $m$ 个变量解成另 $n-m$ 个变量的光滑函数，于是 $M$ 局部是图 $\{(x,g(x))\}$，图就是一张卡；重叠处的转移映射是光滑映射的限制，故相容。
-
-切空间由「$F\circ\gamma\equiv c$ 求导」得 $\mathrm{d}F_{p}(\gamma'(0)) = 0$，再比维数。
-
-⚠️ **正则性是相对 $F$ 说的**：$c$ 不是正则值时原像可能是奇点集（$xy = 0$ 就是）。同一个 $M$ 可以用不同的 $F$ 表示，只要找得到一个 $F$ 使 $c$ 是正则值就够了。
+⚠️ **正则性是相对 $F$ 说的**：$c$ 不是正则值时原像可能是奇点集（$xy = 0$ 就是）。同一个 $M$ 可以用不同的 $F$ 表示，只要找得到一个 $F$ 使 $c$ 是正则值就够了（比如 $S^{n-1}$ 也可写成 $\lVert x\rVert - 1 = 0$ 的水平集）。
 
 **它把两块连起来**：左边是多元微积分（隐函数定理），右边是几何（流形与切空间）。所以「微分几何离别的板块太远」在这一点上可以直接反驳 —— 水平集定理就是显式的桥。
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「流形」· 正则水平集与隐函数定理；Tu, An Introduction to Manifolds, 「Manifolds」· 正则水平集定理
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「流形」· 正则水平集与隐函数定理；Tu, An Introduction to Manifolds, 「Manifolds」· 正则水平集定理；Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 5 · Submanifolds
 
 #### Riemann 度量　`def.riemannian-metric`
 *定义*　Riemann 度量
@@ -37050,7 +37094,7 @@ $$\mathrm{d}\Bigl(\sum_{I}a_{I}\,\mathrm{d}x^{I}\Bigr) = \sum_{I}\mathrm{d}a_{I}
 
 **「与图卡无关」到底指什么**：第 4 步说明换图卡算出的两个公式在重叠处相等 —— 因为它们都是满足公理的算子，而引理 A 说这样的算子只有一个。真正把 $\mathrm{d}$ 钉死的是 (3)+(4)：(1) 给函数上的值，(3) 让 $\mathrm{d}$ 穿过楔积，(4) 杀掉 $\mathrm{d}x^{I}$ 的导数。
 
-**与 Tu 的路线对照**：Tu 先用 `prop.pullback-forms` 的第 3 条（与拉回交换）证图卡无关；这里改用「公理唯一性」证。两条路线都对，且都不需要单位分解 —— 这也说明 `thm.smooth-partition-unity` 在本条里不是必需品。
+**与 Tu 的路线对照**：Tu 先用 `prop.pullback-forms` 的第 3 条（与拉回交换）证图卡无关；这里改用「公理唯一性」证。两条路线都对，且都不需要单位分解 —— 这也说明光滑单位分解在本条里不是必需品。
 
 ⭐ 有了这一条，`def.de-rham-complex` 里那串 $\Omega^{k}(M)\xrightarrow{\ \mathrm{d}\ }\Omega^{k+1}(M)$ 才真的是一串映射 —— 在这条之前，那串东西只是记号。
 
@@ -50825,10 +50869,6 @@ $>$ ⭐ 最容易错的直觉是「a.e. 可导 $F' \in L^{1}$ 就够」——**C
 
 命题的主语就是 $\Omega^{k}(M)$ 上的算子族。
 
-#### 定义引用：「光滑单位分解」→ 外微分　`dep.mf3-dm-pou`
-
-把图卡上的局部定义拼成整体，靠单位分解 —— 存在性那一半的收尾。
-
 #### 定义引用：「微分形式」→ 拉回　`dep.mf3-pbm-form`
 
 拉回的两端都是流形上的形式空间。
@@ -62204,7 +62244,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **内蕴几何 ↔ Lie 群**　2 条节点级连线
 - **Lie 群 ↔ 向量场与 Lie 结构**　4 条节点级连线
 - **多元微分 ↔ 流形与向量丛**　3 条节点级连线
-- **微分形式、积分与 de Rham ↔ 流形与向量丛**　8 条节点级连线
+- **微分形式、积分与 de Rham ↔ 流形与向量丛**　7 条节点级连线
 - **矩阵与行列式 ↔ 微分形式、积分与 de Rham**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 曲面论**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 仿紧与单位分解**　2 条节点级连线

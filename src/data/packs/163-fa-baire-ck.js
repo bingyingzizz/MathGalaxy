@@ -196,7 +196,6 @@ window.MG = window.MG || {};
       id: 'thm.pointwise-limit-continuity',
       cluster: 'fa.baire',
       type: 'theorem',
-      status: 'skeleton',
       label: '连续点集是稠密 G_δ',
       title: '连续函数点态极限的连续点集',
       regions: ['functional-analysis'],
@@ -209,11 +208,16 @@ window.MG = window.MG || {};
         '是**稠密 $G_\\delta$**。特别地 $f$ 至少在一个稠密 $G_\\delta$ 上连续。'
       ].join('\n'),
       notes: [
-        '证法（骨架）：令 $F_{n,k} = \\{x : \\|f_i(x) - f_j(x)\\| \\le 1/k\\ (\\forall i, j \\ge n)\\}$，它是闭集且 $X = \\bigcup_n F_{n,k}$；\n\n由 Baire，$O_k := \\bigcup_n \\operatorname{int} F_{n,k}$ 稠密开。\n\n令 $O := \\bigcap_k O_k$（稠密 $G_\\delta$），在 $O$ 上用「$x$ 落在一个 $\\operatorname{int} F_{n,k}$ 里 $\\implies$ 邻域上 $f_n$ 一致接近」得连续性。',
-        '⚠️ 逐点极限**不必**连续（$f_n(x) = x^n$ 在 $[0,1]$ 上）；它只是「连续点很多」。',
+        '**证明**：记 $d$ 为 $E$ 的度量。对 $k\\in\\mathbb{N}$ 与 $n\\in\\mathbb{N}$，令 $F_{n,k} := \\Bigl\\{x\\in X : d\\bigl(f_{i}(x),f_{j}(x)\\bigr) \\le \\frac{1}{k}\\ \\text{ 对一切 } i,j\\ge n\\Bigr\\}.$ 每个 $F_{n,k}$ 是闭集：它是连续函数 $x\\mapsto d(f_{i}(x),f_{j}(x))$ 在闭集 $[0,1/k]$ 下的原像之交。',
+        '**覆盖**：对每个固定的 $k$，$X = \\bigcup_{n} F_{n,k}$ —— 因为 $f_{n}(x)$ 收敛故是 Cauchy 列，所以每个 $x$ 落进某个 $F_{n,k}$。',
+        '**稠密**：令 $O_{k} := \\bigcup_{n}\\operatorname{int} F_{n,k}$，它是开集。证它稠密：取非空开集 $U\\subseteq X$。$U$ 作为 Baire 空间的非空开子集仍是 Baire 空间，而 $U = \\bigcup_{n}(U\\cap F_{n,k})$ 是可数个在 $U$ 中闭的集的并，故某个 $U\\cap F_{n,k}$ 在 $U$ 中有内点：存在非空开 $V\\subseteq U$、$V\\subseteq F_{n,k}$。$V$ 也是 $X$ 中的开集，故 $V\\subseteq\\operatorname{int}F_{n,k}$，于是 $U\\cap O_{k}\\supseteq V\\ne\\emptyset$。故 $O_{k}$ 稠密。',
+        '**稠密 $G_\\delta$**：$O := \\bigcap_{k} O_{k}$ 是可数个稠密开集之交，由 Baire 纲定理（`thm.baire`）仍稠密，且是 $G_\\delta$。下面证 $O\\subseteq\\operatorname{cont}(f)$。',
+        '**在 $O$ 上连续**：取 $x\\in O$、$\\varepsilon>0$。取 $k$ 使 $1/k < \\varepsilon/3$。因 $x\\in O_{k}$，存在 $n$ 使 $x\\in\\operatorname{int}F_{n,k}$，取开邻域 $U\\ni x$、$U\\subseteq F_{n,k}$。因 $f_{n}(x)\\to f(x)$，取 $m\\ge n$ 使 $d(f_{m}(x),f(x)) < \\varepsilon/3$。$f_{m}$ 在 $x$ 连续，取开邻域 $V\\subseteq U$、$x\\in V$，使 $y\\in V$ 时 $d(f_{m}(y),f_{m}(x)) < \\varepsilon/3$。对 $y\\in V$ 三项估计：$d(f(y),f_{m}(y)) = \\lim_{i\\to\\infty} d(f_{i}(y),f_{m}(y)) \\le \\frac{1}{k} < \\frac{\\varepsilon}{3}\\quad(\\text{因 } y\\in F_{n,k},\\ m\\ge n),$ 于是 $d(f(y),f(x)) \\le d(f(y),f_{m}(y)) + d(f_{m}(y),f_{m}(x)) + d(f_{m}(x),f(x)) < \\varepsilon.$ 故 $f$ 在 $x$ 连续，$O\\subseteq\\operatorname{cont}(f)$，特别地 $\\operatorname{cont}(f)$ 稠密。',
+        '**$\\operatorname{cont}(f)$ 是 $G_\\delta$**：对 $k\\in\\mathbb{N}$ 令 $A_{k} := \\bigcup\\{U\\subseteq X \\text{ 开} : \\operatorname{diam} f(U) \\le 1/k\\}$，它是开集。若 $f$ 在 $x$ 连续，则对每个 $k$ 存在 $x$ 的邻域 $U$ 使 $\\operatorname{diam}f(U) \\le 1/k$，故 $x\\in A_{k}$；反之若 $x\\in\\bigcap_{k}A_{k}$，给 $\\varepsilon>0$ 取 $k$ 使 $1/k<\\varepsilon$，则存在开邻域 $U\\ni x$ 使 $\\operatorname{diam}f(U)\\le 1/k<\\varepsilon$，即 $f$ 在 $x$ 连续。故 $\\operatorname{cont}(f) = \\bigcap_{k}A_{k}$ 是 $G_\\delta$。∎',
+        '⚠️ 逐点极限**不必**连续（$f_{n}(x) = x^{n}$ 在 $[0,1]$ 上，极限在 $x=1$ 处不连续）；定理说的是「连续点很多」，不是「处处连续」。',
         '⭐ 同一模板的经典产物：$C[0,1]$ 里「处处不可微」的函数构成稠密 $G_\\delta$（Banach 1931）。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）']
     },
     {
       id: 'thm.ubp',

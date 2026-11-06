@@ -266,7 +266,6 @@
       title: '伽罗瓦对应：中间域 $\\leftrightarrow$ 子群（反包含、次数换指数）',
       regions: ['algebra'],
       tags: ['定理', '代数', '域论'],
-      status: 'skeleton',
       statement: [
         '设 $K/F$ 是**有限伽罗瓦扩张**，$G = \\operatorname{Gal}(K/F)$。则',
         '',
@@ -278,19 +277,22 @@
         '$$\\operatorname{Gal}(E/F) \\;\\cong\\; G \\big/ \\operatorname{Gal}(K/E).$$',
       ].join('\n'),
       notes: [
-        '⚠ **本节点只给骨架**（`status: skeleton`）。完整证明分两大段，本图只写路线：',
-        '1. **反向单射**：$E \\mapsto \\operatorname{Gal}(K/E)$ 显然反序；要证「$E = K^{\\operatorname{Gal}(K/E)}$」' +
-          '—— 这一步用伽罗瓦条件 + Artin 的线性无关性引理（不同自同构线性无关），是本图的空白。',
-        '2. **满射**：任一子群 $H \\le G$ 都要是某个中间域的固定群，即 $H = \\operatorname{Gal}(K/K^{H})$，' +
-          '且 $[K : K^{H}] = |H|$（Artin 定理）。',
-        '⭐ **第三条（正规 $\\iff$ 正规子群）是这条定理最有用的部分**：它把「域扩张的正规性」这个' +
-          '看起来抽象的条件，翻译成「对应的子群正规」。五次方程那条线就是靠它把「域的可解性」' +
-          '降成「群的可解性」。',
-        '⚠ **三个条件都不能省**：不有限（$\\overline{\\mathbb{Q}}/\\mathbb{Q}$）时子群太多、中间域太多，' +
-          '双射变成「子群 $\\to$ 中间域」的单向且不满（伽罗瓦群是 profinite 群，要做无穷版本）；' +
-          '不可分时 $|\\operatorname{Gal}| < [K:F]$，数都对不上。',
+        '**证明**：核心是 Artin 定理（有限自同构群的阶 = 大域对固定域的次数）。先证三个引理，再逐条推。记 $K^{H} := \\{x\\in K : \\sigma(x)=x\\ \\text{对一切}\\ \\sigma\\in H\\}$。',
+        '**引理 1（Dedekind 线性无关）**：域 $K$ 的两两不同的自同构 $\\sigma_{1},\\ldots,\\sigma_{n}$，作为 $K\\to K$ 的函数，在 $K$ 上线性无关。证明：设 $\\sum_{i}c_{i}\\sigma_{i}=0$ 是非零关系、非零系数个数 $r$ 最少；则 $r\\ge 2$ 且 $c_{1},\\ldots,c_{r}\\ne 0$（重排后）。取 $x\\in K$ 使 $\\sigma_{1}(x)\\ne\\sigma_{2}(x)$。对任意 $y$，把关系作用在 $xy$ 上得 $\\sum c_{i}\\sigma_{i}(x)\\sigma_{i}(y)=0$，再减去 $\\sigma_{1}(x)\\sum c_{i}\\sigma_{i}(y)=0$，得 $\\sum_{i\\ge 2}c_{i}\\bigl(\\sigma_{i}(x)-\\sigma_{1}(x)\\bigr)\\sigma_{i}(y)=0.$ 这是非零关系（$i=2$ 项系数 $c_{2}(\\sigma_{2}(x)-\\sigma_{1}(x))\\ne 0$），非零系数个数 $\\le r-1$，矛盾。',
+        '**引理 2**：$|\\operatorname{Aut}(K/F)|\\le [K:F]$。证明：设 $m=[K:F]$，取 $F$-基 $e_{1},\\ldots,e_{m}$。若 $n>m$ 个不同自同构 $\\sigma_{1},\\ldots,\\sigma_{n}$ 存在，则 $K^{m}$ 中 $n$ 个向量 $\\bigl(\\sigma_{i}(e_{1}),\\ldots,\\sigma_{i}(e_{m})\\bigr)$ 线性相关：存在不全为零的 $c_{i}\\in K$ 使 $\\sum_{i}c_{i}\\sigma_{i}(e_{j})=0$ 对每个 $j$，于是 $\\sum_{i}c_{i}\\sigma_{i}=0$ 在 $K$ 上成立，违背引理 1。',
+        '**引理 3（Artin 定理）**：设 $G$ 是 $K$ 的有限自同构群、$n=|G|$、$F=K^{G}$。则 $[K:F]=n$。证明分两步。先证 $[K:F]\\le n$：反设 $m=[K:F]>n$，取 $F$-线性无关的 $x_{1},\\ldots,x_{n+1}\\in K$。方程组 $\\sum_{j=1}^{n+1}\\sigma_{i}(x_{j})c_{j}=0$（$i=1,\\ldots,n$）是 $n$ 个方程、$n+1$ 个未知量，有非零解 $c\\in K^{n+1}$。在所有非零解中取非零分量个数 $r$ 最小者。$r\\ge 2$：若只有 $c_{j}\\ne 0$，由 $\\sigma_{1}=\\operatorname{id}$ 的方程得 $c_{j}x_{j}=0$，与 $x_{j}\\ne 0$ 矛盾。重排并伸缩，使 $c_{r}=1$（于是 $c_{r}\\in F$）；若此时所有分量都落在 $F$，则由 $\\sigma_{1}=\\operatorname{id}$ 的方程 $\\sum c_{j}x_{j}=0$ 与 $x_{j}$ 的 $F$-线性无关得所有 $c_{j}=0$，与非零解矛盾。故有某个分量 $\\notin F$，它必不是第 $r$ 个；重排前 $r-1$ 个分量使 $c_{1}\\notin F$。取 $\\tau\\in G$ 使 $\\tau(c_{1})\\ne c_{1}$。把方程组逐项作用 $\\tau$，并由 $\\{\\tau\\sigma_{i}\\}=\\{\\sigma_{i}\\}$ 重排，知 $\\bigl(\\tau(c_{j})\\bigr)$ 也是解；相减得解 $d_{j}=c_{j}-\\tau(c_{j})$：$d_{r}=0$、$d_{1}\\ne 0$，故非零分量个数 $\\le r-1$，矛盾。于是 $[K:F]\\le n$。再证 $n\\le[K:F]$：$G\\subseteq\\operatorname{Aut}(K/F)$，由引理 2 得 $n\\le|\\operatorname{Aut}(K/F)|\\le[K:K^{G}]=[K:F]$。合起来 $[K:F]=n$。∎',
+        '**回到定理**。先说明 $K^{G}=F$：$K/F$ 正规且可分，若 $\\alpha\\notin F$，其极小多项式在 $K$ 中分裂且有另一个根 $\\beta\\ne\\alpha$（可分性保证无重根、正规性保证其它根都在 $K$），$F$-嵌入 $\\alpha\\mapsto\\beta$ 由正规性延拓为 $K$ 的自同构，它移动 $\\alpha$。故固定域恰为 $F$，引理 3 给出 $[K:F] = |G|.$ 对中间域 $E$，$K/E$ 仍有限伽罗瓦（正规、可分都继承），故 $|\\operatorname{Gal}(K/E)|=[K:E]$。',
+        '**反序双射**。记 $\\Phi(E)=\\operatorname{Gal}(K/E)$。反序显然：$E_{1}\\subseteq E_{2}$ 时，固定 $E_{2}$ 的自同构也固定 $E_{1}$。单射：若 $\\Phi(E_{1})=\\Phi(E_{2})=H$，把引理 3 用于 $K$ 与 $H$ 得 $[K:K^{H}]=|H|$；而 $[K:E_{i}]=|\\Phi(E_{i})|=|H|$，且 $E_{i}\\subseteq K^{H}$，次数相等故 $E_{i}=K^{H}$，于是 $E_{1}=E_{2}$。满射：任给子群 $H\\le G$，令 $E=K^{H}$；引理 3 给 $[K:E]=|H|$，而 $H\\subseteq\\operatorname{Gal}(K/E)$ 且 $|\\operatorname{Gal}(K/E)|=[K:E]=|H|$，故 $H=\\operatorname{Gal}(K/E)=\\Phi(E)$。',
+        '**次数与指数**。$[K:E]=|\\operatorname{Gal}(K/E)|$ 已证；由 $[K:F]=[K:E][E:F]$ 与 $[K:F]=|G|$ 得 $[E:F]=\\frac{|G|}{|\\operatorname{Gal}(K/E)|}=[G:\\operatorname{Gal}(K/E)].$',
+        '**正规性**。$E/F$ 正规 $\\iff$ 对每个 $\\sigma\\in G$ 有 $\\sigma(E)=E$。理由：若 $E/F$ 正规、$\\sigma\\in G$，则 $\\sigma|_{E}$ 是 $E$ 到代数闭包里的 $F$-嵌入，正规性迫使 $\\sigma(E)\\subseteq E$，次数相同故相等；反之若 $\\sigma(E)=E$ 对一切 $\\sigma$，则 $E$ 中元素的每个共轭仍在 $E$，故 $E/F$ 正规。又 $\\operatorname{Gal}(K/\\sigma(E))=\\sigma\\operatorname{Gal}(K/E)\\sigma^{-1},$ 于是 $\\operatorname{Gal}(K/E)\\trianglelefteq G \\iff \\operatorname{Gal}(K/\\sigma(E))=\\operatorname{Gal}(K/E)\\ \\text{对一切}\\ \\sigma \\iff \\sigma(E)=E\\ \\text{对一切}\\ \\sigma \\iff E/F\\ \\text{正规},$ 中间一步用双射的单射性。最后，限制映射 $G\\to\\operatorname{Gal}(E/F)$ 是满射（$E/F$ 正规，$E$ 的 $F$-自同构可延拓到 $K$），核为 $\\operatorname{Gal}(K/E)$，故 $\\operatorname{Gal}(E/F)\\cong G/\\operatorname{Gal}(K/E)$。∎',
+        '⭐ **第三条（正规 $\\iff$ 正规子群）是这条定理最有用的部分**：它把「域扩张的正规性」这个看起来抽象的条件，翻译成「对应的子群正规」。五次方程那条线就是靠它把「域的可解性」降成「群的可解性」。',
+        '⚠ **三个条件都不能省**：不有限（$\\overline{\\mathbb{Q}}/\\mathbb{Q}$）时子群太多、中间域太多，双射变成「子群 $\\to$ 中间域」的单向且不满（伽罗瓦群是 profinite 群，要做无穷版本）；不可分时 $|\\operatorname{Gal}| < [K:F]$，数都对不上。'
       ].join('\n\n'),
-      refs: ['Lang, Algebra, Ch. VI §2', 'Hungerford, Algebra, Ch. V §4', 'Artin, Galois Theory'],
+      refs: [
+        'Lang, Algebra, Ch. VI §2',
+        'Hungerford, Algebra, Ch. V §4',
+        'Artin, Galois Theory'
+      ]
     },
 
     {
@@ -301,25 +303,28 @@
       title: '根式可解 $\\iff$ $\\operatorname{Gal}(f)$ 可解（char 0）',
       regions: ['algebra'],
       tags: ['定理', '代数', '域论', '群论'],
-      status: 'skeleton',
       statement: [
         '设 $F$ 是**特征 0** 的域，$f \\in F[x]$ 非零，$K$ 是 $f$ 的分裂域。则',
         '',
         '$f$ 的根可以用**根式**（四则运算与开 $n$ 次方）从 $F$ 的元素表示出来 $\\iff$ $\\operatorname{Gal}(K/F)$ 是**可解群**。',
       ].join('\n'),
       notes: [
-        '⚠ **骨架**。两个方向各有一条主线，本图只记路线：',
-        '- **$\\Leftarrow$（可解 $\\implies$ 根式可解）**：把可解列 $G = G_{0} \\trianglerighteq G_{1} \\trianglerighteq \\cdots \\trianglerighteq \\{e\\}$ ' +
-          '翻译成域塔 $F = E_{0} \\subseteq E_{1} \\subseteq \\cdots \\subseteq K$，每一步商群是循环群；' +
-          '循环扩张在 char 0 下可以靠**添加单位根 + Kummer 理论**用开方实现。',
-        '- **$\\implies$（根式可解 $\\implies$ 可解）**：反过来，把根式塔翻译成群塔，用「循环扩张的伽罗瓦群是循环群」' +
-          '（这一步又靠伽罗瓦对应 + `thm.solvable-quotients`），拼出可解列。',
-        '⭐ **为什么必须 char 0**：可解 $\\implies$ 根式那一步要用 $n$ 次单位根与 Kummer 理论；' +
-          'char $p$ 时 $x^{p} - x - a$ 这类 Artin–Schreier 扩张取代了纯开方扩张，结论要改写。',
-        '📌 这条定理是「五次方程」那条线**唯一的入口**：它把「有没有根式公式」这个分析/代数混着的问题，' +
-          '换成一个纯群论问题（$S_{n}$ 可解 $\\iff n \\le 4$，见「对称群的可解性」）。',
+        '**证明**。先把「根式可解」说清楚：存在域塔 $F=F_{0}\\subseteq F_{1}\\subseteq\\cdots\\subseteq F_{m}$，$F_{i+1}=F_{i}(\\alpha_{i})$、$\\alpha_{i}^{n_{i}}\\in F_{i}$，且 $K\\subseteq F_{m}$。char 0 下 $K/F$ 是伽罗瓦扩张（分裂域 + 可分）。两个方向分别证。',
+        '**引理（Kummer 一步）**：设 $F$ 含本原 $m$ 次单位根 $\\zeta$，$E/F$ 是 $m$ 次循环扩张，则 $E=F(\\beta)$ 且 $\\beta^{m}\\in F$。证明：取生成元 $\\sigma$，把 $\\sigma$ 看成 $F$-线性变换。$\\sigma^{m}=1$，而 $x^{m}-1$ 在 $F$ 上分裂且无重根，故 $\\sigma$ 可对角化；又 $\\sigma$ 的阶为 $m$，故其特征值的阶的最小公倍数为 $m$，其中必有一个本原 $m$ 次单位根 $\\zeta^{k}$。取对应的特征向量 $\\beta$：$\\sigma(\\beta)=\\zeta^{k}\\beta$。于是 $\\sigma(\\beta^{m})=\\beta^{m}$，$\\beta^{m}$ 在 $\\sigma$ 的固定域里；循环扩张的固定域恰为 $F$，故 $\\beta^{m}\\in F$。又 $\\beta\\notin F$（否则 $\\sigma(\\beta)=\\beta$），故 $E=F(\\beta)$。∎',
+        '**$\\Leftarrow$（群可解 $\\implies$ 根式可解）**：设 $G=\\operatorname{Gal}(K/F)$ 可解。先假设 $F$ 含本原 $n$ 次单位根，$n=|G|$；对 $|G|$ 归纳。$|G|=1$ 时 $K=F$，无事可做。设 $|G|>1$。可解群有极大的真正规子群 $H$，此时 $G/H$ 单且交换，故是素数阶 $p$ 的循环群。令 $E=K^{H}$，伽罗瓦对应给 $[E:F]=p$、$\\operatorname{Gal}(E/F)=G/H$ 循环。$F$ 含 $\\zeta_{p}$，由 Kummer 一步，$E=F(\\beta)$、$\\beta^{p}\\in F$。另一方面 $K/E$ 伽罗瓦、群为 $H$，$H$ 可解且 $|H|<|G|$；$E$ 含本原 $|H|$ 次单位根（$|H|$ 整除 $n$），归纳假设给出从 $E$ 到 $K$ 的根式塔。把它接在一步 $F\\subseteq E$ 之后，就是 $K$ 在 $F$ 上的根式塔。',
+        '**去掉单位根假设**：一般 $F$ 未必含 $\\zeta_{n}$。取 $N$ 为 $1,2,\\ldots,n$ 的公倍数（例如 $n!$），令 $F_{1}=F(\\zeta_{N})$、$K_{1}=K(\\zeta_{N})$。$K_{1}/F_{1}$ 伽罗瓦，限制映射 $\\operatorname{Gal}(K_{1}/F_{1})\\to\\operatorname{Gal}(K/F)$ 是单射，故 $G_{1}=\\operatorname{Gal}(K_{1}/F_{1})$ 可解且 $|G_{1}|\\le n$。$F_{1}$ 含所有次数 $\\le n$ 的单位根，特别是 $\\zeta_{|G_{1}|}$；上面已证的情形给出 $K_{1}$ 在 $F_{1}$ 上的根式塔。又 $F\\subseteq F_{1}=F(\\zeta_{N})$ 本身是一步根式扩张（$\\zeta_{N}^{N}=1\\in F$）。两段接起来，$K\\subseteq K_{1}$ 含在 $F$ 的根式塔中，故 $f$ 的根根式可解。',
+        '**$\\implies$（根式可解 $\\implies$ 群可解）**：设 $F=F_{0}\\subseteq\\cdots\\subseteq F_{m}$ 是根式塔、$K\\subseteq F_{m}$、$\\alpha_{i}^{n_{i}}\\in F_{i}$。取 $N$ 为各 $n_{i}$ 的公倍数，令 $F^{\\prime}=F(\\zeta_{N})$、$E_{i}=F_{i}(\\zeta_{N})$；则 $E_{i}=E_{i-1}(\\alpha_{i})$、$\\alpha_{i}^{n_{i}}\\in E_{i-1}$，仍是根式塔，且底域 $E_{0}=F^{\\prime}$ 含 $\\zeta_{n_{i}}$。令 $M$ 为 $E_{m}$ 在 $F^{\\prime}$ 上的伽罗瓦闭包（各生成元极小多项式之积的分裂域），则 $M/F^{\\prime}$ 伽罗瓦，且 $K^{\\prime}=K(\\zeta_{N})\\subseteq M$。',
+        '**逐层加闭包**：令 $M_{i}$ 为 $E_{i}$ 的所有 $F^{\\prime}$-共轭生成的合成域，则 $M_{0}=F^{\\prime}$、$M_{m}=M$，且每个 $M_{i}/F^{\\prime}$ 伽罗瓦。关键是 $M_{i}$ 由 $M_{i-1}$ 添加若干 $\\alpha_{i}$ 的共轭 $\\beta$ 得到，而 $\\beta^{n_{i}}\\in M_{i-1}$：写 $\\beta=\\sigma(\\alpha_{i})$，则 $\\beta^{n_{i}}=\\sigma(\\alpha_{i}^{n_{i}})$；因 $\\alpha_{i}^{n_{i}}\\in F_{i}=F_{i-1}(\\alpha_{i-1})$，有 $\\sigma(\\alpha_{i}^{n_{i}})\\in\\sigma(F_{i-1})\\bigl(\\sigma(\\alpha_{i-1})\\bigr)\\subseteq M_{i-1}\\cdot M_{i-1}=M_{i-1}$（$\\sigma(F_{i-1})\\subseteq\\sigma(E_{i-1})\\subseteq M_{i-1}$，$\\sigma(\\alpha_{i-1})\\in\\sigma(E_{i-1})\\subseteq M_{i-1}$）。于是 $M_{i}/M_{i-1}$ 由若干 $n_{i}$ 次根生成，且 $\\zeta_{n_{i}}\\in F^{\\prime}\\subseteq M_{i-1}$，它是 Kummer 扩张：任意 $\\tau\\in\\operatorname{Gal}(M_{i}/M_{i-1})$ 把每个生成元 $\\beta$ 送到 $\\zeta_{n_{i}}^{k_{\\beta}}\\beta$，$\\tau\\mapsto(k_{\\beta})_{\\beta}$ 是到 $(\\mathbb{Z}/n_{i})^{r}$ 的单同态，故 $\\operatorname{Gal}(M_{i}/M_{i-1})$ 交换。',
+        '**可解列**：因 $M_{i}/F^{\\prime}$ 伽罗瓦，$\\operatorname{Gal}(M/M_{i})\\trianglelefteq\\operatorname{Gal}(M/F^{\\prime})$，且商同构于 $\\operatorname{Gal}(M_{i}/M_{i-1})$，交换。于是 $\\operatorname{Gal}(M/F^{\\prime})\\ \\trianglerighteq\\ \\operatorname{Gal}(M/M_{1})\\ \\trianglerighteq\\ \\cdots\\ \\trianglerighteq\\ \\operatorname{Gal}(M/M_{m})=1$ 是正规列，各商交换，故 $\\operatorname{Gal}(M/F^{\\prime})$ 可解。',
+        '**回到 $K$**：$K^{\\prime}/F$ 伽罗瓦（两个正规扩张的合成），限制映射 $\\operatorname{Gal}(M/F^{\\prime})\\to\\operatorname{Gal}(K^{\\prime}/F^{\\prime})$ 满射，故 $\\operatorname{Gal}(K^{\\prime}/F^{\\prime})$ 可解。又有正合列 $1\\to\\operatorname{Gal}(K^{\\prime}/F^{\\prime})\\to\\operatorname{Gal}(K^{\\prime}/F)\\to\\operatorname{Gal}(F^{\\prime}/F)\\to1$（分圆扩张伽罗瓦，限制满射），两端可解、$\\operatorname{Gal}(F^{\\prime}/F)$ 交换，故 $\\operatorname{Gal}(K^{\\prime}/F)$ 可解。最后 $\\operatorname{Gal}(K/F)$ 是 $\\operatorname{Gal}(K^{\\prime}/F)$ 的商：$K^{\\prime}/F$ 正规，$K$ 的每个 $F$-自同构都可延拓到 $K^{\\prime}$。可解群的商可解，故 $\\operatorname{Gal}(K/F)$ 可解。∎',
+        '⭐ **为什么必须 char 0**：两个方向都用了「$x^{m}-1$ 无重根」（从而 $\\sigma$ 可对角化）与可分性。char $p$ 时纯开方扩张要换成 Artin–Schreier 扩张 $x^{p}-x-a$，结论要改写。',
+        '📌 **这条定理是「五次方程」那条线的唯一入口**：它把「有没有根式公式」这个分析/代数混着的问题，换成一个纯群论问题（$S_{n}$ 可解 $\\iff n\\le4$，见「对称群的可解性」）。注意反过来用时要说清：$\\operatorname{Gal}(f)$ 不可解 $\\implies$ 无根式解；而不是「方程无解」。'
       ].join('\n\n'),
-      refs: ['Lang, Algebra, Ch. VI §6', 'Hungerford, Algebra, Ch. V §5', 'Artin, Galois Theory'],
+      refs: [
+        'Lang, Algebra, Ch. VI §6',
+        'Hungerford, Algebra, Ch. V §5',
+        'Artin, Galois Theory'
+      ]
     },
 
     {

@@ -1,12 +1,8 @@
 # 根式可解 与 伽罗瓦群可解　`thm.radical-solvable`　·　说明
 根 `../`
 
-⚠ **骨架**。两个方向各有一条主线，本图只记路线：
+**证明**。先把「根式可解」说清楚：存在域塔 $F=F_{0}\subseteq F_{1}\subseteq\cdots\subseteq F_{m}$，$F_{i+1}=F_{i}(\alpha_{i})$、$\alpha_{i}^{n_{i}}\in F_{i}$，且 $K\subseteq F_{m}$。char 0 下 $K/F$ 是伽罗瓦扩张（分裂域 + 可分）。两个方向分别证。
 
-- **$\Leftarrow$（可解 $\implies$ 根式可解）**：把可解列 $G = G_{0} \trianglerighteq G_{1} \trianglerighteq \cdots \trianglerighteq \{e\}$ 翻译成域塔 $F = E_{0} \subseteq E_{1} \subseteq \cdots \subseteq K$，每一步商群是循环群；循环扩张在 char 0 下可以靠**添加单位根 + Kummer 理论**用开方实现。
-
-- **$\implies$（根式可解 $\implies$ 可解）**：反过来，把根式塔翻译成群塔，用「循环扩张的伽罗瓦群是循环群」（这一步又靠伽罗瓦对应 + `thm.solvable-quotients`），拼出可解列。
-
-⭐ **为什么必须 char 0**：可解 $\implies$ 根式那一步要用 $n$ 次单位根与 Kummer 理论；char $p$ 时 $x^{p} - x - a$ 这类 Artin–Schreier 扩张取代了纯开方扩张，结论要改写。
+**引理（Kummer 一步）**：设 $F$ 含本原 $m$ 次单位根 $\zeta$，$E/F$ 是 $m$ 次循环扩张，则 $E=F(\beta)$ 且 $\beta^{m}\in F$。证明：取生成元 $\sigma$，把 $\sigma$ 看成 $F$-线性变换。$\sigma^{m}=1$，而 $x^{m}-1$ 在 $F$ 上分裂且无重根，故 $\sigma$ 可对角化；又 $\sigma$ 的阶为 $m$，故其特征值的阶的最小公倍数为 $m$，其中必有一个本原 $m$ 次单位根 $\zeta^{k}$。取对应的特征向量 $\beta$：$\sigma(\beta)=\zeta^{k}\beta$。于是 $\sigma(\beta^{m})=\beta^{m}$，$\beta^{m}$ 在 $\sigma$ 的固定域里；循环扩张的固定域恰为 $F$，故 $\beta^{m}\in F$。又 $\beta\notin F$（否则 $\sigma(\beta)=\beta$），故 $E=F(\beta)$。∎
 
 > 续见 notes/thm.radical-solvable.2.md
