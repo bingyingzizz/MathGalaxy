@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T08:32:06.467Z
-> 15 星系 / 105 星团 / 1540 节点 / 3168 连线（强边 3129，弱边 39；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T08:42:44.842Z
+> 15 星系 / 105 星团 / 1540 节点 / 3169 连线（强边 3130，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.8 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -48823,6 +48823,17 @@ $[0,1]$ 连通，既开又闭的非空子集是全体，于是 $\varphi(1) = \va
 
 > Runge 与 Mittag-Leffler、Weierstrass 乘积是三兄弟：逼近 / 造主部 / 造零点。
 
+#### Cauchy–Goursat 积分定理 ⟹ Runge 逼近定理　`imp.cauchy-runge`
+*方格边界上逐格用 Cauchy–Goursat，得到引理 A 的积分表示*
+
+**引理 A**：设 $K$ 紧、$V \supset K$ 开、$f$ 在 $V$ 上全纯。取边长 $h$ 的方格网使 $h\sqrt{2} < \operatorname{dist}(K, \mathbb{C}\setminus V)$，令 $S$ 为所有与 $K$ 相交的闭方格之并；则 $K\subset\operatorname{int}S$、$S\subset V$。
+
+**逐格 Cauchy–Goursat**：对 $z\in K$，$h(\zeta) := (f(\zeta)-f(z))/(\zeta-z)$（在 $\zeta=z$ 处补定义为 $f'(z)$）在 $S$ 的某个邻域上全纯，故在每个方格 $Q$ 上有 $\int_{\partial Q} h = 0$。
+
+**相加**：内部公共边正反定向相消，只剩 $\Gamma = \partial S$，于是 $\int_{\Gamma} h = 0$，即 $f(z) = \frac{1}{2\pi i}\int_{\Gamma}\frac{f(\zeta)}{\zeta-z}\,\mathrm{d}\zeta$（末步用 $\operatorname{Ind}_{\Gamma}(z)=1$）。∎
+
+> 这条边只承担「引理 A 这一格 Cauchy–Goursat 用法」；Riemann 和与推极点由 `thm.cauchy-integral-formula` + `thm.mittag-leffler` 到本节点那条边承担。
+
 #### 整函数与亚纯函数 + Cauchy 不等式 ⟹ 整函数的阶与型　`e24.implication`
 *用最大模的增长速率为整函数排座次*
 
@@ -62259,7 +62270,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **活动标架与结构方程 ↔ 向量场与 Lie 结构**　2 条节点级连线
 - **平坦模 ↔ 消解与维数**　2 条节点级连线
 - **共形映射与正规族 ↔ 留数与辐角原理**　2 条节点级连线
-- **Cauchy 理论 ↔ 解析延拓与整函数**　7 条节点级连线
+- **Cauchy 理论 ↔ 解析延拓与整函数**　8 条节点级连线
 - **复变函数基础 ↔ 解析延拓与整函数**　3 条节点级连线
 - **关系与函数 ↔ 基本群**　2 条节点级连线
 - **基本群 ↔ 拓扑空间的基本语汇**　4 条节点级连线
