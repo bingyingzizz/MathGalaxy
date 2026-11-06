@@ -749,7 +749,7 @@ window.MG = window.MG || {};
         '**一般形式（任意方向的 $w$）。** 把 $w\\in T_{v}(T_{p}S)\\cong T_{p}S$ 分解成径向部分 $\\lambda v$ 与正交部分 $w^{\\perp}$。\n\n正交部分用上面同一套计算（把 $v,w^{\\perp}$ 张成的平面当成 $\\rho\\theta$ 平面）得 $\\langle (\\mathrm{d}\\exp_{p})_{v}(v),(\\mathrm{d}\\exp_{p})_{v}(w^{\\perp})\\rangle = 0$。\n\n径向部分：$t\\mapsto\\exp_{p}((1+t)v) = \\gamma_{v}(1+t)$ 是单位速度测地线的重参数化，故 $(\\mathrm{d}\\exp_{p})_{v}(v) = \\dot\\gamma_{v}(1)$，长度是 $|v|$，于是 $(\\mathrm{d}\\exp_{p})_{v}(\\lambda v) = \\lambda\\dot\\gamma_{v}(1)$ 给出 $\\lambda|v|^{2}$。\n\n两部分相加：',
         '$$\\langle (\\mathrm{d}\\exp_{p})_{v}(v),(\\mathrm{d}\\exp_{p})_{v}(w)\\rangle = \\lambda|v|^{2}+0 = \\langle v,\\,\\lambda v+w^{\\perp}\\rangle .$$',
         '这正是 Gauss 引理。',
-        '**$\\sqrt G$ 的展开。** $G = |\\partial_{\\theta}|^{2}$。\n\n由 $(\\mathrm{d}\\exp_{p})_{0}=\\mathrm{id}$，$G/\\rho^{2}\\to1$（$\\rho\\to0$），且 $G/\\rho^{2}$ 在极坐标下光滑，故它等于 $1+O(\\rho^{2})$：$G = \\rho^{2}+c_{4}\\rho^{4}+O(\\rho^{6})$，即 $\\sqrt G = \\rho+O(\\rho^{3})$。\n\n二次项系数为 $1$ 是因为 $(\\mathrm{d}\\exp_{p})_{0} = \\mathrm{id}$：$\\rho = 0$ 处的一阶行为就是欧氏的。\n\n$\\blacksquare$'
+        '**$\\sqrt G$ 的展开。** $G = |\\partial_{\\theta}|^{2}$。\n\n由 $(\\mathrm{d}\\exp_{p})_{0}=\\mathrm{id}$ 与法坐标下 $g_{ij}=\\delta_{ij}+O(|x|^{2})$：点 $\\exp_{p}(x)$（$x=\\rho(\\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2})$）处的 $\\partial_{\\theta}$ 沿切向坐标向量 $\\rho u_{\\theta}$ 的方向（$u_{\\theta}=(-\\sin\\theta,\\cos\\theta)$ 是单位向量），故 $G = \\rho^{2}g_{\\exp_{p}(x)}(u_{\\theta},u_{\\theta}) = \\rho^{2}(1+O(\\rho^{2})) = \\rho^{2}+O(\\rho^{4})$，写成展开即 $G = \\rho^{2}+c_{4}\\rho^{4}+O(\\rho^{6})$，即 $\\sqrt G = \\rho+O(\\rho^{3})$。\n\n二次项系数为 $1$ 是因为 $(\\mathrm{d}\\exp_{p})_{0} = \\mathrm{id}$：$\\rho = 0$ 处的一阶行为就是欧氏的。\n\n$\\blacksquare$'
       ].join('\n')
     },
 

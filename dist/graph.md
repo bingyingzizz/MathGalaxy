@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T09:29:49.204Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T09:39:16.291Z
 > 15 星系 / 105 星团 / 1540 节点 / 3169 连线（强边 3130，弱边 39；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -10244,7 +10244,7 @@ $f$ 的根可以用**根式**（四则运算与开 $n$ 次方）从 $F$ 的元�
 
 **第三步：$G$ 含一个换位**。$f^{\prime}(x) = 5x^{4} - 4$，唯一临界点为 $\pm\alpha$，$\alpha = (4/5)^{1/4} \in (3/4, 1)$。$f$ 在 $(-\infty, -\alpha)$ 与 $(\alpha, \infty)$ 上递增、在 $(-\alpha, \alpha)$ 上递减。又 $\alpha^{5} = \tfrac{4}{5}\alpha$，故 $f(\alpha) = 2 - \tfrac{16}{5}\alpha < 2 - \tfrac{16}{5}\cdot\tfrac{3}{4} = -\tfrac{2}{5} < 0$，而 $f(-\alpha) = 2 + \tfrac{16}{5}\alpha > 0$；且 $x \to -\infty$ 时 $f \to -\infty$，$x \to +\infty$ 时 $f \to +\infty$。由介值定理与上述单调性，$f$ 恰有三个实根，分别落在 $(-\infty, -\alpha)$、$(-\alpha, \alpha)$、$(\alpha, \infty)$ 内。复共轭 $\tau$ 固定这三个实根、交换剩下两个非实根，所以 $\tau \in G$ 是一个换位（奇置换）。
 
-**第四步：$\langle \sigma, \tau \rangle = S_{5}$**。把 $\sigma$ 写成 $(0\,1\,2\,3\,4)$。换位 $\tau = (a\,b)$ 的两个点在 5-循环上的距离只可能是 $1$ 或 $2$（距离 $d$ 与 $5-d$ 等价）。若距离为 $1$，$\sigma^{k}\tau\sigma^{-k}$ 给出全部相邻换位 $(i\,i+1)$，它们生成 $S_{5}$。若距离为 $2$，不妨取 $\tau = (0\,2)$：共轭给出 $(0\,2), (1\,3), (2\,4), (3\,0), (4\,1)$。由 $(0\,2)$ 与 $(2\,4)$ 得乘积 $(0\,4\,2)$，于是 $\{0, 2, 4\}$ 上的 $S_{3}$（含换位 $(0\,2)$）落在 $G$ 里；$S_{3}$ 与 5-循环合起来使 $|G|$ 被 $6$ 与 $5$ 整除，故 $30 \mid |G|$。若 $|G|=30$，则 $G$ 是 $S_{5}$ 的指数 $4$ 子群，给出非平凡同态 $S_{5}\to S_{4}$；其核是 $S_{5}$ 的非平凡正规子群，只能是 $A_{5}$，但 $|A_{5}|=60>24=|S_{4}|$，矛盾。故 $|G|\ne30$。$G$ 含奇置换，不能等于 $A_{5}$（$S_{5}$ 中唯一的指数 2 子群），所以 $|G| = 120$、$G = S_{5}$。
+**第四步：$\langle \sigma, \tau \rangle = S_{5}$**。把 $\sigma$ 写成 $(0\,1\,2\,3\,4)$。换位 $\tau = (a\,b)$ 的两个点在 5-循环上的距离只可能是 $1$ 或 $2$（距离 $d$ 与 $5-d$ 等价）。若距离为 $1$，$\sigma^{k}\tau\sigma^{-k}$ 给出全部相邻换位 $(i\,i+1)$，它们生成 $S_{5}$。若距离为 $2$，不妨取 $\tau = (0\,2)$：共轭给出 $(0\,2), (1\,3), (2\,4), (3\,0), (4\,1)$。由 $(0\,2)$ 与 $(2\,4)$ 得乘积 $(0\,4\,2)$，于是 $\{0, 2, 4\}$ 上的 $S_{3}$（含换位 $(0\,2)$）落在 $G$ 里；$S_{3}$ 与 5-循环合起来使 $|G|$ 被 $6$ 与 $5$ 整除，故 $30 \mid |G|$。若 $|G|=30$，则 $G$ 是 $S_{5}$ 的指数 $4$ 子群；$S_{5}$ 在 $G$ 的 $4$ 个左陪集上的作用给出**传递**同态 $\varphi:S_{5}\to S_{4}$，其核必为 $S_{5}$ 的正规子群 $1$、$A_{5}$ 或 $S_{5}$。核为 $1$ 时得单射 $S_{5}\hookrightarrow S_{4}$，$120>24$ 不可能；核为 $A_{5}$ 时像为 $S_{5}/A_{5}\cong C_{2}$，而 $C_{2}$ 在 $4$ 个点上每条轨道长 $\le 2$，不能传递；核为 $S_{5}$ 时作用平凡，也不能传递。矛盾，故 $|G|\ne30$。$G$ 含奇置换，不能等于 $A_{5}$（$S_{5}$ 中唯一的指数 2 子群），所以 $|G| = 120$、$G = S_{5}$。
 
 **收尾**。于是 $\operatorname{Gal}(f) \cong S_{5}$。由 `prop.sn-solvable`，$S_{5}$ 不可解；由 `thm.radical-solvable`（特征 $0$，底域 $\mathbb{Q}$），根式可解当且仅当伽罗瓦群可解。所以 $f$ 的根不能由 $\mathbb{Q}$ 的元素经四则运算与开方写出，特别地不存在一般的五次根式公式。∎
 
@@ -38152,9 +38152,9 @@ $$\psi(x) = \sum_{n \le x} \Lambda(n), \qquad \Lambda(n) = \begin{cases}\log p, 
 
 $$c_{1}\,\frac{x}{\log x} < \pi(x) < c_{2}\,\frac{x}{\log x} .$$
 
-（$\pi(x) \asymp x/\log x$；初等证明给出的常数例如 $0.3$ 与 $6$。）
+（$\pi(x) \asymp x/\log x$；初等证明给出的常数例如 $0.28$ 与 $6$。）
 
-**证明**：只用人均一次的二项式系数估计。记 $\theta(x) := \sum_{p \le x} \log p$（和只取素数 $p \le x$）。下面先对整数 $x$ 证明 $0.3\,x/\log x < \pi(x) < 6\,x/\log x$，最后把结论推到实数。
+**证明**：只用人均一次的二项式系数估计。记 $\theta(x) := \sum_{p \le x} \log p$（和只取素数 $p \le x$）。下面先对整数 $x$ 证明 $0.3\,x/\log x < \pi(x) < 6\,x/\log x$；推到实数时下界降为 $0.28\,x/\log x$，上界不变。
 
 **下界。** 对整数 $n \ge 1$ 令 $N := \binom{2n}{n}$。由 $\sum_{k=0}^{2n}\binom{2n}{k} = 4^{n}$、且 $\binom{2n}{n}$ 是其中最大的一项，得
 
@@ -38172,7 +38172,7 @@ $$N = \prod_{p \le 2n} p^{v_{p}(N)} \le (2n)^{\pi(2n)}.$$
 
 $$\pi(2n) \ge \frac{n\log 4 - \log(2n+1)}{\log(2n)} = \frac{\log 4}{2}\cdot\frac{2n}{\log(2n)} - \frac{\log(2n+1)}{\log(2n)}.$$
 
-对 $x := 2n \ge 16$，有 $\log(2n+1)/\log(2n) \le 2$，而 $2\log x/x \le 2\log 16/16 < 0.7$；于是 $\pi(x) \ge 1.386\,x/\log x - 2 \ge (1.386 - 0.693)\,x/\log x > 0.3\,x/\log x$。对奇数 $x = 2n+1 \ge 17$，$\pi(x) \ge \pi(2n)$，且 $x/\log x \ge 2n/\log(2n)$，同样成立。
+对 $x := 2n \ge 16$，有 $\log(2n+1)/\log(2n) \le 2$，而 $2\log x/x \le 2\log 16/16 < 0.7$；于是 $\pi(x) \ge 1.386\,x/\log x - 2 \ge (1.386 - 0.693)\,x/\log x > 0.3\,x/\log x$。对奇数 $x = 2n+1 \ge 17$，$\pi(x) \ge \pi(2n) \ge 0.3\cdot 2n/\log(2n)$；又 $x/\log x \le \frac{x}{2n}\cdot\frac{2n}{\log(2n)}$ 且 $\frac{x}{2n} = 1+\frac{1}{2n} < 1.07$，故 $\pi(x) > \frac{0.3}{1.07}\,x/\log x > 0.28\,x/\log x$。
 
 **上界。** 先估计 $\theta$。对偶数 $n = 2r$，区间 $(r, 2r]$ 里的素数之积整除 $\binom{2r}{r} \le 4^{r}$，故
 
@@ -38186,9 +38186,9 @@ $$\theta(2r+1) - \theta(r+1) \le 2r\log 2.$$
 
 $$\pi(x) \le \sqrt{x} + \frac{2\theta(x)}{\log x} \le \sqrt{x} + \frac{4x\log 2}{\log x}.$$
 
-对 $x \ge 16$，$\log x \le \sqrt{x}$，故 $\sqrt{x} \le x/\log x$，从而 $\pi(x) \le (1 + 4\log 2)\,x/\log x < 6\,x/\log x$。对 $2 \le x < 16$，$6x/\log x > 17$，而 $\pi(x) \le 6$，结论当然成立。
+对 $x \ge 16$，$\log x \le \sqrt{x}$，故 $\sqrt{x} \le x/\log x$，从而 $\pi(x) \le (1 + 4\log 2)\,x/\log x < 6\,x/\log x$。对 $2 \le x < 16$，$6x/\log x > 6$，而 $\pi(x) \le 6$，结论当然成立。
 
-**从整数到实数。** 设 $x \ge 2$ 实，令 $m := \lfloor x \rfloor$。$\pi(x) = \pi(m)$。当 $m \ge 16$ 时，$t/\log t$ 在 $[16, \infty)$ 上递增，故 $x/\log x \ge m/\log m$，上下界从整数情形直接迁移；当 $m < 16$ 时逐个整数检查即可（$\pi$ 分段常数，$t/\log t$ 在 $[3, \infty)$ 上递增）。∎
+**从整数到实数。** 设 $x \ge 2$ 实，令 $m := \lfloor x \rfloor$。$\pi(x) = \pi(m)$。当 $m \ge 16$ 时，$t/\log t$ 在 $[16, \infty)$ 上递增，故 $m/\log m \le x/\log x$，上界直接迁移；下界不能这样搬（只能得 $\pi(x) \ge 0.3\,m/\log m$），改用 $x/\log x \le (1+1/m)\,m/\log m$（由 $x < m+1$）：$m \ge 16$ 时因子 $1+1/m < 1.07$，故 $\pi(x) > \frac{0.3}{1.07}\,x/\log x > 0.28\,x/\log x$。当 $m < 16$ 时逐个整数检查即可（$\pi$ 分段常数，$t/\log t$ 在 $[3, \infty)$ 上递增）。∎
 
 **为什么够用**：这两个常数只用于「$\pi(x)$ 与 $x/\log x$ 同阶」这一定性结论；把常数改进到任意精度是 Chebyshev 原始论文的工作，把上界推到 $\pi(x) \sim x/\log x$ 则需要复分析（素数定理，见 `thm.prime-number-theorem`）。
 
@@ -45303,7 +45303,7 @@ $$\langle (\mathrm{d}\exp_{p})_{v}(v),(\mathrm{d}\exp_{p})_{v}(w)\rangle = \lamb
 这正是 Gauss 引理。
 **$\sqrt G$ 的展开。** $G = |\partial_{\theta}|^{2}$。
 
-由 $(\mathrm{d}\exp_{p})_{0}=\mathrm{id}$，$G/\rho^{2}\to1$（$\rho\to0$），且 $G/\rho^{2}$ 在极坐标下光滑，故它等于 $1+O(\rho^{2})$：$G = \rho^{2}+c_{4}\rho^{4}+O(\rho^{6})$，即 $\sqrt G = \rho+O(\rho^{3})$。
+由 $(\mathrm{d}\exp_{p})_{0}=\mathrm{id}$ 与法坐标下 $g_{ij}=\delta_{ij}+O(|x|^{2})$：点 $\exp_{p}(x)$（$x=\rho(\cos\theta\,e_{1}+\sin\theta\,e_{2})$）处的 $\partial_{\theta}$ 沿切向坐标向量 $\rho u_{\theta}$ 的方向（$u_{\theta}=(-\sin\theta,\cos\theta)$ 是单位向量），故 $G = \rho^{2}g_{\exp_{p}(x)}(u_{\theta},u_{\theta}) = \rho^{2}(1+O(\rho^{2})) = \rho^{2}+O(\rho^{4})$，写成展开即 $G = \rho^{2}+c_{4}\rho^{4}+O(\rho^{6})$，即 $\sqrt G = \rho+O(\rho^{3})$。
 
 二次项系数为 $1$ 是因为 $(\mathrm{d}\exp_{p})_{0} = \mathrm{id}$：$\rho = 0$ 处的一阶行为就是欧氏的。
 

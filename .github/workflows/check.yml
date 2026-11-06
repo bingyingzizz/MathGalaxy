@@ -36,7 +36,7 @@ jobs:
       - name: 节点 id 契约（快照 / 退役清单）
         run: bun tools/idstable.mjs
 
-      - name: 搜索排序回归（真 search.js，28 条标注查询）
+      - name: 搜索排序回归（真 search.js，31 条标注查询）
         run: bun tools/searchcheck.mjs
 
       - name: 文档硬数字（README / CONTRIBUTING / 站点 / llms.txt）
