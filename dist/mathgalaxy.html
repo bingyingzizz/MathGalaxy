@@ -16065,8 +16065,8 @@ MG.i18nAbstracts = {
       'compact implies sequentially compact; sequentially compact implies totally bounded ' +
       '(the one place dependent choice is used) and complete; sequentially compact implies ' +
       'compact by the "bad ball" argument; complete and totally bounded implies sequentially ' +
-      'compact by diagonalisation. In general topological spaces only the first implication ' +
-      'survives — sequential compactness is a metric-space luxury.',
+      'compact by diagonalisation. In general topological spaces **both implications fail** — ' +
+      'sequential compactness is a metric-space luxury (counterexamples: $\\{0,1\\}^{I}$ and $[0,\\omega_1)$).',
       status: 'reviewed', basedOn: 'v0.9.3#7adc980c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
@@ -16366,7 +16366,7 @@ MG.i18nStatements = {
         'use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n' +
         '⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval ' +
         '(0, 1) are homeomorphic, yet only the first is complete.' +
-        '**Only one of the three axioms is "hard"** (they are usually listed side by side, but they carry very different weight):\n\n- **Non-degeneracy** $d(x,y)=0 \\iff x=y$: **read it as two halves.** "$x=y \\implies d(x,y)=0$" is nearly free (often built into how $d$ is given); "$d(x,y)=0 \\implies x=y$" is the half with content (weakening it gives a **pseudometric**).\n- **Symmetry**: **can be dropped** \\u2014 what is left is a **quasi-metric** (e.g. a "one-way shortest path"); the topology is still definable, but balls are asymmetric (the ball for $d$ and the ball for the reversed quasi-metric differ).\n- **Triangle inequality**: **the only indispensable one.** Without it the open balls no longer form a base for a topology \\u2014 the concrete failure is that an intersection stops containing a ball, which is precisely what the definition of "open" uses.\n\n\\u26A0 **"$d$ takes values in $[0,+\\infty)$ rather than $[0,+\\infty]$"**: allowing $+\\infty$ wrecks the notion of a connected component (the discrete metric $d \\equiv +\\infty$ misbehaves), so the standard definition takes finite values; if a map between metric spaces needs $+\\infty$, say so explicitly.',
+        '**Only one of the three axioms is "hard"** (they are usually listed side by side, but they carry very different weight):\n\n- **Non-degeneracy** $d(x,y)=0 \\iff x=y$: **read it as two halves.** "$x=y \\implies d(x,y)=0$" is nearly free (often built into how $d$ is given); "$d(x,y)=0 \\implies x=y$" is the half with content (weakening it gives a **pseudometric**).\n- **Symmetry**: **can be dropped** — what is left is a **quasi-metric** (e.g. a "one-way shortest path"); the topology is still definable, but balls are asymmetric (the ball for $d$ and the ball for the reversed quasi-metric differ).\n- **Triangle inequality**: **the only indispensable one.** Without it the open balls no longer form a base for a topology — the concrete failure is that an intersection stops containing a ball, which is precisely what the definition of "open" uses.\n\n⚠ **"$d$ takes values in $[0,+\\infty)$ rather than $[0,+\\infty]$"**: allowing $+\\infty$ wrecks the notion of a connected component (the discrete metric $d \\equiv +\\infty$ misbehaves), so the standard definition takes finite values; if a map between metric spaces needs $+\\infty$, say so explicitly.',
         status: 'reviewed', basedOn: 'v0.9.3#8cd35552', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
@@ -16498,7 +16498,7 @@ MG.i18nStatements = {
         'An abelian category is the **working environment** of homological algebra as a whole: ' +
         'with kernels and cokernels one can even state "exact sequence"; an additive category ' +
         'only supplies the additive skeleton (zero object and direct sums).' +
-        '**Which of the four is the real axiom, and which are its consequences** (they are usually listed side by side, but condition 4 is the weakest and behaves most like an axiom, while the first three each cost something):\n\n- (1) $\\implies$ (2): **one kernel-plus-cokernel diagram chase.** $i : N \\rightarrowtail M$ identifies $N$ with $\\ker(M \\to \\operatorname{coker} i)$; this uses only the preabelian fact that a monomorphism is its own kernel \\u2014 **no assumption beyond the additive structure**.\n- (2) $\\implies$ (1): **almost free in reverse** ($N$ being isomorphic to the kernel of a cokernel simply says $i$ is a kernel, i.e. regular).\n- (1) $\\iff$ (3): **this step needs kernels and cokernels** (i.e. preabelian). Factor $f = M \\to N$ as $M \\twoheadrightarrow \\operatorname{im} f \\rightarrowtail N$; "the epimorphism half is regular" is exactly (1). \\u26A0 Uniqueness holds **up to isomorphism** \\u2014 the word matters: the factorisation is not strict, since one image can have different representatives.\n- (1) $\\iff$ (4): **the most "algebraic" one** (Abel\'s original form): $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. It is equivalent to "the first isomorphism theorem holds in the category", and needs **kernels and cokernels to exist** plus **regularity of mono/epi**.\n\n\\u26A0 **Preabelian $\\ne$ abelian \\u2014 the point**: preabelian asks only that kernels and cokernels exist; any one of (1)\\u2013(4) can **fail**. The standard counterexamples are $\\mathbf{PreAb}$ (preabelian groups) or filtered vector spaces, where an epimorphism need not be a cokernel and a monomorphism need not be a kernel. So **abelian = preabelian + (any one of the equivalent conditions)**, and that last clause cannot be dropped.\n\n\\u26A0 **Two more traps**: in the definition of "additive category", "all direct sums" and "all finite products" agree only **given preadditivity** (in a general category finite products and finite coproducts need not coincide); and "all finite limits and colimits" is the phrasing attached to (2), which does **not** imply abelianness ($\\mathbf{Set}$ has finite limits and coproducts yet is far from abelian) \\u2014 the difference lies in disjointness, universality and effectiveness.',
+        '**Which of the four is the real axiom, and which are its consequences** (they are usually listed side by side, but condition 4 is the weakest and behaves most like an axiom, while the first three each cost something):\n\n- (1) $\\implies$ (2): **one kernel-plus-cokernel diagram chase.** $i : N \\rightarrowtail M$ identifies $N$ with $\\ker(M \\to \\operatorname{coker} i)$; this uses only the preabelian fact that a monomorphism is its own kernel — **no assumption beyond the additive structure**.\n- (2) $\\implies$ (1): **almost free in reverse** ($N$ being isomorphic to the kernel of a cokernel simply says $i$ is a kernel, i.e. regular).\n- (1) $\\iff$ (3): **this step needs kernels and cokernels** (i.e. preabelian). Factor $f = M \\to N$ as $M \\twoheadrightarrow \\operatorname{im} f \\rightarrowtail N$; "the epimorphism half is regular" is exactly (1). ⚠ Uniqueness holds **up to isomorphism** — the word matters: the factorisation is not strict, since one image can have different representatives.\n- (1) $\\iff$ (4): **the most "algebraic" one** (Abel\'s original form): $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. It is equivalent to "the first isomorphism theorem holds in the category", and needs **kernels and cokernels to exist** plus **regularity of mono/epi**.\n\n⚠ **Preabelian $\\ne$ abelian — the point**: preabelian asks only that kernels and cokernels exist; any one of (1)–(4) can **fail**. The standard counterexamples are $\\mathbf{PreAb}$ (preabelian groups) or filtered vector spaces, where an epimorphism need not be a cokernel and a monomorphism need not be a kernel. So **abelian = preabelian + (any one of the equivalent conditions)**, and that last clause cannot be dropped.\n\n⚠ **Two more traps**: in the definition of "additive category", "all direct sums" and "all finite products" agree only **given preadditivity** (in a general category finite products and finite coproducts need not coincide); and "all finite limits and colimits" is the phrasing attached to (2), which does **not** imply abelianness ($\\mathbf{Set}$ has finite limits and coproducts yet is far from abelian) — the difference lies in disjointness, universality and effectiveness.',
         status: 'reviewed', basedOn: 'v0.9.3#e667995c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
@@ -16654,7 +16654,7 @@ MG.i18nStatements = {
         'This theorem is the technical core of the monotone class theorem: it is precisely what ' +
         'lets one reduce "true for all $\\sigma$-algebras" to "first verify it on a ring, then ' +
         'pass to monotone limits".' +
-        '**Which hypothesis each direction uses** (all three conditions are purely about set operations, but the ring hypothesis cannot be dropped):\n\n- (1) $\\implies$ (3): a countable disjoint union is a special case of a countable union \\u2014 free.\n- (1) $\\implies$ (2): increasing unions are immediate from the definition; for decreasing intersections take the first term minus the successive differences as a countable union (the whole set need not belong to the family).\n- (2) $\\implies$ (1): the ring gives finite unions, and the monotone class keeps their increasing limit inside the family.\n- (3) $\\implies$ (1): set $B_n = A_n \\setminus \\bigcup_{j<n} A_j$; the ring guarantees every $B_n$ lies in the family, and closure under disjoint unions finishes.\n- The ring hypothesis cannot be dropped: on a two-point set, the family of the two singletons is a monotone class, yet it does not contain their union.',
+        '**Which hypothesis each direction uses** (all three conditions are purely about set operations, but the ring hypothesis cannot be dropped):\n\n- (1) $\\implies$ (3): a countable disjoint union is a special case of a countable union — free.\n- (1) $\\implies$ (2): increasing unions are immediate from the definition; for decreasing intersections take the first term minus the successive differences as a countable union (the whole set need not belong to the family).\n- (2) $\\implies$ (1): the ring gives finite unions, and the monotone class keeps their increasing limit inside the family.\n- (3) $\\implies$ (1): set $B_n = A_n \\setminus \\bigcup_{j<n} A_j$; the ring guarantees every $B_n$ lies in the family, and closure under disjoint unions finishes.\n- The ring hypothesis cannot be dropped: on a two-point set, the family of the two singletons is a monotone class, yet it does not contain their union.',
         status: 'reviewed', basedOn: 'v0.9.3#a3966daf', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
@@ -16967,8 +16967,7 @@ MG.i18nStatements = {
         "- (a) $X$ is **compact**: every open cover has a finite subcover;\n" +
         "- (b) $X$ is **sequentially compact**: every sequence has a subsequence converging in $X$;\n" +
         "- (c) $X$ is **complete and totally bounded**.\n\n" +
-        "That is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded." +
-        'That is, compactness, sequential compactness, and completeness together with total boundedness are all equivalent.',
+        "That is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded.",
         status: 'reviewed', basedOn: 'v0.9.3#b828d710', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
@@ -16986,10 +16985,12 @@ MG.i18nStatements = {
         'So "sequentially compact $\\implies$ totally bounded $\\implies$ compact" and ' +
         '"compact $\\implies$ sequentially compact" close the circle, and the three notions ' +
         'agree.\n\n' +
-        '⚠ In a general topological space only "compact $\\implies$ sequentially compact" ' +
-        'holds — **the converse fails**: sequential compactness is a piece of luck peculiar ' +
-        'to metric spaces.' +
-        '**What each direction uses, and whether any extra hypothesis is needed** (this list *is* the content of the equivalence):\n\n- (a) $\\implies$ (b): **no hypothesis needed.** Pass to a finite subcover and pick, by pigeonhole, a subsequence lying inside one member of the cover (Lebesgue number, or a direct induction), then take a convergent subsequence inside that member.\n- (a) $\\implies$ (c), "complete": **no extra hypothesis.** A Cauchy sequence with a convergent subsequence converges, and to the same point.\n- (a) $\\implies$ (c), "totally bounded": **no extra hypothesis.** Cover by all balls of radius $\\varepsilon$; a finite subcover is a finite $\\varepsilon$-net.\n- (b) $\\implies$ (a): **uses only total boundedness, not the axiom of choice** (the "bad ball" argument: if no finite cover existed, one would build recursively a sequence with pairwise distances $\\ge \\varepsilon$, which has no convergent subsequence).\n- (b) $\\implies$ (c), "complete": **no extra hypothesis** (the limit of the convergent subsequence is the limit of the Cauchy sequence).\n- (b) $\\implies$ (c), "totally bounded": **this step really uses countable choice (DC)** \\u2014 the only place in the whole proof. For each $n$ one picks a $1/n$-ball containing infinitely many terms, and shrinks layer by layer.\n- (c) $\\implies$ (b): **no choice needed** (diagonal argument: using $1/n$-nets, keep at each layer a ball with infinitely many terms, take the diagonal subsequence \\u2014 it is Cauchy \\u2014 and converge by completeness).',
+        '⚠ **What each of the two conditions does**: completeness keeps the limit **in the space**, total boundedness supplies **a shrinkable subsequence** — neither can be dropped ($\\mathbb{R}$ is complete but not totally bounded; $(0, 1)$ is totally bounded but not complete).\n\n' +
+        '⚠ In a general topological space **both implications fail**:\n\n' +
+        '(a) $\\implies$ (b) fails: take $I = 2^{\\mathbb{N}}$ and, for $A \\in \\{0, 1\\}^{\\mathbb{N}}$, put $x_{n}(A) = A(n)$, so $x_{n} \\in \\{0, 1\\}^{I}$; Tychonoff makes $\\{0, 1\\}^{I}$ **compact**. Given any subsequence $n_{k}$, choose $A$ with $A(n_{2j}) = 1$ and $A(n_{2j+1}) = 0$; then $x_{n_{k}}(A)$ alternates between $1$ and $0$, so it does not converge and no subsequence of it converges — **not sequentially compact**.\n\n' +
+        '(b) $\\implies$ (a) fails: $[0, \\omega_{1})$ with the order topology is **sequentially compact** (countably many countable ordinals have an upper bound, so the subsequence falls inside some compact $[0, \\alpha]$) but **not compact** ($\\{[0, \\alpha) : \\alpha < \\omega_{1}\\}$ is an open cover with no finite subcover).\n\n' +
+        '⚠ The two notions agree only in metric spaces — sequential compactness is a piece of luck peculiar to metric spaces.\n\n' +
+        '**What each direction uses, and whether any extra hypothesis is needed** (this list *is* the content of the equivalence):\n\n- (a) $\\implies$ (b): **no choice needed.** If no subsequence converged, every $y$ would have an open neighbourhood $U_{y}$ containing $x_{n}$ for only finitely many $n$ — otherwise the balls of radius $1/k$ around $y$ would give a subsequence converging to $y$, with the indices picked greedily from $\\mathbb{N}$. Compactness makes finitely many $U_{y}$ cover the space, so only finitely many indices occur — contradiction.\n- (a) $\\implies$ (c), "complete": **no choice needed.** A Cauchy sequence with a convergent subsequence converges, and to the same point.\n- (a) $\\implies$ (c), "totally bounded": **no choice needed.** Cover by all balls of radius $\\varepsilon$; a finite subcover is a finite $\\varepsilon$-net.\n- (b) $\\implies$ (a): **uses only total boundedness, not the axiom of choice** (the "bad ball" argument: if no finite cover existed, one would build recursively a sequence with pairwise distances $\\ge \\varepsilon$, which has no convergent subsequence).\n- (b) $\\implies$ (c), "complete": **no choice needed** (the limit of the convergent subsequence is the limit of the Cauchy sequence).\n- (b) $\\implies$ (c), "totally bounded": **this step really uses countable choice (DC)** — the only place in the whole proof. For each $n$ one picks a $1/n$-ball containing infinitely many terms, and shrinks layer by layer.\n- (c) $\\implies$ (b): **no choice needed** (diagonal argument: using $1/n$-nets, keep at each layer a ball with infinitely many terms, take the diagonal subsequence — it is Cauchy — and converge by completeness).',
         status: 'reviewed', basedOn: 'v0.9.3#0c5aa523', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
@@ -17091,7 +17092,7 @@ MG.i18nStatements = {
         'measure.\n\n' +
         'What Lebesgue first constructed was an outer measure: ' +
         '$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.' +
-        '**Which of the three conditions is "hard"** (the three are asymmetric \\u2014 one is normalisation, one is almost free, one is a real condition):\n\n- $\\mu^{*}(\\emptyset) = 0$: **normalisation**, there only so that $0 \\le \\mu^{*}$ below is meaningful (otherwise the constant $+\\infty$ would satisfy the other two).\n- **Monotonicity**: **almost free**, but deriving it uses countable subadditivity: $B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$; monotonicity is usually listed as an axiom to save that step, and in a concrete construction (Carath\\u00E9odory) it is verified directly.\n- **Countable subadditivity**: **this is the real condition**, the only one with content \\u2014 it ties "the size of one set" to "countable operations". \\u26A0 Note that it is an **inequality**: an outer measure is **not** additive (additivity on disjoint unions is what makes it a measure, and that is an extra conclusion on Carath\\u00E9odory-measurable sets).\n\n**Two distinctions that must stay separate**:\n\n- **An outer measure is defined on $\\mathcal{P}(X)$** (all subsets), whereas a measure (`def.measure`) is defined only on a $\\sigma$-algebra \\u2014 that is the whole point of an outer measure as a **construction device**: first put a crude "size" on all subsets, then single out the subsets on which it is additive.\n- **Monotone plus countably subadditive does not say "the value on a countable union is the limit"**: on increasing unions an outer measure only guarantees $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$; equality needs continuity from below, hence measurability \\u2014 exactly what the Carath\\u00E9odory condition supplies.\n\n\\u26A0 Notation: the star in $\\mu^{*}$ means "defined on $\\mathcal{P}(X)$", not "dual of something". Some books write $m^{*}$ or $\\nu^{*}$.',
+        '**Which of the three conditions is "hard"** (the three are asymmetric — one is normalisation, one is almost free, one is a real condition):\n\n- $\\mu^{*}(\\emptyset) = 0$: **normalisation**, there only so that $0 \\le \\mu^{*}$ below is meaningful (otherwise the constant $+\\infty$ would satisfy the other two).\n- **Monotonicity**: **almost free**, but deriving it uses countable subadditivity: $B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$; monotonicity is usually listed as an axiom to save that step, and in a concrete construction (Carathéodory) it is verified directly.\n- **Countable subadditivity**: **this is the real condition**, the only one with content — it ties "the size of one set" to "countable operations". ⚠ Note that it is an **inequality**: an outer measure is **not** additive (additivity on disjoint unions is what makes it a measure, and that is an extra conclusion on Carathéodory-measurable sets).\n\n**Two distinctions that must stay separate**:\n\n- **An outer measure is defined on $\\mathcal{P}(X)$** (all subsets), whereas a measure (`def.measure`) is defined only on a $\\sigma$-algebra — that is the whole point of an outer measure as a **construction device**: first put a crude "size" on all subsets, then single out the subsets on which it is additive.\n- **Monotone plus countably subadditive does not say "the value on a countable union is the limit"**: on increasing unions an outer measure only guarantees $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$; equality needs continuity from below, hence measurability — exactly what the Carathéodory condition supplies.\n\n⚠ Notation: the star in $\\mu^{*}$ means "defined on $\\mathcal{P}(X)$", not "dual of something". Some books write $m^{*}$ or $\\nu^{*}$.',
         status: 'reviewed', basedOn: 'v0.9.3#63a085ee', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
@@ -19695,7 +19696,6 @@ window.MG = window.MG || {};
       sources: ['ax.choice', 'thm.hartogs'],
       target: 'lem.zorn',
       title: '选择公理 + Hartogs 定理 $\\implies$ 佐恩引理（路线 $1\\implies2$）',
-      note: 'AC ⟺ 良序 ⟺ Zorn 已经有三条 equivalence 边；这一条是**第二条路线**（借 Hartogs 定理），按推论边处理：真推得通，但不是建造顺序（分层由等价类负责）。',
       proof: [
         '设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。',
         '',
@@ -19721,7 +19721,7 @@ window.MG = window.MG || {};
         '',
         '$>$ 这一路线的分工很干净：**AC 负责「挑」，Hartogs 负责「停」**。对比之下，经由良序定理的证法（见「良序定理 $\\iff$ 佐恩引理」那条黑线）是把「停」交给 Burali–Forti 悖论。'
       ].join('\n'),
-      note: '比走良序定理更直：整段只挑一次元素，终止性由 Hartogs 定理（ZF 可证）兜底。'
+      note: 'AC、良序、Zorn 三者等价，已经有三条 equivalence 边；这一条是**第二条路线**（借 Hartogs 定理），按推论边处理：真推得通，但不是建造顺序（分层由等价类负责）。\n\n比走良序定理更直：整段只挑一次元素，终止性由 Hartogs 定理（ZF 可证）兜底。'
     },
 
     /* ============================ 佐恩引理 ⟹ 选择公理 ============================ */
@@ -27731,8 +27731,8 @@ window.MG = window.MG || {};
         '',
         '此时记 $X \\cong Y$，称两个空间**同胚**。「同胚」是拓扑空间之间的等价关系（恒等、逆、复合都保持）。'
       ].join('\n'),
-      notes: '⭐ 同胚 = 「拓扑上分不出来」：一切**拓扑性质**（紧性、连通性、Hausdorff、闭包）都保持不变。\n\n⚠ 反过来也要当心：**度量性质在同胚下会变**。\n\n$\\mathbb{R}$ 与开区间 $(0, 1)$ 同胚（$x \\mapsto \\frac{1}{2} + \\frac{1}{\\pi}\\arctan x$），但前者完备、后者不完备 —— 这就是「完备性不是拓扑性质」的经典例子，也是距离空间里「紧 / 闭」与「完备 / 全有界」两类性质的分界线。',
       notes: [
+        '⭐ 同胚 = 「拓扑上分不出来」：一切**拓扑性质**（紧性、连通性、Hausdorff、闭包）都保持不变。\n\n⚠ 反过来也要当心：**度量性质在同胚下会变**。\n\n$\\mathbb{R}$ 与开区间 $(0, 1)$ 同胚（$x \\mapsto \\frac{1}{2} + \\frac{1}{\\pi}\\arctan x$），但前者完备、后者不完备 —— 这就是「完备性不是拓扑性质」的经典例子，也是距离空间里「紧 / 闭」与「完备 / 全有界」两类性质的分界线。',
         '**三种等价说法，差在“开/闭”的哪一边**：\n' +
         '\n' +
         '- 定义（双射 + $f$、$f^{-1}$ 连续）$\\iff$ **$f$ 是连续开双射** $\\iff$ **$f$ 是连续闭双射**：$(\\implies)$ 由 $f^{-1}$ 连续得 $f$ 开；$(\\Leftarrow)$ 由 $f$ 开得 $f^{-1}$ 连续。**这两步都只用开集/闭集的对偶，不需要额外假设。**\n' +
@@ -27843,8 +27843,8 @@ window.MG = window.MG || {};
         '',
         '固定 $x \\in X$，包含 $x$ 的**连通分量** $C(x)$ 是所有含 $x$ 的连通子集的并 —— 它本身连通，且是极大的。'
       ].join('\n'),
-      notes: '连通分量构成 $X$ 的一个划分，且每个分量都是闭的。**既开又闭**的子集（记作**闭开集**）与连通性是同一件事的两面：$X$ 连通当且仅当它的闭开子集只有 $\\emptyset$ 与 $X$ 本身 —— 所以「有没有非平凡的闭开集」就是「能不能断开」。',
       notes: [
+        '连通分量构成 $X$ 的一个划分，且每个分量都是闭的。**既开又闭**的子集（记作**闭开集**）与连通性是同一件事的两面：$X$ 连通当且仅当它的闭开子集只有 $\\emptyset$ 与 $X$ 本身 —— 所以「有没有非平凡的闭开集」就是「能不能断开」。',
         '**四种说法，代价都在“取补”与“连续像”上**：\n' +
         '\n' +
         '- 连通 $\\iff$ **不能写成两个不交非空开集之并**：这是定义。\n' +
@@ -33652,8 +33652,8 @@ window.MG = window.MG || {};
         '3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；',
         '4. 导出三角之间的态射可以（**不唯一**地）延拓。'
       ].join('\n'),
-      notes: '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。',
       notes: [
+        '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。',
         '**四条里“不唯一”出现了两次 —— 那正是导岀范畴与三角范畴的差别所在**：\n' +
         '\n' +
         '- **① 与 ②（旋转）**：**这一条是三角公理的核心**。给定 $K \\to L \\to M \\to K[1]$ 导出，可以旋转得到 $L \\to M \\to K[1] \\to L[1]$（第三个箭头带 $-f[1]$ 的符号）。⚠️ **符号不能省**：写成 $f[1]$ 会与 ② 重复旋转得到矛盾（旋转四次回到自身，符号必须乘积为 $+1$）。\n' +
@@ -33844,8 +33844,8 @@ window.MG = window.MG || {};
         '',
         '$M$ **内射** $\\iff M\\prime\\prime$ **内射**'
       ].join('\n'),
-      notes: '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
       notes: [
+        '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
   '**四条是一个循环，但每一跳的代价不同**（这也是为什么内射性有这么多“等价说法”，却总是用同一条来验证）：\n' +
   '\n' +
   '- (1) $\\iff$ (3)：**几乎只是定义改写**。$\\operatorname{Hom}(-,I)$ 正合 $\\iff$ 它把单态射送到满射（其余两个正合性对 $\\operatorname{Hom}$ 是自动的，因为它是左正合的）。这一跳**不需要范畴有足够多内射**。\n' +
@@ -46816,8 +46816,8 @@ window.MG = window.MG || {};
         '',
         '（$m$ 是 $\\mathbb{R}$ 上的 Lebesgue 测度；零测集 = 可以被可数多个区间覆盖、且这些区间长度之和任意小。）'
       ].join('\n'),
-      notes: '⭐ 这一条是**初等微积分与测度论的接头处**：左边是「振幅和可以任意小」（纯 Riemann 语言），右边是「不连续点集有多小」（纯 Lebesgue 语言）。\n\n说同一件事，用两套语言。\n\n⭐ 立刻可用的几个特例：连续函数可积（不连续点集为空）、单调函数可积（不连续点至多可数，可数集零测）、有有限个跳跃的函数可积。\n\n⚠ 函数**有界**是前提：无界函数即使几乎处处连续也不 Riemann 可积。\n\n⚠ 「零测」比「可数」宽得多：Cantor 集不可数但零测，所以**在 Cantor 集上不连续、处处稠密地连续**的函数照样可积。',
       notes: [
+        '⭐ 这一条是**初等微积分与测度论的接头处**：左边是「振幅和可以任意小」（纯 Riemann 语言），右边是「不连续点集有多小」（纯 Lebesgue 语言）。\n\n说同一件事，用两套语言。\n\n⭐ 立刻可用的几个特例：连续函数可积（不连续点集为空）、单调函数可积（不连续点至多可数，可数集零测）、有有限个跳跃的函数可积。\n\n⚠ 函数**有界**是前提：无界函数即使几乎处处连续也不 Riemann 可积。\n\n⚠ 「零测」比「可数」宽得多：Cantor 集不可数但零测，所以**在 Cantor 集上不连续、处处稠密地连续**的函数照样可积。',
   '**两个方向用到的工具完全不同**（这是这条判据最值得记住的地方）：\n' +
   '\n' +
   '- **「可积 $\\implies$ 零测」**：只用 Riemann 和。取分割把振幅大的小区间挑出来，它们的长度和 $\\to 0$（可积性给出振幅控制），于是 $D$ 被一列总长任意小的开区间覆盖 $\\implies$ $m(D) = 0$。**这一步在 Riemann 积分内部就完成，不需要测度论。**\n' +
@@ -48577,7 +48577,7 @@ window.MG = window.MG || {};
         '',
         '（$V = \\{0\\}$ 时约定 $\\dim V = 0$；没有有限基时称 $V$ 是**无限维**的。）'
       ].join('\n'),
-      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $\\#(A \\times \\mathbb{N}) = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$\\dim(V/U) = \\dim V - \\dim U$。',
+      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $\\#(A \\times \\mathbb{N}) = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$V$ **有限维**时 $\\dim(V/U) = \\dim V - \\dim U$；无限维时减法没有意义（基数不做减法），只有基数加法 $\\dim V = \\dim U + \\dim(V/U)$。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 2']
     }
   ],
@@ -49329,8 +49329,8 @@ window.MG = window.MG || {};
         '- 齐次方程组 $Ax = 0$ 的解空间就是 $\\ker A$，维数 $= n - \\operatorname{rank} A$；',
         '- 特别地：$m = n$ 且 $\\det A \\ne 0$ 时解**唯一**，$x = A^{-1}b$。'
       ].join('\n'),
-      notes: '⭐ 「解集 = 特解 + 齐次解」是线性代数的中心图景：**非齐次没有结构，齐次才有**（它是子空间），非齐次只是它的一个平移（仿射子空间）。\n\n⭐ 维数公式 $n - \\operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\\operatorname{rank} A$ + 自由的 $\\dim \\ker A$。\n\n⚠ 「有解 $\\iff$ $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。\n\n别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。',
       notes: [
+        '⭐ 「解集 = 特解 + 齐次解」是线性代数的中心图景：**非齐次没有结构，齐次才有**（它是子空间），非齐次只是它的一个平移（仿射子空间）。\n\n⭐ 维数公式 $n - \\operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\\operatorname{rank} A$ + 自由的 $\\dim \\ker A$。\n\n⚠ 「有解 $\\iff$ $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。\n\n别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。',
   '**四条里哪条是“定理”、哪条只是重述**（这一组常被当成四条并列，其实最后一条依赖前两条）：\n' +
   '\n' +
   '- **有解 $\\iff \\operatorname{rank}A = \\operatorname{rank}(A\\mid b)$**：**这一步有真内容**，等价于「$b \\in \\operatorname{col}(A)$」。证明用行化简（Gauss 消元）—— 出现 $0 = c \\ne 0$ 的行当且仅当秩不相等。**只用「$K$ 是域」**（域上才能自由消元；$\\mathbb{Z}$ 上要换 Smith 标准形）。\n' +
@@ -49959,13 +49959,13 @@ window.MG = window.MG || {};
         '',
         '等价说法：$f$ 不可约 $\\iff$ $f$ 在环 $K[x]$ 里不能写成两个次数更小的非单位之积 $\\iff$ 主理想 $(f)$ 是 $K[x]$ 的**极大理想**。'
       ].join('\n'),
-      notes: '⭐ 不可约性**依赖域 $K$**：$x^{2} + 1$ 在 $\\mathbb{R}[x]$ 中不可约，在 $\\mathbb{C}[x]$ 中可约（$= (x + i)(x - i)$），在 $\\mathbb{F}_2[x]$ 中又可约（$x^{2} + 1 = (x+1)^{2}$）。\n\n所以「不可约」永远要写明在哪个域上。\n\n⭐ 「不可约 $\\iff$ $(f)$ 极大」这一条把代数问题翻译成环论的语言：于是 $K[x]/(f)$ 是**域**（商掉极大理想得域）—— 这就是「造一个新域、让 $f$ 在那里有根」的装置（Galois 那一批要用）。\n\n⚠ 不可约与「没有根」不同：$x^{4} + 1$ 在 $\\mathbb{R}[x]$ 上无根但可约（$= (x^{2}+\\sqrt{2}x+1)(x^{2}-\\sqrt{2}x+1)$）。\n\n次数 $\\le 3$ 时两者才等价。',
       notes: [
+        '⭐ 不可约性**依赖域 $K$**：$x^{2} + 1$ 在 $\\mathbb{R}[x]$ 中不可约，在 $\\mathbb{C}[x]$ 中可约（$= (x + i)(x - i)$），在 $\\mathbb{F}_2[x]$ 中又可约（$x^{2} + 1 = (x+1)^{2}$）。\n\n所以「不可约」永远要写明在哪个域上。\n\n⭐ 「不可约 $\\iff$ $(f)$ 极大」这一条把代数问题翻译成环论的语言：于是 $K[x]/(f)$ 是**域**（商掉极大理想得域）—— 这就是「造一个新域、让 $f$ 在那里有根」的装置（Galois 那一批要用）。\n\n⚠ 不可约与「没有根」不同：$x^{4} + 1$ 在 $\\mathbb{R}[x]$ 上无根但可约（$= (x^{2}+\\sqrt{2}x+1)(x^{2}-\\sqrt{2}x+1)$）。\n\n次数 $\\le 3$ 时两者才等价。',
         '**三条说法里“主理想极大”要用 $K[x]$ 是 PID**：\n' +
         '\n' +
         '- 定义（不能分解成两个正次数之积）$\\iff$ **不能写成两个非单位之积**：这只要「$\\deg(gh) = \\deg g + \\deg h$」这条次数公式（**$K$ 是整环**即可）。\n' +
-        '- 不可约 $\\iff$ **主理想 $(f)$ 极大** $\\iff$ **$K[x]/(f)$ 是域**：**这一步用 $K[x]$ 是 PID**（PID 里「不可约元 $\\iff$ 极大理想」）。⚠️ 在 $K[x,y]$ 里这条**失效**（不可约多项式不必生成极大理想：$(x)$ 极大但 $(x^{2}-y)$ 不是）。\n' +
-        '- **与“无根”的关系要小心**：$\\deg f \\le 3$ 时不可约 $\\iff$ 无根（因为分解必有一次因子）；$\\deg \\ge 4$ 时无根**不**蕴含不可约（$(x^{2}+1)^{2}$ 型；更经典的是 $x^{4}+2x^{2}+1$）。\n' +
+        '- 不可约 $\\iff$ **主理想 $(f)$ 极大** $\\iff$ **$K[x]/(f)$ 是域**：**这一步用 $K[x]$ 是 PID**（PID 里「不可约元 $\\iff$ 极大理想」）。⚠️ 在 $K[x,y]$ 里这条**失效** —— 它靠的是 $K[x]$ 是 PID：$x$ 与 $x^{2}-y$ 都不可约，但 $(x)$、$(x^{2}-y)$ **都不极大**（$K[x,y]/(x) \\cong K[y]$ 不是域），所以 $K[x,y]$ 不是 PID。\n' +
+        '- **与“无根”的关系要小心**：$\\deg f \\le 3$ 时不可约 $\\iff$ 无根（因为分解必有一次因子）；$\\deg \\ge 4$ 时无根**不**蕴含不可约（例如 $(x^{2}+1)(x^{2}+2)$ 在 $\\mathbb{R}[x]$ 上恒正、无根，却能分解）。\n' +
         '\n' +
         '⚠️ **域的选择决定答案**：$x^{2}+1$ 在 $\\mathbb{R}[x]$ 不可约、在 $\\mathbb{C}[x]$ 可约；$x^{2}-2$ 在 $\\mathbb{Q}[x]$ 不可约、在 $\\mathbb{R}[x]$ 可约。所以「不可约」永远是**相对于基域**说的。\n'
       ].join('\n\n'),
@@ -50325,8 +50325,8 @@ window.MG = window.MG || {};
         '',
         '**(5)** 存在**互异**的 $\\lambda_i$ 使 $T$ 满足 $\\prod_i (T - \\lambda_i I) = 0$（即 $T$ 被一个无重根的多项式零化）。'
       ].join('\n'),
-      notes: '⭐ 最常用的判据是 **(3)/(4)**：$n$ 个线性无关的特征向量存在 $\\iff$ 可对角化。\n\n注意「特征值个数 $= n$」不够（重根要按重数算）。\n\n⭐ **(5)** 是最深刻的写法：它把「可对角化」翻译成**极小多项式无重根**（见「极小多项式整除特征多项式」）—— 这一条在谱定理与 Jordan 型的讨论里都要用。\n\n⚠ 判据依赖 $K$：$\\mathbb{R}$ 上的旋转没有实特征值，当然不可对角化；\n\n但它到 $\\mathbb{C}$ 上就有特征值 $\\pm i$ 且可对角化。\n\n所以「可对角化」永远相对于 $K$ 说。',
       notes: [
+        '⭐ 最常用的判据是 **(3)/(4)**：$n$ 个线性无关的特征向量存在 $\\iff$ 可对角化。\n\n注意「特征值个数 $= n$」不够（重根要按重数算）。\n\n⭐ **(5)** 是最深刻的写法：它把「可对角化」翻译成**极小多项式无重根**（见「极小多项式整除特征多项式」）—— 这一条在谱定理与 Jordan 型的讨论里都要用。\n\n⚠ 判据依赖 $K$：$\\mathbb{R}$ 上的旋转没有实特征值，当然不可对角化；\n\n但它到 $\\mathbb{C}$ 上就有特征值 $\\pm i$ 且可对角化。\n\n所以「可对角化」永远相对于 $K$ 说。',
         '**四条里前三条只是重述，第四条才用到特征多项式**：\n' +
         '\n' +
         '- (1) $\\iff$ (2)：**几乎只是定义改写**（可对角化 = 有特征向量组成的基）。\n' +
@@ -50751,8 +50751,8 @@ window.MG = window.MG || {};
         '',
         '**勾股定理**：$u \\perp v \\implies \\|u + v\\|^{2} = \\|u\\|^{2} + \\|v\\|^{2}$。'
       ].join('\n'),
-      notes: '⭐ 标准正交基的最大好处是**坐标就是内积**：若 $(e_1, \\ldots, e_n)$ 标准正交，则\n\n$$v = \\sum_{i=1}^{n} \\langle e_i, v \\rangle\\, e_i, \\qquad \\|v\\|^{2} = \\sum_{i=1}^{n} |\\langle e_i, v \\rangle|^{2}$$\n\n（第二条是 **Parseval 等式**。）一般基要解线性方程组才能求坐标，标准正交基只要算 $n$ 个内积 —— 这就是 Gram–Schmidt 值得做的理由。\n\n⚠ 标准正交组与标准正交「基」不同：前者只要求正交归一，不要求张成整个空间。',
       notes: [
+        '⭐ 标准正交基的最大好处是**坐标就是内积**：若 $(e_1, \\ldots, e_n)$ 标准正交，则\n\n$$v = \\sum_{i=1}^{n} \\langle e_i, v \\rangle\\, e_i, \\qquad \\|v\\|^{2} = \\sum_{i=1}^{n} |\\langle e_i, v \\rangle|^{2}$$\n\n（第二条是 **Parseval 等式**。）一般基要解线性方程组才能求坐标，标准正交基只要算 $n$ 个内积 —— 这就是 Gram–Schmidt 值得做的理由。\n\n⚠ 标准正交组与标准正交「基」不同：前者只要求正交归一，不要求张成整个空间。',
   '**四条里哪条是定义、哪条要用性质**（这一组看起来都是“定义”，其实只有第一条是）：\n' +
   '\n' +
   '- $u \\perp v \\iff \\langle u,v\\rangle = 0$：**这是定义**，没有内容。\n' +
@@ -50983,8 +50983,8 @@ window.MG = window.MG || {};
         '',
         '由谱定理，$q$ 正定 $\\iff$ $A$ 的所有特征值为正 $\\iff$ 存在可逆 $P$ 使 $A = P^{\\mathsf{T}}P$（即 $A$ 与正定矩阵合同）。'
       ].join('\n'),
-      notes: '⭐ 二次型是「内积」的**放宽版**：内积要求正定，二次型允许不定（甚至退化）。\n\n所以内积空间的一切几何结论在二次型里都要重新检查（「长度」可以是负的）。\n\n⭐ 正定二次型与内积一一对应（$\\langle u, v\\rangle := u^{\\mathsf{T}}Av$），而**每个内积空间都可以通过 Gram–Schmidt 变成标准欧氏空间** —— 这就是「正定 $\\implies$ 可由 $P^{\\mathsf{T}}P$ 实现」的含义。\n\n⭐ 不定二次型出现在相对论（Minkowski 度规）、Morse 理论（Hessian 的负惯性指数 = 临界点类型）里。',
       notes: [
+        '⭐ 二次型是「内积」的**放宽版**：内积要求正定，二次型允许不定（甚至退化）。\n\n所以内积空间的一切几何结论在二次型里都要重新检查（「长度」可以是负的）。\n\n⭐ 正定二次型与内积一一对应（$\\langle u, v\\rangle := u^{\\mathsf{T}}Av$），而**每个内积空间都可以通过 Gram–Schmidt 变成标准欧氏空间** —— 这就是「正定 $\\implies$ 可由 $P^{\\mathsf{T}}P$ 实现」的含义。\n\n⭐ 不定二次型出现在相对论（Minkowski 度规）、Morse 理论（Hessian 的负惯性指数 = 临界点类型）里。',
         '**“二次型 / 对称矩阵 / 对称双线性型”三者的对译要一条极化公式，而它需要 $\\operatorname{char} \\ne 2$**：\n' +
         '\n' +
         '- $q(x) = x^{\\mathsf{T}}Ax$（**$A$ 对称**）：这里已经用了「$A$ 对称」这一约定 —— 非对称的 $A$ 给出同一个 $q$（因为 $x^{\\mathsf{T}}A x$ 只看对称部分），所以**二次型与对称矩阵一一对应**。\n' +
@@ -52771,7 +52771,7 @@ window.MG = window.MG || {};
         '- 有限循环群 $\\cong \\mathbb{Z}/n\\mathbb{Z}$（加法），阶 $n$；',
         '- 无限循环群 $\\cong \\mathbb{Z}$。'
       ].join('\n'),
-      notes: '⭐ 循环群是**同阶唯一**的群（同阶的循环群必同构）—— 这在群论里是罕见的干净情形。\n\n⭐ 子群全循环、且结构完全清楚：$\\mathbb{Z}/n$ 的每个子群都是 $\\langle g^{d}\\rangle$ 的形状，其中 $d \\mid n$；\n\n对应地 $\\mathbb{Z}/n$ 的子群与 $n$ 的正因子一一对应（$d \\leftrightarrow$ 由 $n/d$ 生成的子群）。\n\n⭐ $\\mathbb{Z}/n$ 的生成元个数是 Euler 函数 $\\varphi(n)$（与 $n$ 互素的那些 $k$ 对应的 $g^{k}$）。\n\n⭐ $\\mathbb{Z}/p$（$p$ 素）是**素域** $\\mathbb{F}_p$ 的加法群，也是它唯一的真子群来源 —— 这是 `def.characteristic` 与有限域那条线的起点。\n\n⚠ 「循环」不是「$g$ 的幂总是循环排列」这种字面意思；\n\n它的意思是「**一个元素就能生成整个群**」（cyclic = 由单个生成元生成的）。',
+      notes: '⭐ 循环群是**同阶唯一**的群（同阶的循环群必同构）—— 这在群论里是罕见的干净情形。\n\n⭐ 子群全循环、且结构完全清楚：$\\mathbb{Z}/n$ 的每个子群都是 $\\langle g^{d}\\rangle$ 的形状，其中 $d \\mid n$；\n\n对应地 $\\mathbb{Z}/n$ 的子群与 $n$ 的正因子一一对应（$d \\leftrightarrow$ 由 $n/d$ 生成的子群）。\n\n⭐ $\\mathbb{Z}/n$ 的生成元个数是 Euler 函数 $\\varphi(n)$（与 $n$ 互素的那些 $k$ 对应的 $g^{k}$）。\n\n⭐ $\\mathbb{Z}/p$（$p$ 素）是**素域** $\\mathbb{F}_p$ 的加法群；$p$ 素时它没有非平凡真子群 —— 这是 `def.characteristic` 与有限域那条线的起点。\n\n⚠ 「循环」不是「$g$ 的幂总是循环排列」这种字面意思；\n\n它的意思是「**一个元素就能生成整个群**」（cyclic = 由单个生成元生成的）。',
       refs: ['Lang, Algebra, Ch. I §4', 'Dummit–Foote, Abstract Algebra, §2.3']
     },
 
@@ -77174,7 +77174,7 @@ window.MG = window.MG || {};
         '',
         '四个因子都不可约，且互不相伴 —— 所以分解不唯一。',
         '',
-        'UFD 的三个判别性质：①「不可约 = 素」（`def.irreducible-element`）；② 任意两元素有 $\\gcd$（`def.gcd-domain`）；③ 没有「无限下降的因子链」。三者都等价于唯一分解。',
+        'UFD 的判别：**UFD $\\iff$（分解存在）且（不可约 = 素）**。三条常被并列的性质都不单独等价于 UFD：①「不可约 = 素」（`def.irreducible-element`）只在**分解存在性**已经成立时才够（去掉存在性就弱了 —— 全体代数整数构成的环里没有不可约元，条件空真成立，却不是 UFD）；② 任意两元素有 $\\gcd$ 是 **gcd 整环**（`def.gcd-domain`）的条件，严格弱于 UFD（本图只给了 UFD $\\implies$ gcd 整环 的方向，即 `imp.ring-ufd-gcd`；反向不成立，例如非离散的赋值环）；③ 没有无限下降的因子链是 **ACCP**，也严格弱于 UFD（$\\mathbb{Z}[\\sqrt{-5}]$ 是 Noether 环、故有 ACCP，却不是 UFD）。',
         '',
         '层级（`imp.ring-euclid-pid` / `imp.ring-pid-ufd`）：Euclid 整环 $\\implies$ PID $\\implies$ UFD $\\implies$ gcd 整环，两个箭头都不可逆（$\\mathbb{Z}[\\sqrt{-5}]$ 连 gcd 都没有；\n\n存在 UFD 不是 PID，如 $K[x, y]$）。',
       ].join('\n\n'),
@@ -77525,7 +77525,6 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Möbius 反演',
       title: '从和函数还原原函数',
-      regions: ['number'],
       regions: ['number'],
       statement: [
         '设 $f, g : \\mathbb{N}^{+} \\to \\mathbb{C}$。则',

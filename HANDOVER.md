@@ -35,19 +35,19 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean，本地 `main` ahead 6（未 push；origin 仍停在 `0d20279a`） |
+| 工作树 | 本次提交后 clean，本地 `main` ahead 7（未 push；origin 仍停在 `0d20279a`） |
 
-### 六道门 · 我 2026-11-06 全跑过
+### 门禁 · 我 2026-11-06 全跑过
 
 | 命令 | 结果 |
 |---|---|
 | `bun tools/build.mjs` | ✅ 全绿（1540 节点 / 3167 边，所有页 ≤1300 B） |
-| `bun tools/_katexcheck.mjs` | ✅ **2825 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825） |
+| `bun tools/_katexcheck.mjs` | ✅ **2826 个 `$$…$$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 12/12 |
-| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按 FIX-028 重钉为 883） |
+| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按 FIX-023c 重钉为 884；Noether 13→14） |
 | `bun tools/_slashcheck.mjs` | ✅ 0 处 |
-| `bun _tools/_ctrlscan.mjs` | ✅ 0 处（2026-11-06 复跑；§4.5 的 5 处已在后续修复中清掉） |
+| `node tools/dupkeys.mjs` | ✅ 0 处（同对象内 `notes`/`note`/`regions` 重复键会静默覆盖；FIX-023c 后加入常规门） |
 
 ---
 

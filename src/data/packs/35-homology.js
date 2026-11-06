@@ -211,8 +211,8 @@ window.MG = window.MG || {};
         '3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；',
         '4. 导出三角之间的态射可以（**不唯一**地）延拓。'
       ].join('\n'),
-      notes: '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。',
       notes: [
+        '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。',
         '**四条里“不唯一”出现了两次 —— 那正是导岀范畴与三角范畴的差别所在**：\n' +
         '\n' +
         '- **① 与 ②（旋转）**：**这一条是三角公理的核心**。给定 $K \\to L \\to M \\to K[1]$ 导出，可以旋转得到 $L \\to M \\to K[1] \\to L[1]$（第三个箭头带 $-f[1]$ 的符号）。⚠️ **符号不能省**：写成 $f[1]$ 会与 ② 重复旋转得到矛盾（旋转四次回到自身，符号必须乘积为 $+1$）。\n' +
@@ -403,8 +403,8 @@ window.MG = window.MG || {};
         '',
         '$M$ **内射** $\\iff M\\prime\\prime$ **内射**'
       ].join('\n'),
-      notes: '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
       notes: [
+        '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
   '**四条是一个循环，但每一跳的代价不同**（这也是为什么内射性有这么多“等价说法”，却总是用同一条来验证）：\n' +
   '\n' +
   '- (1) $\\iff$ (3)：**几乎只是定义改写**。$\\operatorname{Hom}(-,I)$ 正合 $\\iff$ 它把单态射送到满射（其余两个正合性对 $\\operatorname{Hom}$ 是自动的，因为它是左正合的）。这一跳**不需要范畴有足够多内射**。\n' +

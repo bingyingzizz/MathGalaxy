@@ -336,8 +336,8 @@ MG.i18nAbstracts = {
       'compact implies sequentially compact; sequentially compact implies totally bounded ' +
       '(the one place dependent choice is used) and complete; sequentially compact implies ' +
       'compact by the "bad ball" argument; complete and totally bounded implies sequentially ' +
-      'compact by diagonalisation. In general topological spaces only the first implication ' +
-      'survives — sequential compactness is a metric-space luxury.',
+      'compact by diagonalisation. In general topological spaces **both implications fail** — ' +
+      'sequential compactness is a metric-space luxury (counterexamples: $\\{0,1\\}^{I}$ and $[0,\\omega_1)$).',
       status: 'reviewed', basedOn: 'v0.9.3#7adc980c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 

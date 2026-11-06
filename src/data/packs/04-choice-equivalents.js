@@ -346,7 +346,6 @@ window.MG = window.MG || {};
       sources: ['ax.choice', 'thm.hartogs'],
       target: 'lem.zorn',
       title: '选择公理 + Hartogs 定理 $\\implies$ 佐恩引理（路线 $1\\implies2$）',
-      note: 'AC ⟺ 良序 ⟺ Zorn 已经有三条 equivalence 边；这一条是**第二条路线**（借 Hartogs 定理），按推论边处理：真推得通，但不是建造顺序（分层由等价类负责）。',
       proof: [
         '设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。',
         '',
@@ -372,7 +371,7 @@ window.MG = window.MG || {};
         '',
         '$>$ 这一路线的分工很干净：**AC 负责「挑」，Hartogs 负责「停」**。对比之下，经由良序定理的证法（见「良序定理 $\\iff$ 佐恩引理」那条黑线）是把「停」交给 Burali–Forti 悖论。'
       ].join('\n'),
-      note: '比走良序定理更直：整段只挑一次元素，终止性由 Hartogs 定理（ZF 可证）兜底。'
+      note: 'AC、良序、Zorn 三者等价，已经有三条 equivalence 边；这一条是**第二条路线**（借 Hartogs 定理），按推论边处理：真推得通，但不是建造顺序（分层由等价类负责）。\n\n比走良序定理更直：整段只挑一次元素，终止性由 Hartogs 定理（ZF 可证）兜底。'
     },
 
     /* ============================ 佐恩引理 ⟹ 选择公理 ============================ */

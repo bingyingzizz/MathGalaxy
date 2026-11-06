@@ -128,7 +128,7 @@ window.MG = window.MG || {};
         '',
         '（$V = \\{0\\}$ 时约定 $\\dim V = 0$；没有有限基时称 $V$ 是**无限维**的。）'
       ].join('\n'),
-      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $\\#(A \\times \\mathbb{N}) = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$\\dim(V/U) = \\dim V - \\dim U$。',
+      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $\\#(A \\times \\mathbb{N}) = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$V$ **有限维**时 $\\dim(V/U) = \\dim V - \\dim U$；无限维时减法没有意义（基数不做减法），只有基数加法 $\\dim V = \\dim U + \\dim(V/U)$。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 2']
     }
   ],

@@ -2,9 +2,10 @@
 English entry · root `../`
 [in graph](../#n=thm.metric-compact-equiv)　·　[Chinese page (authoritative)](./thm.metric-compact-equiv.md)
 
-** (the "bad ball" argument: if no finite cover existed, one would build recursively a sequence with pairwise distances $\ge \varepsilon$, which has no convergent subsequence).
-- (b) $\implies$ (c), "complete": **no extra hypothesis** (the limit of the convergent subsequence is the limit of the Cauchy sequence).
-- (b) $\implies$ (c), "totally bounded": **this step really uses countable choice (DC)** \u2014 the only place in the whole proof. For each $n$ one picks a $1/n$-ball containing infinitely many terms, and shrinks layer by layer.
-- (c) $\implies$ (b): **no choice needed** (diagonal argument: using $1/n$-nets, 
+(b) $\implies$ (a) fails: $[0, \omega_{1})$ with the order topology is **sequentially compact** (countably many countable ordinals have an upper bound, so the subsequence falls inside some compact $[0, \alpha]$) but **not compact** ($\{[0, \alpha) : \alpha < \omega_{1}\}$ is an open cover with no finite subcover).
+
+⚠ The two notions agree only in metric spaces — sequential compactness is a piece of luck peculiar to metric spaces.
+
+**What each direction uses, and whether any extra hypothesis is needed** (this list *is* the content of the equivalence):
 
 > 续见 nodes/thm.metric-compact-equiv.en.8.md

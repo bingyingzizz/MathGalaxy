@@ -174,7 +174,7 @@ window.MG = window.MG || {};
         '',
         '四个因子都不可约，且互不相伴 —— 所以分解不唯一。',
         '',
-        'UFD 的三个判别性质：①「不可约 = 素」（`def.irreducible-element`）；② 任意两元素有 $\\gcd$（`def.gcd-domain`）；③ 没有「无限下降的因子链」。三者都等价于唯一分解。',
+        'UFD 的判别：**UFD $\\iff$（分解存在）且（不可约 = 素）**。三条常被并列的性质都不单独等价于 UFD：①「不可约 = 素」（`def.irreducible-element`）只在**分解存在性**已经成立时才够（去掉存在性就弱了 —— 全体代数整数构成的环里没有不可约元，条件空真成立，却不是 UFD）；② 任意两元素有 $\\gcd$ 是 **gcd 整环**（`def.gcd-domain`）的条件，严格弱于 UFD（本图只给了 UFD $\\implies$ gcd 整环 的方向，即 `imp.ring-ufd-gcd`；反向不成立，例如非离散的赋值环）；③ 没有无限下降的因子链是 **ACCP**，也严格弱于 UFD（$\\mathbb{Z}[\\sqrt{-5}]$ 是 Noether 环、故有 ACCP，却不是 UFD）。',
         '',
         '层级（`imp.ring-euclid-pid` / `imp.ring-pid-ufd`）：Euclid 整环 $\\implies$ PID $\\implies$ UFD $\\implies$ gcd 整环，两个箭头都不可逆（$\\mathbb{Z}[\\sqrt{-5}]$ 连 gcd 都没有；\n\n存在 UFD 不是 PID，如 $K[x, y]$）。',
       ].join('\n\n'),

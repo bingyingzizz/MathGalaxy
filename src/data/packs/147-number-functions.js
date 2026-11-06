@@ -141,7 +141,6 @@ window.MG = window.MG || {};
       label: 'Möbius 反演',
       title: '从和函数还原原函数',
       regions: ['number'],
-      regions: ['number'],
       statement: [
         '设 $f, g : \\mathbb{N}^{+} \\to \\mathbb{C}$。则',
         '',

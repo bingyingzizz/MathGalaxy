@@ -185,8 +185,8 @@ window.MG = window.MG || {};
         '- 齐次方程组 $Ax = 0$ 的解空间就是 $\\ker A$，维数 $= n - \\operatorname{rank} A$；',
         '- 特别地：$m = n$ 且 $\\det A \\ne 0$ 时解**唯一**，$x = A^{-1}b$。'
       ].join('\n'),
-      notes: '⭐ 「解集 = 特解 + 齐次解」是线性代数的中心图景：**非齐次没有结构，齐次才有**（它是子空间），非齐次只是它的一个平移（仿射子空间）。\n\n⭐ 维数公式 $n - \\operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\\operatorname{rank} A$ + 自由的 $\\dim \\ker A$。\n\n⚠ 「有解 $\\iff$ $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。\n\n别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。',
       notes: [
+        '⭐ 「解集 = 特解 + 齐次解」是线性代数的中心图景：**非齐次没有结构，齐次才有**（它是子空间），非齐次只是它的一个平移（仿射子空间）。\n\n⭐ 维数公式 $n - \\operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\\operatorname{rank} A$ + 自由的 $\\dim \\ker A$。\n\n⚠ 「有解 $\\iff$ $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。\n\n别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。',
   '**四条里哪条是“定理”、哪条只是重述**（这一组常被当成四条并列，其实最后一条依赖前两条）：\n' +
   '\n' +
   '- **有解 $\\iff \\operatorname{rank}A = \\operatorname{rank}(A\\mid b)$**：**这一步有真内容**，等价于「$b \\in \\operatorname{col}(A)$」。证明用行化简（Gauss 消元）—— 出现 $0 = c \\ne 0$ 的行当且仅当秩不相等。**只用「$K$ 是域」**（域上才能自由消元；$\\mathbb{Z}$ 上要换 Smith 标准形）。\n' +
