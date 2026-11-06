@@ -31,12 +31,13 @@
 - **18 / 18** `def.cochain-complex` 上链复形 · layer 11 · 复形与导出三角
 - **18 / 18** `def.sheaf-cohomology` 层上同调 · layer 17 · 层上同调
 
-（共 955 个节点有非零计数；这里列前 20 条。）
+（共 957 个节点有非零计数；这里列前 20 条。）
 
 ## 综合结论榜
 
 由最多前置一起推出（入边多）—— 学它之前得先懂一片，**不是**入门首选。
 
+- **8 / 6** `thm.de-rham` de Rham 定理 · layer 31 · 微分形式、积分与 de Rham
 - **7 / 8** `thm.bundle-classification` 丛的分类 · layer 34 · 丛的示性类
 - **7 / 7** `def.singular-homology` 奇异同调群 · layer 21 · 同调群
 - **7 / 4** `thm.theorema-egregium` 绝妙定理 · layer 34 · 内蕴几何
@@ -56,7 +57,6 @@
 - **6 / 1** `thm.completeness-equivalent` 完备性的六条等价 · layer 23 · 实数完备性的等价刻画
 - **5 / 6** `def.tangent-bundle` 切丛 · layer 21 · 流形与向量丛
 - **5 / 6** `def.tensor-field` 张量场 · layer 23 · 向量场与 Lie 结构
-- **5 / 6** `thm.de-rham` de Rham 定理 · layer 31 · 微分形式、积分与 de Rham
 
 （共 1539 个节点有非零计数；这里列前 20 条。）
 
@@ -85,5 +85,5 @@
 - **9 团 / 13 节点** `def.continuous-map` 连续映射 · layer 5 · 拓扑空间的基本语汇
 - **8 团 / 21 节点** `def.chaus` 紧 Hausdorff 空间范畴 · layer 17 · 紧 Hausdorff 空间
 
-（共 955 个节点有非零计数；这里列前 20 条。）
+（共 957 个节点有非零计数；这里列前 20 条。）
 

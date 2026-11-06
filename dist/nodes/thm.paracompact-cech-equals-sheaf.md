@@ -7,6 +7,9 @@ layer 20 · 定理 · 层上同调 · 同调代数+拓扑学
 > 陈述续见 [nodes/thm.paracompact-cech-equals-sheaf.2.md](./thm.paracompact-cech-equals-sheaf.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.de-rham`](../nodes/thm.de-rham.md) de Rham 定理
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.paracompact-cech-equals-sheaf.3.md](./thm.paracompact-cech-equals-sheaf.3.md)
 

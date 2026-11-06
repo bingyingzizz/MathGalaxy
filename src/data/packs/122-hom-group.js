@@ -1180,7 +1180,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.pushforward-enough-injectives', 'prop.skyscraper-injective'],
       target: 'thm.paracompact-cech-equals-sheaf',
-      title: '足够多内射 + 软层无环 $\\implies$ 仿紧上 Čech 等于层上同调',
+      title: '足够多内射 + 软层无环 $\\implies$ 仿紧上 Čech 等于层上同调（路线）',
       proof: [
         '**要证**：仿紧 Hausdorff 上 $\\check{H}^{n}(X, \\mathcal{M}) = H^{n}(X, \\mathcal{M})$。走法是「造一个由无环层组成的消解」。',
         '',

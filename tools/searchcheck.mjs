@@ -66,7 +66,7 @@ const CASES = [
   { q: 'Exercise 2.25', n: 1, top: ['cor.cg-product'], why: '⭐ 命中的是**陈述里写了这句话**的那个节点 —— refs（书目）不进检索字段，见下一条' },
   { q: 'I.5', n: 0, top: [], why: '⭐ 书号/章节坐标（refs 里的 `I.5`）**搜不到**：hay 不含 refs。记 0 是为了把这条口径钉住（要改就得改 hay，另议）' },
   { q: 'L^p', n: 14, top: ['def.lp-norm', 'thm.lp-banach', 'prop.lp-inter-lr-in-lq'], why: '记号表命中（tex 形式）' },
-  { q: 'ℵ₀', n: 6, top: ['thm.real-ordered-field', 'def.ordinal', 'def.cardinal'], why: 'Unicode 记号命中（可数与超限那条线的入口）。⭐ 2026-10-16 初等微积分第一批后确界原理反超 `def.ordinal`：新增的 `imp.completeness-cycle` 给了它一条出边（degree 5→6），而同档是靠 degree 定次序的 —— 次序变了，**集合没变** ⭐ 2026-11-02：def.separable-space 的注里写了 2^{aleph_0}（ℓ^∞ 不可分的证明）⇒ 5→6，前 3 未动。' },
+  { q: 'ℵ₀', n: 7, top: ['thm.real-ordered-field', 'def.ordinal', 'def.cardinal'], why: 'Unicode 记号命中（可数与超限那条线的入口）。⭐ 2026-10-16 初等微积分第一批后确界原理反超 `def.ordinal`：新增的 `imp.completeness-cycle` 给了它一条出边（degree 5→6），而同档是靠 degree 定次序的 —— 次序变了，**集合没变** ⭐ 2026-11-02：def.separable-space 的注里写了 2^{aleph_0}（ℓ^∞ 不可分的证明）⇒ 5→6，前 3 未动。 ⭐ 2026-11-06 FIX-042 Henkin 证明取 κ=max(|L|,ℵ₀)，新增「ℵ₀」命中一次 ⇒ 6→7，前 3 未动。' },
   { q: 'σ-algebra', n: 3, top: ['def.borel', 'def.sigma-algebra', 'def.product-sigma'], why: '希腊字母 + 连字符：三个都靠标题里的英文括注命中（同档）⇒ degree/id 定次序。⚠️ 想让 def.sigma-algebra 领跑，得做「σ ↔ sigma」等价，另一件事' },
   { q: 'kC', n: 3, top: ['prop.cg-function-space', 'cor.cg-exponential-adjoint', 'prop.cg-kclosed-quotient'], why: '缩写/记号：被明确排除出「英文名」的那些，但要能搜到 ⭐ 2026-11-02 同上：前两名互换，仍是那 3 条。' },
   { q: 'NBV', n: 5, top: ['def.nbv', 'prop.nbv-derivative', 'thm.borel-measure-nbv'], why: '全大写缩写（aka 里算「名字样」的例外）' },

@@ -1,4 +1,6 @@
 # 完备性定理　`thm.completeness-first-order`　·　说明
 根 `../`
 
-**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。上面全程对**任意基数** $|\mathcal{L}|=\kappa$ 成立：添 $\kappa$ 个新常元、按序数超限递归造极大一致集，所以陈述不受基数限制。可数语言下每步取「第一个未使用的常元」是确定的，不需要选择公理；一般 $\kappa$ 下要同时挑出 $\kappa$ 个互不相同的常元，那一步用选择公理。推论：紧致性定理（每个有限子集有模型 $\implies$ 整个理论有模型）由 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。
+**第八步：收尾。** 第七步给出 $\mathfrak{A}\vDash\Gamma^{*}$，故 $\Gamma$ 有模型。于是对语句：若 $\Gamma\not\vdash\varphi$，则 $\Gamma\cup\{\neg\varphi\}$ 一致（否则推论给 $\Gamma\vdash\varphi$），由第五至七步有模型 $\mathfrak{A}\vDash\Gamma\cup\{\neg\varphi\}$，即 $\Gamma\not\vDash\varphi$。逆否即 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$；与第二步合起来即 $\Gamma\vdash\varphi\iff\Gamma\vDash\varphi$。一般公式由第一步化到语句。∎
+
+> 续见 notes/thm.completeness-first-order.12.md

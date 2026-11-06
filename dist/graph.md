@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-06T11:54:58.506Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-06T12:05:34.738Z
 > 15 星系 / 105 星团 / 1546 节点 / 3187 连线（强边 3145，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -70,9 +70,9 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 **推论**：若 $\Gamma\cup\{\sigma\}$ 不一致，则 $\Gamma\vdash\neg\sigma$；特别地，若 $\Gamma\cup\{\neg\varphi\}$ 不一致，则 $\Gamma\vdash\varphi$。证明：演绎定理给 $\Gamma\vdash\sigma\to\psi$ 与 $\Gamma\vdash\sigma\to\neg\psi$，而 $(\sigma\to\psi)\to((\sigma\to\neg\psi)\to\neg\sigma)$ 是重言式，分离两次即得 $\Gamma\vdash\neg\sigma$。
 
-**第四步：极大一致扩张。** 引理：每个一致语句集 $\Gamma$ 可扩张为极大一致语句集 $\Gamma^{*}$。证明：按序数枚举所有语句 $\{\psi_\alpha:\alpha<\kappa\}$；令 $\Gamma_0=\Gamma$，若 $\Gamma_\alpha\cup\{\psi_\alpha\}$ 一致则 $\Gamma_{\alpha+1}=\Gamma_\alpha\cup\{\psi_\alpha\}$，否则 $\Gamma_{\alpha+1}=\Gamma_\alpha$，极限序数取并；令 $\Gamma^{*}=\bigcup_{\alpha<\kappa}\Gamma_\alpha$。一致性：若 $\Gamma^{*}$ 不一致，则某个证明只用到有限多条假设，它们全在某个 $\Gamma_\alpha$ 中，与 $\Gamma_\alpha$ 一致矛盾。极大性：若 $\psi_\alpha\notin\Gamma^{*}$，则 $\Gamma_\alpha\cup\{\psi_\alpha\}$ 不一致，由推论得 $\Gamma_\alpha\vdash\neg\psi_\alpha$，故 $\Gamma^{*}\vdash\neg\psi_\alpha$。由此：对每个语句恰有 $\psi\in\Gamma^{*}$ 或 $\neg\psi\in\Gamma^{*}$；$\Gamma^{*}$ 对 $\vdash$ 封闭（若 $\Gamma^{*}\vdash\psi$ 而 $\psi\notin\Gamma^{*}$，则 $\neg\psi\in\Gamma^{*}$，与一致性矛盾）；$\Gamma^{*}$ 含全部逻辑公理。
+**第四步：极大一致扩张。** 引理：每个一致语句集 $\Gamma$ 可扩张为极大一致语句集 $\Gamma^{*}$。证明：取 $\kappa=\max(|\mathcal{L}|,\aleph_0)$（语言 $\mathcal{L}$ 先良序 —— 这一步用选择公理），按序数枚举所有语句 $\{\psi_\alpha:\alpha<\kappa\}$；令 $\Gamma_0=\Gamma$，若 $\Gamma_\alpha\cup\{\psi_\alpha\}$ 一致则 $\Gamma_{\alpha+1}=\Gamma_\alpha\cup\{\psi_\alpha\}$，否则 $\Gamma_{\alpha+1}=\Gamma_\alpha$，极限序数取并；令 $\Gamma^{*}=\bigcup_{\alpha<\kappa}\Gamma_\alpha$。一致性：若 $\Gamma^{*}$ 不一致，则某个证明只用到有限多条假设，它们全在某个 $\Gamma_\alpha$ 中，与 $\Gamma_\alpha$ 一致矛盾。极大性：若 $\psi_\alpha\notin\Gamma^{*}$，则 $\Gamma_\alpha\cup\{\psi_\alpha\}$ 不一致，由推论得 $\Gamma_\alpha\vdash\neg\psi_\alpha$，故 $\Gamma^{*}\vdash\neg\psi_\alpha$。由此：对每个语句恰有 $\psi\in\Gamma^{*}$ 或 $\neg\psi\in\Gamma^{*}$；$\Gamma^{*}$ 对 $\vdash$ 封闭（若 $\Gamma^{*}\vdash\psi$ 而 $\psi\notin\Gamma^{*}$，则 $\neg\psi\in\Gamma^{*}$，与一致性矛盾）；$\Gamma^{*}$ 含全部逻辑公理。
 
-**第五步：Henkin 见证。** 设 $|\mathcal{L}|=\kappa$。添 $\kappa$ 个新常元 $\{c_\beta:\beta<\kappa\}$ 得 $\mathcal{L}^{+}$，把 $\mathcal{L}^{+}$ 中所有形如 $\exists x\,\theta(x)$ 的语句按序数枚举为 $\{\xi_\alpha:\alpha<\kappa\}$。**按序数超限递归**造 $\Gamma_\alpha$：若 $\Gamma_\alpha\cup\{\xi_\alpha\}$ 一致且 $\xi_\alpha=\exists x\,\theta(x)$，取一个未用过的 $c_\beta$，令 $\Gamma_{\alpha+1}=\Gamma_\alpha\cup\{\theta(c_\beta)\}$；否则 $\Gamma_{\alpha+1}=\Gamma_\alpha$，极限序数取并。
+**第五步：Henkin 见证。** 设 $\kappa=\max(|\mathcal{L}|,\aleph_0)$（即便语言有限，语句也有可数多个）。添 $\kappa$ 个新常元 $\{c_\beta:\beta<\kappa\}$ 得 $\mathcal{L}^{+}$，把 $\mathcal{L}^{+}$ 中所有形如 $\exists x\,\theta(x)$ 的语句按序数枚举为 $\{\xi_\alpha:\alpha<\kappa\}$。**按序数超限递归**造 $\Gamma_\alpha$：若 $\Gamma_\alpha\cup\{\xi_\alpha\}$ 一致且 $\xi_\alpha=\exists x\,\theta(x)$，取一个未用过的 $c_\beta$，令 $\Gamma_{\alpha+1}=\Gamma_\alpha\cup\{\theta(c_\beta)\}$；否则 $\Gamma_{\alpha+1}=\Gamma_\alpha$，极限序数取并。
 
 各 $\Gamma_\alpha$ 一致（对 $\alpha$ 归纳，极限步用有限特征）：若 $\Gamma_\alpha\cup\{\theta(c_\beta)\}$ 不一致，推论给 $\Gamma_\alpha\vdash\neg\theta(c_\beta)$；$c_\beta$ 不出现在 $\Gamma_\alpha$ 中，把 $c_\beta$ 换成证明中未出现的变元 $y$ 并推广，得 $\Gamma_\alpha\vdash\forall y\,\neg\theta(y)$，再由 (Q1) 与命题逻辑得 $\Gamma_\alpha\vdash\neg\exists x\,\theta(x)$，与「$\Gamma_\alpha\cup\{\xi_\alpha\}$ 一致」矛盾。于是 $\Gamma_\kappa=\bigcup_{\alpha<\kappa}\Gamma_\alpha$ 一致（有限特征），再由第四步扩为极大一致 $\Gamma^{*}$。见证性质：若 $\exists x\,\theta\in\Gamma^{*}$ 且编号为 $\alpha$，则 $\Gamma_\alpha\cup\{\exists x\,\theta\}\subseteq\Gamma^{*}$ 一致，故第 $\alpha$ 步添了 $\theta(c_\beta)$，即 $\theta(c_\beta)\in\Gamma^{*}$。
 
@@ -84,7 +84,7 @@ $$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
 
 **第八步：收尾。** 第七步给出 $\mathfrak{A}\vDash\Gamma^{*}$，故 $\Gamma$ 有模型。于是对语句：若 $\Gamma\not\vdash\varphi$，则 $\Gamma\cup\{\neg\varphi\}$ 一致（否则推论给 $\Gamma\vdash\varphi$），由第五至七步有模型 $\mathfrak{A}\vDash\Gamma\cup\{\neg\varphi\}$，即 $\Gamma\not\vDash\varphi$。逆否即 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$；与第二步合起来即 $\Gamma\vdash\varphi\iff\Gamma\vDash\varphi$。一般公式由第一步化到语句。∎
 
-**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。上面全程对**任意基数** $|\mathcal{L}|=\kappa$ 成立：添 $\kappa$ 个新常元、按序数超限递归造极大一致集，所以陈述不受基数限制。可数语言下每步取「第一个未使用的常元」是确定的，不需要选择公理；一般 $\kappa$ 下要同时挑出 $\kappa$ 个互不相同的常元，那一步用选择公理。推论：紧致性定理（每个有限子集有模型 $\implies$ 整个理论有模型）由 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。
+**备注**：证明只额外用了标准 Hilbert 公理模式（它们不是本图的节点，但每条都能逐字核验）。上面全程对**任意无限语言**成立：取 $\kappa=\max(|\mathcal{L}|,\aleph_0)$，添 $\kappa$ 个新常元、按序数超限递归造极大一致集，所以陈述不受基数的可数性限制。选择公理在这里只用在两处小事上 —— 把 $\mathcal{L}$ 良序好按序数枚举语句，以及一次挑出 $\kappa$ 个互不相同的新常元；可数语言下这两步都能用自然数编号显式完成，可以避开 AC。推论：紧致性定理（每个有限子集有模型 $\implies$ 整个理论有模型）由 $\Gamma\vDash\varphi\implies\Gamma\vdash\varphi$ 的有限性立刻得到。⚠ 完备性**不**与 Gödel 不完备性定理矛盾：后者谈的是像 PA/ZFC 这样足够强的**理论**里存在不可判定的句子，不是逻辑本身的完备性。
 
 参考：Enderton, A Mathematical Introduction to Logic, Ch. 2.5；Kunen, Set Theory, Ch. I
 
@@ -28258,7 +28258,7 @@ $$\operatorname{Hom}_{\mathrm{CondAb}}(\underline{E}, \underline{F}) \;\cong\; \
 
 **第二步：有界 $T$ 给出凝聚态态射。** 设 $T:E\to F$ 有界。对每个 $S$ 令 $T_S(f):=T\circ f$；则 $\|T_S f\|\le \|T\|\,\|f\|$，故 $T_S$ 连续，且它是群同态。对 $u:S_1\to S_2$ 有 $T_{S_1}(f\circ u)=T_{S_2}(f)\circ u$，故 $(T_S)_S$ 与限制映射相容，给出 $\mathrm{CondAb}$ 的态射 $\underline{T}:\underline{E}\to\underline{F}$；恒等与复合逐点保持，故 $T\mapsto \underline{T}$ 是函子性的。
 
-**第三步：任何凝聚态态射都有界。** 设 $\varphi:\underline{E}\to\underline{F}$。令 $T:=\varphi_{\mathrm{pt}}:E\to F$（用 $\underline{E}(\mathrm{pt})=C(\mathrm{pt},E)\cong E$）。先证 $T$ 是 $\mathbb{R}$-线性的：$\varphi$ 是阿贝尔群同态，给 $T(x+y)=T(x)+T(y)$；对 $r\in\mathbb{R}$，数乘映射 $m_r:E\to E$ 是 $\underline{E}$ 的自同态，自然性 $\varphi\circ \underline{m_r}=\underline{m_r}\circ\varphi$ 给 $T(rx)=r\,T(x)$。再反设 $T$ 无界：取 $u_n\in E$ 使 $\|u_n\|\le 1$、$\|T u_n\|\ge n^{2}$。令 $S:=\{0\}\cup\{u_n/n:n\ge 1\}\subset E$；因 $\|u_n/n\|\le 1/n\to 0$，$S$ 是 $E$ 的紧子集（收敛到 $0$ 的序列加极限点）。包含映射 $f:S\hookrightarrow E$ 连续，故 $\varphi_S(f)\in C(S,F)$。但由自然性（用常值映射 $s:\mathrm{pt}\to S$）与 $\mathbb{R}$-线性，$\varphi_S(f)(u_n/n)=\varphi_{\mathrm{pt}}\bigl(f(u_n/n)\bigr)=T(u_n/n)=T(u_n)/n,$ 其范数 $\ge n$，而 $u_n/n\to 0$，与 $\varphi_S(f)$ 在 $0$ 连续矛盾。故 $T$ 有界。
+**第三步：任何凝聚态态射都有界。** 设 $\varphi:\underline{E}\to\underline{F}$。令 $T:=\varphi_{\mathrm{pt}}:E\to F$（用 $\underline{E}(\mathrm{pt})=C(\mathrm{pt},E)\cong E$）。先证 $T$ 是 $\mathbb{R}$-线性的：$\varphi$ 是阿贝尔群同态，给 $T(x+y)=T(x)+T(y)$；对 $r\in\mathbb{R}$，数乘映射 $m_r:E\to E$ 是 $\underline{E}$ 的自同态，自然性 $\varphi\circ \underline{m_r}=\underline{m_r}\circ\varphi$ 给 $T(rx)=r\,T(x)$。复的情形同理：对 $i\in\mathbb{C}$，数乘映射 $m_i:E\to E$ 连续，故 $\underline{m_i}$ 是 $\underline{E}$ 的自同态，自然性给 $T(ix)=\varphi_{\mathrm{pt}}(m_i(x))=m_i(\varphi_{\mathrm{pt}}(x))=i\,T(x)$，于是 $T$ 是 $\mathbb{C}$-线性的（实情形已由上一句给出，不需要另加）。再反设 $T$ 无界：取 $u_n\in E$ 使 $\|u_n\|\le 1$、$\|T u_n\|\ge n^{2}$。令 $S:=\{0\}\cup\{u_n/n:n\ge 1\}\subset E$；因 $\|u_n/n\|\le 1/n\to 0$，$S$ 是 $E$ 的紧子集（收敛到 $0$ 的序列加极限点）。包含映射 $f:S\hookrightarrow E$ 连续，故 $\varphi_S(f)\in C(S,F)$。但由自然性（用常值映射 $s:\mathrm{pt}\to S$）与 $\mathbb{R}$-线性，$\varphi_S(f)(u_n/n)=\varphi_{\mathrm{pt}}\bigl(f(u_n/n)\bigr)=T(u_n/n)=T(u_n)/n,$ 其范数 $\ge n$，而 $u_n/n\to 0$，与 $\varphi_S(f)$ 在 $0$ 连续矛盾。故 $T$ 有界。
 
 **第四步：两个构造互逆。** 给定有界 $T$，$\underline{T}_{\mathrm{pt}}(x)=T(x)$，故 $T\mapsto\underline{T}\mapsto T$ 是恒等。给定 $\varphi$，第三步给有界 $T=\varphi_{\mathrm{pt}}$；对任意 $S$、$f\in C(S,E)$、$s\in S$，用常值映射 $s:\mathrm{pt}\to S$ 的自然性得 $\varphi_S(f)(s)=\varphi_{\mathrm{pt}}\bigl(f(s)\bigr)=T\bigl(f(s)\bigr)=\underline{T}_S(f)(s),$ 故 $\varphi=\underline{T}$。于是 $T\mapsto\underline{T}$ 是双射 $\operatorname{Hom}_{\mathrm{bdd}}(E,F)\xrightarrow{\ \sim\ }\operatorname{Hom}_{\mathrm{CondAb}}(\underline{E},\underline{F})$。∎
 
@@ -44569,7 +44569,7 @@ $s$ 在第 $x_{0}$ 个分量上的像是 $\mathcal{F}(U) \to \mathcal{F}_{x_{0}}
 > 「层范畴有足够多内射」的整个证明只用到两件事：取茎是正合的、直积可以逐分量提升。
 
 #### 足够多内射层 + 天际线层是内射层 ⟹ 仿紧空间上的 Čech 就是上同调　`imp.paracompact-cech`
-*足够多内射 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调*
+*足够多内射 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线）*
 
 **要证**：仿紧 Hausdorff 上 $\check{H}^{n}(X, \mathcal{M}) = H^{n}(X, \mathcal{M})$。走法是「造一个由无环层组成的消解」。
 
@@ -48561,7 +48561,7 @@ $$g^{\prime}_{\alpha\beta} = h_{\alpha}\,g_{\alpha\beta}\,h_{\beta}^{-1}$$
 
 ⚠️ 余极限的逐字证明（以及「$\check{H}^{1}$ 与层上同调 $H^{1}$ 在非阿贝尔系数下的关系」）本图不给，只给到「构造 + 相容」这一层；与深定理的折衷口径一致。
 
-#### de Rham 上同调 + 奇异链 + 链上的积分 ⟹ de Rham 定理　`imp.mf2-de-rham`
+#### de Rham 上同调 + 奇异链 + 链上的积分 + 链上的 Stokes 定理 + Poincaré 引理 + 仿紧空间上的 Čech 就是上同调 ⟹ de Rham 定理　`imp.mf2-de-rham`
 *闭链上的积分 $\implies$ de Rham 上同调与奇异上同调同构*
 
 **第一步：配对良定义（唯一真正要做计算的地方）。** 对 $[\omega] \in H^{k}_{\mathrm{dR}}(M)$、$[c] \in H^{\mathrm{sing}}_{k}(M;\mathbb{R})$ 令
@@ -48610,7 +48610,7 @@ $$H^{k}_{\mathrm{dR}}(M) \cong H^{k}(M;\underline{\mathbb{R}}) .$$
 
 ⚠️ 还需核对**它是一个映射**：两条路线都要过「链上积分」与「de Rham 复形到奇异上链的映射」，而这两者交换（Stokes）这一步本图**没有逐条验**。验过之后（标准做法：对每个奇异单纯形用 Stokes 归纳），才能说它与第一步的配对 $\langle\cdot,\cdot\rangle$ 是同一个映射，从而 $\Phi^{k}$ 就是这个同构。
 
-⚠️ 本条的第三步两条谱序列、第四步的公理刻画都只给结论 —— 这是**证明路线**，不是逐字证明。第一、二步是逐字写的；三步以后的细节见 Bott–Tu 的 Čech–de Rham 双复形一章（refs 里给了 Tu 自己的 de Rham 章）。
+⚠️ 本条的第三步两条谱序列、第四步的公理刻画都只给结论 —— 这是**证明路线**，不是逐字证明。**第一步逐字**；**第二步只有正合性逐字**（逐点核是 $\mathbb{R}$、Poincaré 引理），而「$\Omega^{q}$ 是细层、从而 Čech 方向对每个 $q$ 正合」正是本图未证的那一步（细层无环，见节点注的**缺口 D**），不能算已证；三步以后的细节见 Bott–Tu 的 Čech–de Rham 双复形一章（refs 里给了 Tu 自己的 de Rham 章）。
 
 #### 向量场 + 图卡 ⟹ 局部流　`imp.mf2-flow-local`
 *卡里化归为自治 ODE $\implies$ 局部流存在唯一且光滑*

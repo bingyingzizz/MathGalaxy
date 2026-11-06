@@ -2,6 +2,7 @@
 索引 `hubs.md`
 
 由最多前置一起推出（入边多）—— 学它之前得先懂一片，**不是**入门首选。
+- **8 / 6** `thm.de-rham` de Rham 定理 · layer 31 · 微分形式、积分与 de Rham
 - **7 / 8** `thm.bundle-classification` 丛的分类 · layer 34 · 丛的示性类
 - **7 / 7** `def.singular-homology` 奇异同调群 · layer 21 · 同调群
 - **7 / 4** `thm.theorema-egregium` 绝妙定理 · layer 34 · 内蕴几何
@@ -14,6 +15,5 @@
 - **6 / 6** `def.submanifold-volume` 诱导体积 · layer 31 · 微分形式、积分与 de Rham
 - **6 / 6** `thm.gauss-bonnet` Gauss–Bonnet 定理 · layer 33 · 内蕴几何
 - **6 / 6** `def.euler-class` Euler 类 · layer 38 · 流形与向量丛
-- **6 / 5** `lem.zorn` Zorn 引理 · layer 8 · 选择原理
 
 > 续见 hubs/big.2.md

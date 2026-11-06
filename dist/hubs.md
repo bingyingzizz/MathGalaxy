@@ -13,9 +13,9 @@
 - 全部：`hubs/base.md`
 
 ## 综合结论榜
+- **8 / 6** `thm.de-rham` de Rham 定理 · 微分形式、积分与 de Rham
 - **7 / 8** `thm.bundle-classification` 丛的分类 · 丛的示性类
 - **7 / 7** `def.singular-homology` 奇异同调群 · 同调群
-- **7 / 4** `thm.theorema-egregium` 绝妙定理 · 内蕴几何
 - 全部：`hubs/big.md`
 
 ## 跨领域连接榜

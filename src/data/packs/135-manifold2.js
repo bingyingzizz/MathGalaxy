@@ -1345,7 +1345,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.mf2-de-rham',
       kind: 'implication',
-      sources: ['def.de-rham-complex', 'def.singular-chain', 'def.integral-on-chain'],
+      sources: ['def.de-rham-complex', 'def.singular-chain', 'def.integral-on-chain', 'thm.stokes-chain', 'lem.poincare-lemma', 'thm.paracompact-cech-equals-sheaf'],
       target: 'thm.de-rham',
       title: '闭链上的积分 $\\implies$ de Rham 上同调与奇异上同调同构',
       proof: [
@@ -1369,7 +1369,7 @@ window.MG = window.MG || {};
         '',
         '**收尾**：把第三步、第四步拼起来，得到同构 $H^{k}_{\\mathrm{dR}}(M) \\cong H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$。\n\n⚠️ 还需核对**它是一个映射**：两条路线都要过「链上积分」与「de Rham 复形到奇异上链的映射」，而这两者交换（Stokes）这一步本图**没有逐条验**。验过之后（标准做法：对每个奇异单纯形用 Stokes 归纳），才能说它与第一步的配对 $\\langle\\cdot,\\cdot\\rangle$ 是同一个映射，从而 $\\Phi^{k}$ 就是这个同构。',
         '',
-        '⚠️ 本条的第三步两条谱序列、第四步的公理刻画都只给结论 —— 这是**证明路线**，不是逐字证明。第一、二步是逐字写的；三步以后的细节见 Bott–Tu 的 Čech–de Rham 双复形一章（refs 里给了 Tu 自己的 de Rham 章）。'
+        '⚠️ 本条的第三步两条谱序列、第四步的公理刻画都只给结论 —— 这是**证明路线**，不是逐字证明。**第一步逐字**；**第二步只有正合性逐字**（逐点核是 $\\mathbb{R}$、Poincaré 引理），而「$\\Omega^{q}$ 是细层、从而 Čech 方向对每个 $q$ 正合」正是本图未证的那一步（细层无环，见节点注的**缺口 D**），不能算已证；三步以后的细节见 Bott–Tu 的 Čech–de Rham 双复形一章（refs 里给了 Tu 自己的 de Rham 章）。'
       ].join('\n')
     },
 
