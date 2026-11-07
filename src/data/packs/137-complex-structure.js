@@ -872,7 +872,7 @@
       ].join('\n'),
       note: '开映射 = 非常数全纯函数不能把开集压扁。' },
 
-    { kind: 'implication', sources: ['thm.montel', 'thm.hurwitz', 'lem.schwarz', 'prop.single-valued-branch', 'thm.cauchy-inequality'], target: 'thm.riemann-mapping',
+    { kind: 'implication', sources: ['thm.montel', 'thm.hurwitz', 'lem.schwarz', 'prop.single-valued-branch', 'thm.cauchy-inequality', 'def.mobius', 'thm.weierstrass-convergence'], target: 'thm.riemann-mapping',
       title: '正规族 + 极值元 + 平方根技巧：映满圆盘',
       proof: [
         '**族不空**：因 $\\Omega \\ne \\mathbb{C}$，取 $a \\notin \\Omega$；$\\Omega$ 单连通 $\\implies$ $\\sqrt{z - a}$ 有全纯单值支' +
