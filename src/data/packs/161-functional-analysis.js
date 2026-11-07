@@ -533,13 +533,13 @@ window.MG = window.MG || {};
       regions: ['functional-analysis'],
       tags: ['泛函分析', '凸集', '凸组合'],
       statement: [
-        '设 $V$ 是实向量空间，$C \\subseteq V$。称 $C$ 为**凸集**，若 $C \\ne \\emptyset$ 且对任意 $x, y \\in C$、$t \\in [0,1]$，',
+        '设 $V$ 是实向量空间，$C \\subseteq V$。称 $C$ 为**凸集**，若 对任意 $x, y \\in C$、$t \\in [0,1]$，',
         '',
         '$$(1-t)x + ty \\in C.$$',
         '',
         '等价地：$C$ 包含任意两点之间的整条线段。'
       ].join('\n'),
-      notes: '⭐ 凸性只用**仿射结构**，不需要范数或内积；在无穷维里它是「极小元存在」的关键假设（见 thm.projection-convex）。\n\n⚠ 本图约定凸集非空：空集会让「任意两点」条件真空成立，不适合当作凸集。\n\n💡 凸组合、凸包、分离定理都从这里出发。',
+      notes: '⭐ 凸性只用**仿射结构**，不需要范数或内积；在无穷维里它是「极小元存在」的关键假设（见 thm.projection-convex）。\n\n⚠ 空集按此定义也是凸集（「任意两点」条件真空成立）；需要非空时会在定理里单独假设（如投影定理）。\n\n💡 凸组合、凸包、分离定理都从这里出发。',
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
     },
     {
@@ -561,6 +561,42 @@ window.MG = window.MG || {};
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
     },
 
+    {
+      id: 'def.convex-combination',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '凸组合',
+      title: '凸组合：系数非负且和为 1 的有限线性组合',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '凸组合'],
+      statement: [
+        '设 $V$ 是实向量空间，$x_{1}, \\ldots, x_{n} \\in V$。若 $\\lambda_{i} \\ge 0$ 且 $\\sum_{i=1}^{n} \\lambda_{i} = 1$，称',
+        '',
+        '$\\sum_{i=1}^{n} \\lambda_{i} x_{i}$',
+        '',
+        '为这些点的一个**凸组合**。等价地，凸组合就是「先取线段、再反复取线段」得到的点；$n=2$ 时就是两点间的线段。'
+      ].join('\n'),
+      notes: '⭐ 凸集 $C$ 的刻画：$C$ 凸 $\\iff$ $C$ 对任意有限凸组合封闭；这是凸性从两点推广到有限点的标准方式。⚠ 这里只允许**有限**个点；无穷凸组合一般需要拓扑/收敛性，不在初等定义里。',
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
+    },
+    {
+      id: 'def.convex-hull',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '凸包',
+      title: '凸包：包含 $S$ 的最小凸集',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '凸包'],
+      statement: [
+        '设 $S \\subseteq V$。$S$ 的**凸包**定义为',
+        '',
+        '$\\operatorname{conv}(S) := \\bigcap\\{ C : C \\supseteq S,\\ C \\text{ 凸} \\}.$',
+        '',
+        '等价地，$\\operatorname{conv}(S)$ 恰是 $S$ 中点的所有有限凸组合之集；$S=\\emptyset$ 时为空集。'
+      ].join('\n'),
+      notes: '⭐ 两条等价刻画：交定义（最小凸集）与有限凸组合定义。前者说明「凸包是最小的」，后者说明「凸包里的点长什么样」。\\n\\n⚠ 空集的凸包是空集；不要把「凸集」默认成非空。',
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
+    },
     /* ------------------------------------------------- 凸闭集上的投影 */
     {
       id: 'thm.projection-convex',
@@ -831,6 +867,12 @@ window.MG = window.MG || {};
         '这正是星形集关于 $x_{0}$ 的定义，故 $C$ 是星形集。∎'
       ].join('\n'),
       note: '逆命题不成立：十字形星形但不凸。'
-    }
+    },
+    { kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-combination',
+      note: '凸组合是凸集对有限线性组合封闭的载体；两点情形就是凸集定义里的线段。' },
+    { kind: 'definition', definition: 'def.convex-combination', usedBy: 'def.convex-hull',
+      note: '凸包的有限凸组合刻画直接用到凸组合。' },
+    { kind: 'definition', definition: 'def.convex-hull', usedBy: 'def.standard-simplex',
+      note: '标准单纯形正是其顶点集的凸包；这里把几何单纯形与凸包概念接上。' }
   ]
 });

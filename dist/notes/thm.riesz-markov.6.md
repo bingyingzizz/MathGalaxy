@@ -1,10 +1,10 @@
 # Riesz–Markov 表示　`thm.riesz-markov`　·　说明
 根 `../`
 
-$$g \le f \le h,\qquad \Lambda(h) - \Lambda(g) < \varepsilon,\qquad \int (h - g)\,\mathrm{d}\mu < \varepsilon,$$
+**（丙）可测性**：可设 $\mu^{*}(A) < \infty$（否则右边为 $+\infty$，不等式显然）。任给 $\varepsilon > 0$，取开 $V \supseteq A$ 使 $\mu(V) < \mu^{*}(A) + \varepsilon$。由（甲）取紧 $K \subseteq V \cap U$ 使 $\nu(K) > \mu(V \cap U) - \varepsilon$。由 $K \subseteq U$ 得 $A \setminus U \subseteq V \setminus K$，而 $V \setminus K$ 开；又 $A \cap U \subseteq V \cap U$。于是
 
-再对 $g, h$ 用第一步的「$\mu(U) = \sup \Lambda$」把 $\Lambda$ 与 $\int$ 的差压到 $\varepsilon$，从而 $|\Lambda(f) - \int f\,\mathrm{d}\mu| \le 2\varepsilon$。这一步的估计（覆盖的选取、单位分解的支集控制、$\int(h-g)$ 的上界）本图**没有写全**，故保留 skeleton。
+$$\mu^{*}(A \cap U) + \mu^{*}(A \setminus U) \le \mu(V \cap U) + \mu(V \setminus K) \le (\nu(K) + \varepsilon) + \mu(V \setminus K) \le \mu(V) + \varepsilon < \mu^{*}(A) + 2\varepsilon.$$
 
-**唯一性**：若两个正则 Borel 测度给出同一个 $\Lambda$，则对开集 $U$ 与 $f \prec U$，$\int f\,\mathrm{d}\mu_{1} = \Lambda(f) = \int f\,\mathrm{d}\mu_{2}$；对紧集 $K \Subset U$，用单点紧化后的 Urysohn 引理取 $f \prec U$、$f = 1$ 于 $K$，得 $\mu_{1}(K) \le \Lambda(f) \le \mu_{2}(U)$；先对 $K$ 取上确界（内正则）、再对 $U$ 取下确界（外正则），即得 $\mu_{1}(U) = \mu_{2}(U)$，从而两测度相等。
+令 $\varepsilon \to 0$ 即得。∎
 
 > 续见 notes/thm.riesz-markov.7.md

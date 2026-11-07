@@ -287,6 +287,25 @@ window.MG = window.MG || {};
     },
 
     {
+      id: 'def.integral-over-set',
+      cluster: 'analysis.integral',
+      type: 'definition',
+      label: '集合上的积分',
+      title: '$\\int_E f\\,d\\mu$：可测集上的 Lebesgue 积分',
+      regions: ['analysis'],
+      tags: ['定义', '积分', '可测集'],
+      statement: [
+        '设 $(X, \\mathcal{A}, \\mu)$ 是测度空间，$E \\in \\mathcal{A}$，$f$ 可测。若 $f \\ge 0$，定义',
+        '',
+        '$\\int_E f\\,d\\mu := \\int f\\,\\mathbf{1}_E\\,d\\mu \\in [0, \\infty].$',
+        '',
+        '若 $f$ 可积（$\\int |f| < \\infty$），同样定义 $\\int_E f := \\int f\\mathbf{1}_E$，复值函数拆实部虚部。$E = X$ 时回到全空间积分；$\\mu(E) = 0$ 时 $\\int_E f = 0$。'
+      ].join('\n'),
+      notes: '⚠ $E$ 必须可测，否则指示函数 $\\mathbf{1}_E$ 不可测。⭐ 这个记号与「$f$ 乘以指示函数再积分」完全同义；先有非负/复值积分，再限制到可测集。',
+      refs: ['Folland, Real Analysis, §2.3']
+    },
+
+    {
       id: 'def.integrable',
       cluster: 'analysis.integral',
       type: 'definition',
@@ -816,6 +835,8 @@ window.MG = window.MG || {};
       definition: 'def.null-set',
       usedBy: 'cor.mct-ae',
       note: '「a.e. 版本」的意思就是把零集上的例外丢掉。'
-    }
+    },
+    { kind: 'definition', definition: 'def.integral-nonneg', usedBy: 'def.integral-over-set',
+      note: '集合上的积分由非负积分乘以指示函数得到；可积情形再拆正负部。' }
   ]
 });

@@ -11,6 +11,6 @@ $$f(z) = A\int_{z_{0}}^{z} g(\zeta)\,\mathrm{d}\zeta + B.$$
 
 这就证明了公式的**形式**（这一半完整）。
 
-**第二部分：存在性（未完成，缺两步）**
+**第二部分：存在性（未完成，缺三步）**
 
 > 续见 notes/thm.schwarz-christoffel.4.md

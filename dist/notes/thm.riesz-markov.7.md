@@ -1,6 +1,8 @@
 # Riesz–Markov 表示　`thm.riesz-markov`　·　说明
 根 `../`
 
-**范数**：若 $X$ 紧，$\mu(X) = \sup\{\Lambda(f) : 0 \le f \le 1\} = \lVert\Lambda\rVert$（正泛函在 $f \le 1$ 上的上确界就是范数）；$X$ 不紧时也可能有限（如有限总质量的测度），此时两端仍相等；也可能同为 $+\infty$。
+**第三步：Carathéodory 延拓**。由引理 4，每个开集都是 $\mu^{*}$-可测的；由 `thm.caratheodory`，$\mu^{*}$-可测集构成 $\sigma$-代数且 $\mu^{*}$ 在其上可加。开集生成 Borel $\sigma$-代数，故每个 Borel 集可测；把 $\mu^{*}$ 限制到 Borel 集上得 Borel 测度 $\mu$。对开 $U$ 有 $\mu(U) = \mu^{*}(U)$（$U$ 自身就是覆盖，单调性给等号）；由构造 $\mu$ 在 Borel 集上外正则，而（甲）与 $\nu(K) \le \mu(K)$ 给出开集上内正则。
 
-⭐ **与凝聚态的关系**：profinite 集上的「整值测度」$M(S,\mathbb{Z}) = \operatorname{Hom}_{\mathbb{Z}}(C(S,\mathbb{Z}),\mathbb{Z})$ 就是这条定理的**整值、紧全不连通**版本 —— 见 `def.cond-measure`。两者的差别只在「系数环」与「测试空间」，做法同为「对连续函数做赋值」。
+**紧集上有限**：对紧 $K$，取紧邻域 $L \supseteq K$（局部紧 Hausdorff 中每点有紧邻域，有限覆盖即得），令 $W = \operatorname{int} L$。由单点紧化 + `lem.urysohn` 取 $\varphi \in C_{c}(X)$，$0 \le \varphi \le 1$、$\varphi = 1$ 于 $L$。任何 $f \prec W$ 满足 $f \le \varphi$，故 $\mu(W) \le \Lambda(\varphi) < \infty$；于是 $\mu(K) \le \mu(W) < \infty$。
+
+> 续见 notes/thm.riesz-markov.8.md

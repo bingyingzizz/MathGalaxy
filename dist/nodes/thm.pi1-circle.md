@@ -8,7 +8,7 @@ layer 16 · 定理 · 基本群 · 拓扑学
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`prop.covering-index`](../nodes/prop.covering-index.md) 覆叠的指数：层数给等势，提升数（度数）给同态　[proofs/e60.implication.md](../proofs/e60.implication.md)
+- [`prop.covering-index`](../nodes/prop.covering-index.md) 覆叠的指数：层数给等势，提升数（度数）给同态　[proofs/e61.implication.md](../proofs/e61.implication.md)
 
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/thm.pi1-circle.3.md](./thm.pi1-circle.3.md)

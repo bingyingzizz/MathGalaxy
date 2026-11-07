@@ -1,7 +1,7 @@
 # Riesz–Markov 表示　`thm.riesz-markov`　·　说明
 根 `../`
 
-⚠️ **本节点仍标 skeleton**：下面写出测度构造中可独立验证的部分（开集上的定义、单调/次可加/不交可加、外测度）；Carathéodory 可测性的标准证明与最后的表示引理都未写全，所以不勾 ∎。
+**术语**：本条的 $\mu$ 是 Folland 意义的 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则。图内 `def.regular-measure` 目前只在 $\mathbb{R}^{n}$ 上陈述（外正则 + 紧集有限），与这里一般局部紧 Hausdorff 的设定口径不同；这是定义节点的范围问题（已单列在 `_audit/proof/第13批-报告.md`），本条陈述未改。
 
 **第一步：在开集上定义 $\mu$**。对开集 $U \subseteq X$ 令
 
@@ -11,7 +11,7 @@ $$\mu(U) := \sup\Big\{\, \Lambda(f) : f \in C_{c}(X),\ 0 \le f \le 1,\ \operator
 
 **引理 1（单调）**：$U \subseteq V$ $\Longrightarrow$ $\mu(U) \le \mu(V)$。显然（可行集变大）。∎
 
-**引理 2（两次可加）**：对任意开集 $U, V$，
+**引理 2（有限次可加）**：对任意开集 $U, V$，
 
 $$\mu(U \cup V) \le \mu(U) + \mu(V).$$
 
