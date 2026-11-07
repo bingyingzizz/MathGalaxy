@@ -22,7 +22,7 @@
 
 **这不是 wiki，不是博客。** 它是一张星空。
 
-### 实测状态（2026-11-06，`bun tools/mg.mjs stat`）
+### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
 内容版本 v0.9.3 · 15 星系 / 105 星团 / 1550 节点 / 3192 边 · maxLayer 38
@@ -35,9 +35,9 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | 本次提交后本地 `main` ahead 35（未 push；origin 仍停在 `0d20279a`） |
+| 工作树 | 本次提交后本地 `main` ahead 38（未 push；origin 仍停在 `0d20279a`） |
 
-### 门禁 · 我 2026-11-06 全跑过
+### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
@@ -213,6 +213,24 @@
 4. 探针只在诊断期存在，**定位完立刻删掉**（本次已删，rev `8416ea2553fa`）。
 
 **推论**：能用一行读数解决的事，不要用五轮「应该好了」去赌。
+
+### 2.14 ⭐ AI 英文页的续段标签与「时间戳幻觉」（2026-11-07）
+
+**症状**：`dist/nodes/*.en*.md` 里出现中文 `> 续见 nodes/…`。2026-11-07 实测 **52 个英文页**中招；
+英文页本身是给英文读者 / 英文 AI 的入口，夹一行中文很刺眼。
+
+**原因**：`tools/build.mjs` 的 `emitChunks()` 把续段标签硬编码成「续见」；英文调用点
+（`nodes/<id>.en.md` 那行）没有单独传标签。中文页和英文页共用这个函数，默认值就成了漏点。
+
+**修法**：`emitChunks(files, dir, base, head, body, tail, resB, contLabel = '续见')`，
+续段行用 `${contLabel}`；英文调用点传第八个参数 `'continued in'`。中文页不传，行为不变。
+验证：`dist/nodes/ax.choice.en.md` 的续段行应为
+`> continued in nodes/ax.choice.en.2.md`；Node 扫全部 `*.en*.md` 的 CJK 应为 **0**。
+
+**⚠️ 时间戳幻觉（这次差点误判）**：`dist/nodes/*.en.md` 的 mtime 是 14:52，
+`tools/build.mjs` 是 19:29，产物比源码旧 4.5 小时。如果只看 `dist/`，会以为「源码已经改过了、
+只是产物旧」；实际源码一行没改，产物也没重建。**判断 `dist/` 是否为旧产物前，先比 mtime；
+改完构建脚本必须重跑 `bun tools/build.mjs`，再读产物。**
 
 ---
 
