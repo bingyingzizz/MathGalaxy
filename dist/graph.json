@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-07T06:28:18.127Z",
+  "generated": "2026-11-07T06:37:51.558Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -9223,7 +9223,7 @@
     "谱"
    ],
    "statement": "设 $\\dim V = n < \\infty$，$T : V \\to V$ 线性，$T$ 的**特征多项式在 $K$ 上完全分裂**，$\\lambda_1, \\ldots, \\lambda_m$ 是它在 $K$ 中互异的特征值。则下列命题等价：\n\n**(1)** $T$ **可对角化**：存在基使 $T$ 的矩阵是对角阵；\n\n**(2)** $V = E_{\\lambda_1} \\oplus \\cdots \\oplus E_{\\lambda_m}$，即特征向量张成整个 $V$；\n\n**(3)** $\\sum_i \\dim E_{\\lambda_i} = n$（几何重数之和达到 $n$）；\n\n**(4)** 每个特征值的几何重数等于代数重数；\n\n**(5)** 存在**互异**的 $\\lambda_i$ 使 $T$ 满足 $\\prod_i (T - \\lambda_i I) = 0$（即 $T$ 被一个无重根的多项式零化）。",
-   "notes": "⭐ 最常用的判据是 **(3)/(4)**：$n$ 个线性无关的特征向量存在 $\\iff$ 可对角化。\n\n注意「特征值个数 $= n$」不够（重根要按重数算）。\n\n⭐ **(5)** 是最深刻的写法：它把「可对角化」翻译成**极小多项式无重根**（见「极小多项式整除特征多项式」）—— 这一条在谱定理与 Jordan 型的讨论里都要用。\n\n⚠ 判据依赖 $K$：$\\mathbb{R}$ 上的旋转没有实特征值，当然不可对角化；\n\n但它到 $\\mathbb{C}$ 上就有特征值 $\\pm i$ 且可对角化。\n\n所以「可对角化」永远相对于 $K$ 说。\n\n**四条里前三条只是重述，第四条才用到特征多项式**：\n\n- (1) $\\iff$ (2)：**几乎只是定义改写**（可对角化 = 有特征向量组成的基）。\n- (2) $\\iff$ (3)：**纯线性代数**（$\\sum \\dim E_{\\lambda_i} = n$ 且和是直和 $\\iff$ 张成 $V$）。不需要特征多项式、不需要代数闭。\n- (3) $\\iff$ (4)：**这一步要用「几何重数 $\\le$ 代数重数」**，而那要**特征多项式**（把 $T - \\lambda I$ 的幂零部分算维数）。$\\sum$ 几何重数 $= n$ 与「每个都取等」等价，因为总和 $\\le \\sum$ 代数重数 $= n$。\n\n⚠️ **必须的假设**：有限维 + **特征多项式在 $K$ 中分裂**（全部特征值落在 $K$ 里）。缺了后者，$T$ 在 $K$ 上可能根本没有特征值（例如 $\\mathbb{R}$ 上的旋转 $90^{\\circ}$），此时 (2)(3)(4) 都空转 —— 正确的说法是「在代数闭包上可对角化 $\\iff$ 极小多项式无重根」。\n",
+   "notes": "⭐ 最常用的判据是 **(3)/(4)**：$n$ 个线性无关的特征向量存在 $\\iff$ 可对角化。\n\n注意「特征值个数 $= n$」不够（重根要按重数算）。\n\n⭐ **(5)** 是最深刻的写法：它把「可对角化」翻译成**极小多项式无重根**（见「极小多项式整除特征多项式」）—— 这一条在谱定理与 Jordan 型的讨论里都要用。\n\n⚠ 判据依赖 $K$：$\\mathbb{R}$ 上的旋转没有实特征值，当然不可对角化；\n\n但它到 $\\mathbb{C}$ 上就有特征值 $\\pm i$ 且可对角化。\n\n所以「可对角化」永远相对于 $K$ 说。\n\n**四条里前三条只是重述，第四条才用到特征多项式**：\n\n- (1) $\\iff$ (2)：**几乎只是定义改写**（可对角化 = 有特征向量组成的基）。\n- (2) $\\iff$ (3)：**纯线性代数**（$\\sum \\dim E_{\\lambda_i} = n$ 且和是直和 $\\iff$ 张成 $V$）。不需要特征多项式、不需要代数闭。\n- (3) $\\iff$ (4)：**这一步要用「几何重数 $\\le$ 代数重数」**，而那要**特征多项式**（把 $T - \\lambda I$ 的幂零部分算维数）。$\\sum$ 几何重数 $= n$ 与「每个都取等」等价，因为总和 $\\le \\sum$ 代数重数 $= n$。\n\n⚠️ **必须的假设**：有限维 + **特征多项式在 $K$ 中分裂**（全部特征值落在 $K$ 里）。缺了后者，$T$ 在 $K$ 上可能根本没有特征值（例如 $\\mathbb{R}$ 上的旋转 $90^{\\circ}$）：此时 $m=0$，**(2)(3) 是假命题** —— 右边是零子空间 $0$，而 $V=\\mathbb{R}^2$（空和 $0\\ne2$）；只有 **(4) 真空成立**（「每个特征值」取遍空族）。所以等价链在 (2)(3) 处就断了，别误以为只差 (4)。正确的说法是「在代数闭包上可对角化 $\\iff$ 极小多项式无重根」。\n",
    "refs": [
     "Hoffman–Kunze, Linear Algebra, Ch. 6"
    ]
@@ -81023,7 +81023,7 @@
    ],
    "target": "thm.equicontinuous-uniform",
    "title": "紧 $+$ 等度连续 $\\implies$ 一致等度连续",
-   "proof": "给 $\\varepsilon$。对每个 $x$ 由等度连续取 $\\eta_x > 0$ 使 $\\delta(y,x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（一切 $f$）。\n$\\{B(x, \\eta_x/2)\\}$ 覆盖紧集，取有限子覆盖 $B(x_1, \\eta_{x_1}/2), .., B(x_N, \\eta_{x_N}/2)$，令 $\\eta := \\min_i \\eta_{x_i}/2 > 0$。\n若 $\\delta(x,y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$，则 $\\delta(y, x_i) < \\eta_{x_i}$，于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。\n\n$\\blacksquare$",
+   "proof": "若 $K=\\emptyset$ 结论平凡；以下设 $K$ 非空（$K\\ne\\emptyset$）。\n\n给 $\\varepsilon$。对每个 $x$ 由等度连续取 $\\eta_x > 0$ 使 $\\delta(y,x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（一切 $f$）。\n$\\{B(x, \\eta_x/2)\\}$ 覆盖紧集，取有限子覆盖 $B(x_1, \\eta_{x_1}/2), .., B(x_N, \\eta_{x_N}/2)$，令 $\\eta := \\min_i \\eta_{x_i}/2 > 0$。\n若 $\\delta(x,y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$，则 $\\delta(y, x_i) < \\eta_{x_i}$，于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。\n\n$\\blacksquare$",
    "note": "「有限」用两次：一次有界、一次取 min 后仍 $>0$ —— 无限个正数的下确界可以是 0，这正是紧性的用处。"
   },
   {
@@ -95288,7 +95288,7 @@
    ],
    "target": "thm.evt",
    "title": "有界 + 确界原理 $\\implies$ 取到最值",
-   "proof": "设 $X$ 紧、$f : X \\to \\mathbb{R}$ 连续。由上一条，$f(X)$ 非空且有上界，令\n\n$$M := \\sup f(X) \\in \\mathbb{R}$$\n\n（确界原理保证它存在）。\n\n1. 对每个 $n \\ge 1$，$M - 1/n$ 不是 $f(X)$ 的上界，所以存在 $x_n \\in X$ 使 $f(x_n) > M - 1/n$。\n2. $X$ 紧 $\\implies$ 列紧（见「紧的三个等价刻画」），所以 $\\{x_n\\}$ 有子列 $x_{n_k} \\to x^{*} \\in X$。\n3. $f$ 连续 $\\implies$ $f(x_{n_k}) \\to f(x^{*})$；另一方面由第 1 步 $f(x_{n_k}) \\to M$（夹逼：$M - 1/n_k < f(x_{n_k}) \\le M$）。极限唯一，故 $f(x^{*}) = M$。\n4. 于是 $f(x^{*}) = M = \\sup f(X) \\ge f(x)$ 对一切 $x \\in X$ 成立，即 $x_{\\max} = x^{*}$。\n\n把 $f$ 换成 $-f$ 得最小值。∎",
+   "proof": "设 $X$ **非空**紧、$f : X \\to \\mathbb{R}$ 连续。由上一条，$f(X)$ 非空且有上界，令\n\n$$M := \\sup f(X) \\in \\mathbb{R}$$\n\n（确界原理保证它存在）。\n\n1. 对每个 $n \\ge 1$，$M - 1/n$ 不是 $f(X)$ 的上界，所以存在 $x_n \\in X$ 使 $f(x_n) > M - 1/n$。\n2. $X$ 紧 $\\implies$ 列紧（见「紧的三个等价刻画」），所以 $\\{x_n\\}$ 有子列 $x_{n_k} \\to x^{*} \\in X$。\n3. $f$ 连续 $\\implies$ $f(x_{n_k}) \\to f(x^{*})$；另一方面由第 1 步 $f(x_{n_k}) \\to M$（夹逼：$M - 1/n_k < f(x_{n_k}) \\le M$）。极限唯一，故 $f(x^{*}) = M$。\n4. 于是 $f(x^{*}) = M = \\sup f(X) \\ge f(x)$ 对一切 $x \\in X$ 成立，即 $x_{\\max} = x^{*}$。\n\n把 $f$ 换成 $-f$ 得最小值。∎",
    "note": "第 3 步的两个极限必须都存在才能用「极限唯一」：左式的存在性来自连续性，右式来自 $\\sup$ 的定义。紧性只在第 2 步用了一次。"
   },
   {
@@ -95987,7 +95987,7 @@
    ],
    "target": "thm.dini",
    "title": "紧性 + 单调 + 连续性 $\\implies$ Dini 定理",
-   "proof": "以 $f_n \\uparrow f$ 为例（$f_n \\downarrow f$ 时对 $-f_n$ 用同样的论证）。给定 $\\varepsilon > 0$。\n\n1. 对每个 $x \\in X$，由逐点单调收敛存在 $n_x$ 使 $0 \\le f(x) - f_{n_x}(x) < \\varepsilon$（这里用到了「$f_n(x)$ 单调递增地收敛到 $f(x)$」）。\n2. 由 $f$ 与 $f_{n_x}$ 都连续，存在 $x$ 的邻域 $U_x$ 使 $y \\in U_x$ 时 $|f(y) - f(x)| < \\varepsilon$ 且 $|f_{n_x}(y) - f_{n_x}(x)| < \\varepsilon$。\n\n合并：$y \\in U_x$ 时 $f(y) - f_{n_x}(y) < 3\\varepsilon$。\n3. $\\{U_x\\}_{x \\in X}$ 是紧空间 $X$ 的开覆盖，取出有限子覆盖 $U_{x_1}, \\ldots, U_{x_k}$，令 $N := \\max\\{n_{x_1}, \\ldots, n_{x_k}\\}$。\n4. 对任意 $y \\in X$，$y$ 落在某个 $U_{x_j}$ 里；由**单调性** $n \\ge N \\ge n_{x_j}$ 时 $f_{n}(y) \\ge f_{n_{x_j}}(y)$，于是 $f(y) - f_n(y) \\le f(y) - f_{n_{x_j}}(y) < 3\\varepsilon$。\n\n故 $\\sup_y |f(y) - f_n(y)| \\le 3\\varepsilon$ 对一切 $n \\ge N$ 成立，即 $f_n \\rightrightarrows f$。∎",
+   "proof": "若 $X=\\emptyset$ 结论平凡；以下设 $X$ 非空（$X\\ne\\emptyset$）。\n\n以 $f_n \\uparrow f$ 为例（$f_n \\downarrow f$ 时对 $-f_n$ 用同样的论证）。给定 $\\varepsilon > 0$。\n\n1. 对每个 $x \\in X$，由逐点单调收敛存在 $n_x$ 使 $0 \\le f(x) - f_{n_x}(x) < \\varepsilon$（这里用到了「$f_n(x)$ 单调递增地收敛到 $f(x)$」）。\n2. 由 $f$ 与 $f_{n_x}$ 都连续，存在 $x$ 的邻域 $U_x$ 使 $y \\in U_x$ 时 $|f(y) - f(x)| < \\varepsilon$ 且 $|f_{n_x}(y) - f_{n_x}(x)| < \\varepsilon$。\n\n合并：$y \\in U_x$ 时 $f(y) - f_{n_x}(y) < 3\\varepsilon$。\n3. $\\{U_x\\}_{x \\in X}$ 是紧空间 $X$ 的开覆盖，取出有限子覆盖 $U_{x_1}, \\ldots, U_{x_k}$，令 $N := \\max\\{n_{x_1}, \\ldots, n_{x_k}\\}$。\n4. 对任意 $y \\in X$，$y$ 落在某个 $U_{x_j}$ 里；由**单调性** $n \\ge N \\ge n_{x_j}$ 时 $f_{n}(y) \\ge f_{n_{x_j}}(y)$，于是 $f(y) - f_n(y) \\le f(y) - f_{n_{x_j}}(y) < 3\\varepsilon$。\n\n故 $\\sup_y |f(y) - f_n(y)| \\le 3\\varepsilon$ 对一切 $n \\ge N$ 成立，即 $f_n \\rightrightarrows f$。∎",
    "note": "第 4 步是**单调性唯一**出场的地方：它把「$n = n_{x_j}$ 时误差小」升级成「一切 $n \\ge N$ 时误差小」。没有单调性，有限覆盖给出的只是一列互不相干的点。"
   },
   {

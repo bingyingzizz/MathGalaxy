@@ -35,7 +35,7 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | 本次提交后本地 `main` ahead 32（未 push；origin 仍停在 `0d20279a`） |
+| 工作树 | 本次提交后本地 `main` ahead 33（未 push；origin 仍停在 `0d20279a`） |
 
 ### 门禁 · 我 2026-11-06 全跑过
 

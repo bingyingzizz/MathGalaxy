@@ -867,7 +867,7 @@ window.MG = window.MG || {};
       target: 'thm.equicontinuous-uniform',
       title: '紧 $+$ 等度连续 $\\implies$ 一致等度连续',
       proof: [
-        '给 $\\varepsilon$。对每个 $x$ 由等度连续取 $\\eta_x > 0$ 使 $\\delta(y,x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（一切 $f$）。',
+        '若 $K=\\emptyset$ 结论平凡；以下设 $K$ 非空（$K\\ne\\emptyset$）。\n\n给 $\\varepsilon$。对每个 $x$ 由等度连续取 $\\eta_x > 0$ 使 $\\delta(y,x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（一切 $f$）。',
         '$\\{B(x, \\eta_x/2)\\}$ 覆盖紧集，取有限子覆盖 $B(x_1, \\eta_{x_1}/2), .., B(x_N, \\eta_{x_N}/2)$，令 $\\eta := \\min_i \\eta_{x_i}/2 > 0$。',
         '若 $\\delta(x,y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$，则 $\\delta(y, x_i) < \\eta_{x_i}$，于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。\n\n$\\blacksquare$'
       ].join('\n'),

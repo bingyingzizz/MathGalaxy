@@ -189,7 +189,7 @@ window.MG = window.MG || {};
       target: 'thm.evt',
       title: '有界 + 确界原理 $\\implies$ 取到最值',
       proof: [
-        '设 $X$ 紧、$f : X \\to \\mathbb{R}$ 连续。由上一条，$f(X)$ 非空且有上界，令',
+        '设 $X$ **非空**紧、$f : X \\to \\mathbb{R}$ 连续。由上一条，$f(X)$ 非空且有上界，令',
         '',
         '$$M := \\sup f(X) \\in \\mathbb{R}$$',
         '',
