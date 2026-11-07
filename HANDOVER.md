@@ -592,7 +592,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 |---|---|
 | **本交接书** | `H:\MathGalaxy\HANDOVER.md`（本文件，唯一） |
 | **仓库规矩**（进目录自动注入） | `H:\MathGalaxy\AGENTS.md` |
-| **审读报告真源**（13158 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§122 各批 |
+| **审读报告真源**（13210 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§123 各批 |
 | 审读回执 | `_audit/_proofs/out-*.txt`（`P-*.txt` 是对应提示词） |
 | 用户手写笔记原件 | `_pdf/`（167 MB）· 转写 `_pdf/凝聚态数学笔记-转写.md` |
 | 散文式规则 | `CONTRIBUTING.md`（人看的）· `README.md` · `policy.md` |
