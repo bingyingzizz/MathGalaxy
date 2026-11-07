@@ -62,10 +62,10 @@ window.MG.packs.push({
         '',
         '$$\\Lambda(f) = \\int_{X} f \\,\\mathrm{d}\\mu,$$',
         '',
-        '其中 $\\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\\lVert\\Lambda\\rVert = \\mu(X)$（$X$ 紧时就是 $\\mu(X)$；$X$ 不紧时两端都可以是 $+\\infty$）。一般（不必正）的泛函要**先假设有界**（对 $\\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。',
+        '其中 $\\mu$ 是 $X$ 上的一个**Radon 测度**（定义见 def.radon-measure），且 $\\lVert\\Lambda\\rVert = \\mu(X)$（$X$ 紧时就是 $\\mu(X)$；$X$ 不紧时两端都可以是 $+\\infty$）。一般（不必正）的泛函要**先假设有界**（对 $\\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。',
       ].join('\n'),
       notes: [
-        '**术语**：本条的 $\\mu$ 是 Folland 意义的 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则。图内 `def.regular-measure` 目前只在 $\\mathbb{R}^{n}$ 上陈述（外正则 + 紧集有限），与这里一般局部紧 Hausdorff 的设定口径不同；这是定义节点的范围问题（已单列在 `_audit/proof/第13批-报告.md`），本条陈述未改。',
+        '**术语**：本条的 $\\mu$ 是 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则（见 def.radon-measure）。图内 def.regular-measure 是 $\\mathbb{R}^n$ 上的特例（紧集有限 + 外正则）；本条不再把两者混用。',
         '**第一步：在开集上定义 $\\mu$**。对开集 $U \\subseteq X$ 令',
         '$$\\mu(U) := \\sup\\Big\\{\\, \\Lambda(f) : f \\in C_{c}(X),\\ 0 \\le f \\le 1,\\ \\operatorname{supp} f \\subseteq U \\,\\Big\\},$$',
         '并约定 $\\mu(\\emptyset) = 0$。这里 $\\operatorname{supp} f \\subseteq U$ 是包含关系（$f$ 的支集紧，故 $\\mu(U)$ 是「用紧支函数逼近 $U$」的上确界）。',
@@ -187,7 +187,7 @@ window.MG.packs.push({
 
     /* ④ 桥：凝聚态 $\\leftrightarrow$ 测度（经 Riesz–Markov 的整值版本） */
     { id: 'dep.rm-measure', kind: 'definition', definition: 'def.measure', usedBy: 'thm.riesz-markov',
-      note: '结论说「存在一个正则 Borel **测度** $\\mu$」，用到测度的定义。' },
+      note: '结论说「存在一个 Radon **测度** $\\mu$」，用到测度的定义。' },
     { id: 'dep.rm-lc', kind: 'definition', definition: 'def.locally-compact', usedBy: 'thm.riesz-markov',
       note: '假设是局部紧 Hausdorff —— 局部紧是 Urysohn 夹逼函数存在的前提。' },
     { id: 'dep.rm-outer', kind: 'definition', definition: 'def.outer-measure', usedBy: 'thm.riesz-markov',
@@ -195,12 +195,14 @@ window.MG.packs.push({
     { id: 'ana.rm-cond-measure', kind: 'analogy', a: 'def.cond-measure', b: 'thm.riesz-markov',
       title: '整值测度 $\\leftrightarrow$ Riesz–Markov：同一台机器，换系数环与测试空间',
       note: '两处都在做「对连续函数做赋值，得到『集合的大小』」这一件事：\n' +
-        '- 经典：$\\Lambda \\in C_{c}(X)^{\\ast}$ $\\rightsquigarrow$ 正则 Borel 测度；\n' +
+        '- 经典：$\\Lambda \\in C_{c}(X)^{\\ast}$ $\\rightsquigarrow$ Radon 测度；\n' +
         '- 凝聚态：$\\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$，$S$ profinite —— **整值**系数、**紧全不连通**的测试空间。\n\n' +
         '⚠ 方向不同、范畴不同，所以只记**类比**，不当依赖：经典定理给出「测度」，凝聚态那个对象是**按定义取对偶**得到的。' },
 
-    { id: 'dep.rm-regular', kind: 'definition', definition: 'def.regular-measure', usedBy: 'thm.riesz-markov',
-      note: '结论里那个测度是**正则 Borel 测度**（外正则 + 内正则 + 局部有限），这一条正是「哪一类测度」的限定。' },
+    { id: 'dep.rm-radon', kind: 'definition', definition: 'def.radon-measure', usedBy: 'thm.riesz-markov',
+      note: '结论里的测度是 Radon 测度（Borel、紧集有限、外正则、开集内正则）；def.regular-measure 只是 R^n 特例。' },
+    { id: 'dep.radon-measure', kind: 'definition', definition: 'def.measure', usedBy: 'def.radon-measure',
+      note: 'Radon 测度首先是一个 Borel 测度，用到测度定义。' },
 
     /* ④ 桥：凝聚态 $\\leftrightarrow$ 范畴论（阿贝尔范畴那一条） */
     { id: 'ana.condab-abeliancat', kind: 'analogy', a: 'thm.condab-ab', b: 'def.abelian-category',

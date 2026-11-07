@@ -1,7 +1,7 @@
 # Riesz–Markov 表示　`thm.riesz-markov`　·　说明
 根 `../`
 
-**术语**：本条的 $\mu$ 是 Folland 意义的 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则。图内 `def.regular-measure` 目前只在 $\mathbb{R}^{n}$ 上陈述（外正则 + 紧集有限），与这里一般局部紧 Hausdorff 的设定口径不同；这是定义节点的范围问题（已单列在 `_audit/proof/第13批-报告.md`），本条陈述未改。
+**术语**：本条的 $\mu$ 是 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则（见 def.radon-measure）。图内 def.regular-measure 是 $\mathbb{R}^n$ 上的特例（紧集有限 + 外正则）；本条不再把两者混用。
 
 **第一步：在开集上定义 $\mu$**。对开集 $U \subseteq X$ 令
 

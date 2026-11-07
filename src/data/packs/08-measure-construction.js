@@ -51,6 +51,29 @@ window.MG = window.MG || {};
     },
 
     {
+      id: 'def.radon-measure',
+      cluster: 'analysis.measure',
+      type: 'definition',
+      label: 'Radon 测度',
+      title: 'Radon 测度：局部有限的 Borel 测度，外正则 + 开集内正则',
+      regions: ['analysis'],
+      tags: ['定义', 'Radon 测度', 'Borel 测度', '正则'],
+      statement: [
+        '设 $X$ 是局部紧 Hausdorff 空间。$X$ 上的 **Radon 测度** 是 Borel 测度 $\\mu$，满足：',
+        '',
+        '1. **局部有限**：每个 $x \\in X$ 有开邻域 $U$ 使 $\\mu(U) < \\infty$（局部紧 Hausdorff 上等价于紧集上有限）。',
+        '2. **外正则**：对每个 Borel 集 $E$，$\\mu(E) = \\inf\\{\\mu(U) : E \\subseteq U,\\ U\\ \\text{开}\\}$。',
+        '3. **开集上内正则**：对每个开集 $U$，$\\mu(U) = \\sup\\{\\mu(K) : K \\subseteq U,\\ K\\ \\text{紧}\\}$。'
+      ].join('\n'),
+      notes: [
+        'Folland 的术语：Radon = Borel 测度 + 紧集上有限 + 外正则 + 开集上内正则。局部紧 Hausdorff 上「局部有限」与「紧集上有限」等价：紧集用有限个紧邻域覆盖。',
+        '在 $\\mathbb{R}^n$ 上，Radon 测度就是紧集有限且外正则的正则 Borel 测度 —— 即 def.regular-measure 的 $\\mathbb{R}^n$ 情形。一般局部紧 Hausdorff 上没有「外正则由紧集有限自动推出」这条，所以本节点单列。',
+        'Riesz–Markov 表示定理给出的正是 Radon 测度（thm.riesz-markov）；不要把它与只在 $\\mathbb{R}^n$ 上陈述的 def.regular-measure 混用。'
+      ].join('\n\n'),
+      refs: ['Folland, Real Analysis, §7.1', 'Rudin, Real and Complex Analysis, Ch. 2']
+    },
+
+    {
       id: 'def.premeasure',
       cluster: 'analysis.measure',
       type: 'definition',

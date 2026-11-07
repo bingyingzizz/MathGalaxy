@@ -2,8 +2,8 @@
 
 > page 1 `hubs.en.md`
 
+- **31 / 32** `def.measure` measure · 测度的构造
 - **30 / 33** `def.limit` limit and colimit · 图与极限
-- **30 / 31** `def.measure` measure · 测度的构造
 - **29 / 32** `def.adjoint` Adjunction · 伴随与反射
 - **29 / 32** `def.compact` compact · 拓扑空间的基本语汇
 

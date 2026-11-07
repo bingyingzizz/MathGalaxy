@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:02:41.357Z
-> 15 星系 / 105 星团 / 1549 节点 / 3191 连线（强边 3149，弱边 42；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:12:19.511Z
+> 15 星系 / 105 星团 / 1550 节点 / 3192 连线（强边 3150，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -15319,6 +15319,23 @@ $(X, \mathcal{M}, \mu )$ 称为**测度空间**。
 
 参考：Halmos, Measure Theory, §9；Folland, Real Analysis, §1.2
 
+#### Radon 测度　`def.radon-measure`
+*定义*　Radon 测度：局部有限的 Borel 测度，外正则 + 开集内正则
+
+设 $X$ 是局部紧 Hausdorff 空间。$X$ 上的 **Radon 测度** 是 Borel 测度 $\mu$，满足：
+
+1. **局部有限**：每个 $x \in X$ 有开邻域 $U$ 使 $\mu(U) < \infty$（局部紧 Hausdorff 上等价于紧集上有限）。
+2. **外正则**：对每个 Borel 集 $E$，$\mu(E) = \inf\{\mu(U) : E \subseteq U,\ U\ \text{开}\}$。
+3. **开集上内正则**：对每个开集 $U$，$\mu(U) = \sup\{\mu(K) : K \subseteq U,\ K\ \text{紧}\}$。
+
+Folland 的术语：Radon = Borel 测度 + 紧集上有限 + 外正则 + 开集上内正则。局部紧 Hausdorff 上「局部有限」与「紧集上有限」等价：紧集用有限个紧邻域覆盖。
+
+在 $\mathbb{R}^n$ 上，Radon 测度就是紧集有限且外正则的正则 Borel 测度 —— 即 def.regular-measure 的 $\mathbb{R}^n$ 情形。一般局部紧 Hausdorff 上没有「外正则由紧集有限自动推出」这条，所以本节点单列。
+
+Riesz–Markov 表示定理给出的正是 Radon 测度（thm.riesz-markov）；不要把它与只在 $\mathbb{R}^n$ 上陈述的 def.regular-measure 混用。
+
+参考：Folland, Real Analysis, §7.1；Rudin, Real and Complex Analysis, Ch. 2
+
 #### 预测度　`def.premeasure`
 *定义*　预测度（Premeasure）—— 定义在环上的「测度」
 
@@ -15676,9 +15693,9 @@ $$\exists E \in \mathcal{M}:\ \mu(E) = 0\ \wedge \ \forall x \in X \setminus E,\
 
 $$\Lambda(f) = \int_{X} f \,\mathrm{d}\mu,$$
 
-其中 $\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\lVert\Lambda\rVert = \mu(X)$（$X$ 紧时就是 $\mu(X)$；$X$ 不紧时两端都可以是 $+\infty$）。一般（不必正）的泛函要**先假设有界**（对 $\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。
+其中 $\mu$ 是 $X$ 上的一个**Radon 测度**（定义见 def.radon-measure），且 $\lVert\Lambda\rVert = \mu(X)$（$X$ 紧时就是 $\mu(X)$；$X$ 不紧时两端都可以是 $+\infty$）。一般（不必正）的泛函要**先假设有界**（对 $\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。
 
-**术语**：本条的 $\mu$ 是 Folland 意义的 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则。图内 `def.regular-measure` 目前只在 $\mathbb{R}^{n}$ 上陈述（外正则 + 紧集有限），与这里一般局部紧 Hausdorff 的设定口径不同；这是定义节点的范围问题（已单列在 `_audit/proof/第13批-报告.md`），本条陈述未改。
+**术语**：本条的 $\mu$ 是 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则（见 def.radon-measure）。图内 def.regular-measure 是 $\mathbb{R}^n$ 上的特例（紧集有限 + 外正则）；本条不再把两者混用。
 
 **第一步：在开集上定义 $\mu$**。对开集 $U \subseteq X$ 令
 
@@ -55036,7 +55053,7 @@ Hilbert 空间是 Banach 空间的特例，所以也走这条桥（注里有说�
 
 #### 定义引用：「测度」→ Riesz–Markov 表示　`dep.rm-measure`
 
-结论说「存在一个正则 Borel **测度** $\mu$」，用到测度的定义。
+结论说「存在一个 Radon **测度** $\mu$」，用到测度的定义。
 
 #### 定义引用：「局部紧 Hausdorff 空间」→ Riesz–Markov 表示　`dep.rm-lc`
 
@@ -55046,9 +55063,13 @@ Hilbert 空间是 Banach 空间的特例，所以也走这条桥（注里有说�
 
 证明第 ②③ 步：先造外测度、再用 Carathéodory 延拓（这两步在节点注里已写全；仍缺的是最后的表示引理）。
 
-#### 定义引用：「正则 Borel 测度」→ Riesz–Markov 表示　`dep.rm-regular`
+#### 定义引用：「Radon 测度」→ Riesz–Markov 表示　`dep.rm-radon`
 
-结论里那个测度是**正则 Borel 测度**（外正则 + 内正则 + 局部有限），这一条正是「哪一类测度」的限定。
+结论里的测度是 Radon 测度（Borel、紧集有限、外正则、开集内正则）；def.regular-measure 只是 R^n 特例。
+
+#### 定义引用：「测度」→ Radon 测度　`dep.radon-measure`
+
+Radon 测度首先是一个 Borel 测度，用到测度定义。
 
 #### 定义引用：「伴随函子」→ 幂对象　`dep.power-adjoint`
 
@@ -62713,7 +62734,7 @@ $$\int_{M} K\,\mathrm{d}A = 4\pi(1-g).$$
 *整值测度 $\leftrightarrow$ Riesz–Markov：同一台机器，换系数环与测试空间*
 
 两处都在做「对连续函数做赋值，得到『集合的大小』」这一件事：
-- 经典：$\Lambda \in C_{c}(X)^{\ast}$ $\rightsquigarrow$ 正则 Borel 测度；
+- 经典：$\Lambda \in C_{c}(X)^{\ast}$ $\rightsquigarrow$ Radon 测度；
 - 凝聚态：$\operatorname{Hom}_{\mathbb{Z}}(C(S,\mathbb{Z}),\mathbb{Z})$，$S$ profinite —— **整值**系数、**紧全不连通**的测试空间。
 
 ⚠ 方向不同、范畴不同，所以只记**类比**，不当依赖：经典定理给出「测度」，凝聚态那个对象是**按定义取对偶**得到的。
@@ -63113,7 +63134,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **实数与极限 ↔ Riemann 积分**　4 条节点级连线
 - **代数结构 ↔ 关系与函数**　4 条节点级连线
 - **实数完备性的等价刻画 ↔ 度量空间**　3 条节点级连线
-- **微分定理 ↔ 测度的构造**　4 条节点级连线
 - **凝聚态阿贝尔群 ↔ 加法与阿贝尔范畴**　3 条节点级连线
 - **伴随与反射 ↔ 单满、子对象与像**　2 条节点级连线
 - **基数与等势 ↔ 集合的构造**　2 条节点级连线
@@ -63171,6 +63191,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　2 条节点级连线
+- **微分定理 ↔ 测度的构造**　3 条节点级连线
 - **L^p 空间 ↔ 可测函数与收敛**　3 条节点级连线
 - **L^p 空间 ↔ 测度的构造**　4 条节点级连线
 - **紧 Hausdorff 空间 ↔ 分离公理**　2 条节点级连线

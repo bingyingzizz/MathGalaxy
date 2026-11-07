@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T06:02:41.357Z",
+ "generated": "2026-11-07T06:12:19.511Z",
  "terms": 76,
  "missing": [
   {
@@ -366,6 +366,15 @@
    "gap": 2
   },
   {
+   "node": "def.radon-measure",
+   "nodeLabel": "Radon 测度",
+   "nodeLayer": 16,
+   "def": "def.locally-compact",
+   "defLabel": "局部紧 Hausdorff 空间",
+   "defLayer": 17,
+   "gap": 1
+  },
+  {
    "node": "def.category-of-groups",
    "nodeLabel": "群范畴",
    "nodeLayer": 8,
@@ -384,7 +393,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 40,
+ "noEdgeAll": 41,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",
@@ -401,7 +410,6 @@
   "模形式",
   "求根公式",
   "尺规作图",
-  "Riesz–Markov",
   "图论",
   "组合数学",
   "负负得正",

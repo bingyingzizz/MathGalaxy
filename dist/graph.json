@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-07T06:02:41.357Z",
+  "generated": "2026-11-07T06:12:19.511Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
-   "nodes": 1549,
-   "edges": 3191,
-   "strong": 3149,
+   "nodes": 1550,
+   "edges": 3192,
+   "strong": 3150,
    "weak": 42,
    "derived": 33,
    "en_pages": 1536
@@ -85,7 +85,7 @@
    "en": "Mathematical Analysis",
    "desc": "从实数出发的初等分析：极限与完备性、连续与紧性、中值定理与 Taylor、多元微分与逆映射定理、级数、一致收敛，顶点是 Riemann 积分与 Newton–Leibniz 公式。",
    "color": "#3AA8D8",
-   "nodeCount": 304
+   "nodeCount": 305
   },
   {
    "id": "functional-analysis",
@@ -101,7 +101,7 @@
    "en": "Functions of a Real Variable",
    "desc": "换一套更听话的积分：σ-代数 → 测度 → 可测函数 → Lebesgue 积分（单调收敛 / Fatou / 控制收敛）→ 乘积测度与 Fubini → 符号测度与 Radon–Nikodym → 微分定理 → $L^p$ 空间。",
    "color": "#1C86B0",
-   "nodeCount": 147
+   "nodeCount": 148
   },
   {
    "id": "category",
@@ -1012,9 +1012,10 @@
    "en": "Constructing Measures",
    "parent": "analysis-measure",
    "desc": "造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。",
-   "nodeCount": 19,
+   "nodeCount": 20,
    "nodes": [
     "def.measure",
+    "def.radon-measure",
     "def.premeasure",
     "def.finitely-additive",
     "def.measure-space",
@@ -5256,6 +5257,31 @@
    "xref": {
     "wikipedia": "https://en.wikipedia.org/wiki/Measure_(mathematics)"
    }
+  },
+  {
+   "id": "def.radon-measure",
+   "type": "definition",
+   "label": "Radon 测度",
+   "title": "Radon 测度：局部有限的 Borel 测度，外正则 + 开集内正则",
+   "region": "analysis-measure",
+   "regions": [
+    "analysis-measure",
+    "analysis"
+   ],
+   "cluster": "analysis.measure",
+   "layer": 16,
+   "tags": [
+    "定义",
+    "Radon 测度",
+    "Borel 测度",
+    "正则"
+   ],
+   "statement": "设 $X$ 是局部紧 Hausdorff 空间。$X$ 上的 **Radon 测度** 是 Borel 测度 $\\mu$，满足：\n\n1. **局部有限**：每个 $x \\in X$ 有开邻域 $U$ 使 $\\mu(U) < \\infty$（局部紧 Hausdorff 上等价于紧集上有限）。\n2. **外正则**：对每个 Borel 集 $E$，$\\mu(E) = \\inf\\{\\mu(U) : E \\subseteq U,\\ U\\ \\text{开}\\}$。\n3. **开集上内正则**：对每个开集 $U$，$\\mu(U) = \\sup\\{\\mu(K) : K \\subseteq U,\\ K\\ \\text{紧}\\}$。",
+   "notes": "Folland 的术语：Radon = Borel 测度 + 紧集上有限 + 外正则 + 开集上内正则。局部紧 Hausdorff 上「局部有限」与「紧集上有限」等价：紧集用有限个紧邻域覆盖。\n\n在 $\\mathbb{R}^n$ 上，Radon 测度就是紧集有限且外正则的正则 Borel 测度 —— 即 def.regular-measure 的 $\\mathbb{R}^n$ 情形。一般局部紧 Hausdorff 上没有「外正则由紧集有限自动推出」这条，所以本节点单列。\n\nRiesz–Markov 表示定理给出的正是 Radon 测度（thm.riesz-markov）；不要把它与只在 $\\mathbb{R}^n$ 上陈述的 def.regular-measure 混用。",
+   "refs": [
+    "Folland, Real Analysis, §7.1",
+    "Rudin, Real and Complex Analysis, Ch. 2"
+   ]
   },
   {
    "id": "def.premeasure",
@@ -41718,15 +41744,15 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 22,
+   "layer": 18,
    "tags": [
     "定理",
     "测度",
     "泛函分析",
     "桥"
    ],
-   "statement": "设 $X$ 是局部紧 Hausdorff 空间，$C_{c}(X)$ 配 sup 范数（连续、紧支的实值函数）。则每个**正**线性泛函 $\\Lambda : C_{c}(X) \\to \\mathbb{R}$ 都唯一地写成\n\n$$\\Lambda(f) = \\int_{X} f \\,\\mathrm{d}\\mu,$$\n\n其中 $\\mu$ 是 $X$ 上的一个**正则 Borel 测度**，且 $\\lVert\\Lambda\\rVert = \\mu(X)$（$X$ 紧时就是 $\\mu(X)$；$X$ 不紧时两端都可以是 $+\\infty$）。一般（不必正）的泛函要**先假设有界**（对 $\\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。",
-   "notes": "**术语**：本条的 $\\mu$ 是 Folland 意义的 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则。图内 `def.regular-measure` 目前只在 $\\mathbb{R}^{n}$ 上陈述（外正则 + 紧集有限），与这里一般局部紧 Hausdorff 的设定口径不同；这是定义节点的范围问题（已单列在 `_audit/proof/第13批-报告.md`），本条陈述未改。\n\n**第一步：在开集上定义 $\\mu$**。对开集 $U \\subseteq X$ 令\n\n$$\\mu(U) := \\sup\\Big\\{\\, \\Lambda(f) : f \\in C_{c}(X),\\ 0 \\le f \\le 1,\\ \\operatorname{supp} f \\subseteq U \\,\\Big\\},$$\n\n并约定 $\\mu(\\emptyset) = 0$。这里 $\\operatorname{supp} f \\subseteq U$ 是包含关系（$f$ 的支集紧，故 $\\mu(U)$ 是「用紧支函数逼近 $U$」的上确界）。\n\n**引理 1（单调）**：$U \\subseteq V$ $\\Longrightarrow$ $\\mu(U) \\le \\mu(V)$。显然（可行集变大）。∎\n\n**引理 2（有限次可加）**：对任意开集 $U, V$，\n\n$$\\mu(U \\cup V) \\le \\mu(U) + \\mu(V).$$\n\n证明：取 $f \\in C_{c}$，$0 \\le f \\le 1$，$K := \\operatorname{supp} f \\subseteq U \\cup V$。$K \\setminus V$ 是紧集且含于开集 $U$，取**单点紧化** $X^{+} = X \\cup \\{\\infty\\}$：$X$ 局部紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 正规，故可在 $X^{+}$ 内对紧集 $K \\setminus V$ 与开集 $U$ 用 Urysohn 引理（`lem.urysohn`，要的是**正规**而非局部紧），得 $\\varphi^{+} : X^{+} \\to [0,1]$ 使 $\\varphi^{+} = 1$ 于 $K \\setminus V$、$\\varphi^{+} = 0$ 于 $X^{+} \\setminus U$。限制回 $X$ 得 $\\varphi := \\varphi^{+}|_{X} \\in C_{c}(X)$，且 $\\operatorname{supp} \\varphi \\subseteq U$、$\\varphi = 1$ 于 $K \\setminus V$。于是\n\n$$f = f\\varphi + f(1 - \\varphi),\\qquad \\operatorname{supp}(f\\varphi) \\subseteq U,\\qquad \\operatorname{supp}\\big(f(1 - \\varphi)\\big) \\subseteq V$$\n\n（第二式：在 $K \\setminus V$ 上 $1 - \\varphi = 0$，故支集落在 $V$ 里；$K$ 外的点 $f = 0$）。两个函数都满足 $0 \\le \\cdot \\le 1$，故\n\n$$\\Lambda(f) = \\Lambda(f\\varphi) + \\Lambda\\big(f(1 - \\varphi)\\big) \\le \\mu(U) + \\mu(V).$$\n\n对 $f$ 取上确界即得。∎\n\n**引理 3（不交可加）**：若 $U \\cap V = \\emptyset$，则 $\\mu(U \\cup V) = \\mu(U) + \\mu(V)$。\n\n证明：取 $f \\prec U$、$g \\prec V$（即 $0 \\le f,g \\le 1$，支集分别在 $U$、$V$ 里）。因支集不交，$f + g$ 满足 $0 \\le f + g \\le 1$ 且 $\\operatorname{supp}(f+g) \\subseteq U \\cup V$，故 $\\Lambda(f) + \\Lambda(g) = \\Lambda(f + g) \\le \\mu(U \\cup V)$。对 $f, g$ 分别取上确界得 $\\mu(U) + \\mu(V) \\le \\mu(U \\cup V)$；反向不等式由引理 2。∎\n\n**第二步：外测度**。对任意 $E \\subseteq X$ 令\n\n$$\\mu^{*}(E) := \\inf\\big\\{\\, \\mu(U) : E \\subseteq U,\\ U\\ \\text{开} \\,\\big\\}.$$\n\n它是外测度：单调与 $\\mu^{*}(\\emptyset) = 0$ 显然。**可数次可加**：取 $E_{n} \\subseteq U_{n}$（$U_{n}$ 开）。对紧支 $f$ 令 $K = \\operatorname{supp} f \\Subset \\bigcup_{n} U_{n}$，由引理 2 的有限次可加性（对并归纳），$K$ 有有限子覆盖 $U_{n_{1}},\\ldots,U_{n_{k}}$，得 $\\Lambda(f) \\le \\mu(\\bigcup_{i} U_{n_{i}}) \\le \\sum_{i} \\mu(U_{n_{i}}) \\le \\sum_{n} \\mu(U_{n})$；对可行 $f$ 取上确界得 $\\mu(\\bigcup_{n}U_{n}) \\le \\sum_{n}\\mu(U_{n})$，再对 $E \\subseteq \\bigcup_{n}U_{n}$ 取下确界即得 $\\mu^{*}$ 的可数次可加性。\n\n**引理 4（开集 Carathéodory 可测；完整证明）**：对任意 $A \\subseteq X$ 与开集 $U$，有\n\n$$\\mu^{*}(A \\cap U) + \\mu^{*}(A \\setminus U) \\le \\mu^{*}(A).$$\n\n记 $\\nu(E) := \\sup\\{\\, \\Lambda(f) : f \\in C_{c}(X),\\ 0 \\le f \\le 1,\\ \\operatorname{supp} f \\subseteq E \\,\\}$（对任意 $E$ 定义；$E$ 开时 $\\nu(E) = \\mu(E)$）。先证两条辅助事实。\n\n**（甲）开集上内正则**：$\\mu(U) = \\sup\\{\\, \\nu(K) : K \\subseteq U,\\ K\\ \\text{紧} \\,\\}$。证明：对 $f \\prec U$，$K = \\operatorname{supp} f$ 紧且 $\\Lambda(f) \\le \\nu(K)$，故 $\\mu(U) \\le \\sup_{K} \\nu(K)$；反向不等式由 $\\nu(K) \\le \\mu(U)$。∎\n\n**（乙）分裂估计**：若 $V$ 开、$K \\subseteq V$ 紧，则 $\\nu(K) + \\mu(V \\setminus K) \\le \\mu(V)$。证明：取 $f \\prec V \\setminus K$ 与 $g$（$0 \\le g \\le 1$、$\\operatorname{supp} g \\subseteq K$）。两支集不交且都含于 $V$，故 $f + g \\prec V$，于是 $\\Lambda(f) + \\Lambda(g) \\le \\mu(V)$；先对 $f$ 取上确界得 $\\mu(V \\setminus K) + \\Lambda(g) \\le \\mu(V)$，再对 $g$ 取上确界即得。∎\n\n**（丙）可测性**：可设 $\\mu^{*}(A) < \\infty$（否则右边为 $+\\infty$，不等式显然）。任给 $\\varepsilon > 0$，取开 $V \\supseteq A$ 使 $\\mu(V) < \\mu^{*}(A) + \\varepsilon$。由（甲）取紧 $K \\subseteq V \\cap U$ 使 $\\nu(K) > \\mu(V \\cap U) - \\varepsilon$。由 $K \\subseteq U$ 得 $A \\setminus U \\subseteq V \\setminus K$，而 $V \\setminus K$ 开；又 $A \\cap U \\subseteq V \\cap U$。于是\n\n$$\\mu^{*}(A \\cap U) + \\mu^{*}(A \\setminus U) \\le \\mu(V \\cap U) + \\mu(V \\setminus K) \\le (\\nu(K) + \\varepsilon) + \\mu(V \\setminus K) \\le \\mu(V) + \\varepsilon < \\mu^{*}(A) + 2\\varepsilon.$$\n\n令 $\\varepsilon \\to 0$ 即得。∎\n\n**第三步：Carathéodory 延拓**。由引理 4，每个开集都是 $\\mu^{*}$-可测的；由 `thm.caratheodory`，$\\mu^{*}$-可测集构成 $\\sigma$-代数且 $\\mu^{*}$ 在其上可加。开集生成 Borel $\\sigma$-代数，故每个 Borel 集可测；把 $\\mu^{*}$ 限制到 Borel 集上得 Borel 测度 $\\mu$。对开 $U$ 有 $\\mu(U) = \\mu^{*}(U)$（$U$ 自身就是覆盖，单调性给等号）；由构造 $\\mu$ 在 Borel 集上外正则，而（甲）与 $\\nu(K) \\le \\mu(K)$ 给出开集上内正则。\n\n**紧集上有限**：对紧 $K$，取紧邻域 $L \\supseteq K$（局部紧 Hausdorff 中每点有紧邻域，有限覆盖即得），令 $W = \\operatorname{int} L$。由单点紧化 + `lem.urysohn` 取 $\\varphi \\in C_{c}(X)$，$0 \\le \\varphi \\le 1$、$\\varphi = 1$ 于 $L$。任何 $f \\prec W$ 满足 $f \\le \\varphi$，故 $\\mu(W) \\le \\Lambda(\\varphi) < \\infty$；于是 $\\mu(K) \\le \\mu(W) < \\infty$。\n\n**第四步：表示引理**。设 $f \\in C_{c}(X)$。先设 $f \\ge 0$，记 $M = \\lVert f \\rVert_{\\infty}$、$K = \\operatorname{supp} f$；取上面的紧邻域构造中的 $W = \\operatorname{int} L \\supseteq K$，则 $\\mu(W) < \\infty$。\n\n**下界 $\\Lambda(f) \\ge \\int f\\,\\mathrm{d}\\mu$**：对 $n \\ge 1$ 令 $t_i = iM/n$（$i = 0, \\ldots, n$）、$A_i = \\{\\, f > t_i \\,\\}$（开；$A_n = \\emptyset$），并令\n\n$$s := \\sum_{i=1}^{n} (t_i - t_{i-1})\\,\\chi_{A_i}.$$\n\n则 $s \\le f \\le s + M/n$。对每个 $i$ 取 $g_i \\in C_{c}(X)$，$0 \\le g_i \\le 1$、$\\operatorname{supp} g_i \\subseteq A_i$、$\\Lambda(g_i) \\ge \\mu(A_i) - \\delta$（$A_i = \\emptyset$ 时取 $g_i = 0$），令 $g := \\sum_{i} (t_i - t_{i-1})\\,g_i$。因 $g_i \\le \\chi_{A_i}$，有 $g \\le s \\le f$，故\n\n$$\\Lambda(f) \\ge \\Lambda(g) = \\sum_{i} (t_i - t_{i-1})\\Lambda(g_i) \\ge \\int s\\,\\mathrm{d}\\mu - M\\delta.$$\n\n又 $0 \\le f - s \\le M/n$ 且 $f - s$ 支在 $W$ 内，故 $\\int f \\le \\int s + (M/n)\\mu(W)$，即 $\\int s \\ge \\int f - (M/n)\\mu(W)$。代入得 $\\Lambda(f) \\ge \\int f - (M/n)\\mu(W) - M\\delta$；先令 $\\delta \\to 0$，再令 $n \\to \\infty$，即得 $\\Lambda(f) \\ge \\int f$。\n\n**上界 $\\Lambda(f) \\le \\int f\\,\\mathrm{d}\\mu$**：由下界，对任意连续 $h \\ge 0$ 有 $\\Lambda(h) \\ge \\int h$。取开 $W \\supseteq K$ 使 $\\mu(W) < \\mu(K) + \\varepsilon$（外正则），再取 $\\varphi \\in C_{c}(X)$，$0 \\le \\varphi \\le 1$、$\\varphi = 1$ 于 $K$、$\\operatorname{supp} \\varphi \\subseteq W$（单点紧化 + `lem.urysohn`）。令 $k := M\\varphi - f$：在 $K$ 上 $\\varphi = 1$ 故 $k = M - f \\ge 0$；在 $K$ 外 $f = 0$ 故 $k = M\\varphi \\ge 0$。于是 $k \\ge 0$ 连续紧支，对 $k$ 用下界：\n\n$$\\Lambda(k) \\ge \\int k \\;\\Longrightarrow\\; M\\Lambda(\\varphi) - \\Lambda(f) \\ge M\\int \\varphi - \\int f.$$\n\n故 $\\Lambda(f) \\le M(\\Lambda(\\varphi) - \\int \\varphi) + \\int f$。由 $\\Lambda(\\varphi) \\le \\mu(W) < \\mu(K) + \\varepsilon$ 与 $\\varphi = 1$ 于 $K$（故 $\\int \\varphi \\ge \\mu(K)$）得 $\\Lambda(\\varphi) - \\int \\varphi < \\varepsilon$，从而 $\\Lambda(f) \\le \\int f + M\\varepsilon$。令 $\\varepsilon \\to 0$ 得 $\\Lambda(f) \\le \\int f$。∎\n\n对一般 $f \\in C_{c}(X)$，写 $f = f^{+} - f^{-}$ 并用线性性与上述两半，即得 $\\Lambda(f) = \\int f\\,\\mathrm{d}\\mu$。∎\n\n**唯一性**：若两个 Radon 测度给出同一个 $\\Lambda$，对开 $U$、$f \\prec U$ 有 $\\int f\\,\\mathrm{d}\\mu_1 = \\Lambda(f) = \\int f\\,\\mathrm{d}\\mu_2$；对紧 $K \\subseteq U$，取 $f \\prec U$、$f = 1$ 于 $K$（单点紧化 + `lem.urysohn`），得 $\\mu_1(K) \\le \\Lambda(f) \\le \\mu_2(U)$。先对 $K$ 取上确界（开集内正则）、再对 $U$ 取下确界（外正则），得 $\\mu_1(U) = \\mu_2(U)$，从而两测度在 Borel 集上相等。\n\n**范数**：$\\mu(X) = \\sup\\{\\Lambda(f) : 0 \\le f \\le 1\\} = \\lVert\\Lambda\\rVert$（正泛函在 $\\lVert f\\rVert \\le 1$ 上的上确界就是它在 $0 \\le f \\le 1$ 上的上确界）；$X$ 紧时 $\\mu(X) = \\Lambda(1) = \\lVert\\Lambda\\rVert$，$X$ 不紧时两端也可能同为 $+\\infty$。\n\n⭐ **与凝聚态的关系**：profinite 集上的「整值测度」$M(S,\\mathbb{Z}) = \\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$ 就是这条定理的**整值、紧全不连通**版本 —— 见 `def.cond-measure`。两者的差别只在「系数环」与「测试空间」，做法同为「对连续函数做赋值」。",
+   "statement": "设 $X$ 是局部紧 Hausdorff 空间，$C_{c}(X)$ 配 sup 范数（连续、紧支的实值函数）。则每个**正**线性泛函 $\\Lambda : C_{c}(X) \\to \\mathbb{R}$ 都唯一地写成\n\n$$\\Lambda(f) = \\int_{X} f \\,\\mathrm{d}\\mu,$$\n\n其中 $\\mu$ 是 $X$ 上的一个**Radon 测度**（定义见 def.radon-measure），且 $\\lVert\\Lambda\\rVert = \\mu(X)$（$X$ 紧时就是 $\\mu(X)$；$X$ 不紧时两端都可以是 $+\\infty$）。一般（不必正）的泛函要**先假设有界**（对 $\\sup$ 范数连续）才对应对符号测度之差；无界泛函（如在 $[0,1]$ 上取 $\\Lambda(x^{n}) = n$ 再作基延拓）不能由有限符号测度表示。",
+   "notes": "**术语**：本条的 $\\mu$ 是 **Radon 测度** —— Borel 测度、紧集上有限、外正则、开集上内正则（见 def.radon-measure）。图内 def.regular-measure 是 $\\mathbb{R}^n$ 上的特例（紧集有限 + 外正则）；本条不再把两者混用。\n\n**第一步：在开集上定义 $\\mu$**。对开集 $U \\subseteq X$ 令\n\n$$\\mu(U) := \\sup\\Big\\{\\, \\Lambda(f) : f \\in C_{c}(X),\\ 0 \\le f \\le 1,\\ \\operatorname{supp} f \\subseteq U \\,\\Big\\},$$\n\n并约定 $\\mu(\\emptyset) = 0$。这里 $\\operatorname{supp} f \\subseteq U$ 是包含关系（$f$ 的支集紧，故 $\\mu(U)$ 是「用紧支函数逼近 $U$」的上确界）。\n\n**引理 1（单调）**：$U \\subseteq V$ $\\Longrightarrow$ $\\mu(U) \\le \\mu(V)$。显然（可行集变大）。∎\n\n**引理 2（有限次可加）**：对任意开集 $U, V$，\n\n$$\\mu(U \\cup V) \\le \\mu(U) + \\mu(V).$$\n\n证明：取 $f \\in C_{c}$，$0 \\le f \\le 1$，$K := \\operatorname{supp} f \\subseteq U \\cup V$。$K \\setminus V$ 是紧集且含于开集 $U$，取**单点紧化** $X^{+} = X \\cup \\{\\infty\\}$：$X$ 局部紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 正规，故可在 $X^{+}$ 内对紧集 $K \\setminus V$ 与开集 $U$ 用 Urysohn 引理（`lem.urysohn`，要的是**正规**而非局部紧），得 $\\varphi^{+} : X^{+} \\to [0,1]$ 使 $\\varphi^{+} = 1$ 于 $K \\setminus V$、$\\varphi^{+} = 0$ 于 $X^{+} \\setminus U$。限制回 $X$ 得 $\\varphi := \\varphi^{+}|_{X} \\in C_{c}(X)$，且 $\\operatorname{supp} \\varphi \\subseteq U$、$\\varphi = 1$ 于 $K \\setminus V$。于是\n\n$$f = f\\varphi + f(1 - \\varphi),\\qquad \\operatorname{supp}(f\\varphi) \\subseteq U,\\qquad \\operatorname{supp}\\big(f(1 - \\varphi)\\big) \\subseteq V$$\n\n（第二式：在 $K \\setminus V$ 上 $1 - \\varphi = 0$，故支集落在 $V$ 里；$K$ 外的点 $f = 0$）。两个函数都满足 $0 \\le \\cdot \\le 1$，故\n\n$$\\Lambda(f) = \\Lambda(f\\varphi) + \\Lambda\\big(f(1 - \\varphi)\\big) \\le \\mu(U) + \\mu(V).$$\n\n对 $f$ 取上确界即得。∎\n\n**引理 3（不交可加）**：若 $U \\cap V = \\emptyset$，则 $\\mu(U \\cup V) = \\mu(U) + \\mu(V)$。\n\n证明：取 $f \\prec U$、$g \\prec V$（即 $0 \\le f,g \\le 1$，支集分别在 $U$、$V$ 里）。因支集不交，$f + g$ 满足 $0 \\le f + g \\le 1$ 且 $\\operatorname{supp}(f+g) \\subseteq U \\cup V$，故 $\\Lambda(f) + \\Lambda(g) = \\Lambda(f + g) \\le \\mu(U \\cup V)$。对 $f, g$ 分别取上确界得 $\\mu(U) + \\mu(V) \\le \\mu(U \\cup V)$；反向不等式由引理 2。∎\n\n**第二步：外测度**。对任意 $E \\subseteq X$ 令\n\n$$\\mu^{*}(E) := \\inf\\big\\{\\, \\mu(U) : E \\subseteq U,\\ U\\ \\text{开} \\,\\big\\}.$$\n\n它是外测度：单调与 $\\mu^{*}(\\emptyset) = 0$ 显然。**可数次可加**：取 $E_{n} \\subseteq U_{n}$（$U_{n}$ 开）。对紧支 $f$ 令 $K = \\operatorname{supp} f \\Subset \\bigcup_{n} U_{n}$，由引理 2 的有限次可加性（对并归纳），$K$ 有有限子覆盖 $U_{n_{1}},\\ldots,U_{n_{k}}$，得 $\\Lambda(f) \\le \\mu(\\bigcup_{i} U_{n_{i}}) \\le \\sum_{i} \\mu(U_{n_{i}}) \\le \\sum_{n} \\mu(U_{n})$；对可行 $f$ 取上确界得 $\\mu(\\bigcup_{n}U_{n}) \\le \\sum_{n}\\mu(U_{n})$，再对 $E \\subseteq \\bigcup_{n}U_{n}$ 取下确界即得 $\\mu^{*}$ 的可数次可加性。\n\n**引理 4（开集 Carathéodory 可测；完整证明）**：对任意 $A \\subseteq X$ 与开集 $U$，有\n\n$$\\mu^{*}(A \\cap U) + \\mu^{*}(A \\setminus U) \\le \\mu^{*}(A).$$\n\n记 $\\nu(E) := \\sup\\{\\, \\Lambda(f) : f \\in C_{c}(X),\\ 0 \\le f \\le 1,\\ \\operatorname{supp} f \\subseteq E \\,\\}$（对任意 $E$ 定义；$E$ 开时 $\\nu(E) = \\mu(E)$）。先证两条辅助事实。\n\n**（甲）开集上内正则**：$\\mu(U) = \\sup\\{\\, \\nu(K) : K \\subseteq U,\\ K\\ \\text{紧} \\,\\}$。证明：对 $f \\prec U$，$K = \\operatorname{supp} f$ 紧且 $\\Lambda(f) \\le \\nu(K)$，故 $\\mu(U) \\le \\sup_{K} \\nu(K)$；反向不等式由 $\\nu(K) \\le \\mu(U)$。∎\n\n**（乙）分裂估计**：若 $V$ 开、$K \\subseteq V$ 紧，则 $\\nu(K) + \\mu(V \\setminus K) \\le \\mu(V)$。证明：取 $f \\prec V \\setminus K$ 与 $g$（$0 \\le g \\le 1$、$\\operatorname{supp} g \\subseteq K$）。两支集不交且都含于 $V$，故 $f + g \\prec V$，于是 $\\Lambda(f) + \\Lambda(g) \\le \\mu(V)$；先对 $f$ 取上确界得 $\\mu(V \\setminus K) + \\Lambda(g) \\le \\mu(V)$，再对 $g$ 取上确界即得。∎\n\n**（丙）可测性**：可设 $\\mu^{*}(A) < \\infty$（否则右边为 $+\\infty$，不等式显然）。任给 $\\varepsilon > 0$，取开 $V \\supseteq A$ 使 $\\mu(V) < \\mu^{*}(A) + \\varepsilon$。由（甲）取紧 $K \\subseteq V \\cap U$ 使 $\\nu(K) > \\mu(V \\cap U) - \\varepsilon$。由 $K \\subseteq U$ 得 $A \\setminus U \\subseteq V \\setminus K$，而 $V \\setminus K$ 开；又 $A \\cap U \\subseteq V \\cap U$。于是\n\n$$\\mu^{*}(A \\cap U) + \\mu^{*}(A \\setminus U) \\le \\mu(V \\cap U) + \\mu(V \\setminus K) \\le (\\nu(K) + \\varepsilon) + \\mu(V \\setminus K) \\le \\mu(V) + \\varepsilon < \\mu^{*}(A) + 2\\varepsilon.$$\n\n令 $\\varepsilon \\to 0$ 即得。∎\n\n**第三步：Carathéodory 延拓**。由引理 4，每个开集都是 $\\mu^{*}$-可测的；由 `thm.caratheodory`，$\\mu^{*}$-可测集构成 $\\sigma$-代数且 $\\mu^{*}$ 在其上可加。开集生成 Borel $\\sigma$-代数，故每个 Borel 集可测；把 $\\mu^{*}$ 限制到 Borel 集上得 Borel 测度 $\\mu$。对开 $U$ 有 $\\mu(U) = \\mu^{*}(U)$（$U$ 自身就是覆盖，单调性给等号）；由构造 $\\mu$ 在 Borel 集上外正则，而（甲）与 $\\nu(K) \\le \\mu(K)$ 给出开集上内正则。\n\n**紧集上有限**：对紧 $K$，取紧邻域 $L \\supseteq K$（局部紧 Hausdorff 中每点有紧邻域，有限覆盖即得），令 $W = \\operatorname{int} L$。由单点紧化 + `lem.urysohn` 取 $\\varphi \\in C_{c}(X)$，$0 \\le \\varphi \\le 1$、$\\varphi = 1$ 于 $L$。任何 $f \\prec W$ 满足 $f \\le \\varphi$，故 $\\mu(W) \\le \\Lambda(\\varphi) < \\infty$；于是 $\\mu(K) \\le \\mu(W) < \\infty$。\n\n**第四步：表示引理**。设 $f \\in C_{c}(X)$。先设 $f \\ge 0$，记 $M = \\lVert f \\rVert_{\\infty}$、$K = \\operatorname{supp} f$；取上面的紧邻域构造中的 $W = \\operatorname{int} L \\supseteq K$，则 $\\mu(W) < \\infty$。\n\n**下界 $\\Lambda(f) \\ge \\int f\\,\\mathrm{d}\\mu$**：对 $n \\ge 1$ 令 $t_i = iM/n$（$i = 0, \\ldots, n$）、$A_i = \\{\\, f > t_i \\,\\}$（开；$A_n = \\emptyset$），并令\n\n$$s := \\sum_{i=1}^{n} (t_i - t_{i-1})\\,\\chi_{A_i}.$$\n\n则 $s \\le f \\le s + M/n$。对每个 $i$ 取 $g_i \\in C_{c}(X)$，$0 \\le g_i \\le 1$、$\\operatorname{supp} g_i \\subseteq A_i$、$\\Lambda(g_i) \\ge \\mu(A_i) - \\delta$（$A_i = \\emptyset$ 时取 $g_i = 0$），令 $g := \\sum_{i} (t_i - t_{i-1})\\,g_i$。因 $g_i \\le \\chi_{A_i}$，有 $g \\le s \\le f$，故\n\n$$\\Lambda(f) \\ge \\Lambda(g) = \\sum_{i} (t_i - t_{i-1})\\Lambda(g_i) \\ge \\int s\\,\\mathrm{d}\\mu - M\\delta.$$\n\n又 $0 \\le f - s \\le M/n$ 且 $f - s$ 支在 $W$ 内，故 $\\int f \\le \\int s + (M/n)\\mu(W)$，即 $\\int s \\ge \\int f - (M/n)\\mu(W)$。代入得 $\\Lambda(f) \\ge \\int f - (M/n)\\mu(W) - M\\delta$；先令 $\\delta \\to 0$，再令 $n \\to \\infty$，即得 $\\Lambda(f) \\ge \\int f$。\n\n**上界 $\\Lambda(f) \\le \\int f\\,\\mathrm{d}\\mu$**：由下界，对任意连续 $h \\ge 0$ 有 $\\Lambda(h) \\ge \\int h$。取开 $W \\supseteq K$ 使 $\\mu(W) < \\mu(K) + \\varepsilon$（外正则），再取 $\\varphi \\in C_{c}(X)$，$0 \\le \\varphi \\le 1$、$\\varphi = 1$ 于 $K$、$\\operatorname{supp} \\varphi \\subseteq W$（单点紧化 + `lem.urysohn`）。令 $k := M\\varphi - f$：在 $K$ 上 $\\varphi = 1$ 故 $k = M - f \\ge 0$；在 $K$ 外 $f = 0$ 故 $k = M\\varphi \\ge 0$。于是 $k \\ge 0$ 连续紧支，对 $k$ 用下界：\n\n$$\\Lambda(k) \\ge \\int k \\;\\Longrightarrow\\; M\\Lambda(\\varphi) - \\Lambda(f) \\ge M\\int \\varphi - \\int f.$$\n\n故 $\\Lambda(f) \\le M(\\Lambda(\\varphi) - \\int \\varphi) + \\int f$。由 $\\Lambda(\\varphi) \\le \\mu(W) < \\mu(K) + \\varepsilon$ 与 $\\varphi = 1$ 于 $K$（故 $\\int \\varphi \\ge \\mu(K)$）得 $\\Lambda(\\varphi) - \\int \\varphi < \\varepsilon$，从而 $\\Lambda(f) \\le \\int f + M\\varepsilon$。令 $\\varepsilon \\to 0$ 得 $\\Lambda(f) \\le \\int f$。∎\n\n对一般 $f \\in C_{c}(X)$，写 $f = f^{+} - f^{-}$ 并用线性性与上述两半，即得 $\\Lambda(f) = \\int f\\,\\mathrm{d}\\mu$。∎\n\n**唯一性**：若两个 Radon 测度给出同一个 $\\Lambda$，对开 $U$、$f \\prec U$ 有 $\\int f\\,\\mathrm{d}\\mu_1 = \\Lambda(f) = \\int f\\,\\mathrm{d}\\mu_2$；对紧 $K \\subseteq U$，取 $f \\prec U$、$f = 1$ 于 $K$（单点紧化 + `lem.urysohn`），得 $\\mu_1(K) \\le \\Lambda(f) \\le \\mu_2(U)$。先对 $K$ 取上确界（开集内正则）、再对 $U$ 取下确界（外正则），得 $\\mu_1(U) = \\mu_2(U)$，从而两测度在 Borel 集上相等。\n\n**范数**：$\\mu(X) = \\sup\\{\\Lambda(f) : 0 \\le f \\le 1\\} = \\lVert\\Lambda\\rVert$（正泛函在 $\\lVert f\\rVert \\le 1$ 上的上确界就是它在 $0 \\le f \\le 1$ 上的上确界）；$X$ 紧时 $\\mu(X) = \\Lambda(1) = \\lVert\\Lambda\\rVert$，$X$ 不紧时两端也可能同为 $+\\infty$。\n\n⭐ **与凝聚态的关系**：profinite 集上的「整值测度」$M(S,\\mathbb{Z}) = \\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$ 就是这条定理的**整值、紧全不连通**版本 —— 见 `def.cond-measure`。两者的差别只在「系数环」与「测试空间」，做法同为「对连续函数做赋值」。",
    "refs": [
     "Rudin, Real and Complex Analysis (3rd ed.), Ch. 2 · Riesz Representation Theorem（定理 2.14）",
     "Folland, Real Analysis, Ch. 7 · Riesz Representation Theorem",
@@ -84635,7 +84661,7 @@
    "strength": "strong",
    "definition": "def.measure",
    "usedBy": "thm.riesz-markov",
-   "note": "结论说「存在一个正则 Borel **测度** $\\mu$」，用到测度的定义。"
+   "note": "结论说「存在一个 Radon **测度** $\\mu$」，用到测度的定义。"
   },
   {
    "id": "dep.rm-lc",
@@ -84660,15 +84686,23 @@
    "a": "def.cond-measure",
    "b": "thm.riesz-markov",
    "title": "整值测度 $\\leftrightarrow$ Riesz–Markov：同一台机器，换系数环与测试空间",
-   "note": "两处都在做「对连续函数做赋值，得到『集合的大小』」这一件事：\n- 经典：$\\Lambda \\in C_{c}(X)^{\\ast}$ $\\rightsquigarrow$ 正则 Borel 测度；\n- 凝聚态：$\\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$，$S$ profinite —— **整值**系数、**紧全不连通**的测试空间。\n\n⚠ 方向不同、范畴不同，所以只记**类比**，不当依赖：经典定理给出「测度」，凝聚态那个对象是**按定义取对偶**得到的。"
+   "note": "两处都在做「对连续函数做赋值，得到『集合的大小』」这一件事：\n- 经典：$\\Lambda \\in C_{c}(X)^{\\ast}$ $\\rightsquigarrow$ Radon 测度；\n- 凝聚态：$\\operatorname{Hom}_{\\mathbb{Z}}(C(S,\\mathbb{Z}),\\mathbb{Z})$，$S$ profinite —— **整值**系数、**紧全不连通**的测试空间。\n\n⚠ 方向不同、范畴不同，所以只记**类比**，不当依赖：经典定理给出「测度」，凝聚态那个对象是**按定义取对偶**得到的。"
   },
   {
-   "id": "dep.rm-regular",
+   "id": "dep.rm-radon",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.regular-measure",
+   "definition": "def.radon-measure",
    "usedBy": "thm.riesz-markov",
-   "note": "结论里那个测度是**正则 Borel 测度**（外正则 + 内正则 + 局部有限），这一条正是「哪一类测度」的限定。"
+   "note": "结论里的测度是 Radon 测度（Borel、紧集有限、外正则、开集内正则）；def.regular-measure 只是 R^n 特例。"
+  },
+  {
+   "id": "dep.radon-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.radon-measure",
+   "note": "Radon 测度首先是一个 Borel 测度，用到测度定义。"
   },
   {
    "id": "ana.condab-abeliancat",
@@ -97505,13 +97539,6 @@
    "explicit": false
   },
   {
-   "a": "analysis.differentiation",
-   "b": "analysis.measure",
-   "count": 4,
-   "label": "",
-   "explicit": false
-  },
-  {
    "a": "cond.ab",
    "b": "hom.ab",
    "count": 3,
@@ -97907,6 +97934,13 @@
    "a": "analysis.differentiation",
    "b": "topology.metric",
    "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.differentiation",
+   "b": "analysis.measure",
+   "count": 3,
    "label": "",
    "explicit": false
   },

@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1549 节点 / 3191 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1550 节点 / 3192 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -59,9 +59,10 @@
 ### Hodge 理论　出现 1 次
 `thm.divergence-theorem`
 
-## 二、陈述用到更深的定义却没有边（3 处）
+## 二、陈述用到更深的定义却没有边（4 处）
 
 - `def.module-category`（模范畴 · L10）用到 `def.linear-map`（线性映射 · L12）　落差 2
+- `def.radon-measure`（Radon 测度 · L16）用到 `def.locally-compact`（局部紧 Hausdorff 空间 · L17）　落差 1
 - `def.category-of-groups`（群范畴 · L8）用到 `def.subcategory`（子范畴 · L8）
 - `def.category-of-abelian-groups`（阿贝尔群范畴 · L8）用到 `def.subcategory`（子范畴 · L8）
 
@@ -111,6 +112,6 @@
 
 ⚠️ **过期白名单 2 条**（对应的缺口已经不存在了：改了陈述或加了边）—— 该清：`def.bundle-section>def.differential-form` · `def.injective-dimension>def.projective-dimension`
 
-## 三、候选词表里从没被提到的（20 个）
+## 三、候选词表里从没被提到的（19 个）
 
-换底公式 · 自然对数 · 反正弦 · 反三角函数 · zeta 函数 · ζ 函数 · 狄利克雷级数 · 模形式 · 求根公式 · 尺规作图 · Riesz–Markov · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理
+换底公式 · 自然对数 · 反正弦 · 反三角函数 · zeta 函数 · ζ 函数 · 狄利克雷级数 · 模形式 · 求根公式 · 尺规作图 · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理
