@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-07T06:12:19.511Z",
+  "generated": "2026-11-07T06:19:18.072Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -39574,7 +39574,7 @@
     "曲率"
    ],
    "statement": "**在做什么**：秩 $1$ 时整台装置退化成一个可算的公式 —— 这是陈类唯一能「手算」的情形，也是分裂原理把它化归到的情形。\n\n设 $L \\to B$ 是复线丛，$\\nabla$ 是联络，$\\Omega$ 是它的曲率 $2$-形式（线丛的曲率就是 $\\mathrm{d}\\theta$，因为 $\\operatorname{End}L \\cong \\mathbb{C}$ 可交换）。则\n\n$$c_{1}(L) = \\Bigl[\\, \\frac{i}{2\\pi}\\,\\Omega \\,\\Bigr] \\in H^{2}(B; \\mathbb{Z}) , \\qquad c_{j}(L) = 0 \\ (j \\ge 2) .$$\n\n**推论（陈数）**：若 $B$ 是闭合可定向曲面 $\\Sigma$，则\n\n$$\\int_{\\Sigma} c_{1}(L) = \\frac{i}{2\\pi}\\int_{\\Sigma}\\Omega \\;\\in\\; \\mathbb{Z} .$$",
-   "notes": "**为什么秩 $1$ 特别简单**：$\\mathfrak{gl}(1,\\mathbb{C}) = \\mathbb{C}$ 交换，于是「共轭不变」这个条件自动满足 —— 任何多项式都不变，不用挑。所以线丛的示性类只有一条（$c_{1}$），后面的全为零。\n\n**这个整数是什么**：$\\frac{i}{2\\pi}\\int_{\\Sigma}\\Omega$ 就是**绕数 / 第一陈数**，物理里叫「磁通量的量子化」。它在 $\\Sigma = S^{2}$ 上取遍 $\\mathbb{Z}$ —— 这就是复线丛在 $S^{2}$ 上由 $\\mathbb{Z}$ 分类（Hopf 丛是生成元，`thm.bundle-classification` 的注里说过）的解析根子。\n\n⚠️ **“$c_{j}(L) = 0$（$j \\ge 2$）\"不能省**：它保证线丛的示性类只有一个自由度。⚠️ 但也**别误推**「$c_{1} = 0$ 时说「平凡」不成立：$c_{1}$ 平凡只说明该丛在 $H^{2}$ 层面看不出，平坦线丛就是一例（它有 $c_{1} = 0$ 但可以非平凡）。\n\n⚠️ **曲率的符号约定**：$\\Omega = \\mathrm{d}\\theta$ 与 $\\Omega = -\\mathrm{d}\\theta$ 两种约定都在用，差一个整体符号；$c_{1}$ 的符号会跟着变。本图取 $\\Omega = \\mathrm{d}\\theta$（与 `def.connection-form` 一致）。",
+   "notes": "**为什么秩 $1$ 特别简单**：$\\mathfrak{gl}(1,\\mathbb{C}) = \\mathbb{C}$ 交换，于是「共轭不变」这个条件自动满足 —— 任何多项式都不变，不用挑。所以线丛的示性类只有一条（$c_{1}$），后面的全为零。\n\n**这个整数是什么**：$\\frac{i}{2\\pi}\\int_{\\Sigma}\\Omega$ 就是**绕数 / 第一陈数**，物理里叫「磁通量的量子化」。它在 $\\Sigma = S^{2}$ 上取遍 $\\mathbb{Z}$ —— 这就是复线丛在 $S^{2}$ 上由 $\\mathbb{Z}$ 分类（Hopf 丛是生成元，`thm.bundle-classification` 的注里说过）的解析根子。\n\n⚠️ **不能省 $c_{j}(L)=0$（$j\\ge2$）**：它保证线丛的示性类只有一个自由度。⚠️ 但也别误推「$c_1=0$ 就平凡」：$c_1=0$ 只说明该丛在 $H^2$ 层面看不出；平坦线丛就是一例（$c_1=0$ 但可以非平凡）。\n\n⚠️ **曲率的符号约定**：$\\Omega = \\mathrm{d}\\theta$ 与 $\\Omega = -\\mathrm{d}\\theta$ 两种约定都在用，差一个整体符号；$c_{1}$ 的符号会跟着变。本图取 $\\Omega = \\mathrm{d}\\theta$（与 `def.connection-form` 一致）。",
    "refs": [
     "Milnor–Stasheff, Characteristic Classes · 线丛",
     "Bott–Tu, Differential Forms in Algebraic Topology"
@@ -68782,7 +68782,7 @@
    ],
    "target": "thm.det-multiplicative",
    "title": "存在唯一性 $\\implies$ 乘性",
-   "proof": "固定 $B$，考虑映射 $A \\mapsto \\det(AB)$，把它看成 $A$ 的 $n$ 个列向量 $a_1, \\ldots, a_n$ 的函数。\n\n1. **多重线性**：$AB$ 的第 $j$ 列是 $A \\cdot (B$ 的第 $j$ 列$)$，即 $\\sum_i b_{ij} a_i$。所以固定其他列时，$\\det(AB)$ 关于第 $j$ 列是线性的（先把 $a_j$ 的线性组合拉出来，再用 $\\det$ 的多重线性）。\n2. **交错**：若 $a_i = a_j$（$i \\ne j$），则 $AB$ 的第 $i$、$j$ 列也相等（同样的线性组合），于是 $\\det(AB) = 0$。\n3. 由存在唯一性，$\\det(AB) = c \\cdot \\det A$ 对某个常数 $c$ 成立（同一条公理系下的函数只差常数倍）。取 $A = I$ 得 $c = \\det B$。故 $\\det(AB) = \\det A \\det B$。\n\n**转置**：$\\det A^{\\mathsf{T}} = \\det A$ —— 用存在唯一性，$A \\mapsto \\det A^{\\mathsf{T}}$ 也满足三条公理（转置把列换成行，交错性与规范性不变），故两者相等。\n\n**可逆判据**：$A$ 可逆时 $1 = \\det I = \\det(A A^{-1}) = \\det A \\cdot \\det(A^{-1})$，故 $\\det A \\ne 0$。反之若 $A$ 不可逆，则其列向量线性相关，$\\det A = 0$（由交错性把线性相关性代入展开）。∎",
+   "proof": "固定 $B$，考虑映射 $A \\mapsto \\det(AB)$，把它看成 $A$ 的 $n$ 个列向量 $a_1, \\ldots, a_n$ 的函数。\n\n1. **多重线性**：$AB$ 的第 $j$ 列是 $A \\cdot (B$ 的第 $j$ 列$)$，即 $\\sum_i b_{ij} a_i$。所以固定其他列时，$\\det(AB)$ 关于第 $j$ 列是线性的（先把 $a_j$ 的线性组合拉出来，再用 $\\det$ 的多重线性）。\n2. **交错**：若 $a_i = a_j$（$i \\ne j$），则 $A$ 的列线性相关，故 $\\operatorname{rank} A < n$；于是 $\\operatorname{rank}(AB) \\le \\operatorname{rank} A < n$，从而 $\\det(AB) = 0$。\n3. 由存在唯一性，$\\det(AB) = c \\cdot \\det A$ 对某个常数 $c$ 成立（同一条公理系下的函数只差常数倍）。取 $A = I$ 得 $c = \\det B$。故 $\\det(AB) = \\det A \\det B$。\n\n**转置**：$\\det A^{\\mathsf{T}} = \\det A$ —— 用存在唯一性，$A \\mapsto \\det A^{\\mathsf{T}}$ 也满足三条公理（转置把列换成行，交错性与规范性不变），故两者相等。\n\n**可逆判据**：$A$ 可逆时 $1 = \\det I = \\det(A A^{-1}) = \\det A \\cdot \\det(A^{-1})$，故 $\\det A \\ne 0$。反之若 $A$ 不可逆，则其列向量线性相关，$\\det A = 0$（由交错性把线性相关性代入展开）。∎",
    "note": "第 3 步「只差常数倍」是**唯一性定理**最漂亮的一次使用：不必计算，只要说明一个新函数满足同一套公理就自动成比例。"
   },
   {
@@ -70546,7 +70546,7 @@
    ],
    "target": "thm.csz-free",
    "title": "profinite 集的结构 $\\implies$ $C(S,\\mathbb{Z})$ 自由",
-   "proof": "把 $S$ 嵌入某个乘积 $\\prod_{I}\\{0,1\\}$，并给 $I$ 一个良序，写成序数 $\\lambda$。对 $\\lambda$ 作超限归纳。\n\n**极限序数。** $S$ 是诸 $S_\\mu$（$\\mu < \\lambda$）的滤过极限，$C(S,\\mathbb{Z}) = \\varinjlim_\\mu C(S_\\mu,\\mathbb{Z})$ 是自由群的滤过余极限，仍自由。\n\n**后继序数 $\\lambda = \\rho + 1$。** 设 $S \\subset S_\\rho \\times \\{0,1\\}$，令 $S_i = S \\cap (S_\\rho \\times \\{i\\})$（$i = 0,1$），$S' = S_0 \\cap S_1$。有短正合列\n\n$$0 \\longrightarrow C(S_\\rho, \\mathbb{Z}) \\longrightarrow C(S_\\rho, \\mathbb{Z}) \\longrightarrow C(S', \\mathbb{Z}) \\longrightarrow 0,$$\n\n第二个箭头是「在 $S' \\times \\{1\\}$ 与 $S' \\times \\{0\\}$ 上取值之差」。\n\n由归纳假设 $C(S_\\rho,\\mathbb{Z})$ 与 $C(S',\\mathbb{Z})$ 都自由，且自由群的满射分裂，故中间项自由。\n\n取基时按「从 $e_\\rho$ 出发的单项式」作字典序，可把两边的基拼起来。\n\n$\\blacksquare$",
+   "proof": "把 $S$ 嵌入某个乘积 $\\prod_{I}\\{0,1\\}$，并给 $I$ 一个良序，写成序数 $\\lambda$。对 $\\lambda$ 作超限归纳。\n\n**极限序数。** $S$ 是诸 $S_\\mu$（$\\mu < \\lambda$）的滤过极限，$C(S,\\mathbb{Z}) = \\varinjlim_\\mu C(S_\\mu,\\mathbb{Z})$ 是自由群的滤过余极限；更准确地说，沿 $\\mu < \\nu$ 的过渡映射 $S_\\nu \\to S_\\mu$ 是满射，故 $C(S_\\mu,\\mathbb{Z}) \\to C(S_\\nu,\\mathbb{Z})$ 是分裂单射，$C(S_\\mu,\\mathbb{Z})$ 是 $C(S_\\nu,\\mathbb{Z})$ 的直和项，滤过余极限仍自由。\n\n**后继序数 $\\lambda = \\rho + 1$。** 设 $S \\subset S_\\rho \\times \\{0,1\\}$，令 $S_i = S \\cap (S_\\rho \\times \\{i\\})$（$i = 0,1$），$S' = S_0 \\cap S_1$。有短正合列\n\n$$0 \\longrightarrow C(S_\\rho, \\mathbb{Z}) \\longrightarrow C(S_\\rho, \\mathbb{Z}) \\longrightarrow C(S', \\mathbb{Z}) \\longrightarrow 0,$$\n\n第二个箭头是「在 $S' \\times \\{1\\}$ 与 $S' \\times \\{0\\}$ 上取值之差」。\n\n由归纳假设 $C(S_\\rho,\\mathbb{Z})$ 与 $C(S',\\mathbb{Z})$ 都自由，且自由群的满射分裂，故中间项自由。\n\n取基时按「从 $e_\\rho$ 出发的单项式」作字典序，可把两边的基拼起来。\n\n$\\blacksquare$",
    "note": ""
   },
   {

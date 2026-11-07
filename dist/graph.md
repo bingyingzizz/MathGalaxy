@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:12:19.511Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:19:18.072Z
 > 15 星系 / 105 星团 / 1550 节点 / 3192 连线（强边 3150，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -36187,7 +36187,7 @@ $$\int_{\Sigma} c_{1}(L) = \frac{i}{2\pi}\int_{\Sigma}\Omega \;\in\; \mathbb{Z} 
 
 **这个整数是什么**：$\frac{i}{2\pi}\int_{\Sigma}\Omega$ 就是**绕数 / 第一陈数**，物理里叫「磁通量的量子化」。它在 $\Sigma = S^{2}$ 上取遍 $\mathbb{Z}$ —— 这就是复线丛在 $S^{2}$ 上由 $\mathbb{Z}$ 分类（Hopf 丛是生成元，`thm.bundle-classification` 的注里说过）的解析根子。
 
-⚠️ **“$c_{j}(L) = 0$（$j \ge 2$）"不能省**：它保证线丛的示性类只有一个自由度。⚠️ 但也**别误推**「$c_{1} = 0$ 时说「平凡」不成立：$c_{1}$ 平凡只说明该丛在 $H^{2}$ 层面看不出，平坦线丛就是一例（它有 $c_{1} = 0$ 但可以非平凡）。
+⚠️ **不能省 $c_{j}(L)=0$（$j\ge2$）**：它保证线丛的示性类只有一个自由度。⚠️ 但也别误推「$c_1=0$ 就平凡」：$c_1=0$ 只说明该丛在 $H^2$ 层面看不出；平坦线丛就是一例（$c_1=0$ 但可以非平凡）。
 
 ⚠️ **曲率的符号约定**：$\Omega = \mathrm{d}\theta$ 与 $\Omega = -\mathrm{d}\theta$ 两种约定都在用，差一个整体符号；$c_{1}$ 的符号会跟着变。本图取 $\Omega = \mathrm{d}\theta$（与 `def.connection-form` 一致）。
 
@@ -40825,7 +40825,7 @@ $$\operatorname{rank} A^{\mathsf{T}} = \dim \operatorname{im} T^{\mathsf{T}} = \
 固定 $B$，考虑映射 $A \mapsto \det(AB)$，把它看成 $A$ 的 $n$ 个列向量 $a_1, \ldots, a_n$ 的函数。
 
 1. **多重线性**：$AB$ 的第 $j$ 列是 $A \cdot (B$ 的第 $j$ 列$)$，即 $\sum_i b_{ij} a_i$。所以固定其他列时，$\det(AB)$ 关于第 $j$ 列是线性的（先把 $a_j$ 的线性组合拉出来，再用 $\det$ 的多重线性）。
-2. **交错**：若 $a_i = a_j$（$i \ne j$），则 $AB$ 的第 $i$、$j$ 列也相等（同样的线性组合），于是 $\det(AB) = 0$。
+2. **交错**：若 $a_i = a_j$（$i \ne j$），则 $A$ 的列线性相关，故 $\operatorname{rank} A < n$；于是 $\operatorname{rank}(AB) \le \operatorname{rank} A < n$，从而 $\det(AB) = 0$。
 3. 由存在唯一性，$\det(AB) = c \cdot \det A$ 对某个常数 $c$ 成立（同一条公理系下的函数只差常数倍）。取 $A = I$ 得 $c = \det B$。故 $\det(AB) = \det A \det B$。
 
 **转置**：$\det A^{\mathsf{T}} = \det A$ —— 用存在唯一性，$A \mapsto \det A^{\mathsf{T}}$ 也满足三条公理（转置把列换成行，交错性与规范性不变），故两者相等。
@@ -42906,7 +42906,7 @@ Young 不等式里的 $a^{\lambda} b^{1-\lambda}$ 中 $\lambda \in (0,1)$ 是**�
 
 把 $S$ 嵌入某个乘积 $\prod_{I}\{0,1\}$，并给 $I$ 一个良序，写成序数 $\lambda$。对 $\lambda$ 作超限归纳。
 
-**极限序数。** $S$ 是诸 $S_\mu$（$\mu < \lambda$）的滤过极限，$C(S,\mathbb{Z}) = \varinjlim_\mu C(S_\mu,\mathbb{Z})$ 是自由群的滤过余极限，仍自由。
+**极限序数。** $S$ 是诸 $S_\mu$（$\mu < \lambda$）的滤过极限，$C(S,\mathbb{Z}) = \varinjlim_\mu C(S_\mu,\mathbb{Z})$ 是自由群的滤过余极限；更准确地说，沿 $\mu < \nu$ 的过渡映射 $S_\nu \to S_\mu$ 是满射，故 $C(S_\mu,\mathbb{Z}) \to C(S_\nu,\mathbb{Z})$ 是分裂单射，$C(S_\mu,\mathbb{Z})$ 是 $C(S_\nu,\mathbb{Z})$ 的直和项，滤过余极限仍自由。
 
 **后继序数 $\lambda = \rho + 1$。** 设 $S \subset S_\rho \times \{0,1\}$，令 $S_i = S \cap (S_\rho \times \{i\})$（$i = 0,1$），$S' = S_0 \cap S_1$。有短正合列
 

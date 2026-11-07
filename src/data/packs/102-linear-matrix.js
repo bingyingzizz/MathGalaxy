@@ -593,7 +593,7 @@ window.MG = window.MG || {};
         '固定 $B$，考虑映射 $A \\mapsto \\det(AB)$，把它看成 $A$ 的 $n$ 个列向量 $a_1, \\ldots, a_n$ 的函数。',
         '',
         '1. **多重线性**：$AB$ 的第 $j$ 列是 $A \\cdot (B$ 的第 $j$ 列$)$，即 $\\sum_i b_{ij} a_i$。所以固定其他列时，$\\det(AB)$ 关于第 $j$ 列是线性的（先把 $a_j$ 的线性组合拉出来，再用 $\\det$ 的多重线性）。',
-        '2. **交错**：若 $a_i = a_j$（$i \\ne j$），则 $AB$ 的第 $i$、$j$ 列也相等（同样的线性组合），于是 $\\det(AB) = 0$。',
+        '2. **交错**：若 $a_i = a_j$（$i \\ne j$），则 $A$ 的列线性相关，故 $\\operatorname{rank} A < n$；于是 $\\operatorname{rank}(AB) \\le \\operatorname{rank} A < n$，从而 $\\det(AB) = 0$。',
         '3. 由存在唯一性，$\\det(AB) = c \\cdot \\det A$ 对某个常数 $c$ 成立（同一条公理系下的函数只差常数倍）。取 $A = I$ 得 $c = \\det B$。故 $\\det(AB) = \\det A \\det B$。',
         '',
         '**转置**：$\\det A^{\\mathsf{T}} = \\det A$ —— 用存在唯一性，$A \\mapsto \\det A^{\\mathsf{T}}$ 也满足三条公理（转置把列换成行，交错性与规范性不变），故两者相等。',

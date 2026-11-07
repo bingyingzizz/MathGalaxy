@@ -149,7 +149,7 @@ window.MG = window.MG || {};
       notes: [
         '**为什么秩 $1$ 特别简单**：$\\mathfrak{gl}(1,\\mathbb{C}) = \\mathbb{C}$ 交换，于是「共轭不变」这个条件自动满足 —— 任何多项式都不变，不用挑。所以线丛的示性类只有一条（$c_{1}$），后面的全为零。',
         '**这个整数是什么**：$\\frac{i}{2\\pi}\\int_{\\Sigma}\\Omega$ 就是**绕数 / 第一陈数**，物理里叫「磁通量的量子化」。它在 $\\Sigma = S^{2}$ 上取遍 $\\mathbb{Z}$ —— 这就是复线丛在 $S^{2}$ 上由 $\\mathbb{Z}$ 分类（Hopf 丛是生成元，`thm.bundle-classification` 的注里说过）的解析根子。',
-        '⚠️ **“$c_{j}(L) = 0$（$j \\ge 2$）"不能省**：它保证线丛的示性类只有一个自由度。⚠️ 但也**别误推**「$c_{1} = 0$ 时说「平凡」不成立：$c_{1}$ 平凡只说明该丛在 $H^{2}$ 层面看不出，平坦线丛就是一例（它有 $c_{1} = 0$ 但可以非平凡）。',
+        '⚠️ **不能省 $c_{j}(L)=0$（$j\\ge2$）**：它保证线丛的示性类只有一个自由度。⚠️ 但也别误推「$c_1=0$ 就平凡」：$c_1=0$ 只说明该丛在 $H^2$ 层面看不出；平坦线丛就是一例（$c_1=0$ 但可以非平凡）。',
         '⚠️ **曲率的符号约定**：$\\Omega = \\mathrm{d}\\theta$ 与 $\\Omega = -\\mathrm{d}\\theta$ 两种约定都在用，差一个整体符号；$c_{1}$ 的符号会跟着变。本图取 $\\Omega = \\mathrm{d}\\theta$（与 `def.connection-form` 一致）。'
       ].join('\n\n'),
       refs: ['Milnor–Stasheff, Characteristic Classes · 线丛', 'Bott–Tu, Differential Forms in Algebraic Topology']
