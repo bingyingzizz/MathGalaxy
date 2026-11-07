@@ -264,6 +264,16 @@
       blobsPerRegion: 12,         // 每个板块的云朵数
       blobAlpha: 0.075,
       splatRadius: 150,           // 单节点撒点的世界半径（smooth-tail 到 0，见 background.js）
+      /* 手机竖屏（≤700px）走屏幕空间点云（background.js buildParticles）：
+         每节点 mobileParticles 颗（枢纽 +1~3）、核心半径 mobileCore 世界单位、晕到 mobileHalo；
+         点径 0.9~1.6 CSS px，透明度 mobileAlpha + [0, mobileAlphaVar]，亮色主题再 ×1.15。
+         ⚠️ 3 颗/节点时适配档（390×844，k 被 minZoom 夹在 0.06）看起来「几乎啥也没有」——
+         云的整体形状全靠连线撑着。9~12 颗时节点密度才连成一片看得清的星云。 */
+      mobileParticles: 9,
+      mobileCore: 48,
+      mobileHalo: 130,
+      mobileAlpha: 0.26,
+      mobileAlphaVar: 0.24,
       centerAlpha: 0.025,         // 板块中心大团雾
       nodeAlpha: 0.025,           // 每个节点周围的小团雾
       spread: 0.52,               // 云朵分布半径 / 板块半径

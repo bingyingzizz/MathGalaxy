@@ -20,28 +20,68 @@
    */
   /** 手机竖屏：小点云。纹理缩小后粒子会被压成一片糊，直接按屏幕坐标画点。 */
   function buildParticles(graph, ok) {
-    var out = [];
+    var bc = MG.config.background;
+    var per = Math.max(4, bc.mobileParticles == null ? 9 : bc.mobileParticles);
+    var core = bc.mobileCore == null ? 48 : bc.mobileCore;     // 世界单位
+    var halo = Math.max(core, bc.mobileHalo == null ? 130 : bc.mobileHalo);
+    var a0 = bc.mobileAlpha == null ? 0.26 : bc.mobileAlpha;
+    var aVar = bc.mobileAlphaVar == null ? 0.24 : bc.mobileAlphaVar;
+    var count = 0;
+    /* 领域底光：只有一粒一粒的点时，整片云像浮在白底上的一层彩色噪点；
+       在每个领域统计圆的位置铺一层很淡的色晕（不是原来的纹理，纯屏幕空间渐变），
+       点云背后才有「深处还有一层云」的层次。alpha 只给 0.05 上下。 */
+    var regs = [];
+    (graph.regions || []).forEach(function (r) {
+      if (!r.stat) return;
+      var rr = U.hexToRgb(r.color || '#7A8699');
+      regs.push({
+        x: r.stat.cx, y: r.stat.cy,
+        r: Math.max(4, r.stat.radius),
+        css: rr.r + ',' + rr.g + ',' + rr.b
+      });
+    });
+    /* 粒子按「颜色 × 透明度档」分桶：每帧只切几十次 fillStyle/globalAlpha，
+       一万多个点只做 fillRect。逐点改样式的话，手机上一帧要切上万次状态。 */
+    var groups = [], gmap = {};
+    function bucket(col, alpha) {
+      var ai = Math.max(0, Math.min(9, Math.round((alpha - a0) / 0.04)));
+      var key = col + '|' + ai;
+      var g = gmap[key];
+      if (!g) {
+        g = gmap[key] = { col: col, a: a0 + ai * 0.04, pts: [] };
+        groups.push(g);
+      }
+      return g;
+    }
     (graph.nodes || []).forEach(function (n) {
       if (!ok(n.id)) return;
       var rid = (n.regions && n.regions[0]) || '';
       var reg = graph.regionById && graph.regionById[rid];
       var rgb = U.hexToRgb((reg && reg.color) || '#7A8699');
+      var col = 'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ')';
       var seed = U.rngFrom(n.id + ':mobile-particle', MG.config.seed);
-      /* 每个节点撒 3 颗，围绕节点做小幅抖动；缩到适配档时正好是 1~2 CSS px 的点。 */
-      for (var j = 0; j < 3; j++) {
+      var deg = n.degree || 0;
+      /* 度大的枢纽点多撒几颗、亮一点 —— 适配档下整片云因此有「骨架」，
+         而不是均匀的一层噪点。 */
+      var cnt = per + (deg >= 10 ? 3 : deg >= 5 ? 2 : deg >= 2 ? 1 : 0);
+      var aBase = a0 + Math.min(0.06, deg * 0.006);
+      for (var j = 0; j < cnt; j++) {
         var ang = seed() * Math.PI * 2;
-        var rad = Math.sqrt(seed()) * 70;
-        out.push({
+        /* 七成落在核心（适配档 k≈0.06 ⇒ 约 3 CSS px 的一小团），三成拉到外圈做晕；
+           半径用 sqrt 抖动 ⇒ 面密度均匀，不会在核心边缘堆出一圈。 */
+        var rad = seed() < 0.7
+          ? Math.sqrt(seed()) * core
+          : core + Math.sqrt(seed()) * (halo - core);
+        var p = {
           x: n.x + Math.cos(ang) * rad,
           y: n.y + Math.sin(ang) * rad,
-          r: rgb.r, g: rgb.g, b: rgb.b,
-          col: 'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ')',
-          a: 0.18 + seed() * 0.22,
-          s: 0.9 + seed() * 0.8
-        });
+          s: 0.9 + seed() * 0.7 + (deg >= 10 ? 0.12 : 0)
+        };
+        bucket(col, aBase + seed() * aVar).pts.push(p);
+        count++;
       }
     });
-    return { mobile: true, particles: out };
+    return { mobile: true, groups: groups, count: count, regions: regs };
   }
 
   function buildTexture(graph, isVisible) {
@@ -435,14 +475,38 @@
     var k = cam.k, tx = cam.tx, ty = cam.ty;
     var vw = cam.viewW || (ctx.canvas.width / dpr);
     var vh = cam.viewH || (ctx.canvas.height / dpr);
-    var list = tex.particles;
-    for (var i = 0; i < list.length; i++) {
-      var p = list[i];
-      var x = p.x * k + tx, y = p.y * k + ty;
-      if (x < -2 || y < -2 || x > vw + 2 || y > vh + 2) continue;
-      ctx.globalAlpha = p.a;
-      ctx.fillStyle = p.col;
-      ctx.fillRect(x, y, p.s, p.s);
+    var dark = false;
+    try { dark = document.documentElement.getAttribute('data-theme') === 'dark'; } catch (e) {}
+    /* 白底上一颗 α≈0.3 的淡色点几乎看不见，暗底上反而发亮 ⇒ 亮色主题抬一点。
+       主题是运行时切换的（不重建云），所以倍率必须在每帧这里算，不能烘进粒子。 */
+    var ga = dark ? 1.0 : 1.15;
+    /* 先铺领域底光（远处的一层雾），再压点云。 */
+    var regs = tex.regions || [];
+    var glow = dark ? 0.075 : 0.055;
+    for (var ri = 0; ri < regs.length; ri++) {
+      var rg = regs[ri], R = rg.r * k;
+      if (R < 6) continue;
+      var cx = rg.x * k + tx, cy = rg.y * k + ty;
+      if (cx + R < -40 || cy + R < -40 || cx - R > vw + 40 || cy - R > vh + 40) continue;
+      var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+      grad.addColorStop(0, 'rgba(' + rg.css + ',' + glow + ')');
+      grad.addColorStop(0.55, 'rgba(' + rg.css + ',' + (glow * 0.62) + ')');
+      grad.addColorStop(0.85, 'rgba(' + rg.css + ',' + (glow * 0.20) + ')');
+      grad.addColorStop(1, 'rgba(' + rg.css + ',0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    }
+    var groups = tex.groups || [];
+    for (var gi = 0; gi < groups.length; gi++) {
+      var g = groups[gi], pts = g.pts;
+      ctx.fillStyle = g.col;
+      ctx.globalAlpha = Math.min(0.92, g.a * ga);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        var x = p.x * k + tx, y = p.y * k + ty;
+        if (x < -2 || y < -2 || x > vw + 2 || y > vh + 2) continue;
+        ctx.fillRect(x, y, p.s, p.s);
+      }
     }
     ctx.globalAlpha = 1;
   }

@@ -7,7 +7,7 @@
      ② 例子层：球面 / 环面 / 射影平面 / 克莱因瓶 —— E4 点名缺的四个，
         分类定理的三种标准形在图上连个指得着的对象都没有。
 
-   ⚠️ `prop.eulerchar-nonorientable` 已完整（标准形计数 + 连通和归纳，2026-11-07）；`prop.eulerchar-genus` 仍标 status: skeleton，但证明已改走「Radó + 引理 D（$H_2 \cong \mathbb{Z}$）」，缺口只剩 Radó 三角剖分存在性（thm.rado，skeleton）与拓扑可定向性定义节点缺失 —— **不再依赖 thm.classification-surfaces**（2026-11-07 第 18 批）。
+   ⚠️ `prop.eulerchar-nonorientable` 已完整（标准形计数 + 连通和归纳，2026-11-07）；`prop.eulerchar-genus` 也已完整（2026-11-07 第 19 批，status 已删）：证明走「Radó + 引理 D（$H_2 \cong \mathbb{Z}$）」，唯一外部输入是 `thm.rado`（skeleton），拓扑可定向性见 `def.topological-orientability` —— **不依赖 thm.classification-surfaces**。
    ========================================================================== */
 (window.MG.packs = window.MG.packs || []).push({
   name: '曲面地形（三）：Euler 示性数与四个标准例子',
@@ -21,7 +21,6 @@
       title: '闭可定向曲面：$\\chi = 2 - 2g$',
       regions: ['topology'],
       tags: ['命题', '拓扑', '曲面', '同调'],
-      status: 'skeleton',
       statement: [
         '设 $S$ 是**闭可定向曲面**，亏格 $g = \\tfrac{1}{2}\\operatorname{rank} H_{1}(S;\\mathbb{Z})$（`def.genus`）。则',
         '',
@@ -61,6 +60,33 @@
     },
 
     /* ---------------------------------------------------------- 四个标准例子 */
+    {
+      id: 'def.topological-orientability',
+      cluster: 'topology.surfaces',
+      type: 'definition',
+      label: '拓扑可定向性',
+      title: '定义：拓扑流形的可定向性（定向图册 / 定向双覆盖）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '曲面', '可定向性'],
+      statement: [
+        '设 $M$ 是 $n$ 维拓扑流形（$n\\ge 1$）。称 $M$ 是**可定向的**，若存在一组图卡 $(U_{\\alpha},\\varphi_{\\alpha})$ 覆盖 $M$，使得任意两个图卡之间的转移映射',
+        '',
+        '$$\\varphi_{\\beta}\\circ\\varphi_{\\alpha}^{-1}:\\ \\varphi_{\\alpha}(U_{\\alpha}\\cap U_{\\beta})\\longrightarrow \\varphi_{\\beta}(U_{\\alpha}\\cap U_{\\beta})$$',
+        '',
+        '都**保向**（$\\mathbb{R}^{n}$ 取标准定向；保向的精确定义见注）。这样的图册叫**定向图册**。不存在定向图册时称 $M$ **不可定向**。',
+      ].join('\n'),
+      notes: [
+        '**一、保向是什么意思。** $\\mathbb{R}^{n}$ 的标准定向由局部同调的标准生成元给出：对 $x\\in\\mathbb{R}^{n}$，$H_{n}(\\mathbb{R}^{n},\\mathbb{R}^{n}\\setminus\\{x\\};\\mathbb{Z})\\cong\\mathbb{Z}$，取定一个生成元作为「正定向」。设 $h:V\\to W$ 是 $\\mathbb{R}^{n}$ 两个开集之间的同胚，$x\\in V$。$h$ 在 $x$ 处**保向**，指诱导同构 $H_{n}(V,V\\setminus\\{x\\})\\to H_{n}(W,W\\setminus\\{h(x)\\})$ 把标准生成元送到标准生成元；否则称**反向**。若 $V$ 连通，则「在一点保向」蕴含「处处保向」（局部同调沿连通性连续变化，只能取两个值）。$n=1$ 时这就是通常的单调递增；$n=2$ 时就是通常的保向同胚。',
+        '**二、定向双覆盖。** 令 $\\widehat{M}$ 为所有二元组 $(x,\\mathfrak{o}_{x})$，其中 $x\\in M$、$\\mathfrak{o}_{x}$ 是 $T_{x}M$ 的「局部定向」——即 $x$ 的某个图卡给出的 $\\mathbb{R}^{n}$ 标准定向在该图卡下的拉回，两个图卡给同一 $\\mathfrak{o}_{x}$ 当且仅当转移映射在 $x$ 处保向。用图卡把 $\\widehat{M}$ 局部写成 $U\\times\\{\\pm1\\}$，即得拓扑；投影 $p:\\widehat{M}\\to M$ 是二重覆叠，叫**定向双覆盖**。$M$ 可定向 $\\iff$ $p$ 平凡 $\\iff$ $p$ 有连续截面 $\\iff$ $\\widehat{M}$ 恰有两个连通分支（$M$ 连通时）。不可定向时 $\\widehat{M}$ 连通，且 $\\mathbb{Z}/2$ 自由地作用在它上面（无不动点）。',
+        '**三、同调刻画。** 设 $M$ 是闭连通 $n$-流形。对任意 $x$，$H_{n}(M,M\\setminus\\{x\\};\\mathbb{Z})\\cong\\mathbb{Z}$；自然映射 $H_{n}(M;\\mathbb{Z})\\to H_{n}(M,M\\setminus\\{x\\};\\mathbb{Z})$ 的像只能是 $0$ 或 $\\mathbb{Z}$（Hatcher §3.3）。$M$ 可定向 $\\iff$ 这个像是 $\\mathbb{Z}$（等价地：存在**基本类** $[M]\\in H_{n}(M;\\mathbb{Z})$，它在每个 $x$ 处都给出局部定向）。不可定向时 $H_{n}(M;\\mathbb{Z})=0$。证明思路：用定向双覆盖的转移函数粘一个「局部同调系数」的常层，可定向性正是这个局部系统平凡；基本类的存在性与截面的存在性对偶。',
+        '**四、曲面情形（本图主要用途）。** 对闭曲面 $S$：$S$ 可定向 $\\iff$ $S$ 不含 Möbius 带作为子空间 $\\iff$ $S$ 有三角剖分使所有 $2$-单形可**一致定向**（每条内边两侧诱导的边定向相反，`prop.eulerchar-genus` 的引理 D 用的正是这个形式）$\\iff$ $H_{2}(S;\\mathbb{Z})\\cong\\mathbb{Z}$。其中「一致定向的三角剖分」与定向图册的等价，就是引理 D 之前那一步：把每个单形放进图卡再用转移保向拼接。',
+        '**五、例子。** $S^{2}$、$T^{2}$ 及一切可定向闭曲面可定向；$\\mathbb{RP}^{2}$、克莱因瓶、Möbius 带不可定向。定向双覆盖的读数：$\\mathbb{RP}^{2}$ 的定向双覆盖是 $S^{2}$（对径作用），克莱因瓶的定向双覆盖是 $T^{2}$，Möbius 带的定向双覆盖是平环。这些例子说明「不可定向」不是「没有局部定向」，而是「局部定向无法整体一致地选出来」。',
+        '**六、与光滑定义的关系。** `def.orientable-manifold` 是光滑版本：转移映射的 Jacobi 行列式为正。光滑流形若按光滑意义可定向，则按本条可定向（光滑图册就是定向图册）；反之，光滑流形按本条可定向时，可用单位分解把局部 $n$-形式粘成处处非零的 $n$-形式（`prop.volume-form-orientation`），故两种定义在光滑流形上一致。`def.orientable-surface` 是 $\\mathbb{R}^{3}$ 中的外在版本（存在连续单位法向量场），它只覆盖可嵌入 $\\mathbb{R}^{3}$ 的曲面（例如 $\\mathbb{RP}^{2}$ 不可嵌入，故不能被它描述）。本条不要求光滑，适用于任意拓扑曲面。',
+        '**七、用途。** ①`prop.eulerchar-genus` 的引理 D：用定向图册给三角剖分的 $2$-单形一致定向，从而 $H_{2}\\cong\\mathbb{Z}$；②`thm.rado` 的不可定向情形：走定向双覆盖 $\\widehat{S}\\to S$（自由 $\\mathbb{Z}/2$-作用、无分支点），对 $\\widehat{S}$ 用可定向的三角剖分，再取等变加细让商也是剖分（等变三角剖分引理，本图无节点）；③`thm.classification-surfaces`：可定向性是同胚不变量，与 $\\chi$ 一起区分标准形。',
+        '⚠ **两个常见混淆。** ①「不可定向」不等于「不可三角剖分」：Radó 说每个紧曲面都可三角剖分，$\\mathbb{RP}^{2}$ 就有（正二十面体对径粘合）。②「定向双覆盖」不是分支覆盖：它是自由二重覆叠，没有分支点；$z\\mapsto z^{2}$ 那种带分支点的局部模型属于亚纯函数的分支覆盖（`thm.rado` 的复分析路线），不要与定向双覆盖混为一谈。',
+      ].join('\n\n'),
+      refs: ['Hatcher, Algebraic Topology, §3.3', 'Munkres, Topology, Ch. 12', 'Milnor–Stasheff, Characteristic Classes, §9'],
+    },
     {
       id: 'ex.sphere',
       cluster: 'topology.surfaces',
@@ -287,5 +313,7 @@
       usedBy: 'ex.klein-bottle',
       note: '「$k = 2$、$\\chi = 0$」同上。',
     },
+    { id: 'def-link.toporient-eg', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-genus', note: '引理 D 用定向图册给 2-单形一致定向' },
+    { id: 'def-link.toporient-nonor', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-nonorientable', note: '不可定向=不存在定向图册；标准形 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和' },
   ],
 });

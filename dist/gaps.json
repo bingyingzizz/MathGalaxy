@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T12:20:52.712Z",
+ "generated": "2026-11-07T13:39:14.350Z",
  "terms": 76,
  "missing": [
   {
@@ -357,6 +357,15 @@
  ],
  "noEdge": [
   {
+   "node": "def.topological-orientability",
+   "nodeLabel": "拓扑可定向性",
+   "nodeLayer": 0,
+   "def": "def.topological-manifold",
+   "defLabel": "拓扑流形",
+   "defLayer": 8,
+   "gap": 8
+  },
+  {
    "node": "def.module-category",
    "nodeLabel": "模范畴",
    "nodeLayer": 10,
@@ -393,7 +402,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 41,
+ "noEdgeAll": 42,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

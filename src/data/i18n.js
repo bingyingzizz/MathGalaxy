@@ -648,6 +648,7 @@ MG.i18n = {
     'def.tensor-product-vs': { title_en: 'tensor product', label_en: 'tensor product', from: 'explicit' },
     'def.topo-ab-group': { title_en: 'topological abelian group', label_en: 'topological abelian group', from: 'aka' },
     'def.topological-manifold': { title_en: 'topological manifold', label_en: 'topological manifold', from: 'explicit' },
+    'def.topological-orientability': { title_en: 'topological orientability', label_en: 'topological orientability', from: 'explicit' },
     'def.topologically-generating': { title_en: 'topologically generating', label_en: 'topologically generating', from: 'aka' },
     'def.topology': { title_en: 'topology', label_en: 'topology', from: 'explicit' },
     'def.topology-base': { title_en: 'base and subbase', label_en: 'base and subbase', from: 'explicit' },

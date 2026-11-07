@@ -1514,6 +1514,7 @@ MG.aliases = {
     { id: 'def.category-of-groups', en: 'category of groups', aka: ['群范畴', 'Grp'] },
     { id: 'def.category-of-abelian-groups', en: 'category of abelian groups', aka: ['阿贝尔群范畴', 'Ab'] },
     { id: 'def.module-category', en: 'category of modules', aka: ['模范畴', 'A-Mod'] },
+    { id: 'def.topological-orientability', en: 'topological orientability', aka: ['拓扑可定向性', '曲面的可定向性'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */
