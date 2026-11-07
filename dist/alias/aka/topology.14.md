@@ -33,4 +33,4 @@
 
 - Sierpinski 空间 | Sierpiński 空间 | 谢尔宾斯基空间 | 谢尔宾斯基 → ex.sierpinski-space
 
-见 `../../alias.md`。
+> 续见 alias/aka/topology.15.md

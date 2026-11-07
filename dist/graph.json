@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-07T09:40:26.838Z",
+  "generated": "2026-11-07T09:45:06.057Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -15,7 +15,7 @@
    "strong": 3150,
    "weak": 42,
    "derived": 33,
-   "en_pages": 1536
+   "en_pages": 1550
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -5263,6 +5263,24 @@
    "type": "definition",
    "label": "Radon 测度",
    "title": "Radon 测度：局部有限的 Borel 测度，外正则 + 开集内正则",
+   "label_en": "Radon measure",
+   "title_en": "Radon measure",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.radon-measure.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -6879,6 +6897,24 @@
    "type": "definition",
    "label": "集合上的积分",
    "title": "$\\int_E f\\,d\\mu$：可测集上的 Lebesgue 积分",
+   "label_en": "integral over a set",
+   "title_en": "integral over a set",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.integral-over-set.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -29344,6 +29380,24 @@
    "type": "definition",
    "label": "重心重分",
    "title": "重心重分：把单纯形再切细",
+   "label_en": "barycentric subdivision",
+   "title_en": "barycentric subdivision",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.barycentric-subdivision.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -37075,6 +37129,24 @@
    "type": "definition",
    "label": "凸集",
    "title": "凸集：任意两点的连线不跑出集合",
+   "label_en": "convex set",
+   "title_en": "convex set",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.convex-set.en.md",
    "region": "functional-analysis",
    "regions": [
     "functional-analysis"
@@ -37097,6 +37169,24 @@
    "type": "definition",
    "label": "星形集",
    "title": "星形集：存在一个能看见全集合的点",
+   "label_en": "star-shaped set",
+   "title_en": "star-shaped set",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.star-shaped.en.md",
    "region": "functional-analysis",
    "regions": [
     "functional-analysis"
@@ -37119,6 +37209,24 @@
    "type": "definition",
    "label": "凸组合",
    "title": "凸组合：系数非负且和为 1 的有限线性组合",
+   "label_en": "convex combination",
+   "title_en": "convex combination",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.convex-combination.en.md",
    "region": "functional-analysis",
    "regions": [
     "functional-analysis"
@@ -37141,6 +37249,24 @@
    "type": "definition",
    "label": "凸包",
    "title": "凸包：包含 $S$ 的最小凸集",
+   "label_en": "convex hull",
+   "title_en": "convex hull",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.convex-hull.en.md",
    "region": "functional-analysis",
    "regions": [
     "functional-analysis"
@@ -42694,6 +42820,24 @@
    "type": "definition",
    "label": "Stiefel–Whitney 类",
    "title": "Stiefel–Whitney 类：实向量丛的 $\\mathbb{Z}/2$ 示性类",
+   "label_en": "Stiefel–Whitney class",
+   "title_en": "Stiefel–Whitney class",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.stiefel-whitney-class.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -42719,6 +42863,24 @@
    "type": "proposition",
    "label": "定向与 w1 消失",
    "title": "命题：可定向 当且仅当第一 Stiefel–Whitney 类为零",
+   "label_en": "orientability via w1",
+   "title_en": "orientability via w1",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.orientable-iff-w1.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -42744,6 +42906,24 @@
    "type": "definition",
    "label": "Euler 类",
    "title": "Euler 类：可定向实丛的顶维示性类",
+   "label_en": "Euler class",
+   "title_en": "Euler class",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.euler-class.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -42769,6 +42949,24 @@
    "type": "definition",
    "label": "Pontryagin 类",
    "title": "Pontryagin 类：实丛复化之后的偶次陈类",
+   "label_en": "Pontryagin class",
+   "title_en": "Pontryagin class",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.pontryagin-class.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -44714,6 +44912,24 @@
    "type": "definition",
    "label": "群范畴",
    "title": "群范畴 $\\mathbf{Grp}$",
+   "label_en": "category of groups",
+   "title_en": "category of groups",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.category-of-groups.en.md",
    "region": "category",
    "regions": [
     "category",
@@ -44737,6 +44953,24 @@
    "type": "definition",
    "label": "阿贝尔群范畴",
    "title": "阿贝尔群范畴 $\\mathbf{Ab}$",
+   "label_en": "category of abelian groups",
+   "title_en": "category of abelian groups",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.category-of-abelian-groups.en.md",
    "region": "category",
    "regions": [
     "category",
@@ -52128,6 +52362,24 @@
    "type": "definition",
    "label": "模范畴",
    "title": "模范畴 $A\\text{-}\\mathbf{Mod}$",
+   "label_en": "category of modules",
+   "title_en": "category of modules",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.module-category.en.md",
    "region": "algebra",
    "regions": [
     "algebra",
