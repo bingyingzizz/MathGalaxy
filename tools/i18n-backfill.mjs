@@ -482,6 +482,36 @@ export function gapsText(rows, b, dec, regionName, manualIds) {
 }
 
 /* ------------------------------------------------------------ 主流程 */
+/* ⭐ 汇总口径（2026-11-07 修）：按**最终写进 i18n.js 的 `from`** 分行计数，
+   各行互斥、相加恰为节点总数。不要把「机械命中数」与「最终 from 数」相加 ——
+   手工条目（from:'manual'）会覆盖同 id 的机械命中，直接相加会多出那一批，
+   这正是旧文案「显式 812 + 一级 266 + 二级 2 = 1550」算不平的原因。 */
+export function fromTable(entries, dec, manual) {
+  const order = [
+    ['explicit', '显式 explicit ', 'aliases.js 的 `en:` 字段'],
+    ['aka', '一级 aka       ', 'aka 里恰好一条名字样英文'],
+    ['title', '一级 title     ', 'title 里的英文写法'],
+    ['aka-title', '二级 aka-title ', 'title 里恰好命中一个 aka 候选'],
+    ['manual', '手工 manual    ', '人定的名字'],
+  ];
+  const cnt = Object.create(null);
+  for (const e of entries) cnt[e.from] = (cnt[e.from] || 0) + 1;
+
+  const mechIds = new Set();
+  for (const g of [dec.t0, dec.t1, dec.t2]) for (const { r } of g) mechIds.add(r.id);
+  const override = [...manual.keys()].filter((id) => mechIds.has(id)).length;
+
+  const lines = [];
+  for (const [k, name, why] of order) {
+    const extra = k === 'manual' && override ? `（其中 ${override} 条覆盖了机械命中的条目）` : '';
+    lines.push(`    ${name} ${String(cnt[k] || 0).padStart(4)}    ${why}${extra}`);
+  }
+  lines.push(`    ── 合计 ${entries.length} = 节点总数 ${dec.t0.length + dec.t1.length + dec.t2.length + dec.gaps.length}`);
+  lines.push(`  机械规则原命中 ${mechIds.size}（显式 ${dec.t0.length} + 一级 ${dec.t1.length} + 二级 ${dec.t2.length}）；` +
+    `未覆盖 ${dec.gaps.length} 条，全部由 manual 补齐（其中 ${override} 条 manual 与机械命中同 id、最终记为 manual）`);
+  return lines;
+}
+
 function main() {
   const MG = loadMG();
   const graph = MG.buildGraph(MG.packs || [], MG.regions || [], MG.clusters || []);
@@ -541,8 +571,8 @@ function main() {
       console.error('✗ 漂移 ' + drift.length + ' 处：' + drift.slice(0, 5).join('；') + '（跑 bun tools/i18n-backfill.mjs）');
       process.exit(1);
     }
-    console.log(`✓ 英文名与源一致：显式 ${dec.t0.length} + 一级 ${dec.t1.length} + 二级 ${dec.t2.length} = ${entries.length}` +
-      `（覆盖 ${(100 * entries.length / rows.length).toFixed(1)}% · 其中手工 ${manual.size}）· 仍未命名 ${dec.gaps.filter((r) => !manual.has(r.id)).length}`);
+    console.log(`✓ 英文名与源一致：覆盖 ${entries.length} / ${rows.length}（${(100 * entries.length / rows.length).toFixed(1)}%）· 仍未命名 ${dec.gaps.filter((r) => !manual.has(r.id)).length}`);
+    for (const l of fromTable(entries, dec, manual)) console.log(l);
     return;
   }
 
@@ -555,11 +585,9 @@ function main() {
 
   const pct = (x) => (100 * x / rows.length).toFixed(1) + '%';
   console.log(`节点 ${rows.length} 个：`);
-  console.log(`  ✅ 显式命名（aliases 的 en:）  ：${dec.t0.length}  (${pct(dec.t0.length)})`);
-  console.log(`  ✅ 一级 title_en/label_en：${dec.t1.length}  (${pct(dec.t1.length)})`);
-  console.log(`  ✅ 二级（title 定名）    ：${dec.t2.length}  (${pct(dec.t2.length)})` +
-    `  —— 其中大小写与 aka 不同的 ${checks.caseDiff.length} 处`);
-  console.log(`  ⇒ 英文名覆盖 ${entries.length} / ${rows.length} = ${pct(entries.length)}`);
+  console.log(`  ✅ 英文名覆盖 ${entries.length} / ${rows.length} = ${pct(entries.length)}（按最终写入的 \`from\` 分行）`);
+  for (const l of fromTable(entries, dec, manual)) console.log(l);
+  console.log(`  🔎 二级里有 ${checks.caseDiff.length} 处大小写与 aka 不同（只记录）`);
   console.log(`  ⚠️ 歧义 ${b.ambiguous.length} · 只有缩写 ${b.abbrev.length} · 只有书号 ${b.refOnly.length}` +
     ` · 只有 title ${b.titleOnly.length} · 完全没有 ${b.none.length}  ⇒ 缺口合计 ${dec.gaps.length}`);
   console.log(`  🔎 跨节点重复 title_en：${checks.dups.length} 组 · title 里有更长英文写法：${checks.shapeDiff.length} 处（只记录）`);
