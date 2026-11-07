@@ -25,8 +25,8 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1551 节点 / 3194 边 · maxLayer 38
-强边 3152 · 弱边（类比）42 · 推论（layer:false）33
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1551 节点 / 3195 边 · maxLayer 38
+强边 3153 · 弱边（类比）42 · 推论（layer:false）33
 英文页 1551 · 别名 1361 组 · 问法钩子 217 条
 ```
 
@@ -35,13 +35,13 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | 本次提交后本地 `main` ahead 48（未 push；origin 仍停在 `0d20279a`） |
+| 工作树 | 本次提交后本地 `main` ahead 49（未 push；origin 仍停在 `0d20279a`） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1551 节点 / 3194 边，所有页 ≤1300 B） |
+| `bun tools/build.mjs` | ✅ 全绿（1551 节点 / 3195 边，所有页 ≤1300 B） |
 | `bun tools/_katexcheck.mjs` | ✅ **2908 个 `$…$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889；第 8 批 3 条注新增 16 个 display ⇒ 2889→2905；第 9 批 3 条证明新增 7 个 display ⇒ 2905→2912；第 10 批 4 条曲面证明重写净 −1 个 display ⇒ 2912→2911；第 14 批 / FIX-045 净 −1 个 display ⇒ 2911→2910；第 15 批 2 条证明净 −4 display ⇒ 2910→2906；第 17 批注净 +1 display ⇒ 2906→2907；第 19 批新增 def.topological-orientability 的 1 个 display ⇒ 2907→2908） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
@@ -448,7 +448,7 @@
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
 | 精读覆盖率 | **回执 1540 / 1540（100%）**；本会话逐团深读 **57 团 / 760 条**（v2 §39–§116） | 其余 48 团 / 780 条来自 §19–§59 早期批次；旧的 1051/1502/1527 是按团 id 倒推的估计，不再用 |
-| **skeleton 证明** | **9 节点 / 19 条边**（2026-11-07 第 19 批后；标准 0、中等 2（schwarz-christoffel / prime-number-theorem）、研究 7；边数按第 1 批报告口径，图不可查询） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 19 批 eulerchar-genus 已补，余 9 条研究/中等项；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
+| **skeleton 证明** | **10 节点 / 19 条边**（2026-11-07 第 19 批后；标准 1（eulerchar-genus）、中等 2（schwarz-christoffel / prime-number-theorem）、研究 7；边数按第 1 批报告口径，图不可查询） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 19 批 eulerchar-genus 补到条件于 Radó，仍 skeleton（skeleton 9→10），余 9 条研究/中等项；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门
@@ -610,7 +610,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 |---|---|
 | **本交接书** | `H:\MathGalaxy\HANDOVER.md`（本文件，唯一） |
 | **仓库规矩**（进目录自动注入） | `H:\MathGalaxy\AGENTS.md` |
-| **审读报告真源**（13567 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§128 各批 |
+| **审读报告真源**（13632 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§129 各批 |
 | 审读回执 | `_audit/_proofs/out-*.txt`（`P-*.txt` 是对应提示词） |
 | 用户手写笔记原件 | `_pdf/`（167 MB）· 转写 `_pdf/凝聚态数学笔记-转写.md` |
 | 散文式规则 | `CONTRIBUTING.md`（人看的）· `README.md` · `policy.md` |

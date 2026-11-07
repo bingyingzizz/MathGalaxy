@@ -21,11 +21,17 @@
   /** 手机竖屏：小点云。纹理缩小后粒子会被压成一片糊，直接按屏幕坐标画点。 */
   function buildParticles(graph, ok) {
     var bc = MG.config.background;
-    var per = Math.max(4, bc.mobileParticles == null ? 9 : bc.mobileParticles);
+    var per = Math.max(4, bc.mobileParticles == null ? 15 : bc.mobileParticles);
     var core = bc.mobileCore == null ? 48 : bc.mobileCore;     // 世界单位
     var halo = Math.max(core, bc.mobileHalo == null ? 130 : bc.mobileHalo);
-    var a0 = bc.mobileAlpha == null ? 0.26 : bc.mobileAlpha;
-    var aVar = bc.mobileAlphaVar == null ? 0.24 : bc.mobileAlphaVar;
+    var a0 = bc.mobileAlpha == null ? 0.20 : bc.mobileAlpha;
+    var aVar = bc.mobileAlphaVar == null ? 0.20 : bc.mobileAlphaVar;
+    /* 点径是**屏幕 CSS 像素**：drawParticles 只做平移，绝不乘 cam.k。
+       所以无论适配档还是放大到 k=1，一颗点始终是这么宽 —— 放大时不会变成色块。
+       0.55~0.95 是「放到最大也偏小」的视觉目标，枢纽最多 +0.10。 */
+    var dotMin = bc.mobileDotMin == null ? 0.55 : bc.mobileDotMin;
+    var dotMax = bc.mobileDotMax == null ? 0.95 : bc.mobileDotMax;
+    var dotHub = bc.mobileDotHub == null ? 0.10 : bc.mobileDotHub;
     var count = 0;
     /* 领域底光：只有一粒一粒的点时，整片云像浮在白底上的一层彩色噪点；
        在每个领域统计圆的位置铺一层很淡的色晕（不是原来的纹理，纯屏幕空间渐变），
@@ -63,7 +69,7 @@
       var deg = n.degree || 0;
       /* 度大的枢纽点多撒几颗、亮一点 —— 适配档下整片云因此有「骨架」，
          而不是均匀的一层噪点。 */
-      var cnt = per + (deg >= 10 ? 3 : deg >= 5 ? 2 : deg >= 2 ? 1 : 0);
+      var cnt = per + (deg >= 10 ? 4 : deg >= 5 ? 2 : deg >= 2 ? 1 : 0);
       var aBase = a0 + Math.min(0.06, deg * 0.006);
       for (var j = 0; j < cnt; j++) {
         var ang = seed() * Math.PI * 2;
@@ -75,7 +81,7 @@
         var p = {
           x: n.x + Math.cos(ang) * rad,
           y: n.y + Math.sin(ang) * rad,
-          s: 0.9 + seed() * 0.7 + (deg >= 10 ? 0.12 : 0)
+          s: dotMin + seed() * (dotMax - dotMin) + (deg >= 10 ? dotHub : 0)
         };
         bucket(col, aBase + seed() * aVar).pts.push(p);
         count++;
@@ -501,12 +507,17 @@
       var g = groups[gi], pts = g.pts;
       ctx.fillStyle = g.col;
       ctx.globalAlpha = Math.min(0.92, g.a * ga);
+      /* ⚠️ 每帧两万多个点：逐个 fillRect 在手机 Canvas2D 上实测 7.7ms（390×844 dpr2）。
+         同组的点颜色/透明度相同，合并成一条 path 一次 fill，只按组切样式（现网 ~105 次）：
+         实测 1.44ms，且点仍各自独立、不会糊成实心块。 */
+      ctx.beginPath();
       for (var i = 0; i < pts.length; i++) {
         var p = pts[i];
         var x = p.x * k + tx, y = p.y * k + ty;
         if (x < -2 || y < -2 || x > vw + 2 || y > vh + 2) continue;
-        ctx.fillRect(x, y, p.s, p.s);
+        ctx.rect(x, y, p.s, p.s);
       }
+      ctx.fill();
     }
     ctx.globalAlpha = 1;
   }
