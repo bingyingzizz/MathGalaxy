@@ -265,20 +265,20 @@
       blobAlpha: 0.075,
       splatRadius: 150,           // 单节点撒点的世界半径（smooth-tail 到 0，见 background.js）
       /* 手机竖屏（≤700px）走屏幕空间点云（background.js buildParticles）：
-         每节点 mobileParticles 颗（枢纽 +1~4）、核心半径 mobileCore 世界单位、晕到 mobileHalo；
-         点径 mobileDotMin~mobileDotMax CSS px（枢纽 +mobileDotHub）——**屏幕像素，不乘 cam.k**，
-         所以放大到 k=1 也不会变粗；透明度 mobileAlpha + [0, mobileAlphaVar]，亮色主题再 ×1.15。
-         ⚠️ 3 颗/节点时适配档（390×844，k 被 minZoom 夹在 0.06）看起来「几乎啥也没有」——
-         云的整体形状全靠连线撑着。9~12 颗时节点密度才连成一片看得清的星云；14~18 颗时
-         适配档才有「整片云」的层次（但点径压到 <1 CSS px，别糊成色块）。 */
-      mobileParticles: 15,
+         每节点 mobileParticles 颗（枢纽 +1~4，**不随 cam.k 变化**）、核心半径 mobileCore
+         世界单位、晕到 mobileHalo；点径**所有点、所有尺度同一个常数** mobileDotSize CSS px
+         （屏幕像素，不乘 cam.k），放大到 k=1 也不会变粗；透明度 mobileAlpha + [0, mobileAlphaVar]，
+         亮色主题再 ×1.15。
+         ⚠️ 密度是常数：fit 全图与放大后是同一套密度，所以总点数 ≈ 1551×N。
+         3 颗/节点时适配档「几乎啥也没有」；15~18 颗还是稀；40 颗时 fit 才有「整片云」。
+         160 颗（总点 ~25 万）是「常数密度」的上限尝试：fit 实测见 ENG-006-density.md，
+         若超过 12ms 预算就退回 128 / 96；视口外的节点由 drawParticles 按节点中心裁掉。 */
+      mobileParticles: 128,
       mobileCore: 48,
       mobileHalo: 130,
       mobileAlpha: 0.20,
       mobileAlphaVar: 0.20,
-      mobileDotMin: 0.55,
-      mobileDotMax: 0.95,
-      mobileDotHub: 0.10,
+      mobileDotSize: 0.75,
       centerAlpha: 0.025,         // 板块中心大团雾
       nodeAlpha: 0.025,           // 每个节点周围的小团雾
       spread: 0.52,               // 云朵分布半径 / 板块半径

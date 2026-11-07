@@ -26,12 +26,10 @@
     var halo = Math.max(core, bc.mobileHalo == null ? 130 : bc.mobileHalo);
     var a0 = bc.mobileAlpha == null ? 0.20 : bc.mobileAlpha;
     var aVar = bc.mobileAlphaVar == null ? 0.20 : bc.mobileAlphaVar;
-    /* 点径是**屏幕 CSS 像素**：drawParticles 只做平移，绝不乘 cam.k。
-       所以无论适配档还是放大到 k=1，一颗点始终是这么宽 —— 放大时不会变成色块。
-       0.55~0.95 是「放到最大也偏小」的视觉目标，枢纽最多 +0.10。 */
-    var dotMin = bc.mobileDotMin == null ? 0.55 : bc.mobileDotMin;
-    var dotMax = bc.mobileDotMax == null ? 0.95 : bc.mobileDotMax;
-    var dotHub = bc.mobileDotHub == null ? 0.10 : bc.mobileDotHub;
+    /* 点径是**屏幕 CSS 像素**，所有点、所有尺度都同一个常数：drawParticles 只做平移，
+       绝不乘 cam.k。所以适配档与 k=1 的点径逐像素相同，放大时不会变成色块。
+       0.75 是「放大到最大也仍是一颗细点」的视觉尺寸（按观感微调）。 */
+    var dotSize = bc.mobileDotSize == null ? 0.75 : bc.mobileDotSize;
     var count = 0;
     /* 领域底光：只有一粒一粒的点时，整片云像浮在白底上的一层彩色噪点；
        在每个领域统计圆的位置铺一层很淡的色晕（不是原来的纹理，纯屏幕空间渐变），
@@ -59,6 +57,11 @@
       }
       return g;
     }
+    /* 固定密度：每节点 per 颗，**不随 cam.k 变化**。
+       点径固定 1px 级时，若密度再随缩放分档，小尺度就会「什么都看不见」；
+       所以所有尺度共用同一套常数密度。k 大时只画视口内节点的点
+       （下面 drawParticles 按节点中心裁），放大后不会把全图的点全扫一遍。 */
+    var nxs = [], nys = [];
     (graph.nodes || []).forEach(function (n) {
       if (!ok(n.id)) return;
       var rid = (n.regions && n.regions[0]) || '';
@@ -71,6 +74,8 @@
          而不是均匀的一层噪点。 */
       var cnt = per + (deg >= 10 ? 4 : deg >= 5 ? 2 : deg >= 2 ? 1 : 0);
       var aBase = a0 + Math.min(0.06, deg * 0.006);
+      var ni = nxs.length;
+      nxs.push(n.x); nys.push(n.y);
       for (var j = 0; j < cnt; j++) {
         var ang = seed() * Math.PI * 2;
         /* 七成落在核心（适配档 k≈0.06 ⇒ 约 3 CSS px 的一小团），三成拉到外圈做晕；
@@ -81,13 +86,17 @@
         var p = {
           x: n.x + Math.cos(ang) * rad,
           y: n.y + Math.sin(ang) * rad,
-          s: dotMin + seed() * (dotMax - dotMin) + (deg >= 10 ? dotHub : 0)
+          s: dotSize,
+          ni: ni
         };
         bucket(col, aBase + seed() * aVar).pts.push(p);
         count++;
       }
     });
-    return { mobile: true, groups: groups, count: count, regions: regs };
+    return {
+      mobile: true, groups: groups, count: count, regions: regs,
+      nxs: nxs, nys: nys
+    };
   }
 
   function buildTexture(graph, isVisible) {
@@ -486,9 +495,11 @@
     /* 白底上一颗 α≈0.3 的淡色点几乎看不见，暗底上反而发亮 ⇒ 亮色主题抬一点。
        主题是运行时切换的（不重建云），所以倍率必须在每帧这里算，不能烘进粒子。 */
     var ga = dark ? 1.0 : 1.15;
-    /* 先铺领域底光（远处的一层雾），再压点云。 */
+    /* 先铺领域底光（远处的一层雾），再压点云。
+       这层雾是**常数**：不随 cam.k 变，也不随点密度变档 —— 放大的时候
+       点与点之间总有空隙，由这层很淡的色雾把「云的体」托住。 */
     var regs = tex.regions || [];
-    var glow = dark ? 0.075 : 0.055;
+    var glow = dark ? 0.12 : 0.10;
     for (var ri = 0; ri < regs.length; ri++) {
       var rg = regs[ri], R = rg.r * k;
       if (R < 6) continue;
@@ -503,16 +514,27 @@
       ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
     }
     var groups = tex.groups || [];
+    /* 视口裁剪：只画「节点中心在视口附近」的点。放大时视口只覆盖几十个节点，
+       常数密度（约 1551×N 颗）也不会在 k=1 时全量扫一遍。
+       halo 取粒子最大外半径（世界单位），保证节点边缘的点不会被误裁。 */
+    var nxs = tex.nxs || [], nys = tex.nys || [];
+    var halo = MG.config.background.mobileHalo == null ? 130 : MG.config.background.mobileHalo;
+    var wx0 = (-tx) / k - halo, wx1 = (vw - tx) / k + halo;
+    var wy0 = (-ty) / k - halo, wy1 = (vh - ty) / k + halo;
     for (var gi = 0; gi < groups.length; gi++) {
       var g = groups[gi], pts = g.pts;
       ctx.fillStyle = g.col;
       ctx.globalAlpha = Math.min(0.92, g.a * ga);
-      /* ⚠️ 每帧两万多个点：逐个 fillRect 在手机 Canvas2D 上实测 7.7ms（390×844 dpr2）。
+      /* ⚠️ 每帧几万颗点：逐个 fillRect 在手机 Canvas2D 上实测 7.7ms（390×844 dpr2）；
          同组的点颜色/透明度相同，合并成一条 path 一次 fill，只按组切样式（现网 ~105 次）：
-         实测 1.44ms，且点仍各自独立、不会糊成实心块。 */
+         两万多颗点时实测 1.44ms，且点仍各自独立、不会糊成实心块。 */
       ctx.beginPath();
       for (var i = 0; i < pts.length; i++) {
         var p = pts[i];
+        if (nxs.length) {
+          var nx = nxs[p.ni], ny = nys[p.ni];
+          if (nx < wx0 || nx > wx1 || ny < wy0 || ny > wy1) continue;
+        }
         var x = p.x * k + tx, y = p.y * k + ty;
         if (x < -2 || y < -2 || x > vw + 2 || y > vh + 2) continue;
         ctx.rect(x, y, p.s, p.s);
