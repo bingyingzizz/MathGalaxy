@@ -1,6 +1,6 @@
 # 仿紧空间上的 Čech 就是上同调　`thm.paracompact-cech-equals-sheaf`　·　说明
 根 `../`
 
-⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。
+**④ 仍缺的比较步（旧注「每项软」的说法要修正）。** ① 中的 $\check{\mathcal{C}}^{p}$ 是若干开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只是左正合：对任意层 $\mathcal{M}$，$\check{\mathcal{C}}^{p}(\mathfrak{U},\mathcal{M})$ **不一定软/无环**，所以不能直接对 ① 用 ③。正确收尾需要「软层 $\implies$ 局部有限覆盖的 Čech 零调」（或其等价的双复形比较：把 $\mathcal{M}$ 换成软消解 $\mathcal{S}^{\bullet}$，对双复形 $\check{C}^{p}(\mathfrak{U},\mathcal{S}^{q})$ 用两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但没有「软层 Čech 零调」这条引理，也没有把双复形两套滤过写到可核的程度。补上 ④ 才真正得 $\check{H}^{n}(X,\mathcal{M})\cong H^{n}(X,\mathcal{M})$；本节点因此仍标 skeleton。
 
-⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。
+> 续见 notes/thm.paracompact-cech-equals-sheaf.9.md
