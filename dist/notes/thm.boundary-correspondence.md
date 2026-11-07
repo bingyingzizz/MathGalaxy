@@ -5,8 +5,6 @@
 
 **能独立验证的一半：延拓 + 边界单射 $\implies$ 同胚。** 设 $f:\Omega\to\mathbb{D}$ 已连续延拓到 $\overline{\Omega}$，且在 $\partial\Omega$ 上单射。则：
 
-① $f(\partial\Omega)\cap\mathbb{D}=\emptyset$。否则有 $\zeta\in\partial\Omega$ 使 $w=f(\zeta)\in\mathbb{D}=f(\Omega)$，取 $z\in\Omega$ 使 $f(z)=w$；$z\ne\zeta$，与单射矛盾。
-
-② 于是 $f(\overline{\Omega})=f(\Omega)\cup f(\partial\Omega)\subseteq \mathbb{D}\cup\partial\mathbb{D}=\overline{\mathbb{D}}$，且包含 $\mathbb{D}$；$\overline{\Omega}$ 紧、$\overline{\mathbb{D}}$ Hausdorff，连续双射从紧空间到 Hausdorff 空间自动是同胚。∎（这一段是真正的证明，只用了紧性。）
+① $f(\partial\Omega)\cap\mathbb{D}=\emptyset$。否则有 $\zeta\in\partial\Omega$ 使 $w=f(\zeta)\in\mathbb{D}=f(\Omega)$，取逆映射 $g=f^{-1}:\mathbb{D}\to\Omega$（$f$ 内部双全纯，故 $g$ 连续）。让 $z\to\zeta$ 时 $f(z)\to f(\zeta)=w$，由 $g$ 在 $w$ 连续得 $g(w)=\zeta$；但 $g(w)\in\Omega$，而 $\zeta\in\partial\Omega$，矛盾。
 
 > 续见 notes/thm.boundary-correspondence.2.md

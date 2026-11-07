@@ -23,6 +23,15 @@
     var ok = isVisible || function () { return true; };
     var bb = graph.bbox();
 
+    /* 手机竖屏：同样的世界半径在适配档只占 3~5 个 CSS 像素，
+       150 世界单位的节点云会互相糊成一块一块的大色斑。
+       这里按视口宽度把节点撒点半径压到 0.62，并把浓度补回去；
+       纹理只建一次，所以用建纹理时的视口判断即可。 */
+    var mobile = !!(window.matchMedia && window.matchMedia('(max-width: 700px)').matches);
+    var splatK = mobile ? 0.42 : 1;
+    var nodeA = mobile ? 2.6 : 1;
+    var regionK = mobile ? 0.86 : 1;
+
     var pad = 300;
     var minX = bb.minX - pad, minY = bb.minY - pad;
     var maxX = bb.maxX + pad, maxY = bb.maxY + pad;
@@ -58,7 +67,7 @@
     (graph.regions || []).forEach(function (reg) {
       if (!reg.stat) return;
       var rgb0 = U.hexToRgb(reg.color || '#7A8699');
-      var pr0 = Math.max(4, reg.stat.radius * 1.02);
+      var pr0 = Math.max(4, reg.stat.radius * 1.02 * regionK);
       var g0 = ctx.createRadialGradient(reg.stat.cx, reg.stat.cy, 0, reg.stat.cx, reg.stat.cy, pr0);
       var s0 = rgb0.r + ',' + rgb0.g + ',' + rgb0.b + ',';
       g0.addColorStop(0, 'rgba(' + s0 + '0.085)');
@@ -77,17 +86,17 @@
       var reg = graph.regionById && graph.regionById[rid];
       var hex = (reg && reg.color) || '#7A8699';
       var rgb = U.hexToRgb(hex);
-      var pr = Math.max(2, (bc.splatRadius == null ? 150 : bc.splatRadius));   // 世界单位
+      var pr = Math.max(2, (bc.splatRadius == null ? 150 : bc.splatRadius) * splatK);   // 世界单位
       var gC = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, pr);
       /* ⚠️ 曲线必须有「尾巴」：以前是 0.05 → 0 的直线渐变，单个撒点的边缘是一条
          斜率突变（−a/R → 0）的圆弧 —— 1540 个叠起来，每个都留下一个看得见的圆边，
          整片云像一堆肥皂泡（用户原话「看着星云有点难看」）。
          这里在 0.78 之后把透明度压到 0.014 → 0.005 → 0，斜率平滑接到 0。 */
-      gC.addColorStop(0, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.050)');
-      gC.addColorStop(0.35, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.042)');
-      gC.addColorStop(0.60, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.028)');
-      gC.addColorStop(0.78, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.014)');
-      gC.addColorStop(0.90, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.005)');
+      gC.addColorStop(0, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.050 * nodeA) + ')');
+      gC.addColorStop(0.35, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.042 * nodeA) + ')');
+      gC.addColorStop(0.60, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.028 * nodeA) + ')');
+      gC.addColorStop(0.78, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.014 * nodeA) + ')');
+      gC.addColorStop(0.90, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.005 * nodeA) + ')');
       gC.addColorStop(1, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
       ctx.fillStyle = gC;
       ctx.beginPath(); ctx.arc(n.x, n.y, pr, 0, Math.PI * 2); ctx.fill();

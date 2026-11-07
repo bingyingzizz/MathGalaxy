@@ -442,7 +442,7 @@
         '可以连续延拓到闭包 $\\overline{\\Omega}$，且延拓后的 $f : \\overline{\\Omega} \\to ' +
           '\\overline{\\mathbb{D}}$ 是**同胚**，把边界同胚地映到单位圆周。',
       ].join('\n'),
-      notes: '**这条命题就是 Carathéodory–Osgood 边界对应定理**（Jordan 区域版）：Riemann 映射的内部双全纯（`thm.riemann-mapping`，第 15 批已补完整证明）自动延拓到闭包并给出同胚。它不是 Riemann 映射定理的推论——内部双全纯完全不管边界行为，Jordan 条件是本质的。\n\n**能独立验证的一半：延拓 + 边界单射 $\\implies$ 同胚。** 设 $f:\\Omega\\to\\mathbb{D}$ 已连续延拓到 $\\overline{\\Omega}$，且在 $\\partial\\Omega$ 上单射。则：\n\n① $f(\\partial\\Omega)\\cap\\mathbb{D}=\\emptyset$。否则有 $\\zeta\\in\\partial\\Omega$ 使 $w=f(\\zeta)\\in\\mathbb{D}=f(\\Omega)$，取 $z\\in\\Omega$ 使 $f(z)=w$；$z\\ne\\zeta$，与单射矛盾。\n\n② 于是 $f(\\overline{\\Omega})=f(\\Omega)\\cup f(\\partial\\Omega)\\subseteq \\mathbb{D}\\cup\\partial\\mathbb{D}=\\overline{\\mathbb{D}}$，且包含 $\\mathbb{D}$；$\\overline{\\Omega}$ 紧、$\\overline{\\mathbb{D}}$ Hausdorff，连续双射从紧空间到 Hausdorff 空间自动是同胚。∎（这一段是真正的证明，只用了紧性。）\n\n**缺口：延拓的存在与边界单射。** 这正是 Carathéodory 定理的内容：$\\partial\\Omega$ 局部连通 $\\implies$ 连续延拓存在（Carathéodory 1913）；Jordan 曲线 $\\implies$ $\\partial\\Omega$ 局部连通（Jordan 曲线是紧度量空间里的简单闭曲线，局部连通）。边界单射可用 crosscut / prime end 论证，或对逆映射 $f^{-1}:\\mathbb{D}\\to\\Omega$ 同法延拓后比较。本图没有 Carathéodory 节点，也没有 crosscut / prime end 节点；`thm.schwarz-reflection` 只处理**解析弧**（圆、直线）的反射延拓，不能覆盖一般 Jordan 曲线。\n\n**⭐ 用途。** 它给 Schwarz–Christoffel（`thm.schwarz-christoffel`，仍 skeleton）的「实轴上的 $x_k$ 对应多边形顶点」提供合法性。\n\n**📌 记号。** 入边（原无显式 id，靠 src/core/graph.js 自动分配 e102.implication）只记录了「径向极限 $\\to$ 连续 $\\to$ 同胚」的路线；其中第一步「径向极限存在」正是 Carathéodory 定理，不是初等估计——不要把它当作已证。',
+      notes: '**这条命题就是 Carathéodory–Osgood 边界对应定理**（Jordan 区域版）：Riemann 映射的内部双全纯（`thm.riemann-mapping`，第 15 批已补完整证明）自动延拓到闭包并给出同胚。它不是 Riemann 映射定理的推论——内部双全纯完全不管边界行为，Jordan 条件是本质的。\n\n**能独立验证的一半：延拓 + 边界单射 $\\implies$ 同胚。** 设 $f:\\Omega\\to\\mathbb{D}$ 已连续延拓到 $\\overline{\\Omega}$，且在 $\\partial\\Omega$ 上单射。则：\n\n① $f(\\partial\\Omega)\\cap\\mathbb{D}=\\emptyset$。否则有 $\\zeta\\in\\partial\\Omega$ 使 $w=f(\\zeta)\\in\\mathbb{D}=f(\\Omega)$，取逆映射 $g=f^{-1}:\\mathbb{D}\\to\\Omega$（$f$ 内部双全纯，故 $g$ 连续）。让 $z\\to\\zeta$ 时 $f(z)\\to f(\\zeta)=w$，由 $g$ 在 $w$ 连续得 $g(w)=\\zeta$；但 $g(w)\\in\\Omega$，而 $\\zeta\\in\\partial\\Omega$，矛盾。\n\n② 于是 $f(\\overline{\\Omega})=f(\\Omega)\\cup f(\\partial\\Omega)\\subseteq \\mathbb{D}\\cup\\partial\\mathbb{D}=\\overline{\\mathbb{D}}$，且包含 $\\mathbb{D}$；$\\overline{\\Omega}$ 紧、$\\overline{\\mathbb{D}}$ Hausdorff，连续双射从紧空间到 Hausdorff 空间自动是同胚。（子引理）□（这一段是真正的证明，只用了紧性。）\n\n**缺口：延拓的存在与边界单射。** 这正是 Carathéodory 定理的内容：$\\partial\\Omega$ 局部连通 $\\implies$ 连续延拓存在（Carathéodory 1913）；Jordan 曲线 $\\implies$ $\\partial\\Omega$ 局部连通（Jordan 曲线是紧度量空间里的简单闭曲线，局部连通）。边界单射可用 crosscut / prime end 论证，或对逆映射 $f^{-1}:\\mathbb{D}\\to\\Omega$ 同法延拓后比较。本图没有 Carathéodory 节点，也没有 crosscut / prime end 节点；`thm.schwarz-reflection` 只处理**解析弧**（圆、直线）的反射延拓，不能覆盖一般 Jordan 曲线。\n\n**⭐ 用途。** 它给 Schwarz–Christoffel（`thm.schwarz-christoffel`，仍 skeleton）的「实轴上的 $x_k$ 对应多边形顶点」提供合法性。\n\n**📌 记号。** 入边（原无显式 id，靠 src/core/graph.js 自动分配 e102.implication）只记录了「径向极限 $\\to$ 连续 $\\to$ 同胚」的路线；其中第一步「径向极限存在」正是 Carathéodory 定理，不是初等估计——不要把它当作已证。',
       refs: [
         '王晓光《复变函数》· 边界对应（介绍）',
         'Ahlfors, Complex Analysis (3rd ed.), Ch. 6 · Conformal Mapping（boundary correspondence）',
@@ -630,7 +630,7 @@
           '若两个边界点映到同一点，则内部会出现「被挤压」的连通分支，与单叶性矛盾。',
         '',
         '**第三步：紧空间上的连续单射 = 同胚**。$\\overline{\\Omega}$ 紧、$\\overline{\\mathbb{D}}$ Hausdorff，' +
-          '连续单射自动是同胚。∎',
+          '连续单射自动是同胚。',
       ].join('\n'),
       note: '它给 S–C 公式的「$x_{k}$ 对应顶点」提供了合法性。' },
   ],
