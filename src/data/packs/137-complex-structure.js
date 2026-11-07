@@ -495,7 +495,6 @@
     {
       id: 'thm.riemann-mapping',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Riemann 映射定理',
       title: 'Riemann 映射定理：单连通真区域双全纯等价于单位圆盘',
       cluster: 'analysis.mapping',
@@ -511,31 +510,14 @@
         '于是「$\\mathbb{C}$ 的任意单连通真子区域」在共形等价意义下**只有单位圆盘一个**。',
       ].join('\n'),
       notes: [
-        '**证明结构（三步，这是本图最深的定理之一，给骨架 + 关键计算 + 出处）**：',
-        '',
-        '**第一步：族不空。** $\\Omega \\ne \\mathbb{C}$ 给出 $a \\notin \\Omega$；因 $\\Omega$ 单连通，' +
-          '存在全纯的单值支 $\\sqrt{z - a}$（`prop.single-valued-branch`）。\n\n' +
-          '它把 $\\Omega$ 双全纯地送到某个区域内，再用分式线性变换把它搬进 $\\mathbb{D}$ 并让 $z_{0} \\mapsto 0$。\n\n' +
-          '所以候选族 $\\mathcal{F} := \\{\\, \\varphi : \\Omega \\to \\mathbb{D} \\text{ 单叶全纯},\\ \\varphi(z_{0}) = 0 \\,\\}$ 非空。',
-        '',
-        '**第二步：取极值元。** 由 Cauchy 不等式，$|\\varphi\'(z_{0})|$ 被 $1/\\operatorname{dist}(z_{0}, \\partial\\Omega)$ 控制，' +
-          '故 $s := \\sup_{\\varphi \\in \\mathcal{F}} |\\varphi\'(z_{0})| \\in (0, \\infty)$。\n\n' +
-          '取 $\\varphi_{n}$ 使 $|\\varphi_{n}\'(z_{0})| \\to s$；\n\n' +
-          '族在 $\\mathbb{D}$ 内一致有界，由 **Montel 定理**有内闭一致收敛子列，极限 $f$ 全纯，$f(z_{0}) = 0$、$|f\'(z_{0})| = s$，且 $f$ 单叶（单叶性在一致收敛下保持：若 $f(z_{1}) = f(z_{2})$，用 Rouché 或 Hurwitz 反推 $\\varphi_{n}$ 不单叶，矛盾）。',
-        '',
-        '**第三步：$f$ 满射。** 若 $f$ 漏掉某点 $w_{1} \\in \\mathbb{D}$，用 $\\mathbb{D}$ 的自同构把 $w_{1}$ 搬到 $0$，' +
-          '再取平方根分支、再搬回去，构造 $\\psi \\in \\mathcal{F}$ 使 $|\\psi\'(z_{0})| > s$ —— 与 $s$ 的极大性矛盾' +
-          '（这一步是纯计算，核心是 $|g\'(0)| = \\frac{1 + |a|}{2\\sqrt{|a|}} > 1$）。故 $f$ 满。∎',
-        '',
-        '**唯一性**：两个这样的 $f, g$ 给出 $\\mathbb{D}$ 到自身、固定 $0$、导数正实数的双全纯映射；' +
-          '由 **Schwarz 引理**它必须是恒等。',
-        '',
-        '⭐ **为什么叫「基本定理」**：它把「共形等价」这件事在单连通情形下一举归约到唯一的模型 $\\mathbb{D}$。' +
-          '于是任何单连通区域上的问题都可以搬到圆盘上算 —— 双曲几何（`prop.poincare-disk`）就是这么来的。',
-        '',
-        '⚠️ **单连通不能去掉**：圆环 $\\{1 < |z| < 2\\}$ 与 $\\mathbb{D}$ 不共形等价（前者有「洞」，' +
-          '单值化定理里它对应另一个模型）。\n\n' +
-          '⚠️ 「真子区域」也不能去掉：$\\mathbb{C}$ 本身没有到 $\\mathbb{D}$ 的双全纯（Liouville：$\\mathbb{D} \\to \\mathbb{C}$ 的有界全纯像若满则… 更直接地，$\\mathbb{C}$ 上的全纯函数不能有界且满射到 $\\mathbb{D}$）。',
+        '**证明结构（本轮写全；每一步引用的节点都已在图中证完）。** 记 $\\mathcal{F}=\\{\\varphi:\\Omega\\to\\mathbb{D}\\ \\text{单叶全纯}:\\ \\varphi(z_{0})=0\\}$，$s:=\\sup_{\\varphi\\in\\mathcal{F}}|\\varphi\'(z_{0})|$。下面依次证：$\\mathcal{F}$ 非空；极值元存在；极值元满射；唯一性。',
+        '**第 0 步：两个预备。**（a）若 $\\varphi:\\Omega\\to\\mathbb{D}$ 全纯，则 $|\\varphi\'(z_{0})|\\le 1/\\rho$，$\\rho:=\\operatorname{dist}(z_{0},\\partial\\Omega)$：在 $B(z_{0},\\rho)\\subset\\Omega$ 上用 Cauchy 估计（`thm.cauchy-inequality`），$|\\varphi|\\le1$，故 $|\\varphi\'(z_{0})|\\le1/\\rho$。（b）**单叶性在内闭一致极限下保持**：设 $\\varphi_{n}\\to f$ 内闭一致，$\\varphi_{n}$ 单叶、$f$ 非常数。若 $f(z_{1})=f(z_{2})=w$ 而 $z_{1}\\ne z_{2}$，由 Hurwitz 零点定理（`thm.hurwitz`，用于 $f-w$）知 $\\varphi_{n}-w$ 在 $z_{1}$、$z_{2}$ 附近各有零点（$n$ 大时），与 $\\varphi_{n}$ 单叶矛盾。故 $f$ 单叶。',
+        '**第一步：$\\mathcal{F}$ 非空。** 取 $a\\in\\mathbb{C}\\setminus\\Omega$。$z-a$ 在 $\\Omega$ 上无零点，$\\Omega$ 单连通，故存在全纯 $g$ 使 $g^{2}=z-a$（`prop.single-valued-branch`：无零点全纯函数在单连通区域有单值对数支，再取 $\\exp(\\tfrac12\\log)$）。$g$ 单叶：$g(z_{1})=g(z_{2})\\implies z_{1}=z_{2}$。又 $g(\\Omega)\\cap(-g(\\Omega))=\\emptyset$：若 $g(z_{1})=-g(z_{2})$，平方得 $z_{1}=z_{2}$，于是 $g(z_{1})=-g(z_{1})$，故 $g(z_{1})=0$，与 $g^{2}=z-a\\ne0$ 矛盾。令 $w_{0}=g(z_{0})$；$g(\\Omega)$ 开，取 $r>0$ 使 $B(w_{0},r)\\subset g(\\Omega)$，则 $B(-w_{0},r)\\subset-g(\\Omega)$ 与 $g(\\Omega)$ 不交，故 $|w+w_{0}|\\ge r$（$w\\in g(\\Omega)$）。于是 $T(w):=1/(w+w_{0})$ 在 $g(\\Omega)$ 上全纯单叶且 $|T|\\le1/r$；$rT$ 把 $g(\\Omega)$ 映入 $\\mathbb{D}$。再用 $\\mathbb{D}$ 的自同构（`def.mobius`：$\\varphi_{b}(w)=(w-b)/(1-\\bar b w)$）把 $rT(w_{0})$ 搬到 $0$，得单叶 $\\psi:\\Omega\\to\\mathbb{D}$、$\\psi(z_{0})=0$；最后乘单位复数使 $\\psi\'(z_{0})>0$。故 $\\mathcal{F}\\ne\\emptyset$。',
+        '**第二步：极值元存在。** 由第 0 步（a），$s\\le1/\\rho<\\infty$；$\\mathcal{F}\\ne\\emptyset$ 给 $s>0$。取 $\\varphi_{n}\\in\\mathcal{F}$ 使 $|\\varphi_{n}\'(z_{0})|\\to s$。族在 $\\Omega$ 的每个紧子集上一致有界（$|\\varphi_{n}|<1$），由 Montel 定理（`thm.montel`）存在内闭一致收敛子列，仍记 $\\varphi_{n}\\to f$。则 $f$ 全纯（Weierstrass 收敛定理 `thm.weierstrass-convergence`），$f(z_{0})=0$，$|f\'(z_{0})|=\\lim|\\varphi_{n}\'(z_{0})|=s$，故 $f$ 非常数；由第 0 步（b）$f$ 单叶。又 $|f|\\le1$ 而 $f$ 非常数，最大模原理给 $|f|<1$，即 $f:\\Omega\\to\\mathbb{D}$。故 $f\\in\\mathcal{F}$ 且达到极大。',
+        '**第三步：$f$ 必满射。** 反设存在 $a\\in\\mathbb{D}\\setminus f(\\Omega)$。令 $\\varphi_{a}(w)=(w-a)/(1-\\bar a w)$ —— $\\mathbb{D}$ 的自同构，$\\varphi_{a}(a)=0$、$\\varphi_{a}\'(a)=1/(1-|a|^{2})$。$F:=\\varphi_{a}\\circ f$ 在 $\\Omega$ 上全纯且无零点（$f(\\Omega)\\subset\\mathbb{D}\\setminus\\{a\\}$），$\\Omega$ 单连通，故存在全纯 $h$ 使 $h^{2}=F$（`prop.single-valued-branch`）。$h$ 单叶：$h(z_{1})=\\pm h(z_{2})\\implies F(z_{1})=F(z_{2})\\implies f(z_{1})=f(z_{2})\\implies z_{1}=z_{2}$；且 $h\\ne0$。令 $b=h(z_{0})$，则 $|b|^{2}=|F(z_{0})|=|a|$（$f(z_{0})=0$），且 $|h|<1$。$\\psi:=\\varphi_{b}\\circ h$ 是 $\\Omega\\to\\mathbb{D}$ 的单叶全纯映射，$\\psi(z_{0})=0$。**算导数**：$F\'(z_{0})=\\varphi_{a}\'(0)f\'(z_{0})=(1-|a|^{2})\\,s$（用 $f\'(z_{0})=s>0$），故 $|h\'(z_{0})|=\\frac{|F\'(z_{0})|}{2|b|}=\\frac{(1-|a|^{2})s}{2\\sqrt{|a|}}$。于是 $|\\psi\'(z_{0})|=\\frac{|h\'(z_{0})|}{1-|b|^{2}}=\\frac{(1-|a|^{2})s}{2\\sqrt{|a|}(1-|a|)}=\\frac{(1+|a|)s}{2\\sqrt{|a|}}$。由 $(1+|a|)^{2}-4|a|=(1-|a|)^{2}>0$（$|a|\\ne1$），得 $\\frac{1+|a|}{2\\sqrt{|a|}}>1$，即 $|\\psi\'(z_{0})|>s$，与 $s$ 的极大性矛盾。故 $f$ 满射。',
+        '**第四步：双全纯与唯一性。** 单叶 + 满射的全纯映射是双全纯（单叶全纯是开映射，`thm.open-mapping`；逆映射全纯）。若 $f,g$ 都满足条件，则 $h:=g\\circ f^{-1}$ 是 $\\mathbb{D}$ 的自同构、$h(0)=0$。Schwarz 引理（`lem.schwarz`）给 $|h(z)|\\le|z|$；对 $h^{-1}$ 同样得 $|h^{-1}(w)|\\le|w|$，即 $|h(z)|\\ge|z|$。故 $|h(z)|=|z|$，于是 $h(z)=cz$、$|c|=1$；又 $h\'(0)=g\'(z_{0})/f\'(z_{0})>0$，故 $c=1$，即 $f=g$。∎',
+        '⭐ **为什么叫「基本定理」**：它把「共形等价」在单连通情形下一举归约到唯一的模型 $\\mathbb{D}$。于是任何单连通区域上的问题都可以搬到圆盘上算 —— 双曲几何（`prop.poincare-disk`）就是这么来的。',
+        '⚠️ **单连通不能去掉**：圆环 $\\{1<|z|<2\\}$ 与 $\\mathbb{D}$ 不共形等价（前者有「洞」，单值化定理里它对应另一个模型）。⚠️ 「真子区域」也不能去掉：$\\mathbb{C}$ 本身没有到 $\\mathbb{D}$ 的双全纯（Liouville 定理：$\\mathbb{C}\\to\\mathbb{D}$ 的有界全纯必为常数）。',
       ].join('\n'),
       refs: [
         '王晓光《复变函数》· Riemann 映射定理（正规族证明）',

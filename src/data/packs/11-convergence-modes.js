@@ -171,10 +171,10 @@ window.MG = window.MG || {};
       id: 'cor.lusin',
       cluster: 'analysis.measurable',
       type: 'corollary',
-      label: 'Lusin 定理',
-      title: 'Lusin 定理：可测函数几乎处处连续',
+      label: '卢津定理',
+      title: '卢津定理：可测函数几乎处处连续',
       regions: ['analysis'],
-      tags: ['推论', 'Lusin', '连续', '紧集'],
+      tags: ['推论', '卢津', '连续', '紧集'],
       statement: [
         '设 $f : [a, b] \\to \\mathbb{C}$ 是 Lebesgue 可测的。则对任意 $\\varepsilon > 0$，存在**紧集** $E \\subseteq [a, b]$ 使',
         '',

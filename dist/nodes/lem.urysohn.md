@@ -1,5 +1,5 @@
-# Urysohn 引理　`lem.urysohn`
-Urysohn 引理
+# 乌雷松引理　`lem.urysohn`
+乌雷松引理
 layer 16 · 引理 · 分离公理 · 拓扑学
 [在星图里打开](../#n=lem.urysohn)　·　[节点索引](../index.md)
 

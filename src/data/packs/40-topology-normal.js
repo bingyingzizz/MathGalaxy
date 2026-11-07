@@ -46,10 +46,10 @@ window.MG = window.MG || {};
       id: 'lem.urysohn',
       cluster: 'topology.separation',
       type: 'lemma',
-      label: 'Urysohn 引理',
-      title: 'Urysohn 引理',
+      label: '乌雷松引理',
+      title: '乌雷松引理',
       regions: ['topology'],
-      tags: ['拓扑', '正规', '连续函数', 'Urysohn'],
+      tags: ['拓扑', '正规', '连续函数', '乌雷松'],
       statement: [
         '设 $X$ 是拓扑空间。则 $X$ **正规** $\\iff$ 对任意两个不交闭集 $A, B \\subseteq X$，存在连续函数',
         '',
