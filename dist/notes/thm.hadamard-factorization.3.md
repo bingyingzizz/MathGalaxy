@@ -1,8 +1,6 @@
 # Hadamard 分解定理　`thm.hadamard-factorization`　·　说明
 根 `../`
 
-**第四步：$\Phi$ 的阶 $\le\rho$（缺口）。** 需要对 $|z|=r$ 的两条估计 $\log|\prod_{n}E_{p}(z/a_{n})|\le C\,r^{\rho+\varepsilon}$ 与 $\ge -C\,r^{\rho+\varepsilon}$。上界可按 $|a_{n}|\le 2r$、$|a_{n}|>2r$ 拆分，配合 $n(t)\le C t^{\rho+\varepsilon}$ 与分部求和证出；**下界在 $z$ 靠近某个零点 $a_{n}$ 时必须单独书账**（用 $|f|$ 在该点的零点阶数与 $|E_{p}|$ 的一阶零点相消，把「$\log|P|$ 的负值」与「$\log|f|$ 的负值」配对），本图没有把这一步写全。这就是本节点仍标 `status: 'skeleton'` 的缺口。
-
-**第五步：无零点 $\implies$ 指数（完整）。** $\Phi$ 整、无零点，$\mathbb{C}$ 单连通，由 `prop.single-valued-branch` 存在整函数 $h$ 使 $\Phi=e^{h}$。
+**第四步：$\Phi$ 的阶 $\le\rho$（缺口已钉到一条引理）。** 需要 $|z|=r$ 上的两条估计 $\log|\prod_{n}E_{p}(z/a_{n})|\le C\,r^{\rho+\varepsilon}$ 与 $\ge -C\,r^{\rho+\varepsilon}$。**上界（离零点）可写全**：按 $|a_{n}|\le 2r$、$|a_{n}|>2r$ 拆分；$|w|\le 1/2$ 时 $\log|E_{p}(w)|\le C|w|^{p+1}$，$|w|\ge 1/2$ 时 $\log|E_{p}(w)|=\log|1-w|+\operatorname{Re}\sum_{j\le p}w^{j}/j$ 且后一项 $\le C|w|^{p}$；再用 $\sum_{|a_{n}|\le 2r}(r/|a_{n}|)^{p}\le C\,r^{\rho}$（分部求和 + $n(t)\le Ct^{\rho+\varepsilon}$）与尾部 $\sum_{|a_{n}|>2r}(r/|a_{n}|)^{p+1}\le C\,r^{\rho-(p+1)}$，得 $\log|P(z)|\le C\,r^{\rho+\varepsilon}+\sum_{|a_{n}|\le 2r}\log\frac{r}{|z-a_{n}|}$。**下界正是缺口**：需要典范乘积下界引理（Hadamard）：存在 $C$ 使 $\log|P(z)|\ge -C\,r^{\rho+\varepsilon}$（$|z|=r$，$z$ 离开零点的小邻域）。局部化的标准证明把 $\sum_{|a_{n}|\le 2r}\log|z-a_{n}|$ 与 $\log|f(z)|$ 配对（$f$ 与乘积在 $a_{n}$ 处同阶消
 
 > 续见 notes/thm.hadamard-factorization.4.md

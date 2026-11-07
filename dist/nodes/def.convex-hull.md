@@ -18,6 +18,8 @@ $\operatorname{conv}(S) := \bigcap\{ C : C \supseteq S,\ C \text{ 凸} \}.$
 refs: Conway, A Course in Functional Analysis · Hilbert 空间与正交基
 
 ## 说明
-⭐ 两条等价刻画：交定义（最小凸集）与有限凸组合定义。前者说明「凸包是最小的」，后者说明「凸包里的点长什么样」。\n\n⚠ 空集的凸包是空集；不要把「凸集」默认成非空。
+⭐ 两条等价刻画：交定义（最小凸集）与有限凸组合定义。前者说明「凸包是最小的」，后者说明「凸包里的点长什么样」。
+
+⚠ 空集的凸包是空集；不要把「凸集」默认成非空。
 
 引用：`def.convex-hull`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

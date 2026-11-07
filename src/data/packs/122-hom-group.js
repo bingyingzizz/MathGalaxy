@@ -678,16 +678,18 @@ window.MG = window.MG || {};
         '',
         '$$\\check{H}^{n}(X, \\mathcal{M}) \\;\\cong\\; H^{n}(X, \\mathcal{M}) .$$',
         '',
-        '更强的形式：对每个**局部有限**的开覆盖 $\\mathfrak{U}$，规范映射 $\\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) \\to H^{n}(X, \\mathcal{M})$ 已经是同构；一般覆盖先取局部有限的开细化。'
+        '这里 $\\check{H}^{n}(X,\\mathcal{M}):=\\varinjlim_{\\mathfrak{U}}\\check{H}^{n}(\\mathfrak{U},\\mathcal{M})$ 是沿局部有限开覆盖的定向极限。**不能**对任意单个局部有限覆盖断言同构（反例见注）；若 $\\mathfrak{U}$ 对 $\\mathcal{M}$ 是**好覆盖**——所有有限交 $U_{i_{0}\\cdots i_{p}}$ 满足 $H^{q}(U_{i_{0}\\cdots i_{p}},\\mathcal{M})=0$（$q>0$）——则 Cartan–Leray 谱序列退化，逐覆盖映射 $\\check{H}^{n}(\\mathfrak{U},\\mathcal{M})\\to H^{n}(X,\\mathcal{M})$ 已是同构。',
       ].join('\n'),
       notes: [
         '**标准证明的三个零件。** 下面把能逐字核验的部分写出来；写不动的两条明确标成缺口 —— 本节点因此仍标 `status: \'skeleton\'`。',
         '**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr)$，其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。',
         '**① 的证明。** 只需逐点看茎。固定 $x$，取 $i$ 使 $x \\in U_{i}$。在茎上定义收缩同伦 $h^{p} : (\\check{\\mathcal{C}}^{p})_{x} \\to (\\check{\\mathcal{C}}^{p-1})_{x}$：对 $\\sigma \\in (\\check{\\mathcal{C}}^{p})_{x}$ 令 $(h\\sigma)_{i_{0} \\cdots i_{p-1}} := \\sigma_{i\\,i_{0} \\cdots i_{p-1}}$（其余分量取 $0$，在 $x$ 的充分小邻域里 $U_{i}$ 一直可用）。直接按 Čech 微分 $\\delta$ 的符号计算得 $\\delta h + h \\delta = \\operatorname{id}$（$p \\ge 1$），而 $p = 0$ 时 $\\delta h = \\operatorname{id}$ 正是增广映射 $\\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x}$。所以增广复形 $0 \\to \\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x} \\to (\\check{\\mathcal{C}}^{1})_{x} \\to \\cdots$ 正合；逐点正合即层正合。取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$，故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
         '**② 每一项是软的：细层部分已证。** 仿紧 Hausdorff 上，局部有限覆盖配单位分解（`prop.paracompact-partition-unity`）。先证「细 $\\implies$ 软」：设 $\\mathcal{F}$ 是细层，$F \\subseteq X$ 闭，$s \\in \\mathcal{F}(F)$。每个 $x \\in F$ 有邻域 $U_{x}$ 与 $s_{x} \\in \\mathcal{F}(U_{x})$ 使 $s_{x}|_{F \\cap U_{x}} = s$；把 $\\{U_{x}\\}_{x \\in F} \\cup \\{X \\setminus F\\}$ 取局部有限加细并配单位分解 $\\{\\rho_{j}\\}$。令 $s_{j} \\in \\mathcal{F}(V_{j})$ 是相应局部截面；在 $V_{j}$ 外把 $\\rho_{j} s_{j}$ 延拓为 $0$（$\\operatorname{supp} \\rho_{j} \\subseteq V_{j}$ 保证相容），则 $\\tilde{s} := \\sum_{j} \\rho_{j} s_{j}$ 是 $X$ 上的整体截面（局部有限和），且在 $F$ 上等于 $s$。所以 $\\mathcal{F}$ 软。',
-        '**② 的缺口：软层无环。** 还需要引理：仿紧 Hausdorff 上，软层 $\\mathcal{M}$ 满足 $H^{n}(X, \\mathcal{M}) = 0$（$n \\ge 1$）。标准证明（Godement）走典范软消解 $0 \\to \\mathcal{M} \\to C^{0}(\\mathcal{M}) \\to C^{1}(\\mathcal{M}) \\to \\cdots$，逐项用单位分解把闭集上的截面拼成整体；本图没有这条引理的节点，也没有把「$C^{q}(\\mathcal{M})$ 软」与「软消解算导出函子」两步展开。',
-        '**③ 的缺口：零调消解算导出函子。** 还需标准同调代数引理：若 $0 \\to \\mathcal{M} \\to \\mathcal{A}^{0} \\to \\mathcal{A}^{1} \\to \\cdots$ 是消解且每个 $\\mathcal{A}^{q}$ 是 $\\Gamma$-无环（即 $H^{n}(X, \\mathcal{A}^{q}) = 0$，$n \\ge 1$），则 $H^{n}(X, \\mathcal{M}) \\cong H^{n}\\bigl(\\Gamma(X, \\mathcal{A}^{\\bullet})\\bigr)$。证明是与内射消解比较（比较引理 + 逐项填图），本图同样未单列节点。',
-        '**结论**：把 ② 的软层无环与 ③ 的零调消解补上，取 $\\mathcal{A}^{\\bullet} = \\check{\\mathcal{C}}^{\\bullet}$ 即得 $H^{n}(X,\\mathcal{M}) \\cong \\check{H}^{n}(\\mathfrak{U},\\mathcal{M})$；再沿局部有限覆盖取余极限即得定理。⚠ 本节点**仍标 skeleton**：缺口就是上面两条标准引理（① 与「细 $\\implies$ 软」已在注中证完）。',
+        '**② 缺口：软层无环（Godement）。** 仿紧 Hausdorff 上软层 $\\mathcal{M}$ 满足 $H^{n}(X,\\mathcal{M})=0$（$n\\ge 1$）。它不能由 ① 直接得到：① 只说明「Čech 复形是消解」，而固定覆盖的 Čech 上同调并不等于导出函子上同调（反例见 ④）。标准路线两条：$n=1$ 用「软层使 $0\\to\\mathcal{M}\\to\\mathcal{G}\\to\\mathcal{H}\\to 0$ 的整体截面正合」——对局部有限闭加细 $\\{A_{i}\\}$ 作 Zorn 归纳：在闭并 $B$ 上已有提升 $s$，取 $A_{i}\\not\\subseteq B$，差 $s-s_{i}\\in\\mathcal{M}(B\\cap A_{i})$ 由软性延拓为整体 $t$，在 $A_{i}$ 上改用 $s_{i}+t$，沿闭覆盖 $\\{B,A_{i}\\}$ 粘接，极大性给 $B=X$；再用内射消解 $0\\to\\mathcal{M}\\to\\mathcal{I}\\to\\mathcal{Q}\\to 0$ 作维数转移（$\\mathcal{Q}$ 是松弛层的商、故松弛，松弛 $\\implies$ 软；长正合列给 $H^{n}(\\mathcal{M})\\cong H^{n-1}(\\mathcal{Q})$，对 $n$ 归纳）。本图没有这条引理的节点；把它写成节点只需层的截面正合性 + 长正合列。',
+        '**③ 缺口：零调消解算导出函子（标准、可逐字补）。** 若 $0\\to\\mathcal{M}\\to\\mathcal{A}^{0}\\to\\mathcal{A}^{1}\\to\\cdots$ 是消解且每个 $\\mathcal{A}^{q}$ 满足 $H^{n}(X,\\mathcal{A}^{q})=0$（$n\\ge 1$），则 $H^{n}(X,\\mathcal{M})\\cong H^{n}(\\Gamma(X,\\mathcal{A}^{\\bullet}))$。证明是维数转移：令 $\\mathcal{Z}^{0}=\\mathcal{M}$、$\\mathcal{Z}^{q+1}=\\operatorname{im}(\\mathcal{A}^{q}\\to\\mathcal{A}^{q+1})$，短正合列 $0\\to\\mathcal{Z}^{q}\\to\\mathcal{A}^{q}\\to\\mathcal{Z}^{q+1}\\to 0$ 的长正合列给 $H^{n}(\\mathcal{Z}^{q+1})\\cong H^{n+1}(\\mathcal{Z}^{q})$（$n\\ge 1$）与 $H^{1}(\\mathcal{Z}^{q})\\cong\\operatorname{coker}(\\Gamma(\\mathcal{A}^{q})\\to\\Gamma(\\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引；缺的只是把它单列成引理的节点。',
+        '**④ 仍缺的比较步（旧注「每项软」的说法要修正）。** ① 中的 $\\check{\\mathcal{C}}^{p}$ 是若干开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只是左正合：对任意层 $\\mathcal{M}$，$\\check{\\mathcal{C}}^{p}(\\mathfrak{U},\\mathcal{M})$ **不一定软/无环**，所以不能直接对 ① 用 ③。正确收尾需要「软层 $\\implies$ 局部有限覆盖的 Čech 零调」（或其等价的双复形比较：把 $\\mathcal{M}$ 换成软消解 $\\mathcal{S}^{\\bullet}$，对双复形 $\\check{C}^{p}(\\mathfrak{U},\\mathcal{S}^{q})$ 用两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但没有「软层 Čech 零调」这条引理，也没有把双复形两套滤过写到可核的程度。补上 ④ 才真正得 $\\check{H}^{n}(X,\\mathcal{M})\\cong H^{n}(X,\\mathcal{M})$；本节点因此仍标 skeleton。',
+        '⚠️ **为什么不能对任意覆盖逐覆盖断言（陈述末句已按此修正）**：取 $X=S^{2}$、$\\mathcal{M}=\\mathbb{Z}$ 与两个半球的开覆盖 $\\{U,V\\}$（局部有限）：$U\\cap V$ 同胚于环带，$\\check{C}^{2}=0$ 故 $\\check{H}^{2}(\\mathfrak{U},\\mathbb{Z})=0$，而 $H^{2}(S^{2},\\mathbb{Z})=\\mathbb{Z}$。逐覆盖断言因此为假；正确形式是沿覆盖的定向极限 $\\check{H}^{n}(X,\\mathcal{M})=\\varinjlim_{\\mathfrak{U}}\\check{H}^{n}(\\mathfrak{U},\\mathcal{M})\\cong H^{n}(X,\\mathcal{M})$，对**好覆盖**（有限交上高阶上同调为零，对常值层即有限交可缩）才能逐覆盖。',
+        '**结论**：② 的软层无环与 ③ 的零调消解补上后，还必须补 ④ 的比较步，才能把 ① 的 Čech 消解当零调消解收尾（或对好覆盖用 Cartan–Leray 退化）。⚠ 本节点**仍标 skeleton**：缺的是 ②（软层无环）与 ④（软层 Čech 零调/双复形比较）；①、细 $\\implies$ 软、③ 已写出。',
         '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。',
         '⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。'
       ].join('\n\n'),
@@ -1178,27 +1180,25 @@ window.MG = window.MG || {};
     {
       id: 'imp.paracompact-cech',
       kind: 'implication',
-      sources: ['thm.pushforward-enough-injectives', 'prop.skyscraper-injective'],
+      sources: ['def.cech-cohomology', 'prop.paracompact-partition-unity', 'thm.cartan-leray', 'cor.cech-cohomology-spectral', 'def.right-derived-functor'],
       target: 'thm.paracompact-cech-equals-sheaf',
-      title: '足够多内射 + 软层无环 $\\implies$ 仿紧上 Čech 等于层上同调（路线）',
+      title: 'Čech 消解 + 软层无环 $\\implies$ 仿紧上 Čech 等于层上同调（路线，含缺口）',
+      note: '这条定理的标准路线是「造一个由无环层组成的消解」；但要小心：Čech 复形的每一项一般**不是**软层。本边把能逐字核验的部分与两条缺口分开写。',
       proof: [
-        '**要证**：仿紧 Hausdorff 上 $\\check{H}^{n}(X, \\mathcal{M}) = H^{n}(X, \\mathcal{M})$。走法是「造一个由无环层组成的消解」。',
+        '**要证**：仿紧 Hausdorff 上 $\\check{H}^{n}(X,\\mathcal{M})\\cong H^{n}(X,\\mathcal{M})$，其中左边是沿局部有限开覆盖的定向极限。逐覆盖的强形式只对**好覆盖**成立（见第五步）。',
         '',
-        '**第一步：Čech 层复形是消解。** 对局部有限开覆盖 $\\mathfrak{U} = (U_{i})_{i}$，令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}(\\mathcal{M}|_{U_{i_{0}\\cdots i_{p}}})$。\n\n$\\mathcal{M}$ 是层，Čech 正合性可以在每个点的小邻域里逐点验证（局部有限保证「只有有限多个 $U_{i}$ 参与」），于是 $0 \\to \\mathcal{M} \\to \\check{\\mathcal{C}}^{0} \\to \\check{\\mathcal{C}}^{1} \\to \\cdots$ 正合。\n\n取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$（直积与截面对 $j_{*}$ 的相容性），故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
+        '**第一步：Čech 层复形是消解（完整）。** 对覆盖 $\\mathfrak{U}=(U_{i})$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U},\\mathcal{M}):=\\prod_{i_{0}<\\cdots<i_{p}}j_{*}(\\mathcal{M}|_{U_{i_{0}\\cdots i_{p}}})$。逐茎验证：固定 $x$ 取 $i$ 使 $x\\in U_{i}$，在茎上令 $(h\\sigma)_{i_{0}\\cdots i_{p-1}}:=\\sigma_{i\\,i_{0}\\cdots i_{p-1}}$，则 $\\delta h+h\\delta=\\operatorname{id}$（$p\\ge1$），$p=0$ 时 $\\delta h$ 是增广；故 $0\\to\\mathcal{M}\\to\\check{\\mathcal{C}}^{0}\\to\\check{\\mathcal{C}}^{1}\\to\\cdots$ 正合。取整体截面：$\\Gamma(X,\\check{\\mathcal{C}}^{p})=\\check{C}^{p}(\\mathfrak{U},\\mathcal{M})$，其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U},\\mathcal{M})$。',
         '',
-        '**第二步：每一项软。** 仿紧 Hausdorff 上每个开覆盖有局部有限的开细化，局部有限覆盖配**从属的单位分解**（`prop.paracompact-partition-unity`）：一族连续 $\\varphi_{i} : X \\to [0,1]$，支撑在 $U_{i}$ 里、局部有限、局部求和为 $1$。\n\n用 $\\varphi_{i}$ 逐块切截面，就能把 $\\check{\\mathcal{C}}^{p}$ 的整体截面「拆成」各覆盖成员上的截面再拼回来 —— 这正是**软性**（soft：每个闭集上的截面都能延拓到全空间）。',
+        '**第二步：$\\check{\\mathcal{C}}^{p}$ 一般不是软层（修正一个常见误判）。** $\\check{\\mathcal{C}}^{p}$ 是开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只左正合；单位分解作用在**函数**上，不能把 $\\mathcal{M}$ 的整体截面「拆成」局部截面再拼回。因此不能由「Čech 复形每一项软」直接得到无环性。正确的替代是：细层 $\\implies$ 软层（单位分解拼截面），再用 Godement 的「软层无环」作维数转移 —— 后者是缺口，见第四步。',
         '',
-        '**第三步：软层对 $\\Gamma$ 无环。** 软层在仿紧 Hausdorff 上无环：给定软层 $\\mathcal{S}$ 与短正合列 $0 \\to \\mathcal{S} \\to \\mathcal{A} \\to \\mathcal{B} \\to 0$，要证 $\\Gamma(\\mathcal{A}) \\to \\Gamma(\\mathcal{B})$ 满。\n\n取 $s \\in \\Gamma(\\mathcal{B})$，用仿紧性 + 局部有限覆盖把它**局部**提升成一族局部截面，再用从属于该覆盖的单位分解把它们拼成一个整体截面 —— 拼的时候软性保证每步都合法。\n\n于是 $H^{n}(X, \\mathcal{S}) = 0$（$n > 0$）。',
+        '**第三步：零调消解算导出函子（完整可写）。** 若 $0\\to\\mathcal{M}\\to\\mathcal{A}^{0}\\to\\mathcal{A}^{1}\\to\\cdots$ 的每一项都 $\\Gamma$-无环，则 $H^{n}(X,\\mathcal{M})\\cong H^{n}(\\Gamma(X,\\mathcal{A}^{\\bullet}))$：令 $\\mathcal{Z}^{q+1}=\\operatorname{im}(\\mathcal{A}^{q}\\to\\mathcal{A}^{q+1})$，短正合列的长正合列给 $H^{n}(\\mathcal{Z}^{q+1})\\cong H^{n+1}(\\mathcal{Z}^{q})$ 与 $H^{1}(\\mathcal{Z}^{q})\\cong\\operatorname{coker}(\\Gamma(\\mathcal{A}^{q})\\to\\Gamma(\\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引。',
         '',
-        '**第四步：无环消解算导出函子。** 由第一到第三步，$\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是一个由 $\\Gamma$-无环层组成的消解。\n\n由 Leray 零调性（对右导出函子，用 $F$-零调对象组成的消解算出的同调与用内射消解算出的相同 —— 这一步的合法性由「足够多内射」保证，见 `thm.pushforward-enough-injectives`），',
+        '**第四步：缺口 ①——软层无环。** 需要：仿紧 Hausdorff 上软层 $\\mathcal{S}$ 满足 $H^{n}(X,\\mathcal{S})=0$（$n\\ge1$）。$n=1$ 由「软层让 $0\\to\\mathcal{S}\\to\\mathcal{A}\\to\\mathcal{B}\\to0$ 的整体截面正合」给出（对局部有限闭加细作 Zorn 归纳），$n>1$ 用内射消解与松弛层作维数转移。本图无这条引理的节点，只以引理形式引用。',
         '',
-        '$$H^{n}(X, \\mathcal{M}) = H^{n}\\bigl(\\Gamma(X, \\check{\\mathcal{C}}^{\\bullet})\\bigr) = \\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) .$$',
+        '**第五步：缺口 ②——比较步，以及逐覆盖断言为假。** 要把第一步的 Čech 消解当第三步的 $\\mathcal{A}^{\\bullet}$ 用，还差「软层对局部有限覆盖的 Čech 复形零调」，或等价的双复形比较（软消解 $\\mathcal{S}^{\\bullet}$，双复形 $\\check{C}^{p}(\\mathfrak{U},\\mathcal{S}^{q})$ 的两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但缺这条引理。另一方面，对任意单个局部有限覆盖断言同构是**假的**：$X=S^{2}$、$\\mathcal{M}=\\mathbb{Z}$、两半球覆盖 $\\{U,V\\}$，$\\check{C}^{2}=0$ 故 $\\check{H}^{2}(\\mathfrak{U},\\mathbb{Z})=0$，而 $H^{2}(S^{2},\\mathbb{Z})=\\mathbb{Z}$。若 $\\mathfrak{U}$ 对 $\\mathcal{M}$ 是好覆盖（所有有限交上 $H^{q}=0$，$q>0$），Cartan–Leray 谱序列退化，逐覆盖映射才是同构；一般情形只能取定向极限。',
         '',
-        '**第五步：去掉局部有限。** 一般开覆盖取局部有限细化 $\\mathfrak{V} \\preceq \\mathfrak{U}$；细化映射 $\\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) \\to \\check{H}^{n}(\\mathfrak{V}, \\mathcal{M})$ 与到 $H^{n}(X, \\mathcal{M})$ 的规范映射相容，而后者已是同构，故沿覆盖取余极限仍得同构。\n\n⚠️ **这是路线梗概，不是完整证明**：第三步「软层对 $\\Gamma$ 无环」与第四步「无环消解算导出函子（Leray 零调性）」本图都还没有节点，这里只以引理形式引用；节点因此保持 skeleton，本边不勾 ∎。',
-        '',
-        '⚠️ 三个零件（Čech 正合、软性、软层无环）都**用到了仿紧性**：它同时提供「局部有限细化」与「单位分解」。去掉仿紧性，第一步或第二步会坏，结论就未必成立。'
+        '⚠️ **本边只是路线**：第一、三步可逐字核验，缺口 ①（软层无环）与 ②（比较步）本图都还没有节点；节点因此保持 skeleton，本边不勾 ∎。'
       ].join('\n'),
-      note: '这条定理的形状是「造一个无环消解」：Čech 复形本身便宜，仿紧性负责让它无环，于是它就算出了层上同调。'
     },
 
     /* ------------------------------------------------ §D 谱序列的另一条路 */

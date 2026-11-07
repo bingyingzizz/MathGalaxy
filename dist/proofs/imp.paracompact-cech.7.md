@@ -1,8 +1,8 @@
-# 足够多内射 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线）
+# Čech 消解 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线，含缺口）
 `imp.paracompact-cech` · 推出 · strong 边 · 根 `../`
 
-`thm.pushforward-enough-injectives` 足够多内射层 + `prop.skyscraper-injective` 天际线层是内射层 → `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调
+`def.cech-cohomology` Čech 上同调 + `prop.paracompact-partition-unity` 仿紧性与单位分解 + `thm.cartan-leray` Cartan–Leray 谱序列 + `cor.cech-cohomology-spectral` Čech 到上同调的谱序列 + `def.right-derived-functor` 右导出函子 → `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调
 
-⚠️ 三个零件（Čech 正合、软性、软层无环）都**用到了仿紧性**：它同时提供「局部有限细化」与「单位分解」。去掉仿紧性，第一步或第二步会坏，结论就未必成立。
+}^{q})$ 与 $H^{1}(\mathcal{Z}^{q})\cong\operatorname{coker}(\Gamma(\mathcal{A}^{q})\to\Gamma(\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引。
 
-> 这条定理的形状是「造一个无环消解」：Čech 复形本身便宜，仿紧性负责让它无环，于是它就算出了层上同调。
+> 续见 proofs/imp.paracompact-cech.8.md

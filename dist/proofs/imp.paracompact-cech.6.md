@@ -1,10 +1,8 @@
-# 足够多内射 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线）
+# Čech 消解 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线，含缺口）
 `imp.paracompact-cech` · 推出 · strong 边 · 根 `../`
 
-`thm.pushforward-enough-injectives` 足够多内射层 + `prop.skyscraper-injective` 天际线层是内射层 → `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调
+`def.cech-cohomology` Čech 上同调 + `prop.paracompact-partition-unity` 仿紧性与单位分解 + `thm.cartan-leray` Cartan–Leray 谱序列 + `cor.cech-cohomology-spectral` Čech 到上同调的谱序列 + `def.right-derived-functor` 右导出函子 → `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调
 
-**第五步：去掉局部有限。** 一般开覆盖取局部有限细化 $\mathfrak{V} \preceq \mathfrak{U}$；细化映射 $\check{H}^{n}(\mathfrak{U}, \mathcal{M}) \to \check{H}^{n}(\mathfrak{V}, \mathcal{M})$ 与到 $H^{n}(X, \mathcal{M})$ 的规范映射相容，而后者已是同构，故沿覆盖取余极限仍得同构。
-
-⚠️ **这是路线梗概，不是完整证明**：第三步「软层对 $\Gamma$ 无环」与第四步「无环消解算导出函子（Leray 零调性）」本图都还没有节点，这里只以引理形式引用；节点因此保持 skeleton，本边不勾 ∎。
+**第三步：零调消解算导出函子（完整可写）。** 若 $0\to\mathcal{M}\to\mathcal{A}^{0}\to\mathcal{A}^{1}\to\cdots$ 的每一项都 $\Gamma$-无环，则 $H^{n}(X,\mathcal{M})\cong H^{n}(\Gamma(X,\mathcal{A}^{\bullet}))$：令 $\mathcal{Z}^{q+1}=\operatorname{im}(\mathcal{A}^{q}\to\mathcal{A}^{q+1})$，短正合列的长正合列给 $H^{n}(\mathcal{Z}^{q+1})\cong H^{n+1}(\mathcal{Z
 
 > 续见 proofs/imp.paracompact-cech.7.md

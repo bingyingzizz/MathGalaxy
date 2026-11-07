@@ -1,6 +1,6 @@
 # Hadamard 分解定理　`thm.hadamard-factorization`　·　说明
 根 `../`
 
-**第六步：Borel–Carathéodory（完整证明）。** 引理：若 $g$ 在 $|z|\le R$ 全纯、$g(0)=0$、$\operatorname{Re} g\le A$（$A>0$），则对 $|z|=r<R$，$|g(z)|\le 2Ar/(R-r)$。证明：$\varphi:=g/(2A-g)$ 在 $|z|\le R$ 全纯（分母的实部 $\ge A$），且 $|\varphi|\le 1$ —— 因为 $|g|^{2}\le(2A-\operatorname{Re} g)^{2}+(\operatorname{Im} g)^{2}$ 等价于 $\operatorname{Re} g\le A$；又 $\varphi(0)=0$。Schwarz 引理（`lem.schwarz`）给 $|\varphi(z)|\le r/R$，于是 $|g|=\bigl|2A\varphi/(1+\varphi)\bigr|\le 2A|\varphi|/(1-|\varphi|)\le 2Ar/(R-r)$。∎
+失），靠近零点时用 Poisson–Jensen 公式 $\log|f(z)|=\frac{1}{2\pi}\int\log|f(re^{i\theta})|\,\frac{r^{2}-|z|^{2}}{|re^{i\theta}-z|^{2}}\,d\theta-\sum\log\frac{|r^{2}-\bar a_{n}z|}{r|z-a_{n}|}$ 加最大模原理把局部负值传回整个圆周。本图 `prop.jensen` 只有圆盘中心版，没有 Poisson–Jensen 与这条下界引理的节点。**第四步因此仍缺**，不勾 ∎。
 
 > 续见 notes/thm.hadamard-factorization.5.md

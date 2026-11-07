@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:19:18.072Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:28:18.127Z
 > 15 星系 / 105 星团 / 1550 节点 / 3192 连线（强边 3150，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -14246,7 +14246,7 @@ $$(1-t)x_{0} + t x \in S.$$
 
 这样的 $x_{0}$ 叫 $S$ 的一个**星点**（star center）。
 
-⭐ 凸集一定是星形集：任取 $x_{0} \in C$，凸性给出整条线段。反之不然：平面里的十字形关于中心星形，却不凸。
+⭐ **非空**凸集一定是星形集：任取 $x_{0} \in C$，凸性给出整条线段。空集是凸的，却一个点都没有，故不是星形集 —— 「非空」这个前提不能省。反之不然：平面里的十字形关于中心星形，却不凸。
 
 ⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。
 
@@ -14274,7 +14274,9 @@ $\operatorname{conv}(S) := \bigcap\{ C : C \supseteq S,\ C \text{ 凸} \}.$
 
 等价地，$\operatorname{conv}(S)$ 恰是 $S$ 中点的所有有限凸组合之集；$S=\emptyset$ 时为空集。
 
-⭐ 两条等价刻画：交定义（最小凸集）与有限凸组合定义。前者说明「凸包是最小的」，后者说明「凸包里的点长什么样」。\n\n⚠ 空集的凸包是空集；不要把「凸集」默认成非空。
+⭐ 两条等价刻画：交定义（最小凸集）与有限凸组合定义。前者说明「凸包是最小的」，后者说明「凸包里的点长什么样」。
+
+⚠ 空集的凸包是空集；不要把「凸集」默认成非空。
 
 参考：Conway, A Course in Functional Analysis · Hilbert 空间与正交基
 
@@ -15709,11 +15711,11 @@ $$\mu(U) := \sup\Big\{\, \Lambda(f) : f \in C_{c}(X),\ 0 \le f \le 1,\ \operator
 
 $$\mu(U \cup V) \le \mu(U) + \mu(V).$$
 
-证明：取 $f \in C_{c}$，$0 \le f \le 1$，$K := \operatorname{supp} f \subseteq U \cup V$。$K \setminus V$ 是紧集且含于开集 $U$，取**单点紧化** $X^{+} = X \cup \{\infty\}$：$X$ 局部紧 Hausdorff $\Longrightarrow$ $X^{+}$ 紧 Hausdorff $\Longrightarrow$ $X^{+}$ 正规，故可在 $X^{+}$ 内对紧集 $K \setminus V$ 与开集 $U$ 用 Urysohn 引理（`lem.urysohn`，要的是**正规**而非局部紧），得 $\varphi^{+} : X^{+} \to [0,1]$ 使 $\varphi^{+} = 1$ 于 $K \setminus V$、$\varphi^{+} = 0$ 于 $X^{+} \setminus U$。限制回 $X$ 得 $\varphi := \varphi^{+}|_{X} \in C_{c}(X)$，且 $\operatorname{supp} \varphi \subseteq U$、$\varphi = 1$ 于 $K \setminus V$。于是
+证明：取 $f \in C_{c}$，$0 \le f \le 1$，$K := \operatorname{supp} f \subseteq U \cup V$。$K \setminus V$ 是紧集且含于开集 $U$。由局部紧 Hausdorff 的正则性，取**相对紧**开集 $W$ 使 $K \setminus V \subseteq W \subseteq \overline{W} \subseteq U$（$\overline{W}$ 紧），再取开集 $N$ 使 $K \setminus V \subseteq N \subseteq \overline{N} \subseteq W$。取**单点紧化** $X^{+} = X \cup \{\infty\}$：$X$ 局部紧 Hausdorff $\Longrightarrow$ $X^{+}$ 紧 Hausdorff $\Longrightarrow$ $X^{+}$ 正规，故可在 $X^{+}$ 内对**闭集** $\overline{N}$ 与闭集 $X^{+} \setminus W$ 用 Urysohn 引理（`lem.urysohn`，要的是**正规**而非局部紧），得 $\varphi^{+} : X^{+} \to [0,1]$ 使 $\varphi^{+} = 1$ 于 $\overline{N}$、$\varphi^{+} = 0$ 于 $X^{+} \setminus W$。限制回 $X$ 得 $\varphi := \varphi^{+}|_{X} \in C_{c}(X)$，$\operatorname{supp} \varphi \subseteq \overline{W} \subseteq U$、且 $\varphi = 1$ 于 $N \supseteq K \setminus V$。于是
 
 $$f = f\varphi + f(1 - \varphi),\qquad \operatorname{supp}(f\varphi) \subseteq U,\qquad \operatorname{supp}\big(f(1 - \varphi)\big) \subseteq V$$
 
-（第二式：在 $K \setminus V$ 上 $1 - \varphi = 0$，故支集落在 $V$ 里；$K$ 外的点 $f = 0$）。两个函数都满足 $0 \le \cdot \le 1$，故
+（第一式：$\varphi$ 在 $X \setminus W$ 上为 $0$，故 $\operatorname{supp}(f\varphi) \subseteq K \cap \overline{W} \subseteq U$。第二式：$1 - \varphi$ 在开集 $N \supseteq K \setminus V$ 上为 $0$、在 $K$ 外 $f = 0$，故 $f(1 - \varphi)$ 在 $N \cup (X \setminus K)$ 上恒为 $0$，而剩下的 $K \setminus N$ 是**闭集**且含于 $V$，故 $\operatorname{supp}\big(f(1 - \varphi)\big) \subseteq V$）。两个函数都满足 $0 \le \cdot \le 1$，故
 
 $$\Lambda(f) = \Lambda(f\varphi) + \Lambda\big(f(1 - \varphi)\big) \le \mu(U) + \mu(V).$$
 
@@ -15761,7 +15763,7 @@ $$\Lambda(f) \ge \Lambda(g) = \sum_{i} (t_i - t_{i-1})\Lambda(g_i) \ge \int s\,\
 
 又 $0 \le f - s \le M/n$ 且 $f - s$ 支在 $W$ 内，故 $\int f \le \int s + (M/n)\mu(W)$，即 $\int s \ge \int f - (M/n)\mu(W)$。代入得 $\Lambda(f) \ge \int f - (M/n)\mu(W) - M\delta$；先令 $\delta \to 0$，再令 $n \to \infty$，即得 $\Lambda(f) \ge \int f$。
 
-**上界 $\Lambda(f) \le \int f\,\mathrm{d}\mu$**：由下界，对任意连续 $h \ge 0$ 有 $\Lambda(h) \ge \int h$。取开 $W \supseteq K$ 使 $\mu(W) < \mu(K) + \varepsilon$（外正则），再取 $\varphi \in C_{c}(X)$，$0 \le \varphi \le 1$、$\varphi = 1$ 于 $K$、$\operatorname{supp} \varphi \subseteq W$（单点紧化 + `lem.urysohn`）。令 $k := M\varphi - f$：在 $K$ 上 $\varphi = 1$ 故 $k = M - f \ge 0$；在 $K$ 外 $f = 0$ 故 $k = M\varphi \ge 0$。于是 $k \ge 0$ 连续紧支，对 $k$ 用下界：
+**上界 $\Lambda(f) \le \int f\,\mathrm{d}\mu$**：由下界，对任意连续 $h \ge 0$ 有 $\Lambda(h) \ge \int h$。取开 $W \supseteq K$ 使 $\mu(W) < \mu(K) + \varepsilon$（外正则），再取**相对紧**开集 $W'$ 使 $K \subseteq W' \subseteq \overline{W'} \subseteq W$，并取 $\varphi \in C_{c}(X)$，$0 \le \varphi \le 1$、$\varphi = 1$ 于 $K$、$\operatorname{supp} \varphi \subseteq \overline{W'} \subseteq W$（单点紧化 + `lem.urysohn`；最后这步包含关系靠的是**相对紧**，光有 $\varphi = 0$ 于 $X \setminus W$ 只能得支集落在 $\overline{W}$）。令 $k := M\varphi - f$：在 $K$ 上 $\varphi = 1$ 故 $k = M - f \ge 0$；在 $K$ 外 $f = 0$ 故 $k = M\varphi \ge 0$。于是 $k \ge 0$ 连续紧支，对 $k$ 用下界：
 
 $$\Lambda(k) \ge \int k \;\Longrightarrow\; M\Lambda(\varphi) - \Lambda(f) \ge M\int \varphi - \int f.$$
 
@@ -19832,7 +19834,7 @@ $$g \circ f = 1_{X}, \qquad f \circ g = 1_{Y}$$
 这时 $g$ 叫 $f$ 的**逆**，记作 $f^{-1}$；它由 $f$ 唯一确定。
 若一个范畴里每个既单又满的态射都是同构，称它为**平衡范畴**（balanced category）；$\mathbf{Set}$、$\mathbf{Ab}$ 是平衡的，$\mathbf{Ring}$ 不是。
 
-在 $\mathbf{Set}$ 里单态射恰好是单射、满态射恰好是满射（后者要用选择公理）。但一般范畴里「可消」才是定义，「一对一 / 到上」只是它在具体范畴里的表现：在环范畴里 $\mathbb{Z} \to \mathbb{Q}$ 是满态射，可它的底层映射并不是满射 —— 遗忘函子把它送出去就不再是满的了。
+在 $\mathbf{Set}$ 里单态射恰好是单射、满态射恰好是满射 —— 后者**不需要选择公理**：若 $f$ 不满，取 $b \notin \operatorname{im} f$，在两点集 $\{0,1\}$ 上令 $g(b)=0$、$h(b)=1$、而在 $\operatorname{im} f$ 上两者取同值，则 $g \circ f = h \circ f$ 但 $g \ne h$。但一般范畴里「可消」才是定义，「一对一 / 到上」只是它在具体范畴里的表现：在环范畴里 $\mathbb{Z} \to \mathbb{Q}$ 是满态射，可它的底层映射并不是满射 —— 遗忘函子把它送出去就不再是满的了。
 
 **逆是唯一的**：若 $g, g'$ 都是 $f$ 的逆，则 $g = g \circ 1_{Y} = g \circ (f \circ g') = (g \circ f) \circ g' = 1_{X} \circ g' = g'$ ✓。
 
@@ -24795,7 +24797,7 @@ $$\operatorname{Hom}_{\mathbf{Ab}(X)}\bigl(\mathcal{F},\ i_{x,*}I_{x}\bigr) \;\c
 
 $$\check{H}^{n}(X, \mathcal{M}) \;\cong\; H^{n}(X, \mathcal{M}) .$$
 
-更强的形式：对每个**局部有限**的开覆盖 $\mathfrak{U}$，规范映射 $\check{H}^{n}(\mathfrak{U}, \mathcal{M}) \to H^{n}(X, \mathcal{M})$ 已经是同构；一般覆盖先取局部有限的开细化。
+这里 $\check{H}^{n}(X,\mathcal{M}):=\varinjlim_{\mathfrak{U}}\check{H}^{n}(\mathfrak{U},\mathcal{M})$ 是沿局部有限开覆盖的定向极限。**不能**对任意单个局部有限覆盖断言同构（反例见注）；若 $\mathfrak{U}$ 对 $\mathcal{M}$ 是**好覆盖**——所有有限交 $U_{i_{0}\cdots i_{p}}$ 满足 $H^{q}(U_{i_{0}\cdots i_{p}},\mathcal{M})=0$（$q>0$）——则 Cartan–Leray 谱序列退化，逐覆盖映射 $\check{H}^{n}(\mathfrak{U},\mathcal{M})\to H^{n}(X,\mathcal{M})$ 已是同构。
 
 **标准证明的三个零件。** 下面把能逐字核验的部分写出来；写不动的两条明确标成缺口 —— 本节点因此仍标 `status: 'skeleton'`。
 
@@ -24805,11 +24807,15 @@ $$\check{H}^{n}(X, \mathcal{M}) \;\cong\; H^{n}(X, \mathcal{M}) .$$
 
 **② 每一项是软的：细层部分已证。** 仿紧 Hausdorff 上，局部有限覆盖配单位分解（`prop.paracompact-partition-unity`）。先证「细 $\implies$ 软」：设 $\mathcal{F}$ 是细层，$F \subseteq X$ 闭，$s \in \mathcal{F}(F)$。每个 $x \in F$ 有邻域 $U_{x}$ 与 $s_{x} \in \mathcal{F}(U_{x})$ 使 $s_{x}|_{F \cap U_{x}} = s$；把 $\{U_{x}\}_{x \in F} \cup \{X \setminus F\}$ 取局部有限加细并配单位分解 $\{\rho_{j}\}$。令 $s_{j} \in \mathcal{F}(V_{j})$ 是相应局部截面；在 $V_{j}$ 外把 $\rho_{j} s_{j}$ 延拓为 $0$（$\operatorname{supp} \rho_{j} \subseteq V_{j}$ 保证相容），则 $\tilde{s} := \sum_{j} \rho_{j} s_{j}$ 是 $X$ 上的整体截面（局部有限和），且在 $F$ 上等于 $s$。所以 $\mathcal{F}$ 软。
 
-**② 的缺口：软层无环。** 还需要引理：仿紧 Hausdorff 上，软层 $\mathcal{M}$ 满足 $H^{n}(X, \mathcal{M}) = 0$（$n \ge 1$）。标准证明（Godement）走典范软消解 $0 \to \mathcal{M} \to C^{0}(\mathcal{M}) \to C^{1}(\mathcal{M}) \to \cdots$，逐项用单位分解把闭集上的截面拼成整体；本图没有这条引理的节点，也没有把「$C^{q}(\mathcal{M})$ 软」与「软消解算导出函子」两步展开。
+**② 缺口：软层无环（Godement）。** 仿紧 Hausdorff 上软层 $\mathcal{M}$ 满足 $H^{n}(X,\mathcal{M})=0$（$n\ge 1$）。它不能由 ① 直接得到：① 只说明「Čech 复形是消解」，而固定覆盖的 Čech 上同调并不等于导出函子上同调（反例见 ④）。标准路线两条：$n=1$ 用「软层使 $0\to\mathcal{M}\to\mathcal{G}\to\mathcal{H}\to 0$ 的整体截面正合」——对局部有限闭加细 $\{A_{i}\}$ 作 Zorn 归纳：在闭并 $B$ 上已有提升 $s$，取 $A_{i}\not\subseteq B$，差 $s-s_{i}\in\mathcal{M}(B\cap A_{i})$ 由软性延拓为整体 $t$，在 $A_{i}$ 上改用 $s_{i}+t$，沿闭覆盖 $\{B,A_{i}\}$ 粘接，极大性给 $B=X$；再用内射消解 $0\to\mathcal{M}\to\mathcal{I}\to\mathcal{Q}\to 0$ 作维数转移（$\mathcal{Q}$ 是松弛层的商、故松弛，松弛 $\implies$ 软；长正合列给 $H^{n}(\mathcal{M})\cong H^{n-1}(\mathcal{Q})$，对 $n$ 归纳）。本图没有这条引理的节点；把它写成节点只需层的截面正合性 + 长正合列。
 
-**③ 的缺口：零调消解算导出函子。** 还需标准同调代数引理：若 $0 \to \mathcal{M} \to \mathcal{A}^{0} \to \mathcal{A}^{1} \to \cdots$ 是消解且每个 $\mathcal{A}^{q}$ 是 $\Gamma$-无环（即 $H^{n}(X, \mathcal{A}^{q}) = 0$，$n \ge 1$），则 $H^{n}(X, \mathcal{M}) \cong H^{n}\bigl(\Gamma(X, \mathcal{A}^{\bullet})\bigr)$。证明是与内射消解比较（比较引理 + 逐项填图），本图同样未单列节点。
+**③ 缺口：零调消解算导出函子（标准、可逐字补）。** 若 $0\to\mathcal{M}\to\mathcal{A}^{0}\to\mathcal{A}^{1}\to\cdots$ 是消解且每个 $\mathcal{A}^{q}$ 满足 $H^{n}(X,\mathcal{A}^{q})=0$（$n\ge 1$），则 $H^{n}(X,\mathcal{M})\cong H^{n}(\Gamma(X,\mathcal{A}^{\bullet}))$。证明是维数转移：令 $\mathcal{Z}^{0}=\mathcal{M}$、$\mathcal{Z}^{q+1}=\operatorname{im}(\mathcal{A}^{q}\to\mathcal{A}^{q+1})$，短正合列 $0\to\mathcal{Z}^{q}\to\mathcal{A}^{q}\to\mathcal{Z}^{q+1}\to 0$ 的长正合列给 $H^{n}(\mathcal{Z}^{q+1})\cong H^{n+1}(\mathcal{Z}^{q})$（$n\ge 1$）与 $H^{1}(\mathcal{Z}^{q})\cong\operatorname{coker}(\Gamma(\mathcal{A}^{q})\to\Gamma(\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引；缺的只是把它单列成引理的节点。
 
-**结论**：把 ② 的软层无环与 ③ 的零调消解补上，取 $\mathcal{A}^{\bullet} = \check{\mathcal{C}}^{\bullet}$ 即得 $H^{n}(X,\mathcal{M}) \cong \check{H}^{n}(\mathfrak{U},\mathcal{M})$；再沿局部有限覆盖取余极限即得定理。⚠ 本节点**仍标 skeleton**：缺口就是上面两条标准引理（① 与「细 $\implies$ 软」已在注中证完）。
+**④ 仍缺的比较步（旧注「每项软」的说法要修正）。** ① 中的 $\check{\mathcal{C}}^{p}$ 是若干开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只是左正合：对任意层 $\mathcal{M}$，$\check{\mathcal{C}}^{p}(\mathfrak{U},\mathcal{M})$ **不一定软/无环**，所以不能直接对 ① 用 ③。正确收尾需要「软层 $\implies$ 局部有限覆盖的 Čech 零调」（或其等价的双复形比较：把 $\mathcal{M}$ 换成软消解 $\mathcal{S}^{\bullet}$，对双复形 $\check{C}^{p}(\mathfrak{U},\mathcal{S}^{q})$ 用两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但没有「软层 Čech 零调」这条引理，也没有把双复形两套滤过写到可核的程度。补上 ④ 才真正得 $\check{H}^{n}(X,\mathcal{M})\cong H^{n}(X,\mathcal{M})$；本节点因此仍标 skeleton。
+
+⚠️ **为什么不能对任意覆盖逐覆盖断言（陈述末句已按此修正）**：取 $X=S^{2}$、$\mathcal{M}=\mathbb{Z}$ 与两个半球的开覆盖 $\{U,V\}$（局部有限）：$U\cap V$ 同胚于环带，$\check{C}^{2}=0$ 故 $\check{H}^{2}(\mathfrak{U},\mathbb{Z})=0$，而 $H^{2}(S^{2},\mathbb{Z})=\mathbb{Z}$。逐覆盖断言因此为假；正确形式是沿覆盖的定向极限 $\check{H}^{n}(X,\mathcal{M})=\varinjlim_{\mathfrak{U}}\check{H}^{n}(\mathfrak{U},\mathcal{M})\cong H^{n}(X,\mathcal{M})$，对**好覆盖**（有限交上高阶上同调为零，对常值层即有限交可缩）才能逐覆盖。
+
+**结论**：② 的软层无环与 ③ 的零调消解补上后，还必须补 ④ 的比较步，才能把 ① 的 Čech 消解当零调消解收尾（或对好覆盖用 Cartan–Leray 退化）。⚠ 本节点**仍标 skeleton**：缺的是 ②（软层无环）与 ④（软层 Čech 零调/双复形比较）；①、细 $\implies$ 软、③ 已写出。
 
 ⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。
 
@@ -32776,7 +32782,7 @@ $$f(z) = A\int_{z_{0}}^{z} g(\zeta)\,\mathrm{d}\zeta + B.$$
 
 （ii）**辐角原理收尾**：确认边界简单后，对固定内点 $w \in P$ 数 $F - w$ 在 $\mathbb{H}$ 内的零点：边界上 $F - w$ 无零点，$F(\partial\mathbb{H})$ 绕 $w$ 的绕数为 $1$，故恰有一个原像，$F$ 是双射，从而共形。
 
-（iii）**参数/边长匹配**：即便（i）（ii）证得 $F$ 单叶，$F$ 映出的多边形仍由积分决定 —— 其边长是 $x_{k}$ 的函数，一般**不等于**给定多边形的边长（同一组内角可以对应无穷多个形状）。要得到题设的**那一个**多边形，还须解 $n-3$ 个实方程（$x_{k}$ 的 Möbius 自由度）：证明边长映射取遍所有可能的形状。标准做法是连续性方法/度理论（或先由 Riemann 映射定理取到某个多边形，再用形式唯一性反推 $x_{k}$）。本图没有这条连续性论证的节点，且 `thm.riemann-mapping`、`thm.boundary-correspondence` 本身仍是 skeleton。
+（iii）**参数/边长匹配**：即便（i）（ii）证得 $F$ 单叶，$F$ 映出的多边形仍由积分决定 —— 其边长是 $x_{k}$ 的函数，一般**不等于**给定多边形的边长（同一组内角可以对应无穷多个形状）。要得到题设的**那一个**多边形，还须解 $n-3$ 个实方程（$x_{k}$ 的 Möbius 自由度）：证明边长映射取遍所有可能的形状。标准做法是连续性方法/度理论（或先由 Riemann 映射定理取到某个多边形，再用形式唯一性反推 $x_{k}$）。本图没有这条连续性论证的节点，且 Riemann 映射定理、边界对应定理本身仍是 skeleton。
 
 这两步各需要一条外部引理，本图都没有节点、也没有写全，故不勾 ∎：
 
@@ -33181,7 +33187,7 @@ $$f(z) = z^{m} e^{P(z)} \prod_{n} E_{p}\left(\frac{z}{a_{n}}\right),$$
 
 **第三步：商无零点（完整）。** 令 $\Phi(z):=f(z)\big/\bigl(z^{m}\prod_{n}E_{p}(z/a_{n})\bigr)$。每个 $a_{n}$ 处 $E_{p}(z/a_{n})$ 恰有一阶零点，与 $f$ 的零点相消；其它点 $f\ne 0$ 而乘积非零。故 $\Phi$ 整、处处非零。
 
-**第四步：$\Phi$ 的阶 $\le\rho$（缺口）。** 需要对 $|z|=r$ 的两条估计 $\log|\prod_{n}E_{p}(z/a_{n})|\le C\,r^{\rho+\varepsilon}$ 与 $\ge -C\,r^{\rho+\varepsilon}$。上界可按 $|a_{n}|\le 2r$、$|a_{n}|>2r$ 拆分，配合 $n(t)\le C t^{\rho+\varepsilon}$ 与分部求和证出；**下界在 $z$ 靠近某个零点 $a_{n}$ 时必须单独书账**（用 $|f|$ 在该点的零点阶数与 $|E_{p}|$ 的一阶零点相消，把「$\log|P|$ 的负值」与「$\log|f|$ 的负值」配对），本图没有把这一步写全。这就是本节点仍标 `status: 'skeleton'` 的缺口。
+**第四步：$\Phi$ 的阶 $\le\rho$（缺口已钉到一条引理）。** 需要 $|z|=r$ 上的两条估计 $\log|\prod_{n}E_{p}(z/a_{n})|\le C\,r^{\rho+\varepsilon}$ 与 $\ge -C\,r^{\rho+\varepsilon}$。**上界（离零点）可写全**：按 $|a_{n}|\le 2r$、$|a_{n}|>2r$ 拆分；$|w|\le 1/2$ 时 $\log|E_{p}(w)|\le C|w|^{p+1}$，$|w|\ge 1/2$ 时 $\log|E_{p}(w)|=\log|1-w|+\operatorname{Re}\sum_{j\le p}w^{j}/j$ 且后一项 $\le C|w|^{p}$；再用 $\sum_{|a_{n}|\le 2r}(r/|a_{n}|)^{p}\le C\,r^{\rho}$（分部求和 + $n(t)\le Ct^{\rho+\varepsilon}$）与尾部 $\sum_{|a_{n}|>2r}(r/|a_{n}|)^{p+1}\le C\,r^{\rho-(p+1)}$，得 $\log|P(z)|\le C\,r^{\rho+\varepsilon}+\sum_{|a_{n}|\le 2r}\log\frac{r}{|z-a_{n}|}$。**下界正是缺口**：需要典范乘积下界引理（Hadamard）：存在 $C$ 使 $\log|P(z)|\ge -C\,r^{\rho+\varepsilon}$（$|z|=r$，$z$ 离开零点的小邻域）。局部化的标准证明把 $\sum_{|a_{n}|\le 2r}\log|z-a_{n}|$ 与 $\log|f(z)|$ 配对（$f$ 与乘积在 $a_{n}$ 处同阶消失），靠近零点时用 Poisson–Jensen 公式 $\log|f(z)|=\frac{1}{2\pi}\int\log|f(re^{i\theta})|\,\frac{r^{2}-|z|^{2}}{|re^{i\theta}-z|^{2}}\,d\theta-\sum\log\frac{|r^{2}-\bar a_{n}z|}{r|z-a_{n}|}$ 加最大模原理把局部负值传回整个圆周。本图 `prop.jensen` 只有圆盘中心版，没有 Poisson–Jensen 与这条下界引理的节点。**第四步因此仍缺**，不勾 ∎。
 
 **第五步：无零点 $\implies$ 指数（完整）。** $\Phi$ 整、无零点，$\mathbb{C}$ 单连通，由 `prop.single-valued-branch` 存在整函数 $h$ 使 $\Phi=e^{h}$。
 
@@ -33189,7 +33195,7 @@ $$f(z) = z^{m} e^{P(z)} \prod_{n} E_{p}\left(\frac{z}{a_{n}}\right),$$
 
 **第七步：$h$ 是多项式（完整，条件于第四步）。** 由第四步，$\operatorname{Re}(h-h(0))=\log|\Phi|-\operatorname{Re} h(0)\le C R^{\rho+\varepsilon}$。对 $g=h-h(0)$ 在 $|z|\le R$ 用第六步，取 $r=R/2$：$|h(z)-h(0)|\le 2C R^{\rho+\varepsilon}$（$|z|\le R/2$）。再由 Cauchy 估计（`thm.cauchy-inequality`），对 $k>\rho$，$|h^{(k)}(0)|\le k!\,C R^{\rho+\varepsilon}/(R/2)^{k}\to 0$（$R\to\infty$，取 $\varepsilon<k-\rho$），故 $h^{(k)}(0)=0$：$h$ 是次数 $\le\lfloor\rho\rfloor$ 的多项式。
 
-**结论**：若补上第四步的下界估计，则 $f=z^{m}e^{h}\prod_{n}E_{p}(z/a_{n})=z^{m}e^{P}\prod_{n}E_{p}(z/a_{n})$，即得 Hadamard 分解。⚠ 本节点**仍标 skeleton**：缺的正是「典范乘积的阶 $\le\rho$」的下界（在零点附近的局部书账）；第一、二、三、五、六、七步都已写全。
+**结论**：补上第四步的下界引理（Poisson–Jensen 配对）后，就有 $f=z^{m}e^{h}\prod_{n}E_{p}(z/a_{n})=z^{m}e^{P}\prod_{n}E_{p}(z/a_{n})$，即得 Hadamard 分解。⚠ 本节点**仍标 skeleton**：缺口已钉到「典范乘积下界引理」；第一、二、三、五、六、七步都已写全。
 
 ⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化（同一个 $p$）、并把自由度压成一个多项式 $P$。$\rho<1$ 时 $p=0$，$\sum|a_{n}|^{-1}<\infty$，但零点仍可无穷（$\prod(1-z/n^{2})$ 的阶为 $1/2$）。⚠ 「有限阶」不能省：无穷阶整函数照样有 Weierstrass 乘积，但指数部分不再是多项式，结论也没有这么强。
 
@@ -44645,40 +44651,24 @@ $s$ 在第 $x_{0}$ 个分量上的像是 $\mathcal{F}(U) \to \mathcal{F}_{x_{0}}
 
 > 「层范畴有足够多内射」的整个证明只用到两件事：取茎是正合的、直积可以逐分量提升。
 
-#### 足够多内射层 + 天际线层是内射层 ⟹ 仿紧空间上的 Čech 就是上同调　`imp.paracompact-cech`
-*足够多内射 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线）*
+#### Čech 上同调 + 仿紧性与单位分解 + Cartan–Leray 谱序列 + Čech 到上同调的谱序列 + 右导出函子 ⟹ 仿紧空间上的 Čech 就是上同调　`imp.paracompact-cech`
+*Čech 消解 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线，含缺口）*
 
-**要证**：仿紧 Hausdorff 上 $\check{H}^{n}(X, \mathcal{M}) = H^{n}(X, \mathcal{M})$。走法是「造一个由无环层组成的消解」。
+**要证**：仿紧 Hausdorff 上 $\check{H}^{n}(X,\mathcal{M})\cong H^{n}(X,\mathcal{M})$，其中左边是沿局部有限开覆盖的定向极限。逐覆盖的强形式只对**好覆盖**成立（见第五步）。
 
-**第一步：Čech 层复形是消解。** 对局部有限开覆盖 $\mathfrak{U} = (U_{i})_{i}$，令 $\check{\mathcal{C}}^{p}(\mathfrak{U}, \mathcal{M}) := \prod_{i_{0} < \cdots < i_{p}} j_{*}(\mathcal{M}|_{U_{i_{0}\cdots i_{p}}})$。
+**第一步：Čech 层复形是消解（完整）。** 对覆盖 $\mathfrak{U}=(U_{i})$ 令 $\check{\mathcal{C}}^{p}(\mathfrak{U},\mathcal{M}):=\prod_{i_{0}<\cdots<i_{p}}j_{*}(\mathcal{M}|_{U_{i_{0}\cdots i_{p}}})$。逐茎验证：固定 $x$ 取 $i$ 使 $x\in U_{i}$，在茎上令 $(h\sigma)_{i_{0}\cdots i_{p-1}}:=\sigma_{i\,i_{0}\cdots i_{p-1}}$，则 $\delta h+h\delta=\operatorname{id}$（$p\ge1$），$p=0$ 时 $\delta h$ 是增广；故 $0\to\mathcal{M}\to\check{\mathcal{C}}^{0}\to\check{\mathcal{C}}^{1}\to\cdots$ 正合。取整体截面：$\Gamma(X,\check{\mathcal{C}}^{p})=\check{C}^{p}(\mathfrak{U},\mathcal{M})$，其同调就是 $\check{H}^{\bullet}(\mathfrak{U},\mathcal{M})$。
 
-$\mathcal{M}$ 是层，Čech 正合性可以在每个点的小邻域里逐点验证（局部有限保证「只有有限多个 $U_{i}$ 参与」），于是 $0 \to \mathcal{M} \to \check{\mathcal{C}}^{0} \to \check{\mathcal{C}}^{1} \to \cdots$ 正合。
+**第二步：$\check{\mathcal{C}}^{p}$ 一般不是软层（修正一个常见误判）。** $\check{\mathcal{C}}^{p}$ 是开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只左正合；单位分解作用在**函数**上，不能把 $\mathcal{M}$ 的整体截面「拆成」局部截面再拼回。因此不能由「Čech 复形每一项软」直接得到无环性。正确的替代是：细层 $\implies$ 软层（单位分解拼截面），再用 Godement 的「软层无环」作维数转移 —— 后者是缺口，见第四步。
 
-取整体截面：$\Gamma(X, \check{\mathcal{C}}^{p}) = \check{C}^{p}(\mathfrak{U}, \mathcal{M})$（直积与截面对 $j_{*}$ 的相容性），故其同调就是 $\check{H}^{\bullet}(\mathfrak{U}, \mathcal{M})$。
+**第三步：零调消解算导出函子（完整可写）。** 若 $0\to\mathcal{M}\to\mathcal{A}^{0}\to\mathcal{A}^{1}\to\cdots$ 的每一项都 $\Gamma$-无环，则 $H^{n}(X,\mathcal{M})\cong H^{n}(\Gamma(X,\mathcal{A}^{\bullet}))$：令 $\mathcal{Z}^{q+1}=\operatorname{im}(\mathcal{A}^{q}\to\mathcal{A}^{q+1})$，短正合列的长正合列给 $H^{n}(\mathcal{Z}^{q+1})\cong H^{n+1}(\mathcal{Z}^{q})$ 与 $H^{1}(\mathcal{Z}^{q})\cong\operatorname{coker}(\Gamma(\mathcal{A}^{q})\to\Gamma(\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引。
 
-**第二步：每一项软。** 仿紧 Hausdorff 上每个开覆盖有局部有限的开细化，局部有限覆盖配**从属的单位分解**（`prop.paracompact-partition-unity`）：一族连续 $\varphi_{i} : X \to [0,1]$，支撑在 $U_{i}$ 里、局部有限、局部求和为 $1$。
+**第四步：缺口 ①——软层无环。** 需要：仿紧 Hausdorff 上软层 $\mathcal{S}$ 满足 $H^{n}(X,\mathcal{S})=0$（$n\ge1$）。$n=1$ 由「软层让 $0\to\mathcal{S}\to\mathcal{A}\to\mathcal{B}\to0$ 的整体截面正合」给出（对局部有限闭加细作 Zorn 归纳），$n>1$ 用内射消解与松弛层作维数转移。本图无这条引理的节点，只以引理形式引用。
 
-用 $\varphi_{i}$ 逐块切截面，就能把 $\check{\mathcal{C}}^{p}$ 的整体截面「拆成」各覆盖成员上的截面再拼回来 —— 这正是**软性**（soft：每个闭集上的截面都能延拓到全空间）。
+**第五步：缺口 ②——比较步，以及逐覆盖断言为假。** 要把第一步的 Čech 消解当第三步的 $\mathcal{A}^{\bullet}$ 用，还差「软层对局部有限覆盖的 Čech 复形零调」，或等价的双复形比较（软消解 $\mathcal{S}^{\bullet}$，双复形 $\check{C}^{p}(\mathfrak{U},\mathcal{S}^{q})$ 的两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但缺这条引理。另一方面，对任意单个局部有限覆盖断言同构是**假的**：$X=S^{2}$、$\mathcal{M}=\mathbb{Z}$、两半球覆盖 $\{U,V\}$，$\check{C}^{2}=0$ 故 $\check{H}^{2}(\mathfrak{U},\mathbb{Z})=0$，而 $H^{2}(S^{2},\mathbb{Z})=\mathbb{Z}$。若 $\mathfrak{U}$ 对 $\mathcal{M}$ 是好覆盖（所有有限交上 $H^{q}=0$，$q>0$），Cartan–Leray 谱序列退化，逐覆盖映射才是同构；一般情形只能取定向极限。
 
-**第三步：软层对 $\Gamma$ 无环。** 软层在仿紧 Hausdorff 上无环：给定软层 $\mathcal{S}$ 与短正合列 $0 \to \mathcal{S} \to \mathcal{A} \to \mathcal{B} \to 0$，要证 $\Gamma(\mathcal{A}) \to \Gamma(\mathcal{B})$ 满。
+⚠️ **本边只是路线**：第一、三步可逐字核验，缺口 ①（软层无环）与 ②（比较步）本图都还没有节点；节点因此保持 skeleton，本边不勾 ∎。
 
-取 $s \in \Gamma(\mathcal{B})$，用仿紧性 + 局部有限覆盖把它**局部**提升成一族局部截面，再用从属于该覆盖的单位分解把它们拼成一个整体截面 —— 拼的时候软性保证每步都合法。
-
-于是 $H^{n}(X, \mathcal{S}) = 0$（$n > 0$）。
-
-**第四步：无环消解算导出函子。** 由第一到第三步，$\check{\mathcal{C}}^{\bullet}(\mathfrak{U}, \mathcal{M})$ 是一个由 $\Gamma$-无环层组成的消解。
-
-由 Leray 零调性（对右导出函子，用 $F$-零调对象组成的消解算出的同调与用内射消解算出的相同 —— 这一步的合法性由「足够多内射」保证，见 `thm.pushforward-enough-injectives`），
-
-$$H^{n}(X, \mathcal{M}) = H^{n}\bigl(\Gamma(X, \check{\mathcal{C}}^{\bullet})\bigr) = \check{H}^{n}(\mathfrak{U}, \mathcal{M}) .$$
-
-**第五步：去掉局部有限。** 一般开覆盖取局部有限细化 $\mathfrak{V} \preceq \mathfrak{U}$；细化映射 $\check{H}^{n}(\mathfrak{U}, \mathcal{M}) \to \check{H}^{n}(\mathfrak{V}, \mathcal{M})$ 与到 $H^{n}(X, \mathcal{M})$ 的规范映射相容，而后者已是同构，故沿覆盖取余极限仍得同构。
-
-⚠️ **这是路线梗概，不是完整证明**：第三步「软层对 $\Gamma$ 无环」与第四步「无环消解算导出函子（Leray 零调性）」本图都还没有节点，这里只以引理形式引用；节点因此保持 skeleton，本边不勾 ∎。
-
-⚠️ 三个零件（Čech 正合、软性、软层无环）都**用到了仿紧性**：它同时提供「局部有限细化」与「单位分解」。去掉仿紧性，第一步或第二步会坏，结论就未必成立。
-
-> 这条定理的形状是「造一个无环消解」：Čech 复形本身便宜，仿紧性负责让它无环，于是它就算出了层上同调。
+> 这条定理的标准路线是「造一个由无环层组成的消解」；但要小心：Čech 复形的每一项一般**不是**软层。本边把能逐字核验的部分与两条缺口分开写。
 
 #### 正合偶 ⟹ 正合偶给出谱序列　`imp.exact-couple-spectral`
 *导出偶的递推 $\implies$ 谱序列及其微分规律*
@@ -52793,12 +52783,12 @@ Minkowski 就是 L^p 范数的三角不等式。
 Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。
 
 #### 凸集 ⟹ 星形集　`e169.implication`
-*凸集 $\implies$ 星形集*
+*非空凸集 $\implies$ 星形集*
 
 设 $C \ne \emptyset$ 凸，取 $x_{0} \in C$。对任意 $x \in C$、$t \in [0,1]$，由凸性 $(1-t)x_{0} + tx \in C$。
 这正是星形集关于 $x_{0}$ 的定义，故 $C$ 是星形集。∎
 
-> 逆命题不成立：十字形星形但不凸。
+> 「非空」不能省：空集是凸的但不是星形集（没有星点）。逆命题也不成立：十字形星形但不凸。
 
 #### 定义引用：「凸集」→ 凸组合　`e170.definition`
 
@@ -55061,7 +55051,7 @@ Hilbert 空间是 Banach 空间的特例，所以也走这条桥（注里有说�
 
 #### 定义引用：「外测度」→ Riesz–Markov 表示　`dep.rm-outer`
 
-证明第 ②③ 步：先造外测度、再用 Carathéodory 延拓（这两步在节点注里已写全；仍缺的是最后的表示引理）。
+证明第 ②③ 步：先造外测度、再用 Carathéodory 延拓 —— 这两步连同第 ④ 步的表示引理（含上下界）都已在节点注里写全；这条边只记「外测度」这个定义被用到。
 
 #### 定义引用：「Radon 测度」→ Riesz–Markov 表示　`dep.rm-radon`
 
@@ -55093,7 +55083,7 @@ $*$ 是 $\Omega^{k} \to \Omega^{n-k}$ 的映射，输入输出都是流形上的
 
 #### 定义引用：「单位分解」→ Riesz–Markov 表示　`dep.rm-pou`
 
-表示引理用有限覆盖上的紧支单位分解把 $f$ 上下夹住；本图只记依赖，表示引理本身仍未写全。
+表示引理用一族紧支函数 $g_{i} \prec A_{i}$（本质上是单位分解式的局部化）把 $f$ 上下夹住；表示引理的上下界已在节点注第 ④ 步写全，这条边只记对单位分解概念的依赖。
 
 #### 定义引用：「级数收敛」→ 黎曼 ζ 函数　`dep.zeta-series`
 
@@ -62984,6 +62974,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **代数结构 ↔ 平坦模**　2 条节点级连线
 - **同调与正合列 ↔ 复形与导出三角**　22 条节点级连线
 - **加法与阿贝尔范畴 ↔ 复形与导出三角**　12 条节点级连线
+- **层上同调 ↔ 仿紧与单位分解**　2 条节点级连线
+- **复形与导出三角 ↔ 层上同调**　4 条节点级连线
 - **仿紧与单位分解 ↔ 分离公理**　5 条节点级连线
 - **拓扑空间的基本语汇 ↔ 仿紧与单位分解**　4 条节点级连线
 - **度量空间 ↔ 可度量化**　3 条节点级连线
@@ -63224,7 +63216,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 序结构**　2 条节点级连线
 - **代数结构 ↔ 范畴里的代数结构**　2 条节点级连线
 - **加法与阿贝尔范畴 ↔ 紧 Hausdorff 空间**　2 条节点级连线
-- **复形与导出三角 ↔ 层上同调**　3 条节点级连线
 - **层上同调 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **图与极限 ↔ 层上同调**　2 条节点级连线
 - **图与极限 ↔ 凝聚态集**　3 条节点级连线

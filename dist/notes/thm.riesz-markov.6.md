@@ -1,10 +1,8 @@
 # Riesz–Markov 表示　`thm.riesz-markov`　·　说明
 根 `../`
 
-**（丙）可测性**：可设 $\mu^{*}(A) < \infty$（否则右边为 $+\infty$，不等式显然）。任给 $\varepsilon > 0$，取开 $V \supseteq A$ 使 $\mu(V) < \mu^{*}(A) + \varepsilon$。由（甲）取紧 $K \subseteq V \cap U$ 使 $\nu(K) > \mu(V \cap U) - \varepsilon$。由 $K \subseteq U$ 得 $A \setminus U \subseteq V \setminus K$，而 $V \setminus K$ 开；又 $A \cap U \subseteq V \cap U$。于是
+**（甲）开集上内正则**：$\mu(U) = \sup\{\, \nu(K) : K \subseteq U,\ K\ \text{紧} \,\}$。证明：对 $f \prec U$，$K = \operatorname{supp} f$ 紧且 $\Lambda(f) \le \nu(K)$，故 $\mu(U) \le \sup_{K} \nu(K)$；反向不等式由 $\nu(K) \le \mu(U)$。∎
 
-$$\mu^{*}(A \cap U) + \mu^{*}(A \setminus U) \le \mu(V \cap U) + \mu(V \setminus K) \le (\nu(K) + \varepsilon) + \mu(V \setminus K) \le \mu(V) + \varepsilon < \mu^{*}(A) + 2\varepsilon.$$
-
-令 $\varepsilon \to 0$ 即得。∎
+**（乙）分裂估计**：若 $V$ 开、$K \subseteq V$ 紧，则 $\nu(K) + \mu(V \setminus K) \le \mu(V)$。证明：取 $f \prec V \setminus K$ 与 $g$（$0 \le g \le 1$、$\operatorname{supp} g \subseteq K$）。两支集不交且都含于 $V$，故 $f + g \prec V$，于是 $\Lambda(f) + \Lambda(g) \le \mu(V)$；先对 $f$ 取上确界得 $\mu(V \setminus K) + \Lambda(g) \le \mu(V)$，再对 $g$ 取上确界即得。∎
 
 > 续见 notes/thm.riesz-markov.7.md

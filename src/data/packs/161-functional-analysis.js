@@ -557,7 +557,7 @@ window.MG = window.MG || {};
         '',
         '这样的 $x_{0}$ 叫 $S$ 的一个**星点**（star center）。'
       ].join('\n'),
-      notes: '⭐ 凸集一定是星形集：任取 $x_{0} \\in C$，凸性给出整条线段。反之不然：平面里的十字形关于中心星形，却不凸。\n\n⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。',
+      notes: '⭐ **非空**凸集一定是星形集：任取 $x_{0} \\in C$，凸性给出整条线段。空集是凸的，却一个点都没有，故不是星形集 —— 「非空」这个前提不能省。反之不然：平面里的十字形关于中心星形，却不凸。\n\n⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。',
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
     },
 
@@ -594,7 +594,7 @@ window.MG = window.MG || {};
         '',
         '等价地，$\\operatorname{conv}(S)$ 恰是 $S$ 中点的所有有限凸组合之集；$S=\\emptyset$ 时为空集。'
       ].join('\n'),
-      notes: '⭐ 两条等价刻画：交定义（最小凸集）与有限凸组合定义。前者说明「凸包是最小的」，后者说明「凸包里的点长什么样」。\\n\\n⚠ 空集的凸包是空集；不要把「凸集」默认成非空。',
+      notes: '⭐ 两条等价刻画：交定义（最小凸集）与有限凸组合定义。前者说明「凸包是最小的」，后者说明「凸包里的点长什么样」。\n\n⚠ 空集的凸包是空集；不要把「凸集」默认成非空。',
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
     },
     /* ------------------------------------------------- 凸闭集上的投影 */
@@ -861,12 +861,12 @@ window.MG = window.MG || {};
     { kind: 'definition', definition: 'def.star-shaped', usedBy: 'lem.poincare-lemma',
       note: 'Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。' },
     { kind: 'implication', sources: ['def.convex-set'], target: 'def.star-shaped',
-      title: '凸集 $\\implies$ 星形集',
+      title: '非空凸集 $\\implies$ 星形集',
       proof: [
         '设 $C \\ne \\emptyset$ 凸，取 $x_{0} \\in C$。对任意 $x \\in C$、$t \\in [0,1]$，由凸性 $(1-t)x_{0} + tx \\in C$。',
         '这正是星形集关于 $x_{0}$ 的定义，故 $C$ 是星形集。∎'
       ].join('\n'),
-      note: '逆命题不成立：十字形星形但不凸。'
+      note: '「非空」不能省：空集是凸的但不是星形集（没有星点）。逆命题也不成立：十字形星形但不凸。'
     },
     { kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-combination',
       note: '凸组合是凸集对有限线性组合封闭的载体；两点情形就是凸集定义里的线段。' },

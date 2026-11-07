@@ -1,8 +1,6 @@
 # 仿紧空间上的 Čech 就是上同调　`thm.paracompact-cech-equals-sheaf`　·　说明
 根 `../`
 
-**结论**：把 ② 的软层无环与 ③ 的零调消解补上，取 $\mathcal{A}^{\bullet} = \check{\mathcal{C}}^{\bullet}$ 即得 $H^{n}(X,\mathcal{M}) \cong \check{H}^{n}(\mathfrak{U},\mathcal{M})$；再沿局部有限覆盖取余极限即得定理。⚠ 本节点**仍标 skeleton**：缺口就是上面两条标准引理（① 与「细 $\implies$ 软」已在注中证完）。
+**③ 缺口：零调消解算导出函子（标准、可逐字补）。** 若 $0\to\mathcal{M}\to\mathcal{A}^{0}\to\mathcal{A}^{1}\to\cdots$ 是消解且每个 $\mathcal{A}^{q}$ 满足 $H^{n}(X,\mathcal{A}^{q})=0$（$n\ge 1$），则 $H^{n}(X,\mathcal{M})\cong H^{n}(\Gamma(X,\mathcal{A}^{\bullet}))$。证明是维数转移：令 $\mathcal{Z}^{0}=\mathcal{M}$、$\mathcal{Z}^{q+1}=\operatorname{im}(\mathcal{A}^{q}\to\mathcal{A}^{q+1})$，短正合列 $0\to\mathcal{Z}^{q}\to\mathcal{A}^{q}\to\mathcal{Z}^{q+1}\to 0$ 的长正合列给 $H^{n}(\mathcal{Z}^{q+1})\cong H^{n+1}(\mathcal{Z}^{q})$（$n\ge 1$）与 $H^{1}(\mathcal{Z}^{q})\cong\operatorname{coker}(\Gamma(\mathcal{A}^{q})\to\Gamma(\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引；缺的只是把它单列成引理的节点。
 
-⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。
-
-⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。
+> 续见 notes/thm.paracompact-cech-equals-sheaf.6.md

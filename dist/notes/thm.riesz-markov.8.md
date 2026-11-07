@@ -1,14 +1,8 @@
 # Riesz–Markov 表示　`thm.riesz-markov`　·　说明
 根 `../`
 
-**第四步：表示引理**。设 $f \in C_{c}(X)$。先设 $f \ge 0$，记 $M = \lVert f \rVert_{\infty}$、$K = \operatorname{supp} f$；取上面的紧邻域构造中的 $W = \operatorname{int} L \supseteq K$，则 $\mu(W) < \infty$。
+**第三步：Carathéodory 延拓**。由引理 4，每个开集都是 $\mu^{*}$-可测的；由 `thm.caratheodory`，$\mu^{*}$-可测集构成 $\sigma$-代数且 $\mu^{*}$ 在其上可加。开集生成 Borel $\sigma$-代数，故每个 Borel 集可测；把 $\mu^{*}$ 限制到 Borel 集上得 Borel 测度 $\mu$。对开 $U$ 有 $\mu(U) = \mu^{*}(U)$（$U$ 自身就是覆盖，单调性给等号）；由构造 $\mu$ 在 Borel 集上外正则，而（甲）与 $\nu(K) \le \mu(K)$ 给出开集上内正则。
 
-**下界 $\Lambda(f) \ge \int f\,\mathrm{d}\mu$**：对 $n \ge 1$ 令 $t_i = iM/n$（$i = 0, \ldots, n$）、$A_i = \{\, f > t_i \,\}$（开；$A_n = \emptyset$），并令
-
-$$s := \sum_{i=1}^{n} (t_i - t_{i-1})\,\chi_{A_i}.$$
-
-则 $s \le f \le s + M/n$。对每个 $i$ 取 $g_i \in C_{c}(X)$，$0 \le g_i \le 1$、$\operatorname{supp} g_i \subseteq A_i$、$\Lambda(g_i) \ge \mu(A_i) - \delta$（$A_i = \emptyset$ 时取 $g_i = 0$），令 $g := \sum_{i} (t_i - t_{i-1})\,g_i$。因 $g_i \le \chi_{A_i}$，有 $g \le s \le f$，故
-
-$$\Lambda(f) \ge \Lambda(g) = \sum_{i} (t_i - t_{i-1})\Lambda(g_i) \ge \int s\,\mathrm{d}\mu - M\delta.$$
+**紧集上有限**：对紧 $K$，取紧邻域 $L \supseteq K$（局部紧 Hausdorff 中每点有紧邻域，有限覆盖即得），令 $W = \operatorname{int} L$。由单点紧化 + `lem.urysohn` 取 $\varphi \in C_{c}(X)$，$0 \le \varphi \le 1$、$\varphi = 1$ 于 $L$。任何 $f \prec W$ 满足 $f \le \varphi$，故 $\mu(W) \le \Lambda(\varphi) < \infty$；于是 $\mu(K) \le \mu(W) < \infty$。
 
 > 续见 notes/thm.riesz-markov.9.md

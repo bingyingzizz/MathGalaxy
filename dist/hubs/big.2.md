@@ -6,9 +6,9 @@
 - **6 / 5** `prop.paracompact-partition-unity` 仿紧性与单位分解 · layer 17 · 仿紧与单位分解
 - **6 / 4** `thm.lp-banach` L^p 是 Banach 空间 · layer 23 · L^p 空间
 - **6 / 4** `thm.frobenius` Frobenius 定理 · layer 25 · 向量场与 Lie 结构
+- **6 / 2** `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调 · layer 20 · 层上同调
 - **6 / 1** `thm.completeness-equivalent` 完备性的六条等价 · layer 23 · 实数完备性的等价刻画
 - **5 / 6** `def.tangent-bundle` 切丛 · layer 21 · 流形与向量丛
-- **5 / 6** `def.tensor-field` 张量场 · layer 23 · 向量场与 Lie 结构
 
 （共 1543 个节点在这一榜上有非零计数；这里列前 20 条。）
 

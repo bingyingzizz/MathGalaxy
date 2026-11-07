@@ -1,10 +1,14 @@
 # Riesz–Markov 表示　`thm.riesz-markov`　·　说明
 根 `../`
 
-又 $0 \le f - s \le M/n$ 且 $f - s$ 支在 $W$ 内，故 $\int f \le \int s + (M/n)\mu(W)$，即 $\int s \ge \int f - (M/n)\mu(W)$。代入得 $\Lambda(f) \ge \int f - (M/n)\mu(W) - M\delta$；先令 $\delta \to 0$，再令 $n \to \infty$，即得 $\Lambda(f) \ge \int f$。
+**第四步：表示引理**。设 $f \in C_{c}(X)$。先设 $f \ge 0$，记 $M = \lVert f \rVert_{\infty}$、$K = \operatorname{supp} f$；取上面的紧邻域构造中的 $W = \operatorname{int} L \supseteq K$，则 $\mu(W) < \infty$。
 
-**上界 $\Lambda(f) \le \int f\,\mathrm{d}\mu$**：由下界，对任意连续 $h \ge 0$ 有 $\Lambda(h) \ge \int h$。取开 $W \supseteq K$ 使 $\mu(W) < \mu(K) + \varepsilon$（外正则），再取 $\varphi \in C_{c}(X)$，$0 \le \varphi \le 1$、$\varphi = 1$ 于 $K$、$\operatorname{supp} \varphi \subseteq W$（单点紧化 + `lem.urysohn`）。令 $k := M\varphi - f$：在 $K$ 上 $\varphi = 1$ 故 $k = M - f \ge 0$；在 $K$ 外 $f = 0$ 故 $k = M\varphi \ge 0$。于是 $k \ge 0$ 连续紧支，对 $k$ 用下界：
+**下界 $\Lambda(f) \ge \int f\,\mathrm{d}\mu$**：对 $n \ge 1$ 令 $t_i = iM/n$（$i = 0, \ldots, n$）、$A_i = \{\, f > t_i \,\}$（开；$A_n = \emptyset$），并令
 
-$$\Lambda(k) \ge \int k \;\Longrightarrow\; M\Lambda(\varphi) - \Lambda(f) \ge M\int \varphi - \int f.$$
+$$s := \sum_{i=1}^{n} (t_i - t_{i-1})\,\chi_{A_i}.$$
+
+则 $s \le f \le s + M/n$。对每个 $i$ 取 $g_i \in C_{c}(X)$，$0 \le g_i \le 1$、$\operatorname{supp} g_i \subseteq A_i$、$\Lambda(g_i) \ge \mu(A_i) - \delta$（$A_i = \emptyset$ 时取 $g_i = 0$），令 $g := \sum_{i} (t_i - t_{i-1})\,g_i$。因 $g_i \le \chi_{A_i}$，有 $g \le s \le f$，故
+
+$$\Lambda(f) \ge \Lambda(g) = \sum_{i} (t_i - t_{i-1})\Lambda(g_i) \ge \int s\,\mathrm{d}\mu - M\delta.$$
 
 > 续见 notes/thm.riesz-markov.10.md

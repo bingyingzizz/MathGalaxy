@@ -1,12 +1,8 @@
-# 足够多内射 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线）
+# Čech 消解 + 软层无环 $\implies$ 仿紧上 Čech 等于层上同调（路线，含缺口）
 `imp.paracompact-cech` · 推出 · strong 边 · 根 `../`
 
-`thm.pushforward-enough-injectives` 足够多内射层 + `prop.skyscraper-injective` 天际线层是内射层 → `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调
+`def.cech-cohomology` Čech 上同调 + `prop.paracompact-partition-unity` 仿紧性与单位分解 + `thm.cartan-leray` Cartan–Leray 谱序列 + `cor.cech-cohomology-spectral` Čech 到上同调的谱序列 + `def.right-derived-functor` 右导出函子 → `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调
 
-**第四步：无环消解算导出函子。** 由第一到第三步，$\check{\mathcal{C}}^{\bullet}(\mathfrak{U}, \mathcal{M})$ 是一个由 $\Gamma$-无环层组成的消解。
-
-由 Leray 零调性（对右导出函子，用 $F$-零调对象组成的消解算出的同调与用内射消解算出的相同 —— 这一步的合法性由「足够多内射」保证，见 `thm.pushforward-enough-injectives`），
-
-$$H^{n}(X, \mathcal{M}) = H^{n}\bigl(\Gamma(X, \check{\mathcal{C}}^{\bullet})\bigr) = \check{H}^{n}(\mathfrak{U}, \mathcal{M}) .$$
+lies$ 软层（单位分解拼截面），再用 Godement 的「软层无环」作维数转移 —— 后者是缺口，见第四步。
 
 > 续见 proofs/imp.paracompact-cech.6.md

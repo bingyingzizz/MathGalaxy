@@ -72,9 +72,9 @@ window.MG.packs.push({
         '**引理 1（单调）**：$U \\subseteq V$ $\\Longrightarrow$ $\\mu(U) \\le \\mu(V)$。显然（可行集变大）。∎',
         '**引理 2（有限次可加）**：对任意开集 $U, V$，',
         '$$\\mu(U \\cup V) \\le \\mu(U) + \\mu(V).$$',
-        '证明：取 $f \\in C_{c}$，$0 \\le f \\le 1$，$K := \\operatorname{supp} f \\subseteq U \\cup V$。$K \\setminus V$ 是紧集且含于开集 $U$，取**单点紧化** $X^{+} = X \\cup \\{\\infty\\}$：$X$ 局部紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 正规，故可在 $X^{+}$ 内对紧集 $K \\setminus V$ 与开集 $U$ 用 Urysohn 引理（`lem.urysohn`，要的是**正规**而非局部紧），得 $\\varphi^{+} : X^{+} \\to [0,1]$ 使 $\\varphi^{+} = 1$ 于 $K \\setminus V$、$\\varphi^{+} = 0$ 于 $X^{+} \\setminus U$。限制回 $X$ 得 $\\varphi := \\varphi^{+}|_{X} \\in C_{c}(X)$，且 $\\operatorname{supp} \\varphi \\subseteq U$、$\\varphi = 1$ 于 $K \\setminus V$。于是',
+        '证明：取 $f \\in C_{c}$，$0 \\le f \\le 1$，$K := \\operatorname{supp} f \\subseteq U \\cup V$。$K \\setminus V$ 是紧集且含于开集 $U$。由局部紧 Hausdorff 的正则性，取**相对紧**开集 $W$ 使 $K \\setminus V \\subseteq W \\subseteq \\overline{W} \\subseteq U$（$\\overline{W}$ 紧），再取开集 $N$ 使 $K \\setminus V \\subseteq N \\subseteq \\overline{N} \\subseteq W$。取**单点紧化** $X^{+} = X \\cup \\{\\infty\\}$：$X$ 局部紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 紧 Hausdorff $\\Longrightarrow$ $X^{+}$ 正规，故可在 $X^{+}$ 内对**闭集** $\\overline{N}$ 与闭集 $X^{+} \\setminus W$ 用 Urysohn 引理（`lem.urysohn`，要的是**正规**而非局部紧），得 $\\varphi^{+} : X^{+} \\to [0,1]$ 使 $\\varphi^{+} = 1$ 于 $\\overline{N}$、$\\varphi^{+} = 0$ 于 $X^{+} \\setminus W$。限制回 $X$ 得 $\\varphi := \\varphi^{+}|_{X} \\in C_{c}(X)$，$\\operatorname{supp} \\varphi \\subseteq \\overline{W} \\subseteq U$、且 $\\varphi = 1$ 于 $N \\supseteq K \\setminus V$。于是',
         '$$f = f\\varphi + f(1 - \\varphi),\\qquad \\operatorname{supp}(f\\varphi) \\subseteq U,\\qquad \\operatorname{supp}\\big(f(1 - \\varphi)\\big) \\subseteq V$$',
-        '（第二式：在 $K \\setminus V$ 上 $1 - \\varphi = 0$，故支集落在 $V$ 里；$K$ 外的点 $f = 0$）。两个函数都满足 $0 \\le \\cdot \\le 1$，故',
+        '（第一式：$\\varphi$ 在 $X \\setminus W$ 上为 $0$，故 $\\operatorname{supp}(f\\varphi) \\subseteq K \\cap \\overline{W} \\subseteq U$。第二式：$1 - \\varphi$ 在开集 $N \\supseteq K \\setminus V$ 上为 $0$、在 $K$ 外 $f = 0$，故 $f(1 - \\varphi)$ 在 $N \\cup (X \\setminus K)$ 上恒为 $0$，而剩下的 $K \\setminus N$ 是**闭集**且含于 $V$，故 $\\operatorname{supp}\\big(f(1 - \\varphi)\\big) \\subseteq V$）。两个函数都满足 $0 \\le \\cdot \\le 1$，故',
         '$$\\Lambda(f) = \\Lambda(f\\varphi) + \\Lambda\\big(f(1 - \\varphi)\\big) \\le \\mu(U) + \\mu(V).$$',
         '对 $f$ 取上确界即得。∎',
         '**引理 3（不交可加）**：若 $U \\cap V = \\emptyset$，则 $\\mu(U \\cup V) = \\mu(U) + \\mu(V)$。',
@@ -98,7 +98,7 @@ window.MG.packs.push({
         '则 $s \\le f \\le s + M/n$。对每个 $i$ 取 $g_i \\in C_{c}(X)$，$0 \\le g_i \\le 1$、$\\operatorname{supp} g_i \\subseteq A_i$、$\\Lambda(g_i) \\ge \\mu(A_i) - \\delta$（$A_i = \\emptyset$ 时取 $g_i = 0$），令 $g := \\sum_{i} (t_i - t_{i-1})\\,g_i$。因 $g_i \\le \\chi_{A_i}$，有 $g \\le s \\le f$，故',
         '$$\\Lambda(f) \\ge \\Lambda(g) = \\sum_{i} (t_i - t_{i-1})\\Lambda(g_i) \\ge \\int s\\,\\mathrm{d}\\mu - M\\delta.$$',
         '又 $0 \\le f - s \\le M/n$ 且 $f - s$ 支在 $W$ 内，故 $\\int f \\le \\int s + (M/n)\\mu(W)$，即 $\\int s \\ge \\int f - (M/n)\\mu(W)$。代入得 $\\Lambda(f) \\ge \\int f - (M/n)\\mu(W) - M\\delta$；先令 $\\delta \\to 0$，再令 $n \\to \\infty$，即得 $\\Lambda(f) \\ge \\int f$。',
-        '**上界 $\\Lambda(f) \\le \\int f\\,\\mathrm{d}\\mu$**：由下界，对任意连续 $h \\ge 0$ 有 $\\Lambda(h) \\ge \\int h$。取开 $W \\supseteq K$ 使 $\\mu(W) < \\mu(K) + \\varepsilon$（外正则），再取 $\\varphi \\in C_{c}(X)$，$0 \\le \\varphi \\le 1$、$\\varphi = 1$ 于 $K$、$\\operatorname{supp} \\varphi \\subseteq W$（单点紧化 + `lem.urysohn`）。令 $k := M\\varphi - f$：在 $K$ 上 $\\varphi = 1$ 故 $k = M - f \\ge 0$；在 $K$ 外 $f = 0$ 故 $k = M\\varphi \\ge 0$。于是 $k \\ge 0$ 连续紧支，对 $k$ 用下界：',
+        '**上界 $\\Lambda(f) \\le \\int f\\,\\mathrm{d}\\mu$**：由下界，对任意连续 $h \\ge 0$ 有 $\\Lambda(h) \\ge \\int h$。取开 $W \\supseteq K$ 使 $\\mu(W) < \\mu(K) + \\varepsilon$（外正则），再取**相对紧**开集 $W\'$ 使 $K \\subseteq W\' \\subseteq \\overline{W\'} \\subseteq W$，并取 $\\varphi \\in C_{c}(X)$，$0 \\le \\varphi \\le 1$、$\\varphi = 1$ 于 $K$、$\\operatorname{supp} \\varphi \\subseteq \\overline{W\'} \\subseteq W$（单点紧化 + `lem.urysohn`；最后这步包含关系靠的是**相对紧**，光有 $\\varphi = 0$ 于 $X \\setminus W$ 只能得支集落在 $\\overline{W}$）。令 $k := M\\varphi - f$：在 $K$ 上 $\\varphi = 1$ 故 $k = M - f \\ge 0$；在 $K$ 外 $f = 0$ 故 $k = M\\varphi \\ge 0$。于是 $k \\ge 0$ 连续紧支，对 $k$ 用下界：',
         '$$\\Lambda(k) \\ge \\int k \\;\\Longrightarrow\\; M\\Lambda(\\varphi) - \\Lambda(f) \\ge M\\int \\varphi - \\int f.$$',
         '故 $\\Lambda(f) \\le M(\\Lambda(\\varphi) - \\int \\varphi) + \\int f$。由 $\\Lambda(\\varphi) \\le \\mu(W) < \\mu(K) + \\varepsilon$ 与 $\\varphi = 1$ 于 $K$（故 $\\int \\varphi \\ge \\mu(K)$）得 $\\Lambda(\\varphi) - \\int \\varphi < \\varepsilon$，从而 $\\Lambda(f) \\le \\int f + M\\varepsilon$。令 $\\varepsilon \\to 0$ 得 $\\Lambda(f) \\le \\int f$。∎',
         '对一般 $f \\in C_{c}(X)$，写 $f = f^{+} - f^{-}$ 并用线性性与上述两半，即得 $\\Lambda(f) = \\int f\\,\\mathrm{d}\\mu$。∎',
@@ -191,7 +191,7 @@ window.MG.packs.push({
     { id: 'dep.rm-lc', kind: 'definition', definition: 'def.locally-compact', usedBy: 'thm.riesz-markov',
       note: '假设是局部紧 Hausdorff —— 局部紧是 Urysohn 夹逼函数存在的前提。' },
     { id: 'dep.rm-outer', kind: 'definition', definition: 'def.outer-measure', usedBy: 'thm.riesz-markov',
-      note: '证明第 ②③ 步：先造外测度、再用 Carathéodory 延拓（这两步在节点注里已写全；仍缺的是最后的表示引理）。' },
+      note: '证明第 ②③ 步：先造外测度、再用 Carathéodory 延拓 —— 这两步连同第 ④ 步的表示引理（含上下界）都已在节点注里写全；这条边只记「外测度」这个定义被用到。' },
     { id: 'ana.rm-cond-measure', kind: 'analogy', a: 'def.cond-measure', b: 'thm.riesz-markov',
       title: '整值测度 $\\leftrightarrow$ Riesz–Markov：同一台机器，换系数环与测试空间',
       note: '两处都在做「对连续函数做赋值，得到『集合的大小』」这一件事：\n' +
@@ -228,6 +228,6 @@ window.MG.packs.push({
 
     /* ⑦ Riesz 表示引理依赖（有限覆盖上的）紧支单位分解 */
     { id: 'dep.rm-pou', kind: 'definition', definition: 'def.partition-of-unity', usedBy: 'thm.riesz-markov',
-      note: '表示引理用有限覆盖上的紧支单位分解把 $f$ 上下夹住；本图只记依赖，表示引理本身仍未写全。' },
+      note: '表示引理用一族紧支函数 $g_{i} \\prec A_{i}$（本质上是单位分解式的局部化）把 $f$ 上下夹住；表示引理的上下界已在节点注第 ④ 步写全，这条边只记对单位分解概念的依赖。' },
   ],
 });
