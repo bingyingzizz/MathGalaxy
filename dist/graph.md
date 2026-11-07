@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:42:30.561Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-07T06:52:30.841Z
 > 15 星系 / 105 星团 / 1550 节点 / 3192 连线（强边 3150，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -6720,7 +6720,7 @@ $$\chi_T(T) = 0$$
 
 所以「可对角化」永远相对于 $K$ 说。
 
-**四条里前三条只是重述，第四条才用到特征多项式**：
+**(1)–(4) 里前三条只是重述，第四条才用到特征多项式；(5) 是另一条独立入口。**
 
 - (1) $\iff$ (2)：**几乎只是定义改写**（可对角化 = 有特征向量组成的基）。
 - (2) $\iff$ (3)：**纯线性代数**（$\sum \dim E_{\lambda_i} = n$ 且和是直和 $\iff$ 张成 $V$）。不需要特征多项式、不需要代数闭。
@@ -44658,11 +44658,11 @@ $s$ 在第 $x_{0}$ 个分量上的像是 $\mathcal{F}(U) \to \mathcal{F}_{x_{0}}
 
 **第一步：Čech 层复形是消解（完整）。** 对覆盖 $\mathfrak{U}=(U_{i})$ 令 $\check{\mathcal{C}}^{p}(\mathfrak{U},\mathcal{M}):=\prod_{i_{0}<\cdots<i_{p}}j_{*}(\mathcal{M}|_{U_{i_{0}\cdots i_{p}}})$。逐茎验证：固定 $x$ 取 $i$ 使 $x\in U_{i}$，在茎上令 $(h\sigma)_{i_{0}\cdots i_{p-1}}:=\sigma_{i\,i_{0}\cdots i_{p-1}}$，则 $\delta h+h\delta=\operatorname{id}$（$p\ge1$），$p=0$ 时 $\delta h$ 是增广；故 $0\to\mathcal{M}\to\check{\mathcal{C}}^{0}\to\check{\mathcal{C}}^{1}\to\cdots$ 正合。取整体截面：$\Gamma(X,\check{\mathcal{C}}^{p})=\check{C}^{p}(\mathfrak{U},\mathcal{M})$，其同调就是 $\check{H}^{\bullet}(\mathfrak{U},\mathcal{M})$。
 
-**第二步：$\check{\mathcal{C}}^{p}$ 一般不是软层（修正一个常见误判）。** $\check{\mathcal{C}}^{p}$ 是开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只左正合；单位分解作用在**函数**上，不能把 $\mathcal{M}$ 的整体截面「拆成」局部截面再拼回。因此不能由「Čech 复形每一项软」直接得到无环性。正确的替代是：细层 $\implies$ 软层（单位分解拼截面），再用 Godement 的「软层无环」作维数转移 —— 后者是缺口，见第四步。
+**第二步：$\check{\mathcal{C}}^{p}$ 一般不是软层（修正一个常见误判）。** $\check{\mathcal{C}}^{p}$ 是开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只左正合；单位分解作用在**函数**上，不能把 $\mathcal{M}$ 的整体截面「拆成」局部截面再拼回。因此不能由「Čech 复形每一项软」直接得到无环性。正确的替代是：细层 $\implies$ 软层（$\mathcal C(X)$-模层用单位分解乘截面；一般阿贝尔层用 endomorphism 分割 $\eta_j$，见节点 ② 的 (a)/(b)），再用 Godement 的「软层无环」作维数转移 —— 后者是缺口，见第四步。
 
 **第三步：零调消解算导出函子（完整可写）。** 若 $0\to\mathcal{M}\to\mathcal{A}^{0}\to\mathcal{A}^{1}\to\cdots$ 的每一项都 $\Gamma$-无环，则 $H^{n}(X,\mathcal{M})\cong H^{n}(\Gamma(X,\mathcal{A}^{\bullet}))$：令 $\mathcal{Z}^{q+1}=\operatorname{im}(\mathcal{A}^{q}\to\mathcal{A}^{q+1})$，短正合列的长正合列给 $H^{n}(\mathcal{Z}^{q+1})\cong H^{n+1}(\mathcal{Z}^{q})$ 与 $H^{1}(\mathcal{Z}^{q})\cong\operatorname{coker}(\Gamma(\mathcal{A}^{q})\to\Gamma(\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引。
 
-**第四步：缺口 ①——软层无环。** 需要：仿紧 Hausdorff 上软层 $\mathcal{S}$ 满足 $H^{n}(X,\mathcal{S})=0$（$n\ge1$）。$n=1$ 由「软层让 $0\to\mathcal{S}\to\mathcal{A}\to\mathcal{B}\to0$ 的整体截面正合」给出（对局部有限闭加细作 Zorn 归纳），$n>1$ 用内射消解与松弛层作维数转移。本图无这条引理的节点，只以引理形式引用。
+**第四步：缺口 ①——软层无环。** 需要：仿紧 Hausdorff 上软层 $\mathcal{S}$ 满足 $H^{n}(X,\mathcal{S})=0$（$n\ge1$）。$n=1$ 由「软层让 $0\to\mathcal{S}\to\mathcal{A}\to\mathcal{B}\to0$ 的整体截面正合」给出（对局部有限闭加细作 Zorn 归纳），$n\ge2$ 改用 **Godement 消解**（每项松弛，松弛 $\implies$ 软）作维数转移；不能把内射消解 $\mathcal Q=\mathcal I/\mathcal M$ 当松弛层直接归纳 —— 松弛层的商未必松弛。本图无这条引理的节点，只以引理形式引用。
 
 **第五步：缺口 ②——比较步，以及逐覆盖断言为假。** 要把第一步的 Čech 消解当第三步的 $\mathcal{A}^{\bullet}$ 用，还差「软层对局部有限覆盖的 Čech 复形零调」，或等价的双复形比较（软消解 $\mathcal{S}^{\bullet}$，双复形 $\check{C}^{p}(\mathfrak{U},\mathcal{S}^{q})$ 的两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但缺这条引理。另一方面，对任意单个局部有限覆盖断言同构是**假的**：$X=S^{2}$、$\mathcal{M}=\mathbb{Z}$、两半球覆盖 $\{U,V\}$，$\check{C}^{2}=0$ 故 $\check{H}^{2}(\mathfrak{U},\mathbb{Z})=0$，而 $H^{2}(S^{2},\mathbb{Z})=\mathbb{Z}$。若 $\mathfrak{U}$ 对 $\mathcal{M}$ 是好覆盖（所有有限交上 $H^{q}=0$，$q>0$），Cartan–Leray 谱序列退化，逐覆盖映射才是同构；一般情形只能取定向极限。
 
