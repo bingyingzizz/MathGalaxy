@@ -647,12 +647,12 @@ function aiChunk(body, head, tail, resB = 150, resC = resB) {
 }
 
 /** 按「一块一个文件」输出分段结果；续段带指路行 */
-function emitChunks(files, dir, base, head, body, tail, resB) {
+function emitChunks(files, dir, base, head, body, tail, resB, contLabel = '续见') {
   const chunks = aiChunk(body, head, tail, resB);
   chunks.forEach((c, i) => {
     const name = `${base}${i ? '.' + (i + 1) : ''}`;
     let t = head + c + '\n';
-    if (i < chunks.length - 1) t += `\n> 续见 ${dir}/${base}.${i + 2}.md\n`;
+    if (i < chunks.length - 1) t += `\n> ${contLabel} ${dir}/${base}.${i + 2}.md\n`;
     else if (tail) t += '\n' + tail + '\n';
     files.push({ path: `${dir}/${name}.md`, text: t });
   });
@@ -889,7 +889,7 @@ function exportAIProducts(MG, graph, data) {
        以及指回**权威中文页**的路。缺什么就明说缺，不假装是全文。 */
     if (n.title_en || n.label_en || n.abstract_en) {
       const en = enNodeText(n, MG);
-      emitChunks(files, 'nodes', n.id + '.en', en.head, en.body.trimEnd(), en.tail, en.tailRes);
+      emitChunks(files, 'nodes', n.id + '.en', en.head, en.body.trimEnd(), en.tail, en.tailRes, 'continued in');
     }
     const texts = [text];
     pages.forEach((p, i) => {
