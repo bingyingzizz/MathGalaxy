@@ -427,10 +427,10 @@ window.MG = window.MG || {};
       cluster: 'topology.metrizable',
       type: 'theorem',
       hypotheses: ['第二可数', 'Hausdorff'],
-      label: '乌雷松度量化定理',
+      label: 'Урысон 度量化定理',
       title: '正则且第二可数的空间可度量化',
       regions: ['topology'],
-      tags: ['定理', '拓扑', '可度量化', '第二可数', '正则', '乌雷松'],
+      tags: ['定理', '拓扑', '可度量化', '第二可数', '正则', 'Урысон'],
       statement: [
         '设 $X$ 是**正则**（含 $T_{1}$）的**第二可数**空间。则 $X$ 是**可度量化的**：存在与 $X$ 的拓扑相容的距离。'
       ].join('\n'),

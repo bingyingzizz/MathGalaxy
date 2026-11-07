@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-07T09:36:02.483Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-07T09:40:26.838Z
 > 15 星系 / 105 星团 / 1550 节点 / 3192 连线（强边 3150，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -2183,8 +2183,8 @@ Stone–Čech 紧化的单射性要求的正是 $T_{3.5}$。
 
 参考：Munkres, Topology
 
-#### 乌雷松引理　`lem.urysohn`
-*引理*　乌雷松引理
+#### Урысон 引理　`lem.urysohn`
+*引理*　Урысон 引理
 
 设 $X$ 是拓扑空间。则 $X$ **正规** $\iff$ 对任意两个不交闭集 $A, B \subseteq X$，存在连续函数
 
@@ -4197,7 +4197,7 @@ $$\mathcal{T}_{d} = \mathcal{T},\qquad \mathcal{T}_{d} := \{\, U \subseteq X : \
 
 参考：Stone, Paracompactness and product spaces, Bull. Amer. Math. Soc. 54 (1948)；Munkres, Topology (2nd ed.), Section 41
 
-#### 乌雷松度量化定理　`thm.urysohn-metrization`
+#### Урысон 度量化定理　`thm.urysohn-metrization`
 *定理*　正则且第二可数的空间可度量化
 
 设 $X$ 是**正则**（含 $T_{1}$）的**第二可数**空间。则 $X$ 是**可度量化的**：存在与 $X$ 的拓扑相容的距离。
@@ -16193,8 +16193,8 @@ $$\forall\varepsilon > 0,\ \exists E \subseteq X :\ \mu(E) < \varepsilon$$
 
 参考：Folland, Real Analysis, Theorem 2.33
 
-#### 卢津定理　`cor.lusin`
-*推论*　卢津定理：可测函数几乎处处连续
+#### Лузин 定理　`cor.lusin`
+*推论*　Лузин 定理：可测函数几乎处处连续
 
 设 $f : [a, b] \to \mathbb{C}$ 是 Lebesgue 可测的。则对任意 $\varepsilon > 0$，存在**紧集** $E \subseteq [a, b]$ 使
 
@@ -42478,7 +42478,7 @@ $$|f_n(x) - f(x)| < k^{-1}$$
 
 $>$ ⚠ ③ 是唯一用到 $\mu(X) < \infty$ 的地方（递减列的上连续性需要首项有限）。少了它这一步就不成立，反例见节点正文。
 
-#### L¹ 里的逼近 + Егоров 定理 ⟹ 卢津定理　`imp.lusin`
+#### L¹ 里的逼近 + Егоров 定理 ⟹ Лузин 定理　`imp.lusin`
 *简单函数逼近 + Egorov $\implies$ Lusin*
 
 **① 先用简单函数逼近。** 由「$L^{1}$ 里的逼近」，取简单函数列 $\{\varphi_n\}$ 使 $\int|f - \varphi_n| \to 0$；取子列还可保证 $\varphi_n \to f$ a.e.（由 $L^{1}$ 收敛 $\implies$ 依测度收敛 + 抽 a.e. 子列）。
@@ -44881,19 +44881,19 @@ Michael 判别法里「加细」故意**不**要求成员是开集 —— 这正
 
 第二可数 = 给「基」再加一个计数条件（基的成员可数）。
 
-#### 定义引用：「第二可数空间」→ 乌雷松度量化定理　`dep.pcp-second-urysohn`
+#### 定义引用：「第二可数空间」→ Урысон 度量化定理　`dep.pcp-second-urysohn`
 
 定理的假设之一：第二可数（另加正则）。
 
-#### 定义引用：「可度量化空间」→ 乌雷松度量化定理　`dep.pcp-metrizable-urysohn`
+#### 定义引用：「可度量化空间」→ Урысон 度量化定理　`dep.pcp-metrizable-urysohn`
 
 定理的结论：可度量化。
 
-#### 定义引用：「乌雷松引理」→ 乌雷松度量化定理　`dep.pcp-urysohn-lemma-metrization`
+#### 定义引用：「Урысон 引理」→ Урысон 度量化定理　`dep.pcp-urysohn-lemma-metrization`
 
 构造可数多个分离函数那一步用的就是 Urysohn 引理（前提「正规」由第二可数 $+$ 正则推出）。
 
-#### 定义引用：「正规空间」→ 乌雷松度量化定理　`dep.pcp-normal-urysohn-metrization`
+#### 定义引用：「正规空间」→ Урысон 度量化定理　`dep.pcp-normal-urysohn-metrization`
 
 证明的中间站：正则 $+$ Lindelöf $\implies$ 正规，Urysohn 引理才有前提。
 
@@ -45006,7 +45006,7 @@ $$\rho_{i} := g_{i}/g$$
 离散 $\implies$ 局部有限（每点邻域至多碰一个成员，当然只碰有限个），故每层 $\mathcal{A}_{n}$ 也局部有限，于是 $\mathcal{B}$ 是 $\sigma$-局部有限的基。由 Nagata–Smirnov 定理，$X$ 可度量化 ✓。∎
 ⭐ 所以 Bing 定理不必单独证明 —— 它的假设是 Nagata–Smirnov 假设的特例。Bing 的独立价值在证明路径（$\sigma$-离散族的闭包族仍离散，闭包运算与覆盖运算可以交换着算），而不在结论更强。
 
-#### 局部有限基度量化定理 + 第二可数空间 ⟹ 乌雷松度量化定理　`imp.pcp-urysohn-from-ns`
+#### 局部有限基度量化定理 + 第二可数空间 ⟹ Урысон 度量化定理　`imp.pcp-urysohn-from-ns`
 
 设 $X$ 正则且第二可数，取可数基 $\mathcal{B} = \{ B_{n} \}$。把 $\mathcal{B}$ 写成可数多个「单项族」之并：$\mathcal{B} = \bigcup_{n} \{\, B_{n} \,\}$。
 每个单项族 $\{\, B_{n} \,\}$ 是**离散**族（任何点的任何邻域至多碰到它的唯一成员 —— 因为只有一个成员），当然也局部有限。故 $\mathcal{B}$ 是 $\sigma$-局部有限的基，由 Nagata–Smirnov 定理 $X$ 可度量化 ✓。∎
@@ -52315,7 +52315,7 @@ $X$ 本身是 $X$ 的一个子空间（取子空间拓扑时 $X$ 的开集族不
 
 > 「强 $\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。
 
-#### 完美正规空间 + 乌雷松引理 ⟹ 完全正规空间　`imp.pn-cn`
+#### 完美正规空间 + Урысон 引理 ⟹ 完全正规空间　`imp.pn-cn`
 
 设 $X$ 完美正规（正规，且每个闭集都是 $G_{\delta}$），$H \subseteq X$ 任意。要证 $H$ 正规。
 
@@ -57193,7 +57193,7 @@ $\pi$ 是连续的闭映射。
 
 第二条说的就是正规空间里的单位分解。
 
-#### 定义引用：「乌雷松引理」→ 仿紧性与单位分解　`def-link.pcpu-urysohn`
+#### 定义引用：「Урысон 引理」→ 仿紧性与单位分解　`def-link.pcpu-urysohn`
 
 构造 $g_{i}$ 那一步用的是 Urysohn 引理。
 
@@ -60095,11 +60095,11 @@ $kX$ 是沿紧 Hausdorff 空间取余极限。
 
 正规性说的是**不交闭集**能被开集分开。
 
-#### 定义引用：「连续」→ 乌雷松引理　`def-dep.urysohn-continuous`
+#### 定义引用：「连续」→ Урысон 引理　`def-dep.urysohn-continuous`
 
 引理的结论是一个**连续函数** $f : X \to [0,1]$。
 
-#### 定义引用：「正规空间」→ 乌雷松引理　`def-dep.urysohn-normal`
+#### 定义引用：「正规空间」→ Урысон 引理　`def-dep.urysohn-normal`
 
 引理说的正是「正规 $\iff$ 存在这样的函数」。
 
