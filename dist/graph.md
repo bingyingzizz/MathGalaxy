@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-07T09:45:06.057Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-07T11:47:54.160Z
 > 15 星系 / 105 星团 / 1550 节点 / 3192 连线（强边 3150，弱边 42；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.9 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -5413,7 +5413,7 @@ $$H_{1}(M; \mathbb{Z}) \cong \mathbb{Z}^{2g},$$
 
 ⭐ **判据（可定向侧）**：$g=\tfrac{1}{2}\operatorname{rank}H_{1}(S;\mathbb{Z})$（`def.genus`），且 $\chi(S)=2-2g$（`prop.eulerchar-genus`，仍 skeleton：它的「任意曲面化到标准形」那一步正是本节点的第 2 步）。所以「两个闭可定向曲面同胚当且仅当亏格相同当且仅当 $\chi$ 相同」—— 分类定理说的「只有一个整数不变量」。
 
-⭐ **判据（不可定向侧）**：$\chi(S)=2-k$，而 $H_{1}(S;\mathbb{Z})\cong\mathbb{Z}^{k-1}\oplus\mathbb{Z}/2$（`prop.eulerchar-nonorientable`，仍 skeleton，缺口同上）。$k$ 由「$H_{1}$ 的自由秩加一」与「有没有 $2$-挠」一起定出。
+⭐ **判据（不可定向侧）**：$\chi(S)=2-k$，而 $H_{1}(S;\mathbb{Z})\cong\mathbb{Z}^{k-1}\oplus\mathbb{Z}/2$（`prop.eulerchar-nonorientable`，已完整（标准形计数 + 连通和归纳；见其注））。$k$ 由「$H_{1}$ 的自由秩加一」与「有没有 $2$-挠」一起定出。
 
 📌 Gauss–Bonnet（`thm.gauss-bonnet`）通过 $\chi$ 与本定理相认：$\int K\,\mathrm{d}A=2\pi\chi=4\pi(1-g)$。
 
@@ -5490,7 +5490,7 @@ $$\chi(S) = 2 - 2g .$$
 
 **三、$H_{1}$ 的秩（标准形上完整）**：闭可定向曲面的连通和满足 $H_{1}(M\#N)\cong H_{1}(M)\oplus H_{1}(N)$。取 $M=T^{2}\setminus D^{2}$、$N$ 为 $g-1$ 个环面的连通和再挖去一个开球，用 `thm.mv-homology`：$H_{1}(\partial)=H_{1}(S^{1})=\mathbb{Z}$ 到 $H_{1}(M)\oplus H_{1}(N)$ 的映射为零（边界圆在 $M$ 内是换位子的乘积，同调为零），故 $H_{1}$ 直和；归纳得 $\operatorname{rank}H_{1}=2g$，与 `def.genus` 的定义一致。所以标准形上「$\chi=2-2g$」与「$g=\tfrac12\operatorname{rank}H_{1}$」完全吻合。
 
-**四、缺口（为什么仍 skeleton）**：上式只对标准形成立。要得到任意闭可定向曲面 $S$，需要 (a) $S$ 同胚于某标准形 —— 即 `thm.classification-surfaces`（它本身依赖 Radó 与组合引理）；或 (b) 绕过分类，直接证 $\beta_{2}(S)=1$（基本类存在），再由 $\chi=\sum_{i}(-1)^{i}\beta_{i}$（`thm.euler-characteristic`）得 $\chi=1-2g+1$。两条路本图都没有闭合，故不删 status、不勾 ∎。
+**四、缺口（为什么仍 skeleton）**：上式只对标准形成立。要得到任意闭可定向曲面 $S$，需要 (a) $S$ 同胚于某标准形 —— 即 `thm.classification-surfaces`（它本身依赖 Radó 与组合引理）；或 (b) 绕过分类，直接证 $\beta_{2}(S)=1$（基本类存在），再由 $\chi=\sum_{i}(-1)^{i}\beta_{i}$（`thm.euler-characteristic`）得 $\chi=1-2g+1$。两条路本图都没有闭合：(a) 缺的是组合归类引理本身（有限归纳 + 终止性，Munkres Ch. 12 的核心）；(b) 缺的是「基本类存在可推出 $\beta_{2}=1$」（定向对偶）与 Radó 三角剖分存在性。故不删 status、不勾 ∎。
 
 ⭐ 三个读数：$S^{2}$ 的 $g=0$、$\chi=2$；$T^{2}$ 的 $g=1$、$\chi=0$；双环面 $g=2$、$\chi=-2$。
 
@@ -5505,19 +5505,19 @@ $$\chi(S) = 2 - 2g .$$
 
 $$\chi(S) = 2 - k .$$
 
-⚠ **本节点保持 status: skeleton。** **本陈述只验证标准形**：一般闭不可定向曲面须先由分类定理化到标准形，那一步仍是 skeleton（`thm.classification-surfaces`）；此外 $H_{1}$、$H_{2}$ 的结构定理本图也还没有节点。下面写满能写的部分。
+**本命题的假设已经限定在标准形。** 这里 $S$ 是 $k$ 个 $\mathbb{RP}^{2}$ 的连通和（$k\ge1$），所以下面的计算不需要分类定理；把一般闭不可定向曲面化到标准形的那一步属于 `thm.classification-surfaces`（仍 skeleton），不在本命题的假设之内。
 
-**一、标准形计数（完整）**：$k$ 个射影平面的连通和画成 $2k$ 边形，边按 $c_{1}c_{1}c_{2}c_{2}\cdots c_{k}c_{k}$ 配对（$k\ge1$）；中心扇形三角剖分：顶点 $2$、边 $k$（配对边界边）$+2k$（辐条）$=3k$、面 $2k$，故 $\chi=2-3k+2k=2-k$。$k=1$ 给 $\chi(\mathbb{RP}^{2})=1$；$k=2$ 给 $\chi(\text{克莱因瓶})=0$。
+**一、$\mathbb{RP}^{2}$ 的三角剖分（完整）。** 把正二十面体（$12$ 个顶点、$30$ 条棱、$20$ 个面）的对径点粘合，得到 $\mathbb{RP}^{2}$ 的一个三角剖分：$6$ 个顶点、$15$ 条棱、$10$ 个面，故 $\chi(\mathbb{RP}^{2})=6-15+10=1=2-1$。对径作用是自由的单纯作用（每个单形与自己的对径像不重合），所以商复形仍是单纯复形。
 
-**二、同调为什么是 $k$ 而不是 $2k$**：不可定向闭曲面的 $H_{1}$ 有挠部，$H_{1}(S;\mathbb{Z})\cong\mathbb{Z}^{k-1}\oplus\mathbb{Z}/2$，故 $\operatorname{rank}H_{1}=k-1$；又 $H_{2}(S;\mathbb{Z})=0$（不可定向紧曲面没有整体基本类）。代入 $\chi=\sum_{i}(-1)^{i}\beta_{i}$ 得 $1-(k-1)+0=2-k$，与组合计数一致。⚠ 这两条同调事实（$H_{1}$ 结构、$H_{2}=0$）本图没有节点，只在此以定理形式引用。
+**二、连通和公式（完整）。** 设 $M,N$ 是已三角剖分的闭曲面。各取一个 $2$-单形，挖去它的内部（剩下一个带三角形边界的曲面）；把两个边界三角形按顶点对应粘合，得到 $M\#N$ 的三角剖分。计数：$V=V_{M}+V_{N}-3$、$E=E_{M}+E_{N}-3$、$F=(F_{M}-1)+(F_{N}-1)=F_{M}+F_{N}-2$，故 $\chi(M\#N)=\chi(M)+\chi(N)-2$。
 
-**标准形上的 $H_{1}$ 推导（完整）**：用 van Kampen（`thm.van-kampen`）对 $2k$ 边形的一个顶点取开覆盖，得 $\pi_{1}=\langle c_{1},\ldots,c_{k}\mid c_{1}^{2}\cdots c_{k}^{2}=1\rangle$；交换化后 $H_{1}\cong\mathbb{Z}^{k}/(2(c_{1}+\cdots+c_{k}))\cong\mathbb{Z}^{k-1}\oplus\mathbb{Z}/2$。这一步只处理标准形，桥到一般曲面仍靠分类定理。
+**三、归纳（完整）。** 记 $S_{k}$ 为 $k$ 个 $\mathbb{RP}^{2}$ 的连通和。$\chi(S_{1})=1$；由第二步，$\chi(S_{k})=\chi(S_{k-1})+\chi(\mathbb{RP}^{2})-2=\chi(S_{k-1})-1$。所以 $\chi(S_{k})=1-(k-1)=2-k$。∎
 
-**三、连通和公式**：$\chi(M\#N)=\chi(M)+\chi(N)-2$（证明见 `prop.eulerchar-genus` 的注）。由 $\chi(\mathbb{RP}^{2})=1$ 归纳得 $k$ 个射影平面的连通和 $\chi=2-k$。
+**四、与剖分无关。** `thm.euler-characteristic` 说对任何有限单纯复形 $\chi=\sum_{p}(-1)^{p}\beta_{p}$；右端只依赖同调型，所以上面用特定剖分算出的数就是 $\chi(S)$，不是剖分的偶然。
 
-**四、缺口**：陈述已限定在标准形（一般曲面要先由分类定理归到标准形）。剩下的空白是 $H_{1}$ 结构与 $H_{2}=0$ 在一般闭不可定向曲面上的证明 —— 本图两者都没有节点，故不删 status、不勾 ∎。
+**五、支撑性附注：$H_{1}$ 为什么是 $k-1$ 而不是 $2k$（完整，但不用于上面的计算）。** 在标准形 $2k$ 边形的一个顶点取开覆盖，用 van Kampen（`thm.van-kampen`）得 $\pi_{1}(S_{k})=\langle c_{1},\ldots,c_{k}\mid c_{1}^{2}\cdots c_{k}^{2}=1\rangle$；交换化后 $H_{1}(S_{k};\mathbb{Z})\cong\mathbb{Z}^{k}/(2(c_{1}+\cdots+c_{k}))\cong\mathbb{Z}^{k-1}\oplus\mathbb{Z}/2$。它也可代入 $\chi=\sum_{i}(-1)^{i}\beta_{i}$ 复核上面的 $2-k$，但那个复核需要 $H_{2}=0$ 与「一般曲面的 $\beta_{i}$」两条本图没有独立节点的事实，所以这里只当旁证。
 
-⚠ **「亏格」这个词在不可定向侧不能照搬**：`def.genus` 只对可定向定义（除以 $2$ 依赖 $H_{1}$ 自由秩为偶数）。不可定向侧的标准量是 $k$，关系是 $\chi=2-k$。
+⚠ **「亏格」这个词在不可定向侧不能照搬**：`def.genus` 只对可定向曲面定义（除以 $2$ 依赖 $H_{1}$ 自由秩为偶数）。不可定向侧的标准量是 $k$（不可定向亏格），关系是 $\chi=2-k$。
 
 ⭐ 读数：$\mathbb{RP}^{2}$ 的 $k=1$、$\chi=1$；克莱因瓶的 $k=2$、$\chi=0$；三个射影平面的连通和 $k=3$、$\chi=-1$。
 
@@ -24815,7 +24815,7 @@ $$\check{H}^{n}(X, \mathcal{M}) \;\cong\; H^{n}(X, \mathcal{M}) .$$
 
 ⚠️ **为什么不能对任意覆盖逐覆盖断言（陈述末句已按此修正）**：取 $X=S^{2}$、$\mathcal{M}=\mathbb{Z}$ 与两个半球的开覆盖 $\{U,V\}$（局部有限）：$U\cap V$ 同胚于环带，$\check{C}^{2}=0$ 故 $\check{H}^{2}(\mathfrak{U},\mathbb{Z})=0$，而 $H^{2}(S^{2},\mathbb{Z})=\mathbb{Z}$。逐覆盖断言因此为假；正确形式是沿覆盖的定向极限 $\check{H}^{n}(X,\mathcal{M})=\varinjlim_{\mathfrak{U}}\check{H}^{n}(\mathfrak{U},\mathcal{M})\cong H^{n}(X,\mathcal{M})$，对**好覆盖**（有限交上高阶上同调为零，对常值层即有限交可缩）才能逐覆盖。
 
-**⑤ 好覆盖的情形可以收尾（用 `thm.cartan-leray`）。** 若覆盖 $\mathfrak{U}$ 的每个有限交 $U_{i_{0}\cdots i_{p}}$ 都满足 $H^{q}(U_{i_{0}\cdots i_{p}},\mathcal{M})=0$（$q>0$），则层 $H^{q}(\mathcal{M})$ 在该覆盖的每个开集上为 $0$，于是 Cartan–Leray 谱序列的 $E_{2}^{p,q}=\check{H}^{p}(\mathfrak{U},H^{q}(\mathcal{M}))$ 在 $q>0$ 时为 $0$，谱序列退化，给出 $\check{H}^{n}(\mathfrak{U},\mathcal{M})\cong H^{n}(X,\mathcal{M})$。所以陈述中「好覆盖上逐覆盖同构」这一半已成立；一般局部有限覆盖的定向极限仍需 ② 与 ④。
+**⑤ 好覆盖的情形可以收尾（用 `thm.cartan-leray`）。** 若覆盖 $\mathfrak{U}$ 的每个有限交 $U_{i_{0}\cdots i_{p}}$ 都满足 $H^{q}(U_{i_{0}\cdots i_{p}},\mathcal{M})=0$（$q>0$），则 Čech 复形 $C^{\bullet}(\mathfrak{U},H^{q}(\mathcal{M}))$ 的每一项都是这些 $H^{q}(U_{I},\mathcal{M})=0$ 的积（Čech 项按有限交取值，正是预层 $U\mapsto H^{q}(U,\mathcal{M})$ 的截面；这里只需预层在覆盖的交上消失，不必断言层 $H^{q}(\mathcal{M})$ 本身是零层），故 Cartan–Leray 谱序列的 $E_{2}^{p,q}=\check{H}^{p}(\mathfrak{U},H^{q}(\mathcal{M}))$ 在 $q>0$ 时为 $0$，谱序列退化，给出 $\check{H}^{n}(\mathfrak{U},\mathcal{M})\cong H^{n}(X,\mathcal{M})$。所以陈述中「好覆盖上逐覆盖同构」这一半已成立；一般局部有限覆盖的定向极限仍需 ② 与 ④。
 
 **结论**：② 的软层无环补上后，还必须补 ④ 的比较步，才能把 ① 的 Čech 消解当零调消解收尾（或对好覆盖用 Cartan–Leray 退化）。⚠ 本节点**仍标 skeleton**：缺的是 ②（软层无环）与 ④（软层 Čech 零调/双复形比较）；①、细 $\implies$ 软、③ 已写出。
 
@@ -32491,8 +32491,8 @@ $$f : \Omega \longrightarrow \mathbb{D} = \{\, |z| < 1 \,\}$$
 **第 0 步：两个预备。**（a）若 $\varphi:\Omega\to\mathbb{D}$ 全纯，则 $|\varphi'(z_{0})|\le 1/\rho$，$\rho:=\operatorname{dist}(z_{0},\partial\Omega)$：在 $B(z_{0},\rho)\subset\Omega$ 上用 Cauchy 估计（`thm.cauchy-inequality`），$|\varphi|\le1$，故 $|\varphi'(z_{0})|\le1/\rho$。（b）**单叶性在内闭一致极限下保持**：设 $\varphi_{n}\to f$ 内闭一致，$\varphi_{n}$ 单叶、$f$ 非常数。若 $f(z_{1})=f(z_{2})=w$ 而 $z_{1}\ne z_{2}$，由 Hurwitz 零点定理（`thm.hurwitz`，用于 $f-w$）知 $\varphi_{n}-w$ 在 $z_{1}$、$z_{2}$ 附近各有零点（$n$ 大时），与 $\varphi_{n}$ 单叶矛盾。故 $f$ 单叶。
 **第一步：$\mathcal{F}$ 非空。** 取 $a\in\mathbb{C}\setminus\Omega$。$z-a$ 在 $\Omega$ 上无零点，$\Omega$ 单连通，故存在全纯 $g$ 使 $g^{2}=z-a$（`prop.single-valued-branch`：无零点全纯函数在单连通区域有单值对数支，再取 $\exp(\tfrac12\log)$）。$g$ 单叶：$g(z_{1})=g(z_{2})\implies z_{1}=z_{2}$。又 $g(\Omega)\cap(-g(\Omega))=\emptyset$：若 $g(z_{1})=-g(z_{2})$，平方得 $z_{1}=z_{2}$，于是 $g(z_{1})=-g(z_{1})$，故 $g(z_{1})=0$，与 $g^{2}=z-a\ne0$ 矛盾。令 $w_{0}=g(z_{0})$；$g(\Omega)$ 开，取 $r>0$ 使 $B(w_{0},r)\subset g(\Omega)$，则 $B(-w_{0},r)\subset-g(\Omega)$ 与 $g(\Omega)$ 不交，故 $|w+w_{0}|\ge r$（$w\in g(\Omega)$）。于是 $T(w):=1/(w+w_{0})$ 在 $g(\Omega)$ 上全纯单叶且 $|T|\le1/r$；$rT$ 把 $g(\Omega)$ 映入 $\mathbb{D}$。再用 $\mathbb{D}$ 的自同构（`def.mobius`：$\varphi_{b}(w)=(w-b)/(1-\bar b w)$）把 $rT(w_{0})$ 搬到 $0$，得单叶 $\psi:\Omega\to\mathbb{D}$、$\psi(z_{0})=0$；最后乘单位复数使 $\psi'(z_{0})>0$。故 $\mathcal{F}\ne\emptyset$。
 **第二步：极值元存在。** 由第 0 步（a），$s\le1/\rho<\infty$；$\mathcal{F}\ne\emptyset$ 给 $s>0$。取 $\varphi_{n}\in\mathcal{F}$ 使 $|\varphi_{n}'(z_{0})|\to s$。族在 $\Omega$ 的每个紧子集上一致有界（$|\varphi_{n}|<1$），由 Montel 定理（`thm.montel`）存在内闭一致收敛子列，仍记 $\varphi_{n}\to f$。则 $f$ 全纯（Weierstrass 收敛定理 `thm.weierstrass-convergence`），$f(z_{0})=0$，$|f'(z_{0})|=\lim|\varphi_{n}'(z_{0})|=s$，故 $f$ 非常数；由第 0 步（b）$f$ 单叶。又 $|f|\le1$ 而 $f$ 非常数，最大模原理给 $|f|<1$，即 $f:\Omega\to\mathbb{D}$。故 $f\in\mathcal{F}$ 且达到极大。
-**第三步：$f$ 必满射。** 反设存在 $a\in\mathbb{D}\setminus f(\Omega)$。令 $\varphi_{a}(w)=(w-a)/(1-\bar a w)$ —— $\mathbb{D}$ 的自同构，$\varphi_{a}(a)=0$、$\varphi_{a}'(a)=1/(1-|a|^{2})$。$F:=\varphi_{a}\circ f$ 在 $\Omega$ 上全纯且无零点（$f(\Omega)\subset\mathbb{D}\setminus\{a\}$），$\Omega$ 单连通，故存在全纯 $h$ 使 $h^{2}=F$（`prop.single-valued-branch`）。$h$ 单叶：$h(z_{1})=\pm h(z_{2})\implies F(z_{1})=F(z_{2})\implies f(z_{1})=f(z_{2})\implies z_{1}=z_{2}$；且 $h\ne0$。令 $b=h(z_{0})$，则 $|b|^{2}=|F(z_{0})|=|a|$（$f(z_{0})=0$），且 $|h|<1$。$\psi:=\varphi_{b}\circ h$ 是 $\Omega\to\mathbb{D}$ 的单叶全纯映射，$\psi(z_{0})=0$。**算导数**：$F'(z_{0})=\varphi_{a}'(0)f'(z_{0})=(1-|a|^{2})\,s$（用 $f'(z_{0})=s>0$），故 $|h'(z_{0})|=\frac{|F'(z_{0})|}{2|b|}=\frac{(1-|a|^{2})s}{2\sqrt{|a|}}$。于是 $|\psi'(z_{0})|=\frac{|h'(z_{0})|}{1-|b|^{2}}=\frac{(1-|a|^{2})s}{2\sqrt{|a|}(1-|a|)}=\frac{(1+|a|)s}{2\sqrt{|a|}}$。由 $(1+|a|)^{2}-4|a|=(1-|a|)^{2}>0$（$|a|\ne1$），得 $\frac{1+|a|}{2\sqrt{|a|}}>1$，即 $|\psi'(z_{0})|>s$，与 $s$ 的极大性矛盾。故 $f$ 满射。
-**第四步：双全纯与唯一性。** 单叶 + 满射的全纯映射是双全纯（单叶全纯是开映射，`thm.open-mapping`；逆映射全纯）。若 $f,g$ 都满足条件，则 $h:=g\circ f^{-1}$ 是 $\mathbb{D}$ 的自同构、$h(0)=0$。Schwarz 引理（`lem.schwarz`）给 $|h(z)|\le|z|$；对 $h^{-1}$ 同样得 $|h^{-1}(w)|\le|w|$，即 $|h(z)|\ge|z|$。故 $|h(z)|=|z|$，于是 $h(z)=cz$、$|c|=1$；又 $h'(0)=g'(z_{0})/f'(z_{0})>0$，故 $c=1$，即 $f=g$。∎
+**第三步：$f$ 必满射。** 反设存在 $a\in\mathbb{D}\setminus f(\Omega)$。令 $\varphi_{a}(w)=(w-a)/(1-\bar a w)$ —— $\mathbb{D}$ 的自同构，$\varphi_{a}(a)=0$、$\varphi_{a}'(a)=1/(1-|a|^{2})$。$F:=\varphi_{a}\circ f$ 在 $\Omega$ 上全纯且无零点（$f(\Omega)\subset\mathbb{D}\setminus\{a\}$），$\Omega$ 单连通，故存在全纯 $h$ 使 $h^{2}=F$（`prop.single-valued-branch`）。$h$ 单叶：$h(z_{1})=\pm h(z_{2})\implies F(z_{1})=F(z_{2})\implies f(z_{1})=f(z_{2})\implies z_{1}=z_{2}$；且 $h\ne0$。令 $b=h(z_{0})$，则 $|b|^{2}=|F(z_{0})|=|a|$（$f(z_{0})=0$），且 $|h|<1$。$\psi:=\varphi_{b}\circ h$ 是 $\Omega\to\mathbb{D}$ 的单叶全纯映射，$\psi(z_{0})=0$。**算导数**：$\varphi_{a}'(0)=1-|a|^{2}$，故 $|F'(z_{0})|=|\varphi_{a}'(0)|\,|f'(z_{0})|=(1-|a|^{2})\,s$（Montel 只保证 $|f'(z_{0})|=s$，下面只用模），于是 $|h'(z_{0})|=\frac{|F'(z_{0})|}{2|b|}=\frac{(1-|a|^{2})s}{2\sqrt{|a|}}$。于是 $|\psi'(z_{0})|=\frac{|h'(z_{0})|}{1-|b|^{2}}=\frac{(1-|a|^{2})s}{2\sqrt{|a|}(1-|a|)}=\frac{(1+|a|)s}{2\sqrt{|a|}}$。由 $(1+|a|)^{2}-4|a|=(1-|a|)^{2}>0$（$|a|\ne1$），得 $\frac{1+|a|}{2\sqrt{|a|}}>1$，即 $|\psi'(z_{0})|>s$，与 $s$ 的极大性矛盾。故 $f$ 满射。
+**第四步：双全纯与唯一性。** 先按陈述把 $f$ 归一化：若极值元只满足 $|f'(z_{0})|=s$，把 $f$ 换成 $e^{-i\arg f'(z_{0})}f$ 即可，$f(z_{0})=0$、单叶性与模长都不变，于是 $f'(z_{0})=s>0$。单叶 + 满射的全纯映射是双全纯（单叶全纯是开映射，`thm.open-mapping`；逆映射全纯）。若 $f,g$ 都满足条件，则 $h:=g\circ f^{-1}$ 是 $\mathbb{D}$ 的自同构、$h(0)=0$。Schwarz 引理（`lem.schwarz`）给 $|h(z)|\le|z|$；对 $h^{-1}$ 同样得 $|h^{-1}(w)|\le|w|$，即 $|h(z)|\ge|z|$。故 $|h(z)|=|z|$，于是 $h(z)=cz$、$|c|=1$；又 $h'(0)=g'(z_{0})/f'(z_{0})>0$，故 $c=1$，即 $f=g$。∎
 ⭐ **为什么叫「基本定理」**：它把「共形等价」在单连通情形下一举归约到唯一的模型 $\mathbb{D}$。于是任何单连通区域上的问题都可以搬到圆盘上算 —— 双曲几何（`prop.poincare-disk`）就是这么来的。
 ⚠️ **单连通不能去掉**：圆环 $\{1<|z|<2\}$ 与 $\mathbb{D}$ 不共形等价（前者有「洞」，单值化定理里它对应另一个模型）。⚠️ 「真子区域」也不能去掉：$\mathbb{C}$ 本身没有到 $\mathbb{D}$ 的双全纯（Liouville 定理：$\mathbb{C}\to\mathbb{D}$ 的有界全纯必为常数）。
 
@@ -33174,7 +33174,7 @@ $$f(z) = z^{m} e^{P(z)} \prod_{n} E_{p}\left(\frac{z}{a_{n}}\right),$$
 
 **第三步：商无零点（完整）。** 令 $\Phi(z):=f(z)\big/\bigl(z^{m}\mathcal{P}(z)\bigr)$。每个 $a_{n}$ 处 $E_{p}(z/a_{n})$ 恰有一阶零点，与 $f$ 的零点相消；其它点 $f\ne0$ 而乘积非零。故 $\Phi$ 整、处处非零。
 
-**第四步：$\Phi$ 的阶 $\le\rho$（完整）。** 记 $h$ 为 $\Phi$ 的整对数（第五步），则 $\operatorname{Re}h=\log|\Phi|$。只需证：对每个大 $r$，存在 $R\in[r,2r]$ 使 $|z|=R$ 上 $\log|\Phi(z)|\le C\,r^{\rho+\varepsilon}$；再由最大模原理（$\operatorname{Re}h$ 调和）与第六步的 Borel–Carathéodory 即得 $|h|\le C\,R^{\rho+\varepsilon}$，从而用 Cauchy 估计得 $h$ 是多项式。\n\n**（i）$E_{p}$ 的两条初等估计。** 对 $|w|\le1/2$：$\log|E_{p}(w)|=\operatorname{Re}\bigl(-\sum_{k>p}w^{k}/k\bigr)$，故 $|\log|E_{p}(w)||\le2|w|^{p+1}$。对 $|w|\ge1/2$：$\log|E_{p}(w)|=\log|1-w|+\operatorname{Re}\sum_{j\le p}w^{j}/j\ge\log|1-w|-C_{p}|w|^{p}$。
+**第四步：$\Phi$ 的阶 $\le\rho$（完整）。** 记 $h$ 为 $\Phi$ 的整对数（第五步；那里只用 $\Phi$ 处处非零，与本步的估计互不依赖，先取后用），则 $\operatorname{Re}h=\log|\Phi|$。只需证：对每个大 $r$，存在 $R\in[r,2r]$ 使 $|z|=R$ 上 $\log|\Phi(z)|\le C\,r^{\rho+\varepsilon}$；再由最大模原理（$\operatorname{Re}h$ 调和）与第六步的 Borel–Carathéodory 即得 $|h|\le C\,R^{\rho+\varepsilon}$，从而用 Cauchy 估计得 $h$ 是多项式。\n\n**（i）$E_{p}$ 的两条初等估计。** 对 $|w|\le1/2$：$\log|E_{p}(w)|=\operatorname{Re}\bigl(-\sum_{k>p}w^{k}/k\bigr)$，故 $|\log|E_{p}(w)||\le2|w|^{p+1}$。对 $|w|\ge1/2$：$\log|E_{p}(w)|=\log|1-w|+\operatorname{Re}\sum_{j\le p}w^{j}/j\ge\log|1-w|-C_{p}|w|^{p}$。
 
 **第四步（续）：好半径引理。** 取 $M:=\lceil\rho\rceil+3$、$\delta:=r^{-M}$。零点落在 $[r/2,4r]$ 中的个数 $N\le n(4r)\le C\,r^{\rho+\varepsilon}$；每个这样的零点排除掉长度 $2\delta$ 的一段半径。因 $2\delta N\le2C\,r^{\rho+\varepsilon-M}<r$（$r$ 大时），存在 $R\in[r,2r]$ 使每个 $|a_{n}|\in[r/2,4r]$ 都满足 $\bigl||a_{n}|-R\bigr|\ge\delta$。固定这样的 $R$。\n\n对 $|z|=R$ 按 $|a_{n}|\le4r$、$|a_{n}|>4r$ 拆 $\log|\mathcal{P}(z)|=\sum\log|E_{p}(z/a_{n})|$。\n\n• $|a_{n}|>4r$：$|z/a_{n}|<1/2$，由（i）每项 $\ge-C(R/|a_{n}|)^{p+1}$；分部求和与 $n(t)\le C t^{\rho+\varepsilon}$ 给 $\sum_{|a_{n}|>4r}(R/|a_{n}|)^{p+1}\le C\,r^{\rho+\varepsilon}$。\n\n• $|a_{n}|\le4r$：$|z-a_{n}|\ge\delta$（$|a_{n}|\in[r/2,4r]$ 时由 $R$ 的选法；$|a_{n}|<r/2$ 时 $|z-a_{n}|\ge R-r/2\ge r/2$），故 $\log|1-z/a_{n}|=\log|z-a_{n}|-\log|a_{n}|\ge\log(\delta/(4r))$；由（i）每项 $\ge\log(\delta/(4r))-C(R/|a_{n}|)^{p}$。对至多 $N\le C r^{\rho+\varepsilon}$ 项求和，并注意 $\sum_{|a_{n}|\le4r}(R/|a_{n}|)^{p}\le C r^{\rho+\varepsilon}$（分部求和），得 $\sum_{|a_{n}|\le4r}\log|E_{p}(z/a_{n})|\ge-C\,r^{\rho+\varepsilon}\log r$。\n\n合并：$\log|\mathcal{P}(z)|\ge-C\,r^{\rho+\varepsilon}\log r$。于是 $\log|\Phi(z)|=\log|f(z)|-m\log R-\log|\mathcal{P}(z)|\le C\,r^{\rho+\varepsilon}+C\,r^{\rho+\varepsilon}\log r\le C_{1}\,r^{\rho+\varepsilon_{1}}$（任何 $\varepsilon_{1}>\varepsilon$）。
 
@@ -49304,7 +49304,7 @@ $$|f'(z)| \le \frac{M_{j}}{r_{j}},\qquad z \in K_{j},\ f \in \mathcal{F},$$
 
 > 开映射 = 非常数全纯函数不能把开集压扁。
 
-#### Montel 定理 + Hurwitz 定理 + Schwarz 引理 ⟹ Riemann 映射定理　`e14.implication`
+#### Montel 定理 + Hurwitz 定理 + Schwarz 引理 + 单值支的存在判据 + Cauchy 不等式 ⟹ Riemann 映射定理　`e14.implication`
 *正规族 + 极值元 + 平方根技巧：映满圆盘*
 
 **族不空**：因 $\Omega \ne \mathbb{C}$，取 $a \notin \Omega$；$\Omega$ 单连通 $\implies$ $\sqrt{z - a}$ 有全纯单值支（`prop.single-valued-branch`）。
@@ -49511,7 +49511,7 @@ $$\left|1 - E_{p_{n}}\!\left(\frac{z}{a_{n}}\right)\right| \le \left|\frac{z}{a_
 
 > Weierstrass 乘积 = 「零点可任意指定」；剩下的自由度正是 $e^{g}$。
 
-#### Weierstrass 乘积定理 + Jensen 公式 + 整函数的阶与型 ⟹ Hadamard 分解定理　`e28.implication`
+#### Weierstrass 乘积定理 + Jensen 公式 + 单值支的存在判据 + Cauchy 不等式 + Schwarz 引理 ⟹ Hadamard 分解定理　`e28.implication`
 *阶给出统一的 $p$，Jensen 给出零点密度*
 
 设 $f$ 的阶为 $\rho$。取 $p = \lfloor \rho \rfloor$。
@@ -49522,7 +49522,7 @@ $$\left|1 - E_{p_{n}}\!\left(\frac{z}{a_{n}}\right)\right| \le \left|\frac{z}{a_
 
 **指数是多项式**：$\Phi = e^{h}$（`prop.single-valued-branch`），$\operatorname{Re} h = \log|\Phi| = O(r^{\rho+\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），得 $|h(z)| = O(r^{\rho+\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\deg > \rho$ 时全为零。
 
-⚠️ **路线梗概**：上一步「乘积部分被 $\exp(C r^{\rho+\varepsilon})$ 控制，故 $\Phi$ 仍有限阶」默认了典范乘积的**阶下界**（要由 $n(r)$ 的上界估出乘积的增长不超过 $f$ 本身），这一步本图未写；故本边不勾 ∎。
+（乘积部分的**阶下界**正是节点第四步的好半径估计：在避开零点的好半径 $R$ 上 $\log|\mathcal P(z)|\ge -C R^{\rho+\varepsilon}$，故 $\operatorname{Re}h=\log|f|-\log|\mathcal P|\le C' r^{\rho+\varepsilon}$，再走 Borel–Carathéodory 与 Cauchy 估计即得 $h$ 为多项式；详见节点第四步。）∎
 
 > Hadamard = Weierstrass 乘积 + 增长阶：因子统一、指数退化成多项式。
 
@@ -62973,12 +62973,12 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **积分 ↔ 符号测度与分解**　5 条节点级连线
 - **测度的构造 ↔ 符号测度与分解**　8 条节点级连线
 - **复变函数基础 ↔ 数系的构造**　6 条节点级连线
-- **Cauchy 理论 ↔ 复变函数基础**　9 条节点级连线
-- **Cauchy 理论 ↔ 共形映射与正规族**　3 条节点级连线
-- **Cauchy 理论 ↔ 留数与辐角原理**　5 条节点级连线
+- **Cauchy 理论 ↔ 复变函数基础**　11 条节点级连线
+- **Cauchy 理论 ↔ 共形映射与正规族**　5 条节点级连线
+- **Cauchy 理论 ↔ 留数与辐角原理**　6 条节点级连线
 - **复变函数基础 ↔ Riemann 积分**　2 条节点级连线
 - **Cauchy 理论 ↔ 函数列、幂级数与初等函数**　2 条节点级连线
-- **复变函数基础 ↔ 留数与辐角原理**　8 条节点级连线
+- **复变函数基础 ↔ 留数与辐角原理**　9 条节点级连线
 - **流形与向量丛 ↔ 拓扑空间的基本语汇**　7 条节点级连线
 - **流形与向量丛 ↔ 分离公理**　2 条节点级连线
 - **多元微分 ↔ 向量场与 Lie 结构**　3 条节点级连线
@@ -62998,10 +62998,10 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **矩阵与行列式 ↔ 微分形式、积分与 de Rham**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 曲面论**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 仿紧与单位分解**　2 条节点级连线
-- **复变函数基础 ↔ 共形映射与正规族**　11 条节点级连线
+- **复变函数基础 ↔ 共形映射与正规族**　13 条节点级连线
 - **Cauchy 理论 ↔ 调和函数**　3 条节点级连线
 - **复变函数基础 ↔ 调和函数**　2 条节点级连线
-- **Cauchy 理论 ↔ 解析延拓与整函数**　9 条节点级连线
+- **Cauchy 理论 ↔ 解析延拓与整函数**　10 条节点级连线
 - **活动标架与结构方程 ↔ Lie 群**　4 条节点级连线
 - **丛的示性类 ↔ 流形与向量丛**　24 条节点级连线
 - **丛的示性类 ↔ 层上同调**　2 条节点级连线
@@ -63010,7 +63010,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **活动标架与结构方程 ↔ 向量场与 Lie 结构**　2 条节点级连线
 - **平坦模 ↔ 消解与维数**　2 条节点级连线
 - **共形映射与正规族 ↔ 留数与辐角原理**　2 条节点级连线
-- **复变函数基础 ↔ 解析延拓与整函数**　3 条节点级连线
+- **复变函数基础 ↔ 解析延拓与整函数**　4 条节点级连线
+- **解析延拓与整函数 ↔ 共形映射与正规族**　2 条节点级连线
 - **关系与函数 ↔ 基本群**　2 条节点级连线
 - **基本群 ↔ 拓扑空间的基本语汇**　4 条节点级连线
 - **复形与导出三角 ↔ 基本群**　3 条节点级连线

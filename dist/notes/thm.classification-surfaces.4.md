@@ -1,7 +1,7 @@
 # 闭曲面分类定理　`thm.classification-surfaces`　·　说明
 根 `../`
 
-⭐ **判据（不可定向侧）**：$\chi(S)=2-k$，而 $H_{1}(S;\mathbb{Z})\cong\mathbb{Z}^{k-1}\oplus\mathbb{Z}/2$（`prop.eulerchar-nonorientable`，仍 skeleton，缺口同上）。$k$ 由「$H_{1}$ 的自由秩加一」与「有没有 $2$-挠」一起定出。
+⭐ **判据（不可定向侧）**：$\chi(S)=2-k$，而 $H_{1}(S;\mathbb{Z})\cong\mathbb{Z}^{k-1}\oplus\mathbb{Z}/2$（`prop.eulerchar-nonorientable`，已完整（标准形计数 + 连通和归纳；见其注））。$k$ 由「$H_{1}$ 的自由秩加一」与「有没有 $2$-挠」一起定出。
 
 📌 Gauss–Bonnet（`thm.gauss-bonnet`）通过 $\chi$ 与本定理相认：$\int K\,\mathrm{d}A=2\pi\chi=4\pi(1-g)$。
 

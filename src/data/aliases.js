@@ -198,7 +198,7 @@ MG.aliases = {
     { id: 'prop.convergence-counterexamples', en: 'four standard counterexamples', aka: ['反例', '收敛的反例', '标准反例'] },
     { id: 'prop.L1-implies-measure', en: 'L1 convergence implies convergence in measure', aka: ['L1 收敛推出依测度'] },
     { id: 'thm.egorov', aka: ['Egorov', '叶果洛夫', '叶戈罗夫', 'Егоров'] },
-    { id: 'cor.lusin', aka: ['Lusin', '卢津'] },
+    { id: 'cor.lusin', aka: ['Lusin', 'Lusin 定理', '卢津', '卢津定理'] },
 
     /* 积分 */
     { id: 'def.lplus', en: 'the class of non-negative measurable functions', aka: ['L+', 'L⁺', '非负可测函数', '非负函数空间'] },
@@ -618,7 +618,7 @@ MG.aliases = {
     { id: 'def.completely-normal-space', en: 'Completely Normal Space', aka: ['完全正规空间', 'T5', 'T_5', 'T₅', '遗传正规'] },
     { id: 'def.perfectly-normal-space', en: 'Perfectly Normal Space', aka: ['完美正规空间', 'T6', 'T_6', 'T₆', 'perfectly normal'] },
     { id: 'def.interior', en: 'Interior', aka: ['内部', '开核', 'interior', '边界'] },
-    { id: 'lem.urysohn', aka: ['Urysohn 引理', 'Urysohn', 'Lemma 2.1.2', '连续函数足够多'] },
+    { id: 'lem.urysohn', aka: ['Urysohn 引理', 'Urysohn', 'Lemma 2.1.2', '连续函数足够多', '乌雷松引理'] },
     { id: 'def.topo-ab-group', aka: ['拓扑阿贝尔群', 'topological abelian group', 'AbTop', '连续同态', 'CZ(M,N)'] },
     { id: 'prop.abtop-to-abcond', en: 'topological abelian groups embed into condensed ones', aka: ['关联凝聚态群', 'Proposition 6.2.1', 'Prop 6.2.1', 'AbTop 到 AbCond'] },
     { id: 'prop.continuous-hom-condensed', en: 'continuous homomorphisms and the internal hom', aka: ['Proposition 6.2.2', 'Prop 6.2.2', '连续同态是内部 Hom'] },
@@ -1220,7 +1220,7 @@ MG.aliases = {
     { id: 'def.pointwise-convergence', en: 'pointwise convergence', aka: ['逐点收敛'] },
     { id: 'thm.paracompact-hausdorff-normal', aka: ['仿紧豪斯多夫空间正规', '豪斯多夫'] },
     { id: 'thm.metric-paracompact', aka: ['斯通定理', '斯通'] },
-    { id: 'thm.urysohn-metrization', aka: ['乌雷松度量化定理', '乌雷松'] },
+    { id: 'thm.urysohn-metrization', aka: ['乌雷松度量化定理', '乌雷松', 'Urysohn 度量化定理'] },
     { id: 'thm.liouville-formula', aka: ['刘维尔公式', '刘维尔'] },
     { id: 'lem.gauss-lemma', aka: ['高斯引理'] },
     { id: 'def.curvature-tensor', aka: ['黎曼曲率张量'] },

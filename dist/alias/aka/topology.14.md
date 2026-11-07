@@ -1,6 +1,12 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- 紧化 → def.compactification
+
+- 一点紧化 → def.one-point-compactification
+
+- 网 → def.net
+
 - 滤子 → def.filter
 
 - 连通和 | connect sum | M#N → def.connected-sum
@@ -30,7 +36,5 @@
 - 莫比乌斯带 | Moebius band → def.mobius-band
 
 - 圆的同调 | 圆的 H1 → ex.h1-circle
-
-- Sierpinski 空间 | Sierpiński 空间 | 谢尔宾斯基空间 | 谢尔宾斯基 → ex.sierpinski-space
 
 > 续见 alias/aka/topology.15.md
