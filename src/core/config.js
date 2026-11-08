@@ -242,9 +242,10 @@
          纹理里按 fogAlpha 烘焙，绘制时再按主题乘 fogGlowLight / fogGlowDark。 */
       fogPadRatio: 0.35,          // 内容 bbox 外扩比例（按长边算）
       fogMaxSide: 768,            // 纹理长边像素上限（ENG-009 的 747×768 口径）
-      fogAlpha: 0.36,             // 纹理里区域云核心 alpha（四档衰减到 0）
-      fogGlowLight: 0.10,         // 亮色主题的最终雾浓度
-      fogGlowDark: 0.12,          // 深色主题的最终雾浓度
+      fogAlpha: 0.44,             // 纹理里区域云核心 alpha（四档衰减到 0）
+      fogGlowLight: 0.12,         // 亮色主题的最终雾浓度（fit 档）
+      fogGlowDark: 0.145,         // 深色主题的最终雾浓度（fit 档）
+      fogZoomBoost: 1.3,          // 放大补偿：k≥1 时再乘 1+1.3（只加不透明度，不加尺寸）
       /* ⚠️ 下面两个是 layout.js 算「板块云半径」用的（不是渲染参数）：
          radius = max(cloudRadiusMin, 专属节点最大离心距 + cloudMargin)。
          删掉会变成 Math.max(undefined, …) = NaN ⇒ 冷启动

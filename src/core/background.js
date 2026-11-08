@@ -47,7 +47,7 @@
     fctx.setTransform(fs, 0, 0, fs, -fx * fs, -fy * fs);
 
     /* ENG-009 的四档渐变：0.36 → 0.22 → 0.07 → 0（画的时候再按主题乘 0.10/0.12 / 0.36）。 */
-    var a0 = bc.fogAlpha == null ? 0.36 : bc.fogAlpha;
+    var a0 = bc.fogAlpha == null ? 0.44 : bc.fogAlpha;
     var regions = 0;
     var warnedBadStat = false;
     (graph.regions || []).forEach(function (reg) {
@@ -114,8 +114,14 @@
     var dark = false;
     try { dark = document.documentElement.getAttribute('data-theme') === 'dark'; } catch (e) {}
     var bc = MG.config.background;
-    var glow = dark ? (bc.fogGlowDark == null ? 0.12 : bc.fogGlowDark)
-                    : (bc.fogGlowLight == null ? 0.10 : bc.fogGlowLight);
+    var glow = dark ? (bc.fogGlowDark == null ? 0.145 : bc.fogGlowDark)
+                    : (bc.fogGlowLight == null ? 0.12 : bc.fogGlowLight);
+
+    /* ENG-012（用户：「放大后几乎看不见」）：纹理在 k=1 时被放大 ~10 倍，
+       只剩一层很淡的平滑底雾。这里按 k 给一个**只加不透明度、不加尺寸**的补偿：
+       fit 档 ×1，k≈1 起 ×(1+boost)。雾仍来自同一张世界纹理，不另起分层/分端。 */
+    var zr = Math.max(0, Math.min(1, (k - 0.12) / 0.88));
+    var zoomBoost = 1 + zr * (bc.fogZoomBoost == null ? 1.3 : bc.fogZoomBoost);
 
     /* 只贴纹理与视口相交的那块（高倍时不会去光栅化上万像素的整图）。 */
     var wf0 = Math.max(tex.x, -tx / k);
@@ -126,7 +132,7 @@
 
     ctx.save();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.globalAlpha = Math.min(1, glow / (tex.alpha || 0.36));
+    ctx.globalAlpha = Math.min(1, (glow / (tex.alpha || 0.44)) * zoomBoost);
     if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'low';
     ctx.drawImage(tex.canvas,
       (wf0 - tex.x) / tex.w * tex.cw, (hf0 - tex.y) / tex.h * tex.ch,
