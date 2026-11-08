@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T15:22:42.279Z",
+ "generated": "2026-11-08T06:22:28.519Z",
  "terms": 76,
  "missing": [
   {
@@ -357,6 +357,33 @@
  ],
  "noEdge": [
   {
+   "node": "lem.newman-tauberian",
+   "nodeLabel": "Newman 解析定理",
+   "nodeLayer": 0,
+   "def": "def.analytic-continuation",
+   "defLabel": "解析延拓",
+   "defLayer": 28,
+   "gap": 28
+  },
+  {
+   "node": "lem.newman-tauberian",
+   "nodeLabel": "Newman 解析定理",
+   "nodeLayer": 0,
+   "def": "def.locally-integrable",
+   "defLabel": "局部可积",
+   "defLayer": 22,
+   "gap": 22
+  },
+  {
+   "node": "lem.newman-tauberian",
+   "nodeLabel": "Newman 解析定理",
+   "nodeLayer": 0,
+   "def": "def.improper-integral",
+   "defLabel": "反常积分",
+   "defLayer": 18,
+   "gap": 18
+  },
+  {
    "node": "def.module-category",
    "nodeLabel": "模范畴",
    "nodeLayer": 10,
@@ -393,7 +420,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 41,
+ "noEdgeAll": 44,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

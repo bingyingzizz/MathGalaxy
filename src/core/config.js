@@ -279,19 +279,21 @@
       mobileAlpha: 0.20,
       mobileAlphaVar: 0.20,
       mobileDotSize: 2.0,         // 世界单位；屏幕边长 = 2.0×k（fit 0.12px / k=1 2.0px）
-      /* 亮星：约 8% 的粒子在世界坐标里大 1.3–1.6×，核心提亮；屏幕直径
-         ≥ mobileStarMinPx 时才加四角星芒（形状切换，不是尺寸钳制 ——
-         星芒长度 = mobileStarSpike × 屏幕直径，同样跟着 k 缩放）。
-         fit 档连亮星都是 <0.2px，只是雾里更亮的颗粒，不会出现星芒。 */
+      /* 亮星：约 6% 的粒子在世界坐标里大 1.3–1.6×，核心提亮；
+         它们没有星芒，只是更亮更大的柔光点（光晕见 mobileGlow*）。 */
       mobileStarRatio: 0.06,
-      mobileStarMinPx: 1.6,
       mobileStarScaleMin: 1.3,
       mobileStarScaleVar: 0.3,
       mobileStarAlpha: 0.62,
-      mobileStarSpike: 1.6,       // 星芒半长 ÷ 该星屏幕直径（d=2.8px ⇒ 半长 4.5px）
-      mobileStarInner: 0.10,      // 四角星内凹顶点半径 ÷ 屏幕直径（越小芒越细）
-      mobileStarCore: 0.36,       // 近白圆核半径 ÷ 屏幕直径（比尘埃点略小，芒才露得出来）
-      mobileStarCoreAlpha: 0.92,  // 近白核心的不透明度（亮色主题再 ×1.15）
+      /* 辉光：每颗粒子的光晕半径 = 世界半径 × mobileGlowScale（2.5–4× 核心），
+         屏幕尺寸同样由 cam.k 决定，不做屏幕最小钳制。按光晕的**屏幕直径**
+         淡入（mobileGlowMinPx → +mobileGlowRampPx 达到全强）：fit 时光晕
+         不到 1px，淡入为 0，仍是雾/沙；放大后才逐点铺开。
+         mobileGlowAlpha 是单层基准透明度，三层叠加后中心约 0.12×ga。 */
+      mobileGlowScale: 3.0,
+      mobileGlowAlpha: 0.14,
+      mobileGlowMinPx: 2.0,
+      mobileGlowRampPx: 1.6,
       centerAlpha: 0.025,         // 板块中心大团雾
       nodeAlpha: 0.025,           // 每个节点周围的小团雾
       spread: 0.52,               // 云朵分布半径 / 板块半径

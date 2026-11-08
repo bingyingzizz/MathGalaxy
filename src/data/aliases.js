@@ -86,7 +86,7 @@ MG.aliases = {
     { id: 'def.rat', aka: ['有理数', 'rationals', 'ℚ'] },
     { id: 'def.abs', aka: ['绝对值', 'absolute value'] },
     { id: 'thm.triangle', aka: ['三角不等式', 'triangle inequality'] },
-    { id: 'def.cauchy-null', aka: [ '柯西列', '零列', 'Cauchy sequences and null sequences' ] },
+    { id: 'def.cauchy-null', aka: [ '零列', '柯西零列', 'Cauchy sequences and null sequences' ] },
     { id: 'def.real', aka: ['实数', 'real numbers', 'ℝ', '实数系', '实数构造'] },
     { id: 'def.complex', aka: ['复数', 'complex numbers', 'ℂ'] },
     { id: 'lem.archimedean', aka: ['阿基米德', 'Archimedean', '阿基米德性质'] },

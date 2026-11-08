@@ -31,11 +31,9 @@
        不做屏幕最小钳制。适配档 k≈0.06 时是亚像素（互相叠成雾），k=1 时才看得到颗粒。 */
     var dotSize = bc.mobileDotSize == null ? 2.0 : bc.mobileDotSize;
     /* 亮星：约 6–10% 的粒子在**世界坐标里**略大（1.3–1.6×），颜色仍取所属领域色，
-       核心提亮到近白；屏幕直径够大（≥ mobileStarMinPx）时才在它外面加四角星芒。
-       星芒的长短也由世界半径决定（这里算进 p.s），所以缩小时会一起缩回去，
-       不存在「屏幕上最小几像素」的钳制。 */
+       核心提亮到近白；它们不是星芒，只是「更亮更大的柔光点」——
+       光晕在 drawParticles 的 glowPass 里统一按世界半径铺开。 */
     var starRatio = bc.mobileStarRatio == null ? 0.08 : bc.mobileStarRatio;
-    var starMinPx = bc.mobileStarMinPx == null ? 1.6 : bc.mobileStarMinPx;
     var starScaleMin = bc.mobileStarScaleMin == null ? 1.3 : bc.mobileStarScaleMin;
     var starScaleVar = bc.mobileStarScaleVar == null ? 0.3 : bc.mobileStarScaleVar;
     var starAlpha = bc.mobileStarAlpha == null ? 0.62 : bc.mobileStarAlpha;
@@ -82,8 +80,11 @@
        所以所有尺度共用同一套常数密度。k 大时只画视口内节点的点
        （下面 drawParticles 按节点中心裁），放大后不会把全图的点全扫一遍。 */
     var nxs = [], nys = [];
+    var bx0 = Infinity, by0 = Infinity, bx1 = -Infinity, by1 = -Infinity;
     (graph.nodes || []).forEach(function (n) {
       if (!ok(n.id)) return;
+      if (n.x < bx0) bx0 = n.x; if (n.x > bx1) bx1 = n.x;
+      if (n.y < by0) by0 = n.y; if (n.y > by1) by1 = n.y;
       var rid = (n.regions && n.regions[0]) || '';
       var reg = graph.regionById && graph.regionById[rid];
       var rgb = U.hexToRgb((reg && reg.color) || '#7A8699');
@@ -123,10 +124,51 @@
         count++;
       }
     });
+    /* ---- 雾场纹理（ENG-009）----------------------------------------------
+       原来每帧按 region 逐个 createRadialGradient 铺雾：每个圆半径有限，
+       并集的外缘在透明背景下就是一条「云的边」。现在一次性烘一张低分辨率
+       雾场纹理：覆盖内容 bbox + 35% padding，四周用径向羽化到 alpha=0，
+       每帧只 drawImage 一次。 */
+    var fog = null;
+    if (regs.length && isFinite(bx0)) {
+      var padW = 0.35 * Math.max(bx1 - bx0, by1 - by0);
+      var fx = bx0 - padW, fy = by0 - padW;
+      var fw = (bx1 - bx0) + 2 * padW, fh = (by1 - by0) + 2 * padW;
+      var fs = Math.min(768 / Math.max(fw, fh), 2);
+      var cwT = Math.max(2, Math.round(fw * fs)), chT = Math.max(2, Math.round(fh * fs));
+      var fcv = document.createElement('canvas');
+      fcv.width = cwT; fcv.height = chT;
+      var fctx = fcv.getContext('2d');
+      fctx.setTransform(fs, 0, 0, fs, -fx * fs, -fy * fs);
+      for (var fi = 0; fi < regs.length; fi++) {
+        var fg = regs[fi], FR = Math.max(4, fg.r);
+        var grd = fctx.createRadialGradient(fg.x, fg.y, 0, fg.x, fg.y, FR);
+        grd.addColorStop(0, 'rgba(' + fg.css + ',0.36)');
+        grd.addColorStop(0.55, 'rgba(' + fg.css + ',0.22)');
+        grd.addColorStop(0.85, 'rgba(' + fg.css + ',0.07)');
+        grd.addColorStop(1, 'rgba(' + fg.css + ',0)');
+        fctx.fillStyle = grd;
+        fctx.beginPath(); fctx.arc(fg.x, fg.y, FR, 0, Math.PI * 2); fctx.fill();
+      }
+      /* 外缘羽化：destination-in 只保留中间一大块椭圆（最后 20% 渐隐），
+         纹理四周 alpha 必为 0 —— 透明背景下不再出现「一块云的边」。 */
+      fctx.setTransform(1, 0, 0, 1, 0, 0);
+      fctx.globalCompositeOperation = 'destination-in';
+      var cT = cwT / 2, cY = chT / 2;
+      var RT = 0.5 * Math.sqrt(cwT * cwT + chT * chT);
+      var fade = fctx.createRadialGradient(cT, cY, 0, cT, cY, RT);
+      fade.addColorStop(0, 'rgba(0,0,0,1)');
+      fade.addColorStop(0.80, 'rgba(0,0,0,1)');
+      fade.addColorStop(1, 'rgba(0,0,0,0)');
+      fctx.fillStyle = fade;
+      fctx.fillRect(0, 0, cwT, chT);
+      fctx.globalCompositeOperation = 'source-over';
+      fog = { canvas: fcv, x: fx, y: fy, w: fw, h: fh, alpha: 0.36, cw: cwT, ch: chT };
+    }
     return {
-      mobile: true, groups: groups, starGroups: starGroups,
+      mobile: true, groups: groups, starGroups: starGroups, fog: fog,
       count: count, starCount: starCount,
-      starMinPx: starMinPx, regions: regs,
+      regions: regs,
       nxs: nxs, nys: nys
     };
   }
@@ -530,20 +572,27 @@
     /* 先铺领域底光（远处的一层雾），再压点云。
        这层雾是**常数**：不随 cam.k 变，也不随点密度变档 —— 放大的时候
        点与点之间总有空隙，由这层很淡的色雾把「云的体」托住。 */
-    var regs = tex.regions || [];
     var glow = dark ? 0.12 : 0.10;
-    for (var ri = 0; ri < regs.length; ri++) {
-      var rg = regs[ri], R = rg.r * k;
-      if (R < 6) continue;
-      var cx = rg.x * k + tx, cy = rg.y * k + ty;
-      if (cx + R < -40 || cy + R < -40 || cx - R > vw + 40 || cy - R > vh + 40) continue;
-      var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
-      grad.addColorStop(0, 'rgba(' + rg.css + ',' + glow + ')');
-      grad.addColorStop(0.55, 'rgba(' + rg.css + ',' + (glow * 0.62) + ')');
-      grad.addColorStop(0.85, 'rgba(' + rg.css + ',' + (glow * 0.20) + ')');
-      grad.addColorStop(1, 'rgba(' + rg.css + ',0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    /* 雾场纹理（ENG-009）：建云时烘好，这里只按世界坐标 drawImage 一次。
+       不再逐帧按 region 建 createRadialGradient —— 有限圆的并集外缘
+       就是透明背景上那条「云的边」。 */
+    var fogT = tex.fog;
+    if (fogT) {
+      /* 只把纹理与视口相交的那一小块贴到屏幕上：高倍时目标矩形被限制在
+         视口内，不会让光栅化器去处理一张放大到上万像素的图。 */
+      var wf0 = Math.max(fogT.x, -tx / k), hf0 = Math.max(fogT.y, -ty / k);
+      var wf1 = Math.min(fogT.x + fogT.w, (vw - tx) / k), hf1 = Math.min(fogT.y + fogT.h, (vh - ty) / k);
+      if (wf1 > wf0 && hf1 > hf0) {
+        ctx.save();
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.globalAlpha = Math.min(1, glow / (fogT.alpha || 0.36));
+        if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'low';
+        ctx.drawImage(fogT.canvas,
+          (wf0 - fogT.x) / fogT.w * fogT.cw, (hf0 - fogT.y) / fogT.h * fogT.ch,
+          (wf1 - wf0) / fogT.w * fogT.cw, (hf1 - hf0) / fogT.h * fogT.ch,
+          wf0 * k + tx, hf0 * k + ty, (wf1 - wf0) * k, (hf1 - hf0) * k);
+        ctx.restore();
+      }
     }
     var groups = tex.groups || [];
     /* 视口裁剪：只画「节点中心在视口附近」的点。放大时视口只覆盖几十个节点，
@@ -553,6 +602,94 @@
     var halo = MG.config.background.mobileHalo == null ? 130 : MG.config.background.mobileHalo;
     var wx0 = (-tx) / k - halo, wx1 = (vw - tx) / k + halo;
     var wy0 = (-ty) / k - halo, wy1 = (vh - ty) / k + halo;
+    /* ---- 辉光（glow）------------------------------------------------------
+       用户要「点光源那种发光」：中心亮核 + 四周柔和衰减的光晕，不要十字星芒。
+       尺寸依然全部来自世界坐标：光晕半径 = p.s × 0.5 × glowScale × k，
+       不做屏幕最小值/补偿。这里只按**屏幕光晕直径**做淡入（形状可见度切换）：
+       fit 档光晕直径只有零点几像素，淡入为 0，仍是雾/沙；放大了才逐点铺开。
+       性能：三层同心圆全部按颜色分桶、合并成 path 批量 fill —— 逐点
+       drawImage 在 390×844 软件画布上实测 5000 颗 6px sprite 要 20–30ms，
+       逐点 createRadialGradient 更慢，都不能用。 */
+    var bc2 = MG.config.background;
+    var glowScale = bc2.mobileGlowScale == null ? 3.0 : bc2.mobileGlowScale;
+    var glowAlpha = bc2.mobileGlowAlpha == null ? 0.10 : bc2.mobileGlowAlpha;
+    var glowMin = bc2.mobileGlowMinPx == null ? 2.0 : bc2.mobileGlowMinPx;
+    var glowRampPx = bc2.mobileGlowRampPx == null ? 1.6 : bc2.mobileGlowRampPx;
+    var SINGLE_GLOW = { f: 0.82, a: 0.80 };
+    var GLOW_LAYERS = [
+      { f: 1.00, a: 0.34 },   /* 最外圈，最淡 */
+      { f: 0.70, a: 0.42 },
+      { f: 0.46, a: 0.52 }    /* 贴近核心 */
+    ];
+    function glowRamp(sWorld) {
+      var dia = sWorld * k * glowScale;
+      if (dia <= glowMin) return 0;
+      var t = (dia - glowMin) / glowRampPx;
+      return t > 1 ? 1 : t;
+    }
+    function glowPass(list, boost, nLayers, stride) {
+      if (nLayers <= 0 || glowAlpha <= 0) return;
+      for (var li = 0; li < nLayers; li++) {
+        /* 只画一层时，把这一层加厚加亮，补偿缺掉的中间层；三层的场合仍用原表。 */
+        var L = (nLayers === 1) ? SINGLE_GLOW : GLOW_LAYERS[li];
+        for (var gj = 0; gj < list.length; gj++) {
+          var gg = list[gj], gpts = gg.pts;
+          var t = glowRamp(gpts.length ? gpts[0].s : 2) * boost;
+          if (t <= 0.02) continue;
+          ctx.fillStyle = gg.col;
+          ctx.globalAlpha = Math.min(0.9, glowAlpha * L.a * t * ga);
+          ctx.beginPath();
+          for (var pi = 0; pi < gpts.length; pi += (stride || 1)) {
+            var pp = gpts[pi];
+            if (nxs.length) {
+              var gx = nxs[pp.ni], gy = nys[pp.ni];
+              if (gx < wx0 || gx > wx1 || gy < wy0 || gy > wy1) continue;
+            }
+            var px = pp.x * k + tx, py = pp.y * k + ty;
+            var rr2 = pp.s * k * 0.5 * glowScale * L.f;
+            if (px + rr2 < 0 || py + rr2 < 0 || px - rr2 > vw || py - rr2 > vh) continue;
+            ctx.moveTo(px + rr2, py);
+            ctx.arc(px, py, rr2, 0, Math.PI * 2);
+          }
+          ctx.fill();
+        }
+      }
+    }
+    /* 辉光层数按**当前可见点数**决定：每颗点的辉光都是一条 path 元素，
+       软件光栅下实测约 0.6µs/个（k=1 时 4768 颗 × 3 层 ≈ 9ms）。
+       点少时给足三层（大光球），点多时只给一层，再多（缩小到雾）就不画 ——
+       此时光晕直径本来也只有几个像素，画了也看不出来。 */
+    var starGroups = tex.starGroups || [];
+    var visCount = 0;
+    function countVisible(list) {
+      var n = 0;
+      for (var ci = 0; ci < list.length; ci++) {
+        var cp = list[ci].pts;
+        for (var cj = 0; cj < cp.length; cj++) {
+          var cq = cp[cj];
+          var cx0 = nxs[cq.ni], cy0 = nys[cq.ni];
+          if (cx0 < wx0 || cx0 > wx1 || cy0 < wy0 || cy0 > wy1) continue;
+          var x0 = cq.x * k + tx, y0 = cq.y * k + ty, d0 = cq.s * k;
+          if (x0 < -d0 * 4 || y0 < -d0 * 4 || x0 > vw + d0 * 4 || y0 > vh + d0 * 4) continue;
+          n++;
+        }
+      }
+      return n;
+    }
+    var glowLayers = 0;
+    if (glowAlpha > 0 && k >= 0.8) {
+      visCount = countVisible(groups) + countVisible(starGroups);
+      if (visCount <= 500) glowLayers = 3;
+      else if (visCount <= 2500) glowLayers = 2;
+      else glowLayers = 1;
+    }
+    /* 性能闸门：k=1 视口里有四千多颗尘埃点，逐点光晕会把 3ms 预算撑爆。
+       点多的档只让亮星发光（它们才是「点光源」的视觉主角），尘埃点保持
+       清晰的沙粒；视口内点少（k≳1.8）时才逐点铺光晕。 */
+    var dustLayers = visCount > 2500 ? 0 : glowLayers;
+    glowPass(groups, 1, dustLayers, 1);
+    var starGroups = tex.starGroups || [];
+    glowPass(starGroups, 1.5, glowLayers);
     for (var gi = 0; gi < groups.length; gi++) {
       var g = groups[gi], pts = g.pts;
       ctx.fillStyle = g.col;
@@ -583,77 +720,28 @@
       }
       ctx.fill();
     }
-    /* ---- 亮星 -------------------------------------------------------------
-       ① 尺寸全部来自 p.s（世界单位）× cam.k：fit 档连亮星也缩回亚像素，
-          只是比尘埃更亮一点点，不会冒出固定大小的星芒；
-       ② 「画不画星芒」按当前**屏幕直径**切换（d ≥ starMinPx），这是形状切换，
-          不是尺寸钳制 —— 尺寸本身仍然只由世界常数决定；
-       ③ 星芒长度 = mobileStarSpike × d（世界尺寸的倍数），内凹 = mobileStarInner × d，
-          所以 k 越大星越大、芒越长，与点云整体同步。 */
-    var starGroups = tex.starGroups || [];
-    var starMin = tex.starMinPx == null ? 1.6 : tex.starMinPx;
-    var bc2 = MG.config.background;
-    var spikeK = bc2.mobileStarSpike == null ? 1.6 : bc2.mobileStarSpike;
-    var innerK = bc2.mobileStarInner == null ? 0.10 : bc2.mobileStarInner;
-    var coreK = bc2.mobileStarCore == null ? 0.36 : bc2.mobileStarCore;
-    var coreAlpha = bc2.mobileStarCoreAlpha == null ? 0.92 : bc2.mobileStarCoreAlpha;
+    /* ---- 亮星核心 ---------------------------------------------------------
+       亮星不再是四角星芒：它们只是**更大更亮的柔光点**——上一段 glowPass
+       已经按 1.5× 加强了它们的光晕，这里只把核心提亮到近白，做出「点光源」的芯。
+       核心尺寸同样来自世界坐标（p.s × cam.k），亚像素时仍只是雾的一部分。 */
     for (var sgi = 0; sgi < starGroups.length; sgi++) {
       var sg = starGroups[sgi];
       var spts = sg.pts;
-      ctx.fillStyle = sg.col;
-      ctx.globalAlpha = Math.min(0.95, sg.a * ga);
+      ctx.fillStyle = sg.coreCol || sg.col;
+      ctx.globalAlpha = Math.min(0.98, 0.9 * ga);
       ctx.beginPath();
-      var hasSpike = false;
       for (var si = 0; si < spts.length; si++) {
         var sp = spts[si];
         if (nxs.length) {
           var snx = nxs[sp.ni], sny = nys[sp.ni];
           if (snx < wx0 || snx > wx1 || sny < wy0 || sny > wy1) continue;
         }
-        var sx = sp.x * k + tx, sy = sp.y * k + ty, sd = sp.s * k;
-        if (sx < -sd * 2 || sy < -sd * 2 || sx > vw + sd * 2 || sy > vh + sd * 2) continue;
-        if (sd < starMin) {
-          /* 还太小：先当普通点画（亚像素时和尘埃没区别，只是更亮） */
-          if (sd >= 1.2) {
-            ctx.moveTo(sx + sd, sy + sd / 2);
-            ctx.arc(sx + sd / 2, sy + sd / 2, sd / 2, 0, Math.PI * 2);
-          } else ctx.rect(sx, sy, sd, sd);
-          continue;
-        }
-        hasSpike = true;
-        var L = sd * spikeK, r = sd * innerK;
-        ctx.moveTo(sx, sy - L);
-        ctx.lineTo(sx + r, sy - r);
-        ctx.lineTo(sx + L, sy);
-        ctx.lineTo(sx + r, sy + r);
-        ctx.lineTo(sx, sy + L);
-        ctx.lineTo(sx - r, sy + r);
-        ctx.lineTo(sx - L, sy);
-        ctx.lineTo(sx - r, sy - r);
-        ctx.closePath();
+        var sx = sp.x * k + tx, sy = sp.y * k + ty, sr = sp.s * k * 0.5;
+        if (sx + sr < 0 || sy + sr < 0 || sx - sr > vw || sy - sr > vh) continue;
+        if (sr >= 0.6) { ctx.moveTo(sx + sr, sy); ctx.arc(sx, sy, sr, 0, Math.PI * 2); }
+        else ctx.rect(sx - sr, sy - sr, sr * 2, sr * 2);
       }
       ctx.fill();
-      /* 核心：提亮到近白，压在星芒中心上。只有真的画了星芒才需要这一遍。 */
-      if (hasSpike && coreAlpha > 0) {
-        ctx.fillStyle = sg.coreCol;
-        ctx.globalAlpha = Math.min(0.98, coreAlpha * ga);
-        ctx.beginPath();
-        for (var ci = 0; ci < spts.length; ci++) {
-          var cp = spts[ci];
-          if (nxs.length) {
-            var cnx = nxs[cp.ni], cny = nys[cp.ni];
-            if (cnx < wx0 || cnx > wx1 || cny < wy0 || cny > wy1) continue;
-          }
-          var cd = cp.s * k;
-          if (cd < starMin) continue;
-          var cx2 = cp.x * k + tx, cy2 = cp.y * k + ty;
-          if (cx2 < -cd || cy2 < -cd || cx2 > vw + cd || cy2 > vh + cd) continue;
-          var cr = cd * coreK;
-          ctx.moveTo(cx2 + cr, cy2);
-          ctx.arc(cx2, cy2, cr, 0, Math.PI * 2);
-        }
-        ctx.fill();
-      }
     }
     ctx.globalAlpha = 1;
   }
