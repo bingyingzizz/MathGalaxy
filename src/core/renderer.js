@@ -1327,10 +1327,9 @@
     }
 
     function drawEnvelopes() {
-      var cfgE = C.envelope;
-      if (cfgE.enabled === false) return;
       var a = lodA.envelope;
       if (a <= 0.02) return;
+      var cfgE = C.envelope;
       ctx.save();
       ctx.lineJoin = 'round';
       (view.graph.clusters || []).forEach(function (c) {

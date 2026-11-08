@@ -26,9 +26,6 @@
 
   function buildTexture(graph, isVisible) {
     var bc = MG.config.background;
-    /* 2026-11-08：用户要求背景直接不可见。保留雾场代码，但默认关闭；
-       打开时把 config.background.enabled 设为 true 即可恢复。 */
-    if (bc.enabled === false) return null;
     var ok = isVisible || function () { return true; };
 
     /* 可见节点 bbox（隐藏节点不参与，和以前的可见性语义一致）。 */
