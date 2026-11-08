@@ -26,10 +26,10 @@
     var halo = Math.max(core, bc.mobileHalo == null ? 130 : bc.mobileHalo);
     var a0 = bc.mobileAlpha == null ? 0.20 : bc.mobileAlpha;
     var aVar = bc.mobileAlphaVar == null ? 0.20 : bc.mobileAlphaVar;
-    /* 点径是**屏幕 CSS 像素**，所有点、所有尺度都同一个常数：drawParticles 只做平移，
-       绝不乘 cam.k。所以适配档与 k=1 的点径逐像素相同，放大时不会变成色块。
-       0.75 是「放大到最大也仍是一颗细点」的视觉尺寸（按观感微调）。 */
-    var dotSize = bc.mobileDotSize == null ? 0.75 : bc.mobileDotSize;
+    /* 点径是**世界坐标里的常数**（用户拍板：绝对大小不变，像沙粒）：
+       屏幕上的边长 = mobileDotSize × cam.k —— 放大时点自然变大、缩小时变小，
+       不做屏幕最小钳制。适配档 k≈0.06 时是亚像素（互相叠成雾），k=1 时才看得到颗粒。 */
+    var dotSize = bc.mobileDotSize == null ? 2.0 : bc.mobileDotSize;
     var count = 0;
     /* 领域底光：只有一粒一粒的点时，整片云像浮在白底上的一层彩色噪点；
        在每个领域统计圆的位置铺一层很淡的色晕（不是原来的纹理，纯屏幕空间渐变），
@@ -536,8 +536,18 @@
           if (nx < wx0 || nx > wx1 || ny < wy0 || ny > wy1) continue;
         }
         var x = p.x * k + tx, y = p.y * k + ty;
-        if (x < -2 || y < -2 || x > vw + 2 || y > vh + 2) continue;
-        ctx.rect(x, y, p.s, p.s);
+        /* 点径 = 世界常数 × cam.k：不 clamp、不加屏幕最小值。
+           适配档是亚像素（叠成雾），放大时一格一格自然变大。
+           ⚠️ 放大到 k≥2 时 d≈5px，方形颗粒会露馅 ⇒ 大点改画圆（沙粒），
+           小点仍用 rect（亚像素/1px 时圆与方在屏幕上没有区别，rect 快得多）。 */
+        var d = p.s * k;
+        if (x < -d || y < -d || x > vw + d || y > vh + d) continue;
+        if (d >= 1.2) {
+          /* ⚠️ 必须 moveTo 起一个新 subpath：直接 arc 会从上一颗点连一条线过来，
+             几千颗点连成一条「蛇」后 fill 会把整片区域都填实（实测 alpha 均值 200）。 */
+          ctx.moveTo(x + d, y + d / 2);
+          ctx.arc(x + d / 2, y + d / 2, d / 2, 0, Math.PI * 2);
+        } else ctx.rect(x, y, d, d);
       }
       ctx.fill();
     }
