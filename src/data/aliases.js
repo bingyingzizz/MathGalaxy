@@ -1515,6 +1515,9 @@ MG.aliases = {
     { id: 'def.category-of-abelian-groups', en: 'category of abelian groups', aka: ['阿贝尔群范畴', 'Ab'] },
     { id: 'def.module-category', en: 'category of modules', aka: ['模范畴', 'A-Mod'] },
     { id: 'def.topological-orientability', en: 'topological orientability', aka: ['拓扑可定向性', '曲面的可定向性'] },
+    { id: 'lem.caratheodory-osgood', en: 'Carathéodory–Osgood lemma', aka: ['Carathéodory–Osgood 边界对应'] },
+    { id: 'lem.newman-tauberian', en: 'Newman\'s Tauberian lemma', aka: ['Newman 解析定理'] },
+    { id: 'lem.combinatorial-classification-surfaces', en: 'combinatorial classification lemma', aka: ['组合分类引理'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

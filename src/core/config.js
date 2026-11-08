@@ -236,72 +236,22 @@
 
     /* 电子云背景 */
     background: {
-      /* ⛔ colorFieldK 已删除（2026-10-19）：色场改回加法叠加，不再做 1−exp(−K·Σw) 的饱和。 */
-      /* 世界尺寸 × texScale = 纹理像素；再用 maxSide / maxPixels 夹一层预算。
-       历史：曾经固定 1024×768（约 6.9 世界单位/像素，放大看是一整块糊雾），
-       更早写过 0.42 → 4478×3854 ≈ 17.3 M 像素（≈69MB），超 GPU 纹理上限后
-       Chrome 会走软件路径 —— 表现正是「静止不卡、一拖动就卡」。
-       现在 0.30 会被 maxSide 夹到约 2016×2048（≈4.1 M 像素，16MB），
-       长边压在 2048 以内；粒子化之后细节都落在纹理像素这一级。 */
-    texScale: 0.30,             // 世界坐标 → 纹理像素
-      /* 纹理分辨率上限（长边 / 总像素）。挂在 2048 是保守值：常见 GPU 的
-         MAX_TEXTURE_SIZE 是 4096，而这张纹理每帧要整张重铺一次。 */
-      texMaxSide: 2048,
-      texMaxPixels: 4200000,
-      /* 建完纹理后过一遍的小半径模糊（纹理像素）—— **抹掉低对比渐变自带的 dither**。
-         ⚠️ 不抹会怎样：逐像素抖动被放大成屏幕上一张周期约 2 texel 的「格子/点点」。
-         半径 1.6 在 2048 分辨率下 ≈ 5.5 个世界单位，云雾本来就是糊的，
-         形状与浓淡肉眼无差别；成本 0.2ms 且只在开页 / 改显隐时发生。 */
-      texBlur: 1.6,
-      /* 粒子云：密度场里 alpha 低于 particleEdge 的区域改成离散颗粒（中心保持连续）。
-         particleCell 是粒子格的世界尺寸（≈ 适配档下 2~3 屏幕像素，放大后是一颗颗圆点）；
-         gamma 控制「越往外越稀」的曲线（0.75 ⇒ 概率 p=(α/A)^0.75）。
-         ⚠️ 20 世界单位是按「适配档 k≈0.128 ⇒ 2.5px」定的：14 时只有 1.8px，
-         再经过纹理过滤基本看不见（实测 4× 放大才勉强分辨）。 */
-      particleEdge: 0.14,
-      particleCell: 20,
-      particleGamma: 0.75,
-      blobsPerRegion: 12,         // 每个板块的云朵数
-      blobAlpha: 0.075,
-      splatRadius: 150,           // 单节点撒点的世界半径（smooth-tail 到 0，见 background.js）
-      /* 手机竖屏（≤700px）走屏幕空间点云（background.js buildParticles）：
-         每节点 mobileParticles 颗（枢纽 +1~4，**不随 cam.k 变化**）、核心半径 mobileCore
-         世界单位、晕到 mobileHalo；点径 mobileDotSize 是**世界坐标常数**，屏幕上
-         = mobileDotSize × cam.k（放大自然变大、缩小变亚像素，**不做屏幕最小钳制**）；
-         透明度 mobileAlpha + [0, mobileAlphaVar]，亮色主题再 ×1.15。
-         ⚠️ 密度是常数：fit 全图与放大后是同一套密度，所以总点数 ≈ 1551×N。
-         3 颗/节点时适配档「几乎啥也没有」；15~18 颗还是稀；40 颗时 fit 才有「整片云」。
-         N=128（总点 ~20 万）是 fit draw ≤12ms 的实测上限（160 为 12.79ms，超预算）；
-         视口外的节点由 drawParticles 按节点中心裁掉。 */
-      mobileParticles: 128,
-      mobileCore: 48,
-      mobileHalo: 130,
-      mobileAlpha: 0.20,
-      mobileAlphaVar: 0.20,
-      mobileDotSize: 2.0,         // 世界单位；屏幕边长 = 2.0×k（fit 0.12px / k=1 2.0px）
-      /* 亮星：约 6% 的粒子在世界坐标里大 1.3–1.6×，核心提亮；
-         它们没有星芒，只是更亮更大的柔光点（光晕见 mobileGlow*）。 */
-      mobileStarRatio: 0.06,
-      mobileStarScaleMin: 1.3,
-      mobileStarScaleVar: 0.3,
-      mobileStarAlpha: 0.62,
-      /* 辉光：每颗粒子的光晕半径 = 世界半径 × mobileGlowScale（2.5–4× 核心），
-         屏幕尺寸同样由 cam.k 决定，不做屏幕最小钳制。按光晕的**屏幕直径**
-         淡入（mobileGlowMinPx → +mobileGlowRampPx 达到全强）：fit 时光晕
-         不到 1px，淡入为 0，仍是雾/沙；放大后才逐点铺开。
-         mobileGlowAlpha 是单层基准透明度，三层叠加后中心约 0.12×ga。 */
-      mobileGlowScale: 3.0,
-      mobileGlowAlpha: 0.14,
-      mobileGlowMinPx: 2.0,
-      mobileGlowRampPx: 1.6,
-      centerAlpha: 0.025,         // 板块中心大团雾
-      nodeAlpha: 0.025,           // 每个节点周围的小团雾
-      spread: 0.52,               // 云朵分布半径 / 板块半径
+      /* ENG-010：全端统一的雾场纹理（手机/桌面同一套，无分端分支）。
+         纹理覆盖可见节点 bbox + fogPadRatio 比例的外扩，四周径向羽化到 alpha=0，
+         所以任何视口、任何缩放下都看不到「云的边」。 */
+      fogPadRatio: 0.35,          // 内容 bbox 外扩比例（按长边算）
+      fogMaxSide: 2048,           // 纹理长边像素上限（≈1600×900 适配档 0.47 px/texel）
+      fogMaxPixels: 4200000,      // 总像素上限（≈16MB RGBA，常见 GPU 的 1/4 纹理内存）
+      fogBlur: 1.2,               // 纹理像素模糊半径：抹掉径向渐变的 dither
+      fogAlpha: 0.085,            // 区域云核心 alpha（向外五档平滑衰减到 0）
+      centerAlpha: 0.025,         // 保留字段（旧版云朵参数，当前绘制路径不再读取）
+      nodeAlpha: 0.025,
+      spread: 0.52,
       blobRadiusMin: 0.30,
       blobRadiusMax: 0.50,
-      cloudMargin: 36,           // 板块云半径 = 专属节点最大离心距 + 该余量
+      cloudMargin: 36,
       cloudRadiusMin: 160,
-      dilate: 1.45                // 纹理画布在内容范围外多留的边距
+      dilate: 1.45
     },
 
     /* ------------------------------------------------------------------
