@@ -236,22 +236,15 @@
 
     /* 电子云背景 */
     background: {
-      /* ENG-010：全端统一的雾场纹理（手机/桌面同一套，无分端分支）。
-         纹理覆盖可见节点 bbox + fogPadRatio 比例的外扩，四周径向羽化到 alpha=0，
-         所以任何视口、任何缩放下都看不到「云的边」。 */
+      /* ENG-009 的雾场（2026-11-08 恢复；背景粒子已全删）。
+         纹理覆盖可见节点 bbox + fogPadRatio 的外扩，四周径向羽化到 alpha=0，
+         所以任何视口、任何缩放下都看不到「云的边」。
+         纹理里按 fogAlpha 烘焙，绘制时再按主题乘 fogGlowLight / fogGlowDark。 */
       fogPadRatio: 0.35,          // 内容 bbox 外扩比例（按长边算）
-      fogMaxSide: 2048,           // 纹理长边像素上限（≈1600×900 适配档 0.47 px/texel）
-      fogMaxPixels: 4200000,      // 总像素上限（≈16MB RGBA，常见 GPU 的 1/4 纹理内存）
-      fogBlur: 1.2,               // 纹理像素模糊半径：抹掉径向渐变的 dither
-      fogAlpha: 0.085,            // 区域云核心 alpha（向外五档平滑衰减到 0）
-      centerAlpha: 0.025,         // 保留字段（旧版云朵参数，当前绘制路径不再读取）
-      nodeAlpha: 0.025,
-      spread: 0.52,
-      blobRadiusMin: 0.30,
-      blobRadiusMax: 0.50,
-      cloudMargin: 36,
-      cloudRadiusMin: 160,
-      dilate: 1.45
+      fogMaxSide: 768,            // 纹理长边像素上限（ENG-009 的 747×768 口径）
+      fogAlpha: 0.36,             // 纹理里区域云核心 alpha（四档衰减到 0）
+      fogGlowLight: 0.10,         // 亮色主题的最终雾浓度
+      fogGlowDark: 0.12           // 深色主题的最终雾浓度
     },
 
     /* ------------------------------------------------------------------
