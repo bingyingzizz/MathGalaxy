@@ -49,18 +49,30 @@
     /* ENG-009 的四档渐变：0.36 → 0.22 → 0.07 → 0（画的时候再按主题乘 0.10/0.12 / 0.36）。 */
     var a0 = bc.fogAlpha == null ? 0.36 : bc.fogAlpha;
     var regions = 0;
+    var warnedBadStat = false;
     (graph.regions || []).forEach(function (reg) {
       if (!reg.stat) return;
+      /* ⚠️ 冷启动/旧缓存时 layout 可能还没把 stat 算成有限数（cx/cy/radius 为
+         undefined/NaN）。createRadialGradient 收到非有限数会抛
+         "The provided double value is non-finite" 并把整页启动打断 —— 跳过即可。 */
+      var rcx = reg.stat.cx, rcy = reg.stat.cy, rr = reg.stat.radius;
+      if (!isFinite(rcx) || !isFinite(rcy) || !isFinite(rr)) {
+        if (!warnedBadStat) {
+          warnedBadStat = true;
+          console.warn('[background] 跳过 stat 非有限的板块：' + reg.id, rcx, rcy, rr);
+        }
+        return;
+      }
       var rgb = U.hexToRgb(reg.color || '#7A8699');
       var css = rgb.r + ',' + rgb.g + ',' + rgb.b;
-      var FR = Math.max(4, reg.stat.radius);
-      var grd = fctx.createRadialGradient(reg.stat.cx, reg.stat.cy, 0, reg.stat.cx, reg.stat.cy, FR);
+      var FR = Math.max(4, rr);
+      var grd = fctx.createRadialGradient(rcx, rcy, 0, rcx, rcy, FR);
       grd.addColorStop(0, 'rgba(' + css + ',' + a0 + ')');
       grd.addColorStop(0.55, 'rgba(' + css + ',' + (a0 * 0.61) + ')');
       grd.addColorStop(0.85, 'rgba(' + css + ',' + (a0 * 0.19) + ')');
       grd.addColorStop(1, 'rgba(' + css + ',0)');
       fctx.fillStyle = grd;
-      fctx.beginPath(); fctx.arc(reg.stat.cx, reg.stat.cy, FR, 0, Math.PI * 2); fctx.fill();
+      fctx.beginPath(); fctx.arc(rcx, rcy, FR, 0, Math.PI * 2); fctx.fill();
       regions++;
     });
 
@@ -84,7 +96,12 @@
   }
 
   function draw(ctx, cam, tex, dpr) {
+    /* ⚠️ 必须整层清掉再画（ENG-009 的口径）：app 只在相机变了的帧调用 draw，
+       不清就会把上一帧的雾**叠**上去，拖动/缩放几帧后颜色越叠越浓。 */
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     if (!tex || !tex.canvas) return;
+    dpr = dpr || 1;
     var k = cam.k, tx = cam.tx, ty = cam.ty;
     var vw = cam.viewW;
     var vh = cam.viewH;

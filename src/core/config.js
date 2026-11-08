@@ -244,7 +244,13 @@
       fogMaxSide: 768,            // 纹理长边像素上限（ENG-009 的 747×768 口径）
       fogAlpha: 0.36,             // 纹理里区域云核心 alpha（四档衰减到 0）
       fogGlowLight: 0.10,         // 亮色主题的最终雾浓度
-      fogGlowDark: 0.12           // 深色主题的最终雾浓度
+      fogGlowDark: 0.12,          // 深色主题的最终雾浓度
+      /* ⚠️ 下面两个是 layout.js 算「板块云半径」用的（不是渲染参数）：
+         radius = max(cloudRadiusMin, 专属节点最大离心距 + cloudMargin)。
+         删掉会变成 Math.max(undefined, …) = NaN ⇒ 冷启动
+         createRadialGradient 收到非有限数直接抛 TypeError。 */
+      cloudMargin: 36,            // 板块云半径余量（世界单位）
+      cloudRadiusMin: 160         // 板块云最小半径（世界单位）
     },
 
     /* ------------------------------------------------------------------
