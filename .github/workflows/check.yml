@@ -45,6 +45,11 @@ jobs:
       - name: 内文跳转回归（真 xlink.js 匹配算法，17 条句子）
         run: bun tools/xlinkcheck.mjs
 
+      # 性能不变量：位图载体 / 横带切片 / 带裁剪 / 剪交接 / 几何缓存 / dpr 口径 /
+      # 新 API 回退 / 旋钮取值。它们都对应 AGENTS.md 第四节，删一条就红。
+      - name: 性能不变量（AGENTS.md 第四节）
+        run: bun tools/perfguard.mjs
+
       - name: 单反斜杠 / LaTeX 命令被 JS 吃掉
         run: bun tools/_slashcheck.mjs
 
