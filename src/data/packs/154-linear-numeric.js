@@ -53,7 +53,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 范数',
-        'Horn–Johnson, Matrix Analysis（⚠️ 章名未核实，只记书名）· 矩阵范数'
+        'Horn–Johnson, Matrix Analysis'
       ]
     },
 
@@ -119,7 +119,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· Gram–Schmidt',
-        'Horn–Johnson, Matrix Analysis（⚠️ 章名未核实，只记书名）· QR 分解'
+        'Horn–Johnson, Matrix Analysis'
       ]
     },
 
@@ -154,7 +154,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 最佳逼近',
-        'Horn–Johnson, Matrix Analysis（⚠️ 章名未核实，只记书名）· 最小二乘'
+        'Horn–Johnson, Matrix Analysis'
       ]
     },
 
@@ -190,8 +190,8 @@ window.MG = window.MG || {};
         '⚠️ 记号：$A^{+}$ 与 $A^{\\dagger}$ 都在用（后者在物理里常见）。本图用 $A^{+}$，以免与共轭转置 $A^{*}$ 混淆。'
       ].join('\n\n'),
       refs: [
-        'Horn–Johnson, Matrix Analysis（⚠️ 章名未核实，只记书名）· 广义逆',
-        'Ben-Israel–Greville, Generalized Inverses（⚠️ 章名未核实，只记书名）'
+        'Horn–Johnson, Matrix Analysis',
+        'Ben-Israel–Greville, Generalized Inverses: Theory and Applications'
       ]
     }
   ],

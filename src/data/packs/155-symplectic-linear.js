@@ -56,8 +56,8 @@ window.MG = window.MG || {};
         '- 非退化 $\\iff$ $V\\to V^*$ 为同构：单射是定义，满射还用有限维及等维；有限维辛标准形进而保证维数为偶数。定义交错型本身无需排除特征 $2$。\n'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛结构',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -91,8 +91,8 @@ window.MG = window.MG || {};
         '⚠️ 别把 $J_{0}$ 与「Jordan 块」搞混：这里的 $J$ 是标准辛矩阵（也叫 Hamilton 矩阵），与 Jordan 形无关，记号撞车纯属历史。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛基',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -129,8 +129,8 @@ window.MG = window.MG || {};
         '⚠️ 这条定理是**辛流形上 Darboux 定理的线性影子**：局部看每一点切空间都是标准辛空间，拼起来就是「局部没有不变量」。辛几何之所以「硬」（刚性），正是因为局部平凡、所有信息都在整体。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛空间',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -170,8 +170,8 @@ window.MG = window.MG || {};
         '- 非退化不可省：在二维零双线性型上，任意直线全迷向且半维，但其正交补是整个空间。还要区分全迷向与「每个向量自配对为零」：后者在辛空间对任何子空间都成立。\n'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· Lagrange 子空间',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -203,8 +203,8 @@ window.MG = window.MG || {};
         '⚠️ 命名撞车：物理文献里的 $\\mathrm{Sp}(2)$ 正是 $n = 1$ 的情形 —— 此时 $\\mathrm{Sp}(2, K) = \\mathrm{SL}(2, K)$，与这里的 $2n$ 维辛群一致（不是另一套东西）。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛群',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 

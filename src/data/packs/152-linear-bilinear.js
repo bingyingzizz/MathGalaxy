@@ -196,7 +196,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Bilinear Forms」· 迷向子空间',
-        'Chevalley, The Algebraic Theory of Spinors（迷向子空间与 Witt 指标，⚠️ 章名未核实，只记书名）'
+        'Chevalley, The Algebraic Theory of Spinors'
       ]
     },
 
@@ -231,7 +231,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Bilinear Forms」· 双曲平面',
-        'Chevalley, The Algebraic Theory of Spinors（⚠️ 章名未核实，只记书名）'
+        'Chevalley, The Algebraic Theory of Spinors'
       ]
     },
 
@@ -342,7 +342,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Bilinear Forms」· Witt 定理',
-        'Chevalley, The Algebraic Theory of Spinors（⚠️ 章名未核实，只记书名）'
+        'Chevalley, The Algebraic Theory of Spinors'
       ]
     }
   ],

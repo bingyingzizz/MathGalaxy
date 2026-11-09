@@ -223,7 +223,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 局部平凡化',
-        'Tu, Differential Geometry (GTM 275)（⚠️ 手头无该书，章名未核实，只记书名）· 丛与平凡化'
+        'Tu, Differential Geometry: Connections, Curvature, and Characteristic Classes (GTM 275)'
       ]
     },
 
@@ -294,7 +294,7 @@ window.MG = window.MG || {};
         '- 自由作用 $\\implies$ 商为光滑主丛不是免费：通常还要作用 proper；无理斜率的 $\\mathbb R$ 在二维环面上的平移作用自由但轨道稠密，商非 Hausdorff。\n'
       ].join('\n\n'),
       refs: [
-        'Tu, Differential Geometry (GTM 275)（⚠️ 手头无该书，章名未核实，只记书名）· 主丛与配丛'
+        'Tu, Differential Geometry: Connections, Curvature, and Characteristic Classes (GTM 275)'
       ]
     }
   ],

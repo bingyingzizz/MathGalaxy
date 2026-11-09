@@ -50,8 +50,8 @@ window.MG = window.MG || {};
         '⚠️ 紧辛流形有强限制：$[\\omega] \\in H^{2}(M)$ 非零（否则 $\\omega=d\\theta$ 使 $\\omega^{n}=d(\\theta\\wedge\\omega^{n-1})$ 恰当、积分为零，与「$\\omega^{n}$ 是无处为零的体积形式」矛盾 —— 这是「辛流形不能是 $S^{2n}$，$n \\ge 2$」的原因）。本图不展开上同调论证。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· 辛流形',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -123,8 +123,8 @@ window.MG = window.MG || {};
         '⚠️ 不是所有辛流形上的向量场都来自某个 $H$（需要 $\\iota_{X}\\omega$ 恰当）。所以「辛向量场」比「Hamilton 向量场」宽一层。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· Hamilton 方程',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -156,8 +156,8 @@ window.MG = window.MG || {};
         '⚠️ **与量子力学的关系**：Dirac 的对应规则是 $\\{f,g\\} \\mapsto \\frac{1}{i\\hbar}[\\hat{f}, \\hat{g}]$。这不是定理（没有唯一量子化），但它解释了为什么 Jacobi 恒等式必须成立 —— 它对应交换子的 Jacobi 恒等式。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· Poisson 括号',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -206,8 +206,8 @@ window.MG = window.MG || {};
         '- 从一般 Lagrange 子流形反推固定位置坐标下的图像，另需投影为局部微分同胚；余切纤维本身是 Lagrange，却不能在该位置投影下写成 $p=dF(q)$。\n'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· Lagrange 子流形',
-        'McDuff–Salamon, Introduction to Symplectic Topology（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'McDuff–Salamon, Introduction to Symplectic Topology'
       ]
     },
 
@@ -241,8 +241,8 @@ window.MG = window.MG || {};
         '⚠️ 符号：有书把 Lagrange 括号写成 $\\{u,v\\}$（与 Poisson 撞），也有写 $[u,v]_{q,p}$ 的。本图用后者，下标标明参照坐标。'
       ].join('\n\n'),
       refs: [
-        'Arnold, Mathematical Methods of Classical Mechanics（⚠️ 章名未核实，只记书名）· Lagrange 括号',
-        'Landau–Lifshitz, Mechanics（⚠️ 章名未核实，只记书名）'
+        'Arnold, Mathematical Methods of Classical Mechanics',
+        'Landau–Lifshitz, Mechanics'
       ]
     }
   ],

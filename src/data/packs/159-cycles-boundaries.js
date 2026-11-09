@@ -59,8 +59,8 @@ window.MG = window.MG || {};
         '⭐ **同调就是量「闭链里有多少不是边缘」**：$H^{n} = Z^{n}/B^{n}$（`def.cohomology`）。所以 $H^{n} = 0 \\iff$ 每个闭链都是边缘 $\\iff$ 复形在 $n$ 处正合。这是把「同调为 0」翻译成「闭 = 边缘」的唯一桥梁。'
       ].join('\n\n'),
       refs: [
-        'Le Stum, An introduction to condensed mathematics（⚠️ 章节未核实，只记书名）· 复形与同调',
-        'Weibel, An Introduction to Homological Algebra（⚠️ 章节未核实，只记书名）'
+        'Le Stum, An introduction to condensed mathematics',
+        'Weibel, An Introduction to Homological Algebra'
       ]
     },
 
@@ -98,8 +98,8 @@ window.MG = window.MG || {};
         '⭐ **de Rham 版**：$d\\omega = 0$ 的叫闭形式（= 闭链），$\\omega = d\\eta$ 的叫**恰当形式**（= 边缘）。所以「闭形式恰当」$\\iff$ $H^{1} = 0$ 的那部分 —— 这正是 Poincaré 引理的内容。'
       ].join('\n\n'),
       refs: [
-        'Le Stum, An introduction to condensed mathematics（⚠️ 章节未核实，只记书名）· 复形与同调',
-        'Weibel, An Introduction to Homological Algebra（⚠️ 章节未核实，只记书名）'
+        'Le Stum, An introduction to condensed mathematics',
+        'Weibel, An Introduction to Homological Algebra'
       ]
     }
   ],

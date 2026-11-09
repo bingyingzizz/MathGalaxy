@@ -61,8 +61,8 @@ window.MG = window.MG || {};
         '⭐ 链的位置：$T_{0}$ 是最底下的一格。$T_{1}$ 往上每加一条，就多「看见」一点结构 —— 见 `def.t1-space` 的注里的那张表。'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 分离公理',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -89,7 +89,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ **为什么「单点闭」是最好的判据**：闭集可以做交、做有限并，于是 $T_{1}$ 下所有有限集都闭 —— 这让「从闭集里挖掉有限个点仍闭」「分离点与有限集」这类操作全部合法。几乎每个用到 $T_{1}$ 的证明，实际用的都是这条。',
         '⚠️ **$T_{1}$ 不够用的典型例子**（余有限拓扑）：$X$ 无穷，开集取 $\\emptyset$ 与余有限集。它 $T_{1}$（单点闭 ✓）但不 $T_{2}$：任意两个非空开集的交是余有限的、非空，永远交不停。所以「极限唯一」在这里失效 —— 序列可以收敛到**任意**点。',
-        '⭐ **命名口径**（用户拍板）：**T-number 是裸性质，中文名才带 $T_{1}$**。所以「$T_{3}$ 空间」= 单点与闭集可分离（**不含** $T_{1}$，见 `def.t3-space`），而「正则空间」= $T_{3} + T_{1}$。这条差别是真的：裸 $T_{3}$ 推不出 $T_{1}$。',
+        '⭐ **命名口径**：**T-number 是裸性质，中文名才带 $T_{1}$**。所以「$T_{3}$ 空间」= 单点与闭集可分离（**不含** $T_{1}$，见 `def.t3-space`），而「正则空间」= $T_{3} + T_{1}$。这条差别是真的：裸 $T_{3}$ 推不出 $T_{1}$。',
         '**在链里的位置**：$T_{1}$ 是第一格「能分开点」的公理。再往上 $T_{2}$ 才能分开邻域，$T_{3}$ 才能拿点对闭集，$T_{4}$ 才能拿闭集对闭集。',
         ,
         '**四条里哪条才是“真判据”**（这四条等价非常常用，但依赖深浅差别大）：\n' +
@@ -104,8 +104,8 @@ window.MG = window.MG || {};
         '⚠️ **另一个误推**：$T_{1}$ 不蕴含「两个不同点有不交邻域」。那是 $T_{2}$；$T_{1}$ 只给「各自有一个不含对方的邻域」，两个邻域**可以相交**。'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 分离公理',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -151,8 +151,8 @@ window.MG = window.MG || {};
         '⚠️ **别把“内部”与“内点集”当两件事**：一般拓扑里「存在含于 $A$ 的开邻域的点」正好给出 $\\mathring{A}$。但「开核」与「内部」是同义词，只是译法不同。\n'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 闭集与极限点',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -189,8 +189,8 @@ window.MG = window.MG || {};
         '⚠️ **$T_{3}$ 不等于「点与闭集之间有连续函数」** —— 那是 $T_{3.5}$（`def.t35-space`）。$T_{3}$ 只给开集，不给函数。这个落差正是 Urysohn 引理要补的（而 Urysohn 引理要**正规**，不是 $T_{3}$）。'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 分离公理',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -215,14 +215,14 @@ window.MG = window.MG || {};
         '**链的位置**：正则空间 $\\implies T_{2} \\implies T_{1} \\implies T_{0}$（反向都不成立）。'
       ].join('\n'),
       notes: [
-        '⭐ **这一格是本图的口径分界线**（用户 2026-11-02 拍板）：**T-number 是裸性质，中文名才带 $T_{1}$**。\n\n所以 T3 = 单点与闭集可分离（不带 $T_{1}$），正则空间 = T3 + $T_{1}$。\n\n⚠️ Munkres 的写法相反（他把「正则」当不带 $T_{1}$、$T_{3}$ 当带 $T_{1}$）—— 读到别的书时必须先对约定，否则「$T_{3} \\implies T_{2}$」这种命题会时真时假。',
+        '⭐ **这一格的口径分界**：**T-number 是裸性质，中文名才带 $T_{1}$**。\n\n所以 T3 = 单点与闭集可分离（不带 $T_{1}$），正则空间 = T3 + $T_{1}$。\n\n⚠️ Munkres 的写法相反（他把「正则」当不带 $T_{1}$、$T_{3}$ 当带 $T_{1}$）—— 读到别的书时必须先对约定，否则「$T_{3} \\implies T_{2}$」这种命题会时真时假。',
         '**正则 $\\implies$ $T_{2}$ 的一行证明**：给 $x \\ne y$，由 $T_{1}$ 知 $\\{y\\}$ 闭且 $x \\notin \\{y\\}$；由 $T_{3}$ 取不交开集 $U \\ni x$、$V \\supseteq \\{y\\}$。这正是 $T_{2}$。',
         '⚠️ **正则不蕴含正规**：Sorgenfrey 平面正则但不正规。所以「正则」不是「正规」的弱化版在同一根轴上 —— 它们分开的是**不同形状**的东西（点/闭集 vs 闭集/闭集）。',
         '⭐ 与 `thm.paracompact-hausdorff-normal` 的关系：那条定理的「第 1 步」证的就是「仿紧 Hausdorff $\\implies$ 正则」，用的正是 $T_{3}$ 的「$\\overline{U} \\subseteq W$」形式。'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 分离公理',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -250,8 +250,8 @@ window.MG = window.MG || {};
         '⚠️ **完全正则不等于正规**：Sorgenfrey 平面完全正则但不正规，所以 $T_{3.5}$ 严格弱于 $T_{4}$。'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 完全正则空间',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -278,7 +278,7 @@ window.MG = window.MG || {};
         '**链的位置**：正规空间 $\\implies$ 完全正则空间 $\\implies$ 正则空间 $\\implies T_{2}$。唯一的非平凡一步是「正规 $\\implies$ 完全正则」（Urysohn 引理 `lem.urysohn`）。'
       ].join('\n'),
       notes: [
-        '⚠️ **命名口径**（用户 2026-11-02 拍板）：**T-number = 裸性质，中文名 = 裸性质 + $T_{1}$**。\n\n所以 $T_{3.5}$ 是单点与闭集可由连续函数分开（`def.t35-space`，不带 $T_{1}$），完全正则空间 = $T_{3.5} + T_{1}$。\n\n这与「$T_{3}$ vs 正则空间」同一套约定。',
+        '⚠️ **命名口径**：**T-number = 裸性质，中文名 = 裸性质 + $T_{1}$**。\n\n所以 $T_{3.5}$ 是单点与闭集可由连续函数分开（`def.t35-space`，不带 $T_{1}$），完全正则空间 = $T_{3.5} + T_{1}$。\n\n这与「$T_{3}$ vs 正则空间」同一套约定。',
         '⭐ **为什么「+ $T_{1}$」不是多余的**：不加 $T_{1}$ 时，$T_{3.5}$ 连「单点闭」都不保证，于是 $T_{2}$、极限唯一这些结论全部失效。加上 $T_{1}$ 之后，$\\{y\\}$ 闭，连续函数分离 $x$ 与 $\\{y\\}$ 立刻给出不交开集 —— 于是完全正则空间自动是 $T_{2}$。',
         '⭐ **「能嵌入方体」为什么是同一件事**：若 $X$ 完全正则，用所有连续 $f : X \\to [0,1]$ 拼出映射 $X \\to [0,1]^{I}$，$T_{1}$（点闭）+ $T_{3.5}$（点与闭集可被函数分开）恰好保证它是嵌入。反过来嵌入方体显然给足函数。这就是 Tychonoff 定理的另一半。',
         '⚠️ **Tychonoff 撞名**：`thm.tykhonov` 是**乘积紧性**定理（任意积紧空间紧），与本概念同一个人、不同贡献，别混。',
@@ -290,8 +290,8 @@ window.MG = window.MG || {};
         '- $T_1$ 不能省：至少两点的不可分拓扑满足裸 $T_{3.5}$，但不能嵌入 Hausdorff 方体；正规 $\\implies$ 完全正则另需 Urysohn 引理。\n'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 完全正则空间',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -320,8 +320,8 @@ window.MG = window.MG || {};
         '⚠️ **度量化空间都是 $T_{5}$**：距离空间的所有子空间都是距离空间、都正规。这也是为什么在分析里很少需要 $T_{5}$ —— 它自动成立（更强的是 $T_{6}$，见 `def.perfectly-normal-space`）。'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 分离公理',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -359,8 +359,8 @@ window.MG = window.MG || {};
         '- 正规性不能靠“闭集都是 $G_\\delta$”代替：Sierpinski 两点空间每个闭集都是开集，仍不满足本库要求的 $T_1$；正规也不自动完美正规，$[0,\\omega_1]$ 的末点单集不是 $G_\\delta$。\n'
       ].join('\n\n'),
       refs: [
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）· 分离公理',
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）'
+        'Engelking, General Topology',
+        'Munkres, Topology'
       ]
     },
 
@@ -605,6 +605,24 @@ window.MG = window.MG || {};
         '',
         '⭐ 这条是**一点紧化**理论的前置：局部紧 Hausdorff 的一点紧化是紧 Hausdorff，其上的函数全靠这条从 $X$ 上「拉回来」。'
       ].join('\n')
-    }
+    },
+    {
+      id: 'imp.compact-hausdorff-normal',
+      kind: 'implication',
+      sources: ['def.compact', 'def.hausdorff'],
+      target: 'def.normal-space',
+      proof: [
+        '设 $X$ 紧 Hausdorff，$A, B \\subseteq X$ 是不交闭集。先注意 $X$ 是 $T_{1}$：Hausdorff 空间中单点闭（`def.hausdorff`）。',
+        '',
+        '**分离 $A, B$。** 对每个 $a \\in A$ 与 $b \\in B$，由 Hausdorff 取不交开集 $U_{a,b} \\ni a$、$V_{a,b} \\ni b$。固定 $a$：族 $\\{V_{a,b}\\}_{b \\in B}$ 覆盖 $B$，而 $B$ 是紧空间 $X$ 的闭子集，故紧；取有限个 $b_{1}, \\ldots, b_{n}$ 使 $B \\subseteq V_{a} := V_{a,b_{1}} \\cup \\cdots \\cup V_{a,b_{n}}$。令 $U_{a} := U_{a,b_{1}} \\cap \\cdots \\cap U_{a,b_{n}}$，则 $a \\in U_{a}$ 开，且 $U_{a} \\cap V_{a} = \\emptyset$。',
+        '',
+        '族 $\\{U_{a}\\}_{a \\in A}$ 覆盖紧集 $A$，取有限个 $a_{1}, \\ldots, a_{m}$ 使 $A \\subseteq U := U_{a_{1}} \\cup \\cdots \\cup U_{a_{m}}$。令 $V := V_{a_{1}} \\cap \\cdots \\cap V_{a_{m}}$。则 $U, V$ 开、$A \\subseteq U$、$B \\subseteq V$，且 $U \\cap V = \\emptyset$：若 $x \\in U_{a_{j}}$ 对某个 $j$，则 $x \\notin V_{a_{j}} \\supseteq V$。',
+        '',
+        '所以任意不交闭集都能被开集分离，配合 $T_{1}$ 得 $X$ 正规。∎',
+        '',
+        '⭐ 这是**直接证明**，没有走 `thm.paracompact-hausdorff-normal`：那条（紧 $\\implies$ 仿紧 $\\implies$ 正规）当然也对，但这里只用了紧性取有限子覆盖与 Hausdorff 分点，两步都是定义级别的操作。'
+      ].join('\n')
+    },
+
   ]
 });

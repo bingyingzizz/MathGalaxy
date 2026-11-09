@@ -57,8 +57,8 @@ window.MG = window.MG || {};
         '⚠️ **约化结构群 = 额外的几何结构**：$\\mathrm{Fr}(E)$ 里挑出「关于某个度量标准正交」的帧，得到一个主 $\\mathrm{O}(k)$-子丛；挑出「关于某个复结构是复线性」的帧，得到 $\\mathrm{GL}(k,\\mathbb{C})$。\n\n**反过来，主 $G$-子丛 与 向量丛上的 $G$-结构**（度量、复结构、定向、$\\mathrm{Spin}$ 结构……）。\n\n这是「$G$-结构」这套语言的起点。'
       ].join('\n\n'),
       refs: [
-        'Tu, Differential Geometry（⚠️ 章节未核实，只记书名）· 帧丛与主丛',
-        'Kobayashi–Nomizu, Foundations of Differential Geometry（⚠️ 章节未核实，只记书名）'
+        'Tu, Differential Geometry',
+        'Kobayashi–Nomizu, Foundations of Differential Geometry'
       ]
     },
 
@@ -96,8 +96,8 @@ window.MG = window.MG || {};
         '⚠️ 配丛**不需要** $G$ 离散、也不需要 $F$ 线性。取 $F = G/H$ 得到「齐性空间丛」（例如 $F = S^{2} = \\mathrm{SO}(3)/\\mathrm{SO}(2)$ 给出「球面丛」），取 $F = G$ 且作用取左乘/右乘，可以造出伴主丛 —— 后者正是「$G$-丛的扭子」那类构造。'
       ].join('\n\n'),
       refs: [
-        'Tu, Differential Geometry（⚠️ 章节未核实，只记书名）· 配丛',
-        'Kobayashi–Nomizu, Foundations of Differential Geometry（⚠️ 章节未核实，只记书名）'
+        'Tu, Differential Geometry',
+        'Kobayashi–Nomizu, Foundations of Differential Geometry'
       ]
     }
   ],

@@ -89,7 +89,7 @@ window.MG = window.MG || {};
         '⚠️ **结构群不是唯一的**：一个丛可以同时是 $\\mathrm{GL}(k)$-丛与 $\\mathrm{O}(k)$-丛（后者更精细）。所以「这个丛的结构群是 $G$」这句话的准确读法是「**存在**使转移函数落在 $G$ 里的平凡化」—— 不是「只有 $G$」。',
         '⚠️ **主丛是「结构群 = 纤维」的极端**：主 $G$-丛的纤维就是 $G$ 自己（`def.principal-bundle`），此时结构群与纤维重合，丛的信息全在 $G$ 的右作用里。向量丛与主丛的对应（帧丛 / 配丛）就是「结构群」这个概念的两侧。'
       ].join('\n\n'),
-      refs: ['Milnor–Stasheff, Characteristic Classes · 结构群', 'Tu, Differential Geometry（⚠️ 章名未核实，只记书名）']
+      refs: ['Milnor–Stasheff, Characteristic Classes · 结构群', 'Tu, Differential Geometry']
     }
   ],
 

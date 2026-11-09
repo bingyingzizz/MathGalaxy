@@ -1196,6 +1196,9 @@ window.MG = window.MG || {};
       '拼出来的是**紧 Hausdorff 块**。'],
     ['def.weak-hausdorff', 'prop.closed-inclusion-filtered-limit', 'def-dep.clif-wh',
       '结论断言余极限仍**弱 Hausdorff**。']
+,
+    ['def.locally-compact-space', 'def.locally-compact', 'def-dep.lcspace-lc',
+      '局部紧 Hausdorff = 裸局部紧 + Hausdorff；本节点是它的裸版本。'],
   ];
 
   var edges = E.map(function (e) {

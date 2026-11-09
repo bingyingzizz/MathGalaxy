@@ -26,11 +26,24 @@ window.MG = window.MG || {};
       id: 'imp.compact-locally-compact',
       kind: 'implication',
       sources: ['def.compact'],
+      target: 'def.locally-compact-space',
+      proof: [
+        '设 $X$ 紧。\n\n对任意 $x \\in X$：$X$ 自己是紧集（假设），而 $X$ 又是 $x$ 的邻域（$X$ 开于自身）。\n\n于是 $x \\in \\mathring{X} = X \\subseteq X$ —— 这正是「每个点都有紧邻域」的要求（`def.locally-compact-space` 的判据 $x \\in \\mathring{K}$，取 $K = X$）✓。\n\n∎',
+        '',
+        '⭐ 这条几乎是定义级别的，但它**不是**废话：局部紧的定义允许「每个点有个小的紧邻域」，紧性给的是「整体紧」，而整体紧在**子空间**上不遗传给邻域 —— 所以「紧 $\\implies$ 局部紧」要用 $K = X$ 这一招，而「局部紧」的逆不成立（$\\mathbb{R}$ 局部紧但不紧）。这条证明的是**裸局部紧**；要得到 `def.locally-compact`（局部紧 Hausdorff），还需把 Hausdorff 作为额外假设（见下一条）。'
+      ].join('\n')
+    },
+    {
+      id: 'imp.compact-hausdorff-locallycompact',
+      kind: 'implication',
+      sources: ['def.compact', 'def.hausdorff'],
       target: 'def.locally-compact',
       proof: [
-        '设 $X$ 紧。\n\n对任意 $x \\in X$：$X$ 自己是紧集（假设），而 $X$ 又是 $x$ 的邻域（$X$ 开于自身）。\n\n于是 $x \\in \\mathring{X} = X \\subseteq X$ —— 这正是「每个点都有紧邻域」的要求（`def.locally-compact` 的判据 $x \\in \\mathring{K}$，取 $K = X$）✓。\n\n∎',
+        '设 $X$ 紧且 Hausdorff。紧性给：对任意 $x \\in X$，取 $K = X$ 就是 $x$ 的紧邻域（$X$ 开于自身，故 $x \\in \\mathring{X}$）。Hausdorff 是额外假设。',
         '',
-        '⭐ 这条几乎是定义级别的，但它**不是**废话：局部紧的定义允许「每个点有个小的紧邻域」，紧性给的是「整体紧」，而整体紧在**子空间**上不遗传给邻域 —— 所以「紧 $\\implies$ 局部紧」要用 $K = X$ 这一招，而「局部紧」的逆不成立（$\\mathbb{R}$ 局部紧但不紧）。'
+        '两条合起来正是 `def.locally-compact` 的要求：**裸局部紧 + Hausdorff**。∎',
+        '',
+        '⭐ 与上一条的分工：上一条只给裸局部紧（不需要 Hausdorff）；本条的额外输入只有 Hausdorff 这一条假设。'
       ].join('\n')
     },
     {

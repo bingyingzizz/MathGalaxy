@@ -1,5 +1,5 @@
 /* ==========================================================================
-   内容包 · 第 2–4 章的定义骨架（8 条）
+   内容包 · 第 2–4 章的定义骨架（9 条）
    --------------------------------------------------------------------------
    拓扑与景那边一直缺的编号定义：完全不连通 / 极不连通（2.2.7）、
    局部紧 Hausdorff（2.3.1）、Tychonoff（2.1.4）、
@@ -39,6 +39,31 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
+    /* ------------------------------------ 裸局部紧（不要求 Hausdorff） */
+    {
+      id: 'def.locally-compact-space',
+      cluster: 'topology.convergence',
+      type: 'definition',
+      label: '局部紧空间（裸）',
+      title: '局部紧空间（不要求 Hausdorff）',
+      regions: ['topology'],
+      tags: ['拓扑', '局部紧', '紧邻域', 'Hausdorff'],
+      statement: [
+        '拓扑空间 $X$ 叫**局部紧的**，如果**每个点都有紧邻域**：对每个 $x \\in X$，存在紧集 $K$ 使',
+        '',
+        '$$x \\in \\mathring{K}$$',
+        '',
+        '这里**不要求** $X$ 是 Hausdorff 的。'
+      ].join('\n'),
+      notes: [
+        '**为什么单列一条**：有的书把「局部紧」定义成上面这条裸性质，有的书（以及凝聚态数学的用法）默认再加上 Hausdorff。本图把两者拆开：这条是**裸局部紧**，`def.locally-compact` 是**局部紧 Hausdorff**。',
+        '**与 Hausdorff 版的差别**：Hausdorff 时「每点有紧邻域」等价于「每点有**紧邻域基**」（任意邻域里都能找到紧邻域）；没有 Hausdorff 时这条路会断（紧集不必闭，邻域与紧集的关系变差）。',
+        '**例子**：任何紧空间（取 $K = X$）、$\\mathbb{R}^{n}$、离散空间都是裸局部紧；$\\mathbb{Q}$ 不是。紧空间一定裸局部紧，但不一定 Hausdorff。',
+        '⭐ 本图约定：只说「局部紧」而不加限定时，指 `def.locally-compact`（局部紧 Hausdorff）；要用裸性质时写全「裸局部紧」并引本节点。'
+      ].join('\n\n'),
+      refs: ['Munkres, Topology', 'Engelking, General Topology']
+    },
+
     /* ------------------------------------------------- 局部紧 Hausdorff */
     {
       id: 'def.locally-compact',
@@ -55,7 +80,7 @@ window.MG = window.MG || {};
         '',
         '再要求它是 Hausdorff 的，就叫**局部紧 Hausdorff** 空间。',
         '',
-        '⚠️ 本图提到「局部紧」**而不另加限定**时，指的都是后者 —— 这是凝聚态数学里的标准用法：那里用得到的性质（局部紧 $\\implies$ 紧生成、商映射 $\\times$ 局部紧）都同时需要 Hausdorff。'
+        '⚠️ 本图约定：提到「局部紧」**而不另加限定**时，指的都是后者（局部紧 Hausdorff）—— 凝聚态数学的标准用法：那里用得到的性质（局部紧 $\\implies$ 紧生成、商映射 $\\times$ 局部紧）都同时需要 Hausdorff。裸局部紧单列为 `def.locally-compact-space`，本节点不要求读者把它和裸版本混同。'
       ].join('\n'),
       notes: [
         '**等价说法**（Hausdorff 时）：每点有**紧邻域基**（即任意给定邻域 $U \\ni x$ 里都能找到一个紧邻域 $K$ 使 $x \\in \\mathring{K} \\subseteq K \\subseteq U$）。这条更强的形式正是「商映射 $\\times$ 局部紧」那条定理要用的。',

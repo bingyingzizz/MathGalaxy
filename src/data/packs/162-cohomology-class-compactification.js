@@ -88,8 +88,8 @@ window.MG = window.MG || {};
         '⭐ **拓扑版**：空间 $X$ 的**奇异链复形**零调 $\\iff$ $X$ 可缩到一点？不是 —— 那是「约化同调全为 $0$」，即 $X$ 零调（acyclic space）。所以同一个词在空间上也有对应物：零调空间（同调同于一点，但不必同伦于一点）。'
       ].join('\n\n'),
       refs: [
-        'Weibel, An Introduction to Homological Algebra（⚠️ 章节未核实，只记书名）· 消解与导出函子',
-        'Le Stum, An introduction to condensed mathematics（⚠️ 章节未核实，只记书名）'
+        'Weibel, An Introduction to Homological Algebra',
+        'Le Stum, An introduction to condensed mathematics'
       ]
     },
 
@@ -131,8 +131,8 @@ window.MG = window.MG || {};
         '- 原注所说任意 $X\\sqcup\\{*\\}$ 都紧不成立：无限离散 $X$ 的这个不交并仍不紧。\n'
       ].join('\n\n'),
       refs: [
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）· 紧化',
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）'
+        'Engelking, General Topology',
+        'Munkres, Topology'
       ]
     },
 
@@ -179,8 +179,8 @@ window.MG = window.MG || {};
         '⚠️ **$\\infty$ 的邻域为什么长那样**：第二条公理里「补集紧」不是随意规定 —— 若邻域是 $U\\cup\\{\\infty\\}$，那么「跑向无穷」的点最终必须落在 $U$ 里，即最终离开 $X\\setminus U$；要求 $X\\setminus U$ 紧，正是让「离开它」与「紧性」对齐，从而使 $X^{*}$ 紧。'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 一点紧化',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     },
 
@@ -221,8 +221,8 @@ window.MG = window.MG || {};
         '- 改成序列不能刻画一般紧性：第一可数的序数空间 $[0,\\omega_1)$ 序列紧却不紧，故原文括号里的第一可数不足以保证紧性的序列刻画。\n'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 网的收敛',
-        'Kelley, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Kelley, General Topology'
       ]
     },
 
@@ -268,8 +268,8 @@ window.MG = window.MG || {};
         '⚠️ 与范畴论里的「滤过性」（`def.filtered-category`）**无关**，只是中文都带「滤」字。\n'
       ].join('\n\n'),
       refs: [
-        'Munkres, Topology（⚠️ 章节未核实，只记书名）· 滤子',
-        'Engelking, General Topology（⚠️ 章节未核实，只记书名）'
+        'Munkres, Topology',
+        'Engelking, General Topology'
       ]
     }
   ],

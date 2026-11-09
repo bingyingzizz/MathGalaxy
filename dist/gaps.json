@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T04:06:10.986Z",
+ "generated": "2026-11-09T04:19:30.451Z",
  "terms": 76,
  "missing": [
   {
@@ -384,6 +384,15 @@
    "gap": 18
   },
   {
+   "node": "def.radon-measure",
+   "nodeLabel": "Radon 测度",
+   "nodeLayer": 16,
+   "def": "def.locally-compact",
+   "defLabel": "局部紧 Hausdorff 空间",
+   "defLayer": 18,
+   "gap": 2
+  },
+  {
    "node": "def.module-category",
    "nodeLabel": "模范畴",
    "nodeLayer": 10,
@@ -391,15 +400,6 @@
    "defLabel": "线性映射",
    "defLayer": 12,
    "gap": 2
-  },
-  {
-   "node": "def.radon-measure",
-   "nodeLabel": "Radon 测度",
-   "nodeLayer": 16,
-   "def": "def.locally-compact",
-   "defLabel": "局部紧 Hausdorff 空间",
-   "defLayer": 17,
-   "gap": 1
   },
   {
    "node": "def.category-of-groups",

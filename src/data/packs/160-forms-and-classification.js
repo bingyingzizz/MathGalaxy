@@ -52,8 +52,8 @@ window.MG = window.MG || {};
         '⭐ **常见例子**：$\\mathbb{R}^{n}$ 上一切 $n$ 次形式都闭（$d$ 打到 $\\Omega^{n+1} = 0$）；$S^{1}$ 上的角形式 $d\\theta$ 闭但不恰当 —— 这是 $H^{1}(S^{1}) \\ne 0$ 的最简单证据。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds（⚠️ 章节未核实，只记书名）· 闭形式与恰当形式',
-        'Bott–Tu, Differential Forms in Algebraic Topology（⚠️ 章节未核实，只记书名）'
+        'Tu, An Introduction to Manifolds',
+        'Bott–Tu, Differential Forms in Algebraic Topology'
       ]
     },
 
@@ -87,8 +87,8 @@ window.MG = window.MG || {};
         '⚠️ **$k = 0$**：恰当 $0$ 形式按定义是 $d\\eta$ 形的 $0$ 形式，而 $d$ 打在 $\\Omega^{-1}$ 上（约定为 $0$）$\\implies$ 只有 $0$。这与「$B^{0} = 0$」一致，也正是「$H^{0}_{dR}(M)$ 就是 $M$ 上的局部常值函数」这条结论的来源。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds（⚠️ 章节未核实，只记书名）· 闭形式与恰当形式',
-        'Bott–Tu, Differential Forms in Algebraic Topology（⚠️ 章节未核实，只记书名）'
+        'Tu, An Introduction to Manifolds',
+        'Bott–Tu, Differential Forms in Algebraic Topology'
       ]
     },
 
@@ -164,7 +164,7 @@ window.MG = window.MG || {};
         '⭐ **Frobenius 是特征 $p$ 的标志性现象**：$x \\mapsto x^{p}$ 是域同态（在有限域上还是自同构），而特征 $0$ 里完全没有对应物。$\\mathbb{F}_{p^{n}}$ 的 Galois 群就是 Frobenius 生成的循环群。'
       ].join('\n\n'),
       refs: [
-        'Dummit–Foote, Abstract Algebra（⚠️ 章节未核实，只记书名）· 域的特征',
+        'Dummit–Foote, Abstract Algebra',
         '北大《高等代数》· 域的特征与素域'
       ]
     }
