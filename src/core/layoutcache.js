@@ -23,7 +23,9 @@
   'use strict';
   var MG = (global.MG = global.MG || {});
 
-  var KEY = 'mathgalaxy.layout.v1';       /* ⛔ 改名 = 缓存失效（无损失，只是重算一次） */
+  /* v2（2026-11-09 ENG-013）：签名纳入 config.background（板块云半径用它）⇒ 旧缓存的
+     sig 一定对不上；同时直接换 key，让 v1 记录一次性失效，用户不用手动清 localStorage。 */
+  var KEY = 'mathgalaxy.layout.v2';       /* ⛔ 改名 = 缓存失效（无损失，只是重算一次） */
   var CAM_KEY = 'mathgalaxy.camera.v1';   /* 相机（k, tx, ty）单独存，与布局无关 */
   var CAM_MARGIN = 1e-6;
 
@@ -60,11 +62,19 @@
       var base = g._baseCenter || g.center || { x: 0, y: 0 };
       regs.push(g.id + '@' + (base.x | 0) + ',' + (base.y | 0));
     }
-    /* ⑤ 布局与团云的全部常量（改了任何一个，坐标就该重算） */
+    /* ⑤ 布局与团云的全部常量（改了任何一个，坐标/云半径就该重算）
+       ⭐ 规则：**凡是 layout.js 在布局阶段读到的 config 都必须进这里**，
+          不能只列 layout/cluster（那是 2026-11-09 ENG-013 的坑）。
+          layout.js:915 用 `background.cloudRadiusMin / cloudMargin` 算板块云半径；
+          它们不进签名 ⇒ 改雾参数后旧缓存里的**旧半径**继续被复用，
+          线上按旧半径烘雾、表现为「清 localStorage 才正常」。
+          这里把整个 background 也放进去：宁可雾参数变了多算一次布局，
+          也不能再让旧半径借尸还魂。 */
     var cfgTxt = '';
     try {
       cfgTxt = JSON.stringify(MG.config && MG.config.layout) + '|' +
-        JSON.stringify(MG.config && MG.config.cluster);
+        JSON.stringify(MG.config && MG.config.cluster) + '|' +
+        JSON.stringify(MG.config && MG.config.background);
     } catch (e) { cfgTxt = 'cfg?'; }
 
     var payload = parts.join(';') + '|' + ids.join('\u0001') + '|' +
@@ -162,7 +172,13 @@
       var s = cl.stat;
       return s ? [Math.round(s.cx), Math.round(s.cy), s.count, Math.round(s.radius)] : null;
     });
-    return writeJSON(KEY, { sig: signature(graph), p: p, r: r, c: c });
+    var ok = writeJSON(KEY, { sig: signature(graph), p: p, r: r, c: c });
+    /* ENG-013：换 key 后 v1 的老记录永远不会再被读到，留着只占配额（~20 KB）⇒ 顺手清掉 */
+    if (ok) {
+      var ls = store();
+      if (ls) { try { ls.removeItem('mathgalaxy.layout.v1'); } catch (e) { /* 忽略 */ } }
+    }
+    return ok;
   }
 
   function clear() {
