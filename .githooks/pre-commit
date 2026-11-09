@@ -50,4 +50,19 @@ case "$staged" in
     esac ;;
 esac
 
+# ⭐ 2026-11-09：性能不变量（AGENTS.md 第四节的机器版本）。
+# 改 `src/core/` / `src/ui/` / 体检本体时一定过这一关 —— 删一条就红。
+# 全量仍在 `bun tools/build.mjs` 末尾 + CI，这里只是让它在**提交时**就能拦。
+case "$staged" in
+  *src/core/*|*src/ui/*|*tools/perfguard.mjs)
+    "$BUN" tools/perfguard.mjs || {
+      echo "" >&2
+      echo "✗ 性能不变量被破坏，提交已拦下（看上面 ↳ 那一行）。" >&2
+      echo "  这些约束和当初的实测代价都在 AGENTS.md 第四节。" >&2
+      echo "  要改约束：先在那一条里给出「改前/改后」的数字，再改 tools/perfguard.mjs。" >&2
+      echo "  （确认没事也可以 git commit --no-verify）" >&2
+      exit 1
+    } ;;
+esac
+
 exit 0
