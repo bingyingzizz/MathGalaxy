@@ -15,6 +15,10 @@
         缓存里只有坐标与几个半径 —— 它们是纯几何量。
      3. **任何异常都静默放过**。localStorage 可能被禁用（隐私模式）、
         可能满了、可能被别的东西写坏。缓存失败绝不能让星图打不开。
+        ⭐ 读缓存时还要**逐项校验数值**：JSON 里 NaN/Infinity 会写成 null，
+           `isFinite(null)` 却是 true（Number(null)===0）—— 只查数组长度会让
+           `p=[null,"x",3,4]` 这种坏记录一路写进节点坐标，页面直接坏掉。
+           形状/数值不对 ⇒ 删掉这条缓存、返回 false、走重算。
 
    存储格式（尽量小）：节点坐标取整后摊平成一个数组，团 / 星系的圆心与半径
    各一个数组。1460 点大约 20 KB，远低于配额。
@@ -27,7 +31,6 @@
      sig 一定对不上；同时直接换 key，让 v1 记录一次性失效，用户不用手动清 localStorage。 */
   var KEY = 'mathgalaxy.layout.v2';       /* ⛔ 改名 = 缓存失效（无损失，只是重算一次） */
   var CAM_KEY = 'mathgalaxy.camera.v1';   /* 相机（k, tx, ty）单独存，与布局无关 */
-  var CAM_MARGIN = 1e-6;
 
   /* ---------------------------------------------------------------- 签名 */
   /* FNV-1a 32 位 + 长度。碰撞概率对「内容变了但签名没变」这种场景足够低；
@@ -65,7 +68,8 @@
     /* ⑤ 布局与团云的全部常量（改了任何一个，坐标/云半径就该重算）
        ⭐ 规则：**凡是 layout.js 在布局阶段读到的 config 都必须进这里**，
           不能只列 layout/cluster（那是 2026-11-09 ENG-013 的坑）。
-          layout.js:915 用 `background.cloudRadiusMin / cloudMargin` 算板块云半径；
+          layout.js:879 `var bc = MG.config.background` 起、:915 用
+          `background.cloudRadiusMin / cloudMargin` 算板块云半径；
           它们不进签名 ⇒ 改雾参数后旧缓存里的**旧半径**继续被复用，
           线上按旧半径烘雾、表现为「清 localStorage 才正常」。
           这里把整个 background 也放进去：宁可雾参数变了多算一次布局，
@@ -108,11 +112,47 @@
   }
 
   /* -------------------------------------------------------------- 恢复 */
+  /* 数值校验：typeof 必须是 number 且有限。
+     ⚠️ 不能用 isFinite(v)：JSON 把 NaN/Infinity 写成 null，而 Number(null)===0、
+     isFinite(null) 是 true ⇒ 坏值会通过。必须先查 typeof。 */
+  function isNum(v) { return typeof v === 'number' && isFinite(v); }
+
+  function validP(p, n) {
+    if (!p || p.length !== n) return false;
+    for (var i = 0; i < n; i++) if (!isNum(p[i])) return false;
+    return true;
+  }
+
+  /* 星系 / 星团统计：允许 null（该条没有 stat），否则每一项都必须是有限数字 */
+  function validRows(rows, n, cols) {
+    if (!rows || rows.length !== n) return false;
+    for (var i = 0; i < n; i++) {
+      var row = rows[i];
+      if (row === null) continue;
+      if (!row || row.length !== cols) return false;
+      for (var j = 0; j < cols; j++) if (!isNum(row[j])) return false;
+    }
+    return true;
+  }
+
+  function cacheShapeOk(data, graph) {
+    if (!data) return false;
+    return validP(data.p, graph.nodes.length * 2) &&
+      validRows(data.r, graph.regions.length, 6) &&
+      validRows(data.c, graph.clusters.length, 4);
+  }
+
+  /** 缓存坏了就整条删掉：坏值绝不能进图，也不能留着下次再读 */
+  function drop() {
+    var ls = store();
+    if (ls) { try { ls.removeItem(KEY); } catch (e) { /* 忽略 */ } }
+  }
+
   /** 把缓存里的坐标写回 graph。返回 true 表示**用得上的**缓存（调用方应跳过求解）。 */
   function restore(graph) {
     var data = readJSON(KEY);
     if (!data || data.sig !== signature(graph)) return false;
-    if (!data.p || data.p.length !== graph.nodes.length * 2) return false;
+    if (!cacheShapeOk(data, graph)) { drop(); return false; }
 
     var nodes = graph.nodes;
     for (var i = 0; i < nodes.length; i++) {
@@ -150,9 +190,9 @@
   /** 只比对签名，不动数据 —— 供「加载文案」之类的场景用（便宜，不碰 localStorage 的写路径） */
   function peek(graph) {
     var data = readJSON(KEY);
-    if (!data || !data.p) return false;
-    if (data.p.length !== graph.nodes.length * 2) return false;
-    return data.sig === signature(graph);
+    if (!data || data.sig !== signature(graph)) return false;
+    if (!cacheShapeOk(data, graph)) { drop(); return false; }
+    return true;
   }
 
   /* -------------------------------------------------------------- 保存 */
@@ -185,6 +225,8 @@
     var ls = store();
     if (!ls) return;
     try { ls.removeItem(KEY); } catch (e) { /* 忽略 */ }
+    /* ENG-013 换 key 后的老记录：正常 save() 会顺手清，但 clear() 也应一起清干净 */
+    try { ls.removeItem('mathgalaxy.layout.v1'); } catch (e) { /* 忽略 */ }
   }
 
   /* -------------------------------------------------------------- 相机 */
