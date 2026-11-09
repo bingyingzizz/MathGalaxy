@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    内容包 · 度量空间（星系：拓扑学）
    --------------------------------------------------------------------------
    从「距离」出发的紧性理论。核心是那条链：
@@ -255,6 +255,36 @@ window.MG = window.MG || {};
         ].join('\n')
       ].join('\n\n'),
       refs: ['Munkres, Topology, §28', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
+    },
+    {
+      id: 'def.metric-continuity',
+      cluster: 'topology.metric',
+      type: 'definition',
+      label: '度量空间的连续',
+      title: '度量空间之间的连续性（$\\varepsilon$-$\\delta$）',
+      regions: ['topology', 'analysis'],
+      tags: ['定义', '连续', '度量空间', 'ε-δ'],
+      statement: [
+        '设 $(X, d)$、$(Y, \\rho)$ 是度量空间，$f : X \\to Y$，$x_0 \\in X$。',
+        '',
+        '称 $f$ 在 $x_0$ **连续**，若',
+        '',
+        '$$\\forall \\varepsilon > 0\\ \\exists \\delta > 0:\\quad d(x, x_0) < \\delta \\implies \\rho(f(x), f(x_0)) < \\varepsilon .$$',
+        '',
+        '称 $f$ 连续，若它在每点连续。等价地：每个开集 $V \\subseteq Y$ 的原像 $f^{-1}(V)$ 是 $X$ 的开集。'
+      ].join('\n'),
+      notes: [
+        '**等价性的证明**（全局版本）：',
+        '',
+        '（$\\varepsilon$-$\\delta$ $\\implies$ 开集原像开）设 $V \\subseteq Y$ 开、$x_0 \\in f^{-1}(V)$。取 $\\varepsilon > 0$ 使 $B_Y(f(x_0), \\varepsilon) \\subseteq V$；$\\varepsilon$-$\\delta$ 给 $\\delta > 0$，使 $B_X(x_0, \\delta)$ 的像落在 $B_Y(f(x_0), \\varepsilon)$ 中，故 $B_X(x_0, \\delta) \\subseteq f^{-1}(V)$，即 $f^{-1}(V)$ 开。',
+        '',
+        '（开集原像开 $\\implies$ $\\varepsilon$-$\\delta$）给定 $x_0$ 与 $\\varepsilon > 0$，$B_Y(f(x_0), \\varepsilon)$ 开，故 $f^{-1}(B_Y(f(x_0), \\varepsilon))$ 开且含 $x_0$；取 $\\delta > 0$ 使 $B_X(x_0, \\delta)$ 落在其中，即得 $\\varepsilon$-$\\delta$ 式。$\\blacksquare$',
+        '',
+        '📌 这就是 `def.continuous-map`（拓扑空间版本）在度量空间上的具体写法：度量空间的开集由开球生成，故「原像开」与 $\\varepsilon$-$\\delta$ 等价。',
+        '',
+        '⭐ $\\mathbb{R}$ 的情形见 `def.continuous`（$\\varepsilon$-$\\delta$ 判据）与 `def.real-metric-space`（$d(x,y) = |x-y|$）。'
+      ].join('\n\n'),
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 4', 'Munkres, Topology, Ch. 2'],
     }
   ],
 
@@ -509,6 +539,22 @@ window.MG = window.MG || {};
       definition: 'def.complete',
       usedBy: 'prop.subset-compact-equiv',
       note: '⚠ 这条命题的**前提**就是「$X$ 完备」，所以它引用完备的定义。'
+    },
+    { id: 'def-link.mc-metric', kind: 'definition', definition: 'def.metric-space',
+      usedBy: 'def.metric-continuity',
+      note: '连续性用两个度量空间的 $d$ 与 $\\rho$ 写。' },
+    {
+      id: 'imp.metric-continuity-open-preimage',
+      kind: 'implication',
+      sources: ['def.metric-continuity'],
+      target: 'def.continuous-map',
+      title: '度量连续 $\\implies$ 拓扑连续（开集原像开）',
+      proof: [
+        '设 $f : (X,d) \\to (Y,\\rho)$ 在每点 $\\varepsilon$-$\\delta$ 连续，$V \\subseteq Y$ 开，$x_0 \\in f^{-1}(V)$。',
+        '取 $\\varepsilon > 0$ 使 $B_Y(f(x_0), \\varepsilon) \\subseteq V$；$\\varepsilon$-$\\delta$ 给 $\\delta > 0$ 使 $f(B_X(x_0, \\delta)) \\subseteq B_Y(f(x_0), \\varepsilon)$。',
+        '于是 $B_X(x_0, \\delta) \\subseteq f^{-1}(V)$，即 $f^{-1}(V)$ 在 $X$ 中开；按 `def.continuous-map` 的定义 $f$ 连续。$\\blacksquare$'
+      ].join('\n'),
+      note: '反向（拓扑连续 $\\implies$ $\\varepsilon$-$\\delta$）同样直接：$B_Y(f(x_0), \\varepsilon)$ 开，原像开给 $\\delta$。'
     }
   ]
 });

@@ -155,7 +155,7 @@
         '$$\\pi_{1}(X, x_{0}) := \\Omega(X, x_{0}) \\big/ \\simeq_{p},$$',
         '',
         '乘法取 $[\\alpha][\\beta] := [\\alpha * \\beta]$，单位元 $e = [e_{x_{0}}]$，逆元 $[\\alpha]^{-1} = [\\bar{\\alpha}]$。',
-        '`lem.path-product` 保证这三样东西良定义且满足群公理，所以 $\\pi_{1}(X, x_{0})$ 确实是一个群。',
+        '`prop.pi1-group` 把这三样东西的良定义与群公理逐条对上（依据是 `lem.path-product`），所以 $\\pi_{1}(X, x_{0})$ 确实是一个群。',
         '这里的构造只是「取商集 $+$ 拼接」，**没有**引用任何「满足某组性质的群」式的公理刻画。',
       ].join('\n'),
       notes: [
@@ -270,7 +270,7 @@
         '1. $X$ 道路连通，且',
         '2. $\\pi_{1}(X, x_{0}) = 1$ 对某个（等价地：对每个）$x_{0} \\in X$ 成立。',
         '',
-        '由 `prop.pi1-basepoint`，条件 2 挑哪个基点都一样（道路连通保证换基点给出同构，而「平凡」是同构不变的）。',
+        '由 `prop.simply-connected-basepoint`，条件 2 里「对某个」与「对每个」等价（道路连通保证换基点给出同构，而「平凡」在同构下不变）。',
         '',
         '等价的说法：$X$ 道路连通，且任意两条有共同端点的道路都道路同伦；' +
           '等价地，每条闭道路都能在固定端点的前提下连续缩成常值道路。',
@@ -587,6 +587,68 @@
         'Hatcher, Algebraic Topology, Ch. 1 §1.2 · fundamental groups of spheres（推论）',
       ],
     },
+    {
+      id: 'prop.pi1-group',
+      cluster: 'topology.fg',
+      type: 'proposition',
+      label: 'π₁ 是群',
+      title: '$\\pi_{1}(X, x_{0})$ 确实是群',
+      regions: ['topology'],
+      tags: ['命题', '代数拓扑', '基本群', '群公理'],
+      statement: [
+        '设 $X$ 是拓扑空间、$x_{0} \\in X$。在闭道路的同伦类之集 $\\pi_{1}(X, x_{0})$（`def.fundamental-group`）上定义',
+        '',
+        '$[\\alpha] \\cdot [\\beta] := [\\alpha \\ast \\beta], \\qquad e := [e_{x_{0}}], \\qquad [\\alpha]^{-1} := [\\overline{\\alpha}].$',
+        '',
+        '则这三个运算**良定义**，且 $\\pi_{1}(X, x_{0})$ 按它们构成一个群（`def.group`）：',
+        '',
+        ['- **良定义**：$\\alpha \\simeq_{p} \\alpha^{\\prime}$、$\\beta \\simeq_{p} \\beta^{\\prime}$ $\\implies$ $\\alpha \\ast \\beta \\simeq_{p} \\alpha^{\\prime} \\ast \\beta^{\\prime}$；',
+         '- **结合律**：$(\\alpha \\ast \\beta) \\ast \\gamma \\simeq_{p} \\alpha \\ast (\\beta \\ast \\gamma)$；',
+         '- **单位元**：$e_{x_{0}} \\ast \\alpha \\simeq_{p} \\alpha \\simeq_{p} \\alpha \\ast e_{x_{0}}$；',
+         '- **逆元**：$\\alpha \\ast \\overline{\\alpha} \\simeq_{p} e_{x_{0}} \\simeq_{p} \\overline{\\alpha} \\ast \\alpha$。'].join('\n'),
+        '',
+        '四条正是 `lem.path-product` 的内容：$\\pi_{1}$ 的群结构不是额外假设，而是「道路拼接 + 取同伦类」自带的代数结构。'
+      ].join('\n'),
+      notes: [
+        '**为什么单独立一条**：`def.fundamental-group` 只定义了集合 $\\pi_{1}(X,x_{0}) = \\{$ 闭道路 $\\}/\\simeq_{p}$，它本身不含群结构；`lem.path-product` 说的是拼接的四条算律，也没说「所以它是群」。写成命题后，「哪条引理支撑哪条群公理」在图上是看得见的。\n\n顺带一个常见混淆：$\\pi_{1}$ 的乘法**不是**逐点乘法（道路不能逐点相加），而是「先走 $\\alpha$ 再走 $\\beta$」，参数要重标度成两段。',
+        '',
+        '**基点固定**：以上只对固定基点成立。换基点 $x_{0} \\to x_{1}$ 要先给一条道路，形式与同构性见 `prop.pi1-basepoint`；没有道路连通假设时，不同道路分支的基本群可以完全不同（例如两点离散空间）。',
+        '',
+        '**非交换**：$[\\alpha]\\cdot[\\beta] \\ne [\\beta]\\cdot[\\alpha]$ 是常态（$\\pi_{1}(S^{1} \\vee S^{1})$ 就是自由群 $F_{2}$），所以这是**非阿贝尔**群；取交换化才得到 $H_{1}$。'
+      ].join('\n'),
+      refs: [
+        'Hatcher, Algebraic Topology, Ch. 1 §1.1 · the fundamental group is a group',
+        'Munkres, Topology (2nd ed.), Ch. 9 · homotopy of paths and the group structure'
+      ]
+    },
+    {
+      id: 'prop.simply-connected-basepoint',
+      cluster: 'topology.fg',
+      type: 'proposition',
+      label: '单连通与基点无关',
+      title: '单连通的条件 2 与基点选取无关',
+      regions: ['topology'],
+      tags: ['命题', '代数拓扑', '单连通', '基点'],
+      statement: [
+        '设 $X$ 道路连通。则以下两条等价：',
+        '',
+        ['(i) 存在 $x_{0} \\in X$ 使 $\\pi_{1}(X, x_{0}) = 1$；',
+         '(ii) 对每个 $x \\in X$ 都有 $\\pi_{1}(X, x) = 1$。'].join('\n'),
+        '',
+        '因此 `def.simply-connected` 的条件 2 里「对某个（等价地：对每个）基点」中的「等价地」是一条**需要证明**的命题，不是定义的直接结果。'
+      ].join('\n'),
+      notes: [
+        '**证明**：(ii) $\\implies$ (i) 取任一点即可。(i) $\\implies$ (ii)：道路连通给出从 $x_{0}$ 到 $x$ 的道路 $\\lambda$，`prop.pi1-basepoint` 给出同构 $\\pi_{1}(X, x_{0}) \\to \\pi_{1}(X, x)$，$[\\alpha] \\mapsto [\\overline{\\lambda} \\ast \\alpha \\ast \\lambda]$；同构把平凡群送到平凡群，故 $\\pi_{1}(X, x) = 1$。∎',
+        '',
+        '**道路连通不能省**：$X = \\{0, 1\\}$（两点离散）里两个基点的 $\\pi_{1}$ 都平凡，但 $X$ 不道路连通 —— 「某个基点平凡」推不到别的分支，因为压根没有道路可换基点。不道路连通的空间上，「单连通」这个词本身也只能按分支分别讲。',
+        '',
+        '**为什么写成命题而不是注**：定义里写「等价地」等于把一条定理塞进定义，读者无从判断它依赖什么。拆开后依赖是清楚的：`prop.pi1-basepoint`（换基点同构）加上「群同构保平凡性」。'
+      ].join('\n'),
+      refs: [
+        'Hatcher, Algebraic Topology, Ch. 1 §1.1 · simply connected spaces',
+        'Munkres, Topology (2nd ed.), Ch. 9 · basepoints and change of basepoint'
+      ]
+    }
   ],
   edges: [
     /* ---------------------------------------------------- §A 同伦 → 基本群 */
@@ -816,5 +878,34 @@
 
     { id: 'def-link.lebnum-vankampen', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'thm.van-kampen',
       note: '证明第一步对开覆盖 $\\{U, V\\}$ 取勒贝格数，用它把道路细分到每段整块落在一个开集里。' },
+
+    { kind: 'definition', definition: 'def.fundamental-group', usedBy: 'prop.pi1-group',
+      note: '命题研究的就是这个定义给出的商集，以及它上面的乘法与逆。' },
+
+    { id: 'imp.pi1-group', kind: 'implication', sources: ['lem.path-product', 'def.group'], target: 'prop.pi1-group',
+      title: '道路拼接的四条算律 $\\implies$ $\\pi_{1}$ 是群',
+      proof: [
+        '把 `lem.path-product` 的四条 (1)–(4) 逐条对上 `def.group` 的公理：',
+        '',
+        ['**良定义**：第 (1) 条说 $\\alpha \\simeq_{p} \\alpha^{\\prime}$、$\\beta \\simeq_{p} \\beta^{\\prime}$ $\\implies$ $\\alpha \\ast \\beta \\simeq_{p} \\alpha^{\\prime} \\ast \\beta^{\\prime}$，故 $[\\alpha]\\cdot[\\beta]$ 不依赖代表元；',
+         '**结合律**：第 (2) 条 $(\\alpha \\ast \\beta) \\ast \\gamma \\simeq_{p} \\alpha \\ast (\\beta \\ast \\gamma)$，取类即得；',
+         '**单位元**：第 (3) 条 $e_{x_{0}} \\ast \\alpha \\simeq_{p} \\alpha \\simeq_{p} \\alpha \\ast e_{x_{0}}$，故 $[e_{x_{0}}]$ 是双边单位；',
+         '**逆元**：第 (4) 条 $\\alpha \\ast \\overline{\\alpha} \\simeq_{p} e_{x_{0}} \\simeq_{p} \\overline{\\alpha} \\ast \\alpha$，故 $[\\overline{\\alpha}]$ 是双边逆。'].join('\n'),
+        '',
+        '四条合起来正是 `def.group` 要求的「集合 + 满足公理的运算」。∎'
+      ].join('\n'),
+      note: '这条边只做「对表」：不重证道路拼接的四条（在 `lem.path-product`），也不重述群公理（在 `def.group`）。它存在的意义是让「$\\pi_{1}$ 是群」在图上有承重墙，而不是靠定义里一句话带过。' },
+
+    { kind: 'definition', definition: 'def.simply-connected', usedBy: 'prop.simply-connected-basepoint',
+      note: '命题讨论的就是这个定义条件 2 里的「等价地」。' },
+
+    { id: 'imp.simply-connected-basepoint', kind: 'implication', sources: ['prop.pi1-basepoint', 'def.group'], target: 'prop.simply-connected-basepoint',
+      title: '换基点的同构 $\\implies$ 单连通与基点选取无关',
+      proof: [
+        '设 $X$ 道路连通。(ii) $\\implies$ (i)：取任一点即可。',
+        '',
+        '(i) $\\implies$ (ii)：给定 $x_{0}$ 与任意 $x$，道路连通给出从 $x_{0}$ 到 $x$ 的道路 $\\lambda$。由 `prop.pi1-basepoint`，$[\\alpha] \\mapsto [\\overline{\\lambda} \\ast \\alpha \\ast \\lambda]$ 给出同构 $\\pi_{1}(X, x_{0}) \\to \\pi_{1}(X, x)$。同构是双射且保单位元，把 $1$ 送到 $1$，故 $\\pi_{1}(X, x) = 1$。∎'
+      ].join('\n'),
+      note: '这里用了两次「平凡性在同构下不变」：同构是双射，平凡群只有一个元素，像也只能有一个。没有道路连通就没有 $\\lambda$，同构无从谈起 —— 这就是条件里「道路连通」不可省的确切原因。' },
   ],
 });

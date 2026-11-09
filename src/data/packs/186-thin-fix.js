@@ -5,7 +5,7 @@
    例子应该至少两条：一条指向它印证的概念，再有一条横向的（它用到的别的概念）。
    这里补三条，都在它的正文里真的有内容支撑：
 
-     `def.locally-compact`   例 1 的假设就是「局部紧 Hausdorff」
+     `def.locally-compact-space`   例 1 的假设是「局部紧 Hausdorff」（局部紧与 Hausdorff 各一条边）
      `def.k-topology`        例 3 的补救：$k$-化把 $\mathbb{R}^{I}$ 换成 $k(\mathbb{R}^{I})$
      `def.weak-hausdorff`    这一团（紧生成 + 弱 Hausdorff）的成对定义
 
@@ -19,8 +19,10 @@ window.MG.packs.push({
   nodes: [],
 
   edges: [
-    { id: 'dep.cgex-lc', kind: 'definition', definition: 'def.locally-compact', usedBy: 'ex.cg-examples',
-      note: '例 1 的假设就是「**局部紧 Hausdorff** 空间是紧生成的」—— 用到局部紧的定义（每点有紧邻域）。' },
+    { id: 'dep.cgex-lc', kind: 'definition', definition: 'def.locally-compact-space', usedBy: 'ex.cg-examples',
+      note: '例 1 的假设是「**局部紧 Hausdorff** 空间是紧生成的」—— 用到局部紧的定义（每点有紧邻域）。' },
+    { id: 'dep.cgex-hausdorff', kind: 'definition', definition: 'def.hausdorff', usedBy: 'ex.cg-examples',
+      note: '例 1 同时要求 **Hausdorff**：局部紧本身不足以让一点紧化 Hausdorff。' },
     { id: 'dep.cgex-ktx', kind: 'definition', definition: 'def.k-topology', usedBy: 'ex.cg-examples',
       note: '例 3 的补救办法是 $k$-化：$\\mathbb{R}^{I}$ 不紧生成，但 $k(\\mathbb{R}^{I})$ 是 —— 用到 $k$-拓扑的定义。' },
     { id: 'dep.cgex-wh', kind: 'definition', definition: 'def.weak-hausdorff', usedBy: 'ex.cg-examples',

@@ -308,7 +308,7 @@ window.MG = window.MG || {};
         '',
         '**与左不变向量场互为对偶**：`prop.left-invariant-fields` 说左不变向量场与 $\\mathfrak{g}$ 同构；这里说左不变 $k$-形式与 $\\bigwedge^{k}\\mathfrak{g}^{\\ast}$ 同构。\n\n$k = 1$ 时两组互为对偶基 —— 这正是活动标架法（`def.moving-frame`）在群上的版本：标架自身不动，动的只是点。',
         '',
-        '**可定向性**：$k = n$ 时 $\\bigwedge^{n}\\mathfrak{g}^{\\ast}$ 一维，取非零元左平移出去得到一个处处非零的 $n$-形式，由 `prop.volume-form-orientation` 得**每个 Lie 群都可定向**（$S^{1}$、$\\operatorname{SO}(3)$、$\\operatorname{GL}(n,\\mathbb{R})$ 都如此，而一般流形未必）。',
+        '**可定向性**：$k = n$ 时 $\\bigwedge^{n}\\mathfrak{g}^{\\ast}$ 一维，取非零元左平移出去得到一个处处非零的 $n$-形式，由 `prop.lie-group-orientable`（左不变顶次形式处处非零）得**每个 Lie 群都可定向**（$S^{1}$、$\\operatorname{SO}(3)$、$\\operatorname{GL}(n,\\mathbb{R})$ 都如此，而一般流形未必）。',
         '',
         '**Haar 测度的那一半**：$\\omega^{1}\\wedge\\cdots\\wedge\\omega^{n}$ 是左不变的体积形式，它的绝对值给出左不变测度（Haar 测度）。紧群上左不变与右不变只差一个常数（模函数），非紧时未必 —— 本图只用形式这一面。',
         '',
@@ -851,6 +851,34 @@ window.MG = window.MG || {};
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 子流形上的诱导度量与体积',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架'
+      ]
+    },
+
+    {
+      id: 'prop.lie-group-orientable',
+      cluster: 'diffgeom.lieg',
+      type: 'proposition',
+      label: 'Lie 群可定向',
+      title: '每个 Lie 群都可定向',
+      regions: ['diffgeom'],
+      tags: ['命题', '微分流形', 'Lie 群', '可定向', '左不变形式'],
+      statement: [
+        '设 $G$ 是 $n$ 维 Lie 群（$n \\ge 1$）。则 $G$ **可定向**，而且定向可选成左不变的：取 $\\mathfrak{g}^{\\ast}$ 中任一非零的 $n$-形式 $\\alpha$，左平移到 $G$ 上得 $\\omega$（`def.left-invariant-form`），则 $\\omega$ 处处非零，故给出一个定向。',
+        '',
+        '也就是说，在 Lie 群上「可定向」是**免费**的：不管它紧不紧、单不单连通，都自带一个定向。'
+      ].join('\n'),
+      notes: [
+        '**为什么处处非零**：$n$-形式空间在每点是 $1$ 维的，而左平移 $L_{g}$ 是微分同胚，$L_{g}^{\\ast}$ 在顶次形式上就是乘一个非零标量。起点 $\\alpha \\ne 0$ $\\implies$ $\\omega_{g} = L_{g^{-1}}^{\\ast}\\alpha \\ne 0$。再走 `prop.volume-form-orientation`（处处非零顶次形式 $\\iff$ 可定向）即得结论。\n\n这里用的是**左**不变形式；换成右不变形式给出另一个定向，两者相差模函数的符号。',
+        '',
+        '**定向与 Haar 测度是两件事**：$|\\omega|$ 给出左不变密度（Haar 测度），它不依赖定向；定向只决定「积分带不带符号」。紧群上模函数 $\\Delta \\equiv 1$（左右 Haar 测度差常数），非紧时可以差一个正函数。',
+        '',
+        '**反过来不成立**：可定向推不出有 Lie 群结构。$\\mathbb{RP}^{2}$ 是不可定向的齐性空间（$\\operatorname{SO}(3)$ 的商），说明「群作用的商」既不必可定向、也未必有群结构；可定向的 $S^{2}$ 也不是 Lie 群（球面里只有 $S^{1}, S^{3}$ 能承载 Lie 群结构）。',
+        '',
+        '⚠️ 本图不展开模函数、左右不变测度的细节，也不证「哪些球面是 Lie 群」。'
+      ].join('\n'),
+      refs: [
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups」· 左不变形式与体积形式',
+        'Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 15 · orientations and volume forms'
       ]
     }
 
@@ -1443,7 +1471,21 @@ window.MG = window.MG || {};
         '',
         '⭐ 这条定理的形状值得记住：**两个「同类型的算子」在生成元上一致就整体一致**。第 (2)(3) 步是「同类型」的验证，第 (4) 步是「生成元上一致」。$\\Omega^{\\bullet}(M)$ 由函数与它们的外微分生成，是整个证明唯一的「几何输入」。'
       ].join('\n')
-    }
+    },
+
+    { kind: 'definition', definition: 'def.orientable-manifold', usedBy: 'prop.lie-group-orientable',
+      note: '结论用的就是「可定向流形」这个概念：处处非零的顶次形式给出定向，判据见 `prop.volume-form-orientation`。' },
+
+    { id: 'imp.lieg-orientable', kind: 'implication', sources: ['def.lie-group', 'def.left-invariant-form', 'prop.volume-form-orientation'], target: 'prop.lie-group-orientable',
+      title: '左不变顶次形式处处非零 $\\implies$ Lie 群可定向',
+      proof: [
+        '设 $\\dim G = n$，取 $\\mathfrak{g}^{\\ast} = T_{e}^{\\ast}G$ 中任一非零元素 $\\alpha$，并令 $\\omega$ 为它的左平移：$\\omega_{g} := L_{g^{-1}}^{\\ast}\\alpha$（`def.left-invariant-form` 的构造；左不变性即 $L_{h}^{\\ast}\\omega = \\omega$）。',
+        '',
+        '**处处非零**：$L_{g^{-1}}$ 是微分同胚，$L_{g^{-1}}^{\\ast}$ 是 $n$ 维空间 $\\Lambda^{n}T_{g}^{\\ast}G$ 上的线性同构，故把非零元送到非零元：$\\omega_{g} \\ne 0$ 对一切 $g \\in G$。',
+        '',
+        '**给出定向**：处处非零的 $n$-形式正是一个定向（`prop.volume-form-orientation`）。于是 $G$ 可定向，且该定向在左平移下不变。∎'
+      ].join('\n'),
+      note: '三段分别是「取非零顶次形式 $\\to$ 证处处非零 $\\to$ 用可定向判据」，全程不用紧性、连通性或任何度量结构 —— 这就是「Lie 群可定向是免费的」的确切含义。131 的 `def.volume-form` 是黎曼体积（要度量），与这里的左不变形式是两条不同的路子。' },
 
   ]
 });

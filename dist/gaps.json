@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T08:44:47.397Z",
+ "generated": "2026-11-09T12:17:46.684Z",
  "terms": 76,
  "missing": [
   {
@@ -357,13 +357,49 @@
  ],
  "noEdge": [
   {
-   "node": "def.radon-measure",
-   "nodeLabel": "Radon 测度",
+   "node": "def.weak-hausdorff",
+   "nodeLabel": "弱 Hausdorff 空间",
+   "nodeLayer": 6,
+   "def": "def.continuous-map",
+   "defLabel": "连续映射",
+   "defLayer": 16,
+   "gap": 10
+  },
+  {
+   "node": "prop.connected-image-closure",
+   "nodeLabel": "连通的像与闭包",
+   "nodeLayer": 6,
+   "def": "def.continuous-map",
+   "defLabel": "连续映射",
+   "defLayer": 16,
+   "gap": 10
+  },
+  {
+   "node": "def.orientable-manifold",
+   "nodeLabel": "可定向流形",
    "nodeLayer": 16,
-   "def": "def.locally-compact",
-   "defLabel": "局部紧 Hausdorff 空间",
+   "def": "def.smooth-manifold",
+   "defLabel": "光滑流形",
+   "defLayer": 19,
+   "gap": 3
+  },
+  {
+   "node": "thm.riesz-perfect-pairing",
+   "nodeLabel": "Riesz 表示的配对版",
+   "nodeLayer": 15,
+   "def": "def.hilbert-space",
+   "defLabel": "Hilbert 空间",
    "defLayer": 18,
-   "gap": 2
+   "gap": 3
+  },
+  {
+   "node": "prop.cgwh-fiber-product",
+   "nodeLabel": "紧块的纤维积还是紧的",
+   "nodeLayer": 13,
+   "def": "def.continuous-map",
+   "defLabel": "连续映射",
+   "defLayer": 16,
+   "gap": 3
   },
   {
    "node": "def.module-category",
@@ -373,6 +409,42 @@
    "defLabel": "线性映射",
    "defLayer": 12,
    "gap": 2
+  },
+  {
+   "node": "prop.pullback-forms",
+   "nodeLabel": "拉回（开集间）",
+   "nodeLayer": 19,
+   "def": "def.smooth-map",
+   "defLabel": "光滑映射",
+   "defLayer": 20,
+   "gap": 1
+  },
+  {
+   "node": "prop.volume-form-orientation",
+   "nodeLabel": "定向与体积形式",
+   "nodeLayer": 18,
+   "def": "def.smooth-manifold",
+   "defLabel": "光滑流形",
+   "defLayer": 19,
+   "gap": 1
+  },
+  {
+   "node": "def.cotangent-bundle",
+   "nodeLabel": "余切丛",
+   "nodeLayer": 22,
+   "def": "def.bundle-section",
+   "defLabel": "丛的截面",
+   "defLayer": 22,
+   "gap": 0
+  },
+  {
+   "node": "def.real-metric-space",
+   "nodeLabel": "实数的度量",
+   "nodeLayer": 15,
+   "def": "def.canonical-topology",
+   "defLabel": "标准拓扑",
+   "defLayer": 15,
+   "gap": 0
   },
   {
    "node": "def.category-of-groups",
@@ -393,10 +465,14 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 41,
+ "noEdgeAll": 45,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
+  "def.bundle-section>def.form-on-manifold",
   "def.bundle-section>def.differential-form",
+  "def.t35-space>def.regular-space",
+  "def.smooth-manifold>def.partial-derivative",
+  "def.manifold-chart>def.partial-derivative",
   "def.injective-dimension>def.projective-dimension"
  ],
  "never": [

@@ -74,8 +74,8 @@ const CASES = [
   /* ---------- 复合专名：整段优先 ---------- */
   { text: 'compactly generated spaces', want: ['def.compactly-generated'],
     why: '多词专名整段命中（表里就是这么写的）' },
-  { text: 'locally compact', want: ['def.locally-compact'],
-    why: '同上；⛔ 别被拆成 `compact`' },
+  { text: 'locally compact', want: ['def.locally-compact-space'],
+    why: '同上；⛔ 别被拆成 `compact`（原期望 `def.locally-compact` 是拆分前的旧 id）' },
 
   /* ---------- 同名不同物：优先链到相邻的那一个 ----------
      ⭐ 2026-11-01 用户报：`thm.inverse-function` 的注里说「Banach 空间里要靠开映射定理

@@ -260,7 +260,7 @@ window.MG = window.MG || {};
       id: 'thm.michael-paracompact',
       cluster: 'topology.paracompact',
       type: 'theorem',
-      label: '迈克尔仿紧判别法',
+      label: 'Michael 仿紧判别法',
       title: '正则空间仿紧当且仅当每个开覆盖有局部有限加细',
       regions: ['topology'],
       tags: ['定理', '拓扑', '仿紧', '加细', '判别法'],

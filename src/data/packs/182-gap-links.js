@@ -582,9 +582,16 @@ window.MG.packs.push({
     {
       id: 'dep.gap-baire-locally-compact',
       kind: 'definition',
-      definition: 'def.locally-compact',
+      definition: 'def.locally-compact-space',
       usedBy: 'thm.baire',
-      note: '陈述里提到「局部紧 Hausdorff 空间」：「设 $X$ 是完备度量空间（或局部紧 Hausdorff 空间）」 —— 读者顺着这个词要落到它的定义上，所以接上。',
+      note: '陈述里提到「局部紧 Hausdorff 空间」：「设 $X$ 是完备度量空间（或局部紧 Hausdorff 空间）」 —— 读者顺着这个词要落到局部紧的定义上，所以接上。',
+    },
+    {
+      id: 'dep.gap-baire-hausdorff',
+      kind: 'definition',
+      definition: 'def.hausdorff',
+      usedBy: 'thm.baire',
+      note: '同一句话里的「Hausdorff」也要求读者能落到定义上。',
     },
     {
       id: 'dep.gap-galois-group-splitting-field',

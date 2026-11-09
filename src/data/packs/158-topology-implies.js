@@ -1,7 +1,7 @@
 /* ============================================================================
    内容包 · 接线：拓扑侧漏掉的蕴含（只加边，不改节点正文）
 
-   为什么要有这一包：用户 2026-11-02 说「真的有蕴含的要画上线，然后比如说度量空间
+   为什么要有这一包：「真的有蕴含的要画上线，然后比如说度量空间
    一定 T6 这种推出也要画，你检查有没有漏的」。查完之后，下列三条**既不平凡、也不
    可传递得到**，却一直没画：
 
@@ -30,20 +30,20 @@ window.MG = window.MG || {};
       proof: [
         '设 $X$ 紧。\n\n对任意 $x \\in X$：$X$ 自己是紧集（假设），而 $X$ 又是 $x$ 的邻域（$X$ 开于自身）。\n\n于是 $x \\in \\mathring{X} = X \\subseteq X$ —— 这正是「每个点都有紧邻域」的要求（`def.locally-compact-space` 的判据 $x \\in \\mathring{K}$，取 $K = X$）✓。\n\n∎',
         '',
-        '⭐ 这条几乎是定义级别的，但它**不是**废话：局部紧的定义允许「每个点有个小的紧邻域」，紧性给的是「整体紧」，而整体紧在**子空间**上不遗传给邻域 —— 所以「紧 $\\implies$ 局部紧」要用 $K = X$ 这一招，而「局部紧」的逆不成立（$\\mathbb{R}$ 局部紧但不紧）。这条证明的是**裸局部紧**；要得到 `def.locally-compact`（局部紧 Hausdorff），还需把 Hausdorff 作为额外假设（见下一条）。'
+        '⭐ 这条几乎是定义级别的，但它**不是**废话：局部紧的定义允许「每个点有个小的紧邻域」，紧性给的是「整体紧」，而整体紧在**子空间**上不遗传给邻域 —— 所以「紧 $\\implies$ 局部紧」要用 $K = X$ 这一招，而「局部紧」的逆不成立（$\\mathbb{R}$ 局部紧但不紧）。这条证明的是**局部紧**；要得到「局部紧 Hausdorff」，还需把 Hausdorff 作为额外假设（见下一条）。'
       ].join('\n')
     },
     {
       id: 'imp.compact-hausdorff-locallycompact',
       kind: 'implication',
       sources: ['def.compact', 'def.hausdorff'],
-      target: 'def.locally-compact',
+      target: 'def.locally-compact-space',
       proof: [
         '设 $X$ 紧且 Hausdorff。紧性给：对任意 $x \\in X$，取 $K = X$ 就是 $x$ 的紧邻域（$X$ 开于自身，故 $x \\in \\mathring{X}$）。Hausdorff 是额外假设。',
         '',
-        '两条合起来正是 `def.locally-compact` 的要求：**裸局部紧 + Hausdorff**。∎',
+        '结论：$X$ **局部紧**（上一条）且 **Hausdorff**（本条假设）。∎',
         '',
-        '⭐ 与上一条的分工：上一条只给裸局部紧（不需要 Hausdorff）；本条的额外输入只有 Hausdorff 这一条假设。'
+        '⭐ 与上一条的分工：上一条只给局部紧（不需要 Hausdorff）；本条的额外输入只有 Hausdorff 这一条假设。'
       ].join('\n')
     },
     {

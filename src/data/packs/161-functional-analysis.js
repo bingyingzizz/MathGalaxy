@@ -448,7 +448,7 @@ window.MG = window.MG || {};
       regions: ['functional-analysis'],
       tags: ['泛函分析', 'Hilbert 空间', '内积'],
       statement: [
-        '设 $(H, \\langle\\cdot, \\cdot\\rangle)$ 是 $\\mathbb{K}$ 上的内积空间（本图约定：**对第一变元线性，对第二变元共轭线性**），配范数 $\\|x\\| := \\sqrt{\\langle x, x\\rangle}$。\n\n若 $(H, \\|\\cdot\\|)$ 完备，则叫 **Hilbert 空间**。'
+        '设 $(H, \\langle\\cdot, \\cdot\\rangle)$ 是 $\\mathbb{K}$ 上的内积空间（**对第一变元线性，对第二变元共轭线性**），配范数 $\\|x\\| := \\sqrt{\\langle x, x\\rangle}$。\n\n若 $(H, \\|\\cdot\\|)$ 完备，则叫 **Hilbert 空间**。'
       ].join('\n'),
       notes: [
         '原型：$L^2(\\Omega, \\mu)$（完备性来自 Riesz–Fischer），以及 $\\ell^2(I)$。有限维内积空间自动完备，所以它们是退化的 Hilbert 空间。',
@@ -728,7 +728,7 @@ window.MG = window.MG || {};
       cluster: 'fa.hilbert',
       type: 'definition',
       label: '酉算子',
-      title: '酉算子与部分等距',
+      title: '酉算子',
       regions: ['functional-analysis'],
       tags: ['泛函分析', 'Hilbert 空间', '算子'],
       statement: [
@@ -736,14 +736,14 @@ window.MG = window.MG || {};
         '',
         '$$u\\,u^* = u^*\\,u = I .$$',
         '',
-        '称 $u$ 是**部分等距**（partial isometry），若 $u\\,u^*$ 与 $u^*u$ 都是正交投影。'
+        '等价地：$u$ 是保内积的满射，或 $u^* = u^{-1}$。'
       ].join('\n'),
       notes: [
-        '酉 $\\iff$ 保内积的可逆算子（$\\langle ux, uy\\rangle = \\langle x, y\\rangle$ 且满射）。',
-        '⚠️ **无穷维里「等距」$\\ne$「酉」**：单侧移位 $S(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ 满足 $\\|Sx\\| = \\|x\\|$（等距），但不满；\n\n$S^*S = I$ 而 $S\\,S^* = I - P_{\\ker S^*}$ 是投影。\n\n这就是「部分等距」这个概念的用处：它把「在某个闭子空间上是等距」包起来。',
+        '酉算子就是「可逆的等距」：$\\langle ux, uy\\rangle = \\langle x, y\\rangle$ 且 $u$ 满射。',
+        '⚠️ **无穷维里「等距」$\\ne$「酉」**：单侧移位 $S(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ 满足 $\\|Sx\\| = \\|x\\|$（等距），但不满；$S$ 是部分等距而不是酉算子。部分等距的完整定义与等价条件见 `def.partial-isometry`。',
         '⭐ 极分解 $u = V|u|$（$V$ 部分等距，$|u| = \\sqrt{u^*u}$）就是部分等距的标准出场方式。有限维版本见 `def.unitary-matrix`。'
       ].join('\n\n'),
-      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Rudin, Functional Analysis, Ch. 12'],
     },
 
     /* ------------------------------------------------------ 正交集与正交基 */
@@ -979,10 +979,282 @@ window.MG = window.MG || {};
         '📌 **两个例子。** Hilbert 空间闭子空间总可补（正交投影）；$c_0(\\mathbb{N})$ 在 $\\ell^{\\infty}(\\mathbb{N})$ 中闭但不可补（Phillips 1940，外部定理）。'
       ].join('\n\n'),
       refs: ['泛函分析讲义（用户手写笔记，2026-11-09）', 'Rudin, Functional Analysis · 开映射定理与补子空间'],
+    },
+    {
+      id: 'def.partial-isometry',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '部分等距',
+      title: '部分等距与等价刻画',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', 'Hilbert 空间', '算子', '等距'],
+      statement: [
+        '设 $u \\in B(H)$。称 $u$ 是**部分等距**（partial isometry），若 $u^*u$ 是正交投影（记 $P = u^*u$）。',
+        '',
+        '此时 $u$ 在 $(\\ker u)^\\perp$ 上是等距，且 $u\\,u^*$ 也是正交投影。'
+      ].join('\n'),
+      notes: [
+        '**四个等价条件**（定义取 (3)）：',
+        '',
+        '(1) $u$ 在 $(\\ker u)^\\perp$ 上是等距：对 $x \\in (\\ker u)^\\perp$ 有 $\\|u x\\| = \\|x\\|$；',
+        '',
+        '(2) $u = u\\,u^*u$；',
+        '',
+        '(3) $u^*u$ 是正交投影；',
+        '',
+        '(4) $u\\,u^*$ 是正交投影。',
+        '',
+        '证明的骨架：若 (3) 成立，令 $P = u^*u$。则 $\\|u x\\|^2 = \\langle u^*u x, x\\rangle = \\|P x\\|^2$。正交投影 $P$ 的像是 $(\\ker P)^\\perp$，而 $\\ker P = \\ker u$，故在 $(\\ker u)^\\perp$ 上 $Px = x$，得 (1)。由 (1)，$u$ 与 $uP$ 在 $\\ker u$ 上同为 $0$、在 $(\\ker u)^\\perp$ 上同为 $u$，得 (2)。(2) 两边取伴随得 $u\\,u^* = (u\\,u^*)^2$，且 $u\\,u^*$ 自伴，故 (4)。对 $u^*$ 重复 (3)$\\implies$(4) 得 (4)$\\implies$(3)，四者等价。',
+        '',
+        '**初始与最终投影**：$P = u^*u$ 的像是 $(\\ker u)^\\perp$（初始空间），$Q = u\\,u^*$ 的像是 $\\operatorname{im} u$（最终空间），且 $u$ 把 $P H$ 等距同构到 $Q H$。',
+        '',
+        '⚠️ 单侧移位 $S(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ 是部分等距但不是酉算子：$S^*S = I$，而 $S\\,S^* = I - \\operatorname{proj}_{\\ker(S^*)}$ 是投影（不是 $I$）。',
+        '',
+        '⭐ 极分解与极坐标分解里出现的都是部分等距；酉算子正是初始投影与最终投影都为 $I$ 的特殊情形。'
+      ].join('\n\n'),
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Rudin, Functional Analysis, Ch. 12'],
+    },
+    {
+      id: 'def.perfect-pairing',
+      cluster: 'fa.norm',
+      type: 'definition',
+      label: '完美配对',
+      title: '完美配对（perfect pairing）',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '对偶', '配对'],
+      statement: [
+        '设 $X, Y$ 是 $\\mathbb{K}$ 上的赋范空间，$\\langle\\cdot,\\cdot\\rangle : X \\times Y \\to \\mathbb{K}$ 是双线性映射（$\\mathbb{K} = \\mathbb{C}$ 时对第二变元共轭线性）。称它是**完美配对**，若',
+        '',
+        '1. **非退化**：$\\langle x, y\\rangle = 0$ 对一切 $y$ 成立 $\\implies x = 0$；$\\langle x, y\\rangle = 0$ 对一切 $x$ 成立 $\\implies y = 0$；',
+        '2. **有界**：$|\\langle x, y\\rangle| \\le \\|x\\|\\,\\|y\\|$；',
+        '3. **两侧都定范**：$\\|x\\| = \\sup_{\\|y\\| \\le 1} |\\langle x, y\\rangle|$，$\\|y\\| = \\sup_{\\|x\\| \\le 1} |\\langle x, y\\rangle|$。'
+      ].join('\n'),
+      notes: [
+        '三条合起来等价于：$x \\mapsto \\langle x, \\cdot\\rangle$ 与 $y \\mapsto \\langle \\cdot, y\\rangle$ 都是**等距嵌入** $X \\hookrightarrow Y^*$、$Y \\hookrightarrow X^*$。',
+        '**例子**：Hilbert 空间 $H$ 与自身、配对 $\\langle x, y\\rangle$；$L^p$ 与 $L^q$（$1/p + 1/q = 1$）、配对 $\\int f g$（Hölder 给有界，定范由 $g = |f|^{p-1}\\operatorname{sgn} f$ 的共轭指数构造给出）。',
+        '⚠ **完美配对不保证满射**：$X = \\ell^1$、$Y = c_0$、$\\langle x, y\\rangle = \\sum x_n y_n$ 满足三条（$c_0^* \\cong \\ell^1$ 给 $Y \\to X^*$ 满，但 $X \\to Y^* = \\ell^\\infty$ 只是等距嵌入，不满）。所以「完美」是「无废坐标 + 范数可由配对读出」，不是「互为对偶」。',
+        '⭐ 把 Riesz 表示定理的两种版本放在同一框架下：Hilbert 版与 $L^p$ 版都在说「这对配对里映射是满的」——见 `thm.riesz-perfect-pairing`。',
+        '📌 有限维时三条自动给出 $X \\cong Y^*$（维数相同 + 单射即满射）。'
+      ].join('\n\n'),
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 对偶与自反'],
+    },
+    {
+      id: 'thm.riesz-perfect-pairing',
+      cluster: 'fa.norm',
+      type: 'theorem',
+      label: 'Riesz 表示的配对版',
+      title: 'Riesz 表示定理：完美配对框架',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '对偶', 'Riesz 表示', '自反'],
+      statement: [
+        '设 $(X, Y, \\langle\\cdot,\\cdot\\rangle)$ 是完美配对（`def.perfect-pairing`）。则',
+        '',
+        '(a) $x \\mapsto \\langle x, \\cdot\\rangle$ 是等距同构 $X \\to Y^*$ 的像，$y \\mapsto \\langle \\cdot, y\\rangle$ 是 $Y \\to X^*$ 的等距嵌入；',
+        '',
+        '(b) 若其中一个映射满射，则另一个也满射，且 $X \\cong Y^*$、$Y \\cong X^*$（等距同构）；',
+        '',
+        '(c) Hilbert 空间 $H$ 与 $L^p$（$1 < p < \\infty$，$1/p + 1/q = 1$）的配对满足满射性，因此 $H^* \\cong H$、$(L^p)^* \\cong L^q$ 都是完美配对的直接推论。'
+      ].join('\n'),
+      notes: [
+        '**证明 (a)**：由定范条件，$\\|x\\| = \\sup_{\\|y\\| \\le 1}|\\langle x, y\\rangle| = \\|T x\\|$，其中 $T x := \\langle x, \\cdot\\rangle$；由非退化 $T$ 单射，故 $T$ 是等距嵌入。对 $y$ 同理。$\\blacksquare$',
+        '',
+        '**证明 (b)**：若 $T : X \\to Y^*$ 满射，则由等距性 $X \\cong Y^*$。对偶化得 $X^* \\cong Y^{**}$；把 (a) 用于 $Y$ 一侧得 $Y \\hookrightarrow X^*$ 等距嵌入。要证满：任取 $\\varphi \\in X^*$，它在 $X \\cong Y^*$ 下对应 $y_0 \\in Y$（$\\varphi(x) = \\langle x, y_0\\rangle$），这正是 $y \\mapsto \\langle\\cdot, y\\rangle$ 的像，故满。$\\blacksquare$',
+        '',
+        '**证明 (c)**：Hilbert 情形就是 `thm.riesz-hilbert`（每个连续线性泛函由内积给出）；$L^p$ 情形就是 `thm.riesz-representation-lp`（$(L^p)^* \\cong L^q$）。两条定理的证明里，满射性分别来自投影定理与 Radon–Nikodym（或测度论版本），配对本身只提供有界与定范。',
+        '',
+        '⭐ 统一的意义：两个 Riesz 定理不再像两个孤立技巧，而是同一个「完美配对 + 该配对满射」框架的两个实例；`172-audit-c1.js` 里的类比边 `analogy` 现在有了正式的共同祖先。',
+        '⚠ 本图尚未立「Banach–Alaoglu / 弱拓扑 / Eberlein–Šmulian」节点；因此 (b) 的「谁满谁」只在具体例子里借 Riesz 定理验证，不试图从配对的三条公理推出满射（那是假的，见 `def.perfect-pairing` 的 $\\ell^1/c_0$ 反例）。'
+      ].join('\n\n'),
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 对偶与自反', 'Rudin, Real and Complex Analysis, Ch. 6'],
+    },
+    {
+      id: 'def.uniformly-convex',
+      cluster: 'fa.norm',
+      type: 'definition',
+      label: '一致凸',
+      title: '一致凸空间',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', 'Banach 空间', '凸性'],
+      statement: [
+        '称赋范空间 $(X, \\|\\cdot\\|)$ **一致凸**（uniformly convex），若对每个 $\\varepsilon \\in (0, 2]$ 存在 $\\delta > 0$，使得',
+        '',
+        '$\\|x\\| = \\|y\\| = 1,\\quad \\|x - y\\| \\ge \\varepsilon \\implies \\left\\|\\frac{x + y}{2}\\right\\| \\le 1 - \\delta .$',
+        '',
+        '即「单位球面上相距不近的两点，中点严格深入球内，且深入量只依赖距离」。'
+      ].join('\n'),
+      notes: [
+        '**例子**：Hilbert 空间（平行四边形律给 $\\|(x+y)/2\\|^2 = 1 - \\|x-y\\|^2/4$，取 $\\delta = 1 - \\sqrt{1 - \\varepsilon^2/4}$）；$L^p$（$1 < p < \\infty$，Clarkson 不等式）；$\\ell^p$（$1 < p < \\infty$）。',
+        '**反例**：$\\ell^1$、$\\ell^\\infty$、$c_0$、$C[0,1]$ 都不一致凸（$\\ell^1$ 里 $e_1, e_2$ 的中点仍范数 $1$；$\\ell^\\infty$ 里 $(1,0,\\ldots)$ 与 $(1,1,0,\\ldots)$ 之类的分段常值序列可构造）。',
+        '⭐ 一致凸 $\\implies$ 严格凸（`def.strictly-convex`）：若 $\\|x\\| = \\|y\\| = 1$、$x \\ne y$，取 $\\varepsilon = \\|x - y\\| > 0$ 即得中点范数 $< 1$。',
+        '📌 一致凸是「范数一致地弯」：它把「严格凸」逐点、逐对的结论升级成对全部单位向量一致的估计，这正是 Milman–Pettis（`thm.milman-pettis`）与 Clarkson 不等式需要的定量形式。'
+      ].join('\n\n'),
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 一致凸与自反', 'Conway, A Course in Functional Analysis · Banach 空间'],
+    },
+    {
+      id: 'def.strictly-convex',
+      cluster: 'fa.norm',
+      type: 'definition',
+      label: '严格凸',
+      title: '严格凸空间',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', 'Banach 空间', '凸性'],
+      statement: [
+        '称赋范空间 $(X, \\|\\cdot\\|)$ **严格凸**（strictly convex），若单位球面不含线段：',
+        '',
+        '$\\|x\\| = \\|y\\| = 1,\\quad x \\ne y \\implies \\left\\|\\frac{x + y}{2}\\right\\| < 1 .$',
+        '',
+        '等价地：$\\|x + y\\| = \\|x\\| + \\|y\\|$ 且 $x, y \\ne 0$ 时必有 $y = \\lambda x$（$\\lambda > 0$）。'
+      ].join('\n'),
+      notes: [
+        '**例子**：Hilbert 空间、$\\ell^p$ 与 $L^p$（$1 < p < \\infty$）。',
+        '**反例**：$\\ell^1$、$\\ell^\\infty$、$c_0$、$C[0,1]$；$\\mathbb{R}^2$ 上的 $\\|(x,y)\\| = \\max(|x|, |y|)$。',
+        '⭐ 严格凸 $\\iff$ 单位球面上每点的「面」是单点 $\\iff$ 每个范数可达的泛函在单位球上有唯一最大值点。',
+        '⚠ 严格凸 $\\not\\implies$ 一致凸（`def.uniformly-convex`）：存在严格凸但不一致凸的 Banach 空间（如某些加权序列空间）；一致凸是更强的定量条件。'
+      ].join('\n\n'),
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 一致凸与自反', 'Conway, A Course in Functional Analysis · Banach 空间'],
+    },
+    {
+      id: 'def.reflexive-space',
+      cluster: 'fa.norm',
+      type: 'definition',
+      label: '自反空间',
+      title: '自反 Banach 空间',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', 'Banach 空间', '对偶', '自反'],
+      statement: [
+        '设 $X$ 是 Banach 空间，$J_X : X \\to X^{**}$ 是自然嵌入 $J_X(x)(\\varphi) = \\varphi(x)$。称 $X$ **自反**（reflexive），若 $J_X$ 是满射（从而是等距同构）。'
+      ].join('\n'),
+      notes: [
+        '自然嵌入总是等距的（Hahn–Banach）：$\\|J_X x\\| = \\sup_{\\|\\varphi\\| \\le 1}|\\varphi(x)| = \\|x\\|$。所以自反 $\\iff$ $X^{**}$ 中每个元素都来自 $X$。',
+        '**例子**：Hilbert 空间；$L^p$、$\\ell^p$（$1 < p < \\infty$，见 `cor.lp-reflexive`）；有限维空间。',
+        '**反例**：$c_0$（$c_0^{**} = \\ell^\\infty \\ne c_0$）、$\\ell^1$（$\\ell^{1**} = (\\ell^\\infty)^* \\supsetneq \\ell^1$）、$C[0,1]$。',
+        '⭐ 自反的核心用途：有界序列有弱收敛子列（Eberlein–Šmulian；本图尚未立弱拓扑节点），这是变分存在性与 Milman–Pettis 的入口。',
+        '📌 与配对语言的关系：$X$ 自反 $\\iff$ 完美配对 $(X, X^*)$ 的两个嵌入都满（`def.perfect-pairing`、`thm.riesz-perfect-pairing`）。'
+      ].join('\n\n'),
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 对偶与自反', 'Conway, A Course in Functional Analysis · Banach 空间'],
+    },
+    {
+      id: 'thm.milman-pettis',
+      cluster: 'fa.norm',
+      type: 'theorem',
+      status: 'skeleton',
+      label: 'Milman–Pettis 定理',
+      title: '一致凸 Banach 空间自反（Milman–Pettis）',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', 'Banach 空间', '自反', '一致凸'],
+      statement: [
+        '一致凸 Banach 空间（`def.uniformly-convex`）是自反的（`def.reflexive-space`）。'
+      ].join('\n'),
+      notes: [
+        '⚠ **本节点仍标 skeleton**：证明需要本图没有的弱拓扑工具，这里只钉死缺口。',
+        '',
+        '证明路线（Milman 1938 / Pettis 1939）：设 $X$ 一致凸，任取 $\\xi \\in X^{**}$、$\\|\\xi\\| = 1$。由 Goldstine 定理，$\\xi$ 是单位球的弱*-闭包点，取网 $x_\\alpha \\in B_X$ 弱*收敛到 $\\xi$。用一致凸性可证 $x_\\alpha$ 是范数 Cauchy：若 $\\|x_\\alpha - x_\\beta\\| \\ge \\varepsilon$，则中点 $\\|(x_\\alpha + x_\\beta)/2\\| \\le 1 - \\delta(\\varepsilon)$，但其弱*极限是 $\\xi$、范数 $\\ge \\|\\langle \\xi, \\varphi\\rangle\\| - o(1)$，令 $\\alpha, \\beta$ 沿网取极限得 $1 \\le 1 - \\delta$ 矛盾。故 $x_\\alpha \\to x \\in X$（范数），从而 $\\xi = J_X x$。',
+        '',
+        '缺口：Goldstine 定理（$B_X$ 在 $B_{X^{**}}$ 中弱*稠密）本图无节点；弱*拓扑与网收敛本图无节点。这两条不是本图现有节点能推出的。',
+        '📌 本图已有 `cor.lp-reflexive` 直接对 $L^p$ 验证自反；Milman–Pettis 是把「一致凸」这个几何条件转成「自反」的通用桥梁。'
+      ].join('\n\n'),
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 一致凸与自反', 'Conway, A Course in Functional Analysis · Banach 空间'],
+    },
+    {
+      id: 'thm.james',
+      cluster: 'fa.norm',
+      type: 'theorem',
+      status: 'skeleton',
+      label: 'James 定理',
+      title: 'James 定理：自反 $\\iff$ 每个泛函达到范数',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', 'Banach 空间', '自反'],
+      statement: [
+        'Banach 空间 $X$ 自反（`def.reflexive-space`）当且仅当每个 $\\varphi \\in X^*$ 都在单位球 $B_X$ 上达到其范数：存在 $x \\in B_X$ 使 $\\varphi(x) = \\|\\varphi\\|$。'
+      ].join('\n'),
+      notes: [
+        '⚠ **本节点仍标 skeleton**：证明需要弱紧性（Banach–Alaoglu）与分离定理，本图无节点。',
+        '',
+        '证明路线：($\\implies$ 方向) 自反 $\\implies$ $B_X$ 弱紧（Eberlein–Šmulian），$\\varphi$ 弱连续，故在弱紧集上达到最大值。($\\Longleftarrow$ 方向) 逆否：若 $X$ 不自反，James 构造一个 $\\varphi \\in X^*$ 在 $B_X$ 上不可达（经典 James 定理的「分离 + 对角线」论证，1951/1957）。',
+        '',
+        '缺口：Banach–Alaoglu 定理、弱拓扑的紧性、以及 James 的反向构造；本图均无节点。',
+        '📌 本图只有正向的具体例子：Hilbert 空间与 $L^p$（$1<p<\\infty$）自反，故每个泛函达到范数（由 Riesz 表示可直接看出）。'
+      ].join('\n\n'),
+      refs: ['Conway, A Course in Functional Analysis · Banach 空间', 'Diestel, Sequences and Series in Banach Spaces, Ch. 3'],
     }
   ],
 
   edges: [
+    { id: 'def-link.pp-dual', kind: 'definition', definition: 'def.dual-space',
+      usedBy: 'def.perfect-pairing',
+      note: '配对的两侧嵌入到对方对偶空间；完美配对的第三条要求这两个嵌入保范。' },
+    { id: 'def-link.pp-norm', kind: 'definition', definition: 'def.norm',
+      usedBy: 'def.perfect-pairing',
+      note: '完美配对的两侧都是赋范空间，第三条用范数写出。' },
+    { id: 'def-link.rpp-pp', kind: 'definition', definition: 'def.perfect-pairing',
+      usedBy: 'thm.riesz-perfect-pairing',
+      note: '统一 Riesz 定理的出发点：完美配对的三个公理。' },
+    { id: 'def-link.rpp-dual', kind: 'definition', definition: 'def.dual-space',
+      usedBy: 'thm.riesz-perfect-pairing',
+      note: '结论是 $X \\cong Y^*$、$Y \\cong X^*$，所以两边都是对偶空间。' },
+    {
+      id: 'imp.fa-perfectpairing-riesz',
+      kind: 'implication',
+      sources: ['def.perfect-pairing'],
+      target: 'thm.riesz-perfect-pairing',
+      title: '完美配对 $\\implies$ 两个 Riesz 嵌入与互满准则',
+      proof: [
+        '设 $(X, Y, \\langle\\cdot,\\cdot\\rangle)$ 是完美配对。',
+        '',
+        '**(a)** 令 $T x = \\langle x, \\cdot\\rangle \\in Y^*$。由定义第三条，$\\|x\\| = \\sup_{\\|y\\| \\le 1}|\\langle x, y\\rangle| = \\|T x\\|$；由第一条，$T x = 0 \\implies x = 0$。故 $T$ 是等距嵌入。对 $S y = \\langle\\cdot, y\\rangle \\in X^*$ 同理。',
+        '',
+        '**(b)** 若 $T$ 满，则 $T$ 是等距同构 $X \\to Y^*$。对偶化得 $T^* : Y^{**} \\to X^*$ 等距同构；而 $S : Y \\to X^*$ 是等距嵌入，且 $T^*$ 把 $J_Y(Y)$ 送到 $S(Y)$（验证：$T^* J_Y y (x) = J_Y y(T x) = \\langle x, y\\rangle = S y(x)$）。$J_Y$ 总是等距，故 $S(Y) = T^* J_Y(Y)$ 在 $T^*$ 下同构于 $Y$，而 $T^*$ 满（同构），所以 $S$ 也满。$\\blacksquare$',
+        '',
+        '于是 (b) 成立；把 (c) 的两个具体配对代入即得 $H^* \\cong H$ 与 $(L^p)^* \\cong L^q$。'
+      ].join('\n'),
+      note: '注意 (b) 只用「一个满」推出「另一个满」，不声称三条公理本身蕴含满射——反例见 `def.perfect-pairing` 的 $\\ell^1/c_0$。'
+    },
+    { id: 'def-link.uc-norm', kind: 'definition', definition: 'def.norm',
+      usedBy: 'def.uniformly-convex',
+      note: '一致凸的定义全用范数写出。' },
+    { id: 'def-link.uc-banach', kind: 'definition', definition: 'def.banach-space',
+      usedBy: 'def.uniformly-convex',
+      note: '一致凸通常对 Banach 空间讨论；定义本身对任意赋范空间有意义。' },
+    { id: 'def-link.sc-norm', kind: 'definition', definition: 'def.norm',
+      usedBy: 'def.strictly-convex',
+      note: '严格凸用单位球面不含线段来定义。' },
+    {
+      id: 'imp.fa-uniformconvex-strict',
+      kind: 'implication',
+      sources: ['def.uniformly-convex'],
+      target: 'def.strictly-convex',
+      title: '一致凸 $\\implies$ 严格凸',
+      proof: [
+        '设 $X$ 一致凸，取 $\\|x\\| = \\|y\\| = 1$、$x \\ne y$，令 $\\varepsilon = \\|x - y\\| > 0$。',
+        '由一致凸，存在 $\\delta = \\delta(\\varepsilon) > 0$ 使 $\\|(x + y)/2\\| \\le 1 - \\delta < 1$。',
+        '按 `def.strictly-convex` 的定义，这正是严格凸。$\\blacksquare$'
+      ].join('\n'),
+      note: '反向不成立：存在严格凸但不一致凸的 Banach 空间。'
+    },
+    { id: 'def-link.ref-dual', kind: 'definition', definition: 'def.dual-space',
+      usedBy: 'def.reflexive-space',
+      note: '自反性用二次对偶 $X^{**}$ 与自然嵌入 $J_X$ 定义。' },
+    { id: 'def-link.ref-banach', kind: 'definition', definition: 'def.banach-space',
+      usedBy: 'def.reflexive-space',
+      note: '自反性是对 Banach 空间说的（完备性用于 $X^{**}$ 的范数结构）。' },
+    { id: 'def-link.lpref-ref', kind: 'definition', definition: 'def.reflexive-space',
+      usedBy: 'cor.lp-reflexive',
+      note: '$L^p$（$1 < p < \\infty$）自反正是这个一般定义的具体实例。' },
+    { id: 'def-link.mp-uc', kind: 'definition', definition: 'def.uniformly-convex',
+      usedBy: 'thm.milman-pettis',
+      note: 'Milman–Pettis 的假设：一致凸。' },
+    { id: 'def-link.mp-ref', kind: 'definition', definition: 'def.reflexive-space',
+      usedBy: 'thm.milman-pettis',
+      note: 'Milman–Pettis 的结论：自反。' },
+    { id: 'def-link.james-ref', kind: 'definition', definition: 'def.reflexive-space',
+      usedBy: 'thm.james',
+      note: 'James 定理用自反性刻画「每个泛函达到范数」。' },
+    { id: 'def-link.rieszhil-pp', kind: 'definition', definition: 'def.perfect-pairing',
+      usedBy: 'thm.riesz-hilbert',
+      note: 'Hilbert 的 Riesz 表示所用的内积配对 $(H, H)$ 是完美配对，且映射满。' },
+    { id: 'def-link.rieszlp-pp', kind: 'definition', definition: 'def.perfect-pairing',
+      usedBy: 'thm.riesz-representation-lp',
+      note: '$L^p$ 的 Riesz 表示所用的配对 $(L^p, L^q)$ 是完美配对，且映射满。' },
     { kind: 'definition', definition: 'def.vector-space', usedBy: 'def.convex-set',
       note: '凸集是向量空间的子集；凸性只用仿射结构，不用范数。' },
     { kind: 'definition', definition: 'def.convex-set', usedBy: 'thm.projection-convex',
@@ -1054,6 +1326,24 @@ window.MG = window.MG || {};
         '于是 $P_X = \\pi_X \\circ \\Phi^{-1}$ 有界（$\\pi_X$ 是乘积到第一因子的投影，范数 $\\le 1$），即 $X, Y$ 拓扑互补。$\\blacksquare$'
       ].join('\n'),
       note: '这条正是「闭子空间 + 代数互补 $\\implies$ 有界投影」的全部内容；$E$ 的完备性只在这里用到。'
+    },
+    { id: 'def-link.fa-partial-bounded', kind: 'definition', definition: 'def.bounded-operator',
+      usedBy: 'def.partial-isometry',
+      note: '部分等距首先是有界算子。' },
+    { id: 'def-link.fa-partial-proj', kind: 'definition', definition: 'def.orthogonal-projection',
+      usedBy: 'def.partial-isometry',
+      note: '定义要求 $u^*u$ 是正交投影；等价刻画里 $u\\,u^*$ 也是正交投影。' },
+    {
+      id: 'imp.fa-unitary-partial',
+      kind: 'implication',
+      sources: ['def.unitary-operator'],
+      target: 'def.partial-isometry',
+      title: '酉算子 $\\implies$ 部分等距',
+      proof: [
+        '设 $u$ 是酉算子，即 $u^*u = u\\,u^* = I$。',
+        '$I$ 是正交投影，故按定义 $u^*u = I$ 是正交投影，$u$ 是部分等距。$\\blacksquare$'
+      ].join('\n'),
+      note: '反向不成立：单侧移位是部分等距但不是酉算子（$S\\,S^*$ 不是 $I$）。'
     }
   ]
 });

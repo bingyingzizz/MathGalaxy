@@ -389,20 +389,20 @@ window.MG = window.MG || {};
       cluster: 'fa.ck',
       type: 'definition',
       label: '等度连续',
-      title: '等度连续与一致等度连续',
+      title: '等度连续（逐点）',
       regions: ['functional-analysis'],
       tags: ['泛函分析', '等度连续', '紧性'],
       statement: [
         '设 $K$ 拓扑空间、$(E, d)$ 度量、$\\mathcal{H} \\subseteq C(K, E)$。',
         '',
         '- $\\mathcal{H}$ 在 $x_0 \\in K$ **等度连续**：$\\forall \\varepsilon > 0$ 存在 $x_0$ 的邻域 $U$ 使 $d(f(x), f(x_0)) < \\varepsilon$ 对**一切** $f \\in \\mathcal{H}$、$x \\in U$ 同时成立。',
-        '- $\\mathcal{H}$ 在 $K$ 上等度连续：在每点 $x \\in K$ 等度连续。',
-        '- $K$ 度量空间时，$\\mathcal{H}$ **一致等度连续**：$\\forall \\varepsilon > 0$ $\\exists \\eta > 0$ 使 $\\delta(x, y) < \\eta \\implies d(f(x), f(y)) < \\varepsilon$ 对一切 $f \\in \\mathcal{H}$ 同时成立。'
+        '- $\\mathcal{H}$ 在 $K$ 上等度连续：在每点 $x \\in K$ 等度连续。'
       ].join('\n'),
       notes: [
         '⚠️ 要害在「**对一切 $f$ 同时**」。去掉这一条就只是「每个 $f$ 各自连续」—— 那是 $\\mathcal{H} \\subseteq C(K,E)$ 的定义，什么也没说。',
         '$\\mathcal{H} = \\{f\\}$ 时等度连续 $\\iff$ $f$ 连续。',
-        '⭐ 这是紧性（Arzelà–Ascoli）里**唯一非平凡**的假设：逐点全有界只是「不发散」，等度连续才是「不会越抖越厉害」。'
+        '⭐ 这是紧性（Arzelà–Ascoli）里**唯一非平凡**的假设：逐点全有界只是「不发散」，等度连续才是「不会越抖越厉害」。',
+        '📌 $K$ 是度量空间时还有更强的一致版本，见 `def.uniformly-equicontinuous`；$K$ 紧时二者等价（`thm.equicontinuous-uniform`）。'
       ].join('\n\n'),
       refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 等度连续与 Arzelà–Ascoli'],
     },
@@ -637,6 +637,29 @@ window.MG = window.MG || {};
         '⚠️ 两个完备性都用在共鸣定理上（定义域 $F$ 要 Banach）；只假设「赋范」时结论可能失效。乘积空间用 $\\max$ 范数或和范数都行，两者等价。'
       ].join('\n\n'),
       refs: ['泛函分析讲义（用户手写笔记，2026-11-09）', 'Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
+    },
+    {
+      id: 'def.uniformly-equicontinuous',
+      cluster: 'fa.ck',
+      type: 'definition',
+      label: '一致等度连续',
+      title: '一致等度连续',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '等度连续', '紧性'],
+      statement: [
+        '设 $(K, \\delta)$ 度量空间、$(E, d)$ 度量、$\\mathcal{H} \\subseteq C(K, E)$。称 $\\mathcal{H}$ **一致等度连续**，若',
+        '',
+        '$$\\forall \\varepsilon > 0\\ \\exists \\eta > 0:\\quad \\delta(x, y) < \\eta \\implies d(f(x), f(y)) < \\varepsilon \\quad (\\forall f \\in \\mathcal{H},\\ \\forall x, y \\in K).$$',
+        '',
+        '即 $\\eta$ 不依赖 $x, y, f$。'
+      ].join('\n'),
+      notes: [
+        '一致等度连续 $\\implies$ 逐点等度连续（取 $y = x_0$ 即得逐点定义），见 `imp.fa-uniform-eq-pointwise`。',
+        '反向在 $K$ 紧时成立：`thm.equicontinuous-uniform`（证明用有限覆盖 / Lebesgue 数）。',
+        '⚠️ 非紧时反向不成立：$K = \\mathbb{R}$、$f_n(x) = x/n$ 的族逐点等度连续（每点附近振幅一致小），但在 $\\mathbb{R}$ 上不一致等度连续（$|f_n(n) - f_n(n+1)| = 1/n$，$\\eta$ 需随 $n$ 变）。',
+        '⭐ Arzelà–Ascoli 的「等度连续」在紧度量空间上就是这一条；`thm.equicontinuous-uniform` 是把逐点版本升级成它的桥。'
+      ].join('\n\n'),
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 等度连续与 Arzelà–Ascoli'],
     }
   ],
 
@@ -1150,6 +1173,25 @@ window.MG = window.MG || {};
       note: '证明对每个 $x$ 把 $B(x, \\cdot)$ 看成有界算子 $F \\to G$。' },
     { id: 'def-link.fa-op-pointwise', kind: 'definition', definition: 'def.bounded-operator',
       usedBy: 'cor.ubp-pointwise-limit',
-      note: '结论「$u \\in B(E, F)$」正是有界线性算子空间里的成员资格。' }
+      note: '结论「$u \\in B(E, F)$」正是有界线性算子空间里的成员资格。' },
+    { id: 'def-link.fa-ueq-metric', kind: 'definition', definition: 'def.metric-space',
+      usedBy: 'def.uniformly-equicontinuous',
+      note: '一致版本用度量 $\\delta$ 写「$\\delta(x,y) < \\eta$」；拓扑空间上只能逐点定义。' },
+    { id: 'def-link.fa-ueq-thm', kind: 'definition', definition: 'def.uniformly-equicontinuous',
+      usedBy: 'thm.equicontinuous-uniform',
+      note: '定理的结论正是这条一致版本。' },
+    {
+      id: 'imp.fa-uniform-eq-pointwise',
+      kind: 'implication',
+      sources: ['def.uniformly-equicontinuous'],
+      target: 'def.equicontinuous',
+      title: '一致等度连续 $\\implies$ 逐点等度连续',
+      proof: [
+        '设 $\\mathcal{H}$ 一致等度连续，取定 $x_0 \\in K$ 与 $\\varepsilon > 0$。',
+        '由定义存在 $\\eta > 0$，使得 $\\delta(x, x_0) < \\eta$ 时对一切 $f$ 有 $d(f(x), f(x_0)) < \\varepsilon$。',
+        '取邻域 $U = B(x_0, \\eta)$，即满足逐点等度连续的定义。$\\blacksquare$'
+      ].join('\n'),
+      note: '反向不成立（见 `def.uniformly-equicontinuous` 的反例）；紧性才是反向往回的工具。'
+    }
   ]
 });

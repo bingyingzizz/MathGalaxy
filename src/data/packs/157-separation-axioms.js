@@ -9,7 +9,7 @@
         「平凡蕴含还是画上吧，而且 T3 推不出 T1 啊…真的有蕴含的要画上线，然后比如说
           度量空间一定 T6 这种推出也要画，你检查有没有漏的」
 
-   ⭐ **命名口径（用户拍板，别自作主张改）**：
+   ⭐ **命名口径**：
         T-number = **裸性质**（不含 T1）；中文名 = **裸性质 + T1**。
           T0 = 点可被开集区分           （T0 本身已隐含？不，T1 才逐点闭）
           T1 = 单点闭集
@@ -588,7 +588,7 @@ window.MG = window.MG || {};
       id: 'imp.lch-cr',
       kind: 'implication',
       layer: false,
-      sources: ['def.locally-compact'],
+      sources: ['def.locally-compact-space', 'def.hausdorff'],
       target: 'def.completely-regular-space',
       proof: [
         '局部紧 Hausdorff 空间已含 $T_{1}$，只需证 $T_{3.5}$。',

@@ -7,7 +7,7 @@
      一般项：  Cauchy 准则 → Abel–Dirichlet
      分水岭：  绝对收敛（可重排、可相乘） vs 条件收敛（什么都可能）
 
-   ⭐ 用户 2026-10-16 拍板的口径：**判别法以 Kummer 为总纲** ——
+   ⭐ 约定：**判别法以 Kummer 为总纲** ——
       d'Alembert（比值）/ Raabe / Bertrand / Gauss 全是它在 $c_n = 1,\\ n,\\ n\\ln n,\\ \\ldots$
       下的特例，写进 `thm.kummer` 的 notes，**不单独建节点**；
       Leibniz 同理是 Abel–Dirichlet 的特例。

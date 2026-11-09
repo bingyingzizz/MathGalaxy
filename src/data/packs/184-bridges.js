@@ -188,8 +188,10 @@ window.MG.packs.push({
     /* ④ 桥：凝聚态 $\\leftrightarrow$ 测度（经 Riesz–Markov 的整值版本） */
     { id: 'dep.rm-measure', kind: 'definition', definition: 'def.measure', usedBy: 'thm.riesz-markov',
       note: '结论说「存在一个 Radon **测度** $\\mu$」，用到测度的定义。' },
-    { id: 'dep.rm-lc', kind: 'definition', definition: 'def.locally-compact', usedBy: 'thm.riesz-markov',
+    { id: 'dep.rm-lc', kind: 'definition', definition: 'def.locally-compact-space', usedBy: 'thm.riesz-markov',
       note: '假设是局部紧 Hausdorff —— 局部紧是 Urysohn 夹逼函数存在的前提。' },
+    { id: 'dep.rm-hausdorff', kind: 'definition', definition: 'def.hausdorff', usedBy: 'thm.riesz-markov',
+      note: '假设里的 Hausdorff 一半：它保证紧集闭、单点紧化正规，因而 Urysohn 可用。' },
     { id: 'dep.rm-outer', kind: 'definition', definition: 'def.outer-measure', usedBy: 'thm.riesz-markov',
       note: '证明第 ②③ 步：先造外测度、再用 Carathéodory 延拓 —— 这两步连同第 ④ 步的表示引理（含上下界）都已在节点注里写全；这条边只记「外测度」这个定义被用到。' },
     { id: 'ana.rm-cond-measure', kind: 'analogy', a: 'def.cond-measure', b: 'thm.riesz-markov',

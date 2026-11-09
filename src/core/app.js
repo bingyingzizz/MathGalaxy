@@ -396,9 +396,31 @@
       return { cx: pt.x + (inset.x / 2) / k, cy: pt.y + (inset.y / 2) / k };
     }
 
+    /* 聚焦前的「先让它真的看得见」。
+       分层滑杆把节点挡在外面时，单纯取消「手动隐藏」是没用的 —— extraFilter 还在，
+       点了搜索结果只会打开右侧面板，画布上什么也没有（实测层 10 时点第 29 层节点）。
+       所以这里把滑杆拨到该节点所在层；仍被主干/子图过滤挡着，就退出那个模式。 */
+    function revealForFocus(id) {
+      var nd = graph.byId[id];
+      if (!nd) return;
+      if (layerMax != null && nd.layer > layerMax) setLayerMax(nd.layer, { fit: false });
+      if (!vis.isNodeVisible(id) && (trunkOnly || subIds)) {
+        if (subIds) { subSeed = null; subIds = null; subCount = 0; }
+        if (trunkOnly) {
+          trunkOnly = false;
+          var btn = toolbar.querySelector('[data-act="toggle-trunk"]');
+          if (btn) btn.classList.remove('on');
+        }
+        applyFilter();
+        renderLegend();
+        syncHash('push');
+      }
+    }
+
     function focusNode(id, opts) {
       opts = opts || {};
       // 被藏起来的点：先让它可见 —— 否则点了搜索结果/深链，星图上什么也没有
+      revealForFocus(id);
       if (!vis.isNodeVisible(id)) vis.setNode(id, true);
       if (view.focus && view.focus.type === 'node' && view.focus.id === id && !opts.force) {
         clearFocus();       // 再点一次同一个节点 = 取消聚焦

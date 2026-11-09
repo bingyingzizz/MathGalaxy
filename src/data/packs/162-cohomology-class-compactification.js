@@ -157,7 +157,7 @@ window.MG = window.MG || {};
         '**定理**：',
         '',
         '- $X^{*}$ **紧**（对任意 $X$）；',
-        '- $X^{*}$ **Hausdorff** $\\iff$ $X$ 是局部紧的 Hausdorff 空间（`def.locally-compact`）。'
+        '- $X^{*}$ **Hausdorff** $\\iff$ $X$ 是局部紧的 Hausdorff 空间。'
       ].join('\n'),
       notes: [
         '⭐ **拓扑的直觉**：$U \\cup \\{\\infty\\}$ 开 $\\iff$ 补集紧。所以「$X$ 的补集紧」就是「$\\infty$ 的一个邻域」—— 无穷远点周围的空间正是「$X$ 跑出去以后剩下的部分」。于是 $\\mathbb{R}^{n}$ 的 $\\infty$ 邻域是「球外面」，$S^{n}$ 的北极。',
@@ -306,8 +306,11 @@ window.MG = window.MG || {};
       definition: 'def.compactification', usedBy: 'def.one-point-compactification',
       note: '一点紧化是紧化的特例（只补一个点）。' },
     { id: 'dep-opc-lc', kind: 'definition',
-      definition: 'def.locally-compact', usedBy: 'def.one-point-compactification',
+      definition: 'def.locally-compact-space', usedBy: 'def.one-point-compactification',
       note: '「$X^{*}$ Hausdorff $\\iff$ $X$ 局部紧 Hausdorff」这一条要用局部紧。' },
+    { id: 'dep-opc-hausdorff', kind: 'definition',
+      definition: 'def.hausdorff', usedBy: 'def.one-point-compactification',
+      note: '同一条还要求 $X$ 是 Hausdorff 的。' },
     { id: 'dep-opc-compact', kind: 'definition',
       definition: 'def.compact', usedBy: 'def.one-point-compactification',
       note: '开集族第二条用「补集紧」定义 $\\infty$ 的邻域。' },

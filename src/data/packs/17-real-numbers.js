@@ -119,12 +119,13 @@ window.MG = window.MG || {};
     {
       id: 'def.continuous',
       cluster: 'analysis.real',
-      type: 'definition',
-      label: '连续',
-      title: '连续',
+      type: 'theorem',
+      label: '连续（ε-δ 判据）',
+      title: '连续：$\\varepsilon$-$\\delta$ 判据',
       regions: ['analysis', 'topology'],
-      tags: ['定义', '极限', '连续'],
+      tags: ['连续', 'ε-δ', '度量空间'],
       statement: [
+        '**定理（$\\varepsilon$-$\\delta$ 判据）**：下面这个条件不是定义，而是度量连续性的判据；定义见 `def.metric-continuity`，$\\mathbb{R}$ 上的度量见 `def.real-metric-space`。',
         '$f : \\mathbb{R} \\to \\mathbb{R}$ 在 $x_0$ **连续**，当且仅当',
         '',
         '$$\\forall \\varepsilon > 0, \\exists \\delta > 0 : |x - x_0| < \\delta \\implies |f(x) - f(x_0)| < \\varepsilon$$',
@@ -135,7 +136,7 @@ window.MG = window.MG || {};
         '',
         '**一致连续**是更强的要求：$\\delta$ 只依赖 $\\varepsilon$，不依赖 $x_0$。'
       ].join('\n'),
-      notes: '⭐ 把 $|x - x_0| < \\delta$、$|f(x) - f(x_0)| < \\varepsilon$ 换成距离 $d$，这个定义原封不动地搬到距离空间 —— 这也正是距离空间的定义为什么长成那样。\n\n⚠ **连续 $\\ne$ 一致连续**：$f(x) = x^2$ 在 $\\mathbb{R}$ 上连续但不一致连续（$x$ 越大需要的 $\\delta$ 越小）。\n\n紧区间上两者才重合。',
+      notes: '⭐ 把 $|x - x_0| < \\delta$、$|f(x) - f(x_0)| < \\varepsilon$ 换成距离 $d$，这个定义原封不动地搬到距离空间 —— 这也正是距离空间的定义为什么长成那样。\n\n⚠ **连续 $\\ne$ 一致连续**：$f(x) = x^2$ 在 $\\mathbb{R}$ 上连续但不一致连续（$x$ 越大需要的 $\\delta$ 越小）。\n\n紧区间上两者才重合。\n\n📌 本节点是判据不是定义；定义在 `def.metric-continuity`，$\\mathbb{R}$ 的度量在 `def.real-metric-space`。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 4']
     },
     {
@@ -183,6 +184,45 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '⭐ $\\mathbb{C}$ 与 $\\mathbb{R}^2$ 的区别只在乘法 —— 而正是这个乘法让 $\\mathbb{C}$ 成为**代数闭域**（每个多项式都有根），也让复值函数的积分理论比实值情形简洁：$|f|$ 与 $L^p$ 理论的表述不必再分正负部。\n\n⚠ **$\\mathbb{C}$ 是有序域之外的东西**：它上面**没有**与运算相容的全序。\n\n若不然，由 $1 = 1^2 > 0$ 得 $-1 < 0$；\n\n可是 $i \\ne 0$，而有序域里**平方元非负**，$i^2 = -1$ 应当 $\\ge 0$ —— 矛盾。\n\n本星图里 $\\mathbb{C}$ 主要出现在两处：复值函数的积分（拆实部虚部）、复测度（取值在 $\\mathbb{C}$ 里，自动有限）。',
       refs: ['Rudin, Real and Complex Analysis, Ch. 1']
+    },
+    {
+      id: 'def.real-metric-space',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '实数的度量',
+      title: '实数作为度量空间',
+      regions: ['analysis', 'topology'],
+      tags: ['定义', '度量空间', '实数'],
+      statement: [
+        '在 $\\mathbb{R}$ 上定义 $d(x, y) = |x - y|$。则 $(\\mathbb{R}, d)$ 是完备的可分度量空间，其度量拓扑就是 $\\mathbb{R}$ 的标准拓扑（开区间为基）。'
+      ].join('\n'),
+      notes: [
+        '完备性：Cauchy 列的极限存在（实数完备性，`thm.real-complete`）。可分性：$\\mathbb{Q}$ 在 $\\mathbb{R}$ 中稠密。',
+        '度量拓扑 = 标准拓扑：$B(x_0, \\varepsilon) = (x_0 - \\varepsilon, x_0 + \\varepsilon)$，故开区间是基；反过来每个开集都是开区间的并。',
+        '⭐ 这条把「$\\mathbb{R}$ 上连续」的 $\\varepsilon$-$\\delta$ 语言与度量空间/拓扑空间的连续性语言接上：见 `def.metric-continuity` 与 `def.continuous`。'
+      ].join('\n\n'),
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 2–3'],
+    },
+    {
+      id: 'def.dini-derivative',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: 'Dini 导数',
+      title: '定义：Dini 导数（四个单侧上、下导数）',
+      regions: ['analysis'],
+      tags: ['定义', '导数', 'Dini 导数', '单调函数'],
+      statement: [
+        '设 $f$ 在 $x_0$ 的某个邻域内有定义。四个 Dini 导数用差商的 $\\limsup$ 与 $\\liminf$ 定义：',
+        '$D^{+}f(x_0) = \\limsup_{h \\to 0^{+}} \\frac{f(x_0 + h) - f(x_0)}{h}$，$D_{+}f(x_0) = \\liminf_{h \\to 0^{+}} \\frac{f(x_0 + h) - f(x_0)}{h}$，',
+        '$D^{-}f(x_0) = \\limsup_{h \\to 0^{-}} \\frac{f(x_0 + h) - f(x_0)}{h}$，$D_{-}f(x_0) = \\liminf_{h \\to 0^{-}} \\frac{f(x_0 + h) - f(x_0)}{h}$。'
+      ].join('\n'),
+      notes: [
+        '**与普通导数的关系**：$f\'(x_0)$ 存在且有限，当且仅当四个 Dini 导数都等于同一个有限数；此时 $f\'(x_0) = D^{+}f(x_0) = D_{+}f(x_0) = D^{-}f(x_0) = D_{-}f(x_0)$。若某个 Dini 导数为 $+\\infty$ 或 $-\\infty$，普通导数不存在。',
+        '**为什么需要它**：普通导数要求差商的双侧极限存在；单调函数可能处处不可导，但差商的单侧上、下极限总是存在（允许 $\\pm\\infty$）。Dini 导数把「可导性」拆成四个总是有定义的对象，因此在证明「单调函数几乎处处可导」时可以不预设导数存在。',
+        '**例子**：$f(x) = |x|$ 在 $0$ 处 $D^{+}f = D_{+}f = 1$，$D^{-}f = D_{-}f = -1$；$f(x) = x\\sin(1/x)$（$f(0) = 0$）在 $0$ 处四个 Dini 导数分别为 $1, -1, -1, 1$，普通导数不存在。',
+        '**用法**：单调函数 $f$ 的四个 Dini 导数都非负，且 $D^{+}f \\ge D_{-}f$；结合 Vitali 覆盖可以证明单调函数的不可导点集是零测集（Lebesgue 定理，本图未单独立节点）。'
+      ].join('\n\n'),
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 7', 'Folland, Real Analysis, Ch. 3']
     }
   ],
 
@@ -251,6 +291,44 @@ window.MG = window.MG || {};
       definition: 'def.bound',
       usedBy: 'def.series',
       note: '非负项级数取的就是部分和的**上确界**。'
-    }
+    },
+    { id: 'def-link.mc-continuous', kind: 'definition', definition: 'def.metric-continuity',
+      usedBy: 'def.continuous',
+      note: '本定理是度量连续在 $\\mathbb{R}$ 上的具体写法。' },
+    { id: 'def-link.realmetric-metric', kind: 'definition', definition: 'def.metric-space',
+      usedBy: 'def.real-metric-space',
+      note: '$d(x,y) = |x-y|$ 满足度量三公理。' },
+    { id: 'def-link.realmetric-real', kind: 'definition', definition: 'def.real',
+      usedBy: 'def.real-metric-space',
+      note: '距离用实数的绝对值与序。' },
+    {
+      id: 'eq.real-continuity-epsilon-delta',
+      kind: 'equivalence',
+      a: 'def.metric-continuity',
+      b: 'def.continuous',
+      title: '度量连续 $\\iff$ $\\varepsilon$-$\\delta$ 判据',
+      proofs: [
+        {
+          label: '度量连续 ⇒ ε-δ',
+          text: [
+            '在 $(\\mathbb{R}, d)$、$d(x, y) = |x - y|$ 中，$d(x, x_0) < \\delta$ 就是 $|x - x_0| < \\delta$，$d(f(x), f(x_0)) < \\varepsilon$ 就是 $|f(x) - f(x_0)| < \\varepsilon$。',
+            '把 `def.metric-continuity` 的定义逐字代入即得 $\\varepsilon$-$\\delta$ 式。$\\blacksquare$'
+          ].join('\n')
+        },
+        {
+          label: 'ε-δ ⇒ 度量连续',
+          text: [
+            '反之，若 $\\varepsilon$-$\\delta$ 式成立，则取度量定义中的 $\\delta$ 为同一个 $\\delta$，即满足 `def.metric-continuity` 的每点连续定义。$\\blacksquare$'
+          ].join('\n')
+        }
+      ],
+      note: '两个方向都只是把 $|\\cdot|$ 改写成度量 $d$，没有实质数学内容；但它把「$\\mathbb{R}$ 上的 $\\varepsilon$-$\\delta$」与「一般度量空间的连续性」正式接上。'
+    },
+    { id: 'def-link.dini-derivative-d', kind: 'definition', definition: 'def.derivative',
+      usedBy: 'def.dini-derivative',
+      note: 'Dini 导数就是普通差商的四个单侧上、下极限；普通导数是四者相等的情形。' },
+    { id: 'def-link.dini-limsup', kind: 'definition', definition: 'def.limsup-liminf',
+      usedBy: 'def.dini-derivative',
+      note: '四个 Dini 导数用差商的 $\\limsup$ 与 $\\liminf$ 定义。' }
   ]
 });

@@ -25,9 +25,9 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1560 节点 / 3232 边 · maxLayer 38
-强边 3190 · 弱边（类比）42 · 推论（layer:false）33
-英文页 1559 · 别名 1369 组 · 问法钩子 217 条
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1574 节点 / 3274 边 · maxLayer 38
+强边 3232 · 弱边（类比）42 · 推论（layer:false）33
+英文页 1571 · 别名 1381 组 · 问法钩子 217 条
 ```
 
 | 项 | 值 |
@@ -41,11 +41,11 @@
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1560 节点 / 3232 边，所有页 ≤1300 B） |
-| `bun tools/_katexcheck.mjs` | ✅ **2939 个 `$…$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889；第 8 批 3 条注新增 16 个 display ⇒ 2889→2905；第 9 批 3 条证明新增 7 个 display ⇒ 2905→2912；第 10 批 4 条曲面证明重写净 −1 个 display ⇒ 2912→2911；第 14 批 / FIX-045 净 −1 个 display ⇒ 2911→2910；第 15 批 2 条证明净 −4 display ⇒ 2910→2906；第 17 批注净 +1 display ⇒ 2906→2907；第 19 批新增 def.topological-orientability 的 1 个 display ⇒ 2907→2908；第 20 批（并行改动）再 +1 个 display ⇒ 2908→2909；第 20/21 批新节点与注合计净 +10 个 display（其中行内 $ 修正的 −2 已计入）⇒ 2909→2919） |
+| `bun tools/build.mjs` | ✅ 全绿（1574 节点 / 3274 边，所有页 ≤1300 B） |
+| `bun tools/_katexcheck.mjs` | ✅ **2940 个 `$…$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889；第 8 批 3 条注新增 16 个 display ⇒ 2889→2905；第 9 批 3 条证明新增 7 个 display ⇒ 2905→2912；第 10 批 4 条曲面证明重写净 −1 个 display ⇒ 2912→2911；第 14 批 / FIX-045 净 −1 个 display ⇒ 2911→2910；第 15 批 2 条证明净 −4 display ⇒ 2910→2906；第 17 批注净 +1 display ⇒ 2906→2907；第 19 批新增 def.topological-orientability 的 1 个 display ⇒ 2907→2908；第 20 批（并行改动）再 +1 个 display ⇒ 2908→2909；第 20/21 批新节点与注合计净 +10 个 display（其中行内 $ 修正的 −2 已计入）⇒ 2909→2919） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
-| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按本次新增节点/边重钉为 916；fubini 12；Noether 14；compact 94——FIX-038 删 Riesz 注里的 `prop.paracompact-partition-unity` 后 95→94；第 9 批新增「定义」1 次，894→895；第 10 批 4 条注新增「定义」1 次，895→896；本次新增 6 个 definition 节点与注中「定义」多次 ⇒ 896→904→907→908→909→910→911（新增 def.integral-over-set / def.convex-combination / def.convex-hull 3 个定义节点及注；FIX-051+第 17 批注再 +1；第 20 批 + FIX-055 再 +1）；ℵ₀ 6→7（FIX-042 Henkin 的 κ=max(|L|,ℵ₀) 新增一次）） |
+| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按本次新增节点/边重钉为 926（第 25 批泛函/连续性重构 +14 次命中）；fubini 12；Noether 14；compact 94——FIX-038 删 Riesz 注里的 `prop.paracompact-partition-unity` 后 95→94；第 9 批新增「定义」1 次，894→895；第 10 批 4 条注新增「定义」1 次，895→896；本次新增 6 个 definition 节点与注中「定义」多次 ⇒ 896→904→907→908→909→910→911（新增 def.integral-over-set / def.convex-combination / def.convex-hull 3 个定义节点及注；FIX-051+第 17 批注再 +1；第 20 批 + FIX-055 再 +1）；ℵ₀ 6→7（FIX-042 Henkin 的 κ=max(|L|,ℵ₀) 新增一次）） |
 | `bun tools/_slashcheck.mjs` | ✅ 0 处 |
 | `node tools/dupkeys.mjs` | ✅ 0 处（同对象内 `notes`/`note`/`regions` 重复键会静默覆盖；FIX-023c 后加入常规门） |
 
@@ -448,7 +448,7 @@
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
 | 精读覆盖率 | **回执 1540 / 1540（100%）**；本会话逐团深读 **57 团 / 760 条**（v2 §39–§116） | 其余 48 团 / 780 条来自 §19–§59 早期批次；旧的 1051/1502/1527 是按团 id 倒推的估计，不再用 |
-| **skeleton 证明** | **10 节点 / 19 条边**（2026-11-07 第 21 批后；标准 1（eulerchar-genus）、中等 3（schwarz-christoffel / de-rham / paracompact-cech）、研究 6（rado / classification-surfaces / za-analytic / boundary-correspondence / caratheodory-osgood / combinatorial-classification-surfaces）；边数按第 1 批报告口径，图不可查询） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 21 批 PNT 已补；新增 Newman/Carathéodory–Osgood/组合分类三条支撑引理，其中 PNT 闭合、后两条仍 skeleton（skeleton 9→10）；余 10 条；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
+| **skeleton 证明** | **12 节点 / 19 条边**（2026-11-09 第 25 批后；标准 1（eulerchar-genus）、中等 3（schwarz-christoffel / de-rham / paracompact-cech）、研究 8（rado / classification-surfaces / za-analytic / boundary-correspondence / caratheodory-osgood / combinatorial-classification-surfaces / milman-pettis / james）；边数按第 1 批报告口径，图不可查询） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 21 批 PNT 已补；新增 Newman/Carathéodory–Osgood/组合分类三条支撑引理，其中 PNT 闭合、后两条仍 skeleton（skeleton 9→10）；余 10 条；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门
@@ -459,6 +459,18 @@
 - **`$` 硬门**：`assertNotation()` 现在除 node 的 `label/tags/refs` 外，还查 `MG.clusters/regions/sectors` 的 `name`/`en`。起因：星团 `fa.ck` 的 `name` 写成 `$C(K)$ 与 Stone–Weierstrass`，渲染层原样画 `$`（用户截图）。
 - **渲染防御**：`src/core/i18n.js` 的 `plainName()` 对显示副本剥除 `$`，每字段只 warn 一次；`localizeDisplay` / `labelOf` / `clusterName` / `regionName` 全覆盖；`renderer.labelSig` 加 `MG.displayEpoch`（否则离屏标签层不刷新）。
 - **拖动样式**：`html.dragging .floating{...}`（拖动时实色 / 去 backdrop 模糊）**已删、keep**。实测（CDP 真鼠标 70 步 ×2，4070Ti dpr1/dpr2/软合成）帧率无可测差异；有规则时拖动起止面板跳变一次（平均 |ΔRGB|≈4.55/255，变亮）。平板 Adreno 735 未测；要恢复就贴 `styles.css` 注释里的 5 行回滚片段。
+
+### 4.10 当前未完成队列（2026-11-09，按优先级）
+
+1. **161 修复 + 第 25 批合并**：fixer 正在删 `161-functional-analysis.js` 1070–1273 的临时 `/* */` 重复 edges 块；之后 `node --check`、`i18n-backfill`、build。第 25 批的 partial isometry / 一致凸 / 完美对偶 / 自反 / Milman–Pettis / James / 等度连续拆分 / 连续性重构 / 局部紧拆分都在工作树，未提交。
+2. **FIX-061**：`prop.lie-group-orientable`、`prop.pi1-group`、`prop.simply-connected-basepoint` 与 6 条边已落盘，未 build/commit。
+3. **ENG-014**：分层搜索点击下层节点不显示，engine 正在修自动切层。
+4. **AUD-060 A 档 15 项**：127 条 definition 边指向定理、25 条读者可见文案、`imp.nt-newman` sources、190 条无 id 边、19 条骨架边 status、78 aka、`def.continuous` 加 definition、toporient 反引号等；待 build 后派 FIX-062。B 档 4 项需书，C 档 6 项需拍板。
+5. **章节核实书单**：16 本优先书（Munkres、Engelking、Arnold、McDuff–Salamon、Horn–Johnson、Weibel、Le Stum、Tu ×3、Kobayashi–Nomizu、Chevalley、Bott–Tu、Kelley、Dummit–Foote、Landau–Lifshitz、Ben-Israel–Greville、Milnor–Stasheff）待用户下载到 `_refs/`；37 条章名已删，尚未核实。
+6. **剩余 skeleton**：原 10 条，第 25 批新增 `thm.milman-pettis` / `thm.james` 两条，build 后复核（标准 1、中等 3、研究 6+2）；19 条骨架边口径仍不可从图复跑。
+7. **§60 结构项**：190 条无显式 id 边、78 个 aka、骨架边 status、refs 缺书名（Tu 13 条 A 类等）。
+8. **codex 并行只读审计**：Bash 已恢复但尚未发；下一轮至少发一个只读审计。
+9. **提交/发布**：以上完成后统一 build/全门 → 更新 HANDOVER → 提交 → push → `publish.mjs` → 线上复验缓存 v2 与层号。
 
 ---
 
@@ -610,7 +622,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 |---|---|
 | **本交接书** | `H:\MathGalaxy\HANDOVER.md`（本文件，唯一） |
 | **仓库规矩**（进目录自动注入） | `H:\MathGalaxy\AGENTS.md` |
-| **审读报告真源**（13930 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§134 各批 |
+| **审读报告真源**（14023 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§135 各批 |
 | 审读回执 | `_audit/_proofs/out-*.txt`（`P-*.txt` 是对应提示词） |
 | 用户手写笔记原件 | `_pdf/`（167 MB）· 转写 `_pdf/凝聚态数学笔记-转写.md` |
 | 散文式规则 | `CONTRIBUTING.md`（人看的）· `README.md` · `policy.md` |
