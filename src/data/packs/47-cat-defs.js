@@ -129,7 +129,7 @@ window.MG = window.MG || {};
         '**弱一点的说法**：$F$ 保**有限**极限（= **left exact**）、保**滤过**余极限（AB5 那一条）、保**积**、保**等化子**……都是把上面的「每个图」限制到某一类图。',
         '⚠️ 与「$F$ 连续」区分：这里说的连续函子（continuous functor）是**保极限**，与拓扑里的连续无关。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.2']
     },
 
     /* ------------------------------------------------ 正合函子 */
@@ -150,7 +150,7 @@ window.MG = window.MG || {};
         '**在阿贝尔范畴里更好用**：$F$ 左正合 $\\iff$ 它保核（$F(\\ker) = \\ker$）；$F$ 正合 $\\iff$ 它把短正合列送成短正合列。',
         '⚠️ 名字有歧义：有的书把「正合」只指保**有限**极限，有的指保**所有**极限。本图统一按上面这条（保有限极限/余极限）。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.2']
     },
 
     /* ---------------------------------------------------- 零对象 */
@@ -284,7 +284,7 @@ window.MG = window.MG || {};
         '⭐ **在同调代数里的用处**：$X$ 有限表现 $\\iff$ $h^{X}$ 保滤过余极限 $\\iff$ $X$ 是「小」的测试对象。凝聚态那一侧「CondAb 由有限表现的投射对象生成」正是靠它 —— 有限表现的投射对象是 $\\mathrm{CondAb}$ 的生成元。',
         '⚠️ 「有限表现」与「有限生成」不同：有限生成只要求有一个满射 $A^{n} \\twoheadrightarrow M$；有限表现还要求核也是有限生成的（即 $A^{m} \\to A^{n} \\to M \\to 0$ 正合）。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.3（Definition 1.4.9, p. 29）']
     },
 
     /* ---------------------------------------------- 同构的截面唯一 */

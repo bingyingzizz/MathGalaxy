@@ -436,7 +436,7 @@ window.MG = window.MG || {};
         '满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ **正合**（保有限极限）。$f^{*}$ 叫**拉回函子**，$f_{*}$ 叫**推前函子**。'
       ].join('\n'),
       notes: '动机来自拓扑空间：连续映射 $\\varphi : X \\to Y$ 给出层范畴之间的一对函子 —— 沿 $\\varphi$ 把层拉回来（$f^{*}$）、再把层推出去（$f_{*}$）。\n\n这一对满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ 正合。\n\n于是**拓扑斯之间的「映射」就照这个样子定义**：不是函子，而是一对互为伴随的函子，而且方向与几何直觉相反（左边那个是拉回）。',
-      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.4']
     }
   ],
 

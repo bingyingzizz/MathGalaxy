@@ -11,7 +11,7 @@
 零依赖、无构建、双击 `index.html` 就能开。
 
 规模：**跑 `bun tools/mg.mjs stat` 看准确的**，别信文档里的数字（图一直在长）。
-2026-11-09 核过一次是 1574 节点 / 3277 边 / 15 星系 / 105 星团。
+2026-11-09 核过一次是 1585 节点 / 3293 边 / 15 星系 / 105 星团。
 
 ⚠️ 在 Windows 上跑 dsh 时没有 `bash`（只有 `pwsh`）—— 见 `~/.dsh/AGENTS.md`。
 
@@ -329,9 +329,11 @@ CI 也单独跑一次。它逐条对着本文第四节断言（当前 40 条）�
 
 ## 五半、codex 并行（默认要跑）
 
-本机有 **codex CLI**（`codex --version` 0.165.0，model `gpt-6.1-sol`）。它**不能跑 bun**，但适合只读审计、公式/条件核对、找反例、扫结构；和子 agent 是两条并行线，不是替代。
+本机有 **codex CLI**（`codex --version` 0.165.0，model `gpt-6.1-sol`）。它**不能跑 bun**，但既能做只读审计，也能在被指派、写域不重叠时直接改指定文件；和子 agent 是两条并行线，不是替代。可以一次派多个 codex，每条只负责一个 pack / 一个节点 / 一条证明，写域不得重叠；codex 不跑 build、不 commit。
 
 - 每轮至少问一次：**这件事能不能拆给 codex 并行？** 能就发，不要只靠子 agent。
+- **默认档位**：`-m gpt-6.1-terra -c model_reasoning_effort="medium"`（Terra 单模型低阶，低档性能不够；用 Terra 就把档位开到 medium/high 补）。Terra 仍做不动，才换 `gpt-6.1-sol` 且先开 **low**；只有真正硬的证明/反例才升 `gpt-6.1-sol` 的 high/xhigh。⛔ 不要默认 `Terra + low`，也不要默认 `Sol + high`。
+- prompt 要给**相关片段**，不要整本书/整个仓库塞进去；曾一次 125k input 把额度烧到 usage limit。大书先抽目录/相关页，再让 codex 看。
 - 长 prompt 必须走 stdin（Windows 参数有上限）：
   `cat prompt.txt | codex exec -s read-only -C H:\MathGalaxy --json -o out.json -`
 - codex 的输出是**线索不是结论**：每条都要 `mg show` / 读源回读，引用写 `文件:行`。

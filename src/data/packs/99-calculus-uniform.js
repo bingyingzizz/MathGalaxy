@@ -337,7 +337,56 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '⭐ 这条公式把**指数、三角、复数**三件事焊成一件：$\\theta \\mapsto e^{i\\theta}$ 是单位圆上以弧长 $\\theta$ 为参数的运动，实部是 $\\cos$、虚部是 $\\sin$。\n\n⭐ 证明就是**重排级数**（见下面的证明）：把 $\\exp$ 的级数按奇偶项拆开。\n\n表面上看只是换了个写法，实际上它给出了「$\\cos$ 与 $\\sin$ 是同一个指数函数的两个分量」这个结构性事实。\n\n⚠ 注意这里**不需要**任何几何输入：弧长、角度、单位圆这些词都只是事后对公式的**解释**。\n\n反过来，正因为有这条公式，三角函数才可能有周期（周期来自 $e^{2\\pi i} = 1$）。\n\n⚠ **同名不同物**：微分几何里还有一条「Euler 公式」（法曲率 $k_{1}\\cos^{2}\\theta+k_{2}\\sin^{2}\\theta$，见 `thm.euler-formula-surface`），与这条没有关系。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 8']
-    }
+    },
+    {
+      id: 'def.formal-power-series',
+      cluster: 'analysis.uniform',
+      type: 'definition',
+      label: '形式幂级数',
+      title: '形式幂级数：只做形式运算，不谈收敛',
+      regions: ['analysis'],
+      tags: ['定义', '幂级数', '形式幂级数', '生成函数'],
+      statement: [
+        '设 $R$ 是交换环。一个 $R$ 上的**形式幂级数**是一列系数 $(a_n)_{n \\ge 0}$（$a_n \\in R$），形式地写成',
+        '$$\\sum_{n \\ge 0} a_n x^n .$$',
+        '它在 $R[[x]]$ 中：加法逐项相加，乘法用 Cauchy 乘积',
+        '$$\\Bigl(\\sum a_n x^n\\Bigr)\\Bigl(\\sum b_n x^n\\Bigr) := \\sum_{n \\ge 0}\\Bigl(\\sum_{k=0}^{n} a_k b_{n-k}\\Bigr)x^n .$$',
+        '$x$ 只是一个**形式变量**；$x$ 不代入任何数值，也不问级数是否收敛。'
+      ].join('\n'),
+      notes: [
+        '⭐ **与解析幂级数的区别**：`def.power-series` 关心收敛半径、逐项求导与解析函数；形式幂级数只保留系数与代数运算，因此可以对任意交换环（包括有限域）定义。把收敛性丢掉之后，组合计数里的生成函数反而更干净。',
+        '**可逆性**：$\\sum a_n x^n$ 在 $R[[x]]$ 中可逆 $\\iff$ $a_0$ 是 $R$ 中的单位。逆由 $b_0 = a_0^{-1}$、$b_n = -a_0^{-1}\\sum_{k=1}^{n} a_k b_{n-k}$ 递归给出。',
+        '**复合**：只有当内层 $g$ 的常数项为 $0$（即 $g \\in xR[[x]]$）时，$f(g(x))$ 才有定义（否则要处理无穷多次代入）。',
+        '**形式导数**：$D\\bigl(\\sum a_n x^n\\bigr) := \\sum_{n \\ge 1} n a_n x^{n-1}$，满足乘积法则，且不依赖任何极限。',
+        '📌 用途：生成函数、树的计数、Lagrange 反演（`thm.lagrange-inversion`），以及把「解析恒等式」降级成「系数恒等式」来证明。'
+      ].join('\n\n'),
+      refs: ['Stanley, Enumerative Combinatorics, Vol. 1', 'Wilf, generatingfunctionology']
+    },
+    {
+      id: 'thm.lagrange-inversion',
+      cluster: 'analysis.uniform',
+      type: 'theorem',
+      label: 'Lagrange 反演公式',
+      title: 'Lagrange 反演：由 $w = x\\varphi(w)$ 反解系数',
+      regions: ['analysis'],
+      tags: ['定理', '形式幂级数', '反演', '生成函数', '树计数'],
+      statement: [
+        '设 $\\varphi(t) = \\sum_{n \\ge 0} \\varphi_n t^n$ 是形式幂级数，$\\varphi_0 \\ne 0$。则方程',
+        '$$w = x\\,\\varphi(w)$$',
+        '有唯一形式解 $w(x) = \\sum_{n \\ge 1} w_n x^n$，且对每个 $n \\ge 1$，',
+        '$$[x^n]\\,w(x) = \\frac{1}{n}\\,[t^{n-1}]\\,\\varphi(t)^n .$$',
+        '更一般地，对任意形式幂级数 $H$，',
+        '$$[x^n]\\,H(w(x)) = \\frac{1}{n}\\,[t^{n-1}]\\,H\'(t)\\,\\varphi(t)^n .$$'
+      ].join('\n'),
+      notes: [
+        '⭐ **记号**：$[x^n]F$ 表示 $F$ 的 $x^n$ 项系数。公式把「解方程 $w = x\\varphi(w)$」的系数化成「$\\varphi^n$ 的一个系数」，因此不必真的逐项解方程。',
+        '**典型用法（Cayley 树公式）**：取 $\\varphi(t) = e^{t}$，则 $w = x e^{w}$ 的解是 $w = \\sum_{n \\ge 1} n^{n-1}\\frac{x^n}{n!}$；系数 $n^{n-1}$ 正是 $n$ 个顶点的标号树棵数。',
+        '**唯一性**：设 $w = \\sum_{n\\ge1} w_n x^n$，比较 $w = x\\varphi(w)$ 两边的 $x^n$ 系数，右端只含 $w_1,\\ldots,w_{n-1}$（因为 $\\varphi(w)$ 的常数项是 $\\varphi_0$，$w$ 的最低次是 $1$），于是 $w_n$ 由 $w_1 = \\varphi_0$ 与前面的系数唯一递归确定。',
+        '⚠ 这是**形式**反演：不要求 $\\varphi$ 的幂级数收敛，也不要求 $w(x)$ 在某个邻域内是解析函数。解析情形（反函数定理）是它的特例，但两者的证明路线不同。',
+        '⚠ $\\varphi_0 = 0$ 时方程只有零解，公式不适用；条件 $\\varphi_0 \\ne 0$ 不能省。'
+      ].join('\n\n'),
+      refs: ['Stanley, Enumerative Combinatorics, Vol. 1', 'Wilf, generatingfunctionology']
+    },
   ],
 
   edges: [
@@ -592,6 +641,34 @@ window.MG = window.MG || {};
         '（拆分与重排的合法性来自绝对收敛。）取 $\\theta = \\pi$：由 $\\cos\\pi = -1$、$\\sin\\pi = 0$ 得 $e^{i\\pi} = -1$。∎'
       ].join('\n'),
       note: '整条证明只有「拆奇数项与偶数项」这一个动作 —— 但这一步把指数函数与三角函数之间的关系揭示成**一个恒等式**，而不是两个巧合。'
-    }
+    },
+    {
+      id: 'def-link.fps-power',
+      kind: 'definition',
+      definition: 'def.power-series',
+      usedBy: 'def.formal-power-series',
+      note: '解析幂级数是形式幂级数加上「在某个邻域内收敛」的条件；形式幂级数把收敛性去掉，只保留系数。' },
+    {
+      id: 'imp.lagrange-inversion',
+      kind: 'implication',
+      sources: ['def.formal-power-series'],
+      target: 'thm.lagrange-inversion',
+      title: 'Lagrange 反演公式的证明（形式留数）',
+      proof: [
+        '设 $w=x\\varphi(w)$，$\\varphi_0\\ne0$。先证唯一性：把 $w=\\sum_{n\\ge1}w_nx^n$ 代入，比较 $x^n$ 系数，右端 $x\\varphi(w)$ 只含 $w$ 的一次及以上的项，因此 $w_n$ 由 $w_1=\\varphi_0$ 与 $w_1,\\ldots,w_{n-1}$ 唯一决定。',
+        '对系数用形式留数（即 $[x^n]F(x)=\\operatorname{Res}F(x)\\,dx/x^{n+1}$）：',
+        '$$[x^n]H(w(x))=\\operatorname{Res}\\frac{H(w(x))}{x^{n+1}}\\,dx.$$',
+        '作变量替换 $t=w(x)$。由 $x=t/\\varphi(t)$ 得 $dx=\\frac{\\varphi(t)-t\\varphi\'(t)}{\\varphi(t)^2}\\,dt$，$x^{-n-1}=t^{-n-1}\\varphi(t)^{n+1}$，于是',
+        '$$[x^n]H(w)=\\operatorname{Res}\\frac{H(t)\\,\\varphi(t)^{n-1}\\bigl(\\varphi(t)-t\\varphi\'(t)\\bigr)}{t^{n+1}}\\,dt,$$',
+        '即 $[x^n]H(w)=[t^n]\\bigl(H\\varphi^{n-1}(\\varphi-t\\varphi\')\\bigr)$。',
+        '下面把它化成 $\\frac1n[t^{n-1}]H\'\\varphi^n$。令 $F=H\\varphi^n$，则 $F\'=H\'\\varphi^n+nH\\varphi^{n-1}\\varphi\'$，故',
+        '由 $H\\varphi^{n-1}\\varphi\'=\\frac1n\\bigl(F\'-H\'\\varphi^n\\bigr)$ 得',
+        '$$H\\varphi^{n-1}(\\varphi-t\\varphi\')=H\\varphi^n-\\frac tn\\bigl(F\'-H\'\\varphi^n\\bigr)=F-\\frac tnF\'+\\frac tnH\'\\varphi^n .$$',
+        '取 $t^n$ 系数：$[t^n]F-\\frac1n[t^n]tF\'+\\frac1n[t^{n-1}]H\'\\varphi^n$。因 $[t^n]tF\'=n[t^n]F$，前两项相消，得',
+        '$$[x^n]H(w)=\\frac1n[t^{n-1}]\\,H\'(t)\\,\\varphi(t)^n .$$',
+        '取 $H(t)=t$ 即得 $[x^n]w=\\frac1n[t^{n-1}]\\varphi^n$。$\\blacksquare$',
+        '⚠ 以上是形式幂级数层面的推导，不涉及收敛半径；解析情形（反函数定理）是同一公式在收敛域内的解释。'
+      ].join('\n')
+    },
   ]
 });

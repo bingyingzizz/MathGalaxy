@@ -110,7 +110,7 @@ window.MG = window.MG || {};
         '',
         '在拓扑空间的老写法里（$\\mathcal{C} = \\operatorname{Open}(X)^{\\mathrm{op}}$），这两条就是：$s|_{U_{i}} = t|_{U_{i}}$ 处处成立则 $s = t$；以及局部截面 $s_{i}$ 在交叠处一致时能拼出整体截面。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.2.2']
     },
 
     /* -------------------------------------------------- 层的下降条件 */
@@ -221,7 +221,7 @@ window.MG = window.MG || {};
           '- 拓扑空间 $X$ 上取 $\\mathcal{C} = \\operatorname{Open}(X)$，得到的就是通常的层范畴，$\\sharp$ 就是通常的层化函子。',
         ].join('\n'),
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.2.3']
     },
 
     /* -------------------------------------------------- 正则满态射 */

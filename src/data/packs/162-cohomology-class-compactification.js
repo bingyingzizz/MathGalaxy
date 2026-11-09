@@ -57,7 +57,7 @@ window.MG = window.MG || {};
         '⚠️ 本图不单独收录「同调类」：它是同一个定义在链复形一侧的写法（下标换成上标），与 `def.cycle` / `def.boundary` 同一个口径 —— 不为一个上标差异开第二个节点。'
       ].join('\n\n'),
       refs: [
-        'Le Stum, An introduction to condensed mathematics, §7.1（复形与同调）',
+        'Le Stum, An introduction to condensed mathematics, §7.1.4（Definition 7.1.11, p. 124）',
         'Weibel, An Introduction to Homological Algebra, Ch. 1（Chain Complexes）'
       ]
     },
@@ -89,7 +89,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Weibel, An Introduction to Homological Algebra',
-        'Le Stum, An introduction to condensed mathematics'
+        'Le Stum, An introduction to condensed mathematics, §7.1.4'
       ]
     },
 

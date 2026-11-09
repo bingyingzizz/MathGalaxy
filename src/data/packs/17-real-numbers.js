@@ -223,7 +223,50 @@ window.MG = window.MG || {};
         '**用法**：单调函数 $f$ 的四个 Dini 导数都非负，且 $D^{+}f \\ge D_{-}f$；结合 Vitali 覆盖可以证明单调函数的不可导点集是零测集（Lebesgue 定理，本图未单独立节点）。'
       ].join('\n\n'),
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 7', 'Folland, Real Analysis, Ch. 3']
-    }
+    },
+    {
+      id: 'thm.stolz-cesaro',
+      cluster: 'analysis.real',
+      type: 'theorem',
+      label: 'Stolz–Cesàro 定理',
+      title: 'Stolz–Cesàro：数列极限的离散 L\'Hôpital 法则',
+      regions: ['analysis'],
+      tags: ['定理', '数列', '极限', 'Stolz', 'Cesàro'],
+      statement: [
+        '设 $\\{x_n\\}$、$\\{y_n\\}$ 是实数列，$y_n$ 严格单调。',
+        '',
+        '- **$0/0$ 型**：若 $x_n \\to 0$、$y_n \\to 0$，且',
+        '$$\\lim_{n \\to \\infty} \\frac{x_{n+1} - x_n}{y_{n+1} - y_n} = L,$$',
+        '则 $\\dfrac{x_n}{y_n} \\to L$。',
+        '- **$*/\\infty$ 型**：若 $y_n$ 严格递增且 $y_n \\to +\\infty$，同样条件成立时 $\\dfrac{x_n}{y_n} \\to L$。',
+        '',
+        '这里 $L$ 可以是有限实数，也可以是 $\\pm\\infty$（按扩展实数理解）。'
+      ].join('\n'),
+      notes: [
+        '⭐ **它是离散版的 L\'Hôpital 法则**：把「导数之比」换成「差分之比」。$0/0$ 型要求分子也趋于 $0$；$*/\\infty$ 型不要求 $x_n$ 收敛。',
+        '**例**：$x_n = 1 + \\frac12 + \\cdots + \\frac1n$、$y_n = \\log n$。则 $\\Delta x_n = \\frac{1}{n+1}$、$\\Delta y_n = \\log\\frac{n+1}{n} \\sim \\frac1n$，差分之比 $\\to 1$，故 $H_n/\\log n \\to 1$。',
+        '⚠ **单调性不能去掉**：取 $x_n = (-1)^n$、$y_n = (-1)^n$，差分之比恒为 $1$，但 $x_n/y_n = 1$ 平凡；再看 $x_n = (-1)^n\\sqrt n$、$y_n = \\sqrt n$，$x_n/y_n$ 不收敛。',
+        '⚠ 与 Cesàro 平均的关系：取 $x_n$ 为部分和、$y_n = n$，Stolz 就退化成「算术平均」那一条（见 `thm.cesaro-mean-limit`）。'
+      ].join('\n\n'),
+      refs: ['Knopp, Theory and Application of Infinite Series', 'Pólya–Szegő, Problems and Theorems in Analysis I']
+    },
+    {
+      id: 'thm.cesaro-mean-limit',
+      cluster: 'analysis.real',
+      type: 'theorem',
+      label: 'Cesàro 平均收敛',
+      title: 'Cesàro 平均：收敛数列的算术平均同极限',
+      regions: ['analysis'],
+      tags: ['定理', '数列', '极限', 'Cesàro', '平均'],
+      statement: '若实数列 $a_n \\to L$，则其前 $n$ 项算术平均 $\\sigma_n := \\dfrac{a_1 + \\cdots + a_n}{n}$ 也满足 $\\sigma_n \\to L$。逆命题不成立。',
+      notes: [
+        '⭐ 这条是 **Cesàro 求和法**的起点：把「部分和的平均」当作广义极限。Fejér 定理（Fourier 级数的 Cesàro 求和）用的就是它。',
+        '**逆不成立**：$a_n = (-1)^n$ 的算术平均 $\\to 0$，但 $a_n$ 本身不收敛。所以 Cesàro 可和比收敛更弱。',
+        '**与 Stolz 的关系**：在 Stolz 定理里取 $x_n = a_1 + \\cdots + a_n$、$y_n = n$，差分之比就是 $a_{n+1}$，于是 Cesàro 平均是 Stolz 的直接特例。',
+        '⚠ 条件是「收敛」，不是「有界」：有界而不收敛的列（如 $(-1)^n$）平均可能收敛、也可能不收敛，不能一概而论。'
+      ].join('\n\n'),
+      refs: ['Knopp, Theory and Application of Infinite Series', 'Zygmund, Trigonometric Series']
+    },
   ],
 
   edges: [
@@ -335,6 +378,41 @@ window.MG = window.MG || {};
       note: '四个 Dini 导数用差商的 $\\limsup$ 与 $\\liminf$ 定义。' },
     { id: 'def-link.continuous-specialcase', kind: 'definition', definition: 'def.continuous-map',
       usedBy: 'def.continuous',
-      note: '$\\mathbb{R}\\to\\mathbb{R}$ 的 $\\varepsilon$-$\\delta$ 判据是「连续映射」定义在度量空间上的特例。反方向不成立：连续映射的定义单独推不出 $\\varepsilon$-$\\delta$ 判据，还要用到 $\\mathbb{R}$ 的度量结构。' }
+      note: '$\\mathbb{R}\\to\\mathbb{R}$ 的 $\\varepsilon$-$\\delta$ 判据是「连续映射」定义在度量空间上的特例。反方向不成立：连续映射的定义单独推不出 $\\varepsilon$-$\\delta$ 判据，还要用到 $\\mathbb{R}$ 的度量结构。' },
+    {
+      id: 'def-link.stolz-seq',
+      kind: 'definition',
+      definition: 'def.sequence-limit',
+      usedBy: 'thm.stolz-cesaro',
+      note: 'Stolz–Cesàro 比较的是两个数列的差商与它们自身之比的极限；差商用的是普通的数列极限。' },
+    {
+      id: 'imp.stolz-cesaro',
+      kind: 'implication',
+      sources: ['def.sequence-limit'],
+      target: 'thm.stolz-cesaro',
+      title: 'Stolz–Cesàro 定理的证明（$0/0$ 与 $\\infty/\\infty$）',
+      proof: [
+        '**$0/0$ 型**：设 $y_n>0$、$y_n\\downarrow0$、$x_n\\to0$，且 $\\Delta x_n/\\Delta y_n\\to L$（$\\Delta u_n=u_{n+1}-u_n$，$\\Delta y_n<0$）。对 $N>n$ 有',
+        '$$\\frac{x_n}{y_n}=\\frac{\\sum_{k=n}^{N-1}\\Delta x_k+x_N}{\\sum_{k=n}^{N-1}\\Delta y_k+y_N}.$$',
+        '令 $N\\to\\infty$，$x_N,y_N\\to0$，得 $x_n/y_n=\\sum_{k\\ge n}\\Delta x_k\\big/\\sum_{k\\ge n}\\Delta y_k$，右端是以 $-\\Delta y_k$ 为权的加权平均。当 $n\\to\\infty$ 时权重总质量 $\\sum_{k\\ge n}-\\Delta y_k=y_n\\to0$，且每一项 $\\Delta x_k/\\Delta y_k\\to L$，故加权平均 $\\to L$，即 $x_n/y_n\\to L$。',
+        '**$\\infty/\\infty$ 型**：设 $y_n\\uparrow+\\infty$，$\\Delta x_n/\\Delta y_n\\to L$（$\\Delta y_n>0$）。取 $\\varepsilon>0$，存在 $N$，当 $k\\ge N$ 时 $(L-\\varepsilon)\\Delta y_k\\le\\Delta x_k\\le(L+\\varepsilon)\\Delta y_k$。对 $m>n\\ge N$ 求和得',
+        '$$(L-\\varepsilon)(y_m-y_n)\\le x_m-x_n\\le(L+\\varepsilon)(y_m-y_n),$$',
+        '除以 $y_m$ 并令 $m\\to\\infty$，得 $L-\\varepsilon\\le\\liminf x_m/y_m\\le\\limsup x_m/y_m\\le L+\\varepsilon$；令 $\\varepsilon\\to0$ 即得。$\\blacksquare$'
+      ].join('\n')
+    },
+    {
+      id: 'imp.cesaro-mean',
+      kind: 'implication',
+      sources: ['def.sequence-limit'],
+      target: 'thm.cesaro-mean-limit',
+      title: 'Cesàro 平均的极限：由 $a_n\\to L$ 推出平均 $\\to L$',
+      proof: [
+        '设 $a_n\\to L$，$b_n=\\frac1n\\sum_{k=1}^{n}a_k$。给定 $\\varepsilon>0$，取 $N$ 使 $k>N$ 时 $|a_k-L|<\\varepsilon$。于是对 $n>N$，',
+        '$$|b_n-L|\\le\\frac1n\\sum_{k=1}^{N}|a_k-L|+\\frac{n-N}{n}\\varepsilon .$$',
+        '第一项当 $n\\to\\infty$ 时趋于 $0$（分子固定），故 $\\limsup|b_n-L|\\le\\varepsilon$。令 $\\varepsilon\\to0$，得 $b_n\\to L$。$\\blacksquare$',
+        '**逆命题不真**：$a_n=(-1)^n$ 的平均趋于 $0$，但 $a_n$ 本身不收敛。',
+        '📌 与 Stolz–Cesàro 的关系：取 $y_n=n$、$x_n=\\sum_{k=1}^{n}a_k$，Stolz 的差商 $\\Delta x_n/\\Delta y_n=a_{n+1}$，得到的正是本条；Stolz 是它的推广。'
+      ].join('\n')
+    },
   ]
 });

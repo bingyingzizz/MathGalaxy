@@ -257,7 +257,167 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '⭐ 这是「重排不变」的第二个应用场合：$\\sum c_n$ 就是把二重和 $\\sum_{m, n} a_m b_n$ 按「对角线」重排的结果，而重排合法正是靠绝对收敛。\n\n⚠ **只收敛不绝对收敛时会失败**：$a_n = b_n = \\frac{(-1)^{n}}{\\sqrt{n+1}}$ 时两个级数都收敛，但它们的 Cauchy 乘积发散（通项不趋于零）。\n\n⭐ 这一条是幂级数乘法的依据（两个绝对收敛的幂级数相乘，系数就是卷积）—— 也是后面 `analysis.uniform` 那一包要用到的东西。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3']
-    }
+    },
+    {
+      id: 'thm.ratio-test',
+      cluster: 'analysis.series',
+      type: 'theorem',
+      label: '比值判别法（d\'Alembert）',
+      title: '比值判别法：$\\lim a_{n+1}/a_n$ 与收敛性',
+      regions: ['analysis'],
+      tags: ['定理', '级数', '收敛判别', '比值判别法'],
+      statement: [
+        '设 $a_n>0$，$q=\\lim_{n\\to\\infty}\\frac{a_{n+1}}{a_n}$（极限可以为 $+\\infty$）。则',
+        '1. $q<1$ 时 $\\sum a_n$ 收敛；',
+        '2. $q>1$ 时 $\\sum a_n$ 发散；',
+        '3. $q=1$ 时判别法失效（收敛、发散都可能）。'
+      ].join('\n'),
+      notes: [
+        '**证明**：$q<1$ 时取 $r$ 使 $q<r<1$，则存在 $N$，当 $n\\ge N$ 时 $a_{n+1}\\le r a_n$，故 $a_n\\le C r^n$；与几何级数比较即得收敛。$q>1$ 时取 $r>1$，最终 $a_{n+1}\\ge r a_n$，故 $a_n$ 递增且不趋于 $0$，级数发散。',
+        '**$q=1$ 的两个例子**：$\\sum 1/n$ 发散而 $\\sum 1/n^2$ 收敛，两者都有 $q=1$。',
+        '**极限不存在时**：可用上极限形式 $\\limsup a_{n+1}/a_n<1$ 判收敛、$\\liminf a_{n+1}/a_n>1$ 判发散。',
+        '📌 与根值判别法比较：由 $\\limsup a_n^{1/n}\\le\\limsup a_{n+1}/a_n$（Cauchy 定理），凡比值判别法能判的情形根值判别法也能判；反之不然（如 $a_n=2^{-n}$ 在奇数项加扰动）。'
+      ].join('\n\n'),
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3', 'Knopp, Theory and Application of Infinite Series']
+    },
+    {
+      id: 'thm.raabe-test',
+      cluster: 'analysis.series',
+      type: 'theorem',
+      label: '拉阿伯判别法（Raabe）',
+      title: 'Raabe 判别法：$n(a_n/a_{n+1}-1)$ 的极限',
+      regions: ['analysis'],
+      tags: ['定理', '级数', '收敛判别', 'Raabe 判别法'],
+      statement: [
+        '设 $a_n>0$，$R=\\lim_{n\\to\\infty} n\\Bigl(\\frac{a_n}{a_{n+1}}-1\\Bigr)$。则',
+        '1. $R>1$ 时 $\\sum a_n$ 收敛；',
+        '2. $R<1$ 时 $\\sum a_n$ 发散；',
+        '3. $R=1$ 时判别法失效。'
+      ].join('\n'),
+      notes: [
+        '**与 Kummer 判别法的关系**：在 Kummer 判别法中取 $c_n=n$，则',
+        '$$K_n=c_n\\frac{a_n}{a_{n+1}}-c_{n+1}=n\\frac{a_n}{a_{n+1}}-(n+1)=n\\Bigl(\\frac{a_n}{a_{n+1}}-1\\Bigr)-1\\to R-1 .$$',
+        '$R>1$ 时 $K_n\\ge\\delta>0$，且 $\\sum 1/c_n=\\sum 1/n$ 发散，故收敛；$R<1$ 时 $K_n\\le-\\delta$，故发散（见 `thm.kummer`）。',
+        '**$R=1$ 的两个例子**：$\\sum 1/n$ 有 $R=1$ 且发散；$\\sum 1/n^2$ 有 $n\\bigl(((n+1)/n)^2-1\\bigr)=2+1/n\\to2$，即 $R=2$，收敛。',
+        '📌 比值判别法失效（$q=1$）时可用 Raabe；Raabe 仍失效时用 Bertrand 或 Gauss（`thm.bertrand-test`、`thm.gauss-test`）。'
+      ].join('\n\n'),
+      refs: ['Knopp, Theory and Application of Infinite Series', 'Rudin, Principles of Mathematical Analysis, Ch. 3']
+    },
+    {
+      id: 'thm.gauss-test',
+      cluster: 'analysis.series',
+      type: 'theorem',
+      label: '高斯判别法（Gauss）',
+      title: 'Gauss 判别法：比值展开到 $1/n$ 项',
+      regions: ['analysis'],
+      tags: ['定理', '级数', '收敛判别', 'Gauss 判别法'],
+      statement: [
+        '设 $a_n>0$，且存在 $\\mu\\in\\mathbb{R}$ 与 $\\delta>0$，使',
+        '$$\\frac{a_n}{a_{n+1}}=1+\\frac{\\mu}{n}+O\\Bigl(\\frac{1}{n^{1+\\delta}}\\Bigr)\\qquad(n\\to\\infty).$$',
+        '则 $\\mu>1$ 时 $\\sum a_n$ 收敛；$\\mu\\le1$ 时 $\\sum a_n$ 发散。'
+      ].join('\n'),
+      notes: [
+        '**证明**：$\\mu\\ne1$ 时 Raabe 量 $n(a_n/a_{n+1}-1)=\\mu+O(n^{-\\delta})\\to\\mu$，故 $\\mu>1$ 收敛、$\\mu<1$ 发散（`thm.raabe-test`）。',
+        '$\\mu=1$ 时令 $b_n=n a_n>0$。由展开，',
+        '$$\\frac{b_n}{b_{n+1}}=\\frac{n}{n+1}\\Bigl(1+\\frac1n+O(n^{-1-\\delta})\\Bigr)=1+O(n^{-1-\\delta}).$$',
+        '于是 $\\prod (b_n/b_{n+1})$ 收敛（因为 $\\sum n^{-1-\\delta}<\\infty$），即 $b_n\\to b>0$；故 $a_n\\sim b/n$，由 $p$-级数（$p=1$）发散。',
+        '**例**：$\\sum 1/n$（$\\mu=1$，发散）；$\\sum 1/n^{1+\\varepsilon}$（$\\mu=1+\\varepsilon>1$，收敛）。',
+        '⚠ 展开中的 $O(n^{-1-\\delta})$ 不能放宽成 $O(1/n\\log n)$：后者正是 Bertrand 判别法处理的情形（`thm.bertrand-test`）。'
+      ].join('\n\n'),
+      refs: ['Knopp, Theory and Application of Infinite Series', 'Bromwich, An Introduction to the Theory of Infinite Series']
+    },
+    {
+      id: 'thm.bertrand-test',
+      cluster: 'analysis.series',
+      type: 'theorem',
+      label: '贝特朗判别法（Bertrand）',
+      title: 'Bertrand 判别法：比值展开到 $1/(n\\log n)$ 项',
+      regions: ['analysis'],
+      tags: ['定理', '级数', '收敛判别', 'Bertrand 判别法'],
+      statement: [
+        '设 $a_n>0$，且存在 $\\beta\\in\\mathbb{R}$，使',
+        '$$\\frac{a_n}{a_{n+1}}=1+\\frac1n+\\frac{\\beta}{n\\log n}+o\\Bigl(\\frac{1}{n\\log n}\\Bigr)\\qquad(n\\to\\infty).$$',
+        '则 $\\beta>1$ 时 $\\sum a_n$ 收敛；$\\beta<1$ 时 $\\sum a_n$ 发散；$\\beta=1$ 时判别法失效。'
+      ].join('\n'),
+      notes: [
+        '**与 Kummer 判别法的关系**：取 $c_n=n\\log n$（$n\\ge2$），则',
+        '$$K_n=c_n\\frac{a_n}{a_{n+1}}-c_{n+1}=n\\log n\\Bigl(1+\\frac1n+\\frac{\\beta}{n\\log n}+o(\\cdot)\\Bigr)-(n+1)\\log(n+1).$$',
+        '用 $(n+1)\\log(n+1)=n\\log n+\\log n+1+O(1/n)$ 展开，得 $K_n=\\beta-1+o(1)$。又 $\\sum 1/c_n=\\sum 1/(n\\log n)$ 发散（`thm.integral-test`，$\\int dx/(x\\log x)=\\log\\log x$），故 $\\beta>1$ 收敛、$\\beta<1$ 发散。',
+        '**$\\beta=1$ 的两个例子**：$\\sum 1/(n\\log n)$ 发散（$\\beta=1$）；$\\sum 1/(n\\log n(\\log\\log n)^2)$ 收敛（同样 $\\beta=1$，但积分 $\\int dx/(x\\log x(\\log\\log x)^2)$ 收敛）。',
+        '⚠ 这里的「发散/收敛」来自 Kummer 判别法的两个方向，不是单靠 Raabe：Raabe 在 $\\beta$ 任意时都只看到 $R=1$。'
+      ].join('\n\n'),
+      refs: ['Knopp, Theory and Application of Infinite Series', 'Bromwich, An Introduction to the Theory of Infinite Series']
+    },
+    {
+      id: 'def.bernoulli-number',
+      cluster: 'analysis.series',
+      type: 'definition',
+      label: '伯努利数',
+      title: 'Bernoulli 数：递推与生成函数',
+      regions: ['analysis'],
+      tags: ['定义', '伯努利数', '生成函数', 'Euler–Maclaurin'],
+      statement: [
+        '**Bernoulli 数** $B_n$ 由 $B_0=1$ 与递推',
+        '$$\\sum_{k=0}^{n}\\binom{n+1}{k}B_k=0\\qquad(n\\ge1)$$',
+        '确定。等价地，作为形式幂级数（`def.formal-power-series`）',
+        '$$\\frac{t}{e^t-1}=\\sum_{n\\ge0}B_n\\frac{t^n}{n!}.$$',
+        '前几项：$B_0=1$，$B_1=-\\tfrac12$，$B_2=\\tfrac16$，$B_3=0$，$B_4=-\\tfrac1{30}$，$B_6=\\tfrac1{42}$；且 $B_{2k+1}=0$ 对 $k\\ge1$。'
+      ].join('\n'),
+      notes: [
+        '**递推的来历**：$\\frac{t}{e^t-1}\\cdot\\frac{e^t-1}{t}=1$，而 $\\frac{e^t-1}{t}=\\sum_{n\\ge0}\\frac{t^n}{(n+1)!}$；比较 $t^n$ 系数即得递推。',
+        '**Bernoulli 多项式**：$B_n(x)=\\sum_{k=0}^{n}\\binom{n}{k}B_k x^{n-k}$，满足 $B_n\'(x)=nB_{n-1}(x)$ 与 $B_n(x+1)-B_n(x)=nx^{n-1}$；Euler–Maclaurin 公式里的周期函数是 $B_n(\\{x\\})$。',
+        '**约定警告**：不同教材对 $B_1$ 取 $+\\frac12$ 或 $-\\frac12$；本图取 $B_1=-\\frac12$，与生成函数 $t/(e^t-1)$ 一致。',
+        '📌 用途：Euler–Maclaurin 求和（`thm.euler-maclaurin`）、$\\zeta(2n)$ 的闭式、Stirling 公式的渐近展开、数值积分中的梯形修正。'
+      ].join('\n\n'),
+      refs: ['Aigner–Ziegler, Proofs from THE BOOK', 'Graham–Knuth–Patashnik, Concrete Mathematics, Ch. 6']
+    },
+    {
+      id: 'thm.euler-maclaurin',
+      cluster: 'analysis.series',
+      type: 'theorem',
+      label: '欧拉–麦克劳林公式',
+      title: 'Euler–Maclaurin 求和公式',
+      regions: ['analysis'],
+      tags: ['定理', '求和', '伯努利数', '渐近展开'],
+      statement: [
+        '设 $f\\in C^{2m}[a,b]$，$a<b$ 为整数。记 $B_n(\\{x\\})$ 为周期 Bernoulli 多项式（$B_1(\\{x\\})=\\{x\\}-\\tfrac12$）。则',
+        '$$\\sum_{k=a}^{b}f(k)=\\int_a^b f(x)\\,dx+\\frac{f(a)+f(b)}{2}+\\sum_{r=1}^{m}\\frac{B_{2r}}{(2r)!}\\bigl(f^{(2r-1)}(b)-f^{(2r-1)}(a)\\bigr)+R_m,$$',
+        '其中余项',
+        '$$R_m=-\\int_a^b\\frac{B_{2m}(\\{x\\})}{(2m)!}\\,f^{(2m)}(x)\\,dx .$$'
+      ].join('\n'),
+      notes: [
+        '**证明路线（分部积分 + 望远镜）**：在 $[k,k+1]$ 上对 $f$ 与 $B_1(\\{x\\})=\\{x\\}-\\frac12$ 分部积分，得',
+        '$$f(k)=\\int_k^{k+1}f(x)\\,dx-\\int_k^{k+1}B_1(\\{x\\})f\'(x)\\,dx+\\frac{f(k)-f(k+1)}{2}.$$',
+        '对 $k=a,\\ldots,b-1$ 求和，端点项合并为 $\\frac{f(a)+f(b)}{2}$。再用 $B_n\'(x)=nB_{n-1}(x)$ 反复分部积分（每次把 $B_{2r-1}$ 换成 $\\frac{1}{2r}B_{2r}$），周期函数在整数点连续、边界项望远镜，即得 $2r$ 阶项；归纳到 $2m$ 阶余项。',
+        '**$m=1$ 检验**：取 $f(x)=x^2$、$[a,b]=[0,2]$：左端 $0+1+4=5$；右端 $\\frac83+\\frac{0+4}{2}+\\frac{1}{12}(4-0)=5$，余项 $R_1=-\\int_0^2\\frac{B_2(\\{x\\})}{2}\\cdot2\\,dx=0$（$B_2$ 在 $[0,1]$ 上积分为零）。',
+        '**用途**：调和数 $H_n=\\log n+\\gamma+\\frac1{2n}-\\frac1{12n^2}+O(n^{-4})$、Stirling 公式、$\\zeta(2n)$ 的闭式、梯形公式的误差展开。',
+        '⚠ 余项只保证 $C^{2m}$ 时的积分形式；若 $f^{(2m)}$ 不变号，可给出余项的符号与大小估计。'
+      ].join('\n\n'),
+      refs: ['Apostol, Mathematical Analysis, Ch. 12', 'Graham–Knuth–Patashnik, Concrete Mathematics, Ch. 9']
+    },
+    {
+      id: 'lem.abel-summation',
+      cluster: 'analysis.series',
+      type: 'lemma',
+      label: '阿贝尔求和（分部求和）',
+      title: 'Abel 分部求和：有限和恒等式与 Dirichlet 判别法',
+      regions: ['analysis'],
+      tags: ['引理', '级数', '分部求和', 'Dirichlet 判别法'],
+      statement: [
+        '设 $(a_n),(b_n)$ 为数列，$A_n=\\sum_{k=1}^{n}a_k$（$A_0=0$）。则对 $n\\ge1$，',
+        '$$\\sum_{k=1}^{n}a_kb_k=A_nb_n-\\sum_{k=1}^{n-1}A_k(b_{k+1}-b_k).$$',
+        '**推论（Dirichlet 判别法）**：若 $A_n$ 有界、$b_n$ 单调递减且 $b_n\\to0$，则 $\\sum a_nb_n$ 收敛。'
+      ].join('\n'),
+      notes: [
+        '**证明**：由 $a_k=A_k-A_{k-1}$，',
+        '$$\\sum_{k=1}^{n}a_kb_k=\\sum_{k=1}^{n}(A_k-A_{k-1})b_k=\\sum_{k=1}^{n}A_kb_k-\\sum_{k=1}^{n-1}A_kb_{k+1}=A_nb_n-\\sum_{k=1}^{n-1}A_k(b_{k+1}-b_k).$$',
+        '**推论的证明**：设 $|A_n|\\le M$、$b_n\\downarrow0$。对 $n>m$，',
+        '$$\\Bigl|\\sum_{k=m+1}^{n}a_kb_k\\Bigr|=\\Bigl|A_nb_n-A_mb_m+\\sum_{k=m+1}^{n-1}A_k(b_k-b_{k+1})\\Bigr|\\le M\\Bigl(b_n+b_m+\\sum_{k=m+1}^{n-1}(b_k-b_{k+1})\\Bigr)\\le3Mb_{m+1}\\to0,$$',
+        '由 Cauchy 准则得收敛（`thm.cauchy-criterion-series`）。',
+        '📌 这条是 `thm.abel-dirichlet-series` 里 Dirichlet 判别法的离散原型：后者把 $A_n$ 换成部分和、$b_n$ 换成 $b(x)$，连续情形用第二中值定理。'
+      ].join('\n\n'),
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3', 'Knopp, Theory and Application of Infinite Series']
+    },
   ],
 
   edges: [
@@ -492,6 +652,126 @@ window.MG = window.MG || {};
         '**反例（不绝对收敛时失败）**：取 $a_n = b_n = \\frac{(-1)^{n}}{\\sqrt{n+1}}$，两个级数由 Abel–Dirichlet 收敛，但 $c_n = (-1)^{n}\\sum_{k \\le n} \\frac{1}{\\sqrt{(k+1)(n-k+1)}}$ 的绝对值 $\\ge \\frac{2(n+1)}{n+2} \\to 2$，故 $c_n \\not\\to 0$，乘积级数发散。\n\n∎'
       ].join('\n'),
       note: '第 2 步把「一维绝对收敛」升级成「二重绝对收敛」，这一步是全部技术的来源：二重和可以按任何顺序累加 —— 包括按对角线。'
-    }
+    },
+    {
+      id: 'imp.kummer-ratio',
+      kind: 'implication',
+      sources: ['thm.kummer'],
+      target: 'thm.ratio-test',
+      title: '比值判别法：Kummer 取 $c_n=1$',
+      proof: [
+        '在 Kummer 判别法（`thm.kummer`）中取 $c_n=1$。则 $K_n=\\frac{a_n}{a_{n+1}}-1\\to q-1$。',
+        '$q>1$：$\\liminf K_n=q-1>0$，由 Kummer 的收敛支得 $\\sum a_n$ 收敛。',
+        '$q<1$：$K_n\\to q-1<0$，故最终 $K_n\\le0$；又 $\\sum 1/c_n=\\sum1$ 发散，由 Kummer 的发散支得发散。',
+        '$q=1$：$K_n\\to0$，Kummer 两支都不适用（$\\sum1/n$ 与 $\\sum1/n^2$ 都是 $q=1$ 而敛散不同）。$\\blacksquare$'
+      ].join('\n')
+    },
+    {
+      id: 'def-link.ratio-series',
+      kind: 'definition',
+      definition: 'def.series',
+      usedBy: 'thm.ratio-test',
+      note: '比值判别法判的是正项级数的收敛性。' },
+    {
+      id: 'imp.kummer-raabe',
+      kind: 'implication',
+      sources: ['thm.kummer'],
+      target: 'thm.raabe-test',
+      title: 'Raabe 判别法：Kummer 取 $c_n=n$',
+      proof: [
+        '在 Kummer 判别法中取 $c_n=n$。则',
+        '$$K_n=n\\frac{a_n}{a_{n+1}}-(n+1)=n\\Bigl(\\frac{a_n}{a_{n+1}}-1\\Bigr)-1\\to R-1 .$$',
+        '$R>1$：$\\liminf K_n=R-1>0$，由收敛支得收敛；且 $\\sum1/c_n=\\sum1/n$ 发散，符合 Kummer 的假设（收敛支只需要 $c_n>0$，此处仍可用）。',
+        '$R<1$：$K_n\\to R-1<0$，最终 $K_n\\le0$；$\\sum1/n$ 发散，由发散支得发散。',
+        '$R=1$：$\\sum1/n$ 与 $\\sum1/n^2$ 都给出 $R=1$（前者收敛性相反），故无结论。$\\blacksquare$'
+      ].join('\n')
+    },
+    {
+      id: 'imp.kummer-gauss',
+      kind: 'implication',
+      sources: ['thm.raabe-test', 'thm.p-series'],
+      target: 'thm.gauss-test',
+      title: 'Gauss 判别法：由 Raabe 处理 $\\mu\\ne1$，$\\mu=1$ 单独比较',
+      proof: [
+        '设 $\\frac{a_n}{a_{n+1}}=1+\\frac{\\mu}{n}+O(n^{-1-\\delta})$，$\\delta>0$。',
+        '$\\mu\\ne1$：Raabe 量 $n\\bigl(\\frac{a_n}{a_{n+1}}-1\\bigr)=\\mu+O(n^{-\\delta})\\to\\mu$，故 $\\mu>1$ 收敛、$\\mu<1$ 发散（`thm.raabe-test`）。',
+        '$\\mu=1$：令 $b_n=na_n>0$。由展开',
+        '$$\\frac{b_n}{b_{n+1}}=\\frac{n}{n+1}\\Bigl(1+\\frac1n+O(n^{-1-\\delta})\\Bigr)=1+O(n^{-1-\\delta}).$$',
+        '因为 $\\sum n^{-1-\\delta}<\\infty$，无穷乘积 $\\prod b_n/b_{n+1}$ 收敛到正数，故 $b_n\\to b>0$，即 $a_n\\sim b/n$。由 $p$-级数 $p=1$ 发散（`thm.p-series`）得 $\\sum a_n$ 发散。$\\blacksquare$'
+      ].join('\n')
+    },
+    {
+      id: 'imp.kummer-bertrand',
+      kind: 'implication',
+      sources: ['thm.kummer', 'thm.integral-test', 'def.log-function'],
+      target: 'thm.bertrand-test',
+      title: 'Bertrand 判别法：Kummer 取 $c_n=n\\log n$',
+      proof: [
+        '设 $\\frac{a_n}{a_{n+1}}=1+\\frac1n+\\frac{\\beta}{n\\log n}+o\\bigl(\\frac1{n\\log n}\\bigr)$，取 $c_n=n\\log n$（$n\\ge2$）。则',
+        '$$K_n=n\\log n\\cdot\\frac{a_n}{a_{n+1}}-(n+1)\\log(n+1).$$',
+        '把 $(n+1)\\log(n+1)=n\\log n+\\log n+1+O(1/n)$ 与 $n\\log n\\cdot\\frac{a_n}{a_{n+1}}=n\\log n+\\log n+\\beta+o(1)$ 相减，得 $K_n=\\beta-1+o(1)$。',
+        '$\\beta>1$：$\\liminf K_n>0$，由 Kummer 收敛支得收敛（收敛支不需要 $\\sum1/c_n$ 的条件）。',
+        '$\\beta<1$：最终 $K_n\\le0$；又 $\\sum1/(n\\log n)$ 发散（`thm.integral-test`，$\\int_2^{N}\\frac{dx}{x\\log x}=\\log\\log N$），由发散支得发散。',
+        '$\\beta=1$：$K_n\\to0$，两个例子 $\\sum1/(n\\log n)$ 与 $\\sum1/(n\\log n(\\log\\log n)^2)$ 都满足 $\\beta=1$ 而敛散不同，故无结论。$\\blacksquare$'
+      ].join('\n')
+    },
+    {
+      id: 'def-link.bern-power',
+      kind: 'definition',
+      definition: 'def.power-series',
+      usedBy: 'def.bernoulli-number',
+      note: 'Bernoulli 数的生成函数 $t/(e^t-1)$ 是形式幂级数；解析上它在 $|t|<2\\pi$ 内收敛。' },
+    {
+      id: 'def-link.bern-exp',
+      kind: 'definition',
+      definition: 'def.exp-function',
+      usedBy: 'def.bernoulli-number',
+      note: '生成函数的分母 $e^t-1$ 用指数函数。' },
+    {
+      id: 'def-link.bern-euler',
+      kind: 'definition',
+      definition: 'def.bernoulli-number',
+      usedBy: 'thm.euler-maclaurin',
+      note: 'Euler–Maclaurin 的修正项系数是 Bernoulli 数 $B_{2r}/(2r)!$。' },
+    {
+      id: 'imp.euler-maclaurin',
+      kind: 'implication',
+      sources: ['def.bernoulli-number', 'prop.integration-by-parts', 'def.riemann-integrable'],
+      target: 'thm.euler-maclaurin',
+      title: 'Euler–Maclaurin 公式：逐区间分部积分再望远镜',
+      proof: [
+        '记 $P_n(x)=B_n(\\{x\\})$（周期 Bernoulli 多项式），则 $P_1(x)=\\{x\\}-\\frac12$，且对 $n\\ge2$，$P_n\'=nP_{n-1}$（整数点外），$P_n$ 在整数点连续。',
+        '**第一步**：在 $[k,k+1]$ 上分部积分（`prop.integration-by-parts`，$f\\in C^{2m}$ 故可积），',
+        '$$\\int_k^{k+1}P_1(x)f\'(x)\\,dx=\\Bigl[P_1f\\Bigr]_k^{k+1}-\\int_k^{k+1}P_1\'f=\\frac{f(k+1)+f(k)}{2}-\\int_k^{k+1}f .$$',
+        '（$P_1$ 在整数点的跳跃贡献恰为端点值。）移项得',
+        '$$f(k)=\\int_k^{k+1}f(x)\\,dx+\\frac{f(k)-f(k+1)}{2}+\\int_k^{k+1}P_1(x)f\'(x)\\,dx .$$',
+        '**第二步**：对 $k=a,\\ldots,b-1$ 求和，左端加 $f(b)$ 后得',
+        '$$\\sum_{k=a}^{b}f(k)=\\int_a^bf(x)\\,dx+\\frac{f(a)+f(b)}{2}+\\int_a^bP_1(x)f\'(x)\\,dx .$$',
+        '**第三步（归纳）**：设已有 $\\int_a^bP_{2r-1}f^{(2r-1)}=\\frac{B_{2r}}{(2r)!}\\bigl(f^{(2r-1)}(b)-f^{(2r-1)}(a)\\bigr)-\\int_a^b\\frac{P_{2r}}{(2r)!}f^{(2r)}$。用 $P_{2r}\'=2rP_{2r-1}$ 与 $P_{2r}$ 在整数点连续，逐区间分部积分并求和，边界项只剩 $a,b$ 两端，得 $2r$ 阶项与下一阶余项。归纳到 $2m$ 即得公式与余项。',
+        '**$m=1$ 检验**：$f=x^2$、$[0,2]$：左端 $0+1+4=5$；右端 $\\frac83+2+\\frac1{12}(4-0)=5$，$R_1=-\\int_0^2\\frac{P_2}{2}\\cdot2\\,dx=0$（$P_2$ 在一个周期上积分为零）。$\\blacksquare$'
+      ].join('\n')
+    },
+    {
+      id: 'def-link.em-derivative',
+      kind: 'definition',
+      definition: 'def.derivative',
+      usedBy: 'thm.euler-maclaurin',
+      note: '公式中的 $f^{(2r-1)}$ 是普通高阶导数。' },
+    {
+      id: 'imp.abel-summation',
+      kind: 'implication',
+      sources: ['def.series', 'thm.cauchy-criterion-series'],
+      target: 'lem.abel-summation',
+      title: 'Abel 分部求和与 Dirichlet 判别法',
+      proof: [
+        '**恒等式**：由 $a_k=A_k-A_{k-1}$（$A_0=0$），',
+        '$$\\sum_{k=1}^{n}a_kb_k=\\sum_{k=1}^{n}(A_k-A_{k-1})b_k=\\sum_{k=1}^{n}A_kb_k-\\sum_{k=1}^{n-1}A_kb_{k+1}=A_nb_n-\\sum_{k=1}^{n-1}A_k(b_{k+1}-b_k).$$',
+        '**Dirichlet 判别法**：设 $|A_n|\\le M$、$b_n\\downarrow0$。对 $n>m$，',
+        '$$\\sum_{k=m+1}^{n}a_kb_k=A_nb_n-A_mb_m+\\sum_{k=m+1}^{n-1}A_k(b_k-b_{k+1}),$$',
+        '故',
+        '$$\\Bigl|\\sum_{k=m+1}^{n}a_kb_k\\Bigr|\\le M\\Bigl(b_n+b_m+\\sum_{k=m+1}^{n-1}(b_k-b_{k+1})\\Bigr)\\le3Mb_{m+1}\\to0\\qquad(m\\to\\infty).$$',
+        '由 Cauchy 准则（`thm.cauchy-criterion-series`）得 $\\sum a_nb_n$ 收敛。$\\blacksquare$'
+      ].join('\n')
+    },
   ]
 });

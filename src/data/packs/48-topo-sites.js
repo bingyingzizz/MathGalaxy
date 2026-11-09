@@ -133,7 +133,7 @@ window.MG = window.MG || {};
         '**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。',
         '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **景的态射**。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.4']
     },
 
     /* -------------------------------------------------- 景的态射 */
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
         '**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在景这一层先保有限极限。',
         '**几何直觉**：空间之间的连续映射给出景的态射；景的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「景」换成「层范畴」。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.4']
     },
 
     /* -------------------------------------------------- 余连续函子 */
@@ -171,7 +171,7 @@ window.MG = window.MG || {};
         '⚠ 与**连续函子**（`def.continuous-functor`：$f^{-1}$ 把层拉回还是层）方向不同、条件也不同 —— 一个管拉回、一个管推出，景的态射要两边都有，⛔ 别把两条当对偶成同一条。',
       ].join('\n'),
       statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个景之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。',
-      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.4']
     },
 
     /* -------------------------------------------------- 诱导拓扑 */

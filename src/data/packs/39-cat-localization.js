@@ -34,7 +34,7 @@ window.MG = window.MG || {};
         '本图的范畴论部分一律相对一个固定的 Grothendieck 宇宙 $U$（`ax.grothendieck-universe`）来谈大小 ——两个对象之间的分式链可能**多到 $U$ 装不下**（即这堆链本身不在 $U$ 里），于是 $\\operatorname{Hom}$ 不是集合，Hom 也就无从下手。\n\n' +
         '下面那条命题说的就是「什么时候它的每个 Hom 都老老实实是 $U$ 里的集合」（即局部小）。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.5']
     },
 
     {
@@ -69,7 +69,7 @@ window.MG = window.MG || {};
         '- 现有图中左腿标为 $v$、上腿标为 $g$，对屋顶 $X\\xleftarrow{w}X\'\\to Y$ 的常用约定，所需的是上腿 $g$ 属于 $W$；相应消去式应是 $wf=wg$ 推出 $fv=gv$。原文把两套对偶约定混用，本图未核对该步，记为缺口，不能按现有标注直接套定理。\n' +
         '- 没有 Ore 条件仍可作小范畴的形式局部化，但单屋顶不一定封闭：在只有 $X\\to Z\\leftarrow Y$ 的自由范畴中仅反转 $Y\\to Z$，会产生 $X\\to Y$，原范畴却没有以 $X$ 为左端的相应屋顶。\n'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.5']
     }
   ],
 

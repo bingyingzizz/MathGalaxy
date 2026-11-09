@@ -1538,6 +1538,17 @@ MG.aliases = {
     { id: 'prop.lie-group-orientable', en: 'Lie groups are orientable', aka: ['李群可定向', '李群都是可定向流形'] },
     { id: 'prop.pi1-group', en: 'π₁ is a group', aka: ['基本群是群', 'π1 是群'] },
     { id: 'prop.simply-connected-basepoint', en: 'simple connectivity is basepoint-independent', aka: ['单连通与基点无关', '单连通不依赖基点'] },
+    { id: 'thm.stolz-cesaro', en: 'Stolz–Cesàro theorem', aka: ['Stolz-Cesaro theorem', 'Stolz–Cesàro', '施托尔茨-切萨罗定理', 'Stolz 定理'] },
+    { id: 'thm.cesaro-mean-limit', en: 'Cesàro mean limit', aka: ['Cesàro mean', 'Cesaro summation', '切萨罗平均', 'Cesàro 求和'] },
+    { id: 'thm.ratio-test', en: 'ratio test', aka: ['d\'Alembert ratio test', '比值判别法', '达朗贝尔判别法'] },
+    { id: 'thm.raabe-test', en: 'Raabe\'s test', aka: ['Raabe test', '拉阿贝判别法', 'Raabe 判别法'] },
+    { id: 'thm.gauss-test', en: 'Gauss\'s test', aka: ['Gauss test', '高斯判别法', 'Gauss 判别法'] },
+    { id: 'thm.bertrand-test', en: 'Bertrand\'s test', aka: ['Bertrand test', '贝特朗判别法', 'Bertrand 判别法'] },
+    { id: 'def.bernoulli-number', en: 'Bernoulli number', aka: ['Bernoulli numbers', '伯努利数', '伯努利序列'] },
+    { id: 'thm.euler-maclaurin', en: 'Euler–Maclaurin formula', aka: ['Euler-Maclaurin summation', '欧拉-麦克劳林公式', '欧拉–麦克劳林求和'] },
+    { id: 'lem.abel-summation', en: 'Abel summation', aka: ['summation by parts', 'Abel transformation', '阿贝尔求和', '分部求和'] },
+    { id: 'def.formal-power-series', en: 'formal power series', aka: ['formal power series ring', '形式幂级数', '形式幂级数环'] },
+    { id: 'thm.lagrange-inversion', en: 'Lagrange inversion', aka: ['Lagrange inversion theorem', 'Lagrange–Bürmann formula', '拉格朗日反演', '拉格朗日反演定理'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

@@ -151,7 +151,7 @@ window.MG = window.MG || {};
         '两条立刻可用的推论：**$P$ 投射时任何满态射 $Y \\twoheadrightarrow P$ 都有截面**；**若 $X \\to Y$ 有收缩而 $Y$ 投射，则 $X$ 也投射**（内射的情形对偶）。',
         '在 $\\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \\twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.3']
     },
 
     /* ----------------------------------------- 自由紧 Haus 是投射的 */
@@ -191,7 +191,7 @@ window.MG = window.MG || {};
         '自由表示就是把这件事搬进 $\\mathbf{CHaus}$：$R$ 是「把像相同的点粘起来」那个等价关系，而第三条要求 $R$ 自己也能由一个自由紧 Hausdorff 空间满射过来 —— 于是整个 $S$ 由自由对象经过一次余等化子造出来。',
         '$\\mathbf{CHaus}$ 里有余等化子，所以 $\\operatorname{coker}(R \\rightrightarrows F)$ 存在；它就是商空间 $F/R$。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2.1']
     },
 
     /* --------------------------------------------- 自由表示的存在性 */
@@ -205,7 +205,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '自由表示', '存在性'],
       statement: '每个紧 Hausdorff 空间 $S$ 都有自由表示。',
       notes: '取 $F = \\beta S^{\\mathrm{disc}}$（前一条命题：$F \\twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \\times_{S} S$ 再做一次，得到 $F\' \\twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎',
-      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2.1']
     },
 
     /* ------------------------------------------ 连通分量是闭开之交 */

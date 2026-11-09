@@ -127,7 +127,7 @@ window.MG = window.MG || {};
         '- 偏序看成范畴时，上界与非空 $\\implies$ 滤过：平行箭头至多一条，第三条自动；一般范畴不能删第三条，非平凡群看成单对象范畴即反例。\n' +
         '- 非空条件不能删：空范畴真空满足后两条，却没有空图的余锥。换成共尾有向集的进一步定理还要小性约定及相应集合论构造，不属于这组定义等价。\n'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.1']
     },
 
     /* --------------------------------- 滤过范畴可被有向集替换 */
@@ -191,7 +191,7 @@ window.MG = window.MG || {};
         ].join('\n'),
         '说一个函子 **left exact**（左正合），指它保所有**有限**极限 —— 所以右正合就是保所有有限余极限，「正合」是两者都对。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.2（Proposition 1.4.5, p. 26–27）']
     }
   ],
 
