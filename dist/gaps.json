@@ -1,14 +1,22 @@
 {
- "generated": "2026-11-08T06:44:52.563Z",
+ "generated": "2026-11-09T04:06:10.986Z",
  "terms": 76,
  "missing": [
   {
    "term": "单位圆",
-   "total": 29,
+   "total": 32,
    "nodes": [
     {
      "id": "thm.integral-trig",
      "c": 4
+    },
+    {
+     "id": "thm.boundary-correspondence",
+     "c": 2
+    },
+    {
+     "id": "lem.caratheodory-osgood",
+     "c": 2
     },
     {
      "id": "thm.euler-formula",
@@ -44,14 +52,6 @@
     },
     {
      "id": "thm.riemann-mapping",
-     "c": 1
-    },
-    {
-     "id": "def.analytic-continuation",
-     "c": 1
-    },
-    {
-     "id": "thm.runge",
      "c": 1
     }
    ]
