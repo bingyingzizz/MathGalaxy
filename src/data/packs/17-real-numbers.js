@@ -136,7 +136,7 @@ window.MG = window.MG || {};
         '',
         '**一致连续**是更强的要求：$\\delta$ 只依赖 $\\varepsilon$，不依赖 $x_0$。'
       ].join('\n'),
-      notes: '⭐ 把 $|x - x_0| < \\delta$、$|f(x) - f(x_0)| < \\varepsilon$ 换成距离 $d$，这个定义原封不动地搬到距离空间 —— 这也正是距离空间的定义为什么长成那样。\n\n⚠ **连续 $\\ne$ 一致连续**：$f(x) = x^2$ 在 $\\mathbb{R}$ 上连续但不一致连续（$x$ 越大需要的 $\\delta$ 越小）。\n\n紧区间上两者才重合。\n\n📌 本节点是判据不是定义；定义在 `def.metric-continuity`，$\\mathbb{R}$ 的度量在 `def.real-metric-space`。',
+      notes: '⭐ 把 $|x - x_0| < \\delta$、$|f(x) - f(x_0)| < \\varepsilon$ 换成距离 $d$，这个定义原封不动地搬到距离空间 —— 这也正是距离空间的定义为什么长成那样。\n\n⚠ **连续 $\\ne$ 一致连续**：$f(x) = x^2$ 在 $\\mathbb{R}$ 上连续但不一致连续（$x$ 越大需要的 $\\delta$ 越小）。\n\n紧区间上两者才重合。\n\n📌 本节点是判据不是定义；定义在 `def.metric-continuity`，$\\mathbb{R}$ 的度量在 `def.real-metric-space`。一般拓扑意义下的连续映射见 `def.continuous-map`，本条是它在度量情形下的特例。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 4']
     },
     {
@@ -197,7 +197,7 @@ window.MG = window.MG || {};
         '在 $\\mathbb{R}$ 上定义 $d(x, y) = |x - y|$。则 $(\\mathbb{R}, d)$ 是完备的可分度量空间，其度量拓扑就是 $\\mathbb{R}$ 的标准拓扑（开区间为基）。'
       ].join('\n'),
       notes: [
-        '完备性：Cauchy 列的极限存在（实数完备性，`thm.real-complete`）。可分性：$\\mathbb{Q}$ 在 $\\mathbb{R}$ 中稠密。',
+        '完备性：Cauchy 列的极限存在（实数完备性，`thm.real-complete-metric`）。可分性：$\\mathbb{Q}$ 在 $\\mathbb{R}$ 中稠密。',
         '度量拓扑 = 标准拓扑：$B(x_0, \\varepsilon) = (x_0 - \\varepsilon, x_0 + \\varepsilon)$，故开区间是基；反过来每个开集都是开区间的并。',
         '⭐ 这条把「$\\mathbb{R}$ 上连续」的 $\\varepsilon$-$\\delta$ 语言与度量空间/拓扑空间的连续性语言接上：见 `def.metric-continuity` 与 `def.continuous`。'
       ].join('\n\n'),
@@ -295,6 +295,9 @@ window.MG = window.MG || {};
     { id: 'def-link.mc-continuous', kind: 'definition', definition: 'def.metric-continuity',
       usedBy: 'def.continuous',
       note: '本定理是度量连续在 $\\mathbb{R}$ 上的具体写法。' },
+    { id: 'def-link.realmetric-continuous', kind: 'definition', definition: 'def.real-metric-space',
+      usedBy: 'def.continuous',
+      note: '$\\mathbb{R}$ 上的 $\\varepsilon$-$\\delta$ 语言就是度量连续在 $(\\mathbb{R}, |x-y|)$ 上的写法。' },
     { id: 'def-link.realmetric-metric', kind: 'definition', definition: 'def.metric-space',
       usedBy: 'def.real-metric-space',
       note: '$d(x,y) = |x-y|$ 满足度量三公理。' },
@@ -329,6 +332,9 @@ window.MG = window.MG || {};
       note: 'Dini 导数就是普通差商的四个单侧上、下极限；普通导数是四者相等的情形。' },
     { id: 'def-link.dini-limsup', kind: 'definition', definition: 'def.limsup-liminf',
       usedBy: 'def.dini-derivative',
-      note: '四个 Dini 导数用差商的 $\\limsup$ 与 $\\liminf$ 定义。' }
+      note: '四个 Dini 导数用差商的 $\\limsup$ 与 $\\liminf$ 定义。' },
+    { id: 'def-link.continuous-specialcase', kind: 'definition', definition: 'def.continuous-map',
+      usedBy: 'def.continuous',
+      note: '$\\mathbb{R}\\to\\mathbb{R}$ 的 $\\varepsilon$-$\\delta$ 判据是「连续映射」定义在度量空间上的特例。反方向不成立：连续映射的定义单独推不出 $\\varepsilon$-$\\delta$ 判据，还要用到 $\\mathbb{R}$ 的度量结构。' }
   ]
 });

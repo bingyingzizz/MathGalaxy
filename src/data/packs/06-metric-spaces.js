@@ -555,6 +555,9 @@ window.MG = window.MG || {};
         '于是 $B_X(x_0, \\delta) \\subseteq f^{-1}(V)$，即 $f^{-1}(V)$ 在 $X$ 中开；按 `def.continuous-map` 的定义 $f$ 连续。$\\blacksquare$'
       ].join('\n'),
       note: '反向（拓扑连续 $\\implies$ $\\varepsilon$-$\\delta$）同样直接：$B_Y(f(x_0), \\varepsilon)$ 开，原像开给 $\\delta$。'
-    }
+    },
+    { id: 'def-link.realmetric-metriccont', kind: 'definition', definition: 'def.real-metric-space',
+      usedBy: 'def.metric-continuity',
+      note: '度量连续性用在 $\\mathbb{R}$ 上、取 $d(x,y) = |x-y|$ 就是经典的 $\\varepsilon$-$\\delta$ 定义。' }
   ]
 });

@@ -529,7 +529,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.nt-newman',
       kind: 'implication',
-      sources: ['lem.newman-tauberian', 'thm.chebyshev-estimate'],
+      sources: ['lem.newman-tauberian', 'thm.chebyshev-estimate', 'thm.euler-product'],
       target: 'thm.prime-number-theorem',
       title: 'Newman 解析定理闭合素数定理的最后一步',
       proof: [
@@ -541,7 +541,7 @@ window.MG = window.MG || {};
         '',
         '再由 $\\int_{T}^{T+\\varepsilon}f\\to0$ 与 $\\psi$ 单调：令 $h(t)=\\psi(e^{t})e^{-t}$，则 $e^{-\\varepsilon}h(T)\\le\\frac1\\varepsilon\\int_{T}^{T+\\varepsilon}h\\le e^{\\varepsilon}h(T+\\varepsilon)$，令 $T\\to\\infty$ 得 $\\limsup h\\le e^{\\varepsilon}$、$\\liminf h\\ge e^{-\\varepsilon}$，再令 $\\varepsilon\\to0$ 得 $h\\to1$，即 $\\psi(x)\\sim x$。最后用引理 1–4（$\\psi\\sim x\\iff\\theta\\sim x\\iff\\pi\\sim x/\\log x$）得 $\\pi(x)\\sim x/\\log x$。∎',
       ].join('\n\n'),
-      note: '这条边是素数定理链条上最后一块：命题 A（$\\zeta$ 无零点）在 PNT 注里已完整，命题 B 就是 `lem.newman-tauberian` 节点。两边一接，PNT 不再有缺口。',
+      note: '这条边是素数定理链条上最后一块：命题 A（$\\zeta$ 无零点）在 PNT 注里已完整，命题 B 就是 `lem.newman-tauberian` 节点。两边一接，PNT 不再有缺口。其余前提（$\\zeta$ 的解析性质、$\\pi$ 与 $\\psi$ 的换算）见 `thm.prime-number-theorem` 与 `def.prime-counting` 的注，不另列 sources。',
     },
     {
       id: 'imp.newman-cauchy-residue',

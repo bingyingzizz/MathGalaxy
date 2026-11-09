@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T12:17:46.684Z",
+ "generated": "2026-11-09T12:48:19.479Z",
  "terms": 76,
  "missing": [
   {
@@ -429,15 +429,6 @@
    "gap": 1
   },
   {
-   "node": "def.cotangent-bundle",
-   "nodeLabel": "余切丛",
-   "nodeLayer": 22,
-   "def": "def.bundle-section",
-   "defLabel": "丛的截面",
-   "defLayer": 22,
-   "gap": 0
-  },
-  {
    "node": "def.real-metric-space",
    "nodeLabel": "实数的度量",
    "nodeLayer": 15,
@@ -465,14 +456,12 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 45,
+ "noEdgeAll": 46,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
-  "def.bundle-section>def.form-on-manifold",
   "def.bundle-section>def.differential-form",
   "def.t35-space>def.regular-space",
   "def.smooth-manifold>def.partial-derivative",
-  "def.manifold-chart>def.partial-derivative",
   "def.injective-dimension>def.projective-dimension"
  ],
  "never": [

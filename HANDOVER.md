@@ -25,9 +25,9 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1574 节点 / 3274 边 · maxLayer 38
-强边 3232 · 弱边（类比）42 · 推论（layer:false）33
-英文页 1571 · 别名 1381 组 · 问法钩子 217 条
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1574 节点 / 3277 边 · maxLayer 38
+强边 3235 · 弱边（类比）42 · 推论（layer:false）33
+英文页 1574 · 别名 1384 组 · 问法钩子 217 条
 ```
 
 | 项 | 值 |
@@ -35,13 +35,13 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` ahead 2（第 25 批后，待 push） |
+| 工作树 | clean；本地 `main` ahead 1（FIX-062 后，待 push） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1574 节点 / 3274 边，所有页 ≤1300 B） |
+| `bun tools/build.mjs` | ✅ 全绿（1574 节点 / 3277 边，所有页 ≤1300 B） |
 | `bun tools/_katexcheck.mjs` | ✅ **2940 个 `$…$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889；第 8 批 3 条注新增 16 个 display ⇒ 2889→2905；第 9 批 3 条证明新增 7 个 display ⇒ 2905→2912；第 10 批 4 条曲面证明重写净 −1 个 display ⇒ 2912→2911；第 14 批 / FIX-045 净 −1 个 display ⇒ 2911→2910；第 15 批 2 条证明净 −4 display ⇒ 2910→2906；第 17 批注净 +1 display ⇒ 2906→2907；第 19 批新增 def.topological-orientability 的 1 个 display ⇒ 2907→2908；第 20 批（并行改动）再 +1 个 display ⇒ 2908→2909；第 20/21 批新节点与注合计净 +10 个 display（其中行内 $ 修正的 −2 已计入）⇒ 2909→2919） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
