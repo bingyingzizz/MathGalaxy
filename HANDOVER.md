@@ -35,7 +35,7 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` 与 origin 已同步（ENG-013b 之后） |
+| 工作树 | clean；本地 `main` ahead 2（第 25 批后，待 push） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
@@ -462,15 +462,12 @@
 
 ### 4.10 当前未完成队列（2026-11-09，按优先级）
 
-1. **161 修复 + 第 25 批合并**：fixer 正在删 `161-functional-analysis.js` 1070–1273 的临时 `/* */` 重复 edges 块；之后 `node --check`、`i18n-backfill`、build。第 25 批的 partial isometry / 一致凸 / 完美对偶 / 自反 / Milman–Pettis / James / 等度连续拆分 / 连续性重构 / 局部紧拆分都在工作树，未提交。
-2. **FIX-061**：`prop.lie-group-orientable`、`prop.pi1-group`、`prop.simply-connected-basepoint` 与 6 条边已落盘，未 build/commit。
-3. **ENG-014**：分层搜索点击下层节点不显示，engine 正在修自动切层。
-4. **AUD-060 A 档 15 项**：127 条 definition 边指向定理、25 条读者可见文案、`imp.nt-newman` sources、190 条无 id 边、19 条骨架边 status、78 aka、`def.continuous` 加 definition、toporient 反引号等；待 build 后派 FIX-062。B 档 4 项需书，C 档 6 项需拍板。
-5. **章节核实书单**：16 本优先书（Munkres、Engelking、Arnold、McDuff–Salamon、Horn–Johnson、Weibel、Le Stum、Tu ×3、Kobayashi–Nomizu、Chevalley、Bott–Tu、Kelley、Dummit–Foote、Landau–Lifshitz、Ben-Israel–Greville、Milnor–Stasheff）待用户下载到 `_refs/`；37 条章名已删，尚未核实。
-6. **剩余 skeleton**：原 10 条，第 25 批新增 `thm.milman-pettis` / `thm.james` 两条，build 后复核（标准 1、中等 3、研究 6+2）；19 条骨架边口径仍不可从图复跑。
-7. **§60 结构项**：190 条无显式 id 边、78 个 aka、骨架边 status、refs 缺书名（Tu 13 条 A 类等）。
-8. **codex 并行只读审计**：Bash 已恢复但尚未发；下一轮至少发一个只读审计。
-9. **提交/发布**：以上完成后统一 build/全门 → 更新 HANDOVER → 提交 → push → `publish.mjs` → 线上复验缓存 v2 与层号。
+1. **AUD-060 A 档 15 项**：127 条 definition 边指向定理、25 条读者可见文案、`imp.nt-newman` sources、190 条无 id 边、19 条骨架边 status、78 aka、`def.continuous` 加 definition、toporient 反引号等；build 已在 `8f9036b0` 完成，可派 FIX-062。B 档 4 项需书，C 档 6 项需拍板。
+2. **章节核实书单**：16 本优先书（Munkres、Engelking、Arnold、McDuff–Salamon、Horn–Johnson、Weibel、Le Stum、Tu ×3、Kobayashi–Nomizu、Chevalley、Bott–Tu、Kelley、Dummit–Foote、Landau–Lifshitz、Ben-Israel–Greville、Milnor–Stasheff）待用户下载到 `_refs/`；37 条章名已删，尚未核实。
+3. **剩余 skeleton**：**12 个节点（另有 19 条骨架边）**（标准 1 eulerchar-genus；中等 3 schwarz-christoffel / de-rham / paracompact-cech；研究 8 rado / classification-surfaces / za-analytic / boundary-correspondence / caratheodory-osgood / combinatorial-classification-surfaces / milman-pettis / james）；19 条骨架边口径仍不可从图复跑。
+4. **§60 结构项**：190 条无显式 id 边、78 个 aka、骨架边 status、refs 缺书名（Tu 13 条 A 类等）。
+5. **codex 并行只读审计**：Bash 已恢复但尚未发；下一轮至少发一个只读审计。
+6. **提交/发布**：第 25 批已提交 `8f9036b0`；接下来提交 i18n 再生成 + HANDOVER，push，`publish.mjs`，线上复验缓存 v2、层号与局部紧节点。
 
 ---
 
