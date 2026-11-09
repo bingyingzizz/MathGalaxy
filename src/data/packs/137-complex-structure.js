@@ -855,7 +855,7 @@
       note: 'Montel = Arzelà–Ascoli + Cauchy 不等式：复分析里「有界」自动变成「等度连续」。' },
 
     /* ---- §E 单叶与映射 ---- */
-    { kind: 'implication', sources: ['thm.rouche', 'thm.max-modulus'], target: 'thm.open-mapping',
+    { kind: 'implication', sources: ['thm.rouche', 'thm.max-modulus', 'prop.zero-isolated'], target: 'thm.open-mapping',
       title: 'Rouché 数零点 $\\implies$ 像含小圆盘 $\\implies$ 开映射',
       proof: [
         '取 $z_{0} \\in \\Omega$、$w_{0} = f(z_{0})$，平移使 $w_{0} = 0$。由 `prop.zero-isolated`，' +

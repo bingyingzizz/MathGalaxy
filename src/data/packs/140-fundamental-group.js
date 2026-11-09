@@ -813,5 +813,8 @@
         '',
         '💡 卡在「怎么说明这两个对象在这个不变量眼里一样」时，回来想想：**有没有一个 $s$ 可用？**',
       ].join('\n') },
+
+    { id: 'def-link.lebnum-vankampen', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'thm.van-kampen',
+      note: '证明第一步对开覆盖 $\\{U, V\\}$ 取勒贝格数，用它把道路细分到每段整块落在一个开集里。' },
   ],
 });

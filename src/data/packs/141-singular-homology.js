@@ -858,7 +858,7 @@
       ].join('\n'),
       note: '「相消」是这条定理的全部内容：边缘群 $b_{p}$ 在相邻两项里符号相反，数得再多也看不见。' },
 
-    { kind: 'implication', sources: ['def.simplicial-homology', 'def.singular-homology'], target: 'thm.simplicial-approximation',
+    { kind: 'implication', sources: ['def.simplicial-homology', 'def.singular-homology', 'thm.homotopy-invariance'], target: 'thm.simplicial-approximation',
       title: '重分 + Lebesgue 数 + 星的交性质 $\\implies$ 连续映射可组合化',
       proof: [
         '目标是证明 $H_{p}(K) \\to H_{p}(|K|)$（把 $p$-单纯形看成奇异 $p$-单纯形）是同构。四步：',
@@ -929,5 +929,8 @@
           '就得回到 $\\pi_{1}$（可能是完美群，$H_{1}$ 看不见）。反过来若 $H_{1} \\ne 0$，$\\pi_{1}$ 必定非平凡，' +
           '这条捷径几乎每次都值得先试。',
       ].join('\n') },
+
+    { id: 'def-link.chainhom-simplicial', kind: 'definition', definition: 'def.chain-homotopy', usedBy: 'thm.simplicial-approximation',
+      note: '证明用「单纯映射诱导链映射」与「链同伦的棱柱构造」把 $|g| \\simeq \\operatorname{id}$ 翻成链同伦。' },
   ],
 });

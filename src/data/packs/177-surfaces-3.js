@@ -317,5 +317,27 @@
     { id: 'def-link.toporient-eg', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-genus', note: '引理 D 用定向图册给 2-单形一致定向' },
     { id: 'def-link.toporient-nonor', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-nonorientable', note: '不可定向=不存在定向图册；标准形 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和' },
     { id: 'def-link.topmanifold-toporient', kind: 'definition', definition: 'def.topological-manifold', usedBy: 'def.topological-orientability', note: '拓扑流形上才谈定向图册/定向双覆盖' },
+
+    { id: 'def-link.lebnum-eulerchar', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'prop.eulerchar-genus',
+      note: '证明对覆盖取勒贝格数来控制单纯形直径（小于勒贝格数就整块落在一个开集里）—— 定义直接进入第 2 步。' },
+    { id: 'def-link.barysub-eulerchar', kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'prop.eulerchar-genus',
+      note: '证明反复作重心重分把网格按 $n/(n+1)$ 缩小，同调不变性由这条定义的性质给出。' },
+    {
+      id: 'imp.eulerchar-inputs',
+      kind: 'implication',
+      sources: ['thm.rado', 'thm.simplicial-approximation', 'prop.h0-components'],
+      target: 'prop.eulerchar-genus',
+      title: 'Radó 三角剖分 + 单纯逼近 + $H_{0}$ 连通分支 $\\implies \\chi = 2-2g$（依赖登记）',
+      proof: [
+        '**这条边只登记依赖，不证结论。** 三者合起来才是证明的输入，没有哪一个单独能推出 $\\chi = 2 - 2g$：',
+        '',
+        '1. `thm.rado`（Radó 三角剖分存在性）：先把闭可定向曲面变成有限单纯复形 $K$，之后 $\\chi(K)$ 才有定义；',
+        '2. `thm.simplicial-approximation`：把连续映射换成单纯映射，于是 $H_{2}(S) \\cong H_{2}(K^{\\prime}) \\cong \\mathbb{Z}$；',
+        '3. `prop.h0-components`：$H_{0}(S) \\cong \\mathbb{Z}$ 来自 $S$ 连通，即 $b_{0} = 1$。',
+        '',
+        '代入 $\\chi = b_{0} - b_{1} + b_{2}$ 得 $\\chi = 1 - 2g + 1 = 2 - 2g$。',
+      ].join('\n'),
+      note: '⚠ 这是**依赖登记**边，不是蕴含：把证明用到的三个外部输入登记在图上，读图时能看到本命题缺哪一块就不成立。',
+    },
   ],
 });

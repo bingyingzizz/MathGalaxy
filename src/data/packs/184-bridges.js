@@ -229,5 +229,21 @@ window.MG.packs.push({
     /* ⑦ Riesz 表示引理依赖（有限覆盖上的）紧支单位分解 */
     { id: 'dep.rm-pou', kind: 'definition', definition: 'def.partition-of-unity', usedBy: 'thm.riesz-markov',
       note: '表示引理用一族紧支函数 $g_{i} \\prec A_{i}$（本质上是单位分解式的局部化）把 $f$ 上下夹住；表示引理的上下界已在节点注第 ④ 步写全，这条边只记对单位分解概念的依赖。' },
+
+    {
+      id: 'imp.riesz-markov-inputs',
+      kind: 'implication',
+      sources: ['thm.caratheodory', 'lem.urysohn', 'def.one-point-compactification'],
+      target: 'thm.riesz-markov',
+      title: 'Carathéodory 延拓 + Urysohn 夹逼 + 单点紧化 $\\Longrightarrow$ Riesz 表示（依赖登记）',
+      proof: [
+        '**这条边只登记依赖，不证结论。** 三者合起来才够，任何一条单独都推不出 $\\Lambda(f) = \\int f \\,d\\mu$：',
+        '',
+        '1. `def.one-point-compactification`（单点紧化）：`X` 局部紧 Hausdorff $\\implies$ `X^{+}` 紧 Hausdorff $\\implies$ 正规，于是可以在 `X^{+}` 里对闭集用 Urysohn 造夹逼函数 `\\varphi`；',
+        '2. `lem.urysohn`（Urysohn 引理）：引理 2 的次可加性、紧集上有限性、上下界与唯一性，每一步都靠它造 `\\varphi \\in C_{c}(X)`（`\\varphi = 1` 于 `K`、支集落在指定的相对紧开集里）；',
+        '3. `thm.caratheodory`（Carathéodory 延拓）：第 ③ 步把造好的外测度 `\\mu^{*}` 限制到 Borel 集上得到 Radon 测度。',
+      ].join('\n'),
+      note: '⚠ 依赖登记边：这三条只是证明链的三块输入，单独都不构成蕴含；表示引理本身的上下界与唯一性在节点注第 ④ 步。',
+    },
   ],
 });

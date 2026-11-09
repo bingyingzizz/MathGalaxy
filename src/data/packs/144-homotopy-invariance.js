@@ -155,5 +155,8 @@
         '没有这一条，归纳只能算出「某个群是 0」，却说不出「为什么半球没有同调」。∎',
       ].join('\n'),
       note: '这条补上了子 agent 交付时自己标注的「最薄弱一环」。' },
+
+    { id: 'def-link.chainhom-homotopy', kind: 'definition', definition: 'def.chain-homotopy', usedBy: 'thm.homotopy-invariance',
+      note: '主证明的收尾「$f$、$g$ 同伦 $\\Longrightarrow$ 存在链同伦」直接引用链同伦的定义（棱柱构造）。' },
   ],
 });
