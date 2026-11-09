@@ -1518,6 +1518,11 @@ MG.aliases = {
     { id: 'lem.caratheodory-osgood', en: 'Carathéodory–Osgood lemma', aka: ['Carathéodory–Osgood 边界对应'] },
     { id: 'lem.newman-tauberian', en: 'Newman\'s Tauberian lemma', aka: ['Newman 解析定理'] },
     { id: 'lem.combinatorial-classification-surfaces', en: 'combinatorial classification lemma', aka: ['组合分类引理'] },
+    { id: 'cor.ubp-pointwise-limit', en: 'pointwise limit of uniformly bounded operators', aka: ['一致有界原理的逐点极限推论', '逐点极限算子'] },
+    { id: 'thm.bilinear-jointly-continuous', en: 'separate continuity implies joint continuity for bilinear maps', aka: ['双线性映射的联合连续性', '分别连续双线性映射'] },
+    { id: 'thm.lax-milgram', en: 'Lax–Milgram theorem', aka: ['Lax-Milgram 定理', '拉克斯-米尔格拉姆定理'] },
+    { id: 'def.complemented-subspace', en: 'complemented subspace', aka: ['可补子空间', '拓扑可补子空间'] },
+    { id: 'thm.complemented-subspace-criterion', en: 'criterion for complemented subspaces', aka: ['可补子空间判别定理'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

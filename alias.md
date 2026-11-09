@@ -10,7 +10,7 @@
 - 拓扑学　`dist/alias/topology.md` / `dist/alias/aka/topology.md` 49+176
 - 抽象代数　`dist/alias/algebra.md` / `dist/alias/aka/algebra.md` 18+187
 - 数学分析　`dist/alias/analysis.md` / `dist/alias/aka/analysis.md` 52+279
-- 泛函分析　`dist/alias/aka/functional-analysis.md` 0+58
+- 泛函分析　`dist/alias/aka/functional-analysis.md` 0+63
 - 实变函数　`dist/alias/analysis-measure.md` / `dist/alias/aka/analysis-measure.md` 37+148
 - 范畴论　`dist/alias/category.md` / `dist/alias/aka/category.md` 63+207
 - 同调代数　`dist/alias/homology.md` / `dist/alias/aka/homology.md` 47+161

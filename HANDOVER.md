@@ -25,9 +25,9 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1555 节点 / 3214 边 · maxLayer 38
-强边 3172 · 弱边（类比）42 · 推论（layer:false）33
-英文页 1554 · 别名 1364 组 · 问法钩子 217 条
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1560 节点 / 3227 边 · maxLayer 38
+强边 3185 · 弱边（类比）42 · 推论（layer:false）33
+英文页 1559 · 别名 1369 组 · 问法钩子 217 条
 ```
 
 | 项 | 值 |
@@ -41,11 +41,11 @@
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1555 节点 / 3214 边，所有页 ≤1300 B） |
-| `bun tools/_katexcheck.mjs` | ✅ **2919 个 `$…$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889；第 8 批 3 条注新增 16 个 display ⇒ 2889→2905；第 9 批 3 条证明新增 7 个 display ⇒ 2905→2912；第 10 批 4 条曲面证明重写净 −1 个 display ⇒ 2912→2911；第 14 批 / FIX-045 净 −1 个 display ⇒ 2911→2910；第 15 批 2 条证明净 −4 display ⇒ 2910→2906；第 17 批注净 +1 display ⇒ 2906→2907；第 19 批新增 def.topological-orientability 的 1 个 display ⇒ 2907→2908；第 20 批（并行改动）再 +1 个 display ⇒ 2908→2909；第 20/21 批新节点与注合计净 +10 个 display（其中行内 $ 修正的 −2 已计入）⇒ 2909→2919） |
+| `bun tools/build.mjs` | ✅ 全绿（1560 节点 / 3227 边，所有页 ≤1300 B） |
+| `bun tools/_katexcheck.mjs` | ✅ **2938 个 `$…$`，失败 0**（FIX-005/FIX-009/FIX-011/FIX-020/FIX-022 的删改累计 2815→2825；FIX-023c 恢复被覆盖旧注中的 1 个 display ⇒ 2825→2826；第 2 批 8 条证明新增 8 个 display ⇒ 2826→2834；第 5 批 6 条证明新增 15 个 display ⇒ 2834→2849；第 6 批 6 条证明新增 16 个 display ⇒ 2849→2865；第 7 批 5 条证明新增 24 个 display ⇒ 2865→2889；第 8 批 3 条注新增 16 个 display ⇒ 2889→2905；第 9 批 3 条证明新增 7 个 display ⇒ 2905→2912；第 10 批 4 条曲面证明重写净 −1 个 display ⇒ 2912→2911；第 14 批 / FIX-045 净 −1 个 display ⇒ 2911→2910；第 15 批 2 条证明净 −4 display ⇒ 2910→2906；第 17 批注净 +1 display ⇒ 2906→2907；第 19 批新增 def.topological-orientability 的 1 个 display ⇒ 2907→2908；第 20 批（并行改动）再 +1 个 display ⇒ 2908→2909；第 20/21 批新节点与注合计净 +10 个 display（其中行内 $ 修正的 −2 已计入）⇒ 2909→2919） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
-| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按本次新增节点/边重钉为 911；fubini 12；Noether 14；compact 94——FIX-038 删 Riesz 注里的 `prop.paracompact-partition-unity` 后 95→94；第 9 批新增「定义」1 次，894→895；第 10 批 4 条注新增「定义」1 次，895→896；本次新增 6 个 definition 节点与注中「定义」多次 ⇒ 896→904→907→908→909→910→911（新增 def.integral-over-set / def.convex-combination / def.convex-hull 3 个定义节点及注；FIX-051+第 17 批注再 +1；第 20 批 + FIX-055 再 +1）；ℵ₀ 6→7（FIX-042 Henkin 的 κ=max(|L|,ℵ₀) 新增一次）） |
+| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 已按本次新增节点/边重钉为 916；fubini 12；Noether 14；compact 94——FIX-038 删 Riesz 注里的 `prop.paracompact-partition-unity` 后 95→94；第 9 批新增「定义」1 次，894→895；第 10 批 4 条注新增「定义」1 次，895→896；本次新增 6 个 definition 节点与注中「定义」多次 ⇒ 896→904→907→908→909→910→911（新增 def.integral-over-set / def.convex-combination / def.convex-hull 3 个定义节点及注；FIX-051+第 17 批注再 +1；第 20 批 + FIX-055 再 +1）；ℵ₀ 6→7（FIX-042 Henkin 的 κ=max(|L|,ℵ₀) 新增一次）） |
 | `bun tools/_slashcheck.mjs` | ✅ 0 处 |
 | `node tools/dupkeys.mjs` | ✅ 0 处（同对象内 `notes`/`note`/`regions` 重复键会静默覆盖；FIX-023c 后加入常规门） |
 

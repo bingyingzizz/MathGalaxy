@@ -238,7 +238,8 @@ window.MG = window.MG || {};
       notes: [
         '证法：令 $F_k = \\{x : \\sup_i \\|u_i x\\| \\le k\\} = \\bigcap_i \\{x : \\|u_i x\\| \\le k\\}$，每个 $\\{x : \\|u_i x\\| \\le k\\}$ 闭（$u_i$ 连续），故 $F_k$ 闭；\n\n逐点有界 $\\implies E = \\bigcup_k F_k$。\n\n由 Baire（闭覆盖有内点），某个 $F_k$ 含球 $B(x_0, r)$。\n\n于是对 $\\|x\\| \\le r$：$\\sup_i \\|u_i x\\| \\le \\sup_i \\|u_i(x + x_0)\\| + \\sup_i \\|u_i x_0\\| \\le 2k$，取 $x = r y/\\|y\\|$ 得 $\\|u_i y\\| \\le 2k\\|y\\|/r$，故 $\\sup_i\\|u_i\\| \\le 2k/r$。',
         '⭐ **名字**：讲义与很多中文书叫它「共鸣定理」（resonance theorem），也叫「一致有界原理」；本图两个都收进别名。三大定理里它**只要求 $E$ 完备**（$F$ 只要赋范），是最「便宜」的一条。',
-        '⚠️ $E$ 完备不能去掉：$E = c_{00}$（有限支撑序列）时取 $u_n(x) = n x_n$，逐点有界而 $\\|u_n\\| = n \\to \\infty$。'
+        '⚠️ $E$ 完备不能去掉：$E = c_{00}$（有限支撑序列）时取 $u_n(x) = n x_n$，逐点有界而 $\\|u_n\\| = n \\to \\infty$。',
+        '📌 **两条常用推论**：见 `cor.ubp-pointwise-limit`（逐点极限的范数界）与 `thm.bilinear-jointly-continuous`（分别连续双线性推出联合连续）；两条都只用本条加定义。',
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）', 'Banach–Steinhaus 1927'],
     },
@@ -338,7 +339,8 @@ window.MG = window.MG || {};
         '**实用价值在于「闭」比「有界」好验。** 要直接证明 $u$ 有界，得估计 $\\|u x\\|$；而验证图像闭只需要：任取收敛的 $x_n \\to x$ 与 $u(x_n) \\to y$，证明 $y = u(x)$ —— 中间不需要任何范数估计。分布理论里证明微分算子、Fourier 变换这类映射连续，走的就是这条路。',
         '**为什么必须线性、必须两端完备。**「连续 $\\implies$ 图像闭」是初等的（连续映射的图像在乘积空间里当然闭，对任何映射都对），所以容易误以为两者差不多；差别全在逆命题上。',
         '**完备性。** 取 $E = (C[0,1], \\|\\cdot\\|_1)$（不完备）、$F = (C[0,1], \\|\\cdot\\|_\\infty)$（完备），$u = \\mathrm{id}$。若 $f_n \\to f$ 于 $\\|\\cdot\\|_1$、$f_n \\to g$ 于 $\\|\\cdot\\|_\\infty$，则 $\\|\\cdot\\|_1$ 收敛蕴含 $L^1$ 收敛，而 $\\|\\cdot\\|_\\infty$ 收敛蕴含处处（从而 $L^1$）收敛，故 $f = g$：图像闭。但 $\\|u\\| = \\sup\\|f\\|_\\infty / \\|f\\|_1 = \\infty$，$u$ 不有界。可见**定义域或靶子至少一端不完备，结论就失效**。',
-        '**线性。** 非线性映射可以有闭图像而不连续：取 $u : \\mathbb{R} \\to \\mathbb{R}$，$u(x) = 1/x$（$x \\ne 0$）、$u(0) = 0$。它的图像在 $\\mathbb{R}^2$ 中闭（是一条双曲线加原点），但 $u$ 在 $0$ 处不连续。'
+        '**线性。** 非线性映射可以有闭图像而不连续：取 $u : \\mathbb{R} \\to \\mathbb{R}$，$u(x) = 1/x$（$x \\ne 0$）、$u(0) = 0$。它的图像在 $\\mathbb{R}^2$ 中闭（是一条双曲线加原点），但 $u$ 在 $0$ 处不连续。',
+        '📌 **TFAE 的说法**：有界等价于图像闭（两端 Banach 时）。本图另收了两个典型用法：`thm.lax-milgram`（强制型给出有界双逆）与可补子空间的判别（闭的代数互补给出有界投影）。',
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis, 2.15']
     },
@@ -561,6 +563,80 @@ window.MG = window.MG || {};
         '⭐ 与 Stone–Weierstrass 分工：这条给「一个显式算子列」，只对 $[0,1]$、只对实值；S-W 给「只要代数性质就够」，不管构造。两者互相印证，也互相不能替代。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理', 'Bernstein 1912'],
+    },
+    {
+      id: 'cor.ubp-pointwise-limit',
+      cluster: 'fa.baire',
+      type: 'corollary',
+      label: '逐点极限的范数界',
+      title: '推论：逐点收敛的有界算子列，极限有界且 $\\|u\\| \\le \\liminf \\|u_n\\|$',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '三大定理', 'Baire 纲'],
+      statement: [
+        '设 $E$ 是 Banach 空间，$F$ 赋范，$u_n \\in B(E, F)$，且对每个 $x \\in E$ 有 $u_n x \\to u x$（逐点收敛）。则 $u \\in B(E, F)$，并且',
+        '',
+        '$$\\|u\\| \\le \\liminf_{n \\to \\infty} \\|u_n\\| .$$'
+      ].join('\n'),
+      notes: [
+        '**证明。** 先注意 $u$ 线性：对 $x, y \\in E$、$\\alpha, \\beta \\in \\mathbb{K}$，由 $u_n$ 线性与极限的线性，',
+        '',
+        '$$u(\\alpha x + \\beta y) = \\lim_n u_n(\\alpha x + \\beta y) = \\alpha \\lim_n u_n x + \\beta \\lim_n u_n y = \\alpha u x + \\beta u y .$$',
+        '',
+        '**逐点有界。** 对每个 $x$，收敛数列 $(u_n x)$ 有界，故 $M(x) := \\sup_n \\|u_n x\\| < \\infty$。',
+        '',
+        '**一致有界。** 对族 $\\{u_n\\} \\subseteq B(E, F)$ 用共鸣定理（$E$ 完备、$F$ 赋范）：$C := \\sup_n \\|u_n\\| < \\infty$。',
+        '',
+        '**范数界。** 对任意 $x$，',
+        '',
+        '$$\\|u x\\| = \\lim_n \\|u_n x\\| = \\liminf_n \\|u_n x\\| \\le \\liminf_n \\bigl( \\|u_n\\| \\, \\|x\\| \\bigr) = \\bigl( \\liminf_n \\|u_n\\| \\bigr) \\|x\\| ,$$',
+        '',
+        '所以 $u$ 有界且 $\\|u\\| \\le \\liminf_n \\|u_n\\|$。$\\blacksquare$',
+        '⭐ 这条把「逐点收敛」升级成「极限算子的范数估计」：不需要预先知道 $\\sup_n \\|u_n\\|$ 有限，共鸣定理自动给出。它在数值分析里判断「算子序列的极限仍是算子」时最常用。',
+        '⚠️ 只能得到 $\\liminf$ 的界，不能换成 $\\limsup$：$\\|u\\|$ 可能严格小于 $\\liminf \\|u_n\\|$（例如取一列在某个方向上「几乎损失」范数的算子，逐点极限丢掉那一方向）。'
+      ].join('\n\n'),
+      refs: ['泛函分析讲义（用户手写笔记，2026-11-09）', 'Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
+    },
+    {
+      id: 'thm.bilinear-jointly-continuous',
+      cluster: 'fa.baire',
+      type: 'theorem',
+      label: '分别连续双线性映射联合连续',
+      title: '定理：分别连续的双线性映射联合连续（Banach 空间）',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '三大定理', '双线性映射'],
+      hypotheses: ['完备'],
+      statement: [
+        '设 $E, F, G$ 是赋范空间，$B : E \\times F \\to G$ 双线性（对每个变量分别线性）。若 $E, F$ 都是 Banach 空间，且',
+        '',
+        '$$\\text{对每个 } x \\in E,\\ B(x, \\cdot) \\text{ 连续}; \\qquad \\text{对每个 } y \\in F,\\ B(\\cdot, y) \\text{ 连续},$$',
+        '',
+        '则 $B$ 在 $E \\times F$ 上**联合连续**；更强地，存在 $C > 0$ 使',
+        '',
+        '$$\\|B(x, y)\\| \\le C \\, \\|x\\| \\, \\|y\\| \\qquad (x \\in E,\\ y \\in F).$$'
+      ].join('\n'),
+      notes: [
+        '**证明。** 对每个 $y \\in F$，$x \\mapsto B(x, y)$ 是连续线性映射，故有界；对每个 $x \\in E$，$B(x, \\cdot) \\in B(F, G)$。',
+        '',
+        '考虑族 $\\{ B(x, \\cdot) : x \\in E,\\ \\|x\\| \\le 1 \\} \\subseteq B(F, G)$。对每个固定的 $y \\in F$，',
+        '',
+        '$$\\sup_{\\|x\\| \\le 1} \\|B(x, y)\\| = \\| B(\\cdot, y) \\| < \\infty .$$',
+        '',
+        '即这族算子逐点有界；$F$ 是 Banach 空间，$G$ 赋范，由共鸣定理得',
+        '',
+        '$$C := \\sup_{\\|x\\| \\le 1} \\| B(x, \\cdot) \\| < \\infty .$$',
+        '',
+        '于是对 $x \\ne 0$，$\\|B(x, y)\\| = \\|x\\| \\, \\| B(x/\\|x\\|, y) \\| \\le C \\|x\\| \\, \\|y\\|$；$x = 0$ 时两边为零。',
+        '',
+        '**联合连续。** 设 $(x_n, y_n) \\to (x, y)$，则',
+        '',
+        '$$\\|B(x_n, y_n) - B(x, y)\\| \\le \\|B(x_n - x, y_n)\\| + \\|B(x, y_n - y)\\| \\le C \\|x_n - x\\| \\, \\|y_n\\| + \\|B(x, y_n - y)\\| .$$',
+        '',
+        '第一项趋于 $0$（$\\|x_n - x\\| \\to 0$，$(y_n)$ 有界）；第二项趋于 $0$ 由 $B(x, \\cdot)$ 连续。故 $B$ 联合连续。$\\blacksquare$',
+        '⭐ 这条是「分别连续 $\\implies$ 联合连续」在双线性情形下的标准答案：**双线性 + 两个 Banach** 就够了。一般拓扑里分别连续远不能推出联合连续。',
+        '⚠️ 双线性不能去掉：$f(x, y) = \\dfrac{xy}{x^{2} + y^{2}}$（$f(0,0)=0$）在 $\\mathbb{R}^{2}$ 上分别连续，却在原点不连续。',
+        '⚠️ 两个完备性都用在共鸣定理上（定义域 $F$ 要 Banach）；只假设「赋范」时结论可能失效。乘积空间用 $\\max$ 范数或和范数都行，两者等价。'
+      ].join('\n\n'),
+      refs: ['泛函分析讲义（用户手写笔记，2026-11-09）', 'Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     }
   ],
 
@@ -1041,6 +1117,39 @@ window.MG = window.MG || {};
     { id: 'def-link.fa-totbdd-ck', kind: 'definition', definition: 'def.totally-bounded', usedBy: 'thm.ck-complete',
       note: '（配套）相对紧 = 全有界 + 完备，两条拼起来才能从 $C(K,E)$ 的完备性拿到紧性。' },
     { id: 'def-link.fa-hausdorff-baire', kind: 'definition', definition: 'def.hausdorff', usedBy: 'thm.locally-compact-baire',
-      note: '局部紧 + Hausdorff 才有紧邻域基，球套法才能换成紧邻域链。' }
+      note: '局部紧 + Hausdorff 才有紧邻域基，球套法才能换成紧邻域链。' },
+    {
+      id: 'imp.fa-ubp-pointwise',
+      kind: 'implication',
+      sources: ['thm.ubp'],
+      target: 'cor.ubp-pointwise-limit',
+      title: '共鸣定理 $\\implies$ 逐点极限的范数界',
+      proof: [
+        '设 $u_n \\in B(E, F)$ 逐点收敛到 $u$。对每个 $x$，收敛数列 $(u_n x)$ 有界，故 $\\sup_n \\|u_n x\\| < \\infty$。',
+        '由共鸣定理，$C := \\sup_n \\|u_n\\| < \\infty$。于是 $\\|u x\\| = \\lim_n \\|u_n x\\| \\le C \\|x\\|$，且更精确地 $\\|u\\| \\le \\liminf_n \\|u_n\\|$：因为对每个 $\\varepsilon > 0$，当 $n$ 充分大时 $\\|u_n\\| \\ge \\liminf_k \\|u_k\\| - \\varepsilon$，取极限即得。$\\blacksquare$'
+      ].join('\n'),
+      note: '这条把 UBP 的「一致有界」直接翻译成「逐点极限算子的范数不超过原算子列范数的下极限」。'
+    },
+    {
+      id: 'imp.fa-ubp-bilinear',
+      kind: 'implication',
+      sources: ['thm.ubp'],
+      target: 'thm.bilinear-jointly-continuous',
+      title: '共鸣定理 $\\implies$ 分别连续双线性映射联合连续',
+      proof: [
+        '对 $x \\in E$ 令 $T_x := B(x, \\cdot) \\in B(F, G)$。对每个 $y \\in F$，$\\sup_{\\|x\\| \\le 1} \\|T_x y\\| = \\|B(\\cdot, y)\\| < \\infty$（$B(\\cdot, y)$ 连续线性）。',
+        '由共鸣定理（定义域 $F$ 是 Banach 空间），$C := \\sup_{\\|x\\| \\le 1} \\|T_x\\| < \\infty$。于是 $\\|B(x, y)\\| \\le C \\|x\\| \\, \\|y\\|$，联合连续性由 $B(x_n, y_n) - B(x, y) = B(x_n - x, y_n) + B(x, y_n - y)$ 与 $B(x, \\cdot)$ 的连续性得到。$\\blacksquare$'
+      ].join('\n'),
+      note: '两个 Banach 假设各用在：$F$ 完备用于 UBP，$E$ 完备用于 $x_n$ 的收敛（其实这条证明主要用 $F$ 完备；$E$ 完备保证 $x_n - x$ 的范数有界只需收敛性）。'
+    },
+    { id: 'def-link.fa-banach-bilinear', kind: 'definition', definition: 'def.banach-space',
+      usedBy: 'thm.bilinear-jointly-continuous',
+      note: '定理的假设就是两个空间完备（共鸣定理要求定义域 Banach）。' },
+    { id: 'def-link.fa-op-bilinear', kind: 'definition', definition: 'def.bounded-operator',
+      usedBy: 'thm.bilinear-jointly-continuous',
+      note: '证明对每个 $x$ 把 $B(x, \\cdot)$ 看成有界算子 $F \\to G$。' },
+    { id: 'def-link.fa-op-pointwise', kind: 'definition', definition: 'def.bounded-operator',
+      usedBy: 'cor.ubp-pointwise-limit',
+      note: '结论「$u \\in B(E, F)$」正是有界线性算子空间里的成员资格。' }
   ]
 });
