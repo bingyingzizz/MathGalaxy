@@ -563,20 +563,26 @@
       speedMax = 0;
       for (var i = 0; i < speedWin.length; i++) if (speedWin[i] > speedMax) speedMax = speedWin[i];
     }
-    function syncCam(cam, dpr) {
+    /** 记相机读数（app 的 tick 与带轮链**共用**，两边都可能先看到新机位）。
+        ⭐⭐ countSpeed 只能由**一帧里第一个调用者**传 true（= app 的 tick）。
+        ⛔ 不能两边都采样：拖动时 tick 和 chainStep 都会调进来，后者看到相机已经同步了
+        ⇒ pushPan(0) ⇒ 滑窗里变成 10,0,10,0… **平均值正好一半**（实测 speed 报 5 而真值 10）
+        ⇒ needPx 只有一半 ⇒ 轮开得太晚 ⇒ 中途露洞 ⇒ 每一轮就有一次 212ms 的同步全烘。
+        这是 2026-10-14 那版就埋下的卧底 bug，2026-10-21 内容翻倍后才爆出来（余量不够容错）。 */
+    function syncCam(cam, dpr, countSpeed) {
       dpr = Math.max(1, dpr || 1);
       camRef = cam;
       var k = cam.k;
       var moved = (k !== last.k || cam.tx !== last.tx || cam.ty !== last.ty
         || dpr !== last.dpr || cam.viewW !== last.vw || cam.viewH !== last.vh);
       if (moved) {
-        pushPan((Math.abs(cam.tx - last.tx) + Math.abs(cam.ty - last.ty)) * dpr);
+        if (countSpeed) pushPan((Math.abs(cam.tx - last.tx) + Math.abs(cam.ty - last.ty)) * dpr);
         last.k = k; last.tx = cam.tx; last.ty = cam.ty; last.dpr = dpr;
         last.vw = cam.viewW; last.vh = cam.viewH; lastMove = now();
         if (settleTimer) global.clearTimeout(settleTimer);
         settleTimer = global.setTimeout(onSettle, settleMs + 20);
-      } else if (speedMax > 0.05) {
-        pushPan(0);
+      } else if (countSpeed && speedMax > 0.05) {
+        pushPan(0);          // 没动的那一帧也要计一个 0，否则分母少算
       }
       return moved;
     }
@@ -592,7 +598,7 @@
       var t0 = now();
       if (round.lastT) { round.gapSum += t0 - round.lastT; round.gapN++; }
       round.lastT = t0;
-      var moved = syncCam(camRef, last.dpr);
+      var moved = syncCam(camRef, last.dpr, false);   // 速度只由 app 的 tick 采样（见 syncCam）
       if (moved) applyTransform();          // 机位变了：先落位，交接才按最新位置算
       if (!round) return;
       var late = !rectCoversView(round.rect) || !rectCoversView(snap.rect);
@@ -623,7 +629,7 @@
       if (!els[0]) attach();
       dpr = Math.max(1, dpr || 1);
       var k = cam.k;
-      var moved = syncCam(cam, dpr);
+      var moved = syncCam(cam, dpr, true);           // 一帧只在这里采样一次
       if (!enabled) { hide(); return false; }
       var pick = rectFor(k, cam.tx, cam.ty, dpr, cam.viewW, cam.viewH);
       if (!pick) { hide(); return false; }          // 该档不烘（区域模式未开）⇒ 交实时画，别排队
