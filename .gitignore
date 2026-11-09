@@ -55,3 +55,6 @@ STOP-*
 *-STOP.md
 
 
+
+# agent 会话残留（FACT.md / JOURNAL.jsonl），不是项目内容
+memory/
