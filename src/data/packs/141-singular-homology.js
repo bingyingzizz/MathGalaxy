@@ -669,9 +669,27 @@
         'Spanier, Algebraic Topology, Ch. 3 §4 · Simplicial Approximation',
       ]
     },
+    {
+      id: 'def.cw-complex',
+      cluster: 'topology.homology',
+      type: 'definition',
+      label: 'CW 复形',
+      title: 'CW 复形（胞腔分解）',
+      regions: ['topology'],
+      tags: ['定义', '代数拓扑', 'CW 复形', '胞腔', 'Euler 示性数'],
+      statement: '**CW 复形**是拓扑空间 $X$ 连同骨架滤过 $X^{(0)}\\subseteq X^{(1)}\\subseteq\\cdots$，$X=\\bigcup_{n}X^{(n)}$，其中 $X^{(n)}$ 由 $X^{(n-1)}$ 粘接一族 $n$-胞腔得到：每个 $n$-胞腔是开圆盘 $e_{\\alpha}^{n}$，粘贴映射 $\\varphi_{\\alpha}:S^{n-1}\\to X^{(n-1)}$，$X^{(n)}=X^{(n-1)}\\sqcup_{\\alpha}e_{\\alpha}^{n}$。要求两条：(i) $X$ 取弱拓扑（$A\\subseteq X$ 闭当且仅当每个 $A\\cap\\overline{e_{\\alpha}^{n}}$ 闭）；(ii) 闭包有限（每个 $\\overline{e_{\\alpha}^{n}}$ 只与有限个胞腔相交）。有限 CW 复形的 Euler 示性数为 $\\chi(X)=\\sum_{n}(-1)^{n}c_{n}$，其中 $c_{n}$ 是 $n$-胞腔的个数。',
+      notes: '**与单纯复形的关系**：单纯复形是 CW 复形的特例（粘贴映射取线性同胚）；CW 更宽松，粘贴映射只需连续。\n\n**Euler 示性数**：对有限 CW 复形，$\\chi(X)$ 与同调读数 $\\sum_{n}(-1)^{n}\\operatorname{rank}H_{n}(X)$ 一致；这也是 `thm.euler-characteristic` 的 CW 版本（该节点按单纯剖分陈述）。\n\n**例子**：$S^{n}$ 是一个 $0$-胞腔加一个 $n$-胞腔；$\\mathbb{R}P^{n}$ 在每一维各有一个胞腔；环面是 $1$ 个 $0$-胞腔、$2$ 个 $1$-胞腔、$1$ 个 $2$-胞腔。\n\n⚠ 弱拓扑与闭包有限两条都不能省：只取商拓扑可能使粘贴点附近的开集结构不对；闭包有限排除无限累积，保证有限胞腔数时 Euler 示性数有定义。',
+      refs: ['Hatcher, Algebraic Topology, Ch. 0 · CW complexes', 'Munkres, Elements of Algebraic Topology, Ch. 1 · CW complexes'],
+    },
   ],
 
   edges: [
+    { id: 'dep.cw-simplicial', kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.cw-complex',
+      note: '单纯复形是 CW 复形的特例。' },
+    { id: 'dep.cw-quotient', kind: 'definition', definition: 'def.quotient-topology', usedBy: 'def.cw-complex',
+      note: '逐维粘接胞腔是商构造。' },
+    { id: 'dep.cw-euler', kind: 'definition', definition: 'thm.euler-characteristic', usedBy: 'def.cw-complex',
+      note: '有限 CW 复形的 Euler 示性数按胞腔数计算，并与该节点的同调公式一致。' },
     { kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.barycentric-subdivision',
       note: '重心重分是单纯复形上的操作；新顶点是原复形中非空单纯形的重心。' },
     { kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.simplicial-approximation',

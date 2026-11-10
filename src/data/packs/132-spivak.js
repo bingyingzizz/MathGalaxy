@@ -779,13 +779,6 @@ window.MG = window.MG || {};
       note: '散度定义在 $\\mathcal{L}_{X}\\mathrm{d}V = (\\operatorname{div}X)\\mathrm{d}V$ 上，主语是体积形式；没有 $\\mathrm{d}V$，「体积的变化率」无从谈起。'
     },
     {
-      id: 'dep.spivak-stokes-divthm',
-      kind: 'definition',
-      definition: 'thm.stokes',
-      usedBy: 'thm.divergence-theorem',
-      note: '散度定理的整条证明就是「对 $\\omega = \\iota_{X}\\mathrm{d}V$ 用流形版 Stokes」。边界定向的约定、$\\omega$ 到边界上的限制，全由那条定理提供。'
-    },
-    {
       id: 'dep.spivak-det-changevars',
       kind: 'definition',
       definition: 'def.determinant',
@@ -965,7 +958,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.spivak-divergence-theorem',
       kind: 'implication',
-      sources: ['def.divergence', 'prop.boundary-sign-convention'],
+      sources: ['def.divergence', 'prop.boundary-sign-convention', 'thm.stokes'],
       target: 'thm.divergence-theorem',
       title: '对 $\\iota_{X}\\mathrm{d}V$ 用 Stokes $\\implies$ 散度定理',
       proof: [

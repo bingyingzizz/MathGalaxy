@@ -1137,13 +1137,6 @@ window.MG = window.MG || {};
       note: '三条要求（支撑在成员里、支撑族局部有限、和恒为 $1$）逐字相同，区别只有把「连续」升成「光滑」—— 两者是同一件事的两个精度。'
     },
     {
-      id: 'dep.mf-paracompact-smooth-pu',
-      kind: 'definition',
-      definition: 'prop.paracompact-partition-unity',
-      usedBy: 'thm.smooth-partition-unity',
-      note: '流形仿紧，所以局部有限的加细存在（这是连续版给的一半）；光滑版只是把每个成员上的权重换成鼓包函数再归一化。'
-    },
-    {
       id: 'dep.mf-secondcountable-smooth-pu',
       kind: 'definition',
       definition: 'def.second-countable',

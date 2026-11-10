@@ -648,9 +648,29 @@
         'Hatcher, Algebraic Topology, Ch. 1 §1.1 · simply connected spaces',
         'Munkres, Topology (2nd ed.), Ch. 9 · basepoints and change of basepoint'
       ]
-    }
+    },
+    {
+      id: 'def.lens-space',
+      cluster: 'topology.fg',
+      type: 'definition',
+      label: '透镜空间',
+      title: '透镜空间 $L(p,q)$（$S^{3}$ 的自由商）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '流形', '透镜空间', '覆叠空间', '基本群'],
+      statement: '设 $p\\ge 2$，$q$ 是与 $p$ 互素的整数。**透镜空间** $L(p,q)$ 是三维球面 $S^{3}=\\{(z_{1},z_{2})\\in\\mathbb{C}^{2}:|z_{1}|^{2}+|z_{2}|^{2}=1\\}$ 在自由作用 $(z_{1},z_{2})\\mapsto(\\zeta z_{1},\\zeta^{q}z_{2})$（$\\zeta=e^{2\\pi i/p}$）下的轨道空间，即 $L(p,q)=S^{3}/(\\mathbb{Z}/p)$。',
+      notes: '**基本群**：$p>1$ 时 $\\pi_{1}(L(p,q))\\cong\\mathbb{Z}/p$；投影 $S^{3}\\to L(p,q)$ 是 $p$ 重覆叠（见 `def.covering-space`），$S^{3}$ 单连通故覆叠空间的基本群正是 $\\mathbb{Z}/p$。\n\n**例子**：$L(2,1)\\cong\\mathbb{R}P^{3}$（对径粘合）；$L(p,1)$ 是可定向的三维透镜空间。\n\n**同胚分类**：$L(p,q)\\cong L(p,q^{\\prime})$ 当且仅当 $q^{\\prime}\\equiv\\pm q^{\\pm1}\\pmod p$；$q$ 影响同胚型但不影响同伦型（透镜空间是「同伦等价而非同胚」的经典例子）。\n\n**同调**：$H_{1}\\cong\\mathbb{Z}/p$，$H_{2}=0$，$H_{3}\\cong\\mathbb{Z}$（$L(p,q)$ 是闭可定向三维流形）。\n\n⚠ 定义要求 $\\gcd(p,q)=1$，否则作用不自由、商空间不是流形。',
+      refs: ['Hatcher, Algebraic Topology, Ch. 1 §1.3 · lens spaces', 'Munkres, Topology (2nd ed.), Ch. 9 · covering spaces'],
+    },
   ],
   edges: [
+    { id: 'dep.lens-groupaction', kind: 'definition', definition: 'def.group-action', usedBy: 'def.lens-space',
+      note: '透镜空间是 Z/p 在 S^3 上自由作用的轨道空间。' },
+    { id: 'dep.lens-covering', kind: 'definition', definition: 'def.covering-space', usedBy: 'def.lens-space',
+      note: '投影 S^3 -> L(p,q) 是 p 重覆叠。' },
+    { id: 'dep.lens-fundamental', kind: 'definition', definition: 'def.fundamental-group', usedBy: 'def.lens-space',
+      note: 'L(p,q) 的基本群是 Z/p。' },
+    { id: 'dep.lens-simply', kind: 'definition', definition: 'def.simply-connected', usedBy: 'def.lens-space',
+      note: 'S^3 单连通是计算基本群的输入。' },
     /* ---------------------------------------------------- §A 同伦 → 基本群 */
     { kind: 'definition', definition: 'def.continuous-map', usedBy: 'def.homotopy-maps',
       note: '同伦 $F : X \\times [0, 1] \\to Y$ 本身要求**联合连续**（在乘积拓扑下），' +

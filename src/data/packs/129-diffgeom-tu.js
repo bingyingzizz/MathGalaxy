@@ -1012,13 +1012,6 @@ window.MG = window.MG || {};
       note: '坐标基 $\\partial_{i}(p)$ 就是「只让第 $i$ 个坐标动」的方向 —— 在卡里它就是偏导数。'
     },
     {
-      id: 'dep.tu-ift-level',
-      kind: 'definition',
-      definition: 'thm.implicit-function',
-      usedBy: 'thm.regular-level-set',
-      note: '水平集局部是图，靠的就是隐函数定理逐点应用；满秩条件正是 $D_yF$ 可逆的假设。'
-    },
-    {
       id: 'dep.tu-manifold-level',
       kind: 'definition',
       definition: 'def.smooth-manifold',

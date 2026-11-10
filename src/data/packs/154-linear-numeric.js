@@ -220,8 +220,9 @@ window.MG = window.MG || {};
       definition: 'def.positive-definite-matrix', usedBy: 'thm.lu-decomposition',
       note: '正定时 LU 变成 Cholesky $A = LL^{T}$，在注里点出。' },
 
-    { id: 'dep.qr-gs', kind: 'definition',
-      definition: 'thm.gram-schmidt', usedBy: 'thm.qr-decomposition',
+    { id: 'dep.qr-gs', kind: 'implication',
+      sources: ['thm.gram-schmidt'], target: 'thm.qr-decomposition',
+      proof: '对 $A$ 的列向量作 Gram–Schmidt：$q_{j}$ 由 $a_{j}$ 减去它在前 $j-1$ 个 $q$ 上的投影再归一化，故 $a_{j}=\\sum_{i\\le j}r_{ij}q_{i}$，矩阵形式即 $A=QR$，$R$ 上三角源于递推只涉及 $i\\le j$。∎',
       note: 'QR 分解就是 Gram–Schmidt 的矩阵写法 —— 这一步是理解 QR 的全部。' },
     { id: 'dep.qr-unitary', kind: 'definition',
       definition: 'def.unitary-matrix', usedBy: 'thm.qr-decomposition',

@@ -926,11 +926,27 @@ window.MG = window.MG || {};
         'Freyd, Abelian Categories (1964), 嵌入定理（full embedding theorem）的部分',
         'Mitchell, The full imbedding theorem, Amer. J. Math. 86 (1964)'
       ]
-    }
+     },
 
+    {
+      id: 'def.flat-dimension',
+      cluster: 'hom.resolution',
+      type: 'definition',
+      label: '平坦维数',
+      title: '平坦维数 $\\operatorname{fd}_{R}M$',
+      regions: ['algebra'],
+      tags: ['定义', '同调代数', '模', '平坦维数', '消解'],
+      statement: '设 $M$ 是 $R$-模。$M$ 的**平坦维数** $\\operatorname{fd}_{R}M$ 是使 $M$ 有一条长度 $n$ 的平坦消解（正合列 $0\\to F_{n}\\to\\cdots\\to F_{0}\\to M\\to 0$，各项 $F_{i}$ 平坦）的最小整数 $n$；若不存在，记 $\\operatorname{fd}_{R}M=\\infty$。',
+      notes: '**基本关系**：$\\operatorname{fd}M=0$ 当且仅当 $M$ 平坦（见 `def.flat-module`）。因为投射模平坦，总有 $\\operatorname{fd}M\\le\\operatorname{pd}M$（`def.projective-dimension`）。\n\n**与内射维数的对偶**：$\\operatorname{fd}_{R}M=\\operatorname{id}_{R^{\\mathrm{op}}}\\operatorname{Hom}_{\\mathbb{Z}}(M,\\mathbb{Q}/\\mathbb{Z})$，即特征对偶把平坦维数换成同侧内射维数。\n\n**整体维数**：环的弱整体维数是所有模的平坦维数的上确界；Noether 环上弱整体维数等于整体维数。\n\n⚠ 本图此前只在 `def.injective-dimension` 注里提到「未单列平坦维数」，本节点补上定义；平坦维数不是投射维数的同义词。',
+      refs: ['Weibel, An Introduction to Homological Algebra, Ch. 4 · flat dimension', 'Rotman, An Introduction to Homological Algebra, Ch. 8 · homological dimensions'],
+    },
   ],
 
   edges: [
+    { id: 'dep.fd-flat', kind: 'definition', definition: 'def.flat-module', usedBy: 'def.flat-dimension',
+      note: '平坦维数用平坦模的消解定义。' },
+    { id: 'dep.fd-pd', kind: 'definition', definition: 'def.projective-dimension', usedBy: 'def.flat-dimension',
+      note: '投射维数是平坦维数的上界。' },
 
     /* ------------------------------------------------------- 定义引用（蓝线） */
 
@@ -1068,13 +1084,6 @@ window.MG = window.MG || {};
       note: '被分类的就是一阶扩展群 $\\operatorname{Ext}^{1}$。'
     },
     {
-      id: 'def-link.ext1-dimshift',
-      kind: 'definition',
-      definition: 'prop.dimension-shift',
-      usedBy: 'thm.ext1-extensions',
-      note: '把 $\\operatorname{Ext}^{1}$ 写成 $\\operatorname{coker}$ 的那一步，正是维数转移。'
-    },
-    {
       id: 'def-link.flat-module',
       kind: 'definition',
       definition: 'def.module',
@@ -1157,13 +1166,6 @@ window.MG = window.MG || {};
       definition: 'def.cohomology',
       usedBy: 'thm.universal-coefficients',
       note: '两端的 $H_{n}$ 都是复形的同调。'
-    },
-    {
-      id: 'def-link.uct-snake',
-      kind: 'definition',
-      definition: 'thm.snake-lemma',
-      usedBy: 'thm.universal-coefficients',
-      note: '证明最后一步是把两条张量后的正合列摆在一起追图 —— 用的就是蛇引理那套。'
     },
     {
       id: 'def-link.mitchell-abelian',

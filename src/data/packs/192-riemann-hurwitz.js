@@ -204,9 +204,10 @@
     },
     {
       id: 'dep.eulerchar-riemannhurwitz',
-      kind: 'definition',
-      definition: 'prop.eulerchar-genus',
-      usedBy: 'thm.riemann-hurwitz',
+      kind: 'implication',
+      sources: ['prop.eulerchar-genus'],
+      target: 'thm.riemann-hurwitz',
+      proof: 'Riemann–Hurwitz 的原形是 $2g(S)-2=n(2g(T)-2)+\\sum_{p}(e_{p}-1)$；代入 $\\chi=2-2g$（`prop.eulerchar-genus`）即得 $\\chi(S)=n\\chi(T)-\\sum_{p}(e_{p}-1)$。∎',
       note: '换成 $\\chi$ 的写法要用 $\\chi = 2 - 2g$ 这条命题。',
     },
   ],

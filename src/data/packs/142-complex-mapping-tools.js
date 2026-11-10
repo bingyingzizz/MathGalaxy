@@ -440,9 +440,27 @@
         'Ahlfors, Conformal Invariants, McGraw–Hill 1973, Ch. 6',
       ],
     },
+    {
+      id: 'def.prime-end',
+      cluster: 'analysis.conformal',
+      type: 'definition',
+      label: '素端',
+      title: '素端（prime end）与 Carathéodory 紧化',
+      regions: ['analysis'],
+      tags: ['定义', '复分析', '共形映射', '素端', '边界对应'],
+      statement: '设 $\\Omega\\subset\\mathbb{C}$ 是单连通真区域。$\\Omega$ 中的**横截弧**是端点落在 $\\partial\\Omega$ 上、内部含于 $\\Omega$ 的简单弧。横截弧把 $\\Omega$ 分成两个区域；按包含关系取这些区域的极限，得到 $\\Omega$ 的**素端**（prime end）的等价类。素端集合记 $\\partial_{p}\\Omega$，配以自然的极限拓扑（Carathéodory 紧化），使 $\\overline{\\Omega}^{p}=\\Omega\\cup\\partial_{p}\\Omega$ 紧。',
+      notes: '**Jordan 区域的情形**：若 $\\partial\\Omega$ 是 Jordan 曲线，则素端与边界点一一对应，Carathéodory 紧化就是通常的闭包；这正是 `thm.boundary-correspondence` 所讨论的边界对应。\n\n**一般区域**：素端可能对应多个边界点（例如梳状区域的尖端），也可能一个边界点对应多个素端；素端是「从内部看边界」的精细对象。\n\n**Carathéodory 定理**：Riemann 映射 $f:\\Omega\\to\\mathbb{D}$ 连续延拓为 $\\overline{\\Omega}^{p}\\to\\overline{\\mathbb{D}}$ 的同胚（见 `thm.riemann-mapping`、`thm.boundary-correspondence`）。\n\n⚠ 本图无 Jordan 曲线定理与横截弧节点；此节点只给定义与用途，不含定理证明。',
+      refs: ['Carathéodory, Conformal Representation, Ch. II · prime ends', 'Pommerenke, Boundary Behaviour of Conformal Maps, Ch. 2 · prime ends'],
+    },
   ],
 
   edges: [
+    { id: 'dep.prime-simply', kind: 'definition', definition: 'def.simply-connected', usedBy: 'def.prime-end',
+      note: '素端定义在单连通区域上。' },
+    { id: 'dep.prime-riemann', kind: 'definition', definition: 'thm.riemann-mapping', usedBy: 'def.prime-end',
+      note: 'Riemann 映射延拓到素端紧化。' },
+    { id: 'dep.prime-boundary', kind: 'definition', definition: 'thm.boundary-correspondence', usedBy: 'def.prime-end',
+      note: 'Jordan 区域的素端对应就是边界对应。' },
     { kind: 'implication', sources: ['def.mobius'], target: 'def.cross-ratio',
       title: '分式线性变换给出交比这个不变量',
       proof: [
@@ -626,9 +644,10 @@
       note: '它给 S–C 公式的「$x_{k}$ 对应顶点」提供了合法性。' },
     {
       id: 'dep.riemann-caratheodory',
-      kind: 'definition',
-      definition: 'thm.riemann-mapping',
-      usedBy: 'lem.caratheodory-osgood',
+      kind: 'implication',
+      sources: ['thm.riemann-mapping'],
+      target: 'lem.caratheodory-osgood',
+      proof: '由 `thm.riemann-mapping` 得双全纯 $f:\\Omega\\to\\mathbb D$；Carathéodory–Osgood 进一步证 $f$ 连续延拓到 $\\partial\\Omega$ 且在其上单射，从而给出边界一一对应。内部双全纯由该定理提供，边界部分是本引理新证的，故本边是推出。∎',
       note: 'Carathéodory–Osgood 定理研究的正是 Riemann 映射 $f:\\Omega\\to\\mathbb{D}$ 的边界行为；`thm.riemann-mapping` 只保证内部双全纯，本引理补边界。',
     },
 

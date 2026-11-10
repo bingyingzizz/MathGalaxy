@@ -1177,10 +1177,26 @@ window.MG = window.MG || {};
         '📌 本图只有正向的具体例子：Hilbert 空间与 $L^p$（$1<p<\\infty$）自反，故每个泛函达到范数（由 Riesz 表示可直接看出）。',
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Banach 空间', 'Diestel, Sequences and Series in Banach Spaces, Ch. 3'],
-    }
+     },
+    {
+      id: 'def.weak-topology',
+      cluster: 'fa.norm',
+      type: 'definition',
+      label: '弱拓扑',
+      title: '弱拓扑 $\\sigma(E,E^{*})$',
+      regions: ['analysis'],
+      tags: ['定义', '泛函分析', '弱拓扑', '对偶', 'Banach 空间'],
+      statement: '设 $E$ 是赋范空间，$E^{*}$ 是其连续对偶。$E$ 上的**弱拓扑** $\\sigma(E,E^{*})$ 是使所有 $\\varphi\\in E^{*}$ 都连续的最弱拓扑；等价地，它由半范数族 $p_{\\varphi}(x)=|\\varphi(x)|$（$\\varphi\\in E^{*}$）生成。',
+      notes: '**基本事实**：范数收敛推出弱收敛，反之不然。例如 $\\ell^{2}$ 中的标准基 $e_{n}\\rightharpoonup0$（弱收敛），但 $\\|e_{n}\\|=1$ 不趋于 $0$。\n\n**为什么用它**：弱拓扑把对偶的元素都变成连续函数，于是可以用泛函分离点、取弱紧性；自反空间的有界闭球弱紧（Eberlein–Šmulian，本图尚无节点）。\n\n**与弱*拓扑的区别**：弱*拓扑在 $E^{*}$ 上由 $E$ 的元素 $x\\mapsto\\varphi(x)$ 生成，$E^{*}$ 的弱*紧性即 Banach–Alaoglu 定理（本图尚无节点）。\n\n⚠ 弱拓扑不是范数拓扑：弱开集比范数开集少得多；无限维赋范空间的弱拓扑不第一可数。',
+      refs: ['Rudin, Functional Analysis, Ch. 3 · weak topology', 'Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations, Ch. 3 · weak topology'],
+    },
   ],
 
   edges: [
+    { id: 'dep.weak-banach', kind: 'definition', definition: 'def.banach-space', usedBy: 'def.weak-topology',
+      note: '弱拓扑定义在赋范空间（特别 Banach 空间）上。' },
+    { id: 'dep.weak-dual', kind: 'definition', definition: 'def.dual-space', usedBy: 'def.weak-topology',
+      note: '弱拓扑由连续对偶的元素生成。' },
     { id: 'def-link.pp-dual', kind: 'definition', definition: 'def.dual-space',
       usedBy: 'def.perfect-pairing',
       note: '配对的两侧嵌入到对方对偶空间；完美配对的第三条要求这两个嵌入保范。' },

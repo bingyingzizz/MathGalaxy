@@ -157,13 +157,6 @@ window.MG = window.MG || {};
       usedBy: 'def.coordinate',
       note: '坐标的合法性来自「基」的定义（线性无关 + 生成 = 表示唯一），而那个定义就写在 `def.vs` 里。'
     },
-    {
-      id: 'dep.steinitz-dimension',
-      kind: 'definition',
-      definition: 'thm.steinitz',
-      usedBy: 'thm.dimension',
-      note: '维数的定义要用「基的势」这个词 —— 而「势是唯一的」正是 Steinitz 引理给出的。'
-    },
 
     /* ---------------------------------------------------------------- 证明 */
     {

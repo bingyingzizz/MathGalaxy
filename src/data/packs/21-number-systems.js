@@ -379,9 +379,10 @@ window.MG = window.MG || {};
     },
     {
       id: 'dep.omega-induction',
-      kind: 'definition',
-      definition: 'thm.omega',
-      usedBy: 'thm.induction',
+      kind: 'implication',
+      sources: ['thm.omega'],
+      target: 'thm.induction',
+      proof: '$\\omega$ 是最小归纳集：若 $S\\subset\\omega$ 且 $0\\in S$、$n\\in S\\implies n^{+}\\in S$，则 $S$ 是归纳集，由最小性 $\\omega\\subset S$，故 $S=\\omega$ —— 这就是归纳原理；递推定义的唯一性同样由最小性给出。∎',
       note: '归纳原理与递推定义都来自「$\\omega$ 是**最小归纳集**」这一条。'
     },
     {
@@ -551,9 +552,10 @@ window.MG = window.MG || {};
     },
     {
       id: 'dep.cantor-uncountable',
-      kind: 'definition',
-      definition: 'thm.cantor',
-      usedBy: 'thm.real-uncountable',
+      kind: 'implication',
+      sources: ['thm.cantor'],
+      target: 'thm.real-uncountable',
+      proof: '$2^{\\aleph_{0}}=\\#\\mathcal{P}(\\mathbb{N})=\\#\\mathbb{R}$（二进制展开）。由 Cantor 定理 $\\#A<\\#\\mathcal{P}(A)$，取 $A=\\mathbb{N}$ 得 $\\aleph_{0}<2^{\\aleph_{0}}=\\#\\mathbb{R}$，故 $\\mathbb{R}$ 不可数。∎',
       note: '后半句 $2^{\\aleph_0} > \\aleph_0$ 用的就是 Cantor 定理（$\\#A < \\#\\mathcal{P}(A)$）。'
     },
 

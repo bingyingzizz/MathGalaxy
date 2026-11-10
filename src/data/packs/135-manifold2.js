@@ -1080,13 +1080,6 @@ window.MG = window.MG || {};
       note: '同构由 $[\\omega] \\mapsto \\bigl([c] \\mapsto \\int_{c}\\omega\\bigr)$ 给出，所以「形式在链上的积分」是这条定理的**构造**而不是例子：没有它就没有映射。'
     },
     {
-      id: 'dep.mf2-stokes-derhamthm',
-      kind: 'definition',
-      definition: 'thm.stokes',
-      usedBy: 'thm.de-rham',
-      note: '配对能「下到同调与上同调」全靠 Stokes 的两个方向：$\\int_{\\partial b}\\omega = \\int_{b}\\mathrm{d}\\omega$ 与 $\\int_{\\partial c}\\eta = \\int_{c}\\mathrm{d}\\eta$ —— 一句话：边界算子是 $\\mathrm{d}$ 的伴随。\n\n本条的证明里逐字算的是链版（`thm.stokes-chain`），概念形式就是这一条。'
-    },
-    {
       id: 'dep.mf2-tensor-contraction',
       kind: 'definition',
       definition: 'def.tensor-field',
@@ -1360,7 +1353,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.mf2-de-rham',
       kind: 'implication',
-      sources: ['def.de-rham-complex', 'def.singular-chain', 'def.integral-on-chain', 'thm.stokes-chain', 'lem.poincare-lemma', 'thm.paracompact-cech-equals-sheaf'],
+      sources: ['def.de-rham-complex', 'def.singular-chain', 'def.integral-on-chain', 'thm.stokes', 'thm.stokes-chain', 'lem.poincare-lemma', 'thm.paracompact-cech-equals-sheaf'],
       target: 'thm.de-rham',
       title: '闭链上的积分 $\\implies$ de Rham 上同调与奇异上同调同构',
       proof: [

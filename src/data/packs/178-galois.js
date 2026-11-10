@@ -507,9 +507,10 @@
     },
     {
       id: 'dep.lagrange-correspondence',
-      kind: 'definition',
-      definition: 'thm.lagrange',
-      usedBy: 'thm.galois-correspondence',
+      kind: 'implication',
+      sources: ['thm.lagrange'],
+      target: 'thm.galois-correspondence',
+      proof: '对应把中间域 $E$ 送到 $H=\\operatorname{Gal}(K/E)$。由 $[K:F]=[K:E][E:F]$ 与 Lagrange 定理 $[G:H]=|G|/|H|$，两边同除得 $[G:H]=[E:F]$ —— 这正是基本定理里的指数匹配。∎',
       note: '$[E:F] = [G : \\operatorname{Gal}(K/E)]$ 的右端是**指数**，靠 Lagrange 定理与群阶对上。',
     },
     /* ---------- 根式可解 ---------- */
@@ -544,9 +545,10 @@
     /* ---------- 五次方程 ---------- */
     {
       id: 'dep.radical-quintic',
-      kind: 'definition',
-      definition: 'thm.radical-solvable',
-      usedBy: 'thm.quintic-unsolvable',
+      kind: 'implication',
+      sources: ['thm.radical-solvable'],
+      target: 'thm.quintic-unsolvable',
+      proof: '`thm.radical-solvable` 给出「根式可解 $\\iff$ 群可解」，取逆否得「群不可解 $\\implies$ 无根式解」；$S_{5}$ 含不可解的正规子群 $A_{5}$，故以 $S_{5}$ 为伽罗瓦群的五次多项式无根式解。∎',
       note: '「$\\operatorname{Gal}(f)$ 不可解 $\\implies$ 无根式解」这一步就是那条定理的逆否。',
     },
     {

@@ -190,8 +190,59 @@ window.MG = window.MG || {};
         '**它回答了什么问题。** 「同态把群送到哪里去了」这个问题，答案只有两部分：**核**（被压掉的部分）与**像**（留下来的部分），二者由一个同构精确地锁在一起。于是研究同态 = 研究正规子群，这就是把群论变成「子群格」的原因。'
       ].join('\n\n'),
       refs: ['Lang, Algebra, Ch. I §4', 'Dummit & Foote, Abstract Algebra, §10.2']
-    }
+    },
+    {
+      id: 'def.free-group',
+      cluster: 'algebra.structures',
+      type: 'definition',
+      label: '自由群',
+      title: '自由群 $F(S)$（约化字）',
+      regions: ['algebra'],
+      tags: ['定义', '代数', '群', '自由群', '字'],
+      statement: '设 $S$ 是集合。$S$ 上的**自由群** $F(S)$ 由所有**约化字** $s_{1}^{\\varepsilon_{1}}\\cdots s_{n}^{\\varepsilon_{n}}$ 组成，其中 $s_{i}\\in S$、$\\varepsilon_{i}=\\pm1$，且相邻的 $s_{i}=s_{i+1}$、$\\varepsilon_{i}=-\\varepsilon_{i+1}$ 已被相消；空字记 $1$。乘法为字的拼接后再约化。包含映射 $\\iota:S\\to F(S)$ 把 $s$ 送到单字母字。',
+      notes: '**正规形**：约化字是每个元素的唯一表示，故两个字相等当且仅当约化后逐字母相同；这使 $F(S)$ 的运算良定义且无其他关系。\n\n**基本例子**：$F(\\emptyset)=1$；$F(\\{s\\})\\cong\\mathbb{Z}$（字 $s^{n}$）；$F(\\{a,b\\})$ 是非阿贝尔群，$\\pi_{1}(S^{1}\\vee S^{1})\\cong F(\\{a,b\\})$。\n\n⚠ **与自由阿贝尔群不同物**：`thm.csz-free` 说的是自由阿贝尔群（交换），本节点是非阿贝尔自由群；$F(S)$ 的交换化才是自由阿贝尔群。\n\n**为什么叫自由**：除群公理外不施加任何关系；泛性质见 `def.free-group-universal`。',
+      refs: ['Lang, Algebra, Ch. I §12 · free groups', 'Dummit and Foote, Abstract Algebra, §6.3 · free groups'],
+    },
+    {
+      id: 'def.free-group-universal',
+      cluster: 'algebra.structures',
+      type: 'definition',
+      label: '自由群的泛性质',
+      title: '自由群的泛性质（左伴随）',
+      regions: ['algebra'],
+      tags: ['定义', '代数', '群', '自由群', '泛性质', '伴随'],
+      statement: '设 $S$ 是集合，$F(S)$ 是自由群，$\\iota:S\\to F(S)$ 是包含。对任意群 $G$ 与任意映射 $f:S\\to G$，存在唯一的群同态 $\\tilde f:F(S)\\to G$ 使 $\\tilde f\\circ\\iota=f$。等价地，$\\operatorname{Hom}_{\\mathbf{Grp}}(F(S),G)\\cong\\operatorname{Hom}_{\\mathbf{Set}}(S,U(G))$，其中 $U$ 是遗忘函子。',
+      notes: '**含义**：给自由群一个同态，等价于给生成元集合一个到目标群的任意映射；生成元之间没有需要满足的关系。\n\n**唯一性**：由 $\\tilde f(s)=\\iota(s)$ 与同态性，$\\tilde f(s^{\\varepsilon})=f(s)^{\\varepsilon}$，于是 $\\tilde f$ 在生成元上被唯一确定；存在性由字的乘法直接验证。\n\n**伴随**：泛性质正是「$F$ 是遗忘函子 $U:\\mathbf{Grp}\\to\\mathbf{Set}$ 的左伴随」的定义（见 `def.adjoint`）：单位 $\\iota$ 给出 $\\operatorname{Hom}(F(S),G)\\cong\\operatorname{Hom}(S,U(G))$。\n\n⚠ 若只要求「存在」而不要求「唯一」，则任何包含 $S$ 的群都满足，泛性质就不再刻画自由群。',
+      refs: ['Lang, Algebra, Ch. I §12 · universal property of free groups', 'Mac Lane, Categories for the Working Mathematician, Ch. IV §1 · free groups as adjoint'],
+    },
+    {
+      id: 'def.dihedral-group',
+      cluster: 'algebra.structures',
+      type: 'definition',
+      label: '二面体群',
+      title: '二面体群 $D_{n}$（正 $n$ 边形的对称群）',
+      regions: ['algebra'],
+      tags: ['定义', '代数', '群', '二面体群', '对称群', '半直积'],
+      statement: '设 $n\\ge 3$。**二面体群** $D_{n}$ 是正 $n$ 边形的对称群，阶为 $2n$，由旋转 $r$（转角 $2\\pi/n$）与一个反射 $s$ 生成，满足关系 $r^{n}=1$、$s^{2}=1$、$srs=r^{-1}$。等价地，$D_{n}=\\langle r,s\\mid r^{n}=s^{2}=1,\\ srs=r^{-1}\\rangle$。',
+      notes: '**几何**：$D_{n}$ 的元素是 $n$ 个旋转 $1,r,\\ldots,r^{n-1}$ 与 $n$ 个反射 $s,rs,\\ldots,r^{n-1}s$；反射都是 $2$ 阶。\n\n**结构**：$D_{n}\\cong\\mathbb{Z}/n\\rtimes\\mathbb{Z}/2$，其中 $\\mathbb{Z}/2$ 通过 $r\\mapsto r^{-1}$ 作用在 $\\mathbb{Z}/n$ 上（见 `def.semidirect-product`）。旋转子群 $\\langle r\\rangle$ 正规，商为 $\\mathbb{Z}/2$。\n\n**低阶**：$D_{3}\\cong S_{3}$（正三角形对称群，阶 $6$）；$D_{4}$ 是正方形对称群（阶 $8$）；$D_{n}$ 可解，因为 $\\mathbb{Z}/n$ 与 $\\mathbb{Z}/2$ 都交换。\n\n⚠ **记号歧义**：有的书用 $D_{2n}$ 表示阶 $2n$ 的二面体群；本图统一用 $D_{n}$ 表示阶 $2n$。',
+      refs: ['Lang, Algebra, Ch. I §6 · dihedral groups', 'Dummit and Foote, Abstract Algebra, §1.2 · dihedral groups'],
+    },
   ],
 
-  edges: []
+  edges: [
+    { id: 'dep.fg-group', kind: 'definition', definition: 'def.group', usedBy: 'def.free-group',
+      note: '自由群的乘法与公理按群的定义验证。' },
+    { id: 'dep.fgu-fg', kind: 'definition', definition: 'def.free-group', usedBy: 'def.free-group-universal',
+      note: '泛性质讨论的对象是自由群。' },
+    { id: 'dep.fgu-adjoint', kind: 'definition', definition: 'def.adjoint', usedBy: 'def.free-group-universal',
+      note: '自由函子与遗忘函子构成伴随对。' },
+    { id: 'dep.dihedral-group', kind: 'definition', definition: 'def.group', usedBy: 'def.dihedral-group',
+      note: '二面体群是群。' },
+    { id: 'dep.dihedral-semidirect', kind: 'definition', definition: 'def.semidirect-product', usedBy: 'def.dihedral-group',
+      note: 'D_n 是 Z/n 与 Z/2 的半直积。' },
+    { id: 'dep.dihedral-action', kind: 'definition', definition: 'def.group-action', usedBy: 'def.dihedral-group',
+      note: 'D_n 作用在正 n 边形的顶点集上。' },
+    { id: 'dep.dihedral-classeq', kind: 'definition', definition: 'thm.class-equation', usedBy: 'def.dihedral-group',
+      note: 'D_n 的共轭类可用类方程分析。' },
+  ]
 });
