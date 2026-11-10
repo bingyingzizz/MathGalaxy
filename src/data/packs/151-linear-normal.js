@@ -549,15 +549,22 @@ window.MG = window.MG || {};
     { id: 'dep.ln-spectral-unitary', kind: 'definition',
       definition: 'def.unitary-matrix', usedBy: 'thm.spectral-matrix',
       note: '对角化的变换限制为酉矩阵，才叫谱分解。' },
-    { id: 'dep.ln-spectral-diag', kind: 'definition',
-      definition: 'thm.diagonalizable', usedBy: 'thm.spectral-matrix',
+    { id: 'dep.ln-spectral-diag', kind: 'analogy',
+      a: 'thm.diagonalizable', b: 'thm.spectral-matrix',
       note: '谱定理是「可对角化」在正交条件下的加强版；先有一般的可对角化判据。' },
     { id: 'dep.ln-polar-posdef', kind: 'definition',
       definition: 'def.positive-definite-matrix', usedBy: 'thm.polar-decomposition',
       note: '$P = \\sqrt{A^{*}A}$ 是半正定的，正定那一条给出「半正定矩阵有唯一平方根」。' },
-    { id: 'dep.ln-polar-svd', kind: 'definition',
-      definition: 'thm.svd', usedBy: 'thm.polar-decomposition',
-      note: '把 $P$ 对角化即得 SVD，所以 SVD 可以看成极分解的推论；反过来也常用。' },
+    { id: 'dep.ln-polar-svd', kind: 'equivalence',
+      a: 'thm.svd', b: 'thm.polar-decomposition',
+      title: '奇异值分解 $\\iff$ 极分解',
+      proofs: [
+        { label: 'SVD $\\implies$ 极分解',
+          text: '设 $A = U\\Sigma V^{*}$。令 $P := V\\Sigma V^{*}$、$W := UV^{*}$：$\\Sigma$ 对角非负故 $P$ 半正定 Hermite，$U,V$ 酉故 $W$ 酉，且 $WP = UV^{*}V\\Sigma V^{*} = U\\Sigma V^{*} = A$。又 $P^{2} = V\\Sigma^{2}V^{*} = A^{*}A$，而半正定平方根唯一，故 $P = \\sqrt{A^{*}A}$ —— 正是极分解里那个 $P$。' },
+        { label: '极分解 $\\implies$ SVD（方阵）',
+          text: '设 $A = WP$，$W$ 酉、$P$ 半正定 Hermite。由谱定理 $P = V\\Sigma V^{*}$，$\\Sigma = \\operatorname{diag}(\\sigma_1,\\ldots,\\sigma_n)$、$\\sigma_i \\ge 0$。于是 $A = (WV)\\Sigma V^{*}$，取 $U := WV$ 即得 SVD（重排使 $\\sigma_1\\ge\\cdots$）。' }
+      ],
+      note: '两条定理在**方阵**情形互相推出（这正是等价的范围）；SVD 的陈述更宽、允许长方形，此时极分解要用等距代替酉。原记 analogy，FIX-065 按 AUD-062 改 equivalence 并补双向证明。' },
 
     /* ---------- 谱量 ---------- */
     { id: 'dep.ln-radius-eigen', kind: 'definition',
@@ -577,12 +584,26 @@ window.MG = window.MG || {};
       note: '定理要求 $A$ 是 Hermite（实对称）—— 否则特征值不是实的，不等式无从谈起。' },
 
     /* ---------- 把新节点接回旧图（避免孤岛） ---------- */
-    { id: 'dep.ln-spectral-old', kind: 'definition',
-      definition: 'thm.spectral-matrix', usedBy: 'thm.spectral-theorem',
-      note: '矩阵版把算子的谱定理落到标准正交基下的矩阵语言；两条互为翻译。' },
-    { id: 'dep.ln-normal-oldspectral', kind: 'definition',
-      definition: 'thm.spectral-matrix', usedBy: 'cor.spectral-normal',
-      note: '「复正规可酉对角化」的矩阵表述就是这一条。' },
+    { id: 'dep.ln-spectral-old', kind: 'equivalence',
+      a: 'thm.spectral-matrix', b: 'thm.spectral-theorem',
+      title: '算子版谱定理 $\\iff$ 矩阵版谱定理（实对称）',
+      proofs: [
+        { label: '算子版 $\\implies$ 矩阵版',
+          text: '设 $A$ 实对称，它定义 $\\mathbb{R}^{n}$（标准正交基）上的自伴算子 $T$。谱定理给 $T$ 的一组标准正交特征基 $u_1,\\ldots,u_n$，以它们为列得正交矩阵 $Q$；由 $T u_i = \\lambda_i u_i$ 得 $AQ = Q\\Lambda$，即 $Q^{\\mathsf{T}}AQ = \\Lambda$ 为实对角阵。' },
+        { label: '矩阵版 $\\implies$ 算子版',
+          text: '设 $V$ 有限维实内积空间、$T$ 自伴。取标准正交基把 $T$ 写成实对称矩阵 $A$；矩阵版给正交 $Q$ 使 $Q^{\\mathsf{T}}AQ = \\Lambda$。$Q$ 的列是 $V$ 的一组标准正交基，且 $AQ = Q\\Lambda$ 说明第 $i$ 列是特征值 $\\lambda_i$ 的特征向量 —— 这就是谱定理要的特征基，特征值全实由 $\\Lambda$ 直接读出。' }
+      ],
+      note: '两条是同一件事的算子语言与矩阵语言；关键一步「在标准正交基下取矩阵」在两个方向上都可逆。原记 analogy，FIX-065 改 equivalence 并补双向推导。' },
+    { id: 'dep.ln-normal-oldspectral', kind: 'equivalence',
+      a: 'thm.spectral-matrix', b: 'cor.spectral-normal',
+      title: '正规矩阵可酉对角化 $\\iff$ 正规算子可酉对角化',
+      proofs: [
+        { label: '算子版 $\\implies$ 矩阵版',
+          text: '设 $A$ 正规。取 $\\mathbb{C}^{n}$ 的标准正交基，$A$ 定义的算子 $T$ 满足 $T^{*}T = TT^{*}$。复谱定理给标准正交特征基，以之为列得酉矩阵 $U$；由 $AU = U\\Lambda$ 得 $U^{*}AU = \\Lambda$ 对角。' },
+        { label: '矩阵版 $\\implies$ 算子版',
+          text: '设 $T$ 是有限维复内积空间上的正规算子。取标准正交基把 $T$ 写成 $A$，正规性逐项传递：$A^{*}A = AA^{*}$。矩阵版给酉 $U$ 使 $U^{*}AU = \\Lambda$；$U$ 的列是标准正交基，$AU = U\\Lambda$ 说明第 $i$ 列是特征值 $\\lambda_i$ 的特征向量。' }
+      ],
+      note: '原记 analogy，FIX-065 改 equivalence：两个方向都归结为「标准正交基下的矩阵 + $AU = U\\Lambda$」这一条事实。' },
     { id: 'dep.ln-trace-spectral', kind: 'definition',
       definition: 'def.spectral-radius', usedBy: 'def.trace',
       note: '迹等于特征值之和；谱半径给的是「模最大的那个」，两者从不同角度记账。' },

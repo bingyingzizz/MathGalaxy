@@ -191,17 +191,21 @@ window.MG = window.MG || {};
     },
     {
       id: 'def-link.nthroot-root-test',
-      kind: 'definition',
-      definition: 'thm.nth-root',
-      usedBy: 'thm.root-test',
-      note: '根值判别法里的 $\\sqrt[n]{a_n}$ 是 n 次方根；$n$ 逐项变化，所以需要一般 $n$ 的存在性。'
+      kind: 'implication',
+      sources: ['thm.nth-root'],
+      target: 'thm.root-test',
+      title: 'n 次方根的存在唯一性 $\\implies$ 根值判别法的表达式有定义',
+      proof: '根值判别法要对**每个** $n$ 与每个 $a_n \\ge 0$ 写出 $\\sqrt[n]{a_n}$：一般 $n$ 的非负 $n$ 次方根**存在且唯一**正是 `thm.nth-root` 的内容。唯一性保证 $\\sqrt[n]{a_n}$ 是良定义的单个实数，$\\limsup_{n}\\sqrt[n]{a_n}$ 才有意义。判别法的证明本身只是把它与几何级数比较（见边 `thm.comparison-test \\implies thm.root-test`），不另用方根的性质 —— 所以这条依赖是「表达式良定义」的前置定理，不是追图里的一步。',
+      note: 'AUD-061 A 类。原记 definition；改 imp 的理由：来源是定理、且整条判别法的陈述以它为前提（不是定义性记号）。'
     },
     {
       id: 'def-link.nthroot-convergence-radius',
-      kind: 'definition',
-      definition: 'thm.nth-root',
-      usedBy: 'thm.convergence-radius',
-      note: '收敛半径的证明要把 $\\sqrt[n]{|a_n (x - x_0)^{n}|}$ 拆成 $|x - x_0| \\cdot \\sqrt[n]{|a_n|}$，靠 $\\sqrt[n]{uv} = \\sqrt[n]{u}\\sqrt[n]{v}$。'
+      kind: 'implication',
+      sources: ['thm.nth-root'],
+      target: 'thm.convergence-radius',
+      title: 'n 次方根的乘性 $\\implies$ Cauchy–Hadamard 的拆分一步',
+      proof: 'Cauchy–Hadamard 的证明（边 `thm.root-test \\implies thm.convergence-radius`）第一步是 $\\sqrt[n]{\\lvert a_n (x - x_0)^{n}\\rvert} = \\lvert x - x_0\\rvert \\cdot \\sqrt[n]{\\lvert a_n\\rvert}$。这一步用的是 $\\sqrt[n]{uv} = \\sqrt[n]{u}\\,\\sqrt[n]{v}$（$u,v \\ge 0$）：先由 `thm.nth-root` 取非负 $n$ 次方根，再用**唯一性**确认两边相等 —— $\\bigl(\\sqrt[n]{u}\\sqrt[n]{v}\\bigr)^{n} = uv$ 且左边非负，故它就是 $uv$ 的那个唯一非负 $n$ 次方根。没有存在唯一性，这个等式无从陈述，$\\limsup$ 的乘法性质也用不上。',
+      note: 'AUD-061 A 类。原记 definition；改 imp：拆分那一步确实以方根定理（存在 + 唯一 + 乘性）为引擎。'
     },
     {
       id: 'def-link.nthroot-p-series',

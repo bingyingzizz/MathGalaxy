@@ -1085,11 +1085,11 @@ window.MG = window.MG || {};
       note: '「含单位的子代数 + 分离点」就是这条定义的三个词。' },
     { id: 'def-link.fa-arzela-classic', kind: 'definition', definition: 'thm.arzela-ascoli', usedBy: 'thm.arzela-ascoli-general',
       note: '本图先有的经典版（$\\mathbb{R}$ 值、紧距离空、一致有界）是这条的特例：取 $E = \\mathbb{R}$ 即得。' },
-    { id: 'def-link.fa-invfn-banach', kind: 'definition', definition: 'thm.inverse-function-banach', usedBy: 'thm.bounded-inverse',
+    { id: 'def-link.fa-invfn-banach', kind: 'analogy', a: 'thm.inverse-function-banach', b: 'thm.bounded-inverse',
       note: '⚠️ 两条只共享「逆」这个字：那条是非线性的局部逆（Neumann + 压缩映射），这条是线性双射的全局逆（Baire）。' },
     { id: 'def-link.fa-function-closedgraph', kind: 'definition', definition: 'def.function', usedBy: 'thm.closed-graph',
       note: '「映射就是它的图像」是「映射」那条定义的直接后果（映射 = 一种特殊的关系 = 有序对的集合），所以闭图像定理里的 $G(u)$ 不是新对象。' },
-    { id: 'def-link.fa-openmapping-holo', kind: 'definition', definition: 'thm.open-mapping', usedBy: 'thm.open-mapping-banach',
+    { id: 'def-link.fa-openmapping-holo', kind: 'analogy', a: 'thm.open-mapping', b: 'thm.open-mapping-banach',
       note: '⚠️ 同名不同物：那条是「非常数全纯函数是开映射」，这条是「满射有界线性算子是开映射」，证明毫无关系。' },
 
     /* ------------------------------------------------ 定位边：新区域不能悬空在层 0 */

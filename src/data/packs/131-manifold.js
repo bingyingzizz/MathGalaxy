@@ -1200,13 +1200,6 @@ window.MG = window.MG || {};
       note: '链的每一项都是 $k$-形式的空间 $\\Omega^{k}(M)$；闭与恰当这两个词也是形式论里的词（`def.exterior-derivative`）。\n\n⭐ 2026-11-01 改指到**流形上**的 $\\Omega^{k}(M)$（原来指欧氏开集上那个坐标模型，于是「$\\Omega^{k}(M)$ 是什么」在图上无处可查）。\n\n层号是**算出来的**：de Rham 复形依赖 18 层的形式定义，它就自己在 20 层，不该反过来拿层号去将就。'
     },
     {
-      id: 'dep.mf-pullback-derham',
-      kind: 'definition',
-      definition: 'prop.pullback-form-manifold',
-      usedBy: 'def.de-rham-complex',
-      note: '「$H^{k}$ 是函子」全靠拉回与 $\\mathrm{d}$ 交换（$F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$）；否则拉回只能作用在形式上、下不到商空间。\n\n⭐ 2026-11-01 改指到**流形间**的拉回（原来指开集间那个）。\n\n这一改把 de Rham 复形从 20 层推到 22 层 —— 那是应该的：它的每一项都是流形上的形式，凭什么排在拉回之前。\n\n层号是算出来的，不是拿来保的。'
-    },
-    {
       id: 'dep.mf-connected-h0',
       kind: 'definition',
       definition: 'def.connected',

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T15:00:15.092Z",
+ "generated": "2026-11-10T14:01:07.338Z",
  "terms": 76,
  "missing": [
   {
@@ -377,20 +377,20 @@
   {
    "node": "def.orientable-manifold",
    "nodeLabel": "可定向流形",
-   "nodeLayer": 16,
+   "nodeLayer": 15,
    "def": "def.smooth-manifold",
    "defLabel": "光滑流形",
    "defLayer": 19,
-   "gap": 3
+   "gap": 4
   },
   {
    "node": "thm.riesz-perfect-pairing",
    "nodeLabel": "Riesz 表示的配对版",
-   "nodeLayer": 15,
+   "nodeLayer": 14,
    "def": "def.hilbert-space",
    "defLabel": "Hilbert 空间",
    "defLayer": 18,
-   "gap": 3
+   "gap": 4
   },
   {
    "node": "prop.cgwh-fiber-product",
@@ -402,31 +402,49 @@
    "gap": 3
   },
   {
+   "node": "prop.pullback-forms",
+   "nodeLabel": "拉回（开集间）",
+   "nodeLayer": 18,
+   "def": "def.smooth-map",
+   "defLabel": "光滑映射",
+   "defLayer": 20,
+   "gap": 2
+  },
+  {
+   "node": "prop.volume-form-orientation",
+   "nodeLabel": "定向与体积形式",
+   "nodeLayer": 17,
+   "def": "def.smooth-manifold",
+   "defLabel": "光滑流形",
+   "defLayer": 19,
+   "gap": 2
+  },
+  {
    "node": "def.module-category",
    "nodeLabel": "模范畴",
    "nodeLayer": 10,
    "def": "def.linear-map",
    "defLabel": "线性映射",
-   "defLayer": 12,
-   "gap": 2
-  },
-  {
-   "node": "prop.pullback-forms",
-   "nodeLabel": "拉回（开集间）",
-   "nodeLayer": 19,
-   "def": "def.smooth-map",
-   "defLabel": "光滑映射",
-   "defLayer": 20,
+   "defLayer": 11,
    "gap": 1
   },
   {
-   "node": "prop.volume-form-orientation",
-   "nodeLabel": "定向与体积形式",
-   "nodeLayer": 18,
-   "def": "def.smooth-manifold",
-   "defLabel": "光滑流形",
-   "defLayer": 19,
-   "gap": 1
+   "node": "def.integral-form",
+   "nodeLabel": "形式的积分",
+   "nodeLayer": 17,
+   "def": "def.partition-of-unity",
+   "defLabel": "单位分解",
+   "defLayer": 17,
+   "gap": 0
+  },
+  {
+   "node": "def.nilpotent",
+   "nodeLabel": "幂零",
+   "nodeLayer": 15,
+   "def": "def.char-poly",
+   "defLabel": "特征多项式",
+   "defLayer": 15,
+   "gap": 0
   },
   {
    "node": "def.real-metric-space",
@@ -456,7 +474,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 46,
+ "noEdgeAll": 48,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

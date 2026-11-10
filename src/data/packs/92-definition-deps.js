@@ -685,7 +685,13 @@ window.MG = window.MG || {};
     ['def.compactly-generated', 'prop.cg-cartesian-closed', 'def-dep.cgcc-cg',
       '定理说的是**紧生成空间**范畴。'],
     ['prop.cg-cartesian-closed', 'cor.cg-exponential-adjoint', 'def-dep.cgexp-cc',
-      '伴随那条是笛卡尔闭的重新表述。'],
+      '笛卡尔闭与「乘 $Y$ 有右伴随」是同一件事的两种说法。', 'equivalence',
+      [
+        { label: '笛卡尔闭 $\\implies$ 伴随',
+          text: '笛卡尔闭给出自然双射 $\\operatorname{Hom}(k(X\\times Y), Z) \\cong \\operatorname{Hom}(X, kC(kY, Z))$（右边就是把 currying 的双射用指数对象 $Z^{Y} = kC(kY,Z)$ 写出来；$Z$ 紧生成时 $kC(kY,Z)$ 与 $C(Y,Z)$ 一致）。这组自然双射按定义就是 $k(X\\times -) \\dashv kC(kY, -)$。' },
+        { label: '伴随 $\\implies$ 笛卡尔闭',
+          text: '设 $k(X\\times Y) \\dashv kC(kY,-)$，其伴随同构把 $f : k(X\\times Y)\\to Z$ 送到 $\\widehat{f} : X \\to kC(kY,Z)$，$\\widehat{f}(x)(y) = f(x,y)$。与 $k$-化同构 $\\operatorname{Hom}_{k\\mathbf{Top}}(X, kC(kY,Z)) \\cong \\operatorname{Hom}_{\\mathbf{Top}}(X\\times Y, Z)$ 拼起来即得 currying 的自然双射 $C(k(X\\times Y), Z)\\cong C(X, C(Y,Z))$，即 $k\\mathbf{Top}$ 笛卡尔闭。' }
+      ]],
     ['def.adjoint', 'cor.cg-exponential-adjoint', 'def-dep.cgexp-adjoint',
       '结论说的是「左伴随于」。'],
 
@@ -769,7 +775,7 @@ window.MG = window.MG || {};
     ['def.abelian-category', 'thm.five-lemma', 'def-dep.five-abelian',
       '五引理在**阿贝尔范畴**里说。'],
     ['thm.snake-lemma', 'thm.five-lemma', 'def-dep.five-snake',
-      '两者都在**阿贝尔范畴**里说、都只能走泛元与泛性质；五引理是比较同构的版本。'],
+      '两者都在**阿贝尔范畴**里说、都只能走泛元与泛性质；五引理是比较同构的版本。', 'analogy'],
     ['def.image', 'thm.five-lemma', 'def-dep.five-image',
       '用的还是「正合 = 核 = 像」。'],
 
@@ -1203,6 +1209,10 @@ window.MG = window.MG || {};
   ];
 
   var edges = E.map(function (e) {
+    /* FIX-063：少数条目不是定义依赖（举例/动机/同名不同物），第 5 位标 'analogy' 降成弱边 */
+    if (e[4] === 'analogy') return { id: e[2], kind: 'analogy', a: e[0], b: e[1], note: e[3] };
+    /* FIX-065：等价的条目把双向证明放第 6 位 */
+    if (e[4] === 'equivalence') return { id: e[2], kind: 'equivalence', a: e[0], b: e[1], note: e[3], proofs: e[5] };
     return { id: e[2], kind: 'definition', definition: e[0], usedBy: e[1], note: e[3] };
   });
 

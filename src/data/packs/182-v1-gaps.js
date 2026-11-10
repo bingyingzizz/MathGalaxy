@@ -78,7 +78,7 @@
         '⭐ **为什么「全部」只差常数**：若 $F\' = G\' = f$，则 $(F - G)\' = 0$，' +
           '由中值定理（`thm.mvt`）$F - G$ 是常数。这一步是「不定积分」这个记号 $\\int f\\,\\mathrm{d}x = F + C$ 的全部依据。',
         '⭐ **存在性不是白给的**：$f$ **连续**时一定有原函数 —— 取 $F(x) = \\int_{a}^{x} f$，' +
-          '就是变上限积分的导数（`thm.ftc-riemann-part1`）。而不连续的函数可能没有原函数' +
+          '就是变上限积分的导数（微积分基本定理第一部分）。而不连续的函数可能没有原函数' +
           '（有第一类间断点的导数不存在原函数：导函数不能有跳跃间断）。',
         '⚠ **「原函数」与「定积分」是两件事**：原函数是一个**函数**（差一个常数），' +
           '定积分是一个**数**；把它们粘起来的是微积分基本定理。',
@@ -133,7 +133,7 @@
           '若不存在这样的 $n$，说 $x$ 的阶为**无穷**。',
       ].join('\n'),
       notes: [
-        '⭐ **两个「阶」靠 Lagrange 定理连起来**（`thm.lagrange`）：$G$ **有限**时 $\\operatorname{ord}(x)$ 整除 $|G|$（$G = \\mathbb{Z}$、$x = 1$ 的阶是无穷，两边无从谈起），' +
+        '⭐ **两个「阶」靠 Lagrange 定理连起来**：$G$ **有限**时 $\\operatorname{ord}(x)$ 整除 $|G|$（$G = \\mathbb{Z}$、$x = 1$ 的阶是无穷，两边无从谈起），' +
           '而且 $\\operatorname{ord}(x)$ 就是循环子群 $\\langle x \\rangle$ 的阶。这条是初等群论里最常用的桥。',
         '⚠ **$|G|$ 这个记号在本图有两个含义**（同一个符号、不同语境，见 `notation` 的 R13）：' +
           '群的阶用 $|G|$，而**集合的势**用 $\\#A$。两者数学上是同一件事（群的阶就是其底层集合的势），' +
@@ -235,14 +235,6 @@
       usedBy: 'def.antiderivative',
       note: '原函数是「在某个**区间**上」说的 —— 在两点集上取原函数没有意义（中值定理要区间）。',
     },
-    {
-      id: 'dep.ftc-antiderivative',
-      kind: 'definition',
-      definition: 'thm.ftc-riemann-part1',
-      usedBy: 'def.antiderivative',
-      note: '存在性的唯一来源：$f$ 连续时 $F(x) = \\int_{a}^{x} f$ 就是它的原函数 —— ' +
-        '这正是那条定理的内容。',
-    },
     /* ---------- 二元运算 ---------- */
     {
       id: 'dep.function-binaryop',
@@ -258,13 +250,6 @@
       definition: 'def.group',
       usedBy: 'def.group-order',
       note: '群的阶与元素的阶都是**群**上的量。',
-    },
-    {
-      id: 'dep.lagrange-grouporder',
-      kind: 'definition',
-      definition: 'thm.lagrange',
-      usedBy: 'def.group-order',
-      note: '$\\operatorname{ord}(x) \\mid |G|$ 这条要用 Lagrange 定理（$\\operatorname{ord}(x) = |\\langle x\\rangle|$）。',
     },
     /* 与既有的群论节点互通：他们早就用 $|G|$，但没指向这个定义 */
     {

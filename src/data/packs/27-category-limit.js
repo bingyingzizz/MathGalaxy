@@ -302,6 +302,38 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
+    {
+      id: 'def.intersection-subobject',
+      cluster: 'cat.structure',
+      type: 'definition',
+      label: '子对象的交',
+      title: '子对象的交与纤维积',
+      regions: ['category'],
+      tags: ['范畴论', '子对象', '纤维积', '交'],
+      statement: [
+        '设 $Y \\rightarrowtail X$、$Z \\rightarrowtail X$ 是 $X$ 的两个**子对象**（单态射的同构类，见 `def.subobject`）。它们的**交**是纤维积',
+        '',
+        '$$Y \\cap Z := Y \\times_{X} Z \\;\\longrightarrow\\; X ,$$',
+        '',
+        '连同到 $X$ 的投影（若纤维积存在）。它在「同时包含于 $Y$ 与 $Z$ 的子对象」中泛：任何同时分解过两条单态射的 $T \\to X$ 都唯一地分解过 $Y \\cap Z \\to X$。',
+        '',
+        '对任意 $f : X\' \\to X$，**原像** $f^{-1}(Y) := Y \\times_{X} X\'$ 是 $X\'$ 的子对象。在 $\\mathbf{Set}$ 中，交就是集合交 $Y \\cap Z$。'
+      ].join('\n'),
+      notes: [
+        '**为什么用纤维积**：交要表达「同时落在 $Y$ 与 $Z$ 里」。用元素说，就是 $t \\in Y \\cap Z$；不用元素说，就是 $T \\to X$ 同时分解过 $Y \\rightarrowtail X$ 与 $Z \\rightarrowtail X$。纤维积的泛性正是这个「同时分解」的万有解；于是任何满足该性质的对象都唯一地分解过 $Y \\times_{X} Z$，即它是最大下界。',
+        '',
+        '**存在性**：交就是纤维积，所以「交存在」当且仅当沿 $X$ 的纤维积存在；没有纤维积的范畴里不能谈交。单态射沿任意态射的拉回仍是单态射（见 `def.mono`），所以 $Y \\times_{X} Z \\to X$ 确实是子对象。',
+        '',
+        '**与集合交的关系**：在 $\\mathbf{Set}$ 中 $Y \\times_{X} Z = \\{(y,z) : y = z\\}$，映射 $t \\mapsto (t,t)$ 给出 $Y \\cap Z \\to Y \\times_{X} Z$ 的同构；所以交就是集合交。在 $\\mathbf{Grp}$、$\\mathbf{Top}$ 等具体范畴中，子对象由单射决定，交的底层集合同样是集合交。',
+        '',
+        '**与并的关系**：并是余积的像 $Y \\cup Z := \\operatorname{im}(Y \\coprod Z \\to X)$，不是纤维余积。预拓扑斯里子对象构成有界格：交 = 纤维积（最大下界），并 = 像（最小上界），见 `prop.subobject-lattice`。',
+        '',
+        '**原像**：对 $f : X\' \\to X$，$f^{-1}(Y) = Y \\times_{X} X\'$ 是 $X\'$ 的子对象；它满足「$f(x) \\in Y$」的泛性质，并随 $f$ 与拉回函子相容。原像与交是同一个构造（都取纤维积），只是沿的态射不同。',
+        '',
+        '**警告**：一般范畴里 $Y \\cap Z$ 不一定存在；即使存在，也不要把它与积 $Y \\times Z$ 或余积 $Y \\coprod Z$ 混为一谈。交是「沿 $X$ 的纤维积」，而不是「两个对象的积」。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3（Def 1.3.10, p.23–24）', 'Mac Lane, Categories for the Working Mathematician, Ch. III §4']
+    },
     /* -------------------------------------------------- 极限的函子性 */
     {
       id: 'thm.lim-functor',
@@ -382,6 +414,27 @@ window.MG = window.MG || {};
   ],
 
   edges: [
+    {
+      id: 'dep.inter-mono',
+      kind: 'definition',
+      definition: 'def.mono',
+      usedBy: 'def.intersection-subobject',
+      note: '子对象是单态射的同构类；拉回保持单态射这一步用到单态射的定义。'
+    },
+    {
+      id: 'dep.inter-subobject',
+      kind: 'definition',
+      definition: 'def.subobject',
+      usedBy: 'def.intersection-subobject',
+      note: '子对象的交以子对象（单态射的同构类）为前提。'
+    },
+    {
+      id: 'dep.inter-fiber',
+      kind: 'definition',
+      definition: 'def.fibered-product',
+      usedBy: 'def.intersection-subobject',
+      note: '交就是沿底对象取的纤维积，所以需要先有纤维积。'
+    },
     {
       id: 'def-link.simplex-category-simplicial',
       kind: 'definition',

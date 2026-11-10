@@ -231,7 +231,7 @@ window.MG.packs.push({
     /* 球面曲率 */
     { id: 'dep.spherecurv-K', kind: 'definition', definition: 'def.gauss-curvature', usedBy: 'ex.sphere-curvature',
       note: '例子的结论就是「$K = 1/R^{2}$」—— 用到 Gauss 曲率的定义（两主曲率之积）。' },
-    { id: 'dep.spherecurv-gb', kind: 'definition', definition: 'thm.gauss-bonnet', usedBy: 'ex.sphere-curvature',
+    { id: 'dep.spherecurv-gb', kind: 'analogy', a: 'thm.gauss-bonnet', b: 'ex.sphere-curvature',
       note: '注里用 $\\int_{S^{2}_{R}} K\\,\\mathrm{d}A = 4\\pi = 2\\pi\\chi$ **对账**，用的就是 Gauss–Bonnet 定理。' },
     { id: 'dep.spherecurv-sff', kind: 'definition', definition: 'def.second-fundamental-form', usedBy: 'ex.sphere-curvature',
       note: '计算过程取第二基本形式 $h = R\\,\\mathrm{d}\\theta^{2} + R\\sin^{2}\\theta\\,\\mathrm{d}\\varphi^{2}$ 来得到主曲率。' },

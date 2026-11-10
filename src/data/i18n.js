@@ -362,6 +362,7 @@ MG.i18n = {
     'def.interior': { title_en: 'Interior', label_en: 'Interior', from: 'explicit' },
     'def.interior-product': { title_en: 'interior product', label_en: 'interior product', from: 'explicit' },
     'def.internal-hom': { title_en: 'internal hom', label_en: 'internal hom', from: 'aka' },
+    'def.intersection-subobject': { title_en: 'intersection of subobjects', label_en: 'intersection of subobjects', from: 'explicit' },
     'def.interval': { title_en: 'interval', label_en: 'interval', from: 'aka' },
     'def.intrinsic-quantity': { title_en: 'Intrinsic Quantity', label_en: 'Intrinsic Quantity', from: 'manual' },
     'def.invariant-functor': { title_en: 'Invariant Functor', label_en: 'Invariants', from: 'manual' },

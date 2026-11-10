@@ -441,6 +441,13 @@ window.MG = window.MG || {};
   ],
 
   edges: [
+    {
+      id: 'dep.inter-lattice',
+      kind: 'definition',
+      definition: 'def.intersection-subobject',
+      usedBy: 'prop.subobject-lattice',
+      note: '子对象格的交就是子对象的交（纤维积）。'
+    },
 
     /* ------------------------------------------------ 满-单分解 */
     {

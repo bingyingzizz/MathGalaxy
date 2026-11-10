@@ -224,8 +224,8 @@ window.MG = window.MG || {};
     { id: 'dep.nilp-eig', kind: 'definition',
       definition: 'def.eigenvalue', usedBy: 'def.nilpotent',
       note: '判据「特征值全为 $0$」直接用特征值来陈述。' },
-    { id: 'dep.nilp-cayley', kind: 'definition',
-      definition: 'thm.cayley-hamilton', usedBy: 'def.nilpotent',
+    { id: 'dep.nilp-cayley', kind: 'analogy',
+      a: 'thm.cayley-hamilton', b: 'def.nilpotent',
       note: '$T^{n} = 0$ 这一条由 Cayley–Hamilton（特征多项式为 $x^{n}$）立刻得到。' },
 
     { id: 'dep.idem-linmap', kind: 'definition',

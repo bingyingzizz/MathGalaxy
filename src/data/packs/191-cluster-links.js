@@ -34,17 +34,8 @@ window.MG = window.MG || {};
     { id: 'def-link.cod-gauss', kind: 'definition',
       definition: 'thm.gauss-equation', usedBy: 'thm.codazzi-mainardi',
       note: 'Gauss 方程与 Codazzi–Mainardi 方程是曲面论基本方程的两半，必须并列引用。' },
-    { id: 'def-link.sf-rodrigues', kind: 'definition',
-      definition: 'thm.rodrigues', usedBy: 'def.second-fundamental-form',
-      note: 'Rodrigues 定理是第二基本形式在**主方向**上的一条具体结论。' },
-    { id: 'def-link.sf-eulerformula', kind: 'definition',
-      definition: 'thm.euler-formula-surface', usedBy: 'def.second-fundamental-form',
-      note: 'Euler 公式（$\\kappa_{n} = \\kappa_{1}\\cos^{2}\\theta + \\kappa_{2}\\sin^{2}\\theta$）同样写在第二基本形式上。' },
 
     /* ---------------- 实示性类（diffgeom.manifold） ---------------- */
-    { id: 'def-link.ec-echar', kind: 'definition',
-      definition: 'thm.euler-characteristic', usedBy: 'def.euler-class',
-      note: 'Euler 类与 Euler 示性数由 $\\int e = \\chi$ 相连 —— 一个是上同调类、一个是整数。' },
     { id: 'def-link.ec-k', kind: 'definition',
       definition: 'def.gauss-curvature', usedBy: 'def.euler-class',
       note: '曲面情形 $e(T\\Sigma)$ 就是 $K\\,\\mathrm{d}A$ 的上同调类（Gauss–Bonnet 的被积式）。' },

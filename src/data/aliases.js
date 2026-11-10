@@ -1534,6 +1534,7 @@ MG.aliases = {
     { id: 'def.reflexive-space', en: 'reflexive Banach space', aka: ['自反空间', '自反 Banach 空间'] },
     { id: 'thm.milman-pettis', en: 'Milman–Pettis theorem', aka: ['Milman-Pettis', 'Milman–Pettis 定理'] },
     { id: 'thm.james', en: "James's theorem", aka: ['James 定理', 'James 紧性定理'] },
+    { id: 'def.intersection-subobject', en: 'intersection of subobjects', aka: ['子对象的交', 'subobject intersection', 'fibred product of subobjects'] },
     { id: 'def.dini-derivative', en: 'Dini derivative', aka: ['Dini 导数', '导数', '四个 Dini 导数'] },
     { id: 'prop.lie-group-orientable', en: 'Lie groups are orientable', aka: ['李群可定向', '李群都是可定向流形'] },
     { id: 'prop.pi1-group', en: 'π₁ is a group', aka: ['基本群是群', 'π1 是群'] },

@@ -236,7 +236,7 @@ window.MG.packs.push({
       note: '注里把 $\\frac{1}{2\\pi i}\\oint \\mathrm{d}z/z$ 认作绕数 —— 用到绕数的定义。' },
     { id: 'dep.plane-proj', kind: 'definition', definition: 'def.orthogonal-projection', usedBy: 'ex.plane-projection',
       note: '例子给的是正交投影的矩阵，用定义（幂等 + 自伴）逐条验。' },
-    { id: 'dep.plane-ls', kind: 'definition', definition: 'thm.least-squares', usedBy: 'ex.plane-projection',
+    { id: 'dep.plane-ls', kind: 'analogy', a: 'thm.least-squares', b: 'ex.plane-projection',
       note: '注里把它当最小二乘的几何内核（残差与子空间正交）。' },
     { id: 'dep.cyl-first', kind: 'definition', definition: 'def.first-fundamental-form', usedBy: 'ex.cylinder-first-form',
       note: '例子的结果 $E, F, G$ 就是第一基本形式的系数。' },
@@ -259,7 +259,5 @@ window.MG.packs.push({
     { id: 'dep.zhat-profinite', kind: 'definition', definition: 'def.profinite', usedBy: 'def.profinite-integers',
       note: '**跨区域桥（topology $\\leftrightarrow$ number）**：$\\hat{\\mathbb{Z}}$ 是逆极限经 Tychonoff 得到的紧全不连通空间，' +
         '即 profinite 空间的一个实例 —— 用到 profinite（Stone）空间的定义。' },
-    { id: 'dep.zhat-crt', kind: 'definition', definition: 'thm.crt', usedBy: 'def.profinite-integers',
-      note: '注里的 $\\hat{\\mathbb{Z}} \\cong \\prod_{p}\\mathbb{Z}_{p}$ 就是中国剩余定理沿所有 $n$ 取极限。' },
   ],
 });

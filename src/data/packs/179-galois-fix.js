@@ -38,7 +38,7 @@
         '若 $\\overline{F}/F$ 是代数扩张且 $\\overline{F}$ 代数闭，则称 $\\overline{F}$ 是 $F$ 的**代数闭包**。',
       ].join('\n'),
       notes: [
-        '⭐ **$\\mathbb{C}$ 是代数闭的**，这就是代数基本定理（`thm.fundamental-algebra`）：' +
+        '⭐ **$\\mathbb{C}$ 是代数闭的**，这就是代数基本定理：' +
           '$\\mathbb{C} = \\mathbb{R}(i)$ 是 $\\mathbb{R}$ 的代数闭包。而 $\\overline{\\mathbb{Q}}$（$\\mathbb{Q}$ 在 $\\mathbb{C}$ 中的代数闭包）' +
           '是**代数扩张但次数无限**的典型例子 —— 这也正是「代数 $\\ne$ 有限」的出处。',
         '⭐ **代数闭包的存在性要靠选择**：把 $F$ 上所有首一不可约多项式排成良序，逐个模掉、' +
@@ -97,26 +97,11 @@
       note: '代数闭包是「代数扩张 + 代数闭」两条一起说的，先要有扩张。',
     },
     {
-      id: 'dep.zorn-algclosed',
-      kind: 'definition',
-      definition: 'lem.zorn',
-      usedBy: 'def.algebraically-closed',
-      note: '**存在性**要 Zorn 引理：把「已经造好的代数扩张」按包含排成偏序集，取全序链的并，' +
-        '再用 Zorn 取极大元（极大元必代数闭，否则还能再扩）。⚠ 这是域论里少见的「需要 AC 的存在性定理」。',
-    },
-    {
       id: 'dep.complex-algclosed',
       kind: 'definition',
       definition: 'def.complex',
       usedBy: 'def.algebraically-closed',
       note: '$\\mathbb{C}$ 是代数闭域的**第一个例子**（代数基本定理），$\\overline{\\mathbb{Q}}$ 在里面取。',
-    },
-    {
-      id: 'dep.fundamentalgebra-algclosed',
-      kind: 'definition',
-      definition: 'thm.fundamental-algebra',
-      usedBy: 'def.algebraically-closed',
-      note: '$\\mathbb{C}$ 代数闭**就是**代数基本定理的内容：既然每个复系数多项式都有根，就能逐个除掉一次因子。',
     },
     /* ---------- 单位根：复数 + 循环群 + 多项式环 + Euler 函数 ---------- */
     {
