@@ -222,7 +222,7 @@ window.MG = window.MG || {};
         '',
         '它线性，且 $(S \\circ T)^{\\ast} = T^{\\ast} \\circ S^{\\ast}$（**反变**）。'
       ].join('\n'),
-      notes: '⭐ 注意方向：$T : V \\to W$ 的对偶 $T^{\\ast}$ 是 $W^{\\ast} \\to V^{\\ast}$，**箭头反过来**。\n\n这就是「对偶」这一词的全部含义，也与 $(-)^{\\ast}$ 作为反变函子的地位一致。\n\n⭐ 有限维时 $V \\cong V^{\\ast}$（等维），但**没有自然的同构** —— 要找同构必须先选一组基。\n\n而 $V \\cong V^{\\ast\\ast}$ 有自然同构 $v \\mapsto (\\varphi \\mapsto \\varphi(v))$，这是「对偶的对偶回到自己」。\n\n⚠ 无限维时 $V^{\\ast}$ 严格大于 $V$：$\\dim V^{\\ast} = |K|^{\\dim V}$ 是 **Erdős–Kaplansky** 的基数定理（依赖 AC；$|V^{\\ast}| = |K|^{\\dim V}$ 是初等的，但「维数等于这个基数」不是），所以上述同构不成立。',
+      notes: '⭐ 注意方向：$T : V \\to W$ 的对偶 $T^{\\ast}$ 是 $W^{\\ast} \\to V^{\\ast}$，**箭头反过来**。\n\n这就是「对偶」这一词的全部含义，也与 $(-)^{\\ast}$ 作为反变函子的地位一致。\n\n⭐ 有限维时 $V \\cong V^{\\ast}$（等维），但**没有自然的同构** —— 要找同构必须先选一组基。\n\n而 $V \\cong V^{\\ast\\ast}$ 有自然同构 $v \\mapsto (\\varphi \\mapsto \\varphi(v))$，这是「对偶的对偶回到自己」。\n\n⚠ 无限维时 $V^{\\ast}$ 严格大于 $V$：$\\dim V^{\\ast} = \\#(K)^{\\dim V}$ 是 **Erdős–Kaplansky** 的基数定理（依赖 AC；$\\#(V^{\\ast}) = \\#(K)^{\\dim V}$ 是初等的，但「维数等于这个基数」不是），所以上述同构不成立。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
     },
     {

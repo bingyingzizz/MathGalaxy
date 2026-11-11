@@ -1401,6 +1401,7 @@ MG.i18n = {
     'thm.harmonic-mean-value': { title_en: 'mean value property of harmonic functions', label_en: null, from: 'explicit' },
     'thm.hartogs': { title_en: 'Hartogs', label_en: 'Hartogs', from: 'aka' },
     'thm.hausdorff': { title_en: 'Hausdorff maximal principle', label_en: 'Hausdorff maximal principle', from: 'aka' },
+    'thm.hilbert-uniformly-convex': { title_en: 'Hilbert spaces are uniformly convex', label_en: null, from: 'explicit' },
     'thm.holder': { title_en: 'Hölder', label_en: 'Hölder', from: 'aka' },
     'thm.hom-tensor-adjunction-mod': { title_en: 'Hom-Tensor Adjunction', label_en: 'Hom-Tensor Adjunction', from: 'manual' },
     'thm.homotopy-invariance': { title_en: 'homotopy invariance', label_en: 'homotopy invariance', from: 'explicit' },

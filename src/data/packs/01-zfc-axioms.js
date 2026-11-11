@@ -199,7 +199,7 @@ window.MG = window.MG || {};
         '',
         '$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( \\operatorname{dom} f = F \\wedge  \\forall X \\in F, f(X) \\in X ) ]$',
         '',
-        '另一种常见形式（两两不交形式）：若 $F$ 是两两不交的非空集合族，则存在集合 $C$，使对每个 $X \\in F$ 都有 $|C \\cap X| = 1$。',
+        '另一种常见形式（两两不交形式）：若 $F$ 是两两不交的非空集合族，则存在集合 $C$，使对每个 $X \\in F$ 都有 $\\#(C \\cap X) = 1$。',
         '',
         '选择函数 $f$ 就是「同时挑元素」的工具；AC 断言这种同时挑选永远做得到。'
       ].join('\n'),

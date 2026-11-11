@@ -386,7 +386,7 @@ window.MG = window.MG || {};
         '**可分的**：$\\ell^p(\\mathbb{N})$（$1 \\le p < \\infty$）、$L^p(\\Omega)$（Lebesgue 测度、$1 \\le p < \\infty$）、$C(K)$（$K$ 紧度量）、任何有限维空间。',
         '**不可分的**：$\\ell^\\infty(\\mathbb{N})$。证法：取 $A = \\{(e_n) : e_n = \\pm 1\\}$（$2^{\\aleph_0}$ 个点），任意两点距离 $\\ge 2$，故半径 $1$ 的两两不交球有不可数多个 —— 可数稠密集顶多覆盖可数多个。',
         '⭐ 讲义里那句「不可分 $\\implies$ 不能由一个可数集作为代数生成」很值得记：它把「基」的直觉挡在门外 —— $\\ell^\\infty$ 连可数 Schauder 基都没有（见「Schauder 基」）。',
-        '⚠️ 可分性对**连续像**遗传（$D$ 可数稠密 $\\implies$ $f(D)$ 在 $f(X)$ 中稠密）；在**度量空间**里对子空间也遗传，但一般拓扑空间不成立（$D$ 不可数、开集全取含 $p$ 的集合时，$X = D \\cup \\{p\\}$ 可分而闭子空间 $D$ 是不可数离散空间）。乘积也不遗传：$\\{0,1\\}^{I}$（$|I| > 2^{\\aleph_0}$）不可分，而 $\\mathbb{R}^{\\mathbb{R}}$ **反而可分**。'
+        '⚠️ 可分性对**连续像**遗传（$D$ 可数稠密 $\\implies$ $f(D)$ 在 $f(X)$ 中稠密）；在**度量空间**里对子空间也遗传，但一般拓扑空间不成立（$D$ 不可数、开集全取含 $p$ 的集合时，$X = D \\cup \\{p\\}$ 可分而闭子空间 $D$ 是不可数离散空间）。乘积也不遗传：$\\{0,1\\}^{I}$（$\\#I > 2^{\\aleph_0}$）不可分，而 $\\mathbb{R}^{\\mathbb{R}}$ **反而可分**。'
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
     },
@@ -426,7 +426,7 @@ window.MG = window.MG || {};
       statement: [
         '对任意指标集 $I$，令',
         '',
-        '$$\\ell^2(I) := \\left\\{ x = (x_i)_{i \\in I} \\subseteq \\mathbb{K} \\ : \\ \\|x\\|_2 := \\sup_{\\substack{J \\subseteq I \\\\ |J| < \\infty}} \\Bigl( \\sum_{j \\in J} |x_j|^2 \\Bigr)^{1/2} < \\infty \\right\\} ,$$',
+        '$$\\ell^2(I) := \\left\\{ x = (x_i)_{i \\in I} \\subseteq \\mathbb{K} \\ : \\ \\|x\\|_2 := \\sup_{\\substack{J \\subseteq I \\\\ \\#J < \\infty}} \\Bigl( \\sum_{j \\in J} |x_j|^2 \\Bigr)^{1/2} < \\infty \\right\\} ,$$',
         '',
         '内积 $\\langle x, y\\rangle := \\sum_{i \\in I} x_i \\overline{y_i}$。'
       ].join('\n'),
@@ -521,6 +521,32 @@ window.MG = window.MG || {};
         '⚠️ 讲义里写的是「$\\|x+y\\|^2 + \\|x-y\\|^2 = 2\\|x\\|^2 + 2\\|y\\|^2$」加一句「平行四边行」——把几何里的「平行四边形两条对角线平方和 = 四边平方和」直接搬到了范数上。'
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Jordan–von Neumann, Ann. of Math. 36 (1935)'],
+    },
+
+    /* ------------------------------------ Hilbert 空间一致凸（平行四边形律） */
+    {
+      id: 'thm.hilbert-uniformly-convex',
+      cluster: 'fa.hilbert',
+      type: 'theorem',
+      label: 'Hilbert 空间一致凸',
+      title: 'Hilbert 空间一致凸（平行四边形律）',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', 'Hilbert 空间', '一致凸'],
+      statement: [
+        '设 $H$ 是 Hilbert 空间。则 $H$ **一致凸**：对每个 $\\varepsilon \\in (0, 2]$，取',
+        '',
+        '$$\\delta = 1 - \\sqrt{1 - \\varepsilon^{2}/4} > 0 ,$$',
+        '',
+        '则当 $\\|x\\| = \\|y\\| = 1$、$\\|x - y\\| \\ge \\varepsilon$ 时，$\\left\\|\\frac{x + y}{2}\\right\\| \\le 1 - \\delta$。'
+      ].join('\n'),
+      notes: [
+        '**证明。** 令 $\\|x\\| = \\|y\\| = 1$。由平行四边形律，',
+        '',
+        '$$\\|x + y\\|^{2} + \\|x - y\\|^{2} = 2\\|x\\|^{2} + 2\\|y\\|^{2} = 4 ,$$',
+        '',
+        '即 $\\left\\|\\frac{x + y}{2}\\right\\|^{2} = 1 - \\frac{\\|x - y\\|^{2}}{4}$。当 $\\|x - y\\| \\ge \\varepsilon$ 时右端 $\\le 1 - \\varepsilon^{2}/4$，开方得 $\\left\\|\\frac{x + y}{2}\\right\\| \\le \\sqrt{1 - \\varepsilon^{2}/4} = 1 - \\delta$。$\\blacksquare$'
+      ].join('\n\n'),
+      refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
     },
 
     /* ------------------------------------------- 凸集与星形集 */
@@ -840,7 +866,7 @@ window.MG = window.MG || {};
       regions: ['functional-analysis'],
       tags: ['泛函分析', 'Hilbert 空间', '同构'],
       statement: [
-        '设 $H$ 是 Hilbert 空间，$\\dim H = |I|$（Hilbert 维数）。则 $H$ 等距同构于 $\\ell^2(I)$。特别地，无穷维可分 Hilbert 空间都等距同构于 $\\ell^2(\\mathbb{N})$。'
+        '设 $H$ 是 Hilbert 空间，$\\dim H = \\#I$（Hilbert 维数）。则 $H$ 等距同构于 $\\ell^2(I)$。特别地，无穷维可分 Hilbert 空间都等距同构于 $\\ell^2(\\mathbb{N})$。'
       ].join('\n'),
       notes: [
         '映射 $U : H \\to \\ell^2(I)$，$U(x) := (\\langle x, e_i\\rangle)_{i \\in I}$。\n\n' +
@@ -1362,6 +1388,40 @@ window.MG = window.MG || {};
         '$I$ 是正交投影，故按定义 $u^*u = I$ 是正交投影，$u$ 是部分等距。$\\blacksquare$'
       ].join('\n'),
       note: '反向不成立：单侧移位是部分等距但不是酉算子（$S\\,S^*$ 不是 $I$）。'
+    },
+    { id: 'def-link.huc-hilbert', kind: 'definition', definition: 'def.hilbert-space',
+      usedBy: 'thm.hilbert-uniformly-convex',
+      note: '证明用 Hilbert 空间的内积与由它诱导的范数（平行四边形律）。' },
+    { id: 'def-link.huc-uc', kind: 'definition', definition: 'def.uniformly-convex',
+      usedBy: 'thm.hilbert-uniformly-convex',
+      note: '结论按一致凸的定义陈述：$\\delta$ 只依赖 $\\varepsilon$。' },
+    {
+      id: 'imp.riesz-hilbert-pink',
+      kind: 'implication',
+      sources: ['thm.riesz-perfect-pairing'],
+      target: 'thm.riesz-hilbert',
+      layer: false,
+      title: '配对框架到 Hilbert 版 Riesz 表示（组织性回头边）',
+      proof: [
+        '**组织性说明（非推导）。** `thm.riesz-perfect-pairing` 只给出完美配对框架，并把 Hilbert 内积配对列为实例：三条公理由 Cauchy–Schwarz 与非退化性验证。',
+        '它**不**推出满射性 $H^{*}\\cong H$；满射性由 `thm.riesz-hilbert` 用投影定理/正交分解独立证明。',
+        '因此这条边表达「框架到实例」的回头关系（便于从框架跳到具体定理），不是从完美配对的三条公理单独推出满射，故 `layer: false`。'
+      ].join('\n'),
+      note: '组织性回头边：配对定理只给框架；满射性仍由投影定理给出，不是从完美配对的三条公理单独推出。'
+    },
+    {
+      id: 'imp.riesz-lp-pink',
+      kind: 'implication',
+      sources: ['thm.riesz-perfect-pairing'],
+      target: 'thm.riesz-representation-lp',
+      layer: false,
+      title: '配对框架到 $L^p$ 版 Riesz 表示（组织性回头边）',
+      proof: [
+        '**组织性说明（非推导）。** `thm.riesz-perfect-pairing` 把 $(L^{p},L^{q})$ 列为完美配对实例：三条公理由 Hölder 与对偶刻画验证。',
+        '它**不**推出 $(L^{p})^{*}\\cong L^{q}$；满射性由 `thm.riesz-representation-lp` 用 Radon–Nikodym 独立证明。',
+        '因此这条边表达「框架到实例」的回头关系（便于从框架跳到具体定理），不是从完美配对的三条公理单独推出满射，故 `layer: false`。'
+      ].join('\n'),
+      note: '组织性回头边：配对定理只给框架；满射性仍由 Radon–Nikodym / 对偶刻画给出，不是从完美配对的三条公理单独推出。'
     }
   ]
 });

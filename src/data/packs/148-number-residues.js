@@ -166,7 +166,7 @@ window.MG = window.MG || {};
         '',
         '$$\\left(\\frac{q}{p}\\right) = (-1)^{\\mu} = (-1)^{\\sum_{x=1}^{P} \\lfloor qx/p \\rfloor} .$$',
         '',
-        '**第三步：矩形计数。** 在矩形 $R = \\{(x, y) \\in \\mathbb{Z}^{2} : 1 \\le x \\le P,\\ 1 \\le y \\le Q\\}$（共 $PQ$ 个整点）里，直线 $qx = py$ 不含任何整点：$p \\mid qx$ 且 $p \\nmid q$ 给出 $p \\mid x$，但 $1 \\le x \\le P < p$，矛盾。故 $R$ 分成 $R_{-} = \\{qx - py > 0\\}$ 与 $R_{+} = \\{qx - py < 0\\}$ 两部分，$|R| = |R_{-}| + |R_{+}| = PQ$。',
+        '**第三步：矩形计数。** 在矩形 $R = \\{(x, y) \\in \\mathbb{Z}^{2} : 1 \\le x \\le P,\\ 1 \\le y \\le Q\\}$（共 $PQ$ 个整点）里，直线 $qx = py$ 不含任何整点：$p \\mid qx$ 且 $p \\nmid q$ 给出 $p \\mid x$，但 $1 \\le x \\le P < p$，矛盾。故 $R$ 分成 $R_{-} = \\{qx - py > 0\\}$ 与 $R_{+} = \\{qx - py < 0\\}$ 两部分，$\\#R = \\#R_{-} + \\#R_{+} = PQ$。',
         '',
         '对固定 $x$，$\\{y : 1 \\le y \\le Q,\\ qx - py > 0\\} = \\{y : y < qx/p\\}$ 恰有 $\\min(Q, \\lfloor qx/p \\rfloor)$ 个元素；而 $qx/p \\le qP/p = \\frac{q(p-1)}{2p} < \\frac{q}{2}$，故 $\\lfloor qx/p \\rfloor \\le \\frac{q-1}{2} = Q$，这个数就是 $\\lfloor qx/p \\rfloor$。于是 $|R_{-}| = \\sum_{x=1}^{P} \\lfloor qx/p \\rfloor$。对称地（交换 $p \\leftrightarrow q$、$x \\leftrightarrow y$）$|R_{+}| = \\sum_{y=1}^{Q} \\lfloor py/q \\rfloor$。因此',
         '',

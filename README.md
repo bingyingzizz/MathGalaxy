@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **1620 nodes / 3372 edges** across **15 galaxies and 105 clusters** (content `v0.9.3`).
+> **1621 nodes / 3376 edges** across **15 galaxies and 105 clusters** (content `v0.9.3`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >

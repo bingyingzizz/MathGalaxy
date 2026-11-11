@@ -1266,7 +1266,7 @@ MG.i18nStatements = {
         '$\\operatorname{dom}$ is defined only for functions, so the assertion says: "there is a function $f$ with $\\operatorname{dom} f = F$, and $f(X) \\in X$ for every $X \\in F$\":\n\n' +
         '$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( \\operatorname{dom} f = F \\wedge  \\forall X \\in F, f(X) \\in X ) ]$\\\n\n' +
         'Another common form (pairwise disjoint form): if $F$ is a family of pairwise disjoint ' +
-        'non-empty sets, then there is a set $C$ with $|C \\cap X| = 1$ for every $X \\in F$.\n\n' +
+        'non-empty sets, then there is a set $C$ with $\\#(C \\cap X) = 1$ for every $X \\in F$.\n\n' +
         'The choice function $f$ is the device for "picking all at once"; AC asserts that such a ' +
         'simultaneous choice is always possible.',
         status: 'reviewed', basedOn: 'v0.9.3#96318197', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },

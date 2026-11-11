@@ -1314,6 +1314,7 @@ MG.aliases = {
     { id: 'def.hilbert-space', en: 'Hilbert space', aka: ['Hilbert 空间', '希尔伯特空间', '完备内积空间'] },
     { id: 'thm.polarization', en: 'polarization identity', aka: ['极化恒等式', '极化公式'] },
     { id: 'thm.parallelogram-inner-product', en: 'parallelogram law characterises inner products', aka: ['平行四边形法则', 'Jordan-von Neumann', '内积判别'] },
+    { id: 'thm.hilbert-uniformly-convex', en: 'Hilbert spaces are uniformly convex', aka: ['Hilbert 空间一致凸', '希尔伯特空间一致凸', '一致凸 Hilbert 空间'] },
     { id: 'thm.projection-convex', en: 'nearest point in a closed convex set', aka: ['最近点', '变分不等式', '凸投影'] },
     { id: 'thm.projection-subspace', en: 'orthogonal projection onto a closed subspace', aka: ['正交投影', '正交分解', '正交补分解'] },
     { id: 'thm.riesz-hilbert', en: 'Riesz representation theorem for Hilbert spaces', aka: ['Riesz 表示定理', '里斯表示定理', 'H 自对偶'] },
