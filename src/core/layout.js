@@ -973,8 +973,61 @@
     };
   }
 
+  /* ====================================================================
+     预计算快路径（ENG-015 阶段二）
+     --------------------------------------------------------------------
+     构建期已把坐标、星系/星团统计算好（dist/layout.json，单文件内联）。
+     这里只做 computeLayout 第 0 步的语义准备 + 把坐标写回 + 收尾，
+     **不跑**求解循环（那是 6–8s 的全部来源）。
+     ⛔ 与 computeLayout 的缓存路径同口径：两条路径最终 graph 字段必须一致。
+     ==================================================================== */
+  function applyPreLayout(graph, data) {
+    var cfg = MG.config.layout;
+    var nodes = graph.nodes;
+    var tAll = layoutNow();
+
+    /* 第 0 步：语义字段 + 星系外扩（很便宜，每次都必须现算） */
+    graph.regions.forEach(function (r) {
+      if (!r._baseCenter) r._baseCenter = { x: r.center.x, y: r.center.y };
+      r.center = { x: r._baseCenter.x * cfg.regionSpread, y: r._baseCenter.y * cfg.regionSpread };
+    });
+    nodes.forEach(function (n) {
+      n.target = regionTarget(n, graph);
+      n.regionObjs = n.regions.map(function (id) { return graph.regionById[id]; }).filter(Boolean);
+      n.isBorder = n.regionObjs.length > 1;
+      n.degree = (graph.adj[n.id] || []).length;
+      n.galaxy = n.clusterObj ? graph.galaxyOf(n.clusterObj) : (n.regionObjs[0] || null);
+      n._sector = (n.regionObjs[0] && n.regionObjs[0].sector) || '';
+    });
+    graph.regions.forEach(function (r) {
+      r._cap = Math.max(discRadius(nodes.filter(function (n) { return n.regions.indexOf(r.id) >= 0; }).length,
+        cfg.capacityFactor), 140);
+    });
+    /* 星团成员过滤：图重建后 cluster.nodes 里可能混进已删节点 */
+    var liveSet = Object.create(null);
+    nodes.forEach(function (n) { liveSet[n.id] = true; });
+    graph.clusters.forEach(function (c) {
+      c.nodes = c.nodes.filter(function (n) { return liveSet[n.id]; });
+    });
+
+    /* 坐标 + 星系/星团统计（与 localStorage 恢复同一份数据形状） */
+    MG.layoutCache.applyData(data, graph);
+    graph.clusters.forEach(function (c) {
+      if (c.stat) { c.center = { x: c.stat.cx, y: c.stat.cy }; c._cap = c.stat.radius; }
+      else { c.center = null; c._cap = 0; }
+    });
+
+    var liveClusters = graph.clusters.filter(function (c) { return c.nodes.length && c.stat; });
+    graph.layoutFromCache = true;
+    graph.layoutFromPre = true;
+    graph.layoutFromPreMs = Math.round(layoutNow() - tAll);
+    finishLayout(graph, liveClusters, 0, tAll);
+    return true;
+  }
+
   function indexOf(arr, v) { for (var i = 0; i < arr.length; i++) if (arr[i].id === v) return i; return -1; }
 
   MG.computeLayout = computeLayout;
+  MG.applyPreLayout = applyPreLayout;
   MG.regionTarget = regionTarget;
 })(typeof window !== 'undefined' ? window : globalThis);

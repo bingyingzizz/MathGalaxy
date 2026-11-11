@@ -409,6 +409,25 @@ window.MG = window.MG || {};
 <script>/* 内容版本：tools/idstable.mjs 维护，build.mjs 构建时把 dev 换成真版本号。
    ⭐ 星图公开后节点 id 是对外契约，导出的文件与 llms.txt 里都带这个版本，别人引用时能对齐。 */
 window.MG = window.MG || {}; MG.contentVersion = 'dev';</script>
+<!-- ⭐ 布局预计算（ENG-015 阶段二）：build 会把下面这行的 null 换成整份布局
+     （与 dist/layout.json 同源）。http(s) 下若没有内联（开发版 index.html 直接打开），
+     再抓一份：先试站点根（发布后的 layout.json），再试 dist/（仓库根的开发服务）。
+     file:// 双击时 fetch 不可用 ⇒ 冷算兜底，可接受。 -->
+<script>window.MG_PRELAYOUT = null;</script>
+<script>(function () {
+  if (window.MG_PRELAYOUT || typeof fetch !== 'function') return;
+  if (!/^https?:$/.test(location.protocol)) return;
+  function grab(urls, i) {
+    if (i >= urls.length) return Promise.resolve(null);
+    return fetch(urls[i], { cache: 'no-store' }).then(function (r) {
+      return r.ok ? r.json() : grab(urls, i + 1);
+    }).catch(function () { return grab(urls, i + 1); });
+  }
+  window.MG_PRELAYOUT_READY = grab(['layout.json', 'dist/layout.json'], 0).then(function (d) {
+    if (d && !window.MG_PRELAYOUT) window.MG_PRELAYOUT = d;
+    return d;
+  });
+})();</script>
 <script src="src/ui/katex.min.js"></script>
 
 <script src="src/core/config.js"></script>

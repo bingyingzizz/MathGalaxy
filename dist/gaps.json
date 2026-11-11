@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T06:35:09.151Z",
+ "generated": "2026-11-11T08:08:35.027Z",
  "terms": 76,
  "missing": [
   {
@@ -11,6 +11,10 @@
      "c": 4
     },
     {
+     "id": "thm.euler-formula",
+     "c": 2
+    },
+    {
      "id": "thm.boundary-correspondence",
      "c": 2
     },
@@ -19,8 +23,12 @@
      "c": 2
     },
     {
-     "id": "thm.euler-formula",
-     "c": 2
+     "id": "def.jordan-curve",
+     "c": 1
+    },
+    {
+     "id": "def.trig-function",
+     "c": 1
     },
     {
      "id": "def.normal-curvature",
@@ -45,14 +53,6 @@
     {
      "id": "thm.hurwitz",
      "c": 1
-    },
-    {
-     "id": "lem.schwarz",
-     "c": 1
-    },
-    {
-     "id": "thm.riemann-mapping",
-     "c": 1
     }
    ]
   },
@@ -69,6 +69,14 @@
      "c": 2
     },
     {
+     "id": "def.trig-function",
+     "c": 1
+    },
+    {
+     "id": "thm.euler-formula",
+     "c": 1
+    },
+    {
      "id": "def.isometry",
      "c": 1
     },
@@ -81,19 +89,11 @@
      "c": 1
     },
     {
-     "id": "def.inverse-trig",
-     "c": 1
-    },
-    {
      "id": "ex.cylinder-first-form",
      "c": 1
     },
     {
-     "id": "def.trig-function",
-     "c": 1
-    },
-    {
-     "id": "thm.euler-formula",
+     "id": "def.inverse-trig",
      "c": 1
     }
    ]
@@ -157,6 +157,10 @@
      "c": 1
     },
     {
+     "id": "def.convex-function",
+     "c": 1
+    },
+    {
      "id": "thm.cauchy-schwarz",
      "c": 1
     },
@@ -166,10 +170,6 @@
     },
     {
      "id": "def.jacobi-symbol",
-     "c": 1
-    },
-    {
-     "id": "def.convex-function",
      "c": 1
     }
    ]
@@ -183,19 +183,19 @@
      "c": 2
     },
     {
-     "id": "thm.bounded-extension",
-     "c": 1
-    },
-    {
-     "id": "thm.closed-graph",
-     "c": 1
-    },
-    {
      "id": "def.pontryagin-dual",
      "c": 1
     },
     {
      "id": "thm.pontryagin-van-kampen",
+     "c": 1
+    },
+    {
+     "id": "thm.bounded-extension",
+     "c": 1
+    },
+    {
+     "id": "thm.closed-graph",
      "c": 1
     }
    ]
@@ -231,6 +231,10 @@
    "total": 5,
    "nodes": [
     {
+     "id": "thm.pontryagin-van-kampen",
+     "c": 1
+    },
+    {
      "id": "thm.cayley",
      "c": 1
     },
@@ -244,10 +248,6 @@
     },
     {
      "id": "ex-sl2-commutator",
-     "c": 1
-    },
-    {
-     "id": "thm.pontryagin-van-kampen",
      "c": 1
     }
    ]
@@ -281,11 +281,11 @@
    "total": 2,
    "nodes": [
     {
-     "id": "def.inverse-trig",
+     "id": "def.trig-function",
      "c": 1
     },
     {
-     "id": "def.trig-function",
+     "id": "def.inverse-trig",
      "c": 1
     }
    ]
@@ -393,6 +393,15 @@
    "gap": 6
   },
   {
+   "node": "prop.generator-coproduct-epi",
+   "nodeLabel": "生成元的余积刻画",
+   "nodeLayer": 11,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 5
+  },
+  {
    "node": "thm.classification-surfaces",
    "nodeLabel": "闭曲面分类定理",
    "nodeLayer": 30,
@@ -402,13 +411,13 @@
    "gap": 5
   },
   {
-   "node": "prop.generator-coproduct-epi",
-   "nodeLabel": "生成元的余积刻画",
-   "nodeLayer": 11,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 5
+   "node": "prop.adjoint-additive",
+   "nodeLabel": "伴随函子都加法",
+   "nodeLayer": 10,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 4
   },
   {
    "node": "prop.pullback-forms",
@@ -438,15 +447,6 @@
    "gap": 4
   },
   {
-   "node": "prop.adjoint-additive",
-   "nodeLabel": "伴随函子都加法",
-   "nodeLayer": 10,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 4
-  },
-  {
    "node": "prop.cgwh-fiber-product",
    "nodeLabel": "紧块的纤维积还是紧的",
    "nodeLayer": 13,
@@ -454,15 +454,6 @@
    "defLabel": "连续映射",
    "defLayer": 16,
    "gap": 3
-  },
-  {
-   "node": "thm.smooth-partition-unity",
-   "nodeLabel": "光滑单位分解",
-   "nodeLayer": 20,
-   "def": "def.smooth-manifold",
-   "defLabel": "光滑流形",
-   "defLayer": 22,
-   "gap": 2
   },
   {
    "node": "def.cochain-complex",
@@ -510,22 +501,13 @@
    "gap": 2
   },
   {
-   "node": "def.injective-dimension",
-   "nodeLabel": "内射维数",
+   "node": "thm.smooth-partition-unity",
+   "nodeLabel": "光滑单位分解",
    "nodeLayer": 20,
-   "def": "def.flat-dimension",
-   "defLabel": "平坦维数",
-   "defLayer": 21,
-   "gap": 1
-  },
-  {
-   "node": "ex.klein-bottle",
-   "nodeLabel": "克莱因瓶",
-   "nodeLayer": 34,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 35,
-   "gap": 1
+   "def": "def.smooth-manifold",
+   "defLabel": "光滑流形",
+   "defLayer": 22,
+   "gap": 2
   },
   {
    "node": "prop.injective-criterion",
@@ -564,31 +546,22 @@
    "gap": 1
   },
   {
-   "node": "def.cotangent-bundle",
-   "nodeLabel": "余切丛",
-   "nodeLayer": 25,
-   "def": "def.bundle-section",
-   "defLabel": "丛的截面",
-   "defLayer": 25,
-   "gap": 0
+   "node": "def.injective-dimension",
+   "nodeLabel": "内射维数",
+   "nodeLayer": 20,
+   "def": "def.flat-dimension",
+   "defLabel": "平坦维数",
+   "defLayer": 21,
+   "gap": 1
   },
   {
-   "node": "def.nilpotent",
-   "nodeLabel": "幂零",
-   "nodeLayer": 16,
-   "def": "def.char-poly",
-   "defLabel": "特征多项式",
-   "defLayer": 16,
-   "gap": 0
-  },
-  {
-   "node": "thm.riesz-perfect-pairing",
-   "nodeLabel": "Riesz 表示的配对版",
-   "nodeLayer": 18,
-   "def": "def.hilbert-space",
-   "defLabel": "Hilbert 空间",
-   "defLayer": 18,
-   "gap": 0
+   "node": "ex.klein-bottle",
+   "nodeLabel": "克莱因瓶",
+   "nodeLayer": 34,
+   "def": "def.nonorientable-genus",
+   "defLabel": "不可定向亏格",
+   "defLayer": 35,
+   "gap": 1
   },
   {
    "node": "def.real-metric-space",
@@ -651,6 +624,33 @@
    "def": "def.abelian-category",
    "defLabel": "阿贝尔范畴",
    "defLayer": 16,
+   "gap": 0
+  },
+  {
+   "node": "def.cotangent-bundle",
+   "nodeLabel": "余切丛",
+   "nodeLayer": 25,
+   "def": "def.bundle-section",
+   "defLabel": "丛的截面",
+   "defLayer": 25,
+   "gap": 0
+  },
+  {
+   "node": "def.nilpotent",
+   "nodeLabel": "幂零",
+   "nodeLayer": 16,
+   "def": "def.char-poly",
+   "defLabel": "特征多项式",
+   "defLayer": 16,
+   "gap": 0
+  },
+  {
+   "node": "thm.riesz-perfect-pairing",
+   "nodeLabel": "Riesz 表示的配对版",
+   "nodeLayer": 18,
+   "def": "def.hilbert-space",
+   "defLabel": "Hilbert 空间",
+   "defLayer": 18,
    "gap": 0
   }
  ],

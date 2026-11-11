@@ -111,6 +111,74 @@
     }
   }
 
+  /* ------------------------------------------- 预计算布局（build 生成 / 内联） */
+  /* ENG-015 阶段二：构建期把整份布局算好写进 dist/layout.json，单文件里内联成
+     `window.MG_PRELAYOUT`。只要签名对得上，就**直接应用、完全不跑 computeLayout**。
+     ⛔ 预计算优先于 localStorage：两者签名都匹配时用构建期那份（它是所有客户端
+        共用的唯一真源；localStorage 只是这台机器上次冷算的结果）。
+     ⛔ 签名不符 / 字段坏了就当作没有 —— 绝不能把旧坐标或 NaN 写进图。 */
+  var PRE_V = 1;
+
+  function preSource() {
+    /* `?nopre=1`：强制走冷算（验收/排查用；线上永远不带这个参数） */
+    try {
+      if (global.location && /[?&]nopre=1(?:&|$)/.test(global.location.search)) return null;
+    } catch (e) { /* 非浏览器环境忽略 */ }
+    var d = global.MG_PRELAYOUT;
+    return (d && typeof d === 'object' && d.v === PRE_V) ? d : null;
+  }
+
+  function preShapeOk(d, graph) {
+    if (!d || !d.nodes || typeof d.nodes !== 'object') return false;
+    for (var i = 0; i < graph.nodes.length; i++) {
+      var p = d.nodes[graph.nodes[i].id];
+      if (!p || p.length !== 2 || !isNum(p[0]) || !isNum(p[1])) return false;
+    }
+    return validRows(d.r, graph.regions.length, 6) &&
+      validRows(d.c, graph.clusters.length, 4);
+  }
+
+  /** 返回可用的预计算数据（已验签 + 验形状）；没有/不可用返回 null。 */
+  function preData(graph) {
+    var d = preSource();
+    if (!d) return null;
+    if (d.sig !== signature(graph)) return null;
+    if (!preShapeOk(d, graph)) return null;
+    return d;
+  }
+
+  /** 把预计算数据写回 graph（只写坐标与几何统计；语义字段由 layout.js 的快路径补）。 */
+  function applyData(data, graph) {
+    var nodes = graph.nodes;
+    for (var i = 0; i < nodes.length; i++) {
+      var p = data.nodes[nodes[i].id];
+      nodes[i].x = p[0];
+      nodes[i].y = p[1];
+    }
+    var cfg = MG.config.layout;
+    for (var r = 0; r < graph.regions.length; r++) {
+      var reg = graph.regions[r];
+      if (!reg._baseCenter && reg.center) reg._baseCenter = { x: reg.center.x, y: reg.center.y };
+      if (reg._baseCenter) {
+        reg.center = {
+          x: reg._baseCenter.x * cfg.regionSpread,
+          y: reg._baseCenter.y * cfg.regionSpread
+        };
+      }
+      var rs = data.r && data.r[r];
+      reg.stat = rs ? { cx: rs[0], cy: rs[1], nameX: rs[2], nameY: rs[3], count: rs[4], radius: rs[5] } : null;
+    }
+    for (var c = 0; c < graph.clusters.length; c++) {
+      var cl = graph.clusters[c];
+      var cs = data.c && data.c[c];
+      if (!cs) { cl.stat = null; cl.center = null; continue; }
+      cl.stat = { cx: cs[0], cy: cs[1], count: cs[2], radius: cs[3] };
+      cl.center = { x: cs[0], y: cs[1] };
+    }
+    graph.layoutFromCache = true;
+    graph.layoutMs = 0;
+  }
+
   /* -------------------------------------------------------------- 恢复 */
   /* 数值校验：typeof 必须是 number 且有限。
      ⚠️ 不能用 isFinite(v)：JSON 把 NaN/Infinity 写成 null，而 Number(null)===0、
@@ -150,6 +218,13 @@
 
   /** 把缓存里的坐标写回 graph。返回 true 表示**用得上的**缓存（调用方应跳过求解）。 */
   function restore(graph) {
+    /* 预计算优先：签名一致就直接用构建期坐标，连 localStorage 都不读 */
+    var pre = preData(graph);
+    if (pre) {
+      applyData(pre, graph);
+      graph.layoutFromPre = true;
+      return true;
+    }
     var data = readJSON(KEY);
     if (!data || data.sig !== signature(graph)) return false;
     if (!cacheShapeOk(data, graph)) { drop(); return false; }
@@ -181,6 +256,7 @@
       cl.stat = { cx: cs[0], cy: cs[1], count: cs[2], radius: cs[3] };
       cl.center = { x: cs[0], y: cs[1] };
     }
+    graph.layoutFromPre = false;
     graph.layoutFromCache = true;
     graph.layoutMs = 0;
     return true;
@@ -189,6 +265,7 @@
   /* -------------------------------------------------------------- 预判 */
   /** 只比对签名，不动数据 —— 供「加载文案」之类的场景用（便宜，不碰 localStorage 的写路径） */
   function peek(graph) {
+    if (preData(graph)) return true;
     var data = readJSON(KEY);
     if (!data || data.sig !== signature(graph)) return false;
     if (!cacheShapeOk(data, graph)) { drop(); return false; }
@@ -282,6 +359,10 @@
     save: save,
     clear: clear,
     saveCam: saveCam,
-    loadCam: loadCam
+    loadCam: loadCam,
+    /* ENG-015 阶段二：预计算布局（build 生成 / 单文件内联） */
+    pre: preData,
+    applyData: applyData,
+    preVersion: PRE_V
   };
 })(typeof window !== 'undefined' ? window : globalThis);

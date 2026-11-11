@@ -2,10 +2,12 @@
 /* ==========================================================================
    数学星图 · 构建 / 导出
    --------------------------------------------------------------------------
-   一条命令产出四样东西（都在 dist/ 下）：
+   一条命令产出五样东西（都在 dist/ 下）：
 
-     dist/mathgalaxy.html   自包含单文件 —— 所有 CSS/JS/数据全内联，
+     dist/mathgalaxy.html   自包含单文件 —— 所有 CSS/JS/数据/布局全内联，
                             拷到手机、U 盘、网盘，双击就能看，不需要服务器
+     dist/layout.json       预计算布局（节点坐标 + 星系/星团 stat + 签名）——
+                            首次打开直接读坐标，不再在客户端冷算 6~7s
      dist/graph.json        整张图的机器可读导出（AI 当数据库用）
      dist/graph.md          整张图的 Markdown 导出（直接粘给任何 AI）
      dist/llms.txt          给 AI 看的入口说明（llms.txt 约定）
@@ -24,6 +26,9 @@ import vm from 'node:vm';
 /* ⭐ 英文名的判定口径**只有一份**：tools/i18n-backfill.mjs。
    这里 import 它的函数来核「旁挂表有没有漂」，不另抄一遍规则。 */
 import { bucketRows, splitBuckets, decide } from './i18n-backfill.mjs';
+/* 布局预计算（2026-11-11）：把 computeLayout 的结果写进 dist/layout.json 并内联进单文件，
+   让首次打开不再冷算 6~7s。签名口径仍然只有 src/core/layoutcache.js 一份。 */
+import { buildPayload, writeLayoutFile, assertLayoutFile, embedPreLayout, LAYOUT_FILE } from './prelayout.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SRC = path.join(ROOT, 'src');
@@ -103,7 +108,10 @@ function loadMG() {
   win.self = win;
 
   const files = [
-    'core/config.js', 'core/util.js', 'core/i18n.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
+    'core/config.js', 'core/util.js', 'core/i18n.js', 'core/camera.js', 'core/graph.js',
+    /* ⚠️ layoutcache 必须在 layout 之前：layout.computeLayout 里会调
+       MG.layoutCache.restore(graph)，也就是「有没有预计算布局」的判定点。 */
+    'core/layoutcache.js', 'core/layout.js',
     'core/layers.js',
     'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/i18n.js', 'data/notation.js', 'data/xref.js',
     /* ⚠️ 只给构建用：浏览器端不需要英文文档正文（read.html 的英文版由 publish.mjs 组装），
@@ -119,7 +127,30 @@ function loadMG() {
     'data/hypotheses.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
-  fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
+  /* ⭐ 包顺序必须与 index.html 的 <script> 完全一致（2026-11-11）。
+     为什么：节点顺序既进 `layoutcache.signature()`，也影响布局求解的浮点累加顺序 ——
+     预计算布局（dist/layout.json）的签名必须和浏览器算出来的**逐位相同**。
+     按目录名排序会把 `100-x.js` 排到 `11-y.js` 前面，与页面顺序不同：实测两边的
+     签名因此变成 1620:eod6d9 vs 1620:1dlkc1p，预计算整包失效。
+     ⚠️ 同时校验「目录里的包」与「页面挂的包」集合一致 —— 少挂/多挂都是线上事故。 */
+  const shell = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  const pagePacks = Array.from(
+    shell.matchAll(/<script[^>]+src="src\/data\/packs\/([^"]+\.js)"/g), (m) => m[1]
+  );
+  const dirPacks = fs.readdirSync(packDir).filter((f) => f.endsWith('.js')).sort();
+  if (!pagePacks.length) throw new Error('loadMG：index.html 里一个 packs <script> 都没找到');
+  {
+    const inPage = new Set(pagePacks), onDisk = new Set(dirPacks);
+    const missing = dirPacks.filter((f) => !inPage.has(f));
+    const ghost = pagePacks.filter((f) => !onDisk.has(f));
+    if (missing.length || ghost.length) {
+      throw new Error('loadMG：数据包与 index.html 不一致 —— ' +
+        (missing.length ? '目录有但页面没挂：' + missing.join(', ') + '；' : '') +
+        (ghost.length ? '页面挂了但目录没有：' + ghost.join(', ') + '；' : '') +
+        '（两边不一致会让构建和网页的节点数不同）');
+    }
+  }
+  pagePacks.forEach((f) => files.push('data/packs/' + f));
 
   const ctx = vm.createContext(win);
   for (const rel of files) {
@@ -2846,13 +2877,16 @@ function fillShellCounts(html, C) {
 }
 
 /* ---------------------------------------------------------------- 单文件 HTML */
-function buildSingleFile(C) {
+function buildSingleFile(C, preLayout) {
   /* 壳页里的数量（meta description 那种，必须是静态文本）：源文件写 `%%NODES%%` 之类的
      占位符，**只在这里填一次**，填的都是 `meta.counts` 里的真数字。 */
   let html = fillShellCounts(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'), C);
   /* 内容版本注入（tools/idstable.mjs 维护；index.html 里写的是 'dev'） */
   html = html.replace("MG.contentVersion = 'dev'", "MG.contentVersion = '" + (CONTENT_VERSION || 'dev') + "'");
-
+  /* ⭐ 布局预计算（ENG-015 阶段二）：把 dist/layout.json 的同一份载荷内联进单文件。
+     index.html 里必须有 `<script>window.MG_PRELAYOUT = null;</script>` 占位符，
+     没有就让构建红（宁可不发，也不能发一个「看起来有布局、其实每次都冷算」的包）。 */
+  html = embedPreLayout(html, preLayout);
   // 内联 CSS
   html = html.replace(/<link[^>]+href="([^"]+\.css)"[^>]*>/g, (m, href) => {
     const css = fs.readFileSync(path.join(ROOT, href), 'utf8');
@@ -2884,6 +2918,13 @@ fs.mkdirSync(DIST, { recursive: true });
 console.log('载入内容…');
 const MG = loadMG();
 const graph = buildGraph(MG);
+/* ⭐ 布局预计算（2026-11-11）：buildGraph 里已经跑过一次 computeLayout，这里只做
+   序列化 + 落盘。**必须无条件写**（包括 --html / --json 单分支），否则发布包里
+   的 dist/layout.json 会和 dist/mathgalaxy.html 内联的那份不是同一次构建。 */
+const preLayout = buildPayload(MG, graph);
+const layoutOut = writeLayoutFile(MG, graph, DIST);
+console.log(`  → dist/${LAYOUT_FILE}（${preLayout.counts.nodes} 点 · sig ${preLayout.sig} · ` +
+  `${(layoutOut.bytes / 1024).toFixed(1)} KB）`);
 console.log(`  星系 ${graph.regions.length} / 星团 ${graph.clusters.filter(c => c.nodes.length).length} / ` +
   `节点 ${graph.nodes.length} / 连线 ${graph.edges.length}`);
 if (graph.warnings.length) {
@@ -3100,7 +3141,7 @@ if (doJSON) {
 }
 
 if (doHTML) {
-  const { html } = buildSingleFile(data.meta.counts);
+  const { html } = buildSingleFile(data.meta.counts, preLayout);
   fs.writeFileSync(path.join(DIST, 'mathgalaxy.html'), html, 'utf8');
   const kb = (Buffer.byteLength(html, 'utf8') / 1024).toFixed(0);
   console.log(`  → dist/mathgalaxy.html  (${kb} KB，自包含，手机双击即可打开)`);
@@ -3119,6 +3160,16 @@ if (doHTML) {
     }
     console.log(`  → dist/fonts/  (${n} 个 woff2 —— 自包含单文件与线上站点共用)`);
   }
+}
+
+/* ⭐ 预计算布局硬门（2026-11-11）：dist/layout.json 必须存在、且签名/节点数/坐标
+   与这一次构建完全一致。缺文件 / 坏 JSON / 签名不符 ⇒ 构建失败。
+   ⛔ 不能只依赖「刚才写过」—— 读回磁盘再校验，才挡得住「被旧产物顶替/半截写入」。
+   见 tools/prelayout.mjs 与 src/core/layoutcache.js 的注释。 */
+{
+  const chk = assertLayoutFile(MG, graph, DIST);
+  console.log(`  ✓ 预计算布局校验通过（sig ${chk.sig} · ${chk.counts.nodes} 点逐点一致 · ` +
+    `${(chk.bytes / 1024).toFixed(1)} KB）`);
 }
 
 /* ⭐⭐ 性能不变量硬门（2026-11-09）—— **放在最后，但一定要跑**。

@@ -184,7 +184,7 @@ fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 
 // 星图本体
 fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
-for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'hubs-full.md', 'index.md',
+for (const f of ['graph.json', 'graph.md', 'llms.txt', 'layout.json', 'policy.md', 'reading.md', 'hubs.md', 'hubs-full.md', 'index.md',
                  'notation.md', 'notation-full.md', 'alias.md', 'gaps.md', 'audit.md', 'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']) {
   const src = path.join(DIST, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
@@ -257,6 +257,24 @@ console.log(`   阅读页 KaTeX：${katexFiles.join(' + ')} + ${kf} 个 woff2 �
 const distMeta = JSON.parse(fs.readFileSync(path.join(DIST, 'graph.json'), 'utf8')).meta;
 const cnt = distMeta.counts;
 const updated = String(distMeta.generated).slice(0, 10);
+
+/* ⭐ 预计算布局（2026-11-11）必须在发布包里，而且必须和 graph.json 同一次构建。
+   为什么在 publish 再拦一道：build 是本地行为，发布才是用户拿到的东西；
+   没有 layout.json ⇒ 首次打开退回 6~7s 冷算，等于这次优化白做。 */
+const layoutFile = path.join(DIST, 'layout.json');
+if (!fs.existsSync(layoutFile)) {
+  throw new Error('dist/layout.json 不在 —— 发布包会退回客户端冷算；先跑 bun tools/build.mjs');
+}
+let layoutMeta;
+try { layoutMeta = JSON.parse(fs.readFileSync(layoutFile, 'utf8')); }
+catch (e) { throw new Error('dist/layout.json 不是合法 JSON：' + e.message); }
+if (!layoutMeta || layoutMeta.v !== 1 || typeof layoutMeta.sig !== 'string' || !layoutMeta.sig) {
+  throw new Error('dist/layout.json 版本/签名不对 —— 重跑构建');
+}
+if (!layoutMeta.counts || layoutMeta.counts.nodes !== cnt.nodes) {
+  throw new Error(`dist/layout.json 与 graph.json 不同步（layout ${layoutMeta.counts && layoutMeta.counts.nodes} 点）` +
+    ` ≠ graph ${cnt.nodes} 点）—— 重跑构建，别拿旧产物发布`);
+}
 const REPO_URL = `https://github.com/${USER}/MathGalaxy`;
 const SITE_REPO_URL = `https://github.com/${USER}/${SITE_REPO}`;
 

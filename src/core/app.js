@@ -65,14 +65,25 @@
     /* ------------------------------------------------------------ 建图 */
     var localPacks = (MG.packs || []).slice();
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
-    /* 文案要说实话：布局有了缓存之后常常是「一眨眼」的事，
+    /* 布局三条路（优先级从高到低）：
+       ① 构建期预计算（dist/layout.json / 单文件内联）：签名对得上 ⇒ 只写回坐标，
+          **完全跳过 computeLayout 的 6–8s 求解**；
+       ② localStorage 上次冷算（同签名）；
+       ③ 冷算 —— 只有前两条都不可用才走。
+       文案要说实话：布局有了缓存之后常常是「一眨眼」的事，
        这时候还写「计算布局」会让人以为在算——其实是在读上次的结果。 */
-    if (MG.loading && MG.layoutCache && MG.layoutCache.peek(graph)) {
-      MG.loading.step(null, '恢复上次的布局…');
-    }
-    MG.computeLayout(graph);
-    if (MG.layoutCache && !graph.layoutFromCache) {
-      try { MG.layoutCache.save(graph); } catch (e) { /* 存不下就算了，不影响打开 */ }
+    var preLayout = MG.layoutCache && MG.layoutCache.pre ? MG.layoutCache.pre(graph) : null;
+    if (preLayout && MG.applyPreLayout) {
+      if (MG.loading) MG.loading.step(null, '应用预计算布局…');
+      MG.applyPreLayout(graph, preLayout);
+    } else {
+      if (MG.loading && MG.layoutCache && MG.layoutCache.peek(graph)) {
+        MG.loading.step(null, '恢复上次的布局…');
+      }
+      MG.computeLayout(graph);
+      if (MG.layoutCache && !graph.layoutFromCache) {
+        try { MG.layoutCache.save(graph); } catch (e) { /* 存不下就算了，不影响打开 */ }
+      }
     }
     if (MG.loading) MG.loading.step(null, '铺开星云…');   // 同样只换文案，见 safeBoot 的注释
     MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
@@ -2450,10 +2461,16 @@
         });
         var packs = localPacks.concat(res.packs);
         graph = MG.buildGraph(packs, MG.regions, MG.clusters);
-        MG.computeLayout(graph);
-    if (MG.layoutCache && !graph.layoutFromCache) {
-      try { MG.layoutCache.save(graph); } catch (e) { /* 存不下就算了，不影响打开 */ }
-    }
+        /* 并入外部包后内容变了 ⇒ 预计算签名多半对不上，会自然落回冷算 */
+        var preRebuild = MG.layoutCache && MG.layoutCache.pre ? MG.layoutCache.pre(graph) : null;
+        if (preRebuild && MG.applyPreLayout) {
+          MG.applyPreLayout(graph, preRebuild);
+        } else {
+          MG.computeLayout(graph);
+          if (MG.layoutCache && !graph.layoutFromCache) {
+            try { MG.layoutCache.save(graph); } catch (e) { /* 存不下就算了，不影响打开 */ }
+          }
+        }
         MG.localizeDisplay(graph);    // ⭐ 并入外部内容包之后要把显示名再算一遍
         view.graph = graph;
         vis.rebind(graph);            // 挑选结果保留，丢掉已经不存在的 id
@@ -2518,11 +2535,21 @@
     /* ⚠️ 这一句**只换文案、不报百分比**：报百分比会把「爬行」动画关掉换内联 transform，
        而这一段正好是后面 4 秒卡死主线程的时候 —— 动画一关，进度条就定在那里不动了。 */
     if (MG.loading) MG.loading.step(null, '正在建图并计算布局…');
-    requestAnimationFrame(function () {
+    var go = function () {
       requestAnimationFrame(function () {
-        try { boot(); } catch (err) { fatal(err); }
+        requestAnimationFrame(function () {
+          try { boot(); } catch (err) { fatal(err); }
+        });
       });
-    });
+    };
+    /* ENG-015 阶段二：http(s) 下开发版会去抓 dist/layout.json。等它一小会儿——
+       抓不到（404 / 断网 / 超时）就照常冷算，绝不能让布局文件阻塞启动。 */
+    var ready = (!global.MG_PRELAYOUT && global.MG_PRELAYOUT_READY) ? global.MG_PRELAYOUT_READY : null;
+    if (!ready || typeof ready.then !== 'function') { go(); return; }
+    var done = false;
+    var fire = function () { if (done) return; done = true; go(); };
+    setTimeout(fire, 1500);
+    ready.then(fire, fire);
   }
 
   if (document.readyState === 'loading') {
