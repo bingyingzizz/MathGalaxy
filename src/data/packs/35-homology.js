@@ -121,6 +121,54 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
+    /* ------------------------------------ 序列（复形的底层） */
+    {
+      id: 'def.sequence-of-morphisms',
+      cluster: 'hom.complex',
+      type: 'definition',
+      label: '态射序列',
+      title: '序列',
+      regions: ['homology'],
+      tags: ['同调代数', '序列', '交换图'],
+      statement: [
+        '设 $\\mathcal{C}$ 是范畴。$\\mathcal{C}$ 中的**（长）序列**是有序集 $(\\mathbb{Z}, \\le)$ 上的**交换图**，即函子 $K : (\\mathbb{Z}, \\le) \\to \\mathcal{C}$；展开写就是对象与态射',
+        '',
+        '$$\\cdots \\longrightarrow K^{n-1} \\xrightarrow{d^{n-1}} K^{n} \\xrightarrow{d^{n}} K^{n+1} \\longrightarrow \\cdots$$',
+        '',
+        '因 $(\\mathbb{Z}, \\le)$ 的任意两个对象之间至多一个态射，交换性自动成立：$d^{m-1} \\circ \\cdots \\circ d^{n}$ 就是 $K^{n} \\to K^{m}$ 的唯一态射。也称**态射序列**。'
+      ].join('\n'),
+      notes: [
+        '序列**不要求** $d^{n} \\circ d^{n-1} = 0$；加上这条才是（上）链复形（见 `def.cochain-complex`）。',
+        '例：$\\mathbf{Ab}$ 中的序列就是一串群同态；$\\mathcal{C} = \\mathbf{Vect}_{k}$ 时是一串线性映射。',
+        '有限序列（只有有限多个非零项）与单边序列（只对 $n \\ge 0$ 给出 $K^{n}$）都是常用变体；本图默认双边无穷序列，因为复形在同调代数里通常双边编号。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1, Definition 7.1.1']
+    },
+
+    /* ------------------------------------ 复形范畴 */
+    {
+      id: 'def.category-of-complexes',
+      cluster: 'hom.complex',
+      type: 'definition',
+      label: '复形范畴',
+      title: '复形范畴',
+      regions: ['homology'],
+      tags: ['同调代数', '复形范畴', '链映射'],
+      statement: [
+        '设 $\\mathcal{C}$ 是加法范畴。**复形范畴** $\\mathcal{C}(\\mathcal{C})$ 的对象是 $\\mathcal{C}$ 中的上链复形，态射是**链映射** $f : K \\to L$：一族 $f^{n} : K^{n} \\to L^{n}$ 使',
+        '',
+        '$$d_{L}^{n} \\circ f^{n} = f^{n+1} \\circ d_{K}^{n}$$',
+        '',
+        '对一切 $n$ 成立。它是 $\\mathcal{C}^{(\\mathbb{Z}, \\le)}$ 的**满**加法子范畴 —— 序列的态射正是自然变换，其条件恰为上面的交换关系。'
+      ].join('\n'),
+      notes: [
+        '**满性**：两个复形之间的每个序列态射都自动与微分交换，所以 $\\mathcal{C}(\\mathcal{C})$ 的 Hom 集就是序列范畴的 Hom 集，不需要再筛。',
+        '下有界、上有界、有界复形分别给出**满子范畴** $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；同伦范畴那边同样加 $+$、$-$、$b$。',
+        '极限与余极限**逐项**计算，加法结构也逐项（见 `prop.complex-additive`）；$\\mathcal{C}$ 阿贝尔时 $\\mathcal{C}(\\mathcal{C})$ 也阿贝尔。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1, Exercise 7.1']
+    },
+
     /* ------------------------------------------------------ 复形 */
     {
       id: 'def.cochain-complex',
@@ -131,14 +179,13 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '复形', '微分'],
       statement: [
-        '设 $\\mathcal{C}$ 是加法范畴。$\\mathcal{C}$ 中的**（长）序列**是有序集 $(\\mathbb{Z}, \\le)$ 上的图',
-        '',
-        '$$\\cdots \\longrightarrow K^{n-1} \\xrightarrow{\\ d^{n-1}\\ } K^{n} \\xrightarrow{\\ d^{n}\\ } K^{n+1} \\longrightarrow \\cdots$$',
-        '',
-        '若对每个 $n$ 都有 $d^{n} \\circ d^{n-1} = 0$，则称 $K$ 是一个**（上）链复形**，$d$ 叫**微分**。把箭头反向（或等价地在 $\\mathcal{C}^{\\mathrm{op}}$ 里取）得**链复形**，记 $K_{n} := K^{-n}$、$d_{n} := d^{-n}$。'
+        '设 $\\mathcal{C}$ 是加法范畴。**（上）链复形**是 $\\mathcal{C}$ 中的（长）序列（见 `def.sequence-of-morphisms`）$K$，且满足 $d^{n} \\circ d^{n-1} = 0$ 对每个 $n$ 成立；$d$ 叫**微分**。',
+        '把箭头反向（或等价地在 $\\mathcal{C}^{\\mathrm{op}}$ 里取）得**链复形**，记 $K_{n} := K^{-n}$、$d_{n} := d^{-n}$。'
       ].join('\n'),
       notes: [
-        '$K$ 叫**下有界**（$n \\ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。\n\n相应地记复形范畴为 $\\mathcal{C}(\\mathcal{C})$，其下有界、上有界、有界的满子范畴分别记 $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；\n\n同伦范畴那边同样加 $+$ $-$ $b$。',
+        '$K$ 叫**下有界**（$n \\ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。',
+        '相应地记复形范畴为 $\\mathcal{C}(\\mathcal{C})$（见 `def.category-of-complexes`），其下有界、上有界、有界的满子范畴分别记 $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；',
+        '同伦范畴那边同样加 $+$ $-$ $b$。',
         '例：$K$ 是（半）单纯对象时，令 $d^{n} := \\sum_{i} (-1)^{i} d_{i}^{n}$，则 $K$ 成为一个链复形 —— 系数 $(-1)^{i}$ 就是让相邻两项的复合正负相消的那个符号，和经典的单纯边界算子完全一致。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
@@ -184,7 +231,10 @@ window.MG = window.MG || {};
         '',
         '记 $f \\sim g$，$s$ 叫一个**同伦**。与 $0$ 同伦的态射叫**零伦的**。'
       ].join('\n'),
-      notes: '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。\n\n两条合起来，才允许把「同伦」当成要商掉的东西。',
+      notes: [
+        '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。',
+        '两条合起来，才允许把「同伦」当成要商掉的东西。'
+      ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -209,7 +259,8 @@ window.MG = window.MG || {};
         '- (a) 等价的说法：$f : K \\to L$ 是同伦等价' +
         '- (b) 存在 $g : L \\to K$ 使 $g \\circ f \\sim 1_{K}$、$f \\circ g \\sim 1_{L}$；$K$ 同伦平凡' +
         '- (c) $1_{K} \\sim 0_{K}$。',
-        '$\\mathbf{K}(\\mathcal{C})$ 是**加法范畴**，且 $\\mathcal{C}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C})$ 加法；\n\n任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}\'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$。',
+        '$\\mathbf{K}(\\mathcal{C})$ 是**加法范畴**，且 $\\mathcal{C}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C})$ 加法；',
+        '任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}\'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$。',
         '为什么要在同伦范畴里干活：同调函子在同伦下不变，所以**先商掉同伦，剩下的信息才是同调真正看得见的**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
@@ -540,6 +591,54 @@ window.MG = window.MG || {};
   ],
 
   edges: [
+
+    {
+      id: 'def-dep.sequence-commdiagram',
+      kind: 'definition',
+      definition: 'def.commutative-diagram',
+      usedBy: 'def.sequence-of-morphisms',
+      note: '序列是 $(\\mathbb{Z}, \\le)$ 上的交换图，指标范畴是一条线序。'
+    },
+
+    {
+      id: 'def-dep.cochain-sequence',
+      kind: 'definition',
+      definition: 'def.sequence-of-morphisms',
+      usedBy: 'def.cochain-complex',
+      note: '复形 = 满足 $d^{2} = 0$ 的序列。'
+    },
+
+    {
+      id: 'def-dep.complexcat-sequence',
+      kind: 'definition',
+      definition: 'def.sequence-of-morphisms',
+      usedBy: 'def.category-of-complexes',
+      note: '复形范畴的对象是满足 $d^{2} = 0$ 的序列。'
+    },
+
+    {
+      id: 'def-dep.complexcat-cochain',
+      kind: 'definition',
+      definition: 'def.cochain-complex',
+      usedBy: 'def.category-of-complexes',
+      note: '复形范畴的对象就是上链复形。'
+    },
+
+    {
+      id: 'def-dep.complexcat-additive',
+      kind: 'definition',
+      definition: 'def.additive-category',
+      usedBy: 'def.category-of-complexes',
+      note: '复形范畴是加法范畴：零对象与直和都逐项取。'
+    },
+
+    {
+      id: 'def-dep.complex-additive-cat',
+      kind: 'definition',
+      definition: 'def.category-of-complexes',
+      usedBy: 'prop.complex-additive',
+      note: '这个命题陈述的对象就是复形范畴 C(C)。'
+    },
 
     {
       id: 'def-dep.preadd-cat',

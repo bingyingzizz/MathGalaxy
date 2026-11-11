@@ -646,6 +646,8 @@ MG.aliases = {
     { id: 'prop.sieve-covering-equivalent', aka: ['覆盖筛的四条等价', '覆盖筛等价条件', 'Proposition 3.2.12', 'Prop 3.2.12', '层化 覆盖筛'] },
 
     /* 同调代数 */
+    { id: 'def.sequence-of-morphisms', en: 'sequence of morphisms', aka: ['态射序列'] },
+    { id: 'def.category-of-complexes', en: 'category of complexes', aka: ['复形范畴'] },
     { id: 'def.cochain-complex', en: 'cochain complex', aka: ['复形', 'complex', '上链复形', 'cochain complex', '链复形', 'Definition 7.1.1', 'Def 7.1.1'] },
     { id: 'prop.complex-additive', aka: ['复形范畴是加法范畴', '逐项计算', 'Exercise 7.1', 'Exercise 7.7'] },
     { id: 'def.homotopy', en: 'homotopy', aka: [ '同伦', 'homotopy', '零伦', 'null-homotopic', 'Exercise 7.4', 'Exercise 7.5', 'Definition 7.1.2', 'Def 7.1.2' ] },

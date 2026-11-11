@@ -25,9 +25,9 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1611 节点 / 3335 边 · maxLayer 38
-强边 3280 · 弱边（类比）55 · 推论（layer:false）33
-英文页 1611 · 别名 1421 组 · 问法钩子 217 条
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1613 节点 / 3341 边 · maxLayer 38
+强边 3286 · 弱边（类比）55 · 推论（layer:false）33
+英文页 1613 · 别名 1423 组 · 问法钩子 217 条
 ```
 
 | 项 | 值 |
@@ -35,17 +35,61 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` 与 `origin/main` 同步（PNT 拆分 + 第 25/28 批 + FIX-069 已 push） |
+| 工作树 | clean；本地 `main` ahead 1（P1 + 第 25/28 批 + 文档；未 push） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1611 节点 / 3335 边，所有页 ≤1300 B） |
-| `bun tools/_katexcheck.mjs` | ✅ **2976 个 `$…$`，失败 0**（第 28 批新增 3 个 definition 节点及注；历史累计见 git 记录） |
+| `bun tools/build.mjs` | ✅ 全绿（1613 节点 / 3341 边，所有页 ≤1300 B） |
+| `bun tools/_katexcheck.mjs` | ✅ **2977 个 `$…# 数学星图 MathGalaxy · 交接书
+
+> **这是唯一的交接文档。** 2026-11-05 重写，取代此前的
+> `交接-给v2会话.md` / `交接-给v3会话.md` / `_audit/HANDOFF-2026-11-05.md` /
+> `_audit/STATUS-2026-11-05.md` / agent 数据目录那份 105 KB 的 `HANDOVER.md`（全部已删除）。
+>
+> **读法**：§0–§3 是必读（现状 / 怎么干活 / 铁律）；§4 以后按需查。
+> **本文件里的数字都是我 2026-11-05 亲手复核过的**，每条附可复跑的命令。
+> ⚠️ 但**规模数字永远现跑，不背** —— 图一直在长，而且常常有别的 agent 同时在写。
+
+---
+
+## 0. 一句话 + 地面实况
+
+**这是什么**：一张数学知识星图。每个概念一个节点，定理之间的推导是连线。零依赖纯静态，双击 `index.html` 就能开。
+
+**用户原话（最高优先级的意图，顺序不能颠倒）**：
+
+> 「做一个数学星图，用于存放笔记，整理思路，方便人和ai快速查阅」
+
+① 它是**用户自己思考的工具**，不是展示品 ② 方便人查 ③ 方便 AI 查（所以要产出 `dist/graph.json` / `dist/llms.txt` / `dist/nodes/*.md`）。
+
+**这不是 wiki，不是博客。** 它是一张星空。
+
+### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
+
+```
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1613 节点 / 3341 边 · maxLayer 38
+强边 3286 · 弱边（类比）55 · 推论（layer:false）33
+英文页 1613 · 别名 1423 组 · 问法钩子 217 条
+```
+
+| 项 | 值 |
+|---|---|
+| 仓库 | `H:\MathGalaxy` |
+| 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
+| 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
+| 工作树 | clean；本地 `main` ahead 1（P1 + 第 25/28 批 + 文档；未 push） |
+
+### 门禁 · 我 2026-11-07 全跑过
+
+| 命令 | 结果 |
+|---|---|
+| `bun tools/build.mjs` | ✅ 全绿（1613 节点 / 3341 边，所有页 ≤1300 B） |
+| `bun tools/_katexcheck.mjs` | ✅ ，失败 0**（第 28 批新增 3 个 definition 节点及注；历史累计见 git 记录） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
-| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 950；fubini 12；Noether 14；compact 94；ℵ₀ 7；2026-11-11 第 28 批 3 个定义节点与注 +3） |
+| `bun tools/searchcheck.mjs` | ✅ **31/31**（「定义」total 952；fubini 12；Noether 14；compact 94；ℵ₀ 7；2026-11-11 第 28 批 3 个定义节点与注 +3） |
 | `bun tools/_slashcheck.mjs` | ✅ 0 处 |
 | `node tools/dupkeys.mjs` | ✅ 0 处（同对象内 `notes`/`note`/`regions` 重复键会静默覆盖；FIX-023c 后加入常规门） |
 

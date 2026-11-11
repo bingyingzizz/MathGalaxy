@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T04:24:16.432Z",
+ "generated": "2026-11-11T04:40:21.987Z",
  "terms": 76,
  "missing": [
   {
@@ -438,15 +438,6 @@
    "gap": 4
   },
   {
-   "node": "def.cochain-complex",
-   "nodeLabel": "上链复形",
-   "nodeLayer": 11,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 3
-  },
-  {
    "node": "prop.cgwh-fiber-product",
    "nodeLabel": "紧块的纤维积还是紧的",
    "nodeLayer": 13,
@@ -474,17 +465,8 @@
    "gap": 2
   },
   {
-   "node": "def.bicomplex",
-   "nodeLabel": "双复形",
-   "nodeLayer": 12,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 2
-  },
-  {
-   "node": "prop.simplicial-to-chain",
-   "nodeLabel": "单纯对象给出链复形",
+   "node": "def.cochain-complex",
+   "nodeLabel": "上链复形",
    "nodeLayer": 12,
    "def": "def.additive-category",
    "defLabel": "加法范畴",
@@ -507,6 +489,15 @@
    "def": "def.abelian-category",
    "defLabel": "阿贝尔范畴",
    "defLayer": 16,
+   "gap": 2
+  },
+  {
+   "node": "prop.additive-complex-construction",
+   "nodeLabel": "加法函子与复形构造交换",
+   "nodeLayer": 13,
+   "def": "def.category-of-complexes",
+   "defLabel": "复形范畴",
+   "defLayer": 15,
    "gap": 2
   },
   {
@@ -552,6 +543,24 @@
    "def": "def.linear-map",
    "defLabel": "线性映射",
    "defLayer": 11,
+   "gap": 1
+  },
+  {
+   "node": "def.bicomplex",
+   "nodeLabel": "双复形",
+   "nodeLayer": 13,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 1
+  },
+  {
+   "node": "prop.simplicial-to-chain",
+   "nodeLabel": "单纯对象给出链复形",
+   "nodeLayer": 13,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
    "gap": 1
   },
   {
@@ -636,7 +645,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 66,
+ "noEdgeAll": 67,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",
