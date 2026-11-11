@@ -35,7 +35,7 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` ahead 1（未 push） |
+| 工作树 | clean；本地 `main` 与 `origin/main` 同步（无未 push 提交） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
@@ -79,7 +79,7 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` ahead 1（未 push） |
+| 工作树 | clean；本地 `main` 与 `origin/main` 同步（无未 push 提交） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
