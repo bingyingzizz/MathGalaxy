@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T15:21:56.476Z",
+ "generated": "2026-11-11T04:24:16.432Z",
  "terms": 76,
  "missing": [
   {
@@ -402,6 +402,15 @@
    "gap": 5
   },
   {
+   "node": "prop.generator-coproduct-epi",
+   "nodeLabel": "生成元的余积刻画",
+   "nodeLayer": 11,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 5
+  },
+  {
    "node": "def.orientable-manifold",
    "nodeLabel": "可定向流形",
    "nodeLayer": 15,
@@ -418,6 +427,24 @@
    "defLabel": "Hilbert 空间",
    "defLayer": 18,
    "gap": 4
+  },
+  {
+   "node": "prop.adjoint-additive",
+   "nodeLabel": "伴随函子都加法",
+   "nodeLayer": 10,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 4
+  },
+  {
+   "node": "def.cochain-complex",
+   "nodeLabel": "上链复形",
+   "nodeLayer": 11,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 3
   },
   {
    "node": "prop.cgwh-fiber-product",
@@ -447,6 +474,42 @@
    "gap": 2
   },
   {
+   "node": "def.bicomplex",
+   "nodeLabel": "双复形",
+   "nodeLayer": 12,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 2
+  },
+  {
+   "node": "prop.simplicial-to-chain",
+   "nodeLabel": "单纯对象给出链复形",
+   "nodeLayer": 12,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 2
+  },
+  {
+   "node": "prop.left-exact-criterion",
+   "nodeLabel": "左正合性的判据",
+   "nodeLayer": 14,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 2
+  },
+  {
+   "node": "prop.left-exact-iff-R0",
+   "nodeLabel": "左正合性与 R⁰",
+   "nodeLayer": 14,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 2
+  },
+  {
    "node": "def.injective-dimension",
    "nodeLabel": "内射维数",
    "nodeLayer": 20,
@@ -462,6 +525,24 @@
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
    "defLayer": 33,
+   "gap": 1
+  },
+  {
+   "node": "prop.injective-criterion",
+   "nodeLabel": "内射对象的判据",
+   "nodeLayer": 15,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 1
+  },
+  {
+   "node": "def.filtration",
+   "nodeLabel": "过滤",
+   "nodeLayer": 15,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
    "gap": 1
   },
   {
@@ -517,9 +598,45 @@
    "defLabel": "子范畴",
    "defLayer": 8,
    "gap": 0
+  },
+  {
+   "node": "def.exact-sequence",
+   "nodeLabel": "一般正合列",
+   "nodeLayer": 16,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 0
+  },
+  {
+   "node": "def.kernel-cokernel",
+   "nodeLabel": "核与余核",
+   "nodeLayer": 14,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 0
+  },
+  {
+   "node": "prop.additive-iff-preserves-biproduct",
+   "nodeLabel": "加法函子的刻画",
+   "nodeLayer": 14,
+   "def": "def.additive-category",
+   "defLabel": "加法范畴",
+   "defLayer": 14,
+   "gap": 0
+  },
+  {
+   "node": "prop.injective-iff-acyclic",
+   "nodeLabel": "内射与零调的等价",
+   "nodeLayer": 16,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 0
   }
  ],
- "noEdgeAll": 53,
+ "noEdgeAll": 66,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

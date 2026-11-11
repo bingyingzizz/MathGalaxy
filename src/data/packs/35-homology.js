@@ -14,20 +14,85 @@ window.MG = window.MG || {};
   nodes: [
 
     /* ------------------------------------ 加法 / 阿贝尔范畴（地基） */
+
+    {
+      id: 'def.pre-additive-category',
+      cluster: 'hom.ab',
+      type: 'definition',
+      label: '预加法范畴',
+      title: '预加法范畴（Ab-范畴）',
+      regions: ['homology'],
+      tags: ['同调代数', '范畴论', '预加法范畴'],
+      statement: [
+        '**预加法范畴**（也叫 $\\mathbf{Ab}$-范畴）是这样一个范畴 $\\mathcal{C}$：对每对对象 $M, N$，态射集 $\\operatorname{Hom}_{\\mathcal{C}}(M, N)$ 带有**阿贝尔群**结构，并且复合映射',
+        '',
+        '$$\\operatorname{Hom}(M, N) \\times \\operatorname{Hom}(N, P) \\longrightarrow \\operatorname{Hom}(M, P)$$',
+        '',
+        '是**双线性**的（固定一个变量时，对另一个变量加性）。'
+      ].join('\n'),
+      notes: [
+        '等价说法：$\\operatorname{Hom}$ 函子 $\\mathcal{C}^{\\mathrm{op}} \\times \\mathcal{C} \\to \\mathbf{Ab}$ 存在，且遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 之后就是通常的 Hom 函子。',
+        '因此每个 $\\operatorname{Hom}(M, N)$ 都有零元，这个零元就是**零态射** $0 : M \\to N$；零态射与任何态射复合仍为零态射。',
+        '例：$A\\text{-}\\mathbf{Mod}$、$\\mathbf{Ab}$、$K\\text{-}\\mathbf{Vect}$ 都是预加法范畴。反例：$\\mathbf{Set}$ 的 Hom 集通常没有群结构。',
+        '⚠️ 预加法**不要求**零对象与直和；加上这两样才叫加法范畴（见 `def.additive-category`）。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1']
+    },
+
+    {
+      id: 'def.additive-category',
+      cluster: 'hom.ab',
+      type: 'definition',
+      label: '加法范畴',
+      title: '加法范畴',
+      regions: ['homology'],
+      tags: ['同调代数', '范畴论', '加法范畴'],
+      statement: [
+        '**加法范畴**是满足以下两条的预加法范畴：',
+        '',
+        '1. 有**零对象**（$\\operatorname{End}(M) = 1$，即 $1_{M} = 0_{M}$ 的对象，见 `def.zero-object`）；',
+        '2. 任意两个对象有**直和** $M = M_{1} \\oplus M_{2}$：存在态射 $p_{k} : M \\to M_{k}$、$i_{k} : M_{k} \\to M$ 使 $p_{1} i_{1} = 1_{M_{1}}$、$p_{2} i_{2} = 1_{M_{2}}$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$。',
+        '',
+        '等价地：加法范畴是「有限积与有限余积都存在、且二者重合（双积）」的预加法范畴。'
+      ].join('\n'),
+      notes: [
+        '直和与直积在加法范畴里是同一个对象（**双积**）：$M_{1} \\oplus M_{2}$ 同时带积的投影与余积的含入，且满足上面的三条等式。',
+        '例：$A\\text{-}\\mathbf{Mod}$、$\\mathbf{Ab}$、复形范畴 $\\mathcal{C}(\\mathcal{C})$（逐项取直和）都是加法范畴。',
+        '⚠️ 加法范畴只提供「加」与「直和」；要谈核、余核与正合列，还需要预阿贝尔（见 `def.pre-abelian-category`）。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1']
+    },
+
+    {
+      id: 'def.pre-abelian-category',
+      cluster: 'hom.ab',
+      type: 'definition',
+      label: '预阿贝尔范畴',
+      title: '预阿贝尔范畴',
+      regions: ['homology'],
+      tags: ['同调代数', '范畴论', '预阿贝尔范畴'],
+      statement: [
+        '**预阿贝尔范畴**是每个态射都有**核**与**余核**的加法范畴（核与余核的定义见 `def.kernel-cokernel`）。',
+        '',
+        '等价地：预阿贝尔范畴是「所有有限极限与所有有限余极限都存在」的加法范畴。'
+      ].join('\n'),
+      notes: [
+        '核与余核都存在，就可以谈「正合列」；但预阿贝尔**不**保证「余像 $\\to$ 像」是同构 —— 这正是预阿贝尔与阿贝尔的分界。',
+        '例：$\\mathbf{PreAb}$（预阿贝尔群范畴）、带滤过的向量空间范畴是预阿贝尔但非阿贝尔。',
+        '加上四条等价条件中的任意一条（每个单态射正则、像分解唯一、$\\ker(\\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f)$ 等）就得到阿贝尔范畴，见 `def.abelian-category`。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.2']
+    },
     {
       id: 'def.abelian-category',
       cluster: 'hom.ab',
       type: 'definition',
-      label: '加法 / 阿贝尔范畴',
-      title: '加法范畴与阿贝尔范畴',
+      label: '阿贝尔范畴',
+      title: '阿贝尔范畴',
       regions: ['homology'],
-      tags: ['同调代数', '阿贝尔范畴', '加法范畴'],
+      tags: ['同调代数', '阿贝尔范畴'],
       statement: [
-        '- **预加法范畴**（$\\mathbf{Ab}$-范畴）是每个 $\\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；',
-        '- **零对象**是 $\\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \\oplus M_{2}$，如果存在 $p_{k} : M \\to M_{k}$、$i_{k} : M_{k} \\to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；',
-        '- **加法范畴**是有零对象与所有直和的预加法范畴（等价地：所有有限积、或所有有限余积存在，此时二者存在且相等）；',
-        '- **预阿贝尔范畴**是每个态射都有核与余核的加法范畴（等价地：所有有限极限与有限余极限存在）；',
-        '- **阿贝尔范畴**是满足下列**等价**条件之一的预阿贝尔范畴：',
+        '**阿贝尔范畴**是满足下列**等价**条件之一的**预阿贝尔范畴**（预加法、加法、预阿贝尔的定义见 `def.pre-additive-category`、`def.additive-category`、`def.pre-abelian-category`）：',
         '',
         '1. 每个单态射都是正则的（对偶地每个满态射都是正则的）；',
         '2. 若 $i : N \\rightarrowtail M$ 是单态射，则 $N \\cong \\ker\\bigl(M \\twoheadrightarrow \\operatorname{coker}(i)\\bigr)$（对偶同理）；',
@@ -36,7 +101,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。',
-        '例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。\n\n而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。',
+        '例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。',
+        '而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。',
         '阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供零对象与直和这两样加法结构，还不足以谈「像」。',
         '**四条里哪条是“真公理”、哪条是它的推论**（阿贝尔范畴的这组等价常被并列，其实第 4 条最弱也最像“公理”，前三条各有代价）：\n' +
         '\n' +
@@ -474,6 +540,54 @@ window.MG = window.MG || {};
   ],
 
   edges: [
+
+    {
+      id: 'def-dep.preadd-cat',
+      kind: 'definition',
+      definition: 'def.category',
+      usedBy: 'def.pre-additive-category',
+      note: '预加法范畴首先是范畴，额外带有 Hom 集的阿贝尔群结构。'
+    },
+
+    {
+      id: 'def-dep.additive-preadd',
+      kind: 'definition',
+      definition: 'def.pre-additive-category',
+      usedBy: 'def.additive-category',
+      note: '加法范畴 = 预加法范畴 + 零对象 + 二元直和。'
+    },
+
+    {
+      id: 'def-dep.additive-zero',
+      kind: 'definition',
+      definition: 'def.zero-object',
+      usedBy: 'def.additive-category',
+      note: '加法范畴要求存在零对象。'
+    },
+
+    {
+      id: 'def-dep.preabelian-additive',
+      kind: 'definition',
+      definition: 'def.additive-category',
+      usedBy: 'def.pre-abelian-category',
+      note: '预阿贝尔范畴首先是加法范畴。'
+    },
+
+    {
+      id: 'def-dep.preabelian-kernel',
+      kind: 'definition',
+      definition: 'def.kernel-cokernel',
+      usedBy: 'def.pre-abelian-category',
+      note: '预阿贝尔要求每个态射都有核与余核。'
+    },
+
+    {
+      id: 'def-dep.abelian-preabelian',
+      kind: 'definition',
+      definition: 'def.pre-abelian-category',
+      usedBy: 'def.abelian-category',
+      note: '阿贝尔范畴 = 预阿贝尔范畴 + 任一条正则性条件。'
+    },
 
     /* ------------------------------------------- 三角的旋转与延拓 */
     {

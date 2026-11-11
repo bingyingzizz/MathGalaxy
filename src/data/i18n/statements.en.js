@@ -221,20 +221,9 @@ MG.i18nStatements = {
     'def.abelian-category': {
       statement: {
         en:
-        '- A **preadditive category** (an $\\mathbf{Ab}$-category) is a category in which every ' +
-        '$\\operatorname{Hom}$ set carries an abelian group structure and composition is ' +
-        'bilinear;\n' +
-        '- A **zero object** is an object with $\\operatorname{End}(M) = 1$ (that is, ' +
-        '$1_{M} = 0_{M}$); an object $M$ is the **direct sum** $M = M_{1} \\oplus M_{2}$ of ' +
-        '$M_{1}, M_{2}$ if there are $p_{k} : M \\to M_{k}$, $i_{k} : M_{k} \\to M$ with ' +
-        '$p_{1} i_{1} = 1$, $p_{2} i_{2} = 1$, $i_{1} p_{1} + i_{2} p_{2} = 1_{M}$;\n' +
-        '- An **additive category** is a preadditive category with a zero object and all direct ' +
-        'sums (equivalently: all finite products exist, or all finite coproducts exist — in ' +
-        'which case both exist and agree);\n' +
-        '- A **preabelian category** is an additive category in which every morphism has a ' +
-        'kernel and a cokernel (equivalently: all finite limits and finite colimits exist);\n' +
-        '- An **abelian category** is a preabelian category satisfying one of the following ' +
-        '**equivalent** conditions:\n\n' +
+        'An **abelian category** is a **preabelian category** satisfying one of the following ' +
+        '**equivalent** conditions (for preadditive, additive and preabelian categories see ' +
+        '`def.pre-additive-category`, `def.additive-category`, `def.pre-abelian-category`):\n\n' +
         '1. every monomorphism is regular (dually, every epimorphism is regular);\n' +
         '2. if $i : N \\rightarrowtail M$ is a monomorphism, then ' +
         '$N \\cong \\ker\\bigl(M \\twoheadrightarrow \\operatorname{coker}(i)\\bigr)$ (and ' +
