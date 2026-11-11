@@ -359,40 +359,40 @@ window.MG = window.MG || {};
 
   edges: [
 
-    { kind: 'definition', definition: 'def.congruence', usedBy: 'def.quadratic-residue',
+    {id: "e149.definition", kind: 'definition', definition: 'def.congruence', usedBy: 'def.quadratic-residue',
       note: '二次剩余的陈述就是同余方程 $x^{2} \\equiv a$ 有没有解。' },
 
-    { kind: 'definition', definition: 'def.quadratic-residue', usedBy: 'def.legendre-symbol',
+    {id: "e150.definition", kind: 'definition', definition: 'def.quadratic-residue', usedBy: 'def.legendre-symbol',
       note: 'Legendre 符号把「是不是剩余」编码成 $\\pm 1$。' },
 
-    { kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'thm.euler-criterion',
+    {id: "e151.definition", kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'thm.euler-criterion',
       note: '判别法的结论就是 Legendre 符号的显式公式。' },
 
-    { kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'lem.gauss-qr',
+    {id: "e152.definition", kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'lem.gauss-qr',
       note: '引理给的是 Legendre 符号的另一个算法（数 $\\mu$ 的奇偶）。' },
 
-    { kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'thm.quadratic-reciprocity',
+    {id: "e153.definition", kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'thm.quadratic-reciprocity',
       note: '互反律说的是两个 Legendre 符号之间的关系。' },
 
-    { kind: 'definition', definition: 'def.jacobi-symbol', usedBy: 'thm.jacobi-laws',
+    {id: "e154.definition", kind: 'definition', definition: 'def.jacobi-symbol', usedBy: 'thm.jacobi-laws',
       note: '计算法则全部是 Jacobi 符号的乘法/移项性质。' },
 
-    { kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'def.jacobi-symbol',
+    {id: "e155.definition", kind: 'definition', definition: 'def.legendre-symbol', usedBy: 'def.jacobi-symbol',
       note: 'Jacobi 符号是把 Legendre 符号按素因子幂乘起来。' },
 
-    { kind: 'definition', definition: 'def.order-mod-n', usedBy: 'def.primitive-root',
+    {id: "e156.definition", kind: 'definition', definition: 'def.order-mod-n', usedBy: 'def.primitive-root',
       note: '原根的定义就是「阶等于 $\\varphi(n)$」。' },
 
-    { kind: 'definition', definition: 'def.group', usedBy: 'def.order-mod-n',
+    {id: "e157.definition", kind: 'definition', definition: 'def.group', usedBy: 'def.order-mod-n',
       note: '阶就是元素在单位群里的阶 —— 群论概念在模算术里的坐标。' },
 
-    { kind: 'definition', definition: 'def.primitive-root', usedBy: 'def.discrete-log',
+    {id: "e158.definition", kind: 'definition', definition: 'def.primitive-root', usedBy: 'def.discrete-log',
       note: '离散对数以原根为底，唯一性来自「生成元」。' },
 
-    { kind: 'definition', definition: 'thm.primitive-root-exists', usedBy: 'def.discrete-log',
+    {id: "e159.definition", kind: 'definition', definition: 'thm.primitive-root-exists', usedBy: 'def.discrete-log',
       note: '原根存在，离散对数才有定义。' },
 
-    { kind: 'definition', definition: 'def.multiplicative-function', usedBy: 'def.legendre-symbol',
+    {id: "e160.definition", kind: 'definition', definition: 'def.multiplicative-function', usedBy: 'def.legendre-symbol',
       note: 'Legendre 符号对第一个变量完全积性（$\\left(\\frac{ab}{p}\\right) = \\left(\\frac{a}{p}\\right)\\left(\\frac{b}{p}\\right)$）。' },
 
     {
@@ -471,7 +471,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
     },
 
-    { kind: 'analogy', a: 'def.jacobi-symbol', b: 'def.legendre-symbol',
+    {id: "e161.analogy", kind: 'analogy', a: 'def.jacobi-symbol', b: 'def.legendre-symbol',
       title: 'Jacobi 符号：把 Legendre 符号从素数推到奇数',
       note: [
         '两者定义形状相同（乘性 + 取值 $\\pm 1$ or $0$），但含义分家：Legendre 说「有没有解」，Jacobi 只是「乘积」。',

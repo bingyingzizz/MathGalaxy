@@ -67,7 +67,9 @@
          （用层上同调 / 谱序列这类高级工具回头证明低级定理就是这种）。
          ⚠️ 这里是**白名单式**拷贝：不在这儿接住的字段会被静默丢掉，
             所以数据里写了 `layer:false` 而这里漏一行，网页看上去就像没写。 */
-      layer: e.layer === false ? false : null
+      layer: e.layer === false ? false : null,
+      /* A8：骨架边的显式状态。只有一个合法值，渲染/分层都不看它，只供审计与读者知情。 */
+      status: e.status === 'skeleton' ? 'skeleton' : null
     };
     if (e.kind === 'analogy') {
       edge.a = e.a || e.from; edge.b = e.b || e.to;

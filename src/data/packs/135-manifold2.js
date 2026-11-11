@@ -222,7 +222,7 @@ window.MG = window.MG || {};
         '这是经典教材里的 Frobenius 条件，它的证明就是下面 (1)$\\iff$(2) 的流盒论证在超平面分布上的具体计算。'
       ].join('\n'),
       notes: [
-        '**证明结构**：四条等价里 (2) 是引擎。两条完整证明边是 `imp.mf2-frobenius-flat`（(1)$\\implies$(2) 的流盒加降秩归纳）与 `imp.mf2-frobenius-integral`（(2)$\\implies$(3)、(3)$\\implies$(1)、(2)$\\implies$(4)）。下面把主线逐步写清，可以独立阅读。',
+        '**证明结构**：四条等价里 (2) 是引擎。两条证明边是 `imp.mf2-frobenius-flat`（(1)$\\implies$(2) 的流盒加降秩归纳）与 `imp.mf2-frobenius-integral`（(2)$\\implies$(3)、(3)$\\implies$(1)、(2)$\\implies$(4)）。下面把主线逐步写清，可以独立阅读。',
         '',
         '**一、(1)$\\implies$(2)：流盒 + 降秩归纳。** 取 $p$，在 $p$ 的邻域取光滑生成元 $X_{1},\\ldots,X_{k}$，它们处处独立。',
         '',
@@ -260,7 +260,7 @@ window.MG = window.MG || {};
         '',
         '**八、分析版本与光滑性。** Frobenius 等价于「一阶线性偏微分方程组 $\\partial_{i}f=\\sum_{j}a^{j}_{i}\\partial_{j}f$（$i>k$）局部可解」的相容性条件；相容性就是对合，也正是 $\\mathrm{d}^{2}=0$ 的读法。第 1 步用 Picard–Lindelöf 解 ODE，所以 $\\mathcal{D}$ 必须光滑（至少 $C^{2}$ 才能谈括号）；$C^{1}$ 以下会出现「处处不对合却处处有积分曲面」的反例。',
         '',
-        '**九、口径。** 本图用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I\\subseteq\\Omega^{\\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\\mathcal{D}$ 的形式生成的理想）。本图不引入理想语言，以免两套记号打架。$k=n$ 与 $k=0$ 平凡；$k=1$ 总对合，真正的例子从 $2\\le k\\le n-1$ 开始。'
+        '**九、记号约定。** 本条用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I\\subseteq\\Omega^{\\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\\mathcal{D}$ 的形式生成的理想）。为避免两套记号并用，这里不引入理想语言。$k=n$ 与 $k=0$ 平凡；$k=1$ 总对合，真正的例子从 $2\\le k\\le n-1$ 开始。'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· Frobenius 定理与叶状结构',
@@ -1053,28 +1053,28 @@ window.MG = window.MG || {};
       usedBy: 'thm.bundle-classification',
       note: '分类要「取遍所有覆盖的加细」再取余极限；流形仿紧（第二可数 + Hausdorff + 局部欧氏），所以加细可以取成局部有限的，余极限才良定义。'
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.mf2-derham-derhamthm',
       kind: 'definition',
       definition: 'def.de-rham-complex',
       usedBy: 'thm.de-rham',
       note: '左边的 $H^{k}_{\\mathrm{dR}}$ 是「闭形式模恰当形式」，全部依赖 $\\mathrm{d}^{2} = 0$ 与商空间的构造。'
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.mf2-singchain-derhamthm',
       kind: 'definition',
       definition: 'def.singular-chain',
       usedBy: 'thm.de-rham',
       note: '右边的 $H^{k}_{\\mathrm{sing}}$ 是奇异链取对偶再取上同调；链群是「单形的形式和」，边界算子由 $\\partial^{2} = 0$ 支撑。'
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.mf2-cohomology-derhamthm',
       kind: 'definition',
       definition: 'def.cohomology',
       usedBy: 'thm.de-rham',
       note: '「取上同调」这个操作在两边的含义一致（$\\ker/\\operatorname{im}$）；同构说的是两个不同复形算出的同调群相同。'
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.mf2-integralonchain-derhamthm',
       kind: 'definition',
       definition: 'def.integral-on-chain',
@@ -1352,7 +1352,7 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
-    {
+    {status: 'skeleton', 
       id: 'imp.mf2-de-rham',
       kind: 'implication',
       sources: ['def.de-rham-complex', 'def.singular-chain', 'def.integral-on-chain', 'thm.stokes', 'thm.stokes-chain', 'lem.poincare-lemma', 'thm.paracompact-cech-equals-sheaf'],
@@ -1468,7 +1468,7 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
-    { kind: 'definition', definition: 'def.orientable-manifold', usedBy: 'prop.lie-group-orientable',
+    {id: "e2.definition", kind: 'definition', definition: 'def.orientable-manifold', usedBy: 'prop.lie-group-orientable',
       note: '结论用的就是「可定向流形」这个概念：处处非零的顶次形式给出定向，判据见 `prop.volume-form-orientation`。' },
 
     { id: 'imp.lieg-orientable', kind: 'implication', sources: ['def.lie-group', 'def.left-invariant-form', 'prop.volume-form-orientation'], target: 'prop.lie-group-orientable',

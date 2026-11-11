@@ -277,6 +277,50 @@ window.MG = window.MG || {};
     },
     /* ------------------------------------------------ Jordan 曲线 */
     {
+      "id": "lem.polygon-diagonal",
+      "cluster": "topology.general",
+      "type": "lemma",
+      "label": "简单多边形的对角线",
+      "title": "引理：$n \\ge 4$ 的简单多边形必有一条对角线",
+      "regions": [
+        "topology"
+      ],
+      "tags": [
+        "引理",
+        "拓扑",
+        "平面几何",
+        "多边形"
+      ],
+      "statement": "设 $P = v_0v_1\\cdots v_{n-1}$ 是简单闭多边形（`def.jordan-curve` 的多边形特例），$K$ 是它围成的多边形区域。若 $n \\ge 4$，则存在两个**不相邻**的顶点 $v_i, v_j$，使开线段 $(v_i, v_j)$ 落在 $\\operatorname{int}K$ 内，且与 $P$ 只交于 $v_i, v_j$。这样的线段叫 $P$ 的一条**对角线**。",
+      "notes": "**证明**用「旋转射线」：从凸顶点 $v$ 出发，把方向从一条邻边连续转到另一条，看射线第一次撞上 $P$ 的位置。第一步取 $v$，第二、四步是两个情形共用的准备，第三、五步分别处理「撞点在边内部」与「转到边界边」两种情形；最后一段是退化情形的说明。\n\n**约定**。$P = v_0v_1\\cdots v_{n-1}$ 是简单闭多边形（`def.jordan-curve` 的多边形特例：折线无自交点、首尾相接）。$K$ 指 $P$ 围成的多边形区域，$\\operatorname{int}K$ 是它的内部。**对角线**指连接两个不相邻顶点 $v_i,v_j$、且开线段 $(v_i,v_j)$ 落在 $\\operatorname{int}K$ 里的线段。\n\n**先说明一个前提：$\\operatorname{int}K$ 是什么。** 本图在 `thm.jordan-polygon` 的注里给出「射线交点奇偶 $\\Phi$」的定义与良定性（按水平条带：每个条带内 $P$ 的边都是从下边界贯到上边界、互不相交的曲线 $x = x_i(y)$，$\\Phi$ 就是「左侧墙数 mod 2」）。$\\operatorname{int}K$ 就取 $\\Phi = 1$ 的那一侧。这一步只用平面几何，不用 Jordan 曲线定理。\n\n**第一步：存在凸顶点。** 取 $P$ 中 $y$ 最小、并列时 $x$ 最小的顶点 $v$，记其邻居为 $a,b$。$P$ 的全部顶点都在闭半平面 $y \\ge y_v$ 内，与 $v$ 同高的顶点都在 $v$ 右侧（这是并列规则）。于是 $v$ 处的内角 $< \\pi$：$v$ 是凸顶点，且从 $v$ 出发、方向落在角 $\\angle avb$ 内部的射线，其起点一小段必在 $\\operatorname{int}K$ 里。\n\n**第二步：旋转射线。** 让方向 $\\theta$ 从 $\\overrightarrow{va}$ 连续转到 $\\overrightarrow{vb}$，对每个 $\\theta \\in (\\theta_a,\\theta_b)$ 令 $\\rho(\\theta) = \\sup\\{\\,t>0 : v + t\\,u(\\theta) \\in \\operatorname{int}K\\,\\}$。由第一步 $\\rho > 0$ 在 $\\theta_a$ 附近成立；$\\{\\rho > 0\\}$ 是开集，故它是若干个开区间之并。令 $\\theta^{*}$ 是含 $\\theta_a$ 的那个区间的右端点。\n\n**第三步：$\\theta^{*} < \\theta_b$ 时一定有对角线（这一段给出证明）。** 设 $\\theta^{*} < \\theta_b$。取 $\\theta \\to \\theta^{*-}$ 时射线的出界点 $z(\\theta)$（即 $v + \\rho(\\theta)u(\\theta)$）。$z(\\theta)$ 在 $\\partial K = P$ 上，且当 $\\theta$ 靠近 $\\theta^{*}$、出界点落在某条边的**内部**时，由连续性，$\\theta$ 再大一点也仍从这条边出界，即 $\\rho > 0$ —— 与 $\\theta^{*}$ 是端点矛盾。所以 $z(\\theta^{*})$ 必是 $P$ 的一个**顶点** $p$。令 $\\theta \\to \\theta^{*-}$ 还说明 $\\rho(\\theta) \\to |vp|$。\n\n**第四步：$[v,p]$ 的内部在 $\\operatorname{int}K$ 里。** 设 $t < |vp|$。取 $\\theta < \\theta^{*}$ 充分接近，使 $\\rho(\\theta) > t$；则 $v + t\\,u(\\theta) \\in \\operatorname{int}K$。令 $\\theta \\to \\theta^{*-}$，这些点收敛到 $v + t\\,u(\\theta^{*})$，故后者在 $\\overline{\\operatorname{int}K}$ 中。若它落在 $\\partial K = P$ 上，则它就是射线 $\\theta^{*}$ 的出界点，距离为 $|vp|$，与 $t < |vp|$ 矛盾。既在闭包又不在边界，故它属于 $\\operatorname{int}K$。所以 $[v,p]$ 是以 $v$ 为端点的对角线（$p \\ne a,b$ 由 $\\theta^{*} < \\theta_b$ 且 $\\theta^{*} > \\theta_a$ 保证）。\n\n**第五步：$\\theta^{*} = \\theta_b$ 的情形（第三条的补充，同样完整）。** 这时「$\\rho>0$」在整段 $(\\theta_a,\\theta_b)$ 上成立，于是每个方向都有唯一的第一撞击点 $z(\\theta) = v + \\rho(\\theta)u(\\theta) \\in P$：唯一性是因为一条射线上不同点到 $v$ 的距离互不相同，最近的那个交点不可能有两个。\n\n**$z$ 连续。** 若 $\\theta_n \\to \\theta$ 而 $z(\\theta_n) \\to z' \\ne z(\\theta)$，则 $z' \\in P$（$P$ 闭）、$z'$ 在射线 $\\theta$ 上、且 $|vz'| \\ge |vz(\\theta)|$（$z(\\theta)$ 是最近交点）。若严格大于，取 $\\theta_n$ 充分接近 $\\theta$：其第一撞击点必须落在 $z(\\theta)$ 附近（否则射线要先穿过 $P$ 上 $z(\\theta)$ 与 $z'$ 之间的部分），与 $z(\\theta_n) \\to z'$ 矛盾。故 $z$ 连续。\n\n**端点极限。** $\\theta \\to \\theta_a^{+}$ 时 $z(\\theta)$ 收敛到射线 $\\theta_a$ 上的某点 $z_a \\in P$，而射线 $\\theta_a$ 与 $P$ 的交正是线段 $va$，故 $z_a \\in [v,a]$；同理 $\\theta \\to \\theta_b^{-}$ 时 $z_b \\in [v,b]$。\n\n**于是有对角线。** $z$ 连续，故像连通；像含 $z_a$（在边 $va$ 上）与 $z_b$（在边 $vb$ 上），两条不同的边。若像里没有 $P$ 的顶点，则像落在 $P$ 去掉顶点后的若干开边之一里（连通集落在互不相交开集之并，故只落在一个里），与它同时碰到 $va,vb$ 矛盾。故存在 $\\theta$ 使 $z(\\theta)$ 是顶点 $p$；$p \\ne v$（因为 $\\rho>0$），$p \\ne a,b$（否则射线方向就是 $va$ 或 $vb$，不在开区间内）。对这条射线重复第四步的闭包论证，$[v,p]$ 的内部全在 $\\operatorname{int}K$ 里，即 $[v,p]$ 是对角线。\n\n**退化情形（已处理，不是缺口）**：(a) 顶点落在开线段 $(a,b)$ 上 —— 第三、五步都只用「第一撞击点是顶点」，与 $(a,b)$ 上有无顶点无关；(b) 顶点落在边 $va$ 或 $vb$ 的**内部** —— 不可能：$va,vb$ 是 $P$ 的边，另一个顶点落在它内部会让 $P$ 自交或两段重合，与「简单」矛盾。\n\n**一处口径**：第三、五步都用到「第一撞击点随方向连续」；它只用到「一条射线上不同点到 $v$ 的距离互不相同」。本图没有为它单列节点 —— 上面两段的最后一步用的就是它。\n\n**经典耳定理路线（本图不采用）**：先证「每个 $n\\ge4$ 的多边形至少有两个耳朵」（O'Rourke 的取法：在三角形 $avb$ 内取离直线 $ab$ 最远的顶点 $p$，再证 $[v,p]$ 与 $P$ 只交于端点），再对耳朵归纳。本条不经过耳朵，直接证「对角线存在」——这对三角剖分足够。",
+      "refs": [
+        "O'Rourke, Computational Geometry in C, §1.3（对角线引理；该节的耳定理路线本图不采用）",
+        "Munkres, Topology, §64（多边形与三角剖分）"
+      ]
+      },
+    {
+      "id": "thm.jordan-polygon",
+      "cluster": "topology.general",
+      "type": "theorem",
+      "label": "多边形 Jordan 定理",
+      "title": "定理：简单闭多边形的补集恰有两个连通分量",
+      "regions": [
+        "topology"
+      ],
+      "tags": [
+        "定理",
+        "拓扑",
+        "Jordan",
+        "多边形"
+      ],
+      "statement": "设 $P$ 是 $\\mathbb{R}^{2}$ 中的简单闭多边形（有限条线段首尾相接、无自交点），$K$ 是它围成的多边形区域。则 $\\mathbb{R}^{2}\\setminus P$ 恰有两个连通分量：有界的那一个等于 $\\operatorname{int}K$，无界的那一个是 $\\mathbb{R}^{2}\\setminus K$；两者都以 $P$ 为边界。",
+      "notes": "**证明结构**：先证补集里有「射线交点奇偶」这个二值不变量（第一、二步），再用对角线引理 `lem.polygon-diagonal` 归纳出三角剖分（第三步），最后用三角剖分把补集分成两个开集、证明它们互不相通（第四至七步）。\n\n**约定**。$P$ 是简单闭多边形，$K$ 是 $P$ 围成的多边形区域（射线奇偶 $\\Phi=1$ 的一侧加上边界，见下），$\\operatorname{int}K$ 是它的内部。结论：$\\mathbb{R}^{2}\\setminus P$ **恰有两个连通分量**，一个是 $\\operatorname{int}K$（有界），另一个是 $\\mathbb{R}^{2}\\setminus K$（无界），两者都以 $P$ 为边界。\n\n**第一步：$\\Phi$ 良定义且局部常值。** 把顶点按 $y$ 坐标分组，相邻两组之间是一个开条带。在每个条带里，$P$ 与它的交是一族互不相交的线段，每条都从条带下边界贯到上边界（否则会在条带内部出现顶点），所以它们是图 $x = x_1(y) < \\cdots < x_j(y)$。对条带内的点 $(x,y)$，定义 $\\Phi(x,y) = \\#\\{i : x_i(y) < x\\} \\bmod 2$。$x_i$ 连续，所以 $\\Phi$ 在条带内局部常值；$y$ 穿过分界高度时，两侧的墙数之差是偶数（穿过一个顶点时两条边同时出现或同时消失），故 $\\Phi$ 在 $\\mathbb{R}^{2}\\setminus P$ 上整体良定义、局部常值。\n\n**第二步：$\\Phi$ 取到两个值。** 在 $P$ 外取一个足够远的点，向左的射线不碰 $P$，$\\Phi = 0$；取一条边的中点 $m$ 与它的外法向 $\\nu$，点 $m + \\varepsilon\\nu$ 在 $P$ 外且紧邻这条边——沿该边的方向扰动可见它的左侧墙数恰与另一侧差 1，故 $\\Phi = 1$。于是 $\\Phi$ 是满射到 $\\{0,1\\}$。\n\n**第三步：三角剖分（输入：`lem.polygon-diagonal`）。** 对顶点数归纳：$n = 3$ 时 $K$ 本身就是一个三角形。$n \\ge 4$ 时由 `lem.polygon-diagonal` 取一条对角线，把 $P$ 分成两个顶点数更少的简单多边形，分别归纳。结果：$K = T_1 \\cup \\cdots \\cup T_{n-2}$，$T_i$ 是闭三角形，两两内部不交，交集是公共边或公共顶点，且 $\\partial K = P$。\n\n**第四步：$A := K \\setminus P$ 道路连通。**\n\n**（4a）对偶图连通**，对顶点数 $n$ 归纳。$n=3$ 时剖分只有一个三角形，对偶图是单点。$n\\ge4$ 时，第三步用的是 `lem.polygon-diagonal` 给出的对角线 $[a,b]$，它把 $P$ 分成 $P_1,P_2$（顶点数 $n_1,n_2$，$n_1+n_2=n+2$，各自都小于 $n$），$P$ 的剖分就是两个子剖分之并。由归纳假设，两个子剖分的对偶图 $\\Gamma_1,\\Gamma_2$ 都连通。$[a,b]$ 是 $P_1$ 的边、也是 $P_2$ 的边；在每个子剖分里含边 $[a,b]$ 的三角形恰好一个——剖分覆盖整个子多边形、各三角形内部互不相交，故 $[a,b]$ 的相对内部只落在一个三角形里，而含它的三角形必以 $[a,b]$ 为一条边——记作 $T_1,T_2$。$[a,b]$ 是内部对角线，$T_1,T_2$ 在 $\\Gamma$ 里相邻，故 $\\Gamma=\\Gamma_1\\cup\\Gamma_2\\cup\\{T_1T_2\\}$ 连通。\n\n**（4b）$A$ 道路连通。** $A$ 是全部三角形挖掉 $P$ 后的并（$P$ 只落在三角形的落在 $P$ 上的那些边上）。每一块 $T_i \\setminus P$ 道路连通：它是凸三角形去掉若干边的剩余部分，去掉的边都在它的边界上。相邻两块沿一条内部对角线相接，该对角线的相对内部既在 $A$ 里又在两块的交里，所以可以就地把两块接起来。对偶图连通，故沿对偶图的路径可把任意两块接起来，从而 $A$ 道路连通。\n\n**第五步：$B := \\mathbb{R}^{2}\\setminus K$ 连通。** 令 $G$ 为剖分的 $1$-骨架（全部边之并）。$\\mathbb{R}^{2}\\setminus G$ 的面就是 $n-2$ 个三角形内部与唯一的外部面 $E$；每个三角形内部是它自己的一个（有界）面，$E$ 是无界面。$B = E$：一方面 $E$ 里的点不在任何三角形闭包里故不在 $K$ 里，另一方面 $K$ 外的点不在 $G$ 上、也不在任何三角形内部，只能落在 $E$。开集的分量都是道路连通的（$\\mathbb{R}^{2}$ 局部道路连通），故 $E = B$ 道路连通、且无界。\n\n**第六步：合起来恰两个分量。** $A$ 与 $B$ 都是开集、都非空、且 $\\mathbb{R}^{2}\\setminus P = A \\sqcup B$：$P$ 上的点被挖掉；不在 $P$ 上的点要么在某三角形内部或内部边上（属于 $K$，即 $A$），要么不在 $K$ 里（属于 $B$）。若有一条道路从 $A$ 连到 $B$，它的像连通且含于两个不相交开集之并，只能落在其中一个里，矛盾。所以 $A$、$B$ 就是全部两个分量：一个是有界的 $\\operatorname{int}K$ 那一侧，一个是无界的 $\\mathbb{R}^{2}\\setminus K$。\n\n**第七步：边界。** $A,B$ 都开，故 $\\partial A \\subseteq P$、$\\partial B \\subseteq P$；反过来，$P$ 上任一点 $x$ 的任意小邻域里既有 $A$ 的点（$x$ 在 $\\partial K$ 上）又有 $B$ 的点，故 $P \\subseteq \\partial A \\cap \\partial B$。两边合起来 $\\partial A = \\partial B = P$。\n\n**依赖声明**：唯一的外部输入是 `lem.polygon-diagonal`（对角线引理；证明用旋转射线论证，含「转到边界边」那一支）；本条的第四至七步只用到「存在三角剖分」这一件事。",
+      "refs": [
+        "O'Rourke, Computational Geometry in C, §1.3",
+        "Armstrong, Basic Topology, §5"
+      ]
+      },
+    {
       id: 'def.jordan-curve',
       cluster: 'topology.general',
       type: 'definition',
@@ -311,8 +355,16 @@ window.MG = window.MG || {};
         '等价地，$C$ **分离**平面：$\\mathbb{R}^{2} \\setminus C$ 不连通，且连通分量恰好两个。'
       ].join('\n'),
       notes: [
-        '**骨架**：本节点只给陈述，不给出证明。缺口就是 **Jordan 曲线定理本身** —— 本图没有它的证明，不能把「显然」当作证明。',
-        '常用证明路线：① 同调路线，证明 $H_{1}(\\mathbb{R}^{2} \\setminus C) \\cong \\mathbb{Z}$（配合 Mayer–Vietoris）；② 基本群与环绕数路线；③ 初等的射线/多边形逼近路线。三条都依赖非平凡的拓扑工具，本图未展开。'
+        "⚠ 本节点保持 `status: skeleton`。**缺口不是「整个定理都没写」，而是两条外部输入**，下面把归约写完，剩下的两块各自标明本图有没有节点。",
+        "**输入 (A)（同调分离）**：$H_{1}(\\mathbb{R}^{2}\\setminus C;\\mathbb{Z}) \\cong \\mathbb{Z}$ 且 $\\widetilde{H}_{0}(\\mathbb{R}^{2}\\setminus C;\\mathbb{Z}) \\cong \\mathbb{Z}$。两者是同一件事的两面（Alexander 对偶：$\\widetilde{H}_{i}(\\mathbb{R}^{2}\\setminus C) \\cong \\widetilde{H}^{1-i}(C)$，$C \\cong S^{1}$）。本图**没有** Alexander 对偶节点，也没有 $\\mathbb{R}^{2}\\setminus C$ 的 Mayer–Vietoris 计算节点 —— 这是第一块真缺口。",
+        "**输入 (B)（局部弧分离）**：$C$ 的每一点都是两个分量各自的聚点。等价说法：$C$ 在每点附近把平面「局部切开」。Brouwer 的局部连通性引理给的是：$C$ 上任一点的任意小邻域内，$C$ 与该邻域边界的交至少两点，且这足以让两侧都逼近该点。本图同样没有这个节点 —— 第二块真缺口。",
+        "**归约（在 (A)、(B) 之下）**。",
+        "**第一步：分量即道路分量。** $\\mathbb{R}^{2}\\setminus C$ 是 $\\mathbb{R}^{2}$ 的开子集，故局部道路连通；局部道路连通空间里连通分量与道路分量一致。",
+        "**第二步：恰两个分量。** 设 $\\mathbb{R}^{2}\\setminus C$ 有 $n$ 个连通分量（$n \\in \\mathbb{N}\\cup\\{\\infty\\}$）。对局部道路连通、局部紧的空间，$\\widetilde{H}_{0}$ 是以分量为基的自由阿贝尔群，故 $\\operatorname{rank}\\widetilde{H}_{0} = n-1$（$n$ 有限时）。由 (A) 的 $\\operatorname{rank}\\widetilde{H}_{0} = 1$ 得 $n = 2$。",
+        "**第三步：一个有界、一个无界。** $C$ 紧，故有 $R$ 使 $C \\subseteq B(0,R)$。于是 $\\mathbb{R}^{2}\\setminus B(0,R) \\subseteq \\mathbb{R}^{2}\\setminus C$，而 $\\mathbb{R}^{2}\\setminus B(0,R)$ 道路连通；它落在某一个分量里，那个分量无界。另一个分量必含于 $B(0,R)$，故有界。",
+        "**第四步：边界是 $C$。** 两个分量都开，故 $\\partial(\\text{分量}) \\subseteq C$；反过来 (B) 说 $C$ 的每点都在两个分量的闭包里，故 $C \\subseteq \\partial(\\text{分量})$。两边合起来 $\\partial(\\text{内部}) = \\partial(\\text{外部}) = C$。",
+        "**三条常用证明路线与本图的关系**：① 同调路线 —— 就是上面的 (A)，外加 Alexander 对偶（本图缺）；② 基本群 / 环绕数路线 —— 证 $\\pi_{1}(\\mathbb{R}^{2}\\setminus C) \\cong \\mathbb{Z}$，用 $C$ 上的一致化与覆盖空间（本图缺覆盖空间理论）；③ 初等近似路线 —— 先把 $C$ 逼近成多边形，多边形情形可以用「射线穿过的次数奇偶」直接算（这一步本身可写成一段证明），再把多边形的分离性搬回 $C$ 需要 (B) 的局部版本（本图缺）。三条都绕不过 (B)。",
+        "📌 **多边形情形**：若 $C$ 是有限条线段首尾相接的简单闭折线，则补集恰有两个分量（论证不是靠射线的交点奇偶，而是先三角剖分、再证补集的两个开集互不相通）。这个特例已单列为 `thm.jordan-polygon`，论证走三角剖分、只用到对角线引理 `lem.polygon-diagonal`，不依赖本条要的 (A)(B)。**一般情形仍缺 (A)(B)**，多边形那条不能替代它。",
       ].join('\n\n'),
       refs: ['Hatcher, Algebraic Topology, §2.B']
     }
@@ -470,12 +522,15 @@ window.MG = window.MG || {};
       usedBy: 'def.jordan-curve',
       note: 'Jordan 曲线定义为 $S^{1}$ 在同胚下的像；「像」上的拓扑取子空间拓扑，同胚是定义的一部分。'
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.jordantheorem-curve',
       kind: 'definition',
       definition: 'def.jordan-curve',
       usedBy: 'thm.jordan-curve',
-      note: '定理以 Jordan 曲线（简单闭曲线）的定义为前提；本节点只陈述定理，证明见节点注的缺口说明。'
-    }
+      note: '定理以 Jordan 曲线（简单闭曲线）的定义为前提。'
+    },
+    {"id":"dep.poly-jordan","kind":"definition","definition":"def.jordan-curve","usedBy":"lem.polygon-diagonal","note":"多边形是 Jordan 曲线的特例（折线版的简单闭曲线）；本条只对折线证明，不加任何一般性。"},
+    {"id":"dep.polygon-area","kind":"definition","definition":"def.jordan-curve","usedBy":"thm.jordan-polygon","note":"多边形区域的边界是 Jordan 曲线；本条的结论比 `thm.jordan-curve` 弱，只对折线成立。"},
+    {"id":"dep.jp-diagonal","kind":"definition","definition":"lem.polygon-diagonal","usedBy":"thm.jordan-polygon","note":"对角线引理，用于三角剖分的归纳（对顶点数归纳，每步切一条对角线）。"},
   ]
 });

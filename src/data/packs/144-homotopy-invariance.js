@@ -96,7 +96,7 @@
   ],
 
   edges: [
-    { kind: 'implication', sources: ['def.chain-group'], target: 'def.chain-homotopy',
+    {id: "e109.implication", kind: 'implication', sources: ['def.chain-group'], target: 'def.chain-homotopy',
       title: '链同伦是链映射之间「升一次」的同态',
       proof: [
         '由 `def.chain-group`，链群是分次阿贝尔群 $C_{n}$ 连同边缘算子 $\\partial_{n} : C_{n} \\to C_{n-1}$，' +
@@ -111,7 +111,7 @@
       ].join('\n'),
       note: '链同伦是「同伦」在纯代数侧的对应物：没有空间可形变，就形变映射本身。' },
 
-    { kind: 'implication', sources: ['def.singular-homology'], target: 'thm.homotopy-invariance',
+    {id: "e110.implication", kind: 'implication', sources: ['def.singular-homology'], target: 'thm.homotopy-invariance',
       title: '奇异链上造棱柱算子 $P_{n}$',
       proof: [
         '设 $F : X \\times [0,1] \\to Y$ 给出 $f \\simeq g$。对每个奇异 $n$-单形 ' +
@@ -130,7 +130,7 @@
       ].join('\n'),
       note: '棱柱算子把「连续形变」翻译成「链同伦」——这就是同伦不变性的全部内容。' },
 
-    { kind: 'implication', sources: ['def.homotopy'], target: 'thm.homotopy-invariance',
+    {id: "e111.implication", kind: 'implication', sources: ['def.homotopy'], target: 'thm.homotopy-invariance',
       title: '同伦的定义就是这里要用的那条形变',
       proof: [
         '由 `def.homotopy`，$f \\simeq g$ 指存在连续 $F : X \\times [0,1] \\to Y$ 使 ' +
@@ -142,7 +142,7 @@
       ].join('\n'),
       note: '同伦给形变，链同伦给代数：$F$ 就是那根桥。' },
 
-    { kind: 'implication', sources: ['thm.homotopy-invariance'], target: 'thm.sphere-homology',
+    {id: "e112.implication", kind: 'implication', sources: ['thm.homotopy-invariance'], target: 'thm.sphere-homology',
       title: '球面同调的归纳要用「可缩 $\\implies$ 同调平凡」',
       proof: [
         '`thm.sphere-homology` 的证明把 $S^{n}$ 拆成两个**开**半球 $U = S^{n} \\setminus \\{\\text{南极 } S\\}$、$V = S^{n} \\setminus \\{\\text{北极 } N\\}$ —— 与节点 `thm.sphere-homology` 的记号一致（两者对称，哪个叫 $U$ 都行）；它们各自经球极投影同胚于 $\\mathbb{R}^{n}$，可缩，' +

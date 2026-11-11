@@ -7,7 +7,7 @@
      ② 例子层：球面 / 环面 / 射影平面 / 克莱因瓶 —— E4 点名缺的四个，
         分类定理的三种标准形在图上连个指得着的对象都没有。
 
-   ⚠️ `prop.eulerchar-nonorientable` 已完整（标准形计数 + 连通和归纳，2026-11-07）；`prop.eulerchar-genus` 证明链完整但**条件于 Radó**（2026-11-07 第 19 批补完，status 恢复为 skeleton）：证明走「Radó + 引理 D（$H_2 \cong \mathbb{Z}$）」，唯一外部输入是 `thm.rado`（skeleton），拓扑可定向性见 `def.topological-orientability` —— **不依赖 thm.classification-surfaces**。
+   ⚠️ `prop.eulerchar-nonorientable` 由标准形计数 + 连通和归纳给出；`prop.eulerchar-genus` 证明链完整但**条件于 Radó**（2026-11-07 第 19 批补完，status 恢复为 skeleton）：证明走「Radó + 引理 D（$H_2 \cong \mathbb{Z}$）」，唯一外部输入是 `thm.rado`（skeleton），拓扑可定向性见 `def.topological-orientability` —— **不依赖 thm.classification-surfaces**。
    ========================================================================== */
 (window.MG.packs = window.MG.packs || []).push({
   name: '曲面地形（三）：Euler 示性数与四个标准例子',
@@ -49,9 +49,9 @@
       ].join('\n'),
       notes: [
         '**本命题的假设已经限定在标准形。** 这里 $S$ 是 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和（$k\\ge1$），所以下面的计算不需要分类定理；把一般闭不可定向曲面化到标准形的那一步属于 `thm.classification-surfaces`（仍 skeleton），不在本命题的假设之内。',
-        '**一、$\\mathbb{RP}^{2}$ 的三角剖分（完整）。** 把正二十面体（$12$ 个顶点、$30$ 条棱、$20$ 个面）的对径点粘合，得到 $\\mathbb{RP}^{2}$ 的一个三角剖分：$6$ 个顶点、$15$ 条棱、$10$ 个面，故 $\\chi(\\mathbb{RP}^{2})=6-15+10=1=2-1$。对径作用是自由的单纯作用（每个单形与自己的对径像不重合），所以商复形仍是单纯复形。',
-        '**二、连通和公式（完整）。** 设 $M,N$ 是已三角剖分的闭曲面。各取一个 $2$-单形，挖去它的内部（剩下一个带三角形边界的曲面）；把两个边界三角形按顶点对应粘合，得到 $M\\#N$ 的三角剖分。计数：$V=V_{M}+V_{N}-3$、$E=E_{M}+E_{N}-3$、$F=(F_{M}-1)+(F_{N}-1)=F_{M}+F_{N}-2$，故 $\\chi(M\\#N)=\\chi(M)+\\chi(N)-2$。',
-        '**三、归纳（完整）。** 记 $S_{k}$ 为 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和。$\\chi(S_{1})=1$；由第二步，$\\chi(S_{k})=\\chi(S_{k-1})+\\chi(\\mathbb{RP}^{2})-2=\\chi(S_{k-1})-1$。所以 $\\chi(S_{k})=1-(k-1)=2-k$。∎',
+        '**一、$\\mathbb{RP}^{2}$ 的三角剖分。** 把正二十面体（$12$ 个顶点、$30$ 条棱、$20$ 个面）的对径点粘合，得到 $\\mathbb{RP}^{2}$ 的一个三角剖分：$6$ 个顶点、$15$ 条棱、$10$ 个面，故 $\\chi(\\mathbb{RP}^{2})=6-15+10=1=2-1$。对径作用是自由的单纯作用（每个单形与自己的对径像不重合），所以商复形仍是单纯复形。',
+        '**二、连通和公式。** 设 $M,N$ 是已三角剖分的闭曲面。各取一个 $2$-单形，挖去它的内部（剩下一个带三角形边界的曲面）；把两个边界三角形按顶点对应粘合，得到 $M\\#N$ 的三角剖分。计数：$V=V_{M}+V_{N}-3$、$E=E_{M}+E_{N}-3$、$F=(F_{M}-1)+(F_{N}-1)=F_{M}+F_{N}-2$，故 $\\chi(M\\#N)=\\chi(M)+\\chi(N)-2$。',
+        '**三、归纳。** 记 $S_{k}$ 为 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和。$\\chi(S_{1})=1$；由第二步，$\\chi(S_{k})=\\chi(S_{k-1})+\\chi(\\mathbb{RP}^{2})-2=\\chi(S_{k-1})-1$。所以 $\\chi(S_{k})=1-(k-1)=2-k$。∎',
         '**四、与剖分无关。** `thm.euler-characteristic` 说对任何有限单纯复形 $\\chi=\\sum_{p}(-1)^{p}\\beta_{p}$；右端只依赖同调型，所以上面用特定剖分算出的数就是 $\\chi(S)$，不是剖分的偶然。',
         '**五、支撑性附注：$H_{1}$ 为什么是 $k-1$ 而不是 $2k$（完整，但不用于上面的计算）。** 在标准形 $2k$ 边形的一个顶点取开覆盖，用 van Kampen（`thm.van-kampen`）得 $\\pi_{1}(S_{k})=\\langle c_{1},\\ldots,c_{k}\\mid c_{1}^{2}\\cdots c_{k}^{2}=1\\rangle$；交换化后 $H_{1}(S_{k};\\mathbb{Z})\\cong\\mathbb{Z}^{k}/(2(c_{1}+\\cdots+c_{k}))\\cong\\mathbb{Z}^{k-1}\\oplus\\mathbb{Z}/2$。它也可代入 $\\chi=\\sum_{i}(-1)^{i}\\beta_{i}$ 复核上面的 $2-k$，但那个复核需要 $H_{2}=0$ 与「一般曲面的 $\\beta_{i}$」两条本图没有独立节点的事实，所以这里只当旁证。',
         '⚠ **「亏格」这个词在不可定向侧不能照搬**：`def.genus` 只对可定向曲面定义（除以 $2$ 依赖 $H_{1}$ 自由秩为偶数）。不可定向侧的标准量是 $k$（不可定向亏格），关系是 $\\chi=2-k$。',
@@ -206,14 +206,14 @@
 
   edges: [
     /* -------- 两条判据式的前提 -------- */
-    {
+    {status: 'skeleton', 
       id: 'dep.classification-eulerchargenus',
       kind: 'analogy',
       a: 'thm.classification-surfaces',
       b: 'prop.eulerchar-genus',
       note: '命题的证明**不用**分类定理（节点注写明改走 Radó + 初等路线，$\\chi=2-2g$ 可由同调直接算出）；保留这条只作「标准形 = $g$ 个环面的连通和」的类比视角。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.eulerchar-eulerchargenus',
       kind: 'implication',
       sources: ['thm.euler-characteristic'],
@@ -222,14 +222,14 @@
       proof: '命题先由任一三角剖分数出 $\\chi(S)$，再由 $g=\\tfrac12\\operatorname{rank}H_{1}(S;\\mathbb{Z})$ 得 $\\beta_{0}=1$、$\\beta_{1}=2g$、$\\beta_{2}=1$，于是 $\\chi=2-2g$。把两种算法接起来靠的正是 `thm.euler-characteristic` 的 $\\chi=\\sum_{p}(-1)^{p}\\alpha_{p}=\\sum_{p}(-1)^{p}\\beta_{p}$；没有它，组合侧的数与同调侧的 $g$ 无法对齐，「与剖分无关」也无从谈起。∎',
       note: '$\\chi$ 的两种算法（数单纯形 / 数 Betti 数）相等，正是这条定理的内容。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.genus-eulerchargenus',
       kind: 'definition',
       definition: 'def.genus',
       usedBy: 'prop.eulerchar-genus',
       note: '命题说的就是「$\\chi$ 与 $g$ 互相决定」，$g$ 的定义必须在这里。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.classification-eulercharnonor',
       kind: 'analogy',
       a: 'thm.classification-surfaces',
@@ -296,7 +296,7 @@
       usedBy: 'ex.torus',
       note: '环面的 $g = 1$：$H_{1} \\cong \\mathbb{Z}^{2}$，秩 2，除以 2 得 1。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.eulerchargenus-torus',
       kind: 'analogy',
       a: 'prop.eulerchar-genus',
@@ -317,15 +317,15 @@
       b: 'ex.klein-bottle',
       note: '「$k = 2$、$\\chi = 0$」同上。',
     },
-    { id: 'def-link.toporient-eg', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-genus', note: '引理 D 用定向图册给 2-单形一致定向' },
+    {status: 'skeleton',  id: 'def-link.toporient-eg', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-genus', note: '引理 D 用定向图册给 2-单形一致定向' },
     { id: 'def-link.toporient-nonor', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-nonorientable', note: '不可定向=不存在定向图册；标准形 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和' },
     { id: 'def-link.topmanifold-toporient', kind: 'definition', definition: 'def.topological-manifold', usedBy: 'def.topological-orientability', note: '拓扑流形上才谈定向图册/定向双覆盖' },
 
-    { id: 'def-link.lebnum-eulerchar', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'prop.eulerchar-genus',
+    {status: 'skeleton',  id: 'def-link.lebnum-eulerchar', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'prop.eulerchar-genus',
       note: '证明对覆盖取勒贝格数来控制单纯形直径（小于勒贝格数就整块落在一个开集里）—— 定义直接进入第 2 步。' },
-    { id: 'def-link.barysub-eulerchar', kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'prop.eulerchar-genus',
+    {status: 'skeleton',  id: 'def-link.barysub-eulerchar', kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'prop.eulerchar-genus',
       note: '证明反复作重心重分把网格按 $n/(n+1)$ 缩小，同调不变性由这条定义的性质给出。' },
-    {
+    {status: 'skeleton', 
       id: 'imp.eulerchar-inputs',
       kind: 'implication',
       sources: ['thm.rado', 'thm.simplicial-approximation', 'prop.h0-components'],

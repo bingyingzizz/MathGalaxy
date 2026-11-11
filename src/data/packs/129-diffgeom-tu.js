@@ -1061,13 +1061,6 @@ window.MG = window.MG || {};
       note: '两条比安基都是曲率张量必须满足的恒等式；缩并版还要用到 Ricci 与数量曲率。'
     },
     {
-      id: 'dep.tu-sym-bianchi',
-      kind: 'definition',
-      definition: 'prop.curvature-tensor-symmetries',
-      usedBy: 'thm.bianchi-identity',
-      note: '缩并那一步要用「两对指标可交换」把指标搬正 —— 那是这个命题的第 3 条。'
-    },
-    {
       id: 'dep.tu-riemannian-sectional',
       kind: 'definition',
       definition: 'def.riemannian-metric',

@@ -681,6 +681,70 @@
       notes: '**与单纯复形的关系**：单纯复形是 CW 复形的特例（粘贴映射取线性同胚）；CW 更宽松，粘贴映射只需连续。\n\n**Euler 示性数**：对有限 CW 复形，$\\chi(X)$ 与同调读数 $\\sum_{n}(-1)^{n}\\operatorname{rank}H_{n}(X)$ 一致；这也是 `thm.euler-characteristic` 的 CW 版本（该节点按单纯剖分陈述）。\n\n**例子**：$S^{n}$ 是一个 $0$-胞腔加一个 $n$-胞腔；$\\mathbb{R}P^{n}$ 在每一维各有一个胞腔；环面是 $1$ 个 $0$-胞腔、$2$ 个 $1$-胞腔、$1$ 个 $2$-胞腔。\n\n⚠ 弱拓扑与闭包有限两条都不能省：只取商拓扑可能使粘贴点附近的开集结构不对；闭包有限排除无限累积，保证有限胞腔数时 Euler 示性数有定义。',
       refs: ['Hatcher, Algebraic Topology, Ch. 0 · CW complexes', 'Munkres, Elements of Algebraic Topology, Ch. 1 · CW complexes'],
     },
+    {
+      id: 'def.degree',
+      type: 'definition',
+      label: '映射的度',
+      title: '度：$S^{n-1} \\to S^{n-1}$ 在 $H_{n-1} \\cong \\mathbb{Z}$ 上的倍数',
+      cluster: 'topology.homology',
+      regions: ['topology'],
+      tags: ['代数拓扑', '同调群', '度', '球面'],
+      statement: [
+        '设 $n \\ge 1$，$f : S^{n-1} \\to S^{n-1}$ 连续。取定约化同调 $\\tilde{H}_{n-1}(S^{n-1}; \\mathbb{Z}) \\cong \\mathbb{Z}$ 的一个生成元，记作 $[S^{n-1}]$（等价于给 $S^{n-1}$ 取一个**定向**；$n \\ge 2$ 时它就是 $H_{n-1}$）。则存在**唯一**的整数 $d$ 使',
+        '',
+        '$f_{*}[S^{n-1}] = d \\cdot [S^{n-1}],$',
+        '',
+        '称 $d$ 为 $f$ 的**度**，记 $\\deg f$。',
+        '',
+        '换成相反的生成元 $-[S^{n-1}]$ 时 $d$ 变号，所以**度依赖定向的选取**；$|\\deg f|$ 与定向无关。',
+        '',
+        '基本值：$\\deg(\\mathrm{id}) = 1$，常值映射的度为 $0$，且 $\\deg(g \\circ f) = \\deg g \\cdot \\deg f$。',
+      ].join('\n'),
+      notes: [
+        '**良定义的理由。** 由 `thm.sphere-homology`，约化同调 $\\tilde{H}_{n-1}(S^{n-1}; \\mathbb{Z}) \\cong \\mathbb{Z}$ 是秩 $1$ 的自由阿贝尔群（`def.reduced-homology`）；连续映射 $f$ 诱导同态 $f_{*} : \\tilde{H}_{n-1}(S^{n-1}) \\to \\tilde{H}_{n-1}(S^{n-1})$（`def.singular-homology`），而 $\\mathbb{Z} \\to \\mathbb{Z}$ 的群同态必是「乘某个整数」，它在生成元上的取值就是 $d$。',
+        '',
+        '**为什么必须钉定向。** 生成元只有两个：$[S^{n-1}]$ 与 $-[S^{n-1}]$，换一个 $d$ 就变号。所以严格说度是「相对于某个定向」的整数；本图提到度时默认 $S^{n-1} \\subset \\mathbb{R}^{n}$ 的标准定向（外法向在前），此时 $\\deg$ 才是确定的数。不做约定时只有 $|\\deg f|$ 无歧义。',
+        '',
+        '**同伦不变性。** 同伦的映射诱导同一个同调同态（`thm.homotopy-invariance`），故 $\\deg$ 只依赖 $f$ 的同伦类。反过来一般**不**成立：度是同伦不变量、不是完全不变量（$n = 2$ 时恰好也是完全的 —— $S^{1} \\to S^{1}$ 的同伦类由绕数唯一确定）。',
+        '',
+        '**$n = 2$ 时就是绕数。** $S^{1} \\to S^{1}$ 的度等于它绕 $0$ 的圈数，与 `def.winding-number` 一致。这也是复分析里「绕数」与拓扑里「度」能互相翻译的原因。',
+        '',
+        '**$n = 1$ 的情形。** $S^{0} = \\{\\pm 1\\}$、$\\tilde{H}_{0}(S^{0}) \\cong \\mathbb{Z}$（约化同调，见 `def.reduced-homology`）；把 $+1$ 记作正定向，四条连续映射的度分别是 $1$（恒等）、$-1$（交换）、$0$（两个常值映射）。注意 $S^{0}$ 离散，两个常值映射**不同伦**，所以 $n = 1$ 时度不分类同伦类。',
+        '',
+        '**为什么用奇异同调定义。** 奇异同调对**任意**连续映射都有诱导同态，不需要光滑性、也不需要 $f$ 是嵌入 —— 这正是度能用于纯拓扑论证的原因。本图尚未把「球上单射诱导的边界映射度为 $\\pm 1$」写成节点：它不能只由本条与 `thm.sphere-homology` 推出，难度与 Jordan–Brouwer 分离同级。',
+      ].join('\n'),
+      refs: ['Hatcher, Algebraic Topology, §2.2'],
+    },
+    {
+      id: 'thm.degree-nonextendable',
+      type: 'theorem',
+      label: '度非零的映射不能延拓到球',
+      title: "若 $f : S^{n-1} \\to S^{n-1}$ 可延拓为 $\\overline{B^{n}} \\to S^{n-1}$，则 $\\deg f = 0$",
+      cluster: 'topology.homology',
+      regions: ['topology'],
+      tags: ['代数拓扑', '度', '延拓', '球面'],
+      statement: [
+        "设 $n \\ge 1$，$f : S^{n-1} \\to S^{n-1}$ 连续（度见 `def.degree`）。若存在连续映射 $F : \\overline{B^{n}} \\to S^{n-1}$ 使 $F|_{S^{n-1}} = f$，则",
+        "",
+        "$\\deg f = 0.$",
+        "",
+        "等价地：$\\deg f \\ne 0$ 的映射**不能**延拓为 $\\overline{B^{n}} \\to S^{n-1}$ 的连续映射。",
+      ].join('\n'),
+      notes: [
+        "**证明。** 令 $H : S^{n-1} \\times [0,1] \\to S^{n-1}$，$H(x,t) = F((1-t)x)$。逐条看：$0 \\le 1-t \\le 1$、$|x| = 1$，于是 $|(1-t)x| \\le 1$，故 $(1-t)x \\in \\overline{B^{n}}$ 落在 $F$ 的定义域里；$H$ 是连续映射的复合，故连续；取值始终在 $S^{n-1}$ 里（$F$ 的值域）。",
+        "",
+        "**两端。** $H(x,0) = F(x) = f(x)$；$H(x,1) = F(0)$ 是**常值**映射。所以 $f$ 与某个常值映射同伦。",
+        "",
+        "**用同伦不变性收尾。** 由 `thm.homotopy-invariance`，同伦的映射在约化同调上诱导同一个同态（`def.degree` 的笔记说明了这条如何给出「度只依赖同伦类」）。常值映射诱导零同态，故 $\\deg f = \\deg(\\text{常值}) = 0$。∎",
+        "",
+        "**推论（无收缩）。** 取 $f = \\mathrm{id}_{S^{n-1}}$：$\\deg(\\mathrm{id}) = 1 \\ne 0$，故恒等映射不能延拓为 $\\overline{B^{n}} \\to S^{n-1}$ —— 闭球不能连续收缩到它的边界球面。$n = 2$ 时这正是「圆盘不能收缩到圆周」，本图在 `thm.no-retraction-disk` 里用基本群那条路线证过，两处结论一致。",
+        "",
+        "**$n = 1$ 的情形。** $S^{0} = \\{\\pm 1\\}$，$\\overline{B^{1}} = [-1,1]$ 连通。连续映射 $[-1,1] \\to S^{0}$ 只能常值（连通集在离散空间里的像连通），故 $f$ 必为常值、度为 $0$；这与 $S^{0}$ 上「交换两点度 $-1$」不矛盾 —— 那个映射不连续延拓到区间。",
+        "",
+        "**为什么单列。** 它把「度」变成判定「能否延拓」的工具：算出一个非零的度，延拓就不可能存在。这是不动点定理（Brouwer、Lefschetz）的标准入口，也是 Jordan 曲线那类分离论证里最常用的一步。",
+      ].join('\n'),
+      refs: ['Hatcher, Algebraic Topology, §2.2 · 度的应用'],
+    },
   ],
 
   edges: [
@@ -690,52 +754,52 @@
       note: '逐维粘接胞腔是商构造。' },
     { id: 'dep.cw-euler', kind: 'definition', definition: 'thm.euler-characteristic', usedBy: 'def.cw-complex',
       note: '有限 CW 复形的 Euler 示性数按胞腔数计算，并与该节点的同调公式一致。' },
-    { kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.barycentric-subdivision',
+    {id: "e72.definition", kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.barycentric-subdivision',
       note: '重心重分是单纯复形上的操作；新顶点是原复形中非空单纯形的重心。' },
-    { kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.simplicial-approximation',
+    {id: "e73.definition", kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.simplicial-approximation',
       note: '单纯逼近定理的第二步是反复重心重分，使网格直径小于 Lebesgue 数。' },
-    { kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.mv-homology',
+    {id: "e74.definition", kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'thm.mv-homology',
       note: 'Mayer–Vietoris 的小链论证用重心重分把链细化到覆盖里。' },
-    { kind: 'analogy', a: 'def.standard-simplex', b: 'def.simplex-category',
+    {id: "e75.analogy", kind: 'analogy', a: 'def.standard-simplex', b: 'def.simplex-category',
       note: '标准单纯形 $\\Delta^{p}$ 与单纯形范畴的对象 $[p]$ 是同一组面/退化数据的两个模型：前者是几何实现，后者是组合索引。单纯复形用前者，单纯对象用后者。' },
 
     /* ------------------------------------------------ §A 单纯复形与链复形 */
-    { kind: 'definition', definition: 'def.standard-simplex', usedBy: 'def.simplicial-complex',
+    {id: "e76.definition", kind: 'definition', definition: 'def.standard-simplex', usedBy: 'def.simplicial-complex',
       note: '复形里的一个 $p$-单纯形就是「$\\Delta^{p}$ 在仿射无关点集上的线性像」的顶点集；' +
         '闭包性质 $\\emptyset \\ne \\tau \\subseteq \\sigma$ 对应「取某个面 $d_{i}$」。' },
 
-    { kind: 'definition', definition: 'def.standard-simplex', usedBy: 'def.simplicial-boundary',
+    {id: "e77.definition", kind: 'definition', definition: 'def.standard-simplex', usedBy: 'def.simplicial-boundary',
       note: '边缘算子里的 $[v_{0}, \\ldots, \\widehat{v_{i}}, \\ldots, v_{p}]$ 就是「跳过第 $i$ 个顶点」，' +
         '即把面映射 $d_{i}$ 用在有序顶点上。' },
 
-    { kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.simplicial-map',
+    {id: "e78.definition", kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.simplicial-map',
       note: '单纯映射是**顶点层面**的映射；只要它把每个单纯形送进某个单纯形，$|f|$ 就由线性延拓唯一确定。' },
 
-    { kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.chain-group',
+    {id: "e79.definition", kind: 'definition', definition: 'def.simplicial-complex', usedBy: 'def.chain-group',
       note: '链群的基就是 $K$ 的全体 $p$-单纯形——所以「复形是什么」决定了「链群是什么」。' },
 
-    { kind: 'definition', definition: 'def.chain-group', usedBy: 'def.simplicial-boundary',
+    {id: "e80.definition", kind: 'definition', definition: 'def.chain-group', usedBy: 'def.simplicial-boundary',
       note: '$\\partial_{p} : C_{p}(K) \\to C_{p-1}(K)$ 只在**基**上规定，再线性延拓。' +
         '这正是自由阿贝尔群的用处：基上的规定自动给出唯一的群同态，不需要任何相容性验证。' },
 
-    { kind: 'definition', definition: 'def.simplicial-boundary', usedBy: 'def.simplicial-homology',
+    {id: "e81.definition", kind: 'definition', definition: 'def.simplicial-boundary', usedBy: 'def.simplicial-homology',
       note: '$Z_{p} := \\ker\\partial_{p}$、$B_{p} := \\operatorname{im}\\partial_{p+1}$；' +
         '$\\partial^{2} = 0$ 保证 $B_{p} \\subseteq Z_{p}$，商群才做得出来。没有 $\\partial^{2} = 0$，同调无定义。' },
 
-    { kind: 'definition', definition: 'def.simplicial-homology', usedBy: 'def.simplicial-map',
+    {id: "e82.definition", kind: 'definition', definition: 'def.simplicial-homology', usedBy: 'def.simplicial-map',
       note: '$\\varphi_{*}$ 的定义要用同调群；而它良定义靠 $\\varphi_{\\#}\\partial = \\partial\\varphi_{\\#}$：' +
         '闭链送闭链、边缘送边缘，故过商这一步不被破坏。' },
 
     /* ---------------------------------------------- §B 奇异同调与约化同调 */
-    { kind: 'definition', definition: 'def.simplicial-homology', usedBy: 'def.singular-homology',
+    {id: "e83.definition", kind: 'definition', definition: 'def.simplicial-homology', usedBy: 'def.singular-homology',
       note: '整套定义逐字照搬，只换两处：基从「$p$-单纯形」换成「连续映射 $\\Delta^{p} \\to X$」，' +
         '边缘从「删顶点」换成「复合 $d_{i}$」。' },
 
-    { kind: 'definition', definition: 'def.singular-homology', usedBy: 'def.reduced-homology',
+    {id: "e84.definition", kind: 'definition', definition: 'def.singular-homology', usedBy: 'def.reduced-homology',
       note: '约化同调只是在 $S_{0}$ 后面多接一个增广 $\\varepsilon : S_{0} \\to \\mathbb{Z}$；' +
         '$p \\ge 1$ 的部分与奇异同调完全一致。' },
 
-    { kind: 'implication', sources: ['def.singular-homology'], target: 'prop.h0-components',
+    {id: "e85.implication", kind: 'implication', sources: ['def.singular-homology'], target: 'prop.h0-components',
       title: '$0$-链的边界恰好是「同一分支里两点之差」',
       proof: [
         '**$S_{0}(X)$ 长什么样**：$\\Delta^{0}$ 是单点，所以奇异 $0$-单纯形就是「在 $X$ 里挑一个点」。' +
@@ -763,7 +827,7 @@
       note: '整条论证只用到「$\\partial$ 作用在一条道路上给出两端之差」这一个事实。' },
 
     /* -------------------------------------------------- §C 长正合列与 MV */
-    { kind: 'implication', sources: ['def.singular-homology'], target: 'thm.long-exact-pair',
+    {id: "e86.implication", kind: 'implication', sources: ['def.singular-homology'], target: 'thm.long-exact-pair',
       title: '短正合列 $0 \\to S_{*}(A) \\to S_{*}(X) \\to S_{*}(X,A) \\to 0$ 加追图给出连接同态',
       proof: [
         '**子复形**：对 $A \\subseteq X$，包含 $i : A \\hookrightarrow X$ 给出 $S_{p}(A) \\to S_{p}(X)$，$\\sigma \\mapsto i \\circ \\sigma$。' +
@@ -793,11 +857,11 @@
       ].join('\n'),
       note: '关键在于「相对闭链」的定义恰好保证 $\\partial c$ 掉进 $S_{p-1}(A)$ —— 连接同态就是这样被逼出来的。' },
 
-    { kind: 'definition', definition: 'def.exact-sequence', usedBy: 'thm.long-exact-pair',
+    {id: "e87.definition", kind: 'definition', definition: 'def.exact-sequence', usedBy: 'thm.long-exact-pair',
       note: '「长正合列」就是 `def.exact-sequence` 意义上的正合：每处 $\\operatorname{im} = \\ker$。' +
         '⚠️ 这里的链由**同调群**连成，不是链复形本身——正合性说的是这三个映射的像与核相等。' },
 
-    { kind: 'implication', sources: ['thm.long-exact-pair'], target: 'thm.mv-homology',
+    {id: "e88.implication", kind: 'implication', sources: ['thm.long-exact-pair'], target: 'thm.mv-homology',
       title: '对 $(X, U)$ 的长正合列 $+$ 重心重分 $\\implies$ Mayer–Vietoris',
       proof: [
         '**第一步（代数）**：设 $X = U \\cup V$。记 $S_{*}(U) + S_{*}(V) \\subseteq S_{*}(X)$ 为「落在 $U$ 里的」与' +
@@ -821,7 +885,7 @@
       note: '⭐ 第二步是全部难点：没有重细分，「局部在 $U$ 或 $V$」与「整体同调等价」之间没有桥。' },
 
     /* ------------------------------------------------ §D 球面与 Euler 示性数 */
-    { kind: 'implication', sources: ['thm.mv-homology', 'prop.h0-components'], target: 'thm.sphere-homology',
+    {id: "e89.implication", kind: 'implication', sources: ['thm.mv-homology', 'prop.h0-components'], target: 'thm.sphere-homology',
       title: '两个可缩开半球 + 交叠形变收缩到赤道 $\\implies$ 只剩两个非零',
       proof: [
         '**开覆盖**：令 $U := S^{n} \\setminus \\{\\text{北极 } N\\}$、$V := S^{n} \\setminus \\{\\text{南极 } S\\}$。两者都是开集且覆盖 $S^{n}$，' +
@@ -851,7 +915,7 @@
       ].join('\n'),
       note: '这条链子用到了「同伦不变性」（写在 `def.singular-homology` 的陈述里）与 MV 的骨架证明，如实标注。' },
 
-    { kind: 'implication', sources: ['def.chain-group', 'def.simplicial-homology'], target: 'thm.euler-characteristic',
+    {id: "e90.implication", kind: 'implication', sources: ['def.chain-group', 'def.simplicial-homology'], target: 'thm.euler-characteristic',
       title: '两次秩-零化度，边缘群的维数在交错和里相消',
       proof: [
         '设 $K$ 有限，$\\alpha_{p} = \\dim_{\\mathbb{Q}} C_{p}$（即 $p$-单纯形个数），' +
@@ -876,7 +940,7 @@
       ].join('\n'),
       note: '「相消」是这条定理的全部内容：边缘群 $b_{p}$ 在相邻两项里符号相反，数得再多也看不见。' },
 
-    { kind: 'implication', sources: ['def.simplicial-homology', 'def.singular-homology', 'thm.homotopy-invariance'], target: 'thm.simplicial-approximation',
+    {id: "e91.implication", kind: 'implication', sources: ['def.simplicial-homology', 'def.singular-homology', 'thm.homotopy-invariance'], target: 'thm.simplicial-approximation',
       title: '重分 + Lebesgue 数 + 星的交性质 $\\implies$ 连续映射可组合化',
       proof: [
         '目标是证明 $H_{p}(K) \\to H_{p}(|K|)$（把 $p$-单纯形看成奇异 $p$-单纯形）是同构。四步：',
@@ -905,7 +969,7 @@
       ].join('\n'),
       note: '⚠️ 本图未写完整链映射 $S_{*}(|K|)\\to C_{*}(|K|)$ 与两侧链同伦，① 只给梗概；③ 的顶点选择细节见节点注（符号另见 `def.chain-homotopy`）。两处都是本节最容易出错的地方。' },
 
-    { kind: 'implication', sources: ['thm.simplicial-approximation'], target: 'thm.euler-characteristic',
+    {id: "e92.implication", kind: 'implication', sources: ['thm.simplicial-approximation'], target: 'thm.euler-characteristic',
       title: '奇异同调 $=$ 单纯同调 $\\implies$ $\\chi$ 与三角剖分无关',
       proof: [
         '设 $X = |K| = |K\'|$ 是同一个空间的两个**有限**三角剖分。' +
@@ -923,7 +987,7 @@
       note: '没有这一条，$\\chi$ 只是「某个三角剖分上数单纯形」的结果，换个剖分就可能有别的值。' },
 
     /* ------------------------------------------------------------ 弱边 */
-    { kind: 'analogy', a: 'def.fundamental-group', b: 'def.singular-homology',
+    {id: "e93.analogy", kind: 'analogy', a: 'def.fundamental-group', b: 'def.singular-homology',
       title: '$\\pi_{1}$ 与 $H_{1}$：一维的两种探针，一个记得非交换，一个不记得',
       note: [
         '本图**没有** Hurewicz 定理这个节点，所以这条只能作为**联想线索**记在这里，不当依赖边用。' +
@@ -950,5 +1014,24 @@
 
     { id: 'def-link.chainhom-simplicial', kind: 'definition', definition: 'def.chain-homotopy', usedBy: 'thm.simplicial-approximation',
       note: '证明用「单纯映射诱导链映射」与「链同伦的棱柱构造」把 $|g| \\simeq \\operatorname{id}$ 翻成链同伦。' },
+    { id: 'dep.degree-singular', kind: 'definition', definition: 'def.singular-homology', usedBy: 'def.degree',
+      note: '度定义在奇异同调群上：任意连续映射都诱导同态，不需要光滑结构。' },
+
+    { id: 'dep.degree-reduced', kind: 'definition', definition: 'def.reduced-homology', usedBy: 'def.degree',
+      note: '度用**约化**同调定义：$n \\ge 2$ 时与 $H_{n-1}$ 一致，$n = 1$ 时 $\\tilde{H}_{0}(S^{0}) \\cong \\mathbb{Z}$ 才让定义成立（$H_{0}(S^{0}) = \\mathbb{Z}^{2}$ 不行）。' },
+
+    { id: 'dep.degree-sphere', kind: 'definition', definition: 'thm.sphere-homology', usedBy: 'def.degree',
+      note: '$H_{n-1}(S^{n-1}; \\mathbb{Z}) \\cong \\mathbb{Z}$ 是「度是整数」的唯一依据（秩 $1$ 的自由阿贝尔群，同态由生成元的像决定）。' },
+
+    { id: 'dep.degree-homotopy', kind: 'definition', definition: 'thm.homotopy-invariance', usedBy: 'def.degree',
+      note: '同伦的映射诱导同一同调同态，故度只依赖同伦类；这条定理是「度是同伦不变量」的依据。' },
+
+    { id: 'dep.degree-winding', kind: 'definition', definition: 'def.winding-number', usedBy: 'def.degree',
+      note: '$n = 2$ 时两者是同一个整数：$S^{1} \\to S^{1}$ 的度 = 绕 $0$ 的圈数。' },
+
+    { id: 'dep.degreenonext-degree', kind: 'definition', definition: 'def.degree', usedBy: 'thm.degree-nonextendable',
+      note: '结论整个用「度」表述：延拓存在，则度为 $0$。' },
+    { id: 'dep.degreenonext-homotopy', kind: 'definition', definition: 'thm.homotopy-invariance', usedBy: 'thm.degree-nonextendable',
+      note: '证明的最后一跳：$H(x,t) = F((1-t)x)$ 给出同伦，同伦不变性把它变成「度相等」。' },
   ],
 });

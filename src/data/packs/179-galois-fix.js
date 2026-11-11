@@ -165,7 +165,7 @@
       note: '可分性是**代数扩张**的性质（超越扩张上「极小多项式」都无从谈起）。',
     },
     /* ---------- ② 同词不同物：算子的极小多项式 $\\leftrightarrow$ 代数元的极小多项式 ---------- */
-    {
+    {id: "e184.analogy",
       kind: 'analogy',
       a: 'def.minimal-poly',
       b: 'def.algebraic-element',
@@ -180,7 +180,7 @@
       ].join('\n\n'),
     },
     /* ---------- Galois 群 $\\leftrightarrow$ 基本群：Grothendieck 的那条桥 ---------- */
-    {
+    {id: "e185.analogy",
       kind: 'analogy',
       a: 'def.galois-group',
       b: 'def.fundamental-group',

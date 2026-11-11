@@ -100,7 +100,7 @@ window.MG = window.MG || {};
         '',
         '都可表示。'
       ].join('\n'),
-      notes: '这是「造右伴随」的通用机器：先对每个 $Y$ 求出表示对象 $G(Y)$，再验证这样拼出来的 $G$ 是函子。证明见边上的推导。',
+      notes: '这是「造右伴随」的通用机器：先对每个 $Y$ 求出表示对象 $G(Y)$，再验证这样拼出来的 $G$ 是函子。',
       refs: ['Mac Lane, Categories for the Working Mathematician, V.6']
     },
 
@@ -190,7 +190,7 @@ window.MG = window.MG || {};
       notes: [
         '**保极限是唯一的障碍**。这与「右伴随保极限」合起来就是一条完整的判据：保极限既是必要条件，在完备的小范畴上也是充分条件。',
         '构造的含义：把 $X$ 映射进 $G$ 的像的所有方式组成一个范畴 $X \\downarrow G$，在其中取极限 —— $F(X)$ 是 $\\mathcal{D}$ 中「最接近」$X$ 的对象。所有 $X \\to G(Y)$ 都能被整理成 $X \\to G(F(X)) \\to G(Y)$。',
-        '证明见边上的推导。'
+        '由表示对象的万有性质逐项验证。'
       ].join('\n\n'),
       refs: ['Mac Lane, Categories for the Working Mathematician, V.8']
     },

@@ -127,7 +127,7 @@
   ],
 
   edges: [
-    { kind: 'implication', sources: ['def.complex'], target: 'def.riemann-sphere',
+    {id: "e105.implication", kind: 'implication', sources: ['def.complex'], target: 'def.riemann-sphere',
       title: '在 $\\mathbb{C}$ 上补一个点：邻域用 $|z| > R$ 定义',
       proof: [
         '**构造**：取集合 $\\mathbb{C} \\cup \\{\\infty\\}$（要求 $\\infty \\notin \\mathbb{C}$，' +
@@ -141,7 +141,7 @@
       ].join('\n'),
       note: '补上这一个点之后，「直线」与「圆」、「整函数」与「在 $\\infty$ 处亚纯」都各自合成一类。' },
 
-    { kind: 'implication', sources: ['def.riemann-sphere'], target: 'prop.stereographic-circle',
+    {id: "e106.implication", kind: 'implication', sources: ['def.riemann-sphere'], target: 'prop.stereographic-circle',
       title: '把「平面与球面相交」翻译成 $u, v, |z|^{2}$ 的方程',
       proof: [
         '球面上的圆是某个平面与 $S^{2}$ 的交：$ax + by + cw = d$（$a, b, c, d \\in \\mathbb{R}$，' +
@@ -161,7 +161,7 @@
       ].join('\n'),
       note: '「球面上的圆 $\\to$ 平面上的圆或直线」就是保圆性的来源。' },
 
-    { kind: 'implication', sources: ['def.riemann-sphere'], target: 'prop.extended-plane-compact',
+    {id: "e107.implication", kind: 'implication', sources: ['def.riemann-sphere'], target: 'prop.extended-plane-compact',
       title: '球极投影是同胚，$S^{2}$ 紧 $\\implies$ $\\widehat{\\mathbb{C}}$ 紧',
       proof: [
         '**同胚**：球极投影 $\\sigma : \\widehat{\\mathbb{C}} \\to S^{2}$ 由有理公式给出，' +
@@ -176,7 +176,7 @@
       ].join('\n'),
       note: '这条让「$\\infty$ 处的奇点」有了拓扑意义。' },
 
-    { kind: 'definition', definition: 'def.riemann-sphere', usedBy: 'def.mobius',
+    {id: "e108.definition", kind: 'definition', definition: 'def.riemann-sphere', usedBy: 'def.mobius',
       note: '分式线性变换的完整定义域是 $\\widehat{\\mathbb{C}}$：在 $z = -d/c$ 处取 $\\infty$，在 $\\infty$ 处取 $a/c$。' },
   ],
 });

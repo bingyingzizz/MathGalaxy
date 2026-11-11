@@ -13,7 +13,7 @@
      §E 单叶性：开映射定理、Riemann 映射定理、Poincaré 圆盘
      §F 拓扑应用：Brouwer、Borsuk–Ulam、火腿三明治
 
-   ⚠️ 引用：王晓光《复变函数》给章节；标准记号与更完整证明另给 Ahlfors / Stein–Shakarchi。
+   ⚠️ 引用：王晓光《复变函数》给章节；标准记号与更详细的证明另给 Ahlfors / Stein–Shakarchi。
    ========================================================================== */
 (window.MG.packs = window.MG.packs || []).push({
   name: '复变函数（三）· 知识结构补全',
@@ -689,7 +689,7 @@
 
   edges: [
     /* ---- §A 初等函数链 ---- */
-    { kind: 'implication', sources: ['def.holomorphic'], target: 'def.complex-elementary',
+    {id: "e3.implication", kind: 'implication', sources: ['def.holomorphic'], target: 'def.complex-elementary',
       title: '幂级数在全平面收敛 $\\implies$ 逐项求导 $\\implies$ 全纯',
       proof: [
         '三个定义式都是收敛半径 $\\infty$ 的幂级数（$e^{z}$ 的系数 $1/n!$ 使 ' +
@@ -700,7 +700,7 @@
       ].join('\n'),
       note: '这一步把「初等函数」正式接进复分析：它们不是新公理，而是幂级数。' },
 
-    { kind: 'implication', sources: ['def.complex-elementary'], target: 'prop.exp-local-inverse',
+    {id: "e4.implication", kind: 'implication', sources: ['def.complex-elementary'], target: 'prop.exp-local-inverse',
       title: '$\\exp\' = \\exp \\ne 0$ $\\implies$ 局部双全纯',
       proof: [
         '由逐项求导 $(e^{z})\' = \\sum_{n \\ge 1} n z^{n-1}/n! = \\sum_{m \\ge 0} z^{m}/m! = e^{z}$。',
@@ -711,7 +711,7 @@
       ].join('\n'),
       note: '局部逆永远存在 —— 缺的只是「能不能整体拼起来」，那由 `prop.single-valued-branch` 回答。' },
 
-    { kind: 'implication', sources: ['def.branch', 'prop.exp-local-inverse'], target: 'prop.single-valued-branch',
+    {id: "e5.implication", kind: 'implication', sources: ['def.branch', 'prop.exp-local-inverse'], target: 'prop.single-valued-branch',
       title: '把局部逆沿曲线拼接：单值支的判据',
       proof: [
         '**定义对齐**：`def.branch` 把「多值函数」定义成「每点一个值集」，本节点的单值支就是它的连续选取。',
@@ -728,7 +728,7 @@
       note: '局部逆（上一节点）负责「处处能拼一小段」，这一节点负责「整圈拼回来不跳」—— 缺的正是绕数条件。' },
 
     /* ---- §B 绕数链 ---- */
-    { kind: 'implication', sources: ['def.winding-number', 'def.contour-integral'], target: 'prop.winding-integral',
+    {id: "e6.implication", kind: 'implication', sources: ['def.winding-number', 'def.contour-integral'], target: 'prop.winding-integral',
       title: '绕数 = $\\frac{1}{2\\pi i}\\oint \\mathrm{d}z/(z-a)$',
       proof: [
         '平移使 $a = 0$。令 $\\varphi(t) := \\int_{0}^{t} \\gamma\'(s)/\\gamma(s)\\,\\mathrm{d}s$。则',
@@ -743,7 +743,7 @@
       ].join('\n'),
       note: '几何量换成积分，是后面辐角原理能算零点个数的技术前提。' },
 
-    { kind: 'implication', sources: ['prop.winding-integral', 'def.contour-integral'], target: 'thm.winding-homotopy',
+    {id: "e7.implication", kind: 'implication', sources: ['prop.winding-integral', 'def.contour-integral'], target: 'thm.winding-homotopy',
       title: '同伦 $\\implies$ 绕数不变（连续性 + 整数值）',
       proof: [
         '⛔ **本条为骨架（待重写）**：陈述只要求**连续**同伦 $H$，但围道积分只对**分段 $C^{1}$** 的曲线有定义，' +
@@ -761,7 +761,7 @@
       note: '复分析与拓扑之间的第一根铰链：围道积分只看同伦类。' },
 
     /* ---- §C 零点/唯一性 ---- */
-    { kind: 'implication', sources: ['thm.taylor-complex'], target: 'prop.zero-isolated',
+    {id: "e8.implication", kind: 'implication', sources: ['thm.taylor-complex'], target: 'prop.zero-isolated',
       title: 'Taylor 展开的首次非零项 $\\implies$ 零点的阶',
       proof: [
         '把 $f$ 在 $z_{0}$ 处展开：$f(z) = \\sum_{n \\ge 1} a_{n}(z - z_{0})^{n}$（$f(z_{0}) = 0$ 故常数项为零）。',
@@ -775,7 +775,7 @@
       ].join('\n'),
       note: '这一条是「唯一性定理」与「辐角原理按阶数零点」的共同前提。' },
 
-    { kind: 'implication', sources: ['prop.zero-isolated'], target: 'thm.identity',
+    {id: "e9.implication", kind: 'implication', sources: ['prop.zero-isolated'], target: 'thm.identity',
       title: '零点孤立 + 区域连通 $\\implies$ 恒等',
       proof: [
         '令 $h := f - g$，$Z$ 为 $h$ 的零点集，$z^{*} \\in \\Omega$ 是 $Z$ 的聚点。由连续性 $h(z^{*}) = 0$。',
@@ -789,7 +789,7 @@
       ].join('\n'),
       note: '解析延拓的合法性来源：有聚点就够了。' },
 
-    { kind: 'implication', sources: ['thm.laurent', 'def.isolated-singularity', 'thm.riemann-removable'],
+    {id: "e10.implication", kind: 'implication', sources: ['thm.laurent', 'def.isolated-singularity', 'thm.riemann-removable'],
       target: 'thm.casorati-weierstrass',
       title: '反证：像集漏一个圆盘 $\\implies$ 奇点可去 $\\implies$ 矛盾',
       proof: [
@@ -805,7 +805,7 @@
       note: '证明的力量全在「有界 $\\implies$ 可去」这一句。' },
 
     /* ---- §D 收敛与正规族 ---- */
-    { kind: 'implication', sources: ['thm.morera'], target: 'thm.weierstrass-convergence',
+    {id: "e11.implication", kind: 'implication', sources: ['thm.morera'], target: 'thm.weierstrass-convergence',
       title: 'Morera 判极限全纯；Cauchy 公式判导数收敛',
       proof: [
         '**全纯性**：设 $T \\subset \\Omega$ 是闭三角形。每个 $f_{k}$ 全纯，故 $\\oint_{\\partial T} f_{k}\\,\\mathrm{d}z = 0$' +
@@ -820,7 +820,7 @@
       ].join('\n'),
       note: '「全纯在一致收敛下封闭」—— 正规族理论的地基。' },
 
-    { kind: 'implication', sources: ['thm.bolzano-weierstrass', 'def.uniform-convergence'],
+    {id: "e12.implication", kind: 'implication', sources: ['thm.bolzano-weierstrass', 'def.uniform-convergence'],
       target: 'thm.arzela-ascoli',
       title: '对角线段 + 有限 ε-网 $\\implies$ 一致收敛子列',
       proof: [
@@ -839,7 +839,7 @@
       ].join('\n'),
       note: '等度连续性把「逐点收敛」升级成「一致收敛」—— 这正是全纯族免费得到的东西。' },
 
-    { kind: 'implication', sources: ['thm.arzela-ascoli', 'thm.weierstrass-convergence', 'thm.cauchy-inequality'],
+    {id: "e13.implication", kind: 'implication', sources: ['thm.arzela-ascoli', 'thm.weierstrass-convergence', 'thm.cauchy-inequality'],
       target: 'thm.montel',
       title: 'Cauchy 不等式给出导数界 $\\implies$ 等度连续 $\\implies$ 对角取子列',
       proof: [
@@ -855,7 +855,7 @@
       note: 'Montel = Arzelà–Ascoli + Cauchy 不等式：复分析里「有界」自动变成「等度连续」。' },
 
     /* ---- §E 单叶与映射 ---- */
-    { kind: 'implication', sources: ['thm.rouche', 'thm.max-modulus', 'prop.zero-isolated'], target: 'thm.open-mapping',
+    {id: "e14.implication", kind: 'implication', sources: ['thm.rouche', 'thm.max-modulus', 'prop.zero-isolated'], target: 'thm.open-mapping',
       title: 'Rouché 数零点 $\\implies$ 像含小圆盘 $\\implies$ 开映射',
       proof: [
         '取 $z_{0} \\in \\Omega$、$w_{0} = f(z_{0})$，平移使 $w_{0} = 0$。由 `prop.zero-isolated`，' +
@@ -872,7 +872,7 @@
       ].join('\n'),
       note: '开映射 = 非常数全纯函数不能把开集压扁。' },
 
-    { kind: 'implication', sources: ['thm.montel', 'thm.hurwitz', 'lem.schwarz', 'prop.single-valued-branch', 'thm.cauchy-inequality', 'def.mobius', 'thm.weierstrass-convergence'], target: 'thm.riemann-mapping',
+    {id: "e15.implication", kind: 'implication', sources: ['thm.montel', 'thm.hurwitz', 'lem.schwarz', 'prop.single-valued-branch', 'thm.cauchy-inequality', 'def.mobius', 'thm.weierstrass-convergence'], target: 'thm.riemann-mapping',
       title: '正规族 + 极值元 + 平方根技巧：映满圆盘',
       proof: [
         '**族不空**：因 $\\Omega \\ne \\mathbb{C}$，取 $a \\notin \\Omega$；$\\Omega$ 单连通 $\\implies$ $\\sqrt{z - a}$ 有全纯单值支' +
@@ -897,7 +897,7 @@
       ].join('\n'),
       note: '本图里最深的一条；证明的三根支柱（Montel / Hurwitz / Schwarz）都各自是独立节点。' },
 
-    { kind: 'implication', sources: ['thm.riemann-mapping', 'thm.schwarz-pick'], target: 'prop.poincare-disk',
+    {id: "e16.implication", kind: 'implication', sources: ['thm.riemann-mapping', 'thm.schwarz-pick'], target: 'prop.poincare-disk',
       title: '圆盘上的度量、等距群 = 自同构，Schwarz–Pick 是等距性',
       proof: [
         '**拉回计算**：设 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 全纯，Poincaré 度量沿 $\\varphi$ 拉回的系数为 ' +
@@ -917,7 +917,7 @@
       note: '三种常曲率几何的入口：圆盘 = 双曲，球面 = 椭圆，平面 = 欧氏。' },
 
     /* ---- §F 拓扑应用 ---- */
-    { kind: 'implication', sources: ['thm.winding-homotopy', 'thm.rouche'], target: 'thm.brouwer-fixed-point',
+    {id: "e17.implication", kind: 'implication', sources: ['thm.winding-homotopy', 'thm.rouche'], target: 'thm.brouwer-fixed-point',
       title: '全纯情形：Rouché 直接给不动点；连续情形另需 $\\pi_{1}(S^{1}) \\ne 0$',
       proof: [
         '**全纯情形**（本图能严格给出的部分）：设 $f : \\overline{\\mathbb{D}} \\to \\overline{\\mathbb{D}}$ 全纯。' +
@@ -933,7 +933,7 @@
       ].join('\n'),
       note: '节点正文里已如实标注：连续版需要基本群，纯复分析只给出全纯版。' },
 
-    { kind: 'implication', sources: ['thm.brouwer-fixed-point'], target: 'thm.borsuk-ulam',
+    {id: "e18.implication", kind: 'implication', sources: ['thm.brouwer-fixed-point'], target: 'thm.borsuk-ulam',
       title: '反证：奇映射的度既是奇数又必须是 0',
       proof: [
         '设连续 $f : S^{2} \\to \\mathbb{R}^{2}$ 满足 $f(x) \\ne f(-x)$ 处处成立。令',
@@ -953,7 +953,7 @@
       ].join('\n'),
       note: 'Borsuk–Ulam 与 Brouwer 是同一枚硬币的两面；这里走「度」这条线。' },
 
-    { kind: 'implication', sources: ['thm.borsuk-ulam'], target: 'thm.ham-sandwich',
+    {id: "e19.implication", kind: 'implication', sources: ['thm.borsuk-ulam'], target: 'thm.ham-sandwich',
       title: '法向—偏移参数化 + Borsuk–Ulam $\\implies$ 同一个平面平分三块',
       proof: [
         '平面写作 $P(u, t) = \\{\\, x : \\langle x, u\\rangle = t \\,\\}$，$u \\in S^{2}$，$t \\in \\mathbb{R}$。',
@@ -968,7 +968,7 @@
       ].join('\n'),
       note: '整条链的终点：从「数零点」一路推到「切三明治」。' },
 
-    { kind: 'implication', sources: ['prop.winding-integral'], target: 'thm.argument-principle',
+    {id: "e20.implication", kind: 'implication', sources: ['prop.winding-integral'], target: 'thm.argument-principle',
       title: '绕数的积分表示 $\\implies$ 辐角原理',
       proof: [
         '设 $f$ 在 $\\gamma$ 内部及 $\\gamma$ 上全纯、边界上无零点。则 $f\'/f$ 全纯，且',
@@ -988,7 +988,7 @@
        反过来推是循环的；Rouché 最多给出「零点个数」这一半，积分那一半必须靠 Cauchy
        （对数导数），给不出完整的辐角原理。宁可少一条边，也不留一条假推出。 */
 
-    { kind: 'implication', layer: false, sources: ['thm.open-mapping'], target: 'lem.schwarz',
+    {id: "e21.implication", kind: 'implication', layer: false, sources: ['thm.open-mapping'], target: 'lem.schwarz',
       title: '（推论）开映射定理 $\\implies$ Schwarz 引理的等号情形',
       proof: [
         '**要证的**：若 $f : \\mathbb{D} \\to \\mathbb{D}$ 全纯、$f(0) = 0$ 且 $|f^{\\prime}(0)| = 1$，则 $f(z) = cz$，其中 $|c| = 1$。',

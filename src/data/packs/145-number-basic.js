@@ -371,44 +371,46 @@ window.MG = window.MG || {};
 
   edges: [
 
-    { kind: 'definition', definition: 'def.int', usedBy: 'def.divides',
+    {id: "e113.definition", kind: 'definition', definition: 'def.int', usedBy: 'def.divides',
       note: '整数 $\\mathbb{Z}$ 是整除关系的载体：$a \\mid b$ 的定义直接落在 $\\mathbb{Z}$ 的元素上。' },
 
-    { kind: 'definition', definition: 'def.ideal', usedBy: 'def.divides',
+    {id: "e114.definition", kind: 'definition', definition: 'def.ideal', usedBy: 'def.divides',
       note: '整除就是主理想的包含：$a \\mid b \\iff (b) \\subseteq (a)$。这条把初等数论与环论对齐。' },
 
-    { kind: 'definition', definition: 'def.divides', usedBy: 'thm.int-division',
+    {id: "e115.definition", kind: 'definition', definition: 'def.divides', usedBy: 'thm.int-division',
       note: '带余除法的陈述里直接用了「整除」：$b \\ne 0$，$r < |b|$，而 $a - qb = r$ 就是「$b$ 除 $a$ 的余数」。' },
 
-    { kind: 'definition', definition: 'def.divides', usedBy: 'def.gcd',
+    {id: "e116.definition", kind: 'definition', definition: 'def.divides', usedBy: 'def.gcd',
       note: '最大公因数的定义是「同时整除 $a$ 与 $b$ 的最大正整数」—— 没有整除就没有公因数。' },
 
-    { kind: 'definition', definition: 'def.divides', usedBy: 'def.prime',
+    {id: "e117.definition", kind: 'definition', definition: 'def.divides', usedBy: 'def.prime',
       note: '素数的定义是「正因数只有 $1$ 与 $p$」，这本身就是用整除写的。' },
 
-    { kind: 'definition', definition: 'def.divides', usedBy: 'def.congruence',
+    {id: "e118.definition", kind: 'definition', definition: 'def.divides', usedBy: 'def.congruence',
       note: '同余的定义只用一件事：$n \\mid (a-b)$。' },
 
-    { kind: 'definition', definition: 'def.congruence', usedBy: 'def.zmodn',
+    {id: "e119.definition", kind: 'definition', definition: 'def.congruence', usedBy: 'def.zmodn',
       note: '剩余类环的元素就是同余类，运算是「代表元运算 + 证明良定义」。' },
 
-    { kind: 'definition', definition: 'def.quotient-set', usedBy: 'def.zmodn',
+    {id: "e120.definition", kind: 'definition', definition: 'def.quotient-set', usedBy: 'def.zmodn',
       note: '把同余类收成元素，就是取商集：$\\mathbb{Z}/n\\mathbb{Z} = \\mathbb{Z}/{\\sim}$。' },
 
-    { kind: 'definition', definition: 'def.ring', usedBy: 'def.zmodn',
+    {id: "e121.definition", kind: 'definition', definition: 'def.ring', usedBy: 'def.zmodn',
       note: '$\\mathbb{Z}/n\\mathbb{Z}$ 是环：加法、乘法、单位元全由 $\\mathbb{Z}$ 的运算导出，环公理逐条继承。' },
 
-    { kind: 'definition', definition: 'def.zmodn', usedBy: 'thm.crt',
+    {id: "e122.definition", kind: 'definition', definition: 'def.zmodn', usedBy: 'thm.crt',
       note: '中国剩余定理说的是「剩余类环的直积分解」—— 陈述里两个对象都是 $\\mathbb{Z}/n\\mathbb{Z}$。' },
 
-    { kind: 'definition', definition: 'def.zmodn', usedBy: 'def.euler-phi',
+    {id: "e123.definition", kind: 'definition', definition: 'def.zmodn', usedBy: 'def.euler-phi',
       note: '$\\varphi(n)$ 就是单位群 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 的阶。' },
 
-    { kind: 'definition', definition: 'def.group', usedBy: 'thm.euler-theorem',
+    {id: "e124.definition", kind: 'definition', definition: 'def.group', usedBy: 'thm.euler-theorem',
       note: '单位群是群：Euler 定理的证明只用到「有限群的元素阶整除群阶」。' },
 
-    { kind: 'definition', definition: 'thm.lagrange', usedBy: 'thm.euler-theorem',
-      note: '定理就是 Lagrange 定理在 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 上的特例，指数取 $\\varphi(n) = |G|$。' },
+    { id: 'imp.euler-lagrange', kind: 'implication', sources: ['thm.lagrange'], target: 'thm.euler-theorem',
+      title: 'Lagrange 定理用于单位群给出 Euler 定理',
+      proof: '设 $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$，则 $|G| = \\varphi(n)$，且 $a$ 与 $n$ 互素 $\\iff$ $[a] \\in G$。由 Lagrange 定理，$G$ 中元素的阶整除 $|G|$，故 $[a]^{\\varphi(n)} = 1$，即 $a^{\\varphi(n)} \\equiv 1 \\pmod{n}$。∎',
+      note: '整条证明只有这一行群论，其余是同余语言的翻译。' },
 
     {
       id: 'imp.nt-division-euclid',
@@ -536,7 +538,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
     },
 
-    { kind: 'analogy', a: 'thm.int-division', b: 'thm.division-algorithm',
+    {id: "e125.analogy", kind: 'analogy', a: 'thm.int-division', b: 'thm.division-algorithm',
       title: '整数与多项式：同一个带余除法',
       note: [
         '两边的证明结构一模一样：$\\mathbb{Z}$ 上按绝对值下降，$K[x]$ 上按次数下降；结论都是「商 + 余，余比除数小」。',
@@ -547,7 +549,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
     },
 
-    { kind: 'analogy', a: 'thm.fundamental-arithmetic', b: 'thm.poly-ufd',
+    {id: "e126.analogy", kind: 'analogy', a: 'thm.fundamental-arithmetic', b: 'thm.poly-ufd',
       title: '唯一分解：$\\mathbb{Z}$ 与 $K[x]$ 的共同形状',
       note: [
         '两边的定理一字不差，只把「素数」换成「不可约多项式」、把「绝对值」换成「次数」。',

@@ -563,7 +563,7 @@
       note: '$S_{5}$ 不可解（$A_{5}$ 单且非交换）—— 图里那句孤立的话，现在终于有下游了。',
     },
     /* ---------- 与既有零件的类比：伽罗瓦群 vs 向量空间的对称 ---------- */
-    {
+    {id: "e183.analogy",
       kind: 'analogy',
       a: 'def.galois-group',
       b: 'def.vector-space',

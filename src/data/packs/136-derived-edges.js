@@ -280,7 +280,7 @@ window.MG = window.MG || {};
     },
 
     /* ------------------------------------ de Rham 定理 → 零次上同调 */
-    {
+    {status: 'skeleton', 
       id: 'imp.derived-h0-from-de-rham',
       kind: 'implication',
       layer: false,

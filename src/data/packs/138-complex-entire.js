@@ -345,14 +345,14 @@
       ].join('\n'),
       notes: [
         '**约定**：$f$ 整、有限阶 $\\rho$；零点 $a_{n}\\ne 0$（按重数计），$z=0$ 处的零点重数为 $m$；$n(r)$ 是模 $\\le r$ 的零点个数，$M(r)=\\max_{|z|=r}|f(z)|$，$E_{p}(w)=(1-w)e^{w+w^{2}/2+\\cdots+w^{p}/p}$。取 $p=\\lfloor\\rho\\rfloor$（$\\rho<1$ 时 $p=0$），于是 $p+1>\\rho$；固定 $\\varepsilon>0$ 使 $p+1>\\rho+\\varepsilon$。',
-        '**第一步：零点密度（完整）。** 对 $f/z^{m}$ 用 Jensen 公式（`prop.jensen`，此时原点值非零）：$n(R)\\log 2\\le\\log M(2R)-\\log|f(0)|+O(1)$。有限阶给 $\\log M(2R)\\le C\\,R^{\\rho+\\varepsilon}$，故 $n(R)\\le C\\,R^{\\rho+\\varepsilon}$。于是对任何 $\\sigma>\\rho$，分部求和给 $\\sum_{n}|a_{n}|^{-\\sigma}=\\sigma\\int_{0}^{\\infty}n(r)\\,r^{-\\sigma-1}\\,\\mathrm{d}r<\\infty$（$n(r)$ 在 $r<|a_{1}|$ 时为 $0$，无边界项）。特别地 $\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。',
-        '**第二步：乘积收敛（完整）。** 记 $\\mathcal{P}(z):=\\prod_{n}E_{p}(z/a_{n})$。对 $|w|\\le1/2$，$\\log E_{p}(w)=-\\sum_{k>p}w^{k}/k$，故 $|E_{p}(w)-1|\\le C_{p}|w|^{p+1}$。给定 $R$：只有有限个 $|a_{n}|\\le2R$；对其余项 $|z/a_{n}|\\le1/2$，于是 $\\sum_{|a_{n}|>2R}|z/a_{n}|^{p+1}\\le R^{p+1}\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。故 $\\mathcal{P}$ 在 $|z|\\le R$ 上一致收敛，定义出一个整函数。',
-        '**第三步：商无零点（完整）。** 令 $\\Phi(z):=f(z)\\big/\\bigl(z^{m}\\mathcal{P}(z)\\bigr)$。每个 $a_{n}$ 处 $E_{p}(z/a_{n})$ 恰有一阶零点，与 $f$ 的零点相消；其它点 $f\\ne0$ 而乘积非零。故 $\\Phi$ 整、处处非零。',
-        '**第四步：$\\Phi$ 的阶 $\\le\\rho$（完整）。** 记 $h$ 为 $\\Phi$ 的整对数（第五步；那里只用 $\\Phi$ 处处非零，与本步的估计互不依赖，先取后用），则 $\\operatorname{Re}h=\\log|\\Phi|$。只需证：对每个大 $r$，存在 $R\\in[r,2r]$ 使 $|z|=R$ 上 $\\log|\\Phi(z)|\\le C\\,r^{\\rho+\\varepsilon}$；再由最大模原理（$\\operatorname{Re}h$ 调和）与第六步的 Borel–Carathéodory 即得 $|h|\\le C\\,R^{\\rho+\\varepsilon}$，从而用 Cauchy 估计得 $h$ 是多项式。\n\n**（i）$E_{p}$ 的两条初等估计。** 对 $|w|\\le1/2$：$\\log|E_{p}(w)|=\\operatorname{Re}\\bigl(-\\sum_{k>p}w^{k}/k\\bigr)$，故 $|\\log|E_{p}(w)||\\le2|w|^{p+1}$。对 $|w|\\ge1/2$：$\\log|E_{p}(w)|=\\log|1-w|+\\operatorname{Re}\\sum_{j\\le p}w^{j}/j\\ge\\log|1-w|-C_{p}|w|^{p}$。',
+        '**第一步：零点密度。** 对 $f/z^{m}$ 用 Jensen 公式（`prop.jensen`，此时原点值非零）：$n(R)\\log 2\\le\\log M(2R)-\\log|f(0)|+O(1)$。有限阶给 $\\log M(2R)\\le C\\,R^{\\rho+\\varepsilon}$，故 $n(R)\\le C\\,R^{\\rho+\\varepsilon}$。于是对任何 $\\sigma>\\rho$，分部求和给 $\\sum_{n}|a_{n}|^{-\\sigma}=\\sigma\\int_{0}^{\\infty}n(r)\\,r^{-\\sigma-1}\\,\\mathrm{d}r<\\infty$（$n(r)$ 在 $r<|a_{1}|$ 时为 $0$，无边界项）。特别地 $\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。',
+        '**第二步：乘积收敛。** 记 $\\mathcal{P}(z):=\\prod_{n}E_{p}(z/a_{n})$。对 $|w|\\le1/2$，$\\log E_{p}(w)=-\\sum_{k>p}w^{k}/k$，故 $|E_{p}(w)-1|\\le C_{p}|w|^{p+1}$。给定 $R$：只有有限个 $|a_{n}|\\le2R$；对其余项 $|z/a_{n}|\\le1/2$，于是 $\\sum_{|a_{n}|>2R}|z/a_{n}|^{p+1}\\le R^{p+1}\\sum_{n}|a_{n}|^{-(p+1)}<\\infty$。故 $\\mathcal{P}$ 在 $|z|\\le R$ 上一致收敛，定义出一个整函数。',
+        '**第三步：商无零点。** 令 $\\Phi(z):=f(z)\\big/\\bigl(z^{m}\\mathcal{P}(z)\\bigr)$。每个 $a_{n}$ 处 $E_{p}(z/a_{n})$ 恰有一阶零点，与 $f$ 的零点相消；其它点 $f\\ne0$ 而乘积非零。故 $\\Phi$ 整、处处非零。',
+        '**第四步：$\\Phi$ 的阶 $\\le\\rho$。** 记 $h$ 为 $\\Phi$ 的整对数（第五步；那里只用 $\\Phi$ 处处非零，与本步的估计互不依赖，先取后用），则 $\\operatorname{Re}h=\\log|\\Phi|$。只需证：对每个大 $r$，存在 $R\\in[r,2r]$ 使 $|z|=R$ 上 $\\log|\\Phi(z)|\\le C\\,r^{\\rho+\\varepsilon}$；再由最大模原理（$\\operatorname{Re}h$ 调和）与第六步的 Borel–Carathéodory 即得 $|h|\\le C\\,R^{\\rho+\\varepsilon}$，从而用 Cauchy 估计得 $h$ 是多项式。\n\n**（i）$E_{p}$ 的两条初等估计。** 对 $|w|\\le1/2$：$\\log|E_{p}(w)|=\\operatorname{Re}\\bigl(-\\sum_{k>p}w^{k}/k\\bigr)$，故 $|\\log|E_{p}(w)||\\le2|w|^{p+1}$。对 $|w|\\ge1/2$：$\\log|E_{p}(w)|=\\log|1-w|+\\operatorname{Re}\\sum_{j\\le p}w^{j}/j\\ge\\log|1-w|-C_{p}|w|^{p}$。',
         '**第四步（续）：好半径引理。** 取 $M:=\\lceil\\rho\\rceil+3$、$\\delta:=r^{-M}$。零点落在 $[r/2,4r]$ 中的个数 $N\\le n(4r)\\le C\\,r^{\\rho+\\varepsilon}$；每个这样的零点排除掉长度 $2\\delta$ 的一段半径。因 $2\\delta N\\le2C\\,r^{\\rho+\\varepsilon-M}<r$（$r$ 大时），存在 $R\\in[r,2r]$ 使每个 $|a_{n}|\\in[r/2,4r]$ 都满足 $\\bigl||a_{n}|-R\\bigr|\\ge\\delta$。固定这样的 $R$。\n\n对 $|z|=R$ 按 $|a_{n}|\\le4r$、$|a_{n}|>4r$ 拆 $\\log|\\mathcal{P}(z)|=\\sum\\log|E_{p}(z/a_{n})|$。\n\n• $|a_{n}|>4r$：$|z/a_{n}|<1/2$，由（i）每项 $\\ge-C(R/|a_{n}|)^{p+1}$；分部求和与 $n(t)\\le C t^{\\rho+\\varepsilon}$ 给 $\\sum_{|a_{n}|>4r}(R/|a_{n}|)^{p+1}\\le C\\,r^{\\rho+\\varepsilon}$。\n\n• $|a_{n}|\\le4r$：$|z-a_{n}|\\ge\\delta$（$|a_{n}|\\in[r/2,4r]$ 时由 $R$ 的选法；$|a_{n}|<r/2$ 时 $|z-a_{n}|\\ge R-r/2\\ge r/2$），故 $\\log|1-z/a_{n}|=\\log|z-a_{n}|-\\log|a_{n}|\\ge\\log(\\delta/(4r))$；由（i）每项 $\\ge\\log(\\delta/(4r))-C(R/|a_{n}|)^{p}$。对至多 $N\\le C r^{\\rho+\\varepsilon}$ 项求和，并注意 $\\sum_{|a_{n}|\\le4r}(R/|a_{n}|)^{p}\\le C r^{\\rho+\\varepsilon}$（分部求和），得 $\\sum_{|a_{n}|\\le4r}\\log|E_{p}(z/a_{n})|\\ge-C\\,r^{\\rho+\\varepsilon}\\log r$。\n\n合并：$\\log|\\mathcal{P}(z)|\\ge-C\\,r^{\\rho+\\varepsilon}\\log r$。于是 $\\log|\\Phi(z)|=\\log|f(z)|-m\\log R-\\log|\\mathcal{P}(z)|\\le C\\,r^{\\rho+\\varepsilon}+C\\,r^{\\rho+\\varepsilon}\\log r\\le C_{1}\\,r^{\\rho+\\varepsilon_{1}}$（任何 $\\varepsilon_{1}>\\varepsilon$）。',
-        '**第五步：无零点 $\\implies$ 指数（完整）。** $\\Phi$ 整、无零点，$\\mathbb{C}$ 单连通，由 `prop.single-valued-branch` 存在整函数 $h$ 使 $\\Phi=e^{h}$；且 $\\operatorname{Re}h=\\log|\\Phi|$。',
-        '**第六步：Borel–Carathéodory（完整证明）。** 引理：若 $g$ 在 $|z|\\le R$ 全纯、$g(0)=0$、$\\operatorname{Re}g\\le A$（$A>0$），则对 $|z|=r<R$，$|g(z)|\\le2Ar/(R-r)$。证明：$\\varphi:=g/(2A-g)$ 在 $|z|\\le R$ 全纯（分母实部 $\\ge A$），$|\\varphi|\\le1$（$|g|^{2}\\le(2A-\\operatorname{Re}g)^{2}+(\\operatorname{Im}g)^{2}$ 等价于 $\\operatorname{Re}g\\le A$），$\\varphi(0)=0$；Schwarz 引理（`lem.schwarz`）给 $|\\varphi(z)|\\le r/R$，于是 $|g|=\\bigl|2A\\varphi/(1+\\varphi)\\bigr|\\le2A|\\varphi|/(1-|\\varphi|)\\le2Ar/(R-r)$。',
-        '**第七步：$h$ 是多项式（完整）。** 由第四步，在 $|z|\\le R$ 上 $\\operatorname{Re}(h-h(0))\\le C_{1}R^{\\rho+\\varepsilon_{1}}+|\\operatorname{Re}h(0)|=:A$。对 $g=h-h(0)$ 用第六步，取 $r=R/2$：$|h(z)-h(0)|\\le2A$（$|z|\\le R/2$）。再由 Cauchy 估计（`thm.cauchy-inequality`），对 $k>\\rho+\\varepsilon_{1}$：$|h^{(k)}(0)|\\le k!\\,2A/(R/2)^{k}\\to0$（$R\\to\\infty$），故 $h^{(k)}(0)=0$：$h$ 是次数 $\\le\\lfloor\\rho\\rfloor$ 的多项式。',
+        '**第五步：无零点 $\\implies$ 指数。** $\\Phi$ 整、无零点，$\\mathbb{C}$ 单连通，由 `prop.single-valued-branch` 存在整函数 $h$ 使 $\\Phi=e^{h}$；且 $\\operatorname{Re}h=\\log|\\Phi|$。',
+        '**第六步：Borel–Carathéodory。** 引理：若 $g$ 在 $|z|\\le R$ 全纯、$g(0)=0$、$\\operatorname{Re}g\\le A$（$A>0$），则对 $|z|=r<R$，$|g(z)|\\le2Ar/(R-r)$。证明：$\\varphi:=g/(2A-g)$ 在 $|z|\\le R$ 全纯（分母实部 $\\ge A$），$|\\varphi|\\le1$（$|g|^{2}\\le(2A-\\operatorname{Re}g)^{2}+(\\operatorname{Im}g)^{2}$ 等价于 $\\operatorname{Re}g\\le A$），$\\varphi(0)=0$；Schwarz 引理（`lem.schwarz`）给 $|\\varphi(z)|\\le r/R$，于是 $|g|=\\bigl|2A\\varphi/(1+\\varphi)\\bigr|\\le2A|\\varphi|/(1-|\\varphi|)\\le2Ar/(R-r)$。',
+        '**第七步：$h$ 是多项式。** 由第四步，在 $|z|\\le R$ 上 $\\operatorname{Re}(h-h(0))\\le C_{1}R^{\\rho+\\varepsilon_{1}}+|\\operatorname{Re}h(0)|=:A$。对 $g=h-h(0)$ 用第六步，取 $r=R/2$：$|h(z)-h(0)|\\le2A$（$|z|\\le R/2$）。再由 Cauchy 估计（`thm.cauchy-inequality`），对 $k>\\rho+\\varepsilon_{1}$：$|h^{(k)}(0)|\\le k!\\,2A/(R/2)^{k}\\to0$（$R\\to\\infty$），故 $h^{(k)}(0)=0$：$h$ 是次数 $\\le\\lfloor\\rho\\rfloor$ 的多项式。',
         '**结论**：$f=z^{m}e^{h}\\prod_{n}E_{p}(z/a_{n})=z^{m}e^{P}\\prod_{n}E_{p}(z/a_{n})$，即得 Hadamard 分解。∎ 第一至第七步全部写完：第一、二、三步是收敛与消零点，第四步是好半径 + 初等估计 + Borel–Carathéodory，第五、六、七步把无零点商提升成多项式指数。',
         '⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化（同一个 $p$）、并把自由度压成一个多项式 $P$。$\\rho<1$ 时 $p=0$，$\\sum|a_{n}|^{-1}<\\infty$，但零点仍可无穷（$\\prod(1-z/n^{2})$ 的阶为 $1/2$）。⚠️ 「有限阶」不能省：无穷阶整函数照样有 Weierstrass 乘积，但指数部分不再是多项式，结论也没有这么强。',
       ].join('\n\n'),
@@ -416,7 +416,7 @@
         '**与大定理、小定理的关系**：小定理是「奇点在 $\\infty$」的特例，大定理靠一次 Möbius 变换' +
           '把任意本性奇点搬到 $\\infty$ 就归结到小定理（这也是名字的来历）。',
         '',
-        '**本图的口径**：完整证明同样要用 Bloch 定理或模函数，本图不展开 —— 节点与边上明写' +
+        '**证明的取材**：同样要用 Bloch 定理或模函数，这里不展开 —— 节点与边上明写' +
           '「由 Picard 小定理 + 变换归结，深层输入记为外部」。',
         '',
         '⭐ **它把「三类奇点」的图景补完了**：可去奇点附近有界；极点附近趋于无穷、像集几乎只在一个方向；' +
@@ -433,7 +433,7 @@
   ],
 
   edges: [
-    { kind: 'implication', sources: ['thm.taylor-complex', 'thm.identity'], target: 'def.analytic-continuation',
+    {id: "e22.implication", kind: 'implication', sources: ['thm.taylor-complex', 'thm.identity'], target: 'def.analytic-continuation',
       title: '幂级数当载体、唯一性定理当粘合剂',
       proof: [
         '延拓的每一步都是「在一个新圆盘上取一个幂级数，它在与旧圆盘的重叠处与旧的相等」。',
@@ -446,7 +446,7 @@
       ].join('\n'),
       note: '延拓这件事之所以定义得干净，全靠这两条：级数给出「可计算的形式」，唯一性给出「一致」。' },
 
-    { kind: 'implication', sources: ['def.analytic-continuation', 'thm.winding-homotopy'], target: 'thm.monodromy',
+    {id: "e23.implication", kind: 'implication', sources: ['def.analytic-continuation', 'thm.winding-homotopy'], target: 'thm.monodromy',
       title: '同伦族上的延拓连续 $\\implies$ 单值',
       proof: [
         '设 $\\gamma_{0}, \\gamma_{1}$ 在 $\\Omega$ 内同伦，同伦 $H(s, t)$。对每个 $s$，沿 $\\gamma_{s} = H(s, \\cdot)$' +
@@ -461,7 +461,7 @@
       ].join('\n'),
       note: '单值是「同伦不变」的直接翻译 —— 与 `thm.winding-homotopy` 是同一个技术：连续 + 离散 $\\implies$ 常值。' },
 
-    { kind: 'implication', sources: ['thm.morera', 'def.analytic-continuation'], target: 'thm.schwarz-reflection',
+    {id: "e24.implication", kind: 'implication', sources: ['thm.morera', 'def.analytic-continuation'], target: 'thm.schwarz-reflection',
       title: '反射定义 + Morera 判全纯',
       proof: [
         '定义 $F$ 在上半平面等于 $f$、在下半平面等于 $\\overline{f(\\bar z)}$。',
@@ -486,7 +486,7 @@
       ].join('\n'),
       note: 'Runge 与 Mittag-Leffler、Weierstrass 乘积是三兄弟：逼近 / 造主部 / 造零点 —— 这只是类比、不是定理依赖，故 Mittag-Leffler 不在 sources 里。' },
 
-    { kind: 'implication', sources: ['def.entire-meromorphic', 'thm.cauchy-inequality'], target: 'def.entire-order',
+    {id: "e25.implication", kind: 'implication', sources: ['def.entire-meromorphic', 'thm.cauchy-inequality'], target: 'def.entire-order',
       title: '用最大模的增长速率为整函数排座次',
       proof: [
         '整函数即 `def.entire-meromorphic` 里的情形。取 $M(r) = \\max_{|z| = r}|f(z)|$，' +
@@ -498,7 +498,7 @@
       ].join('\n'),
       note: '阶不是装饰：后面的 Weierstrass 乘积、Hadamard 分解、Picard 都要拿它当标尺。' },
 
-    { kind: 'implication', sources: ['prop.zero-isolated', 'thm.harmonic-mean-value'], target: 'prop.jensen',
+    {id: "e26.implication", kind: 'implication', sources: ['prop.zero-isolated', 'thm.harmonic-mean-value'], target: 'prop.jensen',
       title: 'Blaschke 因子除掉零点，再用调和函数的均值性质',
       proof: [
         '先设 $f$ 在 $|z| \\le R$ 上无零点。则 $\\log|f|$ 在该圆盘内调和（它是全纯函数 $\\log f$ 的实部），' +
@@ -513,7 +513,7 @@
       ].join('\n'),
       note: 'Jensen 把「R 内零点有几个」压在「2R 上最大模多大」之下。' },
 
-    { kind: 'implication', sources: ['def.complex-elementary'], target: 'def.elementary-factor',
+    {id: "e27.implication", kind: 'implication', sources: ['def.complex-elementary'], target: 'def.elementary-factor',
       title: '用 $e^{z}$ 的截断指数造出「近似 1 但带一个零点」的因子',
       proof: [
         '定义里的 $E_{p}(z) = (1 - z)\\exp(z + z^{2}/2 + \\cdots + z^{p}/p)$：$\\exp$ 那部分由' +
@@ -528,7 +528,7 @@
       ].join('\n'),
       note: '这条估计就是「取 p 让级数收敛」的全部依据。' },
 
-    { kind: 'implication', sources: ['def.elementary-factor', 'thm.weierstrass-convergence'],
+    {id: "e28.implication", kind: 'implication', sources: ['def.elementary-factor', 'thm.weierstrass-convergence'],
       target: 'thm.weierstrass-product',
       title: '逐点选 $p_{n}$ 保证内闭一致收敛，乘积即成整函数',
       proof: [
@@ -547,7 +547,7 @@
       ].join('\n'),
       note: 'Weierstrass 乘积 = 「零点可任意指定」；剩下的自由度正是 $e^{g}$。' },
 
-    { kind: 'implication', sources: ['thm.weierstrass-product', 'prop.jensen', 'prop.single-valued-branch', 'thm.cauchy-inequality', 'lem.schwarz'],
+    {id: "e29.implication", kind: 'implication', sources: ['thm.weierstrass-product', 'prop.jensen', 'prop.single-valued-branch', 'thm.cauchy-inequality', 'lem.schwarz'],
       target: 'thm.hadamard-factorization',
       title: '阶给出统一的 $p$，Jensen 给出零点密度',
       proof: [
@@ -565,7 +565,7 @@
       ].join('\n'),
       note: 'Hadamard = Weierstrass 乘积 + 增长阶：因子统一、指数退化成多项式。' },
 
-    { kind: 'implication', sources: ['thm.hadamard-factorization', 'thm.liouville'], target: 'thm.picard-little',
+    {id: "e30.implication", kind: 'implication', sources: ['thm.hadamard-factorization', 'thm.liouville'], target: 'thm.picard-little',
       title: '有限阶情形：漏两个值 $\\implies$ 无零点的整函数 $\\implies$ 常数',
       proof: [
         '（**只证有限阶情形**；一般情形见节点正文的外部输入说明。）',
@@ -581,7 +581,7 @@
       ].join('\n'),
       note: '这条证明只覆盖有限阶；一般情形需要 Bloch / 模函数，已如实标注。' },
 
-    { kind: 'implication', sources: ['thm.picard-little', 'thm.casorati-weierstrass'], target: 'thm.picard-great',
+    {id: "e31.implication", kind: 'implication', sources: ['thm.picard-little', 'thm.casorati-weierstrass'], target: 'thm.picard-great',
       title: '把本性奇点搬到无穷远，归结到小定理',
       proof: [
         '设 $z_{0}$ 是 $f$ 的本性奇点。取 $g(w) := f(z_{0} + 1/w)$，则 $g$ 在 $w = 0$ 以外全纯，' +
@@ -594,10 +594,10 @@
       ].join('\n'),
       note: '大定理 = 小定理 + 一次变换；深层输入同样标注为外部。' },
 
-    { kind: 'definition', definition: 'def.analytic-continuation', usedBy: 'thm.schwarz-reflection',
+    {id: "e32.definition", kind: 'definition', definition: 'def.analytic-continuation', usedBy: 'thm.schwarz-reflection',
       note: '反射原理给出的正是「跨过边界的一段解析延拓」：用上半的 $f$ 定义出下半的 $F$，再验证全纯。' },
 
-    { kind: 'definition', definition: 'def.elementary-factor', usedBy: 'thm.weierstrass-product',
+    {id: "e33.definition", kind: 'definition', definition: 'def.elementary-factor', usedBy: 'thm.weierstrass-product',
       note: '乘积定理的每一项都是初等因子 $E_{p_{n}}(z/a_{n})$ —— 定义在这里，用法在定理里。' },
   ],
 });

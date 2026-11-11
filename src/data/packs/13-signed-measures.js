@@ -733,13 +733,6 @@ window.MG = window.MG || {};
       note: 'Jordan 分解把符号测度拆成两个测度之差。'
     },
     {
-      id: 'def-link.hahn-jordan',
-      kind: 'definition',
-      definition: 'thm.hahn-decomposition',
-      usedBy: 'thm.jordan-decomposition',
-      note: '$\\nu ^{+}$、$\\nu ^{-}$ 的造法直接来自 Hahn 分解的那个划分。'
-    },
-    {
       id: 'def-link.singular-jordan',
       kind: 'definition',
       definition: 'def.mutually-singular',

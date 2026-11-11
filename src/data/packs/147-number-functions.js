@@ -184,7 +184,7 @@ window.MG = window.MG || {};
         '',
         '（$\\Lambda$ 叫 von Mangoldt 函数），而 $\\log n! = \\sum_{m \\le n}\\Lambda(m)\\lfloor n/m\\rfloor = \\sum_{m \\le n}\\psi(n/m)$ 把 $\\psi$ 与阶乘直接连起来。\n\n三者的关系是 $\\theta \\le \\psi \\le \\theta + O(\\sqrt{x}\\log x)$ 与 $\\pi(x) \\sim \\theta(x)/\\log x$ —— 所以「三者同阶」这句话本身就是定理。',
         '',
-        '⭐ 人名按原文字母写：**Чебышёв**（不用音译，也不用英文拼法 Chebyshev）—— 这是本项目的口径。',
+        '⭐ 人名按原文字母写：**Чебышёв**（不用音译，也不用英文拼法 Chebyshev）。',
       ].join('\n\n'),
       refs: ['华罗庚《数论导引》第七、九章', 'Apostol, Ch. 4'],
     },
@@ -262,7 +262,7 @@ window.MG = window.MG || {};
         '',
         '等价形式：$\\theta(x) \\sim x$、$\\psi(x) \\sim x$、$p_{n} \\sim n\\log n$（$p_{n}$ 是第 $n$ 个素数）。',
       ].join('\n'),
-      notes: '**本节点只给陈述、记号与依赖链；完整证明在组装边与各自节点的入边，不写回本注。**\n\n**记号**：$\\Lambda(n)=\\log p$（$n=p^{k}$）或 $0$（其它），$\\psi(x)=\\sum_{n\\le x}\\Lambda(n)$、$\\theta(x)=\\sum_{p\\le x}\\log p$、$\\pi(x)=\\#\\{p\\le x\\}$（见 `def.prime-counting`）。\n\n**依赖链**： 1. `lem.psi-theta-sum`：$\\psi(x)=\\sum_{k\\ge1}\\theta(x^{1/k})$；`lem.psi-theta-asymptotic`：$\\psi-\\theta=o(x)$，故 $\\psi\\sim x\\iff\\theta\\sim x$。 2. `lem.abel-theta-pi`：Abel 变换两式；`lem.theta-pi-equivalence`：$\\theta\\sim x\\iff\\pi\\sim x/\\log x$。 3. `prop.zeta-continuation`：$\\zeta$ 亚纯延拓到 $\\operatorname{Re}s>0$、唯一单极点 $s=1$ 留数 $1$；`thm.zeta-no-zeros-line1`：$\\zeta(1+it)\\ne0$。 4. `lem.newman-tauberian`：Newman 解析定理；由它得 $\\int_0^\\infty(\\psi(e^t)e^{-t}-1)\\,\\mathrm{d}t$ 收敛，再由 $\\psi$ 的单调性夹逼得 $\\psi(x)\\sim x$。\n\n**组装**：上述 3+4 给 $g(z)=-\\zeta\'(1+z)/\\zeta(1+z)/(1+z)-1/z$ 在闭半平面邻域全纯（$g(0)=-(1+\\gamma)$ 可去），Newman 引理与单调性收尾，最后经第 2 步换成 $\\pi(x)\\sim x/\\log x$。详见组装边。\n\n⚠ 不需要 Mellin 反演，也不需要 Phragmén–Lindelöf；这是 Newman 1980 的路线。',
+      notes: '**本条只给陈述、记号与依赖链；证明由组装边与各自节点的入边承担，不写回本注。**\n\n**记号**：$\\Lambda(n)=\\log p$（$n=p^{k}$）或 $0$（其它），$\\psi(x)=\\sum_{n\\le x}\\Lambda(n)$、$\\theta(x)=\\sum_{p\\le x}\\log p$、$\\pi(x)=\\#\\{p\\le x\\}$（见 `def.prime-counting`）。\n\n**依赖链**： 1. `lem.psi-theta-sum`：$\\psi(x)=\\sum_{k\\ge1}\\theta(x^{1/k})$；`lem.psi-theta-asymptotic`：$\\psi-\\theta=o(x)$，故 $\\psi\\sim x\\iff\\theta\\sim x$。 2. `lem.abel-theta-pi`：Abel 变换两式；`lem.theta-pi-equivalence`：$\\theta\\sim x\\iff\\pi\\sim x/\\log x$。 3. `prop.zeta-continuation`：$\\zeta$ 亚纯延拓到 $\\operatorname{Re}s>0$、唯一单极点 $s=1$ 留数 $1$；`thm.zeta-no-zeros-line1`：$\\zeta(1+it)\\ne0$。 4. `lem.newman-tauberian`：Newman 解析定理；由它得 $\\int_0^\\infty(\\psi(e^t)e^{-t}-1)\\,\\mathrm{d}t$ 收敛，再由 $\\psi$ 的单调性夹逼得 $\\psi(x)\\sim x$。\n\n**组装**：上述 3+4 给 $g(z)=-\\zeta\'(1+z)/\\zeta(1+z)/(1+z)-1/z$ 在闭半平面邻域全纯（$g(0)=-(1+\\gamma)$ 可去），Newman 引理与单调性收尾，最后经第 2 步换成 $\\pi(x)\\sim x/\\log x$。详见组装边。\n\n⚠ 不需要 Mellin 反演，也不需要 Phragmén–Lindelöf；这是 Newman 1980 的路线。',
       refs: [
         'Newman, Simple analytic proof of the prime number theorem, Amer. Math. Monthly 87 (1980)',
         'Zagier, Newman short proof of the prime number theorem, Amer. Math. Monthly 104 (1997)',
@@ -305,7 +305,7 @@ window.MG = window.MG || {};
       regions: ["number"],
       tags: ["数论", "素数分布", "Chebyshev 函数"],
       statement: "对 $x\\ge1$，$\\psi(x)=\\sum_{k\\ge1}\\theta\\bigl(x^{1/k}\\bigr)$。和式有限：$p^{k}\\le x$ 迫使 $k\\le\\log_{2}x$。",
-      notes: "这是 $\\psi$ 与 $\\theta$ 的第一个桥：按 $n=p^{k}$ 的 $k$ 分组即可。证明见入边（按素数幂的指数分组）。",
+      notes: "这是 $\\psi$ 与 $\\theta$ 的第一个桥：按 $n=p^{k}$ 的 $k$ 分组即可（即按素数幂的指数分组）。",
       refs: ["Apostol, Introduction to Analytic Number Theory, Ch. 4"],
     },
     {
@@ -317,7 +317,7 @@ window.MG = window.MG || {};
       regions: ["number"],
       tags: ["数论", "素数分布", "Chebyshev 函数"],
       statement: "$\\psi(x)-\\theta(x)=O(\\sqrt{x}\\log x)=o(x)$。因此 $\\psi(x)\\sim x\\iff\\theta(x)\\sim x$。",
-      notes: "只用到 $\\theta(y)\\le y\\log y$ 与 $k\\le\\log_{2}x$；证明见入边（尾部 $O(\\sqrt{x}\\log x)$ 估计）。",
+      notes: "只用到 $\\theta(y)\\le y\\log y$ 与 $k\\le\\log_{2}x$（尾部 $O(\\sqrt{x}\\log x)$ 估计）。",
       refs: ["Apostol, Introduction to Analytic Number Theory, Ch. 4"],
     },
     {
@@ -329,7 +329,7 @@ window.MG = window.MG || {};
       regions: ["number"],
       tags: ["数论", "素数分布", "Abel 变换"],
       statement: "$\\theta(x)=\\pi(x)\\log x-\\int_{2}^{x}\\frac{\\pi(t)}{t}\\,\\mathrm{d}t$，$\\pi(x)=\\frac{\\theta(x)}{\\log x}+\\int_{2}^{x}\\frac{\\theta(t)}{t\\log^{2}t}\\,\\mathrm{d}t$（$x\\ge2$）。",
-      notes: "由 Stieltjes 分部求和（取 $f=\\log t$ 与 $f=1/\\log t$）得到；证明见入边（Stieltjes 分部求和）。",
+      notes: "由 Stieltjes 分部求和（取 $f=\\log t$ 与 $f=1/\\log t$）得到（Stieltjes 分部求和）。",
       refs: ["Apostol, Introduction to Analytic Number Theory, Ch. 4"],
     },
     {
@@ -341,7 +341,7 @@ window.MG = window.MG || {};
       regions: ["number"],
       tags: ["数论", "素数分布", "渐近等价"],
       statement: "$\\theta(x)\\sim x$ 当且仅当 $\\pi(x)\\sim x/\\log x$（$x\\to\\infty$）。",
-      notes: "用 Abel 变换与 $\\int_{2}^{x}\\mathrm{d}t/\\log^{2}t=o(x/\\log x)$；证明见入边（Abel 变换与积分估计）。",
+      notes: "用 Abel 变换与 $\\int_{2}^{x}\\mathrm{d}t/\\log^{2}t=o(x/\\log x)$（Abel 变换与积分估计）。",
       refs: ["Apostol, Introduction to Analytic Number Theory, Ch. 4"],
     },
     {
@@ -353,7 +353,7 @@ window.MG = window.MG || {};
       regions: ["number", "analysis"],
       tags: ["数论", "复分析", "ζ 函数", "解析延拓"],
       statement: "$\\zeta$ 延拓为 $\\operatorname{Re}s>0$ 上的亚纯函数，唯一极点是 $s=1$ 的单极点、留数 $1$；在 $\\operatorname{Re}s>0$ 上有 $\\zeta(s)=\\frac{s}{s-1}-s\\int_{1}^{\\infty}\\{x\\}\\,x^{-s-1}\\,\\mathrm{d}x$。",
-      notes: "只延拓到 $\\operatorname{Re}s>0$（素数定理够用）；全平面延拓与函数方程不在本节点。证明见入边（分部求和）。",
+      notes: "只延拓到 $\\operatorname{Re}s>0$（素数定理够用）；全平面延拓与函数方程不在本节点。（分部求和）。",
       refs: ["Apostol, Introduction to Analytic Number Theory, Ch. 12", "Titchmarsh, The Theory of the Riemann Zeta-Function, Ch. 1–2"],
     },
     {
@@ -365,7 +365,7 @@ window.MG = window.MG || {};
       regions: ["number", "analysis"],
       tags: ["数论", "复分析", "ζ 函数", "零点"],
       statement: "对一切 $t\\in\\mathbb{R}$，$\\zeta(1+it)\\ne0$。",
-      notes: "用 Euler 乘积取对数与 $3+4\\cos\\theta+\\cos2\\theta=2(1+\\cos\\theta)^{2}\\ge0$；$t=0$ 处是极点，不是零点。证明见入边（加权对数估计）。",
+      notes: "用 Euler 乘积取对数与 $3+4\\cos\\theta+\\cos2\\theta=2(1+\\cos\\theta)^{2}\\ge0$；$t=0$ 处是极点，不是零点。（加权对数估计）。",
       refs: ["Apostol, Introduction to Analytic Number Theory, Ch. 12", "Ingham, The Distribution of Prime Numbers, Ch. II"],
     },
   ],
@@ -518,38 +518,26 @@ window.MG = window.MG || {};
     },
 
 
-    { kind: 'analogy', a: 'thm.fundamental-arithmetic', b: 'def.multiplicative-function',
+    {id: "e142.analogy", kind: 'analogy', a: 'thm.fundamental-arithmetic', b: 'def.multiplicative-function',
       note: '积性函数的「确定方式」直接来自唯一分解：函数值由各素数幂上的值决定。' },
 
-    { id: 'imp.divisor-formula', kind: 'implication',
-      sources: ['thm.fundamental-arithmetic'], target: 'thm.divisor-formula',
-      title: '唯一分解给出因数公式',
-      proof: [
-        '设 $n = p_{1}^{e_{1}} \\cdots p_{r}^{e_{r}}$。由 `thm.fundamental-arithmetic`，这是 $n$ 的分解里唯一的素数幂写法。',
-        '任一因数 $d$ 也随之写成 $d = p_{1}^{f_{1}} \\cdots p_{r}^{f_{r}}$（同一批素数，指数 $0 \\le f_{i} \\le e_{i}$），且这种写法唯一。',
-        '于是「选因数」等价于「每个指数独立选一个值」，共 $\\prod (e_{i}+1)$ 个；$\\sigma$ 同理逐素数幂求和。∎',
-      ].join('\n'),
-      note: '公式靠唯一分解：$n$ 的因数与「指数向量」一一对应。' },
 
-    { kind: 'definition', definition: 'def.prime', usedBy: 'def.prime-counting',
+    {id: "e143.definition", kind: 'definition', definition: 'def.prime', usedBy: 'def.prime-counting',
       note: '$\\pi(x)$ 数的是素数，$\\theta$、$\\psi$ 按对数给素数加权。' },
 
-    { kind: 'definition', definition: 'def.multiplicative-function', usedBy: 'def.divisor-function',
+    {id: "e144.definition", kind: 'definition', definition: 'def.multiplicative-function', usedBy: 'def.divisor-function',
       note: '$\\tau$ 与 $\\sigma$ 是积性函数的头两个例子。' },
 
-    { kind: 'definition', definition: 'def.prime-counting', usedBy: 'thm.chebyshev-estimate',
+    {id: "e145.definition", kind: 'definition', definition: 'def.prime-counting', usedBy: 'thm.chebyshev-estimate',
       note: '估计的对象就是 $\\pi(x)$；证明里还要用 $\\theta$ 做过渡。' },
 
-    { kind: 'definition', definition: 'def.prime-counting', usedBy: 'thm.prime-number-theorem',
+    {id: "e146.definition", kind: 'definition', definition: 'def.prime-counting', usedBy: 'thm.prime-number-theorem',
       note: '定理是 $\\pi(x)$ 的渐近式。' },
 
-    { kind: 'definition', definition: 'def.mobius-function', usedBy: 'thm.mu-sum',
+    {id: "e147.definition", kind: 'definition', definition: 'def.mobius-function', usedBy: 'thm.mu-sum',
       note: '这条恒等式是 $\\mu$ 的定义直接算出来的（按「由互异素因子组成的因数」求和）。' },
 
-    { kind: 'definition', definition: 'thm.mu-sum', usedBy: 'thm.mobius-inversion',
-      note: '反演的全部内容就是 $\\mu * 1 = \\delta$ —— 即 $\\sum_{d \\mid m}\\mu(d) = [m=1]$。' },
-
-    {
+        {
       id: 'imp.nt-multiplicative-from-fta',
       kind: 'implication',
       sources: ['thm.fundamental-arithmetic'],
@@ -638,7 +626,7 @@ window.MG = window.MG || {};
         '于是 $\\prod_{n<p\\le 2n}p \\le N \\le 4^{n}$，取对数得 $\\theta(2n) - \\theta(n) \\le 2n\\log 2$；\n\n' +
         '把它沿 $n, n/2, n/4, \\cdots$ 累加得 $\\theta(x) \\le C x$，再由 $\\theta \\ge (\\log x)\\,\\pi(\\sqrt{x}) + \\cdots$ 的初等关系得 $\\pi(x) \\le C\' x/\\log x$。',
         '',
-        '⚠ 这是骨架：常数都没优化，第四步的拼接（$2n$  推出  一般 $x$）省了细节。完整证明见华罗庚《数论导引》第九章。',
+        '⚠ 这是骨架：常数都没优化，第四步的拼接（$2n$  推出  一般 $x$）省了细节。细节见华罗庚《数论导引》第九章。',
       ].join('\n\n'),
     },
 
@@ -661,10 +649,10 @@ window.MG = window.MG || {};
         '',
         '两段合起来给出\n\n$$N = \\binom{2n}{n} \\le (2n)^{\\sqrt{2n}}\\cdot 4^{2n/3},$$\n\n（第二段用 $\\prod_{p\\le x}p \\le 4^{x}$，取 $x = 2n/3$）。另一边，$\\sum_{k=0}^{2n}\\binom{2n}{k} = 4^{2n}$ 且中间那一项最大，故 $N \\ge 4^{n}/(2n+1)$。两边一夹：\n\n$$\\frac{4^{n}}{2n+1} \\le (2n)^{\\sqrt{2n}}\\,4^{2n/3} \\iff 4^{n/3} \\le (2n)^{\\sqrt{2n}+1},$$\n\n右边是 $n^{O(\\sqrt{n})}$ 而左边指数增长，故对充分大的 $n$ 不成立；剩下有限多个 $n$ 逐个验证（$n = 2$ 时 $(2,4)$ 里有 $3$，依次类推）。',
         '',
-        '⚠ 这是骨架：三段计数里最容易错的是「$2n/3 < p \\le n$ 不贡献」（上面已改正）；更细的分段与小 $n$ 的逐个验证没有逐条写。完整证明见华罗庚《数论导引》第九章。',
+        '⚠ 这是骨架：三段计数里最容易错的是「$2n/3 < p \\le n$ 不贡献」（上面已改正）；更细的分段与小 $n$ 的逐个验证没有逐条写。细节见华罗庚《数论导引》第九章。',
       ].join('\n\n'),
     },
-{ kind: 'analogy', a: 'def.divisor-function', b: 'def.multiplicative-function',
+{id: "e148.analogy", kind: 'analogy', a: 'def.divisor-function', b: 'def.multiplicative-function',
       title: '积性函数：$\\tau$、$\\sigma$ 与 $\\mu$、$\\varphi$ 是同一个框架的四个实例',
       note: [
         '四个函数都满足 $f(mn) = f(m)f(n)$（互素时），都由「素数幂上的值」决定，公式都是乘积形状。',

@@ -200,7 +200,7 @@
         '但那件事本身是**定理**（分类定理，下一刀），定义里不用它。',
     },
     /* -------- 与 Euler 示性数的桥：先记类比，定理留给下一刀 -------- */
-    {
+    {id: "e181.analogy",
       kind: 'analogy',
       a: 'def.genus',
       b: 'thm.euler-characteristic',

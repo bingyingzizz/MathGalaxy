@@ -67,7 +67,7 @@ window.MG = window.MG || {};
         '',
         '$$f : X \\twoheadrightarrow \\overline{X} \\rightarrowtail Y, \\qquad \\overline{X} := X / R,\\quad R := X \\times_{Y} X$$'
       ].join('\n'),
-      notes: '这三条在 $\\mathbf{Set}$ 里都理所当然，但在一般范畴里都要证。它们合起来说：「**预拓扑斯里的像 = 商**」，与集合里「像就是按核对取商」完全一致。证明见边上那条推导。',
+      notes: '这三条在 $\\mathbf{Set}$ 里都理所当然，但在一般范畴里都要证。它们合起来说：「**预拓扑斯里的像 = 商**」，与集合里「像就是按核对取商」完全一致。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 

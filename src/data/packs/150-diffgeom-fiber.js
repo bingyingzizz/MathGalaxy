@@ -336,13 +336,13 @@ window.MG = window.MG || {};
       note: '拉回的两端都是流形上的形式空间。' },
     { id: 'dep.mf3-pbm-rn', kind: 'definition',
       definition: 'prop.pullback-forms', usedBy: 'prop.pullback-form-manifold',
-      note: '开集间那条是这一条的图卡样子：本条的证明逐点验证四条公理，不依赖开集版的公理清单 —— 这是**定义实例化**，不是蕴含。' },
+      note: '开集间那条是这一条的图卡样子：本条的证明逐点验证四条公理，不依赖开集版的公理清单 —— 这是**定义实例化**，不是蕴含。（依赖的是对象，不是命题。）' },
     { id: 'dep.mf3-pbm-dmap', kind: 'definition',
       definition: 'def.differential-map', usedBy: 'prop.pullback-form-manifold',
       note: '定义式里把切映射 $\\mathrm{d}F_{p}$ 塞进形式 $\\omega$ 的槽里 —— 没有它写不出这个式子。' },
     { id: 'dep.mf3-pbm-covm', kind: 'definition',
       definition: 'prop.pullback-form-manifold', usedBy: 'thm.change-of-variables-manifold',
-      note: '换元公式用拉回的语言陈述，但证明只用到 `def.integral-form` 的良定性与单位分解 —— 这是**定义实例化**（拉回是语言，不是前提），不是蕴含。' },
+      note: '换元公式用拉回的语言陈述，但证明只用到 `def.integral-form` 的良定性与单位分解 —— 这是**定义实例化**（拉回是语言，不是前提），不是蕴含。（依赖的是对象，不是命题。）' },
 
     /* ---------------------------------------------- §B 丛的定义链 */
     { id: 'dep.mf3-cotb-tbundle', kind: 'definition',
@@ -393,7 +393,7 @@ window.MG = window.MG || {};
       note: '左不变形式是 Lie 群上的 $k$-形式再加一条不变性；本体还是流形上的形式。' },
     { id: 'dep.mf3-dm-cartan', kind: 'definition',
       definition: 'prop.exterior-derivative-manifold', usedBy: 'thm.cartan-formula',
-      note: 'Cartan 公式里的 $\\mathrm{d}$ 作用在 $\\Omega^{k}(M)$ 上，它的良定性就是那条命题的内容。' },
+      note: 'Cartan 公式里的 $\\mathrm{d}$ 作用在 $\\Omega^{k}(M)$ 上，它的良定性就是那条命题的内容。（依赖的是对象，不是命题。）' },
 
     /* ---------------------------------------------- §D 局部平凡化的接线 */
     { id: 'dep.mf3-triv-topology', kind: 'definition',
@@ -450,10 +450,10 @@ window.MG = window.MG || {};
       note: '「左不变」是用左平移 $L_{g}$ 的拉回写的：$L_{g}^{\\ast}\\omega = \\omega$，而 $L_{g}$ 是流形之间的光滑映射。' },
     { id: 'dep.mf3-stokes-dmanifold', kind: 'definition',
       definition: 'prop.exterior-derivative-manifold', usedBy: 'thm.stokes',
-      note: 'Stokes 定理里的 $\\mathrm{d}$ 是**流形上**的外微分，不是欧氏开集上的坐标公式。' },
+      note: 'Stokes 定理里的 $\\mathrm{d}$ 是**流形上**的外微分，不是欧氏开集上的坐标公式。（依赖的是对象，不是命题。）' },
     { id: 'dep.mf3-mc-dmanifold', kind: 'definition',
       definition: 'prop.exterior-derivative-manifold', usedBy: 'thm.maurer-cartan',
-      note: 'Maurer–Cartan 方程里的 $\\mathrm{d}$ 作用在 Lie 群（流形）上的形式，靠的是流形上的 d。' },
+      note: 'Maurer–Cartan 方程里的 $\\mathrm{d}$ 作用在 Lie 群（流形）上的形式，靠的是流形上的 d。（依赖的是对象，不是命题。）' },
     { id: 'dep.mf3-chainint-form', kind: 'definition',
       definition: 'def.form-on-manifold', usedBy: 'thm.stokes-chain',
       note: '链上积分吃的是 $M$ 上的形式（只在方块上把它拉回到 $R^{k}$ 里算）。' },

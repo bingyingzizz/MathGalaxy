@@ -34,7 +34,7 @@
       usedBy: 'thm.vsbasis',
       note: '「每个向量空间都有基」的主语就是向量空间（而且证明要用 Zorn，见那条边）。',
     },
-    {
+    {id: "e190.analogy",
       kind: 'analogy',
       a: 'def.subspace',
       b: 'def.subspace-topology',

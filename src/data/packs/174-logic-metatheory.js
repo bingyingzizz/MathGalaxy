@@ -7,7 +7,7 @@
    $\\implies$ 逻辑区只有「语法 + 语义」，没有「证明论」，也没有把两者连起来的定理。
 
    补三个节点 + 接线。⛔ 逻辑侧**接拓扑只能走类比边**（审计已验证：已有的
-   `def.compact → … → def.formula` 路径意味着任何「逻辑节点 definition 依赖拓扑节点」
+   从 `def.compact` 到 `def.formula` 的路径意味着任何「逻辑节点 definition 依赖拓扑节点」
    都会造环），所以与拓扑/代数那边一律 `analogy`。
    ========================================================================== */
 (window.MG.packs = window.MG.packs || []).push({
@@ -156,7 +156,7 @@
       ].join('\n'),
     },
     /* -------- 跨区：只能类比（逻辑↔拓扑/代数的 definition 边会造环） -------- */
-    {
+    {id: "e178.analogy",
       kind: 'analogy',
       a: 'thm.compactness',
       b: 'def.compact',
@@ -165,10 +165,10 @@
         '名字撞车，机制不同：拓扑的紧是**开覆盖**的有限性，逻辑的紧是**有限可满足**推出整体可满足。',
         '⚠ 但两者不是毫无关系：用 Stone 空间（`def.stone-space`），命题逻辑的紧致性可以从' +
           '「$\\{0,1\\}^{\\text{公式集}}$ 紧」推出来 —— 本图没有把这条路径做成节点，所以这里只记类比。',
-        '⛔ 不能做成 definition：已有的 `def.compact → … → def.formula` 路径意味着反向接线会成环。',
+        '⛔ 不能做成 definition：已有的从 `def.compact` 到 `def.formula` 的路径意味着反向接线会成环。',
       ].join('\n\n'),
     },
-    {
+    {id: "e179.analogy",
       kind: 'analogy',
       a: 'thm.compactness',
       b: 'thm.tykhonov',
@@ -180,7 +180,7 @@
           '但那需要把 Stone 表示对偶做到逻辑层 —— 本图还没做，所以只记类比。',
       ].join('\n\n'),
     },
-    {
+    {id: "e180.analogy",
       kind: 'analogy',
       a: 'def.provability',
       b: 'thm.boolean-stone',

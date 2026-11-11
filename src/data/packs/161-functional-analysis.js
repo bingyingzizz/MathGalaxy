@@ -1058,7 +1058,7 @@ window.MG = window.MG || {};
       notes: [
         '三条合起来等价于：$x \\mapsto \\langle x, \\cdot\\rangle$ 与 $y \\mapsto \\langle \\cdot, y\\rangle$ 都是**等距嵌入** $X \\hookrightarrow Y^*$、$Y \\hookrightarrow X^*$。',
         '**例子**：Hilbert 空间 $H$ 与自身、配对 $\\langle x, y\\rangle$；$L^p$ 与 $L^q$（$1/p + 1/q = 1$）、配对 $\\int f g$（Hölder 给有界，定范由 $g = |f|^{p-1}\\operatorname{sgn} f$ 的共轭指数构造给出）。',
-        '⚠ **完美配对不保证满射**：$X = \\ell^1$、$Y = c_0$、$\\langle x, y\\rangle = \\sum x_n y_n$ 满足三条（$c_0^* \\cong \\ell^1$ 给 $Y \\to X^*$ 满，但 $X \\to Y^* = \\ell^\\infty$ 只是等距嵌入，不满）。所以「完美」是「无废坐标 + 范数可由配对读出」，不是「互为对偶」。',
+        '⚠ **完美配对不保证满射**：$X = \\ell^1$、$Y = c_0$、$\\langle x, y\\rangle = \\sum x_n y_n$ 满足三条：$Y^* = (c_0)^* \\cong \\ell^1$，故 $T : X \\to Y^*$ 是等距同构（满）；但 $X^* = (\\ell^1)^* \\cong \\ell^\\infty$，$S : Y = c_0 \\to X^*$ 只是等距嵌入（包含），不满。所以「完美」是「无废坐标 + 范数可由配对读出」，不是「互为对偶」。',
         '⭐ 把 Riesz 表示定理的两种版本放在同一框架下：Hilbert 版与 $L^p$ 版都在说「这对配对里映射是满的」——见 `thm.riesz-perfect-pairing`。',
         '📌 有限维时三条自动给出 $X \\cong Y^*$（维数相同 + 单射即满射）。'
       ].join('\n\n'),
@@ -1077,19 +1077,19 @@ window.MG = window.MG || {};
         '',
         '(a) $x \\mapsto \\langle x, \\cdot\\rangle$ 是等距同构 $X \\to Y^*$ 的像，$y \\mapsto \\langle \\cdot, y\\rangle$ 是 $Y \\to X^*$ 的等距嵌入；',
         '',
-        '(b) 若其中一个映射满射，则另一个也满射，且 $X \\cong Y^*$、$Y \\cong X^*$（等距同构）；',
+        '(b) 若 $T : X \\to Y^*$ 满射且 $Y$ 自反，则 $S : Y \\to X^*$ 也满射；对称地，若 $S$ 满射且 $X$ 自反，则 $T$ 满射。特别地，$X,Y$ 都自反时 $T$ 满当且仅当 $S$ 满，且此时 $X \\cong Y^*$、$Y \\cong X^*$（等距同构）；',
         '',
         '(c) Hilbert 空间 $H$ 与 $L^p$（$1 < p < \\infty$，$1/p + 1/q = 1$）的配对满足满射性（Hilbert 情形用投影定理，$L^p$ 情形用 Radon–Nikodym）；因此 $H^* \\cong H$、$(L^p)^* \\cong L^q$。'
       ].join('\n'),
       notes: [
         '**证明 (a)**：由定范条件，$\\|x\\| = \\sup_{\\|y\\| \\le 1}|\\langle x, y\\rangle| = \\|T x\\|$，其中 $T x := \\langle x, \\cdot\\rangle$；由非退化 $T$ 单射，故 $T$ 是等距嵌入。对 $y$ 同理。$\\blacksquare$',
         '',
-        '**证明 (b)**：若 $T : X \\to Y^*$ 满射，则由等距性 $X \\cong Y^*$。对偶化得 $X^* \\cong Y^{**}$；把 (a) 用于 $Y$ 一侧得 $Y \\hookrightarrow X^*$ 等距嵌入。要证满：任取 $\\varphi \\in X^*$，它在 $X \\cong Y^*$ 下对应 $y_0 \\in Y$（$\\varphi(x) = \\langle x, y_0\\rangle$），这正是 $y \\mapsto \\langle\\cdot, y\\rangle$ 的像，故满。$\\blacksquare$',
+        '**证明 (b)**：设 $T$ 满射且 $Y$ 自反。$T$ 是等距同构 $X \\to Y^*$，故 $T^{*} : Y^{**} \\to X^{*}$ 是等距同构；又 $S = T^{*} \\circ J_Y$（验证：$T^{*} J_Y y (x) = J_Y y(T x) = \\langle x, y\\rangle = S y(x)$）。$Y$ 自反即 $J_Y$ 是满射（等距同构），故 $S = T^{*} \\circ J_Y$ 是满射。对称情形对偶化即可。$\\blacksquare$',
         '',
-        '**证明 (c)**：Hilbert 情形就是 `thm.riesz-hilbert`（每个连续线性泛函由内积给出）；$L^p$ 情形就是 `thm.riesz-representation-lp`（$(L^p)^* \\cong L^q$）。两条定理的证明里，满射性分别来自投影定理与 Radon–Nikodym（或测度论版本），配对本身只提供有界与定范。',
+        '**证明 (c)**：**Hilbert 情形（投影定理）**：取 $\\varphi \\in H^{*}$。若 $\\varphi = 0$ 取 $y = 0$；否则 $E := \\ker\\varphi$ 是闭真子空间，由正交分解（`thm.projection-subspace`）$H = E \\oplus E^{\\perp}$，取 $0 \\ne z \\in E^{\\perp}$；因 $z \\notin E$，$\\varphi(z) \\ne 0$。令 $y := \\overline{\\varphi(z)}\\, z / \\|z\\|^{2}$。对 $x = u + \\lambda z$（$u \\in E$）有 $\\varphi(x) = \\lambda\\varphi(z)$，而 $\\langle x, y\\rangle = \\lambda\\varphi(z)$，故 $\\varphi(x) = \\langle x, y\\rangle$；又 $\\|y\\| = |\\varphi(z)|/\\|z\\| = \\sup_{\\|x\\| \\le 1}|\\langle x, y\\rangle| = \\|\\varphi\\|$。**$L^{p}$ 情形（Radon–Nikodym）**：设 $\\Phi \\in (L^{p})^{*}$，先设 $\\mu$ 有限（一般测度按 $\\sigma$-有限分解）。令 $\\nu(E) := \\Phi(\\chi_{E})$；则 $\\nu \\ll \\mu$，由 Radon–Nikodym（`thm.lebesgue-radon-nikodym`）存在 $g \\in L^{1}(\\mu)$ 使 $\\nu(E) = \\int_{E} g\\,d\\mu$，从而 $\\Phi(f) = \\int f g\\,d\\mu$（先简单函数，再对 $f \\in L^{p}$ 逼近）。由 Hölder，$|\\Phi(f)| \\le \\|g\\|_{q}\\|f\\|_{p}$；取 $f = |g|^{q-1}\\overline{\\operatorname{sgn} g}/\\|g\\|_{q}^{q-1}$ 得 $\\|g\\|_{q} \\le \\|\\Phi\\|$，故 $g \\in L^{q}$ 且 $\\|g\\|_{q} = \\|\\Phi\\|$（$g$ 在 $\\mu$-a.e. 唯一）。$\\blacksquare$',
         '',
-        '⭐ 统一的意义：两个 Riesz 定理不再像两个孤立技巧，而是同一个「完美配对 + 该配对满射」框架的两个实例；`172-audit-c1.js` 里的类比边 `analogy` 现在有了正式的共同祖先。',
-        '⚠ 本图尚未立「Banach–Alaoglu / 弱拓扑 / Eberlein–Šmulian」节点；因此 (b) 的「谁满谁」只在具体例子里借 Riesz 定理验证，不试图从配对的三条公理推出满射（那是假的，见 `def.perfect-pairing` 的 $\\ell^1/c_0$ 反例）。'
+        '⭐ 统一的意义：两个 Riesz 定理是同一个「完美配对 + 该配对满射」框架的两个实例；(c) 的两个证明分别走投影定理与 Radon–Nikodym，不互相引用，因此不是循环。',
+        '⚠ **完美配对本身不含满射性**：$\\ell^1$ 与 $c_0$ 的配对中 $T : X \\to Y^*$ 满而 $S : Y \\to X^*$ 不满（见 `def.perfect-pairing` 的注）。故 (b) 必须带自反性假设；没有自反性时，「一个满 $\\implies$ 另一个满」是假命题。',
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基', 'Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 对偶与自反', 'Rudin, Real and Complex Analysis, Ch. 6'],
     },
@@ -1163,7 +1163,6 @@ window.MG = window.MG || {};
       id: 'thm.milman-pettis',
       cluster: 'fa.norm',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Milman–Pettis 定理',
       title: '一致凸 Banach 空间自反（Milman–Pettis）',
       regions: ['functional-analysis'],
@@ -1172,14 +1171,16 @@ window.MG = window.MG || {};
         '一致凸 Banach 空间（`def.uniformly-convex`）是自反的（`def.reflexive-space`）。'
       ].join('\n'),
       notes: [
-        '⚠ **本节点仍标 skeleton**：唯一未证的外部定理是 Goldstine 定理（见最后一段）；下面给出「Goldstine 推出自反」的完整归约，因此缺口只剩 Goldstine 与弱*拓扑的基本语言，不再有其它黑箱。',
-        '**框架（弱*拓扑）**：在 $X^{**}$ 上取由半范数族 $\\xi \\mapsto |\\langle \\varphi, \\xi \\rangle|$（$\\varphi \\in X^*$）诱导的局部凸拓扑，称为弱*拓扑；网 $\\xi_\\alpha \\to \\xi$ 当且仅当对每个 $\\varphi \\in X^*$ 有 $\\langle \\varphi, \\xi_\\alpha \\rangle \\to \\langle \\varphi, \\xi \\rangle$。自然嵌入 $J_X : X \\to X^{**}$ 满足 $\\langle \\varphi, J_X x \\rangle = \\varphi(x)$。',
-        '**Goldstine 定理（外部输入，本图无节点）**：$J_X(B_X)$ 在 $B_{X^{**}}$ 中弱*稠密。标准证明走 Hahn–Banach 分离（或用 Banach–Alaoglu 加 Krein–Milman）；本图既无 Hahn–Banach 节点，也无弱*拓扑/网收敛节点，故不在此展开。',
-        '**归约（假设 Goldstine）**：设 $X$ 一致凸，$\\xi \\in X^{**}$、$\\|\\xi\\| = 1$。任取 $\\varepsilon \\in (0, 2]$，取一致凸定义中的 $\\delta = \\delta(\\varepsilon) > 0$。由 Goldstine，存在网 $(x_\\alpha) \\subset B_X$ 弱*收敛到 $\\xi$。由 $\\|\\xi\\| = 1$ 可取 $\\varphi \\in X^*$、$\\|\\varphi\\| = 1$ 使 $\\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$（泛函范数的上确界定义）；于是 $\\operatorname{Re}\\varphi(x_\\alpha) \\to \\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$，且 $\\operatorname{Re}\\varphi(x_\\alpha) \\le \\|x_\\alpha\\| \\le 1$，故 $\\|x_\\alpha\\| \\to 1$。',
-        '记 $y_\\alpha = x_\\alpha / \\|x_\\alpha\\|$（当 $\\|x_\\alpha\\| > 0$；最终成立），则 $y_\\alpha \\in S_X$、$\\|y_\\alpha - x_\\alpha\\| \\to 0$，且 $\\operatorname{Re}\\varphi(y_\\alpha) \\to \\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$。对充分大的 $\\alpha, \\beta$：若 $\\|y_\\alpha - y_\\beta\\| \\ge \\varepsilon$，由一致凸性 $\\|(y_\\alpha + y_\\beta)/2\\| \\le 1 - \\delta$，但 $\\operatorname{Re}\\varphi((y_\\alpha + y_\\beta)/2) > 1 - \\delta/2 > 1 - \\delta$，与 $\\|\\cdot\\|$ 是范数矛盾；故最终 $\\|y_\\alpha - y_\\beta\\| < \\varepsilon$。于是 $(y_\\alpha)$ 是范数 Cauchy，$(x_\\alpha)$ 也是（因两者差趋于 0）。',
-        '由 $X$ 完备，$x_\\alpha \\to x \\in X$。范数收敛蕴含弱*收敛（$J_X x_\\alpha \\to J_X x$），而 $J_X x_\\alpha = x_\\alpha \\to \\xi$ 弱*；弱*极限唯一，故 $\\xi = J_X x$。对 $\\xi = 0$ 显然；对一般 $\\xi \\ne 0$ 用 $\\xi/\\|\\xi\\|$ 缩放。于是 $J_X$ 满射，$X$ 自反。$\\blacksquare$（在 Goldstine 的前提下）',
-        '**缺口清单**：① Goldstine 定理（唯一实质外部定理；本图无节点）；② 弱*拓扑与网收敛的定义（本图无独立节点，但已在上面用半范数族给出，可视为语言约定）。一旦 ① 有节点或被证明，本节点可删 skeleton。',
-        '📌 本图已有 `cor.lp-reflexive` 直接对 $L^p$ 验证自反；Milman–Pettis 是把「一致凸」这个几何条件转成「自反」的通用桥梁。',
+        "**证明**。设 $X$ 一致凸（`def.uniformly-convex`），$\\delta(\\varepsilon)$ 是其模。要证 $J_X : X \\to X^{**}$ 满射。$\\xi = 0$ 显然；设 $\\|\\xi\\| = 1$。取 $\\varepsilon \\in (0,2]$，令 $\\delta = \\delta(\\varepsilon)$。",
+        "**第一步：造弱*收敛到 $\\xi$ 的网。** 由 `thm.goldstine`，$J_X(B_X)$ 在 $B_{X^{**}}$ 的弱*拓扑下稠密，故存在网 $(x_\\alpha) \\subset B_X$ 使 $x_\\alpha \\to \\xi$（弱*）。",
+        "**第二步：$\\|x_\\alpha\\| \\to 1$。** 由 $\\|\\xi\\| = \\sup\\{\\,|\\xi(\\varphi)| : \\varphi \\in X^{*},\\ \\|\\varphi\\| \\le 1\\,\\}$ 取 $\\varphi \\in X^{*}$、$\\|\\varphi\\| = 1$ 使 $\\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$。弱*收敛给 $\\operatorname{Re}\\varphi(x_\\alpha) \\to \\operatorname{Re}\\varphi(\\xi)$；而 $\\operatorname{Re}\\varphi(x_\\alpha) \\le \\|x_\\alpha\\| \\le 1$，故最终 $\\|x_\\alpha\\| > 1 - \\delta/2$，即 $\\|x_\\alpha\\| \\to 1$。",
+        "**第三步：归一化。** 令 $y_\\alpha = x_\\alpha / \\|x_\\alpha\\|$（最终有定义），则 $y_\\alpha \\in S_X$ 且 $\\|y_\\alpha - x_\\alpha\\| = |1 - \\|x_\\alpha\\|| \\to 0$。于是 $\\operatorname{Re}\\varphi(y_\\alpha) \\to \\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$。",
+        "**第四步：$(y_\\alpha)$ 是范数 Cauchy。** 取 $\\alpha, \\beta$ 充分大。若 $\\|y_\\alpha - y_\\beta\\| \\ge \\varepsilon$，由一致凸（两个单位向量距离 $\\ge \\varepsilon$）得",
+        "$$\\left\\| \\frac{y_\\alpha + y_\\beta}{2} \\right\\| \\le 1 - \\delta.$$",
+        "但 $\\operatorname{Re}\\varphi\\left(\\frac{y_\\alpha + y_\\beta}{2}\\right) > 1 - \\delta/2$，而 $\\operatorname{Re}\\varphi(z) \\le \\|\\varphi\\|\\,\\|z\\| = \\|z\\|$，故 $\\|(y_\\alpha + y_\\beta)/2\\| > 1 - \\delta/2 > 1 - \\delta$，矛盾。所以最终 $\\|y_\\alpha - y_\\beta\\| < \\varepsilon$，$(y_\\alpha)$ 是范数 Cauchy。由 $\\|y_\\alpha - x_\\alpha\\| \\to 0$，$(x_\\alpha)$ 也是范数 Cauchy。",
+        "**第五步：极限落在 $X$ 里。** $X$ 完备，故存在 $x \\in X$ 使 $\\|x_\\alpha - x\\| \\to 0$。范数收敛蕴含弱*收敛：$J_X x_\\alpha \\to J_X x$。另一方面 $J_X x_\\alpha = x_\\alpha \\to \\xi$（弱*）。弱*拓扑 Hausdorff，极限唯一，故 $\\xi = J_X x$。于是 $J_X$ 满射，$X$ 自反。∎",
+        "**用到的外部输入**：只有 `thm.goldstine`（它由 `thm.hahn-banach` 与 `thm.banach-alaoglu` 推出，见各自的注释）。弱*拓扑与网收敛的语言在 `thm.goldstine` 与 `thm.banach-alaoglu` 的注释里给出，本条不再另立定义节点。",
+        "📌 本图已有 `cor.lp-reflexive` 直接对 $L^p$ 验证自反；Milman–Pettis 是把「一致凸」这个几何条件转成「自反」的通用桥梁，也是 `def.uniformly-convex` 在泛函分析里最主要的用途。",
       ].join('\n\n'),
       refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 一致凸与自反', 'Conway, A Course in Functional Analysis · Banach 空间'],
     },
@@ -1196,11 +1197,13 @@ window.MG = window.MG || {};
         'Banach 空间 $X$ 自反（`def.reflexive-space`）当且仅当每个 $\\varphi \\in X^*$ 都在单位球 $B_X$ 上达到其范数：存在 $x \\in B_X$ 使 $\\varphi(x) = \\|\\varphi\\|$。'
       ].join('\n'),
       notes: [
-        '⚠ **本节点仍标 skeleton**：($\\Longleftarrow$) 方向就是 James 定理本身（本图无节点、且是深定理）；($\\Longrightarrow$) 方向可在 Banach–Alaoglu 的前提下写完整，见下。',
-        '**($\\Longrightarrow$) 方向（模 Banach–Alaoglu）**：设 $X$ 自反，$J_X : X \\to X^{**}$ 是满射等距，故 $J_X(B_X) = B_{X^{**}}$。Banach–Alaoglu 定理说 $B_{X^{**}}$ 在弱*拓扑下紧；而 $X$ 的弱拓扑 $\\sigma(X, X^*)$ 正是 $J_X$ 拉回的弱*拓扑，所以 $B_X$ 弱紧。任取 $\\varphi \\in X^*$，$\\varphi$ 在弱拓扑下连续，$|\\varphi|$ 在弱紧集 $B_X$ 上达到最大值；最大值等于 $\\|\\varphi\\|$（由 $\\|\\varphi\\| = \\sup_{x \\in B_X}|\\varphi(x)|$），故存在 $x \\in B_X$ 使 $\\varphi(x) = \\|\\varphi\\|$。$\\blacksquare$',
-        '**($\\Longleftarrow$) 方向 = James 定理（外部，深）**：若 $X$ 不自反，则存在 $\\varphi \\in X^*$ 在 $B_X$ 上达不到范数。证明不是「取弱*极限」能得到的：需要 James 的构造——从 $\\xi \\in X^{**} \\setminus J_X(X)$ 出发，递归地造单位球中的点与泛函，用分离/对角线论证逼出一个在 $B_X$ 上不可达的泛函（James 1951 对可分情形、1957 对一般 Banach 空间）。本图无弱拓扑、无 Banach–Alaoglu、无该构造，故不展开。',
-        '**缺口清单**：① Banach–Alaoglu 定理（本图无节点）；② 弱拓扑/弱*拓扑的定义与紧性（本图无节点）；③ James 定理的 ($\\Longleftarrow$) 方向（外部深定理，需专文）。因此本节点保留 skeleton。',
-        '📌 本图只有正向的具体例子：Hilbert 空间与 $L^p$（$1<p<\\infty$）自反，故每个泛函达到范数（由 Riesz 表示可直接看出）。',
+        "⚠ **本条仍标 skeleton**：($\\Longleftarrow$) 方向就是 James 定理本身（James 1951 可分、1957 一般 Banach 空间），本图没有它，也不打算在这里造一个假证明。($\\Longrightarrow$) 方向只用一个外部定理 `thm.banach-alaoglu`。",
+        "**($\\Longrightarrow$) 方向。** 设 $X$ 自反，即 $J_X : X \\to X^{**}$ 是满射等距，于是 $J_X(B_X) = B_{X^{**}}$。",
+        "在 $X^{**}$ 上取弱*拓扑；由 `thm.banach-alaoglu`，$B_{X^{**}}$ 弱*紧。$X$ 的弱拓扑 $\\sigma(X,X^{*})$ 正是 $J_X$ 从弱*拓扑拉回的拓扑：两者都由半范数 $x \\mapsto |\\varphi(x)|$（$\\varphi \\in X^{*}$）生成，且 $J_X$ 是等距满射。因此 $B_X = J_X^{-1}(B_{X^{**}})$ 在弱拓扑下紧。",
+        "任取 $\\varphi \\in X^{*}$。$\\varphi$ 在弱拓扑下连续（弱拓扑就是使 $X^{*}$ 全部连续的最弱拓扑），故 $|\\varphi|$ 在弱紧集 $B_X$ 上达到最大值。最大值等于 $\\|\\varphi\\|$，因为 $\\|\\varphi\\| = \\sup_{x \\in B_X} |\\varphi(x)|$。于是存在 $x \\in B_X$ 使 $\\varphi(x) = \\|\\varphi\\|$。$\\blacksquare$",
+        "**($\\Longleftarrow$) 方向（缺口，本图无节点）。** 若 $X$ 不自反，则存在 $\\varphi \\in X^{*}$ 在 $B_X$ 上达不到范数。James 的构造从 $\\xi \\in X^{**} \\setminus J_X(X)$ 出发，递归地造 $B_X$ 中的点与泛函，用分离与对角线论证逼出一个泛函，使它在 $\\sup$ 处取不到值。这条论证不是「取弱*极限」能替代的，本图既不写也不假装写过。",
+        "**缺口清单（精确）**：① 反向 James 定理（James 1957，外部深定理，本图无节点）；($\\Longrightarrow$) 方向已无缺口 —— 它的唯一外部输入 `thm.banach-alaoglu` 已有节点与证明。",
+        "📌 正向的具体例子：Hilbert 空间与 $L^p$（$1 < p < \\infty$）自反，故每个泛函达到范数（由 Riesz 表示可直接看出）。",
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Banach 空间', 'Diestel, Sequences and Series in Banach Spaces, Ch. 3'],
      },
@@ -1216,6 +1219,73 @@ window.MG = window.MG || {};
       notes: '**基本事实**：范数收敛推出弱收敛，反之不然。例如 $\\ell^{2}$ 中的标准基 $e_{n}\\rightharpoonup0$（弱收敛），但 $\\|e_{n}\\|=1$ 不趋于 $0$。\n\n**为什么用它**：弱拓扑把对偶的元素都变成连续函数，于是可以用泛函分离点、取弱紧性；自反空间的有界闭球弱紧（Eberlein–Šmulian，本图尚无节点）。\n\n**与弱*拓扑的区别**：弱*拓扑在 $E^{*}$ 上由 $E$ 的元素 $x\\mapsto\\varphi(x)$ 生成，$E^{*}$ 的弱*紧性即 Banach–Alaoglu 定理（本图尚无节点）。\n\n⚠ 弱拓扑不是范数拓扑：弱开集比范数开集少得多；无限维赋范空间的弱拓扑不第一可数。',
       refs: ['Rudin, Functional Analysis, Ch. 3 · weak topology', 'Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations, Ch. 3 · weak topology'],
     },
+    {
+      "id": "thm.hahn-banach",
+      "cluster": "fa.norm",
+      "type": "theorem",
+      "label": "Hahn–Banach 定理",
+      "title": "Hahn–Banach：次线性控制下的线性延拓",
+      "regions": [
+        "functional-analysis"
+      ],
+      "tags": [
+        "泛函分析",
+        "Hahn-Banach",
+        "延拓",
+        "Zorn 引理"
+      ],
+      "statement": "设 $X$ 是**实**向量空间，$p : X \\to \\mathbb{R}$ 是**次线性**的（$p(x + y) \\le p(x) + p(y)$，且 $p(tx) = t\\,p(x)$ 对 $t \\ge 0$），$M \\subseteq X$ 是子空间，$f : M \\to \\mathbb{R}$ 线性且满足 $f \\le p$ 于 $M$。则存在线性 $F : X \\to \\mathbb{R}$ 使 $F|_M = f$ 且 $F \\le p$。\n\n**保范延拓（推论）**：设 $X$ 是赋范空间，$M \\subseteq X$ 子空间，$\\varphi \\in M^{*}$。则存在 $\\Phi \\in X^{*}$ 使 $\\Phi|_M = \\varphi$ 且 $\\|\\Phi\\| = \\|\\varphi\\|$。",
+      "notes": "**第一步：一维延拓引理。** 设 $x_0 \\notin M$，$N = M \\oplus \\mathbb{R}x_0$。要在 $N$ 上定义 $g(m + t x_0) = f(m) + t c$ 并保持 $g \\le p$，等价于对一切 $m \\in M$ 有\n\n$f(m) + c \\le p(m + x_0), \\qquad f(m) - c \\le p(m - x_0).$\n\n即 $c$ 落在区间 $[\\sup_m (f(m) - p(m - x_0)),\\ \\inf_m (p(m + x_0) - f(m))]$ 里。此区间非空，因为对任意 $m_1, m_2 \\in M$，由次线性性\n\n$f(m_1) + f(m_2) = f(m_1 + m_2) \\le p(m_1 + m_2) \\le p(m_1 - x_0) + p(m_2 + x_0),$\n\n即 $f(m_1) - p(m_1 - x_0) \\le p(m_2 + x_0) - f(m_2)$。任取 $c$ 落在其间，延拓即成立。\n\n**第二步：Zorn。** 考虑所有「$g$ 定义在子空间 $N \\supseteq M$ 上、线性、$g|_M = f$、$g \\le p$ 于 $N$」的对象，按「延拓」排序（$g_1 \\preceq g_2$ 当 $g_2$ 的定义域更大且在 $g_1$ 上等于 $g_1$）。全序子族的并仍是这种对象（定义域取并、线性与 $\\le p$ 逐点验证），由 `lem.zorn` 得极大元 $F$。若 $\\operatorname{dom} F \\ne X$，取 $x_0 \\notin \\operatorname{dom} F$ 用第一步再延拓，与极大性矛盾。故 $F$ 定义在整个 $X$ 上。$\\blacksquare$\n\n**第三步：保范延拓。** 取 $p(x) = \\|\\varphi\\| \\cdot \\|x\\|$（次线性），$f = \\varphi$，则 $\\varphi \\le p$ 于 $M$。得线性 $\\Phi$ 使 $\\Phi|_M = \\varphi$、$\\Phi \\le p$ 于 $X$。对 $x$ 与 $-x$ 分别用 $\\Phi \\le p$ 得 $|\\Phi(x)| \\le \\|\\varphi\\|\\,\\|x\\|$，故 $\\|\\Phi\\| \\le \\|\\varphi\\|$；反向由延拓给出，故相等。$\\blacksquare$\n\n**复空间的情形**：把 $\\varphi$ 看成实线性泛函，延拓后令 $\\Phi_{\\mathbb C}(x) = \\Psi(x) - i\\,\\Psi(ix)$，可验证它复线性且保范。\n\n📌 本条只证「次线性控制」这一形式；几何形式（点与闭凸集的分离）由它导出，用在 `thm.goldstine` 的注里。",
+      "refs": [
+        "Rudin, Functional Analysis, Thm 3.2 · Hahn–Banach",
+        "Brezis, Functional Analysis, Thm 1.1 · Hahn–Banach"
+      ]
+      },
+    {
+      "id": "thm.banach-alaoglu",
+      "cluster": "fa.norm",
+      "type": "theorem",
+      "label": "Banach–Alaoglu 定理",
+      "title": "Banach–Alaoglu：对偶球的弱*紧性",
+      "regions": [
+        "functional-analysis"
+      ],
+      "tags": [
+        "泛函分析",
+        "Banach 空间",
+        "弱*拓扑",
+        "紧性",
+        "对偶"
+      ],
+      "statement": "设 $X$ 是赋范空间，$X^{*}$ 其连续对偶，$B_{X^{*}} = \\{\\varphi \\in X^{*} : \\|\\varphi\\| \\le 1\\}$。则 $B_{X^{*}}$ 在**弱*拓扑** $\\sigma(X^{*}, X)$（由半范数 $\\varphi \\mapsto |\\varphi(x)|$，$x \\in X$ 生成）下紧。",
+      "notes": "**弱*拓扑 = 积拓扑的限制。** 令 $P = \\prod_{x \\in X} [-\\|x\\|, \\|x\\|]$，映射 $\\Phi : B_{X^{*}} \\to P$，$\\Phi(\\varphi) = (\\varphi(x))_{x \\in X}$。由 $|\\varphi(x)| \\le \\|\\varphi\\|\\,\\|x\\| \\le \\|x\\|$，像落在 $P$ 里；$\\Phi$ 是单射，且弱*拓扑正是 $P$ 的积拓扑在 $B_{X^{*}}$ 上拉回的拓扑（每个坐标都是弱*连续的，坐标族又分离点）。\n\n**像闭。** 设 $\\Phi(\\varphi_\\alpha) \\to y = (y_x)$ 于 $P$。定义 $\\varphi(x) = y_x$。线性：$y_{x + z} = \\lim \\varphi_\\alpha(x + z) = \\lim(\\varphi_\\alpha(x) + \\varphi_\\alpha(z)) = y_x + y_z$，同理 $y_{tx} = t y_x$。有界：$|y_x| \\le \\|x\\|$，故 $\\|\\varphi\\| \\le 1$。于是 $y = \\Phi(\\varphi) \\in \\Phi(B_{X^{*}})$，像闭。\n\n**紧。** $P$ 是紧空间的积（每个 $[-\\|x\\|,\\|x\\|]$ 紧），由 `thm.tykhonov` 紧；闭子集 $\\Phi(B_{X^{*}})$ 紧；$\\Phi$ 是到其像上的同胚（连续双射、紧 $\\to$ Hausdorff），故 $B_{X^{*}}$ 弱*紧。$\\blacksquare$\n\n⚠ 弱*拓扑不是范数拓扑：$B_{X^{*}}$ 在范数拓扑下一般不紧（$X$ 无限维时）。本条的紧性只在弱*意义下成立。\n\n📌 用途：`thm.james` 的正向（自反 $\\implies$ 泛函达到范数）要用「$B_X$ 弱紧」；而「自反 $\\implies$ $B_X$ 弱紧」正是把本条用到 $X^{**}$ 上、再沿 $J_X$ 拉回。",
+      "refs": [
+        "Rudin, Functional Analysis, Thm 3.15 · Banach–Alaoglu",
+        "Brezis, Functional Analysis, Thm 3.16"
+      ]
+      },
+    {
+      "id": "thm.goldstine",
+      "cluster": "fa.norm",
+      "type": "theorem",
+      "label": "Goldstine 定理",
+      "title": "Goldstine：$B_X$ 在 $B_{X^{**}}$ 中弱*稠密",
+      "regions": [
+        "functional-analysis"
+      ],
+      "tags": [
+        "泛函分析",
+        "Banach 空间",
+        "弱*拓扑",
+        "自反"
+      ],
+      "statement": "设 $X$ 是赋范空间，$J_X : X \\to X^{**}$ 是自然嵌入。则 $J_X(B_X)$ 在 $B_{X^{**}}$ 的**弱*拓扑**下稠密。",
+      "notes": "**准备：弱*连续线性泛函都是求值。** 设 $\\ell$ 是 $(X^{**}, w^{*})$ 上的连续线性泛函。连续性给 $x_1,\\ldots,x_n \\in X$ 与 $c > 0$ 使 $|\\ell(\\xi)| \\le c \\max_j |\\xi(x_j)|$。于是 $\\ell$ 通过 $\\xi \\mapsto (\\xi(x_1),\\ldots,\\xi(x_n))$ 分解，从而是这些坐标的线性组合：$\\ell = \\sum_j c_j\\, \\mathrm{ev}_{x_j} = \\mathrm{ev}_{\\,x}$，其中 $x = \\sum_j c_j x_j \\in X$。即 $(X^{**}, w^{*})^{*} = J_X(X)$。\n\n**分离引理（Hahn–Banach 的几何形式，由 `thm.hahn-banach` 导出）。** 设 $K$ 是局部凸空间中的闭凸集、$\\xi_0 \\notin K$，则存在连续线性泛函 $\\ell$ 与 $\\alpha$ 使 $\\ell(\\xi_0) > \\alpha \\ge \\sup_K \\ell$。取 $K - \\xi_0$ 的 Minkowski 泛函 $p$（次线性、在 $K - \\xi_0$ 上 $\\le 1$），在直线 $\\mathbb{R}(\\xi_0 - k_0)$ 上定义 $\\ell_0(t(\\xi_0 - k_0)) = t$（$k_0 \\in K$ 任取），验证 $\\ell_0 \\le p$，用 `thm.hahn-banach` 延拓成 $\\ell \\le p$，再对 $\\pm$ 取绝对值即可。\n\n**主证明。** 设 $K = \\overline{J_X(B_X)}^{w^{*}} \\subseteq B_{X^{**}}$（闭凸紧）。若 $K \\ne B_{X^{**}}$，取 $\\xi_0 \\in B_{X^{**}} \\setminus K$。由分离引理，存在弱*连续线性泛函 $\\ell$ 使 $\\ell(\\xi_0) > \\sup_{K} \\ell$。由准备，$\\ell = \\mathrm{ev}_x$（某 $x \\in X$）。于是\n\n$\\xi_0(x) > \\sup_{\\eta \\in K} \\eta(x) \\ge \\sup_{y \\in B_X} (J_X y)(x) = \\sup_{y \\in B_X} x(y) = \\|x\\|.$\n\n但 $\\xi_0 \\in B_{X^{**}}$ 给出 $\\xi_0(x) \\le \\|\\xi_0\\|\\,\\|x\\| \\le \\|x\\|$，矛盾。故 $K = B_{X^{**}}$，即 $J_X(B_X)$ 弱*稠密。$\\blacksquare$\n\n⚠ 稠密不等于闭：一般情况下 $J_X(B_X)$ 确实不是弱*闭的（它弱*闭当且仅当 $X$ 自反），这正是 `thm.milman-pettis` 要用的那一点。\n\n📌 本条的几何分离引理只用到 `thm.hahn-banach`；两条合起来把「$X$ 自反」变成一个纯几何条件：$B_{X^{**}}$ 中每点都落在 $J_X(B_X)$ 的弱*闭包里。",
+      "refs": [
+        "Conway, A Course in Functional Analysis, Thm V.4.1 · Goldstine",
+        "Brezis, Functional Analysis, Thm 3.17"
+      ]
+      },
   ],
 
   edges: [
@@ -1238,19 +1308,22 @@ window.MG = window.MG || {};
     {
       id: 'imp.fa-perfectpairing-riesz',
       kind: 'implication',
-      sources: ['def.perfect-pairing'],
+      sources: ['def.perfect-pairing', 'def.reflexive-space', 'thm.projection-subspace', 'thm.lebesgue-radon-nikodym'],
       target: 'thm.riesz-perfect-pairing',
-      title: '完美配对 $\\implies$ 两个 Riesz 嵌入与互满准则',
+      layer: false,
+      title: '完美配对 $\\implies$ Riesz 表示框架（含 Hilbert 与 $L^{p}$ 两个特例）',
       proof: [
         '设 $(X, Y, \\langle\\cdot,\\cdot\\rangle)$ 是完美配对。',
         '',
         '**(a)** 令 $T x = \\langle x, \\cdot\\rangle \\in Y^*$。由定义第三条，$\\|x\\| = \\sup_{\\|y\\| \\le 1}|\\langle x, y\\rangle| = \\|T x\\|$；由第一条，$T x = 0 \\implies x = 0$。故 $T$ 是等距嵌入。对 $S y = \\langle\\cdot, y\\rangle \\in X^*$ 同理。',
         '',
-        '**(b)** 若 $T$ 满，则 $T$ 是等距同构 $X \\to Y^*$。对偶化得 $T^* : Y^{**} \\to X^*$ 等距同构；而 $S : Y \\to X^*$ 是等距嵌入，且 $T^*$ 把 $J_Y(Y)$ 送到 $S(Y)$（验证：$T^* J_Y y (x) = J_Y y(T x) = \\langle x, y\\rangle = S y(x)$）。$J_Y$ 总是等距，故 $S(Y) = T^* J_Y(Y)$ 在 $T^*$ 下同构于 $Y$，而 $T^*$ 满（同构），所以 $S$ 也满。$\\blacksquare$',
+        '**(b)** 若 $T$ 满且 $Y$ 自反：$T$ 是等距同构 $X \\to Y^*$，故 $T^{*} : Y^{**} \\to X^{*}$ 是等距同构；又 $S = T^{*} \\circ J_Y$（验证：$T^{*} J_Y y (x) = J_Y y(T x) = \\langle x, y\\rangle = S y(x)$）。$Y$ 自反即 $J_Y$ 满射（等距同构），故 $S = T^{*} \\circ J_Y$ 满射；对称情形对偶化即可。$\\blacksquare$',
         '',
-        '于是 (b) 成立。(c) 的满射性不属于本边：它分别由 `thm.riesz-hilbert`（投影定理）与 `thm.riesz-representation-lp`（Radon–Nikodym）提供，见 `imp.riesz-hilbert-pink`、`imp.riesz-lp-pink`。'
+        '**(c)，Hilbert 情形（投影定理）**：取 $\\varphi \\in H^{*}$。若 $\\varphi = 0$ 取 $y = 0$；否则 $E := \\ker\\varphi$ 是闭真子空间，由正交分解（`thm.projection-subspace`）取 $0 \\ne z \\in E^{\\perp}$，令 $y := \\overline{\\varphi(z)}\\, z / \\|z\\|^{2}$。对 $x = u + \\lambda z$（$u \\in E$）有 $\\varphi(x) = \\lambda\\varphi(z) = \\langle x, y\\rangle$；又 $\\|y\\| = |\\varphi(z)|/\\|z\\| = \\sup_{\\|x\\| \\le 1}|\\langle x, y\\rangle| = \\|\\varphi\\|$，故 $H^{*} \\cong H$。',
+        '',
+        '**(c)，$L^{p}$ 情形（Radon–Nikodym）**：设 $\\Phi \\in (L^{p})^{*}$，先设 $\\mu$ 有限（一般测度按 $\\sigma$-有限分解）。令 $\\nu(E) := \\Phi(\\chi_{E})$；则 $\\nu \\ll \\mu$，由 Radon–Nikodym（`thm.lebesgue-radon-nikodym`）存在 $g \\in L^{1}(\\mu)$ 使 $\\nu(E) = \\int_{E} g\\,d\\mu$，从而 $\\Phi(f) = \\int f g\\,d\\mu$（先简单函数，再对 $f \\in L^{p}$ 逼近）。由 Hölder，$|\\Phi(f)| \\le \\|g\\|_{q}\\|f\\|_{p}$；取 $f = |g|^{q-1}\\overline{\\operatorname{sgn} g}/\\|g\\|_{q}^{q-1}$ 得 $\\|g\\|_{q} \\le \\|\\Phi\\|$，故 $g \\in L^{q}$ 且 $\\|g\\|_{q} = \\|\\Phi\\|$（$g$ 在 $\\mu$-a.e. 唯一）。$\\blacksquare$'
       ].join('\n'),
-      note: '注意 (b) 只用「一个满」推出「另一个满」，不声称三条公理本身蕴含满射——反例见 `def.perfect-pairing` 的 $\\ell^1/c_0$。'
+      note: '这条边把框架定理的三部分一起证完：(a) 只用完美配对的三条公理；(b) 另需自反性：$Y$ 自反时用 $J_Y$；对称地用 $J_X$；(c) 的两个特例分别用投影定理（`thm.projection-subspace`）与 Radon–Nikodym（`thm.lebesgue-radon-nikodym`）直接证明，不引用 `thm.riesz-hilbert` 或 `thm.riesz-representation-lp`。因 (c) 使用了层号高于本定理的分析结果，本边标 `layer:false`：它是推出，但不参与层号排序。'
     },
     { id: 'def-link.uc-norm', kind: 'definition', definition: 'def.norm',
       usedBy: 'def.uniformly-convex',
@@ -1281,6 +1354,12 @@ window.MG = window.MG || {};
     { id: 'def-link.ref-banach', kind: 'definition', definition: 'def.banach-space',
       usedBy: 'def.reflexive-space',
       note: '自反性是对 Banach 空间说的（完备性用于 $X^{**}$ 的范数结构）。' },
+    { id: 'def-link.rieszhil-hilbert', kind: 'definition', definition: 'def.hilbert-space',
+      usedBy: 'thm.riesz-hilbert',
+      note: 'Riesz 表示的舞台是 Hilbert 空间；完备性用于正交分解与投影。' },
+    { id: 'def-link.rieszhil-dual', kind: 'definition', definition: 'def.dual-banach',
+      usedBy: 'thm.riesz-hilbert',
+      note: '结论 $H^{*} \\cong H$ 说的正是对偶 Banach 空间与 $H$ 等距同构。' },
     {
       id: 'ana.reflexive-perfect-pairing',
       kind: 'analogy',
@@ -1297,7 +1376,7 @@ window.MG = window.MG || {};
     { id: 'def-link.mp-ref', kind: 'definition', definition: 'def.reflexive-space',
       usedBy: 'thm.milman-pettis',
       note: 'Milman–Pettis 的结论：自反。' },
-    { id: 'def-link.james-ref', kind: 'definition', definition: 'def.reflexive-space',
+    {status: 'skeleton',  id: 'def-link.james-ref', kind: 'definition', definition: 'def.reflexive-space',
       usedBy: 'thm.james',
       note: 'James 定理用自反性刻画「每个泛函达到范数」。' },
     { id: 'def-link.rieszhil-pp', kind: 'definition', definition: 'def.perfect-pairing',
@@ -1306,21 +1385,21 @@ window.MG = window.MG || {};
     { id: 'def-link.rieszlp-pp', kind: 'definition', definition: 'def.perfect-pairing',
       usedBy: 'thm.riesz-representation-lp',
       note: '$L^p$ 的 Riesz 表示所用的配对 $(L^p, L^q)$ 是完美配对，且映射满。' },
-    { kind: 'definition', definition: 'def.vector-space', usedBy: 'def.convex-set',
+    {id: "e163.definition", kind: 'definition', definition: 'def.vector-space', usedBy: 'def.convex-set',
       note: '凸集是向量空间的子集；凸性只用仿射结构，不用范数。' },
-    { kind: 'definition', definition: 'def.convex-set', usedBy: 'thm.projection-convex',
+    {id: "e164.definition", kind: 'definition', definition: 'def.convex-set', usedBy: 'thm.projection-convex',
       note: '投影定理的核心假设：凸、闭、非空。' },
-    { kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-convex',
+    {id: "e165.definition", kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-convex',
       note: '投影定理的另一个核心假设：$C$ 闭（极小化序列的极限仍落在 $C$ 里）。' },
-    { kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-subspace',
+    {id: "e166.definition", kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-subspace',
       note: '正交分解要求子空间 $E$ 闭；否则最近点可能不落在 $E$ 里。' },
-    { kind: 'definition', definition: 'def.hilbert-space', usedBy: 'thm.projection-subspace',
+    {id: "e167.definition", kind: 'definition', definition: 'def.hilbert-space', usedBy: 'thm.projection-subspace',
       note: '正交投影与正交分解在 Hilbert 空间中进行，完备性用于调用凸闭集投影。' },
-    { kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-hull',
+    {id: "e168.definition", kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-hull',
       note: '凸包定义为包含 $S$ 的最小凸集，直接用凸集概念。' },
-    { kind: 'definition', definition: 'def.star-shaped', usedBy: 'lem.poincare-lemma',
+    {id: "e169.definition", kind: 'definition', definition: 'def.star-shaped', usedBy: 'lem.poincare-lemma',
       note: 'Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。' },
-    { kind: 'implication', sources: ['def.convex-set'], target: 'def.star-shaped',
+    {id: "e170.implication", kind: 'implication', sources: ['def.convex-set'], target: 'def.star-shaped',
       title: '非空凸集 $\\implies$ 星形集',
       proof: [
         '设 $C \\ne \\emptyset$ 凸，取 $x_{0} \\in C$。对任意 $x \\in C$、$t \\in [0,1]$，由凸性 $(1-t)x_{0} + tx \\in C$。',
@@ -1328,11 +1407,11 @@ window.MG = window.MG || {};
       ].join('\n'),
       note: '「非空」不能省：空集是凸的但不是星形集（没有星点）。逆命题也不成立：十字形星形但不凸。'
     },
-    { kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-combination',
+    {id: "e171.definition", kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-combination',
       note: '凸组合是凸集对有限线性组合封闭的载体；两点情形就是凸集定义里的线段。' },
-    { kind: 'definition', definition: 'def.convex-combination', usedBy: 'def.convex-hull',
+    {id: "e172.definition", kind: 'definition', definition: 'def.convex-combination', usedBy: 'def.convex-hull',
       note: '凸包的有限凸组合刻画直接用到凸组合。' },
-    { kind: 'definition', definition: 'def.convex-hull', usedBy: 'def.standard-simplex',
+    {id: "e173.definition", kind: 'definition', definition: 'def.convex-hull', usedBy: 'def.standard-simplex',
       note: '标准单纯形正是其顶点集的凸包；这里把几何单纯形与凸包概念接上。' },
     {
       id: 'imp.fa-riesz-laxmilgram',
@@ -1416,13 +1495,12 @@ window.MG = window.MG || {};
       sources: ['thm.riesz-perfect-pairing'],
       target: 'thm.riesz-hilbert',
       layer: false,
-      title: '配对框架到 Hilbert 版 Riesz 表示（框架到实例）',
+      title: '框架到实例：Hilbert 版 Riesz 表示',
       proof: [
-        '由 `thm.riesz-perfect-pairing` (c)，Hilbert 内积配对满足满射性；结合 (a) 的等距性，$T:x\\mapsto\\langle x,\\cdot\\rangle$ 是等距同构 $H\\to H^{*}$。',
-        '这正是 `thm.riesz-hilbert` 的内容（$H^{*}\\cong H$）。(c) 的满射性由投影定理/正交分解提供，与 target 的证明一致。',
-        '因此这条边把定理 (c) 拆成具体入口（框架到实例），`layer: false` 表示它不参与分层。'
+        '由 (c) 的 Hilbert 特例，内积配对 $(H, H, \\langle\\cdot,\\cdot\\rangle)$ 满射：对任意 $\\varphi \\in H^{*}$ 存在 $y \\in H$ 使 $\\varphi(x) = \\langle x, y\\rangle$。',
+        '再由完美配对定范条件，$\\|y\\| = \\sup_{\\|x\\| \\le 1}|\\langle x, y\\rangle| = \\|\\varphi\\|$，故 $y \\mapsto \\langle\\cdot, y\\rangle$ 是等距同构 $H \\to H^{*}$。$\\blacksquare$'
       ].join('\n'),
-      note: '这是把定理 (c) 拆成具体入口的回头边；满射性由 (c) 的证明（投影定理/正交分解）提供。'
+      note: '框架到实例的回头推论（打包，不提供独立证明），不参与分层：目标定理是 (c) 的 Hilbert 特例；(c) 的证明只用投影定理，不依赖本定理。'
     },
     {
       id: 'imp.riesz-lp-pink',
@@ -1430,13 +1508,22 @@ window.MG = window.MG || {};
       sources: ['thm.riesz-perfect-pairing'],
       target: 'thm.riesz-representation-lp',
       layer: false,
-      title: '配对框架到 $L^p$ 版 Riesz 表示（框架到实例）',
+      title: '框架到实例：$L^{p}$ 版 Riesz 表示',
       proof: [
-        '由 `thm.riesz-perfect-pairing` (c)，$(L^{p},L^{q})$ 配对满足满射性；结合 (a) 的等距性，$g\\mapsto\\int(\\cdot)g$ 是等距同构 $L^{q}\\to(L^{p})^{*}$。',
-        '这正是 `thm.riesz-representation-lp` 的内容（$(L^{p})^{*}\\cong L^{q}$）。(c) 的满射性由 Radon–Nikodym 提供，与 target 的证明一致。',
-        '因此这条边把定理 (c) 拆成具体入口（框架到实例），`layer: false` 表示它不参与分层。'
+        '由 (c) 的 $L^{p}$ 特例，配对 $(L^{p}, L^{q}, \\int f g\\,d\\mu)$ 满射：对任意 $\\Phi \\in (L^{p})^{*}$ 存在（a.e. 唯一的）$g \\in L^{q}$ 使 $\\Phi(f) = \\int f g\\,d\\mu$。',
+        '再由 Hölder 与极值函数，$\\|g\\|_{q} = \\|\\Phi\\|$，故 $g \\mapsto \\Phi_{g}$ 是等距同构 $L^{q} \\to (L^{p})^{*}$。$\\blacksquare$'
       ].join('\n'),
-      note: '这是把定理 (c) 拆成具体入口的回头边；满射性由 (c) 的证明（Radon–Nikodym）提供。'
-    }
+      note: '框架到实例的回头推论（打包，不提供独立证明），不参与分层：目标定理是 (c) 的 $L^{p}$ 特例；(c) 的证明只用 Radon–Nikodym，不依赖本定理。'
+    },
+    {"id":"dep.hb-zorn","kind":"definition","definition":"lem.zorn","usedBy":"thm.hahn-banach","note":"延拓用 Zorn 引理取极大元。"},
+    {"id":"dep.hb-norm","kind":"definition","definition":"def.norm","usedBy":"thm.hahn-banach","note":"保范延拓推论取 $p(x) = \\|\\varphi\\|\\,\\|x\\|$。"},
+    {"id":"dep.ba-tych","kind":"definition","definition":"thm.tykhonov","usedBy":"thm.banach-alaoglu","note":"积 $\\prod_x [-\\|x\\|,\\|x\\|]$ 的紧性来自 Tychonoff。"},
+    {"id":"dep.ba-dual","kind":"definition","definition":"def.dual-banach","usedBy":"thm.banach-alaoglu","note":"弱*拓扑建在连续对偶上。"},
+    {"id":"dep.gs-hb","kind":"definition","definition":"thm.hahn-banach","usedBy":"thm.goldstine","note":"点与闭凸集的分离用 Hahn–Banach 的几何形式。"},
+    {"id":"dep.gs-ba","kind":"definition","definition":"thm.banach-alaoglu","usedBy":"thm.goldstine","note":"$B_{X^{**}}$ 弱*紧（把 Banach–Alaoglu 用到 $X^{*}$ 上）。"},
+    {"id":"dep.gs-weakstar","kind":"definition","definition":"def.weak-topology","usedBy":"thm.goldstine","note":"弱*拓扑是弱拓扑在对偶上的对偶版本，本条只用其半范数刻画。"},
+    {"id":"imp.milman-pettis","kind":"implication","sources":["thm.goldstine","def.uniformly-convex"],"target":"thm.milman-pettis","title":"Goldstine + 一致凸 $\\implies$ 自反","proof":"设 $\\xi \\in B_{X^{**}}$。Goldstine 给网 $(x_\\alpha) \\subset B_X$ 弱*收敛到 $\\xi$；取 $\\varphi$ 使 $\\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$ 得 $\\|x_\\alpha\\| \\to 1$；归一化后由一致凸知 $(y_\\alpha)$ 是范数 Cauchy，故 $x_\\alpha \\to x \\in X$；弱*极限唯一给出 $\\xi = J_X x$，$J_X$ 满射。详见节点注。∎","note":"本条把 Milman–Pettis 归到 Goldstine（`thm.goldstine`）这一个外部定理上；Goldstine 自身由 `thm.hahn-banach` 与 `thm.banach-alaoglu` 支撑。"},
+    {status: 'skeleton', "id":"dep.james-ba","kind":"definition","definition":"thm.banach-alaoglu","usedBy":"thm.james","note":"正向（自反 $\\implies$ 泛函达到范数）要用弱*紧性：$B_{X^{**}}$ 弱*紧，沿 $J_X$ 拉回得 $B_X$ 弱紧。反向不需要它。"},
+    {status: 'skeleton', "id":"dep.james-weak","kind":"definition","definition":"def.weak-topology","usedBy":"thm.james","note":"弱拓扑 $\\sigma(X,X^{*})$ 是「使 $X^{*}$ 全部连续」的最弱拓扑；正向用它把 $\\varphi$ 变成弱连续函数。"},
   ]
 });

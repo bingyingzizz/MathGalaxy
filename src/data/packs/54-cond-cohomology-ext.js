@@ -321,7 +321,7 @@ window.MG = window.MG || {};
         '\n' +
         '**为什么「实向量空间 $\\to$ 离散」全零**：$\\mathbb{R}^{n}$ 可除，可除群到任何群都满足「$n$ 倍可解」的条件，于是 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{R}^{n}, \\mathbb{Z}) = 0$（$1/n$ 的像必须能被 $n$ 整除地解出来，只有 $0$）；\n\n配合可除性 $\\operatorname{Ext}^{1}(\\mathbb{R}^{n}, \\mathbb{Z}) = 0$，整条 $\\operatorname{RHom}$ 为零。\n\n\n' +
         '\n' +
-        '⚠️ 表中「$\\mathbb{R}$ 行、$T$ 列 = $\\mathbb{R}$」这一格不能只靠上面两条推出（它涉及连续同态 $\\mathbb{R} \\to T = \\mathbb{R}/\\mathbb{Z}$ 的分类，与万有覆盖 $\\mathbb{R} \\to T$ 有关）；\n\n这一格本图未给推导（缺口）。'
+        '⚠️ 表中「$\\mathbb{R}$ 行、$T$ 列 = $\\mathbb{R}$」这一格不能只靠上面两条推出（它涉及连续同态 $\\mathbb{R} \\to T = \\mathbb{R}/\\mathbb{Z}$ 的分类，与万有覆盖 $\\mathbb{R} \\to T$ 有关）；\n\n这一格未给推导（缺口）。'
       ].join('\n'),
       notes: [
         '**怎么读这张表**（$T = \\mathbb{R}/\\mathbb{Z}$）：',

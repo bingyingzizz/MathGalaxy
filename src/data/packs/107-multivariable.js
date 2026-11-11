@@ -73,7 +73,7 @@ window.MG = window.MG || {};
         '',
         '高阶偏导写成 $\\partial^{\\alpha} f = \\partial_1^{\\alpha_1} \\cdots \\partial_n^{\\alpha_n} f$（$\\alpha = (\\alpha_1, \\ldots, \\alpha_n)$ 是多重指标，$|\\alpha| = \\alpha_1 + \\cdots + \\alpha_n$）。'
       ].join('\n'),
-      notes: '⚠ 偏导数存在**什么也保证不了**：$f(x, y) = xy/(x^{2} + y^{2})$（原点补 $f(0,0) = 0$）在原点两个偏导都存在（都等于 $0$），但沿 $y = x$ 趋近时 $f \\to 1/2 \\ne f(0,0)$ —— 它连**连续**都不成立。\n\n⭐ 病根是一个不对称：偏导存在是 $n$ 个**一维**条件（标量 $f$；向量值 $f:\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ 是 $mn$ 个），而可微（`def.total-differential`）是**一个** $n$ 维条件。\n\n一维条件再多也堆不出 $n$ 维结论。\n\n⭐ 反过来，$C^{1}$（偏导存在**且连续**）就足以推出可微 —— 这条是实践中最常用的充分条件，证明见 `def.total-differential` 的说明。\n\n⭐ 在 $\\mathbb{R}^n$ 这种「坐标里长出来的空间」上偏导是免费的；\n\n到了**流形**或 **Banach 空间**上，「坐标」本身要先花力气造出来，那时才有方向导数与可微性的讨论。',
+      notes: '⚠ 偏导数存在**什么也保证不了**：$f(x, y) = xy/(x^{2} + y^{2})$（原点补 $f(0,0) = 0$）在原点两个偏导都存在（都等于 $0$），但沿 $y = x$ 趋近时 $f \\to 1/2 \\ne f(0,0)$ —— 它连**连续**都不成立。\n\n⭐ 病根是一个不对称：偏导存在是 $n$ 个**一维**条件（标量 $f$；向量值 $f:\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ 是 $mn$ 个），而可微（`def.total-differential`）是**一个** $n$ 维条件。\n\n一维条件再多也堆不出 $n$ 维结论。\n\n⭐ 反过来，$C^{1}$（偏导存在**且连续**）就足以推出可微 —— 这条是实践中最常用的充分条件（展开见 `def.total-differential`）。\n\n⭐ 在 $\\mathbb{R}^n$ 这种「坐标里长出来的空间」上偏导是免费的；\n\n到了**流形**或 **Banach 空间**上，「坐标」本身要先花力气造出来，那时才有方向导数与可微性的讨论。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Spivak, Calculus on Manifolds, Ch. 2']
     },
     {

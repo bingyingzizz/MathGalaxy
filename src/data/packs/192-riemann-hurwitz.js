@@ -202,7 +202,7 @@
       usedBy: 'thm.riemann-hurwitz',
       note: '公式两边都是亏格；亏格在这里用同调定义（$g = \\tfrac12 \\operatorname{rank} H_{1}$），所以不会绕回分类定理。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.eulerchar-riemannhurwitz',
       kind: 'implication',
       sources: ['prop.eulerchar-genus'],

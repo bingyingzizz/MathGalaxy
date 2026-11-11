@@ -836,7 +836,7 @@ window.MG = window.MG || {};
       usedBy: 'cor.mct-ae',
       note: '「a.e. 版本」的意思就是把零集上的例外丢掉。'
     },
-    { kind: 'definition', definition: 'def.integral-nonneg', usedBy: 'def.integral-over-set',
+    {id: "e1.definition", kind: 'definition', definition: 'def.integral-nonneg', usedBy: 'def.integral-over-set',
       note: '集合上的积分由非负积分乘以指示函数得到；可积情形再拆正负部。' }
   ]
 });

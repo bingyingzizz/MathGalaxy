@@ -707,12 +707,12 @@
         '于是引理给出：轨道空间 $L(p,q)=S^{3}/\\Gamma$ 有唯一光滑结构使商映射为局部微分同胚，从而是三维光滑流形。∎'
       ].join('\n\n') },
     /* ---------------------------------------------------- §A 同伦 → 基本群 */
-    { kind: 'definition', definition: 'def.continuous-map', usedBy: 'def.homotopy-maps',
+    {id: "e52.definition", kind: 'definition', definition: 'def.continuous-map', usedBy: 'def.homotopy-maps',
       note: '同伦 $F : X \\times [0, 1] \\to Y$ 本身要求**联合连续**（在乘积拓扑下），' +
         '不是「对每个 $t$ 各自连续」。' },
-    { kind: 'definition', definition: 'def.homotopy-maps', usedBy: 'def.path-homotopy',
+    {id: "e53.definition", kind: 'definition', definition: 'def.homotopy-maps', usedBy: 'def.path-homotopy',
       note: '道路同伦就是取 $A = \\{0, 1\\}$ 的**相对同伦**：$F(0, s)$ 与 $F(1, s)$ 都被钉死。' },
-    { kind: 'implication', sources: ['def.path-homotopy'], target: 'lem.path-product',
+    {id: "e54.implication", kind: 'implication', sources: ['def.path-homotopy'], target: 'lem.path-product',
       title: '重参数化给出良定义、结合律、单位元与逆元',
       proof: [
         '**良定义**：设 $F : \\alpha \\simeq_{p} \\alpha\'$、$G : \\beta \\simeq_{p} \\beta\'$，且 $\\alpha(1) = \\beta(0)$。' +
@@ -742,9 +742,9 @@
           '且 $F(0, s) = \\alpha(0)$、$F(1, s) = \\alpha(\\tau(1)) = \\alpha(0)$ 都不动，故是道路同伦。∎',
       ].join('\n'),
       note: '全部四条都靠「重参数化 $+$ 粘贴引理」；道路层面没有一条是等式。' },
-    { kind: 'definition', definition: 'def.path-homotopy', usedBy: 'def.fundamental-group',
+    {id: "e55.definition", kind: 'definition', definition: 'def.path-homotopy', usedBy: 'def.fundamental-group',
       note: '$\\pi_{1}$ 的元素是**道路同伦类** $[\\alpha]$ 而不是道路；商集这一步就是在这里做的。' },
-    { kind: 'implication', sources: ['lem.path-product'], target: 'prop.induced-homomorphism',
+    {id: "e56.implication", kind: 'implication', sources: ['lem.path-product'], target: 'prop.induced-homomorphism',
       title: '复合保持拼接，于是 $f_{*}$ 是同态',
       proof: [
         '**良定义**：若 $F : \\alpha \\simeq_{p} \\beta$，则 $f \\circ F$ 连续、' +
@@ -767,7 +767,7 @@
           '∎',
       ].join('\n'),
       note: '关键只有一句：$f$ 与「拼接」交换。这也说明为什么 $f_{*}$ 是**同态**而不是随便一个映射。' },
-    { kind: 'implication', sources: ['prop.induced-homomorphism'], target: 'prop.pi1-basepoint',
+    {id: "e57.implication", kind: 'implication', sources: ['prop.induced-homomorphism'], target: 'prop.pi1-basepoint',
       title: '把「换基点」看成沿道路的共轭，再用函子性核对',
       proof: [
         '**先验证 $\\Pi_{\\gamma}$ 是同态**（这是唯一需要动手的地方）。设 $\\alpha, \\alpha\'$ 是以 $x_{0}$ 为基点的闭道路。' +
@@ -789,15 +789,15 @@
           '而 $[\\bar{\\gamma} * \\gamma\'] = g^{-1}$。∎',
       ].join('\n'),
       note: '「只差一个内自同构」就是**不典范**的精确含义；只有当 $\\pi_{1}$ 阿贝尔时它才真的与道路无关。' },
-    { kind: 'definition', definition: 'def.fundamental-group', usedBy: 'def.simply-connected',
+    {id: "e58.definition", kind: 'definition', definition: 'def.fundamental-group', usedBy: 'def.simply-connected',
       note: '单连通 $=$ 道路连通 $+$ $\\pi_{1}$ 平凡；「平凡」由 `prop.pi1-basepoint` 与道路连通性变成与基点无关的陈述。' },
     /* ------------------------------------------------ §B 覆叠空间与提升 */
-    { kind: 'definition', definition: 'def.covering-space', usedBy: 'thm.lifting',
+    {id: "e59.definition", kind: 'definition', definition: 'def.covering-space', usedBy: 'thm.lifting',
       note: '提升的唯一性直接来自「每片 $V_{j}$ 上 $p$ 是同胚」：知道了落在哪一片，整段提升就被钉死。' },
-    { kind: 'definition', definition: 'def.covering-space', usedBy: 'prop.covering-index',
+    {id: "e60.definition", kind: 'definition', definition: 'def.covering-space', usedBy: 'prop.covering-index',
       note: '双射 $p^{-1}(b_{0}) \\leftrightarrow \\pi_{1}(B)/p_{*}\\pi_{1}(E)$ 用的正是均匀覆叠的片：' +
         '$\\tilde{\\alpha}(1)$ 落在哪个 $V_{j}$ 里，就决定 $[\\alpha]$ 落在哪个陪集。' },
-    { kind: 'implication', sources: ['thm.lifting'], target: 'prop.covering-index',
+    {id: "e61.implication", kind: 'implication', sources: ['thm.lifting'], target: 'prop.covering-index',
       title: '提升给出单射 $\\pi_{1}(E) \\hookrightarrow \\pi_{1}(B)$，纤维就是陪集',
       proof: [
         '**单射**：设 $[\\tilde{\\alpha}] \\in \\pi_{1}(E, e_{0})$ 且 $p_{*}[\\tilde{\\alpha}] = 1$。' +
@@ -817,7 +817,7 @@
           '∎',
       ].join('\n'),
       note: '⚠️ 得到的只是**集合**双射。想吃掉「同构」两个字必须另外证明度数同态。' },
-    { kind: 'implication', sources: ['prop.covering-index'], target: 'thm.pi1-circle',
+    {id: "e62.implication", kind: 'implication', sources: ['prop.covering-index'], target: 'thm.pi1-circle',
       title: '层数给等势，提升数（度数）给同态',
       proof: [
         '**覆叠**：$p(t) = e^{2\\pi i t}$，$p : \\mathbb{R} \\to S^{1}$。每个 $s \\in S^{1}$ 的开半圆邻域被 $\\mathbb{R}$ 上间隔为 $1$ 的' +
@@ -849,7 +849,7 @@
       ].join('\n'),
       note: '注意这条边的作用：`prop.covering-index` 只够等势，同态性必须靠**提升的唯一性**重新算一遍。' },
     /* ---------------------------------------------- §C 收缩核与不动点 */
-    { kind: 'implication', sources: ['thm.pi1-circle'], target: 'thm.no-retraction-disk',
+    {id: "e63.implication", kind: 'implication', sources: ['thm.pi1-circle'], target: 'thm.no-retraction-disk',
       title: '若有收缩，$\\operatorname{id}_{\\mathbb{Z}}$ 会穿过平凡群',
       proof: [
         '设存在连续 $r : D^{2} \\to S^{1}$ 且 $r|_{S^{1}} = \\operatorname{id}$，记 $i : S^{1} \\hookrightarrow D^{2}$ 为包含映射。' +
@@ -862,10 +862,10 @@
           '$r_{*} \\circ i_{*} = 0$，与 $\\operatorname{id}_{\\mathbb{Z}} \\ne 0$ 矛盾。∎',
       ].join('\n'),
       note: '一行群论的「不能」，背后是 $\\pi_{1}(S^{1}) \\ne 1$ 这个唯一的输入。' },
-    { kind: 'definition', definition: 'def.section-retraction', usedBy: 'thm.no-retraction-disk',
+    {id: "e64.definition", kind: 'definition', definition: 'def.section-retraction', usedBy: 'thm.no-retraction-disk',
       note: '收缩 $r : D^{2} \\to S^{1}$ 满足 $r \\circ i = \\operatorname{id}_{S^{1}}$，正是范畴意义下 $i$ 的**收缩**' +
         '（$i$ 是 $S^{1} \\hookrightarrow D^{2}$）。所以「$S^{1}$ 不是收缩核」$=$「$i$ 没有左逆」。' },
-    { kind: 'implication', sources: ['thm.no-retraction-disk'], target: 'thm.brouwer-fixed-point',
+    {id: "e65.implication", kind: 'implication', sources: ['thm.no-retraction-disk'], target: 'thm.brouwer-fixed-point',
       title: '没有收缩 $\\implies$ 每个连续 $f : D^{2} \\to D^{2}$ 都有不动点（二维连续版）',
       proof: [
         '设连续 $f : D^{2} \\to D^{2}$ 处处 $f(z) \\ne z$。对每个 $z \\in D^{2}$，从 $f(z)$ 出发、**穿过** $z$ 的射线' +
@@ -890,9 +890,9 @@
       note: '这条边补上了本图原先的缺口：`thm.brouwer-fixed-point` 的既有证明只用 Rouché 给出**全纯**情形，' +
         '连续情形在那里被标成「外部输入」。现在连续情形（二维）在图上有了自己的证明。' },
     /* ------------------------------------------------- §D van Kampen */
-    { kind: 'definition', definition: 'def.fundamental-group', usedBy: 'thm.van-kampen',
+    {id: "e66.definition", kind: 'definition', definition: 'def.fundamental-group', usedBy: 'thm.van-kampen',
       note: 'van Kampen 算的就是 $\\pi_{1}$：两边是诱导映射 $i_{*}, j_{*}$，右端是 $\\pi_{1}$ 的自由积取商。' },
-    { kind: 'implication', sources: ['thm.van-kampen'], target: 'cor.pi1-sphere',
+    {id: "e67.implication", kind: 'implication', sources: ['thm.van-kampen'], target: 'cor.pi1-sphere',
       title: '两块可缩 $+$ 交叠道路连通 $\\implies$ 基本群平凡',
       proof: [
         '设 $n \\ge 2$。取 $S^{n} = U \\cup V$，其中 $U$ 是去掉南极点的开半球、$V$ 是去掉北极点的开半球：' +
@@ -908,10 +908,10 @@
           '这不是证明的技巧问题：交叠不连通时，「换基点」会带来额外信息，公式本身不同。∎',
       ].join('\n'),
       note: '⭐ 注意：结论与 $G = \\pi_{1}(S^{n-1})$ **无关**。两块都是平凡群时，胶水怎么粘都是平凡群。' },
-    { kind: 'definition', definition: 'def.simply-connected', usedBy: 'cor.pi1-sphere',
+    {id: "e68.definition", kind: 'definition', definition: 'def.simply-connected', usedBy: 'cor.pi1-sphere',
       note: '结论的措辞正是「$S^{n}$ 单连通」（$n \\ge 2$）。' },
     /* ------------------------------------------------------ 弱边 */
-    { kind: 'analogy', a: 'def.homotopy-maps', b: 'def.homotopy',
+    {id: "e69.analogy", kind: 'analogy', a: 'def.homotopy-maps', b: 'def.homotopy',
       title: '映射同伦与链同伦：同一句话的两个化身',
       note: [
         '两件事没有谁推出谁（一个是空间之间的形变，一个是链复形之间的同调代数关系），但**招数是同一个**：',
@@ -934,7 +934,7 @@
     { id: 'def-link.lebnum-vankampen', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'thm.van-kampen',
       note: '证明第一步对开覆盖 $\\{U, V\\}$ 取勒贝格数，用它把道路细分到每段整块落在一个开集里。' },
 
-    { kind: 'definition', definition: 'def.fundamental-group', usedBy: 'prop.pi1-group',
+    {id: "e70.definition", kind: 'definition', definition: 'def.fundamental-group', usedBy: 'prop.pi1-group',
       note: '命题研究的就是这个定义给出的商集，以及它上面的乘法与逆。' },
 
     { id: 'imp.pi1-group', kind: 'implication', sources: ['lem.path-product', 'def.group'], target: 'prop.pi1-group',
@@ -951,7 +951,7 @@
       ].join('\n'),
       note: '这条边只做「对表」：不重证道路拼接的四条（在 `lem.path-product`），也不重述群公理（在 `def.group`）。它存在的意义是让「$\\pi_{1}$ 是群」在图上有承重墙，而不是靠定义里一句话带过。' },
 
-    { kind: 'definition', definition: 'def.simply-connected', usedBy: 'prop.simply-connected-basepoint',
+    {id: "e71.definition", kind: 'definition', definition: 'def.simply-connected', usedBy: 'prop.simply-connected-basepoint',
       note: '命题讨论的就是这个定义条件 2 里的「等价地」。' },
 
     { id: 'imp.simply-connected-basepoint', kind: 'implication', sources: ['prop.pi1-basepoint', 'def.group'], target: 'prop.simply-connected-basepoint',

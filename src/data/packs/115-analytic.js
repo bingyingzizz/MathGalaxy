@@ -78,7 +78,7 @@ window.MG = window.MG || {};
         '- 解析 $\\iff$ 所列所有复形与极端不连通 $S$ 的比较映射为拟同构：这是定义展开，前提已经给定预解析环。\n' +
         '- 典范映射 $A[S]\\to\\mathcal A[S]$ $\\implies$ 反变的导出 Hom 比较映射：用预复合的函子性，不需要先假定解析性。\n' +
         '- 只检验零次普通 Hom $\\implies$ 导出比较同构不免费；普通 Hom 看不到高次 Ext，不能替代对复形的条件。\n' +
-        '- 原文把 $\\operatorname{RHom}_{\\mathcal A}$ 与 $\\operatorname{RHom}_A$ 直接识别的解释有循环风险：一般预解析环尚未建立完备模导出范畴，本图未核对该步，记为缺口；检验条件宜先在底层凝聚态 $A$-模导出范畴表述。\n'
+        '- 原文把 $\\operatorname{RHom}_{\\mathcal A}$ 与 $\\operatorname{RHom}_A$ 直接识别的解释有循环风险：一般预解析环尚未建立完备模导出范畴，该步未核实，记为缺口；检验条件宜先在底层凝聚态 $A$-模导出范畴表述。\n'
       ].join('\n\n'),
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.4'],
       statement: [
@@ -202,7 +202,7 @@ window.MG = window.MG || {};
         '',
         '满足 $j_! j^* M = M \\otimes_{(A,\\mathbb{Z})_\\blacksquare} j_! A$。'
       ].join('\n'),
-      notes: '⭐ 这是 Clausen–Scholze, Lectures on Condensed Mathematics, Lecture VIII, Theorem 8.1。它是本图里「解析环」第一次覆盖真正的几何对象：$A=\\mathbb{Z}[T]$ 时 $A_\\blacksquare$ 就是「$\\mathbb{Z}[T]$ 上的固态模」的系数环，后面的相干对偶（`thm.coherent-duality`）全踩在它上面。\n\n**证明的真实规模。** 完整证明是 Lecture VIII 前几节的内容，不是一条边能装下的。$A=\\mathbb{Z}[T]$ 的核心路线是：\n\n① 令 $A_\\infty:=\\mathbb{Z}((T^{-1}))$，把它看成「$\\operatorname{Spec} A$ 在无穷远处的函数」，有短正合列\n\n$$0\\to \\mathbb{Z}[[U]]\\otimes_{\\mathbb{Z}} A \\xrightarrow{1-\\mathrm{shift}\\otimes T} \\mathbb{Z}[[U]]\\otimes_{\\mathbb{Z}} A \\to A_\\infty \\to 0 .$$\n\n② 由 ① 得 $A_\\infty$ 紧投射（前两项形如 $\\prod_I \\mathbb{Z}\\otimes A$），且幂等：$A_\\infty\\otimes^{L}_{A}A_\\infty\\cong A_\\infty$。\n\n③ 由 ② 得 $\\operatorname{RHom}_A(A_\\infty,C)=0$，其中 $C$ 由 $\\prod_I A$ 的直和构成。\n\n④ 解析性：$A_\\blacksquare$ 上的固态模范畴与满足 $\\operatorname{RHom}_A(A_\\infty,C)=0$ 的复形子范畴对应（这是「解析环」的判定形式）。\n\n⑤ $j_!$ 的存在性：用 $\\operatorname{coker}\\bigl(\\prod_I \\mathbb{Z}\\otimes A\\to\\prod_I A\\bigr)$ 造出 $j_!A$，再用可表现性/伴随函子定理把 $j_!$ 扩到整个导出范畴。\n\n⑥ 一般有限生成 $A$：用 Noether 归一化找多项式环 $R=\\mathbb{Z}[X_1,\\ldots,X_n]$ 与有限单射 $R\\to A$，把 $A_\\blacksquare$ 与 $(A,R)_\\blacksquare$ 在导出层面等同。\n\n⑦ 投影公式 $j_!j^*M\\cong M\\otimes_{A_\\blacksquare}j_!A$ 由 $j_!\\dashv j^*$ 形式推出。\n\n**本图的缺口（逐条；节点因此保留 skeleton）。**\n\n(i) 基础层：$D((A,\\mathbb{Z})_\\blacksquare)$、$A_\\blacksquare$ 的定义与函子性在本图只是引用（`def.pre-analytic-ring`、`def.analytic-ring`），没有逐条证明。\n\n(ii) ② 的紧投射性需要一句「$\\prod_I\\mathbb{Z}\\cong\\mathbb{Z}[\\beta I]$，$\\beta I$ 极不连通紧，故 $\\mathbb{Z}[\\beta I]$ 紧投射」；本图没有「紧投射生成元 / $\\beta I$」节点。\n\n(iii) ② 的幂等性：边里写「直接算」，但所需的导出完备化与导出 Sant 引理没有展开。\n\n(iv) ③ 的两项复形「无环」要求中间那个映射 $f$ 是**同构**，而不只是单射；边里已标注这一点，但没有证明。\n\n(v) ⑤ 的 $j_!$ 存在性依赖可表现函子 / 伴随函子定理，本图无节点。\n\n(vi) ⑥ 的 Noether 归一化只给了思路：要证的是 $A_\\blacksquare$ 与 $(A,R)_\\blacksquare$ 在导出范畴层面等同，不是一句「归约」。\n\n(vii) ⑦ 的投影公式要先把 ⑤ 做完。\n\n⚠ 所以本节点仍标 skeleton。边 imp.za-analytic 是**路线图 + 关键计算**，不是逐字证明；不要把「完整证明见边」当成已证事实引用。\n\n⭐ 与几何的关系：$A=\\mathbb{Z}[T]$ 时 $A_\\blacksquare$ 对应 $\\mathbb{A}^1$ 的某种「无穷远邻域」，$A_\\infty$ 是其边界上的函数；这条定理是「把仿射概形的导出完备化做成解析环」的入口。',
+      notes: '⭐ 这是 Clausen–Scholze, Lectures on Condensed Mathematics, Lecture VIII, Theorem 8.1。它是本图里「解析环」第一次覆盖真正的几何对象：$A=\\mathbb{Z}[T]$ 时 $A_\\blacksquare$ 就是「$\\mathbb{Z}[T]$ 上的固态模」的系数环，后面的相干对偶（`thm.coherent-duality`）全踩在它上面。\n\n**证明的真实规模。** 完整证明是 Lecture VIII 前几节的内容，不是一条边能装下的。$A=\\mathbb{Z}[T]$ 的核心路线是：\n\n① 令 $A_\\infty:=\\mathbb{Z}((T^{-1}))$，把它看成「$\\operatorname{Spec} A$ 在无穷远处的函数」，有短正合列\n\n$$0\\to \\mathbb{Z}[[U]]\\otimes_{\\mathbb{Z}} A \\xrightarrow{1-\\mathrm{shift}\\otimes T} \\mathbb{Z}[[U]]\\otimes_{\\mathbb{Z}} A \\to A_\\infty \\to 0 .$$\n\n② 由 ① 得 $A_\\infty$ 紧投射（前两项形如 $\\prod_I \\mathbb{Z}\\otimes A$），且幂等：$A_\\infty\\otimes^{L}_{A}A_\\infty\\cong A_\\infty$。\n\n③ 由 ② 得 $\\operatorname{RHom}_A(A_\\infty,C)=0$，其中 $C$ 由 $\\prod_I A$ 的直和构成。\n\n④ 解析性：$A_\\blacksquare$ 上的固态模范畴与满足 $\\operatorname{RHom}_A(A_\\infty,C)=0$ 的复形子范畴对应（这是「解析环」的判定形式）。\n\n⑤ $j_!$ 的存在性：用 $\\operatorname{coker}\\bigl(\\prod_I \\mathbb{Z}\\otimes A\\to\\prod_I A\\bigr)$ 造出 $j_!A$，再用可表现性/伴随函子定理把 $j_!$ 扩到整个导出范畴。\n\n⑥ 一般有限生成 $A$：用 Noether 归一化找多项式环 $R=\\mathbb{Z}[X_1,\\ldots,X_n]$ 与有限单射 $R\\to A$，把 $A_\\blacksquare$ 与 $(A,R)_\\blacksquare$ 在导出层面等同。\n\n⑦ 投影公式 $j_!j^*M\\cong M\\otimes_{A_\\blacksquare}j_!A$ 由 $j_!\\dashv j^*$ 形式推出。\n\n**本图的缺口（逐条；节点因此保留 skeleton）。**\n\n(i) 基础层：$D((A,\\mathbb{Z})_\\blacksquare)$、$A_\\blacksquare$ 的定义与函子性在本图只是引用（`def.pre-analytic-ring`、`def.analytic-ring`），没有逐条证明。\n\n(ii) ② 的紧投射性需要一句「$\\prod_I\\mathbb{Z}\\cong\\mathbb{Z}[\\beta I]$，$\\beta I$ 极不连通紧，故 $\\mathbb{Z}[\\beta I]$ 紧投射」；本图没有「紧投射生成元 / $\\beta I$」节点。\n\n(iii) ② 的幂等性：边里写「直接算」，但所需的导出完备化与导出 Sant 引理没有展开。\n\n(iv) ③ 的两项复形「无环」要求中间那个映射 $f$ 是**同构**，而不只是单射；边里已标注这一点，但没有证明。\n\n(v) ⑤ 的 $j_!$ 存在性依赖可表现函子 / 伴随函子定理，本图无节点。\n\n(vi) ⑥ 的 Noether 归一化只给了思路：要证的是 $A_\\blacksquare$ 与 $(A,R)_\\blacksquare$ 在导出范畴层面等同，不是一句「归约」。\n\n(vii) ⑦ 的投影公式要先把 ⑤ 做完。\n\n⚠ 所以本节点仍标 skeleton。边 imp.za-analytic 是**路线图 + 关键计算**，不是逐字证明；引用时勿当作已证事实。\n\n⭐ 与几何的关系：$A=\\mathbb{Z}[T]$ 时 $A_\\blacksquare$ 对应 $\\mathbb{A}^1$ 的某种「无穷远邻域」，$A_\\infty$ 是其边界上的函数；这条定理是「把仿射概形的导出完备化做成解析环」的入口。',
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VIII, Theorem 8.1']
     },
     {
@@ -307,7 +307,7 @@ window.MG = window.MG || {};
         '左边由 $C$ 固态等于 $\\operatorname{RHom}(\\mathbb{Z}[S], C)$，正是解析环定义要求的同构。$\\blacksquare$'
       ].join('\n')
     },
-    {
+    {status: 'skeleton', 
       id: 'imp.za-analytic',
       kind: 'implication',
       sources: ['prop.analytic-examples', 'def.analytic-ring', 'thm.solid-abelian'],
@@ -343,7 +343,7 @@ window.MG = window.MG || {};
         '**⑦ 一般 $A$。** Noether 归一化给满射 $R = \\mathbb{Z}[X_1,\\ldots,X_n] \\to A$，$A$ 是有限 $R$-模，故 $\\prod_I A \\cong \\prod_I R \\otimes_R A$、$A^{\\blacksquare} = (A,R)^{\\blacksquare}$。\n\n对 $n$ 归纳：$R^{\\blacksquare}$ 已知解析，把 ①–⑥ 里的 $\\mathbb{Z}$ 换成 $R$、$T$ 换成 $X_n$，逐步得到 $(A,R)^{\\blacksquare}$ 解析（Appendix, Theorem 8.13）。',
       ].join('\n')
     },
-    {
+    {status: 'skeleton', 
       id: 'imp.coherent-duality',
       kind: 'implication',
       sources: ['thm.za-analytic'],

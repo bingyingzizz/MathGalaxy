@@ -761,7 +761,6 @@ MG.i18n = {
     'lem.archimedean': { title_en: 'Archimedean', label_en: 'Archimedean', from: 'aka' },
     'lem.average-continuous': { title_en: 'the averaging operator is jointly continuous', label_en: null, from: 'explicit' },
     'lem.breen-deligne-scalar-homotopy': { title_en: 'scalar homotopy', label_en: 'scalar homotopy', from: 'aka' },
-    'lem.caratheodory-osgood': { title_en: 'Carathéodory–Osgood lemma', label_en: 'Carathéodory–Osgood lemma', from: 'explicit' },
     'lem.cartan-eilenberg': { title_en: 'Cartan-Eilenberg', label_en: 'Cartan-Eilenberg', from: 'aka' },
     'lem.cauchy-green': { title_en: 'Cauchy–Green Identity', label_en: 'Cauchy–Green Identity', from: 'manual' },
     'lem.cech-finite-disjoint-acyclic': { title_en: 'Čech Acyclicity for Finite Disjoint Covers', label_en: 'Finite Disjoint Covers', from: 'manual' },

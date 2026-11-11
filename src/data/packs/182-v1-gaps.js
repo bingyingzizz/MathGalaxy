@@ -292,7 +292,7 @@
         '它与「度量完备」（Cauchy 列收敛）在 $\\mathbb{R}$ 上等价 —— 但那要一条定理，不是定义。' +
         '⚠ 两个「完备」不是同一个概念，只是在这条线上恰好重合。',
     },
-    {
+    {id: "e191.analogy",
       kind: 'analogy',
       a: 'def.complete',
       b: 'def.null-set',

@@ -649,7 +649,10 @@ window.MG = window.MG || {};
     ['def.internal-hom', 'prop.continuous-hom-condensed', 'def-dep.conthom-internalhom',
       '结论是凝聚态阿贝尔群的**内部 Hom**。'],
     ['prop.abtop-to-abcond', 'prop.exact-sequence-topo-ab', 'def-dep.exacttopo-abtopabcond',
-      '证明靠的是「$\\mathbf{AbTop} \\to \\mathrm{AbCond}$ 保所有极限」那条。'],
+      '左正合那一步整个靠「$\\mathbf{AbTop} \\to \\mathrm{AbCond}$ 保所有极限」。',
+      'implication',
+      '左正合那一步的落脚点是「$M\\mapsto\\underline{M}$ 保所有极限」，这正是 `prop.abtop-to-abcond` 的内容（极限在凝聚态里逐点算，连续映射的极限与逐点极限一致）。\n\n中段「像 = 核」用的是拓扑层面的正合性逐点搬过去；右端满用的是拓扑正合列里 $v$ 在紧块上是商映射 —— 这两处都不是这条命题给的，所以它是单源依赖。\n\n换成别的「保极限」结论，左正合这一步就断；反过来它本身也不足以搬运整个正合列。∎',
+      '拓扑正合列搬进凝聚态：左正合靠保极限'],
     ['def.weak-hausdorff', 'prop.exact-sequence-topo-ab', 'def-dep.exacttopo-weakhaus',
       '假设里要求 $M\'\'$ 是**弱 Hausdorff** 的。'],
     ['def.abelian-category', 'prop.lc-ab-preabelian', 'def-dep.lcab-abeliancat',
@@ -747,7 +750,10 @@ window.MG = window.MG || {};
     ['def.localization', 'prop.localization-hom-colim', 'def-dep.lochom-localization',
       '命题算的是局部化范畴里的 $\\operatorname{Hom}$。'],
     ['prop.calculus-of-fractions', 'prop.localization-hom-colim', 'def-dep.lochom-fractions',
-      '公式只在**右分式演算**成立时才对，且给出的是**滤过**余极限。'],
+      '公式只在**右分式演算**成立时才对，且给出的是**滤过**余极限。',
+      'implication',
+      '分式的等价关系要传递，得用 **Ore 条件 2** 把两次比较拉到同一个 $X\'\'$ 上，再用**消去条件 3** 抹掉剩余差异 —— 这两条正是 `prop.calculus-of-fractions` 里「$W$ 容许右分式演算」的内容。\n\n复合的通分、以及 $J$ 的滤过性（向上合并的余锥、平行态射可等化）是同一组条件的直接翻译。\n\n没有这两条，「两个分式相等」甚至不是传递关系，余极限无从谈起；有了它们才能把每个分式类数成一个滤过余极限的元素。∎',
+      '右分式演算让局部化的 Hom 成为滤过余极限'],
     ['def.sieve', 'prop.sieve-covering-equivalent', 'def-dep.sieveequiv-sieve',
       '命题说的是 $X$ 上的一个**筛**。'],
     ['def.grothendieck-topology', 'prop.sieve-covering-equivalent', 'def-dep.sieveequiv-topology',
@@ -755,7 +761,10 @@ window.MG = window.MG || {};
     ['def.sheaf', 'prop.sieve-covering-equivalent', 'def-dep.sieveequiv-sheaf',
       '第 2 至 4 条都只提到**层**与**层化**。'],
     ['thm.sheafification', 'prop.sieve-covering-equivalent', 'def-dep.sieveequiv-sheafification',
-      '记号 $\\widetilde{(-)}$ 是**层化**。'],
+      '记号 $\\widetilde{(-)}$ 是**层化**；证明靠的是它的泛性质。',
+      'implication',
+      '把 $R\\hookrightarrow h_{X}$ 与 $h_{X}\\to\\underline{X}=\\widetilde{h_{X}}$ 合成后，要延拓出 $u:\\widetilde{R}\\to\\underline{X}$ ——「存在且唯一」用的正是层化函子 $\\widetilde{(-)}$ 作为「层范畴含入」的左伴随的泛性质，即 `thm.sheafification`。\n\n反方向的 $v:\\underline{X}\\to\\widetilde{R}$ 同样由该泛性质（层的粘合公理下的唯一延拓）给出。\n\n两条复合与恒等号的比较也全依赖延拓的唯一性；换成别的层化构造，这一步的「唯一」就不成立。∎',
+      '层化的泛性质把「是不是覆盖」翻译成层论条件'],
 
     /* -------------------------------------------- 极限的构造与补漏 */
     ['def.limit', 'prop.limit-construction', 'def-dep.limcon-limit',
@@ -893,7 +902,10 @@ window.MG = window.MG || {};
 
     /* -------------------------------------------- 导出范畴与导出函子（§7.2） */
     ['prop.calculus-of-fractions', 'prop.k-calculus-fractions', 'def-dep.kfrac-fractions',
-      '$K(\\mathcal{A})$ 关于拟同构**允许分式演算**。'],
+      '$K(\\mathcal{A})$ 关于拟同构**允许分式演算**：本命题负责验证前提，结论由一般理论给出。',
+      'implication',
+      '命题要证 $K(\\mathcal{A})$ 关于拟同构容许右分式演算：先化到「锥零调 $\\iff$ 拟同构」，再对任意拟同构 $w$ 与任意 $f$ 造移位锥 $N$ 与拟同构 $t$，使 $f\\circ g=w\\circ t$ —— 这正是 Ore 条件 2。\n\n消去条件 3 由同一构造的对偶形式给出；恒等与复合的相容性随之成立。\n\n把这组条件交给 `prop.calculus-of-fractions`，才得到「局部化可按分式算、且 Hom 是滤过余极限」；本命题本身只负责验证前提。∎',
+      '$K(\\mathcal{A})$ 上拟同构满足右分式演算的 Ore 条件'],
     ['def.homotopy-category', 'prop.k-calculus-fractions', 'def-dep.kfrac-kcat',
       '说的是**同伦范畴** $K(\\mathcal{A})$。'],
     ['def.localization', 'def.derived-category', 'def-dep.dercat-localization',
@@ -919,7 +931,8 @@ window.MG = window.MG || {};
     ['def.right-derived-functor', 'thm.derived-long-exact', 'def-dep.derlex-rdf',
       '长正合列是**右导出函子**给的。'],
     ['thm.long-exact', 'thm.derived-long-exact', 'def-dep.derlex-longexact',
-      '它就是长正合列在导出函子上的版本。'],
+      '两条长正合列是同一现象的两层语言：复形自己的同调 vs 导出函子；target 的证明用导出三角，不用本条。',
+      'analogy'],
     ['def.derived-category', 'def.ext', 'def-dep.ext-dercat',
       '$\\operatorname{Ext}^{n}$ 定义成**导出范畴**里的 Hom。'],
     ['def.distinguished-triangle', 'def.ext', 'def-dep.ext-triangle',
@@ -1229,10 +1242,9 @@ window.MG = window.MG || {};
       '整数环定理把环结构赋予整数集；整数集本身不是环定义的一部分。'],
     ['def.ring', 'thm.matrix-ring', 'def-link.ring-matrixring',
       '矩阵环定理把环结构赋予矩阵集；矩阵集本身不是环定义的一部分。'],
-    ['def.fibered-product', 'def.intersection-subobject', 'def-link.intersection-pullback',
-      '子对象的交就是沿目标对象的纤维积（图中纤维积节点即 pullback）。'],
-    ['def.fibered-product', 'def.preimage-subobject', 'def-link.preimage-pullback',
-      '子对象的原像就是换基的纤维积，这是原像构造的直接依据。'],
+    /* def-link.intersection-pullback / def-link.preimage-pullback 是
+       `27-category-limit.js` 里 dep.inter-fiber / dep.preimg-fiber 的重复边（同源同靶），
+       保留 27 那两条，这里不再生成。 */
     /* AUD-063 C 类：具体实例/原型（analogy 粉边，不写 proof） */
     ['def.smooth-manifold', 'ex.sphere', 'ana.smooth-exsphere',
       '$S^{2}$ 是光滑流形的具体实例。', 'analogy'],
@@ -1251,6 +1263,8 @@ window.MG = window.MG || {};
     if (e[4] === 'analogy') return { id: e[2], kind: 'analogy', a: e[0], b: e[1], note: e[3] };
     /* FIX-065：等价的条目把双向证明放第 6 位 */
     if (e[4] === 'equivalence') return { id: e[2], kind: 'equivalence', a: e[0], b: e[1], note: e[3], proofs: e[5] };
+    /* FIX-074：真依赖（目标证明逐字用到源命题）升成 implication，第 6 位是 proof、第 7 位是 title */
+    if (e[4] === 'implication') return { id: e[2], kind: 'implication', sources: [e[0]], target: e[1], title: e[6], proof: e[5], note: e[3] };
     return { id: e[2], kind: 'definition', definition: e[0], usedBy: e[1], note: e[3] };
   });
 

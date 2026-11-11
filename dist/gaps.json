@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-11T11:01:39.205Z",
+ "generated": "2026-11-11T14:29:37.343Z",
  "terms": 76,
  "missing": [
   {
    "term": "单位圆",
-   "total": 33,
+   "total": 31,
    "nodes": [
     {
      "id": "thm.integral-trig",
@@ -16,10 +16,6 @@
     },
     {
      "id": "thm.boundary-correspondence",
-     "c": 2
-    },
-    {
-     "id": "lem.caratheodory-osgood",
      "c": 2
     },
     {
@@ -52,6 +48,10 @@
     },
     {
      "id": "thm.hurwitz",
+     "c": 1
+    },
+    {
+     "id": "lem.schwarz",
      "c": 1
     }
    ]
@@ -474,6 +474,15 @@
    "gap": 2
   },
   {
+   "node": "thm.derived-long-exact",
+   "nodeLabel": "导出函子的长正合列",
+   "nodeLayer": 14,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 16,
+   "gap": 2
+  },
+  {
    "node": "prop.left-exact-criterion",
    "nodeLabel": "左正合性的判据",
    "nodeLayer": 14,
@@ -507,6 +516,51 @@
    "def": "def.smooth-manifold",
    "defLabel": "光滑流形",
    "defLayer": 22,
+   "gap": 2
+  },
+  {
+   "node": "lem.almost-orthogonal",
+   "nodeLabel": "几乎正交引理",
+   "nodeLayer": 13,
+   "def": "def.normed-space",
+   "defLabel": "赋范空间",
+   "defLayer": 15,
+   "gap": 2
+  },
+  {
+   "node": "def.bounded-operator",
+   "nodeLabel": "有界线性算子",
+   "nodeLayer": 13,
+   "def": "def.normed-space",
+   "defLabel": "赋范空间",
+   "defLayer": 15,
+   "gap": 2
+  },
+  {
+   "node": "def.schauder-basis",
+   "nodeLabel": "Schauder 基",
+   "nodeLayer": 13,
+   "def": "def.normed-space",
+   "defLabel": "赋范空间",
+   "defLayer": 15,
+   "gap": 2
+  },
+  {
+   "node": "def.strictly-convex",
+   "nodeLabel": "严格凸",
+   "nodeLayer": 13,
+   "def": "def.normed-space",
+   "defLabel": "赋范空间",
+   "defLayer": 15,
+   "gap": 2
+  },
+  {
+   "node": "thm.hahn-banach",
+   "nodeLabel": "Hahn–Banach 定理",
+   "nodeLayer": 13,
+   "def": "def.normed-space",
+   "defLabel": "赋范空间",
+   "defLayer": 15,
    "gap": 2
   },
   {
@@ -552,6 +606,15 @@
    "def": "def.flat-dimension",
    "defLabel": "平坦维数",
    "defLayer": 21,
+   "gap": 1
+  },
+  {
+   "node": "thm.linear-continuous-bounded",
+   "nodeLabel": "连续 ⟺ 有界",
+   "nodeLayer": 14,
+   "def": "def.normed-space",
+   "defLabel": "赋范空间",
+   "defLayer": 15,
    "gap": 1
   },
   {
@@ -645,7 +708,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 66,
+ "noEdgeAll": 73,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.form-on-manifold",

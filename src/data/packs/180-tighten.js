@@ -41,7 +41,7 @@
       note: '球面是连通和的**单位元**（$S^{2}\\# M \\cong M$）—— 这句话要用连通和才说得出来，' +
         '所以这个例子的说明依赖连通和。',
     },
-    {
+    {id: "e186.analogy",
       kind: 'analogy',
       a: 'def.closed-surface',
       b: 'def.regular-surface',
@@ -56,7 +56,7 @@
         '⛔ 不能连 definition/implication：一边嵌在 $\\mathbb{R}^{3}$ 里、一边不嵌，没有谁是谁的前提。',
       ].join('\n\n'),
     },
-    {
+    {id: "e187.analogy",
       kind: 'analogy',
       a: 'def.closed-surface',
       b: 'def.riemann-surface',
@@ -72,7 +72,7 @@
           '而闭曲面是从拓扑定义的，两边的前提不同（真要连得先有「忘记复结构」这个函子）。',
       ].join('\n\n'),
     },
-    {
+    {status: 'skeleton', id: "e188.analogy",
       kind: 'analogy',
       a: 'thm.classification-surfaces',
       b: 'thm.gauss-bonnet',
@@ -89,7 +89,7 @@
           '⛔ 也不连 implication：分类定理不推出 Gauss–Bonnet（后者要度量）。',
       ].join('\n\n'),
     },
-    {
+    {id: "e189.analogy",
       kind: 'analogy',
       a: 'prop.eulerchar-nonorientable',
       b: 'def.genus',

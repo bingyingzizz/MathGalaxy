@@ -1604,5 +1604,382 @@ MG.i18nStatements = {
         basedOn: 'v0.9.3#12672068',
       },
     },
+
+    'def.normal-space': {
+      statement: {
+        en: "A topological space $X$ is **normal** if it is $T_{1}$ and any two **disjoint closed sets** $A, B$ can be separated by open sets: there are open sets $U \\supseteq A$ and $V \\supseteq B$ with $U \\cap V = \\emptyset$.\n\nReplacing \"disjoint closed sets\" by \"a point and a closed set not containing it\" gives a **regular** space; replacing it by \"two points\" gives a **Hausdorff** space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c681d9cf',
+      },
+      notes: {
+        en: "**The hierarchy of separation axioms** (each step strengthens the previous one):\n\n- $T_{1}$: singletons are closed;\n- Hausdorff: two points can be separated by open sets;\n- regular: a point and a closed set not containing it can be separated $\\implies$ Hausdorff;\n- **normal**: two disjoint closed sets can be separated $\\implies$ regular.\n\n**Compact Hausdorff $\\implies$ normal** (the most frequently used consequence of compactness: in a compact space two disjoint closed sets can be separated by finitely many pairs of open sets). Hence spaces such as $[0,1]$ and $\\beta I$ are normal — so Urysohn's lemma always applies there.\n\nThe **full proof** runs along two steps, \"compact $\\implies$ paracompact\" plus \"paracompact $+$ Hausdorff $\\implies$ normal\", see `thm.paracompact-hausdorff-normal`; ⚠️ **normality is not hereditary**: a subspace of a normal space need not be normal. This differs from both \"compact\" and \"Hausdorff\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#e97ba26a',
+      },
+    },
+
+    'def.regular-space': {
+      statement: {
+        en: "**What this is**: the $T_{3}$ property **together with $T_{1}$**. Only after adding $T_{1}$ does it automatically become $T_{2}$ — this is the real purpose of the name \"regular\".\n\nA topological space $X$ is a **regular space** if\n\n1. $X$ is **$T_{3}$**: a point and a closed set not containing it can be separated by disjoint open sets (`def.t3-space`);\n2. $X$ is **$T_{1}$**: singletons are closed (`def.t1-space`).\n\n**Why $T_{1}$ is indispensable**: the indiscrete topology is $T_{3}$ but not $T_{1}$, and certainly not $T_{2}$. After adding $T_{1}$, the set $\\{y\\}$ is closed, so \"$x$ and $\\{y\\}$ can be separated\" yields two disjoint open sets — exactly $T_{2}$.\n\n**Its place in the chain**: regular space $\\implies T_{2} \\implies T_{1} \\implies T_{0}$ (all reverse implications fail).",
+        status: 'draft',
+        basedOn: 'v0.9.3#dbbfef74',
+      },
+      notes: {
+        en: "⭐ **Convention**: the **T-number denotes the bare property; only the named notion carries $T_{1}$**.\n\nSo T3 means a point and a closed set can be separated (without $T_{1}$), while a regular space means T3 plus $T_{1}$.\n\n⚠️ Munkres uses the opposite convention (he takes \"regular\" without $T_{1}$ and $T_{3}$ with $T_{1}$) — when reading another book, fix the convention first; otherwise a statement such as \"$T_{3} \\implies T_{2}$\" is sometimes true and sometimes false.\n\n**One-line proof that regular $\\implies$ $T_{2}$**: given $x \\ne y$, $T_{1}$ makes $\\{y\\}$ closed and $x \\notin \\{y\\}$; by $T_{3}$ choose disjoint open sets $U \\ni x$ and $V \\supseteq \\{y\\}$. This is exactly $T_{2}$.\n\n⚠️ **Regular does not imply normal**: the Sorgenfrey plane is regular but not normal. So \"regular\" is not a weaker version of \"normal\" on the same axis — they separate **differently shaped** objects (point/closed set vs closed set/closed set).\n\n⭐ Relation to `thm.paracompact-hausdorff-normal`: \"step 1\" of that theorem proves \"paracompact Hausdorff $\\implies$ regular\", using precisely the form $\\overline{U} \\subseteq W$ of $T_{3}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f36e6eb3',
+      },
+    },
+
+    'def.subspace-topology': {
+      statement: {
+        en: "Let $(X, \\mathcal{T})$ be a topological space and $Y \\subseteq X$ a subset. The **subspace topology** on $Y$ is\n\n$$\\mathcal{T}_{Y} := \\{\\, U \\cap Y : U \\in \\mathcal{T} \\,\\}$$\n\nThe resulting topology is the coarsest topology making the inclusion map $Y \\hookrightarrow X$ continuous.",
+        status: 'draft',
+        basedOn: 'v0.9.3#442c3b78',
+      },
+      notes: {
+        en: "Intuition: **the open sets of the subspace are exactly the open sets of the big space cut down**. So \"closed in $Y$\" and \"compact in $Y$\" must be judged with respect to the cut-down piece, not by looking at the big space — for example $(0, 1) \\subseteq \\mathbb{R}$ is closed in itself but not in $\\mathbb{R}$.\n\n📌 `def.induced-topology` is a different notion sharing the same Chinese name: it denotes the Grothendieck topology on a site induced by a functor, and shares only the name with the subspace topology (the two are not merged).",
+        status: 'draft',
+        basedOn: 'v0.9.3#4bfb0a14',
+      },
+    },
+
+    'def.product-topology': {
+      statement: {
+        en: "Let $(X_{i}, \\mathcal{T}_{i})_{i \\in I}$ be a family of topological spaces. The **product topology** on $\\prod_{i \\in I} X_{i}$ is the topology with basis the sets\n\n$$\\prod_{i \\in I} U_{i} \\qquad (U_{i} \\in \\mathcal{T}_{i},$$\nwhere $U_{i} = X_{i}$ for all but finitely many indices $i$)\n\n— that is, the **coarsest** topology making every projection $\\pi_{j} : \\prod_{i} X_{i} \\to X_{j}$ continuous.",
+        status: 'draft',
+        basedOn: 'v0.9.3#87113c2e',
+      },
+      notes: {
+        en: "⭐ **\"Coarsest\" is the key word**: for the projections to be continuous it suffices that each $\\pi_{j}^{-1}(U_{j})$ be open; taking finite intersections of these as a basis gives the product topology. Demanding a finer topology would lose limits — and the equivalence \"$x_{n} \\to x$ iff it converges in every coordinate\" is exactly what this coarsest choice buys.\n\n**Categorical meaning**: $\\prod_{i} X_{i}$ together with the projections is the **product** in $\\mathbf{Top}$. So the product topology is not an arbitrary choice: it is the one uniquely determined by the universal property.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b037fbe1',
+      },
+    },
+
+    'def.quotient-topology': {
+      statement: {
+        en: "Let $(X, \\mathcal{T})$ be a topological space and $\\pi : X \\twoheadrightarrow Y$ a surjection. The **quotient topology** on $Y$ is\n\n$$\\mathcal{T}_{Y} := \\{\\, V \\subseteq Y : \\pi^{-1}(V) \\in \\mathcal{T} \\,\\}$$\n\nThis is the finest topology making $\\pi$ continuous; $Y$ with this topology is the **quotient space** of $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b75bf8af',
+      },
+      notes: {
+        en: "Intuition: **the open sets of the quotient are those whose preimage is open**. So properties of the quotient must be read \"from above\": whether two points in $Y$ can be separated by open sets asks whether their preimages can be separated by open sets of $X$.\n\nThe quotient and subspace topologies are opposite directions: one takes \"the coarsest obtained by cutting\", the other \"the finest obtained by gluing back\".\n\n📌 The \"quotient space\" of topology is this one; the quotient of a **vector space** is `def.quotient-vs`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a90d3a9d',
+      },
+    },
+
+    'def.locally-compact-space': {
+      statement: {
+        en: "A topological space $X$ is **locally compact** if **every point has a compact neighbourhood**: for every $x \\in X$ there is a compact set $K$ with\n\n$$x \\in \\mathring{K}$$\n\nHere $X$ is **not** required to be Hausdorff.",
+        status: 'draft',
+        basedOn: 'v0.9.3#76e8ed3c',
+      },
+      notes: {
+        en: "**Difference from the Hausdorff version**: in a Hausdorff space, \"every point has a compact neighbourhood\" is equivalent to \"every point has a **base of compact neighbourhoods**\" (inside every neighbourhood one can find a compact neighbourhood); without Hausdorffness this equivalence fails (compact sets need not be closed, and the relation between neighbourhoods and compact sets degenerates).\n\n**Examples**: every compact space (take $K = X$), $\\mathbb{R}^{n}$, and every discrete space is locally compact; $\\mathbb{Q}$ is not. A compact space is always locally compact, but not necessarily Hausdorff.\n\n**Use**: when Hausdorffness is needed, combine this with `def.hausdorff`; without it the definition still stands, but the stronger property of having a base of compact neighbourhoods may fail.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6f8a6381',
+      },
+    },
+
+    'def.sequentially-compact': {
+      statement: {
+        en: "A metric space $(X, d)$ is **sequentially compact** iff every sequence in $X$ has a subsequence converging in $X$:\n\n$$\\forall\\{x_n\\} \\subseteq X,\\ \\exists\\{x_{n_k}\\},\\ \\exists x \\in X : x_{n_k} \\to x$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#64f48a59',
+      },
+      notes: {
+        en: "In metric spaces, \"sequentially compact $\\iff$ compact\" (see the arrows below), but in general topological spaces the two are **not equivalent** — sequential compactness is strictly stronger. This is exactly where metric spaces are convenient.\n\nNote that the subsequence converges to a point of $X$: sequential compactness is an intrinsic property and does not refer to any ambient space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#acc16623',
+      },
+    },
+
+    'def.sequence-limit': {
+      statement: {
+        en: "A sequence $\\{x_n\\} \\subseteq \\mathbb{R}$ **converges to** $x$ (written $x_n \\to x$ or $\\lim_{n \\to \\infty} x_n = x$), iff\n\n$$\\forall \\varepsilon > 0, \\exists N, \\forall n \\ge N : |x_n - x| < \\varepsilon$$\n\nThat is: no matter how small $\\varepsilon$ is given, from some index on all terms lie in the $x$-neighbourhood of $\\varepsilon$.\n\nA sequence that does not converge is called **divergent**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#491ef455',
+      },
+      notes: {
+        en: "⭐ This is the \"$\\varepsilon$-$N$ language\": it turns \"getting closer and closer\" into a condition that can be checked one step at a time.\n\nEvery proof in analysis rests on this format.\n\nBasic properties (all verified directly from the definition):\n- the limit is **unique**;\n\n- a convergent sequence is **bounded**;\n\n- limits commute with the four arithmetic operations (when the limit of the denominator is nonzero).\n\n⚠ \"Bounded\" does not guarantee convergence ($(-1)^n$);\n\nthe order \"$\\varepsilon$ fixed, $N$ pushed later\" cannot be reversed.\n\n📌 The unqualified term \"limit\" means a **limit of a sequence** (defined here); limits and colimits in the categorical sense are `def.limit`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ecf468e6',
+      },
+    },
+
+    'def.continuous': {
+      statement: {
+        en: "**Theorem (the $\\varepsilon$-$\\delta$ criterion)**: the condition below is not a definition but a criterion for continuity in metric terms; for the definition see `def.metric-continuity`, and for the metric on $\\mathbb{R}$ see `def.real-metric-space`.\n$f : \\mathbb{R} \\to \\mathbb{R}$ is **continuous at** $x_0$ iff\n\n$$\\forall \\varepsilon > 0, \\exists \\delta > 0 : |x - x_0| < \\delta \\implies |f(x) - f(x_0)| < \\varepsilon$$\n\nEquivalent formulation: $\\lim_{x \\to x_0} f(x) = f(x_0)$ (the limit exists and equals the value of the function).\n\n$f$ is **continuous** (continuous on $\\mathbb{R}$) iff it is continuous at every point.\n\n**Uniform continuity** is a stronger requirement: $\\delta$ depends only on $\\varepsilon$, not on $x_0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3a8f6943',
+      },
+      notes: {
+        en: "⭐ Replacing $|x - x_0| < \\delta$ and $|f(x) - f(x_0)| < \\varepsilon$ by a distance $d$ carries this definition over to metric spaces verbatim — which is exactly why the definition of a metric space looks the way it does.\n\n⚠ **Continuous $\\ne$ uniformly continuous**: $f(x) = x^{2}$ is continuous on $\\mathbb{R}$ but not uniformly continuous (the larger $x$ is, the smaller $\\delta$ must be).\n\nThe two notions coincide only on compact intervals.\n\n📌 This node is a criterion, not the definition; the definition is in `def.metric-continuity`, and the metric of $\\mathbb{R}$ is in `def.real-metric-space`. For continuity in the general topological sense see `def.continuous-map`; the present statement is its metric special case.",
+        status: 'draft',
+        basedOn: 'v0.9.3#706f8a5c',
+      },
+    },
+
+    'def.cauchy-sequence': {
+      statement: {
+        en: "A real sequence $\\{x_n\\}$ is a **Cauchy sequence** iff\n\n$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall m, n \\ge N :\\ |x_m - x_n| < \\varepsilon$$\n\nThat is: once the index is far enough out, **any two terms** are close to each other.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7201d0b3',
+      },
+      notes: {
+        en: "⭐ The difference from convergence is the **direction of information**: to check convergence one needs $x$ first in order to compute $|x_n - x|$, whereas a Cauchy sequence lets the terms **compare among themselves** — someone who does not know the limit can still verify it.\n\n⭐ In $\\mathbb{R}$ the two are **equivalent** (the Cauchy criterion);\n\nin $\\mathbb{Q}$ they are not ($1, 1.4, 1.41, \\ldots$ is Cauchy but has no rational limit).\n\n$\\mathbb{R}$ is constructed precisely to fill this gap.\n\n⚠ Do not confuse this with `def.cauchy-null`: that one is about **rational** Cauchy sequences, a building block in the construction of $\\mathbb{R}$;\n\nthe present notion is the tool for testing convergence once $\\mathbb{R}$ is available.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3c91c226',
+      },
+    },
+
+    'def.limit-point': {
+      statement: {
+        en: "Let $S \\subseteq \\mathbb{R}$ and $x \\in \\mathbb{R}$. A point $x$ is a **limit point** (also called an accumulation point) of $S$ iff every punctured neighbourhood of $x$ meets $S$:\n\n$$\\forall \\varepsilon > 0,\\ \\exists s \\in S :\\ 0 < |s - x| < \\varepsilon$$\n\nEquivalent sequential formulation: there is a sequence $S \\setminus \\{x\\}$ with $s_n \\to x$.\n\nReplacing $S$ by the set of terms of a sequence gives \"$x$ is a limit point of $\\{x_n\\}$\", which means \"$\\{x_n\\}$ has a subsequence converging to $x$\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#4ff443b4',
+      },
+      notes: {
+        en: "⭐ \"Every bounded sequence has a limit point\" is the Bolzano–Weierstrass theorem — one of the six faces of the completeness of the real numbers.\n\n⚠ A limit point **need not belong** to $S$: the set of all rationals $\\mathbb{Q}$ has limit-point set all of $\\mathbb{R}$ (this is precisely what incompleteness of $\\mathbb{Q}$ looks like).\n\n⚠ Do not confuse it with the supremum: $\\sup S$ is about \"upper bounds of $S$\", while a limit point is about \"which points the elements of $S$ approach arbitrarily closely\";\n\n$\\sup\\{1, 1/2, 1/3, \\ldots\\} = 1$ is also the unique limit point of that set, whereas $\\sup\\{1\\} = 1$ is not a limit point.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9d9f715b',
+      },
+    },
+
+    'thm.bolzano-weierstrass': {
+      statement: {
+        en: "Every bounded sequence of real numbers has a convergent subsequence. Equivalently: every bounded infinite subset of $\\mathbb{R}$ has a limit point.\n\nApplying this coordinatewise in $\\mathbb{R}^{n}$ gives: every bounded sequence in $\\mathbb{R}^{n}$ has a convergent subsequence.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3cdbcb75',
+      },
+      notes: {
+        en: "⭐ This is the analytic core of \"compact $\\iff$ bounded and closed in $\\mathbb{R}^{n}$\" (Heine–Borel): the reason a continuous function on a bounded closed set attains its extreme values ultimately lies here.\n\n⚠ Completeness is **indispensable** here: in $\\mathbb{Q}$, the sequence $1, 1.4, 1.41, 1.414, \\ldots$ is bounded but has no subsequence converging to a rational number.\n\n⭐ The standard proof is **bisection**: halve the interval each time, keep the half containing infinitely many terms, and apply the nested-interval theorem.",
+        status: 'draft',
+        basedOn: 'v0.9.3#54071bff',
+      },
+    },
+
+    'def.sigma-algebra': {
+      statement: {
+        en: "Let $X$ be a set and $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$. Then $\\mathfrak{A}$ is a **$\\sigma$-algebra** on $X$ if and only if it satisfies all three of the following:\n\n1. **Contains the whole set**: $X \\in \\mathfrak{A}$\n2. **Closed under complements**: $A \\in \\mathfrak{A} \\implies A^c := X \\setminus A \\in \\mathfrak{A}$\n3. **Closed under countable unions**: $A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$\n\nThe pair $(X, \\mathfrak{A})$ is called a **measurable space**, and the elements of $\\mathfrak{A}$ are called **measurable sets**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6309313d',
+      },
+      notes: {
+        en: "The three conditions come as a package and none can be dropped: keeping only (2) and (3) gives a **$\\sigma$-ring**; weakening (3) to \"finite unions\" gives an **algebra**.\n\nFrom (2) and (3), De Morgan gives closure under **countable intersections** at once: $\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$. Hence finite unions, finite intersections, differences and symmetric differences are all available — the only thing that genuinely goes beyond an algebra is **countability**.\n\n⚠ The direction cannot be reversed: every $\\sigma$-algebra is an algebra, but an algebra need not be a $\\sigma$-algebra.\n\nCounterexample: on $X = \\mathbb{R}$, the family of all finite and cofinite sets is an algebra, while $\\mathbb{N} = \\{1\\} \\cup \\{2\\} \\cup \\{3\\} \\cup \\cdots$ is a union of countably many of its elements and is itself neither finite nor cofinite, so that algebra is not closed under countable unions.\n\nThe \"$\\sigma$\" in the notation means **countable** (from the initial letter of German Summe / French somme); it has nothing to do with the $\\sigma$ of standard deviation.\n\nWhy it is needed: countable additivity of a measure $\\mu (\\bigcup A_{n}) = \\sum \\mu (A_{n})$ requires a domain closed under **countable** operations, otherwise the two sides of the identity do not even live in the same family of sets. The whole construction of measure starts here.\n\n**Of the three axioms only one is really \"hard\"** (the other two can almost be exchanged for each other):\n\n- **Contains the whole set $\\iff$ contains the empty set**: immediate from closure under complements ($\\emptyset = X^{c}$). So writing \"contains $\\emptyset$\" or \"contains $X$\" is equivalent, **provided closure under complements is also present**.\n- **Closed under countable unions $\\iff$ closed under countable intersections**: **use De Morgan twice**: $\\bigcap_{n} A_{n} = \\bigl(\\bigcup_{n} A_{n}^{c}\\bigr)^{c}$. So of \"countable unions\" and \"countable intersections\" only one needs to be assumed — **but it must be paired with closure under complements**; without that neither follows.\n- **\"Countable unions\" cannot be weakened to \"finite unions\"**: finite unions plus complements give an **algebra** (Boolean algebra), not a $\\sigma$-algebra. The difference is substantial: the rationals can be covered in the finite-union algebra of $2^{\\mathbb{R}}$, but the countable union of the singletons $\\{q\\}$ ($= \\mathbb{Q}$) need not be — and all of measure theory needs countable unions.\n- **\"Countable\" cannot be strengthened to \"arbitrary\"**: a $\\sigma$-algebra is **not** closed under arbitrary unions. Counterexample: the Borel $\\sigma$-algebra on $\\mathbb{R}$ is closed under unions of all open sets (the open sets themselves are closed under arbitrary unions), but taking unions over **arbitrary** subfamilies escapes it (every singleton is Borel, yet an arbitrary union of them can be non-measurable, given $2^{\\aleph_{0}}$ of them — constructing a Vitali set needs the axiom of choice).\n\n⚠️ One-line mnemonic: **a $\\sigma$-algebra = \"contains the whole set + closed under complements + closed under countable unions\", and everything else is a consequence of the last two**; while \"complements + finite unions\" is only an algebra, and the gap is not small.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6901af65',
+      },
+    },
+
+    'def.measure': {
+      statement: {
+        en: "Let $\\mathcal{M}$ be a $\\sigma$-algebra on $X$. A function $\\mu : \\mathcal{M} \\to [0, +\\infty]$ is a **measure** if and only if\n\n- **(i)** $\\mu(\\emptyset) = 0$\n- **(ii) countable additivity**: if $\\{E_{j}\\}$ is a sequence of pairwise disjoint sets in $\\mathcal{M}$, then\n\n$$\\mu( \\bigcup_{j=1}^{\\infty} E_j ) = \\sum_{j=1}^{\\infty} \\mu(E_j)$$\n\n$(X, \\mathcal{M}, \\mu )$ is called a **measure space**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0b79b896',
+      },
+      notes: {
+        en: "(i) is **independent of** (ii), and (ii) alone **does not imply** it: the constant function $+\\infty$ is countably additive yet does not vanish on the empty set (taking $E_j \\equiv \\emptyset$ yields $\\mu(\\emptyset) = +\\infty \\cdot \\mu(\\emptyset)$, and both sides are legitimate). The axiom is there to exclude the meaningless solution that assigns $\\infty$ to everything, and at the same time to ensure that the series in (ii) is never $\\infty - \\infty$.\n\n**Countable additivity is the only requirement in this definition with real content**: it upgrades \"size\" from finite additivity to countable additivity, at the price of allowing the value $\\infty$.\n\n⚠ Allowing $\\mu (E) = +\\infty$ is necessary: Lebesgue measure on $\\mathbb{R}$ is $\\infty$.\n\n**Which hypothesis each direction uses** (the two measure axioms are the definition; countable additivity is stronger than finite additivity):\n- measure $\\iff$ non-negative extended real-valued function satisfying (i), (ii): unwinding the definition; no $\\sigma$-finiteness or completeness of the measure is needed; the domain must be a $\\sigma$-algebra.\n- countable additivity $\\implies$ finite additivity: also uses $\\mu(\\emptyset)=0$, padding a finite disjoint sequence with empty sets; conversely, finite additivity plus continuity from below recovers countable additivity by taking limits of partial unions.\n- (ii) alone cannot imply (i): the constant $+\\infty$ is countably additive in the extended non-negative real sense but does not vanish on the empty set; if some set has finite measure, one can deduce (i) from its disjoint union with the empty set.\n- finite additivity is not enough for a measure: on the finite-cofinite algebra of $\\mathbb{N}$, assigning zero to finite sets and one to cofinite sets is finitely additive, but the disjoint union of singletons breaks countable additivity; this also shows that the domain there is not yet a $\\sigma$-algebra.",
+        status: 'draft',
+        basedOn: 'v0.9.3#68503ad7',
+      },
+    },
+
+    'def.measurable-function': {
+      statement: {
+        en: "Let $(X, \\mathcal{M})$ and $(Y, \\mathcal{N})$ be measurable spaces. A function $f : X \\to Y$ is **$(\\mathcal{M}, \\mathcal{N})$-measurable** if and only if the preimage of every measurable set is measurable:\n\n$$f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{N}$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#ea186217',
+      },
+      notes: {
+        en: "Why **preimages** rather than images: preimages preserve intersections, unions and complements ($f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$, etc.), whereas images lack these good properties. Measurability is therefore a condition pulled back along $f$.\n\nEquivalent formulation (when $Y$ is a topological space and $\\mathcal{N} = \\mathfrak{B}_Y$): $f$ is measurable $\\iff$ the preimage of every open set is measurable.\n\n⚠ \"Measurable on $E$\" is a relative notion: $f$ is measurable on $E$ $\\iff$ $f|_E$ is measurable with respect to the subspace $\\sigma$-algebra $\\mathcal{M}_E$.\n\n**Four characterizations, the cost being \"which family of sets is tested\"**:\n\n- preimages of **open sets** are measurable $\\iff$ preimages of **Borel sets** are measurable: $(\\Leftarrow)$ is clear; $(\\implies)$ uses the fact that preimages preserve $\\sigma$-algebra operations (Borel sets are generated by open sets).\n- $\\iff$ **all level sets $\\{x : f(x) > a\\}$ are measurable** ($a \\in \\mathbb{R}$): **this is the most-used criterion**, since one only has to test a generating family instead of all open sets. ⚠️ Using $\\{f > a\\}$ or $\\{f \\ge a\\}$ both work, **and mixing them is harmless** ($\\{f > a\\} = \\bigcup_{q \\in \\mathbb{Q}, q > a} H_q$, and each $H_q$ may be taken in either form).\n- $\\iff$ **both $f^{+}, f^{-}$ are measurable**: split a real-valued function into positive and negative parts, then handle the non-negative case with $\\{f > a\\}$.\n\n⚠️ **The necessary hypothesis is \"the target carries the Borel $\\sigma$-algebra\"**: measurability on $\\mathbb{R}$ is always relative to some $\\sigma$-algebra; for $\\overline{\\mathbb{R}}$ (including $\\pm\\infty$) **no extra convention is needed**: $\\{f = +\\infty\\} = \\bigcap_n \\{f > n\\}$ and $\\{f = -\\infty\\} = \\bigcap_n \\{f \\le -n\\}$ are automatically measurable from the level sets.\n⚠️ **A composition of measurable functions need not be measurable**: if $f$ is measurable and $g$ is Borel measurable, then $g \\circ f$ is measurable; but if $g$ is merely Lebesgue measurable this can fail — this is why \"Borel measurable\" and \"Lebesgue measurable\" must be distinguished.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2e01c79e',
+      },
+    },
+
+    'def.simple-function': {
+      statement: {
+        en: "A measurable function $\\varphi : X \\to \\mathbb{C}$ is a **simple function** if and only if it takes only **finitely many values**. Equivalently, it can be written as\n\n$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}$$\n\nwhere $a_j \\in \\mathbb{C}$, and the sets $E_j = \\varphi^{-1}(\\{a_j\\}) \\in \\mathcal{M}$ are pairwise disjoint.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2b53fc9c',
+      },
+      notes: {
+        en: "A simple function is the measurable version of a **step function** — finitely many \"steps\".\n\nIt is the **starting point** of the whole theory of integration: first define the integral for simple functions (a weighted sum), then extend it to all non-negative measurable functions by \"approximating from below by simple functions\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#75a8987d',
+      },
+    },
+
+    'def.integral-simple': {
+      statement: {
+        en: "Let $\\varphi \\in L^+$ be a simple function, written in standard form — non-negative coefficients, pairwise disjoint base sets, all in $\\mathcal{M}$:\n\n$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}, \\quad  a_j \\ge 0,\\ E_j \\in \\mathcal{M}$, **pairwise disjoint**\n\nThen define\n\n$$\\int \\varphi d\\mu := \\sum_{j=1}^{n} a_j \\mu(E_j)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#2d5cc0e7',
+      },
+      notes: {
+        en: "This is exactly \"area $=$ height of each layer $\\times$ measure of each layer\" — written in the same shape as a Riemann sum, only intervals are replaced by measurable sets.\n\nOne must check **well-definedness**: the same $\\varphi$ can be written in different standard forms (for instance by splitting some $E_{j}$ further), but finite additivity of $\\mu$ gives the same result.\n\nConvention $0 \\cdot \\infty = 0$: this step is crucial — it makes the integral of \"the function equal to 0 on a set of infinite measure\" equal to 0, as intuition demands.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3a4b2ae6',
+      },
+    },
+
+    'thm.mct': {
+      statement: {
+        en: "Let $\\{f_n\\} \\subseteq L^+$ be a **pointwise increasing** sequence:\n\n$$f_1 \\le f_2 \\le \\cdots, \\quad  f_n \\uparrow  f$$\n\nThen the integral and the limit can be exchanged:\n\n$$\\int f = \\lim_{n\\to\\infty} \\int f_n$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#d3286f22',
+      },
+      notes: {
+        en: "⭐ This is the **engine** of the whole Lebesgue integration theory: term-by-term integration, Fatou, and the DCT are all corollaries.\n\nCompare with the Riemann integral: there \"exchanging integral and limit\" needs a strong condition such as uniform convergence; here **monotonicity** alone suffices — that is the entire advantage of the Lebesgue integral.\n\n⚠ Both sides may be $\\infty$; the identity is understood in the extended sense.",
+        status: 'draft',
+        basedOn: 'v0.9.3#291c7a0a',
+      },
+    },
+
+    'thm.dct': {
+      statement: {
+        en: "Let $\\{f_n\\} \\subseteq L^1$, let $f$ be **measurable**, let $f_n \\to f$ a.e., and suppose there is a **dominating function** $g \\in L^1$ such that\n\n$$|f_n| \\le g\\quad  \\text{a.e.}\\quad  \\forall n$$\n\nThen $f \\in L^1$ and\n\n$$\\int f = \\lim_{n\\to\\infty} \\int f_n$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#02aed00c',
+      },
+      notes: {
+        en: "⭐ This is the convergence theorem **used most often** in actual computation. None of the three hypotheses can be dropped:\n\n$\\cdot \\text{a.e.}$ convergence — cannot be removed (on a one-point probability space $f_{n} = (-1)^{n}$: dominated by $g \\equiv 1$, yet neither the functions nor the integrals converge);\n\n$\\cdot$ the dominating function $g \\in L^{1}$ — cannot be removed ($n\\chi_{[0,1/n]}$ tends to $0$ **almost everywhere** on $[0,1]$ (it fails to converge at $x = 0$), yet its integral is constantly $1$; another example is $\\chi_{[n,n+1]}$, which converges to $0$ **everywhere** while its integral is constantly $1$ and does not tend to $0$ — the defect is the absence of an integrable dominating function, since any dominating function would have to be $\\ge 1$ on all of $\\mathbb{R}$);\n\n$\\cdot$ $g$ must be **integrable**; mere boundedness is not enough (on a space of infinite measure).\n\nWhy \"dominating\": $g$ keeps all the $f_{n}$ inside one integrable cage, so the mass has nowhere to escape and the limiting process cannot lose area.\n\n📌 \"Exchanging integral and limit\" here means **dominated convergence** (pointwise convergence plus an integrable dominating function); the exchange under uniform convergence is `thm.uniform-limit-integral`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#76f9f632',
+      },
+    },
+
+    'def.ae': {
+      statement: {
+        en: "Let $(X, \\mathcal{M}, \\mu)$ be a measure space. A proposition $P(x)$ about a point $x$ holds **almost everywhere** (written a.e.) if and only if\n\n$$\\exists E \\in \\mathcal{M}:\\ \\mu(E) = 0\\ \\wedge \\ \\forall x \\in X \\setminus E,\\ P(x) .$$\n\nthat is, **the set of failure points is contained in some measurable null set** (it need not itself be measurable — a non-Borel subset of the Cantor set in a non-complete space is a counterexample; only after completion are the two formulations equivalent).\n\nCommon uses: $f = g$ a.e. (the set $\\{f \\ne g\\}$ is null), $f_n \\to f$ a.e. (the points of non-convergence form a null set), $F' = 0$ a.e.",
+        status: 'draft',
+        basedOn: 'v0.9.3#45167866',
+      },
+      notes: {
+        en: "⭐ a.e. is the **lubricant** of Lebesgue theory: elements of $L^1$, $L^p$ are really **equivalence classes of functions** (equal a.e. counts as the same), and almost every convergence theorem (MCT, Fatou, the a.e. version of DCT, Egorov) requires only a.e. convergence — because values on a null set do not contribute to the integral.\n\n⚠ \"Equal a.e.\" and \"equal everywhere\" are different relations: $\\int |f| = 0 \\implies f = 0$ a.e. (not everywhere 0).\n\n⚠ A **subset** of a null set need not be measurable unless the measure space is complete — this is exactly the problem that completion solves.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b1b3e26f',
+      },
+    },
+
+    'def.uniform-continuity': {
+      statement: {
+        en: "Let $X \\subseteq \\mathbb{R}$, $f : X \\to \\mathbb{R}$. Then $f$ is **uniformly continuous** if and only if\n\n$$\\forall \\varepsilon > 0,\\ \\exists \\delta > 0,\\ \\forall x, x' \\in X :\\ |x - x'| < \\delta \\implies |f(x) - f(x')| < \\varepsilon$$\n\nThe only difference from \"continuous\" is the **order** of the quantifiers: here $\\delta$ appears before $\\forall x$, so one and the same $\\delta$ must work simultaneously for all points of $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#026589c4',
+      },
+      notes: {
+        en: "⭐ In one sentence: continuity gives \"a $\\delta$ for each point\", uniform continuity gives \"one $\\delta$ that works for all of $X$\".\n\n⚠ The two are **not equivalent**: $f(x) = x^{2}$ is continuous on $\\mathbb{R}$, but for $x = n$, $x' = n + 1/n$ one has $|f(x) - f(x')| = 2 + 1/n^{2} > 2$, which no $\\delta$, however small, can avoid — so it is not uniformly continuous.\n\n$f(x) = 1/x$ on $(0, 1)$ is the same.\n\n⭐ On compact sets the two **coincide** (Cantor's theorem) — this is why elementary calculus can talk only about continuity and still use uniform-continuity properties freely.\n\n⭐ Uniform continuity is the passport for everything that later \"moves limits into integrals / derivatives\": only uniformly convergent sequences of functions preserve continuity and preserve integrals.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ece91bf7',
+      },
+    },
+
+    'def.uniform-convergence': {
+      statement: {
+        en: "With the notation above, $\\{f_n\\}$ **converges uniformly** to $f$ if and only if\n\n$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall n \\ge N,\\ \\forall x \\in X :\\ |f_n(x) - f(x)| < \\varepsilon$$\n\nWrite $f_n \\rightrightarrows f$. An equivalent formulation (in terms of the supremum):\n\n$$\\sup_{x \\in X} |f_n(x) - f(x)| \\xrightarrow{\\;n \\to \\infty\\;} 0$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#4b3f6c88',
+      },
+      notes: {
+        en: "⭐ The only difference from pointwise convergence is the **order of quantifiers**: here $\\exists N$ comes **before** $\\forall x$ — a single $N$ works for the whole domain.\n\n⭐ The supremum form is the most-used criterion: uniform convergence says \"the supremum of the error function tends to zero\", that is, **convergence in the sup norm**.\n\nThis also explains why it is \"convergence in a function space\" rather than \"convergence on a set of points\".\n\n⚠ Uniform convergence $\\implies$ pointwise convergence, but not conversely ($f_n(x) = x^{n}$ on $[0, 1]$).\n\n⭐ The three exchange theorems in this pack (preserving continuity, integrals, derivatives) all need only uniform convergence — and convergence of the kind $f_n(x) = x^{n}$ that \"misses one point\" is exactly what destroys continuity.",
+        status: 'draft',
+        basedOn: 'v0.9.3#acc41663',
+      },
+    },
+
+    'def.category': {
+      statement: {
+        en: "A **category** is a sextuple\n\n$$( \\mathcal{O}, M, s, t, \\circ, i )$$\n\nwhere $(\\mathcal{O}, M, s, t)$ is a **graph**: $\\mathcal{O}$ are the **objects**, $M$ the **morphisms**, $s, t : M \\to \\mathcal{O}$ assigns to each morphism its **source** and **target**, and one writes $f : X \\to Y$ to mean $s(f) = X$ and $t(f) = Y$.\n\nThere are moreover two maps:\n\n**Composition** $\\circ$ is defined on composable pairs of morphisms. Set\n\n$$M \\times_{s,t} M = \\{ (f, g) \\in M \\times M : s(f) = t(g) \\}$$\n\nthis is the set of all pairs of morphisms \"whose target of $g$ equals the source of $f$\"; $\\circ : M \\times_{s,t} M \\to M$ sends $(f, g)$ to $f \\circ g$, and satisfies the **associativity law**\n\n$$h \\circ (g \\circ f) = (h \\circ g) \\circ f$$\n\n(whenever both sides are defined).\n\n**Identity** $i : \\mathcal{O} \\to M$ assigns to each object $X$ a morphism $1_X = i(X)$, satisfying the **identity law**\n\n$$f \\circ 1_X = f = 1_Y \\circ f \\qquad (f : X \\to Y)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#73385d3c',
+      },
+      notes: {
+        en: "The crux is the **fiber product** $M \\times_{s,t} M$: composition is not an operation on $M \\times M$, but is defined only on some pairs of morphisms. Composition in a category is thus a **partial operation**, and \"whether $f \\circ g$ is defined\" is itself something to check.\n\nExamples: $\\mathbf{Set}$ (sets and functions), $\\mathbf{Mon}$ (monoids), $\\mathbf{Grp}$ (groups), $\\mathbf{Ab}$ (abelian groups), $\\mathbf{Rng}$ (rings), $G\\text{-}\\mathbf{Set}$ ($G$-sets).\n\n**The simplex category**: $\\mathcal{O} = \\mathbb{N}$,\n\n$$M = \\{ (m, n, f) : m, n \\in \\mathbb{N},\\ f : [m] \\to [n] \\text{increasing} \\}, \\qquad [m] = \\{ 1, \\ldots, m \\}$$\n\nmorphisms are the increasing maps from $m$ to $n$.\n\n**The category of open sets** $\\operatorname{Open}(X)$: given a topological space $(X, \\tau)$, take $\\mathcal{O} = \\tau$,\n\n$$M = \\{ (u, v) : u \\subseteq v \\} \\subseteq \\tau \\times \\tau$$\n\nthat is, \"from a smaller open set to an open set containing it\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#392a342e',
+      },
+    },
+
+    'def.functor': {
+      statement: {
+        en: "A **functor** $F : \\mathcal{C} \\to \\mathcal{D}$ from a category $\\mathcal{C}$ to a category $\\mathcal{D}$ consists of two parts:\n\n- a map on objects $X \\mapsto F(X)$;\n- a map on morphisms $f \\mapsto F(f)$, sending $f : X \\to Y$ to $F(f) : F(X) \\to F(Y)$.\n\nIt is required to **preserve identities** and **preserve composition**:\n\n$$F(1_X) = 1_{F(X)}, \\qquad F(g \\circ f) = F(g) \\circ F(f)$$\n\n(whenever $g \\circ f$ is defined). A functor in the opposite direction $F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$ is called a **contravariant functor**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5e2e1d93',
+      },
+      notes: {
+        en: "The two requirements together say one thing: **a functor transports the entire structure of a category verbatim** — identities remain identities, composites remain composites, and even associativity need not be checked again (it follows automatically).\n\nExamples:\n\n- the **forgetful functor** $\\mathbf{Top} \\to \\mathbf{Set}$: $(X, \\tau) \\mapsto X$, treating continuous maps as ordinary maps.\n\nThe topology is discarded, hence \"forgetful\".\n\nLikewise $\\mathbf{Ab} \\to \\mathbf{Set}$, $\\mathbf{Grp} \\to \\mathbf{Mon}$ (inclusion).\n- $\\mathbf{Set} \\to \\mathbf{Top}$ has two: $X \\mapsto (X, \\mathcal{P}(X))$ (discrete topology) and $X \\mapsto (X, \\{ \\emptyset, X \\})$ (trivial topology). Both work, because maps out of a discrete space and into a trivial space are always continuous.\n- **free constructions** $\\mathbf{Set} \\to \\mathbf{Ab}$: $X \\mapsto \\bigoplus_X \\mathbb{Z}$; $\\mathbf{Set} \\to \\mathbf{Grp}$: $X \\mapsto \\langle x, x^{-1} \\mid x \\in X \\rangle$.\n- **abelianization** $\\mathbf{Grp} \\to \\mathbf{Ab}$: $G \\mapsto G / [G, G]$.\n- **groupification** $\\mathbf{Mon} \\to \\mathbf{Grp}$: $M \\mapsto M^{gr} = \\langle x_g \\ (g \\in M) \\mid x_g x_h = x_{gh} \\rangle$.\n- $\\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Cat}$: $(X, \\tau) \\mapsto \\operatorname{Open}(X)$. Contravariant, because fewer open sets means more maps.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ee0c6560',
+      },
+    },
+
+    'def.natural-transformation': {
+      statement: {
+        en: "Let $F, G : \\mathcal{C} \\to \\mathcal{D}$ be two functors. A **natural transformation** $\\alpha : F \\implies G$ from $F$ to $G$ is a family of morphisms\n\n$$\\alpha_X : F(X) \\to G(X) \\qquad (X \\in \\mathcal{C})$$\n\nsuch that for every $f : X \\to Y$ the square commutes:\n\n$$G(f) \\circ \\alpha_X = \\alpha_Y \\circ F(f)$$\n\nWhen every $\\alpha_X$ is an isomorphism, $\\alpha$ is called a **natural isomorphism**, written $F \\cong G$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d4719ae7',
+      },
+      notes: {
+        en: "In one sentence: the two components of $\\alpha$ control the two ends, and commutativity says that \"changing functor first and then applying $f$\" agrees with \"applying $f$ first and then changing functor\".\n\nWith natural transformations, **functors themselves become objects**: taking functors $\\mathcal{C} \\to \\mathcal{C}'$ as objects and natural transformations as morphisms gives a category denoted $\\operatorname{Hom}(\\mathcal{C}, \\mathcal{C}')$;\n\nthe set of all natural transformations $F \\implies G$ is denoted $\\operatorname{Nat}(F, G)$.\n\nExample: there are two functors $\\mathbf{CRng} \\to \\mathbf{Grp}$ — $A \\mapsto GL_n(A)$ and $A \\mapsto A^{*}$. The determinant\n\n$$\\det_A : GL_n(A) \\to A^{*}$$\n\nassembles into a **natural transformation**: $\\det$ \"commutes with\" ring homomorphisms. This is exactly what \"natural\" means — not a coincidence verified case by case, but forced by structure.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f569c80b',
+      },
+    },
+
+    'def.adjoint': {
+      statement: {
+        en: "Let $F : \\mathcal{C} \\to \\mathcal{D}$, $G : \\mathcal{D} \\to \\mathcal{C}$ be a pair of functors. $(F, G)$ is called a pair of **adjoint functors** if there is a natural isomorphism\n\n$$\\operatorname{Hom}_{\\mathcal{D}}\\bigl(F(X),\\ Y\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X,\\ G(Y)\\bigr) \\qquad (X \\in \\mathcal{C},\\ Y \\in \\mathcal{D})$$\n\nIn that case write $F \\dashv G$: $F$ is called the **left adjoint** of $G$, and $G$ the **right adjoint** of $F$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8be3f401',
+      },
+      notes: {
+        en: "In one sentence: **translations between the two directions are mutually optimal**. Going around the left (apply $F$, then map out) and going around the right (map out, then apply $G$) give the same amount — and **naturally** so.\n\nExamples:\n\n- the forgetful functor $\\mathbf{Top} \\to \\mathbf{Set}$ has **two** adjoints: the left adjoint is the **discrete topology** ($\\operatorname{Hom}_{\\mathbf{Top}}(S_{d}, X) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(S, F(X))$), the right adjoint is the **trivial topology** ($\\operatorname{Hom}_{\\mathbf{Top}}(X, S_{t}) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(F(X), S)$).\n- the left adjoint of the forgetful functor $\\mathbf{Ab} \\to \\mathbf{Set}$ is the **free abelian group**: $\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathbb{Z}^{(X)}, M) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, \\operatorname{forget} M)$.\n\n**Free is left adjoint to forgetful**.\n\nTwo rules of computation:\n\n- **duality**: $F \\dashv G$ $\\iff$ $G^{\\mathrm{op}} \\dashv F^{\\mathrm{op}}$ (on $\\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}^{\\mathrm{op}}$).\n- **composition**: $F \\dashv G$ and $F' \\dashv G'$ $\\implies$ $F' \\circ F \\dashv G \\circ G'$, because\n\n$$\\operatorname{Hom}(F'F(X), Y) \\cong \\operatorname{Hom}(F(X), G'(Y)) \\cong \\operatorname{Hom}(X, GG'(Y))$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#fff1c5e4',
+      },
+    },
+
+    'def.group': {
+      statement: {
+        en: "Let $G$ be a **set** and $\\cdot$ a **binary operation** on $G$ (that is, a function $G \\times G \\to G$, $(a, b) \\mapsto a \\cdot b$). Then $(G, \\cdot)$ is a **group** if and only if:\n\n- **associativity**: $(a b) c = a (b c)$ for all $a, b, c \\in G$;\n- **identity**: there exists $e \\in G$ such that $e a = a e = a$ for all $a$;\n- **inverses**: for every $a \\in G$ there exists $a^{-1} \\in G$ such that $a a^{-1} = a^{-1} a = e$.\n\nA group that also satisfies the **commutative law** $a b = b a$ is called an **abelian group**, or **commutative group**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dc564295',
+      },
+      notes: {
+        en: "⭐ **The format is again \"set + operation + axioms\"**: a group is not an object out of nowhere — one set, one function and three identities determine it. To decide whether something is a group, check these identities one by one.\n\n**The identity and inverses are unique**: if $e, e'$ are both identities, then $e = e e' = e'$; if $a^{-1}, a'$ are both inverses of $a$, then $a' = a' e = a' a a^{-1} = e a^{-1} = a^{-1}$. Hence the notations \"$e$\" and \"$a^{-1}$\" are legitimate.\n\n**Examples and counterexamples**: $(\\mathbb{Z}, +)$ is an abelian group; $(\\mathbb{Q} \\setminus \\{0\\}, \\cdot)$ is an abelian group; $(\\mathbb{Z}, \\cdot)$ is **not** a group (only $\\pm 1$ have multiplicative inverses);\n\n$n \\times n$ invertible matrices form a group under multiplication but **not** an abelian one ($n \\ge 2$).\n\n📌 There is a weaker layer: requiring only associativity and an identity, but not inverses, gives a **monoid**. ($\\mathbb{N}$ under addition is a monoid but not a group.)\n\n**Which hypothesis each direction uses** (a group is defined by axioms; shorter criteria must keep their ambient hypotheses):\n- group $\\iff$ associativity, two-sided identity and two-sided inverses: unwinding the definition, with no commutativity requirement.\n- group $\\implies$ uniqueness of identity and inverses: cancellation using associativity and the two-sided identity/inverse identities; no axiom of choice is needed to select inverses, since the inverse is already unique.\n- every element invertible in a monoid $\\implies$ group: direct expansion; cancellation alone is not enough, since the non-negative integers under addition satisfy cancellation but positive elements have no inverses.\n- finite non-empty cancellation semigroup $\\implies$ group: left and right multiplication are injective, hence bijective by finiteness, which yields a common identity and inverses; the infinite counterexample above shows finiteness cannot be dropped.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3dae59fa',
+      },
+    },
+
+    'def.ring': {
+      statement: {
+        en: "Let $A$ be a **set** and $+$, $\\cdot$ two **binary operations** on $A$. Then $(A, +, \\cdot)$ is a **ring** if and only if:\n\n- $(A, +)$ is an **abelian group**;\n- $(A, \\cdot)$ satisfies **associativity** (no identity and no commutativity is required);\n- the **distributive laws** $a(b + c) = ab + ac$, $(a + b)c = ac + bc$ hold.\n\nA ring whose multiplication is also commutative is called a **commutative ring**; a ring that moreover has a multiplicative identity $1 \\ne 0$ is called a **ring with identity**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ec2b13e2',
+      },
+      notes: {
+        en: "⭐ **Again \"set + operations + axioms\"**, and this layer directly **cites** the abelian group below: the additive axioms are not rewritten, just mentioned in one phrase.\n\n**Contrast with a field**: a field requires every non-zero element to be invertible ($(F\\setminus\\{0\\}, \\cdot)$ is an abelian group), a ring **does not**.\n\nSo a field is a special case of a ring, and $\\mathbb{Z}$ is a ring but not a field — this is exactly where the counterexample $\\mathbb{Z}$ in the definition of a field comes from.\n\n**Which hypothesis each direction uses** (here the definition is axiomatic; commutativity and identity are extra requirements):\n- ring $\\iff$ additive abelian group, associative multiplication, left and right distributivity: unwinding the definition adopted in this node; no axiom of choice is needed, nor is a field or PID required.\n- commutative ring $\\implies$ ring, ring with identity $\\implies$ ring: just forget extra structure; neither converse is free — $M_2(\\mathbb{R})$ is not commutative, and $2\\mathbb{Z}$ has no identity under the usual multiplication.\n- adding commutative multiplication $\\iff$ commutative ring; adding an identity together with the convention $1\\ne0$ of this library $\\iff$ ring with identity: still definitional; a ring with identity here is not required to be commutative.\n- field $\\implies$ commutative ring with identity: expand the field axioms; the converse also needs every non-zero element invertible, with $\\mathbb{Z}$ as a counterexample. The zero ring satisfies the ring axioms but not the convention $1\\ne0$ for rings with identity adopted in this node.",
+        status: 'draft',
+        basedOn: 'v0.9.3#af31758a',
+      },
+    },
+
+    'def.field': {
+      statement: {
+        en: "Let $F$ be a **set** and $+$, $\\cdot$ two **binary operations** on $F$ (that is, two functions $F \\times F \\to F$). Then $(F, +, \\cdot)$ is a **field** if and only if:\n\n- $(F, +)$ is an **abelian group**;\n- $(F \\setminus \\{0\\}, \\cdot)$ is an **abelian group** (here $0$ is the identity of the additive group);\n- the **distributive law** $a (b + c) = ab + ac$ holds for all $a, b, c \\in F$.\n\nIn one sentence: **addition, subtraction, multiplication and division (by non-zero elements) are all closed, and associativity, commutativity and distributivity hold**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3f226727',
+      },
+      notes: {
+        en: "⭐ **The format is \"set + operations + axioms\"**: a field is not an object out of nowhere — one set, two functions and a few identities determine it.\n\nTo decide whether something is a field, check these identities one by one.\n\nNote that the three items above **cite** the two axiom groups of a group directly: the definition of a field is **one layer on top of the definition of a group**, not a fresh enumeration of identities.\n\nConstructions already available:\n- $\\mathbb{Q}$ (rationals): the handiest field;\n\n- $\\mathbb{R}$ (reals): after constructing it from Cauchy sequences, verify that it satisfies these identities (see \"$\\mathbb{R}$ is a complete ordered field\");\n\n- $\\mathbb{Z}$ is **not** a field: $2$ has no multiplicative inverse in it;\n\n$\\mathbb{N}$ is not either: $1 - 2$ is meaningless.\n\n⚠ \"field\" here is not the same as the \"ring\" of measure theory: there a ring is a **ring of sets**, meaning a **family of sets** closed under finite unions and differences — same name, different object.\n\n**Which hypothesis each direction uses** (the compressed form of the field axioms relies on the two groups of group axioms):\n- field $\\iff$ additive abelian group, multiplicative abelian group on non-zero elements, and distributivity: unwinding the definition of this node; the non-zero elements forming a group also makes them non-empty, hence $0\\ne1$.\n- field $\\implies$ division by non-zero elements and no zero divisors: multiplicative inverses give cancellation, and absorption of zero follows from distributivity and additive cancellation; no axiom of choice is needed.\n- non-zero commutative ring with identity in which every non-zero element is invertible $\\implies$ field: verify the group conditions directly; \"non-zero\" cannot be dropped, since the zero ring satisfies the conditions vacuously on non-zero elements yet is not a field.\n- integral domain $\\implies$ field fails in general, e.g. the integers; a finite integral domain does work, since multiplication by a non-zero element is injective and hence bijective on a finite set; finiteness is the key.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0ef25fcc',
+      },
+    },
   },
 };

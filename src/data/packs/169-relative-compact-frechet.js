@@ -12,7 +12,7 @@
        **没有**「每个序列有 Cauchy 子列」这个等价刻画。
      · 「Fréchet 导数」0 命中（`def.derivative` 是一维的；`def.total-differential` 是
        $\mathbb{R}^{n}$ 上的全微分；流形上是 `def.differential-map`）。
-       赋范空间之间的 Fréchet 导数（$f'(a)$ 作为有界线性算子）确实缺。
+       赋范空间之间的 Fréchet 导数（$f\'(a)$ 作为有界线性算子）确实缺。
 
    本包：
      · def.relatively-compact 相对紧（新节点，含序列刻画）
@@ -130,8 +130,8 @@ window.MG = window.MG || {};
     { id: 'dep-fd-total', kind: 'definition',
       definition: 'def.total-differential', usedBy: 'thm.frechet-derivative',
       note: '有限维时 $f\'(a)$ 就是全微分（Jacobian 矩阵），本条是它的推广。' },
-    { id: 'dep-fd-invfn', kind: 'definition',
-      definition: 'thm.inverse-function-banach', usedBy: 'thm.frechet-derivative',
-      note: 'Fréchet 导数的定义本身不依赖逆映射定理；这里记的是「定理假设 $f\'(a)$ 可逆用的就是这个导数」这层实例化关系，不是构造依赖。' }
+        { id: 'dep-fd-invfn', kind: 'definition',
+      definition: 'thm.frechet-derivative', usedBy: 'thm.inverse-function-banach',
+      note: '逆映射定理的假设「$f\'(a)$ 可逆」里的 $f\'(a)$ 就是这个导数，属对象依赖：定理用导数，不是导数依赖定理。' }
   ]
 });

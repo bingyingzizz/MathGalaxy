@@ -225,7 +225,7 @@ window.MG = window.MG || {};
     { id: 'dep-sp-cc', kind: 'definition',
       definition: 'def.chern-class', usedBy: 'thm.splitting-principle',
       note: '分裂原理是关于陈类（Whitney 和）的恒等式工具。' },
-    { id: 'dep-sp-clb', kind: 'definition',
-      definition: 'prop.chern-class-line-bundle', usedBy: 'thm.splitting-principle',
-      note: '分裂到线丛之后逐块套用线丛公式 —— 按**实例化**理解（把一般公式用到具体对象上），不是构造依赖。' },  ]
+        { id: 'ana.sp-clb', kind: 'analogy',
+      a: 'prop.chern-class-line-bundle', b: 'thm.splitting-principle',
+      note: '线丛是秩 $1$ 的极端情形：分裂原理把一般 $E$ 化到「每个 $x_{j}$ 都来自线丛」，而线丛情形本身就是分裂完成的样子，两者是同一图景的两端。' },  ]
 });

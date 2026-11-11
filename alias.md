@@ -16,7 +16,7 @@
 - 同调代数　`dist/alias/homology.md` / `dist/alias/aka/homology.md` 47+171
 - 凝聚态数学　`dist/alias/condensed.md` / `dist/alias/aka/condensed.md` 40+109
 - 解析空间　`dist/alias/aka/analytic.md` 0+15
-- 复变函数　`dist/alias/complex.md` / `dist/alias/aka/complex.md` 3+86
+- 复变函数　`dist/alias/complex.md` / `dist/alias/aka/complex.md` 3+85
 - 微分几何　`dist/alias/diffgeom.md` / `dist/alias/aka/diffgeom.md` 6+83
 - 数论　`dist/alias/number.md` / `dist/alias/aka/number.md` 3+48
 

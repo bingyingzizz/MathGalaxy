@@ -19,7 +19,7 @@
 
   edges: [
     /* ------------------------------------------------ 1. 第一同构定理两个版本 */
-    {
+    {id: "e174.analogy",
       kind: 'analogy',
       a: 'thm.first-iso',
       b: 'thm.first-iso-vs',
@@ -35,7 +35,7 @@
     },
 
     /* ------------------------------------------- 2. Mayer–Vietoris 两个版本 */
-    {
+    {id: "e175.analogy",
       kind: 'analogy',
       a: 'thm.mayer-vietoris',
       b: 'thm.mv-homology',
@@ -49,7 +49,7 @@
     },
 
     /* ------------------------------------------- 3. Riesz 表示定理两个版本 */
-    {
+    {id: "e176.analogy",
       kind: 'analogy',
       a: 'thm.riesz-representation-lp',
       b: 'thm.riesz-hilbert',
@@ -84,7 +84,7 @@
     },
 
     /* ------------------------------------------- 5. Taylor 两种余项 */
-    {
+    {id: "e177.analogy",
       kind: 'analogy',
       a: 'thm.taylor',
       b: 'prop.taylor-peano',

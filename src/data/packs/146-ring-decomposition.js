@@ -242,46 +242,48 @@ window.MG = window.MG || {};
 
   edges: [
 
-    { kind: 'definition', definition: 'def.ring', usedBy: 'def.int-domain',
+    {id: "e127.definition", kind: 'definition', definition: 'def.ring', usedBy: 'def.int-domain',
       note: '整环是「交换、含幺、无零因子」的环 —— 三个条件全是对 `def.ring` 的追加。' },
 
-    { kind: 'definition', definition: 'def.ring', usedBy: 'def.irreducible-element',
+    {id: "e128.definition", kind: 'definition', definition: 'def.ring', usedBy: 'def.irreducible-element',
       note: '不可约与素都要「可逆元」和「整除」，两者都只在环里才有意义。' },
 
-    { kind: 'definition', definition: 'def.irreducible-element', usedBy: 'def.ufd',
+    {id: "e129.definition", kind: 'definition', definition: 'def.irreducible-element', usedBy: 'def.ufd',
       note: 'UFD 的定义直接用「不可约元」与「相伴」：分解的唯一性就是在相伴意义下的唯一性。' },
 
-    { kind: 'definition', definition: 'def.int-domain', usedBy: 'def.ufd',
+    {id: "e130.definition", kind: 'definition', definition: 'def.int-domain', usedBy: 'def.ufd',
       note: 'UFD 是整环：没有无零因子这个前提，「分解」与「约分」都不成立，唯一性无从谈起。' },
 
-    { kind: 'definition', definition: 'def.int-domain', usedBy: 'def.gcd-domain',
+    {id: "e131.definition", kind: 'definition', definition: 'def.int-domain', usedBy: 'def.gcd-domain',
       note: 'gcd 整环是整环：「最大公因子」用整除做下界，而无零因子才使整除正常（$0$ 不做因子）。' },
 
-    { kind: 'definition', definition: 'def.int-domain', usedBy: 'def.euclidean-domain',
+    {id: "e132.definition", kind: 'definition', definition: 'def.int-domain', usedBy: 'def.euclidean-domain',
       note: 'Euclid 整环是整环，外加一个满足带余除法的欧几里得函数。' },
 
-    { kind: 'definition', definition: 'def.int-domain', usedBy: 'def.bezout-domain',
+    {id: "e133.definition", kind: 'definition', definition: 'def.int-domain', usedBy: 'def.bezout-domain',
       note: 'Bézout 整环是整环：条件落在「有限生成理想是主理想」上。' },
 
-    { kind: 'definition', definition: 'def.ideal', usedBy: 'def.pid',
+    {id: "e134.definition", kind: 'definition', definition: 'def.ideal', usedBy: 'def.pid',
       note: 'PID 的定义就是「每个理想都是主理想」—— 没有理想这个概念写不出来。' },
 
-    { kind: 'definition', definition: 'def.ideal', usedBy: 'def.comaximal',
+    {id: "e135.definition", kind: 'definition', definition: 'def.ideal', usedBy: 'def.comaximal',
       note: '互素是理想的加法条件：$I + J = A$。' },
 
-    { kind: 'definition', definition: 'def.ideal', usedBy: 'thm.crt-rings',
+    {id: "e136.definition", kind: 'definition', definition: 'def.ideal', usedBy: 'thm.crt-rings',
       note: '定理的两个对象 $I, J$ 都是理想，商 $A/I$ 是商环。' },
 
-    { kind: 'definition', definition: 'thm.first-iso', usedBy: 'thm.crt-rings',
-      note: '同构的存在性直接由第一同构定理给出：核是 $I \\cap J$。' },
+    { id: 'imp.crtr-frac', kind: 'implication', sources: ['thm.first-iso'], target: 'thm.crt-rings',
+      title: '第一同构定理给出中国剩余定理的环论形式',
+      proof: '考虑 $\\varphi: A \\to A/I \\times A/J$，$a \\mapsto (a \\bmod I,\\ a \\bmod J)$，它是环同态。核 $\\ker\\varphi = I \\cap J$。由第一同构定理，$A/(I \\cap J) \\cong \\operatorname{im}\\varphi$；再由互素 $I+J=A$ 写出 $1 = u+v$（$u\\in I$、$v\\in J$），对任意 $(x,y)$ 取 $a = xv + yu$ 即得 $a\\equiv x \\pmod I$、$a \\equiv y \\pmod J$，故 $\\varphi$ 满射、$\\operatorname{im}\\varphi = A/I\\times A/J$。合起来 $A/(I\\cap J)\\cong A/I\\times A/J$；两两互素的情形对 $k$ 归纳。∎',
+      note: '第一同构定理提供「商掉核」这一步；满射性不用它，用互素给出的显式构造。' },
 
-    { kind: 'definition', definition: 'def.ufd', usedBy: 'thm.fundamental-arithmetic',
+    {id: "e137.definition", kind: 'definition', definition: 'def.ufd', usedBy: 'thm.fundamental-arithmetic',
       note: '算术基本定理就是「$\\mathbb{Z}$ 是 UFD」这句话在整数上的展开。' },
 
-    { kind: 'definition', definition: 'def.ufd', usedBy: 'thm.poly-ufd',
+    {id: "e138.definition", kind: 'definition', definition: 'def.ufd', usedBy: 'thm.poly-ufd',
       note: '$K[x]$ 是 UFD —— 定理本身是在验证这个定义。' },
 
-    { kind: 'definition', definition: 'def.euclidean-domain', usedBy: 'thm.division-algorithm',
+    {id: "e139.definition", kind: 'definition', definition: 'def.euclidean-domain', usedBy: 'thm.division-algorithm',
       note: '$K[x]$ 的带余除法正是「$N = \\deg$ 的欧几里得函数」，这条定理是 Euclid 整环的一个实例。' },
 
     {
@@ -357,7 +359,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
     },
 
-    { kind: 'analogy', a: 'thm.crt', b: 'thm.crt-rings',
+    {id: "e140.analogy", kind: 'analogy', a: 'thm.crt', b: 'thm.crt-rings',
       title: '中国剩余定理：数论版是环论版在 $\\mathbb{Z}$ 上的样子',
       note: [
         '两边的陈述结构相同：模数互素 $\\implies$ 商环分解成直积。',
@@ -368,7 +370,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
     },
 
-    { kind: 'analogy', a: 'thm.bezout', b: 'def.bezout-domain',
+    {id: "e141.analogy", kind: 'analogy', a: 'thm.bezout', b: 'def.bezout-domain',
       title: 'Bézout 恒等式：从 $\\mathbb{Z}$ 上的定理升级为一个环类',
       note: [
         '数论版的 Bézout 说「$\\gcd(a,b)$ 是 $a,b$ 的整系数组合」，这需要 $\\mathbb{Z}$ 的特殊性（Euclid 算法）。',

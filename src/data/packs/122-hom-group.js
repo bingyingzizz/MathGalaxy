@@ -153,7 +153,7 @@ window.MG = window.MG || {};
       title: '群上同调 $H^{n}(G, M)$',
       regions: ['homology', 'algebra'],
       tags: ['同调代数', '群上同调', '导出函子', 'Ext'],
-      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.5', 'Rotman, An Introduction to Homological Algebra —— 群上同调一章'],
+      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.1（Definitions and First Properties）', 'Rotman, An Introduction to Homological Algebra —— 群上同调一章'],
       statement: [
         '设 $M$ 是 $G$-模。群 $G$ 系数在 $M$ 里的**第 $n$ 个上同调群**是**不变量函子的右导出函子**：',
         '',
@@ -259,7 +259,7 @@ window.MG = window.MG || {};
       title: '$H^{1}(G, M)$ 是交叉同态模主交叉同态',
       regions: ['homology', 'algebra'],
       tags: ['同调代数', '群上同调', '交叉同态', '一维上同调'],
-      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.5（一维上同调与交叉同态）', 'Serre, Galois Cohomology —— 一维上同调与交叉同态'],
+      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.4（Crossed Homomorphisms and H¹）', 'Serre, Galois Cohomology —— 一维上同调与交叉同态'],
       statement: [
         '设 $M$ 是 $G$-模（记法用加法）。映射 $d : G \\to M$ 叫**交叉同态**（crossed homomorphism，也就是 $1$-上圈），如果',
         '',
@@ -395,7 +395,7 @@ window.MG = window.MG || {};
       title: '$H^{2}(G, A)$ 与群扩张的等价类一一对应',
       regions: ['homology', 'algebra'],
       tags: ['同调代数', '群上同调', '群扩张', '分类定理'],
-      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.5（扩张与二维上同调）', 'Rotman, An Introduction to Homological Algebra —— 群上同调一章'],
+      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.6（Factor Sets and H²）', 'Rotman, An Introduction to Homological Algebra —— 群上同调一章'],
       statement: [
         '设 $A$ 是 $G$-模。固定这个 $G$-模结构后，「$A$ 被 $G$ 的扩张」（即短正合列 $1 \\to A \\to E \\xrightarrow{\\pi} G \\to 1$，并带着它给出的共轭作用）的**等价类**与 $H^{2}(G, A)$ 的元素**一一对应**：',
         '',
@@ -440,7 +440,7 @@ window.MG = window.MG || {};
       title: '$H^{1}(G, A)$ 与半直积式的分裂结构',
       regions: ['homology', 'algebra'],
       tags: ['同调代数', '群上同调', '分裂扩张', '半直积'],
-      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.5（分裂扩张）', 'Serre, Galois Cohomology —— 一维上同调与半直积'],
+      refs: ['Weibel, An Introduction to Homological Algebra, Section 6.4（分裂扩张与截面）', 'Serre, Galois Cohomology —— 一维上同调与半直积'],
       statement: [
         '设 $A$ 是 $G$-模，$1 \\to A \\xrightarrow{i} E \\xrightarrow{\\pi} G \\to 1$ 是一个固定的扩张，并且它有**同态截面** $s : G \\to E$（即 $\\pi s = \\operatorname{id}_{G}$）。则：',
         '',
@@ -681,16 +681,16 @@ window.MG = window.MG || {};
         '这里 $\\check{H}^{n}(X,\\mathcal{M}):=\\varinjlim_{\\mathfrak{U}}\\check{H}^{n}(\\mathfrak{U},\\mathcal{M})$ 是沿局部有限开覆盖的定向极限。**不能**对任意单个局部有限覆盖断言同构（反例见注）；若 $\\mathfrak{U}$ 对 $\\mathcal{M}$ 是**好覆盖**——所有有限交 $U_{i_{0}\\cdots i_{p}}$ 满足 $H^{q}(U_{i_{0}\\cdots i_{p}},\\mathcal{M})=0$（$q>0$）——则 Cartan–Leray 谱序列退化，逐覆盖映射 $\\check{H}^{n}(\\mathfrak{U},\\mathcal{M})\\to H^{n}(X,\\mathcal{M})$ 已是同构。',
       ].join('\n'),
       notes: [
-        '**标准证明的三个零件。** 下面把能逐字核验的部分写出来；写不动的两条明确标成缺口 —— 本节点因此仍标 `status: \'skeleton\'`。',
+        '**标准证明的零件。** ①、②、③ 已写出证明；④ 的比较步仍是缺口（本节点标 `status: \'skeleton\'`）。',
         '**① Čech 层复形是消解。** 对覆盖 $\\mathfrak{U} = (U_{i})_{i}$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr)$，其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。',
         '**① 的证明。** 只需逐点看茎。固定 $x$，取 $i$ 使 $x \\in U_{i}$。在茎上定义收缩同伦 $h^{p} : (\\check{\\mathcal{C}}^{p})_{x} \\to (\\check{\\mathcal{C}}^{p-1})_{x}$：对 $\\sigma \\in (\\check{\\mathcal{C}}^{p})_{x}$ 令 $(h\\sigma)_{i_{0} \\cdots i_{p-1}} := \\sigma_{i\\,i_{0} \\cdots i_{p-1}}$（其余分量取 $0$，在 $x$ 的充分小邻域里 $U_{i}$ 一直可用）。直接按 Čech 微分 $\\delta$ 的符号计算得 $\\delta h + h \\delta = \\operatorname{id}$（$p \\ge 1$），而 $p = 0$ 时 $\\delta h = \\operatorname{id}$ 正是增广映射 $\\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x}$。所以增广复形 $0 \\to \\mathcal{M}_{x} \\to (\\check{\\mathcal{C}}^{0})_{x} \\to (\\check{\\mathcal{C}}^{1})_{x} \\to \\cdots$ 正合；逐点正合即层正合。取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$，故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
         '**② 细层 $\\implies$ 软层（Čech 项一般不是软层）。** 仿紧 Hausdorff 上局部有限覆盖配单位分解（`prop.paracompact-partition-unity`）。「细」有两种说法，这里把适用范围写清：**(a) $\\mathcal C(X)$-模层**：局部有限覆盖 $\\{V_{j}\\}$ 上的单位分解 $\\{\\rho_{j}\\}$（$\\sum_{j}\\rho_{j}=1$、$\\operatorname{supp}\\rho_{j}\\subseteq V_{j}$）给出「乘以 $\\rho_{j}$」的自同态，故 $\\rho_{j}s_{j}$ 逐点有定义；**(b) 一般阿贝尔层**：改用 **endomorphism 分割** $\\eta_{j}:\\mathcal F \\to \\mathcal F$，$\\operatorname{supp}\\eta_{j}\\subseteq V_{j}$、$\\sum_{j}\\eta_{j}=\\operatorname{id}_{\\mathcal F}$（局部有限和）。两种情形论证同形：设 $F \\subseteq X$ 闭、$s \\in \\mathcal F(F)$；每个 $x \\in F$ 有邻域 $U_{x}$ 与 $s_{x} \\in \\mathcal F(U_{x})$ 使 $s_{x}|_{F \\cap U_{x}}=s$；把 $\\{U_{x}\\}_{x \\in F} \\cup \\{X \\setminus F\\}$ 取局部有限加细 $\\{V_{j}\\}$ 并配上述 $\\rho_{j}$ 或 $\\eta_{j}$，再取 $s_{j} \\in \\mathcal F(V_{j})$ 为相应的局部截面（$V_{j} \\subseteq X \\setminus F$ 时取 $0$）。情形 (b) 中 $\\operatorname{supp}\\eta_{j} \\subseteq V_{j}$ 保证 $\\eta_{j}(s_{j})$ 在 $V_{j}$ 外可延拓为 $0$（重叠处两侧都为 $0$，相容）；于是 $\\tilde{s}:=\\sum_{j}\\rho_{j}s_{j}$（情形 (a)，函数乘截面）或 $\\tilde{s}:=\\sum_{j}\\eta_{j}(s_{j})$（情形 (b)，自同态作用）是 $X$ 上的整体截面（局部有限和），且在 $F$ 上等于 $s$。所以 $\\mathcal F$ 软。',
-        '**② 缺口：软层无环（Godement）。** 仿紧 Hausdorff 上软层 $\\mathcal{M}$ 满足 $H^{n}(X,\\mathcal{M})=0$（$n \\ge 1$）。它不能由 ① 直接得到：① 只说明「Čech 复形是消解」，而固定覆盖的 Čech 上同调并不等于导出函子上同调（反例见 ④）。标准路线两条：$n=1$ 用「软层使 $0 \\to \\mathcal{M} \\to \\mathcal{G} \\to \\mathcal{H} \\to 0$ 的整体截面正合」——对局部有限闭加细 $\\{A_{i}\\}$ 作 Zorn 归纳：在闭并 $B$ 上已有提升 $s$，取 $A_{i} \\not\\subseteq B$，差 $s-s_{i} \\in \\mathcal{M}(B \\cap A_{i})$ 由软性延拓为整体 $t$，在 $A_{i}$ 上改用 $s_{i}+t$，沿闭覆盖 $\\{B,A_{i}\\}$ 粘接，极大性给 $B=X$。$n \\ge 2$ 的标准做法是改用 **Godement 消解**（每项松弛，松弛 $\\implies$ 软）作维数转移。⚠ **本图未证的一步恰恰是这里**：若走内射消解 $0 \\to \\mathcal{M} \\to \\mathcal{I} \\to \\mathcal{Q} \\to 0$，把 $\\mathcal{Q}=\\mathcal{I}/\\mathcal{M}$ 当成松弛层直接向下归纳是**不成立**的 —— **松弛层的商未必松弛**（子层未必要松弛，商就未必松弛），本图也没有这条引理的节点。所以这条缺口的确切内容是「软层无环」本身；把它写成节点需要层的截面正合性 + 长正合列。',
-        '**③ 零调消解算导出函子（完整；只是本图没有单列这条引理）。** 若 $0 \\to \\mathcal{M} \\to \\mathcal{A}^{0} \\to \\mathcal{A}^{1} \\to \\cdots$ 是消解且每个 $\\mathcal{A}^{q}$ 满足 $H^{n}(X,\\mathcal{A}^{q})=0$（$n \\ge 1$），则 $H^{n}(X,\\mathcal{M}) \\cong H^{n}(\\Gamma(X,\\mathcal{A}^{\\bullet}))$。证明是维数转移：令 $\\mathcal{Z}^{0}=\\mathcal{M}$、$\\mathcal{Z}^{q+1}=\\operatorname{im}(\\mathcal{A}^{q} \\to \\mathcal{A}^{q+1})$，短正合列 $0 \\to \\mathcal{Z}^{q} \\to \\mathcal{A}^{q} \\to \\mathcal{Z}^{q+1} \\to 0$ 的长正合列给 $H^{n}(\\mathcal{Z}^{q+1}) \\cong H^{n+1}(\\mathcal{Z}^{q})$（$n \\ge 1$）与 $H^{1}(\\mathcal{Z}^{q}) \\cong \\operatorname{coker}(\\Gamma(\\mathcal{A}^{q}) \\to \\Gamma(\\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引 —— 论证是完整的，缺的只是把它单列成引理的节点（与边 `imp.paracompact-cech` 第三步的口径一致）。',
+        '**② 缺口：软层无环（Godement）。** 仿紧 Hausdorff 上软层 $\\mathcal{M}$ 满足 $H^{n}(X,\\mathcal{M})=0$（$n \\ge 1$）。它不能由 ① 直接得到：① 只说明「Čech 复形是消解」，而固定覆盖的 Čech 上同调并不等于导出函子上同调（反例见 ④）。标准路线两条：$n=1$ 用「软层使 $0 \\to \\mathcal{M} \\to \\mathcal{G} \\to \\mathcal{H} \\to 0$ 的整体截面正合」——对局部有限闭加细 $\\{A_{i}\\}$ 作 Zorn 归纳：在闭并 $B$ 上已有提升 $s$，取 $A_{i} \\not\\subseteq B$，差 $s-s_{i} \\in \\mathcal{M}(B \\cap A_{i})$ 由软性延拓为整体 $t$，在 $A_{i}$ 上改用 $s_{i}+t$，沿闭覆盖 $\\{B,A_{i}\\}$ 粘接，极大性给 $B=X$。$n \\ge 2$ 的标准做法是改用 **Godement 消解**（每项松弛，松弛 $\\implies$ 软）作维数转移。⚠️ **这一缺口只补到一半**：同星团的 `thm.soft-sheaf-acyclic` 写出第 0–2 步（松弛 $\\implies$ 软、提升引理、商的软性），但它的第 3 步（维数转移）**条件于「松弛层无环」**，而本图没有这条引理的节点 —— 所以 ② 仍未闭合，仍是条件性缺口。若走内射消解 $0 \\to \\mathcal{M} \\to \\mathcal{I} \\to \\mathcal{Q} \\to 0$，把 $\\mathcal{Q}=\\mathcal{I}/\\mathcal{M}$ 当成松弛层直接向下归纳仍**不成立** —— **松弛层的商未必松弛**，所以那不是替代路线。',
+        '**③ 零调消解算导出函子（本图没有单列这条引理）。** 若 $0 \\to \\mathcal{M} \\to \\mathcal{A}^{0} \\to \\mathcal{A}^{1} \\to \\cdots$ 是消解且每个 $\\mathcal{A}^{q}$ 满足 $H^{n}(X,\\mathcal{A}^{q})=0$（$n \\ge 1$），则 $H^{n}(X,\\mathcal{M}) \\cong H^{n}(\\Gamma(X,\\mathcal{A}^{\\bullet}))$。证明是维数转移：令 $\\mathcal{Z}^{0}=\\mathcal{M}$、$\\mathcal{Z}^{q+1}=\\operatorname{im}(\\mathcal{A}^{q} \\to \\mathcal{A}^{q+1})$，短正合列 $0 \\to \\mathcal{Z}^{q} \\to \\mathcal{A}^{q} \\to \\mathcal{Z}^{q+1} \\to 0$ 的长正合列给 $H^{n}(\\mathcal{Z}^{q+1}) \\cong H^{n+1}(\\mathcal{Z}^{q})$（$n \\ge 1$）与 $H^{1}(\\mathcal{Z}^{q}) \\cong \\operatorname{coker}(\\Gamma(\\mathcal{A}^{q}) \\to \\Gamma(\\mathcal{Z}^{q+1}))$，逐层上移即得。本图有 `def.right-derived-functor` 与 `thm.derived-long-exact` 可引 —— 论证是完整的，缺的只是把它单列成引理的节点（与边 `imp.paracompact-cech` 第三步的口径一致）。',
         '**④ 仍缺的比较步（旧注「每项软」的说法要修正）。** ① 中的 $\\check{\\mathcal{C}}^{p}$ 是若干开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只是左正合：对任意层 $\\mathcal{M}$，$\\check{\\mathcal{C}}^{p}(\\mathfrak{U},\\mathcal{M})$ **不一定软/无环**，所以不能直接对 ① 用 ③。正确收尾需要「软层 $\\implies$ 局部有限覆盖的 Čech 零调」（或其等价的双复形比较：把 $\\mathcal{M}$ 换成软消解 $\\mathcal{S}^{\\bullet}$，对双复形 $\\check{C}^{p}(\\mathfrak{U},\\mathcal{S}^{q})$ 用两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但没有「软层 Čech 零调」这条引理，也没有把双复形两套滤过写到可核的程度。补上 ④ 才真正得 $\\check{H}^{n}(X,\\mathcal{M})\\cong H^{n}(X,\\mathcal{M})$；本节点因此仍标 skeleton。',
         '⚠️ **为什么不能对任意覆盖逐覆盖断言（陈述末句已按此修正）**：取 $X=S^{2}$、$\\mathcal{M}=\\mathbb{Z}$ 与两个半球的开覆盖 $\\{U,V\\}$（局部有限）：$U\\cap V$ 同胚于环带，$\\check{C}^{2}=0$ 故 $\\check{H}^{2}(\\mathfrak{U},\\mathbb{Z})=0$，而 $H^{2}(S^{2},\\mathbb{Z})=\\mathbb{Z}$。逐覆盖断言因此为假；正确形式是沿覆盖的定向极限 $\\check{H}^{n}(X,\\mathcal{M})=\\varinjlim_{\\mathfrak{U}}\\check{H}^{n}(\\mathfrak{U},\\mathcal{M})\\cong H^{n}(X,\\mathcal{M})$，对**好覆盖**（有限交上高阶上同调为零，对常值层即有限交可缩）才能逐覆盖。',
         '**⑤ 好覆盖的情形可以收尾（用 `thm.cartan-leray`）。** 若覆盖 $\\mathfrak{U}$ 的每个有限交 $U_{i_{0}\\cdots i_{p}}$ 都满足 $H^{q}(U_{i_{0}\\cdots i_{p}},\\mathcal{M})=0$（$q>0$），则 Čech 复形 $C^{\\bullet}(\\mathfrak{U},H^{q}(\\mathcal{M}))$ 的每一项都是这些 $H^{q}(U_{I},\\mathcal{M})=0$ 的积（Čech 项按有限交取值，正是预层 $U\\mapsto H^{q}(U,\\mathcal{M})$ 的截面；这里只需预层在覆盖的交上消失，不必断言层 $H^{q}(\\mathcal{M})$ 本身是零层），故 Cartan–Leray 谱序列的 $E_{2}^{p,q}=\\check{H}^{p}(\\mathfrak{U},H^{q}(\\mathcal{M}))$ 在 $q>0$ 时为 $0$，谱序列退化，给出 $\\check{H}^{n}(\\mathfrak{U},\\mathcal{M})\\cong H^{n}(X,\\mathcal{M})$。所以陈述中「好覆盖上逐覆盖同构」这一半已成立；一般局部有限覆盖的定向极限仍需 ② 与 ④。',
-        '**结论**：② 的软层无环补上后，还必须补 ④ 的比较步，才能把 ① 的 Čech 消解当零调消解收尾（或对好覆盖用 Cartan–Leray 退化）。⚠ 本节点**仍标 skeleton**：缺的是 ②（软层无环）与 ④（软层 Čech 零调/双复形比较）；①、细 $\\implies$ 软、③ 已写出。',
+        '**结论**：② 条件于「松弛层无环」（`thm.soft-sheaf-acyclic` 第 0–2 步已写、第 3 步未闭合）；仍缺 ④ 的比较步，才能把 ① 的 Čech 消解当零调消解收尾（或对好覆盖用 Cartan–Leray 退化）。⚠ 本节点**仍标 skeleton**：缺的是 ④（软层 Čech 零调/双复形比较）；①、细 $\\implies$ 软、②、③ 已写出。',
         '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。',
         '⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。'
       ].join('\n\n'),
@@ -975,7 +975,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['定义', '层论', '软层', '上同调'],
       statement: '设 $X$ 是拓扑空间，$\\mathcal{F}$ 是 $X$ 上的阿贝尔群层。称 $\\mathcal{F}$ 为**软层**，如果对任意闭集 $A\\subseteq X$，限制映射 $\\Gamma(X,\\mathcal{F})\\to\\Gamma(A,\\mathcal{F})$ 是满射：即闭集上的每个截面都能延拓为全空间上的截面。',
-      notes: '**与细层的关系**：细层（有单位分解作用的层）一定是软层；仿紧 Hausdorff 上，$C^{\\infty}$-模层（如微分形式层）是细层，因而软。常值层一般不是软层。\n\n**为什么重要**：仿紧 Hausdorff 上软层无高阶上同调（Godement 定理），因此软消解可用于计算层上同调。本图已有 `def.acyclic-sheaf`，但「软层无环」的证明尚未立节点。\n\n⚠ 软层与内射层不同：内射层一定软，反之不然；软性是「截面延拓」性质，内射性是范畴性质。',
+      notes: '**与细层的关系**：细层（有单位分解作用的层）一定是软层；仿紧 Hausdorff 上，$C^{\\infty}$-模层（如微分形式层）是细层，因而软。常值层一般不是软层。\n\n**为什么重要**：仿紧 Hausdorff 上软层无高阶上同调（Godement 定理），因此软消解可用于计算层上同调。本图有 `thm.soft-sheaf-acyclic`（仍标 `status: \'skeleton\'`）：第 0–2 步完整，第 3 步条件于「松弛层无环」，那条引理本图未立节点。\n\n⚠ 软层与内射层不同：内射层一定软，反之不然；软性是「截面延拓」性质，内射性是范畴性质。',
       refs: ['Godement, Topologie algébrique et théorie des faisceaux, Ch. II · soft sheaves', 'Bredon, Sheaf Theory, Ch. II · soft and fine sheaves'],
     },
     {
@@ -986,9 +986,34 @@ window.MG = window.MG || {};
       title: 'Godement 消解（松弛层消解）',
       regions: ['topology'],
       tags: ['定义', '层论', '消解', '上同调', 'Godement'],
-      statement: '设 $\\mathcal{F}$ 是 $X$ 上的阿贝尔群层。**Godement 消解**是复形 $0\\to\\mathcal{F}\\to\\mathcal{C}^{0}(\\mathcal{F})\\to\\mathcal{C}^{1}(\\mathcal{F})\\to\\cdots$，其中 $\\mathcal{C}^{q}(\\mathcal{F})(U)=\\prod_{x\\in U}\\mathcal{F}_{x}$（$q\\ge0$），微分由茎的交替和给出。每个 $\\mathcal{C}^{q}(\\mathcal{F})$ 是松弛层（flabby），因而无环。',
-      notes: '**构造要点**：$\\mathcal{C}^{0}(\\mathcal{F})(U)=\\prod_{x\\in U}\\mathcal{F}_{x}$ 把截面逐点记录为茎的元素；限制映射是投影，故任意开集上的截面都能延拓（松弛）。$\\mathcal{C}^{q}$ 取 $q$ 次「茎积」的交替版本，微分是 Čech 型交替和。\n\n**用途**：松弛层无环（Godement 定理），故 Godement 消解计算层上同调：$H^{q}(X,\\mathcal{F})\\cong H^{q}(\\Gamma(X,\\mathcal{C}^{\\bullet}(\\mathcal{F})))$。这是「任意层都有规范无环消解」的标准构造，不需要内射层。\n\n⚠ 本图有 `def.acyclic-sheaf`、`def.right-derived-functor`，但尚未证明「松弛层无环」；此节点只定义构造，不含该定理的证明。',
-      refs: ['Godement, Topologie algébrique et théorie des faisceaux, Ch. II · résolution flasque', 'Weibel, An Introduction to Homological Algebra, Ch. 2 · Godement resolution'],
+      statement: '设 $\\mathcal{F}$ 是 $X$ 上的阿贝尔群层。**Godement 消解**是复形 $0\\to\\mathcal{F}\\to\\mathcal{C}^{0}(\\mathcal{F})\\to\\mathcal{C}^{1}(\\mathcal{F})\\to\\cdots$，其中 $\\mathcal{C}^{q}(\\mathcal{F})(U)=\\prod_{x\\in U}\\mathcal{F}_{x}$（$q\\ge0$），微分由茎的交替和给出。每个 $\\mathcal{C}^{q}(\\mathcal{F})$ 是松弛层（flabby）；「松弛层无环」是另一条定理（Godement），本图未证，见 `thm.soft-sheaf-acyclic` 的第 3 步。',
+      notes: '**构造要点**：$\\mathcal{C}^{0}(\\mathcal{F})(U)=\\prod_{x\\in U}\\mathcal{F}_{x}$ 把截面逐点记录为茎的元素；限制映射是投影，故任意开集上的截面都能延拓（松弛）。$\\mathcal{C}^{q}$ 取 $q$ 次「茎积」的交替版本，微分是 Čech 型交替和。\n\n**用途（条件于松弛层无环）**：若松弛层无环（Godement 定理，本图未证），则 Godement 消解计算层上同调：$H^{q}(X,\\mathcal{F})\\cong H^{q}(\\Gamma(X,\\mathcal{C}^{\\bullet}(\\mathcal{F})))$。这是「任意层都有规范无环消解」的标准构造，不需要内射层。\n\n⚠ 本图有 `def.acyclic-sheaf`、`def.right-derived-functor`，但**没有**「松弛层无环」的节点与证明（`thm.soft-sheaf-acyclic` 的第 3 步正是条件于它）。此节点只定义构造。',
+      refs: ['Godement, Topologie algébrique et théorie des faisceaux, Ch. II · résolution flasque', 'Weibel, An Introduction to Homological Algebra, Ch. 8 · §8.6 Canonical Resolutions（Godement 消解）'],
+    },
+    {
+      id: 'thm.soft-sheaf-acyclic',
+      cluster: 'hom.sheafcoh',
+      type: 'theorem',
+      label: '软层无环（Godement）',
+      title: '定理：仿紧 Hausdorff 上软层无环',
+      regions: ['homology', 'topology'],
+      tags: ['定理', '层论', '软层', '无环', 'Godement', '仿紧'],
+      status: 'skeleton',
+      refs: ['Godement, Topologie algébrique et théorie des faisceaux, Ch. II · faisceaux mous', 'Bredon, Sheaf Theory, Ch. II · soft sheaves and acyclicity'],
+      statement: '设 $X$ 是仿紧 Hausdorff 空间，$\\mathcal{F}$ 是 $X$ 上的软层。则对一切 $n \\ge 1$，$H^{n}(X,\\mathcal{F}) = 0$。',
+      notes: [
+        '⚠️ **本节点标 `status: \'skeleton\'`**：第 0–2 步完整；第 3 步条件于「松弛层无环」（Godement 定理），本图没有这条引理的节点与证明，故整条链未闭合，不勾证明结束符。',
+        '**第 0 步：松弛层是软层。** 设 $\\mathcal{A}$ 松弛，$A \\subseteq X$ 闭，$s \\in \\Gamma(A,\\mathcal{A})$。按 $\\Gamma(A,\\mathcal{A}) = \\varinjlim_{A \\subseteq U} \\Gamma(U,\\mathcal{A})$ 取开邻域 $U \\supseteq A$ 与代表元 $s_{U} \\in \\Gamma(U,\\mathcal{A})$。松弛性把 $s_{U}$ 延拓为 $\\tilde{s} \\in \\Gamma(X,\\mathcal{A})$，则 $\\tilde{s}|_{A} = s$。故 $\\mathcal{A}$ 软。',
+        '**第 1 步（提升引理）。** 设 $0 \\to \\mathcal{F} \\to \\mathcal{G} \\to \\mathcal{H} \\to 0$ 是阿贝尔群层的短正合列，$\\mathcal{F}$、$\\mathcal{G}$ 软，$X$ 仿紧 Hausdorff。则 $\\Gamma(X,\\mathcal{G}) \\to \\Gamma(X,\\mathcal{H})$ 满。',
+        '证明：取 $h \\in \\Gamma(X,\\mathcal{H})$。由 $\\mathcal{H}$ 是商层，存在开覆盖 $\\{U_{x}\\}_{x \\in X}$ 与 $g_{x} \\in \\Gamma(U_{x},\\mathcal{G})$，使 $g_{x} \\mapsto h|_{U_{x}}$。仿紧性给出局部有限的闭覆盖 $\\{A_{i}\\}_{i \\in I}$，满足 $A_{i} \\subseteq U_{i}$（重标号后）。把 $I$ 良序化，对初始段 $J \\subseteq I$ 记 $B_{J} := \\bigcup_{i \\in J} A_{i}$；局部有限族的任意子族的并是闭集，故 $B_{J}$ 闭。',
+        '对 $i \\in I$ 归纳构造 $u_{i} \\in \\Gamma(B_{\\le i},\\mathcal{G})$，使 $u_{i} \\mapsto h|_{B_{\\le i}}$ 且 $u_{i}$ 延拓 $u_{<i}$。极限序数取并即可。后继步：在闭集 $B_{<i} \\cap A_{i}$ 上，$g_{i} - u_{<i}$ 落在 $\\mathcal{F}$ 中（两者都提升 $h$）；$\\mathcal{F}$ 软，故它延拓为 $t \\in \\Gamma(X,\\mathcal{F})$。在 $A_{i}$ 上取 $g_{i} - t$，在 $B_{<i}$ 上取 $u_{<i}$：两者在 $B_{<i} \\cap A_{i}$ 上相等，而 $A_{i}$、$B_{<i}$ 是两个闭集，层公理把它们粘成 $\\Gamma(B_{\\le i},\\mathcal{G})$ 的元素。',
+        '归纳完毕得 $u \\in \\Gamma(X,\\mathcal{G})$。局部地 $u - g_{i} \\in \\mathcal{F}$，故 $u$ 与 $h$ 在 $\\mathcal{H}$ 中的像相同，即 $u \\mapsto h$。∎',
+        '**第 2 步：商的软性。** 同上假设，$\\mathcal{H}$ 软。设 $A \\subseteq X$ 闭、$h \\in \\Gamma(A,\\mathcal{H})$。闭子空间 $A$ 仿紧；$\\mathcal{F}|_{A}$、$\\mathcal{G}|_{A}$ 软（$A$ 的闭子集也是 $X$ 的闭子集，截面先延拓到 $X$ 再限制）。对空间 $A$ 用第 1 步，得 $g \\in \\Gamma(A,\\mathcal{G})$ 提升 $h$；$\\mathcal{G}$ 软，把 $g$ 延拓到 $X$。故 $\\mathcal{H}$ 软。∎',
+        '**第 3 步（条件于松弛层无环）：维数转移。** Godement 消解 $0 \\to \\mathcal{F} \\to \\mathcal{C}^{0} \\to \\mathcal{C}^{1} \\to \\cdots$ 的每一项松弛，由第 0 步软。令 $\\mathcal{Z}^{1} := \\operatorname{im}(\\mathcal{C}^{0} \\to \\mathcal{C}^{1})$。对 $0 \\to \\mathcal{F} \\to \\mathcal{C}^{0} \\to \\mathcal{Z}^{1} \\to 0$ 用第 1、2 步：$\\Gamma(\\mathcal{C}^{0}) \\to \\Gamma(\\mathcal{Z}^{1})$ 满，故 $H^{1}(X,\\mathcal{F}) = 0$ —— **这一步不需要无环性**。' +
+        '但 $n \\ge 2$ 时，长正合列只给出 $\\cdots \\to H^{n-1}(\\mathcal{Z}^{1}) \\to H^{n}(\\mathcal{F}) \\to H^{n}(\\mathcal{C}^{0}) \\to \\cdots$；要读出 $H^{n}(X,\\mathcal{F}) \\cong H^{n-1}(X,\\mathcal{Z}^{1})$，必须先有 $H^{n}(X,\\mathcal{C}^{0}) = H^{n}(X,\\mathcal{C}^{1}) = \\cdots = 0$，即**松弛层无环**（Godement 定理）。本图没有这条引理的节点与证明，所以这一步只是条件性的：第 0–2 步之外的第 3 步**未闭合**，故本节点保持 `status: \'skeleton\'`、不勾证明结束符。',
+        '⭐ **用途（条件性）**：只要再补上「松弛层无环」，这条链就能把「软消解」变成合法的计算工具，并为仿紧空间上 Čech–层比较定理的第 ② 步提供输入；现在 ② 仍是条件性的，见 `thm.paracompact-cech-equals-sheaf` 的注。',
+        '⚠ 条件「仿紧 Hausdorff」不可省：第 1 步的局部有限闭覆盖与良序归纳都要它。紧 Hausdorff 自动仿紧，故紧的情形也覆盖。'
+      ].join('\n\n'),
     },
   ],
 
@@ -1002,7 +1027,7 @@ window.MG = window.MG || {};
     { id: 'dep.godement-flabby', kind: 'definition', definition: 'def.flabby-sheaf', usedBy: 'def.godement-resolution',
       note: 'Godement 消解的每一项是松弛层。' },
     { id: 'dep.godement-soft', kind: 'definition', definition: 'def.soft-sheaf', usedBy: 'def.godement-resolution',
-      note: '松弛层在仿紧空间上软，故 Godement 消解也经由软层无环。' },
+      note: '松弛层在仿紧空间上软（第 0 步可证）；由此到「软层无环」还差维数转移。' },
     { id: 'dep.soft-sheaf', kind: 'definition', definition: 'def.sheaf', usedBy: 'def.soft-sheaf',
       note: '软层是层。' },
     { id: 'dep.soft-acyclic', kind: 'definition', definition: 'def.acyclic-sheaf', usedBy: 'def.soft-sheaf',
@@ -1012,9 +1037,19 @@ window.MG = window.MG || {};
     { id: 'dep.godement-sheaf', kind: 'definition', definition: 'def.sheaf', usedBy: 'def.godement-resolution',
       note: 'Godement 消解是层的消解。' },
     { id: 'dep.godement-acyclic', kind: 'definition', definition: 'def.acyclic-sheaf', usedBy: 'def.godement-resolution',
-      note: '松弛层无环，故消解可算上同调。' },
+      note: '松弛层无环（Godement 定理）是「消解可算上同调」的前提；本图未证这条。' },
     { id: 'dep.godement-derived', kind: 'definition', definition: 'def.right-derived-functor', usedBy: 'def.godement-resolution',
       note: 'Godement 消解用于计算右导出函子。' },
+    { status: 'skeleton', id: 'dep.softacyclic-soft', kind: 'definition', definition: 'def.soft-sheaf', usedBy: 'thm.soft-sheaf-acyclic',
+      note: '定理的主语是仿紧空间上的软层。' },
+    { status: 'skeleton', id: 'dep.softacyclic-flabby', kind: 'definition', definition: 'def.flabby-sheaf', usedBy: 'thm.soft-sheaf-acyclic',
+      note: '第 0 步：松弛层是软层，故 Godement 消解的项都是软层。**只覆盖第 0 步**；第 3 步的「松弛层无环」未证。' },
+    { status: 'skeleton', id: 'dep.softacyclic-paracompact', kind: 'definition', definition: 'def.paracompact', usedBy: 'thm.soft-sheaf-acyclic',
+      note: '第 1 步的提升引理用局部有限闭覆盖与良序归纳，依赖仿紧性。' },
+    { status: 'skeleton', id: 'dep.softacyclic-godement', kind: 'definition', definition: 'def.godement-resolution', usedBy: 'thm.soft-sheaf-acyclic',
+      note: '第 3 步用 Godement 消解作维数转移；该步条件于「松弛层无环」，本图未证。' },
+    { status: 'skeleton', id: 'dep.softacyclic-sheafcoh', kind: 'definition', definition: 'def.sheaf-cohomology', usedBy: 'thm.soft-sheaf-acyclic',
+      note: '结论是层上同调的高阶项消失。' },
 
     /* ------------------------------------------------ §A 群上同调：推导 */
 
@@ -1248,7 +1283,7 @@ window.MG = window.MG || {};
 
     /* ------------------------------------------------- §C 仿紧的 Čech */
 
-    {
+    {status: 'skeleton', 
       id: 'imp.paracompact-cech',
       kind: 'implication',
       sources: ['def.cech-cohomology', 'prop.paracompact-partition-unity', 'thm.cartan-leray', 'cor.cech-cohomology-spectral', 'def.right-derived-functor', 'thm.derived-long-exact'],
@@ -1258,7 +1293,7 @@ window.MG = window.MG || {};
       proof: [
         '**要证**：仿紧 Hausdorff 上 $\\check{H}^{n}(X,\\mathcal{M})\\cong H^{n}(X,\\mathcal{M})$，其中左边是沿局部有限开覆盖的定向极限。逐覆盖的强形式只对**好覆盖**成立（见第五步）。',
         '',
-        '**第一步：Čech 层复形是消解（完整）。** 对覆盖 $\\mathfrak{U}=(U_{i})$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U},\\mathcal{M}):=\\prod_{i_{0}<\\cdots<i_{p}}j_{*}(\\mathcal{M}|_{U_{i_{0}\\cdots i_{p}}})$。逐茎验证：固定 $x$ 取 $i$ 使 $x\\in U_{i}$，在茎上令 $(h\\sigma)_{i_{0}\\cdots i_{p-1}}:=\\sigma_{i\\,i_{0}\\cdots i_{p-1}}$，则 $\\delta h+h\\delta=\\operatorname{id}$（$p\\ge1$），$p=0$ 时 $\\delta h$ 是增广；故 $0\\to\\mathcal{M}\\to\\check{\\mathcal{C}}^{0}\\to\\check{\\mathcal{C}}^{1}\\to\\cdots$ 正合。取整体截面：$\\Gamma(X,\\check{\\mathcal{C}}^{p})=\\check{C}^{p}(\\mathfrak{U},\\mathcal{M})$，其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U},\\mathcal{M})$。',
+        '**第一步：Čech 层复形是消解。** 对覆盖 $\\mathfrak{U}=(U_{i})$ 令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U},\\mathcal{M}):=\\prod_{i_{0}<\\cdots<i_{p}}j_{*}(\\mathcal{M}|_{U_{i_{0}\\cdots i_{p}}})$。逐茎验证：固定 $x$ 取 $i$ 使 $x\\in U_{i}$，在茎上令 $(h\\sigma)_{i_{0}\\cdots i_{p-1}}:=\\sigma_{i\\,i_{0}\\cdots i_{p-1}}$，则 $\\delta h+h\\delta=\\operatorname{id}$（$p\\ge1$），$p=0$ 时 $\\delta h$ 是增广；故 $0\\to\\mathcal{M}\\to\\check{\\mathcal{C}}^{0}\\to\\check{\\mathcal{C}}^{1}\\to\\cdots$ 正合。取整体截面：$\\Gamma(X,\\check{\\mathcal{C}}^{p})=\\check{C}^{p}(\\mathfrak{U},\\mathcal{M})$，其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U},\\mathcal{M})$。',
         '',
         '**第二步：$\\check{\\mathcal{C}}^{p}$ 一般不是软层（修正一个常见误判）。** $\\check{\\mathcal{C}}^{p}$ 是开包含 $j_{*}$ 的直积，而 $j_{*}$ 一般只左正合；单位分解作用在**函数**上，不能把 $\\mathcal{M}$ 的整体截面「拆成」局部截面再拼回。因此不能由「Čech 复形每一项软」直接得到无环性。正确的替代是：细层 $\\implies$ 软层（$\\mathcal C(X)$-模层用单位分解乘截面；一般阿贝尔层用 endomorphism 分割 $\\eta_j$，见节点 ② 的 (a)/(b)），再用 Godement 的「软层无环」作维数转移 —— 后者是缺口，见第四步。',
         '',
@@ -1268,7 +1303,7 @@ window.MG = window.MG || {};
         '',
         '**第五步：缺口 ②——比较步，以及逐覆盖断言为假。** 要把第一步的 Čech 消解当第三步的 $\\mathcal{A}^{\\bullet}$ 用，还差「软层对局部有限覆盖的 Čech 复形零调」，或等价的双复形比较（软消解 $\\mathcal{S}^{\\bullet}$，双复形 $\\check{C}^{p}(\\mathfrak{U},\\mathcal{S}^{q})$ 的两套滤过）。本图有 `thm.cartan-leray` 与 `cor.cech-cohomology-spectral`，但缺这条引理。另一方面，对任意单个局部有限覆盖断言同构是**假的**：$X=S^{2}$、$\\mathcal{M}=\\mathbb{Z}$、两半球覆盖 $\\{U,V\\}$，$\\check{C}^{2}=0$ 故 $\\check{H}^{2}(\\mathfrak{U},\\mathbb{Z})=0$，而 $H^{2}(S^{2},\\mathbb{Z})=\\mathbb{Z}$。若 $\\mathfrak{U}$ 对 $\\mathcal{M}$ 是好覆盖（所有有限交上 $H^{q}=0$，$q>0$），Cartan–Leray 谱序列退化，逐覆盖映射才是同构；一般情形只能取定向极限。',
         '',
-        '⚠️ **本边只是路线**：第一、三步可逐字核验，缺口 ①（软层无环）与 ②（比较步）本图都还没有节点；节点因此保持 skeleton，本边不勾 ∎。'
+        '⚠️ **本边只是路线**：第一、三步可逐字核验，缺口 ①（软层无环）与 ②（比较步）本图都还没有节点；节点因此保持 skeleton，本边不勾证明结束符。'
       ].join('\n'),
     },
 

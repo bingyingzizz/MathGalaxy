@@ -321,7 +321,7 @@ window.MG = window.MG || {};
         '**② Moser 同伦**。令 $\\omega_{t}=\\omega_{0}+t\\eta$。$\\eta(p)=0$ 使 $\\omega_{t}(p)$ 与 $t$ 无关；非退化性是开条件而 $[0,1]$ 紧，故可再缩小 $U$，使**所有** $\\omega_{t}$ 都非退化。于是每点有唯一 $X_{t}$ 满足 $\\iota_{X_{t}}\\omega_{t}=-\\theta$，且 $(t,x)\\mapsto X_{t}(x)$ 光滑（$\\omega_{t}$ 光滑、逆映射由 Cramer 公式光滑）。',
         '**③ 积分成流**。在 $M\\times\\mathbb{R}$ 上对 $(X_{t},\\partial_{t})$ 用局部流的存在唯一性（`thm.flow-local`），得 $p$ 附近定义在 $[0,1]$ 上的 $\\varphi_{t}$，$\\varphi_{0}=\\operatorname{id}$。由 Cartan 公式与 $d\\omega_{t}=0$ 得 $\\frac{d}{dt}(\\varphi_{t}^{*}\\omega_{t})=\\varphi_{t}^{*}(\\mathcal{L}_{X_{t}}\\omega_{t}+\\eta)=\\varphi_{t}^{*}(d\\iota_{X_{t}}\\omega_{t}+\\eta)=\\varphi_{t}^{*}(-d\\theta+d\\theta)=0$，故 $\\varphi_{1}^{*}\\omega=\\varphi_{0}^{*}\\omega_{0}=\\omega_{0}$；$(q_{i}\\circ\\varphi_{1}^{-1},\\,p_{i}\\circ\\varphi_{1}^{-1})$ 就是 Darboux 坐标。∎',
       ].join('\n\n'),
-      note: '完整证明（含辛基的线性代数那一步）在本节点的 notes 里；这条边只记两处外部依赖：可缩图卡上的 Poincaré 引理、时变向量场的局部流。`thm.symplectic-normal-form` 只给线性版提纲，不作依赖。',
+      note: '证明（含辛基的线性代数那一步）在本节点的 notes 里；这条边只记两处外部依赖：可缩图卡上的 Poincaré 引理、时变向量场的局部流。`thm.symplectic-normal-form` 只给线性版提纲，不作依赖。',
     }
   ]
 });

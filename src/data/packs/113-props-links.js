@@ -207,12 +207,12 @@ window.MG = window.MG || {};
       proof: 'Cauchy–Hadamard 的证明（边 `thm.root-test \\implies thm.convergence-radius`）第一步是 $\\sqrt[n]{\\lvert a_n (x - x_0)^{n}\\rvert} = \\lvert x - x_0\\rvert \\cdot \\sqrt[n]{\\lvert a_n\\rvert}$。这一步用的是 $\\sqrt[n]{uv} = \\sqrt[n]{u}\\,\\sqrt[n]{v}$（$u,v \\ge 0$）：先由 `thm.nth-root` 取非负 $n$ 次方根，再用**唯一性**确认两边相等 —— $\\bigl(\\sqrt[n]{u}\\sqrt[n]{v}\\bigr)^{n} = uv$ 且左边非负，故它就是 $uv$ 的那个唯一非负 $n$ 次方根。没有存在唯一性，这个等式无从陈述，$\\limsup$ 的乘法性质也用不上。',
       note: 'AUD-061 A 类。原记 definition；改 imp：拆分那一步确实以方根定理（存在 + 唯一 + 乘性）为引擎。'
     },
-    {
-      id: 'def-link.nthroot-p-series',
-      kind: 'definition',
-      definition: 'thm.nth-root',
-      usedBy: 'thm.p-series',
-      note: '凝聚判别法把 /n^{p}$ 换成 $2^{k(1-p)}$ 时，指数与根号只是同一套约定的两种写法；按**实例化**理解，不是构造依赖。'
+        {
+      id: 'ana.nthroot-p-series',
+      kind: 'analogy',
+      a: 'thm.nth-root',
+      b: 'thm.p-series',
+      note: '$p$ 级数族是说明根值判别法边界的标准例子：对 $a_{n} = n^{-p}$ 恒有 $\\alpha = \\lim \\sqrt[n]{n^{-p}} = 1$，判别法失效，而 $p$ 级数本身由 Cauchy 凝聚判别法定敛散。两者是同一族级数上的两种工具，不是依赖。'
     }
   ]
 });

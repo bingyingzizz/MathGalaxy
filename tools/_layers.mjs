@@ -103,11 +103,11 @@ console.log('\n几个定义现在落在第几层：');
 ['def.subset', 'def.pair', 'def.rel', 'def.poset', 'def.metric-space', 'def.set-ring',
   'def.sigma-algebra', 'def.measure', 'def.measurable-function', 'def.lplus',
   'def.integral-nonneg', 'def.integrable', 'def.lp-norm', 'def.null-set',
-  'def.signed-measure', 'def.rn-derivative', 'def.locally-integrable', 'def.bv-nbv',
+  'def.signed-measure', 'def.rn-derivative', 'def.locally-integrable', 'def.bounded-variation',
   /* 数系那条链（每一层都必须比上一层高：这是「构造」的可见证据） */
   'thm.omega', 'thm.induction', 'def.quotient-set', 'def.int', 'def.field', 'def.ordered-field',
   'def.rat', 'def.abs', 'thm.triangle', 'def.cauchy-null', 'def.real', 'thm.real-ordered-field',
-  'lem.archimedean', 'thm.real-unique', 'thm.real-uncountable', 'def.sup', 'def.interval',
+  'lem.archimedean', 'thm.real-unique', 'thm.real-uncountable', 'def.bound', 'def.interval',
   'def.vs', 'thm.vsbasis']
   .forEach(id => { const n = g.byId[id]; if (n) console.log('  ' + String(level[id]).padStart(2) + ' 层  ' + n.label); });
 

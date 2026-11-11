@@ -146,7 +146,7 @@ window.MG = window.MG || {};
       usedBy: 'def.first-countable',
       note: '第一可数说的是「每点有可数的局部基」。'
     },
-    {
+    {status: 'skeleton', 
       id: 'def-link.paracompact-cech',
       kind: 'definition',
       definition: 'def.paracompact',

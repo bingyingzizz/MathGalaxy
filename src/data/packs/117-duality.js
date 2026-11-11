@@ -211,7 +211,7 @@ window.MG = window.MG || {};
   ],
 
   edges: [
-    {
+    {status: 'skeleton', 
       id: 'imp.open-immersion-shriek',
       kind: 'implication',
       layer: false,
@@ -251,7 +251,7 @@ window.MG = window.MG || {};
         '$\\blacksquare$'
       ].join('\n')
     },
-    {
+    {status: 'skeleton', 
       id: 'imp.f-shriek-base-change',
       kind: 'implication',
       sources: ['def.f-shriek', 'thm.za-analytic'],

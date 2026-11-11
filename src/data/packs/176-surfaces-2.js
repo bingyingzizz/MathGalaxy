@@ -103,7 +103,7 @@
         '',
         '并且两族互不重合：可定向与不可定向的闭曲面（除球面外）永不**同胚**。',
       ].join('\n'),
-      notes: '⚠ 本节点保持 status: skeleton。三步里第 (1) 步 Radó 与第 (2) 步组合归类都未证，第 (3) 步完整。**注意**：`prop.eulerchar-genus` 已不再依赖本条（它的注改走 Radó + 引理 D 的初等路线），所以本条不阻塞那条命题；反过来，本条也不把 `prop.eulerchar-genus` 当输入。\n\n**三步的结构。** (1) Radó：闭曲面可三角剖分（`thm.rado`，skeleton）。(2) 组合归类：任意三角剖分经有限步操作化成标准形。(3) 标准形上读不变量：可定向性与 $\\chi$ 给出 $(g)$ 或 $(k)$，且互不同胚。\n\n**第 (1) 步（引用，未证）。** Radó 定理：紧曲面存在有限三角剖分。`thm.rado` 仍是 skeleton，本图没有它的证明；这里只把它当输入，并明确它没有把「任意两个剖分组合等价」一起给出——后者正是第 (2) 步要做的事。\n\n**第 (2) 步：陈述与未完成核查（引理 K，本图空白）。** 设 $K$ 是有限单纯复形、$|K|$ 是闭连通曲面。则存在有限序列的操作把 $K$ 化成：单个多边形，其边两两配对，配对词为 $a_{1}b_{1}a_{1}^{-1}b_{1}^{-1}\\cdots a_{g}b_{g}a_{g}^{-1}b_{g}^{-1}$（可定向，$g\\ge 0$）或 $c_{1}c_{1}\\cdots c_{k}c_{k}$（不可定向，$k\\ge 1$）。操作清单是：(i) 沿边剪开再粘（cut-and-paste）；(ii) $2$–$2$ 翻边；(iii) 删除只贴一条边的 $2$-单形；(iv) 顶点归约（把多个顶点并成一个）。**这条引理就是「分类」的核心；本批把它单列为 `lem.combinatorial-classification-surfaces`（仍 skeleton，缺口=顶点归约、2–2 翻边的退化情形、终止性测度）。**\n\n**对第 (2) 步的三项核查（都不完整，这正是缺口）。** - **$2$–$2$ 翻边**：本图只写「一条边两侧的两个三角形换成另两个三角形，顶点集不变」。这只在两张三角形沿一条边粘成一个四边形、且四个顶点互不相同时成立；若两张三角形还共用另一个顶点（四边形退化）、或第四顶点与第一顶点重合（结果是两个三角形而非四边形），必须先单独讨论。本图没有这些前提与退化情形。 - **切-粘**：本图只说「沿闭曲线剪开再粘回」。要在三角剖分内部做，闭曲线须先变成单纯闭曲线（加细 $+$ 一般位置，正规同位），剪开后要说明得到的是新的三角剖分、粘回保持同胚型；这两步本图都没写。 - **终止性**：本图原句「配对边数严格下降」**不成立**：$2$–$2$ 翻边不改边数，切-粘可能增加边数。真正需要的是一个良序测度（例如按多边形边数归纳，Munkres 的证明分有限种情形；或用「边数 $+$ 顶点数」的字典序），并逐操作验证它下降。本图没给测度，也没验证。 - **顶点归约没写构造**：把剖分化成「一个多边形」之前要先把所有顶点并成一个（操作清单里的 (iv)）；这一步本图只列了名字、没写构造，而它正是退化情形最多的一步。\n\n**第 (3) 步（完整）。** 标准形 $4g$ 边形的中心扇形剖分：$V=2$（中心与一个边界顶点类）、$E=6g$、$F=4g$，故 $\\chi=2-2g$；$2k$ 边形：$V=2$、$E=3k$、$F=2k$，故 $\\chi=2-k$。两族互不同胚：可定向性不同（一侧可定向、一侧不可定向）；同族内 $\\chi$ 不同，由 $\\chi$ 的拓扑不变性（`thm.euler-characteristic`）不同胚。注意这里的「标准形」是引理 K 的**结论**，不是定义；不要用「闭曲面按定义就是标准形」循环。\n\n**为什么本条不能像 `prop.eulerchar-genus` 那样绕开。** 那条命题只要 $\\chi=2-2g$，可以用引理 D 直接算 $H_{2}$，不需要分类；本条要的是「任意剖分都能化成标准形」这一**结构定理**，它是分类本身，不能由同调的数值不变量推出。绕过它的代价正是把分类定理当假设。\n\n⭐ 判据（在引理 K 成立的前提下）：两个闭曲面同胚 $\\iff$ 可定向性相同且 $\\chi$ 相同（等价地：同为 $S^{2}$，或同为 $g$ 个环面的连通和且 $g$ 相同，或同为 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和且 $k$ 相同）。$S^{2}$ 与 $\\mathbb{RP}^{2}$ 的 $\\chi$ 都是 $2$ 与 $1$，所以单看 $\\chi$ 不够，必须配可定向性。\n\n**缺口与建议。** 缺口 $=$ Radó（`thm.rado`）$+$ 引理 K（组合归类）。若下一轮要补，建议单独立节点：组合归类引理（含顶点归约与终止性测度）、$2$–$2$ 翻边的退化情形、单纯闭曲线的正规同位。本图现有的 `thm.rado`、`def.triangulation`、`def.simplicial-complex`、`thm.euler-characteristic` 可直接用。',
+      notes: '⚠ 本节点保持 status: skeleton。三步里第 (1) 步 Radó 与第 (2) 步组合归类都未证，第 (3) 步已有证明。**注意**：`prop.eulerchar-genus` 已不再依赖本条（它的注改走 Radó + 引理 D 的初等路线），所以本条不阻塞那条命题；反过来，本条也不把 `prop.eulerchar-genus` 当输入。\n\n**三步的结构。** (1) Radó：闭曲面可三角剖分（`thm.rado`，skeleton）。(2) 组合归类：任意三角剖分经有限步操作化成标准形。(3) 标准形上读不变量：可定向性与 $\\chi$ 给出 $(g)$ 或 $(k)$，且互不同胚。\n\n**第 (1) 步（引用，未证）。** Radó 定理：紧曲面存在有限三角剖分。`thm.rado` 仍是 skeleton，本图没有它的证明；这里只把它当输入，并明确它没有把「任意两个剖分组合等价」一起给出——后者正是第 (2) 步要做的事。\n\n**第 (2) 步：陈述与未完成核查（引理 K，本图空白）。** 设 $K$ 是有限单纯复形、$|K|$ 是闭连通曲面。则存在有限序列的操作把 $K$ 化成：单个多边形，其边两两配对，配对词为 $a_{1}b_{1}a_{1}^{-1}b_{1}^{-1}\\cdots a_{g}b_{g}a_{g}^{-1}b_{g}^{-1}$（可定向，$g\\ge 0$）或 $c_{1}c_{1}\\cdots c_{k}c_{k}$（不可定向，$k\\ge 1$）。操作清单是：(i) 沿边剪开再粘（cut-and-paste）；(ii) $2$–$2$ 翻边；(iii) 删除只贴一条边的 $2$-单形；(iv) 顶点归约（把多个顶点并成一个）。**这条引理就是「分类」的核心；本批把它单列为 `lem.combinatorial-classification-surfaces`（仍 skeleton，缺口=顶点归约、2–2 翻边的退化情形、终止性测度）。**\n\n**对第 (2) 步的三项核查（都不完整，这正是缺口）。** - **$2$–$2$ 翻边**：本图只写「一条边两侧的两个三角形换成另两个三角形，顶点集不变」。这只在两张三角形沿一条边粘成一个四边形、且四个顶点互不相同时成立；若两张三角形还共用另一个顶点（四边形退化）、或第四顶点与第一顶点重合（结果是两个三角形而非四边形），必须先单独讨论。本图没有这些前提与退化情形。 - **切-粘**：本图只说「沿闭曲线剪开再粘回」。要在三角剖分内部做，闭曲线须先变成单纯闭曲线（加细 $+$ 一般位置，正规同位），剪开后要说明得到的是新的三角剖分、粘回保持同胚型；这两步本图都没写。 - **终止性**：本图原句「配对边数严格下降」**不成立**：$2$–$2$ 翻边不改边数，切-粘可能增加边数。真正需要的是一个良序测度（例如按多边形边数归纳，Munkres 的证明分有限种情形；或用「边数 $+$ 顶点数」的字典序），并逐操作验证它下降。本图没给测度，也没验证。 - **顶点归约没写构造**：把剖分化成「一个多边形」之前要先把所有顶点并成一个（操作清单里的 (iv)）；这一步本图只列了名字、没写构造，而它正是退化情形最多的一步。\n\n**第 (3) 步（完整）。** 标准形 $4g$ 边形的中心扇形剖分：$V=2$（中心与一个边界顶点类）、$E=6g$、$F=4g$，故 $\\chi=2-2g$；$2k$ 边形：$V=2$、$E=3k$、$F=2k$，故 $\\chi=2-k$。两族互不同胚：可定向性不同（一侧可定向、一侧不可定向）；同族内 $\\chi$ 不同，由 $\\chi$ 的拓扑不变性（`thm.euler-characteristic`）不同胚。注意这里的「标准形」是引理 K 的**结论**，不是定义；不要用「闭曲面按定义就是标准形」循环。\n\n**为什么本条不能像 `prop.eulerchar-genus` 那样绕开。** 那条命题只要 $\\chi=2-2g$，可以用引理 D 直接算 $H_{2}$，不需要分类；本条要的是「任意剖分都能化成标准形」这一**结构定理**，它是分类本身，不能由同调的数值不变量推出。绕过它的代价正是把分类定理当假设。\n\n⭐ 判据（在引理 K 成立的前提下）：两个闭曲面同胚 $\\iff$ 可定向性相同且 $\\chi$ 相同（等价地：同为 $S^{2}$，或同为 $g$ 个环面的连通和且 $g$ 相同，或同为 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和且 $k$ 相同）。$S^{2}$ 与 $\\mathbb{RP}^{2}$ 的 $\\chi$ 都是 $2$ 与 $1$，所以单看 $\\chi$ 不够，必须配可定向性。\n\n**缺口与建议。** 缺口 $=$ Radó（`thm.rado`）$+$ 引理 K（组合归类）。若下一轮要补，建议单独立节点：组合归类引理（含顶点归约与终止性测度）、$2$–$2$ 翻边的退化情形、单纯闭曲线的正规同位。本图现有的 `thm.rado`、`def.triangulation`、`def.simplicial-complex`、`thm.euler-characteristic` 可直接用。',
       refs: [
         'Munkres, Topology, Ch. 12（Classification of Surfaces）',
         'Massey, A Basic Course in Algebraic Topology, Ch. 1',
@@ -217,7 +217,7 @@
       note: '三角刨分的定义域是**拓扑空间**（同胚是有拓扑才能谈的）。' +
         '之前这条没接，所以「拓扑空间」在三角刨分那里只是个词。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.triangulation-eulerchar',
       kind: 'definition',
       definition: 'def.triangulation',
@@ -225,7 +225,7 @@
       note: '“chi 与刨分无关”这条命题本身就**得先有刨分**（chi 是用刨分算出来的），' +
         '而且它做的正是三角刨分那条注里说的「用刨分定义的量先证与刨分无关」。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.topmanifold-rado',
       kind: 'definition',
       definition: 'def.topological-manifold',
@@ -246,21 +246,21 @@
       usedBy: 'def.triangulation',
       note: '被剖分的对象是拓扑空间（实际上就是曲面）：剖分只用到拓扑，不用光滑结构。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.triangulation-rado',
       kind: 'definition',
       definition: 'def.triangulation',
       usedBy: 'thm.rado',
       note: 'Radó 定理的结论就是「这种 $(K,h)$ 存在」。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.compact-rado',
       kind: 'definition',
       definition: 'def.compact',
       usedBy: 'thm.rado',
       note: '「紧」是 Radó 的必要假设（开曲面也能剖分，但要局部有限的 $K$，证明也不同）。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.rado-classification',
       kind: 'implication',
       sources: ['thm.rado'],
@@ -320,28 +320,28 @@
       note: '「闭」的第一个意思是**紧**（另一个是「无边界」）。',
     },
     /* -------- 分类定理用到的东西 -------- */
-    {
+    {status: 'skeleton', 
       id: 'dep.closedsurface-classification',
       kind: 'definition',
       definition: 'def.closed-surface',
       usedBy: 'thm.classification-surfaces',
       note: '定理的主语就是闭曲面。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.connectedsum-classification',
       kind: 'definition',
       definition: 'def.connected-sum',
       usedBy: 'thm.classification-surfaces',
       note: '结论的两种标准形都是**连通和**（环面的、射影平面的）。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.genus-classification',
       kind: 'definition',
       definition: 'def.genus',
       usedBy: 'thm.classification-surfaces',
       note: '可定向侧的分类量就是亏格 $g$；「不同胚」靠 $g$（等价地 $\\chi$）分辨。',
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.eulerchar-classification',
       kind: 'implication',
       sources: ['thm.euler-characteristic'],
@@ -351,7 +351,7 @@
       note: '不同胚性用 $\\chi$ 作不变量（$\\chi$ 在同胚下不变）。这条用**定理**当原理：`thm.euler-characteristic` 说「数单纯形 = 数 Betti 数」，正好给出 $\\chi$ 的组合与同调两种算法。',
     },
     /* -------- 通名归位后的那条类比：外在 vs 内蕴 -------- */
-    {
+    {id: "e182.analogy",
       kind: 'analogy',
       a: 'def.closed-surface',
       b: 'def.orientable-surface',
@@ -366,7 +366,7 @@
           '本图都没有写成节点。',
       ].join('\n\n'),
     },
-    {
+    {status: 'skeleton', 
       id: 'dep.comb-triangulation',
       kind: 'definition',
       definition: 'def.triangulation',
@@ -374,7 +374,7 @@
       note: '组合分类的操作对象是有限的连通三角剖分闭曲面，直接用三角剖分的定义。',
     },
 
-    {
+    {status: 'skeleton', 
       id: 'dep.comb-closed',
       kind: 'definition',
       definition: 'def.closed-surface',
@@ -382,7 +382,7 @@
       note: '「闭曲面」给紧、连通、无边界；本引理只处理这类曲面。',
     },
 
-    {
+    {status: 'skeleton', 
       id: 'dep.comb-classification',
       kind: 'implication',
       sources: ['lem.combinatorial-classification-surfaces'],

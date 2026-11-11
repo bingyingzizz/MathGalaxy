@@ -169,12 +169,14 @@ window.MG = window.MG || {};
       usedBy: 'prop.paracompact-partition-unity',
       note: '第二条说的就是正规空间里的单位分解。'
     },
-    {
-      id: 'def-link.pcpu-urysohn',
-      kind: 'definition',
-      definition: 'lem.urysohn',
-      usedBy: 'prop.paracompact-partition-unity',
-      note: '构造 $g_{i}$ 那一步把 Urysohn 引理用到具体闭集对上 —— 按**实例化**理解，不是构造依赖。'
+        {
+      id: 'imp.pcpu-urysohn',
+      kind: 'implication',
+      sources: ['lem.urysohn'],
+      target: 'prop.paracompact-partition-unity',
+      title: 'Urysohn 引理造出从属于覆盖的局部有限单位分解',
+      proof: '对局部有限开加细 $\\{V_{i}\\}$ 用正规性两次收缩：取开集 $W_{i}$ 使 $\\overline{W_{i}} \\subseteq V_{i}$ 且 $\\{W_{i}\\}$ 仍覆盖，再取 $O_{i}$ 使 $\\overline{W_{i}} \\subseteq O_{i} \\subseteq \\overline{O_{i}} \\subseteq V_{i}$。对闭集对 $(\\overline{W_{i}}, X \\setminus O_{i})$ 用 Urysohn 引理得 $g_{i}: X \\to [0,1]$，在 $\\overline{W_{i}}$ 上为 $1$、在 $X \\setminus O_{i}$ 上为 $0$，故 $\\operatorname{supp} g_{i} \\subseteq \\overline{O_{i}} \\subseteq V_{i}$ 且这族支撑局部有限。令 $\\rho_{i} = g_{i} / \\sum_{j} g_{j}$（分母处处为正、局部有限故为有限和），即得从属于 $\\{U_{i}\\}$ 的单位分解。∎',
+      note: 'Urysohn 引理用在造单个 $g_{i}$ 上；求和归一化与局部有限性由加细本身保证。'
     }
 
   ]

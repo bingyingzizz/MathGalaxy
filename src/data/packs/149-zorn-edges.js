@@ -19,7 +19,7 @@
     /* ---------------------------------------------- 一、Zorn 引理的前提概念 */
     /* 这些是 `lem.zorn` 的**陈述里用到**的概念：没有它们，Zorn 引理写不出来。
        以前一条都没有，所以从 Zorn 往外看不到「它站在什么上面」。 */
-    { kind: 'definition', definition: 'def.choicefn', usedBy: 'lem.zorn',
+    {id: "e162.definition", kind: 'definition', definition: 'def.choicefn', usedBy: 'lem.zorn',
       note: 'Zorn 引理与选择公理等价（`imp.zorn-choice`）：证明里要从族里挑元素，用的就是选择函数。' },
 
     /* ------------------------------------------ 二、真正靠 Zorn 的定理 */

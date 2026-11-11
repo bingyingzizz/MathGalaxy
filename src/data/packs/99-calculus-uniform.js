@@ -297,7 +297,7 @@ window.MG = window.MG || {};
         '',
         '$$\\cos\' = -\\sin, \\qquad \\sin\' = \\cos, \\qquad \\cos 0 = 1, \\qquad \\sin 0 = 0$$'
       ].join('\n'),
-      notes: '⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。\n\n⭐ 两个级数在全平面收敛的证明见 `imp.trig-series-radius`（Cauchy–Hadamard + 阶乘增长估计）。',
+      notes: '⭐ 三角函数的**分析定义**（而非几何定义）：由级数出发，一切恒等式与求导公式都可以算出来，而且自动对复数成立。\n\n⭐ 与 $\\exp$ 的关系将在「Euler 公式」那一条里揭晓：把 $\\exp$ 的级数按 $n$ 的奇偶拆开，就得到 $\\cos$ 与 $\\sin$。\n\n⚠ 几何意义（单位圆、角度、弧度）是**后来**才接上的：级数先告诉我们 $\\cos$ 有零点、$\\sin$ 有周期，几何图像才随之而来。\n\n⭐ 两个级数在全平面的收敛半径由 `imp.trig-series-radius` 给出（Cauchy–Hadamard + 阶乘增长估计）。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 8']
     },
     {

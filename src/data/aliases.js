@@ -41,7 +41,7 @@ MG.aliases = {
 
     /* ZFC 公理系统 */
     { id: 'ax.ext', aka: ['外延', 'extensionality', '集合相等'] },
-    { id: 'ax.pair', aka: ['无序对'] },
+    { id: 'ax.pair', aka: ['无序对', '配对公理'] },
     { id: 'ax.union', aka: ['并集公理', 'union', '求和集'] },
     { id: 'ax.inf', aka: ['无穷', 'infinity', '归纳集'] },
     { id: 'ax.found', en: 'foundation', aka: ['正则', '基础公理', 'foundation', 'regularity', '无循环'] },
@@ -951,7 +951,7 @@ MG.aliases = {
     { id: 'prop.poincare-disk', en: 'Poincaré disk and hyperbolic geometry', aka: ['Poincaré 圆盘与双曲几何', '庞加莱圆盘'] },
     { id: 'thm.ham-sandwich', en: 'ham sandwich theorem', aka: ['火腿三明治定理'] },
     { id: 'thm.monodromy', en: 'monodromy theorem', aka: ['单值性定理'] },
-    { id: 'thm.boundary-correspondence', en: 'boundary correspondence theorem', aka: ['边界对应定理'] },
+    { id: 'thm.boundary-correspondence', en: 'boundary correspondence theorem', aka: ['边界对应定理', 'Carathéodory–Osgood 边界对应', 'Carathéodory–Osgood 定理'] },
     { id: 'thm.cauchy-criterion', en: 'Cauchy criterion', aka: ['Cauchy 收敛准则', '柯西收敛准则'] },
     { id: 'thm.comparison-test', en: 'comparison test', aka: ['比较判别法'] },
     { id: 'thm.power-series-analytic', en: 'termwise operations on power series', aka: ['幂级数的逐项运算'] },
@@ -1524,7 +1524,6 @@ MG.aliases = {
     { id: 'def.category-of-abelian-groups', en: 'category of abelian groups', aka: ['阿贝尔群范畴', 'Ab'] },
     { id: 'def.module-category', en: 'category of modules', aka: ['模范畴', 'A-Mod'] },
     { id: 'def.topological-orientability', en: 'topological orientability', aka: ['拓扑可定向性', '曲面的可定向性'] },
-    { id: 'lem.caratheodory-osgood', en: 'Carathéodory–Osgood lemma', aka: ['Carathéodory–Osgood 边界对应'] },
     { id: 'lem.newman-tauberian', en: 'Newman\'s Tauberian lemma', aka: ['Newman 解析定理'] },
     { id: 'lem.combinatorial-classification-surfaces', en: 'combinatorial classification lemma', aka: ['组合分类引理'] },
     { id: 'cor.ubp-pointwise-limit', en: 'pointwise limit of uniformly bounded operators', aka: ['一致有界原理的逐点极限推论', '逐点极限算子'] },

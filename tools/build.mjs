@@ -2691,6 +2691,26 @@ function assertEdgeEndpoints(MG, graph) {
   return errs;
 }
 
+/* A8：骨架边状态的最小校验 —— 只允许 'skeleton'，并统计条数。分层与渲染都不看它。 */
+function assertEdgeStatus(MG, graph) {
+  const errs = [];
+  const scan = (edges, where) => {
+    let n = 0;
+    for (const e of (edges || [])) {
+      if (e.status == null) continue;
+      if (e.status !== 'skeleton') {
+        errs.push('边状态：' + where + ' 的边 `' + (e.id || '?') + '` 的 status 只能是 skeleton，实际是 `' + e.status + '`');
+      } else n++;
+    }
+    return n;
+  };
+  const nGraph = scan(graph.edges, '构建后的图');
+  let nRaw = 0;
+  for (const p of (MG.packs || [])) nRaw += scan(p.edges, `pack「${p.name || '未命名'}」`);
+  console.log(`  → 骨架边：图中 ${nGraph} 条带 status:'skeleton'（原始 packs ${nRaw} 条）`);
+  return errs;
+}
+
 function assertNotation(MG, graph) {
   const N = (MG.notation && MG.notation.checks) || {};
   const errs = [];
@@ -3099,6 +3119,7 @@ if (doJSON) {
   errs.push(...aliasErrs);
   errs.push(...enErrs);
   errs.push(...assertEdgeEndpoints(MG, graph));
+  errs.push(...assertEdgeStatus(MG, graph));
   errs.push(...assertContrast(MG));
   errs.push(...assertNotation(MG, graph));
   errs.push(...assertAliases(MG, graph));
