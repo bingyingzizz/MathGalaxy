@@ -280,6 +280,30 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
+    /* ---------------------------------------------- 正则单态射 */
+    {
+      id: 'def.regular-monomorphism',
+      cluster: 'cat.structure',
+      type: 'definition',
+      label: '正则单态射',
+      title: '正则单态射',
+      regions: ['category'],
+      tags: ['范畴论', '单态射', '等化子'],
+      statement: [
+        '态射 $i : Y \\to X$ 叫**正则单态射**，如果它是某对平行态射 $f, g : X \\rightrightarrows Z$ 的**等化子**（见 `def.equalizer`）：',
+        '',
+        '$$i = \\ker(f, g) \\;:\\; Y \\longrightarrow X .$$',
+        '',
+        '若范畴有零对象（如 $\\mathbf{Ab}$），这等价于「$i$ 是某个态射的核」：$\\ker(f) = \\ker(f, 0)$。'
+      ].join('\n'),
+      notes: [
+        '**例**：在 $\\mathbf{Set}$ 中，正则单态射恰好是单射。给定单射 $i : Y \\to X$，取 $Z = \\{0, 1\\}$，令 $f$ 在 $i(Y)$ 上取 $0$、在补集上取 $1$，$g$ 恒取 $0$，则 $\\ker(f, g) = i(Y) \\cong Y$。',
+        '**与单态射的关系**：正则单态射总是单态射（等化子是单态射），但反过来不成立。在 $\\mathbf{Top}$ 里单态射是单射连续映射，而正则单态射要求子空间拓扑恰好由等化子给出，所以不全是正则的。',
+        '**在 $\\mathbf{Ab}$ 中**：单态射、正则单态射、某个映射的核三者重合；这也是「核」这个术语的来源。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3（Definition 1.3.9）']
+    },
+
     /* ------------------------------------------------------ 子对象 */
     {
       id: 'def.subobject',
@@ -290,14 +314,14 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '子对象', '拉回'],
       statement: [
-        '把单态射 $Y \\rightarrowtail X$ 看作 $X$ 的一个**子对象**，记 $Y \\subseteq X$。两个子对象的**交**与原像都用拉回定义：',
+        '把单态射 $Y \\rightarrowtail X$ 看作 $X$ 的一个**子对象**，记 $Y \\subseteq X$。子对象的**交**与沿态射的**原像**分别见 `def.intersection-subobject` 与 `def.preimage-subobject`；下面把两种构造一并写出作为总览，细节以那两个节点为准。',
         '',
         '$$Y \\cap Z := Y \\times_{X} Z, \\qquad f^{-1}(Y) := Y \\times_{X} X\'$$',
         '',
         '（对 $Y, Z \\subseteq X$ 与任意 $f : X\' \\to X$；存在时才有定义）。'
       ].join('\n'),
       notes: [
-        '把「子集」换成「单态射」，好处是不再依赖元素 —— 于是这套语言可以照搬到没有元素的范畴里去。「交」变成拉回、「原像」也变成拉回，两种操作合成了一个：$Y \\cap Z$ 解的是「既在 $Y$ 里又在 $Z$ 里」的部分，$f^{-1}(Y)$ 解的是「$y = f(x)$ 有解」的部分。'
+        '把「子集」换成「单态射」，好处是不再依赖元素 —— 于是这套语言可以照搬到没有元素的范畴里去。「交」与「原像」都是拉回（纤维积）：$Y \\cap Z$ 解的是「既在 $Y$ 里又在 $Z$ 里」的部分，$f^{-1}(Y)$ 解的是「$y = f(x)$ 有解」的部分；细节分别见 `def.intersection-subobject` 与 `def.preimage-subobject`。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
@@ -317,9 +341,10 @@ window.MG = window.MG || {};
         '',
         '连同到 $X$ 的投影（若纤维积存在）。它在「同时包含于 $Y$ 与 $Z$ 的子对象」中泛：任何同时分解过两条单态射的 $T \\to X$ 都唯一地分解过 $Y \\cap Z \\to X$。',
         '',
-        '对任意 $f : X\' \\to X$，**原像** $f^{-1}(Y) := Y \\times_{X} X\'$ 是 $X\'$ 的子对象。在 $\\mathbf{Set}$ 中，交就是集合交 $Y \\cap Z$。'
+        '在 $\\mathbf{Set}$ 中，交就是集合交 $Y \\cap Z$；沿态射的原像见 `def.preimage-subobject`。'
       ].join('\n'),
       notes: [
+        '**消歧**：一般范畴里对象之间没有「交」；能谈的是**子对象的交**（纤维交），且要求相应的纤维积存在。',
         '**为什么用纤维积**：交要表达「同时落在 $Y$ 与 $Z$ 里」。用元素说，就是 $t \\in Y \\cap Z$；不用元素说，就是 $T \\to X$ 同时分解过 $Y \\rightarrowtail X$ 与 $Z \\rightarrowtail X$。纤维积的泛性正是这个「同时分解」的万有解；于是任何满足该性质的对象都唯一地分解过 $Y \\times_{X} Z$，即它是最大下界。',
         '',
         '**存在性**：交就是纤维积，所以「交存在」当且仅当沿 $X$ 的纤维积存在；没有纤维积的范畴里不能谈交。单态射沿任意态射的拉回仍是单态射（见 `def.mono`），所以 $Y \\times_{X} Z \\to X$ 确实是子对象。',
@@ -328,12 +353,38 @@ window.MG = window.MG || {};
         '',
         '**与并的关系**：并是余积的像 $Y \\cup Z := \\operatorname{im}(Y \\coprod Z \\to X)$，不是纤维余积。预拓扑斯里子对象构成有界格：交 = 纤维积（最大下界），并 = 像（最小上界），见 `prop.subobject-lattice`。',
         '',
-        '**原像**：对 $f : X\' \\to X$，$f^{-1}(Y) = Y \\times_{X} X\'$ 是 $X\'$ 的子对象；它满足「$f(x) \\in Y$」的泛性质，并随 $f$ 与拉回函子相容。原像与交是同一个构造（都取纤维积），只是沿的态射不同。',
         '',
         '**警告**：一般范畴里 $Y \\cap Z$ 不一定存在；即使存在，也不要把它与积 $Y \\times Z$ 或余积 $Y \\coprod Z$ 混为一谈。交是「沿 $X$ 的纤维积」，而不是「两个对象的积」。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3（Def 1.3.10, p.23–24）', 'Mac Lane, Categories for the Working Mathematician, Ch. III §4']
     },
+    /* ---------------------------------------------------- 原像 */
+    {
+      id: 'def.preimage-subobject',
+      cluster: 'cat.structure',
+      type: 'definition',
+      label: '子对象的原像',
+      title: '子对象的原像',
+      regions: ['category'],
+      tags: ['范畴论', '子对象', '原像', '纤维积'],
+      statement: [
+        '设 $f : X^{\\prime} \\to X$ 是态射，$Y \\rightarrowtail X$ 是 $X$ 的子对象（见 `def.subobject`）。$Y$ 沿 $f$ 的**原像**是纤维积',
+        '',
+        '$$f^{-1}(Y) := Y \\times_{X} X^{\\prime} \\;\\longrightarrow\\; X^{\\prime} ,$$',
+        '',
+        '连同到 $X^{\\prime}$ 的投影（若纤维积存在）。它满足泛性：对任意 $g : T \\to X^{\\prime}$，若 $f \\circ g$ 分解过 $Y \\rightarrowtail X$，则 $g$ 唯一地分解过 $f^{-1}(Y) \\to X^{\\prime}$。',
+        '',
+        '在 $\\mathbf{Set}$ 中，$f^{-1}(Y) = \\{\\, x \\in X^{\\prime} : f(x) \\in Y \\,\\}$，即通常的集合原像。'
+      ].join('\n'),
+      notes: [
+        '**直观**：原像是「把 $Y$ 沿 $f$ 拉回到 $X^{\\prime}$」—— 解的是 $f(x) \\in Y$ 的那部分。',
+        '**与交是同一个构造**：交 $Y \\cap Z = Y \\times_{X} Z$ 是沿两条单态射的拉回，原像是沿任意态射 $f$ 的拉回；两者都是纤维积，只是沿的态射不同。',
+        '**仍是子对象**：单态射沿任意态射的拉回仍是单态射（拉回保持单态射），所以 $f^{-1}(Y) \\to X^{\\prime}$ 确实是子对象。',
+        '⚠ 需要沿 $f$ 的纤维积存在；没有纤维积的范畴里原像未必有定义。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
+    },
+
     /* -------------------------------------------------- 极限的函子性 */
     {
       id: 'thm.lim-functor',
@@ -441,6 +492,55 @@ window.MG = window.MG || {};
       definition: 'def.simplex-category',
       usedBy: 'def.simplicial',
       note: '单纯对象是 $\\Delta^{\\mathrm{op}}$ 上的图，索引范畴正是 `def.simplex-category`；本节点陈述为了自足把 $\\Delta$ 的骨架重述了一遍，正式定义以那个节点为准。'
+    },
+    {
+      id: 'dep.regmono-equalizer',
+      kind: 'definition',
+      definition: 'def.equalizer',
+      usedBy: 'def.regular-monomorphism',
+      note: '正则单态射的定义就是「某对平行态的等化子」，先有等化子才谈得上。'
+    },
+    {
+      id: 'dep.regmono-mono',
+      kind: 'definition',
+      definition: 'def.mono',
+      usedBy: 'def.regular-monomorphism',
+      note: '正则单态射是单态射的一种特化（定义比单态射更强）；「等化子自动是单态射」是一条定理，不属于这条 definition 边的内容。'
+    },
+    {
+      id: 'dep.preimg-subobject',
+      kind: 'definition',
+      definition: 'def.subobject',
+      usedBy: 'def.preimage-subobject',
+      note: '原像以子对象（单态射的同构类）与沿它的拉回为前提。'
+    },
+    {
+      id: 'dep.preimg-fiber',
+      kind: 'definition',
+      definition: 'def.fibered-product',
+      usedBy: 'def.preimage-subobject',
+      note: '原像就是沿 $f$ 的纤维积，所以需要先有纤维积。'
+    },
+    {
+      id: 'ana.inter-set',
+      kind: 'analogy',
+      a: 'def.intersection-subobject',
+      b: 'def.union-inter',
+      note: '在 $\\mathbf{Set}$ 中，子对象的交（纤维积）就是集合交，故 `def.union-inter` 的**交**这一半是本构造的特例；并**不是**纤维积，而是余积（不交并）的像，属于对偶侧，只作类比。'
+    },
+    {
+      id: 'ana.preimg-set',
+      kind: 'analogy',
+      a: 'def.preimage-subobject',
+      b: 'def.preimage',
+      note: '在 $\\mathbf{Set}$ 中，子对象沿 $f$ 的原像（纤维积）就是通常的集合原像；`def.preimage` 是集合层面的原像，这里是它的范畴化类比。'
+    },
+    {
+      id: 'ana.inter-preimg',
+      kind: 'analogy',
+      a: 'def.intersection-subobject',
+      b: 'def.preimage-subobject',
+      note: '交与沿态射的原像是同一个构造（纤维积）的两个特例：交沿两条单态射拉回，原像沿任意态射拉回。'
     }
   ]
 });

@@ -442,7 +442,7 @@
     },
     {
       id: 'def.prime-end',
-      cluster: 'analysis.conformal',
+      cluster: 'analysis.mapping',
       type: 'definition',
       label: '素端',
       title: '素端（prime end）与 Carathéodory 紧化',

@@ -274,6 +274,47 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '闭开集在一般的拓扑空间里是「稀有物种」：在 $\\mathbb{R}$、$[0,1]$ 这类连通空间里只有 $\\emptyset$ 与全空间。**闭开集越多，空间越碎** —— 全不连通是「连通分量全是单点」；「闭开集能分开任意两点」（= 零维）只有在**紧 Hausdorff** 下才与之等价；投射有限空间则是「闭开集构成一组基」。',
       refs: ['Munkres, Topology']
+    },
+    /* ------------------------------------------------ Jordan 曲线 */
+    {
+      id: 'def.jordan-curve',
+      cluster: 'topology.general',
+      type: 'definition',
+      label: 'Jordan 曲线',
+      title: 'Jordan 曲线（简单闭曲线）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '曲线', 'Jordan'],
+      statement: [
+        '平面 $\\mathbb{R}^{2}$（或 $\\mathbb{C}$）中的一条**Jordan 曲线**（**简单闭曲线**）是单位圆周 $S^{1} = \\{\\, z \\in \\mathbb{C} : |z| = 1 \\,\\}$ 在**同胚**下的像：存在同胚 $S^{1} \\to C \\subseteq \\mathbb{R}^{2}$（$C$ 带子空间拓扑，见 `def.homeomorphism`）。',
+        '',
+        '等价地，$C$ 是 $\\mathbb{R}^{2}$ 中一条**连续单射** $\\gamma : S^{1} \\to \\mathbb{R}^{2}$ 的像 —— 因为 $S^{1}$ 紧、$\\mathbb{R}^{2}$ Hausdorff，连续单射自动是到其像上的同胚。'
+      ].join('\n'),
+      notes: [
+        '**名字拆开**：「简单」= 无自交点（$\\gamma$ 单射）；「闭」= $S^{1}$ 紧，所以像是紧的、没有端点。',
+        '**例**：圆周、椭圆、正方形边界、任意多边形的边界都是 Jordan 曲线；「8 字形」不是（有自交点），一条线段也不是（不是闭的）。',
+        '⚠ Jordan 曲线可以很不规则（例如分形曲线），所以不能靠「看起来像圆」来论证；下面的 Jordan 曲线定理正是对这种一般曲线说的。'
+      ].join('\n\n'),
+      refs: ['Hatcher, Algebraic Topology, §2.B']
+    },
+    {
+      id: 'thm.jordan-curve',
+      cluster: 'topology.general',
+      type: 'theorem',
+      status: 'skeleton',
+      label: 'Jordan 曲线定理',
+      title: '定理（Jordan）：简单闭曲线把平面分成内外两块',
+      regions: ['topology'],
+      tags: ['定理', '拓扑', 'Jordan', '骨架'],
+      statement: [
+        '设 $C \\subseteq \\mathbb{R}^{2}$ 是一条 Jordan 曲线（见 `def.jordan-curve`）。则补集 $\\mathbb{R}^{2} \\setminus C$ 恰有两个连通分量：一个有界（**内部**），一个无界（**外部**）；两者都以 $C$ 为边界。',
+        '',
+        '等价地，$C$ **分离**平面：$\\mathbb{R}^{2} \\setminus C$ 不连通，且连通分量恰好两个。'
+      ].join('\n'),
+      notes: [
+        '**骨架**：本节点只给陈述，不给出证明。缺口就是 **Jordan 曲线定理本身** —— 本图没有它的证明，不能把「显然」当作证明。',
+        '常用证明路线：① 同调路线，证明 $H_{1}(\\mathbb{R}^{2} \\setminus C) \\cong \\mathbb{Z}$（配合 Mayer–Vietoris）；② 基本群与环绕数路线；③ 初等的射线/多边形逼近路线。三条都依赖非平凡的拓扑工具，本图未展开。'
+      ].join('\n\n'),
+      refs: ['Hatcher, Algebraic Topology, §2.B']
     }
   ],
 
@@ -421,6 +462,20 @@ window.MG = window.MG || {};
       definition: 'def.closed-set',
       usedBy: 'def.clopen',
       note: '闭开集 = **开集** 且 **闭集**，两个概念各占一半。'
+    },
+    {
+      id: 'dep.jordan-homeo',
+      kind: 'definition',
+      definition: 'def.homeomorphism',
+      usedBy: 'def.jordan-curve',
+      note: 'Jordan 曲线定义为 $S^{1}$ 在同胚下的像；「像」上的拓扑取子空间拓扑，同胚是定义的一部分。'
+    },
+    {
+      id: 'dep.jordantheorem-curve',
+      kind: 'definition',
+      definition: 'def.jordan-curve',
+      usedBy: 'thm.jordan-curve',
+      note: '定理以 Jordan 曲线（简单闭曲线）的定义为前提；本节点只陈述定理，证明见节点注的缺口说明。'
     }
   ]
 });

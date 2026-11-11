@@ -27,13 +27,13 @@ window.MG = window.MG || {};
       note: '「纸不能拉 $\\implies$ K 不变」这一步用绝妙定理（$K$ 是等距不变量）。' },
     { id: 'def-link.dif-cgc', kind: 'definition',
       definition: 'thm.constant-gauss-curvature', usedBy: 'thm.developable-iff-flat',
-      note: '$K \\equiv 0 \\implies$ 局部等距于平面，这一步就是常曲率分类的 $K = 0$ 情形。' },
+      note: '「$K \\equiv 0 \\implies$ 局部等距于平面」是常曲率分类的 $K = 0$ 行；本注把两边结论并列，未引用其证明 —— 这是**定义实例化**，不是蕴含。' },
     { id: 'def-link.mc-ds', kind: 'definition',
       definition: 'def.developable-surface', usedBy: 'def.mean-curvature',
       note: '平均曲率那条注里比较「极小曲面（$H = 0$）」与「可展曲面（$K = 0$）」，平面是唯一交点。' },
     { id: 'def-link.cod-gauss', kind: 'definition',
       definition: 'thm.gauss-equation', usedBy: 'thm.codazzi-mainardi',
-      note: 'Gauss 方程与 Codazzi–Mainardi 方程是曲面论基本方程的两半，必须并列引用。' },
+      note: 'Gauss 方程与 Codazzi–Mainardi 方程是曲面论基本方程的**两半**，彼此并列而不互推 —— 这是**并列关系**，不是蕴含。' },
 
     /* ---------------- 实示性类（diffgeom.manifold） ---------------- */
     { id: 'def-link.ec-k', kind: 'definition',

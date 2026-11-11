@@ -294,10 +294,16 @@ window.MG = window.MG || {};
     },
     {
       id: 'def-link.injhom-injective',
-      kind: 'definition',
-      definition: 'prop.injective-criterion',
-      usedBy: 'prop.injective-complex-homotopy',
-      note: '证明的关键是内射对象的「分裂短正合列」判据。'
+      kind: 'implication',
+      sources: ['prop.injective-criterion', 'def.projective-object'],
+      target: 'prop.injective-complex-homotopy',
+      title: '内射判据给出链复形的可缩性',
+      proof: [
+        '要证零调的内射复形可缩，须逐层造收缩同伦 $s^{n} : I^{n} \\to I^{n-1}$。',
+        '每一层的短正合列 $0 \\to Z^{n} \\to I^{n} \\to Z^{n+1} \\to 0$ 由 $I^{n}$ 的内射性（`def.projective-object`）沿 $Z^{n} \\to I^{n-1}$ 分裂 —— 正是 `prop.injective-criterion` 给出的「分裂短正合列」判据。',
+        '分裂给出的截面就是 $s^{n}$ 的候选，逐层拼接即得 $ds + sd = \\mathrm{id}$，复形可缩。∎',
+      ].join('\n'),
+      note: '证明的关键是内射对象的「分裂短正合列」判据（`prop.injective-criterion`）。'
     },
     {
       id: 'def-link.injhom-quasi',
@@ -315,10 +321,16 @@ window.MG = window.MG || {};
     },
     {
       id: 'def-link.injl-injective',
-      kind: 'definition',
-      definition: 'prop.injective-criterion',
-      usedBy: 'prop.injective-resolution-lift',
-      note: '提升的每一步都靠内射对象抬起映射。'
+      kind: 'implication',
+      sources: ['prop.injective-criterion', 'def.projective-object'],
+      target: 'prop.injective-resolution-lift',
+      title: '内射性逐层抬起链映射',
+      proof: [
+        '比较定理要从 $F^{0}$ 逐层造出 $F^{n+1} : I^{n+1} \\to J^{n+1}$ 使 $Fd = dF$。',
+        '第 $0$ 层：$M \\hookrightarrow I^{0}$ 是单射，复合 $M \\to N \\to J^{0}$ 由 $J^{0}$ 的内射性（`def.projective-object`）抬成 $F^{0}$。',
+        '归纳步同理：障碍映射 $I^{n+1} \\to J^{n+1}$ 沿单射 $I^{n} \\hookrightarrow I^{n+1}$ 抬起，用的正是 `prop.injective-criterion` 的抬起性质。∎',
+      ].join('\n'),
+      note: '提升的每一步都靠内射对象抬起映射（判据见 `prop.injective-criterion`）。'
     }
 
   ]

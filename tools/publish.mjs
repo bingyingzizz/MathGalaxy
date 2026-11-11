@@ -570,6 +570,7 @@ const smEntries = [
   ...RESEARCH_PAGES.map((r) => ({ loc: `${SITE_ORIGIN}/${r.out}`, pri: r.pri, date: gitDate('site') })),
   { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0', date: gitDate('src') },
   { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9', date: gitDate('src') },        // 全部概念的入口，爬虫从这儿进
+  { loc: `${SITE_ORIGIN}/mathgalaxy/en/`, pri: '0.9', date: gitDate('src') },            // 英文总索引：英文查询的落点（2026-11-11）
   { loc: `${SITE_ORIGIN}/mathgalaxy/questions.html`, pri: '0.8', date: gitDate('src') },  // 184 条真实问法，长尾入口
   ...['index.md', 'llms.txt', 'reading.md', 'policy.md', 'hubs.md', 'notation.md', 'alias.md',
       'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']

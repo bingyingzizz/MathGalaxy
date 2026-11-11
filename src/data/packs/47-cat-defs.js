@@ -104,7 +104,56 @@ window.MG = window.MG || {};
         '**例子**：$\\operatorname{Ind}(\\mathbf{FinSet})$ 是「所有集合」（每个集合都是它有限子集的滤过余极限）；$K$-理论的「向量丛按直和/余极限补全」用的也是它。',
         '📌 对偶地有 **Pro-对象**：把滤过图换成**余滤过**图，得到 $\\operatorname{Pro}(\\mathcal{C})$（profinite 空间就是 $\\operatorname{Pro}(\\mathbf{FinSet})$）。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4']
+    },
+
+    /* ---------------------------------------------- 余滤过范畴 */
+    {
+      id: 'def.cofiltered-category',
+      cluster: 'cat.limit',
+      type: 'definition',
+      label: '余滤过范畴',
+      title: '余滤过范畴',
+      regions: ['category'],
+      tags: ['范畴论', '余滤过', '对偶', '形式极限'],
+      statement: [
+        '小范畴 $I$ 叫**余滤过**的，如果它的对偶 $I^{\\mathrm{op}}$ 是滤过范畴（`def.filtered-category`）：',
+        '1. $I$ 非空；',
+        '2. 任意 $X, Y \\in I$ 有**共同下界**：存在 $Z \\in I$ 与态射 $Z \\to X$、$Z \\to Y$；',
+        '3. 任意平行态射 $f, g : X \\rightrightarrows Y$ 有**共同右消解**：存在 $h : Z \\to X$ 使 $f \\circ h = g \\circ h$。',
+        '等价地，以 $I$ 为指标的**余滤过图**就是 $I^{\\mathrm{op}}$ 上的滤过图。'
+      ].join('\n'),
+      notes: [
+        '**对偶表**：滤过 $\\leftrightarrow$ 余滤过，余极限 $\\leftrightarrow$ 极限，Ind-对象 $\\leftrightarrow$ Pro-对象。三条条件正是滤过范畴三条条件取对偶。',
+        '**例**：profinite 空间的指标范畴、$p$-进整数 $\\mathbb{Z}_{p} = \\varprojlim_{n} \\mathbb{Z}/p^{n}$ 的指标范畴 $\\mathbb{N}^{\\mathrm{op}}$ 都是余滤过的（$\\mathbb{N}^{\\mathrm{op}}$ 是滤过范畴）。',
+        '⚠ 余滤过是**指标范畴**的性质，不是图的性质；「余滤过极限」指沿余滤过指标取极限，不要与「滤过余极限」混为一谈。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4（Definition 1.4.1 的对偶）']
+    },
+
+    /* ---------------------------------------------------- Pro-对象 */
+    {
+      id: 'def.pro-object',
+      cluster: 'cat.limit',
+      type: 'definition',
+      label: 'Pro-对象',
+      title: 'Pro-对象与 $\\operatorname{Pro}(\\mathcal{C})$',
+      regions: ['category'],
+      tags: ['范畴论', 'Pro-对象', '余滤过极限', '形式极限'],
+      statement: [
+        '范畴 $\\mathcal{C}$ 的一个 **Pro-对象**「$\\varprojlim_{i \\in I} X_{i}$」是一个**余滤过图** $(X_{i})_{i \\in I}$（指标范畴余滤过，见 `def.cofiltered-category`；等价地，$I^{\\mathrm{op}}$ 上的滤过图）。它们组成范畴 $\\operatorname{Pro}(\\mathcal{C})$，其 Hom 为',
+        '',
+        '$$\\operatorname{Hom}_{\\operatorname{Pro}(\\mathcal{C})}\\Bigl(\\text{“}\\varprojlim_{i \\in I} X_{i}\\text{”},\\ \\text{“}\\varprojlim_{j \\in J} Y_{j}\\text{”}\\Bigr) \\;=\\; \\varprojlim_{i \\in I}\\ \\varinjlim_{j \\in J}\\ \\operatorname{Hom}_{\\mathcal{C}}(X_{i}, Y_{j}).$$',
+        '',
+        '这是 **Ind-对象**（`def.ind-object`）的对偶：把 $\\mathcal{C}$ 换成 $\\mathcal{C}^{\\mathrm{op}}$，滤过就变成余滤过，形式余极限就变成形式极限。'
+      ].join('\n'),
+      notes: [
+        '**读法**：引号里的 $\\varprojlim X_{i}$ 是**形式记法** —— 对象是「余滤过图」本身，不是它的极限（极限可能压根不存在）。',
+        '**例子**：$\\operatorname{Pro}(\\mathbf{FinSet})$ 就是 profinite 集合；$p$-进整数 $\\mathbb{Z}_{p} = \\varprojlim_{n} \\mathbb{Z}/p^{n}$ 是 pro-有限群的原型。',
+        '**对偶表**：Ind-对象 $\\leftrightarrow$ Pro-对象，滤过 $\\leftrightarrow$ 余滤过，余极限 $\\leftrightarrow$ 极限。因此凡是对 Ind-对象成立的构造，取 $\\mathcal{C}^{\\mathrm{op}}$ 就得到 Pro-对象的对应版本。',
+        '⚠ 与「极限存在」区分：$\\operatorname{Pro}(\\mathcal{C})$ 是形式完备化，即使 $\\mathcal{C}$ 没有相应的极限也有定义。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.4.3 Definition 1.4.3']
     },
 
     /* ---------------------------------------------- 保极限（定义） */
@@ -302,5 +351,27 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    {
+      id: 'dep.proobj-ind',
+      kind: 'definition',
+      definition: 'def.ind-object',
+      usedBy: 'def.pro-object',
+      note: 'Pro-对象是 Ind-对象取对偶得到的构造：把滤过图换成余滤过图、形式余极限换成形式极限；定义方式与 Ind-对象平行。'
+    },
+    {
+      id: 'dep.cofiltered-filtered',
+      kind: 'definition',
+      definition: 'def.filtered-category',
+      usedBy: 'def.cofiltered-category',
+      note: '余滤过范畴按定义是对偶范畴滤过的指标范畴；三条条件逐条是滤过条件取对偶。'
+    },
+    {
+      id: 'dep.proobj-cofiltered',
+      kind: 'definition',
+      definition: 'def.cofiltered-category',
+      usedBy: 'def.pro-object',
+      note: 'Pro-对象按余滤过指标范畴取形式极限；没有余滤过范畴就无法陈述「余滤过图」。'
+    }
+  ]
 });

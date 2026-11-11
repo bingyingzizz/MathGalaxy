@@ -661,6 +661,28 @@
       notes: '**基本群**：$p>1$ 时 $\\pi_{1}(L(p,q))\\cong\\mathbb{Z}/p$；投影 $S^{3}\\to L(p,q)$ 是 $p$ 重覆叠（见 `def.covering-space`），$S^{3}$ 单连通故覆叠空间的基本群正是 $\\mathbb{Z}/p$。\n\n**例子**：$L(2,1)\\cong\\mathbb{R}P^{3}$（对径粘合）；$L(p,1)$ 是可定向的三维透镜空间。\n\n**同胚分类**：$L(p,q)\\cong L(p,q^{\\prime})$ 当且仅当 $q^{\\prime}\\equiv\\pm q^{\\pm1}\\pmod p$；$q$ 影响同胚型但不影响同伦型（透镜空间是「同伦等价而非同胚」的经典例子）。\n\n**同调**：$H_{1}\\cong\\mathbb{Z}/p$，$H_{2}=0$，$H_{3}\\cong\\mathbb{Z}$（$L(p,q)$ 是闭可定向三维流形）。\n\n⚠ 定义要求 $\\gcd(p,q)=1$，否则作用不自由、商空间不是流形。',
       refs: ['Hatcher, Algebraic Topology, Ch. 1 §1.3 · lens spaces', 'Munkres, Topology (2nd ed.), Ch. 9 · covering spaces'],
     },
+    {
+      id: 'lem.free-proper-quotient-manifold',
+      cluster: 'topology.fg',
+      type: 'lemma',
+      label: '自由真不连续作用的光滑商',
+      title: '有限群自由真不连续作用的光滑商流形',
+      regions: ['topology'],
+      tags: ['引理', '拓扑', '流形', '群作用', '商空间'],
+      statement: '设 $M$ 是 $n$ 维光滑流形，有限群 $\\Gamma$ 光滑地作用在 $M$ 上，且作用**自由**（$g\\ne e$ 时 $gx\\ne x$）、**真不连续**（每个 $x$ 有开邻域 $U$ 使 $gU\\cap U=\\emptyset$ 对所有 $g\\ne e$）。则轨道空间 $M/\\Gamma$ 有唯一的光滑结构使商映射 $\\pi:M\\to M/\\Gamma$ 是局部微分同胚；特别地 $M/\\Gamma$ 是 $n$ 维光滑流形。',
+      notes: [
+        '**开邻域**：对每个 $x\\in M$，因 $\\Gamma$ 有限且自由，对每个 $g\\ne e$ 有 $gx\\ne x$。由 $M$ Hausdorff，取 $x$ 与 $gx$ 的互不相交开邻域；对有限多个 $g$ 取交并回拉，得到 $x$ 的开邻域 $U$ 使 $gU\\cap U=\\emptyset$（$g\\ne e$）。',
+        '',
+        '**局部单射与开映射**：若 $u,v\\in U$ 且 $\\pi(u)=\\pi(v)$，则 $v=gu$，故 $u\\in U\\cap g^{-1}U$；由 $gU\\cap U=\\emptyset$（$g\\ne e$）得 $g=e$，$u=v$。所以 $\\pi|_{U}$ 是单射；又群作用的商映射是开映射，故 $\\pi|_{U}:U\\to\\pi(U)$ 是同胚。',
+        '',
+        '**图册**：取 $M$ 的图卡 $(U,\\varphi)$ 且 $U$ 满足上条；定义 $M/\\Gamma$ 上的卡 $(\\pi(U),\\varphi\\circ(\\pi|_{U})^{-1})$。这些 $\\pi(U)$ 覆盖 $M/\\Gamma$。若 $\\pi(z)\\in\\pi(U)\\cap\\pi(V)$，取 $h\\in\\Gamma$ 使 $hz\\in V$；在 $z$ 附近 $\\pi|_{V}^{-1}\\circ\\pi=h$（因为 $\\pi\\circ h=\\pi$，且 $hu\\in V$ 对 $u$ 靠近 $z$ 成立），故转移映射局部等于 $\\psi\\circ h\\circ\\varphi^{-1}$，是光滑的。',
+        '',
+        '**拓扑条件**：$M/\\Gamma$ 作为第二可数空间 $M$ 的商仍第二可数；又 $\\Gamma$ 有限且作用真不连续，不同轨道的饱和邻域可分离（对有限多个 $g$ 取 $gx$ 与 $\\Gamma y$ 的分离邻域），故 $M/\\Gamma$ Hausdorff。',
+        '',
+        '**唯一性**：若两种光滑结构都使 $\\pi$ 为局部微分同胚，则恒等映射在这两种结构下都是局部微分同胚，从而是微分同胚，两种结构相同。∎'
+      ].join('\n\n'),
+      refs: ['Lee, Introduction to Smooth Manifolds (2nd ed.), Ch. 21 · quotient manifolds', 'Hatcher, Algebraic Topology, Ch. 1 §1.3 · covering space actions'],
+    },
   ],
   edges: [
     { id: 'dep.lens-groupaction', kind: 'definition', definition: 'def.group-action', usedBy: 'def.lens-space',
@@ -671,6 +693,19 @@
       note: 'L(p,q) 的基本群是 Z/p。' },
     { id: 'dep.lens-simply', kind: 'definition', definition: 'def.simply-connected', usedBy: 'def.lens-space',
       note: 'S^3 单连通是计算基本群的输入。' },
+    { id: 'imp.lens-space-smooth-manifold', kind: 'implication',
+      sources: ['def.lens-space', 'lem.free-proper-quotient-manifold'],
+      target: 'def.smooth-manifold',
+      title: '透镜空间是光滑三维流形',
+      proof: [
+        '$S^{3}\\subset\\mathbb{C}^{2}$ 由 $|z_{1}|^{2}+|z_{2}|^{2}=1$ 定义，梯度 $(2\\bar z_{1},2\\bar z_{2})$ 在球面上不为零，故 $S^{3}$ 是光滑三维流形。',
+        '',
+        '$\\Gamma=\\mathbb{Z}/p$ 以 $(z_{1},z_{2})\\mapsto(\\zeta z_{1},\\zeta^{q}z_{2})$ 光滑作用。$\\gcd(p,q)=1$ 时作用自由：若 $\\zeta z_{1}=z_{1}$ 且 $\\zeta^{q}z_{2}=z_{2}$，则 $z_{1}=0$ 或 $\\zeta=1$，$z_{2}=0$ 或 $\\zeta^{q}=1$；结合 $|z_{1}|^{2}+|z_{2}|^{2}=1$ 可知 $\\zeta=1$。',
+        '',
+        '有限群在 Hausdorff 空间上的自由作用自动真不连续：每个点有开邻域与所有非平凡像不交（即上一引理证明的第一段）。',
+        '',
+        '于是引理给出：轨道空间 $L(p,q)=S^{3}/\\Gamma$ 有唯一光滑结构使商映射为局部微分同胚，从而是三维光滑流形。∎'
+      ].join('\n\n') },
     /* ---------------------------------------------------- §A 同伦 → 基本群 */
     { kind: 'definition', definition: 'def.continuous-map', usedBy: 'def.homotopy-maps',
       note: '同伦 $F : X \\times [0, 1] \\to Y$ 本身要求**联合连续**（在乘积拓扑下），' +

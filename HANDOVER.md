@@ -25,9 +25,9 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1613 节点 / 3341 边 · maxLayer 38
-强边 3286 · 弱边（类比）55 · 推论（layer:false）33
-英文页 1613 · 别名 1423 组 · 问法钩子 217 条
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1620 节点 / 3372 边 · maxLayer 38
+强边 3307 · 弱边（类比）65 · 推论（layer:false）33
+英文页 1620 · 别名 1430 组 · 问法钩子 217 条
 ```
 
 | 项 | 值 |
@@ -35,13 +35,13 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` ahead 1（P1 + 第 25/28 批 + 文档；未 push） |
+| 工作树 | 有另一会话的 `index.html` / `site/*` 界面语言改动（未提交，不属于本批）；本地 `main` ahead 1（未 push） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1613 节点 / 3341 边，所有页 ≤1300 B） |
+| `bun tools/build.mjs` | ✅ 全绿（1620 节点 / 3372 边，所有页 ≤1300 B） |
 | `bun tools/_katexcheck.mjs` | ✅ **2977 个 `$…# 数学星图 MathGalaxy · 交接书
 
 > **这是唯一的交接文档。** 2026-11-05 重写，取代此前的
@@ -69,9 +69,9 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1613 节点 / 3341 边 · maxLayer 38
-强边 3286 · 弱边（类比）55 · 推论（layer:false）33
-英文页 1613 · 别名 1423 组 · 问法钩子 217 条
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1620 节点 / 3372 边 · maxLayer 38
+强边 3307 · 弱边（类比）65 · 推论（layer:false）33
+英文页 1620 · 别名 1430 组 · 问法钩子 217 条
 ```
 
 | 项 | 值 |
@@ -79,13 +79,13 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` ahead 1（P1 + 第 25/28 批 + 文档；未 push） |
+| 工作树 | 有另一会话的 `index.html` / `site/*` 界面语言改动（未提交，不属于本批）；本地 `main` ahead 1（未 push） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1613 节点 / 3341 边，所有页 ≤1300 B） |
+| `bun tools/build.mjs` | ✅ 全绿（1620 节点 / 3372 边，所有页 ≤1300 B） |
 | `bun tools/_katexcheck.mjs` | ✅ ，失败 0**（第 28 批新增 3 个 definition 节点及注；历史累计见 git 记录） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |

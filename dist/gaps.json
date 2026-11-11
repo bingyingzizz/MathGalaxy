@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-11T04:40:21.987Z",
+ "generated": "2026-11-11T06:35:09.151Z",
  "terms": 76,
  "missing": [
   {
    "term": "单位圆",
-   "total": 32,
+   "total": 33,
    "nodes": [
     {
      "id": "thm.integral-trig",
@@ -362,8 +362,8 @@
    "nodeLayer": 20,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 33,
-   "gap": 13
+   "defLayer": 35,
+   "gap": 15
   },
   {
    "node": "def.weak-hausdorff",
@@ -384,21 +384,21 @@
    "gap": 10
   },
   {
-   "node": "thm.classification-surfaces",
-   "nodeLabel": "闭曲面分类定理",
-   "nodeLayer": 27,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 33,
+   "node": "def.orientable-manifold",
+   "nodeLabel": "可定向流形",
+   "nodeLayer": 16,
+   "def": "def.smooth-manifold",
+   "defLabel": "光滑流形",
+   "defLayer": 22,
    "gap": 6
   },
   {
-   "node": "prop.eulerchar-nonorientable",
-   "nodeLabel": "Euler 示性数与不可定向亏格",
-   "nodeLayer": 28,
+   "node": "thm.classification-surfaces",
+   "nodeLabel": "闭曲面分类定理",
+   "nodeLayer": 30,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 33,
+   "defLayer": 35,
    "gap": 5
   },
   {
@@ -411,21 +411,30 @@
    "gap": 5
   },
   {
-   "node": "def.orientable-manifold",
-   "nodeLabel": "可定向流形",
-   "nodeLayer": 15,
-   "def": "def.smooth-manifold",
-   "defLabel": "光滑流形",
-   "defLayer": 19,
+   "node": "prop.pullback-forms",
+   "nodeLabel": "拉回（开集间）",
+   "nodeLayer": 19,
+   "def": "def.smooth-map",
+   "defLabel": "光滑映射",
+   "defLayer": 23,
    "gap": 4
   },
   {
-   "node": "thm.riesz-perfect-pairing",
-   "nodeLabel": "Riesz 表示的配对版",
-   "nodeLayer": 14,
-   "def": "def.hilbert-space",
-   "defLabel": "Hilbert 空间",
-   "defLayer": 18,
+   "node": "prop.volume-form-orientation",
+   "nodeLabel": "定向与体积形式",
+   "nodeLayer": 18,
+   "def": "def.smooth-manifold",
+   "defLabel": "光滑流形",
+   "defLayer": 22,
+   "gap": 4
+  },
+  {
+   "node": "prop.eulerchar-nonorientable",
+   "nodeLabel": "Euler 示性数与不可定向亏格",
+   "nodeLayer": 31,
+   "def": "def.nonorientable-genus",
+   "defLabel": "不可定向亏格",
+   "defLayer": 35,
    "gap": 4
   },
   {
@@ -447,21 +456,12 @@
    "gap": 3
   },
   {
-   "node": "prop.pullback-forms",
-   "nodeLabel": "拉回（开集间）",
-   "nodeLayer": 18,
-   "def": "def.smooth-map",
-   "defLabel": "光滑映射",
-   "defLayer": 20,
-   "gap": 2
-  },
-  {
-   "node": "prop.volume-form-orientation",
-   "nodeLabel": "定向与体积形式",
-   "nodeLayer": 17,
+   "node": "thm.smooth-partition-unity",
+   "nodeLabel": "光滑单位分解",
+   "nodeLayer": 20,
    "def": "def.smooth-manifold",
    "defLabel": "光滑流形",
-   "defLayer": 19,
+   "defLayer": 22,
    "gap": 2
   },
   {
@@ -471,6 +471,15 @@
    "def": "def.additive-category",
    "defLabel": "加法范畴",
    "defLayer": 14,
+   "gap": 2
+  },
+  {
+   "node": "def.module-category",
+   "nodeLabel": "模范畴",
+   "nodeLayer": 10,
+   "def": "def.linear-map",
+   "defLabel": "线性映射",
+   "defLayer": 12,
    "gap": 2
   },
   {
@@ -512,10 +521,10 @@
   {
    "node": "ex.klein-bottle",
    "nodeLabel": "克莱因瓶",
-   "nodeLayer": 32,
+   "nodeLayer": 34,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 33,
+   "defLayer": 35,
    "gap": 1
   },
   {
@@ -537,15 +546,6 @@
    "gap": 1
   },
   {
-   "node": "def.module-category",
-   "nodeLabel": "模范畴",
-   "nodeLayer": 10,
-   "def": "def.linear-map",
-   "defLabel": "线性映射",
-   "defLayer": 11,
-   "gap": 1
-  },
-  {
    "node": "def.bicomplex",
    "nodeLabel": "双复形",
    "nodeLayer": 13,
@@ -564,21 +564,30 @@
    "gap": 1
   },
   {
-   "node": "def.integral-form",
-   "nodeLabel": "形式的积分",
-   "nodeLayer": 17,
-   "def": "def.partition-of-unity",
-   "defLabel": "单位分解",
-   "defLayer": 17,
+   "node": "def.cotangent-bundle",
+   "nodeLabel": "余切丛",
+   "nodeLayer": 25,
+   "def": "def.bundle-section",
+   "defLabel": "丛的截面",
+   "defLayer": 25,
    "gap": 0
   },
   {
    "node": "def.nilpotent",
    "nodeLabel": "幂零",
-   "nodeLayer": 15,
+   "nodeLayer": 16,
    "def": "def.char-poly",
    "defLabel": "特征多项式",
-   "defLayer": 15,
+   "defLayer": 16,
+   "gap": 0
+  },
+  {
+   "node": "thm.riesz-perfect-pairing",
+   "nodeLabel": "Riesz 表示的配对版",
+   "nodeLayer": 18,
+   "def": "def.hilbert-space",
+   "defLabel": "Hilbert 空间",
+   "defLayer": 18,
    "gap": 0
   },
   {
@@ -648,6 +657,7 @@
  "noEdgeAll": 67,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
+  "def.bundle-section>def.form-on-manifold",
   "def.bundle-section>def.differential-form",
   "def.t35-space>def.regular-space",
   "def.smooth-manifold>def.partial-derivative",
