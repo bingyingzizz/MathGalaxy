@@ -49,6 +49,55 @@
   } catch (e) {}
 })();
 </script>
+<!-- ===== 首次访问的界面语言：浏览器语言 + IP 归属国（2026-11-11） =====
+     只在**用户还没做过选择**时才跑。判定顺序：
+       URL ?lang=  →  localStorage 里存过的选择  →  这一步（浏览器语言 + IP 归属国）
+     IP 在中国的访客 ⇒ 中文；其它国家 ⇒ 英文（作者 2026-11-11 拍板）。
+     ⛔ 为什么不在 i18n.js 里做：那边是同步的，而归属国必须先发一次网络请求。
+        这里**不阻塞首屏**：先按浏览器语言出页面，查回来了只在不一致时整页重载一次
+        （带 `?lang=`，所以之后每页都命中前面的短路条件，不会再查）。
+     ⛔ 失败必须无声：1.2 秒没回来就放弃，保持浏览器语言；`file://` 双击时根本不查。
+     ⛔ Do-Not-Track 开着时完全不查 IP —— 一个语言默认值不值得换一次定位请求。 -->
+<script>
+(function () {
+  try {
+    if (!/^https?:$/.test(location.protocol)) return;                 // file:// 不查
+    if (/[?&]lang=(en|zh)\b/.test(location.search || '')) return;     // 显式选择（含本脚本自己的重载）
+    var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+    if (dnt === '1' || dnt === 'yes') return;
+    var KEY = 'mathgalaxy.read.lang', saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') return;                     // 点过语言按钮
+    var nav = (navigator.language || navigator.userLanguage || '');
+    var guess = /^en\b/i.test(nav) ? 'en' : 'zh';
+    function go(x) {
+      if (x === guess) return;
+      try {
+        var u = new URL(location.href);
+        u.searchParams.set('lang', x);
+        location.replace(u.toString());                               // 保留 hash：深链不丢
+      } catch (e) {}
+    }
+    if (!window.fetch || !window.AbortController) return;
+    var cached = null;
+    try { cached = sessionStorage.getItem('mathgalaxy.geo'); } catch (e) {}
+    if (cached === 'CN') { go('zh'); return; }
+    if (cached === 'other') { go('en'); return; }
+    var ctl = new AbortController();
+    var timer = setTimeout(function () { ctl.abort(); }, 1200);
+    fetch('https://api.country.is/', { signal: ctl.signal, credentials: 'omit', cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        var c = j && typeof j.country === 'string' ? j.country.toUpperCase() : '';
+        if (!c) return;
+        try { sessionStorage.setItem('mathgalaxy.geo', c === 'CN' ? 'CN' : 'other'); } catch (e) {}
+        go(c === 'CN' ? 'zh' : 'en');
+      })
+      .catch(function () {})
+      .then(function () { clearTimeout(timer); });
+  } catch (e) {}
+})();
+</script>
 <!-- KaTeX：数学排版。CSS 与 JS 都放 src/ui/，字体在 src/ui/fonts/（与 CSS 同目录，file:// 也能加载） -->
 <link rel="stylesheet" href="src/ui/katex.min.css" />
 

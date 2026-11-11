@@ -726,9 +726,13 @@ function nodePage(node, rel, ctx) {
         页面不自己判断状态、也不手写状态词。
      ⛔ 「中文陈述是权威版本」这句话必须跟英文一起出现（作者护栏）。
      ⚠️ 这一段必须建在 JSON-LD 之前：下面 ldNode.abstract 要用它。 */
-  const absEn = String(node.abstract_en || '').trim();
-  const stmEn = String(node.statement_en || '').trim();
-  const notesEn = String(node.notes_en || '').trim();
+  /* 底稿里偶有 Markdown 硬换行残留：句子末尾一个反斜杠 + 换行（LaTeX 里不合法）。
+     U.md 不认识它，会原样渲染成一个孤零零的「\」。这里只吃掉「单反斜杠 + 行尾」，
+     双反斜杠（LaTeX 换行 \\）不动。 */
+  const cleanEn = (s) => String(s || '').trim().replace(/(^|[^\\])\\\n/g, '$1\n');
+  const absEn = cleanEn(node.abstract_en);
+  const stmEn = cleanEn(node.statement_en);
+  const notesEn = cleanEn(node.notes_en);
   const hasEnBody = !!(absEn || stmEn);
   const trEn = (node.translations && node.translations.en) || null;
   const absState = trEn ? trEn.status : '';
