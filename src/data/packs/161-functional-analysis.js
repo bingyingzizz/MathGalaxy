@@ -1079,7 +1079,7 @@ window.MG = window.MG || {};
         '',
         '(b) 若其中一个映射满射，则另一个也满射，且 $X \\cong Y^*$、$Y \\cong X^*$（等距同构）；',
         '',
-        '(c) Hilbert 空间 $H$ 与 $L^p$（$1 < p < \\infty$，$1/p + 1/q = 1$）的配对满足满射性，因此 $H^* \\cong H$、$(L^p)^* \\cong L^q$ 都是完美配对的直接推论。'
+        '(c) Hilbert 空间 $H$ 与 $L^p$（$1 < p < \\infty$，$1/p + 1/q = 1$）的配对满足满射性（Hilbert 情形用投影定理，$L^p$ 情形用 Radon–Nikodym）；因此 $H^* \\cong H$、$(L^p)^* \\cong L^q$。'
       ].join('\n'),
       notes: [
         '**证明 (a)**：由定范条件，$\\|x\\| = \\sup_{\\|y\\| \\le 1}|\\langle x, y\\rangle| = \\|T x\\|$，其中 $T x := \\langle x, \\cdot\\rangle$；由非退化 $T$ 单射，故 $T$ 是等距嵌入。对 $y$ 同理。$\\blacksquare$',
@@ -1223,7 +1223,7 @@ window.MG = window.MG || {};
       note: '弱拓扑定义在赋范空间（特别 Banach 空间）上。' },
     { id: 'dep.weak-dual', kind: 'definition', definition: 'def.dual-space', usedBy: 'def.weak-topology',
       note: '弱拓扑由连续对偶的元素生成。' },
-    { id: 'def-link.pp-dual', kind: 'definition', definition: 'def.dual-space',
+    { id: 'def-link.pp-dual', kind: 'definition', definition: 'def.dual-banach',
       usedBy: 'def.perfect-pairing',
       note: '配对的两侧嵌入到对方对偶空间；完美配对的第三条要求这两个嵌入保范。' },
     { id: 'def-link.pp-norm', kind: 'definition', definition: 'def.norm',
@@ -1232,7 +1232,7 @@ window.MG = window.MG || {};
     { id: 'def-link.rpp-pp', kind: 'definition', definition: 'def.perfect-pairing',
       usedBy: 'thm.riesz-perfect-pairing',
       note: '统一 Riesz 定理的出发点：完美配对的三个公理。' },
-    { id: 'def-link.rpp-dual', kind: 'definition', definition: 'def.dual-space',
+    { id: 'def-link.rpp-dual', kind: 'definition', definition: 'def.dual-banach',
       usedBy: 'thm.riesz-perfect-pairing',
       note: '结论是 $X \\cong Y^*$、$Y \\cong X^*$，所以两边都是对偶空间。' },
     {
@@ -1248,7 +1248,7 @@ window.MG = window.MG || {};
         '',
         '**(b)** 若 $T$ 满，则 $T$ 是等距同构 $X \\to Y^*$。对偶化得 $T^* : Y^{**} \\to X^*$ 等距同构；而 $S : Y \\to X^*$ 是等距嵌入，且 $T^*$ 把 $J_Y(Y)$ 送到 $S(Y)$（验证：$T^* J_Y y (x) = J_Y y(T x) = \\langle x, y\\rangle = S y(x)$）。$J_Y$ 总是等距，故 $S(Y) = T^* J_Y(Y)$ 在 $T^*$ 下同构于 $Y$，而 $T^*$ 满（同构），所以 $S$ 也满。$\\blacksquare$',
         '',
-        '于是 (b) 成立；把 (c) 的两个具体配对代入即得 $H^* \\cong H$ 与 $(L^p)^* \\cong L^q$。'
+        '于是 (b) 成立。(c) 的满射性不属于本边：它分别由 `thm.riesz-hilbert`（投影定理）与 `thm.riesz-representation-lp`（Radon–Nikodym）提供，见 `imp.riesz-hilbert-pink`、`imp.riesz-lp-pink`。'
       ].join('\n'),
       note: '注意 (b) 只用「一个满」推出「另一个满」，不声称三条公理本身蕴含满射——反例见 `def.perfect-pairing` 的 $\\ell^1/c_0$。'
     },
@@ -1281,6 +1281,13 @@ window.MG = window.MG || {};
     { id: 'def-link.ref-banach', kind: 'definition', definition: 'def.banach-space',
       usedBy: 'def.reflexive-space',
       note: '自反性是对 Banach 空间说的（完备性用于 $X^{**}$ 的范数结构）。' },
+    {
+      id: 'ana.reflexive-perfect-pairing',
+      kind: 'analogy',
+      a: 'def.reflexive-space',
+      b: 'def.perfect-pairing',
+      note: '自反的等价刻画：自然嵌入满等价于完美配对的两侧嵌入全满；这是同一现象的两套语言，不是定义依赖。'
+    },
     { id: 'def-link.lpref-ref', kind: 'definition', definition: 'def.reflexive-space',
       usedBy: 'cor.lp-reflexive',
       note: '$L^p$（$1 < p < \\infty$）自反正是这个一般定义的具体实例。' },
@@ -1303,6 +1310,14 @@ window.MG = window.MG || {};
       note: '凸集是向量空间的子集；凸性只用仿射结构，不用范数。' },
     { kind: 'definition', definition: 'def.convex-set', usedBy: 'thm.projection-convex',
       note: '投影定理的核心假设：凸、闭、非空。' },
+    { kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-convex',
+      note: '投影定理的另一个核心假设：$C$ 闭（极小化序列的极限仍落在 $C$ 里）。' },
+    { kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-subspace',
+      note: '正交分解要求子空间 $E$ 闭；否则最近点可能不落在 $E$ 里。' },
+    { kind: 'definition', definition: 'def.hilbert-space', usedBy: 'thm.projection-subspace',
+      note: '正交投影与正交分解在 Hilbert 空间中进行，完备性用于调用凸闭集投影。' },
+    { kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-hull',
+      note: '凸包定义为包含 $S$ 的最小凸集，直接用凸集概念。' },
     { kind: 'definition', definition: 'def.star-shaped', usedBy: 'lem.poincare-lemma',
       note: 'Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。' },
     { kind: 'implication', sources: ['def.convex-set'], target: 'def.star-shaped',
@@ -1401,13 +1416,13 @@ window.MG = window.MG || {};
       sources: ['thm.riesz-perfect-pairing'],
       target: 'thm.riesz-hilbert',
       layer: false,
-      title: '配对框架到 Hilbert 版 Riesz 表示（组织性回头边）',
+      title: '配对框架到 Hilbert 版 Riesz 表示（框架到实例）',
       proof: [
-        '**组织性说明（非推导）。** `thm.riesz-perfect-pairing` 只给出完美配对框架，并把 Hilbert 内积配对列为实例：三条公理由 Cauchy–Schwarz 与非退化性验证。',
-        '它**不**推出满射性 $H^{*}\\cong H$；满射性由 `thm.riesz-hilbert` 用投影定理/正交分解独立证明。',
-        '因此这条边表达「框架到实例」的回头关系（便于从框架跳到具体定理），不是从完美配对的三条公理单独推出满射，故 `layer: false`。'
+        '由 `thm.riesz-perfect-pairing` (c)，Hilbert 内积配对满足满射性；结合 (a) 的等距性，$T:x\\mapsto\\langle x,\\cdot\\rangle$ 是等距同构 $H\\to H^{*}$。',
+        '这正是 `thm.riesz-hilbert` 的内容（$H^{*}\\cong H$）。(c) 的满射性由投影定理/正交分解提供，与 target 的证明一致。',
+        '因此这条边把定理 (c) 拆成具体入口（框架到实例），`layer: false` 表示它不参与分层。'
       ].join('\n'),
-      note: '组织性回头边：配对定理只给框架；满射性仍由投影定理给出，不是从完美配对的三条公理单独推出。'
+      note: '这是把定理 (c) 拆成具体入口的回头边；满射性由 (c) 的证明（投影定理/正交分解）提供。'
     },
     {
       id: 'imp.riesz-lp-pink',
@@ -1415,13 +1430,13 @@ window.MG = window.MG || {};
       sources: ['thm.riesz-perfect-pairing'],
       target: 'thm.riesz-representation-lp',
       layer: false,
-      title: '配对框架到 $L^p$ 版 Riesz 表示（组织性回头边）',
+      title: '配对框架到 $L^p$ 版 Riesz 表示（框架到实例）',
       proof: [
-        '**组织性说明（非推导）。** `thm.riesz-perfect-pairing` 把 $(L^{p},L^{q})$ 列为完美配对实例：三条公理由 Hölder 与对偶刻画验证。',
-        '它**不**推出 $(L^{p})^{*}\\cong L^{q}$；满射性由 `thm.riesz-representation-lp` 用 Radon–Nikodym 独立证明。',
-        '因此这条边表达「框架到实例」的回头关系（便于从框架跳到具体定理），不是从完美配对的三条公理单独推出满射，故 `layer: false`。'
+        '由 `thm.riesz-perfect-pairing` (c)，$(L^{p},L^{q})$ 配对满足满射性；结合 (a) 的等距性，$g\\mapsto\\int(\\cdot)g$ 是等距同构 $L^{q}\\to(L^{p})^{*}$。',
+        '这正是 `thm.riesz-representation-lp` 的内容（$(L^{p})^{*}\\cong L^{q}$）。(c) 的满射性由 Radon–Nikodym 提供，与 target 的证明一致。',
+        '因此这条边把定理 (c) 拆成具体入口（框架到实例），`layer: false` 表示它不参与分层。'
       ].join('\n'),
-      note: '组织性回头边：配对定理只给框架；满射性仍由 Radon–Nikodym / 对偶刻画给出，不是从完美配对的三条公理单独推出。'
+      note: '这是把定理 (c) 拆成具体入口的回头边；满射性由 (c) 的证明（Radon–Nikodym）提供。'
     }
   ]
 });

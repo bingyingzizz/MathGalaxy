@@ -537,9 +537,11 @@
     },
     {
       id: 'dep.solvablequotients-radical',
-      kind: 'definition',
-      definition: 'thm.solvable-quotients',
-      usedBy: 'thm.radical-solvable',
+      kind: 'implication',
+      sources: ['thm.solvable-quotients'],
+      target: 'thm.radical-solvable',
+      title: '可解性对子群与商群的封闭支撑两个方向',
+      proof: '两个方向都要「可解性对子群、商群封闭」（`thm.solvable-quotients`）。$(\\implies)$ 设 $K/F$ 根式可解，塔 $F=F_{0}\\subseteq\\cdots\\subseteq F_{m}$ 每步是循环扩张（或 $S_{p}$ 型）。令 $G_{i}=\\operatorname{Gal}(K/F_{i})$，得 $G_{0}=G\\supseteq\\cdots\\supseteq G_{m}=1$；每步 $G_{i+1}\\trianglelefteq G_{i}$ 且 $G_{i}/G_{i+1}\\cong\\operatorname{Gal}(F_{i+1}/F_{i})$ 循环或 $S_{p}$ 型，故各商可解，由封闭性 $G$ 可解。$(\\Leftarrow)$ 设 $G$ 可解，取可解列 $G=G_{0}\\supseteq\\cdots\\supseteq G_{m}=1$，对应固定域塔 $F\\subseteq K^{G_{m}}\\subseteq\\cdots\\subseteq K$；每步 $K^{G_{i+1}}/K^{G_{i}}$ 是循环扩张，由 Kummer 理论（含足够单位根时）可写成根式添加，故 $K$ 落在根式塔内。反向用到的「子群亦可解」同样出自这条定理。∎',
       note: '两个方向都要「可解性对商群/子群封闭」：塔的每一步商群可解 $\\iff$ 整个群可解。',
     },
     /* ---------- 五次方程 ---------- */
@@ -553,9 +555,11 @@
     },
     {
       id: 'dep.snsolvable-quintic',
-      kind: 'definition',
-      definition: 'prop.sn-solvable',
-      usedBy: 'thm.quintic-unsolvable',
+      kind: 'implication',
+      sources: ['prop.sn-solvable'],
+      target: 'thm.quintic-unsolvable',
+      title: '$S_{5}$ 不可解排除根式解',
+      proof: '取 $f=x^{5}-4x+2$。前三步定出伽罗瓦群是 $S_{5}$：不可约 $\\implies$ 传递含 $5$-循环；恰三实根 $\\implies$ 复共轭给一个换位；$5$-循环加换位生成 $S_{5}$。最后一步取逆否：若 $f$ 根式可解，`thm.radical-solvable` 给出 $\\operatorname{Gal}(f)$ 可解；但 $S_{5}$ 不可解 —— 这正是 `prop.sn-solvable` 的内容（$A_{5}$ 单且非交换，故 $S_{5}$ 的换位子列停在 $A_{5}\\ne1$）。矛盾。∎',
       note: '$S_{5}$ 不可解（$A_{5}$ 单且非交换）—— 图里那句孤立的话，现在终于有下游了。',
     },
     /* ---------- 与既有零件的类比：伽罗瓦群 vs 向量空间的对称 ---------- */

@@ -212,7 +212,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'thm.nth-root',
       usedBy: 'thm.p-series',
-      note: '凝聚判别法把 $1/n^{p}$ 换成 $2^{k(1-p)}$ 时，写的是 $2^{k} \\cdot 2^{-kp}$；指数与根号在这里是同一套约定。'
+      note: '凝聚判别法把 /n^{p}$ 换成 $2^{k(1-p)}$ 时，指数与根号只是同一套约定的两种写法；按**实例化**理解，不是构造依赖。'
     }
   ]
 });

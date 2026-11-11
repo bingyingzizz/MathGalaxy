@@ -343,11 +343,12 @@
     },
     {
       id: 'dep.eulerchar-classification',
-      kind: 'definition',
-      definition: 'thm.euler-characteristic',
-      usedBy: 'thm.classification-surfaces',
-      note: '不同胚性用 $\\chi$ 作不变量（$\\chi$ 在同胚下不变）。⚠ 这条用的是**定理**当原理：' +
-        '`thm.euler-characteristic` 说「数单纯形 = 数 Betti 数」，正好给出 $\\chi$ 的组合与同调两种算法。',
+      kind: 'implication',
+      sources: ['thm.euler-characteristic'],
+      target: 'thm.classification-surfaces',
+      title: '标准形上用 $\\chi$ 区分曲面',
+      proof: '分类定理第三步在标准形上读不变量：可定向性与 $\\chi$。要断言「$\\chi$ 不同则不同胚」，必须先知道 $\\chi$ 是同胚不变量 —— `thm.euler-characteristic` 给出 $\\chi(K)=\\sum_{p}(-1)^{p}\\alpha_{p}=\\sum_{p}(-1)^{p}\\beta_{p}$，右端只依赖同调型，于是同伦等价（从而同胚）保持 $\\chi$。同一等式还让「由三角剖分数出的 $\\chi$」与「由 Betti 数算出的 $\\chi$」对接，标准形与任意剖分才可比较。∎',
+      note: '不同胚性用 $\\chi$ 作不变量（$\\chi$ 在同胚下不变）。这条用**定理**当原理：`thm.euler-characteristic` 说「数单纯形 = 数 Betti 数」，正好给出 $\\chi$ 的组合与同调两种算法。',
     },
     /* -------- 通名归位后的那条类比：外在 vs 内蕴 -------- */
     {
@@ -383,9 +384,11 @@
 
     {
       id: 'dep.comb-classification',
-      kind: 'definition',
-      definition: 'lem.combinatorial-classification-surfaces',
-      usedBy: 'thm.classification-surfaces',
+      kind: 'implication',
+      sources: ['lem.combinatorial-classification-surfaces'],
+      target: 'thm.classification-surfaces',
+      title: '分类定理第二步由组合归类引理承载',
+      proof: '分类定理分三步：(1) Radó 三角剖分；(2) 任意三角剖分经有限步操作化成标准形；(3) 标准形上读不变量。第二步的精确陈述、允许的操作清单与不变量保持性都放在 `lem.combinatorial-classification-surfaces` 里，定理的证明在此直接引用，不重复组合论证。该引理本身仍标 skeleton（缺口是归约操作的有限性与不变量保持），所以这条边记录的是「定理依赖引理」，不是「引理已证完」。∎',
       note: '分类定理第二步（组合归类）的精确陈述与证明缺口现在由本节点承载；分类定理的证明引用它，而不是把整段组合论证塞进注里。',
     },
   ],

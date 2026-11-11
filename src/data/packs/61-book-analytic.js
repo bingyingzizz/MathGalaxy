@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'lem.urysohn',
       usedBy: 'prop.paracompact-partition-unity',
-      note: '构造 $g_{i}$ 那一步用的是 Urysohn 引理。'
+      note: '构造 $g_{i}$ 那一步把 Urysohn 引理用到具体闭集对上 —— 按**实例化**理解，不是构造依赖。'
     }
 
   ]

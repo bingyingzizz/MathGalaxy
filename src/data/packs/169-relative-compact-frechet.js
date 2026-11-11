@@ -132,6 +132,6 @@ window.MG = window.MG || {};
       note: '有限维时 $f\'(a)$ 就是全微分（Jacobian 矩阵），本条是它的推广。' },
     { id: 'dep-fd-invfn', kind: 'definition',
       definition: 'thm.inverse-function-banach', usedBy: 'thm.frechet-derivative',
-      note: 'Banach 版逆映射定理的假设「$f\'(a)$ 可逆」用的就是这个导数。' }
+      note: 'Fréchet 导数的定义本身不依赖逆映射定理；这里记的是「定理假设 $f\'(a)$ 可逆用的就是这个导数」这层实例化关系，不是构造依赖。' }
   ]
 });

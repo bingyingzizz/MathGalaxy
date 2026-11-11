@@ -208,17 +208,18 @@
     /* -------- 两条判据式的前提 -------- */
     {
       id: 'dep.classification-eulerchargenus',
-      kind: 'definition',
-      definition: 'thm.classification-surfaces',
-      usedBy: 'prop.eulerchar-genus',
-      note: '「闭可定向曲面就是 $g$ 个环面的连通和」是分类定理给的标准形 —— 命题的**证明**用它，' +
-        '虽然结论 $\\chi = 2 - 2g$ 也能纯同调算出来（见注）。',
+      kind: 'analogy',
+      a: 'thm.classification-surfaces',
+      b: 'prop.eulerchar-genus',
+      note: '命题的证明**不用**分类定理（节点注写明改走 Radó + 初等路线，$\\chi=2-2g$ 可由同调直接算出）；保留这条只作「标准形 = $g$ 个环面的连通和」的类比视角。',
     },
     {
       id: 'dep.eulerchar-eulerchargenus',
-      kind: 'definition',
-      definition: 'thm.euler-characteristic',
-      usedBy: 'prop.eulerchar-genus',
+      kind: 'implication',
+      sources: ['thm.euler-characteristic'],
+      target: 'prop.eulerchar-genus',
+      title: '$\\chi$ 的两种算法给出 $\\chi=2-2g$',
+      proof: '命题先由任一三角剖分数出 $\\chi(S)$，再由 $g=\\tfrac12\\operatorname{rank}H_{1}(S;\\mathbb{Z})$ 得 $\\beta_{0}=1$、$\\beta_{1}=2g$、$\\beta_{2}=1$，于是 $\\chi=2-2g$。把两种算法接起来靠的正是 `thm.euler-characteristic` 的 $\\chi=\\sum_{p}(-1)^{p}\\alpha_{p}=\\sum_{p}(-1)^{p}\\beta_{p}$；没有它，组合侧的数与同调侧的 $g$ 无法对齐，「与剖分无关」也无从谈起。∎',
       note: '$\\chi$ 的两种算法（数单纯形 / 数 Betti 数）相等，正是这条定理的内容。',
     },
     {
@@ -230,16 +231,18 @@
     },
     {
       id: 'dep.classification-eulercharnonor',
-      kind: 'definition',
-      definition: 'thm.classification-surfaces',
-      usedBy: 'prop.eulerchar-nonorientable',
-      note: '不可定向标准形（$k$ 个射影平面的连通和）同样来自分类定理。',
+      kind: 'analogy',
+      a: 'thm.classification-surfaces',
+      b: 'prop.eulerchar-nonorientable',
+      note: '不可定向标准形同样只是类比视角：命题假设已限定在标准形，不需要分类定理。',
     },
     {
       id: 'dep.eulerchar-eulercharnonor',
-      kind: 'definition',
-      definition: 'thm.euler-characteristic',
-      usedBy: 'prop.eulerchar-nonorientable',
+      kind: 'implication',
+      sources: ['thm.euler-characteristic'],
+      target: 'prop.eulerchar-nonorientable',
+      title: '$\\chi=V-E+F$ 递推给出 $\\chi=2-k$',
+      proof: '先算 $\\chi(\\mathbb{RP}^{2})=6-15+10=1$（正二十面体按对径点粘合），再用连通和公式 $\\chi(S_{k})=\\chi(S_{k-1})+\\chi(\\mathbb{RP}^{2})-2$ 递推得 $\\chi(S_{k})=2-k$。两处用的都是 `thm.euler-characteristic` 的组合算法 $\\chi=V-E+F$；最后「与剖分无关」再用它的同调算法 $\\chi=\\sum_{p}(-1)^{p}\\beta_{p}$。∎',
       note: '$\\chi$ 的组合算法（$V - E + F$）是这一条的另一半。',
     },
     /* -------- 四个例子都是闭曲面 -------- */

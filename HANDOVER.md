@@ -25,8 +25,8 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1621 节点 / 3376 边 · maxLayer 38
-强边 3311 · 弱边（类比）65 · 推论（layer:false）36
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1621 节点 / 3381 边 · maxLayer 38
+强边 3313 · 弱边（类比）68 · 推论（layer:false）36
 英文页 1621 · 别名 1431 组 · 问法钩子 217 条
 ```
 
@@ -35,13 +35,13 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` ahead 3（未 push） |
+| 工作树 | clean；本地 `main` ahead 1（未 push） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1621 节点 / 3376 边，所有页 ≤1300 B） |
+| `bun tools/build.mjs` | ✅ 全绿（1621 节点 / 3381 边，所有页 ≤1300 B） |
 | `bun tools/_katexcheck.mjs` | ✅ **2977 个 `$…# 数学星图 MathGalaxy · 交接书
 
 > **这是唯一的交接文档。** 2026-11-05 重写，取代此前的
@@ -69,8 +69,8 @@
 ### 实测状态（2026-11-07，`bun tools/mg.mjs stat`）
 
 ```
-内容版本 v0.9.3 · 15 星系 / 105 星团 / 1621 节点 / 3376 边 · maxLayer 38
-强边 3311 · 弱边（类比）65 · 推论（layer:false）36
+内容版本 v0.9.3 · 15 星系 / 105 星团 / 1621 节点 / 3381 边 · maxLayer 38
+强边 3313 · 弱边（类比）68 · 推论（layer:false）36
 英文页 1621 · 别名 1431 组 · 问法钩子 217 条
 ```
 
@@ -79,13 +79,13 @@
 | 仓库 | `H:\MathGalaxy` |
 | 远端 | `https://github.com/bingyingzizz/MathGalaxy`（**public**，`main`） |
 | 线上 | <https://bingyingzizz.github.io/mathgalaxy/> |
-| 工作树 | clean；本地 `main` ahead 3（未 push） |
+| 工作树 | clean；本地 `main` ahead 1（未 push） |
 
 ### 门禁 · 我 2026-11-07 全跑过
 
 | 命令 | 结果 |
 |---|---|
-| `bun tools/build.mjs` | ✅ 全绿（1621 节点 / 3376 边，所有页 ≤1300 B） |
+| `bun tools/build.mjs` | ✅ 全绿（1621 节点 / 3381 边，所有页 ≤1300 B） |
 | `bun tools/_katexcheck.mjs` | ✅ ，失败 0**（第 28 批新增 3 个 definition 节点及注；历史累计见 git 记录） |
 | `bun tools/_katexcheck-all.mjs` | ✅ 无硬失败；只剩「正文残留 Unicode 记号」**3 种 / 8 处** |
 | `bun tools/doccheck.mjs` | ✅ 25/25（2026-11-06 起也扫 AGENTS.md / HANDOVER.md，提交前自动跑） |
@@ -492,7 +492,7 @@
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
 | 精读覆盖率 | **回执 1540 / 1540（100%）**；本会话逐团深读 **57 团 / 760 条**（v2 §39–§116） | 其余 48 团 / 780 条来自 §19–§59 早期批次；旧的 1051/1502/1527 是按团 id 倒推的估计，不再用 |
-| **skeleton 证明** | **12 节点 / 19 条边**（2026-11-09 第 25 批后；标准 1（eulerchar-genus）、中等 3（schwarz-christoffel / de-rham / paracompact-cech）、研究 8（rado / classification-surfaces / za-analytic / boundary-correspondence / caratheodory-osgood / combinatorial-classification-surfaces / milman-pettis / james）；边数按第 1 批报告口径，图不可查询） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 21 批 PNT 已补；新增 Newman/Carathéodory–Osgood/组合分类三条支撑引理，其中 PNT 闭合、后两条仍 skeleton（skeleton 9→10）；余 10 条；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
+| **skeleton 证明** | **13 节点 / 19 条边**（2026-11-09 第 25 批后；标准 1（eulerchar-genus）、中等 3（schwarz-christoffel / de-rham / paracompact-cech）、研究 8（rado / classification-surfaces / za-analytic / boundary-correspondence / caratheodory-osgood / combinatorial-classification-surfaces / milman-pettis / james）；边数按第 1 批报告口径，图不可查询） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 21 批 PNT 已补；新增 Newman/Carathéodory–Osgood/组合分类三条支撑引理，其中 PNT 闭合、后两条仍 skeleton（skeleton 9→10）；余 10 条；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门
@@ -663,7 +663,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 |---|---|
 | **本交接书** | `H:\MathGalaxy\HANDOVER.md`（本文件，唯一） |
 | **仓库规矩**（进目录自动注入） | `H:\MathGalaxy\AGENTS.md` |
-| **审读报告真源**（14072 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§136 各批 |
+| **审读报告真源**（14314 行，本地） | `_audit/问题清单-v2-2026-11-03.md` → §24 待修总表 · §58.5 硬错表 · §32–§140 各批 |
 | 审读回执 | `_audit/_proofs/out-*.txt`（`P-*.txt` 是对应提示词） |
 | 用户手写笔记原件 | `_pdf/`（167 MB）· 转写 `_pdf/凝聚态数学笔记-转写.md` |
 | 散文式规则 | `CONTRIBUTING.md`（人看的）· `README.md` · `policy.md` |

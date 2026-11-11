@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T10:41:45.798Z",
+ "generated": "2026-11-11T11:01:39.205Z",
  "terms": 76,
  "missing": [
   {
@@ -411,6 +411,15 @@
    "gap": 5
   },
   {
+   "node": "prop.eulerchar-nonorientable",
+   "nodeLabel": "Euler 示性数与不可定向亏格",
+   "nodeLayer": 30,
+   "def": "def.nonorientable-genus",
+   "defLabel": "不可定向亏格",
+   "defLayer": 35,
+   "gap": 5
+  },
+  {
    "node": "prop.adjoint-additive",
    "nodeLabel": "伴随函子都加法",
    "nodeLayer": 10,
@@ -435,15 +444,6 @@
    "def": "def.smooth-manifold",
    "defLabel": "光滑流形",
    "defLayer": 22,
-   "gap": 4
-  },
-  {
-   "node": "prop.eulerchar-nonorientable",
-   "nodeLabel": "Euler 示性数与不可定向亏格",
-   "nodeLayer": 31,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 35,
    "gap": 4
   },
   {
@@ -643,18 +643,9 @@
    "defLabel": "特征多项式",
    "defLayer": 16,
    "gap": 0
-  },
-  {
-   "node": "thm.riesz-perfect-pairing",
-   "nodeLabel": "Riesz 表示的配对版",
-   "nodeLayer": 18,
-   "def": "def.hilbert-space",
-   "defLabel": "Hilbert 空间",
-   "defLayer": 18,
-   "gap": 0
   }
  ],
- "noEdgeAll": 67,
+ "noEdgeAll": 66,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.form-on-manifold",

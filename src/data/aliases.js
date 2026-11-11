@@ -41,7 +41,7 @@ MG.aliases = {
 
     /* ZFC 公理系统 */
     { id: 'ax.ext', aka: ['外延', 'extensionality', '集合相等'] },
-    { id: 'ax.pair', aka: ['配对', 'pairing', '无序对'] },
+    { id: 'ax.pair', aka: ['无序对'] },
     { id: 'ax.union', aka: ['并集公理', 'union', '求和集'] },
     { id: 'ax.inf', aka: ['无穷', 'infinity', '归纳集'] },
     { id: 'ax.found', en: 'foundation', aka: ['正则', '基础公理', 'foundation', 'regularity', '无循环'] },
@@ -1535,7 +1535,7 @@ MG.aliases = {
     { id: 'def.metric-continuity', en: 'continuity between metric spaces', aka: ['度量连续', '度量空间之间的连续', 'ε-δ 连续'] },
     { id: 'def.real-metric-space', en: 'real line as a metric space', aka: ['实数度量空间', 'R 的度量', '实数直线'] },
     { id: 'def.uniformly-equicontinuous', en: 'uniform equicontinuity', aka: ['一致等度连续', '等度连续（一致）'] },
-    { id: 'def.perfect-pairing', en: 'perfect pairing', aka: ['完美配对', '完美对偶'] },
+    { id: 'def.perfect-pairing', en: 'perfect pairing', aka: ['完美配对', '完美对偶', '配对', 'pairing', '对偶配对'] },
     { id: 'thm.riesz-perfect-pairing', en: 'Riesz representation via perfect pairings', aka: ['完美配对 Riesz 定理', '统一 Riesz 表示'] },
     { id: 'def.uniformly-convex', en: 'uniformly convex space', aka: ['一致凸', '一致凸空间'] },
     { id: 'def.strictly-convex', en: 'strictly convex space', aka: ['严格凸', '严格凸空间'] },

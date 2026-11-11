@@ -1345,6 +1345,264 @@ MG.i18nStatements = {
       },
     },
 
+    'thm.noself': {
+      statement: {
+        en: "$$\\forall A ( A \\notin A )$$\n\nMore generally, the Axiom of Foundation rules out every finite $\\in$-cycle:\n\n$$A_0 \\ni  A_1 \\ni  \\cdots \\ni  A_n = A_0$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#add1d770',
+      },
+      notes: {
+        en: "This theorem shows that the set $R = \\{ x : x \\notin x \\}$ from Russell's paradox cannot exist — otherwise $R \\in R$ and $R \\notin R$ would both hold.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a5d74868',
+      },
+    },
 
+    'thm.empty': {
+      statement: {
+        en: "There exists a set with no elements:\n\n$$\\exists B \\forall x ( x \\notin B )$$\n\nBy the Axiom of Extensionality such a $B$ is unique; it is written $\\emptyset$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2debfc32',
+      },
+      notes: {
+        en: "$\\emptyset$ is the least element for $\\in$ and also for $\\subseteq$: $\\emptyset \\subseteq A$ holds for every $A$.\n\nThe point of this theorem is that **$\\emptyset$ need not be taken as a primitive object**: the Axiom Scheme of Separation already produces it (from any set $A$, take $\\{x \\in A : x \\ne x\\}$). So in ZF the empty set is not an extra assumption.",
+        status: 'draft',
+        basedOn: 'v0.9.3#acd90126',
+      },
+    },
+
+    'thm.product': {
+      statement: {
+        en: "Given any two sets, the collection of all ordered pairs is again a set:\n\n$$\\forall A \\forall B \\exists C \\forall z [ z \\in C \\leftrightarrow  \\exists a \\in A, \\exists b \\in B, z = (a, b) ]$$\n\nIt is written $A \\times B = \\{ (a, b) : a \\in A, b \\in B \\}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f405d7a0',
+      },
+      notes: {
+        en: "It is the prerequisite for defining relations and functions as sets: without $A \\times B$ there is no such thing as $R \\subseteq A \\times B$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a6658787',
+      },
+    },
+
+    'def.empty': {
+      statement: {
+        en: "The **empty set** is the set with no elements, written $\\emptyset$:\n\n$$\\emptyset := \\{ x : x \\ne x \\}$$\n\n\"$x \\ne x$\" fails for every $x$, so this set has no elements at all. It is a **primitive object of the language**, on the same level as the Axiom of Extensionality and first-order logic.\n\nHence for every set $A$: $\\emptyset \\subseteq A$ (vacuously true), and $\\emptyset$ is the least element under $\\subseteq$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e1460b5c',
+      },
+      notes: {
+        en: "Conditions such as \"$\\emptyset \\in \\mathcal{A}$\" and \"$\\emptyset \\notin F$\" are everywhere in measure theory (the Axiom of Choice requires the family to contain no empty set; $\\mu(\\emptyset) = 0$ is the first axiom of a measure).\n\nThe Axiom of Extensionality supplies **at most** one such set;\n\nthe half that says one **exists** is a separate result — see \"the empty set exists\".\n\nDistinguish $\\emptyset$ from $\\{\\emptyset\\}$: the latter has one element (namely the empty set), so $\\{\\emptyset\\} \\ne \\emptyset$.\n\n\n$\\emptyset \\subseteq A$ is **vacuously true**: there is no $x \\in \\emptyset$ to check.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9a3aa702',
+      },
+    },
+
+    'def.power-set': {
+      statement: {
+        en: "Let $X$ be a set. The **power set** of $X$ is the set whose elements are all subsets of $X$:\n\n$$\\mathcal{P}(X) := \\{ A : A \\subseteq X \\}$$\n\nThus $A \\in \\mathcal{P}(X) \\iff A \\subseteq X$, and every element of $\\mathcal{P}(X)$ is itself a set.\n\nBy the **Axiom of Power Set**, $\\mathcal{P}(X)$ is indeed a set; by Extensionality it is unique.\n\nIn the finite case the number of elements is given by $\\#X = n \\implies \\#\\mathcal{P}(X) = 2^{n}$ (each element is either taken or not).",
+        status: 'draft',
+        basedOn: 'v0.9.3#46639831',
+      },
+      notes: {
+        en: "The power set is the step that **turns a property into an object**: to speak about \"all subsets of $X$\" as a thing in itself (rather than one subset at a time) one needs the power set.\n\n$\\mathcal{P}(X)$ is also the stage for several important constructions:\n- Outer measures are defined on **all subsets**: $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$;\n\n\n- Rings, $\\sigma$-algebras and monotone classes are each a family of subsets of $X$, i.e. a subfamily of $\\mathcal{P}(X)$;\n\n\n- The generated $\\sigma$-algebra is the intersection of all $\\sigma$-algebras containing $\\mathcal{E}$, and $\\mathcal{P}(X)$ guarantees that this intersection is non-empty.\n\n$\\emptyset \\in \\mathcal{P}(X)$ and $X \\in \\mathcal{P}(X)$ for every $X$ — a power set is never empty.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e4c969dd',
+      },
+    },
+
+    'def.ordinal': {
+      statement: {
+        en: "A set $\\alpha$ is an **ordinal** (a von Neumann ordinal) iff:\n\n1. **$\\alpha$ is transitive**: $\\forall x \\in \\alpha,\\; x \\subseteq \\alpha$ (an element of an element is again an element);\n2. **$\\in$ well-orders $\\alpha$**: restricted to $\\alpha$, $\\in$ makes $\\alpha$ a **well-ordered set** — that is, for any $x, y \\in \\alpha$ exactly one of $x \\in y$, $x = y$, $y \\in x$ holds, and every non-empty subset of $\\alpha$ has an $\\in$-least element.\n\nBy transitivity, **every element of $\\alpha$ is itself an ordinal**. Conventions: $0 := \\emptyset$, the **successor ordinal** $\\alpha + 1 := \\alpha \\cup \\{ \\alpha \\}$; a non-zero ordinal with no greatest element is a **limit ordinal**, and $\\omega$ is the least limit ordinal. The class of all ordinals is written $\\mathrm{On}$.\n\nThe first few are $\\emptyset,\\ \\{ \\emptyset \\},\\ \\{ \\emptyset, \\{ \\emptyset \\} \\},\\ \\ldots$, that is $0, 1, 2, \\ldots$;\n\nthen come $\\omega,\\ \\omega + 1,\\ \\omega + 2,\\ \\ldots,\\ \\omega + \\omega,\\ \\ldots$",
+        status: 'draft',
+        basedOn: 'v0.9.3#42c21521',
+      },
+      notes: {
+        en: "**The format is still \"set + relation + axioms\"**: ordinals are not objects out of nowhere — a **transitive set** together with the **ready-made** relation $\\in$ determines an ordinal. To decide whether a set is an ordinal, check these two clauses.\n\n**Why not take order types as the objects** — this is the most important step in this pack: an order type is an isomorphism class, and there are more order types of well-orders than fit into any set, so they cannot be collected (see \"the ordinals do not form a set\"). Ordinals avoid this: each order type is given a **concrete representative**, namely a transitive well-ordered set. Comparing order types then becomes comparing $\\in$, which can be done outright.\n\n**$\\alpha \\in \\beta$ and $\\alpha < \\beta$ are the same thing**: on ordinals, $\\in$ is the order. Writing $\\alpha < \\beta$ really uses $\\in$ underneath.\n\nOrdinals are not just \"a generalization of $\\mathbb{N}$\". The ordinals after $\\omega$ get longer and longer, but their **size** (cardinality) can stay at $\\aleph_0$ — for ordinals, \"longer\" and \"larger\" are two different things.\n\n\n\n**Which assumptions each direction uses** (the definition of an ordinal needs no Choice; the existence of a representative for each order type is a separate construction):\n- being a von Neumann ordinal $\\iff$ transitive and well-ordered by membership: both directions are unfolding the definition, with no compactness, no Choice and no metric; the convention $\\alpha<\\beta\\iff\\alpha\\in\\beta$ is also a notational definition.\n- elements of an ordinal are ordinals: inherit the well-order and use transitivity of membership on the ambient set to show the element is transitive; a general transitive set does not by itself have transitive elements.\n- well-ordered set $\\implies$ existence of a unique ordinal of the same order type: build it by well-founded recursion and collect the image with Replacement; this is not an unfolding of the definition, and it does not need the Choice that well-orders an arbitrary set.\n- transitivity cannot be dropped: the members of $\\{\\{\\emptyset\\}\\}$ are well-ordered by membership as a single point, yet the set is not transitive; the well-order condition cannot be dropped either: $\\{0,1,\\{1\\}\\}$ is transitive, but $0$ and $\\{1\\}$ are incomparable under membership.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b7e8d4cc',
+      },
+    },
+
+    'thm.ordinal-trichotomy': {
+      statement: {
+        en: "For any two ordinals $\\alpha, \\beta$, **exactly one** of the following holds:\n\n$$\\alpha \\in \\beta, \\qquad \\alpha = \\beta, \\qquad \\beta \\in \\alpha$$\n\nIn particular, $\\in$ is a **well-order** on the class of all ordinals: every non-empty family of ordinals has a least element.",
+        status: 'draft',
+        basedOn: 'v0.9.3#191c1080',
+      },
+      notes: {
+        en: "Trichotomy lets ordinals serve as **coordinates**: the order types of any two **well-ordered sets** are comparable, and **no Choice is needed**.\n\nThis is a completely different statement from \"any two **cardinals** are comparable\", which does need AC (see \"the comparability theorem for cardinals\"). The difference is that an ordinal **carries** a well-order — namely $\\in$ — whereas a general set has no a priori well-order, and finding one for it is exactly the content of the well-ordering theorem ($\\iff$ the Axiom of Choice).",
+        status: 'draft',
+        basedOn: 'v0.9.3#4396eafd',
+      },
+    },
+
+    'thm.burali-forti': {
+      statement: {
+        en: "The class $\\mathrm{On}$ of all ordinals **is not a set**: there is no set whose elements are exactly all the ordinals.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e28f5e4e',
+      },
+      notes: {
+        en: "The proof is one line: if $\\mathrm{On}$ were a set, it would be **transitive** (elements of ordinals are ordinals) and $\\in$ would **well-order** it (trichotomy gives comparability), so $\\mathrm{On}$ would itself be an ordinal, hence $\\mathrm{On} \\in \\mathrm{On}$ — contradicting the fact that no ordinal is an element of itself ($\\in$ is a well-order on ordinals, which forbids $\\in$-cycles).\n\nThis is exactly the other face of **Hartogs' theorem**: there are too many ordinals to fit into any set. \"There is an ordinal that does not inject into $X$\" and \"the ordinals do not form a set\" say the same thing.\n\nRelation to Russell's paradox: both contradictions come from treating a certain \"totality\" as a set. In ZFC they are resolved the same way — that totality is not a set, so the Axiom Scheme of Separation cannot even be applied to it.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cf126a32',
+      },
+    },
+
+    'def.equinumerous': {
+      statement: {
+        en: "Sets $A$ and $B$ are **equinumerous** (written $\\#A = \\#B$ or $A \\approx B$) iff there is a **bijection**\n\n$$f : A \\to B$$\n\nEquinumerosity is an equivalence relation on sets: reflexive (identity map), symmetric (inverse map), transitive (composition).",
+        status: 'draft',
+        basedOn: 'v0.9.3#8c01f4ed',
+      },
+      notes: {
+        en: "This is the **right way to compare sizes**: instead of counting (an infinite set cannot be counted out), ask whether the two sets can be paired off one-to-one.\n\nClassical results:\n- $\\mathbb{N}$ is equinumerous with $\\mathbb{Q}$ and with $\\mathbb{N} \\times \\mathbb{N}$ (both are countable);\n\n\n- $(0, 1)$ is equinumerous with $\\mathbb{R}$ (via something like $x \\mapsto \\tan \\pi(x - 1/2)$);\n\n\n- $\\mathbb{N}$ and $\\mathbb{R}$ are **not** equinumerous (Cantor's theorem).\n\n$A \\subseteq B$ has nothing to do with equinumerosity: $\\mathbb{N} \\subset \\mathbb{Q}$ yet the two are equinumerous — this is precisely the dividing line between infinite and finite sets (Dedekind's characterization: equinumerous with a proper subset $\\iff$ infinite).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e9fe1f5a',
+      },
+    },
+
+    'thm.cantor': {
+      statement: {
+        en: "For every set $A$:\n\n$$\\#A < \\#\\mathcal{P}(A)$$\n\nThat is, there is **no** surjection from $A$ onto $\\mathcal{P}(A)$ (and hence no bijection either), while $a \\mapsto \\{a\\}$ is an injection.",
+        status: 'draft',
+        basedOn: 'v0.9.3#195c290e',
+      },
+      notes: {
+        en: "Corollary: **there is no largest cardinal** — from any set, taking the power set gives a larger one.\n\nHence\n\n$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$\n\nTaking $A = \\mathbb{N}$ gives \"$\\mathbb{R}$ is uncountable\" ($\\#\\mathbb{R} = 2^{\\aleph_0}$).\n\nThe proof uses the **diagonal method** (see the proof on the edge): the \"diagonal set\" $D = \\{ a \\in A : a \\notin f(a) \\}$ is not in the image of $f$.\n\nThis is the most theorem-producing construction in the history of mathematics; Cantor–Bernstein, Gödel's incompleteness theorem and the halting problem all use it.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c411105f',
+      },
+    },
+
+    'thm.schroder-bernstein': {
+      statement: {
+        en: "If there are injections $f : A \\to B$ and $g : B \\to A$, then there is a **bijection** $A \\to B$; that is,\n\n$$\\#A \\le \\#B \\ \\wedge \\ \\#B \\le \\#A \\implies \\#A = \\#B$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#c2d4190e',
+      },
+      notes: {
+        en: "Its value is **convenience**: to prove that two sets are equinumerous it suffices to build one injection in each direction; the bijection itself need not be written down. (Compare the other route to Cantor's theorem — an injection but no surjection — which is the dual statement.)\n\nIt **does not need** the Axiom of Choice: the proof is constructive (see the proof on the edge), which is what makes it more usable than \"any two cardinals are comparable\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#2c2323bf',
+      },
+    },
+
+    'def.choicefn': {
+      statement: {
+        en: "Let $F$ be a family of sets with $\\emptyset \\notin F$.\n\nA function $f$ is a **choice function** for $F$ iff **both** of the following hold:\n\n(i) $f$ is a function and $\\operatorname{dom} f = F$;\n(ii) $\\forall X \\in F$, $f(X) \\in X$.\n\nThat is, $f$ picks one element from each member of $F$.\n\nThe Axiom of Choice can therefore be stated concisely as: **every family $F$ with $\\emptyset \\notin F$ has a choice function**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f5549253',
+      },
+      notes: {
+        en: "If $F$ is finite, one can pick the elements one by one, and no AC is needed. The difficulty lies only with infinite families, especially uncountable ones.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6d9a6efe',
+      },
+    },
+
+    'lem.tukey': {
+      statement: {
+        en: "Let $\\mathcal{A}$ be a **non-empty family of sets with finite character**. Then $(\\mathcal{A}, \\subseteq )$ has a maximal element.\n\nThat is, there is $A \\in \\mathcal{A}$ such that no $B \\in \\mathcal{A}$ satisfies $A \\subset B$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0fcde180',
+      },
+      notes: {
+        en: "The advantage of Tukey's lemma is that it **saves verification**: as soon as the family in question has finite character, the tedious check that \"every chain has an upper bound\" can be skipped.\n\nExample: the family of linearly independent sets has finite character ($X$ is linearly independent $\\iff$ every finite subset of $X$ is linearly independent), so \"every linearly independent set extends to a maximal one\" holds automatically.\n\nHistory: Teichmüller (1939) and Tukey (1940) stated it independently.",
+        status: 'draft',
+        basedOn: 'v0.9.3#89317279',
+      },
+    },
+
+    'thm.compactness': {
+      statement: {
+        en: "Let $\\Gamma$ be a set of first-order formulas. If **every finite subset** of $\\Gamma$ has a model, then $\\Gamma$ itself has a model.\n\nEquivalently: if $\\Gamma \\vDash \\varphi$, then there is a **finite** $\\Gamma_{0} \\subseteq \\Gamma$ with $\\Gamma_{0} \\vDash \\varphi$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#39f5f6d3',
+      },
+      notes: {
+        en: "It is a **one-sentence corollary**: by the completeness theorem, having a model $\\iff$ being consistent; and inconsistency is witnessed by a **finite** proof, which uses only finitely many formulas of $\\Gamma$. So inconsistency is always finitely visible, and taking the contrapositive gives compactness.\n\n**Second proof** (avoiding completeness): use ultraproducts / Łoś's theorem — take the directed family of finite subsets as the index set, choose a model of each finite subset, and the ultraproduct is a model of the whole theory. Ultraproducts are not developed here, so this is only a remark.\n\nIt is **the reason first-order logic cannot express finiteness**: let $\\Gamma$ consist of infinitely many sentences saying \"field + characteristic 0 + finite\". Every finite subset is satisfiable in some finite field, so the whole of $\\Gamma$ has a model — an **infinite** \"finite field\". Likewise the standard model of the natural numbers cannot be characterised by first-order axioms: non-standard analysis is a direct product of this theorem.\n\n**The resemblance to topological compactness (`def.compact`) is only in the name**: that one says \"every open cover has a finite subcover\", this one says \"finitely satisfiable $\\implies$ satisfiable\". The two are connected only by an **analogy edge**, not by a dependence of theorems.",
+        status: 'draft',
+        basedOn: 'v0.9.3#86ad03b3',
+      },
+    },
+
+    'def.topology': {
+      statement: {
+        en: "Let $X$ be a set and $\\mathcal{T} \\subseteq \\mathcal{P}(X)$ a family of subsets of $X$. Then $(X, \\mathcal{T})$ is a **topological space** and $\\mathcal{T}$ is a **topology** on $X$ iff:\n\n1. **Both ends**: $\\emptyset \\in \\mathcal{T}$ and $X \\in \\mathcal{T}$;\n2. **Closed under arbitrary unions**: $\\{ U_i \\}_{i \\in I} \\subseteq \\mathcal{T} \\implies \\bigcup_{i \\in I} U_i \\in \\mathcal{T}$ ($I$ is arbitrary, possibly uncountable);\n3. **Closed under finite intersections**: $U, V \\in \\mathcal{T} \\implies U \\cap V \\in \\mathcal{T}$.\n\nThe members of $\\mathcal{T}$ are called **open sets**, and their complements **closed sets**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b6563e95',
+      },
+      notes: {
+        en: "The three axioms abstract the properties of open intervals on the real line: a union of arbitrarily many open sets is open, but only **finitely** many open sets are guaranteed to have an open intersection ($\\bigcap_n (-1/n, 1/n) = \\{0\\}$ is not open).\n\nThe advantage of this language is that **only the question \"which sets count as open\" remains**, so distances, metrics and coordinates can all be thrown away — continuity, compactness, connectedness and limits can still be expressed.\n\nA set can carry several different topologies;\n\nthey are compared as \"finer / coarser\", not by size.\n\n\n\n**Which assumptions each direction uses** (a topology is defined by axioms and imposes no metric or separation requirement):\n- topology $\\iff$ the three listed axioms: both directions unfold the definition and need no compactness, Choice or metric.\n- closure under arbitrary unions $\\implies\\emptyset$ is open requires allowing the empty index family; closure under binary intersections $\\implies$ closure under non-empty finite intersections follows by induction, while the empty intersection being $X$ still needs the convention that $X$ is open.\n- the open-set axioms $\\iff$ the family of complements satisfies arbitrary intersections and finite unions: use De Morgan's identities; no extra topological assumption is needed.\n- finite intersections cannot be upgraded to arbitrary ones: in the usual topology on the reals $\\bigcap_{n\\ge1}(-1/n,1/n)=\\{0\\}$ is not open; nor is a topology automatically Hausdorff — the indiscrete topology on a set with more than one point is a counterexample.",
+        status: 'draft',
+        basedOn: 'v0.9.3#677ccbc2',
+      },
+    },
+
+    'def.closed-set': {
+      statement: {
+        en: "Let $(X, \\mathcal{T})$ be a topological space.\n\n- $F \\subseteq X$ is **closed**: $X \\setminus F$ is open;\n- the **closure** $\\overline{A}$ of $A \\subseteq X$: the intersection of all closed sets containing $A$ (the smallest such closed set);\n- $A$ is **dense**: $\\overline{A} = X$;\n- a **neighbourhood** of $x$: any open set containing $x$ (or any set containing such an open set).\n\nBy De Morgan's laws, the three axioms for open sets become, for closed sets: $\\emptyset, X$ are closed; **arbitrary** intersections are closed; **finite** unions are closed.",
+        status: 'draft',
+        basedOn: 'v0.9.3#466a9d0a',
+      },
+      notes: {
+        en: "Open and closed are not opposites: $\\emptyset$ and $X$ are both open and closed; in $\\mathbb{R}$, $[0, 1]$ is closed while $[0, 1)$ is neither open nor closed.\n\nThe closure \"collects all the limit points\": in a metric space, $\\overline{A}$ is exactly the set of limits of sequences in $A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a5e40953',
+      },
+    },
+
+    'def.compact': {
+      statement: {
+        en: "Let $X$ be a **topological space**. $X$ is **compact** iff every **open cover** has a finite subcover: if a family $\\{U_{i}\\}_{i \\in I}$ satisfies \"each $U_{i}$ is open\" and $X = \\bigcup_{i \\in I} U_{i}$, then there are finitely many indices with\n\n$$X = \\bigcup_{k=1}^{n} U_{i_{k}}.$$\n\nA subset $K \\subseteq X$ is **compact** if $K$ with the subspace topology is a compact space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d861e219',
+      },
+      notes: {
+        en: "**Only open sets are used**: the definition mentions no metric and no $\\mathbb{R}^{n}$ — compactness is a purely topological property, so it is preserved by continuous maps and invariant under homeomorphisms (`def.continuous-map` / `def.homeomorphism`).\n\n**Equivalent form (closed sets)**: every family of closed sets with the finite intersection property has non-empty intersection — that is, \"$\\{F_{i}\\}$ closed and every finite subfamily has non-empty intersection $\\implies$ the whole family has non-empty intersection\". This form is the one most often used in proofs by contradiction.\n\n**In metric spaces**: on a metric space, \"compact $\\iff$ sequentially compact $\\iff$ complete + totally bounded\" (`thm.metric-compact-equiv`) — that is a **theorem** (provable only with the metric), not part of the definition. In a general topological space **compactness and sequential compactness imply neither of the other**: $[0, \\omega_{1})$ with the order topology is sequentially compact but not compact (the cover $\\{[0, \\alpha) : \\alpha < \\omega_{1}\\}$ has no finite subcover); $\\{0,1\\}^{\\mathcal{P}(\\mathbb{N})}$ is compact by Tychonoff but not sequentially compact (take $x_{n}(A) = 1 \\iff n \\in A$; every subsequence fails to converge at the coordinate $A = \\{n_{2k}\\}$).\n\nExamples: $[a, b] \\subseteq \\mathbb{R}$ is compact (Heine–Borel, `cor.heine-borel`); $\\mathbb{R}$ is not compact (the cover $\\{(-n, n)\\}$ has no finite subcover); $(0, 1]$ is not compact. Standard examples in general topology are in `def.chaus` and `thm.tykhonov` (arbitrary products remain compact).",
+        status: 'draft',
+        basedOn: 'v0.9.3#c4fa4371',
+      },
+    },
+
+    'def.connected': {
+      statement: {
+        en: "A topological space $X$ is **disconnected** if it can be written as the union of two disjoint non-empty open sets, $X = U \\sqcup V$; otherwise it is **connected**.\n\nFor a fixed $x \\in X$, the **connected component** $C(x)$ of $x$ is the union of all connected subsets containing $x$ — it is itself connected, and it is maximal.",
+        status: 'draft',
+        basedOn: 'v0.9.3#176a8df6',
+      },
+      notes: {
+        en: "The connected components form a partition of $X$, and each component is closed. Subsets that are **both open and closed** (called **clopen** sets) are the other face of connectedness: $X$ is connected iff its only clopen subsets are $\\emptyset$ and $X$ itself — so \"is there a non-trivial clopen set?\" is the same question as \"can the space be split?\".\n\n**Four equivalent formulations; the cost lies in \"taking complements\" and \"continuous images\"**:\n\n- connected $\\iff$ **not expressible as the union of two disjoint non-empty open sets**: this is the definition.\n- connected $\\iff$ **no non-trivial clopen subsets**: $(\\implies)$ use $V = X \\setminus U$, which is closed; $(\\Leftarrow)$ one line. **This step uses only the duality of open and closed sets**.\n- connected $\\iff$ **every continuous map $X \\to \\{0,1\\}$ (discrete two points) is constant**: $(\\implies)$ the image is connected and $\\{0,1\\}$ is not; $(\\Leftarrow)$ apply the previous item to a characteristic function. This turns connectedness into \"there is no surjection onto two points\", the standard form in the internal language.\n- **the union of a family of connected subsets with a common point is connected** (pairwise intersecting suffices, then induct to arbitrarily many; to avoid AC take the subfamily containing the fixed point). Conversely, **the union of all connected components is $X$, which of course need not be connected** — in the discrete two-point space the union of the two singleton components is $X$, and it is disconnected.\n\n**Connected $\\ne$ path-connected**: path-connected $\\implies$ connected, but not conversely (the topologist's sine curve). The gap between the two is exactly the gap between \"$\\pi_{0}$ and path $\\pi_{0}$\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#3e6e9a27',
+      },
+    },
+
+    'def.clopen': {
+      statement: {
+        en: "A subset $K$ of $X$ is **clopen** if it is both open and closed. Equivalently, $K$ and its complement $K^{c}$ are both open, i.e. $X = K \\sqcup K^{c}$ is a union of disjoint non-empty open sets (when $K$ is non-trivial).",
+        status: 'draft',
+        basedOn: 'v0.9.3#48e208de',
+      },
+      notes: {
+        en: "Clopen sets are a **rare species** in a general topological space: in connected spaces such as $\\mathbb{R}$ or $[0,1]$ there are only $\\emptyset$ and the whole space. **The more clopen sets, the more fragmented the space** — totally disconnected means \"every connected component is a single point\"; \"clopen sets separate any two points\" (= zero-dimensional) is equivalent to that only under **compact Hausdorff**; and in a profinite space \"the clopen sets form a base\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#0b77ac0a',
+      },
+    },
+
+    'def.hausdorff': {
+      statement: {
+        en: "A topological space $X$ is a **Hausdorff space** (or a **$T_{2}$ space**) if any two distinct points **can be separated by open sets**:\n\n$$\\forall x \\ne y \\in X,\\ \\exists U \\ni x,\\ V \\ni y\\ \\text{open}:\\quad U \\cap V = \\emptyset$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#861c3b52',
+      },
+      notes: {
+        en: "In one phrase: **limits are unique**. A sequence that converges can converge to only one point — this is the kind of space analysis tacitly assumes.\n\nA stronger separation property is **normal** ($T_{4}$): any two disjoint closed sets can be separated by open sets. Every compact Hausdorff space is normal (the proof uses compactness twice, building open covers and passing to finite subcovers).\n\n$T_{3}$ and $T_{3.5}$ sit in between: $T_{3}$ says \"a point and a closed set not containing it can be separated by open sets\", and $T_{3.5}$ upgrades this to separation by **continuous functions** (the statement that \"there are enough continuous functions\").\n\nThe injectivity of the Stone–Čech compactification requires exactly $T_{3.5}$.\n\n**Convention.** The $T$-number names the bare property; the adjective adds $T_{1}$: \"regular\" = $T_{3} + T_{1}$ (`def.regular-space`), \"completely regular\" = $T_{3.5} + T_{1}$ (`def.completely-regular-space`).\n\nBare $T_{3}$ does not imply $T_{1}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#12672068',
+      },
+    },
   },
 };
