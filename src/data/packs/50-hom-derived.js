@@ -172,7 +172,8 @@ window.MG = window.MG || {};
         '⭐ **动机**：$F$ 左正合时，短正合列 $0 \\to M\' \\to M \\to M\'\' \\to 0$ 只给出 $0 \\to FM\' \\to FM \\to FM\'\'$ —— **右边断掉了**。右导出函子 $R^{1}F(M\'\')$ 正好补上那个断口，把长正合列接起来。',
         '**对偶**：左导出函子 $LF$ 用**投射**消解，补的是「右半段断掉」的情形（$M \\otimes_{A} -$、$\\operatorname{Tor}$）。',
       ].join('\n\n'),
-      refs: ['Le Stum, Definition 7.2.7'],
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 2 §2.5','Le Stum, Definition 7.2.7'],
     },
 
     {
@@ -228,7 +229,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '⭐ **两种算法**：$\\operatorname{Ext}^{n} = $ 「导出范畴里的 Hom」（这条定义）$ = R^{n}\\operatorname{Hom}$（用内射消解算）。两者一致 —— 见下一条。',
       ].join('\n\n'),
-      refs: ['Le Stum, Definition 7.2.9'],
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 3','Le Stum, Definition 7.2.9'],
     },
 
     {
@@ -346,7 +348,8 @@ window.MG = window.MG || {};
         '⭐ **怎么把它变成一个普通复形**：取**全复形** $K^{n} := \\bigoplus_{p+q=n} K^{p,q}$（要求该直和存在：一般 $\\mathcal{A}$ 未必有可数直和 —— 有限维 $k$-向量空间范畴里每条对角线都可以有无穷多个非零项，此时全复形不存在；或用「每条对角线只有有限多个非零项」的版本），微分 $d + d\'$（带符号）。于是双复形的同调与「逐行算完再逐列算」的关系，正是给出谱序列的地方。',
         '**典型来源**：把复形作内射消解时自然会得到双复形（$I^{p,q}$ 里 $p$ 是原复形的次数、$q$ 是消解的次数）。**Grothendieck 谱序列**就是从它来的。',
       ].join('\n\n'),
-      refs: ['Le Stum, Definition 7.2.17'],
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 5 §5.6','Le Stum, Definition 7.2.17'],
     },
 
     {

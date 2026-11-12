@@ -715,9 +715,8 @@ MG.i18nStatements = {
         "Let $X$ be a metric space with metric $d$. Then the following three conditions are **equivalent**:\n\n" +
         "- (a) $X$ is **compact**: every open cover has a finite subcover;\n" +
         "- (b) $X$ is **sequentially compact**: every sequence has a subsequence converging in $X$;\n" +
-        "- (c) $X$ is **complete and totally bounded**.\n\n" +
-        "That is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded.",
-        status: 'reviewed', basedOn: 'v0.9.3#b828d710', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        "- (c) $X$ is **complete and totally bounded**.",
+        status: 'reviewed', basedOn: 'v0.9.3#c4151627', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -1612,9 +1611,9 @@ MG.i18nStatements = {
         basedOn: 'v0.9.3#c681d9cf',
       },
       notes: {
-        en: "**The hierarchy of separation axioms** (each step strengthens the previous one):\n\n- $T_{1}$: singletons are closed;\n- Hausdorff: two points can be separated by open sets;\n- regular: a point and a closed set not containing it can be separated $\\implies$ Hausdorff;\n- **normal**: two disjoint closed sets can be separated $\\implies$ regular.\n\n**Compact Hausdorff $\\implies$ normal** (the most frequently used consequence of compactness: in a compact space two disjoint closed sets can be separated by finitely many pairs of open sets). Hence spaces such as $[0,1]$ and $\\beta I$ are normal — so Urysohn's lemma always applies there.\n\nThe **full proof** runs along two steps, \"compact $\\implies$ paracompact\" plus \"paracompact $+$ Hausdorff $\\implies$ normal\", see `thm.paracompact-hausdorff-normal`; ⚠️ **normality is not hereditary**: a subspace of a normal space need not be normal. This differs from both \"compact\" and \"Hausdorff\".",
+        en: "**The hierarchy of separation axioms** (each step strengthens the previous one):\n\n- $T_{1}$: singletons are closed;\n- Hausdorff: two points can be separated by open sets;\n- regular: a point and a closed set not containing it can be separated $\\implies$ Hausdorff;\n- **normal**: two disjoint closed sets can be separated $\\implies$ regular.\n\n**Compact Hausdorff $\\implies$ normal** (the most frequently used consequence of compactness: in a compact space two disjoint closed sets can be separated by finitely many pairs of open sets). Hence spaces such as $[0,1]$ and $\\beta I$ are normal — so Urysohn's lemma always applies there.\n\nThe **proof** runs along two steps, \"compact $\\implies$ paracompact\" plus \"paracompact $+$ Hausdorff $\\implies$ normal\", see `thm.paracompact-hausdorff-normal`; ⚠️ **normality is not hereditary**: a subspace of a normal space need not be normal. This differs from both \"compact\" and \"Hausdorff\".",
         status: 'draft',
-        basedOn: 'v0.9.3#e97ba26a',
+        basedOn: 'v0.9.3#d4c0d7ca',
       },
     },
 
@@ -1768,7 +1767,7 @@ MG.i18nStatements = {
         basedOn: 'v0.9.3#6309313d',
       },
       notes: {
-        en: "The three conditions come as a package and none can be dropped: keeping only (2) and (3) gives a **$\\sigma$-ring**; weakening (3) to \"finite unions\" gives an **algebra**.\n\nFrom (2) and (3), De Morgan gives closure under **countable intersections** at once: $\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$. Hence finite unions, finite intersections, differences and symmetric differences are all available — the only thing that genuinely goes beyond an algebra is **countability**.\n\n⚠ The direction cannot be reversed: every $\\sigma$-algebra is an algebra, but an algebra need not be a $\\sigma$-algebra.\n\nCounterexample: on $X = \\mathbb{R}$, the family of all finite and cofinite sets is an algebra, while $\\mathbb{N} = \\{1\\} \\cup \\{2\\} \\cup \\{3\\} \\cup \\cdots$ is a union of countably many of its elements and is itself neither finite nor cofinite, so that algebra is not closed under countable unions.\n\nThe \"$\\sigma$\" in the notation means **countable** (from the initial letter of German Summe / French somme); it has nothing to do with the $\\sigma$ of standard deviation.\n\nWhy it is needed: countable additivity of a measure $\\mu (\\bigcup A_{n}) = \\sum \\mu (A_{n})$ requires a domain closed under **countable** operations, otherwise the two sides of the identity do not even live in the same family of sets. The whole construction of measure starts here.\n\n**Of the three axioms only one is really \"hard\"** (the other two can almost be exchanged for each other):\n\n- **Contains the whole set $\\iff$ contains the empty set**: immediate from closure under complements ($\\emptyset = X^{c}$). So writing \"contains $\\emptyset$\" or \"contains $X$\" is equivalent, **provided closure under complements is also present**.\n- **Closed under countable unions $\\iff$ closed under countable intersections**: **use De Morgan twice**: $\\bigcap_{n} A_{n} = \\bigl(\\bigcup_{n} A_{n}^{c}\\bigr)^{c}$. So of \"countable unions\" and \"countable intersections\" only one needs to be assumed — **but it must be paired with closure under complements**; without that neither follows.\n- **\"Countable unions\" cannot be weakened to \"finite unions\"**: finite unions plus complements give an **algebra** (Boolean algebra), not a $\\sigma$-algebra. The difference is substantial: the rationals can be covered in the finite-union algebra of $2^{\\mathbb{R}}$, but the countable union of the singletons $\\{q\\}$ ($= \\mathbb{Q}$) need not be — and all of measure theory needs countable unions.\n- **\"Countable\" cannot be strengthened to \"arbitrary\"**: a $\\sigma$-algebra is **not** closed under arbitrary unions. Counterexample: the Borel $\\sigma$-algebra on $\\mathbb{R}$ is closed under unions of all open sets (the open sets themselves are closed under arbitrary unions), but taking unions over **arbitrary** subfamilies escapes it (every singleton is Borel, yet an arbitrary union of them can be non-measurable, given $2^{\\aleph_{0}}$ of them — constructing a Vitali set needs the axiom of choice).\n\n⚠️ One-line mnemonic: **a $\\sigma$-algebra = \"contains the whole set + closed under complements + closed under countable unions\", and everything else is a consequence of the last two**; while \"complements + finite unions\" is only an algebra, and the gap is not small.",
+        en: "The three conditions come as a package and none can be dropped: keeping only (2) and (3) gives a **$\\sigma$-ring**; weakening (3) to \"finite unions\" gives an **algebra**.\n\nFrom (2) and (3), De Morgan gives closure under **countable intersections** at once: $\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$. Hence finite unions, finite intersections, differences and symmetric differences are all available — the only thing that genuinely goes beyond an algebra is **countability**.\n\n⚠ The direction cannot be reversed: every $\\sigma$-algebra is an algebra, but an algebra need not be a $\\sigma$-algebra.\n\nCounterexample: on $X = \\mathbb{R}$, the family of all finite and cofinite sets is an algebra, while $\\mathbb{N} = \\{1\\} \\cup \\{2\\} \\cup \\{3\\} \\cup \\cdots$ is a union of countably many of its elements and is itself neither finite nor cofinite, so that algebra is not closed under countable unions.\n\nThe \"$\\sigma$\" in the notation means **countable** (from the initial letter of German Summe / French somme); it has nothing to do with the $\\sigma$ of standard deviation.\n\nWhy it is needed: countable additivity of a measure $\\mu (\\bigcup A_{n}) = \\sum \\mu (A_{n})$ requires a domain closed under **countable** operations, otherwise the two sides of the identity do not even live in the same family of sets. The whole construction of measure starts here.\n\n**Of the three axioms only one is really \"hard\"** (the other two can almost be exchanged for each other):\n\n- **Contains the whole set $\\iff$ contains the empty set**: immediate from closure under complements ($\\emptyset = X^{c}$). So writing \"contains $\\emptyset$\" or \"contains $X$\" is equivalent, **provided closure under complements is also present**.\n- **Closed under countable unions $\\iff$ closed under countable intersections**: **use De Morgan twice**: $\\bigcap_{n} A_{n} = \\bigl(\\bigcup_{n} A_{n}^{c}\\bigr)^{c}$. So of \"countable unions\" and \"countable intersections\" only one needs to be assumed — **but it must be paired with closure under complements**; without that neither follows.\n- **\"Countable unions\" cannot be weakened to \"finite unions\"**: finite unions plus complements give an **algebra** (Boolean algebra), not a $\\sigma$-algebra. The difference is substantial: the rationals can be covered in the finite-union algebra of $2^{\\mathbb{R}}$, but the countable union of the singletons $\\{q\\}$ ($= \\mathbb{Q}$) need not be — and all of measure theory needs countable unions.\n- **\"Countable\" cannot be strengthened to \"arbitrary\"**: a $\\sigma$-algebra is **not** closed under arbitrary unions. Counterexample: on $\\mathbb{R}$ the Borel $\\sigma$-algebra is closed under unions of all open sets (the open sets themselves are closed under arbitrary unions), but taking unions over **arbitrary** subfamilies escapes it (every singleton is Borel, yet an arbitrary union of them can be non-measurable, given $2^{\\aleph_{0}}$ of them — constructing a Vitali set needs the axiom of choice).\n\n⚠️ One-line mnemonic: **a $\\sigma$-algebra = \"contains the whole set + closed under complements + closed under countable unions\", and everything else is a consequence of the last two**; while \"complements + finite unions\" is only an algebra, and the gap is not small.",
         status: 'draft',
         basedOn: 'v0.9.3#6901af65',
       },
@@ -1794,7 +1793,7 @@ MG.i18nStatements = {
         basedOn: 'v0.9.3#ea186217',
       },
       notes: {
-        en: "Why **preimages** rather than images: preimages preserve intersections, unions and complements ($f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$, etc.), whereas images lack these good properties. Measurability is therefore a condition pulled back along $f$.\n\nEquivalent formulation (when $Y$ is a topological space and $\\mathcal{N} = \\mathfrak{B}_Y$): $f$ is measurable $\\iff$ the preimage of every open set is measurable.\n\n⚠ \"Measurable on $E$\" is a relative notion: $f$ is measurable on $E$ $\\iff$ $f|_E$ is measurable with respect to the subspace $\\sigma$-algebra $\\mathcal{M}_E$.\n\n**Four characterizations, the cost being \"which family of sets is tested\"**:\n\n- preimages of **open sets** are measurable $\\iff$ preimages of **Borel sets** are measurable: $(\\Leftarrow)$ is clear; $(\\implies)$ uses the fact that preimages preserve $\\sigma$-algebra operations (Borel sets are generated by open sets).\n- $\\iff$ **all level sets $\\{x : f(x) > a\\}$ are measurable** ($a \\in \\mathbb{R}$): **this is the most-used criterion**, since one only has to test a generating family instead of all open sets. ⚠️ Using $\\{f > a\\}$ or $\\{f \\ge a\\}$ both work, **and mixing them is harmless** ($\\{f > a\\} = \\bigcup_{q \\in \\mathbb{Q}, q > a} H_q$, and each $H_q$ may be taken in either form).\n- $\\iff$ **both $f^{+}, f^{-}$ are measurable**: split a real-valued function into positive and negative parts, then handle the non-negative case with $\\{f > a\\}$.\n\n⚠️ **The necessary hypothesis is \"the target carries the Borel $\\sigma$-algebra\"**: measurability on $\\mathbb{R}$ is always relative to some $\\sigma$-algebra; for $\\overline{\\mathbb{R}}$ (including $\\pm\\infty$) **no extra convention is needed**: $\\{f = +\\infty\\} = \\bigcap_n \\{f > n\\}$ and $\\{f = -\\infty\\} = \\bigcap_n \\{f \\le -n\\}$ are automatically measurable from the level sets.\n⚠️ **A composition of measurable functions need not be measurable**: if $f$ is measurable and $g$ is Borel measurable, then $g \\circ f$ is measurable; but if $g$ is merely Lebesgue measurable this can fail — this is why \"Borel measurable\" and \"Lebesgue measurable\" must be distinguished.",
+        en: "Why **preimages** rather than images: preimages preserve intersections, unions and complements ($f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$, etc.), whereas images lack these good properties. Measurability is therefore a condition pulled back.\n\nEquivalent formulation (when $Y$ is a topological space and $\\mathcal{N} = \\mathfrak{B}_Y$): $f$ is measurable $\\iff$ the preimage of every open set is measurable.\n\n⚠ \"Measurable on $E$\" is a relative notion: $f$ is measurable on $E$ $\\iff$ $f|_E$ is measurable with respect to the subspace $\\sigma$-algebra $\\mathcal{M}_E$.\n\n**Four characterizations, the cost being \"which family of sets is tested\"**:\n\n- preimages of **open sets** are measurable $\\iff$ preimages of **Borel sets** are measurable: $(\\Leftarrow)$ is clear; $(\\implies)$ uses the fact that preimages preserve $\\sigma$-algebra operations (Borel sets are generated by open sets).\n- $\\iff$ **all level sets $\\{x : f(x) > a\\}$ are measurable** ($a \\in \\mathbb{R}$): **this is the most-used criterion**, since one only has to test a generating family instead of all open sets. ⚠️ Using $\\{f > a\\}$ or $\\{f \\ge a\\}$ both work, **and mixing them is harmless** ($\\{f > a\\} = \\bigcup_{q \\in \\mathbb{Q}, q > a} H_q$, and each $H_q$ may be taken in either form).\n- $\\iff$ **both $f^{+}, f^{-}$ are measurable**: split a real-valued function into positive and negative parts, then handle the non-negative case with $\\{f > a\\}$.\n\n⚠️ **The necessary hypothesis is \"the target carries the Borel $\\sigma$-algebra\"**: measurability on $\\mathbb{R}$ is always relative to some $\\sigma$-algebra; for $\\overline{\\mathbb{R}}$ (including $\\pm\\infty$) **no extra convention is needed**: $\\{f = +\\infty\\} = \\bigcap_n \\{f > n\\}$ and $\\{f = -\\infty\\} = \\bigcap_n \\{f \\le -n\\}$ are automatically measurable from the level sets.\n⚠️ **A composition of measurable functions need not be measurable**: $f$ measurable and $g$ Borel measurable $\\implies$ $g \\circ f$ measurable; but if $g$ is merely Lebesgue measurable this can fail — this is why \"Borel measurable\" and \"Lebesgue measurable\" must be distinguished.",
         status: 'draft',
         basedOn: 'v0.9.3#2e01c79e',
       },
@@ -1979,6 +1978,1826 @@ MG.i18nStatements = {
         en: "⭐ **The format is \"set + operations + axioms\"**: a field is not an object out of nowhere — one set, two functions and a few identities determine it.\n\nTo decide whether something is a field, check these identities one by one.\n\nNote that the three items above **cite** the two axiom groups of a group directly: the definition of a field is **one layer on top of the definition of a group**, not a fresh enumeration of identities.\n\nConstructions already available:\n- $\\mathbb{Q}$ (rationals): the handiest field;\n\n- $\\mathbb{R}$ (reals): after constructing it from Cauchy sequences, verify that it satisfies these identities (see \"$\\mathbb{R}$ is a complete ordered field\");\n\n- $\\mathbb{Z}$ is **not** a field: $2$ has no multiplicative inverse in it;\n\n$\\mathbb{N}$ is not either: $1 - 2$ is meaningless.\n\n⚠ \"field\" here is not the same as the \"ring\" of measure theory: there a ring is a **ring of sets**, meaning a **family of sets** closed under finite unions and differences — same name, different object.\n\n**Which hypothesis each direction uses** (the compressed form of the field axioms relies on the two groups of group axioms):\n- field $\\iff$ additive abelian group, multiplicative abelian group on non-zero elements, and distributivity: unwinding the definition of this node; the non-zero elements forming a group also makes them non-empty, hence $0\\ne1$.\n- field $\\implies$ division by non-zero elements and no zero divisors: multiplicative inverses give cancellation, and absorption of zero follows from distributivity and additive cancellation; no axiom of choice is needed.\n- non-zero commutative ring with identity in which every non-zero element is invertible $\\implies$ field: verify the group conditions directly; \"non-zero\" cannot be dropped, since the zero ring satisfies the conditions vacuously on non-zero elements yet is not a field.\n- integral domain $\\implies$ field fails in general, e.g. the integers; a finite integral domain does work, since multiplication by a non-zero element is injective and hence bijective on a finite set; finiteness is the key.",
         status: 'draft',
         basedOn: 'v0.9.3#0ef25fcc',
+      },
+    },
+
+    'def.homeomorphism': {
+      statement: {
+        en: "Let $X$ and $Y$ be topological spaces. $f : X \\to Y$ is a **homeomorphism** if and only if\n\n- $f$ is a bijection;\n- both $f$ and $f^{-1}$ are continuous.\n\nIn that case we write $X \\cong Y$ and call the two spaces **homeomorphic**. Homeomorphism is an equivalence relation between topological spaces (identity, inverse and composition all preserve it).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e2bfa0cb',
+      },
+      notes: {
+        en: "⭐ A homeomorphism means \"topologically indistinguishable\": every **topological property** (compactness, connectedness, Hausdorff, closure) is preserved.\n\n⚠ The converse also deserves care: **metric properties change under a homeomorphism**.\n\n$\\mathbb{R}$ is homeomorphic to the open interval $(0, 1)$ ($x \\mapsto \\frac{1}{2} + \\frac{1}{\\pi}\\arctan x$), yet the former is complete and the latter is not — the classic example that completeness is not a topological property, and the dividing line between the \"compact / closed\" and the \"complete / totally bounded\" families of properties in metric spaces.\n\n**Three equivalent formulations, differing in which side (open/closed) is used**:\n\n- definition (bijection + $f$, $f^{-1}$ continuous) $\\iff$ **$f$ is a continuous open bijection** $\\iff$ **$f$ is a continuous closed bijection**: $(\\implies)$ continuity of $f^{-1}$ makes $f$ open; $(\\Leftarrow)$ openness of $f$ makes $f^{-1}$ continuous. **Both steps use only the duality between open and closed sets; no extra hypothesis is needed.**\n- **a continuous bijection need not be a homeomorphism**: extra hypotheses are required, the two most common being \"compact $\\to$ Hausdorff\" (arguments of the `prop.compact-subset-closed` type) and the open mapping theorem (`thm.open-mapping-banach`, a continuous **linear** bijection between Banach spaces). ⚠️ So the incorrect slogan \"homeomorphism = continuous bijection\" is true only in the **compact Hausdorff** and **Banach** settings.\n\n⚠️ A homeomorphism is an **isomorphism** in the category of topological spaces: it preserves every topological property (connectedness, compactness, countability, separation), which is exactly its meaning as an \"equivalence relation\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#0c2e9b57',
+      },
+    },
+
+    'def.metrizable': {
+      statement: {
+        en: "A topological space $(X, \\mathcal{T})$ is called **metrizable** if there is a distance $d$ on $X$ such that the topology induced by $d$ is exactly $\\mathcal{T}$:\n\n$$\\mathcal{T}_{d} = \\mathcal{T},\\qquad \\mathcal{T}_{d} := \\{\\, U \\subseteq X : \\forall x \\in U\\ \\exists r > 0,\\ B_{d}(x, r) \\subseteq U \\,\\}.$$\n\nEquivalently, $X$ is **homeomorphic** to some metric space, i.e. there is a metric compatible with $\\mathcal{T}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dc8b1458',
+      },
+      notes: {
+        en: "**\"There exists a metric\", not \"a metric is specified\"**: the same topology can carry many metrics ($d$ and $\\min(d, 1)$ induce the same topology), so metrizability is a purely topological property, invariant under homeomorphism. \"Complete\", \"bounded\" and \"uniformly continuous\" are not topological properties — they change when the metric is replaced.\n\n⭐ **This is a dividing line for theorems**: a metrizable space automatically acquires Hausdorff, first countability, normality and paracompactness (propositions in this cluster), so every tool available on metric spaces applies. Conversely, second countability $+$ regularity suffices (Urysohn's theorem), and a weaker sufficient condition is a $\\sigma$-locally finite base (Nagata–Smirnov).\n\n⚠️ Not every topological space is metrizable: an uncountable discrete space is metrizable (discrete metric) yet not second countable, while the Sorgenfrey line (lower-limit topology) is normal, separable and first countable but not second countable, hence **not** metrizable.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e0cea3b6',
+      },
+    },
+
+    'thm.tykhonov': {
+      statement: {
+        en: "The **product** of any family of compact spaces (with the product topology) is again compact — for any number of factors, including uncountably many.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c541f98f',
+      },
+      notes: {
+        en: "**Proof (Alexander's subbase lemma + the axiom of choice).** Write $X = \\prod_{i\\in I} X_{i}$, with projections $p_{i} : X\\to X_{i}$. Take the **subbase**\n$$\\mathcal{S} := \\{\\, p_{i}^{-1}(U_{i}) \\;:\\; i\\in I,\\ U_{i}\\subseteq X_{i}\\ \\text{open} \\,\\}.$$\n**Alexander's subbase lemma**: a topological space is compact $\\iff$ every cover by members of a subbase has a finite subcover. So it suffices to verify the latter.\nLet $\\mathcal{S}_{0} \\subseteq \\mathcal{S}$ cover $X$, and suppose it has **no** finite subcover. For each $i$ put\n$$\\mathcal{U}_{i} := \\{\\, U_{i} : p_{i}^{-1}(U_{i}) \\in \\mathcal{S}_{0} \\,\\},\\qquad F_{i} := X_{i}\\setminus \\bigcup \\mathcal{U}_{i}.$$\n- **$F_{i} \\ne \\emptyset$**: otherwise $\\mathcal{U}_{i}$ is an open cover of the compact space $X_{i}$; take a finite subcover $U_{1},\\ldots,U_{n}$, and the corresponding $p_{i}^{-1}(U_{1}),\\ldots,p_{i}^{-1}(U_{n})$ are a finite subcover of $X$ — contradicting the assumption ✓.\n- By the **axiom of choice** choose $x_{i} \\in F_{i}$, and set $x := (x_{i})_{i\\in I} \\in X$.\n- Then for every $p_{i}^{-1}(U_{i})\\in \\mathcal{S}_{0}$ we have $x_{i} \\notin U_{i}$ (because $x_{i}\\in F_{i}$), so $x \\notin p_{i}^{-1}(U_{i})$ holds for **all** members — contradicting that $\\mathcal{S}_{0}$ covers $X$ ✓.\nThus every subbase cover has a finite subcover, and by Alexander's lemma $X$ is compact. ∎\n(Alexander's lemma itself: if a family of covers has no finite subcover, use Zorn's lemma to enlarge it to a maximal such family $\\mathcal{M}$; then choosing the \"non-$\\mathcal{M}$ members\" produces data attached to the subbase, and one deduces step by step that $\\mathcal{M}$ is actually a cover — a contradiction.)\n\n⭐ **Tychonoff's theorem is equivalent to the axiom of choice** (they imply each other in ZF) — a standard gauge of how strong the axiom of choice is.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f5786987',
+      },
+    },
+
+    'def.one-point-compactification': {
+      statement: {
+        en: "**What it does**: the most economical way of adding a single point — add **one** point $\\infty$ so that every sequence running off to infinity converges to it. The passage from $\\mathbb{R}^{n}$ to $S^{n}$, and from $\\mathbb{C}$ to the Riemann sphere, are both instances of this construction.\n\nLet $X$ be a topological space. Take $X^{*} := X \\sqcup \\{\\infty\\}$, with the topology whose open sets are\n\n1. the open sets of $X$;\n2. sets of the form $U \\cup \\{\\infty\\}$, where $U \\subseteq X$ is open and $X \\setminus U$ is **compact** in $X$.\n\n$X^{*}$ is called the **one-point compactification** of $X$ (also the Alexandrov compactification).\n\n**Theorem**:\n\n- $X^{*}$ is **compact** (for arbitrary $X$);\n- $X^{*}$ is **Hausdorff** $\\iff$ $X$ is a locally compact Hausdorff space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bb5c0641',
+      },
+      notes: {
+        en: "⭐ **The topological intuition**: $U \\cup \\{\\infty\\}$ is open $\\iff$ its complement is compact. Thus \"the complement of $X$ is compact\" is exactly \"a neighbourhood of $\\infty$\" — the space around the point at infinity is precisely \"what remains after $X$ runs off\". Accordingly, a $\\infty$-neighbourhood of $\\mathbb{R}^{n}$ is \"the outside of the ball\", and $S^{n}$ is the north pole.\n\n⭐ **Standard examples**: $(\\mathbb{R}^{n})^{*} \\cong S^{n}$ (stereographic projection; when $n = 1$, $\\mathbb{R} \\cup \\{\\infty\\} \\cong S^{1}$);\n\n$\\mathbb{C}^{*} \\cong S^{2}$ is the **Riemann sphere**, on which complex analysis treats $\\infty$ as an ordinary point;\n\nthe one-point compactification of $\\mathbb{N}$ is $\\{1/n\\} \\cup \\{0\\}$.\n\n⚠️ **Why local compactness is indispensable**: when $X$ is not locally compact, $X^{*}$ is not Hausdorff — intuitively, \"a neighbourhood of $\\infty$\" is too large and always meets the neighbourhood of some point. So existence and Hausdorffness of the one-point compactification are **two separate matters**: $X^{*}$ is always compact, but making it Hausdorff costs local compactness.\n\n⚠️ **Relation to `imp.lch-cr`**: that implication proves \"locally compact Hausdorff spaces are completely regular\" using exactly \"$X^{*}$ is compact Hausdorff $\\implies$ normal, $\\implies$ a Urysohn function can be built on $X^{*}$ and pulled back\". The one-point compactification is the standard interface for **transferring the good properties of compact spaces to $X$**.\n\n**The two conclusions rest on completely different hypotheses** (which is why they deserve separate statements):\n\n- **$X^{*}$ is compact: no hypothesis is needed**. Take any open cover of $X^{*}$; some member contains $\\infty$ (call it $U\\cup\\{\\infty\\}$), so $X\\setminus U$ is compact; it is covered by the remaining open sets, compactness yields a finite subcover, and adding $U\\cup\\{\\infty\\}$ itself gives a finite subcover. The whole argument uses only \"an open cover of a compact set has a finite subcover\" — **neither Hausdorffness nor local compactness is used**.\n- **$X^{*}$ is Hausdorff $\\iff$ $X$ is locally compact Hausdorff**: both directions cost something.\n  $\\cdot$ ($\\Leftarrow$) uses **local compactness**: given $x \\in X$, separating it from $\\infty$ requires \"a compact neighbourhood $K$ of $x$\", so $X\\setminus K$ is open and $K^{\\circ}$ is an open neighbourhood of $x$, the two disjoint. **Without local compactness this compact neighbourhood cannot be produced**.\n  $\\cdot$ ($\\implies$): deriving Hausdorffness of $X$ from that of $X^{*}$ is free (subspaces inherit it); deriving local compactness uses **closedness of compact sets**: an open neighbourhood $U\\cup\\{\\infty\\}$ of $\\infty$ has $X\\setminus U$ compact, so the closure of $U$ in $X$ … — this direction is exactly the use of \"compact sets are closed in a compact Hausdorff space\".\n\n⚠️ **So \"the one-point compactification always exists\" must be read carefully**: $X^{*}$ always exists as a compact space; but it is **Hausdorff** only when $X$ is locally compact Hausdorff. Many textbooks state only the former, so beginners conclude that \"every space can be compactified\" — **false**: those admitting a Hausdorff compactification are exactly the locally compact Hausdorff spaces.\n\n⚠️ **Why neighbourhoods of $\\infty$ look like that**: \"compact complement\" in the second axiom is not arbitrary — if the neighbourhood is $U\\cup\\{\\infty\\}$, then points \"running to infinity\" must eventually lie in $U$, i.e. eventually leave $X\\setminus U$; requiring $X\\setminus U$ to be compact is exactly what aligns \"leaving it\" with \"compactness\", making $X^{*}$ compact.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8b664d9f',
+      },
+    },
+
+    'def.filter': {
+      statement: {
+        en: "**What it does**: rewrite convergence in the language of **families of sets**. A filter abstracts the phrase \"eventually falls into a given set\", so limits can be discussed without mentioning indices, only families of sets — the handiest tool at the interface of set theory and topology.\n\nLet $X$ be a topological space. A nonempty family $\\mathcal{F} \\subseteq \\mathcal{P}(X)$ is a **filter** if\n\n1. $\\emptyset \\notin \\mathcal{F}$, $X \\in \\mathcal{F}$;\n2. upward closed: $F \\in \\mathcal{F}$ and $F \\subseteq G$ $\\implies$ $G \\in \\mathcal{F}$;\n3. closed under finite intersections: $F, G \\in \\mathcal{F}$ $\\implies$ $F \\cap G \\in \\mathcal{F}$.\n\n**Convergence**: $\\mathcal{F} \\to x$ if every neighbourhood of $x$ belongs to $\\mathcal{F}$ (i.e. $\\mathcal{N}(x) \\subseteq \\mathcal{F}$).\n\nAn **ultrafilter** is a maximal filter. Equivalently, for every $A \\subseteq X$, **exactly one** of $A$ and $X \\setminus A$ belongs to $\\mathcal{U}$.\n\n**Ultrafilter lemma**: every filter is contained in an ultrafilter (using Zorn's lemma, `lem.zorn`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#9f9ad3dd',
+      },
+      notes: {
+        en: "⭐ **What filters are for: a clean characterization of compactness**: $X$ is compact $\\iff$ every ultrafilter converges (equivalently, every filter has a cluster point). This is shorter than the net version, because the \"subnet\" step is absorbed by maximality of the ultrafilter.\n\n⭐ **The ultrafilter lemma cannot be dispensed with**: it is not a theorem but **a small piece of the axiom of choice** (strictly weaker than AC, but equivalent to the Boolean prime ideal theorem). So every proof that \"takes an ultrafilter\" is secretly using choice — in contrast with the family of arguments in `thm.paracompact-hausdorff-normal` that use **only compactness**.\n\n⚠️ **The neighbourhood system of the filter $\\ne$**: $\\mathcal{N}(x)$ itself is a filter (the neighbourhood filter), whereas a general filter may **fail to converge**. Convergence depends on whether it contains some $\\mathcal{N}(x)$.\n\n⚠️ **Name clash with \"filter\" in category theory**: `prop.covering-sieves-filter` concerns the filteredness of sieves in a Grothendieck topology, and is **unrelated** to the set-theoretic filter here.\n\n**Of the three axioms, \"closed under finite intersections\" is the only one with content** (the other two are almost mere normalization):\n\n- $\\emptyset \\notin \\mathcal{F}$ and $X \\in \\mathcal{F}$: **normalization**. Requiring the family to be nonempty and to omit the empty set, together with upward closure, automatically gives $X$.\n- **Upward closure**: part of the definition; dropping it leaves a \"filter base\", for which one must additionally require that any two members have a smaller member.\n- **Closure under finite intersections**: **this is the real condition**, and the reason filters can be translated into nets (`eq.net-filter`).\n\n**Two ways of writing convergence**: $\\mathcal{F} \\to x$ $\\iff$ $\\mathcal{N}(x) \\subseteq \\mathcal{F}$ $\\iff$ $\\mathcal{F}$, which is **finer** than the neighbourhood filter. ⚠️ The direction is easy to invert: **the larger (finer) the filter, the easier it converges**.\n\n**The ultrafilter lemma (every filter lies in an ultrafilter) needs Zorn's lemma** — the only dependence on AC in this chain. It also makes the characterization \"compact $\\iff$ every ultrafilter converges\" **non-constructive**.\n\n⚠️ Unrelated to \"filteredness\" in category theory (`def.filtered-category`); the two share only the word \"filter\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#e0cecc2b',
+      },
+    },
+
+    'def.interval': {
+      statement: {
+        en: "An **interval** of $\\mathbb{R}$ is a subset $I$ satisfying\n\n$$a, b \\in I,\\ a \\le x \\le b \\implies x \\in I$$\n\ni.e. it has \"no gaps\". The usual bounded intervals are written\n\n$$(a, b), \\quad [a, b], \\quad [a, b), \\quad (a, b]$$\n\ndistinguished by whether the endpoints are included; there are also the unbounded intervals $(-\\infty, b)$, $(a, +\\infty)$, $\\mathbb{R}$, and the singleton $[a, a]$.\n\nIts **length** (the convention of Lebesgue measure $m$) is $b - a$ (requiring $a \\le b$; for $a > b$, $(a, b] = \\emptyset$, which needs a separate convention).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e01ecf78',
+      },
+      notes: {
+        en: "⭐ **The half-open interval $\\{ (a, b] : a < b \\}$ is the starting point for constructing Lebesgue–Stieltjes measure**: it is only a basic class; finite disjoint unions give a ring, and length is already a premeasure on that ring.\n\nWhy half-open rather than open intervals: lengths of disjoint unions are easy to compute — $[a, b) \\sqcup [b, c) = [a, c)$ fails for open intervals.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6328540b',
+      },
+    },
+
+    'def.derivative': {
+      statement: {
+        en: "$F : (a, b) \\to \\mathbb{C}$ is **differentiable** at $x_0 \\in (a, b)$ if and only if the limit\n\n$$F'(x_0) := \\lim_{h \\to 0} \\frac{F(x_0 + h) - F(x_0)}{h}$$\n\nexists (and is finite). This number is the **derivative** of $F$ at $x_0$.\n\nIf it is differentiable everywhere on $(a, b)$, we obtain a function $F'$; $F$ is then called **differentiable**.\n\nIf the limit is not required to exist and $\\pm\\infty$ is allowed, one obtains the **generalized derivative**, which is needed in the theory of derivatives of monotone functions.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ac920c3f',
+      },
+      notes: {
+        en: "⭐ Differentiation theory cares about **pointwise** behaviour, so the domain is often shrunk to $L^1_{loc}$ rather than $L^1$.\n\nKey points (the BV / AC chain relies on all of them):\n- differentiability $\\implies$ continuity, but not conversely ($|x|$ at $0$).\n\n- A monotone **increasing** function is **differentiable almost everywhere**, and $F' \\ge 0$ a.e. (for decreasing functions, $F' \\le 0$).\n\n- **Differentiability a.e. does not guarantee** $F(b) - F(a) = \\int_a^b F'$ (the Cantor function is continuous everywhere, differentiable a.e., and $F' = 0$ a.e., yet $F(1) - F(0) = 1 \\ne 0$; note that it is **not differentiable everywhere**: at $1/3$ the one-sided difference quotients $0$ and $(3/2)^{k} \\to \\infty$ differ);\n\nEquality requires absolute continuity.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b97be3dc',
+      },
+    },
+
+    'def.function-limit': {
+      statement: {
+        en: "Let $f$ be defined on a **punctured neighbourhood** of $x_0$, with $L \\in \\mathbb{R}$. We say that $f(x)$ tends to $L$ as $x \\to x_0$ (written $\\lim_{x \\to x_0} f(x) = L$) if and only if\n\n$$\\forall \\varepsilon > 0,\\ \\exists \\delta > 0 :\\ 0 < |x - x_0| < \\delta \\implies |f(x) - L| < \\varepsilon$$\n\n**Heine characterization**: $\\lim_{x \\to x_0} f(x) = L$ if and only if for every sequence with $x_n \\ne x_0$ and $x_n \\to x_0$, we have $f(x_n) \\to L$.\n\nReplacing $0 < |x - x_0| < \\delta$ by other ranges ($x > M$, $x \\to x_0^{+}$, $|x| > M$, etc.) yields $x \\to \\pm\\infty$, one-sided limits and various other variants.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fa811121',
+      },
+      notes: {
+        en: "⭐ The only difference from the limit of a **sequence** is this: here the variable approaches continuously, so an extra quantifier $\\delta$ is needed to control \"how close is close enough\".\n\nThe whole novelty of the $\\varepsilon$-$\\delta$ language lies in this two-level quantifier.\n\n⚠ **Puncturing** is essential: the point $x = x_0$ does not participate in the limit, so whether $f$ is defined at $x_0$, and with what value, does not affect the limit.\n\nFor the same reason, \"the limit exists and equals $f(x_0)$\" can serve as the definition of **continuity**.\n\n⚠ A limit, if it exists, is unique — the proof is the same as in the sequence case (split $\\varepsilon$ between the two points).",
+        status: 'draft',
+        basedOn: 'v0.9.3#c2c83665',
+      },
+    },
+
+    'thm.squeeze': {
+      statement: {
+        en: "**(Sequences)** Suppose there is $N_0$ such that $a_n \\le x_n \\le b_n$ for all $n \\ge N_0$. If $a_n \\to L$ and $b_n \\to L$, then $x_n \\to L$.\n\n**(Functions)** Suppose $g(x) \\le f(x) \\le h(x)$ holds on some punctured neighbourhood of $x_0$. If\n\n$$\\lim_{x \\to x_0} g(x) = \\lim_{x \\to x_0} h(x) = L$$\n\nthen $\\lim_{x \\to x_0} f(x) = L$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#03a41405',
+      },
+      notes: {
+        en: "⭐ The squeeze theorem is one of the **few tools that can assert the existence of a limit without knowing its value in advance** (the other two are the monotone bounded theorem and the Cauchy criterion).\n\nIts most typical uses are defining $e$, proving $\\lim_{n} q^{n} = 0$ ($|q| < 1$), and $\\lim_{n} \\sqrt[n]{n} = 1$.\n\n⚠ Both hypotheses are indispensable: the function must be squeezed **on both sides**, and the two outer limits must be **equal**.\n\nSqueezing on one side alone yields no conclusion at all.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fb1ae0ad',
+      },
+    },
+
+    'def.limsup-liminf': {
+      statement: {
+        en: "For a sequence of real numbers $\\{x_n\\}$, set\n\n$$\\limsup_{n \\to \\infty} x_n := \\lim_{n \\to \\infty} \\Bigl( \\sup_{k \\ge n} x_k \\Bigr), \\qquad \\liminf_{n \\to \\infty} x_n := \\lim_{n \\to \\infty} \\Bigl( \\inf_{k \\ge n} x_k \\Bigr)$$\n\n($n \\mapsto \\sup_{k \\ge n} x_k$ is monotone decreasing and $n \\mapsto \\inf_{k \\ge n} x_k$ is monotone increasing, so both limits in $\\overline{\\mathbb{R}}$ **always exist**.)\n\nMoreover, the limit of the sequence exists (allowing the value $\\pm\\infty$) if and only if the upper and lower limits agree, i.e.\n\n$$\\liminf_{n \\to \\infty} x_n = \\limsup_{n \\to \\infty} x_n$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#664d7f81',
+      },
+      notes: {
+        en: "⭐ The upper limit is \"the largest of the limits of all convergent subsequences\" (counting $\\pm \\infty$ as well) — hence **every** sequence of real numbers has upper and lower limits, whereas only convergent sequences have a limit: they are a **relaxed version** of the limit.\n\n⭐ Their appearance in measure theory is crucial: Fatou's lemma is exactly $\\int \\liminf f_n \\le \\liminf \\int f_n$ (**requiring $f_n \\ge 0$**, or $f_n \\ge g \\in L^{1}$; otherwise a counterexample: on $\\mathbb{R}$, for $f_n = -\\mathbf{1}_{[n,n+1)}$, the left-hand side is $0$ and the right-hand side is $-1$) — no \"limit\" is available there, because $f_n$ need not converge.\n\n⚠ $\\limsup$ and $\\sup$ are not the same thing: $\\sup_n x_n$ is the supremum of all terms, whereas $\\limsup_n x_n$ looks only at the **tail**; thus for $x_n = (-1)^{n}$ we have $\\sup x_n = 1$, while $\\limsup x_n = 1$ and $\\liminf x_n = -1$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#31991fc1',
+      },
+    },
+
+    'thm.ivt': {
+      statement: {
+        en: "Let $f$ be continuous on $[a, b]$, and let $c$ be **any** real number between $f(a)$ and $f(b)$. Then there exists $\\xi \\in [a, b]$ with\n\n$$f(\\xi) = c$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#49326a89',
+      },
+      notes: {
+        en: "⭐ Geometric content: in passing from $f(a)$ to $f(b)$, the graph of a continuous function **cannot skip any intermediate value** — a continuous function maps an interval to an interval.\n\n⭐ This is the most frequently used existence tool in elementary analysis: existence of roots, of inverse functions, of fixed points, and comparison of intermediate values all follow from it.\n\nIt also has **constructive** content: the bisection method used in the proof is itself a root-finding algorithm, and every step is computable.\n\n⚠ It guarantees only **existence**, not uniqueness ($x^{3} - x$ has three zeros on $[-2, 2]$);\n\nuniqueness requires an additional assumption of **strict monotonicity**.\n\n⚠ It uses completeness of $\\mathbb{R}$ (the least-upper-bound principle), not compactness: with $[a, b]$ replaced by a general connected space it still holds, and that is the fixed-point / connectedness branch.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b19a6984',
+      },
+    },
+
+    'thm.evt': {
+      statement: {
+        en: "Let $X$ be a **nonempty** compact metric space and $f : X \\to \\mathbb{R}$ continuous. Then $f$ **attains** its maximum and minimum: there exist $x_{\\min}, x_{\\max} \\in X$ such that for all $x \\in X$,\n\n$$f(x_{\\min}) \\le f(x) \\le f(x_{\\max})$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#6638507a',
+      },
+      notes: {
+        en: "⭐ \"Being bounded\" and \"attaining an extremum\" are two different things, which is why they are separate nodes here: boundedness says only that $\\sup f(X)$ is **finite**, while attaining an extremum says that this supremum is **actually reached at some point**.\n\nCompactness is responsible for the latter.\n\n⚠ Replacing the space by an open interval makes it fail at once: $f(x) = x$ is bounded on $(0, 1)$, yet attains neither a maximum nor a minimum.\n\n⭐ The commonly used form over $\\mathbb{R}$: **a continuous function on a closed interval $[a, b]$ attains its extrema** — the first step of the proof is that a closed interval is compact (Heine–Borel).\n\nThe whole procedure for finding extrema in elementary calculus (locate critical points and compare endpoints) rests on this.",
+        status: 'draft',
+        basedOn: 'v0.9.3#77b1f6c0',
+      },
+    },
+
+    'def.pointwise-convergence': {
+      statement: {
+        en: "Let $f_n : X \\to \\mathbb{R}$ ($n = 1, 2, \\ldots$) and $f : X \\to \\mathbb{R}$. We say that $\\{f_n\\}$ **converges pointwise** to $f$ if and only if for **every fixed** $x \\in X$,\n\n$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall n \\ge N :\\ |f_n(x) - f(x)| < \\varepsilon$$\n\nWe write $f_n \\to f$ (pointwise).",
+        status: 'draft',
+        basedOn: 'v0.9.3#45ce281a',
+      },
+      notes: {
+        en: "⭐ Note the order of the quantifiers: $\\exists N$ comes **after** $\\forall x$ — so $N$ here may depend on $\\varepsilon$ **and $x$**.\n\nEach point gets its own $N$, independently of the others.\n\n⚠ Pointwise convergence is too weak: the limit function may be **discontinuous**, and limit and integral need **not commute**.\n\nExample: on $[0, 1]$, $f_n(x) = x^{n}$ converges pointwise to the discontinuous function that equals $0$ for $x < 1$ and $1$ for $x = 1$.\n\n⭐ Pointwise convergence is a \"pointwise\" notion, and checking it point by point suffices;\n\nall the difficulty lies in **whether $x$ can be controlled by a single $N$**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cd160750',
+      },
+    },
+
+    'def.borel': {
+      statement: {
+        en: "Let $X$ be a topological space. The **Borel $\\sigma$-algebra** on $X$ is the $\\sigma$-algebra generated by all open sets:\n\n$\\mathfrak{B}_X := \\mathcal{M}(\\{ U \\subseteq X : U$ is open $\\})$\n\nSets in $\\mathfrak{B}_X$ are called **Borel sets**: open sets, closed sets, countable intersections of open sets ($G_\\delta$), countable unions of closed sets ($F_\\sigma$), and so on all belong to $\\mathfrak{B}_X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fec2c65d',
+      },
+      notes: {
+        en: "The family of open sets is in general only a topology, not a $\\sigma$-algebra — one must take the $\\sigma$-algebra it generates to obtain all Borel sets.\n\nOn $\\mathbb{R}$, $\\mathfrak{B}_\\mathbb{R}$ can also be generated by the half-open intervals $\\{ (a, b] : a < b \\}$ (or { [a, b) }). These forms are more convenient when constructing measures, because disjoint unions of half-open intervals are easy to compute.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5757819c',
+      },
+    },
+
+    'def.isomorphism': {
+      statement: {
+        en: "Let $\\mathcal{C}$ be a category and $f : X \\to Y$ a morphism in it. We say that $f$ is an **isomorphism** if there exists a morphism $g : Y \\to X$ with\n\n$$g \\circ f = \\mathrm{id}_{X}, \\qquad f \\circ g = \\mathrm{id}_{Y}.$$\n\nSuch a $g$ is unique (if $g, g'$ both work, then $g = g' f g = g'$); we write $g = f^{-1}$. In this case $X$ and $Y$ are called **isomorphic**, written $X \\cong Y$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7b045f9d',
+      },
+      notes: {
+        en: "⭐ **It is the common name for one concept across the branches** (previously only the three-in-one `def.mono` of category theory existed):\n\n- sets / $\\mathbf{Set}$: isomorphism = **bijection**;\n\n- groups, rings, modules: isomorphism = bijective homomorphism;\n\n- topology / $\\mathbf{Top}$: isomorphism = **homeomorphism** (`def.homeomorphism`);\n\n- vector spaces: isomorphism = **linear isomorphism** (`def.linear-isomorphism`);\n\n- posets: isomorphism = **order isomorphism** (`def.order-iso`);\n\n- whereas \"monomorphism / epimorphism\" is **another pair of concepts** — in a general category mono + epi does **not** imply isomorphism (for example, in $\\mathbf{Top}$ a continuous bijection need not be a homeomorphism), so it cannot serve as the common name for isomorphism.\n\n⚠ **\"Isomorphic\" is not \"equal\"**: isomorphic means \"indistinguishable under a structure-preserving map\". Almost all statements here hold only up to isomorphism (for example \"$V \\cong K^{n}$\" rather than \"$V = K^{n}$\").\n\n📌 Difference from \"equivalence\": an **equivalence** between categories (discussed in the `def.adjoint` family) requires only \"isomorphic up to a natural isomorphism\" and is weaker than isomorphism; isomorphism is the strongest tier.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b0580091',
+      },
+    },
+
+    'def.limit': {
+      statement: {
+        en: "The **limit** of the diagram $D : I \\to \\mathcal{C}$ is the cone over $D$ with the universal property: a cone $(\\lim D,\\ p_i)$ such that for every cone $(Y,\\ g_i)$ there is a **unique** morphism $g : Y \\to \\lim D$ with\n\n$$p_i \\circ g = g_i \\qquad (i \\in I)$$\n\nEquivalently, the cone functor is represented by $\\lim D$:\n\n$$\\operatorname{Hom}_{\\mathcal{C}^{I}}(\\Delta Y, D) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}}(Y, \\lim D)$$\n\nDually, the **colimit** $\\operatorname{colim} D$ of $D$ satisfies $\\operatorname{Hom}_{\\mathcal{C}^{I}}(D, \\Delta Y) \\cong \\operatorname{Hom}_{\\mathcal{C}}(\\operatorname{colim} D, Y)$.\n\nWhen $I$ is finite it is called a **finite limit**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8bccceb3',
+      },
+      notes: {
+        en: "The universal property says just one thing: **every other cone factors through it uniquely**. Hence a limit, if it exists, is unique up to isomorphism — there is no need to choose a particular construction; any one will do.\n\nTwo equivalent formulations: \"a universal cone\" and \"$\\operatorname{Hom}_{\\mathcal{C}^{I}}(\\Delta -, D)$ is representable\". The latter turns the limit into a computable isomorphism.\n\n\"Universal\" can be pushed further: a limit is a **terminal object** in the category of cones (see \"element category\"). This sentence recurs repeatedly later.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5753e66b',
+      },
+    },
+
+    'def.product': {
+      statement: {
+        en: "Take $I$ to be a **discrete category** (objects only, no non-identity morphisms); then the diagram $D : I \\to \\mathcal{C}$ is just a family of objects $(X_i)_{i \\in I}$. Its limit is called the **product** $\\prod_{i} X_i$, and its colimit the **coproduct** $\\coprod_{i} X_i$. Written as an isomorphism of hom-sets, the universal property is\n\n$$\\operatorname{Hom}_{\\mathcal{C}}\\Bigl(Y, \\prod_{i} X_i\\Bigr) \\;\\cong\\; \\prod_{i} \\operatorname{Hom}_{\\mathcal{C}}(Y, X_i)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#87d0ec57',
+      },
+      notes: {
+        en: "In one sentence: **a product is \"one map = a family of maps\"**. Maps into the product correspond bijectively to families of maps into each factor, and the projection $p_i$ extracts the $i$-th component.\n\nExamples: in $\\mathbf{Set}$ the product is the Cartesian product and the coproduct the disjoint union; in $\\mathbf{Top}$ the product carries the **product topology** (the coarsest topology making it a product) and the coproduct the **disjoint-union topology** (the finest one); in $\\mathbf{Ab}$ the product is the direct product $\\prod_i A_i$ and the coproduct the direct sum $\\bigoplus_i A_i$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d340eaa7',
+      },
+    },
+
+    'def.ideal': {
+      statement: {
+        en: "Let $A$ be a ring. A subset $I \\subseteq A$ is called a **(two-sided) ideal** if $(I, +)$ is an additive subgroup and, for all $a \\in A$ and $x \\in I$,\n\n$$a x \\in I, \\qquad x a \\in I.$$\n\n(Requiring only $a x \\in I$ gives a **left ideal**, and only $x a \\in I$ a **right ideal**; in a commutative ring the three notions coincide.)\n\nMultiplication $(a + I)(b + I) := ab + I$ on the quotient set $A/I$ (by additive cosets) is well defined, and the resulting ring is called the **quotient ring**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#731bbcb6',
+      },
+      notes: {
+        en: "**Why ideals are defined this way.** The problem is exactly the same as for normal subgroups: to define multiplication on the quotient set, $(a + I)(b + I)$ must not depend on the representatives. Compute $(a + x)(b + y) = ab + ay + xb + xy$ — the last three terms must all lie in $I$. That $xy \\in I$ is **not** guaranteed by \"$I$ is a subgroup\" and must be **required separately**.\n\n⭐ **Comparison table**: to quotient a **group** and get a group, one quotients by a **normal subgroup**; to quotient a **ring** and get a ring, one quotients by an **ideal**. (As an additive subgroup, $I$ is of course automatically normal — the additive group is abelian — so no extra condition is needed on that side.)\n\nThe **principal ideal** $(a) := \\{\\, xa : x \\in A \\,\\}$ (in a commutative ring, the set of all multiples of $a$). ⚠️ In a general ring this set is only a **left** ideal: for $A = M_2(\\mathbb{R})$ and $a = E_{11}$, $E_{11}E_{12} = E_{12} \\notin Aa$. In a general ring the correct definition of $(a)$ is \"the smallest two-sided ideal containing $a$\". $A/(a)$ is the ring obtained by \"setting $a$ equal to $0$\"; $\\mathbb{Z}/(n) = \\mathbb{Z}/n\\mathbb{Z}$ is congruence modulo $n$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a13577ce',
+      },
+    },
+
+    'def.module': {
+      statement: {
+        en: "Let $A$ be a unital ring and $M$ an **abelian group**. We say that $M$ is a **$A$-module** if there is a map\n\n$$A \\times M \\longrightarrow M, \\qquad (a, m) \\longmapsto a \\cdot m,$$\n\nsatisfying $a(bm) = (ab)m$, $(a + b)m = am + bm$, $a(m + n) = am + an$, $1 \\cdot m = m$.\n\nAn abelian-group homomorphism preserving this action is called a **$A$-module homomorphism**: $f(am) = a f(m)$. All $A$-modules with module homomorphisms form the category $A\\text{-}\\mathbf{Mod}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0dadc00c',
+      },
+      notes: {
+        en: "⭐ **A module = an abelian group + a ring action**, so it is a child of both \"group\" and \"ring\": a $\\mathbb{Z}$-module **is** an abelian group ($n \\cdot m$ admits only one definition); a module over a field **is** a vector space. These two statements place \"module\" midway between known examples.\n\n**Why $A\\text{-}\\mathbf{Mod}$ is the model example of homological algebra**: it is simultaneously\n\n- an **abelian category** (it has kernels and cokernels, and all monomorphisms and epimorphisms are strict);\n\n- **with enough injective objects** (every module embeds into an injective module);\n\n- **with enough projective objects** (free modules are projective);\n\n- a **Grothendieck category** (it has a generator, $A$ itself, and filtered colimits are exact).\n\nSo \"what can be done in $A\\text{-}\\mathbf{Mod}$\" is exactly what homological algebra wants to generalize to arbitrary categories. **Everything other categories can do is measured against it.**",
+        status: 'draft',
+        basedOn: 'v0.9.3#09652db5',
+      },
+    },
+
+    'def.subgroup': {
+      statement: {
+        en: "Let $(G, \\cdot)$ be a group and $H \\subseteq G$. We say that $H$ is a **subgroup** of $G$ (written $H \\le G$) if $H$ is itself a group under the **restricted operation** — that is:\n\n- $e \\in H$;\n\n- $a, b \\in H \\implies ab \\in H$ (closed under the operation);\n\n- $a \\in H \\implies a^{-1} \\in H$ (closed under inverses).\n\n(Associativity is inherited from $G$ and need not be checked again.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#09d424e9',
+      },
+      notes: {
+        en: "The two conditions can be combined into one: $H \\ne \\emptyset$ and $a, b \\in H \\implies a b^{-1} \\in H$ (without $H \\ne \\emptyset$ the condition is vacuous: $H = \\emptyset \\subseteq G$ satisfies the universal statement, yet is not a subgroup).\n\nThe intersection of any number of subgroups is again a subgroup, but the **union** in general is not — this is why \"the subgroup generated by $S$, namely $\\langle S \\rangle$\" is defined as \"the intersection of all subgroups containing $S$\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#c6a59daa',
+      },
+    },
+
+    'def.topology-base': {
+      statement: {
+        en: "Let $(X, \\mathcal{T})$ be a topological space and $\\mathcal{B} \\subseteq \\mathcal{T}$. Then $\\mathcal{B}$ is a **base** for the topology $\\mathcal{T}$ if and only if every open set is a union of members of $\\mathcal{B}$. If one further requires $\\mathcal{T}$ to be **exactly** the topology generated by $\\mathcal{B}$ (that is, $\\mathcal{B} \\subseteq \\mathcal{T}$, and $\\mathcal{T}$ is precisely the family of all unions of members of $\\mathcal{B}$), this is equivalent to:\n\n1. $\\bigcup \\mathcal{B} = X$;\n2. for $B_1, B_2 \\in \\mathcal{B}$ and $x \\in B_1 \\cap B_2$, there exists $B_3 \\in \\mathcal{B}$ with $x \\in B_3 \\subseteq B_1 \\cap B_2$.\n\nA family $\\mathcal{S} \\subseteq \\mathcal{P}(X)$ is a **subbase** if and only if all its **finite intersections** form a base.",
+        status: 'draft',
+        basedOn: 'v0.9.3#02b4b5c4',
+      },
+      notes: {
+        en: "⭐ Why bases are useful: **a condition checked on a base holds automatically for all open sets.**\n\n- In metric spaces: all open balls form a base;\n- On $\\mathbb{R}$: open intervals form a base; the half-open intervals $\\{ (a, b] \\}$ generate a base for **another topology** (the upper limit topology) — they are not the usual open sets, hence **not** a base for the usual topology (although they are handier when constructing the Lebesgue–Stieltjes measure);\n\n- The cylinder sets of the product topology and of the $\\sigma$-algebra follow the same pattern: first fix a convenient family of sets, then take what it generates.\n\n⚠ A base is not unique: the same topology can have many bases.\n\n**Which hypothesis each direction uses** (generating a topology and being a base for a specified topology must be kept distinct):\n- Being a base for the given $\\mathcal T$ $\\iff$ every $\\mathcal T$-open set is a union of basic elements: this is definition unpacking; the covering and local-intersection conditions then follow using $X$ and the fact that the intersection of two basic elements is open.\n- Covering plus local-intersection conditions $\\implies$ the arbitrary unions of basic elements form a topology: finite intersections are handled by local refinement, the remaining axioms are checked directly, no choice is needed, and one may take all basic elements satisfying the conditions.\n- The two conditions listed in the node do not by themselves imply being a base for the given $\\mathcal T$: one also needs $\\mathcal T$ to equal the generated topology. For example, on the discrete two-point space take $\\mathcal B=\\{X\\}$; it satisfies both conditions yet does not generate the singleton open sets.\n- A subbase $\\iff$ the family of all finite intersections is a base: by convention this is definition unpacking, and finite intersections should include the empty intersection $X$; for the usual topology on the reals the basic elements must be usual open sets, while half-open intervals generate another topology.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7900e5e3',
+      },
+    },
+
+    'def.metric-continuity': {
+      statement: {
+        en: "Let $(X, d)$ and $(Y, \\rho)$ be metric spaces, $f : X \\to Y$, and $x_0 \\in X$.\n\nWe say $f$ is **continuous at** $x_0$ if\n\n$$\\forall \\varepsilon > 0\\ \\exists \\delta > 0:\\quad d(x, x_0) < \\delta \\implies \\rho(f(x), f(x_0)) < \\varepsilon .$$\n\nWe say $f$ is continuous if it is continuous at every point. Equivalently: for every open set $V \\subseteq Y$, the preimage $f^{-1}(V)$ is open in $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0fade8e4',
+      },
+      notes: {
+        en: "**Proof of the equivalence** (global version):\n\n($\\varepsilon$–$\\delta$ $\\implies$ open preimages are open) Let $V \\subseteq Y$ be open and $x_0 \\in f^{-1}(V)$. Choose $\\varepsilon > 0$ with $B_Y(f(x_0), \\varepsilon) \\subseteq V$; $\\varepsilon$–$\\delta$ gives $\\delta > 0$ such that the image of $B_X(x_0, \\delta)$ lies in $B_Y(f(x_0), \\varepsilon)$, hence $B_X(x_0, \\delta) \\subseteq f^{-1}(V)$, i.e. $f^{-1}(V)$ is open.\n\n(open preimages are open $\\implies$ $\\varepsilon$–$\\delta$) Given $x_0$ and $\\varepsilon > 0$, $B_Y(f(x_0), \\varepsilon)$ is open, so $f^{-1}(B_Y(f(x_0), \\varepsilon))$ is open and contains $x_0$; choose $\\delta > 0$ so that $B_X(x_0, \\delta)$ lies in it, which is exactly the $\\varepsilon$–$\\delta$ statement. $\\blacksquare$\n\n📌 This is `def.continuous-map` (the topological version) written out for metric spaces: open sets in a metric space are generated by open balls, so “preimages are open” is equivalent to $\\varepsilon$–$\\delta$.\n\n⭐ The case $\\mathbb{R}$ is treated in `def.continuous` (the $\\varepsilon$–$\\delta$ criterion) and `def.real-metric-space` ($d(x,y) = |x-y|$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#28ccfd05',
+      },
+    },
+
+    'def.complete': {
+      statement: {
+        en: "A sequence $\\{x_{n}\\}$ is a **Cauchy sequence** if and only if\n\n$$\\forall\\varepsilon > 0, \\exists N : m, n \\ge N \\implies d(x_m, x_n) < \\varepsilon$$\n\nA metric space $(X, d)$ is **complete** if and only if every Cauchy sequence in $X$ converges in $X$:\n\n$$\\{x_n\\}\\ \\text{Cauchy} \\implies \\exists x \\in X : x_n \\to x$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#4665198b',
+      },
+      notes: {
+        en: "“Convergent $\\implies Cauchy$” always holds; **“$Cauchy \\implies$ converges” is the content of completeness**.\n\nExamples: $\\mathbb{R}^{n}$, $\\mathbb{C}^{n}$, and every Banach space are complete; $\\mathbb{Q}$ is not (3, 3.1, 3.14, …, a Cauchy sequence converging to $\\sqrt 2$ that does not converge in $\\mathbb{Q}$).\n\n**Closed subsets inherit completeness**: when $X$ is complete, $A \\subseteq X$ is complete as a subspace $\\iff A$ closed in $X$. This will be used below in the characterisation of compactness of subsets.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d254b5af',
+      },
+    },
+
+    'prop.compact-subset-closed': {
+      statement: {
+        en: "Let $A$ be a subset of a metric space $X$ (with the subspace metric). If $A$ is **compact**, then $A$ is **closed** in $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f78af910',
+      },
+      notes: {
+        en: "In fact it suffices that $X$ be Hausdorff: compact subsets are then closed, and metric spaces are Hausdorff.\n\nPutting this together with “$X$ is complete” prepares the **subset** characterisation of compactness below: that result uses “$A$ compact $\\implies A$ closed” and “$A$ closed $X$ complete $\\implies A$ complete”.\n\n**Proof.** Let $A$ be compact and take $x \\in X\\setminus A$; we must show it is an interior point.\n- For each $a \\in A$, by Hausdorffness take an open neighbourhood $U_{a}$ of $a$ and an open neighbourhood $V_{a}$ of $x$ with $U_{a}\\cap V_{a} = \\emptyset$ (in a metric space take $U_{a} = B(a, r/2)$ and $V_{a} = B(x, r/2)$, where $r = d(a,x)$);\n- $\\{U_{a}\\}_{a\\in A}$ is an open cover of $A$; by **compactness** take a finite subcover $U_{a_{1}}, \\ldots, U_{a_{n}}$;\n- $V := \\bigcap_{i=1}^{n} V_{a_{i}}$ is an open neighbourhood of $x$, and $V\\cap U_{a_{i}} = \\emptyset$ holds for every $i$, hence $V \\cap A = \\emptyset$, i.e. $V \\subseteq X\\setminus A$ ✓.\nThus $X\\setminus A$ is open and $A$ is closed. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#1bc20fbc',
+      },
+    },
+
+    'def.net': {
+      statement: {
+        en: "**What it does**: in general topology **sequences do not suffice** — neither compactness nor continuity can be characterised by sequences (unless the space is first countable). Replacing $\\mathbb{N}$ by an arbitrary **directed set** yields a “net”, and then every theorem about sequences carries over.\n\n**Directed set**: a preordered set $(\\Lambda, \\le)$ such that any $\\lambda, \\mu \\in \\Lambda$ have an upper bound (there exists $\\nu$ with $\\lambda, \\mu \\le \\nu$).\n\n**Net**: a map $x : \\Lambda \\to X$, written $(x_{\\lambda})_{\\lambda \\in \\Lambda}$.\n\n**Convergence**: a net $x_{\\lambda}$ **converges to** $x$ (written $x_{\\lambda} \\to x$) if for every neighbourhood $U$ of $x$ there exists $\\lambda_{0}$ such that\n\n$$\\lambda \\ge \\lambda_{0} \\implies x_{\\lambda} \\in U .$$\n\n**Two characterisation theorems**:\n\n- $f : X \\to Y$ is continuous $\\iff$ $f$ sends every convergent net to a convergent net (`def.continuous-map`);\n- $X$ is compact $\\iff$ every net in $X$ has a convergent **subnet**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3a45ea8b',
+      },
+      notes: {
+        en: "⚠️ **Why sequences are not enough**: in an uncountable space a singleton can be closed without being “sequentially closed” (for example $\\omega_{1}$ in $[0,\\omega_{1}]$: no sequence approaches it from below, yet it lies in the closure).\n\nSo “$x \\in \\overline{A}$ $\\iff$ there is a sequence in $A$ converging to $x$” **holds only in first-countable spaces**.\n\nNets fix this at once by replacing $\\mathbb{N}$ with “the reverse order of the neighbourhoods of $x$”.\n\n⭐ **Subnet $\\ne$ subsequence**: a subnet may use a coarser index set and is therefore far more flexible than a subsequence (a subsequence requires an order-preserving embedding $\\mathbb{N} \\to \\mathbb{N}$, which misses many cases). Hence the net characterisation of compactness must use **subnets**; using “subsequences” is wrong.\n\n⭐ **Nets come from Riemann sums**: Moore–Smith (1922) invented nets precisely to give a rigorous meaning to “$\\int f$ is the limit of Riemann sums” — the index set of those sums is the refinement order of partitions, not $\\mathbb{N}$. So “nets” are not abstract fussiness; they solve a real problem in analysis.\n\n⚠ Nets and filters are **equivalent** languages (`eq.net-filter`): each net corresponds to a filter, with matching convergence. Which one to use is a matter of habit — analysis books prefer nets, set theory and topology books prefer filters.\n\n**Which hypothesis each direction uses** (the definition of a net is free; the two characterisations need general-topology arguments):\n- Net convergence $\\iff$ eventually lies in every neighbourhood: definition unpacking; the index directed set is by convention nonempty and need not be antisymmetric.\n- Continuity $\\implies$ preserves net limits: only the preimage-of-neighbourhood definition is used; conversely, at a discontinuity one constructs a net by choosing counterexample points in neighbourhoods, a standard construction that uses choice and needs neither first countability nor Hausdorffness.\n- Compact $\\iff$ every net has a convergent subnet: the duality between cluster points of nets and finite subcovers of open covers; Hausdorffness is not needed, but the subnet must satisfy the standard cofinality condition.\n- Replacing nets by sequences cannot characterise general compactness: the first-countable ordinal space $[0,\\omega_1)$ is sequentially compact but not compact, so the first countability mentioned in the parenthetical is not enough to guarantee the sequential characterisation of compactness.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e9a396f6',
+      },
+    },
+
+    'def.riemann-integrable': {
+      statement: {
+        en: "Let $f$ be bounded on $[a, b]$. We say $f$ is **Riemann integrable** if and only if there exists a real number $I$ such that\n\n$$\\forall \\varepsilon > 0,\\ \\exists \\delta > 0 :\\ \\|P\\| < \\delta \\implies \\bigl| S(f, P, \\xi) - I \\bigr| < \\varepsilon$$\n\nholds for **every** partition $P$ and **every** choice of tags $\\xi$. Then $I$ is unique and is written\n\n$$I = \\int_a^b f = \\int_a^b f(x)\\,dx$$\n\nwith the conventions $\\int_b^a f := -\\int_a^b f$ and $\\int_a^a f := 0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#79063b0d',
+      },
+      notes: {
+        en: "⭐ The two words most easily missed in the definition: **every** and **norm**.\n\nIt is not “there is a sequence of partitions whose sums converge”, but “**all** partitions of sufficiently small norm, with **all** tags, land near $I$”.\n\n⭐ Equivalent formulation (Darboux form, see “Darboux criterion”): $\\sup_P L(f, P) = \\inf_P U(f, P)$.\n\nThe equivalence of the two definitions is not free — it needs a proof, and that proof is `thm.riemann-criterion`.\n\n⚠ For functions taking values in $\\mathbb{C}$, integrability is defined by integrability of the real and imaginary parts;\n\nthe vector-valued case is analogous.\n\n⚠ Boundedness is a **prerequisite** for integrability: an unbounded function is not Riemann integrable (it may be Lebesgue integrable, provided $\\int |f| < \\infty$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#fe562afc',
+      },
+    },
+
+    'thm.ftc-riemann-part2': {
+      statement: {
+        en: "Let $F : [a, b] \\to \\mathbb{R}$ be differentiable and $F'$ integrable on $[a, b]$. Then\n\n$$\\int_a^b F'(x)\\,dx = F(b) - F(a)$$\n\n($F$ is called an **antiderivative** of $F'$; another way to write the formula is $\\int_a^b f = F\\bigr|_a^b$.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#ec8ed7bd',
+      },
+      notes: {
+        en: "⭐ This is the main theorem of elementary calculus: **computing areas becomes finding antiderivatives**.\n\nIt also explains why tables of indefinite integrals are worth memorising — every derivative formula, read backwards, is an integration formula.\n\n⚠ The hypothesis “$F'$ is integrable” cannot be dropped: there are differentiable functions whose derivative is **not** integrable (the $F(x) = x^{2}\\sin(1/x^{2})$ type).\n\n⚠ The converse is not strong enough either: Newton–Leibniz requires $F$ to be an antiderivative;\n\nthe Lebesgue version (`thm.ftc-lebesgue`) relaxes the hypothesis to **absolute continuity** and makes “$F'$ exists” part of the conclusion.\n\nThe relation between the two theorems is “the same statement in two integral settings”.",
+        status: 'draft',
+        basedOn: 'v0.9.3#39aef9f2',
+      },
+    },
+
+    'lem.fatou': {
+      statement: {
+        en: "Let $\\{f_n\\} \\subseteq L^+$. Then\n\n$$\\int \\liminf_{n\\to\\infty} f_n \\le \\liminf_{n\\to\\infty} \\int f_n$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#759f0e8d',
+      },
+      notes: {
+        en: "⚠ Mind the direction of the inequality: the **lower** limit outside the integral is **at most** the lower limit of the integrals. In other words, passing to the limit can only make the integral **smaller**, never larger.\n\nThis is what remains of MCT once monotonicity is dropped — without monotonicity, equality degenerates into an inequality.\n\nA counterexample in the other direction: $f_n = \\chi_{[n, n+1]}$ (on $\\mathbb{R}$) has $\\int f_{n} = 1$ for every index, but $\\int \\liminf f_{n} = 0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cb8d2809',
+      },
+    },
+
+    'def.integral-nonneg': {
+      statement: {
+        en: "Let $f \\in L^+$. Define the integral of $f$ as the supremum of the integrals of simple functions not exceeding it:\n\n$\\int f d\\mu := \\sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f,\\ \\varphi$ **is a simple function** $\\}$",
+        status: 'draft',
+        basedOn: 'v0.9.3#f56ab6ad',
+      },
+      notes: {
+        en: "Intuition: approximate $f$ from **below** by simple functions and take the **supremum** of their integrals. This differs from the Jordan measure recipe of “covering from outside and filling from inside” — here we only fill from inside.\n\nWhy no “outer cover” is required: the measure already sits on the dual side ($\\mu$ itself is defined from outside via an outer measure), so taking an infimum over simple functions would only make the integral too small.\n\n⚠ This definition works only for nonnegative functions. For a general real-valued function, split it into positive and negative parts and subtract (see “integral of a complex function”).",
+        status: 'draft',
+        basedOn: 'v0.9.3#02c58844',
+      },
+    },
+
+    'def.lebesgue-measurable': {
+      statement: {
+        en: "For $f : \\mathbb{R} \\to \\mathbb{C}$:\n\n- if $f$ is $(\\mathcal{L}, \\mathfrak{B}_\\mathbb{C})$-measurable, $f$ is called **Lebesgue measurable** ($\\mathcal{L}$ is the $Lebesgue \\sigma$-algebra);\n- if $f$ is $(\\mathfrak{B}_\\mathbb{R}, \\mathfrak{B}_\\mathbb{C})$-measurable, $f$ is called **Borel measurable**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c3599e7a',
+      },
+      notes: {
+        en: "⚠ **There is a trap here: the composition of two Lebesgue measurable functions need not be Lebesgue measurable.**\n\nThe reason: making the composition work requires the intermediate $\\sigma$-algebra to cooperate, and $\\mathcal{L}$ is strictly larger than $\\mathfrak{B}_\\mathbb{R}$.\n\nTake $f : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ and $g : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ measurable; then $g\\circ f$ need not be measurable with respect to $\\mathcal{L}$ — because $g^{-1}$ only guarantees pulling sets in $\\mathfrak{B}_\\mathbb{R}$ back to $\\mathcal{L}$, whereas $f^{-1}$ needs a **non-Borel Lebesgue measurable set** in $\\mathbb{R}$ to produce a failure.\n\nThe standard fix: make the intermediate function Borel measurable. If $g$ is Borel measurable and $f$ is Lebesgue measurable, then $g\\circ f$ is Lebesgue measurable.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d6e2e80a',
+      },
+    },
+
+    'cor.continuous-measurable': {
+      statement: {
+        en: "Let $X, Y$ be topological spaces, each equipped with its **Borel $\\sigma$-algebra** $\\mathfrak{B}_X, \\mathfrak{B}_Y$. Then every **continuous** map is automatically Borel measurable:\n\n$f : X \\to Y$ **continuous** $\\implies f$ is $(\\mathfrak{B}_X, \\mathfrak{B}_Y)$-**measurable**",
+        status: 'draft',
+        basedOn: 'v0.9.3#a04b74b5',
+      },
+      notes: {
+        en: "Continuity is exactly “preimages of open sets are open”; open sets generate $\\mathfrak{B}_Y$, so the criterion (2) from the previous item gives the result immediately.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7bee078a',
+      },
+    },
+
+    'thm.simple-approximation': {
+      statement: {
+        en: "**(a)** If $f : X \\to [0, +\\infty]$ is measurable, then there exists a sequence of simple functions $\\{\\varphi_n\\}$ that approaches $f$ **increasingly at every point**:\n\n$$0 \\le \\varphi_1 \\le \\varphi_2 \\le \\cdots \\le f, \\quad  \\varphi_n \\to f$$\n\nand **the convergence is uniform on every set on which $f$ is bounded**.\n\n**(b)** More generally ($f : X \\to \\mathbb{C}$ measurable), one can choose a sequence of simple functions whose absolute values increase pointwise and which converges pointwise to $f$:\n\n$$0 \\le |\\varphi_1| \\le |\\varphi_2| \\le \\cdots \\le |f|, \\quad  \\varphi_n \\to f$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#20ef8cf7',
+      },
+      notes: {
+        en: "**Proof.**\n**(a)** For $n \\ge 1$ and $k = 0, 1, \\ldots, 2^{n}n - 1$, set\n$$E_{n,k} := f^{-1}\\bigl((k2^{-n}, (k+1)2^{-n}]\\bigr), \\qquad F_{n} := f^{-1}\\bigl((n, +\\infty]\\bigr),$$\n$$\\varphi_{n} := \\sum_{k} k\\,2^{-n}\\,\\chi_{E_{n,k}} \\;+\\; n\\,\\chi_{F_{n}} \\;+\\; 0\\cdot\\chi_{f^{-1}(\\{0\\})}.$$\n- **Simplicity**: each $E_{n,k}$ and $F_{n}$ is measurable ($f$ measurable plus intervals are Borel sets), and only finitely many values occur ✓;\n- **$0 \\le \\varphi_{n} \\le f$**: on $E_{n,k}$ we have $k2^{-n} < f \\le (k+1)2^{-n}$ ✓; on $F_{n}$ we have $n < f$ ✓; elsewhere it is zero ✓;\n- **Monotonicity**: when $n \\to n+1$, the intervals are refined by $2^{-(n+1)}$ and the ceiling rises from $n$ to $n+1$; a pointwise check gives $\\varphi_{n} \\le \\varphi_{n+1}$ ✓;\n- **Pointwise convergence**: if $f(x) < \\infty$, choose $n > f(x)$ so that $0 \\le f(x)-\\varphi_{n}(x) \\le 2^{-n} \\to 0$; if $f(x) = +\\infty$, then $\\varphi_{n}(x) = n \\to \\infty$ ✓;\n- **Uniform on bounded sets**: if $f \\le M$, choose $n > M$; the same estimate gives $|f-\\varphi_{n}| \\le 2^{-n}$, independent of $x$ ✓.\n**(b)** For a general measurable $f$: write $f = (f_{1}^{+} - f_{1}^{-}) + i(f_{2}^{+} - f_{2}^{-})$, apply (a) to each of the four nonnegative measurable parts to obtain monotone sequences, then combine them linearly into real and imaginary parts, positive and negative parts; every step satisfies $|\\varphi_{n}| \\le |f|$ and converges pointwise, so the conclusion holds ✓. ∎\n\nThe construction in (a) is “cutting the cake”: slice the range over [0, n) into pieces of size $2^{-n}$ and flatten everything above $n$ to $n$ —\n\n$$\\varphi_n = \\sum_{k=0}^{2^n\\cdot n-1} k\\cdot2^{-n}\\cdot\\chi_{E_n^k} + n\\cdot\\chi_{F_n}, $$\n\n$$E_n^k = f^{-1}((k\\cdot2^{-n}, (k+1)\\cdot2^{-n}]), \\quad  F_n = f^{-1}((n, +\\infty])$$\n\nEach layer is the preimage of a measurable set, so $\\varphi _{n}$ is simple; as $n$ grows the grid becomes finer and the ceiling higher, so the functions climb monotonically to $f$.\n\n(b) splits $f = g + ih$ as $g = g^+ - g^-$, $h = h^+ - h^-$ and applies (a) to the four nonnegative parts:\n\n$$\\varphi_n = \\psi_n^+ - \\psi_n^- + i(\\zeta _n^+ - \\zeta _n^-)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#16708e44',
+      },
+    },
+
+    'def.group-hom': {
+      statement: {
+        en: "Let $(G, \\cdot)$ and $(G', \\ast)$ be groups. A map $\\varphi : G \\to G'$ is called a **group homomorphism** if\n\n$$\\varphi(a b) = \\varphi(a) \\ast \\varphi(b) \\qquad (a, b \\in G).$$\n\nIts **kernel** and **image** are\n\n$$\\ker\\varphi := \\{\\, g \\in G : \\varphi(g) = e' \\,\\} \\;\\subseteq\\; G, \\qquad \\operatorname{im}\\varphi := \\varphi(G) \\;\\subseteq\\; G'.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#2570ab7e',
+      },
+      notes: {
+        en: "**A homomorphism automatically preserves the identity and inverses**: $\\varphi(e) = e'$, $\\varphi(a^{-1}) = \\varphi(a)^{-1}$ (obtained by cancelling in $\\varphi(e) = \\varphi(e e) = \\varphi(e)\\varphi(e)$). So only one equation is needed in the definition.\n\n**Kernel and image are subgroups**: $\\operatorname{im}\\varphi \\le G'$ is obvious; $\\ker\\varphi \\le G$ follows from $\\varphi(ab^{-1}) = \\varphi(a)\\varphi(b)^{-1} = e'$.\n\n⭐ **The kernel is moreover a normal subgroup**: for $k \\in \\ker\\varphi$ and $g \\in G$,\n\n$$\\varphi(g k g^{-1}) = \\varphi(g)\\, e'\\, \\varphi(g)^{-1} = e',$$\n\nso $gkg^{-1} \\in \\ker\\varphi$, i.e. $\\ker\\varphi \\trianglelefteq G$. **The kernel is always normal** — this is the entire reason a quotient group can quotient by the kernel.\n\n**Monomorphism $\\iff$ trivial kernel**: $\\varphi$ is injective $\\iff$ $\\ker\\varphi = \\{e\\}$. Thus injectivity is fully encoded by a **subgroup**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e12495d9',
+      },
+    },
+
+    'def.normal-subgroup': {
+      statement: {
+        en: "Let $H \\le G$ and $g \\in G$. The **left coset** and **right coset** are\n\n$$gH := \\{\\, gh : h \\in H \\,\\}, \\qquad Hg := \\{\\, hg : h \\in H \\,\\}.$$\n\nWe call $H$ a **normal subgroup** of $G$ (written $H \\trianglelefteq G$) if $gH = Hg$ for all $g \\in G$, equivalently $gHg^{-1} = H$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a885cb6f',
+      },
+      notes: {
+        en: "⭐ **Why normality.** A coset $gH$ is a **set**, and to turn the quotient set into a group via “$gH \\cdot g'H := gg'H$” the definition must be **independent of the choice of representatives**. Compute where the difference lies:\n\n$$(g h)(g' h') = g g' \\cdot \\bigl((g')^{-1} h g'\\bigr) h',$$\n\nThe element $(g')^{-1} h g'$ in the rightmost bracket must still lie in $H$ — “$H$ is closed under conjugation” is exactly normality. **Every subgroup of an abelian group is normal** (conjugation does nothing), so this step never causes trouble in an abelian group.\n\n**Cosets are an equivalence relation.** Define $a \\sim b \\iff a^{-1} b \\in H$; then the equivalence classes are precisely the left cosets, and all left cosets partition $G$ — this is the quotient set used for the quotient group below.\n\n**Notation**: $H \\le G$ denotes a subgroup, $H \\trianglelefteq G$ a normal subgroup ($\\trianglelefteq$ is read “is normal in”).",
+        status: 'draft',
+        basedOn: 'v0.9.3#3669cc0c',
+      },
+    },
+
+    'def.quotient-group': {
+      statement: {
+        en: "Let $N \\trianglelefteq G$. The set of all left cosets $\\{\\, gN : g \\in G \\,\\}$ is denoted $G/N$; define on it\n\n$$(g N) \\cdot (g' N) := (g g') N.$$\n\nNormality guarantees that this definition is independent of the choice of representatives, so $G/N$ becomes a group, called the **quotient group**.\n\nThe natural map $\\pi : G \\to G/N$, $g \\mapsto gN$, is a surjective homomorphism.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d2617371',
+      },
+      notes: {
+        en: "The quotient group is the **set-theoretic quotient** with one more layer: first quotient $G$ by the equivalence relation “differ by an element of $N$”, then check that an operation survives on the quotient set.\n\n**Universal property** (the real use of quotient groups): for any group homomorphism $\\varphi : G \\to G'$, if $N \\subseteq \\ker\\varphi$, then $\\varphi$ factors uniquely through $\\pi$: there exists a unique $\\overline{\\varphi} : G/N \\to G'$ with $\\overline{\\varphi} \\circ \\pi = \\varphi$.\n\n⚠️ A quotient **group** exists only for normal subgroups; the quotient **set** $G/H$ exists for any subgroup (left cosets still partition $G$), but that quotient set usually carries no group structure.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ea5b0888',
+      },
+    },
+
+    'def.vs': {
+      statement: {
+        en: "Let $K$ be a field, $V$ a vector space over $K$, and $S \\subseteq V$.\n\n- **$S$ is linearly independent**: every finite subset of $S$ is linearly independent, i.e. there are no $c_{1}$…$c_{n} \\in K$, not all zero, with $c_{1}v_{1} + \\cdots + c_{n}v_{n} = 0$.\n- **$S$ spans $V$**: every vector in $V$ is a linear combination of finitely many vectors in $S$.\n- **$S$ is a basis of $V$**: $S$ is both linearly independent and spans $V$.\n\nNote that linear independence is defined **finite-subset by finite-subset** — this is exactly why it is “finitary”.",
+        status: 'draft',
+        basedOn: 'v0.9.3#93d086da',
+      },
+      notes: {
+        en: "Equivalent formulation: $S$ is a basis $\\iff V$ every vector admits a unique expression as a finite linear combination of elements of $S$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#da8b623d',
+      },
+    },
+
+    'thm.vsbasis': {
+      statement: {
+        en: "Let $V$ be a vector space over a field $K$. Then\n\n$V$ has a basis;\n- more precisely: every linearly independent subset of $V$ can be extended to a basis of $V$, and every spanning set contains a basis.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fca5a22b',
+      },
+      notes: {
+        en: "In ZF this statement is equivalent to AC — without AC one can construct a vector space with no basis.\n\nThis is the standard example of “an order-theoretic result landing in algebra”, and an instance of a cross-area link in this knowledge graph.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f067b6b0',
+      },
+    },
+
+    'def.commutative-diagram': {
+      statement: {
+        en: "Let $I$ be a **small category** (its objects and morphisms form a small set). A **diagram in $\\mathcal{C}$ indexed by $I$** is a functor\n\n$$D : I \\longrightarrow \\mathcal{C}$$\n\nAll such diagrams, with natural transformations as morphisms, form the category\n\n$$\\mathcal{C}^{I} := \\operatorname{Hom}(I, \\mathcal{C})$$\n\nIf between any two objects of $I$ there is **at most one morphism** (such an $I$ is called a **preorder**), then $D$ is called a **commutative diagram** over $I$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7d602f84',
+      },
+      notes: {
+        en: "**Commutativity is a property of the indexing category, not something the functor supplies.** “$I$ is a preorder” holds if and only if “every $I$-shaped diagram commutes”: then two paths in $I$ with the same source and target compose to the **unique** morphism of $\\operatorname{Hom}(i, j)$, hence are equal.\n\n**In general only the “shape” is given.** When $I$ is not a preorder, $D$ can only be called a $I$-shaped diagram: a functor is **not required** to send parallel $f \\ne g : i \\rightrightarrows j$ to equal arrows.\n\nThe most typical non-commuting diagram is the **parallel pair** $\\bullet \\rightrightarrows \\bullet$, whose limit and colimit are exactly the **equaliser** and **coequaliser**;\n\nthe classical commuting square corresponds to the preorder $\\{A \\le B \\le D,\\ A \\le C \\le D\\}$.\n\n**Reading it on paper.** A diagram drawn on paper is only a **presentation**: objects are assigned to the vertices of a directed graph $G$ and morphisms to its arrows. Saying that it **commutes** means that any two paths with the same source and target have **equal** composites under the labelling — this is a **condition to be checked**, equivalent to the labelling descending to a functor on the quotient of the free category on $G$.\n\n$I$ is called the **indexing category**: it prescribes only the shape of the diagram, not its content.\n\nPrecomposing with a functor $\\lambda : I \\to J$ gives **reindexing** $\\lambda^{*} : \\mathcal{C}^{J} \\to \\mathcal{C}^{I}$: it cuts a $J$-shaped diagram down to a $I$-shaped one.\n\nIn particular, the unique functor $I \\to \\mathbf{1}$ to the terminal category induces the **constant-diagram functor** $\\Delta : \\mathcal{C} \\longrightarrow \\mathcal{C}^{I}$, which sends an object $X$ to the constant diagram “$X$ at every position and $1_X$ on every arrow”.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f76d7406',
+      },
+    },
+
+    'def.fibered-product': {
+      statement: {
+        en: "The limit of a diagram of shape $X_1 \\xrightarrow{f_1} X_0 \\xleftarrow{f_2} X_2$ is called the **fibred product**, written $X_1 \\times_{X_0} X_2$, also called the **pullback** of $f_1$ along $f_2$. It completes to a commutative square\n\n$$\\begin{array}{ccc} X_1 \\times_{X_0} X_2 & \\longrightarrow & X_2 \\\\ \\downarrow & & \\downarrow f_2 \\\\ X_1 & \\xrightarrow{f_1} & X_0 \\end{array}$$\n\nSuch a square is called **cartesian**. Dually, the colimit of such a diagram is the **fibred coproduct**, also called the **pushout**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8b870204',
+      },
+      notes: {
+        en: "Intuition: the pullback is “the product after matching over the base $X_0$” — solving $f_1(x_1) = f_2(x_2)$; the pushout is “gluing $X_1, X_2$ together along their images in $X_0$”.\n\nExample ($\\mathbf{Set}$):\n\n$$X_1 \\times_{X_0} X_2 = \\{(x_1, x_2) \\in X_1 \\times X_2 : f_1(x_1) = f_2(x_2)\\}, \\qquad X_1 \\cup_{X_0} X_2 = (X_1 \\sqcup X_2)/\\!\\sim$$\n\nwhere $\\sim$ is generated by $f_1(x_0) \\sim f_2(x_0)$ ($x_0 \\in X_0$). In $\\mathbf{Top}$, the pullback carries the subspace topology and the pushout the quotient topology.\n\nIn $\\mathbf{Ab}$ both reduce to kernels and cokernels: combine $f: X \\to S$ and $g: Y \\to S$ into $\\varphi : X \\oplus Y \\to S$, $(x,y) \\mapsto f(x) - g(y)$, then the pushout is $= \\operatorname{coker} \\varphi$ and the pullback is $= \\ker \\varphi$ — first take the direct sum, then quotient out the differences of $f, g$.\n\n📌 The “pullback” of category theory is the fibred product (here); the pullback of **differential forms** is `prop.pullback-form-manifold`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f9dfa2de',
+      },
+    },
+
+    'def.equalizer': {
+      statement: {
+        en: "The limit of the parallel pair $f, g : X \\rightrightarrows Y$ is called the **equaliser**, written $\\operatorname{eq}(f,g) = \\ker(f,g)$; the colimit is the **coequaliser**, written $\\operatorname{coker}(f,g)$. They fit into\n\n$$\\ker(f,g) \\longrightarrow X \\overset{f}{\\underset{g}{\\rightrightarrows}} Y \\longrightarrow \\operatorname{coker}(f,g)$$\n\nand the middle map $\\ker(f,g) \\to X$ is a monomorphism, while the map on the right $Y \\to \\operatorname{coker}(f,g)$ is an epimorphism. This segment is called **left exact**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#584c5d90',
+      },
+      notes: {
+        en: "Intuition: the equaliser is the part of $X$ “sent to the same place by $f$ and $g$”; the coequaliser is the quotient of $Y$ that “glues $f(x)$ and $g(x)$ together”.\n\nExample: in $\\mathbf{Set}$, $\\ker(f,g) = \\{x \\in X : f(x) = g(x)\\}$, and $\\operatorname{coker}(f,g) = Y/\\!\\sim$ ($\\sim$ generated by $f(x) \\sim g(x)$).\n\nIn $\\mathbf{Top}$ one adds the subspace topology / the quotient topology.\n\nIn $\\mathbf{Ab}$, $\\ker(f,g) = \\ker(f - g)$ — the equaliser of two maps degenerates to the kernel of **one** map, which is exactly where the name “kernel” comes from.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dee5ea44',
+      },
+    },
+
+    'def.poset': {
+      statement: {
+        en: "Let $\\preceq$ be a binary relation on a set $A$. Then $\\preceq$ is a **partial order on $A$** if and only if:\n\n- **Reflexive**: $\\forall x \\in A, x \\preceq x$;\n- **Antisymmetric**: $\\forall x, y \\in A ( x \\preceq y \\wedge y \\preceq x \\to x = y )$;\n- **Transitive**: $\\forall x, y, z \\in A ( x \\preceq y \\wedge y \\preceq z \\to x \\preceq z )$.\n\nIf in addition **comparability** $\\forall x, y \\in A ( x \\preceq y \\vee y \\preceq x )$ holds, then $\\preceq$ is called a **total order** (linear order) on $A$, and $(A, \\preceq )$ is called a totally ordered set.\n\nCall $(A, \\preceq )$ a **partially ordered set** (poset). Define the **strict order** from $\\preceq$ by: $x \\prec y :\\iff x \\preceq y \\wedge  x \\ne y$",
+        status: 'draft',
+        basedOn: 'v0.9.3#9258d75f',
+      },
+      notes: {
+        en: "Standard examples: $\\langle \\mathcal{P}(S), \\subseteq \\rangle$ is a poset but not totally ordered; $\\langle \\mathbb{R}, \\le \\rangle$ is totally ordered.\n\nAntisymmetry says that the only way two elements can be mutually $\\le$ is by being equal, so a partial order can be seen as an abstraction of $\\le$.\n\n**Assumptions used in each direction** (axiomatic definition and passage to the strict order):\n- A relation is a partial order $\\iff$ it satisfies reflexivity, antisymmetry and transitivity simultaneously, and a relation is a total order $\\iff$ it is a partial order plus comparability; both are unfoldings of the definition and need no axiom of choice.\n- **Partial order** $\\implies$ **strict order**: let $x\\prec y$ mean $x\\preceq y$ and $x\\ne y$; irreflexivity and transitivity follow; conversely, taking the reflexive closure of an irreflexive transitive relation yields a partial order, a finite-step logical deduction.\n- Antisymmetry cannot be dropped: the universal relation on a two-point set is reflexive and transitive but not a partial order; comparability is not automatic either — ordered by inclusion, the power set of a two-element set has two incomparable singletons.\n- Extending a partial order to a total order is a separate theorem, usually proved from the order extension principle; the definition of a total order here does not assert that such an extension exists, and its existence must not be counted as part of the definition.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b341858a',
+      },
+    },
+
+    'def.chain': {
+      statement: {
+        en: "Let $(P, \\preceq )$ be a poset and let $C \\subseteq P$.\n\n**$C$ is a chain** (also called a totally ordered subset) if and only if any two elements of $C$ are comparable:\n\n$$\\forall x, y \\in C ( x \\preceq y \\vee  y \\preceq x )$$\n\n**$C$ is an antichain** if and only if any two distinct elements of $C$ are incomparable.\n\nConvention: $\\emptyset$ and every singleton count as chains.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0f207eac',
+      },
+      notes: {
+        en: "**Chain** is the central notion in Zorn's lemma and the Hausdorff maximal principle — both ask how large a chain can grow.",
+        status: 'draft',
+        basedOn: 'v0.9.3#63045b05',
+      },
+    },
+
+    'def.wellorder': {
+      statement: {
+        en: "A totally ordered set $(W, \\preceq )$ is **well-ordered** if and only if every nonempty subset of $W$ has a least element:\n\n$$\\forall S \\subseteq W ( S \\ne \\emptyset \\to \\exists m \\in S, \\forall s \\in S, m \\preceq s )$$\n\nEquivalently: there is no infinite strictly decreasing chain $w_{0} \\succ w_{1} \\succ w_{2} \\succ \\cdots$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f0928b4f',
+      },
+      notes: {
+        en: "⭐ **Well-ordering has one use: it makes \"the next step\" definable.** The part before each step has a first and a last element, so one can do **transfinite induction** (proof) and **transfinite recursion** (construction) — see \"the recursion theorem on well-ordered sets\".\n\n⭐ Every well-ordered set is **order-isomorphic to a unique ordinal** (see \"the order type of a well-ordered set\"), and that ordinal is its \"length\".\n\nThus \"which of two well-ordered sets is longer\" becomes \"which of two ordinals is larger\", and the order on ordinals is $\\in$.\n\n$\\langle \\mathbb{N}, \\le \\rangle$ is well-ordered;\n\n$\\langle \\mathbb{Z}, \\le \\rangle$ and $\\langle \\mathbb{R}, \\le \\rangle$ are not (some nonempty subsets of $\\mathbb{R}$ have no least element).",
+        status: 'draft',
+        basedOn: 'v0.9.3#d5b4b662',
+      },
+    },
+
+    'def.cardinal': {
+      statement: {
+        en: "Equipotence partitions all sets into classes. The **cardinality** $\\#A$ of a set $A$ is the equipotence class of $A$ — it measures how large $A$ is, without regard to what the elements of $A$ are.\n\nCompare two cardinals:\n\n- $\\#A \\le \\#B$: there is an **injection** $A \\to B$;\n- $\\#A = \\#B$: there is a **bijection** $A \\to B$ (equipotence);\n- $\\#A < \\#B$: $\\#A \\le \\#B$ but $\\#A \\ne \\#B$.\n\nIf $\\#A \\le \\#B$ and $\\#B \\le \\#A$, then $\\#A = \\#B$ (the Schröder–Bernstein theorem).",
+        status: 'draft',
+        basedOn: 'v0.9.3#cd9eda20',
+      },
+      notes: {
+        en: "⭐ Notation: $\\#\\mathbb{N} = \\aleph_0$ (countably infinite), $\\#\\mathbb{R} = 2^{\\aleph_0}$, and $\\aleph_0 < 2^{\\aleph_0}$.\n\n⚠ Strictly speaking, equipotence classes are not sets; the standard ZFC approach is to take **ordinals** first and then, using the well-ordering theorem ($\\iff$ AC), choose the least ordinal in each equipotence class as its representative. That ordinal is called the cardinal.\n\n> Only two facts are needed — $\\#A \\le \\#B$ via injections and $\\#A = \\#B$ via bijections — and both work without choosing representatives.\n\n⚠ Two arbitrary cardinals are **not necessarily comparable**; this is exactly the content of the **cardinal comparability theorem** (which uses AC).",
+        status: 'draft',
+        basedOn: 'v0.9.3#79f2c92e',
+      },
+    },
+
+    'thm.rolle': {
+      statement: {
+        en: "Let $a < b$, and suppose $f$ is continuous on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$, with $f(a) = f(b)$. Then there exists $\\xi \\in (a, b)$ such that\n\n$$f'(\\xi) = 0$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#4055fb64',
+      },
+      notes: {
+        en: "⭐ Geometric content: when the two endpoints have equal height, there is a point in between with a horizontal tangent.\n\nIt is the **only** member of the mean value theorem family that needs compactness (the extreme value theorem locates an interior extremum); the later members are the same statement in different clothing.\n\n⚠ Neither hypothesis can be dropped: continuity on $[a, b]$ guarantees that the extrema exist (compactness), and differentiability on $(a, b)$ guarantees that the extremum is an interior point, where Fermat's lemma applies.\n\nReplacing $f(a) = f(b)$ by $f(a) \\ne f(b)$ gives the Lagrange mean value theorem.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5490b315',
+      },
+    },
+
+    'thm.mvt': {
+      statement: {
+        en: "Let $a < b$, and suppose $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$. Then there exists $\\xi \\in (a, b)$ such that\n\n$$f(b) - f(a) = f'(\\xi)\\,(b - a)$$\n\nEquivalently, $f'(\\xi) = \\dfrac{f(b) - f(a)}{b - a}$: **the average rate of change is attained at some point as an instantaneous rate**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a42dc2a7',
+      },
+      notes: {
+        en: "⭐ This is the **master switch** of differential calculus: whenever a theorem deduces global information from pointwise derivative data, the first step is to use the mean value theorem to rewrite a difference as a derivative.\n\nMonotonicity criteria, the constant-function criterion, L'Hôpital's rule, Taylor's formula and convexity criteria are all corollaries.\n\n⚠ **$\\xi$ is uncontrollable**: the theorem asserts existence but not location — which is why the mean value theorem cannot **compute** $f(b) - f(a)$, only prove inequalities and structural properties.\n\n⚠ A counterexample in the general setting shows that continuity cannot be dropped: adding a single jump to $f(x) = x$ on $[0, 1] \\setminus \\{1/2\\}$ makes the average slope unattainable.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7b9ea076',
+      },
+    },
+
+    'thm.taylor': {
+      statement: {
+        en: "Let $f$ have $n$ continuous derivatives on $[a, b]$ and be $n+1$ times differentiable on $(a, b)$, and choose $x_0 \\in [a, b]$. Then for every $x \\in [a, b]$ with $x \\ne x_0$, there exists $\\xi$ between $x_0$ and $x$ such that\n\n$$f(x) = \\sum_{k=0}^{n} \\frac{f^{(k)}(x_0)}{k!}\\,(x - x_0)^{k} + \\frac{f^{(n+1)}(\\xi)}{(n+1)!}\\,(x - x_0)^{n+1}$$\n\nThe second term on the right is called the **Lagrange remainder**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d5ba4658',
+      },
+      notes: {
+        en: "⭐ In one sentence: **a sufficiently differentiable function is locally a polynomial**, and the error is controlled by that one remainder term.\n\nThis is the only theorem in elementary calculus that recovers a function from finite information, and it is the gateway to the whole line of power series and analytic functions.\n\n⭐ The shape of the remainder has the same origin as the mean value theorem: when $n = 0$, Taylor's formula **is** the Lagrange mean value theorem.\n\n⚠ The remainder only asserts the existence of $\\xi$, not its location;\n\nto **estimate** the error one must know a bound on $f^{(n+1)}$ separately (this is the point of writing the remainder in sup form).\n\n⚠ Two hypotheses: enough differentiability on the interval;\n\n$\\xi$ depends on $x$ and $n$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5b0f2275',
+      },
+    },
+
+    'def.absolute-continuity': {
+      statement: {
+        en: "Let $\\mu$ be a measure on $(X, \\mathcal{M})$ and $\\nu$ a signed measure. Then $\\nu$ is **absolutely continuous with respect to $\\mu$**, written\n\n$$\\nu \\ll  \\mu, $$\n\nif and only if **every $\\mu$-null set is $\\nu$-null**:\n\n$$\\forall E \\in \\mathcal{M}, \\mu(E) = 0 \\implies \\nu(E) = 0$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#d7edce10',
+      },
+      notes: {
+        en: "In one sentence: **wherever $\\mu$ sees nothing, $\\nu$ must also see nothing**.\n\n⚠ Note that $\\mu (E) = 0$ uses $\\mu$ (a positive measure), whereas $\\nu (E) = 0$ uses the signed measure; an equivalent formulation is $|\\nu|(E) = 0$.\n\nClearly $\\mu \\ll  |\\mu|$ and $|\\mu| \\ll  \\mu$ (for the measure $\\mu$ itself).\n\n📌 Example: $\\nu(E) := \\int_{E} f\\,\\mathrm{d}\\mu$ (with $f \\ge 0$ integrable) satisfies $\\nu \\ll \\mu$ and $\\mathrm{d}\\nu/\\mathrm{d}\\mu = f$; the opposite case is $\\delta_{0} \\perp \\mu$ (all mass concentrated on a null set, see `ex.density-abs-continuous`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#02ec2d7f',
+      },
+    },
+
+    'thm.ftc-lebesgue': {
+      statement: {
+        en: "Let $F : [a, b] \\to \\mathbb{C}$, with a compact interval. Then the following three statements are **equivalent**:\n\n**(a)** $F$ is **absolutely continuous** on $[a, b]$;\n\n**(b)** there exists $f \\in L^1([a, b])$ such that\n\n$$F(x) - F(a) = \\int_a^x f(t) dt\\quad  \\forall x \\in [a, b]$$\n\n**(c)** $F$ is **differentiable a.e.**, $F' \\in L^1([a, b])$, and\n\n$$F(x) - F(a) = \\int_a^x F'(t) dt$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#d3397d86',
+      },
+      notes: {
+        en: "⭐ This is the **complete form of the Newton–Leibniz formula for the Lebesgue integral**. Compare Riemann integration: there the condition that $F'$ be integrable and the formula hold requires $F'$ to be continuous (or at least Riemann integrable), whereas here only absolute continuity of $F$ is needed.\n\nThe three conditions split the work: (a) is the function-side condition (expressed via partitions of the interval), (b) is the integral side, and (c) is the derivative side. The theorem says they are the same thing.\n\n⚠ Without absolute continuity the formula **fails**: the Cantor function satisfies the a.e. differentiability and integrability in (c), $F' \\in L^{1}$, but $\\int _{0}^{1} F' = 0 \\ne F(1) - F(0) = 1$.\n\nProof chain: $(a) \\implies (b)$ follows from $AC \\subseteq BV$ and $\\mu _F \\ll m$; $(b) \\implies (c)$ is a direct corollary of the fundamental theorem of calculus; $(c) \\implies (a)$ obtains absolute continuity from the representation $F(x) = \\int F'$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f58d909c',
+      },
+    },
+
+    'def.riemann-sum': {
+      statement: {
+        en: "Let $f : [a, b] \\to \\mathbb{R}$ (**no boundedness is required**), let $P = \\{ x_0 < \\cdots < x_n \\}$ be a partition, and choose a **tag** $\\xi_i \\in I_i$ in each subinterval. The **Riemann sum** is\n\n$$S(f, P, \\xi) := \\sum_{i=1}^{n} f(\\xi_i)\\,\\Delta x_i$$\n\nIt depends on three things: $f$, the partition $P$, and the choice of tags $\\xi_1, \\ldots, \\xi_n$.\n\n⚠️ **Boundedness plays no role here**: each $f(\\xi_i)$ is a real number and a finite sum is always defined. Boundedness enters only when discussing Riemann **integrability** — that is where the Darboux upper and lower sums require $\\sup/\\inf$ to be finite.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c8e5ccd9',
+      },
+      notes: {
+        en: "⭐ Geometric reading: take the \"height\" on each small subinterval to be $f(\\xi_i)$, obtaining $n$ rectangles; $S$ is their total area. **The choice of tags** is the only freedom in this theory — requiring the integrability condition to hold for every choice is exactly what removes that freedom.\n\n⚠ For an unbounded function the Riemann sum is **still defined** (a sum of finitely many real numbers), but boundedness is a prerequisite for the integrability discussion: the Darboux upper and lower sums need $\\sup/\\inf$ to be finite.",
+        status: 'draft',
+        basedOn: 'v0.9.3#52447d62',
+      },
+    },
+
+    'def.series': {
+      statement: {
+        en: "Given a sequence $\\{a_n\\}$, let $s_N := \\sum_{n=1}^{N} a_n$ be its **partial sums**.\n\nThe series $\\sum_{n=1}^{\\infty} a_n$ is said to **converge** if and only if the sequence of partial sums $\\{s_N\\}$ converges; in that case write\n\n$$\\sum_{n=1}^{\\infty} a_n := \\lim_{N \\to \\infty} s_N$$\n\n**Series with nonnegative terms** ($a_n \\ge 0$) are especially clean: the partial sums increase, so\n\n$$\\sum_{n=1}^{\\infty} a_n = \\sup_N s_N \\in [0, +\\infty]$$\n\nalways makes sense (possibly $+\\infty$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#a9ea0be5',
+      },
+      notes: {
+        en: "⭐ Countable additivity of measures and term-by-term properties of integrals both rely on this line for nonnegative series: nonnegativity removes any worry about conditional convergence and rearrangement.\n\n⚠ A convergent series **can be rearranged** only when it converges absolutely; rearranging a conditionally convergent series may change its sum (the Riemann rearrangement theorem).",
+        status: 'draft',
+        basedOn: 'v0.9.3#b3f26486',
+      },
+    },
+
+    'prop.subset-compact-equiv': {
+      statement: {
+        en: "Let $(X, d)$ be a **complete** metric space and $A \\subseteq X$. Then\n\n$A$ is **compact** $\\iff$ $A$ is closed **and** $A$ is **totally bounded**.\n\n(Totally boundedness of $A$ is understood with respect to the subspace metric $d|_A$.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#3ad6d8e2',
+      },
+      notes: {
+        en: "⚠ **The hypothesis that $X$ is complete cannot be dropped.** The reason is the middle step: $A$ is complete as a subspace $\\iff A$ closed in $X$ — this step uses completeness of $X$. Without it, $A$ closed and $A$ totally bounded does not imply $A$ compact.\n\nThis is also a generalization of **Heine–Borel**: $\\mathbb{R}^{n}$ is complete, and in $\\mathbb{R}^{n}$, $A$ bounded $\\iff A$ totally bounded, so \"bounded closed sets are compact\" is exactly the special case.\n\n**Proof.**\n- **$\\implies$**: $A$ compact $\\implies$ $A$ closed in $X$ (the previous item).\n\nTotal boundedness: given $\\varepsilon > 0$, the family $\\{B(a,\\varepsilon)\\cap A\\}_{a\\in A}$ is an open cover of $A$ (with the subspace metric); compactness gives a finite subcover, and those finitely many centers form an $\\varepsilon$-net ✓.\n- **$\\Longleftarrow$**: suppose $A$ is closed and totally bounded.\n\nFirst **completeness**: $X$ is complete and $A$ is closed, so a Cauchy sequence in $A$ converges in $X$ to some point, and the limit lies in the closed set $A$; hence $A$ is complete as a subspace ✓.\n\nNow **compactness**: total boundedness gives a countable dense subset, so any sequence in $A$ has a Cauchy subsequence, obtained layer by layer from $2^{-n}$-nets and the pigeonhole principle;\n\ncompleteness makes that subsequence converge ✓.\n\nHence $A$ is **sequentially compact**;\n\nand in a **metric space** sequential compactness $\\iff$ compactness ✓.\n\n∎\n\n⚠️ The step \"$X$ complete $\\implies$ $A$ complete\" is exactly where the hypothesis in the title is used (see the previous remark).",
+        status: 'draft',
+        basedOn: 'v0.9.3#a5b00a3e',
+      },
+    },
+
+    'prop.compact-basic-operations': {
+      statement: {
+        en: "1. A **closed subspace** of a compact space is compact;\n2. The **continuous image** of a compact space is compact;\n3. A **compact Hausdorff** space is **normal**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a2ba9971',
+      },
+      notes: {
+        en: "**Proof.** (1) Given a closed subset $F \\subseteq X$ (with $X$ compact) and an open cover, add $X \\setminus F$ to obtain an open cover of $X$, take a finite subcover and delete that term ✓. (2) Given $f : X \\to Y$ (with $X$ compact) and an open cover in $Y$, pull it back to an open cover of $X$, take a finite subcover and push it forward ✓.\n\n(3) Given disjoint closed sets $A, B$: for each $a \\in A$, use the Hausdorff property to produce an open neighbourhood $U_a$ of $a$ with $\\overline{U_a} \\cap B = \\emptyset$ ✓;\n\n$A$ is compact, so finitely many cover it, $A$; set $U := \\bigcup_{i} U_{a_i}$, then $\\overline{U} \\cap B = \\emptyset$ ✓;\n\nperform the same construction for $B$, then shrink both families of open sets by one step to obtain open sets separating $A, B$ ✓.\n\n∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#55a98361',
+      },
+    },
+
+    'def.second-countable': {
+      statement: {
+        en: "A topological space $X$ is **second countable** if its topology has a **countable base**: there is a countable family $\\mathcal{B} = \\{\\, B_{n} \\,\\}_{n \\ge 1}$ such that every open set is a union of members of $\\mathcal{B}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#faf23581',
+      },
+      notes: {
+        en: "**It yields three good properties at once**: second countable $\\implies$ separable (choose one point from each nonempty basic element; the result is a countable dense set); second countable $\\implies$ Lindelöf (every open cover has a countable subcover, by filtering basic elements);\n\nsecond countable $\\implies$ first countable (at each point, filter the countably many basic elements containing it).\n\nWith regularity it also yields normality — this is the first step of the Urysohn metrization theorem.\n\n**For metrizable spaces the three countability properties coincide**: separable $\\iff$ Lindelöf $\\iff$ second countable. Hence the Urysohn theorem can also be read as \"regular $+$ separable\".\n\n**Heredity**: subspaces inherit second countability (intersect basic elements with the subspace; still countable); quotient spaces do not (the quotient map crushes a countable base into a much coarser topology).\n\n⚠️ The converse fails: an uncountable discrete space is first countable and metrizable, but not second countable (it has no countable dense subset).\n\n**The relations with first countability and separability are one-way** (this is the group of implications most often reversed):\n\n- **Second countable $\\implies$ first countable**: a countable base itself gives a countable local base at each point. **No extra hypothesis is needed**.\n- **Second countable $\\implies$ separable**: choose one point from each basic element to obtain a countable dense set. ⚠️ This step **uses countable choice** (skip empty basic elements; usually harmless).\n- **Separable $\\not\\implies$ second countable**: the Sorgenfrey line is a counterexample (separable and first countable, but not second countable).\n- **Separable + metrizable $\\implies$ second countable**: this is what makes second countability equivalent to separability in metric spaces; **the proof uses metrizability** (take a countable dense set and balls of radius $1/n$).\n\n⚠️ In one sentence: **second countability is \"global countability\", first countability is \"local countability\"**; in metric spaces both are equivalent to separability, in general topology they are not.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d9399ef6',
+      },
+    },
+
+    'def.subspace': {
+      statement: {
+        en: "Let $V$ be a vector space over a field $K$. Then $U \\subseteq V$ is called a **(linear) subspace** of $V$ if and only if\n\n- $0 \\in U$;\n- $U$ is closed under addition: $u, v \\in U \\implies u + v \\in U$;\n- $U$ is closed under scalar multiplication: $u \\in U$, $c \\in K \\implies cu \\in U$.\n\nEquivalently, $U$ together with the operations restricted from $V$ is itself a $K$-vector space.\n\n**Inclusion** between subspaces is defined as set inclusion, and the **intersection** of any family of subspaces is again a subspace (verify addition and scalar multiplication term by term).",
+        status: 'draft',
+        basedOn: 'v0.9.3#8574cab6',
+      },
+      notes: {
+        en: "⭐ The first of the three conditions can be absorbed into the other two: it suffices that $U \\ne \\emptyset$ and that the set is closed under subtraction (take $u - u = 0$).\n\nWriting the three conditions separately is useful for **checking them one by one**.\n\n⚠ **A union is generally not a subspace**: the union of the $x$-axis and the $y$-axis does not even contain $(1,0)+(0,1)$.\n\nThus the lattice of subspaces is \"closed under intersections, generally not under unions\" — to combine subspaces one uses the **sum** $U + W$.\n\n⚠ The empty set is not a subspace;\n\n$\\{0\\}$ and $V$ are the two smallest subspaces (called **trivial subspaces**).\n\n⭐ Do not confuse this with the topological notion of subspace (`def.subspace-topology`, the subspace topology): the two notions share a name but mean completely different things.\n\n**Assumptions used in each direction** (the vector-space criterion after restricting the operations):\n- Subspace $\\implies$ contains zero and is closed under addition and scalar multiplication: this is a free unfolding of the definition, needing neither finite dimension nor the axiom of choice.\n- The three closure conditions $\\implies$ the restricted operations form a vector space: the algebraic identities are inherited from $V$, negatives come from multiplication by $-1$, and no existence theorem for bases is needed.\n- Nonempty plus closure under subtraction and scalar multiplication $\\implies$ the three conditions: take $u-u=0$ and then recover addition; keeping only nonemptiness and closure under subtraction is not enough, and $\\mathbb Z\\subset\\mathbb R$ is a counterexample.\n- Nonemptiness cannot be dropped: closure of the empty set under addition and scalar multiplication holds vacuously, but there is no zero vector; that an arbitrary intersection is a subspace is checked condition by condition, with the empty intersection conventionally $V$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1cbde284',
+      },
+    },
+
+    'def.linear-map': {
+      statement: {
+        en: "Let $V, W$ be vector spaces over a field $K$. A map $T : V \\to W$ is called **$K$-linear** (or a linear map) if and only if\n\n$$T(u + v) = T(u) + T(v), \\qquad T(cu) = c\\,T(u)$$\n\nfor all $u, v \\in V$ and $c \\in K$. Equivalently, $T(cu + v) = c\\,T(u) + T(v)$.\n\nThe **sum** and **scalar multiple** of two linear maps are again linear, so the set of all linear maps is a $K$-vector space, denoted\n\n$$\\operatorname{Hom}_K(V, W) := \\{\\, T : V \\to W \\ \\text{linear} \\,\\}$$\n\nA composite $S \\circ T$ is again linear.",
+        status: 'draft',
+        basedOn: 'v0.9.3#84cc6399',
+      },
+      notes: {
+        en: "⭐ Linear means **preserving the two operations** (addition and scalar multiplication).\n\nCompared with a group homomorphism, which preserves one operation, there is one more requirement, but it comes for free: both $T(0) = 0$ and $T(-v) = -T(v)$ follow from the definition.\n\n⭐ That $\\operatorname{Hom}_K(V, W)$ is itself a vector space is special to linear algebra: in a general category the morphism set between two objects has no addition (as in $\\mathbf{Set}$), whereas the category of vector spaces is an **additive category** — the morphism sets carry an addition of their own, an extra structure absent from general categories.\n\n⚠ The point of linearity is that **only the addition and scalar multiplication of $K$ matter**: the translation $v \\mapsto v + v_0$ (with $v_0 \\ne 0$) is not linear ($0$ does not map to $0$), but it \"differs from a linear map by a translation\" — that is an affine map.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9e0f1cd6',
+      },
+    },
+
+    'def.matrix': {
+      statement: {
+        en: "Let $K$ be a field and $m, n \\ge 1$. An $m \\times n$ **matrix** is a rectangular array of elements of $K$,\n\n$$A = (a_{ij}) = \\begin{pmatrix} a_{11} & \\cdots & a_{1n} \\\\ \\vdots & & \\vdots \\\\ a_{m1} & \\cdots & a_{mn} \\end{pmatrix}, \\qquad a_{ij} \\in K$$\n\n($i$ is the row index and $j$ the column index, both starting at $1$.) The set of all $m \\times n$ matrices is denoted $M_{m \\times n}(K)$, and the square case by $M_n(K) := M_{n \\times n}(K)$.\n\nThe $j$-th **column** of $A$ is a column vector in $K^{m}$, and its $i$-th **row** is a row vector in $K^{n}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ce735903',
+      },
+      notes: {
+        en: "⭐ A matrix is just a rectangular array of elements of $K$ — **it carries no mathematical structure by itself**; its meaning comes entirely from how it is read (as the ledger of a linear map, as coefficients of a linear system, as the recipe of a bilinear form).\n\n⚠ The two indexing conventions ($a_{ij}$ is the entry in row $i$, column $j$) must be used consistently, or transposition and multiplication go wrong.\n\nThe convention throughout is row first, then column.\n\n⭐ As a set, $M_{m \\times n}(K)$ is just $K^{mn}$ — hence it is certainly a $K$-vector space (operations componentwise).",
+        status: 'draft',
+        basedOn: 'v0.9.3#560493c1',
+      },
+    },
+
+    'def.determinant': {
+      statement: {
+        en: "For $A = (a_{ij}) \\in M_n(K)$, define the **determinant**\n\n$$\\det A := \\sum_{\\sigma \\in S_n} \\operatorname{sgn}(\\sigma)\\ \\prod_{i=1}^{n} a_{i,\\sigma(i)}$$\n\n($S_n$ is the symmetric group on $n$ letters and $\\operatorname{sgn}$ is the sign of a permutation; there are $n!$ terms.)\n\nViewing the columns of $A$ as vectors in $V = K^{n}$, the map $\\det$ is the unique $D$ from the existence and uniqueness theorem for determinants.\n\nBasic properties: $\\det I_n = 1$; swapping two columns changes the sign; equal columns give $0$; $\\det A^{\\mathsf{T}} = \\det A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2e8e4ef0',
+      },
+      notes: {
+        en: "⭐ Geometric reading ($K = \\mathbb{R}$): $|\\det A|$ is the **volume** of the parallelepiped obtained by applying the linear map $x \\mapsto Ax$ to the unit cube, and the sign is the **orientation**.\n\nHence $\\det = 0 \\iff$ the map flattens space $\\iff$ not invertible.\n\n⭐ This geometric meaning reappears in the change-of-variables formula for integrals: $\\int f\\,dx$ becomes $\\int f\\,|\\det|\\,dy$ — there $|\\det|$ is the volume scaling factor.\n\n⚠ The $n!$ terms in the formula show that this definition **cannot be used for computation** ($n = 20$ already exceeds $10^{18}$ terms);\n\nfor computation use elimination or Laplace expansion.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bbe2e7c5',
+      },
+    },
+
+    'def.cone': {
+      statement: {
+        en: "Let $D : I \\to \\mathcal{C}$ be a diagram. A **cone** over $D$ is an object $X \\in \\mathcal{C}$ together with a family of morphisms\n\n$$p_i : X \\longrightarrow D(i) \\qquad (i \\in I)$$\n\nsuch that for every $\\alpha : i \\to j$ in $I$,\n\n$$D(\\alpha) \\circ p_i = p_j$$\n\nEquivalently, a cone is a natural transformation from the constant diagram $\\Delta X$ to $D$. Reversing all arrows gives a **cocone**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cf1e5201',
+      },
+      notes: {
+        en: "Intuition: $X$ stands outside the diagram and casts a beam toward each position of $D$, with the requirement that the projections be compatible (projecting first and then following an arrow in the diagram gives the same result as projecting directly to the target).\n\nWhen $X$ is fixed, the cones over $D$ are exactly the set of natural transformations $\\operatorname{Nat}(\\Delta X, D)$, so a cone is nothing new — just a natural transformation under another name.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dfa84a20',
+      },
+    },
+
+    'def.presheaf': {
+      statement: {
+        en: "A **(set-valued) presheaf** on a category $\\mathcal{C}$ is a functor\n\n$$T : \\mathcal{C}^{\\mathrm{op}} \\longrightarrow \\mathbf{Set}$$\n\nA **morphism** of presheaves is a natural transformation between them. Notation: for a morphism $f : Y \\to X$, write $f^{-1} = T(f) : T(X) \\to T(Y)$; for $s \\in T(X)$, write $s|_Y = f^{-1}(s)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fbb3ca5a',
+      },
+      notes: {
+        en: "Plainly: **each object is assigned a piece of data, and each morphism is assigned a restriction**. Contravariance is what lets a smaller object receive more data — the further one goes into substructures, the more restrictions there are.\n\nExamples:\n\n- On a poset: assign to each $i$ a set $T_i$, and to $i \\le j$ the restriction $T_j \\to T_i$ (dropping antisymmetry, the same works on a preorder).\n- On a topological space: $\\operatorname{Open}(X)$ is the category of open sets (morphisms are inclusions); a presheaf assigns to each open set $u$ a set $T(u)$, and to $u' \\subseteq u$ a restriction $T(u) \\to T(u')$, $s \\mapsto s|_{u'}$.\n\nThe presheaf of continuous functions $C^{0}$, the presheaf of smooth functions $C^{\\infty}$, the constant presheaf $\\underline{E}$ ($\\underline{E}(u) = E$, with restrictions the identity), and the presheaf of constant functions are all examples.\n\n- Fix $X \\in \\mathcal{C}$: $h_{X} : Y \\mapsto \\operatorname{Hom}_{\\mathcal{C}}(Y, X)$ is a presheaf, called a **representable presheaf**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9cb00c1e',
+      },
+    },
+
+    'lem.urysohn': {
+      statement: {
+        en: "Let $X$ be a topological space. Then $X$ is **normal** $\\iff$ for any two disjoint closed sets $A, B \\subseteq X$, there exists a continuous function\n\n$$f : X \\longrightarrow [0, 1], \\qquad f|_{A} \\equiv 0, \\qquad f|_{B} \\equiv 1.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#9323dad3',
+      },
+      notes: {
+        en: "⭐ **What it means: normality = \"there are enough continuous functions\".** Saying only that \"closed sets can be separated by open sets\" is still purely topological; Urysohn's lemma turns it into **a single function** — from then on one can measure topology with real numbers, and analysis can connect.\n\n**How the proof goes (the \"bisection\" construction of $f$).** First build a family of open sets between the two closed sets: for every dyadic rational $q \\in [0,1]$ assign an open set $U_{q}$ such that\n\n$$A \\subseteq U_{q} \\subseteq \\overline{U_{q}} \\subseteq U_{q'} \\quad (q < q'),$$\n\nThis step uses only normality (each step is \"disjoint closed sets are separated by open sets\"). Then set\n\n$$f(x) := \\inf\\{\\, q : x \\in U_{q} \\,\\}$$\n\n(take $1$ if $x \\notin$ any $U_{q}$). The **monotone squeezing** of that family of open sets shows that $f$ is continuous, with $f|_{A} = 0$ and $f|_{B} = 1$. The converse is direct: $f^{-1}[0, 1/2)$ and $f^{-1}(1/2, 1]$ are the open sets separating $A, B$. ∎\n\n**Use**: it is the prerequisite for the **Tietze extension theorem** (extending a continuous real function on a closed subset to the whole space), and Tietze in turn is the engine behind the statement that a real Banach space is acyclic on a compact Hausdorff space — a chain that eventually leads to condensed cohomology.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8d837d2b',
+      },
+    },
+
+    'def.paracompact': {
+      statement: {
+        en: "A topological space $X$ is **paracompact** if **every open cover has a locally finite open refinement**: for every open cover $\\mathcal{U}$ there exists an open cover $\\mathcal{V}$ such that\n\n$$\\mathcal{V}\\ \\text{refines}\\ \\mathcal{U}\\quad\\text{and}\\quad \\mathcal{V}\\ \\text{is locally finite}.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#2f7b5f43',
+      },
+      notes: {
+        en: "⚠ **Convention**: Hausdorffness is **not** built into the definition of \"paracompact\" here (some books include it). Whenever separation is needed, \"paracompact Hausdorff\" is written out explicitly.\n\n**Where it sits in the hierarchy**: compact $\\implies$ paracompact (a finite subcover is certainly locally finite); paracompact Hausdorff $\\implies$ normal $\\implies$ regular $\\implies$ Hausdorff (theorems of this pack); metric spaces $\\implies$ paracompact (Stone's theorem).\n\n⭐ **What it buys**: partitions of unity (hence smoothing, integration and Stokes on manifolds, and extension theorems), and the local finiteness that sheaf theory needs so that \"Čech cohomology equals sheaf cohomology\" holds in detail. Manifolds are second countable by definition, hence automatically paracompact — which is why analysis never worries about it.\n\n**Heredity**: **open** and **closed** subspaces both inherit paracompactness (open subspace $Y$: one **cannot** simply add $X\\setminus Y$ to the cover — it need not be open; the correct route is first to take $Y$ open, extend each member openly inside $X$, lift the cover to an open cover of $X$, then take a locally finite open refinement and intersect it with $Y$; closed subspace: intersect the members of the open cover with the closed subspace). A general subspace need not be paracompact.\n\n⚠ The converse fails completely: a normal space need not be paracompact — $[0, \\omega_{1})$ (the set of all ordinals below the first uncountable ordinal) is normal and countably compact but not compact, and \"countably compact $+$ paracompact $\\implies$ compact\", so it is not paracompact.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0cd0aff7',
+      },
+    },
+
+    'lem.path-product': {
+      statement: {
+        en: "Let $\\alpha$ be a path from $x_{0}$ to $x_{1}$, and $\\beta$ a path from $x_{1}$ to $x_{2}$. Their **concatenation** is \"first traverse $\\alpha$, then $\\beta$, each in half the time\":\n\n$$(\\alpha * \\beta)(t) = \\alpha(2t) \\quad (0 \\le t \\le \\tfrac{1}{2}),$$\n$$(\\alpha * \\beta)(t) = \\beta(2t - 1) \\quad (\\tfrac{1}{2} \\le t \\le 1).$$\n\nBy the pasting lemma, $\\alpha * \\beta$ is continuous and is a path from $x_{0}$ to $x_{2}$. Also write $\\bar{\\alpha}(t) := \\alpha(1 - t)$ for the **reverse path**, and let $e_{x}$ denote the constant path $t \\mapsto x$. Then:\n\n1. **Well defined**: $\\alpha \\simeq_{p} \\alpha'$ and $\\beta \\simeq_{p} \\beta'$ $\\implies$ $\\alpha * \\beta \\simeq_{p} \\alpha' * \\beta'$;\n2. **Associativity**: $(\\alpha * \\beta) * \\gamma \\simeq_{p} \\alpha * (\\beta * \\gamma)$;\n3. **Unit**: $e_{x_{0}} * \\alpha \\simeq_{p} \\alpha \\simeq_{p} \\alpha * e_{x_{1}}$;\n4. **Inverse**: $\\alpha * \\bar{\\alpha} \\simeq_{p} e_{x_{0}}$ and $\\bar{\\alpha} * \\alpha \\simeq_{p} e_{x_{1}}$.\n\nThus \"homotopy classes of loops based at $x_{0}$\" with multiplication $[\\alpha][\\beta] := [\\alpha * \\beta]$ form a group.",
+        status: 'draft',
+        basedOn: 'v0.9.3#924f9a82',
+      },
+      notes: {
+        en: "⚠ **None of these four is an equality at the level of paths.** $(\\alpha * \\beta) * \\gamma$ and $\\alpha * (\\beta * \\gamma)$ have genuinely different values at $t = 1/4, 1/2$; they are only **homotopic**. Hence multiplication must be defined on **homotopy classes**.\n\n**Reparametrization is the whole trick**: if $\\varphi : [0, 1] \\to [0, 1]$ is continuous with $\\varphi(0) = 0$ and $\\varphi(1) = 1$, then $\\alpha \\circ \\varphi \\simeq_{p} \\alpha$, with homotopy $F(t, s) := \\alpha((1 - s)\\,\\varphi(t) + s\\,t)$. Associativity is just taking $\\varphi$ to be the reparametrization \"split at $1/4, 1/2, 1/4$\".\n\n⭐ The homotopy in the unit law **cannot** be something \"stationary\" like $F(t, s) = e_{x_{0}} * \\alpha$: the unit law really requires a deformation, not an equality.\n\n💡 In one sentence: **multiplication at the level of paths is bad (not associative, no unit), at the level of homotopy classes it is good (a group)** — which is why the fundamental group collects \"classes\" rather than \"paths\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#7e293f99',
+      },
+    },
+
+    'prop.induced-homomorphism': {
+      statement: {
+        en: "Let $f : X \\to Y$ be continuous with $f(x_{0}) = y_{0}$. Define\n\n$$f_{*} : \\pi_{1}(X, x_{0}) \\longrightarrow \\pi_{1}(Y, y_{0}),$$\n$$f_{*}([\\alpha]) := [f \\circ \\alpha].$$\n\nThen:\n\n1. **Well defined**: $\\alpha \\simeq_{p} \\beta \\implies f \\circ \\alpha \\simeq_{p} f \\circ \\beta$;\n2. **Homomorphism**: $f_{*}([\\alpha][\\beta]) = f_{*}([\\alpha])\\,f_{*}([\\beta])$;\n3. **Functoriality**: $(1_{X})_{*} = \\operatorname{id}$, and $(g \\circ f)_{*} = g_{*} \\circ f_{*}$;\n4. **Homotopy invariance**: if $f \\simeq g \\; (\\operatorname{rel} \\{x_{0}\\})$, then $f_{*} = g_{*}$.\n\nTherefore $\\pi_{1}$ is a **functor** from \"based topological spaces\" to \"groups\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#b2c0210d',
+      },
+      notes: {
+        en: "**Immediate consequences of the four items**:\n\n- A homeomorphism $f$ gives an isomorphism $f_{*}$ (the inverse is the inverse homeomorphism), so $\\pi_{1}$ is a **topological invariant**;\n- More strongly, a homotopy equivalence gives an isomorphism — so $\\pi_{1}$ is also a **homotopy invariant**, and a contractible space must have fundamental group $1$;\n- By (3), $\\pi_{1}$ turns \"composition of spaces\" into \"composition of groups\", with the **order not reversed** (unlike $f^{*}$ in cohomology).\n\n⚠ Item (4) requires **relative to the basepoint**: a general homotopy $f \\simeq g$ only guarantees that $g_{*}$ and $f_{*}$ are \"conjugate\", not equal. This is exactly what `prop.pi1-basepoint` handles.\n\n💡 Use: to prove \"if $\\pi_{1}$ differ then the spaces are not homeomorphic\", it suffices to find something continuous maps cannot do (e.g. no isomorphism). For proving \"cannot\", functoriality is the cheapest tool — that is how `thm.no-retraction-disk` in this pack argues.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fe9ac6a1',
+      },
+    },
+
+    'thm.euler-characteristic': {
+      statement: {
+        en: "Let $K$ be a **finite** simplicial complex, $\\alpha_{p}$ the number of its $p$-simplices, and $\\beta_{p} := \\operatorname{rank} H_{p}(K)$ the $p$-th **Betti number** (the rank of the free part). Then\n\n$$\\chi(K) = \\sum_{p} (-1)^{p} \\alpha_{p} = \\sum_{p} (-1)^{p} \\beta_{p}.$$\n\nThat is: **the left side merely counts simplices, while the right side depends only on the homology groups**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c9f0047d',
+      },
+      notes: {
+        en: "**Two examples**:\n\n- The tetrahedral subdivision of $S^{2}$: $\\alpha = (4, 6, 4, 0)$, $\\chi = 4 - 6 + 4 - 0 = 2$; $\\beta = (1, 0, 1)$, $\\sum = 1 - 0 + 1 = 2$ ✓\n- The minimal subdivision of the real projective plane $\\mathbb{RP}^{2}$ (6 vertices / 15 edges / 10 faces): $\\chi = 6 - 15 + 10 = 1$; while $H_{1}(\\mathbb{RP}^{2}) = \\mathbb{Z}/2$ **has rank zero**, so $\\sum(-1)^{p}\\beta_{p} = 1 - 0 + 0 = 1$ ✓\n\n⚠ **Note that the right side uses the rank (Betti number), not $\\#H_{p}$**. Torsion (e.g. $\\mathbb{Z}/2$) **does not enter** the alternating sum; the example $\\mathbb{RP}^{2}$ above matches precisely because of this.\n\n⭐ **The real value of the theorem** is not the identity itself but that the right side **depends only on homology** — hence $\\chi$ is independent of the triangulation (together with `thm.simplicial-approximation`) and is a topological invariant. Conversely, to compute $\\chi$ one only counts simplices, without computing homology at all.\n\n**Idea of the proof** (the full computation is on the edge): twice rank–nullity, once on $\\partial_{p}$ and once on $Z_{p}/B_{p} \\cong H_{p}$; the dimensions of the boundary groups cancel in pairs in the alternating sum (telescoping).",
+        status: 'draft',
+        basedOn: 'v0.9.3#4dc64cab',
+      },
+    },
+
+    'prop.h0-components': {
+      statement: {
+        en: "Let $X \\ne \\emptyset$, and let $\\pi_{0}(X)$ be the set of its **path components**. Then\n\n$$H_{0}(X) \\;\\cong\\; \\bigoplus_{C \\in \\pi_{0}(X)} \\mathbb{Z}.$$\n\nMore precisely: choosing a point $C$ from each component $x_{C}$, the classes $[x_{C}]$ form a basis of $H_{0}(X)$. In particular\n\n$$\\tilde{H}_{0}(X) = 0 \\iff X \\text{ is path-connected}.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#57d5e98a',
+      },
+      notes: {
+        en: "**So $H_{0}$ is \"how many pieces $X$ has\"**. This also explains why $\\tilde{H}_{0}(S^{0}) = \\mathbb{Z}$ (two points; rank $2$ divided by the diagonal $\\mathbb{Z}$ leaves rank $1$), so the formula for sphere homology is uniform at $p = 0$ as well.\n\n⚠ **Path connected vs connected**: $H_{0}$ sees only **path** components, not connected components. On usual spaces (locally path connected) the two agree, but not in general — for instance the topologist's sine curve is connected but not path connected, and its $H_{0}$ reflects the path components.\n\n**Why the boundary lands on \"differences of points in the same component\"**: $\\partial$ acts only on a singular $1$-simplex (a path), and its image is the difference of the two endpoints; the whole path lies in one path component. So $\\partial$ cannot cross components $\\implies$ points in different components are linearly independent in $H_{0}$.\n\n💡 This is the first conclusion in this pack that **computes an actual number**: $H_{0}$ is the only homology group whose answer you can write down just by looking at the space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#396c13f2',
+      },
+    },
+
+    'thm.cauchy-criterion': {
+      statement: {
+        en: "A real sequence $\\{x_n\\}$ converges (to some real number) if and only if it is a Cauchy sequence.",
+        status: 'draft',
+        basedOn: 'v0.9.3#37ae9d42',
+      },
+      notes: {
+        en: "⭐ The two directions have completely different content: \"convergent $\\implies$ Cauchy\" uses only the triangle inequality and is **trivial**; \"Cauchy $\\implies$ convergent\" is **completeness itself** — it says that a sequence whose own terms are eventually close to each other must have a limit waiting for it.\n\n⭐ Practical value: to prove convergence one need not guess the limit first.\n\nThe convergence radius of power series, the completeness of function spaces, and the definition of a Banach space (every Cauchy sequence converges) are all direct descendants of this result.",
+        status: 'draft',
+        basedOn: 'v0.9.3#823bca41',
+      },
+    },
+
+    'thm.monotone-convergence': {
+      statement: {
+        en: "Let $\\{x_n\\} \\subseteq \\mathbb{R}$.\n\n- If $x_n$ is increasing ($x_1 \\le x_2 \\le \\cdots$) and bounded above, then $\\{x_n\\}$ converges and\n\n$$\\lim_{n \\to \\infty} x_n = \\sup_{n} x_n$$\n\n- If $x_n$ is decreasing and bounded below, then $\\{x_n\\}$ converges and $\\lim_{n \\to \\infty} x_n = \\inf_{n} x_n$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b015eeaa',
+      },
+      notes: {
+        en: "⭐ The value of the theorem: it asserts that the limit exists **without knowing who the limit is** — and the proof identifies it along the way (it is the supremum of the sequence).\n\nAll of real analysis uses this pattern (series with nonnegative terms, monotone functions, continuity of measure, the prototype of the monotone convergence theorem).\n\n⚠ Neither hypothesis can be dropped: monotone without boundedness diverges ($x_n = n$); bounded without monotonicity may fail to converge ($x_n = (-1)^{n}$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#cba5a5d9',
+      },
+    },
+
+    'lem.nested-intervals': {
+      statement: {
+        en: "Let $I_n = [a_n, b_n]$ be a sequence of **closed** intervals satisfying\n\n- $I_1 \\supseteq I_2 \\supseteq \\cdots$ (nested),\n- $b_n - a_n \\to 0$ (the lengths tend to zero).\n\nThen $\\bigcap_{n=1}^{\\infty} I_n$ contains exactly **one** point.",
+        status: 'draft',
+        basedOn: 'v0.9.3#44dba418',
+      },
+      notes: {
+        en: "⭐ This is the formal form of \"bisection\": applied to a bounded sequence it gives the Bolzano–Weierstrass theorem; every step of a proof that keeps halving an interval is this lemma.\n\n⚠ Neither condition can be relaxed: **closed** — $\\bigcap_{n} (0, 1/n] = \\emptyset$; **lengths tending to zero** — $\\bigcap_{n} [n, +\\infty) = \\emptyset$ while the lengths do not tend to zero.\n\nIf only nesting is required and the lengths need not tend to zero, the conclusion weakens to \"the intersection is nonempty\" (the intersection is then a point or a closed interval).",
+        status: 'draft',
+        basedOn: 'v0.9.3#80e61a2d',
+      },
+    },
+
+    'cor.heine-borel': {
+      statement: {
+        en: "Let $K \\subseteq \\mathbb{R}^{n}$, regarded as a metric space with the Euclidean distance. Then $K$ is compact if and only if $K$ is bounded and closed.\n\n(\"Compact\" means \"every open cover has a finite subcover\", or equivalently \"every sequence has a subsequence converging to a point of $K$\".)",
+        status: 'draft',
+        basedOn: 'v0.9.3#4fca12bb',
+      },
+      notes: {
+        en: "⭐ This is **a corollary of a corollary**: $\\mathbb{R}^{n}$ complete + bounded sets are totally bounded $\\implies$ bounded closed sets are sequentially compact $\\implies$ compact (see \"three equivalent characterizations of compactness in metric spaces\").\n\nWhat is really used is the coordinatewise version of Bolzano–Weierstrass.\n\n⚠ It is **not** a theorem for general metric spaces: in a general metric space \"compact $\\implies$ bounded closed\" always holds, but not conversely (the discrete space is a sufficient example, as is the unit ball of $\\ell^{2}$).\n\n⭐ An immediately usable consequence: the closed interval $[a, b]$ is compact — hence a continuous function attains its extrema on it, is uniformly continuous, and is integrable.\n\nThe three existence theorems of elementary calculus all rest on this.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3b50e1f7',
+      },
+    },
+
+    'lem.archimedean': {
+      statement: {
+        en: "Let $K$ be a **complete ordered field** (for example $\\mathbb{R}$). Then:\n\n**(i) Archimedean property**: the natural numbers are unbounded in $K$ —\n\n$$\\forall x \\in K,\\ \\exists n \\in \\mathbb{N} : n > x$$\n\n**(ii) $\\mathbb{Q}$ is dense in $K$**: between any two elements there lies a rational —\n\n$$\\forall x, y \\in K,\\ x < y \\implies \\exists q \\in \\mathbb{Q} : x < q < y$$\n\n(Here $\\mathbb{Q}$ denotes the embedded image of $\\mathbb{Q}$ in $K$: $1$ generates $\\mathbb{Z}$ in $K$, and taking fractions gives $\\mathbb{Q}$.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#317dfd6c',
+      },
+      notes: {
+        en: "⭐ Both items are **consequences of completeness (the supremum principle)**; no further assumption is needed.\n\nTheir uses are extensive:\n\n- Proving the **uniqueness of the complete ordered field** (well-definedness of $\\mathbb{R}$) relies on (ii) — the rationals are dense on both sides, which is what allows approximation of arbitrary elements by \"images of rationals\";\n\n\n- Every \"take $n$ large enough\" and \"take $\\varepsilon = 1/n$\" in analysis is really an application of (i);\n\n\n- (ii) is also the licence for \"approximating reals by rationals\": every real number is a supremum of rationals.\n\n⚠ Completeness $\\implies$ the Archimedean property, but **not conversely**: $\\mathbb{Q}$ is Archimedean yet not complete.\n\n\n⚠ The $q$ squeezed in (ii) must lie **strictly** between the two numbers — this is precisely where \"dense\" is stronger than \"there are rationals arbitrarily close\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#72990682',
+      },
+    },
+
+    'prop.limit-arithmetic': {
+      statement: {
+        en: "Let $x_n \\to x$, $y_n \\to y$ (finite), $c \\in \\mathbb{R}$. Then\n\n- $x_n \\pm y_n \\to x \\pm y$, $c\\,x_n \\to c\\,x$, $x_n y_n \\to xy$;\n- if $y \\ne 0$, then for $n$ sufficiently large $y_n \\ne 0$, and $x_n / y_n \\to x / y$;\n- $|x_n| \\to |x|$;\n- **Order preservation**: if there is $N_0$ such that $x_n \\le y_n$ whenever $n \\ge N_0$, then $x \\le y$.\n\nThe function version is copied verbatim (replace \"there exists $N$\" by \"there exists $\\delta$\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#2a1a9837',
+      },
+      notes: {
+        en: "⭐ This group is a set of **operational laws**: it says that \"taking limits\" commutes with the four arithmetic operations.\n\nAll computations in analysis rest on it.\n\n⚠ Order preservation yields only $\\le$, never $<$: for example $0 < 1/n$ holds for all $n$, yet the limit is $0 \\le 0$.\n\n**A strict inequality is smoothed away when passing to the limit**.\n\n⚠ \"A limit, if it exists, is unique\" and \"convergent implies **locally** bounded\" also come from the same definition (the function version only guarantees boundedness on some punctured neighbourhood of $x_0$: for $f(x) = x$ with $x_0 = 0$, the limit exists, yet $f$ is unbounded on its whole domain).",
+        status: 'draft',
+        basedOn: 'v0.9.3#74d7129c',
+      },
+    },
+
+    'thm.cauchy-mvt': {
+      statement: {
+        en: "Let $a < b$, and let $f, g$ be continuous on $[a, b]$ and differentiable on $(a, b)$, with $g'(x) \\ne 0$ holding everywhere in $(a, b)$. Then there exists $\\xi \\in (a, b)$ such that\n\n$$\\frac{f(b) - f(a)}{g(b) - g(a)} = \\frac{f'(\\xi)}{g'(\\xi)}$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#8bea67b0',
+      },
+      notes: {
+        en: "⭐ It is not simply Lagrange's theorem \"with $g(x) = x$\": expressing the increments of two functions **simultaneously** at the same point $\\xi$ is the entire reason l'Hôpital's rule works.\n\n⚠ The condition $g' \\ne 0$ cannot be omitted — it also guarantees $g(b) \\ne g(a)$ (by Rolle's theorem), so that the denominator makes sense.\n\n⚠ Parametric-curve reading: $t \\mapsto (g(t), f(t))$ is a curve, and the conclusion says that the tangent at some interior point is **parallel to** the chord joining the endpoints — geometrically the same statement as Lagrange's \"parallel to the chord\", except that the chord need not be the graph of a function.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a43823ed',
+      },
+    },
+
+    'thm.riemann-criterion': {
+      statement: {
+        en: "Let $f$ be bounded on $[a, b]$. Then $f$ is integrable if and only if for every $\\varepsilon > 0$ there exists a partition $P$ such that\n\n$$U(f, P) - L(f, P) = \\sum_{i} \\omega_i\\,\\Delta x_i < \\varepsilon$$\n\n($\\omega_i$ is the oscillation of $f$ on the $i$-th subinterval.) Moreover the two definitions (limit of tagged sums / Darboux suprema) give the same value of the integral.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6b3b7434',
+      },
+      notes: {
+        en: "⭐ **Oscillation sums can be made arbitrarily small** is the most useful integrability criterion in the subject: every proof that \"some function is integrable\" reduces to an estimate of oscillation sums.\n\n⭐ Example of use: for continuous functions use **uniform continuity** to control $\\omega_i$;\n\nfor **monotonically increasing** functions use equal partitions to make $\\sum \\omega_i \\Delta x_i \\le (f(b) - f(a))\\|P\\|$ (for decreasing functions take absolute values on the right).\n\n⚠ The criterion requires only that **some** partition makes the oscillation sum small, not all partitions — because the oscillation sum is monotone nonincreasing under refinement.",
+        status: 'draft',
+        basedOn: 'v0.9.3#007e9dff',
+      },
+    },
+
+    'prop.integral-order': {
+      statement: {
+        en: "Let $f, g$ be integrable on $[a, b]$.\n\n- **Order preservation**: if $f(x) \\le g(x)$ holds everywhere, then $\\int_a^b f \\le \\int_a^b g$; in particular $f \\ge 0 \\implies \\int_a^b f \\ge 0$.\n- **Absolute value**: $|f|$ is integrable, and\n\n$$\\Bigl| \\int_a^b f \\Bigr| \\le \\int_a^b |f|$$\n\n- **Basic estimate**: if $|f(x)| \\le M$ holds everywhere, then $\\bigl| \\int_a^b f \\bigr| \\le M\\,(b - a)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#389e9e2e',
+      },
+      notes: {
+        en: "⭐ Order preservation sounds trivial, but it is the source of **all integral inequalities**: to prove $\\int f \\le \\int g$, it suffices to prove $f \\le g$ pointwise.\n\n⚠ The **non-strict** inequality obtained from order preservation cannot be upgraded: if $f \\le g$ and $f < g$ only at one point, still $\\int_a^b f = \\int_a^b g$ (changing the value at one point does not change the Riemann integral).\n\n⭐ Integrability of $|f|$ is a phenomenon specific to Riemann integration (on the Lebesgue side, integrability of $f$ immediately implies integrability of $|f|$);\n\nconversely integrability of $|f|$ does not imply integrability of $f$ — take $f$ alternating between $1$ and $-1$ on rationals/irrationals; then $|f| \\equiv 1$ is integrable while $f$ is not.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e130ee28',
+      },
+    },
+
+    'thm.root-test': {
+      statement: {
+        en: "Let $a_n \\ge 0$, and set\n\n$$\\alpha := \\limsup_{n \\to \\infty} \\sqrt[n]{a_n}$$\n\nThen: if $\\alpha < 1$, $\\sum a_n$ converges; if $\\alpha > 1$, $\\sum a_n$ diverges; if $\\alpha = 1$, there is **no conclusion**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e7913f13',
+      },
+      notes: {
+        en: "⭐ The mechanism is \"comparison with a geometric series\": when $\\alpha < q < 1$, eventually $\\sqrt[n]{a_n} \\le q$, i.e. $a_n \\le q^{n}$, and the geometric series converges.\n\n⭐ Relation to the ratio test: **the root test is stronger**.\n\nIf $\\lim a_{n+1}/a_n$ exists, then $\\lim \\sqrt[n]{a_n}$ also exists and the two are equal;\n\nthe converse fails (examples such as $a_n = 2^{-n}$ and $a_n = 2^{-n - (-1)^n}$).\n\nSo \"what the ratio test cannot decide, the root test may\".\n\n⚠ What is used is the **$\\limsup$**, not $\\lim$: the sequence $\\sqrt[n]{a_n}$ need not converge, but $\\limsup$ is always defined.\n\n⚠ When $\\alpha = 1$ it fails completely: both $\\sum 1/n$ diverging and $\\sum 1/n^{2}$ converging have $\\alpha = 1$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#de3a09b9',
+      },
+    },
+
+    'thm.cauchy-criterion-series': {
+      statement: {
+        en: "Let $\\{a_n\\} \\subseteq \\mathbb{R}$, $s_N := \\sum_{n=1}^{N} a_n$. Then $\\sum a_n$ converges if and only if\n\n$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall n > m \\ge N :\\ \\Bigl| \\sum_{k=m+1}^{n} a_k \\Bigr| < \\varepsilon$$\n\n**Necessary condition**: $\\sum a_n$ converges $\\implies$ $a_n \\to 0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#47636a44',
+      },
+      notes: {
+        en: "⭐ The role of this criterion is **to turn a series problem into a sequence problem**: it is just the Cauchy criterion for $\\mathbb{R}$ applied to the sequence of partial sums $\\{s_N\\}$ (with interval additivity writing $s_n - s_m$ as a tail).\n\n⚠ \"$a_n \\to 0$\" is only a **necessary** condition: the harmonic series $\\sum 1/n$ has terms tending to zero yet diverges.\n\nTo prove divergence it is very useful (if the terms do not tend to zero, the series diverges at once); to prove convergence it says nothing.\n\n⭐ Every criterion in this pack descends from it: the comparison test uses \"a tail dominated by a larger tail\", Abel–Dirichlet uses \"a tail dominated by the boundedness of partial sums\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#506188ca',
+      },
+    },
+
+    'thm.comparison-test': {
+      statement: {
+        en: "Let $0 \\le a_n \\le b_n$ hold for all sufficiently large $n$. Then\n\n- $\\sum b_n$ converges $\\implies$ $\\sum a_n$ converges;\n- $\\sum a_n$ diverges $\\implies$ $\\sum b_n$ diverges.\n\n**Limit form**: if $a_n, b_n > 0$ and $\\dfrac{a_n}{b_n} \\to L$, then for $L \\in (0, +\\infty)$ the two **converge or diverge together**; for $L = 0$, convergence of $\\sum b_n$ implies convergence of $\\sum a_n$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#990c5f71',
+      },
+      notes: {
+        en: "⭐ This is **the foundation of all criteria for series with positive terms**, and it is itself just a direct translation of \"a monotone bounded partial-sum sequence $\\implies$ converges\": the partial sums of $\\sum a_n$ are dominated by those of $\\sum b_n$.\n\n⚠ The hypothesis is **nonnegativity** (or eventual nonnegativity): with mixed signs the partial sums are no longer monotone, and \"dominated\" means nothing.\n\n⚠ It is **not** a corollary of Kummer's test — the direction is the opposite: the proof of Kummer's test itself uses this \"monotone bounded partial sums\" idea (i.e. comparison).\n\nDeleting this would leave the whole pack of criteria without a foothold.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0a64f047',
+      },
+    },
+
+    'thm.omega': {
+      statement: {
+        en: "There exists a **smallest inductive set** $\\omega$: it contains $\\emptyset$, is closed under $x \\mapsto x \\cup \\{x\\}$, and is contained in every inductive set:\n\n$$\\omega = \\{ \\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}, \\{\\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}\\}, \\ldots  \\}$$\n\nReading $\\in$ as $<$, $\\langle \\omega , \\in \\rangle$ is the natural number system $\\langle \\mathbb{N}, <\\rangle$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ae7341a5',
+      },
+      notes: {
+        en: "$\\omega$ is at the same time the smallest limit ordinal. Its construction needs only the **axiom of infinity + separation schema** (**the power set is not needed**: $\\omega$ is the set of those elements that \"belong to every inductive subset\", which separation extracts directly from an inductive set).",
+        status: 'draft',
+        basedOn: 'v0.9.3#06459c3e',
+      },
+    },
+
+    'thm.induction': {
+      statement: {
+        en: "Let $\\omega$ be the smallest inductive set (that is, $\\mathbb{N}$).\n\n**(i) Induction principle**: if $S \\subseteq \\omega$ satisfies\n\n$$\\emptyset \\in S, \\qquad x \\in S \\implies x \\cup \\{x\\} \\in S$$\n\nthen $S = \\omega$.\n\n**(ii) Recursive definition**: given a set $A$, an element $a_0 \\in A$ and a function $F : A \\to A$, there exists a **unique** function $g : \\omega \\to A$ such that\n\n$$g(\\emptyset) = a_0, \\qquad g(x \\cup \\{x\\}) = F(g(x)) \\quad \\forall x \\in \\omega$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#3a688b8c',
+      },
+      notes: {
+        en: "⭐ **The induction principle governs proofs, recursive definition governs constructions** — two sides of the same fact, both coming from \"$\\omega$ is the smallest inductive set\".\n\nAddition, multiplication and order on $\\mathbb{N}$, and later the operations on $\\mathbb{Z}$ and $\\mathbb{Q}$, are all defined recursively and their properties verified by induction.\n\n⚠ **The induction principle holds only for $\\omega$**;\n\nfor a general well-ordered set one needs **transfinite induction / transfinite recursion**.\n\n\n⚠ Recursive definition must use \"a function $F$\", not \"a sentence\", otherwise one falls into the trap of defining something in terms of itself.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f0214205',
+      },
+    },
+
+    'thm.caratheodory': {
+      statement: {
+        en: "Let $\\mu^{*}$ be an outer measure on $X$, and $\\mathcal{M}$ the family of all $\\mu^{*}$-measurable sets. Then\n\n1. **$\\mathcal{M}$ is a $\\sigma$-algebra**;\n2. **$\\mu^*|_\\mathcal{M}$ is a measure on $(X, \\mathcal{M})$** (that is, $\\mu^{*}$ is genuinely additive on $\\mathcal{M}$);\n3. this measure is **complete**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#adc2cf3f',
+      },
+      notes: {
+        en: "This is the hinge of the whole construction of measure theory: **an outer measure need not be additive, but on its \"splittable sets\" it becomes additive**.\n\nThe proof of 1 is a lengthy verification: finite unions, complements and countable disjoint unions, one by one.\n\nCompleteness of 3 comes from the definition itself: if $\\mu^{*}(A) = 0$ and $B \\subseteq A$, then for every $E$ one has $\\mu^{*}(E \\cap B) \\le \\mu^{*}(B) = 0$ and $\\mu^{*}(E \\cap B^{c}) \\le \\mu^{*}$(E); squeezing both sides shows that $B$ satisfies the measurability condition.",
+        status: 'draft',
+        basedOn: 'v0.9.3#01849809',
+      },
+    },
+
+    'prop.outer-measure-induced': {
+      statement: {
+        en: "Let $\\mathcal{E} \\subseteq \\mathcal{P}(X)$, $\\emptyset \\in \\mathcal{E}$, $X \\in \\mathcal{E}$, $\\rho : \\mathcal{E} \\to [0, +\\infty ]$ satisfy $\\rho (\\emptyset ) = 0$.\n\nFor $A \\subseteq X$ define\n\n$$\\mu^*(A) := \\inf \\{ \\sum_{j=1}^{\\infty} \\rho(E_j) : E_j \\in \\mathcal{E}, A \\subseteq \\bigcup_{j=1}^{\\infty} E_j \\}$$\n\n(covering $A$ by countably many sets from $\\mathcal{E}$ and taking the infimum.) Then $\\mu^{*}$ is an **outer measure** on $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c18a4858',
+      },
+      notes: {
+        en: "This formula is just \"cover $A$ with bricks of known area and take the cheapest covering\" — the Lebesgue outer measure is exactly the special case ($\\mathcal{E}$ open intervals, $\\rho$ length).\n\nWhy require $X \\in \\mathcal{E}$: to guarantee that $A \\subseteq X$ always has a cover, so that the infimum is not taken over the empty set.\n\n⚠ This step uses only $\\rho (\\emptyset ) = 0$, **not additivity** — so in general $\\mu^{*}$ does not recover $\\rho$. Recovering it is precisely Carathéodory's job.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9d9c5f96',
+      },
+    },
+
+    'prop.caratheodory-extension': {
+      statement: {
+        en: "Let $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ be an **algebra**, $\\mu _{0}$ a **premeasure** on $\\mathfrak{A}$, and $\\mu^{*}$ the outer measure induced by $\\mu _{0}$ (as in the previous proposition, with $\\mathcal{E} = \\mathfrak{A}$, $\\rho = \\mu _{0}$).\n\nThen\n\n1. $\\mu^*|_\\mathfrak{A} = \\mu_0$\n2. **every set in $\\mathfrak{A}$ is $\\mu^{*}$-measurable**, hence\n\n$$\\mathfrak{A} \\subseteq \\mathcal{M}(\\mathfrak{A}) \\subseteq \\mathcal{M}$$\n\n($\\mathcal{M}$ is the family of all $\\mu^{*}$-measurable sets), so $\\mu^{*}|_\\mathcal{M}$ is an extension of $\\mu _{0}$ to the $\\sigma$-algebra $\\mathcal{M}(\\mathfrak{A})$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8818cb9c',
+      },
+      notes: {
+        en: "This is the finale of the three-step \"premeasure $\\to$ outer measure $\\to$ measure\": **the premeasure is fully recovered on the extension to the $\\sigma$-algebra**.\n\nThe two directions of 1: $\\mu^*(A) \\le \\mu_0(A)$ is direct ($A$ is covered by $A$ itself); the reverse uses countable additivity of $\\mu _{0}$.\n\n2 is the technical core: verify Carathéodory's splitting condition on $\\mathfrak{A}$.\n\nNot only $\\mathfrak{A}$ itself, but also the sets obtained by countable unions and intersections (and iterating) — $\\mathfrak{A}_\\sigma$, $\\mathfrak{A}_\\delta$, $\\mathfrak{A}_\\sigma \\delta$, $\\mathfrak{A}_\\delta \\sigma$ — are all $\\mu^{*}$-measurable, because $\\mathcal{M}$ is a $\\sigma$-algebra and is closed under these operations.",
+        status: 'draft',
+        basedOn: 'v0.9.3#052f3851',
+      },
+    },
+
+    'thm.caratheodory-uniqueness': {
+      statement: {
+        en: "Let $\\mu _{0}$ be a premeasure on a **ring** $\\mathfrak{A}$ (Carathéodory uniqueness already holds for rings; the case where $\\mathfrak{A}$ is an algebra is a special case), and $\\mu := \\mu^{*}|_\\mathcal{M}$ the extension obtained from it by Carathéodory. If $\\nu$ is a measure on $\\mathcal{M}(\\mathfrak{A})$ that is **another** extension of $\\mu _{0}$, then\n\n$$\\nu(E) \\le \\mu(E)\\quad  \\forall E \\in \\mathcal{M}(\\mathfrak{A})$$\n\nand equality holds when $\\mu(E) < \\infty$; moreover, if $\\mu$ is $\\sigma$-finite, then $\\nu = \\mu$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#848eca6a',
+      },
+      notes: {
+        en: "Key point: **the Carathéodory extension is the \"largest\" one**.\n\nThe reason is hidden in the definition of $\\mu^{*}$ — it is built by \"taking infima over coverings\", and any extension $\\nu$ must be subadditive, so $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$; taking the infimum over all coverings gives $\\nu \\le \\mu^{*}$.\n\n⚠ Without $\\sigma$-finiteness uniqueness **fails** (Lebesgue length on $\\mathbb{R}$ is not $\\sigma$-finite, and this cannot be fixed): take $\\mathfrak{A} =$ the half-open intervals with finite disjoint unions, $\\mu _{0}((a,b]) = +\\infty$ ($a < b$); it is not $\\sigma$-finite (each piece is $\\infty$). Two extensions: $\\mu _{1}(E) = +\\infty$ ($E \\ne \\emptyset$), $\\mu _{1}(\\emptyset) = 0$; another $\\mu _{2}(E) = 0$ ($E$ is a Lebesgue null set), and $+\\infty$ otherwise. They agree on $\\mathfrak{A}$ (both take $\\infty$) yet part ways on singletons.\n\n$\\sigma$-finiteness is exactly what plugs this loophole.\n\nThe standard finale of constructing a measure is this: **first build a premeasure (easy), then extend (Carathéodory guarantees existence), and finally use $\\sigma$-finiteness for uniqueness**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#413ea295',
+      },
+    },
+
+    'thm.completion': {
+      statement: {
+        en: "Let $(X, \\mathcal{M}, \\mu )$ be a measure space. Put\n\n$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}$$\n\n$$\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M},\\ F \\subseteq N,\\ N \\in \\mathcal{N} \\}$$\n\nThen\n\n1. $\\bar{\\mathcal{M}}$ is a $\\sigma$-algebra, and $\\mathcal{M} \\subseteq \\bar{\\mathcal{M}}$;\n2. let $\\bar{\\mu}(E \\cup F) := \\mu(E)$; it is a well-defined measure on $\\bar{\\mathcal{M}}$;\n3. $(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ is a **complete** measure space, called the **completion** of $(X, \\mathcal{M}, \\mu )$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0e07de8e',
+      },
+      notes: {
+        en: "The intuition for $\\bar{\\mathcal{M}}$: \"sprinkle a little dust of null sets onto the original measurable sets\".\n\n**Well-definedness must be checked**: the representation $E \\cup F$ is not unique; if $E_{1} \\cup F_{1} = E_{2} \\cup F_{2}$, one must prove $\\mu (E_{1}) = \\mu (E_{2})$.\n\nThe method is to use $E_{1} \\subseteq E_{2} \\cup N_{2}$ ($N_{2}$ a null set) to get $\\mu (E_{1}) \\le \\mu (E_{2})$, and symmetrically for the reverse.\n\n⚠ Completion is \"stuffing the subsets of null sets in\"; the price is that the $\\sigma$-algebra grows while the measure stays the same.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fb06831e',
+      },
+    },
+
+    'def.premeasure': {
+      statement: {
+        en: "If $\\mathcal{M}$ is only a **ring** (not necessarily a $\\sigma$-algebra), while $\\mu : \\mathcal{M} \\to [0, +\\infty]$ still satisfies the two axioms of a measure:\n\n$$\\mu(\\emptyset) = 0, \\quad E_j \\cap E_k = \\emptyset\\ (j \\ne k),\\ \\bigcup_j E_j \\in \\mathcal{M} \\implies \\mu\\Bigl(\\bigcup_j E_j\\Bigr) = \\sum_j \\mu(E_j)$$\n\nthen $\\mu$ is called a **premeasure** on $\\mathcal{M}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bf66262f',
+      },
+      notes: {
+        en: "Why this intermediate notion: on $\\mathbb{R}$ the half-open intervals (a, b] form only a basic class; their finite disjoint unions form a ring, not yet a $\\sigma$-algebra — but length can already be defined there, and that is the premeasure.\n\nCarathéodory's extension theorem lifts the premeasure from the ring all the way to the generated $\\sigma$-algebra. So \"**build the premeasure first, then extend**\" is the standard two-step construction of a measure.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e896cbba',
+      },
+    },
+
+    'prop.measure-basic': {
+      statement: {
+        en: "Let $(X, \\mathcal{M}, \\mu )$ be a measure space, with all sets below taken from $\\mathcal{M}$.\n\n- **(a) Monotone**: $E \\subseteq F \\implies \\mu(E) \\le \\mu(F)$\n- **(b) Subadditive**: $\\mu( \\bigcup_j E_j ) \\le \\sum_j \\mu(E_j)$ (disjointness not required)\n- **(c) Continuous from below**: $E_1 \\subseteq E_2 \\subseteq \\cdots \\implies \\mu( \\bigcup_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$\n- **(d) Continuous from above**: $\\mu(E_1) < \\infty, \\quad  E_1 \\supseteq E_2 \\supseteq \\cdots \\implies \\mu( \\bigcap_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$",
+        status: 'draft',
+        basedOn: 'v0.9.3#ea018c03',
+      },
+      notes: {
+        en: "(a): split $F$ as $F = E \\cup (F \\setminus E)$ and use countable additivity (fill the remaining positions with $\\emptyset$).\n\n(b): rewrite $\\bigcup E_{j}$ as a disjoint union: $F_{j} = E_{j} \\setminus (E_{1} \\cup \\cdots \\cup E_{j-1})$, then $\\mu (\\bigcup E_{j}) = \\sum \\mu (F_{j}) \\le \\sum \\mu (E_{j})$.\n\n(c): put $A_{j} = E_{j} \\setminus E_{j-1}$ ($E_{0} = \\emptyset$); then $\\bigcup E_{j}$ is a disjoint union of the $A_{j}$, and $\\mu (E_{n}) = \\sum _{j\\le n} \\mu (A_{j})$ — take limits on both sides.\n\n(d): **\"$\\mu (E_{1}) < \\infty$\" cannot be omitted.** Counterexample: $X = \\mathbb{N}$, $\\mu =$ counting measure, $E_{j} = \\{j, j+1$ …}; then every $\\mu (E_{j}) = \\infty$ but the intersection is $\\emptyset$ and $\\mu (\\emptyset ) = 0$.\n\n(c) and (d) together say: a measure is continuous under **monotone limits** of sets — which is exactly what the term \"monotone class\" echoes.",
+        status: 'draft',
+        basedOn: 'v0.9.3#203a3ee5',
+      },
+    },
+
+    'def.null-set': {
+      statement: {
+        en: "Let $(X, \\mathcal{M}, \\mu )$ be a measure space, $E \\in \\mathcal{M}$.\n\nIf $\\mu(E) = 0$, then $E$ is called a **$\\mu$-null set** ($\\mu -null set$).\n\nIf **every subset of a null set is measurable**:\n\n$$\\forall E \\in \\mathcal{M}, \\forall F \\subseteq E : \\mu(E) = 0 \\implies F \\in \\mathcal{M}$$\n\nthen $\\mu$ (or the measure space) is called **complete**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#29bd1708',
+      },
+      notes: {
+        en: "Completeness says \"subsets of null sets are measurable\". This does **not** hold automatically: the $Borel \\sigma$-algebra with Lebesgue measure is not complete — the Cantor set is Borel with measure 0, and some of its subsets are not Borel.\n\nSo the usual procedure is first to **complete** the Borel measure (see the next theorem), obtaining the $Lebesgue \\sigma$-algebra.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ec0fd133',
+      },
+    },
+
+    'def.finitely-additive': {
+      statement: {
+        en: "If $\\mu$ satisfies only (i) and **finite** additivity:\n\n$$A, B \\in \\mathcal{M},\\ A \\cap B = \\emptyset \\implies \\mu(A \\cup B) = \\mu(A) + \\mu(B)$$\n\n(by induction this extends to any finite number of disjoint sets),\n\nthen $\\mu$ is called a **finitely additive measure**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8261235d',
+      },
+      notes: {
+        en: "It is even weaker than a premeasure: a premeasure is countably additive (only its domain is a ring), while a finitely additive measure requires only finite additivity.\n\n⚠ Finitely additive $\\ne$ countably additive: on $\\mathbb{N}$ define $\\mu (E) = 0$ ($E$ finite), $\\mu (E) = +\\infty$ ($E$ infinite); it is finitely additive, yet fails countable additivity for $\\bigcup _{n} \\{n\\} = \\mathbb{N}$.\n\nHistorically (the Banach–Tarski era) \"measures\" using only finite additivity were seriously considered; the problem is not constructing length (Lebesgue measure itself is finitely additive, $m((a,b]) = b - a$ being length), but that finite additivity **cannot support countable limit theorems** (MCT, DCT and Fubini all collapse).",
+        status: 'draft',
+        basedOn: 'v0.9.3#2d8d0cfb',
+      },
+    },
+
+    'thm.termwise-integration': {
+      statement: {
+        en: "Let $\\{f_n\\} \\subseteq L^+$. Then\n\n$$\\int \\sum_{n=1}^{\\infty} f_n = \\sum_{n=1}^{\\infty} \\int f_n$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#dbdb428b',
+      },
+      notes: {
+        en: "(Now $f_n \\ge 0$, so both sides may be $\\infty$; the conclusion is equivalent to: the anomaly \"termwise integrals diverge while the total integral is finite\" is impossible.)\n\nIn use this is **unconditional interchange of $\\int$ and $\\sum$**, with no dominating function needed — the price is nonnegativity. With mixed signs one must switch to DCT.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f372c6ae',
+      },
+    },
+
+    'prop.integrals-equal-iff': {
+      statement: {
+        en: "Let $f, g \\in L^1(\\mu)$. Then the following three are equivalent:\n\n$$\\int_E f d\\mu = \\int_E g d\\mu\\quad  \\forall E \\in \\mathcal{M}; $$\n$$\\int |f - g| d\\mu = 0; $$\n$$f = g\\quad  \\mu-\\text{a.e.}$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#bf15fa83',
+      },
+      notes: {
+        en: "Purpose: statements of this kind **identify a function** by its integrals over all measurable sets.\n\nThe **uniqueness** part of the Radon–Nikodym theorem below uses exactly this — two densities giving the same measure must be equal a.e.\n\n(That $E$ ranges over $\\mathcal{M}$ rather than only $X$ is the key: equality only on $X$ is not enough.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#56a8422c',
+      },
+    },
+
+    'thm.egorov': {
+      statement: {
+        en: "Let $\\mu(X) < \\infty$, and $f_n \\to f$ a.e. Then $f_n \\to f$ **almost uniformly**:\n\n$$\\forall\\varepsilon > 0,\\ \\exists E \\subseteq X :\\ \\mu(E) < \\varepsilon$$\n\nand $f_n \\rightrightarrows  f$ **converges uniformly** on $X \\setminus E$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a9f9daf6',
+      },
+      notes: {
+        en: "⭐ \"Almost everywhere convergence\" sounds weak, but Egorov says: as long as the space has **finite measure**, it is in fact almost **uniform convergence** — the price is only discarding a set of arbitrarily small measure.\n\n⚠ **\"$\\mu(X) < \\infty$\" cannot be omitted.** Counterexample: $f_n = \\chi_{(n, n+1)}$ on $\\mathbb{R}$, converging a.e. to 0, but after discarding any set of finite measure the remainder still has $\\sup = 1$, so there is no uniform convergence.\n\nThis is the template for \"discard a small set in exchange for a good property\" (Lusin's theorem follows the same pattern).",
+        status: 'draft',
+        basedOn: 'v0.9.3#68d60475',
+      },
+    },
+
+    'thm.fubini-tonelli': {
+      statement: {
+        en: "Let $(X, \\mathcal{M}, \\mu )$, $(Y, \\mathcal{N}, \\nu )$ be **$\\sigma$-finite** measure spaces.\n\n**(a) Tonelli (nonnegative case, no extra hypothesis)**: if $f \\in L^+(X \\times Y)$, then\n\n$$\\int f_x d\\nu \\in L^+(X), \\quad  \\int f^y d\\mu \\in L^+(Y)$$\n\nand\n\n$$\\int f d(\\mu \\times \\nu) = \\int_X ( \\int_Y f(x, y) d\\nu(y) ) d\\mu(x) = \\int_Y ( \\int_X f(x, y) d\\mu(x) ) d\\nu(y)$$\n\n**(b) Fubini (integrable case)**: if $f \\in L^1(\\mu \\times \\nu)$, then\n\n- $f_x \\in L^1(\\nu)$ holds for a.e. x, and $f^y \\in L^1(\\mu)$ for a.e. y;\n- $\\int f_x d\\nu \\in L^1(\\mu)$, $\\int f^y d\\mu \\in L^1(\\nu)$ (both defined a.e.);\n- the two triple identities above hold as well.",
+        status: 'draft',
+        basedOn: 'v0.9.3#54c92704',
+      },
+      notes: {
+        en: "⭐ **Tonelli needs no extra hypothesis** (nonnegativity suffices), so in practice one first uses it to \"test\": if one of the two iterated integrals comes out finite, then $f$ is integrable and the order may safely be swapped.\n\n**Fubini, by contrast, must assume integrability** — otherwise one side is $\\infty$ and the other $-\\infty$, and swapping goes wrong.\n\n⚠ Counterexample (not integrable, iterated integrals unequal): on $[0,1]^{2}$ take $f(x, y) = (x^2 - y^2) / (x^2 + y^2)^2$; the two iterated integrals are $\\pi/4$ and $-\\pi/4$ (for exponent $3$ both sides diverge and give no such value).\n\n⚠ $\\sigma$-finiteness cannot be omitted: in the case \"counting measure $\\times Lebesgue$ measure on $\\mathbb{R}$\", the monotone class argument breaks down and Fubini yields absurd conclusions (the classical counterexample on the diagonal).",
+        status: 'draft',
+        basedOn: 'v0.9.3#92a85e51',
+      },
+    },
+
+    'thm.hahn-decomposition': {
+      statement: {
+        en: "Let $\\nu$ be a signed measure on $(X, \\mathcal{M})$. Then there exist $P, N \\in \\mathcal{M}$ such that\n\n$$P \\cup N = X, \\quad  P \\cap N = \\emptyset, $$\n\nwhere **$P$ is positive and $N$ is negative**.\n\nIf $P', N'$ is another such pair, then $P \\triangle  P' = N \\triangle  N'$ is a $\\nu$-null set.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4cf0de58',
+      },
+      notes: {
+        en: "This is \"cutting the space in two along the sign\": $\\nu$ is nonnegative on $P$ and nonpositive on $N$.\n\n⚠ \"$P \\triangle P'$ is a null set\" only says the decomposition is **unique up to null sets** — strictly speaking a Hahn decomposition is not unique (one may move null sets freely between $P$ and $N$), but the $\\nu$ values of all measurable sets are exactly the same.\n\n⭐ With it, \"signed measure\" reduces completely to \"two genuine measures\" — which is exactly the content of the Jordan decomposition below.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b0092838',
+      },
+    },
+
+    'thm.jordan-decomposition': {
+      statement: {
+        en: "Let $\\nu$ be a signed measure. Then there exist **measures** $\\mu_1, \\mu_2$ such that\n\n$$\\nu = \\mu_1 - \\mu_2, \\quad  \\mu_1 \\perp  \\mu_2, $$\n\nand **at least one of them is finite**. Such a decomposition is unique.\n\nConcretely, take a Hahn decomposition $X = P \\sqcup  N$ of $\\nu$ and set\n\n$$\\nu^+ := \\nu(\\cdot \\cap P), \\quad  \\nu^- := -\\nu(\\cdot \\cap N)$$\n\nThen $\\nu = \\nu^+ - \\nu^-$ and $\\nu^+ \\perp  \\nu^-$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#94ecbcdd',
+      },
+      notes: {
+        en: "The **positive variation** $\\nu^+$ and the **negative variation** $\\nu^-$ are both genuine measures; their sum is called the **total variation**:\n\n$$|\\nu| := \\nu^+ + \\nu^-$$\n\n⭐ \"Signed measure\" is thereby fully dissected: every signed measure is the difference of a pair of mutually singular measures.\n\n⚠ \"At least one finite\" corresponds to the clause \"takes at most one of $\\pm \\infty$\" in the definition of a signed measure.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6f931803',
+      },
+    },
+
+    'thm.ac-epsilon-delta': {
+      statement: {
+        en: "Let $\\nu$ be a **finite** signed measure and $\\mu$ a measure. Then\n\n$$\\nu \\ll  \\mu \\iff \\forall\\varepsilon > 0, \\exists\\delta > 0 : \\mu(E) < \\delta \\implies |\\nu(E)| \\le \\varepsilon$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#4fd42ffd',
+      },
+      notes: {
+        en: "It upgrades \"zero on null sets\" to the quantitative \"small values on sets of small measure\" — this is precisely where the word \"continuous\" in absolute continuity comes from.\n\n⚠ \"$\\nu$ finite\" cannot be omitted: otherwise $\\delta$ cannot be controlled (e.g. the $\\mu = Lebesgue$ measure, or $\\nu(E) = \\int_E 1/x$).\n\n(The $\\Longleftarrow$ direction is straightforward: when $\\mu (E) = 0$, for every $\\varepsilon$ one has $|\\nu (E)| \\le \\varepsilon$, hence $\\nu (E) = 0$.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#11a407fc',
+      },
+    },
+
+    'prop.ac-and-variations': {
+      statement: {
+        en: "Let $\\mu$ be a measure and $\\nu$ a signed measure. Then\n\n$$\\nu \\ll  \\mu \\iff |\\nu| \\ll  \\mu \\iff \\nu^+ \\ll  \\mu\\ \\wedge \\ \\nu^- \\ll  \\mu$$\n\nMoreover: if both $\\nu \\perp  \\mu$ and $\\nu \\ll  \\mu$ hold, then $\\nu = 0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#97fb4a54',
+      },
+      notes: {
+        en: "The second half, \"singular and absolutely continuous $\\implies$ equals zero\", is the **starting point** of the structure theorem: what Radon–Nikodym says is precisely that in general $\\nu$ is the sum of these two parts.\n\nProof: if $\\nu \\perp \\mu$, choose $E$ ($\\mu$-null) and $F$ ($\\nu$-null) partitioning the space; from $\\nu \\ll \\mu$ get $\\nu (E) = 0$; and $\\nu (F) = 0$, so $\\nu$ is 0 on all of $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a588911f',
+      },
+    },
+
+    'thm.lebesgue-differentiation': {
+      statement: {
+        en: "Let $f \\in L^1_{loc}$. Then\n\n$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{for a.e. } x \\in \\mathbb{R}^n$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#9ca52cc8',
+      },
+      notes: {
+        en: "⭐ In one sentence: **an integrable function equals the limit of its local averages almost everywhere**.\n\nThis is also the most intuitive respect in which the Lebesgue integral beats the Riemann integral: a Riemann integrable function is continuous almost everywhere, while here not even continuity is needed.\n\nThe three steps of the proof (expanded in the next arrow): first approximate $\\to$ by continuous functions, then use the maximal theorem to squeeze the \"bad set\" down to measure zero.",
+        status: 'draft',
+        basedOn: 'v0.9.3#08bf2446',
+      },
+    },
+
+    'thm.bv-jordan': {
+      statement: {
+        en: "**(a)** If the real and imaginary parts of $F$ are both $BV$, then $F \\in BV$; and conversely: $F \\in BV \\iff \\operatorname{Re} F \\in BV$ **and** $\\operatorname{Im} F \\in BV$.\n\n**(b)** Let $F : \\mathbb{R} \\to \\mathbb{R}$. Then $F \\in BV$ if and only if it can be written as the difference of two bounded increasing functions:\n\n$F \\in BV \\iff F = G - H$, where $G, H$ **are both bounded increasing functions**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3e2fa36f',
+      },
+      notes: {
+        en: "The concrete choice (the function version of the measure-theoretic Jordan decomposition):\n\n$$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$\n\nThe first term is called the **positive variation** of $F$, the second the **negative variation** — the names correspond exactly to $\\nu ^{+}$ and $\\nu ^{-}$ for signed measures.\n\nBy the lemma, $T_F \\pm  F$ is increasing; boundedness comes from $F \\in BV$.\n\n⭐ Meaning: **a BV function $=$ the difference of two bounded increasing functions**. Hence everything about BV reduces to the tractable case of \"increasing functions\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#20f78805',
+      },
+    },
+
+    'thm.holder': {
+      statement: {
+        en: "Let $1 < p < \\infty$, and let $q$ be the **conjugate exponent** of $p$: $\\dfrac{1}{p} + \\dfrac{1}{q} = 1$. Then for measurable $f, g$:\n\n$$\\|fg\\|_1 \\le \\|f\\|_p \\, \\|g\\|_q$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#5c2147f8',
+      },
+      notes: {
+        en: "**Equality condition**: equality holds $\\iff$ $|f|^p$ and $|g|^q$ are proportional a.e. (that is, $\\alpha |f|^p = \\beta |g|^q$ a.e.).\n\nProof: first assume $\\|f\\|_p = \\|g\\|_q = 1$. By Young's inequality, substituting $\\lambda = 1/p$, $a = |f|^p$, $b = |g|^q$ gives\n\n$$|fg| \\le \\frac{|f|^p}{p} + \\frac{|g|^q}{q}$$\n\nIntegrating both sides gives $\\|fg\\|_1 \\le \\frac{1}{p} + \\frac{1}{q} = 1$. In the general case, normalize $f, g$ each.\n\n⚠ When $p = q = 2$ this is the **Cauchy–Schwarz inequality**.\n\nWhen $p = 1$ the conjugate exponent is $q = \\infty$, and then $\\|fg\\|_1 \\le \\|f\\|_1 \\|g\\|_\\infty$ (see the section on $L^\\infty$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#7eba0f85',
+      },
+    },
+
+    'def.multilinear-form': {
+      statement: {
+        en: "Let $V$ be a $K$-vector space. A map $f : V^{n} := V \\times \\cdots \\times V \\to K$ is called an **$n$-linear form** iff, after fixing any $n - 1$ arguments, the remaining argument is linear: for each $i$,\n\n$$f(\\ldots, v_i + c\\,w_i, \\ldots) = f(\\ldots, v_i, \\ldots) + c\\, f(\\ldots, w_i, \\ldots)$$\n\nThe set of all $n$-linear forms is denoted $\\operatorname{Mult}_n(V; K)$; with pointwise operations it becomes a $K$-vector space.\n\nWhen $n = 2$ it is called a **bilinear form**; after fixing a basis, $n$-linear forms correspond one-to-one with \"$n$-dimensional arrays $(f(e_{i_1}, \\ldots, e_{i_n}))$\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#b41158a4',
+      },
+      notes: {
+        en: "⭐ The order of the caveats matters: \"linear in each argument separately\" and \"linear as a whole\" **do not imply each other** — $f(x, y) = xy$ is linear in each argument, yet it is not a linear map $\\mathbb{R}^{2} \\to \\mathbb{R}$ (in general $f(x + x', y + y') \\ne f(x,y) + f(x',y')$).\n\n**Multilinear $\\ne$ linear, and both directions need care**: $f(x,y) = xy$ is multilinear but not a linear map; conversely $g(x,y) = x + y$ is linear as a whole, yet after fixing $y = 1$, $g(x,1) = x + 1$ is not a linear function of $x$.\n\n⭐ It is the source of the \"tensor product\": an $n$-linear form is a linear functional on $V^{\\otimes n}$ (see \"universal property of the tensor product\").\n\n⭐ The determinant is the most special multilinear form in the case $n = \\dim V$ (with the two extra conditions of alternation and normalization).",
+        status: 'draft',
+        basedOn: 'v0.9.3#daba2bbf',
+      },
+    },
+
+    'thm.steinitz': {
+      statement: {
+        en: "Let $V$ be a $K$-vector space, $S = (v_1, \\ldots, v_n)$ linearly independent, $T = (w_1, \\ldots, w_m)$ generating $V$. Then\n\n- $n \\le m$;\n- one can **delete** $n$ vectors from $T$ and insert all vectors of $S$, and the resulting $m$ vectors still generate $V$. In particular, $V$ has a basis whose elements are taken from $T \\cup S$ and which contains $S$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f8464df6',
+      },
+      notes: {
+        en: "⭐ In one sentence: **\"independent\" is never larger than \"generating\"**.\n\nIt is the entire content of the well-definedness of dimension — the two statements ($n \\le m$ and exchangeability) are proved together by one induction.\n\n⭐ The proof inducts on $n$: express $v_1$ in terms of $T$ ($T$ generates), and one of the coefficients must be nonzero (otherwise $v_1 = 0$ contradicts independence); replace it by $v_1$ and the set still generates;\n\nthen repeat for the rest.\n\n⚠ Finiteness is a hypothesis: this only covers **finite** independent and generating sets.\n\nThe infinite case needs Zorn's lemma (that is the statement \"every vector space has a basis\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#53abb05c',
+      },
+    },
+
+    'thm.dimension': {
+      statement: {
+        en: "Let $V$ be a $K$-vector space, and $\\mathcal{B}$, $\\mathcal{B}'$ two bases of $V$. Then $\\mathcal{B}$ and $\\mathcal{B}'$ are **equipotent** (there is a bijection).\n\nHence the **dimension** of $V$ is well defined:\n\n$$\\dim_K V := \\#\\mathcal{B}$$\n\n(by convention $\\dim V = 0$ when $V = \\{0\\}$; when there is no finite basis, $V$ is called **infinite-dimensional**.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#1a91009b',
+      },
+      notes: {
+        en: "⭐ The only content of this theorem is **well-definedness**: there may be many bases, but their cardinality is the same number — that is what makes the word \"dimension\" meaningful.\n\nThe proof is entirely Steinitz: two bases are each independent and generating for the other, so two applications of the exchange lemma give $\\#\\mathcal{B} \\le \\#\\mathcal{B}'$ and the reverse.\n\n⚠ In the finite-dimensional case the exchange lemma suffices;\n\nthe infinite-dimensional case requires proving \"infinite bases are equipotent\" (using the cardinal arithmetic of $\\#(A \\times \\mathbb{N}) = \\#A$), which is much more involved than the finite case.\n\n⭐ Basic properties of dimension: $\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$;\n\nwhen $V$ is **finite-dimensional**, $\\dim(V/U) = \\dim V - \\dim U$; in infinite dimension subtraction is meaningless (cardinals do not subtract), and only cardinal addition $\\dim V = \\dim U + \\dim(V/U)$ remains.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6cb5e0fe',
+      },
+    },
+
+    'thm.rank-nullity': {
+      statement: {
+        en: "Let $V$ be a finite-dimensional $K$-vector space, $T : V \\to W$ linear. Then\n\n$$\\dim V = \\operatorname{rank} T + \\operatorname{null} T = \\dim \\operatorname{im} T + \\dim \\ker T$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#87a72698',
+      },
+      notes: {
+        en: "⭐ This is the **central theorem** of finite-dimensional linear algebra: the input dimension of a linear map is split exactly between what is \"kept\" and what is \"lost\", with nothing left over.\n\n⭐ Corollaries (the three most used):\n- $T$ is injective $\\iff \\operatorname{rank} T = \\dim V$;\n\n$T$ is surjective $\\iff \\operatorname{rank} T = \\dim W$;\n\n- when $\\dim V = \\dim W < \\infty$: $T$ injective $\\iff$ $T$ surjective $\\iff$ $T$ invertible (**finite dimension only**; it fails in infinite dimension: the shift operator $T(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ is injective but not surjective);\n\n- the solution space of an $n$-variable homogeneous linear system has dimension $= n - \\operatorname{rank} A$.\n\n⚠ The clean identity holds only when $\\dim V < \\infty$;\n\nin infinite dimension the right-hand side is a sum of cardinals, and one must write $\\dim V = \\dim \\ker T + \\dim \\operatorname{im} T$ (which holds for cardinals).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e285bdff',
+      },
+    },
+
+    'thm.first-iso-vs': {
+      statement: {
+        en: "Let $T : V \\to W$ be a linear map. Then\n\n$$\\overline{T} : V / \\ker T \\longrightarrow \\operatorname{im} T, \\qquad v + \\ker T \\longmapsto T(v)$$\n\nis a well-defined **linear isomorphism**. In particular\n\n$$V / \\ker T \\cong \\operatorname{im} T$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#1b7e207c',
+      },
+      notes: {
+        en: "⭐ This is the third appearance of the same template on the graph: the set version $A/\\!\\sim$, the group version $G/N \\cong \\operatorname{im}\\varphi$, and the vector-space version $V/\\ker T \\cong \\operatorname{im} T$.\n\nThe proof is verbatim the same in all three — **kill the kernel, and what remains is the image**.\n\n⭐ One particularly useful branch: if $T$ is surjective, then $W \\cong V / \\ker T$;\n\nif $T$ is injective, then $V \\cong \\operatorname{im} T$.\n\n⚠ The well-definedness step cannot be skipped: $v + \\ker T = v' + \\ker T$ says $v - v' \\in \\ker T$, hence $T(v) = T(v')$ — precisely the sentence \"$\\overline{T}$ depends only on the coset\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#2d363bda',
+      },
+    },
+
+    'def.quotient-vs': {
+      statement: {
+        en: "Let $U \\subseteq V$ be a subspace. Define an equivalence relation on $V$:\n\n$$v \\sim v' \\iff v - v' \\in U$$\n\nThe equivalence class $v + U := \\{\\, v + u : u \\in U \\,\\}$ is called a **coset** of $U$. The set of all cosets is denoted $V / U$; define on it\n\n$$(v + U) + (v' + U) := (v + v') + U, \\qquad c\\,(v + U) := (cv) + U$$\n\nThese two operations **do not depend on the choice of representatives** (because $U$ is a subspace), so $V / U$ becomes a $K$-vector space, called the **quotient space**.\n\nThe quotient map $\\pi : V \\to V/U$, $v \\mapsto v + U$ is a surjective linear map, and $\\ker \\pi = U$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7429adc2',
+      },
+      notes: {
+        en: "⭐ This is the quotient set `def.quotient-set` **plus structure**: first compress $V$ by $U$ into a set, then check that the operations are well defined.\n\nThe well-definedness step is the whole content — because the operations are written on representatives, and there are infinitely many ways to choose them.\n\n⭐ \"Every subspace is the kernel of some linear map\" follows: take $\\pi$.\n\nThis is completely parallel to the group case (every normal subgroup is the kernel of some homomorphism).\n\n⚠ What is quotiented is a **subspace** (not an arbitrary subset): otherwise the sum of cosets is not closed.\n\nOn the group side the counterpart is \"normal subgroup\"; here every subspace is automatically normal (because $K$-vector spaces are abelian groups).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e427534f',
+      },
+    },
+
+    'prop.root-bound': {
+      statement: {
+        en: "Let $f \\in K[x]$ be a nonzero polynomial, $\\deg f = n$. Then $f$ has at most $n$ roots in $K$ (distinct roots).\n\nMore precisely (using **multiplicity**): there exist $a_1, \\ldots, a_m \\in K$ (distinct) and positive integers $e_1, \\ldots, e_m$ such that\n\n$$f = (x - a_1)^{e_1} \\cdots (x - a_m)^{e_m}\\, h, \\qquad h(a_i) \\ne 0 \\ \\text{for all } i$$\n\nand then $e_1 + \\cdots + e_m \\le n$ ($e_i$ is called the **multiplicity** of the root $a_i$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#b1feb9d2',
+      },
+      notes: {
+        en: "⭐ The proof is repeated use of the factor theorem: each root lets one divide by $(x - a)$, lowering the degree by 1; the degree cannot go negative, so there are at most $n$ roots.\n\n⭐ The usefulness of this \"small\" proposition is surprisingly large: **testing polynomial identities over finite fields** (two polynomials of degree $< n$ that agree at $n$ points are identical) — interpolation and error-correcting codes (Reed–Solomon) rely on it.\n\n⚠ It holds only over an **integral domain**: over $\\mathbb{Z}/8$, $x^{2} - 1$ has four roots $1, 3, 5, 7$ (because $\\mathbb{Z}/8$ has zero divisors).\n\n$K[x]$ being an integral domain is the key.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4ed8052b',
+      },
+    },
+
+    'thm.poly-ufd': {
+      statement: {
+        en: "Let $K$ be a field. Then every nonzero, non-unit polynomial $f \\in K[x]$ can be written as a product of finitely many irreducible polynomials\n\n$$f = c\\, p_1 p_2 \\cdots p_r, \\qquad c \\in K^{\\times},\\ p_i \\text{ monic irreducible}$$\n\nand the decomposition is **unique** up to order and constant factor: if $f = c' q_1 \\cdots q_s$ is another such decomposition, then $r = s$ and there is a permutation $\\sigma$ such that $p_i = q_{\\sigma(i)}$ (and of course $c = c'$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#0bdf6918',
+      },
+      notes: {
+        en: "⭐ This is the **end point** of the division algorithm: Euclidean domain $\\implies$ principal ideal domain $\\implies$ unique factorization domain.\n\nAll three \"domain\" definitions along the chain are worth remembering, because each has counterexamples in abstract algebra (a UFD need not be a PID: $\\mathbb{Z}[x]$;\n\na PID need not be a Euclidean domain: certain rings).\n\n⭐ Uniqueness relies on \"irreducible $\\implies$ prime\": if $p$ is irreducible and $p \\mid gh$, then $p \\mid g$ or $p \\mid h$.\n\nThis step uses the **Bézout identity** (a product of the Euclidean algorithm), and is precisely the only place where the division algorithm is really used.\n\n⭐ Uses: factorization of integer-coefficient polynomials in $\\mathbb{Q}[x]$, the field structure of $K[x]/(f)$, and the relation between characteristic and minimal polynomials (next batch) all rest on it.",
+        status: 'draft',
+        basedOn: 'v0.9.3#be1c6630',
+      },
+    },
+
+    'def.char-poly': {
+      statement: {
+        en: "Let $T : V \\to V$ be linear, $\\dim V = n < \\infty$. Choose any basis and write $T$ as a matrix $A$, and define\n\n$$\\chi_T(x) := \\det(x\\,I_n - A) \\in K[x]$$\n\ncalled the **characteristic polynomial** of $T$. It is a monic polynomial of degree $n$, independent of the choice of basis (a change of basis gives a similar $A$, and $\\det(P^{-1}(xI - A)P) = \\det(xI - A)$).\n\nIts roots (in $K$, or in an extension field) are exactly the eigenvalues of $T$, and their multiplicities are called **algebraic multiplicities**. Expanded,\n\n$$\\chi_T(x) = x^{n} - (\\operatorname{tr} T)\\,x^{n-1} + \\cdots + (-1)^{n} \\det T$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#05fc7be0',
+      },
+      notes: {
+        en: "⭐ The characteristic polynomial turns the **geometric** problem \"eigenvalues\" into the **algebraic** problem \"roots of a polynomial\" — so the fundamental theorem of algebra guarantees $n$ eigenvalues over $\\mathbb{C}$ (counted with multiplicity).\n\n⭐ Relation of coefficients to invariants: the coefficient of $x^{n-1}$ is $-\\operatorname{tr} T$, and the constant term is $(-1)^{n}\\det T$.\n\nThus \"trace = sum of eigenvalues\" and \"determinant = product of eigenvalues\" become readings of Vieta's formulas, **without actually solving for the eigenvalues**.\n\n⚠ Geometric multiplicity $\\le$ algebraic multiplicity;\n\nthe standard example where they differ is $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ ($\\lambda = 1$: algebraic multiplicity 2, geometric multiplicity 1) — which is exactly why it is not diagonalizable.",
+        status: 'draft',
+        basedOn: 'v0.9.3#63569f9b',
+      },
+    },
+
+    'def.trace': {
+      statement: {
+        en: "For a square matrix $A = (a_{ij}) \\in M_n(K)$, define the **trace** as the sum of the diagonal entries:\n\n$$\\operatorname{tr} A := \\sum_{i=1}^{n} a_{ii}$$\n\nBasic properties:\n\n- $\\operatorname{tr}(A + B) = \\operatorname{tr} A + \\operatorname{tr} B$, $\\operatorname{tr}(cA) = c\\operatorname{tr} A$ (linearity);\n- $\\operatorname{tr}(AB) = \\operatorname{tr}(BA)$, hence $\\operatorname{tr}(P^{-1}AP) = \\operatorname{tr} A$ (**similarity invariance**);\n- $\\operatorname{tr}(ABC) = \\operatorname{tr}(BCA)$ (**cyclic invariance**).",
+        status: 'draft',
+        basedOn: 'v0.9.3#6f6283d2',
+      },
+      notes: {
+        en: "⭐ The trace is the **cheapest invariant**: $O(n)$ computes it, yet it already distinguishes many matrices (far cheaper than the determinant).\n\n⭐ Its deeper meaning: $\\operatorname{tr}$ is the **unique (up to a scalar) central linear functional** on the matrix algebra, and also the \"trace form\" from the $K^{n}$-algebra to $K$ — it reappears in Galois theory and characteristic classes.\n\n⚠ \"Similarity invariance\" is weaker than \"cyclic invariance\": $\\operatorname{tr}(P^{-1}AP) = \\operatorname{tr}(A P^{-1} P) = \\operatorname{tr}A$ is only a special case of the latter.\n\nConversely, equal trace does not imply similarity ($\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ and the zero matrix both have trace $0$ but are not similar).",
+        status: 'draft',
+        basedOn: 'v0.9.3#696bc2f5',
+      },
+    },
+
+    'thm.cayley-hamilton': {
+      statement: {
+        en: "Let $T : V \\to V$ be a linear map on a finite-dimensional $K$-vector space, and $\\chi_T$ its characteristic polynomial. Replace $x$ appearing in $\\chi_T$ by $T$ (multiplying the constant term by $I$), obtaining the operator $\\chi_T(T)$. Then\n\n$$\\chi_T(T) = 0$$\n\n(the right-hand side is the **zero operator**; in matrix form, the zero matrix.)\n\nMatrix form: for $A \\in M_n(K)$, one has $\\chi_A(A) = 0$ (the zero matrix).",
+        status: 'draft',
+        basedOn: 'v0.9.3#77021b88',
+      },
+      notes: {
+        en: "⭐ The theorem says \"**every operator satisfies its own characteristic equation**\" — so $\\chi_T$ is **one** of the polynomials that send $T$ to zero, which immediately gives an entry point for using the structure of the $K[x]$-module ($V$ becomes a $K[x]/(\\chi_T)$-module).\n\n⚠ A common notational error: one cannot substitute $\\chi_T(T) = \\det(T I - T)$ like that (that would be a \"matrix inside a matrix\"); one must **first expand $\\chi_T$ as $\\sum c_k x^{k}$, then replace term by term with $\\sum c_k T^{k}$**.\n\n⭐ Uses: computing powers of a matrix ($A^{n}$ can be expressed linearly in lower powers), proving that the minimal polynomial divides the characteristic polynomial, and finding inverse matrices ($A^{-1}$ is given by the coefficients of $\\chi_A$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#f8799688',
+      },
+    },
+
+    'thm.primary-decomposition': {
+      statement: {
+        en: "Let $K$ be **algebraically closed**, $T : V \\to V$, $\\dim V = n < \\infty$. Let\n\n$$\\chi_T(x) = \\prod_{i=1}^{r} (x - \\lambda_i)^{m_i}$$\n\n($\\lambda_i$ distinct, $m_i \\ge 1$) be the factorization of the characteristic polynomial. Then\n\n- $V = \\bigoplus_{i=1}^{r} V_i$, where $V_i := \\ker (T - \\lambda_i I)^{m_i}$ is the **generalized eigenspace** (also called the **root subspace**);\n- $\\dim V_i = m_i$ (the algebraic multiplicity), each $V_i$ is $T$-invariant, and $T|_{V_i}$ has only one eigenvalue $\\lambda_i$;\n- $E_{\\lambda_i} = \\ker(T - \\lambda_i I) \\subseteq V_i$ is the \"$\\lambda_i$ layer\" inside it.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cd340387',
+      },
+      notes: {
+        en: "⭐ This step is the **first half** of the Jordan decomposition: first split $V$ into $r$ blocks by eigenvalue, so that only one eigenvalue remains on each block.\n\nThe second half splits, within each block, the \"nilpotency degree of $T - \\lambda_i I$\" into small blocks (those are the Jordan blocks).\n\n⭐ Its algebraic version: $V$ is a $K[x]$-module, and $\\chi_T$ is the \"annihilating polynomial\" on it;\n\nby the unique factorization in $K[x]$, the module splits along the irreducible factors of $\\chi_T$ (**Chinese remainder theorem**) — this is where the name \"primary decomposition\" comes from.\n\n⚠ $K$ is required to be algebraically closed: otherwise $\\chi_T$ does not split into linear factors, and the blocks are not indexed by eigenvalues (one must treat \"irreducible factors\" as the blocks).",
+        status: 'draft',
+        basedOn: 'v0.9.3#08c4512b',
+      },
+    },
+
+    'thm.jordan-canonical-form': {
+      statement: {
+        en: "Let $K$ be algebraically closed, $T : V \\to V$, $\\dim V < \\infty$. Then there is a basis of $V$ in which the matrix of $T$ is **block diagonal**\n\n$$J = \\begin{pmatrix} J_{1} & & \\\\ & \\ddots & \\\\ & & J_{s} \\end{pmatrix}, \\qquad J_{k} = \\begin{pmatrix} \\lambda_{k} & 1 & & \\\\ & \\ddots & \\ddots & \\\\ & & \\ddots & 1 \\\\ & & & \\lambda_{k} \\end{pmatrix}$$\n\neach $J_k$ is a **Jordan block** of the form $\\lambda_k I + N_k$ ($N_k$ being the nilpotent \"up-shift\" matrix).\n\nEquivalent formulation: $T$ is diagonalizable $\\iff$ all Jordan blocks are $1 \\times 1$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6b589db8',
+      },
+      notes: {
+        en: "⭐ This is **the only complete classification theorem in finite-dimensional linear algebra**: over an algebraically closed field, \"similarity\" is completely determined by the Jordan type (block sizes and the distribution of eigenvalues).\n\nIt also gives a complete list of \"similarity invariants\".\n\n⭐ The two halves of the proof: primary decomposition (split by eigenvalue) plus, on each root subspace, taking \"the chain $\\ker N^{k}$\" of the nilpotent operator $N = T - \\lambda I$ and extending the basis layer by layer (this step uses `def.quotient-vs` and induction).\n\n⚠ All three hypotheses are needed: **algebraically closed** (otherwise there is no $\\lambda$), **finite-dimensional** (otherwise there may be no eigenvalue), and **$K$ a field**.\n\nOver $\\mathbb{R}$ one can only use the \"real Jordan form\" or switch to the rational canonical form (`thm.rational-canonical-form`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#415baba4',
+      },
+    },
+
+    'thm.gram-schmidt': {
+      statement: {
+        en: "Let $(v_1, \\ldots, v_k)$ be a linearly independent family in an inner product space $V$. Then there is an orthonormal family $(e_1, \\ldots, e_k)$ and an invertible upper-triangular coefficient relation such that\n\n$$\\operatorname{span}(e_1, \\ldots, e_j) = \\operatorname{span}(v_1, \\ldots, v_j), \\qquad j = 1, \\ldots, k$$\n\nIn particular: **every finite-dimensional inner product space has an orthonormal basis** (any basis can be orthogonalized).",
+        status: 'draft',
+        basedOn: 'v0.9.3#94d3a946',
+      },
+      notes: {
+        en: "⭐ Algorithm (induction): first set $e_1 := v_1 / \\|v_1\\|$; then for $j = 2, \\ldots, k$, successively set\n\n$$w_j := v_j - \\sum_{i < j} \\langle e_i, v_j \\rangle\\, e_i, \\qquad e_j := \\frac{w_j}{\\|w_j\\|}$$\n\n(each step subtracts all components of $v_j$ along the directions already obtained.)\n\n⭐ It is the entry point to \"matrix factorization\": orthogonalizing the columns of $A$ gives the **QR decomposition** $A = QR$ ($Q$ has orthonormal columns, $R$ upper triangular) — numerically far more stable than solving equations directly.\n\n⚠ It depends on the inner product and on the **real/complex field structure**: if the inner product is replaced by a general symmetric bilinear form (e.g. the Minkowski metric), the algorithm runs into $\\|w_j\\| = 0$ and divides by zero.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2c2b7464',
+      },
+    },
+
+    'thm.spectral-theorem': {
+      statement: {
+        en: "Let $V$ be a finite-dimensional **real** inner product space, $T : V \\to V$ **self-adjoint** (that is, real symmetric). Then there is an **orthonormal basis** of $V$ in which $T$ is diagonal:\n\n$$V = E_{\\lambda_1} \\oplus \\cdots \\oplus E_{\\lambda_m}$$\n\n(these eigenspaces are **pairwise orthogonal**.)\n\nMoreover, all eigenvalues $\\lambda_i$ are **real**. Matrix form: for a real symmetric matrix $A$ there is an orthogonal matrix $Q$ such that $Q^{\\mathsf{T}} A Q = \\operatorname{diag}(\\lambda_1, \\ldots, \\lambda_n)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#042a3f1c',
+      },
+      notes: {
+        en: "⭐ Difference from Jordan form: Jordan guarantees only \"similarity\", while the spectral theorem guarantees \"**unitary/orthogonal** similarity\", at the price of tightening the hypothesis to self-adjoint (normal).\n\nThese are the answers to two different classification problems in finite dimension.\n\n⭐ The two steps of the proof: (1) there is at least one (real) eigenvalue (by the extreme value theorem: $|Tv|$ or $\\langle Tv, v\\rangle$ attains an extremum on the **compact** unit sphere);\n\n(2) induct on the orthogonal complement of the eigenspace (invariance comes from self-adjointness: $T(U) \\subseteq U \\implies T(U^{\\perp}) \\subseteq U^{\\perp}$).\n\n⭐ The infinite-dimensional generalization is the **spectral theorem on Hilbert spaces** (spectral measures / projection-valued measures for self-adjoint operators) — that belongs to functional analysis, and $L^{2}$ in the `analysis.lp` cluster on the graph is its stage.",
+        status: 'draft',
+        basedOn: 'v0.9.3#92b0f8b0',
+      },
+    },
+
+    'thm.tensor-universal-property': {
+      statement: {
+        en: "For every **bilinear map** $B : V \\times W \\to U$ (a linear map on the product space need not be bilinear, e.g. $B(v,w) = v$), there is a **unique** linear map\n\n$$\\widetilde{B} : V \\otimes W \\to U, \\qquad \\widetilde{B}(v \\otimes w) = B(v, w)$$\n\nConversely, any linear map $\\widetilde B$ composed with $\\otimes$ gives a bilinear map. Hence there is a natural isomorphism\n\n$$\\operatorname{Hom}_K(V \\otimes W,\\ U) \\;\\cong\\; \\operatorname{Bil}(V, W; U)$$\n\n(natural in $U$; this is \"the tensor product is the **representation** of the bilinear functor\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#332744a8',
+      },
+      notes: {
+        en: "⭐ In one sentence: **the tensor product is the linearization device for \"multivariable linearity\"** — everything bilinear, once written as a map on $V \\otimes W$, automatically becomes linear, and the whole machinery of linear algebra applies.\n\n⭐ \"Uniqueness\" is the core of a universal property: it ensures $V \\otimes W$ is determined **up to unique isomorphism** (existence gives the construction, uniqueness gives \"independence of the construction\").\n\nThis is the third appearance of \"the same trick\" on the graph (tensor product, quotient space, exterior power).\n\n⭐ It also holds over an arbitrary commutative ring (`prop.module-tensor-universal`); a coefficient field is just the simplest case.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ce828a4e',
+      },
+    },
+
+    'thm.det-exists-unique': {
+      statement: {
+        en: "Let $\\dim_K V = n$. Then there is a **unique** function\n\n$$D : V^{n} \\longrightarrow K$$\n\nsatisfying:\n\n**(i) Multilinear**: linear in each argument separately;\n\n**(ii) Alternating**: it takes the value $0$ whenever two arguments are equal;\n\n**(iii) Normalized**: $D(e_1, \\ldots, e_n) = 1$ ($(e_i)$ being any fixed ordered basis).",
+        status: 'draft',
+        basedOn: 'v0.9.3#9709355b',
+      },
+      notes: {
+        en: "⭐ This theorem is the **correct way in which the determinant is born**: not \"multiply diagonals and subtract\", but \"the unique function satisfying three axioms\".\n\nThe three axioms are **linearity, alternation, normalization**, and none can be dropped.\n\n⭐ \"Uniqueness\" is far more useful than \"existence\": any function satisfying the three axioms equals the determinant, so to verify an identity it suffices to verify the three axioms — e.g. $\\det(A^{\\mathsf{T}}) = \\det A$, $\\det(AB) = \\det A \\det B$.\n\n⭐ Construction for \"existence\": expand $(v_1, \\ldots, v_n)$ in the basis, obtaining the coefficient matrix $(a_{ij})$ of size $n \\times n$, then take the Leibniz formula $\\sum_{\\sigma} \\operatorname{sgn}(\\sigma) \\prod_i a_{i,\\sigma(i)}$ as the definition — then verify the three axioms one by one (see the proof section).\n\n⭐ Relation to \"universal property\": this is not a universal property in the usual sense (there is no loose adjoint), but it is **the same technique** — pinning an object down by a universal condition (the three axioms).\n\nSo the graph treats it as the same family of proof techniques as `prop.module-tensor-universal` (universal property of the tensor product).",
+        status: 'draft',
+        basedOn: 'v0.9.3#102f7860',
+      },
+    },
+
+    'prop.det-laplace': {
+      statement: {
+        en: "Let $A = (a_{ij}) \\in M_n(K)$, and let $A_{ij}$ denote the matrix of order $(n-1)$ obtained by deleting row $i$ and column $j$, $M_{ij} := \\det A_{ij}$ (**minor**), $C_{ij} := (-1)^{i+j} M_{ij}$ (**cofactor**). Then for each fixed $i$:\n\n$$\\det A = \\sum_{j=1}^{n} a_{ij}\\, C_{ij}$$\n\n(**expansion along row $i$**; the column version is analogous.) Moreover \"off-diagonal expansion\" gives zero: $\\sum_j a_{kj} C_{ij} = 0$ ($k \\ne i$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#9029192f',
+      },
+      notes: {
+        en: "⭐ This is the **recursive algorithm** for the determinant: order $n$ reduces to $n$ matrices of order $n-1$, complexity $O(n!)$.\n\nIn practice one first uses elimination to reduce a row to a single nonzero entry, then expands — the two together are fast.\n\n⭐ The \"off-diagonal expansion equals zero\" statement can be rewritten directly as the matrix identity $A \\cdot \\operatorname{adj} A = (\\det A) I_n$ ($\\operatorname{adj} A$ being the transpose of the cofactor matrix), that is, **when $\\det A \\ne 0$**, $A^{-1} = (\\det A)^{-1} \\operatorname{adj} A$ — Cramer's rule and the inverse matrix formula both come from here (when $A = 0$, $\\operatorname{adj} A = 0$, and neither side is defined).\n\n⭐ Another common corollary (for $K = \\mathbb{R}$, $A \\in \\mathbb{R}^{n \\times n}$, viewing $A$ as $n$ row vectors): **the determinant is linear in each row**, so the behaviour of det under elementary row operations can be listed one by one (swapping rows changes the sign, adding a multiple leaves it unchanged, multiplying by $c$ multiplies it by $c$).\n\nGaussian elimination computes determinants precisely through these three rules.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2a645083',
+      },
+    },
+
+    'thm.svd': {
+      statement: {
+        en: "Let $A \\in M_{m \\times n}(\\mathbb{R})$ (or over $\\mathbb{C}$), of rank $r$. Then there exist orthogonal (unitary) matrices $U \\in M_m$, $V \\in M_n$ and a \"diagonal\" matrix $\\Sigma$ (only the first $r$ diagonal entries nonzero) such that\n\n$$A = U \\Sigma V^{\\dagger}, \\qquad \\Sigma = \\operatorname{diag}(\\sigma_1, \\ldots, \\sigma_r, 0, \\ldots), \\quad \\sigma_1 \\ge \\cdots \\ge \\sigma_r > 0$$\n\nThe $\\sigma_i$ are called the **singular values** of $A$; they are the square roots of the eigenvalues of $A^{\\dagger}A$ (or $AA^{\\dagger}$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#50729a47',
+      },
+      notes: {
+        en: "⭐ Geometric reading of SVD: **every linear map = rotation/reflection $\\to$ stretch along the coordinate axes $\\to$ another rotation/reflection**.\n\nThus it reduces an arbitrary matrix to diagonal form \"after choosing good bases $U$ and $V$\" — this is the complete answer to the **equivalence** classification ($A \\mapsto PAQ$) (the diagonal entries are the singular values, the number of nonzero ones is the rank).\n\n⭐ Division of labour with the spectral theorem: the spectral theorem handles **square and self-adjoint** (similarity classification);\n\nSVD handles **arbitrary shapes** (equivalence classification).\n\nThe former requires $m = n$ and $A^{\\ast} = A$; the latter requires nothing.\n\n⭐ Uses (the most important theorem in numerical linear algebra): low-rank approximation (Eckart–Young: truncating to the first $k$ singular values gives the best low-rank approximation), principal component analysis, pseudoinverse, condition number.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ef21df6d',
+      },
+    },
+
+    'def.dual-space': {
+      statement: {
+        en: "Let $V$ be a $K$-vector space. The **dual space** of $V$ is defined as the set of all linear maps from $V$ to $K$:\n\n$$V^{\\ast} := \\operatorname{Hom}_K(V, K)$$\n\nits elements are called **linear functionals**. $V^{\\ast}$ becomes a vector space under pointwise addition and scalar multiplication.\n\nIf $T : V \\to W$ is linear, define the **transpose** (or dual) map\n\n$$T^{\\ast} : W^{\\ast} \\to V^{\\ast}, \\qquad \\varphi \\longmapsto \\varphi \\circ T$$\n\nIt is linear, and $(S \\circ T)^{\\ast} = T^{\\ast} \\circ S^{\\ast}$ (**contravariance**).",
+        status: 'draft',
+        basedOn: 'v0.9.3#561cb824',
+      },
+      notes: {
+        en: "⭐ Mind the direction: the dual $T^{\\ast}$ of $T : V \\to W$ is $W^{\\ast} \\to V^{\\ast}$, **the arrow is reversed**.\n\nThis is the entire meaning of the word \"dual\", and it is consistent with the status of $(-)^{\\ast}$ as a contravariant functor.\n\n⭐ In finite dimension $V \\cong V^{\\ast}$ (equal dimensions), but there is **no natural isomorphism** — to find one, a basis must first be chosen.\n\nWhereas $V \\cong V^{\\ast\\ast}$ has the natural isomorphism $v \\mapsto (\\varphi \\mapsto \\varphi(v))$; this is \"the dual of the dual returns to itself\".\n\n⚠ In infinite dimension $V^{\\ast}$ is strictly larger than $V$: $\\dim V^{\\ast} = \\#(K)^{\\dim V}$ is a cardinality theorem of **Erdős–Kaplansky** (it uses AC; $\\#(V^{\\ast}) = \\#(K)^{\\dim V}$ is elementary, but \"the dimension equals this cardinal\" is not), so the above isomorphism fails.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5929282e',
+      },
+    },
+
+    'def.gcd-domain': {
+      statement: {
+        en: "An integral domain $A$ is called a **gcd domain** if every $a, b \\in A$ has a **greatest common divisor**: there exists $d$ such that\n\n$$d \\mid a,\\quad d \\mid b,$$\n\nand **every $c$ dividing both $a, b$ divides $d$**.\n\nNote that \"greatest\" means the **greatest lower bound in the divisibility order**, not comparison of size — an integral domain has no total order.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f0ee7240',
+      },
+      notes: {
+        en: "Why it must be defined this way: in $\\mathbb{Z}$ the \"greatest common divisor\" relies on comparing $|d|$, and a general integral domain has no absolute value. The right replacement is \"divisible by every common divisor\": in $\\mathbb{Z}$ it is equivalent to \"largest absolute value\", and in $\\mathbb{Z}[i]$ too this is the only statement that holds.\n\nHierarchy: UFD $\\implies$ gcd domain (`imp.ring-ufd-gcd`), but not conversely ($\\mathbb{Z}[\\sqrt{-5}]$ does not even have $\\gcd(6, 2(1+\\sqrt{-5}))$). Bézout domain $\\implies$ gcd domain, because $\\gcd$ is given directly by a linear combination.\n\n$\\gcd$ may fail to exist — this is exactly why \"uniqueness of factorization in a UFD\" cannot be replaced by gcd.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3d56a870',
+      },
+    },
+
+    'prop.prime-ideal': {
+      statement: {
+        en: "Let $A$ be a commutative ring with unit, $P, M \\subset A$ a **proper ideal** (proper; if $P = A$ were allowed, \"$A/P$ is an integral domain\" would fail; if $M = A$ were allowed, \"maximal\" would fail).\n\n**(i)** $P$ is called **prime** if $ab \\in P \\implies a \\in P$ or $b \\in P$. Equivalently: $A/P$ is an **integral domain**.\n\n**(ii)** $M$ is called **maximal** if there is no ideal $J$ with $M \\subset J \\subset A$. Equivalently: $A/M$ is a **field**.\n\n**(iii)** Maximal $\\implies$ prime ($A/M$ a field $\\implies$ an integral domain).",
+        status: 'draft',
+        basedOn: 'v0.9.3#3c4dff50',
+      },
+      notes: {
+        en: "⭐ A prime ideal is the abstraction of \"divisibility\": in $\\mathbb{Z}$ ($p \\ge 2$), $(p)$ is prime $\\iff$ $p$ is prime ($(0)$ is also prime, but $0$ is not prime); in $k[x]$ ($k$ a field, $f \\ne 0$), $(f)$ is prime $\\iff$ $f$ is irreducible ($(0)$ is also prime, while $0$ is irreducible).\n\n⭐ A maximal ideal is \"the simplest after quotienting\": $\\mathbb{Z}/p\\mathbb{Z}$ is a field, $\\mathbb{Z}/(6)$ is not (it has zero divisors).\n\n⚠ Maximal $\\implies$ prime, but **not conversely**: in $k[x,y]$, $(x)$ is prime ($k[x,y]/(x) \\cong k[y]$ is an integral domain), yet not maximal ($(x) \\subset (x, y) \\subset k[x,y]$).\n\nIn a one-dimensional integral domain, the **nonzero** prime ideals are all maximal (e.g. $\\mathbb{Z}$, $k[x]$); $(0)$ is prime but not maximal ($\\mathbb{Z}$ in $(0) \\subset (2) \\subset \\mathbb{Z}$).\n\n📌 Existence (every proper ideal lies in a maximal ideal) requires Zorn's lemma; that is an application of `lem.zorn`, not part of this entry.",
+        status: 'draft',
+        basedOn: 'v0.9.3#671f5f5c',
+      },
+    },
+
+    'prop.ideal-basic': {
+      statement: {
+        en: "Let $A$ be a ring and $I, J \\subseteq A$ ideals. Then:\n\n**(i)** $I \\cap J$ and\n\n$$I + J := \\{\\, x + y : x \\in I,\\ y \\in J \\,\\}$$\n\nare ideals; $I + J$ is the **smallest** ideal containing $I \\cup J$;\n\n**(ii)** the set of finite sums\n\n$$IJ := \\left\\{ \\sum_{k=1}^{n} x_k y_k : x_k \\in I,\\ y_k \\in J,\\ n \\ge 0 \\right\\}$$\n\nis an ideal, and $IJ \\subseteq I \\cap J$;\n\n**(iii) universal property of the quotient ring**: if $\\varphi : A \\to B$ is a ring homomorphism with $\\varphi(I) = 0$, then there is a **unique** ring homomorphism $\\bar{\\varphi} : A/I \\to B$ such that $\\bar{\\varphi} \\circ \\pi = \\varphi$, where $\\pi : A \\to A/I$ is the quotient map.",
+        status: 'draft',
+        basedOn: 'v0.9.3#af38a24c',
+      },
+      notes: {
+        en: "⭐ Compare groups: to quotient a group into a group, one quotients by a **normal subgroup**; to quotient a ring into a ring, one quotients by an **ideal**.\n\nThe reason is exactly the same — the operations on the quotient set must be independent of the representative.\n\n⚠ The **union** of ideals is not generally an ideal: $2\\mathbb{Z} \\cup 3\\mathbb{Z}$ does not contain $2 + 3 = 5$.\n\nSo the substitute for \"union\" is the **sum** $I + J$, which is the smallest ideal containing both.\n\n⭐ The universal property of the quotient ring is the other face of the \"first isomorphism theorem\": when $\\ker \\varphi \\supseteq I$, $\\varphi$ factors through $A/I$, and $A/\\ker\\varphi \\cong \\operatorname{im}\\varphi$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e22f77a4',
+      },
+    },
+
+    'thm.fundamental-arithmetic': {
+      statement: {
+        en: "Every integer $n > 1$ can be written uniquely as\n\n$$n = p_{1}^{e_{1}} p_{2}^{e_{2}} \\cdots p_{r}^{e_{r}},$$\n\nwhere $p_{1} < p_{2} < \\cdots < p_{r}$ are primes and $e_{i} \\in \\mathbb{Z}_{\\ge 1}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d5a75b8d',
+      },
+      notes: {
+        en: "Existence: induct on $n$ — if $n$ is prime, done; otherwise $n = ab$ with $1 < a, b < n$, apply the induction hypothesis to $a, b$ and multiply.\n\nUniqueness: use Euclid's lemma ($p \\mid ab \\implies p \\mid a$ or $p \\mid b$). This is the standard argument for a unique factorization domain (UFD).\n\nThe abstract algebraic version is \"$\\mathbb{Z}$ is a UFD\": $K[x]$ also is (`thm.poly-ufd`), while $\\mathbb{Z}[\\sqrt{-5}]$ is not ($6 = 2\\cdot 3 = (1+\\sqrt{-5})(1-\\sqrt{-5})$).\n\nHierarchy: Euclidean domain $\\implies$ UFD $\\implies$ gcd domain.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7369f432',
+      },
+    },
+
+    'def.power': {
+      statement: {
+        en: "Let $A$ be a ring with unit (e.g. $\\mathbb{Z}$, $\\mathbb{R}$), $a \\in A$. The **integer powers** are defined recursively ($a^{0} := 1$ is the convention for the **empty product**; when $a = 0$ one also takes $0^{0} := 1$):\n\n$$a^{0} := 1, \\qquad a^{n+1} := a^{n} \\cdot a \\quad (n \\in \\mathbb{N});$$\n\nIf $a$ is invertible (in $\\mathbb{R}$ this means $a \\ne 0$), define for $n \\ge 1$\n\n$$a^{-n} := (a^{-1})^{n} = \\frac{1}{a^{n}}.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#d99a76a8',
+      },
+      notes: {
+        en: "⭐ A power is just a compressed notation for \"multiplication written many times\"; it has no new content — but it turns \"$n$ times\" into an **object one can induct on**: `thm.binomial`, `thm.bernoulli`, geometric series and power series all induct on $n$.\n\n⚠ Only **integer** exponents are defined here.\n\n$a^{1/2}$ must wait for `thm.nth-root` (n-th roots), and $a^{\\sqrt{2}}$ for `def.real-power` — the order cannot be reversed, or \"taking roots\" would be an undefined notion.\n\n⚠ $0^{0} = 1$ is an **algebraic convention** (empty product); in **analysis** $0^{0}$ is an indeterminate form with its own limit convention — the two do not conflict, but do not mix them.\n\n⚠ Powers of the **same element** satisfy $a^{n}a = a\\cdot a^{n} = a^{n+1}$ by associativity, with **no** commutativity needed; what needs care is powers of **different elements** (in a noncommutative ring $(ab)^{n} \\ne a^{n}b^{n}$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e92f38d1',
+      },
+    },
+
+    'thm.binomial': {
+      statement: {
+        en: "Let $A$ be a commutative ring, $a, b \\in A$, $n \\in \\mathbb{N}$. Then\n\n$$(a + b)^{n} = \\sum_{k=0}^{n} \\binom{n}{k} a^{k}\\, b^{n-k}, \\qquad \\binom{n}{k} := \\frac{n!}{k!\\,(n-k)!}.$$\n\nThe coefficients satisfy the **Pascal recurrence**\n\n$$\\binom{n}{k} = \\binom{n-1}{k-1} + \\binom{n-1}{k},$$\n\nand are therefore natural numbers ($\\binom{n}{k}$ is the number of ways to \"choose $k$ from $n$\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#fb046ce1',
+      },
+      notes: {
+        en: "⭐ This theorem is used in two places on the graph: the functional equation $\\exp(z+w) = \\exp z\\,\\exp w$ of `def.exp-function` (expand $(z+w)^{n}$ and rearrange), and the amplification of $(b+h)^{n}$ in `thm.nth-root`.\n\n⭐ The proof inducts only on $n$: expand $(a+b)^{n+1} = (a+b)^{n}(a+b)$, and use Pascal to merge the two groups of coefficients.\n\n⚠ It fails in noncommutative rings ($ab \\ne ba$), hence the hypothesis says commutative ring.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d5d70268',
+      },
+    },
+
+    'thm.bernoulli': {
+      statement: {
+        en: "Let $x \\ge -1$, $n \\in \\mathbb{N}$. Then\n\n$$(1 + x)^{n} \\ge 1 + n x.$$\n\nIf $x \\ne 0$ and $n \\ge 2$, the inequality is **strict**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f31f4ac7',
+      },
+      notes: {
+        en: "⭐ This is the smallest estimate that compresses \"multiplying the same $1+x$ repeatedly\" into a **linear** bound, and $x$ can be arbitrarily small.\n\nIn analysis it is used for **lower bounds**: $(1+h)^{n} \\ge 1 + nh$, $(1-h)^{n} \\ge 1 - nh$ — the second direction of `thm.nth-root` is exactly this.\n\n⚠ The hypothesis $x \\ge -1$ is there to make $1+x \\ge 0$: the induction step multiplies both sides by $1+x$, and only if it is nonnegative does the inequality not reverse.\n\nFor $x < -1$ the statement may fail or lose its induction base.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cfcdc531',
+      },
+    },
+
+    'prop.order-rules': {
+      statement: {
+        en: "Let $K$ be an ordered field, $a, b, c, d \\in K$. Then\n\n**(i)** $a < b \\iff a + c < b + c$;\n\n**(ii)** $a < b$ and $c < d$ $\\implies$ $a + c < b + d$;\n\n**(iii)** for $c > 0$, $a < b \\implies ac < bc$; for $c < 0$, $a < b \\implies ac > bc$;\n\n**(iv)** $0 < a < b \\implies 0 < \\dfrac{1}{b} < \\dfrac{1}{a}$;\n\n**(v)** $0 < 1$; and $a \\ne 0 \\implies a^{2} > 0$;\n\n**(vi)** $a < b \\implies a < \\dfrac{a + b}{2} < b$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#62f12283',
+      },
+      notes: {
+        en: "⭐ This is the rule table for all **inequality estimates**.\n\nPart (iii) is the easiest to get wrong: multiplying by a negative number **reverses** the inequality, so when making an $\\varepsilon$ estimate always first check whether the quantity being multiplied is positive.\n\n⭐ Part (iv) (reciprocal reverses order) is used daily in places like \"$|g(x)| > |B|/2 \\implies 1/|g(x)| < 2/|B|$\" — the reciprocal rule for limits relies on it to amplify $1/|g|$.\n\n⚠ The whole package depends only on the **two compatibility axioms** in the definition: addition preserves order, and multiplication by a positive number preserves order.\n\nEverything else is a corollary.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f6670076',
+      },
+    },
+
+    'cor.archimedean-epsilon': {
+      statement: {
+        en: "Let $K$ be a complete ordered field (e.g. $\\mathbb{R}$).\n\n**(i)** For every $\\varepsilon > 0$ there exists $n \\ge 1$ with $1/n < \\varepsilon$; equivalently, the infimum of those $1/n$ is zero:\n\n$$\\frac{1}{n} < \\varepsilon; \\qquad \\inf\\left\\{ \\frac{1}{n} : n \\ge 1 \\right\\} = 0.$$\n\n**(ii)** For every $x \\in K$ there is a **unique** integer $n$ such that\n\n$$n \\le x < n + 1.$$\n\nWrite $n = \\lfloor x \\rfloor$, called the **integer part** of $x$ (the floor function); $\\{x\\} := x - \\lfloor x \\rfloor \\in [0, 1)$ is called the **fractional part**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#68159876',
+      },
+      notes: {
+        en: "⭐ (i) is the **standard form** in analysis of \"take $n$ sufficiently large\".\n\nThe Archimedean property originally says \"$\\mathbb{N}$ is unbounded\", but in actual proofs one almost always uses (i): given $\\varepsilon$, take $n > 1/\\varepsilon$.\n\n⭐ (ii) \"sandwiches a real number between two adjacent integers\" — the proof of density of the rationals (part (ii) of `lem.archimedean`) uses it.\n\nIt relies on the **discreteness** of $\\mathbb{Z}$ in $K$ (there is no other integer between adjacent ones), not merely on unboundedness.\n\n⚠ $\\mathbb{Q}$ also satisfies (i) (it is Archimedean), but $\\mathbb{Q}$ does not satisfy the least-upper-bound property — so (i) itself does **not** need completeness, only the Archimedean property;\n\nwriting \"complete ordered field\" here is only to align with `lem.archimedean`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#20888269',
+      },
+    },
+
+    'thm.geometric-series': {
+      statement: {
+        en: "Let $q \\in \\mathbb{R}$. Then the series $\\sum_{n=0}^{\\infty} q^{n}$ converges **if and only if** $|q| < 1$; in that case\n\n$$\\sum_{n=0}^{\\infty} q^{n} = \\frac{1}{1 - q}.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#5907d8d7',
+      },
+      notes: {
+        en: "⭐ This is the **yardstick** for all series tests: the comparison test, root test and ratio test all ultimately reduce to \"some geometric series converges\".\n\nThe phrase \"the geometric series converges\" in `imp.root-test` and `imp.banach-fixed-point` refers to this statement.\n\n⭐ For $|q| < 1$, the proof of $q^{n} \\to 0$ uses Bernoulli plus the Archimedean property: write $1/|q| = 1 + h$ ($h > 0$), so $(1+h)^{n} \\ge 1 + nh$, and hence $|q|^{n} \\le \\dfrac{1}{1 + nh} \\le \\dfrac{1}{n h}$ can be made arbitrarily small.\n\n⚠ For $|q| \\ge 1$ the general term does not tend to $0$, so the series must diverge — this half needs no test at all.",
+        status: 'draft',
+        basedOn: 'v0.9.3#553166cd',
+      },
+    },
+
+    'thm.p-series': {
+      statement: {
+        en: "Let $p \\in \\mathbb{R}$. Then the series\n\n$$\\sum_{n=1}^{\\infty} \\frac{1}{n^{p}}$$\n\nconverges **if and only if** $p > 1$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e2a0ee4a',
+      },
+      notes: {
+        en: "⭐ $p = 1$ is the harmonic series (divergent), $p = 2$ is $\\sum 1/n^{2} = \\pi^{2}/6$ (convergent) — the two are standard examples where \"tests fail on the boundary\": the root test gives $\\alpha = 1$ for both.\n\n⭐ The proof is the most beautiful application of `thm.cauchy-condensation` (Cauchy's condensation test): when $a_n = n^{-p}$ is monotonically decreasing, the original series converges $\\iff$ $\\sum 2^{k} a_{2^{k}} = \\sum (2^{1-p})^{k}$ converges, and the latter is a geometric series with ratio $2^{1-p}$, which converges $\\iff$ $2^{1-p} < 1 \\iff p > 1$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#68fb7691',
+      },
+    },
+
+    'prop.power-rules': {
+      statement: {
+        en: "Let $A$ be a commutative ring, $a, b \\in A$, $m, n \\in \\mathbb{Z}$ (when negative exponents occur, $a, b$ is required to be invertible). Then\n\n$$a^{m+n} = a^{m}\\,a^{n}, \\qquad (a^{m})^{n} = a^{mn}, \\qquad (ab)^{n} = a^{n}\\,b^{n}.$$\n\nIf $K$ is an ordered field and $a > 1$, then for $m, n \\in \\mathbb{Z}$:\n\n$$m < n \\iff a^{m} < a^{n};$$\n\nwhile for $0 < a < 1$ the inequality reverses; for $a = 1$, $a^{n} = 1$ holds identically.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f7a70dd9',
+      },
+      notes: {
+        en: "⭐ The three exponent laws are all \"induction on $n$\", with no trick.\n\nWhat is really useful is **monotonicity**: for $a > 1$, $n \\mapsto a^{n}$ is strictly increasing, so in an **Archimedean ordered field** (e.g. $\\mathbb{R}$), $q^{n} \\to 0$ ($0 < q < 1$) can be written as $q^{n} \\le 1/(1+nh)$ and squeezed (it fails in a general ordered field: in $\\mathbb{Q}(t)$, $t$ is infinite, and powers of $q = 1/2$ are never less than $1/t$) — the proof that the geometric series converges rests on this.\n\n⚠ The negative-exponent half requires first writing $a^{-n}$ as $(a^{-1})^{n}$, then using the **positive-exponent** result;\n\ncommutativity is essential here ($(ab)^{-1} = b^{-1}a^{-1} = a^{-1}b^{-1}$ holds only in the commutative case).",
+        status: 'draft',
+        basedOn: 'v0.9.3#478c0c93',
+      },
+    },
+
+    'thm.derivative-rules': {
+      statement: {
+        en: "Let $f$ be differentiable at $x_0$, and $g$ differentiable at $f(x_0)$ (the first four formulas below only need $f, g$ to be differentiable at $x_0$ each), $c \\in \\mathbb{R}$. Then\n\n$$(f \\pm g)'(x_0) = f'(x_0) \\pm g'(x_0), \\qquad (cf)'(x_0) = c\\,f'(x_0),$$\n\n$$(fg)'(x_0) = f'(x_0)\\,g(x_0) + f(x_0)\\,g'(x_0),$$\n\n$$\\left(\\frac{f}{g}\\right)'(x_0) = \\frac{f'(x_0)\\,g(x_0) - f(x_0)\\,g'(x_0)}{g(x_0)^{2}} \\quad (g(x_0) \\ne 0),$$\n\n$$(g \\circ f)'(x_0) = g'(f(x_0))\\,f'(x_0).$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#8e03fb6f',
+      },
+      notes: {
+        en: "⭐ The key to the product rule is **adding and subtracting a term**: $f(x)g(x) - f(x_0)g(x_0) = [f(x) - f(x_0)]\\,g(x) + f(x_0)[g(x) - g(x_0)]$.\n\nThe $g(x)$ in the first term must be replaced by $g(x_0)$ using \"differentiable $\\implies$ continuous\" — this is why `prop.differentiable-implies-continuous` must precede it.\n\n⚠ The chain rule **cannot** be written directly as $\\dfrac{\\Delta g}{\\Delta f}\\cdot\\dfrac{\\Delta f}{\\Delta x}$: $\\Delta f$ may be $0$ (when $f$ takes the same value near $x_0$), and the denominator vanishes.\n\nThe correct approach writes the increment of $g$ as \"linear main part + remainder\": $g(y) - g(y_0) = [g'(y_0) + \\varepsilon(y)]\\,(y - y_0)$, where $\\varepsilon(y) \\to 0$.\n\n⭐ The quotient rule is obtained from the product rule and $\\left(\\dfrac{1}{g}\\right)' = -\\dfrac{g'}{g^{2}}$;\n\nthe latter divides $\\dfrac{1}{g(x)} - \\dfrac{1}{g(x_0)} = -\\dfrac{g(x) - g(x_0)}{g(x)g(x_0)}$ by $x - x_0$ and takes the limit.",
+        status: 'draft',
+        basedOn: 'v0.9.3#11eab0af',
+      },
+    },
+
+    'thm.fundamental-algebra': {
+      statement: {
+        en: "Every polynomial $p \\in \\mathbb{C}[z]$ of degree $\\ge 1$ with complex coefficients has a complex root. Equivalently:\n\n- $\\mathbb{C}$ is **algebraically closed**: the irreducible polynomials in $\\mathbb{C}[z]$ are exactly the linear ones;\n- every $p \\ne 0$ can be written uniquely as\n\n$$p(z) = c\\,(z - z_1)^{e_1} \\cdots (z - z_m)^{e_m}, \\qquad c \\in \\mathbb{C}^{\\times}$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#018d56b9',
+      },
+      notes: {
+        en: "⭐ It is called the \"fundamental theorem of algebra\", yet it is **not an algebraic theorem** — every proof uses the **completeness** of $\\mathbb{R}$ (because the algebraic closedness of $\\mathbb{C}$ is essentially a compactness + continuity fact).\n\nThat is why the graph tags its `regions` as `analysis` + `algebra`.\n\n⭐ Proof (the route taken on the graph):\n1. $|p(z)| \\to +\\infty$ as $|z| \\to \\infty$, so on some closed disk the **extreme value theorem** gives a minimum $m \\ge 0$;\n2. if $m > 0$, perturb near the minimizing point $z_0$ by $z_0 + h$, expand $p(z_0 + h) = p(z_0) + a_k h^{k} + \\cdots$ ($a_k h^{k}$ being the first nonzero term), and choose the direction of $h$ so that $|p(z_0) + a_k h^{k}| < |p(z_0)|$, contradicting minimality.\n3. Hence $m = 0$, i.e. $p$ has a root;\nthen divide once by the factor theorem and induct to get the full factorization.\n\n⚠ Step 2 uses **complex $k$-th roots** ($a_k h^{k}$ can point in any direction); this is exactly why it must be done over $\\mathbb{C}$ and not over $\\mathbb{R}$.\n\n**Hypotheses used in each direction** (the equivalences between the forms are algebra; that complex numbers have roots is the core theorem):\n- every nonconstant polynomial has a root $\\iff$ the field is algebraically closed: free by unfolding the usual definition; here only univariate polynomials over a field are treated.\n- a root $\\implies$ factorization into linear factors: use the factor theorem and induction on degree; conversely, a factorization of a nonconstant polynomial immediately gives a root, with no analysis needed.\n- all irreducible polynomials are linear $\\iff$ complete splitting: use irreducible factorization in the polynomial ring over a field; uniqueness uses $\\mathbb C[z]$, roots counted with multiplicity, multiplicities positive integers, order of factors irrelevant, constants by the empty product.\n- complex polynomials really have roots: this page's proof uses compactness of the closed disk, the extreme value theorem for continuous functions, and the polar form of complex numbers to choose a direction; over $\\mathbb R$, $z^2+1$ has no root, so the base-field hypothesis cannot be dropped.",
+        status: 'draft',
+        basedOn: 'v0.9.3#52b7b443',
+      },
+    },
+
+    'thm.liouville': {
+      statement: {
+        en: "**In plain words**: a function holomorphic on the whole complex plane and bounded must be constant — the complex plane is \"too crowded\" to accommodate a nonconstant bounded holomorphic function.\n\nIf $f$ is holomorphic on $\\mathbb{C}$ (such functions are called **entire**), and there is a constant $M$ with\n\n$$|f(z)| \\le M, \\qquad \\forall z \\in \\mathbb{C},$$\n\nthen $f$ is constant.",
+        status: 'draft',
+        basedOn: 'v0.9.3#88ca4bca',
+      },
+      notes: {
+        en: "⭐ Proof (via the Cauchy estimates): for any $z$ and any $R > 0$, $f$ is holomorphic on $B(z, R)$, hence $|f'(z)| \\le M/R$.\n\nLet $R \\to \\infty$ to get $f'(z) = 0$;\n\nsince $z$ is arbitrary, $f' \\equiv 0$;\n\nthe domain is connected, so $f$ is constant.\n\n⭐ The book also gives a second proof using **only the Cauchy integral formula**: take $R > |z|$,\n\n$$f(z) - f(0) = \\frac{1}{2\\pi i}\\oint_{|\\zeta| = R}\\left( \\frac{1}{\\zeta - z} - \\frac{1}{\\zeta} \\right) f(\\zeta)\\,\\mathrm{d}\\zeta,$$\n\nestimate $|f(z) - f(0)| \\le \\dfrac{M|z|}{R - |z|} \\to 0$ ($R \\to \\infty$), hence $f(z) = f(0)$.\n\n⚠ Boundedness cannot be relaxed carelessly: $e^{z}$ is bounded on the **left** half-plane ($|e^{z}| \\le 1$), but unbounded on the whole plane.\n\nConversely, if one only knows $|f(z)| \\le C(1 + |z|)^k$, the same argument gives only \"$f$ is a polynomial of degree at most $k$\".\n\n⭐ Contrast with real analysis: $\\sin x$ is bounded and infinitely differentiable on $\\mathbb{R}$, yet not constant — because \"entire\" is far stronger than \"$C^\\infty$ function\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#a14ed1b5',
+      },
+    },
+
+    'thm.morera': {
+      statement: {
+        en: "**In plain words**: a continuous function whose integral along every closed triangle (equivalently, every small rectangle) is zero is holomorphic — this is the converse of Cauchy's theorem.\n\nLet $\\Omega \\subset \\mathbb{C}$ be an **open set** (no connectedness needed — holomorphy is checked pointwise, applying Morera on a small disk at each point), and $f: \\Omega \\to \\mathbb{C}$ **continuous**. If for every closed triangle $T \\subset \\Omega$ we have\n\n$$\\oint_{\\partial T} f(\\zeta)\\,\\mathrm{d}\\zeta = 0,$$\n\nthen $f$ is holomorphic on $\\Omega$; moreover $f'$ is also holomorphic, and $f$ has a Taylor expansion at every point.\n\nReplacing \"closed triangle\" by \"closed rectangle with sides parallel to the coordinate axes\" leaves the conclusion unchanged (a rectangle is split into two triangles along a diagonal).",
+        status: 'draft',
+        basedOn: 'v0.9.3#da7dcd0d',
+      },
+      notes: {
+        en: "⭐ Use: this is the most convenient tool for **testing holomorphy** — no a priori differentiability is needed, only \"continuous\" plus \"some integral vanishes identically\". Holomorphy is traded for an integral equation.\n\n⭐ The most-used corollary: **the limit of a locally uniformly convergent sequence of holomorphic functions is holomorphic**. Because $\\partial T$ is compact, $\\oint_{\\partial T} f_k = 0$ can be taken to the limit to get $\\oint_{\\partial T} f = 0$, which is then fed to Morera. Hurwitz's theorem is the \"zero version\" of this.\n\n⚠ Continuity cannot be dropped. Without it, the same integral condition does not imply differentiability.\n\n⚠ The hypothesis \"all triangles\" **can** be replaced by \"all circles\": under **continuity**, it already **suffices** that the integral over every circle inside a closed disk vanishes to guarantee holomorphy — convolving with a mollifier keeps the circle condition, the expansion in small circles gives $\\partial_{\\bar z} f_\\varepsilon = 0$, and then one takes a locally uniform limit.\n\n📌 Together with Cauchy–Goursat: when $f$ is continuous, \"$f$ holomorphic\" and \"$f$ has zero integral along every closed triangle\" are **equivalent** statements.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1b4556bd',
+      },
+    },
+
+    'thm.taylor-complex': {
+      statement: {
+        en: "**In plain words**: near any point a holomorphic function is a power series — that is, for complex functions \"differentiable\" and \"expressible as a power series\" are the same thing.\n\nLet $f$ be holomorphic on the disk $B(a, R)$. Then for $z \\in B(a, R)$,\n\n$$f(z) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}\\,(z - a)^n,$$\n\nand the right-hand side **converges uniformly** on every compact subset of $B(a, R)$. Hence $f$ is **analytic** on $B(a, R)$ (equal to the sum of some power series).",
+        status: 'draft',
+        basedOn: 'v0.9.3#39bd0e19',
+      },
+      notes: {
+        en: "⭐ The proof has only two steps: the Cauchy integral formula + a geometric series.\n\nTake $\\rho \\in (|z - a|, R)$, and write\n\n$$\\frac{1}{\\zeta - z} = \\frac{1}{(\\zeta - a) - (z - a)} = \\sum_{n=0}^{\\infty} \\frac{(z - a)^n}{(\\zeta - a)^{n+1}},$$\n\nthe ratio $|z - a|/\\rho < 1$, the series converges uniformly in $\\zeta \\in \\partial B(a, \\rho)$, so term-by-term integration is allowed;\n\nthe coefficients obtained by term-by-term integration are exactly $f^{(n)}(a)/n!$ (the higher-derivative formula).\n\n⭐ This links \"differentiation\" and \"series\": **holomorphic** $\\iff$ **locally a power series** $\\iff$ **analytic**.\n\nIn real analysis the two are **not equivalent** — $e^{-1/x^2}$ is infinitely differentiable at $0$, but its Taylor series is identically $0$, and equals the original function in no neighbourhood of $0$.\n\n⚠ The radius of convergence is at least the distance from $a$ to the nearest singularity — exactly the topic of \"where are the singularities\" (Chapter 12 of the book).\n\n📌 The same section also has \"Cauchy's inequalities in series form\": if $f = \\sum a_n (z - a)^n$ holds on $B(a, R)$, then $|a_n| \\le M(r)/r^n$ ($0 < r < R$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#fcca3884',
+      },
+    },
+
+    'def.analytic-continuation': {
+      statement: {
+        en: "A **function element** is a pair $(f, D)$: $D$ is an open disk and $f$ is holomorphic on $D$.\n\nLet $\\gamma : [0, 1] \\to \\mathbb{C}$ be a curve and $\\gamma(0)$ the centre of some element $(f_{0}, D_{0})$. An **analytic continuation chain** over $\\gamma$ is a family of elements $(f_{t}, D_{t})$ ($t \\in [0,1]$) such that:\n\n1. $\\gamma(t)$ is the centre of $D_{t}$;\n2. for every $t$ there is $\\delta > 0$ such that when $|s - t| < \\delta$ we have $D_{s} \\cap D_{t} \\ne \\emptyset$ and $f_{s} = f_{t}$ on the intersection;\n3. $f_{t}$ depends continuously on $t$ (on overlaps).\n\nAll elements obtained by continuation along all curves starting at $\\gamma(0)$, glued along overlaps, form the **complete analytic function** (generally a multivalued function, lying on the Riemann surface of `def.riemann-surface`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#30b68c67',
+      },
+      notes: {
+        en: "**Why a \"chain\" rather than \"one function\"**: continuation is done step by step — each step moves the disk a little, and on overlaps the uniqueness theorem guarantees the two elements are restrictions of the same function. The chain is what makes this continuous.\n\n⭐ **The carrier is the power series**: every element can be expanded at its centre into a convergent power series (`thm.taylor-complex`), so continuation can also be seen as \"changing the expansion point along the curve\". The radius of convergence is determined by the distance to the nearest singularity — hitting a singularity breaks the continuation.\n\n⚠️ **The result of continuation depends on the path**. The standard example: $\\log z$ starting from $1$ and going once counterclockwise around the unit circle returns to $1$ with the value $2\\pi i$. When is it path-independent? That is exactly what `thm.monodromy` answers.\n\n📌 Relation to `def.logarithm-branch` and `def.branch`: the \"branch\" there is the **result** of continuation, whereas here we describe the **process**. One object, two ways of speaking.",
+        status: 'draft',
+        basedOn: 'v0.9.3#28fe020f',
+      },
+    },
+
+    'lem.yoneda': {
+      statement: {
+        en: "Let $F : \\mathcal{C} \\to \\mathbf{Set}$ be a functor, $X \\in \\mathcal{C}$, and write\n\n$$h^{X} = \\operatorname{Hom}_{\\mathcal{C}}(X, -) : \\mathcal{C} \\to \\mathbf{Set}$$\n\nThen there is a natural bijection\n\n$$\\operatorname{Hom}(h^{X}, F) \\;\\cong\\; F(X), \\qquad \\alpha \\mapsto \\alpha_{X}(1_{X})$$\n\nthat is, \"all natural transformations\" correspond one-to-one with \"elements of $F(X)$\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#09358575',
+      },
+      notes: {
+        en: "**Proof.** Define the map\n\n$$\\Phi : \\operatorname{Nat}(h^{X}, F) \\longrightarrow F(X), \\qquad \\Phi(\\alpha) := \\alpha_{X}(1_{X}).$$\n\n- **Inverse map**: given $u \\in F(X)$, for each $Y$ define\n\n$$\\Psi(u)_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad \\Psi(u)_{Y}(f) := F(f)(u).$$\n\nIt is natural: for $g : Y \\to Z$, by functoriality of $F$, $F(g)\\circ F(f) = F(g\\circ f)$, the two sides are exactly $F(g)\\bigl(\\Psi(u)_{Y}(f)\\bigr)$ and $\\Psi(u)_{Z}(g\\circ f)$ ✓.\n\n- **$\\Phi\\Psi = \\mathrm{id}$**: $\\Psi(u)_{X}(1_{X}) = F(1_{X})(u) = u$ ✓.\n\n- **$\\Psi\\Phi = \\mathrm{id}$**: given $\\alpha$ and $f : X\\to Y$, use the naturality of $\\alpha$ (applied to $f$)\n\n$$\\alpha_{Y}\\circ h^{X}(f) = F(f)\\circ \\alpha_{X} \\;\\implies\\; \\alpha_{Y}(f) = F(f)\\bigl(\\alpha_{X}(1_{X})\\bigr) = \\Psi\\bigl(\\Phi(\\alpha)\\bigr)_{Y}(f) ✓$$\n\n- **Naturality**: $\\Phi$ is natural in $F$ (along $\\beta : F\\to G$ both sides become $\\beta_{X}\\circ(-)$) ✓; and natural in $X$ (along $k : X'\\to X$, precomposition with $h^{k}$ corresponds to $F(k)$) ✓.\n\nHence $\\operatorname{Hom}(h^{X}, F) \\cong F(X)$, and the bijection is $\\alpha\\mapsto\\alpha_{X}(1_{X})$ ✓; dually (taking $\\mathcal{C}^{\\mathrm{op}}$) one gets the presheaf version $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ ✓.\n\n∎\n\nThis bijection is natural in **both** variables: natural in $F$ (natural transformations) and in $X$ (morphisms). Naturality on both sides is what gives the lemma its force.\n\nIt compresses the set \"all natural transformations from $h^{X}$ to $F$\", which is in principle intractable, into **a single element** of $F(X)$. Whenever \"natural transformations are hard to count\", this is the step that saves the day.\n\nDual form: if $T$ is a presheaf ($T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$) and $h_{X} = \\operatorname{Hom}(-, X)$ is a representable presheaf, then likewise $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$.\n\nThe two formulas differ only by replacing $\\mathcal{C}$ with $\\mathcal{C}^{\\mathrm{op}}$, so both versions are used in what follows.",
+        status: 'draft',
+        basedOn: 'v0.9.3#22a4b627',
+      },
+    },
+
+    'thm.sheafification': {
+      statement: {
+        en: "The category of sheaves is a **reflective subcategory** of the category of presheaves, with reflector\n\n$$\\sharp : \\widehat{\\mathcal{C}} \\longrightarrow \\widehat{\\mathcal{C}}, \\qquad T \\mapsto T^{\\sharp}$$\n\ncalled **sheafification**: for every sheaf $F$,\n\n$$\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}\\bigl(T^{\\sharp},\\ F\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}\\bigl(T,\\ F\\bigr)$$\n\nand it is **idempotent**: $(T^{\\sharp})^{\\sharp} \\cong T^{\\sharp}$. Concretely, $T^{\\sharp}$ is obtained by \"applying the Čech construction to a presheaf twice\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#6a06d3f4',
+      },
+      notes: {
+        en: "Corollaries:\n\n1. **Limits in the category of sheaves are computed in the category of presheaves** (a reflective subcategory is closed under limits);\n2. $T \\mapsto T^{\\sharp}$ **preserves all colimits and finite limits**.\n\nExamples:\n\n- For the **coarsest** topology ($J(X) = \\{h_{X}\\}$) every presheaf is a sheaf and $\\sharp$ is the identity; for the **finest** topology ($J(X) = $ all sieves) the category of sheaves has only one object, the constant presheaf $\\mathbf{1}$.\n- The sheafification of a constant presheaf (the same set $E$ on every open set) is called the **constant sheaf**.\n- Taking $X$ and $\\mathcal{C} = \\operatorname{Open}(X)$ on a topological space gives the usual category of sheaves, and $\\sharp$ is the usual sheafification functor.",
+        status: 'draft',
+        basedOn: 'v0.9.3#08cce631',
       },
     },
   },

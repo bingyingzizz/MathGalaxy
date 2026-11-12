@@ -294,7 +294,7 @@ window.MG = window.MG || {};
         '- 自由作用 $\\implies$ 商为光滑主丛不是免费：通常还要作用 proper；无理斜率的 $\\mathbb R$ 在二维环面上的平移作用自由但轨道稠密，商非 Hausdorff。\n'
       ].join('\n\n'),
       refs: [
-        'Tu, Differential Geometry: Connections, Curvature, and Characteristic Classes (GTM 275)'
+        'Tu, Differential Geometry, GTM 275, Ch. 6 §27'
       ]
     }
   ],

@@ -42,7 +42,8 @@ window.MG = window.MG || {};
         '- 开集公理 $\\iff$ 补集族满足任意交及有限并公理：用 De Morgan 恒等式，不需额外拓扑假设。\n' +
         '- 有限交不能升级成任意交：通常实数拓扑中 $\\bigcap_{n\\ge1}(-1/n,1/n)=\\{0\\}$ 不开；拓扑也不自动 Hausdorff，非单点集合的不可分拓扑就是反例。\n'
       ].join('\n\n'),
-      refs: ['Munkres, Topology, Ch. 2']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.1','Munkres, Topology, Ch. 2']
     },
 
     /* -------------------------------------------------------- 闭集 */
@@ -65,7 +66,8 @@ window.MG = window.MG || {};
         '由 De Morgan 律，开集的三条公理翻译成闭集就是：$\\emptyset, X$ 闭；**任意**交闭；**有限**并闭。'
       ].join('\n'),
       notes: '⭐ 开与闭不是互斥的：$\\emptyset$ 与 $X$ 既开又闭；在 $\\mathbb{R}$ 里 $[0, 1]$ 是闭的，$[0, 1)$ 既不开也不闭。\n\n闭包是「把极限点都收进来」：在距离空间里 $\\overline{A}$ 恰好是「$A$ 中某个序列的极限」全体。',
-      refs: ['Munkres, Topology, Ch. 2']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.1','Munkres, Topology, Ch. 2']
     },
 
     /* ---------------------------------------------------------- 基 */
@@ -94,7 +96,8 @@ window.MG = window.MG || {};
         '- 节点列出的两条件不能单独反推是给定 $\\mathcal T$ 的基：还须 $\\mathcal T$ 等于所生成拓扑。例如离散的两点空间取 $\\mathcal B=\\{X\\}$，满足两条件却不能生成单点开集。\n' +
         '- 子基 $\\iff$ 有限交全体为基：按约定是定义展开，有限交应含空交 $X$；通常实数拓扑的基元必须是通常开集，半开区间生成的是另一拓扑。\n'
       ].join('\n\n'),
-      refs: ['Munkres, Topology, Ch. 2']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.1','Munkres, Topology, Ch. 2']
     },
 
     /* ---------------------------------------------------- 连续映射 */
@@ -116,7 +119,8 @@ window.MG = window.MG || {};
         '连续的复合仍连续：$f$、$g$ 连续 $\\implies g \\circ f$ 连续。'
       ].join('\n'),
       notes: '⭐ 这条定义是 $\\varepsilon$-$\\delta$ 的**抽象化**：在距离空间里，「$f^{-1}(V)$ 开」与「$\\varepsilon$ 给出 $\\delta$」逐字等价 —— 因为开球就是 $\\varepsilon$ 邻域。\n\n所以「连续」是拓扑性质，跟具体距离无关。\n\n⚠ 用**原像**而不是像：原像对并、交、补全部保持，像没有这些性质。\n\n这与可测函数的定义（$f^{-1}(E) \\in \\mathcal{M}$）是同一个套路。',
-      refs: ['Munkres, Topology, Ch. 2']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.4','Munkres, Topology, Ch. 2']
     },
 
     /* -------------------------------------------------------- 同胚 */
@@ -145,7 +149,8 @@ window.MG = window.MG || {};
         '\n' +
         '⚠️ 同胚是拓扑空间范畴的**同构**：它保持一切拓扑性质（连通、紧、可数性、分离性），这正是它作为「等价关系」的意义。\n'
       ].join('\n\n'),
-      refs: ['Munkres, Topology, Ch. 2']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.4','Munkres, Topology, Ch. 2']
     },
 
     /* ------------------------------------------------ 子空间与商拓扑 */
@@ -165,7 +170,8 @@ window.MG = window.MG || {};
         '这样得到的拓扑是使含入映射 $Y \\hookrightarrow X$ 连续的最粗拓扑。'
       ].join('\n'),
       notes: '直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。\n\n📌 本图另有 `def.induced-topology`，但那是**同名不同物**：它指景上由函子诱导的 Grothendieck 拓扑，与子空间拓扑只共享中文名（不合并）。',
-      refs: ['Munkres, Topology']
+      refs: [
+      'Engelking, General Topology, Ch. 2 §2.1','Munkres, Topology']
     },
     {
       id: 'def.quotient-topology',
@@ -183,7 +189,8 @@ window.MG = window.MG || {};
         '这是使 $\\pi$ 连续的最细拓扑；带这个拓扑的 $Y$ 叫 $X$ 的**商空间**。'
       ].join('\n'),
       notes: '直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。\n\n商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。\n\n📌 拓扑语境的「商空间」是这里；**向量空间**的商空间是 `def.quotient-vs`。',
-      refs: ['Munkres, Topology']
+      refs: [
+      'Engelking, General Topology, Ch. 2 §2.4','Munkres, Topology']
     },
 
     {
@@ -206,7 +213,8 @@ window.MG = window.MG || {};
         '⭐ **「最粗」是关键字**：投影要连续，只要求每个 $\\pi_{j}^{-1}(U_{j})$ 是开的；把这些取有限交当基，就是积拓扑。要求更细反而会丢掉极限 —— 而「$x_{n} \\to x$ $\\iff$ 按每个分量都收敛」正是这条最粗性换来的。',
         '**范畴意义**：$\\prod_{i} X_{i}$ 连同投影就是 $\\mathbf{Top}$ 里的**积**。所以积拓扑不是随便挑的，它是泛性质唯一确定的那一个。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology']
+      refs: [
+      'Engelking, General Topology, Ch. 2 §2.3','Munkres, Topology']
     },
 
     /* ------------------------------------------------------ 分离公理 */
@@ -231,7 +239,8 @@ window.MG = window.MG || {};
         '⚠️ **命名口径**（本图采用）：$T$-number 是**裸性质**，中文名才带 $T_{1}$ —— 所以「正则空间」= $T_{3} + T_{1}$（`def.regular-space`），「完全正则空间」= $T_{3.5} + T_{1}$（`def.completely-regular-space`）。\n\n' +
         '裸 $T_{3}$ 推不出 $T_{1}$。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.5','Munkres, Topology']
     },
 
     /* ---------------------------------------------------------- 连通 */
@@ -259,7 +268,8 @@ window.MG = window.MG || {};
         '\n' +
         '⚠️ **连通 $\\ne$ 道路连通**：道路连通 $\\implies$ 连通，反之不成立（拓扑学家的正弦曲线）。两者的差距正是「$\\pi_{0}$ 与道路 $\\pi_{0}$」的差距。\n'
       ].join('\n\n'),
-      refs: ['Munkres, Topology']
+      refs: [
+      'Engelking, General Topology, Ch. 6 §6.1','Munkres, Topology']
     },
     {
       id: 'def.clopen',
@@ -531,6 +541,13 @@ window.MG = window.MG || {};
     },
     {"id":"dep.poly-jordan","kind":"definition","definition":"def.jordan-curve","usedBy":"lem.polygon-diagonal","note":"多边形是 Jordan 曲线的特例（折线版的简单闭曲线）；本条只对折线证明，不加任何一般性。"},
     {"id":"dep.polygon-area","kind":"definition","definition":"def.jordan-curve","usedBy":"thm.jordan-polygon","note":"多边形区域的边界是 Jordan 曲线；本条的结论比 `thm.jordan-curve` 弱，只对折线成立。"},
-    {"id":"dep.jp-diagonal","kind":"definition","definition":"lem.polygon-diagonal","usedBy":"thm.jordan-polygon","note":"对角线引理，用于三角剖分的归纳（对顶点数归纳，每步切一条对角线）。"},
+        {
+      id: 'imp.jordan-polygon-diagonal',
+      kind: 'implication',
+      sources: ['lem.polygon-diagonal'],
+      target: 'thm.jordan-polygon',
+      title: '对角线引理：多边形三角剖分的归纳步',
+      proof: "对顶点数 $n$ 归纳。由 `lem.polygon-diagonal` 取一条对角线 $[a,b]$，它把 $P$ 分成两个边数更少（$n_1,n_2<n$）的简单多边形 $P_1,P_2$。由归纳假设 $P_i$ 各有三角剖分 $\\\\Gamma_i$，其并加上 $[a,b]$ 就是 $P$ 的三角剖分：三角形个数 $(n_1-2)+(n_2-2)=n-2$，两两内部不交，且并的边界恰为 $P$。∎",
+    },
   ]
 });

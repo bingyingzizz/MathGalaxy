@@ -131,7 +131,7 @@ window.MG = window.MG || {};
         '- 原注所说任意 $X\\sqcup\\{*\\}$ 都紧不成立：无限离散 $X$ 的这个不交并仍不紧。\n'
       ].join('\n\n'),
       refs: [
-        'Engelking, General Topology',
+        'Engelking, General Topology, Ch. 3 §3.5',
         'Munkres, Topology'
       ]
     },
@@ -180,7 +180,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 3 §3.5'
       ]
     },
 
@@ -221,6 +221,7 @@ window.MG = window.MG || {};
         '- 改成序列不能刻画一般紧性：第一可数的序数空间 $[0,\\omega_1)$ 序列紧却不紧，故原文括号里的第一可数不足以保证紧性的序列刻画。\n'
       ].join('\n\n'),
       refs: [
+      'Engelking, General Topology, Ch. 1 §1.6',
         'Munkres, Topology',
         'Kelley, General Topology'
       ]
@@ -269,7 +270,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.6'
       ]
     }
   ],

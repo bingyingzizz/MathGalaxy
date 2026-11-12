@@ -62,7 +62,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.5'
       ]
     },
 
@@ -105,7 +105,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.5'
       ]
     },
 
@@ -152,7 +152,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.3'
       ]
     },
 
@@ -190,7 +190,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.5'
       ]
     },
 
@@ -222,7 +222,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.5'
       ]
     },
 
@@ -251,7 +251,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.5'
       ]
     },
 
@@ -291,7 +291,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.5'
       ]
     },
 
@@ -321,7 +321,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Munkres, Topology',
-        'Engelking, General Topology'
+        'Engelking, General Topology, Ch. 1 §1.5'
       ]
     },
 
@@ -359,7 +359,7 @@ window.MG = window.MG || {};
         '- 正规性不能靠“闭集都是 $G_\\delta$”代替：Sierpinski 两点空间每个闭集都是开集，仍不满足本库要求的 $T_1$；正规也不自动完美正规，$[0,\\omega_1]$ 的末点单集不是 $G_\\delta$。\n'
       ].join('\n\n'),
       refs: [
-        'Engelking, General Topology',
+        'Engelking, General Topology, Ch. 1 §1.5',
         'Munkres, Topology'
       ]
     },
@@ -538,7 +538,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'imp.pn-cn',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.perfectly-normal-space', 'lem.urysohn'],
       target: 'def.completely-normal-space',
       proof: [
@@ -557,11 +557,12 @@ window.MG = window.MG || {};
         '则 $U, V$ 是 $H$ 中不交开集，$A \\subseteq U$、$B \\subseteq V$。由 $A, B$ 任意，$H$ 正规 ✓（这一步只用「两个不交闭集可被连续函数分离 $\\implies$ 正规」的初等方向）。',
         '',
         '**第四步：$H$ 任意。** 完全正规要求每个子空间都正规；$H \\subseteq X$ 是任取的，故 $X$ 完全正规 ✓。∎',
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
     {
       id: 'imp.metric-pn',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.metric-space'],
       target: 'def.perfectly-normal-space',
       proof: [
@@ -582,11 +583,12 @@ window.MG = window.MG || {};
         '于是 $X$ 正规且每个闭集 $G_{\\delta}$，即完美正规 ✓。∎',
         '',
         '⭐ 顺带：**子空间仍是距离空间**（限制度量），所以距离空间其实直接是 $T_{5}$、$T_{6}$ —— 这正是分析里从不操心分离公理的原因。'
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
     {
       id: 'imp.compact-hausdorff-normal',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.compact', 'def.hausdorff'],
       target: 'def.normal-space',
       proof: [
@@ -599,7 +601,8 @@ window.MG = window.MG || {};
         '所以任意不交闭集都能被开集分离，配合 $T_{1}$ 得 $X$ 正规。∎',
         '',
         '⭐ 这是**直接证明**，没有走 那条（紧 $\\implies$ 仿紧 $\\implies$ 正规）：那条（紧 $\\implies$ 仿紧 $\\implies$ 正规）当然也对，但这里只用了紧性取有限子覆盖与 Hausdorff 分点，两步都是定义级别的操作。'
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
 
   ]

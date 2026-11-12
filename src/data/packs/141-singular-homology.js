@@ -1031,7 +1031,13 @@
 
     { id: 'dep.degreenonext-degree', kind: 'definition', definition: 'def.degree', usedBy: 'thm.degree-nonextendable',
       note: '结论整个用「度」表述：延拓存在，则度为 $0$。' },
-    { id: 'dep.degreenonext-homotopy', kind: 'definition', definition: 'thm.homotopy-invariance', usedBy: 'thm.degree-nonextendable',
-      note: '证明的最后一跳：$H(x,t) = F((1-t)x)$ 给出同伦，同伦不变性把它变成「度相等」。' },
+        {
+      id: 'imp.degreenonext-homotopy',
+      kind: 'implication',
+      sources: ['thm.homotopy-invariance'],
+      target: 'thm.degree-nonextendable',
+      title: '同伦不变性：延拓存在则度为 0',
+      proof: "令 $H : S^{n-1}\\\\times[0,1]\\\\to S^{n-1}$，$H(x,t)=F((1-t)x)$。因 $0\\\\le 1-t\\\\le 1$ 且 $|x|=1$，有 $|(1-t)x|\\\\le 1$，故 $(1-t)x\\\\in\\\\overline{B^{n}}$ 落在 $F$ 的定义域内；$H$ 是连续映射的复合、取值恒在 $S^{n-1}$，所以它是 $f$ 与常值映射 $x\\\\mapsto F(0)$ 之间的同伦。由 `thm.homotopy-invariance`，同伦的映射在 $H_{n-1}$ 上诱导同一同态，而常值映射诱导零同态，故 $\\\\deg f=0$。∎",
+    },
   ],
 });

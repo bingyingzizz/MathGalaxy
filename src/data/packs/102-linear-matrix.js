@@ -36,7 +36,8 @@ window.MG = window.MG || {};
         '$A$ 的第 $j$ **列**是 $K^{m}$ 中的列向量，第 $i$ **行**是 $K^{n}$ 中的行向量。'
       ].join('\n'),
       notes: '⭐ 矩阵就是「按行列排好的一堆 $K$ 中元素」—— **本身不含任何数学结构**，它的意义全部来自你怎么读它（读成线性映射的账本、读成方程组的系数、读成双线性型的配方）。\n\n⚠ 两套下标约定（$a_{ij}$ 是第 $i$ 行第 $j$ 列）必须前后一致，否则转置与乘法会全错。\n\n本图一律「先行后列」。\n\n⭐ $M_{m \\times n}(K)$ 作为集合就是 $K^{mn}$ —— 所以它当然是 $K$-向量空间（逐分量运算）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1', 'Lang, Linear Algebra']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1（Matrix Algebra）','Hoffman–Kunze, Linear Algebra, Ch. 1', 'Lang, Linear Algebra']
     },
     {
       id: 'def.matrix-operations',
@@ -60,7 +61,8 @@ window.MG = window.MG || {};
         '（$A$ 的列数必须等于 $B$ 的行数，否则不定义。）'
       ].join('\n'),
       notes: '⭐ 乘法为什么长这样：把 $B$ 的每一列看成 $K^{n}$ 中的向量，则 $AB$ 的第 $j$ 列 $= A \\cdot (B$ 的第 $j$ 列$)$ —— **矩阵乘法就是线性映射的复合**（见「线性映射 $\\leftrightarrow$ 矩阵」）。\n\n不是「行列逐条相乘」的偶然配方。\n\n⚠ 乘法**不交换**：$AB \\ne BA$（连形状都可能不合）。\n\n例 $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$、$B = \\begin{pmatrix} 0 & 0 \\\\ 1 & 0 \\end{pmatrix}$ 给 $AB = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix} \\ne BA$。\n\n⚠ $AB = 0$ 不必有 $A = 0$ 或 $B = 0$ —— 这就是「**$n \\ge 2$ 时** $M_n(K)$ 是环但不是整环」的意思（$n = 1$ 时 $M_1(K) \\cong K$ 是域，当然是整环；反例用 $E_{12}^{2} = 0$），也解释了行列式为什么必要（det 把这件事管住了）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 1']
     },
     {
       id: 'thm.matrix-ring',
@@ -80,7 +82,8 @@ window.MG = window.MG || {};
         '⚠ 乘法**不交换**（$n \\ge 2$ 时），所以它是非交换环。'
       ].join('\n'),
       notes: '⭐ 这条定理的每一句都是「把 $M_n(K)$ 当成 $\\operatorname{End}(K^{n})$ 来读」的结果：矩阵的加法是映射的加法、乘法是复合、单位元是恒等映射（都在「线性映射 $\\leftrightarrow$ 矩阵」那一条里证过）。\n\n⭐ 于是 $M_n(K)$ 成为一个**环**，可以问它的理想、可逆元（$\\operatorname{GL}_n(K)$）、单侧逆等等 —— 抽象代数那一侧的工具直接搬过来用。\n\n⚠ 「非交换」是本质的：矩阵环是最典型的非交换环，也是有限维代数的原型（Wedderburn 定理说的就是「单的有限维代数都是 $M_n(D)$」）。',
-      refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 1']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 1']
     },
     {
       id: 'thm.matrix-linear-map',
@@ -102,7 +105,8 @@ window.MG = window.MG || {};
         '$$[S \\circ T]_{\\mathcal{B}}^{\\mathcal{E}} = [S]_{\\mathcal{C}}^{\\mathcal{E}}\\; [T]_{\\mathcal{B}}^{\\mathcal{C}}$$'
       ].join('\n'),
       notes: '⭐ 这就是整套矩阵论的**出生证**：矩阵不是被定义出来的对象，而是线性映射在选定基下的**坐标**（与「坐标」那一条完全同一个机制，只是两侧各选一组基）。\n\n⭐ 于是所有矩阵运算都有了意义：加法 = 映射的和、乘法 = 复合、单位矩阵 = 恒等映射、可逆 = 同构。\n\n**矩阵的每一个公式都可以翻译成映射的语言**，反之亦然 —— 这是本图把两者分团又用边连起来的原因。\n\n⚠ 这一切都**依赖基的选取**：换一组基，矩阵就变了。**同空间** $V = W$ 且两侧用同一组基同步换，才是**相似** $P^{-1}AP$；一般的 $T : V \\to W$ 两侧基独立换，得到的是**等价** $Q^{-1}AP$（例：$V = W = \\mathbb{R}$、$T = \\mathrm{id}$，只把定义域基换成 $(2)$ 得 $[2]$，与 $[1]$ 不相似）。\n\n而线性映射本身不变。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 3', 'Lang, Linear Algebra']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 3', 'Lang, Linear Algebra']
     },
     {
       id: 'thm.change-of-basis',
@@ -120,7 +124,8 @@ window.MG = window.MG || {};
         '此时称两个矩阵**相似**（记 $A \\sim B$）。相似是一个等价关系。'
       ].join('\n'),
       notes: '⭐ 一句话：**换基就是共轭**。\n\n$P^{-1}AP$ 里的 $P$ 管「坐标怎么换」，而两侧一进一出正好把基的选取抹掉 —— 所以「相似」是矩阵的**内在**性质（属于那个线性映射），而不是基质自身的性质。\n\n⭐ 值得记住的分工：$A$ 与 $B$ 相似 $\\iff$ 它们是**同一个**线性映射在两组基下的矩阵；\n\n$A$ 与 $B$ 等价（只要求 $B = PAQ$，$P, Q$ 可逆）$\\iff$ 它们秩相等（连空间都可以换）。\n\n⚠ 相似比等价严得多：相似的矩阵**秩相同、迹相同、行列式相同、特征多项式相同** —— 这些都是相似不变量（后面特征值那一团要用）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 4']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 4']
     },
     {
       id: 'def.elementary-matrix',
@@ -221,7 +226,8 @@ window.MG = window.MG || {};
         '叫**一般线性群**。'
       ].join('\n'),
       notes: '⭐ 一条把三个团串起来的等价表：对 $A \\in M_n(K)$，下列命题等价 ——\n- $A$ 可逆；\n- 线性映射 $x \\mapsto Ax$ 是双射（即同构）；\n- $\\operatorname{rank} A = n$（满秩）；\n\n\n- $\\ker A = \\{0\\}$（零化度为 $0$）；\n\n\n- $A$ 的列向量线性无关（从而是一组基）；\n\n\n- $\\det A \\ne 0$；\n\n\n- $A$ 可以写成有限多个初等矩阵之积。\n\n⚠ **有限维特有**：只有 $\\dim V < \\infty$ 时「单 $\\iff$ 满 $\\iff$ 可逆」才成立（无限维的单射移位算子可逆吗？不）。\n\n⭐ $\\operatorname{GL}_n(K)$ 是矩阵环 $M_n(K)$ 的**单位群**，也是代数群的原型：它是 $K^{n^{2}}$ 里的**主开集** $\\det A \\ne 0$（不是闭代数集 —— $A^{-1}$ 不是 $K^{n^{2}}$ 上的多项式坐标）；仿射代数集的做法是**再加一个坐标 $t$**，用 $\\det A \\cdot t = 1$ 切出来—— 这一条与代数几何、李群都接得上。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 1']
     },
     {
       id: 'def.multilinear-form',

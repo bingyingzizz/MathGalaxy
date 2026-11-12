@@ -288,7 +288,7 @@ window.MG = window.MG || {};
 
     {
       id: 'imp.ring-euclid-pid',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.euclidean-domain'],
       target: 'def.pid',
       title: 'Euclid 整环 $\\implies$ PID：取范数最小的元素生成理想',
@@ -301,11 +301,12 @@ window.MG = window.MG || {};
         '',
         '于是 $a = qb \\in (b)$，即 $I \\subseteq (b)$；反向 $(b) \\subseteq I$ 显然。故 $I = (b)$ 是主理想，$A$ 是 PID。',
       ].join('\n\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
 
     {
       id: 'imp.ring-pid-ufd',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.pid'],
       target: 'def.ufd',
       title: 'PID $\\implies$ UFD：升链条件给存在性，不可约=素给唯一性',
@@ -319,11 +320,12 @@ window.MG = window.MG || {};
         '',
         '**唯一性**：两个分解的素因子逐个用「素元整除乘积必整除某个因子」配对，约掉后归纳即得。所以 PID 是 UFD。',
       ].join('\n\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
 
     {
       id: 'imp.ring-ufd-gcd',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.ufd'],
       target: 'def.gcd-domain',
       title: 'UFD $\\implies$ gcd 整环：取公共素因子指数的最小值',
@@ -340,11 +342,12 @@ window.MG = window.MG || {};
         '',
         '所以 $d$ 是「被一切公因子整除」的那个公因子 —— 即 $\\gcd$。UFD 是 gcd 整环。',
       ].join('\n\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
 
     {
       id: 'imp.ring-bezout-gcd',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.bezout-domain'],
       target: 'def.gcd-domain',
       title: 'Bézout 整环 $\\implies$ gcd 整环：gcd 由线性组合直接给出',
@@ -357,6 +360,7 @@ window.MG = window.MG || {};
         '',
         '（这也说明 Bézout 整环里 Euclid 引理可以直接搬：$p \\mid ab$ 时取 $(p, a) = (d)$ 论证，与 PID 的证明一字不差。）',
       ].join('\n\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
 
     {id: "e140.analogy", kind: 'analogy', a: 'thm.crt', b: 'thm.crt-rings',

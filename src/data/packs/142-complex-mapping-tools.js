@@ -612,7 +612,7 @@
       kind: 'definition',
       definition: 'thm.riemann-mapping',
       usedBy: 'thm.boundary-correspondence',
-      note: '**对象依赖，不是推出**：本节谈的是「Riemann 映射 $f$ 在边界上的行为」，对象 $f$ 由 `thm.riemann-mapping` 提供；但边界延拓不是它的推论 —— 内部双全纯完全不管边界，Jordan 条件是本质的（这正是本节点保持 \'skeleton\' 的那条外部定理 Carathéodory–Osgood）。',
+      note: '**对象依赖，不是推出**：本节谈的是「Riemann 映射 $f$ 在边界上的行为」，对象 $f$ 由 `thm.riemann-mapping` 提供；但边界延拓不是它的推论 —— 内部双全纯完全不管边界，Jordan 条件是本质的（这正是本节点保持 \'skeleton\' 的那条外部定理 Carathéodory–Osgood）。本图 schema 例外：这条按**对象/构造依赖**记 `definition`，不作命题推出。',
     },
 
     {status: 'skeleton', 

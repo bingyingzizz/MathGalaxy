@@ -74,6 +74,7 @@ window.MG = window.MG || {};
         '**⚠️ 边界的边界是空的**：$\\partial(\\partial M) = \\emptyset$，因为 $\\partial M$ 是无边流形（它的卡值域落在 $\\mathbb{R}^{n-1}$ 的开集里）。这一条让 Stokes 型公式能反复用而不会冒出「边界的边界」那一项。'
       ].join('\n'),
       refs: [
+      'Tu, An Introduction to Manifolds, 2nd ed., Ch. 6 §22',
         'Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 带边流形与边界',
         'Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 几何预备：奇异方块与半空间'
       ]

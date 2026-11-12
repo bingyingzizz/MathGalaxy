@@ -88,13 +88,14 @@ window.MG = window.MG || {};
         '⚠️ **$H^{2m}(B;\\mathbb{C})$ 里的类可能为 $0$**（例如 $B$ 是可缩的）—— 这不是定理的失败，而是「可缩空间上没有非平凡的示性类」这件事实。这也解释了为什么示性类能用来**区分拓扑**：它量的是 $B$ 的上同调有多不平凡。',
         '⭐ **实向量的情形**：把 $\\mathfrak{gl}(k,\\mathbb{C})$ 换成 $\\mathfrak{o}(k)$（反对称矩阵）时，$\\operatorname{Pfaffian}$ 给出 Euler 类，$\\operatorname{tr}(F^{2j})$ 给出 Pontryagin 类；机制与复情形完全一样，只是不变多项式的代数换成 $\\mathfrak{o}(k)$ 的那套。'
       ].join('\n\n'),
-      refs: ['Milnor–Stasheff, Characteristic Classes · 陈–Weil 理论', 'Bott–Tu, Differential Forms in Algebraic Topology']
+      refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 5 §23','Milnor–Stasheff, Characteristic Classes · 陈–Weil 理论', 'Bott–Tu, Differential Forms in Algebraic Topology']
     },
 
     {
       id: 'def.chern-class',
       cluster: 'diffgeom.characteristic',
-      type: 'theorem',
+      type: 'definition',
       label: '陈类',
       title: '陈类：由曲率算出的示性类',
       regions: ['diffgeom'],
@@ -124,7 +125,8 @@ window.MG = window.MG || {};
         '⚠️ **$c_{1}$ 的两种口径要分清**：作为**上同调类**它是一个 $H^{2}$ 元素（依赖丛）；作为**陈数**是它在闭合曲面上积分得到的**整数**（依赖丛 + 曲面）。中文里都叫「一陈类 / 第一陈数」，别混。',
         '⚠️ **Whitney 公式不是从曲率直接看出来的**：曲率对直和是分块的，但 $\\det$ 对分块矩阵是乘积 —— 所以公式的**代数根源**在 $\\det(A \\oplus B) = \\det A \\cdot \\det B$。⚠️ 但要注意 $\\smile$ 乘积会改变次数，所以陈述要写成「总陈类」的形式 $c(E\\oplus E\') = c(E)\\smile c(E\')$，逐项展开才是 $c_{j}(E\\oplus E\') = \\sum_{a+b=j} c_{a}(E)\\smile c_{b}(E\')$。'
       ].join('\n\n'),
-      refs: ['Milnor–Stasheff, Characteristic Classes · 陈类', 'Bott–Tu, Differential Forms in Algebraic Topology']
+      refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 5 §25','Milnor–Stasheff, Characteristic Classes · 陈类', 'Bott–Tu, Differential Forms in Algebraic Topology']
     },
 
     {

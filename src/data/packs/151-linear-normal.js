@@ -236,6 +236,7 @@ window.MG = window.MG || {};
         '⚠️ **三处最容易错的地方**：(a) 忘掉「Hermite/实对称」这个前提（复情形要用 $x^{*}$，用 $x^{T}Ax > 0$ 讨论复矩阵是没有意义的，它可能不是实数）；(b) 把「顺序主子式全正」换成「所有主子式全正」—— 后者是**更强**的条件（对正定也对，但半正定时只有后者能用）；(c) 半正定时 $P$ 不可逆、特征值可为 $0$、平方根只是半范数 —— 三条要同时放宽。'
       ].join('\n\n'),
       refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 7',
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 正定',
         '北大《高等代数》· 正定二次型'
       ]
@@ -282,6 +283,7 @@ window.MG = window.MG || {};
         '⚠️ 实情形**不能**做成实对角/实三角到「只有 $1\\times1$ 块」的程度：旋转 $90^\\circ$ 那个例子说明 $2\\times 2$ 块躲不掉。'
       ].join('\n\n'),
       refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 2',
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· Schur 定理',
         'Axler, Linear Algebra Done Right, 「Operators on Inner Product Spaces」· 复谱定理的证明'
       ]

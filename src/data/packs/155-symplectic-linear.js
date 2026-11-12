@@ -57,7 +57,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics',
-        'McDuff–Salamon, Introduction to Symplectic Topology'
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 2'
       ]
     },
 
@@ -92,7 +92,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics',
-        'McDuff–Salamon, Introduction to Symplectic Topology'
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 2'
       ]
     },
 
@@ -130,7 +130,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics',
-        'McDuff–Salamon, Introduction to Symplectic Topology'
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 3'
       ]
     },
 

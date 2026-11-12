@@ -188,7 +188,8 @@ window.MG = window.MG || {};
         '同伦范畴那边同样加 $+$ $-$ $b$。',
         '例：$K$ 是（半）单纯对象时，令 $d^{n} := \\sum_{i} (-1)^{i} d_{i}^{n}$，则 $K$ 成为一个链复形 —— 系数 $(-1)^{i}$ 就是让相邻两项的复合正负相消的那个符号，和经典的单纯边界算子完全一致。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 1 §1.1','Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* -------------------------------------------------- 复形是加法的 */
@@ -235,7 +236,8 @@ window.MG = window.MG || {};
         '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。',
         '两条合起来，才允许把「同伦」当成要商掉的东西。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 1 §1.4','Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------- 同伦范畴 */
@@ -263,7 +265,8 @@ window.MG = window.MG || {};
         '任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}\'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$。',
         '为什么要在同伦范畴里干活：同调函子在同伦下不变，所以**先商掉同伦，剩下的信息才是同调真正看得见的**。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 1 §1.4','Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ------------------------------------------------------ 映射锥 */
@@ -283,7 +286,8 @@ window.MG = window.MG || {};
         '（矩阵按 $K^{n+1} \\oplus L^{n}$ 分块：左上取自 $K$ 的微分，右下取自 $L$ 的微分，左下是 $f$ 的分量；$d^{2} = 0$ 只要 $f$ 与微分交换。）$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。'
       ].join('\n'),
       notes: '用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。',
-      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 1 §1.5','Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------- 导出三角 */
@@ -401,7 +405,8 @@ window.MG = window.MG || {};
         '例：$H^{n}(K[k]) = H^{n+k}(K)$；$M \\in \\mathcal{A}$ 时 $H^{0}([M]) = M$、其余为 $0$；$H^{0}([M \\to N]) = \\ker f$、$H^{1}([M \\to N]) = \\operatorname{coker} f$。',
         '$H^{n}$ 是**函子**，但它是**加法而不正合**的 —— 同调不可交换性是整个同调代数的起点。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 1 §1.1','Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------- 同调的短正合列 */
@@ -552,7 +557,8 @@ window.MG = window.MG || {};
         '总假定过滤是**穷尽的**（$\\bigcup_{n} F^{n}M = M$）与**分离的**（$\\bigcap_{n} F^{n}M = 0$）；若 $n \\ll 0$ 时 $F^{n}M = M$ 且 $n \\gg 0$ 时 $F^{n}M = 0$，叫**有限的**。\n\n带过滤的对象构成范畴 $\\mathbf{F}(\\mathcal{A})$，**关联分次**记 $\\operatorname{Gr}^{n}M := F^{n}M / F^{n+1}M$。'
       ].join('\n'),
       notes: '命题：$\\mathbf{F}(\\mathcal{C}(\\mathcal{A})) \\cong \\mathcal{C}(\\mathbf{F}(\\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。',
-      refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 5 §5.4','Le Stum, An introduction to condensed mathematics, §7.2']
     },
 
     /* ---------------------------------------------------- 谱序列 */
@@ -586,7 +592,8 @@ window.MG = window.MG || {};
         '继承。于是每根 $H^{n}$ 上都有一串 $H^{n} \\supseteq \\cdots \\supseteq F^{p}H^{n} \\supseteq F^{p+1}H^{n} \\supseteq \\cdots \\supseteq 0$。',
         '谱序列说的就是：**对充分大的 $r$，$E_{r}$ 页稳定下来，恰好等于这个过滤的关联分次**。所以它是「从过滤的复形一层层逼近同调」的工具 —— 直接算 $H^{n}$ 太难时，就把 $H^{n}$ 拆成容易算的那些碎片。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 5 §5.1–5.2','Le Stum, An introduction to condensed mathematics, §7.2']
     }
   ],
 

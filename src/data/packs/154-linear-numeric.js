@@ -53,7 +53,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 范数',
-        'Horn–Johnson, Matrix Analysis'
+        'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 5'
       ]
     },
 
@@ -80,6 +80,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: 'text=**为什么是 $LU$**：高斯消元的每一步都是左乘初等矩阵，把消元步乘起来即 $L^{-1}$；顺序主子式非零保证不换行。完整证明（含 Schur 补归纳与唯一性）见边 `imp.lu-decomposition-proof`；置换版本用部分主元法，见同边证明末段。',
       refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 3',
         'Hoffman–Kunze, Linear Algebra, 「Linear Transformations」· 三角化与消元',
         '北大《高等代数》· 矩阵的三角分解'
       ]
@@ -114,7 +115,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· Gram–Schmidt',
-        'Horn–Johnson, Matrix Analysis'
+        'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 3'
       ]
     },
 

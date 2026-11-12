@@ -110,6 +110,7 @@ window.MG = window.MG || {};
         '**与 Christoffel 符号的关系**：在**不正交**的标架 $\\{r_{u}, r_{v}, n\\}$ 上把它写开，系数就是 $\\Gamma^{k}_{\\ ij}$ 与 $h_{ij}$ 的混合体（对照 `def.second-fundamental-form` 与 `def.christoffel-symbol`）；\n\n只有在正交标架下它才变成干净的反对称矩阵。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 2 §10',
         '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· 联络形式'
       ]
@@ -136,6 +137,7 @@ window.MG = window.MG || {};
         '⚠️ 若改用**不正交**的标架（如 $\\{r_{u}, r_{v}, n\\}$），$g_{ij}$ 不是 $\\delta_{ij}$，反对称性不成立，$\\omega$ 就退化成 $\\Gamma$ 与 $h$ 的混合体 —— 那正是里那套公式的样子。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 2 §11',
         '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式的反称性',
         'Kühnel, Differential Geometry: Curves - Surfaces - Manifolds, 「Surfaces in three-space」· 结构方程'
       ]
@@ -171,6 +173,7 @@ window.MG = window.MG || {};
         '⚠️ **符号约定**：本包取 $\\omega^{j}_{\\ i} = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle$，即 $\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$。上下指标换一种位置，第二式整体变号；引用前先对齐这一条。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 2 §11',
         '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 结构方程',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· 结构方程'
       ]
@@ -300,6 +303,7 @@ window.MG = window.MG || {};
         '📌 例：半径 $R$ 的圆柱用 $r(u,v) = (R\\cos u, R\\sin u, v)$ 参数化时 $\\mathrm{I} = R^{2}\\mathrm{d}u^{2} + \\mathrm{d}v^{2}$（$E = R^{2}$、$F = 0$、$G = 1$），于是 $K = 0$（见 `ex.cylinder-first-form`）。',   /* exnotes:def.first-fundamental-form */
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 1 §3',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· 第一基本形式',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· 第一基本形式'
       ]
@@ -331,6 +335,7 @@ window.MG = window.MG || {};
         '**第三基本形式**：$III(v,w) := \\langle \\mathrm{d}n(v), \\mathrm{d}n(w)\\rangle = \\langle W(v), W(w)\\rangle$。\n\n$W$ 的特征方程 $W^{2}-2HW+K\\,\\mathrm{id} = 0$ 翻成二次形式就是 $III-2H\\,II+K\\,I = 0$（Cayley–Hamilton）。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 1 §5',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 形状算子与自伴性',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· Weingarten 变换'
       ]
@@ -366,6 +371,7 @@ window.MG = window.MG || {};
         '**几何意义**：$II(v,v)$ 是「沿 $v$ 走、在法向上弯多少」；$L, M, N$ 与 $E, F, G$ 一起给出两个主曲率（解 $\\det(h-kg) = 0$）。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 1 §5',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 第二基本形式',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· 第二基本形式'
       ]

@@ -59,7 +59,8 @@ window.MG = window.MG || {};
         '叫**特征子空间**；$\\dim E_{\\lambda}$ 叫 $\\lambda$ 的**几何重数**。'
       ].join('\n'),
       notes: '⭐ 一句话：**特征向量是「$T$ 只把它拉伸、不改变方向」的那些向量**，特征值是拉伸倍数。\n\n等价说法：$\\lambda$ 是特征值 $\\iff$ $T - \\lambda I$ **不可逆** $\\iff$ $\\det(\\lambda I - T) = 0$。\n\n⭐ 特征子空间 $E_\\lambda$ 是 $T$-不变的（而且 $T$ 在它上面就是「乘 $\\lambda$」），不同特征值的特征子空间**线性无关**（和是直和）。\n\n⚠ $\\lambda$ 必须在 $K$ 里：实矩阵可能没有实特征值（旋转 $90^\\circ$ 的特征值是 $\\pm i$），此时要扩到 $\\mathbb{C}$（或直接说「在 $K$ 上无特征值」）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
       id: 'def.char-poly',
@@ -81,7 +82,8 @@ window.MG = window.MG || {};
         '$$\\chi_T(x) = x^{n} - (\\operatorname{tr} T)\\,x^{n-1} + \\cdots + (-1)^{n} \\det T$$'
       ].join('\n'),
       notes: '⭐ 特征多项式把「特征值」这个**几何**问题变成了「多项式求根」这个**代数**问题 —— 于是代数基本定理保证在 $\\mathbb{C}$ 上永远有 $n$ 个特征值（计重数）。\n\n⭐ 系数与不变量的关系：$x^{n-1}$ 的系数是 $-\\operatorname{tr} T$、常数项是 $(-1)^{n}\\det T$。\n\n于是「迹 = 特征值之和」「行列式 = 特征值之积」都成了 Vieta 公式的读法，**不必真的解出特征值**。\n\n⚠ 几何重数 $\\le$ 代数重数；\n\n两者不等的例子是 $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$（$\\lambda = 1$：代数重数 2、几何重数 1）—— 这正是它不能对角化的原因。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
     },
     {
       id: 'def.trace',
@@ -143,7 +145,8 @@ window.MG = window.MG || {};
         '矩阵形式：对 $A \\in M_n(K)$ 有 $\\chi_A(A) = 0$（零矩阵）。'
       ].join('\n'),
       notes: '⭐ 这条定理说的是「**每个算子都满足自己的特征方程**」—— 于是 $\\chi_T$ 是「把 $T$ 送进零」的多项式**之一**，这立刻给出一个把 $K[x]$-模的结构用上的入口（$V$ 成了 $K[x]/(\\chi_T)$-模）。\n\n⚠ 常见错误记法：不能把 $\\chi_T(T) = \\det(T I - T)$ 这样代进去（那是「矩阵里的矩阵」），要**先把 $\\chi_T$ 展开成 $\\sum c_k x^{k}$，再逐项换成 $\\sum c_k T^{k}$**。\n\n⭐ 用途：算矩阵的幂（$A^{n}$ 可以用低次幂线性表出）、证明极小多项式整除特征多项式、求逆矩阵（$A^{-1}$ 由 $\\chi_A$ 的系数给出）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
     },
     {
       id: 'thm.diagonalizable',
@@ -176,7 +179,8 @@ window.MG = window.MG || {};
         '\n' +
         '⚠️ **必须的假设**：有限维 + **特征多项式在 $K$ 中分裂**（全部特征值落在 $K$ 里）。缺了后者，$T$ 在 $K$ 上可能根本没有特征值（例如 $\\mathbb{R}$ 上的旋转 $90^{\\circ}$）：此时 $m=0$，**(2)(3) 是假命题** —— 右边是零子空间 $0$，而 $V=\\mathbb{R}^2$（空和 $0\\ne2$）；只有 **(4) 真空成立**（「每个特征值」取遍空族）。所以等价链在 (2)(3) 处就断了，别误以为只差 (4)。正确的说法是「在代数闭包上可对角化 $\\iff$ 极小多项式无重根」。\n'
       ].join('\n\n'),
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 1','Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
       id: 'def.minimal-poly',
@@ -198,7 +202,8 @@ window.MG = window.MG || {};
         '⚠️ 与域论里的「代数元的极小多项式」（`def.algebraic-element`，本图已收录）区分：一个是零化算子的、一个是零化代数元的，形式上是一回事，名字要分开。'
       ].join('\n'),
       notes: '⭐ 极小多项式是**相似完全不变量**中最细的那一个（与特征多项式合起来）：Jordan 型完全由它们决定，而两个矩阵相似 $\\iff$ 它们有相同的**不变因子**（等价于相同的 Jordan 型）。\n\n⭐ $I_T$ 是理想这件事本身很重要：$p(T) = 0$、$q(T) = 0 \\implies (p + q)(T) = 0$，且 $r\\,p$ 也在里面 —— 于是 $T$ 在 $K[x]$ 上成了**模**（$x$ 作用 = $T$），后面 Jordan 型的证明全在这个模里做。\n\n⚠ 极小多项式与特征多项式的根**相同**（差一个重数）：两者都等于「$T$ 的特征值全体」。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 3','Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
     },
     {
       id: 'thm.minimal-poly-divisor',
@@ -267,7 +272,8 @@ window.MG = window.MG || {};
         '等价说法：$T$ 可对角化 $\\iff$ 所有 Jordan 块都是 $1 \\times 1$。'
       ].join('\n'),
       notes: '⭐ 这是**有限维线性代数唯一的完整分类定理**：代数闭域上「相似」由 Jordan 型完全决定（块的大小与特征值的分布）。\n\n它同时给出了「相似不变量」的完整清单。\n\n⭐ 证明的两半：主分解（按特征值拆）＋ 在每个根子空间上对幂零算子 $N = T - \\lambda I$ 取「$\\ker N^{k}$ 的链」并逐层补基（这一步用 `def.quotient-vs` 与归纳）。\n\n⚠ 三个前提都在：**代数闭**（否则没有 $\\lambda$）、**有限维**（否则可能连特征值都没有）、**$K$ 是域**。\n\n$\\mathbb{R}$ 上只能用「实 Jordan 形」或改走有理标准型（`thm.rational-canonical-form`）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 7', 'Lang, Algebra, Ch. XIV']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 3','Hoffman–Kunze, Linear Algebra, Ch. 7', 'Lang, Algebra, Ch. XIV']
     },
     {
       id: 'cor.jordan-uniqueness',
@@ -285,7 +291,8 @@ window.MG = window.MG || {};
         '更定量地：对每个特征值 $\\lambda$，Jordan 块的**尺寸**构成一个分拆 $\\mu(\\lambda)$；两个矩阵相似当且仅当对每个 $\\lambda$ 都有 $\\mu_A(\\lambda) = \\mu_B(\\lambda)$。'
       ].join('\n'),
       notes: '⭐ 唯一性的实用形式：**块的个数 = 几何重数**（$\\dim E_\\lambda$）、**块的最大尺寸 = $\\lambda$ 在极小多项式里的次数**、**尺寸之和 = 代数重数**。\n\n于是「相似分类」被压缩成一组整数的分拆数据。\n\n⭐ 由此得到一条漂亮的推论：$A$ 幂零（$A^{k} = 0$ 对某 $k$）$\\iff$ 它的特征值只有 $0$ $\\iff$ 它的特征多项式是 $x^{n}$。\n\n⚠ 「不计块的次序」是必须的：Jordan 形是按特征值与块的排列写的，重排块给出同一个算子的另一种写法（换个基而已）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 7']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 3','Hoffman–Kunze, Linear Algebra, Ch. 7']
     }
   ],
 

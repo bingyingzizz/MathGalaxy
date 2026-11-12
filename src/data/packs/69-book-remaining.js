@@ -253,7 +253,8 @@ window.MG = window.MG || {};
         '**存在性**：有足够多内射时，每个下有界复形都有内射消解（逐次把核嵌入内射对象）✓；对偶地，有足够多投射时每个上有界复形都有投射消解 ✓。',
         '**例**：自由阿贝尔群层拼出的 $\\mathbb{Z}\\cdot X_{\\bullet} \\to \\mathbb{Z}\\cdot X$ 是一条**投射**消解（见「覆盖给出的自由复形零调」）。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, Definition 7.1.20']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 2','Le Stum, An introduction to condensed mathematics, Definition 7.1.20']
     },
 
     /* ----------------------------------------------------- 7.2.18 */

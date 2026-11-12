@@ -887,7 +887,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Rotman, An Introduction to Homological Algebra (2nd ed.), 万有系数定理（Universal Coefficient Theorem）的部分',
-        'Weibel, An Introduction to Homological Algebra, 关于万有系数定理（universal coefficient theorem）的部分'
+        'Weibel, An Introduction to Homological Algebra, Ch. 3 §3.6'
       ]
     },
     {

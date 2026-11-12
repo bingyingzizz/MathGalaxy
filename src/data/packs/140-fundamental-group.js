@@ -679,7 +679,7 @@
       note: 'L(p,q) 的基本群是 Z/p。' },
     { id: 'dep.lens-simply', kind: 'definition', definition: 'def.simply-connected', usedBy: 'def.lens-space',
       note: 'S^3 单连通是计算基本群的输入。' },
-    { id: 'imp.lens-space-smooth-manifold', kind: 'implication',
+    { id: 'imp.lens-space-smooth-manifold', kind: 'implication', layer: false,
       sources: ['def.lens-space', 'lem.free-proper-quotient-manifold'],
       target: 'def.smooth-manifold',
       title: '透镜空间是光滑三维流形',
@@ -691,7 +691,8 @@
         '有限群在 Hausdorff 空间上的自由作用自动真不连续：每个点有开邻域与所有非平凡像不交（即上一引理证明的第一段）。',
         '',
         '于是引理给出：轨道空间 $L(p,q)=S^{3}/\\Gamma$ 有唯一光滑结构使商映射为局部微分同胚，从而是三维光滑流形。∎'
-      ].join('\n\n') },
+      ].join('\n\n'),
+      note: '透镜空间是光滑三维流形的特例；这一条只作逻辑包含、不分层。' },
     /* ---------------------------------------------------- §A 同伦 → 基本群 */
     {id: "e52.definition", kind: 'definition', definition: 'def.continuous-map', usedBy: 'def.homotopy-maps',
       note: '同伦 $F : X \\times [0, 1] \\to Y$ 本身要求**联合连续**（在乘积拓扑下），' +

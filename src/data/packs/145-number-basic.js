@@ -407,11 +407,6 @@ window.MG = window.MG || {};
     {id: "e124.definition", kind: 'definition', definition: 'def.group', usedBy: 'thm.euler-theorem',
       note: '单位群是群：Euler 定理的证明只用到「有限群的元素阶整除群阶」。' },
 
-    { id: 'imp.euler-lagrange', kind: 'implication', sources: ['thm.lagrange'], target: 'thm.euler-theorem',
-      title: 'Lagrange 定理用于单位群给出 Euler 定理',
-      proof: '设 $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$，则 $|G| = \\varphi(n)$，且 $a$ 与 $n$ 互素 $\\iff$ $[a] \\in G$。由 Lagrange 定理，$G$ 中元素的阶整除 $|G|$，故 $[a]^{\\varphi(n)} = 1$，即 $a^{\\varphi(n)} \\equiv 1 \\pmod{n}$。∎',
-      note: '整条证明只有这一行群论，其余是同余语言的翻译。' },
-
     {
       id: 'imp.nt-division-euclid',
       kind: 'implication',
@@ -504,6 +499,7 @@ window.MG = window.MG || {};
         '',
         '而 $[a]^{|H|} = 1$（循环群的阶就是元素的阶），故 $[a]^{|G|} = ([a]^{|H|})^{m} = 1$。换回同余语言：$a^{\\varphi(n)} \\equiv 1 \\pmod n$。',
       ].join('\n\n'),
+      note: '这条证明里只有一步是群论（Lagrange 定理给出 $|H|\\mid|G|$），其余都是同余语言的翻译；显式写出 $H=\\langle[a]\\rangle$ 只是把这一步落成子群的形式。',
     },
 
     {

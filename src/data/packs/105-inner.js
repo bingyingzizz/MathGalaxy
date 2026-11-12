@@ -73,7 +73,8 @@ window.MG = window.MG || {};
         '（三角不等式来自 Cauchy–Schwarz。）'
       ].join('\n'),
       notes: '⭐ 于是**内积空间自动是度量空间**，可以谈收敛、完备、紧 —— 分析那一侧的全部工具都能进来。\n\n完备的内积空间叫 **Hilbert 空间**。\n\n⭐ 反过来：范数未必来自内积。\n\n判据是**平行四边形律**\n\n$$\\|u + v\\|^{2} + \\|u - v\\|^{2} = 2\\|u\\|^{2} + 2\\|v\\|^{2}$$\n\n（$\\ell^{p}$ 在 $p \\ne 2$ 时不满足它，所以 $\\ell^{p}$ 上的范数不来自任何内积 —— 这也是「$L^{2}$ 特别」的原因。）\n\n⭐ 由内积恢复内积的公式是**极化恒等式**：$\\langle u, v\\rangle = \\frac{1}{4}\\bigl( \\|u+v\\|^{2} - \\|u-v\\|^{2} \\bigr)$（实情形）。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 5','Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
       id: 'thm.cauchy-schwarz',
@@ -290,7 +291,8 @@ window.MG = window.MG || {};
         '并且所有特征值 $\\lambda_i$ **都是实数**。矩阵形式：实对称矩阵 $A$ 存在正交矩阵 $Q$ 使 $Q^{\\mathsf{T}} A Q = \\operatorname{diag}(\\lambda_1, \\ldots, \\lambda_n)$。'
       ].join('\n'),
       notes: '⭐ 与 Jordan 型的区别：Jordan 只保证「相似」，谱定理保证「**酉/正交**相似」，代价是把条件收紧到自伴（正规）。\n\n这是有限维里两个不同的分类问题的答案。\n\n⭐ 证明的两步：① 至少有一个（实）特征值（用最值定理：$|Tv|$ 或 $\\langle Tv, v\\rangle$ 在单位球面这个**紧**集上取极值）；\n\n② 对特征子空间的正交补归纳（不变性来自自伴：$T(U) \\subseteq U \\implies T(U^{\\perp}) \\subseteq U^{\\perp}$）。\n\n⭐ 无限维的推广是**Hilbert 空间上的谱定理**（自伴算子的谱测度 / 投影值测度）—— 那是泛函分析的内容，图上 `analysis.lp` 那一团的 $L^{2}$ 就是它的舞台。',
-      refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8', 'Roman, Advanced Linear Algebra, Ch. 11']
+      refs: [
+      'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 2','Hoffman–Kunze, Linear Algebra, Ch. 8', 'Roman, Advanced Linear Algebra, Ch. 11']
     },
     {
       id: 'cor.spectral-normal',

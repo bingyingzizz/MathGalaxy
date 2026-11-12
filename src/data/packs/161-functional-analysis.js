@@ -549,7 +549,7 @@ window.MG = window.MG || {};
         '',
         '等价地：$C$ 包含任意两点之间的整条线段。'
       ].join('\n'),
-      notes: '⭐ 凸性只用**仿射结构**，不需要范数或内积；在无穷维里它是「极小元存在」的关键假设（见 thm.projection-convex）。\n\n⚠ 空集按此定义也是凸集（「任意两点」条件真空成立）；需要非空时会在定理里单独假设（如投影定理）。\n\n💡 凸组合、凸包、分离定理都从这里出发。',
+      notes: '⭐ 凸性只用**仿射结构**，不需要范数或内积；在无穷维里它是「极小元存在」的关键假设（见 thm.projection-convex）。\n\n⚠ 空集按此定义也是凸集（「任意两点」条件真空成立）；需要非空时会在定理里单独假设（如投影定理）。\n\n💡 凸组合、凸包、分离定理都从这里出发。\n\n📌 **凸集在其每一点处都是星形集**（见 `thm.convex-star-shaped-every-point`）；空集时这个全称命题真空成立，因此不与「空集不是星形集」冲突。',
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
     },
     {
@@ -567,8 +567,51 @@ window.MG = window.MG || {};
         '',
         '这样的 $x_{0}$ 叫 $S$ 的一个**星点**（star center）。'
       ].join('\n'),
-      notes: '⭐ **非空**凸集一定是星形集：任取 $x_{0} \\in C$，凸性给出整条线段。空集是凸的，却一个点都没有，故不是星形集 —— 「非空」这个前提不能省。反之不然：平面里的十字形关于中心星形，却不凸。\n\n⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。',
+      notes: '⭐ **非空**凸集一定是星形集：任取 $x_{0} \\in C$，凸性给出整条线段。空集是凸的，却一个点都没有，故不是星形集 —— 「非空」这个前提不能省。反之不然：平面里的十字形关于中心星形，却不凸。\n\n⚠ 星点不必唯一；Poincaré 引理只要求区域能缩成一点，因此星形比凸性弱（见 lem.poincare-lemma）。\n\n📌 凸集在其每一点处都是星形集（`thm.convex-star-shaped-every-point`）；但空集是凸的、不是星形集 —— 星形集要求存在星点，故「非空」不能省。',
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基']
+    },
+
+    {
+      id: 'def.star-shaped-at-point',
+      cluster: 'fa.hilbert',
+      type: 'definition',
+      label: '关于一点的星形集',
+      title: '关于一点的星形：该点能看见全集合',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '星形'],
+      statement: [
+        "设 $V$ 是实向量空间，$C \\subseteq V$，$x_{0} \\in V$。称 $C$ **关于 $x_{0}$ 星形**，若 $x_{0} \\in C$ 且对每个 $y \\in C$、$t \\in [0,1]$，",
+        "",
+        "$$(1-t)x_{0} + t y \\in C.$$",
+        "",
+        "等价地：$x_{0} \\in C$，且 $C$ 包含从 $x_{0}$ 到 $C$ 中任一点的整条线段。"
+      ].join('\n'),
+      notes: [
+        "⭐ 这是「星形集」的点版本：$C$ 是星形集，当且仅当存在 $x_{0}$ 使 $C$ 关于 $x_{0}$ 星形（见 `def.star-shaped`）。",
+        "⚠ 空集不关于任何点星形（$x_{0} \\in C$ 这一步就失败）。凸集则在它的每一点处都星形（见 `thm.convex-star-shaped-every-point`）。",
+        "💡 例：平面里的十字形关于中心星形，却不凸；单位圆盘关于每个内点星形。"
+      ].join('\n\n'),
+      refs: ['Conway, A Course in Functional Analysis', 'Rockafellar, Convex Analysis']
+    },
+    {
+      id: 'thm.convex-star-shaped-every-point',
+      cluster: 'fa.hilbert',
+      type: 'theorem',
+      label: '凸集在每一点处星形',
+      title: '凸集在其每一点处都是星形集',
+      regions: ['functional-analysis'],
+      tags: ['泛函分析', '凸集', '星形'],
+      statement: [
+        "设 $V$ 是实向量空间，$C \\subseteq V$ 是凸集。则对每个 $x_{0} \\in C$，$C$ 关于 $x_{0}$ 星形。",
+        "",
+        "特别地，非空凸集是星形集。"
+      ].join('\n'),
+      notes: [
+        "由凸性定义，任取 $x_{0} \\in C$ 与 $y \\in C$，整条线段 $(1-t)x_{0} + t y$（$t \\in [0,1]$）都在 $C$ 内，即 $C$ 关于 $x_{0}$ 星形；证明写在边 `imp.convex-star-shaped-every-point` 上。",
+        "⚠ 空集时「对每个 $x_{0} \\in C$」是全称命题，真空成立；但空集本身不是星形集（没有星点），见 `def.star-shaped`。两者不矛盾：本条说的是「每个点都是星点」，不是「存在星点」。",
+        "📌 因此「凸集 $\\Longrightarrow$ 星形集」在非空凸集上成立；写成逐点形式后，空集也不再是反例。"
+      ].join('\n\n'),
+      refs: ['Conway, A Course in Functional Analysis']
     },
 
     {
@@ -1400,14 +1443,15 @@ window.MG = window.MG || {};
       note: '凸包定义为包含 $S$ 的最小凸集，直接用凸集概念。' },
     {id: "e169.definition", kind: 'definition', definition: 'def.star-shaped', usedBy: 'lem.poincare-lemma',
       note: 'Poincaré 引理里的星形区域就是这里的星形开集；星点可作收缩中心。' },
-    {id: "e170.implication", kind: 'implication', sources: ['def.convex-set'], target: 'def.star-shaped',
-      title: '非空凸集 $\\implies$ 星形集',
-      proof: [
-        '设 $C \\ne \\emptyset$ 凸，取 $x_{0} \\in C$。对任意 $x \\in C$、$t \\in [0,1]$，由凸性 $(1-t)x_{0} + tx \\in C$。',
-        '这正是星形集关于 $x_{0}$ 的定义，故 $C$ 是星形集。∎'
-      ].join('\n'),
-      note: '「非空」不能省：空集是凸的但不是星形集（没有星点）。逆命题也不成立：十字形星形但不凸。'
-    },
+    {id: "dep.ssap-vectorspace", kind: 'definition', definition: 'def.vector-space', usedBy: 'def.star-shaped-at-point',
+      note: '「关于一点的星形」只用向量空间里的线段，不用范数或内积。' },
+    {id: "dep.star-ssap", kind: 'definition', definition: 'def.star-shaped-at-point', usedBy: 'def.star-shaped',
+      note: '星形集就是「存在一个星点，使集合关于它星形」；点版本是去掉存在量词后的基本关系。' },
+    {id: "imp.convex-star-shaped-every-point", kind: 'implication',
+      sources: ['def.convex-set', 'def.star-shaped-at-point'],
+      target: 'thm.convex-star-shaped-every-point',
+      title: '凸集在每一点处星形',
+      proof: "设 $C$ 凸、$x_{0} \\in C$。任取 $y \\in C$ 与 $t \\in [0,1]$，由凸性 $(1-t)x_{0}+ty \\in C$；这正是关于 $x_{0}$ 星形的定义，故每个 $x_{0} \\in C$ 都是星点。$\\blacksquare$" },
     {id: "e171.definition", kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-combination',
       note: '凸组合是凸集对有限线性组合封闭的载体；两点情形就是凸集定义里的线段。' },
     {id: "e172.definition", kind: 'definition', definition: 'def.convex-combination', usedBy: 'def.convex-hull',
@@ -1475,6 +1519,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.fa-unitary-partial',
       kind: 'implication',
+      layer: false,
       sources: ['def.unitary-operator'],
       target: 'def.partial-isometry',
       title: '酉算子 $\\implies$ 部分等距',
@@ -1482,7 +1527,7 @@ window.MG = window.MG || {};
         '设 $u$ 是酉算子，即 $u^*u = u\\,u^* = I$。',
         '$I$ 是正交投影，故按定义 $u^*u = I$ 是正交投影，$u$ 是部分等距。$\\blacksquare$'
       ].join('\n'),
-      note: '反向不成立：单侧移位是部分等距但不是酉算子（$S\\,S^*$ 不是 $I$）。'
+      note: '部分等距是一般定义；酉算子是满足 $u^*u = u\\,u^* = I$ 的特例，这条只作逻辑包含、不分层。反向不成立：单侧移位是部分等距但不是酉算子（$S\\,S^*$ 不是 $I$）。'
     },
     { id: 'def-link.huc-hilbert', kind: 'definition', definition: 'def.hilbert-space',
       usedBy: 'thm.hilbert-uniformly-convex',
@@ -1516,18 +1561,54 @@ window.MG = window.MG || {};
       ].join('\n'),
       note: '框架到实例的回头推论（打包，不提供独立证明），不参与分层：目标定理是 (c) 的 $L^{p}$ 特例；(c) 的证明只用 Radon–Nikodym，不依赖本定理。'
     },
-    {"id":"dep.hb-zorn","kind":"definition","definition":"lem.zorn","usedBy":"thm.hahn-banach","note":"延拓用 Zorn 引理取极大元。"},
+        {
+      id: 'imp.hahn-banach-zorn',
+      kind: 'implication',
+      sources: ['lem.zorn'],
+      target: 'thm.hahn-banach',
+      title: 'Zorn 引理：把延拓推到整个空间',
+      proof: "考虑所有「$g$ 定义在子空间 $N\\\\supseteq M$ 上、线性、$g|_{M}=f$、$g\\\\le p$ 于 $N$」的 $g$，按延拓关系排序。任一全序子族的并仍是同类对象（定义域取并，线性与 $g\\\\le p$ 逐点验证），故由 `lem.zorn` 取得极大元 $F$。若 $\\\\operatorname{dom}F\\\\ne X$，取 $x_{0}\\\\notin\\\\operatorname{dom}F$，用一维延拓引理把 $F$ 再延一步，与极大性矛盾；故 $F$ 定义在整个 $X$ 上且 $F\\\\le p$。∎",
+    },
     {"id":"dep.hb-norm","kind":"definition","definition":"def.norm","usedBy":"thm.hahn-banach","note":"保范延拓推论取 $p(x) = \\|\\varphi\\|\\,\\|x\\|$。"},
-    {"id":"dep.ba-tych","kind":"definition","definition":"thm.tykhonov","usedBy":"thm.banach-alaoglu","note":"积 $\\prod_x [-\\|x\\|,\\|x\\|]$ 的紧性来自 Tychonoff。"},
+        {
+      id: 'imp.banach-alaoglu-tychonoff',
+      kind: 'implication',
+      sources: ['thm.tykhonov'],
+      target: 'thm.banach-alaoglu',
+      title: 'Tychonoff：把 $B_{X^{*}}$ 嵌进紧的积空间',
+      proof: "令 $P=\\\\prod_{x\\\\in X}[-\\\\|x\\\\|,\\\\|x\\\\|]$，$\\\\Phi(\\\\varphi)=(\\\\varphi(x))_{x\\\\in X}$。弱*拓扑正是积拓扑沿 $\\\\Phi$ 拉回的拓扑，$\\\\Phi$ 为单射。像闭：若 $\\\\Phi(\\\\varphi_\\\\alpha)\\\\to y$，则 $\\\\varphi(x):=y_x$ 线性且 $\\\\|\\\\varphi\\\\|\\\\le1$，故 $y=\\\\Phi(\\\\varphi)$ 仍在像中；于是 $B_{X^{*}}$ 同胚于闭子集 $\\\\Phi(B_{X^{*}})\\\\subseteq P$。每个 $[-\\\\|x\\\\|,\\\\|x\\\\|]$ 紧，由 `thm.tykhonov` 得 $P$ 紧，闭子集紧，故 $B_{X^{*}}$ 弱*紧。∎",
+    },
     {"id":"dep.ba-dual","kind":"definition","definition":"def.dual-banach","usedBy":"thm.banach-alaoglu","note":"弱*拓扑建在连续对偶上。"},
     {"id":"dep.wstar-dual","kind":"definition","definition":"def.dual-space","usedBy":"def.weak-star-topology","note":"弱*拓扑建在连续对偶 $E^{*}$ 上。"},
     {"id":"dep.wstar-normed","kind":"definition","definition":"def.normed-space","usedBy":"def.weak-star-topology","note":"半范数 $p_x(\\varphi)=|\\varphi(x)|$ 由 $E$ 的范数控制。"},
     {"id":"dep.wstar-ba","kind":"definition","definition":"def.weak-star-topology","usedBy":"thm.banach-alaoglu","note":"Banach–Alaoglu 的紧性是弱*拓扑下的紧性。"},
-    {"id":"dep.gs-hb","kind":"definition","definition":"thm.hahn-banach","usedBy":"thm.goldstine","note":"点与闭凸集的分离用 Hahn–Banach 的几何形式。"},
-    {"id":"dep.gs-ba","kind":"definition","definition":"thm.banach-alaoglu","usedBy":"thm.goldstine","note":"$B_{X^{**}}$ 弱*紧（把 Banach–Alaoglu 用到 $X^{*}$ 上）。"},
+        {
+      id: 'imp.goldstine-hahn-banach',
+      kind: 'implication',
+      sources: ['thm.hahn-banach'],
+      target: 'thm.goldstine',
+      title: 'Hahn–Banach 分离：闭凸包与外面的点分开',
+      proof: "设 $K=\\\\overline{J_X(B_X)}^{w^{*}}$，若 $K\\\\ne B_{X^{**}}$ 取 $\\\\xi_0\\\\in B_{X^{**}}\\\\setminus K$，令 $C=K-\\\\xi_0$。$C$ 闭凸、不含 $0$，取 Minkowski 泛函 $p$：$p$ 次线性、在 $C$ 上 $\\\\le1$、且 $p(-\\\\xi_0)>1$。在一维子空间 $\\\\mathbb{R}\\\\xi_0$ 上令 $\\\\ell_0(t\\\\xi_0)=-t\\\\,p(-\\\\xi_0)$，验证 $\\\\ell_0\\\\le p$ 后用 `thm.hahn-banach` 延拓成 $X^{**}$ 上的线性泛函 $\\\\ell\\\\le p$；把 $\\\\pm\\\\ell$ 合并得弱*连续泛函把 $\\\\xi_0$ 与 $K$ 分离，与 $K$ 是闭凸包矛盾。∎",
+    },
+        {
+      id: 'imp.goldstine-banach-alaoglu',
+      kind: 'implication',
+      sources: ['thm.banach-alaoglu'],
+      target: 'thm.goldstine',
+      title: 'Banach–Alaoglu：$B_{X^{**}}$ 弱*紧',
+      proof: "由 `thm.banach-alaoglu`（用在对偶对 $(X^{*},X^{**})$ 上），$B_{X^{**}}$ 弱*紧。$K:=\\\\overline{J_X(B_X)}^{w^{*}}$ 是紧空间 $B_{X^{**}}$ 的闭子集，故弱*紧、从而是弱*闭凸集 —— 主证明正需要对闭凸集 $K$ 做分离并利用紧性取极值。∎",
+    },
     {"id":"dep.gs-weakstar","kind":"definition","definition":"def.weak-star-topology","usedBy":"thm.goldstine","note":"弱*拓扑是 $X^{**}$ 上由 $X^{*}$ 生成的逐点收敛拓扑，本条只用其半范数刻画。"},
     {"id":"imp.milman-pettis","kind":"implication","sources":["thm.goldstine","def.uniformly-convex"],"target":"thm.milman-pettis","title":"Goldstine + 一致凸 $\\implies$ 自反","proof":"设 $\\xi \\in B_{X^{**}}$。Goldstine 给网 $(x_\\alpha) \\subset B_X$ 弱*收敛到 $\\xi$；取 $\\varphi$ 使 $\\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$ 得 $\\|x_\\alpha\\| \\to 1$；归一化后由一致凸知 $(y_\\alpha)$ 是范数 Cauchy，故 $x_\\alpha \\to x \\in X$；弱*极限唯一给出 $\\xi = J_X x$，$J_X$ 满射。详见节点注。∎","note":"本条把 Milman–Pettis 归到 Goldstine（`thm.goldstine`）这一个外部定理上；Goldstine 自身由 `thm.hahn-banach` 与 `thm.banach-alaoglu` 支撑。"},
-    {status: 'skeleton', "id":"dep.james-ba","kind":"definition","definition":"thm.banach-alaoglu","usedBy":"thm.james","note":"正向（自反 $\\implies$ 泛函达到范数）要用弱*紧性：$B_{X^{**}}$ 弱*紧，沿 $J_X$ 拉回得 $B_X$ 弱紧。反向不需要它。"},
+        {
+      status: 'skeleton',
+      id: 'imp.james-banach-alaoglu',
+      kind: 'implication',
+      sources: ['thm.banach-alaoglu'],
+      target: 'thm.james',
+      title: 'Banach–Alaoglu：自反 $\\implies$ $B_X$ 弱紧',
+      proof: "先看 $(\\\\Longrightarrow)$，即自反的情形。设 $X$ 自反，则 $J_X(B_X)=B_{X^{**}}$。由 `thm.banach-alaoglu`，$B_{X^{**}}$ 弱*紧；而 $X$ 的弱拓扑就是沿 $J_X$ 拉回的弱*拓扑，故 $B_X=J_X^{-1}(B_{X^{**}})$ 弱紧。于是任取 $\\\\varphi\\\\in X^{*}$，$|\\\\varphi|$ 在弱紧集 $B_X$ 上达到最大值 $\\\\|\\\\varphi\\\\|$，即存在 $x\\\\in B_X$ 使 $\\\\varphi(x)=\\\\|\\\\varphi\\\\|$。∎",
+    },
     {status: 'skeleton', "id":"dep.james-weak","kind":"definition","definition":"def.weak-topology","usedBy":"thm.james","note":"弱拓扑 $\\sigma(X,X^{*})$ 是「使 $X^{*}$ 全部连续」的最弱拓扑；正向用它把 $\\varphi$ 变成弱连续函数。"},
     {
       "id": "imp.metric-compact-equiv-proof",

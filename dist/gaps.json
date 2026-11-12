@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-12T04:38:49.620Z",
+ "generated": "2026-11-12T06:03:41.355Z",
  "terms": 76,
  "missing": [
   {
    "term": "单位圆",
-   "total": 31,
+   "total": 32,
    "nodes": [
     {
      "id": "thm.integral-trig",
@@ -381,37 +381,19 @@
   {
    "node": "ex.projective-plane",
    "nodeLabel": "射影平面 RP²",
-   "nodeLayer": 20,
+   "nodeLayer": 18,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 33,
+   "defLayer": 31,
    "gap": 13
   },
   {
-   "node": "def.weak-hausdorff",
-   "nodeLabel": "弱 Hausdorff 空间",
+   "node": "def.completely-normal-space",
+   "nodeLabel": "完全正规空间",
    "nodeLayer": 6,
-   "def": "def.continuous-map",
-   "defLabel": "连续映射",
-   "defLayer": 16,
-   "gap": 10
-  },
-  {
-   "node": "prop.connected-image-closure",
-   "nodeLabel": "连通的像与闭包",
-   "nodeLayer": 6,
-   "def": "def.continuous-map",
-   "defLabel": "连续映射",
-   "defLayer": 16,
-   "gap": 10
-  },
-  {
-   "node": "def.orientable-manifold",
-   "nodeLabel": "可定向流形",
-   "nodeLayer": 16,
-   "def": "def.smooth-manifold",
-   "defLabel": "光滑流形",
-   "defLayer": 22,
+   "def": "def.subspace",
+   "defLabel": "子空间",
+   "defLayer": 12,
    "gap": 6
   },
   {
@@ -424,13 +406,31 @@
    "gap": 5
   },
   {
-   "node": "prop.volume-form-orientation",
-   "nodeLabel": "体积与定向",
-   "nodeLayer": 17,
-   "def": "def.smooth-manifold",
-   "defLabel": "光滑流形",
-   "defLayer": 22,
+   "node": "thm.classification-surfaces",
+   "nodeLabel": "闭曲面分类定理",
+   "nodeLayer": 26,
+   "def": "def.nonorientable-genus",
+   "defLabel": "不可定向亏格",
+   "defLayer": 31,
    "gap": 5
+  },
+  {
+   "node": "prop.eulerchar-nonorientable",
+   "nodeLabel": "Euler 示性数与不可定向亏格",
+   "nodeLayer": 26,
+   "def": "def.nonorientable-genus",
+   "defLabel": "不可定向亏格",
+   "defLayer": 31,
+   "gap": 5
+  },
+  {
+   "node": "def.jordan-curve",
+   "nodeLabel": "Jordan 曲线",
+   "nodeLayer": 8,
+   "def": "def.subspace",
+   "defLabel": "子空间",
+   "defLayer": 12,
+   "gap": 4
   },
   {
    "node": "prop.adjoint-additive",
@@ -442,39 +442,12 @@
    "gap": 4
   },
   {
-   "node": "prop.pullback-forms",
-   "nodeLabel": "拉回（开集间）",
-   "nodeLayer": 19,
-   "def": "def.smooth-map",
-   "defLabel": "光滑映射",
+   "node": "def.riemannian-metric",
+   "nodeLabel": "Riemann 度量",
+   "nodeLayer": 20,
+   "def": "def.vector-field",
+   "defLabel": "向量场",
    "defLayer": 23,
-   "gap": 4
-  },
-  {
-   "node": "prop.cgwh-fiber-product",
-   "nodeLabel": "紧块的纤维积还是紧的",
-   "nodeLayer": 13,
-   "def": "def.continuous-map",
-   "defLabel": "连续映射",
-   "defLayer": 16,
-   "gap": 3
-  },
-  {
-   "node": "thm.classification-surfaces",
-   "nodeLabel": "闭曲面分类定理",
-   "nodeLayer": 30,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 33,
-   "gap": 3
-  },
-  {
-   "node": "prop.eulerchar-nonorientable",
-   "nodeLabel": "Euler 示性数与不可定向亏格",
-   "nodeLayer": 30,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 33,
    "gap": 3
   },
   {
@@ -529,15 +502,6 @@
    "def": "def.category-of-complexes",
    "defLabel": "复形范畴",
    "defLayer": 15,
-   "gap": 2
-  },
-  {
-   "node": "thm.smooth-partition-unity",
-   "nodeLabel": "光滑单位分解",
-   "nodeLayer": 20,
-   "def": "def.smooth-manifold",
-   "defLabel": "光滑流形",
-   "defLayer": 22,
    "gap": 2
   },
   {
@@ -651,10 +615,10 @@
   {
    "node": "ex.klein-bottle",
    "nodeLabel": "克莱因瓶",
-   "nodeLayer": 32,
+   "nodeLayer": 30,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 33,
+   "defLayer": 31,
    "gap": 1
   },
   {
@@ -691,6 +655,15 @@
    "def": "def.power",
    "defLabel": "整数幂",
    "defLayer": 8,
+   "gap": 0
+  },
+  {
+   "node": "def.cech-complex",
+   "nodeLabel": "Čech 复形",
+   "nodeLayer": 13,
+   "def": "def.bicomplex",
+   "defLabel": "双复形",
+   "defLayer": 13,
    "gap": 0
   },
   {
@@ -732,10 +705,28 @@
   {
    "node": "lem.adapted-frame",
    "nodeLabel": "适配标架",
-   "nodeLayer": 27,
+   "nodeLayer": 25,
    "def": "def.connection-form",
    "defLabel": "联络形式",
-   "defLayer": 27,
+   "defLayer": 25,
+   "gap": 0
+  },
+  {
+   "node": "prop.pullback-forms",
+   "nodeLabel": "拉回（开集间）",
+   "nodeLayer": 19,
+   "def": "def.smooth-map",
+   "defLabel": "光滑映射",
+   "defLayer": 19,
+   "gap": 0
+  },
+  {
+   "node": "def.divergence",
+   "nodeLabel": "散度",
+   "nodeLayer": 25,
+   "def": "def.lie-derivative",
+   "defLabel": "Lie 导数",
+   "defLayer": 25,
    "gap": 0
   },
   {
@@ -748,15 +739,6 @@
    "gap": 0
   },
   {
-   "node": "def.cotangent-bundle",
-   "nodeLabel": "余切丛",
-   "nodeLayer": 25,
-   "def": "def.bundle-section",
-   "defLabel": "丛的截面",
-   "defLayer": 25,
-   "gap": 0
-  },
-  {
    "node": "def.nilpotent",
    "nodeLabel": "幂零",
    "nodeLayer": 16,
@@ -764,15 +746,22 @@
    "defLabel": "特征多项式",
    "defLayer": 16,
    "gap": 0
+  },
+  {
+   "node": "thm.convex-star-shaped-every-point",
+   "nodeLabel": "凸集在每一点处星形",
+   "nodeLayer": 12,
+   "def": "def.star-shaped",
+   "defLabel": "星形集",
+   "defLayer": 12,
+   "gap": 0
   }
  ],
- "noEdgeAll": 79,
+ "noEdgeAll": 80,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
-  "def.bundle-section>def.form-on-manifold",
   "def.bundle-section>def.differential-form",
-  "def.t35-space>def.regular-space",
-  "def.smooth-manifold>def.partial-derivative",
+  "thm.darboux>def.riemannian-metric",
   "def.injective-dimension>def.projective-dimension"
  ],
  "never": [

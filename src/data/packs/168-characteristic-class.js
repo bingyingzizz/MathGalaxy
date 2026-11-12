@@ -68,7 +68,8 @@ window.MG = window.MG || {};
         '',
         '⚠ **Euler 类不是 SW 类**：Euler 类 $e(E) \\in H^{k}(B;\\mathbb{Z})$ 取整数值，$w_{k}(E)$ 是 $e(E)$ 模 $2$ 的约化；$TS^{2}$ 的 $w_{1} = w_{2} = 0$ 但 $e(TS^{2}) = \\chi(S^{2}) = 2 \\ne 0$，这正是「整系数类能看见、$\\mathbb{Z}/2$ 类看不见」的例子。'
       ].join('\n'),
-      refs: ['Milnor–Stasheff, Characteristic Classes · 示性类', 'Bott–Tu, Differential Forms in Algebraic Topology · 陈–Weil 理论']
+      refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 5 §23','Milnor–Stasheff, Characteristic Classes · 示性类', 'Bott–Tu, Differential Forms in Algebraic Topology · 陈–Weil 理论']
     }
   ],
 

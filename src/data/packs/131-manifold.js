@@ -97,7 +97,7 @@ window.MG = window.MG || {};
         '**与曲面的接口**：曲面论里的「正则参数化 $r : U \\to S$」的逆就是一张图卡，重叠处的「参数变换」就是这里的转移映射 —— 「换参数化后光滑性不变」与「$C^{\\infty}$-相容」是同一句话（`def.orientable-surface`）。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 图卡、坐标邻域与转移映射',
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 2 §5',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 图册与相容性'
       ]
     },
@@ -171,7 +171,7 @@ window.MG = window.MG || {};
         '**按秩三分**：若 $\\mathrm{d}F_{p}$ 处处单射、满射、同构，分别叫**浸入**、**淹没**、**局部微分同胚**（`def.submersion-immersion`）。分类的用处：淹没的原像是子流形，这是 `thm.regular-level-set` 的一般版本。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 流形之间的光滑映射',
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 2 §6',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 光滑函数与微分同胚'
       ]
     },
@@ -215,7 +215,7 @@ window.MG = window.MG || {};
         '**记号撞车**：同一个 $\\mathrm{d}$ 既记切映射 $\\mathrm{d}F_{p}$ 也记外微分 $\\mathrm{d}\\omega$。\n\n它们不是两件事：$\\mathrm{d}f$ 就是切映射 $\\mathrm{d}f_{p} : T_{p}M \\to \\mathbb{R}$，即 $1$-形式（`def.exterior-derivative`）。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 切映射与链式法则'
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「The Tangent Space」· 切映射与链式法则'
       ]
     },
 
@@ -260,7 +260,7 @@ window.MG = window.MG || {};
         '**记号纪律**：$TM$ 里的元素是一个**带起点的向量**，$T_{p}M$ 里的元素只认起点为 $p$。写 $v \\in T_{p}M \\subseteq TM$ 时，下标的 $p$ 是信息的一部分，丢了下标就成了无主向量，$\\mathrm{d}F_{p}$ 也就无从作用。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 切丛'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 3 §12'
       ]
     },
 
@@ -305,7 +305,7 @@ window.MG = window.MG || {};
         '**与积分曲线**：向量场给出一阶 ODE $\\dot\\gamma = X(\\gamma)$，其解是积分曲线；局部总有解，整体未必能延拓。本图只用局部存在性，流与单参数群那条线暂不进图。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场与导子'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 3 §14'
       ]
     },
 
@@ -351,7 +351,7 @@ window.MG = window.MG || {};
         '📌 例：矩阵群上的括号就是**交换子** $[A,B] = AB - BA$。取 $E,F,H$ 为 $\\mathfrak{sl}_{2}$ 的标准基，则 $[E,F] = H$、$[H,E] = 2E$、$[H,F] = -2F$（见 `ex-sl2-commutator`）。',   /* exnotes:def.lie-bracket */
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场的 Lie 括号'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 3 §14'
       ]
     },
 
@@ -445,6 +445,7 @@ window.MG = window.MG || {};
         '**记号**：$\\pi$ 同时是投影与圆周率，本图里 $\\pi : E \\to M$ 一律是投影；$\\operatorname{pr}_{1}$ 是乘积到第一因子的投影；$\\Phi_{\\alpha,p}$ 记 $\\Phi_{\\alpha}$ 限制在纤维 $E_{p}$ 上的线性同构。'
       ].join('\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 1 §7',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 向量丛与局部平凡化'
       ]
     },
@@ -484,6 +485,7 @@ window.MG = window.MG || {};
         '**同名不同义**：`def.section` 那个「截口」是乘积集 $E \\subseteq X \\times Y$ 的纵切片与横切片，是集合论概念；这里的截面是向量丛的光滑选取。两个字一样、意思无关，取用时看星团。'
       ].join('\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 1 §7',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 向量丛的截面与框架'
       ]
     },
@@ -603,7 +605,7 @@ window.MG = window.MG || {};
         '**$n = 0$ 的约定**：$0$ 维流形（离散点集）上 $\\bigwedge^{0}T^{*}M \\cong \\mathbb{R}$，**定向就是每点选一个生成元**（等价于选 $\\pm1$ 中的一个符号）；图册口径也自动满足 —— 过渡映射是恒等，其 Jacobian 是空矩阵、行列式约定为 $1 > 0$。所以 $0$ 维流形（**包括空流形**）一律可定向。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 定向图册与可定向性'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 6 §21'
       ]
     },
 
@@ -650,7 +652,7 @@ window.MG = window.MG || {};
         '📌 例：$\\mathbb{R}^{3}$ 上的 $\\mathrm{d}x\\wedge\\mathrm{d}y\\wedge\\mathrm{d}z$；$S^{2}_{R}$ 上取 $R^{2}\\sin\\theta\\,\\mathrm{d}\\theta\\wedge\\mathrm{d}\\varphi$，它的积分是 $4\\pi R^{2}$（正好是球面积）。',   /* exnotes:def.volume-form */
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 体积形式与定向',
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 6 §23',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架'
       ]
     },
@@ -733,7 +735,7 @@ window.MG = window.MG || {};
         '**它不是同伦不变量意义上的「同调」**：$H^{k}$ 是**上**同调（用形式与拉回），对偶于用链与边界的同调。之所以也叫上同调，是因为拉回是逆变的；两者在 de Rham 定理里被证明同构。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 复形与上同调群'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 7 §24'
       ]
     },
 
@@ -768,7 +770,7 @@ window.MG = window.MG || {};
         '**别拿 Poincaré 引理套 $H^{0}$**：引理说的是 $k \\ge 1$ 且区域可缩才有 $H^{k} = 0$。$H^{0}$ 对非空流形永远不为零，因为它数的是「有几个整体」而不是「有没有局部障碍」。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· 零次上同调与连通分支'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 7 §28'
       ]
     },
 
@@ -807,7 +809,7 @@ window.MG = window.MG || {};
         '**为什么叫 Poincaré**：Poincaré 在 19 世纪末的向量分析语言里证过「无旋场局部是梯度」这类结论；形式语言把它一句收完，并指出唯一假设是「区域能缩成一点」。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 7 §28'
       ]
     },
 
@@ -844,7 +846,7 @@ window.MG = window.MG || {};
         '**它的本质是同调代数**：短正合列里唯一用到流形结构的是「满射」那步的单位分解；其余全部是链复形的一般定理。所以 Mayer–Vietoris 对任何层都成立，形式只是其中一个特例。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Mayer–Vietoris 序列'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 7 §26'
       ]
     },
 
@@ -896,7 +898,7 @@ window.MG = window.MG || {};
         '**为什么关心它**：Lie 群把「对称性」变成可微的对象，于是在单位元处求导就得到 Lie 代数（`def.lie-algebra`、`prop.left-invariant-fields`）—— 非线性问题线性化，这是整个理论的技术核心。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 群与例子',
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 4 §15',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左平移与右平移'
       ]
     },
@@ -947,7 +949,7 @@ window.MG = window.MG || {};
         '- 结合代数 $\\implies$ 交换子 Lie 代数：Jacobi 展开后逐项抵消，关键是假定原乘法结合；反称本身不推出 Jacobi。\n'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 代数与例子'
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 4 §16'
       ]
     },
 
@@ -990,7 +992,7 @@ window.MG = window.MG || {};
         '**下一步去哪**：左不变**形式**（对偶版本）给出 Maurer–Cartan 方程，本图不展开；那条线与结构方程（`def.connection-form`）是同一套记账。'
       ].join('\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变向量场与 Lie 代数',
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 4 §15',
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 括号的自然性'
       ]
     }

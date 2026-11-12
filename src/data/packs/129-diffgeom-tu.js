@@ -247,7 +247,7 @@ window.MG = window.MG || {};
         '**流形上**：把 $\\mathbb{R}^{n}$ 换成 $n$ 维流形 $M$，只需在某张卡上用坐标微分写开，再用转移映射的光滑性说明「是 $k$-形式」与卡无关 —— 与 `def.tangent-space-manifold` 里「切向量与卡无关」是同一套论证。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式」· 微分形式的定义与楔积',
+        'Tu, An Introduction to Manifolds, 2nd ed., Ch. 5 §18',
         'do Carmo, Differential Forms and Applications, 第 1 章「微分形式」· 形式与楔积'
       ]
     },
@@ -301,7 +301,7 @@ window.MG = window.MG || {};
         '- 恰当 $\\implies$ 闭用平方为零；闭 $\\implies$ 恰当需额外局部或整体条件，如星形开集的 Poincaré 引理；穿孔平面的角形式给出整体反例。\n\n📌 本节点是**欧氏开集**上的外微分；流形上的版本见 `prop.exterior-derivative-manifold`。\n'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式」· 外微分与闭形式',
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 外微分与闭形式',
         'do Carmo, Differential Forms and Applications, 第 1 章「微分形式」· 外微分'
       ]
     },
@@ -338,7 +338,7 @@ window.MG = window.MG || {};
         '⚠️ (4) 的次序不能记反：复合 $G\\circ F$ 的拉回是 $F^{\\ast}\\circ G^{\\ast}$，先拉后面那个。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式」· 拉回及其性质',
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 拉回及其性质',
         'do Carmo, Differential Forms and Applications, 第 1 章「微分形式」· 拉回'
       ]
     },
@@ -458,7 +458,7 @@ window.MG = window.MG || {};
         '⚠️ 本图的曲面（`def.regular-surface`）是二维流形的具体模型：两张卡的重叠就是参数变换，而「$C^{\\infty}$-相容」正是「换参数化后光滑性不变」。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「流形」· 图卡、图册与光滑结构',
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 图卡、图册与光滑结构',
         'Tu, An Introduction to Manifolds, 「Manifolds」· 光滑流形与转移映射'
       ]
     },
@@ -492,8 +492,8 @@ window.MG = window.MG || {};
         '**与曲面切平面一致**：$S\\subseteq\\mathbb{R}^{3}$ 的 $T_{p}S$（由 $r_{u},r_{v}$ 张成）与上面的抽象定义给出同一个空间 —— 取卡 $\\varphi = r^{-1}$ 一比就知道，曲线的速度正是 $\\mathbb{R}^{3}$ 里的速度。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「流形」· 切向量、导子与切空间',
-        'Tu, An Introduction to Manifolds, 「Tangent Vectors」· 曲线等价类与导子'
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 切向量、导子与切空间',
+        'Tu, An Introduction to Manifolds, 「The Tangent Space」· 曲线等价类与导子'
       ]
     },
 
@@ -529,7 +529,7 @@ window.MG = window.MG || {};
         '**它把两块连起来**：左边是多元微积分（隐函数定理），右边是几何（流形与切空间）。所以「微分几何离别的板块太远」在这一点上可以直接反驳 —— 水平集定理就是显式的桥。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「流形」· 正则水平集与隐函数定理',
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 正则水平集与隐函数定理',
         'Tu, An Introduction to Manifolds, 「Manifolds」· 正则水平集定理',
         'Lee, Introduction to Smooth Manifolds (2nd ed., GTM 218), Ch. 5 · Submanifolds'
       ]
@@ -810,7 +810,7 @@ window.MG = window.MG || {};
         '⚠️ 记号：$\\int_{M}\\omega$ 只依赖 $\\omega$ 与定向，不依赖图册与单位分解（两种不同选取的差可以逐项抵消）。这一点是 Stokes 定理能否写下来的前提。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式的积分」· 定向与积分',
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Integration」· 定向与积分',
         'do Carmo, Differential Forms and Applications, 第 2 章「线积分」· 形式的积分与换元'
       ]
     },
@@ -843,7 +843,7 @@ window.MG = window.MG || {};
         '**为什么需要定向**：两边都依赖定向，且同时变号，所以等式与定向的选取无关；但没有定向就写不出「积分」这件事（`def.integral-form`）。'
       ].join('\n\n'),
       refs: [
-        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式的积分」· Stokes 定理',
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Integration」· Stokes 定理',
         'do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· Stokes 定理与结构方程'
       ]
     }
@@ -1300,7 +1300,7 @@ window.MG = window.MG || {};
 
     {
       id: 'imp.tu-surface-riemannian',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.first-fundamental-form', 'def.regular-surface'],
       target: 'def.riemannian-metric',
       title: '第一基本形式就是一个黎曼度量',
@@ -1314,7 +1314,8 @@ window.MG = window.MG || {};
         '**光滑性**：在一张卡里 $g_{ij} = \\langle\\partial_{i}r,\\partial_{j}r\\rangle$ 是 $r$ 的一阶偏导数的内积，$r$ 光滑则 $g_{ij}$ 光滑。',
         '',
         '于是 $(S,g)$ 是二维黎曼流形，而 $g$ 就是 `def.first-fundamental-form` 里的 $I$。反过来，任何二维黎曼流形在局部取卡，$(g_{ij})$ 就写成同样的形状 —— 两侧只是同一套记账的两种叫法。∎'
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
 
     {

@@ -51,7 +51,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics',
-        'McDuff–Salamon, Introduction to Symplectic Topology'
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 3'
       ]
     },
 
@@ -88,7 +88,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics · Darboux 定理',
-        'McDuff–Salamon, Introduction to Symplectic Topology',
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 3',
         'da Silva, Lectures on Symplectic Geometry'
       ]
     },
@@ -124,7 +124,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics',
-        'McDuff–Salamon, Introduction to Symplectic Topology'
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 3'
       ]
     },
 
@@ -157,7 +157,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics',
-        'McDuff–Salamon, Introduction to Symplectic Topology'
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 3'
       ]
     },
 
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Arnold, Mathematical Methods of Classical Mechanics',
-        'McDuff–Salamon, Introduction to Symplectic Topology'
+        'McDuff–Salamon, Introduction to Symplectic Topology, Ch. 3'
       ]
     },
 

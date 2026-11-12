@@ -60,7 +60,7 @@ window.MG = window.MG || {};
         '**例子**：任何紧空间（取 $K = X$）、$\\mathbb{R}^{n}$、离散空间都局部紧；$\\mathbb{Q}$ 不是。紧空间一定局部紧，但不一定 Hausdorff。',
         '**用法**：需要 Hausdorff 时与 `def.hausdorff` 一起用；没有 Hausdorff 时本定义仍然有效，但每点有紧邻域基这一更强性质不一定成立。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology', 'Engelking, General Topology']
+      refs: ['Munkres, Topology', 'Engelking, General Topology, Ch. 3 §3.3']
     },
 
     /* ------------------------------------------------------ Tychonoff */
@@ -76,7 +76,7 @@ window.MG = window.MG || {};
       statement: '任意一族紧空间的**积**（带积拓扑）仍然紧 —— 任意多个，包括不可数多个。',
       notes: [
         ['**证明（Alexander 子基引理 + 选择公理）。** 记 $X = \\prod_{i\\in I} X_{i}$，投影 $p_{i} : X\\to X_{i}$。取**子基**',
-          '$$\\mathcal{S} := \\{\\, p_{i}^{-1}(U_{i}) \\;:\\; i\\in I,\\ U_{i}\\subseteq X_{i}\\ \\text{开} \\,\\}.$$',
+          '$$\\mathcal{S} := \\{\\, p_{i}^{-1}(U_{i}) \\;:\\; i\\in I,\\ U_{i}\\subseteq X_{i}\\ \\text{open} \\,\\}.$$',
           '**Alexander 子基引理**：拓扑空间紧 $\\iff$ 每个由子基成员组成的覆盖都有有限子覆盖。所以只需验证后者。',
           '设 $\\mathcal{S}_{0} \\subseteq \\mathcal{S}$ 覆盖 $X$，反设它**没有**有限子覆盖。对每个 $i$ 记',
           '$$\\mathcal{U}_{i} := \\{\\, U_{i} : p_{i}^{-1}(U_{i}) \\in \\mathcal{S}_{0} \\,\\},\\qquad F_{i} := X_{i}\\setminus \\bigcup \\mathcal{U}_{i}.$$',
@@ -88,7 +88,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '⭐ **Tychonoff 与选择公理等价**（在 ZF 里互相推出）—— 这是「选择公理有多强」的一个标准刻度。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology, §37', 'Le Stum, Exercise 2.19']
+      refs: [
+      'Engelking, General Topology, Ch. 3 §3.2','Munkres, Topology, §37', 'Le Stum, Exercise 2.19']
     },
 
     /* -------------------------------------------- 景的拓扑生成集 */

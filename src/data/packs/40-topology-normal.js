@@ -39,7 +39,8 @@ window.MG = window.MG || {};
         '**证明**沿「紧 $\\implies$ 仿紧」+「仿紧 $+$ Hausdorff $\\implies$ 正规」两步走，见 `thm.paracompact-hausdorff-normal`；' +
         '⚠️ **正规性不是遗传的**：正规空间的子空间未必正规。这一点与「紧」「Hausdorff」都不同。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.5','Munkres, Topology']
     },
 
     {

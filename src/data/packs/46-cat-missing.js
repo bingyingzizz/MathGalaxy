@@ -107,7 +107,8 @@ window.MG = window.MG || {};
         '**正合性**同样逐步用核 / 余核的泛性质验证（关键一步是 $\\operatorname{im} u = \\ker q$），没有一步需要元素。∎',
         '⭐ **用处**：它是**长正合列**的引擎 —— 把短正合列 $0 \\to K \\to L \\to M \\to 0$ 的每一层（核、余核）串起来，靠的就是每层的 $\\delta$。凡是「有了短正合列想推长正合列」的地方，底下都在跑蛇引理。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 1','Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------------------ 五引理 */
@@ -136,7 +137,8 @@ window.MG = window.MG || {};
         '⭐ **推论（常用形式）**：若图中的 $A_{1} = B_{1} = 0$、$A_{5} = B_{5} = 0$，则 $\\alpha_{3}$ 是单（满 / 同构）由 $\\alpha_{2}, \\alpha_{4}$ 单（满 / 同构）决定 —— **这就是「比较长正合列」时最常引的那句：两头一样，中间就一样。**',
         '⚠️ 与蛇引理的关系：**两者都不能靠追元素**，都得走泛元与泛性质；区别在五引理只讲同构传递（不必造连接同态），蛇引理要**造**出 $\\delta$。凡是「想比较两个谱序列/两条长正合列」的地方，用五引理。'
       ].join('\n\n'),
-      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
+      refs: [
+      'Weibel, An Introduction to Homological Algebra, Ch. 1','Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     }
   ],
 

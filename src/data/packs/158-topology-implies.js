@@ -24,18 +24,19 @@ window.MG = window.MG || {};
   edges: [
     {
       id: 'imp.compact-locally-compact',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.compact'],
       target: 'def.locally-compact-space',
       proof: [
         '设 $X$ 紧。\n\n对任意 $x \\in X$：$X$ 自己是紧集（假设），而 $X$ 又是 $x$ 的邻域（$X$ 开于自身）。\n\n于是 $x \\in \\mathring{X} = X \\subseteq X$ —— 这正是「每个点都有紧邻域」的要求（`def.locally-compact-space` 的判据 $x \\in \\mathring{K}$，取 $K = X$）✓。\n\n∎',
         '',
         '⭐ 这条几乎是定义级别的，但它**不是**废话：局部紧的定义允许「每个点有个小的紧邻域」，紧性给的是「整体紧」，而整体紧在**子空间**上不遗传给邻域 —— 所以「紧 $\\implies$ 局部紧」要用 $K = X$ 这一招，而「局部紧」的逆不成立（$\\mathbb{R}$ 局部紧但不紧）。这条证明的是**局部紧**；要得到「局部紧 Hausdorff」，还需把 Hausdorff 作为额外假设（见下一条）。'
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
     {
       id: 'imp.compact-hausdorff-locallycompact',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.compact', 'def.hausdorff'],
       target: 'def.locally-compact-space',
       proof: [
@@ -44,7 +45,8 @@ window.MG = window.MG || {};
         '结论：$X$ **局部紧**（上一条）且 **Hausdorff**（本条假设）。∎',
         '',
         '⭐ 与上一条的分工：上一条只给局部紧（不需要 Hausdorff）；本条的额外输入只有 Hausdorff 这一条假设。'
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
     {
       id: 'imp.compact-paracompact',

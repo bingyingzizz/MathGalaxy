@@ -47,7 +47,8 @@ window.MG = window.MG || {};
         '\n' +
         '⚠️ **「$d$ 取 $[0,+\\infty)$ 而不是 $[0,+\\infty]$」**：允许 $+\\infty$ 会把「同一连通分支」搞乱（$d \\equiv +\\infty$ 的离散度量不满足三角不等式以外的直觉），所以标准定义取有限值；度量空间之间的映射若需要 $+\\infty$，要显式说明。\n'
       ].join('\n\n'),
-      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 2', 'Munkres, Topology, §20']
+      refs: [
+      'Engelking, General Topology, Ch. 4 §4.1','Rudin, Principles of Mathematical Analysis, Ch. 2', 'Munkres, Topology, §20']
     },
 
     {
@@ -72,7 +73,8 @@ window.MG = window.MG || {};
         '例子：$\\mathbb{R}^{n}$、$\\mathbb{C}^{n}$、任何 Banach 空间都完备；$\\mathbb{Q}$ 不完备（3, 3.1, 3.14, …, 一个收敛到 $\\sqrt 2$ 的 Cauchy 列在 $\\mathbb{Q}$ 中不收敛）。',
         '**闭子集继承完备**：$X$ 完备时，$A \\subseteq X$ 作为子空间完备 $\\iff A$ 在 $X$ 中闭。这条在下面「子集的紧性刻画」里要用。'
       ].join('\n\n'),
-      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3']
+      refs: [
+      'Engelking, General Topology, Ch. 4 §4.3','Rudin, Principles of Mathematical Analysis, Ch. 3']
     },
 
     {
@@ -111,7 +113,8 @@ window.MG = window.MG || {};
         '**全有界 $\\implies$ 有界**（取 $\\varepsilon = 1$，$X$ 就被有限个单位球盖住），但反之不然：无限维 Banach 空间的单位球有界而不全有界。',
         '全有界被**一致连续**映射保持，但不被连续映射保持 —— 又一次说明它是度量性质而非拓扑性质。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology, §43']
+      refs: [
+      'Engelking, General Topology, Ch. 4 §4.3','Munkres, Topology, §43']
     },
 
     {
@@ -128,7 +131,8 @@ window.MG = window.MG || {};
         '$$\\forall\\{x_n\\} \\subseteq X,\\ \\exists\\{x_{n_k}\\},\\ \\exists x \\in X : x_{n_k} \\to x$$'
       ].join('\n'),
       notes: '在度量空间里「列紧 $\\iff$ 紧」（见下面的箭头），但在一般拓扑空间里**不等价** —— 列紧严格更强。度量空间好用的地方正是这里。\n\n注意子列收敛到的是 $X$ 中的点：列紧是内蕴性质，不看外面那个空间。',
-      refs: ['Munkres, Topology, §28']
+      refs: [
+      'Engelking, General Topology, Ch. 3 §3.10','Munkres, Topology, §28']
     },
 
     {
@@ -158,7 +162,8 @@ window.MG = window.MG || {};
           '$\\mathbb{R}$ 不紧（$\\{(-n, n)\\}$ 没有有限子覆盖）；$(0, 1]$ 不紧。' +
           '一般拓扑里的标准例子见 `def.chaus`、`thm.tykhonov`（任意积仍紧）。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology, §26（紧空间）']
+      refs: [
+      'Engelking, General Topology, Ch. 3 §3.1','Munkres, Topology, §26（紧空间）']
     },
 
     {
@@ -167,7 +172,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       hypotheses: ['完备'],
       label: '紧的三个等价刻画',
-      title: '度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界',
+      title: '紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界',
       regions: ['topology'],
       tags: ['定理', '紧', '列紧', '完备', '全有界'],
       statement: [
@@ -175,12 +180,11 @@ window.MG = window.MG || {};
         '',
         '- (a) $X$ **紧**：每个开覆盖有有限子覆盖；',
         '- (b) $X$ **列紧**：每个序列都有收敛（于 $X$ 中）的子列；',
-        '- (c) $X$ **完备且全有界**。',
-        '',
-        '即 $X$ 紧 $\\iff$ $X$ 列紧 $\\iff$ $X$ 完备 $+$ 全有界。'
+        '- (c) $X$ **完备且全有界**。'
       ].join('\n'),
-      notes: 'text=紧、列紧、完备且全有界三者的等价证明见边 `imp.metric-compact-equiv-proof`：紧 $\\implies$ 列紧用「每点邻域只含有限项」的反证；列紧 $\\implies$ 完备/全有界用 Cauchy 子列与 $\\varepsilon$-网；全有界 $\\implies$ 紧用 Lebesgue 数。',
-      refs: ['Munkres, Topology, §28 与 §43']
+      notes: '紧、列紧、完备且全有界三者的等价证明见边 `imp.metric-compact-equiv-proof`：紧 $\\implies$ 列紧用「每点邻域只含有限项」的反证；列紧 $\\implies$ 完备/全有界用 Cauchy 子列与 $\\varepsilon$-网；全有界 $\\implies$ 紧用 Lebesgue 数。',
+      refs: [
+      'Engelking, Ch. 4 §4.3','Munkres, Topology, §28 与 §43']
     },
 
     {
@@ -528,7 +532,7 @@ window.MG = window.MG || {};
       note: '连续性用两个度量空间的 $d$ 与 $\\rho$ 写。' },
     {
       id: 'imp.metric-continuity-open-preimage',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.metric-continuity'],
       target: 'def.continuous-map',
       title: '度量连续 $\\implies$ 拓扑连续（开集原像开）',
@@ -537,7 +541,7 @@ window.MG = window.MG || {};
         '取 $\\varepsilon > 0$ 使 $B_Y(f(x_0), \\varepsilon) \\subseteq V$；$\\varepsilon$-$\\delta$ 给 $\\delta > 0$ 使 $f(B_X(x_0, \\delta)) \\subseteq B_Y(f(x_0), \\varepsilon)$。',
         '于是 $B_X(x_0, \\delta) \\subseteq f^{-1}(V)$，即 $f^{-1}(V)$ 在 $X$ 中开；按 `def.continuous-map` 的定义 $f$ 连续。$\\blacksquare$'
       ].join('\n'),
-      note: '反向（拓扑连续 $\\implies$ $\\varepsilon$-$\\delta$）同样直接：$B_Y(f(x_0), \\varepsilon)$ 开，原像开给 $\\delta$。'
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。反向（拓扑连续 $\\implies$ $\\varepsilon$-$\\delta$）同样直接：$B_Y(f(x_0), \\varepsilon)$ 开，原像开给 $\\delta$。'
     },
     { id: 'def-link.realmetric-metriccont', kind: 'definition', definition: 'def.real-metric-space',
       usedBy: 'def.metric-continuity',

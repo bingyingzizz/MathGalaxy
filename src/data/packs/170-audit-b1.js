@@ -24,14 +24,12 @@
        Euler 示性数」，陈述里写着 $\int_M K\,dA = 2\pi\chi(M)$，而它的 7 条入边
        **全在几何侧**；`thm.euler-characteristic` 又是另一片叶子。两边都 out=0。
        ⇒ 微分几何与拓扑之间最有名的那座桥，在图上是断的。*/
-    {
-      id: 'dep.gaussbonnet-eulerchar',
-      kind: 'definition',
-      definition: 'thm.euler-characteristic',
-      usedBy: 'thm.gauss-bonnet',
-      note: 'Gauss–Bonnet 的结论里直接出现 $\\chi(M)$，而 $\\chi$ 此前在几何侧是「外部输入」。（依赖的是对象，不是命题。）' +
-        '两边接上之后：把曲面三角剖分，$\\int_M K\\,\\mathrm{d}A = 2\\pi\\chi(M) = 2\\pi(V-E+F)$ —— ' +
-        '这就是「曲率积分 = 拓扑不变量」的完整走法。方向是「曲率积分 $\\to$ 示性数」：本条反过来用示性数举例，**不依赖** Gauss–Bonnet —— 这是**定义实例化**，不是蕴含。',
+        {
+      id: 'ana.gaussbonnet-eulerchar',
+      kind: 'analogy',
+      a: 'thm.euler-characteristic',
+      b: 'thm.gauss-bonnet',
+      note: '两条定理都把曲率与 $\\chi$ 联系起来，但方向相反：Gauss–Bonnet 的证明沿三角剖分求和、用 $\\sum(3-n_i)=3\\chi-6$ 得到 $\\int_M K\\,\\mathrm{d}A=2\\pi\\chi$，即 $\\chi$ 的计算是它的**推论**而不是前提。这里只记类比，不记依赖。',
     },
 
     /* ------------------------------------------------ D3：测度 ↔ 泛函 */

@@ -119,6 +119,7 @@ window.MG = window.MG || {};
         '📌 例：极坐标 $(r, \\varphi)$ 下 $g = \\mathrm{d}r^{2} + r^{2}\\mathrm{d}\\varphi^{2}$，只有三个非零符号 $\\Gamma^{r}_{\\varphi\\varphi} = -r$、$\\Gamma^{\\varphi}_{r\\varphi} = \\Gamma^{\\varphi}_{\\varphi r} = 1/r$（逐项算见 `ex.polar-christoffel`）。',   /* exnotes:def.christoffel-symbol */
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 1 §6',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 克里斯托费尔记号',
         'do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 联络系数'
       ]
@@ -191,6 +192,7 @@ window.MG = window.MG || {};
         '**唯一的例子都值得记住**：平面上的测地线是直线；球面上的测地线是大圆；旋转面上的测地线由 Clairaut 关系约束；圆柱面上把展开图里直线卷回去即可。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 3 §14',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 测地线',
         'do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 测地线'
       ]
@@ -347,6 +349,7 @@ window.MG = window.MG || {};
         '⭐ 指数映射的用处是**把测地线问题变成坐标问题**：所有「径向」的事情都变成「坐标线」，于是内蕴几何可以用微积分硬算。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 3 §15',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 指数映射',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「高斯映射的几何」· 法坐标'
       ]
@@ -529,6 +532,7 @@ window.MG = window.MG || {};
         '⚠️ **不内蕴的东西**：$k_{1}$、$k_{2}$、$H$ 都不内蕴（柱面与平面就是反例：$k_{1}$ 分别是 $1/R$ 与 $0$）。绝妙定理只对**乘积**成立，不对因子成立。这也解释了为什么内蕴几何里 $K$ 处处出现而 $H$ 几乎不出现。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 1 §8',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯的绝妙定理',
         'do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 高斯方程与绝妙定理'
       ]
@@ -564,6 +568,7 @@ window.MG = window.MG || {};
         '⚠️ 不需要**紧致**也可以有版本，但那时边界与端（尖点、漏斗）要各自记账，形式会变；这里只处理紧致情形，因为它是「$K$ 的积分 = 拓扑量」最干净的说法。'
       ].join('\n\n'),
       refs: [
+      'Tu, Differential Geometry, GTM 275, Ch. 3 §17',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯–博内定理',
         'do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 高斯–博内定理与指标定理'
       ]

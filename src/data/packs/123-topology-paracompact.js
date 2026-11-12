@@ -128,7 +128,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '⚠️ 加细是**覆盖之间**的关系，不是集合之间的包含：$\\mathcal{V}$ 加细 $\\mathcal{U}$ 时，$\\mathcal{V}$ 完全可以有更多、更小的成员。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology (2nd ed.), Section 39']
+      refs: [
+      'Engelking, General Topology, Ch. 5 §5.1','Munkres, Topology (2nd ed.), Section 39']
     },
 
     {
@@ -343,7 +344,8 @@ window.MG = window.MG || {};
         '\n' +
         '⚠️ 一句话：**第二可数是“全局可数”，第一可数是“局部可数”**；度量空间里两者都可分等价，一般拓扑里不行。\n'
       ].join('\n\n'),
-      refs: ['Munkres, Topology (2nd ed.), Section 30']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.1','Munkres, Topology (2nd ed.), Section 30']
     },
 
     {
@@ -369,7 +371,8 @@ window.MG = window.MG || {};
         '\n' +
         '⚠️ **第一可数是“序列够用”的精确门槛**：不可数空间里「闭包 $\\ne$ 序列闭包」（$[0,\\omega_{1}]$ 里的 $\\omega_{1}$）。这也解释了为什么紧性在一般拓扑里要用**网**（`def.net`）而不能用序列。\n'
       ].join('\n\n'),
-      refs: ['Munkres, Topology (2nd ed.), Section 30']
+      refs: [
+      'Engelking, General Topology, Ch. 1 §1.1','Munkres, Topology (2nd ed.), Section 30']
     },
 
     {
@@ -392,7 +395,8 @@ window.MG = window.MG || {};
         '⭐ **这是一条判定的分界线**：可度量化空间自动拿到 Hausdorff、第一可数、正规、仿紧（本包的命题），于是度量空间上该有的工具全部可用。反过来，第二可数 $+$ 正则就够（Urysohn 定理），更弱的是 $\\sigma$-局部有限基（Nagata–Smirnov）。',
         '⚠️ 不是每个拓扑空间都可度量化：不可数离散空间虽然可度量化（离散度量）却不第二可数，而 Sorgenfrey 直线（下半开区间拓扑）是正规的、可分的、第一可数的，却不第二可数，因而**不**可度量化。'
       ].join('\n\n'),
-      refs: ['Munkres, Topology (2nd ed.), Sections 20 and 40']
+      refs: [
+      'Engelking, General Topology, Ch. 4 §4.1','Munkres, Topology (2nd ed.), Sections 20 and 40']
     },
 
     {
@@ -794,13 +798,14 @@ window.MG = window.MG || {};
     },
     {
       id: 'imp.pcp-metric-metrizable',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.metric-space'],
       target: 'def.metrizable',
       proof: [
         '设 $(X, d)$ 是距离空间，$\\mathcal{T}_{d}$ 是开球之并给出的拓扑。\n\n取 $X$ 上原来的拓扑 $\\mathcal{T}_{d}$ 与同一个 $d$：恒等映射 $\\mathrm{id} : (X, \\mathcal{T}_{d}) \\to (X, \\mathcal{T}_{d})$ 是同胚，故 $d$ 与拓扑相容，$X$ 可度量化 ✓。',
         '⭐ 这条边看着废话，但它确定了术语的**方向**：「可度量化」是比较弱的性质（拓扑恰好来自某个度量），「距离空间」是带了具体度量的对象。图里所有「度量 $\\implies$ 某性质」的结论都要经过这一条才能搬到可度量化空间上。'
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
     {
       id: 'imp.pcp-stone-metrizable-paracompact',
@@ -815,14 +820,15 @@ window.MG = window.MG || {};
     },
     {
       id: 'imp.pcp-second-first',
-      kind: 'implication',
+      kind: 'implication', layer: false,
       sources: ['def.second-countable'],
       target: 'def.first-countable',
       proof: [
         '设 $\\mathcal{B} = \\{ B_{n} \\}$ 是可数基，取 $x \\in X$，令 $\\mathcal{B}_{x} := \\{\\, B_{n} : x \\in B_{n} \\,\\}$：这是可数族（基的子族），且含于开集族内。',
         '任给含 $x$ 的开集 $U$：$U$ 是基元之并，故存在基元 $B_{n}$ 使 $x \\in B_{n} \\subseteq U$；于是 $B_{n} \\in \\mathcal{B}_{x}$ 且 $B_{n} \\subseteq U$ ✓。\n\n所以 $\\mathcal{B}_{x}$ 是 $x$ 处的可数局部基，$X$ 第一可数 ✓。\n\n∎',
         '⚠️ 反向不成立：不可数离散空间第一可数（每点取单点邻域即可），却没有可数基。'
-      ].join('\n')
+      ].join('\n'),
+      note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
     {
       id: 'imp.pcp-bing-from-ns',
