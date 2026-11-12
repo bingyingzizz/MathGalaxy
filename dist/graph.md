@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-12T06:03:41.355Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-12T06:13:14.331Z
 > 15 星系 / 105 星团 / 1634 节点 / 3434 连线（强边 3357，弱边 77；其中**不分层**的「推论」64 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 4.2 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -43829,7 +43829,7 @@ Jordan 曲线定义为 $S^{1}$ 在同胚下的像；「像」上的拓扑取子�
 #### 简单多边形的对角线 ⟹ 多边形 Jordan 定理　`imp.jordan-polygon-diagonal`
 *对角线引理：多边形三角剖分的归纳步*
 
-对顶点数 $n$ 归纳。由 `lem.polygon-diagonal` 取一条对角线 $[a,b]$，它把 $P$ 分成两个边数更少（$n_1,n_2<n$）的简单多边形 $P_1,P_2$。由归纳假设 $P_i$ 各有三角剖分 $\\Gamma_i$，其并加上 $[a,b]$ 就是 $P$ 的三角剖分：三角形个数 $(n_1-2)+(n_2-2)=n-2$，两两内部不交，且并的边界恰为 $P$。∎
+对顶点数 $n$ 归纳。由 `lem.polygon-diagonal` 取一条对角线 $[a,b]$，它把 $P$ 分成两个边数更少（$n_1,n_2<n$）的简单多边形 $P_1,P_2$。由归纳假设 $P_i$ 各有三角剖分 $\Gamma_i$，其并加上 $[a,b]$ 就是 $P$ 的三角剖分：三角形个数 $(n_1-2)+(n_2-2)=n-2$，两两内部不交，且并的边界恰为 $P$。∎
 
 #### 定义引用：「关系」→ 商集与等价类　`dep.rel-quotient`
 
@@ -56975,7 +56975,7 @@ $n = 2$ 时两者是同一个整数：$S^{1} \to S^{1}$ 的度 = 绕 $0$ 的圈�
 #### 同伦不变性 ⟹ 度非零的映射不能延拓到球　`imp.degreenonext-homotopy`
 *同伦不变性：延拓存在则度为 0*
 
-令 $H : S^{n-1}\\times[0,1]\\to S^{n-1}$，$H(x,t)=F((1-t)x)$。因 $0\\le 1-t\\le 1$ 且 $|x|=1$，有 $|(1-t)x|\\le 1$，故 $(1-t)x\\in\\overline{B^{n}}$ 落在 $F$ 的定义域内；$H$ 是连续映射的复合、取值恒在 $S^{n-1}$，所以它是 $f$ 与常值映射 $x\\mapsto F(0)$ 之间的同伦。由 `thm.homotopy-invariance`，同伦的映射在 $H_{n-1}$ 上诱导同一同态，而常值映射诱导零同态，故 $\\deg f=0$。∎
+令 $H : S^{n-1}\times[0,1]\to S^{n-1}$，$H(x,t)=F((1-t)x)$。因 $0\le 1-t\le 1$ 且 $|x|=1$，有 $|(1-t)x|\le 1$，故 $(1-t)x\in\overline{B^{n}}$ 落在 $F$ 的定义域内；$H$ 是连续映射的复合、取值恒在 $S^{n-1}$，所以它是 $f$ 与常值映射 $x\mapsto F(0)$ 之间的同伦。由 `thm.homotopy-invariance`，同伦的映射在 $H_{n-1}$ 上诱导同一同态，而常值映射诱导零同态，故 $\deg f=0$。∎
 
 #### 定义引用：「单连通」→ 素端　`dep.prime-simply`
 
@@ -59916,7 +59916,7 @@ $I$ 是正交投影，故按定义 $u^*u = I$ 是正交投影，$u$ 是部分等
 #### Zorn 引理 ⟹ Hahn–Banach 定理　`imp.hahn-banach-zorn`
 *Zorn 引理：把延拓推到整个空间*
 
-考虑所有「$g$ 定义在子空间 $N\\supseteq M$ 上、线性、$g|_{M}=f$、$g\\le p$ 于 $N$」的 $g$，按延拓关系排序。任一全序子族的并仍是同类对象（定义域取并，线性与 $g\\le p$ 逐点验证），故由 `lem.zorn` 取得极大元 $F$。若 $\\operatorname{dom}F\\ne X$，取 $x_{0}\\notin\\operatorname{dom}F$，用一维延拓引理把 $F$ 再延一步，与极大性矛盾；故 $F$ 定义在整个 $X$ 上且 $F\\le p$。∎
+考虑所有「$g$ 定义在子空间 $N\supseteq M$ 上、线性、$g|_{M}=f$、$g\le p$ 于 $N$」的 $g$，按延拓关系排序。任一全序子族的并仍是同类对象（定义域取并，线性与 $g\le p$ 逐点验证），故由 `lem.zorn` 取得极大元 $F$。若 $\operatorname{dom}F\ne X$，取 $x_{0}\notin\operatorname{dom}F$，用一维延拓引理把 $F$ 再延一步，与极大性矛盾；故 $F$ 定义在整个 $X$ 上且 $F\le p$。∎
 
 #### 定义引用：「范数」→ Hahn–Banach 定理　`dep.hb-norm`
 
@@ -59925,7 +59925,7 @@ $I$ 是正交投影，故按定义 $u^*u = I$ 是正交投影，$u$ 是部分等
 #### Tychonoff 定理 ⟹ Banach–Alaoglu 定理　`imp.banach-alaoglu-tychonoff`
 *Tychonoff：把 $B_{X^{*}}$ 嵌进紧的积空间*
 
-令 $P=\\prod_{x\\in X}[-\\|x\\|,\\|x\\|]$，$\\Phi(\\varphi)=(\\varphi(x))_{x\\in X}$。弱*拓扑正是积拓扑沿 $\\Phi$ 拉回的拓扑，$\\Phi$ 为单射。像闭：若 $\\Phi(\\varphi_\\alpha)\\to y$，则 $\\varphi(x):=y_x$ 线性且 $\\|\\varphi\\|\\le1$，故 $y=\\Phi(\\varphi)$ 仍在像中；于是 $B_{X^{*}}$ 同胚于闭子集 $\\Phi(B_{X^{*}})\\subseteq P$。每个 $[-\\|x\\|,\\|x\\|]$ 紧，由 `thm.tykhonov` 得 $P$ 紧，闭子集紧，故 $B_{X^{*}}$ 弱*紧。∎
+令 $P=\prod_{x\in X}[-\|x\|,\|x\|]$，$\Phi(\varphi)=(\varphi(x))_{x\in X}$。弱*拓扑正是积拓扑沿 $\Phi$ 拉回的拓扑，$\Phi$ 为单射。像闭：若 $\Phi(\varphi_\alpha)\to y$，则 $\varphi(x):=y_x$ 线性且 $\|\varphi\|\le1$，故 $y=\Phi(\varphi)$ 仍在像中；于是 $B_{X^{*}}$ 同胚于闭子集 $\Phi(B_{X^{*}})\subseteq P$。每个 $[-\|x\|,\|x\|]$ 紧，由 `thm.tykhonov` 得 $P$ 紧，闭子集紧，故 $B_{X^{*}}$ 弱*紧。∎
 
 #### 定义引用：「连续对偶空间」→ Banach–Alaoglu 定理　`dep.ba-dual`
 
@@ -59946,12 +59946,12 @@ Banach–Alaoglu 的紧性是弱*拓扑下的紧性。
 #### Hahn–Banach 定理 ⟹ Goldstine 定理　`imp.goldstine-hahn-banach`
 *Hahn–Banach 分离：闭凸包与外面的点分开*
 
-设 $K=\\overline{J_X(B_X)}^{w^{*}}$，若 $K\\ne B_{X^{**}}$ 取 $\\xi_0\\in B_{X^{**}}\\setminus K$，令 $C=K-\\xi_0$。$C$ 闭凸、不含 $0$，取 Minkowski 泛函 $p$：$p$ 次线性、在 $C$ 上 $\\le1$、且 $p(-\\xi_0)>1$。在一维子空间 $\\mathbb{R}\\xi_0$ 上令 $\\ell_0(t\\xi_0)=-t\\,p(-\\xi_0)$，验证 $\\ell_0\\le p$ 后用 `thm.hahn-banach` 延拓成 $X^{**}$ 上的线性泛函 $\\ell\\le p$；把 $\\pm\\ell$ 合并得弱*连续泛函把 $\\xi_0$ 与 $K$ 分离，与 $K$ 是闭凸包矛盾。∎
+设 $K=\overline{J_X(B_X)}^{w^{*}}$，若 $K\ne B_{X^{**}}$ 取 $\xi_0\in B_{X^{**}}\setminus K$，令 $C=K-\xi_0$。$C$ 闭凸、不含 $0$，取 Minkowski 泛函 $p$：$p$ 次线性、在 $C$ 上 $\le1$、且 $p(-\xi_0)>1$。在一维子空间 $\mathbb{R}\xi_0$ 上令 $\ell_0(t\xi_0)=-t\,p(-\xi_0)$，验证 $\ell_0\le p$ 后用 `thm.hahn-banach` 延拓成 $X^{**}$ 上的线性泛函 $\ell\le p$；把 $\pm\ell$ 合并得弱*连续泛函把 $\xi_0$ 与 $K$ 分离，与 $K$ 是闭凸包矛盾。∎
 
 #### Banach–Alaoglu 定理 ⟹ Goldstine 定理　`imp.goldstine-banach-alaoglu`
 *Banach–Alaoglu：$B_{X^{**}}$ 弱*紧*
 
-由 `thm.banach-alaoglu`（用在对偶对 $(X^{*},X^{**})$ 上），$B_{X^{**}}$ 弱*紧。$K:=\\overline{J_X(B_X)}^{w^{*}}$ 是紧空间 $B_{X^{**}}$ 的闭子集，故弱*紧、从而是弱*闭凸集 —— 主证明正需要对闭凸集 $K$ 做分离并利用紧性取极值。∎
+由 `thm.banach-alaoglu`（用在对偶对 $(X^{*},X^{**})$ 上），$B_{X^{**}}$ 弱*紧。$K:=\overline{J_X(B_X)}^{w^{*}}$ 是紧空间 $B_{X^{**}}$ 的闭子集，故弱*紧、从而是弱*闭凸集 —— 主证明正需要对闭凸集 $K$ 做分离并利用紧性取极值。∎
 
 #### 定义引用：「弱*拓扑」→ Goldstine 定理　`dep.gs-weakstar`
 
@@ -59967,7 +59967,7 @@ Banach–Alaoglu 的紧性是弱*拓扑下的紧性。
 #### Banach–Alaoglu 定理 ⟹ James 定理　`imp.james-banach-alaoglu`
 *Banach–Alaoglu：自反 $\implies$ $B_X$ 弱紧*
 
-先看 $(\\Longrightarrow)$，即自反的情形。设 $X$ 自反，则 $J_X(B_X)=B_{X^{**}}$。由 `thm.banach-alaoglu`，$B_{X^{**}}$ 弱*紧；而 $X$ 的弱拓扑就是沿 $J_X$ 拉回的弱*拓扑，故 $B_X=J_X^{-1}(B_{X^{**}})$ 弱紧。于是任取 $\\varphi\\in X^{*}$，$|\\varphi|$ 在弱紧集 $B_X$ 上达到最大值 $\\|\\varphi\\|$，即存在 $x\\in B_X$ 使 $\\varphi(x)=\\|\\varphi\\|$。∎
+先看 $(\Longrightarrow)$，即自反的情形。设 $X$ 自反，则 $J_X(B_X)=B_{X^{**}}$。由 `thm.banach-alaoglu`，$B_{X^{**}}$ 弱*紧；而 $X$ 的弱拓扑就是沿 $J_X$ 拉回的弱*拓扑，故 $B_X=J_X^{-1}(B_{X^{**}})$ 弱紧。于是任取 $\varphi\in X^{*}$，$|\varphi|$ 在弱紧集 $B_X$ 上达到最大值 $\|\varphi\|$，即存在 $x\in B_X$ 使 $\varphi(x)=\|\varphi\|$。∎
 
 #### 定义引用：「弱拓扑」→ James 定理　`dep.james-weak`
 
