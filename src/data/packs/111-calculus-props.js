@@ -258,8 +258,9 @@ window.MG = window.MG || {};
     {
       id: 'imp.geometric-series',
       kind: 'implication',
-      sources: ['def.series', 'thm.bernoulli', 'cor.archimedean-epsilon'],
-      target: 'thm.geometric-series',
+      sources: ['def.series', 'thm.bernoulli', 'cor.archimedean-epsilon',
+        'thm.cauchy-criterion-series'],
+      layer: false, target: 'thm.geometric-series',
       title: '部分和公式 + Bernoulli $\\implies$ 几何级数',
       proof: [
         '**$|q| < 1$。** 若 $q = 0$，则 $s_N = 1$ 对一切 $N$ 成立，收敛到 $1$ ✓；下面设 $q \\ne 0$（此时 $q \\ne 1$ 自动成立）。部分和',

@@ -805,7 +805,9 @@
       note: '证明的力量全在「有界 $\\implies$ 可去」这一句。' },
 
     /* ---- §D 收敛与正规族 ---- */
-    {id: "e11.implication", kind: 'implication', sources: ['thm.morera'], target: 'thm.weierstrass-convergence',
+    {id: "e11.implication", kind: 'implication', sources: ['thm.morera',
+        'thm.cauchy-goursat'
+      ], layer: false, target: 'thm.weierstrass-convergence',
       title: 'Morera 判极限全纯；Cauchy 公式判导数收敛',
       proof: [
         '**全纯性**：设 $T \\subset \\Omega$ 是闭三角形。每个 $f_{k}$ 全纯，故 $\\oint_{\\partial T} f_{k}\\,\\mathrm{d}z = 0$' +
@@ -988,7 +990,9 @@
        反过来推是循环的；Rouché 最多给出「零点个数」这一半，积分那一半必须靠 Cauchy
        （对数导数），给不出完整的辐角原理。宁可少一条边，也不留一条假推出。 */
 
-    {id: "e21.implication", kind: 'implication', layer: false, sources: ['thm.open-mapping'], target: 'lem.schwarz',
+    {id: "e21.implication", kind: 'implication', layer: false, sources: ['thm.open-mapping',
+        'thm.max-modulus'
+      ], target: 'lem.schwarz',
       title: '（推论）开映射定理 $\\implies$ Schwarz 引理的等号情形',
       proof: [
         '**要证的**：若 $f : \\mathbb{D} \\to \\mathbb{D}$ 全纯、$f(0) = 0$ 且 $|f^{\\prime}(0)| = 1$，则 $f(z) = cz$，其中 $|c| = 1$。',

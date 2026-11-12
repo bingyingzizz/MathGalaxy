@@ -219,13 +219,7 @@ window.MG = window.MG || {};
         '',
         '$$\\gcd(m,n) = 1:\\quad \\left(\\frac{m}{n}\\right)\\left(\\frac{n}{m}\\right) = (-1)^{\\frac{m-1}{2}\\cdot\\frac{n-1}{2}}, \\qquad \\left(\\frac{-1}{n}\\right) = (-1)^{\\frac{n-1}{2}}, \\qquad \\left(\\frac{2}{n}\\right) = (-1)^{\\frac{n^{2}-1}{8}} .$$',
       ].join('\n'),
-      notes: [
-        '算法：把 $\\left(\\frac{a}{n}\\right)$ 里的 $a$ 拆成 $2^{k}$ 乘一个奇数，用 $\\left(\\frac{2}{n}\\right)$ 的公式处理 $2$ 的部分；\n\n再把剩下的奇数因子用互反律翻过来（符号按 $m \\equiv n \\equiv 3 \\pmod 4$ 判），然后对 $a \\bmod n$ 取余 —— 与辗转相除同构，$O(\\log n)$ 步。',
-        '',
-        '**为什么不分解 $n$**：互反律允许在 $\\left(\\frac{m}{n}\\right)$ 与 $\\left(\\frac{n}{m}\\right)$ 之间来回换，形状完全对称（除了那个符号）。这条「对称性 + 取余」就是 Jacobi 符号算法的全部。',
-        '',
-        '与 Legendre 符号的关系：$n$ 素时两者一致；$n$ 合数时 Jacobi 只是「乘积形式」，见 `def.jacobi-symbol` 的警告。',
-      ].join('\n\n'),
+      notes: 'text=**三条法则的分工**：前两条由定义展开（乘性），第三条（互反律）要 $\\gcd(m,n)=1$，由 Legendre 互反律逐素因子相乘并合并指数得到。完整证明见边 `imp.jacobi-laws-proof`。',
       refs: ['华罗庚《数论导引》第四章'],
     },
 
@@ -493,6 +487,20 @@ window.MG = window.MG || {};
         '**② 两个和数的是什么**。固定 $i \\le \\frac{p-1}{2}$，矩形里满足 $j p < i q$ 的 $j \\ge 1$ 恰有 $\\lfloor iq/p \\rfloor$ 个（因为 $iq/p < q/2$，它们自动 $\\le \\frac{q-1}{2}$）。所以 $\\sum_{i} \\lfloor iq/p \\rfloor$ 数的是直线 $p y = q x$ **下方**的整点数，$\\sum_{j} \\lfloor jp/q \\rfloor$ 数**上方**的整点数。',
         '**③ 相加**。矩形 $\\{1 \\le i \\le \\frac{p-1}{2}\\} \\times \\{1 \\le j \\le \\frac{q-1}{2}\\}$ 共有 $\\frac{p-1}{2} \\cdot \\frac{q-1}{2}$ 个整点，且没有点落在直线上（$iq = jp$、$p \\ne q$ 为素数、$i < p$，矛盾），故两和相加恰是这个数。代回 ①：$\\left(\\frac{q}{p}\\right)\\left(\\frac{p}{q}\\right) = (-1)^{\\frac{p-1}{2}\\cdot\\frac{q-1}{2}}$。∎',
       ].join('\n\n'),
+    },
+    {
+      "id": "imp.jacobi-laws-proof",
+      "kind": "implication",
+      "sources": [
+        "def.jacobi-symbol",
+        "def.legendre-symbol",
+        "thm.quadratic-reciprocity"
+      ],
+      "target": "thm.jacobi-laws",
+      "layer": false,
+      "title": "Jacobi 符号的三条运算法则",
+      "proof": "记 $(a/\\cdot)$ 为 Jacobi 符号，$m,n$ 正奇数。\n\n(1) 与 (2) 由定义直接展开：若 $n=\\prod q_i^{e_i}$，则\n$$\\Bigl(\\frac{ab}{n}\\Bigr)=\\prod_i\\Bigl(\\frac{ab}{q_i}\\Bigr)^{e_i}=\\prod_i\\Bigl(\\frac{a}{q_i}\\Bigr)^{e_i}\\prod_i\\Bigl(\\frac{b}{q_i}\\Bigr)^{e_i}=\\Bigl(\\frac{a}{n}\\Bigr)\\Bigl(\\frac{b}{n}\\Bigr);$$\n同理 $(a/mn)=\\prod_q(a/q)^{v_q(m)+v_q(n)}=(a/m)(a/n)$。\n\n(3) 设 $\\gcd(m,n)=1$，$m=\\prod p_i^{a_i}$、$n=\\prod q_j^{b_j}$。由 (2) 与 Legendre 互反律，\n$$\\Bigl(\\frac{m}{n}\\Bigr)=\\prod_{i,j}\\Bigl(\\frac{p_i}{q_j}\\Bigr)^{a_ib_j}=\\prod_{i,j}\\Bigl((-1)^{\\frac{p_i-1}{2}\\frac{q_j-1}{2}}\\Bigl(\\frac{q_j}{p_i}\\Bigr)\\Bigr)^{a_ib_j}=(-1)^{\\frac{m-1}{2}\\frac{n-1}{2}}\\Bigl(\\frac{n}{m}\\Bigr).$$\n其中用了 $\\sum_{i,j}a_ib_j\\frac{p_i-1}{2}\\frac{q_j-1}{2}=\\frac{m-1}{2}\\frac{n-1}{2}$；这来自对每个奇素数幂 $p^{a}$ 有 $\\frac{p^{a}-1}{2}\\equiv a\\frac{p-1}{2}\\pmod2$，再对 $m,n$ 的因子求和。\n\n补充公式 $(-1/n)=(-1)^{(n-1)/2}$、$(2/n)=(-1)^{(n^{2}-1)/8}$：对 $n$ 的每个素因子用 Legendre 版本，再由 (2) 相乘；指数按模 $2$ 相加，同样由上面的同余得到。∎",
+      "note": "Jacobi 符号运算法则直接由 Legendre 符号与互反律展开；互反律层号更高，故本边不参与分层。"
     },
   ],
 });

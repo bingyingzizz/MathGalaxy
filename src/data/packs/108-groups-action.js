@@ -149,7 +149,7 @@ window.MG = window.MG || {};
         '设 $G$ 是群、$g \\in G$。集合',
         '',
         '$$\\langle g \\rangle := \\{\\, g^{k} : k \\in \\mathbb{Z} \\,\\} \\quad \\subseteq\\; G$$',
-        '（约定 $g^{0} = e$、$g^{-k} = (g^{-1})^{k}$）是 $G$ 的最小子群，叫 $g$ **生成**的循环群。若 $G = \\langle g\\rangle$ 对某个 $g$ 成立，称 $G$ 为**循环群**，$g$ 叫**生成元**。',
+        '（整数幂见 `def.group-power`）是 $G$ 的最小子群，叫 $g$ **生成**的循环群。若 $G = \\langle g\\rangle$ 对某个 $g$ 成立，称 $G$ 为**循环群**，$g$ 叫**生成元**。',
         '',
         '同构意义下只有两种：',
         '',
@@ -618,7 +618,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.jordan-holder',
       kind: 'implication',
-      sources: ['def.composition-series'],
+      sources: ['def.composition-series',
+        'thm.first-iso'],
       target: 'thm.jordan-holder',
       title: 'Zassenhaus（蝴蝶）引理 + Schreier 加细 $\\implies$ Jordan–Hölder',
       proof: [

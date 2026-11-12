@@ -229,12 +229,7 @@ window.MG = window.MG || {};
         '',
         '所以几何上它说的是：**Gram 行列式 = 平行四边形的面积的平方**（`def.gram-matrix`）。'
       ].join('\n'),
-      notes: [
-        '**Cauchy–Schwarz 是它的推论**：右边是平方和，非负 $\\implies$ 左边 $\\ge 0$ $\\implies$ $\\lvert\\langle u,w\\rangle\\rvert \\le \\lVert u\\rVert\\lVert w\\rVert$。\n\n而且等号成立 $\\iff$ 右边每项为零 $\\iff$ $u, w$ 成比例。\n\n所以这条恒等式比 Cauchy–Schwarz **强**：它给出了差多少。',
-        '⭐ **一般 $k$ 个向量**：Gram 行列式 $\\det G$ 等于这 $k$ 个向量张成的平行体体积的平方（`def.gram-matrix` 的注）。$k=2$ 就是本条；$\\det G \\ge 0$ 就是「体积是实数」。',
-        '⚠️ 它不是辛的：这里的 $\\langle\\cdot,\\cdot\\rangle$ 是**内积**（对称正定），不是辛形式。名字里的「Lagrange」与 `def.lagrangian-subspace` 是同一个人的不同贡献 —— 前者是内积几何，后者是辛几何，**别把两条接成因果关系**。',
-        '⚠️ 复情形要小心：用 Hermite 内积时右边要改成模方 $\\lvert u_{i}\\bar{w}_{j} - u_{j}\\bar{w}_{i}\\rvert^{2}$，左边仍非负，结论不变。'
-      ].join('\n\n'),
+      notes: 'text=**几何读法**：左边是两个向量 Gram 矩阵的行列式，即它们张成的平行四边形面积的平方；右边是坐标形式的面积平方。完整展开见边 `imp.lagrange-identity-proof`。⚠ 坐标式只在正交归一基下成立，一般基要用 Gram 矩阵修正。',
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· Gram 行列式',
         '北大《高等代数》· Lagrange 恒等式'
@@ -295,6 +290,20 @@ window.MG = window.MG || {};
       note: '「面积的平方」的代数表达是 $2\\times2$ 行列式。' },
     { id: 'dep.lagid-inner', kind: 'definition',
       definition: 'def.inner-product', usedBy: 'thm.lagrange-identity',
-      note: '恒等式两边都用内积写。' }
+      note: '恒等式两边都用内积写。' },
+    {
+      "id": "imp.lagrange-identity-proof",
+      "kind": "implication",
+      "sources": [
+        "def.inner-product",
+        "def.gram-matrix",
+        "def.determinant",
+        "def.orthonormal-set"
+      ],
+      "target": "thm.lagrange-identity",
+      "title": "Lagrange 恒等式：面积平方的坐标展开",
+      "proof": "取 $u,w$ 张成的子空间的一组正交归一基 $e_1,\\ldots,e_m$（由 Gram–Schmidt 得到；$m\\le2$）。写 $u=\\sum u_i e_i$、$w=\\sum w_i e_i$，则 $\\langle u,w\\rangle=\\sum u_i w_i$、$\\lVert u\\rVert^{2}=\\sum u_i^{2}$、$\\lVert w\\rVert^{2}=\\sum w_i^{2}$。\n\n展开：\n$$\\lVert u\\rVert^{2}\\lVert w\\rVert^{2}-\\langle u,w\\rangle^{2}=\\Bigl(\\sum_i u_i^{2}\\Bigr)\\Bigl(\\sum_j w_j^{2}\\Bigr)-\\Bigl(\\sum_i u_i w_i\\Bigr)^{2}=\\sum_{i<j}(u_i w_j-u_j w_i)^{2}.$$\n（右端展开后 $\\sum u_i^2w_j^2$ 全部保留，交叉项 $2\\sum_{i<j}u_iu_jw_iw_j$ 与左端平方展开的交叉项相消。）\n\n另一方面，$u,w$ 的 Gram 矩阵\n$$G=\\begin{pmatrix}\\langle u,u\\rangle&\\langle u,w\\rangle\\\\ \\langle w,u\\rangle&\\langle w,w\\rangle\\end{pmatrix}$$\n的行列式正是 $\\lVert u\\rVert^{2}\\lVert w\\rVert^{2}-\\langle u,w\\rangle^{2}$（实情形 $\\langle w,u\\rangle=\\langle u,w\\rangle$），故左边 $=\\det G$。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
   ]
 });

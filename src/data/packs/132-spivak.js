@@ -908,7 +908,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.spivak-chain-stokes',
       kind: 'implication',
-      sources: ['lem.single-cube-stokes', 'prop.pullback-forms', 'def.integral-on-chain'],
+      sources: ['lem.single-cube-stokes', 'prop.pullback-forms', 'def.integral-on-chain',
+        'prop.integral-chain-linear'],
       target: 'thm.stokes-chain',
       title: '拉回到方块 + 方块上的公式 $\\implies$ 链上的 Stokes',
       proof: [

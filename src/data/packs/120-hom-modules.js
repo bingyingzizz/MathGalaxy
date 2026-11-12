@@ -914,7 +914,7 @@ window.MG = window.MG || {};
       id: 'imp.flat-equivalences',
       kind: 'implication',
       sources: ['prop.tensor-right-exact', 'def.flat-module'],
-      target: 'prop.flat-equivalences',
+      layer: false, target: 'prop.flat-equivalences',
       title: '右正合 + 平坦的定义 $\\implies$ 五条等价刻画',
       proof: [
         '**1 与 2**：右正合已由前一条给出，所以「正合」只差左端那一个单射 ✓。',
@@ -925,7 +925,7 @@ window.MG = window.MG || {};
         '$$0 \\longrightarrow \\operatorname{Tor}_{1}^{R}(R/I, N) \\longrightarrow I \\otimes N \\longrightarrow N \\longrightarrow \\cdots$$',
         '故 $\\operatorname{Tor}_{1}^{R}(R/I, N) = 0$ 推出 $I \\otimes N \\to N$ 单 ✓。',
         '',
-        '**4 蕴含 2**：先化到 $M$ 有限生成（$(-) \\otimes N$ 保滤过余极限，而单射在滤过余极限下封闭），再对生成元个数归纳，每一步把「子模含入」拆成「理想含入 + 短正合列」，用蛇引理拼回去 —— 完整论证见 `thm.lambek` ✓。',
+        '**4 蕴含 2**：先化到 $M$ 有限生成（$(-) \\otimes N$ 保滤过余极限，而单射在滤过余极限下封闭），再对生成元个数归纳，每一步把「子模含入」拆成「理想含入 + 短正合列」，用蛇引理拼回去 —— 最后一步的完整论证就是 Lambek 判据，它与本条同层（互为等价刻画），这里不另列为前提 ✓。',
         '',
         '**5** 只是把 1、2 换成有限表现模的说法（$R^{n} \\to M$ 有限生成自由），等价性是显然的 ✓。∎'
       ].join('\n'),
@@ -935,7 +935,7 @@ window.MG = window.MG || {};
       id: 'imp.free-flat',
       kind: 'implication',
       sources: ['prop.tensor-functor-properties', 'def.flat-module'],
-      target: 'prop.free-flat',
+      layer: false, target: 'prop.free-flat',
       title: '与直和交换 + 单位 $\\implies$ 自由模平坦',
       proof: [
         '由「单位」$R \\otimes_{R} N \\cong N$ 与「与直和交换」，对每个 $A$ 有自然同构',
@@ -944,7 +944,7 @@ window.MG = window.MG || {};
         '',
         '一族函子的直和正合：$f : A \\to A_{1}$ 单射 $\\iff$ 每个分量 $f$ 单射，而 $(f)^{(I)}$ 就是 $f$ 的 $I$ 重直和、单射性逐分量判定 ✓。故自由模平坦。',
         '',
-        '**投射模平坦**：投射模是某自由模的直和项，由 `prop.flat-summand` 继承平坦性 ✓。∎'
+        '**投射模平坦**：投射模是某自由模的直和项，由直和项继承平坦性（同层事实，不另列为前提）✓。∎'
       ].join('\n'),
       note: '这条让「投射消解也是平坦消解」成立，于是 $\\operatorname{Tor}$ 可以用更短的平坦消解来算。'
     },
@@ -1104,7 +1104,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.pid-injective-divisible',
       kind: 'implication',
-      sources: ['thm.baer-criterion', 'def.divisible-group'],
+      sources: ['thm.baer-criterion', 'def.divisible-group',
+        'prop.zmod-is-ab'],
       target: 'thm.pid-injective-divisible',
       title: 'Baer 判据 + 主理想 $\\implies$ 内射即除',
       proof: [
@@ -1135,7 +1136,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.divisible-examples',
       kind: 'implication',
-      sources: ['def.divisible-group', 'thm.pid-injective-divisible'],
+      sources: ['def.divisible-group', 'thm.pid-injective-divisible',
+        'prop.divisible-quotient'],
       target: 'ex.divisible-groups',
       title: '可除的定义 $\\implies$ 三个标准例子',
       proof: [
@@ -1185,6 +1187,10 @@ window.MG = window.MG || {};
         '于是每个 $M$ 都有投射对象满射到它 —— 按 `def.enough-projectives` 的定义即「有足够多投射对象」；把核再这样盖住，递归得到投射消解 ✓。∎'
       ].join('\n'),
       note: '与 `thm.mod-enough-injectives` 对照：投射这一侧是**显式**的（自由模写得出），内射那一侧是**存在性**的。'
-    }
+    },
+    {"id":"dep.n12-tensormod-scalarext","kind":"definition","definition":"def.tensor-module","usedBy":"prop.scalar-extension-adjunction","note":"张量积的万有性质给出 $S\\otimes_R M \\to P$ 的唯一 $S$-线性映射。"},
+    { id: 'dep.n11-flatnp-flat', kind: 'definition', definition: 'def.flat-module', usedBy: 'ex.flat-not-projective', note: '平坦模的定义' },
+    { id: 'dep.n11-flatnp-proj', kind: 'definition', definition: 'def.projective-object', usedBy: 'ex.flat-not-projective', note: '投射对象的定义（与平坦对比例子）' }
+
   ]
 });

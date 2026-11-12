@@ -112,11 +112,7 @@ window.MG = window.MG || {};
         '',
         '$$\\alpha\\,\\|x\\|_\\infty \\le \\|x\\| \\le \\beta\\,\\|x\\|_\\infty , \\qquad \\|x\\|_\\infty := \\max_{1 \\le k \\le n} |x_k| .$$'
       ].join('\n'),
-      notes: [
-        '证法只有两步：**上界**用三角不等式 $\\|x\\| \\le \\sum |x_k|\\,\\|e_k\\| \\le \\|x\\|_\\infty \\sum \\|e_k\\|$；\n\n**下界**把 $\\|\\cdot\\|$ 看成单位球面 $S = \\{x : \\|x\\|_\\infty = 1\\}$ 上的连续函数 —— $S$ 紧、$\\|\\cdot\\|$ 无处为零，故取下确界 $\\alpha > 0$。',
-        '⭐ 整条定理的实质是「**紧 + 连续 + 无零点 $\\implies$ 有正的最小值**」，也就是「单位球面紧」。所以它在无穷维必错（见「单位球紧 $\\iff$ 有限维」）。',
-        '⚠️ 反例（讲义没有列，但值得记）：$C[0,1]$ 上 $\\|\\cdot\\|_\\infty$ 严格强于 $\\|\\cdot\\|_1$：$f_n(x) = x^n$ 在 $\\|\\cdot\\|_1$ 下趋于 $0$，却**不**一致收敛于 $0$（点态极限是 $x = 1$ 处的跳变）。'
-      ].join('\n\n'),
+      notes: 'text=**为什么有限维特殊**：单位球面紧，范数在球面上取到正的最小值，于是任一范数被 $\\lVert\\cdot\\rVert_\\infty$ 双向控制。完整证明见边 `imp.norm-equiv-finite-dim-proof`。',
       refs: ['Rudin, Functional Analysis · 赋范空间与有限维'],
     },
 
@@ -246,11 +242,7 @@ window.MG = window.MG || {};
         '',
         '特别地 $B(E)$ 是**赋范代数**（乘法连续）；$E \\ne \\{0\\}$ 时 $\\|\\mathrm{id}\\| = 1$。'
       ].join('\n'),
-      notes: [
-        '一句话：$\\|vu(x)\\| \\le \\|v\\|\\,\\|u(x)\\| \\le \\|v\\|\\,\\|u\\|\\,\\|x\\|$。',
-        '⚠️ $B(E)$ 一般**不交换**（$\\dim E \\ge 2$ 时），所以它是「非交换 Banach 代数」的原型，而不是函数代数的类比对象。',
-        '$\\|\\cdot\\|$ 是**次可乘**的（submultiplicative）——这条不等式就是「Banach 代数」定义里的第二条，也是 Neumann 级数能收敛的唯一依据。'
-      ].join('\n\n'),
+      notes: 'text=**一句话**：$\\lVert vux\\rVert\\le\\lVert v\\rVert\\lVert u\\rVert\\lVert x\\rVert$，故复合有界且范数次乘；乘法连续性由双线性与这条不等式。完整证明见边 `imp.operator-algebra-proof`。',
       refs: ['Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数'],
     },
 
@@ -291,11 +283,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $E$ 赋范、$F$ Banach。则 $(B(E, F), \\|\\cdot\\|)$ 是 Banach 空间。特别地，对偶空间 $E^* = B(E, \\mathbb{K})$ **总是** Banach（不论 $E$ 是否完备）。'
       ].join('\n'),
-      notes: [
-        '证法（逐点取极限）：取 $B(E,F)$ 里的 Cauchy 列 $u_n$。\n\n对每个 $x$，$\\|u_n x - u_m x\\| \\le \\|u_n - u_m\\|\\,\\|x\\| \\to 0$，故 $(u_n x)$ 在 $F$ 里 Cauchy，有极限 $u(x)$。\n\n$u$ 线性（极限保线性）、有界（取 $N$ 使 $n, m \\ge N$ 时 $\\|u_n - u_m\\| < \\varepsilon$，则 $\\|u(x)\\| \\le \\|u(x) - u_N(x)\\| + \\|u_N(x)\\| \\le (\\varepsilon + \\|u_N\\|)\\|x\\|$），且 $\\|u_n - u\\| \\to 0$。',
-        '⭐ 要害是「$\\|u_n\\|$ 一致有界」（Cauchy 列必一致有界），所以极限的范数不会跳。',
-        '⚠️ $E$ 不需要完备：完备性只用在 $F$ 上。'
-      ].join('\n\n'),
+      notes: 'text=**证明思路**：逐点取极限定义 $u$，再用一致有界控制 $\\lVert u_k-u\\rVert$。完整证明见边 `imp.bounded-operators-banach-proof`。特别地 $E^*=B(E,\\mathbb K)$ 总是 Banach。',
       refs: ['Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数'],
     },
 
@@ -476,11 +464,7 @@ window.MG = window.MG || {};
         '',
         '$$\\langle x, y\\rangle = \\tfrac{1}{4}\\sum_{k=0}^{3} i^k \\,\\| x + i^k y \\|^2 .$$'
       ].join('\n'),
-      notes: [
-        '直接把 $\\|x \\pm y\\|^2 = \\|x\\|^2 \\pm 2\\,\\operatorname{Re}\\langle x,y\\rangle + \\|y\\|^2$ 相减即得实情形；复情形多取一个 $iy$ 把虚部抽出来。',
-        '⭐ 意义：**内积完全由范数决定**。所以「两个内积空间等距」就等于「内积空间同构」；也所以判断「一个范数是否来自内积」才是一个真问题（下一条）。',
-        '⚠️ 复情形的系数是 $i^k$（四个都要：$1, i, -1, -i$），不是 $(-1)^k$ ——写成 $(-1)^k$ 只能抽出实部，会把内积丢掉一半信息。'
-      ].join('\n\n'),
+      notes: 'text=**用途**：把内积还原成范数，从而「保范」与「保内积」在实情形等价；复情形用四个方向的组合。完整推导见边 `imp.polarization-proof`。',
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
     },
 
@@ -1216,8 +1200,25 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '泛函分析', '弱拓扑', '对偶', 'Banach 空间'],
       statement: '设 $E$ 是赋范空间，$E^{*}$ 是其连续对偶。$E$ 上的**弱拓扑** $\\sigma(E,E^{*})$ 是使所有 $\\varphi\\in E^{*}$ 都连续的最弱拓扑；等价地，它由半范数族 $p_{\\varphi}(x)=|\\varphi(x)|$（$\\varphi\\in E^{*}$）生成。',
-      notes: '**基本事实**：范数收敛推出弱收敛，反之不然。例如 $\\ell^{2}$ 中的标准基 $e_{n}\\rightharpoonup0$（弱收敛），但 $\\|e_{n}\\|=1$ 不趋于 $0$。\n\n**为什么用它**：弱拓扑把对偶的元素都变成连续函数，于是可以用泛函分离点、取弱紧性；自反空间的有界闭球弱紧（Eberlein–Šmulian，本图尚无节点）。\n\n**与弱*拓扑的区别**：弱*拓扑在 $E^{*}$ 上由 $E$ 的元素 $x\\mapsto\\varphi(x)$ 生成，$E^{*}$ 的弱*紧性即 Banach–Alaoglu 定理（本图尚无节点）。\n\n⚠ 弱拓扑不是范数拓扑：弱开集比范数开集少得多；无限维赋范空间的弱拓扑不第一可数。',
+      notes: '**基本事实**：范数收敛推出弱收敛，反之不然。例如 $\\ell^{2}$ 中的标准基 $e_{n}\\rightharpoonup0$（弱收敛），但 $\\|e_{n}\\|=1$ 不趋于 $0$。\n\n**为什么用它**：弱拓扑把对偶的元素都变成连续函数，于是可以用泛函分离点、取弱紧性；自反空间的有界闭球弱紧（Eberlein–Šmulian，本图尚无节点）。\n\n**与弱*拓扑的区别**：弱*拓扑在 $E^{*}$ 上由 $E$ 的元素 $x\\mapsto\\varphi(x)$ 生成，$E^{*}$ 的弱*紧性即 Banach–Alaoglu 定理（本图有该定理的节点）。\n\n⚠ 弱拓扑不是范数拓扑：弱开集比范数开集少得多；无限维赋范空间的弱拓扑不第一可数。',
       refs: ['Rudin, Functional Analysis, Ch. 3 · weak topology', 'Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations, Ch. 3 · weak topology'],
+    },
+    {
+      id: 'def.weak-star-topology',
+      cluster: 'fa.norm',
+      type: 'definition',
+      label: '弱*拓扑',
+      title: '弱*拓扑 $\\sigma(E^{*},E)$：逐点收敛',
+      regions: ['analysis'],
+      tags: ['定义', '泛函分析', '弱*拓扑', '对偶', 'Banach 空间'],
+      statement: '设 $E$ 是赋范空间，$E^{*}$ 是其连续对偶。$E^{*}$ 上的**弱*拓扑** $\\sigma(E^{*},E)$ 是使所有求值泛函 $\\varphi\\mapsto\\varphi(x)$（$x\\in E$）都连续的最弱拓扑；等价地，它由半范数族 $p_{x}(\\varphi)=|\\varphi(x)|$（$x\\in E$）生成。',
+      notes: [
+        '**收敛就是逐点收敛**：网 $\\varphi_{\\alpha}\\to\\varphi$ 在弱*拓扑下当且仅当对每个 $x\\in E$ 有 $\\varphi_{\\alpha}(x)\\to\\varphi(x)$。因此弱*拓扑又叫「逐点收敛拓扑」。',
+        '**与弱拓扑的对偶关系**：弱拓扑 $\\sigma(E,E^{*})$ 在 $E$ 上由 $E^{*}$ 生成；弱*拓扑 $\\sigma(E^{*},E)$ 在 $E^{*}$ 上由 $E$ 生成 —— 两者把「谁作用于谁」对调。当 $E$ 自反时 $E=E^{**}$，故 $E^{*}$ 上的弱*拓扑与弱拓扑 $\\sigma(E^{*},E^{**})$ 重合。',
+        '⭐ **Banach–Alaoglu**：$E^{*}$ 的单位球 $B_{E^{*}}$ 在弱*拓扑下紧。这是弱*拓扑最重要的用武之地（本图有该定理的节点）。Goldstine 定理也用它：$B_{E}$ 在 $B_{E^{**}}$ 中弱*稠密。',
+        '⚠ 无限维时弱*拓扑不第一可数，序列不足以刻画收敛，必须用网或滤子；$E$ 可分时 $B_{E^{*}}$ 弱*序列紧（序列版本），但一般空间只有网紧。'
+      ].join('\n\n'),
+      refs: ['Rudin, Functional Analysis, Ch. 3 · weak-star topology', 'Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations, Ch. 3 · weak-star topology'],
     },
     {
       "id": "thm.hahn-banach",
@@ -1519,11 +1520,84 @@ window.MG = window.MG || {};
     {"id":"dep.hb-norm","kind":"definition","definition":"def.norm","usedBy":"thm.hahn-banach","note":"保范延拓推论取 $p(x) = \\|\\varphi\\|\\,\\|x\\|$。"},
     {"id":"dep.ba-tych","kind":"definition","definition":"thm.tykhonov","usedBy":"thm.banach-alaoglu","note":"积 $\\prod_x [-\\|x\\|,\\|x\\|]$ 的紧性来自 Tychonoff。"},
     {"id":"dep.ba-dual","kind":"definition","definition":"def.dual-banach","usedBy":"thm.banach-alaoglu","note":"弱*拓扑建在连续对偶上。"},
+    {"id":"dep.wstar-dual","kind":"definition","definition":"def.dual-space","usedBy":"def.weak-star-topology","note":"弱*拓扑建在连续对偶 $E^{*}$ 上。"},
+    {"id":"dep.wstar-normed","kind":"definition","definition":"def.normed-space","usedBy":"def.weak-star-topology","note":"半范数 $p_x(\\varphi)=|\\varphi(x)|$ 由 $E$ 的范数控制。"},
+    {"id":"dep.wstar-ba","kind":"definition","definition":"def.weak-star-topology","usedBy":"thm.banach-alaoglu","note":"Banach–Alaoglu 的紧性是弱*拓扑下的紧性。"},
     {"id":"dep.gs-hb","kind":"definition","definition":"thm.hahn-banach","usedBy":"thm.goldstine","note":"点与闭凸集的分离用 Hahn–Banach 的几何形式。"},
     {"id":"dep.gs-ba","kind":"definition","definition":"thm.banach-alaoglu","usedBy":"thm.goldstine","note":"$B_{X^{**}}$ 弱*紧（把 Banach–Alaoglu 用到 $X^{*}$ 上）。"},
-    {"id":"dep.gs-weakstar","kind":"definition","definition":"def.weak-topology","usedBy":"thm.goldstine","note":"弱*拓扑是弱拓扑在对偶上的对偶版本，本条只用其半范数刻画。"},
+    {"id":"dep.gs-weakstar","kind":"definition","definition":"def.weak-star-topology","usedBy":"thm.goldstine","note":"弱*拓扑是 $X^{**}$ 上由 $X^{*}$ 生成的逐点收敛拓扑，本条只用其半范数刻画。"},
     {"id":"imp.milman-pettis","kind":"implication","sources":["thm.goldstine","def.uniformly-convex"],"target":"thm.milman-pettis","title":"Goldstine + 一致凸 $\\implies$ 自反","proof":"设 $\\xi \\in B_{X^{**}}$。Goldstine 给网 $(x_\\alpha) \\subset B_X$ 弱*收敛到 $\\xi$；取 $\\varphi$ 使 $\\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$ 得 $\\|x_\\alpha\\| \\to 1$；归一化后由一致凸知 $(y_\\alpha)$ 是范数 Cauchy，故 $x_\\alpha \\to x \\in X$；弱*极限唯一给出 $\\xi = J_X x$，$J_X$ 满射。详见节点注。∎","note":"本条把 Milman–Pettis 归到 Goldstine（`thm.goldstine`）这一个外部定理上；Goldstine 自身由 `thm.hahn-banach` 与 `thm.banach-alaoglu` 支撑。"},
     {status: 'skeleton', "id":"dep.james-ba","kind":"definition","definition":"thm.banach-alaoglu","usedBy":"thm.james","note":"正向（自反 $\\implies$ 泛函达到范数）要用弱*紧性：$B_{X^{**}}$ 弱*紧，沿 $J_X$ 拉回得 $B_X$ 弱紧。反向不需要它。"},
     {status: 'skeleton', "id":"dep.james-weak","kind":"definition","definition":"def.weak-topology","usedBy":"thm.james","note":"弱拓扑 $\\sigma(X,X^{*})$ 是「使 $X^{*}$ 全部连续」的最弱拓扑；正向用它把 $\\varphi$ 变成弱连续函数。"},
+    {
+      "id": "imp.metric-compact-equiv-proof",
+      "kind": "implication",
+      "sources": [
+        "def.metric-space",
+        "def.compact",
+        "def.sequentially-compact",
+        "def.complete",
+        "def.totally-bounded",
+        "def.lebesgue-number"
+      ],
+      "target": "thm.metric-compact-equiv",
+      "layer": false,
+      "title": "紧 $\\iff$ 列紧 $\\iff$ 完备且全有界",
+      "proof": "记 $d$ 为 $X$ 上的度量。\n\n**(a)$\\implies$(b)**：设 $X$ 紧而 $(x_n)$ 无收敛子列。则每点 $x$ 有开球 $B(x,r_x)$ 只含有限多个 $x_n$（否则取 $r=1/k$ 可抽出收敛于 $x$ 的子列）。这些球覆盖 $X$，紧性给有限子覆盖，故 $(x_n)$ 只有有限多项，矛盾。\n\n**(b)$\\implies$(c)**：完备性——若 $(x_n)$ 是 Cauchy 列，列紧给收敛子列 $x_{n_k}\\to x$；对 $\\varepsilon>0$ 取 $N$ 使 $m,n\\ge N$ 时 $d(x_m,x_n)<\\varepsilon/2$，再取 $k$ 使 $n_k\\ge N$ 且 $d(x_{n_k},x)<\\varepsilon/2$，则 $n\\ge N$ 时 $d(x_n,x)<\\varepsilon$。全有界性——若某 $\\varepsilon>0$ 不能用有限个 $\\varepsilon$-球覆盖，归纳取 $x_{n+1}\\notin\\bigcup_{k\\le n}B(x_k,\\varepsilon)$，则 $m\\ne n$ 时 $d(x_m,x_n)\\ge\\varepsilon$，此列无 Cauchy 子列，与 (b) 矛盾。\n\n**(c)$\\implies$(a)**：先证 Lebesgue 数引理：对开覆盖 $\\mathcal U$，存在 $\\varepsilon>0$ 使每个 $\\varepsilon$-球含于某个 $U\\in\\mathcal U$。否则对每个 $n$ 取 $x_n$ 使 $B(x_n,1/n)$ 不含于任何 $U$；全有界给 Cauchy 子列（从而收敛子列）$x_{n_k}\\to x$，取 $U_0\\ni x$ 与 $r>0$ 使 $B(x,r)\\subseteq U_0$；$k$ 充分大时 $d(x_{n_k},x)<r/2$、$1/n_k<r/2$，于是 $B(x_{n_k},1/n_k)\\subseteq B(x,r)\\subseteq U_0$，矛盾。\n\n取上述 $\\varepsilon$，用全有界性取有限 $\\varepsilon$-网 $y_1,\\ldots,y_m$，并取 $U_i\\in\\mathcal U$ 使 $B(y_i,\\varepsilon)\\subseteq U_i$。对任意 $x\\in X$ 有 $d(x,y_i)<\\varepsilon$ 的 $i$，故 $x\\in B(y_i,\\varepsilon)\\subseteq U_i$。于是 $U_1,\\ldots,U_m$ 覆盖 $X$，$X$ 紧。∎",
+      "note": "紧性、列紧性与完备+全有界是同一性质的不同表述；证明用到 Lebesgue 数引理，各概念同处基础层，故本边不参与分层。"
+    },
+    {
+      "id": "imp.polarization-proof",
+      "kind": "implication",
+      "sources": [
+        "def.inner-product",
+        "def.induced-norm",
+        "def.norm"
+      ],
+      "target": "thm.polarization",
+      "title": "极化恒等式：实/复两种情形",
+      "proof": "实情形：由内积诱导范数，\n$$\\lVert x\\pm y\\rVert^{2}=\\lVert x\\rVert^{2}+\\lVert y\\rVert^{2}\\pm2\\langle x,y\\rangle .$$\n两式相减得 $4\\langle x,y\\rangle=\\lVert x+y\\rVert^{2}-\\lVert x-y\\rVert^{2}$。\n\n复情形：对 $k=0,1,2,3$，\n$$\\lVert x+i^{k}y\\rVert^{2}=\\lVert x\\rVert^{2}+\\lVert y\\rVert^{2}+2\\operatorname{Re}\\bigl(\\overline{i^{k}}\\langle x,y\\rangle\\bigr).$$\n记 $z=\\langle x,y\\rangle=a+bi$，逐项乘 $i^{k}$ 后相加：$i^{0}$ 项为 $2a$；$i^{1}$ 项为 $i\\cdot2\\operatorname{Re}(-iz)=2bi$；$i^{2}$ 项为 $-2\\operatorname{Re}(-z)=2a$；$i^{3}$ 项为 $-i\\cdot2\\operatorname{Re}(iz)=2bi$。前两项 $\\lVert x\\rVert^{2}+\\lVert y\\rVert^{2}$ 乘 $\\sum_k i^{k}=0$ 消失。合计 $4a+4bi=4z$，除以 $4$ 即得。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
+    {
+      "id": "imp.norm-equiv-finite-dim-proof",
+      "kind": "implication",
+      "sources": [
+        "def.norm",
+        "def.norm-equivalence",
+        "def.compact",
+        "cor.heine-borel"
+      ],
+      "target": "thm.norm-equiv-finite-dim",
+      "layer": false,
+      "title": "有限维：任意两个范数等价",
+      "proof": "固定一组基 $e_1,\\ldots,e_n$，写 $x=\\sum x_k e_k$，令 $\\lVert x\\rVert_\\infty=\\max_k|x_k|$。\n\n上界：\n$$\\lVert x\\rVert\\le\\sum_k|x_k|\\,\\lVert e_k\\rVert\\le\\Bigl(\\sum_k\\lVert e_k\\rVert\\Bigr)\\lVert x\\rVert_\\infty=:\\beta\\lVert x\\rVert_\\infty .$$\n\n下界：单位球面 $S=\\{x:\\lVert x\\rVert_\\infty=1\\}$ 是 $K^{n}$ 中的有界闭集；把 $K^{n}$ 看成 $\\mathbb{R}^{n}$（$K=\\mathbb{R}$）或 $\\mathbb{R}^{2n}$（$K=\\mathbb{C}$），由 Heine–Borel 它紧。范数 $\\lVert\\cdot\\rVert$ 连续（由上面的上界，$|\\lVert x\\rVert-\\lVert y\\rVert|\\le\\beta\\lVert x-y\\rVert_\\infty$），且在 $S$ 上处处 $>0$，故 $\\alpha:=\\min_{S}\\lVert x\\rVert>0$。对 $x\\ne0$，$x/\\lVert x\\rVert_\\infty\\in S$，于是\n$$\\lVert x\\rVert=\\lVert x\\rVert_\\infty\\Bigl\\lVert\\frac{x}{\\lVert x\\rVert_\\infty}\\Bigr\\rVert\\ge\\alpha\\lVert x\\rVert_\\infty ;$$\n$x=0$ 时平凡。\n\n因此 $\\alpha\\lVert\\cdot\\rVert_\\infty\\le\\lVert\\cdot\\rVert\\le\\beta\\lVert\\cdot\\rVert_\\infty$，$\\lVert\\cdot\\rVert$ 与 $\\lVert\\cdot\\rVert_\\infty$ 等价。任意两个范数都与 $\\lVert\\cdot\\rVert_\\infty$ 等价，由等价关系的传递性它们彼此等价。∎",
+      "note": "有限维范数等价是基础结论；证明经 Heine–Borel 化归到紧性，故本边不参与分层。"
+    },
+    {
+      "id": "imp.bounded-operators-banach-proof",
+      "kind": "implication",
+      "sources": [
+        "def.bounded-operator",
+        "def.banach-space",
+        "def.complete"
+      ],
+      "target": "thm.bounded-operators-banach",
+      "title": "$B(E,F)$ 在 $F$ 完备时完备",
+      "proof": "设 $(u_k)$ 是 $B(E,F)$ 中的 Cauchy 列。对每个 $x\\in E$，\n$$\\lVert u_kx-u_lx\\rVert\\le\\lVert u_k-u_l\\rVert\\,\\lVert x\\rVert ,$$\n故 $(u_kx)$ 是 $F$ 中的 Cauchy 列；$F$ 完备，定义 $ux=\\lim_k u_kx$。\n\n$u$ 线性：$u(\\lambda x+\\mu y)=\\lim_k(\\lambda u_kx+\\mu u_ky)=\\lambda ux+\\mu uy$。\n\n有界：$(u_k)$ 是 Cauchy 列故有界，设 $\\lVert u_k\\rVert\\le C$。则 $\\lVert ux\\rVert=\\lim_k\\lVert u_kx\\rVert\\le C\\lVert x\\rVert$，故 $u\\in B(E,F)$。\n\n收敛：给定 $\\varepsilon>0$，取 $N$ 使 $k,l\\ge N$ 时 $\\lVert u_k-u_l\\rVert<\\varepsilon$。对任意 $x$ 与 $k\\ge N$，\n$$\\lVert u_kx-ux\\rVert=\\lim_l\\lVert u_kx-u_lx\\rVert\\le\\varepsilon\\lVert x\\rVert ,$$\n故 $\\lVert u_k-u\\rVert\\le\\varepsilon$（$k\\ge N$）。于是 $u_k\\to u$。\n\n特别地 $E^*=B(E,\\mathbb K)$ 中 $\\mathbb K$ 完备，故对偶空间总是 Banach。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
+    {
+      "id": "imp.operator-algebra-proof",
+      "kind": "implication",
+      "sources": [
+        "def.bounded-operator",
+        "def.norm"
+      ],
+      "target": "prop.operator-algebra",
+      "title": "$B(E,F)$ 是赋范代数：复合的次乘性",
+      "proof": "对 $x\\in E$，\n$$\\lVert v(ux)\\rVert\\le\\lVert v\\rVert\\,\\lVert ux\\rVert\\le\\lVert v\\rVert\\,\\lVert u\\rVert\\,\\lVert x\\rVert ,$$\n故 $vu$ 有界且 $\\lVert vu\\rVert\\le\\lVert v\\rVert\\lVert u\\rVert$（右边是 $\\lVert vu\\rVert$ 的定义下确界的一个上界）。\n\n乘法连续性：\n$$\\lVert v_1u_1-v_2u_2\\rVert\\le\\lVert v_1\\rVert\\lVert u_1-u_2\\rVert+\\lVert v_1-v_2\\rVert\\lVert u_2\\rVert ,$$\n故 $(u,v)\\mapsto vu$ 连续。\n\n$B(E)$ 含单位 $\\mathrm{id}$，$E\\ne\\{0\\}$ 时 $\\lVert\\mathrm{id}\\rVert=1$，故是赋范代数。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
   ]
 });

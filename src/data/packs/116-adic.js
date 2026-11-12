@@ -370,6 +370,7 @@ window.MG = window.MG || {};
       definition: 'def.condensed-abelian-group',
       usedBy: 'thm.adic-gluing',
       note: '每个 $D((A,A^+)_\\blacksquare)$ 都嵌在凝聚态 $A$-模的导出范畴里，粘合是**凝聚态层**意义下的粘合。'
-    }
+    },
+    {"id":"ana.n12-schemeembeds-fshriek","kind":"analogy","a":"prop.scheme-embeds-adic","b":"def.f-shriek","note":"开浸入的 $j_!$ 与 $f_!$ 的定义同型：都是「紧化 + 补集上的 $j_!$」这套构造。"},
   ]
 });

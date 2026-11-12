@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T14:29:37.343Z",
+ "generated": "2026-11-12T04:38:49.620Z",
  "terms": 76,
  "missing": [
   {
@@ -100,7 +100,7 @@
   },
   {
    "term": "素因子",
-   "total": 9,
+   "total": 10,
    "nodes": [
     {
      "id": "thm.minimal-poly-divisor",
@@ -132,6 +132,10 @@
     },
     {
      "id": "thm.quadratic-reciprocity",
+     "c": 1
+    },
+    {
+     "id": "thm.jacobi-laws",
      "c": 1
     },
     {
@@ -357,13 +361,31 @@
  ],
  "noEdge": [
   {
+   "node": "thm.za-analytic",
+   "nodeLabel": "有限生成代数的解析环",
+   "nodeLayer": 0,
+   "def": "def.pre-analytic-ring",
+   "defLabel": "预解析环",
+   "defLayer": 19,
+   "gap": 19
+  },
+  {
+   "node": "thm.weierstrass-convergence",
+   "nodeLabel": "Weierstrass 收敛性定理",
+   "nodeLayer": 0,
+   "def": "def.uniform-convergence",
+   "defLabel": "一致收敛",
+   "defLayer": 16,
+   "gap": 16
+  },
+  {
    "node": "ex.projective-plane",
    "nodeLabel": "射影平面 RP²",
    "nodeLayer": 20,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 35,
-   "gap": 15
+   "defLayer": 33,
+   "gap": 13
   },
   {
    "node": "def.weak-hausdorff",
@@ -402,21 +424,12 @@
    "gap": 5
   },
   {
-   "node": "thm.classification-surfaces",
-   "nodeLabel": "闭曲面分类定理",
-   "nodeLayer": 30,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 35,
-   "gap": 5
-  },
-  {
-   "node": "prop.eulerchar-nonorientable",
-   "nodeLabel": "Euler 示性数与不可定向亏格",
-   "nodeLayer": 30,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 35,
+   "node": "prop.volume-form-orientation",
+   "nodeLabel": "体积与定向",
+   "nodeLayer": 17,
+   "def": "def.smooth-manifold",
+   "defLabel": "光滑流形",
+   "defLayer": 22,
    "gap": 5
   },
   {
@@ -438,21 +451,30 @@
    "gap": 4
   },
   {
-   "node": "prop.volume-form-orientation",
-   "nodeLabel": "定向与体积形式",
-   "nodeLayer": 18,
-   "def": "def.smooth-manifold",
-   "defLabel": "光滑流形",
-   "defLayer": 22,
-   "gap": 4
-  },
-  {
    "node": "prop.cgwh-fiber-product",
    "nodeLabel": "紧块的纤维积还是紧的",
    "nodeLayer": 13,
    "def": "def.continuous-map",
    "defLabel": "连续映射",
    "defLayer": 16,
+   "gap": 3
+  },
+  {
+   "node": "thm.classification-surfaces",
+   "nodeLabel": "闭曲面分类定理",
+   "nodeLayer": 30,
+   "def": "def.nonorientable-genus",
+   "defLabel": "不可定向亏格",
+   "defLayer": 33,
+   "gap": 3
+  },
+  {
+   "node": "prop.eulerchar-nonorientable",
+   "nodeLabel": "Euler 示性数与不可定向亏格",
+   "nodeLayer": 30,
+   "def": "def.nonorientable-genus",
+   "defLabel": "不可定向亏格",
+   "defLayer": 33,
    "gap": 3
   },
   {
@@ -555,6 +577,15 @@
    "gap": 2
   },
   {
+   "node": "def.weak-star-topology",
+   "nodeLabel": "弱*拓扑",
+   "nodeLayer": 16,
+   "def": "def.weak-topology",
+   "defLabel": "弱拓扑",
+   "defLayer": 18,
+   "gap": 2
+  },
+  {
    "node": "thm.hahn-banach",
    "nodeLabel": "Hahn–Banach 定理",
    "nodeLayer": 13,
@@ -620,10 +651,10 @@
   {
    "node": "ex.klein-bottle",
    "nodeLabel": "克莱因瓶",
-   "nodeLayer": 34,
+   "nodeLayer": 32,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 35,
+   "defLayer": 33,
    "gap": 1
   },
   {
@@ -650,6 +681,15 @@
    "nodeLayer": 8,
    "def": "def.subcategory",
    "defLabel": "子范畴",
+   "defLayer": 8,
+   "gap": 0
+  },
+  {
+   "node": "def.group-power",
+   "nodeLabel": "群的整数幂",
+   "nodeLayer": 8,
+   "def": "def.power",
+   "defLabel": "整数幂",
    "defLayer": 8,
    "gap": 0
   },
@@ -690,6 +730,24 @@
    "gap": 0
   },
   {
+   "node": "lem.adapted-frame",
+   "nodeLabel": "适配标架",
+   "nodeLayer": 27,
+   "def": "def.connection-form",
+   "defLabel": "联络形式",
+   "defLayer": 27,
+   "gap": 0
+  },
+  {
+   "node": "def.primitive-root",
+   "nodeLabel": "原根",
+   "nodeLayer": 9,
+   "def": "def.cyclic-group",
+   "defLabel": "循环群",
+   "defLayer": 9,
+   "gap": 0
+  },
+  {
    "node": "def.cotangent-bundle",
    "nodeLabel": "余切丛",
    "nodeLayer": 25,
@@ -708,7 +766,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 73,
+ "noEdgeAll": 79,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.form-on-manifold",

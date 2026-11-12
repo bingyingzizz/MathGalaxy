@@ -361,21 +361,7 @@
         '提升 $\\tilde{F} : [0, 1] \\times [0, 1] \\to E$ 使 $\\tilde{F}(0, 0) = e_{0}$、$p \\circ \\tilde{F} = F$。',
         '若 $F$ 是道路同伦（两端固定），则 $\\tilde{F}$ 对每个 $s$ 的两个端点也都固定。',
       ].join('\n'),
-      notes: [
-        '**唯一性才是关键**：$p$ 在每片 $V_{j}$ 上是同胚，所以「提升在哪一片上」一旦定下，整段提升就完全被钉死。' +
-          '存在性就是把 $[0, 1]$ 切成有限多小段，每段落在一个均匀覆叠的邻域里，逐段接上去。',
-        '',
-        '**为什么切片是有限的**：$[0, 1]$ 紧，$\\{\\alpha^{-1}(U)\\}$ 是它的开覆盖，' +
-          '由 Lebesgue 数引理存在 $\\delta > 0$ 使每个长度 $\\le \\delta$ 的区间都落进某个 $U$ 里。' +
-          '（二维情形用 $[0, 1]^{2}$ 的紧性与同样的分割 + 逐格构造。）',
-        '',
-        '⭐ **推论（这一步最有用）**：把 (2) 用到「$\\alpha$ 与常值道路之间的同伦」上，得到' +
-          '「$\\alpha$ 道路同伦于常值 $\\implies$ 提升 $\\tilde{\\alpha}$ 也道路同伦于常值（都从 $e_{0}$ 出发）」。' +
-          '这就是把 $B$ 里「缩成一点」翻译成 $E$ 里「缩成一点」的机器。',
-        '',
-        '⚠️ 提升**不总存在**：不是每个映射 $X \\to B$ 都能提升。$\\pi_{1}$ 正是障碍所在（`prop.covering-index`）。' +
-          '例如 $1_{S^{1}} : S^{1} \\to S^{1}$ 不能提升成 $S^{1} \\to \\mathbb{R}$，因为那将给出绕数 $0$。',
-      ].join('\n'),
+      notes: 'text=**证明骨架**：用 Lebesgue 数把道路/同伦切成小段，每段落在均匀覆叠的开集里，逐段唯一提升。完整证明见边 `imp.lifting-proof`。',
       refs: [
         'Munkres, Topology (2nd ed.), Ch. 9 · Covering Spaces（lifting theorem）',
         'Hatcher, Algebraic Topology, Ch. 1 §1.3 · lifting properties',
@@ -767,7 +753,9 @@
           '∎',
       ].join('\n'),
       note: '关键只有一句：$f$ 与「拼接」交换。这也说明为什么 $f_{*}$ 是**同态**而不是随便一个映射。' },
-    {id: "e57.implication", kind: 'implication', sources: ['prop.induced-homomorphism'], target: 'prop.pi1-basepoint',
+    {id: "e57.implication", kind: 'implication', sources: ['prop.induced-homomorphism',
+        'lem.path-product'
+      ], target: 'prop.pi1-basepoint',
       title: '把「换基点」看成沿道路的共轭，再用函子性核对',
       proof: [
         '**先验证 $\\Pi_{\\gamma}$ 是同态**（这是唯一需要动手的地方）。设 $\\alpha, \\alpha\'$ 是以 $x_{0}$ 为基点的闭道路。' +
@@ -849,7 +837,8 @@
       ].join('\n'),
       note: '注意这条边的作用：`prop.covering-index` 只够等势，同态性必须靠**提升的唯一性**重新算一遍。' },
     /* ---------------------------------------------- §C 收缩核与不动点 */
-    {id: "e63.implication", kind: 'implication', sources: ['thm.pi1-circle'], target: 'thm.no-retraction-disk',
+    {id: "e63.implication", kind: 'implication', sources: ['thm.pi1-circle',
+        'prop.induced-homomorphism'], target: 'thm.no-retraction-disk',
       title: '若有收缩，$\\operatorname{id}_{\\mathbb{Z}}$ 会穿过平凡群',
       proof: [
         '设存在连续 $r : D^{2} \\to S^{1}$ 且 $r|_{S^{1}} = \\operatorname{id}$，记 $i : S^{1} \\hookrightarrow D^{2}$ 为包含映射。' +
@@ -962,5 +951,18 @@
         '(i) $\\implies$ (ii)：给定 $x_{0}$ 与任意 $x$，道路连通给出从 $x_{0}$ 到 $x$ 的道路 $\\lambda$。由 `prop.pi1-basepoint`，$[\\alpha] \\mapsto [\\overline{\\lambda} \\ast \\alpha \\ast \\lambda]$ 给出同构 $\\pi_{1}(X, x_{0}) \\to \\pi_{1}(X, x)$。同构是双射且保单位元，把 $1$ 送到 $1$，故 $\\pi_{1}(X, x) = 1$。∎'
       ].join('\n'),
       note: '这里用了两次「平凡性在同构下不变」：同构是双射，平凡群只有一个元素，像也只能有一个。没有道路连通就没有 $\\lambda$，同构无从谈起 —— 这就是条件里「道路连通」不可省的确切原因。' },
+    {
+      "id": "imp.lifting-proof",
+      "kind": "implication",
+      "sources": [
+        "def.covering-space",
+        "def.path-homotopy",
+        "def.lebesgue-number"
+      ],
+      "target": "thm.lifting",
+      "title": "覆叠空间的道路提升与同伦提升",
+      "proof": "道路提升：取 $b_0$ 的开覆盖 $\\mathcal U$，使每个 $U\\in\\mathcal U$ 均匀覆叠、$p^{-1}(U)$ 是互不相交的开片且每片同胚到 $U$。由紧性取 Lebesgue 数 $\\delta>0$：$[0,1]$ 中长度 $<\\delta$ 的子区间落在某个 $\\alpha^{-1}(U)$ 中。取分割 $0=t_0<\\ldots<t_N=1$ 使每段长度 $<\\delta$。\n\n归纳构造 $\\tilde\\alpha$：$\\tilde\\alpha(0)=e_0$；若已定义到 $t_k$，取 $U_k\\ni\\alpha(t_k)$ 均匀覆叠，$\\alpha([t_k,t_{k+1}])\\subseteq U_k$，令 $\\tilde\\alpha$ 在 $[t_k,t_{k+1}]$ 上为 $\\alpha$ 在含 $\\tilde\\alpha(t_k)$ 的那片上的逆同胚下的像。唯一性：相邻两步的片由起点与连续性唯一确定。\n\n同伦提升：$F:[0,1]^2\\to B$ 连续、$F(0,0)=b_0$。由紧性取 $\\delta>0$ 使每个边长 $<\\delta$ 的小方块落在某个均匀覆叠的开集里，并细分 $[0,1]^2$ 成这样的方块。先在 $s=0$ 的边上提升 $F(\\cdot,0)$（道路提升），再对每个小方块用矩形提升引理：若 $F$ 把方块映进均匀覆叠的 $U$ 且已提升一条边，则唯一地提升整个方块。逐块延拓得 $\\tilde F$，唯一性由每步唯一。\n\n若 $F$ 是道路同伦（$F(0,s)=b_0$、$F(1,s)=b_1$ 固定），则 $s\\mapsto\\tilde F(0,s)$ 是 $p^{-1}(b_0)$ 中的连通集，而 $p^{-1}(b_0)$ 离散，故它常值 $e_0$；同理 $\\tilde F(1,s)$ 常值。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
   ],
 });

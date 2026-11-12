@@ -186,10 +186,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $X$ 是 Baire 空间，$F_n \\subseteq X$ 闭，且 $X = \\bigcup_n F_n$。则 $\\bigcup_n \\operatorname{int} F_n$ 在 $X$ 中**稠密**。特别地，若 $X \\ne \\emptyset$，则至少有一个 $F_n$ 有非空内部（空空间满足 Baire 前提，但每个 $F_n$ 的内部都是空的）。'
       ].join('\n'),
-      notes: [
-        '这是把「有一块闭集能被盖住」变成「有一个球里的东西一致地被控制」—— 正是 UBP 与开映射定理要的那一句。',
-        '它的对偶写法是「可数个无处稠密闭集之并不含非空开集」，两条是同一件事的两面。'
-      ].join('\n\n'),
+      notes: 'text=**这是 Baire 纲定理的「开集版」**：闭覆盖中那些有内部的成员，其内部之并稠密。完整证明（在非空开集上用 Baire 性）见边 `imp.countable-closed-cover-proof`。',
       refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
@@ -484,11 +481,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $K$ 紧 Hausdorff，$A \\subseteq C(K, \\mathbb{R})$ 是**含单位**的**闭**子代数。则 $A$ 对 $\\min, \\max$ 封闭。'
       ].join('\n'),
-      notes: [
-        '证法：$\\max(f, g) = \\frac12(f + g + |f - g|)$，所以只需证「$f \\ge 0$、$f \\in A$ $\\implies$ $\\sqrt f \\in A$」。\n\n不妨 $\\|f\\| < 1$：$\\sqrt{1 - u}$ 在 $[-1+\\varepsilon, 1-\\varepsilon]$ 上解析，其 Taylor 级数一致逼近，代 $u = 2 - \\varepsilon - f^2 \\in A$ 得多项式 $p(2-\\varepsilon-f^2) \\in A$，它一致逼近 $\\sqrt f$；\n\n$A$ 闭故 $\\sqrt f \\in A$。',
-        '⚠️ 「含单位」不能去掉：不给 $1$ 的话 $\\sqrt{}$ 这一步没有常数可写。',
-        '⭐ 这是 Stone–Weierstrass 的**第一步**：先把「代数」升级成「格」，后面才能用 $\\min/\\max$ 上下夹住 $f$。'
-      ].join('\n\n'),
+      notes: 'text=**为什么只需证 $|f|\\in A$**：$\\max,\\min$ 可由 $|\\cdot|$ 与四则运算拼出；$|f|=\\sqrt{f^{2}}$ 再用二项级数一致逼近。完整证明见边 `imp.subalgebra-lattice-proof`。',
       refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理'],
     },
     {
@@ -1192,6 +1185,31 @@ window.MG = window.MG || {};
         '取邻域 $U = B(x_0, \\eta)$，即满足逐点等度连续的定义。$\\blacksquare$'
       ].join('\n'),
       note: '反向不成立（见 `def.uniformly-equicontinuous` 的反例）；紧性才是反向往回的工具。'
-    }
+    },
+    {
+      "id": "imp.countable-closed-cover-proof",
+      "kind": "implication",
+      "sources": [
+        "def.meager-set",
+        "def.closed-set",
+        "def.interior"
+      ],
+      "target": "lem.countable-closed-cover",
+      "title": "可数闭覆盖：有内部者之并稠密",
+      "proof": "设 $U\\subseteq X$ 非空开。要证 $U$ 与 $\\bigcup_n\\operatorname{int}F_n$ 相交。\n\n$X$ 是 Baire 空间（第二纲），其非空开子集 $U$ 也是 Baire 空间：若 $U=\\bigcup M_n$、每个 $M_n$ 在 $U$ 中无处稠密，则每个 $M_n$ 在 $X$ 中也无处稠密，于是 $X=U^c\\cup\\bigcup M_n$ 第一纲，矛盾。\n\n若 $U\\cap\\bigcup_n\\operatorname{int}F_n=\\emptyset$，则每个 $U\\cap F_n$ 在 $U$ 中无处稠密：它在 $U$ 中的内部 $=U\\cap\\operatorname{int}F_n=\\emptyset$，且 $U\\cap F_n$ 闭于 $U$。而 $U=\\bigcup_n(U\\cap F_n)$，这与 $U$ 是 Baire 空间矛盾。故 $U$ 与 $\\bigcup_n\\operatorname{int}F_n$ 相交，即后者稠密。\n\n特别地若 $X\\ne\\emptyset$，取 $U=X$：$X=\\bigcup_n\\operatorname{int}F_n$；若每个 $\\operatorname{int}F_n=\\emptyset$ 则 $X=\\emptyset$，矛盾，故某个 $F_n$ 有非空内部。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
+    {
+      "id": "imp.subalgebra-lattice-proof",
+      "kind": "implication",
+      "sources": [
+        "def.subalgebra-separating",
+        "def.closed-set"
+      ],
+      "target": "lem.closed-subalgebra-lattice",
+      "title": "闭子代数对 $\\min,\\max$ 封闭",
+      "proof": "只需证对 $f\\in A$ 有 $|f|\\in A$，因为\n$$\\max(f,g)=\\frac{f+g+|f-g|}{2},\\qquad \\min(f,g)=\\frac{f+g-|f-g|}{2}.$$\n\n设 $\\lVert f\\rVert\\le1$。则 $f^{2}\\in A$、$0\\le f^{2}\\le1$。令 $u=1-f^{2}\\in A$，$0\\le u\\le1$。二项级数\n$$\\sqrt{1-u}=1-\\sum_{k\\ge1}c_k u^{k},\\qquad c_k=\\frac{(2k-3)!!}{2^{k}k!}>0,$$\n且 $\\sum_k c_k=1$（代入 $u=1$）。部分和 $s_n=1-\\sum_{k=1}^{n}c_k u^{k}\\in A$，在 $[0,1]$ 上 $s_n\\rightrightarrows\\sqrt{1-u}$：余项 $\\sum_{k>n}c_k u^{k}\\le\\sum_{k>n}c_k\\to0$ 与 $u$ 无关。\n\n$A$ 对一致收敛封闭（$A$ 闭于 $C(K,\\mathbb R)$），故 $\\sqrt{1-u}=\\sqrt{f^{2}}=|f|\\in A$。一般 $f$ 用 $f/\\max(\\lVert f\\rVert,1)$ 归约，结论相同。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
   ]
 });

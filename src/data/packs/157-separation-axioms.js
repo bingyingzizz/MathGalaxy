@@ -585,28 +585,6 @@ window.MG = window.MG || {};
       ].join('\n')
     },
     {
-      id: 'imp.lch-cr',
-      kind: 'implication',
-      layer: false,
-      sources: ['def.locally-compact-space', 'def.hausdorff'],
-      target: 'def.completely-regular-space',
-      proof: [
-        '局部紧 Hausdorff 空间已含 $T_{1}$，只需证 $T_{3.5}$。',
-        '',
-        '设 $F$ 闭、$x \\notin F$。\n\n因 $X \\setminus F$ 是 $x$ 的开邻域、且 $x$ 有紧邻域，可取**紧邻域** $K \\ni x$ 使 $K \\subseteq X \\setminus F$（把原来的紧邻域与 $X \\setminus F$ 取交，紧集的闭子集仍紧）。\n\n于是 $K \\cap F = \\emptyset$。',
-        '',
-        '记 $\\partial K := K \\setminus \\mathring{K}$（紧集，闭）。\n\n$x \\in \\mathring{K}$ 故 $x \\notin \\partial K$。\n\n$K$ 作为紧 Hausdorff 空间是**正规**的（紧 $\\implies$ 仿紧 $\\implies$（加 Hausdorff）正规，见 `thm.paracompact-hausdorff-normal`），于是由 Urysohn 引理存在连续 $h : K \\to [0,1]$ 使',
-        '',
-        '$$h(x) = 0, \\qquad h|_{\\partial K} \\equiv 1 .$$',
-        '',
-        '定义 $f : X \\to [0,1]$ 为：$f = h$ 在 $K$ 上，$f \\equiv 1$ 在 $X \\setminus \\mathring{K}$ 上。\n\n两片在重叠处 $\\partial K$ 都是 $1$，故 $f$ 良定义且连续（闭覆盖引理）。\n\n又 $F \\cap K = \\emptyset$ $\\implies$ $F \\subseteq X \\setminus \\mathring{K}$ $\\implies$ $f|_{F} \\equiv 1$，而 $f(x) = 0$。',
-        '',
-        '所以 $X$ 是 $T_{3.5}$，加上 $T_{1}$ 得完全正则 ✓。∎',
-        '',
-        '⭐ 这条是**一点紧化**理论的前置：局部紧 Hausdorff 的一点紧化是紧 Hausdorff，其上的函数全靠这条从 $X$ 上「拉回来」。'
-      ].join('\n')
-    },
-    {
       id: 'imp.compact-hausdorff-normal',
       kind: 'implication',
       sources: ['def.compact', 'def.hausdorff'],
@@ -620,7 +598,7 @@ window.MG = window.MG || {};
         '',
         '所以任意不交闭集都能被开集分离，配合 $T_{1}$ 得 $X$ 正规。∎',
         '',
-        '⭐ 这是**直接证明**，没有走 `thm.paracompact-hausdorff-normal`：那条（紧 $\\implies$ 仿紧 $\\implies$ 正规）当然也对，但这里只用了紧性取有限子覆盖与 Hausdorff 分点，两步都是定义级别的操作。'
+        '⭐ 这是**直接证明**，没有走 那条（紧 $\\implies$ 仿紧 $\\implies$ 正规）：那条（紧 $\\implies$ 仿紧 $\\implies$ 正规）当然也对，但这里只用了紧性取有限子覆盖与 Hausdorff 分点，两步都是定义级别的操作。'
       ].join('\n')
     },
 

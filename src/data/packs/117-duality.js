@@ -61,6 +61,7 @@ window.MG = window.MG || {};
       title: '命题：开浸入 $j$ 的 $j_!$ 存在（Prop 11.2）',
       regions: ['analytic'],
       tags: ['命题', '解析几何', '对偶'],
+      status: 'skeleton',
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.2'],
       statement: [
         '白话：**开浸入 $j$（把开子集塞进去）总该有一个「反常」的推前 $j_!$：只在开子集里面存东西、外面一律零**。经典层论里这是显然的（直接令 $j_!\\mathcal{F}$ 在 $U$ 外为 $0$），但在固态模里要证明它存在 —— 这需要 $\\prod$ 与局部化交换，正是固态理论刚好补上的那块。',
@@ -80,7 +81,12 @@ window.MG = window.MG || {};
         '',
         '在抽象 $A$-模里这**不成立**（$\\prod$ 与局部化不交换），在固态 $A$-模里成立 —— 这就是为什么相干对偶需要凝聚态/固态语言。',
         '',
-        '📌 仿射、有限型情形由 Lecture VIII 附录给出；一般情形归约到仿射。'
+        '📌 仿射、有限型情形由 Lecture VIII 附录给出；一般情形归约到仿射。',
+        '',
+        '⚠ **本条在本图未证**：上面那段只是把 $j_{!}$ 的存在归约到「$\\prod$ 与局部化交换」，',
+        '而该等式在固态模里的证明（CS Lecture XI, Prop 11.2 的正文）本图没有写出节点。',
+        '原先挂在本条上的一条「由 `def.f-shriek` 反推」的边方向反了（$j_{!}$ 是 $f_{!}$ 的构造起点），已删；',
+        '不要拿定义去反推存在。'
       ].join('\n'),
     },
     {
@@ -105,8 +111,23 @@ window.MG = window.MG || {};
         '',
         '它保一切直和，故有右伴随 $f^!$。六个函子至此齐备。'
       ].join('\n'),
-      notes: '⭐ 定义的形式很朴素：**先开浸入地推出去，再（沿相对 adic 化）正常推前**。\n\n全部内容在于 $j_!$ 存在（`prop.open-immersion-shriek`）。\n\n⭐ $f$ 固有时 $j$ 是同构，$f_! = (f^{\\mathrm{ad}/Y})_*$，与 $R\\Gamma$ 一致 —— 这正是 `thm.poincare-solid` 里「$f$ 固有时与整体截面一致」的来源。\n\n⚠ 「保直和」是 $f^!$ 存在的关键：$j_!$ 作为左伴随保余极限，$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，也保直和。'
+      notes: '⭐ 定义的形式很朴素：**先开浸入地推出去，再（沿相对 adic 化）正常推前**。\n\n全部内容在于 $j_!$ 存在（`prop.open-immersion-shriek`）。\n\n⭐ $f$ 固有时 $j$ 是同构，$f_! = (f^{\\mathrm{ad}/Y})_*$，与 $R\\Gamma$ 一致 —— 这正是 `thm.poincare-solid` 里「$f$ 固有时与整体截面一致」的来源。\n\n⚠ 「保直和」是 $f^!$ 存在的关键：$j_!$ 作为左伴随保余极限，$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，也保直和。\n\n⭐ 它的一般**存在性**见 `thm.f-shriek-existence`（仍标 skeleton：条件于开浸入的 $j_{!}$）。'
     },
+
+    {
+      id: 'thm.f-shriek-existence',
+      cluster: 'analytic.dual',
+      type: 'theorem',
+      label: '紧支撑推前的存在性',
+      title: '一般 $f_{!}$ 与 $f^{!}$ 的存在（Prop 11.2 的前半）',
+      regions: ['analytic'],
+      tags: ['定理', '解析几何', '对偶', '六函子'],
+      status: 'skeleton',
+      refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.2（存在性部分）'],
+      statement: '设 $f : X \\to Y$ 是**分离、有限型**的概形映射。则一般（紧支撑）推前\n\n$$f_{!} : D(X) \\longrightarrow D(Y)$$\n\n**存在**：它是「先沿开浸入推出、再沿相对化空间正常推前」的复合 $f_{!} = (f_{\\mathrm{ad}/Y})_{*} \\circ j_{!}$（定义见 `def.f-shriek`）。并且 $f_{!}$ **保直和**，因此它的右伴随 $f^{!}$ 也存在。',
+      notes: '⭐ 本条只证**存在性**：$j_{!}$ 由开浸入那一条（`prop.open-immersion-shriek`）给出，正常推前总是存在，复合即得。$f$ 固有时 $j$ 是同构，$f_{!}$ 退化成 $(f^{\\mathrm{ad}/Y})_{*}$。\n\n⚠ 本条仍标 `skeleton`：它**条件于**开浸入的 $j_{!}$ 存在，而那一条本图未证（见 `prop.open-immersion-shriek` 的注）。',
+    },
+
     {
       id: 'prop.f-shriek-base-change',
       cluster: 'analytic.dual',
@@ -211,34 +232,23 @@ window.MG = window.MG || {};
   ],
 
   edges: [
+    /* 定义 → 存在性定理：定理的对象是这条定义给的东西。 */
     {status: 'skeleton', 
-      id: 'imp.open-immersion-shriek',
-      kind: 'implication',
-      layer: false,
-      sources: ['def.f-shriek', 'thm.za-analytic'],
-      target: 'prop.open-immersion-shriek',
-      title: '固态模里 $\\prod$ 与局部化交换 $\\implies$ $j_!$ 存在',
-      note: '「用更强的工具回头证」：构造顺序是 {!}$（开浸入）→ {!}$（见 imp.f-shriek），反向这一条是拿定义一般 {!}$ 之后的结果去反推 {!}$ 的存在，故按推论边处理（不参与分层）。',
-      proof: [
-        '$j_!$ 存在 $\\iff$ $j^*$ 保极限。$j$ 是开浸入，$j^*$ 就是「把 $A$-模换成 $A[1/f]$-模」；要它保积就等价于',
-        '',
-        '$$\\prod_I A \\otimes_{A_\\blacksquare} A[1/f]_\\blacksquare \\;\\cong\\; \\prod_I A[1/f].$$',
-        '',
-        '在抽象 $A$-模里，左边是 $\\prod_I A[1/f]$ 的**子集**（$\\prod$ 与局部化不交换），一般不相等；在固态 $A$-模里，$\\prod_I A$ 是紧投射对象（`cor.solid-compact-generators`），$\\otimes_{A_\\blacksquare}$ 保它，且 $A[1/f]_\\blacksquare$ 与 $\\prod$ 相容。\n\n' +
-        '\n\n' +
-        '仿射、有限型情形由 `thm.za-analytic` 的 $j_!$ 给出；\n\n' +
-        '一般情形取仿射开覆盖逐步粘合。\n\n' +
-        '$\\blacksquare$'
-      ].join('\n')
+     id: 'dep.fshriek-existence',
+      kind: 'definition',
+      definition: 'def.f-shriek',
+      usedBy: 'thm.f-shriek-existence',
+      note: '定理说的「$f_{!}$ 存在」，说的就是这条定义里那个复合函子确实造得出来；对象先于存在性。',
     },
-    {
+    {status: 'skeleton', 
+     
       id: 'imp.f-shriek',
       kind: 'implication',
       sources: ['prop.open-immersion-shriek', 'def.six-functors'],
-      target: 'def.f-shriek',
-      title: '开浸入的 $j_!$ $\\implies$ 一般 $f_!$',
+      target: 'thm.f-shriek-existence',
+      title: '开浸入的 $j_!$ $\\implies$ 一般 $f_!$ 存在',
       proof: [
-        '对分离有限型 $f : X \\to Y$，有交换图 $X_{\\mathrm{ad}} \\xrightarrow{j} X_{\\mathrm{ad}/Y} \\to Y_{\\mathrm{ad}}$，$j$ 是开浸入（`prop.scheme-embeds-adic` 的类似论证）。定义',
+        '对分离有限型 $f : X \\to Y$，有交换图 $X_{\\mathrm{ad}} \\xrightarrow{j} X_{\\mathrm{ad}/Y} \\to Y_{\\mathrm{ad}}$，$j$ 是开浸入（「概形嵌入 adic 空间」 的类似论证）。定义',
         '',
         '$$f_! := (f_{\\mathrm{ad}/Y})_* \\circ j_!.$$',
         '',
@@ -248,7 +258,7 @@ window.MG = window.MG || {};
         '**保直和。** $j_!$ 作为左伴随保余极限；\n\n' +
         '$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，保直和。\n\n' +
         '故 $f_!$ 保直和，右伴随 $f^!$ 存在。\n\n' +
-        '$\\blacksquare$'
+        '∎'
       ].join('\n')
     },
     {status: 'skeleton', 
@@ -302,7 +312,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.poincare-solid',
       kind: 'implication',
-      sources: ['thm.smooth-duality', 'def.six-functors'],
+      sources: ['thm.smooth-duality', 'def.six-functors',
+        'thm.coherent-duality'],
       target: 'thm.poincare-solid',
       title: '6-函子 + $f^!R=\\omega[d]$ $\\implies$ Serre 对偶',
       proof: [
@@ -351,6 +362,7 @@ window.MG = window.MG || {};
       definition: 'thm.coherent-duality',
       usedBy: 'def.f-shriek',
       note: '仿射版的 $f_!$ 是全局定义的局部模型：在仿射开集上两者一致。'
-    }
+    },
+    {"id":"dep.n12-fshriek-poincare","kind":"definition","definition":"def.f-shriek","usedBy":"thm.poincare-solid","note":"证明在紧化上把 $f_!$ 展开时直接使用 $j_!$ 的定义（$f_! = f_* \\circ j_!$）。"},
   ]
 });

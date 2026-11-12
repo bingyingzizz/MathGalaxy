@@ -884,7 +884,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.inverse-function-banach',
       kind: 'implication',
-      sources: ['thm.inverse-function', 'def.banach-space'],
+      sources: ['thm.inverse-function', 'def.banach-space',
+        'thm.mean-value-multi'],
       target: 'thm.inverse-function-banach',
       title: '同一套证明换到 Banach 空间（多一步 Neumann 级数）',
       proof: [

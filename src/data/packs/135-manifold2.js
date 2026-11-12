@@ -1291,7 +1291,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.mf2-maurer-cartan',
       kind: 'implication',
-      sources: ['def.left-invariant-form', 'def.exterior-derivative', 'prop.left-invariant-fields'],
+      sources: ['def.left-invariant-form', 'def.exterior-derivative', 'prop.left-invariant-fields',
+        'prop.pullback-forms'],
       target: 'thm.maurer-cartan',
       title: '左不变性 $+$ 括号在左不变场上封闭 $\\implies$ Maurer–Cartan 方程',
       proof: [
@@ -1365,7 +1366,7 @@ window.MG = window.MG || {};
         '',
         '换 $c$ 为 $c + \\partial b$：$\\int_{\\partial b}\\omega = \\int_{b}\\mathrm{d}\\omega = 0$（`thm.stokes-chain`，用 $\\omega$ 闭）。\n\n换 $\\omega$ 为 $\\omega + \\mathrm{d}\\eta$：$\\int_{c}\\mathrm{d}\\eta = \\int_{\\partial c}\\eta = 0$（$c$ 闭）。\n\n所以这是良定义的配对 $H^{k}_{\\mathrm{dR}} \\otimes H^{\\mathrm{sing}}_{k} \\to \\mathbb{R}$，等价地一个线性映射 $\\Phi^{k} : H^{k}_{\\mathrm{dR}} \\to (H^{\\mathrm{sing}}_{k})^{\\ast} = H^{k}_{\\mathrm{sing}}$。\n\n⚠️ **先得补一个前提**：$\\int_{c}\\omega$ 对**连续**奇异链按字面没定义（奇异 $k$-单形 $c:\\Delta^{k}\\to M$ 只连续，微分形式拉不回去）。正确做法是把链换成**光滑奇异链**（每个面 $C^{\\infty}$、并能延拓到棱柱邻域），记复形 $C^{\\infty}_{\\ast}(M)$；光滑与连续奇异链的同调相同（单纯逼近 $+$ 光滑化），故不失一般性 —— ⚠️ 这个等价性本图**未证**（这条等价性本图未证，只有梗概）。以下假定 $c$ 是光滑奇异链。',
         '',
-        '**第二步：把左边认成层上同调。** $\\Omega^{\\bullet}$ 是常层 $\\underline{\\mathbb{R}}$ 的消解：逐点的正合性就是 Poincaré 引理，逐点的核是 $\\mathbb{R}$；\n\n而 $\\Omega^{0}$ 中 $\\mathrm{d}$-闭的元素正是局部常函数（`thm.de-rham-h0` 的论证），即 $\\underline{\\mathbb{R}}$ 的截面。\n\n于是复形的上同调 $H^{\\bullet}_{\\mathrm{dR}}(M)$ 就是层上同调 $H^{\\bullet}(M;\\underline{\\mathbb{R}})$。\n\n⚠️ **「有正合消解」推不出「复形上同调 $=$ 全局层上同调」**：还需要每个 $\\Omega^{q}$ **无环**。这一步靠两件事：$\\Omega^{q}$ 是**细层**（单位分解能把截面局部搬移），而细层在**仿紧**空间上无高阶上同调。于是谱序列 $E_{2}^{p,q} = H^{p}(M;\\Omega^{q}) \\implies H^{p+q}_{\\mathrm{dR}}(M)$ 坍塌在 $q = 0$ 一列：\n\n$$H^{k}_{\\mathrm{dR}}(M) \\cong H^{k}(M;\\underline{\\mathbb{R}}) .$$\n\n⚠️ **仿紧不能省**（单位分解要用它）：本图的流形定义含第二可数 $+$ Hausdorff，故仿紧 $\\checkmark$。',
+        '**第二步：把左边认成层上同调。** $\\Omega^{\\bullet}$ 是常层 $\\underline{\\mathbb{R}}$ 的消解：逐点的正合性就是 Poincaré 引理，逐点的核是 $\\mathbb{R}$；\n\n而 $\\Omega^{0}$ 中 $\\mathrm{d}$-闭的元素正是局部常函数（同层事实：d-闭 0-形式局部常），即 $\\underline{\\mathbb{R}}$ 的截面。\n\n于是复形的上同调 $H^{\\bullet}_{\\mathrm{dR}}(M)$ 就是层上同调 $H^{\\bullet}(M;\\underline{\\mathbb{R}})$。\n\n⚠️ **「有正合消解」推不出「复形上同调 $=$ 全局层上同调」**：还需要每个 $\\Omega^{q}$ **无环**。这一步靠两件事：$\\Omega^{q}$ 是**细层**（单位分解能把截面局部搬移），而细层在**仿紧**空间上无高阶上同调。于是谱序列 $E_{2}^{p,q} = H^{p}(M;\\Omega^{q}) \\implies H^{p+q}_{\\mathrm{dR}}(M)$ 坍塌在 $q = 0$ 一列：\n\n$$H^{k}_{\\mathrm{dR}}(M) \\cong H^{k}(M;\\underline{\\mathbb{R}}) .$$\n\n⚠️ **仿紧不能省**（单位分解要用它）：本图的流形定义含第二可数 $+$ Hausdorff，故仿紧 $\\checkmark$。',
         '',
         '**第三步：Čech–de Rham 双复形。** 取「好的覆盖」$\\mathfrak{U}$（每点邻域与每个有限交都可缩），把 $\\check{C}^{p}(\\mathfrak{U},\\Omega^{q})$ 排成双复形：横向是 Čech 微分 $\\delta$、纵向是 $\\mathrm{d}$。\n\n两条谱序列算出同一个全上同调：',
         '',
@@ -1406,7 +1407,7 @@ window.MG = window.MG || {};
         '',
         '**极大流的拼接。** 每点附近都有局部流，两个局部流在公共点附近由唯一性重合；把这一点当作等价关系把局部解接起来，得到定义域极大的那一个 $\\mathcal{W} \\subseteq \\mathbb{R}\\times M$。∎',
         '',
-        '⭐ 全程只有一处用到流形结构：**在卡里做**。「流形上的 ODE」与「$\\mathbb{R}^{n}$ 上的 ODE」在局部没有区别，区别只出现在**整体**行为（`thm.flow-complete`）。'
+        '⭐ 全程只有一处用到流形结构：**在卡里做**。「流形上的 ODE」与「$\\mathbb{R}^{n}$ 上的 ODE」在局部没有区别，区别只出现在**整体**行为（整体流）。'
       ].join('\n')
     },
 
@@ -1444,7 +1445,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.mf2-cartan-formula',
       kind: 'implication',
-      sources: ['def.lie-derivative', 'def.interior-product', 'def.exterior-derivative'],
+      sources: ['def.lie-derivative', 'def.interior-product', 'def.exterior-derivative',
+        'prop.pullback-forms'],
       target: 'thm.cartan-formula',
       title: '两者都是与 $\\mathrm{d}$ 交换的次数 $0$ 导子 $\\implies$ Cartan 公式',
       proof: [

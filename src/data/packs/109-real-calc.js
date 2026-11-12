@@ -397,7 +397,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.real-power',
       kind: 'implication',
-      sources: ['thm.nth-root', 'lem.archimedean'],
+      sources: ['thm.nth-root', 'lem.archimedean',
+        'prop.power-rules'],
       target: 'def.real-power',
       title: 'n 次方根 $\\implies$ 有理指数良定义；确界 $\\implies$ 实数指数',
       proof: [

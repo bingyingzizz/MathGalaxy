@@ -1380,7 +1380,7 @@ window.MG = window.MG || {};
       target: 'thm.bianchi-identity',
       title: '法坐标下的三阶偏导抵消 $\\implies$ 第二比安基恒等式',
       proof: [
-        '**第二比安基。** 取 $p\\in M$ 处的**法坐标**（指数映射给的坐标，见 `def.exponential-map`）：$\\Gamma^{k}_{ij}(p) = 0$、$\\partial_{i}g_{jk}(p) = 0$，于是 $p$ 处 $\\nabla_{i} = \\partial_{i}$，且由 $R^{\\ell}_{ijk} = \\partial_{i}\\Gamma^{\\ell}_{jk}-\\partial_{j}\\Gamma^{\\ell}_{ik}$ 与 $\\Gamma$ 的公式得',
+        '**第二比安基。** 取 $p\\in M$ 处的**法坐标**（指数映射给的坐标，见 指数映射）：$\\Gamma^{k}_{ij}(p) = 0$、$\\partial_{i}g_{jk}(p) = 0$，于是 $p$ 处 $\\nabla_{i} = \\partial_{i}$，且由 $R^{\\ell}_{ijk} = \\partial_{i}\\Gamma^{\\ell}_{jk}-\\partial_{j}\\Gamma^{\\ell}_{ik}$ 与 $\\Gamma$ 的公式得',
         '',
         '$$R_{ijk\\ell} = \\frac{1}{2}\\bigl(\\partial_{i}\\partial_{k}g_{j\\ell}-\\partial_{i}\\partial_{\\ell}g_{jk}-\\partial_{j}\\partial_{k}g_{i\\ell}+\\partial_{j}\\partial_{\\ell}g_{ik}\\bigr).$$',
         '',
@@ -1486,7 +1486,8 @@ window.MG = window.MG || {};
         '',
         '⚠️ 符号全部来自「诱导定向 = 外法向在前」这一条约定；约定改一个字，整条公式就差一个负号。'
       ].join('\n')
-    }
+    },
 
+    {"id":"ana.n12-riemannmetric-bundlemetric","kind":"analogy","a":"def.riemannian-metric","b":"prop.bundle-metric","note":"同一个凸组合论证，把 $TM$ 换成任意向量丛即得丛度量。"},
   ]
 });

@@ -49,6 +49,30 @@ window.MG = window.MG || {};
       refs: ['Lang, Algebra']
     },
 
+    {
+      id: 'def.group-power',
+      cluster: 'algebra.structures',
+      type: 'definition',
+      label: '群的整数幂',
+      title: '群的整数幂 $x^{n}$（$n \\in \\mathbb{Z}$）',
+      regions: ['algebra'],
+      tags: ['定义', '群', '幂', '逆元'],
+      statement: [
+        '设 $G$ 是群，$x \\in G$，$e$ 是单位元。**整数幂** $x^{n}$（$n \\in \\mathbb{Z}$）由',
+        '',
+        '$$x^{0} := e, \\qquad x^{n+1} := x^{n} x \\ (n \\ge 0), \\qquad x^{-n} := (x^{-1})^{n} \\ (n \\ge 1)$$',
+        '',
+        '定义；等价地 $x^{-n} = (x^{n})^{-1}$。'
+      ].join('\n'),
+      notes: [
+        '**基本律。** 对 $m, n \\in \\mathbb{Z}$ 有 $x^{m+n} = x^{m} x^{n}$、$(x^{m})^{n} = x^{mn}$、$x^{-n} = (x^{n})^{-1}$。前两条对 $n \\ge 0$ 归纳，负指数用逆元化归；第三条由 $x^{n} x^{-n} = e$ 与逆元唯一性得到。',
+        '**与环的整数幂分开。** 含幺环上的整数幂（见实分析一团的「整数幂」）以环的乘法单位元 $1$ 为 $a^{0}$，且 $a^{-n}$ 只在 $a$ 可逆时才有定义；本条只要求群结构，$e$ 是群单位元。两者记号相同、载体不同 —— 引用时按语境取，不要互相代入。',
+        '⭐ **元素的阶**：若存在 $n \\ge 1$ 使 $x^{n} = e$，最小的这样的 $n$ 叫 $x$ 的阶；这正是「幂回到单位元」的步长。全体整数幂 $\\{x^{n} : n \\in \\mathbb{Z}\\}$ 构成 $G$ 的循环子群 $\\langle x \\rangle$。',
+        '⚠ 非交换群里 $(xy)^{n} \\ne x^{n} y^{n}$（$n \\ge 2$）；只有 $x, y$ 交换时才成立。而 $x^{m} x^{n} = x^{m+n}$ 对**同一个** $x$ 总成立，这由结合律保证。'
+      ].join('\n\n'),
+      refs: ['Lang, Algebra, Ch. I §2', 'Hungerford, Algebra, Ch. I §4']
+    },
+
     /* ---------------------------------------------------------- 子群 */
     {
       id: 'def.subgroup',
@@ -230,6 +254,12 @@ window.MG = window.MG || {};
   ],
 
   edges: [
+    { id: 'dep.grouppower-group', kind: 'definition', definition: 'def.group', usedBy: 'def.group-power',
+      note: '整数幂只用群的乘法、单位元与逆元定义。' },
+    { id: 'dep.grouppower-binary', kind: 'definition', definition: 'def.binary-operation', usedBy: 'def.group-power',
+      note: '幂的递归步 $x^{n+1}=x^{n}x$ 就是群的二元运算。' },
+    { id: 'dep.grouppower-order', kind: 'definition', definition: 'def.group-power', usedBy: 'def.group-order',
+      note: '元素的阶是使 $x^{n}=e$ 的最小正整数，直接用整数幂陈述。' },
     { id: 'dep.fg-group', kind: 'definition', definition: 'def.group', usedBy: 'def.free-group',
       note: '自由群的乘法与公理按群的定义验证。' },
     { id: 'dep.fgu-fg', kind: 'definition', definition: 'def.free-group', usedBy: 'def.free-group-universal',

@@ -878,6 +878,7 @@ window.MG = window.MG || {};
         '亏格 $g$ 的闭曲面 $\\chi = 2-2g$ 给出 $4\\pi(1-g)$。\n\n' +
         '$\\blacksquare$'
       ].join('\n')
-    }
+    },
+    {"id":"ana.n12-gausscurv-sectional","kind":"analogy","a":"def.gauss-curvature","b":"def.sectional-curvature","note":"同一曲率量的两种写法：正交基下 $K=R_{1221}$，与截面曲率一致。"},
   ]
 });

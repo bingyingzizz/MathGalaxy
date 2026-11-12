@@ -13,7 +13,20 @@
 (window.MG.packs = window.MG.packs || []).push({
   name: '接线：Zorn 引理与选择公理的下游',
 
-  nodes: [],
+  nodes: [
+    {
+      id: 'thm.foliation-existence',
+      cluster: 'diffgeom.vector',
+      type: 'theorem',
+      label: '叶状结构存在定理',
+      title: '对合分布的整体叶存在：Zorn 引理',
+      regions: ['diffgeom'],
+      tags: ['定理', '微分流形', '叶状结构', 'Zorn 引理', 'Frobenius'],
+      refs: ['Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」'],
+      statement: '设 $\\mathcal{D}$ 是光滑流形 $M$ 上的**对合**光滑 $k$ 阶切分布（`def.involutive-distribution`）。则 $M$ 上存在**叶状结构**：\n\n- 过每点恰有一片**极大连通积分流形**（叶）$L$ 经过，$T L = \\mathcal{D}|_{L}$（`def.integral-manifold`）；\n- 两片叶或相等或不相交；全体叶覆盖 $M$，每片是浸入子流形。\n\n本条只负责**整体**这一步：局部叶片的存在性是 Frobenius 定理的内容（本图见 Frobenius 节点），把局部叶片粘成极大叶、并证明叶与叶互不相交，用的是 Zorn 引理。',
+      notes: '⭐ 与 Frobenius 定理的分工：Frobenius 给的是**局部**可积（每点附近有积分流形），本条把局部叶片粘成**整体**的极大叶 —— 差别只在「整体」，所以剩下的工作是一次 Zorn 加一次局部唯一性。\n\n⚠ 本条不把 Frobenius 列为 source：局部可积性在这里当**已知输入**用（图上已由 Frobenius 节点陈述），本条要证的是它推不出的那一步。要写成显式依赖，得先确认不与 Frobenius 的分层成环。',
+    },
+  ],
 
   edges: [
     /* ---------------------------------------------- 一、Zorn 引理的前提概念 */
@@ -91,17 +104,10 @@
     {
       id: 'imp.zorn-foliation',
       kind: 'implication',
-      sources: ['lem.zorn'],
-      target: 'def.integral-manifold',
-      title: 'Zorn 引理：叶状结构的整体存在',
-      proof: [
-        '设 $\\mathcal{D}$ 是流形 $M$ 上的对合分布。局部版 Frobenius（`thm.frobenius`）只给：过每点有局部积分流形。',
-        '要证明「过每点存在**极大**连通积分流形（叶）」，把',
-        '$$\\mathcal{S} := \\{\\, L \\subseteq M : L\\ \\text{连通积分流形, 且}\\ T L = \\mathcal{D}|_{L} \\,\\}$$',
-        '按包含排序。链的并仍是连通的积分流形（连通性对递增并保持；局部上每点落在某个 $L_{\\alpha}$ 里，故切空间仍是 $\\mathcal{D}$）。',
-        '由 Zorn 引理取极大元 $L$，即过该点的极大叶。',
-        '**叶片互不相交**：若两个极大叶 $L_{1}, L_{2}$ 有公共点 $p$，则由局部唯一性（同一分布过同一点只有一块局部积分流形），$L_{1} \\cup L_{2}$ 仍是积分流形且连通 —— 与极大性矛盾。于是 $\\{L\\}$ 构成 $M$ 的叶状结构。',
-      ].join('\n\n'),
+      sources: ['lem.zorn', 'def.involutive-distribution', 'def.integral-manifold'],
+      target: 'thm.foliation-existence',
+      title: 'Zorn 引理：把局部叶片粘成极大叶',
+      proof: '设 $\\mathcal{D}$ 是 $M$ 上的对合 $k$ 阶光滑分布。**局部输入**：对合分布在每点附近有积分流形（Frobenius 定理的 (1)$\\iff$(3)）；本条的职责是把它整体化，这一步当已知。\n\n**第一步：取候选族。** 令\n\n$$\\mathcal{S} := \\{\\, L \\subseteq M : L \\text{ 是连通积分流形，且 } T L = \\mathcal{D}|_{L} \\,\\},$$\n\n按包含排序；$\\mathcal{S} \\ne \\emptyset$（每点附近的局部积分流形都在里面）。\n\n**第二步：链有上界。** 设 $\\{L_{\\alpha}\\}$ 是全序链，$L^{*} := \\bigcup_{\\alpha} L_{\\alpha}$。连通性：递增并仍连通（任两点落在同一成员里）。切空间：$T L^{*} = \\bigcup T L_{\\alpha} = \\mathcal{D}|_{L^{*}}$。光滑性：$L^{*}$ 是浸入子流形的递增并，且链中每个成员都是开浸入子流形，故 $L^{*}$ 仍是浸入子流形。于是 $L^{*} \\in \\mathcal{S}$，是链的上界。\n\n**第三步：Zorn 取极大元。** 由 Zorn 引理得极大元 $L$，即过给定点的极大连通积分流形。\n\n**第四步：叶与叶互不相交。** 设 $L_{1}, L_{2}$ 是两片极大叶且有公共点 $p$。由局部唯一性（同一分布过同一点的两块积分流形在公共点附近重合，这是 Frobenius 平坦坐标的推论），$L_{1} \\cup L_{2}$ 在 $p$ 附近仍是积分流形；两者都连通且交于 $p$，故并连通且是积分流形 —— 与极大性矛盾。所以或 $L_{1} = L_{2}$，或 $L_{1} \\cap L_{2} = \\emptyset$。\n\n**收尾。** 每点属于某片极大叶（第三步），叶两两不交或相等（第四步），故全体叶覆盖 $M$ 并构成叶状结构。∎',
     },
     {
       id: 'imp.ac-tykhonov',

@@ -314,7 +314,8 @@ window.MG = window.MG || {};
         '**四个等价说法，任取其一当定义都行**：$A$ 正规；$A$ 有标准正交特征向量基；$A = U\\Lambda U^{*}$；$A$ 的谱测度只取原子值。矩阵语言里第一种最省事，第二种最直观（`thm.spectral-matrix` 的全部内容就是「两者等价」）。',
         '**谱分解的读法**：$A = \\sum_i \\lambda_i P_i$，其中 $P_i = u_i u_i^{*}$ 是往特征方向上的正交投影，满足 $P_i^2 = P_i$、$P_iP_j = 0$（$i \\ne j$）、$\\sum_i P_i = I$。\n\n于是**「对角化」= 「把算子拆成一堆互相垂直的方向，各自乘一个数」**。',
         '⭐ 与函数演算的连接：有了谱分解，任意函数 $f$ 都能作用：$f(A) := \\sum_i f(\\lambda_i)P_i$。$\\sqrt{A}$、$e^{tA}$、$A^{1/2}$ 全是这一条的特例 —— 这也是为什么「正定矩阵可开方」不需要另外构造。',
-        '⚠️ 非正规矩阵也可能可对角化（`thm.diagonalizable`），但特征向量**不正交**，相似矩阵 $P$ 一般病态。所以「可对角化」与「酉可对角化」是两件事：后者要求**正交**，强得多。'
+        '⚠️ 非正规矩阵也可能可对角化（`thm.diagonalizable`），但特征向量**不正交**，相似矩阵 $P$ 一般病态。所以「可对角化」与「酉可对角化」是两件事：后者要求**正交**，强得多。',
+        '**证明在出边上**：完整证明见本团「Schur 三角化 $\\Longrightarrow$ 谱定理（矩阵版）」这条推论边 —— 正规性在酉相似下保持，上三角正规阵必对角；实对称情形再用「特征值实、特征向量可取实」归纳。'
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 谱定理',
@@ -347,7 +348,8 @@ window.MG = window.MG || {};
         '**为什么 $P = \\sqrt{A^{*}A}$**：就像 $\\lvert z\\rvert = \\sqrt{\\bar z z}$。\n\n$A^{*}A$ 总是半正定 Hermite（`def.positive-definite-matrix` 的注），所以能开唯一的半正定平方根。\n\n定义 $U := AP^{-1}$（$A$ 可逆时），剩下只需验 $U$ 保内积 —— 一行计算：$U^{*}U = P^{-1}A^{*}AP^{-1} = P^{-1}P^{2}P^{-1} = I$。',
         '⭐ **几何读法**：任何线性映射都是「先沿一组正交方向各自伸缩（$P$），再整体旋转（$U$）」。伸缩因子就是奇异值。这条对**非方阵**也成立（用等距代替酉）。',
         '**与 SVD 的分工**：极分解强调「旋转 $\\times$ 拉伸」这个**结构**，SVD 强调「$A = U\\Sigma V^{*}$ 这个**坐标写法**」。两者信息量相同，SVD 多给了两组基底。',
-        '⚠️ 唯一性要说清：$P$ 永远唯一，但 $A$ 奇异时 $U$ 可以在 $A$ 的核上任意取 —— 所以「极分解唯一」这句话只在可逆时成立。'
+        '⚠️ 唯一性要说清：$P$ 永远唯一，但 $A$ 奇异时 $U$ 可以在 $A$ 的核上任意取 —— 所以「极分解唯一」这句话只在可逆时成立。',
+        '**证明在出边上**：完整证明见本团「谱定理 $\\Longrightarrow$ 极分解」这条推论边 —— 由 $A^{*}A$ 的谱分解构造 $\\sqrt{A^{*}A}$ 并证唯一；可逆时 $U=AP^{-1}$ 酉，奇异时先在 $\\operatorname{im}P$ 上定义等距再延拓为酉。'
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 极分解',
@@ -644,6 +646,34 @@ window.MG = window.MG || {};
         '**① Rayleigh 商是加权平均**。谱定理给标准正交特征基 $u_{1}, \\ldots, u_{n}$，$Au_{i} = \\lambda_{i}u_{i}$，$\\lambda_{1} \\ge \\cdots \\ge \\lambda_{n}$；对 $x = \\sum c_{i}u_{i} \\ne 0$ 有 $R_{A}(x) = \\sum \\lambda_{i}|c_{i}|^{2} \\big/\\ \\sum |c_{i}|^{2}$，即以 $|c_{i}|^{2}$ 为权的加权平均。',
         '**② 上界**。任取 $\\dim S = k$：$S$ 与 $\\operatorname{span}(u_{k}, \\ldots, u_{n})$ 的维数之和 $k + (n - k + 1) > n$，故有交，交中非零向量满足 $c_{1} = \\cdots = c_{k-1} = 0$，于是 $R_{A} \\le \\lambda_{k}$；所以 $\\min_{S} R_{A} \\le \\lambda_{k}$ 对一切 $\\dim S = k$ 的 $S$ 成立。',
         '**③ 下界与取等**。取 $S_{0} = \\operatorname{span}(u_{1}, \\ldots, u_{k})$：其上 $c_{k+1} = \\cdots = c_{n} = 0$，故 $R_{A} \\ge \\lambda_{k}$，且 $x = u_{k}$ 取到等号。两边合起来得 $\\max_{\\dim S = k} \\min_{S} R_{A} = \\lambda_{k}$；把 $S$ 与维数 $n - k + 1$ 的 $T$ 对调（同样靠维数计数）、取 $T_{0} = \\operatorname{span}(u_{k}, \\ldots, u_{n})$ 验证取等，即得第二等式。∎',
+      ].join('\n\n'),
+    },
+
+    {
+      id: 'imp.spectral-matrix',
+      kind: 'implication',
+      sources: ['thm.schur-triangularization'],
+      target: 'thm.spectral-matrix',
+      title: 'Schur 三角化 $\\Longrightarrow$ 谱定理（矩阵版）',
+      proof: [
+        '**($\\Longleftarrow$)** 若 $A = U\\Lambda U^{*}$，则 $AA^{*} = U\\Lambda U^{*}U\\Lambda^{*}U^{*} = U\\Lambda\\Lambda^{*}U^{*}$，而 $A^{*}A = U\\Lambda^{*}\\Lambda U^{*}$；对角阵的乘法可交换，$\\Lambda\\Lambda^{*} = \\Lambda^{*}\\Lambda$，故 $AA^{*} = A^{*}A$ —— $A$ 正规。',
+        '**($\\Longrightarrow$)** 设 $A$ 正规。由 Schur 三角化，存在酉 $U$ 使 $T = U^{*}AU$ 上三角。正规性在酉相似下保持：$T^{*}T = U^{*}A^{*}UU^{*}AU = U^{*}A^{*}AU$，$TT^{*} = U^{*}AUU^{*}A^{*}U = U^{*}AA^{*}U$，两者相等。',
+        '对 $T$ 的第 $(1,1)$ 元比较：$(T^{*}T)_{11} = \\sum_{j}|t_{j1}|^{2} = |t_{11}|^{2}$（第一列只有 $t_{11}$），$(TT^{*})_{11} = \\sum_{j}|t_{1j}|^{2}$；相等给出 $t_{12} = \\cdots = t_{1n} = 0$。于是 $T = \\operatorname{diag}(t_{11}, T_{1})$，$T_{1}$ 仍上三角且正规；对 $T_{1}$ 重复该论证，归纳得 $T$ 对角。故 $A = UTU^{*}$ 酉可对角化。',
+        '**实情形**：实对称矩阵是正规矩阵，故有复谱分解 $A = U\\Lambda U^{*}$。其特征值全实：若 $Ax = \\lambda x$、$x \\ne 0$，则 $\\lambda\\|x\\|^{2} = \\langle Ax, x\\rangle = \\langle x, Ax\\rangle = \\overline{\\lambda}\\|x\\|^{2}$，故 $\\lambda = \\overline{\\lambda}$。对实特征值 $\\lambda$，$(A - \\lambda I)x = 0$ 是实系数方程组，其解空间有实基，故特征向量可取实；于是 $U$ 可取为实正交矩阵 $Q$，$Q^{T}AQ$ 为实对角阵。∎',
+      ].join('\n\n'),
+    },
+
+    {
+      id: 'imp.polar-decomposition',
+      kind: 'implication',
+      sources: ['thm.spectral-matrix'],
+      target: 'thm.polar-decomposition',
+      title: '谱定理 $\\Longrightarrow$ 极分解',
+      proof: [
+        '**① 构造 $P$**。$A^{*}A$ 是半正定 Hermite 矩阵，故正规；由谱定理（矩阵版）存在酉 $V$ 与实对角 $\\mu = \\operatorname{diag}(\\mu_{1}, \\ldots, \\mu_{n})$ 使 $A^{*}A = V\\mu V^{*}$，且 $\\mu_{i} \\ge 0$（半正定性：$\\langle A^{*}Ax, x\\rangle = \\|Ax\\|^{2} \\ge 0$）。令 $P := V\\operatorname{diag}(\\sqrt{\\mu_{1}}, \\ldots, \\sqrt{\\mu_{n}})V^{*}$，则 $P$ 半正定 Hermite 且 $P^{2} = A^{*}A$。',
+        '**② 唯一性**。若 $Q$ 半正定 Hermite 且 $Q^{2} = A^{*}A$，把 $Q$ 谱分解为 $Q = W\\operatorname{diag}(\\nu_{i})W^{*}$（$\\nu_{i} \\ge 0$），则 $Q^{2} = W\\operatorname{diag}(\\nu_{i}^{2})W^{*} = A^{*}A$。谱分解的谱值唯一，故 $\\nu_{i}^{2} = \\mu_{i}$、$\\nu_{i} = \\sqrt{\\mu_{i}}$；在重特征值上 $Q$ 与 $A^{*}A$ 可同时对角化，于是 $Q = P$。',
+        '**③ $A$ 可逆时**。令 $U := AP^{-1}$。则 $U^{*}U = P^{-1}A^{*}AP^{-1} = P^{-1}P^{2}P^{-1} = I$，故 $U$ 酉，且 $A = UP$；$P$ 正定（$A$ 可逆时 $A^{*}A$ 正定，$\\mu_{i} > 0$）。',
+        '**④ $A$ 奇异时**。由 $\\|Px\\|^{2} = \\langle A^{*}Ax, x\\rangle = \\|Ax\\|^{2}$ 得 $\\ker P = \\ker A$。在 $\\operatorname{im}P$ 上定义 $U(Px) := Ax$：若 $Px = 0$ 则 $Ax = 0$，故良定义；且 $\\|U(Px)\\| = \\|Ax\\| = \\|Px\\|$，故 $U$ 是 $\\operatorname{im}P \\to \\operatorname{im}A$ 的等距。把 $U$ 延拓为酉映射：取 $\\operatorname{im}P$ 的标准正交基并延拓到全空间，令 $U$ 把 $(\\operatorname{im}P)^{\\perp} = \\ker P$ 等距地送到 $(\\operatorname{im}A)^{\\perp}$（两边维数都等于 $n - \\operatorname{rank}A$）。于是 $U$ 酉且 $A = UP$；$P$ 仍唯一，$U$ 在 $\\ker A$ 上不唯一。∎',
       ].join('\n\n'),
     },
   ]

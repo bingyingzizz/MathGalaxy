@@ -193,5 +193,6 @@
           '从「可证明性」跳到「Boolean 环 / Stone 空间」那条线的入口。',
       ].join('\n\n'),
     },
+    {"id":"dep.n12-provability-compactness","kind":"definition","definition":"def.provability","usedBy":"thm.compactness","note":"紧性定理的证明用到「证明是有限串」这条定义。"},
   ],
 });

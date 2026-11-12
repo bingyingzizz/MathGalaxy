@@ -319,6 +319,7 @@ window.MG = window.MG || {};
       id: 'thm.witt-cancellation',
       cluster: 'algebra.multilinear',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Witt 消去定理',
       title: 'Witt 消去：非退化型的分解是唯一的',
       regions: ['algebra'],
@@ -338,7 +339,8 @@ window.MG = window.MG || {};
         '**为什么需要「非退化」这个前提**：退化情形下消去律会失败（$\\beta = 0$ 时左式恒为 $0$）。这也是为什么整个二次型理论都要先假设非退化 —— 不是技术洁癖，而是消去律的生死线。',
         '⭐ **它是「分类」的最后一块砖**：惯性定理（实情形，`thm.sylvester-law-inertia`）给的是「对角形的符号个数唯一」；Witt 消去给的是「**任意**域上分解的块数唯一」。前者只在 $\\mathbb{R}$ 上有效，后者在任意域（char $\\ne$ 2）上都成立。',
         '⚠️ $\\operatorname{char} K \\ne 2$ 不能去：特征 $2$ 时「对称」与「交错」重合、$\\frac{1}{2}$ 不存在，配方法与 Witt 理论都要重写（那是另一门学问）。本图不展开。',
-        '⚠️ 更强的版本叫 **Witt 延拓定理**：非退化子空间之间的等距总能延拓成整个空间的等距。它与消去定理等价，但表述不同 —— 读文献时看到哪个都算。'
+        '⚠️ 更强的版本叫 **Witt 延拓定理**：非退化子空间之间的等距总能延拓成整个空间的等距。它与消去定理等价，但表述不同 —— 读文献时看到哪个都算。',
+        '**本条的缺口（精确）。** 完整证明的标准路线是：先把等距 $U\\to U\'$ 延拓为 $V$ 的等距（Witt 延拓定理），再在 $U\'$ 的正交补上把 $\\varphi(W)$ 调到 $W$；延拓定理本身（非退化子空间间的等距可延拓）本图没有节点，也不在此处假装证明。故本条保留 `skeleton`，缺口就是延拓定理。'
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Bilinear Forms」· Witt 定理',

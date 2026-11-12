@@ -310,8 +310,9 @@ window.MG = window.MG || {};
     {status: 'skeleton', 
       id: 'imp.za-analytic',
       kind: 'implication',
-      sources: ['prop.analytic-examples', 'def.analytic-ring', 'thm.solid-abelian'],
-      target: 'thm.za-analytic',
+      sources: ['prop.analytic-examples', 'def.analytic-ring', 'thm.solid-abelian',
+        'prop.analytic-base-change'],
+      layer: false, target: 'thm.za-analytic',
       title: '边界函数 $A_\\infty$ $\\implies$ $A_\\blacksquare$ 是解析环',
       proof: [
         '设 $A = \\mathbb{Z}[T]$，$A_\\infty = \\mathbb{Z}((T^{-1}))$。',
@@ -346,8 +347,9 @@ window.MG = window.MG || {};
     {status: 'skeleton', 
       id: 'imp.coherent-duality',
       kind: 'implication',
-      sources: ['thm.za-analytic'],
-      target: 'thm.coherent-duality',
+      sources: ['thm.za-analytic',
+        'thm.adic-structure-sheaf'],
+      layer: false, target: 'thm.coherent-duality',
       title: '$j_! \\dashv j^* \\dashv j_*$ $\\implies$ 仿射相干对偶',
       proof: [
         '**记号。** 设 $f : A \\to A\'$ 是解析环之间的映射，$f^{\\mathrm{ad}/\\mathbb{Z}} : \\operatorname{Spec} A\' \\to \\operatorname{Spec} A$ 是对应的 adic 谱映射，$j : \\operatorname{Spec} A\' \\to \\operatorname{Spec}(A\',\\mathbb{Z})$。\n\n按 `def.f-shriek`，$f_! := f^{\\mathrm{ad}/\\mathbb{Z}}_\\ast \\circ j_!$。',
@@ -372,7 +374,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.rl1-not-analytic',
       kind: 'implication',
-      sources: ['def.analytic-ring'],
+      sources: ['def.analytic-ring',
+        'cor.free-solid-product'],
       target: 'prop.rl1-not-analytic',
       title: '解析性要求 $\\operatorname{Ext}^1 = 0$ $\\implies$ $\\mathbb{R}_{\\ell^1}$ 不是解析环',
       proof: [

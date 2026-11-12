@@ -466,6 +466,14 @@ MG.notation = {
       { re: '\\\\mathrm\\{(?:dom|ran|ot|Re|Im|sgn|span)\\}(?![a-zA-Z])',
         fix: '\\\\operatorname{...}', why: '有参数的算子名用 \\operatorname' },
       { re: '\\\\complement', fix: 'A^{c}', why: '补集用上标 c' },
+      /* 「补集写成上划线」：只拦「补集/余集」与单字母上划线**相邻**的情形 ——
+         全库 \bar{…} 101 处、\overline{…} 444 处，绝大多数是闭包与复共轭，
+         一刀切会误报数百处合法用法（2026-11-11 实测）。 */
+      { re: '(?:补集|余集)[^\n]{0,20}\\\\(?:bar|overline)\\{[A-Z]\\}', fix: 'A^{c}',
+        why: '补集写 A^{c}，不写上面加一杠（概率论里常见，但本图只保留 A^{c}）；\\overline{\\mathbb R} 这类扩充实数不算补集，不受影响' },
+      { re: '\\\\(?:bar|overline)\\{[A-Z]\\}[^\n]{0,15}(?:的)?(?:补集|余集)', fix: 'A^{c}',
+        why: '补集写 A^{c}，不写上面加一杠（概率论里常见，但本图只保留 A^{c}）；\\overline{\\mathbb R} 这类扩充实数不算补集，不受影响' },
+
       { re: '\\\\impliedby', fix: '\\\\Longleftarrow', why: '同字形，只留一个写法' },
       { re: '\\\\Longleftrightarrow', fix: '\\\\iff', why: '同字形，元语言的等价一律 \\iff' },
       { re: 'B\\(\\s*r[a-z_]*(?:\\^\\{[^}]*\\})?\\s*,', fix: 'B(x, r)',

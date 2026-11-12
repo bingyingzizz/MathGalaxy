@@ -41,7 +41,7 @@ MG.aliases = {
 
     /* ZFC 公理系统 */
     { id: 'ax.ext', aka: ['外延', 'extensionality', '集合相等'] },
-    { id: 'ax.pair', aka: ['无序对', '配对公理'] },
+    { id: 'ax.pair', en: 'axiom of pairing', aka: ['无序对', '配对公理'] },
     { id: 'ax.union', aka: ['并集公理', 'union', '求和集'] },
     { id: 'ax.inf', aka: ['无穷', 'infinity', '归纳集'] },
     { id: 'ax.found', en: 'foundation', aka: ['正则', '基础公理', 'foundation', 'regularity', '无循环'] },
@@ -601,6 +601,7 @@ MG.aliases = {
 
     /* 群与第一同构定理 */
     { id: 'def.group', en: 'group', aka: ['群', 'group', '阿贝尔群', '交换群', 'Abelian group'] },
+    { id: 'def.group-power', en: 'group power', aka: ['群的整数幂', '整数幂（群）', '负指数幂', 'x^n'] },
     { id: 'def.subgroup', aka: ['子群', 'subgroup'] },
     { id: 'def.normal-subgroup', en: 'normal subgroup', aka: ['正规子群', 'normal subgroup', '陪集', 'coset'] },
     { id: 'def.quotient-group', aka: ['商群', 'quotient group', 'G/N', '商映射'] },
@@ -923,6 +924,7 @@ MG.aliases = {
     { id: 'thm.brouwer-fixed-point', en: 'Brouwer fixed point theorem', aka: [ 'Brouwer 不动点定理（圆盘）', '布劳威尔不动点定理' ] },
     { id: 'thm.evt', en: 'extreme value theorem', aka: ['最值定理'] },
     { id: 'thm.spectral-theorem', en: 'spectral theorem for real symmetric operators', aka: ['谱定理（实对称）'] },
+    { id: 'thm.spectral-matrix', en: 'spectral theorem (matrix form)', aka: ['谱定理（矩阵版）', '正规矩阵酉对角化', '酉可对角化'] },
     { id: 'thm.frobenius', en: 'Frobenius theorem', aka: [ 'Frobenius 定理', '弗罗贝尼乌斯定理', '弗罗贝尼乌斯' ] },
     { id: 'thm.sphere-homology', en: 'homology of spheres', aka: ['球面的同调'] },
     { id: 'thm.homotopy-invariance', en: 'homotopy invariance', aka: ['同伦不变性'] },
@@ -1395,6 +1397,7 @@ MG.aliases = {
     { id: 'def.lagrangian-subspace', en: 'Lagrangian Subspace', aka: ['拉格朗日子空间'] },
     { id: 'thm.lagrange-identity', en: 'Lagrange’s Identity', aka: ['拉格朗日恒等式'] },
     { id: 'thm.lu-decomposition', en: 'LU Decomposition', aka: ['三角分解'] },
+    { id: 'thm.polar-decomposition', en: 'polar decomposition', aka: ['极分解', '矩阵极分解', 'UP 分解'] },
     { id: 'thm.qr-decomposition', en: 'QR Decomposition', aka: ['正交三角分解'] },
     { id: 'thm.darboux', en: 'Darboux’s Theorem', aka: ['达布定理'] },
     { id: 'def.hamiltonian-vector-field', en: 'Hamiltonian Vector Field', aka: ['哈密顿向量场'] },
@@ -1561,6 +1564,7 @@ MG.aliases = {
     { id: 'def.soft-sheaf', en: 'soft sheaf', aka: ['软层'] },
     { id: 'def.godement-resolution', en: 'Godement resolution', aka: ['Godement 消解', '戈德门消解', '松弛层消解'] },
     { id: 'def.weak-topology', en: 'weak topology', aka: ['弱拓扑', 'σ(E,E*) 拓扑'] },
+    { id: 'def.weak-star-topology', en: 'weak-star topology', aka: ['弱*拓扑', '弱星拓扑', 'σ(E*,E) 拓扑', '逐点收敛拓扑'] },
     { id: 'def.prime-end', en: 'prime end', aka: ['素端', 'Carathéodory 紧化'] },
     { id: 'def.flabby-sheaf', en: 'flabby sheaf', aka: ['松弛层', 'flasque sheaf', '软弛层'] },
     { id: 'def.fine-sheaf', en: 'fine sheaf', aka: ['细层', 'fine sheaf'] },
@@ -1584,6 +1588,16 @@ MG.aliases = {
     { id: 'lem.abel-summation', en: 'Abel summation', aka: ['summation by parts', 'Abel transformation', '阿贝尔求和', '分部求和'] },
     { id: 'def.formal-power-series', en: 'formal power series', aka: ['formal power series ring', '形式幂级数', '形式幂级数环'] },
     { id: 'thm.lagrange-inversion', en: 'Lagrange inversion', aka: ['Lagrange inversion theorem', 'Lagrange–Bürmann formula', '拉格朗日反演', '拉格朗日反演定理'] },
+    { id: 'thm.f-shriek-existence', en: 'f-shriek existence', aka: ['existence of f_! and f^!', '紧支撑推前存在性'] },
+    { id: 'thm.soft-sheaf-acyclic', en: 'soft acyclicity', aka: ['soft sheaves are acyclic', '软层无环'] },
+    { id: 'def.degree', en: 'degree of a map', aka: ['degree', '映射的度'] },
+    { id: 'thm.degree-nonextendable', en: 'degree obstruction', aka: ['degree obstructs extension', '度非零不能延拓'] },
+    { id: 'thm.foliation-existence', en: 'foliations exist', aka: ['existence of foliations', '叶状结构存在'] },
+    { id: 'thm.hahn-banach', en: 'Hahn–Banach', aka: ['Hahn–Banach theorem', 'Hahn-Banach'] },
+    { id: 'thm.banach-alaoglu', en: 'Banach–Alaoglu', aka: ['Banach–Alaoglu theorem', 'Banach-Alaoglu'] },
+    { id: 'thm.goldstine', en: 'Goldstine theorem', aka: ['Goldstine', 'Goldstine’s theorem'] },
+    { id: 'lem.polygon-diagonal', en: 'polygon diagonal', aka: ['polygon diagonal lemma', '多边形对角线引理'] },
+    { id: 'thm.jordan-polygon', en: 'Jordan polygon', aka: ['Jordan polygon theorem', '多边形 Jordan 定理'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

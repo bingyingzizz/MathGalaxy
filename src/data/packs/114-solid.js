@@ -377,7 +377,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.solid-abelian',
       kind: 'implication',
-      sources: ['lem.solid-completion-criterion', 'prop.free-solid-solid', 'cor.free-solid-product'],
+      sources: ['lem.solid-completion-criterion', 'prop.free-solid-solid', 'cor.free-solid-product',
+        'thm.breen-deligne'],
       target: 'thm.solid-abelian',
       title: '完备化判据 + 关键计算 $\\implies$ $\\mathbf{Solid}$ 是阿贝尔子范畴',
       proof: [
@@ -391,7 +392,7 @@ window.MG = window.MG || {};
         '',
         '分三层证明。',
         '',
-        '**(a) $C$ 集中在度 $0$。** 写 $C = M = \\bigoplus_{i \\in I} \\prod_{j \\in J_i} \\mathbb{Z}$。\n\n由 Lecture IV 的定理（Eilenberg–MacLane/Breen–Deligne，`thm.breen-deligne`）与 $\\mathbb{Z}[X]$ 的 pseudocoherence，$M(S,\\mathbb{R}/\\mathbb{Z}) \\cong \\prod \\mathbb{R}/\\mathbb{Z}$ 是 pseudocoherent 的，从而 $M(S,\\mathbb{R}/\\mathbb{Z}) \\otimes \\mathbb{Z}[S\']$ 也是。\n\n由 Theorem 4.3（`table.rhom-zrt` 那一条的母定理），',
+        '**(a) $C$ 集中在度 $0$。** 写 $C = M = \\bigoplus_{i \\in I} \\prod_{j \\in J_i} \\mathbb{Z}$。\n\n由 Lecture IV 的定理（Eilenberg–MacLane/Breen–Deligne，`thm.breen-deligne`）与 $\\mathbb{Z}[X]$ 的 pseudocoherence，$M(S,\\mathbb{R}/\\mathbb{Z}) \\cong \\prod \\mathbb{R}/\\mathbb{Z}$ 是 pseudocoherent 的，从而 $M(S,\\mathbb{R}/\\mathbb{Z}) \\otimes \\mathbb{Z}[S\']$ 也是。\n\n由 Theorem 4.3（同调代数表 那一条的母定理），',
         '$$\\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), M)(S\') = \\bigoplus_i \\prod_j \\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), \\mathbb{Z})(S\') = \\bigoplus_i \\prod_j C(S \\times S\', \\mathbb{Z})[-1].$$',
         '另一方面 $R\\Gamma(S, M) = \\bigoplus_i \\prod_j R\\Gamma(S, \\prod \\mathbb{Z}) = \\bigoplus_i \\prod_j C(S,\\mathbb{Z})[0]$（Theorem 3.3）。两边取 $S\'$ 点后一致。',
         '',
@@ -515,6 +516,9 @@ window.MG = window.MG || {};
       definition: 'def.cond-measure',
       usedBy: 'def.solid-group',
       note: '自由固态群 $Z[S]^{\\blacksquare}$ 的下垫群就是测度群 $M(S,\\mathbb{Z})$，见 `cor.free-solid-product`。'
-    }
+    },
+    { id: 'dep.n11-solidtensor-group', kind: 'definition', definition: 'def.solid-group', usedBy: 'ex.solid-tensor-computations', note: '固态张量积是固态群范畴中的运算' },
+    { id: 'dep.n11-solidtensor-condab', kind: 'definition', definition: 'def.condensed-abelian-group', usedBy: 'ex.solid-tensor-computations', note: '固态群是凝聚阿贝尔群的子范畴' }
+
   ]
 });

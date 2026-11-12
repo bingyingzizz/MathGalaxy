@@ -898,22 +898,6 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
-    {
-      id: 'imp.dg-adapt',
-      kind: 'implication',
-      sources: ['thm.structure-equations', 'def.regular-surface'],
-      target: 'lem.adapted-frame',
-      title: '沿曲面取 $e_{3} = n$ $\\implies$ $\\omega^{3} = 0$',
-      proof: [
-        '对任意切向量 $v$：$\\omega^{3}(v) = \\langle \\mathrm{d}r(v), e_{3}\\rangle = \\langle \\mathrm{d}r(v), n\\rangle = 0$ —— $\\mathrm{d}r(v)$ 是曲面的切向量（$r$ 的像落在 $S$ 里），与法向正交。\n\n故 $\\omega^{3}$ 沿曲面为零，于是 $\\mathrm{d}\\omega^{3} = 0$。',
-        '',
-        '把 $i = 3$ 代入第一结构方程（含 $\\omega^{3}$ 的项全部消失）：',
-        '',
-        '$$0 = \\mathrm{d}\\omega^{3} = \\omega^{1}\\wedge\\omega^{3}_{\\ 1}+\\omega^{2}\\wedge\\omega^{3}_{\\ 2}.$$',
-        '',
-        '这条恒等式把 $\\omega^{1}_{\\ 3}, \\omega^{2}_{\\ 3}$ 锁在 $\\{\\omega^{1}, \\omega^{2}\\}$ 张成的二维空间里：写出 $\\omega^{3}_{\\ i} = a_{i}\\omega^{1}+b_{i}\\omega^{2}+c_{i}\\omega^{3}$ 代进去，比较 $\\omega^{1}\\wedge\\omega^{3}$ 与 $\\omega^{2}\\wedge\\omega^{3}$ 的系数即得 $c_{1} = c_{2} = 0$，于是 $\\omega^{i}_{\\ 3} = \\sum_{j}c_{ij}\\omega^{j}$。\n\n剩下的 $\\omega^{1}\\wedge\\omega^{2}$ 系数给出 $b_{1} = a_{2}$，即系数的对称性（见 `lem.second-form-symmetric`）。\n\n∎'
-      ].join('\n')
-    },
 
     {
       id: 'imp.dg-hsym',
@@ -982,7 +966,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.dg-gauss',
       kind: 'implication',
-      sources: ['thm.structure-equations', 'lem.adapted-frame', 'lem.second-form-symmetric'],
+      sources: ['thm.structure-equations', 'lem.adapted-frame', 'lem.second-form-symmetric',
+        'prop.connection-antisymmetric'],
       target: 'thm.gauss-equation',
       title: '结构方程拆出 $k=3$ 项 $\\implies$ Gauss 方程',
       proof: [
@@ -1000,7 +985,7 @@ window.MG = window.MG || {};
         '',
         '按定义 $\\mathrm{d}\\omega^{1}_{\\ 2} = K\\omega^{1}\\wedge\\omega^{2}$，故 $K = \\det(c_{ij})$。\n\n又 $h = -c$，而 $\\det(-c) = \\det c$（$2\\times2$），故 $K = \\det(h_{ij})$。\n\n在参数网 $\\{r_{u}, r_{v}\\}$ 下 $h$ 与 $g$ 是同一对基下的两个矩阵，于是 $K = \\det h/\\det g = (LN-M^{2})/(EG-F^{2})$。',
         '',
-        '**无指标形式**：同一段 $R^{\\mathbb{R}^{3}} = 0$ 的展开，这一次取**切向**分量（而不是法向分量），就得到 $\\langle R(X,Y)Z, W\\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W)$ —— 法向分量那一半正是 `thm.codazzi-mainardi` 的入边里算的东西。\n\n∎'
+        '**无指标形式**：同一段 $R^{\\mathbb{R}^{3}} = 0$ 的展开，这一次取**切向**分量（而不是法向分量），就得到 $\\langle R(X,Y)Z, W\\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W)$ —— 法向分量那一半正是 Codazzi–Mainardi 方程 的入边里算的东西。\n\n∎'
       ].join('\n')
     },
 
@@ -1064,8 +1049,9 @@ window.MG = window.MG || {};
     {
       id: 'imp.dg-euler',
       kind: 'implication',
-      sources: ['def.principal-curvature', 'def.weingarten-map'],
-      target: 'thm.euler-formula-surface',
+      sources: ['def.principal-curvature', 'def.weingarten-map',
+        'thm.rodrigues'],
+      layer: false, target: 'thm.euler-formula-surface',
       title: '谱定理 $\\implies$ Euler 公式',
       proof: [
         '主方向标架下 $W(e_{1}) = k_{1}e_{1}$、$W(e_{2}) = k_{2}e_{2}$，且 $e_{1}\\perp e_{2}$、$\\lVert e_{1}\\rVert = \\lVert e_{2}\\rVert = 1$（`thm.rodrigues` 给出特征向量的几何意义）。\n\n设单位向量 $V = \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}$，则',

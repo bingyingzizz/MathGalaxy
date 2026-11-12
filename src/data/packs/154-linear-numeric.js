@@ -78,12 +78,7 @@ window.MG = window.MG || {};
         '',
         '**用途**：解 $Ax = b$ 变成「解 $Ly = b$（前代）+ 解 $Ux = y$（回代）」，两个都是 $O(n^{2})$；而且 $A$ 不变时 $L, U$ 可以反复用。'
       ].join('\n'),
-      notes: [
-        '**「顺序主子式全非零」不能去掉**：$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0\\end{pmatrix}$ 的顺序主子式第一个是 $0$，它没有不带置换的 $LU$ 分解（但 $PA = LU$ 有）。这条前提就是「消元时主元不为零」的矩阵语言。',
-        '⭐ **它和初等变换的关系**：`def.elementary-matrix` 里那三类初等矩阵，把「第三类（行加倍数）」按顺序乘起来就是 $L^{-1}$。所以 $LU$ 分解 = 高斯消元的矩阵形式，**没有新东西**，只是记账。',
-        '**与 Cholesky 的关系**：若 $A$ 还是**对称正定**，则 $LU$ 可以写成 $A = LL^{T}$（$L$ 下三角），叫 Cholesky 分解。\n\n本图未单独收录，它是正定矩阵的直接推论：正定 $\\implies$ 顺序主子式全正（`thm.sylvester-criterion`）$\\implies$ 可做 Cholesky。',
-        '⚠️ 有 $PA = LU$ 之后不要再写 $A = LU$：行交换改变了矩阵，$P$ 必须写出来。'
-      ].join('\n\n'),
+      notes: 'text=**为什么是 $LU$**：高斯消元的每一步都是左乘初等矩阵，把消元步乘起来即 $L^{-1}$；顺序主子式非零保证不换行。完整证明（含 Schur 补归纳与唯一性）见边 `imp.lu-decomposition-proof`；置换版本用部分主元法，见同边证明末段。',
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Linear Transformations」· 三角化与消元',
         '北大《高等代数》· 矩阵的三角分解'
@@ -222,7 +217,7 @@ window.MG = window.MG || {};
 
     { id: 'dep.qr-gs', kind: 'implication',
       sources: ['thm.gram-schmidt'], target: 'thm.qr-decomposition',
-      proof: '对 $A$ 的列向量作 Gram–Schmidt：$q_{j}$ 由 $a_{j}$ 减去它在前 $j-1$ 个 $q$ 上的投影再归一化，故 $a_{j}=\\sum_{i\\le j}r_{ij}q_{i}$，矩阵形式即 $A=QR$，$R$ 上三角源于递推只涉及 $i\\le j$。∎',
+      proof: '**存在性（Gram–Schmidt）。** 对列 $a_{1},\\ldots,a_{n}$ 作 Gram–Schmidt：$q_{k}=\\bigl(a_{k}-\\sum_{i<k}\\langle a_{k},q_{i}\\rangle q_{i}\\bigr)\\big/\\|\\cdots\\|$，$r_{ik}=\\langle a_{k},q_{i}\\rangle$、$r_{kk}=\\|a_{k}-\\sum_{i<k}r_{ik}q_{i}\\|>0$（列线性无关保证分母非零）。由递推 $a_{k}=\\sum_{i\\le k}r_{ik}q_{i}$，即 $A=QR$：$Q$ 的列标准正交，$R$ 上三角且对角元全正。\n\n**唯一性。** 设 $QR=Q\'R\'$，则 $Q\'^{*}Q=R\'R^{-1}$。左边是酉矩阵（两个列标准正交矩阵之积，$n\\times n$），右边是上三角（上三角阵的逆与乘积仍是上三角）；酉且上三角的矩阵必为对角阵，其对角元模长为 $1$。$R,R\'$ 的对角元均为正，故 $R\'R^{-1}$ 的对角元是正实数，模长 $1$ 迫使它等于 $1$；于是 $R\'R^{-1}=I$，即 $R=R\'$、$Q=Q\'$。∎',
       note: 'QR 分解就是 Gram–Schmidt 的矩阵写法 —— 这一步是理解 QR 的全部。' },
     { id: 'dep.qr-unitary', kind: 'definition',
       definition: 'def.unitary-matrix', usedBy: 'thm.qr-decomposition',
@@ -246,6 +241,19 @@ window.MG = window.MG || {};
       note: '$AA^{+}$ 与 $A^{+}A$ 都是（正交）幂等算子，这是四条 Penrose 条件里两条的含义。' },
     { id: 'dep.pinv-invertible', kind: 'definition',
       definition: 'def.invertible-matrix', usedBy: 'def.pseudoinverse',
-      note: '可逆时伪逆就是逆 —— 它是「逆」的推广，不是另一样东西。' }
+      note: '可逆时伪逆就是逆 —— 它是「逆」的推广，不是另一样东西。' },
+    {
+      "id": "imp.lu-decomposition-proof",
+      "kind": "implication",
+      "sources": [
+        "def.matrix",
+        "def.elementary-matrix",
+        "def.invertible-matrix"
+      ],
+      "target": "thm.lu-decomposition",
+      "title": "顺序主子式非零 $\\implies$ 唯一的 $LU$ 分解",
+      "proof": "对 $n$ 归纳。$n=1$ 时 $A=(a_{11})$，$\\Delta_1=a_{11}\\ne0$，取 $L=(1)$、$U=(a_{11})$。\n\n设 $n\\ge2$，$A=\\begin{pmatrix}a&b^{T}\\\\ c&D\\end{pmatrix}$，$a=a_{11}\\ne0$。令 $E$ 为把第 $i$ 行减去 $(c_i/a)$ 倍第一行（$i=2,\\ldots,n$）的初等矩阵之积，则 $EA=\\begin{pmatrix}a&b^{T}\\\\ 0&S\\end{pmatrix}$，其中 $S=D-cb^{T}/a$ 是 Schur 补。\n\nSchur 补的顺序主子式满足 $\\Delta_{k+1}(A)=a\\,\\Delta_k(S)$（$k=1,\\ldots,n-1$：对前 $k+1$ 阶主子矩阵同步做上述行变换，其行列式等于 $a\\det S_k$）。由 $\\Delta_j(A)\\ne0$ 得 $\\Delta_k(S)\\ne0$，归纳得 $S=L_S U_S$。\n\n于是\n$$A=E^{-1}\\begin{pmatrix}1&0\\\\ 0&L_S\\end{pmatrix}\\begin{pmatrix}a&b^{T}\\\\ 0&U_S\\end{pmatrix},$$\n两个因子分别是单位下三角与上三角，乘起来即 $A=LU$。\n\n唯一性：若 $L_1U_1=L_2U_2$，则 $L_2^{-1}L_1=U_2U_1^{-1}$。左边是单位下三角，右边是上三角；一个矩阵同时是两者必为对角矩阵，而单位下三角的对角元全为 $1$，故两边都是 $I$，$L_1=L_2$、$U_1=U_2$。\n\n置换版本：对可逆 $A$ 做带行交换的高斯消元（部分主元法）；每次交换第 $i,j$ 行等于左乘置换矩阵 $P_{ij}$，消元步左乘初等矩阵。累积得 $PA=LU$，$P$ 为置换矩阵之积。∎",
+      "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
   ]
 });

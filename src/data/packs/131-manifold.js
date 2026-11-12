@@ -493,11 +493,11 @@ window.MG = window.MG || {};
       cluster: 'diffgeom.manifold',
       type: 'theorem',
       label: '光滑单位分解',
-      title: '流形上的光滑单位分解',
+      title: '单位分解',
       regions: ['diffgeom'],
       tags: ['定理', '微分流形', '单位分解', '局部有限', '鼓包函数'],
       statement: [
-        '**在做什么**：把「局部造出来的东西」粘成整体的通用工具 —— 在每块地皮上各造一份，乘上权重函数加起来，权重由光滑单位分解提供。',
+        '**在做什么**：把「局部造出来的东西」粘成整体的通用工具：每块地皮上各造一份，乘上权重函数加起来，权重由光滑单位分解提供。',
         '',
         '设 $M$ 是光滑流形，$\\mathcal{U} = \\{U_{\\alpha}\\}_{\\alpha \\in A}$ 是 $M$ 的开覆盖。则存在光滑函数族 $\\{\\rho_{\\alpha}\\}_{\\alpha \\in A}$，使',
         '',
@@ -505,7 +505,7 @@ window.MG = window.MG || {};
          '2. $\\operatorname{supp}\\rho_{\\alpha} \\subseteq U_{\\alpha}$，且支撑族 $\\{\\operatorname{supp}\\rho_{\\alpha}\\}$ **局部有限**；',
          '3. $\\sum_{\\alpha \\in A}\\rho_{\\alpha} \\equiv 1$（局部有限和，故逐点有意义且光滑）。'].join('\n'),
         '',
-        '$\\{\\rho_{\\alpha}\\}$ 叫**从属于 $\\mathcal{U}$ 的光滑单位分解**。特别地：$M$ 的任意开覆盖都有从属于它的光滑单位分解。',
+        '$\\{\\rho_{\\alpha}\\}$ 叫**从属于 $\\mathcal{U}$ 的光滑单位分解**。特别：$M$ 的任意开覆盖都有从属于它的光滑单位分解。',
         '',
         '三条要求与 `def.partition-of-unity` 一字不差，区别只在把「连续」升成「光滑」。'
       ].join('\n'),
@@ -659,7 +659,7 @@ window.MG = window.MG || {};
       id: 'prop.volume-form-orientation',
       cluster: 'diffgeom.manifold',
       type: 'proposition',
-      label: '定向与体积形式',
+      label: '体积与定向',
       title: '可定向当且仅当存在处处非零的最高次形式',
       regions: ['diffgeom'],
       tags: ['命题', '微分流形', '定向', '体积形式', '单位分解'],
@@ -1474,8 +1474,9 @@ window.MG = window.MG || {};
     {
       id: 'imp.mf-volume-form-orientation',
       kind: 'implication',
-      sources: ['def.orientable-manifold', 'def.differential-form'],
-      target: 'prop.volume-form-orientation',
+      sources: ['def.orientable-manifold', 'def.differential-form',
+        'thm.smooth-partition-unity'],
+      layer: false, target: 'prop.volume-form-orientation',
       title: 'Jacobi 行列式同号 $\\iff$ 处处非零的最高次形式',
       proof: [
         '**（$\\implies$）有定向就有体积形式。** 取定向图册 $\\{(U_{\\alpha},\\varphi_{\\alpha})\\}$ 与从属于它的光滑单位分解 $\\{\\rho_{\\alpha}\\}$（`thm.smooth-partition-unity`，先加细成局部有限）。令',
@@ -1551,7 +1552,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.mf-mayer-vietoris',
       kind: 'implication',
-      sources: ['def.de-rham-complex'],
+      sources: ['def.de-rham-complex',
+        'thm.smooth-partition-unity'],
       target: 'thm.mayer-vietoris',
       title: '形式的短正合列取上同调 $\\implies$ 长正合列',
       proof: [
@@ -1627,7 +1629,7 @@ window.MG = window.MG || {};
         '',
         '⭐ 这条与 `def.riemannian-metric` 的 notes 里那句「每个光滑流形都能配黎曼度量」是同一个证明，只是把 $E$ 从 $TM$ 换成任意丛。'
       ].join('\n')
-    }
+    },
 
   ]
 });

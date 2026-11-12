@@ -34,7 +34,7 @@ window.MG = window.MG || {};
         '',
         '**(iii)** 对 $m, n \\in \\mathbb{Z}$：$a^{m}a^{n} = a^{m+n}$，$(a^{m})^{n} = a^{mn}$，$a^{0} = e$。'
       ].join('\n'),
-      notes: '⭐ 消去律是「群」与「幺半群」的分水岭：$(\\mathbb{N}, \\cdot)$ 是幺半群，但 $0 \\cdot 2 = 0 \\cdot 3$ 消不掉 $0$ —— 缺的正是逆元。\n\n⚠ 非交换群里 $(ab)^{-1} = b^{-1}a^{-1}$ 的顺序**必须反过来**：$(ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = aa^{-1} = e$。\n\n写成 $a^{-1}b^{-1}$ 一般是错的（$S_3$ 里取两个对换就能试出来）。\n\n⭐ (iii) 是 `def.power` 在群里的版本；\n\n证明同样是「先对非负整数归纳，再用逆元过渡到负指数」。'
+      notes: '⭐ 消去律是「群」与「幺半群」的分水岭：$(\\mathbb{N}, \\cdot)$ 是幺半群，但 $0 \\cdot 2 = 0 \\cdot 3$ 消不掉 $0$ —— 缺的正是逆元。\n\n⚠ 非交换群里 $(ab)^{-1} = b^{-1}a^{-1}$ 的顺序**必须反过来**：$(ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = aa^{-1} = e$。\n\n写成 $a^{-1}b^{-1}$ 一般是错的（$S_3$ 里取两个对换就能试出来）。\n\n⭐ (iii) 是 `def.group-power` 在群里的版本；\n\n证明同样是「先对非负整数归纳，再用逆元过渡到负指数」。'
     },
     {
       id: 'prop.ideal-basic',
@@ -107,7 +107,8 @@ window.MG = window.MG || {};
     {
       id: 'imp.group-basic',
       kind: 'implication',
-      sources: ['def.group'],
+      sources: ['def.group',
+        'def.group-power'],
       target: 'prop.group-basic',
       title: '群公理 $\\implies$ 消去律与逆公式',
       proof: [
@@ -117,7 +118,7 @@ window.MG = window.MG || {};
         '$a^{-1}$ 的逆是 $a$ 由 $a^{-1}a = e$ 直接读出；\n\n' +
         '$e^{-1} = e$ 同理。',
         '',
-        '**(iii)** 非负指数对 $n$ 归纳（`def.power`）；负指数写成 $(a^{-1})^{k}$，再用 $(a^{-1})^{k} = (a^{k})^{-1}$（对 $k$ 归纳，用 (ii)）。$\\blacksquare$'
+        '**(iii)** 非负指数对 $n$ 归纳（def.group-power）；负指数写成 $(a^{-1})^{k}$，再用 $(a^{-1})^{k} = (a^{k})^{-1}$（对 $k$ 归纳，用 (ii)）。$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -173,6 +174,13 @@ window.MG = window.MG || {};
         '',
         '同理由 $f^{-1} f = 1_X$ 得 $F(f^{-1})\\,F(f) = 1_{F(X)}$。故 $F(f)$ 可逆且逆为 $F(f^{-1})$。$\\blacksquare$'
       ].join('\n')
+    },
+    {
+      id: 'dep.n12-grouppower-cyclic',
+      kind: 'definition',
+      definition: 'def.group-power',
+      usedBy: 'def.cyclic-group',
+      note: '循环群用群的整数幂记 $g^{k}$；幂的约定见群幂节点。'
     }
   ]
 });

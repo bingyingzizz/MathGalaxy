@@ -179,24 +179,7 @@ window.MG = window.MG || {};
         '',
         '即 $X$ 紧 $\\iff$ $X$ 列紧 $\\iff$ $X$ 完备 $+$ 全有界。'
       ].join('\n'),
-      notes: [
-        '**证明**（绕一圈：(a) $\\implies$ (b) $\\implies$ (c) $\\implies$ (b) $\\implies$ (a)）：',
-        '',
-        '**① (a) $\\implies$ (b)：紧 $\\implies$ 列紧。** 设 $\\{x_{n}\\}$ 是 $X$ 中的序列，反设它没有收敛子列。令 $S = \\{x_{n} : n \\in \\mathbb{N}\\}$。$S$ 必无限：$S$ 有限时某个点出现无穷多次，给出常子列，它收敛。又对每个 $y \\in X$ 存在 $\\varepsilon_{y} > 0$ 使 $B(y, \\varepsilon_{y})$ 只含 $S$ 中有限多个点：否则存在 $y$ 使每个球都含 $S$ 中无限多个点，于是可取 $n_{1} < n_{2} < \\cdots$ 使 $x_{n_{k}} \\in B(y, 1/k)$，得到收敛于 $y$ 的子列，矛盾。于是每个 $y \\notin S$ 有开邻域不碰 $S$（把 $B(y, \\varepsilon_{y})$ 里那有限个 $S$ 中的点去掉），故 $S$ 是闭集。开覆盖',
-        '$$\\{B(y, \\varepsilon_{y})\\}_{y \\in X} \\cup \\{X \\setminus S\\}$$',
-        '有有限子覆盖：其中每个 $B(y, \\varepsilon_{y})$ 只含 $S$ 中有限多个点，$X \\setminus S$ 不含 $S$ 的点，所以这个子覆盖总共只盖住 $S$ 中有限多个点 —— 与 $S$ 无限矛盾。故 $\\{x_{n}\\}$ 有收敛子列 ✓。',
-        '',
-        '**② (b) $\\implies$ (c)：列紧 $\\implies$ 完备 + 全有界。** **完备**：设 $\\{x_{n}\\}$ Cauchy，由 (b) 有子列 $x_{n_{k}} \\to x$。任给 $\\varepsilon > 0$，取 $N$ 使 $n, m \\ge N$ 时 $d(x_{n}, x_{m}) < \\varepsilon/2$，再取 $k$ 使 $n_{k} \\ge N$ 且 $d(x_{n_{k}}, x) < \\varepsilon/2$；则 $n \\ge N$ 时 $d(x_{n}, x) \\le d(x_{n}, x_{n_{k}}) + d(x_{n_{k}}, x) < \\varepsilon$，故 $x_{n} \\to x$ ✓。**全有界**：反设存在 $\\varepsilon > 0$ 使 $X$ 没有有限的 $\\varepsilon$-网。取 $x_{1} \\in X$；若 $x_{1}, \\ldots, x_{n}$ 已取好且两两距离 $\\ge \\varepsilon$，则 $\\{x_{1}, \\ldots, x_{n}\\}$ 不是 $\\varepsilon$-网，故存在 $x_{n+1}$ 使 $d(x_{n+1}, x_{i}) \\ge \\varepsilon$（$i \\le n$）。如此得到两两距离 $\\ge \\varepsilon$ 的序列，它没有 Cauchy 子列、更没有收敛子列 —— 与 (b) 矛盾 ✓。⚠️ 这里的递归取点用**可数选择**（DC）。',
-        '',
-        '**③ (c) $\\implies$ (b)：完备 + 全有界 $\\implies$ 列紧。** 设 $\\{x_{n}\\}$ 是 $X$ 中的序列。对每个 $k$，全有界给有限多个半径 $1/k$ 的球盖住 $X$。归纳构造无限下标集 $\\mathbb{N} = S_{0} \\supseteq S_{1} \\supseteq S_{2} \\supseteq \\cdots$：给定无限集 $S_{k-1}$，由有限覆盖必有一个球 $B(y_{k}, 1/k)$ 含 $\\{x_{n} : n \\in S_{k-1}\\}$ 中无限多个点，令 $S_{k}$ 为这些下标。再取 $n_{k} \\in S_{k}$ 为大于 $n_{k-1}$ 的最小下标（$S_{k}$ 无限，必存在；这条规则不用选择公理）。对 $k \\le l$ 有 $x_{n_{k}}, x_{n_{l}} \\in B(y_{k}, 1/k)$（$S_{l} \\subseteq S_{k}$），故 $d(x_{n_{k}}, x_{n_{l}}) \\le 2/k$：$\\{x_{n_{k}}\\}$ 是 Cauchy 列，由完备性收敛 ✓。',
-        '',
-        '**④ (b) $\\implies$ (a)：列紧 $\\implies$ 紧。** 由 ② 已知 $X$ 全有界。反设开覆盖 $\\mathcal{U}$ 没有有限子覆盖。称 $E \\subseteq X$ **坏**，若它不能被 $\\mathcal{U}$ 中有限多个成员盖住；则 $X$ 坏。**坏性可下传到一个小球**：设 $E$ 坏，而 $X$ 被有限多个半径 $r$ 的球 $B_{1}, \\ldots, B_{m}$ 盖住；若每个 $E \\cap B_{j}$ 都能被有限多个成员盖住，则 $E = \\bigcup_{j} (E \\cap B_{j})$ 也能，矛盾，故某个 $E \\cap B_{j}$ 坏。从 $E_{0} := X$ 出发，用半径 $2^{-k}$ 的有限覆盖逐层取坏球 $E_{k} := E_{k-1} \\cap B_{k}$；则 $E_{k}$ 的直径 $\\le 2^{1-k}$，且每层只需在有限多个球里挑一个（规定取编号最小的坏球），不用选择公理。取 $x_{k} \\in E_{k}$（坏集非空）。对 $k \\le l$ 有 $x_{k}, x_{l} \\in E_{k}$，故 $d(x_{k}, x_{l}) \\le 2^{1-k} \\to 0$：$\\{x_{k}\\}$ 是 Cauchy 列，由完备性 $x_{k} \\to x$。因 $\\mathcal{U}$ 覆盖，$x \\in U$ 对某个 $U \\in \\mathcal{U}$ 成立；取 $r > 0$ 使 $B(x, r) \\subseteq U$。对足够大的 $k$，直径 $E_{k} < r/2$ 且 $d(x_{k}, x) < r/2$，于是 $E_{k} \\subseteq B(x, r) \\subseteq U$ —— 一个成员就盖住了坏集 $E_{k}$，矛盾 ✓。⚠️ 逐层取点 $x_{k} \\in E_{k}$ 也用 DC（与 ② 同一种用法）。',
-        '',
-        '**闭环**：(a) $\\implies$ (b) $\\implies$ (c) $\\implies$ (b) $\\implies$ (a) ✓。注意 (b) $\\implies$ (c) 拆成两半后，只有「全有界」那一半需要 DC；「完备」不需要。∎',
-        '',
-        '⚠️ **两个条件各管什么**：完备负责「缩到的点在空间里」，全有界负责「有子列可缩」；缺一不可（例：$\\mathbb{R}$ 完备但不全有界，$(0, 1)$ 全有界但不完备）。',
-        '⚠️ **一般拓扑空间里两个方向都不成立**：\n\n(a) $\\implies$ (b) 的反例：取 $I = 2^{\\mathbb{N}}$，对 $A \\in \\{0, 1\\}^{\\mathbb{N}}$ 令 $x_{n}(A) = A(n)$（于是 $x_{n} \\in \\{0, 1\\}^{I}$）；$\\{0, 1\\}^{I}$ 由 Tychonoff 定理**紧**。对任意子列 $n_{k}$，取 $A$ 使 $A(n_{2j}) = 1$、$A(n_{2j+1}) = 0$，则 $x_{n_{k}}(A)$ 在 $1$ 与 $0$ 之间来回震荡、不收敛，故无收敛子列 —— **不是列紧**。\n\n(b) $\\implies$ (a) 的反例是 $[0, \\omega_{1})$ 上的序拓扑：任何序列都有收敛子列（可数个可数序数有上界，从而落进某个紧的 $[0, \\alpha]$），但 $\\{[0, \\alpha) : \\alpha < \\omega_{1}\\}$ 是开覆盖、没有有限子覆盖 —— **列紧但不紧**。\n\n⚠ 度量空间里两者才等价 —— 列紧是度量空间特有的好运气。'
-      ].join('\n\n'),
+      notes: 'text=紧、列紧、完备且全有界三者的等价证明见边 `imp.metric-compact-equiv-proof`：紧 $\\implies$ 列紧用「每点邻域只含有限项」的反证；列紧 $\\implies$ 完备/全有界用 Cauchy 子列与 $\\varepsilon$-网；全有界 $\\implies$ 紧用 Lebesgue 数。',
       refs: ['Munkres, Topology, §28 与 §43']
     },
 

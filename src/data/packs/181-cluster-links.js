@@ -223,8 +223,9 @@
     {
       id: 'imp.bd-ss-stonean',
       kind: 'implication',
-      sources: ['thm.breen-deligne'],
-      target: 'prop.breen-deligne-ss-stonean',
+      sources: ['thm.breen-deligne',
+        'lem.ext-stonean-section'],
+      layer: false, target: 'prop.breen-deligne-ss-stonean',
       title: 'Breen–Deligne 分解 $\\implies$ Stonean 上的谱序列',
       proof: [
         '取 Breen–Deligne 左消解 $F(M)^{\\bullet} \\twoheadrightarrow M$（每一项是有限个 $\\mathbb{Z}\\cdot M^{s_{n,i}}$ 的直和）。',

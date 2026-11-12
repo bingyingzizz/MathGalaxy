@@ -449,8 +449,9 @@
       ].join('\n'),
       note: '交比之所以值得定义，就是因为它是 $\\operatorname{PGL}(2,\\mathbb{C})$ 下唯一的不变量。' },
 
-    {id: "e95.implication", kind: 'implication', sources: ['def.cross-ratio', 'prop.mobius-three-points'],
-      target: 'prop.cross-ratio-real',
+    {id: "e95.implication", kind: 'implication', sources: ['def.cross-ratio', 'prop.mobius-three-points'
+      ],
+      layer: false, target: 'prop.cross-ratio-real',
       title: '把三点送到 $0,1,\\infty$，第四点的像就是交比',
       proof: [
         '由 `prop.mobius-three-points`，取唯一的分式线性变换 $T$ 使 ' +
@@ -460,7 +461,7 @@
           '(0, 1; \\infty, Tz_{4}) = Tz_{4}$。',
         '',
         '于是「交比为实」$\\iff$「$Tz_{4}$ 在实轴上」$\\iff$「$z_{4} \\in T^{-1}(\\mathbb{R})$」。' +
-          '而 $T^{-1}(\\mathbb{R})$ 是一条直线或一个圆（`prop.mobius-circle`），' +
+          '而 $T^{-1}(\\mathbb{R})$ 是一条直线或一个圆（分式线性变换把实轴映成直线或圆，同层事实），' +
           '它经过 $z_{1}, z_{2}, z_{3}$，所以四点在同一个圆或直线上。∎',
       ].join('\n'),
       note: '把「共圆」翻译成「一个复数是不是实数」——这是复数几何的基本动作。' },
@@ -529,11 +530,12 @@
         '',
         '**自同构只有这些**：若 $\\varphi$ 是 $\\widehat{\\mathbb{C}}$ 的双全纯自同构且 ' +
           '$\\varphi(\\infty) = \\infty$，则 $\\varphi$ 是整函数且单射，由 Liouville 型论证' +
-          '（`thm.liouville`）知它是 $az + b$；一般情形先复合 $z \\mapsto 1/(z - z_{0})$ 归结之。∎',
+          '（Liouville 定理）知它是 $az + b$；一般情形先复合 $z \\mapsto 1/(z - z_{0})$ 归结之。∎',
       ].join('\n'),
       note: '群结构解释了「三点定变换」：等号左边的群在扩充平面上是 3-可迁的。' },
 
-    {id: "e101.implication", kind: 'implication', sources: ['def.mobius', 'prop.mobius-circle'], target: 'prop.standard-maps',
+    {id: "e101.implication", kind: 'implication', sources: ['def.mobius', 'prop.mobius-circle',
+        'prop.exp-local-inverse'], target: 'prop.standard-maps',
       title: '用保圆性与幂/指数把区域搬到标准位置',
       proof: [
         '逐条来自 `def.mobius`（分式线性）与 `def.complex-elementary`（幂、指数、对数）：',
@@ -589,7 +591,7 @@
       title: '$z + 1/z$ 把同心圆映成共焦椭圆',
       proof: [
         '由 `def.mobius` 的眼光看，$w = \\tfrac12(z + 1/z)$ 是 $z$ 与 $1/z$ 的对称组合：' +
-          '它在 $z \\mapsto 1/z$（一个反演，见 `def.symmetric-point`）下不变。',
+          '它在 $z \\mapsto 1/z$（一个反演，见 反演（对称点））下不变。',
         '',
         '**参数计算**：令 $z = r e^{i\\theta}$，则',
         '',
@@ -623,5 +625,7 @@
       note: 'S–C 存在性的 (i)（多边形边界是 Jordan 曲线，共形映射连续延拓、边界点一一对应）由边界对应定理提供；引用它而不是直接引用 `thm.riemann-mapping`。',
     },
 
+    {"id":"dep.n12-crossratio-mobiuscircle","kind":"definition","definition":"def.cross-ratio","usedBy":"prop.mobius-circle","note":"交比在分式线性变换下不变，是判定四点共圆/共线的工具。"},
+    {"id":"dep.n12-complexelem-standardmaps","kind":"definition","definition":"def.complex-elementary","usedBy":"prop.standard-maps","note":"幂、指数、对数等初等函数是标准共形映射的构件。"},
   ],
 });

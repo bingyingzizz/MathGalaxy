@@ -331,11 +331,15 @@ function exportJSON(MG, graph) {
       xref: XREF[n.id] || undefined,
     })),
 
+    /* 边（A8）：kind ∈ definition | implication | analogy | equivalence。
+       status: 只有「这条边连着的节点是 skeleton」时才出现，值恒为 'skeleton'，
+       缺省 = 正常边（⛔ 别把 3000 多条正常边全写上）。消费方可据此把骨架边灰显/标注。 */
     edges: graph.edges.map(e => {
       const strength = strengthOf(e);
       if (e.kind === 'equivalence') {
         return {
           id: e.id, kind: e.kind, strength, a: e.a, b: e.b,
+          status: e.status || undefined,
           title: e.title || '', note: e.note || '',
           proofs: (e.proofs || []).map(p => ({ label: p.label, text: p.text })),
         };
@@ -343,6 +347,7 @@ function exportJSON(MG, graph) {
       if (e.kind === 'definition') {
         return {
           id: e.id, kind: e.kind, strength,
+          status: e.status || undefined,
           definition: e.definition, usedBy: e.usedBy,
           note: e.note || '',
         };
@@ -350,11 +355,13 @@ function exportJSON(MG, graph) {
       if (e.kind === 'analogy') {
         return {
           id: e.id, kind: e.kind, strength, a: e.a, b: e.b,
+          status: e.status || undefined,
           title: e.title || '', note: e.note || e.proof || '',
         };
       }
       return {
         id: e.id, kind: e.kind, strength,
+        status: e.status || undefined,
         sources: e.sources, target: e.target,
         /* ⭐ `layer:false` = 「推论」边：真推出，但**不参与分层**（见 core/graph.js
            的 isDerived）。只在为 false 时才出现 —— 普通边不加这个键，免得
