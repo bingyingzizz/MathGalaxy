@@ -1263,7 +1263,7 @@ MG.i18nStatements = {
         'From any family of non-empty sets one can pick one element from each, "all at once". ' +
         'Written in terms of a choice function:\n\n' +
         '$\\operatorname{dom}$ is defined only for functions, so the assertion says: "there is a function $f$ with $\\operatorname{dom} f = F$, and $f(X) \\in X$ for every $X \\in F$\":\n\n' +
-        '$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( \\operatorname{dom} f = F \\wedge  \\forall X \\in F, f(X) \\in X ) ]$\\\n\n' +
+        '$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( \\operatorname{dom} f = F \\wedge  \\forall X \\in F, f(X) \\in X ) ]$\n' +
         'Another common form (pairwise disjoint form): if $F$ is a family of pairwise disjoint ' +
         'non-empty sets, then there is a set $C$ with $\\#(C \\cap X) = 1$ for every $X \\in F$.\n\n' +
         'The choice function $f$ is the device for "picking all at once"; AC asserts that such a ' +
@@ -1279,14 +1279,14 @@ MG.i18nStatements = {
     'def.subset': {
       statement: {
         en:
-'Let $A$ and $B$ be sets.\\n\\n' +
+'Let $A$ and $B$ be sets.\n\n' +
 '- **$A$ is a subset of $B$** (written $A \\subseteq B$): ' +
-'$\\forall x ( x \\in A \\to x \\in B )$\\n' +
+'$\\forall x ( x \\in A \\to x \\in B )$\n' +
 '- **$A$ is a proper subset of $B$** (written $A \\subset B$): $A \\subseteq B$ and ' +
-'$A \\ne B$.\\n\\n' +
+'$A \\ne B$.\n\n' +
 'Basic properties: $\\subseteq$ is reflexive and transitive; and by the axiom of ' +
-'extensionality, two sets are equal exactly when they contain each other:\\n\\n' +
-'$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$\\n\\n' +
+'extensionality, two sets are equal exactly when they contain each other:\n\n' +
+'$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$\n\n' +
 'This is the most common way to prove two sets equal: **containment both ways**.',
         status: 'reviewed', basedOn: 'v0.9.3#6fb94ac5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },

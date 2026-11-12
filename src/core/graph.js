@@ -549,6 +549,15 @@
     return set.filter(function (e) { return edgeNodes(e).indexOf(id) >= 0; });
   }
 
+  /** 这个节点有没有**独立英文 HTML 页**（`nodes/<id>.en.html`）。
+      ⚠️ 判据必须与 `tools/sitepages.mjs` 的 `hasEnHtmlOf()` **完全一致**：有英文摘要
+         或英文陈述。全库只认这一条 —— 站点据此决定生成不生成英文页，面板据此决定
+         链接进 `.en.html` 还是中文 `.html`；两边判据一漂就会出现「点进去 404」。
+      ⚠️ 这里不碰 `title_en/label_en`：只有英文名字的节点没有英文正文，站点不生成英文页。 */
+  function hasEnHtml(n) {
+    return !!(n && (String(n.abstract_en || '').trim() || String(n.statement_en || '').trim()));
+  }
+
   MG.buildGraph = buildGraph;
   MG.graphUtil = {
     edgeNodes: edgeNodes,
@@ -558,6 +567,7 @@
     isDerived: isDerived,
     visibleEdges: visibleEdges,
     visibleEdgesOf: visibleEdgesOf,
+    hasEnHtml: hasEnHtml,
     toArray: toArray
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -320,6 +320,11 @@ function exportJSON(MG, graph) {
       /* 英文入口页（T3.1）：有英文名或摘要的节点另出一份 `nodes/<id>.en.md`。
          这里只登记**有没有**，路径按约定拼 —— 消费方不必猜。 */
       en_page: (n.title_en || n.label_en || n.abstract_en) ? `nodes/${n.id}.en.md` : undefined,
+      /* 独立英文 HTML 页（`nodes/<id>.en.html`）有没有 —— 判据与 tools/sitepages.mjs
+         的 hasEnHtmlOf() 完全一致（有英文摘要或英文陈述才生成英文页）。
+         ⚠️ 与上面的 en_page 不是一回事：en_page 只要英文名/摘要就登记 Markdown 入口，
+             但英文 HTML 页必须有英文**正文**。面板拿这个字段决定「独立页面」进哪一版。 */
+      en_html: MG.graphUtil.hasEnHtml(n),
       region: n.regions[0] || null,
       regions: n.regions,
       cluster: n.cluster || null,

@@ -628,8 +628,13 @@
       var href = '';
       try { href = String(location.href); } catch (e) { href = ''; }
       var onSite = /^https?:$/.test(location.protocol) && href.indexOf(origin) === 0;
-      return onSite ? 'nodes/' + encodeURIComponent(id) + '.html'
-        : origin + 'nodes/' + encodeURIComponent(id) + '.html';
+      /* ⭐ 英文模式且这个节点有独立英文页 ⇒ 进 `.en.html`；没有英文页的节点仍进中文页
+         （中文始终是权威版，站点只为有英文正文的节点生成英文页 —— 判据见
+         `MG.graphUtil.hasEnHtml`，与 tools/sitepages.mjs 的 hasEnHtmlOf() 同一口径）。 */
+      var n = view.graph && view.graph.byId && view.graph.byId[id];
+      var en = !!(MG.isEn && n && MG.graphUtil && MG.graphUtil.hasEnHtml(n));
+      var file = 'nodes/' + encodeURIComponent(id) + (en ? '.en.html' : '.html');
+      return onSite ? file : origin + file;
     }
 
     /* -------------------------------------------------- 引用此节点（T1.4） */
@@ -651,8 +656,12 @@
       var n = view.graph.byId[id];
       var en = n && (n.title_en || n.label_en);
       var inside = [en, v ? '内容 ' + v : ''].filter(Boolean).join('，');
+      /* 引文里的地址跟界面语言走：英文模式引英文页（与面板「独立页面」同一判据），
+         没英文页的节点仍引中文页 —— 引到一个不存在的 .en.html 比中文页更糟。 */
+      var hasEn = !!(n && MG.graphUtil && MG.graphUtil.hasEnHtml(n));
+      var suffix = (MG.isEn && hasEn) ? '.en.html' : '.html';
       var text = 'MathGalaxy 节点 ' + id + (inside ? '（' + inside + '）' : '') + '\n' +
-        siteOrigin() + 'nodes/' + encodeURIComponent(id) + '.html';
+        siteOrigin() + 'nodes/' + encodeURIComponent(id) + suffix;
       return copyText(text);
     }
     /** 复制：先走异步剪贴板，失败退回 execCommand，再失败就如实报 false。 */
