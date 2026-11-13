@@ -713,7 +713,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '证法：由凸闭集投影，(1) 的「$\\implies$」把 $z$ 换成 $\\pm z$ 消掉实部得 $\\operatorname{Re}\\langle x - y, z\\rangle \\le 0$ 对所有 $z \\in E$，即 $x - y \\perp E$；\n\n「$\\Longleftarrow$」用 $\\|x - z\\|^2 = \\|x - y\\|^2 + \\|y - z\\|^2 \\ge \\|x - y\\|^2$。\n\n(2) 用 $\\alpha_1 x_1 + \\alpha_2 x_2 - \\alpha_1 P x_1 - \\alpha_2 P x_2 \\perp E$。\n\n(3) 勾股定理。',
-        '⚠️ 「$E$ 闭」不能去掉：$E = $ 有限支撑序列在 $\\ell^2$ 里稠密但不闭，最近点存在但**不落在 $E$ 里**，正交分解也失效。',
+        '⚠️ 「$E$ 闭」不能去掉：$E = $ 有限支撑序列在 $\\ell^2$ 里稠密但不闭，距离为零但取不到，故**不存在** $E$ 中的最近点，正交分解也失效。',
         '⭐ 这条是 Hilbert 空间与一般 Banach 空间的最大区别之一：一般 Banach 空间里闭子空间不一定有补（$c_0 \\subset \\ell^\\infty$ 就没有），所以「投影」这个词在 Banach 空间里不能乱用。',
         ,
         '**各方向用到的假设**（正交刻画不靠完备性，全局分解靠投影存在）：\n' +
@@ -887,9 +887,8 @@ window.MG = window.MG || {};
       id: 'thm.separable-hilbert-is-l2',
       cluster: 'fa.hilbert',
       type: 'theorem',
-      hypotheses: ['可分'],
       label: '可分 Hilbert 空间等距于 ℓ²',
-      title: '可分 Hilbert 空间等距同构于 $\\ell^2$',
+      title: 'Hilbert 空间等距同构于 $\\ell^2(I)$',
       regions: ['functional-analysis'],
       tags: ['泛函分析', 'Hilbert 空间', '同构'],
       statement: [
@@ -900,7 +899,7 @@ window.MG = window.MG || {};
         '由 Bessel 它入 $\\ell^2$、由 Parseval 它保范；\n\n' +
         '满射性：若 $(\\lambda_i) \\in \\ell^2$，则部分和 $\\sum_{i \\in J}\\lambda_i e_i$ 是 Cauchy（$\\|\\sum_{J \\setminus J\'}\\lambda_i e_i\\|^2 = \\sum_{J \\setminus J\'}|\\lambda_i|^2$），其极限的坐标就是 $\\lambda_i$。',
         '⭐ 结论：**可分无穷维 Hilbert 空间在等距意义下只有一个**。Banach 空间完全不是这样：$\\ell^p$（不同 $p$）两两不同构，$C[0,1]$、$L^1$、$c_0$ 也各自不同。这就是「Hilbert 空间简单」的确切含义。',
-        '⚠️ 「可分」不能去掉：$\\ell^2(I)$（不可数 $I$）与 $\\ell^2(J)$ 同构 $\\iff \\#I = \\#J$（用正交基的基数比）。'
+        '⚠️ 若把靶空间固定为 $\\ell^2(\\mathbb{N})$，则「可分」不能去掉：不可数 $I$ 的 $\\ell^2(I)$ 与 $\\ell^2(\\mathbb{N})$ 不同构（用正交基基数比）。'
       ].join('\n\n'),
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
     },
@@ -1420,7 +1419,7 @@ window.MG = window.MG || {};
     { id: 'def-link.mp-ref', kind: 'definition', definition: 'def.reflexive-space',
       usedBy: 'thm.milman-pettis',
       note: 'Milman–Pettis 的结论：自反。' },
-    {status: 'skeleton',  id: 'def-link.james-ref', kind: 'definition', definition: 'def.reflexive-space',
+    { id: 'def-link.james-ref', kind: 'definition', definition: 'def.reflexive-space',
       usedBy: 'thm.james',
       note: 'James 定理用自反性刻画「每个泛函达到范数」。' },
     { id: 'def-link.rieszhil-pp', kind: 'definition', definition: 'def.perfect-pairing',
@@ -1436,7 +1435,7 @@ window.MG = window.MG || {};
     {id: "e165.definition", kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-convex',
       note: '投影定理的另一个核心假设：$C$ 闭（极小化序列的极限仍落在 $C$ 里）。' },
     {id: "e166.definition", kind: 'definition', definition: 'def.closed-set', usedBy: 'thm.projection-subspace',
-      note: '正交分解要求子空间 $E$ 闭；否则最近点可能不落在 $E$ 里。' },
+      note: '正交分解要求子空间 $E$ 闭；否则最近点可能不存在。' },
     {id: "e167.definition", kind: 'definition', definition: 'def.hilbert-space', usedBy: 'thm.projection-subspace',
       note: '正交投影与正交分解在 Hilbert 空间中进行，完备性用于调用凸闭集投影。' },
     {id: "e168.definition", kind: 'definition', definition: 'def.convex-set', usedBy: 'def.convex-hull',
@@ -1601,7 +1600,6 @@ window.MG = window.MG || {};
     {"id":"dep.gs-weakstar","kind":"definition","definition":"def.weak-star-topology","usedBy":"thm.goldstine","note":"弱*拓扑是 $X^{**}$ 上由 $X^{*}$ 生成的逐点收敛拓扑，本条只用其半范数刻画。"},
     {"id":"imp.milman-pettis","kind":"implication","sources":["thm.goldstine","def.uniformly-convex"],"target":"thm.milman-pettis","title":"Goldstine + 一致凸 $\\implies$ 自反","proof":"设 $\\xi \\in B_{X^{**}}$。Goldstine 给网 $(x_\\alpha) \\subset B_X$ 弱*收敛到 $\\xi$；取 $\\varphi$ 使 $\\operatorname{Re}\\varphi(\\xi) > 1 - \\delta/2$ 得 $\\|x_\\alpha\\| \\to 1$；归一化后由一致凸知 $(y_\\alpha)$ 是范数 Cauchy，故 $x_\\alpha \\to x \\in X$；弱*极限唯一给出 $\\xi = J_X x$，$J_X$ 满射。详见节点注。∎","note":"本条把 Milman–Pettis 归到 Goldstine（`thm.goldstine`）这一个外部定理上；Goldstine 自身由 `thm.hahn-banach` 与 `thm.banach-alaoglu` 支撑。"},
         {
-      status: 'skeleton',
       id: 'imp.james-banach-alaoglu',
       kind: 'implication',
       sources: ['thm.banach-alaoglu'],
@@ -1609,7 +1607,7 @@ window.MG = window.MG || {};
       title: 'Banach–Alaoglu：自反 $\\implies$ $B_X$ 弱紧',
       proof: "先看 $(\\Longrightarrow)$，即自反的情形。设 $X$ 自反，则 $J_X(B_X)=B_{X^{**}}$。由 `thm.banach-alaoglu`，$B_{X^{**}}$ 弱*紧；而 $X$ 的弱拓扑就是沿 $J_X$ 拉回的弱*拓扑，故 $B_X=J_X^{-1}(B_{X^{**}})$ 弱紧。于是任取 $\\varphi\\in X^{*}$，$|\\varphi|$ 在弱紧集 $B_X$ 上达到最大值 $\\|\\varphi\\|$，即存在 $x\\in B_X$ 使 $\\varphi(x)=\\|\\varphi\\|$。∎",
     },
-    {status: 'skeleton', "id":"dep.james-weak","kind":"definition","definition":"def.weak-topology","usedBy":"thm.james","note":"弱拓扑 $\\sigma(X,X^{*})$ 是「使 $X^{*}$ 全部连续」的最弱拓扑；正向用它把 $\\varphi$ 变成弱连续函数。"},
+    { "id":"dep.james-weak","kind":"definition","definition":"def.weak-topology","usedBy":"thm.james","note":"弱拓扑 $\\sigma(X,X^{*})$ 是「使 $X^{*}$ 全部连续」的最弱拓扑；正向用它把 $\\varphi$ 变成弱连续函数。"},
     {
       "id": "imp.metric-compact-equiv-proof",
       "kind": "implication",

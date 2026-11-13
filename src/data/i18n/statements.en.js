@@ -4060,5 +4060,525 @@ MG.i18nStatements = {
         basedOn: 'v0.9.3#bd8918ef',
       },
     },
+
+    'def.norm': {
+      statement: {
+        en: "Let $E$ be a vector space over $\\mathbb{K}$ ($\\mathbb{K} = \\mathbb{R}$ or $\\mathbb{C}$). A function $\\|\\cdot\\| : E \\to [0, +\\infty)$ is called a **norm** if\n\n1. $\\|x\\| = 0 \\iff x = 0$;\n2. $\\|\\lambda x\\| = |\\lambda|\\,\\|x\\|$;\n3. $\\|x + y\\| \\le \\|x\\| + \\|y\\|$.\n\nA space equipped with a norm is a **normed space**. One satisfying only 2 and 3 (allowing nonzero elements to have zero norm) is a **seminorm**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3ac74b39',
+      },
+      notes: {
+        en: "What a norm has beyond a distance is **linearity**: it records only \"how far from the origin\", and distances are obtained by translation (see \"the distance induced by a norm\"). So a normed space is a metric space \"with an origin, a scale, and translation invariance\".\n\n⚠️ A seminorm is not a norm: one must pass to the quotient by the zero-norm subspace to get a norm (in the construction of $L^p$, \"$\\|f\\|_p = 0$ only says $f = 0$ a.e.\" is exactly this; see \"the $L^p$ norm\").\n\n**Which hypothesis each direction uses** (the equivalences among the norm axioms and the facts derived from them must be kept separate):\n- **Norm** $\\iff$ **the three axioms**: both directions are expansions of the definition, and neither completeness nor finite dimension is needed.\n- $x=0\\implies\\|x\\|=0$: follows by taking the scalar to be zero in absolute homogeneity; the converse is the positive-definiteness axiom and cannot be derived from homogeneity and the triangle inequality.\n- Seminorm $\\implies$ norm holds only when the zero space is trivial; the zero function on a nontrivial space is a counterexample. Well-definedness of the norm on the quotient by the zero space uses the triangle inequality, not the axiom of choice.\n\n📌 **Normed space** is defined in `def.normed-space`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#62e48f61',
+      },
+    },
+
+    'def.banach-space': {
+      statement: {
+        en: "A normed space $V$ is **complete** iff it is complete with respect to the metric $d(v, w) = \\|v - w\\|$, i.e. every Cauchy sequence converges. A complete normed space is a **Banach space**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ddbf3c4a',
+      },
+      notes: {
+        en: "⭐ Three standard examples: $\\mathbb{R}^{n}$ (completeness is the finite-dimensional version of `thm.real-complete-metric`), $L^{p}$ (`thm.lp-banach`, Riesz–Fischer), and $C(S)$ on a compact Hausdorff space with the sup norm.\n\n⚠ Completeness is not automatic: $C[0, 1]$ with $\\|f\\|_{1} = \\int_0^1 |f|$ is **not** complete (one can approximate a discontinuous function).\n\nThe same set of functions is complete under one norm and incomplete under another — \"complete\" is a property of the norm, not of the set.\n\n⭐ Completeness is the engine of the contraction mapping principle below (`thm.banach-fixed-point`): without it one only gets a Cauchy sequence, not a fixed point.\n\nThe whole constructive proof of the inverse function theorem rests on this.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e7c5b49d',
+      },
+    },
+
+    'thm.int-division': {
+      statement: {
+        en: "Let $a, b \\in \\mathbb{Z}$ with $b \\ne 0$. Then there exist **unique** $q, r \\in \\mathbb{Z}$ such that\n\n$$a = qb + r, \\qquad 0 \\le r < |b| .$$\n\n$q$ is called the **quotient** and $r$ the **remainder**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#26e6a9ce',
+      },
+      notes: {
+        en: "Uniqueness: if $a = qb + r = q'b + r'$, then $(q - q')b = r' - r$, hence $|b| \\mid |r' - r|$; but $|r' - r| < |b|$, so necessarily $r' = r$, and then $q' = q$.\n\nExistence uses the well-ordering of $\\mathbb{Z}$: fix $b > 0$; the set $\\{\\, a - qb : q \\in \\mathbb{Z},\\ a - qb \\ge 0 \\,\\}$ is nonempty (Archimedean property), and its least element is $r$; if $r \\ge b$ then $r - b$ is smaller, a contradiction.\n\nThe corresponding theorem on $K[x]$ is `thm.division-algorithm`: the same proof structure, only \"degree\" is replaced by \"absolute value\" — both are Euclidean domains.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c9ab3c4c',
+      },
+    },
+
+    'thm.division-algorithm': {
+      statement: {
+        en: "Let $K$ be a field, $f, g \\in K[x]$, $g \\ne 0$. Then there exist **unique** $q, r \\in K[x]$ such that\n\n$$f = q\\,g + r, \\qquad \\deg r < \\deg g$$\n\n($r$ is called the **remainder**, $q$ the **quotient**; $r = 0$ is allowed.)\n\nConsequently $K[x]$ is a **Euclidean domain**: there is a Euclidean function \"degree\" satisfying $\\deg r < \\deg g$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#443bcab8',
+      },
+      notes: {
+        en: "⭐ \"$K$ is a field\" cannot be dropped: over the ring $\\mathbb{Z}[x]$ there is no division with remainder ($x^{2}$ divided by $2x + 1$ does not produce a polynomial quotient).\n\nIts role is to guarantee that the **leading coefficient is invertible**, so that the highest-degree term can be eliminated.\n\n⭐ The consequences are far-reaching: division with remainder gives the **Euclidean algorithm** (for the gcd), hence **Bézout's identity** ($af + bg = \\gcd$), hence \"irreducible $\\implies$ prime\", hence **unique factorization** (`thm.poly-ufd`).\n\nEuclidean domains are the \"everything works\" class of rings.\n\n⚠ Uniqueness uses comparison of degrees, not \"uniqueness of the division procedure\" — the choices at each step of the division are not unique, but the final quotient and remainder are.",
+        status: 'draft',
+        basedOn: 'v0.9.3#902b9473',
+      },
+    },
+
+    'thm.nth-root': {
+      statement: {
+        en: "Let $K$ be a complete ordered field (e.g. $\\mathbb{R}$), $a > 0$, $n \\ge 1$. Then there exists a **unique** $b > 0$ such that\n\n$$b^{n} = a;$$\n\nWrite $b = \\sqrt[n]{a} = a^{1/n}$. Moreover:\n\n- $a \\mapsto \\sqrt[n]{a}$ is strictly increasing on $(0, +\\infty)$;\n- $\\sqrt[n]{ab} = \\sqrt[n]{a}\\,\\sqrt[n]{b}$, $\\sqrt[n]{a^{m}} = \\left(\\sqrt[n]{a}\\right)^{m}$ ($m \\in \\mathbb{Z}$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#c9db4cad',
+      },
+      notes: {
+        en: "⭐ $n = 2$, $a = 2$ is exactly the **existence of $\\sqrt{2}$**: $\\{q \\in \\mathbb{Q} : q^{2} < 2\\}$ has no least upper bound in $\\mathbb{Q}$, but does in $\\mathbb{R}$ — that least upper bound is $\\sqrt{2}$.\n\nSo this theorem is the first concrete construction of \"what $\\mathbb{R}$ has beyond $\\mathbb{Q}$\".\n\n⭐ The proof is a **template for the least upper bound principle**: let $S = \\{t \\ge 0 : t^{n} \\le a\\}$, take $b = \\sup S$, then prove $b^{n} = a$ (neither inequality may be strict: if too small, raise a little; if too large, lower a little).\n\n⚠ The two estimates go in opposite directions: raising uses the **binomial theorem** (**one cannot keep only the first-order term**: from the binomial expansion $ (b+h)^{n} - b^{n} = h\\sum_{k\\ge1}\\binom{n}{k} b^{n-k} $, take $0 < h \\le 1$ and then make $h$ small enough), while lowering uses **Bernoulli** ($(1 - h/b)^{n} \\ge 1 - nh/b$).\n\nThis is where `thm.binomial` and `thm.bernoulli` are first genuinely used in the graph.\n\n⚠ Uniqueness rests on **strict monotonicity**: $0 \\le u < v \\implies u^{n} < v^{n}$ (factorization $v^{n} - u^{n} = (v-u)(v^{n-1} + \\cdots + u^{n-1}) > 0$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#b233302a',
+      },
+    },
+
+    'thm.mean-value-multi': {
+      statement: {
+        en: "**Mean value theorem**: let $f : U \\to \\mathbb{R}$ be differentiable on the open set $U \\subseteq \\mathbb{R}^{n}$, with $a, a + h \\in U$ and the segment $[a, a+h] \\subset U$. Then there exists $\\theta \\in (0, 1)$ such that\n\n$$f(a + h) - f(a) = Df(a + \\theta h)(h)$$\n\n**Mean value inequality**: if $f : U \\to \\mathbb{R}^{m}$ is differentiable, then\n\n$$\\|f(a + h) - f(a)\\| \\le \\Bigl( \\sup_{[a, a+h]} \\|Df\\| \\Bigr) \\|h\\|$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#e94a7fbd',
+      },
+      notes: {
+        en: "⭐ The one-dimensional mean value theorem rests on Rolle, and Rolle on \"a continuous function on a closed interval attains its extrema\" — and **multivariable calculus has no such thing** (the equality version is **false** for $\\mathbb{R}^{m}$-valued functions: $f(t) = (\\cos t, \\sin t)$ goes once around a circle, $f(2\\pi) - f(0) = 0$, yet $Df$ is nowhere zero and $\\|Df\\| = 1$).\n\n⭐ So what is really useful in several variables is the **inequality version**: it needs only \"apply the one-variable mean value theorem along a line segment + estimate the norm\", and no existence of extrema.\n\nThe contraction mapping principle and the inverse function theorem later use nothing but this.\n\n⚠ In the scalar case ($f$ has values in $\\mathbb{R}$) the equality version needs care: the usual proof applies the one-dimensional MVT to $\\varphi(t) = f(a + th)$ and yields \"there exists $\\theta$ with $f(a+h) - f(a) = Df(a + \\theta h)(h)$\" — here $\\theta$ depends on $h$ and cannot be treated as a constant.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7ef0fb14',
+      },
+    },
+
+    'thm.taylor-multi': {
+      statement: {
+        en: "Let $U \\subseteq \\mathbb{R}^{n}$ be open, $f : U \\to \\mathbb{R}$ of class $C^{k+1}$, $a \\in U$. Then for $h$ sufficiently small,\n\n$$f(a + h) = \\sum_{|\\alpha| \\le k} \\frac{D^{\\alpha} f(a)}{\\alpha!}\\, h^{\\alpha} + R_k(h)$$\n\nwhere the remainder can be written (for some $\\theta \\in (0,1)$)\n\n$$R_k(h) = \\sum_{|\\alpha| = k+1} \\frac{D^{\\alpha} f(a + \\theta h)}{\\alpha!}\\, h^{\\alpha} = O\\bigl(\\|h\\|^{k+1}\\bigr)$$\n\nThe two most-used cases:\n\n$$f(a+h) = f(a) + Df(a)(h) + o(\\|h\\|)$$\n\n$$f(a+h) = f(a) + Df(a)(h) + \\frac{1}{2}\\, D^{2}f(a)(h, h) + o\\bigl(\\|h\\|^{2}\\bigr)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#20ac58cc',
+      },
+      notes: {
+        en: "⭐ Key observation: **the second derivative $D^{2}f(a)$ is a symmetric bilinear form on $\\mathbb{R}^{n}$**, not \"a bunch of second partials\".\n\nIn the formula for $k = 2$, $D^{2}f(a)(h,h)$ is precisely $\\sum_{i,j} \\partial_i \\partial_j f(a)\\, h_i h_j = h^{\\mathsf{T}} H_f(a)\\, h$.\n\n⭐ Thus multivariable Taylor meets linear algebra directly: $h^{\\mathsf{T}} H h$ is a **quadratic form**, and positive definiteness of quadratic forms has a ready criterion (`thm.sylvester-criterion`) — the second derivative test (`thm.second-derivative-test`) is this formula plus that criterion.\n\n⚠ Pitfall in the proof: applying one-variable Taylor to $t \\mapsto f(a + th)$ gives an expansion **only along one line**, and the $\\theta$ in the remainder depends on $h$.\n\nTo get uniformity in all $h$, one must induct on $k$ and write the remainder as a sum over multi-indices, using the one-variable MVT once per layer (or iterating over the coordinates of $h$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#52015d28',
+      },
+    },
+
+    'thm.matrix-linear-map': {
+      statement: {
+        en: "Let $V$ have ordered basis $\\mathcal{B} = (v_1, \\ldots, v_n)$ and $W$ have ordered basis $\\mathcal{C} = (w_1, \\ldots, w_m)$, both finite-dimensional $K$-vector spaces.\n\nThe $m \\times n$ matrix $[T]_{\\mathcal{B}}^{\\mathcal{C}}$ is called the **matrix** of $T$ with respect to these two bases, where the $j$-th column is the coordinate vector of $T(v_j)$ in $\\mathcal{C}$.\n\nThen the map $T \\mapsto [T]_{\\mathcal{B}}^{\\mathcal{C}}$ is an isomorphism of $K$-vector spaces\n\n$$\\operatorname{Hom}_K(V, W) \\;\\cong\\; M_{m \\times n}(K)$$\n\nand **composition corresponds to multiplication**: if $T : V \\to W$, $S : W \\to U$, then\n\n$$[S \\circ T]_{\\mathcal{B}}^{\\mathcal{E}} = [S]_{\\mathcal{C}}^{\\mathcal{E}}\\; [T]_{\\mathcal{B}}^{\\mathcal{C}}$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#02b03eda',
+      },
+      notes: {
+        en: "⭐ This is the **birth certificate** of all matrix theory: a matrix is not a defined object but the **coordinates** of a linear map in chosen bases (exactly the same mechanism as the entry on coordinates, only with a basis chosen on each side).\n\n⭐ Thus every matrix operation acquires meaning: addition = sum of maps, multiplication = composition, identity matrix = identity map, invertible = isomorphism.\n\n**Every formula about matrices can be translated into the language of maps**, and conversely — this is why the graph puts the two in separate clusters yet connects them by edges.\n\n⚠ All of this **depends on the choice of bases**: change the basis and the matrix changes. **The same space** $V = W$ with the same basis used on both sides gives **similarity** $P^{-1}AP$; for a general $T : V \\to W$ the two bases change independently and one gets **equivalence** $Q^{-1}AP$ (e.g. $V = W = \\mathbb{R}$, $T = \\mathrm{id}$: changing only the basis of the domain to $(2)$ gives $[2]$, which is not similar to $[1]$).\n\nThe linear map itself, however, does not change.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f22335a9',
+      },
+    },
+
+    'thm.arzela-ascoli': {
+      statement: {
+        en: "Let $X$ be a compact metric space, and let $\\mathcal{F} \\subset C(X)$ (continuous functions with the sup norm) satisfy\n\n1. **Uniformly bounded**: there exists $M$ such that $|f(x)| \\le M$ for all $f \\in \\mathcal{F}$, $x \\in X$;\n2. **Equicontinuous**: for every $\\forall \\varepsilon > 0$ there exists $\\delta > 0$ such that $d(x, y) < \\delta$ implies $|f(x) - f(y)| < \\varepsilon$ for **all** $f \\in \\mathcal{F}$ simultaneously.\n\nThen $\\mathcal{F}$ is **relatively compact** in $C(X)$: every sequence in $\\mathcal{F}$ has a subsequence converging in the sup norm.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dc9be25c',
+      },
+      notes: {
+        en: "**Proof (diagonal argument)**: since $X$ is compact, $\\implies$ one may take a countable dense set $\\{x_{1}, x_{2}, \\ldots\\}$. By uniform boundedness, $\\{f_{n}(x_{1})\\}$ has a convergent subsequence; from it choose a subsequence for which $\\{f_{n}(x_{2})\\}$ converges; continuing layer by layer and taking the diagonal $g_{k} := f_{n_{k}}$, we get that $g_{k}(x_{j})$ converges for every $j$.\n\n**Upgrading pointwise convergence to uniform convergence**: given $\\varepsilon$, use equicontinuity to choose $\\delta$; cover $x_{1}, \\ldots, x_{N}$ by finitely many $\\delta$-balls $X$.\n\nFirst take $K$ such that $j \\le N$ implies $|g_{k}(x_{j}) - g_{l}(x_{j})| < \\varepsilon$ ($k, l \\ge K$), then for arbitrary $x$ choose the nearest $x_{j}$ and use equicontinuity to bound $|g_{k}(x) - g_{l}(x)|$ by $3\\varepsilon$.\n\n∎\n\n⭐ **Each hypothesis governs one thing**: boundedness guarantees \"at each point there is a convergent subsequence\", while equicontinuity guarantees \"the same subsequence converges at all points simultaneously\". Dropping either one gives a counterexample ($f_{n}(x) = x^{n}$ is bounded but not equicontinuous; $f_{n}(x) = n$ is equicontinuous but not uniformly bounded).\n\n⚠️ The graph attaches this to complex analysis because Montel's theorem is exactly it plus Cauchy's inequality: for holomorphic functions, **uniform boundedness automatically gives equicontinuity** (through bounds on the derivative) — a convenience unique to complex analysis.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dc242eaa',
+      },
+    },
+
+    'thm.montel': {
+      statement: {
+        en: "Let $\\mathcal{F}$ be a family of holomorphic functions on a domain $\\Omega$ that is **locally uniformly bounded**: every point has a neighbourhood on which the family is uniformly bounded (equivalently: uniformly bounded on every compact set $K \\subset \\Omega$). Then $\\mathcal{F}$ is a **normal family**: every sequence $f_{n} \\in \\mathcal{F}$ has a subsequence converging uniformly on compact subsets (with holomorphic limit).",
+        status: 'draft',
+        basedOn: 'v0.9.3#8b89fef9',
+      },
+      notes: {
+        en: "**Proof**: take a compact exhaustion $K_{1} \\subset K_{2} \\subset \\cdots$, $\\bigcup K_{j} = \\Omega$. On $K_{j}$, by the **Cauchy inequality**: if $|f| \\le M_{j}$ throughout a neighbourhood of $K_{j}$ of radius $r$, then $|f'| \\le M_{j}/r$ on $K_{j}$ — the bound is independent of $f$, so $\\mathcal{F}$ is **equicontinuous** on $K_{j}$.\n\nUniform boundedness is supplied by hypothesis, so `thm.arzela-ascoli` gives a convergent subsequence on $K_{j}$;\n\ntaking diagonals successively over $j = 1, 2, \\ldots$ yields a subsequence converging uniformly on **every** $K_{j}$, i.e. uniformly on compact subsets.\n\n**The limit is holomorphic**: by `thm.weierstrass-convergence`. ∎\n\n⭐ **Relation to compactness**: Montel says \"$\\mathcal{F}$ is relatively compact\", so every **continuous** functional (e.g. $f \\mapsto |f'(z_{0})|$) attains its maximum on a bounded closed family. The whole strength of the Riemann mapping theorem comes from this one sentence: among the family with \"univalent + $f(z_{0}) = 0$ + $f'(z_{0}) > 0$\", take the one maximising $f'(z_{0})$, then prove it must map onto the disc.\n\n⚠️ \"Locally uniformly bounded\" cannot be weakened to \"pointwise bounded\": $f_{n}(z) = n z$ is pointwise bounded on $\\mathbb{C}$ (constant at each point) but not uniformly bounded on any compact set, and has no locally uniformly convergent subsequence.",
+        status: 'draft',
+        basedOn: 'v0.9.3#399cea64',
+      },
+    },
+
+    'prop.winding-integral': {
+      statement: {
+        en: "Let $\\gamma : [0,1] \\to \\mathbb{C}$ be a piecewise $C^{1}$ closed curve and $a \\notin \\gamma([0,1])$. Then\n\n$$n(\\gamma, a) = \\frac{1}{2\\pi i} \\oint_{\\gamma} \\frac{\\mathrm{d}z}{z - a},$$\n\nIn particular the right-hand side is **always an integer**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7fddbb28',
+      },
+      notes: {
+        en: "**Proof**: first translate $a$ to $0$ (translation does not change the integral). Set $\\varphi(t) := \\displaystyle\\int_{0}^{t} \\frac{\\gamma'(s)}{\\gamma(s)}\\,\\mathrm{d}s$; then $(\\gamma e^{-\\varphi})' = e^{-\\varphi}(\\gamma' - \\varphi'\\gamma) = 0$, so $\\gamma(t) e^{-\\varphi(t)}$ is constant;\n\nfrom $\\varphi(0) = 0$ we get $e^{\\varphi(t)} = \\gamma(t)/\\gamma(0)$.\n\nTake $t = 1$: since $\\gamma(1) = \\gamma(0)$, we have $e^{\\varphi(1)} = 1$, hence $\\varphi(1) \\in 2\\pi i \\mathbb{Z}$. Now $\\varphi(1) = \\oint_{\\gamma} \\mathrm{d}z/z$, so the integral divided by $2\\pi i$ is an integer; it varies continuously with $a$, hence is exactly the winding number (integer-valued + continuous $\\implies$ locally constant).\n\n⭐ **Meaning of the formula**: the winding number was originally the geometric phrase \"how many times the curve turns around the point\"; here it becomes an **integral**, so a \"geometric quantity\" can enter computations — the argument principle uses it to count zeros.\n\n⚠️ The value of the integral is independent of the parametrisation of $\\gamma$ and depends only on orientation: going around the other way changes the sign of the winding number.",
+        status: 'draft',
+        basedOn: 'v0.9.3#10496724',
+      },
+    },
+
+    'prop.integral-linear': {
+      statement: {
+        en: "Let $f, g$ be integrable on $[a, b]$ and $c \\in \\mathbb{R}$. Then $f + g$ and $cf$ are integrable, and\n\n$$\\int_a^b (f + g) = \\int_a^b f + \\int_a^b g, \\qquad \\int_a^b cf = c\\int_a^b f$$\n\nMoreover, for $a < c < b$: $f$ is integrable on $[a, b]$ if and only if it is integrable on $[a, c]$ and $[c, b]$, in which case\n\n$$\\int_a^b f = \\int_a^c f + \\int_c^b f$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#f367a82a',
+      },
+      notes: {
+        en: "⭐ \"Additivity over intervals\" is the most practical property of the Riemann integral: it cuts a problem on a large interval into two halves — and it is also the basis for defining improper integrals later.\n\n⚠ The **product** of two integrable functions is integrable (amplitude estimate: $\\omega(fg) \\le M\\omega(g) + N\\omega(f)$ on each subinterval), but the **quotient** need not be: one must first ensure the denominator stays away from zero.\n\n⭐ Integrability of sums and of products both rest on the amplitude criterion: substitute $\\omega(f + g) \\le \\omega(f) + \\omega(g)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4b97a586',
+      },
+    },
+
+    'thm.projection-subspace': {
+      statement: {
+        en: "Let $H$ be a Hilbert space and $E \\subseteq H$ a **closed** subspace. Then\n\n1. $y = P_E(x) \\iff y \\in E$ and $x - y \\in E^\\perp$;\n2. $P_E$ is linear, and $\\|P_E\\| \\le 1$ (it is $1$ when $E \\ne 0$);\n3. Orthogonal decomposition $H = E \\oplus E^\\perp$, and $\\|x\\|^2 = \\|x - P_E x\\|^2 + \\|P_E x\\|^2$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c978bb78',
+      },
+      notes: {
+        en: "Proof: by the projection onto a closed convex set. For (1), the step \"$\\implies$\" replaces $z$ by $\\pm z$, kills the real part, and gives $\\operatorname{Re}\\langle x - y, z\\rangle \\le 0$ for all $z \\in E$, i.e. $x - y \\perp E$;\n\nthe step \"$\\Longleftarrow$\" uses $\\|x - z\\|^2 = \\|x - y\\|^2 + \\|y - z\\|^2 \\ge \\|x - y\\|^2$.\n\n(2) uses $\\alpha_1 x_1 + \\alpha_2 x_2 - \\alpha_1 P x_1 - \\alpha_2 P x_2 \\perp E$.\n\n(3) is Pythagoras.\n\n⚠️ The word \"closed\" in \"$E$ is closed\" cannot be dropped: for $E = $ the finitely supported sequences are dense in $\\ell^2$ but not closed; the distance is zero but not attained, so **no** nearest point in $E$ exists, and the orthogonal decomposition fails as well.\n\n⭐ This is one of the biggest differences between Hilbert spaces and general Banach spaces: in a general Banach space a closed subspace need not be complemented ($c_0 \\subset \\ell^\\infty$ is not), so the word \"projection\" cannot be used loosely in Banach spaces.\n\n**Which hypothesis each direction uses** (the orthogonal characterisation does not need completeness; the global decomposition needs existence of projections):\n- Nearest point $\\implies$ orthogonality: use variations in arbitrary real multiples of directions in the subspace; in the complex case one must also use purely imaginary multiples, so that vanishing of the real part forces the inner product to vanish.\n- $y\\in E$ and $x-y\\in E^\\perp\\implies y=P_E x$: the Pythagorean identity gives the unique minimiser directly, with no closedness or completeness required; the condition for the orthogonal complement itself is what the definition expands.\n- Every $x$ has an orthogonal decomposition: invoke `thm.projection-convex`, using completeness of the Hilbert space and closedness of $E$; linearity follows from uniqueness of the decomposition, and the norm bound from the Pythagorean identity.\n- Closedness cannot be removed: for $E=c_{00}\\subset\\ell^2$, the distance to $x\\in\\ell^2\\setminus c_{00}$ is zero but not attained, so no nearest point in $E$ exists.\n\n📌 The definition of \"orthogonal projection\" is in `def.orthogonal-projection`; this entry is about the statement that the image of the projection is exactly the closed subspace.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b7ef8e99',
+      },
+    },
+
+    'thm.harmonic-mean-value': {
+      statement: {
+        en: "**In plain words**: the value of a harmonic function at a point equals its average over the circle centred at that point of any radius; it also equals the area average over the disc.\n\nLet $u$ be harmonic on $B(a, R)$, $0 < r < R$. Then\n\n$$u(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} u(a + r e^{i\\theta})\\,\\mathrm{d}\\theta,$$\n\nand (area average)\n\n$$u(a) = \\frac{1}{\\pi r^2}\\iint_{B(a, r)} u(x, y)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#abcb117b',
+      },
+      notes: {
+        en: "⭐ The proof has only two steps: write $u$ as the real part of a holomorphic function $f$ (the disc is simply connected), then take real parts on both sides of the Cauchy integral formula $f(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(a + r e^{i\\theta})\\,\\mathrm{d}\\theta$.\n\n⭐ The converse also holds: if $u$ is continuous and has the circle mean property, then $u$ is harmonic. So the \"mean property\" can serve as another definition of harmonic function — many books do exactly this, to avoid second-order differentiability.\n\n⚠ The mean must be taken over the **whole circle**, not just the few points straight above; nor over an arbitrary closed curve — that is precisely what the Poisson formula answers.\n\n⚠ $u$ need only be harmonic in the **interior** of $B(a, r)$; it is not required to be harmonic on the closed disc.\n\n📌 The mean property immediately yields the maximum principle (see the entry on the maximum principle for harmonic functions), and it is also the starting point for \"holomorphic functions are real-analytic\" (expand the integral into a power series).",
+        status: 'draft',
+        basedOn: 'v0.9.3#f7ad2833',
+      },
+    },
+
+    'def.chaus': {
+      statement: {
+        en: "**Compact Hausdorff spaces** are the topological spaces that are both compact and Hausdorff. Taking them as objects and continuous maps as morphisms gives the category $\\mathbf{CHaus}$. The inclusion functor is denoted $\\mathbf{CHaus} \\hookrightarrow \\mathbf{Top}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c0b291a1',
+      },
+      notes: {
+        en: "Putting compactness and Hausdorffness together is a good bargain: **a compact Hausdorff space is regular and normal**, and a continuous bijection from a compact space to a Hausdorff space is automatically a homeomorphism. Many things that require extra hypotheses in $\\mathbf{Top}$ come for free here.\n\n**Arbitrary limits exist** in $\\mathbf{CHaus}$, and they are exactly the result computed in $\\mathbf{Top}$ (see the entry \"CHaus is a reflective subcategory\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#a139660f',
+      },
+    },
+
+    'def.sheaf': {
+      statement: {
+        en: "Let $\\mathcal{C}$ be a site and $F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$ a presheaf.\n\n- $F$ is called **separated** if for every $X$ and every $R \\in J(X)$, the restriction map\n\n$$\\operatorname{Hom}(h_{X}, F) \\longrightarrow \\operatorname{Hom}(R, F)$$\n\nis **injective**;\n- $F$ is called a **sheaf** if this map is **bijective**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#63e93e16',
+      },
+      notes: {
+        en: "By the Yoneda lemma $\\operatorname{Hom}(h_{X}, F) \\cong F(X)$, this definition can be read as two sentences: the left-hand side is $F(X)$ (global sections), while the right-hand side is \"a compatible family of sections along $R$\":\n\n- **Injective = separatedness**: two global sections that agree on $R$ must be equal;\n- **Bijective = gluing**: any compatible family of sections glues **uniquely** into a global section.\n\nIn the old language of topological spaces ($\\mathcal{C} = \\operatorname{Open}(X)^{\\mathrm{op}}$), these two conditions read: if $s|_{U_{i}} = t|_{U_{i}}$ holds everywhere then $s = t$; and local sections $s_{i}$ that agree on overlaps glue into a global section.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b8449802',
+      },
+    },
+
+    'thm.long-exact': {
+      statement: {
+        en: "Let $\\mathcal{A}$ be an abelian category and $0 \\to K \\to L \\to M \\to 0$ a short exact sequence of complexes. Then there is a **long exact sequence**\n\n$$\\cdots \\to H^{n}(K) \\to H^{n}(L) \\to H^{n}(M) \\xrightarrow{\\ \\delta\\ } H^{n+1}(K) \\to \\cdots$$\n\nwhere $\\delta$ is called the **connecting homomorphism**.\n\nCorollary: $H^{n} : \\mathbf{K}(\\mathcal{A}) \\to \\mathcal{A}$ is a **cohomology functor**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2c342631',
+      },
+      notes: {
+        en: "**What it says**: a short exact sequence of complexes $0 \\to K \\to L \\to M \\to 0$ yields a **long exact sequence** in cohomology, and the **connecting homomorphism** $\\delta : H^{n}(M) \\to H^{n+1}(K)$ in the middle raises the degree by one.\n\n⭐ How $\\delta$ is built: take a representative of $m \\in H^{n}(M)$, lift it along the surjection $L^{n} \\to M^{n}$, then apply $d_{L}$ and land in $K^{n+1}$ — one must show the result is independent of the choice of lift (two lifts differ by a coboundary), and this step is exactly **diagram chasing**.\n\n⚠ This is **not** the same as the long exact sequence of derived functors (the short exact sequence $\\to$ $R^{n}F$ gives a long exact sequence): that one concerns derived functors, this one concerns the cohomology of the complexes themselves.",
+        status: 'draft',
+        basedOn: 'v0.9.3#17fcb23f',
+      },
+    },
+
+    'def.projective-object': {
+      statement: {
+        en: "An object $P$ of a category $\\mathcal{C}$ is called **projective** if the functor $h_{P} = \\operatorname{Hom}_{\\mathcal{C}}(P, -)$ **preserves epimorphisms**. Dually, $I$ is called **injective** if $h^{I}$ sends monomorphisms to epimorphisms.\n\nExpanded as a lifting condition: for every epimorphism $A \\twoheadrightarrow B$ and every $P \\to B$ there exists a lift $P \\to A$ making the triangle commute:\n\n$$\\begin{array}{ccc} & P & \\\\ \\swarrow & \\downarrow & \\searrow \\\\ A & \\twoheadrightarrow & B \\end{array}$$\n\nDually, injectivity of $I$ says that every $A \\rightarrowtail B$ and every $A \\to I$ extend to $B \\to I$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#36504573',
+      },
+      notes: {
+        en: "The name \"projective\" comes from module theory: the projective objects of $R\\text{-}\\mathbf{Mod}$ are exactly the projective modules, and the injective objects are exactly the injective modules — the two standard criteria ($P$ is a direct summand, $I$ is a direct summand) are this definition specialised to modules.\n\nTwo immediate corollaries: **if $P$ is projective, every epimorphism $Y \\twoheadrightarrow P$ has a section**; **if $X \\to Y$ has a retraction and $Y$ is projective, then $X$ is projective too** (the injective case is dual).\n\nIn $\\mathbf{Set}$ **every object is projective**, and this is precisely the axiom of choice: given a surjection $A \\twoheadrightarrow B$ and a point of $B$, one can always choose a preimage.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a2c94ab1',
+      },
+    },
+
+    'def.principal-curvature': {
+      statement: {
+        en: "The eigenvalues of $W$ (equivalently, of the symmetric matrix $(h_{ij})$) are called the **principal curvatures**, denoted $k_{1} \\ge k_{2}$; the corresponding unit eigen-directions are called **principal directions**. They are given by the characteristic equation:\n\n$$\\det(h_{ij}-k\\,g_{ij}) = 0,\\qquad \\det(W-k\\,\\mathrm{id}) = 0 .$$\n\nIn an orthonormal frame $g_{ij} = \\delta_{ij}$, the characteristic polynomial is $k^{2}-2Hk+K$, where $H = \\tfrac{1}{2}\\operatorname{tr}W$ and $K = \\det W$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#48b0488f',
+      },
+      notes: {
+        en: "**Why eigenvalues**: $k_{n}$ is the Rayleigh quotient of $W$; extremal points on the unit circle satisfy $II(v,\\cdot) = k\\,I(v,\\cdot)$, i.e. $W(\\mathrm{d}r(v)) = k\\,\\mathrm{d}r(v)$ (Lagrange multipliers), and the extremal values are the eigenvalues — this is exactly the statement that \"the directions of extremal value are eigen-directions of $W$\".\n\n**Principal directions are orthogonal**: eigenvectors of a real symmetric matrix belonging to distinct eigenvalues are orthogonal (spectral theorem). The same conclusion follows from the Rayleigh quotient together with variations; the treatment here uses the spectral theorem directly.\n\n**Two characteristic equations**: $\\det(W-kI) = 0$ and $\\det(h-kg) = 0$ agree in an orthonormal frame; in a parameter net $\\{r_{u}, r_{v}\\}$ one must carry $g = \\begin{pmatrix} E & F \\\\ F & G \\end{pmatrix}$, so $g$ cannot be omitted.\n\n⚠️ $k_{1}, k_{2}$ depends on the choice of $n$ (all signs change under $n \\mapsto -n$), but \"$k_{1} = k_{2}$\" (umbilic point) and $K = k_{1}k_{2}$ are independent of the choice.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f6ba02ef',
+      },
+    },
+
+    'thm.solvable-quotients': {
+      statement: {
+        en: "Let $G$ be a group.\n\n**(a) Subgroups**: if $G$ is solvable and $H \\le G$, then $H$ is solvable.\n\n**(b) Quotients**: if $G$ is solvable and $N \\trianglelefteq G$, then $G/N$ is solvable.\n\n**(c) Extensions**: if $N \\trianglelefteq G$, $N$ is solvable and $G/N$ is solvable, then $G$ is solvable.\n\n((a) and (b) say that solvability descends; (c) says that solvability ascends along normal extensions.)",
+        status: 'draft',
+        basedOn: 'v0.9.3#0685f884',
+      },
+      notes: {
+        en: "⭐ (c) is the most useful of the three: to show that $G$ is solvable it suffices to find a **normal subgroup** with $G$ sandwiched in between and both ends solvable — the standard way of breaking a big group into small pieces.\n\n⚠ The converses of (a) and (b) both **fail**, with tiny counterexamples:\n- a solvable subgroup **does not** imply that the group is solvable: $\\mathbb{Z}/2 \\le A_5$ is solvable, $A_5$ is not;\n\n- a solvable quotient **does not** imply that the group is solvable: $S_5 / A_5 \\cong \\mathbb{Z}/2$ is solvable, $S_5$ is not.\n\nSo \"solvable\" is not a local property; it ascends only by squeezing between two solvable ends as in (c).\n\n⭐ In terms of derived series all three are almost a single sentence: $H^{(k)} \\le G^{(k)}$;\n\n$\\pi(G^{(k)}) = (G/N)^{(k)}$.\n\nThe full proof is on the edges.\n\n⭐ This immediately gives a commonly used criterion: $G$ is solvable $\\iff$ there is a normal chain whose quotients are **cyclic** (not merely abelian) — because an abelian group can be refined further into cyclic factors.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a2db1c65',
+      },
+    },
+
+    'def.analytic-ring': {
+      statement: {
+        en: "A pre-analytic ring $\\mathcal{A}$ is called an **analytic ring** if and only if: for every complex\n\n$$C : \\cdots \\to C_i \\to \\cdots \\to C_1 \\to C_0 \\to 0$$\n\n(where each $C_i$ is a direct sum of copies of $\\mathcal{A}[T]$, with $T$ extremally disconnected), and for every extremally disconnected set $S$, the natural map\n\n$$\\operatorname{RHom}_{\\mathcal{A}}\\bigl(\\mathcal{A}[S],\\ C\\bigr) \\longrightarrow \\operatorname{RHom}_{A}\\bigl(A[S],\\ C\\bigr)$$\n\nis an isomorphism. Here \"natural map\" means **one concrete map**, not a figure of speech: it goes from the $\\mathcal{A}$ side to the $A$ side and is induced by composing along $\\iota_S$. Three steps make this precise:\n\n1. **First there is a canonical map** $\\iota_S : A[S] \\to \\mathcal{A}[S]$ — it sends a formal finite sum $\\sum a_s s$ into the free complete module (the data of a pre-analytic ring includes this family of maps; see `def.pre-analytic-ring`).\n2. **Pull back along it**: $\\operatorname{RHom}_A(-, C)$ is a contravariant functor, and $\\iota_S$ induces $\\operatorname{RHom}_A(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$, by the rule $g \\mapsto g \\circ \\iota_S$.\n3. **Rewrite the left-hand side (this step has a hypothesis)**: when $C$ carries an $\\mathcal{A}$-module structure (that is, lies in the image of (ii)), $\\mathcal{A}[S]$ is a free $\\mathcal{A}$-module, so an $\\mathcal{A}$-linear map is determined by its values on generators; hence there is an isomorphism\n\n$$\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_A(\\mathcal{A}[S], C),$$\n\nThis is the isomorphism supplied by the adjunction, not \"the same set\". For a general $A$-module complex $C$, the left-hand side has not even been defined — the \"comparison map\" is exactly the object to be checked in the definition; identifying the two directly at the derived level would first require a derived category of complete modules, which is not proved here (see the gap at the end of the notes).\n\nPutting 2 and 3 together gives the arrow appearing in the formula, $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ad07bd38',
+      },
+      notes: {
+        en: "⭐ Reading: **\"$\\mathcal{A}[S]$ and the ordinary free module $A[S]$ cannot be distinguished inside $\\operatorname{RHom}$\"**.\n\nThis is the relative version of condition (ii) in the definition of solid groups;\n\ntaking $A = \\mathbb{Z}$ and $\\mathcal{A}[S] = Z[S]^{\\blacksquare}$ returns to the solid case.\n\n⚠ Why require **all** such complexes and not just a single module? Because the conclusion is needed at the level of derived categories (`thm.analytic-modules` (ii)); an isomorphism at a single point is not enough — it must hold for complexes as well.\n\n⭐ Deciding \"is this an analytic ring\" is usually done via concrete theorems such as `prop.analytic-examples` and `thm.za-analytic`, not by checking the definition item by item.\n\n**Which hypothesis each direction uses** (analyticity is a derived test over a whole class of complexes):\n- Analyticity $\\iff$ the comparison map for all the listed complexes and extremally disconnected $S$ is a quasi-isomorphism: this is the definition unwound, with the pre-analytic ring already given.\n- The canonical map $A[S]\\to\\mathcal A[S]$ $\\implies$ the contravariant derived Hom comparison map: this uses functoriality of precomposition and does not presuppose analyticity.\n- Testing only ordinary Hom in degree zero $\\implies$ does not make the derived comparison isomorphism free; ordinary Hom cannot see higher Ext and cannot replace the condition on complexes.\n- The original text's explanation identifying $\\operatorname{RHom}_{\\mathcal A}$ with $\\operatorname{RHom}_A$ directly carries a circularity risk: for a general pre-analytic ring the derived category of complete modules has not been set up, so this step is unverified and recorded as a gap; the test condition is better formulated first in the derived category of condensed $A$-modules.",
+        status: 'draft',
+        basedOn: 'v0.9.3#705376a3',
+      },
+    },
+
+    'prop.analytic-base-change': {
+      statement: {
+        en: "Let $f : \\mathcal{A} \\to \\mathcal{B}$ be a map between analytic rings (that is, a map of condensed rings such that each $\\mathcal{B}[S]$ lies in $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ as an $A$-module). Then:\n\n**(i)** the composite functor $\\operatorname{Mod}^{\\mathrm{cond}}_{A} \\xrightarrow{-\\otimes_{A} B} \\operatorname{Mod}^{\\mathrm{cond}}_{B} \\xrightarrow{-\\otimes_{\\mathcal{B}}\\mathcal{B}} \\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{B}}$ factors through $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$, written\n\n$$M \\longmapsto M \\otimes_{\\mathcal{A}} \\mathcal{B} : \\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}} \\longrightarrow \\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{B}}.$$\n\n**(ii)** the derived version $C \\mapsto C \\otimes^{L}_{\\mathcal{A}} \\mathcal{B}$ is its left derived functor.",
+        status: 'draft',
+        basedOn: 'v0.9.3#acbea9f7',
+      },
+      notes: {
+        en: "⭐ This makes $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ functorial in $\\mathcal{A}$: changing the analytic ring is base change.\n\n⭐ The proof is short: by the definition of the map, $\\mathcal{B}[S]$ already lies in $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$, and these are compact projective generators, so all of $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{B}}$ lands inside.",
+        status: 'draft',
+        basedOn: 'v0.9.3#253a9a90',
+      },
+    },
+
+    'prop.analytic-examples': {
+      statement: {
+        en: "The following pre-analytic rings are analytic rings:\n\n**(i)** $\\mathbb{Z}_{p,\\blacksquare}$ (the $p$-adic solid ring);\n\n**(ii)** for any discrete ring $A$, $(A, \\mathbb{Z})_\\blacksquare$, whose free module is\n\n$$(A,\\mathbb{Z})_\\blacksquare[S] = Z[S]^{\\blacksquare} \\otimes_{\\mathbb{Z}} A.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#4c03b9c1',
+      },
+      notes: {
+        en: "⭐ (i) and (ii) in fact share one proof: in both cases one has\n\n$$\\mathcal{A}[S] = \\mathbb{Z}_\\blacksquare[S] \\otimes^{L}_{\\mathbb{Z}_\\blacksquare} \\mathcal{A},$$\n\nand $C$ is, in $D(\\mathbf{Solid})$, an $\\mathcal{A}$-module, so\n\n$$\\operatorname{RHom}(\\mathbb{Z}_\\blacksquare[S], C) \\cong \\operatorname{RHom}_{\\mathcal{A}}(\\mathbb{Z}_\\blacksquare[S] \\otimes^{L}_{\\mathbb{Z}_\\blacksquare} \\mathcal{A},\\ C),$$\n\nThe left-hand side is $\\operatorname{RHom}(\\mathbb{Z}[S], C)$ ($C$ solid), and the right-hand side is $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C)$.\n\n⚠ $A$ must be **discrete**: for a general condensed ring the claim fails, which is also why `thm.za-analytic` needs \"finitely generated $\\mathbb{Z}$-algebra\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#bfcc3465',
+      },
+    },
+
+    'thm.coherent-duality': {
+      statement: {
+        en: "Let $A$ be a finitely generated $\\mathbb{Z}$-algebra and $f : \\operatorname{Spec} A \\to \\operatorname{Spec} \\mathbb{Z}$ the structure map (projecting the spectrum of the coefficient ring down). Define\n\n$$f_! : D(A_\\blacksquare) \\xrightarrow{j_!} D((A,\\mathbb{Z})_\\blacksquare) \\longrightarrow D(\\mathbb{Z}_\\blacksquare).$$\n\nThen $f_!$ preserves all direct sums and preserves compact objects, and satisfies the **projection formula**\n\n$$f_!\\bigl((M \\otimes^{L}_{\\mathbb{Z}_\\blacksquare} A_\\blacksquare) \\otimes^{L}_{A_\\blacksquare} N\\bigr) \\cong M \\otimes^{L}_{\\mathbb{Z}_\\blacksquare} f_! N,$$\n\nwhere $M \\in D(\\mathbb{Z}_\\blacksquare)$ and $N \\in D(A_\\blacksquare)$. The functor $f_!$ has a right adjoint\n\n$$f^! : D(\\mathbb{Z}_\\blacksquare) \\longrightarrow D(A_\\blacksquare), \\qquad f^! M = (M \\otimes^{L}_{\\mathbb{Z}_\\blacksquare} A_\\blacksquare) \\otimes^{L}_{A_\\blacksquare} f^! \\mathbb{Z},$$\n\nwhich preserves direct sums; $f^! \\mathbb{Z} \\in D(A_\\blacksquare)$ is a bounded complex of finitely generated discrete $A$-modules.\n\nIf $f$ is a **complete intersection** (locally $A$ is obtained from $R$ by modding out a regular sequence, i.e. \"the cut is clean and there are no superfluous relations\"), then $f^!\\mathbb{Z}$ is invertible in $D(A)$ (locally it is a line bundle in some degree).",
+        status: 'draft',
+        basedOn: 'v0.9.3#1d53a34c',
+      },
+      notes: {
+        en: "⭐ This is the \"affine model\" of Grothendieck's coherent duality: $f_!$ is **cohomology with compact support**, $f^!$ is the **dualising complex**, and both the projection formula and Serre duality follow formally from the adjunction.\n\n⭐ Difference from the classical approach: in classical coherent duality, $f_!$ in the affine case can only be manufactured artificially out of \"formal functions\";\n\nhere $f_!$ is a direct consequence of the adjunction pair ($j_! \\dashv j^*$), and it **does not preserve discrete objects** — exactly the gain of the condensed method.\n\n⚠ The identification of $f^!\\mathbb{Z}$ with the classical dualising complex $\\omega_A$ must be proved in the framework of `thm.za-analytic` (Lecture XI of the original).\n\n⚠ This conclusion is conditional on `thm.za-analytic` (still a skeleton); no complete proof is given here.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8cbbb3c4',
+      },
+    },
+
+    'thm.za-analytic': {
+      statement: {
+        en: "Let $A$ be a finitely generated $\\mathbb{Z}$-algebra and $A_\\blacksquare$ the pre-analytic ring whose free module is\n\n$$A_\\blacksquare[S] := \\varprojlim_i A[S_i] \\qquad (S = \\varprojlim_i S_i)$$\n\n(that is, the $A$-valued measure $M(S,A)$). Then $A_\\blacksquare$ is an analytic ring, and the forgetful functor\n\n$$j^* : D(A_\\blacksquare) \\hookrightarrow D((A,\\mathbb{Z})_\\blacksquare)$$\n\nhas a left adjoint $j^* = -\\otimes^{L}_{(A,\\mathbb{Z})_\\blacksquare} A_\\blacksquare$, which in turn has a left adjoint\n\n$$j_! : D(A_\\blacksquare) \\longrightarrow D((A,\\mathbb{Z})_\\blacksquare),$$\n\nsatisfying $j_! j^* M = M \\otimes_{(A,\\mathbb{Z})_\\blacksquare} j_! A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dec0a246',
+      },
+      notes: {
+        en: "⭐ This is Clausen–Scholze, Lectures on Condensed Mathematics, Lecture VIII, Theorem 8.1. It is the first analytic ring in the graph that covers a genuine geometric object: for $A=\\mathbb{Z}[T]$, $A_\\blacksquare$ is the coefficient ring of \"solid modules over $\\mathbb{Z}[T]$\", and the coherent duality that follows (`thm.coherent-duality`) rests entirely on it.\n\n**The real size of the proof.** The full proof is the content of the first few sections of Lecture VIII and cannot fit into a single edge. The core route for $A=\\mathbb{Z}[T]$ is:\n\n① Set $A_\\infty:=\\mathbb{Z}((T^{-1}))$ and view it as \"functions on $\\operatorname{Spec} A$ at infinity\"; there is a short exact sequence\n\n$$0\\to \\mathbb{Z}[[U]]\\otimes_{\\mathbb{Z}} A \\xrightarrow{1-\\mathrm{shift}\\otimes T} \\mathbb{Z}[[U]]\\otimes_{\\mathbb{Z}} A \\to A_\\infty \\to 0 .$$\n\n② By ①, $A_\\infty$ is compact projective (the first two terms are of the form $\\prod_I \\mathbb{Z}\\otimes A$), and idempotent: $A_\\infty\\otimes^{L}_{A}A_\\infty\\cong A_\\infty$.\n\n③ By ②, $\\operatorname{RHom}_A(A_\\infty,C)=0$, where $C$ is built from direct sums of $\\prod_I A$.\n\n④ Analyticity: the category of solid modules over $A_\\blacksquare$ corresponds to the subcategory of complexes satisfying $\\operatorname{RHom}_A(A_\\infty,C)=0$ (this is the working form of the definition of an analytic ring).\n\n⑤ Existence of $j_!$: use $\\operatorname{coker}\\bigl(\\prod_I \\mathbb{Z}\\otimes A\\to\\prod_I A\\bigr)$ to construct $j_!A$, then use presentability / the adjoint functor theorem to extend $j_!$ to the whole derived category.\n\n⑥ General finitely generated $A$: by Noether normalisation find a polynomial ring $R=\\mathbb{Z}[X_1,\\ldots,X_n]$ and a finite injection $R\\to A$, and identify $A_\\blacksquare$ with $(A,R)_\\blacksquare$ at the derived level.\n\n⑦ The projection formula $j_!j^*M\\cong M\\otimes_{A_\\blacksquare}j_!A$ follows formally from $j_!\\dashv j^*$.\n\n**Gaps in the graph (item by item; the node therefore remains skeleton).**\n\n(i) Foundations: the definitions and functoriality of $D((A,\\mathbb{Z})_\\blacksquare)$ and $A_\\blacksquare$ are only cited in the graph (`def.pre-analytic-ring`, `def.analytic-ring`), not proved item by item.\n\n(ii) Compact projectivity in ② needs the sentence \"$\\prod_I\\mathbb{Z}\\cong\\mathbb{Z}[\\beta I]$, with $\\beta I$ extremally disconnected compact, hence $\\mathbb{Z}[\\beta I]$ is compact projective\"; the graph has no node for \"compact projective generator / $\\beta I$\".\n\n(iii) Idempotence in ②: the edge says \"compute directly\", but the required derived completion and the derived Sant lemma are not developed.\n\n(iv) The \"acyclicity\" of the two-term complex in ③ requires the middle map $f$ to be an **isomorphism**, not merely injective; the edge flags this but does not prove it.\n\n(v) Existence of $j_!$ in ⑤ relies on presentable functors / the adjoint functor theorem; the graph has no node for this.\n\n(vi) Noether normalisation in ⑥ only gives the idea: what must be proved is that $A_\\blacksquare$ and $(A,R)_\\blacksquare$ agree at the level of derived categories, not a one-line \"reduction\".\n\n(vii) The projection formula in ⑦ requires ⑤ to be completed first.\n\n⚠ Thus this node is still marked skeleton. The edge `imp.za-analytic` is a **road map plus key computations**, not a verbatim proof; do not cite it as an established fact.\n\n⭐ Relation to geometry: for $A=\\mathbb{Z}[T]$, $A_\\blacksquare$ corresponds to a kind of \"neighbourhood at infinity\" of $\\mathbb{A}^1$, with $A_\\infty$ the functions on its boundary; this theorem is the entry point for \"making the derived completion of an affine scheme into an analytic ring\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#b39022e6',
+      },
+    },
+
+    'thm.hahn-banach': {
+      statement: {
+        en: "Let $X$ be a **real** vector space, $p : X \\to \\mathbb{R}$ **sublinear** ($p(x + y) \\le p(x) + p(y)$, and $p(tx) = t\\,p(x)$ for $t \\ge 0$), $M \\subseteq X$ a subspace, and $f : M \\to \\mathbb{R}$ linear with $f \\le p$ on $M$. Then there exists a linear $F : X \\to \\mathbb{R}$ such that $F|_M = f$ and $F \\le p$.\n\n**Norm-preserving extension (corollary)**: let $X$ be a normed space, $M \\subseteq X$ a subspace, $\\varphi \\in M^{*}$. Then there exists $\\Phi \\in X^{*}$ such that $\\Phi|_M = \\varphi$ and $\\|\\Phi\\| = \\|\\varphi\\|$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4205eb81',
+      },
+      notes: {
+        en: "**Step 1: the one-dimensional extension lemma.** Let $x_0 \\notin M$, $N = M \\oplus \\mathbb{R}x_0$. Defining, on $N$, a map $g(m + t x_0) = f(m) + t c$ that preserves $g \\le p$ is equivalent to having, for every $m \\in M$,\n\n$f(m) + c \\le p(m + x_0), \\qquad f(m) - c \\le p(m - x_0).$\n\ni.e. $c$ lies in the interval $[\\sup_m (f(m) - p(m - x_0)),\\ \\inf_m (p(m + x_0) - f(m))]$. This interval is non-empty, because for any $m_1, m_2 \\in M$, sublinearity gives\n\n$f(m_1) + f(m_2) = f(m_1 + m_2) \\le p(m_1 + m_2) \\le p(m_1 - x_0) + p(m_2 + x_0),$\n\ni.e. $f(m_1) - p(m_1 - x_0) \\le p(m_2 + x_0) - f(m_2)$. Choose any $c$ in the interval; the extension then works.\n\n**Step 2: Zorn.** Consider all objects \"$g$ defined on a subspace $N \\supseteq M$, linear, $g|_M = f$, and $g \\le p$ on $N$\", ordered by extension ($g_1 \\preceq g_2$ when $g_2$ has larger domain and agrees on $g_1$ with $g_1$). The union of a totally ordered subfamily is again such an object (domains are unioned; linearity and $\\le p$ are checked pointwise), so `lem.zorn` gives a maximal element $F$. If $\\operatorname{dom} F \\ne X$, take $x_0 \\notin \\operatorname{dom} F$ and extend again by Step 1, contradicting maximality. Hence $F$ is defined on all of $X$. $\\blacksquare$\n\n**Step 3: norm-preserving extension.** Take $p(x) = \\|\\varphi\\| \\cdot \\|x\\|$ (sublinear) and $f = \\varphi$; then $\\varphi \\le p$ on $M$. This gives a linear $\\Phi$ with $\\Phi|_M = \\varphi$ and $\\Phi \\le p$ on $X$. Applying $\\Phi \\le p$ to $x$ and to $-x$ gives $|\\Phi(x)| \\le \\|\\varphi\\|\\,\\|x\\|$, hence $\\|\\Phi\\| \\le \\|\\varphi\\|$; the reverse inequality comes from the extension, so equality holds. $\\blacksquare$\n\n**The complex case**: regard $\\varphi$ as a real-linear functional, extend it, then set $\\Phi_{\\mathbb C}(x) = \\Psi(x) - i\\,\\Psi(ix)$; one checks that it is complex-linear and norm-preserving.\n\n📌 This entry proves only the \"sublinear domination\" form; the geometric form (separation of a point from a closed convex set) is derived from it and used in the notes to `thm.goldstine`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#621163ee',
+      },
+    },
+
+    'def.bounded-operator': {
+      statement: {
+        en: "Let $u : E \\to F$ be linear. Call $u$ **bounded** if there exists $C$ such that $\\|u(x)\\| \\le C\\|x\\|$ for all $x$. The whole collection is denoted $B(E, F)$, and one writes $B(E) := B(E, E)$. Define\n\n$$\\|u\\| := \\sup_{\\|x\\| \\le 1} \\|u(x)\\| = \\sup_{\\|x\\| = 1} \\|u(x)\\| = \\sup_{x \\ne 0} \\frac{\\|u(x)\\|}{\\|x\\|} ,$$\n\nThis makes $B(E, F)$ a normed space (with the convention $\\|u\\| = 0$ when $E = 0$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#4acdc3ed',
+      },
+      notes: {
+        en: "⚠️ **The name is a historical misunderstanding**: \"bounded\" here does **not** mean \"the function is bounded\": a linear map bounded as a function $\\iff$ it is the zero map (the zero map satisfies this for any $E \\ne 0$). The real meaning is \"sends bounded sets to bounded sets\", which is equivalent to **continuity** (next entry). Do not be misled by the name when reading old books.\n\n⚠️ The three sups are equal only when $E \\ne 0$ (otherwise the sphere is empty and the sup is meaningless).\n\n⭐ When $E$ is infinite-dimensional and $F \\ne \\{0\\}$, one has $L(E, F) \\ne B(E, F)$: discontinuous linear operators really do exist (constructed using the axiom of choice). This is why the graph separates \"linear\" and \"bounded\" into two nodes: $L(E,F)$ is the **algebraic** Hom, and $B(E,F)$ is the continuous part of it.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dba96e03',
+      },
+    },
+
+    'lem.countable-closed-cover': {
+      statement: {
+        en: "Let $X$ be a Baire space, $F_n \\subseteq X$ closed, and $X = \\bigcup_n F_n$. Then $\\bigcup_n \\operatorname{int} F_n$ is **dense** in $X$. In particular, if $X \\ne \\emptyset$, then at least one $F_n$ has non-empty interior (the empty space satisfies the Baire hypothesis, but every $F_n$ has empty interior).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e132d7bc',
+      },
+      notes: {
+        en: "**This is the \"open-set version\" of the Baire category theorem**: among the members of a closed cover that have interior, the union of those interiors is dense. The full proof (using the Baire property on non-empty open sets) is on the edge `imp.countable-closed-cover-proof`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2b376b26',
+      },
+    },
+
+    'def.equicontinuous': {
+      statement: {
+        en: "Let $K$ be a topological space, $(E, d)$ a metric space, and $\\mathcal{H} \\subseteq C(K, E)$.\n\n- $\\mathcal{H}$ is **equicontinuous at** $x_0 \\in K$: $\\forall \\varepsilon > 0$ there exists a neighbourhood $U$ of $x_0$ such that $d(f(x), f(x_0)) < \\varepsilon$ holds for **all** $f \\in \\mathcal{H}$ and $x \\in U$ simultaneously.\n- $\\mathcal{H}$ is equicontinuous on $K$: it is equicontinuous at every point $x \\in K$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c06cb1cf',
+      },
+      notes: {
+        en: "⚠️ The point is \"**for all $f$ simultaneously**\". Drop this condition and one only has \"each $f$ is continuous on its own\" — that is the definition of $\\mathcal{H} \\subseteq C(K,E)$ and says nothing new.\n\nWhen $\\mathcal{H} = \\{f\\}$, equicontinuity $\\iff$ $f$ being continuous.\n\n⭐ This is the **only non-trivial** hypothesis in compactness (Arzelà–Ascoli): pointwise total boundedness merely says \"does not diverge\", while equicontinuity says \"does not oscillate ever more wildly\".\n\n📌 When $K$ is a metric space there is also a stronger uniform version, see `def.uniformly-equicontinuous`; when $K$ is compact the two are equivalent (`thm.equicontinuous-uniform`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#f19c49f6',
+      },
+    },
+
+    'def.subalgebra-separating': {
+      statement: {
+        en: "Let $K$ be compact Hausdorff and $A \\subseteq C(K, \\mathbb{K})$.\n\n- $A$ is a **subalgebra**: it is a vector space and is closed under multiplication;\n- $A$ **separates points**: $x \\ne y \\implies \\exists f \\in A$, $f(x) \\ne f(y)$;\n- $A$ is a **lattice**: closed under $\\min, \\max$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3810c039',
+      },
+      notes: {
+        en: "\"Separates points\" is a necessary condition for Stone–Weierstrass: if two points are not separated, glue them into one, and $A$ cannot generate the functions on the glued space, $C$.\n\n⚠️ The example of self-adjoint matrices (from the lectures): self-adjoint matrices ordered by $A \\ge B \\iff A - B$ being positive semidefinite do not in general form a **lattice** (the pointwise min of two self-adjoint matrices need not be self-adjoint). So \"lattice\" is not automatic; it must be bought by \"closed + contains the unit\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#bae06c67',
+      },
+    },
+
+    'lem.closed-subalgebra-lattice': {
+      statement: {
+        en: "Let $K$ be compact Hausdorff and $A \\subseteq C(K, \\mathbb{R})$ a **closed** subalgebra **containing the unit**. Then $A$ is closed under $\\min, \\max$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ed69a1e6',
+      },
+      notes: {
+        en: "**Why it suffices to prove $|f|\\in A$**: $\\max,\\min$ can be assembled from $|\\cdot|$ and the four arithmetic operations; $|f|=\\sqrt{f^{2}}$ is then uniformly approximated by the binomial series. The full proof is on the edge `imp.subalgebra-lattice-proof`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3569eb44',
+      },
+    },
+
+    'thm.bounded-operators-banach': {
+      statement: {
+        en: "Let $E$ be normed and $F$ Banach. Then $(B(E, F), \\|\\cdot\\|)$ is a Banach space. In particular, the dual space $E^* = B(E, \\mathbb{K})$ is **always** Banach (regardless of whether $E$ is complete).",
+        status: 'draft',
+        basedOn: 'v0.9.3#467b6f7e',
+      },
+      notes: {
+        en: "**Idea of the proof**: define $u$ as the pointwise limit, then control $\\lVert u_k-u\\rVert$ by uniform boundedness. The full proof is on the edge `imp.bounded-operators-banach-proof`. In particular $E^*=B(E,\\mathbb K)$ is always Banach.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ba597d57',
+      },
+    },
+
+    'thm.norm-equiv-finite-dim': {
+      statement: {
+        en: "Let $\\dim E < \\infty$. Then any two norms on $E$ are equivalent; equivalently, for any basis $e_1, \\ldots, e_n$ there exist $\\alpha, \\beta > 0$ such that\n\n$$\\alpha\\,\\|x\\|_\\infty \\le \\|x\\| \\le \\beta\\,\\|x\\|_\\infty , \\qquad \\|x\\|_\\infty := \\max_{1 \\le k \\le n} |x_k| .$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#0d22915d',
+      },
+      notes: {
+        en: "**Why finite dimension is special**: the unit sphere is compact, so a norm attains a positive minimum on it, and hence any norm is controlled from both sides by $\\lVert\\cdot\\rVert_\\infty$. The full proof is on the edge `imp.norm-equiv-finite-dim-proof`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#29b17bc8',
+      },
+    },
+
+    'thm.polarization': {
+      statement: {
+        en: "In a real inner product space:\n\n$$\\langle x, y\\rangle = \\tfrac{1}{4}\\bigl( \\|x + y\\|^2 - \\|x - y\\|^2 \\bigr) .$$\n\nIn a complex inner product space:\n\n$$\\langle x, y\\rangle = \\tfrac{1}{4}\\sum_{k=0}^{3} i^k \\,\\| x + i^k y \\|^2 .$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#35349119',
+      },
+      notes: {
+        en: "**Use**: it recovers the inner product from the norm, so \"preserving the norm\" and \"preserving the inner product\" are equivalent in the real case; the complex case uses a combination of four directions. The full derivation is on the edge `imp.polarization-proof`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#37b58dbc',
+      },
+    },
+
+    'thm.riesz-ball-compact': {
+      statement: {
+        en: "For a normed space $E$, the closed unit ball $B_E = \\{x \\in E : \\|x\\| \\le 1\\}$ is compact $\\iff$ $\\dim E < \\infty$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7199b914',
+      },
+      notes: {
+        en: "\"$\\Longleftarrow$\": in finite dimension all norms are equivalent (`thm.norm-equiv-finite-dim`), so compactness can be tested using the coordinate ball of $\\|\\cdot\\|_\\infty$;\n\nthe coordinate ball $\\overline{B}^{\\infty}(0,1)$ is bounded and closed (in the real case it is $[-1,1]^{n}$; in the complex case it is the unit polydisc, regarded as a closed bounded subset of $\\mathbb{R}^{2n}$), and is compact by Heine–Borel (`cor.heine-borel`).\n\n∎\n\n\"$\\implies$\": if $\\dim E = \\infty$, use Riesz's lemma (`lem.almost-orthogonal`) to construct recursively unit vectors with $\\|e_n - e_m\\| \\ge 1/2$ ($n \\ne m$); such a sequence has no convergent subsequence, so the closed unit ball is not sequentially compact and hence not compact.\n\n⭐ This is one half of \"finite-dimensional if and only if locally compact\": finite-dimensional normed spaces are locally compact, while infinite-dimensional ones are **never** locally compact. It is also the precise version of \"bounded closed sets are compact\" holding only in finite dimension — Heine–Borel fails in infinite dimension.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a2ae191e',
+      },
+    },
+
+    'def.ck-space': {
+      statement: {
+        en: "Let $K$ be compact Hausdorff and $(E, d)$ a metric space. On $C(K, E)$ define\n\n$$\\Delta(f, g) := \\sup_{x \\in K} d\\bigl(f(x), g(x)\\bigr) .$$\n\nWhen $E$ is normed this is the sup norm $\\|f\\| = \\sup_x \\|f(x)\\|$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4378ff9b',
+      },
+      notes: {
+        en: "The supremum is attained (compactness plus continuity). This metric is the metric of \"uniform convergence\", not of \"pointwise convergence\" (the same convention as `def.uniform-convergence`).\n\n⭐ The notation allows an arbitrary metric space $E$, so the results in this cluster (completeness, Arzelà–Ascoli) are broader than the classical $\\mathbb{R}$-valued versions.",
+        status: 'draft',
+        basedOn: 'v0.9.3#243acb6f',
+      },
+    },
+
+    'def.convex-set': {
+      statement: {
+        en: "Let $V$ be a real vector space and $C \\subseteq V$. Call $C$ a **convex set** if for all $x, y \\in C$ and $t \\in [0,1]$,\n\n$$(1-t)x + ty \\in C.$$\n\nEquivalently: $C$ contains the whole segment between any two of its points.",
+        status: 'draft',
+        basedOn: 'v0.9.3#67fb4cdd',
+      },
+      notes: {
+        en: "⭐ Convexity uses only the **affine structure**; no norm or inner product is needed. In infinite dimension it is the key hypothesis for \"existence of a minimiser\" (see `thm.projection-convex`).\n\n⚠ The empty set is convex under this definition (the condition \"for any two points\" holds vacuously); when non-emptiness is needed it is assumed separately in the theorem (as in the projection theorem).\n\n💡 Convex combinations, convex hulls and separation theorems all start here.\n\n📌 **A convex set is star-shaped at each of its points** (see `thm.convex-star-shaped-every-point`); for the empty set this universal statement holds vacuously, so there is no conflict with \"the empty set is not star-shaped\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#0545677c',
+      },
+    },
+
+    'def.norm-equivalence': {
+      statement: {
+        en: "Let $p, q$ be two norms on $E$. Call $p$ **stronger than** $q$ (written $q \\preceq p$) if there exists $C > 0$ such that\n\n$$q(x) \\le C\\,p(x) \\qquad \\forall x \\in E .$$\n\nIf each is stronger than the other, call $p$ and $q$ **equivalent**, written $p \\sim q$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#837a258e',
+      },
+      notes: {
+        en: "- (a) equivalence - (b) the same induced topology - (c) the same Cauchy sequences - (d) the same convergent sequences.\n\n⚠️ The relation is asymmetric, and its direction runs against intuition: a **strong** norm (larger $p$) has smaller balls, **more** open sets, harder convergence, and **fewer** Cauchy sequences. So \"passing to a stronger norm\" **removes** convergent objects — which is exactly why one chooses the weakest norm that suffices (e.g. the weak topology).\n\n⚠️ Equivalence preserves completeness and very little else: two equivalent norms give the same completeness (the same Cauchy sequences), but **extremal problems** can have different answers (the balls differ).",
+        status: 'draft',
+        basedOn: 'v0.9.3#4ad1c961',
+      },
+    },
+
+    'def.orthonormal-set': {
+      statement: {
+        en: "Let $\\{f_i\\}_{i \\in I} \\subseteq H$.\n\n- **Orthogonal**: $f_i \\perp f_j$ ($i \\ne j$);\n- **Orthonormal**: orthogonal + $\\|f_i\\| = 1$;\n- **Complete**: $\\overline{\\operatorname{span}\\{f_i\\}} = H$;\n- **Orthonormal basis**: orthonormal + complete.",
+        status: 'draft',
+        basedOn: 'v0.9.3#787b63d2',
+      },
+      notes: {
+        en: "⚠️ Completeness is not \"spanning $H$\" but \"the **closure** of the span is the whole space\": the algebraic span of $\\{e_n\\}$ in $\\ell^2$ consists of finitely supported sequences, which is dense but not equal to $\\ell^2$.\n\n⚠️ In infinite dimension **uncountable orthonormal bases really occur**: the Hermite functions in $L^2(\\mathbb{R})$ are countable, but the orthonormal basis of a general $\\ell^2(I)$ is $\\{e_i\\}_{i \\in I}$, and $I$ can be arbitrarily large.\n\n⭐ Once an orthonormal basis is available, a Hilbert space becomes \"$\\ell^2$ without weights\" (see Bessel/Parseval and \"separable Hilbert $\\cong \\ell^2$\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#a1669ec2',
+      },
+    },
+
+    'def.reflexive-space': {
+      statement: {
+        en: "Let $X$ be a Banach space and $J_X : X \\to X^{**}$ the natural embedding $J_X(x)(\\varphi) = \\varphi(x)$. Call $X$ **reflexive** if $J_X$ is surjective (hence an isometric isomorphism).",
+        status: 'draft',
+        basedOn: 'v0.9.3#41bb29e0',
+      },
+      notes: {
+        en: "The natural embedding is always isometric (Hahn–Banach): $\\|J_X x\\| = \\sup_{\\|\\varphi\\| \\le 1}|\\varphi(x)| = \\|x\\|$. Hence reflexivity $\\iff$ every element of $X^{**}$ comes from $X$.\n\n**Examples**: Hilbert spaces; $L^p$ and $\\ell^p$ ($1 < p < \\infty$, see `cor.lp-reflexive`); finite-dimensional spaces.\n\n**Counterexamples**: $c_0$ ($c_0^{**} = \\ell^\\infty \\ne c_0$), $\\ell^1$ ($\\ell^{1**} = (\\ell^\\infty)^* \\supsetneq \\ell^1$), $C[0,1]$.\n\n⭐ The core use of reflexivity: bounded sequences have weakly convergent subsequences (Eberlein–Šmulian; the graph has no weak-topology node yet), which is the entry point to variational existence and to Milman–Pettis.\n\n📌 Relation to pairing language: $X$ is reflexive $\\iff$ both embeddings of the perfect pairing $(X, X^*)$ are surjective (`def.perfect-pairing`, `thm.riesz-perfect-pairing`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#f7bd2e47',
+      },
+    },
   },
 };

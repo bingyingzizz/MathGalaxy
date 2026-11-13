@@ -96,7 +96,7 @@ window.MG = window.MG || {};
         '',
         '是**自由阿贝尔群**。'
       ].join('\n'),
-      notes: '⭐ 这是 Specker（1950，$S$ 为 $\\mathbb{Z}_p$ 型）与 Nöbeling（1968，一般 profinite）的结果。\n\n反直觉的地方：$C(S,\\mathbb{Z})$ 看起来像「每点给一个整数」的无穷乘积，却**总是自由**的 —— 而它的对偶 $M(S,\\mathbb{Z}) = \\prod_I \\mathbb{Z}$ 才是大的那一头。\n\n⭐ 它是整个固态理论的支点：没有它，$Z[S]^{\\blacksquare}$ 就说不成 $\\prod_I \\mathbb{Z}$，`thm.solid-abelian` 里的「紧投射生成元」也就无从谈起。\n\n⚠ 注意 $C(S,\\mathbb{Z})$ 与它的**有界**版本以及 $C(S,\\mathbb{R})$ 行为完全不同：$C(S,\\mathbb{R})$ 一般不是自由 $\\mathbb{R}$-向量空间。'
+      notes: '⭐ 这是 Specker（1950，$S$ 为 $\\mathbb{Z}_p$ 型）与 Nöbeling（1968，一般 profinite）的结果。\n\n反直觉的地方：$C(S,\\mathbb{Z})$ 看起来像「每点给一个整数」的无穷乘积，却**总是自由**的 —— 而它的对偶 $M(S,\\mathbb{Z}) = \\prod_I \\mathbb{Z}$ 才是大的那一头。\n\n⭐ 它是整个固态理论的支点：没有它，$Z[S]^{\\blacksquare}$ 就说不成 $\\prod_I \\mathbb{Z}$，`thm.solid-abelian` 里的「紧投射生成元」也就无从谈起。\n\n⚠ 注意 $C(S,\\mathbb{Z})$ 与它的**有界**版本以及 $C(S,\\mathbb{R})$ 行为完全不同：这里说的是 $C(S,\\mathbb{Z})$ 作为抽象阿贝尔群；$C(S,\\mathbb{R})$ 作为抽象向量空间当然有基，不能把前者的自由性直接搬过去。'
     },
     {
       id: 'cor.free-solid-product',
@@ -154,6 +154,7 @@ window.MG = window.MG || {};
       type: 'lemma',
       label: '完备化判据',
       title: '引理：把子范畴做成阿贝尔子范畴的抽象判据（Lemma 5.9）',
+      status: 'skeleton',
       regions: ['condensed'],
       tags: ['引理', '固态', '范畴'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Lemma 5.9'],
@@ -174,7 +175,7 @@ window.MG = window.MG || {};
         '$C \\in D(\\mathcal{A}_F)$ 当且仅当所有 $H^i(C) \\in \\mathcal{A}_F$；\n\n' +
         '含入有左伴随（$L$ 的左导出）。'
       ].join('\n'),
-      notes: '⭐ 这是一条**纯范畴论**的引理：它把「证明某个补全出来的子范畴性质良好」压缩成一条 Ext-消没条件。\n\n`thm.solid-abelian` 就是它的实例（$\\mathcal{A} = \\operatorname{Cond}(\\mathbf{Ab})$，$F(\\mathbb{Z}[S]) = Z[S]^{\\blacksquare}$）。\n\n⚠ 条件里只对**核**要求同构，不对余核要求 —— 但对偶地写成余核也一样（见原文 Remark 5.11）。\n\n📌 证明是标准的同调代数：先证 $\\mathcal{A}_F$ 对核与极限封闭，再用「两个直和之间的映射」把余核也拉进来，最后用 Postnikov 截断把复形的情形归约到单点。'
+      notes: '⭐ 这是一条**纯范畴论**的引理：它把「证明某个补全出来的子范畴性质良好」压缩成一条 Ext-消没条件。\n\n`thm.solid-abelian` 就是它的实例（$\\mathcal{A} = \\operatorname{Cond}(\\mathbf{Ab})$，$F(\\mathbb{Z}[S]) = Z[S]^{\\blacksquare}$）。\n\n⚠ 条件里只对**核**要求同构，不对余核要求 —— 但对偶地写成余核也一样（见原文 Remark 5.11）。\n\n📌 证明是标准的同调代数：先证 $\\mathcal{A}_F$ 对核与极限封闭，再用「两个直和之间的映射」把余核也拉进来，最后用 Postnikov 截断把复形的情形归约到单点。\n\n⚠ 本图不展开 Lemma 5.9 的证明，按外部结论引用。'
     },
     {
       id: 'thm.solid-abelian',

@@ -233,14 +233,14 @@ window.MG = window.MG || {};
 
   edges: [
     /* 定义 → 存在性定理：定理的对象是这条定义给的东西。 */
-    {status: 'skeleton', 
+    {
      id: 'dep.fshriek-existence',
       kind: 'definition',
       definition: 'def.f-shriek',
       usedBy: 'thm.f-shriek-existence',
       note: '定理说的「$f_{!}$ 存在」，说的就是这条定义里那个复合函子确实造得出来；对象先于存在性。',
     },
-    {status: 'skeleton', 
+    {
      
       id: 'imp.f-shriek',
       kind: 'implication',
@@ -259,9 +259,10 @@ window.MG = window.MG || {};
         '$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，保直和。\n\n' +
         '故 $f_!$ 保直和，右伴随 $f^!$ 存在。\n\n' +
         '∎'
-      ].join('\n')
+      ].join('\n'),
+      note: '⚠ 本边证明条件于 `prop.open-immersion-shriek`（`prop.open-immersion-shriek` 仍 skeleton）。',
     },
-    {status: 'skeleton', 
+    {
       id: 'imp.f-shriek-base-change',
       kind: 'implication',
       sources: ['def.f-shriek', 'thm.za-analytic'],
@@ -277,7 +278,8 @@ window.MG = window.MG || {};
         '而 $\\operatorname{RHom}_R(A,R)$ 与平坦基变换交换。',
         '',
         '**$A = R[T]$。** $f_!M = M \\otimes_{(A,R)_\\blacksquare} R((T^{-1}))/R[T][-1]$，$f^!R = R[T][1]$；基变换就是 $R((T^{-1}))/R[T]$ 的基变换。$\\blacksquare$'
-      ].join('\n')
+      ].join('\n'),
+      note: '⚠ 本边证明条件于 `prop.open-immersion-shriek`（`prop.open-immersion-shriek` 仍 skeleton）。',
     },
     {
       id: 'imp.regular-immersion-dualizing',

@@ -412,10 +412,10 @@ window.MG = window.MG || {};
       definition: 'def.congruent-matrices', usedBy: 'thm.sylvester-law-inertia',
       note: '定理给的是**合同**分类（不是相似分类）。' },
 
-    { id: 'dep.witt-hyp', kind: 'definition', status: 'skeleton',
+    { id: 'dep.witt-hyp', kind: 'definition',
       definition: 'def.hyperbolic-plane', usedBy: 'thm.witt-cancellation',
       note: '唯一分解里的「块」就是双曲平面。' },
-    { id: 'dep.witt-isosub', kind: 'definition', status: 'skeleton',
+    { id: 'dep.witt-isosub', kind: 'definition',
       definition: 'def.isotropic-subspace', usedBy: 'thm.witt-cancellation',
       note: 'Witt 指标 = 迷向子空间的最大维数；定理保证它良定义。' }
   ]

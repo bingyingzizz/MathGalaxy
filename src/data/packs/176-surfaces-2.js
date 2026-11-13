@@ -217,7 +217,7 @@
       note: '三角刨分的定义域是**拓扑空间**（同胚是有拓扑才能谈的）。' +
         '之前这条没接，所以「拓扑空间」在三角刨分那里只是个词。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.triangulation-eulerchar',
       kind: 'definition',
       definition: 'def.triangulation',
@@ -225,7 +225,7 @@
       note: '“chi 与刨分无关”这条命题本身就**得先有刨分**（chi 是用刨分算出来的），' +
         '而且它做的正是三角刨分那条注里说的「用刨分定义的量先证与刨分无关」。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.topmanifold-rado',
       kind: 'definition',
       definition: 'def.topological-manifold',
@@ -246,27 +246,26 @@
       usedBy: 'def.triangulation',
       note: '被剖分的对象是拓扑空间（实际上就是曲面）：剖分只用到拓扑，不用光滑结构。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.triangulation-rado',
       kind: 'definition',
       definition: 'def.triangulation',
       usedBy: 'thm.rado',
       note: 'Radó 定理的结论就是「这种 $(K,h)$ 存在」。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.compact-rado',
       kind: 'definition',
       definition: 'def.compact',
       usedBy: 'thm.rado',
       note: '「紧」是 Radó 的必要假设（开曲面也能剖分，但要局部有限的 $K$，证明也不同）。',
     },
-    {status: 'skeleton', 
+        {
       id: 'dep.rado-classification',
-      kind: 'implication',
-      sources: ['thm.rado'],
-      target: 'thm.classification-surfaces',
-      proof: 'Radó 定理给出曲面 $S$ 的三角剖分 $K$；分类定理的证明正是在 $K$ 的有限多边形的组合层面做「删三角形、翻边、收拢」三步化简，故以 Radó 为第一步前提。∎',
-      note: '分类定理的**第一步**就是它：先有剖分，才能在组合层面做「删三角形 / 翻边」的化简。',
+      kind: 'definition',
+      definition: 'thm.rado',
+      usedBy: 'thm.classification-surfaces',
+      note: '分类定理的**第一步**就是它：先有剖分，才能在组合层面做「删三角形 / 翻边」的化简。这是依赖说明，不是严格蕴含。',
     },
     {
       id: 'dep.triangulation-simphomology',
@@ -320,28 +319,28 @@
       note: '「闭」的第一个意思是**紧**（另一个是「无边界」）。',
     },
     /* -------- 分类定理用到的东西 -------- */
-    {status: 'skeleton', 
+    {
       id: 'dep.closedsurface-classification',
       kind: 'definition',
       definition: 'def.closed-surface',
       usedBy: 'thm.classification-surfaces',
       note: '定理的主语就是闭曲面。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.connectedsum-classification',
       kind: 'definition',
       definition: 'def.connected-sum',
       usedBy: 'thm.classification-surfaces',
       note: '结论的两种标准形都是**连通和**（环面的、射影平面的）。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.genus-classification',
       kind: 'definition',
       definition: 'def.genus',
       usedBy: 'thm.classification-surfaces',
       note: '可定向侧的分类量就是亏格 $g$；「不同胚」靠 $g$（等价地 $\\chi$）分辨。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.eulerchar-classification',
       kind: 'implication',
       sources: ['thm.euler-characteristic'],
@@ -366,7 +365,7 @@
           '本图都没有写成节点。',
       ].join('\n\n'),
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.comb-triangulation',
       kind: 'definition',
       definition: 'def.triangulation',
@@ -374,7 +373,7 @@
       note: '组合分类的操作对象是有限的连通三角剖分闭曲面，直接用三角剖分的定义。',
     },
 
-    {status: 'skeleton', 
+    {
       id: 'dep.comb-closed',
       kind: 'definition',
       definition: 'def.closed-surface',

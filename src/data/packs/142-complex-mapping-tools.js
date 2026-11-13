@@ -435,7 +435,7 @@
       note: '素端定义在单连通区域上。' },
     { id: 'dep.prime-riemann', kind: 'definition', definition: 'thm.riemann-mapping', usedBy: 'def.prime-end',
       note: 'Riemann 映射延拓到素端紧化。' },
-    {status: 'skeleton',  id: 'ana.prime-boundary', kind: 'analogy', a: 'def.prime-end', b: 'thm.boundary-correspondence',
+    { id: 'ana.prime-boundary', kind: 'analogy', a: 'def.prime-end', b: 'thm.boundary-correspondence',
       note: '两种「边界对象」：素端对**一般**单连通区域定义（横截弧的极限），边界对应定理里的是 **Jordan 区域**的边界点。Jordan 情形下二者一一对应（Carathéodory 紧化就是通常闭包），但素端是多出来的那层构造，不是边界对应定理的实例 —— 所以是类比，不是定义依赖。' },
     {id: "e94.implication", kind: 'implication', sources: ['def.mobius'], target: 'def.cross-ratio',
       title: '分式线性变换给出交比这个不变量',
@@ -603,11 +603,11 @@
       ].join('\n'),
       note: '机翼剖面 = 一个过 $z=1$ 的圆在 Joukowski 映射下的像。' },
 
-    {status: 'skeleton',  id: 'dep.bc-simply', kind: 'definition', definition: 'def.simply-connected', usedBy: 'thm.boundary-correspondence',
+    { id: 'dep.bc-simply', kind: 'definition', definition: 'def.simply-connected', usedBy: 'thm.boundary-correspondence',
       note: '陈述以「$\\Omega$ 是单连通区域」为前提。' },
-    {status: 'skeleton',  id: 'dep.bc-jordan', kind: 'definition', definition: 'def.jordan-curve', usedBy: 'thm.boundary-correspondence',
+    { id: 'dep.bc-jordan', kind: 'definition', definition: 'def.jordan-curve', usedBy: 'thm.boundary-correspondence',
       note: '陈述以「边界 $\\partial\\Omega$ 是 Jordan 曲线」为前提。' },
-    {status: 'skeleton', 
+    {
       id: 'dep.riemann-caratheodory',
       kind: 'definition',
       definition: 'thm.riemann-mapping',
@@ -615,14 +615,14 @@
       note: '**对象依赖，不是推出**：本节谈的是「Riemann 映射 $f$ 在边界上的行为」，对象 $f$ 由 `thm.riemann-mapping` 提供；但边界延拓不是它的推论 —— 内部双全纯完全不管边界，Jordan 条件是本质的（这正是本节点保持 \'skeleton\' 的那条外部定理 Carathéodory–Osgood）。本图 schema 例外：这条按**对象/构造依赖**记 `definition`，不作命题推出。',
     },
 
-    {status: 'skeleton', 
+    {
       id: 'dep.sc-caratheodory',
       kind: 'implication',
       sources: ['thm.boundary-correspondence'],
       target: 'thm.schwarz-christoffel',
       title: 'Carathéodory–Osgood 提供 S–C 的存在性',
       proof: 'S–C 要证：给定内角 $\\alpha_{k}\\in(0,2]$ 的多边形 $P$，存在上半平面到 $P$ 的共形映射，形状为 $f(z)=A\\int^{z}\\prod_{k}(\\zeta-x_{k})^{\\alpha_{k}-1}\\,d\\zeta+B$。形式那一半已在本节点给出证明；存在性用的正是 `thm.boundary-correspondence`：多边形边界是 Jordan 曲线，故共形映射 $\\mathbb{H}\\to P$ 连续延拓到闭包、边界一一对应。有了这个延拓才能说「$x_{k}$ 映到第 $k$ 个顶点」，才能用 Schwarz 反射算出 $f^{\\prime}$ 的形状；没有它，证明停在「内部双全纯」，连顶点都指不出来。∎',
-      note: 'S–C 存在性的 (i)（多边形边界是 Jordan 曲线，共形映射连续延拓、边界点一一对应）由边界对应定理提供；引用它而不是直接引用 `thm.riemann-mapping`。',
+      note: 'S–C 存在性的 (i)（多边形边界是 Jordan 曲线，共形映射连续延拓、边界点一一对应）由边界对应定理提供；引用它而不是直接引用 `thm.riemann-mapping`。 ⚠ 本边证明条件于 `thm.boundary-correspondence`（`thm.boundary-correspondence` 仍 skeleton）。',
     },
 
     {"id":"dep.n12-crossratio-mobiuscircle","kind":"definition","definition":"def.cross-ratio","usedBy":"prop.mobius-circle","note":"交比在分式线性变换下不变，是判定四点共圆/共线的工具。"},

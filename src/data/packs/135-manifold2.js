@@ -1053,28 +1053,28 @@ window.MG = window.MG || {};
       usedBy: 'thm.bundle-classification',
       note: '分类要「取遍所有覆盖的加细」再取余极限；流形仿紧（第二可数 + Hausdorff + 局部欧氏），所以加细可以取成局部有限的，余极限才良定义。'
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.mf2-derham-derhamthm',
       kind: 'definition',
       definition: 'def.de-rham-complex',
       usedBy: 'thm.de-rham',
       note: '左边的 $H^{k}_{\\mathrm{dR}}$ 是「闭形式模恰当形式」，全部依赖 $\\mathrm{d}^{2} = 0$ 与商空间的构造。'
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.mf2-singchain-derhamthm',
       kind: 'definition',
       definition: 'def.singular-chain',
       usedBy: 'thm.de-rham',
       note: '右边的 $H^{k}_{\\mathrm{sing}}$ 是奇异链取对偶再取上同调；链群是「单形的形式和」，边界算子由 $\\partial^{2} = 0$ 支撑。'
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.mf2-cohomology-derhamthm',
       kind: 'definition',
       definition: 'def.cohomology',
       usedBy: 'thm.de-rham',
       note: '「取上同调」这个操作在两边的含义一致（$\\ker/\\operatorname{im}$）；同构说的是两个不同复形算出的同调群相同。'
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.mf2-integralonchain-derhamthm',
       kind: 'definition',
       definition: 'def.integral-on-chain',

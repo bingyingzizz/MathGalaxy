@@ -481,7 +481,7 @@
 | 自环 / 空端点 / 互推 | ✅ 全 0 |
 | 有 `proof` 但无 `status` 的边 | **627 条** |
 | 边 id 由全局序号派生 | ✅ **179 条形如 `e<数字>`**（`e16.definition` 这种）；222 个公开 proofs 页依赖它 ⇒ 内容一变 id 就漂 |
-| 骨架边无独立 status | **第 1 批报告口径 19 条**（图本身没有 edge status，不能从 `dist` 复跑；旧「33 条」已弃用） |
+| 骨架边 status | **可从 `dist/graph.json` 的 `edges[].status` 复跑；当前 5 条**（A8 起该字段进 schema；此前「图本身没有 edge status」已过期。历史注：第 1 批报告口径曾记 19 条，更早的「33 条」已弃用） |
 
 ⚠️ **节点页贴近 1300 B 上限**（2026-11-05 实测）：`thm.tensor-universal-property` **1300（顶格）**、`def.manifold-chart` **1291**、`def.interior` **1284**、`thm.cauchy-inequality` **1282**、`def.orientable-manifold` **1272**、`thm.gauss-bonnet` **1268**、`def.transition-function` **1266**、`def.gram-matrix` / `def.bilinear-form` 也接近 —— 再往这些陈述加一句就会红。
 
@@ -492,7 +492,7 @@
 | **P2「多写假设」剩余** | 另一个会话说 **73 个唯一节点** | ⚠️ 我没核实这个数 |
 | **N 类** | **600+**（§20 大表，命中率 25%） | 最大一块 |
 | 精读覆盖率 | **回执 1540 / 1540（100%）**；本会话逐团深读 **57 团 / 760 条**（v2 §39–§116） | 其余 48 团 / 780 条来自 §19–§59 早期批次；旧的 1051/1502/1527 是按团 id 倒推的估计，不再用 |
-| **skeleton 证明** | **15 节点 / 55 条边**（2026-11-12，A8 edge.status 后；标准 1 eulerchar-genus；中等 3 schwarz-christoffel / de-rham / paracompact-cech；研究 11 rado / classification-surfaces / za-analytic / boundary-correspondence / combinatorial-classification-surfaces / james / soft-sheaf-acyclic / jordan-curve / open-immersion-shriek / f-shriek-existence / witt-cancellation；55 条关联边带 status） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 21 批 PNT 已补；新增 Newman/Carathéodory–Osgood/组合分类三条支撑引理，其中 PNT 闭合、后两条仍 skeleton（skeleton 9→10）；余 10 条；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
+| **skeleton 证明** | **18 节点 / 5 条边**（2026-11-13，A8 edge.status 后；标准 1 eulerchar-genus；中等 4 schwarz-christoffel / de-rham / paracompact-cech / solid-completion-criterion；研究 13 rado / classification-surfaces / za-analytic / boundary-correspondence / combinatorial-classification-surfaces / james / soft-sheaf-acyclic / jordan-curve / open-immersion-shriek / f-shriek-existence / witt-cancellation / coherent-duality / rl1-not-analytic；5 条关联边带 status：paracompact-cech / mf2-de-rham / za-analytic / comb-classification / e103） | 第 1 批 8 条、第 2 批 8 条、第 3 批 4 条、第 4 批 6 条、第 5 批 6 条、第 6 批 6 条、第 7 批 5 条已补；第 8 批 0 条移除（PNT / Riesz–Markov / Schwarz–Christoffel 仍 skeleton）；第 9 批 3 条已补（Mittag-Leffler / Frobenius / 示性类）；第 11 批 2 补 2 留（cond-epi / completeness 已补，paracompact-cech / hadamard 仍 skeleton）；第 12 批 banach-as-condensed 已补、de-rham 仍 skeleton；第 13 批 Riesz–Markov 已补，SC 仍 skeleton；第 15 批 2 补 2 留（Riemann 映射 / Hadamard 已补，paracompact-cech / PNT 仍 skeleton）；第 16 批 eulerchar-nonorientable 已补；第 21 批 PNT 已补；新增 Newman/Carathéodory–Osgood/组合分类三条支撑引理，其中 PNT 闭合、后两条仍 skeleton（skeleton 9→10）；余 10 条；研究级需专人/多轮 <!-- stalecheck:ignore 子集统计（骨架证明），不是全图规模 --> |
 | §11-E 扫描器接硬门 | 剩 5 个（`_sweep_dispbrace` / `_sweep_escbrace` / `_sweep_uesc` / `_sweep_math` / `_sweep_brace`）+ 3 个只能当警告 | — |
 
 ⚠️ **涉及公式增减的改动要多改一份英文陈述** —— `build` 有「中英公式不变量」硬门
@@ -508,7 +508,7 @@
 
 1. **AUD-060 A 档 15 项**：127 条 definition 边指向定理、25 条读者可见文案、`imp.nt-newman` sources、190 条无 id 边、19 条骨架边 status、78 aka、`def.continuous` 加 definition、toporient 反引号等；build 已在 `8f9036b0` 完成，可派 FIX-062。B 档 4 项需书，C 档 6 项需拍板。
 2. **章节核实书单**：16 本优先书（Munkres、Engelking、Arnold、McDuff–Salamon、Horn–Johnson、Weibel、Le Stum、Tu ×3、Kobayashi–Nomizu、Chevalley、Bott–Tu、Kelley、Dummit–Foote、Landau–Lifshitz、Ben-Israel–Greville、Milnor–Stasheff）待用户下载到 `_refs/`；37 条章名已删，尚未核实。
-3. **剩余 skeleton**：**15 个节点 / 55 条骨架边**（标准 1 eulerchar-genus；中等 3 schwarz-christoffel / de-rham / paracompact-cech；研究 11 rado / classification-surfaces / za-analytic / boundary-correspondence / combinatorial-classification-surfaces / james / soft-sheaf-acyclic / jordan-curve / open-immersion-shriek / f-shriek-existence / witt-cancellation）；edges 上的 `status` 可从图查询。
+3. **剩余 skeleton**：**18 个节点 / 5 条骨架边**（标准 1 eulerchar-genus；中等 4 schwarz-christoffel / de-rham / paracompact-cech / solid-completion-criterion；研究 13 rado / classification-surfaces / za-analytic / boundary-correspondence / combinatorial-classification-surfaces / james / soft-sheaf-acyclic / jordan-curve / open-immersion-shriek / f-shriek-existence / witt-cancellation / coherent-duality / rl1-not-analytic）；edges 上的 `status` 可从图查询。
 4. **§60 结构项**：190 条无显式 id 边、78 个 aka、骨架边 status、refs 缺书名（Tu 13 条 A 类等）。
 5. **codex 并行只读审计**：Bash 已恢复但尚未发；下一轮至少发一个只读审计。
 6. **提交/发布**：第 25 批已提交 `8f9036b0`；接下来提交 i18n 再生成 + HANDOVER，push，`publish.mjs`，线上复验缓存 v2、层号与局部紧节点。

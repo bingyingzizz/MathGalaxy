@@ -72,7 +72,7 @@
           '而闭曲面是从拓扑定义的，两边的前提不同（真要连得先有「忘记复结构」这个函子）。',
       ].join('\n\n'),
     },
-    {status: 'skeleton', id: "e188.analogy",
+    { id: "e188.analogy",
       kind: 'analogy',
       a: 'thm.classification-surfaces',
       b: 'thm.gauss-bonnet',

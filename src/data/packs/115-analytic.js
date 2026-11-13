@@ -94,7 +94,11 @@ window.MG = window.MG || {};
         '',
         '1. **先有典范映射** $\\iota_S : A[S] \\to \\mathcal{A}[S]$ —— 把形式的有限和 $\\sum a_s s$ 送进自由完备模（预解析环的数据里自带这族映射，见 `def.pre-analytic-ring`）。',
         '2. **沿它拉回**：$\\operatorname{RHom}_A(-, C)$ 是反变函子，$\\iota_S$ 给出 $\\operatorname{RHom}_A(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$，规则是 $g \\mapsto g \\circ \\iota_S$。',
-        '3. **左边换个写法**：$\\mathcal{A}[S]$ 是自由 $\\mathcal{A}$-模，所以 $\\mathcal{A}$-线性映射与「逐生成元给一个 $A$-线性映射」是一回事，于是 $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) = \\operatorname{RHom}_A(\\mathcal{A}[S], C)$ —— 同一个集合，只是记法不同。',
+        '3. **左边换个写法（这一步有条件）**：当 $C$ 带有 $\\mathcal{A}$-模结构（即落在 (ii) 的像里）时，$\\mathcal{A}[S]$ 是自由 $\\mathcal{A}$-模，$\\mathcal{A}$-线性映射由生成元决定，于是有同构',
+        '',
+        '$$\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_A(\\mathcal{A}[S], C),$$',
+        '',
+        '这是伴随给出的同构，不是「同一个集合」。对一般的 $A$-模复形 $C$，左端还没有定义 ——「比较映射」正是定义里要检验的对象；把两者在导出层面直接识别，需要先建立完备模的导出范畴，本图未证（见注末的缺口说明）。',
         '',
         '把 2、3 接起来，就是公式里那个箭头 $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$。'
       ].join('\n'),
@@ -120,11 +124,11 @@ window.MG = window.MG || {};
         '',
         '**(i)** 它是阿贝尔范畴，对一切极限、余极限与扩张稳定；$\\mathcal{A}[S]$ 构成一族紧投射生成元；含入有左伴随',
         '',
-        '$$M \\longmapsto M \\otimes_{\\mathcal{A}} \\mathcal{A},$$',
+        '$$M \\longmapsto M \\otimes_{A} \\mathcal{A},$$',
         '',
         '它是 $A[S] \\mapsto \\mathcal{A}[S]$ 的唯一保余极限延拓。若 $A$ 交换，$\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 上有唯一的对称幺半张量积 $\\otimes_{\\mathcal{A}}$。',
         '',
-        '**(ii)** $D(\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}) \\to D(\\operatorname{Mod}^{\\mathrm{cond}}_{A})$ 全忠实，像由那些「$\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_{A}(A[S], C)$」的复形组成；\n\n$C$ 在像里当且仅当所有 $H^i(C)$ 在 $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 里。\n\n含入有左伴随 $C \\mapsto C \\otimes^{L}_{\\mathcal{A}} \\mathcal{A}$。'
+        '**(ii)** $D(\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}) \\to D(\\operatorname{Mod}^{\\mathrm{cond}}_{A})$ 全忠实，像由那些「$\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_{A}(A[S], C)$」的复形组成；\n\n$C$ 在像里当且仅当所有 $H^i(C)$ 在 $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 里。\n\n含入有左伴随 $C \\mapsto C \\otimes^{L}_{A} \\mathcal{A}$。'
       ].join('\n'),
       notes: '⭐ 这是 `thm.solid-abelian` 的相对版本：把 $\\mathbb{Z}$ 换成任意解析环。\n\n**固态模**就是 $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 的对象，$D(\\mathcal{A}) := D(\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}})$ 就是「$\\mathcal{A}$ 上固态模的导出范畴」。\n\n⭐ 三个叫法指同一件事：**固态模 = 完备模 = $\\mathcal{A}$-完备模**。\n\n叫「完备模」是因为它是相对自由完备模 $\\mathcal{A}[S]$ 补全出来的，和「拓扑上把 Cauchy 列补全」无关。\n\n⭐ 证明就是 `lem.solid-completion-criterion` 的第二次应用：解析环的定义正好是那条判据的假设。\n\n⚠ 原文留了一个警告：$\\otimes^{L}_{\\mathcal{A}}$ 未必是 $\\otimes_{\\mathcal{A}}$ 的左导出（已知例子都成立）。\n\n这一点不影响这里的用法。'
     },
@@ -209,6 +213,7 @@ window.MG = window.MG || {};
       id: 'thm.coherent-duality',
       cluster: 'cond.analytic',
       type: 'theorem',
+      status: 'skeleton',
       label: '仿射相干对偶',
       title: '定理：仿射相干对偶（Thm 8.2）',
       regions: ['condensed'],
@@ -228,13 +233,14 @@ window.MG = window.MG || {};
         '',
         '它保直和；$f^! \\mathbb{Z} \\in D(A_\\blacksquare)$ 是有限生成离散 $A$-模的有界复形。\n\n若 $f$ 是**完全交**（complete intersection：局部上 $A$ 由 $R$ 再模掉一个正则序列得到，即「切口干净、没有多余的关系」），则 $f^!\\mathbb{Z}$ 在 $D(A)$ 里可逆（局部是某个次数上的一条线丛）。'
       ].join('\n'),
-      notes: '⭐ 这就是 Grothendieck 相干对偶的「仿射模型」：$f_!$ 是**紧支撑上同调**，$f^!$ 是**对偶复形**，投影公式与 Serre 对偶都由伴随形式地推出。\n\n⭐ 与经典做法的区别：经典相干对偶里 $f_!$ 在仿射情形只能靠「形式函数」硬造；\n\n这里 $f_!$ 是一对伴随（$j_! \\dashv j^*$）的直接产物，而且**不保持离散对象** —— 这正是凝聚态方法的收益。\n\n⚠ $f^!\\mathbb{Z}$ 与经典对偶复形 $\\omega_A$ 的等同要在 `thm.za-analytic` 的框架里证（原文 Lecture XI）。',
+      notes: '⭐ 这就是 Grothendieck 相干对偶的「仿射模型」：$f_!$ 是**紧支撑上同调**，$f^!$ 是**对偶复形**，投影公式与 Serre 对偶都由伴随形式地推出。\n\n⭐ 与经典做法的区别：经典相干对偶里 $f_!$ 在仿射情形只能靠「形式函数」硬造；\n\n这里 $f_!$ 是一对伴随（$j_! \\dashv j^*$）的直接产物，而且**不保持离散对象** —— 这正是凝聚态方法的收益。\n\n⚠ $f^!\\mathbb{Z}$ 与经典对偶复形 $\\omega_A$ 的等同要在 `thm.za-analytic` 的框架里证（原文 Lecture XI）。\n\n⚠ 本结论条件于 `thm.za-analytic`（仍 skeleton），本图不展开完整证明。',
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VIII, Theorem 8.2']
     },
     {
       id: 'prop.rl1-not-analytic',
       cluster: 'cond.analytic',
       type: 'proposition',
+      status: 'skeleton',
       label: 'R_{ℓ¹} 不是解析环',
       title: '命题：$\\mathbb{R}_{\\ell^1}$ 不是解析环（Ribe 扩张）',
       regions: ['condensed'],
@@ -256,7 +262,7 @@ window.MG = window.MG || {};
         '',
         '$$0 \\to \\mathbb{R}_{\\ell^1}[S] \\to E \\to \\mathbb{R}_{\\ell^1}[S] \\to 0,$$',
         '',
-        '其中 $E$ 的「$\\le r$ 部分」同时约束 $\\sum |x_i|$ 与 $\\sum |y_i - x_i \\log|x_i||$。\n\n⚠ 这条不证明，只引 Ribe（1979）与原文 Remark 7.11–Prop 7.12。'
+        '其中 $E$ 的「$\\le r$ 部分」同时约束 $\\sum |x_i|$ 与 $\\sum |y_i - x_i \\log|x_i||$。\n\n⚠ 本图不证 Ribe 定理（只引 Ribe 1979 与原文 Remark 7.11–Prop 7.12），结论条件于该外部结果。'
       ].join('\n')
     }
   ],
@@ -344,7 +350,7 @@ window.MG = window.MG || {};
         '**⑦ 一般 $A$。** Noether 归一化给满射 $R = \\mathbb{Z}[X_1,\\ldots,X_n] \\to A$，$A$ 是有限 $R$-模，故 $\\prod_I A \\cong \\prod_I R \\otimes_R A$、$A^{\\blacksquare} = (A,R)^{\\blacksquare}$。\n\n对 $n$ 归纳：$R^{\\blacksquare}$ 已知解析，把 ①–⑥ 里的 $\\mathbb{Z}$ 换成 $R$、$T$ 换成 $X_n$，逐步得到 $(A,R)^{\\blacksquare}$ 解析（Appendix, Theorem 8.13）。',
       ].join('\n')
     },
-    {status: 'skeleton', 
+    {
       id: 'imp.coherent-duality',
       kind: 'implication',
       sources: ['thm.za-analytic',
@@ -369,7 +375,8 @@ window.MG = window.MG || {};
         '**⑤ $f_!$ 保紧。** 见 Remark 11.7：局部化到 $\\mathbb{A}^1$ 后用 Lecture VIII 的显式计算；一般情形由 Noether 归一化 + 粘合回到有限个 $\\mathbb{A}^1$ 因子。$\\blacksquare$',
         '',
         '⚠ 第 ⑤ 步同上：保紧性的完整展开是 Remark 11.7 的归约 + $\\mathbb{A}^1$ 的情形，本图只写到归约。',
-      ].join('\n')
+      ].join('\n'),
+      note: '⚠ 本边证明条件于 `prop.open-immersion-shriek`（`prop.open-immersion-shriek` 仍 skeleton）。',
     },
     {
       id: 'imp.rl1-not-analytic',

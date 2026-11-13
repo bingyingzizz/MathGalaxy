@@ -17,7 +17,7 @@
   nodes: [],
 
   edges: [
-    {status: 'skeleton', 
+    {
      
       id: 'dep.immersion-openshriek',
       kind: 'definition',
@@ -25,7 +25,7 @@
       usedBy: 'prop.open-immersion-shriek',
       note: '开浸入是**浸入**的特例（$U \\subseteq V$ 开，包含映射），所以「开浸入」这个概念先要有。',
     },
-    {status: 'skeleton', 
+    {
      
       id: 'dep.sixfunctors-openshriek',
       kind: 'definition',

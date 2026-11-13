@@ -280,7 +280,7 @@ window.MG = window.MG || {};
     },
 
     /* ------------------------------------ de Rham 定理 → 零次上同调 */
-    {status: 'skeleton', 
+    {
       id: 'imp.derived-h0-from-de-rham',
       kind: 'implication',
       layer: false,
@@ -302,7 +302,7 @@ window.MG = window.MG || {};
         '',
         '再由 $\\Phi^{0}$ 得 $H^{0}_{\\mathrm{dR}}(M) \\cong \\mathbb{R}^{c}$；特别地 $M \\ne \\emptyset$ 时 $M$ 连通当且仅当 $\\dim H^{0}_{\\mathrm{dR}}(M) = 1$。$\\blacksquare$'
       ].join('\n'),
-      note: '这里没有任何「形式」的计算：$H^{0}$ 的整条结论都是从 de Rham 定理借来的，$k \\ge 1$ 才需要 Poincaré 引理那一套。'
+      note: '这里没有任何「形式」的计算：$H^{0}$ 的整条结论都是从 de Rham 定理借来的，$k \\ge 1$ 才需要 Poincaré 引理那一套。 ⚠ 本边证明条件于 `thm.de-rham`（`thm.de-rham` 仍 skeleton）。'
     },
 
     /* ------------------------------------- 留数定理 → Cauchy 积分公式 */

@@ -532,7 +532,7 @@ window.MG = window.MG || {};
       usedBy: 'def.jordan-curve',
       note: 'Jordan 曲线定义为 $S^{1}$ 在同胚下的像；「像」上的拓扑取子空间拓扑，同胚是定义的一部分。'
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.jordantheorem-curve',
       kind: 'definition',
       definition: 'def.jordan-curve',

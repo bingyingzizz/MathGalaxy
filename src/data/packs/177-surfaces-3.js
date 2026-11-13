@@ -206,14 +206,14 @@
 
   edges: [
     /* -------- 两条判据式的前提 -------- */
-    {status: 'skeleton', 
+    {
       id: 'dep.classification-eulerchargenus',
       kind: 'analogy',
       a: 'thm.classification-surfaces',
       b: 'prop.eulerchar-genus',
       note: '命题的证明**不用**分类定理（节点注写明改走 Radó + 初等路线，$\\chi=2-2g$ 可由同调直接算出）；保留这条只作「标准形 = $g$ 个环面的连通和」的类比视角。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.eulerchar-eulerchargenus',
       kind: 'implication',
       sources: ['thm.euler-characteristic'],
@@ -222,14 +222,14 @@
       proof: '命题先由任一三角剖分数出 $\\chi(S)$，再由 $g=\\tfrac12\\operatorname{rank}H_{1}(S;\\mathbb{Z})$ 得 $\\beta_{0}=1$、$\\beta_{1}=2g$、$\\beta_{2}=1$，于是 $\\chi=2-2g$。把两种算法接起来靠的正是 `thm.euler-characteristic` 的 $\\chi=\\sum_{p}(-1)^{p}\\alpha_{p}=\\sum_{p}(-1)^{p}\\beta_{p}$；没有它，组合侧的数与同调侧的 $g$ 无法对齐，「与剖分无关」也无从谈起。∎',
       note: '$\\chi$ 的两种算法（数单纯形 / 数 Betti 数）相等，正是这条定理的内容。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.genus-eulerchargenus',
       kind: 'definition',
       definition: 'def.genus',
       usedBy: 'prop.eulerchar-genus',
       note: '命题说的就是「$\\chi$ 与 $g$ 互相决定」，$g$ 的定义必须在这里。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.classification-eulercharnonor',
       kind: 'analogy',
       a: 'thm.classification-surfaces',
@@ -296,7 +296,7 @@
       usedBy: 'ex.torus',
       note: '环面的 $g = 1$：$H_{1} \\cong \\mathbb{Z}^{2}$，秩 2，除以 2 得 1。',
     },
-    {status: 'skeleton', 
+    {
       id: 'dep.eulerchargenus-torus',
       kind: 'analogy',
       a: 'prop.eulerchar-genus',
@@ -317,20 +317,20 @@
       b: 'ex.klein-bottle',
       note: '「$k = 2$、$\\chi = 0$」同上。',
     },
-    {status: 'skeleton',  id: 'def-link.toporient-eg', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-genus', note: '引理 D 用定向图册给 2-单形一致定向' },
+    { id: 'def-link.toporient-eg', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-genus', note: '引理 D 用定向图册给 2-单形一致定向' },
     { id: 'def-link.toporient-nonor', kind: 'definition', definition: 'def.topological-orientability', usedBy: 'prop.eulerchar-nonorientable', note: '不可定向=不存在定向图册；标准形 $k$ 个 $\\mathbb{RP}^{2}$ 的连通和' },
     { id: 'def-link.topmanifold-toporient', kind: 'definition', definition: 'def.topological-manifold', usedBy: 'def.topological-orientability', note: '拓扑流形上才谈定向图册/定向双覆盖' },
 
-    {status: 'skeleton',  id: 'def-link.lebnum-eulerchar', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'prop.eulerchar-genus',
+    { id: 'def-link.lebnum-eulerchar', kind: 'definition', definition: 'def.lebesgue-number', usedBy: 'prop.eulerchar-genus',
       note: '证明对覆盖取勒贝格数来控制单纯形直径（小于勒贝格数就整块落在一个开集里）—— 定义直接进入第 2 步。' },
-    {status: 'skeleton',  id: 'def-link.barysub-eulerchar', kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'prop.eulerchar-genus',
+    { id: 'def-link.barysub-eulerchar', kind: 'definition', definition: 'def.barycentric-subdivision', usedBy: 'prop.eulerchar-genus',
       note: '证明反复作重心重分把网格按 $n/(n+1)$ 缩小，同调不变性由这条定义的性质给出。' },
-    {status: 'skeleton', 
+    {
       id: 'imp.eulerchar-inputs',
       kind: 'implication',
       sources: ['thm.rado', 'thm.simplicial-approximation', 'prop.h0-components'],
       target: 'prop.eulerchar-genus',
-      title: 'Radó 三角剖分 + 单纯逼近 + $H_{0}$ 连通分支 $\\implies \\chi = 2-2g$（依赖登记）',
+      title: 'Radó 三角剖分 + 单纯逼近 + $H_{0}$ 连通分支 $\\implies \\chi = 2-2g$（依赖登记，不是蕴含）',
       proof: [
         '**这条边只登记依赖，不证结论。** 三者合起来才是证明的输入，没有哪一个单独能推出 $\\chi = 2 - 2g$：',
         '',
@@ -340,7 +340,7 @@
         '',
         '代入 $\\chi = b_{0} - b_{1} + b_{2}$ 得 $\\chi = 1 - 2g + 1 = 2 - 2g$。',
       ].join('\n'),
-      note: '⚠ 这是**依赖登记**边，不是蕴含：把证明用到的三个外部输入登记在图上，读图时能看到本命题缺哪一块就不成立。',
+      note: '⚠ 这是依赖登记边，不是逻辑蕴含：把证明用到的三个外部输入登记在图上，读图时能看到本命题缺哪一块就不成立。',
     },
   ],
 });
