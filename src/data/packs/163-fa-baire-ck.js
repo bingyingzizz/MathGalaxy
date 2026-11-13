@@ -186,7 +186,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $X$ 是 Baire 空间，$F_n \\subseteq X$ 闭，且 $X = \\bigcup_n F_n$。则 $\\bigcup_n \\operatorname{int} F_n$ 在 $X$ 中**稠密**。特别地，若 $X \\ne \\emptyset$，则至少有一个 $F_n$ 有非空内部（空空间满足 Baire 前提，但每个 $F_n$ 的内部都是空的）。'
       ].join('\n'),
-      notes: 'text=**这是 Baire 纲定理的「开集版」**：闭覆盖中那些有内部的成员，其内部之并稠密。完整证明（在非空开集上用 Baire 性）见边 `imp.countable-closed-cover-proof`。',
+      notes: '**这是 Baire 纲定理的「开集版」**：闭覆盖中那些有内部的成员，其内部之并稠密。完整证明（在非空开集上用 Baire 性）见边 `imp.countable-closed-cover-proof`。',
       refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
@@ -481,7 +481,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $K$ 紧 Hausdorff，$A \\subseteq C(K, \\mathbb{R})$ 是**含单位**的**闭**子代数。则 $A$ 对 $\\min, \\max$ 封闭。'
       ].join('\n'),
-      notes: 'text=**为什么只需证 $|f|\\in A$**：$\\max,\\min$ 可由 $|\\cdot|$ 与四则运算拼出；$|f|=\\sqrt{f^{2}}$ 再用二项级数一致逼近。完整证明见边 `imp.subalgebra-lattice-proof`。',
+      notes: '**为什么只需证 $|f|\\in A$**：$\\max,\\min$ 可由 $|\\cdot|$ 与四则运算拼出；$|f|=\\sqrt{f^{2}}$ 再用二项级数一致逼近。完整证明见边 `imp.subalgebra-lattice-proof`。',
       refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理'],
     },
     {

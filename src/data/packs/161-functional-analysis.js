@@ -112,7 +112,7 @@ window.MG = window.MG || {};
         '',
         '$$\\alpha\\,\\|x\\|_\\infty \\le \\|x\\| \\le \\beta\\,\\|x\\|_\\infty , \\qquad \\|x\\|_\\infty := \\max_{1 \\le k \\le n} |x_k| .$$'
       ].join('\n'),
-      notes: 'text=**为什么有限维特殊**：单位球面紧，范数在球面上取到正的最小值，于是任一范数被 $\\lVert\\cdot\\rVert_\\infty$ 双向控制。完整证明见边 `imp.norm-equiv-finite-dim-proof`。',
+      notes: '**为什么有限维特殊**：单位球面紧，范数在球面上取到正的最小值，于是任一范数被 $\\lVert\\cdot\\rVert_\\infty$ 双向控制。完整证明见边 `imp.norm-equiv-finite-dim-proof`。',
       refs: ['Rudin, Functional Analysis · 赋范空间与有限维'],
     },
 
@@ -242,7 +242,7 @@ window.MG = window.MG || {};
         '',
         '特别地 $B(E)$ 是**赋范代数**（乘法连续）；$E \\ne \\{0\\}$ 时 $\\|\\mathrm{id}\\| = 1$。'
       ].join('\n'),
-      notes: 'text=**一句话**：$\\lVert vux\\rVert\\le\\lVert v\\rVert\\lVert u\\rVert\\lVert x\\rVert$，故复合有界且范数次乘；乘法连续性由双线性与这条不等式。完整证明见边 `imp.operator-algebra-proof`。',
+      notes: '**一句话**：$\\lVert vux\\rVert\\le\\lVert v\\rVert\\lVert u\\rVert\\lVert x\\rVert$，故复合有界且范数次乘；乘法连续性由双线性与这条不等式。完整证明见边 `imp.operator-algebra-proof`。',
       refs: ['Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数'],
     },
 
@@ -283,7 +283,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $E$ 赋范、$F$ Banach。则 $(B(E, F), \\|\\cdot\\|)$ 是 Banach 空间。特别地，对偶空间 $E^* = B(E, \\mathbb{K})$ **总是** Banach（不论 $E$ 是否完备）。'
       ].join('\n'),
-      notes: 'text=**证明思路**：逐点取极限定义 $u$，再用一致有界控制 $\\lVert u_k-u\\rVert$。完整证明见边 `imp.bounded-operators-banach-proof`。特别地 $E^*=B(E,\\mathbb K)$ 总是 Banach。',
+      notes: '**证明思路**：逐点取极限定义 $u$，再用一致有界控制 $\\lVert u_k-u\\rVert$。完整证明见边 `imp.bounded-operators-banach-proof`。特别地 $E^*=B(E,\\mathbb K)$ 总是 Banach。',
       refs: ['Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数'],
     },
 
@@ -464,7 +464,7 @@ window.MG = window.MG || {};
         '',
         '$$\\langle x, y\\rangle = \\tfrac{1}{4}\\sum_{k=0}^{3} i^k \\,\\| x + i^k y \\|^2 .$$'
       ].join('\n'),
-      notes: 'text=**用途**：把内积还原成范数，从而「保范」与「保内积」在实情形等价；复情形用四个方向的组合。完整推导见边 `imp.polarization-proof`。',
+      notes: '**用途**：把内积还原成范数，从而「保范」与「保内积」在实情形等价；复情形用四个方向的组合。完整推导见边 `imp.polarization-proof`。',
       refs: ['Conway, A Course in Functional Analysis · Hilbert 空间与正交基'],
     },
 

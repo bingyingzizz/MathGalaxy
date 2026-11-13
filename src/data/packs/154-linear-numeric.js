@@ -78,7 +78,7 @@ window.MG = window.MG || {};
         '',
         '**用途**：解 $Ax = b$ 变成「解 $Ly = b$（前代）+ 解 $Ux = y$（回代）」，两个都是 $O(n^{2})$；而且 $A$ 不变时 $L, U$ 可以反复用。'
       ].join('\n'),
-      notes: 'text=**为什么是 $LU$**：高斯消元的每一步都是左乘初等矩阵，把消元步乘起来即 $L^{-1}$；顺序主子式非零保证不换行。完整证明（含 Schur 补归纳与唯一性）见边 `imp.lu-decomposition-proof`；置换版本用部分主元法，见同边证明末段。',
+      notes: '**为什么是 $LU$**：高斯消元的每一步都是左乘初等矩阵，把消元步乘起来即 $L^{-1}$；顺序主子式非零保证不换行。完整证明（含 Schur 补归纳与唯一性）见边 `imp.lu-decomposition-proof`；置换版本用部分主元法，见同边证明末段。',
       refs: [
       'Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 3',
         'Hoffman–Kunze, Linear Algebra, 「Linear Transformations」· 三角化与消元',

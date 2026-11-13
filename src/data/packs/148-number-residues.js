@@ -219,7 +219,7 @@ window.MG = window.MG || {};
         '',
         '$$\\gcd(m,n) = 1:\\quad \\left(\\frac{m}{n}\\right)\\left(\\frac{n}{m}\\right) = (-1)^{\\frac{m-1}{2}\\cdot\\frac{n-1}{2}}, \\qquad \\left(\\frac{-1}{n}\\right) = (-1)^{\\frac{n-1}{2}}, \\qquad \\left(\\frac{2}{n}\\right) = (-1)^{\\frac{n^{2}-1}{8}} .$$',
       ].join('\n'),
-      notes: 'text=**三条法则的分工**：前两条由定义展开（乘性），第三条（互反律）要 $\\gcd(m,n)=1$，由 Legendre 互反律逐素因子相乘并合并指数得到。完整证明见边 `imp.jacobi-laws-proof`。',
+      notes: '**三条法则的分工**：前两条由定义展开（乘性），第三条（互反律）要 $\\gcd(m,n)=1$，由 Legendre 互反律逐素因子相乘并合并指数得到。完整证明见边 `imp.jacobi-laws-proof`。',
       refs: ['华罗庚《数论导引》第四章'],
     },
 

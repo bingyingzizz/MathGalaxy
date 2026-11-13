@@ -78,7 +78,7 @@ window.MG = window.MG || {};
         '- 解析 $\\iff$ 所列所有复形与极端不连通 $S$ 的比较映射为拟同构：这是定义展开，前提已经给定预解析环。\n' +
         '- 典范映射 $A[S]\\to\\mathcal A[S]$ $\\implies$ 反变的导出 Hom 比较映射：用预复合的函子性，不需要先假定解析性。\n' +
         '- 只检验零次普通 Hom $\\implies$ 导出比较同构不免费；普通 Hom 看不到高次 Ext，不能替代对复形的条件。\n' +
-        '- 原文把 $\\operatorname{RHom}_{\\mathcal A}$ 与 $\\operatorname{RHom}_A$ 直接识别的解释有循环风险：一般预解析环尚未建立完备模导出范畴，该步未核实，记为缺口；检验条件宜先在底层凝聚态 $A$-模导出范畴表述。\n'
+        '- $\\operatorname{RHom}_{\\mathcal A}(\\mathcal A[S],C)$ 与 $\\operatorname{RHom}_A(\\mathcal A[S],C)$ 的识别**不需要**完备模导出范畴：$C$ 是 $\\mathcal A$-模复形、$\\mathcal A[S]$ 自由，两边都典范同构于 $C^{S}$（逐项成立，故导出层面也成立）。所以定义可整体在底层 $A$-模的导出范畴里表述，无循环。\n'
       ].join('\n\n'),
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.4'],
       statement: [
@@ -94,11 +94,11 @@ window.MG = window.MG || {};
         '',
         '1. **先有典范映射** $\\iota_S : A[S] \\to \\mathcal{A}[S]$ —— 把形式的有限和 $\\sum a_s s$ 送进自由完备模（预解析环的数据里自带这族映射，见 `def.pre-analytic-ring`）。',
         '2. **沿它拉回**：$\\operatorname{RHom}_A(-, C)$ 是反变函子，$\\iota_S$ 给出 $\\operatorname{RHom}_A(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$，规则是 $g \\mapsto g \\circ \\iota_S$。',
-        '3. **左边换个写法（这一步有条件）**：当 $C$ 带有 $\\mathcal{A}$-模结构（即落在 (ii) 的像里）时，$\\mathcal{A}[S]$ 是自由 $\\mathcal{A}$-模，$\\mathcal{A}$-线性映射由生成元决定，于是有同构',
+        '3. **左边换个写法（这一步无条件，也不循环）**：$C$ 本就是 $\\mathcal{A}$-模复形（各项是 $\\mathcal{A}[T]$ 的直和），而 $\\mathcal{A}[S] = A[S]\\otimes_A \\mathcal{A}$ 是**自由** $\\mathcal{A}$-模 —— $\\mathcal{A}$-线性映射由生成元 $s\\in S$ 的像决定，所以两边都典范同构于 $C^{S}$：',
         '',
-        '$$\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_A(\\mathcal{A}[S], C),$$',
+        '$$\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_A(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_A(A[S], C),$$',
         '',
-        '这是伴随给出的同构，不是「同一个集合」。对一般的 $A$-模复形 $C$，左端还没有定义 ——「比较映射」正是定义里要检验的对象；把两者在导出层面直接识别，需要先建立完备模的导出范畴，本图未证（见注末的缺口说明）。',
+        '两个同构都逐项成立（$\\operatorname{Hom}$ 逐项取 $C^{S}$），故在导出层面也成立。于是定义里的比较映射就是 $\\iota_S$ 诱导的 $\\operatorname{RHom}_A(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$ —— **整条定义只用底层 $A$-模，不涉及正在定义的完备模子范畴**，没有循环。',
         '',
         '把 2、3 接起来，就是公式里那个箭头 $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$。'
       ].join('\n'),

@@ -361,7 +361,7 @@
         '提升 $\\tilde{F} : [0, 1] \\times [0, 1] \\to E$ 使 $\\tilde{F}(0, 0) = e_{0}$、$p \\circ \\tilde{F} = F$。',
         '若 $F$ 是道路同伦（两端固定），则 $\\tilde{F}$ 对每个 $s$ 的两个端点也都固定。',
       ].join('\n'),
-      notes: 'text=**证明骨架**：用 Lebesgue 数把道路/同伦切成小段，每段落在均匀覆叠的开集里，逐段唯一提升。完整证明见边 `imp.lifting-proof`。',
+      notes: '**证明骨架**：用 Lebesgue 数把道路/同伦切成小段，每段落在均匀覆叠的开集里，逐段唯一提升。完整证明见边 `imp.lifting-proof`。',
       refs: [
         'Munkres, Topology (2nd ed.), Ch. 9 · Covering Spaces（lifting theorem）',
         'Hatcher, Algebraic Topology, Ch. 1 §1.3 · lifting properties',

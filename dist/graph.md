@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-13T06:07:05.417Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-13T14:29:45.369Z
 > 15 星系 / 105 星团 / 1636 节点 / 3438 连线（强边 3361，弱边 77；其中**不分层**的「推论」64 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 4.2 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -4618,7 +4618,7 @@ $$\tilde{\alpha} : [0, 1] \longrightarrow E,\qquad \tilde{\alpha}(0) = e_{0},\qu
 提升 $\tilde{F} : [0, 1] \times [0, 1] \to E$ 使 $\tilde{F}(0, 0) = e_{0}$、$p \circ \tilde{F} = F$。
 若 $F$ 是道路同伦（两端固定），则 $\tilde{F}$ 对每个 $s$ 的两个端点也都固定。
 
-text=**证明骨架**：用 Lebesgue 数把道路/同伦切成小段，每段落在均匀覆叠的开集里，逐段唯一提升。完整证明见边 `imp.lifting-proof`。
+**证明骨架**：用 Lebesgue 数把道路/同伦切成小段，每段落在均匀覆叠的开集里，逐段唯一提升。完整证明见边 `imp.lifting-proof`。
 
 参考：Munkres, Topology (2nd ed.), Ch. 9 · Covering Spaces（lifting theorem）；Hatcher, Algebraic Topology, Ch. 1 §1.3 · lifting properties
 
@@ -8546,11 +8546,13 @@ $$G := \bigl(\langle v_{i}, v_{j}\rangle\bigr)_{1 \le i,j \le k} ,$$
 
 $$B = P^{T} A\, P .$$
 
-复情形也用**同一个公式**：双线性型的合同是 $B = P^{T} A\, P$，用**转置**而非共轭转置（例：$A = [1]$、$P = [i]$ 时 $P^{T}AP = [-1]$，而 $P^{*}AP = [1]$）。带星号的 $P^{*}AP$ 属于 **Hermite 型**的星合同，不是这里。
+**公式只有这一条**，复情形也用**转置**而非共轭转置：$A = [1]$、$P = [i]$ 时 $P^{T}AP = [-1]$，而 $P^{*}AP = [1]$。带星号的 $P^{*}AP$ 是 **Hermite 型**的星合同，是另一个等价关系，不是这里的合同。
 
-**合同保持的量**：秩、对称性、交错性、正定性、半正定性，以及实对称情形下的**惯性指数**。
+**合同保持的量**：秩、对称性、交错性；在**实对称**矩阵上还保持**惯性指数** $(p,q)$，因而保持正定性、半正定性。
 
 **不保持**：特征值、迹、行列式的具体值。
+
+⚠️ **「正定」只在实对称（或 Hermite 星合同）里谈**：$P^{T}AP$ 会改变符号（$[1] \mapsto [-1]$），所以「正定/半正定」**不是** $P^{T}AP$ 的不变量 —— 把它当复情形的不变量，就会得出 $[1]$ 与 $[-1]$ 合同却一正一负的矛盾。
 
 **合同 vs 相似，一句话分清**：相似 $P^{-1}AP$ 是「同一个**线性算子**换基」；合同 $P^{T}AP$ 是「同一个**双线性型**换基」。前者保持特征值，后者保持惯性 —— 两者只在 $P$ 正交（$P^{-1} = P^{T}$）时重合，那时也叫**正交相似**。
 
@@ -8937,7 +8939,7 @@ $$\det\begin{pmatrix} \langle u,u\rangle & \langle u,w\rangle \\ \langle w,u\ran
 
 所以几何上它说的是：**Gram 行列式 = 平行四边形的面积的平方**（`def.gram-matrix`）。
 
-text=**几何读法**：左边是两个向量 Gram 矩阵的行列式，即它们张成的平行四边形面积的平方；右边是坐标形式的面积平方。完整展开见边 `imp.lagrange-identity-proof`。⚠ 坐标式只在正交归一基下成立，一般基要用 Gram 矩阵修正。
+**几何读法**：左边是两个向量 Gram 矩阵的行列式，即它们张成的平行四边形面积的平方；右边是坐标形式的面积平方。完整展开见边 `imp.lagrange-identity-proof`。⚠ 坐标式只在正交归一基下成立，一般基要用 Gram 矩阵修正。
 
 参考：Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· Gram 行列式；北大《高等代数》· Lagrange 恒等式
 
@@ -10399,7 +10401,7 @@ $$A = LU ,$$
 
 **用途**：解 $Ax = b$ 变成「解 $Ly = b$（前代）+ 解 $Ux = y$（回代）」，两个都是 $O(n^{2})$；而且 $A$ 不变时 $L, U$ 可以反复用。
 
-text=**为什么是 $LU$**：高斯消元的每一步都是左乘初等矩阵，把消元步乘起来即 $L^{-1}$；顺序主子式非零保证不换行。完整证明（含 Schur 补归纳与唯一性）见边 `imp.lu-decomposition-proof`；置换版本用部分主元法，见同边证明末段。
+**为什么是 $LU$**：高斯消元的每一步都是左乘初等矩阵，把消元步乘起来即 $L^{-1}$；顺序主子式非零保证不换行。完整证明（含 Schur 补归纳与唯一性）见边 `imp.lu-decomposition-proof`；置换版本用部分主元法，见同边证明末段。
 
 参考：Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 3；Hoffman–Kunze, Linear Algebra, 「Linear Transformations」· 三角化与消元；北大《高等代数》· 矩阵的三角分解
 
@@ -14581,7 +14583,7 @@ $$q(x) \le C\,p(x) \qquad \forall x \in E .$$
 
 $$\alpha\,\|x\|_\infty \le \|x\| \le \beta\,\|x\|_\infty , \qquad \|x\|_\infty := \max_{1 \le k \le n} |x_k| .$$
 
-text=**为什么有限维特殊**：单位球面紧，范数在球面上取到正的最小值，于是任一范数被 $\lVert\cdot\rVert_\infty$ 双向控制。完整证明见边 `imp.norm-equiv-finite-dim-proof`。
+**为什么有限维特殊**：单位球面紧，范数在球面上取到正的最小值，于是任一范数被 $\lVert\cdot\rVert_\infty$ 双向控制。完整证明见边 `imp.norm-equiv-finite-dim-proof`。
 
 参考：Rudin, Functional Analysis · 赋范空间与有限维
 
@@ -14688,7 +14690,7 @@ $$\|v \circ u\| \le \|v\| \, \|u\| .$$
 
 特别地 $B(E)$ 是**赋范代数**（乘法连续）；$E \ne \{0\}$ 时 $\|\mathrm{id}\| = 1$。
 
-text=**一句话**：$\lVert vux\rVert\le\lVert v\rVert\lVert u\rVert\lVert x\rVert$，故复合有界且范数次乘；乘法连续性由双线性与这条不等式。完整证明见边 `imp.operator-algebra-proof`。
+**一句话**：$\lVert vux\rVert\le\lVert v\rVert\lVert u\rVert\lVert x\rVert$，故复合有界且范数次乘；乘法连续性由双线性与这条不等式。完整证明见边 `imp.operator-algebra-proof`。
 
 参考：Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数
 
@@ -14715,7 +14717,7 @@ text=**一句话**：$\lVert vux\rVert\le\lVert v\rVert\lVert u\rVert\lVert x\rV
 
 设 $E$ 赋范、$F$ Banach。则 $(B(E, F), \|\cdot\|)$ 是 Banach 空间。特别地，对偶空间 $E^* = B(E, \mathbb{K})$ **总是** Banach（不论 $E$ 是否完备）。
 
-text=**证明思路**：逐点取极限定义 $u$，再用一致有界控制 $\lVert u_k-u\rVert$。完整证明见边 `imp.bounded-operators-banach-proof`。特别地 $E^*=B(E,\mathbb K)$ 总是 Banach。
+**证明思路**：逐点取极限定义 $u$，再用一致有界控制 $\lVert u_k-u\rVert$。完整证明见边 `imp.bounded-operators-banach-proof`。特别地 $E^*=B(E,\mathbb K)$ 总是 Banach。
 
 参考：Rudin, Functional Analysis · 有界线性算子、对偶与 Neumann 级数
 
@@ -15170,7 +15172,7 @@ $$\langle x, y\rangle = \tfrac{1}{4}\bigl( \|x + y\|^2 - \|x - y\|^2 \bigr) .$$
 
 $$\langle x, y\rangle = \tfrac{1}{4}\sum_{k=0}^{3} i^k \,\| x + i^k y \|^2 .$$
 
-text=**用途**：把内积还原成范数，从而「保范」与「保内积」在实情形等价；复情形用四个方向的组合。完整推导见边 `imp.polarization-proof`。
+**用途**：把内积还原成范数，从而「保范」与「保内积」在实情形等价；复情形用四个方向的组合。完整推导见边 `imp.polarization-proof`。
 
 参考：Conway, A Course in Functional Analysis · Hilbert 空间与正交基
 
@@ -15815,7 +15817,7 @@ $\mathcal{H} = \{f\}$ 时等度连续 $\iff$ $f$ 连续。
 
 设 $K$ 紧 Hausdorff，$A \subseteq C(K, \mathbb{R})$ 是**含单位**的**闭**子代数。则 $A$ 对 $\min, \max$ 封闭。
 
-text=**为什么只需证 $|f|\in A$**：$\max,\min$ 可由 $|\cdot|$ 与四则运算拼出；$|f|=\sqrt{f^{2}}$ 再用二项级数一致逼近。完整证明见边 `imp.subalgebra-lattice-proof`。
+**为什么只需证 $|f|\in A$**：$\max,\min$ 可由 $|\cdot|$ 与四则运算拼出；$|f|=\sqrt{f^{2}}$ 再用二项级数一致逼近。完整证明见边 `imp.subalgebra-lattice-proof`。
 
 参考：Rudin, Functional Analysis · Stone–Weierstrass 定理
 
@@ -16057,7 +16059,7 @@ $X$ Baire、$\Omega \subseteq X$ 开 $\implies$ $\Omega$（带子空间拓扑）
 
 设 $X$ 是 Baire 空间，$F_n \subseteq X$ 闭，且 $X = \bigcup_n F_n$。则 $\bigcup_n \operatorname{int} F_n$ 在 $X$ 中**稠密**。特别地，若 $X \ne \emptyset$，则至少有一个 $F_n$ 有非空内部（空空间满足 Baire 前提，但每个 $F_n$ 的内部都是空的）。
 
-text=**这是 Baire 纲定理的「开集版」**：闭覆盖中那些有内部的成员，其内部之并稠密。完整证明（在非空开集上用 Baire 性）见边 `imp.countable-closed-cover-proof`。
+**这是 Baire 纲定理的「开集版」**：闭覆盖中那些有内部的成员，其内部之并稠密。完整证明（在非空开集上用 Baire 性）见边 `imp.countable-closed-cover-proof`。
 
 参考：Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）
 
@@ -31827,11 +31829,11 @@ $$\operatorname{RHom}_{\mathcal{A}}\bigl(\mathcal{A}[S],\ C\bigr) \longrightarro
 
 1. **先有典范映射** $\iota_S : A[S] \to \mathcal{A}[S]$ —— 把形式的有限和 $\sum a_s s$ 送进自由完备模（预解析环的数据里自带这族映射，见 `def.pre-analytic-ring`）。
 2. **沿它拉回**：$\operatorname{RHom}_A(-, C)$ 是反变函子，$\iota_S$ 给出 $\operatorname{RHom}_A(\mathcal{A}[S], C) \to \operatorname{RHom}_A(A[S], C)$，规则是 $g \mapsto g \circ \iota_S$。
-3. **左边换个写法（这一步有条件）**：当 $C$ 带有 $\mathcal{A}$-模结构（即落在 (ii) 的像里）时，$\mathcal{A}[S]$ 是自由 $\mathcal{A}$-模，$\mathcal{A}$-线性映射由生成元决定，于是有同构
+3. **左边换个写法（这一步无条件，也不循环）**：$C$ 本就是 $\mathcal{A}$-模复形（各项是 $\mathcal{A}[T]$ 的直和），而 $\mathcal{A}[S] = A[S]\otimes_A \mathcal{A}$ 是**自由** $\mathcal{A}$-模 —— $\mathcal{A}$-线性映射由生成元 $s\in S$ 的像决定，所以两边都典范同构于 $C^{S}$：
 
-$$\operatorname{RHom}_{\mathcal{A}}(\mathcal{A}[S], C) \cong \operatorname{RHom}_A(\mathcal{A}[S], C),$$
+$$\operatorname{RHom}_{\mathcal{A}}(\mathcal{A}[S], C) \cong \operatorname{RHom}_A(\mathcal{A}[S], C) \cong \operatorname{RHom}_A(A[S], C),$$
 
-这是伴随给出的同构，不是「同一个集合」。对一般的 $A$-模复形 $C$，左端还没有定义 ——「比较映射」正是定义里要检验的对象；把两者在导出层面直接识别，需要先建立完备模的导出范畴，本图未证（见注末的缺口说明）。
+两个同构都逐项成立（$\operatorname{Hom}$ 逐项取 $C^{S}$），故在导出层面也成立。于是定义里的比较映射就是 $\iota_S$ 诱导的 $\operatorname{RHom}_A(\mathcal{A}[S], C) \to \operatorname{RHom}_A(A[S], C)$ —— **整条定义只用底层 $A$-模，不涉及正在定义的完备模子范畴**，没有循环。
 
 把 2、3 接起来，就是公式里那个箭头 $\operatorname{RHom}_{\mathcal{A}}(\mathcal{A}[S], C) \to \operatorname{RHom}_A(A[S], C)$。
 
@@ -31849,7 +31851,7 @@ $$\operatorname{RHom}_{\mathcal{A}}(\mathcal{A}[S], C) \cong \operatorname{RHom}
 - 解析 $\iff$ 所列所有复形与极端不连通 $S$ 的比较映射为拟同构：这是定义展开，前提已经给定预解析环。
 - 典范映射 $A[S]\to\mathcal A[S]$ $\implies$ 反变的导出 Hom 比较映射：用预复合的函子性，不需要先假定解析性。
 - 只检验零次普通 Hom $\implies$ 导出比较同构不免费；普通 Hom 看不到高次 Ext，不能替代对复形的条件。
-- 原文把 $\operatorname{RHom}_{\mathcal A}$ 与 $\operatorname{RHom}_A$ 直接识别的解释有循环风险：一般预解析环尚未建立完备模导出范畴，该步未核实，记为缺口；检验条件宜先在底层凝聚态 $A$-模导出范畴表述。
+- $\operatorname{RHom}_{\mathcal A}(\mathcal A[S],C)$ 与 $\operatorname{RHom}_A(\mathcal A[S],C)$ 的识别**不需要**完备模导出范畴：$C$ 是 $\mathcal A$-模复形、$\mathcal A[S]$ 自由，两边都典范同构于 $C^{S}$（逐项成立，故导出层面也成立）。所以定义可整体在底层 $A$-模的导出范畴里表述，无循环。
 
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.4
 
@@ -40586,7 +40588,7 @@ $$\left(\frac{ab}{n}\right) = \left(\frac{a}{n}\right)\left(\frac{b}{n}\right), 
 
 $$\gcd(m,n) = 1:\quad \left(\frac{m}{n}\right)\left(\frac{n}{m}\right) = (-1)^{\frac{m-1}{2}\cdot\frac{n-1}{2}}, \qquad \left(\frac{-1}{n}\right) = (-1)^{\frac{n-1}{2}}, \qquad \left(\frac{2}{n}\right) = (-1)^{\frac{n^{2}-1}{8}} .$$
 
-text=**三条法则的分工**：前两条由定义展开（乘性），第三条（互反律）要 $\gcd(m,n)=1$，由 Legendre 互反律逐素因子相乘并合并指数得到。完整证明见边 `imp.jacobi-laws-proof`。
+**三条法则的分工**：前两条由定义展开（乘性），第三条（互反律）要 $\gcd(m,n)=1$，由 Legendre 互反律逐素因子相乘并合并指数得到。完整证明见边 `imp.jacobi-laws-proof`。
 
 参考：华罗庚《数论导引》第四章
 

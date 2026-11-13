@@ -229,7 +229,7 @@ window.MG = window.MG || {};
         '',
         '所以几何上它说的是：**Gram 行列式 = 平行四边形的面积的平方**（`def.gram-matrix`）。'
       ].join('\n'),
-      notes: 'text=**几何读法**：左边是两个向量 Gram 矩阵的行列式，即它们张成的平行四边形面积的平方；右边是坐标形式的面积平方。完整展开见边 `imp.lagrange-identity-proof`。⚠ 坐标式只在正交归一基下成立，一般基要用 Gram 矩阵修正。',
+      notes: '**几何读法**：左边是两个向量 Gram 矩阵的行列式，即它们张成的平行四边形面积的平方；右边是坐标形式的面积平方。完整展开见边 `imp.lagrange-identity-proof`。⚠ 坐标式只在正交归一基下成立，一般基要用 Gram 矩阵修正。',
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· Gram 行列式',
         '北大《高等代数》· Lagrange 恒等式'
