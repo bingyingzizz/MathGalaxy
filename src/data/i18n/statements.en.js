@@ -1278,16 +1278,16 @@ MG.i18nStatements = {
 
     'def.subset': {
       statement: {
-        en:
-'Let $A$ and $B$ be sets.\n\n' +
-'- **$A$ is a subset of $B$** (written $A \\subseteq B$): ' +
-'$\\forall x ( x \\in A \\to x \\in B )$\n' +
-'- **$A$ is a proper subset of $B$** (written $A \\subset B$): $A \\subseteq B$ and ' +
-'$A \\ne B$.\n\n' +
-'Basic properties: $\\subseteq$ is reflexive and transitive; and by the axiom of ' +
-'extensionality, two sets are equal exactly when they contain each other:\n\n' +
-'$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$\n\n' +
-'This is the most common way to prove two sets equal: **containment both ways**.',
+        en: `Let $A$ and $B$ be sets.
+
+- **$A$ is a subset of $B$** (written $A \\subseteq B$): $\\forall x ( x \\in A \\to x \\in B )$
+- **$A$ is a proper subset of $B$** (written $A \\subset B$): $A \\subseteq B$ and $A \\ne B$.
+
+Basic properties: $\\subseteq$ is reflexive and transitive; and by the axiom of extensionality, two sets are equal exactly when they contain each other:
+
+$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$
+
+This is the most common way to prove two sets equal: **containment both ways**.`,
         status: 'reviewed', basedOn: 'v0.9.3#6fb94ac5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
@@ -2014,9 +2014,9 @@ MG.i18nStatements = {
         basedOn: 'v0.9.3#c541f98f',
       },
       notes: {
-        en: "**Proof (Alexander's subbase lemma + the axiom of choice).** Write $X = \\prod_{i\\in I} X_{i}$, with projections $p_{i} : X\\to X_{i}$. Take the **subbase**\n$$\\mathcal{S} := \\{\\, p_{i}^{-1}(U_{i}) \\;:\\; i\\in I,\\ U_{i}\\subseteq X_{i}\\ \\text{open} \\,\\}.$$\n**Alexander's subbase lemma**: a topological space is compact $\\iff$ every cover by members of a subbase has a finite subcover. So it suffices to verify the latter.\nLet $\\mathcal{S}_{0} \\subseteq \\mathcal{S}$ cover $X$, and suppose it has **no** finite subcover. For each $i$ put\n$$\\mathcal{U}_{i} := \\{\\, U_{i} : p_{i}^{-1}(U_{i}) \\in \\mathcal{S}_{0} \\,\\},\\qquad F_{i} := X_{i}\\setminus \\bigcup \\mathcal{U}_{i}.$$\n- **$F_{i} \\ne \\emptyset$**: otherwise $\\mathcal{U}_{i}$ is an open cover of the compact space $X_{i}$; take a finite subcover $U_{1},\\ldots,U_{n}$, and the corresponding $p_{i}^{-1}(U_{1}),\\ldots,p_{i}^{-1}(U_{n})$ are a finite subcover of $X$ — contradicting the assumption ✓.\n- By the **axiom of choice** choose $x_{i} \\in F_{i}$, and set $x := (x_{i})_{i\\in I} \\in X$.\n- Then for every $p_{i}^{-1}(U_{i})\\in \\mathcal{S}_{0}$ we have $x_{i} \\notin U_{i}$ (because $x_{i}\\in F_{i}$), so $x \\notin p_{i}^{-1}(U_{i})$ holds for **all** members — contradicting that $\\mathcal{S}_{0}$ covers $X$ ✓.\nThus every subbase cover has a finite subcover, and by Alexander's lemma $X$ is compact. ∎\n(Alexander's lemma itself: if a family of covers has no finite subcover, use Zorn's lemma to enlarge it to a maximal such family $\\mathcal{M}$; then choosing the \"non-$\\mathcal{M}$ members\" produces data attached to the subbase, and one deduces step by step that $\\mathcal{M}$ is actually a cover — a contradiction.)\n\n⭐ **Tychonoff's theorem is equivalent to the axiom of choice** (they imply each other in ZF) — a standard gauge of how strong the axiom of choice is.",
+        en: "**Proof (Alexander's subbase lemma + the axiom of choice).** Write $X = \\prod_{i\\in I} X_{i}$, with projections $p_{i} : X\\to X_{i}$. Take the **subbase**\n$$\\mathcal{S} := \\{\\, p_{i}^{-1}(U_{i}) \\;:\\; i\\in I,\\ U_{i}\\subseteq X_{i}\\ \\text{open} \\,\\}.$$\n**Alexander's subbase lemma**: a topological space is compact $\\iff$ every cover by members of a subbase has a finite subcover. So it suffices to verify the latter.\nLet $\\mathcal{S}_{0} \\subseteq \\mathcal{S}$ cover $X$, and suppose it has **no** finite subcover. For each $i$ put\n$$\\mathcal{U}_{i} := \\{\\, U_{i} : p_{i}^{-1}(U_{i}) \\in \\mathcal{S}_{0} \\,\\},\\qquad F_{i} := X_{i}\\setminus \\bigcup \\mathcal{U}_{i}.$$\n- **$F_{i} \\ne \\emptyset$**: otherwise $\\mathcal{U}_{i}$ is an open cover of the compact space $X_{i}$; take a finite subcover $U_{1},\\ldots,U_{n}$, and the corresponding $p_{i}^{-1}(U_{1}),\\ldots,p_{i}^{-1}(U_{n})$ are a finite subcover of $X$ — contradicting the assumption ✓.\n- By the **axiom of choice** choose $x_{i} \\in F_{i}$, and set $x := (x_{i})_{i\\in I} \\in X$.\n- Then for every $p_{i}^{-1}(U_{i})\\in \\mathcal{S}_{0}$ we have $x_{i} \\notin U_{i}$ (because $x_{i}\\in F_{i}$), so $x \\notin p_{i}^{-1}(U_{i})$ holds for **all** members — contradicting that $\\mathcal{S}_{0}$ covers $X$ ✓.\nThus every subbase cover has a finite subcover, and by Alexander's lemma $X$ is compact. ∎\n(Alexander's lemma itself: if a family of open sets covering the space has no finite subcover, use Zorn's lemma to enlarge it to a maximal such family $\\mathcal{M}$; then the choice of \"non-$\\mathcal{M}$ members\" produces data attached to the subbase, and one deduces step by step that $\\mathcal{M}$ is actually a cover — a contradiction.)\n\n⭐ **Tychonoff's theorem is equivalent to the axiom of choice** (they imply each other in ZF) — a standard gauge of how strong the axiom of choice is.",
         status: 'draft',
-        basedOn: 'v0.9.3#f5786987',
+        basedOn: 'v0.9.3#7f93e3f9',
       },
     },
 
@@ -4578,6 +4578,1306 @@ MG.i18nStatements = {
         en: "The natural embedding is always isometric (Hahn–Banach): $\\|J_X x\\| = \\sup_{\\|\\varphi\\| \\le 1}|\\varphi(x)| = \\|x\\|$. Hence reflexivity $\\iff$ every element of $X^{**}$ comes from $X$.\n\n**Examples**: Hilbert spaces; $L^p$ and $\\ell^p$ ($1 < p < \\infty$, see `cor.lp-reflexive`); finite-dimensional spaces.\n\n**Counterexamples**: $c_0$ ($c_0^{**} = \\ell^\\infty \\ne c_0$), $\\ell^1$ ($\\ell^{1**} = (\\ell^\\infty)^* \\supsetneq \\ell^1$), $C[0,1]$.\n\n⭐ The core use of reflexivity: bounded sequences have weakly convergent subsequences (Eberlein–Šmulian; the graph has no weak-topology node yet), which is the entry point to variational existence and to Milman–Pettis.\n\n📌 Relation to pairing language: $X$ is reflexive $\\iff$ both embeddings of the perfect pairing $(X, X^*)$ are surjective (`def.perfect-pairing`, `thm.riesz-perfect-pairing`).",
         status: 'draft',
         basedOn: 'v0.9.3#f7bd2e47',
+      },
+    },
+
+    'thm.closed-graph': {
+      statement: {
+        en: "Let $E, F$ be Banach spaces and $u : E \\to F$ linear. If the graph of $u$,\n\n$$G(u) := \\{(x, u(x)) : x \\in E\\}$$\n\nis **closed** in the product space $E \\times F$, then $u$ is bounded (hence continuous).\n\nUnwinding convergence in the product topology, the criterion is one sentence: for every sequence $x_n \\to x$, if $u(x_n) \\to y$, then necessarily $y = u(x)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#391c9ec3',
+      },
+      notes: {
+        en: "**Proof.** $E \\times F$ is complete (a product of two complete spaces is complete), and $G(u)$ is a closed subset of it, so $G(u)$ is itself a Banach space. The two projections\n\n$$\\pi_1 : G(u) \\to E,\\ (x, u(x)) \\mapsto x ; \\qquad \\pi_2 : G(u) \\to F,\\ (x, u(x)) \\mapsto u(x)$$\n\nare bounded linear maps ($\\|\\pi_1\\| \\le 1$, $\\|\\pi_2\\| \\le 1$), and $\\pi_1$ is a bijection (the graph of a linear map corresponds one-to-one with its domain). Apply the inverse mapping theorem to $\\pi_1$: $\\pi_1^{-1} : E \\to G(u)$ is bounded. Hence\n\n$$u = \\pi_2 \\circ \\pi_1^{-1}$$\n\nis bounded as a composite of two bounded maps. $\\square$\n\n**The practical value is that \"closed\" is easier to verify than \"bounded\".** To prove $u$ bounded directly one must estimate $\\|u x\\|$; to see that the graph is closed one only needs: take convergent $x_n \\to x$ and $u(x_n) \\to y$, and prove $y = u(x)$ — no norm estimates in between. This is the route by which distribution theory proves that differential operators and the Fourier transform are continuous.\n\n**Why linearity and completeness at both ends are needed.** \"Continuous $\\implies$ closed graph\" is elementary (the graph of a continuous map into a product is closed, for any map), so the two properties look similar; the whole difference lies in the converse.\n\n**Completeness.** Take $E = (C[0,1], \\|\\cdot\\|_1)$ (incomplete) and $F = (C[0,1], \\|\\cdot\\|_\\infty)$ (complete), with $u = \\mathrm{id}$. If $f_n \\to f$ in $\\|\\cdot\\|_1$ and $f_n \\to g$ in $\\|\\cdot\\|_\\infty$, then convergence in $\\|\\cdot\\|_1$ implies convergence in $L^1$, while convergence in $\\|\\cdot\\|_\\infty$ implies convergence in $L^1$, so $f = g$: the graph is closed. But $\\|u\\| = \\sup\\|f\\|_\\infty / \\|f\\|_1 = \\infty$ is infinite, so $u$ is not bounded. Thus **if either the domain or the target is incomplete, the conclusion fails**.\n\n**Linearity.** A nonlinear map can have a closed graph and be discontinuous: take $u : \\mathbb{R} \\to \\mathbb{R}$ with $u(x) = 1/x$ for $x \\ne 0$ and $u(0) = 0$. Its graph is closed in $\\mathbb{R}^2$ (a hyperbola together with the origin), but $u$ is discontinuous at $0$.\n\n📌 **TFAE version**: boundedness is equivalent to closedness of the graph (for Banach spaces at both ends). The graph records two typical uses: `thm.lax-milgram` (coercivity gives a bounded two-sided inverse) and the criterion for complemented subspaces (a closed algebraic complement gives a bounded projection).",
+        status: 'draft',
+        basedOn: 'v0.9.3#a5464e0c',
+      },
+    },
+
+    'thm.equicontinuous-uniform': {
+      statement: {
+        en: "Let $(K, \\delta)$ be a compact metric space, $(E, d)$ a metric space, and $\\mathcal{H} \\subseteq C(K, E)$ equicontinuous. Then $\\mathcal{H}$ is **uniformly equicontinuous**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4d7b6a9f',
+      },
+      notes: {
+        en: "Proof: let $\\varepsilon > 0$. For each point $x$ choose $\\eta_x > 0$ such that $\\delta(y, x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$ (for every $f$).\n\nCompactness gives a finite cover $K = \\bigcup_i B(x_i, \\eta_{x_i}/2)$, and we set $\\eta := \\min_i \\eta_{x_i}/2$.\n\nIf $\\delta(x, y) < \\eta$, choose $i$ with $x \\in B(x_i, \\eta_{x_i}/2)$ (hence $y \\in B(x_i, \\eta_{x_i})$), so $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$.\n\n⭐ The lecture notes use a **Lebesgue number** $\\lambda$ instead ($\\delta(x,y) < \\lambda$ puts a pair inside some member of the cover). The two formulations are equivalent; the advantage of the Lebesgue-number version is that $\\lambda$ depends only on the cover.",
+        status: 'draft',
+        basedOn: 'v0.9.3#26562c82',
+      },
+    },
+
+    'thm.open-mapping-banach': {
+      statement: {
+        en: "Let $E, F$ be Banach spaces and $u \\in B(E, F)$ **surjective**. Then $u$ is an open map: the image of every open set is open.\n\nBy linearity of $u$, this is equivalent to \"the image of some neighbourhood of $0$ is a neighbourhood of $0$\", that is, there exists $r > 0$ such that\n\n$$u(B_E) \\supseteq r\\, B_F ,$$\n\nwhere $B_E, B_F$ are the closed unit balls. A weaker hypothesis also suffices: it is enough that $u(E)$ is of the second category in $F$ (automatic when $F$ is complete and the map is surjective, which is why one usually states surjectivity).",
+        status: 'draft',
+        basedOn: 'v0.9.3#836309c2',
+      },
+      notes: {
+        en: "**Proof.** Two steps: first use the category theorem to fatten the image until it contains a ball (only completeness of $F$ is used here), then use completeness of $E$ to remove the closure.\n\n**Step 1: $\\overline{u(B_E)}$ contains a neighbourhood of $0$.** Since $E = \\bigcup_{k \\ge 1} k\\,B_E$, applying $u$ gives\n$$F = u(E) = \\bigcup_{k \\ge 1} u(k B_E) \\subseteq \\bigcup_{k \\ge 1} \\overline{u(k B_E)} .$$\nIf every $\\overline{u(k B_E)}$ were nowhere dense, $F$ would be a countable union of nowhere dense sets, contradicting \"$F$ complete $\\implies$ second category\". Hence for some $k$, $\\overline{u(k B_E)}$ has interior points: there exist $y_0$ and $\\delta > 0$ with $B_F(y_0, \\delta) \\subseteq \\overline{u(k B_E)}$.\n\nMove this point back to the origin, in two small steps: **translation** and **subtraction**. Take $x_0 \\in k B_E$ with $\\|y_0 - u(x_0)\\| < \\delta/2$ (possible since $y_0$ lies in the closure). **Translation**: for $\\|z\\| < \\delta/2$ we have $\\|z + (u(x_0) - y_0)\\| \\le \\|z\\| + \\|u(x_0) - y_0\\| < \\delta/2 + \\delta/2 = \\delta$, hence $u(x_0) + z = y_0 + \\bigl(z + u(x_0) - y_0\\bigr) \\in B_F(y_0, \\delta) \\subseteq \\overline{u(kB_E)}$, that is, $B_F(u(x_0), \\delta/2) \\subseteq \\overline{u(kB_E)}$. **Subtraction**: from $u(x_0) + z \\in \\overline{u(kB_E)}$ we get $z = \\bigl(u(x_0)+z\\bigr) - u(x_0) \\in \\overline{u(kB_E)} - u(x_0) \\subseteq \\overline{u(kB_E) - u(x_0)} = \\overline{u(kB_E - x_0)}$, and $x_0 \\in kB_E$ gives $kB_E - x_0 \\subseteq 2k\\,B_E$, so $z \\in \\overline{u(2k\\,B_E)}$. Therefore\n$$\\overline{u(2k\\, B_E)} \\supseteq B_F(0, \\delta/2) ,$$\nand homogeneity ($u(2k\\,B_E) = 2k\\,u(B_E)$, dividing both sides by $2k$) gives: there exists $r = \\delta/(8k) > 0$ such that\n$$\\overline{u(B_E)} \\supseteq 2r\\, B_F .$$\n\n**Step 2: remove the closure.** We prove $u(B_E) \\supseteq r B_F$. Take $\\|y\\| < r$. By Step 1, $\\overline{u(B_E)} \\supseteq 2r B_F$, so $y \\in \\overline{u(B(0, 1/2))}$: there is $x_1$ with $\\|x_1\\| < 1/2$ and $\\|y - u(x_1)\\| < r/2$. Apply the same argument to $y - u(x_1)$ (norm $< r/2 < r$) to get $x_2$ with $\\|x_2\\| < 1/4$ and $\\|y - u(x_1) - u(x_2)\\| < r/4$. Continuing gives $(x_n)$ with\n$$\\|x_n\\| < 2^{-n}, \\qquad \\Bigl\\| y - u\\Bigl(\\sum_{j \\le n} x_j\\Bigr) \\Bigr\\| < r\\,2^{-n} .$$\nSince $\\sum \\|x_n\\| < 1$ and $E$ is **complete**, the series $x := \\sum_{n} x_n$ converges, with $\\|x\\| < 1$. Also $u$ is continuous, so $u(x) = \\lim_n u(\\sum_{j\\le n} x_j) = y$. Hence $y = u(x)$ and $\\|x\\| < 1$, that is, $y \\in u(B_E)$.\n\n**Step 3: finish.** Take any open set $\\Omega \\subseteq E$ and $x \\in \\Omega$; choose $\\rho > 0$ with $B(x, \\rho) \\subseteq \\Omega$. By homogeneity $u(B(x,\\rho)) = u(x) + \\rho\\, u(B_E) \\supseteq u(x) + \\rho r B_F$ is a neighbourhood of $u(x)$ contained in $u(\\Omega)$. Hence $u(\\Omega)$ is open. $\\square$\n\n**What each hypothesis does.** Completeness of $F$ is used only in Step 1 (for the category theorem); completeness of $E$ only in Step 2 (for convergence of the series). Both are indispensable: with incomplete target $F = (C[0,1], \\|\\cdot\\|_1)$ the identity map $(C[0,1], \\|\\cdot\\|_\\infty) \\to (C[0,1], \\|\\cdot\\|_1)$ is a continuous bijection but not open (here $E = (C[0,1], \\|\\cdot\\|_\\infty)$ is in fact complete) — this identity map is itself the counterexample with $F$ incomplete.\n\n**Relation to the closed graph theorem.** The removal of the closure in Step 2 is the real technical core; the closed graph theorem uses it in reverse (first prove $\\pi_1^{-1}$ bounded, then deduce that $u$ is bounded). Thus the two are not independent: **open mapping $\\implies$ inverse mapping $\\implies$ closed graph**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b19c645b',
+      },
+    },
+
+    'thm.stone-weierstrass': {
+      statement: {
+        en: "Let $K$ be compact Hausdorff and $A \\subseteq C(K, \\mathbb{R})$ a **subalgebra** containing the unit and **separating points**; write $A$ for it. Then $\\overline A = C(K, \\mathbb{R})$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5cf76449',
+      },
+      notes: {
+        en: "Three steps:\n\n① Take the closure: $\\overline A$ still contains the unit, separates points, and is a **lattice** because a closed unital subalgebra is a lattice.\n\n② **Two-point interpolation**: for $x \\ne y$ and target values $\\alpha, \\beta \\in \\mathbb{R}$, take $g \\in A$ with $g(x) \\ne g(y)$; solving the 2-by-2 linear system gives $f = a\\cdot 1 + b g \\in A$ with $f(x) = \\alpha$ and $f(y) = \\beta$.\n\n③ **Sandwich from above and below** (all performed inside $\\overline{A}$, which ① and ② have already certified to be a closed unital subalgebra, closed under $\\max,\\min$):\n\n- **Two points hit simultaneously**: given $x \\ne y$ and $\\varepsilon > 0$. By ② take $g_{xy} \\in \\overline{A}$ with $g_{xy}(x) = f(x)$ and $g_{xy}(y) = f(y)$.\n\n- **Fix $x$ and, for each $y$, take a finite $\\max$**: for each $y$, since $g_{xy}(y) = f(y) < f(y) + \\varepsilon$ and by continuity, there is an open neighbourhood $V_{y}$ of $y$ on which $g_{xy} < f + \\varepsilon$. Since $K$ is compact, finitely many $V_{y_1}, \\ldots, V_{y_n}$ cover $K$; put $h_{x} := \\max_{j} g_{xy_j} \\in \\overline{A}$. Then $h_{x} < f + \\varepsilon$ holds everywhere, and $h_{x}(x) = f(x) > f(x) - \\varepsilon$.\n\n- **Cover over $x$ and take a finite $\\max$**: put $U_{x} := \\{t \\in K : h_{x}(t) > f(t) - \\varepsilon\\}$, which is open and contains $x$. Finitely many $U_{x_1}, \\ldots, U_{x_m}$ cover $K$; put $k := \\max_{i} h_{x_i} \\in \\overline{A}$. Lower bound: every point lies in some $U_{x_j}$, so $k \\ge h_{x_j} > f - \\varepsilon$. Upper bound: each $h_{x_j}$ satisfies $h_{x_j} < f + \\varepsilon$ everywhere, and a finite $\\max$ still gives $k < f + \\varepsilon$. Together $f - \\varepsilon < k < f + \\varepsilon$, that is, $\\|k - f\\|_\\infty < \\varepsilon$.\n\nSince $\\varepsilon$ is arbitrary, $f \\in \\overline{A}$, hence $\\overline{A} = C(K)$.\n\n∎\n\n⚠️ None of the three hypotheses can be dropped: $A = \\{f : f(0) = 0\\}$ lacks the unit; $A = $ the constant functions lacks separation of points.\n\n⭐ This is the model of trading **algebraic** properties for **approximation** power: no smoothness, no countability, no special kernel is needed. The classical Weierstrass theorem (polynomial approximation) is the case $K = [a,b]$ and $A = $ the polynomials.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dbb6883c',
+      },
+    },
+
+    'cor.ubp-pointwise-limit': {
+      statement: {
+        en: "Let $E$ be a Banach space, $F$ a normed space, $u_n \\in B(E, F)$, and suppose that for every $x \\in E$ we have $u_n x \\to u x$. Then $u \\in B(E, F)$, and\n\n$$\\|u\\| \\le \\liminf_{n \\to \\infty} \\|u_n\\| .$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#8d39e16f',
+      },
+      notes: {
+        en: "**Proof.** First note that $u$ is linear: for $x, y \\in E$ and $\\alpha, \\beta \\in \\mathbb{K}$, linearity of $u_n$ and of limits give\n\n$$u(\\alpha x + \\beta y) = \\lim_n u_n(\\alpha x + \\beta y) = \\alpha \\lim_n u_n x + \\beta \\lim_n u_n y = \\alpha u x + \\beta u y .$$\n\n**Pointwise boundedness.** For each $x$, the convergent sequence $(u_n x)$ is bounded, so $M(x) := \\sup_n \\|u_n x\\| < \\infty$.\n\n**Uniform boundedness.** Apply the uniform boundedness principle to the family $\\{u_n\\} \\subseteq B(E, F)$ ($E$ complete, $F$ normed): $C := \\sup_n \\|u_n\\| < \\infty$.\n\n**Norm bound.** For any $x$,\n\n$$\\|u x\\| = \\lim_n \\|u_n x\\| = \\liminf_n \\|u_n x\\| \\le \\liminf_n \\bigl( \\|u_n\\| \\, \\|x\\| \\bigr) = \\bigl( \\liminf_n \\|u_n\\| \\bigr) \\|x\\| ,$$\n\nso $u$ is bounded with $\\|u\\| \\le \\liminf_n \\|u_n\\|$. $\\blacksquare$\n\n⭐ This upgrades \"pointwise convergence\" to \"a norm estimate for the limit operator\": one need not know in advance that $\\sup_n \\|u_n\\|$ is finite — the uniform boundedness principle supplies it. It is the usual tool in numerical analysis for deciding that \"the limit of a sequence of operators is again an operator\".\n\n⚠️ Only a bound on $\\liminf$ is available; it cannot be replaced by $\\limsup$: $\\|u\\|$ may be strictly smaller than $\\liminf \\|u_n\\|$ (for instance, take a sequence of operators that \"almost loses\" its norm in some direction; the pointwise limit drops that direction).",
+        status: 'draft',
+        basedOn: 'v0.9.3#a2c59d49',
+      },
+    },
+
+    'cor.ubp-resonance': {
+      statement: {
+        en: "Let $E$ be Banach, $F$ normed, $u_n \\in B(E, F)$, and suppose $\\sup_n \\|u_n\\| = \\infty$. Then\n\n$$R := \\Bigl\\{ x \\in E : \\sup_n \\|u_n(x)\\| = \\infty \\Bigr\\}$$\n\nis a **dense $G_\\delta$** (in particular non-empty).",
+        status: 'draft',
+        basedOn: 'v0.9.3#9e130d99',
+      },
+      notes: {
+        en: "Proof: put $\\Omega_k = \\{x : M(x) = \\sup_i\\|u_i x\\| > k\\} = \\bigcup_i \\{x : \\|u_i x\\| > k\\}$, an open set;\n\n$R = \\bigcap_k \\Omega_k$ is a $G_\\delta$.\n\nIf some $\\Omega_k$ were not dense, there would be a ball $B(x_0, r) \\subseteq \\Omega_k^c$ on which $M \\le k$, and the same translation-and-scaling argument as in the UBP would give $\\sup_i\\|u_i\\| \\le 2k/r$, a contradiction.\n\n⭐ Meaning: divergence is not confined to exceptional points, it is **almost everywhere**. Classical application: the partial-sum operators of Fourier series satisfy $\\|S_N\\| \\to \\infty$, so there **exists** a continuous function whose Fourier series diverges at some point (du Bois-Reymond, 1876) — and such functions are plentiful.",
+        status: 'draft',
+        basedOn: 'v0.9.3#db599258',
+      },
+    },
+
+    'def.meager-set': {
+      statement: {
+        en: "Call $A \\subseteq X$ a **meager set** (set of the first category) if $A$ is a countable union of nowhere dense sets; a set that is not meager is of the **second category**. Call $A$ **residual** if $A^c$ is meager.",
+        status: 'draft',
+        basedOn: 'v0.9.3#217dcb88',
+      },
+      notes: {
+        en: "\"Category\" is a third notion of size, neither cardinality nor measure: $\\mathbb{Q}$ is countable and dense yet meager (each singleton is nowhere dense); the Cantor set is uncountable and of measure zero yet meager (it is itself nowhere dense); $[0,1] \\setminus \\mathbb{Q}$ is of the second category and residual **in the subspace $[0,1]$** (it is not residual in $\\mathbb{R}$: its complement contains the interval $(1,2)$, which is not meager).\n\n⚠️ Second category $\\ne$ dense: $[0,1] \\cup \\{2\\}$ is also of the second category.\n\n⭐ Usage: to say \"almost every point satisfies $P$\", prove that $\\{x : \\neg P(x)\\}$ is meager. In infinite dimension this is often handier than measure theory (many function spaces have no natural measure but do have a Baire category).",
+        status: 'draft',
+        basedOn: 'v0.9.3#50441be2',
+      },
+    },
+
+    'def.uniformly-equicontinuous': {
+      statement: {
+        en: "Let $(K, \\delta)$ be a metric space, $(E, d)$ a metric space, and $\\mathcal{H} \\subseteq C(K, E)$. Call $\\mathcal{H}$ **uniformly equicontinuous** if\n\n$$\\forall \\varepsilon > 0\\ \\exists \\eta > 0:\\quad \\delta(x, y) < \\eta \\implies d(f(x), f(y)) < \\varepsilon \\quad (\\forall f \\in \\mathcal{H},\\ \\forall x, y \\in K).$$\n\nthat is, $\\eta$ does not depend on $x, y, f$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#285c4cb4',
+      },
+      notes: {
+        en: "Uniform equicontinuity $\\implies$ pointwise equicontinuity (take $y = x_0$ to recover the pointwise definition), see `imp.fa-uniform-eq-pointwise`.\n\nThe converse holds when $K$ is compact: `thm.equicontinuous-uniform` (the proof uses a finite cover or a Lebesgue number).\n\n⚠️ Without compactness the converse fails: for $K = \\mathbb{R}$ and $f_n(x) = x/n$, the family is pointwise equicontinuous (the oscillation near each point is uniformly small), but it is not uniformly equicontinuous on $\\mathbb{R}$ ($|f_n(n) - f_n(n+1)| = 1/n$, so $\\eta$ would have to depend on $n$).\n\n⭐ The \"equicontinuity\" in Arzelà–Ascoli is exactly this notion on a compact metric space; `thm.equicontinuous-uniform` is the bridge that upgrades the pointwise version to it.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1ba075d0',
+      },
+    },
+
+    'prop.baire-characterizations': {
+      statement: {
+        en: "The following are **equivalent**:\n\n1. $X$ is a Baire space (the intersection of countably many dense open sets is dense);\n2. every non-empty open subset of $X$ is of the second category;\n3. a countable union of nowhere dense closed sets contains no non-empty open set (has empty interior).",
+        status: 'draft',
+        basedOn: 'v0.9.3#8bcd955f',
+      },
+      notes: {
+        en: "The three statements are one statement after taking complements: dense open $\\leftrightarrow$ nowhere dense closed, intersection $\\leftrightarrow$ union, \"dense\" $\\leftrightarrow$ \"empty interior\".\n\n⭐ **How category is used (the lecture notes' formulation)**: to prove \"there exists a point satisfying property $P$\", prove that $\\{x : P(x)\\}$ is a **dense $G_\\delta$**. What this yields is not merely existence but \"almost everywhere existence\" (genericity).\n\n⚠️ The \"second category\" in (2) applies to **non-empty open sets**, not to arbitrary sets.\n\n**Why the three are equivalent, and what each step uses** (this is the one that \"looks obvious but needs complements and countability once each\"):\n\n- (1) $\\implies$ (2): **contradiction**. Suppose some non-empty open $U$ is meager: $U \\subseteq \\bigcup_{n} F_{n}$, with each $F_{n}$ nowhere dense (closed, without loss). Put $G_{n} := X \\setminus F_{n}$; then each $G_{n}$ is dense open. By (1), $G := \\bigcap_{n} G_{n}$ is dense, hence $G \\cap U \\ne \\emptyset$; but $x \\in G \\cap U$ would give $x \\in U$ and $x \\notin \\bigcup_n F_n$, contradicting $U \\subseteq \\bigcup_{n} F_{n}$. **This step uses only \"a countable intersection of dense open sets is dense\"**.\n- (2) $\\implies$ (3): **the same in reverse**, still only complements: if a countable union of nowhere dense closed sets contains a non-empty open $U$, then $U$ is meager, contradicting (2).\n- (3) $\\implies$ (1): **this step uses the construction of countable intersections**. Let $O_{n}$ be dense open and put $F_{n} := X \\setminus O_{n}$ (nowhere dense closed). To prove that $\\bigcap O_{n}$ is dense is to prove that its complement $\\bigcup F_{n}$ has empty interior — which is exactly (3).\n- **Note that \"countable\" in (1) cannot be replaced by \"finite\"**: the intersection of finitely many dense open sets is dense in **every** topological space (no hypothesis needed), so Baire-ness is entirely a phenomenon of countability.\n\n**Hypotheses that must be remembered beyond the three**:\n\n- The equivalence of the three **needs no hypothesis** (it is purely topological, valid in any space); what needs hypotheses is \"which spaces satisfy them\": **complete metric spaces** (@@thm.baire@@) and **locally compact Hausdorff spaces** (@@thm.locally-compact-baire@@). The two proofs use completely different tools (nested balls/completeness versus compactness, finite subcovers and local compactness).\n- ⚠️ **\"Baire\" is not a consequence of \"complete\" by itself**, but the theorem \"complete $\\implies$ Baire\"; $\\mathbb{Q}$ is a (non-complete) metric space that is **not** Baire (each singleton is nowhere dense and $\\mathbb{Q}$ is countable), which shows precisely that completeness cannot be dropped.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d2acb1ce',
+      },
+    },
+
+    'thm.arzela-ascoli-general': {
+      statement: {
+        en: "Let $K$ be compact, $(E, d)$ a metric space, and $\\mathcal{H} \\subseteq C(K, E)$. Then the following are **equivalent**:\n\n1. $\\mathcal{H}$ is **totally bounded** in $(C(K,E), \\Delta)$;\n2. (a) $\\mathcal{H}$ is equicontinuous; (b) $\\mathcal{H}(x) := \\{f(x) : f \\in \\mathcal{H}\\}$ is **totally bounded** for every $x \\in K$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#29a6ff9b',
+      },
+      notes: {
+        en: "\"1 $\\implies$ 2\": total boundedness gives a finite $\\varepsilon$-net $f_1, \\ldots, f_n$, and then $\\mathcal{H} \\cup \\{f_1,\\ldots,f_n\\}$ is still equicontinuous (finitely many continuous functions plus one equicontinuous family).\n\n⭐ This is the same theorem as `thm.arzela-ascoli` in the graph ($\\mathbb{R}$-valued, compact metric space, uniformly bounded), in a second form: here $E$ may be any metric space, and \"uniformly bounded\" is refined to \"pointwise totally bounded\".\n\n⚠️ \"Pointwise totally bounded\" cannot be replaced by \"pointwise bounded\": when $E$ is incomplete, relative compactness needs \"coverable\", whereas boundedness only says \"does not diverge\".\n\nTogether with \"$C(K,E)$ is complete\" this is the standard form: **totally bounded + complete $=$ relatively compact**.\n\n**Which hypothesis each direction uses** (the characterisation of total boundedness does not require completeness of the target):\n\n- (1) $\\implies$ pointwise total boundedness: the evaluation map is 1-Lipschitz for the uniform distance, so a finite net maps to a finite net; this is an elementary check.\n- (1) $1$ equicontinuity: first take a uniform finite net, then use the finitely many continuous functions in the net and a common neighbourhood of each point together with the triangle inequality; one must not assume circularly that the original family is already equicontinuous.\n- (2) $\\implies$ (1): equicontinuity gives local oscillation control, compactness extracts finitely many controlling neighbourhoods, and the pointwise finite nets give finitely many value patterns; this is where the converse pays for compactness.\n- Pointwise boundedness cannot replace pointwise total boundedness: let $\\implies$ be a single point and $K$; the family of orthonormal vectors is bounded but not totally bounded, and this fails even though $E=\\ell^2$ is complete.\n- To upgrade total boundedness to compactness of the closure one still needs completeness of the ambient space; for $E$ a single point and $K$, the set $\\mathbb Q\\cap[0,1]$ (inside $E=\\mathbb Q$) is totally bounded but not relatively compact.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6a137c7d',
+      },
+    },
+
+    'thm.baire-open-subset': {
+      statement: {
+        en: "If $X$ is Baire and $\\Omega \\subseteq X$ is open, then $\\implies$ $\\Omega$ (with the subspace topology) is a Baire space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#41a87375',
+      },
+      notes: {
+        en: "Proof: let $O_n$ be dense open in $\\Omega$ and write $O_n = \\Omega \\cap O_n'$ with $O_n'$ open in $X$.\n\nThen $O_n' \\cup (X \\setminus \\overline{\\Omega})$ is **dense open** in $X$ (what is adjoined is the open set $X \\setminus \\overline{\\Omega}$; the complement $\\Omega^{c}$ need not be open — for $\\Omega = (0,1)$ and $O_n' = (0,1) \\setminus \\{1/m\\}$, the complement $\\Omega^{c}$ would make the union lose a neighbourhood of $0$);\n\nhence $\\bigcap_n(O_n' \\cup (X \\setminus \\overline{\\Omega}))$ is dense in $X$, and intersecting with $\\Omega$ gives that $\\bigcap_n O_n$ is dense in $\\Omega$.\n\n⭐ Use: the open mapping theorem needs local arguments on open sets and the UBP needs to look at open subsets; this proposition guarantees that Baire-ness is not lost after localisation.",
+        status: 'draft',
+        basedOn: 'v0.9.3#35e40b27',
+      },
+    },
+
+    'thm.ck-complete': {
+      statement: {
+        en: "Let $K$ be compact Hausdorff. If $E$ is complete, then $\\implies$ $(C(K, E), \\Delta)$ is complete; when $E$ is a normed space, $C(K, E)$ is a Banach space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f2d09735',
+      },
+      notes: {
+        en: "Proof: a Cauchy sequence $\\implies$ pointwise Cauchy ($d(f_n(x), f_m(x)) \\le \\Delta(f_n, f_m)$) $\\implies$ a pointwise limit $f$ ($E$ complete) $\\implies$ the uniform estimate in $\\Delta$ gives $f_n \\to f$ $\\implies$ a uniform limit of continuous functions is continuous.\n\n⭐ Why it matters: the uniform convergence space lets one \"keep limits of continuous functions inside continuous functions\"; this is the premise of Stone–Weierstrass, Arzelà–Ascoli, and indeed of all of $C^*$-algebra theory.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1ff1ca00',
+      },
+    },
+
+    'thm.locally-compact-baire': {
+      statement: {
+        en: "Every locally compact Hausdorff space is a Baire space.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d1101568',
+      },
+      notes: {
+        en: "The proof is the same as in the complete metric case, replacing \"the radii of nested closed balls tend $\\to 0$\" by \"nested compact neighbourhoods\": non-empty intersection is guaranteed by the **finite intersection property** of compact sets (no shrinking radius is needed).\n\n⭐ Significance: this frees Baire category from metric spaces, so it applies to $C(K)$, compact groups and Stone spaces — objects that carry no metric. Compact Hausdorff spaces in condensed mathematics can therefore also be handled by \"generic point\" arguments.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fa0ba858',
+      },
+    },
+
+    'thm.stone-weierstrass-complex': {
+      statement: {
+        en: "Let $K$ be compact Hausdorff, and let $A \\subseteq C(K, \\mathbb{C})$ be a subalgebra containing the unit, separating points, and **closed under conjugation** ($f \\in A \\implies \\bar f \\in A$). Then $\\overline A = C(K, \\mathbb{C})$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#475a60f5',
+      },
+      notes: {
+        en: "**Proof.** The key is to take the **real-valued part** of $A$ and hand the problem back to the real case. Put\n\n$$B := \\{f \\in A : f = \\bar f\\} = A \\cap C(K, \\mathbb{R}).$$\n\n**Step 1: $B$ is a real subalgebra containing the unit and separating points.** Since $1 \\in A$ and is real-valued, $1 \\in B$; and $B$ is closed under addition, multiplication and real scalar multiplication (operations on real-valued functions stay in $A$ and stay real-valued). Separating points: given $x \\ne y$, separation by $A$ gives $f \\in A$ with $f(x) \\ne f(y)$; if $\\operatorname{Re} f(x) \\ne \\operatorname{Re} f(y)$, use $\\operatorname{Re} f \\in B$; otherwise necessarily $\\operatorname{Im} f(x) \\ne \\operatorname{Im} f(y)$, and then use $\\operatorname{Im} f \\in B$. Since $\\operatorname{Re} f = (f + \\bar f)/2$ and $\\operatorname{Im} f = (f - \\bar f)/(2i)$ lie in $A$ by conjugation-closedness and are real-valued, they lie in $B$. Hence $B$ separates the points of $K$.\n\n**Step 2: apply the real case.** $B$ is a subalgebra of $C(K, \\mathbb{R})$ containing the unit and separating points, so the real Stone–Weierstrass theorem (`thm.stone-weierstrass`) gives $\\overline B = C(K, \\mathbb{R})$ in the sup norm.\n\n**Step 3: reassemble complex-valued functions.** Let $f \\in C(K, \\mathbb{C})$ and write $f = \\operatorname{Re} f + i\\operatorname{Im} f$, where $\\operatorname{Re} f, \\operatorname{Im} f \\in C(K, \\mathbb{R})$. Take $g_n, h_n \\in B$ with $g_n \\to \\operatorname{Re} f$ and $h_n \\to \\operatorname{Im} f$ uniformly. Then $g_n + i h_n \\in A$ ($A$ is closed under complex scalar multiplication and addition), and\n\n$$\\lVert f - (g_n + i h_n)\\rVert_\\infty \\le \\lVert \\operatorname{Re} f - g_n\\rVert_\\infty + \\lVert \\operatorname{Im} f - h_n\\rVert_\\infty \\to 0 .$$\n\nHence $f \\in \\overline A$, i.e. $\\overline A = C(K, \\mathbb{C})$. ∎\n\n⚠️ **\"Closed under conjugation\" cannot be dropped**: take $A = \\mathrm{Alg}(z) \\subseteq C(S^{1}, \\mathbb{C})$ (the closure of the polynomial algebra on $S^{1}$ in the uniform norm — the disc algebra); it contains the unit and separates points but does not contain $\\bar z$. If $\\bar z \\in \\overline A$, there are polynomials $p_n$ with $p_n \\to \\bar z$ uniformly; but for every $n$, $p_n(z)\\,z$ extends holomorphically from $S^{1}$ to the unit disc, so by Cauchy's theorem $\\int_{S^{1}} p_n(z)\\,z\\,dz = 0$, whereas uniform convergence gives $\\int_{S^{1}} p_n(z)\\,z\\,dz \\to \\int_{S^{1}} \\bar z\\, z\\,dz = \\int_{S^{1}} 1\\,dz = 2\\pi i \\ne 0$ — a contradiction.\n\n⭐ **Link with representation theory**: for a compact group $G$, the matrix coefficients $e_{ij}$ generate $C(G)$ (because $\\{e_{ij}\\}$ is closed under conjugation), and $\\Delta : C(G) \\to C(G) \\otimes C(G)$, $e_{ij} \\mapsto \\sum_k e_{ik} \\otimes e_{kj}$ — the algebraic basis of Peter–Weyl.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3be8d004',
+      },
+    },
+
+    'def.g-delta': {
+      statement: {
+        en: "$A$ is called a **$G_\\delta$ set** if $A$ is a countable intersection of open sets; and an **$F_\\sigma$ set** if $A$ is a countable union of closed sets.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ea09d2ec',
+      },
+      notes: {
+        en: "Two directions must be kept apart. **The trivial one**: a closed set is a union of one closed set, so $\\subseteq F_\\sigma$; an open set is an intersection of one open set, so $\\subseteq G_\\delta$. **In a metric space the converse also holds** (this is the non-trivial half): $\\subseteq F_\\sigma$ and $\\subseteq G_\\delta$. Proof: for open $U$ put $F_n := \\{x : d(x, X\\setminus U) \\ge 1/n\\}$; each $F_n$ is closed and $U = \\bigcup_n F_n$ (for $x \\in U$ take $n > 1/d(x, X\\setminus U)$), so $U$ is $F_\\sigma$; dualizing to complements gives $\\subseteq G_\\delta$. Separability is not needed here — \"an open set is a countable union of balls\" is a different (coarser) statement, and that one does need separability.\n\n⭐ After Baire, \"dense $G_\\delta$\" is the standard way to write \"almost every point\": for a pointwise limit $f$ of a sequence of continuous functions, the set of continuity points is a dense $G_\\delta$ (this is the only unconditional statement of this kind — \"set of differentiability points\" does not work: for $f = \\mathbf{1}_{\\mathbb{Q}}$ both the continuity set and the differentiability set are empty); the set of nowhere differentiable functions in $C[0,1]$ is also a dense $G_\\delta$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bccaa1fb',
+      },
+    },
+
+    'def.nowhere-dense': {
+      statement: {
+        en: "Let $A \\subseteq X$ be a topological space. Call $A$ **nowhere dense** if $(\\overline{A})^\\circ = \\emptyset$; equivalently, every non-empty open set contains a non-empty open subset disjoint from $A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bf0e98dc',
+      },
+      notes: {
+        en: "⚠️ \"Nowhere dense\" is not \"not dense\": $(0,1) \\cup (1,2)$ is neither dense nor nowhere dense in $\\mathbb{R}$ — the definition demands that even the closure has no interior.\n\nExamples: $\\mathbb{Z} \\subseteq \\mathbb{R}$, $\\{1/n\\}$, the Cantor set.\n\n⭐ The Cantor set is the most instructive example: it is **nowhere dense** yet **uncountable**. So \"nowhere dense\" and \"small cardinality\" are two different things.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bca68a01',
+      },
+    },
+
+    'thm.bernstein-approximation': {
+      statement: {
+        en: "For $f \\in C[0, 1]$, put\n\n$$B_n f(x) := \\sum_{k=0}^{n} \\binom{n}{k} f\\!\\left(\\frac{k}{n}\\right) x^k (1 - x)^{n-k} .$$\n\nThen $\\|B_n f - f\\|_\\infty \\to 0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#26390f2d',
+      },
+      notes: {
+        en: "The proof is written on the edge @@imp.bernstein-approximation@@: view $B_nf(x)$ as the expectation of $f(S_n/n)$ (where $S_n\\sim\\mathrm{Bin}(n,x)$), and use the binomial moment identities $\\mathbb E[S_n/n]=x$, $\\operatorname{Var}(S_n/n)=x(1-x)/n\\le 1/(4n)$, together with uniform continuity of $f$, to split the error into two regimes (where the deviation is $<\\delta$ the error is $<\\varepsilon$; elsewhere Markov's inequality gives probability $\\le 1/(4n\\delta^2)$), then take $n$ large enough to get uniform convergence.\n\n⭐ Division of labour with Stone–Weierstrass: this gives an explicit sequence of operators, only on $[0,1]$ and only for real-valued functions; Stone–Weierstrass gives \"algebraic hypotheses suffice\", with no construction. The two corroborate each other and neither replaces the other.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4e27a729',
+      },
+    },
+
+    'thm.banach-alaoglu': {
+      statement: {
+        en: "Let $X$ be a normed space, $X^{*}$ its continuous dual, and $B_{X^{*}} = \\{\\varphi \\in X^{*} : \\|\\varphi\\| \\le 1\\}$. Then $B_{X^{*}}$ is compact in the **weak* topology** $\\sigma(X^{*}, X)$ (generated by the seminorms $\\varphi \\mapsto |\\varphi(x)|$, $x \\in X$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#606fa504',
+      },
+      notes: {
+        en: "**Weak* topology = restriction of the product topology.** Put $P = \\prod_{x \\in X} [-\\|x\\|, \\|x\\|]$ and $\\Phi : B_{X^{*}} \\to P$, $\\Phi(\\varphi) = (\\varphi(x))_{x \\in X}$. Since $|\\varphi(x)| \\le \\|\\varphi\\|\\,\\|x\\| \\le \\|x\\|$, the image lies in $P$; the weak* topology is exactly the topology pulled back from the product topology on $P$ (each coordinate is weak* continuous, and the coordinates separate points); $\\Phi$ is injective on $B_{X^{*}}$.\n\n**The image is closed.** Suppose $\\Phi(\\varphi_\\alpha) \\to y = (y_x)$ in $P$. Define $\\varphi(x) = y_x$. Linearity: $y_{x + z} = \\lim \\varphi_\\alpha(x + z) = \\lim(\\varphi_\\alpha(x) + \\varphi_\\alpha(z)) = y_x + y_z$, and similarly $y_{tx} = t y_x$. Boundedness: $|y_x| \\le \\|x\\|$, hence $\\|\\varphi\\| \\le 1$. Thus $y = \\Phi(\\varphi) \\in \\Phi(B_{X^{*}})$, so the image is closed.\n\n**Compactness.** $P$ is a product of compact spaces (each $[-\\|x\\|,\\|x\\|]$ is compact), hence compact by `thm.tykhonov`; the closed subset $\\Phi(B_{X^{*}})$ is compact; $\\Phi$ is a homeomorphism onto its image (continuous bijection, compact $\\to$ Hausdorff), so $B_{X^{*}}$ is weak* compact. $\\blacksquare$\n\n⚠ The weak* topology is not the norm topology: $B_{X^{*}}$ is in general not compact in the norm topology (when $X$ is infinite-dimensional). The compactness here holds only in the weak* sense.\n\n📌 Use: the forward direction of `thm.james` (reflexive $\\implies$ every functional attains its norm) needs \"$B_X$ weakly compact\"; and \"reflexive $\\implies$ $B_X$ weakly compact\" is precisely this theorem applied to $X^{**}$ and pulled back along $J_X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#76226d05',
+      },
+    },
+
+    'thm.goldstine': {
+      statement: {
+        en: "Let $X$ be a normed space and $J_X : X \\to X^{**}$ the natural embedding. Then $J_X(B_X)$ is dense in $B_{X^{**}}$ in the **weak* topology**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4a1ec92f',
+      },
+      notes: {
+        en: "**Preparation: every weak* continuous linear functional is an evaluation.** Let $\\ell$ be a continuous linear functional on $(X^{**}, w^{*})$. Continuity gives $x_1,\\ldots,x_n \\in X$ and $c > 0$ with $|\\ell(\\xi)| \\le c \\max_j |\\xi(x_j)|$. Thus $\\ell$ factors through $\\xi \\mapsto (\\xi(x_1),\\ldots,\\xi(x_n))$, hence is a linear combination of these coordinates: $\\ell = \\sum_j c_j\\, \\mathrm{ev}_{x_j} = \\mathrm{ev}_{\\,x}$, where $x = \\sum_j c_j x_j \\in X$. That is, $(X^{**}, w^{*})^{*} = J_X(X)$.\n\n**Separation lemma (the geometric form of Hahn–Banach, derived from `thm.hahn-banach`).** Let $K$ be a closed convex set in a locally convex space and $\\xi_0 \\notin K$. Then there are a continuous linear functional $\\ell$ and a scalar $\\alpha$ with $\\ell(\\xi_0) > \\alpha \\ge \\sup_K \\ell$. Take $K - \\xi_0$ and its Minkowski functional $p$; on $K - \\xi_0$ it is $\\le 1$. On the line $\\mathbb{R}(\\xi_0 - k_0)$, define $\\ell_0(t(\\xi_0 - k_0)) = t$ (with $k_0 \\in K$ arbitrary), check $\\ell_0 \\le p$, extend to $\\ell \\le p$ by `thm.hahn-banach`, and take absolute values over $\\pm$.\n\n**Main proof.** Let $K = \\overline{J_X(B_X)}^{w^{*}} \\subseteq B_{X^{**}}$ (closed convex compact). If $K \\ne B_{X^{**}}$, pick $\\xi_0 \\in B_{X^{**}} \\setminus K$. By the separation lemma there is a weak* continuous linear functional $\\ell$ with $\\ell(\\xi_0) > \\sup_{K} \\ell$. By the preparation, $\\ell = \\mathrm{ev}_x$ for some $x \\in X$. Hence\n\n$\\xi_0(x) > \\sup_{\\eta \\in K} \\eta(x) \\ge \\sup_{y \\in B_X} (J_X y)(x) = \\sup_{y \\in B_X} x(y) = \\|x\\|.$\n\nBut $\\xi_0 \\in B_{X^{**}}$ gives $\\xi_0(x) \\le \\|\\xi_0\\|\\,\\|x\\| \\le \\|x\\|$, a contradiction. Therefore $K = B_{X^{**}}$, i.e. $J_X(B_X)$ is weak* dense. $\\blacksquare$\n\n⚠ Dense is not closed: in general $J_X(B_X)$ is indeed not weak* closed (it is weak* closed iff $X$ is reflexive), which is exactly the point used in `thm.milman-pettis`.\n\n📌 The geometric separation lemma here uses only `thm.hahn-banach`; together the two turn \"$X$ is reflexive\" into a purely geometric condition: every point of $B_{X^{**}}$ lies in the weak* closure of $J_X(B_X)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bd87c90f',
+      },
+    },
+
+    'def.uniformly-convex': {
+      statement: {
+        en: "A normed space $(X, \\|\\cdot\\|)$ is **uniformly convex** if for every $\\varepsilon \\in (0, 2]$ there is $\\delta > 0$ such that\n\n$\\|x\\| = \\|y\\| = 1,\\quad \\|x - y\\| \\ge \\varepsilon \\implies \\left\\|\\frac{x + y}{2}\\right\\| \\le 1 - \\delta .$\n\nthat is, two points on the unit sphere that are not close have a midpoint strictly inside the ball, and the depth depends only on the distance.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b636c3ac',
+      },
+      notes: {
+        en: "**Examples**: Hilbert spaces (the parallelogram law gives $\\|(x+y)/2\\|^2 = 1 - \\|x-y\\|^2/4$, so one may take $\\delta = 1 - \\sqrt{1 - \\varepsilon^2/4}$); $L^p$ with $1 < p < \\infty$ (Clarkson's inequality); $\\ell^p$ with $1 < p < \\infty$.\n\n**Counterexamples**: $\\ell^1$, $\\ell^\\infty$, $c_0$, $C[0,1]$ are not uniformly convex (in $\\ell^1$ the midpoint of $e_1, e_2$ still has norm $1$; in $\\ell^\\infty$ piecewise constant sequences such as $(1,0,\\ldots)$ and $(1,1,0,\\ldots)$ give a counterexample).\n\n⭐ Uniform convexity $\\implies$ strict convexity (`def.strictly-convex`): if $\\|x\\| = \\|y\\| = 1$ and $x \\ne y$, take $\\varepsilon = \\|x - y\\| > 0$ and the midpoint has norm $< 1$.\n\n📌 Uniform convexity is \"the norm bends uniformly\": it upgrades the pointwise, pair-by-pair conclusion of strict convexity to an estimate uniform over all unit vectors — exactly the quantitative form needed for Milman–Pettis (`thm.milman-pettis`) and Clarkson's inequality.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7526eb3e',
+      },
+    },
+
+    'def.chain-group': {
+      statement: {
+        en: "Let $K$ be a simplicial complex and write $K_{p}$ for the set of all its $p$-simplices (when $K$ is **finite** this is a finite set; in general it may be infinite, and the \"finite support\" condition below is there for exactly this reason). The **$p$-th chain group** $C_{p}(K)$ is the **free abelian group on $K_{p}$**; concretely,\n\n$$C_{p}(K) := \\{\\, n : K_{p} \\to \\mathbb{Z} \\,\\},$$\n\nwhere $n(\\sigma) = 0$ for all but finitely many $\\sigma$ (this is what \"finite formal sum\" means).\n\nAddition is pointwise ($n + m$ means $(n + m)(\\sigma) = n(\\sigma) + m(\\sigma)$). Elements are written as finite formal sums\n\n$$c = \\sum_{\\sigma \\in K_{p}} n_{\\sigma}\\,\\sigma,\\qquad n_{\\sigma} \\in \\mathbb{Z},$$\n\nand $n_{\\sigma}$ is called the **multiplicity** of $\\sigma$ in $c$. By convention $C_{p}(K) := 0$ when $p < 0$ or $p > \\dim K$. $C_{p}(K)$ is free abelian of rank equal to the number $\\alpha_{p}$ of $p$-simplices of $K$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#af472e0e',
+      },
+      notes: {
+        en: "**Why free abelian**: we want to add the simplices of a chain with signs — adding $\\sigma$ three times gives $3\\sigma$, cancelling it against its reverse gives $0$, and **no other relations** are allowed. The free abelian group is exactly the minimal structure that permits arbitrary addition on a basis with no extra relations.\n\n⚠️ **Exactly enough freedom**: a group homomorphism is determined by its values on a **basis**, so to define the boundary operator later it suffices to write a formula on a single simplex and extend linearly — no compatibility check is required. That is the entire use of the word \"free\".\n\n**Other coefficient rings support the same theory**: coefficients in $\\mathbb{Q}$ or $\\mathbb{R}$ give Betti numbers (torsion is invisible), while $\\mathbb{Z}/2$ makes all signs $(-1)^{i}$ disappear (no orientation worries). This region fixes coefficients in $\\mathbb{Z}$.\n\n💡 Intuition: $C_{p}(K)$ is the \"integer ledger of $p$-dimensional pieces\". Homology asks: **which of these entries are genuine holes and which are merely shadows of something higher-dimensional** (see `def.simplicial-homology`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#06640f8e',
+      },
+    },
+
+    'def.path-homotopy': {
+      statement: {
+        en: "A **path** in $X$ is a continuous map $\\alpha : [0, 1] \\to X$; $\\alpha(0)$ is its **starting point** and $\\alpha(1)$ its **end point**.\nA path whose start and end are both $x_{0}$ is a **closed path** (also called a loop based at $x_{0}$).\n\nLet $\\alpha, \\beta$ be two paths with the same start $x_{0}$ and the same end $x_{1}$. They are **path homotopic** if there is a continuous $F : [0, 1] \\times [0, 1] \\to X$ such that\n\n$$F(t, 0) = \\alpha(t),\\qquad F(t, 1) = \\beta(t),$$\n\n$$F(0, s) = x_{0},\\qquad F(1, s) = x_{1},$$\n\nwritten $\\alpha \\simeq_{p} \\beta$. Equivalently, $\\alpha \\simeq \\beta \\; (\\operatorname{rel} \\{0, 1\\})$.\n\nThe **path homotopy class** of $\\alpha$ is written $[\\alpha]$, i.e. $\\{\\, \\beta : \\beta \\simeq_{p} \\alpha \\,\\}$.\nA path homotopy class of closed paths is also called a **homotopy class** (based at $x_{0}$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#1d15d833',
+      },
+      notes: {
+        en: "**Why the endpoints must be pinned**: $[0, 1]$ is convex and contractible, so **any** two paths are homotopic (shrink $\\alpha$ to a point along a straight line and then expand into $\\beta$). A homotopy that does not pin the endpoints collapses all paths into one class and detects nothing; only after pinning the endpoints does the information \"how it winds\" survive.\n\n⚠️ Path homotopy **makes sense only for paths with common endpoints** — otherwise the conditions $F(0, s)$ and $F(1, s)$ cannot even be written down.\n\n**Homotopy classes are equivalence classes**: the three properties in `def.homotopy-maps` restrict to homotopies that keep the endpoints fixed, so for fixed $x_{0}, x_{1}$ the paths from $x_{0}$ to $x_{1}$ split into homotopy classes.\n\n💡 Intuition: a homotopy class is \"a way of walking from $x_{0}$ to $x_{1}$\"; two walks count as the same if they can be deformed continuously into each other.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0b56f61a',
+      },
+    },
+
+    'thm.pi1-circle': {
+      statement: {
+        en: "Let $p : \\mathbb{R} \\to S^{1}$, $p(t) = e^{2\\pi i t}$ (this is a covering map). For a closed path $\\alpha$ based at $1 \\in S^{1}$, take the unique lift $\\tilde{\\alpha}$ with $\\tilde{\\alpha}(0) = 0$, and define\n\n$$\\deg[\\alpha] := \\tilde{\\alpha}(1) \\in \\mathbb{Z}$$\n\n(the **winding number**, also called the **degree**). Then $\\deg$ is a well-defined group isomorphism\n\n$$\\deg : \\pi_{1}(S^{1}, 1) \\xrightarrow{\\ \\cong\\ } \\mathbb{Z}.$$\n\nConcretely, the generator class with $\\deg[\\alpha] = n$ is $\\alpha_{n}(t) = e^{2\\pi i n t}$; $n > 0$ means \"wound $n$ times counterclockwise\", and $n < 0$ means \"wound $|n|$ times clockwise\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#1f0fc181',
+      },
+      notes: {
+        en: "**Geometric translation**: the fundamental group of $S^{1}$ carries only one piece of information, \"how many times it winds\", and that is a **complete invariant** — two closed paths are homotopic iff they have the same winding number. Nothing else can hide in $S^{1}$.\n\n⭐ **Interface with complex analysis**: the winding number is written in complex analysis as $n(\\gamma, 0) = \\frac{1}{2\\pi i}\\oint_{\\gamma}\\frac{\\mathrm{d}z}{z}$ (`prop.winding-integral`). The two are the same integer: lifting a closed curve to polar coordinates gives the lift. This also explains the topological source of the theorem that the winding number is invariant under homotopies of the curve (`thm.winding-homotopy`).\n\n⚠️ **Structure of the proof (important)**: `prop.covering-index` gives only that $\\pi_{1}(S^{1})$ and $\\mathbb{Z}$ are in bijection, because $\\pi_{1}(\\mathbb{R}) = 1$ and the fibre is $\\mathbb{Z}$. To obtain an **isomorphism** one must additionally prove that $\\deg$ is a homomorphism — this uses \"the lift of a concatenation is the translate of the lift\" (uniqueness of lifts). Both halves are needed; see the proof on the edge.\n\n💡 This is the first **non-trivial** computation in all of algebraic topology. Its value: $\\pi_{1}(S^{1}) \\ne 1$ immediately gives \"$S^{1}$ is not contractible\", \"the disc cannot retract onto its boundary\", and the Brouwer fixed point theorem — one computation, a chain of geometric theorems.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8e6aae46',
+      },
+    },
+
+    'def.continuous-map': {
+      statement: {
+        en: "Let $X$ and $Y$ be topological spaces. A map $f : X \\to Y$ is **continuous** iff **the preimage of every open set is open**:\n\n$$V \\in \\mathcal{T}_Y \\implies f^{-1}(V) \\in \\mathcal{T}_X$$\n\nit suffices to check this on a **basis** (or subbasis).\n\nComposites of continuous maps are continuous: $f$ and $g$ continuous $\\implies g \\circ f$ continuous.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e6740e07',
+      },
+      notes: {
+        en: "⭐ This definition is the **abstraction** of $\\varepsilon$-$\\delta$: in a metric space, \"$f^{-1}(V)$ is open\" and \"$\\varepsilon$ gives $\\delta$\" are literally equivalent — because open balls are $\\varepsilon$-neighbourhoods.\n\nSo continuity is a topological property, independent of any particular metric.\n\n⚠ Use **preimages**, not images: preimages preserve unions, intersections and complements; images do not.\n\nThis is the same pattern as the definition of a measurable function ($f^{-1}(E) \\in \\mathcal{M}$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#66d67c84',
+      },
+    },
+
+    'def.covering-space': {
+      statement: {
+        en: "Let $p : E \\to B$ be continuous and surjective. An open set $U \\subseteq B$ is **evenly covered** if $p^{-1}(U)$ is a union of a family $\\{V_{j}\\}_{j \\in J}$ of pairwise disjoint open sets in $E$, and for every $j$ the restriction\n\n$$p\\big|_{V_{j}} : V_{j} \\longrightarrow U$$\n\nis a homeomorphism. If every point of $B$ has an evenly covered neighbourhood, then $p$ is a **covering map**, $E$ is a **covering space** of $B$, and $B$ is called the **base space**.\n\n**Constructive examples**:\n- $p(t) = e^{2\\pi i t}$, $p : \\mathbb{R} \\to S^{1}$: near the image of each $t$, the preimage $p^{-1}(U)$ consists of $\\mathbb{Z}$ copies of the same arc;\n- $p(z) = z^{n}$, $p : S^{1} \\to S^{1}$: an $n$-sheeted covering;\n- if $B$ is path connected and locally path connected, the cardinality of $p^{-1}(b)$ is independent of $b$; this cardinality is called the **number of sheets**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#054cca19',
+      },
+      notes: {
+        en: "**Why \"local homeomorphism + discrete fibre\" rather than \"locally trivial fibre bundle\"**: a covering is **stiffer** than a fibre bundle — each sheet $V_{j}$ is required to be homeomorphic to $U$, not merely fibre-homotopy equivalent. Hence the fibres of a covering are necessarily discrete. This stiffness is exactly what makes the lifting theorem work.\n\n**Number of sheets = index**: if $B$ is path connected and locally path connected and the number of sheets is finite, then the index of $\\pi_{1}(E)$ in $\\pi_{1}(B)$ equals the number of sheets (`prop.covering-index`). This is the source of \"count the sheets to compute the fundamental group\".\n\n⚠️ A common counterexample: $p : (0, 2) \\to S^{1}$, $p(t) = e^{2\\pi i t}$ — this is **not** a covering, because every neighbourhood of $1 \\in S^{1}$ is covered only halfway ($(0,2)$ does not \"continue\" at the endpoint). A covering must be even at **every** point, including limit points.\n\n💡 Picture: the base space is the shadow cast downward, and the covering space is the sheet of paper held above it. The same shadow can be cast by several sheets, and the sheets are related by \"go once around, change sheet\" — that switching rule is $\\pi_{1}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fe4edf6a',
+      },
+    },
+
+    'def.completely-regular-space': {
+      statement: {
+        en: "**What this condition is**: $T_{3.5}$ together with $T_{1}$. This class is the standard setting for \"there are enough continuous functions\", and the default hypothesis in compactification and metrization theory.\n\nA topological space $X$ is a **completely regular space** if\n\n1. $X$ is **$T_{3.5}$**: a point and a closed set not containing it can be separated by a continuous function (`def.t35-space`);\n2. $X$ is **$T_{1}$**.\n\nA space satisfying both is also called a **Tychonoff space**.\n\n**Equivalent form**: $X$ embeds in some cube $[0,1]^{I}$ (that is, \"there are enough continuous functions to separate points from closed sets\").\n\n**Position in the chain**: normal space $\\implies$ completely regular space $\\implies$ regular space $\\implies T_{2}$. The only non-trivial step is \"normal $\\implies$ completely regular\" (Urysohn's lemma, `lem.urysohn`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#0eefe13f',
+      },
+      notes: {
+        en: "⚠️ **Naming convention**: the T-number denotes the bare property, and the named property denotes the bare property plus $T_{1}$.\n\nThus $T_{3.5}$ means that a point and a closed set not containing it can be separated by a continuous function (`def.t35-space`, without $T_{1}$), while complete regularity is $T_{3.5} + T_{1}$.\n\nThis is the same convention as \"$T_{3}$ versus regular space\".\n\n⭐ **Why adding $T_{1}$ is not redundant**: without $T_{1}$, $T_{3.5}$ does not even guarantee that points are closed, so $T_{2}$ and uniqueness of limits all fail. Once $T_{1}$ is added, $\\{y\\}$ is closed, and a continuous function separating $x$ from $\\{y\\}$ immediately gives disjoint open sets — hence a completely regular space is automatically $T_{2}$.\n\n⭐ **Why \"embeds in a cube\" is the same statement**: if $X$ is completely regular, assemble all continuous $f : X \\to [0,1]$ into a map $X \\to [0,1]^{I}$; $T_{1}$ (points closed) together with $T_{3.5}$ (points and closed sets separable by functions) is exactly what makes it an embedding. Conversely, an embedding into a cube obviously supplies enough functions. This is the other half of Tychonoff's theorem.\n\n⚠️ **Name clash**: `thm.tykhonov` is the **product compactness** theorem (an arbitrary product of compact spaces is compact) — same person, different contribution. Do not confuse the two.\n\n**The hypotheses used in each direction** (the named properties include $T_1$, and the cube characterisation is the embedding theorem):\n\n- completely regular $\\iff$ $T_{3.5}$ and $T_1$: this is a definitional unfolding of the notion used here, free of charge; it does **not** derive $T_1$ from bare $T_{3.5}$.\n- completely regular $\\implies$ embedding in $[0,1]^I$: take the evaluation map of all continuous interval-valued functions; $T_1$ (points closed) together with point–closed separation gives injectivity, and point–closed separation recovers the induced topology. The product topology is used, not the product compactness theorem.\n- embedding in a cube $\\implies$ completely regular: from coordinate separation, basic neighbourhoods in finitely many coordinates, and the hereditary nature of complete regularity for subspaces; a continuous injection alone is not enough.\n- $T_1$ cannot be dropped: the indiscrete topology on at least two points satisfies bare $T_{3.5}$, but does not embed in a Hausdorff cube; and normal $\\implies$ completely regular needs Urysohn's lemma.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f3e9253d',
+      },
+    },
+
+    'thm.no-retraction-disk': {
+      statement: {
+        en: "Let $D^{2} := \\{\\, z \\in \\mathbb{C} : |z| \\le 1 \\,\\}$, $S^{1} = \\partial D^{2}$. Then there is **no** continuous map\n\n$$r : D^{2} \\longrightarrow S^{1}$$\n\nwith $r(z) = z$ for all $z \\in S^{1}$. Such an $r$, if it existed, would be called a **retraction** of $S^{1}$ in $D^{2}$, and $S^{1}$ a **retract** of $D^{2}$. Equivalently: the inclusion $i : S^{1} \\hookrightarrow D^{2}$ has no left inverse.",
+        status: 'draft',
+        basedOn: 'v0.9.3#593a7f99',
+      },
+      notes: {
+        en: "**What the proof actually does**: apply $\\pi_{1}$ to $r \\circ i = \\operatorname{id}_{S^{1}}$ to obtain $r_{*} \\circ i_{*} = \\operatorname{id}_{\\mathbb{Z}}$.\n\nBut $\\pi_{1}(D^{2}) = 1$ (the disc is convex $\\implies$ contractible), so $i_{*}$ can only be the zero map, and the composite must be zero — a contradiction.\n\n**The whole argument uses one line of group theory**, given that $\\pi_{1}(S^{1})$ is known.\n\n**Generalisation**: the same argument works for every $n \\ge 1$ (replacing the fundamental group by the homology group $H_{n-1}$): $S^{n-1}$ is not a retract of $D^{n}$.\n\n⚠️ \"Convex $\\implies$ contractible\" is literal in the proof: for any $D^{2}$ in $\\sigma$, take $F(t, s) := (1 - s)\\,\\sigma(t)$, shrinking the whole path along a straight line to $0$. No machinery is needed for this step.\n\n💡 The conclusion looks like a mere \"impossible\", but it is the source of Brouwer's fixed point theorem, Poincaré–Miranda, and the family of theorems saying \"the sphere cannot be deformed continuously to a point\" (see the edge to `thm.brouwer-fixed-point`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e722d93e',
+      },
+    },
+
+    'thm.urysohn-metrization': {
+      statement: {
+        en: "Let $X$ be a **regular** ($T_{1}$) **second countable** space. Then $X$ is **metrizable**: there is a metric compatible with the topology of $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b431b9b2',
+      },
+      notes: {
+        en: "**Proof (embedding into a separable metric space)**\n1. **Second countable $\\implies$ Lindelöf**: every open cover has a countable subcover (sieve the basic open sets).\n2. **Regular $+$ Lindelöf $\\implies$ normal**: $T_{1}$ together with \"a point and a closed set can be separated\", plus a pointwise induction over the Lindelöf cover, separates two disjoint closed sets. Hence **Urysohn's lemma is available**.\n3. **Choose countably many separating functions**: take a countable base $\\{\\, B_{n} \\,\\}$. For every pair $(m, n)$ with $\\overline{B_{m}} \\subseteq B_{n}$, Urysohn's lemma gives a continuous function\n$$f_{m,n} : X \\to [0, 1],\\qquad f_{m,n}|_{\\overline{B_{m}}} \\equiv 0,\\qquad f_{m,n}|_{X \\setminus B_{n}} \\equiv 1.$$\nThere are only countably many such functions; enumerate them as $f_{k}$ ($k \\ge 1$).\n4. **Embedding**: put $F : X \\to [0, 1]^{\\mathbb{N}}$, $F(x) := (\\, f_{k}(x)/k \\,)_{k \\ge 1}$.\n\n$F$ is continuous (each component is continuous, and the series converges uniformly);\n\n**injective**: if $x \\ne y$, regularity gives a basic open set $B_{n}$ with $x \\in B_{n} \\subseteq \\overline{B_{n}} \\subseteq X \\setminus \\{\\, y \\,\\}$, so some pair $(m, n)$ has $f_{m,n}$ separating the two points;\n\n**inverse continuous**: again using basic pairs, translate \"$f_{k}$ is close\" back into \"both points lie in a common basic open set\".\n\nHence $F$ is a homeomorphism onto its image.\n5. **The image is metrizable**: $\\rho(a, b) := \\sum_{k \\ge 1} 2^{-k} |a_{k} - b_{k}|$ is a metric on $[0, 1]^{\\mathbb{N}}$ inducing the product topology; restrict it to the image.\nTherefore $X$ is homeomorphic to a subspace of a separable metric space, hence metrizable. ∎\n\n⚠️ **The converse fails**: metrizable does not imply second countable — an uncountable discrete space is metrizable (discrete metric) but not second countable. So this theorem is a **sufficient condition**, not a characterisation.\n\n⭐ To turn \"sufficient\" into \"necessary\" one replaces second countability by a more suitable base condition: Nagata–Smirnov ($\\sigma$-locally finite base) and Bing ($\\sigma$-discrete base) do exactly this.",
+        status: 'draft',
+        basedOn: 'v0.9.3#86482a59',
+      },
+    },
+
+    'def.partial-derivative': {
+      statement: {
+        en: "Let $U \\subseteq \\mathbb{R}^{n}$ be open, $f : U \\to \\mathbb{R}^{m}$, $a \\in U$. The **partial derivative** of $f$ at $a$ with respect to the $j$-th variable is (if the limit exists)\n\n$$\\frac{\\partial f}{\\partial x_j}(a) := \\lim_{h \\to 0} \\frac{f(a + h e_j) - f(a)}{h}$$\n\nwhere $e_j$ is the $j$-th standard basis vector. In other words, **only the $j$-th coordinate moves** and the rest are held fixed — an ordinary one-variable derivative.\n\nHigher partial derivatives are written $\\partial^{\\alpha} f = \\partial_1^{\\alpha_1} \\cdots \\partial_n^{\\alpha_n} f$ ($\\alpha = (\\alpha_1, \\ldots, \\alpha_n)$ is a multi-index, $|\\alpha| = \\alpha_1 + \\cdots + \\alpha_n$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#ac9f903a',
+      },
+      notes: {
+        en: "⚠️ The existence of partial derivatives **guarantees nothing**: for $f(x, y) = xy/(x^{2} + y^{2})$ (with $f(0,0) = 0$ at the origin), both partial derivatives at the origin exist (both equal $0$), yet along $y = x$ the function satisfies $f \\to 1/2 \\ne f(0,0)$ — it is not even **continuous**.\n\n⭐ The root of the problem is an asymmetry: existence of partial derivatives is $n$ **one-dimensional** conditions (for scalar $f$; for $f:\\mathbb{R}^{n} \\to \\mathbb{R}^{m}$ it is $mn$ conditions), whereas differentiability (`def.total-differential`) is **one** $n$-dimensional condition.\n\nNo number of one-dimensional conditions can add up to an $n$-dimensional conclusion.\n\n⭐ Conversely, $C^{1}$ (partial derivatives exist **and are continuous**) suffices for differentiability — the most used sufficient condition in practice (see `def.total-differential`).\n\n⭐ On $\\mathbb{R}^n$, a space \"grown from coordinates\", partial derivatives are free;\n\non a **manifold** or a **Banach space** the coordinates themselves must first be built, and only then can one discuss directional derivatives and differentiability.",
+        status: 'draft',
+        basedOn: 'v0.9.3#493946ea',
+      },
+    },
+
+    'def.jacobian': {
+      statement: {
+        en: "Let $U \\subseteq \\mathbb{R}^{n}$ be open and let $f = (f_1, \\ldots, f_m) : U \\to \\mathbb{R}^{m}$ have all partial derivatives at $a$. The **Jacobian matrix** of $f$ at $a$ is\n\n$$J_f(a) := \\Bigl( \\frac{\\partial f_i}{\\partial x_j}(a) \\Bigr)_{\\substack{1 \\le i \\le m \\\\ 1 \\le j \\le n}} \\in M_{m \\times n}(\\mathbb{R})$$\n\nIf $f$ is differentiable at $a$, then $J_f(a)$ is exactly the matrix of the linear map $Df(a)$ in the standard bases.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fa46c259',
+      },
+      notes: {
+        en: "⭐ The chain rule in matrix form is just **matrix multiplication**: $J_{g \\circ f}(a) = J_g(f(a))\\, J_f(a)$ (`thm.chain-rule-multi`).\n\nComposition of linear maps corresponds to matrix multiplication — the total differential is exactly the transport of this linear-algebra fact into calculus.\n\n⭐ Three special cases are worth remembering:\n- $n = 1$: $J$ is a column, i.e. the tangent vector of a curve;\n- $m = 1$: $J$ is a row, i.e. $(\\nabla f)^{\\mathsf{T}}$;\n- $m = n$: $\\det J_f(a)$ is the **local volume scaling factor** (this is the determinant factor in `thm.change-of-variables-manifold`).\n\n⚠ Notational convention: some books write the Jacobian transposed (they store $Df$ as a column vector).\n\nThe convention here is **rows index the target coordinates and columns index the domain coordinates**, so the chain rule is \"multiply from left to right\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#8b642a24',
+      },
+    },
+
+    'def.improper-integral': {
+      statement: {
+        en: "**Infinite interval**: if $f$ is integrable on every $[a, R]$, define\n\n$$\\int_a^{+\\infty} f := \\lim_{R \\to +\\infty} \\int_a^{R} f$$\n\n(called **convergent** when the limit exists and is finite, divergent otherwise).\n\n**Unbounded function**: if $f$ is unbounded on $[a, b]$ but integrable on every $[a, b - \\varepsilon]$, define\n\n$$\\int_a^{b} f := \\lim_{\\varepsilon \\to 0^{+}} \\int_a^{b - \\varepsilon} f$$\n\nThe two cases may mix (an infinite interval together with unboundedness), and then one must **split**: every piece must converge.",
+        status: 'draft',
+        basedOn: 'v0.9.3#14fdd08b',
+      },
+      notes: {
+        en: "⭐ The improper integral is not a new theory: it is only a **limit** of Riemann integrals — every integral in the definition is an ordinary one.\n\n⚠ Splitting is necessary in the mixed case: defining $\\int_{-\\infty}^{+\\infty} f$ as $\\lim_{R \\to \\infty}\\int_{-R}^{R}$ loses phenomena that are not absolutely convergent ($\\int_{-R}^{R} x\\,dx = 0$ for every $R$, while both $\\int_0^{+\\infty}$ and $\\int_{-\\infty}^{0}$ diverge).\n\nThis distinction is called the **principal value**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#473fd485',
+      },
+    },
+
+    'def.integrable': {
+      statement: {
+        en: "A real-valued measurable $f$ is **integrable** iff $\\int f^+ < \\infty$ and $\\int f^- < \\infty$. Equivalently, $f$ is integrable iff the integral of $|f|$ is finite:\n\n$f$ $\\iff \\int |f| d\\mu < \\infty$\n\nA complex-valued measurable $f$ is integrable iff $\\int |f| d\\mu < \\infty$. The set of all integrable functions is denoted $L^1$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4bb53459',
+      },
+      notes: {
+        en: "⭐ **Integrable $\\iff$ absolutely integrable**: this is where the Lebesgue integral finally becomes convenient — because $|f| \\in L^{+}$, every theorem for the non-negative case applies directly.\n\n(Compare the Riemann improper integral: there $\\int f$ may converge while $\\int|f|$ diverges; this is called conditional convergence.)\n\n⚠ Strictly speaking, the elements of $L^{1}$ are **equivalence classes of functions** (equal a.e. counts as the same), so \"$\\int |f| = 0 \\implies f = 0$\" must be read a.e. This is the key step that later makes Lp spaces normed spaces.\n\n**Among the three equivalences, \"$\\int|f| < \\infty$\" is the most useful, but it presupposes $f^{\\pm}$**:\n\n- $f$ is integrable $\\iff$ $\\int f^{+} < \\infty$ and $\\int f^{-} < \\infty$: **this is the definition** (split $f$ into positive and negative parts, each a **non-negative** measurable function, and use the non-negative case).\n- $\\iff$ $\\int \\lvert f\\rvert < \\infty$: **one step** ($\\lvert f\\rvert = f^{+} + f^{-}$), and it **uses additivity of the non-negative integral**. ⚠️ \"$\\int f$ is finite\" and integrability are **not** the same thing: if $\\int f$ is a **finite real number**, then $f^{\\pm}$ are finite and $f$ is necessarily integrable; the danger is $\\int f^{+} = \\int f^{-} = +\\infty$, where $\\int f$ is **undefined** (not $0$) — which of course does not count as integrable. This is exactly why integrability requires absolute integrability.\n- $f$ measurable with $\\lvert f\\rvert \\le g$ and $g$ integrable $\\implies$ $f$ is integrable: **this step needs monotonicity** (`prop.integral-order`).\n\n⚠️ **Necessary hypotheses**: $f$ must be **measurable** (an unmeasurable function has no integral to speak of). The difference from **Riemann integrability**: Riemann requires boundedness plus a null set of discontinuities (`thm.riemann-lebesgue-criterion`), whereas Lebesgue integrability **does not require boundedness** ($1/\\sqrt{x}$ is Lebesgue integrable on $(0,1]$); conversely, a bounded Riemann integrable function is Lebesgue integrable (`prop.riemann-implies-lebesgue`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#5feeb102',
+      },
+    },
+
+    'thm.lebesgue-radon-nikodym': {
+      statement: {
+        en: "Let $\\nu$ be a **$\\sigma$-finite** signed measure and $\\mu$ a **$\\sigma$-finite** positive measure, both on $(X, \\mathcal{M})$. Then there is a **unique** pair of $\\sigma$-finite signed measures $\\lambda$, $\\rho$ such that\n\n$$\\lambda \\perp  \\mu, \\quad  \\rho \\ll  \\mu, \\quad  \\nu = \\lambda + \\rho$$\n\nand $\\rho$ can be written as an integral: there is a generalized $\\mu$-integrable function $f$ with\n\n$$d\\rho = f d\\mu$$\n\nAny two such $f$ agree $\\mu -\\text{a.e.}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8e22e833',
+      },
+      notes: {
+        en: "⭐ This is the **structure theorem** of the whole theory of signed measures: every $\\nu$ splits uniquely into \"a part singular with respect to $\\mu$\" plus \"a part absolutely continuous with respect to $\\mu$\".\n\nIn particular, **when $\\nu \\ll \\mu$**, $\\lambda = 0$, hence $d\\nu = f d\\mu$ — this is what is usually called the **Radon–Nikodym theorem**.\n\n⚠ $\\sigma$-finiteness cannot be dropped (it is needed for both $\\nu$ and $\\mu$).\n\nThe three steps of the proof (expanded in the next arrow): $I. \\nu$, with $\\mu$ finite; II. cut into finite pieces using $\\sigma$-finiteness; $III. \\nu$ a signed measure, treat $\\nu^+, \\nu^-$ separately.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6633e8b0',
+      },
+    },
+
+    'thm.chain-rule-multi': {
+      statement: {
+        en: "Let $U \\subseteq \\mathbb{R}^{n}$ and $V \\subseteq \\mathbb{R}^{m}$ be open, $f : U \\to V$ differentiable at $a \\in U$, and $g : V \\to \\mathbb{R}^{p}$ differentiable at $b = f(a)$. Then $g \\circ f$ is differentiable at $a$, and\n\n$$D(g \\circ f)(a) = Dg\\bigl(f(a)\\bigr) \\circ Df(a)$$\n\nIn matrix form,\n\n$$J_{g \\circ f}(a) = J_g\\bigl(f(a)\\bigr)\\, J_f(a)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#1dd6240e',
+      },
+      notes: {
+        en: "⭐ The whole theorem is one sentence: **the chain rule for differentials is composition of linear maps**.\n\nThe matrix form is merely what it looks like after choosing bases — so \"chain rule = matrix multiplication\" is not a coincidence but a consequence of the definition.\n\n⚠ There is a real trap in the proof: one cannot simply write $Dg(f(a + h)) = Dg(f(a)) + O(h)$.\n\nBecause $f(a + h) - f(a)$ is itself $O(\\|h\\|)$, the $o(\\|k\\|)$ of $g$ at $f(a)$ (with $k = f(a+h) - f(a)$) must be explicitly replaced by $o(\\|h\\|)$; this step uses $\\|k\\| \\le (\\|Df(a)\\| + 1)\\|h\\|$ (for small $h$).\n\nThe full proof is on the edge.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cc6fdbb7',
+      },
+    },
+
+    'cor.rank-theorem': {
+      statement: {
+        en: "Let $U \\subseteq \\mathbb{R}^{n}$ be open and $f : U \\to \\mathbb{R}^{m}$ of class $C^{1}$, and suppose the rank of the Jacobian is **identically** $r$ on $U$ (that is, $\\operatorname{rank} Df(x) = r$ for all $x \\in U$).\n\nThen for every $a \\in U$ there are a **$C^{1}$ change of coordinates** $\\varphi$ near $a$ and a **$C^{1}$ change of coordinates** $\\psi$ near $f(a)$ such that (⚠ the smoothness of the coordinates follows that of $f$: $f \\in C^{1}$ gives only $C^{1}$ coordinates; $f \\in C^{k}$ gives $C^{k}$, and only $C^{\\infty}$ gives smooth coordinates)\n\n$$\\psi \\circ f \\circ \\varphi^{-1} (x_1, \\ldots, x_n) = (x_1, \\ldots, x_r, 0, \\ldots, 0)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#1d827f03',
+      },
+      notes: {
+        en: "⭐ The rank theorem says \"**a constant-rank map has only one local shape**\": every map of constant rank $r$ looks the same locally, and the only invariant is the rank $r$.\n\nThis is a **classification theorem** in calculus, and the culmination of the \"local $\\to$ normal form\" method.\n\n⭐ Three corollaries at once:\n- $r = n = m$: $\\psi \\circ f \\circ \\varphi^{-1} = \\mathrm{id}$ $\\implies$ a local isomorphism, i.e. the **inverse mapping theorem**;\n- $r = n < m$: $x \\mapsto (x, 0)$, the normal form of an **immersion**;\n- $r = m < n$: $(x_1, \\ldots, x_n) \\mapsto (x_1, \\ldots, x_m)$, the normal form of a **submersion** (local projection).\n\n⚠ The hypothesis of **constant rank** cannot be dropped: $f(x) = x^{2}$ ($\\mathbb{R} \\to \\mathbb{R}$) has rank $1$ at points $x \\ne 0$ and rank $0$ at $0$, so its local shape is not a standard form (it is a \"fold\").\n\nThe full proof is on the edge (first build coordinates for $r$ that turn the first $r$ components of $f$ into coordinates, then eliminate the remaining components by the implicit function theorem).",
+        status: 'draft',
+        basedOn: 'v0.9.3#bb278006',
+      },
+    },
+
+    'def.residue': {
+      statement: {
+        en: "**In words**: the residue is the coefficient of $(z - a)^{-1}$ in the Laurent expansion of $f$ near an isolated singularity — equivalently, the number obtained by integrating along a small circle and dividing by $2\\pi i$.\n\nLet $a$ be an isolated singularity of $f$, with $f$ holomorphic on $B(a, \\varepsilon) \\setminus \\{a\\}$. Define\n\n$$\\operatorname{Res}(f, a) := \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = r} f(\\zeta)\\,\\mathrm{d}\\zeta, \\qquad 0 < r < \\varepsilon,$$\n\nthis value is independent of $r$ and equals the coefficient $c_{-1}$ of the Laurent expansion of $f$ at $a$.\n\nFor the **point at infinity** ($f$ holomorphic on $|z| > R$): $\\operatorname{Res}(f, \\infty) := -\\dfrac{1}{2\\pi i}\\oint_{|\\zeta| = \\rho} f(\\zeta)\\,\\mathrm{d}\\zeta = -c_{-1}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0c017a25',
+      },
+      notes: {
+        en: "⭐ Why \"residue\": $f$ has a primitive on a punctured neighbourhood iff $c_{-1} = 0$ (because $\\int \\mathrm{d}z/(z - a) = \\log(z - a)$ is multivalued).\n\nSo $c_{-1}$ is exactly \"the number that obstructs the existence of a primitive\" — it **remains** (residue).\n\n⭐ Independence of $r$: $f$ is holomorphic on the annulus between two concentric circles, so by the annulus version of Cauchy–Goursat the two integrals agree.\n\n⚠ The definition at infinity carries a **minus sign**, which comes from the change of coordinates $\\zeta = 1/w$, namely the Jacobi factor $1/w^2$.\n\nIt makes \"the sum of residues on the whole plane is zero\" hold: the sum of residues at finitely many singularities plus $\\operatorname{Res}(f, \\infty)$ equals $0$.\n\n📌 All circle integrals in this section are taken **counterclockwise**;\n\nreversing the orientation changes the overall sign.",
+        status: 'draft',
+        basedOn: 'v0.9.3#eefe14fd',
+      },
+    },
+
+    'thm.schwarz-pick': {
+      statement: {
+        en: "**In words**: take a holomorphic map from the disk to itself and use a fractional linear transformation to move the base point (and its image) to the origin; Schwarz's lemma then becomes an estimate for an arbitrary base point, with no distinguished origin.\n\nLet $f: \\mathbb{D} \\to \\mathbb{D}$ be holomorphic and $z_0 \\in \\mathbb{D}$. Then for every $z \\in \\mathbb{D}$,\n\n$$\\left| \\frac{f(z) - f(z_0)}{1 - \\overline{f(z_0)}\\, f(z)} \\right| \\le \\left| \\frac{z - z_0}{1 - \\overline{z_0}\\, z} \\right|,$$\n\nIn differential form (contractivity of the hyperbolic metric):\n\n$$\\frac{|f'(z_0)|}{1 - |f(z_0)|^2} \\le \\frac{1}{1 - |z_0|^2}.$$\n\nEquality in either place (for some $z \\ne z_0$, or for the derivative) holds iff $f$ is a fractional linear automorphism of $\\mathbb{D}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#109627e7',
+      },
+      notes: {
+        en: "⭐ Both formulas come from \"moving the base point to the origin\": $\\varphi_a(z) = (z - a)/(1 - \\overline{a} z)$ is an automorphism of the disk sending $a$ to $0$; form $\\varphi_{f(z_0)} \\circ f \\circ \\varphi_{z_0}^{-1}$, which fixes the origin, apply Schwarz's lemma, then transform back.\n\n⭐ Reading the hyperbolic metric: $\\dfrac{|\\mathrm{d}w|}{1 - |w|^2}$ is the hyperbolic length element on the disk, and the inequality says that a holomorphic self-map **never enlarges** it. When equality holds, the map is called an isometry.\n\n⚠ The inequality holding for all $z_0$ at once is equivalent to \"$f$ is a $1$-Lipschitz map of the hyperbolic metric\". This is the full form of Schwarz's lemma — Schwarz's lemma is just the special case $z_0 = 0$, $f(z_0) = 0$.\n\n📌 Corollary: the automorphisms of $\\mathbb{D}$ are exactly $z \\mapsto e^{i\\theta}\\dfrac{z - a}{1 - \\overline{a} z}$ ($|a| < 1$, $\\theta \\in \\mathbb{R}$). Equality forces $f$ to have this form, and conversely these maps clearly attain equality.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7b89c20b',
+      },
+    },
+
+    'def.absolute-convergence': {
+      statement: {
+        en: "Let $\\{a_n\\} \\subseteq \\mathbb{R}$ (or $\\mathbb{C}$). The series $\\sum a_n$ is said to **converge absolutely** iff the series of positive terms\n\n$$\\sum_{n=1}^{\\infty} |a_n|$$\n\nconverges.",
+        status: 'draft',
+        basedOn: 'v0.9.3#72e0c699',
+      },
+      notes: {
+        en: "⭐ Absolute convergence is the watershed of this pack: **an absolutely convergent series can be treated as a finite sum** — it may be reordered arbitrarily (rearrangement-invariant), multiplied term by term (Cauchy product), and grouped arbitrarily.\n\nA conditionally convergent series has **none** of these properties.\n\n⭐ It **reduces** the problem of a general series to one of positive terms: once $\\sum |a_n|$ is known to converge, the whole family of tests (comparison, Kummer, root, integral, condensation) becomes available.\n\n⚠ The converse fails (see \"conditional convergence\"), and the name is misleading: it is not \"a stronger kind of convergence\", but \"convergence plus indifference to signs\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#648f4620',
+      },
+    },
+
+    'def.power-series': {
+      statement: {
+        en: "Given a sequence $\\{a_n\\} \\subseteq \\mathbb{R}$ (or $\\mathbb{C}$) and a centre $x_0$, an expression of the form\n\n$$\\sum_{n=0}^{\\infty} a_n (x - x_0)^{n}$$\n\nis called a **power series**. The set of $x$ at which it converges is its **domain of convergence**; the **interior** of that domain is always an interval (or disk) centred at $x_0$, and each $x$ of it is thus an interior point of convergence.",
+        status: 'draft',
+        basedOn: 'v0.9.3#557139a9',
+      },
+      notes: {
+        en: "⭐ A power series is where \"series\" and \"function\" meet: it is both a series (every term computable) and a function (on its domain of convergence).\n\nSo the tools of the two previous packs converge here.\n\n⚠ The domain of convergence need not be open: the endpoints require separate discussion (they may converge, diverge, or converge conditionally) — that is exactly what `thm.abel-endpoint` handles.\n\n⭐ A striking phenomenon: **inside its domain of convergence a power series has no \"wild\" behaviour at all** (it is infinitely differentiable, see \"term-by-term differentiation\"), in sharp contrast with general series of functions.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6f568aec',
+      },
+    },
+
+    'def.log-function': {
+      statement: {
+        en: "$\\exp$ is strictly increasing on $\\mathbb{R}$ (because $(\\exp x)' = \\exp x > 0$), with image $(0, +\\infty)$. Define $\\log : (0, +\\infty) \\to \\mathbb{R}$ as its inverse:\n\n$$\\log := (\\exp|_{\\mathbb{R}})^{-1}, \\qquad e := \\exp 1 = \\sum_{n=0}^{\\infty} \\frac{1}{n!}$$\n\nHence\n\n$$\\log(xy) = \\log x + \\log y, \\qquad \\frac{d}{dx}\\log x = \\frac{1}{x}$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#e9773ff7',
+      },
+      notes: {
+        en: "⭐ The inverse of a continuous strictly monotone function is continuous and monotone (see \"continuity of the inverse\"), and its derivative comes from the inverse function theorem.\n\n⚠ The domain of $\\log$ is $(0, +\\infty)$ — on $\\mathbb{R}$, $\\exp$ never takes non-positive values, so $\\log$ has no negative inputs either (the complex logarithm needs a separate branch, where branch cuts appear).\n\n⭐ The two familiar faces of $e$ are unified here: $e = \\exp 1 = \\sum 1/n!$ and $e = \\lim_n (1 + 1/n)^{n}$ imply each other, but the former is the definition and the latter a theorem.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5d54967e',
+      },
+    },
+
+    'thm.stokes': {
+      statement: {
+        en: "**What it does**: raise the fundamental theorem of calculus to arbitrary dimension — the integral over the boundary equals the integral of the exterior derivative inside; a single formula absorbs Green, Gauss–Ostrogradsky and Kelvin–Stokes.\n\nLet $M$ be a compact, oriented smooth $n$-manifold with boundary, and $\\omega$ an $(n-1)$-form on $M$ (continuous up to the boundary suffices). Then\n\n$$\\int_{M}\\mathrm{d}\\omega = \\int_{\\partial M}\\omega ,$$\n\nwhere $\\partial M$ carries the **induced orientation** (outward normal first, then the orientation of $M$); $\\partial M$ is allowed to be empty (then the right-hand side is zero).",
+        status: 'draft',
+        basedOn: 'v0.9.3#390f0fbf',
+      },
+      notes: {
+        en: "**Proof route**: use a partition of unity to reduce to a cube in the half-space $\\mathbb{H}^{n} = \\{x^{n}\\le 0\\}$; write $\\omega$ as $\\sum_{i}(-1)^{i-1}f_{i}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\widehat{\\mathrm{d}x^{i}}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ (a hat means that factor is omitted), so that $\\mathrm{d}\\omega = \\sum_{i}\\partial_{i}f_{i}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$.\n\nFor $i<n$ the components have compact support in the corresponding coordinate direction, so their integrals vanish;\n\nonly the $i = n$ component remains, and one-variable FTC integrates it to $f_{n}(x^{1},\\ldots,x^{n-1},0)$ — which is precisely the integral of $\\omega$ over the boundary.\n\n**List of special cases**: $n = 1$ is the fundamental theorem of calculus; $n = 2$ is Green's formula; the two faces for $n = 3$ are Gauss–Ostrogradsky (flux) and Kelvin–Stokes (circulation). They are not four theorems but one.\n\n**Relation to Gauss–Bonnet**: on a surface $K\\,\\mathrm{d}A = \\mathrm{d}\\omega^{1}_{\\ 2}$ (Gauss's equation, `thm.gauss-equation`), so the global Gauss–Bonnet formula can be seen as Stokes plus the boundary term $\\int k_{g}\\,\\mathrm{d}s$ — the two theorems share the same root at this level.\n\n⚠️ **Boundary orientation is the easiest place to err**: the convention is \"outward normal first\", i.e. the orientation of $\\partial M$ is given by \"outward normal $\\wedge$ orientation of $M$\". A sign error changes the whole formula by a minus sign, while every special case still \"looks right\".\n\n**Why orientability is needed**: both sides depend on the orientation and change sign together, so the identity is independent of the choice of orientation; but without an orientation one cannot even write down \"the integral\" (`def.integral-form`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#55cccea4',
+      },
+    },
+
+    'thm.rodrigues': {
+      statement: {
+        en: "Let $v \\in T_{p}U$, $v \\ne 0$, and set $k := k_{n}(v)$. Then the following three conditions are equivalent:\n\n1. $\\mathrm{d}r(v)$ is a **principal direction**, with principal curvature $k$;\n2. $\\mathrm{d}n(v) = -k\\,\\mathrm{d}r(v)$, i.e. $W(\\mathrm{d}r(v)) = k\\,\\mathrm{d}r(v)$;\n3. $k_{n}$ attains a stationary value in the direction $v$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5685d4ae',
+      },
+      notes: {
+        en: "**Why it is elegant**: $W(u) = ku$ is linear algebra, $\\mathrm{d}n(v) = -k\\,\\mathrm{d}r(v)$ is geometry — it says that \"along a principal direction the rotation of the normal is **proportional** to the motion of the tangent, with the principal curvature as the factor\" — same or opposite direction depending on the sign of $k$ (for the sphere with outward normal $n = r$, $k = -1$, hence $\\mathrm{d}n = \\mathrm{d}r$ points the **same way**).\n\n**Coordinate form**: in a curvature-line parametrization $n_{u} = -k_{1}r_{u}$, $n_{v} = -k_{2}r_{v}$. Written with $\\mathrm{d}r, \\mathrm{d}n$, no curvature-line net is required.\n\n⚠️ The minus sign comes from $W = -\\mathrm{d}n$. If a book takes $W = \\mathrm{d}n$, its Rodrigues formula has no minus sign — before copying a formula, check whether the sign is placed in $W$ or in $II$.\n\n**Hypotheses used in each direction** (the geometric formula rests on definitions, the stationary criterion on self-adjointness of the shape operator):\n- (1) $\\iff$ (2): principal directions are defined as nonzero eigenvectors of the shape operator, and together with $W\\circ\\mathrm dr=-\\mathrm dn$ this is a definitional unfolding; the sign depends on the conventions for the normal and the shape operator.\n- (2) $\\implies$ (3): the normal curvature is the Rayleigh quotient of a self-adjoint operator; differentiating on the unit tangent circle, an eigenvector makes the first derivative vanish — this is not merely terminology.\n- (3) $\\implies$ (2): the derivative vanishes for all unit tangent variations perpendicular to that direction, so $Wu-ku$ is parallel to $u$, and then $k=\\langle Wu,u\\rangle/\\langle u,u\\rangle$ gives zero.\n- One needs a sufficiently smooth regular surface, a unit normal and $v\\ne0$, so that the first fundamental form is positive definite and $W$ is self-adjoint; the zero vector has no direction or normal curvature. A general non-self-adjoint operator fails the criterion, e.g. a nonzero antisymmetric plane rotation has identically zero Rayleigh quotient but no real eigen-direction.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d81cb479',
+      },
+    },
+
+    'thm.kummer': {
+      statement: {
+        en: "Let $\\sum a_n$ be a series of **positive terms** ($a_n > 0$), and $\\{c_n\\}$ a sequence of positive numbers. Put\n\n$$K_n := c_n \\cdot \\frac{a_n}{a_{n+1}} - c_{n+1}$$\n\nThen:\n\n- **Convergence**: if $\\liminf_{n \\to \\infty} K_n > 0$, then $\\sum a_n$ converges;\n- **Divergence**: if $\\sum \\frac{1}{c_n}$ diverges and $K_n \\le 0$ for all sufficiently large $n$, then $\\sum a_n$ diverges.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ce52db6c',
+      },
+      notes: {
+        en: "⭐ This is the **master theorem for positive-term tests**: every \"ratio-type\" test is obtained from it by choosing a different $\\{c_n\\}$ —\n\n- $c_n = 1$: **d'Alembert (ratio) test** — $\\lim \\frac{a_{n+1}}{a_n} < 1$ means convergence, $> 1$ means divergence;\n\n- $c_n = n$: **Raabe's test** — $\\lim n\\bigl(\\frac{a_n}{a_{n+1}} - 1\\bigr) > 1$ gives convergence;\n\n- $c_n = n \\ln n$: **Bertrand's test** — one finer step than Raabe;\n\n- $c_n$ given by a Gauss expansion: **Gauss's test** — handles the class $a_n/a_{n+1} = 1 + \\frac{\\mu}{n} + O(n^{-1-\\delta})$.\n\n⚠ The convergence branch requires $\\liminf K_n > 0$ (not $\\lim K_n$, and not merely some $K_n > 0$).\n\n⚠ The divergence branch has the extra hypothesis \"$\\sum 1/c_n$ diverges\" — for $c_n = 1$ this is $\\sum 1$, for $c_n = n$ it is the harmonic series; neither is free.\n\n⚠ **What does not follow from it**: the comparison test (more basic), the root test (which goes through $\\limsup$ and comparison with a geometric series, and is not mutually derivable with Kummer; rather, \"existence of the ratio limit $\\implies$ existence of the root limit, and they are equal\", so the root test is stronger), the integral test and the condensation test (one replaces the sum by an improper integral, the other groups terms by $2^k$).\n\nEach of these four gets its own node.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e18a47c4',
+      },
+    },
+
+    'prop.zero-isolated': {
+      statement: {
+        en: "Let $f$ be holomorphic on a region $\\Omega$, with $f(z_{0}) = 0$, and suppose that $f$ is not identically zero in any neighbourhood of $z_{0}$. Then there are a **unique** integer $m \\ge 1$ and a function $g$ holomorphic near $z_{0}$ such that\n\n$$f(z) = (z - z_{0})^{m}\\, g(z), \\qquad g(z_{0}) \\ne 0.$$\n\n$m$ is called the **order** of the zero at $z_{0}$. Consequently $z_{0}$ is an isolated zero of $f$, and the zero set of a nonzero holomorphic function has **no accumulation point** in $\\Omega$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2378224d',
+      },
+      notes: {
+        en: "**Proof**: expand $f$ in a Taylor series at $z_{0}$ (`thm.taylor-complex`): $f(z) = \\sum_{n \\ge 1} a_{n}(z - z_{0})^{n}$.\n\nSince $f$ is not identically zero, not all coefficients vanish; take the least $m$ with $a_{m} \\ne 0$, then $f(z) = (z - z_{0})^{m}\\bigl(a_{m} + a_{m+1}(z - z_{0}) + \\cdots\\bigr)$; the factor in parentheses takes at $z_{0}$ the value $a_{m} \\ne 0$, and this is the required $g$.\n\n**Isolation**: $g(z_{0}) \\ne 0$ and $g$ is continuous, so on some neighbourhood of $z_{0}$ one has $g \\ne 0$; hence $f$ vanishes there only at $z_{0}$ (on the punctured neighbourhood $(z - z_{0})^{m} \\ne 0$).\n\n**Accumulation**: if the zeros had an accumulation point $z^{*} \\in \\Omega$, then $z^{*}$ would itself be a zero (continuity), and every neighbourhood of it would contain zeros, contradicting isolation — so the only possibility is $f \\equiv 0$. This is one half of the identity theorem.\n\n⭐ **Where the order is used in the book**: poles, residues and the argument principle (counting zeros with multiplicity) all need it. ⚠️ Here \"order\" and the \"order\" of a pole are two sides of one fact: $f$ has a zero of order $m$ at $z_{0}$ $\\iff$ $1/f$ has a pole of order $m$ at $z_{0}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a0239289',
+      },
+    },
+
+    'thm.winding-homotopy': {
+      statement: {
+        en: "Let $\\gamma_{0}, \\gamma_{1}$ be closed curves in $\\mathbb{C} \\setminus \\{a\\}$ that are homotopic there (a homotopy $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ whose two ends give $\\gamma_{0}, \\gamma_{1}$ respectively, and for every $s \\in [0,1]$ the curve $H(\\cdot, s)$ is closed, i.e. $H(0, s) = H(1, s)$). Then\n\n$$n(\\gamma_{0}, a) = n(\\gamma_{1}, a).$$\n\nCorollary (the homotopy form of Cauchy's theorem): if $f$ is holomorphic on a region $\\Omega$, and $\\gamma_{0}, \\gamma_{1}$ are homotopic in $\\Omega$, then $\\displaystyle\\oint_{\\gamma_{0}} f\\,\\mathrm{d}z = \\oint_{\\gamma_{1}} f\\,\\mathrm{d}z$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1b20b1ee',
+      },
+      notes: {
+        en: "**Proof for the winding number**: for the homotopy parameter $s$ define $N(s) := n(H(s, \\cdot), a)$. By the integral representation $N(s) = \\frac{1}{2\\pi i}\\oint_{H(s,\\cdot)} \\mathrm{d}z/(z-a)$, both the integrand and the domain depend continuously on $s$, so $N$ is continuous; but $N$ takes only integer values, and continuous plus integer-valued $\\implies$ constant. Hence $N(0) = N(1)$.\n\n**The Cauchy form**: after rendering $\\Omega$ simply connected, $f\\,\\mathrm{d}z$ can be deformed continuously along the homotopy without changing the integral; differentiating with respect to $s$ gives $\\frac{\\mathrm{d}}{\\mathrm{d}s}\\oint_{H(s,\\cdot)} f\\,\\mathrm{d}z = 0$; this is the same route as \"$f$ has a primitive\", see `prop.single-valued-branch`.\n\n⭐ **It is the first hinge between complex analysis and topology**: the winding number is a homotopy invariant, so \"holomorphic $\\implies$ the contour integral depends only on the homotopy class\" — this is why Cauchy's theorem holds for **any** curve that can be contracted to a point, with no convexity of the region required. The complex-analytic proof of Brouwer's fixed-point theorem (`thm.brouwer-fixed-point`) applies this directly to $\\gamma(t) = e^{2\\pi i t}$.\n\n⚠️ The homotopy must take place in $\\mathbb{C}\\setminus\\{a\\}$: if it were allowed to pass through $a$, the winding number would jump.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cb15b007',
+      },
+    },
+
+    'prop.single-valued-branch': {
+      statement: {
+        en: "Let $D \\subset \\mathbb{C}$ be a region and $F$ a multivalued function on $D$ (assigning to each point a nonempty value set $F(z)$). A **single-valued branch** of $F$ is a continuous function $f : D \\to \\mathbb{C}$ such that $f(z) \\in F(z)$ for all $z \\in D$; if $F$ comes from analytic continuation, the branch is automatically holomorphic.\n\nFor the **logarithm** ($F(z) = \\{\\, w : e^{w} = z \\,\\}$) the following three conditions are equivalent:\n\n1. $\\log$ has a holomorphic single-valued branch on $D$;\n2. $1/z$ has a primitive on $D$;\n3. for every closed curve $\\gamma$ in $D$, $\\displaystyle\\oint_{\\gamma} \\frac{\\mathrm{d}z}{z} = 0$.\n\nA sufficient condition: $D$ is simply connected and $0 \\notin D$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cfe24ac5',
+      },
+      notes: {
+        en: "**Proof (1 $\\implies$ 3)**: if $e^{f} = z$, then $f' = 1/z$, hence $\\oint_{\\gamma} \\mathrm{d}z/z = \\oint_{\\gamma} f'\\,\\mathrm{d}z = 0$ (the contour integral of a holomorphic function in a simply connected region vanishes; here we use the \"has a primitive\" version).\n\n**Proof (3 $\\implies$ 2 $\\implies$ 1)**: condition 3 says that the integral along a curve depends only on the endpoints, so we may define $f(z) := \\int_{z_{0}}^{z} \\mathrm{d}\\zeta/\\zeta$, which satisfies $f' = 1/z$; next check $(z e^{-f(z)})' = e^{-f} - z e^{-f}/z = 0$, so $z e^{-f}$ is constant, and adjusting the constant gives $e^{f} = z$.\n\n⭐ **Condition 3 is exactly \"all winding numbers vanish\"** (see `prop.winding-integral`): $\\oint_{\\gamma}\\mathrm{d}z/z = 2\\pi i\\, n(\\gamma, 0)$. So \"does the logarithm have a single-valued branch\" is translated into a statement about whether curves **wind around the origin** — in a simply connected region no closed curve can wind around an outside point, so it holds automatically.\n\n⚠️ Simple connectedness is **not** necessary: on the annulus $\\{1 < |z| < 2\\}$ the function $\\log$ has no single-valued branch, but on a region with two holes removed it may have one — the criterion is always 3, not \"looks simply connected\".\n\n**Hypotheses used in each direction** (the branch criterion requires the region to avoid the origin; simple connectedness is only sufficient):\n- single-valued branch $\\iff$ continuous choice of a value at each point: this is a definitional unfolding; the equivalence of the three logarithmic conditions requires $D\\subset\\mathbb C\\setminus\\{0\\}$, otherwise $1/z$ is undefined.\n- (1) $\\implies$ (2) $\\implies$ (3): differentiate $e^f=z$ to get $f'=1/z$, then use the fundamental theorem for primitives; simple connectedness is not required.\n- (3) $\\implies$ (2): use path connectedness of the region and vanishing of closed-loop integrals to make the path integral independent of the path, then differentiate using holomorphy of the integrand.\n- (2) $\\implies$ (1): the derivative of $ze^{-f}$ is zero, hence by connectedness it is a nonzero constant, and adjusting a constant suffices; this is a construction, not a definitional unfolding.\n- simply connected and avoiding zero $\\implies$ (3) uses Cauchy's integral theorem; the annulus $1<|z|<2$ has a closed loop with integral $2\\pi i$ and no logarithmic branch. Simple connectedness is not necessary, e.g. the right half-plane with one point removed still admits a restriction of the principal logarithm.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e9c34992',
+      },
+    },
+
+    'def.riemann-sphere': {
+      statement: {
+        en: "**The extended complex plane** $\\widehat{\\mathbb{C}} := \\mathbb{C} \\cup \\{\\infty\\}$: add a point $\\infty$ to the complex plane, and declare its neighbourhoods to be $\\{\\, |z| > R \\,\\} \\cup \\{\\infty\\}$ ($R > 0$).\n\n**Stereographic projection** identifies the unit sphere $S^{2} \\subset \\mathbb{R}^{3}$ with $\\widehat{\\mathbb{C}}$: from the north pole $N = (0,0,1)$, project every point of the sphere except $N$ onto the equatorial plane $w = 0$. For $z = u + iv$,\n\n$$(x, y, w) = \\left(\\frac{2u}{1 + |z|^{2}},\\ \\frac{2v}{1 + |z|^{2}},\\ \\frac{|z|^{2} - 1}{1 + |z|^{2}}\\right).$$\n\nConversely $z = \\dfrac{x + iy}{1 - w}$. The pole $N$ corresponds to $\\infty$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fae2408c',
+      },
+      notes: {
+        en: "**Why it is worth adding a single point**: many statements (fractional linear maps send circles to circles, the Riemann mapping theorem, cross-ratios) need case distinctions when the plane is only $\\mathbb{C}$; after adding $\\infty$, a single case remains — a line is a circle through $\\infty$, and $1/z$ is a rational map defined everywhere on $\\mathbb{C}$.\n\n**Where the formula comes from**: parametrize the line through $N$ and a point $(x,y,w)$ of the sphere as $N + t((x,y,w) - N)$, set the third coordinate equal to $0$, solve for $t$ to get $2(x,y)/(1-w)$; then combine $|z|^{2}$ with $w$ and use $x^{2}+y^{2}+w^{2}=1$ to simplify to the clean form above.\n\n⚠️ The $\\infty$ added here is **one point**, not two points $+\\infty$ and $-\\infty$ (that is the one-dimensional real convention, see `def.extended-real`). Complex numbers have no \"sign\", so there is only one point at infinity.",
+        status: 'draft',
+        basedOn: 'v0.9.3#36fb61bb',
+      },
+    },
+
+    'def.cross-ratio': {
+      statement: {
+        en: "For pairwise distinct $z_{1}, z_{2}, z_{3}, z_{4} \\in \\widehat{\\mathbb{C}}$, define their **cross-ratio**\n\n$$(z_{1}, z_{2}; z_{3}, z_{4}) := \\frac{N}{D},$$\n\nwhere $N := (z_{3} - z_{1})(z_{4} - z_{2})$, $D := (z_{3} - z_{2})(z_{4} - z_{1})$.\n\nWhen $\\infty$ occurs, interpret the expression by a limit (cancel the factors containing $\\infty$).\n\n**Property**: for every fractional linear transformation $T$,\n\n$(Tz_{1}, Tz_{2}; Tz_{3}, Tz_{4}) = (z_{1}, z_{2}; z_{3}, z_{4})$\n\n— the cross-ratio is a **complete invariant** under fractional linear transformations.",
+        status: 'draft',
+        basedOn: 'v0.9.3#197d5b0f',
+      },
+      notes: {
+        en: "**Why it is invariant**: a fractional linear map $T(z) = (az+b)/(cz+d)$ can be written as a composite of four-point cross-ratios. A direct check: each difference $Tz_{i} - Tz_{j} = \\dfrac{(ad - bc)(z_{i} - z_{j})}{(cz_{i} + d)(cz_{j} + d)}$; substituting into the numerator and denominator of the cross-ratio, $(ad-bc)$ cancels **pairwise** with the factors $(cz_{k}+d)$, leaving the original cross-ratio.\n\n⭐ **It is the coordinate of \"four-point geometry\"**: a triangle is described by side lengths and angles, while four points need one complex quantity — the cross-ratio being real or taking a special value corresponds to the two classical facts \"concyclic\" and \"harmonic division\".\n\n⚠️ The value depends on the **order** of the points: swapping two positions gives $1/\\lambda$, $1-\\lambda$, and four more values — six ways of writing the same \"non-harmonic ratio\". Fix the order before writing a formula.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d144277a',
+      },
+    },
+
+    'thm.fermat': {
+      statement: {
+        en: "Let $f$ be defined on a neighbourhood of $x_0$, differentiable at $x_0$, and suppose $x_0$ is an **interior** local extremum of $f$. Then\n\n$$f'(x_0) = 0$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#b7de8f56',
+      },
+      notes: {
+        en: "⭐ This is the **prime mover** of the whole differential calculus: it translates the order-theoretic notion of \"extremum\" into the algebraic condition \"the derivative vanishes\", so finding extrema becomes solving $f' = 0$.\n\n⚠ None of the three hypotheses can be dropped: differentiability ($|x|$ has an interior minimum at $0$ but is not differentiable there), interiority ($f(x) = x$ on $[0, 1]$ attains its minimum at the endpoint $0$, where $f'(0) = 1 \\ne 0$), and extremality.\n\n⚠ **The converse fails**: $f'(x_0) = 0$ does not guarantee an extremum ($f(x) = x^{3}$ at $0$).\n\nPoints with $f' = 0$ are called **stationary points**; they must be checked alongside non-differentiable points and endpoints.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b4b3dcd6',
+      },
+    },
+
+    'thm.minkowski': {
+      statement: {
+        en: "Let $1 \\le p < \\infty$. Then for $f, g \\in L^p$:\n\n$$\\|f + g\\|_p \\le \\|f\\|_p + \\|g\\|_p$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#b46b4639',
+      },
+      notes: {
+        en: "$p = 1$ is just the triangle inequality for integrals, and is obvious.\n\nFor general $p$:\n\n$$\\int |f+g|^p = \\int |f+g| \\cdot |f+g|^{p-1} \\le \\int (|f| + |g|) |f+g|^{p-1} \\le \\left( \\|f\\|_p + \\|g\\|_p \\right) \\left\\| |f+g|^{p-1} \\right\\|_q$$\n\nwhere the last step applies Hölder once to $|f| \\cdot |f+g|^{p-1}$ and once to $|g| \\cdot |f+g|^{p-1}$. Now note\n\n$$\\left\\| |f+g|^{p-1} \\right\\|_q^{\\,q} = \\int |f+g|^{(p-1)q} = \\int |f+g|^p$$\n\nCancel one factor $\\|f+g\\|_p^{p/q}$ from both sides.\n\n⭐ With this, $\\|\\cdot\\|_p$ is genuinely a **norm** — the prerequisite for \"$L^p$ is a Banach space\" below.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f22e23da',
+      },
+    },
+
+    'thm.darboux-criterion': {
+      statement: {
+        en: "Let $f$ be bounded on $[a, b]$. Then $f$ is Riemann integrable iff\n\n$$\\inf_{P} U(f, P) = \\sup_{P} L(f, P)$$\n\nand in that case this common value is $\\int_a^b f$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#96f7733f',
+      },
+      notes: {
+        en: "⭐ This replaces \"the limit exists\" by \"the two suprema coincide\": the former requires discussing the choice of sample points, the latter **does not mention sample points at all** — that is the whole reason the Darboux form is convenient.\n\n⭐ Monotonicity of the two bounds: if $P'$ is a refinement of $P$, then $L(f, P) \\le L(f, P') \\le U(f, P') \\le U(f, P)$ (on each subinterval $m_i$ can only increase and $M_i$ can only decrease).\n\nHence for **any** two partitions $P, Q$ one has $L(f, P) \\le U(f, Q)$: take the common refinement $P \\cup Q$.\n\n⚠ Therefore $\\sup_P L \\le \\inf_P U$ is automatic; what the criterion really requires is the **reverse inequality**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0e8daafd',
+      },
+    },
+
+    'thm.absolute-implies-convergent': {
+      statement: {
+        en: "If $\\sum |a_n|$ converges, then $\\sum a_n$ converges, and\n\n$$\\Bigl| \\sum_{n=1}^{\\infty} a_n \\Bigr| \\le \\sum_{n=1}^{\\infty} |a_n|$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#6d27e8be',
+      },
+      notes: {
+        en: "⭐ The proof uses the triangle inequality once (note $|\\sum_{k=m+1}^{n} a_k| \\le \\sum_{k=m+1}^{n} |a_k|$) plus the Cauchy criterion for series.\n\n⚠ **The converse fails**: the alternating harmonic series converges but not absolutely.\n\n⭐ The real use of the theorem is **reduction**: to prove that a general series converges, first prove that $\\sum |a_n|$ converges — the latter is a positive-term series, for which far more tools are available.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e876ae6f',
+      },
+    },
+
+    'def.harmonic': {
+      statement: {
+        en: "**In words**: a real-valued function with continuous second partials satisfying $\\Delta u = 0$. Loosely: a function that is \"nowhere more convex or more concave than its surroundings\".\n\nLet $\\Omega \\subset \\mathbb{R}^2 \\cong \\mathbb{C}$ be a region and $u: \\Omega \\to \\mathbb{R}$ of class $C^2$. If\n\n$$\\Delta u := \\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$$\n\nholds everywhere on $\\Omega$, then $u$ is called a **harmonic function** on $\\Omega$.\n\nEquivalent characterization (local): $u$ is the real part of some holomorphic function (always possible on a disk, and also on simply connected regions, see the node on \"harmonic conjugates\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#de993de6',
+      },
+      notes: {
+        en: "⭐ The real and imaginary parts of a holomorphic function are harmonic: by the Cauchy–Riemann equations $u_x = v_y$, $u_y = -v_x$, one gets\n\n$$\\Delta u = (u_x)_x + (u_y)_y = (v_y)_x + (-v_x)_y = v_{xy} - v_{yx} = 0,$$\n\nthe last step using equality of mixed partials ($v$ is sufficiently smooth).\n\n⭐ Examples: $\\operatorname{Re} z^n$, $x^2 - y^2$, $\\ln|z|$ (on $\\mathbb{C}^{\\times}$), $e^{x}\\cos y$.\n\n⚠ Counterexamples: $|z|^2 = x^2 + y^2$ is not harmonic, $\\Delta(x^2 + y^2) = 4$; nor is $x^3$, since $\\Delta x^3 = 6x$.\n\n⚠ The definition only asks for $C^2$, but harmonic functions are automatically $C^{\\infty}$ and real analytic — a direct consequence of \"being the real part of a holomorphic function\".\n\n📌 Harmonic functions lack the rigidity of holomorphic ones: the product of two harmonic functions is in general neither harmonic nor holomorphic; only $u + v$ and $cu$ are.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e03bf232',
+      },
+    },
+
+    'prop.conformal-iff': {
+      statement: {
+        en: "**In words**: a holomorphic function is angle-preserving wherever its derivative is nonzero — the angle at which two curves meet there is the same in the image; conversely, a real-differentiable angle-preserving map must be holomorphic.\n\n**(i)** Let $f$ be holomorphic near $z_0$ and $f'(z_0) \\ne 0$. Then $f$ is **conformal** at $z_0$: for any two smooth curves through $z_0$ with **nonzero velocity at $z_0$**, the angle between their images at $f(z_0)$ has the **same size and the same orientation**. (⚠ \"nonzero velocity\" cannot be dropped: $\\gamma_{1}(t) = t^{2}$ and $\\gamma_{2}(t) = i t^{2}$ have no tangent at $t = 0$, so there is no angle to speak of.)\n\n**(ii)** Conversely, if $f$ is real differentiable at $z_0$ and conformal (orientation-preserving) at $z_0$, then $f$ satisfies the Cauchy–Riemann equations at $z_0$, hence is complex differentiable.\n\nTherefore **conformal map = holomorphic with nowhere-vanishing derivative**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7865a875',
+      },
+      notes: {
+        en: "⭐ (i) needs one line: $f(z_0 + h) - f(z_0) \\approx f'(z_0)\\,h$.\n\nMultiplication by the nonzero complex number $f'(z_0) = |f'|e^{i\\theta}$ is \"rotation by $\\theta$ plus dilation $|f'|$\" — a similarity, so angles and ratios of lengths are unchanged.\n\n⚠ (ii) is not a tautology: write the real differential as $\\Delta z \\mapsto \\Delta f$, and being a similarity forces $\\Delta z$ and $\\overline{\\Delta z}$ to have the same length but be orthogonal; equivalently $\\partial f/\\partial \\bar z(z_0) = 0$, the Cauchy–Riemann equation in conjugate form.\n\n⚠ \"Nowhere zero\" is essential: $f(z) = z^2$ doubles angles at $0$ ($0$), and $f(z) = \\bar z$ is angle-preserving but not holomorphic.\n\nThe fractional linear map $f(z) = (az+b)/(cz+d)$ has derivative $(ad-bc)/(cz+d)^2$, and $ad - bc \\ne 0$ guarantees it is conformal everywhere.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e536eb42',
+      },
+    },
+
+    'prop.exp-local-inverse': {
+      statement: {
+        en: "For every $z_{0} \\in \\mathbb{C}$ there are a neighbourhood $U$ of $z_{0}$ and an open set $V$ such that $\\exp : U \\to V$ is biholomorphic, and its inverse\n\n$$w \\longmapsto \\log w := \\log|w| + i\\arg_{U} w$$\n\nis holomorphic, where $\\arg_{U} w$ is chosen in the interval $(\\operatorname{Im} z_{0} - \\pi,\\ \\operatorname{Im} z_{0} + \\pi)$.\n\nEquivalent formulation: $\\exp$ is locally biholomorphic (a local isomorphism), and $\\exp$ is a covering map $\\mathbb{C} \\to \\mathbb{C} \\setminus \\{0\\}$ with fibre $2\\pi i\\mathbb{Z}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#af151b8d',
+      },
+      notes: {
+        en: "**Proof**: $\\exp' = \\exp \\ne 0$ holds everywhere, so the inverse function theorem (complex version: if $f'(z_{0}) \\ne 0$ then the map is locally biholomorphic and the inverse has derivative $1/f'$) gives local biholomorphy. The explicit inverse is read off from Euler's formula: $e^{x + iy} = w$ gives $x = \\log|w|$ and $y = \\arg w + 2k\\pi$, and taking the branch lying in the prescribed interval gives the formula.\n\n⭐ **Local versus global**: a local inverse always exists, but a **global** $\\log$ does not (going once around the origin adds $2\\pi$ to the argument). Whether the pieces glue into a global function is exactly the question answered by `prop.single-valued-branch`, and the answer is that the winding number must be $0$.\n\n⚠ Number of sheets: $e^{z}$ maps each horizontal strip $\\{a < \\operatorname{Im} z < a + 2\\pi\\}$ biholomorphically onto $\\mathbb{C}\\setminus\\{0\\}$, so the logarithm has infinitely many branches, any two differing by $2\\pi i k$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#57ff56ce',
+      },
+    },
+
+    'thm.lebesgue-set-full': {
+      statement: {
+        en: "If $f \\in L^1_{loc}$, then\n\n$$m(L_f^c) = 0$$\n\nthat is, **almost every point is a Lebesgue point**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bae0067d',
+      },
+      notes: {
+        en: "The idea of the proof is neat: for each complex number $c$, apply the differentiation theorem to the function $|f(x) - c|$, obtaining \"outside a null set $E_c$, $\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$\".\n\nThen take **a countable dense subset $\\mathbb{C}$ of $D$** and let $E = \\bigcup_{c \\in D} E_c$ (a countable union of null sets, still null). For $x \\notin E$ and any $\\varepsilon > 0$, choose $c \\in D$ with $|f(x) - c| < \\varepsilon$, so\n\n$$\\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$\n\nLetting $\\varepsilon \\to 0$ gives the claim. ∎\n\n⭐ The step \"take a countable dense subset\" is a typical use of countability: it reduces uncountably many conditions to a countable union of null sets.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2b1ea5fc',
+      },
+    },
+
+    'prop.ac-iff-measure-ac': {
+      statement: {
+        en: "Let $F \\in NBV$. Then $F$ is **absolutely continuous** iff its associated measure $\\mu_F$ is absolutely continuous with respect to Lebesgue measure:\n\n$F$ $\\iff \\mu_F \\ll  m$",
+        status: 'draft',
+        basedOn: 'v0.9.3#7bdfb58e',
+      },
+      notes: {
+        en: "**($(\\Longleftarrow )$)** This follows from the ε–δ characterization of absolute continuity of measures: $\\varepsilon$ and $\\delta$ with $\\mu_F \\ll  m$ give \"$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$\". Taking $E$ to be a finite disjoint union of intervals yields absolute continuity of the function directly.\n\n**($(\\implies )$)** Let $E \\in \\mathfrak{B}_\\mathbb{R}$ with $m(E) = 0$.\n\nWe must show $\\mu_F(E) = 0$.\n\nTake a decreasing sequence of open sets $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ with $m(U_k) < \\delta$ (by regularity).\n\nEach $U_k$ is a countable disjoint union of intervals; absolute continuity of the function and $m(U_k) < \\delta$ give $|\\mu_F(U_j)| < \\varepsilon$;\n\nthen upper continuity of the measure and $\\bigcap U_k = E$ give $|\\mu_F(E)| \\le \\varepsilon$.\n\nSince $\\varepsilon$ is arbitrary, $\\mu_F(E) = 0$.\n\n∎\n\n⭐ This connects the two notions of \"absolute continuity\": for functions and for measures. From now on, the calculus notion of an absolutely continuous function has a measure-theoretic interpretation.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a2535cb4',
+      },
+    },
+
+    'def.complex-elementary': {
+      statement: {
+        en: "For $z = x + iy \\in \\mathbb{C}$, define by **power series**\n\n$$e^{z} := \\sum_{n=0}^{\\infty} \\frac{z^{n}}{n!},$$\n\n$$\\cos z := \\frac{e^{iz} + e^{-iz}}{2},\\qquad \\sin z := \\frac{e^{iz} - e^{-iz}}{2i},$$\n\nand set $\\cosh z := \\cos(iz)$, $\\sinh z := -i\\sin(iz)$. All three series converge absolutely on the whole plane, and $e^{z} = e^{x}(\\cos y + i \\sin y)$, $e^{z + 2\\pi i} = e^{z}$.\n\nFor $\\alpha \\in \\mathbb{C}$ and a logarithm $\\operatorname{Log} z$ with a chosen branch (see `def.logarithm-branch`), define the power $z^{\\alpha} := e^{\\alpha \\operatorname{Log} z}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6a610514',
+      },
+      notes: {
+        en: "**Why define them this way**: the real exponential is $\\sum x^{n}/n!$, and the power series still converges on the complex plane — replacing $x$ by $z$ suffices, with no new axioms. The trigonometric definitions are the same: combining $e^{iz}$ and $e^{-iz}$ gives Euler's formula.\n\n**Holomorphy**: a power series may be differentiated term by term inside its disc of convergence, and these three series have radius $\\infty$; hence they are holomorphic on $\\mathbb{C}$, and $(e^{z})' = e^{z}$, $(\\sin z)' = \\cos z$, $(\\cos z)' = -\\sin z$.\n\n⭐ **Euler's formula** $e^{iy} = \\cos y + i\\sin y$ is a direct product of these definitions: $e^{z} = e^{x}e^{iy}$ separates \"modulus $e^{x}$\" from \"argument $y$\".\n\n⚠ **Differences from the real case**: $|e^{z}| = e^{x}$ depends only on the real part, so $e^{z}$ **never takes** $\\mathbb{C}$ as a value on $0$; $\\sin z$ and $\\cos z$ are **unbounded** on the complex plane ($|\\sin(iy)| \\to \\infty$), which does not conflict with $|\\sin| \\le 1$ on the real axis — boundedness on the real axis is not a general property of holomorphic functions.",
+        status: 'draft',
+        basedOn: 'v0.9.3#aa361fc2',
+      },
+    },
+
+    'thm.gleason': {
+      statement: {
+        en: "The **projective objects** in $\\mathbf{CHaus}$ are exactly the Stonean spaces.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6426fe3b',
+      },
+      notes: {
+        en: "**What it says**: among compact Hausdorff spaces, those with the lifting property against surjections (projective objects) are **exactly** the **Stonean** (extremally disconnected) spaces.\n\n⭐ **Why it matters**: in condensed mathematics, \"$\\mathbb{Z}[S]$ is projective $\\iff$ $S$ is Stonean\" is a direct consequence — a topological property (extreme disconnectedness) is translated into a categorical one (projectivity).\n\n⚠ Keep the two separation properties apart: **Stonean** (extremally disconnected: the closure of an open set is open) is strictly stronger than **Stone** (totally disconnected); they are different nodes here (`def.stone-space` treats the latter).",
+        status: 'draft',
+        basedOn: 'v0.9.3#994d8666',
+      },
+    },
+
+    'def.profinite': {
+      statement: {
+        en: "**A profinite space** is a topological space obtained as the limit of finite discrete spaces along a **directed** system:\n\n$$X \\;=\\; \\varprojlim_{i \\in I} X_{i},$$\n\nwhere each $X_{i}$ is a **finite discrete** space and $I$ is a **directed** set.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dc5b575e',
+      },
+      notes: {
+        en: "\"Pro-finite\" = projective limit of finite objects. Intuitively it is built from \"increasingly fine finite resolutions\": $X_{i}$ is what the space looks like at resolution level $i$, and $I$ being directed guarantees that any two levels can be refined simultaneously.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6f6bb4c4',
+      },
+    },
+
+    'thm.orbit-stabilizer': {
+      statement: {
+        en: "Let a finite group $G$ act on a set $X$, and let $x \\in X$. Then $\\operatorname{Stab}(x) \\le G$ and\n\n$$\\bigl| \\operatorname{Orb}(x) \\bigr| = [G : \\operatorname{Stab}(x)] = \\frac{|G|}{|\\operatorname{Stab}(x)|}$$\n\nIn particular $|\\operatorname{Orb}(x)|$ divides $|G|$, and\n\n$$|G| = \\bigl| \\operatorname{Orb}(x) \\bigr| \\cdot \\bigl| \\operatorname{Stab}(x) \\bigr|$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#e9535d1f',
+      },
+      notes: {
+        en: "⭐ This theorem is the hub of the whole pack: it converts \"**counting the size of an orbit**\", a geometric/combinatorial matter, into \"**computing an index**\", a group-theoretic one.\n\nThe class equation, Sylow and Burnside's lemma are all direct corollaries.\n\n⭐ One-line mnemonic: **orbit size $\\times$ stabilizer size = group size**.\n\n⚠ Only the quantity $[G : \\operatorname{Stab}(x)]$ is used, so the theorem holds for **infinite groups** as well (then it must be read as \"the orbit is in bijection with the coset set $G/G_x$\").",
+        status: 'draft',
+        basedOn: 'v0.9.3#e7ec4a58',
+      },
+    },
+
+    'thm.pid-injective-divisible': {
+      statement: {
+        en: "Let $R$ be a **principal ideal domain** (for example $\\mathbb{Z}$ or $k[x]$), and $M$ an $R$-module. Then $M$ is injective iff $M$ is **divisible**, i.e.\n\n$$\\forall a \\ne 0,\\ \\forall y \\in M,\\ \\exists x \\in M, \\qquad a x = y .$$\n\nIn particular: a $\\mathbb{Z}$-module is injective iff it is a divisible group.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f48f1dc0',
+      },
+      notes: {
+        en: "**Divisible $\\implies$ injective** (via Baer's criterion): let $J \\subseteq R$ be an ideal and $f : J \\to I$.\n\nIn a PID $J = (a)$.\n\nIf $a = 0$ then $J = 0$, take $x = 0$;\n\nif $a \\ne 0$, set $y := f(a)$, and by divisibility choose $x \\in I$ with $a x = y$.\n\nThen for $r a \\in J$ we have $f(r a) = r f(a) = r a x = (r a) x$ ✓, i.e. $f$ is given by \"multiplication by $x$\".\n\n**Injective $\\implies$ divisible**: let $a \\ne 0$ and $y \\in I$. Apply Baer's criterion to the ideal $(a)$ and the map $a \\mapsto y$ to obtain $x$ with $a x = y$ ✓.\n\nThe case $\\mathbb{Z}$ is just $R = \\mathbb{Z}$ (a PID); then $R$-modules are abelian groups (`prop.zmod-is-ab`) ✓.\n\n⭐ One-line mnemonic: **\"divide by $a$\" is \"extend along $(a) \\rightarrowtail R$\"**. On a PID the ideals have the simplest possible structure, so Baer's criterion degenerates into a division problem.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4d8d9882',
+      },
+    },
+
+    'def.divisible-group': {
+      statement: {
+        en: "An abelian group $D$ is **divisible** if for every $d \\in D$ and every $0 \\ne n \\in \\mathbb{Z}$ the equation\n\n$$n x = d$$\n\nhas a solution in $D$; equivalently, the multiplication map $n \\cdot : D \\to D$ is **surjective** for every $n \\ne 0$.\n\nA $\\mathbb{Z}$-module is just an abelian group (`prop.zmod-is-ab`), so \"divisible group\" = \"divisible $\\mathbb{Z}$-module\"; the definition carries over verbatim to modules over any ring (replace $\\mathbb{Z}$ by $R$ and $n$ by a non-zero-divisor).",
+        status: 'draft',
+        basedOn: 'v0.9.3#e6af2174',
+      },
+      notes: {
+        en: "**How to read it**: divisible means \"division by any positive integer is always possible\". $\\mathbb{Q}$ has this property; $\\mathbb{Z}$ does not ($2x = 1$ has no solution); $\\mathbb{Z}/2$ does not either — $2x = 0$ always has a solution, but $2x = 1$ does not. The point is that the $n$-fold map is **surjective** (onto the whole group), not merely that the equation is solvable for $0$.\n\n**Structure theorem**: every divisible group is isomorphic to $\\mathbb{Q}^{(I)} \\oplus \\bigoplus_{p}\\bigl(\\mathbb{Z}[1/p]/\\mathbb{Z}\\bigr)^{(J_{p})}$, so a divisible group is determined entirely by these \"ranks\".\n\n⭐ Over $\\mathbb{Z}$: \"divisible\" and \"injective\" are the same thing (`thm.pid-injective-divisible`). Intuitively \"divide by $n$\" is exactly \"extend along $n\\mathbb{Z} \\rightarrowtail \\mathbb{Z}$\".\n\n📌 Quotients: a quotient of a divisible group is divisible (`prop.divisible-quotient`); **subgroups** need not be ($\\mathbb{Z} \\subseteq \\mathbb{Q}$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#75d56409',
+      },
+    },
+
+    'def.flat-module': {
+      statement: {
+        en: "Let $R$ be a ring and $F$ a **right** $R$-module. $F$ is **flat** if the functor\n\n$$F \\otimes_{R} - : R\\text{-}\\mathbf{Mod} \\longrightarrow \\mathbf{Ab}$$\n\nis **exact**. Concretely: for every short exact sequence $0 \\to M_{1} \\to M \\to M_{2} \\to 0$, after tensoring\n\n$$0 \\to F\\otimes_{R} M_{1} \\to F\\otimes_{R} M \\to F\\otimes_{R} M_{2} \\to 0$$\n\nis still exact. (The right end is automatically surjective because $\\otimes$ is right exact; so the real requirement is only \"preserves injectivity\".)",
+        status: 'draft',
+        basedOn: 'v0.9.3#fac71bf3',
+      },
+      notes: {
+        en: "**There are many equivalent formulations**; the usual ones are:\n\n- $\\operatorname{Tor}_{n}^{R}(F, -) = 0$ for all $n \\ge 1$ (see \"flat iff all higher Tor vanish\");\n- for every **finitely generated ideal** $I \\subseteq R$, the map $F\\otimes I \\to F\\otimes R$ is injective (**Lambek's criterion** — only finitely generated ideals need be checked);\n- $F = \\varinjlim F_{i}$ with $F_{i}$ finitely generated free (see \"flat modules are filtered colimits of finitely generated free modules\").\n\n**Which modules are flat**: free modules, projective modules (a projective is a direct summand of a free module, and direct summands preserve flatness), localizations $S^{-1}R$ (tensoring commutes with localization, and $\\otimes$ is exact over $R$). Over an integral domain a flat module is necessarily **torsion-free**; over a PID (more generally a Bézout domain) the converse also holds, so there \"flat = torsion-free\" ✓.\n\n⚠️ **Flat and projective are not equivalent**: $\\mathbb{Q}$ is flat over $\\mathbb{Z}$ ($\\mathbb{Q}$ is torsion-free) but **not projective** ($\\mathbb{Q}$ is not free, nor a direct summand of a free module). So \"flat\" is indeed one level weaker than \"projective\".\n\n⚠️ **Not the same as flatness in a topos**: \"flat abelian group\" in a category of sheaves is a different definition (a double condition using filtered colimits / exactness of tensoring), see \"flat abelian sheaves\". This entry refers only to module categories.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2216216d',
+      },
+    },
+
+    'def.pid': {
+      statement: {
+        en: "An integral domain $A$ is a **principal ideal domain** (PID) if every ideal is principal: for every ideal $I$ there is $a$ such that $I = (a) = aA$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f69cb6c6',
+      },
+      notes: {
+        en: "Examples: $\\mathbb{Z}$ (every ideal is $(n)$), $K[x]$ (ideals are generated by the polynomial of least degree), $\\mathbb{Z}[i]$.\n\nCounterexamples: $\\mathbb{Z}[x]$ is not a PID — $(2, x)$ is not principal (if $(2,x) = (f)$, then $f \\mid 2$ forces $f$ to be a constant $\\pm 1$ or $\\pm 2$; the former gives $(f) = A$, the latter does not contain $x$, so neither works). Similarly $K[x, y]$, where $(x, y)$ is not principal.\n\nPID $\\implies$ UFD (`imp.ring-pid-ufd`) is the central theorem for these rings: existence of factorization rests on \"ascending chains of ideals terminate\" (Noether), uniqueness on \"irreducible = prime\" (the Bézout property comes from being a PID).",
+        status: 'draft',
+        basedOn: 'v0.9.3#7174ce09',
+      },
+    },
+
+    'def.ufd': {
+      statement: {
+        en: "An integral domain $A$ is a **unique factorization domain** (UFD) if\n\n1. **Existence**: every non-zero non-unit $a$ can be written as a product of finitely many irreducible elements;\n2. **Uniqueness**: two such factorizations differ only by order and by associates (that is, the factors can be paired off as associates).",
+        status: 'draft',
+        basedOn: 'v0.9.3#53824772',
+      },
+      notes: {
+        en: "$\\mathbb{Z}$ and $K[x]$ are both UFDs (the latter by `thm.poly-ufd`), while $\\mathbb{Z}[\\sqrt{-5}]$ is not:\n\n$$6 = 2 \\cdot 3 = (1+\\sqrt{-5})(1-\\sqrt{-5}),$$\n\nthe four factors are all irreducible and pairwise non-associate — so factorization is not unique.\n\nThe criterion for UFDs: **UFD $\\iff$ (factorization exists) and (irreducible = prime)**. The three properties often listed side by side are not individually equivalent to UFD: ① \"irreducible = prime\" (`def.irreducible-element`) is enough only when **existence of factorization** already holds (drop existence and it is weaker — the ring of all algebraic integers has no irreducible elements, the condition is vacuously true, and yet it is not a UFD); ② a $\\gcd$ exists for any two elements in a **GCD domain** (`def.gcd-domain`), strictly weaker than UFD (the graph only records UFD $\\implies$ GCD domain, i.e. `imp.ring-ufd-gcd`; the converse fails, e.g. for non-discrete valuation rings); ③ absence of infinite descending factor chains is **ACCP**, also strictly weaker than UFD ($\\mathbb{Z}[\\sqrt{-5}]$ is Noetherian, hence has ACCP, but is not a UFD).\n\nThe hierarchy (`imp.ring-euclid-pid` / `imp.ring-pid-ufd`): Euclidean domain $\\implies$ PID $\\implies$ UFD $\\implies$ GCD domain, and both arrows are irreversible ($\\mathbb{Z}[\\sqrt{-5}]$ does not even have gcds; there exist UFDs that are not PIDs, such as $K[x, y]$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#ba86300d',
+      },
+    },
+
+    'thm.euler-theorem': {
+      statement: {
+        en: "Let $a, n \\ge 1$ with $\\gcd(a, n) = 1$. Then\n\n$$a^{\\varphi(n)} \\equiv 1 \\pmod n .$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#777b4739',
+      },
+      notes: {
+        en: "The proof is one line, but it is group-theoretic: $[a]$ lies in the unit group $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$, with $|G| = \\varphi(n)$, so Lagrange's theorem gives $[a]^{|G|} = 1$.\n\nSo the real content of the theorem is \"the unit group is a finite group\" — the congruence is merely its coordinate form.\n\nWhen $\\gcd(a, n) > 1$ the conclusion generally fails: $2^{2} = 4 \\equiv 0 \\pmod 4$, while $\\varphi(4) = 2$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d2480d74',
+      },
+    },
+
+    'thm.euler-criterion': {
+      statement: {
+        en: "Let $p$ be an odd prime with $p \\nmid a$. Then\n\n$$\\left(\\frac{a}{p}\\right) \\equiv a^{\\frac{p-1}{2}} \\pmod p .$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#9a01137f',
+      },
+      notes: {
+        en: "**Why**: $\\mathbb{F}_{p}^{\\times}$ is a cyclic group of order $p-1$. Write $a = g^{k}$ ($g$ a primitive root).\n\n- If $k$ is even, $a = (g^{k/2})^{2}$ is a residue, and $a^{(p-1)/2} = g^{k(p-1)/2} = (g^{p-1})^{k/2} = 1$;\n- If $k$ is odd, $a$ is not a residue (the squares in a cyclic group are exactly the even powers), and $a^{(p-1)/2} = g^{(p-1)/2} = -1$ (because its square is $1$ rather than $1$ itself — an element of order $2$ can only be $-1$).\n\nIn general, the equation $x^{(p-1)/2} \\equiv 1$ has exactly $(p-1)/2$ solutions (degree bound), exactly as many as the number of quadratic residues; the two sets coincide.\n\nIt turns \"solving an equation\" into \"computing one modular power\" — the standard practical test for quadratic residues (and the basis of the Solovay–Strassen primality test).",
+        status: 'draft',
+        basedOn: 'v0.9.3#2faaca84',
+      },
+    },
+
+    'thm.order-divides-phi': {
+      statement: {
+        en: "Let $\\gcd(a, n) = 1$. Then $\\operatorname{ord}_{n}(a) \\mid \\varphi(n)$; in particular $a^{\\varphi(n)} \\equiv 1 \\pmod n$ (Euler's theorem).",
+        status: 'draft',
+        basedOn: 'v0.9.3#1f85242a',
+      },
+      notes: {
+        en: "**Proof**: let $k = \\operatorname{ord}_{n}(a)$ and $H = \\{[1], [a], \\cdots, [a]^{k-1}\\}$ be the cyclic subgroup of the unit group, with $|H| = k$. By Lagrange's theorem, $k \\mid |G| = \\varphi(n)$.\n\n**This is the \"reason\" for Euler's theorem**: Euler's theorem is not about congruences but the translation of \"the order of an element in a finite group divides the order of the group\" to $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ (see `imp.nt-lagrange-euler`).\n\n**Corollary**: $a$ is a primitive root $\\iff$ $\\operatorname{ord}_{n}(a) = \\varphi(n)$ — that is, it generates the whole unit group.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dcdada41',
+      },
+    },
+
+    'prop.zeta-continuation': {
+      statement: {
+        en: "$\\zeta$ extends to a meromorphic function on $\\operatorname{Re}s>0$, whose only pole is a simple pole at $s=1$ with residue $1$; on $\\operatorname{Re}s>0$ one has $\\zeta(s)=\\frac{s}{s-1}-s\\int_{1}^{\\infty}\\{x\\}\\,x^{-s-1}\\,\\mathrm{d}x$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c880935a',
+      },
+      notes: {
+        en: "Only the extension to $\\operatorname{Re}s>0$ is given (enough for the prime number theorem); the extension to the whole plane and the functional equation are not part of this node. (Summation by parts).",
+        status: 'draft',
+        basedOn: 'v0.9.3#fc40783a',
+      },
+    },
+
+    'def.inner-product': {
+      statement: {
+        en: "Let $V$ be a $K$-vector space ($K = \\mathbb{R}$ or $\\mathbb{C}$). The map\n\n$$\\langle \\cdot, \\cdot \\rangle : V \\times V \\longrightarrow K$$\n\nis an **inner product** on $V$ iff for all $u, v, w \\in V$ and $c \\in K$:\n\n- **linear in the first argument**: $\\langle u + c\\,w, v \\rangle = \\langle u, v \\rangle + c\\langle w, v \\rangle$;\n- **conjugate symmetric**: $\\langle v, u \\rangle = \\overline{\\langle u, v \\rangle}$ (for $K = \\mathbb{R}$ this is just symmetry);\n- **positive definite**: $\\langle v, v \\rangle \\ge 0$, and $\\langle v, v \\rangle = 0 \\iff v = 0$.\n\nA $V$ equipped with an inner product is an **inner product space**. In the real case an inner product is exactly a positive definite symmetric bilinear form.\n\nStandard example: on $K^{n}$ one sets $\\langle x, y \\rangle := \\sum_i x_i\\, \\overline{y_i}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2ec1c2eb',
+      },
+      notes: {
+        en: "⭐ In the complex case one **cannot require bilinearity**: if $\\langle u, v \\rangle$ were linear in both arguments, then $\\langle i v, i v \\rangle = i^{2}\\langle v, v \\rangle = -\\langle v, v \\rangle$ would always be negative, contradicting positive definiteness.\n\nSo in the complex case one argument must be linear and the other conjugate-linear (this is called **sesquilinear**).\n\n⭐ Which side is conjugate is a **convention**: we take \"linear in the first argument, conjugate-linear in the second\". Changing the convention conjugates every formula and changes nothing.\n\n⚠ Positive definiteness is the watershed between inner products and general bilinear forms: only positive definiteness gives a notion of length, hence Cauchy–Schwarz and orthogonal projection. Dropping positive definiteness (keeping a symmetric bilinear form) leads to **quadratic forms** (see `def.quadratic-form`); dropping symmetry leads to **symplectic forms**.\n\n**Which hypotheses are used where** (the axiomatic definition is free; derived properties must retain positive definiteness):\n- \"Inner product $\\iff$ the three listed axioms\" is just unfolding the definition; in the real case it is equivalent to a positive definite symmetric bilinear form, because symmetry transfers linearity in the first argument to the second.\n- In the complex case, linearity in the first argument plus conjugate symmetry $\\implies$ conjugate-linearity in the second, by a purely algebraic computation; the standard example $\\sum_i x_i\\overline{y_i}$ agrees with the stated convention.\n- For a positive definite inner product $\\implies$ the norm and Cauchy–Schwarz use non-negative quadratic expressions and do not require finite dimension or completeness; recovering an inner product from an arbitrary norm requires the parallelogram identity.\n- Positive definiteness cannot be dropped: $\\mathbb R^2$ carries the symmetric bilinear form $x_1y_1-x_2y_2$, which pairs a non-zero vector with itself to zero, so it cannot define a norm.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a7f91a31',
+      },
+    },
+
+    'thm.recursion-wellorder': {
+      statement: {
+        en: "Let $(W, \\preceq )$ be a **well-ordered set** and $G$ an arbitrary function (it may take values in a collection larger than any set). Write $W_{< w} = \\{ v \\in W : v \\prec w \\}$. Then there is a **unique** function $F$ defined on $W$ such that\n\n$$F(w) = G\\big( F \\upharpoonright W_{< w} \\big), \\qquad \\forall w \\in W$$\n\nthat is: **each step depends only on the values already taken**.\n\n**Corollary (transfinite induction)**: if $S \\subseteq W$ and $\\forall w \\in W\\; ( W_{< w} \\subseteq S \\to w \\in S )$, then $S = W$.\n\nTaking $W = \\omega$ gives **recursive definition** and **mathematical induction** on $\\mathbb{N}$; taking $W$ arbitrary gives **transfinite recursion** and **transfinite induction**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8062a47a',
+      },
+      notes: {
+        en: "⭐⭐ This is the licence to **construct on the infinite**. Before it, the only tools for building objects were finitely many steps (pairing, union, power set, separation, replacement); to build a whole family of mutually dependent objects one needs exactly this. It is also the real purpose of the word \"well-ordered\" — well-ordering guarantees that the part before each step **has a beginning and an end**, so the recursion can terminate.\n\n⭐ **Why the \"well-ordered set\" version rather than the \"ordinal\" version**: recursion on $\\omega$ and transfinite recursion on ordinals are both special cases, so only the most general statement is recorded. (Exception: mathematical induction on $\\mathbb{N}$ has a more direct route — it comes from \"$\\omega$ is the smallest inductive set\" and does not need the general theory of well-orderings, so that node is kept.)\n\n⚠ The right-hand side of the recursion gives the **function** $F \\upharpoonright W_{< w}$ of all preceding values, not a sentence. Written as a sentence, it would fall into the trap of \"defining something by itself using something undefined\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#2e6f5aeb',
+      },
+    },
+
+    'thm.hom-tensor-adjunction-mod': {
+      statement: {
+        en: "Let $R$ be a **commutative** unital ring and $M, N, P$ $R$-modules. Then there is a **natural isomorphism**\n\n$$\\operatorname{Hom}_{R}\\bigl(M \\otimes_{R} N,\\ P\\bigr) \\;\\cong\\; \\operatorname{Hom}_{R}\\bigl(M,\\ \\operatorname{Hom}_{R}(N, P)\\bigr), \\qquad f \\longmapsto \\bigl(m \\mapsto (n \\mapsto f(m \\otimes n))\\bigr),$$\n\nthat is, the left adjoint of the functor $(-) \\otimes_{R} N$ (valued in $\\mathbf{Ab}$) is $\\operatorname{Hom}_{\\mathbb{Z}}(N, -)$ (with its $R$-action); the $R$-linear version below requires $N$ to be an $(R,R)$-bimodule:\n\n$$(-) \\otimes_{R} N \\;\\dashv\\; \\operatorname{Hom}_{R}(N, -).$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#4a9aba1c',
+      },
+      notes: {
+        en: "**Proof (write the maps explicitly)**: set $\\Phi(f) := \\bigl(m \\mapsto (n \\mapsto f(m \\otimes n))\\bigr)$.\n\nThe inverse is $\\Psi(g) := \\bigl(m \\otimes n \\mapsto g(m)(n)\\bigr)$: since $(m, n) \\mapsto g(m)(n)$ is balanced and biadditive, the universal property of `def.tensor-module` gives $\\Psi(g)$ uniquely.\n\n$\\Phi \\Psi$ and $\\Psi \\Phi$ are the identity on pure tensors (or on generators of $M$), and the generators span the whole module, so the two maps are mutually inverse.\n\nNaturality: the formula for $\\Phi$ involves no choices, only $\\otimes$ and composition.\n\n∎\n\n⭐ This is **currying**: something in two variables is the same as something in one variable taking values in a function space.\n\n**Two corollaries are immediate**: $(-) \\otimes_{R} N$ is a left adjoint, hence **preserves colimits** (right exact, preserves direct sums and filtered colimits); $\\operatorname{Hom}_{R}(N, -)$ is a right adjoint, hence **preserves limits** (left exact, preserves products).\n\n📌 Non-commutative version: for $M$ a right $R$-module, $N$ a left $R$-module and $P$ an abelian group, the same isomorphism reads\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}(M \\otimes_{R} N,\\ P) \\;\\cong\\; \\operatorname{Hom}_{R}\\bigl(M,\\ \\operatorname{Hom}_{\\mathbb{Z}}(N, P)\\bigr),$$\n\nThe point is only that $\\operatorname{Hom}_{\\mathbb{Z}}(N, P)$ is naturally a right $R$-module.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9f3360d7',
+      },
+    },
+
+    'prop.skyscraper-stalks': {
+      statement: {
+        en: "Let $X$ be a topological space, $x \\in X$, and $A$ an abelian group. Then the stalk of the skyscraper sheaf $i_{x,*}A$ at $y \\in X$ is\n\n$$(i_{x,*}A)_{y} \\;=\\; \\begin{cases} A, & y \\in \\overline{\\{x\\}}, \\\\ 0, & y \\notin \\overline{\\{x\\}} . \\end{cases}$$\n\nIn particular $(i_{x,*}A)_{x} = A$; if $X$ is a $T_{1}$ space (Hausdorff suffices), then for $y \\ne x$ one has $(i_{x,*}A)_{y} = 0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9bbdb0eb',
+      },
+      notes: {
+        en: "**Proof.** The stalk is the filtered colimit over open neighbourhoods of $y$:\n\n$$(i_{x,*}A)_{y} = \\varinjlim_{U \\ni y}\\ (i_{x,*}A)(U) .$$\n\n- If $y \\in \\overline{\\{x\\}}$: every open neighbourhood $U \\ni y$ of $x$ contains $A$ (this is the characterization of the closure), so every term in the system is $\\mathrm{id}_{A}$ and every transition map is $A$ — the colimit is $y \\notin \\overline{\\{x\\}}$.\n- If $U_{0} \\ni y$: there is $x$ not containing $U_{0}$. Take the **cofinal** subsystem of terms contained in $0$; every term there is $0$ — the colimit is $T_{1}$. ∎\n\n**Corollary (the $X$ case)**: $T_{1}$ is $\\iff$ $\\iff$ $\\overline{\\{x\\}} = \\{x\\}$, so the stalk of a skyscraper sheaf is non-zero only at $x$ — then \"$A$ supported at one point\" is literal.\n\n⚠ On a general topological space (e.g. a spectral space with a specialization order), the **support** of a skyscraper sheaf is the closure $\\overline{\\{x\\}}$, not $\\{x\\}$. This step must be re-examined when skyscraper sheaves are transported to schemes or adic spaces.",
+        status: 'draft',
+        basedOn: 'v0.9.3#256ede14',
+      },
+    },
+
+    'thm.baer-criterion': {
+      statement: {
+        en: "Let $R$ be a unital ring and $I$ a left $R$-module. Then $I$ is **injective** iff: for every **left ideal** $J \\subseteq R$ and every $R$-linear map $f : J \\to I$, there is $x \\in I$ such that\n\n$$f(a) = a x \\qquad (\\forall a \\in J),$$\n\nthat is, $f$ always extends to $R \\to I$ with $1 \\mapsto x$.\n\nIn other words: to test injectivity, the case \"$A \\rightarrowtail B$\" may be restricted to \"the inclusion of an ideal $J \\rightarrowtail R$\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#8ee8e469',
+      },
+      notes: {
+        en: "**Necessity**: $J \\rightarrowtail R$ is itself injective, so injectivity directly gives an extension $R \\to I$ ✓.\n\n**Sufficiency**: given an injection $A \\subseteq B$ and $f : A \\to I$.\n\nConsider all extension pairs $(A_{1}, f_{1})$ ($A \\subseteq A_{1} \\subseteq B$, $f_{1}$ agrees with $f$ on $A$), ordered by \"larger domain\".\n\nThe union of a chain is again an extension, so by **Zorn's lemma** there is a maximal element $(A_{1}, f_{1})$.\n\nIf $A_{1} \\ne B$, take $b \\in B \\setminus A_{1}$ and set\n\n$$J := \\{\\, r \\in R : r b \\in A_{1} \\,\\}, \\qquad h : J \\to I, \\quad h(r) := f_{1}(r b).$$\n\n$J$ is a left ideal and $h$ is $R$-linear. By hypothesis there is $x \\in I$ with $h(r) = r x$ ($\\forall r \\in J$). Define $f_{2}(a + r b) := f_{1}(a) + r x$.\n\n**Well-defined**: if $a + r b = a_{1} + r_{1} b$, then $(r - r_{1}) b = a_{1} - a \\in A_{1}$, hence $r - r_{1} \\in J$, so $f_{1}((r - r_{1})b) = f_{1}(a_{1} - a)$, i.e. $f_{1}(a) + r x = f_{1}(a_{1}) + r_{1} x$ ✓.\n\nThis contradicts maximality, hence $A_{1} = B$ ✓.\n\n∎\n\n⭐ **Meaning**: it compresses \"test against all injections\" into \"test against ideals of $R$\" — and ideals are subsets of $R$, usually far fewer. This step is the key to translating a categorical condition into a condition on the ring; `thm.pid-injective-divisible` depends entirely on it.\n\n⚠ The \"ideal\" in the criterion cannot be replaced by \"finitely generated ideal\": flatness has Lambek's theorem allowing only finitely generated ideals to be checked, but injectivity has **no** such dual weakening (unless the ring is Noetherian).",
+        status: 'draft',
+        basedOn: 'v0.9.3#9f8954ff',
+      },
+    },
+
+    'lem.newman-tauberian': {
+      statement: {
+        en: "Let $f:[0,\\infty)\\to\\mathbb{C}$ be bounded and locally integrable, and suppose its Laplace transform\n\n$$g(z)=\\int_{0}^{\\infty}f(t)\\,e^{-zt}\\,\\mathrm{d}t\\qquad(\\operatorname{Re}z>0)$$\n\nextends analytically to some open set containing the closed half-plane $\\{\\operatorname{Re}z\\ge0\\}$. Then the improper integral $\\int_{0}^{\\infty}f(t)\\,\\mathrm{d}t$ converges and equals $g(0)$.\n\nThis is Newman's Tauberian lemma for the prime number theorem; it compresses the analytic core of \"$\\psi(x)\\sim x$\" into a single contour estimate, see `thm.prime-number-theorem`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ca031979',
+      },
+      notes: {
+        en: "**The proof is on the incoming edge of this node** (Cauchy's integral formula + residues + the contour estimate from Cauchy–Goursat); this note records only two remarks on usage.\n\n**Remark 1 (why the kernel contains $1+z^{2}/R^{2}$)**: $F(0)=1$ keeps the residue at $z=0$ equal to $g(0)-g_{T}(0)$; while on $|z|=R$ one has $1+z^{2}/R^{2}=2z\\operatorname{Re}z/R^{2}$, which exactly cancels the bad factor $1/\\operatorname{Re}z$, making the estimates on the right half-plane and the left semicircle uniform in $R$.\n\n**Remark 2 (strength of the hypotheses and Tauberian phenomena)**: the proof only requires $g$ to be holomorphic on a neighbourhood of **every** closed half-disc $\\{|z|\\le R,\\ \\operatorname{Re}z\\ge0\\}$; for the $g$ of the prime number theorem this follows from the non-vanishing of $\\zeta$ on $\\operatorname{Re}s=1$ together with compactness. If only \"$g$ holomorphic on $\\operatorname{Re}z>0$\" is assumed, the conclusion generally fails: $f(t)=\\sin t$ is bounded, $g(z)=1/(z^{2}+1)$ has poles on the imaginary axis, and $\\int_{0}^{T}\\sin t\\,\\mathrm{d}t$ does not converge.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7fe59bf1',
+      },
+    },
+
+    'prop.rational-localization': {
+      statement: {
+        en: "Let $(A,A^+) \\to (B,B^+)$ be a map of discrete Huber pairs such that $\\operatorname{Spa}(B,B^+) \\to \\operatorname{Spa}(A,A^+)$ factors through the rational open set $U = U\\!\\left(\\frac{g_1,\\ldots,g_n}{f}\\right)$.\n\nThen the map factors uniquely through\n\n$$\\Bigl(A\\bigl[\\tfrac{1}{f}\\bigr],\\ \\widetilde{A^+\\bigl[\\tfrac{g_1}{f}, \\ldots, \\tfrac{g_n}{f}\\bigr]}\\Bigr),$$\n\nwhere the tilde denotes integral closure in $A[1/f]$. Moreover\n\n$$\\operatorname{Spa}\\Bigl(A\\bigl[\\tfrac{1}{f}\\bigr],\\ \\widetilde{A^+\\bigl[\\tfrac{g_i}{f}\\bigr]}\\Bigr) \\longrightarrow \\operatorname{Spa}(A,A^+)$$\n\nis a homeomorphism onto $U$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#033f0093',
+      },
+      notes: {
+        en: "⭐ This is the precise meaning of \"rational open set = affine open set\": each rational open set is itself an $\\operatorname{Spa}$, obtained by inverting $f$ and adjoining $g_i/f$ to $A^+$.\n\nThus adic spaces have a **basis of affine open sets**, and one can do sheaf theory on them as on schemes.\n\n⚠ Uniqueness comes from \"$f$ is nowhere zero on $\\operatorname{Spa}(B,B^+)$ $\\implies$ $f$ is invertible in $B$\" (otherwise $\\operatorname{Spec}(B/fB)$ would give a point with $|f| = 0$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#c6c8321b',
+      },
+    },
+
+    'thm.adic-structure-sheaf': {
+      statement: {
+        en: "Let $X = \\operatorname{Spa}(A,A^+)$. On rational open sets define\n\n$$\\mathcal{O}_X(U) := A\\bigl[\\tfrac{1}{f}\\bigr], \\qquad \\mathcal{O}_X^+(U) := \\widetilde{A^+\\bigl[\\tfrac{g_1}{f}, \\ldots, \\tfrac{g_n}{f}\\bigr]}$$\n\n($U = U\\!\\left(\\frac{g_1,\\ldots,g_n}{f}\\right)$). Then:\n\n**(i)** $\\mathcal{O}_X$ and $\\mathcal{O}_X^+$ are both **sheaves**;\n\n**(ii)** for every point $x \\in X$, the valuation $f \\mapsto |f(x)|$ extends uniquely to the stalk $\\mathcal{O}_{X,x}$;\n\n**(iii)** $\\mathcal{O}_X^+(U) = \\{f \\in \\mathcal{O}_X(U) : \\forall x \\in U,\\ |f(x)| \\le 1\\}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#82593e58',
+      },
+      notes: {
+        en: "⭐ The key to the proof is a \"detour through schemes\" trick: there is a map $\\psi : \\operatorname{Spec} A \\to \\operatorname{Spa}(A,A^+)$ sending a prime ideal $\\mathfrak{p}$ to $A \\to \\operatorname{Frac}(A/\\mathfrak{p}) \\to \\{0,1\\}$.\n\nThe preimage of a rational open set under $\\psi$ is exactly $D(f)$, so $\\mathcal{O}_{\\operatorname{Spa}(A,A^+)}$ is the **pushforward** of $\\mathcal{O}_{\\operatorname{Spec} A}$ along $\\psi$; pushforwards preserve sheaves.\n\n⭐ (iii) says that $\\mathcal{O}^+$ is not extra structure but the part of $\\mathcal{O}$ consisting of functions that are pointwise $\\le 1$ — the local version of the same statement as `prop.huber-subring-recovery`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ba08aaf6',
+      },
+    },
+
+    'cor.cech-cohomology-spectral': {
+      statement: {
+        en: "Let $\\mathcal{C}$ be a site with fibre products, $X \\in \\mathcal{C}$, and $M$ an **abelian sheaf** on $\\mathcal{C}$. Then there is a spectral sequence\n\n$$E^{p,q}_{2} \\;=\\; \\check{H}^{p}\\bigl(X,\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X,\\ M),$$\n\nwhere $H^{q}(M)$ denotes the presheaf $U \\mapsto H^{q}(U, M)$, and $\\check{H}^{p}(X, -)$ is Čech cohomology, taken as the filtered colimit over covers.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fa81c3a9',
+      },
+      notes: {
+        en: "⭐ **Use**: this is the general justification for \"computing sheaf cohomology with Čech cohomology\". To make the two directly **equal** (rather than merely linked by a spectral sequence), one additionally requires the higher Čech groups to degenerate on the $E_{2}$ page — exactly the step used in the proof of \"acyclic $\\iff$ Čech cohomology vanishes\" ✓.\n\n⚠ Difference from the Cartan–Leray spectral sequence: that one **fixes a single cover** $\\mathfrak{X}$; this one takes the colimit over all covers, so the left-hand side can be written directly as $\\check{H}^{p}(X, \\cdot)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a0036268',
+      },
+    },
+
+    'thm.nat-arith-laws': {
+      statement: {
+        en: "On $\\mathbb{N} = \\omega$ take the addition and multiplication defined in `def.nat-arith`. Then for all $m, n, k \\in \\mathbb{N}$:\n\n$$0 + n = n, \\qquad S(m) + n = S(m + n),$$\n\n$$m + n = n + m, \\qquad (m + n) + k = m + (n + k),$$\n\n$$m \\cdot 0 = 0, \\qquad m \\cdot n = n \\cdot m, \\qquad (m n) k = m (n k), \\qquad m(n + k) = m n + m k,$$\n\nand the **cancellation law**\n\n$$m + k = n + k \\implies m = n.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#e98af4e5',
+      },
+      notes: {
+        en: "⭐ These are **not** part of the definition: `def.nat-arith` only specifies $m+0$ and $m+S(n)$ recursively; commutativity, associativity and distributivity all have to be proved separately.\n\n⭐ The order matters and cannot be scrambled: first prove the two auxiliary identities $0+n=n$ and $S(m)+n=S(m+n)$ (both by induction on $n$), then commutativity of addition (induction on $n$, whose step uses exactly those two), then associativity, commutativity of multiplication, and distributivity.\n\nEvery later step stands on the previous one.\n\n⭐ With these, $\\mathbb{N}$ is a \"semiring\" (no additive inverses);\n\nthe construction of $\\mathbb{Z}$ (`def.int`) exists precisely to supply that inverse.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3334eeab',
+      },
+    },
+
+    'prop.pullback-forms': {
+      statement: {
+        en: "**What this does**: it pulls forms back along a smooth map — a capability specific to forms (vector fields can only be pushed forward), and the precise statement that $\\mathrm{d}$ is coordinate-free.\n\nLet $F : U\\to V$ be a $C^{\\infty}$ map between open sets, and let $\\omega$ be a $k$-form on $V$. The **pullback** $F^{\\ast}\\omega$ is the $k$-form on $U$ defined by\n\n$$(F^{\\ast}\\omega)_{p}(v_{1},\\ldots,v_{k}) := \\omega_{F(p)}\\bigl(\\mathrm{d}F_{p}(v_{1}),\\ldots,\\mathrm{d}F_{p}(v_{k})\\bigr).$$\n\nThus $F^{\\ast}$ sends $\\Omega^{k}(V)$ to $\\Omega^{k}(U)$, and satisfies\n\n1. **Linearity**: $F^{\\ast}(a\\omega+b\\eta) = a\\,F^{\\ast}\\omega+b\\,F^{\\ast}\\eta$; for functions, $F^{\\ast}f = f\\circ F$;\n2. **Preserves the wedge product**: $F^{\\ast}(\\omega\\wedge\\eta) = F^{\\ast}\\omega\\wedge F^{\\ast}\\eta$;\n3. **Commutes with** $\\mathrm{d}$: $F^{\\ast}(\\mathrm{d}\\omega) = \\mathrm{d}(F^{\\ast}\\omega)$;\n4. **Preserves composition**: $(G\\circ F)^{\\ast} = F^{\\ast}\\circ G^{\\ast}$, $(\\operatorname{id})^{\\ast} = \\operatorname{id}$.\n\nThe first two say $F^{\\ast}$ is a graded algebra homomorphism, the third that it is also a chain map; together: **$F^{\\ast}$ is a homomorphism of differential graded algebras**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1cd27600',
+      },
+      notes: {
+        en: "**Direction**: $F : U\\to V$ induces $F^{\\ast} : \\Omega^{k}(V)\\to\\Omega^{k}(U)$, opposite to $F$. This is the precise meaning of \"forms are covariant\"; it is also why pullback is defined along any smooth map, whereas pushing vector fields forward generally requires $F$ to be a diffeomorphism (or at least requires the fields to be $F$-related).\n\n**(3) is the core**: it is equivalent to saying that $\\mathrm{d}$ does not depend on coordinates. The only substantive input is the chain rule; the rest follows from (2) and $\\mathrm{d}^{2}=0$ (the proof is on the edges).\n\n**Use in geometry**: a surface parametrization $r : U\\to\\mathbb{R}^{3}$ pulls forms on $\\mathbb{R}^{3}$ back to $U$.\n\nThe first fundamental form and the area element are both pullbacks: $I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$, $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$.\n\nSurface theory can be written in the language of forms precisely because of this.\n\n⚠️ **Pullback does not preserve the orientation of an integral**: $\\int_{U}F^{\\ast}\\omega = \\int_{F(U)}\\omega$ holds only when $F$ is an orientation-preserving diffeomorphism and the degree of the form equals the dimension (change of variables, `def.integral-form`).\n\n⚠️ The order in (4) must not be reversed: the pullback of the composite $G\\circ F$ is $F^{\\ast}\\circ G^{\\ast}$, i.e. apply the later map first.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a7f86c3b',
+      },
+    },
+
+    'def.exterior-derivative': {
+      statement: {
+        en: "**What this does**: it equips forms with a derivative that sends $k$-forms to $(k+1)$-forms and satisfies $\\mathrm{d}^{2} = 0$ — this is what writes calculus in a coordinate-free way.\n\nLet $\\omega = \\sum_{I}a_{I}\\,\\mathrm{d}x^{I}$ be a $k$-form on $U$, where $\\mathrm{d}x^{I} := \\mathrm{d}x^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}x^{i_{k}}$. The **exterior derivative** is defined by\n\n$$\\mathrm{d}\\omega := \\sum_{I}\\mathrm{d}a_{I}\\wedge\\mathrm{d}x^{I} = \\sum_{I}\\sum_{j=1}^{n}\\frac{\\partial a_{I}}{\\partial x^{j}}\\,\\mathrm{d}x^{j}\\wedge\\mathrm{d}x^{I}.$$\n\nFor a function (a $0$-form) it is the total differential $\\mathrm{d}f = \\sum_{j}\\partial_{j}f\\,\\mathrm{d}x^{j}$. Basic properties:\n\n1. $\\mathbb{R}$-linearity: $\\mathrm{d}(a\\omega+b\\eta) = a\\,\\mathrm{d}\\omega+b\\,\\mathrm{d}\\eta$;\n2. **Graded Leibniz rule**: when $\\omega$ is a $k$-form, $\\mathrm{d}(\\omega\\wedge\\eta) = \\mathrm{d}\\omega\\wedge\\eta+(-1)^{k}\\omega\\wedge\\mathrm{d}\\eta$;\n3. **$\\mathrm{d}^{2} = 0$**: a direct consequence of the equality of mixed partial derivatives;\n4. it is independent of the choice of coordinates (equivalently, it commutes with pullback; see `prop.pullback-forms`).\n\nA form with $\\mathrm{d}\\omega = 0$ is called **closed**, and a form $\\omega$ with $\\omega = \\mathrm{d}\\eta$ is called **exact**.\n\nBy $\\mathrm{d}^{2}=0$, every exact form is closed;\n\nthe converse fails ($\\frac{x\\,\\mathrm{d}y-y\\,\\mathrm{d}x}{x^{2}+y^{2}}$ on $\\mathbb{R}^{2}\\setminus\\{0\\}$ is closed but not exact).",
+        status: 'draft',
+        basedOn: 'v0.9.3#95278658',
+      },
+      notes: {
+        en: "**What kind of algebraic object $\\mathrm{d}$ is**: an **antiderivation** of the exterior algebra — degree $+1$, graded Leibniz, square zero. These three properties determine it uniquely, so there is no need to memorize the formula; remember these three.\n\n**$\\mathrm{d}^{2}=0$ has the same origin as the structure equations**: the structure equations of a surface are also a reading of $\\mathrm{d}^{2}=0$ (`thm.structure-equations`). The advantage of the language of forms is that \"mixed partials commute\" and \"the frame is integrable\" become the same identity.\n\n**Unification of three classical operators** ($n=3$): $\\mathrm{d}$ on $0$-forms gives the gradient (as a $1$-form), on $1$-forms the curl (as a $2$-form), and on $2$-forms the divergence (as a $3$-form). Hence $\\mathrm{d}^{2}=0$ is exactly \"the divergence of a curl is zero\" and \"the curl of a gradient is zero\".\n\n⚠️ **One cannot apply $\\mathrm{d}$ to a vector field**: $\\mathrm{d}$ acts only on forms. Differentiating vector fields requires extra structure (a connection, `def.affine-connection`), and the result is a covariant derivative rather than an exterior derivative.\n\n⚠️ The same symbol $\\mathrm{d}$ is also used for the total differential, the arc-length element and the integration measure — a historical burden of notation. In this map $\\mathrm{d}\\omega$ always denotes the exterior derivative, while $\\mathrm{d}s$ and $\\mathrm{d}A$ have their own meanings (`def.arc-length`, `def.area-element`).\n\n**Among the three properties, $\\mathrm{d}^{2} = 0$ is the only one with content** (the other two almost just say \"it is a derivation\"):\n\n- **$\\mathbb{R}$-linearity** and the **graded Leibniz rule** only determine the action of $\\mathrm{d}$ on a basis. What really pins it down is the convention $\\mathrm{d}(\\mathrm{d}x^{j}) = 0$ — with it, $\\mathrm{d}$ on $\\mathrm{d}x^{I}$ is completely determined by the Leibniz rule.\n- **$\\mathrm{d}^{2} = 0$**: this is where all the content lies; it is equivalent to the equality of mixed partials ($\\partial_{j}\\partial_{k} = \\partial_{k}\\partial_{j}$, Clairaut's theorem). ⚠️ Hence the exterior derivative is well behaved only in the $C^{2}$ class: functions that are $C^{1}$ but whose second derivatives do not commute break it.\n- **Relation to the Lie derivative**, $\\mathrm{d} = $ \"antisymmetrization\": the Cartan formula $\\mathcal{L}_{X} = \\mathrm{d}\\iota_{X} + \\iota_{X}\\mathrm{d}$ welds these three operations together (`thm.cartan-formula`).\n\n⚠️ **Three equivalent definitions, at different costs**: the coordinate formula (this section; most concrete but coordinate-dependent), the axiomatic one (Leibniz + $\\mathrm{d}^{2}=0$ + agreement on functions; one must prove existence and uniqueness), and the coordinate-free form $[\\omega](X_{0},\\ldots,X_{k}) = \\sum(-1)^{i}X_{i}\\omega(\\ldots)$ (most geometric, it displays intrinsicness directly). They are equivalent, but **only the last one shows that $\\mathrm{d}$ is independent of coordinates**.\n\n⚠️ **$\\mathrm{d}$ is not tensorial**: it does not satisfy $\\mathrm{d}(f\\omega) = f\\,\\mathrm{d}\\omega$ (the difference is a term $\\mathrm{d}f\\wedge\\omega$). This is exactly why it cannot be defined on general tensor fields, only on forms.\n\n**Hypotheses used in each direction** (the coordinate formula and the axiomatic characterization must specify the action on functions):\n\n- coordinate formula $\\implies$ total differential on functions and the graded Leibniz rule: uses the product rule for partial derivatives and the sign rule for the wedge product.\n- coordinate formula $\\implies$ $\\mathrm d^2=0$: requires equality of mixed partials; coefficients in $C^2$ suffice, while a single exterior derivative itself only needs $C^1$.\n- axiomatic characterization $\\implies$ coordinate formula: one must also require agreement with the total differential on functions; otherwise the zero operator satisfies linearity, graded Leibniz and square zero, and cannot determine the exterior derivative uniquely.\n- exact $\\implies$ closed uses square zero; closed $\\implies$ exact needs an extra local or global condition, such as the Poincaré lemma on star-shaped open sets; the angle form on the punctured plane gives a global counterexample.\n\n📌 This node treats the exterior derivative on **Euclidean open sets**; for the manifold version see `prop.exterior-derivative-manifold`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8bc3a98d',
+      },
+    },
+
+    'cor.free-solid-product': {
+      statement: {
+        en: "For every profinite set $S$, there exist a set $I$ (with $\\#I \\le 2^{\\#S}$) and an isomorphism of condensed abelian groups\n\n$$Z[S]^{\\blacksquare} \\cong \\prod_{I} \\mathbb{Z}.$$\n\nwhose underlying abelian group is the measure group $M(S,\\mathbb{Z})$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#112e3671',
+      },
+      notes: {
+        en: "⭐ This corollary translates \"the free solid group\" into \"a large product\" — every later computation relies on it.\n\nIn particular, the compact projective objects of solid theory are not finitely generated free modules but **arbitrary products** $\\prod_I \\mathbb{Z}$.\n\n⚠ $I$ is usually uncountable: for example, when $S = \\mathbb{Z}_p$, the free rank of $C(S,\\mathbb{Z})$ is countable, while $M(S,\\mathbb{Z}) = \\prod_{\\mathbb{N}} \\mathbb{Z}$ is uncountable.",
+        status: 'draft',
+        basedOn: 'v0.9.3#92fe3be1',
+      },
+    },
+
+    'thm.theorema-egregium': {
+      statement: {
+        en: "The Gaussian curvature $K$ depends only on the first fundamental form $I$. Precisely: if $\\varphi : S_{1}\\to S_{2}$ is a local isometry, then\n\n$$K_{1}(p) = K_{2}(\\varphi(p))\\qquad (p \\in S_{1}).$$\n\nEquivalently, $K$ can be written as a single formula in $g_{ij}$ and its first and second derivatives.\n\nYet the original definition of $K$ as $k_{1}k_{2}$ uses the second fundamental form (an extrinsic quantity) — so this is not a consequence of the definition but a theorem.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7fa1ac96',
+      },
+      notes: {
+        en: "**Why it is called \"remarkable\"**: $K$ is the product of the two principal curvatures, which come from $\\mathrm{d}n$, where $n$ is the unit normal in $\\mathbb{R}^{3}$ — extrinsic data by any account. Yet it can be read off from the metric inside the surface alone. All of intrinsic geometry (Gauss–Bonnet, uniformization, the topological meaning of $K$) grows from this.\n\n**An operational reading**: an inhabitant of the surface who can only measure lengths can still determine $K$. Measure the circumference $\\rho$ of a small geodesic circle of radius $L(\\rho)$; then\n\n$$K(p) = \\frac{3}{\\pi}\\lim_{\\rho\\to0}\\frac{2\\pi\\rho-L(\\rho)}{\\rho^{3}}.$$\n\nThis turns the remarkable theorem into an experiment: curvature is the third-order rate at which the circumference falls short of $2\\pi\\rho$.\n\n**Two checks**: the cylinder ($K = 0$) is locally isometric to the plane, so the curvatures must agree; the sphere ($K = 1/R^{2}$) is not locally isometric to any surface with $K = 0$, so curvature really is an isometry invariant.\n\n⚠️ **What is not intrinsic**: $k_{1}$, $k_{2}$ and $H$ are all extrinsic (the cylinder versus the plane is the counterexample: $k_{1}$ is $1/R$ and $0$ respectively). The remarkable theorem holds for the **product**, not for the factors. This also explains why $K$ appears everywhere in intrinsic geometry while $H$ hardly ever does.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dcdfc6c1',
+      },
+    },
+
+    'lem.adapted-frame': {
+      statement: {
+        en: "Suppose the frame is adapted to the surface: $e_{3} = n$. Then along the surface\n\n$$\\omega^{3} = 0,\\qquad \\omega^{i}_{\\ 3} = \\sum_{j=1}^{2}c_{ij}\\,\\omega^{j}\\quad (i = 1,2),$$\n\nthat is, all extrinsic connection forms lie in the span of $\\{\\omega^{1}, \\omega^{2}\\}$ and are determined by the three functions $c_{11}, c_{12}, c_{22}$ ($c_{12} = c_{21}$; see `lem.second-form-symmetric`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#7e87d2c6',
+      },
+      notes: {
+        en: "**Why $\\omega^{3} = 0$**: $\\omega^{3}(v) = \\langle \\mathrm{d}r(v), e_{3}\\rangle$, and $\\mathrm{d}r(v)$ is a tangent vector of the surface while $e_{3}$ is normal. Equivalently: when $r$ moves along the surface it has no normal component.\n\n⭐ **The system therefore gets shorter**: taking $i=3$ in the first structure equation turns it into the identity $0 = \\omega^{1}\\wedge\\omega^{3}_{\\ 1}+\\omega^{2}\\wedge\\omega^{3}_{\\ 2}$;\n\ntaking $i,j \\in \\{1,2\\}$ in the second structure equation leaves only the $k=3$ term \"left over\" — and that term is the Gauss curvature.\n\n⭐ This is exactly the entry point for \"skipping the complicated computation\": the quantities $r_{uu}, r_{uv}$ that would require computing the partial derivatives $h_{ij}$ in coordinates are here just the coefficients of $\\omega^{i}_{\\ 3}$.\n\n⚠️ $\\omega^{3} = 0$ holds **along the surface**, not for the frame itself: on an open set of $\\mathbb{R}^{3}$, $\\omega^{3}$ is generally nonzero, and that is precisely what corresponds to \"the surface bending out in the normal direction\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#f5211184',
+      },
+    },
+
+    'thm.csz-free': {
+      statement: {
+        en: "In plain terms: something counterintuitive — \"continuous integer-valued functions on $S$\" look like \"infinitely many copies of $\\mathbb{Z}$ glued together\", yet they are **always** free abelian groups (a basis, no relations). This is the nail that holds up the whole theory of solid groups.\n\nFor every profinite set $S$, the group $C(S, \\mathbb{Z})$ of continuous functions (see `def.cond-measure`),\n\n$$C(S, \\mathbb{Z}) = \\{\\, f : S \\to \\mathbb{Z}\\ \\mid f \\text{continuous}\\, \\}$$\n\nis a **free abelian group**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ded322c0',
+      },
+      notes: {
+        en: "⭐ This is a theorem of Specker (1950, for $S$ of type $\\mathbb{Z}_p$) and of Nöbeling (1968, for general profinite sets).\n\nThe counterintuitive point: $C(S,\\mathbb{Z})$ looks like the infinite product \"one integer at each point\", yet it is **always free** — while its dual $M(S,\\mathbb{Z}) = \\prod_I \\mathbb{Z}$ is the large side.\n\n⭐ It is the pivot of the whole solid theory: without it, $Z[S]^{\\blacksquare}$ could not be described as $\\prod_I \\mathbb{Z}$, and the \"compact projective generators\" in `thm.solid-abelian` would have no basis.\n\n⚠ Note that $C(S,\\mathbb{Z})$ behaves completely differently from its **bounded** version and from $C(S,\\mathbb{R})$: the claim here concerns $C(S,\\mathbb{Z})$ as an abstract abelian group; $C(S,\\mathbb{R})$ as an abstract vector space of course has a basis, but the freeness of the former cannot simply be transferred.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3d8f72c6',
+      },
+    },
+
+    'thm.solid-abelian': {
+      statement: {
+        en: "In plain terms: **the solid subcategory $\\mathbf{Solid}$ is a place \"as convenient as a category of modules\"** — it has enough compact projective objects ($\\prod_I \\mathbb{Z}$), so one can form tensor products, Ext and derived categories without pathologies. This is the engine of the whole theory.\n\nLet $\\mathbf{Solid} \\subset \\operatorname{Cond}(\\mathbf{Ab})$ be the full subcategory of solid abelian groups. Then:\n\n**(i)** $\\mathbf{Solid}$ is an abelian subcategory, stable under all limits, colimits and extensions; the objects $\\prod_I \\mathbb{Z}$ ($I$ arbitrary) form a family of **compact projective generators**; the inclusion has a left adjoint\n\n$$M \\longmapsto M^{\\blacksquare} : \\operatorname{Cond}(\\mathbf{Ab}) \\longrightarrow \\mathbf{Solid},$$\n\nwhich is the unique colimit-preserving extension of $\\mathbb{Z}[S] \\mapsto Z[S]^{\\blacksquare}$ (**solidification**).",
+        status: 'draft',
+        basedOn: 'v0.9.3#ab823cbb',
+      },
+      notes: {
+        en: "⭐ This is the engine of the whole theory: condensed abelian groups are **not** localizing, but the solid subcategory is, and it has enough compact projective objects — hence one can do homological algebra exactly as in a category of modules.\n\n⭐ Proof route: for $\\mathcal{A} = \\operatorname{Cond}(\\mathbf{Ab})$ and $\\mathcal{A}_0 = \\{\\mathbb{Z}[S] : S\\ \\text{extremally disconnected}\\}$, verify the hypotheses of `lem.solid-completion-criterion`.\n\nThe key computation is: for the complex $C$ built from direct sums of $\\prod_I \\mathbb{Z}$,\n\n$$\\operatorname{RHom}(Z[S]^{\\blacksquare}, C) \\cong R\\Gamma(S, C).$$\n\nThis is the main computation of Lecture VI (replace $C$ by $C \\to C_{\\mathbb{R}} \\to C_{\\mathbb{R}/\\mathbb{Z}}$, then use the two-step resolution of compact abelian groups and the contractibility of $\\mathbb{R}$-modules).\n\n⭐ **The proof** is on the edge `imp.solid-abelian`: reduce to complexes of $\\prod_I\\mathbb{Z}$-type $\\to$ the core assertion (6.1) $\\to$ push the assertion back to $Z[S]^{\\blacksquare}$ $\\to$ apply the completion criterion.",
+        status: 'draft',
+        basedOn: 'v0.9.3#daf625fe',
+      },
+    },
+
+    'def.curvature-tensor': {
+      statement: {
+        en: "In plain terms: **the curvature tensor measures \"how much the result changes when one transports around in two directions and swaps their order\"**. On a flat plane swapping makes no difference, and the difference is zero; on a sphere swapping the order leaves a small discrepancy, and that discrepancy is curvature. It is intrinsic: the formula contains only $g$ and its derivatives — no normal, no second fundamental form.\n\nThe Levi-Civita connection on a surface defines the **curvature operator**\n\n$$R(X,Y)Z = \\nabla_{X}\\nabla_{Y}Z-\\nabla_{Y}\\nabla_{X}Z-\\nabla_{[X,Y]}Z,$$\n\nin coordinates, $R(\\partial_{i},\\partial_{j})\\partial_{k} = R^{\\ell}_{ijk}\\partial_{\\ell}$, where\n\n$$R^{\\ell}_{ijk} = \\partial_{i}\\Gamma^{\\ell}_{jk}-\\partial_{j}\\Gamma^{\\ell}_{ik}+\\Gamma^{\\ell}_{ip}\\Gamma^{p}_{jk}-\\Gamma^{\\ell}_{jp}\\Gamma^{p}_{ik},$$\n\nand indices are lowered by $R_{ijk\\ell} = g_{\\ell p}R^{p}_{ijk}$. It satisfies\n\n$$R_{ijk\\ell} = -R_{jik\\ell} = -R_{ij\\ell k} = R_{k\\ell ij},\\qquad R_{ijk\\ell}+R_{jki\\ell}+R_{kij\\ell} = 0$$\n\n(the latter is the **first Bianchi identity**). **Flatness criterion**: $R\\equiv0$ if and only if near every point there are coordinates with $g_{ij} = \\delta_{ij}$, i.e. the surface is locally isometric to the plane.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5c50e87f',
+      },
+      notes: {
+        en: "**It comes from integrability conditions.**\n\nFinding coordinates that flatten $g_{ij}$ to $\\delta_{ij}$ is equivalent to solving $g_{ij} = \\delta_{\\alpha\\beta}\\frac{\\partial y^{\\alpha}}{\\partial x^{i}}\\frac{\\partial y^{\\beta}}{\\partial x^{j}}$;\n\nand the compatibility requirement $\\partial_{i}\\partial_{j} = \\partial_{j}\\partial_{i}$ is exactly $R^{\\ell}_{ijk} = 0$.\n\nSo from the very beginning $R$ is the obstruction to flattening the metric.\n\n**Ricci identity**: $[\\nabla_{\\partial_{i}},\\nabla_{\\partial_{j}}]\\partial_{k} = R^{\\ell}_{ijk}\\partial_{\\ell}$. Hence $R$ measures by how much covariant derivatives fail to commute — this is its most common definition, and the reason this map chose it.\n\n**Why it is intrinsic**: the formula for $R$ contains only $\\Gamma$ and $\\partial\\Gamma$, and $\\Gamma$ contains only $g$ and $\\partial g$. **The second fundamental form does not appear.**\n\n⚠ In dimension two there is only one independent component ($R_{1212}$, the rest being determined by symmetry), so \"curvature\" on a surface is one number rather than a pile of numbers; only in dimension three and higher does $R$ acquire genuine tensor structure (and then $K$ gives only part of its trace).\n\n⚠ Sign convention: this pack takes the formula displayed above. The other convention (moving the two $\\Gamma$-product terms to the other side) flips every component, and hence every **definition** of curvature, while the geometry is unchanged. Testing on the unit sphere is the fastest way to tell the conventions apart.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a70e2e23',
+      },
+    },
+
+    'prop.rhom-zs-sections': {
+      statement: {
+        en: "Let $S$ be a **Stonean** space and $N$ a condensed abelian group. Then\n\n$$\\operatorname{RHom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ N\\bigr) \\;\\cong\\; N(S)$$\n\n(the right-hand side is understood as the complex concentrated in degree $0$, i.e. all higher Ext vanish).",
+        status: 'draft',
+        basedOn: 'v0.9.3#52fc91fa',
+      },
+      notes: {
+        en: "**Proof.** When $S$ is Stonean, $\\mathbb{Z}[S]$ is a **projective** object: extremal disconnectedness gives \"section-type\" projectivity on clopen sets, and $\\mathbb{Z}[S]$ is the colimit of the $\\mathbb{Z}[C]$ over clopen $C$, with projectivity preserved under colimits ✓. Hence\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ -\\bigr) = \\Gamma(S, -) = \\bigl(N \\mapsto N(S)\\bigr)$$\n\nis an **exact** functor, its right derived functors are concentrated in degree $0$, and $R^{0} = \\Gamma(S,-)$ ✓. Therefore $\\operatorname{RHom}(\\mathbb{Z}[S], N)$ equals $\\operatorname{Hom}(\\mathbb{Z}[S], N) = N(S)$ (a complex concentrated in degree $0$) ✓. ∎\n\n⭐ This is the same statement as \"condensed abelian groups on a Stonean space are acyclic\", in two equivalent forms: **coefficient acyclicity $\\iff$ the test object $\\mathbb{Z}[S]$ is projective**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ea64a200',
+      },
+    },
+
+    'def.weingarten-map': {
+      statement: {
+        en: "Suppose $e_{3} = n$. The **Weingarten map** is defined as the negative of the differential of the Gauss map:\n\n$$W(v) := -\\mathrm{d}n(v) = -\\mathrm{d}e_{3}(v),\\qquad W\\colon T_{p}S \\to T_{p}S .$$\n\nIt indeed lands in the tangent plane (because $\\langle \\mathrm{d}n(v), n\\rangle = 0$). Relative to the frame $e_{1}, e_{2}$:\n\n$$W(e_{j}) = \\sum_{i=1}^{2}h_{ij}\\,e_{i},\\qquad h_{ij} := -c_{ij} = -\\omega^{i}_{\\ 3}(e_{j}),$$\n\nand $W$ is self-adjoint: $\\langle W(v), w\\rangle = \\langle v, W(w)\\rangle$, i.e. $(h_{ij})$ is symmetric.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8375dcd7',
+      },
+      notes: {
+        en: "**Intuition**: $W$ measures how fast the normal turns, i.e. how strongly the surface bends. The bending in a unit direction $V$ is $\\langle W(V), V\\rangle$; see `def.normal-curvature`.\n\n**Where self-adjointness comes from**: the coordinate route uses $r_{uv} = r_{vu}$ (equality of mixed partial derivatives); the frame route uses $\\mathrm{d}\\omega^{3} = 0$ (`lem.second-form-symmetric` and the incoming edge). The latter is cheaper and does not depend on a special choice of parameter net.\n\n⚠ **Sign**: taking $W := -\\mathrm{d}n$ is chosen so that the principal curvatures of the sphere with the $+$ outward normal are negative (consistent with do Carmo).\n\nIf one takes $W := \\mathrm{d}n$, then $II$ must change sign as well, otherwise \"principal curvature $=$ eigenvalue of $W$\" fails.\n\nThe notation $W\\colon r_{i} \\mapsto -n_{i}$ is exactly this convention.\n\n**Third fundamental form**: $III(v,w) := \\langle \\mathrm{d}n(v), \\mathrm{d}n(w)\\rangle = \\langle W(v), W(w)\\rangle$.\n\nThe characteristic equation $W^{2}-2HW+K\\,\\mathrm{id} = 0$ of $W$ translates, as a quadratic-form identity, into $III-2H\\,II+K\\,I = 0$ (Cayley–Hamilton).",
+        status: 'draft',
+        basedOn: 'v0.9.3#80a05905',
+      },
+    },
+
+    'thm.flow-local': {
+      statement: {
+        en: "**In plain terms**: integral curves of a vector field always exist and are unique locally, and the family of solutions depends smoothly on the starting point and on time — that is, a local flow always exists.\n\nLet $X \\in \\mathfrak{X}(M)$ and $p \\in M$. Then there exist an open neighbourhood $U$ of $p$, some $\\varepsilon > 0$, and a smooth map $\\varphi : (-\\varepsilon,\\varepsilon)\\times U \\to M$ such that\n\n1. $\\varphi_{0} = \\operatorname{id}_{U}$;\n2. $\\dfrac{\\partial}{\\partial t}\\varphi_{t}(q) = X\\bigl(\\varphi_{t}(q)\\bigr)$ for all $t \\in (-\\varepsilon,\\varepsilon)$ and $q \\in U$;\n3. **Uniqueness**: two integral curves through the same point agree on their common interval of definition;\n4. **Local one-parameter group**: whenever $|s|, |t|, |s+t| < \\varepsilon$ and all intermediate points lie in $U$, $\\varphi_{s+t} = \\varphi_{s}\\circ\\varphi_{t}$.\n\nMoreover, gluing the local flows of the various points along curves yields a unique **maximal flow** (its domain $\\mathcal{W} \\subseteq \\mathbb{R}\\times M$ is open; see `def.flow`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#46714865',
+      },
+      notes: {
+        en: "**This is a pure ODE theorem**: in a chart $(V,x)$, $X = \\sum_{i}X^{i}\\partial_{i}$, the equation becomes the autonomous system\n\n$$\\dot y^{i}(t) = X^{i}\\bigl(y(t)\\bigr)\\qquad (i = 1,\\ldots,n),$$\n\nwhose right-hand side is smooth ($X^{i}$ is smooth), so Picard–Lindelöf gives local existence and uniqueness, and smooth dependence of solutions on initial data ($C^{\\infty}$) gives the smoothness of $\\varphi$. The manifold enters in exactly one place: **do it in a chart**.\n\n**\"Autonomous\" is the source of the one-parameter group property**: solutions of a non-autonomous equation $\\dot y = f(t,y)$ do not form a group (going first for $s$ and then for $t$ differs from going directly for $s+t$, because the \"environment\" changes). The flow of a vector field is autonomous, hence invariant under time translation — this is $\\varphi_{s}\\circ\\varphi_{t} = \\varphi_{s+t}$.\n\n**Why the maximal flow is unique**: two maximal flows have the same initial-value problem at an intersection point, so by uniqueness they agree locally; gluing all local solutions along curves gives the one with maximal domain. The domain $\\mathcal{W}$ is open: near each point there is a time interval supplied by existence, and this time can be chosen lower semicontinuous in $p$.\n\n**The cost**: this map does not prove Picard–Lindelöf (a theorem from ODE courses); it only performs the reduction \"turn a flow on a manifold into an autonomous system on $\\mathbb{R}^{n}$\". A similar trade-off appears in `prop.geodesic-existence` (existence and uniqueness of geodesics are treated the same way).\n\n⚠ Uniqueness means \"uniqueness as **the same curve**\": reparametrizing gives a reparametrization of the same curve, not a second solution. $\\varphi_{t}(q)$ already fixes the parameter as \"the time of the flow\", so there is no ambiguity here.",
+        status: 'draft',
+        basedOn: 'v0.9.3#568cb553',
+      },
+    },
+
+    'def.moving-frame': {
+      statement: {
+        en: "Let $U_{0} \\subseteq S$ be an open set on the surface. A **moving frame** is a triple of $C^{1}$ vector fields $e_{1}, e_{2}, e_{3}$ such that at every point $(e_{1}, e_{2}, e_{3})$ is an orthonormal basis of $\\mathbb{R}^{3}$ (it moves with the point, hence \"moving\"). The **dual coframe** is\n\n$$\\omega^{i} := \\langle \\mathrm{d}r,\\, e_{i}\\rangle ,\\qquad i = 1,2,3,$$\n\nthese are $1$-forms on the **parameter domain** ($v$ must first be sent by $\\mathrm{d}r$ to an ambient vector, and only then can it be paired with $e_{i}$). ⚠ For a **surface**, $\\mathrm{d}r$ lies in the tangent plane, so $\\omega^{3} \\equiv 0$; and $\\omega^{i}(e_{j}) = \\delta^{i}_{\\ j}$ must be read as \"the $\\omega^{i}$ on the parameter domain paired with the **pullback to the parameter domain** of the tangent vector $e_{j}$\" — $\\omega^{i}$ is defined on the parameter domain $U$ and $e_{j}$ is an ambient vector, so only $j = 1, 2$ (the tangential ones) lie in the pairing domain; $e_{3}$ is normal, and $\\omega^{3}(e_{3})$ is **not defined** here. The differential of the position vector expands in the frame as\n\n$$\\mathrm{d}r = \\omega^{1}e_{1}+\\omega^{2}e_{2}+\\omega^{3}e_{3}.$$\n\nThis is called the **soldering equation**: it translates \"how $r$ moves\" into \"how much it moves in each frame component\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#14dfb8b0',
+      },
+      notes: {
+        en: "**Why change the language at all**: the coordinate route requires computing $r_{uu}, r_{uv}, r_{vv}$ and the partial derivatives of $n$; the frame route expands $\\mathrm{d}r$ and $\\mathrm{d}e_{i}$ **once**, after which everything is algebra between $1$-forms (wedge products, comparing coefficients). This is exactly the point of \"using a moving frame in place of a complicated computation\".\n\n**The standard choice on a surface**: $e_{3} = n$, with $e_{1}, e_{2}$ unit tangent vector fields orthogonal to $n$. Then $\\omega^{3} = \\langle \\mathrm{d}r, n\\rangle = 0$: there is no normal increment on the surface.\n\n⚠ $(e_{1}, e_{2})$ exists only locally and is not unique (one may rotate it). Every quantity to be written down must be expressed in a rotation-invariant form (such as $I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$), otherwise it deforms as soon as the frame is changed.\n\n**Notation**: the superscript on $\\omega^{i}$ is an index, not a power; $(e_{1}, e_{2}, e_{3})$ and $(\\omega^{1}, \\omega^{2}, \\omega^{3})$ are dual pairs, and this is the entire bookkeeping rule of the moving-frame method.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0f7793ce',
+      },
+    },
+
+    'def.singular-homology': {
+      statement: {
+        en: "Let $X$ be an arbitrary topological space. A **singular $p$-simplex** is an arbitrary continuous map\n\n$$\\sigma : \\Delta^{p} \\longrightarrow X,$$\n\nit need **not** be injective, need not be an embedding, may self-intersect, and may collapse all of $\\Delta^{p}$ to a point. The free abelian group on all singular $p$-simplices is denoted $S_{p}(X)$ (the **singular chain group**). The boundary operator is given by the face maps:\n\n$$\\partial_{p}\\sigma := \\sum_{i=0}^{p} (-1)^{i}\\,\\sigma \\circ d_{i},$$\n\nand again satisfies $\\partial^{2} = 0$ (because $d_{j}d_{i} = d_{i}d_{j-1}$ is literally the same identity as in the simplicial case). Hence\n\n$$H_{p}(X) := \\ker\\partial_{p}\\, \\big/\\, \\operatorname{im}\\partial_{p+1}$$\n\nis called the **$p$-th singular homology group** of $X$.\n\n**Functoriality**: a continuous map $f : X \\to Y$ gives a chain map $f_{\\#}(\\sigma) := f \\circ \\sigma$, which satisfies $f_{\\#}\\partial = \\partial f_{\\#}$ and hence induces $f_{*} : H_{p}(X) \\to H_{p}(Y)$; moreover $(1_{X})_{*} = \\operatorname{id}$ and $(g \\circ f)_{*} = g_{*} \\circ f_{*}$.\n\nHomotopic maps induce the same map: $f \\simeq g \\implies f_{*} = g_{*}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3bd2e009',
+      },
+      notes: {
+        en: "**Relation to simplicial homology**: every $p$-simplex $[v_{0}, \\ldots, v_{p}]$ of $K$ can be viewed as a singular $p$-simplex (map the vertices $v_{i}$ of $\\Delta^{p}$ linearly to the $v_{i}$ of $K$), which gives a subcomplex $C_{*}(K) \\subseteq S_{*}(|K|)$. `thm.simplicial-approximation` says that this inclusion induces an **isomorphism** $H_{p}(K) \\cong H_{p}(|K|)$.\n\nIn other words: singular homology is \"homology without choosing a triangulation\", and the two agree on triangulable spaces.\n\n⭐ **Why allow such a flood of singular simplices**: this way **every continuous map** can act, so no triangulation and no niceness hypothesis is needed, and the theory is defined for **every** topological space (indeed every pair of spaces).\n\nThe cost is that $S_{p}(X)$ is usually enormous (countability requires extra hypotheses), so direct computation is almost impossible — practical computations rely on long exact sequences (`thm.long-exact-pair`), Mayer–Vietoris (`thm.mv-homology`), and \"singular $=$ simplicial\" (`thm.simplicial-approximation`).\n\n⚠ **This is not the same as `def.singular-chain` (cubical chains on a manifold)**: there the basis consists of maps $c : [0, 1]^{k} \\to M$ (cubes), here of maps $\\sigma : \\Delta^{p} \\to X$ (simplices). The two models give isomorphic homology groups, but the **boundary formulas differ**, and the two $\\partial$'s must not be mixed.\n\n💡 Intuition: a singular $p$-simplex is \"a (possibly collapsed) $p$-dimensional triangle drawn on $X$\"; a singular chain is \"a signed stack of such triangles\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#c5b7a91d',
+      },
+    },
+
+    'lem.second-form-symmetric': {
+      statement: {
+        en: "Under the frame $e_{3} = n$, write $\\omega^{i}_{\\ 3} = \\sum_{j}c_{ij}\\omega^{j}$ ($i, j = 1,2$). Then\n\n$$c_{12} = c_{21}.$$\n\nSetting $h_{ij} := -c_{ij}$, the matrix $(h_{ij})$ is also symmetric, hence\n\n$$II = \\sum_{i,j=1}^{2}h_{ij}\\,\\omega^{i}\\omega^{j} = h_{11}(\\omega^{1})^{2}+2h_{12}\\omega^{1}\\omega^{2}+h_{22}(\\omega^{2})^{2}$$\n\nis a symmetric bilinear form ($\\omega^{i}\\omega^{j}$ denotes the symmetric product).",
+        status: 'draft',
+        basedOn: 'v0.9.3#d118178a',
+      },
+      notes: {
+        en: "**The proof is one line**: substitute $\\mathrm{d}\\omega^{3} = 0$ into the first structure equation, obtaining $(c_{12}-c_{21})\\,\\omega^{1}\\wedge\\omega^{2} = 0$. See the incoming edge.\n\n**Comparison with the coordinate version**: there symmetry is obtained in $\\{r_{u}, r_{v}\\}$ from \"the matrix $h^{j}_{\\ i}$ of $W$ is self-adjoint because mixed partials are equal\". $\\mathrm{d}^{2}=0$ is the coordinate-free version of the same fact, and it does not require a special parameter net.\n\n⭐ **The payoff of symmetry**: a real symmetric matrix has orthogonal real eigendirections (spectral theorem) — this is the source of principal directions, Euler's formula and Rodrigues' theorem.\n\n⚠ What is symmetric is the matrix $(c_{ij})$ and $(h_{ij})$ **relative to an orthonormal frame**; if one uses a non-orthogonal $\\{r_{u}, r_{v}\\}$, it is $h_{ij}$ that is symmetric, while $(h^{j}_{\\ i}) = g^{jk}h_{ki}$ is generally not. The equation $\\det(h-kg)=0$ uses exactly the $h_{ij}$ branch.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bcd98b89',
+      },
+    },
+
+    'def.riemannian-metric': {
+      statement: {
+        en: "**What this does**: it puts an inner product on each tangent space and requires it to vary smoothly with the point — with this, a manifold acquires lengths, angles and volumes, and hence geodesics and curvature.\n\nLet $M$ be an $n$-dimensional smooth manifold. A **Riemannian metric** $g$ assigns to each $p\\in M$ an inner product\n\n$$g_{p} : T_{p}M\\times T_{p}M\\longrightarrow\\mathbb{R}$$\n\n(bilinear, symmetric, positive definite), and for all smooth vector fields $X,Y$ the function $p\\mapsto g_{p}(X_{p},Y_{p})$ is smooth. $(M,g)$ is called a **Riemannian manifold**. In a chart,\n\n$$g = \\sum_{i,j=1}^{n}g_{ij}\\,\\mathrm{d}x^{i}\\mathrm{d}x^{j},\\qquad g_{ij} = g(\\partial_{i},\\partial_{j}),$$\n\nwhere $(g_{ij})$ is symmetric positive definite. This yields length and volume:\n\n$$L(\\gamma) = \\int_{a}^{b}\\sqrt{g_{\\gamma(t)}\\bigl(\\dot\\gamma(t),\\dot\\gamma(t)\\bigr)}\\,\\mathrm{d}t ,\\qquad \\mathrm{d}V = \\sqrt{\\det(g_{ij})}\\,\\mathrm{d}x^{1}\\cdots\\mathrm{d}x^{n}.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#42a8140f',
+      },
+      notes: {
+        en: "**Existence**: locally a metric always exists (take $\\delta_{ij}$ in coordinates), and then a partition of unity convexly combines the local metrics into a global one — positive definiteness is closed under convex combinations. Hence **every** smooth manifold admits a Riemannian metric (complex and symplectic structures have topological obstructions; metrics do not).\n\n**It is not part of the manifold**: the same smooth manifold carries infinitely many metrics. The choice of metric is **extra structure**; quantities depending only on $g$ are called intrinsic, those depending on an embedding extrinsic.\n\n**The two-dimensional case is the first fundamental form**: restricting the inner product of $\\mathbb{R}^{3}$ to $T_{p}S$ on a surface gives $I$. So Riemannian geometry is the higher-dimensional version of intrinsic surface geometry, and surface theory is its two-dimensional model.\n\n**The metric determines everything else**: $g$ uniquely determines the Levi-Civita connection and the Christoffel symbols (`def.affine-connection`, `def.christoffel-symbol`), hence geodesics, the curvature tensor and Ricci are all tied to $g$ — this is the entire content of \"intrinsic geometry\".\n\n⚠ Not every Riemannian manifold embeds isometrically into a low-dimensional Euclidean space. Nash's theorem says that it always embeds into some sufficiently high-dimensional $\\mathbb{R}^{N}$, but even then the \"intrinsic\" viewpoint is more economical: conclusions should depend only on $g$, not on the embedding.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6833625b',
+      },
+    },
+
+    'def.smooth-manifold': {
+      statement: {
+        en: "**What this does**: it moves calculus from $\\mathbb{R}^{n}$ to spaces that \"look locally like $\\mathbb{R}^{n}$\" — build a stack of coordinate charts, require that changes of chart be smooth, and only then do \"smooth functions\" acquire meaning.\n\nLet $M$ be a Hausdorff, second-countable topological space.\n\nAn **$n$-dimensional chart** on $M$ is $(U,\\varphi)$, where $U\\subseteq M$ is open and $\\varphi : U\\to\\varphi(U)\\subseteq\\mathbb{R}^{n}$ is a homeomorphism.\n\nTwo charts $(U,\\varphi)$, $(V,\\psi)$ are **$C^{\\infty}$-compatible** if the **transition map**\n\n$$\\psi\\circ\\varphi^{-1} : \\varphi(U\\cap V)\\longrightarrow\\psi(U\\cap V)$$\n\nis $C^{\\infty}$ (it is defined on an open subset of $\\mathbb{R}^{n}$, so it is tested by partial derivatives). A family of pairwise compatible charts covering $M$ is an **atlas**; adding to an atlas all charts compatible with it gives a **maximal atlas**, also called a **smooth structure** on $M$. An $n$-dimensional manifold equipped with a smooth structure is an **$n$-dimensional smooth manifold**.\n\n**Smooth functions**: $f : M\\to\\mathbb{R}$ is smooth if for every chart $(U,\\varphi)$, the map $f\\circ\\varphi^{-1}$ is smooth on $\\varphi(U)$.\n\n**Examples**: $\\mathbb{R}^{n}$ (one chart); $S^{n}\\subseteq\\mathbb{R}^{n+1}$ (stereographic projection gives two charts); $\\mathbb{RP}^{n}$ ($n+1$ affine charts); any open subset; products of manifolds.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0c2d1ddd',
+      },
+      notes: {
+        en: "**Why one must pass to the maximal atlas**: if one only says \"there is a family of compatible charts\", \"$f$ is smooth\" depends on the choice of that family; after maximalization, every chart compatible with the atlas is automatically in it, so smoothness becomes a property of the manifold rather than of one chart.\n\n**Division of labour among the three topological conditions**: Hausdorff rules out \"two points glued together and inseparable\" (otherwise limits are not unique); second countability gives Lindelöf and paracompactness, hence **partitions of unity** (the `def.paracompact` line) — only with them can local metrics and local forms be glued into global ones.\n\n⚠ **A smooth structure is not part of the topology**: the same topological space can carry inequivalent smooth structures (Milnor's exotic 7-sphere; $\\mathbb{R}^{4}$ carries uncountably many pairwise inequivalent smooth structures). So a \"smooth manifold\" is a topological space **plus** structure, not a property of the space.\n\n**Interface with existing content**: the implicit function theorem gives that level sets in $\\mathbb{R}^{n}$ are manifolds (`thm.regular-level-set`); conversely, every manifold embeds into some $\\mathbb{R}^{N}$ (Whitney), but $N$ may be much larger than $n$, so the abstract definition is not superfluous.\n\n⚠ The surfaces of this map (`def.regular-surface`) are the concrete two-dimensional model: the overlap of two charts is a change of parameters, and \"$C^{\\infty}$-compatible\" is exactly \"smoothness is unchanged after reparametrization\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#19ec52aa',
+      },
+    },
+
+    'def.vector-field': {
+      statement: {
+        en: "**What it says**: at each point choose a tangent vector, and choose it smoothly as the point varies — that is a vector field. Its real identity is \"the operator that takes directional derivatives of smooth functions\".\n\nLet $M$ be a smooth manifold. A **vector field** on $M$ is a map $X : M \\to TM$ such that $\\pi \\circ X = \\operatorname{id}_{M}$ (each point is assigned a tangent vector at that point). If $X$ is smooth as a map $M \\to TM$, call it a **smooth vector field**; the set of all of them is denoted $\\mathfrak{X}(M)$.\n\nIn each chart $(U,\\varphi)$, write\n\n$$X\\big|_{U} = \\sum_{i=1}^{n} X^{i}\\,\\frac{\\partial}{\\partial x^{i}},\\qquad X^{i} := \\mathrm{d}x^{i}(X) ,$$\n\nthen $X$ is smooth if and only if on every chart of one atlas every $X^{i}$ is smooth (checking a single atlas suffices).\n\n$X$ **acting on functions** gives a new function\n\n$$(Xf)(p) := \\mathrm{d}f_{p}\\bigl(X_{p}\\bigr) = \\sum_{i} X^{i}(p)\\,\\frac{\\partial f}{\\partial x^{i}}(p),$$\n\nWhen $X$ is **smooth**, $X$ is a **derivation** on $C^{\\infty}(M)$: $X(fg) = f\\,Xg + g\\,Xf$; conversely every derivation comes from a unique **smooth** vector field. ⚠ An **arbitrary section** satisfying only $\\pi \\circ X = \\mathrm{id}$ does not work: $X = |x|\\partial_{x}$ is a section, but with $f = x$ one gets $Xf = |x| \\notin C^{\\infty}$.\n\n$X$ **vanishes** at $p$ if $X_{p} = 0_{p}$; the **support** of $X$ is $\\overline{\\{p \\in M : X_{p} \\ne 0\\}}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#79198c6a',
+      },
+      notes: {
+        en: "**\"Smooth\" is the only delicate point**: merely \"choose a tangent vector at each point\" is a set-theoretic choice and can be extremely pathological. Smoothness pins it down to $n$ smooth functions in local coordinates, so all of calculus carries over — this is also the use of the equivalence \"vector field = derivation\".\n\n**$\\mathfrak{X}(M)$ is a $C^{\\infty}(M)$-module**: $X + Y$ and $fX$ (with $f$ smooth) are again vector fields. So vector fields are not objects to be \"added pointwise into numbers\" but elements of a module — on the same level as \"$\\mathrm{d}f$ is a $1$-form\".\n\n**A nowhere-vanishing vector field need not exist**: locally always, globally not. On $S^{2}$ none exists (hairy ball theorem); on $S^{1}$, $S^{3}$ and the torus they do. \"Whether zeros exist\" is the origin of the Poincaré–Hopf theorem and characteristic classes; this map only mentions it.\n\n**Coordinate change**: expanding in two local coordinate systems, the components satisfy $X_{y}^{i} = \\sum_{j}\\frac{\\partial y^{i}}{\\partial x^{j}}X_{x}^{j}$ — the $X^{i}$ on the two sides belong to **different coordinate systems** and must be written separately (for $y = 2x$ and $X = \\partial_{x}$, the $x$ component is $1$ and the $y$ component is $2$, so using one symbol would produce the absurd $1 = 2$). This is the same transformation law as for tangent vectors (contravariant). This is what \"$X$ is a tensor field of type $(1,0)$\" means (`def.tensor-field`).\n\n**On support**: write $\\operatorname{supp} X$ for the closure of \"where $X$ is nonzero\". The partition-of-unity argument needs exactly \"support contained in a chart\", so this is the same notation $\\operatorname{supp}$ as in `def.partition-of-unity` (`thm.smooth-partition-unity`).\n\n**Relation to integral curves**: a vector field gives the first-order ODE $\\dot\\gamma = X(\\gamma)$, whose solutions are integral curves; local solutions always exist, while global ones need not extend. This map only uses local existence; flows and one-parameter groups are not yet in the map.",
+        status: 'draft',
+        basedOn: 'v0.9.3#51d775d3',
+      },
+    },
+
+    'def.tangent-space-manifold': {
+      statement: {
+        en: "**What this does**: it defines \"all directions at a point\" on a manifold. There is no ambient space to use, so directions are captured by \"curves through the point\": two curves point in the same direction if they have the same velocity in some chart.\n\nLet $M$ be an $n$-dimensional smooth manifold and $p\\in M$.\n\nTwo curves $\\gamma_{1},\\gamma_{2} : (-\\varepsilon,\\varepsilon)\\to M$ through $p$ ($\\gamma_{i}(0) = p$) are called **tangent at $p$** if there exists (equivalently: for every) chart $(U,\\varphi)$ containing $p$ with\n\n$$(\\varphi\\circ\\gamma_{1})'(0) = (\\varphi\\circ\\gamma_{2})'(0) .$$\n\n\"Exists one chart\" and \"for every chart\" are equivalent, because changing charts only introduces a chain-rule factor. Such an equivalence class is a **tangent vector** at $p$, and the set of all of them is $T_{p}M$.\n\nIn a chart $(U,\\varphi)$, write $x^{i} := \\varphi^{i}$, $\\partial_{i} := \\partial/\\partial x^{i}$.\n\nTake the class of the curve $t\\mapsto\\varphi^{-1}\\bigl(\\varphi(p)+t\\,e_{i}\\bigr)$, denoted $\\partial_{i}(p)$.\n\nThese $n$ tangent vectors are pairwise distinct and linearly independent, forming a basis of $T_{p}M$, hence $\\dim T_{p}M = n$.\n\n**Derivation characterization** (equivalent definition): $T_{p}M$ is in bijection with the linear functionals $D : C^{\\infty}(M)\\to\\mathbb{R}$ satisfying the Leibniz rule, i.e. $D(fg) = f(p)\\,Dg+g(p)\\,Df$, the correspondence being $v = [\\gamma]\\mapsto\\bigl(f\\mapsto (f\\circ\\gamma)'(0)\\bigr)$.\n\nThe tangent bundle $TM := \\bigsqcup_{p\\in M}T_{p}M$ also carries a smooth manifold structure (dimension $2n$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#45d32444',
+      },
+      notes: {
+        en: "**Why difference quotients do not work**: in $\\mathbb{R}^{n}$, a tangent vector is the limit of $(\\gamma(t)-\\gamma(0))/t$, which needs subtraction; on a manifold there is no subtraction, only \"coordinates + chain rule\", so the definition must be written in the **transformation-compatible** form \"same velocity in some chart\".\n\n**Why the two definitions are equivalent**: curve classes give directional derivatives (Leibniz follows from the product rule); conversely, given a derivation $D$, apply it to an expansion and use Leibniz to kill terms of order at least two, obtaining $D = \\sum_{i}D(x^{i})\\,\\partial_{i}(p)$ — exactly the directional derivative of some curve.\n\n**Coordinate change**: $\\partial/\\partial x^{i} = \\sum_{j}\\frac{\\partial y^{j}}{\\partial x^{i}}\\,\\partial/\\partial y^{j}$, with the Jacobian as coefficients.\n\nSo tangent vectors are **contravariant** (they move opposite to the coordinates), while cotangent vectors such as $\\mathrm{d}f$ are **covariant**.\n\n⚠ **Notation trap**: $\\partial_{i}(p)$ is a **vector**, while $\\mathrm{d}x^{i}(p)$ is its dual **covector** ($\\mathrm{d}x^{i}(\\partial_{j}) = \\delta^{i}_{\\ j}$).\n\nOn a surface these two are the basis of the tangent plane and the dual coframe (`def.moving-frame`).\n\n**Agreement with the tangent plane of a surface**: for $S\\subseteq\\mathbb{R}^{3}$, the space $T_{p}S$ (spanned by $r_{u},r_{v}$) is the same space as the abstract definition — take the chart $\\varphi = r^{-1}$ and compare; the velocity of a curve is exactly the velocity in $\\mathbb{R}^{3}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#63d92051',
+      },
+    },
+
+    'def.connection-form': {
+      statement: {
+        en: "In plain terms: the frame **itself also rotates** — after a small step in some direction, $(e_{1},e_{2},e_{3})$ turns slightly. The **connection form** records this \"rotation\" in nine $1$-forms: feed it a direction and it tells you about which axis the frame turns and how fast. It is the same thing as the Christoffel symbols, only recorded in an orthonormal frame.\n\nExpand $\\mathrm{d}e_{i}$ in the frame, writing the coefficients as $\\omega^{j}_{\\ i}$:\n\n$$\\mathrm{d}e_{i} = \\sum_{j=1}^{3}\\omega^{j}_{\\ i}\\,e_{j},\\qquad \\omega^{j}_{\\ i} = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle .$$\n\nThese nine $1$-forms are called **connection forms** ($\\Gamma$-forms). The matrix $(\\omega^{i}_{\\ j})$ is skew-symmetric (see `prop.connection-antisymmetric`), so only three are independent: $\\omega^{1}_{\\ 2}, \\omega^{1}_{\\ 3}, \\omega^{2}_{\\ 3}$.\n\nAfter taking $e_{3} = n$, they split into two classes:\n\n- $\\omega^{1}_{\\ 2}$: the **intrinsic** part — the Levi-Civita connection of the surface, from which the Gauss curvature is computed;\n- $\\omega^{1}_{\\ 3}, \\omega^{2}_{\\ 3}$: the **extrinsic** part — the second fundamental form is computed from them.",
+        status: 'draft',
+        basedOn: 'v0.9.3#744b45b5',
+      },
+      notes: {
+        en: "**Origin of the name**: $\\omega^{j}_{\\ i}$ describes \"how the frame rotates when one walks in a direction\". It is not an artificially invented exterior form: at each point it is a $3\\times3$ skew-symmetric matrix over $\\mathbb{R}^{3}$ ($3$ degrees of freedom), and evaluating it along directions gives a $1$-form.\n\n⭐ **This split is surface theory**: in $\\mathbb{R}^{3}$ the curvature form vanishes identically; restricted to a surface, the $\\omega^{1}_{\\ 2}$ part is determined by the intrinsic metric (Gauss equation), while the remaining extrinsic part gives $II$ and the Codazzi equations. The whole of surface theory consists in reading the coefficients of these two classes of forms.\n\n⚠ $\\omega^{i}_{\\ j}$ and $\\omega^{j}_{\\ i}$ differ by a sign; this is the easiest place in the whole map to make a copying error. There is only one criterion: differentiate $\\langle e_{i}, e_{j}\\rangle = \\delta_{ij}$ and do not rely on memory.\n\n**Relation to the Christoffel symbols**: expanding it in the **non-orthonormal** frame $\\{r_{u}, r_{v}, n\\}$, the coefficients are a mixture of $\\Gamma^{k}_{\\ ij}$ and $h_{ij}$ (compare `def.second-fundamental-form` and `def.christoffel-symbol`);\n\nonly in an orthonormal frame does it become a clean skew-symmetric matrix.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3f90a2a2',
+      },
+    },
+
+    'prop.christoffel-frame': {
+      statement: {
+        en: "Let $e_{1},e_{2}$ be a local orthonormal frame on a surface, and define the connection forms by $\\nabla_{X}e_{j} = \\omega^{k}_{j}(X)e_{k}$ (so that $\\omega^{k}_{j} = -\\omega^{j}_{k}$). Then\n\n① **The Koszul formula gives all the coefficients**:\n\n$$\\omega^{k}_{j}(e_{i}) = \\frac{1}{2}\\left(\\langle [e_{i},e_{j}],e_{k}\\rangle-\\langle [e_{j},e_{k}],e_{i}\\rangle+\\langle [e_{k},e_{i}],e_{j}\\rangle\\right).$$\n\n② If the frame is the **normalization of orthogonal coordinates**, $e_{1} = \\partial_{u}/\\sqrt{E}$, $e_{2} = \\partial_{v}/\\sqrt{G}$ ($F = 0$), then\n\n$$\\omega^{1}_{2} = \\frac{1}{\\sqrt{EG}}\\left(\\frac{E_{v}}{2}\\,\\mathrm{d}u-\\frac{G_{u}}{2}\\,\\mathrm{d}v\\right) = \\frac{(\\ln E)_{v}}{2\\sqrt{G}}\\,\\omega^{1}-\\frac{(\\ln G)_{u}}{2\\sqrt{E}}\\,\\omega^{2},$$\n\nwhere $\\omega^{1} = \\sqrt{E}\\,\\mathrm{d}u$ and $\\omega^{2} = \\sqrt{G}\\,\\mathrm{d}v$ are the orthonormal coframe.\n\nIn one sentence: $\\Gamma^{k}_{ij}$ and $\\omega^{k}_{j}$ are the same thing (connection coefficients) as seen in two frames.",
+        status: 'draft',
+        basedOn: 'v0.9.3#500b6ffa',
+      },
+      notes: {
+        en: "**The real relation to ① and $\\Gamma$**: the coordinate frame $\\partial_{i}$ is generally neither orthogonal nor normalized; after orthonormalization $e_{i}$ is no longer a coordinate frame ($[e_{1},e_{2}]\\ne 0$), and the extra term $\\langle [e_{i},e_{j}],e_{k}\\rangle$ is precisely the price of this.\n\nSo \"$\\omega^{k}_{j}(e_{i})$ equals some $\\Gamma$\" holds literally only when the metric has already been flattened by the coordinates (flat Cartesian coordinates).\n\n**Two ways of writing along a curve**, the most useful comparison:\n\n- coordinate frame: $\\dot\\gamma = \\dot x^{k}\\partial_{k}$, $\\nabla_{\\dot\\gamma}\\dot\\gamma = \\left(\\ddot x^{k}+\\Gamma^{k}_{ij}\\dot x^{i}\\dot x^{j}\\right)\\partial_{k}$;\n- orthonormal frame: $\\dot\\gamma = y^{j}e_{j}$, $\\nabla_{\\dot\\gamma}\\dot\\gamma = \\left(\\dot y^{k}+\\omega^{k}_{j}(\\dot\\gamma)y^{j}\\right)e_{k}$.\n\nThe second formula has no quadratic term, because the frame itself is rotating: the quadratic term has been absorbed into $\\dot y$ and $\\omega$. **\"Whether the geodesic equation has a quadratic term\" depends on the frame, not on the surface.**\n\n⭐ ② is all the fuel of Liouville's formula: for an orthogonal parameter net, the two coefficient terms of geodesic curvature are exactly the two components of $\\omega^{1}_{2}$.\n\n⚠ Sign: the sign of $\\omega^{1}_{2}$ flips with the orientation and with \"which of $e_{1},e_{2}$ comes first\". This pack uniformly takes $\\omega^{1}_{2} = \\langle \\nabla e_{2},e_{1}\\rangle$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b23e4400',
       },
     },
   },

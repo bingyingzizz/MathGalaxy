@@ -319,7 +319,6 @@ window.MG = window.MG || {};
       id: 'thm.witt-cancellation',
       cluster: 'algebra.multilinear',
       type: 'theorem',
-      status: 'skeleton',
       label: 'Witt 消去定理',
       title: 'Witt 消去：非退化型的分解是唯一的',
       regions: ['algebra'],
@@ -336,16 +335,52 @@ window.MG = window.MG || {};
         '**推论（唯一分解）**：非退化型总能正交分解为若干个双曲平面加一块**非迷向**空间，且双曲平面的个数（Witt 指标）与非迷向部分（的同构类）都由型唯一确定。'
       ].join('\n'),
       notes: [
-        '**为什么需要「非退化」这个前提**：退化情形下消去律会失败（$\\beta = 0$ 时左式恒为 $0$）。这也是为什么整个二次型理论都要先假设非退化 —— 不是技术洁癖，而是消去律的生死线。',
-        '⭐ **它是「分类」的最后一块砖**：惯性定理（实情形，`thm.sylvester-law-inertia`）给的是「对角形的符号个数唯一」；Witt 消去给的是「**任意**域上分解的块数唯一」。前者只在 $\\mathbb{R}$ 上有效，后者在任意域（char $\\ne$ 2）上都成立。',
-        '⚠️ $\\operatorname{char} K \\ne 2$ 不能去：特征 $2$ 时「对称」与「交错」重合、$\\frac{1}{2}$ 不存在，配方法与 Witt 理论都要重写（那是另一门学问）。本图不展开。',
-        '⚠️ 更强的版本叫 **Witt 延拓定理**：非退化子空间之间的等距总能延拓成整个空间的等距。它与消去定理等价，但表述不同 —— 读文献时看到哪个都算。',
-        '**本条的缺口（精确）。** 完整证明的标准路线是：先把等距 $U\\to U\'$ 延拓为 $V$ 的等距（Witt 延拓定理），再在 $U\'$ 的正交补上把 $\\varphi(W)$ 调到 $W$；延拓定理本身（非退化子空间间的等距可延拓）本图没有节点，也不在此处假装证明。故本条保留 `skeleton`，缺口就是延拓定理。'
+        "**为什么需要「非退化」这个前提**：退化情形下消去律会失败（$\\beta = 0$ 时左式恒为 $0$）。这也是为什么整个二次型理论都要先假设非退化 —— 不是技术洁癖，而是消去律的生死线。",
+        "⭐ **它是「分类」的最后一块砖**：惯性定理（实情形，`thm.sylvester-law-inertia`）给的是「对角形的符号个数唯一」；Witt 消去给的是「**任意**域上分解的块数唯一」。前者只在 $\\mathbb{R}$ 上有效，后者在任意域（char $\\ne$ 2）上都成立。",
+        "⚠️ $\\operatorname{char} K \\ne 2$ 不能去：特征 $2$ 时「对称」与「交错」重合、$\\frac{1}{2}$ 不存在，配方法与 Witt 理论都要重写（那是另一门学问）。本图不展开。",
+        "⭐ 更强的版本叫 **Witt 延拓引理**（`lem.witt-extension`）：非退化子空间之间的等距总能延拓成整个空间的等距。消去定理由它直接推出，证明见边 `imp.witt-cancellation`。",
+        "**读法与证明。** $U'\\perp W$ 指等距像空间中的那块正交和（不要求 $U'\\subseteq V$）。完整证明在边 `imp.witt-cancellation` 上：先用 `lem.witt-extension` 把 $f|_W$ 延拓成 $V_2$ 的等距，再用 $F^{-1}\\circ f$ 固定 $W$，最后由 $W^{\\perp}$ 的唯一性得到 $U\\cong U'$。"
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, 「Bilinear Forms」· Witt 定理',
         'Chevalley, The Algebraic Theory of Spinors'
       ]
+    },
+
+    {
+      id: "lem.equal-norm-isometry",
+      cluster: "algebra.multilinear",
+      type: "lemma",
+      label: "等长向量由反射互达",
+      title: "等长向量由反射互达",
+      regions: ["algebra"],
+      tags: ["bilinear-form","quadratic-form","reflection"],
+      statement: [
+        "设 $N$ 是有限维非退化对称双线性空间，$\\operatorname{char}K\\ne2$，$q$ 是其二次型。若 $x,y\\in N$ 满足 $q(x)=q(y)\\ne0$，则存在 $N$ 的等距 $\\rho$ 使 $\\rho(x)=y$。"
+      ].join('\n'),
+      notes: [
+        "反射 $s_v(z)=z-\\frac{2\\beta(z,v)}{q(v)}v$（$q(v)\\ne0$）是等距并把 $v$ 送到 $-v$；本引理说一个反射（必要时再复合中心反转 $z\\mapsto-z$）就能把等长向量互送。这是 Cartan–Dieudonné 分解的最基本一块。",
+        "证明见边 `imp.equal-norm-isometry`。"
+      ].join('\n\n'),
+      refs: ["Hoffman–Kunze, Linear Algebra, Ch. 10","Chevalley, The Algebraic Theory of Spinors, Ch. 1"]
+    },
+
+    {
+      id: "lem.witt-extension",
+      cluster: "algebra.multilinear",
+      type: "lemma",
+      label: "Witt 延拓引理",
+      title: "Witt 延拓引理：非退化子空间上的等距可延拓",
+      regions: ["algebra"],
+      tags: ["bilinear-form","isometry","witt"],
+      statement: [
+        "设 $N$ 是有限维非退化对称双线性空间，$\\operatorname{char}K\\ne2$，$A\\subseteq N$ 是非退化子空间。若 $\\sigma:A\\to N$ 是到 $\\sigma(A)$ 的等距，则 $\\sigma$ 可延拓为 $N$ 的等距。"
+      ].join('\n'),
+      notes: [
+        "证明对 $\\dim A$ 归纳：取非迷向 $a\\in A$，把 $A$ 写成 $A_0\\perp\\operatorname{span}(a)$，归纳延拓 $\\sigma|_{A_0}$，再用一个反射把像点调到 $\\sigma(a)$ 上，最后正交拼接。",
+        "证明见边 `imp.witt-extension`；它是 Witt 消去定理的直接来源。"
+      ].join('\n\n'),
+      refs: ["Hoffman–Kunze, Linear Algebra, Ch. 10","Chevalley, The Algebraic Theory of Spinors, Ch. 1"]
     }
   ],
 
@@ -417,6 +452,37 @@ window.MG = window.MG || {};
       note: '唯一分解里的「块」就是双曲平面。' },
     { id: 'dep.witt-isosub', kind: 'definition',
       definition: 'def.isotropic-subspace', usedBy: 'thm.witt-cancellation',
-      note: 'Witt 指标 = 迷向子空间的最大维数；定理保证它良定义。' }
+      note: 'Witt 指标 = 迷向子空间的最大维数；定理保证它良定义。' },
+    { id: "imp.equal-norm-isometry", kind: 'implication',
+      sources: ["def.bilinear-form","def.quadratic-form","def.isometry"],
+      target: "lem.equal-norm-isometry",
+      title: "反射把等长向量互送",
+      proof: [
+        "若 $x=y$，取恒等。以下设 $x\\ne y$。",
+        "**情形 1：$q(x-y)\\ne0$。** 令 $s(z)=z-\\frac{2\\beta(z,x-y)}{q(x-y)}(x-y)$。直接计算 $q(s(z))=q(z)$、$\\beta(s(z),s(w))=\\beta(z,w)$，故 $s$ 是等距，且 $s(x-y)=-(x-y)$。由极化恒等式 $q(x-y)=2(q(x)-\\beta(x,y))$，得 $s(x)=x-(x-y)=y$。",
+        "**情形 2：$q(x-y)=0$。** 此时 $\\beta(x,y)=q(x)\\ne0$，从而 $q(x+y)=2(q(x)+\\beta(x,y))=4q(x)\\ne0$。对 $v=x+y$ 作反射 $s_v$：$s_v(x)=x-\\frac{2\\beta(x,x+y)}{q(x+y)}(x+y)=x-(x+y)=-y$。再复合中心反转 $\\iota(z)=-z$（它显然保 $\\beta$），得 $\\iota\\circ s_v(x)=y$。",
+        "两种情形都给出 $N$ 的等距把 $x$ 送到 $y$。$\\blacksquare$"
+      ].join('\n\n') },
+    { id: "imp.witt-extension", kind: 'implication',
+      sources: ["def.isometry","def.orthogonal-complement","def.isotropic-vector","lem.equal-norm-isometry"],
+      target: "lem.witt-extension",
+      title: "对子空间维数归纳延拓等距",
+      proof: [
+        "对 $\\dim A$ 归纳。$\\dim A=0$ 时取恒等。设 $\\dim A>0$。",
+        "**取非迷向向量。** 若 $q(a)=0$ 对一切 $a\\in A$ 成立，则极化恒等式给 $2\\beta(x,y)=q(x+y)-q(x)-q(y)=0$，即 $\\beta$ 在 $A$ 上恒为零，与 $A$ 非退化矛盾（$\\operatorname{char}K\\ne2$）。故存在 $a\\in A$ 使 $q(a)\\ne0$。令 $A_0=a^{\\perp}\\cap A$。由 $q(a)\\ne0$ 得 $A=A_0\\perp\\operatorname{span}(a)$。",
+        "**归纳。** $\\sigma_0:=\\sigma|_{A_0}$ 是到 $\\sigma(A_0)$ 的等距，$A_0$ 非退化、维数更小；归纳假设把它延拓为等距 $\\tau:N\\to N$。令 $x=\\tau(a)$、$y=\\sigma(a)$。则 $q(x)=q(a)=q(y)\\ne0$。对 $u\\in A_0$，$\\beta(x-y,\\sigma(u))=\\beta(\\tau(a),\\tau(u))-\\beta(\\sigma(a),\\sigma(u))=\\beta(a,u)-\\beta(a,u)=0$，故 $x-y\\in M:=\\sigma(A_0)^{\\perp}$；又 $x,y\\in M$（$\\tau,\\sigma$ 都是等距）。",
+        "**在正交补里修正。** $\\sigma(A_0)$ 非退化，$N$ 非退化，故 $M$ 非退化。由 `lem.equal-norm-isometry`，存在 $M$ 的等距 $\\rho$ 使 $\\rho(x)=y$。把 $\\rho$ 与 $\\operatorname{id}_{\\sigma(A_0)}$ 在正交分解 $N=\\sigma(A_0)\\perp M$ 下拼成等距 $\\tilde\\rho:N\\to N$。则 $\\tilde\\rho\\circ\\tau$ 是 $N$ 的等距，在 $A_0$ 上与 $\\sigma$ 一致，并把 $a$ 送到 $\\tilde\\rho(x)=y=\\sigma(a)$；所以它是 $\\sigma$ 在 $A$ 上的延拓。归纳完成。$\\blacksquare$"
+      ].join('\n\n') },
+    { id: "imp.witt-cancellation", kind: 'implication',
+      sources: ["def.bilinear-form","def.orthogonal-complement","lem.witt-extension"],
+      target: "thm.witt-cancellation",
+      title: "延拓后固定 $W$，再用正交补的唯一性消去",
+      proof: [
+        "记 $V_1=U\\perp W$、$V_2=U'\\perp W$，$f:V_1\\to V_2$ 是等距。",
+        "**正交补就是另一块。** $W$ 非退化，故 $V_1=W\\perp(W^{\\perp}\\cap V_1)$，且 $\\dim(W^{\\perp}\\cap V_1)=\\dim V_1-\\dim W=\\dim U$；由 $U\\subseteq W^{\\perp}\\cap V_1$ 得 $U=W^{\\perp}\\cap V_1$。同理 $U'=W^{\\perp}\\cap V_2$。因此只需找等距 $g:V_1\\to V_2$ 使 $g(W)=W$。",
+        "**把 $f$ 修正成固定 $W$。** $f(W)$ 非退化。对等距 $f|_W:W\\to f(W)$ 用 `lem.witt-extension`（环境 $V_2$ 非退化、$\\operatorname{char}K\\ne2$）得等距 $F:V_2\\to V_2$，且 $F|_W=f|_W$。令 $g=F^{-1}\\circ f$。$g$ 是等距；对 $w\\in W$，$g(w)=F^{-1}(f(w))=w$，即 $g|_W=\\operatorname{id}_W$，故 $g(W)=W$。",
+                "**收尾。** $g(U)=g(W^{\\perp}\\cap V_1)=g(W)^{\\perp}\\cap g(V_1)=W^{\\perp}\\cap V_2=U'$，所以 $U\\cong U'$。$\\blacksquare$",
+        "**唯一分解的推论。** 存在性对 $\\dim V$ 归纳：若有迷向 $v\\ne0$，因 $\\beta$ 非退化可取 $w$ 使 $\\beta(v,w)=1$，则 $H=\\operatorname{span}(v,w)$ 是非退化双曲平面且 $V=H\\perp H^{\\perp}$，对 $H^{\\perp}$ 归纳；若没有迷向向量，$V$ 自己就是非迷向块。唯一性：设 $V=H_1\\perp\\cdots\\perp H_r\\perp A=H_1'\\perp\\cdots\\perp H_s'\\perp A'$（$H_i,H_j'$ 双曲平面，$A,A'$ 非迷向），对 $r+s$ 归纳，用本定理消去 $H_1$ 与某个双曲块；双曲平面含迷向向量而非迷向块不含，故只能与双曲块同构，最后 $A\\cong A'$。"
+      ].join('\n\n') }
   ]
 });

@@ -64,7 +64,7 @@ window.MG = window.MG || {};
         '$A$ 叫 **$G_\\delta$ 集**，若 $A$ 是可数个开集之交；叫 **$F_\\sigma$ 集**，若 $A$ 是可数个闭集之并。'
       ].join('\n'),
       notes: [
-        '在度量空间里单点闭、开集是可数多个球的并（**需可分**：不可数离散度量空间里，不可数开集不能是可数球的并），所以「闭 $\\subseteq F_\\sigma$」「开 $\\subseteq G_\\delta$」。',
+        '两个方向先分清。**平凡的**：闭集是「一个闭集之并」，故 闭 $\\subseteq F_\\sigma$；开集是「一个开集之交」，故 开 $\\subseteq G_\\delta$。**度量空间里反过来也对**（这才是非平凡的那一半）：开 $\\subseteq F_\\sigma$、闭 $\\subseteq G_\\delta$。证法：$U$ 开时令 $F_n := \\{x : d(x, X\\setminus U) \\ge 1/n\\}$，每个 $F_n$ 闭、且 $U = \\bigcup_n F_n$（$x \\in U$ 取 $n > 1/d(x, X\\setminus U)$），于是 $U$ 是 $F_\\sigma$；对补集取对偶即得「闭 $\\subseteq G_\\delta$」。这一步不需要可分性 ——「开集是可数多个球的并」是另一条（更粗的）写法，那条才需要可分。',
         '⭐ Baire 之后，「稠密 $G_\\delta$」是「几乎全部的点」的标准写法：对**连续函数列的逐点极限** $f$，其连续点集是稠密 $G_\\delta$（无条件成立的只有这条 —— 「可微点集」不行：$f = \\mathbf{1}_{\\mathbb{Q}}$ 的连续点集与可微点集都是空集）；$C[0,1]$ 里无处可微函数的全体也是稠密 $G_\\delta$。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
@@ -144,7 +144,7 @@ window.MG = window.MG || {};
         ,
         '**三条为什么等价、各自用什么**（这一条最容易“看起来显然，其实要用补集与可数性各一次”）：\n' +
         '\n' +
-        '- (1) $\\implies$ (2)：**反证 + 取补**。若某非空开集 $U$ 是第一纲（$U \\subseteq \\bigcup_{n} F_{n}$，$F_{n}$ 无处稠密闭），则 $U^{c} \\cup \\bigcup_{n} F_{n} = X$ —— 于是 $U = \\bigcap_{n}(X \\setminus F_{n})$ 中那族稠密开集的交**不含** $U$ 里任何点，与「交稠密」矛盾。**这一步只用到「稠密开集之交错密」的定义**。\n' +
+        '- (1) $\\implies$ (2)：**反证**。设某非空开集 $U$ 是第一纲：$U \\subseteq \\bigcup_{n} F_{n}$，各 $F_{n}$ 无处稠密（不妨取闭）。令 $G_{n} := X \\setminus F_{n}$，则每个 $G_{n}$ 是稠密开集。由 (1)，$G := \\bigcap_{n} G_{n}$ 稠密，故 $G \\cap U \\ne \\emptyset$；但 $x \\in G \\cap U$ 会给出 $x \\in U$ 且 $x \\notin \\bigcup_n F_n$，与 $U \\subseteq \\bigcup_{n} F_{n}$ 矛盾。**这一步只用到「稠密开集之交错密」**。\n' +
         '- (2) $\\implies$ (3)：**同上反向**，仍只做补集：若可数个无处稠密闭集之并含有非空开集 $U$，则 $U$ 就是第一纲，与 (2) 矛盾。\n' +
         '- (3) $\\implies$ (1)：**这一步要用可数交的构造**。设 $O_{n}$ 稠密开，令 $F_{n} := X \\setminus O_{n}$（无处稠密闭）。要证 $\\bigcap O_{n}$ 稠密，即证它的补 $\\bigcup F_{n}$ 内部为空 —— 那正是 (3)。\n' +
         '- **注意 (1) 里的「可数」不能换成「有限」**：有限个稠密开集之交稠密在**任何**拓扑空间都成立（不用任何假设），所以 Baire 性完全是「可数」带来的。\n' +
@@ -281,9 +281,9 @@ window.MG = window.MG || {};
         '**第一步：$\\overline{u(B_E)}$ 含 $0$ 的邻域。** 因为 $E = \\bigcup_{k \\ge 1} k\\,B_E$，作用 $u$ 得',
         '$$F = u(E) = \\bigcup_{k \\ge 1} u(k B_E) \\subseteq \\bigcup_{k \\ge 1} \\overline{u(k B_E)} .$$',
         '若每个 $\\overline{u(k B_E)}$ 都无处稠密，$F$ 就是可数个无处稠密集之并，与「$F$ 完备 $\\implies$ 第二纲」矛盾。所以某个 $k$ 使 $\\overline{u(k B_E)}$ 含内点：存在 $y_0$ 与 $\\delta > 0$ 使 $B_F(y_0, \\delta) \\subseteq \\overline{u(k B_E)}$。',
-        '把这一点搬回原点。取 $x_0 \\in k B_E$ 使 $\\|y_0 - u(x_0)\\| < \\delta/2$（$y_0$ 在闭包里，故可这样逼近），则对任意 $\\|z\\| < \\delta/2$ 有 $y_0 + z \\in \\overline{u(k B_E)}$，于是 $z = (y_0 + z) - u(x_0) + (u(x_0) - y_0)$ 落在 $\\overline{u(kB_E)} - u(x_0) + B(0,\\delta/2)$ 里；而 $u(kB_E) - u(x_0) = u(kB_E - x_0) \\subseteq u(2k B_E)$（$x_0 \\in kB_E$）。合并得',
+        '把这一点搬回原点，分**平移**与**相减**两小步。取 $x_0 \\in k B_E$ 使 $\\|y_0 - u(x_0)\\| < \\delta/2$（$y_0$ 在闭包里，故可这样逼近）。**平移**：对 $\\|z\\| < \\delta/2$ 有 $\\|z + (u(x_0) - y_0)\\| \\le \\|z\\| + \\|u(x_0) - y_0\\| < \\delta/2 + \\delta/2 = \\delta$，故 $u(x_0) + z = y_0 + \\bigl(z + u(x_0) - y_0\\bigr) \\in B_F(y_0, \\delta) \\subseteq \\overline{u(kB_E)}$，即 $B_F(u(x_0), \\delta/2) \\subseteq \\overline{u(kB_E)}$。**相减**：由 $u(x_0) + z \\in \\overline{u(kB_E)}$ 得 $z = \\bigl(u(x_0)+z\\bigr) - u(x_0) \\in \\overline{u(kB_E)} - u(x_0) \\subseteq \\overline{u(kB_E) - u(x_0)} = \\overline{u(kB_E - x_0)}$，而 $x_0 \\in kB_E$ 给 $kB_E - x_0 \\subseteq 2k\\,B_E$，故 $z \\in \\overline{u(2k\\,B_E)}$。于是',
         '$$\\overline{u(2k\\, B_E)} \\supseteq B_F(0, \\delta/2) ,$$',
-        '再由齐次性（两边同时除以 $2k$）得到：存在 $r = \\delta/(4k) > 0$ 使',
+        '再由齐次性（$u(2k\\,B_E) = 2k\\,u(B_E)$，两头同除以 $2k$）得到：存在 $r = \\delta/(8k) > 0$ 使',
         '$$\\overline{u(B_E)} \\supseteq 2r\\, B_F .$$',
         '**第二步：把闭包去掉。** 要证 $u(B_E) \\supseteq r B_F$。取 $\\|y\\| < r$。由第一步，$\\overline{u(B_E)} \\supseteq 2r B_F$，故 $y \\in \\overline{u(B(0, 1/2))}$：存在 $x_1$，$\\|x_1\\| < 1/2$，使 $\\|y - u(x_1)\\| < r/2$。对 $y - u(x_1)$（范数 $< r/2 < r$）重复同一论证，得 $x_2$，$\\|x_2\\| < 1/4$，使 $\\|y - u(x_1) - u(x_2)\\| < r/4$。如此得到 $(x_n)$，满足',
         '$$\\|x_n\\| < 2^{-n}, \\qquad \\Bigl\\| y - u\\Bigl(\\sum_{j \\le n} x_j\\Bigr) \\Bigr\\| < r\\,2^{-n} .$$',
@@ -499,15 +499,10 @@ window.MG = window.MG || {};
         '证明三步：',
         '① 取闭包：$\\overline A$ 仍含单位、分离点，并由「含单位的闭子代数是格」成为**格**。',
         '② **两点插值**：$x \\ne y$、目标值 $\\alpha, \\beta \\in \\mathbb{R}$。取 $g \\in A$ 使 $g(x) \\ne g(y)$，解二元一次方程组得 $f = a\\cdot 1 + b g \\in A$ 使 $f(x) = \\alpha$、$f(y) = \\beta$。',
-        '③ **上下夹**（两小步，全程都在 $\\overline{A}$ 里做 —— 它已经由①②验过是闭子代数）：\n\n' +
-        '- **逐点从下方压**：固定 $f \\in C(K)$ 与 $\\varepsilon > 0$。\n\n' +
-        '对每个 $x \\in K$，由①（单点上逼近）存在 $h_{x} \\in \\overline{A}$ 使 $h_{x}(x) > f(x) - \\varepsilon$；\n\n' +
-        '由 $h_x - f$ 连续，存在 $x$ 的开邻域 $U_{x}$，在其上 $h_{x} > f - \\varepsilon$。\n\n' +
-        '\n- **紧性取有限并**：$K$ 紧，于是 有限个 $U_{x_{1}}, \\ldots, U_{x_{m}}$ 覆盖 $K$。\n\n' +
-        '由②（$\\overline{A}$ 对 $\\max$ 封闭）得 $h := \\max_{i} h_{x_{i}} \\in \\overline{A}$，且 $h > f - \\varepsilon$ 处处成立。\n\n' +
-        '\n\n' +
-        '- **对称地压上方**：对 $-f$ 重复上面两步（等价地直接用 $\\min$），得 $h\' \\in \\overline{A}$ 使 $h\' < f + \\varepsilon$。\n\n' +
-        '\n- **合起来**：$h\' \\le h$ 在 $\\overline{A}$ 里夹住 $f$，取 $h\'\' := \\max(h\', \\min(h, f))$ 或直接用 $\\|h - f\\| \\le \\varepsilon$，得 $\\|f - h\\| < 2\\varepsilon$。\n\n' +
+        '③ **上下夹**（全程在 $\\overline{A}$ 里做 —— 它已由①②验过是含单位的闭子代数，且对 $\\max,\\min$ 封闭）：\n\n' +
+        '- **两点同时命中**：给定 $x \\ne y$ 与 $\\varepsilon > 0$。由②取 $g_{xy} \\in \\overline{A}$ 使 $g_{xy}(x) = f(x)$、$g_{xy}(y) = f(y)$。\n\n' +
+        '- **固定 $x$、对 $y$ 取有限 $\\max$**：对每个 $y$，由 $g_{xy}(y) = f(y) < f(y) + \\varepsilon$ 与连续性，存在 $y$ 的开邻域 $V_{y}$，在其上 $g_{xy} < f + \\varepsilon$。$K$ 紧，取有限个 $V_{y_1}, \\ldots, V_{y_n}$ 覆盖 $K$，令 $h_{x} := \\max_{j} g_{xy_j} \\in \\overline{A}$。则 $h_{x} < f + \\varepsilon$ 处处成立，且 $h_{x}(x) = f(x) > f(x) - \\varepsilon$。\n\n' +
+        '- **对 $x$ 覆盖并取有限 $\\max$**：令 $U_{x} := \\{t \\in K : h_{x}(t) > f(t) - \\varepsilon\\}$，它含 $x$ 且开。取有限个 $U_{x_1}, \\ldots, U_{x_m}$ 覆盖 $K$，令 $k := \\max_{i} h_{x_i} \\in \\overline{A}$。下界：任一点落在某个 $U_{x_j}$ 里，故 $k \\ge h_{x_j} > f - \\varepsilon$。上界：每个 $h_{x_j}$ 都**处处**满足 $h_{x_j} < f + \\varepsilon$，取有限 $\\max$ 后仍有 $k < f + \\varepsilon$。合起来 $f - \\varepsilon < k < f + \\varepsilon$，即 $\\|k - f\\|_\\infty < \\varepsilon$。\n\n' +
         '$\\varepsilon$ 任意，于是 $f \\in \\overline{A}$，于是 $\\overline{A} = C(K)$。\n\n' +
         '∎',
         '⚠️ 三条假设缺一不可：$A = \\{f : f(0) = 0\\}$ 缺单位；$A = $ 常数函数缺分离点。',
@@ -552,7 +547,7 @@ window.MG = window.MG || {};
         '则 $\\|B_n f - f\\|_\\infty \\to 0$。'
       ].join('\n'),
       notes: [
-        '这是 Weierstrass 逼近定理的**显式**证明：$B_n f(x) = \\mathbb{E}[f(S_n/n)]$（$S_n$ 服从参数 $x$ 的二项分布），用三条恒等式（$\\sum \\binom nk x^k(1-x)^{n-k} = 1$、$\\sum k\\binom nk x^k(1-x)^{n-k} = nx$、方差 $\\le n/4$）加 $f$ 的一致连续性把误差压住。',
+        '证明写在边 `imp.bernstein-approximation` 上：把 $B_nf(x)$ 看成 $f(S_n/n)$ 的期望（$S_n\\sim\\mathrm{Bin}(n,x)$），用二项矩恒等式 $\\mathbb E[S_n/n]=x$、$\\operatorname{Var}(S_n/n)=x(1-x)/n\\le 1/(4n)$ 与 $f$ 的一致连续性把误差拆成两段（偏差 $<\\delta$ 处 $<\\varepsilon$，其余用 Markov 不等式给概率 $\\le 1/(4n\\delta^2)$），取 $n$ 充分大即得一致收敛。',
         '⭐ 与 Stone–Weierstrass 分工：这条给「一个显式算子列」，只对 $[0,1]$、只对实值；S-W 给「只要代数性质就够」，不管构造。两者互相印证，也互相不能替代。'
       ].join('\n\n'),
       refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理', 'Bernstein 1912'],
@@ -599,7 +594,7 @@ window.MG = window.MG || {};
       tags: ['泛函分析', '三大定理', '双线性映射'],
       hypotheses: ['完备'],
       statement: [
-        '设 $E, F, G$ 是赋范空间，$B : E \\times F \\to G$ 双线性（对每个变量分别线性）。若 $E, F$ 都是 Banach 空间，且',
+        '设 $E, F, G$ 是赋范空间，$B : E \\times F \\to G$ 双线性（对每个变量分别线性）。若 $F$ 是 Banach 空间（$E$ 只须赋范），且',
         '',
         '$$\\text{对每个 } x \\in E,\\ B(x, \\cdot) \\text{ 连续}; \\qquad \\text{对每个 } y \\in F,\\ B(\\cdot, y) \\text{ 连续},$$',
         '',
@@ -627,7 +622,7 @@ window.MG = window.MG || {};
         '第一项趋于 $0$（$\\|x_n - x\\| \\to 0$，$(y_n)$ 有界）；第二项趋于 $0$ 由 $B(x, \\cdot)$ 连续。故 $B$ 联合连续。$\\blacksquare$',
         '⭐ 这条是「分别连续 $\\implies$ 联合连续」在双线性情形下的标准答案：**双线性 + 两个 Banach** 就够了。一般拓扑里分别连续远不能推出联合连续。',
         '⚠️ 双线性不能去掉：$f(x, y) = \\dfrac{xy}{x^{2} + y^{2}}$（$f(0,0)=0$）在 $\\mathbb{R}^{2}$ 上分别连续，却在原点不连续。',
-        '⚠️ 两个完备性都用在共鸣定理上（定义域 $F$ 要 Banach）；只假设「赋范」时结论可能失效。乘积空间用 $\\max$ 范数或和范数都行，两者等价。'
+        '⚠️ 只有 **$F$**（算子族的定义域）的完备性用在共鸣定理上；$E$ 只用来给这族算子做参数（$\\{x \\in E : \\|x\\| \\le 1\\}$），本身不必完备，$E$ 不完备时结论照样成立。乘积空间用 $\\max$ 范数或和范数都行，两者等价。'
       ].join('\n\n'),
       refs: ['泛函分析讲义（用户手写笔记，2026-11-09）', 'Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
@@ -1210,6 +1205,17 @@ window.MG = window.MG || {};
       "title": "闭子代数对 $\\min,\\max$ 封闭",
       "proof": "只需证对 $f\\in A$ 有 $|f|\\in A$，因为\n$$\\max(f,g)=\\frac{f+g+|f-g|}{2},\\qquad \\min(f,g)=\\frac{f+g-|f-g|}{2}.$$\n\n设 $\\lVert f\\rVert\\le1$。则 $f^{2}\\in A$、$0\\le f^{2}\\le1$。令 $u=1-f^{2}\\in A$，$0\\le u\\le1$。二项级数\n$$\\sqrt{1-u}=1-\\sum_{k\\ge1}c_k u^{k},\\qquad c_k=\\frac{(2k-3)!!}{2^{k}k!}>0,$$\n且 $\\sum_k c_k=1$（代入 $u=1$）。部分和 $s_n=1-\\sum_{k=1}^{n}c_k u^{k}\\in A$，在 $[0,1]$ 上 $s_n\\rightrightarrows\\sqrt{1-u}$：余项 $\\sum_{k>n}c_k u^{k}\\le\\sum_{k>n}c_k\\to0$ 与 $u$ 无关。\n\n$A$ 对一致收敛封闭（$A$ 闭于 $C(K,\\mathbb R)$），故 $\\sqrt{1-u}=\\sqrt{f^{2}}=|f|\\in A$。一般 $f$ 用 $f/\\max(\\lVert f\\rVert,1)$ 归约，结论相同。∎",
       "note": "完整证明见本条边；节点注只保留动机与缺口。"
+    },
+    {
+      "id": "imp.bernstein-approximation",
+      "kind": "implication",
+      "sources": [
+        "thm.uniform-continuity-compact"
+      ],
+      "target": "thm.bernstein-approximation",
+      "title": "紧区间上一致连续 $\\implies$ Bernstein 多项式一致逼近",
+      "proof": "取 $f\\in C[0,1]$、$\\varepsilon>0$。由 `thm.uniform-continuity-compact`（$[0,1]$ 紧），$f$ 一致连续：存在 $\\delta>0$ 使 $|x-y|<\\delta$ 时 $|f(x)-f(y)|<\\varepsilon$。\n\n固定 $x\\in[0,1]$，令 $S_n\\sim\\mathrm{Bin}(n,x)$，则 $B_nf(x)=\\mathbb E[f(S_n/n)]$。二项矩恒等式（对 $\\sum_k\\binom nk x^k(1-x)^{n-k}=1$ 求导两次即得）给出\n$$\\mathbb E\\Bigl[\\frac{S_n}{n}\\Bigr]=x,\\qquad \\mathbb E\\Bigl[\\Bigl(\\frac{S_n}{n}-x\\Bigr)^{2}\\Bigr]=\\frac{x(1-x)}{n}\\le\\frac{1}{4n}.$$\n\n按 $|S_n/n-x|$ 是否小于 $\\delta$ 分两段：近处 $|f(S_n/n)-f(x)|<\\varepsilon$；远处 $\\le2\\lVert f\\rVert_\\infty$，而这情形的概率由 Markov 不等式\n$$\\mathbb P\\Bigl(\\Bigl|\\frac{S_n}{n}-x\\Bigr|\\ge\\delta\\Bigr)\\le\\frac{1}{4n\\delta^{2}}.$$\n\n合并得 $|B_nf(x)-f(x)|\\le\\varepsilon+\\dfrac{\\lVert f\\rVert_\\infty}{2n\\delta^{2}}$，与 $x$ 无关。取 $n>\\dfrac{\\lVert f\\rVert_\\infty}{2\\varepsilon\\delta^{2}}$ 便有 $\\lVert B_nf-f\\rVert_\\infty\\le2\\varepsilon$。$\\varepsilon$ 任意，故 $B_nf\\rightrightarrows f$。∎",
+      "note": "唯一的外部输入是紧集上连续 $\\implies$ 一致连续；二项矩与 Markov 不等式都在边里现算。"
     },
   ]
 });
