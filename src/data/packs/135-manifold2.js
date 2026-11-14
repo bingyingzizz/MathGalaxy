@@ -1325,7 +1325,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.mf2-bundle-classification',
       kind: 'implication',
-      sources: ['def.vector-bundle', 'def.cech-cohomology', 'prop.bundle-metric'],
+      sources: ['def.vector-bundle', 'def.cech-cohomology'],
       target: 'thm.bundle-classification',
       title: '局部平凡化给出上闭链 $\\implies$ 丛的同构类 $=$ $1$-上闭链模等价',
       proof: [

@@ -853,7 +853,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.gauss-bonnet',
       kind: 'implication',
-      sources: ['thm.liouville-formula', 'def.geodesic-curvature', 'def.gauss-curvature'],
+      sources: ['thm.liouville-formula', 'def.geodesic-curvature', 'def.gauss-curvature', 'thm.stokes'],
       target: 'thm.gauss-bonnet',
       proof: [
         '**第一步（局部版）：简单闭曲线围成的区域。** 设 $D$ 由分段光滑简单闭曲线 $\\partial D$ 围成，取正交单位标架与联络形式 $\\omega^{1}_{2}$。\n\n由刘维尔公式（或等价地 $k_{g} = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\omega^{1}_{2}(\\dot\\gamma)$），',

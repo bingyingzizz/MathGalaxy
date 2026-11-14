@@ -720,7 +720,7 @@ window.MG = window.MG || {};
         '$$R(X,Y)Z = K\\bigl(\\langle Y,Z\\rangle X-\\langle X,Z\\rangle Y\\bigr).$$'
       ].join('\n'),
       notes: [
-        '⚠ **逐点 $\\ne$ 整体**：那条 $R(X,Y)Z = K(\\langle Y,Z\\rangle X - \\langle X,Z\\rangle Y)$ 只在**同一个点** $p$ 上成立。要让 $K$ 成为整块流形的常数还要额外条件：$\\dim M \\ge 3$ 时由 **Schur 引理**自动成立（逐点常曲率 $\\implies$ 整体常曲率）；而 $\\dim M = 2$ 时**不成立** —— 椭球面极点处 $K = 4$、赤道处 $K = 1/4$：二维时逐点只有一个截面，「与 $\\sigma$ 无关」平凡成立，$K$ 却并非常数。',
+        '⚠ **逐点 $\\ne$ 整体**：那条 $R(X,Y)Z = K(\\langle Y,Z\\rangle X - \\langle X,Z\\rangle Y)$ 只在**同一个点** $p$ 上成立。要让 $K$ 成为整块流形的常数还要额外条件：$\\dim M \\ge 3$ 时由 **Schur 引理**自动成立（逐点常曲率 $\\implies$ 整体常曲率）；而 $\\dim M = 2$ 时**不成立** —— 取半轴 $a = b = 1$、$c = 2$ 的椭球面（$x^{2}+y^{2}+z^{2}/4 = 1$）：$c$ 轴端点处 $K = c^{2}/(a^{2}b^{2}) = 4$，$a$ 轴端点处 $K = a^{2}/(b^{2}c^{2}) = 1/4$。二维时逐点只有一个截面，「与 $\\sigma$ 无关」平凡成立，$K$ 却并非常数。',
         '**为什么它能代表曲率**：截面曲率是最便宜的读数（一个数），但它**决定整个** $R$ —— 由双线性型的极化，$\\langle R(X,Y)Z,W\\rangle$ 可以由若干截面曲率组合出来。所以「所有截面曲率」与「曲率张量」是同一份信息。',
         '**符号约定的检验**：单位球面 $S^{n}$ 的截面曲率是 $+1$、半径 $r$ 的球面是 $1/r^{2}$（正曲率意味着测地线相互靠拢）；双曲空间是 $-1$。与 `def.gauss-curvature` 里「单位球面 $K = 1$」一致 —— 这是本图判断符号是否抄错的硬判据。',
         '**二维不必另立概念**：$\\dim M = 2$ 时 $K$ 就是高斯曲率；`def.gauss-curvature` 用 $K = R_{1221}/\\det(g_{ij})$ 定义，在单位正交基下与上式完全相同，一般坐标下只差一个 $\\det g$ 的归一化。',
@@ -827,7 +827,7 @@ window.MG = window.MG || {};
       statement: [
         '**在做什么**：把微积分基本定理升到任意维 —— 边界上的积分等于内部外微分的积分，一个公式吃掉 Green、Gauss–Ostrogradsky 与 Kelvin–Stokes。',
         '',
-        '设 $M$ 是 $n$ 维**紧致、定向、带边**的光滑流形，$\\omega$ 是 $M$ 上的 $(n-1)$-形式（连续到边界即可）。则',
+        '设 $M$ 是 $n$ 维**紧致、定向、带边**的光滑流形，$\\omega$ 是 $M$ 上的 $(n-1)$-形式，要求 $\\omega$ 光滑到以 $\\partial M$ 为界、且 $\\mathrm{d}\\omega$ 在 $M$ 上可积（$\\partial M$ 是零测集，故只需 $\\mathrm{d}\\omega$ 在内部可积）。更一般地，「$\\omega$ 在内部 $C^{1}$、$\\mathrm{d}\\omega$ 可积、且 $\\omega$ 在 $\\partial M$ 上有连续迹」就够。则',
         '',
         '$$\\int_{M}\\mathrm{d}\\omega = \\int_{\\partial M}\\omega ,$$',
         '',
@@ -837,7 +837,9 @@ window.MG = window.MG || {};
         '**证明路线**：用单位分解化到半空间 $\\mathbb{H}^{n} = \\{x^{n}\\le 0\\}$ 里的方块；把 $\\omega$ 写成 $\\sum_{i}(-1)^{i-1}f_{i}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\widehat{\\mathrm{d}x^{i}}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$（带帽表示略去该因子），于是 $\\mathrm{d}\\omega = \\sum_{i}\\partial_{i}f_{i}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$。\n\n' +
         '对 $i<n$ 的分量在对应坐标方向有紧支、积分为零；\n\n' +
         '只剩 $i = n$ 的分量，用一元微积分基本定理积出 $f_{n}(x^{1},\\ldots,x^{n-1},0)$ —— 那正是 $\\omega$ 在边界上的积分。',
-        '**特例清单**：$n = 1$ 是微积分基本定理；$n = 2$ 是 Green 公式；$n = 3$ 的两种样子分别是 Gauss–Ostrogradsky（通量）与 Kelvin–Stokes（环量）。它们不是四条定理，是同一条。',
+        '⚠️ **「连续到边界」不够，必须写清可微性与可积性**：$n = 1$、$M = [0,1]$ 时定理要求 $\\omega = f\\,\\mathrm{d}x$ 满足微积分基本定理 $f(1)-f(0) = \\int_{0}^{1}f\\,\\mathrm{d}x$。而 Cantor 函数 $f$ 连续、$f(0)=0$、$f(1)=1$，却在 $[0,1]$ 上几乎处处可导且导数几乎处处为 $0$（它甚至不是绝对连续的）—— 右端积分为 $0$，左端却是 $1$。所以「$f$ 连续」不足以保证公式成立；本条的假设（$C^{1}$ 到边界 + $\\mathrm{d}\\omega$ 可积）在 $n=1$ 时退化为「$f$ 绝对连续」，正好是微积分基本定理的正确条件。',
+
+'**特例清单**：$n = 1$ 是微积分基本定理；$n = 2$ 是 Green 公式；$n = 3$ 的两种样子分别是 Gauss–Ostrogradsky（通量）与 Kelvin–Stokes（环量）。它们不是四条定理，是同一条。',
         '**与 Gauss–Bonnet 的关系**：曲面上 $K\\,\\mathrm{d}A = \\mathrm{d}\\omega^{1}_{\\ 2}$（Gauss 方程，`thm.gauss-equation`），于是 Gauss–Bonnet 的整体形式可以看成 Stokes 加上边界项 $\\int k_{g}\\,\\mathrm{d}s$ —— 两条定理在这一层同源。',
         '⚠️ **边界定向最容易错**：约定是「外法向在前」，即 $\\partial M$ 的定向由「外法向 $\\wedge$ $M$ 的定向」给出。符号错了整条公式就差一个负号，而所有特例都会「看起来对」。',
         '**为什么需要定向**：两边都依赖定向，且同时变号，所以等式与定向的选取无关；但没有定向就写不出「积分」这件事（`def.integral-form`）。'
