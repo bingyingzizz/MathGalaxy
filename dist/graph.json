@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-14T07:43:17.673Z",
+  "generated": "2026-11-14T07:51:02.989Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
@@ -90786,7 +90786,7 @@
    ],
    "target": "lem.p-group-subgroups",
    "title": "",
-   "proof": "对 $|G|=p^{n}$ 归纳。$n=1$ 时 $G$ 没有真子群，结论真空成立。\n\n设 $n>1$，由类方程 $Z(G)\\ne\\{e\\}$；记 $Z=Z(G)$。\n\n**情形 1：$HZ<G$。** 因为 $Z$ 中心，$HZ=ZH$ 是子群，且 $H\\le HZ$。分两种子情形。**1a：$HZ>H$。** 由 $Z\\ne\\{e}$ 且 $HZ>H$ 知 $HZ$ 是比 $G$ 小的 $p$-群；对 $(HZ,H)$ 用归纳假设，得 $H<N_{HZ}(H)\\le N_G(H)$。**1b：$HZ=H$**（即 $Z\\subseteq H$）。此时 $H/Z$ 是 $G/Z$ 的真子群，而 $|G/Z|=p^{n-1}<p^{n}=|G|$；对 $(G/Z,H/Z)$ 用归纳假设，得 $H/Z<N_{G/Z}(H/Z)$。又 $N_{G/Z}(H/Z)=N_G(H)/Z$（$Z$ 中心且 $Z\\subseteq H$），故 $H<N_G(H)$。\n\n**情形 2：$HZ=G$。** 任取 $g\\in G$，写 $g=hz$（$h\\in H,z\\in Z$）。则 $gHg^{-1}=hzHz^{-1}h^{-1}=hHh^{-1}=H$，故 $H\\trianglelefteq G$，即 $N_G(H)=G>H$。\n\n两种情形都给出 $H<N_G(H)$。指数 $p$ 的子群自动正规：这时 $[G:N_G(H)]$ 整除 $p$ 且 $N_G(H)>H$，故 $N_G(H)=G$。$\\blacksquare$",
+   "proof": "对 $|G|=p^{n}$ 归纳。$n=1$ 时 $G$ 没有真子群，结论真空成立。\n\n设 $n>1$，由类方程 $Z(G)\\ne\\{e\\}$；记 $Z=Z(G)$。\n\n**情形 1：$HZ<G$。** 因为 $Z$ 中心，$HZ=ZH$ 是子群，且 $H\\le HZ$。分两种子情形。**1a：$HZ>H$。** 由 $Z\\ne\\{e\\}$ 且 $HZ>H$ 知 $HZ$ 是比 $G$ 小的 $p$-群；对 $(HZ,H)$ 用归纳假设，得 $H<N_{HZ}(H)\\le N_G(H)$。**1b：$HZ=H$**（即 $Z\\subseteq H$）。此时 $H/Z$ 是 $G/Z$ 的真子群，而 $|G/Z|=p^{n-1}<p^{n}=|G|$；对 $(G/Z,H/Z)$ 用归纳假设，得 $H/Z<N_{G/Z}(H/Z)$。又 $N_{G/Z}(H/Z)=N_G(H)/Z$（$Z$ 中心且 $Z\\subseteq H$），故 $H<N_G(H)$。\n\n**情形 2：$HZ=G$。** 任取 $g\\in G$，写 $g=hz$（$h\\in H,z\\in Z$）。则 $gHg^{-1}=hzHz^{-1}h^{-1}=hHh^{-1}=H$，故 $H\\trianglelefteq G$，即 $N_G(H)=G>H$。\n\n两种情形都给出 $H<N_G(H)$。指数 $p$ 的子群自动正规：这时 $[G:N_G(H)]$ 整除 $p$ 且 $N_G(H)>H$，故 $N_G(H)=G$。$\\blacksquare$",
    "note": "多源：$p$-群的定义与类方程（中心非平凡）共同支撑；证明按 $HZ$ 是否等于 $G$ 分情形。"
   },
   {
