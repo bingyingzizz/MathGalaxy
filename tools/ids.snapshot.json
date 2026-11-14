@@ -2,7 +2,7 @@
  "version": "v0.9.3",
  "generated": "2026-11-13",
  "note": "节点 id 是对外契约：消失的 id 必须先在 tools/ids.retired.json 登记。",
- "count": 1636,
+ "count": 1637,
  "ids": [
   "ax.choice",
   "ax.ext",
@@ -230,6 +230,7 @@
   "def.equalizer",
   "def.equicontinuous",
   "def.equinumerous",
+  "def.equivalent-matrices",
   "def.essential-sup",
   "def.essentially-surjective",
   "def.etale-sheaf",

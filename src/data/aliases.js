@@ -1192,6 +1192,7 @@ MG.aliases = {
     { id: 'def.matrix', en: 'matrix', aka: ['矩阵'] },
     { id: 'def.matrix-operations', en: 'addition and multiplication of matrices', aka: ['矩阵的加法与乘法'] },
     { id: 'def.elementary-matrix', en: 'elementary operations and elementary matrices', aka: ['初等变换与初等矩阵'] },
+    { id: 'def.equivalent-matrices', en: 'Equivalent matrices', aka: ['相抵矩阵', '等价矩阵', '相抵', '矩阵相抵', 'equivalence of matrices'] },
     { id: 'def.invertible-matrix', en: 'invertible matrix', aka: ['可逆矩阵'] },
     { id: 'def.alternating-form', en: 'alternating form', aka: ['交错型'] },
     { id: 'def.polynomial', en: 'polynomials in one variable', aka: ['一元多项式'] },

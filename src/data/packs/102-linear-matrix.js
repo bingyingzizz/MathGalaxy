@@ -151,6 +151,35 @@ window.MG = window.MG || {};
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1']
     },
     {
+      id: 'def.equivalent-matrices',
+      cluster: 'algebra.matrix',
+      type: 'definition',
+      label: '相抵矩阵（等价矩阵）',
+      title: '相抵：$B = PAQ$',
+      regions: ['algebra'],
+      tags: ['定义', '线性代数'],
+      statement: [
+        '设 $A, B \\in M_{m \\times n}(K)$。若存在可逆矩阵 $P \\in GL_m(K)$ 与 $Q \\in GL_n(K)$ 使',
+        '',
+        '$$B = P A Q,$$',
+        '',
+        '则称 $A$ 与 $B$ **相抵**（也叫**等价**）。这等价于：$A$ 能经过有限次初等行变换与初等列变换化成 $B$。',
+        '',
+        '相抵是 $M_{m \\times n}(K)$ 上的**等价关系**，而且允许 $m \\ne n$。在域 $K$ 上，相抵类由秩完全分类：每个 $A$ 都相抵于唯一的标准形',
+        '',
+        '$$\\operatorname{diag}(I_r, 0), \\qquad r = \\operatorname{rank} A.$$',
+        '',
+        '相抵比**相似**（$B = P^{-1} A P$）与**合同**（$B = P^{T} A P$）都弱：后两者只对同阶方阵陈述，且各自保留更多不变量。'
+      ].join('\n'),
+      notes: [
+        '⭐ **相抵只记得秩**：左乘换行空间的基、右乘换列空间的基，行与列可各自消元。',
+        '⭐ 标准形：初等行变换化行简化阶梯形，再用初等列变换把主元列化为单位向量、其余列消零，得 $\\operatorname{diag}(I_r,0)$。每一步都是左乘或右乘初等矩阵；把这些初等矩阵乘起来就得到 $P,Q$。',
+        '⚠ 相似、合同都是相抵的特例（同阶方阵；取 $Q=P^{-1}$ 或 $Q=P^{T}$），但互不包含。',
+        '⚠ 在 $\\mathbb{Z}$ 上改由 Smith 标准形分类。'
+      ].join('\n\n'),
+      refs: ['Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 0', 'Hoffman–Kunze, Linear Algebra, Ch. 4']
+    },
+    {
       id: 'thm.rank-row-col',
       cluster: 'algebra.matrix',
       type: 'theorem',
@@ -418,6 +447,41 @@ window.MG = window.MG || {};
       definition: 'def.matrix-operations',
       usedBy: 'def.invertible-matrix',
       note: '「可逆」这个词要用乘法来陈述（$AB = BA = I_n$），所以先要有乘法。'
+    },
+    {
+      id: 'dep.equivmat-elementary',
+      kind: 'definition',
+      definition: 'def.elementary-matrix',
+      usedBy: 'def.equivalent-matrices',
+      note: '相抵的第二种说法「有限次初等行/列变换」用的就是初等矩阵：左乘管行、右乘管列。'
+    },
+    {
+      id: 'dep.equivmat-invertible',
+      kind: 'definition',
+      definition: 'def.invertible-matrix',
+      usedBy: 'def.equivalent-matrices',
+      note: '$P,Q$ 必须是可逆矩阵（$P \\in GL_m(K)$、$Q \\in GL_n(K)$），所以定义直接用到可逆矩阵与一般线性群。'
+    },
+    {
+      id: 'dep.equivmat-rank',
+      kind: 'definition',
+      definition: 'def.rank',
+      usedBy: 'def.equivalent-matrices',
+      note: '域上相抵类的完全不变量是秩；标准形写成 $\\operatorname{diag}(I_r,0)$，其中 $r=\\operatorname{rank}A$。'
+    },
+    {
+      id: 'ana.equivmat-similarity',
+      kind: 'analogy',
+      a: 'def.equivalent-matrices',
+      b: 'def.similarity',
+      note: '比较：相似 $B=P^{-1}AP$ 是相抵 $B=PAQ$ 取 $Q=P^{-1}$ 的特例，只对同阶方阵；相似保特征值，相抵只保秩。'
+    },
+    {
+      id: 'ana.equivmat-congruent',
+      kind: 'analogy',
+      a: 'def.equivalent-matrices',
+      b: 'def.congruent-matrices',
+      note: '比较：合同 $B=P^{T}AP$ 是相抵取 $Q=P^{T}$ 的特例，也只对同阶方阵；合同保对称型的惯性指数，相抵只保秩。'
     },
     {
       id: 'dep.multilinear-alternating',

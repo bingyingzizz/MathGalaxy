@@ -243,6 +243,7 @@ MG.i18n = {
     'def.eigenvalue': { title_en: 'eigenvalue and eigenvector', label_en: 'eigenvalue and eigenvector', from: 'explicit' },
     'def.elementary-factor': { title_en: 'Weierstrass elementary factors', label_en: 'Weierstrass elementary factors', from: 'explicit' },
     'def.elementary-matrix': { title_en: 'elementary operations and elementary matrices', label_en: null, from: 'explicit' },
+    'def.equivalent-matrices': { title_en: 'Equivalent matrices', label_en: 'Equivalent matrices', from: 'manual' },
     'def.elements-category': { title_en: 'category of elements', label_en: 'category of elements', from: 'explicit' },
     'def.ell2-space': { title_en: 'the space l2 of index set I', label_en: 'the space l2 of index set I', from: 'explicit' },
     'def.empty': { title_en: 'empty set', label_en: 'empty set', from: 'aka' },
