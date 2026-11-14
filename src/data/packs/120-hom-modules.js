@@ -1191,6 +1191,20 @@ window.MG = window.MG || {};
     {"id":"dep.n12-tensormod-scalarext","kind":"definition","definition":"def.tensor-module","usedBy":"prop.scalar-extension-adjunction","note":"张量积的万有性质给出 $S\\otimes_R M \\to P$ 的唯一 $S$-线性映射。"},
     { id: 'dep.n11-flatnp-flat', kind: 'definition', definition: 'def.flat-module', usedBy: 'ex.flat-not-projective', note: '平坦模的定义' },
     { id: 'dep.n11-flatnp-proj', kind: 'definition', definition: 'def.projective-object', usedBy: 'ex.flat-not-projective', note: '投射对象的定义（与平坦对比例子）' }
-
+,
+    {
+      id: "dep.flat-equiv-flatmodule",
+      kind: 'definition',
+      definition: "def.flat-module",
+      usedBy: "prop.flat-equivalences",
+      note: "平坦等价条件以平坦模的定义为出发点。"
+    },
+    {
+      id: "dep.free-flat-flatmodule",
+      kind: 'definition',
+      definition: "def.flat-module",
+      usedBy: "prop.free-flat",
+      note: "自由模平坦的论证用到平坦模的泛性质刻画。"
+    }
   ]
 });

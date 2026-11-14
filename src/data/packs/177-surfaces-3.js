@@ -342,5 +342,19 @@
       ].join('\n'),
       note: '⚠ 这是依赖登记边，不是逻辑蕴含：把证明用到的三个外部输入登记在图上，读图时能看到本命题缺哪一块就不成立。',
     },
+    {
+      id: "dep.eulernonorient-genus",
+      kind: 'definition',
+      definition: "def.nonorientable-genus",
+      usedBy: "prop.eulerchar-nonorientable",
+      note: "不可定向曲面的 Euler 示性数用亏格表达。"
+    },
+    {
+      id: "dep.klein-genus",
+      kind: 'definition',
+      definition: "def.nonorientable-genus",
+      usedBy: "ex.klein-bottle",
+      note: "Klein 瓶的不可定向亏格为 2。"
+    }
   ],
 });

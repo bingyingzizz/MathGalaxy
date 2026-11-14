@@ -421,6 +421,27 @@ window.MG = window.MG || {};
       definition: 'def.solid-group',
       usedBy: 'prop.analytic-examples',
       note: '$\\mathbb{Z}_{p,\\blacksquare}$ 与 $(A,\\mathbb{Z})_\\blacksquare$ 的解析性直接归约到 $\\mathbb{Z}_\\blacksquare$ 的固态性。'
+    },
+    {
+      id: "dep.za-analytic-ring",
+      kind: 'definition',
+      definition: "def.analytic-ring",
+      usedBy: "thm.za-analytic",
+      note: "Zariski 主定理的陈述以解析环（Noetherian 完备环）为对象。"
+    },
+    {
+      id: "dep.coherent-za",
+      kind: 'definition',
+      definition: "thm.za-analytic",
+      usedBy: "thm.coherent-duality",
+      note: "凝聚对偶的证明引用 Zariski 主定理处理解析环的结构。"
+    },
+    {
+      id: "dep.za-preanalytic",
+      kind: 'definition',
+      definition: "def.pre-analytic-ring",
+      usedBy: "thm.za-analytic",
+      note: "Zariski 主定理以预解析环为对象。"
     }
   ]
 });

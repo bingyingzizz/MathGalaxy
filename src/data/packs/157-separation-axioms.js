@@ -605,5 +605,12 @@ window.MG = window.MG || {};
       note: '源头是特例或更强的条件、目标是独立的一般定义，这条只作逻辑包含、不分层。',
     },
 
+    {
+      id: "dep.cnormal-subspace",
+      kind: 'definition',
+      definition: "def.subspace",
+      usedBy: "def.completely-normal-space",
+      note: "完全正规性要求每个子空间正规。"
+    }
   ]
 });

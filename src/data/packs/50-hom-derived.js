@@ -380,5 +380,20 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    {
+      id: "dep.derivedlong-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "thm.derived-long-exact",
+      note: "导出函子长正合列在阿贝尔范畴中。"
+    },
+    {
+      id: "dep.bicomplex-additive",
+      kind: 'definition',
+      definition: "def.additive-category",
+      usedBy: "def.bicomplex",
+      note: "双复形定义在加法范畴中。"
+    }
+  ]
 });

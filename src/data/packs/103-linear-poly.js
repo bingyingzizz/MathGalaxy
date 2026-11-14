@@ -353,6 +353,20 @@ window.MG = window.MG || {};
       definition: 'def.field',
       usedBy: 'def.polynomial',
       note: '多项式定义在系数域 $K$ 上（换成一般交换环也成立，但 $K[x]$ 的除法性质要靠域）。'
+    },
+    {
+      id: "dep.irreducible-maximal",
+      kind: 'definition',
+      definition: "def.maximal-ideal",
+      usedBy: "def.irreducible-poly",
+      note: "不可约多项式等价于主理想极大。"
+    },
+    {
+      id: "dep.irreducible-principal",
+      kind: 'definition',
+      definition: "def.principal-ideal",
+      usedBy: "def.irreducible-poly",
+      note: "不可约多项式的判据用主理想。"
     }
   ]
 });

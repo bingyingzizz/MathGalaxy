@@ -298,6 +298,14 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Le Stum, Lemma 7.2.19']
     }
-
+  ],
+  edges: [
+    {
+      id: "dep.exactseq-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "def.exact-sequence",
+      note: "正合列在阿贝尔范畴中定义。"
+    }
   ]
 });

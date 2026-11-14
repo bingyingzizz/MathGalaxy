@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 5 · axiom · cluster Categories and Diagrams (`cat.basic`) · Category Theory / Set Theory
+layer 8 · axiom · cluster Categories and Diagrams (`cat.basic`) · Category Theory / Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/ax.grothendieck-universe.md` and `proofs/`.

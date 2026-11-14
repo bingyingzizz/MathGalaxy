@@ -484,5 +484,12 @@ window.MG = window.MG || {};
 
     { id: 'def-link.quotient-jordan', kind: 'definition', definition: 'def.quotient-vs', usedBy: 'thm.jordan-canonical-form',
       note: '归纳步在商空间 $V/\\ker(T-\\lambda I)$ 上做 —— 商空间的定义与泛性质直接进入证明。' },
+    {
+      id: "dep.minpoly-algebraicclosure",
+      kind: 'definition',
+      definition: "def.algebraic-closure",
+      usedBy: "thm.minimal-poly-divisor",
+      note: "最小多项式在代数闭包中分裂。"
+    }
   ]
 });

@@ -334,6 +334,27 @@ window.MG = window.MG || {};
       usedBy: 'prop.abhaus-strict-exact',
       note: '「严格正合」是在正合列之上再加「嵌入闭、满射开」两条。'
     }
-
+,
+    {
+      id: "dep.adjoint-additive",
+      kind: 'definition',
+      definition: "def.additive-category",
+      usedBy: "prop.adjoint-additive",
+      note: "加性伴随命题以加法范畴为背景。"
+    },
+    {
+      id: "dep.kernelcokernel-additive",
+      kind: 'definition',
+      definition: "def.additive-category",
+      usedBy: "def.kernel-cokernel",
+      note: "核与余核在加法范畴中。"
+    },
+    {
+      id: "dep.additive-biproduct",
+      kind: 'definition',
+      definition: "def.additive-category",
+      usedBy: "prop.additive-iff-preserves-biproduct",
+      note: "加性等价于保持双积，在加法范畴中。"
+    }
   ]
 });

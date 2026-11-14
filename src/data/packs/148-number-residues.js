@@ -502,5 +502,12 @@ window.MG = window.MG || {};
       "proof": "记 $(a/\\cdot)$ 为 Jacobi 符号，$m,n$ 正奇数。\n\n(1) 与 (2) 由定义直接展开：若 $n=\\prod q_i^{e_i}$，则\n$$\\Bigl(\\frac{ab}{n}\\Bigr)=\\prod_i\\Bigl(\\frac{ab}{q_i}\\Bigr)^{e_i}=\\prod_i\\Bigl(\\frac{a}{q_i}\\Bigr)^{e_i}\\prod_i\\Bigl(\\frac{b}{q_i}\\Bigr)^{e_i}=\\Bigl(\\frac{a}{n}\\Bigr)\\Bigl(\\frac{b}{n}\\Bigr);$$\n同理 $(a/mn)=\\prod_q(a/q)^{v_q(m)+v_q(n)}=(a/m)(a/n)$。\n\n(3) 设 $\\gcd(m,n)=1$，$m=\\prod p_i^{a_i}$、$n=\\prod q_j^{b_j}$。由 (2) 与 Legendre 互反律，\n$$\\Bigl(\\frac{m}{n}\\Bigr)=\\prod_{i,j}\\Bigl(\\frac{p_i}{q_j}\\Bigr)^{a_ib_j}=\\prod_{i,j}\\Bigl((-1)^{\\frac{p_i-1}{2}\\frac{q_j-1}{2}}\\Bigl(\\frac{q_j}{p_i}\\Bigr)\\Bigr)^{a_ib_j}=(-1)^{\\frac{m-1}{2}\\frac{n-1}{2}}\\Bigl(\\frac{n}{m}\\Bigr).$$\n其中用了 $\\sum_{i,j}a_ib_j\\frac{p_i-1}{2}\\frac{q_j-1}{2}=\\frac{m-1}{2}\\frac{n-1}{2}$；这来自对每个奇素数幂 $p^{a}$ 有 $\\frac{p^{a}-1}{2}\\equiv a\\frac{p-1}{2}\\pmod2$，再对 $m,n$ 的因子求和。\n\n补充公式 $(-1/n)=(-1)^{(n-1)/2}$、$(2/n)=(-1)^{(n^{2}-1)/8}$：对 $n$ 的每个素因子用 Legendre 版本，再由 (2) 相乘；指数按模 $2$ 相加，同样由上面的同余得到。∎",
       "note": "Jacobi 符号运算法则直接由 Legendre 符号与互反律展开；互反律层号更高，故本边不参与分层。"
     },
+    {
+      id: "dep.primroot-cyclic",
+      kind: 'definition',
+      definition: "def.cyclic-group",
+      usedBy: "def.primitive-root",
+      note: "原根使单位群成为循环群。"
+    }
   ],
 });

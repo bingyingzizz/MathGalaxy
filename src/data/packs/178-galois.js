@@ -259,6 +259,51 @@
     },
 
     {
+      id: "def.fixed-field",
+      cluster: "algebra.galois",
+      type: "definition",
+      label: "不动域",
+      title: "不动域：自同构群固定下来的元素",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "Galois 理论",
+        "不动域"
+      ],
+      statement: "设 $L/K$ 是域扩张，$H \\le \\operatorname{Aut}(L/K)$ 是 $K$-自同构群的子群。集合\n$L^{H} := \\{\\, x \\in L : \\sigma(x) = x \\ \\text{for all } \\sigma \\in H \\,\\}$\n称为 $H$ 的**不动域**（fixed field）。它是 $L$ 的子域，且 $K \\subseteq L^{H} \\subseteq L$。\n\n在有限 Galois 扩张的 Galois 对应中，$H \\mapsto L^{H}$ 与中间域 $M \\mapsto \\operatorname{Gal}(L/M)$ 互为逆映射（见 `thm.galois-correspondence`）。",
+      notes: "⭐ 反包含：$H_1 \\subseteq H_2 \\implies L^{H_2} \\subseteq L^{H_1}$ —— 群越大，不动的东西越少。\n\n⭐ 例：$\\mathbb{C}/\\mathbb{R}$ 的共轭自同构生成 $2$ 阶群，其不动域是 $\\mathbb{R}$；有限域 $\\mathbb{F}_{p^n}/\\mathbb{F}_p$ 的 Frobenius 生成群的不动域是 $\\mathbb{F}_p$。\n\n⚠ 不动域一般**不等于**「固定每个元素的域」的某种初等构造：它是把 $H$ 的全部元素一起看，不是逐个元素单独取固定点。",
+      refs: [
+        "Lang, Algebra, Ch. VI",
+        "Dummit–Foote, Abstract Algebra, §14.2"
+      ]
+    },
+    {
+      id: "def.algebraic-closure",
+      cluster: "algebra.galois",
+      type: "definition",
+      label: "代数闭包",
+      title: "代数闭包：代数扩张且代数闭",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "域",
+        "代数闭包",
+        "代数闭"
+      ],
+      statement: "设 $K$ 是域。域扩张 $\\bar K / K$ 称为 $K$ 的**代数闭包**，若\n1. $\\bar K$ 是**代数闭**的（每个非常数多项式在 $\\bar K$ 中有根，见 `def.algebraically-closed`）；\n2. $\\bar K / K$ 是**代数扩张**（每个元素都是 $K$ 上某个非零多项式的根）。\n\n在 Zorn 引理下，每个域都有代数闭包；并且任意两个代数闭包之间存在 $K$-同构（在同构意义下唯一）。",
+      notes: "⭐ 例：$\\mathbb{C}$ 是 $\\mathbb{R}$ 的代数闭包；$\\overline{\\mathbb{Q}}$（$\\mathbb{Q}$ 上全体代数数）是 $\\mathbb{Q}$ 的代数闭包；$\\mathbb{F}_p$ 的代数闭包是 $\\bigcup_{n} \\mathbb{F}_{p^n}$。\n\n⚠ 代数闭包不是「唯一的集合」，而是「在同构意义下唯一」；不同构造给出 $K$-同构的域。\n\n⭐ 存在性用 Zorn，但要先取**集合**：全体代数扩张是真类，不能直接排序。先给候选域一个基数上界 $\\le \\max(|K|, \\aleph_0)$（每个代数元是 $K[x]$ 中某个非零多项式的根，而 $K[x]$ 只有 $\\max(|K|,\\aleph_0)$ 个元素、每个多项式只有有限个根，故代数元的总数不超过这个界），只保留界内的代数扩张，再对它们用 Zorn；极大元必代数闭（否则添一个根继续扩张）。",
+      refs: [
+        "Lang, Algebra, Ch. V",
+        "Dummit–Foote, Abstract Algebra, §13.4"
+      ]
+    },
+    {
       id: 'thm.galois-correspondence',
       cluster: 'algebra.galois',
       type: 'theorem',
@@ -576,5 +621,40 @@
           '而域的自同构太少（只有群，没有加法结构可加），这恰恰是伽罗瓦理论能反过来说「域由群决定」的原因。',
       ].join('\n\n'),
     },
+    {
+      id: "dep.fixedfield-galois",
+      kind: "definition",
+      definition: "def.galois-group",
+      usedBy: "def.fixed-field",
+      note: "不动域是 Galois 群的自同构固定下来的元素。"
+    },
+    {
+      id: "dep.fixedfield-field",
+      kind: "definition",
+      definition: "def.field",
+      usedBy: "def.fixed-field",
+      note: "不动域是扩域的子域。"
+    },
+    {
+      id: "dep.fixedfield-correspondence",
+      kind: "definition",
+      definition: "def.fixed-field",
+      usedBy: "thm.galois-correspondence",
+      note: "Galois 对应用不动域与中间域互相对应。"
+    },
+    {
+      id: "dep.algebraic-closure",
+      kind: "definition",
+      definition: "def.field",
+      usedBy: "def.algebraic-closure",
+      note: "代数闭包是域扩张。"
+    },
+    {
+      id: "dep.closure-algebraically-closed",
+      kind: "definition",
+      definition: "def.algebraically-closed",
+      usedBy: "def.algebraic-closure",
+      note: "代数闭包要求扩域代数闭。"
+    }
   ],
 });

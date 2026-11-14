@@ -1107,7 +1107,14 @@ window.MG = window.MG || {};
         '**唯一性**：两解 $(r, e_{i})$ 与 $(\\tilde r, \\tilde e_{i})$ 的 $\\omega$ 相同，故它们的相对变换是常数（平行的正交变换），再配一次平移即重合。∎'
       ].join('\n')
     }
-
+,
+    {
+      id: "dep.adapted-connection",
+      kind: 'definition',
+      definition: "def.connection-form",
+      usedBy: "lem.adapted-frame",
+      note: "适配标架的联络形式落在切向形式中。"
+    }
   ]
 });
 

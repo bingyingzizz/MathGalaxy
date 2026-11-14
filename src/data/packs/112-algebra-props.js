@@ -73,15 +73,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['命题', '环', '理想', '商环'],
       refs: ['Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1'],
-      statement: [
-        '设 $A$ 是含幺交换环，$P, M \\subset A$ 是**真理想**（proper；若允许 $P = A$，则「$A/P$ 是整环」失效；若允许 $M = A$，「极大」也失效）。',
-        '',
-        '**(i)** $P$ 叫**素理想**，若 $ab \\in P \\implies a \\in P$ 或 $b \\in P$。等价地：$A/P$ 是**整环**。',
-        '',
-        '**(ii)** $M$ 叫**极大理想**，若不存在理想 $J$ 使 $M \\subset J \\subset A$。等价地：$A/M$ 是**域**。',
-        '',
-        '**(iii)** 极大 $\\implies$ 素（$A/M$ 是域 $\\implies$ 是整环）。'
-      ].join('\n'),
+      statement: "设 $A$ 是含幺交换环，$P, M \\subset A$ 是**真理想**（proper；若允许 $P = A$，则「$A/P$ 是整环」失效；若允许 $M = A$，「极大」也失效）。\n\n素理想与极大理想的定义分别见 `def.prime-ideal`、`def.maximal-ideal`。\n\n**(i)** $P$ 是素理想 $\\iff$ $A/P$ 是**整环**。\n\n**(ii)** $M$ 是极大理想 $\\iff$ $A/M$ 是**域**。\n\n**(iii)** 极大 $\\implies$ 素（$A/M$ 是域 $\\implies$ 是整环）。",
       notes: '⭐ 素理想是「整除」的抽象：在 $\\mathbb{Z}$ 里（$p \\ge 2$）$(p)$ 素 $\\iff$ $p$ 是素数（$(0)$ 也素，但 $0$ 不是素数）；在 $k[x]$ 里（$k$ 是域、$f \\ne 0$）$(f)$ 素 $\\iff$ $f$ 不可约（$(0)$ 也素，而 $0$ 不可约）。\n\n⭐ 极大理想是「商掉之后最简单」：$\\mathbb{Z}/p\\mathbb{Z}$ 是域，$\\mathbb{Z}/(6)$ 不是（有零因子）。\n\n⚠ 极大 $\\implies$ 素，但**反之不然**：$k[x,y]$ 里 $(x)$ 是素理想（$k[x,y]/(x) \\cong k[y]$ 是整环），却不极大（$(x) \\subset (x, y) \\subset k[x,y]$）。\n\n一维整环里**非零**素理想都是极大的（如 $\\mathbb{Z}$、$k[x]$）；$(0)$ 是素理想却不极大（$\\mathbb{Z}$ 里 $(0) \\subset (2) \\subset \\mathbb{Z}$）。\n\n📌 存在性（每个真理想都含在一个极大理想里）要用佐恩引理；\n\n那是 `lem.zorn` 的应用，不在本条里。'
     },
     {

@@ -1016,5 +1016,19 @@
         '⭐ **这条为什么是粉的**：它用的是「开映射定理 + Schwarz 的估计」倒推「Schwarz 的等号情形」，而图上 Schwarz 引理本身在开映射定理之前（`thm.max-modulus` 一路下来的），所以它不是骨架，只作补充线索 —— 但它确实是一条成立的推出，和上面撤掉的那条不同。',
       ].join('\n'),
       note: '粉红边：真推出，但反过来更自然 —— 只作补充线索。' },
+    {
+      id: "dep.weierstrass-holomorphic",
+      kind: 'definition',
+      definition: "def.holomorphic",
+      usedBy: "thm.weierstrass-convergence",
+      note: "Weierstrass 收敛定理的对象是全纯函数列。"
+    },
+    {
+      id: "dep.weierstrass-uniform",
+      kind: 'definition',
+      definition: "def.uniform-convergence",
+      usedBy: "thm.weierstrass-convergence",
+      note: "Weierstrass 收敛定理的前提是一致收敛。"
+    }
   ],
 });

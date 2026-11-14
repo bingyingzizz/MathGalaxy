@@ -4,8 +4,8 @@
 中心天体 thm.quadratic-reciprocity　·　12 个节点　·　根 `../`
 
 - def.order-mod-n　模 n 的阶　layer 8
-- def.primitive-root　原根　layer 9
 - thm.order-divides-phi　阶整除 Euler 函数　layer 10
+- def.primitive-root　原根　layer 10
 - thm.primitive-root-exists　模素数有原根　layer 11
 - def.discrete-log　离散对数　layer 12
 - def.quadratic-residue　二次剩余　layer 13

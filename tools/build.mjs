@@ -1249,8 +1249,7 @@ function exportPolicy(data, base = '') {
   **公理刻画**，悄悄假设了存在性。判据：这句话在**定义新对象**，
   还是在**陈述已有对象的性质**？
 - ⛔ **性质是定理，不是定义**：造出来之后，再把性质作为带证明的定理挂上去。
-- ⭐ **唯一豁免**：一阶语言与公式（\`def.first-order-language\`、\`def.formula\`）
-  是**元层**对象，比 ZFC 更原始。
+- ⭐ **唯一豁免**：一阶语言（\`def.first-order-language\`）是**元层**对象，比 ZFC 更原始。
 - **自查抓手**：「用到了却没节点 / 没连边」都违规。
 
 ## 二、同一结论只收一份
@@ -2950,6 +2949,50 @@ fs.mkdirSync(DIST, { recursive: true });
 console.log('载入内容…');
 const MG = loadMG();
 const graph = buildGraph(MG);
+/* ⭐ 分层硬门（2026-11-14）：**非基础节点不许停在 0 层**。
+   0 层 = 没有任何一条前置边能走到它（入边全是 analogy / layer:false / 或者根本没有入边），
+   在图上就是孤点：层号 0、依赖深度 0，读者永远看不到它「站在什么上面」。
+   这类节点不报错的话，构建是绿的、页面也打得开，只有人和 AI 会被骗 —— 所以做成硬门。
+   ⚠️ 地基例外只有两类：层号语义上本来就无前置的**类型**（公理），
+   以及一个刻意的例外 —— `def.first-order-language`（一阶语言是元语言层的地基，
+   不接反向前置；见 ISOLATED_WHITELIST）。
+   ⛔ 不要为了让门变绿去加等价边凑层，也不要把节点塞进白名单 —— 该补的是 definition/implication。
+   ⚠️ 白名单必须用**当前图里的 id**；曾经抄过一份旧 id 列表，7 个全都不存在，
+   门看起来在跑、实际一个也没放行过（2026-11-14 修）。 */
+function assertNoIsolatedLayers(graph) {
+  /* 地基类型：如果 core/layers.js 导出了 BASE_TYPES 就用它（单一真源）；
+     没导出就退回「公理」——分层定义里只有公理是语义上可以没有前置的类型。
+     ⛔ 不要在这里把所有类型都当 base（那等于把门关掉）。 */
+  const baseTypes = new Set((MG.layers && Array.isArray(MG.layers.BASE_TYPES) && MG.layers.BASE_TYPES.length)
+    ? MG.layers.BASE_TYPES : ['axiom']);
+  /* 白名单：只放**刻意的**地基例外，不放「懒得补边」的节点。
+     `def.first-order-language` 是一阶语言（元语言层），不接受反向接边 —— 留在 0 层是对的。
+     `def.empty` **不在这里**：它要靠 `dep.empty-sep`（`ax.sep → def.empty`）接到分离公理上；
+     入边还没落地时 build 红是正确的信号，别把它塞进来换绿。 */
+  const ISOLATED_WHITELIST = new Set(['def.first-order-language']);
+  const cname = new Map();
+  for (const c of (MG.clusters || [])) cname.set(c.id, c.name || c.id);
+  const layerOf = n => (graph.layerOf ? graph.layerOf(n.id) : n.layer);
+  const bad = graph.nodes.filter(n =>
+    layerOf(n) === 0 && !baseTypes.has(n.type) && !ISOLATED_WHITELIST.has(n.id));
+  if (!bad.length) {
+    console.log('  ✓ 分层硬门：无孤立节点（0 层只剩地基 / 白名单）');
+    return;
+  }
+  const MAX = 20;
+  const lines = bad.slice(0, MAX).map(n =>
+    `    - ${n.id} · ${n.label || '（无 label）'} · ${n.cluster ? (cname.get(n.cluster) || n.cluster) : '—'}`);
+  if (bad.length > MAX) lines.push(`    … 另有 ${bad.length - MAX} 个（只列前 ${MAX} 个）`);
+  throw new Error(
+    `✗ 分层硬门失败：${bad.length} 个非基础节点停在 0 层（没有任何前置边能走到它们，图层上就是孤点）。\n` +
+    lines.join('\n') + '\n' +
+    `  允许在 0 层的白名单：${[...ISOLATED_WHITELIST].join(', ')}\n` +
+    `  修法：给这些节点补 definition / implication 边（证明写边上）；` +
+    `⛔ 不要加等价边凑层，也不要改层号 —— 层号是算出来的。`
+  );
+}
+assertNoIsolatedLayers(graph);
+
 /* ⭐ 布局预计算（2026-11-11）：buildGraph 里已经跑过一次 computeLayout，这里只做
    序列化 + 落盘。**必须无条件写**（包括 --html / --json 单分支），否则发布包里
    的 dist/layout.json 会和 dist/mathgalaxy.html 内联的那份不是同一次构建。 */

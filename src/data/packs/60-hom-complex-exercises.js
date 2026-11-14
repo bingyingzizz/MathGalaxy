@@ -332,6 +332,13 @@ window.MG = window.MG || {};
       ].join('\n'),
       note: '提升的每一步都靠内射对象抬起映射（判据见 `prop.injective-criterion`）。'
     }
-
+,
+    {
+      id: "dep.simplicialchain-additive",
+      kind: 'definition',
+      definition: "def.additive-category",
+      usedBy: "prop.simplicial-to-chain",
+      note: "单纯复形到链复形的构造在加法范畴中。"
+    }
   ]
 });

@@ -180,6 +180,97 @@ window.MG = window.MG || {};
       refs: ['Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 0', 'Hoffman–Kunze, Linear Algebra, Ch. 4']
     },
     {
+      id: "def.row-space",
+      cluster: "algebra.matrix",
+      type: "definition",
+      label: "行空间",
+      title: "行空间：矩阵各行张成的子空间",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "线性代数",
+        "行空间",
+        "秩"
+      ],
+      statement: "设 $A \\in M_{m \\times n}(K)$，其 $m$ 个行向量为 $a_1, \\ldots, a_m \\in K^{n}$。它们张成的子空间\n\n$\\operatorname{Row}(A) := \\operatorname{span}\\{a_1, \\ldots, a_m\\} \\subseteq K^{n}$\n\n称为 $A$ 的**行空间**，其维数称为**行秩**。等价地，$\\operatorname{Row}(A) = \\operatorname{Col}(A^{\\mathsf T})$，即 $A^{\\mathsf T}$ 的列空间。\n\n**初等行变换不改变行空间**：左乘可逆矩阵只是换掉行向量的一组基（行变换把各行换成它们的可逆线性组合），所以行等价矩阵有同一个行空间。因此行阶梯形的非零行给出 $\\operatorname{Row}(A)$ 的一组基。",
+      notes: "行空间住在 $K^{n}$（行的长度是 $n$），列空间住在 $K^{m}$ —— 一般**不是同一个空间**，不要混。\n\n维数关系：$\\dim \\operatorname{Row}(A) = \\operatorname{rank} A$（行秩等于矩阵的秩）。\n\n行空间与齐次方程组的解空间满足正交关系：$x \\in \\ker A$ 当且仅当 $x$ 与每个行向量正交；于是 $\\dim \\operatorname{Row}(A) + \\dim \\ker A = n$。",
+      refs: [
+        "Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 0",
+        "Hoffman–Kunze, Linear Algebra, Ch. 4"
+      ]
+    },
+    {
+      id: "def.column-space",
+      cluster: "algebra.matrix",
+      type: "definition",
+      label: "列空间",
+      title: "列空间：矩阵各列张成的子空间（线性映射的像）",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "线性代数",
+        "列空间",
+        "秩",
+        "像"
+      ],
+      statement: "设 $A \\in M_{m \\times n}(K)$，列向量为 $c_1, \\ldots, c_n \\in K^{m}$。它们张成的子空间\n\n$\\operatorname{Col}(A) := \\operatorname{span}\\{c_1, \\ldots, c_n\\} = \\{\\, A x : x \\in K^{n} \\,\\} \\subseteq K^{m}$\n\n称为 $A$ 的**列空间**，即线性映射 $T_A : K^{n} \\to K^{m}$、$T_A(x) = Ax$ 的**像**。其维数称为**列秩**，等于 $\\operatorname{rank} A$。\n\n**方程组的可解性**：$b \\in \\operatorname{Col}(A)$ 当且仅当 $Ax = b$ 有解。把 $A$ 化成行简化阶梯形后，主元所在的列（即 $A$ 的主元列）给出 $\\operatorname{Col}(A)$ 的一组基。",
+      notes: "列空间是「$A$ 能到达哪里」；零空间（齐次解空间）是「哪些方向被 $A$ 压成 $0$」。两者维数相加为 $n$。\n\n行空间与列空间的维数相等（都等于秩），但它们是不同空间里的子空间；联系来自转置：$\\operatorname{Col}(A) = \\operatorname{Row}(A^{\\mathsf T})$。\n\n秩–零化度：$\\dim \\operatorname{Col}(A) + \\dim \\ker A = n$。",
+      refs: [
+        "Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 0",
+        "Hoffman–Kunze, Linear Algebra, Ch. 4"
+      ]
+    },
+    {
+      id: "def.row-echelon-form",
+      cluster: "algebra.matrix",
+      type: "definition",
+      label: "行阶梯形与行简化阶梯形",
+      title: "行阶梯形：消元法化出的标准形状",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "线性代数",
+        "消元法",
+        "行阶梯形",
+        "主元"
+      ],
+      statement: "设 $R \\in M_{m \\times n}(K)$。若\n\n- 所有零行都排在非零行之下；\n- 每个非零行的首个非零元（称为**主元**）所在的列，严格在上一行主元的右侧，\n\n则称 $R$ 为**行阶梯形**（row echelon form）。若进一步每个主元都等于 $1$、且主元所在列的其他元素全为 $0$，则称 $R$ 为**行简化阶梯形**（reduced row echelon form，RREF）。\n\n**定理（消元法）**：任何 $A \\in M_{m \\times n}(K)$ 都能经过有限次初等行变换化为行简化阶梯形，而且这个行简化阶梯形是**唯一**的。主元的个数等于 $\\operatorname{rank} A$。",
+      notes: "唯一性是 RREF 的关键：行阶梯形不唯一（可以继续做行变换），但「主元为 $1$、主元列其余为零」把自由度全部消掉，只剩一个。\n\n用途：解线性方程组（主元列对应基本变量，其余列自由变量）、求秩（数主元）、求逆（对 $[A \\mid I]$ 化 RREF）、求列空间的一组基（主元列）。\n\n初等行变换对应左乘初等矩阵；RREF 是「行变换下的标准形」，而相抵还允许列变换，标准形是 $\\operatorname{diag}(I_r, 0)$。",
+      refs: [
+        "Horn–Johnson, Matrix Analysis, 2nd ed., Ch. 0",
+        "Hoffman–Kunze, Linear Algebra, Ch. 1"
+      ]
+    },
+    {
+      id: "thm.smith-normal-form",
+      cluster: "algebra.matrix",
+      type: "theorem",
+      label: "Smith 标准形",
+      title: "Smith 标准形：主理想整环上矩阵在相抵下的标准形",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定理",
+        "线性代数",
+        "Smith 标准形",
+        "主理想整环",
+        "不变因子"
+      ],
+      statement: "设 $R$ 是主理想整环，$A \\in M_{m \\times n}(R)$。则存在可逆矩阵 $P \\in \\operatorname{GL}_{m}(R)$、$Q \\in \\operatorname{GL}_{n}(R)$，使\n\n$P A Q = \\operatorname{diag}(d_1, d_2, \\ldots, d_r, 0, \\ldots, 0),$\n\n其中 $d_i \\ne 0$，且 $d_1 \\mid d_2 \\mid \\cdots \\mid d_r$。这些 $d_i$ 在相差单位的意义下由 $A$ 唯一确定，称为 $A$ 的**不变因子**（invariant factors）。\n\n等价地，$d_1 \\cdots d_k$ 等于 $A$ 的全部 $k$ 阶子式的最大公因子（**行列式因子**），这给出唯一性的具体算法。",
+      notes: "**与域上相抵的关系**：$K$ 是域时 $K$ 是 PID（除环），Smith 标准形退化为 $\\operatorname{diag}(I_r, 0)$，即域上相抵只由秩分类。\n\n**证明思路**：在 $A$ 的等价类中取 $(1,1)$ 元素生成的理想极大的矩阵，证明它整除所有元素（否则用 Bézout 把 gcd 放到 $(1,1)$ 得到更大的理想），清空第一行第一列后对余块归纳。唯一性用行列式因子。\n\n**典型例子**：$R = \\mathbb{Z}$ 时 $\\operatorname{diag}(2, 6)$ 满足 $2 \\mid 6$；$R = K[x]$ 时对 $xI - A$ 作 Smith 标准形，得到的非常数不变因子就是线性算子 $A$ 的不变因子，见有理标准形。",
+      refs: [
+        "Hoffman–Kunze, Linear Algebra, Ch. 7",
+        "Dummit–Foote, Abstract Algebra, Ch. 12"
+      ]
+    },
+    {
       id: 'thm.rank-row-col',
       cluster: 'algebra.matrix',
       type: 'theorem',
@@ -716,6 +807,110 @@ window.MG = window.MG || {};
       definition: 'def.vs',
       usedBy: 'def.multilinear-form',
       note: '多重线性型是定义在 $K$-向量空间 $V$ 上的映射 $V^{n} \\to K$，所以要先用向量空间。'
+    },
+    {
+      id: "dep.rowspace-matrix",
+      kind: "definition",
+      definition: "def.matrix",
+      usedBy: "def.row-space",
+      note: "行空间由矩阵的行向量张成。"
+    },
+    {
+      id: "dep.rowspace-rank",
+      kind: "definition",
+      definition: "def.rank",
+      usedBy: "def.row-space",
+      note: "行秩定义为行空间的维数，等于矩阵的秩。"
+    },
+    {
+      id: "dep.rowspace-transpose",
+      kind: "definition",
+      definition: "def.transpose",
+      usedBy: "def.row-space",
+      note: "行空间等于转置矩阵的列空间。"
+    },
+    {
+      id: "dep.colspace-matrix",
+      kind: "definition",
+      definition: "def.matrix",
+      usedBy: "def.column-space",
+      note: "列空间由矩阵的列向量张成。"
+    },
+    {
+      id: "dep.colspace-linearmap",
+      kind: "definition",
+      definition: "def.linear-map",
+      usedBy: "def.column-space",
+      note: "列空间就是线性映射 $x \\mapsto Ax$ 的像。"
+    },
+    {
+      id: "dep.colspace-rank",
+      kind: "definition",
+      definition: "def.rank",
+      usedBy: "def.column-space",
+      note: "列秩等于矩阵的秩。"
+    },
+    {
+      id: "ana.rowspace-colspace",
+      kind: "analogy",
+      a: "def.row-space",
+      b: "def.column-space",
+      note: "行空间与列空间维数相等（都等于秩），但分别住在 $K^n$ 与 $K^m$；转置把两者互换。"
+    },
+    {
+      id: "dep.rref-matrix",
+      kind: "definition",
+      definition: "def.matrix",
+      usedBy: "def.row-echelon-form",
+      note: "行阶梯形是对矩阵作初等行变换得到形状。"
+    },
+    {
+      id: "dep.rref-elementary",
+      kind: "definition",
+      definition: "def.elementary-matrix",
+      usedBy: "def.row-echelon-form",
+      note: "化行阶梯形用的是初等行变换（左乘初等矩阵）。"
+    },
+    {
+      id: "dep.smith-pid",
+      kind: "definition",
+      definition: "def.pid",
+      usedBy: "thm.smith-normal-form",
+      note: "Smith 标准形要求基环是主理想整环。"
+    },
+    {
+      id: "dep.smith-matrix",
+      kind: "definition",
+      definition: "def.matrix",
+      usedBy: "thm.smith-normal-form",
+      note: "定理对环上的 $m \\times n$ 矩阵陈述。"
+    },
+    {
+      id: "dep.smith-elementary",
+      kind: "definition",
+      definition: "def.elementary-matrix",
+      usedBy: "thm.smith-normal-form",
+      note: "证明用初等行、列变换实现等价变形。"
+    },
+    {
+      id: "dep.smith-equivalent",
+      kind: "definition",
+      definition: "def.equivalent-matrices",
+      usedBy: "thm.smith-normal-form",
+      note: "Smith 标准形是相抵关系下的标准形。"
+    },
+    {
+      id: "imp.smith-normal-form",
+      kind: "implication",
+      sources: [
+        "def.pid",
+        "def.elementary-matrix",
+        "def.equivalent-matrices"
+      ],
+      target: "thm.smith-normal-form",
+      title: "PID 上的 gcd 消元 $\\implies$ Smith 标准形",
+      proof: "**存在性**。若 $A = 0$ 取 $r = 0$。否则在 $A$ 的等价类中取一个矩阵 $B$，使 $(1,1)$ 元素 $a$ 生成的理想 $(a)$ 在包含关系下极大（PID 是 Noether 环，理想升链稳定，故这样的 $B$ 存在）。\n\n先证 $a$ 整除 $B$ 的每个元素。若第一行有 $b$ 不被 $a$ 整除（设它在第 $j$ 列，$j \\ge 2$），令 $d = \\gcd(a, b)$，则 $(d) \\supsetneq (a)$；由 Bézout 写 $d = u a + v b$，对**列**作可逆变换 $C_{1} \\leftarrow u C_{1} + v C_{j}$、$C_{j} \\leftarrow -\\frac{b}{d} C_{1} + \\frac{a}{d} C_{j}$（系数矩阵的行列式 $\\frac{u a + v b}{d} = 1$，故整体可逆），它把 $(1,1)$ 换成 $u a + v b = d$，与 $(a)$ 的极大性矛盾。**这里必须动列**：$b$ 本来就在第一行，动行只能把第一行换成它自身的线性组合，清不掉 $b$。故 $a$ 整除第一行每个元素；同法（转置后动行）得 $a$ 整除第一列每个元素。于是用列变换 $C_{j} \\leftarrow C_{j} - \\frac{a_{1j}}{a} C_{1}$ 清掉第一行、再用行变换 $R_{i} \\leftarrow R_{i} - \\frac{a_{i1}}{a} R_{1}$ 清掉第一列，且不动 $(1,1)$。\n\n若余下的 $(m-1) \\times (n-1)$ 子块有元素 $c$ 不被 $a$ 整除（设它在第 $j$ 列），把 $c$ 所在行加到第一行：$(1,1)$ 仍是 $a$，而 $(1,j)$ 变成 $c$，这与 $(a)$ 的极大性矛盾（上一段的论证说明：第一行一旦出现不被 $a$ 整除的元素，就能把 $(1,1)$ 换成 $\\gcd(a,c)$）。故 $a$ 整除整个余块。对余块归纳，得 $\\operatorname{diag}(a, d_2, \\ldots, d_r, 0)$；因为 $a$ 整除余块的所有元素，故 $a \\mid d_2$，归纳假设给出整除链。\n\n**唯一性**。对 $k \\ge 1$，令 $\\Delta_k$ 为 $A$ 的全部 $k$ 阶子式的最大公因子（$\\Delta_0 := 1$）。左乘或右乘可逆矩阵只把 $k$ 阶子式乘上可逆元，故 $\\Delta_k$ 在相抵下不变。而 $\\operatorname{diag}(d_1, \\ldots, d_r, 0)$ 的 $k$ 阶子式（$k \\le r$）的非零值只有 $d_{i_1} \\cdots d_{i_k}$，由整除链其最大公因子为 $d_1 \\cdots d_k$。于是 $d_k = \\Delta_k / \\Delta_{k-1}$ 由 $A$ 唯一决定（相差单位）。∎",
+      note: "关键一步是在等价类中取 $(1,1)$ 理想极大的矩阵；PID 的 Noether 性保证它存在。"
     }
   ]
 });

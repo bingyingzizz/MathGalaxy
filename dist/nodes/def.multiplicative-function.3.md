@@ -4,4 +4,5 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.divisor-function`](../nodes/def.divisor-function.md) 除数函数 τ 与 σ 用
 - ～弱边 [`def.divisor-function`](../nodes/def.divisor-function.md) 除数函数 τ 与 σ
+- 被 [`def.mobius-function`](../nodes/def.mobius-function.md) Möbius 函数 用
 - 被 [`def.legendre-symbol`](../nodes/def.legendre-symbol.md) Legendre 符号 用

@@ -134,6 +134,29 @@ window.MG = window.MG || {};
     },
 
     {
+      id: "def.invariant-factor",
+      cluster: "algebra.spectral",
+      type: "definition",
+      label: "不变因子",
+      title: "不变因子：Smith 标准形的对角元",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "线性代数",
+        "不变因子",
+        "Smith 标准形",
+        "有理标准形"
+      ],
+      statement: "设 $R$ 是主理想整环，$A \\in M_{m \\times n}(R)$ 的 Smith 标准形为\n\n$P A Q = \\operatorname{diag}(d_1, \\ldots, d_r, 0, \\ldots, 0), \\qquad d_1 \\mid d_2 \\mid \\cdots \\mid d_r .$\n\n这些非零元 $d_i$（在相差单位的意义下唯一；$R = K[x]$ 时取首一代表）称为 $A$ 的**不变因子**。等价地，$d_1 \\cdots d_k$ 是 $A$ 的所有 $k$ 阶子式的最大公因子。\n\n特别地，对 $A \\in M_n(K)$，把 $xI - A \\in M_n(K[x])$ 的非常数不变因子称为线性算子 $A$ 的**不变因子**。",
+      notes: "**与有理标准形**：若 $d_1 \\mid \\cdots \\mid d_s$ 是 $xI - A$ 的非常数不变因子，则 $A$ 相似于 $\\operatorname{diag}(C_{d_1}, \\ldots, C_{d_s})$，其中 $C_d$ 是友矩阵；这正是有理标准形。\n\n**与极小/特征多项式**：最大的不变因子 $d_s$ 是极小多项式，乘积 $d_1 \\cdots d_s$ 是特征多项式。\n\n**与初等因子**：把每个 $d_i$ 分解成不可约多项式的幂，得到的素幂因子叫初等因子；Jordan 标准形在域分裂时用初等因子陈述。\n\n**矩阵版本 vs 算子版本**：Smith 标准形对任意矩阵（可长方形、环上）陈述；算子的不变因子是 $xI - A$ 这一特殊矩阵的不变因子。",
+      refs: [
+        "Hoffman–Kunze, Linear Algebra, Ch. 7",
+        "Dummit–Foote, Abstract Algebra, Ch. 12"
+      ]
+    },
+    {
       id: 'def.characteristic',
       cluster: 'algebra.structures',
       type: 'definition',
@@ -206,6 +229,27 @@ window.MG = window.MG || {};
       note: '特征是对**域**说的（更一般地对整环也能定义）。' },
     { id: 'dep.char-primering', kind: 'definition',
       definition: 'def.ring', usedBy: 'def.characteristic',
-      note: '定义走 $\\mathbb{Z} \\to K$ 这个环同态，要先有环与理想。' }
+      note: '定义走 $\\mathbb{Z} \\to K$ 这个环同态，要先有环与理想。' },
+    {
+      id: "dep.invariant-smith",
+      kind: "definition",
+      definition: "thm.smith-normal-form",
+      usedBy: "def.invariant-factor",
+      note: "不变因子就是 Smith 标准形的对角元。"
+    },
+    {
+      id: "dep.invariant-rcf",
+      kind: "definition",
+      definition: "def.invariant-factor",
+      usedBy: "thm.rational-canonical-form",
+      note: "有理标准形按不变因子分块成友矩阵。"
+    },
+    {
+      id: "dep.characteristic-ringhom",
+      kind: 'definition',
+      definition: "def.ring-hom",
+      usedBy: "def.characteristic",
+      note: "特征用唯一环同态 Z 到 K 的核定义。"
+    }
   ]
 });

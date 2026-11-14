@@ -347,6 +347,13 @@ window.MG = window.MG || {};
       definition: 'def.function',
       usedBy: 'def.preimage',
       note: '像 $f(A)$ 与原像 $f^{-1}(B)$ 都预设 $f$ 是**映射**。'
+    },
+    {
+      id: 'dep.empty-sep',
+      kind: 'definition',
+      definition: 'ax.sep',
+      usedBy: 'def.empty',
+      note: '空集由分离公理模式 $\\{x \\in A : x \\ne x\\}$ 得到（$A$ 任取）。'
     }
   ]
 });

@@ -96,6 +96,20 @@ window.MG = window.MG || {};
       definition: 'def.exact-functor',
       usedBy: 'prop.left-exact-iff-R0',
       note: '结论是「$F$ 左正合」。'
+    },
+    {
+      id: "dep.leftexact-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "prop.left-exact-criterion",
+      note: "左正合判据在阿贝尔范畴中。"
+    },
+    {
+      id: "dep.leftexactR0-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "prop.left-exact-iff-R0",
+      note: "左正合等价于 R^1 消失，在阿贝尔范畴中。"
     }
   ]
 });

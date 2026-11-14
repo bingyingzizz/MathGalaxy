@@ -1014,7 +1014,14 @@ window.MG = window.MG || {};
         '⭐ 绝对值的有无就是「有没有定向」：$n$-形式自带符号，故换元带 $\\det$；密度不带符号，故换元带 $|\\det|$。两条公式的差别全在这里。'
       ].join('\n')
     }
-
+,
+    {
+      id: "dep.divergence-liederiv",
+      kind: 'definition',
+      definition: "def.lie-derivative",
+      usedBy: "def.divergence",
+      note: "散度用 Lie 导数作用在体积形式上定义。"
+    }
   ]
 
 });

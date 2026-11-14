@@ -25,7 +25,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.group-action',
       type: 'definition',
       label: '群作用',
-      title: '群作用、轨道与稳定子',
+      title: '群作用',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '群作用'],
       statement: [
@@ -38,14 +38,54 @@ window.MG = window.MG || {};
         '- $e \\cdot x = x$ 对一切 $x \\in X$；',
         '- $(gh) \\cdot x = g \\cdot (h \\cdot x)$ 对一切 $g, h \\in G$、$x \\in X$。',
         '',
-        '两个基本对象：',
-        '',
-        '$$\\operatorname{Orb}(x) := Gx := \\{\\, g \\cdot x : g \\in G \\,\\}, \\qquad \\operatorname{Stab}(x) := G_x := \\{\\, g \\in G : g \\cdot x = x \\,\\}$$',
-        '',
-        '分别叫 $x$ 的**轨道**与**稳定子**。$G_x \\le G$ 是子群；作用的**核**是 $\\bigcap_{x \\in X} G_x$。'
+        '轨道与稳定子分别单独成节点，见 `def.orbit` 与 `def.stabilizer`。'
       ].join('\n'),
       notes: '⭐ **等价说法（全团的技巧都从这里来）**：一个作用等价于一个群同态 $\\rho : G \\to \\operatorname{Sym}(X)$，$\\rho(g)(x) := g \\cdot x$。\n\n理由是两条作用公理恰好就是「$\\rho$ 保单位元、保乘法」。\n\n于是「群在集合上作用」= 「$G$ 的一个置换表示」，而 `thm.first-iso` 立刻给出 $G/\\ker\\rho \\hookrightarrow \\operatorname{Sym}(X)$。\n\n⭐ 轨道构成 $X$ 的**划分**：$x \\in Gx$（自反）、$y \\in Gx \\implies Gy = Gx$（对称与传递）。\n\n所以 $X = \\bigsqcup_{\\text{轨道}} \\text{轨道}$ —— 数轨道的大小就等于数这个划分。\n\n⭐ 三个必会的例子：\n- **自然作用**：$S_n$ 在 $\\{1, \\ldots, n\\}$ 上，轨道只有一个（传递作用）；\n\n\n- **左乘（正则）作用**：$G$ 在自身上的 $g \\cdot h := gh$，轨道只有一个，稳定子全平凡（**自由**作用）—— 这是 Cayley 定理的入口；\n\n\n- **共轭作用**：$g \\cdot x := gxg^{-1}$，轨道 = 共轭类，稳定子 = 中心化子 —— 这是类方程的入口。\n\n⚠ 左作用与右作用要分清：$(gh)\\cdot x = g\\cdot(h\\cdot x)$ 是左作用；\n\n右作用把顺序反过来写成 $x \\cdot (gh) = (x\\cdot g)\\cdot h$。\n\n本图一律**左**作用，遇到右作用时先转成左作用（$g \\cdot x := x \\cdot g^{-1}$）再套结论。\n\n⭐ 作用的核 $\\bigcap_x G_x$ 是正规子群（作为 $\\rho$ 的核），它衡量「这个作用丢掉了多少信息」：核平凡 $\\iff$ 作用是**忠实的**（$G$ 真的被看成了一组置换）。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §4.1']
+    },
+    {
+      id: "def.orbit",
+      cluster: "algebra.group-action",
+      type: "definition",
+      label: "轨道",
+      title: "轨道：一个点能到达的全体",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群作用",
+        "轨道"
+      ],
+      statement: "设群 $G$ 作用在集合 $X$ 上，$x \\in X$。集合\n$\\operatorname{Orb}(x) := G x := \\{\\, g \\cdot x : g \\in G \\,\\} \\subseteq X$\n称为 $x$ 的**轨道**。\n\n关系 $x \\sim y \\iff \\exists g \\in G,\\ y = g \\cdot x$ 是 $X$ 上的等价关系，轨道正是它的等价类；因此 $X$ 是轨道的**无交并**。作用称为**传递**的，若 $X$ 只有一个轨道。",
+      notes: "⭐ $G$ 有限时，轨道大小整除 $|G|$：轨道–稳定子给出 $|Gx| = [G : G_x]$（见 `thm.orbit-stabilizer`；无限群时读作等势）。\n\n⭐ 例：$S_n$ 在 $\\{1,\\ldots,n\\}$ 上传递；共轭作用的轨道是共轭类；左乘作用的轨道只有一个。\n\n⚠ 不同的 $x$ 给出的轨道要么相等、要么不交，不会「部分重叠」。",
+      refs: [
+        "Lang, Algebra, Ch. I §5",
+        "Dummit–Foote, Abstract Algebra, §4.1"
+      ]
+    },
+    {
+      id: "def.stabilizer",
+      cluster: "algebra.group-action",
+      type: "definition",
+      label: "稳定子",
+      title: "稳定子：不动某一点的群元素",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群作用",
+        "稳定子"
+      ],
+      statement: "设群 $G$ 作用在集合 $X$ 上，$x \\in X$。集合\n$G_x := \\operatorname{Stab}(x) := \\{\\, g \\in G : g \\cdot x = x \\,\\} \\le G$\n称为 $x$ 的**稳定子**（或迷向子群）。\n\n$G_x$ 是 $G$ 的子群；作用的**核**是 $\\bigcap_{x \\in X} G_x$。轨道–稳定子给出双射 $G/G_x \\to Gx$、$gG_x \\mapsto g \\cdot x$。共轭点有共轭稳定子：$G_{g \\cdot x} = g G_x g^{-1}$。",
+      notes: "⭐ $G$ 有限时，稳定子越大、轨道越小；两者由 $|G| = |Gx| \\cdot |G_x|$ 精确平衡。\n\n⭐ 作用**自由**当且仅当所有稳定子平凡（例如左乘作用）；作用**忠实**当且仅当核平凡。\n\n⭐ 例：$S_n$ 自然作用中 $G_n \\cong S_{n-1}$；共轭作用中 $G_x = C_G(x)$ 是中心化子，见 `def.centralizer`。",
+      refs: [
+        "Lang, Algebra, Ch. I §5",
+        "Dummit–Foote, Abstract Algebra, §4.1"
+      ]
     },
     {
       id: 'thm.orbit-stabilizer',
@@ -68,6 +108,52 @@ window.MG = window.MG || {};
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §4.1']
     },
     {
+      id: "def.centralizer",
+      cluster: "algebra.group-action",
+      type: "definition",
+      label: "中心化子",
+      title: "中心化子：与给定集合逐元素交换的元素",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群",
+        "中心化子",
+        "共轭"
+      ],
+      statement: "设 $G$ 是群，$S \\subseteq G$。集合\n$$C_G(S) := \\{\\, g \\in G : g s = s g \\ \\text{for all}\\ s \\in S \\,\\} \\le G$$\n称为 $S$ 在 $G$ 中的**中心化子**；$C_G(x) := C_G(\\{x\\})$。约定 $C_G(\\emptyset) = G$。\n\n$C_G(S)$ 是子群。$C_G(G) = Z(G)$ 就是 $G$ 的**中心**。在共轭作用 $g \\cdot x = gxg^{-1}$ 下，$C_G(x)$ 正是 $x$ 的稳定子。",
+      notes: "⭐ 中心化子与正规化子的关系：$C_G(S) \\trianglelefteq N_G(S)$，且 $C_G(S) \\subseteq N_G(S)$（逐元素交换当然整体保持 $S$）。\n\n⭐ 例：$GL_n(K)$ 中数量矩阵的中心化子是全体可逆矩阵（数量矩阵在中心里）；$S_3$ 中 $C_{S_3}((12)) = \\{e, (12)\\}$。\n\n⭐ 类方程中非中心共轭类的大小是 $[G : C_G(x)]$，见 \\`thm.class-equation\\`。",
+      refs: [
+        "Lang, Algebra, Ch. I §6",
+        "Dummit–Foote, Abstract Algebra, §4.3"
+      ]
+    },
+    {
+          id: "def.normalizer",
+          cluster: "algebra.group-action",
+          type: "definition",
+          label: "正规化子",
+          title: "正规化子：把子群整体送到自己的元素",
+          regions: [
+            "algebra"
+          ],
+          tags: [
+            "定义",
+            "代数",
+            "群",
+            "正规化子",
+            "Sylow"
+          ],
+          statement: "设 $G$ 是群，$S \\subseteq G$。集合\n$N_G(S) := \\{\\, g \\in G : g S g^{-1} = S \\,\\} \\le G$\n称为 $S$ 在 $G$ 中的**正规化子**。对子群 $H \\le G$，$N_G(H)$ 是 $G$ 中含 $H$ 的、使 $H$ 在其内正规的**最大**子群。\n\n若 $H \\le G$，则 $H \\trianglelefteq G \\iff N_G(H) = G$；又 $H \\subseteq N_G(H)$，且 $H \\trianglelefteq N_G(H)$。Sylow 计数 $n_p = [G : N_G(P)]$。",
+          notes: "⭐ 正规化子 vs 中心化子：$C_G(H) \\subseteq N_G(H)$，一般不相等。$N_G(H)/C_G(H)$ 嵌入 $\\operatorname{Aut}(H)$（共轭作用），这是「正规化子商中心化子」的标准结论。\n\n⭐ 例：$S_3$ 中 $N_{S_3}(\\langle(12)\\rangle) = \\langle(12)\\rangle$（三个对换互相共轭，正规化子不再变大）；$N_{S_3}(A_3) = S_3$。\n\n⚠ $N_G(S)$ 只要求把集合 $S$ 整体送到自己，不要求逐元素固定 —— 后者是中心化子。",
+          refs: [
+            "Lang, Algebra, Ch. I §6",
+            "Dummit–Foote, Abstract Algebra, §4.3"
+          ]
+        },
+    {
       id: 'thm.class-equation',
       cluster: 'algebra.group-action',
       type: 'theorem',
@@ -76,7 +162,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['定理', '代数', '群', '共轭'],
       statement: [
-        '设 $G$ 是有限群，$Z(G)$ 是它的中心，$x_1, \\ldots, x_r$ 是**非中心共轭类**的一组代表元，$C_G(x) := \\{g : gx = xg\\}$ 是中心化子。则',
+        '设 $G$ 是有限群，$Z(G)$ 是它的中心，$x_1, \\ldots, x_r$ 是**非中心共轭类**的一组代表元，$C_G(x)$ 是 $x$ 的中心化子（见 `def.centralizer`）。则',
         '',
         '$$|G| = |Z(G)| + \\sum_{i=1}^{r} \\bigl[ G : C_G(x_i) \\bigr]$$',
         '',
@@ -195,6 +281,52 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '⭐ 定理的哲学含量大于计算含量：**抽象群总能具体地实现为一组置换**。\n\n也就是说「群论」与「置换群论」是同一门学问 —— 抽象并没有真的产生新对象，只是换了个看法。\n\n⚠ 代价很大：$|G| = n$ 时嵌进 $S_n$（阶 $n!$），所以 Cayley 定理几乎从不用于计算。\n\n它真正的用处是与「表示论」对照：把「作用在集合上」换成「作用在向量空间上」，就是那条线的开端。\n\n⭐ 左乘作用还是**自由**的（每个稳定子都平凡：$gh = h \\implies g = e$），所以它自动是单射 —— 这是证明的核心一句。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §4.1']
+    },
+    {
+      id: "def.sylow-subgroup",
+      cluster: "algebra.group-action",
+      type: "definition",
+      label: "Sylow 子群",
+      title: "Sylow p-子群：p-部分的最大子群",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群",
+        "Sylow",
+        "p-群"
+      ],
+      statement: "设 $G$ 是有限群，$|G| = p^{a} m$，其中 $p$ 是素数、$p \\nmid m$。$G$ 的 $p^{a}$ 阶子群 $P$ 称为 **Sylow $p$-子群**。\n\n等价地，$P$ 是 $G$ 的**极大 $p$-子群**（按包含关系）。全体 Sylow $p$-子群记作 $\\operatorname{Syl}_p(G)$；若 $P \\in \\operatorname{Syl}_p(G)$，则 $[G : P] = m$。",
+      notes: "⭐ 存在性、共轭性、计数见 `thm.sylow`；本节点只负责「对象是什么」。\n\n⭐ 例：$S_3$（$|S_3| = 6 = 2 \\cdot 3$）的 Sylow $3$-子群是 $A_3$（唯一，正规），Sylow $2$-子群是三个对换生成的三个 $2$ 阶子群。\n\n⚠ $p$-子群是「阶为 $p$ 的幂」的子群，Sylow $p$-子群是其中**最大**的那一档；一个群可以有多个 Sylow 子群。",
+      refs: [
+        "Lang, Algebra, Ch. I §6",
+        "Dummit–Foote, Abstract Algebra, §4.5"
+      ]
+    },
+    {
+      id: "lem.p-group-subgroups",
+      cluster: "algebra.group-action",
+      type: "lemma",
+      label: "p-群的真子群严格小于其正规化子",
+      title: "引理：p-群的真子群不会等于自己的正规化子",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "引理",
+        "代数",
+        "群",
+        "p-群",
+        "正规化子"
+      ],
+      statement: "设 $G$ 是有限 $p$-群，$H < G$ 是真子群。则\n$H < N_G(H),$\n即 $H$ 真包含于它在 $G$ 中的正规化子。\n\n特别地，指数 $p$ 的子群正规；并且 $p$-群的中心非平凡。",
+      notes: "证明见边 `imp.p-group-subgroups`：对 $|G|$ 归纳，用类方程给出 $Z(G) \\ne \\{e\\}$，再分 $HZ(G) < G$ 与 $HZ(G) = G$ 两种情形。\n\n⭐ 用途：对 $i$ 归纳可证 $p$-群有所有 $p^{i}$ 阶子群（$0 \\le i \\le n$）；这是 Sylow 存在性证明中「$i < a$ 部分」的关键一步。\n\n⚠ 结论对一般有限群不成立：$S_3$ 中 $H = \\langle(12)\\rangle$ 的 $N_{S_3}(H) = H$，但 $S_3$ 不是 $p$-群。",
+      refs: [
+        "Lang, Algebra, Ch. I §6",
+        "Dummit–Foote, Abstract Algebra, §4.3"
+      ]
     },
     {
       id: 'thm.sylow',
@@ -575,7 +707,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.sylow',
       kind: 'implication',
-      sources: ['thm.class-equation', 'def.group-action', 'thm.orbit-stabilizer'],
+      sources: ['thm.class-equation', 'def.group-action', 'thm.orbit-stabilizer', 'lem.p-group-subgroups'],
       target: 'thm.sylow',
       title: '类方程 + 让 Sylow 子群作用 $\\implies$ Sylow 三条',
       proof: [
@@ -583,7 +715,7 @@ window.MG = window.MG || {};
         '',
         '**（1）存在性：对 $|G|$ 归纳。** $a = 0$ 时取平凡子群。设 $a \\ge 1$。',
         '',
-        '- **情形 A：$p \\mid |Z(G)|$。** 取 $z \\in Z(G)$，$\\operatorname{ord}(z) = p$（Cauchy 引理，由类方差的推论加上对阶归纳可得）。\n\n' +
+        '- **情形 A：$p \\mid |Z(G)|$。** 取 $z \\in Z(G)$，$\\operatorname{ord}(z) = p$（这一步要交代清楚，不能白拿。由类方程 $|G| = |Z(G)| + \\sum_i [G:C_G(x_i)]$，右端非中心共轭类的长度都是 $p$ 的正幂、故全被 $p$ 整除，而 $p \\mid |G|$，所以 $p \\mid |Z(G)|$。$Z(G)$ 是阿贝尔群，对它的阶归纳即可取出 $p$ 阶元：取 $x \\ne e$，若 $p \\mid \\operatorname{ord}(x)$ 则 $x^{\\operatorname{ord}(x)/p}$ 的阶恰为 $p$；否则 $Z(G)/\\langle x \\rangle$ 的阶仍被 $p$ 整除，降阶归纳取出后再沿商映射提升。$z$ 取这个 $p$ 阶元即可）。\n\n' +
         '令 $\\overline G := G/\\langle z\\rangle$，则 $|\\overline G| = p^{a-1}m$。\n\n' +
         '由归纳假设 $\\overline G$ 有 $p^{a-1}$ 阶子群 $\\overline P$；\n\n' +
         '取 $\\pi^{-1}(\\overline P) \\le G$（$\\pi : G \\to \\overline G$ 是自然满同态），其阶为 $|\\overline P| \\cdot |\\langle z\\rangle| = p^{a}$。',
@@ -593,7 +725,7 @@ window.MG = window.MG || {};
         '又 $x_i$ 非中心故 $C_G(x_i) \\ne G$，于是 $|C_G(x_i)| < |G|$。\n\n' +
         '对 $C_G(x_i)$ 用归纳假设得 $p^{a}$ 阶子群，它也是 $G$ 的。',
         '',
-        '（$p^{i}$ 阶子群（$i < a$）由对 $p^{a}$ 阶子群再用一次「$p$-群有 $p^{i}$ 阶子群」的归纳得到。）',
+        '**（1\'）所有 $p^{i}$ 阶子群（$0 \\le i \\le a$）。** 上面已造出 $P \\le G$、$|P| = p^{a}$（Sylow $p$-子群）。对 $i$ 归纳造 $P$ 的 $p^{i}$ 阶子群：$i = 0$ 取 $\\{e\\}$。设已有 $H \\le P$、$|H| = p^{i} < p^{a}$。对 $p$-群 $P$ 用 `lem.p-group-subgroups`：$H$ 是真子群，故 $H < N_P(H)$，于是 $N_P(H)/H$ 是非平凡 $p$-群；同一条引理给出它的中心非平凡，取中心里非平凡元 $x$、令 $k = \\operatorname{ord}(x)$，则 $y := x^{p^{k-1}}$ 的阶为 $p$ 且仍中心，故 $\\langle y \\rangle \\trianglelefteq N_P(H)/H$ 是 $p$ 阶子群。取它在 $N_P(H)$ 中的原像 $H^{\\prime} \\le N_P(H) \\le P$，则 $|H^{\\prime}| = p^{i+1}$，且 $H \\trianglelefteq H^{\\prime}$。归纳到 $i = a$，$P$ 的全部阶都取到，它们当然也是 $G$ 的子群。',
         '',
         '**（2）共轭性。** 设 $P, Q$ 是 Sylow $p$-子群，考虑 $P$ 在左陪集集合 $X := G/Q$ 上的作用 $g \\cdot (hQ) := (gh)Q$。',
         '',
@@ -705,6 +837,131 @@ window.MG = window.MG || {};
         '两个方向合起来即得 $S_n$ 可解 $\\iff n \\le 4$。∎'
       ].join('\n'),
       note: '⭐ 整个证明的关键是**把「$A_5$ 单」变成一个可以逐项核对的有限计算**：共轭类大小只有 $1, 15, 20, 12, 12$，正规子群是若干类的并、且阶整除 $60$ —— 枚举 $2^{4} = 16$ 种组合，只有 $1$ 与 $60$ 可行。\n\n这比「抽象地论证单性」可靠得多，也省掉了「证明 $A_n$（$n \\ge 5$）都单」这件更重的事：判 $S_n$ 不可解只需要 $A_5$ 这一个。\n\n⚠ 第四步用了一个小事实：$A_5 \\le A_n$（$n \\ge 5$）—— 固定后 $n-5$ 个点、在前 $5$ 个点上做偶置换即可。\n\n它是 $A_n$ 的子群，而子群可解性向下传（`thm.solvable-quotients` (a)）。'
+    },
+    {
+      id: "dep.orbit-action",
+      kind: "definition",
+      definition: "def.group-action",
+      usedBy: "def.orbit",
+      note: "轨道是群作用的一个基本对象。"
+    },
+    {
+      id: "dep.stabilizer-action",
+      kind: "definition",
+      definition: "def.group-action",
+      usedBy: "def.stabilizer",
+      note: "稳定子是群作用的另一个基本对象。"
+    },
+    {
+      id: "dep.stabilizer-subgroup",
+      kind: "definition",
+      definition: "def.subgroup",
+      usedBy: "def.stabilizer",
+      note: "稳定子被证明是子群。"
+    },
+    {
+      id: "dep.orbit-os",
+      kind: "definition",
+      definition: "def.orbit",
+      usedBy: "thm.orbit-stabilizer",
+      note: "轨道–稳定子定理的陈述用到轨道。"
+    },
+    {
+      id: "dep.stabilizer-os",
+      kind: "definition",
+      definition: "def.stabilizer",
+      usedBy: "thm.orbit-stabilizer",
+      note: "轨道–稳定子定理的陈述用到稳定子。"
+    },
+    {
+      id: "dep.centralizer-action",
+      kind: "definition",
+      definition: "def.group-action",
+      usedBy: "def.centralizer",
+      note: "中心化子是共轭作用的稳定子。"
+    },
+    {
+      id: "dep.centralizer-stab",
+      kind: "implication",
+      sources: ["def.stabilizer", "def.group-action"],
+      target: "def.centralizer",
+      title: "共轭作用的稳定子 $\\implies$ 中心化子",
+      proof: "共轭作用 $g\\cdot x := g x g^{-1}$。按定义 $G_x = \\{\\, g : g x g^{-1} = x \\,\\} = \\{\\, g : gx = xg \\,\\} = C_G(x)$，两者逐元素相同。∎",
+      note: "这是识别（同一子群的两种写法），不是定义依赖：中心化子先有独立定义，本边只登记「共轭作用的稳定子恰是它」。"
+    },
+    {
+      id: "dep.centralizer-class",
+      kind: "definition",
+      definition: "def.centralizer",
+      usedBy: "thm.class-equation",
+      note: "类方程中非中心共轭类的大小是 $[G:C_G(x)]$。"
+    },
+    {
+      id: "dep.normalizer-action",
+      kind: "definition",
+      definition: "def.group-action",
+      usedBy: "def.normalizer",
+      note: "正规化子描述共轭作用如何保持子群。"
+    },
+    {
+      id: "dep.normalizer-subgroup",
+      kind: "definition",
+      definition: "def.subgroup",
+      usedBy: "def.normalizer",
+      note: "正规化子是含该子群的子群。"
+    },
+    {
+      id: "dep.normalizer-sylow",
+      kind: "definition",
+      definition: "def.normalizer",
+      usedBy: "thm.sylow",
+      note: "Sylow 计数 $n_p=[G:N_G(P)]$ 用正规化子表述。"
+    },
+    {
+      id: "dep.sylow-pgroup",
+      kind: "definition",
+      definition: "def.p-group",
+      usedBy: "def.sylow-subgroup",
+      note: "Sylow 子群是 $p$-子群中最大的一档。"
+    },
+    {
+      id: "dep.sylow-order",
+      kind: "definition",
+      definition: "def.group-order",
+      usedBy: "def.sylow-subgroup",
+      note: "Sylow 子群的阶 $p^a$ 由 $|G|=p^a m$ 界定。"
+    },
+    {
+      id: "dep.sylow-thm",
+      kind: "definition",
+      definition: "def.sylow-subgroup",
+      usedBy: "thm.sylow",
+      note: "Sylow 定理研究 Sylow 子群的存在、共轭与计数。"
+    },
+    {
+      id: "dep.pgroup-lemma",
+      kind: "definition",
+      definition: "def.p-group",
+      usedBy: "lem.p-group-subgroups",
+      note: "引理的对象是有限 $p$-群。"
+    },
+    {
+      id: "dep.lemma-class",
+      kind: "definition",
+      definition: "thm.class-equation",
+      usedBy: "lem.p-group-subgroups",
+      note: "证明用类方程得到中心非平凡。"
+    },
+    {
+      id: "imp.p-group-subgroups",
+      kind: "implication",
+      sources: [
+        "def.p-group",
+        "thm.class-equation"
+      ],
+      target: "lem.p-group-subgroups",
+      proof: "对 $|G|=p^{n}$ 归纳。$n=1$ 时 $G$ 没有真子群，结论真空成立。\n\n设 $n>1$，由类方程 $Z(G)\\ne\\{e\\}$；记 $Z=Z(G)$。\n\n**情形 1：$HZ<G$。** 因为 $Z$ 中心，$HZ=ZH$ 是子群，且 $H\\le HZ$。分两种子情形。**1a：$HZ>H$。** 由 $Z\\ne\\{e}$ 且 $HZ>H$ 知 $HZ$ 是比 $G$ 小的 $p$-群；对 $(HZ,H)$ 用归纳假设，得 $H<N_{HZ}(H)\\le N_G(H)$。**1b：$HZ=H$**（即 $Z\\subseteq H$）。此时 $H/Z$ 是 $G/Z$ 的真子群，而 $|G/Z|=p^{n-1}<p^{n}=|G|$；对 $(G/Z,H/Z)$ 用归纳假设，得 $H/Z<N_{G/Z}(H/Z)$。又 $N_{G/Z}(H/Z)=N_G(H)/Z$（$Z$ 中心且 $Z\\subseteq H$），故 $H<N_G(H)$。\n\n**情形 2：$HZ=G$。** 任取 $g\\in G$，写 $g=hz$（$h\\in H,z\\in Z$）。则 $gHg^{-1}=hzHz^{-1}h^{-1}=hHh^{-1}=H$，故 $H\\trianglelefteq G$，即 $N_G(H)=G>H$。\n\n两种情形都给出 $H<N_G(H)$。指数 $p$ 的子群自动正规：这时 $[G:N_G(H)]$ 整除 $p$ 且 $N_G(H)>H$，故 $N_G(H)=G$。$\\blacksquare$",
+      note: "多源：$p$-群的定义与类方程（中心非平凡）共同支撑；证明按 $HZ$ 是否等于 $G$ 分情形。"
     }
   ]
 });

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14T05:42:00.644Z",
+ "generated": "2026-11-14T07:43:17.673Z",
  "terms": 76,
  "missing": [
   {
@@ -100,8 +100,12 @@
   },
   {
    "term": "素因子",
-   "total": 10,
+   "total": 11,
    "nodes": [
+    {
+     "id": "def.p-group",
+     "c": 1
+    },
     {
      "id": "thm.minimal-poly-divisor",
      "c": 1
@@ -365,85 +369,13 @@
  ],
  "noEdge": [
   {
-   "node": "thm.za-analytic",
-   "nodeLabel": "有限生成代数的解析环",
-   "nodeLayer": 0,
-   "def": "def.pre-analytic-ring",
-   "defLabel": "预解析环",
-   "defLayer": 19,
-   "gap": 19
-  },
-  {
-   "node": "thm.weierstrass-convergence",
-   "nodeLabel": "Weierstrass 收敛性定理",
-   "nodeLayer": 0,
-   "def": "def.uniform-convergence",
-   "defLabel": "一致收敛",
-   "defLayer": 16,
-   "gap": 16
-  },
-  {
    "node": "ex.projective-plane",
    "nodeLabel": "射影平面 RP²",
    "nodeLayer": 18,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 31,
-   "gap": 13
-  },
-  {
-   "node": "def.completely-normal-space",
-   "nodeLabel": "完全正规空间",
-   "nodeLayer": 6,
-   "def": "def.subspace",
-   "defLabel": "子空间",
-   "defLayer": 12,
-   "gap": 6
-  },
-  {
-   "node": "prop.generator-coproduct-epi",
-   "nodeLabel": "生成元的余积刻画",
-   "nodeLayer": 11,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 5
-  },
-  {
-   "node": "thm.classification-surfaces",
-   "nodeLabel": "闭曲面分类定理",
-   "nodeLayer": 26,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 31,
-   "gap": 5
-  },
-  {
-   "node": "prop.eulerchar-nonorientable",
-   "nodeLabel": "Euler 示性数与不可定向亏格",
-   "nodeLayer": 26,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 31,
-   "gap": 5
-  },
-  {
-   "node": "def.jordan-curve",
-   "nodeLabel": "Jordan 曲线",
-   "nodeLayer": 8,
-   "def": "def.subspace",
-   "defLabel": "子空间",
-   "defLayer": 12,
-   "gap": 4
-  },
-  {
-   "node": "prop.adjoint-additive",
-   "nodeLabel": "伴随函子都加法",
-   "nodeLayer": 10,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 4
+   "defLayer": 32,
+   "gap": 14
   },
   {
    "node": "def.riemannian-metric",
@@ -455,96 +387,6 @@
    "gap": 3
   },
   {
-   "node": "def.cochain-complex",
-   "nodeLabel": "上链复形",
-   "nodeLayer": 12,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 2
-  },
-  {
-   "node": "def.module-category",
-   "nodeLabel": "模范畴",
-   "nodeLayer": 10,
-   "def": "def.linear-map",
-   "defLabel": "线性映射",
-   "defLayer": 12,
-   "gap": 2
-  },
-  {
-   "node": "thm.derived-long-exact",
-   "nodeLabel": "导出函子的长正合列",
-   "nodeLayer": 14,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 2
-  },
-  {
-   "node": "prop.left-exact-criterion",
-   "nodeLabel": "左正合性的判据",
-   "nodeLayer": 14,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 2
-  },
-  {
-   "node": "prop.left-exact-iff-R0",
-   "nodeLabel": "左正合性与 R⁰",
-   "nodeLayer": 14,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 2
-  },
-  {
-   "node": "prop.additive-complex-construction",
-   "nodeLabel": "加法函子与复形构造交换",
-   "nodeLayer": 13,
-   "def": "def.category-of-complexes",
-   "defLabel": "复形范畴",
-   "defLayer": 15,
-   "gap": 2
-  },
-  {
-   "node": "lem.almost-orthogonal",
-   "nodeLabel": "几乎正交引理",
-   "nodeLayer": 13,
-   "def": "def.normed-space",
-   "defLabel": "赋范空间",
-   "defLayer": 15,
-   "gap": 2
-  },
-  {
-   "node": "def.bounded-operator",
-   "nodeLabel": "有界线性算子",
-   "nodeLayer": 13,
-   "def": "def.normed-space",
-   "defLabel": "赋范空间",
-   "defLayer": 15,
-   "gap": 2
-  },
-  {
-   "node": "def.schauder-basis",
-   "nodeLabel": "Schauder 基",
-   "nodeLayer": 13,
-   "def": "def.normed-space",
-   "defLabel": "赋范空间",
-   "defLayer": 15,
-   "gap": 2
-  },
-  {
-   "node": "def.strictly-convex",
-   "nodeLabel": "严格凸",
-   "nodeLayer": 13,
-   "def": "def.normed-space",
-   "defLabel": "赋范空间",
-   "defLayer": 15,
-   "gap": 2
-  },
-  {
    "node": "def.weak-star-topology",
    "nodeLabel": "弱*拓扑",
    "nodeLayer": 16,
@@ -552,51 +394,6 @@
    "defLabel": "弱拓扑",
    "defLayer": 18,
    "gap": 2
-  },
-  {
-   "node": "thm.hahn-banach",
-   "nodeLabel": "Hahn–Banach 定理",
-   "nodeLayer": 13,
-   "def": "def.normed-space",
-   "defLabel": "赋范空间",
-   "defLayer": 15,
-   "gap": 2
-  },
-  {
-   "node": "prop.injective-criterion",
-   "nodeLabel": "内射对象的判据",
-   "nodeLayer": 15,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 1
-  },
-  {
-   "node": "def.filtration",
-   "nodeLabel": "过滤",
-   "nodeLayer": 15,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 1
-  },
-  {
-   "node": "def.bicomplex",
-   "nodeLabel": "双复形",
-   "nodeLayer": 13,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 1
-  },
-  {
-   "node": "prop.simplicial-to-chain",
-   "nodeLabel": "单纯对象给出链复形",
-   "nodeLayer": 13,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 1
   },
   {
    "node": "def.injective-dimension",
@@ -608,21 +405,12 @@
    "gap": 1
   },
   {
-   "node": "thm.linear-continuous-bounded",
-   "nodeLabel": "连续 ⟺ 有界",
+   "node": "prop.low-degree-exact",
+   "nodeLabel": "低次正合列",
    "nodeLayer": 14,
-   "def": "def.normed-space",
-   "defLabel": "赋范空间",
+   "def": "def.cochain-complex",
+   "defLabel": "上链复形",
    "defLayer": 15,
-   "gap": 1
-  },
-  {
-   "node": "ex.klein-bottle",
-   "nodeLabel": "克莱因瓶",
-   "nodeLayer": 30,
-   "def": "def.nonorientable-genus",
-   "defLabel": "不可定向亏格",
-   "defLayer": 31,
    "gap": 1
   },
   {
@@ -653,6 +441,15 @@
    "gap": 0
   },
   {
+   "node": "def.cohomology",
+   "nodeLabel": "同调",
+   "nodeLayer": 17,
+   "def": "def.abelian-category",
+   "defLabel": "阿贝尔范畴",
+   "defLayer": 17,
+   "gap": 0
+  },
+  {
    "node": "def.group-power",
    "nodeLabel": "群的整数幂",
    "nodeLayer": 8,
@@ -664,108 +461,28 @@
   {
    "node": "def.cech-complex",
    "nodeLabel": "Čech 复形",
-   "nodeLayer": 13,
+   "nodeLayer": 16,
    "def": "def.bicomplex",
    "defLabel": "双复形",
-   "defLayer": 13,
-   "gap": 0
-  },
-  {
-   "node": "def.exact-sequence",
-   "nodeLabel": "一般正合列",
-   "nodeLayer": 16,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
    "defLayer": 16,
    "gap": 0
   },
   {
-   "node": "def.kernel-cokernel",
-   "nodeLabel": "核与余核",
-   "nodeLayer": 14,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 0
-  },
-  {
-   "node": "prop.additive-iff-preserves-biproduct",
-   "nodeLabel": "加法函子的刻画",
-   "nodeLayer": 14,
-   "def": "def.additive-category",
-   "defLabel": "加法范畴",
-   "defLayer": 14,
-   "gap": 0
-  },
-  {
-   "node": "prop.injective-iff-acyclic",
-   "nodeLabel": "内射与零调的等价",
-   "nodeLayer": 16,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 16,
-   "gap": 0
-  },
-  {
-   "node": "lem.adapted-frame",
-   "nodeLabel": "适配标架",
-   "nodeLayer": 25,
-   "def": "def.connection-form",
-   "defLabel": "联络形式",
-   "defLayer": 25,
-   "gap": 0
-  },
-  {
-   "node": "prop.pullback-forms",
-   "nodeLabel": "拉回（开集间）",
+   "node": "prop.derived-pushforward-composition",
+   "nodeLabel": "推前的复合",
    "nodeLayer": 19,
-   "def": "def.smooth-map",
-   "defLabel": "光滑映射",
+   "def": "def.spectral-sequence",
+   "defLabel": "谱序列",
    "defLayer": 19,
-   "gap": 0
-  },
-  {
-   "node": "def.divergence",
-   "nodeLabel": "散度",
-   "nodeLayer": 25,
-   "def": "def.lie-derivative",
-   "defLabel": "Lie 导数",
-   "defLayer": 25,
-   "gap": 0
-  },
-  {
-   "node": "def.primitive-root",
-   "nodeLabel": "原根",
-   "nodeLayer": 9,
-   "def": "def.cyclic-group",
-   "defLabel": "循环群",
-   "defLayer": 9,
-   "gap": 0
-  },
-  {
-   "node": "def.nilpotent",
-   "nodeLabel": "幂零",
-   "nodeLayer": 16,
-   "def": "def.char-poly",
-   "defLabel": "特征多项式",
-   "defLayer": 16,
-   "gap": 0
-  },
-  {
-   "node": "thm.convex-star-shaped-every-point",
-   "nodeLabel": "凸集在每一点处星形",
-   "nodeLayer": 12,
-   "def": "def.star-shaped",
-   "defLabel": "星形集",
-   "defLayer": 12,
    "gap": 0
   }
  ],
- "noEdgeAll": 80,
+ "noEdgeAll": 47,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",
   "thm.darboux>def.riemannian-metric",
+  "def.empty>def.first-order-language",
   "def.injective-dimension>def.projective-dimension"
  ],
  "never": [

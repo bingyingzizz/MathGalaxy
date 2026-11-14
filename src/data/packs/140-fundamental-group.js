@@ -965,5 +965,12 @@
       "proof": "道路提升：取 $b_0$ 的开覆盖 $\\mathcal U$，使每个 $U\\in\\mathcal U$ 均匀覆叠、$p^{-1}(U)$ 是互不相交的开片且每片同胚到 $U$。由紧性取 Lebesgue 数 $\\delta>0$：$[0,1]$ 中长度 $<\\delta$ 的子区间落在某个 $\\alpha^{-1}(U)$ 中。取分割 $0=t_0<\\ldots<t_N=1$ 使每段长度 $<\\delta$。\n\n归纳构造 $\\tilde\\alpha$：$\\tilde\\alpha(0)=e_0$；若已定义到 $t_k$，取 $U_k\\ni\\alpha(t_k)$ 均匀覆叠，$\\alpha([t_k,t_{k+1}])\\subseteq U_k$，令 $\\tilde\\alpha$ 在 $[t_k,t_{k+1}]$ 上为 $\\alpha$ 在含 $\\tilde\\alpha(t_k)$ 的那片上的逆同胚下的像。唯一性：相邻两步的片由起点与连续性唯一确定。\n\n同伦提升：$F:[0,1]^2\\to B$ 连续、$F(0,0)=b_0$。由紧性取 $\\delta>0$ 使每个边长 $<\\delta$ 的小方块落在某个均匀覆叠的开集里，并细分 $[0,1]^2$ 成这样的方块。先在 $s=0$ 的边上提升 $F(\\cdot,0)$（道路提升），再对每个小方块用矩形提升引理：若 $F$ 把方块映进均匀覆叠的 $U$ 且已提升一条边，则唯一地提升整个方块。逐块延拓得 $\\tilde F$，唯一性由每步唯一。\n\n若 $F$ 是道路同伦（$F(0,s)=b_0$、$F(1,s)=b_1$ 固定），则 $s\\mapsto\\tilde F(0,s)$ 是 $p^{-1}(b_0)$ 中的连通集，而 $p^{-1}(b_0)$ 离散，故它常值 $e_0$；同理 $\\tilde F(1,s)$ 常值。∎",
       "note": "完整证明见本条边；节点注只保留动机与缺口。"
     },
+    {
+      id: "dep.quotient-manifold-smooth",
+      kind: 'definition',
+      definition: "def.smooth-manifold",
+      usedBy: "lem.free-proper-quotient-manifold",
+      note: "商流形引理的结论是商空间为光滑流形，需先有光滑流形定义。"
+    }
   ],
 });

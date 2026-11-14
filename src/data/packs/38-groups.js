@@ -75,6 +75,29 @@ window.MG = window.MG || {};
 
     /* ---------------------------------------------------------- 子群 */
     {
+      id: "def.p-group",
+      cluster: "algebra.structures",
+      type: "definition",
+      label: "p-群",
+      title: "p-群与 p-子群",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群",
+        "p-群",
+        "Sylow"
+      ],
+      statement: "设 $p$ 是素数，$G$ 是有限群。若 $|G| = p^{n}$（$n \\ge 0$），称 $G$ 是 **$p$-群**。\n等价地，$G$ 的每个元素的阶都是 $p$ 的幂：元素的阶整除 $|G|$，故只能是 $p$ 的幂；反之若每个元素的阶都是 $p$ 的幂，由 Cauchy 定理 $|G|$ 没有其他素因子，故 $|G|$ 是 $p$ 的幂。\n\n子群 $H \\le G$ 若本身是 $p$-群，称 **$p$-子群**；$G$ 的极大 $p$-子群（按包含关系）叫 **Sylow $p$-子群**，见 `def.sylow-subgroup`。",
+      notes: "⭐ 例：$\\mathbb{Z}/p^{n}$、$V_4 = \\mathbb{Z}/2 \\times \\mathbb{Z}/2$、$p$-群的中心非平凡（类方程的直接推论）。\n\n⚠ $p$-群不必阿贝尔：$D_8$（$8$ 阶二面体群）是 $2$-群但不交换。\n\n⭐ $p$-群可解，而且是幂零群：它的下中心列每一步都真增长，有限步到 $G$（因为中心非平凡，对 $G/Z$ 归纳）。",
+      refs: [
+        "Lang, Algebra, Ch. I §6",
+        "Dummit–Foote, Abstract Algebra, §4.3"
+      ]
+    },
+    {
       id: 'def.subgroup',
       cluster: 'algebra.structures',
       type: 'definition',
@@ -152,6 +175,98 @@ window.MG = window.MG || {};
     },
 
     /* -------------------------------------------------------- 同态 */
+    {
+      id: "def.commutator-subgroup",
+      cluster: "algebra.structures",
+      type: "definition",
+      label: "换位子群",
+      title: "换位子与换位子群（导群）",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群",
+        "换位子",
+        "导群"
+      ],
+      statement: "设 $G$ 是群。对 $x, y \\in G$，元素\n$[x, y] := x y x^{-1} y^{-1}$\n叫 $x$ 与 $y$ 的**交换子**。由全体交换子生成的子群\n$[G, G] := \\langle\\, [x, y] : x, y \\in G \\,\\rangle \\le G$\n叫 $G$ 的**换位子群**（也叫**导群**）。\n\n**[G,G] 正规**，且商 $G/[G,G]$ 阿贝尔。更强地，若 $N \\trianglelefteq G$ 使 $G/N$ 阿贝尔，则 $[G,G] \\subseteq N$；所以 $G/[G,G]$ 是 $G$ 的**极大阿贝尔商**。",
+      notes: "⭐ 交换子本身不满足结合律，$[[x,y],z] \\ne [x,[y,z]]$ 一般；生成的子群才是有用的对象。\n\n⭐ 例：$[S_n, S_n] = A_n$；$[G, G] = \\{e\\}$ 当且仅当 $G$ 阿贝尔。\n\n⭐ 与可解性的关系：令 $G^{(0)} = G$、$G^{(i+1)} = [G^{(i)}, G^{(i)}]$（**导列**）。$G$ 可解当且仅当某个 $G^{(i)} = \\{e\\}$。\n\n⚠ 与**下中心列** $\\gamma_{i+1} = [G, \\gamma_i]$ 不同：导列要求每步把自己换位，下中心列只与 $G$ 换位；下中心列终止给出幂零群，比可解强。",
+      refs: [
+        "Lang, Algebra, Ch. I §5",
+        "Dummit–Foote, Abstract Algebra, §5.4"
+      ]
+    },
+    {
+      id: "def.nilpotent-group",
+      cluster: "algebra.structures",
+      type: "definition",
+      label: "幂零群",
+      title: "幂零群：下中心列终止",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群",
+        "幂零群",
+        "下中心列"
+      ],
+      statement: "设 $G$ 是群。归纳定义**下中心列**\n$\\gamma_0 = G, \\qquad \\gamma_{i+1} = [G, \\gamma_i] = \\langle\\, [g, x] : g \\in G,\\ x \\in \\gamma_i \\,\\rangle .$\n若存在 $c \\ge 0$ 使 $\\gamma_c = \\{e\\}$，称 $G$ 是**幂零群**；最小的这样的 $c$ 叫 $G$ 的**幂零类**。\n\n等价地，**上中心列** $Z_0 = \\{e\\}$、$Z_{i+1}/Z_i := Z(G/Z_i)$ 在有限步到达 $G$。",
+      notes: "⭐ 例：非平凡阿贝尔群幂零类 $1$（$\\gamma_1 = \\{e\\}$），平凡群幂零类 $0$；$D_8$ 幂零类 $2$；有限 $p$-群都幂零；$S_3$ 不幂零（$\\gamma_1 = A_3$，$\\gamma_2 = A_3 \\ne \\{e\\}$）。\n\n⭐ 幂零 $\\implies$ 可解：归纳有 $\\gamma_i \\subseteq G^{(i)}$，故导列比下中心列先终止。反之不然（$S_3$ 可解不幂零）。\n\n⚠ 幂零群的子群与商群仍幂零；但扩张不必幂零。",
+      refs: [
+        "Lang, Algebra, Ch. I §6",
+        "Dummit–Foote, Abstract Algebra, §6.1"
+      ]
+    },
+    {
+      id: "def.automorphism-group",
+      cluster: "algebra.structures",
+      type: "definition",
+      label: "自同构群",
+      title: "自同构群与内自同构群",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群",
+        "自同构",
+        "内自同构"
+      ],
+      statement: "设 $G$ 是群。$G$ 到自身的同构 $\\sigma : G \\to G$ 叫**自同构**；全体自同构在复合下构成群\n$\\operatorname{Aut}(G) \\le \\operatorname{Sym}(G),$\n叫 $G$ 的**自同构群**。\n\n对 $g \\in G$，映射 $c_g(x) := gxg^{-1}$ 是自同构，叫**内自同构**；全体内自同构\n$\\operatorname{Inn}(G) := \\{\\, c_g : g \\in G \\,\\} \\trianglelefteq \\operatorname{Aut}(G)$\n构成正规子群，且 $\\operatorname{Inn}(G) \\cong G/Z(G)$。商 $\\operatorname{Out}(G) := \\operatorname{Aut}(G)/\\operatorname{Inn}(G)$ 叫**外自同构群**。",
+      notes: "⭐ 例：$\\operatorname{Aut}(\\mathbb{Z}/n) \\cong (\\mathbb{Z}/n)^{\\times}$；$\\operatorname{Aut}(V_4) \\cong S_3$；$n \\ne 6$ 时 $\\operatorname{Aut}(S_n) = \\operatorname{Inn}(S_n) \\cong S_n$。\n\n⚠ $n = 6$ 是例外：$S_6$ 有外自同构，$\\operatorname{Out}(S_6)$ 阶 $2$。\n\n⭐ 内自同构的核是中心 $Z(G)$：$c_g = \\mathrm{id} \\iff g \\in Z(G)$，这正是 $G/Z(G) \\cong \\operatorname{Inn}(G)$ 的来源。",
+      refs: [
+        "Lang, Algebra, Ch. I §5",
+        "Dummit–Foote, Abstract Algebra, §4.4"
+      ]
+    },
+    {
+      id: "def.inner-automorphism",
+      cluster: "algebra.structures",
+      type: "definition",
+      label: "内自同构",
+      title: "内自同构：共轭作用给出的自同构",
+      regions: [
+        "algebra"
+      ],
+      tags: [
+        "定义",
+        "代数",
+        "群",
+        "内自同构",
+        "共轭"
+      ],
+      statement: "设 $G$ 是群，$g \\in G$。映射\n$c_g : G \\to G, \\qquad c_g(x) := g x g^{-1}$\n是 $G$ 的自同构，称为由 $g$ 决定的**内自同构**。全体内自同构\n$\\operatorname{Inn}(G) := \\{\\, c_g : g \\in G \\,\\}$\n在复合下构成群，且 $\\operatorname{Inn}(G) \\cong G/Z(G)$、$\\operatorname{Inn}(G) \\trianglelefteq \\operatorname{Aut}(G)$。",
+      notes: "⭐ 内自同构正是**共轭作用** $G$ 在自身上的像：$c_g$ 就是 $x \\mapsto g \\cdot x$（共轭作用）。\n\n⭐ 内自同构群平凡 $\\iff$ $G$ 阿贝尔；此时 $\\operatorname{Inn}(G) = \\{\\mathrm{id}\\}$、$\\operatorname{Out}(G) = \\operatorname{Aut}(G)$。\n\n⭐ 例：$S_n$ 的内自同构就是按循环型保持的共轭；$GL_n(K)$ 的内自同构是 $A \\mapsto P A P^{-1}$。",
+      refs: [
+        "Lang, Algebra, Ch. I §5",
+        "Dummit–Foote, Abstract Algebra, §4.4"
+      ]
+    },
     {
       id: 'def.group-hom',
       cluster: 'algebra.structures',
@@ -274,5 +389,86 @@ window.MG = window.MG || {};
       note: 'D_n 作用在正 n 边形的顶点集上。' },
     { id: 'dep.dihedral-classeq', kind: 'definition', definition: 'thm.class-equation', usedBy: 'def.dihedral-group',
       note: 'D_n 的共轭类可用类方程分析。' },
+    {
+      id: "dep.pgroup-group",
+      kind: "definition",
+      definition: "def.group",
+      usedBy: "def.p-group",
+      note: "p-群首先是一个群；定义在其上再加阶为素数幂的条件。"
+    },
+    {
+      id: "dep.commutator-group",
+      kind: "definition",
+      definition: "def.group",
+      usedBy: "def.commutator-subgroup",
+      note: "交换子用群乘法与逆元定义。"
+    },
+    {
+      id: "dep.commutator-subgroup",
+      kind: "definition",
+      definition: "def.subgroup",
+      usedBy: "def.commutator-subgroup",
+      note: "换位子群是由交换子生成的子群。"
+    },
+    {
+      id: "dep.commutator-solvable",
+      kind: "definition",
+      definition: "def.commutator-subgroup",
+      usedBy: "def.solvable-group",
+      note: "可解性用导列 $G^{(i+1)}=[G^{(i)},G^{(i)}]$ 定义。"
+    },
+    {
+      id: "dep.nilpotent-group",
+      kind: "definition",
+      definition: "def.group",
+      usedBy: "def.nilpotent-group",
+      note: "下中心列用群乘法与换位子定义。"
+    },
+    {
+      id: "dep.nilpotent-commutator",
+      kind: "definition",
+      definition: "def.commutator-subgroup",
+      usedBy: "def.nilpotent-group",
+      note: "下中心列是换位子子群的迭代。"
+    },
+    {
+      id: "imp.nilpotent-solvable",
+      kind: "implication",
+      sources: [
+        "def.nilpotent-group"
+      ],
+      target: "def.solvable-group",
+      title: "幂零群可解",
+      proof: "设 $\\gamma_0 = G$、$\\gamma_{i+1} = [G, \\gamma_i]$，并设 $G^{(i)}$ 是导列。对 $i$ 归纳证明 $\\gamma_i \\subseteq G^{(i)}$。\n\n$i = 0$：$\\gamma_0 = G = G^{(0)}$。若 $\\gamma_i \\subseteq G^{(i)}$，则\n$$\\gamma_{i+1} = [G, \\gamma_i] \\subseteq [G, G^{(i)}] = G^{(i+1)} .$$\n若 $G$ 幂零，取 $c$ 使 $\\gamma_c = \\{e\\}$，则 $G^{(c)} \\supseteq \\gamma_c = \\{e\\}$，故 $G^{(c)} = \\{e\\}$，即 $G$ 可解。$\\blacksquare$",
+      note: "$\\gamma_i \\subseteq G^{(i)}$ 是关键：下中心列夹在导列与 $G$ 之间。"
+    },
+    {
+      id: "dep.automorphism-group",
+      kind: "definition",
+      definition: "def.group",
+      usedBy: "def.automorphism-group",
+      note: "自同构是群到自身的同构，先有群结构。"
+    },
+    {
+      id: "dep.automorphism-hom",
+      kind: "definition",
+      definition: "def.group-hom",
+      usedBy: "def.automorphism-group",
+      note: "自同构是同态的特殊情形（双射同态）。"
+    },
+    {
+      id: "dep.inner-automorphism",
+      kind: "definition",
+      definition: "def.automorphism-group",
+      usedBy: "def.inner-automorphism",
+      note: "内自同构是自同构群的正规子群。"
+    },
+    {
+      id: "dep.inner-conjugation",
+      kind: "definition",
+      definition: "def.group-action",
+      usedBy: "def.inner-automorphism",
+      note: "共轭作用是群在自身上的作用，其像即内自同构。"
+    }
   ]
 });

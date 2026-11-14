@@ -246,6 +246,13 @@ window.MG = window.MG || {};
       note: '同一时候它也是合同 —— 因为 $Q^{T} = Q^{-1}$。这一条正是「填上那一格」的关键。' },
     { id: 'dep.orthsim-unitary', kind: 'definition',
       definition: 'def.unitary-matrix', usedBy: 'def.orthogonally-similar',
-      note: '复情形把正交矩阵换成酉矩阵。' }
+      note: '复情形把正交矩阵换成酉矩阵。' },
+    {
+      id: "dep.nilpotent-charpoly",
+      kind: 'definition',
+      definition: "def.char-poly",
+      usedBy: "def.nilpotent",
+      note: "幂零的等价条件用特征多项式表述。"
+    }
   ]
 });

@@ -173,6 +173,13 @@ window.MG = window.MG || {};
       definition: 'def.sheaf-cohomology',
       usedBy: 'prop.presheaf-representable-acyclic',
       note: '结论是「预层情形下可表示对象的上同调为零」，与层上同调对照。'
+    },
+    {
+      id: "dep.injacyclic-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "prop.injective-iff-acyclic",
+      note: "内射等价于无环，在阿贝尔范畴中。"
     }
   ]
 });

@@ -384,5 +384,19 @@ window.MG = window.MG || {};
         '所以「Bézout」在图里出现两次是对的：一次是 $\\mathbb{Z}$ 上的定理，一次是整环上的类名 —— 后者包含了前者，也包含了 $K[x]$。',
       ].join('\n\n'),
     },
+    {
+      id: "dep.bezout-principal",
+      kind: 'definition',
+      definition: "def.principal-ideal",
+      usedBy: "def.bezout-domain",
+      note: "Bézout 整环要求有限生成理想主。"
+    },
+    {
+      id: "dep.pid-principal",
+      kind: 'definition',
+      definition: "def.principal-ideal",
+      usedBy: "def.pid",
+      note: "主理想整环要求每个理想都是主理想。"
+    }
   ],
 });

@@ -627,5 +627,12 @@
 
     {"id":"dep.n12-crossratio-mobiuscircle","kind":"definition","definition":"def.cross-ratio","usedBy":"prop.mobius-circle","note":"交比在分式线性变换下不变，是判定四点共圆/共线的工具。"},
     {"id":"dep.n12-complexelem-standardmaps","kind":"definition","definition":"def.complex-elementary","usedBy":"prop.standard-maps","note":"幂、指数、对数等初等函数是标准共形映射的构件。"},
+    {
+      id: "dep.crossratio-real-crossratio",
+      kind: 'definition',
+      definition: "def.cross-ratio",
+      usedBy: "prop.cross-ratio-real",
+      note: "实交比命题是交比在实轴上的特殊情形。"
+    }
   ],
 });

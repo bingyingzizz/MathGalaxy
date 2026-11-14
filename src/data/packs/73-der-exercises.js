@@ -299,6 +299,13 @@ window.MG = window.MG || {};
       usedBy: 'prop.cech-cochain-formula',
       note: '推导用的是自由对象把余积换成直和。'
     }
-
+,
+    {
+      id: "dep.addcomplex-complexcat",
+      kind: 'definition',
+      definition: "def.category-of-complexes",
+      usedBy: "prop.additive-complex-construction",
+      note: "复形构造以复形范畴为语境。"
+    }
   ]
 });

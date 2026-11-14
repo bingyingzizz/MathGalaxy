@@ -761,6 +761,27 @@ window.MG = window.MG || {};
         '**连接同态 $\\delta$ 是从哪来的。** 它就是三角里的第三条腿 $M \\to K[1]$ 取同调之后的样子：一个 $H^{n}(M) \\to H^{n+1}(K)$ 的映射，把「$M$ 里的元素」送上「$K$ 的下一个同调」。它之所以存在，唯一的原因就是**映射锥给了第三条腿** —— 短正合列本身只给出前两条腿。∎'
       ].join('\n'),
       note: '经典证明用蛇引理，这里用映射锥 + 旋转。两条路都通，但后者的好处是：**连接同态是什么**这件事，一眼就能看出来。'
+    },
+    {
+      id: "dep.cochain-additive",
+      kind: 'definition',
+      definition: "def.additive-category",
+      usedBy: "def.cochain-complex",
+      note: "复形定义在加法范畴中。"
+    },
+    {
+      id: "dep.injcrit-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "prop.injective-criterion",
+      note: "内射性判据在阿贝尔范畴中。"
+    },
+    {
+      id: "dep.filtration-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "def.filtration",
+      note: "滤过是阿贝尔范畴中对象上的结构。"
     }
   ]
 });

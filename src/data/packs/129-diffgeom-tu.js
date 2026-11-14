@@ -1492,5 +1492,12 @@ window.MG = window.MG || {};
     },
 
     {"id":"ana.n12-riemannmetric-bundlemetric","kind":"analogy","a":"def.riemannian-metric","b":"prop.bundle-metric","note":"同一个凸组合论证，把 $TM$ 换成任意向量丛即得丛度量。"},
+    {
+      id: "dep.pullback-smoothmap",
+      kind: 'definition',
+      definition: "def.smooth-map",
+      usedBy: "prop.pullback-forms",
+      note: "拉回形式沿光滑映射定义。"
+    }
   ]
 });

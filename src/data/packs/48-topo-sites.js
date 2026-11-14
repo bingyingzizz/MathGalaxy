@@ -194,5 +194,13 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    {
+      id: "dep.lch-compact",
+      kind: 'definition',
+      definition: "def.compact",
+      usedBy: "def.locally-compact-space",
+      note: "局部紧空间的紧子集讨论以紧性为基础。"
+    }
+  ]
 });

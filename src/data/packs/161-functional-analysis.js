@@ -1678,5 +1678,54 @@ window.MG = window.MG || {};
       "proof": "对 $x\\in E$，\n$$\\lVert v(ux)\\rVert\\le\\lVert v\\rVert\\,\\lVert ux\\rVert\\le\\lVert v\\rVert\\,\\lVert u\\rVert\\,\\lVert x\\rVert ,$$\n故 $vu$ 有界且 $\\lVert vu\\rVert\\le\\lVert v\\rVert\\lVert u\\rVert$（右边是 $\\lVert vu\\rVert$ 的定义下确界的一个上界）。\n\n乘法连续性：\n$$\\lVert v_1u_1-v_2u_2\\rVert\\le\\lVert v_1\\rVert\\lVert u_1-u_2\\rVert+\\lVert v_1-v_2\\rVert\\lVert u_2\\rVert ,$$\n故 $(u,v)\\mapsto vu$ 连续。\n\n$B(E)$ 含单位 $\\mathrm{id}$，$E\\ne\\{0\\}$ 时 $\\lVert\\mathrm{id}\\rVert=1$，故是赋范代数。∎",
       "note": "完整证明见本条边；节点注只保留动机与缺口。"
     },
+    {
+      id: "dep.almostorth-normed",
+      kind: 'definition',
+      definition: "def.normed-space",
+      usedBy: "lem.almost-orthogonal",
+      note: "几乎正交引理在赋范空间中进行。"
+    },
+    {
+      id: "dep.boundedop-normed",
+      kind: 'definition',
+      definition: "def.normed-space",
+      usedBy: "def.bounded-operator",
+      note: "有界算子定义在赋范空间之间。"
+    },
+    {
+      id: "dep.schauder-normed",
+      kind: 'definition',
+      definition: "def.normed-space",
+      usedBy: "def.schauder-basis",
+      note: "Schauder 基是赋范空间中的序列。"
+    },
+    {
+      id: "dep.strictlyconvex-normed",
+      kind: 'definition',
+      definition: "def.normed-space",
+      usedBy: "def.strictly-convex",
+      note: "严格凸性是赋范空间范数的性质。"
+    },
+    {
+      id: "dep.linearcont-normed",
+      kind: 'definition',
+      definition: "def.normed-space",
+      usedBy: "thm.linear-continuous-bounded",
+      note: "线性映射连续等价有界，在赋范空间之间。"
+    },
+    {
+      id: "dep.convexstar-star",
+      kind: 'definition',
+      definition: "def.star-shaped",
+      usedBy: "thm.convex-star-shaped-every-point",
+      note: "定理的结论是每点处星形。"
+    },
+    {
+      id: "dep.hahnbanach-normed",
+      kind: 'definition',
+      definition: "def.normed-space",
+      usedBy: "thm.hahn-banach",
+      note: "Hahn–Banach 定理在赋范空间（次线性泛函控制）中陈述。"
+    }
   ]
 });

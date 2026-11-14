@@ -691,5 +691,12 @@ window.MG = window.MG || {};
       usedBy: 'lem.newman-tauberian',
       note: '整个证明就是对 $C=\\partial D$ 的围道积分做估计。' },
 
+    {
+      id: "dep.mobius-multiplicative",
+      kind: 'definition',
+      definition: "def.multiplicative-function",
+      usedBy: "def.mobius-function",
+      note: "Möbius 函数是积性函数，积性定义是其直接上位概念。"
+    }
   ],
 });

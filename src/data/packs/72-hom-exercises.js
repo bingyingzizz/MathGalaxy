@@ -276,6 +276,13 @@ window.MG = window.MG || {};
       usedBy: 'prop.free-sheaf-tensor',
       note: '两边都是自由对象。'
     }
-
+,
+    {
+      id: "dep.gencoproduct-abelian",
+      kind: 'definition',
+      definition: "def.abelian-category",
+      usedBy: "prop.generator-coproduct-epi",
+      note: "命题在阿贝尔范畴中讨论生成元与余积。"
+    }
   ]
 });

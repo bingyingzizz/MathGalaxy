@@ -2204,9 +2204,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
 
     'def.ideal': {
       statement: {
-        en: "Let $A$ be a ring. A subset $I \\subseteq A$ is called a **(two-sided) ideal** if $(I, +)$ is an additive subgroup and, for all $a \\in A$ and $x \\in I$,\n\n$$a x \\in I, \\qquad x a \\in I.$$\n\n(Requiring only $a x \\in I$ gives a **left ideal**, and only $x a \\in I$ a **right ideal**; in a commutative ring the three notions coincide.)\n\nMultiplication $(a + I)(b + I) := ab + I$ on the quotient set $A/I$ (by additive cosets) is well defined, and the resulting ring is called the **quotient ring**.",
+        en: "Let $A$ be a ring. A subset $I \\subseteq A$ is a **(two-sided) ideal** if $(I, +)$ is an additive subgroup and, for all $a \\in A$ and $x \\in I$,\n\n$$a x \\in I, \\qquad x a \\in I.$$\n\n(An ideal requiring only $a x \\in I$ is a **left ideal**, and one requiring only $x a \\in I$ is a **right ideal**; for a commutative ring the three notions agree.)\n\nThe construction of quotient rings (quotient set, well-defined operations, universal property) is a separate node, see `def.quotient-ring`.",
         status: 'draft',
-        basedOn: 'v0.9.3#731bbcb6',
+        basedOn: 'v0.9.3#679bacae',
       },
       notes: {
         en: "**Why ideals are defined this way.** The problem is exactly the same as for normal subgroups: to define multiplication on the quotient set, $(a + I)(b + I)$ must not depend on the representatives. Compute $(a + x)(b + y) = ab + ay + xb + xy$ — the last three terms must all lie in $I$. That $xy \\in I$ is **not** guaranteed by \"$I$ is a subgroup\" and must be **required separately**.\n\n⭐ **Comparison table**: to quotient a **group** and get a group, one quotients by a **normal subgroup**; to quotient a **ring** and get a ring, one quotients by an **ideal**. (As an additive subgroup, $I$ is of course automatically normal — the additive group is abelian — so no extra condition is needed on that side.)\n\nThe **principal ideal** $(a) := \\{\\, xa : x \\in A \\,\\}$ (in a commutative ring, the set of all multiples of $a$). ⚠️ In a general ring this set is only a **left** ideal: for $A = M_2(\\mathbb{R})$ and $a = E_{11}$, $E_{11}E_{12} = E_{12} \\notin Aa$. In a general ring the correct definition of $(a)$ is \"the smallest two-sided ideal containing $a$\". $A/(a)$ is the ring obtained by \"setting $a$ equal to $0$\"; $\\mathbb{Z}/(n) = \\mathbb{Z}/n\\mathbb{Z}$ is congruence modulo $n$.",
@@ -3556,9 +3556,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
 
     'prop.prime-ideal': {
       statement: {
-        en: "Let $A$ be a commutative ring with unit, $P, M \\subset A$ a **proper ideal** (proper; if $P = A$ were allowed, \"$A/P$ is an integral domain\" would fail; if $M = A$ were allowed, \"maximal\" would fail).\n\n**(i)** $P$ is called **prime** if $ab \\in P \\implies a \\in P$ or $b \\in P$. Equivalently: $A/P$ is an **integral domain**.\n\n**(ii)** $M$ is called **maximal** if there is no ideal $J$ with $M \\subset J \\subset A$. Equivalently: $A/M$ is a **field**.\n\n**(iii)** Maximal $\\implies$ prime ($A/M$ a field $\\implies$ an integral domain).",
+        en: "Let $A$ be a commutative ring with identity and let $P, M \\subset A$ be **proper** ideals (proper: if $P = A$ were allowed, \"$A/P$ is a domain\" would fail; if $M = A$ were allowed, \"maximal\" would fail).\n\nThe definitions of prime and maximal ideals are in `def.prime-ideal` and `def.maximal-ideal` respectively.\n\n**(i)** $P$ is a prime ideal $\\iff$ $A/P$ is a **domain**.\n\n**(ii)** $M$ is a maximal ideal $\\iff$ $A/M$ is a **field**.\n\n**(iii)** Maximal $\\implies$ prime ($A/M$ is a field $\\implies$ it is a domain).",
         status: 'draft',
-        basedOn: 'v0.9.3#3c4dff50',
+        basedOn: 'v0.9.3#40eeb829',
       },
       notes: {
         en: "⭐ A prime ideal is the abstraction of \"divisibility\": in $\\mathbb{Z}$ ($p \\ge 2$), $(p)$ is prime $\\iff$ $p$ is prime ($(0)$ is also prime, but $0$ is not prime); in $k[x]$ ($k$ a field, $f \\ne 0$), $(f)$ is prime $\\iff$ $f$ is irreducible ($(0)$ is also prime, while $0$ is irreducible).\n\n⭐ A maximal ideal is \"the simplest after quotienting\": $\\mathbb{Z}/p\\mathbb{Z}$ is a field, $\\mathbb{Z}/(6)$ is not (it has zero divisors).\n\n⚠ Maximal $\\implies$ prime, but **not conversely**: in $k[x,y]$, $(x)$ is prime ($k[x,y]/(x) \\cong k[y]$ is an integral domain), yet not maximal ($(x) \\subset (x, y) \\subset k[x,y]$).\n\nIn a one-dimensional integral domain, the **nonzero** prime ideals are all maximal (e.g. $\\mathbb{Z}$, $k[x]$); $(0)$ is prime but not maximal ($\\mathbb{Z}$ in $(0) \\subset (2) \\subset \\mathbb{Z}$).\n\n📌 Existence (every proper ideal lies in a maximal ideal) requires Zorn's lemma; that is an application of `lem.zorn`, not part of this entry.",
@@ -8478,6 +8478,357 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         en: "⭐ **What it is for**: to compute the derived functors $R^{n}(G \\circ F)$ of a composite, one may **first compute $R^{q}F$, then $R^{p}G$**, stitching the two layers together with a spectral sequence. This is the most basic \"two-step\" tool in homological algebra.\n\n**Proof (double complex + two spectral sequences).** Take an injective resolution of $M$, say $I^{\\bullet}$, and put $A^{\\bullet} := F I^{\\bullet}$.\n\n- By hypothesis $I^{n}$ is injective, so $FI^{n}$ is $G$-acyclic, and by **left exactness** of $F$ the sequence $0 \\to FM \\to FI^{\\bullet}$ is exact; hence $A^{\\bullet} = FI^{\\bullet}$ is a right resolution of $FM$ whose terms are $G$-acyclic (⚠ this step uses left exactness; without it $FI^{\\bullet}$ only computes $RF(M)$ and need not resolve $FM$), so $R(G\\circ F)M = G A^{\\bullet}$ in the derived category (Leray acyclicity), i.e. $R^{n}(G\\circ F)M = H^{n}(GA^{\\bullet})$;\n- then take a **Cartan–Eilenberg resolution** of $A^{\\bullet}$, say $J^{\\bullet,\\bullet}$ (each $J^{p,\\bullet}$ is a resolution of $A^{p}$ that is $G$-acyclic, and the homologies in both directions are computable);\n- the two spectral sequences of the double complex: filtering by $p$ first converges to $H^{p+q}(G J^{\\bullet,\\bullet}) = R^{p+q}(G\\circ F)M$, and its $E_{2}$ page is the \"vertical then horizontal\" $R^{p}G\\bigl(H^{q}(A^{\\bullet})\\bigr) = R^{p}G\\bigl(R^{q}FM\\bigr)$;\n\nthe other spectral sequence (horizontal then vertical) degenerates at its $E_{2}$ page because every column is an acyclic resolution, and both converge to the same thing.\n\n∎\n\nThe details are in the first two references: existence of the Cartan–Eilenberg resolution, and convergence of the double-complex spectral sequence together with the identification of the $E_{2}$ page.\n\n**Typical applications**: sheaf cohomology — sheafify then take sections, Čech cohomology to de Rham cohomology, the Lyndon–Hochschild–Serre spectral sequence in group homology — all are special cases.\n\n**Why require $F$ to send injectives to $G$-acyclics**: this is what lets an injective resolution under $F$ serve directly as a $G$-acyclic resolution, so that the two sides match up.",
         status: 'draft',
         basedOn: 'v0.9.3#35cf7ba0',
+      },
+    },
+
+    'def.row-space': {
+      statement: {
+        en: "Let $A \\in M_{m \\times n}(K)$, with $m$ row vectors $a_1, \\ldots, a_m \\in K^{n}$. The subspace they span,\n\n$\\operatorname{Row}(A) := \\operatorname{span}\\{a_1, \\ldots, a_m\\} \\subseteq K^{n}$\n\nis the **row space** of $A$, and its dimension is the **row rank**. Equivalently, $\\operatorname{Row}(A) = \\operatorname{Col}(A^{\\mathsf T})$, the column space of $A^{\\mathsf T}$.\n\n**Elementary row operations preserve the row space**: left multiplication by an invertible matrix only replaces the row vectors by another basis (row operations replace the rows by invertible linear combinations of them), so row-equivalent matrices have the same row space. Hence the nonzero rows of a row echelon form give a basis of $\\operatorname{Row}(A)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f2076fb9',
+      },
+      notes: {
+        en: "The row space lives in $K^{n}$ (a row has length $n$), while the column space lives in $K^{m}$ — in general they are **not the same space**, so do not confuse them.\n\nDimension: $\\dim \\operatorname{Row}(A) = \\operatorname{rank} A$ (the row rank equals the rank of the matrix).\n\nThe row space and the solution space of the homogeneous system are orthogonal: $x \\in \\ker A$ if and only if $x$ is orthogonal to every row vector; hence $\\dim \\operatorname{Row}(A) + \\dim \\ker A = n$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8731fd13',
+      },
+    },
+
+    'def.column-space': {
+      statement: {
+        en: "Let $A \\in M_{m \\times n}(K)$, with columns $c_1, \\ldots, c_n \\in K^{m}$. The subspace\n\n$\\operatorname{Col}(A) := \\operatorname{span}\\{c_1, \\ldots, c_n\\} = \\{\\, A x : x \\in K^{n} \\,\\} \\subseteq K^{m}$\n\nis the **column space** of $A$, that is, the **image** of the linear map $T_A : K^{n} \\to K^{m}$, $T_A(x) = Ax$. Its dimension is the **column rank**, which equals $\\operatorname{rank} A$.\n\n**Solvability of systems**: $b \\in \\operatorname{Col}(A)$ if and only if $Ax = b$ has a solution. After reducing $A$ to reduced row echelon form, the pivot columns — that is, the pivot columns of $A$ — give a basis of $\\operatorname{Col}(A)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f4033e28',
+      },
+      notes: {
+        en: "The column space is \"where $A$ can reach\"; the null space (solution space of the homogeneous system) is \"which directions $A$ crushes to $0$\". Their dimensions add up to $n$.\n\nRow and column spaces have the same dimension (both equal the rank), but they are subspaces of different spaces; the link comes from transposition: $\\operatorname{Col}(A) = \\operatorname{Row}(A^{\\mathsf T})$.\n\nRank–nullity: $\\dim \\operatorname{Col}(A) + \\dim \\ker A = n$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b53e4519',
+      },
+    },
+
+    'def.row-echelon-form': {
+      statement: {
+        en: "Let $R \\in M_{m \\times n}(K)$. If\n\n- every zero row lies below every nonzero row;\n- in each nonzero row, the column of the first nonzero entry (called a **pivot**) lies strictly to the right of the pivot of the row above,\n\nthen $R$ is in **row echelon form**. If moreover every pivot equals $1$ and every other entry in a pivot column is $0$, then $R$ is in **reduced row echelon form** (RREF).\n\n**Theorem (elimination)**: every $A \\in M_{m \\times n}(K)$ can be brought to reduced row echelon form by finitely many elementary row operations, and this reduced row echelon form is **unique**. The number of pivots equals $\\operatorname{rank} A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#69d7e425',
+      },
+      notes: {
+        en: "Uniqueness is the point of RREF: row echelon form is not unique (one may continue performing row operations), but \"pivots equal to $1$, all other entries in pivot columns zero\" removes every degree of freedom and leaves exactly one form.\n\nUses: solving linear systems (pivot columns correspond to basic variables, the other columns to free variables), computing rank (count the pivots), inverting (reduce $[A \\mid I]$), and finding a basis of the column space (the pivot columns).\n\nElementary row operations correspond to left multiplication by elementary matrices; RREF is the \"normal form under row operations\", while equivalence also allows column operations, with normal form $\\operatorname{diag}(I_r, 0)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#77ad844d',
+      },
+    },
+
+    'thm.smith-normal-form': {
+      statement: {
+        en: "Let $R$ be a principal ideal domain and $A \\in M_{m \\times n}(R)$. Then there exist invertible matrices $P \\in \\operatorname{GL}_{m}(R)$ and $Q \\in \\operatorname{GL}_{n}(R)$ such that\n\n$P A Q = \\operatorname{diag}(d_1, d_2, \\ldots, d_r, 0, \\ldots, 0),$\n\nwhere $d_i \\ne 0$ and $d_1 \\mid d_2 \\mid \\cdots \\mid d_r$. The elements $d_i$ are determined by $A$ up to units and are called the **invariant factors** of $A$.\n\nEquivalently, $d_1 \\cdots d_k$ is the greatest common divisor of all minors of $A$ of size $k$ (the **determinantal divisors**), which gives a concrete algorithm for uniqueness.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a657d1fc',
+      },
+      notes: {
+        en: "**Relation to equivalence over a field**: when $K$ is a field, $K$ is a PID, and the Smith normal form degenerates to $\\operatorname{diag}(I_r, 0)$, so over a field equivalence is classified by rank alone.\n\n**Proof idea**: in the equivalence class of $A$, choose a matrix whose $(1,1)$ entry generates a maximal ideal, and show that it divides every entry (otherwise Bézout puts the gcd into position $(1,1)$, producing a larger ideal); then clear the first row and column and induct on the remaining block. Uniqueness uses the determinantal divisors.\n\n**Typical examples**: for $R = \\mathbb{Z}$, $\\operatorname{diag}(2, 6)$ satisfies $2 \\mid 6$; for $R = K[x]$, applying the Smith normal form to $xI - A$ yields the nonconstant invariant factors of the linear operator $A$ (see rational canonical form).",
+        status: 'draft',
+        basedOn: 'v0.9.3#452d165e',
+      },
+    },
+
+    'def.invariant-factor': {
+      statement: {
+        en: "Let $R$ be a principal ideal domain and let the Smith normal form of $A \\in M_{m \\times n}(R)$ be\n\n$P A Q = \\operatorname{diag}(d_1, \\ldots, d_r, 0, \\ldots, 0), \\qquad d_1 \\mid d_2 \\mid \\cdots \\mid d_r .$\n\nThe nonzero elements $d_i$ (unique up to units; for $R = K[x]$ one takes the monic representative) are the **invariant factors** of $A$. Equivalently, $d_1 \\cdots d_k$ is the greatest common divisor of all minors of $A$ of size $k$.\n\nIn particular, for $A \\in M_n(K)$, the nonconstant invariant factors of $xI - A \\in M_n(K[x])$ are called the **invariant factors** of the linear operator $A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#98c11fad',
+      },
+      notes: {
+        en: "**Relation to rational canonical form**: if $d_1 \\mid \\cdots \\mid d_s$ are the nonconstant invariant factors of $xI - A$, then $A$ is similar to $\\operatorname{diag}(C_{d_1}, \\ldots, C_{d_s})$, where $C_d$ is the companion matrix; this is exactly the rational canonical form.\n\n**Relation to minimal and characteristic polynomials**: the largest invariant factor $d_s$ is the minimal polynomial, and the product $d_1 \\cdots d_s$ is the characteristic polynomial.\n\n**Relation to elementary divisors**: factor each $d_i$ into powers of irreducible polynomials; the resulting prime-power factors are the elementary divisors. When the field splits, the Jordan normal form is stated in terms of elementary divisors.\n\n**Matrix version vs operator version**: the Smith normal form applies to arbitrary matrices (possibly rectangular, over a ring); the invariant factors of an operator are those of the special matrix $xI - A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#468af9f9',
+      },
+    },
+
+    'def.p-group': {
+      statement: {
+        en: "Let $p$ be a prime and $G$ a finite group. If $|G| = p^{n}$ with $n \\ge 0$, then $G$ is a **$p$-group**.\n\nEquivalently, every element of $G$ has order a power of $p$: the order of an element divides $|G|$, hence can only be a power of $p$; conversely, if every element has order a power of $p$, then by Cauchy's theorem $|G|$ has no other prime divisor, so $|G|$ is a power of $p$.\n\nA subgroup $H \\le G$ that is itself a $p$-group is a **$p$-subgroup**; of $G$, a maximal $p$-subgroup (under inclusion) is called a **Sylow $p$-subgroup**, see `def.sylow-subgroup`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#22675cd0',
+      },
+      notes: {
+        en: "⭐ Examples: $\\mathbb{Z}/p^{n}$, $V_4 = \\mathbb{Z}/2 \\times \\mathbb{Z}/2$; the center of a $p$-group is nontrivial (a direct consequence of the class equation).\n\n⚠ A $p$-group need not be abelian: $D_8$ (the dihedral group of order $8$) is a $2$-group but is not abelian.\n\n⭐ A $p$-group is solvable, and in fact nilpotent: each step of its lower central series grows strictly and reaches $G$ in finitely many steps (the center is nontrivial, then induct on $G/Z$).",
+        status: 'draft',
+        basedOn: 'v0.9.3#daa08bdc',
+      },
+    },
+
+    'def.commutator-subgroup': {
+      statement: {
+        en: "Let $G$ be a group. For $x, y \\in G$, the element $[x, y] := x y x^{-1} y^{-1}$ is the **commutator** of $x$ and $y$. The subgroup generated by all commutators,\n\n$[G, G] := \\langle\\, [x, y] : x, y \\in G \\,\\rangle \\le G$\n\nis the **commutator subgroup** (also called the **derived subgroup**) of $G$.\n\n[G,G] is normal, and the quotient $G/[G,G]$ is abelian. More strongly, if $N \\trianglelefteq G$ is such that $G/N$ is abelian, then $[G,G] \\subseteq N$; hence $G/[G,G]$ is the **maximal abelian quotient** of $G$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fdb08c30',
+      },
+      notes: {
+        en: "⭐ Commutators themselves are not associative: in general $[[x,y],z] \\ne [x,[y,z]]$; the subgroup they generate is the useful object.\n\n⭐ Examples: $[S_n, S_n] = A_n$; $[G, G] = \\{e\\}$ if and only if $G$ is abelian.\n\n⭐ Relation to solvability: set $G^{(0)} = G$ and $G^{(i+1)} = [G^{(i)}, G^{(i)}]$ (the **derived series**). Then $G$ is solvable if and only if some $G^{(i)} = \\{e\\}$.\n\n⚠ This differs from the **lower central series** $\\gamma_{i+1} = [G, \\gamma_i]$: the derived series commutators each term with itself, while the lower central series only commutators with $G$; termination of the lower central series gives nilpotence, which is stronger than solvability.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c493c5c0',
+      },
+    },
+
+    'def.orbit': {
+      statement: {
+        en: "Let a group $G$ act on a set $X$ and let $x \\in X$. The set\n\n$\\operatorname{Orb}(x) := G x := \\{\\, g \\cdot x : g \\in G \\,\\} \\subseteq X$\n\nis the **orbit** of $x$.\n\nThe relation $x \\sim y \\iff \\exists g \\in G,\\ y = g \\cdot x$ is an equivalence relation on $X$, and the orbits are precisely its equivalence classes; hence $X$ is the **disjoint union** of the orbits. The action is **transitive** if $X$ has only one orbit.",
+        status: 'draft',
+        basedOn: 'v0.9.3#462ef353',
+      },
+      notes: {
+        en: "⭐ The orbit size divides $|G|$: orbit–stabilizer gives $|Gx| = [G : G_x]$ (see `thm.orbit-stabilizer`).\n\n⭐ Examples: $S_n$ is transitive on the first n positive integers; the orbits of the conjugation action are the conjugacy classes; the left multiplication action has only one orbit.\n\n⚠ Orbits of different $x$ are either equal or disjoint, never \"partially overlapping\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#4884bfc7',
+      },
+    },
+
+    'def.stabilizer': {
+      statement: {
+        en: "Let a group $G$ act on a set $X$ and let $x \\in X$. The set\n\n$G_x := \\operatorname{Stab}(x) := \\{\\, g \\in G : g \\cdot x = x \\,\\} \\le G$\n\nis the **stabilizer** of $x$ (or isotropy subgroup).\n\n$G_x$ is a subgroup of $G$; the **kernel** of the action is $\\bigcap_{x \\in X} G_x$. Orbit–stabilizer gives a bijection $G/G_x \\to Gx$, $gG_x \\mapsto g \\cdot x$. Conjugate points have conjugate stabilizers: $G_{g \\cdot x} = g G_x g^{-1}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#23d8b956',
+      },
+      notes: {
+        en: "⭐ The larger the stabilizer, the smaller the orbit; the two are balanced exactly by $|G| = |Gx| \\cdot |G_x|$.\n\n⭐ The action is **free** if and only if all stabilizers are trivial (for example, left multiplication); it is **faithful** if and only if the kernel is trivial.\n\n⭐ Examples: in the natural action of $S_n$, $G_n \\cong S_{n-1}$; for the conjugation action, $G_x = C_G(x)$ is the centralizer, see `def.centralizer`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#684250a1',
+      },
+    },
+
+    'def.normalizer': {
+      statement: {
+        en: "Let $G$ be a group and $S \\subseteq G$. The set\n\n$N_G(S) := \\{\\, g \\in G : g S g^{-1} = S \\,\\} \\le G$\n\nis the **normalizer** of $S$ in $G$. For a subgroup $H \\le G$, $N_G(H)$ is the **largest** subgroup of $G$ containing $H$ in which $H$ is normal.\n\nIf $H \\le G$, then $H \\trianglelefteq G \\iff N_G(H) = G$; also $H \\subseteq N_G(H)$ and $H \\trianglelefteq N_G(H)$. Sylow counting: $n_p = [G : N_G(P)]$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ef6307ce',
+      },
+      notes: {
+        en: "⭐ Normalizer vs centralizer: $C_G(H) \\subseteq N_G(H)$, and in general they are not equal. $N_G(H)/C_G(H)$ embeds into $\\operatorname{Aut}(H)$ (by conjugation); this is the standard \"normalizer modulo centralizer\" statement.\n\n⭐ Examples: in $S_3$, $N_{S_3}(\\langle(12)\\rangle) = \\langle(12)\\rangle$ (the three transpositions are conjugate to one another, so the normalizer does not grow); $N_{S_3}(A_3) = S_3$.\n\n⚠ $N_G(S)$ only requires that the set $S$ be sent to itself, not that each element be fixed; the latter is the centralizer.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fe30cf1f',
+      },
+    },
+
+    'def.sylow-subgroup': {
+      statement: {
+        en: "Let $G$ be a finite group with $|G| = p^{a} m$, where $p$ is a prime and $p \\nmid m$. A subgroup of $G$ of order $p^{a}$, call it $P$, is called a **Sylow $p$-subgroup**.\n\nEquivalently, $P$ is, in $G$, a **maximal $p$-subgroup** (under inclusion). The set of all Sylow $p$-subgroups is denoted $\\operatorname{Syl}_p(G)$; if $P \\in \\operatorname{Syl}_p(G)$, then $[G : P] = m$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#aa6f763b',
+      },
+      notes: {
+        en: "⭐ Existence, conjugacy and counting are in `thm.sylow`; this node only defines the object.\n\n⭐ Example: in $S_3$ ($|S_3| = 6 = 2 \\cdot 3$) the Sylow $3$-subgroups are $A_3$ (unique, hence normal), and the Sylow $2$-subgroups are the three subgroups of order $2$ generated by the three transpositions.\n\n⚠ A $p$-subgroup is a subgroup whose order is a prime power; a Sylow $p$-subgroup is the **largest** such subgroup, and a group may have several Sylow $p$-subgroups.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dbc835ef',
+      },
+    },
+
+    'lem.p-group-subgroups': {
+      statement: {
+        en: "Let $G$ be a finite $p$-group and $H < G$ a proper subgroup. Then\n\n$H < N_G(H),$\n\nthat is, $H$ is properly contained in its normalizer in $G$.\n\nIn particular, a subgroup of index $p$ is normal; and the center of a $p$-group is nontrivial.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bee5c952',
+      },
+      notes: {
+        en: "The proof is on the edge `imp.p-group-subgroups`: induct on $|G|$, use the class equation to get $Z(G) \\ne \\{e\\}$, then split into the two cases $HZ(G) < G$ and $HZ(G) = G$.\n\n⭐ Use: induction on $i$ shows that a $p$-group has subgroups of every order $p^{i}$ ($0 \\le i \\le n$); this is the key step in the \"$i < a$ part\" of the Sylow existence proof.\n\n⚠ The conclusion fails for general finite groups: in $S_3$, for $H = \\langle(12)\\rangle$ one has $N_{S_3}(H) = H$, but $S_3$ is not a $p$-group.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1d1f53a4',
+      },
+    },
+
+    'def.ring-hom': {
+      statement: {
+        en: "Let $R, S$ be rings with identity. A map $f : R \\to S$ is a **ring homomorphism** if\n\n$f(a+b) = f(a)+f(b), \\qquad f(ab) = f(a)f(b), \\qquad f(1_R) = 1_S$\n\nfor all $a, b \\in R$.\n\nThe **kernel** $\\ker f := \\{\\, a \\in R : f(a) = 0 \\,\\}$ is an **ideal** of $R$; the **image** $\\operatorname{im} f$ is a subring of $S$. The map $f$ is injective if and only if $\\ker f = 0$; a bijective ring homomorphism is an **isomorphism**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d22b9c6f',
+      },
+      notes: {
+        en: "⭐ Examples: $\\mathbb{Z} \\to \\mathbb{Z}/n\\mathbb{Z}$; $K[x] \\to K$, $f \\mapsto f(a)$ (evaluation); $\\mathbb{C} \\to \\mathbb{C}$, $z \\mapsto \\bar z$ (conjugation, a ring isomorphism but not a $\\mathbb{C}$-algebra homomorphism).\n\n⚠ Some texts do not require $f(1_R) = 1_S$; these notes use the convention \"rings with identity and homomorphisms preserving $1$\". Without preserving $1$ the kernel is still an ideal, but \"$R/\\ker f \\cong \\operatorname{im} f$\" then requires aligning the identity of the image (the $1$ of the image).\n\n⭐ First isomorphism theorem: $R/\\ker f \\cong \\operatorname{im} f$ (for quotient rings see `def.quotient-ring`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#7a066d1d',
+      },
+    },
+
+    'def.quotient-ring': {
+      statement: {
+        en: "Let $A$ be a ring and $I \\subseteq A$ an ideal. On the additive quotient group $A/I$ define\n\n$(a+I)+(b+I) := (a+b)+I, \\qquad (a+I)(b+I) := ab+I .$\n\nThese operations are well defined and make $A/I$ a ring, the **quotient ring**; the quotient map $\\pi : A \\to A/I$, $\\pi(a) = a+I$, is a ring homomorphism with $\\ker \\pi = I$.\n\n**Universal property**: if $f : A \\to B$ is a ring homomorphism with $f(I) = 0$, then there is a unique ring homomorphism $\\bar f : A/I \\to B$ with $\\bar f \\circ \\pi = f$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2fe619d0',
+      },
+      notes: {
+        en: "⭐ Why an ideal is necessary: for $(a+x)(b+y) \\equiv ab \\pmod I$ one needs $ay, xb, xy \\in I$; since $x, y \\in I$ while $a, b$ are arbitrary, $I$ must absorb multiplication from both sides.\n\n⭐ Examples: $\\mathbb{Z}/n\\mathbb{Z}$; $K[x]/(f)$ (a field when $f$ is irreducible); $\\mathbb{F}_p[x]/(x^{2}+1)$.\n\n⭐ $A/I$ is a domain if and only if $I$ is a prime ideal; $A/I$ is a field if and only if $I$ is a maximal ideal (both objects appear in later nodes; this node only constructs the quotient ring).",
+        status: 'draft',
+        basedOn: 'v0.9.3#a9d22d09',
+      },
+    },
+
+    'def.nilpotent-group': {
+      statement: {
+        en: "Let $G$ be a group. Define the **lower central series** inductively by\n\n$\\gamma_0 = G, \\qquad \\gamma_{i+1} = [G, \\gamma_i] = \\langle\\, [g, x] : g \\in G,\\ x \\in \\gamma_i \\,\\rangle .$\n\nIf there exists $c \\ge 0$ with $\\gamma_c = \\{e\\}$, then $G$ is **nilpotent**; the smallest such $c$ is the **nilpotency class** of $G$.\n\nEquivalently, the **upper central series** $Z_0 = \\{e\\}$, $Z_{i+1}/Z_i := Z(G/Z_i)$ reaches $G$ in finitely many steps.",
+        status: 'draft',
+        basedOn: 'v0.9.3#38d45f5f',
+      },
+      notes: {
+        en: "⭐ Examples: an abelian group has nilpotency class $1$ ($\\gamma_1 = \\{e\\}$); $D_8$ has class $2$; every finite $p$-group is nilpotent; $S_3$ is not ($\\gamma_1 = A_3$, $\\gamma_2 = A_3 \\ne \\{e\\}$).\n\n⭐ Nilpotent $\\implies$ solvable: inductively $\\gamma_i \\subseteq G^{(i)}$, so the derived series terminates no later than the lower central series. The converse fails ($S_3$ is solvable but not nilpotent).\n\n⚠ Subgroups and quotients of a nilpotent group are nilpotent, but extensions need not be.",
+        status: 'draft',
+        basedOn: 'v0.9.3#eee57d6a',
+      },
+    },
+
+    'def.automorphism-group': {
+      statement: {
+        en: "Let $G$ be a group. An isomorphism from $G$ to itself, $\\sigma : G \\to G$, is called an **automorphism**; all automorphisms form a group under composition,\n\n$\\operatorname{Aut}(G) \\le \\operatorname{Sym}(G),$\n\nthe **automorphism group** of $G$.\n\nFor $g \\in G$, the map $c_g(x) := gxg^{-1}$ is an automorphism, an **inner automorphism**; all inner automorphisms\n\n$\\operatorname{Inn}(G) := \\{\\, c_g : g \\in G \\,\\} \\trianglelefteq \\operatorname{Aut}(G)$\n\nform a normal subgroup, and $\\operatorname{Inn}(G) \\cong G/Z(G)$. The quotient $\\operatorname{Out}(G) := \\operatorname{Aut}(G)/\\operatorname{Inn}(G)$ is the **outer automorphism group**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4497f9ef',
+      },
+      notes: {
+        en: "⭐ Examples: $\\operatorname{Aut}(\\mathbb{Z}/n) \\cong (\\mathbb{Z}/n)^{\\times}$; $\\operatorname{Aut}(V_4) \\cong S_3$; for $n \\ne 6$, $\\operatorname{Aut}(S_n) = \\operatorname{Inn}(S_n) \\cong S_n$.\n\n⚠ $n = 6$ is the exception: $S_6$ has outer automorphisms, and $\\operatorname{Out}(S_6)$ has order $2$.\n\n⭐ The kernel of the inner action is the center $Z(G)$: $c_g = \\mathrm{id} \\iff g \\in Z(G)$, which is exactly the source of $G/Z(G) \\cong \\operatorname{Inn}(G)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7500b4c7',
+      },
+    },
+
+    'def.inner-automorphism': {
+      statement: {
+        en: "Let $G$ be a group and $g \\in G$. The map\n\n$c_g : G \\to G, \\qquad c_g(x) := g x g^{-1}$\n\nis an automorphism of $G$, the **inner automorphism** determined by $g$. All inner automorphisms\n\n$\\operatorname{Inn}(G) := \\{\\, c_g : g \\in G \\,\\}$\n\nform a group under composition, and $\\operatorname{Inn}(G) \\cong G/Z(G)$, $\\operatorname{Inn}(G) \\trianglelefteq \\operatorname{Aut}(G)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dab252ea',
+      },
+      notes: {
+        en: "⭐ Inner automorphisms are exactly the image of the **conjugation action** of $G$ on itself: $c_g$ is the map $x \\mapsto g \\cdot x$ (conjugation).\n\n⭐ The inner automorphism group is trivial $\\iff$ $G$ is abelian; then $\\operatorname{Inn}(G) = \\{\\mathrm{id}\\}$ and $\\operatorname{Out}(G) = \\operatorname{Aut}(G)$.\n\n⭐ Examples: the inner automorphisms of $S_n$ are exactly the conjugations preserving cycle type; the inner automorphisms of $GL_n(K)$ are $A \\mapsto P A P^{-1}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5e4c3d1b',
+      },
+    },
+
+    'def.principal-ideal': {
+      statement: {
+        en: "Let $A$ be a commutative ring with identity and $a \\in A$. The set\n\n$(a) := aA := \\{\\, a x : x \\in A \\,\\}$\n\nis an ideal of $A$, the **principal ideal** generated by $a$. If an ideal $I$, for some $a$, satisfies $I = (a)$, then $I$ is **principal**.\n\nIf every ideal of $A$ is principal, then $A$ is a **principal ideal domain** (PID; see also `def.pid`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#fd39b2b0',
+      },
+      notes: {
+        en: "⭐ Examples: every ideal of $\\mathbb{Z}$ is $(n)$, so $\\mathbb{Z}$ is a PID; over a field $K$, $K[x]$ is also a PID.\n\n⚠ In a general ring, \"the multiples of $a$\" need not be a two-sided ideal: in $M_2(\\mathbb{R})$, $E_{11} M_2$ is not a two-sided ideal; for noncommutative rings one takes \"the smallest two-sided ideal containing $a$\".\n\n⚠ In $K[x,y]$, $(x, y)$ is not principal: it cannot be generated by a single polynomial.",
+        status: 'draft',
+        basedOn: 'v0.9.3#80d61657',
+      },
+    },
+
+    'def.field-of-fractions': {
+      statement: {
+        en: "Let $A$ be an integral domain. On the set $A \\times (A \\setminus \\{0\\})$ define\n\n$(a, s) \\sim (b, t) \\iff a t = b s .$\n\nThis is an equivalence relation; the quotient set is denoted $\\operatorname{Frac}(A)$, its elements are written $\\frac{a}{s}$, and with the operations\n\n$\\frac{a}{s} + \\frac{b}{t} := \\frac{a t + b s}{s t}, \\qquad \\frac{a}{s} \\cdot \\frac{b}{t} := \\frac{a b}{s t}$\n\nit is a **field**, the **field of fractions** of $A$. The map $a \\mapsto \\frac{a}{1}$ is an injective ring homomorphism.\n\n**Universal property**: if $K$ is a field and $\\varphi : A \\to K$ is an injective ring homomorphism, then there is a unique field homomorphism $\\bar\\varphi : \\operatorname{Frac}(A) \\to K$ with $\\bar\\varphi(a/1) = \\varphi(a)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d4fd74a3',
+      },
+      notes: {
+        en: "⭐ Examples: $\\operatorname{Frac}(\\mathbb{Z}) = \\mathbb{Q}$; $\\operatorname{Frac}(K[x]) = K(x)$ (the field of rational functions).\n\n⚠ The ring must be an **integral domain**: with zero divisors the equivalence class of $\\frac{a}{s}$ degenerates ($s$ may become a zero divisor) and the construction fails.\n\n⭐ The field of fractions is \"the smallest field containing $A$\"; the universal property says exactly this.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c47ad346',
+      },
+    },
+
+    'def.module-hom': {
+      statement: {
+        en: "Let $A$ be a ring with identity and $M, N$ be $A$-modules. A map $f : M \\to N$ is an **$A$-module homomorphism** if\n\n$f(m + m') = f(m) + f(m'), \\qquad f(a m) = a f(m)$\n\nfor all $m, m' \\in M$ and $a \\in A$.\n\nThe set of all $A$-module homomorphisms is denoted $\\operatorname{Hom}_A(M, N)$; under pointwise addition it is an abelian group. The kernel $\\ker f$ and the image $\\operatorname{im} f$ are both submodules; the map $f$ is an isomorphism $\\iff$ it is bijective.",
+        status: 'draft',
+        basedOn: 'v0.9.3#169433c8',
+      },
+      notes: {
+        en: "⭐ Examples: for $A = \\mathbb{Z}$, module homomorphisms are abelian group homomorphisms; for $A = K$, they are linear maps.\n\n⚠ In general $\\operatorname{Hom}_A(M, N)$ is only an abelian group, not an $A$-module; a natural $A$-module structure exists only when $A$ is commutative.\n\n⭐ First isomorphism theorem: $M/\\ker f \\cong \\operatorname{im} f$ (for quotient modules see `def.quotient-module`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#677f779d',
+      },
+    },
+
+    'def.quotient-module': {
+      statement: {
+        en: "Let $A$ be a ring with identity, $M$ an $A$-module and $N \\subseteq M$ a submodule. On the additive quotient group $M/N$ define\n\n$(m + N) + (m' + N) := (m + m') + N, \\qquad a(m + N) := a m + N .$\n\nThese operations are well defined and make $M/N$ an $A$-module, the **quotient module**; the quotient map $\\pi : M \\to M/N$ is a module homomorphism with $\\ker \\pi = N$.\n\n**Universal property**: if $f : M \\to L$ is a module homomorphism with $f(N) = 0$, then there is a unique module homomorphism $\\bar f : M/N \\to L$ with $\\bar f \\circ \\pi = f$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7ee3a130',
+      },
+      notes: {
+        en: "⭐ Why a submodule is necessary: for $a(m + n) \\equiv a m \\pmod N$ one needs $a n \\in N$ for all $a \\in A$ and $n \\in N$.\n\n⭐ Examples: the $\\mathbb{Z}$-module $\\mathbb{Z}/n\\mathbb{Z}$; a vector space $V/W$; $A/I$ as an $A$-module is a quotient module.\n\n⭐ First isomorphism: $M/\\ker f \\cong \\operatorname{im} f$, see `def.module-hom`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5834e2dd',
+      },
+    },
+
+    'def.algebraic-closure': {
+      statement: {
+        en: "Let $K$ be a field. A field extension $\\bar K / K$ is an **algebraic closure** of $K$ if\n\n1. $\\bar K$ is **algebraically closed** (every nonconstant polynomial has a root in $\\bar K$, see `def.algebraically-closed`);\n2. $\\bar K / K$ is an **algebraic extension** (every element is a root of some nonzero polynomial over $K$).\n\nBy Zorn's lemma every field has an algebraic closure; and any two algebraic closures are $K$-isomorphic (unique up to isomorphism).",
+        status: 'draft',
+        basedOn: 'v0.9.3#554b2d3a',
+      },
+      notes: {
+        en: "⭐ Examples: $\\mathbb{C}$ is an algebraic closure of $\\mathbb{R}$; $\\overline{\\mathbb{Q}}$ (all algebraic numbers over $\\mathbb{Q}$) is an algebraic closure of $\\mathbb{Q}$; an algebraic closure of $\\mathbb{F}_p$ is $\\bigcup_{n} \\mathbb{F}_{p^n}$.\n\n⚠ An algebraic closure is not \"a unique set\" but \"unique up to isomorphism\"; different constructions give $K$-isomorphic fields.\n\n⭐ Existence uses Zorn: take the partially ordered set of all algebraic extensions; a maximal element must be algebraically closed (otherwise adjoin one more root and continue).",
+        status: 'draft',
+        basedOn: 'v0.9.3#07b270bf',
+      },
+    },
+
+    'def.maximal-ideal': {
+      statement: {
+        en: "Let $A$ be a commutative ring with identity and $M \\subset A$ a proper ideal. Then $M$ is a **maximal ideal** if there is no ideal $J$ with\n\n$M \\subset J \\subset A.$\n\nEquivalently, the quotient ring $A/M$ is a **field** (see `def.quotient-ring`). Every proper ideal is contained in some maximal ideal (by Zorn's lemma).",
+        status: 'draft',
+        basedOn: 'v0.9.3#2c81e401',
+      },
+      notes: {
+        en: "⭐ Maximal $\\implies$ prime: a field is a domain, so $A/M$ is a domain. The converse fails: in $\\mathbb{Z}[x]$, $(x)$ is prime but not maximal ($(x) \\subset (2, x)$).\n\n⭐ In a PID, every nonzero prime ideal is maximal: in $K[x]$, $(f)$ is maximal $\\iff$ $f$ is irreducible.\n\n⭐ Examples: in $\\mathbb{Z}$, $(p)$ is maximal; in the polynomial ring in n variables, the ideal generated by the variables is maximal.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7ad6a2d7',
+      },
+    },
+
+    'def.centralizer': {
+      statement: {
+        en: "Let $G$ be a group and $S \\subseteq G$. The set\n\n$$C_G(S) := \\{\\, g \\in G : g s = s g \\ \\text{for all}\\ s \\in S \\,\\} \\le G$$\n\nis the **centralizer** of $S$ in $G$; put $C_G(x) := C_G(\\{x\\})$, with the convention $C_G(\\emptyset) = G$.\n\n$C_G(S)$ is a subgroup. $C_G(G) = Z(G)$ is the **center** of $G$. Under the conjugation action $g \\cdot x = gxg^{-1}$, the subgroup $C_G(x)$ is exactly the stabilizer of $x$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d8f660f8',
+      },
+      notes: {
+        en: "⭐ Relation to the normalizer: $C_G(S) \\trianglelefteq N_G(S)$, and $C_G(S) \\subseteq N_G(S)$ (commuting with every element of $S$ certainly preserves it as a set).\n\n⭐ Examples: in $GL_n(K)$ the centralizer of a scalar matrix is all of the invertible matrices (scalar matrices lie in the center); in $S_3$, $C_{S_3}((12)) = \\{e, (12)\\}$.\n\n⭐ In the class equation, the size of a noncentral conjugacy class is $[G : C_G(x)]$, see `thm.class-equation`.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c266da15',
+      },
+    },
+
+    'def.submodule': {
+      statement: {
+        en: "Let $A$ be a ring with identity and $M$ an $A$-module. If an additive subgroup $N \\subseteq M$ satisfies\n\n$a \\cdot n \\in N \\qquad \\text{for all } a \\in A,\\ n \\in N,$\n\nthen $N$ is a submodule of $M$, namely an **$A$-submodule**. Equivalently, $N$ is itself an $A$-module under the restricted action, and the inclusion $N \\hookrightarrow M$ is a module homomorphism.\n\nKernels and images of module homomorphisms are submodules; a left ideal of $A$ is exactly a submodule of the left $A$-module $A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a8b5bea4',
+      },
+      notes: {
+        en: "⭐ Three-level comparison: subgroup (group) ⊂ submodule (module) ⊂ subspace (module over a field). A submodule is required to be closed under the **ring action**, one condition more than \"additive subgroup\".\n\n⭐ Examples: for $A = \\mathbb{Z}$, submodules are the subgroups $n\\mathbb{Z}$; for $A = K[x]$, submodules are the $K[x]$-subspaces.\n\n⭐ Submodule lattice: any intersection is again a submodule, but a union in general is not; the submodule generated by $S$ is the smallest submodule containing $S$. Quotient modules are built as $M/N$ (see `def.quotient-module`, a later node).",
+        status: 'draft',
+        basedOn: 'v0.9.3#3d3d85ef',
+      },
+    },
+
+    'def.fixed-field': {
+      statement: {
+        en: "Let $L/K$ be a field extension and $H \\le \\operatorname{Aut}(L/K)$ a subgroup of the group of $K$-automorphisms. The set\n\n$L^{H} := \\{\\, x \\in L : \\sigma(x) = x \\ \\text{for all } \\sigma \\in H \\,\\}$\n\nis the **fixed field** of $H$. It is a subfield of $L$, and $K \\subseteq L^{H} \\subseteq L$.\n\nIn the Galois correspondence for a finite Galois extension, $H \\mapsto L^{H}$ and the intermediate field $M \\mapsto \\operatorname{Gal}(L/M)$ are mutually inverse (see `thm.galois-correspondence`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#b3b8f1fb',
+      },
+      notes: {
+        en: "⭐ Reverse inclusion: $H_1 \\subseteq H_2 \\implies L^{H_2} \\subseteq L^{H_1}$ — the larger the group, the fewer objects it fixes.\n\n⭐ Examples: the conjugation automorphism of $\\mathbb{C}/\\mathbb{R}$ generates a group of order $2$, whose fixed field is $\\mathbb{R}$; for the finite field $\\mathbb{F}_{p^n}/\\mathbb{F}_p$, the fixed field of the group generated by Frobenius is $\\mathbb{F}_p$.\n\n⚠ A fixed field is in general **not equal** to some elementary construction of \"the field fixing every element\": it looks at all elements of $H$ together, not at fixed points element by element.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2469a675',
+      },
+    },
+
+    'def.prime-ideal': {
+      statement: {
+        en: "Let $A$ be a commutative ring with identity and $P \\subset A$ a proper ideal. Then $P$ is a **prime ideal** if\n\n$a b \\in P \\implies a \\in P \\ \\text{or}\\ b \\in P \\qquad (a, b \\in A).$\n\nEquivalently, the quotient ring $A/P$ is a **domain** (see `def.quotient-ring`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#c699cce0',
+      },
+      notes: {
+        en: "⭐ Examples: in $\\mathbb{Z}$ both $(p)$ ($p$ prime) and $(0)$ are prime; in $K[x]$, $(f)$ is prime $\\iff$ $f$ is irreducible, and $(0)$ is prime too.\n\n⚠ A prime ideal need not be maximal: in $\\mathbb{Z}[x]$, $(x)$ is prime ($\\mathbb{Z}[x]/(x) \\cong \\mathbb{Z}$ is a domain) but not maximal.\n\n⭐ A prime ideal is the abstraction of \"divisibility\": $a \\in (p) \\iff p \\mid a$; $ab \\in (p) \\implies p \\mid ab \\implies p \\mid a$ or $p \\mid b$ is exactly Euclid's lemma.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2ed4c3f9',
       },
     },
   },
