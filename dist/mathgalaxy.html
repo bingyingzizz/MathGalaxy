@@ -5313,14 +5313,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
   var MG = (global.MG = global.MG || {});
   var U = MG.util;
 
-  function buildTexture(graph, isVisible) {
+  /* ⚠️ 取景（bbox）必须用**全图**节点，不能跟着「当前层/手动隐藏」走。
+     雾是世界级背景：15 个板块的色团按 graph.regions 全画；如果 bbox 只用可见节点，
+     切到第 1 层时纹理就缩成中间一小块，纹理外没有雾 ⇒ 屏幕右侧直接黑掉（用户 2026-11-15 报）。
+     取景与内容都跟内容集合无关，纹理只随主题设置变化，层过滤只影响节点/连线。 */
+  function buildTexture(graph) {
     var bc = MG.config.background;
-    var ok = isVisible || function () { return true; };
 
-    /* 可见节点 bbox（隐藏节点不参与）。 */
+    /* 全图节点 bbox。 */
     var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
     (graph.nodes || []).forEach(function (n) {
-      if (!ok(n.id)) return;
       if (n.x < minX) minX = n.x;
       if (n.x > maxX) maxX = n.x;
       if (n.y < minY) minY = n.y;
@@ -6169,6 +6171,19 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
       return false;
     }
 
+    /* 板块里只要还有一颗星看得见，板块名就画；整块都被层过滤/手动隐藏藏光时不画。
+       用户 2026-11-15：「没有的板块就不把名字显示出来」——切到第 1 层时
+       「几何与拓扑」「代数」「分析」「数论」等板块一个可见节点都没有，名字却还挂着。
+       ⚠️ view.isNodeVisible 不存在时（静态烘焙/旧调用）一律当可见，不能误杀。 */
+    function sectorHasVisible(s) {
+      if (!view.isNodeVisible) return true;
+      var regs = s.regions || [];
+      for (var i = 0; i < regs.length; i++) {
+        if (regs[i] && regs[i].id && regionHasVisible(regs[i].id)) return true;
+      }
+      return false;
+    }
+
     function alphaForNode(id) {
       var f = view.focus;
       if (!f) return 1;
@@ -6643,6 +6658,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
       ctx.textBaseline = 'middle';
       (view.graph.sectors || []).forEach(function (s) {
         if (s.empty || !s.regions.length) return;          // 空板块不占画面
+        if (!sectorHasVisible(s)) return;                  // 当前层一颗可见星都没有 ⇒ 不挂空名字
         var c = sectorAnchor(s);
         if (!c) return;
         var p = w2s(c.x, c.y);
@@ -107737,10 +107753,11 @@ MG.trunk = [
 
     function frame() {
       rafId = 0;
-      // 云雾是按「还看得见的点」铺的：藏了点就重画一次纹理（每帧最多一次）
+      // 云雾是世界级背景（取景用全图 bbox）：层过滤/手动隐藏都不该让它缩水，
+      // 所以这里不再按可见节点重铺；cloudDirty 只留给主题等真正影响雾的变化。
       if (cloudDirty) {
         cloudDirty = false;
-        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+        cloudTex = MG.background.buildTexture(graph);
         cloudDrawn.tex = null;              // 纹理换了：这一次必须重铺
       }
       var tp = performance.now();
@@ -108256,7 +108273,8 @@ MG.trunk = [
       }
 
       renderer.invalidate();
-      cloudDirty = true;
+      /* 雾的取景和内容都是世界级的（全图 bbox + 全部板块色团），跟可见节点无关，
+         所以层过滤/手动隐藏**不需要**重铺纹理；这里以前置 cloudDirty 是白花一次建纹理。 */
       requestDraw();
     }
 
@@ -109692,7 +109710,7 @@ MG.trunk = [
       function hudTexture() {
         var sig = graph.nodes.length + ':' + vis.hiddenCount();
         if (!hudTex || sig !== hudVisSig) {
-          hudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+          hudTex = MG.background.buildTexture(graph);
           hudVisSig = sig;
         }
         return hudTex;
@@ -109792,7 +109810,7 @@ MG.trunk = [
           out.push('连线层（含光栅化） ' + bTime(function () { renderer.draw(); }, 4, bFlushG).toFixed(2) + ' ms');
         } catch (e) { out.push('连线层：测不了 ' + e.message); }
         try {
-          var bt = MG.background.buildTexture(graph, vis.isNodeVisible);
+          var bt = MG.background.buildTexture(graph);
           out.push('云雾层（含光栅化） ' + bTime(function () { MG.background.draw(cloudCtx, cam, bt, dpr); }, 4, bFlushC).toFixed(2) + ' ms'
             + '  （纹理 ' + bt.canvas.width + '×' + bt.canvas.height + '）');
         } catch (e) { out.push('云雾层：测不了 ' + e.message); }
@@ -109864,7 +109882,7 @@ MG.trunk = [
       resize();
       if (cloudDirty || !cloudTex) {
         cloudDirty = false;
-        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+        cloudTex = MG.background.buildTexture(graph);
       }
       syncToolbar();
       renderLegend();

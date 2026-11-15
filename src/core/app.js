@@ -230,10 +230,11 @@
 
     function frame() {
       rafId = 0;
-      // 云雾是按「还看得见的点」铺的：藏了点就重画一次纹理（每帧最多一次）
+      // 云雾是世界级背景（取景用全图 bbox）：层过滤/手动隐藏都不该让它缩水，
+      // 所以这里不再按可见节点重铺；cloudDirty 只留给主题等真正影响雾的变化。
       if (cloudDirty) {
         cloudDirty = false;
-        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+        cloudTex = MG.background.buildTexture(graph);
         cloudDrawn.tex = null;              // 纹理换了：这一次必须重铺
       }
       var tp = performance.now();
@@ -749,7 +750,8 @@
       }
 
       renderer.invalidate();
-      cloudDirty = true;
+      /* 雾的取景和内容都是世界级的（全图 bbox + 全部板块色团），跟可见节点无关，
+         所以层过滤/手动隐藏**不需要**重铺纹理；这里以前置 cloudDirty 是白花一次建纹理。 */
       requestDraw();
     }
 
@@ -2185,7 +2187,7 @@
       function hudTexture() {
         var sig = graph.nodes.length + ':' + vis.hiddenCount();
         if (!hudTex || sig !== hudVisSig) {
-          hudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+          hudTex = MG.background.buildTexture(graph);
           hudVisSig = sig;
         }
         return hudTex;
@@ -2285,7 +2287,7 @@
           out.push('连线层（含光栅化） ' + bTime(function () { renderer.draw(); }, 4, bFlushG).toFixed(2) + ' ms');
         } catch (e) { out.push('连线层：测不了 ' + e.message); }
         try {
-          var bt = MG.background.buildTexture(graph, vis.isNodeVisible);
+          var bt = MG.background.buildTexture(graph);
           out.push('云雾层（含光栅化） ' + bTime(function () { MG.background.draw(cloudCtx, cam, bt, dpr); }, 4, bFlushC).toFixed(2) + ' ms'
             + '  （纹理 ' + bt.canvas.width + '×' + bt.canvas.height + '）');
         } catch (e) { out.push('云雾层：测不了 ' + e.message); }
@@ -2357,7 +2359,7 @@
       resize();
       if (cloudDirty || !cloudTex) {
         cloudDirty = false;
-        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+        cloudTex = MG.background.buildTexture(graph);
       }
       syncToolbar();
       renderLegend();

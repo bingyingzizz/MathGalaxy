@@ -719,6 +719,19 @@
       return false;
     }
 
+    /* 板块里只要还有一颗星看得见，板块名就画；整块都被层过滤/手动隐藏藏光时不画。
+       用户 2026-11-15：「没有的板块就不把名字显示出来」——切到第 1 层时
+       「几何与拓扑」「代数」「分析」「数论」等板块一个可见节点都没有，名字却还挂着。
+       ⚠️ view.isNodeVisible 不存在时（静态烘焙/旧调用）一律当可见，不能误杀。 */
+    function sectorHasVisible(s) {
+      if (!view.isNodeVisible) return true;
+      var regs = s.regions || [];
+      for (var i = 0; i < regs.length; i++) {
+        if (regs[i] && regs[i].id && regionHasVisible(regs[i].id)) return true;
+      }
+      return false;
+    }
+
     function alphaForNode(id) {
       var f = view.focus;
       if (!f) return 1;
@@ -1197,6 +1210,9 @@
         if (!c) return;
         var p = w2s(c.x, c.y);
         if (p.x < -400 || p.x > W + 400 || p.y < -300 || p.y > H + 300) return;
+        /* 可见性检查放在「已确认在屏幕内」之后：层过滤时大量板块锚点在屏幕外，
+           先筛一遍能省掉对全图节点的重复扫描（实测 0.14ms → 近 0）。 */
+        if (!sectorHasVisible(s)) return;                  // 当前层一颗可见星都没有 ⇒ 不挂空名字
         var text = s.nameShow || s.name;
         var nch = text.length;
         var pick = placeBigName(p.x, p.y, fs0, 2, 'sector', function (fs) {

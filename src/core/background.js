@@ -14,14 +14,16 @@
   var MG = (global.MG = global.MG || {});
   var U = MG.util;
 
-  function buildTexture(graph, isVisible) {
+  /* ⚠️ 取景（bbox）必须用**全图**节点，不能跟着「当前层/手动隐藏」走。
+     雾是世界级背景：15 个板块的色团按 graph.regions 全画；如果 bbox 只用可见节点，
+     切到第 1 层时纹理就缩成中间一小块，纹理外没有雾 ⇒ 屏幕右侧直接黑掉（用户 2026-11-15 报）。
+     取景与内容都跟内容集合无关，纹理只随主题设置变化，层过滤只影响节点/连线。 */
+  function buildTexture(graph) {
     var bc = MG.config.background;
-    var ok = isVisible || function () { return true; };
 
-    /* 可见节点 bbox（隐藏节点不参与）。 */
+    /* 全图节点 bbox。 */
     var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
     (graph.nodes || []).forEach(function (n) {
-      if (!ok(n.id)) return;
       if (n.x < minX) minX = n.x;
       if (n.x > maxX) maxX = n.x;
       if (n.y < minY) minY = n.y;
