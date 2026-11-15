@@ -2,7 +2,7 @@
 
 > page 1 `hubs.en.md`
 
-- **38 / 38** `def.group` group · 代数结构
+- **36 / 36** `def.group` group · 代数结构
 - **32 / 33** `def.measure` measure · 测度的构造
 - **31 / 31** `def.topology` topology · 拓扑空间的基本语汇
 - **30 / 36** `def.compact` compact · 拓扑空间的基本语汇

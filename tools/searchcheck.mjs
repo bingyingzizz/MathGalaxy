@@ -83,7 +83,7 @@ const CASES = [
      ⛔ refs **不进 hay**（上一批 `I.5` 那条记 0 就是为了钉住这点），
         要按书号找节点只能走这个显式前缀，免得章节号污染普通搜索。 */
   { q: 'ref:Zorn (1935)', n: 1, top: ['lem.zorn'], why: 'ref: 精确到一个节点的出处（Zorn (1935) 只挂在佐恩引理上）' },
-  { q: 'ref:I.5', n: 14, total: 18, top: ['def.function', 'def.quotient-set', 'thm.product'], why: 'ref: 命中一批（Kunen 的 I.5 那一节）—— 条数、总数、次序都盯着；⛔ 不带 ref: 时它仍然搜不到（下一条）。⚠️ 批 3 里 `def.quotient-set` 多了一条入边（`dep.quotientset-quotientvs`），同档按 degree 定次序 ⇒ 它超过了 `def.pair`（集合没变）' },
+  { q: 'ref:I.5', n: 14, total: 18, top: ['def.function', 'def.quotient-set', 'def.int'], why: 'ref: 命中一批（Kunen 的 I.5 那一节）—— 条数、总数、次序都盯着；⛔ 不带 ref: 时它仍然搜不到（下一条）。⚠️ 批 3 里 `def.quotient-set` 多了一条入边（`dep.quotientset-quotientvs`），同档按 degree 定次序 ⇒ 它超过了 `def.pair`（集合没变）。⭐ 2026-11-15 AUD-number-deps：新增 `dep.intdiv-int`（`def.int → thm.int-division`）使 `def.int` 的 degree 8→9，与 `thm.product`（9）同档同分同 degree，按 id 字典序（`def.int` < `thm.product`）反超 ⇒ 第 3 名由 `thm.product` 换成 `def.int`；条数 14、总数 18 均未变。' },
 ];
 
 /* --------------------------------------------------------- 最小 loadMG */

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-14T07:51:02.989Z
-> 15 星系 / 105 星团 / 1664 节点 / 3571 连线（强边 3491，弱边 80；其中**不分层**的「推论」63 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-15T15:12:45.849Z
+> 15 星系 / 105 星团 / 1664 节点 / 3615 连线（强边 3529，弱边 86；其中**不分层**的「推论」63 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 4.2 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -58212,14 +58212,6 @@ $$2au + 2bv + c(|z|^{2} - 1) = d(1 + |z|^{2}).$$
 
 整数 $\mathbb{Z}$ 是整除关系的载体：$a \mid b$ 的定义直接落在 $\mathbb{Z}$ 的元素上。
 
-#### 定义引用：「理想」→ 整除　`e114.definition`
-
-整除就是主理想的包含：$a \mid b \iff (b) \subseteq (a)$。这条把初等数论与环论对齐。
-
-#### 定义引用：「整除」→ 整数的带余除法　`e115.definition`
-
-带余除法的陈述里直接用了「整除」：$b \ne 0$，$r < |b|$，而 $a - qb = r$ 就是「$b$ 除 $a$ 的余数」。
-
 #### 定义引用：「整除」→ 最大公因数　`e116.definition`
 
 最大公因数的定义是「同时整除 $a$ 与 $b$ 的最大正整数」—— 没有整除就没有公因数。
@@ -58247,14 +58239,6 @@ $\mathbb{Z}/n\mathbb{Z}$ 是环：加法、乘法、单位元全由 $\mathbb{Z}$
 #### 定义引用：「剩余类环」→ 中国剩余定理　`e122.definition`
 
 中国剩余定理说的是「剩余类环的直积分解」—— 陈述里两个对象都是 $\mathbb{Z}/n\mathbb{Z}$。
-
-#### 定义引用：「剩余类环」→ Euler 函数　`e123.definition`
-
-$\varphi(n)$ 就是单位群 $(\mathbb{Z}/n\mathbb{Z})^{\times}$ 的阶。
-
-#### 定义引用：「群」→ Euler 定理　`e124.definition`
-
-单位群是群：Euler 定理的证明只用到「有限群的元素阶整除群阶」。
 
 #### 整数的带余除法 ⟹ 辗转相除法　`imp.nt-division-euclid`
 *辗转相除法：反复做带余除，余数严格下降*
@@ -58386,6 +58370,78 @@ $\gcd(a,b) > 1$ 的情形改用 $n$ 的一个真因子与 $n/\text{它}$ 同样�
 
 故不可能 $\equiv -1$。
 
+#### 定义引用：「最大公因数」→ Euler 函数　`dep.phi-gcd`
+
+定义里的计数条件是 $\gcd(a,n)=1$，直接用到最大公因数。
+
+#### 定义引用：「素数」→ Euler 函数　`dep.phi-prime`
+
+乘积公式里的 $p_i$ 是 $n$ 的两两不同素因子，直接用到素数的概念。
+
+#### 定义引用：「整数 ℤ」→ 整数的带余除法　`dep.intdiv-int`
+
+陈述的载体是 $a,b,q,r\in\mathbb{Z}$。
+
+#### 定义引用：「绝对值 |x|」→ 整数的带余除法　`dep.intdiv-abs`
+
+陈述写的是 $0\le r<|b|$，直接用到绝对值。
+
+#### 定义引用：「最大公因数」→ 辗转相除法　`dep.euclidalg-gcd`
+
+陈述的输出就是 $\gcd(a,b)$。
+
+#### 定义引用：「绝对值 |x|」→ 辗转相除法　`dep.euclidalg-abs`
+
+算法从 $|a|,|b|$ 起步并保证余数非负。
+
+#### 定义引用：「最大公因数」→ Bézout 恒等式　`dep.bezout-gcd`
+
+陈述写 $d=\gcd(a,b)$。
+
+#### 定义引用：「素数」→ 素数有无穷多个　`dep.inftprimes-prime`
+
+陈述的主语就是素数。
+
+#### 定义引用：「素数」→ 算术基本定理　`dep.fta-prime`
+
+陈述把整数写成素数的乘积。
+
+#### 定义引用：「最大公因数」→ 中国剩余定理　`dep.crt-gcd`
+
+陈述的条件是 $n_i$ 两两互素，用最大公因数表述。
+
+#### 定义引用：「Euler 函数」→ Euler 定理　`dep.eulertheorem-phi`
+
+陈述的指数是 $\varphi(n)$。
+
+#### 定义引用：「最大公因数」→ Euler 定理　`dep.eulertheorem-gcd`
+
+陈述的条件是 $\gcd(a,n)=1$。
+
+#### 定义引用：「同余」→ Euler 定理　`dep.eulertheorem-congr`
+
+结论写成同余式 $a^{\varphi(n)}\equiv1\pmod n$。
+
+#### 定义引用：「素数」→ Fermat 小定理　`dep.fermat-prime`
+
+陈述要求 $p$ 是素数。
+
+#### 定义引用：「整除」→ Fermat 小定理　`dep.fermat-divides`
+
+陈述的条件 $p\nmid a$ 与结论都用整除写。
+
+#### 定义引用：「同余」→ Fermat 小定理　`dep.fermat-congr`
+
+结论是同余式 $a^{p-1}\equiv1\pmod p$。
+
+#### 定义引用：「素数」→ Wilson 定理　`dep.wilson-prime`
+
+陈述要求 $p$ 是素数。
+
+#### 定义引用：「同余」→ Wilson 定理　`dep.wilson-congr`
+
+结论是同余式 $(p-1)!\equiv-1\pmod p$。
+
 #### 定义引用：「环」→ 整环　`e127.definition`
 
 整环是「交换、含幺、无零因子」的环 —— 三个条件全是对 `def.ring` 的追加。
@@ -58432,10 +58488,6 @@ PID 的定义就是「每个理想都是主理想」—— 没有理想这个概
 考虑 $\varphi: A \to A/I \times A/J$，$a \mapsto (a \bmod I,\ a \bmod J)$，它是环同态。核 $\ker\varphi = I \cap J$。由第一同构定理，$A/(I \cap J) \cong \operatorname{im}\varphi$；再由互素 $I+J=A$ 写出 $1 = u+v$（$u\in I$、$v\in J$），对任意 $(x,y)$ 取 $a = xv + yu$ 即得 $a\equiv x \pmod I$、$a \equiv y \pmod J$，故 $\varphi$ 满射、$\operatorname{im}\varphi = A/I\times A/J$。合起来 $A/(I\cap J)\cong A/I\times A/J$；两两互素的情形对 $k$ 归纳。∎
 
 > 第一同构定理提供「商掉核」这一步；满射性不用它，用互素给出的显式构造。
-
-#### 定义引用：「唯一分解整环」→ 算术基本定理　`e137.definition`
-
-算术基本定理就是「$\mathbb{Z}$ 是 UFD」这句话在整数上的展开。
 
 #### 定义引用：「唯一分解整环」→ K[x] 是唯一分解整环　`e138.definition`
 
@@ -58942,21 +58994,9 @@ Jacobi 符号是把 Legendre 符号按素因子幂乘起来。
 
 原根的定义就是「阶等于 $\varphi(n)$」。
 
-#### 定义引用：「群」→ 模 n 的阶　`e157.definition`
-
-阶就是元素在单位群里的阶 —— 群论概念在模算术里的坐标。
-
 #### 定义引用：「原根」→ 离散对数　`e158.definition`
 
 离散对数以原根为底，唯一性来自「生成元」。
-
-#### 定义引用：「模素数有原根」→ 离散对数　`e159.definition`
-
-原根存在，离散对数才有定义。
-
-#### 定义引用：「积性函数」→ Legendre 符号　`e160.definition`
-
-Legendre 符号对第一个变量完全积性（$\left(\frac{ab}{p}\right) = \left(\frac{a}{p}\right)\left(\frac{b}{p}\right)$）。
 
 #### 模 n 的阶 ⟹ Euler 判别法　`imp.nt-euler-criterion`
 *Euler 判别法：$a^{(p-1)/2}$ 只能等于 $\pm 1$*
@@ -59083,6 +59123,118 @@ $$\Bigl(\frac{m}{n}\Bigr)=\prod_{i,j}\Bigl(\frac{p_i}{q_j}\Bigr)^{a_ib_j}=\prod_
 #### 定义引用：「循环群」→ 原根　`dep.primroot-cyclic`
 
 原根使单位群成为循环群。
+
+#### 定义引用：「最大公因数」→ 模 n 的阶　`dep.ordmod-gcd`
+
+陈述的前提是 $\gcd(a,n)=1$。
+
+#### 定义引用：「同余」→ 模 n 的阶　`dep.ordmod-congr`
+
+定义式为 $a^{k}\equiv1\pmod n$，是同余式。
+
+#### 定义引用：「最大公因数」→ 原根　`dep.primroot-gcd`
+
+陈述的前提是 $\gcd(g,n)=1$。
+
+#### 定义引用：「Euler 函数」→ 原根　`dep.primroot-phi`
+
+定义要求 $\operatorname{ord}_n(g)=\varphi(n)$。
+
+#### 定义引用：「剩余类环」→ 原根　`dep.primroot-zmodn`
+
+陈述直接出现单位群 $(\mathbb{Z}/n\mathbb{Z})^{\times}$。
+
+#### 定义引用：「最大公因数」→ 离散对数　`dep.dlog-gcd`
+
+陈述的前提是 $\gcd(a,n)=1$。
+
+#### 定义引用：「Euler 函数」→ 离散对数　`dep.dlog-phi`
+
+陈述把 $k$ 的范围限定为 $0\le k<\varphi(n)$。
+
+#### 定义引用：「同余」→ 离散对数　`dep.dlog-congr`
+
+定义式 $a\equiv g^{k}\pmod n$ 是同余式。
+
+#### 定义引用：「素数」→ 二次剩余　`dep.qr-prime`
+
+陈述要求 $p$ 是奇素数。
+
+#### 定义引用：「整除」→ 二次剩余　`dep.qr-divides`
+
+陈述的条件 $p\nmid a$ 用整除写。
+
+#### 定义引用：「素数」→ Legendre 符号　`dep.legendre-prime`
+
+陈述要求 $p$ 是奇素数。
+
+#### 定义引用：「同余」→ Legendre 符号　`dep.legendre-congr`
+
+定义分成 $a\equiv x^{2}\pmod p$ 与其余两类，都是同余式。
+
+#### 定义引用：「整除」→ Legendre 符号　`dep.legendre-divides`
+
+陈述的条件 $p\nmid a$ 用整除写。
+
+#### 定义引用：「素数」→ Jacobi 符号　`dep.jacobi-prime`
+
+定义对 $n$ 作素因子分解，用素数。
+
+#### 定义引用：「模 n 的阶」→ 阶整除 Euler 函数　`dep.orddivphi-order`
+
+陈述用 $\operatorname{ord}_n(a)$。
+
+#### 定义引用：「Euler 函数」→ 阶整除 Euler 函数　`dep.orddivphi-phi`
+
+结论是 $\operatorname{ord}_n(a)\mid\varphi(n)$。
+
+#### 定义引用：「最大公因数」→ 阶整除 Euler 函数　`dep.orddivphi-gcd`
+
+前提 $\gcd(a,n)=1$。
+
+#### 定义引用：「素数」→ 模素数有原根　`dep.primexists-prime`
+
+陈述的对象是素数 $p$。
+
+#### 定义引用：「剩余类环」→ 模素数有原根　`dep.primexists-zmodn`
+
+陈述写 $\mathbb{F}_p^{\times}=(\mathbb{Z}/p\mathbb{Z})^{\times}$。
+
+#### 定义引用：「Euler 函数」→ 模素数有原根　`dep.primexists-phi`
+
+陈述用 $\varphi(p)=p-1$。
+
+#### 定义引用：「循环群」→ 模素数有原根　`dep.primexists-cyclic`
+
+结论断言单位群是循环群。
+
+#### 定义引用：「原根」→ 模素数有原根　`dep.primexists-primroot`
+
+结论断言存在模 $p$ 的原根。
+
+#### 定义引用：「素数」→ Euler 判别法　`dep.eulercrit-prime`
+
+陈述要求 $p$ 是奇素数。
+
+#### 定义引用：「同余」→ Euler 判别法　`dep.eulercrit-congr`
+
+判据用同余式 $a^{(p-1)/2}\equiv\pm1$。
+
+#### 定义引用：「素数」→ Gauss 引理（二次剩余）　`dep.gaussqr-prime`
+
+陈述要求 $p$ 是奇素数。
+
+#### 定义引用：「同余」→ Gauss 引理（二次剩余）　`dep.gaussqr-congr`
+
+引理的表述与证明都用同余。
+
+#### 定义引用：「素数」→ 二次互反律　`dep.reciprocity-prime`
+
+陈述要求 $p,q$ 是奇素数。
+
+#### 定义引用：「最大公因数」→ Jacobi 符号的计算法则　`dep.jacobilaws-gcd`
+
+陈述的条件是 $\gcd(m,n)=1$。
 
 #### 定义引用：「选择函数」→ Zorn 引理　`e162.definition`
 
@@ -63218,9 +63370,12 @@ $\operatorname{Re}s > 1$ 时 $\sum n^{-s}$ **绝对收敛** —— 这是「可�
 
 **跨区域桥（analysis-measure $\leftrightarrow$ diffgeom）**：密度是「能对 Lebesgue 测度积分的量」，它的良定性证明（`prop.volume-density-well-defined`）就是换元公式 + 测度。
 
-#### 定义引用：「良序集」→ 整数的带余除法　`dep.intdiv-wellorder`
+#### 良序集 ⟹ 整数的带余除法　`dep.intdiv-wellorder`
+*整数良序给出带余除法的存在性*
 
-**跨区域桥（order-theory $\leftrightarrow$ number）**：带余除法的存在性标准证法取 $\{\, a - qb \ge 0 \,\}$ 的最小元，用的正是 $\mathbb{N}$ 的**良序**性。
+先设 $b>0$。集合 $S=\{\, a-qb : q\in\mathbb{Z},\ a-qb\ge 0 \,\}$ 非空（Archimedes 性质保证可取到使 $qb>a$ 的 $q$），由 $\mathbb{N}$ 的良序取 $r=\min S$，写 $r=a-qb$。若 $r\ge b$，则 $r-b=a-(q+1)b\ge0$ 且更小，与最小性矛盾；故 $0\le r<b$。$b<0$ 时把 $b$ 换成 $|b|$、$q$ 换成 $-q$ 即化归。唯一性见节点注。∎
+
+> **跨区域桥（order-theory $\leftrightarrow$ number）**：存在性一步用的是 $\mathbb{N}$ 的良序（取最小非负余数），这是**证明依赖**而不是定义依赖 —— 带余除法的陈述里没有良序。
 
 #### 定义引用：「投射有限空间」→ profinite 整数 ℤ̂　`dep.zhat-profinite`
 
@@ -66749,6 +66904,21 @@ $p$ 级数族是说明根值判别法边界的标准例子：对 $a_{n} = n^{-p}
 
 两种「边界对象」：素端对**一般**单连通区域定义（横截弧的极限），边界对应定理里的是 **Jordan 区域**的边界点。Jordan 情形下二者一一对应（Carathéodory 紧化就是通常闭包），但素端是多出来的那层构造，不是边界对应定理的实例 —— 所以是类比，不是定义依赖。
 
+#### 理想 ～ 整除　`e114.definition`
+*主理想包含与整除：对齐，不是定义依赖*
+
+整数上的 $a\mid b$ 对应主理想的包含 $(b)\subseteq(a)$ —— 这是把初等数论与环论对齐的**类比**，不是定义依赖：『def.divides』的陈述只用 $\mathbb{Z}$ 与乘法，没有理想；反过来一般的理想包含也推不出整数整除。
+
+#### 剩余类环 ～ Euler 函数　`e123.definition`
+*$\varphi(n)$ 与单位群的阶*
+
+$\varphi(n)$ 的定义只用 $\gcd$ 与计数；「$\varphi(n)$ 等于单位群 $(\mathbb{Z}/n\mathbb{Z})^{\times}$ 的阶」是**定理**，不是 $\varphi$ 的定义。这里只是把两个对象放在一起对照。
+
+#### 群 ～ Euler 定理　`e124.definition`
+*Euler 定理的证明用到有限群的阶*
+
+证明里用的是「有限群中元素的阶整除群阶」这一群论事实，属**证明工具**；定理陈述本身只有 $\gcd(a,n)=1$ 与 $a^{\varphi(n)}\equiv1$，不出现群。
+
 #### 整数的带余除法 ～ 带余除法　`e125.analogy`
 *整数与多项式：同一个带余除法*
 
@@ -66770,6 +66940,11 @@ $p$ 级数族是说明根值判别法边界的标准例子：对 $a_{n} = n^{-p}
 
 
 但 UFD 不是自动的：$\mathbb{Z}[\sqrt{-5}]$ 与 $K[x, y]$ 都不是 UFD。反例的形状也一样 —— 同一个元素有两条真分解。
+
+#### 唯一分解整环 ～ 算术基本定理　`e137.definition`
+*$\mathbb{Z}$ 是唯一分解整环：一个例子，不是定义依赖*
+
+「$\mathbb{Z}$ 是 UFD」是把算术基本定理放进一般环的框架里看的**例子**；定理陈述只讲素数与分解，不出现 UFD 的定义，UFD 也不以整数分解为前提。
 
 #### 中国剩余定理 ～ 中国剩余定理（环论形式）　`e140.analogy`
 *中国剩余定理：数论版是环论版在 $\mathbb{Z}$ 上的样子*
@@ -66813,6 +66988,16 @@ $p$ 级数族是说明根值判别法边界的标准例子：对 $a_{n} = n^{-p}
 
 
 所以「积性函数」这条定义是四个具体公式的共同外壳 —— 与「张量场是向量场、微分形式、度量的共同外壳」是同一种组织方式。
+
+#### 群 ～ 模 n 的阶　`e157.definition`
+*模 $n$ 的阶与群论里的元素阶*
+
+『def.order-mod-n』的陈述只写 $\gcd(a,n)=1$ 与 $a^{k}\equiv1\pmod n$，没有单位群；把它读成「单位群中元素的阶」是同一件事的另一种说法（见节点注），不算定义依赖。
+
+#### 积性函数 ～ Legendre 符号　`e160.definition`
+*Legendre 符号的完全积性*
+
+「$\left(\frac{ab}{p}\right)=\left(\frac{a}{p}\right)\left(\frac{b}{p}\right)$」是关于 Legendre 符号的**定理**，不是它的定义；『def.legendre-symbol』的陈述里也没有「积性函数」这一概念。
 
 #### Jacobi 符号 ～ Legendre 符号　`e161.analogy`
 *Jacobi 符号：把 Legendre 符号从素数推到奇数*
@@ -67546,8 +67731,10 @@ $\ell^{2}(I)$ 同时是 Banach 空间的实例。
 - **内蕴几何 ↔ 基本群**　2 条节点级连线
 - **基本群 ↔ 度量空间**　2 条节点级连线
 - **共形映射与正规族 ↔ 基本群**　2 条节点级连线
+- **整除与同余 ↔ 数系的构造**　2 条节点级连线
 - **代数结构 ↔ 整除与同余**　3 条节点级连线
 - **多项式与因式分解 ↔ 整除与同余**　2 条节点级连线
+- **实数的运算与不等式 ↔ 整除与同余**　2 条节点级连线
 - **整环与分解 ↔ 代数结构**　8 条节点级连线
 - **整环与分解 ↔ 整除与同余**　3 条节点级连线
 - **多项式与因式分解 ↔ 整环与分解**　2 条节点级连线
@@ -67556,7 +67743,8 @@ $\ell^{2}(I)$ 同时是 Banach 空间的实例。
 - **复变函数基础 ↔ 数论函数与素数分布**　4 条节点级连线
 - **解析延拓与整函数 ↔ 数论函数与素数分布**　3 条节点级连线
 - **整除与同余 ↔ 数论函数与素数分布**　7 条节点级连线
-- **群作用与置换 ↔ 二次剩余与原根**　2 条节点级连线
+- **整除与同余 ↔ 二次剩余与原根**　26 条节点级连线
+- **群作用与置换 ↔ 二次剩余与原根**　3 条节点级连线
 - **选择原理 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **选择原理 ↔ 收敛与紧性**　2 条节点级连线
 - **线性映射与秩 ↔ 流形与向量丛**　3 条节点级连线

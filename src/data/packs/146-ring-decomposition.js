@@ -277,8 +277,9 @@ window.MG = window.MG || {};
       proof: '考虑 $\\varphi: A \\to A/I \\times A/J$，$a \\mapsto (a \\bmod I,\\ a \\bmod J)$，它是环同态。核 $\\ker\\varphi = I \\cap J$。由第一同构定理，$A/(I \\cap J) \\cong \\operatorname{im}\\varphi$；再由互素 $I+J=A$ 写出 $1 = u+v$（$u\\in I$、$v\\in J$），对任意 $(x,y)$ 取 $a = xv + yu$ 即得 $a\\equiv x \\pmod I$、$a \\equiv y \\pmod J$，故 $\\varphi$ 满射、$\\operatorname{im}\\varphi = A/I\\times A/J$。合起来 $A/(I\\cap J)\\cong A/I\\times A/J$；两两互素的情形对 $k$ 归纳。∎',
       note: '第一同构定理提供「商掉核」这一步；满射性不用它，用互素给出的显式构造。' },
 
-    {id: "e137.definition", kind: 'definition', definition: 'def.ufd', usedBy: 'thm.fundamental-arithmetic',
-      note: '算术基本定理就是「$\\mathbb{Z}$ 是 UFD」这句话在整数上的展开。' },
+    {id: "e137.definition", kind: 'analogy', a: 'def.ufd', b: 'thm.fundamental-arithmetic',
+      title: '$\\mathbb{Z}$ 是唯一分解整环：一个例子，不是定义依赖',
+      note: '「$\\mathbb{Z}$ 是 UFD」是把算术基本定理放进一般环的框架里看的**例子**；定理陈述只讲素数与分解，不出现 UFD 的定义，UFD 也不以整数分解为前提。' },
 
     {id: "e138.definition", kind: 'definition', definition: 'def.ufd', usedBy: 'thm.poly-ufd',
       note: '$K[x]$ 是 UFD —— 定理本身是在验证这个定义。' },

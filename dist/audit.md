@@ -10,9 +10,9 @@
 
 判据：label 去掉括注/空格后相同或前缀相近（与 `_tools/_nov15.mjs` 同口径），且两颗星之间一条边都没有。
 
-- Euler 定理（`thm.euler-theorem` L10）⇸ Euler 类（`def.euler-class` L37）
-- Euler 函数（`def.euler-phi` L14）⇸ Euler 类（`def.euler-class` L37）
-- Euler 判别法（`thm.euler-criterion` L16）⇸ Euler 类（`def.euler-class` L37）
+- Euler 函数（`def.euler-phi` L11）⇸ Euler 类（`def.euler-class` L37）
+- Euler 定理（`thm.euler-theorem` L12）⇸ Euler 类（`def.euler-class` L37）
+- Euler 判别法（`thm.euler-criterion` L13）⇸ Euler 类（`def.euler-class` L37）
 - Pontryagin 对偶（`def.pontryagin-dual` L19）⇸ Pontryagin 类（`def.pontryagin-class` L36）
 - Euler 公式（`thm.euler-formula` L23）⇸ Euler 类（`def.euler-class` L37）
 - Euler 示性数（`thm.euler-characteristic` L25）⇸ Euler 类（`def.euler-class` L37）

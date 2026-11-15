@@ -6,14 +6,14 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-14T07:51:02.989Z",
+  "generated": "2026-11-15T15:12:45.849Z",
   "counts": {
    "regions": 15,
    "clusters": 105,
    "nodes": 1664,
-   "edges": 3571,
-   "strong": 3491,
-   "weak": 80,
+   "edges": 3615,
+   "strong": 3529,
+   "weak": 86,
    "derived": 63,
    "en_pages": 1664
   },
@@ -67670,7 +67670,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 11,
+   "layer": 9,
    "tags": [
     "数论",
     "整除"
@@ -67721,7 +67721,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 12,
+   "layer": 11,
    "tags": [
     "数论",
     "整除",
@@ -67775,7 +67775,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 13,
+   "layer": 12,
    "tags": [
     "数论",
     "整除",
@@ -67816,7 +67816,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 12,
+   "layer": 10,
    "tags": [
     "数论",
     "整除"
@@ -67868,7 +67868,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 14,
+   "layer": 13,
    "tags": [
     "数论",
     "整除",
@@ -67909,7 +67909,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 12,
+   "layer": 10,
    "tags": [
     "数论",
     "素数"
@@ -67949,7 +67949,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 13,
+   "layer": 12,
    "tags": [
     "数论",
     "素数",
@@ -68001,7 +68001,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 13,
+   "layer": 12,
    "tags": [
     "数论",
     "素数",
@@ -68043,7 +68043,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 12,
+   "layer": 10,
    "tags": [
     "数论",
     "同余"
@@ -68083,7 +68083,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 13,
+   "layer": 11,
    "tags": [
     "数论",
     "同余",
@@ -68124,7 +68124,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 15,
+   "layer": 14,
    "tags": [
     "数论",
     "同余",
@@ -68165,7 +68165,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 14,
+   "layer": 11,
    "tags": [
     "数论",
     "数论函数"
@@ -68217,7 +68217,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 10,
+   "layer": 12,
    "tags": [
     "数论",
     "同余",
@@ -68258,7 +68258,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 11,
+   "layer": 13,
    "tags": [
     "数论",
     "同余",
@@ -68300,7 +68300,7 @@
     "number"
    ],
    "cluster": "number.basic",
-   "layer": 14,
+   "layer": 12,
    "tags": [
     "数论",
     "同余",
@@ -68774,7 +68774,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 14,
+   "layer": 13,
    "tags": [
     "数论",
     "数论函数"
@@ -68815,7 +68815,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 15,
+   "layer": 14,
    "tags": [
     "数论",
     "数论函数"
@@ -68867,7 +68867,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 14,
+   "layer": 13,
    "tags": [
     "数论",
     "数论函数",
@@ -68908,7 +68908,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 15,
+   "layer": 14,
    "tags": [
     "数论",
     "数论函数"
@@ -68948,7 +68948,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 16,
+   "layer": 15,
    "tags": [
     "数论",
     "数论函数",
@@ -68989,7 +68989,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 17,
+   "layer": 16,
    "tags": [],
    "statement": "设 $f, g : \\mathbb{N}^{+} \\to \\mathbb{C}$。则\n\n$$g(n) = \\sum_{d \\mid n} f(d)\\quad \\forall n \\qquad \\iff \\qquad f(n) = \\sum_{d \\mid n} \\mu(d)\\, g\\!\\left(\\frac{n}{d}\\right) \\quad \\forall n .$$",
    "notes": "**$\\Leftarrow$ 的方向**（唯一要看的方向）：把 $f(d)$ 的表达式代进去，\n\n\n\n$$\\sum_{d\\mid n} f(d) = \\sum_{d\\mid n}\\ \\sum_{e\\mid (n/d)} \\mu(e)\\, g\\!\\left(\\frac{n}{de}\\right) = \\sum_{m \\mid n} g(m) \\sum_{e \\mid (n/m)} \\mu(e) .$$\n\n\n\n内层和由 `thm.mu-sum` 只在 $n/m = 1$ 时为 $1$，其余为 $0$ —— 于是整个式子塌成 $g(n)$。\n\n\n\n**另一方向**同理（或直接用 $\\Leftarrow$ 于反向的偏序）。所以「反演」不是新定理，是 $\\mu * 1 = \\delta$ 这一句话的两面。\n\n\n\n**用法**：数论里的「求和  与  还原」几乎都靠它。\n\n例如 $\\sum_{d\\mid n}\\varphi(d) = n$ 反演出 $\\varphi(n) = \\sum_{d\\mid n}\\mu(d)\\,(n/d)$；\n\n素数计数也是先有 $\\log n! = \\sum_{m \\le n}\\psi(n/m)$ 再反演。",
@@ -69027,7 +69027,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 13,
+   "layer": 11,
    "tags": [
     "数论",
     "素数分布"
@@ -69068,7 +69068,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 15,
+   "layer": 14,
    "tags": [
     "数论",
     "素数分布",
@@ -69110,7 +69110,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 16,
+   "layer": 15,
    "tags": [
     "数论",
     "素数分布",
@@ -69266,7 +69266,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 14,
+   "layer": 12,
    "tags": [
     "数论",
     "素数分布",
@@ -69319,7 +69319,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 16,
+   "layer": 15,
    "tags": [
     "数论",
     "素数分布",
@@ -69372,7 +69372,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 14,
+   "layer": 12,
    "tags": [
     "数论",
     "素数分布",
@@ -69425,7 +69425,7 @@
     "number"
    ],
    "cluster": "number.functions",
-   "layer": 15,
+   "layer": 13,
    "tags": [
     "数论",
     "素数分布",
@@ -69566,7 +69566,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 13,
+   "layer": 11,
    "tags": [
     "数论",
     "二次剩余"
@@ -69606,7 +69606,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 15,
+   "layer": 12,
    "tags": [
     "数论",
     "二次剩余"
@@ -69658,7 +69658,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 16,
+   "layer": 13,
    "tags": [
     "数论",
     "二次剩余",
@@ -69713,7 +69713,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 17,
+   "layer": 14,
    "tags": [
     "数论",
     "二次剩余",
@@ -69754,7 +69754,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 18,
+   "layer": 15,
    "tags": [
     "数论",
     "二次剩余",
@@ -69796,7 +69796,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 16,
+   "layer": 13,
    "tags": [
     "数论",
     "二次剩余"
@@ -69836,7 +69836,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 17,
+   "layer": 14,
    "tags": [
     "数论",
     "二次剩余",
@@ -69877,7 +69877,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 8,
+   "layer": 11,
    "tags": [
     "数论",
     "原根"
@@ -69929,7 +69929,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 10,
+   "layer": 12,
    "tags": [
     "数论",
     "原根",
@@ -69970,7 +69970,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 10,
+   "layer": 12,
    "tags": [
     "数论",
     "原根"
@@ -70009,7 +70009,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 11,
+   "layer": 13,
    "tags": [
     "数论",
     "原根",
@@ -70050,7 +70050,7 @@
     "number"
    ],
    "cluster": "number.quadratic",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "数论",
     "原根"
@@ -98398,19 +98398,12 @@
   },
   {
    "id": "e114.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.ideal",
-   "usedBy": "def.divides",
-   "note": "整除就是主理想的包含：$a \\mid b \\iff (b) \\subseteq (a)$。这条把初等数论与环论对齐。"
-  },
-  {
-   "id": "e115.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.divides",
-   "usedBy": "thm.int-division",
-   "note": "带余除法的陈述里直接用了「整除」：$b \\ne 0$，$r < |b|$，而 $a - qb = r$ 就是「$b$ 除 $a$ 的余数」。"
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.ideal",
+   "b": "def.divides",
+   "title": "主理想包含与整除：对齐，不是定义依赖",
+   "note": "整数上的 $a\\mid b$ 对应主理想的包含 $(b)\\subseteq(a)$ —— 这是把初等数论与环论对齐的**类比**，不是定义依赖：『def.divides』的陈述只用 $\\mathbb{Z}$ 与乘法，没有理想；反过来一般的理想包含也推不出整数整除。"
   },
   {
    "id": "e116.definition",
@@ -98470,19 +98463,21 @@
   },
   {
    "id": "e123.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.zmodn",
-   "usedBy": "def.euler-phi",
-   "note": "$\\varphi(n)$ 就是单位群 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 的阶。"
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.zmodn",
+   "b": "def.euler-phi",
+   "title": "$\\varphi(n)$ 与单位群的阶",
+   "note": "$\\varphi(n)$ 的定义只用 $\\gcd$ 与计数；「$\\varphi(n)$ 等于单位群 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 的阶」是**定理**，不是 $\\varphi$ 的定义。这里只是把两个对象放在一起对照。"
   },
   {
    "id": "e124.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.group",
-   "usedBy": "thm.euler-theorem",
-   "note": "单位群是群：Euler 定理的证明只用到「有限群的元素阶整除群阶」。"
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.group",
+   "b": "thm.euler-theorem",
+   "title": "Euler 定理的证明用到有限群的阶",
+   "note": "证明里用的是「有限群中元素的阶整除群阶」这一群论事实，属**证明工具**；定理陈述本身只有 $\\gcd(a,n)=1$ 与 $a^{\\varphi(n)}\\equiv1$，不出现群。"
   },
   {
    "id": "imp.nt-division-euclid",
@@ -98599,6 +98594,150 @@
    "note": "两边的定理一字不差，只把「素数」换成「不可约多项式」、把「绝对值」换成「次数」。\n\n\n\n但 UFD 不是自动的：$\\mathbb{Z}[\\sqrt{-5}]$ 与 $K[x, y]$ 都不是 UFD。反例的形状也一样 —— 同一个元素有两条真分解。"
   },
   {
+   "id": "dep.phi-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "def.euler-phi",
+   "note": "定义里的计数条件是 $\\gcd(a,n)=1$，直接用到最大公因数。"
+  },
+  {
+   "id": "dep.phi-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "def.euler-phi",
+   "note": "乘积公式里的 $p_i$ 是 $n$ 的两两不同素因子，直接用到素数的概念。"
+  },
+  {
+   "id": "dep.intdiv-int",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.int",
+   "usedBy": "thm.int-division",
+   "note": "陈述的载体是 $a,b,q,r\\in\\mathbb{Z}$。"
+  },
+  {
+   "id": "dep.intdiv-abs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abs",
+   "usedBy": "thm.int-division",
+   "note": "陈述写的是 $0\\le r<|b|$，直接用到绝对值。"
+  },
+  {
+   "id": "dep.euclidalg-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "thm.euclid-algorithm",
+   "note": "陈述的输出就是 $\\gcd(a,b)$。"
+  },
+  {
+   "id": "dep.euclidalg-abs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abs",
+   "usedBy": "thm.euclid-algorithm",
+   "note": "算法从 $|a|,|b|$ 起步并保证余数非负。"
+  },
+  {
+   "id": "dep.bezout-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "thm.bezout",
+   "note": "陈述写 $d=\\gcd(a,b)$。"
+  },
+  {
+   "id": "dep.inftprimes-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "thm.euclid-infinite-primes",
+   "note": "陈述的主语就是素数。"
+  },
+  {
+   "id": "dep.fta-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "thm.fundamental-arithmetic",
+   "note": "陈述把整数写成素数的乘积。"
+  },
+  {
+   "id": "dep.crt-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "thm.crt",
+   "note": "陈述的条件是 $n_i$ 两两互素，用最大公因数表述。"
+  },
+  {
+   "id": "dep.eulertheorem-phi",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.euler-phi",
+   "usedBy": "thm.euler-theorem",
+   "note": "陈述的指数是 $\\varphi(n)$。"
+  },
+  {
+   "id": "dep.eulertheorem-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "thm.euler-theorem",
+   "note": "陈述的条件是 $\\gcd(a,n)=1$。"
+  },
+  {
+   "id": "dep.eulertheorem-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "thm.euler-theorem",
+   "note": "结论写成同余式 $a^{\\varphi(n)}\\equiv1\\pmod n$。"
+  },
+  {
+   "id": "dep.fermat-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "thm.fermat-little",
+   "note": "陈述要求 $p$ 是素数。"
+  },
+  {
+   "id": "dep.fermat-divides",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.divides",
+   "usedBy": "thm.fermat-little",
+   "note": "陈述的条件 $p\\nmid a$ 与结论都用整除写。"
+  },
+  {
+   "id": "dep.fermat-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "thm.fermat-little",
+   "note": "结论是同余式 $a^{p-1}\\equiv1\\pmod p$。"
+  },
+  {
+   "id": "dep.wilson-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "cor.wilson",
+   "note": "陈述要求 $p$ 是素数。"
+  },
+  {
+   "id": "dep.wilson-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "cor.wilson",
+   "note": "结论是同余式 $(p-1)!\\equiv-1\\pmod p$。"
+  },
+  {
    "id": "e127.definition",
    "kind": "definition",
    "strength": "strong",
@@ -98692,11 +98831,12 @@
   },
   {
    "id": "e137.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.ufd",
-   "usedBy": "thm.fundamental-arithmetic",
-   "note": "算术基本定理就是「$\\mathbb{Z}$ 是 UFD」这句话在整数上的展开。"
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.ufd",
+   "b": "thm.fundamental-arithmetic",
+   "title": "$\\mathbb{Z}$ 是唯一分解整环：一个例子，不是定义依赖",
+   "note": "「$\\mathbb{Z}$ 是 UFD」是把算术基本定理放进一般环的框架里看的**例子**；定理陈述只讲素数与分解，不出现 UFD 的定义，UFD 也不以整数分解为前提。"
   },
   {
    "id": "e138.definition",
@@ -99159,11 +99299,12 @@
   },
   {
    "id": "e157.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.group",
-   "usedBy": "def.order-mod-n",
-   "note": "阶就是元素在单位群里的阶 —— 群论概念在模算术里的坐标。"
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.group",
+   "b": "def.order-mod-n",
+   "title": "模 $n$ 的阶与群论里的元素阶",
+   "note": "『def.order-mod-n』的陈述只写 $\\gcd(a,n)=1$ 与 $a^{k}\\equiv1\\pmod n$，没有单位群；把它读成「单位群中元素的阶」是同一件事的另一种说法（见节点注），不算定义依赖。"
   },
   {
    "id": "e158.definition",
@@ -99174,20 +99315,13 @@
    "note": "离散对数以原根为底，唯一性来自「生成元」。"
   },
   {
-   "id": "e159.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "thm.primitive-root-exists",
-   "usedBy": "def.discrete-log",
-   "note": "原根存在，离散对数才有定义。"
-  },
-  {
    "id": "e160.definition",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.multiplicative-function",
-   "usedBy": "def.legendre-symbol",
-   "note": "Legendre 符号对第一个变量完全积性（$\\left(\\frac{ab}{p}\\right) = \\left(\\frac{a}{p}\\right)\\left(\\frac{b}{p}\\right)$）。"
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.multiplicative-function",
+   "b": "def.legendre-symbol",
+   "title": "Legendre 符号的完全积性",
+   "note": "「$\\left(\\frac{ab}{p}\\right)=\\left(\\frac{a}{p}\\right)\\left(\\frac{b}{p}\\right)$」是关于 Legendre 符号的**定理**，不是它的定义；『def.legendre-symbol』的陈述里也没有「积性函数」这一概念。"
   },
   {
    "id": "imp.nt-euler-criterion",
@@ -99280,6 +99414,230 @@
    "definition": "def.cyclic-group",
    "usedBy": "def.primitive-root",
    "note": "原根使单位群成为循环群。"
+  },
+  {
+   "id": "dep.ordmod-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "def.order-mod-n",
+   "note": "陈述的前提是 $\\gcd(a,n)=1$。"
+  },
+  {
+   "id": "dep.ordmod-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "def.order-mod-n",
+   "note": "定义式为 $a^{k}\\equiv1\\pmod n$，是同余式。"
+  },
+  {
+   "id": "dep.primroot-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "def.primitive-root",
+   "note": "陈述的前提是 $\\gcd(g,n)=1$。"
+  },
+  {
+   "id": "dep.primroot-phi",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.euler-phi",
+   "usedBy": "def.primitive-root",
+   "note": "定义要求 $\\operatorname{ord}_n(g)=\\varphi(n)$。"
+  },
+  {
+   "id": "dep.primroot-zmodn",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.zmodn",
+   "usedBy": "def.primitive-root",
+   "note": "陈述直接出现单位群 $(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$。"
+  },
+  {
+   "id": "dep.dlog-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "def.discrete-log",
+   "note": "陈述的前提是 $\\gcd(a,n)=1$。"
+  },
+  {
+   "id": "dep.dlog-phi",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.euler-phi",
+   "usedBy": "def.discrete-log",
+   "note": "陈述把 $k$ 的范围限定为 $0\\le k<\\varphi(n)$。"
+  },
+  {
+   "id": "dep.dlog-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "def.discrete-log",
+   "note": "定义式 $a\\equiv g^{k}\\pmod n$ 是同余式。"
+  },
+  {
+   "id": "dep.qr-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "def.quadratic-residue",
+   "note": "陈述要求 $p$ 是奇素数。"
+  },
+  {
+   "id": "dep.qr-divides",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.divides",
+   "usedBy": "def.quadratic-residue",
+   "note": "陈述的条件 $p\\nmid a$ 用整除写。"
+  },
+  {
+   "id": "dep.legendre-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "def.legendre-symbol",
+   "note": "陈述要求 $p$ 是奇素数。"
+  },
+  {
+   "id": "dep.legendre-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "def.legendre-symbol",
+   "note": "定义分成 $a\\equiv x^{2}\\pmod p$ 与其余两类，都是同余式。"
+  },
+  {
+   "id": "dep.legendre-divides",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.divides",
+   "usedBy": "def.legendre-symbol",
+   "note": "陈述的条件 $p\\nmid a$ 用整除写。"
+  },
+  {
+   "id": "dep.jacobi-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "def.jacobi-symbol",
+   "note": "定义对 $n$ 作素因子分解，用素数。"
+  },
+  {
+   "id": "dep.orddivphi-order",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.order-mod-n",
+   "usedBy": "thm.order-divides-phi",
+   "note": "陈述用 $\\operatorname{ord}_n(a)$。"
+  },
+  {
+   "id": "dep.orddivphi-phi",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.euler-phi",
+   "usedBy": "thm.order-divides-phi",
+   "note": "结论是 $\\operatorname{ord}_n(a)\\mid\\varphi(n)$。"
+  },
+  {
+   "id": "dep.orddivphi-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "thm.order-divides-phi",
+   "note": "前提 $\\gcd(a,n)=1$。"
+  },
+  {
+   "id": "dep.primexists-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "thm.primitive-root-exists",
+   "note": "陈述的对象是素数 $p$。"
+  },
+  {
+   "id": "dep.primexists-zmodn",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.zmodn",
+   "usedBy": "thm.primitive-root-exists",
+   "note": "陈述写 $\\mathbb{F}_p^{\\times}=(\\mathbb{Z}/p\\mathbb{Z})^{\\times}$。"
+  },
+  {
+   "id": "dep.primexists-phi",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.euler-phi",
+   "usedBy": "thm.primitive-root-exists",
+   "note": "陈述用 $\\varphi(p)=p-1$。"
+  },
+  {
+   "id": "dep.primexists-cyclic",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cyclic-group",
+   "usedBy": "thm.primitive-root-exists",
+   "note": "结论断言单位群是循环群。"
+  },
+  {
+   "id": "dep.primexists-primroot",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.primitive-root",
+   "usedBy": "thm.primitive-root-exists",
+   "note": "结论断言存在模 $p$ 的原根。"
+  },
+  {
+   "id": "dep.eulercrit-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "thm.euler-criterion",
+   "note": "陈述要求 $p$ 是奇素数。"
+  },
+  {
+   "id": "dep.eulercrit-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "thm.euler-criterion",
+   "note": "判据用同余式 $a^{(p-1)/2}\\equiv\\pm1$。"
+  },
+  {
+   "id": "dep.gaussqr-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "lem.gauss-qr",
+   "note": "陈述要求 $p$ 是奇素数。"
+  },
+  {
+   "id": "dep.gaussqr-congr",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.congruence",
+   "usedBy": "lem.gauss-qr",
+   "note": "引理的表述与证明都用同余。"
+  },
+  {
+   "id": "dep.reciprocity-prime",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.prime",
+   "usedBy": "thm.quadratic-reciprocity",
+   "note": "陈述要求 $p,q$ 是奇素数。"
+  },
+  {
+   "id": "dep.jacobilaws-gcd",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.gcd",
+   "usedBy": "thm.jacobi-laws",
+   "note": "陈述的条件是 $\\gcd(m,n)=1$。"
   },
   {
    "id": "e162.definition",
@@ -106549,11 +106907,15 @@
   },
   {
    "id": "dep.intdiv-wellorder",
-   "kind": "definition",
+   "kind": "implication",
    "strength": "strong",
-   "definition": "def.wellorder",
-   "usedBy": "thm.int-division",
-   "note": "**跨区域桥（order-theory $\\leftrightarrow$ number）**：带余除法的存在性标准证法取 $\\{\\, a - qb \\ge 0 \\,\\}$ 的最小元，用的正是 $\\mathbb{N}$ 的**良序**性。"
+   "sources": [
+    "def.wellorder"
+   ],
+   "target": "thm.int-division",
+   "title": "整数良序给出带余除法的存在性",
+   "proof": "先设 $b>0$。集合 $S=\\{\\, a-qb : q\\in\\mathbb{Z},\\ a-qb\\ge 0 \\,\\}$ 非空（Archimedes 性质保证可取到使 $qb>a$ 的 $q$），由 $\\mathbb{N}$ 的良序取 $r=\\min S$，写 $r=a-qb$。若 $r\\ge b$，则 $r-b=a-(q+1)b\\ge0$ 且更小，与最小性矛盾；故 $0\\le r<b$。$b<0$ 时把 $b$ 换成 $|b|$、$q$ 换成 $-q$ 即化归。唯一性见节点注。∎",
+   "note": "**跨区域桥（order-theory $\\leftrightarrow$ number）**：存在性一步用的是 $\\mathbb{N}$ 的良序（取最小非负余数），这是**证明依赖**而不是定义依赖 —— 带余除法的陈述里没有良序。"
   },
   {
    "id": "dep.zhat-profinite",
@@ -115234,6 +115596,13 @@
    "explicit": false
   },
   {
+   "a": "number.basic",
+   "b": "set.numbers",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
    "a": "algebra.structures",
    "b": "number.basic",
    "count": 3,
@@ -115242,6 +115611,13 @@
   },
   {
    "a": "algebra.polynomial",
+   "b": "number.basic",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.real-calc",
    "b": "number.basic",
    "count": 2,
    "label": "",
@@ -115304,9 +115680,16 @@
    "explicit": false
   },
   {
+   "a": "number.basic",
+   "b": "number.quadratic",
+   "count": 26,
+   "label": "",
+   "explicit": false
+  },
+  {
    "a": "algebra.group-action",
    "b": "number.quadratic",
-   "count": 2,
+   "count": 3,
    "label": "",
    "explicit": false
   },

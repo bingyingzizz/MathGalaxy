@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.discrete-log`](../nodes/def.discrete-log.md) 离散对数 用
+- 被 [`thm.primitive-root-exists`](../nodes/thm.primitive-root-exists.md) 模素数有原根 用

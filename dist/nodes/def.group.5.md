@@ -3,8 +3,8 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`prop.simply-connected-basepoint`](../nodes/prop.simply-connected-basepoint.md) 单连通与基点无关
-- 被 [`thm.euler-theorem`](../nodes/thm.euler-theorem.md) Euler 定理 用
-- 被 [`def.order-mod-n`](../nodes/def.order-mod-n.md) 模 n 的阶 用
+- ～弱边 [`thm.euler-theorem`](../nodes/thm.euler-theorem.md) Euler 定理
+- ～弱边 [`def.order-mod-n`](../nodes/def.order-mod-n.md) 模 n 的阶
 - 被 [`def.vector-space`](../nodes/def.vector-space.md) 向量空间 用
 - 被 [`def.galois-group`](../nodes/def.galois-group.md) 伽罗瓦群 用
 - 被 [`ex.trivial-group`](../nodes/ex.trivial-group.md) 平凡群 用

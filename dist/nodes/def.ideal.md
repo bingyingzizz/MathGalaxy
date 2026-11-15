@@ -13,11 +13,12 @@ $$a x \in I, \qquad x a \in I.$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.ring-hom`](../nodes/def.ring-hom.md) 环同态：环同态的核是理想　[proofs/dep.ringhom-ideal.md](../proofs/dep.ringhom-ideal.md)
-- [`def.ring`](../nodes/def.ring.md) 环：用到了定义 环　[proofs/def-dep.ideal-ring.md](../proofs/def-dep.ideal-ring.md)
 
 - …另有入边，续页见 [nodes/def.ideal.2.md](./def.ideal.2.md)
 
 ## 它能推出什么 / 谁在用它
+- 被 [`def.quotient-ring`](../nodes/def.quotient-ring.md) 商环 用
+
 - …另有出边，续页见 [nodes/def.ideal.3.md](./def.ideal.3.md)
 
 refs: Lang, Algebra

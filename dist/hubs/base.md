@@ -2,7 +2,7 @@
 索引 `hubs.md`
 
 被最多结论当作前置（出边多）—— 值得优先学熟。
-- **38 / 38** `def.group` 群 · layer 7 · 代数结构
+- **36 / 36** `def.group` 群 · layer 7 · 代数结构
 - **32 / 33** `def.measure` 测度 · layer 15 · 测度的构造
 - **31 / 31** `def.topology` 拓扑空间与开集 · layer 4 · 拓扑空间的基本语汇
 - **30 / 36** `def.compact` 紧 · layer 16 · 拓扑空间的基本语汇
