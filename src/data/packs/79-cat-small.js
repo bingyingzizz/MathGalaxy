@@ -231,8 +231,8 @@ window.MG = window.MG || {};
       title: '命题：自由 $\\dashv$ 遗忘、层化 $\\dashv$ 含入、$k$-化 $\\dashv$ 含入',
       regions: ['category'],
       tags: ['命题', '伴随', '遗忘函子', '含入', '自由对象'],
-      statement: '常见的一对对子：**自由 $\\dashv$ 遗忘**（$\\mathbf{Mon}$、$\\mathbf{Gr}$、$\\mathbf{Ab}$、$A\\text{-}\\mathbf{Mod}$……）、**层化 $\\dashv$ 含入**（$\\widetilde{\\mathcal{C}} \\hookrightarrow \\widehat{\\mathcal{C}}$）、**$k$-化 $\\dashv$ 含入**（$k\\mathbf{Top} \\hookrightarrow \\mathbf{Top}$）。\n\n一般规律：**「忘掉结构 / 放宽结构」的函子是右伴随，其左伴随即「自由地补上结构」**。',
-      notes: '**证明。** 逐例核对万能性质：$\\operatorname{Hom}_{\\mathbf{Mon}}(\\text{自由幺半群},\\ G) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, G)$ ✓；\n\n$\\operatorname{Hom}(T^{\\#}, F) \\cong \\operatorname{Hom}(T, F)$ ✓；\n\n$\\operatorname{Hom}_{k\\mathbf{Top}}(kX, Y) \\cong \\operatorname{Hom}_{\\mathbf{Top}}(X, Y)$ ✓。\n\n∎',
+      statement: '常见的一对对子：**自由 $\\dashv$ 遗忘**（$\\mathbf{Mon}$、$\\mathbf{Gr}$、$\\mathbf{Ab}$、$A\\text{-}\\mathbf{Mod}$……）、**层化 $\\dashv$ 含入**（$\\widetilde{\\mathcal{C}} \\hookrightarrow \\widehat{\\mathcal{C}}$）、**$k$-化 $\\dashv$ 含入**（$k\\mathbf{Top} \\hookrightarrow \\mathbf{Top}$）。\n\n一般规律（代数类）：**「忘掉结构 / 放宽结构」的函子是右伴随，其左伴随即「自由地补上结构」**。',
+      notes: '**证明。** 逐例核对万能性质：$\\operatorname{Hom}_{\\mathbf{Mon}}(\\text{自由幺半群},\\ G) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, G)$ ✓；\n\n$\\operatorname{Hom}(T^{\\#}, F) \\cong \\operatorname{Hom}(T, F)$ ✓；\n\n$\\operatorname{Hom}_{k\\mathbf{Top}}(kX, Y) \\cong \\operatorname{Hom}_{\\mathbf{Top}}(X, Y)$ ✓。\n\n**拓扑类不算在内**：$\\mathbf{Top}\\to\\mathbf{Set}$ 的「补结构」有两个方向 —— 密着拓扑给左伴随、离散拓扑给右伴随，所以上面这条代数类的规律不能直接套到拓扑例子上。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.56']
     },
 

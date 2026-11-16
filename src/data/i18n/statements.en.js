@@ -9481,5 +9481,70 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#20a9f357',
       },
     },
+
+    'def.category-of-vector-spaces': {
+      statement: {
+        en: "**The category of vector spaces** $\\mathbf{Vect}_K$: its objects are the vector spaces over a field $K$, its morphisms are the $K$-linear maps, composition is composition of maps, and the identity is the identity map.\n\nThe finite-dimensional vector spaces form the **full subcategory** $\\mathbf{Vect}_K^{\\mathrm{fd}}$: the objects are only the finite-dimensional spaces, while the morphisms are still all linear maps.\n\n$\\mathbf{Vect}_K$ is an **additive category**: $\\operatorname{Hom}_K(V,W)$ becomes a $K$-vector space under pointwise addition and pointwise scalar multiplication, composition is linear in each variable, and finite direct sums are simultaneously products and coproducts.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0c8288c9',
+      },
+      notes: {
+        en: "**Why it is listed separately**: the pair \"objects + linear maps\" of linear algebra is, in categorical language, $\\mathbf{Vect}_K$; once it is available, \"duality\" and \"Hom\" can be written as functors.\n\n**Forgetting structure**: the forgetful functor $\\mathbf{Vect}_K\\to\\mathbf{Set}$ forgets addition and scalar multiplication, retaining only the underlying sets and functions; it is faithful but not full (not every function is linear).\n\n**Relation to additive categories**: each Hom-set is itself a vector space and composition is bilinear; finite direct sums coincide with finite products, so it is an additive category, hence a preabelian category (kernels and cokernels are taken pointwise).",
+        status: 'draft',
+        basedOn: 'v0.9.3#770faf65',
+      },
+    },
+
+    'def.hom-functor': {
+      statement: {
+        en: "Fix $V\\in\\mathbf{Vect}_K$. The **covariant Hom functor**\n\n$$\\operatorname{Hom}_K(V,-):\\mathbf{Vect}_K\\to\\mathbf{Vect}_K$$\n\nsends an object to $U\\mapsto\\operatorname{Hom}_K(V,U)$ and a morphism $T:U_1\\to U_2$ to precomposition $T\\circ(-):\\operatorname{Hom}_K(V,U_1)\\to\\operatorname{Hom}_K(V,U_2)$.\n\nFix $W$. The **contravariant Hom functor** $\\operatorname{Hom}_K(-,W):\\mathbf{Vect}_K^{\\mathrm{op}}\\to\\mathbf{Vect}_K$ sends an object to $U\\mapsto\\operatorname{Hom}_K(U,W)$ and a morphism $T:U_1\\to U_2$ to postcomposition $(-)\\circ T:\\operatorname{Hom}_K(U_2,W)\\to\\operatorname{Hom}_K(U_1,W)$.\n\nBoth Hom-sets become $K$-vector spaces under pointwise addition and pointwise scalar multiplication, and the morphism part of the functor is linear, so the target category is $\\mathbf{Vect}_K$, not merely $\\mathbf{Set}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bcead6b8',
+      },
+      notes: {
+        en: "**Functoriality**: $\\operatorname{Hom}(V,-)$ preserves identities and composition; $\\operatorname{Hom}(-,W)$ is contravariant and reverses the order of composition.\n\n**Relation to duality**: taking $W=K$, $\\operatorname{Hom}_K(-,K)=(-)^{\\ast}$ is the dual functor; the dual space is the value of the Hom functor at $K$.\n\n**Internal Hom**: in a closed structure the Hom functor is represented by an internal Hom object; the version used here lives in a topos, and the representing relation is \"the internal Hom represents the Hom functor\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#384ef4c9',
+      },
+    },
+
+    'def.dual-map': {
+      statement: {
+        en: "Let $T:V\\to W$ be a $K$-linear map. Its **dual map** (also called the transpose map) $T^{\\ast}:W^{\\ast}\\to V^{\\ast}$ is defined by\n\n$$\\langle T^{\\ast}\\varphi,\\,v\\rangle=\\langle\\varphi,\\,Tv\\rangle,\\qquad v\\in V,\\ \\varphi\\in W^{\\ast}$$\n\nEquivalently, $T^{\\ast}\\varphi=\\varphi\\circ T$.\n\nProperties: $T^{\\ast}$ is linear; $(S\\circ T)^{\\ast}=T^{\\ast}\\circ S^{\\ast}$; $(\\operatorname{id}_V)^{\\ast}=\\operatorname{id}_{V^{\\ast}}$. Hence $(-)^{\\ast}$ is a contravariant functor (see `def.dual-functor`).\n\nIn finite dimension, after bases are fixed, the matrix of $T^{\\ast}$ is the transpose of the matrix of $T$: $[T^{\\ast}]_{\\mathcal{B}^{\\ast}}^{\\mathcal{C}^{\\ast}}=([T]_{\\mathcal{C}}^{\\mathcal{B}})^{\\mathsf T}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#eff448b5',
+      },
+      notes: {
+        en: "**Direction**: $T:V\\to W$ induces $W^{\\ast}\\to V^{\\ast}$, so the arrow reverses; this is the heart of \"duality\".\n\n**Relation to the transpose matrix**: the transpose matrix is the matrix of $T^{\\ast}$ in the **dual bases**; the two are objects at different levels (a map versus a matrix).\n\n**Complex case**: in an inner-product space the corresponding notion is the conjugate transpose (adjoint), see `def.operator-adjoint`; the difference is that duality uses $K$-linear functionals, while the inner product is conjugate-linear in the second variable.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4fda5469',
+      },
+    },
+
+    'def.forgetful-functor': {
+      statement: {
+        en: "**A forgetful functor** is a functor that \"forgets\" part of an algebraic structure and keeps only the underlying data: on objects $(X,\\text{structure})\\mapsto X$, and on morphisms it keeps the same underlying map.\n\nTypical examples:\n\n- $\\mathbf{Top}\\to\\mathbf{Set}$: forgets the open sets, keeping only the underlying sets and functions;\n- $\\mathbf{Grp}\\to\\mathbf{Set}$: forgets the group operation and the unit;\n- $\\mathbf{Vect}_K\\to\\mathbf{Set}$: forgets addition and scalar multiplication;\n- $\\mathbf{Vect}_K\\to\\mathbf{Ab}$: forgets the $K$-scalar multiplication, keeping only the additive group.\n\nStrictly speaking, \"forgetful functor\" is not a single functor but a standard class of functors from **concrete categories** (categories equipped with a faithful functor to $\\mathbf{Set}$) to $\\mathbf{Set}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7ce43ab5',
+      },
+      notes: {
+        en: "**Faithful but usually not full**: having the same underlying map does not guarantee preserving structure; $\\mathbf{Top}\\to\\mathbf{Set}$ and $\\mathbf{Ab}\\to\\mathbf{Set}$ are both faithful and not full.\n\n**Left adjoints are free constructions**: free groups, free vector spaces, and the discrete topology are the left adjoints of the corresponding forgetful functors.\n\n**Preservation of limits**: forgetful functors to $\\mathbf{Set}$ usually preserve all limits (constructed pointwise), but in general they do not preserve colimits.",
+        status: 'draft',
+        basedOn: 'v0.9.3#05b11634',
+      },
+    },
+
+    'def.dual-functor': {
+      statement: {
+        en: "**The dual functor** $(-)^{\\ast}:\\mathbf{Vect}_K^{\\mathrm{op}}\\to\\mathbf{Vect}_K$ is defined as follows:\n\n- on objects, $V\\mapsto V^{\\ast}=\\operatorname{Hom}_K(V,K)$;\n- on morphisms, it sends $T:V\\to W$ to $T^{\\ast}:W^{\\ast}\\to V^{\\ast}$.\n\nSince $(S\\circ T)^{\\ast}=T^{\\ast}\\circ S^{\\ast}$ and $(\\operatorname{id})^{\\ast}=\\operatorname{id}$, it is a **covariant** functor from $\\mathbf{Vect}_K^{\\mathrm{op}}$ — equivalently, a **contravariant** functor on $\\mathbf{Vect}_K$.\n\nThe natural transformation $\\eta_V:V\\to V^{\\ast\\ast}$, $\\eta_V(v)(\\varphi)=\\varphi(v)$, gives $1_{\\mathbf{Vect}_K}\\implies(-)^{\\ast\\ast}$; in finite dimension $\\eta$ is an isomorphism, so duality gives an equivalence between $\\mathbf{Vect}_K^{\\mathrm{fd}}$ and its opposite category.",
+        status: 'draft',
+        basedOn: 'v0.9.3#665212ff',
+      },
+      notes: {
+        en: "**Contravariant is not the same as starting from the opposite category**: this is only a way of writing a contravariant functor as a covariant functor on $\\mathbf{Vect}_K^{\\mathrm{op}}$, which is why the order of composition is reversed.\n\n**Infinite dimension**: $\\eta_V$ is injective but generally not surjective, so $V\\to V^{\\ast\\ast}$ is not an isomorphism; duality does not make all of $\\mathbf{Vect}_K$ self-dual.\n\n**Relation to the Hom functor**: $(-)^{\\ast}=\\operatorname{Hom}_K(-,K)$ is the special case $W=K$ of the contravariant Hom functor (see the Hom functor node).",
+        status: 'draft',
+        basedOn: 'v0.9.3#612034ff',
+      },
+    },
   },
 };

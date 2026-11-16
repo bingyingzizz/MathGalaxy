@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T10:15:55.134Z",
+ "generated": "2026-11-16T11:22:08.190Z",
  "terms": 76,
  "missing": [
   {
@@ -396,6 +396,15 @@
    "gap": 4
   },
   {
+   "node": "prop.matrix-category",
+   "nodeLabel": "矩阵范畴",
+   "nodeLayer": 13,
+   "def": "def.category-of-vector-spaces",
+   "defLabel": "向量空间范畴",
+   "defLayer": 15,
+   "gap": 2
+  },
+  {
    "node": "thm.riesz-markov",
    "nodeLabel": "Riesz–Markov 表示",
    "nodeLayer": 21,
@@ -403,6 +412,15 @@
    "defLabel": "符号测度",
    "defLayer": 23,
    "gap": 2
+  },
+  {
+   "node": "def.category-of-groups",
+   "nodeLabel": "群范畴",
+   "nodeLayer": 10,
+   "def": "def.forgetful-functor",
+   "defLabel": "遗忘函子",
+   "defLayer": 11,
+   "gap": 1
   },
   {
    "node": "def.weak-star-topology",
@@ -432,6 +450,15 @@
    "gap": 0
   },
   {
+   "node": "def.category-of-abelian-groups",
+   "nodeLabel": "阿贝尔群范畴",
+   "nodeLayer": 11,
+   "def": "def.forgetful-functor",
+   "defLabel": "遗忘函子",
+   "defLayer": 11,
+   "gap": 0
+  },
+  {
    "node": "def.cech-complex",
    "nodeLabel": "Čech 复形",
    "nodeLayer": 18,
@@ -450,7 +477,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 44,
+ "noEdgeAll": 47,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

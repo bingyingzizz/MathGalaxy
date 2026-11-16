@@ -300,6 +300,59 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
     }
+    ,
+    {
+      id: 'def.dual-map',
+      cluster: 'algebra.linmap',
+      type: 'definition',
+      label: '对偶映射',
+      title: '对偶映射 $T^{\\ast}$',
+      regions: ['algebra'],
+      tags: ['定义', '线性代数', '对偶'],
+      statement: [
+        '设 $T:V\\to W$ 是 $K$-线性映射。它的**对偶映射**（也叫转置映射）$T^{\\ast}:W^{\\ast}\\to V^{\\ast}$ 由',
+        '',
+        '$$\\langle T^{\\ast}\\varphi,\\,v\\rangle=\\langle\\varphi,\\,Tv\\rangle,\\qquad v\\in V,\\ \\varphi\\in W^{\\ast}$$',
+        '',
+        '定义；等价地 $T^{\\ast}\\varphi=\\varphi\\circ T$。',
+        '',
+        '性质：$T^{\\ast}$ 线性；$(S\\circ T)^{\\ast}=T^{\\ast}\\circ S^{\\ast}$；$(\\operatorname{id}_V)^{\\ast}=\\operatorname{id}_{V^{\\ast}}$。因此 $(-)^{\\ast}$ 是反变函子（见对偶函子节点）。',
+        '',
+        '有限维、取定基时，$T^{\\ast}$ 的矩阵是 $T$ 的矩阵的转置：$[T^{\\ast}]_{\\mathcal{B}^{\\ast}}^{\\mathcal{C}^{\\ast}}=([T]_{\\mathcal{C}}^{\\mathcal{B}})^{\\mathsf T}$。'
+      ].join('\n'),
+      notes: [
+        '**方向**：$T:V\\to W$ 诱导 $W^{\\ast}\\to V^{\\ast}$，箭头反向；这是「对偶」的核心。',
+        '**与转置矩阵**：转置矩阵是 $T^{\\ast}$ 在**对偶基**下的矩阵；两者不是同一层面的对象（映射 vs 矩阵）。',
+        '**复情形**：内积空间里对应的是共轭转置（伴随），见共轭转置节点；差别在于对偶用 $K$-线性泛函，而内积对第二变元共轭线性。'
+      ].join('\n\n'),
+      refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
+    },
+    {
+      id: 'def.dual-functor',
+      cluster: 'cat.functor',
+      type: 'definition',
+      label: '对偶函子',
+      title: '对偶函子 $(-)^{\\ast}$',
+      regions: ['category', 'algebra'],
+      tags: ['范畴论', '线性代数', '对偶'],
+      statement: [
+        '**对偶函子** $(-)^{\\ast}:\\mathbf{Vect}_K^{\\mathrm{op}}\\to\\mathbf{Vect}_K$ 定义如下：',
+        '',
+        '- 对象上 $V\\mapsto V^{\\ast}=\\operatorname{Hom}_K(V,K)$；',
+        '- 态射上把 $T:V\\to W$ 送到 $T^{\\ast}:W^{\\ast}\\to V^{\\ast}$。',
+        '',
+        '由于 $(S\\circ T)^{\\ast}=T^{\\ast}\\circ S^{\\ast}$ 且 $(\\operatorname{id})^{\\ast}=\\operatorname{id}$，它是从 $\\mathbf{Vect}_K^{\\mathrm{op}}$ 出发的**协变**函子——等价地说，是 $\\mathbf{Vect}_K$ 上的**反变**函子。',
+        '',
+        '自然变换 $\\eta_V:V\\to V^{\\ast\\ast}$，$\\eta_V(v)(\\varphi)=\\varphi(v)$，给出 $1_{\\mathbf{Vect}_K}\\implies(-)^{\\ast\\ast}$；有限维时 $\\eta$ 是同构，对偶于是给出 $\\mathbf{Vect}_K^{\\mathrm{fd}}$ 与自身对偶范畴的等价。'
+      ].join('\n'),
+      notes: [
+        '**反变不等于从对偶范畴出发**：这只是把反变函子写成 $\\mathbf{Vect}_K^{\\mathrm{op}}$ 上的协变函子，复合顺序因此要倒过来。',
+        '**无限维**：$\\eta_V$ 单射但一般不满，$V\\to V^{\\ast\\ast}$ 不是同构；对偶不给出整个 $\\mathbf{Vect}_K$ 的自对偶。',
+        '**与 Hom 函子**：$(-)^{\\ast}=\\operatorname{Hom}_K(-,K)$ 是反变 Hom 函子在 $W=K$ 的特例（见 Hom 函子节点）。'
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. II', 'Lang, Linear Algebra']
+    }
+
   ],
 
   edges: [
@@ -445,6 +498,13 @@ window.MG = window.MG || {};
         '（另一条路：由第一同构定理 $\\operatorname{im} T \\cong V/\\ker T$，而 $\\dim(V/U) = \\dim V - \\dim U$ 由第 1 步的扩充直接得到 —— 两条路是同一件事的两种说法。）∎'
       ].join('\n'),
       note: '第 2 步的「无关」是最容易漏的一半：**把无关性从 $V$ 的基搬到像上**，用的是「$\\ker T$ 已经作为基的一部分被单独列出」。'
-    }
+    },
+    {"id":"dep.dualmap-dualspace","kind":"definition","definition":"def.dual-space","usedBy":"def.dual-map","note":"对偶映射的源与靶都是对偶空间"},
+    {"id":"dep.dualmap-linearmap","kind":"definition","definition":"def.linear-map","usedBy":"def.dual-map","note":"对偶映射由线性映射 T 诱导"},
+    {"id":"dep.dualmap-transpose","kind":"analogy","a":"def.transpose","b":"def.dual-map","note":"有限维取定基时对偶映射的矩阵就是转置矩阵：这是性质/表示，不是对偶映射的定义依赖（无限维也有对偶映射）"},
+    {"id":"ana.dualmap-conjtranspose","kind":"analogy","a":"def.dual-map","b":"def.conjugate-transpose","note":"对偶映射与共轭转置是同一现象的两套语言：实情形一致，复情形差一个共轭"},
+    {"id":"dep.dualfunctor-functor","kind":"definition","definition":"def.functor","usedBy":"def.dual-functor","note":"对偶函子是从对偶范畴出发的协变函子"},
+    {"id":"dep.dualfunctor-cvect","kind":"definition","definition":"def.category-of-vector-spaces","usedBy":"def.dual-functor","note":"定义域是向量空间范畴的对偶"},
+    {"id":"dep.dualfunctor-dualmap","kind":"definition","definition":"def.dual-map","usedBy":"def.dual-functor","note":"对偶函子在态射上的作用就是取对偶映射"}
   ]
 });

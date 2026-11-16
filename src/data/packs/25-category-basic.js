@@ -272,6 +272,83 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ["Mac Lane, Categories for the Working Mathematician, Ch. I, II"]
     }
+    ,
+    {
+      id: 'def.category-of-vector-spaces',
+      cluster: 'cat.basic',
+      type: 'definition',
+      label: '向量空间范畴',
+      title: '向量空间范畴 $\\mathbf{Vect}_K$',
+      regions: ['category', 'algebra'],
+      tags: ['范畴论', '线性代数', 'Vect'],
+      statement: [
+        '**向量空间范畴** $\\mathbf{Vect}_K$：对象是域 $K$ 上的向量空间，态射是 $K$-线性映射，复合是映射复合，单位是恒等映射。',
+        '',
+        '有限维向量空间构成**全子范畴** $\\mathbf{Vect}_K^{\\mathrm{fd}}$：对象只取有限维空间，态射仍是全部线性映射。',
+        '',
+        '$\\mathbf{Vect}_K$ 是**加性范畴**：$\\operatorname{Hom}_K(V,W)$ 按逐点和、逐点数乘成为 $K$-向量空间，复合对每个变元线性；有限直和同时是积与余积。'
+      ].join('\n'),
+      notes: [
+        '**为什么单列**：线性代数的「对象 + 线性映射」在范畴语言里就是 $\\mathbf{Vect}_K$；有了它，「对偶」「Hom」才能写成函子。',
+        '**忘掉结构**：遗忘函子 $\\mathbf{Vect}_K\\to\\mathbf{Set}$ 忘掉加法与数乘，只留底层集合与函数；它忠实但不满（不是每个函数都线性）。',
+        '**与加性范畴**：Hom 集本身是向量空间，复合双线性；有限直和 = 有限积，所以它是加性范畴，进而是预阿贝尔范畴（核与余核逐点取）。'
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. I, II', 'Weibel, An Introduction to Homological Algebra, Ch. 1']
+    },
+    {
+      id: 'def.hom-functor',
+      cluster: 'cat.functor',
+      type: 'definition',
+      label: 'Hom 函子',
+      title: 'Hom 函子 $\\operatorname{Hom}(V,-)$ 与 $\\operatorname{Hom}(-,W)$',
+      regions: ['category', 'algebra'],
+      tags: ['范畴论', 'Hom', '函子'],
+      statement: [
+        '固定 $V\\in\\mathbf{Vect}_K$。**协变 Hom 函子**',
+        '',
+        '$$\\operatorname{Hom}_K(V,-):\\mathbf{Vect}_K\\to\\mathbf{Vect}_K$$',
+        '',
+        '在对象上 $U\\mapsto\\operatorname{Hom}_K(V,U)$，在态射上把 $T:U_1\\to U_2$ 送到前复合 $T\\circ(-):\\operatorname{Hom}_K(V,U_1)\\to\\operatorname{Hom}_K(V,U_2)$。',
+        '',
+        '固定 $W$。**反变 Hom 函子** $\\operatorname{Hom}_K(-,W):\\mathbf{Vect}_K^{\\mathrm{op}}\\to\\mathbf{Vect}_K$ 在对象上 $U\\mapsto\\operatorname{Hom}_K(U,W)$，在态射上把 $T:U_1\\to U_2$ 送到后复合 $(-)\\circ T:\\operatorname{Hom}_K(U_2,W)\\to\\operatorname{Hom}_K(U_1,W)$。',
+        '',
+        '两个 Hom 集都按逐点和、逐点数乘成为 $K$-向量空间，且函子的态射部分线性，所以靶范畴是 $\\mathbf{Vect}_K$，不只是 $\\mathbf{Set}$。'
+      ].join('\n'),
+      notes: [
+        '**函子性**：$\\operatorname{Hom}(V,-)$ 保恒等与复合；$\\operatorname{Hom}(-,W)$ 反变，把复合顺序倒过来。',
+        '**与对偶的关系**：取 $W=K$，$\\operatorname{Hom}_K(-,K)=(-)^{\\ast}$ 就是对偶函子；对偶空间是 Hom 函子在 $K$ 处的取值。',
+        '**内 Hom**：在闭结构里 Hom 函子由内 Hom 对象表示；本图的内 Hom 是拓扑斯里的版本，表示关系是「内 Hom 表示 Hom 函子」。'
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. II', 'Weibel, An Introduction to Homological Algebra, Ch. 1']
+    },
+    {
+      id: 'def.forgetful-functor',
+      cluster: 'cat.functor',
+      type: 'definition',
+      label: '遗忘函子',
+      title: '遗忘函子',
+      regions: ['category'],
+      tags: ['范畴论', '函子', '具体范畴'],
+      statement: [
+        '**遗忘函子**是把结构「忘掉」一部分、只保留底层数据的函子：对象上 $(X,\\text{structure})\\mapsto X$，态射上保持同一个底层映射。',
+        '',
+        '典型例子：',
+        '',
+        '- $\\mathbf{Top}\\to\\mathbf{Set}$：忘掉开集，只留底层集合与函数；',
+        '- $\\mathbf{Grp}\\to\\mathbf{Set}$：忘掉群运算与单位元；',
+        '- $\\mathbf{Vect}_K\\to\\mathbf{Set}$：忘掉加法与数乘；',
+        '- $\\mathbf{Vect}_K\\to\\mathbf{Ab}$：忘掉 $K$-数乘，只留加法群。',
+        '',
+        '严格说，遗忘函子不是单一函子，而是一类**具体范畴**（带忠实函子到 $\\mathbf{Set}$ 的范畴）到 $\\mathbf{Set}$ 的标准函子。'
+      ].join('\n'),
+      notes: [
+        '**忠实但通常不满**：底层映射相同不保证保持结构；$\\mathbf{Top}\\to\\mathbf{Set}$、$\\mathbf{Ab}\\to\\mathbf{Set}$ 都忠实而不满。',
+        '**左伴随是自由构造**：自由群、自由向量空间分别是相应遗忘函子的左伴随；$\\mathbf{Top}\\to\\mathbf{Set}$ 的左伴随是**密着拓扑**（indiscrete，只含 $\\emptyset$ 与全集），右伴随才是**离散拓扑** —— 两侧方向不能对调。',
+        '**极限与余极限**：代数类遗忘函子（$\\mathbf{Mon}$、$\\mathbf{Gr}$、$\\mathbf{Ab}$、$A\\text{-}\\mathbf{Mod}$ 等）保所有极限（逐点构造），但一般不保余极限；拓扑类行为不同 —— $\\mathbf{Top}\\to\\mathbf{Set}$ 反而保所有余极限（商拓扑逐点拼出）。所以「保不保」要按具体范畴看，不能一概而论。',
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, Ch. IV', 'Riehl, Category Theory in Context, Section 1.2']
+    }
+
   ],
 
   edges: [
@@ -338,6 +415,22 @@ window.MG = window.MG || {};
       usedBy: "def.category-of-topological-spaces",
       note: "拓扑空间范畴是「对象为拓扑空间、态射为连续映射」的范畴，是 def.category 的标准例子。"
     },
-    { id: 'dep.cat-sets-def-category-of-abelian-groups', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.category-of-abelian-groups', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
+    { id: 'dep.cat-sets-def-category-of-abelian-groups', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.category-of-abelian-groups', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    {"id":"dep.cvect-category","kind":"definition","definition":"def.category","usedBy":"def.category-of-vector-spaces","note":"向量空间范畴是范畴的一般定义在「对象=向量空间、态射=线性映射」上的实例"},
+    {"id":"dep.cvect-vectorspace","kind":"definition","definition":"def.vector-space","usedBy":"def.category-of-vector-spaces","note":"对象类正是域 K 上的向量空间"},
+    {"id":"dep.cvect-linearmap","kind":"definition","definition":"def.linear-map","usedBy":"def.category-of-vector-spaces","note":"态射类正是 K-线性映射"},
+    {"id":"dep.homfunctor-functor","kind":"definition","definition":"def.functor","usedBy":"def.hom-functor","note":"Hom 函子是两个具体函子，按函子定义验证函子性"},
+    {"id":"dep.homfunctor-cvect","kind":"definition","definition":"def.category-of-vector-spaces","usedBy":"def.hom-functor","note":"源范畴与靶范畴都是向量空间范畴"},
+    {"id":"dep.homfunctor-linearmap","kind":"definition","definition":"def.linear-map","usedBy":"def.hom-functor","note":"Hom 集由线性映射组成，态射作用为前复合或后复合"},
+    {"id":"dep.homfunctor-dualspace","kind":"analogy","a":"def.dual-space","b":"def.hom-functor","note":"对偶空间是 Hom 函子在 $W=K$ 处的取值：这是特例/实例，不是 Hom 函子定义的一部分"},
+    {"id":"dep.homfunctor-internal","kind":"definition","definition":"def.hom-functor","usedBy":"def.internal-hom","note":"内 Hom 对象表示 Hom 函子，故以 Hom 函子为前提"},
+    {"id":"dep.forgetful-functor","kind":"definition","definition":"def.functor","usedBy":"def.forgetful-functor","note":"遗忘函子是函子的一般定义在具体范畴上的实例"},
+    {"id":"dep.forgetful-sets","kind":"definition","definition":"def.category-of-sets","usedBy":"def.forgetful-functor","note":"标准靶范畴是集合范畴"},
+    {"id":"dep.forgetful-top","kind":"analogy","a":"def.category-of-topological-spaces","b":"def.forgetful-functor","note":"$\\mathbf{Top}\\to\\mathbf{Set}$ 的遗忘函子是标准例子，不是一般定义的依赖"},
+    {"id":"dep.forgetful-cvect","kind":"analogy","a":"def.category-of-vector-spaces","b":"def.forgetful-functor","note":"$\\mathbf{Vect}_K\\to\\mathbf{Set}$ 的遗忘函子是标准例子，不是一般定义的依赖"},
+    {"id":"dep.forgetful-prop-ffnf","kind":"definition","definition":"def.forgetful-functor","usedBy":"prop.forgetful-faithful-not-full","note":"命题说的正是遗忘函子的忠实性与不满性"},
+    {"id":"dep.forgetful-prop-fae","kind":"definition","definition":"def.forgetful-functor","usedBy":"prop.forgetful-adjoints-examples","note":"命题列举遗忘函子的左伴随"},
+    {"id":"dep.forgetful-prop-frep","kind":"definition","definition":"def.forgetful-functor","usedBy":"prop.forgetful-representable","note":"命题讨论以 Set 为值的遗忘函子的可表示性"},
+    {"id":"dep.forgetful-prop-fpl","kind":"definition","definition":"def.forgetful-functor","usedBy":"prop.forgetful-preserves-limits","note":"命题讨论遗忘函子保极限"}
   ]
 });
