@@ -512,6 +512,11 @@ const RESEARCH_PAGES = [
     desc: '预印本（未经同行评审）：对 G=SU(2) 与 V_p=coker(∂₄) 的平凡作用证明 H³(G,V_p)≠0，'
       + '在一般 p-liquid 系数量词下否定 Clausen–Scholze Question 0.10.4；p-Banach 情形仍开。',
     name: '紧群上 p-liquid 系数的正次数同调：一般系数的反例' },
+  { src: 'research-low-degree-vanishing.html', out: 'research-low-degree-vanishing.html', pri: '0.9',
+    title: `紧群上平凡 p-liquid 系数的低次上同调 · ${USER}`,
+    desc: '预印本（未经同行评审）：对任意紧群证明 H¹(G,V)=0、对 G=SU(2) 证明 H²(G,V)=0，'
+      + 'V 取任意 p-liquid 实系数；核心是一个不使用 Haar 平均的算子 2−f*。',
+    name: '紧群上平凡 p-liquid 系数的低次上同调' },
 ];
 for (const rp of RESEARCH_PAGES) {
   fs.writeFileSync(path.join(STAGE, rp.out), fill(readSite(rp.src), {
@@ -693,7 +698,8 @@ const rootLlms = `# ${USER}.github.io
 - \`/mathgalaxy/nodes/<id>.md\`  一个概念一个文件，绝大多数 ≤ 1300 B，可以整份读进来
 - \`/mathgalaxy/nodes/<id>.html\` 同一个概念的完整单页版（公式是 MathML、不分页，但大得多）
 - \`/read.html\`              给人读的：读图指南 / 记号对照表 / 内容准则 / 枢纽定理榜
-- \`/research-p-liquid.html\`  研究论文（英文）：紧群上 $p$-liquid 系数的正次数上同调反例
+- \`/research-p-liquid.html\`  研究论文（英文）：p-liquid 正次数上同调反例
+- \`/research-low-degree-vanishing.html\`  研究论文（英文）：p-liquid 低次上同调消隐
 
 ## 程序化使用
 

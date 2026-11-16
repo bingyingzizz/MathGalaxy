@@ -132,9 +132,15 @@ if (tableBuf.length) flushTable();
 if (section === 'abstract') out.push('</div>');
 
 const EN = md.indexOf('## Abstract') >= 0;
+/* 2026-11-16：标题与日期改成可覆盖，好让同一支脚本生成第二篇论文。
+   优先级：环境变量 PAPER_TITLE / PAPER_DATE > md 的一级标题 > 原来的写死值。 */
+const MD_H1 = ((md.match(/^#\s+(.+)$/m) || [])[1] || '').trim();
+const TITLE_EN = process.env.PAPER_TITLE || MD_H1
+  || 'Positive-Degree Cohomology of Compact Groups with p-Liquid Coefficients: a Counterexample for General Coefficients';
+const DATE_EN = process.env.PAPER_DATE || '1 November 2026';
 const FRONT = (EN ? [
-  '<h1>Positive-Degree Cohomology of Compact Groups with p-Liquid Coefficients: a Counterexample for General Coefficients</h1>',
-  '<p class="byline">{{USER}} · 1 November 2026</p>',
+  `<h1>${TITLE_EN}</h1>`,
+  `<p class="byline">{{USER}} · ${DATE_EN}</p>`,
 ] : [
   '<h1>紧群上 $p$-liquid 系数的正次数上同调：一般系数的反例</h1>',
   '<p class="en-title">Positive-degree cohomology of compact groups with $p$-liquid '
