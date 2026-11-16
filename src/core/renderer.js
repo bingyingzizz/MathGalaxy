@@ -303,7 +303,14 @@
     }
 
     function nodeRadius(node) {
-      var r = C.node.baseRadius * Math.pow(camNow().k, C.node.radiusPower);
+      /* ⭐ 2026-11-16（用户）：「节点大小比例别随视口缩放变」。
+         以前是 baseRadius × k^0.62 —— 放大后节点巨大、缩小后缩成小点，
+         同一张图在不同缩放下观感完全不同。现在**固定屏幕像素半径**：
+         只保留 sizeMul 的「度数 / hub」相对比例，min/max/sizeClamp 仍是
+         屏幕像素的上下限（它们本来就是这个口径）。
+         ⚠️ 所有调用方（边端点 trim、命中测试、光晕、已读环、hover、导出）
+         都按「屏幕像素」用它，几何在屏幕坐标里算，所以改这里就够。 */
+      var r = C.node.baseRadius;
       r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
       r *= sizeMul(node);
       // 放大之后也要有上限，否则高缩放下中心天体会顶到邻居
@@ -492,8 +499,18 @@
        所以引用相同 = 分组相同；换层/换门槛会自然失效。 */
     var trunkGroupCache = null, trunkGroupSrc = null;
     /* 世界坐标的合流组列表（`trunkPlan` 的输出）。几何重建时刷新；
-       主干在实时层画（见 drawTrunksLive），所以位图模式下也必须有一份。 */
-    var trunkWorld = [];
+       主干在实时层画（见 drawTrunksLive），所以位图模式下也必须有一份。
+       ⭐ 2026-11-16：按 `view.visible` 的引用再兜一层 —— 切层/改门槛后即使这一帧
+       没重建几何，主干也必须跟着换（否则会把已隐藏边的合流线继续画出来）。 */
+    var trunkWorld = [], trunkWorldSrc = null;
+    function ensureTrunkWorld() {
+      if (trunkWorldSrc === view.visible) return trunkWorld;
+      var trunks = trunkPlan(view.visible);
+      trunkWorld.length = 0;
+      Object.keys(trunks).forEach(function (tk) { trunkWorld.push(trunks[tk]); });
+      trunkWorldSrc = view.visible;
+      return trunkWorld;
+    }
     function trunkGroups(list) {
       if (trunkGroupSrc === list && trunkGroupCache) return trunkGroupCache;
       var groups = Object.create(null);
@@ -544,8 +561,15 @@
         var dl = Math.sqrt(dirX * dirX + dirY * dirY);
         if (dl < 1e-6) return;                            // 方向退化：不合并
         var meanD = sumD / srcId.length;
-        var maxL = meanD * (C.edge.trunkMaxFrac || 0.75);
-        var L = U.clamp(meanD * (C.edge.trunkFrac || 0.62), C.edge.mergeOffset, maxL);
+        /* ⭐ 2026-11-16：**长边**再向源侧提前（用户：c.png 构图里汇合点仍太靠近目标）。
+           判据只用世界量（meanD 相对整图跨度），⛔ 不用屏幕像素 —— 否则一缩放汇合点就漂。
+           短边保持 0.62 的原观感。 */
+        var gb = view.graph.bbox();
+        var span = Math.max(gb.maxX - gb.minX, gb.maxY - gb.minY) || 1;
+        var longEdge = meanD > span * (C.edge.trunkLongRatio || 0.12);
+        var frac = longEdge ? (C.edge.trunkFracLong || 0.76) : (C.edge.trunkFrac || 0.62);
+        var maxL = meanD * (C.edge.trunkMaxFrac || 0.85);
+        var L = U.clamp(meanD * frac, C.edge.mergeOffset, maxL);
         if (L > meanD * 0.8) L = meanD * 0.8;
         var ordered = arr.slice().sort(function (a, b) { return a.id < b.id ? -1 : a.id > b.id ? 1 : 0; });
         out[key] = {
@@ -568,6 +592,7 @@
       var trunks = trunkPlan(view.visible);
       trunkWorld.length = 0;
       Object.keys(trunks).forEach(function (tk) { trunkWorld.push(trunks[tk]); });
+      trunkWorldSrc = view.visible;
 
       view.visible.forEach(function (e) {
         if (!cullOff && !edgeInView(e)) return;            // 便宜的一票否决：整条线都在视口同一侧之外
@@ -1978,6 +2003,7 @@
        否则按 root 的常规曲线（含 edgeFade）。实时层与烘焙层都走这一个函数，
        所以「位图 + 点分支」也不会再出现一半亮一半暗。 */
     function drawTrunksLive() {
+      ensureTrunkWorld();
       for (var i = 0; i < trunkWorld.length; i++) {
         var tp = trunkWorld[i];
         var tg = tp && view.graph.byId[tp.target];
@@ -2454,10 +2480,15 @@
     /* ⭐ 2026-10-20 字号按**世界空间拥挤度**定档（与相机无关 ⇒ 平移不改字号）。 */
     var ownSizeMap = Object.create(null);
     function labelOwnSet(k) {
-      var key = Math.round(k * 40) + '|' + (MG.displayLang || 'zh') + '|' + (C.showLabels ? 1 : 0);
+      /* ⭐ 2026-11-16 修「第 6 层 def.weak-hausdorff 没名字」：
+         旧实现拿**全图节点**（含被层过滤藏掉的）算世界归属 —— 藏掉的、优先级更高的
+         节点照样占住格子，可见节点被判「不独占」直接 own 掉；屏幕上又找不到 blocker，
+         因为占位者根本没画。归属必须只算**当前可见**的节点。
+         ⛔ 缓存 key 带上过滤代次（sigEpoch），否则切层后还复用旧归属表。 */
+      var key = Math.round(k * 40) + '|' + (MG.displayLang || 'zh') + '|' + (C.showLabels ? 1 : 0) + '|' + sigEpoch;
       if (ownCache.key === key) return ownCache.set;
       var kk0 = Math.max(0.02, k);
-      var ns = view.graph.nodes.slice().sort(function (a, b) {
+      var ns = view.graph.nodes.filter(function (n) { return nodeOk(n.id); }).sort(function (a, b) {
         return (labelPriority(b) - labelPriority(a)) || (a.id < b.id ? -1 : 1);
       });
       var cell = Math.max(6, (C.node.labelSize + 12) / kk0);

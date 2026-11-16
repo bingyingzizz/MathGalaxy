@@ -830,7 +830,16 @@
       var max = graph.maxLayer || 0;
       layerMax = (k == null || k >= max) ? null : Math.max(0, k);
       applyFilter();
-      if (layerMax != null && opts.fit !== false) fitAll();
+      /* ⭐ 2026-11-16：切层只改「看哪些点」，**不改 cam.k**（用户报：切层时缩放被强制
+         拉到最小）。保留用户当前的显示大小，只把可见集合的 bbox 中心平移到可用区中心；
+         空集合就什么都不动。 */
+      if (layerMax != null && opts.fit !== false) {
+        var live = visibleNodes();
+        if (live.length) {
+          var bb = bboxOf(live);
+          cam.centerOn((bb.minX + bb.maxX) / 2, (bb.minY + bb.maxY) / 2);
+        }
+      }
       syncHash('push');
     }
 
@@ -2381,10 +2390,13 @@
           cam.k = U.clamp(savedCam.k, C.camera.minZoom, C.camera.maxZoom);
           cam.centerOn(savedCam.cx, savedCam.cy);
         } else {
-          // 初始视角：先稍微留白，再平滑推进到「全部适配」
-          cam.k = fitK * 0.72;
+          /* ⭐ 2026-11-16：首次打开不再从「全图缩略图」推进到全部适配 —— 用户要的是
+             一进来就在图的中部、看得清星团名。k 取 fitK 的 startZoom 倍（实测 1.9~2.2
+             在 1600×900 与 390×844 都能读到星团名），中心仍用内容 bbox 中心；
+             ⛔ 不再 animateTo(fitK)：那会把画面拉回全图。 */
+          cam.k = U.clamp(fitK * (C.camera.startZoom || 2.0),
+            C.camera.minZoom, C.camera.maxZoom);
           cam.centerOn(cx, cy);
-          cam.animateTo({ k: fitK, cx: cx, cy: cy }, REDUCE_MOTION ? 1 : 700);
         }
       }
       /* 图例是**适配之前**渲染的（必须先有 DOM 才量得出可用矩形）⇒ 里面那个
