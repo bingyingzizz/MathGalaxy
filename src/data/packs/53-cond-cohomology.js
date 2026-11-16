@@ -397,4 +397,9 @@ window.MG = window.MG || {};
     }
 
   ]
+,
+  edges: [
+    { id: 'dep.sym-real-def-semi-normed-ab-group', kind: 'definition', definition: 'def.real', usedBy: 'def.semi-normed-ab-group', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' },
+    { id: 'dep.banach-realchaus-acyclic', kind: 'definition', definition: 'def.banach-space', usedBy: 'thm.real-banach-chaus-acyclic', note: '定理以实 Banach 空间 V 为前提' }
+  ]
 });

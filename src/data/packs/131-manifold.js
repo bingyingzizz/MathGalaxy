@@ -1633,5 +1633,6 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
+    { id: 'dep.sym-real-def-manifold-chart', kind: 'definition', definition: 'def.real', usedBy: 'def.manifold-chart', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' }
   ]
 });

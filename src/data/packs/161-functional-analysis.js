@@ -1726,6 +1726,8 @@ window.MG = window.MG || {};
       definition: "def.normed-space",
       usedBy: "thm.hahn-banach",
       note: "Hahn–Banach 定理在赋范空间（次线性泛函控制）中陈述。"
-    }
+    },
+    { id: 'dep.sym-complex-def-norm', kind: 'definition', definition: 'def.complex', usedBy: 'def.norm', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-real-def-norm', kind: 'definition', definition: 'def.real', usedBy: 'def.norm', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' }
   ]
 });

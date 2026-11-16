@@ -670,5 +670,8 @@ window.MG = window.MG || {};
         '⚠ 以上是形式幂级数层面的推导，不涉及收敛半径；解析情形（反函数定理）是同一公式在收敛域内的解释。'
       ].join('\n')
     },
+    { id: 'dep.sym-complex-def-power-series', kind: 'definition', definition: 'def.complex', usedBy: 'def.power-series', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-def-exp-function', kind: 'definition', definition: 'def.complex', usedBy: 'def.exp-function', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.absconv-weierstrass-m', kind: 'definition', definition: 'def.absolute-convergence', usedBy: 'prop.weierstrass-m-test', note: '结论断言级数绝对收敛' }
   ]
 });

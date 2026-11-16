@@ -103,5 +103,8 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    { id: 'dep.cat-sets-ex-ab-of-categories', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'ex.ab-of-categories', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-top-ex-ab-of-categories', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'ex.ab-of-categories', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' }
+  ]
 });

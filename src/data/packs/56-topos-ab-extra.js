@@ -306,6 +306,8 @@ window.MG = window.MG || {};
       definition: "def.abelian-category",
       usedBy: "def.exact-sequence",
       note: "正合列在阿贝尔范畴中定义。"
-    }
+    },
+    { id: 'dep.cat-ab-prop-ab5-implications', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.ab5-implications', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-ab-axioms-examples', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.ab-axioms-examples', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

@@ -520,6 +520,10 @@ window.MG = window.MG || {};
     },
     { id: 'dep.n11-solidtensor-group', kind: 'definition', definition: 'def.solid-group', usedBy: 'ex.solid-tensor-computations', note: '固态张量积是固态群范畴中的运算' },
     { id: 'dep.n11-solidtensor-condab', kind: 'definition', definition: 'def.condensed-abelian-group', usedBy: 'ex.solid-tensor-computations', note: '固态群是凝聚阿贝尔群的子范畴' }
-
+,
+    { id: 'dep.cat-ab-def-solid-group', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'def.solid-group', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-free-solid-solid', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.free-solid-solid', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-thm-solid-abelian', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'thm.solid-abelian', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-thm-solid-derived', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'thm.solid-derived', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

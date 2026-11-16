@@ -450,5 +450,11 @@ window.MG = window.MG || {};
       refs: ['Le Stum, Exercise 8.19']
     }
 
+  ],
+
+  edges: [
+    { id: 'dep.banach-rhomchaus', kind: 'definition', definition: 'def.banach-space', usedBy: 'prop.rhom-chaus-banach-zero', note: 'N 是实 Banach 空间，是命题的前提' },
+    { id: 'dep.banach-rhomdisc', kind: 'definition', definition: 'def.banach-space', usedBy: 'prop.rhom-banach-discrete-zero', note: 'M 是有限维实 Banach 空间' },
+    { id: 'dep.banach-finite-rhom', kind: 'definition', definition: 'def.banach-space', usedBy: 'ex.finite-banach-rhom', note: 'M、N 均为有限维实 Banach 空间' }
   ]
 });

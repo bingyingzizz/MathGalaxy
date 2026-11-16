@@ -642,6 +642,11 @@ window.MG = window.MG || {};
       usedBy: 'prop.cohomology-presheaf-H',
       note: '命题说「上同调预层的取值就是上同调」。'
     }
-
+,
+    { id: 'dep.cat-sets-prop-constant-sheaf-adjunction', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.constant-sheaf-adjunction', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-topos-morphism-from-object', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.topos-morphism-from-object', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-constant-sheaf-top', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.constant-sheaf-top', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-def-crystalline-sheaf', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'def.crystalline-sheaf', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-crystalline-sheaf-equiv', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.crystalline-sheaf-equiv', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' }
   ]
 });

@@ -50,6 +50,7 @@ window.MG = window.MG || {};
       definition: 'def.sheaf',
       usedBy: 'prop.constant-sheaf-preserves-limits',
       note: '常层是常预层的层化。'
-    }
+    },
+    { id: 'dep.cat-sets-prop-constant-sheaf-preserves-limits', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.constant-sheaf-preserves-limits', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

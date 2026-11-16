@@ -541,6 +541,10 @@ window.MG = window.MG || {};
       a: 'def.intersection-subobject',
       b: 'def.preimage-subobject',
       note: '交与沿态射的原像是同一个构造（纤维积）的两个特例：交沿两条单态射拉回，原像沿任意态射拉回。'
-    }
+    },
+    { id: 'dep.cat-sets-def-mono', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.mono', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-def-intersection-subobject', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.intersection-subobject', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-def-preimage-subobject', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.preimage-subobject', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-def-elements-category', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.elements-category', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

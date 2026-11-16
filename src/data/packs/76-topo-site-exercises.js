@@ -463,6 +463,7 @@ window.MG = window.MG || {};
       usedBy: 'prop.stalk-of-sheafification',
       note: '层化之后取茎。'
     }
-
+,
+    { id: 'dep.cat-top-prop-hausdorff-reflective', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.hausdorff-reflective', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' }
   ]
 });

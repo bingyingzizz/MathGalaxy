@@ -414,5 +414,6 @@ window.MG = window.MG || {};
         '📌 与 Stolz–Cesàro 的关系：取 $y_n=n$、$x_n=\\sum_{k=1}^{n}a_k$，Stolz 的差商 $\\Delta x_n/\\Delta y_n=a_{n+1}$，得到的正是本条；Stolz 是它的推广。'
       ].join('\n')
     },
+    { id: 'dep.sym-complex-def-derivative', kind: 'definition', definition: 'def.complex', usedBy: 'def.derivative', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ]
 });

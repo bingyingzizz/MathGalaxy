@@ -1104,6 +1104,9 @@ window.MG = window.MG || {};
       usedBy: 'lem.goursat-triangle',
       note: '引理的前提就是「$f$ 在包含 $T$ 的开集上全纯」—— 证明里用到它的地方只有一处：差商 $\\dfrac{f(z) - f(z^*)}{z - z^*}$ 在 $z \\to z^*$ 时有极限（这正是复可微的定义）。'
     }
-
+,
+    { id: 'dep.sym-complex-def-contour-integral', kind: 'definition', definition: 'def.complex', usedBy: 'def.contour-integral', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-def-isolated-singularity', kind: 'definition', definition: 'def.complex', usedBy: 'def.isolated-singularity', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.partial-complexpartial', kind: 'definition', definition: 'def.partial-derivative', usedBy: 'def.complex-partial', note: '定义用偏导数组合出 $\\partial/\\partial z$ 与 $\\partial/\\partial \\bar z$' }
   ]
 });

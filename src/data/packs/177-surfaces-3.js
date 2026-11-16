@@ -355,6 +355,7 @@
       definition: "def.nonorientable-genus",
       usedBy: "ex.klein-bottle",
       note: "Klein 瓶的不可定向亏格为 2。"
-    }
+    },
+    { id: 'dep.sym-real-def-topological-orientability', kind: 'definition', definition: 'def.real', usedBy: 'def.topological-orientability', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' }
   ],
 });

@@ -1497,6 +1497,10 @@ window.MG = window.MG || {};
       definition: 'def.etale-sheaf',
       usedBy: 'prop.etale-sheaf-examples',
       note: '三个例子要验的都是同一个层条件：在联合满射的 étale 族上，截面由各成员上的截面 + 双重纤维积上的一致性唯一决定。'
-    }
+    },
+    { id: 'dep.cat-ab-prop-skyscraper-injective', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.skyscraper-injective', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-thm-pushforward-enough-injectives', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'thm.pushforward-enough-injectives', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-def-etale-sheaf', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'def.etale-sheaf', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cochain-lowdegree', kind: 'definition', definition: 'def.cochain-complex', usedBy: 'prop.low-degree-exact', note: '命题讨论标准上链复形的低次项' }
   ]
 });

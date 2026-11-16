@@ -553,6 +553,19 @@ window.MG = window.MG || {};
       usedBy: 'prop.spectral-sequence-page-picture',
       note: '把谱序列的页画在平面上。'
     }
-
+,
+    { id: 'dep.cat-sets-prop-free-objects-examples', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.free-objects-examples', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-forgetful-faithful-not-full', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.forgetful-faithful-not-full', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-forgetful-representable', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.forgetful-representable', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-algebra-categories-limits', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.algebra-categories-limits', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-currying', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.currying', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-copowers-give-adjoint', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.copowers-give-adjoint', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-forgetful-preserves-limits', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.forgetful-preserves-limits', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-forgetful-faithful-not-full', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.forgetful-faithful-not-full', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-forgetful-adjoints-examples', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.forgetful-adjoints-examples', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-zmod-is-ab', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.zmod-is-ab', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-forgetful-faithful-not-full', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.forgetful-faithful-not-full', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-forgetful-adjoints-examples', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.forgetful-adjoints-examples', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-coreflective-monoids-full', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.coreflective-monoids-full', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

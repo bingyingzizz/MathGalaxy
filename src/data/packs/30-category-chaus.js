@@ -527,6 +527,10 @@ window.MG = window.MG || {};
         '所以 $f$ 是单射，从而是同胚，于是它有截面。∎'
       ].join('\n'),
       note: '两个方向用的是**同一条投射性**的两种面貌：一面是「把对象从它的两块拼回来」（$U \\sqcup F \\to S$ 有截面），另一面是「每个满射有截面」。'
-    }
+    },
+    { id: 'dep.cat-top-def-chaus', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'def.chaus', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-chaus-reflective', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.chaus-reflective', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-def-free-compact-hausdorff', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'def.free-compact-hausdorff', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-td-reflective', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.td-reflective', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' }
   ]
 });

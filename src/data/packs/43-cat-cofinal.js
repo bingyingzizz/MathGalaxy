@@ -195,5 +195,7 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    { id: 'dep.cat-sets-prop-representable-preserves-limits', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.representable-preserves-limits', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
+  ]
 });

@@ -442,6 +442,7 @@ window.MG = window.MG || {};
       definition: "def.pre-analytic-ring",
       usedBy: "thm.za-analytic",
       note: "Zariski 主定理以预解析环为对象。"
-    }
+    },
+    { id: 'dep.banach-rl1', kind: 'definition', definition: 'def.banach-space', usedBy: 'prop.rl1-not-analytic', note: '构造中把 C(S,R) 的拓扑对偶识别为 Banach 空间，使用 Banach 空间概念' }
   ]
 });

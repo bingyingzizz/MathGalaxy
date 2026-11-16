@@ -482,14 +482,18 @@
          · 单边单源不并（没有第二条可并，保持原来的直线）；
          · 方向取「目标 → 全部源的圆心方向」；源把目标围住（方向退化）时
            退回质心方向，再不行就放弃合并 —— 宁可保持原样也不画一条怪主干。
-       汇合点距离 = clamp(源平均距离 × trunkFrac, mergeOffset×k, min(0.45×距离, trunkMaxPx))。
-       ⚠️ 这里返回的是**屏幕坐标**，每轮 buildGeometry 按当前相机重建；
+       汇合点距离 = clamp(源平均距离 × trunkFrac, mergeOffset, min(0.8×距离, trunkMaxFrac×距离))，
+       全部按**世界单位**算（2026-11-16：汇合点必须世界锚定，不能随视口/缩放漂）。
+       ⚠️ 这里返回的是**世界坐标**，由 buildGeometry 里的 computeEdge 用 w2s 映到当前相机；
           buildGeometry 本身有相机缓存，所以不是每帧 O(E)。 */
     /* 合流分组只与「可见边集合」有关，与相机无关 ⇒ 按 view.visible 的引用缓存。
        每帧只重算「汇合点位置」（对每个多源组做几次加法），不重扫 3600 条边。
        ⚠️ view.visible 只在过滤变更时整体替换（见 buildGeometry 的注释），
        所以引用相同 = 分组相同；换层/换门槛会自然失效。 */
     var trunkGroupCache = null, trunkGroupSrc = null;
+    /* 世界坐标的合流组列表（`trunkPlan` 的输出）。几何重建时刷新；
+       主干在实时层画（见 drawTrunksLive），所以位图模式下也必须有一份。 */
+    var trunkWorld = [];
     function trunkGroups(list) {
       if (trunkGroupSrc === list && trunkGroupCache) return trunkGroupCache;
       var groups = Object.create(null);
@@ -507,7 +511,6 @@
     function trunkPlan(list) {
       var groups = trunkGroups(list);
       var out = Object.create(null);
-      var camK = camNow().k || 1;
       Object.keys(groups).forEach(function (key) {
         var arr = groups[key];
         var tgt = arr[0].target;
@@ -520,12 +523,17 @@
           });
         });
         if (arr.length < 2 && srcId.length < 2) return;   // 单边单源：保持原样
-        var T = screenOf(tn);
+        /* ⭐ 汇合点必须在**世界坐标**里定（2026-11-16 用户：交汇点不能随视口缩放变化）。
+           同一条边的方向与源平均距离都是世界量 ⇒ 世界汇合点唯一；相机只负责把
+           这个世界点映射到屏幕（computeEdge 里 w2s）。⛔ 不要再用屏幕像素上限。
+           规则仍只并 strong implication（trunkGroups 已筛），derived 单独一组。 */
+        var T = { x: tn.x, y: tn.y };
         var cx = 0, cy = 0, ux = 0, uy = 0, sumD = 0;
         srcId.forEach(function (id) {
-          var p = screenOf(view.graph.byId[id]);
-          cx += p.x; cy += p.y;
-          var dx = p.x - T.x, dy = p.y - T.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+          var sn = view.graph.byId[id];
+          var dx = sn.x - T.x, dy = sn.y - T.y;
+          var d = Math.sqrt(dx * dx + dy * dy) || 1;
+          cx += sn.x; cy += sn.y;
           ux += dx / d; uy += dy / d; sumD += d;
         });
         cx /= srcId.length; cy /= srcId.length;
@@ -534,13 +542,17 @@
           dirX = cx - T.x; dirY = cy - T.y;
         }
         var dl = Math.sqrt(dirX * dirX + dirY * dirY);
-        if (dl < 1e-3) return;                            // 方向退化：不合并
+        if (dl < 1e-6) return;                            // 方向退化：不合并
         var meanD = sumD / srcId.length;
-        var maxL = Math.min(meanD * 0.45, (C.edge.trunkMaxPx || 320));
-        var L = U.clamp(meanD * (C.edge.trunkFrac || 0.22), C.edge.mergeOffset * camK, maxL);
+        var maxL = meanD * (C.edge.trunkMaxFrac || 0.75);
+        var L = U.clamp(meanD * (C.edge.trunkFrac || 0.62), C.edge.mergeOffset, maxL);
         if (L > meanD * 0.8) L = meanD * 0.8;
         var ordered = arr.slice().sort(function (a, b) { return a.id < b.id ? -1 : a.id > b.id ? 1 : 0; });
-        out[tgt] = { x: T.x + (dirX / dl) * L, y: T.y + (dirY / dl) * L, id: ordered[0].id, n: arr.length };
+        out[key] = {
+          wx: T.x + (dirX / dl) * L, wy: T.y + (dirY / dl) * L,
+          id: ordered[0].id, n: arr.length, key: key, target: tgt,
+          members: ordered.map(function (e) { return e.id; })
+        };
       });
       return out;
     }
@@ -554,6 +566,8 @@
       var bendOf = bundleOffsets(view.visible);
       /* 再按「目标」分组，算推出入边的公共汇合点（见 trunkPlan 的规则）。 */
       var trunks = trunkPlan(view.visible);
+      trunkWorld.length = 0;
+      Object.keys(trunks).forEach(function (tk) { trunkWorld.push(trunks[tk]); });
 
       view.visible.forEach(function (e) {
         if (!cullOff && !edgeInView(e)) return;            // 便宜的一票否决：整条线都在视口同一侧之外
@@ -736,18 +750,23 @@
       /* ⭐ 2026-11-15 合流：同一目标的强推出入边共用一个汇合点（规则见 trunkPlan）。
          分支在汇合点**头尾相接**（以前提前 7px 收笔，留下一条缝）；主干只由
          `trunkPlan` 选出的那条边（id 最小）画，箭头也只画一次 —— 一条主干、一个箭镞。 */
-      var tp = trunks && trunks[e.target];
+      /* derived / 非 derived 是两组（颜色不同）⇒ 按同一个分组键取汇合点，
+         不能只按 target，否则同目标的两组会互相覆盖。 */
+      var tp = trunks && trunks[e.target + '|' + (GU.isDerived(e) ? 'd' : 'n')];
       if (tp) {
-        var tipJ = trimTo(Pt, tp, rt + 5);
+        var tpS = screenOf({ x: tp.wx, y: tp.wy });      // 世界汇合点 → 当前相机屏幕
+        var tipJ = trimTo(Pt, tpS, rt + 5);
         srcs.forEach(function (s) {
           var Ps = screenOf(s), rsp = nodeRadius(s);
-          var st = trimTo(Ps, tp, rsp + 1.5);
-          polys.push([{ x: st.x, y: st.y }, { x: tp.x, y: tp.y }]);
+          var st = trimTo(Ps, tpS, rsp + 1.5);
+          polys.push([{ x: st.x, y: st.y }, { x: tpS.x, y: tpS.y }]);
           ends.push(s.id);
         });
         var root = tp.id === e.id;
         var gm = edgeGeom(e, quads, polys, null, null, ends);
-        gm.trunkPolys = root ? [{ x: tp.x, y: tp.y }, { x: tipJ.x, y: tipJ.y }] : null;
+        gm.trunk = tp;                        // 组信息（成员/世界汇合点）：任意成员都带
+        gm.trunkScreen = [tpS, tipJ];         // 主干屏幕线段（同组逐位相同）
+        gm.trunkPolys = root ? [tpS, tipJ] : null;   // 只 root 描一次、命中归它
         if (root) {
           gm.arrow = { x: tipJ.x, y: tipJ.y, angle: Math.atan2(-tipJ.uy, -tipJ.ux) };
           ends.push(tg.id);
@@ -981,6 +1000,10 @@
          （实测同机位位图路 vs 实画路差 5.6% 像素、集中在各团的软色区）。
          放在名字/标签**之前**画，免得色块压住字。 */
       if (envLive) drawEnvelopes();
+      /* 合流主干在**实时层**画（不是烘焙层）：它的 alpha 跟着 focus/hover 变，
+         而位图只在相机/过滤变化时重烘；坐标也按当前相机现算，不会用到烘焙机位。
+         放在名字之前，免得一条线横穿标签。 */
+      drawTrunksLive();
       /* ⭐ 标签避让的优先级在这里就定死：**选中项 → 悬停 → 搜索命中**先占位，
          然后才是「当前尺度的主要名称」（板块 / 领域 / 星团），最后是普通节点名。
          ⛔ 放不下就隐藏低优先级，不缩字号、不降对比度（用户 2026-10-17 拍板）。 */
@@ -1768,6 +1791,11 @@
       var a = aFocus * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
       var aLod = a, insideN = -1;      // 诊断：LOD 之后的 a / 两端在屏内的个数
       var active = isEdgeActive(g);
+      /* ⭐ 主干挂在 root 边上；点/悬停同组别的分支时 root 会被 alphaForEdge 压到
+         dimEdge(0.05) ⇒ 主干跟着消失（2026-11-16 用户报「点这个边，下面汇合的
+         边看不见」）。整组任一条 active，root 就按 active 画：主干在、箭头也在，
+         证明入口仍走各自的分支 / root，一个都没丢。 */
+      if (!active && trunkWantsActive(g)) active = true;
       /* ⭐⭐ 2026-10-19 用户定稿的线条规则（取代 Stage 1b 的三档）：
          · 全景（r<1.35）：**全都画**，整体顶到 0.30 —— 一层「雾网」，不是空的；
          · 中景（1.35≤r<2.8）：全都画，不按 kind 过滤、不藏跨领域线；
@@ -1787,6 +1815,11 @@
             var sp = w2s(en.x, en.y);
             if (sp.x >= 0 && sp.x <= W && sp.y >= 0 && sp.y <= H) inside++;
           }
+          /* ⭐ 合流边（g.trunk）的近景特殊：分支两端都可能在屏外，但汇合点/分支
+             本身横穿视口 —— 几何已经由 polysHitView 判过「确实在屏内」，这里再按
+             端点判一次会把整组合流线（含主干）误杀。用户放大到汇合点附近时
+             要看见的正是这一段，所以端点全在屏外也放行。 */
+          if (inside === 0 && g.trunk) inside = 1;
           insideN = inside;
           if (inside === 0) { edgeTrace(g, 'off', 0, aLod, 0); return; }
           /* ⭐⭐ 2026-10-2x（手机上报「全景很清楚、稍微放大就没了」）：
@@ -1891,12 +1924,9 @@
           for (var k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
         }
       });
-      /* 合流主干和分支同一条路径一次描边 —— 接缝处不会因为两次 stroke 的
-         圆头/半透明叠加冒出一个亮点。只有 root 边带 trunkPolys。 */
-      if (g.trunkPolys) {
-        ctx.moveTo(g.trunkPolys[0].x, g.trunkPolys[0].y);
-        ctx.lineTo(g.trunkPolys[1].x, g.trunkPolys[1].y);
-      }
+      /* 合流主干不在这里画：它有自己的 pass（`drawTrunksLive`），因为主干必须
+         **整组任一条 active 就跟着亮**，而这条路只按 root 自己的 alpha 走。
+         见 drawTrunksLive 上方的注释。 */
       ctx.stroke();
       edgeTrace(g, 'drawn', a, aLod, insideN);
 
@@ -1925,9 +1955,62 @@
       return false;
     }
 
+    /* ⭐ 合流组里**任何一条**被选中/悬停时，挂主干的那条（root）也要按 active 画。
+       为什么不能靠遍历 geomCache：烘焙走的是独立的烘焙几何（`geomCache` 此时可能是
+       null 或另一套相机），用缓存判 active 会让「位图 + 点分支」这条路径上的主干
+       整段变暗——2026-11-16 实测：实时层 240 亮度，位图里只剩 27。
+       这里只看 view.focus / view.hover 的 id 与组成员，两个渲染路径答案一致。 */
+    function trunkWantsActive(g) {
+      if (!g.trunk) return false;
+      var ids = g.trunk.members || [];
+      var f = view.focus, h = view.hover;
+      if (f && f.type === 'edge' && ids.indexOf(f.id) >= 0) return true;
+      if (h && h.type === 'edge' && ids.indexOf(h.id) >= 0) return true;
+      return false;
+    }
+
+    /* ---------- 合流主干（独立 pass） ---------- */
+    /* 为什么主干不挂在 root 边的 path 上：
+       ① root 边可能被「近景两端都在屏外」「LOD 太淡」等规则整条跳过 ⇒ 主干跟着消失；
+       ② 聚焦/悬停的是**分支**而不是 root 时，root 的 alphaForEdge 会被压到
+          dimEdge(0.05) ⇒ 主干整段变暗（2026-11-16 用户：点这条边，下面汇合的边就看不见）。
+       主干是**组级**图元：alpha 取组内最亮的一条 —— 任一条 active ⇒ 0.55 下限，
+       否则按 root 的常规曲线（含 edgeFade）。实时层与烘焙层都走这一个函数，
+       所以「位图 + 点分支」也不会再出现一半亮一半暗。 */
+    function drawTrunksLive() {
+      for (var i = 0; i < trunkWorld.length; i++) {
+        var tp = trunkWorld[i];
+        var tg = tp && view.graph.byId[tp.target];
+        var e = tp && edgeById(tp.id);
+        if (!tg || !e) continue;
+        var fake = { edge: e, trunk: tp };
+        var active = isEdgeActive(fake) || trunkWantsActive(fake);
+        var a = alphaForEdge(e) * lodA.nodeEdge;
+        if (active) a = Math.max(a, 0.55);
+        if (a <= 0.02) continue;
+        var A = w2s(tp.wx, tp.wy);
+        var B = w2s(tg.x, tg.y);
+        var B2 = trimTo(B, A, nodeRadius(tg) + 5);
+        var w = C.edge.implicationWidth * (active ? 1.85 : 1) * edgeWidthMul();
+        ctx.save();
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = w;
+        ctx.strokeStyle = U.rgba(edgeColor(e), a);
+        ctx.beginPath();
+        ctx.moveTo(A.x, A.y);
+        ctx.lineTo(B2.x, B2.y);
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
+
     function drawArrow(g) {
       var e = g.edge;
       var active = isEdgeActive(g);
+      /* 同 drawEdgeOne：点同组的分支时，主干末端的箭头也要跟着亮 ——
+         否则「线回来了、箭头没有」。 */
+      if (!active && trunkWantsActive(g)) active = true;
       var a = alphaForEdge(e) * lodA.nodeEdge;
       /* 箭头跟线同一条规则：全景/中景顶一个下限，否则「线回来了箭头没有」。 */
       if (!active && !C.showAllEdges && !view.focus) a = Math.max(a, lodA.edgeFloor * 0.42);
@@ -2752,6 +2835,18 @@
           if (d2 < tol + 6 && d2 < hitD) { hitD = d2; hitEdge = g.edge.id; }
         }
       });
+      /* 合流主干：屏幕坐标必须**按当前相机现算**——几何缓存可能是烘焙机位（staticCam）
+         建的，`g.trunkPolys` 用的是烘焙时的屏幕坐标，直接拿来点会偏到别的边/节点上。
+         主干只依赖「世界汇合点 + 目标世界坐标」，所以这里重算一段就永远点得准。 */
+      for (var ti = 0; ti < trunkWorld.length; ti++) {
+        var tp = trunkWorld[ti], tn = view.graph.byId[tp.target];
+        if (!tn) continue;
+        var tA = screenOf({ x: tp.wx, y: tp.wy });
+        var tB = screenOf(tn);
+        var tB2 = trimTo(tB, tA, nodeRadius(tn) + 5);
+        var dt = U.pointPolylineDist(sx, sy, [tA, tB2]);
+        if (dt < tol + 1 && dt < hitD) { hitD = dt; hitEdge = tp.id; }
+      }
       return hitEdge ? { type: 'edge', id: hitEdge } : null;
     }
 

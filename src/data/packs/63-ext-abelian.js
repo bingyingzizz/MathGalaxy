@@ -52,6 +52,7 @@ window.MG = window.MG || {};
       definition: 'def.enough-projectives',
       usedBy: 'prop.ext-abelian-groups',
       note: 'Ab 有足够多投射（自由群），消解才存在。'
-    }
+    },
+    { id: 'dep.cat-ab-prop-ext-abelian-groups', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.ext-abelian-groups', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

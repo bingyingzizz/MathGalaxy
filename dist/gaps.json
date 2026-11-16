@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T04:03:08.859Z",
+ "generated": "2026-11-16T10:15:55.134Z",
  "terms": 76,
  "missing": [
   {
@@ -371,113 +371,86 @@
   {
    "node": "ex.projective-plane",
    "nodeLabel": "射影平面 RP²",
-   "nodeLayer": 18,
+   "nodeLayer": 20,
    "def": "def.nonorientable-genus",
    "defLabel": "不可定向亏格",
-   "defLayer": 32,
-   "gap": 14
+   "defLayer": 37,
+   "gap": 17
   },
   {
-   "node": "def.riemannian-metric",
-   "nodeLabel": "Riemann 度量",
-   "nodeLayer": 20,
-   "def": "def.vector-field",
-   "defLabel": "向量场",
+   "node": "def.symplectic-basis",
+   "nodeLabel": "辛基",
+   "nodeLayer": 19,
+   "def": "def.orthonormal-set",
+   "defLabel": "正交基",
+   "defLayer": 24,
+   "gap": 5
+  },
+  {
+   "node": "def.category-of-topological-spaces",
+   "nodeLabel": "拓扑空间范畴",
+   "nodeLayer": 10,
+   "def": "def.subspace",
+   "defLabel": "子空间",
+   "defLayer": 14,
+   "gap": 4
+  },
+  {
+   "node": "thm.riesz-markov",
+   "nodeLabel": "Riesz–Markov 表示",
+   "nodeLayer": 21,
+   "def": "def.signed-measure",
+   "defLabel": "符号测度",
    "defLayer": 23,
-   "gap": 3
+   "gap": 2
   },
   {
    "node": "def.weak-star-topology",
    "nodeLabel": "弱*拓扑",
-   "nodeLayer": 16,
+   "nodeLayer": 24,
    "def": "def.weak-topology",
    "defLabel": "弱拓扑",
-   "defLayer": 18,
-   "gap": 2
-  },
-  {
-   "node": "def.injective-dimension",
-   "nodeLabel": "内射维数",
-   "nodeLayer": 20,
-   "def": "def.flat-dimension",
-   "defLabel": "平坦维数",
-   "defLayer": 21,
-   "gap": 1
-  },
-  {
-   "node": "prop.low-degree-exact",
-   "nodeLabel": "低次正合列",
-   "nodeLayer": 14,
-   "def": "def.cochain-complex",
-   "defLabel": "上链复形",
-   "defLayer": 15,
+   "defLayer": 25,
    "gap": 1
   },
   {
    "node": "def.real-metric-space",
    "nodeLabel": "实数的度量",
-   "nodeLayer": 15,
+   "nodeLayer": 17,
    "def": "def.canonical-topology",
    "defLabel": "标准拓扑",
-   "defLayer": 15,
+   "defLayer": 17,
    "gap": 0
   },
   {
    "node": "def.category-of-groups",
    "nodeLabel": "群范畴",
-   "nodeLayer": 8,
+   "nodeLayer": 10,
    "def": "def.subcategory",
    "defLabel": "子范畴",
-   "defLayer": 8,
-   "gap": 0
-  },
-  {
-   "node": "def.category-of-abelian-groups",
-   "nodeLabel": "阿贝尔群范畴",
-   "nodeLayer": 8,
-   "def": "def.subcategory",
-   "defLabel": "子范畴",
-   "defLayer": 8,
-   "gap": 0
-  },
-  {
-   "node": "def.cohomology",
-   "nodeLabel": "同调",
-   "nodeLayer": 17,
-   "def": "def.abelian-category",
-   "defLabel": "阿贝尔范畴",
-   "defLayer": 17,
-   "gap": 0
-  },
-  {
-   "node": "def.group-power",
-   "nodeLabel": "群的整数幂",
-   "nodeLayer": 8,
-   "def": "def.power",
-   "defLabel": "整数幂",
-   "defLayer": 8,
+   "defLayer": 10,
    "gap": 0
   },
   {
    "node": "def.cech-complex",
    "nodeLabel": "Čech 复形",
-   "nodeLayer": 16,
+   "nodeLayer": 18,
    "def": "def.bicomplex",
    "defLabel": "双复形",
-   "defLayer": 16,
+   "defLayer": 18,
    "gap": 0
   },
   {
-   "node": "prop.derived-pushforward-composition",
-   "nodeLabel": "推前的复合",
-   "nodeLayer": 19,
-   "def": "def.spectral-sequence",
-   "defLabel": "谱序列",
-   "defLayer": 19,
+   "node": "def.complex-partial",
+   "nodeLabel": "复偏导数",
+   "nodeLayer": 24,
+   "def": "def.directional-derivative",
+   "defLabel": "方向导数",
+   "defLayer": 24,
    "gap": 0
   }
  ],
- "noEdgeAll": 47,
+ "noEdgeAll": 44,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

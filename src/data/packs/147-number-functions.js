@@ -697,6 +697,8 @@ window.MG = window.MG || {};
       definition: "def.multiplicative-function",
       usedBy: "def.mobius-function",
       note: "Möbius 函数是积性函数，积性定义是其直接上位概念。"
-    }
+    },
+    { id: 'dep.sym-complex-def-multiplicative-function', kind: 'definition', definition: 'def.complex', usedBy: 'def.multiplicative-function', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-thm-mobius-inversion', kind: 'definition', definition: 'def.complex', usedBy: 'thm.mobius-inversion', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ],
 });

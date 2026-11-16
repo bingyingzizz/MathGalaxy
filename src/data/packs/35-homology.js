@@ -782,6 +782,8 @@ window.MG = window.MG || {};
       definition: "def.abelian-category",
       usedBy: "def.filtration",
       note: "滤过是阿贝尔范畴中对象上的结构。"
-    }
+    },
+    { id: 'dep.cat-ab-def-pre-additive-category', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'def.pre-additive-category', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.abelian-cohomology', kind: 'definition', definition: 'def.abelian-category', usedBy: 'def.cohomology', note: '同调定义设在阿贝尔范畴中的上链复形上' }
   ]
 });

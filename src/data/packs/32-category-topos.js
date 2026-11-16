@@ -557,6 +557,8 @@ window.MG = window.MG || {};
         '**(保极限 $\\implies$ 层)** 反过来，若 $F$ 保所有极限，把上式倒过来读：对每个 $R \\in J(X)$，$F(X) \\cong \\varprojlim_{X\' \\in \\mathcal{C}/R} F(X\')$，而右边与 $\\operatorname{Hom}(R, F)$ 同构（前面的计算），所以 $F$ 是层。\n\n∎'
       ].join('\n'),
       note: '证明短得出奇 —— 因为**标准拓扑对覆盖筛的规定，本来就是「$X$ 是这些 $X\'$ 的余极限」**。所以「层」在拓扑斯上等于「把余极限送回极限」，几何与范畴在这里合成一句话。'
-    }
+    },
+    { id: 'dep.cat-sets-def-generator', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.generator', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-prop-topos-sheaf-limits', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.topos-sheaf-limits', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

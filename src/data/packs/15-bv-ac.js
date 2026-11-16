@@ -648,6 +648,8 @@ window.MG = window.MG || {};
       definition: 'def.nbv',
       usedBy: 'cor.integral-is-ac-nbv',
       note: '推论同时落在 NBV 与 AC 的交里。'
-    }
+    },
+    { id: 'dep.sym-complex-def-bounded-variation', kind: 'definition', definition: 'def.complex', usedBy: 'def.bounded-variation', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-def-ac-function', kind: 'definition', definition: 'def.complex', usedBy: 'def.ac-function', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ]
 });

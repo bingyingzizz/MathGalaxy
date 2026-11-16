@@ -556,6 +556,7 @@ window.MG = window.MG || {};
         '**($\\implies$)** 设 $K$ 紧。紧集在度量空间里总是闭的（见「紧子集是闭的」）。若有界性不成立，则对每个 $k$ 可取 $x_k \\in K \\setminus B(0, k)$，这样的数列没有任何收敛子列（$|x_k| \\to \\infty$），与列紧矛盾。故 $K$ 有界。∎'
       ].join('\n'),
       note: '两条前提缺一不可：$\\mathbb{R}^{n}$ 的**完备性**（Bolzano–Weierstrass）给出「有界 $\\implies$ 有子列收敛」，度量空间的**一般事实**给出「紧 $\\iff$ 列紧」与「紧 $\\implies$ 闭」。'
-    }
+    },
+    { id: 'dep.sym-real-def-limsup-liminf', kind: 'definition', definition: 'def.real', usedBy: 'def.limsup-liminf', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' }
   ]
 });

@@ -561,6 +561,8 @@ window.MG = window.MG || {};
         '滤过余极限**正合**（保有限极限、保正合列），所以它把每一页的谱序列逐项保下来 —— 页、微分、以及收敛到同一个 $H^{p+q}(X, M)$ 都被保住 ✓。于是得到 $E^{p,q}_{2} = \\check{H}^{p}(X, H^{q}(M)) \\implies H^{p+q}(X, M)$ ✓。∎'
       ].join('\n')
     }
-
+,
+    { id: 'dep.cat-sets-thm-presheaf-limits-colimits', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'thm.presheaf-limits-colimits', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-top-cor-cond-ktop-finite-products', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'cor.cond-ktop-finite-products', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' }
   ]
 });

@@ -678,5 +678,7 @@ window.MG = window.MG || {};
         '**④ $A$ 奇异时**。由 $\\|Px\\|^{2} = \\langle A^{*}Ax, x\\rangle = \\|Ax\\|^{2}$ 得 $\\ker P = \\ker A$。在 $\\operatorname{im}P$ 上定义 $U(Px) := Ax$：若 $Px = 0$ 则 $Ax = 0$，故良定义；且 $\\|U(Px)\\| = \\|Ax\\| = \\|Px\\|$，故 $U$ 是 $\\operatorname{im}P \\to \\operatorname{im}A$ 的等距。把 $U$ 延拓为酉映射：取 $\\operatorname{im}P$ 的标准正交基并延拓到全空间，令 $U$ 把 $(\\operatorname{im}P)^{\\perp} = \\ker P$ 等距地送到 $(\\operatorname{im}A)^{\\perp}$（两边维数都等于 $n - \\operatorname{rank}A$）。于是 $U$ 酉且 $A = UP$；$P$ 仍唯一，$U$ 在 $\\ker A$ 上不唯一。∎',
       ].join('\n\n'),
     },
+    { id: 'dep.sym-complex-def-conjugate-transpose', kind: 'definition', definition: 'def.complex', usedBy: 'def.conjugate-transpose', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-def-spectral-radius', kind: 'definition', definition: 'def.complex', usedBy: 'def.spectral-radius', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ]
 });

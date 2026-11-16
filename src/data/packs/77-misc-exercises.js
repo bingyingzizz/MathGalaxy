@@ -34,6 +34,25 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.21']
     },
 
+    /* ------------------------------------------- 笛卡尔积 = Set 中的积 */
+    {
+      id: "prop.cartesian-product-is-set-product",
+      cluster: "cat.limit",
+      type: "proposition",
+      label: "笛卡尔积是集合范畴的积",
+      title: "命题：$\\mathbf{Set}$ 中的积就是笛卡尔积",
+      regions: ["category", "set"],
+      tags: ["范畴论", "笛卡尔积", "积", "Set"],
+      statement: [
+        "在 $\\mathbf{Set}$ 中，**范畴论积就是笛卡尔积**：积对象是 $X\\times Y$，两条投影 $\\pi_1,\\pi_2$ 是两个分量映射。",
+        "对任意集合 $Z$ 与函数 $f:Z\\to X$、$g:Z\\to Y$，配对映射 $\\langle f,g\\rangle:Z\\to X\\times Y$（$z\\mapsto(f(z),g(z))$）是唯一使 $\\pi_1\\circ\\langle f,g\\rangle=f$、$\\pi_2\\circ\\langle f,g\\rangle=g$ 的映射。"
+      ].join('\n'),
+      notes: [
+        "**证明**：笛卡尔积 $X\\times Y$ 与投影满足积的泛性质——存在性由配对映射给出，唯一性由「两个分量都相同则映射相同」给出 ✓。",
+        "与 `def.product` 的关系：`def.product` 是范畴积的定义，本条说明它在 $\\mathbf{Set}$ 中的具体实现；`thm.product` 提供笛卡尔积的存在性。"
+      ].join('\n\n'),
+      refs: ["Mac Lane, Categories for the Working Mathematician, Ch. I, III"]
+    },
     /* ----------------------------------------------------- 1.38 + 1.45 */
     {
       id: 'prop.set-top-ab-complete',
@@ -236,6 +255,60 @@ window.MG = window.MG || {};
       usedBy: 'prop.pontryagin-finite-dim-banach',
       note: '有限维情形下对偶退化成向量空间对偶。'
     }
+,
+    {
+      id: 'dep.set-top-ab-sets',
+      kind: 'definition',
+      definition: 'def.category-of-sets',
+      usedBy: 'prop.set-top-ab-complete',
+      note: '命题讨论的范畴之一是集合范畴 $\\mathbf{Set}$。'
+    },
+    {
+      id: 'dep.set-top-ab-top',
+      kind: 'definition',
+      definition: 'def.category-of-topological-spaces',
+      usedBy: 'prop.set-top-ab-complete',
+      note: '命题讨论的范畴之一是拓扑空间范畴 $\\mathbf{Top}$。'
+    },
+    {
+      id: 'dep.set-top-ab-ab',
+      kind: 'definition',
+      definition: 'def.category-of-abelian-groups',
+      usedBy: 'prop.set-top-ab-complete',
+      note: '命题讨论的范畴之一是阿贝尔群范畴 $\\mathbf{Ab}$。'
+    },
 
+    {
+      id: "imp.cartesian-set-product",
+      kind: 'implication',
+      sources: ["thm.product"],
+      target: "prop.cartesian-product-is-set-product",
+      proof: "由 `thm.product`，$X\\times Y$ 存在且带投影 $\\pi_1,\\pi_2$。给定 $f:Z\\to X$、$g:Z\\to Y$，令 $h(z)=(f(z),g(z))$，则 $\\pi_1\\circ h=f$、$\\pi_2\\circ h=g$。若 $h'$ 也满足，则对每个 $z$，$h'(z)$ 的两个分量分别为 $f(z),g(z)$，故 $h'=h$。这正是积的泛性质，故 $\\mathbf{Set}$ 中的积就是笛卡尔积。$\\blacksquare$"
+    },
+
+    {
+      id: "dep.cartesian-set-product",
+      kind: 'definition',
+      definition: "def.product",
+      usedBy: "prop.cartesian-product-is-set-product",
+      note: "本条把 def.product 的泛性质在 $\\mathbf{Set}$ 中具体化为笛卡尔积。"
+    },
+
+    {
+      id: "dep.cartesian-set-cat",
+      kind: 'definition',
+      definition: "def.category-of-sets",
+      usedBy: "prop.cartesian-product-is-set-product",
+      note: "命题在集合范畴 $\\mathbf{Set}$ 中陈述。"
+    },
+
+    {
+      id: "imp.set-top-ab-cartesian",
+      kind: 'implication',
+      sources: ["thm.arbitrary-product"],
+      target: "prop.set-top-ab-complete",
+      proof: "在 $\\mathbf{Set}$ 中，任意小族的积取任意族笛卡尔积（`thm.arbitrary-product`；有限族时由 `thm.product` 反复取二元积得到）；配合等化子即得所有小极限。这正是该命题中 $\\mathbf{Set}$ 完备性论证的第一步。$\\blacksquare$"
+    },
+    { id: 'dep.banach-pontryagin-fd', kind: 'definition', definition: 'def.banach-space', usedBy: 'prop.pontryagin-finite-dim-banach', note: 'V 是有限维实 Banach 空间' }
   ]
 });

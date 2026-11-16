@@ -303,7 +303,7 @@ window.MG = window.MG || {};
         '',
         '（左边 $\\subseteq$ 右边：取有理数 $q$ 夹在 $a - g$ 与 $f$ 之间；反向显然。）右边是可数并交，故可测。积 $fg$ 由 $fg = ((f+g)^2 - f^2 - g^2) / 2$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。',
         '',
-        '**⑤ 与简单函数的关系。** 上面 ①~④ 已经把「可测」做成了一个对极限与代数运算封闭的类；而简单函数逼近定理保证**每个非负可测函数都是一列简单函数的逐点极限**，所以这个类是「刚好够用」的：从简单函数出发，取极限就得到全部可测函数。∎'
+        '**⑤ 与简单函数的关系。** 上面 ①~④ 已经把「可测」做成了一个对极限与代数运算封闭的类；而简单函数逼近定理保证**每个非负可测函数都是一列简单函数的逐点极限**，所以这个类是「刚好够用」的：从简单函数出发，取极限就得到全部可测函数。∎',
       ].join('\n'),
       note: '这条是把「sup 可测、max 可测、极限可测、和积可测」几条合并成的总纲 —— 单独看每一条都很碎，合起来才是它的分量。'
     },
@@ -401,6 +401,36 @@ window.MG = window.MG || {};
       definition: 'def.measure',
       usedBy: 'prop.measurable-closure',
       note: '封闭性里的极限都是相对测度 $\\mu$ 而言的。'
-    }
+    },
+    {
+      id: 'dep.measurable-realimag-complex',
+      kind: 'definition',
+      definition: 'def.complex',
+      usedBy: 'prop.measurable-product-and-realimag',
+      note: '(2) 的靶空间是复平面，实部与虚部都取实值。'
+    },
+
+    {
+      id: "imp.measurable-product-cartesian",
+      kind: "implication",
+      sources: ["thm.arbitrary-product"],
+      target: "prop.measurable-product-and-realimag",
+      proof: "积空间 $Y=\\prod_\\alpha Y_\\alpha$ 的底集就是任意族笛卡尔积 $\\prod_\\alpha Y_\\alpha$（全体选择函数之集，见 `thm.arbitrary-product`）；可测结构 $\\mathcal N=\\otimes_\\alpha\\mathcal N_\\alpha$ 建在这个底集上。因此命题 (1) 讨论的 $Y$ 确实由笛卡尔积给出；有限指标时即 `thm.product` 的反复二元积。$\\blacksquare$",
+      note: "积空间的底集是任意族笛卡尔积，二元积只是有限特例。"
+    },
+
+    {
+      id: "dep.measurable-realimag-function",
+      kind: 'definition',
+      definition: "def.measurable-function",
+      usedBy: "prop.measurable-product-and-realimag",
+      note: "(1) 中「$f$ 可测」指可测映射，是定义级依赖。"
+    },
+    { id: 'dep.sym-complex-def-lebesgue-measurable', kind: 'definition', definition: 'def.complex', usedBy: 'def.lebesgue-measurable', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-prop-measurable-closure', kind: 'definition', definition: 'def.complex', usedBy: 'prop.measurable-closure', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-def-simple-function', kind: 'definition', definition: 'def.complex', usedBy: 'def.simple-function', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-complex-thm-simple-approximation', kind: 'definition', definition: 'def.complex', usedBy: 'thm.simple-approximation', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.sym-real-def-lebesgue-measurable', kind: 'definition', definition: 'def.real', usedBy: 'def.lebesgue-measurable', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' },
+    { id: 'dep.continuousmeasurable-borel', kind: 'definition', definition: 'def.borel', usedBy: 'cor.continuous-measurable', note: '连续映射对 Borel σ-代数可测' }
   ]
 });

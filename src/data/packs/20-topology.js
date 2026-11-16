@@ -555,6 +555,7 @@ window.MG = window.MG || {};
       definition: "def.subspace",
       usedBy: "def.jordan-curve",
       note: "Jordan 曲线带子空间拓扑。"
-    }
+    },
+    { id: 'dep.sym-complex-def-jordan-curve', kind: 'definition', definition: 'def.complex', usedBy: 'def.jordan-curve', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ]
 });

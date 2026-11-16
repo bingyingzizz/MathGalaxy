@@ -564,5 +564,11 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    { id: 'dep.cat-top-prop-ktx-colimit', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.ktx-colimit', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-cg-coreflective', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.cg-coreflective', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-k-product', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.k-product', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-def-compact-open-topology', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'def.compact-open-topology', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-top-prop-cg-cartesian-closed', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'prop.cg-cartesian-closed', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' }
+  ]
 });

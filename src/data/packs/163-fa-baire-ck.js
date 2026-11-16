@@ -1217,5 +1217,7 @@ window.MG = window.MG || {};
       "proof": "取 $f\\in C[0,1]$、$\\varepsilon>0$。由 `thm.uniform-continuity-compact`（$[0,1]$ 紧），$f$ 一致连续：存在 $\\delta>0$ 使 $|x-y|<\\delta$ 时 $|f(x)-f(y)|<\\varepsilon$。\n\n固定 $x\\in[0,1]$，令 $S_n\\sim\\mathrm{Bin}(n,x)$，则 $B_nf(x)=\\mathbb E[f(S_n/n)]$。二项矩恒等式（对 $\\sum_k\\binom nk x^k(1-x)^{n-k}=1$ 求导两次即得）给出\n$$\\mathbb E\\Bigl[\\frac{S_n}{n}\\Bigr]=x,\\qquad \\mathbb E\\Bigl[\\Bigl(\\frac{S_n}{n}-x\\Bigr)^{2}\\Bigr]=\\frac{x(1-x)}{n}\\le\\frac{1}{4n}.$$\n\n按 $|S_n/n-x|$ 是否小于 $\\delta$ 分两段：近处 $|f(S_n/n)-f(x)|<\\varepsilon$；远处 $\\le2\\lVert f\\rVert_\\infty$，而这情形的概率由 Markov 不等式\n$$\\mathbb P\\Bigl(\\Bigl|\\frac{S_n}{n}-x\\Bigr|\\ge\\delta\\Bigr)\\le\\frac{1}{4n\\delta^{2}}.$$\n\n合并得 $|B_nf(x)-f(x)|\\le\\varepsilon+\\dfrac{\\lVert f\\rVert_\\infty}{2n\\delta^{2}}$，与 $x$ 无关。取 $n>\\dfrac{\\lVert f\\rVert_\\infty}{2\\varepsilon\\delta^{2}}$ 便有 $\\lVert B_nf-f\\rVert_\\infty\\le2\\varepsilon$。$\\varepsilon$ 任意，故 $B_nf\\rightrightarrows f$。∎",
       "note": "唯一的外部输入是紧集上连续 $\\implies$ 一致连续；二项矩与 Markov 不等式都在边里现算。"
     },
+    { id: 'dep.sym-complex-thm-stone-weierstrass-complex', kind: 'definition', definition: 'def.complex', usedBy: 'thm.stone-weierstrass-complex', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' },
+    { id: 'dep.banach-ckcomplete', kind: 'definition', definition: 'def.banach-space', usedBy: 'thm.ck-complete', note: '结论中 C(K,E) 的完备性以 Banach 空间（完备赋范空间）定义为前提' }
   ]
 });

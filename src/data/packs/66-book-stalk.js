@@ -67,6 +67,7 @@ window.MG = window.MG || {};
       definition: 'def.topos',
       usedBy: 'prop.stalk-separated',
       note: '把点看成拓扑斯态射 $1 \\to \\operatorname{Sh}(X)$，用的是拓扑斯之间的态射。'
-    }
+    },
+    { id: 'dep.cat-sets-prop-stalk-separated', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'prop.stalk-separated', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

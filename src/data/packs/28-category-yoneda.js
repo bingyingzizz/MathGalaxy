@@ -363,6 +363,11 @@ window.MG = window.MG || {};
         '满态射的情形对偶（把范畴换成 $\\mathcal{C}^{\\mathrm{op}}$）。∎'
       ].join('\n'),
       note: '这里能看到米田引理的典型用法：**要把「元素层」的问题搬到「箭头层」，就先让元素变成 $h_{X}$ 到 $T$ 的箭头**。'
-    }
+    },
+    { id: 'dep.cat-sets-def-presheaf', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.presheaf', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-def-presheaf-cat', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.presheaf-cat', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-def-representable', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.representable', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-lem-yoneda', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'lem.yoneda', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-thm-represented-criterion', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'thm.represented-criterion', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

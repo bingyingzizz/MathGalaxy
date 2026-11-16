@@ -591,6 +591,8 @@ window.MG = window.MG || {};
         '当 $X$ 本身紧生成时 $kX = X$，上式就是 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, \\underline{Y}) \\cong \\operatorname{Hom}_{k\\mathbf{Top}}(X, kY)$，逐对 $X, Y$ 都是双射 —— **限制到 $k\\mathbf{Top}$ 上全忠实**。\n\n对一般 $X$，$X \\to kX$ 是同一集合上的恒等映射，所以函子在态射层仍是单射 —— **在 $\\mathbf{Top}$ 上忠实**。\n\n∎'
       ].join('\n'),
       note: '一句话记住：**「拓扑空间 $\\to$ 凝聚态集」这件事丢掉的东西，正好就是 $k$-化丢掉的东西。** 所以在 $k\\mathbf{Top}$ 上它不丢信息。'
-    }
+    },
+    { id: 'dep.cat-top-thm-top-cond-adjoint', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'thm.top-cond-adjoint', note: '陈述以拓扑空间范畴 $\\mathbf{Top}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-condab-section', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.condab-section', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

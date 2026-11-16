@@ -60,6 +60,7 @@ MG.aliases = {
     { id: 'def.power-set', aka: ['幂集', 'power set'] },
     { id: 'thm.empty', en: 'the empty set exists', aka: ['空集存在', '空集公理'] },
     { id: 'thm.product', aka: ['笛卡尔积', '卡氏积', 'Cartesian product', '直积'] },
+    { id: 'thm.arbitrary-product', en: 'arbitrary Cartesian product', aka: ['任意族笛卡尔积', '任意积', '无穷积', '选择函数空间'] },
 
     /* 关系与函数 */
     { id: 'def.rel', aka: ['二元关系', 'binary relation', '关系'] },
@@ -1534,6 +1535,9 @@ MG.aliases = {
     { id: 'def.pontryagin-class', en: 'Pontryagin class', aka: ['庞特里亚金类'] },
     { id: 'def.category-of-groups', en: 'category of groups', aka: ['群范畴', 'Grp'] },
     { id: 'def.category-of-abelian-groups', en: 'category of abelian groups', aka: ['阿贝尔群范畴', 'Ab'] },
+    { id: 'def.category-of-sets', en: 'category of sets', aka: ['集合范畴', 'Set 范畴', '集合的范畴', 'Set'] },
+    { id: 'def.category-of-topological-spaces', en: 'category of topological spaces', aka: ['拓扑空间范畴', 'Top 范畴', '拓扑空间的范畴', 'Top'] },
+    { id: 'prop.cartesian-product-is-set-product', en: 'Cartesian product is the product in Set', aka: ['笛卡尔积是集合范畴的积', 'Set 中的积是笛卡尔积', '笛卡尔积的泛性质'] },
     { id: 'def.module-category', en: 'category of modules', aka: ['模范畴', 'A-Mod'] },
     { id: 'def.topological-orientability', en: 'topological orientability', aka: ['拓扑可定向性', '曲面的可定向性'] },
     { id: 'lem.newman-tauberian', en: 'Newman\'s Tauberian lemma', aka: ['Newman 解析定理'] },

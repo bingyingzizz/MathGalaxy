@@ -571,6 +571,8 @@ window.MG = window.MG || {};
         '取 $Y = X$、$g = 1_{X}$ 即得 $u = v$。所以 $q$ 是满态射。∎'
       ].join('\n'),
       note: '这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在景上验覆盖，都可以改写成一个余积是否满射的问题。'
-    }
+    },
+    { id: 'dep.cat-sets-def-sheaf', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.sheaf', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-sets-def-effective-equivalence', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.effective-equivalence', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

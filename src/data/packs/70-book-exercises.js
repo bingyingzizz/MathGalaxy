@@ -169,6 +169,7 @@ window.MG = window.MG || {};
         '⚠️ **(二) 只是化归的思路**：真正的证明要把「底空间的拓扑由紧块决定」这句话在两边各写清楚（左边靠底空间的定义、右边靠 $k$-化的定义）。这一步不做也没有数学风险，但严格说这里只到「化归到紧的情形」为止。'
       ].join('\n')
     }
-
+,
+    { id: 'dep.cat-ab-def-free-abelian-sheaf', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'def.free-abelian-sheaf', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

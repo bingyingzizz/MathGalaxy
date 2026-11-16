@@ -604,6 +604,7 @@ window.MG = window.MG || {};
       definition: 'def.bilinear-form',
       usedBy: 'def.quadratic-form',
       note: '对称双线性型 $B$ 与二次型 $q$ 由极化恒等式互相确定（$2B(u, v) = q(u + v) - q(u) - q(v)$），所以二次型是「对称双线性型的对角化写法」。'
-    }
+    },
+    { id: 'dep.sym-complex-def-inner-product', kind: 'definition', definition: 'def.complex', usedBy: 'def.inner-product', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ]
 });

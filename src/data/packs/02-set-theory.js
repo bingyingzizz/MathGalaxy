@@ -254,10 +254,36 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '它是「关系」「函数」得以定义为集合的前提：没有 $A \\times B$，就没有 $R \\subseteq A \\times B$ 这个说法。',
       refs: ['Kunen, Set Theory, I.5']
-    }
+    },
+    {
+      id: 'thm.arbitrary-product',
+      cluster: 'set.construct',
+      type: 'theorem',
+      label: '任意族笛卡尔积存在',
+      title: '任意小族的笛卡尔积 $\\prod_{i \\in I} A_i$ 存在',
+      regions: ['set-theory'],
+      tags: ['定理', '笛卡尔积', '选择函数'],
+      statement: [
+        '设 $I$ 是集合，$\\{A_i\\}_{i\\in I}$ 是一族集合。则存在集合',
+        '',
+        '$$\\prod_{i\\in I} A_i = \\Bigl\\{ f : f \\text{ 是函数},\\ \\operatorname{dom} f = I,\\ \\forall i\\in I,\\ f(i)\\in A_i \\Bigr\\}$$',
+        '',
+        '即全体**选择函数**之集。$I$ 有限时它就是反复取二元积 $A_{i_1}\\times\\cdots\\times A_{i_n}$；一般情形用**幂集公理 + 分离公理模式 + 并集公理**：$\\prod_i A_i$ 是 $\\mathcal P(I\\times\\bigcup_i A_i)$ 中满足 $f(i)\\in A_i$ 的函数的子集；替换公理不必需。'
+      ].join('\n'),
+      notes: [
+        '**存在性不需要选择公理。** 这里只收集「所有选择函数」这一集合，并不声称它非空。',
+        '**非空性**是另一回事：若每个 $A_i$ 非空而 $I$ 无限，断言 $\\prod_i A_i \\ne \\emptyset$ 正是选择公理的一条形式；$I$ 有限时不需要。',
+        '与 `thm.product` 的关系：二元积是 $I=\\{0,1\\}$ 的特例；本定理把「逐对构造」换成「一次性收集所有选择函数」，从而对任意小族有定义。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.9（函数与积）']
+    },
   ],
 
   edges: [
+    { id: 'dep.arbproduct-product', kind: 'definition', definition: 'thm.product', usedBy: 'thm.arbitrary-product', note: '有限族情形由二元积反复构造，是本定理的特例' },
+    { id: 'dep.sym-product-def-rel', kind: 'definition', definition: 'thm.product', usedBy: 'def.rel', note: '关系定义为笛卡尔积的子集，故以二元积为前提' },
+    { id: 'dep.bridge-arbitrary-product', kind: 'definition', definition: 'thm.arbitrary-product', usedBy: 'prop.measurable-product-and-realimag', note: '命题 (1) 的积空间底集是任意族笛卡尔积' },
+    { id: 'dep.bridge-arbitrary-product-sigma', kind: 'definition', definition: 'thm.arbitrary-product', usedBy: 'def.product-sigma', note: '积 σ-代数定义在任意族笛卡尔积的底集上' },
     {
       id: 'imp.sep-to-empty',
       kind: 'implication',
@@ -357,6 +383,7 @@ window.MG = window.MG || {};
         '则 $C$ 恰是 $A \\times B$：一方面每个 (a, b) 都在 $\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 中，另一方面 $z$ 是不在 $A$、$B$ 中任意点处取到的有序对时不会被选进来。∎'
       ].join('\n'),
       note: '这个证明展示了一个典型套路：先用幂集「造一个足够大的容器」，再用分离公理模式「筛出真正想要的东西」。'
-    }
+    },
+    { id: 'dep.choicefn-arbproduct', kind: 'definition', definition: 'def.choicefn', usedBy: 'thm.arbitrary-product', note: '积集元素就是选择函数，定义直接用到选择函数' }
   ]
 });

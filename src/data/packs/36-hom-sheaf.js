@@ -178,5 +178,10 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    { id: 'dep.cat-ab-def-abelian-sheaf', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'def.abelian-sheaf', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-thm-topos-abelian-grothendieck', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'thm.topos-abelian-grothendieck', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-def-internal-hom', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'def.internal-hom', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-def-tensor-abelian-sheaf', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'def.tensor-abelian-sheaf', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
+  ]
 });

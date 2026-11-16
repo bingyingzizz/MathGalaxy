@@ -773,5 +773,6 @@ window.MG = window.MG || {};
         '由 Cauchy 准则（`thm.cauchy-criterion-series`）得 $\\sum a_nb_n$ 收敛。$\\blacksquare$'
       ].join('\n')
     },
+    { id: 'dep.sym-complex-def-absolute-convergence', kind: 'definition', definition: 'def.complex', usedBy: 'def.absolute-convergence', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ]
 });

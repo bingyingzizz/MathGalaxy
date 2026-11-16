@@ -524,6 +524,9 @@ window.MG = window.MG || {};
         '最后一式取 $N = \\mathbb{Z}$，并用 $j_{X!}\\mathbb{Z} = \\mathbb{Z}\\cdot X$ ✓。∎'
       ].join('\n')
     }
-
+,
+    { id: 'dep.cat-ab-prop-topos-morphism-abelian-adjunction', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.topos-morphism-abelian-adjunction', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-abelian-slice-adjunction', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.abelian-slice-adjunction', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.spectral-derivedpush', kind: 'definition', definition: 'def.spectral-sequence', usedBy: 'prop.derived-pushforward-composition', note: '结论断言存在谱序列，需谱序列定义' }
   ]
 });

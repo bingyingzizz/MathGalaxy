@@ -396,6 +396,7 @@
       definition: "def.nonorientable-genus",
       usedBy: "thm.classification-surfaces",
       note: "曲面分类按可定向性与亏格分型。"
-    }
+    },
+    { id: 'dep.sym-real-def-topological-manifold', kind: 'definition', definition: 'def.real', usedBy: 'def.topological-manifold', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' }
   ],
 });

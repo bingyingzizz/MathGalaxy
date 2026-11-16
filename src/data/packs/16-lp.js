@@ -791,6 +791,7 @@ window.MG = window.MG || {};
       definition: 'def.lp-norm',
       usedBy: 'cor.lp-reflexive',
       note: '自反性谈的是 L^p 与它的二次对偶。'
-    }
+    },
+    { id: 'dep.sym-complex-def-essential-sup', kind: 'definition', definition: 'def.complex', usedBy: 'def.essential-sup', note: '陈述以复数 $\\mathbb{C}$ 为对象（符号依赖）' }
   ]
 });

@@ -291,6 +291,7 @@ window.MG = window.MG || {};
         '',
         '右边是公比 $q = 2^{1-p}$ 的几何级数。由 `thm.geometric-series`，它收敛 $\\iff$ $q < 1$ $\\iff$ $2^{1-p} < 1$ $\\iff$ $p > 1$。$\\blacksquare$'
       ].join('\n')
-    }
+    },
+    { id: 'dep.sym-real-thm-geometric-series', kind: 'definition', definition: 'def.real', usedBy: 'thm.geometric-series', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' }
   ]
 });

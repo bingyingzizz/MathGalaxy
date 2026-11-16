@@ -469,6 +469,7 @@ window.MG = window.MG || {};
       definition: "def.group-action",
       usedBy: "def.inner-automorphism",
       note: "共轭作用是群在自身上的作用，其像即内自同构。"
-    }
+    },
+    { id: 'dep.cat-sets-def-free-group-universal', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.free-group-universal', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

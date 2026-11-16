@@ -1498,6 +1498,8 @@ window.MG = window.MG || {};
       definition: "def.smooth-map",
       usedBy: "prop.pullback-forms",
       note: "拉回形式沿光滑映射定义。"
-    }
+    },
+    { id: 'dep.sym-real-def-smooth-manifold', kind: 'definition', definition: 'def.real', usedBy: 'def.smooth-manifold', note: '陈述以实数 $\\mathbb{R}$ 为对象（符号依赖）' },
+    { id: 'dep.vfield-riemannian', kind: 'definition', definition: 'def.vector-field', usedBy: 'def.riemannian-metric', note: '光滑性条件要求对任意光滑向量场 X,Y 验证，故以向量场定义为前提' }
   ]
 });

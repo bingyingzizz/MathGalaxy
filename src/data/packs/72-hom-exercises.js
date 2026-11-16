@@ -283,6 +283,9 @@ window.MG = window.MG || {};
       definition: "def.abelian-category",
       usedBy: "prop.generator-coproduct-epi",
       note: "命题在阿贝尔范畴中讨论生成元与余积。"
-    }
+    },
+    { id: 'dep.cat-ab-thm-abelian-sheaf-equiv', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'thm.abelian-sheaf-equiv', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-presheaf-free-projective', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.presheaf-free-projective', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-generators-abelian-sheaves', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.generators-abelian-sheaves', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

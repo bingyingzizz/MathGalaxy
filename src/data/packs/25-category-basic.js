@@ -231,6 +231,46 @@ window.MG = window.MG || {};
         '与 $A\\text{-}\\mathbf{Mod}$ 的关系：$\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$，这是「模」统一「阿贝尔群」的最基本例子。'
       ].join('\n\n'),
       refs: ['Mac Lane, Categories for the Working Mathematician, Ch. I, II', 'Weibel, An Introduction to Homological Algebra, Ch. 1']
+    },
+
+    {
+      id: "def.category-of-sets",
+      cluster: "cat.basic",
+      type: "definition",
+      label: "集合范畴",
+      title: "集合范畴 $\\mathbf{Set}$",
+      regions: ["category"],
+      tags: ["范畴论", "集合", "Set"],
+      statement: [
+        "**集合范畴** $\\mathbf{Set}$：对象是集合，态射是函数，复合是映射复合，单位是恒等映射。",
+        "$\\mathbf{Set}$ 中积是笛卡尔积，余积是不交并；它是遗忘函子的标准靶。"
+      ].join('\n'),
+      notes: [
+        "**完备且余完备**：小积与等化子给出所有小极限，小余积与余等化子给出所有小余极限。",
+        "**不是加性范畴**：$\\hom(A,B)$ 一般没有群结构，不能逐点相加。",
+        "**与拓扑空间范畴的关系**：存在遗忘函子 $\\mathbf{Top}\\to\\mathbf{Set}$，它保极限与余极限，因为拓扑都按底层集合逐点构造。"
+      ].join('\n\n'),
+      refs: ["Mac Lane, Categories for the Working Mathematician, Ch. I, II"]
+    },
+
+    {
+      id: "def.category-of-topological-spaces",
+      cluster: "cat.basic",
+      type: "definition",
+      label: "拓扑空间范畴",
+      title: "拓扑空间范畴 $\\mathbf{Top}$",
+      regions: ["category", "topology"],
+      tags: ["范畴论", "拓扑空间", "Top"],
+      statement: [
+        "**拓扑空间范畴** $\\mathbf{Top}$：对象是拓扑空间，态射是连续映射，复合是映射复合，单位是恒等映射。",
+        "积取积拓扑，余积取不交并拓扑，等化子取子空间拓扑，余等化子取商拓扑。"
+      ].join('\n'),
+      notes: [
+        "**完备且余完备**：上述构造逐项给出小极限与小余极限。",
+        "**遗忘函子** $\\mathbf{Top}\\to\\mathbf{Set}$ 保所有极限与余极限，但它忠实而不满：不是每个函数都连续。",
+        "**不是加性范畴**：$\\hom(X,Y)$ 一般没有群结构；开映射也不是态射（态射只要求连续）。"
+      ].join('\n\n'),
+      refs: ["Mac Lane, Categories for the Working Mathematician, Ch. I, II"]
     }
   ],
 
@@ -281,6 +321,23 @@ window.MG = window.MG || {};
       definition: 'def.universe',
       usedBy: 'ax.grothendieck-universe',
       note: '公理只断言「这样的 $U$ 存在」，把封闭性那四条交给定义。分开写的好处：换一套宇宙的定义（比如换成 Tarski 的写法），公理本身一个字不用改。'
-    }
+    },
+
+    {
+      id: "dep.catset-category",
+      kind: 'definition',
+      definition: "def.category",
+      usedBy: "def.category-of-sets",
+      note: "集合范畴是「对象为集合、态射为函数」的范畴，是 def.category 的标准例子。"
+    },
+
+    {
+      id: "dep.cattop-category",
+      kind: 'definition',
+      definition: "def.category",
+      usedBy: "def.category-of-topological-spaces",
+      note: "拓扑空间范畴是「对象为拓扑空间、态射为连续映射」的范畴，是 def.category 的标准例子。"
+    },
+    { id: 'dep.cat-sets-def-category-of-abelian-groups', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'def.category-of-abelian-groups', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' }
   ]
 });

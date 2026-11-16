@@ -1205,6 +1205,9 @@ window.MG = window.MG || {};
       definition: "def.flat-module",
       usedBy: "prop.free-flat",
       note: "自由模平坦的论证用到平坦模的泛性质刻画。"
-    }
+    },
+    { id: 'dep.cat-ab-prop-tensor-functor-properties', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.tensor-functor-properties', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-thm-hom-tensor-adjunction-mod', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'thm.hom-tensor-adjunction-mod', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-tensor-right-exact', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.tensor-right-exact', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
   ]
 });

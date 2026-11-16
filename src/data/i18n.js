@@ -24,7 +24,7 @@ window.MG = window.MG || {};
 MG.i18n = {
   version: 2,
   generatedBy: 'tools/i18n-backfill.mjs',
-  updated: '2026-11-14',
+  updated: '2026-11-16',
   nodes: {
     'ax.choice': { title_en: 'axiom of choice', label_en: 'axiom of choice', from: 'explicit' },
     'ax.ext': { title_en: 'extensionality', label_en: 'extensionality', from: 'aka' },
@@ -131,6 +131,8 @@ MG.i18n = {
     'def.category-of-abelian-groups': { title_en: 'category of abelian groups', label_en: 'category of abelian groups', from: 'explicit' },
     'def.category-of-complexes': { title_en: 'category of complexes', label_en: 'complexes category', from: 'manual' },
     'def.category-of-groups': { title_en: 'category of groups', label_en: 'category of groups', from: 'explicit' },
+    'def.category-of-sets': { title_en: 'category of sets', label_en: 'category of sets', from: 'explicit' },
+    'def.category-of-topological-spaces': { title_en: 'category of topological spaces', label_en: 'category of topological spaces', from: 'explicit' },
     'def.cauchy-in-measure': { title_en: 'Cauchy in measure', label_en: 'Cauchy in measure', from: 'explicit' },
     'def.cauchy-null': { title_en: 'Cauchy sequences and null sequences', label_en: null, from: 'aka' },
     'def.cauchy-sequence': { title_en: 'Cauchy sequence', label_en: 'Cauchy sequence', from: 'explicit' },
@@ -889,6 +891,7 @@ MG.i18n = {
     'prop.bv-regularity': { title_en: 'regularity of functions of bounded variation', label_en: null, from: 'explicit' },
     'prop.calculus-of-fractions': { title_en: 'calculus of fractions', label_en: 'calculus of fractions', from: 'aka' },
     'prop.caratheodory-extension': { title_en: 'the Carathéodory extension agrees with the premeasure', label_en: null, from: 'explicit' },
+    'prop.cartesian-product-is-set-product': { title_en: 'Cartesian product is the product in Set', label_en: null, from: 'explicit' },
     'prop.cat-final-initial-products': { title_en: 'terminal and initial objects and finite products in Cat', label_en: null, from: 'explicit' },
     'prop.category-into-complexes': { title_en: 'Embedding a Category into Its Complexes', label_en: 'Category into Complexes', from: 'manual' },
     'prop.cech-as-colim': { title_en: 'Čech Cohomology as a Colimit', label_en: 'Čech as Colimit', from: 'manual' },
@@ -1272,6 +1275,7 @@ MG.i18n = {
     'thm.adjoint-hilbert': { title_en: 'adjoint operator on Hilbert spaces', label_en: null, from: 'explicit' },
     'thm.analytic-modules': { title_en: 'modules over an analytic ring', label_en: 'modules over an analytic ring', from: 'explicit' },
     'thm.approximation-L1': { title_en: 'approximation in L1', label_en: 'approximation in L1', from: 'explicit' },
+    'thm.arbitrary-product': { title_en: 'Arbitrary Cartesian Product', label_en: 'Arbitrary product', from: 'manual' },
     'thm.argument-principle': { title_en: 'argument principle', label_en: 'argument principle', from: 'aka' },
     'thm.arzela-ascoli': { title_en: 'Arzelà–Ascoli theorem', label_en: 'Arzelà–Ascoli theorem', from: 'explicit' },
     'thm.arzela-ascoli-general': { title_en: 'general Arzela-Ascoli theorem', label_en: 'general Arzela-Ascoli theorem', from: 'explicit' },

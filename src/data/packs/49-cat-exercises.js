@@ -300,5 +300,9 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+    { id: 'dep.cat-sets-ex-algebra-categories', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'ex.algebra-categories', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-abelianization', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.abelianization', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    { id: 'dep.cat-ab-prop-ab6', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.ab6', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
+  ]
 });
