@@ -303,19 +303,16 @@
     }
 
     function nodeRadius(node) {
-      /* ⭐ 2026-11-16（用户）：「节点大小比例别随视口缩放变」。
-         以前是 baseRadius × k^0.62 —— 放大后节点巨大、缩小后缩成小点，
-         同一张图在不同缩放下观感完全不同。现在**固定屏幕像素半径**：
-         只保留 sizeMul 的「度数 / hub」相对比例，min/max/sizeClamp 仍是
-         屏幕像素的上下限（它们本来就是这个口径）。
+      /* ⭐ 2026-11-16（用户，第二次口径）：「不是点在屏幕中占的比例不变，是绝对大小不变，
+         缩放变小了点肯定要变小、放大了肯定要变大」。
+         所以半径是**世界坐标常量**（`config.node.baseRadius` 世界单位 × sizeMul），
+         屏幕半径 = 世界半径 × cam.k —— 线性、不做屏幕像素钳制。
+         `minRadius/maxRadius` 也是世界单位，只兜底极端配置；`sizeClamp` 已废弃。
          ⚠️ 所有调用方（边端点 trim、命中测试、光晕、已读环、hover、导出）
-         都按「屏幕像素」用它，几何在屏幕坐标里算，所以改这里就够。 */
-      var r = C.node.baseRadius;
-      r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
+         本来就用「屏幕像素」口径，这里返回的正是屏幕像素，所以改这一处就够。 */
+      var r = U.clamp(C.node.baseRadius, C.node.minRadius, C.node.maxRadius);
       r *= sizeMul(node);
-      // 放大之后也要有上限，否则高缩放下中心天体会顶到邻居
-      if (C.node.sizeClamp) r = Math.min(r, C.node.sizeClamp);
-      return r;
+      return r * Math.max(0.0001, camNow().k);
     }
 
     function labelFont() {
