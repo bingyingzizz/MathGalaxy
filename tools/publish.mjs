@@ -600,21 +600,29 @@ const smEntries = [
   })),
 ];
 const withDate = smEntries.filter((u) => u.date).length;
-fs.writeFileSync(path.join(STAGE, 'sitemap.xml'),
-  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+const smXml = (list) => '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  smEntries.map((u) => '  <url><loc>' + u.loc + '</loc>' +
+  list.map((u) => '  <url><loc>' + u.loc + '</loc>' +
     (u.date ? `<lastmod>${u.date}</lastmod>` : '') +
     `<priority>${u.pri}</priority></url>`).join('\n') +
-  '\n</urlset>\n', 'utf8');
+  '\n</urlset>\n';
+fs.writeFileSync(path.join(STAGE, 'sitemap.xml'), smXml(smEntries), 'utf8');
+/* ⚠️ 再写一份**前缀版**：Google 的资源常常是 URL 前缀型
+   https://bingyingzizz.github.io/mathgalaxy/（验证 meta 就挂在 /mathgalaxy/ 那页上）。
+   在这类资源里填 `/sitemap.xml`，会被解析成 …/mathgalaxy/sitemap.xml ——
+   根目录那份它根本看不到，于是永远「无法抓取」。子目录里放一份同样的清单即可。 */
+const smSub = smEntries.filter((u) => u.loc.startsWith(`${SITE_ORIGIN}/mathgalaxy/`));
+fs.writeFileSync(path.join(STAGE, 'mathgalaxy', 'sitemap.xml'), smXml(smSub), 'utf8');
 /* ⚠️ 报告一句：日期从哪来（没带日期的是「取不到 git 信息」的，不是漏写） */
 console.log(`   sitemap：${smEntries.length} 条 URL，其中带 lastmod ${withDate} 条` +
+  `（另写一份 /mathgalaxy/ 前缀版，${smSub.length} 条，给前缀型 Search Console 资源）` +
   `（按内容改动日期算：${packDates} 个 pack 有提交日期）` +
   (withDate < smEntries.length ? `，${smEntries.length - withDate} 条取不到日期 ⇒ 不写 lastmod` : ''));
 fs.writeFileSync(path.join(STAGE, 'robots.txt'),
   '# 全部允许抓取 —— 这张图就是给人看、给 AI 读的\n' +
   'User-agent: *\nAllow: /\n\n' +
-  `Sitemap: ${SITE_ORIGIN}/sitemap.xml\n`, 'utf8');
+  `Sitemap: ${SITE_ORIGIN}/sitemap.xml\n` +
+  `Sitemap: ${SITE_ORIGIN}/mathgalaxy/sitemap.xml\n`, 'utf8');
 
 /* ------------------------------------------- IndexNow：让 Bing 系主动来抓 */
 // 一个 key 文件放在站点根 + 一次 POST，就能把 URL 推给 Bing / Yandex / Seznam /
