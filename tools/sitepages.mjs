@@ -356,6 +356,59 @@ function capFirst(s) {
   return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 }
 
+/* --------------------------------------------------- 语言层（与站点共用一套） */
+/* `/mathgalaxy/**` 的生成页和 `site/**` 用同一个约定（见 site/assets/lang.js）：
+     检测顺序 = URL `?lang=en|zh` → localStorage `mathgalaxy.read.lang`
+                → navigator.language 以 en 开头 → 默认中文；
+     `<html data-lang>` 决定同一份 HTML 里 `.zh` / `.en` 哪一份显示。
+   ⚠️ LANG_BOOT 是「首屏之前」的副本：等 lang.js 下载完再定，英文用户会先闪一屏中文。
+      ⛔ 它必须与 lang.js 的 detect() **逐字同义** —— 改规则两处一起改。
+   ⚠️ 生成页是构建期产物：开关一律先写成**真链接**（无 JS 也能用），
+      页内能切的那种再让 lang.js 拦下来（`data-lang-set`）。 */
+const LANG_BOOT = '<script>(function(){try{' +
+  'var q=new URLSearchParams(location.search).get("lang"),' +
+  's=localStorage.getItem("mathgalaxy.read.lang"),' +
+  'b=String(navigator.language||"").toLowerCase().indexOf("en")===0?"en":"zh",' +
+  'l=(q==="en"||q==="zh")?q:((s==="en"||s==="zh")?s:b),' +
+  'r=document.documentElement;' +
+  'r.setAttribute("data-lang",l);r.lang=(l==="en"?"en":"zh-CN");' +
+  '}catch(e){document.documentElement.setAttribute("data-lang","zh");}})();</script>';
+
+/** 语言层脚本标签：`../../` 是 nodes/ 与 en/ 的层数，`../` 是 mathgalaxy/ 这一层。 */
+const langScript = (prefix) => '<script src="' + prefix + 'assets/lang.js" defer></script>';
+
+/**
+ * 顶部语言开关。三种情形必须分清（这是「不造假英文」的那条线）：
+ *   ① 本页两份文案都在         ⇒ `inPlace: true` + href（`?lang=`），有 JS 时页内切，
+ *                                无 JS 时退化成一次真的页面跳转；
+ *   ② 另一种语言在**另一个 URL** ⇒ href 指向那个页面，`data-lang-go` 只负责记住选择；
+ *   ③ 那个页面**不存在**         ⇒ ⛔ 不给链接（不造 404、不把中文冒充英文），
+ *                                出一个灰掉的 span，并让页面正文自己写清覆盖范围。
+ */
+function langSwitch(o) {
+  const item = (lang) => {
+    const label = lang === 'zh' ? '中文' : 'EN';
+    const hreflang = lang === 'zh' ? 'zh-CN' : 'en';
+    const attrs = ' lang="' + hreflang + '"';
+    if (o.cur === lang) {
+      return '<span class="ls-item" aria-current="true"' + attrs + '>' + label + '</span>';
+    }
+    const href = lang === 'zh' ? o.zhHref : o.enHref;
+    if (!href) {
+      return '<span class="ls-item ls-off" aria-disabled="true"' + attrs +
+        ' title="' + esc(o.offTitle || (lang === 'zh' ? '尚无中文正文' : 'No English text for this entry yet')) +
+        '">' + label + '</span>';
+    }
+    /* 默认语言在静态页面里就是中文：浏览器不认识 JS 时也得看得出当前是哪种 */
+    const now = (o.cur == null && lang === 'zh') ? ' aria-current="true"' : '';
+    const mode = o.inPlace ? ' data-lang-set="' + lang + '"' : ' data-lang-go="' + lang + '"';
+    return '<a class="ls-item" href="' + esc(href) + '" hreflang="' + hreflang + '"' +
+      attrs + now + mode + '>' + label + '</a>';
+  };
+  return '<div class="lang-switch" role="group" aria-label="语言 / Language">' +
+    item('zh') + '<span class="ls-sep" aria-hidden="true">/</span>' + item('en') + '</div>';
+}
+
 function enNodePage(node, rel, ctx) {
   const { U, regions, clusters, origin, byId, clusterMembers } = ctx;
   const region = regions.get(node.region);
@@ -380,6 +433,7 @@ function enNodePage(node, rel, ctx) {
       ? 'Translated for an earlier content version and not updated since. The Chinese text is authoritative.'
       : 'Machine-drafted and pending author review. The Chinese text is authoritative.';
 
+  const enTags = (node.tags || []).filter((t) => !/[\u4e00-\u9fff]/.test(String(t)));
   const nameOf = (x) => {
     const n = byId.get(x);
     if (!n) return x;
@@ -392,9 +446,17 @@ function enNodePage(node, rel, ctx) {
   const ul = (ids) => '<ul class="sibs">' + ids.map((x) =>
     '<li><a href="' + nodeHref(x) + '" hreflang="zh-CN">' + esc(nameOf(x)) + '</a></li>').join('') + '</ul>';
 
-  const absHtml = absEn ? '<section class="sec statement"><h2>Abstract</h2>' + U.md(absEn) + '</section>' : '';
-  const stmHtml = stmEn ? '<section class="sec statement"><h2>Statement</h2>' + U.md(stmEn) + '</section>' : '';
-  const notesHtml = notesEn ? '<section class="sec notes"><h2>Notes</h2>' + U.md(notesEn) + '</section>' : '';
+  /* 正文里的反引号引用（U.md 生成的 `.pn-xlink`）标签取的是节点**中文名**。
+     英文页上换成英文名；节点没有英文名时保留原样 —— 不编造译名。 */
+  const enLinks = (html) => String(html || '').replace(
+    /<a class="pn-xlink"([^>]*?)data-xlink="([^"]+)"([^>]*)>([^<]*)<\/a>/g,
+    (m, pre, id, post, text) => {
+      const en = nameOf(decodeURIComponent(id));
+      return '<a class="pn-xlink"' + pre + 'data-xlink="' + id + '"' + post + '>' + esc(en || text) + '</a>';
+    });
+  const absHtml = absEn ? '<section class="sec statement"><h2>Abstract</h2>' + enLinks(U.md(absEn)) + '</section>' : '';
+  const stmHtml = stmEn ? '<section class="sec statement"><h2>Statement</h2>' + enLinks(U.md(stmEn)) + '</section>' : '';
+  const notesHtml = notesEn ? '<section class="sec notes"><h2>Notes</h2>' + enLinks(U.md(notesEn)) + '</section>' : '';
   const outHtml = outs.length
     ? '<section class="rel-sec"><h2>Refers to <span class="n">' + outs.length + '</span></h2>' + ul(outs) + '</section>' : '';
   const inHtml = ins.length
@@ -424,7 +486,7 @@ function enNodePage(node, rel, ctx) {
   const ld = { '@context': 'https://schema.org', '@graph': [ldNode] };
 
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en" data-lang-lock>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -447,15 +509,19 @@ ${region ? '<meta name="theme-color" content="' + esc(region.color) + '">' : ''}
 <link rel="stylesheet" href="../../assets/katex.min.css">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/node.css">
+${langScript('../../')}
 </head>
 <body class="node-page"${region ? ' style="--rc:' + esc(region.color) + '"' : ''}>
 
-<nav class="crumb" aria-label="Breadcrumb">
+<nav class="crumb crumb-top" aria-label="Breadcrumb">
+  <span class="crumb-path">
   <a href="../en/">MathGalaxy</a><span class="sep">›</span>
   <a href="../all.html">All concepts</a><span class="sep">›</span>
   ${region ? '<a href="../all.html#' + esc(node.region) + '">' + esc(region.en || region.name) + '</a><span class="sep">›</span>' : ''}
   ${cluster ? '<a href="../all.html#' + esc(node.cluster) + '">' + esc(cluster.en || cluster.name) + '</a><span class="sep">›</span>' : ''}
   <span aria-current="page">${esc(enName)}</span>
+  </span>
+  ${langSwitch({ cur: 'en', zhHref: esc(node.id) + '.html' })}
 </nav>
 
 <main class="wrap">
@@ -473,7 +539,7 @@ ${region ? '<meta name="theme-color" content="' + esc(region.color) + '">' : ''}
       ${region ? '<li>' + esc(region.en || region.name) + '</li>' : ''}
       ${cluster ? '<li>' + esc(cluster.en || cluster.name) + '</li>' : ''}
     </ul>
-    <p class="idline"><code>${esc(node.id)}</code>${node.tags && node.tags.length ? ' · ' + node.tags.map((t) => esc(t)).join(' · ') : ''}</p>
+    <p class="idline"><code>${esc(node.id)}</code>${enTags.length ? ' · ' + enTags.map((t) => esc(t)).join(' · ') : ''}</p>
     <p class="status-note">${esc(stateNote)}</p>
   </header>
 
@@ -542,7 +608,7 @@ function enIndexPage(ctx) {
       const members = list.filter((n) => n.cluster === c.id);
       if (!members.length) return '';
       return '<h3>' + esc(c.en || c.name) + ' <span class="n">' + members.length + '</span></h3>\n<p class="en-idx">' +
-        members.map((n) => '<a href="../' + nodeHref(n.id) + '" hreflang="zh-CN">' + esc(display(n)) + '</a>').join(' · ') +
+        members.map((n) => '<a href="../nodes/' + nodeHref(n.id) + '" hreflang="zh-CN">' + esc(display(n)) + '</a>').join(' · ') +
         '</p>';
     }).join('\n');
     return '<section class="sec rg-sec"><h2>' + esc(r.en || r.name) + ' <span class="n">' + list.length + '</span></h2>\n' + parts + '\n</section>';
@@ -562,12 +628,12 @@ function enIndexPage(ctx) {
   };
 
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en" data-lang-lock>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MathGalaxy — an interactive map of mathematics</title>
-<meta name="description" content="MathGalaxy is a knowledge graph of mathematics: ${graph.nodes.length} concepts across ${graph.regions.length} branches, each concept on its own page, every edge a derivation or a definition it depends on. Chinese-first, with ${enNodes.length} entries translated into English so far.">
+<meta name="description" content="MathGalaxy is a knowledge graph of mathematics: ${graph.nodes.length} concepts across ${graph.regions.length} galaxies, each one on its own page, every edge a derivation or a definition it depends on. Chinese-first, with ${enNodes.length} of them translated into English so far.">
 <link rel="canonical" href="${esc(url)}">
 <link rel="alternate" hreflang="en" href="${esc(url)}">
 <link rel="alternate" hreflang="zh-CN" href="${esc(zhUrl)}">
@@ -575,20 +641,22 @@ function enIndexPage(ctx) {
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MathGalaxy">
 <meta property="og:title" content="MathGalaxy — an interactive map of mathematics">
-<meta property="og:description" content="A knowledge graph of mathematics: ${graph.nodes.length} concepts, ${graph.regions.length} branches, every edge a derivation or a definition it depends on.">
+<meta property="og:description" content="A knowledge graph of mathematics: ${graph.nodes.length} concepts, ${graph.regions.length} galaxies, every edge a derivation or a definition it depends on.">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:locale" content="en">
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
-<link rel="stylesheet" href="../assets/katex.min.css">
-<link rel="stylesheet" href="../assets/site.css">
-<link rel="stylesheet" href="../assets/node.css">
+<link rel="stylesheet" href="../../assets/katex.min.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/node.css">
+${langScript('../../')}
 </head>
 <body class="all-page">
 
-<nav class="crumb" aria-label="Breadcrumb">
-  <a href="../">MathGalaxy</a><span class="sep">›</span><span aria-current="page">English</span>
+<nav class="crumb crumb-top" aria-label="Breadcrumb">
+  <span class="crumb-path"><a href="../">MathGalaxy</a><span class="sep">›</span><span aria-current="page">English</span></span>
+  ${langSwitch({ cur: 'en', zhHref: '../all.html' })}
 </nav>
 
 <main class="wrap wide">
@@ -598,10 +666,10 @@ function enIndexPage(ctx) {
   <p class="np-cta">
     <a class="np-open" href="../">Open the map <span aria-hidden="true">→</span></a>
     <a class="np-alt" href="../all.html">All concepts</a>
-    <a class="np-alt" href="../read.html">How to read the map</a>
+    <a class="np-alt" href="../../read.html">How to read the map</a>
     <a class="np-alt" href="${esc(zhUrl)}" hreflang="zh-CN" lang="zh-CN">中文首页</a>
   </p>
-  <p class="full">An interactive knowledge graph of mathematics — ${graph.regions.length} branches,
+  <p class="full">An interactive knowledge graph of mathematics — ${graph.regions.length} galaxies,
   ${graph.clusters.length} clusters, ${graph.nodes.length} concepts. Every definition, theorem and lemma is a node;
   every arrow is a derivation.</p>
 </header>
@@ -868,7 +936,7 @@ function nodePage(node, rel, ctx) {
      留 version 就够（它只在内容真的变时才变），内容相同的两次构建产物逐字节一致。
      日期只留在 all.html 那一份里。 */
   return `<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh" data-lang-lock>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -888,10 +956,14 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
 <link rel="stylesheet" href="../../assets/katex.min.css">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/node.css">
+${langScript('../../')}
 </head>
 <body class="node-page" style="--rc:${esc(regionColor)}">
 
-<nav class="crumb" aria-label="面包屑">${crumbHtml}</nav>
+<nav class="crumb crumb-top" aria-label="面包屑">
+  <span class="crumb-path">${crumbHtml}</span>
+  ${langSwitch({ cur: 'zh', enHref: hasEnHtml ? esc(node.id) + '.en.html' : null })}
+</nav>
 
 <main class="wrap">
 
@@ -912,6 +984,9 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
     ${node.status ? '<p class="status-note">⚠ ' + esc(node.status === 'skeleton'
       ? '骨架：只看陈述与思路，当不得完整证明'
       : node.status === 'external-input' ? '依赖本图外部的定理' : '完整') + '</p>' : ''}
+    ${hasEnHtml ? '' : '<p class="cov-note">本页暂无英文正文（English: ' +
+      (enName ? '<i lang="en">' + esc(enName) + '</i>' : '—') +
+      '）—— 中文是唯一版本，不做机器翻译；英文名仅供检索，正文不冒充英文。</p>'}
   </header>
 
   <section class="sec statement">
@@ -938,7 +1013,7 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
       <a href="../#n=${encodeURIComponent(node.id)}">在星图里打开「${esc(node.label)}」</a>　·　
       <a href="../all.html">全部 ${ctx.nodeCount} 个概念</a>　·　
       <a href="${esc(node.id)}.md">Markdown 原文</a>　·　
-      ${hasEnPage ? `<a href="${esc(enPageRel)}" hreflang="en">English entry</a>　·　` : ''}<a href="../read.html">读图指南与记号表</a>
+      ${hasEnPage ? `<a href="${esc(enPageRel)}" hreflang="en">English entry</a>　·　` : ''}<a href="../../read.html">读图指南与记号表</a>
     </p>
   </section>
 
@@ -977,24 +1052,41 @@ function allPage(ctx) {
     const cls = graph.clusters.filter((c) => c.parent === r.id);
     const inner = cls.map((c) => {
       const members = byCluster.get(c.id) || [];
+      const cEn = String(c.en || '').trim();
+      /* 概念名按语言二选一：有英文名就显示英文名，没有就**回落**中文名
+         （⛔ 不给没有英文名的概念编一个英文名）。中文名放 `.zh`，英文名放 `.en`，
+         同一份 DOM 里两套，靠 <html data-lang> 二选一 —— 不生成第二份巨大索引。 */
+      const li = members.map((n) => {
+        const nEn = String(n.label_en || '').trim();
+        const sub = plainTitle(n.title);
+        return '<li><a href="nodes/' + encodeURIComponent(n.id) + '.html">' +
+          '<span class="zh">' + esc(n.label) + '</span>' +
+          '<span class="en" lang="en">' + esc(nEn || n.label) + '</span></a>' +
+          (sub && sub !== n.label ? '<span class="zh note">' + esc(sub).slice(0, 80) + '</span>' : '') +
+          '</li>';
+      }).join('');
       return [
         '<div class="cl" id="' + esc(c.id) + '" style="--rc:' + esc(r.color) + '">',
-        '  <h3>' + esc(c.name) + ' <span class="n">' + members.length + ' 个概念</span></h3>',
-        c.desc ? '  <p class="cd">' + U.titleHtml(c.desc) + '</p>' : '',
-        '  <ul class="nl">' + members.map((n) =>
-          '<li><a href="nodes/' + encodeURIComponent(n.id) + '.html">' + esc(n.label) + '</a>' +
-          (plainTitle(n.title) && plainTitle(n.title) !== n.label
-            ? '<span class="en">' + esc(plainTitle(n.title)).slice(0, 80) + '</span>' : '') +
-          '</li>').join('') + '</ul>',
+        '  <h3><span class="zh">' + esc(c.name) + '</span>' +
+          '<span class="en" lang="en">' + esc(cEn || c.name) + '</span>' +
+          ' <span class="n"><span class="zh">' + members.length + ' 个概念</span>' +
+          '<span class="en">' + members.length + (members.length === 1 ? ' concept' : ' concepts') +
+          '</span></span></h3>',
+        c.desc ? '  <p class="cd" lang="zh-CN">' + U.titleHtml(c.desc) + '</p>' : '',
+        '  <ul class="nl">' + li + '</ul>',
         '</div>',
       ].join('\n');
     }).join('\n');
 
+    const rEn = String(r.en || '').trim();
+    const rn = listed.get(r.id) || 0;
     blocks.push([
       '<section class="rg" id="' + esc(r.id) + '" style="--rc:' + esc(r.color) + '">',
-      '  <h2>' + esc(r.name) + ' <span class="en">' + esc(r.en || '') + '</span>',
-      '    <span class="n">' + (listed.get(r.id) || 0) + ' 个概念</span></h2>',
-      r.desc ? '  <p class="rd">' + U.titleHtml(r.desc) + '</p>' : '',
+      '  <h2><span class="zh">' + esc(r.name) + '</span>' +
+        '<span class="en" lang="en">' + esc(rEn || r.name) + '</span>',
+      '    <span class="n"><span class="zh">' + rn + ' 个概念</span>' +
+        '<span class="en">' + rn + ' concepts</span></span></h2>',
+      r.desc ? '  <p class="rd" lang="zh-CN">' + U.titleHtml(r.desc) + '</p>' : '',
       inner,
       '</section>',
     ].join('\n'));
@@ -1040,17 +1132,27 @@ function allPage(ctx) {
     ],
   };
 
+  const descriptionEn = clip(
+    'Every concept in the MathGalaxy graph: ' + c.regions + ' branches, ' + c.clusters +
+    ' clusters, ' + c.nodes + ' concepts (axioms, definitions, theorems, lemmas, propositions, ' +
+    'corollaries), one page each; the edges are the derivations, equivalences and ' +
+    'definition references between them.', 150);
+
   return `<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>全部概念索引 · 数学星图 MathGalaxy</title>
-<meta name="description" content="${esc(description)}">
+${LANG_BOOT}
+<title data-title-en="All concepts · MathGalaxy">全部概念索引 · 数学星图 MathGalaxy</title>
+<meta name="description" data-desc-en="${esc(descriptionEn)}" content="${esc(description)}">
 <link rel="canonical" href="${esc(url)}">
+<link rel="alternate" hreflang="zh-CN" href="${esc(url)}">
+<link rel="alternate" hreflang="en" href="${esc(origin)}/mathgalaxy/en/">
 <link rel="stylesheet" href="../assets/katex.min.css">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/node.css">
+${langScript('../')}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="数学星图 MathGalaxy">
 <meta property="og:title" content="全部概念索引 · 数学星图 MathGalaxy">
@@ -1061,51 +1163,59 @@ function allPage(ctx) {
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 </head>
-<body class="all-page">
+<body class="bi all-page">
 
-<nav class="crumb" aria-label="面包屑">
-  <a href="./">数学星图</a><span class="sep">›</span><span aria-current="page">全部概念索引</span>
+<nav class="crumb crumb-top" aria-label="面包屑">
+  <span class="crumb-path">
+    <a href="./"><span class="zh">数学星图</span><span class="en" lang="en">MathGalaxy</span></a><span class="sep">›</span><span aria-current="page" class="zh">全部概念索引</span><span aria-current="page" class="en" lang="en">All concepts</span>
+  </span>
+  ${langSwitch({ cur: null, inPlace: true, zhHref: '?lang=zh', enHref: 'en/' })}
 </nav>
 
 <main class="wrap wide">
 
 <header class="np-head">
-  <h1>数学星图 · 全部概念</h1>
-  <p class="full">${c.regions} 个星系 · ${c.clusters} 个星团 · ${c.nodes} 个概念 · ${c.edges} 条连线（强边 ${c.strong}，弱边 ${c.weak}）</p>
-  <p class="lead">每个概念一页：陈述、说明、参考，以及它与别的概念之间的推出、等价与定义引用。
-  点击任意概念进入它自己的页面；想在图上看它们的位置，就从 <a href="./">星图首页</a> 进。</p>
-  <!-- 英文落地说一句（与首页 About · English 同一目的）：英文查询要命中，
-       页面上就得有英文。这个页面有全部 ${c.nodes} 个概念的链接，是收录的主入口。 -->
-  <p class="lead" lang="en">Every concept in the graph, grouped by branch and by cluster:
-  ${c.nodes} entries, each with its statement, notes, references and its edges — the
-  definitions it cites, the results it implies, and the equivalences it belongs to.
-  Regions and clusters carry their English names; individual concepts carry theirs
-  where one has been established.</p>
+  <h1><span class="zh">数学星图 · 全部概念</span><span class="en" lang="en">MathGalaxy · all concepts</span></h1>
+  <p class="full"><span class="zh">${c.regions} 个星系 · ${c.clusters} 个星团 · ${c.nodes} 个概念 · ${c.edges} 条连线（强边 ${c.strong}，弱边 ${c.weak}）</span><span class="en">${c.regions} branches · ${c.clusters} clusters · ${c.nodes} concepts · ${c.edges} edges (${c.strong} strong, ${c.weak} weak)</span></p>
+  <p class="lead"><span class="zh">每个概念一页：陈述、说明、参考，以及它与别的概念之间的推出、等价与定义引用。
+  点击任意概念进入它自己的页面；想在图上看它们的位置，就从 <a href="./">星图首页</a> 进。</span><span class="en">Every concept has its own page: statement, notes, references, and its edges — the
+  definitions it cites, the results it implies, the equivalences it belongs to. Pick any
+  name to open it; to see where these sit on the map, start from
+  <a href="./">the graph itself</a>.</span></p>
+  <!-- 英文落地说一句（与首页 About 同一目的）：英文查询要命中，页面上就得有英文。
+       这个页面有全部 ${c.nodes} 个概念的链接，是收录的主入口。
+       ⚠️ 覆盖范围要写实话：英文只有名字与页面骨架，正文仍是中文。 -->
+  <p class="lead" lang="en">English view: section headings, counts and concept names are
+  translated, falling back to the Chinese name where no English name has been established.
+  Branch and cluster notes stay in Chinese, and every concept page is Chinese-first —
+  ${c.nodes} concepts, no machine translation of the mathematics.</p>
 </header>
 
 <nav class="toc">
 ${graph.regions.map((r) =>
-  '  <a href="#' + esc(r.id) + '" style="--rc:' + esc(r.color) + '">' + esc(r.name) +
+  '  <a href="#' + esc(r.id) + '" style="--rc:' + esc(r.color) + '">' +
+  '<span class="zh">' + esc(r.name) + '</span>' +
+  '<span class="en" lang="en">' + esc(String(r.en || '').trim() || r.name) + '</span>' +
   '<span class="n">' + (listed.get(r.id) || 0) + '</span></a>').join('\n')}
 </nav>
 
 ${blocks.join('\n\n')}
 
 <section class="rg">
-  <h2>怎么读</h2>
+  <h2><span class="zh">怎么读</span><span class="en" lang="en">How to read</span></h2>
   <ul class="read-list">
-    <li><a href="read.html">读图指南</a>：三层尺度、四种边、层号与字段</li>
-    <li><a href="read.html#notation">记号对照表</a>：全图记号的唯一权威</li>
-    <li><a href="read.html#hubs">枢纽定理榜</a>：基础工具 / 综合结论 / 跨领域连接三榜</li>
-    <li><a href="index.md">Markdown 目录</a>：给 AI 的按需检索入口</li>
+    <li><span class="zh"><a href="../read.html">读图指南</a>：三层尺度、四种边、层号与字段</span><span class="en"><a href="../read.html">Reading guide</a>: three scales, four kinds of edge, layers and fields</span></li>
+    <li><span class="zh"><a href="../read.html#notation">记号对照表</a>：全图记号的唯一权威</span><span class="en"><a href="../read.html#notation">Notation reference</a>: the single authority for every symbol in the graph</span></li>
+    <li><span class="zh"><a href="../read.html#hubs">枢纽定理榜</a>：基础工具 / 综合结论 / 跨领域连接三榜</span><span class="en"><a href="../read.html#hubs">Hub theorems</a>: foundational tools, synthesis results, cross-branch links</span></li>
+    <li><span class="zh"><a href="index.md">Markdown 目录</a>：给 AI 的按需检索入口</span><span class="en"><a href="index.md">Markdown index</a>: the on-demand entry point for machine readers</span></li>
   </ul>
 </section>
 
 </main>
 
 <footer class="np-foot">
-  <p>数学星图 MathGalaxy · 内容 ${esc(version)} · 更新 ${esc(updated)}</p>
-  <p>引用请写节点 id 与内容版本 · 内容 CC BY 4.0 · 条款见 <a href="LICENSE.txt">LICENSE</a></p>
+  <p><span class="zh">数学星图 MathGalaxy · 内容 ${esc(version)} · 更新 ${esc(updated)}</span><span class="en">MathGalaxy · content ${esc(version)} · updated ${esc(updated)}</span></p>
+  <p><span class="zh">引用请写节点 id 与内容版本 · 内容 CC BY 4.0 · 条款见 <a href="LICENSE.txt">LICENSE</a></span><span class="en">Cite the node id and the content version · content <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · terms in <a href="LICENSE.txt">LICENSE</a></span></p>
 </footer>
 
 </body>
@@ -1213,7 +1323,7 @@ ${items}
   <p>
     <a href="all.html">全部概念索引</a>　·　
     <a href="./">打开星图</a>　·　
-    <a href="read.html">读图指南与记号表</a>
+    <a href="../read.html">读图指南与记号表</a>
   </p>
 </section>
 

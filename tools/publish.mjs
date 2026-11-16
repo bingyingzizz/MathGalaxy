@@ -183,7 +183,16 @@ fs.mkdirSync(path.join(STAGE, 'assets'), { recursive: true });
 fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 
 // 星图本体
-fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
+/* 星图壳（dist/mathgalaxy.html）里的 `href="read.html"` 是**相对仓根**写的 —— 本地
+   双击 H:/MathGalaxy/index.html 时它指向旁边的 site/read.html，是对的；但搬到线上后
+   这页是 `/mathgalaxy/index.html`，`read.html` 会解析成 `/mathgalaxy/read.html`（不存在），
+   阅读页其实在站点根 `/read.html`。所以组装时把这一个相对路径改深一层。
+   ⛔ 不改仓根 index.html 本身：那会弄坏 file:// 双击打开的用法。 */
+{
+  const appSrc = path.join(DIST, 'mathgalaxy.html');
+  const appHtml = fs.readFileSync(appSrc, 'utf8').replace(/(href=")read\.html/g, '$1../read.html');
+  fs.writeFileSync(path.join(STAGE, 'mathgalaxy', 'index.html'), appHtml);
+}
 for (const f of ['graph.json', 'graph.md', 'llms.txt', 'layout.json', 'policy.md', 'reading.md', 'hubs.md', 'hubs-full.md', 'index.md',
                  'notation.md', 'notation-full.md', 'alias.md', 'gaps.md', 'audit.md', 'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']) {
   const src = path.join(DIST, f);
