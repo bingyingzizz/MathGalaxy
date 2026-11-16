@@ -613,6 +613,49 @@ fs.writeFileSync(path.join(STAGE, 'sitemap.xml'), smXml(smEntries), 'utf8');
    根目录那份它根本看不到，于是永远「无法抓取」。子目录里放一份同样的清单即可。 */
 const smSub = smEntries.filter((u) => u.loc.startsWith(`${SITE_ORIGIN}/mathgalaxy/`));
 fs.writeFileSync(path.join(STAGE, 'mathgalaxy', 'sitemap.xml'), smXml(smSub), 'utf8');
+/* -------------------- Atom feed：Google 也认它当 sitemap --------------------
+   Google 明确支持 RSS / Atom 作为站点地图格式。它走的是另一条解析路径
+   （feed 解析器，不是 urlset 解析器），所以当 sitemap.xml 被 Search Console
+   卡在「无法抓取」时，提交 atom.xml 常常直接就成功了。
+   ⚠️ 这不是「绕开问题」，是 Google 文档里的并列格式；两边的 URL 清单同源。 */
+const escXml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const nodeById = new Map(graph.nodes.map((n) => [n.id, n]));
+const feedTitle = (loc) => {
+  const p = loc.slice(SITE_ORIGIN.length);
+  const m = p.match(/^\/mathgalaxy\/nodes\/(.+?)(\.en)?\.html$/);
+  if (m) {
+    const n = nodeById.get(m[1]);
+    if (n) return m[2] ? (n.title_en || n.label_en || n.label) : n.label;
+    return m[1];
+  }
+  return ({
+    '/': '数学星图 MathGalaxy',
+    '/read.html': '星图怎么读',
+    '/mathgalaxy/': '数学星图（可交互）',
+    '/mathgalaxy/all.html': '全部概念索引',
+    '/mathgalaxy/en/': 'MathGalaxy — English entry',
+    '/mathgalaxy/questions.html': '常见问法',
+  })[p] || p;
+};
+const atomNow = new Date().toISOString().replace(/\.\d+Z$/, 'Z');
+fs.writeFileSync(path.join(STAGE, 'atom.xml'),
+  '<?xml version="1.0" encoding="utf-8"?>\n' +
+  '<feed xmlns="http://www.w3.org/2005/Atom">\n' +
+  '  <title>数学星图 MathGalaxy</title>\n' +
+  `  <id>${SITE_ORIGIN}/</id>\n` +
+  `  <updated>${atomNow}</updated>\n` +
+  `  <link rel="self" href="${SITE_ORIGIN}/atom.xml"/>\n` +
+  '  <author><name>bingyingzizz</name></author>\n' +
+  smEntries.map((u) => '  <entry>\n' +
+    `    <id>${u.loc}</id>\n` +
+    `    <title>${escXml(feedTitle(u.loc))}</title>\n` +
+    `    <link href="${u.loc}"/>\n` +
+    `    <updated>${u.date ? u.date + 'T00:00:00Z' : atomNow}</updated>\n` +
+    '  </entry>').join('\n') +
+  '\n</feed>\n', 'utf8');
+/* 同名不同路径的备份：Baidu 系工具习惯找 baidusitemap.xml，内容与根 sitemap 相同 */
+fs.writeFileSync(path.join(STAGE, 'baidusitemap.xml'), smXml(smEntries), 'utf8');
 /* ⚠️ 报告一句：日期从哪来（没带日期的是「取不到 git 信息」的，不是漏写） */
 console.log(`   sitemap：${smEntries.length} 条 URL，其中带 lastmod ${withDate} 条` +
   `（另写一份 /mathgalaxy/ 前缀版，${smSub.length} 条，给前缀型 Search Console 资源）` +
@@ -622,7 +665,8 @@ fs.writeFileSync(path.join(STAGE, 'robots.txt'),
   '# 全部允许抓取 —— 这张图就是给人看、给 AI 读的\n' +
   'User-agent: *\nAllow: /\n\n' +
   `Sitemap: ${SITE_ORIGIN}/sitemap.xml\n` +
-  `Sitemap: ${SITE_ORIGIN}/mathgalaxy/sitemap.xml\n`, 'utf8');
+  `Sitemap: ${SITE_ORIGIN}/mathgalaxy/sitemap.xml\n` +
+  `Sitemap: ${SITE_ORIGIN}/atom.xml\n`, 'utf8');
 
 /* ------------------------------------------- IndexNow：让 Bing 系主动来抓 */
 // 一个 key 文件放在站点根 + 一次 POST，就能把 URL 推给 Bing / Yandex / Seznam /
