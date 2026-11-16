@@ -8831,5 +8831,655 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#2ed4c3f9',
       },
     },
+
+    'def.cat-equivalence': {
+      statement: {
+        en: "A functor $F : \\mathcal{C} \\to \\mathcal{C}'$ is an **equivalence of categories** if there exist a functor $G : \\mathcal{C}' \\to \\mathcal{C}$ and natural isomorphisms\n\n$$F \\circ G \\cong 1_{\\mathcal{C}'}, \\qquad G \\circ F \\cong 1_{\\mathcal{C}}$$\n\none then writes $\\mathcal{C} \\simeq \\mathcal{C}'$.\n\nIf the two $\\cong$ are strengthened to equalities $F \\circ G = 1_{\\mathcal{C}'}$ and $G \\circ F = 1_{\\mathcal{C}}$, it is called an **isomorphism of categories**, written $\\mathcal{C} \\cong \\mathcal{C}'$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f3feea61',
+      },
+      notes: {
+        en: "An isomorphism requires the two composites to **equal** the identity functors; an equivalence only requires them to be **naturally isomorphic** to the identities. The latter is much weaker and much more useful: for instance, \"finite-dimensional vector spaces\" is equivalent to \"matrices over $\\mathbb{F}$\", but can never be isomorphic (even the cardinalities of the object classes are wrong).\n\nUnder an equivalence, the question \"are two categories the same\" is replaced by \"can they be translated into each other without losing structure\" — every later statement in category theory that \"$\\mathcal{C}$ and $\\mathcal{C}'$ are the same\" means this.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d5553189',
+      },
+    },
+
+    'def.essentially-surjective': {
+      statement: {
+        en: "A functor $F : \\mathcal{C} \\to \\mathcal{C}'$ is **essentially surjective** if for every object of $\\mathcal{C}'$, say $X'$, there is an object of $\\mathcal{C}$, say $X$, with\n\n$$F(X) \\cong X'$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#1e8e87ca',
+      },
+      notes: {
+        en: "Note that this is $\\cong$, not $=$: the requirement is that the image of $F$ be **isomorphic to** every object, not that the image of $F$ **be** all objects. This single isomorphism is exactly where equivalence is laxer than isomorphism — and precisely what makes it useful, since most interesting equivalences are not isomorphisms.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4529c1f2',
+      },
+    },
+
+    'def.cech-functor': {
+      statement: {
+        en: "On a site $\\mathcal{C}$, the **Čech functor** $\\widehat{H}$ is defined on presheaves by\n\n$$\\widehat{H}(T)(X) \\;:=\\; \\varinjlim_{R \\in J(X)} \\operatorname{Hom}(R, T)$$\n\n(since $J(X)$ is a filter, this is a **filtered colimit**). From $h_{X} \\in J(X)$ and $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ one obtains a natural map $T \\to \\widehat{H}(T)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#421a0193',
+      },
+      notes: {
+        en: "\"Taking the limit along larger and larger covering sieves\" turns into a colimit on the $T$ side, because $\\operatorname{Hom}(-, T)$ is **contravariant**, and a contravariant functor takes limits along a filter to filtered colimits of the covariant functor. $\\widehat{H}$ is the first step in pushing a presheaf toward a sheaf.",
+        status: 'draft',
+        basedOn: 'v0.9.3#94a5f6c0',
+      },
+    },
+
+    'def.homotopy': {
+      statement: {
+        en: "Morphisms of complexes $f, g : K \\to L$ are **homotopic** if there is a family of morphisms\n\n$$s^{n} : K^{n} \\longrightarrow L^{n-1}$$\n\nsuch that for every $n$,\n\n$$f^{n} - g^{n} \\;=\\; s^{n+1} \\circ d_{K}^{n} + d_{L}^{n-1} \\circ s^{n}$$\n\nWrite $f \\sim g$; $s$ is a **homotopy**. A morphism homotopic to $0$ is called **null-homotopic**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a70c241b',
+      },
+      notes: {
+        en: "Null-homotopic morphisms form a **subgroup** of $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$; moreover homotopy is an equivalence relation **compatible with composition on both sides** ($f \\sim g$ implies $h \\circ f \\circ k \\sim h \\circ g \\circ k$).\n\nOnly the two facts together allow one to quotient by \"homotopy\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#2b549ac0',
+      },
+    },
+
+    'def.mapping-cone': {
+      statement: {
+        en: "The **mapping cone** of a morphism $f : K \\to L$ is the complex\n\n$$M(f)^{n} := K^{n+1} \\oplus L^{n}, \\qquad d^{n} := \\begin{pmatrix} -d^{n+1} & 0 \\\\ f^{n} & d^{n} \\end{pmatrix}$$\n\n(the matrix is blocked according to $K^{n+1} \\oplus L^{n}$: top left from the differential of $K$, bottom right from the differential of $L$, bottom left the component of $f$; $d^{2} = 0$ holds as soon as $f$ commutes with the differentials). The $k$-**shift** $K[k]$ is defined by $K[k]^{n} := K^{n+k}$, with differential carrying the sign $(-1)^{k} d^{n+k}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8433bd4b',
+      },
+      notes: {
+        en: "Use: it yields a short exact sequence $0 \\to L \\to M(f) \\to K[1] \\to 0$ (usually not split). Thus **every morphism embeds into an \"almost exact\" sequence**, which is the starting point of triangulated categories — all later definitions of distinguished triangles rest on it.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7e54c7cf',
+      },
+    },
+
+    'def.effective-equivalence': {
+      statement: {
+        en: "An **equivalence relation** on an object $X$ is a graph $R \\rightrightarrows X$ such that for every $Y$, the map $\\operatorname{Hom}(Y, R) \\to \\operatorname{Hom}(Y, X) \\times \\operatorname{Hom}(Y, X)$ is an equivalence relation (taken in $\\mathbf{Set}$).\n\nIt is **effective** if\n\n$$R \\;\\cong\\; X \\times_{\\overline{X}} X, \\qquad \\overline{X} := \\operatorname{coker}(R \\rightrightarrows X)$$\n\nthat is, $R$ is exactly the kernel pair of the quotient map.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c3cdc6b6',
+      },
+      notes: {
+        en: "\"Effective\" says the **quotient glues nothing extra**: take the equivalence relation, then the quotient, then look at the kernel pair of the quotient map, and one returns to the original equivalence relation.\n\nCompare with sets: for any $f : X \\to Y$ the kernel pair $X \\times_{Y} X$ is always effective ($\\overline{X} \\cong \\operatorname{im} f$); conversely, any equivalence relation $R \\subseteq X \\times X$ with $\\overline{X} = X/R$ always returns $R$.\n\n**In $\\mathbf{Set}$ everything is effective**, but in a general category this has to be required separately.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1b623286',
+      },
+    },
+
+    'def.generator': {
+      statement: {
+        en: "In a category $\\mathcal{C}$, a set $S \\subseteq \\mathcal{C}$ is a **set of generators** if the functor\n\n$$\\prod_{a \\in S} h_{a} : \\mathcal{C} \\longrightarrow \\mathbf{Set}^{S}, \\qquad X \\mapsto \\bigl(\\operatorname{Hom}_{\\mathcal{C}}(a, X)\\bigr)_{a \\in S}$$\n\nis **faithful**. Equivalently: whenever $f \\ne g : X \\to Y$, there exist $a \\in S$ and $g_{0} : a \\to X$ with $f \\circ g_{0} \\ne g \\circ g_{0}$. When $S = \\{G\\}$, one calls $G$ a **generator**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4de2f5a9',
+      },
+      notes: {
+        en: "Intuition: **the objects in $S$ \"see\" the difference between all morphisms** — for any two distinct morphisms there is always an arrow from $S$ that separates them.\n\nExamples: $\\mathbf{1}$ is a generator of $\\mathbf{Set}$; $A$ is a generator of $A\\text{-}\\mathbf{Mod}$; $\\mathcal{C}$ itself is a set of generators of the presheaf category $\\widehat{\\mathcal{C}}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f01f463e',
+      },
+    },
+
+    'def.pretopology': {
+      statement: {
+        en: "A **pretopology** on a category $\\mathcal{C}$ assigns to each $X$ a family of **covering families** $\\operatorname{Cov}(X)$ (each element is a family $(X_{i} \\to X)_{i \\in I}$), subject to:\n\n1. **Isomorphisms cover**: every isomorphism $X' \\to X$ belongs to $\\operatorname{Cov}(X)$;\n2. **Pullback stability**: if $(X_{i} \\to X)_{i \\in I} \\in \\operatorname{Cov}(X)$, then for every $f : Y \\to X$,\n\n$$\\bigl(\\, X_{i} \\times_{X} Y \\to Y \\,\\bigr)_{i \\in I} \\in \\operatorname{Cov}(Y)$$\n\n3. **Transitivity**: if $(X_{i} \\to X)_{i \\in I} \\in \\operatorname{Cov}(X)$ and for each $i$ one has $(X_{ij} \\to X_{i})_{j \\in J_{i}} \\in \\operatorname{Cov}(X_{i})$, then $(X_{ij} \\to X)_{i \\in I, j \\in J_{i}} \\in \\operatorname{Cov}(X)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e4826c80',
+      },
+      notes: {
+        en: "The three axioms read as one sentence: **isomorphisms cover, covers pull back, and covers of covers are covers**.\n\nExample: on $\\mathbf{Set}$ take $\\operatorname{Cov}(X) = \\{(X_{i} \\to X) : X = \\bigcup_{i} X_{i}\\}$; all three hold — this is the prototype of the word \"cover\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#ca7f9300',
+      },
+    },
+
+    'def.quasi-compact': {
+      statement: {
+        en: "In a site $\\mathcal{C}$, an object $X$ is **quasi-compact** if for every family $(X_{i} \\to X)_{i \\in I}$ generating a covering sieve there is a **finite** $J \\subseteq I$ such that the sieve generated by $(X_{i} \\to X)_{i \\in J}$ is **also** a covering sieve.\n\nIn a topos, an equivalent formulation: for every surjection $\\coprod_{i \\in I} X_{i} \\to X$ there is a finite $J \\subseteq I$ such that $\\coprod_{i \\in J} X_{i} \\to X$ is still a surjection.",
+        status: 'draft',
+        basedOn: 'v0.9.3#79dd33f8',
+      },
+      notes: {
+        en: "This is the shape **compactness** keeps after the topology has been stripped away: **every cover has a finite subcover**. Compact Hausdorff spaces are exactly the quasi-compact objects in $\\mathrm{Cond}$ — the definition of condensed sets is built on it, so the name is worth remembering.",
+        status: 'draft',
+        basedOn: 'v0.9.3#78ce6fdf',
+      },
+    },
+
+    'def.quasi-separated': {
+      statement: {
+        en: "In a topos $\\mathcal{T}$, an object $X$ is **quasi-separated** if for all $Y \\to X$ and $Z \\to X$ (with $Y, Z$ quasi-compact) the fibre product\n\n$$Y \\times_{X} Z$$\n\nis again quasi-compact.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3b526e7d',
+      },
+      notes: {
+        en: "Properties: **closed under subobjects** (a subobject of a quasi-separated object is quasi-separated); **closed under coproducts**; **closed under filtered colimits along injections**.\n\n\"Quasi-separated\" adds one requirement between two quasi-compact objects: **the overlap must also be small**. This is exactly parallel to \"compact plus compact overlaps\" in topology — together, quasi-compact and quasi-separated single out the \"small and well-behaved\" objects.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d1d08cd9',
+      },
+    },
+
+    'def.regular-epi': {
+      statement: {
+        en: "A morphism $f : X \\to Y$ is a **regular epimorphism** if it is the **coequalizer** of some parallel pair: there exist $u, v : W \\rightrightarrows X$ with $f = \\operatorname{coker}(u, v)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4bf719dc',
+      },
+      notes: {
+        en: "In $\\mathbf{Set}$ **every surjection is regular**: take $W = X \\times_{Y} X$ with the two projections; their coequalizer is exactly $f$. In a general category this fails — \"epi\" (right cancellable) is much weaker than \"regular epi\", and the gap is precisely whether $Y$ is really a quotient of $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f9bdfe70',
+      },
+    },
+
+    'def.grothendieck-topology': {
+      statement: {
+        en: "A **Grothendieck topology** on a category $\\mathcal{C}$ assigns to each $X$ a family of **covering sieves** $J(X)$, subject to:\n\n1. $h_{X} \\in J(X)$;\n2. **Pullback stability**: $R \\in J(X)$, $f : Y \\to X$ $\\implies$ $f^{*}(R) := R \\times_{h_{X}} h_{Y} \\in J(Y)$;\n3. **Transitivity**: for $R, R' \\subseteq h_{X}$, if $R' \\in J(X)$ and for every $f \\in R'(Y)$ one has $f^{*}(R) \\in J(Y)$, then $R \\in J(X)$.\n\nA category with a Grothendieck topology is called a **site**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a447417d',
+      },
+      notes: {
+        en: "$J(X)$ is a **filter** in the poset of all sieves: nonempty; closed under intersections ($R, R' \\in J(X) \\implies R \\cap R' \\in J(X)$); closed under larger sieves ($R \\subseteq R'$, $R \\in J(X) \\implies R' \\in J(X)$).\n\nTogether these say that $J(X)$ contains a bunch of \"large enough\" sieves.\n\nA pretopology generates a topology: replace each covering family by the sieve it generates, then take all such sieves. **Topologies are more general than pretopologies** — a pretopology requires those fibre products to exist, whereas in a presheaf category pullbacks of sieves always exist.",
+        status: 'draft',
+        basedOn: 'v0.9.3#603f3626',
+      },
+    },
+
+    'def.adjunction-unit': {
+      statement: {
+        en: "Let $F \\dashv G$, and write the natural isomorphism as\n\n$$\\Phi_{X, Y} : \\operatorname{Hom}_{\\mathcal{D}}\\bigl(F(X), Y\\bigr) \\longrightarrow \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, G(Y)\\bigr)$$\n\nEvaluating it on the two \"identity morphisms\" gives two natural transformations:\n\n$$\\eta_{X} := \\Phi_{X, F(X)}(1_{F(X)}) : X \\to G F(X)$$\n\n$$\\varepsilon_{Y} := \\Phi_{G(Y), Y}^{-1}(1_{G(Y)}) : F G(Y) \\to Y$$\n\nThey satisfy the **triangle identities**\n\n$$\\varepsilon_{F(X)} \\circ F(\\eta_{X}) = 1_{F(X)}, \\qquad G(\\varepsilon_{Y}) \\circ \\eta_{G(Y)} = 1_{G(Y)}$$\n\nConversely, given $\\eta : 1_{\\mathcal{C}} \\implies G \\circ F$ and $\\varepsilon : F \\circ G \\implies 1_{\\mathcal{D}}$ satisfying these two identities, they determine a pair of adjoint functors uniquely.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ef0e9e7e',
+      },
+      notes: {
+        en: "In one sentence: **the unit \"sends oneself in\", the counit \"brings others back\"**, and the triangle identities ensure the two directions do not conflict.\n\n⚠️ **The unit and counit are in general not isomorphisms**; this is the biggest difference between an adjunction and a categorical equivalence. They are isomorphisms simultaneously exactly when it is an equivalence.\n\nSolving for the two sides from $\\Phi$: $\\Phi_{X,Y}(f) = G(f) \\circ \\eta_{X}$, $\\Phi^{-1}_{X,Y}(g) = \\varepsilon_{Y} \\circ F(g)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f01ef7c5',
+      },
+    },
+
+    'def.comma-category': {
+      statement: {
+        en: "Let $F : \\mathcal{A} \\to \\mathcal{C}$ and $G : \\mathcal{B} \\to \\mathcal{C}$ be two functors **with the same target**. The **comma category** $F \\downarrow G$ has as objects\n\n$$\\bigl\\{(A, B, f) : A \\in \\mathcal{A},\\ B \\in \\mathcal{B},\\ f : F(A) \\to G(B)\\bigr\\}$$\n\nand a morphism from $(A, B, f)$ to $(A', B', f')$ is a pair $(a : A \\to A',\\ b : B \\to B')$ making the square commute:\n\n$$\\begin{array}{ccc} F(A) & \\xrightarrow{\\;f\\;} & G(B) \\\\[2pt] {\\scriptstyle F(a)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle G(b)} \\\\[2pt] F(A') & \\xrightarrow[\\;f'\\;]{} & G(B') \\end{array}$$\n\n**Two special cases**: taking $\\mathcal{A} = \\mathbf{1}$ (the one-object category), $F$ is just \"selecting an object of $\\mathcal{C}$, say $X$\", and $F \\downarrow G$ is written $X \\downarrow G$; taking $\\mathcal{B} = \\mathbf{1}$ gives $F \\downarrow Y$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5e6bc055',
+      },
+      notes: {
+        en: "**Reading**: $F \\downarrow G$ organizes all ways of \"stretching an arrow from the world of $F$ to the world of $G$\" into a category. **The objects are the arrows themselves** (together with their sources at both ends), and the morphisms are the pair of morphisms that let the arrows be compared.\n\n**Notation**: the symbol in $F \\downarrow G$ is a \"comma\", hence the name; some texts write $(F \\downarrow G)$ or $(F/G)$.\n\n⭐ **Why it appears everywhere**: universal properties are often \"the **terminal/initial object** in some comma category\".\n\n- $X \\downarrow \\mathrm{id}_{\\mathcal{C}}$ is the **slice** $\\mathcal{C}/X$;\n- the **category of elements** $\\int F$ of a presheaf is $\\mathbf{1} \\downarrow F$ (viewing the presheaf as a functor $\\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$);\n- the **unit** of an adjunction is defined as the initial object of $\\mathrm{id} \\downarrow G$ (or $F \\downarrow \\mathrm{id}$).\n\nTo recognize a comma category, check whether \"objects are arrows and morphisms are commutative squares\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#b65187b3',
+      },
+    },
+
+    'thm.presheaf-limits-colimits': {
+      statement: {
+        en: "In a presheaf category $\\widehat{\\mathcal{C}}$ **all small limits and small colimits exist**, and they are computed **pointwise**: for every $X \\in \\mathcal{C}$,\n\n$$\\Bigl(\\varinjlim_{i} T_{i}\\Bigr)(X) \\;\\cong\\; \\varinjlim_{i} T_{i}(X), \\qquad \\Bigl(\\varprojlim_{i} T_{i}\\Bigr)(X) \\;\\cong\\; \\varprojlim_{i} T_{i}(X).$$\n\nEquivalently: for every $X$, the **evaluation functor** $\\widehat{\\mathcal{C}} \\to \\mathbf{Set}$, $T \\mapsto T(X)$, **preserves all limits and all colimits**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#eb448051',
+      },
+      notes: {
+        en: "**Proof.** Two steps.\n\n**(i) The pointwise definition really gives limits (colimits).** In $\\mathbf{Set}$, for each $X \\in \\mathcal{C}$ take the limit (or colimit) of that family of sets; for a morphism $f : Y \\to X$, the restriction map $\\bigl(\\varprojlim T_i\\bigr)(X) \\to \\bigl(\\varprojlim T_i\\bigr)(Y)$ is given by the universal property of the limit (on the colimit side by that of the colimit) ✓.\n\nThe resulting presheaf, together with the pointwise cone (cocone), satisfies the universal property: a map from a cone to $\\varprojlim T_i$ is uniquely determined at each point $X$, and the universal property is stated **pointwise**, so it holds at every point and hence globally ✓.\n\n**(ii) $\\mathbf{Set}$ is complete and cocomplete.**\n- **Small limits exist**: small products exist (the axiom of choice provides a set of choice functions); equalizers exist ($\\{x : f(x) = g(x)\\}$ is a subset); and **limits are built from products and equalizers**, so all small limits exist ✓.\n- **Small colimits exist**: small coproducts are disjoint unions; coequalizers are quotient sets; dually all small colimits exist ✓.\n\nThe two steps combine: taking the limit (colimit) pointwise for each $X$ in $\\mathbf{Set}$ gives the limit (colimit) in $\\widehat{\\mathcal{C}}$ ✓, and \"the evaluation functor preserves limits and colimits\" is another way of saying \"computed pointwise\" ✓. ∎\n\n⭐ This is the **foundation** of almost every later construction: the advantage of a presheaf category is precisely that \"limits and colimits come for free\", so one can perform all sorts of formal constructions inside it and then sheafify the result.\n\n⚠️ \"Computed pointwise\" holds only for **limits and colimits**, not for general constructions — sheafification, internal Hom, and sheaf cohomology are not pointwise.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dbeeb1bc',
+      },
+    },
+
+    'thm.induced-topos-morphism': {
+      statement: {
+        en: "Let $g : \\mathcal{C} \\to \\mathcal{C}'$ be any functor. Then precomposition\n\n$$\\hat{g}^{-1} : \\widehat{\\mathcal{C}'} \\longrightarrow \\widehat{\\mathcal{C}}, \\qquad T' \\longmapsto T' \\circ g^{\\mathrm{op}}$$\n\n**has both a left adjoint $\\hat{g}_{!}$ and a right adjoint $\\hat{g}_{*}$**. In particular $\\hat{g}^{-1}$ is exact, so\n\n$$\\hat{g} : \\widehat{\\mathcal{C}} \\longrightarrow \\widehat{\\mathcal{C}'}, \\qquad \\hat{g}^{*} := \\hat{g}^{-1} \\ \\dashv\\ \\hat{g}_{*}$$\n\nis a morphism of toposes. That is, **any functor induces a morphism between presheaf categories**, in the direction opposite to $g$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#16cd597a',
+      },
+      notes: {
+        en: "⭐ One-line reading: $g$ is just an arrow between categories, but once we pass to presheaf categories it automatically grows adjoints **on both sides** — $\\hat{g}_{!}$ on the left and $\\hat{g}_{*}$ on the right. Thus \"functor\" upgrades to \"topos morphism\" at the presheaf level.\n\n⚠️ The direction is easy to reverse: $g : \\mathcal{C} \\to \\mathcal{C}'$ while $\\hat{g} : \\widehat{\\mathcal{C}} \\to \\widehat{\\mathcal{C}'}$; **pushforward** $\\hat{g}_{*}$ goes along $g$, while **pullback** $\\hat{g}^{-1}$ goes the other way.\n\n📌 This is the general engine behind \"a map between topological spaces / sites gives a topos morphism\"; it is used in Chapter 4 to align sheaves on $\\mathbf{CHaus}$ with sheaves on a smaller site.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2fab9f51',
+      },
+    },
+
+    'def.kan-extension': {
+      statement: {
+        en: "Let $p : \\mathcal{C} \\to \\mathcal{C}'$ be a functor between small categories and $F : \\mathcal{C} \\to \\mathcal{D}$. The **left Kan extension** of $F$ along $p$ is a functor $p_{!}F : \\mathcal{C}' \\to \\mathcal{D}$ together with a natural transformation\n\n$$\\alpha : F \\implies p_{!}F \\circ p$$\n\nsuch that for every $G : \\mathcal{C}' \\to \\mathcal{D}$ and every $\\gamma : F \\implies G \\circ p$ there is a **unique** $\\widetilde{\\gamma} : p_{!}F \\implies G$ with\n\n$$\\gamma = (\\widetilde{\\gamma} \\circ p) \\circ \\alpha$$\n\nEquivalently:\n\n$$\\operatorname{Hom}(p_{!}F,\\ G) \\;\\cong\\; \\operatorname{Hom}(F,\\ G \\circ p)$$\n\ni.e. $p_{!}$ is the **left adjoint** of the precomposition functor $p^{*} = (-) \\circ p$. Reversing arrows gives the **right Kan extension** $p_{*} \\dashv p^{*}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#06a4d731',
+      },
+      notes: {
+        en: "The question it answers: **can $F$ be extended to $\\mathcal{C}'$?** The left Kan extension is the **best left approximate extension** of $F$ — it does not ask that $F$ actually extend, only that, on $\\mathcal{C}$, among functors agreeing with $F$ it fits best.\n\nCompare with adjunctions line by line:\n\n| adjunction $L \\dashv R$ | $p_{!} \\dashv p^{*}$ |\n| --- | --- |\n| unit $\\eta_{A} : A \\to R L A$ | $\\alpha : F \\implies p^{*}(p_{!}F)$ |\n| $f : A \\to R B$ | $\\gamma : F \\implies p^{*}(G)$ |\n| $g : L A \\to B$ | $\\widetilde{\\gamma} : p_{!}F \\implies G$ |\n| $f = R(g) \\circ \\eta_{A}$ | $\\gamma = p^{*}(\\widetilde{\\gamma}) \\circ \\alpha$ |\n\nSo Kan extension is nothing new: it just uses the adjunction formulas in a different direction.",
+        status: 'draft',
+        basedOn: 'v0.9.3#58a51ae8',
+      },
+    },
+
+    'def.mono': {
+      statement: {
+        en: "A morphism $i : Y \\to X$ is a **monomorphism** (mono) if for every object $Z$ and all $f, g : Z \\to Y$,\n\n$$i \\circ f = i \\circ g \\;\\Longrightarrow\\; f = g$$\n\n(left cancellable). Equivalently: the square $Y \\to Y \\times_X Y$ is cartesian, i.e. $Y \\cong Y \\times_X Y$, where $Y \\times_X Y$ is the two pullbacks along $i$. Reversing all arrows gives **epimorphism** (epi, right cancellable).\n\n**Isomorphism** is another notion: $f : X \\to Y$ is an **isomorphism** if there is $g : Y \\to X$ with\n\n$$g \\circ f = 1_{X}, \\qquad f \\circ g = 1_{Y}$$\n\nthen $g$ is the **inverse** of $f$, written $f^{-1}$, and is uniquely determined by $f$. A category in which every morphism that is both mono and epi is an isomorphism is called **balanced**; $\\mathbf{Set}$ and $\\mathbf{Ab}$ are balanced, $\\mathbf{Ring}$ is not.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3b7e6cbd',
+      },
+      notes: {
+        en: "In $\\mathbf{Set}$ monomorphisms are exactly injections and epimorphisms exactly surjections — the latter **does not need the axiom of choice**: if $f$ is not surjective, choose $b \\notin \\operatorname{im} f$ and on the two-point set $\\{0,1\\}$ set $g(b)=0$, $h(b)=1$, while both agree on $\\operatorname{im} f$; then $g \\circ f = h \\circ f$ but $g \\ne h$. In a general category, however, \"cancellable\" is the definition, and \"one-to-one / onto\" is only its manifestation in concrete categories: in the category of rings $\\mathbb{Z} \\to \\mathbb{Q}$ is an epimorphism, though its underlying map is not surjective — the forgetful functor sends it to something no longer epi.\n\n**The inverse is unique**: if $g, g'$ are both inverses of $f$, then $g = g \\circ 1_{Y} = g \\circ (f \\circ g') = (g \\circ f) \\circ g' = 1_{X} \\circ g' = g'$ ✓.\n\n**Isomorphism vs monomorphism**: $f$ is an isomorphism $\\iff$ $f$ is a monomorphism with a **section**.\n\n$(\\implies)$ follows directly from $f \\circ g = 1_{Y}$, $g \\circ f = 1_{X}$ (the latter says $f$ is a split mono, hence mono).\n\n$(\\Longleftarrow)$ Suppose $f \\circ g = 1_{Y}$.\n\nThen $f \\circ (g \\circ f) = (f \\circ g) \\circ f = 1_{Y} \\circ f = f = f \\circ 1_{X}$, ; since $f$ is mono, $g \\circ f = 1_{X}$, and $f$ is an isomorphism ✓.\n\nReversing arrows gives the dual statement: $f$ is an isomorphism $\\iff$ $f$ is an epimorphism with a **retraction**.\n\n⚠️ \"Mono $+$ epi\" is **not enough**: in the category of rings $\\mathbb{Z} \\to \\mathbb{Q}$ is both mono and epi, yet not an isomorphism — a section (or retraction) is still missing.",
+        status: 'draft',
+        basedOn: 'v0.9.3#da31aca1',
+      },
+    },
+
+    'def.chain-homotopy': {
+      statement: {
+        en: "Let $C = \\{\\, C_{n}, \\partial_{n} \\,\\}$ and $D = \\{\\, D_{n}, \\partial_{n}' \\,\\}$ be two chain complexes, and $f, g : C \\to D$ chain maps (i.e. $\\partial' f = f \\partial$).\n\nA **chain homotopy** between $f$ and $g$ is a family of homomorphisms $P_{n} : C_{n} \\to D_{n+1}$ satisfying\n\n$$\\partial_{n+1}' P_{n} + P_{n-1} \\partial_{n} = g_{n} - f_{n}.$$\n\n**Basic fact**: if such a $P$ exists, then $f$ and $g$ induce the **same** homomorphism on homology, i.e. $f_{*} = g_{*} : H_{n}(C) \\to H_{n}(D)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a757a800',
+      },
+      notes: {
+        en: "**Why \"chain homotopy $\\implies$ equal on homology\"**: let $z \\in C_{n}$ be a cycle ($\\partial z = 0$). Then\n\n$$g(z) - f(z) = \\partial' P(z) + P\\partial(z) = \\partial' P(z),$$\n\ni.e. $g(z) - f(z)$ is a **boundary** in $D$, so the homology class it represents is $0$. That is, $[g(z)] = [f(z)]$ for every cycle — exactly $f_{*} = g_{*}$. ∎\n\n⭐ **It is the algebraic translation of \"homotopy\"**: a homotopy in topology is \"a continuous deformation between two maps\"; a chain complex has no space to deform, so the deformation is turned into a homomorphism $P$ **raising degree by one**. The combination $\\partial P + P\\partial$ is exactly what \"homotopy of chain complexes\" should look like: it **commutes** with $\\partial$ ($\\partial T = T\\partial$, so $T$ is a chain map) and therefore sends cycles to boundaries; the anticommuting relation is the termwise relation between $P$ and $\\partial$ ($\\partial P = T - P\\partial$).\n\n✅ Chain homotopy **is** an equivalence relation: reflexive with $0$, symmetric with $-P$, transitive with $P + Q$ ($\\partial(P+Q) + (P+Q)\\partial = (g - f) + (h - g) = h - f$). So \"chain homotopy classes\" are the real morphisms in the homotopy category; formally inverting chain homotopy classes gives the homotopy category.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5cd56860',
+      },
+    },
+
+    'def.etale-space': {
+      statement: {
+        en: "Let $X$ be a topological space.\n\nA continuous map $p : E \\to X$ is an **étale map** (local homeomorphism) if every $e \\in E$ has an open neighbourhood $V \\ni e$ such that $p(V)$ is open in $X$ and $p|_{V} : V \\to p(V)$ is a homeomorphism.\n\nThen $(E, p)$ is an **étale space** (espace étalé) over $X$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#cf1a1bc7',
+      },
+      notes: {
+        en: "**Three things to remember at once**:\n\n- **Fibres are discrete**: $p$ a local homeomorphism $\\implies$ every $p^{-1}(x)$ is discrete in $E$ (and also closed).\n- **Open immersions are étale**: take $V = E$.\n- **Continuity of sections is automatic**: when $p$ is a local homeomorphism, if $p \\circ s = \\mathrm{id}_{U}$, then a map $s : U \\to E$ is **automatically continuous**, so a \"section over $U$\" is just a set-theoretic $s$.\n\n⭐ **Equivalence with sheaves**: sheaves on $X$ and étale spaces over $X$ form an equivalence of categories, the functor being given by\n\n$$\\mathcal{F} \\longmapsto \\Bigl(\\coprod_{x \\in X} \\mathcal{F}_{x} \\longrightarrow X\\Bigr)$$\n\nthe right-hand side carries the \"topology of stalks\" — each pair $(U, s)$ ($U$ open, $s \\in \\mathcal{F}(U)$) contributes the open set $\\{\\, s_{x} : x \\in U \\,\\}$.\n\nThis is the precise meaning of \"a sheaf = a space spread locally isomorphically over the base\", and it also explains why operations such as \"pushforward sheaf / pushforward open set\" become \"glue the fibres together\" on étale spaces.\n\n⚠️ **A terminology trap**: here we mean a **local homeomorphism** of topological spaces (French espace étalé).\n\nIn algebraic geometry, an **étale map** is something else (locally of finite presentation + flat + unramified), see \"étale sheaf\".\n\nThe two share a name — Grothendieck did this on purpose, since étale maps of schemes really are the algebraic substitute for \"local isomorphism + finite covering\" — but they **cannot be interchanged**: fibres of a local homeomorphism are arbitrary discrete sets, while fibres of an étale morphism of schemes are generally discrete **finite** schemes.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b3148b8d',
+      },
+    },
+
+    'def.graph-morphism': {
+      statement: {
+        en: "A **morphism** from a graph $(V, E, s, t)$ to a graph $(V', E', s', t')$ is a pair of functions\n\n$$\\varphi_1 : V \\to V', \\qquad \\varphi_2 : E \\to E'$$\n\nsuch that both squares commute:\n\n$$s' \\circ \\varphi_2 = \\varphi_1 \\circ s, \\qquad t' \\circ \\varphi_2 = \\varphi_1 \\circ t$$\n\nThat is, $\\varphi_1$ sends the source of an edge to the source of the image of that edge, and the target to the target.",
+        status: 'draft',
+        basedOn: 'v0.9.3#80e05d3d',
+      },
+      notes: {
+        en: "The two equations govern the two ends separately. Drawn as squares, they are the entire content of the name \"morphism of graphs\": the vertex layer and the edge layer are each continuous, and the directions match.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b042e6fb',
+      },
+    },
+
+    'prop.forgetful-faithful-not-full': {
+      statement: {
+        en: "The forgetful functors $\\mathbf{Top} \\to \\mathbf{Set}$ and $\\mathbf{Ab} \\to \\mathbf{Set}$ are **faithful but not full**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1a67347d',
+      },
+      notes: {
+        en: "**Proof.** The underlying sets of maps are unchanged, so the functors are faithful ✓; but a continuous map between two topological spaces is only some of all maps, and a map between two groups is required to preserve the operation ✓ — so neither is full ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#843008ce',
+      },
+    },
+
+    'def.section-retraction': {
+      statement: {
+        en: "Let $f : X \\to Y$ be a morphism in a category.\n\n- A **section** of $f$ is a morphism $g : Y \\to X$ such that\n\n$$f \\circ g = 1_Y$$\n\n- A **retraction** of $f$ is a morphism $g : Y \\to X$ such that\n\n$$g \\circ f = 1_X$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#230326cb',
+      },
+      notes: {
+        en: "The two equations point in opposite directions: a section is \"first $g$, then $f$, back to $Y$\", while a retraction is \"first $f$, then $g$, back to $X$\". In other words, a section is a right inverse of $f$ and a retraction is a left inverse of $f$ — the names differ because composition is written in the opposite order from the maps.",
+        status: 'draft',
+        basedOn: 'v0.9.3#73726e10',
+      },
+    },
+
+    'def.graph': {
+      statement: {
+        en: "A **graph** is a quadruple\n\n$$( V, E, s, t )$$\n\nwhere $V$ and $E$ are sets and $s, t : E \\to V$ are functions — called the **source map** and the **target map**. Elements of $V$ are **vertices** and elements of $E$ are **edges**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4103d171',
+      },
+      notes: {
+        en: "\"Graph\" here means a directed multigraph: $s(e) \\ne t(e)$ is not required (loops are allowed), and two edges are not required to have different endpoints (parallel edges are allowed). So it is broader than the everyday picture of a graph — it is just the data of which edge goes from where to where.\n\nA quadruple is a **nested ordered pair**, so the encoding is not immaterial. $(x, y) := \\{ \\{x\\}, \\{x,y\\} \\}$ satisfies the ordered-pair axiom\n\n$$(a, b) = (c, d) \\iff a = c \\wedge b = d$$\n\nwhereas with $\\{ x, \\{x,y\\} \\}$ one must verify that axiom case by case, not take it for granted.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0b266ba7',
+      },
+    },
+
+    'def.category-of-groups': {
+      statement: {
+        en: "**The category of groups** $\\mathbf{Grp}$: objects are groups, morphisms are group homomorphisms, composition is composition of maps, and identities are identity homomorphisms.\n\nIt has a **forgetful functor** $\\mathbf{Grp}\\to\\mathbf{Set}$; abelian groups form the full subcategory $\\mathbf{Ab}$, and finite groups form the full subcategory $\\mathbf{FinGrp}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#25441bc0',
+      },
+      notes: {
+        en: "**Not an abelian category**: $\\hom_{\\mathbf{Grp}}(G,H)$ generally has no group structure (one cannot add pointwise), so one cannot do homological algebra as in $A\\text{-}\\mathbf{Mod}$.\n\n**Monomorphisms = injective homomorphisms** and **epimorphisms = surjective homomorphisms**. Products are direct products and coproducts are free products; the only zero object is the trivial group, so $\\mathbf{Grp}$ is not additive.\n\nThe Cartesian product gives a symmetric monoidal structure with the trivial group as unit; but it is not Cartesian closed ($\\hom(G,H)$ generally cannot be made into a group naturally).",
+        status: 'draft',
+        basedOn: 'v0.9.3#ad730236',
+      },
+    },
+
+    'def.category-of-abelian-groups': {
+      statement: {
+        en: "**The category of abelian groups** $\\mathbf{Ab}$: objects are abelian groups, morphisms are group homomorphisms; it is a **full subcategory** of $\\mathbf{Grp}$.\n\nThe forgetful functor $\\mathbf{Ab}\\to\\mathbf{Set}$ sends an abelian group to its underlying set; $\\mathbb Z\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}$ are equivalent.",
+        status: 'draft',
+        basedOn: 'v0.9.3#35d7838c',
+      },
+      notes: {
+        en: "**The prototype of an abelian category**: it has kernels and cokernels, monomorphisms and epimorphisms are strict; $\\hom(A,B)$ with pointwise addition is an abelian group.\n\n**Enough projective/injective objects**: free abelian groups are projective; $\\mathbb Q/\\mathbb Z$ gives an injective cogenerator, and every abelian group embeds into an injective group.\n\n**The tensor product** gives a symmetric monoidal structure with unit $\\mathbb Z$; $\\hom(A,B)$ is again an abelian group, so $\\mathbf{Ab}$ is even symmetric monoidal closed.\n\nRelation to $A\\text{-}\\mathbf{Mod}$: $\\mathbb Z\\text{-}\\mathbf{Mod}\\simeq\\mathbf{Ab}$, the most basic example of \"modules\" unifying \"abelian groups\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#082cf530',
+      },
+    },
+
+    'ax.grothendieck-universe': {
+      statement: {
+        en: "**Every set fits into some universe.** This is an independent axiom:\n\n$$\\forall x \\, \\exists U \\left[ U \\in \\mathrm{Univ} \\wedge  x \\in U \\right]$$\n\nwhere \"universe\" is as in the definition of a **Grothendieck universe**: transitive, and closed under pairing, power sets, and unions indexed by internal sets.\n\n⭐ A common equivalent form: **strongly inaccessible cardinals are unbounded** — for every ordinal $\\alpha$ there is a strongly inaccessible cardinal $\\kappa > \\alpha$, and then $V_{\\kappa}$ itself is a universe.",
+        status: 'draft',
+        basedOn: 'v0.9.3#43020425',
+      },
+      notes: {
+        en: "It is **not in ZFC**. Taking a strongly inaccessible cardinal $\\kappa$, $V_{\\kappa} \\models \\mathrm{ZFC}$, so this axiom implies $\\mathrm{Con}(\\mathrm{ZFC})$; by Gödel's second incompleteness theorem, ZFC cannot prove it if consistent. So any theorem using it must list it as a hypothesis, not assume it silently.\n\nIt is **stronger** than \"there exists a universe\": it says universes are unbounded. That is exactly what category theory needs — $\\mathbf{Set}$ is a small category relative to $U$, while $U$ itself lies in a larger universe $U^{+}$, so \"the category of $U$-small categories\" is again small in $U^{+}$. **One always has room to go up a level.**\n\nWeak form: when only finitely many fixed categories are involved, assuming \"there exists a universe\" (equivalently, \"there exists a strongly inaccessible cardinal\") suffices; unboundedness is not needed.\n\n⚠️ A practical substitute: type theory automates this with **universe levels** (Lean's `Type u`, Coq's `Type_i`); this graph follows the SGA convention and settles it once and for all with one axiom.",
+        status: 'draft',
+        basedOn: 'v0.9.3#74e90ab3',
+      },
+    },
+
+    'thm.right-adjoint-criterion': {
+      statement: {
+        en: "A functor $F : \\mathcal{C} \\to \\mathcal{D}$ has a right adjoint $\\iff$ for every $Y \\in \\mathcal{D}$ the functor\n\n$$\\operatorname{Hom}_{\\mathcal{D}}\\bigl(F(-),\\ Y\\bigr) : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$$\n\nis representable.",
+        status: 'draft',
+        basedOn: 'v0.9.3#926deff5',
+      },
+      notes: {
+        en: "This is the general machine for **constructing right adjoints**: for each $Y$ first find a representing object $G(Y)$, then check that the resulting $G$ is a functor.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b699d216',
+      },
+    },
+
+    'thm.right-adjoint-preserves-limits': {
+      statement: {
+        en: "Let $F \\dashv G$. Then $G$ **preserves all limits** (that exist in $\\mathcal{D}$): for every diagram $D : I \\to \\mathcal{D}$,\n\n$$G\\bigl(\\lim D\\bigr) \\;\\cong\\; \\lim\\, (G \\circ D)$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#7f0c5c4c',
+      },
+      notes: {
+        en: "Dually, **left adjoints preserve all colimits**.\n\nThis is the quickest way to show that a functor cannot be a right adjoint — if it fails to preserve some limit (say a product), it is out at once. Conversely, it explains why forgetful functors can always be right adjoints: they usually preserve limits (the structure is defined pointwise).",
+        status: 'draft',
+        basedOn: 'v0.9.3#93fb6653',
+      },
+    },
+
+    'prop.adjunction-naturality': {
+      statement: {
+        en: "The naturality of the adjunction bijection $\\Phi_{X, X'} : \\operatorname{Hom}\\bigl(F(X), X'\\bigr) \\cong \\operatorname{Hom}\\bigl(X, G(X')\\bigr)$ says: for $g : Y \\to X$, $g' : X' \\to Y'$ and $f : F(X) \\to X'$, one has $\\Phi\\bigl(g' \\circ f \\circ F(g)\\bigr) = G(g') \\circ \\Phi(f) \\circ g$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#988a5e7a',
+      },
+      notes: {
+        en: "**Proof.** Substitute $\\Phi(f) = G(f) \\circ \\eta_{X}$ and $\\Phi^{-1}(h) = \\varepsilon_{X'} \\circ F(h)$ ✓; the identity follows from naturality of the unit and counit ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#1bbf1752',
+      },
+    },
+
+    'prop.adjunction-composition': {
+      statement: {
+        en: "If $F_{1} \\dashv G_{1}$ ($\\mathcal{C} \\to \\mathcal{D}$) and $F_{2} \\dashv G_{2}$ ($\\mathcal{D} \\to \\mathcal{E}$), then\n\n$$F_{2} \\circ F_{1} \\;\\dashv\\; G_{1} \\circ G_{2}.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#756b9935',
+      },
+      notes: {
+        en: "**Proof.** Chain the two adjunction isomorphisms ✓: for $X \\in \\mathcal{C}$, $Z \\in \\mathcal{E}$,\n\n$$\\operatorname{Hom}_{\\mathcal{E}}\\bigl(F_{2}F_{1}X,\\ Z\\bigr) \\cong \\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{1}X,\\ G_{2}Z\\bigr) \\cong \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X,\\ G_{1}G_{2}Z\\bigr) ✓$$\n\nBoth steps use the definition of adjunction, and the family of isomorphisms is natural in $X, Z$ (a composite of two natural isomorphisms is natural) ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#397229df',
+      },
+    },
+
+    'prop.adjunction-extends-to-diagrams': {
+      statement: {
+        en: "If $F : \\mathcal{C} \\to \\mathcal{D}$ and $G : \\mathcal{D} \\to \\mathcal{C}$ are adjoint to each other, then for any index category $I$, **pointwise action** gives an adjunction between diagram categories\n\n$$F_{I} \\dashv G_{I}, \\qquad F_{I}(D) = F \\circ D,\\quad G_{I}(E) = G \\circ E,$$\n\nthat is, $\\operatorname{Hom}_{\\mathcal{D}^{I}}\\bigl(F \\circ D,\\ E\\bigr) \\cong \\operatorname{Hom}_{\\mathcal{C}^{I}}\\bigl(D,\\ G \\circ E\\bigr)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1233a76b',
+      },
+      notes: {
+        en: "**Proof.** Hom-sets in a diagram category are formed **pointwise**: giving a natural transformation is equivalent to giving a compatible family of morphisms ✓.\n\nAt each $i \\in I$, apply $F \\dashv G$ to get $\\operatorname{Hom}(FD_{i}, E_{i}) \\cong \\operatorname{Hom}(D_{i}, GE_{i})$ ✓;\n\nthis family is compatible with the morphisms of $I$ (because the original isomorphism is natural in $F,G$) ✓, so the isomorphisms combine into one between the two Hom-sets ✓.\n\n∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#19743db4',
+      },
+    },
+
+    'prop.kan-extension-fully-faithful': {
+      statement: {
+        en: "Let $p : \\mathcal{C} \\to \\mathcal{C}'$ be **fully faithful** and $\\mathcal{D}$ cocomplete. Then for every $F : \\mathcal{C} \\to \\mathcal{D}$ the left Kan extension satisfies\n\n$$p_{!}F \\circ p \\;\\cong\\; F.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#f1d4b103',
+      },
+      notes: {
+        en: "**Proof.** Use the pointwise formula $p_{!}F(X') = \\varinjlim_{p(X) \\to X'} F(X)$ ✓.\n\nTake $X' = p(X_{0})$: the comma category $p \\downarrow p(X_{0})$ has $1_{p(X_{0})}$ as a **terminal object** ($p$ is fully faithful, so morphisms $p(X_0)$ to $p(X)$ come uniquely from $X_0 \\to X$) ✓, and a colimit over a category with a terminal object is the value at that object ✓, so $(p_{!}F)(p(X_{0})) \\cong F(X_{0})$ ✓.\n\n∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#8401a46c',
+      },
+    },
+
+    'prop.forgetful-preserves-limits': {
+      statement: {
+        en: "The forgetful functors from $\\mathbf{Mon}$, $\\mathbf{Gr}$, $\\mathbf{Rng}$, $G\\text{-}\\mathbf{Set}$, $A\\text{-}\\mathbf{Mod}$, $k\\text{-}\\mathbf{Alg}$ to $\\mathbf{Set}$ all **preserve all limits**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dbfa2b61',
+      },
+      notes: {
+        en: "**Proof.** These structures are all \"operations given pointwise on sets + equations checked pointwise\" ✓, so the universal property of a limit diagram holds pointwise on underlying sets and the structure assembles automatically ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#f5e7674e',
+      },
+    },
+
+    'prop.algebra-categories-limits': {
+      statement: {
+        en: "In $\\mathbf{Mon}$, $\\mathbf{Gr}$, $\\mathbf{Rng}$, $G\\text{-}\\mathbf{Set}$, $A\\text{-}\\mathbf{Mod}$, $k\\text{-}\\mathbf{Alg}$ **limits are computed pointwise** (forgetting to sets gives the limit of sets);\n\n**colimits** are given by \"first generate freely, then quotient\" — for example the coproduct in $\\mathbf{Gr}$ is the free product.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6cc16dae',
+      },
+      notes: {
+        en: "**Proof.** These forgetful functors **preserve limits** ✓, so a limit is the limit of underlying sets equipped with the structure given pointwise by the universal property ✓; for coproducts one first glues generators freely and then quotients by the relations ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#eb2d27a6',
+      },
+    },
+
+    'prop.forgetful-exactness': {
+      statement: {
+        en: "Algebraic forgetful functors **preserve limits but not colimits**; the inclusion $\\widetilde{\\mathcal{C}} \\hookrightarrow \\widehat{\\mathcal{C}}$ preserves limits but not colimits, while its left adjoint (**sheafification**) is **exact**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#868b3638',
+      },
+      notes: {
+        en: "**Proof.** Preservation of limits is the preceding proposition ✓; failure of colimits: the underlying set of $M \\oplus N$ is not $M \\sqcup N$ ✓; sheafification is a left adjoint and left exact, hence exact ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#c5358587',
+      },
+    },
+
+    'prop.free-objects-examples': {
+      statement: {
+        en: "\"Free\" in several algebraic categories: in $\\mathbf{Mon}$ it is the **free monoid** on $X$; in $\\mathbf{Gr}$ it is the **free group** (with cancellation allowed); in $\\mathbf{Rng}$ it is the noncommutative polynomial ring;\n\nin $G\\text{-}\\mathbf{Set}$ it is $G \\times X$ (**left** regular action $g \\cdot (h, x) = (gh, x)$; when $X$ is a single point it degenerates to $G$ itself);\n\nin $A\\text{-}\\mathbf{Mod}$ it is $A^{(X)}$;\n\nin $k\\text{-}\\mathbf{Alg}$ it is the **tensor algebra**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a8e91fb4',
+      },
+      notes: {
+        en: "**Proof.** Check the universal property of free objects $\\operatorname{Hom}(FX, -) \\cong \\operatorname{Hom}_{\\mathbf{Set}}\\bigl(X, U(-)\\bigr)$ in each case ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#dd00f795',
+      },
+    },
+
+    'prop.bialgebra-examples': {
+      statement: {
+        en: "A **bialgebra** is a **monoid** in the opposite of the category of $k$-algebras. $k[t]$ with $t \\mapsto t \\otimes 1 + 1 \\otimes t$, and $k[t, 1/t]$ with $t \\mapsto t \\otimes t$, are both bialgebras.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c489d5e7',
+      },
+      notes: {
+        en: "**Proof.** Translating \"monoid in the opposite category\" back into $k$-algebras gives \"the comultiplication $\\Delta : A \\to A \\otimes A$ is an **algebra homomorphism**\" ✓; both $\\Delta$ above preserve multiplication ✓ (in $k[t,1/t]$ the element $t$ is invertible, so $t \\mapsto t \\otimes t$ is the only choice) ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#1e4ab827',
+      },
+    },
+
+    'ex.ab-of-categories': {
+      statement: {
+        en: "- $\\mathrm{Ab}(\\mathbf{Set}) = \\mathbf{Ab}$;\n- $\\mathrm{Ab}(\\mathbf{Top})$ = **topological abelian groups**;\n- $\\mathrm{Ab}(\\mathbf{Manifold})$ = abelian Lie groups;\n- $\\mathrm{Ab}(\\mathbf{Grp}) = \\mathbf{Ab}$ (operations between group objects are pointwise);\n- $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$;\n- $\\mathrm{Ab}(\\widehat{\\mathcal{C}})$ = abelian group objects in the presheaf category $\\simeq$ presheaves valued in $\\mathbf{Ab}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2aa9076a',
+      },
+      notes: {
+        en: "⭐ The most useful thing about this table is **reading it backwards**: to study topological abelian groups, take $\\mathcal{C}$ to be $\\mathbf{Top}$; to study condensed abelian groups, take $\\mathcal{C}$ to be $\\mathrm{Cond}$.\n\n**One definition, one set of theorems (kernels, cokernels, exact sequences, ...) transfers directly.**\n\n⚠️ The identity $\\mathrm{Ab}(\\mathbf{Grp}) = \\mathbf{Ab}$ is the one that gives pause: a group object in the category of groups is **exactly** an abelian group (Eckmann–Hilton argument) — adding the structure \"group\" on top of the category \"groups\" forces commutativity.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ff933fc4',
+      },
+    },
+
+    'prop.nat-iso-invariants': {
+      statement: {
+        en: "If $F \\cong F'$, then $F$ is faithful (resp. full, fully faithful, essentially surjective, an equivalence) $\\iff$ $F'$ is as well.",
+        status: 'draft',
+        basedOn: 'v0.9.3#49faa919',
+      },
+      notes: {
+        en: "**Proof.** A natural isomorphism gives a family of bijections on each pair of Hom-sets, compatible with composition ✓, so \"is $\\operatorname{Hom}(X,Y) \\to \\operatorname{Hom}(FX, FY)$ a bijection\" holds on both sides simultaneously ✓; essential surjectivity and equivalence are similar (isomorphisms translate objects) ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#00e51fce',
+      },
+    },
+
+    'prop.fully-faithful-injective': {
+      statement: {
+        en: "If $F : \\mathcal{C} \\to \\mathcal{D}$ is **fully faithful**, then it is **essentially injective**:\n\n$$F(X) \\cong F(Y) \\implies X \\cong Y.$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#540cbc5a',
+      },
+      notes: {
+        en: "**Proof.** Let $u : F(X) \\to F(Y)$ be an isomorphism.\n\nBy full faithfulness, $u$ comes uniquely from some $f : X \\to Y$, and $u^{-1}$ uniquely from some $g : Y \\to X$ ✓.\n\nThen $F(g f) = u^{-1} u = 1_{F(X)} = F(1_{X})$ ✓, and faithfulness gives $g f = 1_{X}$ ✓;\n\nsymmetrically $f g = 1_{Y}$ ✓.\n\n∎\n\n⚠️ The converse fails: an essentially injective functor need not be fully faithful.",
+        status: 'draft',
+        basedOn: 'v0.9.3#64d697ae',
+      },
+    },
+
+    'def.exact-functor': {
+      statement: {
+        en: "A functor $F$ is **left exact** if it preserves all **finite limits**; **right exact** if it preserves all **finite colimits**; and **exact** if both.",
+        status: 'draft',
+        basedOn: 'v0.9.3#93041508',
+      },
+      notes: {
+        en: "**Why \"finite\"**: in general categories the usage of \"left exact\" comes from abelian categories — there it suffices to preserve $0$, finite products, and kernels, which is equivalent to sending the short exact sequence $0 \\to M' \\to M \\to M'' \\to 0$ to $0 \\to FM' \\to FM \\to FM''$ (exact, exact on the left). So \"exact\" in the name refers to exact sequences.\n\n⭐ **Right adjoints are left exact and left adjoints are right exact** — a direct consequence of \"adjoint $\\implies$ preserves limits / colimits\", and the most commonly used criterion.\n\n**Better in abelian categories**: $F$ is left exact $\\iff$ it preserves kernels ($F(\\ker) = \\ker$); $F$ is exact $\\iff$ it sends short exact sequences to short exact sequences.\n\n⚠️ The name is ambiguous: some books use \"exact\" for preserving **finite** limits and others for **all** limits. This graph follows the definition above (finite limits/colimits).",
+        status: 'draft',
+        basedOn: 'v0.9.3#29353857',
+      },
+    },
+
+    'prop.functor-preserves-iso': {
+      statement: {
+        en: "Let $F : \\mathcal{C} \\to \\mathcal{D}$ be a functor and $f : X \\to Y$ an isomorphism in $\\mathcal{C}$ with inverse $f^{-1} : Y \\to X$. Then $F(f)$ is an isomorphism, and\n\n$$F(f)^{-1} = F\\left(f^{-1}\\right).$$",
+        status: 'draft',
+        basedOn: 'v0.9.3#9b47edbf',
+      },
+      notes: {
+        en: "⭐ In one line: $F(f)\\,F(f^{-1}) = F(f f^{-1}) = F(1_Y) = 1_{F(Y)}$, and symmetrically.\n\nIt uses exactly the two requirements on a functor: **preserve composition, preserve identities**.\n\n⚠ The converse **fails**: $F(f)$ being an isomorphism does not imply that $f$ is one (a forgetful functor identifies linear isomorphisms with invertible linear maps, but also sends non-invertible square matrices to maps).\n\nTo go backwards one needs $F$ **fully faithful**, which is the content of propositions such as `prop.adjoint-full-faithful`.\n\n⭐ Small as it is, this is the first brick of \"isomorphism is a categorical property\": no functor distinguishes isomorphic objects, which is why invariants of isomorphism (rank, trace, determinant, homology) make sense.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2007945f',
+      },
+    },
+
+    'def.preserves-limit': {
+      statement: {
+        en: "Let $D : I \\to \\mathcal{C}$ be a diagram and $F : \\mathcal{C} \\to \\mathcal{D}$ a functor. $F$ induces a comparison map between cones\n\n$$F(\\lim D) \\longrightarrow \\lim (F \\circ D).$$\n\nIf this comparison map is an isomorphism for **every** diagram $D$ (of the relevant type), one says that $F$ **preserves limits** (written $\\lim D \\cong \\lim F \\circ D$). Dually: **preserves colimits**.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1c365fc0',
+      },
+      notes: {
+        en: "**Where the comparison map comes from**: $\\lim D$ is the universal cone of $D$; applying $F$ gives a cone over $F \\circ D$, so the universal property of $\\lim(F\\circ D)$ yields a unique map $F(\\lim D) \\to \\lim(F\\circ D)$. Thus \"preserves limits\" always means that this map, **which exists automatically by the universal property**, happens to be invertible.\n\n⭐ **The most used case**: **right adjoints preserve all limits** (dually left adjoints preserve all colimits). The proof uses only the adjunction isomorphism and the universal property of limits, with no concrete construction.\n\n**Weaker versions**: $F$ preserves **finite** limits (= **left exact**), **filtered** colimits (the AB5 condition), **products**, **equalizers**, ... — each restricts \"every diagram\" above to a class of diagrams.\n\n⚠️ Not to be confused with \"$F$ is continuous\": a continuous functor here **preserves limits**, with no relation to continuity in topology.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9f2f14ef',
+      },
+    },
+
+    'prop.group-basic': {
+      statement: {
+        en: "Let $G$ be a group and $a, b, c \\in G$. Then:\n\n**(i) Cancellation**: $ab = ac \\implies b = c$, $ba = ca \\implies b = c$;\n\n**(ii) Inverse formulas**: $(ab)^{-1} = b^{-1}a^{-1}$, $(a^{-1})^{-1} = a$, $e^{-1} = e$;\n\n**(iii)** For $m, n \\in \\mathbb{Z}$: $a^{m}a^{n} = a^{m+n}$, $(a^{m})^{n} = a^{mn}$, $a^{0} = e$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e7ac178c',
+      },
+      notes: {
+        en: "⭐ Cancellation is the watershed between groups and monoids: $(\\mathbb{N}, \\cdot)$ is a monoid, but $0 \\cdot 2 = 0 \\cdot 3$ cannot cancel $0$ — what is missing is precisely inverses.\n\n⚠ In a nonabelian group the order in $(ab)^{-1} = b^{-1}a^{-1}$ **must** be reversed: $(ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = aa^{-1} = e$.\n\nWriting $a^{-1}b^{-1}$ is generally wrong (test with two transpositions in $S_3$).\n\n⭐ (iii) is the group version of `def.group-power`;\n\nthe proof is again \"induct on nonnegative integers, then pass to negative exponents using inverses\".",
+        status: 'draft',
+        basedOn: 'v0.9.3#2fdf40b1',
+      },
+    },
+
+    'prop.module-tensor-universal': {
+      statement: {
+        en: "The tensor product $M \\otimes_{\\mathbb{Z}} N$ (resp. $M \\otimes_{k} N$) is **universal** for $\\mathbb{Z}$-bilinear (resp. $k$-bilinear) maps:\n\n$$\\operatorname{Bil}_{\\mathbb{Z}}(M \\times N,\\ P) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M \\otimes_{\\mathbb{Z}} N,\\ P\\bigr),$$\n\nbilinear maps on the left correspond one-to-one to group homomorphisms on the right.",
+        status: 'draft',
+        basedOn: 'v0.9.3#fa47dc3f',
+      },
+      notes: {
+        en: "**Proof.** First build the tensor product on free modules: take $\\mathbb{Z}\\cdot(M \\times N)$ (the free abelian group) and quotient by the \"bilinear relations\"\n\n$$(m + m', n) \\sim (m, n) + (m', n), \\quad (m, n + n') \\sim (m, n) + (m, n'), \\quad (am, n) \\sim a(m,n) \\sim (m, an) ✓$$\n\nA general module is a quotient of a free one (take a presentation) ✓, and the tensor product over the quotient is the quotient ✓. Then $M \\times N \\to M \\otimes N$ is bilinear ✓, and any bilinear map $M \\times N \\to P$ factors uniquely through it ✓ — that is exactly the universal property ✓. ∎",
+        status: 'draft',
+        basedOn: 'v0.9.3#e7ade41a',
+      },
+    },
+
+    'prop.subspace-criterion': {
+      statement: {
+        en: "**(Merged form)** A nonempty subset $U \\subseteq V$ is a subspace if and only if for all $u, v \\in U$ and $c \\in K$ one has $cu + v \\in U$.\n\n**(Ascending chain form)** If $U_1 \\subseteq U_2 \\subseteq U_3 \\subseteq \\cdots$ is a sequence of subspaces (an increasing chain), then $\\bigcup_n U_n$ is also a subspace.\n\n**(Spanning form)** Let $\\mathcal{U}$ be the family of all subspaces containing $S$. The **span** of an arbitrary subset $S \\subseteq V$ is\n\n$$\\operatorname{span} S := \\bigcap \\mathcal{U} = \\bigcap \\{ U : S \\subseteq U \\subseteq V,\\ U \\text{ is a subspace} \\}$$\n\nthe smallest subspace containing $S$, and it equals the set of **finite** linear combinations of elements of $S$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b2d2fd82',
+      },
+      notes: {
+        en: "⭐ The \"merged form\" compresses three conditions into one operation $cu + v$: it governs $0$ (take $c = -1$, $v = u$), addition (take $c = 1$), and scalar multiplication (take $v = 0$, where $0 \\in U$ has already been obtained) all at once.\n\nIt saves the most space when writing proofs.\n\n⭐ The \"ascending chain form\" is the one place where an **infinite** union works: an arbitrary finite union need not be closed, but the union of an increasing chain is closed — because any two elements lie in the same $U_n$ of the chain (take the maximum of finitely many indices).\n\n⭐ The \"spanning form\" is the same trick as \"the $\\sigma$-algebra generated by\" and \"the subgroup generated by\": **intersect all structures containing it**.\n\nIt is also what the weak edge `ana.generated-closure` on the graph is about.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b75851cc',
+      },
+    },
+
+    'def.similarity': {
+      statement: {
+        en: "Two square matrices $A, B \\in M_n(K)$ are **similar**, written $A \\sim B$, iff there is an invertible matrix $P$ such that\n\n$$B = P^{-1} A\\, P$$\n\n$P$ is called the **transition matrix**. An equivalent way to say it: $A$ and $B$ are matrices of the same linear map in two bases.\n\nInvariants of similarity: rank, trace, determinant, characteristic polynomial (hence eigenvalues and their algebraic multiplicities), minimal polynomial.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a0b79fce',
+      },
+      notes: {
+        en: "⭐ Similarity is an **equivalence relation** (reflexive / symmetric / transitive), so $M_n(K)$ splits into similarity classes; **the classification problem is to describe all similarity classes**.\n\n⭐ Two worlds, two ways of saying the same thing: on the matrix side \"$B = P^{-1}AP$\", on the map side \"the same $T$, two bases\".\n\nThe two edges `thm.change-of-basis` and `dep.changeofbasis-similarity` on the graph say exactly this.\n\n⚠ Similarity is stricter than **equivalence** ($B = PAQ$): equivalence only requires equal rank, while similarity also requires equal characteristic polynomial.\n\n$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$ and $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ are equivalent but not similar.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f1835975',
+      },
+    },
+
+    'prop.continuous-arithmetic': {
+      statement: {
+        en: "Let $f, g : \\mathbb{R} \\to \\mathbb{R}$ be continuous at $x_0$ and $c \\in \\mathbb{R}$. Then the following are continuous at $x_0$:\n\n$$f + g, \\quad f - g, \\quad cf, \\quad fg, \\quad |f|;$$\n\nif $g(x_0) \\ne 0$, then $f/g$ is continuous at $x_0$. If $g$ is continuous at $f(x_0)$, then the composite $g \\circ f$ is continuous at $x_0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c88fe6cd',
+      },
+      notes: {
+        en: "⭐ The first five follow directly from the **algebra of limits** (`prop.limit-arithmetic`): continuity means \"the limit equals the value\", so any operation limits support, continuity supports too.\n\n⚠ The composite case **cannot** be copied blindly: $\\lim_{x \\to x_0} f(x) = f(x_0)$ and $\\lim_{y \\to y_0} g(y) = g(y_0)$ must be combined into $\\lim_{x \\to x_0} g(f(x)) = g(f(x_0))$, with an $\\varepsilon$-$\\delta$ transfer in between.\n\n⭐ Corollary: polynomials are continuous everywhere;\n\nrational functions are continuous where the denominator does not vanish;\n\nby `thm.elementary-derivatives` and power series, $\\exp$, $\\sin$, $\\cos$ are continuous too — so \"elementary functions are continuous on their domains\" is **proved**, not stipulated.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ea279284',
+      },
+    },
+
+    'thm.cayley': {
+      statement: {
+        en: "Let $G$ be a group. **Left multiplication** gives an injective homomorphism\n\n$$\\rho : G \\hookrightarrow \\operatorname{Sym}(G), \\qquad \\rho(g)(h) := gh$$\n\nIn particular, if $|G| = n$ then $G$ is isomorphic to a subgroup of $S_n$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8dd5b021',
+      },
+      notes: {
+        en: "⭐ The philosophical content of the theorem exceeds its computational content: **every abstract group can be realized concretely as a group of permutations**.\n\nThat is, \"group theory\" and \"permutation group theory\" are the same subject — abstraction does not really create new objects, only a change of viewpoint.\n\n⚠ The price is high: for $|G| = n$ one embeds into $S_n$ (of order $n!$), so Cayley's theorem is almost never used for computation.\n\nIts real use is as a contrast with representation theory: replacing \"acting on a set\" by \"acting on a vector space\" is the beginning of that line.\n\n⭐ Left multiplication is also **free** (every stabilizer is trivial: $gh = h \\implies g = e$), so it is automatically injective — this is the core sentence of the proof.",
+        status: 'draft',
+        basedOn: 'v0.9.3#20a9f357',
+      },
+    },
   },
 };

@@ -468,6 +468,83 @@
       return U.perpControl(ax, ay, bx, by, bend * s);
     }
 
+    /* ------------------------------------------------- 推出入边合流（2026-11-15）
+       用户报：`lem.newman-tauberian` 周围一片「锥体」——多条 implication 入边
+       各自从源节点拉一条长直线、直到离目标 mergeOffset（52 世界单位）才汇合，
+       于是近处像一把扇子，而且每条边各有一个箭头、分支还在汇合点前留 7px 缝。
+       目标：同一目标的强推出入边**共用一个汇合点**，分支在那里头尾相接，
+       最终只有一条主干进目标、一个箭头。
+
+       规则（⛔ 不要一刀切）：
+         · 只并 `kind === 'implication' && strength === 'strong'`；
+         · 推论边（isDerived，粉红）单独一组 —— 颜色不同，混在一起会把
+           「粉红 = 不分层」这条视觉线索弄丢；
+         · 单边单源不并（没有第二条可并，保持原来的直线）；
+         · 方向取「目标 → 全部源的圆心方向」；源把目标围住（方向退化）时
+           退回质心方向，再不行就放弃合并 —— 宁可保持原样也不画一条怪主干。
+       汇合点距离 = clamp(源平均距离 × trunkFrac, mergeOffset×k, min(0.45×距离, trunkMaxPx))。
+       ⚠️ 这里返回的是**屏幕坐标**，每轮 buildGeometry 按当前相机重建；
+          buildGeometry 本身有相机缓存，所以不是每帧 O(E)。 */
+    /* 合流分组只与「可见边集合」有关，与相机无关 ⇒ 按 view.visible 的引用缓存。
+       每帧只重算「汇合点位置」（对每个多源组做几次加法），不重扫 3600 条边。
+       ⚠️ view.visible 只在过滤变更时整体替换（见 buildGeometry 的注释），
+       所以引用相同 = 分组相同；换层/换门槛会自然失效。 */
+    var trunkGroupCache = null, trunkGroupSrc = null;
+    function trunkGroups(list) {
+      if (trunkGroupSrc === list && trunkGroupCache) return trunkGroupCache;
+      var groups = Object.create(null);
+      list.forEach(function (e) {
+        if (e.kind !== 'implication') return;
+        if (GU.strengthOf(e) !== 'strong') return;
+        var key = e.target + '|' + (GU.isDerived(e) ? 'd' : 'n');
+        (groups[key] = groups[key] || []).push(e);
+      });
+      trunkGroupSrc = list;
+      trunkGroupCache = groups;
+      return groups;
+    }
+
+    function trunkPlan(list) {
+      var groups = trunkGroups(list);
+      var out = Object.create(null);
+      var camK = camNow().k || 1;
+      Object.keys(groups).forEach(function (key) {
+        var arr = groups[key];
+        var tgt = arr[0].target;
+        var tn = view.graph.byId[tgt];
+        if (!tn) return;
+        var seen = Object.create(null), srcId = [];
+        arr.forEach(function (e) {
+          e.sources.forEach(function (id) {
+            if (!seen[id] && view.graph.byId[id]) { seen[id] = 1; srcId.push(id); }
+          });
+        });
+        if (arr.length < 2 && srcId.length < 2) return;   // 单边单源：保持原样
+        var T = screenOf(tn);
+        var cx = 0, cy = 0, ux = 0, uy = 0, sumD = 0;
+        srcId.forEach(function (id) {
+          var p = screenOf(view.graph.byId[id]);
+          cx += p.x; cy += p.y;
+          var dx = p.x - T.x, dy = p.y - T.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+          ux += dx / d; uy += dy / d; sumD += d;
+        });
+        cx /= srcId.length; cy /= srcId.length;
+        var dirX = ux, dirY = uy;
+        if (dirX * dirX + dirY * dirY < 0.09) {           // 源围住目标：退回质心方向
+          dirX = cx - T.x; dirY = cy - T.y;
+        }
+        var dl = Math.sqrt(dirX * dirX + dirY * dirY);
+        if (dl < 1e-3) return;                            // 方向退化：不合并
+        var meanD = sumD / srcId.length;
+        var maxL = Math.min(meanD * 0.45, (C.edge.trunkMaxPx || 320));
+        var L = U.clamp(meanD * (C.edge.trunkFrac || 0.22), C.edge.mergeOffset * camK, maxL);
+        if (L > meanD * 0.8) L = meanD * 0.8;
+        var ordered = arr.slice().sort(function (a, b) { return a.id < b.id ? -1 : a.id > b.id ? 1 : 0; });
+        out[tgt] = { x: T.x + (dirX / dl) * L, y: T.y + (dirY / dl) * L, id: ordered[0].id, n: arr.length };
+      });
+      return out;
+    }
+
     function buildGeometry() {
       var cam = view.cam;
       var geom = Object.create(null);
@@ -475,11 +552,17 @@
 
       /* 先按「节点对」分组，算出每条边该让开多少 —— 必须整体先看一眼才谈得上配对。 */
       var bendOf = bundleOffsets(view.visible);
+      /* 再按「目标」分组，算推出入边的公共汇合点（见 trunkPlan 的规则）。 */
+      var trunks = trunkPlan(view.visible);
 
       view.visible.forEach(function (e) {
         if (!cullOff && !edgeInView(e)) return;            // 便宜的一票否决：整条线都在视口同一侧之外
-        var g = computeEdge(e, cam, bendOf[e.id] || 0);
-        if (!g || !polysHitView(g.polys)) return;   // 精确判据：画出来的形状碰不到视口就不画
+        var g = computeEdge(e, cam, bendOf[e.id] || 0, trunks);
+        if (!g) return;
+        /* 精确判据：分支或主干任一段碰到视口就画（主干在目标附近，分支可能已在屏外）。 */
+        var hit = polysHitView(g.polys);
+        if (!hit && g.trunkPolys) hit = polysHitView(g.trunkPolys);
+        if (!hit) return;
         geom[e.id] = g;
         list.push(g);
       });
@@ -586,7 +669,7 @@
         1, E.widthMax == null ? 2.6 : E.widthMax);
     }
 
-    function computeEdge(e, cam, bend) {
+    function computeEdge(e, cam, bend, trunks) {
       var byId = view.graph.byId;
       var quads = [], polys = [], arrow = null, glyph = null, ends = [];
       bend = bend || 0;
@@ -649,6 +732,28 @@
       if (!srcs.length) return null;
       var Pt = screenOf(tg), rt = nodeRadius(tg);
       var wc = { x: 0, y: 0 };
+
+      /* ⭐ 2026-11-15 合流：同一目标的强推出入边共用一个汇合点（规则见 trunkPlan）。
+         分支在汇合点**头尾相接**（以前提前 7px 收笔，留下一条缝）；主干只由
+         `trunkPlan` 选出的那条边（id 最小）画，箭头也只画一次 —— 一条主干、一个箭镞。 */
+      var tp = trunks && trunks[e.target];
+      if (tp) {
+        var tipJ = trimTo(Pt, tp, rt + 5);
+        srcs.forEach(function (s) {
+          var Ps = screenOf(s), rsp = nodeRadius(s);
+          var st = trimTo(Ps, tp, rsp + 1.5);
+          polys.push([{ x: st.x, y: st.y }, { x: tp.x, y: tp.y }]);
+          ends.push(s.id);
+        });
+        var root = tp.id === e.id;
+        var gm = edgeGeom(e, quads, polys, null, null, ends);
+        gm.trunkPolys = root ? [{ x: tp.x, y: tp.y }, { x: tipJ.x, y: tipJ.y }] : null;
+        if (root) {
+          gm.arrow = { x: tipJ.x, y: tipJ.y, angle: Math.atan2(-tipJ.uy, -tipJ.ux) };
+          ends.push(tg.id);
+        }
+        return gm;
+      }
 
       if (srcs.length === 1) {
         var s0 = screenOf(srcs[0]);
@@ -1786,6 +1891,12 @@
           for (var k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
         }
       });
+      /* 合流主干和分支同一条路径一次描边 —— 接缝处不会因为两次 stroke 的
+         圆头/半透明叠加冒出一个亮点。只有 root 边带 trunkPolys。 */
+      if (g.trunkPolys) {
+        ctx.moveTo(g.trunkPolys[0].x, g.trunkPolys[0].y);
+        ctx.lineTo(g.trunkPolys[1].x, g.trunkPolys[1].y);
+      }
       ctx.stroke();
       edgeTrace(g, 'drawn', a, aLod, insideN);
 
@@ -2629,6 +2740,13 @@
           var d = U.pointPolylineDist(sx, sy, pts);
           if (d < tol && d < hitD) { hitD = d; hitEdge = g.edge.id; }
         });
+        /* 合流主干：只有 root 边带 trunkPolys ⇒ 点主干总是打开**同一条**证明
+           （规则见 trunkPlan：id 最小的那条），不会因为遍历顺序不同而漂。
+           其它分支各自可点，证明入口一个都没丢。 */
+        if (g.trunkPolys) {
+          var dt = U.pointPolylineDist(sx, sy, g.trunkPolys);
+          if (dt < tol && dt < hitD) { hitD = dt; hitEdge = g.edge.id; }
+        }
         if (g.arrow) {
           var d2 = U.dist(sx, sy, g.arrow.x, g.arrow.y);
           if (d2 < tol + 6 && d2 < hitD) { hitD = d2; hitEdge = g.edge.id; }
