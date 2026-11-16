@@ -126,8 +126,10 @@
 
     /* 节点 */
     node: {
-      baseRadius: 6,             // ⭐ 2026-11-16：固定**屏幕像素**半径（不再乘 k^radiusPower）
-      minRadius: 3.0,
+      baseRadius: 3.0,           // ⭐ 2026-11-16：固定**屏幕像素**半径（不再乘 k^radiusPower）
+      /* 2026-11-16 用户：基准要回到旧版 fit 的观感（旧 fit k≈0.245 时典型 ~3.1px、hub ~5.1px）。
+         6px 基准在手机上点大一圈，所以基准按「旧 fit 的屏幕尺寸」重新钉：3.0 × sizeMul。 */
+      minRadius: 2.0,
       maxRadius: 26,
       radiusPower: 0.62,          // 已废弃（2026-11-16 起半径不随 k 变；留着是为了旧脚本读配置不报错）
       ringWidth: 2.0,
