@@ -131,16 +131,67 @@ const RULES = [
     why: '体积数字必须用占位符（{{SIZE_GRAPH_MD}} / {{SIZE_GRAPH_JSON}} / %%SIZE_KB%%），不要手写' },
 ];
 
+/* ---------------------------------------------------------------------------
+   匹配前先抹掉「页面上的读者看不见的文字」。
+   HTML 里有两类这种文字：<!-- … --> 整段注释，以及 <script> 里的斜杠星号块注释。
+   它们不显示给读者，里面写多少旧数字都不该被当成硬编码 —— site/index.html 的脚本头
+   就有一句注释示例「15 星系 / 105 星团 / 1673 节点 / 3783 连线」，图一长它就会先红，
+   而真正该修的是这份体检（2026-11-17 用户指出）。
+   ⇒ 按字符扫一遍，把这两类区域换成空格（换行保留 ⇒ 行号不变），只校验真正会显示的文本。
+   ⛔ 别图省事把整个 HTML 文件跳过：页面上的真实计数必须照样被查。
+   ⚠️ 只抹注释，不抹 <script> 的其余代码 —— 代码里写死计数同样会过期，该拦。
+   --------------------------------------------------------------------------- */
+function maskInvisibleHtml(text) {
+  const out = [];
+  const N = text.length;
+  let i = 0;
+  let htmlComment = false, inScript = false, jsBlock = false, quote = null;
+  const blank = (ch) => (ch === '\n' || ch === '\r') ? ch : ' ';
+  const pushBlank = (s) => { for (const ch of s) out.push(blank(ch)); };
+  while (i < N) {
+    const at = (k) => text.substr(i, k);
+    if (htmlComment) {
+      if (at(3) === '-->') { htmlComment = false; pushBlank('-->'); i += 3; }
+      else { pushBlank(text[i]); i += 1; }
+      continue;
+    }
+    if (!inScript && at(4) === '<!--') { htmlComment = true; pushBlank('<!--'); i += 4; continue; }
+    if (!inScript && at(7).toLowerCase() === '<script') { inScript = true; out.push(at(7)); i += 7; continue; }
+    if (inScript && at(9).toLowerCase() === '</script>') {
+      inScript = false; jsBlock = false; quote = null; out.push(at(9)); i += 9; continue;
+    }
+    if (!inScript) { out.push(text[i]); i += 1; continue; }
+    /* —— 以下只在 <script> 内部 —— */
+    if (jsBlock) {
+      if (at(2) === '*/') { jsBlock = false; pushBlank('*/'); i += 2; }
+      else { pushBlank(text[i]); i += 1; }
+      continue;
+    }
+    if (quote) {
+      if (text[i] === '\\') { out.push(text[i], text[i + 1] || ''); i += 2; continue; }
+      if (text[i] === quote) quote = null;
+      out.push(text[i]); i += 1; continue;
+    }
+    if (text[i] === "'" || text[i] === '"' || text[i] === '`') { quote = text[i]; out.push(text[i]); i += 1; continue; }
+    if (at(2) === '/*') { jsBlock = true; pushBlank('/*'); i += 2; continue; }
+    out.push(text[i]); i += 1;
+  }
+  return out.join('');
+}
+
 let bad = 0, soft = 0, checked = 0;
 console.log('文档硬数字体检（对照 dist/graph.json 的 meta.counts）\n');
 for (const rel of FILES) {
   const p = path.join(ROOT, rel);
   if (!fs.existsSync(p)) { if (!OPTIONAL.has(rel)) console.log(`  ⚠ 缺文件：${rel}`); continue; }
-  const lines = fs.readFileSync(p, 'utf8').split('\n');
+  const raw = fs.readFileSync(p, 'utf8');
+  const rawLines = raw.split('\n');
+  /* HTML：先抹掉注释再匹配（行号不变）；其余文件原样扫。 */
+  const lines = /\.html?$/i.test(rel) ? maskInvisibleHtml(raw).split('\n') : rawLines;
   lines.forEach((line, i) => {
     /* 一行写 `stalecheck:ignore` 就跳过：那是子集统计 / 历史引用，不是全图规模。
        用它要能说清为什么 —— 否则宁可改文案。 */
-    if (line.includes('stalecheck:ignore')) return;
+    if (rawLines[i].includes('stalecheck:ignore')) return;
     for (const r of RULES) {
       r.re.lastIndex = 0;
       let m;

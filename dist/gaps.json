@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T11:22:08.190Z",
+ "generated": "2026-11-17T05:17:23.885Z",
  "terms": 76,
  "missing": [
   {
@@ -414,6 +414,15 @@
    "gap": 2
   },
   {
+   "node": "def.algebra-over-ring",
+   "nodeLabel": "环上的代数",
+   "nodeLayer": 12,
+   "def": "def.linear-map",
+   "defLabel": "线性映射",
+   "defLayer": 14,
+   "gap": 2
+  },
+  {
    "node": "def.category-of-groups",
    "nodeLabel": "群范畴",
    "nodeLayer": 10,
@@ -475,9 +484,27 @@
    "defLabel": "方向导数",
    "defLayer": 24,
    "gap": 0
+  },
+  {
+   "node": "def.symmetric-power-representation",
+   "nodeLabel": "对称平方表示",
+   "nodeLayer": 19,
+   "def": "def.eigenspace",
+   "defLabel": "特征子空间",
+   "defLayer": 19,
+   "gap": 0
+  },
+  {
+   "node": "def.exterior-power-representation",
+   "nodeLabel": "外平方表示",
+   "nodeLayer": 19,
+   "def": "def.eigenspace",
+   "defLabel": "特征子空间",
+   "defLayer": 19,
+   "gap": 0
   }
  ],
- "noEdgeAll": 47,
+ "noEdgeAll": 50,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

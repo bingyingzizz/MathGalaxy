@@ -212,6 +212,15 @@ MG.clusters = [
     desc: '「真的把 $Ax = b$ 解出来」的四件工具，**靠团外的结果接起来**：矩阵范数（量「大小」）· LU（消元的矩阵形式，靠初等矩阵）· QR（Gram–Schmidt 的矩阵形式）· **最小二乘**（无解时求最近的解，即正交投影）与伪逆（连「解不唯一」也能挑出规范的那个）。团内**真有的链条只有两条**：QR $\\implies$ 最小二乘（法方程化成上三角回代）、最小二乘（列满秩）$\\implies$ 伪逆就是 $(A^{T}A)^{-1}A^{T}$。矩阵范数与 LU 的依赖都在团外。⛔ 只写数学（存在性/唯一性/变分刻画），不写数值算法。'
   },
 
+  {
+    id: 'algebra.representation',
+    name: '群与代数表示',
+    en: 'Group and Algebra Representations',
+    parent: 'algebra',
+    hub: 'def.group-representation',
+    desc: '造出「让代数作用在向量空间上」这套机器：表示 ⇔ 模 → 子表示 / 商 / 直和 / 张量 / 对偶 → 不可约与半单 → **Schur 引理** → 半单代数的 Wedderburn–Artin 结构 → 有限群的**特征标**与正交关系 → **Maschke 定理**与群代数的 Wedderburn 分解 → **Krull–Schmidt**。核心一句话：**线性作用就是模，半单就是能拆成不可约直和**。'
+  },
+
   /* ------------------------------------------------ 星系：拓扑学 */
   {
     id: 'topology.general',

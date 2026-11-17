@@ -661,22 +661,6 @@ window.MG = window.MG || {};
         '',
         '所以「积性函数」这条定义是四个具体公式的共同外壳 —— 与「张量场是向量场、微分形式、度量的共同外壳」是同一种组织方式。',
       ].join('\n\n'),
-    },{
-      id: 'imp.newman-cauchy-residue',
-      kind: 'implication',
-      sources: ['thm.cauchy-integral-formula', 'thm.residue', 'thm.cauchy-goursat'],
-      target: 'lem.newman-tauberian',
-      title: 'Cauchy 积分公式、留数公式与 Cauchy–Goursat $\\implies$ Newman 围道恒等式',
-      proof: [
-        '**Cauchy 积分公式。** 设 $D=\\{|z|\\le R,\\ \\operatorname{Re}z\\ge-\\delta\\}$ 是 $g$ 的全纯邻域，$C=\\partial D$ 取正向。在 $D$ 上考虑 $(g-g_T)F/z$，其中 $F(z)=e^{zT}(1+z^{2}/R^{2})$ 整、$F(0)=1$。它唯一的极点是 $z=0$（单极点），由 Cauchy 积分公式',
-        '',
-        '$$g(0)-g_T(0)=\\frac{1}{2\\pi i}\\oint_C (g-g_T)(z)\\,F(z)\\,\\frac{dz}{z}.$$',
-        '',
-        '**留数公式。** 上式右端正是 $z=0$ 处留数的 $2\\pi i$ 倍：$\\operatorname{Res}_{z=0}\\bigl((g-g_T)F/z\\bigr)=(g(0)-g_T(0))F(0)=g(0)-g_T(0)$。',
-        '',
-        '**Cauchy–Goursat 变形。** $g_T$ 是整函数，故 $g_TF/z$ 在 $z=0$ 有可去奇点、在整个 $D$ 上全纯；由 Cauchy–Goursat 定理，它沿 $C$ 的积分为 $0$。于是可以把 $C_-$ 一段上的 $g$ 换到左半圆上：$gF/z$ 在左半圆盘（不含 $0$）上全纯，沿 $C_-$ 与左半圆的积分相等。这两步合起来正是把围道 $C_-$ 变形成左半圆、并让 $g_T$ 项消失的依据。'
-      ].join('\n\n'),
-      note: '本引理的证明用到这三条；此前只挂了到 PNT 的出边，故层号错为 0。',
     },
     { id: 'def-link.newman-analytic', kind: 'definition', definition: 'def.analytic-continuation',
       usedBy: 'lem.newman-tauberian',

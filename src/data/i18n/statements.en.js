@@ -9546,5 +9546,497 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#612034ff',
       },
     },
+    "def.algebra-over-ring": {
+      statement: {
+        en: "Let $R$ be a commutative ring with identity. An $R$-algebra is an $R$-module $A$ together with an $R$-bilinear multiplication $A\\times A\\to A$, $(x,y)\\mapsto xy$. If the multiplication is associative, $A$ is called an associative algebra; if there is $1_A\\in A$ with $1_Ax=x1_A=x$, then $A$ is called unital. Unital associative $R$-algebras with multiplication- and unit-preserving $R$-linear maps form the category $\\mathrm{Alg}_R^{\\mathrm{uni}}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#398e2f8d',
+      },
+      notes: {
+        en: "The base ring is commutative so that the left and right $R$-actions agree. A unital algebra has a structure map $R\\to A$, $r\\mapsto r1_A$, whose image lies in the centre of $A$. Examples are $M_n(F)$, the polynomial algebra $F[x_1,\\ldots,x_n]$, and the group algebra $F[G]$. Associativity and unitality are additional axioms; this cluster works with unital associative algebras.",
+        status: 'draft',
+        basedOn: 'v0.9.3#53b66a71',
+      },
+    },
+    "def.algebra-representation": {
+      statement: {
+        en: "Let $A$ be a unital associative $F$-algebra. A linear representation of $A$ is a pair $(M,\\theta)$, where $M$ is an $F$-vector space and $\\theta:A\\to\\operatorname{End}_F(M)$ is a unital algebra homomorphism. Setting $a\\cdot m=\\theta(a)(m)$ makes $M$ a left $A$-module; this construction gives an equivalence between unital representations and left $A$-modules.",
+        status: 'draft',
+        basedOn: 'v0.9.3#741e4775',
+      },
+      notes: {
+        en: "The condition $\\theta(1_A)=\\operatorname{id}_M$ is part of unitality. Under this equivalence, $A$-linear maps are exactly morphisms of representations, so $\\mathrm{Rep}_A^{\\mathrm{uni}}$ is equivalent to $A\\text{-}\\mathrm{Mod}$. The natural action of $M_n(F)$ on $F^n$ is a basic example. An $F[x_1,\\ldots,x_n]$-module structure is the same as $n$ commuting endomorphisms $T_i$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e032b807',
+      },
+    },
+    "def.representation-morphism": {
+      statement: {
+        en: "Let $(V,\\theta)$ and $(W,\\varphi)$ be representations of $A$. An $A$-linear map (an intertwiner) is an $F$-linear map $h:V\\to W$ such that $h(\\theta(a)v)=\\varphi(a)h(v)$ for all $a\\in A$ and $v\\in V$. These morphisms form the category $\\mathrm{Rep}_A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1beb8f67',
+      },
+      notes: {
+        en: "Isomorphisms are exactly bijective intertwiners, and their inverses are again $A$-linear. The kernel and image of an intertwiner are subrepresentations. The space $\\operatorname{End}_A(V)=\\operatorname{Hom}_A(V,V)$ is an $F$-algebra; Schur's lemma describes it for irreducible $V$. For $A=F[G]$, intertwiners are exactly $G$-equivariant maps.",
+        status: 'draft',
+        basedOn: 'v0.9.3#103f3670',
+      },
+    },
+    "def.group-representation": {
+      statement: {
+        en: "Let $G$ be a finite group. A representation of $G$ over $F$ is a pair $(V,\\rho)$, where $V$ is a finite-dimensional $F$-vector space and $\\rho:G\\to GL(V)$ is a group homomorphism. It is equivalent to a unital left $F[G]$-module structure on $V$; hence representations of $G$ are the same as unital representations of the group algebra $F[G]$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#655deb87',
+      },
+      notes: {
+        en: "The dimension of the representation is $\\dim_F V$. The trivial representation has $\\rho(g)=\\operatorname{id}_V$, and the regular representation is the left multiplication action of $G$ on $F[G]$. The group algebra $F[G]$ consists of formal sums $\\sum a_g g$ with convolution multiplication, and $\\rho$ extends uniquely to a unital algebra homomorphism $F[G]\\to\\operatorname{End}_F(V)$. This equivalence transfers all results on algebra representations to groups.",
+        status: 'draft',
+        basedOn: 'v0.9.3#634af6ab',
+      },
+    },
+    "def.subrepresentation": {
+      statement: {
+        en: "A subspace $W\\subseteq V$ is called a subrepresentation if $\\theta(a)W\\subseteq W$ for all $a\\in A$; then $\\theta$ restricts to a representation on $W$. For a group representation this means $\\rho(g)W\\subseteq W$ for all $g\\in G$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a1ab9d66',
+      },
+      notes: {
+        en: "The zero subspace and $V$ are always subrepresentations. Sums and intersections of subrepresentations are again subrepresentations; kernels and images of intertwiners are also subrepresentations. For group representations, subrepresentations are exactly $G$-invariant subspaces. Quotient representations are treated in a separate node.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b8b50bb9',
+      },
+    },
+    "def.irreducible-representation": {
+      statement: {
+        en: "A nonzero representation $V$ is called irreducible (simple) if its only subrepresentations are $0$ and $V$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2eb0d37e',
+      },
+      notes: {
+        en: "Every one-dimensional representation is irreducible. Irreducible implies indecomposable, but not conversely: over $F[x]$ the matrix $T=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ is indecomposable yet has an invariant line, so it is reducible. In module language, irreducible representations are simple $A$-modules. Over an algebraically closed field, Schur's lemma forces $\\operatorname{End}_A(V)$ to consist of scalars.",
+        status: 'draft',
+        basedOn: 'v0.9.3#533ca056',
+      },
+    },
+    "def.quotient-representation": {
+      statement: {
+        en: "If $W\\subseteq V$ is a subrepresentation, the quotient space $V/W$ carries a well-defined action $a(v+W)=av+W$, and the quotient map $V\\to V/W$ is $A$-linear.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2368f9fa',
+      },
+      notes: {
+        en: "Well-definedness uses $\\theta(a)W\\subseteq W$. The dimension of the quotient is $\\dim V-\\dim W$. For group representations the action is $\\rho(g)(v+W)=\\rho(g)v+W$. Quotients of semisimple representations are again semisimple; see the proposition on subrepresentations and quotients.",
+        status: 'draft',
+        basedOn: 'v0.9.3#12704ff7',
+      },
+    },
+    "def.direct-sum-representation": {
+      statement: {
+        en: "Given representations $V_1,\\ldots,V_n$ of $A$, the direct sum $V_1\\oplus\\cdots\\oplus V_n$ carries the componentwise action $a(v_1,\\ldots,v_n)=(av_1,\\ldots,av_n)$; it is a biproduct in $\\mathrm{Rep}_A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#7b22b878',
+      },
+      notes: {
+        en: "The inclusions and projections are $A$-linear and satisfy the biproduct identities. In a basis adapted to the decomposition, each $\\theta(a)$ is block diagonal with blocks $\\theta_i(a)$. The notation $nV$ denotes the direct sum of $n$ copies of $V$. An internal direct sum means $V=W_1\\oplus\\cdots\\oplus W_n$ with each $W_i$ a subrepresentation.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bc1be476',
+      },
+    },
+    "def.tensor-representation": {
+      statement: {
+        en: "Let $(V,\\rho)$ and $(W,\\sigma)$ be representations of a group $G$. The tensor product $V\\otimes_F W$ carries the action $g(v\\otimes w)=\\rho(g)v\\otimes\\sigma(g)w$, called the tensor product representation of $G$. For a general $F$-algebra $A$ one needs an algebra homomorphism $A\\to A\\otimes A$ for such an action; the group case uses the diagonal.",
+        status: 'draft',
+        basedOn: 'v0.9.3#01c0e688',
+      },
+      notes: {
+        en: "The action is well defined because $\\otimes$ is bilinear and $\\rho(g),\\sigma(g)$ are linear. Its dimension is $(\\dim V)(\\dim W)$. The character satisfies $\\chi_{V\\otimes W}(g)=\\chi_V(g)\\chi_W(g)$, see the node on character operations. For a general algebra $A$, $V\\otimes W$ is only an $A\\otimes A$-module unless $A$ is a bialgebra; the group algebra $F[G]$ is the main case here.",
+        status: 'draft',
+        basedOn: 'v0.9.3#2d704b70',
+      },
+    },
+    "def.dual-representation": {
+      statement: {
+        en: "Let $(V,\\theta)$ be a representation of $A$. On the dual space $V^*=\\operatorname{Hom}_F(V,F)$ put $\\theta^*(a)\\ell=\\ell\\circ\\theta(a)$. Since $\\theta^*(ab)=\\theta^*(b)\\theta^*(a)$, the space $V^*$ is a representation of the opposite algebra $A^{\\mathrm{op}}$, not generally of $A$. For a group representation, $\\rho^*(g)=\\rho(g^{-1})^T$ makes $V^*$ a representation of $G$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#bda4792d',
+      },
+      notes: {
+        en: "The transpose convention is forced by contravariance: $\\theta^*$ is an anti-homomorphism. In the group case the inverse restores a genuine action. In a basis, the matrix of $\\rho^*(g)$ is the inverse transpose of that of $\\rho(g)$. In finite dimension the double dual is naturally isomorphic to $V$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#926de450',
+      },
+    },
+    "def.indecomposable-representation": {
+      statement: {
+        en: "A nonzero representation $V$ is called indecomposable if $V=W_1\\oplus W_2$ with subrepresentations forces $W_1=0$ or $W_2=0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#777cf963',
+      },
+      notes: {
+        en: "Every irreducible representation is indecomposable. The converse fails: over $F[x]$ the matrix $T=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ is indecomposable but has the invariant line $F e_1$, hence is reducible. The Krull–Schmidt theorem gives uniqueness of decompositions into indecomposables. Indecomposable is weaker than irreducible.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f1ad6867',
+      },
+    },
+    "def.semisimple-representation": {
+      statement: {
+        en: "A representation $V$ of $A$ is called semisimple (completely reducible) if it is a direct sum of irreducible subrepresentations.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ad226f91',
+      },
+      notes: {
+        en: "The zero representation is semisimple by convention (empty direct sum). In finite dimension there are finitely many summands. Equivalent characterizations (a sum of irreducibles, existence of complements) are given in a separate theorem. Maschke's theorem shows that $F[G]$ is semisimple when $\\operatorname{char}F\\nmid |G|$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1db0e5c1',
+      },
+    },
+    "def.character": {
+      statement: {
+        en: "Let $(V,\\theta)$ be a finite-dimensional representation of $A$. Its character is the function $\\chi_\\theta:A\\to F$, $\\chi_\\theta(a)=\\operatorname{tr}\\theta(a)$. It depends only on the isomorphism class of $V$; moreover $\\chi_{V\\oplus W}=\\chi_V+\\chi_W$ and $\\chi_V(1_A)=\\dim V$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#50fda2a6',
+      },
+      notes: {
+        en: "The trace is basis-independent, so $\\chi_\\theta$ is well defined. Characters are additive on direct sums but generally not multiplicative: $\\chi(ab)\\ne\\chi(a)\\chi(b)$. For $A=F[G]$, restricting $\\chi_\\theta$ to $G$ gives a group character. If $W$ is a subrepresentation, then $\\chi_V=\\chi_W+\\chi_{V/W}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b5641dff',
+      },
+    },
+    "def.group-character": {
+      statement: {
+        en: "Let $(V,\\rho)$ be a finite-dimensional representation of a finite group $G$. Its character is the function $\\chi_\\rho:G\\to F$, $\\chi_\\rho(g)=\\operatorname{tr}\\rho(g)$. It satisfies $\\chi_\\rho(1)=\\dim V$ and is constant on conjugacy classes.",
+        status: 'draft',
+        basedOn: 'v0.9.3#e726b06f',
+      },
+      notes: {
+        en: "Conjugacy invariance follows from the cyclicity of the trace: $\\chi(hgh^{-1})=\\operatorname{tr}(\\rho(h)\\rho(g)\\rho(h)^{-1})=\\chi(g)$. Isomorphic representations have the same character. Characters add on direct sums and multiply on tensor products (see the node on character operations). A character is not a group homomorphism $G\\to F^\\times$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5ddaa81d',
+      },
+    },
+    "def.class-function": {
+      statement: {
+        en: "A function $f:G\\to F$ is a class function if $f(hgh^{-1})=f(g)$ for all $g,h\\in G$; equivalently, $f$ is constant on conjugacy classes. Group characters are class functions.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a9105cce',
+      },
+      notes: {
+        en: "Class functions form an $F$-vector space of dimension the number of conjugacy classes, $\\#\\mathrm{CL}(G)$.\nWhen $\\operatorname{char}F=0$ (or $\\operatorname{char}F\\nmid|G|$), characters of pairwise non-isomorphic irreducible representations are linearly independent (orthogonality relations).\nA class function is determined by its values on conjugacy classes.\nThe centralizer of $g$ is its stabilizer under conjugation.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f8e547c7',
+      },
+    },
+    "def.representation-annihilator": {
+      statement: {
+        en: "For a representation $V$ of $A$, define $\\operatorname{Ann}(V)=\\{a\\in A: aV=0\\}$. It is a two-sided ideal of $A$, equal to the kernel of the algebra homomorphism $\\theta:A\\to\\operatorname{End}_F(V)$; $V$ is called faithful if $\\operatorname{Ann}(V)=0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#401aa37e',
+      },
+      notes: {
+        en: "The set $\\operatorname{Ann}(V)$ is the kernel of the structure map, hence an ideal. Faithfulness is equivalent to injectivity of $A\\to\\operatorname{End}_F(V)$. The annihilator of a simple module is a primitive ideal; in the finite-dimensional semisimple case these are exactly the maximal two-sided ideals. The annihilator of a direct sum is the intersection of the annihilators.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4eacce6c',
+      },
+    },
+    "def.jacobson-radical": {
+      statement: {
+        en: "The Jacobson radical of a ring $A$ is $J(A)=\\bigcap_{V}\\operatorname{Ann}(V)$, where $V$ runs over simple left modules; equivalently, it is the intersection of all maximal left ideals. It is a two-sided ideal.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9422822d',
+      },
+      notes: {
+        en: "Also $J(A)$ is the intersection of all maximal right ideals, and it annihilates every irreducible left module.\nIn finite dimension $J(A)=0$ is equivalent to $A$ being semisimple (Jacobson criterion).\nThe quotient $A/J(A)$ is semisimple.\nThe original notes write $\\operatorname{Rad}(A)$, synonymous with $J(A)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#c5535df7',
+      },
+    },
+    "def.simple-algebra": {
+      statement: {
+        en: "A nonzero algebra $A$ is called simple if its only two-sided ideals are $0$ and $A$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#776178d5',
+      },
+      notes: {
+        en: "The matrix algebra $M_n(D)$ over a division algebra $D$ is simple, and this is the model case. Every finite-dimensional simple algebra is isomorphic to a matrix algebra over a division algebra (Wedderburn). The group algebra $F[G]$ is simple only in very small cases. Simplicity is a two-sided condition and is not the same as having no nontrivial left ideals.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f97cd264',
+      },
+    },
+    "def.division-algebra": {
+      statement: {
+        en: "A division algebra over $F$ is a unital $F$-algebra $D$ (not assumed commutative) in which every nonzero element is invertible; equivalently, $D$ is a division ring that is an $F$-algebra.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4350e215',
+      },
+      notes: {
+        en: "The field $F$ itself is a division algebra; the quaternions are a noncommutative example over $\\mathbb{R}$. For an irreducible representation $V$, Schur's lemma shows that $\\operatorname{End}_A(V)$ is a division algebra. The division algebra $D$ in Wedderburn's theorem is $\\operatorname{End}_A(V)$ up to passing to the opposite algebra. Over an algebraically closed field with $\\dim V<\\infty$, one has $D=F$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d3d25e9b',
+      },
+    },
+    "thm.schur-lemma": {
+      statement: {
+        en: "Let $V_1,V_2$ be irreducible representations of $A$. Every nonzero $A$-linear map $h:V_1\\to V_2$ is an isomorphism; in particular, $\\operatorname{End}_A(V)$ is a division algebra. See cor.schur-scalar for the scalar conclusion over an algebraically closed $F$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b1ed096a',
+      },
+      notes: {
+        en: "The proof uses that $\\ker h$ and $\\operatorname{im}h$ are subrepresentations; irreducibility forces $\\ker h=0$ and $\\operatorname{im}h=V_2$.\nThis is the main tool for decomposing semisimple representations.\nThe scalar statement over an algebraically closed field is a separate corollary, cor.schur-scalar.",
+        status: 'draft',
+        basedOn: 'v0.9.3#ce7f6a4e',
+      },
+    },
+    "thm.semisimple-characterizations": {
+      statement: {
+        en: "For a finite-dimensional representation $V$ of $A$, the following are equivalent: (1) $V$ is semisimple; (2) $V$ is a sum of irreducible subrepresentations; (3) every subrepresentation $W\\subseteq V$ has a complement $W'$ with $V=W\\oplus W'$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#794d3ee3',
+      },
+      notes: {
+        en: "(1) implies (2) is clear; (2) implies (3) splits off irreducible summands by induction on dimension; (3) implies (1) by repeatedly taking an irreducible subrepresentation and a complement. Finite dimension guarantees that the process terminates. This is the usual criterion for complete reducibility.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d57cb62b',
+      },
+    },
+    "prop.semisimple-subquotient": {
+      statement: {
+        en: "Subrepresentations and quotient representations of a semisimple representation are semisimple.",
+        status: 'draft',
+        basedOn: 'v0.9.3#59a5a9e1',
+      },
+      notes: {
+        en: "For a subrepresentation $W$ of $V=\\oplus V_i$, one shows that $W$ is the sum of its intersections with the $V_i$, hence semisimple. Quotients are handled with complements and the equivalent characterizations. Iterating, all subquotients of a semisimple representation are semisimple. This result is used in the proof of Wedderburn–Artin.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3d494c3e',
+      },
+    },
+    "thm.burnside-surjectivity": {
+      statement: {
+        en: "Let $V$ be a finite-dimensional semisimple $A$-module, $A'=\\operatorname{End}_A(V)$, and $A''=\\operatorname{End}_{A'}(V)$. The natural map $\\Phi:A\\to A''$, $a\\mapsto(v\\mapsto av)$, is surjective. Equivalently, for every $f\\in A''$ and every finite family $v_1,\\ldots,v_n\\in V$ there is $a\\in A$ with $av_i=f(v_i)$ for all $i$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0de082f1',
+      },
+      notes: {
+        en: "The one-vector case splits $V$ into $Av$ and a complement using semisimplicity, then applies $f$ to the first summand. The several-vector case applies the one-vector result to the diagonal action on $V^n$; the semisimplicity of $V^n$ follows from that of $V$, so the result transfers. This is the double centralizer theorem for finite-dimensional semisimple modules. It is a key step toward Wedderburn's theorem.",
+        status: 'draft',
+        basedOn: 'v0.9.3#30041a74',
+      },
+    },
+    "thm.wedderburn-simple": {
+      statement: {
+        en: "Let $A$ be a finite-dimensional simple $F$-algebra. Then $A\\cong M_n(D^{\\mathrm{op}})$, where $D$ is a division algebra, $n\\ge1$, and for a simple left ideal $V$ one has $D\\cong\\operatorname{End}_A(V)$. If $F$ is algebraically closed, then $D=F$ and $A\\cong M_n(F)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4664f6cb',
+      },
+      notes: {
+        en: "Take a minimal nonzero left ideal $V$; $V$ is a simple $A$-module, and Schur's lemma makes $D=\\operatorname{End}_A(V)$ a division algebra. The natural map $A\\to\\operatorname{End}_D(V)$ is injective because $A$ is simple, and Burnside's theorem makes it surjective; hence $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$. Over an algebraically closed field Schur's lemma gives $D=F$. Note the direction: $A$ is a matrix algebra over $D^{\\mathrm{op}}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1ede1219',
+      },
+    },
+    "thm.wedderburn-artin": {
+      statement: {
+        en: "Let $A$ be a finite-dimensional semisimple $F$-algebra. Then $A\\cong\\prod_{i=1}^s M_{n_i}(D_i)$ with division algebras $D_i$; equivalently, every finite-dimensional $A$-module is semisimple.",
+        status: 'draft',
+        basedOn: 'v0.9.3#f074e1cc',
+      },
+      notes: {
+        en: "Decompose the regular module $A$ into simple left ideals and group them by isomorphism class to obtain two-sided ideals $A_i$ with $A=\\prod A_i$. Each $A_i$ is simple, so the Wedderburn theorem for simple algebras applies. Conversely, a product of matrix algebras is semisimple. The $n_i$ and $D_i$ are unique up to isomorphism and permutation.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0b309d74',
+      },
+    },
+    "thm.jacobson-criterion": {
+      statement: {
+        en: "A finite-dimensional $F$-algebra $A$ is semisimple if and only if $J(A)=0$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#acbbe6e8',
+      },
+      notes: {
+        en: "If $A$ is semisimple, the regular module is a direct sum of simple modules; indeed $J(A)$ is the intersection of the maximal left ideals, and $J(A)$ annihilates every simple module, so $J(A)\\subseteq\\operatorname{Ann}(A)=0$. Conversely, if $J(A)=0$, then $A/J(A)=A$ is semisimple; more directly, the regular module has a simple submodule, and the radical property splits it off. Finite dimension is used for termination.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0ae7753b',
+      },
+    },
+    "prop.partition-of-unity": {
+      statement: {
+        en: "Let $V_1,\\ldots,V_s$ be pairwise non-isomorphic finite-dimensional irreducible representations of $A$. Then there exist $a_i\\in A$ such that $\\theta_j(a_i)=\\delta_{ij}\\operatorname{id}_{V_j}$ for all $i,j$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#4dbb7fc8',
+      },
+      notes: {
+        en: "Apply Burnside's theorem to the direct sum $V=V_1\\oplus\\cdots\\oplus V_s$; the projection onto $V_i$ lies in $A''=\\operatorname{End}_{A'}(V)$. The elements $a_i$ are preimages of these projections. They act as orthogonal idempotents on the $V_j$. This is used to isolate the multiplicity of each irreducible in a semisimple representation.",
+        status: 'draft',
+        basedOn: 'v0.9.3#0006c616',
+      },
+    },
+    "thm.character-determines-semisimple": {
+      statement: {
+        en: "Assume $\\operatorname{char}F=0$. If $W_1,W_2$ are finite-dimensional semisimple representations of $A$, then $W_1\\cong W_2$ if and only if $\\chi_{W_1}=\\chi_{W_2}$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#15da98bf',
+      },
+      notes: {
+        en: "Write $W=\\oplus n_iV_i$ with pairwise non-isomorphic irreducibles $V_i$. The partition-of-unity elements $a_i$ give $\\chi_W(a_i)=n_i\\dim V_i$, so the multiplicities $n_i$ are recovered from $\\chi_W$; $\\operatorname{char}F=0$ allows division by $\\dim V_i$. Semisimplicity cannot be omitted: over $F[x]$ the identity and a Jordan block can have the same character but are not isomorphic. This is the basis of character-table theory.",
+        status: 'draft',
+        basedOn: 'v0.9.3#da50f1b4',
+      },
+    },
+    "prop.fitting-decomposition": {
+      statement: {
+        en: "Let $f\\in\\operatorname{End}_A(V)$ with $\\dim V<\\infty$. Then $V=\\operatorname{Im}(f^\\infty)\\oplus\\operatorname{Ker}(f^\\infty)$, where $\\operatorname{Im}(f^\\infty)=\\bigcap_n\\operatorname{Im}(f^n)$ and $\\operatorname{Ker}(f^\\infty)=\\bigcup_n\\operatorname{Ker}(f^n)$; $f$ is an automorphism on $\\operatorname{Im}(f^\\infty)$ and nilpotent on $\\operatorname{Ker}(f^\\infty)$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#be8d4b3b',
+      },
+      notes: {
+        en: "The chains $\\operatorname{Im}(f^n)$ and $\\operatorname{Ker}(f^n)$ stabilize in finite dimension. On the intersection $\\operatorname{Im}(f^\\infty)$ the map $f$ is both surjective and injective, hence an automorphism; on the union $\\operatorname{Ker}(f^\\infty)$ some power of $f$ vanishes. The two subspaces intersect in $0$ and their dimensions sum to $\\dim V$. Both are $f$-invariant, and they are subrepresentations when $f$ is $A$-linear.",
+        status: 'draft',
+        basedOn: 'v0.9.3#6ce42026',
+      },
+    },
+    "cor.indecomposable-endomorphism": {
+      statement: {
+        en: "Let $V$ be a finite-dimensional indecomposable representation. Then every $f\\in\\operatorname{End}_A(V)$ is either an automorphism or nilpotent.",
+        status: 'draft',
+        basedOn: 'v0.9.3#98553137',
+      },
+      notes: {
+        en: "Use the Fitting decomposition $V=\\operatorname{Im}(f^\\infty)\\oplus\\operatorname{Ker}(f^\\infty)$. Both summands are subrepresentations, so indecomposability forces one of them to be $0$. If $\\operatorname{Ker}=0$, then $f$ is injective hence an automorphism; if $\\operatorname{Im}=0$, then $f$ is nilpotent. This is the all-or-nothing property used in Krull–Schmidt.",
+        status: 'draft',
+        basedOn: 'v0.9.3#5add7a90',
+      },
+    },
+    "lem.nilpotent-sum": {
+      statement: {
+        en: "Let $V$ be a finite-dimensional indecomposable representation and $r,\\eta\\in\\operatorname{End}_A(V)$ nilpotent. Then $r+\\eta$ is nilpotent.",
+        status: 'draft',
+        basedOn: 'v0.9.3#3e97c052',
+      },
+      notes: {
+        en: "By lem.endomorphism-local, $\\operatorname{End}_A(V)$ is a local ring whose maximal ideal consists of the nilpotent endomorphisms; a maximal ideal is closed under addition, so $r+\\eta$ is nilpotent.\nIndecomposability cannot be dropped: for $V=F^2$ with $r=E_{12}$ and $\\eta=E_{21}$ both are nilpotent but $r+\\eta$ is invertible.\nNo commutativity of $r,\\eta$ is needed.",
+        status: 'draft',
+        basedOn: 'v0.9.3#798fab13',
+      },
+    },
+    "lem.iso-factorization": {
+      statement: {
+        en: "Let $V,W$ be finite-dimensional indecomposable representations and let $\\alpha:W\\to V$, $\\beta:V\\to W$ be $A$-linear maps such that $\\alpha\\circ\\beta$ is an automorphism of $V$. Then $\\alpha,\\beta$ are isomorphisms.",
+        status: 'draft',
+        basedOn: 'v0.9.3#efbb5e57',
+      },
+      notes: {
+        en: "If $\\alpha\\beta$ is an automorphism, then $\\beta$ is injective and $\\alpha$ is surjective. Write $W=\\operatorname{im}\\beta\\oplus\\ker\\alpha$; both summands are subrepresentations, and indecomposability forces $\\ker\\alpha=0$. Thus $\\alpha$ is injective and surjective, hence an isomorphism, and $\\beta$ is an isomorphism as well. This is the cancellation step in Krull–Schmidt.",
+        status: 'draft',
+        basedOn: 'v0.9.3#d8768048',
+      },
+    },
+    "thm.krull-schmidt": {
+      statement: {
+        en: "Every finite-dimensional representation decomposes as a direct sum of finitely many indecomposable representations, and this decomposition is unique up to permutation and isomorphism.",
+        status: 'draft',
+        basedOn: 'v0.9.3#26405eca',
+      },
+      notes: {
+        en: "Existence is by induction on dimension: if $V$ is indecomposable the decomposition is complete, otherwise split and induct. Uniqueness compares two decompositions and matches indecomposable summands one by one using the isomorphism factorization lemma; the nilpotent-sum lemma handles the bookkeeping of endomorphisms. No assumption on the field is needed beyond finite dimension. Hence it applies in particular to finite-dimensional representations of finite groups.",
+        status: 'draft',
+        basedOn: 'v0.9.3#04867631',
+      },
+    },
+    "thm.maschke": {
+      statement: {
+        en: "Let $G$ be a finite group and let $F$ be a field with $\\operatorname{char}F\\nmid|G|$. Then the group algebra $F[G]$ is semisimple; equivalently, every finite-dimensional representation of $G$ is semisimple (completely reducible).",
+        status: 'draft',
+        basedOn: 'v0.9.3#96018f72',
+      },
+      notes: {
+        en: "Given a subrepresentation $W\\subseteq V$, take any linear projection $p:V\\to W$ and average over $G$: $\\bar p(v)=\\frac1{|G|}\\sum_g g\\,p(g^{-1}v)$. The condition $\\operatorname{char}F\\nmid|G|$ makes $\\frac1{|G|}$ meaningful; $\\bar p$ is a $G$-equivariant projection, so $V=W\\oplus\\ker\\bar p$. Splitting every subrepresentation this way gives complete reducibility; the group-algebra version follows from the equivalence between representations and $F[G]$-modules.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a394c6fc',
+      },
+    },
+    "cor.group-algebra-wedderburn": {
+      statement: {
+        en: "Let $G$ be finite, $\\operatorname{char}F=0$, and $F$ algebraically closed. Then $F[G]\\cong\\prod_{i=1}^s M_{n_i}(F)$ and, as a left $F[G]$-module, $F[G]\\cong\\bigoplus_{i=1}^s n_iV_i$, where the $V_i$ are pairwise non-isomorphic irreducible representations and $n_i=\\dim V_i$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1ad83389',
+      },
+      notes: {
+        en: "Maschke gives semisimplicity, and Wedderburn–Artin decomposes $F[G]$ into matrix algebras; algebraic closedness replaces division algebras by $F$. The multiplicity of the regular module is $n_i=\\dim V_i$, and comparing dimensions gives $|G|=\\sum n_i^2$. The characters of the $V_i$ form a basis of the space of class functions (orthogonality relations, see character theory). The equality $n_i=\\dim V_i$ is computed with Wedderburn and the regular character.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9026d47f',
+      },
+    },
+    "prop.character-operations": {
+      statement: {
+        en: "Let $V,W$ be finite-dimensional representations of a finite group $G$ with $\\operatorname{char}F\\nmid|G|$ and $\\operatorname{char}F\\ne2$. Then: (1) $\\chi_{V\\oplus W}=\\chi_V+\\chi_W$; (2) $\\chi_{V\\otimes W}=\\chi_V\\chi_W$; (3) $\\chi_{V^*}(g)=\\chi_V(g^{-1})$; (4) $\\chi_{\\operatorname{Sym}^2V}(g)=\\frac12(\\chi_V(g)^2+\\chi_V(g^2))$; (5) $\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$. Parts (4) and (5) use the hypothesis that the characteristic is not two.",
+        status: 'draft',
+        basedOn: 'v0.9.3#1f2e9c15',
+      },
+      notes: {
+        en: "Parts (1) and (2) follow from additivity of the trace and $\\operatorname{tr}(A\\otimes B)=\\operatorname{tr}A\\operatorname{tr}B$.\nPart (3) uses the inverse transpose in the dual representation and cyclicity of the trace.\nFor (4) and (5), triangularize $\\rho(g)$ over an algebraic closure with eigenvalues $\\lambda_i$; the eigenvalues on $\\operatorname{Sym}^2$ are $\\lambda_i\\lambda_j$ with $i\\le j$, and on $\\operatorname{Alt}^2$ they are $\\lambda_i\\lambda_j$ with $i<j$, using $\\sum_{i<j}\\lambda_i\\lambda_j=\\frac12((\\sum\\lambda_i)^2-\\sum\\lambda_i^2)$.\nThe original notes have a sign typo in (4): the correct sign is plus; $\\operatorname{Alt}^2$ uses minus.",
+        status: 'draft',
+        basedOn: 'v0.9.3#00dda92b',
+      },
+    },
+    "def.symmetric-power-representation": {
+      statement: {
+        en: "Let $\\operatorname{char}F\\ne2$ and let $(V,\\rho)$ be a representation of a group $G$. The symmetric square $\\operatorname{Sym}^2V$ is the $+1$ eigenspace of the swap $\\tau(v\\otimes w)=w\\otimes v$ on $V\\otimes V$; $G$ acts by $g(vw)=\\rho(g)v\\,\\rho(g)w$, the symmetric square representation. If $e_1,\\ldots,e_n$ is a basis of $V$, then $\\{e_ie_j:1\\le i\\le j\\le n\\}$ is a basis of $\\operatorname{Sym}^2V$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#af7cd556',
+      },
+      notes: {
+        en: "The dimension of $\\operatorname{Sym}^2V$ is $n(n+1)/2$.\nIt is the $+1$ eigenspace of the swap, while $\\operatorname{Alt}^2V$ is the $-1$ eigenspace.\nThe character formula is in the character-operations node.\nWhen $\\operatorname{char}F=2$ the symmetric and exterior powers are no longer complementary; this cluster only treats $\\operatorname{char}F\\ne2$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#57f7d78a',
+      },
+    },
+    "def.exterior-power-representation": {
+      statement: {
+        en: "Let $\\operatorname{char}F\\ne2$ and let $(V,\\rho)$ be a representation of a group $G$. The exterior square $\\operatorname{Alt}^2V$ (also written $\\bigwedge^2V$) is the $-1$ eigenspace of the swap on $V\\otimes V$; $G$ acts by $g(v\\wedge w)=\\rho(g)v\\wedge\\rho(g)w$. If $e_1,\\ldots,e_n$ is a basis, then $\\{e_i\\wedge e_j:1\\le i<j\\le n\\}$ is a basis.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9e52ba22',
+      },
+      notes: {
+        en: "The dimension of the exterior square is $n(n-1)/2$.\nWhen $\\operatorname{char}F\\ne2$, $V\\otimes V\\cong\\operatorname{Sym}^2V\\oplus\\operatorname{Alt}^2V$.\nThe character formula is $\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$.\nIt is complementary to the symmetric square.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a542ca00',
+      },
+    },
+    "ex.regular-representation": {
+      statement: {
+        en: "Let $G$ be a finite group. The regular representation is the left multiplication action of $G$ on $F[G]$, $\\rho_{\\mathrm{reg}}(g)(h)=gh$, viewed as a permutation representation on $F^G$. Its character is $\\chi_{\\mathrm{reg}}(1)=|G|$ and $\\chi_{\\mathrm{reg}}(g)=0$ for $g\\ne1$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#17639b95',
+      },
+      notes: {
+        en: "The dimension of the regular representation is $|G|$. For the character formula: the diagonal entry of the permutation matrix of $g$ in the basis $G$ is $1$ exactly when $gh=h$, that is, $g=1$. When $\\operatorname{char}F\\nmid|G|$ and $F$ is algebraically closed, $\\rho_{\\mathrm{reg}}\\cong\\bigoplus_V(\\dim V)V$ with $V$ running over the irreducible representations. Comparing dimensions gives $|G|=\\sum_V(\\dim V)^2$.",
+        status: 'draft',
+        basedOn: 'v0.9.3#a2951e09',
+      },
+    },
+    "cor.schur-scalar": {
+      statement: {
+        en: "Let $F$ be algebraically closed and let $V$ be a finite-dimensional irreducible representation of $A$. Then $\\operatorname{End}_A(V)=F\\cdot\\operatorname{id}_V$; every $A$-endomorphism is scalar.",
+        status: 'draft',
+        basedOn: 'v0.9.3#414f09ed',
+      },
+      notes: {
+        en: "By thm.schur-lemma, $D=\\operatorname{End}_A(V)$ is a finite-dimensional $F$-division algebra. For $a\\in D$, $F(a)$ is a finite extension of $F$; since $F$ is algebraically closed, $F(a)=F$, hence $a\\in F$.\nAlternatively, $a$ has an eigenvalue $\\lambda$, and $a-\\lambda\\operatorname{id}$ is not invertible, hence zero.\nThis is the source of \"endomorphisms are scalars\" in character theory.",
+        status: 'draft',
+        basedOn: 'v0.9.3#dca9a485',
+      },
+    },
+    "lem.endomorphism-local": {
+      statement: {
+        en: "Let $V$ be a finite-dimensional indecomposable representation. Then $\\operatorname{End}_A(V)$ is a local ring whose maximal ideal is exactly the set of nilpotent endomorphisms.",
+        status: 'draft',
+        basedOn: 'v0.9.3#9505ef1d',
+      },
+      notes: {
+        en: "By cor.indecomposable-endomorphism, any $f$ that is not an automorphism is nilpotent, so the non-units are exactly the nilpotent elements.\nIf $f$ is nilpotent then $\\operatorname{id}-f$ is invertible (inverse given by a finite geometric series); hence the nilpotent elements form a two-sided ideal whose quotient is a division ring, so the ring is local.\nConversely, any non-invertible $f$ is nilpotent, so the maximal ideal is exactly the nilpotent elements.",
+        status: 'draft',
+        basedOn: 'v0.9.3#b3c6d7fa',
+      },
+    },
   },
 };
