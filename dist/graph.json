@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-17T11:11:11.982Z",
+  "generated": "2026-11-17T11:13:48.348Z",
   "counts": {
    "regions": 15,
    "clusters": 106,
@@ -82800,7 +82800,7 @@
    "label_en": "Class function",
    "title_en": "Class Function",
    "statement_en": "A function $f:G\\to F$ is a class function if $f(hgh^{-1})=f(g)$ for all $g,h\\in G$; equivalently, $f$ is constant on conjugacy classes. Group characters are class functions.",
-   "notes_en": "Class functions form an $F$-vector space of dimension the number of conjugacy classes, $\\#\\mathrm{CL}(G)$.\nWhen $\\operatorname{char}F=0$ (or $\\operatorname{char}F\\nmid|G|$), characters of pairwise non-isomorphic irreducible representations are linearly independent (orthogonality relations).\nA class function is determined by its values on conjugacy classes.\nThe centralizer of $g$ is its stabilizer under conjugation.",
+   "notes_en": "Class functions form an $F$-vector space of dimension the number of conjugacy classes, $\\#\\mathrm{CL}(G)$.\nWhen $\\operatorname{char}F=0$ (or $\\operatorname{char}F\\nmid|G|$), characters of pairwise non-isomorphic irreducible representations are linearly independent (orthogonality relations).\nA class function is determined by its values on conjugacy classes.\nThe centralizer of $g$ is the stabilizer of $g$ under conjugation.",
    "translations": {
     "en": {
      "status": "draft",
