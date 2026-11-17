@@ -9721,9 +9721,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#a9105cce',
       },
       notes: {
-        en: "Class functions form an $F$-vector space of dimension the number of conjugacy classes, $\\#\\mathrm{CL}(G)$.\nWhen $\\operatorname{char}F=0$ (or $\\operatorname{char}F\\nmid|G|$), characters of pairwise non-isomorphic irreducible representations are linearly independent (orthogonality relations).\nA class function is determined by its values on conjugacy classes.\nThe centralizer of $g$ is the stabilizer of $g$ under conjugation.",
+        en: "Class functions form an $F$-vector space of dimension the number of conjugacy classes, $\\#\\mathrm{CL}(G)$.\nWhen $\\operatorname{char}F=0$ (or $\\operatorname{char}F\\nmid|G|$), characters of pairwise non-isomorphic irreducible representations are linearly independent (orthogonality relations).\nA class function is determined by its values on conjugacy classes.\nThe centralizer of $g$ is the stabilizer of $g$ under conjugation.\nLinear independence of irreducible characters: if $\\sum_i c_i\\chi_i=0$, taking the inner product with $\\chi_j$ gives $c_j\\langle\\chi_j,\\chi_j\\rangle=0$; by orthogonality $\\langle\\chi_j,\\chi_j\\rangle=1$ (algebraically closed), or $\\dim_F\\operatorname{End}_G(V_j)\\ne 0$ (when $\\operatorname{char}F=0$), hence $c_j=0$.",
         status: 'draft',
-        basedOn: 'v0.9.3#f8e547c7',
+        basedOn: 'v0.9.3#087eb299',
       },
     },
     "def.representation-annihilator": {
@@ -9745,9 +9745,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#9422822d',
       },
       notes: {
-        en: "Also $J(A)$ is the intersection of all maximal right ideals, and it annihilates every irreducible left module.\nIn finite dimension $J(A)=0$ is equivalent to $A$ being semisimple (Jacobson criterion).\nThe quotient $A/J(A)$ is semisimple.\nThe original notes write $\\operatorname{Rad}(A)$, synonymous with $J(A)$.",
+        en: "Also $J(A)$ is the intersection of all maximal right ideals, and it annihilates every irreducible left module.\nIn finite dimension $J(A)=0$ is equivalent to $A$ being semisimple (Jacobson criterion).\nWhen $A$ is finite-dimensional, the quotient $A/J(A)$ is semisimple.\nThe original notes write $\\operatorname{Rad}(A)$, synonymous with $J(A)$.",
         status: 'draft',
-        basedOn: 'v0.9.3#c5535df7',
+        basedOn: 'v0.9.3#72425379',
       },
     },
     "def.simple-algebra": {
@@ -9793,9 +9793,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#794d3ee3',
       },
       notes: {
-        en: "(1) implies (2) is clear; (2) implies (3) splits off irreducible summands by induction on dimension; (3) implies (1) by repeatedly taking an irreducible subrepresentation and a complement. Finite dimension guarantees that the process terminates. This is the usual criterion for complete reducibility.",
+        en: "The proof is on the edge `imp.ss-tfae`: the three equivalences use two finite-dimensional arguments — taking a maximal direct summand, and taking a complement of a maximal proper subrepresentation; for (3) implies (2), first use (3) to split the quotient by a maximal proper subrepresentation into a subrepresentation.",
         status: 'draft',
-        basedOn: 'v0.9.3#d57cb62b',
+        basedOn: 'v0.9.3#d11bfc00',
       },
     },
     "prop.semisimple-subquotient": {
@@ -9829,9 +9829,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#4664f6cb',
       },
       notes: {
-        en: "Take a minimal nonzero left ideal $V$; it is a simple $A$-module, so $V$ is semisimple, and by Schur's lemma $D=\\operatorname{End}_A(V)$ is a division algebra. The natural map $A\\to\\operatorname{End}_D(V)$ is injective because $A$ is simple: if $aV=0$, then $\\operatorname{Ann}(V)$ is a nonzero two-sided ideal, hence equals $A$, contradicting $AV=V$. Burnside's theorem makes it surjective, so $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$. If the field is algebraically closed, Schur's lemma gives $D=F$. Note the direction: $A$ is a matrix algebra over $D^{\\mathrm{op}}$.",
+        en: "Take a minimal nonzero left ideal $V$; it is a simple $A$-module, so $V$ is semisimple, and by Schur's lemma $D=\\operatorname{End}_A(V)$ is a division algebra. The natural map $A\\to\\operatorname{End}_D(V)$ is injective because $A$ is simple: if $aV=0$, then $\\operatorname{Ann}(V)$ is a nonzero two-sided ideal, hence equals $A$, contradicting $AV=V$. Burnside's theorem makes it surjective, so $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$. If the field is algebraically closed, Schur's lemma gives $D=F$. Note the direction: $A$ is a matrix algebra over $D^{\\mathrm{op}}$.\nSimplicity here means having no nontrivial two-sided ideals; in finite dimension $J(A)$ is a two-sided ideal not containing $1$, hence $J(A)=0$, so thm.jacobson-criterion gives semisimplicity, and Burnside surjectivity applies.",
         status: 'draft',
-        basedOn: 'v0.9.3#9591699c',
+        basedOn: 'v0.9.3#e5546886',
       },
     },
     "thm.wedderburn-artin": {
@@ -9843,7 +9843,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       notes: {
         en: "Since $A$ is semisimple, the left regular module decomposes as $A=\\bigoplus_i S_i^{\\oplus n_i}$, with the $S_i$ pairwise non-isomorphic simple left modules.\nRight multiplication gives $A^{\\mathrm{op}}\\cong\\operatorname{End}_A(A)$: $a\\mapsto R_a$, $R_a(x)=xa$; the inverse is $f\\mapsto f(1)$.\nBy Schur's lemma, $\\operatorname{Hom}_A(S_i,S_j)=0$ for $i\\ne j$, hence $\\operatorname{End}_A(A)\\cong\\prod_i\\operatorname{End}_A(S_i^{\\oplus n_i})\\cong\\prod_i M_{n_i}(D_i)$, where $D_i=\\operatorname{End}_A(S_i)$ is a division algebra.\nPassing to opposite algebras gives $A\\cong\\prod_i M_{n_i}(D_i^{\\mathrm{op}})$.\nConversely, each matrix algebra $M_{n_i}(D_i)$ is semisimple and a product of semisimple algebras is semisimple; modules over a finite-dimensional semisimple algebra are semisimple (submodules have complements). $\\blacksquare$",
         status: 'draft',
-        basedOn: 'v0.9.3#e2e7f6f7',
+        basedOn: 'v0.9.3#d8810f5b',
       },
     },
     "thm.jacobson-criterion": {
@@ -9853,9 +9853,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#acbbe6e8',
       },
       notes: {
-        en: "If $A$ is semisimple, the regular module is a direct sum of simple modules; indeed $J(A)$ is the intersection of the maximal left ideals, and $J(A)$ annihilates every simple module, so $J(A)\\subseteq\\operatorname{Ann}(A)=0$. Conversely, if $J(A)=0$, then $A/J(A)=A$ is semisimple; more directly, the regular module has a simple submodule, and the radical property splits it off. Finite dimension is used for termination.",
+        en: "The proof is on the edge `imp.jacobson`: first $J(A)$ annihilates every irreducible module; then it is a two-sided ideal; finally the description as a finite intersection of maximal left ideals shows that $J(A)=0$ is equivalent to semisimplicity of the regular module.",
         status: 'draft',
-        basedOn: 'v0.9.3#0ae7753b',
+        basedOn: 'v0.9.3#dff2704c',
       },
     },
     "prop.partition-of-unity": {
@@ -9937,9 +9937,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#26405eca',
       },
       notes: {
-        en: "Existence is by induction on dimension: if $V$ is indecomposable the decomposition is complete, otherwise split and induct. Uniqueness compares two decompositions and matches indecomposable summands one by one using the isomorphism factorization lemma; the nilpotent-sum lemma handles the bookkeeping of endomorphisms. No assumption on the field is needed beyond finite dimension. Hence it applies in particular to finite-dimensional representations of finite groups.",
+        en: "The proof is on the edge `imp.krull-schmidt`: existence is by induction on dimension; uniqueness uses projections and the nilpotent-sum lemma to match isomorphic summands, cancels them by the isomorphism factorization lemma, and inducts on the remainder. No assumption on the field is needed beyond finite dimensionality.",
         status: 'draft',
-        basedOn: 'v0.9.3#04867631',
+        basedOn: 'v0.9.3#b83a6716',
       },
     },
     "thm.maschke": {
@@ -9963,7 +9963,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       notes: {
         en: "Maschke's theorem gives that $F[G]$ is semisimple. By thm.wedderburn-artin, $F[G]\\cong\\prod_i M_{n_i}(D_i)$.\nSince $\\operatorname{char}F=0$ and $F$ is algebraically closed, every finite-dimensional division $F$-algebra satisfies $D_i=F$: if $a\\in D_i$ lies outside $F$, then $F(a)$ is a finite extension, contradicting algebraic closedness.\nHence $F[G]\\cong\\prod_i M_{n_i}(F)$. As a left $F[G]$-module, the natural module $F^{n_i}$ of $M_{n_i}(F)$ is simple, so $F[G]\\cong\\bigoplus_i n_iV_i$ with $V_i=F^{n_i}$ and $n_i=\\dim V_i$.\nComparing dimensions gives $|G|=\\sum_i n_i^2$. $\\blacksquare$",
         status: 'draft',
-        basedOn: 'v0.9.3#4ce696b9',
+        basedOn: 'v0.9.3#383f5539',
       },
     },
     "prop.character-operations": {
@@ -9992,14 +9992,14 @@ This is the most common way to prove two sets equal: **containment both ways**.`
     },
     "def.exterior-power-representation": {
       statement: {
-        en: "Let $(V,\\rho)$ be a representation of a group $G$. The exterior square representation is the quotient representation $\\operatorname{Alt}^2V=(V\\otimes V)/\\langle v\\otimes w+w\\otimes v\\rangle$, with $G$ acting by $g(v\\wedge w)=\\rho(g)v\\wedge\\rho(g)w$. If $e_1,\\ldots,e_n$ is a basis, then $\\{e_i\\wedge e_j:1\\le i<j\\le n\\}$ is a basis.",
+        en: "Let $(V,\\rho)$ be a representation of a group $G$. The exterior square representation is the quotient representation $\\operatorname{Alt}^2V=(V\\otimes V)/\\langle v\\otimes w+w\\otimes v\\rangle$, with $G$ acting by $g(v\\wedge w)=\\rho(g)v\\wedge\\rho(g)w$. If $\\operatorname{char}F\\ne2$ and $e_1,\\ldots,e_n$ is a basis, then $\\{e_i\\wedge e_j:1\\le i<j\\le n\\}$ is a basis, of dimension $n(n-1)/2$.",
         status: 'draft',
-        basedOn: 'v0.9.3#01b7ced8',
+        basedOn: 'v0.9.3#3c1759c6',
       },
       notes: {
-        en: "The definition does not require $\\operatorname{char}F\\ne2$; when $\\operatorname{char}F\\ne2$ it coincides with the $-1$-eigenspace of the swap and has dimension $n(n-1)/2$. The exterior square is also denoted $\\bigwedge^2V$.",
+        en: "The definition itself does not require $\\operatorname{char}F\\ne2$; when $\\operatorname{char}F\\ne2$ it coincides with the $-1$-eigenspace of the swap, and $\\{e_i\\wedge e_j:i<j\\}$ is a basis of dimension $n(n-1)/2$. If $\\operatorname{char}F=2$, that set is not a basis (the dimension of $\\bigwedge^2V$ is $n(n+1)/2$). The exterior square is also denoted $\\bigwedge^2V$.",
         status: 'draft',
-        basedOn: 'v0.9.3#af3d53b3',
+        basedOn: 'v0.9.3#914d19a4',
       },
     },
     "ex.regular-representation": {
@@ -10033,39 +10033,39 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#9505ef1d',
       },
       notes: {
-        en: "By cor.indecomposable-endomorphism, any $f$ that is not an automorphism is nilpotent, so the non-units are exactly the nilpotent elements.\\nIf $f$ is nilpotent then $\\operatorname{id}-f$ is invertible (inverse given by a finite geometric series); hence the nilpotent elements are closed under addition: if $f,g$ are nilpotent and $f+g$ is invertible, then $f=(f+g)(\\operatorname{id}-(f+g)^{-1}g)$ is invertible (as $g$ is nilpotent, the parenthesis is invertible), a contradiction; so $f+g$ is not a unit, and cor.indecomposable-endomorphism makes it nilpotent.\\nThus the nilpotent elements form a two-sided ideal whose quotient is a division ring, so the ring is local; conversely, any non-invertible $f$ is nilpotent, so the maximal ideal is exactly the nilpotent elements.",
+        en: "By cor.indecomposable-endomorphism, every $f\\in\\operatorname{End}_A(V)$ is either an automorphism or nilpotent; in particular, the non-units are exactly the nilpotent elements.\nThe nilpotent elements are closed under addition (no commutativity is assumed): let $f,g$ be nilpotent. If $f+g$ is invertible, set $u=(f+g)^{-1}g$. If $u$ is invertible, then $g=(f+g)u$ is invertible, contradicting that $g$ is nilpotent; so $u$ is a non-unit, and by the corollary $u$ is nilpotent. Then $\\operatorname{id}-u$ is invertible, and $(f+g)^{-1}f=\\operatorname{id}-u$, so $f=(f+g)(\\operatorname{id}-u)$ is invertible, contradicting that $f$ is a non-unit. Therefore $f+g$ is a non-unit, and the corollary makes it nilpotent.\nThe nilpotent elements form an ideal: for any $h$, if $hf$ is invertible then $f$ has a left inverse, and in finite dimension $f$ is invertible, a contradiction; hence $hf$ is a non-unit and nilpotent; the same holds for $fh$.\nThus the nilpotent elements form a two-sided ideal; every nonzero element of the quotient ring is invertible, so the quotient is a division ring. This makes the ring local, with maximal ideal exactly the nilpotent elements.",
         status: 'draft',
-        basedOn: 'v0.9.3#7075bcaf',
+        basedOn: 'v0.9.3#9c68be45',
       },
     },
     "def.character-inner-product": {
       statement: { en: "Let $G$ be a finite group with $\\operatorname{char}F\\nmid|G|$. For functions $f_1,f_2:G\\to F$ define $\\langle f_1,f_2\\rangle=\\frac{1}{|G|}\\sum_{g\\in G}f_1(g)f_2(g^{-1})$. This is an $F$-bilinear form; on the space of class functions it gives the pairing used in character theory.", status: 'draft', basedOn: 'v0.9.3#2ab69dad' },
       notes: {
-        en: "Bilinearity is immediate; symmetry follows from the substitution $g\\mapsto g^{-1}$.\\nOn class functions $\\langle f,f\\rangle=\\frac1{|G|}\\sum_g f(g)f(g^{-1})$; for complex representations ($F\\subseteq\\mathbb C$) with $f$ complex conjugation, it is a positive definite Hermitian form when restricted to the space of characters; over a general field only nondegeneracy is required.\\nThe pairing writes the orthogonality of irreducible characters as $\\langle\\chi_i,\\chi_j\\rangle=\\delta_{ij}$.", status: 'draft', basedOn: 'v0.9.3#b68b7093' },
+        en: "Bilinearity is immediate; symmetry follows from the substitution $g\\mapsto g^{-1}$.\\nOn class functions $\\langle f,f\\rangle=\\frac1{|G|}\\sum_g f(g)f(g^{-1})$; for complex representations ($F\\subseteq\\mathbb C$) with $f$ complex conjugation, it is a positive definite Hermitian form when restricted to the space of characters; over a general field only nondegeneracy is required.\\nThe pairing writes the orthogonality of irreducible characters as $\\langle\\chi_i,\\chi_j\\rangle=\\delta_{ij}$.", status: 'draft', basedOn: 'v0.9.3#c6e354e9' },
     },
     "lem.fixed-space-dimension": {
       statement: { en: "Let $\\operatorname{char}F\\nmid|G|$ and let $(V,\\rho)$ be a finite-dimensional representation. Then $\\dim_F V^G=\\langle\\chi_\\rho,\\mathbf 1\\rangle$, where $V^G=\\{v\\in V:\\rho(g)v=v\\ \\text{for all }g\\in G\\}$ and $\\mathbf 1$ is the constant function $g\\mapsto1$.", status: 'draft', basedOn: 'v0.9.3#52979ee3' },
-      notes: { en: "The averaging operator $\\varphi(v)=\\frac1{|G|}\\sum_g\\rho(g)v$ is a $G$-equivariant projection onto $V^G$.\nIn a basis making $\\varphi$ diagonal with eigenvalue 1 on $V^G$ and 0 on a complement, $\\operatorname{tr}\\varphi=\\dim V^G$.\nOn the other hand $\\operatorname{tr}\\varphi=\\frac1{|G|}\\sum_g\\operatorname{tr}\\rho(g)=\\langle\\chi_\\rho,\\mathbf 1\\rangle$.", status: 'draft', basedOn: 'v0.9.3#a0d31627' },
+      notes: { en: "The averaging operator $\\varphi(v)=\\frac1{|G|}\\sum_g\\rho(g)v$ is a $G$-equivariant projection onto $V^G$.\nIn a basis making $\\varphi$ diagonal with eigenvalue 1 on $V^G$ and 0 on a complement, $\\operatorname{tr}\\varphi=\\dim V^G$.\nOn the other hand $\\operatorname{tr}\\varphi=\\frac1{|G|}\\sum_g\\operatorname{tr}\\rho(g)=\\langle\\chi_\\rho,\\mathbf 1\\rangle$.", status: 'draft', basedOn: 'v0.9.3#39f8b979' },
     },
     "prop.character-inner-product-hom": {
       statement: { en: "Let $\\operatorname{char}F\\nmid|G|$ and let $V_1,V_2$ be finite-dimensional representations. Then $\\langle\\chi_{V_1},\\chi_{V_2}\\rangle=\\dim_F\\operatorname{Hom}_G(V_1,V_2)$.", status: 'draft', basedOn: 'v0.9.3#157e3575' },
-      notes: { en: "Let $W=\\operatorname{Hom}_F(V_1,V_2)$ with action $(g\\cdot f)(v)=g\\,f(g^{-1}v)$; then $W^G=\\operatorname{Hom}_G(V_1,V_2)$.\nThe character is $\\chi_W(g)=\\chi_{V_1^*}(g)\\chi_{V_2}(g)=\\chi_{V_1}(g^{-1})\\chi_{V_2}(g)$.\nApplying the fixed-space dimension lemma to $W$ gives $\\dim W^G=\\langle\\chi_W,\\mathbf 1\\rangle=\\langle\\chi_{V_1},\\chi_{V_2}\\rangle$.", status: 'draft', basedOn: 'v0.9.3#dd53f6b2' },
+      notes: { en: "Let $W=\\operatorname{Hom}_F(V_1,V_2)$ with action $(g\\cdot f)(v)=g\\,f(g^{-1}v)$; then $W^G=\\operatorname{Hom}_G(V_1,V_2)$.\nThe character is $\\chi_W(g)=\\chi_{V_1^*}(g)\\chi_{V_2}(g)=\\chi_{V_1}(g^{-1})\\chi_{V_2}(g)$.\nApplying the fixed-space dimension lemma to $W$ gives $\\dim W^G=\\langle\\chi_W,\\mathbf 1\\rangle=\\langle\\chi_{V_1},\\chi_{V_2}\\rangle$.", status: 'draft', basedOn: 'v0.9.3#92b6aebc' },
     },
     "thm.character-orthogonality": {
       statement: { en: "Let $\\operatorname{char}F\\nmid|G|$, let $F$ be algebraically closed, and let $V_1,V_2$ be finite-dimensional irreducible representations. Then $\\langle\\chi_{V_1},\\chi_{V_2}\\rangle=1$ if $V_1\\cong V_2$, and $0$ otherwise.", status: 'draft', basedOn: 'v0.9.3#2b4e6711' },
-      notes: { en: "By prop.character-inner-product-hom the inner product equals $\\dim\\operatorname{Hom}_G(V_1,V_2)$.\nSchur's lemma: there are no nonzero homomorphisms between non-isomorphic irreducible representations; when isomorphic, $\\operatorname{End}_G(V_1)=F$ (algebraically closed, see cor.schur-scalar), of dimension 1.\nHence the inner product is $\\delta_{12}$.", status: 'draft', basedOn: 'v0.9.3#22235b91' },
+      notes: { en: "By prop.character-inner-product-hom the inner product equals $\\dim\\operatorname{Hom}_G(V_1,V_2)$.\nSchur's lemma: there are no nonzero homomorphisms between non-isomorphic irreducible representations; when isomorphic, $\\operatorname{End}_G(V_1)=F$ (algebraically closed, see cor.schur-scalar), of dimension 1.\nHence the inner product is $\\delta_{12}$.", status: 'draft', basedOn: 'v0.9.3#bbb88d23' },
     },
     "cor.character-multiplicity": {
       statement: { en: "Let $\\operatorname{char}F\\nmid|G|$, let $F$ be algebraically closed, and let $V$ be a finite-dimensional semisimple representation, $V\\cong\\bigoplus_i n_iV_i$ with the $V_i$ pairwise non-isomorphic irreducible. Then $n_i=\\langle\\chi_V,\\chi_{V_i}\\rangle$.", status: 'draft', basedOn: 'v0.9.3#1002e29c' },
-      notes: { en: "By prop.character-operations (1), $\\chi_V=\\sum_j n_j\\chi_{V_j}$.\nTaking the inner product with $\\chi_{V_i}$ and using orthogonality $\\langle\\chi_{V_j},\\chi_{V_i}\\rangle=\\delta_{ji}$ gives $\\langle\\chi_V,\\chi_{V_i}\\rangle=n_i$.", status: 'draft', basedOn: 'v0.9.3#cf3b2a1b' },
+      notes: { en: "By prop.character-operations (1), $\\chi_V=\\sum_j n_j\\chi_{V_j}$.\nTaking the inner product with $\\chi_{V_i}$ and using orthogonality $\\langle\\chi_{V_j},\\chi_{V_i}\\rangle=\\delta_{ji}$ gives $\\langle\\chi_V,\\chi_{V_i}\\rangle=n_i$.", status: 'draft', basedOn: 'v0.9.3#93219121' },
     },
     "def.character-table": {
       statement: { en: "Let $G$ be a finite group, $\\operatorname{char}F=0$, and $F$ algebraically closed. Put $\\operatorname{Irr}(G)_F=\\{V_1,\\ldots,V_s\\}$ and let $CL(G)=\\{C_1,\\ldots,C_r\\}$ be the conjugacy classes with representatives $g_j\\in C_j$. The character table is the $s\\times r$ matrix $T=(\\chi_{V_i}(g_j))_{i,j}$.", status: 'draft', basedOn: 'v0.9.3#27b992c8' },
-      notes: { en: "The rows are the irreducible characters; $\\operatorname{char}F=0$ guarantees that $\\chi_i=\\chi_j$ iff $V_i\\cong V_j$ (thm.character-determines-semisimple).\nThe rows are orthonormal for the character inner product (thm.character-orthogonality).\nCharacters are class functions, so the columns depend only on the conjugacy class; $s\\le r$, with equality requiring the additional fact that the characters form a basis of the class-function space.", status: 'draft', basedOn: 'v0.9.3#3c62a3c7' },
+      notes: { en: "The rows are the irreducible characters; $\\operatorname{char}F=0$ guarantees that $\\chi_i=\\chi_j$ iff $V_i\\cong V_j$ (thm.character-determines-semisimple).\nThe rows are orthonormal for the character inner product (thm.character-orthogonality).\nCharacters are class functions, so the columns depend only on the conjugacy class; $s\\le r$, with equality requiring the additional fact that the characters form a basis of the class-function space.", status: 'draft', basedOn: 'v0.9.3#00c12957' },
     },
     "cor.regular-character-decomposition": {
       statement: { en: "Let $\\operatorname{char}F\\nmid|G|$ and $F$ algebraically closed. The regular representation decomposes as $\\rho_{\\mathrm{reg}}\\cong\\bigoplus_{V\\in\\operatorname{Irr}(G)_F}(\\dim V)\\,V$, hence $\\chi_{\\mathrm{reg}}=\\sum_V(\\dim V)\\chi_V$. In particular $|G|=\\sum_V(\\dim V)^2$, and for $g\\ne1$ one has $\\sum_V(\\dim V)\\chi_V(g)=0$.", status: 'draft', basedOn: 'v0.9.3#9bc4b266' },
-      notes: { en: "Maschke's theorem gives that $F[G]$ is semisimple, so the regular module decomposes as $F[G]\\cong\\bigoplus_i n_iV_i$.\nBy cor.character-multiplicity, $n_i=\\langle\\chi_{\\mathrm{reg}},\\chi_{V_i}\\rangle$; since $\\chi_{\\mathrm{reg}}(1)=|G|$ and $\\chi_{\\mathrm{reg}}(g)=0$ for $g\\ne1$, we get $n_i=\\frac1{|G|}|G|\\chi_{V_i}(1)=\\dim V_i$.\nEvaluating at $g=1$ and at $g\\ne1$ gives the two identities.", status: 'draft', basedOn: 'v0.9.3#d81e7be2' },
+      notes: { en: "Maschke's theorem gives that $F[G]$ is semisimple, so the regular module decomposes as $F[G]\\cong\\bigoplus_i n_iV_i$.\nBy cor.character-multiplicity, $n_i=\\langle\\chi_{\\mathrm{reg}},\\chi_{V_i}\\rangle$; since $\\chi_{\\mathrm{reg}}(1)=|G|$ and $\\chi_{\\mathrm{reg}}(g)=0$ for $g\\ne1$, we get $n_i=\\frac1{|G|}|G|\\chi_{V_i}(1)=\\dim V_i$.\nEvaluating at $g=1$ and at $g\\ne1$ gives the two identities.", status: 'draft', basedOn: 'v0.9.3#02b3531e' },
     },
   },
 };
