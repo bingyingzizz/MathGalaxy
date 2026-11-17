@@ -111,20 +111,14 @@ window.MG = window.MG || {};
         '',
         '$$C_{d} := \\begin{pmatrix} 0 & & & & -a_{0} \\\\ 1 & 0 & & & -a_{1} \\\\ & \\ddots & \\ddots & & \\vdots \\\\ & & 1 & 0 & -a_{m-2} \\\\ & & & 1 & -a_{m-1} \\end{pmatrix} ,$$',
         '',
-        '且 $d_{1} \\mid d_{2} \\mid \\cdots \\mid d_{s}$（依次整除）。这些 $d_{i}$ 叫**不变因子**。',
+        '且 $d_{1} \\mid d_{2} \\mid \\cdots \\mid d_{s}$（依次整除），其中每个 $d_{i}$ 是**非单位首一多项式**（$\\deg d_{i}\\ge1$）；若没有非单位因子（如 $V=0$），约定 $s=0$、分块对角为空矩阵。这些 $d_{i}$ 叫**不变因子**。',
         '',
         '**与 Jordan 形的分工**：$K$ 上特征多项式分裂时，有理标准形与 Jordan 形都是完整不变量；不分裂时**只有**有理标准形（在 $K$ 上）可用 —— Jordan 形要到扩域上才存在。'
       ].join('\n'),
       notes: [
-        '⭐ **为什么叫「有理」**：历史上指 $K = \\mathbb{Q}$ 的情形 —— 正是「特征多项式在 $\\mathbb{Q}$ 上不分裂」的典型场合。名字沿用下来，现在指「对任意域都成立」。',
-        '**第一步：把矩阵变成模**。把 $V = K^{n}$ 看成 $K[x]$-模，规定 $x \\cdot v := Av$。于是 $K[x]$-子模就是 $A$-不变子空间，$K[x]$-模同构就是相似：$A \\sim B$ 当且仅当 $V_{A} \\cong V_{B}$。由 Cayley–Hamilton 定理 $\\chi_{A}(A) = 0$，故 $\\chi_{A} \\in \\operatorname{Ann}(V)$，$V$ 是**挠模**；又 $\\dim_{K} V = n$ 给出有限生成。',
-        '**引理 1（Smith 标准形，$K[x]$ 版）**：设 $R = K[x]$。任意 $m \\times n$ 矩阵 $M$ 经初等行/列变换可化成 $\\operatorname{diag}(d_{1}, \\ldots, d_{r}, 0, \\ldots, 0)$，其中 $d_{1} \\mid d_{2} \\mid \\cdots \\mid d_{r}$ 非零，$r = \\operatorname{rank} M$。**证明**：在所有与 $M$ 等价的矩阵中，取「非零元素的最小次数」$\\delta$ 最小的一个；把达到 $\\delta$ 的元素挪到 $(1,1)$，记作 $a$。若第一列某元素 $b$ 不被 $a$ 整除，作带余除法 $b = qa + r$（$\\deg r < \\delta$），把第 1 行乘 $-q$ 加到该行，得到含次数更小非零元的等价矩阵，与 $\\delta$ 的最小性矛盾；故 $a$ 整除第一列全部元素，用行变换清空第一列。同理用列变换清空第一行。若余下子块有元素不被 $a$ 整除，把该行加到第 1 行、再用列变换减去 $a$ 的倍数，又得到次数更小的非零元，矛盾；故 $a$ 整除整个余下子块。对余下子块归纳，得 $\\operatorname{diag}(a, e_{1}, \\ldots)$；初等变换不改变「全部元素生成的理想」，故 $a \\mid e_{1}$，整除链成立。$\\square$',
-        '**引理 2（结构定理）**：设 $M$ 是有限生成 $R$-模。取生成元 $x_{1}, \\ldots, x_{n}$，得满射 $R^{n} \\to M$，其核由有限多个列向量 $a_{1}, \\ldots, a_{m} \\in R^{n}$ 生成（$K[x]$ 是 PID 故为 Noether 环，PID 上自由模的子模有限生成 —— 标准事实，本图未单列节点），即 $M \\cong \\operatorname{coker}(A)$，$A = (a_{1} \\cdots a_{m})$。对 $A$ 取 Smith 标准形：存在可逆矩阵 $P, Q$ 使 $PAQ = \\operatorname{diag}(d_{1}, \\ldots, d_{r}, 0)$。可逆矩阵只是换基，故 $\\operatorname{coker}(A) \\cong \\operatorname{coker}(PAQ) \\cong R^{n-r} \\oplus R/(d_{1}) \\oplus \\cdots \\oplus R/(d_{r})$：第 $i$ 个坐标方向被 $d_{i} e_{i}$ 生成，$i > r$ 的方向不被任何关系碰到。$\\square$',
-        '**存在性**：对 $V_{A}$ 用引理 2。因 $V$ 挠，自由部分必须为零：若 $R^{n-r} \\ne 0$，取 $e_{1}$，则 $\\chi_{A} e_{1} \\ne 0$，与 $\\chi_{A} \\in \\operatorname{Ann}(V)$ 矛盾。再删去单位 $d_{i}$（此时 $R/(d_{i}) = 0$），得 $V \\cong \\bigoplus_{i=1}^{s} R/(d_{i})$，其中 $d_{1} \\mid \\cdots \\mid d_{s}$ 非单位首一多项式。',
-        '**从循环模到友矩阵**：在 $R/(d)$（$d = x^{m} + a_{m-1}x^{m-1} + \\cdots + a_{0}$）中取 $K$-基 $1, x, \\ldots, x^{m-1}$。乘 $x$ 把前 $m-1$ 个基向量送到下一个，把 $x^{m-1}$ 送到 $x^{m} \\equiv -(a_{0} + a_{1}x + \\cdots + a_{m-1}x^{m-1})$。该算子在这组基下的矩阵正是 $C_{d}$（次对角线全 $1$，最后一列 $(-a_{0}, \\ldots, -a_{m-1})^{T}$）。把各循环块的基拼起来，$A$ 相似于 $\\operatorname{diag}(C_{d_{1}}, \\ldots, C_{d_{s}})$。',
-        '**唯一性**：设 $\\bigoplus_{i} R/(d_{i}) \\cong \\bigoplus_{j} R/(e_{j})$，两条链都整除。对不可约 $p \\in K[x]$ 与 $k \\ge 1$，令 $M[p^{k}] := \\{m : p^{k}m = 0\\}$ —— 这是由 $M$ 本身决定的子模，不依赖分解。对 $R/(d)$，写 $d = p^{v}u$、$p \\nmid u$，由中国剩余定理 $R/(d) \\cong R/(p^{v}) \\oplus R/(u)$，故 $R/(d)[p^{k}] \\cong R/(p^{\\min(k,v)})$。于是 $M[p^{k}] \\cong \\bigoplus_{i} R/(p^{\\min(k, v_{p}(d_{i}))})$；把 $p^{k-1}M[p^{k}]/p^{k}M[p^{k}]$ 看成 $R/(p)$-向量空间，其维数恰为「$v_{p}(d_{i}) \\ge k$ 的 $i$ 的个数」$c_{k}(p)$。这个维数由 $M$ 决定，故所有 $c_{k}(p)$ 由 $M$ 决定。注意整除链是**递增**的 $d_{1}\\mid d_{2}\\mid\\cdots\\mid d_{s}$，故 $v_{p}(d_{1})\\le\\cdots\\le v_{p}(d_{s})$；把 $c_{k}(p)$ 从大端读：$\\#\\{k : c_{k}(p)\\ge i\\}$ 数的是「满足 $v_{p}(d_{j})\\ge k$ 的 $j$ 至少有 $i$ 个」的那些 $k$，而 $j$ 单调递增，所以它等于 $v_{p}(d_{s-i+1})$。于是 $v_{p}(d_{s-i+1}) = \\#\\{k : c_{k}(p) \\ge i\\}$ 由 $M$ 决定（$i=1$ 对应链上最大的 $d_{s}$）；对每个 $p$ 都如此，全部 $d_{i}$ 就由 $M$ 决定。',
-        '**收尾：极小多项式与特征多项式**：每个 $C_{d}$ 的特征多项式与极小多项式都是 $d$（对 $R/(d)$ 上乘 $x$ 的算子，$d$ 是零化多项式且次数最小：$1, x, \\ldots, x^{m-1}$ 线性无关，而 $x^{m}$ 已落入它们的张成）。分块对角矩阵的特征多项式是各块之积 $d_{1}\\cdots d_{s}$；极小多项式是各块极小多项式的最小公倍，整除链下即 $d_{s}$。这正是「$d_{s}$ 是极小多项式、$d_{1}\\cdots d_{s}$ 是特征多项式」的来历。∎',
-        '⚠️ **本图缺的节点/边**：证明用到 Cayley–Hamilton（有节点，但没有连到本条）与「$K[x]$ 上有限生成模的结构定理」（本图没有这个节点），所以两条引理连同证明一起写在这里，而不是引用一条并不存在的边。'
+        "⭐ **为什么叫「有理」**：历史上指 $K = \\mathbb{Q}$ 的情形 —— 正是「特征多项式在 $\\mathbb{Q}$ 上不分裂」的典型场合。名字沿用下来，现在指「对任意域都成立」。",
+        "**证明思路（完整证明见边 `imp.rational-canonical-form-proof`）**：把 $V=K^n$ 看成 $K[x]$-模（$x\\cdot v=Av$）。Cayley–Hamilton 给 $\\chi_A(A)=0$，故 $V$ 是有限生成挠模。由 PID 上有限生成模的结构定理（`thm.pid-fg-module-structure`），$V\\cong\\bigoplus_i K[x]/(d_i)$，$d_1\\mid\\cdots\\mid d_s$ 非单位首一。每个循环模取基 $1,x,\\ldots,x^{m-1}$，乘 $x$ 的矩阵正是友矩阵 $C_{d_i}$（`def.companion-matrix`；循环子空间见 `def.cyclic-subspace`）。唯一性由 $xI-A$ 的 Smith 不变因子给出（`def.invariant-factor`、`thm.smith-normal-form`）。",
+        "**链条**：特征多项式 $\\chi_A$（`def.char-poly`）$\\to$ Cayley–Hamilton（`thm.cayley-hamilton`）$\\to$ 挠模 $\\to$ 结构定理 $\\to$ 不变因子（`def.invariant-factor`）$\\to$ 友矩阵分块。特征多项式是各块之积 $d_1\\cdots d_s$，极小多项式是 $d_s$；这两条也解释了「$d_s$ 是极小多项式」的来源。"
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra, Ch. 7（The Rational and Jordan Forms）· 有理标准形',
@@ -149,8 +143,8 @@ window.MG = window.MG || {};
         "Smith 标准形",
         "有理标准形"
       ],
-      statement: "设 $R$ 是主理想整环，$A \\in M_{m \\times n}(R)$ 的 Smith 标准形为\n\n$P A Q = \\operatorname{diag}(d_1, \\ldots, d_r, 0, \\ldots, 0), \\qquad d_1 \\mid d_2 \\mid \\cdots \\mid d_r .$\n\n这些非零元 $d_i$（在相差单位的意义下唯一；$R = K[x]$ 时取首一代表）称为 $A$ 的**不变因子**。等价地，$d_1 \\cdots d_k$ 是 $A$ 的所有 $k$ 阶子式的最大公因子。\n\n特别地，对 $A \\in M_n(K)$，把 $xI - A \\in M_n(K[x])$ 的非常数不变因子称为线性算子 $A$ 的**不变因子**。",
-      notes: "**与有理标准形**：若 $d_1 \\mid \\cdots \\mid d_s$ 是 $xI - A$ 的非常数不变因子，则 $A$ 相似于 $\\operatorname{diag}(C_{d_1}, \\ldots, C_{d_s})$，其中 $C_d$ 是友矩阵；这正是有理标准形。\n\n**与极小/特征多项式**：最大的不变因子 $d_s$ 是极小多项式，乘积 $d_1 \\cdots d_s$ 是特征多项式。\n\n**与初等因子**：把每个 $d_i$ 分解成不可约多项式的幂，得到的素幂因子叫初等因子；Jordan 标准形在域分裂时用初等因子陈述。\n\n**矩阵版本 vs 算子版本**：Smith 标准形对任意矩阵（可长方形、环上）陈述；算子的不变因子是 $xI - A$ 这一特殊矩阵的不变因子。",
+      statement: "设 $R$ 是主理想整环，$A \\in M_{m \\times n}(R)$ 的 Smith 标准形为\n\n$P A Q = \\operatorname{diag}(d_1, \\ldots, d_r, 0, \\ldots, 0), \\qquad d_1 \\mid d_2 \\mid \\cdots \\mid d_r .$\n\n这些非零元 $d_i$（在相差单位的意义下唯一；$R = K[x]$ 时取首一代表）称为 $A$ 的**不变因子**。\n\n特别地，对 $A \\in M_n(K)$，把 $xI - A \\in M_n(K[x])$ 的非常数不变因子称为线性算子 $A$ 的**不变因子**。",
+      notes: "**与有理标准形**：若 $d_1 \\mid \\cdots \\mid d_s$ 是 $xI - A$ 的非常数不变因子，则 $A$ 相似于 $\\operatorname{diag}(C_{d_1}, \\ldots, C_{d_s})$，其中 $C_d$ 是友矩阵；这正是有理标准形。\n\n**与极小/特征多项式**：最大的不变因子 $d_s$ 是极小多项式，乘积 $d_1 \\cdots d_s$ 是特征多项式。\n\n**与初等因子**：把每个 $d_i$ 分解成不可约多项式的幂，得到的素幂因子叫初等因子；Jordan 标准形在域分裂时用初等因子陈述。\n\n**矩阵版 vs 算子版**：Smith 标准形对任意矩阵陈述；算子的不变因子是 $xI-A$ 的不变因子。",
       refs: [
         "Hoffman–Kunze, Linear Algebra, Ch. 7",
         "Dummit–Foote, Abstract Algebra, Ch. 12"

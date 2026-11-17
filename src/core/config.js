@@ -178,6 +178,11 @@
          极差从 1.61× 拉到 2.6×（叶子 0.78 ↔ 中心天体 2.05）。 */
       sizeTiers: {
         hub: 2.05,              // 星团的中心天体（clusters.js 里手定的 hub）
+        /* ⭐ 2026-11-17：团入口定义 —— 每个星团里「被最多 definition 边当作出处」的定义
+           （algebra.representation → def.algebra-representation、algebra.structures → def.group、
+           topology.general → def.topology）。判据在 renderer.entryDefSet，别只盯一个 id。
+           取 2.15：比 hub 大、比 byDegree 最高档 1.60 明显大一截，一眼能认出「这是团门口」。 */
+        entry: 2.15,
         byDegree: [             // [最低度数, 倍率]，从上往下取第一个命中
           [12, 1.60],
           [8, 1.42],

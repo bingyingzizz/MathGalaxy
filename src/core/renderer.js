@@ -280,6 +280,39 @@
       return { w: W, h: H, dpr: dpr };
     }
 
+    /* ------------------------------------------------------- 团入口定义（2026-11-17） */
+    /* 每个星团里「大家都是从它长出来的」那个定义 —— 团门口那块牌子。
+       为什么不是「层号最小的 definition」：实测 `algebra.representation` 团里
+       `def.algebra-over-ring` 在 L12、`def.algebra-representation` 在 L16，
+       但后者被团内 **9 个**定义当作出处（前者只有 3 个），用户也明确说它是「整团最基本的定义」。
+       所以判据用「被多少个 definition 边当作出处」（out-degree），同分再看层号小、id 小 ——
+       `def.group`（35）、`def.topology`（31）同一规则选出来也对。
+       缓存按 `view.graph` 引用：只在换图（rebuild / 外部包合并）时重算。 */
+    var entryCache = { g: null, set: null };
+    var NO_ENTRY = {};
+    function entryDefSet() {
+      var g = view && view.graph;
+      if (!g) return NO_ENTRY;
+      if (entryCache.g === g) return entryCache.set;
+      var out = Object.create(null), i, e;
+      for (i = 0; i < g.edges.length; i++) {
+        e = g.edges[i];
+        if (e.kind === 'definition' && e.definition && e.usedBy) out[e.definition] = (out[e.definition] || 0) + 1;
+      }
+      var byC = Object.create(null), set = Object.create(null);
+      g.nodes.forEach(function (n) {
+        if (n.type !== 'definition' || !n.cluster) return;
+        var o = out[n.id] || 0, c = byC[n.cluster];
+        if (!c || o > c.out || (o === c.out && (n.layer < c.layer || (n.layer === c.layer && n.id < c.id)))) {
+          byC[n.cluster] = { id: n.id, out: o, layer: n.layer };
+        }
+      });
+      Object.keys(byC).forEach(function (cid) { set[byC[cid].id] = true; });
+      entryCache.g = g; entryCache.set = set;
+      return set;
+    }
+    function isEntryDef(node) { return !!(node && node.id && entryDefSet()[node.id]); }
+
     /* -------------------------------------------------------- 尺寸计算 */
     /** 半径倍率：按「是不是中心天体 / 度数多大」分档。
         分档表在 config.js 的 node.sizeTiers —— 那里写了为什么不再用
@@ -294,6 +327,7 @@
         if (node.isHub) m *= 1.32;
         return m;
       }
+      if (isEntryDef(node)) return t.entry || t.hub;   // 团入口定义：最大一档（先于 hub，避免同团 hub 抢档）
       if (node.isHub) return t.hub;
       var d = node.degree || 0;
       for (var i = 0; i < t.byDegree.length; i++) {
@@ -2797,6 +2831,9 @@
       /* 搜索命中：排在选中 / 悬停之后、普通名字之前（同一屏里让「刚搜到的」先落位）。 */
       if (view.searchIds && view.searchIds[n.id]) s += 600;
       if (n.type === 'definition') s -= 6;
+      /* 团入口定义的名字要「别人避让它」（2026-11-17 用户截图：代数的线性表示被半单/不可约表示挤掉）。
+         只加分、不进 labelMustDraw —— 106 个团入口若全豁免会把标签预算吃穿。 */
+      if (isEntryDef(n)) s += 420;
       return s;
     }
 

@@ -233,6 +233,99 @@ window.MG = window.MG || {};
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
+      "id": "def.cyclic-subspace",
+      "cluster": "algebra.spectral",
+      "type": "definition",
+      "label": "循环子空间",
+      "title": "循环子空间与循环向量",
+      "regions": [
+        "algebra"
+      ],
+      "tags": [
+        "定义",
+        "线性代数",
+        "谱",
+        "循环子空间"
+      ],
+      "statement": "设 $T:V\\to V$ 是域 $K$ 上有限维向量空间的线性映射，$v\\in V$。子空间\n$K[T]v:=\\operatorname{span}_K\\{v,Tv,T^2v,\\ldots\\}=\\{p(T)v:p\\in K[x]\\}$\n称为由 $v$ **生成**的循环子空间；若 $K[T]v=V$，称 $v$ 为 $T$ 的**循环向量**。存在循环向量的 $V$ 称为**循环**的。",
+      "notes": "$K[T]v$ 是包含 $v$ 的最小 $T$-不变子空间；反之，任何包含 $v$ 的 $T$-不变子空间都包含全部 $T^kv$。\n令 $\\mu_v$ 是使 $p(T)v=0$ 的首一多项式（$K[x]$ 是主理想整环，故存在且唯一），则 $\\dim_K K[T]v=\\deg\\mu_v$，且作为 $K[x]$-模有 $K[T]v\\cong K[x]/(\\mu_v)$。\n有限维时，$v$ 是循环向量当且仅当 $\\deg\\mu_v=\\dim V$；此时 $\\mu_T=\\chi_T$。反之，若 $\\mu_T=\\chi_T$，则存在循环向量（例如取 $1,x,\\ldots$ 的模对应）。\n例：友矩阵 $C_d$ 的 $e_1$ 是循环向量（见 `def.companion-matrix`）；$\\operatorname{diag}(C_d,C_d)$ 不是循环的，因为它的极小多项式仍为 $d$ 而维数是 $2\\deg d$。",
+      "refs": [
+        "Hoffman–Kunze, Linear Algebra, Ch. 7",
+        "Dummit–Foote, Abstract Algebra, Ch. 12"
+      ]
+    },
+    {
+      "id": "def.companion-matrix",
+      "cluster": "algebra.spectral",
+      "type": "definition",
+      "label": "友矩阵",
+      "title": "友矩阵：循环模的标准矩阵",
+      "regions": [
+        "algebra"
+      ],
+      "tags": [
+        "定义",
+        "线性代数",
+        "谱",
+        "有理标准形",
+        "友矩阵"
+      ],
+      "statement": "设 $K$ 是域，$d(x)=x^m+a_{m-1}x^{m-1}+\\cdots+a_0\\in K[x]$ 首一、$m\\ge1$。其**友矩阵**是\n$C_d=\\begin{pmatrix}0&0&\\cdots&0&-a_0\\\\ 1&0&\\cdots&0&-a_1\\\\ 0&1&\\cdots&0&-a_2\\\\ \\vdots& &\\ddots& &\\vdots\\\\ 0&0&\\cdots&1&-a_{m-1}\\end{pmatrix}\\in M_m(K),$\n即次对角线全为 $1$、最后一列为 $(-a_0,\\ldots,-a_{m-1})^T$。则 $C_d$ 的特征多项式与极小多项式都等于 $d$，且 $e_1$ 是循环向量。",
+      "notes": "这是 $K[x]/(d)$ 上乘 $x$ 在基 $1,x,\\ldots,x^{m-1}$ 下的矩阵：$x^m\\equiv-(a_0+a_1x+\\cdots+a_{m-1}x^{m-1})$ 给出最后一列。\n由 $d(C_d)=0$ 得 $\\mu_{C_d}\\mid d$；而 $1,x,\\ldots,x^{m-1}$ 在 $K[x]/(d)$ 中线性无关，故 $\\deg\\mu_{C_d}=m=\\deg d$，从而 $\\mu_{C_d}=d$；又 $\\chi_{C_d}$ 与 $d$ 都是首一 $m$ 次且 $\\mu\\mid\\chi$，故 $\\chi_{C_d}=d$。\n约定：有的教材把 $1$ 放在上对角线、把系数放在第一行；两种写法差一个转置，特征/极小多项式不变。\n$d=1$ 时 $m=0$，$C_d$ 是空矩阵，本定义只讨论 $m\\ge1$。",
+      "refs": [
+        "Hoffman–Kunze, Linear Algebra, Ch. 7",
+        "Dummit–Foote, Abstract Algebra, Ch. 12",
+        "Lang, Algebra, Ch. XIV"
+      ]
+    },
+    {
+      "id": "thm.pid-fg-module-structure",
+      "cluster": "algebra.spectral",
+      "type": "theorem",
+      "label": "PID 上有限生成模的结构",
+      "title": "主理想整环上有限生成模的结构定理",
+      "regions": [
+        "algebra"
+      ],
+      "tags": [
+        "定理",
+        "代数",
+        "模论",
+        "主理想整环",
+        "Smith 标准形"
+      ],
+      "statement": "设 $R$ 是主理想整环，$M$ 是有限生成 $R$-模。则存在 $r\\ge0$、$k\\ge0$ 与非零非单位 $d_1,\\ldots,d_k\\in R$，满足 $d_1\\mid d_2\\mid\\cdots\\mid d_k$，使\n$M\\cong R^r\\oplus R/(d_1)\\oplus\\cdots\\oplus R/(d_k).$\n自由秩 $r$ 与理想 $(d_1),\\ldots,(d_k)$（在相差单位的意义下）由 $M$ 唯一确定；$k=0$ 当且仅当 $M$ 无挠。",
+      "notes": "证明见边 `imp.pid-fg-module-structure`。\n$R=K[x]$、$M$ 来自线性算子 $A$ 时，自由部分为零，$d_i$ 就是 $xI-A$ 的不变因子，分块给出有理标准形（`thm.rational-canonical-form`）。\n在 $K[x]$ 中要求 $d_i$ 首一时，它们唯一；一般 PID 中只在相差单位的意义下唯一。",
+      "refs": [
+        "Dummit–Foote, Abstract Algebra, Ch. 12",
+        "Lang, Algebra, Ch. XIV",
+        "Hoffman–Kunze, Linear Algebra, Ch. 7"
+      ]
+    },
+    {
+      "id": "def.elementary-divisor",
+      "cluster": "algebra.spectral",
+      "type": "definition",
+      "label": "初等因子（矩阵）",
+      "title": "矩阵的初等因子：不变因子的素幂分解",
+      "regions": [
+        "algebra"
+      ],
+      "tags": [
+        "定义",
+        "线性代数",
+        "谱",
+        "初等因子",
+        "Jordan 标准形"
+      ],
+      "statement": "设 $R$ 是主理想整环，$A\\in M_{m\\times n}(R)$ 的非零不变因子为 $d_1\\mid\\cdots\\mid d_r$。把每个 $d_i$ 分解为素元幂的乘积 $d_i=\\prod_p p^{e_{i,p}}$；所有满足 $e_{i,p}>0$ 的素幂 $p^{e_{i,p}}$（计重数）称为 $A$ 的**初等因子**。对 $A\\in M_n(K)$，把 $xI-A$ 的初等因子称为线性算子 $A$ 的初等因子。",
+      "notes": "⚠ 消歧：这里的初等因子是矩阵/模论概念，**不是** Weierstrass 初等因子 $E_p(z)=(1-z)\\exp(z+\\cdots+z^p/p)$（`def.elementary-factor`，复分析中的整函数）。两者仅中文名相同。\n与不变因子的关系：$d_i$ 是初等因子按整除链分组后的乘积；反过来，初等因子唯一决定全部不变因子。\n例：若不变因子为 $x-1$ 与 $(x-1)(x-2)$，则初等因子为 $x-1,\\ x-1,\\ x-2$。$K$ 代数闭时，$xI-A$ 的初等因子恰为 $(x-\\lambda)^s$，每个对应一个 $s$ 阶 Jordan 块（`thm.jordan-canonical-form`）。",
+      "refs": [
+        "Hoffman–Kunze, Linear Algebra, Ch. 7",
+        "Dummit–Foote, Abstract Algebra, Ch. 12"
+      ]
+    },
+    {
       id: 'thm.primary-decomposition',
       cluster: 'algebra.spectral',
       type: 'theorem',
@@ -490,6 +583,80 @@ window.MG = window.MG || {};
       definition: "def.algebraic-closure",
       usedBy: "thm.minimal-poly-divisor",
       note: "最小多项式在代数闭包中分裂。"
-    }
+    },
+    {
+      "id": "dep.cyclic-linearmap",
+      "kind": "definition",
+      "definition": "def.linear-map",
+      "usedBy": "def.cyclic-subspace",
+      "note": "循环子空间由 $T$ 的迭代生成。"
+    },
+    {
+      "id": "dep.cyclic-vectorspace",
+      "kind": "definition",
+      "definition": "def.vector-space",
+      "usedBy": "def.cyclic-subspace",
+      "note": "子空间与张成都在 $K$-向量空间里。"
+    },
+    {
+      "id": "dep.companion-matrix",
+      "kind": "definition",
+      "definition": "def.matrix",
+      "usedBy": "def.companion-matrix",
+      "note": "友矩阵是 $M_m(K)$ 中的具体矩阵。"
+    },
+    {
+      "id": "dep.elemdiv-invariant",
+      "kind": "definition",
+      "definition": "def.invariant-factor",
+      "usedBy": "def.elementary-divisor",
+      "note": "初等因子由不变因子的素幂分解得到。"
+    },
+    {
+      "id": "dep.pidfg-module",
+      "kind": "definition",
+      "definition": "def.module",
+      "usedBy": "thm.pid-fg-module-structure",
+      "note": "结构定理的对象是有限生成模。"
+    },
+    {
+      "id": "dep.pidfg-pid",
+      "kind": "definition",
+      "definition": "def.pid",
+      "usedBy": "thm.pid-fg-module-structure",
+      "note": "主理想整环保证理想由单个元素生成。"
+    },
+    {
+      "id": "imp.pid-fg-module-structure",
+      "kind": "implication",
+      "sources": [
+        "def.module",
+        "def.pid",
+        "thm.smith-normal-form"
+      ],
+      "target": "thm.pid-fg-module-structure",
+      "proof": "设 $x_1,\\ldots,x_n$ 生成 $M$，取满射 $\\varphi:R^n\\to M$、$e_i\\mapsto x_i$。核 $K=\\ker\\varphi$ 是 $R^n$ 的子模。\n\n先证 $K$ 有限生成且自由（PID 上自由模的子模自由）：对 $n$ 归纳。$n=0$ 显然。$n\\ge1$ 时令 $\\pi:R^n\\to R$ 为最后一个坐标，$\\pi(K)$ 是 $R$ 的理想，故 $\\pi(K)=(a)$。若 $a=0$，则 $K\\subseteq R^{n-1}$，由归纳 $K$ 自由。若 $a\\ne0$，取 $k_0\\in K$ 使 $\\pi(k_0)=a$；对任意 $k\\in K$ 有 $\\pi(k)=ra$，故 $k-rk_0\\in K\\cap R^{n-1}$。于是 $K=Rk_0\\oplus(K\\cap R^{n-1})$，由归纳 $K$ 自由。\n\n取 $K$ 的 $R$-基为列向量 $a_1,\\ldots,a_m$，组成 $n\\times m$ 矩阵 $A$。换基给出 $M\\cong R^n/K=\\operatorname{coker}(A)$。对 $A$ 用 Smith 标准形：存在 $P\\in\\operatorname{GL}_n(R)$、$Q\\in\\operatorname{GL}_m(R)$ 使\n$$PAQ=\\operatorname{diag}(d_1,\\ldots,d_r,0,\\ldots,0),\\qquad d_1\\mid\\cdots\\mid d_r.$$\n左乘 $P$、右乘 $Q$ 只是换 $R^n$ 与 $R^m$ 的基，故 $\\operatorname{coker}(A)\\cong\\operatorname{coker}(PAQ)$。后者的像由 $d_1e_1,\\ldots,d_re_r$ 生成，故\n$$\\operatorname{coker}(PAQ)\\cong R^{n-r}\\oplus R/(d_1)\\oplus\\cdots\\oplus R/(d_r).$$\n删去单位 $d_i$（此时 $R/(d_i)=0$），余下的非零非单位项仍满足整除链，即得所述分解。\n\n唯一性。自由秩由 $r=\\dim_{\\operatorname{Frac}R}(M\\otimes_R\\operatorname{Frac}R)$ 决定。对素元 $p$ 与 $j\\ge1$，令 $M[p^j]=\\{m\\in M:p^jm=0\\}$，它由 $M$ 决定；$p^{j-1}M[p^j]/p^jM[p^j]$ 是 $R/(p)$-向量空间。对 $R/(d)$，写 $d=p^vu$（$p\\nmid u$），由中国剩余定理 $R/(d)\\cong R/(p^v)\\oplus R/(u)$，且 $R/(d)[p^j]\\cong R/(p^{\\min(j,v)})$。于是\n$$c_j(p):=\\dim_{R/(p)}\\frac{p^{j-1}M[p^j]}{p^jM[p^j]}=\\#\\{i:v_p(d_i)\\ge j\\}$$\n由 $M$ 决定。整除链给出 $v_p(d_1)\\le\\cdots\\le v_p(d_k)$，故\n$$v_p(d_i)=\\#\\{j\\ge1:c_j(p)\\ge k-i+1\\},$$\n全部 $d_i$ 由 $M$ 决定（相差单位）。$K[x]$ 中取首一代表即唯一。$\\blacksquare$",
+    },
+    {
+      "id": "imp.rational-canonical-form-proof",
+      "kind": "implication",
+      "sources": [
+        "def.companion-matrix",
+        "def.cyclic-subspace",
+        "thm.pid-fg-module-structure",
+        "thm.cayley-hamilton",
+        "thm.smith-normal-form",
+        "def.invariant-factor",
+      ],
+      "target": "thm.rational-canonical-form",
+      "proof": "把 $V=K^n$ 看成 $K[x]$-模，$x\\cdot v=Av$。Cayley–Hamilton 给 $\\chi_A(A)=0$，故 $V$ 是挠模；$\\dim_KV=n$ 给有限生成。\n\n由 `thm.pid-fg-module-structure`（$R=K[x]$），$V\\cong\\bigoplus_{i=1}^s K[x]/(d_i)$，其中 $d_1\\mid\\cdots\\mid d_s$ 是非单位首一多项式；自由部分为零，因为 $V$ 挠。\n\n对每个循环模 $K[x]/(d)$，记 $d=x^m+a_{m-1}x^{m-1}+\\cdots+a_0$，取 $K$-基 $1,x,\\ldots,x^{m-1}$。乘 $x$ 的矩阵正是友矩阵 $C_d$（`def.companion-matrix`）：$x^m\\equiv-(a_0+a_1x+\\cdots+a_{m-1}x^{m-1})$ 给出最后一列。把各循环块的基拼起来，$A$ 相似于 $\\operatorname{diag}(C_{d_1},\\ldots,C_{d_s})$。\n\n唯一性：$d_i$ 恰是 $xI-A$ 的非单位不变因子（Smith 标准形，`thm.smith-normal-form`；`def.invariant-factor`），而 Smith 标准形的对角元在相差单位下由 $xI-A$ 唯一确定；取首一代表即唯一。反过来，若 $B=\\operatorname{diag}(C_{d_1},\\ldots,C_{d_s})$ 且整除链相同，则对应的 $K[x]$-模同构，故 $B\\sim A$。$\\blacksquare$"
+    },
+    {
+      "id": "ana.jcf-rcf",
+      "kind": "analogy",
+      "a": "thm.jordan-canonical-form",
+      "b": "thm.rational-canonical-form",
+      "note": "同一相似分类问题的两种标准形：Jordan 形要求特征多项式分裂，把循环块进一步拆成 Jordan 块；有理标准形对任意域都成立，用不变因子/友矩阵作块。分裂域上 Jordan 形是有理标准形按初等因子 $(x-\\lambda)^s$ 的细化。"
+    },
   ]
 });
