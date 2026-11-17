@@ -188,11 +188,11 @@ window.MG.packs.push({
       note: '陈述里提到「极小多项式」：「相似的不变量：秩、迹、行列式、特征多项式（从而特征值与它们的代数重数）、…」 —— 读者顺着这个词要落到它的定义上，所以接上。',
     },
     {
-      id: 'dep.gap-solvable-quotients-normal-extension',
+      id: 'dep.gap-solvable-quotients-normal-subgroup',
       kind: 'definition',
-      definition: 'def.normal-extension',
+      definition: 'def.normal-subgroup',
       usedBy: 'thm.solvable-quotients',
-      note: '陈述里提到「正规扩张」：「（(a)(b) 说的是「可解性向下传」，…」 —— 读者顺着这个词要落到它的定义上，所以接上。',
+      note: '陈述里用的是「正规子群」：$N\\trianglelefteq G$ 在 (b)(c) 里各出现一次。原先这条接的是域论的 `def.normal-extension` ——「正规扩张」在群论口语里只是「正规子群」的另一种说法，接错了对象；改接 `def.normal-subgroup`。',
     },
     {
       id: 'dep.gap-solid-completion-criterion-derived-category',

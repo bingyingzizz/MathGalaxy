@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T13:52:05.562Z",
+ "generated": "2026-11-17T15:19:35.451Z",
  "terms": 76,
  "missing": [
   {
@@ -423,6 +423,15 @@
    "gap": 2
   },
   {
+   "node": "thm.solvable-quotients",
+   "nodeLabel": "可解性对子群与商群封闭",
+   "nodeLayer": 14,
+   "def": "def.normal-extension",
+   "defLabel": "正规扩张",
+   "defLayer": 16,
+   "gap": 2
+  },
+  {
    "node": "thm.riesz-markov",
    "nodeLabel": "Riesz–Markov 表示",
    "nodeLayer": 21,
@@ -504,7 +513,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 50,
+ "noEdgeAll": 51,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",

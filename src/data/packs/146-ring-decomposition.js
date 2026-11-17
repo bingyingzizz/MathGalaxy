@@ -224,11 +224,11 @@ window.MG = window.MG || {};
         '$$A\\Big/\\bigcap_{i} I_{i} \\;\\cong\\; \\prod_{i=1}^{k} A/I_{i} .$$',
       ].join('\n'),
       notes: [
-        '**构造**：由互素写 $1 = u + v$（$u \\in I$、$v \\in J$），令 $e := v$。则',
+        '**构造**：由互素写 $1 = u + v$（$u \\in I$、$v \\in J$），令 $e := u$（于是 $e \\in I$、$e \\equiv 1 \\pmod J$）。则',
         '',
-        '$$e \\equiv 0 \\pmod I, \\qquad e \\equiv 1 \\pmod J, \\qquad e^{2} = e .$$',
+        '$$e \\equiv 0 \\pmod I, \\qquad e \\equiv 1 \\pmod J, \\qquad e^{2} \\equiv e \\pmod{I \\cap J} .$$',
         '',
-        '于是对任意右端 $(x, y)$，元素 $a = x(1-e) + y e$ 满足 $a \\equiv x \\pmod I$、$a \\equiv y \\pmod J$ —— 存在性。唯一性：两解之差被 $I$ 与 $J$ 同时整除，故落在 $I \\cap J$。',
+        '（$e$ 不是幂等元本身：$e(1-e)=uv\\in IJ\\subseteq I\\cap J$，只在模 $I\\cap J$ 的意义下幂等；又 $1-e=v$。）于是对任意右端 $(x, y)$，元素 $a = x(1-e) + y e = xv + yu$ 满足 $a \\equiv x \\pmod I$、$a \\equiv y \\pmod J$ —— 存在性。唯一性：两解之差被 $I$ 与 $J$ 同时整除，故落在 $I \\cap J$。',
         '',
         '**同构**：由第一同构定理（`thm.first-iso`），核是 $I \\cap J$、商掉即得；满射由上面的构造给出。',
         '',
@@ -271,6 +271,9 @@ window.MG = window.MG || {};
 
     {id: "e136.definition", kind: 'definition', definition: 'def.ideal', usedBy: 'thm.crt-rings',
       note: '定理的两个对象 $I, J$ 都是理想，商 $A/I$ 是商环。' },
+
+    { id: 'dep.comaximal-crt', kind: 'definition', definition: 'def.comaximal', usedBy: 'thm.crt-rings',
+      note: '定理的条件「$I + J = A$」与「两两互素」正是 `def.comaximal` 的定义；证明的构造也直接用它给出的 $1 = u + v$。' },
 
     { id: 'imp.crtr-frac', kind: 'implication', sources: ['thm.first-iso'], target: 'thm.crt-rings',
       title: '第一同构定理给出中国剩余定理的环论形式',
