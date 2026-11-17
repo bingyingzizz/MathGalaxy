@@ -29,8 +29,8 @@ window.MG = window.MG || {};
       title: "代数的线性表示",
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
-      statement: "设 $A$ 是含幺结合 $F$-代数。$A$ 的线性表示是一对 $(M,\\theta)$，其中 $M$ 是 $F$-向量空间，$\\theta:A\\to\\operatorname{End}_F(M)$ 是含幺代数同态。令 $a\\cdot m=\\theta(a)(m)$，则 $M$ 成为左 $A$-模；此构造给出含幺表示与左 $A$-模的等价。",
-      notes: "条件 $\\theta(1_A)=\\operatorname{id}_M$ 是「含幺」的一部分。\n在此等价下，$A$-线性映射恰是表示的同态，故 $\\mathrm{Rep}_A^{\\mathrm{uni}}$ 与 $A\\text{-}\\mathrm{Mod}$ 等价。\n$M_n(F)$ 在 $F^n$ 上的自然作用是基本例子。\n$F[x_1,\\ldots,x_n]$-模结构等价于 $n$ 个两两交换的自同态 $T_i$。",
+      statement: "设 $A$ 是含幺结合 $F$-代数。$A$ 的线性表示是一对 $(M,\\theta)$，其中 $M$ 是 $F$-向量空间，$\\theta:A\\to\\operatorname{End}_F(M)$ 是代数同态（不要求 $\\theta(1_A)=\\operatorname{id}_M$）。若附加 $\\theta(1_A)=\\operatorname{id}_M$，称含幺表示；此时令 $a\\cdot m=\\theta(a)(m)$，含幺表示与左 $A$-模一一对应。",
+      notes: "一般表示只要求 $\\theta$ 保加法与乘法，不要求保单位。\n含幺表示条件 $\\theta(1_A)=\\operatorname{id}_M$ 使 $M$ 成为左 $A$-模；在此等价下 $A$-线性映射恰是表示同态。\n$M_n(F)$ 在 $F^n$ 上的自然作用是基本例子。\n$F[x_1,\\ldots,x_n]$-模结构等价于 $n$ 个两两交换的自同态 $T_i$。",
       refs: ["Lang, Algebra (GTM 211)","Bourbaki, Algebra"]
     },
     {
@@ -53,8 +53,8 @@ window.MG = window.MG || {};
       title: "有限群表示",
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
-      statement: "设 $G$ 是有限群。$G$ 在 $F$ 上的表示是一对 $(V,\\rho)$，其中 $V$ 是有限维 $F$-向量空间，$\\rho:G\\to GL(V)$ 是群同态。它等价于 $V$ 上的含幺左 $F[G]$-模结构；因此 $G$ 的表示与群代数 $F[G]$ 的含幺表示相同。",
-      notes: "表示的维数是 $\\dim_F V$。\n平凡表示取 $\\rho(g)=\\operatorname{id}_V$；正则表示是 $G$ 在 $F[G]$ 上的左乘作用。\n群代数 $F[G]$ 由形式和 $\\sum a_g g$ 与卷积乘法组成，$\\rho$ 唯一延拓为含幺代数同态 $F[G]\\to\\operatorname{End}_F(V)$。\n这个等价把代数表示的全部结果搬到群上。",
+      statement: "设 $G$ 是有限群。$G$ 在 $F$ 上的表示是一对 $(V,\\rho)$，其中 $V$ 是 $F$-向量空间，$\\rho:G\\to GL(V)$ 是群同态。它等价于 $V$ 上的含幺左 $F[G]$-模结构；因此 $G$ 的表示与群代数 $F[G]$ 的含幺表示相同。",
+      notes: "表示不必有限维；本团多数结论在有限维情形陈述。\n平凡表示取 $\\rho(g)=\\operatorname{id}_V$；正则表示是 $G$ 在 $F[G]$ 上的左乘作用。\n群代数 $F[G]$ 由形式和 $\\sum a_g g$ 与卷积乘法组成，$\\rho$ 唯一延拓为含幺代数同态 $F[G]\\to\\operatorname{End}_F(V)$。\n这个等价把代数表示的全部结果搬到群上。",
       refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I","Fulton–Harris, Representation Theory: A First Course (GTM 129), Ch. 1–2"]
     },
     {
@@ -222,7 +222,7 @@ window.MG = window.MG || {};
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "非零代数 $A$ 称为单代数，若它只有 $0$ 与 $A$ 两个双边理想。",
-      notes: "除法代数 $D$ 上的矩阵代数 $M_n(D)$ 是单代数，这是模型情形。\n有限维单代数同构于除法代数上的矩阵代数（Wedderburn）。\n群代数 $F[G]$ 只在很小的情形下单。\n单性是双边条件，不等同于没有非平凡左理想。",
+      notes: "除法代数 $D$ 上的矩阵代数 $M_n(D)$ 是单代数，这是模型情形。\n有限维单代数同构于除法代数上的矩阵代数（Wedderburn）。\n群代数 $F[G]$ 只在很小的情形下单。\n单性是双边条件，不等同于没有非平凡左理想。\n\n术语说明：本图把「无非平凡双边理想」称为单代数；讲义把这一性质称 quasi-simple，而把「半单且单左理想同构类唯一」称单代数。有限维时二者等价（见 thm.wedderburn-simple）。",
       refs: ["Lang, Algebra (GTM 211)","Curtis–Reiner, Representation Theory of Finite Groups and Associative Algebras"]
     },
     {
@@ -289,13 +289,12 @@ window.MG = window.MG || {};
       id: "thm.burnside-surjectivity",
       cluster: "algebra.representation",
       type: "theorem",
-      status: "skeleton",
       label: "Burnside 满射性定理",
       title: "Burnside 满射性定理",
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "设 $V$ 是有限维半单 $A$-模，$A'=\\operatorname{End}_A(V)$，$A''=\\operatorname{End}_{A'}(V)$。自然映射 $\\Phi:A\\to A''$，$a\\mapsto(v\\mapsto av)$，是满射。等价地，对任意 $f\\in A''$ 与任意有限组 $v_1,\\ldots,v_n\\in V$，存在 $a\\in A$ 使 $av_i=f(v_i)$ 对所有 $i$ 成立。",
-      notes: "单向量情形用半单性把 $V$ 分裂为 $Av$ 与补空间，再把 $f$ 作用在第一个直和项上。\n多向量情形对 $V^n$ 的对角作用用单向量结果；$V^n$ 的半单性由 $V$ 的半单性得到。\n这是有限维半单模的双中心化子定理。\n骨架缺口：$f(v)\\in Av$ 一般不成立，$V^n$ 论证无法直接收口；完整证明需 Jacobson 密度定理或独立双中心化子论证，本图尚无节点。\n它是 Wedderburn 定理的关键一步。",
+      notes: "单向量：$V$ 半单，故 $V=Av\\oplus W$，投影 $p:V\\to Av$ 是 $A$-线性的，即 $p\\in A'$。对 $f\\in A''$，$f(v)=f(pv)=p f(v)\\in Av$，故存在 $a\\in A$ 使 $av=f(v)$。\n多向量：对 $V^n$ 的对角作用重复上述论证，得同一个 $a$ 同时匹配任意有限组 $v_i$。\n有限维时 $V$ 是有限生成 $A'$-模：取生成元 $v_1,\\ldots,v_n$，由上一段得 $a$ 使 $av_i=f(v_i)$；任意 $v=\\sum a'_iv_i$ 满足 $f(v)=\\sum a'_i f(v_i)=av$，故 $\\Phi(a)=f$。\n这是双中心化子定理的初等版本，不需要 Jacobson 密度定理。",
       refs: ["Curtis–Reiner, Representation Theory of Finite Groups and Associative Algebras","Lang, Algebra (GTM 211)"]
     },
     {
@@ -307,8 +306,7 @@ window.MG = window.MG || {};
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "设 $A$ 是有限维单 $F$-代数。则 $A\\cong M_n(D^{\\mathrm{op}})$，其中 $D$ 是除法代数、$n\\ge1$，且对单左理想 $V$ 有 $D\\cong\\operatorname{End}_A(V)$。若 $F$ 代数闭，则 $D=F$，$A\\cong M_n(F)$。",
-      notes: "取极小非零左理想 $V$；$V$ 是单 $A$-模，由 Schur 引理 $D=\\operatorname{End}_A(V)$ 是除法代数。\n自然映射 $A\\to\\operatorname{End}_D(V)$ 因 $A$ 单而单射，Burnside 定理使它满射；故 $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$。\n代数闭时 Schur 引理给出 $D=F$。\n注意方向：$A$ 同构于 $D^{\\mathrm{op}}$ 上的矩阵代数。\n证明经由 Burnside 满射性（thm.burnside-surjectivity，本图 skeleton），因此本条仍为 skeleton。",
-      status: "skeleton",
+      notes: "取极小非零左理想 $V$；$V$ 是单 $A$-模，由 Schur 引理 $D=\\operatorname{End}_A(V)$ 是除法代数。\n自然映射 $A\\to\\operatorname{End}_D(V)$ 因 $A$ 单而单射：若 $aV=0$，则 $\\operatorname{Ann}(V)$ 是非零双边理想，只能是 $A$，与 $AV=V$ 矛盾；Burnside 定理使它满射；故 $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$。\n代数闭时 Schur 引理给出 $D=F$。\n注意方向：$A$ 同构于 $D^{\\mathrm{op}}$ 上的矩阵代数。",
       refs: ["Lang, Algebra (GTM 211)","Curtis–Reiner, Representation Theory of Finite Groups and Associative Algebras"]
     },
     {
@@ -320,8 +318,7 @@ window.MG = window.MG || {};
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "设 $A$ 是有限维半单 $F$-代数。则 $A\\cong\\prod_{i=1}^s M_{n_i}(D_i)$，其中 $D_i$ 是除法代数；等价地，每个有限维 $A$-模都是半单的。",
-      notes: "把正则模 $A$ 分解为单左理想，按同构类分组得到双边理想 $A_i$，且 $A=\\prod A_i$。\n每个 $A_i$ 是单代数，用单代数的 Wedderburn 定理。\n反向：矩阵代数的乘积半单。\n$n_i$ 与 $D_i$ 在同构与置换意义下唯一。\n证明经由 thm.wedderburn-simple，而后者依赖 Burnside 满射性（本图 skeleton），故本条仍为 skeleton。",
-      status: "skeleton",
+      notes: "因 $A$ 半单，左正则模分解为 $A=\\bigoplus_i S_i^{\\oplus n_i}$，$S_i$ 两两不同构单左模。\\n右乘给出 $A^{\\mathrm{op}}\\cong\\operatorname{End}_A(A)$：$a\\mapsto R_a$，$R_a(x)=xa$；逆由 $f\\mapsto f(1)$ 给出。\\n由 Schur 引理，$\\operatorname{Hom}_A(S_i,S_j)=0$（$i\\ne j$），故 $\\operatorname{End}_A(A)\\cong\\prod_i\\operatorname{End}_A(S_i^{\\oplus n_i})\\cong\\prod_i M_{n_i}(D_i)$，其中 $D_i=\\operatorname{End}_A(S_i)$ 是除法代数。\\n取相反代数得 $A\\cong\\prod_i M_{n_i}(D_i^{\\mathrm{op}})$。\\n反向：每个矩阵代数 $M_{n_i}(D_i)$ 半单，乘积半单；有限维半单代数的模都半单（子模有补）。$\\blacksquare$",
       refs: ["Lang, Algebra (GTM 211)","Curtis–Reiner, Representation Theory of Finite Groups and Associative Algebras"]
     },
     {
@@ -345,8 +342,7 @@ window.MG = window.MG || {};
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "设 $V_1,\\ldots,V_s$ 是 $A$ 的两两不同构的有限维不可约表示。则存在 $a_i\\in A$，使对所有 $i,j$ 有 $\\theta_j(a_i)=\\delta_{ij}\\operatorname{id}_{V_j}$。",
-      notes: "对直和 $V=V_1\\oplus\\cdots\\oplus V_s$ 用 Burnside 定理；到 $V_i$ 的投影属于 $A''=\\operatorname{End}_{A'}(V)$。\n$a_i$ 是这些投影的原像。\n它们在 $V_j$ 上表现为正交幂等元。\n这用于分离半单表示中每个不可约的重数。\n证明直接使用 Burnside 满射性（thm.burnside-surjectivity，本图 skeleton），故本条仍为 skeleton。",
-      status: "skeleton",
+      notes: "对直和 $V=V_1\\oplus\\cdots\\oplus V_s$ 用 Burnside：$A''=\\operatorname{End}_{A'}(V)$ 含到 $V_i$ 的投影 $e_i$。由满射性取 $a_i\\in A$ 使 $\\theta(a_i)=e_i$。则 $\\theta_j(a_i)=\\delta_{ij}\\operatorname{id}_{V_j}$，因为 $e_i$ 在 $V_j$ 上是 $\\delta_{ij}$ 倍恒等。\n这些 $a_i$ 是正交幂等元，用于分离半单表示中每个不可约的重数。\n证明直接使用 Burnside 满射性（thm.burnside-surjectivity）。",
       refs: ["Curtis–Reiner, Representation Theory of Finite Groups and Associative Algebras"]
     },
     {
@@ -358,8 +354,7 @@ window.MG = window.MG || {};
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "设 $\\operatorname{char}F=0$。若 $W_1,W_2$ 是 $A$ 的有限维半单表示，则 $W_1\\cong W_2$ 当且仅当 $\\chi_{W_1}=\\chi_{W_2}$。",
-      notes: "写 $W=\\oplus n_iV_i$，$V_i$ 两两不同构不可约。\n单位分解元素 $a_i$ 给出 $\\chi_W(a_i)=n_i\\dim V_i$，故重数 $n_i$ 由 $\\chi_W$ 恢复；$\\operatorname{char}F=0$ 允许除以 $\\dim V_i$。\n半单性不可省：$F[x]$ 上恒等与 Jordan 块可有相同特征标但不同构。\n此结论是特征标表理论的基础。\n证明经由 prop.partition-of-unity，而后者依赖 Burnside 满射性（本图 skeleton），故本条仍为 skeleton。",
-      status: "skeleton",
+      notes: "写 $W=\\oplus n_iV_i$，$V_i$ 两两不同构不可约。单位分解元素 $a_i$ 给出 $\\chi_W(a_i)=n_i\\dim V_i$，故重数 $n_i$ 由 $\\chi_W$ 恢复；$\\operatorname{char}F=0$ 允许除以 $\\dim V_i$。\n半单性不可省：$F[x]$ 上恒等与 Jordan 块可有相同特征标但不同构。\n此结论是特征标表理论的基础；证明经由 prop.partition-of-unity，而后者由 Burnside 满射性得到。",
       refs: ["Isaacs, Character Theory of Finite Groups","Serre, Linear Representations of Finite Groups (GTM 42), Part I"]
     },
     {
@@ -407,7 +402,7 @@ window.MG = window.MG || {};
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "设 $V$ 是有限维不可分解表示。则 $\\operatorname{End}_A(V)$ 是局部环，其极大理想恰为幂零自同态全体。",
-      notes: "由 cor.indecomposable-endomorphism，非自同构的 $f$ 必幂零，故非单位恰为幂零元。\n若 $f$ 幂零则 $\\operatorname{id}-f$ 可逆（逆为有限几何级数）；故幂零元构成双边理想，商是除法环，这给出局部环。\n反过来，若 $f$ 不可逆则幂零，故极大理想正是幂零元全体。",
+      notes: "由 cor.indecomposable-endomorphism，非自同构的 $f$ 必幂零，故非单位恰为幂零元。\n若 $f$ 幂零则 $\\operatorname{id}-f$ 可逆（逆为有限几何级数）；故幂零元对加法封闭：若 $f,g$ 幂零且 $f+g$ 可逆，则 $f=(f+g)(\\operatorname{id}-(f+g)^{-1}g)$ 可逆（$g$ 幂零，括号可逆），矛盾；故 $f+g$ 非单位，再由 cor.indecomposable-endomorphism 得幂零。\n于是幂零元构成双边理想，商是除法环，这给出局部环；反过来，若 $f$ 不可逆则幂零，故极大理想正是幂零元全体。",
       refs: ["Drozd–Kirichenko, Finite Dimensional Algebras","Curtis–Reiner, Representation Theory of Finite Groups and Associative Algebras"]
     },
     {
@@ -455,8 +450,7 @@ window.MG = window.MG || {};
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
       statement: "设 $G$ 有限，$\\operatorname{char}F=0$，$F$ 代数闭。则 $F[G]\\cong\\prod_{i=1}^s M_{n_i}(F)$，且作为左 $F[G]$-模有 $F[G]\\cong\\bigoplus_{i=1}^s n_iV_i$，其中 $V_i$ 是两两不同构的不可约表示，$n_i=\\dim V_i$。",
-      notes: "Maschke 给出半单性，Wedderburn–Artin 把 $F[G]$ 分解为矩阵代数；代数闭把除法代数换成 $F$。\n正则模分解的重数为 $n_i=\\dim V_i$，比较维数得 $|G|=\\sum n_i^2$。\n$V_i$ 的特征标构成类函数空间的一组基（正交关系，见特征标理论）。\n$n_i=\\dim V_i$ 用 Wedderburn 与正则特征标计算。\n证明经由 thm.wedderburn-artin，而后者依赖 Burnside 满射性（本图 skeleton），故本条仍为 skeleton。",
-      status: "skeleton",
+      notes: "Maschke 定理给出 $F[G]$ 半单。由 thm.wedderburn-artin，$F[G]\\cong\\prod_i M_{n_i}(D_i)$。\\n$\\operatorname{char}F=0$ 且 $F$ 代数闭 故 有限维除法 $F$-代数 $D_i=F$：若 $a\\in D_i$ 超出 $F$，则 $F(a)$ 是有限扩张，与代数闭矛盾。\\n故 $F[G]\\cong\\prod_i M_{n_i}(F)$。作为左 $F[G]$-模，$M_{n_i}(F)$ 的自然模 $F^{n_i}$ 是单模，故 $F[G]\\cong\\bigoplus_i n_iV_i$，其中 $V_i=F^{n_i}$，$n_i=\\dim V_i$。\\n比较维数得 $|G|=\\sum_i n_i^2$。$\\blacksquare$",
       refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I","Fulton–Harris, Representation Theory: A First Course (GTM 129)"]
     },
     {
@@ -467,8 +461,8 @@ window.MG = window.MG || {};
       title: "特征标的运算",
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
-      statement: "设 $V,W$ 是有限群 $G$ 的有限维表示，$\\operatorname{char}F\\nmid|G|$，且 $\\operatorname{char}F\\ne2$。则：\n(1) $\\chi_{V\\oplus W}=\\chi_V+\\chi_W$；\n(2) $\\chi_{V\\otimes W}=\\chi_V\\chi_W$；\n(3) $\\chi_{V^*}(g)=\\chi_V(g^{-1})$；\n(4) $\\chi_{\\operatorname{Sym}^2V}(g)=\\frac12(\\chi_V(g)^2+\\chi_V(g^2))$；\n(5) $\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$。",
-      notes: "(1)(2) 从迹的加性与 $\\operatorname{tr}(A\\otimes B)=\\operatorname{tr}A\\operatorname{tr}B$ 得到。\n(3) 用对偶表示的逆转置与迹的循环性。\n(4)(5) 在代数闭包上把 $\\rho(g)$ 上三角化，特征值为 $\\lambda_i$；$\\operatorname{Sym}^2$ 的特征值是 $\\lambda_i\\lambda_j$（$i\\le j$），$\\operatorname{Alt}^2$ 的是 $\\lambda_i\\lambda_j$（$i<j$），再用 $\\sum_{i<j}\\lambda_i\\lambda_j=\\frac12((\\sum\\lambda_i)^2-\\sum\\lambda_i^2)$。\n原笔记 (4) 的符号有笔误，正确符号为加号；$\\operatorname{Alt}^2$ 用减号。",
+      statement: "设 $V,W$ 是有限群 $G$ 的有限维表示，$\\operatorname{char}F\\nmid|G|$。则：\n(1) $\\chi_{V\\oplus W}=\\chi_V+\\chi_W$；\n(2) $\\chi_{V\\otimes W}=\\chi_V\\chi_W$；\n(3) $\\chi_{V^*}(g)=\\chi_V(g^{-1})$；\n(4) 若 $\\operatorname{char}F\\ne2$，$\\chi_{\\operatorname{Sym}^2V}(g)=\\frac12(\\chi_V(g)^2+\\chi_V(g^2))$；\n(5) 若 $\\operatorname{char}F\\ne2$，$\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$。",
+      notes: "(1)–(3) 在任意特征下成立；(4)(5) 用对换子的 $\\pm1$ 分解，要求 $\\operatorname{char}F\\ne2$。\n(3) 的 $V^*$ 是 $A^{\\mathrm{op}}$ 表示，对群即 $g\\mapsto\\rho(g^{-1})^T$。\n$\\operatorname{char}F\\ne2$ 时 Sym^2/Alt^2 的特征标由 $V^{\\otimes2}$ 的迹分解得到。",
       refs: ["Fulton–Harris, Representation Theory: A First Course (GTM 129)","Serre, Linear Representations of Finite Groups (GTM 42), Part I"]
     },
     {
@@ -479,8 +473,8 @@ window.MG = window.MG || {};
       title: "对称平方表示",
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
-      statement: "设 $\\operatorname{char}F\\ne2$，$(V,\\rho)$ 是群 $G$ 的表示。对称平方 $\\operatorname{Sym}^2V$ 是 $V\\otimes V$ 对换子 $\\tau(v\\otimes w)=w\\otimes v$ 的 $+1$ 特征子空间；$G$ 的作用由 $g(vw)=\\rho(g)v\\,\\rho(g)w$ 给出，称为对称平方表示。若 $e_1,\\ldots,e_n$ 是 $V$ 的基，则 $\\{e_ie_j:1\\le i\\le j\\le n\\}$ 是 $\\operatorname{Sym}^2V$ 的基。",
-      notes: "$\\operatorname{Sym}^2V$ 的维数是 $n(n+1)/2$。\n它是对换作用的 $+1$ 特征空间，$\\operatorname{Alt}^2V$ 是 $-1$ 特征空间。\n特征标公式见特征标运算节点。\n$\\operatorname{char}F=2$ 时对称与外幂不再互补，本团只讨论 $\\operatorname{char}F\\ne2$。",
+      statement: "设 $(V,\\rho)$ 是群 $G$ 的表示。对称平方表示定义为商表示 $\\operatorname{Sym}^2V=(V\\otimes V)/\\langle v\\otimes w-w\\otimes v\\rangle$，$G$ 通过 $g(vw)=\\rho(g)v\\,\\rho(g)w$ 作用（$vw$ 记 $v\\otimes w$ 的类）。若 $e_1,\\ldots,e_n$ 是 $V$ 的基，则 $\\{e_ie_j:1\\le i\\le j\\le n\\}$ 是 $\\operatorname{Sym}^2V$ 的基。",
+      notes: "定义本身不要求 $\\operatorname{char}F\\ne2$；$v\\otimes w-w\\otimes v$ 生成的子空间未必可补。\n当 $\\operatorname{char}F\\ne2$ 时，$\\operatorname{Sym}^2V$ 与对换子的 $+1$ 特征子空间重合，维数为 $n(n+1)/2$。\n对群表示，$g$ 的作用是良定义的；特征标公式见 prop.character-operations。",
       refs: ["Fulton–Harris, Representation Theory: A First Course (GTM 129)","Weyl, The Classical Groups"]
     },
     {
@@ -491,8 +485,8 @@ window.MG = window.MG || {};
       title: "外平方表示",
       regions: ["algebra"],
       tags: ["表示论","抽象代数"],
-      statement: "设 $\\operatorname{char}F\\ne2$，$(V,\\rho)$ 是群 $G$ 的表示。外平方 $\\operatorname{Alt}^2V$（亦记 $\\bigwedge^2V$）是 $V\\otimes V$ 对换子的 $-1$ 特征子空间；$G$ 的作用由 $g(v\\wedge w)=\\rho(g)v\\wedge\\rho(g)w$ 给出。若 $e_1,\\ldots,e_n$ 是基，则 $\\{e_i\\wedge e_j:1\\le i<j\\le n\\}$ 是基。",
-      notes: "外平方的维数是 $n(n-1)/2$。\n$\\operatorname{char}F\\ne2$ 时 $V\\otimes V\\cong\\operatorname{Sym}^2V\\oplus\\operatorname{Alt}^2V$。\n特征标公式为 $\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$。\n它与对称平方是互补的两个构造。",
+      statement: "设 $(V,\\rho)$ 是群 $G$ 的表示。外平方表示定义为商表示 $\\operatorname{Alt}^2V=(V\\otimes V)/\\langle v\\otimes w+w\\otimes v\\rangle$，$G$ 通过 $g(v\\wedge w)=\\rho(g)v\\wedge\\rho(g)w$ 作用。若 $e_1,\\ldots,e_n$ 是基，则 $\\{e_i\\wedge e_j:1\\le i<j\\le n\\}$ 是基。",
+      notes: "定义本身不要求 $\\operatorname{char}F\\ne2$；$\\operatorname{char}F\\ne2$ 时与对换子的 $-1$ 特征子空间重合，维数为 $n(n-1)/2$。\n外平方也记 $\\bigwedge^2V$。",
       refs: ["Fulton–Harris, Representation Theory: A First Course (GTM 129)","Weyl, The Classical Groups"]
     },
     {
@@ -506,7 +500,91 @@ window.MG = window.MG || {};
       statement: "设 $G$ 是有限群。正则表示是 $G$ 在 $F[G]$ 上的左乘作用 $\\rho_{\\mathrm{reg}}(g)(h)=gh$，作为 $F^G$ 上的置换表示。其特征标为 $\\chi_{\\mathrm{reg}}(1)=|G|$，且 $g\\ne1$ 时 $\\chi_{\\mathrm{reg}}(g)=0$。",
       notes: "正则表示的维数是 $|G|$。\n特征标公式：$g$ 在基 $G$ 上的置换矩阵对角元为 $1$ 当且仅当 $gh=h$，即 $g=1$。\n$\\operatorname{char}F\\nmid|G|$ 且 $F$ 代数闭时，$\\rho_{\\mathrm{reg}}\\cong\\bigoplus_V(\\dim V)V$（$V$ 取遍不可约表示）。\n比较维数得 $|G|=\\sum_V(\\dim V)^2$。",
       refs: ["Fulton–Harris, Representation Theory: A First Course (GTM 129)","Serre, Linear Representations of Finite Groups (GTM 42), Part I"]
-    }
+    },
+    {
+      id: "def.character-inner-product",
+      cluster: "algebra.representation",
+      type: "definition",
+      label: "特征标内积",
+      title: "群上函数的内积",
+      regions: ["algebra"],
+      tags: ["表示论","抽象代数","特征标"],
+      statement: "设 $G$ 是有限群，$\\operatorname{char}F\\nmid|G|$。对函数 $f_1,f_2:G\\to F$ 定义 $\\langle f_1,f_2\\rangle=\\frac{1}{|G|}\\sum_{g\\in G}f_1(g)f_2(g^{-1})$。这是 $F$-双线性型；限制在类函数空间上给出特征标理论所用的配对。",
+      notes: "双线性显然；对称性用换元 $g\\mapsto g^{-1}$。\\n在类函数上 $\\langle f,f\\rangle=\\frac1{|G|}\\sum_g f(g)f(g^{-1})$；在复表示（$F\\subseteq\\mathbb C$）且 $f$ 取复共轭时，限制到特征标空间上它是正定 Hermite 型；一般域上只要求非退化。\\n该配对把不可约特征标的正交性写成 $\\langle\\chi_i,\\chi_j\\rangle=\\delta_{ij}$。",
+      refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I","Fulton–Harris, Representation Theory: A First Course (GTM 129), Ch. 2"]
+    },
+    {
+      id: "lem.fixed-space-dimension",
+      cluster: "algebra.representation",
+      type: "lemma",
+      label: "不动点维数与特征标",
+      title: "不动点维数等于特征标与常值函数的内积",
+      regions: ["algebra"],
+      tags: ["表示论","抽象代数","特征标"],
+      statement: "设 $\\operatorname{char}F\\nmid|G|$，$(V,\\rho)$ 是有限维表示。则 $\\dim_F V^G=\\langle\\chi_\\rho,\\mathbf 1\\rangle$，其中 $V^G=\\{v\\in V:\\rho(g)v=v\\ \\text{for all }g\\in G\\}$，$\\mathbf 1$ 是常值函数 $g\\mapsto1$。",
+      notes: "平均算子 $\\varphi(v)=\\frac1{|G|}\\sum_g\\rho(g)v$ 是 $G$-等变投影，像为 $V^G$。\\n取基使 $\\varphi$ 为对角 1（在 $V^G$ 上）与 0（在补空间上），故 $\\operatorname{tr}\\varphi=\\dim V^G$。\\n另一方面 $\\operatorname{tr}\\varphi=\\frac1{|G|}\\sum_g\\operatorname{tr}\\rho(g)=\\langle\\chi_\\rho,\\mathbf 1\\rangle$。",
+      refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I"]
+    },
+    {
+      id: "prop.character-inner-product-hom",
+      cluster: "algebra.representation",
+      type: "proposition",
+      label: "特征标内积与 Hom 维数",
+      title: "特征标内积等于 Hom 空间维数",
+      regions: ["algebra"],
+      tags: ["表示论","抽象代数","特征标"],
+      statement: "设 $\\operatorname{char}F\\nmid|G|$，$V_1,V_2$ 是有限维表示。则 $\\langle\\chi_{V_1},\\chi_{V_2}\\rangle=\\dim_F\\operatorname{Hom}_G(V_1,V_2)$。",
+      notes: "令 $W=\\operatorname{Hom}_F(V_1,V_2)$，作用 $(g\\cdot f)(v)=g\\,f(g^{-1}v)$，则 $W^G=\\operatorname{Hom}_G(V_1,V_2)$。\\n特征标 $\\chi_W(g)=\\chi_{V_1^*}(g)\\chi_{V_2}(g)=\\chi_{V_1}(g^{-1})\\chi_{V_2}(g)$。\\n对 $W$ 用不动点维数引理，得 $\\dim W^G=\\langle\\chi_W,\\mathbf 1\\rangle=\\langle\\chi_{V_1},\\chi_{V_2}\\rangle$。",
+      refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I"]
+    },
+    {
+      id: "thm.character-orthogonality",
+      cluster: "algebra.representation",
+      type: "theorem",
+      label: "不可约特征标的正交性",
+      title: "不可约特征标两两正交归一",
+      regions: ["algebra"],
+      tags: ["表示论","抽象代数","特征标"],
+      statement: "设 $\\operatorname{char}F\\nmid|G|$，$F$ 代数闭，$V_1,V_2$ 是有限维不可约表示。则 $\\langle\\chi_{V_1},\\chi_{V_2}\\rangle=1$（若 $V_1\\cong V_2$），否则为 $0$。",
+      notes: "由 prop.character-inner-product-hom，内积等于 $\\dim\\operatorname{Hom}_G(V_1,V_2)$。\\nSchur 引理：不同构的不可约表示之间没有非零同态；同构时 $\\operatorname{End}_G(V_1)=F$（代数闭，见 cor.schur-scalar），维数为 1。\\n因此内积为 $\\delta_{12}$。",
+      refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I","Fulton–Harris, Representation Theory: A First Course (GTM 129), Ch. 2"]
+    },
+    {
+      id: "cor.character-multiplicity",
+      cluster: "algebra.representation",
+      type: "corollary",
+      label: "重数由特征标内积给出",
+      title: "半单表示的重数等于特征标内积",
+      regions: ["algebra"],
+      tags: ["表示论","抽象代数","特征标"],
+      statement: "设 $\\operatorname{char}F\\nmid|G|$，$F$ 代数闭，$V$ 是有限维半单表示，$V\\cong\\bigoplus_i n_iV_i$，其中 $V_i$ 两两不同构不可约。则 $n_i=\\langle\\chi_V,\\chi_{V_i}\\rangle$。",
+      notes: "由 prop.character-operations (1)，$\\chi_V=\\sum_j n_j\\chi_{V_j}$。\\n与 $\\chi_{V_i}$ 作内积，并用正交性 $\\langle\\chi_{V_j},\\chi_{V_i}\\rangle=\\delta_{ji}$，得 $\\langle\\chi_V,\\chi_{V_i}\\rangle=n_i$。",
+      refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I"]
+    },
+    {
+      id: "def.character-table",
+      cluster: "algebra.representation",
+      type: "definition",
+      label: "特征标表",
+      title: "有限群的特征标表",
+      regions: ["algebra"],
+      tags: ["表示论","抽象代数","特征标"],
+      statement: "设 $G$ 是有限群，$\\operatorname{char}F=0$，$F$ 代数闭，$\\operatorname{Irr}(G)_F=\\{V_1,\\ldots,V_s\\}$，共轭类 $CL(G)=\\{C_1,\\ldots,C_r\\}$，取代表元 $g_j\\in C_j$。特征标表是 $s\\times r$ 矩阵 $T=(\\chi_{V_i}(g_j))_{i,j}$。",
+      notes: "行由不可约特征标给出；$\\operatorname{char}F=0$ 保证 $\\chi_i=\\chi_j$ 当且仅当 $V_i\\cong V_j$（thm.character-determines-semisimple）。\\n行在特征标内积下两两正交归一（thm.character-orthogonality）。\\n特征标是类函数，故表的列只依赖共轭类；$s\\le r$，等号成立需另证特征标构成类函数空间的基。",
+      refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I","Isaacs, Character Theory of Finite Groups"]
+    },
+    {
+      id: "cor.regular-character-decomposition",
+      cluster: "algebra.representation",
+      type: "corollary",
+      label: "正则特征标的分解",
+      title: "正则表示按不可约维数分解",
+      regions: ["algebra"],
+      tags: ["表示论","抽象代数","特征标"],
+      statement: "设 $\\operatorname{char}F\\nmid|G|$，$F$ 代数闭。正则表示分解为 $\\rho_{\\mathrm{reg}}\\cong\\bigoplus_{V\\in\\operatorname{Irr}(G)_F}(\\dim V)\\,V$，故 $\\chi_{\\mathrm{reg}}=\\sum_V(\\dim V)\\chi_V$。特别地 $|G|=\\sum_V(\\dim V)^2$，且对 $g\\ne1$ 有 $\\sum_V(\\dim V)\\chi_V(g)=0$。",
+      notes: "Maschke 定理给出 $F[G]$ 半单，故正则模分解为 $F[G]\\cong\\bigoplus_i n_iV_i$。\\n由 cor.character-multiplicity，$n_i=\\langle\\chi_{\\mathrm{reg}},\\chi_{V_i}\\rangle$；而 $\\chi_{\\mathrm{reg}}(1)=|G|$、$\\chi_{\\mathrm{reg}}(g)=0$（$g\\ne1$），故 $n_i=\\frac1{|G|}|G|\\chi_{V_i}(1)=\\dim V_i$。\\n在 $g=1$ 与 $g\\ne1$ 分别取值即得两式。",
+      refs: ["Serre, Linear Representations of Finite Groups (GTM 42), Part I"]
+    },
   ],
 
   edges: [
@@ -560,11 +638,11 @@ window.MG = window.MG || {};
     {"id":"imp.gchar-cf","kind":"implication","sources":["def.group-character"],"target":"def.class-function","proof":"对 $h,g\\in G$，$\\chi(hgh^{-1})=\\operatorname{tr}(\\rho(h)\\rho(g)\\rho(h)^{-1})=\\operatorname{tr}\\rho(g)=\\chi(g)$，故 $\\chi$ 在共轭类上为常数。$\\blacksquare$","title":"群特征标是类函数","layer":false},
     {"id":"imp.ss-tfae","kind":"implication","sources":["def.semisimple-representation","def.subrepresentation","def.direct-sum-representation"],"target":"thm.semisimple-characterizations","proof":"(1)推出(2)：半单表示按定义是不可约表示的直和，故是不可约子表示之和。\n(2)推出(3)：对有限维 $V$ 归纳。取不可约子表示 $U\\subseteq V$，其和 $S$ 有补？若 $S\\ne V$，取 $v\\notin S$，其生成的子表示含不可约子表示 $U'$，把 $U'$ 并入 $S$；有限维保证终止，得 $V=\\oplus U_i$。再把给定的 $W$ 与各 $U_i$ 相交，用不可约性逐个分裂。\n(3)推出(1)：反复取不可约子表示并用 (3) 取补，维数下降，终止于直和分解。$\\blacksquare$"},
     {"id":"imp.subquotient","kind":"implication","sources":["def.semisimple-representation","def.subrepresentation","def.quotient-representation"],"target":"prop.semisimple-subquotient","proof":"设 $V$ 半单，$W\\subseteq V$ 是子表示。由半单性的等价刻画 (3)，$W$ 在 $V$ 中有补：$V=W\\oplus W'$。\n对任意子表示 $U\\subseteq W$，再对 $U$ 用 (3) 取 $V=U\\oplus U'$；模律给出 $W=U\\oplus(W\\cap U')$，故 $U$ 在 $W$ 中有补。\n于是 $W$ 满足 (3)，由等价刻画 $W$ 半单。\n商 $V/W\\cong W'$；$W'$ 是半单表示 $V$ 的子表示，由上一段半单。$\\blacksquare$"},
-    {"id":"imp.burnside","kind":"implication","sources":["def.semisimple-representation","def.representation-morphism"],"target":"thm.burnside-surjectivity","proof":"单向量：令 $W=Av$，取 $A$-子模 $U$ 使 $V=W\\oplus U$。线性映射 $g(w+u)=f(w)$ 是 $A$-线性的（$f$ 与 $A$ 的作用交换），但 $g\\in\\operatorname{End}_A(V)$ 不一定等于某个 $a\\in A$ 的作用——这里正是缺口。\n多向量：把 $f$ 对角地作用在 $V^n$ 上，取 $v=(v_1,\\ldots,v_n)$；要得到 $a$ 使 $av=f(v)$，需先证明 $f(v)\\in Av$，一般不对。\n完整证明需要 Jacobson 密度定理（本图无节点），故本条标 skeleton。","title":"Burnside 满射性"},
+{"id":"imp.burnside","kind":"implication","sources":["def.semisimple-representation","def.representation-morphism","def.subrepresentation","def.direct-sum-representation"],"target":"thm.burnside-surjectivity","proof":"令 $A'=\\operatorname{End}_A(V)$、$A''=\\operatorname{End}_{A'}(V)$，$\\Phi(a)(v)=av$。\n第一步（单向量）：固定 $v\\in V$，令 $W=Av$。$W$ 是子表示，由 $V$ 半单存在子表示 $U$ 使 $V=W\\oplus U$。投影 $p:V\\to W$ 是 $A$-线性的，故 $p\\in A'$。对 $f\\in A''$，$f(v)=f(pv)=p f(v)\\in W=Av$，故存在 $a\\in A$ 使 $av=f(v)$。\n第二步（有限组）：对 $V^n$ 作对角作用；$f^{\\oplus n}$ 与 $A'$ 交换，故属于 $\\operatorname{End}_{A'}(V^n)$。对向量 $(v_1,\\ldots,v_n)$ 用第一步，得 $a\\in A$ 使 $av_i=f(v_i)$ 对所有 $i$ 成立。\n第三步（满射）：$V$ 有限维时是有限生成 $A'$-模，取生成元 $v_1,\\ldots,v_n$。取 $a$ 匹配这些值；任意 $v=\\sum a'_iv_i$（$a'_i\\in A'$）满足 $f(v)=\\sum a'_i f(v_i)=\\sum a'_i av_i=av$，故 $f=\\Phi(a)$。$\\blacksquare$","title":"Burnside 满射性"},
     {"id":"imp.wedderburn-simple","kind":"implication","sources":["def.simple-algebra","def.division-algebra","thm.burnside-surjectivity"],"target":"thm.wedderburn-simple","proof":"取极小非零左理想 $V$，则 $V$ 是单 $A$-模。由 Schur 引理 $D=\\operatorname{End}_A(V)$ 是除法代数。定义 $\\Phi:A\\to\\operatorname{End}_D(V)$，$a\\mapsto(v\\mapsto av)$。若 $\\Phi(a)=0$，则 $aV=0$；但 $AV=V$ 且 $A$ 单，故 $a=0$，所以 $\\Phi$ 单。由 Burnside 满射性，$\\Phi$ 满。于是 $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$，$n=\\dim_DV$。代数闭时 Schur 给出 $D=F$。$\\blacksquare$"},
-    {"id":"imp.wedderburn-artin","kind":"implication","sources":["thm.wedderburn-simple","def.semisimple-representation"],"target":"thm.wedderburn-artin","proof":"把正则模 $A$ 分解为单左理想 $A=\\oplus_{i=1}^mS_i$。按同构类分组：令 $A_i$ 为与第 $i$ 类单左理想同构的直和项之和；不同类的乘积为 $0$（若 $S_iS_j\\ne0$，则 $S_iS_j$ 是 $S_i$ 的商，故与 $S_i$ 同构，矛盾）。于是 $A=\\prod A_i$，每个 $A_i$ 是单代数。对 $A_i$ 用单代数的 Wedderburn 定理得 $A_i\\cong M_{n_i}(D_i)$。反向由矩阵代数乘积半单得到。$\\blacksquare$"},
+{"id":"imp.wedderburn-artin","kind":"implication","sources":["thm.wedderburn-simple","def.semisimple-representation"],"target":"thm.wedderburn-artin","proof":"因 $A$ 半单，$A=\\bigoplus_i S_i^{\\oplus n_i}$。右乘映射 $a\\mapsto R_a$ 给出 $A^{\\mathrm{op}}\\cong\\operatorname{End}_A(A)$（逆为 $f\\mapsto f(1)$）。\\nSchur 引理给出不同 $S_i$ 之间无同态，故 $\\operatorname{End}_A(A)\\cong\\prod_i\\operatorname{End}_A(S_i^{\\oplus n_i})\\cong\\prod_i M_{n_i}(D_i)$，$D_i=\\operatorname{End}_A(S_i)$ 为除法代数。\\n取相反代数：$A\\cong\\prod_i M_{n_i}(D_i^{\\mathrm{op}})$。反向由“矩阵代数乘积半单”得到。$\\blacksquare$"},
     {"id":"imp.jacobson","kind":"implication","sources":["def.jacobson-radical","def.semisimple-representation"],"target":"thm.jacobson-criterion","proof":"若 $A$ 半单，正则模是单模直和；$J(A)$ 零化每个单模，故 $J(A)\\subseteq\\operatorname{Ann}(A)=0$。\n反之设 $J(A)=0$。若正则模有非零根基，取极大左理想 $M$，则 $A/M$ 单；$J(A)\\subseteq M$ 给出 $J(A)A\\subseteq M$，但 $J(A)=0$ 不直接矛盾。改用标准论证：$A$ 的每个非零左理想含单左理想；若 $A$ 不半单，正则模有不分裂的子模，用 Zorn 取极大不分裂子模，导出 $J(A)\\ne0$。有限维使过程终止。$\\blacksquare$"},
-    {"id":"imp.partition","kind":"implication","sources":["thm.burnside-surjectivity","def.irreducible-representation"],"target":"prop.partition-of-unity","proof":"对 $V=\\oplus_{i=1}^sV_i$ 用 Burnside：$A''=\\operatorname{End}_{A'}(V)$ 含到 $V_i$ 的投影 $e_i$。由满射性取 $a_i\\in A$ 使 $\\theta(a_i)=e_i$。则 $\\theta_j(a_i)=\\delta_{ij}\\operatorname{id}_{V_j}$，因为 $e_i$ 在 $V_j$ 上是 $\\delta_{ij}$ 倍恒等。$\\blacksquare$"},
+    {"id":"imp.partition","kind":"implication","sources":["thm.burnside-surjectivity","def.irreducible-representation","def.subrepresentation","def.direct-sum-representation"],"target":"prop.partition-of-unity","proof":"对 $V=\\oplus_{i=1}^sV_i$ 用 Burnside：$A''=\\operatorname{End}_{A'}(V)$ 含到 $V_i$ 的投影 $e_i$。由满射性取 $a_i\\in A$ 使 $\\theta(a_i)=e_i$。则 $\\theta_j(a_i)=\\delta_{ij}\\operatorname{id}_{V_j}$，因为 $e_i$ 在 $V_j$ 上是 $\\delta_{ij}$ 倍恒等。$\\blacksquare$"},
     {"id":"imp.char-determines","kind":"implication","sources":["def.character","def.semisimple-representation","prop.partition-of-unity"],"target":"thm.character-determines-semisimple","proof":"写 $W=\\oplus n_iV_i$。由单位分解，$\\chi_W(a_i)=n_i\\dim V_i$。若 $\\chi_{W_1}=\\chi_{W_2}$，则对每个 $i$，$n_i^{(1)}\\dim V_i=n_i^{(2)}\\dim V_i$；$\\operatorname{char}F=0$ 保证 $\\dim V_i\\ne0$ 可除，故重数相同，$W_1\\cong W_2$。反向由同构表示特征标相同。$\\blacksquare$"},
     {"id":"imp.fitting","kind":"implication","sources":["def.representation-morphism","def.direct-sum-representation"],"target":"prop.fitting-decomposition","proof":"链 $\\operatorname{Im}(f^n)$ 递减、$\\operatorname{Ker}(f^n)$ 递增，有限维使其稳定。令 $U=\\operatorname{Im}(f^\\infty)$，$K=\\operatorname{Ker}(f^\\infty)$。若 $x\\in U\\cap K$，则 $x=f^n(y)$ 且 $f^m(x)=0$；取 $n$ 大使 $f^n|_U$ 满，得 $f^n:U\\to U$ 双射，于是 $x=0$。维数：$\\dim U+\\dim K=\\dim V$（秩-零化度对充分大的 $n$）。故 $V=U\\oplus K$。$f|_U$ 满故双射；$f|_K$ 幂零。$\\blacksquare$"},
     {"id":"imp.indec-end","kind":"implication","sources":["prop.fitting-decomposition","def.indecomposable-representation"],"target":"cor.indecomposable-endomorphism","proof":"由 Fitting，$V=\\operatorname{Im}(f^\\infty)\\oplus\\operatorname{Ker}(f^\\infty)$。两者都是子表示。不可分解性迫使一个为 $0$。若 $\\operatorname{Ker}=0$，$f$ 单，有限维故自同构；若 $\\operatorname{Im}=0$，$f$ 幂零。$\\blacksquare$"},
@@ -572,7 +650,7 @@ window.MG = window.MG || {};
     {"id":"imp.iso-factor","kind":"implication","sources":["prop.fitting-decomposition","def.indecomposable-representation"],"target":"lem.iso-factorization","proof":"$\\alpha\\beta$ 是同构，故 $\\beta$ 单、$\\alpha$ 满。令 $U=\\operatorname{im}\\beta$，$K=\\ker\\alpha$，则 $W=U\\oplus K$（因为 $\\alpha\\beta$ 满给出 $W=U+\\ker\\alpha$，且 $U\\cap K=0$）。$U,K$ 都是子表示。不可分解性迫使 $K=0$ 或 $U=W$。若 $K=0$，$\\alpha$ 单，故同构，$\\beta$ 也同构；若 $U=W$，$\\beta$ 满，故同构，$\\alpha$ 也同构。$\\blacksquare$"},
     {"id":"imp.krull-schmidt","kind":"implication","sources":["lem.iso-factorization","lem.nilpotent-sum","def.indecomposable-representation"],"target":"thm.krull-schmidt","proof":"存在性对维数归纳。唯一性：设 $V=\\oplus_{i=1}^m V_i=\\oplus_{j=1}^n W_j$。取第一个 $V_1$，投影 $p:V\\to V_1$ 与包含 $i_1:V_1\\to V$；$p|_{W_j}$ 对某个 $j$ 非零（否则 $p$ 在 $\\oplus W_j$ 上为零）。由不可分解性与同构因子引理，$V_1\\cong W_j$ 且可消去；对剩余部分归纳。幂零和引理用于处理自同态的组合。$\\blacksquare$"},
     {"id":"imp.maschke","kind":"implication","sources":["def.group-representation","def.semisimple-representation","def.quotient-representation"],"target":"thm.maschke","proof":"设 $W\\subseteq V$ 是子表示。取线性投影 $p:V\\to W$（存在，因 $W$ 是子空间），定义 $\\bar p(v)=\\frac1{|G|}\\sum_{g\\in G}g\\,p(g^{-1}v)$。条件 $\\operatorname{char}F\\nmid|G|$ 使 $\\frac1{|G|}\\in F$。对 $h\\in G$，$\\bar p(hv)=\\frac1{|G|}\\sum_g g p(g^{-1}hv)=\\frac1{|G|}\\sum_{g'}hg'p(g'^{-1}v)=h\\bar p(v)$，故 $\\bar p$ 是 $G$-等变。又 $w\\in W$ 时 $g^{-1}w\\in W$，$p(g^{-1}w)=g^{-1}w$，故 $\\bar p(w)=w$。于是 $\\bar p$ 是到 $W$ 的等变投影，$V=W\\oplus\\ker\\bar p$。对每个子表示如此分裂即得完全可约。$\\blacksquare$"},
-    {"id":"imp.group-algebra-wedderburn","kind":"implication","sources":["thm.maschke","thm.wedderburn-artin","def.group-character"],"target":"cor.group-algebra-wedderburn","proof":"Maschke 给出 $F[G]$ 半单；Wedderburn–Artin 给出 $F[G]\\cong\\prod M_{n_i}(D_i)$。代数闭时 $D_i=F$。正则模分解为不可约直和，重数 $n_i$ 由 $\\chi_{\\mathrm{reg}}$ 与特征标内积计算：$n_i=\\langle\\chi_{\\mathrm{reg}},\\chi_i\\rangle=\\dim V_i$。比较维数得 $|G|=\\sum n_i^2$。$\\blacksquare$"},
+{"id":"imp.group-algebra-wedderburn","kind":"implication","sources":["thm.maschke","thm.wedderburn-artin","def.group-character","def.algebraically-closed"],"target":"cor.group-algebra-wedderburn","proof":"Maschke 定理给出 $F[G]$ 半单；thm.wedderburn-artin 给出 $F[G]\\cong\\prod_i M_{n_i}(D_i)$。\\n$F$ 代数闭且 $\\operatorname{char}F=0$ 故 每个有限维除法 $F$-代数 $D_i=F$。故 $F[G]\\cong\\prod_i M_{n_i}(F)$。\\n左正则模分解为 $F[G]\\cong\\bigoplus_i n_iV_i$，$V_i=F^{n_i}$ 为 $M_{n_i}(F)$ 的自然模，故 $n_i=\\dim V_i$；比较维数得 $|G|=\\sum_i n_i^2$。$\\blacksquare$"},
     {"id":"imp.char-ops","kind":"implication","sources":["def.group-character","def.symmetric-power-representation","def.exterior-power-representation"],"target":"prop.character-operations","proof":"(1)(2) 由迹的加性与张量积的迹公式。\n(3) 对偶作用为逆转置，$\\operatorname{tr}(A^{-1})=\\operatorname{tr}(A^{-1})$？具体地 $\\chi_{V^*}(g)=\\operatorname{tr}(\\rho(g^{-1})^T)=\\operatorname{tr}\\rho(g^{-1})$。\n(4)(5) 在代数闭包上把 $\\rho(g)$ 上三角化，特征值 $\\lambda_i$；$\\operatorname{Sym}^2$ 的特征值为 $\\lambda_i\\lambda_j$（$i\\le j$），$\\operatorname{Alt}^2$ 的为 $\\lambda_i\\lambda_j$（$i<j$）。用 $\\sum_{i<j}\\lambda_i\\lambda_j=\\frac12((\\sum\\lambda_i)^2-\\sum\\lambda_i^2)$ 得公式。$\\blacksquare$"},
     {"id":"dep.alg-ring","kind":"definition","definition":"def.ring","usedBy":"def.algebra-over-ring","note":"代数首先是环，乘法沿用环结构"},
     {"id":"dep.schur-irr","kind":"definition","definition":"def.irreducible-representation","usedBy":"thm.schur-lemma","note":"Schur 引理的前提是不可约表示"},
@@ -596,5 +674,17 @@ window.MG = window.MG || {};
     {"id":"dep.krull-directsum","kind":"definition","definition":"def.direct-sum-representation","usedBy":"thm.krull-schmidt","note":"分解写成表示的直和"},
     {"id":"dep.nilpotent-indec","kind":"definition","definition":"def.indecomposable-representation","usedBy":"lem.nilpotent-sum","note":"引理的前提是 $V$ 不可分解"},
     {"id":"dep.maschke-subrep","kind":"definition","definition":"def.subrepresentation","usedBy":"thm.maschke","note":"Maschke 定理对子表示作平均投影"},
+{"id":"dep.charip-classfun","kind":"definition","definition":"def.class-function","usedBy":"def.character-inner-product","note":"内积定义在类函数空间上"},
+{"id":"dep.charip-groupchar","kind":"definition","definition":"def.group-character","usedBy":"def.character-inner-product","note":"特征标是内积的典型对象"},
+{"id":"dep.fixdim-char","kind":"definition","definition":"def.group-character","usedBy":"lem.fixed-space-dimension","note":"不动点维数用特征标的平均值计算"},
+{"id":"dep.fixdim-invariant","kind":"definition","definition":"def.invariant-subspace","usedBy":"lem.fixed-space-dimension","note":"$V^G$ 是不变子空间"},
+{"id":"imp.fixed-space-dimension","kind":"implication","sources":["def.group-character","def.invariant-subspace"],"target":"lem.fixed-space-dimension","proof":"平均算子 $\\varphi(v)=\\frac1{|G|}\\sum_{g\\in G}\\rho(g)v$ 是 $G$-等变投影：$\\varphi^2=\\varphi$ 且 $\\varphi|_{V^G}=\\mathrm{id}$。故 $V=\\mathrm{im}\\varphi\\oplus\\ker\\varphi$ 且 $\\mathrm{im}\\varphi=V^G$。\\n取基使 $\\varphi$ 在 $V^G$ 上为恒等、在 $\\ker\\varphi$ 上为零，则 $\\operatorname{tr}\\varphi=\\dim V^G$。\\n另一方面 $\\operatorname{tr}\\varphi=\\frac1{|G|}\\sum_g\\operatorname{tr}\\rho(g)=\\langle\\chi_\\rho,\\mathbf 1\\rangle$。$\\blacksquare$","title":"不动点维数"},
+{"id":"imp.character-inner-product-hom","kind":"implication","sources":["lem.fixed-space-dimension","prop.character-operations","def.tensor-representation","def.dual-representation"],"target":"prop.character-inner-product-hom","proof":"令 $W=\\operatorname{Hom}_F(V_1,V_2)$，$G$ 作用 $(g\\cdot f)(v)=g f(g^{-1}v)$；则 $W^G=\\operatorname{Hom}_G(V_1,V_2)$。\\n由特征标乘性，$\\chi_W(g)=\\chi_{V_1^*}(g)\\chi_{V_2}(g)=\\chi_{V_1}(g^{-1})\\chi_{V_2}(g)$。\\n对 $W$ 用不动点维数引理：$\\dim W^G=\\langle\\chi_W,\\mathbf 1\\rangle=\\frac1{|G|}\\sum_g\\chi_{V_1}(g^{-1})\\chi_{V_2}(g)=\\langle\\chi_{V_1},\\chi_{V_2}\\rangle$。$\\blacksquare$","title":"内积与 Hom"},
+{"id":"imp.character-orthogonality","kind":"implication","sources":["prop.character-inner-product-hom","thm.schur-lemma","cor.schur-scalar","def.irreducible-representation"],"target":"thm.character-orthogonality","proof":"由 prop.character-inner-product-hom，$\\langle\\chi_{V_1},\\chi_{V_2}\\rangle=\\dim\\operatorname{Hom}_G(V_1,V_2)$。\\nSchur 引理给出：若 $V_1\\not\\cong V_2$，则 $\\operatorname{Hom}_G(V_1,V_2)=0$；若同构，则 $\\operatorname{End}_G(V_1)=F$（cor.schur-scalar，$F$ 代数闭），维数为 1。\\n故内积为 $\\delta_{12}$。$\\blacksquare$","title":"特征标正交性"},
+{"id":"imp.character-multiplicity","kind":"implication","sources":["thm.character-orthogonality","prop.character-operations","def.semisimple-representation"],"target":"cor.character-multiplicity","proof":"由 $V$ 半单，$\\chi_V=\\sum_j n_j\\chi_{V_j}$。\\n与 $\\chi_{V_i}$ 作内积，并用正交性：$\\langle\\chi_V,\\chi_{V_i}\\rangle=\\sum_j n_j\\langle\\chi_{V_j},\\chi_{V_i}\\rangle=n_i$。$\\blacksquare$","title":"重数公式"},
+{"id":"dep.chartable-classfun","kind":"definition","definition":"def.class-function","usedBy":"def.character-table","note":"特征标表的行为类函数"},
+{"id":"dep.chartable-groupchar","kind":"definition","definition":"def.group-character","usedBy":"def.character-table","note":"表的行是不可约特征标"},
+{"id":"dep.chartable-irr","kind":"definition","definition":"def.irreducible-representation","usedBy":"def.character-table","note":"行按不可约表示编号"},
+{"id":"imp.regular-character","kind":"implication","sources":["cor.character-multiplicity","thm.maschke","def.group-character","ex.regular-representation"],"target":"cor.regular-character-decomposition","proof":"Maschke 定理给出 $F[G]$ 半单，故正则模分解为 $F[G]\\cong\\bigoplus_i n_iV_i$。\\n由重数公式 $n_i=\\langle\\chi_{\\mathrm{reg}},\\chi_{V_i}\\rangle$。正则特征标 $\\chi_{\\mathrm{reg}}(1)=|G|$，$\\chi_{\\mathrm{reg}}(g)=0$（$g\\ne1$），故 $n_i=\\frac1{|G|}|G|\\chi_{V_i}(1)=\\dim V_i$。\\n于是 $\\chi_{\\mathrm{reg}}=\\sum_i(\\dim V_i)\\chi_{V_i}$；在 $g=1$ 得 $|G|=\\sum_i(\\dim V_i)^2$，在 $g\\ne1$ 得 $\\sum_i(\\dim V_i)\\chi_{V_i}(g)=0$。$\\blacksquare$","title":"正则特征标分解"},
   ]
 });

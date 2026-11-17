@@ -9560,12 +9560,12 @@ This is the most common way to prove two sets equal: **containment both ways**.`
     },
     "def.algebra-representation": {
       statement: {
-        en: "Let $A$ be a unital associative $F$-algebra. A linear representation of $A$ is a pair $(M,\\theta)$, where $M$ is an $F$-vector space and $\\theta:A\\to\\operatorname{End}_F(M)$ is a unital algebra homomorphism. Setting $a\\cdot m=\\theta(a)(m)$ makes $M$ a left $A$-module; this construction gives an equivalence between unital representations and left $A$-modules.",
+        en: "Let $A$ be a unital associative $F$-algebra. A linear representation of $A$ is a pair $(M,\\theta)$, where $M$ is an $F$-vector space and $\\theta:A\\to\\operatorname{End}_F(M)$ is an algebra homomorphism (not necessarily unital; the condition $\\theta(1_A)=\\operatorname{id}_M$ is optional). If in addition $\\theta(1_A)=\\operatorname{id}_M$, it is called unital; then $a\\cdot m=\\theta(a)(m)$ makes it a left $A$-module, and unital representations correspond bijectively to left modules.",
         status: 'draft',
         basedOn: 'v0.9.3#741e4775',
       },
       notes: {
-        en: "The condition $\\theta(1_A)=\\operatorname{id}_M$ is part of unitality. Under this equivalence, $A$-linear maps are exactly morphisms of representations, so $\\mathrm{Rep}_A^{\\mathrm{uni}}$ is equivalent to $A\\text{-}\\mathrm{Mod}$. The natural action of $M_n(F)$ on $F^n$ is a basic example. An $F[x_1,\\ldots,x_n]$-module structure is the same as $n$ commuting endomorphisms $T_i$.",
+        en: "A general representation only requires $\\theta$ to preserve addition and multiplication, not the unit. The condition $\\theta(1_A)=\\operatorname{id}_M$ makes $M$ a left $A$-module; under this equivalence $A$-linear maps are exactly morphisms of representations. The natural action of $M_n(F)$ on $F^n$ is a basic example. An $F[x_1,\\ldots,x_n]$-module structure is the same as $n$ commuting endomorphisms $T_i$.",
         status: 'draft',
         basedOn: 'v0.9.3#e032b807',
       },
@@ -9584,12 +9584,12 @@ This is the most common way to prove two sets equal: **containment both ways**.`
     },
     "def.group-representation": {
       statement: {
-        en: "Let $G$ be a finite group. A representation of $G$ over $F$ is a pair $(V,\\rho)$, where $V$ is a finite-dimensional $F$-vector space and $\\rho:G\\to GL(V)$ is a group homomorphism. It is equivalent to a unital left $F[G]$-module structure on $V$; hence representations of $G$ are the same as unital representations of the group algebra $F[G]$.",
+        en: "Let $G$ be a finite group. A representation of $G$ over $F$ is a pair $(V,\\rho)$, where $V$ is an $F$-vector space and $\\rho:G\\to GL(V)$ is a group homomorphism. It is equivalent to a unital left $F[G]$-module structure on $V$; hence representations of $G$ are the same as unital representations of the group algebra $F[G]$.",
         status: 'draft',
         basedOn: 'v0.9.3#655deb87',
       },
       notes: {
-        en: "The dimension of the representation is $\\dim_F V$. The trivial representation has $\\rho(g)=\\operatorname{id}_V$, and the regular representation is the left multiplication action of $G$ on $F[G]$. The group algebra $F[G]$ consists of formal sums $\\sum a_g g$ with convolution multiplication, and $\\rho$ extends uniquely to a unital algebra homomorphism $F[G]\\to\\operatorname{End}_F(V)$. This equivalence transfers all results on algebra representations to groups.",
+        en: "The representation of $G$ need not be finite-dimensional; most results in this cluster are stated in the finite-dimensional case. The trivial representation has $\\rho(g)=\\operatorname{id}_V$; the regular representation is left multiplication on $F[G]$. The group algebra $F[G]$ consists of formal sums $\\sum a_g g$ with convolution, and $\\rho$ extends uniquely to a unital algebra homomorphism $F[G]\\to\\operatorname{End}_F(V)$. This equivalence transfers all results on algebra representations to groups.",
         status: 'draft',
         basedOn: 'v0.9.3#634af6ab',
       },
@@ -9757,7 +9757,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#776178d5',
       },
       notes: {
-        en: "The matrix algebra $M_n(D)$ over a division algebra $D$ is simple, and this is the model case. Every finite-dimensional simple algebra is isomorphic to a matrix algebra over a division algebra (Wedderburn). The group algebra $F[G]$ is simple only in very small cases. Simplicity is a two-sided condition and is not the same as having no nontrivial left ideals.",
+        en: "The matrix algebra $M_n(D)$ over a division algebra $D$ is a simple algebra and serves as the model case. A finite-dimensional simple algebra is isomorphic to a matrix algebra over a division algebra (Wedderburn). A group algebra $F[G]$ is simple only in very small cases. Simplicity is a two-sided condition and is not the same as having no nontrivial left ideal.\n\nTerminology: this map calls an algebra with no nontrivial two-sided ideals simple; the lecture calls this property quasi-simple and reserves simple for semisimple algebras with a unique isomorphism class of simple left ideals. In finite dimension the two notions agree (see thm.wedderburn-simple).",
         status: 'draft',
         basedOn: 'v0.9.3#f97cd264',
       },
@@ -9817,7 +9817,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#0de082f1',
       },
       notes: {
-        en: "The one-vector case splits $V$ into $Av$ and a complement using semisimplicity, then applies $f$ to the first summand. The several-vector case applies the one-vector result to the diagonal action on $V^n$; the semisimplicity of $V^n$ follows from that of $V$, so the result transfers. This is the double centralizer theorem for finite-dimensional semisimple modules. It is a key step toward Wedderburn's theorem.",
+        en: "Single vector: since $V$ is semisimple, $V=Av\\oplus W$; the projection $p:V\\to Av$ is $A$-linear, so $p\\in A'$. For $f\\in A''$, $f(v)=f(pv)=p f(v)\\in Av$, hence there is $a\\in A$ with $av=f(v)$. Finite tuple: apply the same argument to the diagonal action on $V^n$ to find one $a$ matching any finite tuple $v_i$. In finite dimension $V$ is finitely generated over $A'$: take generators $v_1,\\ldots,v_n$ and choose $a$ with $av_i=f(v_i)$ for every index; any $v=\\sum a'_iv_i$ then satisfies $f(v)=\\sum a'_i f(v_i)=av$, so $\\Phi(a)=f$. This is the elementary form of the double centralizer theorem and does not need Jacobson density.",
         status: 'draft',
         basedOn: 'v0.9.3#30041a74',
       },
@@ -9829,7 +9829,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#4664f6cb',
       },
       notes: {
-        en: "Take a minimal nonzero left ideal $V$; $V$ is a simple $A$-module, and Schur's lemma makes $D=\\operatorname{End}_A(V)$ a division algebra. The natural map $A\\to\\operatorname{End}_D(V)$ is injective because $A$ is simple, and Burnside's theorem makes it surjective; hence $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$. Over an algebraically closed field Schur's lemma gives $D=F$. Note the direction: $A$ is a matrix algebra over $D^{\\mathrm{op}}$.",
+        en: "Take a minimal nonzero left ideal $V$; it is a simple $A$-module, so $V$ is semisimple, and by Schur's lemma $D=\\operatorname{End}_A(V)$ is a division algebra. The natural map $A\\to\\operatorname{End}_D(V)$ is injective because $A$ is simple: if $aV=0$, then $\\operatorname{Ann}(V)$ is a nonzero two-sided ideal, hence equals $A$, contradicting $AV=V$. Burnside's theorem makes it surjective, so $A\\cong\\operatorname{End}_D(V)\\cong M_n(D^{\\mathrm{op}})$. If the field is algebraically closed, Schur's lemma gives $D=F$. Note the direction: $A$ is a matrix algebra over $D^{\\mathrm{op}}$.",
         status: 'draft',
         basedOn: 'v0.9.3#1ede1219',
       },
@@ -9841,9 +9841,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#f074e1cc',
       },
       notes: {
-        en: "Decompose the regular module $A$ into simple left ideals and group them by isomorphism class to obtain two-sided ideals $A_i$ with $A=\\prod A_i$. Each $A_i$ is simple, so the Wedderburn theorem for simple algebras applies. Conversely, a product of matrix algebras is semisimple. The $n_i$ and $D_i$ are unique up to isomorphism and permutation.",
+        en: "Since $A$ is semisimple, the left regular module decomposes as $A=\\bigoplus_i S_i^{\\oplus n_i}$, with the $S_i$ pairwise non-isomorphic simple left modules.\nRight multiplication gives $A^{\\mathrm{op}}\\cong\\operatorname{End}_A(A)$: $a\\mapsto R_a$, $R_a(x)=xa$; the inverse is $f\\mapsto f(1)$.\nBy Schur's lemma, $\\operatorname{Hom}_A(S_i,S_j)=0$ for $i\\ne j$, hence $\\operatorname{End}_A(A)\\cong\\prod_i\\operatorname{End}_A(S_i^{\\oplus n_i})\\cong\\prod_i M_{n_i}(D_i)$, where $D_i=\\operatorname{End}_A(S_i)$ is a division algebra.\nPassing to opposite algebras gives $A\\cong\\prod_i M_{n_i}(D_i^{\\mathrm{op}})$.\nConversely, each matrix algebra $M_{n_i}(D_i)$ is semisimple and a product of semisimple algebras is semisimple; modules over a finite-dimensional semisimple algebra are semisimple (submodules have complements). $\\blacksquare$",
         status: 'draft',
-        basedOn: 'v0.9.3#0b309d74',
+        basedOn: 'vv0.9.3#e2e7f6f7',
       },
     },
     "thm.jacobson-criterion": {
@@ -9865,7 +9865,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#4dbb7fc8',
       },
       notes: {
-        en: "Apply Burnside's theorem to the direct sum $V=V_1\\oplus\\cdots\\oplus V_s$; the projection onto $V_i$ lies in $A''=\\operatorname{End}_{A'}(V)$. The elements $a_i$ are preimages of these projections. They act as orthogonal idempotents on the $V_j$. This is used to isolate the multiplicity of each irreducible in a semisimple representation.",
+        en: "Apply Burnside to $V=V_1\\oplus\\cdots\\oplus V_s$: $A''=\\operatorname{End}_{A'}(V)$ contains the projection $e_i$ onto $V_i$. Surjectivity gives $a_i\\in A$ with $\\theta(a_i)=e_i$. Then $\\theta_j(a_i)=\\delta_{ij}\\operatorname{id}_{V_j}$, since $e_i$ acts as $\\delta_{ij}$ times the identity on $V_j$. These $a_i$ are orthogonal idempotents separating the multiplicities of the irreducible summands. The proof uses Burnside surjectivity (thm.burnside-surjectivity).",
         status: 'draft',
         basedOn: 'v0.9.3#0006c616',
       },
@@ -9877,7 +9877,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#15da98bf',
       },
       notes: {
-        en: "Write $W=\\oplus n_iV_i$ with pairwise non-isomorphic irreducibles $V_i$. The partition-of-unity elements $a_i$ give $\\chi_W(a_i)=n_i\\dim V_i$, so the multiplicities $n_i$ are recovered from $\\chi_W$; $\\operatorname{char}F=0$ allows division by $\\dim V_i$. Semisimplicity cannot be omitted: over $F[x]$ the identity and a Jordan block can have the same character but are not isomorphic. This is the basis of character-table theory.",
+        en: "Write $W=\\oplus n_iV_i$ with pairwise non-isomorphic irreducibles $V_i$. The partition-of-unity elements $a_i$ give $\\chi_W(a_i)=n_i\\dim V_i$, so the multiplicities $n_i$ are recovered from $\\chi_W$; $\\operatorname{char}F=0$ allows division by $\\dim V_i$. Semisimplicity is essential: over $F[x]$ the identity and a Jordan block can have the same character without being isomorphic. This is the basis of character-table theory; the proof goes through prop.partition-of-unity, which follows from Burnside surjectivity.",
         status: 'draft',
         basedOn: 'v0.9.3#da50f1b4',
       },
@@ -9961,43 +9961,43 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#1ad83389',
       },
       notes: {
-        en: "Maschke gives semisimplicity, and Wedderburn–Artin decomposes $F[G]$ into matrix algebras; algebraic closedness replaces division algebras by $F$. The multiplicity of the regular module is $n_i=\\dim V_i$, and comparing dimensions gives $|G|=\\sum n_i^2$. The characters of the $V_i$ form a basis of the space of class functions (orthogonality relations, see character theory). The equality $n_i=\\dim V_i$ is computed with Wedderburn and the regular character.",
+        en: "Maschke's theorem gives that $F[G]$ is semisimple. By thm.wedderburn-artin, $F[G]\\cong\\prod_i M_{n_i}(D_i)$.\nSince $\\operatorname{char}F=0$ and $F$ is algebraically closed, every finite-dimensional division $F$-algebra satisfies $D_i=F$: if $a\\in D_i$ lies outside $F$, then $F(a)$ is a finite extension, contradicting algebraic closedness.\nHence $F[G]\\cong\\prod_i M_{n_i}(F)$. As a left $F[G]$-module, the natural module $F^{n_i}$ of $M_{n_i}(F)$ is simple, so $F[G]\\cong\\bigoplus_i n_iV_i$ with $V_i=F^{n_i}$ and $n_i=\\dim V_i$.\nComparing dimensions gives $|G|=\\sum_i n_i^2$. $\\blacksquare$",
         status: 'draft',
-        basedOn: 'v0.9.3#9026d47f',
+        basedOn: 'vv0.9.3#4ce696b9',
       },
     },
     "prop.character-operations": {
       statement: {
-        en: "Let $V,W$ be finite-dimensional representations of a finite group $G$ with $\\operatorname{char}F\\nmid|G|$ and $\\operatorname{char}F\\ne2$. Then: (1) $\\chi_{V\\oplus W}=\\chi_V+\\chi_W$; (2) $\\chi_{V\\otimes W}=\\chi_V\\chi_W$; (3) $\\chi_{V^*}(g)=\\chi_V(g^{-1})$; (4) $\\chi_{\\operatorname{Sym}^2V}(g)=\\frac12(\\chi_V(g)^2+\\chi_V(g^2))$; (5) $\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$. Parts (4) and (5) use the hypothesis that the characteristic is not two.",
+        en: "Let $V,W$ be finite-dimensional representations of a finite group $G$ with $\\operatorname{char}F\\nmid|G|$. Then:\n(1) $\\chi_{V\\oplus W}=\\chi_V+\\chi_W$;\n(2) $\\chi_{V\\otimes W}=\\chi_V\\chi_W$;\n(3) $\\chi_{V^*}(g)=\\chi_V(g^{-1})$;\n(4) if $\\operatorname{char}F\\ne2$, $\\chi_{\\operatorname{Sym}^2V}(g)=\\frac12(\\chi_V(g)^2+\\chi_V(g^2))$;\n(5) if $\\operatorname{char}F\\ne2$, $\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$.",
         status: 'draft',
         basedOn: 'v0.9.3#1f2e9c15',
       },
       notes: {
-        en: "Parts (1) and (2) follow from additivity of the trace and $\\operatorname{tr}(A\\otimes B)=\\operatorname{tr}A\\operatorname{tr}B$.\nPart (3) uses the inverse transpose in the dual representation and cyclicity of the trace.\nFor (4) and (5), triangularize $\\rho(g)$ over an algebraic closure with eigenvalues $\\lambda_i$; the eigenvalues on $\\operatorname{Sym}^2$ are $\\lambda_i\\lambda_j$ with $i\\le j$, and on $\\operatorname{Alt}^2$ they are $\\lambda_i\\lambda_j$ with $i<j$, using $\\sum_{i<j}\\lambda_i\\lambda_j=\\frac12((\\sum\\lambda_i)^2-\\sum\\lambda_i^2)$.\nThe original notes have a sign typo in (4): the correct sign is plus; $\\operatorname{Alt}^2$ uses minus.",
+        en: "(1)-(3) hold in any characteristic; (4)(5) use the $\\pm1$ decomposition of the swap and require $\\operatorname{char}F\\ne2$. In (3), $V^*$ is an $A^{\\mathrm{op}}$-representation, i.e. $g\\mapsto\\rho(g^{-1})^T$ for groups. When $\\operatorname{char}F\\ne2$, the characters of Sym²/Alt² follow from the trace decomposition of $V^{\\otimes2}$.",
         status: 'draft',
         basedOn: 'v0.9.3#00dda92b',
       },
     },
     "def.symmetric-power-representation": {
       statement: {
-        en: "Let $\\operatorname{char}F\\ne2$ and let $(V,\\rho)$ be a representation of a group $G$. The symmetric square $\\operatorname{Sym}^2V$ is the $+1$ eigenspace of the swap $\\tau(v\\otimes w)=w\\otimes v$ on $V\\otimes V$; $G$ acts by $g(vw)=\\rho(g)v\\,\\rho(g)w$, the symmetric square representation. If $e_1,\\ldots,e_n$ is a basis of $V$, then $\\{e_ie_j:1\\le i\\le j\\le n\\}$ is a basis of $\\operatorname{Sym}^2V$.",
+        en: "Let $(V,\\rho)$ be a representation of a group $G$. The symmetric square representation is the quotient representation $\\operatorname{Sym}^2V=(V\\otimes V)/\\langle v\\otimes w-w\\otimes v\\rangle$, with $G$ acting by $g(vw)=\\rho(g)v\\,\\rho(g)w$ (where $vw$ denotes the class of $v\\otimes w$). If $e_1,\\ldots,e_n$ is a basis of $V$, then $\\{e_ie_j:1\\le i\\le j\\le n\\}$ is a basis of $\\operatorname{Sym}^2V$.",
         status: 'draft',
         basedOn: 'v0.9.3#af7cd556',
       },
       notes: {
-        en: "The dimension of $\\operatorname{Sym}^2V$ is $n(n+1)/2$.\nIt is the $+1$ eigenspace of the swap, while $\\operatorname{Alt}^2V$ is the $-1$ eigenspace.\nThe character formula is in the character-operations node.\nWhen $\\operatorname{char}F=2$ the symmetric and exterior powers are no longer complementary; this cluster only treats $\\operatorname{char}F\\ne2$.",
+        en: "The definition does not require $\\operatorname{char}F\\ne2$; the subspace generated by $v\\otimes w-w\\otimes v$ need not be complemented. When $\\operatorname{char}F\\ne2$, $\\operatorname{Sym}^2V$ coincides with the $+1$-eigenspace of the swap and has dimension $n(n+1)/2$. For group representations the action of $g$ is well defined; for the character formula see prop.character-operations.",
         status: 'draft',
         basedOn: 'v0.9.3#57f7d78a',
       },
     },
     "def.exterior-power-representation": {
       statement: {
-        en: "Let $\\operatorname{char}F\\ne2$ and let $(V,\\rho)$ be a representation of a group $G$. The exterior square $\\operatorname{Alt}^2V$ (also written $\\bigwedge^2V$) is the $-1$ eigenspace of the swap on $V\\otimes V$; $G$ acts by $g(v\\wedge w)=\\rho(g)v\\wedge\\rho(g)w$. If $e_1,\\ldots,e_n$ is a basis, then $\\{e_i\\wedge e_j:1\\le i<j\\le n\\}$ is a basis.",
+        en: "Let $(V,\\rho)$ be a representation of a group $G$. The exterior square representation is the quotient representation $\\operatorname{Alt}^2V=(V\\otimes V)/\\langle v\\otimes w+w\\otimes v\\rangle$, with $G$ acting by $g(v\\wedge w)=\\rho(g)v\\wedge\\rho(g)w$. If $e_1,\\ldots,e_n$ is a basis, then $\\{e_i\\wedge e_j:1\\le i<j\\le n\\}$ is a basis.",
         status: 'draft',
         basedOn: 'v0.9.3#9e52ba22',
       },
       notes: {
-        en: "The dimension of the exterior square is $n(n-1)/2$.\nWhen $\\operatorname{char}F\\ne2$, $V\\otimes V\\cong\\operatorname{Sym}^2V\\oplus\\operatorname{Alt}^2V$.\nThe character formula is $\\chi_{\\operatorname{Alt}^2V}(g)=\\frac12(\\chi_V(g)^2-\\chi_V(g^2))$.\nIt is complementary to the symmetric square.",
+        en: "The definition does not require $\\operatorname{char}F\\ne2$; when $\\operatorname{char}F\\ne2$ it coincides with the $-1$-eigenspace of the swap and has dimension $n(n-1)/2$. The exterior square is also denoted $\\bigwedge^2V$.",
         status: 'draft',
         basedOn: 'v0.9.3#a542ca00',
       },
@@ -10033,10 +10033,39 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#9505ef1d',
       },
       notes: {
-        en: "By cor.indecomposable-endomorphism, any $f$ that is not an automorphism is nilpotent, so the non-units are exactly the nilpotent elements.\nIf $f$ is nilpotent then $\\operatorname{id}-f$ is invertible (inverse given by a finite geometric series); hence the nilpotent elements form a two-sided ideal whose quotient is a division ring, so the ring is local.\nConversely, any non-invertible $f$ is nilpotent, so the maximal ideal is exactly the nilpotent elements.",
+        en: "By cor.indecomposable-endomorphism, any $f$ that is not an automorphism is nilpotent, so the non-units are exactly the nilpotent elements.\\nIf $f$ is nilpotent then $\\operatorname{id}-f$ is invertible (inverse given by a finite geometric series); hence the nilpotent elements are closed under addition: if $f,g$ are nilpotent and $f+g$ is invertible, then $f=(f+g)(\\operatorname{id}-(f+g)^{-1}g)$ is invertible (as $g$ is nilpotent, the parenthesis is invertible), a contradiction; so $f+g$ is not a unit, and cor.indecomposable-endomorphism makes it nilpotent.\\nThus the nilpotent elements form a two-sided ideal whose quotient is a division ring, so the ring is local; conversely, any non-invertible $f$ is nilpotent, so the maximal ideal is exactly the nilpotent elements.",
         status: 'draft',
-        basedOn: 'v0.9.3#b3c6d7fa',
+        basedOn: 'vv0.9.3#7075bcaf',
       },
+    },
+    "def.character-inner-product": {
+      statement: { en: "Let $G$ be a finite group with $\\operatorname{char}F\\nmid|G|$. For functions $f_1,f_2:G\\to F$ define $\\langle f_1,f_2\\rangle=\\frac{1}{|G|}\\sum_{g\\in G}f_1(g)f_2(g^{-1})$. This is an $F$-bilinear form; on the space of class functions it gives the pairing used in character theory.", status: 'draft', basedOn: 'vv0.9.3#2ab69dad' },
+      notes: {
+        en: "Bilinearity is immediate; symmetry follows from the substitution $g\\mapsto g^{-1}$.\\nOn class functions $\\langle f,f\\rangle=\\frac1{|G|}\\sum_g f(g)f(g^{-1})$; for complex representations ($F\\subseteq\\mathbb C$) with $f$ complex conjugation, it is a positive definite Hermitian form when restricted to the space of characters; over a general field only nondegeneracy is required.\\nThe pairing writes the orthogonality of irreducible characters as $\\langle\\chi_i,\\chi_j\\rangle=\\delta_{ij}$.", status: 'draft', basedOn: 'vv0.9.3#b68b7093' },
+    },
+    "lem.fixed-space-dimension": {
+      statement: { en: "Let $\\operatorname{char}F\\nmid|G|$ and let $(V,\\rho)$ be a finite-dimensional representation. Then $\\dim_F V^G=\\langle\\chi_\\rho,\\mathbf 1\\rangle$, where $V^G=\\{v\\in V:\\rho(g)v=v\\ \\text{for all }g\\in G\\}$ and $\\mathbf 1$ is the constant function $g\\mapsto1$.", status: 'draft', basedOn: 'vv0.9.3#52979ee3' },
+      notes: { en: "The averaging operator $\\varphi(v)=\\frac1{|G|}\\sum_g\\rho(g)v$ is a $G$-equivariant projection onto $V^G$.\nIn a basis making $\\varphi$ diagonal with eigenvalue 1 on $V^G$ and 0 on a complement, $\\operatorname{tr}\\varphi=\\dim V^G$.\nOn the other hand $\\operatorname{tr}\\varphi=\\frac1{|G|}\\sum_g\\operatorname{tr}\\rho(g)=\\langle\\chi_\\rho,\\mathbf 1\\rangle$.", status: 'draft', basedOn: 'vv0.9.3#a0d31627' },
+    },
+    "prop.character-inner-product-hom": {
+      statement: { en: "Let $\\operatorname{char}F\\nmid|G|$ and let $V_1,V_2$ be finite-dimensional representations. Then $\\langle\\chi_{V_1},\\chi_{V_2}\\rangle=\\dim_F\\operatorname{Hom}_G(V_1,V_2)$.", status: 'draft', basedOn: 'vv0.9.3#157e3575' },
+      notes: { en: "Let $W=\\operatorname{Hom}_F(V_1,V_2)$ with action $(g\\cdot f)(v)=g\\,f(g^{-1}v)$; then $W^G=\\operatorname{Hom}_G(V_1,V_2)$.\nThe character is $\\chi_W(g)=\\chi_{V_1^*}(g)\\chi_{V_2}(g)=\\chi_{V_1}(g^{-1})\\chi_{V_2}(g)$.\nApplying the fixed-space dimension lemma to $W$ gives $\\dim W^G=\\langle\\chi_W,\\mathbf 1\\rangle=\\langle\\chi_{V_1},\\chi_{V_2}\\rangle$.", status: 'draft', basedOn: 'vv0.9.3#dd53f6b2' },
+    },
+    "thm.character-orthogonality": {
+      statement: { en: "Let $\\operatorname{char}F\\nmid|G|$, let $F$ be algebraically closed, and let $V_1,V_2$ be finite-dimensional irreducible representations. Then $\\langle\\chi_{V_1},\\chi_{V_2}\\rangle=1$ if $V_1\\cong V_2$, and $0$ otherwise.", status: 'draft', basedOn: 'vv0.9.3#2b4e6711' },
+      notes: { en: "By prop.character-inner-product-hom the inner product equals $\\dim\\operatorname{Hom}_G(V_1,V_2)$.\nSchur's lemma: there are no nonzero homomorphisms between non-isomorphic irreducible representations; when isomorphic, $\\operatorname{End}_G(V_1)=F$ (algebraically closed, see cor.schur-scalar), of dimension 1.\nHence the inner product is $\\delta_{12}$.", status: 'draft', basedOn: 'vv0.9.3#22235b91' },
+    },
+    "cor.character-multiplicity": {
+      statement: { en: "Let $\\operatorname{char}F\\nmid|G|$, let $F$ be algebraically closed, and let $V$ be a finite-dimensional semisimple representation, $V\\cong\\bigoplus_i n_iV_i$ with the $V_i$ pairwise non-isomorphic irreducible. Then $n_i=\\langle\\chi_V,\\chi_{V_i}\\rangle$.", status: 'draft', basedOn: 'vv0.9.3#1002e29c' },
+      notes: { en: "By prop.character-operations (1), $\\chi_V=\\sum_j n_j\\chi_{V_j}$.\nTaking the inner product with $\\chi_{V_i}$ and using orthogonality $\\langle\\chi_{V_j},\\chi_{V_i}\\rangle=\\delta_{ji}$ gives $\\langle\\chi_V,\\chi_{V_i}\\rangle=n_i$.", status: 'draft', basedOn: 'vv0.9.3#cf3b2a1b' },
+    },
+    "def.character-table": {
+      statement: { en: "Let $G$ be a finite group, $\\operatorname{char}F=0$, and $F$ algebraically closed. Put $\\operatorname{Irr}(G)_F=\\{V_1,\\ldots,V_s\\}$ and let $CL(G)=\\{C_1,\\ldots,C_r\\}$ be the conjugacy classes with representatives $g_j\\in C_j$. The character table is the $s\\times r$ matrix $T=(\\chi_{V_i}(g_j))_{i,j}$.", status: 'draft', basedOn: 'vv0.9.3#27b992c8' },
+      notes: { en: "The rows are the irreducible characters; $\\operatorname{char}F=0$ guarantees that $\\chi_i=\\chi_j$ iff $V_i\\cong V_j$ (thm.character-determines-semisimple).\nThe rows are orthonormal for the character inner product (thm.character-orthogonality).\nCharacters are class functions, so the columns depend only on the conjugacy class; $s\\le r$, with equality requiring the additional fact that the characters form a basis of the class-function space.", status: 'draft', basedOn: 'vv0.9.3#3c62a3c7' },
+    },
+    "cor.regular-character-decomposition": {
+      statement: { en: "Let $\\operatorname{char}F\\nmid|G|$ and $F$ algebraically closed. The regular representation decomposes as $\\rho_{\\mathrm{reg}}\\cong\\bigoplus_{V\\in\\operatorname{Irr}(G)_F}(\\dim V)\\,V$, hence $\\chi_{\\mathrm{reg}}=\\sum_V(\\dim V)\\chi_V$. In particular $|G|=\\sum_V(\\dim V)^2$, and for $g\\ne1$ one has $\\sum_V(\\dim V)\\chi_V(g)=0$.", status: 'draft', basedOn: 'vv0.9.3#9bc4b266' },
+      notes: { en: "Maschke's theorem gives that $F[G]$ is semisimple, so the regular module decomposes as $F[G]\\cong\\bigoplus_i n_iV_i$.\nBy cor.character-multiplicity, $n_i=\\langle\\chi_{\\mathrm{reg}},\\chi_{V_i}\\rangle$; since $\\chi_{\\mathrm{reg}}(1)=|G|$ and $\\chi_{\\mathrm{reg}}(g)=0$ for $g\\ne1$, we get $n_i=\\frac1{|G|}|G|\\chi_{V_i}(1)=\\dim V_i$.\nEvaluating at $g=1$ and at $g\\ne1$ gives the two identities.", status: 'draft', basedOn: 'vv0.9.3#d81e7be2' },
     },
   },
 };

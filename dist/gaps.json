@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T05:17:23.885Z",
+ "generated": "2026-11-17T05:46:56.190Z",
  "terms": 76,
  "missing": [
   {
@@ -484,27 +484,9 @@
    "defLabel": "方向导数",
    "defLayer": 24,
    "gap": 0
-  },
-  {
-   "node": "def.symmetric-power-representation",
-   "nodeLabel": "对称平方表示",
-   "nodeLayer": 19,
-   "def": "def.eigenspace",
-   "defLabel": "特征子空间",
-   "defLayer": 19,
-   "gap": 0
-  },
-  {
-   "node": "def.exterior-power-representation",
-   "nodeLabel": "外平方表示",
-   "nodeLayer": 19,
-   "def": "def.eigenspace",
-   "defLabel": "特征子空间",
-   "defLayer": 19,
-   "gap": 0
   }
  ],
- "noEdgeAll": 50,
+ "noEdgeAll": 48,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",
