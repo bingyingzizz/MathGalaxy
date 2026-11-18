@@ -161,18 +161,6 @@
 @keyframes mgl-creep { from { transform: scaleX(.04); } to { transform: scaleX(.88); } }
 #mg-loading.mgl-real #mgl-fill { animation: none; transition: transform .35s ease-out; }
 #mg-loading.mgl-fail #mgl-fill { background: #d0483c; }
-/* 首屏的「入口说明」：给人和爬虫的一份静态索引。
-   ⚠️ 它是**真的显示着**的，不是 display:none 的隐藏文字 —— 隐藏文本算 cloaking。
-   星图渲染完 #mg-loading 整体淡出，这块跟着一起走，但源码里永远静态可读。 */
-#mgl-entry {
-  max-width: 640px; margin: 22px 24px 0; padding: 0 4px;
-  font-size: 12.5px; line-height: 1.75; color: var(--ink-dim, #6b7280); text-align: left;
-}
-#mgl-entry p { margin: 0 0 6px; }
-#mgl-entry b { color: var(--ink, #1c1c1e); font-weight: 600; }
-#mgl-entry a { color: #4f7cf5; text-decoration: none; border-bottom: 1px solid rgba(79,124,245,.35); }
-#mgl-entry a:hover { border-bottom-color: #4f7cf5; }
-@media (max-width: 560px) { #mgl-entry { font-size: 11.5px; margin-top: 16px; } }
 #mgl-hint { margin-top: 26px; font-size: 11px; letter-spacing: .14em; color: var(--ink-faint, #b7bcc4); }
 /* 关了 JS 时显示：静态索引页，不是隐藏文字（<noscript> 只在不跑脚本时渲染） */
 #mg-noscript { max-width: 720px; margin: 48px auto; padding: 0 20px; font-size: 14px; line-height: 1.8; color: #1c1c1e; }
@@ -227,15 +215,6 @@ window.addEventListener('error', function (e) {
   <div id="mgl-name">数学星图</div>
   <div id="mgl-text" data-t="正在点亮星空…">正在点亮星空…</div>
   <div id="mgl-bar"><span id="mgl-fill"></span></div>
-  <div id="mgl-entry">
-    <p><b>数学星图 MathGalaxy</b> — 把数学概念按依赖关系连成一张可缩放、可检索的图：<b>%%NODES%%</b> 个概念、<b>%%EDGES%%</b> 条推导边、<b>%%REGIONS%%</b> 个分支，每个概念一个节点、一份独立网页（陈述 + 出入边 + 证明）。</p>
-    <p><b>检索入口</b>：<a href="llms.txt">llms.txt</a>（给 AI 的检索协议）·
-      <a href="all.html">全部 %%NODES%% 个概念</a> ·
-      <a href="questions.html">常见问法</a> ·
-      <a href="alias.md">别名索引</a> ·
-      示例 <a href="nodes/thm.dct.html">控制收敛定理</a></p>
-    <p><b>分支</b>：数理逻辑 · 集合论 · 序理论 · 拓扑学 · 抽象代数 · 数学分析 · 泛函分析 · 实变函数 · 范畴论 · 同调代数 · 凝聚态数学 · 解析空间 · 复变函数 · 微分几何 · 数论</p>
-  </div>
   <div id="mgl-hint">MathGalaxy</div>
 </div>
 <noscript>
