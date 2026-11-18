@@ -97,7 +97,7 @@
       var arrow = e.kind === 'implication' ? '⟹'
         : e.kind === 'equivalence' ? '⟺'
           : e.kind === 'analogy' ? '～' : '·';
-      var head = e.title || shortLabel(e, 40);
+      var head = edgeHead(e, 40);
       var snippet = '';
       if (e.proof) snippet = U.plain(e.proof);
       else if (e.proofs && e.proofs.length) snippet = e.proofs.map(function (p) { return p.label; }).join(' / ');
@@ -111,10 +111,35 @@
         '</div>';
     }
 
+    /* 边的强调色（面板圆点 / 顶部徽章共用）：
+       - definition 用蓝；
+       - **derived（`layer:false` 的回望推论）用主题里的粉** —— 画布上就是粉边，
+         面板里不能退回墨黑，否则「同一张图、两个颜色」；
+       - 其余（普通 implication / equivalence / analogy）保持墨色。
+       ⚠️ 判据只调 `MG.graphUtil.isDerived`（单一真源），别在这里抄 `layer === false`。 */
+    function edgeAccent(e) {
+      if (e.kind === 'definition') return '#2A5BD7';
+      if (MG.graphUtil && MG.graphUtil.isDerived && MG.graphUtil.isDerived(e)) {
+        return (MG.config.derivedEdge && MG.config.derivedEdge.color) || '#E0446B';
+      }
+      return '#1C1C1E';
+    }
+
     function edgeDot(e) {
       if (e.kind === 'definition') return 'rgba(60,112,245,0.75)';
+      if (MG.graphUtil && MG.graphUtil.isDerived && MG.graphUtil.isDerived(e)) {
+        return (MG.config.derivedEdge && MG.config.derivedEdge.color) || '#E0446B';
+      }
       if (e.kind === 'equivalence') return '#1C1C1E';
       return '#1C1C1E';
+    }
+
+    /* 边的标题：中文模式 `e.title` 优先；英文模式**不能**用 `e.title`（只有中文），
+       优先 `title_en`（内容侧将来可给），否则拼端点英文名（`shortLabel` → `MG.labelOf`）。 */
+    function edgeHead(e, n) {
+      var en = e.title_en == null ? '' : String(e.title_en).trim();
+      if (MG.isEn) return en || shortLabel(e, n);
+      return e.title || en || shortLabel(e, n);
     }
 
     function shortLabel(e, n) {
@@ -385,12 +410,12 @@
       if (!e) { hide(); return; }
       var g = view.graph;
       var name = MG.edgeName(e.kind);
-      var color = e.kind === 'definition' ? '#2A5BD7' : '#1C1C1E';   // 白字 ≥ 4.5:1（与 nodeTypes 同一条要求）
+      var color = edgeAccent(e);   // definition 蓝 / derived 粉 / 其余墨色
       var html = '';
 
       html += '<span class="pn-kind" style="background:' + color + '">' +
         '<span class="dot"></span>' + U.escapeHtml(name) + '</span>';
-      html += '<h1 class="pn-h1">' + U.titleHtml(e.title || shortLabel(e, 120)) + '</h1>';
+      html += '<h1 class="pn-h1">' + U.titleHtml(edgeHead(e, 120)) + '</h1>';
       html += '<div class="pn-h2">' + U.escapeHtml(e.id) + '</div>';
 
       /* 推导图式 */

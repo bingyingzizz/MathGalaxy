@@ -14,6 +14,9 @@
    ⚠️ 105/236 是**作者拍板当时的快照**（那份调查是一次性盘点，已随 T2.4 落地删除，见 git 历史），不是实时计数；
       2026-10-16 第二轮又动过面板文案（「前置提示」改成「相关依赖的已读情况」、
       新增「独立页面」入口）⇒ 本表的键 138 → 141。要重算口径得重做一次「按屏幕去重」的盘点。
+   2026-11-18：底部说明换成「大板块 › 领域 › 星团 › 节点」四级口径（旧的三层文案整条替换），
+      并补 7 条一直缺的键（节点面板的证明完成度徽章 3 条、我的批注、定义、多证法 2 条）⇒ 键 181。
+      核对脚本：`_tools/_i18nscan.mjs`（扫 index.html 的 data-t* + src/core 的 t()/tf() 字面量）。
    拼写：**美式英语**（-ize / -ization，见 i18n/glossary.md）。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -80,10 +83,11 @@ MG.uiEn = {
     /* ------------------------------------------------------ 底部说明 */
     '这是什么 · 怎么用': 'What this is · how to use it',
     '这一页是可交互的星图；文字版的站点首页（说明、规模、全部入口）在': 'This page is the interactive map. The text-first home page (overview, scale, every entry point) is at',
-    '把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。':
-      'An interactive dependency graph of mathematical concepts (axioms / definitions / theorems / lemmas / propositions), ' +
-      'organised on three scales: galaxy → cluster → star. Arrows are implications, black lines are equivalences, ' +
-      'blue lines are definition references, purple dashes are cross-field analogies.',
+    '把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「大板块 › 领域 › 星团 › 节点」四级导航组织成一张可交互的依赖图 —— 后三级就是星图的「星系 / 星团 / 恒星」三层尺度（大板块只是把领域再归一次类）。箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。':
+      'An interactive dependency graph of mathematical concepts (axioms / definitions / theorems / lemmas / ' +
+      'propositions), navigated on four levels — sector › field › cluster › node. The last three are the map’s ' +
+      'three scales: galaxy › cluster › star (a sector only regroups fields once more). Arrows are implications, ' +
+      'black lines are equivalences, blue lines are definition references, purple dashes are cross-field analogies.',
     '拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走':
       'Drag to pan · wheel / pinch to zoom · click a node to focus · click an edge to see the proof · ' +
       'after focusing, ←→ walks the edges',
@@ -174,6 +178,11 @@ MG.uiEn = {
       '{n} nodes right now (use “show all” in the legend header to restore)',
 
     /* -------------------------------------------------------- 节点面板 */
+    /* 证明完成度徽章（T13/I5，panel.js 的 n.status 分支）：
+       skeleton / external-input / complete 三档，缺省不画。 */
+    '骨架 · 只看陈述与思路，当不得完整证明': 'Skeleton · statement and idea only — not a full proof',
+    '依赖本图外部的定理': 'Relies on a theorem outside this graph',
+    '完整': 'Complete',
     '只看它靠什么': 'What it rests on',
     '只看谁用它': 'What uses it',
     '看它周围': 'Around it',
@@ -237,12 +246,16 @@ MG.uiEn = {
     '出现在': 'appears in',
     '的陈述中': '’s statement',
     '该结论的陈述中使用了定义「{名}」。': 'The statement uses the definition “{名}”.',
+    '我的批注': 'My notes',
+    '定义': 'Definition',
     '定义原文 · {名}': 'Definition · {名}',
     '它依赖：{名}': 'It depends on: {名}',
     '图里也有：{名}': 'Also a node in the graph: {名}',
 
     /* -------------------------------------------------------- 边面板 */
     '推导过程': 'Proof',
+    '推导过程 · {n} 种证法': 'Proof · {n} variants',
+    '证法 {n}': 'Proof {n}',
     '箭头': 'arrow',
     '为什么等价': 'Why they are equivalent',
     '引用': 'Reference',
