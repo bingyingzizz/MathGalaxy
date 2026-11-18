@@ -79,6 +79,7 @@ MG.uiEn = {
 
     /* ------------------------------------------------------ 底部说明 */
     '这是什么 · 怎么用': 'What this is · how to use it',
+    '这一页是可交互的星图；文字版的站点首页（说明、规模、全部入口）在': 'This page is the interactive map. The text-first home page (overview, scale, every entry point) is at',
     '把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。':
       'An interactive dependency graph of mathematical concepts (axioms / definitions / theorems / lemmas / propositions), ' +
       'organised on three scales: galaxy → cluster → star. Arrows are implications, black lines are equivalences, ' +
