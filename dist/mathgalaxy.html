@@ -10435,7 +10435,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
        优先 `title_en`（内容侧将来可给），否则拼端点英文名（`shortLabel` → `MG.labelOf`）。 */
     function edgeHead(e, n) {
       var en = e.title_en == null ? '' : String(e.title_en).trim();
-      if (MG.isEn) return en || shortLabel(e, n);
+      /* 英文顺序：title_en → 端点英文名 → （仅兜底）中文 e.title。
+         shortLabel 取的是端点 label_en/title_en，正常一定有值，所以第三条实际到不了；
+         留着只是防御「端点标签缺失」的畸形数据，绝不让中文标题抢在英文名前面。 */
+      if (MG.isEn) return en || shortLabel(e, n) || e.title;
       return e.title || en || shortLabel(e, n);
     }
 
