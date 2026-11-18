@@ -230,6 +230,176 @@ bun tools/clustercheck.mjs <星团id>     # ⭐ 团体检（下面四类）
 实测带高 **128 ⇒ p95 16.7ms（>20ms 的帧 25~35 根）、64 ⇒ p95 12.5ms（3~6 根）**，
 所以默认改成 `bandPx: 64`。⛔ 别为了「少几帧」调大 —— 那是拿单帧换帧数。
 
+#### 4.1.1 代码地图（改之前先认门）
+
+引擎只分两半：**`worldbitmap.js` 决定「什么时候烘、烘哪一块」**，**`renderer.drawStatic()` 决定「怎么画进那张画布」**。
+中间只有一个契约：`drawStatic(target, scale, rect, band, lodK)`。
+
+| 在哪 | 函数 | 干什么 | 不许违反 |
+|---|---|---|---|
+| worldbitmap | `rectFor / worldRectFor` | 选矩形：世界档给整个世界，区域档给「视口⊕余量」 | 原点必须吸附到设备像素格 |
+| worldbitmap | `worldKMax(dpr)` | 世界档上限 | ⛔ 必须和 `tooBig()` **同源** |
+| worldbitmap | `sizeFor(r,k,dpr,mode)` | 画布像素尺寸 | 世界档量化到 `WORLD_QUANT`；区域档用 `min(dpr,2)` |
+| worldbitmap | `runBake()` | **同步全烘**（首烘/换档/真露洞/手动） | 只在「洞比尖峰难看」时用 |
+| worldbitmap | `startRound()` | 开一轮带轮：选目标代、清裁剪、定带高 | 目标代先「整张藏着」 |
+| worldbitmap | `bandStep(rush)` | 画一条带 | `rush=true` 只给应急 |
+| worldbitmap | `clearHandedOff(y0,h)` | 逐带交接 | ⛔ 只改 `clip-path`，绝不 `clearRect` |
+| worldbitmap | `finishRound()` | 换代 | ⛔ 只换元数据+裁剪，不碰 `display` |
+| worldbitmap | `chainStep()` | 带轮自己的 rAF 链 | ⛔ 不采样速度（`countSpeed=false`） |
+| worldbitmap | `syncCam(cam,dpr,countSpeed)` | 记相机 + 量速度 | 一帧只允许 `tick` 传 `true` |
+| worldbitmap | `tick(cam,dpr,key,opt)` | **唯一的触发判据** | `lowSlack` 必须排在 `stale` 前面 |
+| renderer | `drawStatic(...)` | 把静态层画进目标画布 | 7 个模块级量必须 `try/finally` 复原 |
+| renderer | `ensureGeomBake()` | 烘焙几何缓存 | 域键必须含 `band` |
+| renderer | `inView / edgeInView / segHitsView` | 裁剪 | `inView` 认四个边界；另两个认 `x1/y0/y1`（左边恒为 0） |
+| renderer | `draw()` | 实时层 | 位图模式且无 node-hover ⇒ 用 `EMPTY_GEOM` |
+| renderer | `bundleOffsets()` | 平行边让位 | 按 `view.visible` 引用同一性缓存 |
+
+#### 4.1.2 这次到底是怎么修的（五刀，可以照抄）
+
+**刀 1：位图承担静态层时，不要建连线几何**（`renderer.draw()`）
+
+```js
+var needGeom = !staticHidden || (hoverFull && view.hover && view.hover.type === 'node');
+var geoms;
+if (needGeom) { geoms = ensureGeom(); }
+else { geomCache = null; geoms = EMPTY_GEOM; }   // 别留陈旧几何给 hitTest / hover 误用
+```
+
+为什么能省：`paintStatic` 这时**根本不跑**，几何只服务 `hitTest`，而 `hitTest()` 自己第一行就是
+`ensureGeom()`。唯一例外是 **hover 甲支**（入射边加宽）—— 它要读 `geomCache`，所以那个条件必须留。
+实测：3202 条边全量重建 **3~4ms/帧**，单这一项就吃光 4.2ms 预算。
+
+**刀 2：`bundleOffsets()` 按「可见边集合」缓存**（`renderer.js`）
+
+```js
+var gapNow = (C.edge && C.edge.bundleGap) || 0;
+if (bundleCacheSrc === list && bundleCacheGap === gapNow) return bundleCache;
+bundleCacheSrc = list; bundleCacheGap = gapNow;
+// …算完… return (bundleCache = off);
+```
+
+关键：**缓存键是「引用」不是「内容」**。`view.visible` 只在过滤变更时**整体替换**，
+相机移动从不碰它 ⇒ 引用同一性就够，不用比集合。⚠️ `invalidate()` 里也要清
+（`bundleCache = null; bundleCacheSrc = null;`），否则换过滤后会拿到旧偏移。
+它原来在 `buildGeometry()` 里 ⇒ 拖动时每帧对 3202 条边建字符串 key + 逐组 sort。
+
+**刀 3：`cullBox` —— 每条带只算/只画落在自己带里的内容**（本刀最容易做漏）
+
+```js
+var cullBox = null;                       // null = 用视口自己（0..W / 0..H）
+function inView(x, y, pad) {
+  if (cullOff) return true;
+  var x1 = cullBox ? cullBox.x1 : W, y1 = cullBox ? cullBox.y1 : H;
+  var x0 = cullBox ? cullBox.x0 : 0, y0 = cullBox ? cullBox.y0 : 0;
+  return x > x0 - pad && x < x1 + pad && y > y0 - pad && y < y1 + pad;
+}
+```
+
+三处必须同步改（漏一处就等于没生效）：
+
+1. `inView` —— **四个边界全要**（`cullBox.x0/x1/y0/y1`）；
+2. `edgeInView` —— 端点预筛里的 **右 / 上 / 下**要换成 `cullBox.x1 / y0 / y1`
+   （左边恒用 `-PAD_EDGE`：`cullBox.x0` 永远是 0，没必要多一个三元式）；
+   ⛔ **我第一版就漏了「上」边界** ⇒ 量出来完全没变化，白查了一轮；
+3. `segHitsView` —— Liang–Barsky 的 `l/r/t/b`：`r/t/b` 换成 `cullBox.x1 / y0 / y1`。
+
+然后在 `drawStatic` 里设/复原：
+
+```js
+cullBox = (band && band.h > 0) ? { x0: 0, x1: W, y0: band.y0, y1: band.y0 + band.h } : null;
+// save 里带上 cullBox: cullBox，finally 里 cullBox = save.cullBox;
+```
+
+⚠️ **余量不能省**：`PAD_EDGE=140` 兜的是贝塞尔外凸 90px + 箭头 17 + 线宽，
+边界上的线就是靠它才不会被切掉。
+⚠️ `ensureGeomBake()` 的域键必须加 `band`，否则第 2 条带会复用第 1 条的裁剪结果：
+
+```js
+var bk = cullBox ? (cullBox.y0 + ":" + cullBox.y1) : "-";
+// … && bakeGeomCam.band === bk
+```
+
+实测（3312×2024 区域图、k=1.2）：单带 JS **1.9 → 0.77~1.1ms**；整张仍是 2.7~3.6ms。
+
+**刀 4：拖动速度一帧只采样一次**（`worldbitmap.syncCam`）
+
+```js
+function syncCam(cam, dpr, countSpeed) { … if (moved) { if (countSpeed) pushPan(dpx); … }
+                                          else if (countSpeed && speedMax > 0.05) pushPan(0); }
+// tick()       → syncCam(cam, dpr, true)
+// chainStep()  → syncCam(camRef, last.dpr, false)
+```
+
+为什么必须这样：`tick` 和 `chainStep` 都会调进来，后者看到相机已同步 ⇒ `pushPan(0)`
+⇒ 滑窗变成 `10,0,10,0…` ⇒ **均值正好一半**（实测 speed 报 5、真值 10）
+⇒ `needPx` 只有一半 ⇒ 轮开得太晚 ⇒ 中途露洞 ⇒ **每轮一根 212ms 同步全烘**。
+验证技巧：拖动时 `MG.app.bitmap.speed` 应该 ≈ 你每帧推进的设备像素数。
+
+**刀 5：带高 128 → 64**（`config.bitmap.bandPx`）
+
+判决项是**单帧**不是帧数：128 ⇒ p95 16.7ms（>20ms 25~35 根）；64 ⇒ 12.5ms（3~6 根）。
+
+#### 4.1.3 要改烘焙时，按这个顺序做
+
+**第 0 步（最容易跳过、但跳过就一定白干）：先确认测量本身是对的**
+
+- 页面 WebGL 渲染器是 GPU 不是 SwiftShader；帧间隔不是恒 17.9ms（60Hz 档）；
+- `MG.app.bitmap.speed` ≈ 你实际的每帧位移量（见刀 4）；
+- 拖动是**真鼠标**还是页内假拖动 —— 两个仪器结论不一致时**以假拖动为帧成本基准**。
+
+**第 1 步：分账**（先定主导项，别看着曲线找结论）
+
+```pwsh
+$env:MG_GPU='1'; $env:MG_CAM='1'; $env:MG_K='1.2'; $env:MG_RUNS='1'
+bun _tools/_dragbench.mjs "file:///H:/MathGalaxy/index.html?region=1&fps=1" out.png 7000 2536x1348
+```
+
+读 `绘制 p50`（我的 JS）与 `其余 p50`（光栅+合成+呈现）：
+
+| 读数 | 主导项 | 去哪查 |
+|---|---|---|
+| `绘制` 高（>2ms） | JS：几何 / 标签 / 裁剪 | `_tools/_bandcost.js` |
+| `其余` 高 | 光栅：脏区面积 | 带裁剪是否生效 + 带高 |
+| `max` 有尖峰但 p50 正常 | 同步全烘 / 追赶 | `MG.app.bitmap` 的 `同步日志` `落洞` `追赶` |
+
+**第 2 步：定位到具体函数**（两个现成探针）
+
+- `_tools/_bandcost.js` —— 离屏画布上量「整张 vs 单带」，并做 `关定义线 / 关节点` 消融。
+  单带 ≈ 整张 ⇒ **cullBox 没生效**（回去看那三处）。
+- `_tools/_bandreal.js` —— 同一把「真实显示中的画布」与「离屏画布」对比。
+  ⚠️ 实测过：离屏单带 0.93ms、拖动中同一把 5~7ms ⇒ 差额是**拖动期 GPU 回压**，
+  不是内容突然变贵 —— 别沿着「内容优化」的方向查错。
+
+**第 3 步：改代码时，这五处必须同步**（漏一处就是「改了但没效果」）
+
+1. 加裁剪判据 ⇒ `inView` / `edgeInView` / `segHitsView` **三处** + `ensureGeomBake` 的域键；
+2. 改画布尺寸 ⇒ `drawStatic` 的 save/restore 清单 + `sizeFor` 的量化和「内容尺寸 vs 画布尺寸」两个口径；
+3. 改矩形 ⇒ `elRect` / `elScale` / `applyTransform` / `clearHandedOff` 的交接基准**全部**依赖它；
+4. 改 `worldKMax` ⇒ 必须同时看 `tooBig()`（漂了就是「手机周围永不渲染」）；
+5. 改旋钮 ⇒ `config.js` 注释 + `AGENTS.md` 这一节 + `tools/perfguard.mjs` 的区间一起改。
+
+**第 4 步：验收四件套（缺一不可）**
+
+1. `bun tools/build.mjs` —— 末尾会自动跑 `perfguard`（42 条）；
+2. 引擎冒烟：`bun _tools/cdp.mjs <url> out.png _tools/_smoke.engine.mjs 2500 1600x900`，判据无 `#mg-fatal`；
+3. **带裁剪有没有丢内容**：同机位「位图 vs 实时画」（`?region=1` / `?region=0`），
+   逐 1/16 带比**墨量**，比值应恒略 >1 且**没有一条带变少**（隔带高低交替 = 丢带）；
+4. **截图亲眼看**：线连续、无接缝、无残影。
+
+#### 4.1.4 症状 → 病因 速查（都是这次真踩过的）
+
+| 症状 | 病因 | 修法 |
+|---|---|---|
+| 拖动整体卡，`绘制 p50` 4~6ms | 位图模式下每帧重建几何 | 刀 1 |
+| 同上，且 `bundleOffsets` 占大头 | 平行边让位每帧重算 | 刀 2 |
+| `其余 p50` 十几 ms，带数正常 | 只 `clip()` 没缩裁剪框 ⇒ 每条带都是整帧 | 刀 3 |
+| 每轮一根 200ms 尖峰，`落洞`>0，`同步日志` 每轮一条 | 速度采样减半 ⇒ `needPx` 减半 ⇒ 轮开太晚 | 刀 4 |
+| p95 16~25ms、`>20ms` 几十根，但单带 JS 很小 | 带太高（单帧光栅量） | 刀 5 |
+| 某一条带整列空白 / 内容被切 | `cullBox` 漏了某个边界 | 刀 3 的三处逐条对 |
+| 手机「先缩小再拖动，周围不渲染」 | `worldKMax` 与 `tooBig` 判据漂 + 烘不出来时只 `return` | 见 4.1 的 `giveUp` 段 |
+| 平板打开就白屏 + 弹错误框 | `roundRect` 只吃数组 | 见 4.3 |
+| 放大后云雾有点点/格子 | 纹理 dither 被放大 | 见 4.2 |
+
 ### 4.1½ 已知瓶颈：每轮重光栅整张区域图（⛔ 别再拿旋钮试了）
 
 规模到 **1673 点 / 3783 线**（世界 7440×5680）之后，实测（假拖动 3s、k=1.2）：
@@ -252,6 +422,52 @@ bun tools/clustercheck.mjs <星团id>     # ⭐ 团体检（下面四类）
 平移的一轮里**真正新增的只有一条窄带**（每轮位移 ~300px × 画布宽 3312 ≈ 1M px，
 而整张是 6.8M px ⇒ 理论上 6 倍余量）。做法：把旧图按位移**blit 过去**，只重画新露出的那条带。
 ⛔ 别先试「调 margin / 调 bandPx / 降 maxSide」—— 都量过了，无效或更差。
+
+#### 4.1½.1 「blit 滑动窗口」怎么改（设计稿，⚠️ 先量一条再动手）
+
+**⛔ 动手前必须先量这一个数**：把一张 6.8M px 的 GPU 画布 `drawImage` 到它自己去多少 ms。
+理由：早年复盘（`_tools/复盘-视口位图缓存.md` v2）怀疑「**blit 会把整张标脏、上传省不掉**」，
+但**当年没量过** —— 若 blit ≈ 整张光栅（~60ms），这条路也是死的。十行探针就能证伪：
+
+```js
+var t0 = performance.now();
+for (var i = 0; i < 3; i++) {
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.globalCompositeOperation = 'copy';
+  g.drawImage(cv, dxPx, dyPx);       // 自绘同一张；dxPx/dyPx 必须整数
+  g.globalCompositeOperation = 'source-over';
+}
+// (performance.now() - t0) / 3 ⇒ 这个数决定这条路值不值得走
+```
+
+**若 blit 便宜（< 8ms），按这个顺序改**：
+
+1. **矩形求法从「重新定中心」变成「沿位移平移」**：`rectFor()` 区域档那一支不再用
+   `视口中心 ± halfW/halfH` 重算，而是拿 `snap.rect` 加**整数设备像素**位移，
+   **尺寸一分不改**（否则每轮都要重新分配画布，见 4.1-⑤），原点仍吸附设备像素格。
+2. **先搬图，再补新露出的那一条**：
+   ```js
+   var dxPx = Math.round((newRect.minX - oldRect.minX) * round.scale);
+   var dyPx = Math.round((newRect.minY - oldRect.minY) * round.scale);
+   // 1) blit（上面那段：copy + 整数偏移）
+   // 2) 只重画新露出的带：drawStatic(target, scale, newRect, { y0, h })
+   ```
+   ⚠️ 水平位移还会漏出一条**竖**带（宽 = 位移量，高 = 整张），而 `band` 只支持横带 ⇒
+   那一块用 `ctx.rect` 自己裁（模仿 `drawStatic` 里 band 那段）。
+3. **同步三件东西**（漏一件就错位）：
+   · `elRect[i] = newRect` ⇒ `applyTransform()` 重算落位；
+   · `clearHandedOff()` 的交接基准用的是 `round.rect` ⇒ 必须换新矩形重算；
+   · `snap.rect` 只在换代时才换（blit 期间旧快照仍在屏幕上顶着）。
+4. **交接仍然只能改裁剪**（4.1-②）：blit 出来的新图与旧图重叠区**不能同时可见**，
+   依旧靠两条互补的 `clip-path`。⛔ 不要因为「反正搬过图了」就改成 `clearRect` —— 同一个坑。
+
+**若 blit 很贵（≈ 整张光栅），换另一条路**：不动主画布，**再加一张「窄条画布」**
+只覆盖即将移入的那一条，三层叠加（主图 + 窄条 + 实时层）。代价：合成层 +1、裁剪要管三张；
+优点：不碰主画布像素，也就没有「整张标脏」。
+⚠️ 层数变多会碰到 4.5 的「合成器 bound」—— 改完必须重新看 `CompositeLayers`。
+
+两条路改完都要重跑：`perfguard` 42 条 + `_chainprobe`（落洞/追赶必须仍是 0）+
+逐 1/16 带墨量比对（不能有带变少）+ 截图。
 
 ⚠️ **区域图的像素尺寸必须用 `m = min(dpr, 2)`，不能用满 dpr**：画布显示倍率是 `dpr/m`，
 所以「盖住视口所需像素」= `vw×m`。用满 dpr 会多出 1.5 倍（手机）⇒ 白白顶到 4096 上限
@@ -315,7 +531,7 @@ bun _tools/_dragbench.mjs "file:///H:/MathGalaxy/index.html?region=1#v=1.2000,11
 > 被违反/漂移了，而验收仪器被删时**没有任何东西报警** —— 于是「拖动又变卡」活了几周。
 
 所以把「不许删」变成了**构建即红**：`bun tools/build.mjs` 末尾会跑 `tools/perfguard.mjs`，
-CI 也单独跑一次。它逐条对着本文第四节断言（当前 40 条），删了/改坏了就报错，
+CI 也单独跑一次。它逐条对着本文第四节断言（当前 42 条），删了/改坏了就报错，
 报错里带着「去看 4.x」和当初的实测代价。它同时守着**验收仪器本身在不在**。
 
 它故意只断言**机械可判**的东西（函数在不在、边界有没有用 `cullBox`、旋钮取值区间），

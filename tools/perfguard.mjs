@@ -71,7 +71,8 @@ for (const rel of ['src/core/worldbitmap.js', 'src/core/renderer.js',
    `_tools/` 大部分是 gitignore 的。2026-11-09 已用 `git add -f` 把这三个纳入 git，
    这里再守一道 —— 仪器没了，「改好了」就再也证不了。 */
 for (const rel of ['_tools/_dragbench.mjs', '_tools/_chainprobe.js',
-  '_tools/_smoke.engine.mjs', '_tools/_cloudchk.js']) {
+  '_tools/_smoke.engine.mjs', '_tools/_cloudchk.js',
+  '_tools/_bandcost.js', '_tools/_bandreal.js']) {
   need(fs.existsSync(path.join(ROOT, rel)), `验收仪器在：${rel}`,
     'AGENTS.md 4.4 / 4.2：改完必须用它们量。它们曾经被清掉过，于是没人量、违规活了几周');
 }
