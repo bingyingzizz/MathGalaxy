@@ -160,6 +160,36 @@
         : '';
     }
 
+    /* --------------------------------------------- ENG-027 边 note 的英文
+       `window.MG.i18nEdgeNotes` 由翻译侧旁挂生成：{ edgeId: { note: { en, status, basedOn } } }。
+       文件可能还不存在（翻译侧后补）：页面加载与构建都不报错，只回落中文。
+       缺条目或缺 `en` 时回落中文并显式提示；stale 用 MG.enFieldStatus 判（与
+       statement_en 同一口径：内容版本或中文底稿指纹变了就过期）。 */
+    function pickEdgeNote(e) {
+      var zh = e.note == null ? '' : String(e.note);
+      var out = { zh: zh, en: '', useEn: false, fallback: false, stale: false };
+      if (!MG.isEn || !zh) return out;
+      var rec = MG.i18nEdgeNotes && MG.i18nEdgeNotes[e.id];
+      var note = rec && rec.note;
+      var en = note && note.en != null ? String(note.en).trim() : '';
+      if (!en) { out.fallback = true; return out; }
+      out.en = en;
+      out.useEn = true;
+      if (MG.enFieldStatus) {
+        try { out.stale = MG.enFieldStatus(note, zh) === 'stale'; } catch (err) {}
+      }
+      return out;
+    }
+    function edgeNoteNotice(r) {
+      if (r.fallback) {
+        return '<div class="pn-note pn-fallback">English translation of this note is not available; showing the Chinese original.</div>';
+      }
+      if (r.stale) {
+        return '<div class="pn-note pn-fallback">English translation of this note may be out of date (the Chinese original changed).</div>';
+      }
+      return '';
+    }
+
     function listOrNone(rows, emptyText) {
       if (!rows.length) return '<div class="pn-none">' + U.escapeHtml(emptyText) + '</div>';
       return '<div class="pn-list">' + rows.join('') + '</div>';
@@ -426,8 +456,15 @@
           proofOnlyZhNote() + '<div class="pn-body">' + U.md(e.proof) + '</div>');
       } else if (e.kind === 'definition') {
         var d = g.byId[e.definition];
-        html += section(tf('说明'), '<div class="pn-body">' +
-          U.md(e.note || tf('该结论的陈述中使用了定义「{名}」。', { 名: lbl(g, e.definition) })) + '</div>');
+        /* ENG-027：说明就是边自己的 note，英文模式下同样优先译文。 */
+        if (e.note) {
+          var dn = pickEdgeNote(e);
+          html += section(tf('说明'), edgeNoteNotice(dn) +
+            '<div class="pn-body">' + U.md(dn.useEn ? dn.en : dn.zh) + '</div>');
+        } else {
+          html += section(tf('说明'), '<div class="pn-body">' +
+            U.md(tf('该结论的陈述中使用了定义「{名}」。', { 名: lbl(g, e.definition) })) + '</div>');
+        }
         if (d) {
           /* ENG-026：定义原文同样优先英文；缺英文时标注「显示的是中文原文」。 */
           var ds = pickText(d, 'statement', 'statement_en');
@@ -438,10 +475,9 @@
         }
       }
 
-      if (e.note && e.proofs) {
-        html += '<div class="pn-note">' + U.md(e.note) + '</div>';
-      } else if (e.note && e.proof) {
-        html += '<div class="pn-note">' + U.md(e.note) + '</div>';
+      if (e.note && (e.proofs || e.proof)) {
+        var nb = pickEdgeNote(e);
+        html += edgeNoteNotice(nb) + '<div class="pn-note">' + U.md(nb.useEn ? nb.en : nb.zh) + '</div>';
       }
 
       bodyEl.innerHTML = html;
