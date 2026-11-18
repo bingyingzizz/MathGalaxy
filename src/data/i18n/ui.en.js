@@ -83,11 +83,11 @@ MG.uiEn = {
     /* ------------------------------------------------------ 底部说明 */
     '这是什么 · 怎么用': 'What this is · how to use it',
     '这一页是可交互的星图；文字版的站点首页（说明、规模、全部入口）在': 'This page is the interactive map. The text-first home page (overview, scale, every entry point) is at',
-    '把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「大板块 › 领域 › 星团 › 节点」四级导航组织成一张可交互的依赖图 —— 后三级就是星图的「星系 / 星团 / 恒星」三层尺度（大板块只是把领域再归一次类）。箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。':
+    '把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「大板块 › 领域 › 星团 › 节点」四级导航组织成一张可交互的依赖图。箭头是推出，黑线是等价，粉线是推论（不参与分层），蓝线是定义引用，紫色虚线是跨领域类比。':
       'An interactive dependency graph of mathematical concepts (axioms / definitions / theorems / lemmas / ' +
-      'propositions), navigated on four levels — sector › field › cluster › node. The last three are the map’s ' +
-      'three scales: galaxy › cluster › star (a sector only regroups fields once more). Arrows are implications, ' +
-      'black lines are equivalences, blue lines are definition references, purple dashes are cross-field analogies.',
+      'propositions), navigated on four levels — sector › field › cluster › node. Arrows are implications, ' +
+      'black lines are equivalences, pink lines are derived corollaries (not used for layering), blue lines ' +
+      'are definition references, purple dashes are cross-field analogies.',
     '拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走':
       'Drag to pan · wheel / pinch to zoom · click a node to focus · click an edge to see the proof · ' +
       'after focusing, ←→ walks the edges',
