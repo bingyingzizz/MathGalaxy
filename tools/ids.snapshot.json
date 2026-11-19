@@ -1,6 +1,6 @@
 {
  "version": "v0.9.3",
- "generated": "2026-11-17",
+ "generated": "2026-11-19",
  "note": "节点 id 是对外契约：消失的 id 必须先在 tools/ids.retired.json 登记。",
  "count": 1725,
  "ids": [

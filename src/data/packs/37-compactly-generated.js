@@ -81,29 +81,7 @@ window.MG = window.MG || {};
           '6. $X$ 是所有连续映射 $S \\to X$（$S$ 紧 Hausdorff）的余极限。'
         ].join('\n')
       ].join('\n'),
-      notes: [
-        '**证明的走法。** (1) $\\iff$ (6) 是定义换一种说法：余极限就是「由全体映射决定」。',
-        '',
-        [
-          '- (6) $\\implies$ (2)：取 $Y = \\coprod_{S \\to X} S$（沿所有连续映射 $S \\to X$，$S$ 紧 Hausdorff）。全体映射拼出 $Y \\to X$，它显然满 —— **满的连续映射就是商映射**。',
-          '- (2) $\\implies$ (3)：紧 Hausdorff 空间本身局部紧。',
-          '- (3) $\\implies$ (1)：商映射 $Z \\twoheadrightarrow X$（$Z$ 局部紧 Hausdorff）把 $Z$ 的紧生成性传下去 —— 商是余极限，而余极限的余极限还是余极限。',
-          '- (4) $\\iff$ (1)：这是「由映射决定拓扑」的逐字翻译：用 $S$ 是紧空间这一条，把 $f^{-1}(Y)$ 的开性从 $f(S)$ 拉回到 $S$ 上。',
-          '- (5) $\\iff$ (4)：把「$X \\to Y$ 连续」按定义展开成「开集的原像开」，再用 (4) 换成紧 Hausdorff 空间上的检验。',
-        ,
-        '**各方向用到的假设**（这张清单就是“六条等价”的实际内容 —— 有些方向几乎是定义展开，有些方向真有代价）：\n' +
-        '\n' +
-        '- (1) $\\implies$ (3)：**只用定义**。紧生成空间按定义就是「由紧 Hausdorff 空间探测器决定开集」，取商表示是标准重排。\n' +
-        '- (3) $\\implies$ (2)：**不需要额外假设**（局部紧 Hausdorff 是紧 Hausdorff 的特殊情形，把每个块当成自身）。\n' +
-        '- (2) $\\implies$ (1)：**这一步用到「紧 Hausdorff 空间的商」的万有性质** —— 商映射的泛性质把「检验开集」拉回到覆盖空间，于是只需对紧 Hausdorff 检验。\n' +
-        '- (1) $\\iff$ (4)：**同义反复**（(4) 就是把「紧生成」写成「用 $S$ 检验开集」）。\n' +
-        '- (1) $\\iff$ (5)：同样**只是重述**（开集检验  $\\iff$  连续检验，因为 $f$ 连续的定义要求每个开集的原像是开集）。\n' +
-        '- (1) $\\iff$ (6)：**这一条用了余极限的刻画**（余极限的存在性与泛性质），是六条里最“范畴”的一步；其余五条都可以在点集拓扑里说清。\n' +
-        '\n' +
-        '**要小心的地方**：$S$ 只取**紧 Hausdorff** 空间（不是「紧的任意空间」）。因为紧 Hausdorff 空间对取商、取积都封闭（`thm.tykhonov`、`prop.quotient-of-compact`），所以它们足够当探测器；若换成「所有紧空间」，(2) 与 (3) 的等价会失效。'
-        ].join('\n'),
-        '⭐ **测试空间统一取紧 Hausdorff 空间。** 定义那一条与这里 (2)(3)(4)(6) 用的是同一族测试空间 —— 也就是说：$X$ 紧生成 $\\iff$ 存在紧 Hausdorff 空间的不交并 $\\coprod S \\twoheadrightarrow X$ 是商映射 $\\iff$ 存在局部紧 Hausdorff 空间 $Z \\twoheadrightarrow X$ 是商映射。\n\n**三个说法给出同一个范畴**，用哪一条就看哪一条好算。'
-      ].join('\n\n'),
+      notes: "**各方向用到的假设**（这张清单就是“六条等价”的实际内容 —— 有些方向几乎是定义展开，有些方向真有代价）：\n\n- (1) $\\implies$ (3)：**只用定义**。紧生成空间按定义就是「由紧 Hausdorff 空间探测器决定开集」，取商表示是标准重排。\n- (3) $\\implies$ (2)：**不需要额外假设**（局部紧 Hausdorff 是紧 Hausdorff 的特殊情形，把每个块当成自身）。\n- (2) $\\implies$ (1)：**这一步用到「紧 Hausdorff 空间的商」的万有性质** —— 商映射的泛性质把「检验开集」拉回到覆盖空间，于是只需对紧 Hausdorff 检验。\n- (1) $\\iff$ (4)：**同义反复**（(4) 就是把「紧生成」写成「用 $S$ 检验开集」）。\n- (1) $\\iff$ (5)：同样**只是重述**（开集检验  $\\iff$  连续检验，因为 $f$ 连续的定义要求每个开集的原像是开集）。\n- (1) $\\iff$ (6)：**这一条用了余极限的刻画**（余极限的存在性与泛性质），是六条里最“范畴”的一步；其余五条都可以在点集拓扑里说清。\n\n**要小心的地方**：$S$ 只取**紧 Hausdorff** 空间（不是「紧的任意空间」）。因为紧 Hausdorff 空间对取商、取积都封闭（`thm.tykhonov`、`prop.quotient-of-compact`），所以它们足够当探测器；若换成「所有紧空间」，(2) 与 (3) 的等价会失效。\n\n⭐ **测试空间统一取紧 Hausdorff 空间。** 定义那一条与这里 (2)(3)(4)(6) 用的是同一族测试空间 —— 也就是说：$X$ 紧生成 $\\iff$ 存在紧 Hausdorff 空间的不交并 $\\coprod S \\twoheadrightarrow X$ 是商映射 $\\iff$ 存在局部紧 Hausdorff 空间 $Z \\twoheadrightarrow X$ 是商映射。\n\n**三个说法给出同一个范畴**，用哪一条就看哪一条好算。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
@@ -138,13 +116,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['拓扑', 'k-拓扑', '余极限'],
       statement: '对任何拓扑空间 $X$，$kX$ 是全体连续映射 $S \\to X$（$S$ 取遍紧 Hausdorff 空间）在 $\\mathbf{Top}$ 中的余极限。',
-      notes: [
-        ['**证明。** 按 $k$-拓扑的定义，$U \\subseteq kX$ 开 $\\iff$ 对**每个**连续 $g : S \\to X$（$S$ 紧 Hausdorff），$g^{-1}(U)$ 在 $S$ 中开。',
-          '另一方面，$\\mathbf{Top}$ 里一张图 $\\mathcal{D}$ 的余极限 $L$ 的拓扑有标准刻画：$U \\subseteq L$ 开 $\\iff$ 对图上每个对象的「余射」$D_{i} \\to L$，$U$ 的拉回在 $D_{i}$ 中开。',
-          '把图取成「对象 = 全体连续映射 $g : S \\to X$；态射 = 使三角形交换的连续映射」：余射就是 $g$ 本身，于是 $L$ 上的拓扑正是「由全体 $g$ 拉回定出的 $k$-拓扑」，即 $L = kX$（两者有同一个底集合同一个开集族）。∎',
-          '⭐ **读法**：这条把「$k$-化」翻译成了「用紧 Hausdorff 块拼出来」。于是 $X$ 紧生成 $\\iff$ $X$ 就是它自己那些紧 Hausdorff 块的余极限 —— 后面所有关于 $k\\mathbf{Top}$ 的论证都可以在**块**上做，再沿余极限抬上去。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **读法**：这条把「$k$-化」翻译成了「用紧 Hausdorff 块拼出来」。于是 $X$ 紧生成 $\\iff$ $X$ 就是它自己那些紧 Hausdorff 块的余极限 —— 后面所有关于 $k\\mathbf{Top}$ 的论证都可以在**块**上做，再沿余极限抬上去。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
@@ -227,17 +199,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['拓扑', '紧生成', '乘积'],
       statement: '若 $X$ 紧生成、$Y$ 局部紧 Hausdorff，则 $X \\times Y$ 紧生成。',
-      notes: [
-        ['**证明。** 用的都是已经有的零件。',
-          '- $X$ 紧生成 $\\iff$ $X$ 是它自己那些紧 Hausdorff 块的余极限：$X = \\varinjlim_{i} S_{i}$（上一条），$S_{i}$ 紧 Hausdorff；',
-          '- $Y$ 局部紧 Hausdorff $\\implies$ 函子 $-\\times Y$ **保余极限**（它有右伴随 $C(Y, -)$）；于是',
-          '$$X \\times Y = \\Bigl(\\varinjlim_{i} S_{i}\\Bigr) \\times Y = \\varinjlim_{i}\\bigl(S_{i} \\times Y\\bigr);$$',
-          '- **每一项 $S_{i} \\times Y$ 紧生成**：它是局部紧 Hausdorff 空间（紧 $\\times$ 局部紧 $=$ 局部紧 Hausdorff），而局部紧 Hausdorff $\\implies$ 紧生成（每个点有紧邻域）✓；',
-          '- **紧生成空间在 $\\mathbf{Top}$ 里的余极限仍紧生成**：含入 $k\\mathbf{Top} \\hookrightarrow \\mathbf{Top}$ 是左伴随（它**有**右伴随 $k$），左伴随保余极限，故 $k\\mathbf{Top}$ 里的余极限就是 $\\mathbf{Top}$ 里的余极限，且结果紧生成。',
-          '于是 $X \\times Y$ 是紧生成空间的余极限，自身紧生成。∎',
-          '⚠️ **$Y$ 局部紧不能省**：一般拓扑空间之间的积**不保**商映射，而「$-\\times Y$ 保余极限」正是这一条目的等价说法。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⚠️ **$Y$ 局部紧不能省**：一般拓扑空间之间的积**不保**商映射，而「$-\\times Y$ 保余极限」正是这一条目的等价说法。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
@@ -302,14 +264,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['拓扑', '紧开拓扑', '积拓扑'],
       statement: '若 $X$ 是**离散**空间，则 $C(X, Y) \\cong Y^{X}$（右边取**积拓扑**）。',
-      notes: [
-        ['**证明。** 比较两边的基本开集。',
-          '- $X$ 离散时，紧 Hausdorff 的 $g : S \\to X$ 的像 $g(S)$ 是**有限**集（紧 $\\implies$ 有限，因为 $X$ 上只有离散拓扑，紧子集有限）。于是紧开拓扑的生成元是',
-          '$$W_{S,V} = \\{\\, f : X\\to Y \\;\\mid\\; f\\bigl(g(S)\\bigr)\\subseteq V \\,\\} = \\bigcap_{x \\in F} \\{\\, f : f(x)\\in V \\,\\},\\qquad F := g(S)\\ \\text{有限};$$',
-          '- 而 $\\{f : f(x) \\in V\\}$ 正是**积拓扑**（$Y^{X} = \\prod_{x\\in X} Y$）下的基本开集（只有 $x$ 那个坐标被限制）。所以两边由同一族基本开集生成，恒等映射是同胚。∎',
-          '⭐ **这就是「指数律在离散指数下平凡成立」那条**：$Y^{X}$ 的积拓扑就是紧开拓扑。这也说明紧开拓扑的**信息量**：非离散的 $X$ 上，积拓扑太细（那是「逐点收敛」拓扑），紧开拓扑才是对的。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **这就是「指数律在离散指数下平凡成立」那条**：$Y^{X}$ 的积拓扑就是紧开拓扑。这也说明紧开拓扑的**信息量**：非离散的 $X$ 上，积拓扑太细（那是「逐点收敛」拓扑），紧开拓扑才是对的。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
@@ -377,16 +332,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', '纤维积', '紧'],
       statement: '若 $S, S\'$ 是紧 Hausdorff 空间、$X$ 弱 Hausdorff，且给定了连续映射 $S \\to X$、$S\' \\to X$，则纤维积 $S \\times_{X} S\'$ 紧 Hausdorff。',
-      notes: [
-        ['**证明。** 记两个映射为 $f : S\\to X$、$g : S\'\\to X$。关键是把纤维积写成**对角线的原像**：',
-          '$$S \\times_{X} S\' = \\{(s, s\') : f(s) = g(s\')\\} = (f, g)^{-1}\\bigl(\\Delta_{X}\\bigr), \\qquad (f,g) : S\\times S\' \\longrightarrow X\\times X .$$',
-          '- $S\\times S\'$ **紧 Hausdorff** ✓；',
-          '- 由「弱 Hausdorff $\\implies$ 对角是 $k$-闭的」，$\\Delta_{X}$ 是 $k$-闭的；',
-          '- 而 $k$-闭集沿**从紧 Hausdorff 空间出发**的连续映射的拉回是**闭**集（这就是 $k$-闭的定义）：$(f,g)^{-1}(\\Delta_{X})$ 在 $S\\times S\'$ 中闭 ✓。',
-          '于是 $S\\times_{X} S\'$ 是紧 Hausdorff 空间的**闭子空间**，故紧 Hausdorff（闭子空间紧、Hausdorff 的闭子空间 Hausdorff）。∎',
-          '⭐ **这条就是「$\\mathrm{CGWH}$ 里紧块相交还是紧块」的全部内容** —— 后面「弱 Hausdorff $\\implies$ 拟分离」「$\\mathrm{CGWH}$ 对有限积封闭」都得靠它。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **这条就是「$\\mathrm{CGWH}$ 里紧块相交还是紧块」的全部内容** —— 后面「弱 Hausdorff $\\implies$ 拟分离」「$\\mathrm{CGWH}$ 对有限积封闭」都得靠它。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
@@ -399,15 +345,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', '商空间', '等价关系'],
       statement: '设 $X$ 紧生成，$R$ 是 $X$ 上的等价关系（看作 $R \\subseteq X \\times X$）。则 $R$ 是 $k$-闭的 $\\iff$ 商空间 $X/R$ 弱 Hausdorff。',
-      notes: [
-        ['**证明。** 记 $q : X \\to X/R$ 为商映射，则',
-          '$$R = (q\\times q)^{-1}\\bigl(\\Delta_{X/R}\\bigr), \\qquad q\\times q : X\\times X \\longrightarrow X/R\\times X/R .$$',
-          '- **$\\Longleftarrow$**：$X/R$ 弱 Hausdorff $\\implies$ $\\Delta_{X/R}$ 是 $k$-闭的；$k$-闭集沿连续映射拉回仍 $k$-闭（用紧 Hausdorff 测试），故 $R$ 是 $k$-闭的。',
-          '- **$\\implies$**：$R$ $k$-闭 $\\implies$ $q$ 是**商映射**（$U \\subseteq X/R$ 开 $\\iff$ $q^{-1}(U)$ 在 $X$ 中开 —— 这正是 $R$ 的 $k$-闭性加 $X$ 紧生成给出的「饱和 $k$-闭集是闭集」）。\n\n于是 $X/R$ 紧生成（商的紧生成仍紧生成）。',
-          '再证弱 Hausdorff：取紧 Hausdorff 的 $g : T \\to X/R$。\n\n$T$ 紧，$X$ 紧生成且 $q$ 是商映射，故 $g$ 可沿 $q$ **逐块提升**：存在覆盖 $T = \\bigcup_{i} T_{i}$（有限个紧 Hausdorff 块）与连续 $p_{i} : T_{i} \\to X$ 使 $q p_{i} = g|_{T_{i}}$。\n\n于是 $g(T) = \\bigcup_{i} q(\\tilde g_{i}(T_{i}))$，而每个 $q(K)$（$K \\subseteq X$ 紧 Hausdorff）是闭的：$q^{-1}q(K)$ 是**饱和**的，其 $k$-闭性由 $R$ 的 $k$-闭性与「投影 $X\\times K \\to X$ 闭」给出，故 $q^{-1}q(K)$ 在紧生成的 $X$ 中闭，再由 $q$ 是商映射得 $q(K)$ 闭 ✓。\n\n有限并仍闭，故 $g(T)$ 闭。\n\n∎',
-          '⭐ **读法**：这条把「商空间弱 Hausdorff」这个**拓扑**条件翻译成了「等价关系是 $k$-闭的」这个**关于 $X\\times X$ 的子集**条件 —— 后者可以逐块验证。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **读法**：这条把「商空间弱 Hausdorff」这个**拓扑**条件翻译成了「等价关系是 $k$-闭的」这个**关于 $X\\times X$ 的子集**条件 —— 后者可以逐块验证。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
@@ -481,22 +419,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', '紧开拓扑', '函数空间'],
       statement: '若 $Y$ 弱 Hausdorff，则 $kC(X, Y)$（紧开拓扑再取 $k$-化）也弱 Hausdorff。',
-      notes: [
-        ['**证明。** 取紧 Hausdorff 的 $g : T \\to kC(X, Y)$，要证 $g(T)$ 在 $kC(X,Y)$ 中闭。$kC(X,Y)$ 紧生成，故只需证：对**每个**紧 Hausdorff 的 $T\'$ 与连续 $h : T\'\\to kC(X,Y)$，',
-          '$$A := \\{\\, t\'\\in T\' : h(t\')\\in g(T) \\,\\}$$',
-          '在 $T\'$ 中闭。',
-          '- 由指数律（$T, T\'$ 紧 Hausdorff $\\implies$ 局部紧 Hausdorff），$g, h$ 分别对应连续的 $\\hat g : T\\times X\\to Y$、$\\hat h : T\'\\times X\\to Y$；',
-          '- **$X$ 紧生成**，所以「两个映射 $X\\to Y$ 相等」只需沿所有紧 Hausdorff 的 $a : S\\to X$ 验证。于是',
-          '$$A = \\operatorname{pr}_{T\'}\\Bigl(\\bigcap_{(S,a)} B_{S,a}\\Bigr), \\qquad B_{S,a} := \\{\\,(t\',t)\\in T\'\\times T : \\hat h\\bigl(t\',a(s)\\bigr) = \\hat g\\bigl(t,a(s)\\bigr)\\ \\ \\forall s\\in S\\,\\};$$',
-          '- 每个 $B_{S,a} = \\operatorname{pr}_{T\'\\times T}\\bigl(\\theta_{S,a}^{-1}(\\Delta_{Y})\\bigr)$，其中 $\\theta_{S,a} : T\'\\times T\\times S \\to Y\\times Y$，$(t\',t,s)\\mapsto\\bigl(\\hat h(t\',a(s)),\\ \\hat g(t,a(s))\\bigr)$ 连续。\n\n' +
-          '$T\'\\times T\\times S$ **紧 Hausdorff**，而 $\\Delta_{Y}$ 是 $k$-闭的，故 $\\theta_{S,a}^{-1}(\\Delta_{Y})$ **闭**；\n\n' +
-          '又 $S$ 紧 $\\implies$ 投影 $T\'\\times T\\times S\\to T\'\\times T$ **闭**，所以 $B_{S,a}$ 闭；\n\n' +
-          '闭集之交 $B$ 闭；\n\n' +
-          '最后 $T$ 紧 $\\implies$ $\\operatorname{pr}_{T\'} : T\'\\times T\\to T\'$ 闭，故 $A$ 闭 ✓。\n\n' +
-          '∎',
-          '三步关键：① $X$ 紧生成让「函数相等」可以沿紧块检验；② $Y$ 弱 Hausdorff 让 $\\Delta_{Y}$ 是 $k$-闭的；③ 紧因子的投影是**闭映射**。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "三步关键：① $X$ 紧生成让「函数相等」可以沿紧块检验；② $Y$ 弱 Hausdorff 让 $\\Delta_{Y}$ 是 $k$-闭的；③ 紧因子的投影是**闭映射**。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 

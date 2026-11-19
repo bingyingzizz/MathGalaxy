@@ -29,20 +29,7 @@ window.MG = window.MG || {};
         '3. $\\pi$ 是**满态射**；',
         '4. $\\pi$ 是**满射**。'
       ].join('\n'),
-      notes: [
-        '**证明（循环）。** (1)$\\implies$(2)：商映射是某个余等化子，因而正则满 ✓。\n\n(2)$\\implies$(3)：正则满自动是满态射 ✓。\n\n(3)$\\implies$(4)：紧 Hausdorff 之间，满态射就是满射（紧 Hausdorff 是「投射对象够多」的范畴，满态射有截面，特别地满）✓。\n\n(4)$\\implies$(1)：紧 Hausdorff 的连续满射是商映射（紧空间到 Hausdorff 空间的连续满射诱导同胚于商）✓。\n\n∎',
-        '⭐ 用处：在紧 Hausdorff 里验「商映射」不必再拿开集去对，**满射就够了** —— 这是后面把「覆盖」读成「满态射」的依据。',
-        '📌 「紧 $\\to$ Hausdorff 的连续满射是商映射」这一步用的是：紧空间里闭子集紧、连续像紧，于是 $T$ 里的闭集若拉回来闭就闭。',
-        ,
-        '**四条里真正的“桥”是 (2) $\\iff$ (3)**，而它完全靠**紧 Hausdorff**：\n' +
-        '\n' +
-        '- (1) $\\iff$ (4)：在**任意**拓扑空间里「商映射 + 满」就是这样定义的（商的万有性质），**不需要紧性**。注意 (1) 说的是「$T$ 上的开集 $\\iff$ 原像是开集」，而 $\\pi$ 连续已给出一个方向，所以 (1) 的实质是「$\\pi$ 把饱和开集送到开集」。\n' +
-        '- (3) $\\implies$ (4)：**紧 Hausdorff 时满态射就是满射**。这一条要**紧性**：$S$ 紧 $\\implies$ $\\pi(S)$ 紧 $\\implies$ 在 Hausdorff 的 $T$ 里闭；若 $\\pi$ 不满，则 $T \\setminus \\pi(S)$ 是非空开集，于是存在从 $T$ 到两点 Sierpiński 型空间的映射把它分出去，与「$\\pi$ 是满态射」（任意两个平行态射若在 $\\pi$ 后相等则相等）矛盾。**在一般拓扑空间里满态射不满**是常态（例如 $\\mathbb{Q} \\to \\mathbb{R}$ 的包含）。\n' +
-        '- (2) $\\iff$ (3)：**这一步是「正则满态射」在紧 Hausdorff 空间范畴 $\\mathbf{CHaus}$ 里的特殊性** —— $\\mathbf{CHaus}$ 是正规范畴（regular category），其中「满态射 = 正则满态射 = 满射」。换成一般 $\\mathbf{Top}$ 就不成立。\n' +
-        '- (1) $\\implies$ (2)：商映射在 $\\mathbf{CHaus}$ 里自动正则（因为紧 Hausdorff 的商仍紧 Hausdorff，且核对存在）。\n' +
-        '\n' +
-        '⚠️ **假设不能去掉的对照**：把「紧 Hausdorff」换成「Hausdorff」，(3) $\\implies$ (4) 立刻失效（$\\mathbb{Q} \\hookrightarrow \\mathbb{R}$ 是满态射而非满射）；换成「紧」（不 Hausdorff），$\\pi(S)$ 不必闭，(4) 也塌。所以这条命题的四个字「紧 Hausdorff」是**全部内容所在**。'
-      ].join('\n\n'),
+      notes: "⭐ 用处：在紧 Hausdorff 里验「商映射」不必再拿开集去对，**满射就够了** —— 这是后面把「覆盖」读成「满态射」的依据。\n\n📌 关键一步「紧 $\\to$ Hausdorff 的连续满射是商映射」：紧空间里闭子集紧、连续像紧，于是 $T$ 里的闭集若拉回来闭就闭。\n\n⚠️ (3)$\\implies$(4) 用 Sierpiński 空间分离，不能换成「紧 Hausdorff 满态射有截面」——那是假的（$[0,1]\\to S^{1}$ 的商映射没有截面）。把「紧 Hausdorff」换成「Hausdorff」，(3)$\\implies$(4) 立刻失效（$\\mathbb{Q}\\hookrightarrow\\mathbb{R}$ 是满态射而非满射）。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.9']
     },
 
@@ -202,6 +189,7 @@ window.MG = window.MG || {};
       id: 'prop.slice-topos',
       cluster: 'cat.topos',
       type: 'proposition',
+      status: 'skeleton',
       label: '切片拓扑斯',
       title: '命题：$\\widetilde{\\mathcal{C}/T} \\simeq \\widetilde{\\mathcal{C}}/\\widetilde{T}$，且 $j_{T} : \\widetilde{\\mathcal{C}/T} \\to \\widetilde{\\mathcal{C}}$ 是拓扑斯态射',
       regions: ['category'],
@@ -213,15 +201,7 @@ window.MG = window.MG || {};
         '2. $\\widetilde{\\mathcal{C}/T} \\;\\simeq\\; \\widetilde{\\mathcal{C}}/\\widetilde{T}$；',
         '3. 在这个等价下，$j_{T!}$ 对应遗忘函子 $\\widetilde{\\mathcal{C}}/\\widetilde{T} \\to \\widetilde{\\mathcal{C}}$，$j_{T}^{-1}$ 对应 $\\mathcal{F} \\mapsto (\\mathcal{F} \\times \\widetilde{T} \\to \\widetilde{T})$。'
       ].join('\n'),
-      notes: [
-        '**证明。** (1) 余连续说的是「$j_{T}$ 把覆盖送到覆盖」，这由覆盖筛在切片里的定义直接核对 ✓，于是由「余连续函子给出拓扑斯态射」得到 $j_{T}$ ✓。\n\n(2) 两个范畴的对象都是「$X \\in \\mathcal{C}$ 加一个截面 $s \\in T(X)$」，层条件也逐字对应 ✓。\n\n(3) 把两边的函子按定义写出来即得 ✓。\n\n∎',
-        ,
-        '**各方向用到的假设**（切片等价依赖诱导拓扑与层化）：\n' +
-        '- 从切片层构造到基底层的映射：将元素范畴上的数据作相应层化，得到指向 $\\widetilde T$ 的层；当 $T$ 仅是预层时，不能把这步说成对象逐字相同。\n' +
-        '- 反向由 $F\\to\\widetilde T$ 得到切片层：沿截面拉回；切片使用基底诱导的覆盖，层条件才相容，互逆性用层的下降与层化。\n' +
-        '- 等价建立后，遗忘函子与乘积拉回的伴随关系只需泛性质，属于免费的形式核对；不要求基底拓扑次标准。\n' +
-        '- 投影的覆盖提升可按诱导拓扑直接检查，但“把覆盖送到覆盖”与余连续的一般定义不能混同；脱离诱导拓扑，本等价没有这一保证。\n'
-      ].join('\n\n'),
+      notes: "**骨架。** 切片等价与伴随对应只给路线；互逆自然同构与覆盖提升未逐项展开。\n**各方向用到的假设**（切片等价依赖诱导拓扑与层化）：\n- 从切片层构造到基底层的映射：将元素范畴上的数据作相应层化，得到指向 $\\widetilde T$ 的层；当 $T$ 仅是预层时，不能把这步说成对象逐字相同。\n- 反向由 $F\\to\\widetilde T$ 得到切片层：沿截面拉回；切片使用基底诱导的覆盖，层条件才相容，互逆性用层的下降与层化。\n- 等价建立后，遗忘函子与乘积拉回的伴随关系只需泛性质，属于免费的形式核对；不要求基底拓扑次标准。\n- 投影的覆盖提升可按诱导拓扑直接检查，但“把覆盖送到覆盖”与余连续的一般定义不能混同；脱离诱导拓扑，本等价没有这一保证。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.63, Exercise 3.64']
     },
 
@@ -261,15 +241,7 @@ window.MG = window.MG || {};
         '1. **实化** $\\mathcal{F} \\mapsto \\mathcal{F}_{X}$ 给出 $\\mathbf{Top}_{/X}$ 上的**晶体层**与 $X$ 上的**层**之间的等价；',
         '2. 于是 $\\mathbf{Et}(X)$（$X$ 上的 étale 空间范畴）$\\simeq$ 晶体层 $\\simeq$ $X$ 上的层 —— 特别地 $\\mathbf{Et}(X)$ 是拓扑斯，因为 $\\mathbf{Et}(X) \\simeq \\widetilde{\\mathbf{Open}(X)}$。'
       ].join('\n'),
-      notes: [
-        '**证明的思路。** 从晶体层到 $X$ 上的层是「取 $Y = X$ 那份数据」✓；反方向把 $X$ 上的层 $\\mathcal{F}$ 送到 $\\mathbf{Top}_{/X}$ 上的层 $\\mathcal{F}_{Y} := f^{-1}\\mathcal{F}$（$f : Y \\to X$）✓ —— 这时过渡 $\\alpha_f$ 自动是同构，所以落在晶体层里 ✓。\n\n两个方向互逆 ✓。\n\n(2) 是 (1) 加上「$X$ 上的层范畴 $\\simeq$ étale 空间范畴」这条标准等价 ✓。\n\n∎',
-        ,
-        '**各方向用到的假设**（晶体条件使全部数据由终对象确定）：\n' +
-        '- 晶体层 $\\mathcal F$ 到 $\\mathcal F_X$：限制到恒等映射是免费的；由 $f:Y\\to X$ 的晶体过渡同构，才得到 $f^{-1}\\mathcal F_X\\cong\\mathcal F_Y$。\n' +
-        '- $X$ 上的层到晶体层：取 $\\mathcal F_Y=f^{-1}\\mathcal F$，用逆像的复合相容同构与开覆盖下降；没有 Hausdorff 或局部连通假设。\n' +
-        '- 层到 étale 空间的反向构造用茎的不交并及芽拓扑；étale 空间到层取局部截面。互逆性是层与局部同胚的标准定理，不只是术语替换。\n' +
-        '- 晶体条件不可省：一般相容系统的过渡可以不是同构，因而不能从终对象的数据恢复整个系统；晶体性也不表示任意同伦不变性。\n'
-      ].join('\n\n'),
+      notes: "**各方向用到的假设**（晶体条件使全部数据由终对象确定）：\n- 晶体层 $\\mathcal F$ 到 $\\mathcal F_X$：限制到恒等映射是免费的；由 $f:Y\\to X$ 的晶体过渡同构，才得到 $f^{-1}\\mathcal F_X\\cong\\mathcal F_Y$。\n- $X$ 上的层到晶体层：取 $\\mathcal F_Y=f^{-1}\\mathcal F$，用逆像的复合相容同构与开覆盖下降；没有 Hausdorff 或局部连通假设。\n- 层到 étale 空间的反向构造用茎的不交并及芽拓扑；étale 空间到层取局部截面。互逆性是层与局部同胚的标准定理，不只是术语替换。\n- 晶体条件不可省：一般相容系统的过渡可以不是同构，因而不能从终对象的数据恢复整个系统；晶体性也不表示任意同伦不变性。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.68, Exercise 3.69']
     },
 
@@ -310,16 +282,7 @@ window.MG = window.MG || {};
         '$$X(S) \\;\\cong\\; \\varprojlim_{S \\twoheadrightarrow S\'} X(S\'),$$',
         '其中 $S\'$ 跑遍 $S$ 的**离散商**。'
       ].join('\n'),
-      notes: [
-        '**证明。** (1)$\\iff$(2)：离散空间 $E$ 给出的凝聚态集取值是 $\\underline{E}(S) = C(S, E)$，也就是「$S$ 上的局部常值 $E$-值映射」✓；而常层 $\\widetilde{E}$ 的取值按定义正是局部常值映射 ✓ —— 两个函子一致 ✓（见「拓扑空间上的常层就是离散空间的层」）。',
-        '(2)$\\iff$(3)：局部常值映射只依赖 $S$ 的连通块结构，而这正是「沿 $S$ 的离散商取投影极限」读出来的信息 ✓；反过来若 $X(S) = \\varprojlim_{S \\twoheadrightarrow S\'}X(S\')$，则 $X$ 只看得见离散商，等价于常 ✓。∎',
-        ,
-        '**各方向用到的假设**（离散表示与常层一致，但商公式须核对）：\n' +
-        '- (1) $\\implies$ (2) 与 (2) $\\implies$ (1)：常预层层化后得到局部常值映射，而非原常预层；紧 Hausdorff 探测空间上的有限开闭分割给出此识别。\n' +
-        '- 离散性 $\\implies$ 经过有限离散商因子化：连续映射 $S\\to E$ 的像因紧性而有限，纤维开闭；去掉紧性，离散无限空间的恒等映射就不经过有限商。\n' +
-        '- 原文 (3) 的 $\\varprojlim$ 该步未核实，记为缺口：逆变函子沿离散商的细化给出向更细商的拉回，通常应以过滤余极限表达局部常值映射，不能据现有投影极限公式宣称等价。\n' +
-        '- 若改成自然的过滤余极限公式，则反向利用有限离散集上层的取值为 $X(*)$ 的有限乘积，恢复常层；这一步需要层条件及公式对 $S$ 的自然性。\n'
-      ].join('\n\n'),
+      notes: "**各方向用到的假设**（离散表示与常层一致，但商公式须核对）：\n- (1) $\\implies$ (2) 与 (2) $\\implies$ (1)：常预层层化后得到局部常值映射，而非原常预层；紧 Hausdorff 探测空间上的有限开闭分割给出此识别。\n- 离散性 $\\implies$ 经过有限离散商因子化：连续映射 $S\\to E$ 的像因紧性而有限，纤维开闭；去掉紧性，离散无限空间的恒等映射就不经过有限商。\n- 原文 (3) 的 $\\varprojlim$ 该步未核实，记为缺口：逆变函子沿离散商的细化给出向更细商的拉回，通常应以过滤余极限表达局部常值映射，不能据现有投影极限公式宣称等价。\n- 若改成自然的过滤余极限公式，则反向利用有限离散集上层的取值为 $X(*)$ 的有限乘积，恢复常层；这一步需要层条件及公式对 $S$ 的自然性。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 4.5']
     },
 
@@ -378,10 +341,7 @@ window.MG = window.MG || {};
         '',
         '$$\\underline{M/N} \\;\\cong\\; \\underline{M}\\big/\\underline{N}.$$'
       ].join('\n'),
-      notes: [
-        '**证明（思路）。** 正合列 $0 \\to N \\to M \\to M/N \\to 0$ 里，$N$ 闭保证 $M/N$ 是 Hausdorff 的局部紧群 ✓。\n\n要证 $\\underline{M}/\\underline{N} \\cong \\underline{M/N}$。⚠️ 不能写「保极限 $\\implies$ 送余核」——保极限只给**核**。正确两步：\n\n① CondAb 的余核 = 「逐点商」预层 $U \\mapsto \\underline{M}(U)/\\underline{N}(U)$ 的**层化**；\n\n② 层化后与常层 $\\underline{M/N}$ 一致 —— 这一步不能靠普适的范畴论证，而是 LCA 群的一条标准事实：闭子群嵌入 $N \\hookrightarrow M$ 在凝聚态阿贝尔群里仍给出短正合列 $0 \\to \\underline{N} \\to \\underline{M} \\to \\underline{M/N} \\to 0$（Clausen–Scholze《Lectures on Condensed Mathematics》Lecture 3：$\\mathrm{LCA} \\hookrightarrow \\mathrm{Cond(Ab)}$ 全忠实且正合）；等价地说，层化把「逐点商」预层补成 $C(S, M/N)$。**本图不展开层化的计算**，完整论证见 Le Stum, Exercise 6.5 ✓。\n\n拼起来即得同构 ✓。∎',
-        '📌 用处：算凝聚态阿贝尔群时，**可以先在拓扑这一侧把商算好再离散化**。'
-      ].join('\n\n'),
+      notes: "📌 用处：算凝聚态阿贝尔群时，**可以先在拓扑这一侧把商算好再离散化**。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 6.5']
     },
 

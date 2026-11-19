@@ -27,16 +27,7 @@ window.MG = window.MG || {};
         '- **左正合** $\\iff$ 在 $M\'$、$M$ 处正合；',
         '- **右正合** $\\iff$ 在 $M$、$M\'\'$ 处正合。'
       ].join('\n'),
-      notes: [
-        '**证明。** 三句话逐条对照定义即可：「在 $M\'$ 处正合」读作 $\\ker i = 0$（即 $i$ 单）；「在 $M$ 处正合」读作 $\\operatorname{im} i = \\ker p$；\n\n「在 $M\'\'$ 处正合」读作 $\\operatorname{coker} p = 0$（即 $p$ 满）✓。\n\n把这几条组合起来正是左/右/短正合的定义 ✓。\n\n∎',
-        '⭐ 用处：把「整条列正合」这件整体的事拆成**逐点检查**，实际验证时用的就是这一条。',
-        ,
-        '**各方向用到的假设**（逐处正合是定义组合，逐元素判断另有限制）：\n' +
-        '- 短正合 $\\iff$ 三处都正合、左正合 $\\iff$ 前两处正合、右正合 $\\iff$ 后两处正合：两方向都是正合列定义展开，不用分裂、内射对象或选择公理。\n' +
-        '- 左端正合 $\\iff\\ker i=0\\iff i$ 为单态射，右端正合 $\\iff\\operatorname{coker}p=0\\iff p$ 为满态射：前一步用零对象，后一步用阿贝尔范畴的核与余核判据。\n' +
-        '- 中间正合 $\\iff\\operatorname{im}i=\\ker p$ 是定义；“逐点”指列中各对象位置，抽象阿贝尔范畴不能未经解释就使用元素或集合满射。\n' +
-        '- 短正合不推出分裂：$0\\to\\mathbb Z\\xrightarrow{2}\\mathbb Z\\to\\mathbb Z/2\\to0$ 为反例；只检查中间也不够，$0\\to\\mathbb Z\\to0\\to0\\to0$ 在中间正合而左端不正合。\n'
-      ].join('\n\n'),
+      notes: "⭐ 用处：把「整条列正合」这件整体的事拆成**逐点检查**，实际验证时用的就是这一条。\n\n\n\n**各方向用到的假设**（逐处正合是定义组合，逐元素判断另有限制）：\n- 短正合 $\\iff$ 三处都正合、左正合 $\\iff$ 前两处正合、右正合 $\\iff$ 后两处正合：两方向都是正合列定义展开，不用分裂、内射对象或选择公理。\n- 左端正合 $\\iff\\ker i=0\\iff i$ 为单态射，右端正合 $\\iff\\operatorname{coker}p=0\\iff p$ 为满态射：前一步用零对象，后一步用阿贝尔范畴的核与余核判据。\n- 中间正合 $\\iff\\operatorname{im}i=\\ker p$ 是定义；“逐点”指列中各对象位置，抽象阿贝尔范畴不能未经解释就使用元素或集合满射。\n- 短正合不推出分裂：$0\\to\\mathbb Z\\xrightarrow{2}\\mathbb Z\\to\\mathbb Z/2\\to0$ 为反例；只检查中间也不够，$0\\to\\mathbb Z\\to0\\to0\\to0$ 在中间正合而左端不正合。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 5.10']
     },
 
@@ -79,14 +70,7 @@ window.MG = window.MG || {};
         '',
         '$$G^{(I)} \\twoheadrightarrow M.$$'
       ].join('\n'),
-      notes: [
-        [
-          '**证明。**',
-          '**$(\\Longrightarrow)$** 取 $I := \\operatorname{Hom}_{\\mathcal{C}}(G, M)$，令 $\\coprod_I G \\to M$ 的各分量按对应态射来 ✓。\n\n若它不是满射，则 $M \\to \\operatorname{coker}$ 非零，由生成性存在 $g : G \\to M$ 使这个复合非零 —— 可是 $g$ 本来就是 $I$ 中的一个分量，它的像落在 $\\operatorname{im}$ 里，矛盾 ✓。',
-          '**$(\\Longleftarrow)$** 给 $f \\ne g : M \\to N$，则 $h := f - g \\ne 0$。\n\n取满射 $G^{(I)} \\twoheadrightarrow M$，于是 $h \\circ (\\text{满射}) \\ne 0$，特别地某个分量 $G \\to M$ 上非零 ✓，即 $\\operatorname{Hom}(G, h) \\ne 0$ —— 所以 $\\operatorname{Hom}(G, -)$ 忠实，$G$ 是生成元 ✓。\n\n∎'
-        ].join('\n'),
-        '⚠️ 这条判据其实**只用到余积**（AB3），滤过余极限没有出场（AB5 的那部分条件用不上）。'
-      ].join('\n\n'),
+      notes: "⚠️ 这条判据其实**只用到余积**（AB3），滤过余极限没有出场（AB5 的那部分条件用不上）。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 5.13']
     },
 
@@ -168,14 +152,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathbb{Z}\\cdot X \\;\\otimes_{\\mathbb{Z}}\\; \\mathbb{Z}\\cdot Y \\;\\cong\\; \\mathbb{Z}\\cdot (X \\times Y).$$'
       ].join('\n'),
-      notes: [
-        [
-          '**证明（米田）。** 对任意 $N \\in \\mathcal{T}(\\mathbf{Ab})$，',
-          '$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X \\otimes \\mathbb{Z}\\cdot Y,\\ N\\bigr) \\cong \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot Y, N)\\bigr) \\cong \\operatorname{Hom}\\bigl(X,\\ \\operatorname{Hom}(Y, N)\\bigr) \\cong \\operatorname{Hom}(X \\times Y,\\ N) \\cong \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot(X \\times Y),\\ N\\bigr) ✓$$',
-          '（第一、三步是张量–内 Hom 伴随，第二、四步是自由对象的万有性质，中间一步是 $X \\times Y$ 的泛性质。）对一切 $N$ 成立，由米田引理即得同构 ✓。∎'
-        ].join('\n'),
-        '⭐ 读法：**自由对象把拓扑斯里的积翻译成阿贝尔群层里的张量积**。'
-      ].join('\n\n'),
+      notes: "⭐ 读法：**自由对象把拓扑斯里的积翻译成阿贝尔群层里的张量积**。",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 5.29']
     }
 

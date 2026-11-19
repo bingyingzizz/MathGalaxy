@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-18T12:15:51.660Z",
+ "generated": "2026-11-19T04:35:57.126Z",
  "terms": 76,
  "missing": [
   {
@@ -100,7 +100,7 @@
   },
   {
    "term": "素因子",
-   "total": 11,
+   "total": 10,
    "nodes": [
     {
      "id": "def.p-group",
@@ -140,10 +140,6 @@
     },
     {
      "id": "thm.jacobi-laws",
-     "c": 1
-    },
-    {
-     "id": "thm.euler-product",
      "c": 1
     }
    ]

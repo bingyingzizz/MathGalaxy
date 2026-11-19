@@ -34,17 +34,7 @@ window.MG = window.MG || {};
         '',
         '$$\\Bigl(\\varinjlim_{i} X_{i}\\Bigr)(S) = \\Bigl(\\operatorname{sh}\\bigl(S^{\\prime} \\mapsto \\varinjlim_{i} X_{i}(S^{\\prime})\\bigr)\\Bigr)(S).$$'
       ].join('\n'),
-      notes: [
-        ['**证明极限那一半。** 层范畴 $\\mathrm{Cond}$ 是预层范畴 $\\widehat{\\mathbf{CHaus}}$ 的**反射**满子范畴，含入函子 $i$ 有左伴随（层化）。右伴随保极限，所以 $i$ 保极限：$\\mathrm{Cond}$ 里的极限就是预层里的极限；而预层里的极限是**逐点**算的。∎',
-          '**余极限为什么不行。** 层化只是 $i$ 的**左**伴随，它不保余极限，所以余极限要先在预层里逐点取、再层化一次。',
-          '**一个具体的反例。** 取紧 Hausdorff 的满射 $F \\twoheadrightarrow S$，例如 $S = S^{1}$、$F = S^{1}$、$z \\mapsto z^{2}$。在 $\\mathrm{Cond}$ 里，满射是**有效满**，所以',
-          '$$\\operatorname{coeq}\\bigl(F \\times_{S} F \\rightrightarrows F\\bigr) = h_{S};$$',
-          '但**逐点**看 $T = S^{1}$：$F \\times_{S} F = S^{1} \\times \\{\\pm 1\\}$，两个投影在 $\\mathrm{Hom}(S^{1}, F) = \\mathrm{Hom}(S^{1}, S^{1})$ 上就是 $g \\mapsto g$ 与 $g \\mapsto -g$，于是逐点余等化子把 $\\mathrm{id}$ 与 $-\\mathrm{id}$ 粘了起来，是 $\\mathrm{Hom}(S^{1}, S^{1})$ 的一个**真商**；\n\n而 $h_{S}(S^{1}) = \\mathrm{Hom}(S^{1}, S^{1})$ 里这两个元素并不相等。\n\n两者不同，故余极限不是逐点算的。'
-        ].join('\n'),
-        '**「逐点」是什么意思**：要算一个凝聚态集，就得知道它在每个 $S$ 上取什么值。极限可以一路拆到每个 $S$ 上算；余极限不行，多一步层化。',
-        '⭐ **这条是后面所有计算的技术基础**：凡是遇到 $\\mathrm{Cond}$ 里的极限，都可以拆到每个 $S$ 上去算，而集合的极限是好算的。',
-        '⚠️ **有限余积是例外**（它是逐点的）：$h_{S_{1}} \\coprod h_{S_{2}} = h_{S_{1} \\coprod S_{2}}$ —— 因为 $\\coprod$ 正是预标准拓扑的覆盖，「有限余积变有限积」那条层条件直接给出它。'
-      ].join('\n\n'),
+      notes: "**余极限为什么不行。** 含入函子 $i:\\mathrm{Cond}\\hookrightarrow\\widehat{\\mathrm{CHaus}}$ 是右伴随，不保余极限；层化 $a$ 是它的左伴随，只负责把预层余极限补成层，所以余极限要先在预层里逐点取、再层化一次。\n**一个具体的反例。** 取紧 Hausdorff 的满射 $F \\twoheadrightarrow S$，例如 $S = S^{1}$、$F = S^{1}$、$z \\mapsto z^{2}$。在 $\\mathrm{Cond}$ 里，满射是**有效满**，所以\n$$\\operatorname{coeq}\\bigl(F \\times_{S} F \\rightrightarrows F\\bigr) = h_{S};$$\n但**逐点**看 $T = S^{1}$：$F \\times_{S} F = S^{1} \\times \\{\\pm 1\\}$，两个投影在 $\\mathrm{Hom}(S^{1}, F) = \\mathrm{Hom}(S^{1}, S^{1})$ 上就是 $g \\mapsto g$ 与 $g \\mapsto -g$，于是逐点余等化子把 $\\mathrm{id}$ 与 $-\\mathrm{id}$ 粘了起来，是 $\\mathrm{Hom}(S^{1}, S^{1})$ 的一个**真商**；\n\n而 $h_{S}(S^{1}) = \\mathrm{Hom}(S^{1}, S^{1})$ 里这两个元素并不相等。\n\n两者不同，故余极限不是逐点算的。\n\n**「逐点」是什么意思**：要算一个凝聚态集，就得知道它在每个 $S$ 上取什么值。极限可以一路拆到每个 $S$ 上算；余极限不行，多一步层化。\n\n⭐ **这条是后面所有计算的技术基础**：凡是遇到 $\\mathrm{Cond}$ 里的极限，都可以拆到每个 $S$ 上去算，而集合的极限是好算的。\n\n⚠️ **有限余积是例外**（它是逐点的）：$h_{S_{1}} \\coprod h_{S_{2}} = h_{S_{1} \\coprod S_{2}}$ —— 因为 $\\coprod$ 正是预标准拓扑的覆盖，「有限余积变有限积」那条层条件直接给出它。",
       refs: ['Le Stum, Corollary 4.1.6', 'Le Stum, §4.1']
     },
 

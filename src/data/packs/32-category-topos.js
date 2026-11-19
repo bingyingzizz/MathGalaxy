@@ -87,9 +87,7 @@ window.MG = window.MG || {};
         '',
         '而且**拉回是格之间的同态**（保交、保并、保上界）。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 「子对象」是单态射 $X\' \\rightarrowtail X$ 的同构类。','- **交**取**拉回**：$X_{1} \\cap X_{2} := X_{1} \\times_{X} X_{2}$。单态射的拉回仍是单态射 ✓；泛性给出「同时分解过 $X_{1}$ 与 $X_{2}$」$\\iff$「分解过拉回」，即它恰是两个子对象的**最大下界** ✓。','- **并**取**像**：$X_{1} \\cup X_{2} := \\operatorname{im}(X_{1} \\coprod X_{2} \\to X)$。\n\n余积的泛性给出「同时被 $X_{1}, X_{2}$ 包含的态射 $\\iff$ 从余积出发的态射」，而取像正是把它变成单态射：$X_{1} \\to X$ 与 $X_{2} \\to X$ 都分解过它，且任何同时包含两者的子对象都被它分解过（像的泛性）—— 恰是**最小上界** ✓。\n\n（像的存在来自预拓扑斯里余等化子 / 商的存在。）','- **有界**：最小元是始对象到 $X$ 的唯一态射（预拓扑斯里始对象到任何对象都是单态射），最大元是 $1_{X}$ ✓。','- **分配律**：$X_{1} \\cap (X_{2}\\cup X_{3}) = (X_{1}\\cap X_{2}) \\cup (X_{1}\\cap X_{3})$ —— 沿单态射的拉回保余积（预拓扑斯里余积不交且万有），把两边都算成同一个拉回 ✓。','- **拉回是格同态**：$f^{*}(-) := -\\times_{Y} X$ 保拉回（是极限），故保交、保上下界；而它保余积（万有性）与像（像的计算可以搬到拉回里做），故保并 ✓。∎'].join('\n'),
-'「有界」指的是这个格有最小元（始对象出发的那个子对象）与最大元（$X$ 自己）。把「子对象」当成一个格来看，后面讲拓扑斯内部逻辑时用的就是它 —— 这里的交、并分别是逻辑的「且」与「或」。'].join('\n\n'),
+      notes: "「有界」指的是这个格有最小元（始对象出发的那个子对象）与最大元（$X$ 自己）。把「子对象」当成一个格来看，后面讲拓扑斯内部逻辑时用的就是它 —— 这里的交、并分别是逻辑的「且」与「或」。",
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -132,11 +130,7 @@ window.MG = window.MG || {};
         '$$F\\Bigl(\\coprod_{i \\in I} X_{i}\\Bigr) \\;\\cong\\; \\prod_{i \\in I} F(X_{i}),$$',
         '其中 $R$ 是 $X$ 上的**等价关系**（拓扑斯的覆盖所对应的那个）。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 设覆盖族 $(X_{i} \\to X)_{i \\in I}$（有限、$\\coprod_{i}X_{i} \\to X$ 满）。层条件是对每个这样的族','$$F(X) \\to \\prod_{i}F(X_{i}) \\rightrightarrows \\prod_{i,j}F(X_{i}\\times_{X}X_{j})$$','为等化子。','- **「余积变积」**：取单支覆盖 $X \\to X$（它当然满），则层条件退化成 $F(X) \\cong F(X)$ 的平凡等式 —— 有限余积的层条件要把 $I$ 取成各支自身：对有限族 $(X_{i})$，$\\coprod_{i}X_{i} \\to \\coprod_{i}X_{i}$ 满，层条件给出 $F(\\coprod_{i}X_{i}) \\cong \\prod_{i}F(X_{i})$ ✓（与余积交换 == 与有限积交换，因为 $F$ 是 $\\mathbf{Set}$ 值）。','- **「商变核」**：一般族的覆盖条件里，$\\coprod_{i}X_{i} \\to X$ 是满态射，于是它在预拓扑斯里是**有效满**的：$R := \\coprod_{i,j}X_{i}\\times_{X}X_{j}$ 是 $\\coprod_{i}X_{i}$ 上的等价关系，而 $X$ 是这个关系的商（余等化子）。\n\n于是层条件读作 $F(X) \\cong \\ker\\bigl(F(\\coprod X_{i}) \\rightrightarrows F(R)\\bigr)$；\n\n再接上「余积变积」就得到陈述里的第一条等式 ✓。\n\n反过来取 $X = X/R$ 的商映射作覆盖，得 $F(X/R) \\cong \\ker(F(X)\\rightrightarrows F(R))$ ✓。','- **合起来**：两条所说正是所有覆盖（都是有限族、余积满）的层条件 ✓。','- **推论**：$h_{X} = \\operatorname{Hom}(X,-)$ 满足两条（Hom 把余积送成积、把商送成核），故每个可表示预层都是层 —— 即预标准拓扑是次标准的 ✓。∎'].join('\n'),
-        '这两条把「层」写成了两条在 $\\mathbf{Set}$ 里显然、在这里需要验的等式：**有限余积变有限积**、**商变核**。它们正是「预拓扑斯里的余积与商和集合里长得一样」的精确说法。',
-        '推论：**预标准拓扑是次标准的** —— 可表示预层 $h_{X}$ 满足上面两条（$\\operatorname{Hom}(X, -)$ 保积，$\\operatorname{Hom}(X/R, -)$ 由余等化子给出核），所以它们都是层。'
-      ].join('\n\n'),
+      notes: "这两条把「层」写成了两条在 $\\mathbf{Set}$ 里显然、在这里需要验的等式：**有限余积变有限积**、**商变核**。它们正是「预拓扑斯里的余积与商和集合里长得一样」的精确说法。\n\n推论：**预标准拓扑是次标准的** —— 可表示预层 $h_{X}$ 满足上面两条（$\\operatorname{Hom}(X, -)$ 保积，$\\operatorname{Hom}(X/R, -)$ 由余等化子给出核），所以它们都是层。",
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -157,15 +151,7 @@ window.MG = window.MG || {};
         '',
         '也就是说：$\\mathcal{C}$ 与 $\\mathcal{C}$ 中的 $X \\mapsto h_{X}$ 之间，余积与商**两边算出来一样**。'
       ].join('\n'),
-      notes: [
-        '证明一句话：对任意层 $F$，由 $F$ 是层（上一条的乘积等式）得 $\\operatorname{Hom}(X \\coprod Y, F) = F(X \\coprod Y) \\cong F(X) \\times F(Y) = \\operatorname{Hom}(X, F) \\times \\operatorname{Hom}(Y, F) = \\operatorname{Hom}(X \\coprod Y, F)$，所以层范畴里这个余积的泛性质原样成立。\n\n商的情形是把正合列 $F(X/R) \\to F(X) \\rightrightarrows F(R)$ 读成 $\\operatorname{Hom}(X/R, F) \\cong \\ker\\bigl(\\operatorname{Hom}(X, F) \\rightrightarrows \\operatorname{Hom}(R, F)\\bigr)$。\n\n∎',
-        ,
-        '**各方向用到的假设**（保余积与保商来自层条件的泛性质）：\n' +
-        '- 有限余积的层条件 $F(\\coprod_iX_i)\\cong\\prod_iF(X_i)$ $\\implies$ Yoneda 嵌入保该余积：对任意层应用 Yoneda 引理，就是余积泛性质。\n' +
-        '- 反向若可表示层的余积确为 $h_{\\coprod_iX_i}$，对任意层取 Hom 即恢复乘积公式；这一步是免费的范畴论形式转换。\n' +
-        '- 商的层条件 $F(X/R)\\cong\\operatorname{Eq}(F(X)\\rightrightarrows F(R))$ $\\iff$ $h_{X/R}$ 是相应余等化子，同样由 Yoneda 与泛性质转换；有效下降来自预拓扑斯和预标准拓扑。\n' +
-        '- 拓扑假设不可省：有限集合范畴配平凡拓扑时所有预层都是层，而常值两元素预层满足 $F(\\{1,2\\})$ 只有两元素，不能等于 $F(\\{1\\})\\times F(\\{2\\})$ 的四元素。有限余积的结论也不自动涵盖无限余积。\n'
-      ].join('\n\n'),
+      notes: "**各方向用到的假设**（保余积与保商来自层条件的泛性质）：\n- 有限余积的层条件 $F(\\coprod_iX_i)\\cong\\prod_iF(X_i)$ $\\implies$ Yoneda 嵌入保该余积：对任意层应用 Yoneda 引理，就是余积泛性质。\n- 反向若可表示层的余积确为 $h_{\\coprod_iX_i}$，对任意层取 Hom 即恢复乘积公式；这一步是免费的范畴论形式转换。\n- 商的层条件 $F(X/R)\\cong\\operatorname{Eq}(F(X)\\rightrightarrows F(R))$ $\\iff$ $h_{X/R}$ 是相应余等化子，同样由 Yoneda 与泛性质转换；有效下降来自预拓扑斯和预标准拓扑。\n- 拓扑假设不可省：有限集合范畴配平凡拓扑时所有预层都是层，而常值两元素预层满足 $F(\\{1,2\\})$ 只有两元素，不能等于 $F(\\{1\\})\\times F(\\{2\\})$ 的四元素。有限余积的结论也不自动涵盖无限余积。",
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -183,9 +169,7 @@ window.MG = window.MG || {};
         '',
         '$f$ **是单态射（满态射）** $\\iff X^{\\sharp} \\to Y^{\\sharp}$ **是单态射（满态射）**'
       ].join('\n'),
-      notes: [
-        ['**证明。** 记层化为 $(-)^{\\sharp}$。','- **$(\\implies)$**：层化是到层范畴的**左伴随**，故保余极限，特别保满态射；又是**左正合**的（保有限极限），故保单态射 ✓。','- **$(\\Longleftarrow)$**：预标准拓扑是次标准的，所以 $h_{X}^{\\sharp} \\cong h_{X}$、$h_{Y}^{\\sharp} \\cong h_{Y}$，且 $f^{\\sharp}$ 在 Yoneda 嵌入下的像就是 $h_{f}$。','- 对可表示预层：$h_{f}$ 单 $\\iff$ $f$ 单（Yoneda 双射把 $h_{f}(Z)$ 的诱导映射写成「与 $f$ 复合」，单射性逐点验出）；$h_{f}$ 满 $\\iff$ $f$ 满（$\\mathbf{Set}$ 值预层范畴中的满态射逐点判定；\n\n一边取 $Z = Y$ 与 $1_{Y}$，另一边用 $\\operatorname{Hom}(Z,-)$ 保满态射）✓。','- 于是 $h_{f}$ 单（满）$\\iff$ $h_{f}^{\\sharp}$ 单（满），两头接起来即得 ✓。∎'].join('\n'),
-'所以「谁是单的、谁是满的」在 $\\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\\mathcal{C}$ 换成 $\\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。'].join('\n\n'),
+      notes: "所以「谁是单的、谁是满的」在 $\\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\\mathcal{C}$ 换成 $\\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。",
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -298,9 +282,7 @@ window.MG = window.MG || {};
         '',
         '中每个 $F_{i}$ 以及每个 $F_{i} \\times_{F} F_{j}$ 都**可表示**，则 $F$ 也可表示。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 记 $F_{i} \\cong h_{X_{i}}$、$F_{i}\\times_{F}F_{j} \\cong h_{X_{i,j}}$，并记 $X := \\coprod_{i}X_{i}$、$R := \\coprod_{i,j}X_{i,j}$。','- **$R$ 是 $X$ 上的等价关系**：满态射 $\\coprod_{i}F_{i} \\to F$ 给出平行对 $R \\rightrightarrows X$ 的两条结构映射（由 $F_{i}\\times_{F}F_{j} \\rightrightarrows F_{i}$ 与 Yoneda 得到）；\n\n自反来自对角 $F_{i} \\to F_{i}\\times_{F}F_{i}$，对称来自 $X_{i,j} \\cong X_{j,i}$，传递来自 $F_{i}\\times_{F}F_{j}\\times_{F}F_{k}$ 的三重拉回（这些都在层范畴里是极限，逐层算）✓。','- **等价关系有效**：拓扑斯里等价关系都有效，故商 $X/R$ 存在，且 $h_{X/R}$ 是这个关系在层范畴里的余等化子 ✓。','- **$F \\cong X/R$**：层范畴中的余等化子列','$$\\coprod_{i,j}F_{i}\\times_{F}F_{j} \\rightrightarrows \\coprod_{i}F_{i} \\longrightarrow F$$','说明 $F$ 是这两个对象的余等化子（满态射是有效满的），而同一列换成可表示层就是 $R \\rightrightarrows X \\to X/R$，故 $F \\cong X/R = h_{X/R}$，即 $F$ 可表示 ✓。∎'].join('\n'),
-'把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。\n\n这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。'].join('\n\n'),
+      notes: "把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。\n\n这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。",
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -314,9 +296,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '拓扑斯', '覆盖'],
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）中，族 $(X_{i} \\to X)_{i \\in I}$ 是覆盖 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。',
-      notes: [
-        ['**证明。**','- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。','- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。\n\n在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。\n\n由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。\n\n故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。','- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎'].join('\n'),
-'这条在一般景里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n'),
+      notes: "这条在一般景里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。",
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 

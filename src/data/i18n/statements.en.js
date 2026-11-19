@@ -72,32 +72,9 @@ MG.i18nStatements = {
         status: 'reviewed', basedOn: 'v0.9.3#1f75f342', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
-        en:
-        '**The three steps of the proof.** Write $K = \\ker\\varphi$.\n\n' +
-        '- **Well defined**: if $gK = g\'K$ then $g\' = gk$ for some $k \\in K$, hence ' +
-        '$\\varphi(g\') = \\varphi(g)\\varphi(k) = \\varphi(g)e\' = \\varphi(g)$ — elements of ' +
-        'the same coset are sent to the same value.\n' +
-        '- **Homomorphism**: $\\overline{\\varphi}\\bigl((gK)(g\'K)\\bigr) = ' +
-        '\\overline{\\varphi}(gg\'K) = \\varphi(gg\') = \\varphi(g)\\varphi(g\') = ' +
-        '\\overline{\\varphi}(gK)\\,\\overline{\\varphi}(g\'K)$.\n' +
-        '- **Bijection**: injective, because $\\overline{\\varphi}(gK) = e\'$ means ' +
-        '$\\varphi(g) = e\'$, i.e. $g \\in K$, so $gK = K$; surjective, because the image is ' +
-        '$\\varphi(G)$ by construction. ∎\n\n' +
-        '⭐ **It is really a theorem about the format "set + operations + axioms", not a ' +
-        'privilege of groups.** The same proof carries over verbatim, provided one replaces ' +
-        '"homomorphism" by the corresponding notion:\n\n' +
-        '$$A \\big/ \\ker f \\;\\cong\\; \\operatorname{im} f.$$\n\n' +
-        '⭐ **The set-level prototype**: for any map $f : A \\to B$, put ' +
-        '$a \\sim a\' \\iff f(a) = f(a\')$ on $A$; then $f$ induces a **bijection** ' +
-        '$A/{\\sim} \\;\\to\\; \\operatorname{im} f$ (see "quotient set and equivalence ' +
-        'classes"). The group version adds exactly one sentence: **after dividing by the ' +
-        'kernel, what remains is a group**. The first two steps (well defined, bijection) are ' +
-        'the set-level content; only the third (homomorphism) is new.\n\n' +
-        '**What question does it answer?** "Where does a homomorphism send a group?" has a ' +
-        'two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), ' +
-        'locked together by a single isomorphism. So studying homomorphisms is studying normal ' +
-        'subgroups — which is why group theory turns into the study of the lattice of subgroups.',
-        status: 'reviewed', basedOn: 'v0.9.3#3edf241b', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        en: "⭐ **It is really a theorem about the format \"set + operations + axioms\", not a privilege of groups.** The same proof carries over verbatim once \"homomorphism\" is replaced by the corresponding notion:\n\n$$A \\big/ \\ker f \\;\\cong\\; \\operatorname{im} f.$$\n\n⭐ **The set-level prototype**: for any map $f : A \\to B$, define on $A$ the relation $a \\sim a' \\iff f(a) = f(a')$; then $f$ induces a **bijection** $A/{\\sim} \\;\\to\\; \\operatorname{im} f$ (see \"quotient set and equivalence classes\").\n\nThe group version adds just one sentence: **after quotienting by the kernel, what remains is a group**.\n\nThe first two steps (well defined, bijection) are the set-level content; only the third (homomorphism) is new.\n\n**What question does it answer?** \"Where does a homomorphism send a group?\" has a two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), locked together by one isomorphism. So studying homomorphisms is studying normal subgroups — which is why group theory becomes the study of the subgroup lattice.",
+        status: 'draft',
+        basedOn: 'v0.9.3#8f22f54f'
       },
     },
 
@@ -340,24 +317,9 @@ MG.i18nStatements = {
         status: 'reviewed', basedOn: 'v0.9.3#f13b85f8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
-        en:
-        'The proof has three parts:\n\n' +
-        '- **Abelian**: first verify componentwise in the presheaf category ' +
-        '$\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ (there one simply has pointwise abelian groups) ' +
-        '— concretely, for an arbitrary morphism $u$ verify ' +
-        '$\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$; then transport ' +
-        'these identities back to the sheaf category along the **exact reflection** ' +
-        '(sheafification). The same argument gives exactness of filtered colimits.\n' +
-        '- **All limits and colimits exist**: because the sheaf category is a reflective ' +
-        'subcategory of the presheaf category.\n' +
-        '- **Small set of generators**: if $S$ is a small set of generators of $\\mathcal{T}$, ' +
-        'then $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$ — ' +
-        'their coproduct is a generator.\n\n' +
-        'One more fact along the way: $\\mathbb{Z}\\cdot X$ is **projective** in ' +
-        '$\\mathcal{T}(\\mathbf{Ab})$ (look at presheaves first: ' +
-        '$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ ' +
-        'is exact on presheaves).',
-        status: 'reviewed', basedOn: 'v0.9.3#07b048c8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        en: "One more remark: $\\mathbb{Z}\\cdot X$ is a **generator** and is **flat**, but it is **not** projective — $\\operatorname{Hom}(\\mathbb{Z}\\cdot X, -) \\cong \\Gamma(X, -)$ (global sections) is only left exact, so a nonsplit short exact sequence of sheaves $0 \\to \\mathcal{F} \\to \\mathcal{G} \\to \\mathcal{H} \\to 0$ shows that it is not right exact. Projectivity holds only in the presheaf category (where $\\operatorname{Hom}(\\mathbb{Z}\\cdot h_{X}, -) \\cong (-)(X)$ is exact, see `prop.presheaf-free-projective`).",
+        status: 'draft',
+        basedOn: 'v0.9.3#d3472a73'
       },
     },
 
@@ -397,7 +359,7 @@ MG.i18nStatements = {
       },
       notes: {
         en:
-        'Note that the hypothesis "$\\mathfrak{A}$ is a ring" cannot be dropped — a monotone ' +
+        'Note that the hypothesis "One more remark: $\\mathbb{Z}\\cdot X$ is a **generator** and is **flat**, but it is **not** projective — $\\operatorname{Hom}(\\mathbb{Z}\\cdot X, -) \\cong \\Gamma(X, -)$ (global sections) is only left exact, so a nonsplit short exact sequence of sheaves $0 \\to \\mathcal{F} \\to \\mathcal{G} \\to \\mathcal{H} \\to 0$ shows that it is not right exact. Projectivity holds only in the presheaf category (where $\\operatorname{Hom}(\\mathbb{Z}\\cdot h_{X}, -) \\cong (-)(X)$ is exact, see `prop.presheaf-free-projective`)." cannot be dropped — a monotone ' +
         'class is in general not closed under finite unions, so being a monotone class by ' +
         'itself does not imply being a $\\sigma$-ring.\n\n' +
         'This theorem is the technical core of the monotone class theorem: it is precisely what ' +
@@ -719,27 +681,9 @@ MG.i18nStatements = {
         status: 'reviewed', basedOn: 'v0.9.3#c4151627', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
-        en:
-        'The whole logical skeleton is in the arrows (click an arrow to see its proof):\n\n' +
-        '- compact $\\implies$ sequentially compact\n' +
-        '- sequentially compact $\\implies$ totally bounded　(**one of two** steps in this ' +
-        'cluster that genuinely uses a choice principle — DC; the other is (b) implies (a))\n' +
-        '- sequentially compact $\\implies$ complete\n' +
-        '- sequentially compact $\\implies$ compact　(the "bad balls" argument; it uses ' +
-        'total boundedness and completeness, and the bad-ball construction invokes DC)\n' +
-        '- compact $\\implies$ complete, compact $\\implies$ totally bounded\n' +
-        '- complete + totally bounded $\\implies$ sequentially compact　(the diagonal ' +
-        'argument; again no choice)\n\n' +
-        'So "sequentially compact $\\implies$ totally bounded $\\implies$ compact" and ' +
-        '"compact $\\implies$ sequentially compact" close the circle, and the three notions ' +
-        'agree.\n\n' +
-        '⚠ **What each of the two conditions does**: completeness keeps the limit **in the space**, total boundedness supplies **a shrinkable subsequence** — neither can be dropped ($\\mathbb{R}$ is complete but not totally bounded; $(0, 1)$ is totally bounded but not complete).\n\n' +
-        '⚠ In a general topological space **both implications fail**:\n\n' +
-        '(a) $\\implies$ (b) fails: take $I = 2^{\\mathbb{N}}$ and, for $A \\in \\{0, 1\\}^{\\mathbb{N}}$, put $x_{n}(A) = A(n)$, so $x_{n} \\in \\{0, 1\\}^{I}$; Tychonoff makes $\\{0, 1\\}^{I}$ **compact**. Given any subsequence $n_{k}$, choose $A$ with $A(n_{2j}) = 1$ and $A(n_{2j+1}) = 0$; then $x_{n_{k}}(A)$ alternates between $1$ and $0$, so the subsequence does not converge; since $n_k$ was arbitrary, no subsequence of $(x_n)$ converges — **not sequentially compact**.\n\n' +
-        '(b) $\\implies$ (a) fails: $[0, \\omega_{1})$ with the order topology is **sequentially compact** (countably many countable ordinals have an upper bound, so the subsequence falls inside some compact $[0, \\alpha]$) but **not compact** ($\\{[0, \\alpha) : \\alpha < \\omega_{1}\\}$ is an open cover with no finite subcover).\n\n' +
-        '⚠ The two notions agree only in metric spaces — sequential compactness is a piece of luck peculiar to metric spaces.\n\n' +
-        '**What each direction uses, and whether any extra hypothesis is needed** (this list *is* the content of the equivalence):\n\n- (a) $\\implies$ (b): **no choice needed.** If no subsequence converged, every $y$ would have an open neighbourhood $U_{y}$ containing $x_{n}$ for only finitely many $n$ — otherwise the balls of radius $1/k$ around $y$ would give a subsequence converging to $y$, with the indices picked greedily from $\\mathbb{N}$. Compactness makes finitely many $U_{y}$ cover the space, so only finitely many indices occur — contradiction.\n- (a) $\\implies$ (c), "complete": **no choice needed.** A Cauchy sequence with a convergent subsequence converges, and to the same point.\n- (a) $\\implies$ (c), "totally bounded": **no choice needed.** Cover by all balls of radius $\\varepsilon$; a finite subcover is a finite $\\varepsilon$-net.\n- (b) $\\implies$ (a): **uses total boundedness and completeness; the bad-ball construction invokes DC** (the "bad ball" argument: if no finite cover existed, one would build recursively a sequence with pairwise distances $\\ge \\varepsilon$, which has no convergent subsequence).\n- (b) $\\implies$ (c), "complete": **no choice needed** (the limit of the convergent subsequence is the limit of the Cauchy sequence).\n- (b) $\\implies$ (c), "totally bounded": **this step really uses countable choice (DC)** — one of two places in the proof (the other is (b) implies (a)). For each $n$ one picks a $1/n$-ball containing infinitely many terms, and shrinks layer by layer.\n- (c) $\\implies$ (b): **no choice needed** (diagonal argument: using $1/n$-nets, keep at each layer a ball with infinitely many terms, take the diagonal subsequence — it is Cauchy — and converge by completeness).',
-        status: 'reviewed', basedOn: 'v0.9.3#0c5aa523', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        en: "The equivalence of compactness, sequential compactness, and completeness plus total boundedness is proved on the edge `imp.metric-compact-equiv-proof`: compact $\\implies$ sequentially compact uses the contradiction that a neighbourhood of every point meets only finitely many terms; sequentially compact $\\implies$ complete/totally bounded uses Cauchy subsequences and $\\varepsilon$-nets; totally bounded $\\implies$ compact uses Lebesgue numbers.",
+        status: 'draft',
+        basedOn: 'v0.9.3#302a8a85'
       },
     },
 
@@ -755,16 +699,9 @@ MG.i18nStatements = {
         status: 'reviewed', basedOn: 'v0.9.3#f6d84124', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
-        en:
-        '**Preservation of limits is the only obstruction.** Together with "a right adjoint ' +
-        'preserves limits" this gives a complete criterion: preservation of limits is ' +
-        'necessary, and on a complete small category it is also sufficient.\n\n' +
-        'What the construction means: all the ways of mapping $X$ into the image of $G$ ' +
-        'form a category $X \\downarrow G$, and one takes a limit in it — $F(X)$ is the ' +
-        'object of $\\mathcal{D}$ "closest" to $X$. Every $X \\to G(Y)$ can be organised as ' +
-        '$X \\to G(F(X)) \\to G(Y)$.\n\n' +
-        'The proof is the derivation on the edge.',
-        status: 'reviewed', basedOn: 'v0.9.3#bdd6e136', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        en: "**Preservation of limits is the only obstruction.** Together with \"right adjoints preserve limits\" this is a complete criterion: preserving limits is necessary, and on complete small categories it is also sufficient.\n\nThe meaning of the construction: all ways of mapping $X$ into the image of $G$ form a category $X \\downarrow G$; a limit in it — $F(X)$ — is the object of $\\mathcal{D}$ \"closest\" to $X$. Every $X \\to G(Y)$ can be organised into $X \\to G(F(X)) \\to G(Y)$.\n\nThe verification is term by term from the universal property of representing objects.",
+        status: 'draft',
+        basedOn: 'v0.9.3#373b3299'
       },
     },
 
@@ -2027,9 +1964,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#bb5c0641',
       },
       notes: {
-        en: "⭐ **The topological intuition**: $U \\cup \\{\\infty\\}$ is open $\\iff$ its complement is compact. Thus \"the complement of $X$ is compact\" is exactly \"a neighbourhood of $\\infty$\" — the space around the point at infinity is precisely \"what remains after $X$ runs off\". Accordingly, a $\\infty$-neighbourhood of $\\mathbb{R}^{n}$ is \"the outside of the ball\", and $S^{n}$ is the north pole.\n\n⭐ **Standard examples**: $(\\mathbb{R}^{n})^{*} \\cong S^{n}$ (stereographic projection; when $n = 1$, $\\mathbb{R} \\cup \\{\\infty\\} \\cong S^{1}$);\n\n$\\mathbb{C}^{*} \\cong S^{2}$ is the **Riemann sphere**, on which complex analysis treats $\\infty$ as an ordinary point;\n\nthe one-point compactification of $\\mathbb{N}$ is $\\{1/n\\} \\cup \\{0\\}$.\n\n⚠️ **Why local compactness is indispensable**: when $X$ is not locally compact, $X^{*}$ is not Hausdorff — intuitively, \"a neighbourhood of $\\infty$\" is too large and always meets the neighbourhood of some point. So existence and Hausdorffness of the one-point compactification are **two separate matters**: $X^{*}$ is always compact, but making it Hausdorff costs local compactness.\n\n⚠️ **Relation to `imp.lch-cr`**: that implication proves \"locally compact Hausdorff spaces are completely regular\" using exactly \"$X^{*}$ is compact Hausdorff $\\implies$ normal, $\\implies$ a Urysohn function can be built on $X^{*}$ and pulled back\". The one-point compactification is the standard interface for **transferring the good properties of compact spaces to $X$**.\n\n**The two conclusions rest on completely different hypotheses** (which is why they deserve separate statements):\n\n- **$X^{*}$ is compact: no hypothesis is needed**. Take any open cover of $X^{*}$; some member contains $\\infty$ (call it $U\\cup\\{\\infty\\}$), so $X\\setminus U$ is compact; it is covered by the remaining open sets, compactness yields a finite subcover, and adding $U\\cup\\{\\infty\\}$ itself gives a finite subcover. The whole argument uses only \"an open cover of a compact set has a finite subcover\" — **neither Hausdorffness nor local compactness is used**.\n- **$X^{*}$ is Hausdorff $\\iff$ $X$ is locally compact Hausdorff**: both directions cost something.\n  $\\cdot$ ($\\Leftarrow$) uses **local compactness**: given $x \\in X$, separating it from $\\infty$ requires \"a compact neighbourhood $K$ of $x$\", so $X\\setminus K$ is open and $K^{\\circ}$ is an open neighbourhood of $x$, the two disjoint. **Without local compactness this compact neighbourhood cannot be produced**.\n  $\\cdot$ ($\\implies$): deriving Hausdorffness of $X$ from that of $X^{*}$ is free (subspaces inherit it); deriving local compactness uses **closedness of compact sets**: an open neighbourhood $U\\cup\\{\\infty\\}$ of $\\infty$ has $X\\setminus U$ compact, so the closure of $U$ in $X$ … — this direction is exactly the use of \"compact sets are closed in a compact Hausdorff space\".\n\n⚠️ **So \"the one-point compactification always exists\" must be read carefully**: $X^{*}$ always exists as a compact space; but it is **Hausdorff** only when $X$ is locally compact Hausdorff. Many textbooks state only the former, so beginners conclude that \"every space can be compactified\" — **false**: those admitting a Hausdorff compactification are exactly the locally compact Hausdorff spaces.\n\n⚠️ **Why neighbourhoods of $\\infty$ look like that**: \"compact complement\" in the second axiom is not arbitrary — if the neighbourhood is $U\\cup\\{\\infty\\}$, then points \"running to infinity\" must eventually lie in $U$, i.e. eventually leave $X\\setminus U$; requiring $X\\setminus U$ to be compact is exactly what aligns \"leaving it\" with \"compactness\", making $X^{*}$ compact.",
+        en: "⭐ **Topological intuition**: $U \\cup \\{\\infty\\}$ is open $\\iff$ its complement is compact. So \"the complement of $X$ is compact\" is \"a neighbourhood of $\\infty$\" — the space around the point at infinity is exactly \"what remains after $X$ escapes\". Thus the compactification of $\\mathbb{R}^{n}$ has its point $\\infty$ with neighbourhoods that are \"outside a ball\", and $S^{n}$ is the north pole.\n\n⭐ **Standard examples**: $(\\mathbb{R}^{n})^{*} \\cong S^{n}$ (stereographic projection; for $n = 1$, $\\mathbb{R} \\cup \\{\\infty\\} \\cong S^{1}$);\n\n$\\mathbb{C}^{*} \\cong S^{2}$ is the **Riemann sphere**, on which complex analysis treats $\\infty$ as an ordinary point;\n\nthe one-point compactification of $\\mathbb{N}$ is $\\{1/n\\} \\cup \\{0\\}$.\n\n⚠️ **Why local compactness is required**: when $X$ is not locally compact, $X^{*}$ is not Hausdorff — intuitively \"a neighbourhood of $\\infty$\" is so large that it meets a neighbourhood of some point forever. So existence and Hausdorffness are **two separate matters**: $X^{*}$ is always compact, but Hausdorffness costs local compactness.\n\n⚠️ **Relation to \"locally compact Hausdorff implies completely regular\"**: that proof uses exactly \"$X^{*}$ is compact Hausdorff $\\implies$ normal $\\implies$ one can build a Urysohn function on $X^{*}$ and pull it back\". The one-point compactification is the standard interface that transfers the good properties of compact spaces to $X$.\n\n**The two conclusions rest on completely different hypotheses** (which is why this deserves a separate node):\n\n- **$X^{*}$ is compact: no hypothesis is needed.** Take any open cover of $X^{*}$; some member contains $\\infty$ (call it $U\\cup\\{\\infty\\}$), so $X\\setminus U$ is compact; it is covered by the remaining open sets, and compactness gives a finite subcover, which together with $U\\cup\\{\\infty\\}$ itself gives a finite subcover. The whole argument uses only \"an open cover of a compact set has a finite subcover\", **not Hausdorff, not local compactness**.\n- **$X^{*}$ is Hausdorff $\\iff$ $X$ is locally compact Hausdorff**: both directions cost something.\n  $\\cdot$ ($\\Leftarrow$) needs **local compactness**: given $x \\in X$, separating it from $\\infty$ requires a compact neighbourhood of $x$, call it $K$, so $X\\setminus K$ is open and $K^{\\circ}$ is an open neighbourhood of $x$, disjoint. **Without local compactness this compact neighbourhood cannot be built**.\n  $\\cdot$ ($\\implies$): going back from $X^{*}$ being Hausdorff to $X$ being Hausdorff is free (subspaces inherit it); going back to local compactness uses **closedness of compact sets**: the open neighbourhood of $\\infty$, say $U\\cup\\{\\infty\\}$, satisfies $X\\setminus U$ compact, so the closure of $U$ in $X$... This is exactly the use of \"in a compact Hausdorff space compact sets are closed\".\n\n⚠️ **So \"the one-point compactification always exists\" must be read in two parts**: $X^{*}$ always exists as a compact space; but it is **Hausdorff** only when $X$ is locally compact Hausdorff. Many textbooks state only the first, so beginners think \"every space can be compactified\" — **false**: those that admit a Hausdorff compactification are the locally compact Hausdorff ones.\n\n⚠️ **Why the neighbourhoods of $\\infty$ have that form**: \"complement compact\" in the second axiom is not arbitrary — if the neighbourhood is $U\\cup\\{\\infty\\}$, then points \"running to infinity\" must eventually lie in $U$, i.e. eventually leave $X\\setminus U$; requiring $X\\setminus U$ compact is exactly what aligns \"leaving it\" with \"compactness\", so that $X^{*}$ is compact.",
         status: 'draft',
-        basedOn: 'v0.9.3#8b664d9f',
+        basedOn: 'v0.9.3#aef0ac5b'
       },
     },
 
@@ -2391,9 +2328,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#20ef8cf7',
       },
       notes: {
-        en: "**Proof.**\n**(a)** For $n \\ge 1$ and $k = 0, 1, \\ldots, 2^{n}n - 1$, set\n$$E_{n,k} := f^{-1}\\bigl((k2^{-n}, (k+1)2^{-n}]\\bigr), \\qquad F_{n} := f^{-1}\\bigl((n, +\\infty]\\bigr),$$\n$$\\varphi_{n} := \\sum_{k} k\\,2^{-n}\\,\\chi_{E_{n,k}} \\;+\\; n\\,\\chi_{F_{n}} \\;+\\; 0\\cdot\\chi_{f^{-1}(\\{0\\})}.$$\n- **Simplicity**: each $E_{n,k}$ and $F_{n}$ is measurable ($f$ measurable plus intervals are Borel sets), and only finitely many values occur ✓;\n- **$0 \\le \\varphi_{n} \\le f$**: on $E_{n,k}$ we have $k2^{-n} < f \\le (k+1)2^{-n}$ ✓; on $F_{n}$ we have $n < f$ ✓; elsewhere it is zero ✓;\n- **Monotonicity**: when $n \\to n+1$, the intervals are refined by $2^{-(n+1)}$ and the ceiling rises from $n$ to $n+1$; a pointwise check gives $\\varphi_{n} \\le \\varphi_{n+1}$ ✓;\n- **Pointwise convergence**: if $f(x) < \\infty$, choose $n > f(x)$ so that $0 \\le f(x)-\\varphi_{n}(x) \\le 2^{-n} \\to 0$; if $f(x) = +\\infty$, then $\\varphi_{n}(x) = n \\to \\infty$ ✓;\n- **Uniform on bounded sets**: if $f \\le M$, choose $n > M$; the same estimate gives $|f-\\varphi_{n}| \\le 2^{-n}$, independent of $x$ ✓.\n**(b)** For a general measurable $f$: write $f = (f_{1}^{+} - f_{1}^{-}) + i(f_{2}^{+} - f_{2}^{-})$, apply (a) to each of the four nonnegative measurable parts to obtain monotone sequences, then combine them linearly into real and imaginary parts, positive and negative parts; every step satisfies $|\\varphi_{n}| \\le |f|$ and converges pointwise, so the conclusion holds ✓. ∎\n\nThe construction in (a) is “cutting the cake”: slice the range over [0, n) into pieces of size $2^{-n}$ and flatten everything above $n$ to $n$ —\n\n$$\\varphi_n = \\sum_{k=0}^{2^n\\cdot n-1} k\\cdot2^{-n}\\cdot\\chi_{E_n^k} + n\\cdot\\chi_{F_n}, $$\n\n$$E_n^k = f^{-1}((k\\cdot2^{-n}, (k+1)\\cdot2^{-n}]), \\quad  F_n = f^{-1}((n, +\\infty])$$\n\nEach layer is the preimage of a measurable set, so $\\varphi _{n}$ is simple; as $n$ grows the grid becomes finer and the ceiling higher, so the functions climb monotonically to $f$.\n\n(b) splits $f = g + ih$ as $g = g^+ - g^-$, $h = h^+ - h^-$ and applies (a) to the four nonnegative parts:\n\n$$\\varphi_n = \\psi_n^+ - \\psi_n^- + i(\\zeta _n^+ - \\zeta _n^-)$$",
+        en: "The construction in (a) is a layer cake: slice the range [0, n) according to $2^{-n}$, and truncate everything above $n$ to $n$ —\n\n$$\\varphi_n = \\sum_{k=0}^{2^n\\cdot n-1} k\\cdot2^{-n}\\cdot\\chi_{E_n^k} + n\\cdot\\chi_{F_n}, $$\n\n$$E_n^k = f^{-1}((k\\cdot2^{-n}, (k+1)\\cdot2^{-n}]), \\quad  F_n = f^{-1}((n, +\\infty])$$\n\nEach layer is the preimage of a measurable set, so $\\varphi _{n}$ is a simple function; as $n$ grows the grid refines and the ceiling rises, so the sequence climbs monotonically to $f$.\n\nFor (b), split $f = g + ih$ into $g = g^+ - g^-$ and $h = h^+ - h^-$, and apply (a) to the four nonnegative parts:\n\n$$\\varphi_n = \\psi_n^+ - \\psi_n^- + i(\\zeta _n^+ - \\zeta _n^-)$$",
         status: 'draft',
-        basedOn: 'v0.9.3#16708e44',
+        basedOn: 'v0.9.3#c1debacb'
       },
     },
 
@@ -3782,9 +3719,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#09358575',
       },
       notes: {
-        en: "**Proof.** Define the map\n\n$$\\Phi : \\operatorname{Nat}(h^{X}, F) \\longrightarrow F(X), \\qquad \\Phi(\\alpha) := \\alpha_{X}(1_{X}).$$\n\n- **Inverse map**: given $u \\in F(X)$, for each $Y$ define\n\n$$\\Psi(u)_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad \\Psi(u)_{Y}(f) := F(f)(u).$$\n\nIt is natural: for $g : Y \\to Z$, by functoriality of $F$, $F(g)\\circ F(f) = F(g\\circ f)$, the two sides are exactly $F(g)\\bigl(\\Psi(u)_{Y}(f)\\bigr)$ and $\\Psi(u)_{Z}(g\\circ f)$ ✓.\n\n- **$\\Phi\\Psi = \\mathrm{id}$**: $\\Psi(u)_{X}(1_{X}) = F(1_{X})(u) = u$ ✓.\n\n- **$\\Psi\\Phi = \\mathrm{id}$**: given $\\alpha$ and $f : X\\to Y$, use the naturality of $\\alpha$ (applied to $f$)\n\n$$\\alpha_{Y}\\circ h^{X}(f) = F(f)\\circ \\alpha_{X} \\;\\implies\\; \\alpha_{Y}(f) = F(f)\\bigl(\\alpha_{X}(1_{X})\\bigr) = \\Psi\\bigl(\\Phi(\\alpha)\\bigr)_{Y}(f) ✓$$\n\n- **Naturality**: $\\Phi$ is natural in $F$ (along $\\beta : F\\to G$ both sides become $\\beta_{X}\\circ(-)$) ✓; and natural in $X$ (along $k : X'\\to X$, precomposition with $h^{k}$ corresponds to $F(k)$) ✓.\n\nHence $\\operatorname{Hom}(h^{X}, F) \\cong F(X)$, and the bijection is $\\alpha\\mapsto\\alpha_{X}(1_{X})$ ✓; dually (taking $\\mathcal{C}^{\\mathrm{op}}$) one gets the presheaf version $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ ✓.\n\n∎\n\nThis bijection is natural in **both** variables: natural in $F$ (natural transformations) and in $X$ (morphisms). Naturality on both sides is what gives the lemma its force.\n\nIt compresses the set \"all natural transformations from $h^{X}$ to $F$\", which is in principle intractable, into **a single element** of $F(X)$. Whenever \"natural transformations are hard to count\", this is the step that saves the day.\n\nDual form: if $T$ is a presheaf ($T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$) and $h_{X} = \\operatorname{Hom}(-, X)$ is a representable presheaf, then likewise $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$.\n\nThe two formulas differ only by replacing $\\mathcal{C}$ with $\\mathcal{C}^{\\mathrm{op}}$, so both versions are used in what follows.",
+        en: "Both **sides** of this bijection are natural: it is natural in $F$ (natural transformations) and also in $X$ (morphisms). Naturality in both variables is what gives the lemma its real strength.\n\nIt turns the set of \"all natural transformations from $h^{X}$ to $F$\", which is a priori hopeless, into **a single element** of $F(X)$. Whenever \"natural transformations are hard to count\", this is the step that saves the day.\n\nThe dual form: when $T$ is a presheaf ($T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$) and $h_{X} = \\operatorname{Hom}(-, X)$ is a representable presheaf, one likewise has $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$.\n\nThe two formulas differ only by replacing $\\mathcal{C}$ with $\\mathcal{C}^{\\mathrm{op}}$, so both versions are used below.",
         status: 'draft',
-        basedOn: 'v0.9.3#22a4b627',
+        basedOn: 'v0.9.3#9cffe4b5'
       },
     },
 
@@ -4315,9 +4252,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#0685f884',
       },
       notes: {
-        en: "⭐ (c) is the most useful of the three: to show that $G$ is solvable it suffices to find a **normal subgroup** with $G$ sandwiched in between and both ends solvable — the standard way of breaking a big group into small pieces.\n\n⚠ The converses of (a) and (b) both **fail**, with tiny counterexamples:\n- a solvable subgroup **does not** imply that the group is solvable: $\\mathbb{Z}/2 \\le A_5$ is solvable, $A_5$ is not;\n\n- a solvable quotient **does not** imply that the group is solvable: $S_5 / A_5 \\cong \\mathbb{Z}/2$ is solvable, $S_5$ is not.\n\nSo \"solvable\" is not a local property; it ascends only by squeezing between two solvable ends as in (c).\n\n⭐ In terms of derived series all three are almost a single sentence: $H^{(k)} \\le G^{(k)}$;\n\n$\\pi(G^{(k)}) = (G/N)^{(k)}$.\n\nThe full proof is on the edges.\n\n⭐ This immediately gives a commonly used criterion: $G$ is solvable $\\iff$ there is a normal chain whose quotients are **cyclic** (not merely abelian) — because an abelian group can be refined further into cyclic factors.",
+        en: "⭐ (c) is the most useful of the three: to decide that $G$ is solvable, it suffices to find a **normal subgroup** with $G$ squeezed in between, both ends solvable — the standard way of breaking a big group into small pieces.\n\n⚠ The converses of (a) and (b) **fail**, with tiny counterexamples:\n- A solvable subgroup **does not** imply a solvable group: $\\mathbb{Z}/2 \\le A_5$ is solvable, $A_5$ is not;\n\n\n- A solvable quotient **does not** imply a solvable group: $S_5 / A_5 \\cong \\mathbb{Z}/2$ is solvable, $S_5$ is not.\n\n\nSo \"solvable\" is not a local property; it propagates upwards only by the two-sided squeeze of (c).\n\n⭐ In terms of derived series all three are almost one line: $H^{(k)} \\le G^{(k)}$;\n\n$\\pi(G^{(k)}) = (G/N)^{(k)}$.\n\nThe full proofs are on the edges.\n\n⭐ One immediate useful criterion (**finite groups only**): $G$ finite and solvable $\\iff$ there is a normal series with **cyclic** quotients (not merely abelian) — a finite abelian group can be refined further into cyclic factors of prime order. ⚠️ For infinite groups \"finite\" cannot be dropped: $\\mathbb{Q}$ is solvable as an additive group, but all its finite quotients are trivial and none is isomorphic to $\\mathbb{Z}$, so there is no normal series with cyclic quotients ending in $1$.",
         status: 'draft',
-        basedOn: 'v0.9.3#a2db1c65',
+        basedOn: 'v0.9.3#a1297b6c'
       },
     },
 
@@ -4328,9 +4265,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#fd3ef658',
       },
       notes: {
-        en: "⭐ Reading: **\"$\\mathcal{A}[S]$ and the ordinary free module $A[S]$ cannot be distinguished inside $\\operatorname{RHom}$\"**.\n\nThis is the relative version of condition (ii) in the definition of solid groups;\n\ntaking $A = \\mathbb{Z}$ and $\\mathcal{A}[S] = Z[S]^{\\blacksquare}$ returns to the solid case.\n\n⚠ Why require **all** such complexes and not just a single module? Because the conclusion is needed at the level of derived categories (`thm.analytic-modules` (ii)); an isomorphism at a single point is not enough — it must hold for complexes as well.\n\n⭐ Deciding \"is this an analytic ring\" is usually done via concrete theorems such as `prop.analytic-examples` and `thm.za-analytic`, not by checking the definition item by item.\n\n**Which hypothesis each direction uses** (analyticity is a derived test over a whole class of complexes):\n- Analyticity $\\iff$ the comparison map for all the listed complexes and extremally disconnected $S$ is a quasi-isomorphism: this is the definition unwound, with the pre-analytic ring already given.\n- The canonical map $A[S]\\to\\mathcal A[S]$ $\\implies$ the contravariant derived Hom comparison map: this uses functoriality of precomposition and does not presuppose analyticity.\n- Testing only ordinary Hom in degree zero $\\implies$ does not make the derived comparison isomorphism free; ordinary Hom cannot see higher Ext and cannot replace the condition on complexes.\n- The original text's explanation identifying $\\operatorname{RHom}_{\\mathcal A}$ with $\\operatorname{RHom}_A$ directly carries a circularity risk: for a general pre-analytic ring the derived category of complete modules has not been set up, so this step is unverified and recorded as a gap; the test condition is better formulated first in the derived category of condensed $A$-modules.",
+        en: "⭐ How to read it: **\"$\\mathcal{A}[S]$ and the ordinary free module $A[S]$ cannot be distinguished inside $\\operatorname{RHom}$\"**.\n\nThis is the relative version of condition (ii) in the definition of solid groups; taking $A = \\mathbb{Z}$ and $\\mathcal{A}[S] = Z[S]^{\\blacksquare}$ returns the solid case.\n\n⚠ Why demand **all** such complexes rather than a single module? Because the conclusion is at the level of derived categories (`thm.analytic-modules` (ii)); an isomorphism at one point is not enough, one needs it for complexes as well.\n\n⭐ Deciding \"is this an analytic ring\" is usually done via concrete theorems such as `prop.analytic-examples` and `thm.za-analytic`, not by checking the definition item by item.\n\n**Hypotheses used in each direction** (analyticity is a derived test on a whole class of complexes):\n- Analytic $\\iff$ the comparison maps for all the listed complexes and for extremally disconnected $S$ are quasi-isomorphisms: this is the definition unfolded, with the pre-analytic ring already given.\n- The canonical map $A[S]\\to\\mathcal A[S]$ $\\implies$ the contravariant derived Hom comparison: uses functoriality of precomposition, and does not presuppose analyticity.\n- Testing only the ordinary Hom in degree zero $\\implies$ the derived comparison need not be an isomorphism; ordinary Hom sees no higher Ext and cannot replace the condition on complexes.\n- Identifying $\\operatorname{RHom}_{\\mathcal A}(\\mathcal A[S],C)$ with $\\operatorname{RHom}_A(\\mathcal A[S],C)$ **does not require** the derived category of complete modules: $C$ is a complex of $\\mathcal A$-modules and $\\mathcal A[S]$ is free, so both sides are canonically isomorphic to $C^{S}$ degree by degree, hence also at the derived level. The definition can therefore be stated entirely in the derived category of modules over the underlying $A$, without circularity.",
         status: 'draft',
-        basedOn: 'v0.9.3#705376a3',
+        basedOn: 'v0.9.3#7f4301ec'
       },
     },
 
@@ -4419,9 +4356,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#e132d7bc',
       },
       notes: {
-        en: "**This is the \"open-set version\" of the Baire category theorem**: among the members of a closed cover that have interior, the union of those interiors is dense. The full proof (using the Baire property on non-empty open sets) is on the edge `imp.countable-closed-cover-proof`.",
+        en: "**This is the \"open-set version\" of the Baire category theorem**: among the members of a closed cover, those with nonempty interior have interiors whose union is dense. The full proof (using Baire on a nonempty open set) is on the edge `imp.countable-closed-cover-proof`.",
         status: 'draft',
-        basedOn: 'v0.9.3#2b376b26',
+        basedOn: 'v0.9.3#fa78c81a'
       },
     },
 
@@ -4458,9 +4395,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#ed69a1e6',
       },
       notes: {
-        en: "**Why it suffices to prove $|f|\\in A$**: $\\max,\\min$ can be assembled from $|\\cdot|$ and the four arithmetic operations; $|f|=\\sqrt{f^{2}}$ is then uniformly approximated by the binomial series. The full proof is on the edge `imp.subalgebra-lattice-proof`.",
+        en: "**Why it suffices to prove $|f|\\in A$**: $\\max,\\min$ can be assembled from $|\\cdot|$ via the four arithmetic operations; $|f|=\\sqrt{f^{2}}$ is then obtained by uniform approximation with the binomial series. The full proof is on the edge `imp.subalgebra-lattice-proof`.",
         status: 'draft',
-        basedOn: 'v0.9.3#3569eb44',
+        basedOn: 'v0.9.3#82b96fd8'
       },
     },
 
@@ -4471,9 +4408,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#467b6f7e',
       },
       notes: {
-        en: "**Idea of the proof**: define $u$ as the pointwise limit, then control $\\lVert u_k-u\\rVert$ by uniform boundedness. The full proof is on the edge `imp.bounded-operators-banach-proof`. In particular $E^*=B(E,\\mathbb K)$ is always Banach.",
+        en: "**Sketch of proof**: define $u$ as the pointwise limit, then use uniform boundedness to control $\\lVert u_k-u\\rVert$. The full proof is on the edge `imp.bounded-operators-banach-proof`. In particular $E^*=B(E,\\mathbb K)$ is always a Banach space.",
         status: 'draft',
-        basedOn: 'v0.9.3#ba597d57',
+        basedOn: 'v0.9.3#075e9753'
       },
     },
 
@@ -4484,9 +4421,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#0d22915d',
       },
       notes: {
-        en: "**Why finite dimension is special**: the unit sphere is compact, so a norm attains a positive minimum on it, and hence any norm is controlled from both sides by $\\lVert\\cdot\\rVert_\\infty$. The full proof is on the edge `imp.norm-equiv-finite-dim-proof`.",
+        en: "**Why finite dimension is special**: the unit sphere is compact and the norm attains a positive minimum on it, so every norm is controlled in both directions by $\\lVert\\cdot\\rVert_\\infty$. The full proof is on the edge `imp.norm-equiv-finite-dim-proof`.",
         status: 'draft',
-        basedOn: 'v0.9.3#29b17bc8',
+        basedOn: 'v0.9.3#ced4fc8c'
       },
     },
 
@@ -4497,9 +4434,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#35349119',
       },
       notes: {
-        en: "**Use**: it recovers the inner product from the norm, so \"preserving the norm\" and \"preserving the inner product\" are equivalent in the real case; the complex case uses a combination of four directions. The full derivation is on the edge `imp.polarization-proof`.",
+        en: "**Use**: it recovers the inner product from the norm, so \"preserving the norm\" and \"preserving the inner product\" are equivalent in the real case; in the complex case one combines the four directions. The full derivation is on the edge `imp.polarization-proof`.",
         status: 'draft',
-        basedOn: 'v0.9.3#37b58dbc',
+        basedOn: 'v0.9.3#10f8ee38'
       },
     },
 
@@ -4770,9 +4707,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#ea09d2ec',
       },
       notes: {
-        en: "Two directions must be kept apart. **The trivial one**: a closed set is a union of one closed set, so $\\subseteq F_\\sigma$; an open set is an intersection of one open set, so $\\subseteq G_\\delta$. **In a metric space the converse also holds** (this is the non-trivial half): $\\subseteq F_\\sigma$ and $\\subseteq G_\\delta$. Proof: for open $U$ put $F_n := \\{x : d(x, X\\setminus U) \\ge 1/n\\}$; each $F_n$ is closed and $U = \\bigcup_n F_n$ (for $x \\in U$ take $n > 1/d(x, X\\setminus U)$), so $U$ is $F_\\sigma$; dualizing to complements gives $\\subseteq G_\\delta$. Separability is not needed here — \"an open set is a countable union of balls\" is a different (coarser) statement, and that one does need separability.\n\n⭐ After Baire, \"dense $G_\\delta$\" is the standard way to write \"almost every point\": for a pointwise limit $f$ of a sequence of continuous functions, the set of continuity points is a dense $G_\\delta$ (this is the only unconditional statement of this kind — \"set of differentiability points\" does not work: for $f = \\mathbf{1}_{\\mathbb{Q}}$ both the continuity set and the differentiability set are empty); the set of nowhere differentiable functions in $C[0,1]$ is also a dense $G_\\delta$.",
+        en: "Distinguish the two directions first. The **trivial** one: a closed set is \"a union of one closed set\", so closed $\\subseteq F_\\sigma$; an open set is \"an intersection of one open set\", so open $\\subseteq G_\\delta$. **In a metric space the converse also holds** (this is the nontrivial half): open $\\subseteq F_\\sigma$, closed $\\subseteq G_\\delta$. Proof: when $U$ is open put $F_n := \\{x : d(x, X\\setminus U) \\ge 1/n\\}$; each $F_n$ is closed and $U = \\bigcup_n F_n$ (for $x \\in U$ choose $n > 1/d(x, X\\setminus U)$), so $U$ is $F_\\sigma$; dualising to the complement gives \"closed $\\subseteq G_\\delta$\". This step needs no separability — \"an open set is a countable union of balls\" is a different (coarser) statement, and that one does need separability.\n\n⭐ After Baire, \"dense $G_\\delta$\" is the standard way to say \"almost all points\": for the pointwise limit $f$ of a sequence of continuous functions, the set of continuity points is a dense $G_\\delta$ (this is the only unconditional statement of this kind — \"the set of differentiability points\" fails: for $f = \\mathbf{1}_{\\mathbb{Q}}$ both the continuity set and the differentiability set are empty); the set of nowhere differentiable functions in $C[0,1]$ is also a dense $G_\\delta$.",
         status: 'draft',
-        basedOn: 'v0.9.3#bccaa1fb',
+        basedOn: 'v0.9.3#5faf4a8b'
       },
     },
 
@@ -7149,9 +7086,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#7cde20c9',
       },
       notes: {
-        en: "**Proof.** Compare the two sides verbatim.\n\"$p^{-1}$ has a left adjoint $p_{!}$\" says: for every $F \\in \\operatorname{Hom}(\\mathcal{C}, \\mathcal{D})$ there are $p_{!}F \\in \\operatorname{Hom}(\\mathcal{C}', \\mathcal{D})$ and a natural isomorphism\n\n$$\\operatorname{Hom}\\bigl(p_{!}F,\\ G\\bigr) \\;\\cong\\; \\operatorname{Hom}\\bigl(F,\\ p^{-1}G\\bigr) = \\operatorname{Hom}\\bigl(F,\\ G \\circ p\\bigr).$$\n\nThe data on the right is precisely the defining universal property of \"the left Kan extension of $F$ along $p$\" ✓: the **unit** of the adjunction $\\eta_{F} : F \\implies p_{!}F \\circ p$ is the $\\alpha$ in the definition, and the isomorphism itself gives the universal property of $\\alpha$ ✓.\nSo \"every $F$ has a left Kan extension\" and \"$p^{-1}$ has a left adjoint\" are the same statement; dually, reversing the arrows gives the right Kan extension clause ✓. ∎\n\n⭐ Reading: **Kan extensions are nothing new — they are adjoints of precomposition functors**. This proposition merges the two languages \"Kan extensions everywhere\" and \"adjoints everywhere\" into one.\n\n⚠️ The proposition itself **does not guarantee existence**; it only says that \"adjoint\" and \"Kan extension\" live and die together. Existence needs extra hypotheses (see \"Kan extensions exist when the target has enough colimits\").",
+        en: "⭐ How to read it: **the Kan extension is nothing new — it is the adjoint of precomposition**. This identifies the two languages \"Kan extensions everywhere\" and \"adjoints everywhere\".\n\n⚠️ The proposition itself **does not guarantee existence**; it only says that \"adjoint\" and \"Kan extension\" live and die together. Existence needs an extra hypothesis (see \"Kan extensions always exist when the target has enough limits\").",
         status: 'draft',
-        basedOn: 'v0.9.3#25f498b8',
+        basedOn: 'v0.9.3#c1b0de7d'
       },
     },
 
@@ -7812,9 +7749,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#0c4613da',
       },
       notes: {
-        en: "The proof uses a $3 \\times 3$ $\\operatorname{Hom}$ diagram: stretch the short exact sequence $0 \\to A \\to B \\to C \\to 0$ into three rows by the family $\\operatorname{Hom}(-, M)$, read the middle row $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$ off two applications of the snake lemma, and observe that the first and third rows are exact, so $\\ker g = \\operatorname{coker} g = 0$.\n\n**The four conditions form a cycle, but each step costs differently** (which is why injectivity has so many \"equivalent formulations\" yet is always verified through the same one):\n\n- (1) $\\iff$ (3): **almost a rewriting of the definition**. $\\operatorname{Hom}(-,I)$ is exact $\\iff$ it sends monomorphisms to epimorphisms (the other two exactness conditions are automatic for $\\operatorname{Hom}$, which is left exact). This step **does not need enough injectives** in the category.\n- (1) $\\implies$ (2): **one line**: given a monomorphism $\\iota : I \\rightarrowtail M$, injectivity gives $r : M \\to I$ with $r\\iota = \\mathrm{id}_{I}$ — that is the retraction.\n- (2) $\\implies$ (1): **this step uses the \"lifting\" argument of Baer's criterion**: given a monomorphism $M' \\rightarrowtail M$ and $f : M' \\to I$, form the pushout, turn $f$ into $I \\rightarrowtail P$ and take a retraction, obtaining $M \\to I$ making the diagram commute. **This is the only step of the four with real work.**\n- (1) $\\iff$ (4): **only for short exact sequences with $I$ at the left end**. A general short exact sequence splits $\\iff$ its left end is injective (or its right end projective); so the correct reading of (4) is \"every sequence **of the form** $0 \\to I \\to M \\to M'' \\to 0$ splits\".\n\n**One supplement uses Zorn (crucial)**: in the category of $R$-modules, the Bolzano–Weierstrass-style argument — \"$I$ injective $\\iff$ for every **ideal** $J \\subseteq R$, every $J \\to I$ extends to $R \\to I$\" (Baer's criterion) — uses the **Zorn lemma** (take a maximal extendable submodule). So the convenience \"injectivity can be tested on ideals\" **carries the cost of the axiom of choice**; in a general Grothendieck category the analogue is \"test on subobjects\", which needs no AC.\n\n⚠️ **Hypothesis of the second assertion**: when $M'$ is injective, $M$ injective $\\iff M''$ injective — this is \"closure of injective objects under extensions\", using only the short exact sequence and (4), and **does not need $\\mathcal{A}$ to have enough injectives**. Do not confuse it with the category-level assumption \"$\\mathcal{A}$ has enough injectives\".",
+        en: "**A Zorn-dependent supplement (crucial)**: in the category of $R$-modules, the Bolzano–Weierstrass-style argument — \"$I$ is injective $\\iff$ for every ideal $J \\subseteq R$, every $J \\to I$ extends to $R \\to I$\" (Baer's criterion) — uses **Zorn's lemma** (take a maximal extendable submodule). So the convenience \"injectivity can be tested on ideals\" **costs the axiom of choice**; the corresponding statement in a general Grothendieck category tests on subobjects and needs no AC.\n\n⚠️ **The hypothesis of the second assertion**: when $M'$ is injective, $M$ injective $\\iff M''$ injective — this is \"extensions of injectives are injective\", which uses only short exact sequences and (4), and **does not need** $\\mathcal{A}$ to have enough injectives. Do not confuse it with the category-level hypothesis \"$\\mathcal{A}$ has enough injectives\".",
         status: 'draft',
-        basedOn: 'v0.9.3#15ef2c18',
+        basedOn: 'v0.9.3#1ad9d105'
       },
     },
 
@@ -8098,9 +8035,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#27965adc',
       },
       notes: {
-        en: "**Proof.**\n\n**$(\\Longleftarrow)$** If $f = 0$ a.e., then every simple function $\\varphi \\le f$ also vanishes a.e. (at points where $f = 0$ we have $\\varphi = 0$), so $\\int \\varphi = 0$; taking the supremum over all such $\\varphi$ gives $\\int f = 0$ ✓.\n\n**$(\\implies)$** Suppose $\\int f = 0$. For each $n \\ge 1$ put $A_{n} := \\{f > 1/n\\}$ (measurable). From $\\frac1n\\chi_{A_{n}} \\le f$ we get\n\n$$\\frac1n\\,\\mu(A_{n}) \\le \\int f\\,\\mathrm{d}\\mu = 0 \\implies \\mu(A_{n}) = 0 .$$\n\nAnd $\\{f > 0\\} = \\bigcup_{n \\ge 1} A_{n}$ is a countable union of null sets, so $\\mu(\\{f>0\\}) = 0$, i.e. $f = 0$ a.e. ✓. ∎\n\nIncidentally: $\\{f = +\\infty\\} \\subseteq \\{f>0\\}$ is handled at the same time.\n\n$(\\Longleftarrow )$ It suffices that $f$ vanish off a null set; every simple function $\\varphi \\le f$ in the infimum is then almost everywhere zero, hence $\\int \\varphi = 0$.\n\n$(\\implies )$ Put $A_n = \\{f > 1/n\\}$; then $(1/n)\\cdot\\mu(A_n) \\le \\int f = 0$, so $\\mu (A_{n}) = 0$; and $\\{f > 0\\} = \\bigcup_n A_n$ is null.\n\n⭐ This ties the two notions \"integral\" and \"almost everywhere\" together — it is why, in $L^{1}$, \"$f = g$\" is understood a.e.",
+        en: "Incidentally: $\\{f = +\\infty\\} \\subseteq \\{f>0\\}$ is handled at the same time.\n\n$(\\Longleftarrow )$ it suffices that $f$ vanishes off a null set; then every simple function $\\varphi \\le f$ in the supremum vanishes almost everywhere, hence $\\int \\varphi = 0$.\n\n$(\\implies )$ put $A_n = \\{f > 1/n\\}$; then $(1/n)\\cdot\\mu(A_n) \\le \\int f = 0$, so $\\mu (A_{n}) = 0$; and $\\{f > 0\\} = \\bigcup_n A_n$ is null.\n\n⭐ This ties \"integral\" to \"almost everywhere\" — it is why $L^{1}$'s \"$f = g$\" is understood a.e.",
         status: 'draft',
-        basedOn: 'v0.9.3#d1d12630',
+        basedOn: 'v0.9.3#fc9d71c9'
       },
     },
 
@@ -8579,9 +8516,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#462ef353',
       },
       notes: {
-        en: "⭐ The orbit size divides $|G|$: orbit–stabilizer gives $|Gx| = [G : G_x]$ (see `thm.orbit-stabilizer`).\n\n⭐ Examples: $S_n$ is transitive on the first n positive integers; the orbits of the conjugation action are the conjugacy classes; the left multiplication action has only one orbit.\n\n⚠ Orbits of different $x$ are either equal or disjoint, never \"partially overlapping\".",
+        en: "⭐ When $G$ is finite, the orbit size divides $|G|$: orbit–stabilizer gives $|Gx| = [G : G_x]$ (see `thm.orbit-stabilizer`; for infinite groups read it as equipotence).\n\n⭐ Examples: $S_n$ acts transitively on $\\{1,\\ldots,n\\}$; the orbits of the conjugation action are conjugacy classes; the left multiplication action has only one orbit.\n\n⚠ Orbits of different $x$ are either equal or disjoint; they never \"partially overlap\".",
         status: 'draft',
-        basedOn: 'v0.9.3#4884bfc7',
+        basedOn: 'v0.9.3#efd6b1f1'
       },
     },
 
@@ -8592,9 +8529,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#23d8b956',
       },
       notes: {
-        en: "⭐ The larger the stabilizer, the smaller the orbit; the two are balanced exactly by $|G| = |Gx| \\cdot |G_x|$.\n\n⭐ The action is **free** if and only if all stabilizers are trivial (for example, left multiplication); it is **faithful** if and only if the kernel is trivial.\n\n⭐ Examples: in the natural action of $S_n$, $G_n \\cong S_{n-1}$; for the conjugation action, $G_x = C_G(x)$ is the centralizer, see `def.centralizer`.",
+        en: "⭐ When $G$ is finite, the larger the stabilizer the smaller the orbit; the two are balanced exactly by $|G| = |Gx| \\cdot |G_x|$.\n\n⭐ The action is **free** iff all stabilizers are trivial (e.g. left multiplication); it is **faithful** iff the kernel is trivial.\n\n⭐ Examples: in the natural action of $S_n$, $G_n \\cong S_{n-1}$; for the conjugation action, $G_x = C_G(x)$ is the centralizer, see `def.centralizer`.",
         status: 'draft',
-        basedOn: 'v0.9.3#684250a1',
+        basedOn: 'v0.9.3#57b60544'
       },
     },
 
@@ -8657,9 +8594,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#2fe619d0',
       },
       notes: {
-        en: "⭐ Why an ideal is necessary: for $(a+x)(b+y) \\equiv ab \\pmod I$ one needs $ay, xb, xy \\in I$; since $x, y \\in I$ while $a, b$ are arbitrary, $I$ must absorb multiplication from both sides.\n\n⭐ Examples: $\\mathbb{Z}/n\\mathbb{Z}$; $K[x]/(f)$ (a field when $f$ is irreducible); $\\mathbb{F}_p[x]/(x^{2}+1)$.\n\n⭐ $A/I$ is a domain if and only if $I$ is a prime ideal; $A/I$ is a field if and only if $I$ is a maximal ideal (both objects appear in later nodes; this node only constructs the quotient ring).",
+        en: "⭐ Why it must be an ideal: to make $(a+x)(b+y) \\equiv ab \\pmod I$ hold one needs $ay, xb, xy \\in I$; now $x, y \\in I$ while $a, b$ are arbitrary, so $I$ must absorb multiplication from both sides.\n\n⭐ Examples: $\\mathbb{Z}/n\\mathbb{Z}$, $K[x]/(f)$ (a field when $f$ is irreducible), $\\mathbb{F}_p[x]/(x^{2}+1)$.\n\n⭐ If $A$ is a commutative ring with unit, then $A/I$ is an integral domain iff $I$ is prime; $A/I$ is a field iff $I$ is maximal (both objects come in later nodes; this pack only gives the construction of the quotient ring). Commutativity cannot be dropped: the ring $M_2(\\mathbb{R})$ has zero ideal $(0)$, which is a maximal two-sided ideal, but $M_2(\\mathbb{R})/(0)\\cong M_2(\\mathbb{R})$ is neither a domain nor a field.",
         status: 'draft',
-        basedOn: 'v0.9.3#a9d22d09',
+        basedOn: 'v0.9.3#d514f337'
       },
     },
 
@@ -8670,9 +8607,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#38d45f5f',
       },
       notes: {
-        en: "⭐ Examples: an abelian group has nilpotency class $1$ ($\\gamma_1 = \\{e\\}$); $D_8$ has class $2$; every finite $p$-group is nilpotent; $S_3$ is not ($\\gamma_1 = A_3$, $\\gamma_2 = A_3 \\ne \\{e\\}$).\n\n⭐ Nilpotent $\\implies$ solvable: inductively $\\gamma_i \\subseteq G^{(i)}$, so the derived series terminates no later than the lower central series. The converse fails ($S_3$ is solvable but not nilpotent).\n\n⚠ Subgroups and quotients of a nilpotent group are nilpotent, but extensions need not be.",
+        en: "⭐ Examples: a nontrivial abelian group has nilpotency class $1$ ($\\gamma_1 = \\{e\\}$), the trivial group has class $0$; $D_8$ has class $2$; every finite $p$-group is nilpotent; $S_3$ is not nilpotent ($\\gamma_1 = A_3$, $\\gamma_2 = A_3 \\ne \\{e\\}$).\n\n⭐ Nilpotent $\\implies$ solvable: inductively $\\gamma_i \\subseteq G^{(i)}$, so the derived series terminates no later than the lower central series. The converse fails ($S_3$ is solvable but not nilpotent).\n\n⚠ Subgroups and quotients of nilpotent groups are nilpotent, but extensions need not be nilpotent.",
         status: 'draft',
-        basedOn: 'v0.9.3#eee57d6a',
+        basedOn: 'v0.9.3#8cc73a67'
       },
     },
 
@@ -8761,9 +8698,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#554b2d3a',
       },
       notes: {
-        en: "⭐ Examples: $\\mathbb{C}$ is an algebraic closure of $\\mathbb{R}$; $\\overline{\\mathbb{Q}}$ (all algebraic numbers over $\\mathbb{Q}$) is an algebraic closure of $\\mathbb{Q}$; an algebraic closure of $\\mathbb{F}_p$ is $\\bigcup_{n} \\mathbb{F}_{p^n}$.\n\n⚠ An algebraic closure is not \"a unique set\" but \"unique up to isomorphism\"; different constructions give $K$-isomorphic fields.\n\n⭐ Existence uses Zorn: take the partially ordered set of all algebraic extensions; a maximal element must be algebraically closed (otherwise adjoin one more root and continue).",
+        en: "⭐ Examples: $\\mathbb{C}$ is the algebraic closure of $\\mathbb{R}$; $\\overline{\\mathbb{Q}}$ (all algebraic numbers over $\\mathbb{Q}$) is the algebraic closure of $\\mathbb{Q}$; the algebraic closure of $\\mathbb{F}_p$ is $\\bigcup_{n} \\mathbb{F}_{p^n}$.\n\n⚠ The algebraic closure is not \"a unique set\" but \"unique up to isomorphism\"; different constructions give $K$-isomorphic fields.\n\n⭐ Existence uses Zorn, but first one must pass to a set: all algebraic extensions form a proper class and cannot be ordered directly. Give the candidate field a cardinal bound $\\le \\max(|K|, \\aleph_0)$ first (each algebraic element is a root of some nonzero polynomial in $K[x]$, while $K[x]$ has only $\\max(|K|,\\aleph_0)$ elements and each polynomial has finitely many roots, so the total number of algebraic elements is at most this bound), keep only algebraic extensions within the bound, and apply Zorn to those; a maximal element must be algebraically closed (otherwise add one more root and extend).",
         status: 'draft',
-        basedOn: 'v0.9.3#07b270bf',
+        basedOn: 'v0.9.3#b40182e8'
       },
     },
 
@@ -8800,9 +8737,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: 'v0.9.3#a8b5bea4',
       },
       notes: {
-        en: "⭐ Three-level comparison: subgroup (group) ⊂ submodule (module) ⊂ subspace (module over a field). A submodule is required to be closed under the **ring action**, one condition more than \"additive subgroup\".\n\n⭐ Examples: for $A = \\mathbb{Z}$, submodules are the subgroups $n\\mathbb{Z}$; for $A = K[x]$, submodules are the $K[x]$-subspaces.\n\n⭐ Submodule lattice: any intersection is again a submodule, but a union in general is not; the submodule generated by $S$ is the smallest submodule containing $S$. Quotient modules are built as $M/N$ (see `def.quotient-module`, a later node).",
+        en: "⭐ Three levels of comparison: subgroup (group) $\\subset$ submodule (module) $\\subset$ subspace (module over a field). A submodule is required to be closed under the **ring action**, one condition more than an additive subgroup.\n\n⭐ Examples: for $A = \\mathbb{Z}$ a submodule is just a subgroup $n\\mathbb{Z}$; for $A = K[x]$ a submodule is a $K[x]$-subspace.\n\n⭐ The submodule lattice: arbitrary intersections are submodules, but unions usually are not; the submodule generated by $S$ is the smallest submodule containing $S$. Quotient modules are constructed as $M/N$ (see `def.quotient-module`, a later node).",
         status: 'draft',
-        basedOn: 'v0.9.3#3d3d85ef',
+        basedOn: 'v0.9.3#8564879b'
       },
     },
 
@@ -11614,9 +11551,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       basedOn: 'v0.9.3#15322b74'
     },
     notes: {
-      en: "**Proof.** Denote the condensed abelian group on the left by $S \\mapsto C(S, C_{\\mathbb{Z}}(M,N))$. For compact Hausdorff $S$, evaluate both sides objectwise:\n- Right-hand side:\n$$\\operatorname{Hom}_{\\mathbb{Z}}(\\underline{M},\\underline{N})(S) = \\operatorname{Hom}\\bigl(S, \\operatorname{Hom}_{\\mathbb{Z}}(\\underline{M},\\underline{N})\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\underline{M},\\ \\operatorname{Hom}(S, \\underline{N})\\bigr) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\underline{M},\\ C(S, N)\\bigr) = C_{\\mathbb{Z}}\\bigl(M,\\ C(S,N)\\bigr),$$\nThe second step uses the adjunction between $(S, -)$ and internal Hom. The last step uses that, when $M$ is compactly generated, $\\underline{M}$ is a fully faithful embedding (the preceding proposition);\n- Left-hand side: $C_{\\mathbb{Z}}(M,N)(S) = \\operatorname{Hom}\\bigl(S, C_{\\mathbb{Z}}(M,N)\\bigr) = C\\bigl(S,\\ C_{\\mathbb{Z}}(M,N)\\bigr)$;\n- The **exponential law** (valid under compact generation or local compactness) relates the two sides:\n$$C\\bigl(M,\\ C(S,N)\\bigr) \\cong C(M\\times S,\\ N) \\cong C\\bigl(S,\\ C(M,N)\\bigr).$$\nCombining these gives the required natural isomorphism, since the exponential law preserves the homomorphism condition pointwise. ∎\n⭐ **Role of the compact generation hypothesis on $M$**: Under this hypothesis, $\\operatorname{Hom}_{\\mathbb{Z}}(\\underline{M}, -)$ measures continuous homomorphisms. For general topological abelian groups, condensed Hom can contain **more** maps than the continuous homomorphisms, because maps may be continuous on the test pieces and fail to be continuous globally.",
+      en: "⭐ The role of the hypothesis \"$M$ is compactly generated\": only then does $\\operatorname{Hom}_{\\mathbb{Z}}(\\underline{M}, -)$ really measure continuous homomorphisms; on a general topological abelian group the condensed Hom is **larger** than the continuous homs (one can glue a map piecewise that is not continuous globally).",
       status: 'draft',
-      basedOn: 'v0.9.3#b368fc03'
+      basedOn: 'v0.9.3#2abdce6f'
     },
   },
   'prop.lc-ab-preabelian': {
@@ -11686,9 +11623,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       basedOn: 'v0.9.3#683ec6e0'
     },
     notes: {
-      en: "**Proof.**\n**1.** The kernel is the equalizer of $f$ and $0$. In topological abelian groups this equalizer is $\\{x : f(x) = 0\\}$ with the **subspace topology** ($f$ is continuous and $N$ is Hausdorff, so this set is closed) ✓.\n\nThe cokernel is a coequalizer. The quotient in $\\mathbf{AbHaus}$ must still be Hausdorff, and $N/f(M)$ is Hausdorff only when $f(M)$ is **closed**. Thus the coequalizer must be $N/\\overline{f(M)}$ (with the quotient topology) ✓. The image of a general continuous homomorphism **need not be closed** (the image of $\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ is dense and nonclosed), so the closure is necessary;\n\nwhen the image is already closed, this reduces to $N/f(M)$ ✓.\n**2.** A kernel is an equalizer with the subspace topology, so the map is a homeomorphic embedding onto a closed subgroup ✓. Conversely, a closed embedding $\\varphi : M' \\to M$ is precisely the equalizer of $\\varphi$ and $0$ (the equalizer carries the subspace topology, and the closed image ensures that the quotient gives the correct cokernel) ✓.\n\nThe argument for cokernels is analogous. A quotient map is an open surjection ✓, and an open surjection is the coequalizer of its own kernel ✓. Openness is essential: $\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ is surjective but fails to be a cokernel.\n**3.** If the sequence is strictly exact, then $\\varphi$ realizes $\\ker\\psi$ and $\\psi$ realizes $\\operatorname{coker}\\varphi$. By 2, $\\varphi$ is a closed embedding and $\\psi$ is an open surjection ✓.\n\nConversely, if the sequence is exact as a sequence of abstract groups, $\\varphi$ is a closed embedding, and $\\psi$ is an open surjection, then $\\varphi$ agrees with $\\psi^{-1}(0)$ with the subspace topology, and $\\psi$ agrees with the quotient by $\\overline{\\varphi(M)}$. Since $\\varphi(M)$ is closed, this is the quotient by the image ✓.\n\nThus the sequence is a kernel-cokernel sequence, hence strictly exact ✓.\n\n∎\n\n⭐ **Strictness matters**: In topological abelian groups, exactness and strict exactness are genuinely different. The category of topological abelian groups **fails to be abelian** because morphisms need not be characterized by their kernels and cokernels. Condensed mathematics addresses this by embedding topological groups into $\\mathrm{CondAb}$.\n\n\n\n**Hypotheses used in each direction** (the universal properties of kernels and cokernels also determine the topology):\n- Kernel $\\implies$ closed embedding: The kernel carries the subspace topology, and the Hausdorff target ensures that zero is closed. Conversely, a closed embedding is the kernel of the quotient map $M\\to M/H$. Calling it the equalizer of itself and zero would be incorrect.\n- Cokernel $\\implies$ open surjection: Take the quotient by the closure of the image. Group quotient maps are open. Conversely, an open surjection induces a homeomorphism from the quotient by its kernel, so it is the cokernel of its kernel. Both directions use the universal property of the quotient topology.\n- Strict exactness $\\iff$ exactness of abstract groups with a closed embedding and an open surjection: In the forward direction, unpack the kernel-cokernel sequence and use the characterizations above. In the reverse direction, identify the two topologies to recover the universal properties. The open mapping theorem is unnecessary.\n- The closure is essential: $\\mathbb Q\\hookrightarrow\\mathbb R$ has dense nonclosed image in a Hausdorff group. Openness is also essential: the identity map on $\\mathbb R$ from the discrete topology to the usual topology is continuous and surjective but fails to be open. The integers with the coarse topology in the original note lie outside this category.",
+      en: "⭐ \"Strict\" is not decoration: for topological abelian groups \"exact\" and \"strictly exact\" are genuinely different — topological abelian groups are not an abelian category, and what is missing is exactly \"every morphism is determined by its kernel and cokernel\". Condensed mathematics repairs this layer by embedding topological groups into $\\mathrm{CondAb}$.\n\n**Hypotheses used in each direction** (the universal property of kernel and cokernel also determines the topology):\n- Kernel $\\implies$ closed embedding: the kernel carries the subspace topology, and a Hausdorff target makes the zero point closed; conversely a closed embedding is the kernel of the quotient map $M\\to M/H$, and it must not be miscalled the equaliser of itself with zero.\n- Cokernel $\\implies$ open surjection: quotient by the closure of the image, and the quotient map of groups is open; conversely an open surjection gives a homeomorphism onto the quotient by the kernel, hence is the cokernel of its kernel — both need the universal property of the quotient topology.\n- Strictly exact $\\iff$ abstract exactness plus closed embeddings and open surjections: forward, expand the kernel–cokernel sequence and use the descriptions above; backward, recover the universal property via the two topological identifications, with no open mapping theorem.\n- Closure cannot be dropped: $\\mathbb Q\\hookrightarrow\\mathbb R$ has dense but non-closed image in a Hausdorff group. Openness cannot be dropped either: the identity from $\\mathbb R$ with the discrete topology to the usual topology is a continuous surjection that is not open; the coarse-topology integer group of the original remark is not an object of this category.",
       status: 'draft',
-      basedOn: 'v0.9.3#ce777554'
+      basedOn: 'v0.9.3#9286d916'
     },
   },
   'prop.pontryagin-finite-dim-banach': {
@@ -11818,9 +11755,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       basedOn: 'v0.9.3#d017f644'
     },
     notes: {
-      en: "**Proof.** Isometric transition maps give two key facts. The **seminorm in the colimit is the seminorm of a representative** (all representatives have the same norm because their images under the isometric maps agree at a common stage) ✓. The differentials commute with the transition maps, so $\\|d s\\| = \\|d s_{k}\\|$ holds for any representative $s_{k} \\mapsto s$ ✓.\nGiven $s \\in M^{n}$ and $\\varepsilon > 0$, choose a representative $s_{k} \\in M^{n}_{k}$ (every element of the colimit comes from some stage) ✓. In $M^{\\bullet}_{k}$, apply $K$-bounded exactness to obtain $s'_{k} \\in M^{n+1}_{k}$ such that\n$$\\|s_{k} - d^{n+1}s'_{k}\\| \\le K\\,\\|d^{n}s_{k}\\| + \\varepsilon.$$\nMap $s'_{k}$ into the colimit to obtain $s' \\in M^{n+1}$. Since the maps are isometric and commute with the differentials, both sides carry over term by term:\n$$\\|s - d^{n+1}s'\\| = \\|s_{k} - d^{n+1}s'_{k}\\| \\le K\\,\\|d^{n}s_{k}\\| + \\varepsilon = K\\,\\|d^{n}s\\| + \\varepsilon ✓$$\nThis is exactly the requirement for $K$-bounded exactness at $M^{n}$ ✓. ∎\n\n⭐ Application: $K$-bounded exactness is a quantitative analytic property that persists when **passing to a larger complex by filtered colimit**. One can therefore check the condition on finite or simple complexes and then take the colimit.\n\n⚠️ The **isometry** hypothesis is essential. If the transition maps are merely continuous and can decrease norms, the colimit seminorm becomes the infimum of the norms of the representatives, and $\\|d s\\| = \\|d s_{k}\\|$ above no longer holds.",
+      en: "⭐ Use: the \"analytic property with a constant\", $K$-bounded exactness, is not lost when passing to larger complexes — so one can check the condition on finite/simple complexes first and then take the colimit.\n\n⚠️ The isometry condition cannot be dropped: if the transition maps are only continuous and shrink norms, the seminorm on the colimit becomes the infimum of representative norms, and $\\|d s\\| = \\|d s_{k}\\|$ above fails immediately.",
       status: 'draft',
-      basedOn: 'v0.9.3#1c507a87'
+      basedOn: 'v0.9.3#12602a11'
     },
   },
   'prop.continuous-functions-normed': {
@@ -11830,9 +11767,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       basedOn: 'v0.9.3#a88017b1'
     },
     notes: {
-      en: "**Proof.**\n**1.** $\\sup$ is finite because a continuous function on a compact space is bounded ($f(S)$ is compact, and norm balls have finite radius) ✓. Verify the three seminorm axioms pointwise using the seminorm on $M$ and then take suprema ✓. $\\|f\\| = 0 \\implies f = 0$ if and only if $M$ is Hausdorff (its seminorm is a norm) ✓.\n**Completeness**: Let $(f_{j})$ be a Cauchy sequence for $\\|\\cdot\\|$. At each $x$, the sequence $(f_{j}(x))$ is Cauchy. Since $M$ is complete, it has a limit $f(x)$ ✓;\n\nthe sequence is **uniformly** Cauchy ($\\|f_{j}-f_{k}\\| < \\varepsilon$ holds for every $x$), so $f_{j} \\to f$ converges **uniformly**. Uniform limits preserve continuity ✓, so if $M$ is complete, then $C(S,M)$ is complete ✓.\n**2.** Given $f \\in C(S, M)$ and $\\varepsilon > 0$, consider the open cover\n$$S = \\bigcup_{m \\in M} f^{-1}\\bigl(B(m, \\varepsilon/2)\\bigr)$$\nSince $S$ is a Stone space, this cover has a **finite, pairwise disjoint clopen refinement** $S = \\bigsqcup_{r} S_{r}$ (every open cover of a Stone space has such a refinement) ✓.\n\nOn each $S_{r}$, choose any $m_{r}$ such that $S_{r} \\subseteq f^{-1}(B(m_{r},\\varepsilon/2))$ ✓, and set $g := m_{r}$ on $S_{r}$.\n\nThen $g$ is **locally constant**, that is, continuous as a map into the discrete group $M^{\\mathrm{disc}}$ ✓. Pointwise, $\\|f - g\\| \\le \\varepsilon/2$ ✓, so $\\|f-g\\| \\le \\varepsilon/2 < \\varepsilon$ ✓.\n\nThus $C(S,M^{\\mathrm{disc}})$ is dense ✓.\n\n∎\n\n⭐ Part 2 makes precise the claim that there are **enough discrete-valued functions**. Every continuous $M$-valued function on a Stone space can be uniformly approximated by locally constant functions. This is a key step in the acyclicity proofs with Banach coefficients (8.2.6 and 8.2.8).",
+      en: "⭐ Statement 2 is the precise version of \"there are enough discrete-valued functions\": on a Stone space every continuous $M$-valued function can be uniformly approximated by locally constant functions. It is a key step in the proof of acyclicity for Banach coefficients (8.2.6 / 8.2.8).",
       status: 'draft',
-      basedOn: 'v0.9.3#5905c030'
+      basedOn: 'v0.9.3#cd2e3fd1'
     },
   },
   'prop.condab-section': {
@@ -11890,9 +11827,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       basedOn: 'v0.9.3#91fe43ac'
     },
     notes: {
-      en: "**Proof.**\n- **Generation**: $\\mathrm{Cond}$ is generated by $\\{h_{F}\\}$ (with $F$ free compact Hausdorff). In general, if $\\{X_{i}\\}$ generates $\\mathcal{C}$, then $\\{\\mathbb{Z}\\cdot X_{i}\\}$ generates $\\mathrm{Ab}(\\mathcal{C})$ (use the universal property of free abelian group objects: two morphisms agreeing on all $\\mathbb{Z}\\cdot X_{i}$ are equal).\n\nThus $\\{\\mathbb{Z}\\cdot F\\}$ generates $\\mathrm{CondAb}$ ✓;\n\n\n- Each $\\mathbb{Z}\\cdot F$ is finitely presented and projective by **the preceding result** ✓;\n- **Enough projectives**: Given $M$, generation gives an epimorphism $\\bigoplus_{i} \\mathbb{Z}\\cdot F_{i} \\twoheadrightarrow M$. A **coproduct** of projective objects is projective ✓, so every $M$ is a quotient of a projective object. ∎\n⭐ **This is one of the two facts that allow derived functors to be computed in $\\mathrm{CondAb}$** (the other is that it has enough injectives, since it is a Grothendieck category). Having enough **projectives** allows **left** derived functors to be computed directly.",
+      en: "⭐ This is the other half of the justification that \"one can do derived algebra in $\\mathrm{CondAb}$\" (the first half being \"enough injectives\", supplied by the fact that it is a Grothendieck category): enough projective objects means left derived functors can also be computed directly.",
       status: 'draft',
-      basedOn: 'v0.9.3#f517c874'
+      basedOn: 'v0.9.3#5008497a'
     },
   },
   'prop.discrete-functor-coproduct': {
@@ -11914,9 +11851,9 @@ This is the most common way to prove two sets equal: **containment both ways**.`
       basedOn: 'v0.9.3#da3ff8d5'
     },
     notes: {
-      en: "**Proof sketch.** In the exact sequence $0 \\to N \\to M \\to M/N \\to 0$, closedness of $N$ ensures that $M/N$ is a locally compact Hausdorff group ✓.\n\nWe must show $\\underline{M}/\\underline{N} \\cong \\underline{M/N}$. ⚠️ The argument “preserves limits $\\implies$ preserves cokernels” is invalid: preservation of limits gives preservation of **kernels**. The correct argument has two steps:\n\n(1) The cokernel in CondAb is the **sheafification** of the objectwise quotient presheaf $U \\mapsto \\underline{M}(U)/\\underline{N}(U)$;\n\n(2) After sheafification it agrees with the constant sheaf $\\underline{M/N}$. This step uses a standard fact about locally compact abelian groups: the inclusion of a closed subgroup $N \\hookrightarrow M$ still gives a short exact sequence $0 \\to \\underline{N} \\to \\underline{M} \\to \\underline{M/N} \\to 0$ in condensed abelian groups (Clausen–Scholze, *Lectures on Condensed Mathematics*, Lecture 3: $\\mathrm{LCA} \\hookrightarrow \\mathrm{Cond(Ab)}$ is fully faithful and exact). Equivalently, sheafification turns the objectwise quotient presheaf into $C(S, M/N)$. **The sheafification calculation is omitted here**. See Le Stum, Exercise 6.5, for the full argument ✓.\n\nCombining the two steps gives the isomorphism ✓. ∎\n\n📌 Application: When computing with condensed abelian groups, **one can compute the quotient on the topological side first and then discretize**.",
+      en: "📌 Use: when computing condensed abelian groups, one may first compute the quotient on the topological side and then discretise.",
       status: 'draft',
-      basedOn: 'v0.9.3#848fa761'
+      basedOn: 'v0.9.3#be0ae4d2'
     },
   },
   'thm.darboux': {

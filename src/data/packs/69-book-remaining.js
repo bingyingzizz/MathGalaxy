@@ -75,17 +75,7 @@ window.MG = window.MG || {};
         '',
         '对偶地：$p^{-1}$ 有右伴随 $p_{*}$ $\\iff$ 右 Kan 延拓总存在。'
       ].join('\n'),
-      notes: [
-        [
-          '**证明。** 两边逐字对照即可。',
-          '「$p^{-1}$ 有左伴随 $p_{!}$」说的是：对每个 $F \\in \\operatorname{Hom}(\\mathcal{C}, \\mathcal{D})$ 存在 $p_{!}F \\in \\operatorname{Hom}(\\mathcal{C}\', \\mathcal{D})$ 与自然同构',
-          '$$\\operatorname{Hom}\\bigl(p_{!}F,\\ G\\bigr) \\;\\cong\\; \\operatorname{Hom}\\bigl(F,\\ p^{-1}G\\bigr) = \\operatorname{Hom}\\bigl(F,\\ G \\circ p\\bigr).$$',
-          '右边的数据正是「$F$ 沿 $p$ 的左 Kan 延拓」的定义（泛性质）✓：伴随的**单位** $\\eta_{F} : F \\implies p_{!}F \\circ p$ 就是定义里的那条 $\\alpha$，而同构本身给出 $\\alpha$ 的泛性质 ✓。',
-          '所以「每个 $F$ 都有左 Kan 延拓」与「$p^{-1}$ 有左伴随」是同一句话；对偶地把箭头反过来即得右 Kan 延拓那一条 ✓。∎'
-        ].join('\n'),
-        '⭐ 读法：**Kan 延拓不是新东西，它就是预复合函子的伴随**。这一条把「到处都要用 Kan 延拓」与「到处都要用伴随」两套话合成了一套。',
-        '⚠️ 命题本身**不保证存在**，它只说「伴随」与「Kan 延拓」同生同死；存在性要另加条件（见「有余极限时 Kan 延拓总存在」）。'
-      ].join('\n\n'),
+      notes: "⭐ 读法：**Kan 延拓不是新东西，它就是预复合函子的伴随**。这一条把「到处都要用 Kan 延拓」与「到处都要用伴随」两套话合成了一套。\n\n⚠️ 命题本身**不保证存在**，它只说「伴随」与「Kan 延拓」同生同死；存在性要另加条件（见「有余极限时 Kan 延拓总存在」）。",
       refs: ['Le Stum, An introduction to condensed mathematics, Proposition 1.5.10']
     },
 
@@ -107,18 +97,7 @@ window.MG = window.MG || {};
         '',
         '对偶地：$\\mathcal{D}$ 有所有小极限 $\\implies$ 右 Kan 延拓总存在，$(p_{*}F)(X\') = \\varprojlim_{X\' \\to p(X)} F(X)$。'
       ].join('\n'),
-      notes: [
-        [
-          '**证明。**',
-          '**（一）造 $p_{!}F$ 在对象上的值。** 对每个 $X\' \\in \\mathcal{C}\'$，逗号范畴 $p \\downarrow X\'$ 的对象是 $(X, f : p(X) \\to X\')$，态射是使 $f\' \\circ p(u) = f$ 的 $u : X \\to X\'$。\n\n这一族 $\\{F(X)\\}$ 连同「$u$ 给出 $F(u) : F(X) \\to F(X\')$」构成一个余锥，取其余极限就得到 $(p_{!}F)(X\')$ ✓。',
-          '**（二）在态射上的值。** 给定 $u\' : X\' \\to Y\'$，把 $X\'$ 处的余锥沿 $u\'$ 推前（$(X, f) \\mapsto (X, u\' \\circ f)$）得 $Y\'$ 处的余锥，泛性质给出 $(p_{!}F)(u\')$ ✓，函子性由泛性质中的唯一性得到 ✓。',
-          '**（三）那条自然变换 $\\alpha : F \\implies p_{!}F \\circ p$。** 在 $X$ 处取 $p(X) \\xrightarrow{\\ 1\\ } p(X)$ 对应的那条腿 $F(X) \\to (p_{!}F)\\bigl(p(X)\\bigr)$ ✓。',
-          '**（四）泛性质。** 设 $G : \\mathcal{C}\' \\to \\mathcal{D}$ 与 $\\gamma : F \\implies G \\circ p$。\n\n在 $X\'$ 处，$\\{\\gamma_{X} \\text{ 后接 } G(f) : F(X) \\to G(X\')\\}_{f : p(X) \\to X\'}$ 是 $G(X\')$ 里的一个余锥，于是得唯一的 $\\widetilde{\\gamma}_{X\'} : (p_{!}F)(X\') \\to G(X\')$ ✓；\n\n唯一性来自余极限的泛性质，自然性两边都是余锥的映射，逐点验证即可 ✓。',
-          '于是 $\\operatorname{Hom}(p_{!}F, G) \\cong \\operatorname{Hom}(F, G \\circ p)$ ✓，即 $p_{!} \\dashv p^{-1}$ ✓。∎'
-        ].join('\n'),
-        '⭐ 用处：**预层范畴的完备性/余完备性把 Kan 延拓变成自动的**。取 $\\mathcal{D} = \\mathbf{Set}$ 就得到「任何函子在预层范畴之间都诱导一对伴随」—— 这正是「任意函子诱导拓扑斯态射」的引擎。',
-        '⚠️ 公式里的余极限**不能随手换成「沿 $\\mathcal{C}$ 取」**：索引范畴是逗号范畴 $p \\downarrow X\'$，它的对象会随 $X\'$ 变化。'
-      ].join('\n\n'),
+      notes: "⭐ 用处：**预层范畴的完备性/余完备性把 Kan 延拓变成自动的**。取 $\\mathcal{D} = \\mathbf{Set}$ 就得到「任何函子在预层范畴之间都诱导一对伴随」—— 这正是「任意函子诱导拓扑斯态射」的引擎。\n\n⚠️ 公式里的余极限**不能随手换成「沿 $\\mathcal{C}$ 取」**：索引范畴是逗号范畴 $p \\downarrow X'$，它的对象会随 $X'$ 变化。",
       refs: ['Le Stum, An introduction to condensed mathematics, Proposition 1.5.11']
     },
 

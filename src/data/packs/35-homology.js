@@ -359,27 +359,7 @@ window.MG = window.MG || {};
         '1. 若这是三角**到自身**的态射、而**前两步为零**（$u = v = 0$），则第三步的 $w$ 满足 $w^{2} = 0$；',
         '2. 若 $u, v$ 都是**同伦等价**，则 $w$ 也是。'
       ].join('\n'),
-      notes: [
-        '**证明第 2 条（三角的五引理）。** 取任意 $T \\in \\mathbf{K}(\\mathcal{C})$，对共调函子 $\\operatorname{Hom}_{\\mathbf{K}}(T, -)$ 作用在两个三角上，得两条长正合列，并由 $(u, v, w, u[1], v[1], w[1])$ 连起来：',
-        '',
-        '$$\\begin{array}{ccccccccc} \\operatorname{Hom}(T, K) & \\to & \\operatorname{Hom}(T, L) & \\to & \\operatorname{Hom}(T, M) & \\to & \\operatorname{Hom}(T, K[1]) & \\to & \\operatorname{Hom}(T, L[1]) \\\\ {\\scriptstyle u_{*}}\\big\\downarrow & & {\\scriptstyle v_{*}}\\big\\downarrow & & {\\scriptstyle w_{*}}\\big\\downarrow & & {\\scriptstyle u[1]_{*}}\\big\\downarrow & & {\\scriptstyle v[1]_{*}}\\big\\downarrow \\\\ \\operatorname{Hom}(T, K\') & \\to & \\operatorname{Hom}(T, L\') & \\to & \\operatorname{Hom}(T, M\') & \\to & \\operatorname{Hom}(T, K\'[1]) & \\to & \\operatorname{Hom}(T, L\'[1]) \\end{array}$$',
-        '',
-        '若 $u, v$ 是同伦等价，则 $u_{*}, v_{*}$ 以及它们的平移 $u[1]_{*}, v[1]_{*}$ 都是双射 —— 五引理把中间的 $w_{*}$ 夹成双射。这对**每个** $T$ 都成立，于是由 Yoneda 引理，$w$ 本身就是同伦等价。∎',
-        ['**证明第 1 条。** 设三角 $K \\xrightarrow{f} L \\xrightarrow{g} M \\xrightarrow{h} K[1]$ 到自身有态射 $(0, 0, w)$，于是 $g v = w g$、$h w = u[1] h$，即',
-          '$$w g = 0, \\qquad h w = 0 .$$',
-          '- 由 $w g = 0$：把共调函子 $\\operatorname{Hom}(-, M)$ 作用在三角上得长正合列 $\\operatorname{Hom}(K[1], M) \\xrightarrow{\\;h^{*}\\;} \\operatorname{Hom}(M, M) \\xrightarrow{\\;g^{*}\\;} \\operatorname{Hom}(L, M)$，而 $g^{*}(w) = w g = 0$，所以 $w$ 落在 $\\operatorname{im} h^{*}$ 里：存在 $w_{1} : K[1] \\to M$ 使 **$w = w_{1} \\circ h$**；\n\n',
-          '- 由 $h w = 0$ 得 $(h w_{1}) \\circ h = 0$。\n\n把同一套正合列用在**旋转后**的三角 $L \\xrightarrow{g} M \\xrightarrow{h} K[1] \\xrightarrow{-f[1]} L[1]$ 上（对着靶 $K[1]$），$(h w_{1}) \\circ h = 0$ 给出 $h w_{1}$ 落在 $\\operatorname{im}(-f[1])^{*}$ 里：存在 $\\beta : L[1] \\to K[1]$ 使 **$h w_{1} = -\\beta \\circ f[1]$**；\n\n',
-          '- 于是 $w^{2} = w_{1} h w_{1} h = w_{1}(h w_{1}) h = -w_{1} \\beta f[1] h$。而 $f[1] \\circ h = 0$ —— 那正是旋转公理说的「三角里相邻两步复合为零」。故 $w^{2} = 0$。∎',
-          '**第 1 条在说什么**：三角之间的态射被前两步控制得很紧 —— 前两步一旦归零，第三步不但被逼成零平方，还被夹在两条正合列之间。这正是三角范畴公理里那条最不显然的要求的来源。',
-        ,
-        '**各方向用到的假设**（这两条是三角态射的推论，并非互为逆命题）：\n' +
-        '- 在 $\\mathbf{K}(\\mathcal{C})$ 中同伦等价 $\\iff$ 同构：由同伦范畴态射的定义展开；后续必须在此范畴讨论。\n' +
-        '- 自态射且 $u=v=0$ $\\implies$ $w^2=0$：需导出三角的 Hom 长正合列，把 $w$ 经连接态射分解，再用相邻箭头复合为零；不是零态射的定义展开。\n' +
-        '- $u,v$ 为同伦等价 $\\implies$ $w$ 为同伦等价：对每个对象应用 Hom 长正合列、五引理及 Yoneda 判据；不需复形逐项有限或有界。\n' +
-        '- 第三分量同构不推出前两分量都同构：两个恒等三角 $K\\xrightarrow{1}K\\to0\\to K[1]$ 之间取 $(0,0,1_0)$，非零 $K$ 时前两项不是同构；“到自身”也是写 $w^2$ 的必要类型条件。\n'
-        ].join('\n'),
-        '第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。'
-      ].join('\n\n'),
+      notes: "**第 1 条在说什么**：三角之间的态射被前两步控制得很紧 —— 前两步一旦归零，第三步不但被逼成零平方，还被夹在两条正合列之间。这正是三角范畴公理里那条最不显然的要求的来源。\n\n**各方向用到的假设**（这两条是三角态射的推论，并非互为逆命题）：\n- 在 $\\mathbf{K}(\\mathcal{C})$ 中同伦等价 $\\iff$ 同构：由同伦范畴态射的定义展开；后续必须在此范畴讨论。\n- 自态射且 $u=v=0$ $\\implies$ $w^2=0$：需导出三角的 Hom 长正合列，把 $w$ 经连接态射分解，再用相邻箭头复合为零；不是零态射的定义展开。\n- $u,v$ 为同伦等价 $\\implies$ $w$ 为同伦等价：对每个对象应用 Hom 长正合列、五引理及 Yoneda 判据；不需复形逐项有限或有界。\n- 第三分量同构不推出前两分量都同构：两个恒等三角 $K\\xrightarrow{1}K\\to0\\to K[1]$ 之间取 $(0,0,1_0)$，非零 $K$ 时前两项不是同构；“到自身”也是写 $w^2$ 的必要类型条件。\n\n\n第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -524,19 +504,7 @@ window.MG = window.MG || {};
         '',
         '$M$ **内射** $\\iff M\\prime\\prime$ **内射**'
       ].join('\n'),
-      notes: [
-        '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
-  '**四条是一个循环，但每一跳的代价不同**（这也是为什么内射性有这么多“等价说法”，却总是用同一条来验证）：\n' +
-  '\n' +
-  '- (1) $\\iff$ (3)：**几乎只是定义改写**。$\\operatorname{Hom}(-,I)$ 正合 $\\iff$ 它把单态射送到满射（其余两个正合性对 $\\operatorname{Hom}$ 是自动的，因为它是左正合的）。这一跳**不需要范畴有足够多内射**。\n' +
-  '- (1) $\\implies$ (2)：**一行**：给单态射 $\\iota : I \\rightarrowtail M$，由内射性存在 $r : M \\to I$ 使 $r\\iota = \\mathrm{id}_{I}$ —— 这就是收缩。\n' +
-  '- (2) $\\implies$ (1)：**这一步要用 Baer 判别法的“提升”论证**：给单态射 $M\' \\rightarrowtail M$ 与 $f : M\' \\to I$，考虑推出图，把 $f$ 拉成 $I \\rightarrowtail P$ 再取收缩，得到 $M \\to I$ 使图交换。**这是四条里唯一有实质劳动的一跳**。\n' +
-  '- (1) $\\iff$ (4)：**只对“以 $I$ 为左端的短正合列”说**。一般短正合列分裂 $\\iff$ 左端内射（或右端投射）；所以 (4) 的准确读法是「每个**形如** $0 \\to I \\to M \\to M\'\' \\to 0$ 的列分裂」。\n' +
-  '\n' +
-  '**一条要用 Zorn 的补充（很关键）**：在 $R$-模范畴里，Bolzano–Weierstrass 式的论证 ——「$I$ 内射 $\\iff$ 对每个**理想** $J \\subseteq R$，每个 $J \\to I$ 都能延拓到 $R \\to I$」（Baer 判别法）—— 用的是 **Zorn 引理**（把“可延拓的子模”取极大）。所以「内射性可用理想检验」这条便利是**有选择公理代价**的；在一般的 Grothendieck 范畴里对应的是「用次对象检验」，不需要 AC。\n' +
-  '\n' +
-  '⚠️ **第二个断言的假设**：$M\'$ 内射时 $M$ 内射 $\\iff M\'\'$ 内射 —— 这是「内射对象的扩张封闭性」，只用短正合列与 (4)，**不需要 $\\mathcal{A}$ 有足够多内射**。别把它与「$\\mathcal{A}$ 有足够多内射」这个范畴级假设混起来。'
-      ].join('\n\n'),
+      notes: "**一条要用 Zorn 的补充（很关键）**：在 $R$-模范畴里，Bolzano–Weierstrass 式的论证 ——「$I$ 内射 $\\iff$ 对每个**理想** $J \\subseteq R$，每个 $J \\to I$ 都能延拓到 $R \\to I$」（Baer 判别法）—— 用的是 **Zorn 引理**（把“可延拓的子模”取极大）。所以「内射性可用理想检验」这条便利是**有选择公理代价**的；在一般的 Grothendieck 范畴里对应的是「用次对象检验」，不需要 AC。\n\n⚠️ **第二个断言的假设**：$M'$ 内射时 $M$ 内射 $\\iff M''$ 内射 —— 这是「内射对象的扩张封闭性」，只用短正合列与 (4)，**不需要 $\\mathcal{A}$ 有足够多内射**。别把它与「$\\mathcal{A}$ 有足够多内射」这个范畴级假设混起来。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 

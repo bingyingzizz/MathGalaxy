@@ -30,10 +30,7 @@ window.MG = window.MG || {};
         '',
         '注意：这句话**不需要** $\\mathcal{A}$ 有足够多投射对象 —— $P$ 投射本身就给出 $P$ 的一条长度 $0$ 的投射消解。'
       ].join('\n'),
-      notes: [
-        ['**证明。** $P$ **投射**意味着函子 $\\operatorname{Hom}_{\\mathcal{A}}(P, -)$ **正合** ✓。而 $P$ 的投射消解可以取成','$$\\cdots \\to 0 \\to 0 \\to P \\xrightarrow{\\ 1\\ } P \\to 0,$$','即「长度 $0$ 的消解」（$P$ 自己就是投射的，不需要再找覆盖）✓。\n\n把 $\\operatorname{Hom}(P, -)$ 作用在 $M$ 的内射消解 $M \\to I^{\\bullet}$ 上：因为 $\\operatorname{Hom}(P,-)$ 正合、$M \\to I^{\\bullet}$ 正合，复形 $\\operatorname{Hom}(P, I^{\\bullet})$ 只可能在 $0$ 次有上同调 ✓，即','$$R^{n}\\operatorname{Hom}(P, M) = \\operatorname{Ext}^{n}(P, M) = 0 \\quad (n > 0) ✓$$','（也可以直接从 $\\operatorname{RHom}(P, M) = \\operatorname{Hom}(P, M)$ 这件事读出来：正合函子的右导出函子就是它自己。）∎'].join('\n'),
-        '⭐ 对偶地：**内射对象没有高次 Ext**（$\\operatorname{Ext}^{n}(M, I) = 0$，$n>0$）—— 这两条合起来就是「投射 / 内射对象可以拿来替代消解里的项」的全部理由。'
-      ].join('\n\n'),
+      notes: "⭐ 对偶地：**内射对象没有高次 Ext**（$\\operatorname{Ext}^{n}(M, I) = 0$，$n>0$）—— 这两条合起来就是「投射 / 内射对象可以拿来替代消解里的项」的全部理由。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
     },
 
@@ -80,11 +77,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{R}\\Gamma(X,\\ M^{\\bullet}) \\;\\cong\\; \\operatorname{RHom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M^{\\bullet}\\bigr), \\qquad H^{n}(X,\\ M^{\\bullet}) \\;\\cong\\; \\operatorname{Ext}^{n}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M^{\\bullet}\\bigr).$$'
       ].join('\n'),
-      notes: [
-        ['**证明。** 关键在于这两个函子**本来是同一个函子**。由 $\\mathbb{Z}\\cdot X$ 的泛性质（它是自由对象：$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M) = \\operatorname{Hom}(X, M)$）✓，','$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{T}}\\bigl(X,\\ M\\bigr) \\;=\\; \\Gamma(X, M) = M(X) ✓$$','即「取截面」函子与「$\\operatorname{Hom}(\\mathbb{Z}\\cdot X, -)$」逐字相同 ✓。\n\n右导出函子只依赖函子本身，故两者的右导出函子在导出范畴里同构：$\\operatorname{R}\\Gamma(X, -) \\cong \\operatorname{RHom}(\\mathbb{Z}\\cdot X, -)$ ✓；\n\n逐类取上同调就得到第二个同构 ✓。\n\n∎'].join('\n'),
-        '⭐ 这条是**两套语言之间的桥**：一边是几何味的「截面」（$\\Gamma(X,-)$），一边是代数味的「导出 Hom」。有了它，层上同调的一切计算都能翻译成导出范畴里的 Ext 计算 —— 反过来，Ext 的几何意义也清楚了：**它就是某个空间上的上同调**。',
-        '📌 与「Stonean 上的截面公式」对照看：那条把 Ext 写成 $\\operatorname{Ext}^{n}(M \\cdot S, N)$，这条把 Ext 写成 $H^{n}(X, N)$，两条合起来正是「$H^{n}(X, N)$ 可以用 $\\mathbb{Z}\\cdot X$ 的消解来算」。'
-      ].join('\n\n'),
+      notes: "⭐ 这条是**两套语言之间的桥**：一边是几何味的「截面」（$\\Gamma(X,-)$），一边是代数味的「导出 Hom」。有了它，层上同调的一切计算都能翻译成导出范畴里的 Ext 计算 —— 反过来，Ext 的几何意义也清楚了：**它就是某个空间上的上同调**。\n\n📌 与「Stonean 上的截面公式」对照看：那条把 Ext 写成 $\\operatorname{Ext}^{n}(M \\cdot S, N)$，这条把 Ext 写成 $H^{n}(X, N)$，两条合起来正是「$H^{n}(X, N)$ 可以用 $\\mathbb{Z}\\cdot X$ 的消解来算」。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.3']
     },
 
@@ -102,10 +95,7 @@ window.MG = window.MG || {};
         '',
         '$$H^{n}\\bigl(h_{X},\\ M\\bigr) = 0 \\qquad (n > 0).$$'
       ].join('\n'),
-      notes: [
-        ['**证明。** 取截面函子 $\\Gamma(h_{X}, -)$：由 Yoneda 引理','$$\\Gamma(h_{X}, M) = \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_{X}, M) = M(X) ✓$$','而在**预层**范畴上，「逐点取值」$M \\mapsto M(X)$ 是**正合**的 ✓（预层的核、像、余核都逐点算；$M(X)$ 就是一个普通的阿贝尔群）。','正合函子的右导出函子集中在 $0$ 次（用长度 $0$ 的「消解」$M \\to M$ 即可看出）✓，于是 $H^{n}(h_{X}, M) = R^{n}\\Gamma(h_{X}, M) = 0$（$n > 0$）✓。∎'].join('\n'),
-        '⭐ **为什么值得单独说**：因为这是「**层化为什么必要**」的最好说明 —— 在预层层面，可表示对象上根本没有高次上同调（一切正合）；一取层化，$\\mathbb{Z}\\cdot X$ 就不再是「取值」那个函子，高次才冒出来。层上同调的非平凡性，全部来自**层的范畴里正合性被打破**这一点。'
-      ].join('\n\n'),
+      notes: "⭐ **为什么值得单独说**：因为这是「**层化为什么必要**」的最好说明 —— 在预层层面，可表示对象上根本没有高次上同调（一切正合）；一取层化，$\\mathbb{Z}\\cdot X$ 就不再是「取值」那个函子，高次才冒出来。层上同调的非平凡性，全部来自**层的范畴里正合性被打破**这一点。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.3']
     }
 

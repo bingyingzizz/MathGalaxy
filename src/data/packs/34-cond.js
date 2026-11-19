@@ -193,15 +193,7 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['凝聚态', '自由', '层'],
       statement: '设 $X$ 是 $\\mathbf{FCHaus}$ 上的集合预层。则 $X$ 是层 $\\iff$ $X$ **保有限积**。',
-      notes: [
-        ['**证明。** $\\mathbf{FCHaus}$ 上的覆盖就是「有限不交并」，即 $F = \\coprod_{i \\in I} F_{i}$（$I$ 有限）。对它写层条件：',
-          '$$X(F) \\longrightarrow \\prod_{i} X(F_{i}) \\rightrightarrows \\prod_{i,j} X(F_{i} \\times_{F} F_{j}).$$',
-          '- 由不交性，$i \\ne j$ 时 $F_{i} \\times_{F} F_{j} = \\emptyset$、$i = j$ 时 $= F_{i}$。\n\n于是右边那对映射一个是恒等、另一个把 $i \\ne j$ 的分量送到 $X(\\emptyset)$ —— 而 $X(\\emptyset)$ 由 $I = \\emptyset$ 的层条件（$X$ 保空余积）给出 $X(\\emptyset) \\cong \\{\\ast\\}$。',
-          '- 所以层条件正合化归为 $X\\bigl(\\coprod_{i} F_{i}\\bigr) \\cong \\prod_{i} X(F_{i})$ —— 这正是「保有限积」。',
-          '反过来，若 $X$ 保有限积，则上述每一条层条件自动成立。∎',
-          '⭐ **用处**：这一条把「$\\mathrm{Cond}$ 里的层」换成了一句纯代数的话 ——「保有限积的函子」。于是验一条性质是不是层，只要验它是否保有限积。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **用处**：这一条把「$\\mathrm{Cond}$ 里的层」换成了一句纯代数的话 ——「保有限积的函子」。于是验一条性质是不是层，只要验它是否保有限积。",
       refs: ['Le Stum, Exercise 4.2']
     },
 
@@ -258,13 +250,7 @@ window.MG = window.MG || {};
       statement: [
         '自由紧 Hausdorff 空间（看作凝聚态集）都是**投射对象**；并且 $\\mathrm{Cond}$ 有**足够多的投射对象**。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 分两步。',
-          '- **自由紧 Hausdorff 空间是投射对象。** 记 $F = \\beta I$ 自由。\n\n任给满态射 $X \\twoheadrightarrow Y$ 与 $y \\in Y(F)$。\n\n由**满态射的判据**（在自由对象上逐点满），$y$ 在某个覆盖上局部有原像：存在有限不交并分解 $F = \\coprod_{k=1}^{n} F_{k}$ 与 $x_{k} \\in X(F_{k})$ 使 $p(x_{k}) = y|_{F_{k}}$。\n\n把 $(x_{k})_{k}$ 拼起来，用「保有限积」的层条件得 $x \\in X(F) = \\prod_{k} X(F_{k})$，且 $p(x) = y$ —— 这就是提升。',
-          '- **足够多投射对象。** 任给凝聚态集 $X$：由「$\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$」（每个紧 Hausdorff 空间都是自由空间的满像），可取含 $X$ 的满态射 $\\coprod_{i} h_{F_{i}} \\twoheadrightarrow X$（$h_{F_{i}}$ 表示自由空间），而自由对象的**余积**仍是投射对象（「投射对象的余积还是投射的」）。\n\n于是每个 $X$ 都是某个投射对象的商。\n\n∎'
-        ].join('\n'),
-        '⭐ **为什么这件事对凝聚态数学这么要紧**：$\\mathrm{Cond}$ 有足够多**投射**对象（不像一般拓扑斯只有足够多内射），于是「左导出函子」在 $\\mathrm{Cond}$ 里可以直接用自由紧 Hausdorff 块算 —— 这是 $\\mathrm{CondAb}$ 能做导出代数的那一半依据。'
-      ].join('\n\n'),
+      notes: "⭐ **为什么这件事对凝聚态数学这么要紧**：$\\mathrm{Cond}$ 有足够多**投射**对象（不像一般拓扑斯只有足够多内射），于是「左导出函子」在 $\\mathrm{Cond}$ 里可以直接用自由紧 Hausdorff 块算 —— 这是 $\\mathrm{CondAb}$ 能做导出代数的那一半依据。",
       refs: ['Le Stum, Exercise 4.3']
     },
 
@@ -467,16 +453,7 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['凝聚态', '生成元', '投射'],
       statement: '$\\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特别地，它有足够多的投射对象。',
-      notes: [
-        ['**证明。**',
-          '- **生成**：$\\mathrm{Cond}$ 由 $\\{h_{F}\\}$（$F$ 自由紧 Hausdorff）生成；而一般地「若 $\\{X_{i}\\}$ 生成 $\\mathcal{C}$，则 $\\{\\mathbb{Z}\\cdot X_{i}\\}$ 生成 $\\mathrm{Ab}(\\mathcal{C})$」（用自由阿贝尔群对象的泛性质：两个态射若在所有 $\\mathbb{Z}\\cdot X_{i}$ 上相同则相同）。\n\n' +
-          '于是 $\\{\\mathbb{Z}\\cdot F\\}$ 生成 $\\mathrm{CondAb}$ ✓；\n\n' +
-          '',
-          '- 而每个 $\\mathbb{Z}\\cdot F$ 由**上一条**是有限表现的投射对象 ✓；',
-          '- **足够多投射对象**：任给 $M$，由「生成」存在满态射 $\\bigoplus_{i} \\mathbb{Z}\\cdot F_{i} \\twoheadrightarrow M$，而投射对象的**余积**仍是投射对象 ✓ —— 所以每个 $M$ 都是某个投射对象的商。∎',
-          '⭐ **这条是「在 $\\mathrm{CondAb}$ 里能做导出代数」的另一半依据**（另一半是「有足够多内射」，由它是 Grothendieck 范畴给出）：有足够多**投射**对象意味着**左**导出函子也能直接算。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **这条是「在 $\\mathrm{CondAb}$ 里能做导出代数」的另一半依据**（另一半是「有足够多内射」，由它是 Grothendieck 范畴给出）：有足够多**投射**对象意味着**左**导出函子也能直接算。",
       refs: ['Le Stum, Proposition 6.1.7']
     }
   ],

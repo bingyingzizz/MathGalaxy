@@ -93,20 +93,7 @@ window.MG = window.MG || {};
         '',
         '正合。'
       ].join('\n'),
-      notes: [
-        '**为什么叫「蛇」**：把这条长正合列画成一圈，六个群/模串起来正好是一条蛇的形状 —— $\\delta$ 是蛇头那一拐。',
-        '⚠️ **不能追元素。** $\\mathcal{A}$ 是一般的阿贝尔范畴，对象里没有「元素」可挑，$x \\in \\ker c$ 这种话在这里没有意义。合法的替代是**泛元**：「$x \\in X$」一律读成「任给态射 $t : T \\to X$」（Yoneda 的成员语言），其余全靠核与余核的泛性质。',
-        ['**$\\delta$ 怎么造（只用泛性质）。** 设 $k : K \\rightarrowtail C$ 是 $c$ 的核，把 $g$ 沿 $k$ 拉回得 $P := B \\times_{C} K$ 与投影 $p : P \\to B$、$q : P \\to K$：',
-          '1. $g f = 0$ 经拉回性质给出唯一的 $u : A \\to P$；由 $f = \\ker g$ 单、$g$ 满，得短正合列 $0 \\to A \\xrightarrow{\\;u\\;} P \\xrightarrow{\\;q\\;} K \\to 0$。',
-          '2. $g\' b p = c\\, g p = c\\, k\\, q = 0$，故 $b p$ 穿过 $f\' = \\ker g\'$：存在唯一 $\\beta : P \\to A\'$ 使 $f\' \\beta = b p$。',
-          '3. $f\' \\beta u = b p u = b f = f\' a$，而 $f\'$ 单，故 $\\beta u = a$ —— 于是 $\\beta$ 与 $A\' \\to \\operatorname{coker} a$ 的复合把 $u$ 杀掉，由 $q = \\operatorname{coker} u$ 的泛性质，存在唯一'
-        ].join('\n'),
-        '',
-        '$$\\delta : K \\longrightarrow \\operatorname{coker} a, \\qquad \\delta \\circ q = (A\' \\to \\operatorname{coker} a) \\circ \\beta.$$',
-        '',
-        '**正合性**同样逐步用核 / 余核的泛性质验证（关键一步是 $\\operatorname{im} u = \\ker q$），没有一步需要元素。∎',
-        '⭐ **用处**：它是**长正合列**的引擎 —— 把短正合列 $0 \\to K \\to L \\to M \\to 0$ 的每一层（核、余核）串起来，靠的就是每层的 $\\delta$。凡是「有了短正合列想推长正合列」的地方，底下都在跑蛇引理。'
-      ].join('\n\n'),
+      notes: "**为什么叫「蛇」**：把这条长正合列画成一圈，六个群/模串起来正好是一条蛇的形状 —— $\\delta$ 是蛇头那一拐。\n\n⚠️ **不能追元素。** $\\mathcal{A}$ 是一般的阿贝尔范畴，对象里没有「元素」可挑，$x \\in \\ker c$ 这种话在这里没有意义。合法的替代是**泛元**：「$x \\in X$」一律读成「任给态射 $t : T \\to X$」（Yoneda 的成员语言），其余全靠核与余核的泛性质。\n\n⭐ **用处**：它是**长正合列**的引擎 —— 把短正合列 $0 \\to K \\to L \\to M \\to 0$ 的每一层（核、余核）串起来，靠的就是每层的 $\\delta$。凡是「有了短正合列想推长正合列」的地方，底下都在跑蛇引理。",
       refs: [
       'Weibel, An Introduction to Homological Algebra, Ch. 1','Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
@@ -127,16 +114,7 @@ window.MG = window.MG || {};
         '',
         '若 $\\alpha_{1}$ 是**满**态射、$\\alpha_{2}, \\alpha_{4}$ 是**同构**、$\\alpha_{5}$ 是**单**态射，则中间的 $\\alpha_{3}$ 也是**同构**。'
       ].join('\n'),
-      notes: [
-        '**证明走泛元，不追元素。** 把「$x \\in A_{3}$」读成「任给 $t : T \\to A_{3}$」—— $t$ 就是 $A_{3}$ 的一个**泛元**。分两半：',
-        [
-          '- **$\\alpha_{3}$ 单**：设 $\\alpha_{3} t = 0$。\n\n由 $\\alpha_{4} f_{3} t = g_{3} \\alpha_{3} t = 0$ 与 $\\alpha_{4}$ 单得 $f_{3} t = 0$，即 $t$ 穿过 $\\operatorname{im} f_{2} = \\ker f_{3}$：$t = f_{2} s$；\n\n再由 $g_{2} \\alpha_{2} s = \\alpha_{3} f_{2} s = 0$ 得 $\\alpha_{2} s$ 穿过 $\\operatorname{im} g_{1} = \\ker g_{2}$，即 $\\alpha_{2} s = g_{1} r\'$，而 $\\alpha_{1}$ 满给出 $r\' = \\alpha_{1} r$，于是 $\\alpha_{2} s = g_{1} \\alpha_{1} r = \\alpha_{2} f_{1} r$，而 $\\alpha_{2}$ 单，故 $s = f_{1} r$，于是 $t = f_{2} f_{1} r = 0$。',
-          '- **$\\alpha_{3}$ 满**：任给 $y : T \\to B_{3}$。\n\n由 $g_{4} g_{3} = 0$ 与 $\\alpha_{5}$ 单得 $f_{4} \\alpha_{4}^{-1} g_{3} y = 0$，故 $\\alpha_{4}^{-1} g_{3} y$ 穿过 $\\operatorname{im} f_{3} = \\ker f_{4}$：$\\alpha_{4}^{-1} g_{3} y = f_{3} x\'$；\n\n于是 $g_{3}(y - \\alpha_{3} x\') = 0$，即 $y - \\alpha_{3} x\'$ 穿过 $\\operatorname{im} g_{2} = \\ker g_{3}$：$y - \\alpha_{3} x\' = g_{2} u = g_{2} \\alpha_{2} x\'\' = \\alpha_{3} f_{2} x\'\'$，故 $y = \\alpha_{3}(x\' + f_{2} x\'\')$。'
-        ].join('\n'),
-        '两步都只用「正合 = 核 = 像」这一条泛性质。∎',
-        '⭐ **推论（常用形式）**：若图中的 $A_{1} = B_{1} = 0$、$A_{5} = B_{5} = 0$，则 $\\alpha_{3}$ 是单（满 / 同构）由 $\\alpha_{2}, \\alpha_{4}$ 单（满 / 同构）决定 —— **这就是「比较长正合列」时最常引的那句：两头一样，中间就一样。**',
-        '⚠️ 与蛇引理的关系：**两者都不能靠追元素**，都得走泛元与泛性质；区别在五引理只讲同构传递（不必造连接同态），蛇引理要**造**出 $\\delta$。凡是「想比较两个谱序列/两条长正合列」的地方，用五引理。'
-      ].join('\n\n'),
+      notes: "⭐ **推论（常用形式）**：若图中的 $A_{1} = B_{1} = 0$、$A_{5} = B_{5} = 0$，则 $\\alpha_{3}$ 是单（满 / 同构）由 $\\alpha_{2}, \\alpha_{4}$ 单（满 / 同构）决定 —— **这就是「比较长正合列」时最常引的那句：两头一样，中间就一样。**\n\n⚠️ 与蛇引理的关系：**两者都不能靠追元素**，都得走泛元与泛性质；区别在五引理只讲同构传递（不必造连接同态），蛇引理要**造**出 $\\delta$。凡是「想比较两个谱序列/两条长正合列」的地方，用五引理。",
       refs: [
       'Weibel, An Introduction to Homological Algebra, Ch. 1','Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     }

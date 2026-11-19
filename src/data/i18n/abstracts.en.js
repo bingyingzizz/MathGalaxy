@@ -47,15 +47,8 @@ MG.i18nAbstracts = {
 
     'thm.first-iso': {
       en:
-      'For a group homomorphism $\\varphi : G \\to G\'$, the assignment ' +
-      '$g\\ker\\varphi \\mapsto \\varphi(g)$ is an isomorphism ' +
-      '$G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$; in particular a surjective ' +
-      'homomorphism has the quotient as image. The proof is three steps: well-definedness, ' +
-      'multiplicativity, bijectivity. The same proof works verbatim for any ' +
-      '"set + operations + axioms" structure, $A/\\ker f \\cong \\operatorname{im} f$, ' +
-      'and the set-level prototype is that every map induces a bijection from the quotient by ' +
-      '$a \\sim a\' \\iff f(a) = f(a\')$ onto its image.',
-      status: 'reviewed', basedOn: 'v0.9.3#36bc4b18', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "For a group homomorphism $\\varphi : G \\to G'$, the map $g\\ker\\varphi \\mapsto \\varphi(g)$ is an isomorphism $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$; in particular a surjective homomorphism has $G/\\ker\\varphi \\cong G'$. The construction is not special to groups: the same proof gives $A/\\ker f \\cong \\operatorname{im} f$ for any \"set + operations + axioms\" structure, while at the level of bare sets every map induces a bijection $A/{\\sim} \\to \\operatorname{im} f$ with $a \\sim a' \\iff f(a) = f(a')$, and only the final step — that the quotient by the kernel is again a group — is new. The theorem separates what a homomorphism collapses (the kernel) from what survives (the image), which is why group theory is largely the study of normal subgroups.",
+      status: 'draft', basedOn: 'v0.9.3#96955264',
     },
 
     'def.cauchy-null': {
@@ -85,18 +78,8 @@ MG.i18nAbstracts = {
 
     'def.abelian-category': {
       en:
-      'The ladder of definitions runs $\\text{preadditive} \\to \\text{zero object} \\to ' +
-      '\\text{direct sums} \\to \\text{additive} \\to \\text{preabelian} \\to \\text{abelian}$, ' +
-      'where preadditive means $\\mathbf{Ab}$-enriched with bilinear composition, preabelian ' +
-      'means that kernels and cokernels exist, and abelian means any one of four equivalent ' +
-      'conditions: every monomorphism is regular; ' +
-      '$N \\cong \\ker(M \\to \\operatorname{coker} i)$ for $i : N \\rightarrowtail M$; every map ' +
-      'factors uniquely as an epimorphism followed by a monomorphism; ' +
-      '$\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. ' +
-      'Abelian categories are the working environment of homological algebra — exactness needs ' +
-      'kernels and cokernels. $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a ' +
-      'topos are abelian; $\\mathbf{AbTop}$ is not.',
-      status: 'reviewed', basedOn: 'v0.9.3#fba78198', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "A preabelian category (one in which kernels and cokernels exist) is abelian when any one of four equivalent conditions holds: every monomorphism is regular; $N \\cong \\ker(M \\twoheadrightarrow \\operatorname{coker} i)$ for $i : N \\rightarrowtail M$; every morphism factors uniquely up to isomorphism as an epimorphism followed by a monomorphism; and $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$ for every $f : M \\to N$. The last condition is the most algebraic and closest to the classical first isomorphism theorem, while in practice the factorization condition is the one usually checked. Abelian categories are the setting for exact sequences and homological algebra; kernels and cokernels alone do not suffice, since $\\mathbf{AbTop}$ is preabelian but not abelian, whereas $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a topos are abelian.",
+      status: 'draft', basedOn: 'v0.9.3#4aa04f11',
     },
 
     'def.product-measure': {
@@ -125,14 +108,8 @@ MG.i18nAbstracts = {
 
     'thm.topos-abelian-grothendieck': {
       en:
-      'For a topos $\\mathcal{T}$, the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian group ' +
-      'objects in sheaves is a Grothendieck category: abelian, with a small set of generators, ' +
-      'all colimits, and filtered colimits exact. Abelianness is checked componentwise in the ' +
-      'presheaf category and transported along the exact sheafification reflection; limits and ' +
-      'colimits exist by that reflection; and if $S$ generates $\\mathcal{T}$ then ' +
-      '$\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$. Those ' +
-      'generators are moreover projective.',
-      status: 'reviewed', basedOn: 'v0.9.3#3239a1df', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "For a topos $\\mathcal{T}$, the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian group objects in sheaves is a Grothendieck category: it has a small set of generators, all colimits, and exact filtered colimits. Generators are the objects $\\mathbb{Z}\\cdot X$ for $X$ ranging over a generating set of $\\mathcal{T}$. They are flat but not projective: $\\operatorname{Hom}(\\mathbb{Z}\\cdot X, -) \\cong \\Gamma(X, -)$ is only left exact on sheaves, and projectivity holds only in the presheaf category.",
+      status: 'draft', basedOn: 'v0.9.3#99e99e72',
     },
 
     'prop.nbv-derivative': {
@@ -160,13 +137,8 @@ MG.i18nAbstracts = {
 
     'thm.monotone-class': {
       en:
-      'For $\\mathcal{E} \\subseteq \\mathcal{P}(X)$, the $\\sigma$-algebra generated by ' +
-      '$\\mathcal{E}$ equals the monotone class generated by $\\mathcal{E}$ if complements of ' +
-      'members of $\\mathcal{E}$ and unions of two members of $\\mathcal{E}$ lie in that ' +
-      'monotone class. With "$\\mathcal{E}$ is an algebra" this is the standard monotone class ' +
-      'theorem; the form above weakens that hypothesis to the two closure conditions, and the ' +
-      'proof is the same two-step argument with the monotone class as the running object.',
-      status: 'reviewed', basedOn: 'v0.9.3#d6fb12ae', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "Let $\\mathcal{E} \\subseteq \\mathcal{P}(X)$ be non-empty. The $\\sigma$-algebra generated by $\\mathcal{E}$ coincides with the monotone class $\\mathfrak{m}(\\mathcal{E})$ exactly when the complement of every $A \\in \\mathcal{E}$ and the union of any two members of $\\mathcal{E}$ lie in $\\mathfrak{m}(\\mathcal{E})$. Taking $\\mathcal{E}$ to be an algebra recovers the standard monotone class theorem; the proof first closes $\\mathfrak{m}(\\mathcal{E})$ under complements and then under unions by three monotone-class arguments, so the resulting class is a $\\sigma$-algebra. This is the standard route for carrying a property from $\\mathcal{E}$ to all of $\\mathcal{M}(\\mathcal{E})$: check it on $\\mathcal{E}$ and check that it survives increasing unions and decreasing intersections.",
+      status: 'draft', basedOn: 'v0.9.3#a74916bd',
     },
 
     'def.section': {
@@ -284,25 +256,14 @@ MG.i18nAbstracts = {
 
     'thm.saft': {
       en:
-      'Let $\\mathcal{D}$ be small and complete. A functor $G : \\mathcal{D} \\to ' +
-      '\\mathcal{C}$ has a left adjoint iff it preserves all limits; when it does, one may take ' +
-      '$F(X) = \\varprojlim_{(Y,f) \\in (X \\downarrow G)} Y$. So preservation of limits, which ' +
-      'is automatic for right adjoints, is also sufficient under these hypotheses. The ' +
-      'construction reads: $F(X)$ is the object of $\\mathcal{D}$ closest to $X$, and every ' +
-      '$X \\to G(Y)$ factors through $X \\to G(FX) \\to G(Y)$.',
-      status: 'reviewed', basedOn: 'v0.9.3#5b78b019', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "Let $\\mathcal{D}$ be small and complete. A functor $G : \\mathcal{D} \\to \\mathcal{C}$ has a left adjoint if and only if it preserves all limits, and then one may take $F(X) = \\varprojlim_{(Y,f) \\in (X \\downarrow G)} Y$. Limit preservation is automatic for right adjoints and, under these hypotheses, also sufficient. The limit is the object of $\\mathcal{D}$ closest to $X$: every $X \\to G(Y)$ factors as $X \\to G(F(X)) \\to G(Y)$, and the universal property verifies the adjunction.",
+      status: 'draft', basedOn: 'v0.9.3#9dc24976',
     },
 
     'def.outer-measure': {
       en:
-      'An outer measure on a non-empty set $X$ is a function ' +
-      '$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ with $\\mu^*(\\emptyset) = 0$ that is ' +
-      'monotone and countably subadditive. It is defined on every subset, and the price is ' +
-      'exactly that subadditivity: it is not a measure. Carathéodory\'s idea is to single out ' +
-      'the sets on which $\\mu^*$ is additive, and there it becomes a genuine measure. ' +
-      'Lebesgue\'s original construction, $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable ' +
-      'interval covers, is the prototypical example.',
-      status: 'reviewed', basedOn: 'v0.9.3#57c392f3', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "An outer measure on a set $X$ is a function $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ with $\\mu^*(\\emptyset) = 0$ that is monotone and countably subadditive; $X$ may be empty. It is defined on every subset, and the price is exactly subadditivity: it need not be additive, hence need not be a measure. Lebesgue's construction $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable interval covers is the model, and Carathéodory's condition singles out the sets on which $\\mu^*$ becomes additive. Monotonicity is independent of countable subadditivity, which is the only substantive axiom.",
+      status: 'draft', basedOn: 'v0.9.3#3003e8d5',
     },
 
     'thm.real-uncountable': {
@@ -331,25 +292,14 @@ MG.i18nAbstracts = {
 
     'thm.metric-compact-equiv': {
       en:
-      'In a metric space the following are equivalent: compact, sequentially compact, and ' +
-      'complete together with totally bounded. The skeleton lives in the implications: ' +
-      'compact implies sequentially compact; sequentially compact implies totally bounded ' +
-      '(one of two places dependent choice is used; the other is (b) implies (a)) and complete; sequentially compact implies ' +
-      'compact by the "bad ball" argument; complete and totally bounded implies sequentially ' +
-      'compact by diagonalisation. In general topological spaces **both implications fail** — ' +
-      'sequential compactness is a metric-space luxury (counterexamples: $\\{0,1\\}^{I}$ and $[0,\\omega_1)$).',
-      status: 'reviewed', basedOn: 'v0.9.3#7adc980c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "For a metric space $X$, the following are equivalent: $X$ is compact (every open cover has a finite subcover), $X$ is sequentially compact (every sequence has a subsequence converging in $X$), and $X$ is complete and totally bounded. The proof is assembled on the edge: compactness yields sequential compactness by a neighbourhood argument, sequential compactness gives completeness and total boundedness, and the remaining step uses $\\varepsilon$-nets and Lebesgue numbers. The equivalence is a metric-space phenomenon; in general topological spaces the implications fail.",
+      status: 'draft', basedOn: 'v0.9.3#35ea3ac5',
     },
 
     'def.shrinks-nicely': {
       en:
-      'A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ shrinks nicely to $x$ ' +
-      'when $E_r \\subseteq B(x, r)$ for every $r$ and there is $\\alpha > 0$ with ' +
-      '$m(E_r) > \\alpha \\cdot m(B(x, r))$ for all $r$. The two conditions say "fits inside ' +
-      'the ball" and "is not too thin". Balls themselves qualify, as does any fixed shape ' +
-      'rescaled inside them; a thin sliver does not. The notion exists so that ' +
-      'differentiation theorems do not depend on the shape of the sets being shrunk.',
-      status: 'reviewed', basedOn: 'v0.9.3#a792035c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      "A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ shrinks nicely to $x$ when $E_r \\subseteq B(x, r)$ for every $r$ and there is $\\alpha > 0$ with $m(E_r) > \\alpha \\cdot m(B(x, r))$ for all $r$. The two conditions say that $E_r$ fits inside the ball and is not too thin: balls themselves qualify, as does a fixed shape rescaled inside them, while a thin sliver does not. The definition exists so that differentiation theorems depend on the size of the sets and not on their shape.",
+      status: 'draft', basedOn: 'v0.9.3#dd31dc88',
     },
 
     'def.complex-measure': {
@@ -404,14 +354,8 @@ MG.i18nAbstracts = {
 
     'thm.de-rham': {
       en:
-      'Integrating forms pairs de Rham cohomology, closed forms modulo exact ones, with ' +
-      'singular homology, and the de Rham theorem says the pairing is perfect: for ' +
-      'every $k$ there is an isomorphism $H^{k}_{\\mathrm{dR}}(M)\\to ' +
-      'H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$ sending $[\\omega]$ to the functional ' +
-      '$[c]\\mapsto\\int_{c}\\omega$. The maps are compatible with pullbacks, so they ' +
-      'form a natural isomorphism of graded algebras. The theorem welds analysis, ' +
-      'geometry and topology into a single object.',
-      status: 'reviewed', basedOn: 'v0.9.3#9a6ce556', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      "For a smooth manifold $M$ and each $k \\ge 0$ there is an isomorphism $\\Phi^{k} : H^{k}_{\\mathrm{dR}}(M) \\to H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$ sending $[\\omega]$ to the functional $[c] \\mapsto \\int_{c} \\omega$ on smooth singular chains. It is compatible with pullbacks, so these maps form a natural isomorphism between de Rham cohomology and singular cohomology with real coefficients, welding analysis, geometry and topology together. In this graph the theorem is still a skeleton: steps 0–2 are verified, while good covers, the two spectral sequences, Godement acyclicity, the Čech-to-sheaf comparison and Eilenberg–Steenrod uniqueness are recorded as gaps A–G.",
+      status: 'draft', basedOn: 'v0.9.3#49b6c171',
     },
 
     'thm.urysohn-metrization': {
@@ -428,52 +372,26 @@ MG.i18nAbstracts = {
 
     'prop.paracompact-partition-unity': {
       en:
-      'For a topological space $X$: $X$ is paracompact Hausdorff exactly when every ' +
-      'open cover has a subordinate partition of unity, and $X$ is normal exactly when ' +
-      'every locally finite open cover has one. In one direction the supports of the ' +
-      'partition give a locally finite open refinement of the cover; in the other, ' +
-      'normality produces the functions one at a time. This is the standard bridge from ' +
-      'local data to global objects, for instance from local metrics to a Riemannian ' +
-      'metric.',
-      status: 'reviewed', basedOn: 'v0.9.3#32f06eb0', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      "For a topological space $X$: if $X$ is paracompact Hausdorff then every open cover has a subordinate partition of unity, and if $X$ is normal then every locally finite open cover has one. Neither converse holds without a separation hypothesis: on the trivial topology with at least two points the constant function $1$ is a partition of unity subordinate to every cover, yet the space is neither Hausdorff nor $T_1$. In the forward direction one shrinks each open set twice, applies Urysohn's lemma and normalizes the locally finite sum; conversely the supports of a partition of unity give a locally finite open refinement. Such partitions turn local data into global objects, which is what integrations and extension theorems on manifolds rely on.",
+      status: 'draft', basedOn: 'v0.9.3#70fea099',
     },
 
     'def.lp-norm': {
       en:
-      'For a measure space $(X,\\mathcal{M},\\mu)$ and $0<p<\\infty$ one sets ' +
-      '$\\|f\\|_p := [\\int |f|^{p}\\,\\mathrm{d}\\mu]^{1/p}$, and $L^{p}$ is the space ' +
-      'of measurable $f$ with $\\|f\\|_p<\\infty$. Its elements are classes of ' +
-      'functions equal almost everywhere, which is what makes $\\|f\\|_p = 0$ imply $f ' +
-      '= 0$. For $p<1$ the triangle inequality fails, so one only gets a quasi-norm, ' +
-      'although the space stays complete.',
-      status: 'reviewed', basedOn: 'v0.9.3#361b9f22', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      "For a measure space $(X,\\mathcal{M},\\mu)$ and $0 < p < \\infty$, $\\|f\\|_p := [\\int |f|^{p}\\,d\\mu]^{1/p}$, and $L^{p}$ consists of the measurable $f$ with $\\|f\\|_p < \\infty$, taken modulo equality almost everywhere so that $\\|f\\|_p = 0$ implies $f = 0$. For $p \\ge 1$ this is a norm and $L^{p}$ is a Banach space; for $0 < p < 1$ the triangle inequality fails (for $p = 1/2$ and disjoint sets of measure $1$, $\\|f+g\\|_p = 4$ while $\\|f\\|_p + \\|g\\|_p = 2$), so one has only a quasi-norm, though the space remains complete under $d(f,g) = \\|f-g\\|_p^{p}$.",
+      status: 'draft', basedOn: 'v0.9.3#debb0752',
     },
 
     'def.tensor-field': {
       en:
-      'A tensor field is the smooth version of a multilinear form attached to each ' +
-      'point: an $(r,s)$-tensor at $p$ eats $r$ covectors and $s$ vectors and returns a ' +
-      'number, and the tensor bundle $T^{(r,s)}M$ collects these into a manifold of ' +
-      'dimension $n+n^{r+s}$ whose transition maps are products of Jacobi matrices. ' +
-      'Smooth sections of that bundle are the $(r,s)$-tensor fields. Metrics, ' +
-      'differential forms, symplectic forms and the curvature tensor are all instances, ' +
-      'and because the transition law involves only first derivatives, tensor ' +
-      'components never pick up second derivatives.',
-      status: 'reviewed', basedOn: 'v0.9.3#06e55f52', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      "An $(r,s)$-tensor at $p \\in M$ is a multilinear map $T : (T^{*}_{p}M)^{r} \\times (T_{p}M)^{s} \\to \\mathbb{R}$, and the tensor bundle $T^{(r,s)}M$ assembles these into a smooth manifold of dimension $n + n^{r+s}$ whose transition maps are products of $r$ copies of the Jacobian and $s$ copies of its inverse transpose. A tensor field is a smooth section of this bundle, written in coordinates with components $T^{i_{1}\\cdots i_{r}}_{\\ \\ j_{1}\\cdots j_{s}}$ that transform by one Jacobian factor per index. The $(0,0)$, $(1,0)$ and $(0,1)$ cases are smooth functions, vector fields and $1$-forms; differential forms are the alternating $(0,k)$ tensors, and metrics, symplectic forms and curvature are further examples. Because the transition law involves only first derivatives, tensors are exactly the objects whose components never acquire second derivatives.",
+      status: 'draft', basedOn: 'v0.9.3#560b8a42',
     },
 
     'thm.gauss-bonnet': {
       en:
-      'For a compact orientable surface $M\\subseteq\\mathbb{R}^{3}$, possibly with ' +
-      'piecewise smooth boundary, $\\int_{M}K\\,\\mathrm{d}A + \\int_{\\partial ' +
-      'M}k_{g}\\,\\mathrm{d}s = 2\\pi\\chi(M)$, where $K$ is the Gaussian curvature, ' +
-      '$k_{g}$ the geodesic curvature and $\\chi$ the Euler characteristic. In ' +
-      'particular a closed surface satisfies $\\int_{M}K\\,\\mathrm{d}A = ' +
-      '2\\pi\\chi(M)$, so total curvature is a topological invariant: $4\\pi$ for the ' +
-      'sphere, $0$ for the torus and $4\\pi(1-g)$ in genus $g$. The local statement for ' +
-      'a disc bounded by a simple closed curve is the heart of the proof; the global ' +
-      'one follows by summing over a triangulation.',
-      status: 'reviewed', basedOn: 'v0.9.3#f50628dc', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      "For a compact orientable surface $M \\subseteq \\mathbb{R}^{3}$, possibly with piecewise smooth boundary, $\\int_{M} K\\,\\mathrm{d}A + \\int_{\\partial M} k_{g}\\,\\mathrm{d}s + \\sum_{i}(\\pi - \\alpha_{i}) = 2\\pi\\chi(M)$, where $\\alpha_{i}$ are the interior angles at the corners. For a closed surface the corner term disappears and $\\int_{M} K\\,\\mathrm{d}A = 2\\pi\\chi(M)$, so total curvature is a topological quantity: $4\\pi$ for the sphere, $0$ for the torus, and $4\\pi(1-g)$ in genus $g$. The local version for a disc bounded by a simple closed curve is the core, and the global statement follows by summing over a triangulation, where the corner terms assemble into $2\\pi\\chi$.",
+      status: 'draft', basedOn: 'v0.9.3#596c4f91',
     },
 
     'def.smooth-manifold': {

@@ -28,10 +28,7 @@ window.MG = window.MG || {};
         '',
         '对偶地：$F$ 右正合 $\\iff$ $F$ 加法，且把右正合列送到右正合列。'
       ].join('\n'),
-      notes: [
-        ['**证明。**','**$(\\Longrightarrow)$** 左正合就是**保有限极限** ✓。\n\n保有限极限当然保有限积与核，于是：$F$ 保双积 $\\implies$ $F$ 加法（见「加法函子的刻画」）✓；\n\n而左正合列 $0 \\to M\' \\to M \\to M\'\'$ 本身就是一个有限极限图表，被 $F$ 送到同样的图表，即仍是左正合列 ✓。','**$(\\Longleftarrow)$** 设 $F$ 加法且保左正合列。由「保有限积 + 保核 $\\implies$ 保所有有限极限」，只需证这两条 ✓：','- **保核**：$0 \\to \\ker f \\xrightarrow{\\ i\\ } M \\xrightarrow{\\ f\\ } N$ 是左正合列 ✓，被送到左正合列 $0 \\to F(\\ker f) \\xrightarrow{\\ Fi\\ } FM \\xrightarrow{\\ Ff\\ } FN$，这正是 $F(\\ker f) \\cong \\ker(Ff)$ ✓；\n\n','- **保有限积**：$0 \\to M \\xrightarrow{\\ i_{1}\\ } M \\oplus N \\xrightarrow{\\ p_{2}\\ } N$ 也是左正合列（$i_{1}$ 单、$\\operatorname{im}i_{1} = \\ker p_{2}$）✓，被送到左正合列 $0 \\to FM \\to F(M\\oplus N) \\to FN$；\n\n而 $F$ **加法**说明 $F$ 保双积、$Fi_{1}$ 就是第一个含入 ✓，于是 $F(M \\oplus N)$ 连同 $Fi_{1}, Fi_{2}$ 满足直和的三条等式（见「直和就是积」），即 $F(M\\oplus N) \\cong FM \\oplus FN$ ✓。','两条合起来：$F$ 保有限积与核，从而保所有有限极限，即左正合 ✓。∎'].join('\n'),
-        '⭐ 这条把「左正合」拆成两件**逐项可查**的事：**加法**（看双积）与**保左正合列**（看具体的列）。实际验证函子左正合时用的就是这两把尺子。'
-      ].join('\n\n'),
+      notes: "⭐ 这条把「左正合」拆成两件**逐项可查**的事：**加法**（看双积）与**保左正合列**（看具体的列）。实际验证函子左正合时用的就是这两把尺子。",
       refs: ['Le Stum, An introduction to condensed mathematics, §5.2']
     },
 
@@ -51,11 +48,7 @@ window.MG = window.MG || {};
         '',
         '对偶地（有足够多投射时）：$F$ 右正合 $\\iff L_{0}F \\cong F$。'
       ].join('\n'),
-      notes: [
-        ['**证明。**','**$(\\Longrightarrow)$** 取 $M$ 的一条内射消解 $0 \\to M \\xrightarrow{\\ \\varepsilon\\ } I^{0} \\xrightarrow{\\ d^{0}\\ } I^{1} \\to \\cdots$ ✓。$F$ **左正合**，所以它把上半段正合列送到正合列','$$0 \\longrightarrow FM \\xrightarrow{\\ F\\varepsilon\\ } FI^{0} \\xrightarrow{\\ Fd^{0}\\ } FI^{1} ✓$$','于是由 $R^{0}F(M) = H^{0}(FI^{\\bullet})$ 的定义','$$R^{0}F(M) = \\ker(Fd^{0}) = \\operatorname{im}(F\\varepsilon) \\cong FM ✓$$','**$(\\Longleftarrow)$** 设 $R^{0}F \\cong F$。短正合列 $0 \\to M\' \\to M \\to M\'\' \\to 0$ 的长正合列开头是','$$0 \\to R^{0}F(M\') \\to R^{0}F(M) \\to R^{0}F(M\'\') \\to R^{1}F(M\') \\to \\cdots$$','用 $R^{0}F \\cong F$ 换掉前三项，得到 $0 \\to FM\' \\to FM \\to FM\'\'$ **正合** ✓，即 $F$ 左正合 ✓。∎'].join('\n'),
-        '⭐ 一句话：**左正合性可以只用 $0$ 次导出函子来检验**。反过来，这也解释了为什么「$R^{0}F = F$」在导出函子的记号里被当成左正合的默认性质。',
-        '⚠️ 前提「$F$ 加法」不能省：非加法函子的导出函子没有意义（导出函子是在加法范畴的复形上定义的）。'
-      ].join('\n\n'),
+      notes: "⭐ 一句话：**左正合性可以只用 $0$ 次导出函子来检验**。反过来，这也解释了为什么「$R^{0}F = F$」在导出函子的记号里被当成左正合的默认性质。\n\n⚠️ 前提「$F$ 加法」不能省：非加法函子的导出函子没有意义（导出函子是在加法范畴的复形上定义的）。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
     }
 

@@ -166,12 +166,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int f d\\mu = 0 \\iff f = 0 \\mu-\\text{a.e.}$$'
       ].join('\n'),
-      notes: [
-        ['**证明。**','**$(\\Longleftarrow)$** 若 $f = 0$ a.e.，则任何简单函数 $\\varphi \\le f$ 也 a.e. 为零（在 $f = 0$ 处 $\\varphi = 0$），故 $\\int \\varphi = 0$；对全体这样的 $\\varphi$ 取上确界得 $\\int f = 0$ ✓。','**$(\\implies)$** 设 $\\int f = 0$。对每个 $n \\ge 1$ 记 $A_{n} := \\{f > 1/n\\}$（可测）。由 $\\frac1n\\chi_{A_{n}} \\le f$ 得','$$\\frac1n\\,\\mu(A_{n}) \\le \\int f\\,\\mathrm{d}\\mu = 0 \\implies \\mu(A_{n}) = 0 .$$','而 $\\{f > 0\\} = \\bigcup_{n \\ge 1} A_{n}$ 是可数并零集，故 $\\mu(\\{f>0\\}) = 0$，即 $f = 0$ a.e. ✓。∎','附带地：$\\{f = +\\infty\\} \\subseteq \\{f>0\\}$ 也一起被处理掉了。'].join('\n'),
-        '$(\\Longleftarrow )$ 只要 $f$ 在零集外为零，下确界里的每个简单函数 $\\varphi \\le f$ 也几乎处处为零，从而 $\\int \\varphi = 0$。',
-        '$(\\implies )$ 记 $A_n = \\{f > 1/n\\}$，则 $(1/n)\\cdot\\mu(A_n) \\le \\int f = 0$，故 $\\mu (A_{n}) = 0$；而 $\\{f > 0\\} = \\bigcup_n A_n$ 是零测的。',
-        '⭐ 这条把「积分」与「几乎处处」这两个概念绑在一起了 —— 它是 $L^{1}$ 里「$f = g$」按 a.e. 理解的原因。'
-      ].join('\n\n'),
+      notes: "附带地：$\\{f = +\\infty\\} \\subseteq \\{f>0\\}$ 也一起被处理掉了。\n\n$(\\Longleftarrow )$ 只要 $f$ 在零集外为零，上确界里的每个简单函数 $\\varphi \\le f$ 也几乎处处为零，从而 $\\int \\varphi = 0$。\n\n$(\\implies )$ 记 $A_n = \\{f > 1/n\\}$，则 $(1/n)\\cdot\\mu(A_n) \\le \\int f = 0$，故 $\\mu (A_{n}) = 0$；而 $\\{f > 0\\} = \\bigcup_n A_n$ 是零测的。\n\n⭐ 这条把「积分」与「几乎处处」这两个概念绑在一起了 —— 它是 $L^{1}$ 里「$f = g$」按 a.e. 理解的原因。",
       refs: ['Folland, Real Analysis, Prop. 2.16']
     },
 
@@ -250,12 +245,7 @@ window.MG = window.MG || {};
         '- $\\{x : f(x) = \\infty\\}$ 是零集；',
         '- $\\{x : f(x) > 0\\}$ 是 **$\\sigma$有限**的（即它是可数个有限测度集之并）。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 设 $f \\in L^{+}$、$\\int f < \\infty$。','- **$\\{f = +\\infty\\}$ 是零集**：若 $\\mu(\\{f = \\infty\\}) > 0$，则对每个 $n$ 有 $n\\,\\chi_{\\{f=\\infty\\}} \\le f$，故 $\\int f \\ge n\\,\\mu(\\{f=\\infty\\}) \\to \\infty$，与 $\\int f < \\infty$ 矛盾 ✓。','- **$\\{f > 0\\}$ 是 $\\sigma$ 有限**：','$$\\{f > 0\\} = \\bigcup_{n \\ge 1}\\bigl\\{f > \\tfrac1n\\bigr\\},$$','而由 $\\frac1n\\chi_{\\{f>1/n\\}} \\le f$ 得 $\\mu(\\{f > 1/n\\}) \\le n\\int f < \\infty$，所以这是一族可数多个**有限测度**集之并，即 $\\sigma$ 有限 ✓。∎'].join('\n'),
-        '第一条：若 $\\mu(\\{f = \\infty\\}) > 0$，则对每个 $n$ 有 $\\int f \\ge n\\cdot\\mu(\\{f=\\infty\\})$，让 $n \\to \\infty$ 得 $\\int f = \\infty$。',
-        '第二条：$\\{f > 0\\} = \\bigcup_n \\{f > 1/n\\}$，而 $\\mu(\\{f > 1/n\\}) \\le n\\int f < \\infty$ —— 所以是**可数**个有限测度集之并。',
-        '⭐ 这条解释了为什么「$L^{1}$ 里的函数几乎处处有限」是免费的，也预告了 Lp 空间里的 $\\sigma$有限假设。'
-      ].join('\n\n'),
+      notes: "第一条：若 $\\mu(\\{f = \\infty\\}) > 0$，则对每个 $n$ 有 $\\int f \\ge n\\cdot\\mu(\\{f=\\infty\\})$，让 $n \\to \\infty$ 得 $\\int f = \\infty$。\n\n第二条：$\\{f > 0\\} = \\bigcup_n \\{f > 1/n\\}$，而 $\\mu(\\{f > 1/n\\}) \\le n\\int f < \\infty$ —— 所以是**可数**个有限测度集之并。\n\n⭐ 这条解释了为什么「$L^{1}$ 里的函数几乎处处有限」是免费的，也预告了 Lp 空间里的 $\\sigma$有限假设。",
       refs: ['Folland, Real Analysis, Prop. 2.20']
     },
 
@@ -351,11 +341,7 @@ window.MG = window.MG || {};
         '',
         '即 $f \\mapsto \\int f$ 是线性的。'
       ].join('\n'),
-      notes: [
-        ['**证明。**','- **非负函数的可加性**：$f, g \\in L^{+}$ 时，$\\int(f+g) = \\int f + \\int g$ —— 对简单函数逐条验证（线性性），再用简单函数逼近 + 单调收敛定理取极限 ✓；**齐次性** $\\int cf = c\\int f$（$c \\ge 0$）同理 ✓。','- **一般实值**：$f = f^{+} - f^{-}$、$g = g^{+} - g^{-}$，展开 $(af+bg)^{\\pm}$ 并把上面的线性性逐项用上，得 $\\int(af+bg) = a\\int f + b\\int g$ ✓（复值再对实部虚部各做一次）。','- **是向量空间**：$f, g \\in L^{1}$、$a, b \\in \\mathbb{R}$ 时','$$\\int|af+bg| \\le |a|\\int|f| + |b|\\int|g| < \\infty,$$','故 $af+bg \\in L^{1}$ ✓；元素的加法与数乘按 **a.e.** 意义定义（两个 a.e. 相等的可积函数视为同一元素），$\\int$ 在这个商下良定义 ✓。∎'].join('\n'),
-        '「是向量空间」要在 a.e. 意义下理解（两个 a.e. 相等的可积函数看作同一个元素）。',
-        '线性来自正负部分解后对简单函数的 (a)(b) 逐条验证 —— 这条本身不深，但它是 $L^{1}$ 成为**赋范空间**的第一步，后面 Lp 空间整套理论都从这儿开始。'
-      ].join('\n\n'),
+      notes: "「是向量空间」要在 a.e. 意义下理解（两个 a.e. 相等的可积函数看作同一个元素）。\n\n线性来自正负部分解后对简单函数的 (a)(b) 逐条验证 —— 这条本身不深，但它是 $L^{1}$ 成为**赋范空间**的第一步，后面 Lp 空间整套理论都从这儿开始。",
       refs: ['Folland, Real Analysis, Prop. 2.21']
     },
 
@@ -372,9 +358,7 @@ window.MG = window.MG || {};
         '',
         '$$| \\int f d\\mu | \\le \\int |f| d\\mu$$'
       ].join('\n'),
-      notes: [
-        ['**证明。** 若 $\\int f\\,\\mathrm{d}\\mu = 0$ 则**左边是 $0$、右边非负**（$\\int |f|$ 未必为 $0$：$f = \\chi_{[0,1/2]} - \\chi_{(1/2,1]}$ 给 $\\int f = 0$、$\\int |f| = 1$）。否则——','- **实值**：取 $\\alpha := \\operatorname{sgn}\\bigl(\\int f\\,\\mathrm{d}\\mu\\bigr) \\in \\{\\pm1\\}$，则 $\\alpha\\int f = \\bigl|\\int f\\bigr|$，于是','$$\\Bigl|\\int f\\,\\mathrm{d}\\mu\\Bigr| = \\alpha\\int f\\,\\mathrm{d}\\mu = \\int \\alpha f\\,\\mathrm{d}\\mu \\le \\int |f|\\,\\mathrm{d}\\mu;$$','- **复值**：取 $\\alpha := e^{-i\\theta}$，$\\theta := \\arg\\int f\\,\\mathrm{d}\\mu$。则 $\\alpha\\int f = \\bigl|\\int f\\bigr|$ 是实数，而','$$\\Bigl|\\int f\\,\\mathrm{d}\\mu\\Bigr| = \\int \\alpha f\\,\\mathrm{d}\\mu = \\int \\operatorname{Re}(\\alpha f)\\,\\mathrm{d}\\mu \\le \\int |\\alpha f|\\,\\mathrm{d}\\mu = \\int|f|\\,\\mathrm{d}\\mu,$$','中间那步用的是「$u \\le v$ 逐点 $\\implies \\int u \\le \\int v$」（实值情形）以及 $\\operatorname{Re}(z) \\le |z|$ ✓。∎'].join('\n'),
-'复情形：取 $\\alpha = e^{-i\\theta}$ 使 $\\alpha\\int f$ 是实数且等于 $|\\int f|$，则 $|\\int f| = \\int \\alpha f = \\int \\operatorname{Re}(\\alpha f) \\le \\int|\\alpha f| = \\int|f|$。'].join('\n\n'),
+      notes: "复情形：取 $\\alpha = e^{-i\\theta}$ 使 $\\alpha\\int f$ 是实数且等于 $|\\int f|$，则 $|\\int f| = \\int \\alpha f = \\int \\operatorname{Re}(\\alpha f) \\le \\int|\\alpha f| = \\int|f|$。",
       refs: ['Folland, Real Analysis, Prop. 2.22']
     },
 

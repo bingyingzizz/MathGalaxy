@@ -179,13 +179,7 @@ window.MG = window.MG || {};
         '',
         '（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$-环 的判据」里。）'
       ].join('\n'),
-      notes: [
-        ['**证明。**','(1) $\\emptyset$ 是**空的不交并**（$n = 0$），按 (5) 的定义直接属于 $\\mathfrak{A}$ ✓。⚠️ 不能取 $A \\in \\mathfrak{A}$ 用 $A \\setminus A$ 来证：基本类只要求「差能拆成有限不交并」，并不对差封闭，而且基本类本身根本不必含空集。','(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；\n\n可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。\n\n（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）','(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。','(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。','- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；','- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；','- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎'].join('\n'),
-        '(1)：空并就是 $n = 0$ 的情形，直接属于 $\\mathfrak{A}$；基本类不含 $\\emptyset$ 也无妨。',
-        '(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \\setminus \\bigcup B_{j}$** 这种相对补。',
-        '(5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。',
-        '这几条性质的实际用途：**验证一个族是 $\\sigma$代数时，只需查「含 $X$」「对补」「对可数并」三条**，其余全部免费。'
-      ].join('\n\n'),
+      notes: "(1)：空并就是 $n = 0$ 的情形，直接属于 $\\mathfrak{A}$；基本类不含 $\\emptyset$ 也无妨。\n\n(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \\setminus \\bigcup B_{j}$** 这种相对补。\n\n(5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。\n\n这几条性质的实际用途：**验证一个族是 $\\sigma$代数时，只需查「含 $X$」「对补」「对可数并」三条**，其余全部免费。",
       refs: ['Halmos, Measure Theory, §4']
     },
 
@@ -355,15 +349,7 @@ window.MG = window.MG || {};
         '',
         '即：可数积的 $\\sigma$代数，恰好是由全体「矩形」生成的 $\\sigma$代数。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 记 $\\mathcal{R} := \\{\\, \\prod_{\\alpha \\in A} E_{\\alpha} : E_{\\alpha} \\in \\mathcal{M}_{\\alpha} \\,\\}$（矩形全体），$\\mathcal{M} := \\bigotimes_{\\alpha \\in A} \\mathcal{M}_{\\alpha}$（柱集生成的 $\\sigma$代数）。','- **$\\mathcal{M} \\subseteq \\mathcal{M}(\\mathcal{R})$**：柱集 $\\pi_{\\alpha}^{-1}(E_{\\alpha})$ 就是矩形（其余坐标取全空间 $X_{\\beta}$）✓；','- **$\\mathcal{R} \\subseteq \\mathcal{M}$**：$A$ **可数**时，每个矩形是可数多个柱集之交','$$\\prod_{\\alpha \\in A} E_{\\alpha} = \\bigcap_{\\alpha \\in A} \\pi_{\\alpha}^{-1}(E_{\\alpha}),$$','而 $\\mathcal{M}$ 对可数交封闭 ✓；','- 两边互包，故 $\\mathcal{M}(\\mathcal{R}) = \\mathcal{M}$ ✓。∎','⚠️ **「$A$ 可数」不能省**：不可数时「矩形＝柱集之交」需要不可数交，而 $\\sigma$代数只保证可数交 —— 结论对不可数积一般不成立。'].join('\n'),
-        '这条确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，',
-        '',
-        '$$\\prod_{\\alpha \\in A} E_\\alpha = \\bigcap_{\\alpha \\in A} \\pi _\\alpha^{-1}(E_\\alpha)$$',
-        '',
-        '而柱集本来就已经在 $\\sigma$代数里了，矩形自然也就在里面；反过来柱集是矩形（其余坐标取全空间）的特例。',
-        '⚠ 该结论对**不可数**的 $A$ **不成立** —— 这就是为什么定义必须用柱集而不是矩形。'
-      ].join('\n\n'),
+      notes: "⚠️ **「$A$ 可数」不能省**：不可数时「矩形＝柱集之交」需要不可数交，而 $\\sigma$代数只保证可数交 —— 结论对不可数积一般不成立。\n\n这条确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，\n\n\n\n$$\\prod_{\\alpha \\in A} E_\\alpha = \\bigcap_{\\alpha \\in A} \\pi _\\alpha^{-1}(E_\\alpha)$$\n\n\n\n而柱集本来就已经在 $\\sigma$代数里了，矩形自然也就在里面；反过来柱集是矩形（其余坐标取全空间）的特例。\n\n⚠ 该结论对**不可数**的 $A$ **不成立** —— 这就是为什么定义必须用柱集而不是矩形。",
       refs: ['Folland, Real Analysis, §2.1']
     },
 
@@ -380,9 +366,7 @@ window.MG = window.MG || {};
         '',
         '$\\bigotimes_{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_{X}$'
       ].join('\n'),
-      notes: [
-        ['**证明。**','- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。','- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。','  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。','两边互包即得等号。∎','⚠️ **积的可数性不能省**：$\\mathbb{R}^{\\mathbb{R}}$ 是**不可数积**，其积 $\\sigma$ 代数**真包含于** Borel $\\sigma$ 代数（每个因子 $\\mathbb{R}$ 都可分，坏在积不可数）；充分条件是「每个因子可分 **且** 积可数」。'].join('\n'),
-      ].join('\n\n'),
+      notes: "⚠️ **积的可数性不能省**：$\\mathbb{R}^{\\mathbb{R}}$ 是**不可数积**，其积 $\\sigma$ 代数**真包含于** Borel $\\sigma$ 代数（每个因子 $\\mathbb{R}$ 都可分，坏在积不可数）；充分条件是「每个因子可分 **且** 积可数」。",
       refs: ['Folland, Real Analysis, §2.1']
     }
   ],

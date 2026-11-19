@@ -242,17 +242,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', 'Ext', 'RHom', '内射消解'],
       statement: '若 $M \\in \\mathcal{A}$、$K^{\\bullet} \\in C^{+}(\\mathcal{A})$，则 $R^{n}\\operatorname{Hom}(M, K^{\\bullet}) = \\operatorname{Ext}^{n}(M, K^{\\bullet})$（对偶地 $R^{n}\\operatorname{Hom}(-, N)$ 给出另一边的 $\\operatorname{Ext}$）。',
-      notes: [
-        ['**证明。** 右边 $\\operatorname{Ext}^{n}(M, K^{\\bullet}) = \\operatorname{Hom}_{D}(M, K^{\\bullet}[n])$，左边用内射消解算。\n\n先化到 $K^{\\bullet}$ **本身就是内射复形**的情形（一般情形取内射消解 $K^{\\bullet} \\to I^{\\bullet}$，两边都对它不变）。\n\n于是由「上有界内射复形里 Hom 就是导出 Hom」',
-          '$$\\operatorname{Ext}^{n}(M, I^{\\bullet}) = \\operatorname{Hom}_{D}(M, I^{\\bullet}[n]) = \\operatorname{Hom}_{\\mathbf{K}}(M, I^{\\bullet}[n]) = H^{0}\\bigl(\\operatorname{Hom}(M, I^{\\bullet}[n])\\bigr) = H^{n}\\bigl(\\operatorname{Hom}(M, I^{\\bullet})\\bigr),$$',
-          '而最右边正是 $R^{n}\\operatorname{Hom}(M, I^{\\bullet})$（内射复形上 $R\\operatorname{Hom} = \\operatorname{Hom}$）。',
-          '**最后那步 $\\operatorname{Hom}_{\\mathbf{K}} = H^{0}(\\operatorname{Hom})$ 要交代一句**：',
-          '- $\\operatorname{Hom}_{C}(M, I^{\\bullet}) = Z^{0}\\bigl(\\operatorname{Hom}(M, I^{\\bullet})\\bigr)$ —— 链映射就是「$f : M \\to I^{0}$ 且 $d^{0} f = 0$」，即 $0$-闭上链；',
-          '- $f$ 同伦于零 $\\iff$ $f = d^{0} \\circ s$（$M$ 集中在 $0$ 次，同伦只剩一项），即 $f \\in B^{0}$。',
-          '两句话一比即得。∎'
-        ].join('\n'),
-        '⭐ **读法**：$\\operatorname{Ext}$ 有两种算法 —— 导出范畴里的 Hom，和用内射消解算的 $R^{n}\\operatorname{Hom}$；这条说它们给出同一个东西，所以实践中挑好算的那个。'
-      ].join('\n\n'),
+      notes: "⭐ **读法**：$\\operatorname{Ext}$ 有两种算法 —— 导出范畴里的 Hom，和用内射消解算的 $R^{n}\\operatorname{Hom}$；这条说它们给出同一个东西，所以实践中挑好算的那个。",
       refs: ['Le Stum, Proposition 7.2.10']
     },
 
@@ -287,18 +277,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '零调', 'Leray', '导出函子'],
       statement: '若 $K^{\\bullet} \\in C^{+}(\\mathcal{A})$ 且每个 $K^{n}$ 都是 **$F$-零调**的，则 $RFK^{\\bullet} = FK^{\\bullet}$。',
-      notes: [
-        ['**证明（截断 + 递推）。** 不妨设 $K^{n} = 0$（$n < 0$）。先设 $K^{\\bullet}$ **有界**，记它的「丢掉第 $0$ 项」的截断为 $K\'^{\\bullet} := (K^{1} \\to K^{2} \\to \\cdots)$，有复形的短正合列',
-          '$$0 \\to K\'^{\\bullet} \\to K^{\\bullet} \\to [K^{0}] \\to 0 .$$',
-          '由「短正合列给出导出三角」，它在 $D(\\mathcal{A})$ 里给出三角；把它与 $RF$ 作用后的三角摆在一起（右边用 $R^{n}F$ 的长正合列比较），两列竖直箭头构成三角之间的态射：',
-          '$$\\begin{array}{ccccccc} FK\'^{\\bullet} & \\to & FK^{\\bullet} & \\to & FK^{0} & \\to & FK\'^{\\bullet}[1] \\\\ \\downarrow{\\scriptstyle \\sim} & & \\downarrow & & \\downarrow{\\scriptstyle \\sim} & & \\downarrow{\\scriptstyle \\sim} \\\\ RFK\'^{\\bullet} & \\to & RFK^{\\bullet} & \\to & RFK^{0} & \\to & RFK\'^{\\bullet}[1]. \\end{array}$$',
-          '- 第三列左右相等，因为 $K^{0}$ 零调：$RFK^{0} = FK^{0}$；',
-          '- 第一列由归纳假设（$K\'^{\\bullet}$ 更短，且每一项仍零调）是同构；',
-          '- 于是由三角的四条「五引理」（两端是同构则中间也是），中间那列也是同构，即 $RFK^{\\bullet} = FK^{\\bullet}$。',
-          '**无界情形**：把 $K^{\\bullet}$ 按 $K\'\'^{\\bullet} := (K^{0} \\to \\cdots \\to K^{n+1})$ 截出有界尾段，对 $0 \\to K\'^{\\bullet} \\to K^{\\bullet} \\to K\'\'^{\\bullet} \\to 0$ 取两条长正合列逐项比较（$\\varinjlim$ 让 $n \\to \\infty$），即得上一条。\n\n∎'
-        ].join('\n'),
-        '**推论（常用形式）**：若 $M \\to K^{\\bullet}$ 是**右消解**、且每个 $K^{n}$ 都 $F$-零调，则 $RFM = FK^{\\bullet}$，于是 $R^{n}FM = H^{n}(FK^{\\bullet})$ —— 这就是为什么算 $RF$ 不一定非要用内射消解。'
-      ].join('\n\n'),
+      notes: "**推论（常用形式）**：若 $M \\to K^{\\bullet}$ 是**右消解**、且每个 $K^{n}$ 都 $F$-零调，则 $RFM = FK^{\\bullet}$，于是 $R^{n}FM = H^{n}(FK^{\\bullet})$ —— 这就是为什么算 $RF$ 不一定非要用内射消解。",
       refs: ['Le Stum, Proposition 7.2.12']
     },
 

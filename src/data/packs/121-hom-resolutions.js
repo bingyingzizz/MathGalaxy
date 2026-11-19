@@ -45,26 +45,7 @@ window.MG = window.MG || {};
         '$$\\varphi_{n} - \\psi_{n} = e_{n+1}s_{n} + s_{n-1}d_{n},$$',
         '其中约定 $s_{-1} = 0$，并把 $e_{0}$ 读作 $\\varepsilon_{Q}$、$d_{0}$ 读作 $\\varepsilon_{P}$。'
       ].join('\n'),
-      notes: [
-        [
-          '**证明（一）存在性：逐层抬升。**',
-          '第 $0$ 层：$f\\varepsilon_{P} : P_{0} \\to N$ 沿满射 $\\varepsilon_{Q} : Q_{0} \\twoheadrightarrow N$ 抬升。\n\n$P_{0}$ 投射，故存在 $\\varphi_{0} : P_{0} \\to Q_{0}$ 使 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$ ✓。',
-          '归纳步：设 $\\varphi_{n} : P_{n} \\to Q_{n}$ 已造好，且 $e_{n}\\varphi_{n} = \\varphi_{n-1}d_{n}$。\n\n要造 $\\varphi_{n+1}$，只需使 $e_{n+1}\\varphi_{n+1} = \\varphi_{n}d_{n+1}$。\n\n令 $\\theta := \\varphi_{n}d_{n+1} : P_{n+1} \\to Q_{n}$，算一下：',
-          '$$e_{n}\\theta = e_{n}\\varphi_{n}d_{n+1} = \\varphi_{n-1}d_{n}d_{n+1} = 0,$$',
-          '所以 $\\operatorname{im}\\theta \\subseteq \\ker e_{n} = \\operatorname{im} e_{n+1}$（两端的复形都正合）✓。\n\n沿满射 $Q_{n+1} \\twoheadrightarrow \\operatorname{im} e_{n+1}$ 用 $P_{n+1}$ 的投射性抬升 $\\theta$，得 $\\varphi_{n+1}$ ✓。'
-        ].join('\n'),
-        [
-          '**（二）同伦唯一性：同样的抬升，目标换成「同伦方程」。** 记 $\\Delta_{n} := \\varphi_{n} - \\psi_{n}$。',
-          '$n = 0$：$\\varepsilon_{Q}\\Delta_{0} = f\\varepsilon_{P} - f\\varepsilon_{P} = 0$，故 $\\operatorname{im}\\Delta_{0} \\subseteq \\ker\\varepsilon_{Q} = \\operatorname{im} e_{1}$ ✓，沿 $Q_{1} \\twoheadrightarrow \\operatorname{im} e_{1}$ 抬升得 $s_{0}$，即 $e_{1}s_{0} = \\Delta_{0}$ ✓。',
-          '归纳步：设 $s_{0}, \\ldots, s_{n-1}$ 已使 $\\Delta_{k} = e_{k+1}s_{k} + s_{k-1}d_{k}$（$k < n$）。令 $\\Delta_{n}^{\\circ} := \\Delta_{n} - s_{n-1}d_{n}$，则',
-          '$$e_{n}\\Delta_{n}^{\\circ} = e_{n}\\Delta_{n} - \\bigl(\\Delta_{n-1} - s_{n-2}d_{n-1}\\bigr)d_{n} = \\bigl(e_{n}\\varphi_{n} - \\varphi_{n-1}d_{n}\\bigr) - \\bigl(e_{n}\\psi_{n} - \\psi_{n-1}d_{n}\\bigr) = 0,$$',
-          '于是 $\\operatorname{im}\\Delta_{n}^{\\circ} \\subseteq \\operatorname{im} e_{n+1}$ ✓，再抬升一次得 $s_{n}$。逐层下去就得到整族同伦 ✓。∎'
-        ].join('\n'),
-        '⭐ **意义**：消解**不唯一**，但「唯一到链同伦」已经够用 —— 导出函子、$\\operatorname{Ext}$、$\\operatorname{Tor}$ 都只依赖消解的同伦类，于是它们的定义与消解选取无关。没有这条，整套求导机械都无定义。',
-        '⚠️ 结论**只到同伦**，不到同构：同一模的两条投射消解可以差一个可缩复形（例如一条消解与它的「直和一条形如 $0 \\to P \\xrightarrow{1} P \\to 0$ 的可缩复形」）。这不是缺陷，反而是导出范畴里「同构」的正确含义。',
-        '**对偶版本**：内射消解之间的提升有同样两条，只是抬升方向反过来（用内射对象的延拓性质），见「内射消解之间的提升」。',
-        '⚠️ 用到的只有「每一项投射」与「两端正合」；**不需要**选择公理之外的东西，也不要求环交换。'
-      ].join('\n\n'),
+      notes: "⭐ **意义**：消解**不唯一**，但「唯一到链同伦」已经够用 —— 导出函子、$\\operatorname{Ext}$、$\\operatorname{Tor}$ 都只依赖消解的同伦类，于是它们的定义与消解选取无关。没有这条，整套求导机械都无定义。\n\n⚠️ 结论**只到同伦**，不到同构：同一模的两条投射消解可以差一个可缩复形（例如一条消解与它的「直和一条形如 $0 \\to P \\xrightarrow{1} P \\to 0$ 的可缩复形」）。这不是缺陷，反而是导出范畴里「同构」的正确含义。\n\n**对偶版本**：内射消解之间的提升有同样两条，只是抬升方向反过来（用内射对象的延拓性质），见「内射消解之间的提升」。\n\n⚠️ 用到的只有「每一项投射」与「两端正合」；**不需要**选择公理之外的东西，也不要求环交换。",
       refs: [
         'Rotman, An Introduction to Homological Algebra (2nd ed.), 关于消解（resolutions）的部分 · 比较定理（Comparison Theorem）',
         'Weibel, An Introduction to Homological Algebra, 投射消解（projective resolutions）一节 · Comparison Theorem'
@@ -248,19 +229,7 @@ window.MG = window.MG || {};
         '',
         '也就是说：两条「$M$ 的投射预覆盖」各自的核，可以互相补偿成同一个模。'
       ].join('\n'),
-      notes: [
-        [
-          '**证明（纤维积一次搞定）。** 令 $X$ 是 $\\pi$ 与 $\\pi_{1}$ 的**纤维积**（拉回）',
-          '$$X := \\{\\, (x, x_{1}) \\in P \\oplus P_{1} : \\pi(x) = \\pi_{1}(x_{1}) \\,\\}.$$',
-          '两个投影给出交换图，而 $\\pi_{1}$ 满、$\\pi$ 满分别是「$X \\to P$ 满」与「$X \\to P_{1}$ 满」的原因 ✓。逐条读核：',
-          '- $\\ker(X \\to P_{1}) = \\{\\, (x, 0) : \\pi(x) = 0 \\,\\} = K$ ✓；',
-          '- $\\ker(X \\to P) = \\{\\, (0, x_{1}) : \\pi_{1}(x_{1}) = 0 \\,\\} = K_{1}$ ✓。',
-          '于是得到两条短正合列 $0 \\to K \\to X \\to P_{1} \\to 0$ 与 $0 \\to K_{1} \\to X \\to P \\to 0$。\n\n**第一条分裂**：$P_{1}$ 投射，故 $X \\to P_{1}$ 有截面，于是 $X \\cong P_{1}\\oplus K$ ✓。\n\n**第二条也分裂**（$P$ 投射），于是 $X \\cong P\\oplus K_{1}$ ✓。\n\n两者一比即得 $P_{1}\\oplus K \\cong P\\oplus K_{1}$ ✓。\n\n∎'
-        ].join('\n'),
-        '⭐ **它说的是「合冲只差一个投射直和项」**，而且**两条预覆盖的中间项都必须是投射的**才有这个结论 —— 这也是为什么「投射」在合冲的整套叙述里反复出现：它是唯一让「分裂」生效的假设。',
-        '⚠️ 结论是**直和同构**，不是同构：$K$ 与 $K_{1}$ 一般不同构。要「取掉」这个自由度，就得在**稳定范畴**里工作 —— 把相差投射直和项的对象等同起来。',
-        '**名字**：这叫 Schanuel 引理，最早出现在 Schanuel 的讲义里（未发表），经 Rotman、Cartan–Eilenberg 等书传播。'
-      ].join('\n\n'),
+      notes: "⭐ **它说的是「合冲只差一个投射直和项」**，而且**两条预覆盖的中间项都必须是投射的**才有这个结论 —— 这也是为什么「投射」在合冲的整套叙述里反复出现：它是唯一让「分裂」生效的假设。\n\n⚠️ 结论是**直和同构**，不是同构：$K$ 与 $K_{1}$ 一般不同构。要「取掉」这个自由度，就得在**稳定范畴**里工作 —— 把相差投射直和项的对象等同起来。\n\n**名字**：这叫 Schanuel 引理，最早出现在 Schanuel 的讲义里（未发表），经 Rotman、Cartan–Eilenberg 等书传播。",
       refs: [
         'Rotman, An Introduction to Homological Algebra (2nd ed.), 合冲（syzygies）的部分 · Schanuel 引理',
         'Cartan–Eilenberg, Homological Algebra (1956), 关于合冲与维数的部分 · Schanuel 引理'
@@ -683,16 +652,7 @@ window.MG = window.MG || {};
         '',
         '于是交换环上挠积可以只写一个符号、把两个变量当对称的看待。'
       ].join('\n'),
-      notes: [
-        [
-          '**证明（双复形的两种算法）。** 取 $M, N$ 各自的投射消解 $P_{\\bullet} \\twoheadrightarrow M$、$Q_{\\bullet} \\twoheadrightarrow N$，作双复形 $P \\otimes Q$（$p$ 次行为 $P_{p}\\otimes Q_{q}$），取全复形 $T_{\\bullet}$。\n\n对它按**行**过滤：',
-          '$$E_{p,q}^{1} = H_{q}\\bigl(P_{p}\\otimes Q_{\\bullet}\\bigr) = \\begin{cases} P_{p}\\otimes N , & q = 0 \\\\ 0 , & q \\ne 0 \\end{cases}$$',
-          '（因为 $Q_{\\bullet} \\to N$ 是消解、$P_{p}$ 平坦，张量后仍正合）✓。\n\n于是谱序列在 $E^{1}$ 页就只剩一行 —— 但一行仍可能有非零的 $d^{1}$（如该行是 $\\mathbb{Z} \\xrightarrow{2} \\mathbb{Z}$），所以要看**这一行的同调**（也就是 $E^{2}$），此时才退化，得 $H_{n}(T_{\\bullet}) \\cong H_{n}(P_{\\bullet}\\otimes N) = \\operatorname{Tor}_{n}^{R}(M, N)$ ✓。',
-          '再按**列**过滤（交换环上 $P\\otimes Q \\cong Q\\otimes P$，双复形转置）：同一步计算给出 $H_{n}(T_{\\bullet}) \\cong H_{n}(Q_{\\bullet}\\otimes M) = \\operatorname{Tor}_{n}^{R}(N, M)$ ✓。\n\n同一个 $H_{n}(T_{\\bullet})$ 被算出两次，故两者同构 ✓。\n\n∎'
-        ].join('\n'),
-        '⚠️ **「交换」不能省**：非交换时 $M\\otimes_{R} N$ 只在 $M$ 右、$N$ 左时有定义，$N\\otimes_{R} M$ 一般**根本没有定义**。\n\n**换序必须同时换到反环**：$\\operatorname{Tor}_{n}^{R}(M,N) \\cong \\operatorname{Tor}_{n}^{R^{\\mathrm{op}}}(N,M)$（把右 $R$-模的消解看成左 $R^{\\mathrm{op}}$-模的消解，逐项交换即得）—— 这条是**对的**；错的是**不带 $R^{\\mathrm{op}}$** 的写法。',
-        '⭐ 这条的实际用处：**计算时可以任选一边做消解**。例如算 $\\operatorname{Tor}_{n}^{R}(R/I, N)$ 时，通常用 $R/I$ 的两项消解（$0 \\to I \\to R \\to R/I \\to 0$）更省事 —— 但这**要求 $I$ 投射（或至少平坦）**，否则这两项复形算不对高次 Tor：$R = k[\\varepsilon]/\\varepsilon^{2}$、$I = (\\varepsilon)$、$N = k$ 时 $\\operatorname{Tor}_{2}(k,k) = k$ 会被算成 $0$ —— 有了对称性就知道这等价于对 $N$ 取消解。'
-      ].join('\n\n'),
+      notes: "⚠️ **「交换」不能省**：非交换时 $M\\otimes_{R} N$ 只在 $M$ 右、$N$ 左时有定义，$N\\otimes_{R} M$ 一般**根本没有定义**。\n\n**换序必须同时换到反环**：$\\operatorname{Tor}_{n}^{R}(M,N) \\cong \\operatorname{Tor}_{n}^{R^{\\mathrm{op}}}(N,M)$（把右 $R$-模的消解看成左 $R^{\\mathrm{op}}$-模的消解，逐项交换即得）—— 这条是**对的**；错的是**不带 $R^{\\mathrm{op}}$** 的写法。\n\n⭐ 这条的实际用处：**计算时可以任选一边做消解**。例如算 $\\operatorname{Tor}_{n}^{R}(R/I, N)$ 时，通常用 $R/I$ 的两项消解（$0 \\to I \\to R \\to R/I \\to 0$）更省事 —— 但这**要求 $I$ 投射（或至少平坦）**，否则这两项复形算不对高次 Tor：$R = k[\\varepsilon]/\\varepsilon^{2}$、$I = (\\varepsilon)$、$N = k$ 时 $\\operatorname{Tor}_{2}(k,k) = k$ 会被算成 $0$ —— 有了对称性就知道这等价于对 $N$ 取消解。",
       refs: [
         'Rotman, An Introduction to Homological Algebra (2nd ed.), Ext 与 Tor 的部分 · Tor 在交换环上的对称性',
         'Weibel, An Introduction to Homological Algebra, 关于 Tor 的对称性（symmetry）的部分'
@@ -819,21 +779,7 @@ window.MG = window.MG || {};
         '',
         '而且 $F(R)$ 上的 $R$-模结构由 $F$ 自动给出（不另作假设）。'
       ].join('\n'),
-      notes: [
-        [
-          '**证明（自由模上验、右正合推广）。**',
-          '**① $F(R)$ 是 $R$-模。** $R$ 上的左乘给出 $\\operatorname{End}_{R\\text{-}\\mathbf{Mod}}(R) \\cong R^{\\mathrm{op}}$ 的作用；\n\n$F$ 把它送到 $F(R)$ 的自同态，于是 $F(R)$ 自动带上模结构 ✓（交换环上左右不分，可以就写 $R$）。',
-          '**② 自由模上成立。** 对 $M = R^{(I)} = \\bigoplus_{i \\in I} R$，保直和给出',
-          '$$F\\bigl(R^{(I)}\\bigr) \\cong \\bigoplus_{i} F(R) \\cong R^{(I)}\\otimes_{R} F(R)$$',
-          '（最后一步是「自由模张量＝按系数重排」）✓。',
-          '**③ 一般模上由右正合推过去。** 取自由表现 $R^{(J)} \\to R^{(I)} \\to M \\to 0$。\n\n$F$ 右正合，保这个右正合列；而 $M\\otimes_{R}-$ 也右正合，保同一个右正合列。\n\n② 给出两端（$R^{(I)}$ 与 $R^{(J)}$ 处）的自然同构，于是两行比较、用「$F(M) \\to M\\otimes F(R)$ 那个自然变换在两侧都是同构」以及五项（或三项）引理，中间也是同构 ✓。',
-          '说明：那个自然变换 $\\tau_{M} : F(M) \\to M\\otimes_{R} F(R)$ 的构造是「$M$ 的元素沿 $R \\to M$ 送入、再作用 $F$」的一般化 —— 它在自由模上由 ② 给出、与生成元选取无关 ✓。∎'
-        ].join('\n'),
-        '⭐ **它说的是「右正合 + 保直和」这个组合已经把函子锁死成张量函子** —— 于是要判定某个构造「是不是张量」，不必猜，只要验这两条再加一个 $F(R)$。',
-        '📌 **推论（Eilenberg–Watts）**：范畴等价 $R\\text{-}\\mathbf{Mod} \\to S\\text{-}\\mathbf{Mod}$（保直和、正合）必然是 $M \\mapsto M\\otimes_{R} B$，其中 $B$ 是可逆双模 —— 这就是 Morita 等价的标准形状。',
-        '⚠️ **「保直和」不能省**：证明的第二步要用 $F\\bigl(R^{(I)}\\bigr) \\cong \\bigoplus_{I} F(R)$ 对**任意**下标集 $I$ 成立；\n\n只保有限直和时，自由模上的比较就断了，也就没法过渡到一般模。\n\n⚠️ **「右正合」也不能省**：不右合时 $F(M)$ 不是自由模那一层的余核，两行根本对不起来。',
-        '⚠️ **非交换版本**符号要小心：$F : R\\text{-}\\mathbf{Mod} \\to \\mathbf{Ab}$ 时 $F(R)$ 是右 $R$-模，同构写成 $F(M) \\cong F(R)\\otimes_{R} M$ —— 顺序反了。交换环上两种写法一致，所以本图采用交换的版本。'
-      ].join('\n\n'),
+      notes: "⭐ **它说的是「右正合 + 保直和」这个组合已经把函子锁死成张量函子** —— 于是要判定某个构造「是不是张量」，不必猜，只要验这两条再加一个 $F(R)$。\n\n📌 **推论（Eilenberg–Watts）**：范畴等价 $R\\text{-}\\mathbf{Mod} \\to S\\text{-}\\mathbf{Mod}$（保直和、正合）必然是 $M \\mapsto M\\otimes_{R} B$，其中 $B$ 是可逆双模 —— 这就是 Morita 等价的标准形状。\n\n⚠️ **「保直和」不能省**：证明的第二步要用 $F\\bigl(R^{(I)}\\bigr) \\cong \\bigoplus_{I} F(R)$ 对**任意**下标集 $I$ 成立；\n\n只保有限直和时，自由模上的比较就断了，也就没法过渡到一般模。\n\n⚠️ **「右正合」也不能省**：不右合时 $F(M)$ 不是自由模那一层的余核，两行根本对不起来。\n\n⚠️ **非交换版本**符号要小心：$F : R\\text{-}\\mathbf{Mod} \\to \\mathbf{Ab}$ 时 $F(R)$ 是右 $R$-模，同构写成 $F(M) \\cong F(R)\\otimes_{R} M$ —— 顺序反了。交换环上两种写法一致，所以本图采用交换的版本。",
       refs: [
         'Rotman, An Introduction to Homological Algebra (2nd ed.), Ext 与 Tor 的部分 · Watts 定理（保直和的右正合函子都是张量）',
         'Watts, Intrinsic characterizations of some additive functors, Proc. Amer. Math. Soc. 11 (1960)'
@@ -861,30 +807,7 @@ window.MG = window.MG || {};
         '',
         '于是 $H_{n}(C\\otimes_{R} A)$ 由 $H_{n}(C)\\otimes A$ 与一个挠项决定 —— 后者只依赖**低一次**的同调。'
       ].join('\n'),
-      notes: [
-        [
-          '**证明（两条张量后的正合列，再比核与像）。** 记 $Z_{n} := \\ker d_{n}$、$B_{n} := \\operatorname{im} d_{n+1}$，于是 $H_{n}(C) = Z_{n}/B_{n}$。有两个短正合列',
-          '$$0 \\to Z_{n} \\to C_{n} \\to B_{n-1} \\to 0 , \\qquad 0 \\to B_{n} \\to Z_{n} \\to H_{n}(C) \\to 0 .$$',
-          '主理想整环上 $C_{n}$ 自由，故 $Z_{n}$、$B_{n-1}$ 都**自由**（自由模的子模自由），于是第一条**分裂**，张量 $A$ 后仍正合；又自由 $\\implies$ 平坦，故 $\\operatorname{Tor}_{1}^{R}(Z_{n}, A) = \\operatorname{Tor}_{1}^{R}(B_{n}, A) = 0$ ✓。',
-          '**① 算中间的分子。** 把第一条张量 $A$ 后正合，得 $Z_{n}\\otimes A \\to C_{n}\\otimes A$ 单、其像为 $\\ker\\bigl(C_{n}\\otimes A \\to B_{n-1}\\otimes A\\bigr)$，于是',
-          '$$H_{n}(C\\otimes A) = \\frac{\\ker\\bigl(Z_{n}\\otimes A \\to B_{n-1}\\otimes A\\bigr)}{\\operatorname{im}\\bigl(B_{n}\\otimes A \\to Z_{n}\\otimes A\\bigr)} .$$',
-          '**② 两个端点。** 把第二条张量 $A$（用 $\\operatorname{Tor}_{1}(Z_{n},A) = 0$ 与 $\\operatorname{Tor}_{0} = \\otimes$）得正合段',
-          '$$\\operatorname{Tor}_{1}^{R}\\bigl(H_{n}(C), A\\bigr) \\to B_{n}\\otimes A \\to Z_{n}\\otimes A \\to H_{n}(C)\\otimes A \\to 0 ,$$',
-          '于是 $\\operatorname{im}\\bigl(B_{n}\\otimes A \\to Z_{n}\\otimes A\\bigr)$ 是某个映射的像、而 $H_{n}(C)\\otimes A$ 是它的**余核**；\n\n把同一条正合段在 $n-1$ 处再用一次，$\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A)$ 正是 $B_{n-1}\\otimes A \\to Z_{n-1}\\otimes A$ 的**核** ✓。',
-          '**③ 拼起来。** 把 ① 记成 $H_{n}(C\\otimes A) = L/K$，其中 $L := \\ker(Z_{n}\\otimes A \\to B_{n-1}\\otimes A)$、$K := \\operatorname{im}(B_{n}\\otimes A \\to Z_{n}\\otimes A)$ ✓。',
-          '下段由 ② 在 $n$ 处，得 $(Z_{n}\\otimes A)/K \\cong H_{n}(C)\\otimes A$ ✓；上段由 ② 在 $n-1$ 处，得 $\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A) = \\ker\\bigl(B_{n-1}\\otimes A \\to Z_{n-1}\\otimes A\\bigr)$ ✓。\n\n而第一条张量后正合给出 $Z_{n}\\otimes A \\twoheadrightarrow B_{n-1}\\otimes A$，所以 $L$ 正是这个核沿这条满射的**原像** —— 于是 $L/K$ 满射到 $\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A)$、核为 $K$ ✓。\n\n合起来即得短正合列',
-          '$$0 \\to \\frac{Z_{n}\\otimes A}{K} \\to H_{n}(C\\otimes A) \\to \\operatorname{Tor}_{1}^{R}\\bigl(H_{n-1}(C), A\\bigr) \\to 0 ,$$',
-          '左端就是 $H_{n}(C)\\otimes A$ ✓，正是要的那条 ✓。',
-          '**④ 分裂。** 第一条短正合列分裂，故 $Z_{n}\\otimes A \\to B_{n-1}\\otimes A$ 可裂，于是 ③ 里的短正合列分裂 ✓。分裂的选法依赖 ① 中选定的截面，故一般**不自然** ✓。∎'
-        ].join('\n'),
-        '⭐ **最常见的用法**：$A$ 取成域（$\\mathbb{Z}$ 上的 $\\mathbb{Q}$、域 $k$ 上的 $k$），$\\operatorname{Tor}$ 项自动为零，于是',
-        '',
-        '$$H_{n}(C\\otimes_{R} k) \\cong H_{n}(C)\\otimes_{R} k ,$$',
-        '',
-        '「系数扩张到域上」只是把同调张过去，**不产生新的类**。反过来，$A$ 有挠时多出来的那一块就来自低一次同调 —— 这正是万有系数定理真正的内容。',
-        '⚠️ **两条假设**：$R$ 主理想整环（保证子模自由）与 $C_{\\bullet}$ 每项自由。一般环上要换成「上边缘 $B_{n}$ 都投射」（即复形逐层分裂），否则 ① 的第一步就断。',
-        '📌 同一条定理有**上同调版本**（$0 \\to \\operatorname{Ext}^{1}(H_{n-1}(C), A) \\to H^{n}(\\operatorname{Hom}(C, A)) \\to \\operatorname{Hom}(H_{n}(C), A) \\to 0$），两项的角色由 $\\operatorname{Tor}$ 换成 $\\operatorname{Ext}$。'
-      ].join('\n\n'),
+      notes: "⭐ **最常见的用法**：$A$ 取成域（$\\mathbb{Z}$ 上的 $\\mathbb{Q}$、域 $k$ 上的 $k$），$\\operatorname{Tor}$ 项自动为零，于是\n\n\n\n$$H_{n}(C\\otimes_{R} k) \\cong H_{n}(C)\\otimes_{R} k ,$$\n\n\n\n「系数扩张到域上」只是把同调张过去，**不产生新的类**。反过来，$A$ 有挠时多出来的那一块就来自低一次同调 —— 这正是万有系数定理真正的内容。\n\n⚠️ **两条假设**：$R$ 主理想整环（保证子模自由）与 $C_{\\bullet}$ 每项自由。一般环上要换成「上边缘 $B_{n}$ 都投射」（即复形逐层分裂），否则 ① 的第一步就断。\n\n📌 同一条定理有**上同调版本**（$0 \\to \\operatorname{Ext}^{1}(H_{n-1}(C), A) \\to H^{n}(\\operatorname{Hom}(C, A)) \\to \\operatorname{Hom}(H_{n}(C), A) \\to 0$），两项的角色由 $\\operatorname{Tor}$ 换成 $\\operatorname{Ext}$。",
       refs: [
         'Rotman, An Introduction to Homological Algebra (2nd ed.), 万有系数定理（Universal Coefficient Theorem）的部分',
         'Weibel, An Introduction to Homological Algebra, Ch. 3 §3.6'

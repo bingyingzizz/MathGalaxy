@@ -244,18 +244,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int_a^b F\' \\le F(b) - F(a)$$'
       ].join('\n'),
-      notes: [
-        '证明：$G$ 右连续递增，诱导一个正则 Borel 测度 $\\mu _G$。写它的 Lebesgue–Radon–Nikodym 分解',
-        '',
-        '$$d\\mu_G = d\\lambda + f\\cdot dm, \\quad  f = \\lim \\mu_G(E_h) / m(E_h)\\quad  \\text{a.e.}$$',
-        '',
-        '而差商恰好是那个比值，所以 $f = G\' = F\'$ a.e.。于是',
-        '',
-        '$$\\int_a^b F\' = \\int_a^b f\\cdot dm \\le \\int_a^b d\\mu_G = G(b) - G(a) \\le F(b) - F(a)$$',
-        '',
-        '（中间那个不等号是因为省略了奇异的 $\\lambda \\ge 0$。）∎',
-        '⚠ **这里一般不是等号**：Cantor 函数是经典反例 —— 它递增、连续、导数 a.e. 为 0，所以左边 $= 0$ 但右边 $= 1$。这个差别正是「绝对连续」这个概念要补上的东西。'
-      ].join('\n\n'),
+      notes: "⚠ **这里一般不是等号**：Cantor 函数是经典反例 —— 它递增、连续、导数 a.e. 为 0，所以左边 $= 0$ 但右边 $= 1$。这个差别正是「绝对连续」这个概念要补上的东西。",
       refs: ['Folland, Real Analysis, Theorem 3.28']
     },
 
@@ -378,9 +367,7 @@ window.MG = window.MG || {};
         '',
         '$$F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$'
       ].join('\n'),
-      notes: [
-        ['**证明。**','**(1)** 设 $f \\in L^{1}(m)$、$F(x) := \\int_{-\\infty}^{x} f(t)\\,\\mathrm{d}t$。','- **$F \\in NBV$**：$F$ 右连续（$x \\downarrow x_{0}$ 时 $f\\chi_{(-\\infty,x]} \\to f\\chi_{(-\\infty,x_{0}]}$ 逐点且被 $|f|$ 控制，用控制收敛定理）✓；\n\n$F(-\\infty) = 0$ ✓；\n\n对任意划分 $\\sum|F(x_{j})-F(x_{j-1})| \\le \\int_{a}^{b}|f| < \\infty$，故 $T_{F} < \\infty$ ✓。','- **$F \\in AC$**：给 $\\varepsilon > 0$。\n\n由 $|f| \\in L^{1}$ 的绝对连续性取 $\\delta > 0$ 使 $m(E) < \\delta \\implies \\int_{E}|f| < \\varepsilon$；\n\n于是对两两不交的区间族 $\\bigsqcup(a_{j}, b_{j})$ 且 $\\sum(b_{j}-a_{j}) < \\delta$，','$$\\sum_{j}|F(b_{j}) - F(a_{j})| \\le \\sum_{j}\\int_{a_{j}}^{b_{j}}|f| = \\int_{\\bigcup(a_{j},b_{j})}|f| < \\varepsilon \\;✓$$','**(2)** 反之设 $F \\in NBV \\cap AC$。\n\n$F$ 有界变差 $\\implies$ $F$ 可测、a.e. 可导、$F\' \\in L^{1}(m)$，且有 Lebesgue 分解 $dF = F\'\\,\\mathrm{d}m + dF_{s}$（$F_{s} \\perp m$，由 $F$ 的测度部分给出）；\n\n而**绝对连续恰好等价于「测度部分没有奇异部分」**，即 $F_{s} = 0$ ✓。\n\n于是 $F(x) = \\int_{-\\infty}^{x}F\'\\,\\mathrm{d}m$ ✓。\n\n∎','⭐ 两方向合起来：**绝对连续函数恰好是某个 $L^{1}$ 函数的积分**。'].join('\n'),
-'两个方向合起来就是「绝对连续函数正好是某个 $L^{1}$ 函数的积分」。'].join('\n\n'),
+      notes: "⭐ 两方向合起来：**绝对连续函数恰好是某个 $L^{1}$ 函数的积分**。\n\n两个方向合起来就是「绝对连续函数正好是某个 $L^{1}$ 函数的积分」。",
       refs: ['Folland, Real Analysis, Theorem 3.35']
     },
 

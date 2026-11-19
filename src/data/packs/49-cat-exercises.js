@@ -80,18 +80,7 @@ window.MG = window.MG || {};
         '',
         '只要它们存在。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 把偏序集看成范畴时，$\\operatorname{Hom}(x,y)$ 至多一个元素，「锥」$c \\to D$ 就退化成「$c \\preceq D(i)$ 对一切 $i$」，即 $c$ 是 $D$ 的一个**下界** ✓。','- 泛锥 = 下界中**最大**的那一个 = $\\inf D$；「$\\lim D$ 存在」正好就是「$\\inf D$ 存在」✓。','- 对偶地（把 $\\preceq$ 反向），余锥 = 上界，泛余锥 = 最小上界 = $\\sup D$ ✓。','- 特例：单点图 $\\inf = \\sup = $ 该元素；空图给出终对象（最大元）与始对象（最小元）；两元素图给出积 $\\inf\\{x,y\\}$ 与余积 $\\sup\\{x,y\\}$；\n\n拉回、推出分别是下确界、上确界（因为相容条件自动满足）；\n\n而等化子：$f, g$ 若平行则 $f = g$（Hom 至多一个元素），此时等化子就是恒等 ✓。','因此完备格 $=$ 有所有小极限的偏序集；有界格 $\\leftrightarrow$ 有有限极限与有限余极限 ✓。∎'].join('\n'),
-        '⭐ **这条把整套范畴语言翻译成序语言**，也是最好的入门例子：',
-        '',
-        [
-          '- **积** = 下确界 $\\inf\\{x, y\\}$；**余积** = 上确界 $\\sup\\{x, y\\}$；',
-          '- **终对象** = 最大元；**始对象** = 最小元；',
-          '- **拉回**（纤维积）= 两个元素的下确界；**推出** = 上确界；',
-          '- **等化子**：因为 Hom 至多一个元素，平行的 $f, g$ 只有「相等」或「不平行」两种，所以等化子平凡。'
-        ].join('\n'),
-        '**由此立刻得到**：完备格 = 有所有小极限与小余极限的偏序集；$\\mathbb{Q}$ 作为偏序集**不**完备（$\\{q : q^{2} < 2\\}$ 没有上确界）—— 这与实数完备性那条是同一件事的两种说法。',
-      ].join('\n\n'),
+      notes: "⭐ **这条把整套范畴语言翻译成序语言**，也是最好的入门例子：\n\n\n\n- **积** = 下确界 $\\inf\\{x, y\\}$；**余积** = 上确界 $\\sup\\{x, y\\}$；\n- **终对象** = 最大元；**始对象** = 最小元；\n- **拉回**（纤维积）= 两个元素的下确界；**推出** = 上确界；\n- **等化子**：因为 Hom 至多一个元素，平行的 $f, g$ 只有「相等」或「不平行」两种，所以等化子平凡。\n\n**由此立刻得到**：完备格 = 有所有小极限与小余极限的偏序集；$\\mathbb{Q}$ 作为偏序集**不**完备（$\\{q : q^{2} < 2\\}$ 没有上确界）—— 这与实数完备性那条是同一件事的两种说法。",
       refs: ['Le Stum, Exercise 1.30'],
     },
 
@@ -123,7 +112,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '保极限', '积', '核', '左正合'],
       statement: '函子 $F$ 若保**所有有限积**与**所有核**（等化子），则 $F$ 保**所有有限极限**（即 $F$ 左正合）。',
-    notes:         ['**证明。** 记 $F : \\mathcal{C}\\to\\mathcal{D}$ 保有限积与核（等化子）。','- **有限极限的标准构造**：对有限图 $D : I\\to\\mathcal{C}$，令 $P := \\prod_{i\\in I}D(i)$，并考虑两条态射','$$P \\;\\underset{\\;q\\;}{\\overset{\\;p\\;}{\\rightrightarrows}}\\; \\prod_{u : i\\to j}D(j), \\qquad p := \\bigl(\\pi_{j}\\bigr)_{u},\\quad q := \\bigl(D(u)\\circ\\pi_{i}\\bigr)_{u},$$','即「第 $u$ 个坐标分别取 $D(u)$ 之后的投影与直接投影」。则','$$\\lim D \\;\\cong\\; \\operatorname{eq}(p, q),$$','（元素层面：$\\operatorname{eq}(p,q)$ 恰是一族相容的 $D(i)$ 元素，即 $D$ 的锥；泛性由积的泛性给出）✓。','- **$F$ 保两步**：$F(P) \\cong \\prod_{i}FD(i)$（保有限积）✓；$F(\\operatorname{eq}(p,q)) \\cong \\operatorname{eq}(Fp, Fq)$（保核）✓。','- **合起来**：把上面的构造用于 $FD$ 得到的等化子正是 $\\operatorname{eq}(Fp,Fq) \\cong F(\\operatorname{eq}(p,q))$，而它又是 $\\lim FD$ ✓。故 $F$ 保一切有限极限，即**左正合** ✓。∎','⚠️ 只保「积」不够：还要保核（等化子），否则上面第二条会断。'].join('\n'),
+    notes:         "⚠️ 只保「积」不够：还要保核（等化子），否则上面第二条会断。",
       refs: ['Le Stum, An introduction to condensed mathematics, §1.4.2']
     },
 
@@ -155,14 +144,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '投射对象', '余积', '对偶'],
       statement: '投射对象的**余积**还是投射的；对偶地，内射对象的**积**还是内射的。',
-      notes: [
-        ['**证明。** 设 $P_{i}$（$i \\in I$）都投射，$Q := \\coprod_{i} P_{i}$，带余射 $\\iota_{i} : P_{i} \\to Q$。任给满态射 $e : X \\twoheadrightarrow Y$ 与 $f : Q \\to Y$，要造 $g$ 使 $e g = f$：',
-          '- 限制到每个分量，$f \\iota_{i} : P_{i} \\to Y$。因为 $P_{i}$ 投射，存在 $g_{i} : P_{i} \\to X$ 使 $e g_{i} = f \\iota_{i}$；',
-          '- 余积的**泛性质**给出唯一的 $g : Q \\to X$ 使 $g \\iota_{i} = g_{i}$（对所有 $i$）；',
-          '- 于是 $e g \\iota_{i} = e g_{i} = f \\iota_{i}$ 对所有 $i$ 成立，再由余积泛性质的**唯一性**得 $e g = f$。∎'
-        ].join('\n'),
-        '对偶地（把上面每个箭头反向、余积换积、满态射换单态射）：内射对象的积仍内射。'
-      ].join('\n\n'),
+      notes: "对偶地（把上面每个箭头反向、余积换积、满态射换单态射）：内射对象的积仍内射。",
       refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
@@ -199,7 +181,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '伴随', '唯一性'],
       statement: '若 $F_{1} \\dashv G$ 且 $F_{2} \\dashv G$，则 $F_{1} \\cong F_{2}$（对偶地：同一个左伴随的右伴随在同构意义下唯一）。',
-    notes:         ['**证明。** 设 $F_{1}\\dashv G$、$F_{2}\\dashv G$，伴随同构记为 $\\varphi_{1}, \\varphi_{2}$。','- 对任意 $X \\in \\mathcal{C}$ 与 $Y \\in \\mathcal{D}$，','$$\\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{1}X, Y\\bigr) \\xrightarrow{\\;\\varphi_{1}\\;} \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, GY\\bigr) \\xrightarrow{\\;\\varphi_{2}^{-1}\\;} \\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{2}X, Y\\bigr)$$','是一个与 $Y$ 自然同构 ✓。','- 由 **Yoneda 引理**，自然同构 $\\operatorname{Hom}(F_{1}X, -) \\cong \\operatorname{Hom}(F_{2}X, -)$ 唯一地来自一个同构 $\\theta_{X} : F_{1}X \\to F_{2}X$ ✓。','- $\\theta$ 对 $X$ 自然：$\\theta$ 是「用同两个伴随同构拼出来的」，而伴随同构对两个变量都自然，故 $\\theta : F_{1} \\to F_{2}$ 是自然同构 ✓。','- 同一条论证交换 $\\mathcal{C}$ 与 $\\mathcal{D}^{\\mathrm{op}}$ 就得到右伴随的唯一性 ✓。∎'].join('\n'),
+    notes:         "",
       refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
@@ -212,7 +194,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '伴随', '余单位', '忠实'],
       statement: '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $G$ **忠实** $\\iff$ 余单位 $\\varepsilon$ 是**满态射**（对偶地：$F$ 忠实 $\\iff$ 单位是单态射）。',
-    notes:         ['**证明。** 设 $F \\dashv G$，伴随同构 $\\varphi_{Y,Z} : \\operatorname{Hom}_{\\mathcal{D}}(FY, Z) \\xrightarrow{\\ \\cong\\ } \\operatorname{Hom}_{\\mathcal{C}}(Y, GZ)$，余单位 $\\varepsilon_{Y} = \\varphi^{-1}(1_{GY})$。','- **关键同构**：由三角恒等式，下面的方块交换（对一切 $Z$）：','$$\\begin{array}{ccc} \\operatorname{Hom}_{\\mathcal{D}}(Y, Z) & \\xrightarrow{\\ G_{Y,Z}\\ } & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\\\ {\\scriptstyle \\operatorname{Hom}(\\varepsilon_{Y}, Z)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle \\cong\\ \\varphi_{GY,Z}} \\\\ \\operatorname{Hom}_{\\mathcal{D}}(FGY, Z) & \\xrightarrow[\\ \\cong\\ ]{} & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\end{array}$$','即 $\\varphi_{GY,Z}\\circ\\operatorname{Hom}(\\varepsilon_{Y}, Z) = G_{Y,Z}$ ✓。','- 于是（用「$e$ 是满态射 $\\iff$ $\\operatorname{Hom}(e, Z)$ 对一切 $Z$ 是单射」这条刻画）','$$\\varepsilon_{Y}\\text{ 满} \\iff \\forall Z:\\ \\operatorname{Hom}(\\varepsilon_{Y},Z)\\text{ 单} \\iff \\forall Z:\\ G_{Y,Z}\\text{ 单} \\iff G\\text{ 忠实} ✓$$','- 对偶地（把整个论证搬到 $\\mathcal{C}^{\\mathrm{op}}, \\mathcal{D}^{\\mathrm{op}}$）得 $F$ 忠实 $\\iff$ 单位 $\\eta$ 是单态射 ✓。∎'].join('\n'),
+    notes:         "",
       refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
@@ -231,18 +213,7 @@ window.MG = window.MG || {};
         '',
         '是同构。'
       ].join('\n'),
-      notes: [
-        ['**证明（两边各算一次）。** 余极限取在 $\\prod_{j} I_{j}$ 上，而滤过范畴的**积**仍是滤过的（任意两个对象 $(i_{j})$、$(i\'_{j})$ 在每个分量上各取上界，再逐坐标拼起来）。',
-          '- **单**：左边一个元素是某一点 $(i_{j})_{j}$ 上的族 $(x_{j})_{j}$。\n\n' +
-          '若它在右边为 $0$，则对每个 $j$ 存在 $i_{j} \\to i\'_{j}$ 把 $x_{j}$ 杀掉；\n\n' +
-          '$(i\'_{j})_{j}$ 就是 $\\prod_{j} I_{j}$ 里接受它的那个对象，于是这个类本身就是 $0$。',
-          '- **满**：右边任给 $(t_{j})_{j}$，每个 $t_{j}$ 由某个 $x_{j} \\in M_{j}(i_{j})$ 表示；把 $(i_{j})_{j}$ 与 $(x_{j})_{j}$ 拼起来就是左边的一个元素，它映到 $(t_{j})_{j}$。∎'
-        ].join('\n'),
-        ['⚠️ **关键是「每个 $j$ 各有自己的滤过范畴」。** 若所有 $j$ 共用同一个 $I$（取对角），断言**是错的** —— 那时只有 $J$ **有限**才对（那就是「滤过余极限与有限积交换」，来自滤过余极限是 sifted 余极限）。',
-          '反例：$I = (\\mathbb{N}, \\le)$、$M_{i,j} = \\mathbb{Z}/p^{i}$，转移映射取「乘以 $p$」，于是 $\\varinjlim_{i} \\mathbb{Z}/p^{i} = \\mathbb{Z}[1/p]/\\mathbb{Z}$。\n\n取 $t = (t_{j})_{j}$，其中 $t_{j}$ 是阶为 $p^{j}$ 的那个元素：任何单个 $i$ 上，元素只能有阶 $\\le p^{i}$，所以 $j > i$ 的分量根本提不出来 —— 而 $\\prod_{j} I_{j}$ 上就没这个问题，每个 $j$ 可以各自跑到够高的层级。'
-        ].join('\n'),
-        '与 AB5 的关系：AB6 = AB5 + 上面这条（AB5 管「滤过余极限正合」，AB6 再管「它与积交换」）。'
-      ].join('\n\n'),
+      notes: "⚠️ **关键是「每个 $j$ 各有自己的滤过范畴」。** 若所有 $j$ 共用同一个 $I$（取对角），断言**是错的** —— 那时只有 $J$ **有限**才对（那就是「滤过余极限与有限积交换」，来自滤过余极限是 sifted 余极限）。\n反例：$I = (\\mathbb{N}, \\le)$、$M_{i,j} = \\mathbb{Z}/p^{i}$，转移映射取「乘以 $p$」，于是 $\\varinjlim_{i} \\mathbb{Z}/p^{i} = \\mathbb{Z}[1/p]/\\mathbb{Z}$。\n\n取 $t = (t_{j})_{j}$，其中 $t_{j}$ 是阶为 $p^{j}$ 的那个元素：任何单个 $i$ 上，元素只能有阶 $\\le p^{i}$，所以 $j > i$ 的分量根本提不出来 —— 而 $\\prod_{j} I_{j}$ 上就没这个问题，每个 $j$ 可以各自跑到够高的层级。\n\n与 AB5 的关系：AB6 = AB5 + 上面这条（AB5 管「滤过余极限正合」，AB6 再管「它与积交换」）。",
       refs: ['Le Stum, Definition 5.2.5']
     },
 
@@ -255,9 +226,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', 'Ind-对象', '反射子范畴', '滤过余极限'],
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
-      notes: [
-        ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。\n\n∎'].join('\n'),
-'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。'].join('\n\n'),
+      notes: "**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。",
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
@@ -270,7 +239,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '滤过余极限', '余极限', '完备性'],
       statement: '有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。',
-    notes:         ['**证明。** 记 $\\mathcal{C}$ 有有限余极限与滤过余极限。','- **先看小指标**：设 $I$ 是任一小范畴，$D : I \\to \\mathcal{C}$。令 $\\operatorname{Fin}(I)$ 是 $I$ 的**有限子范畴**（对象集有限、且对其中每对对象只取有限多个态射）的全体，按包含构成偏序 —— 它是**滤过**的（两个有限子范畴的并仍有限）✓。','- **两步走**：$\\varinjlim_{I} D$ 可以这样算：先在每个有限子范畴 $J$（沿含入 $J \\hookrightarrow I$）上取余极限 $\\varinjlim_{J}D|_{J}$ —— 这是**有限**余极限（有限图）✓；\n\n再沿 $J$ 的滤过序取余极限，得到 $\\varinjlim_{J \\in \\operatorname{Fin}(I)}\\bigl(\\varinjlim_{J} D\\bigr)$，它与 $\\varinjlim_{I}D$ 满足同一个泛性质（两条余锥的相容性互相翻译）故同构 ✓。','- 于是任何余极限都是「有限余极限的滤过余极限」，两者都在 $\\mathcal{C}$ 里，故 $\\mathcal{C}$ 有所有余极限 ✓。∎','⚠️ 前提「有限余极限」不能只留「余积」：还要有推出 / 余等化子，上面的两步走才封得住。'].join('\n'),
+    notes:         "⚠️ 前提「有限余极限」不能只留「余积」：还要有推出 / 余等化子，上面的两步走才封得住。",
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
@@ -283,19 +252,7 @@ window.MG = window.MG || {};
       regions: ['algebra', 'category'],
       tags: ['代数', '环', '张量积', '推出'],
       statement: '在**交换环**范畴里，沿 $A \\to B$、$A \\to C$ 的**纤维余积**（推出）是 $B \\otimes_{A} C$。',
-      notes: [
-        ['**证明（验证推出的泛性质）。** 记 $D := B\\otimes_{A} C$，$\\beta : B\\to D$、$\\gamma : C\\to D$ 为 $b\\mapsto b\\otimes 1$、$c\\mapsto 1\\otimes c$。',
-          '- **方块交换**：$\\beta(a\\cdot 1_{B}) = a\\otimes 1 = 1\\otimes a\\cdot 1 = \\gamma(a\\cdot 1_{C})$，即 $\\beta\\circ(A\\to B) = \\gamma\\circ(A\\to C)$ ✓；',
-          '- **泛性质**：任给交换环 $E$ 与同态 $f : B\\to E$、$g : C\\to E$ 使 $f|_{A} = g|_{A}$，定义',
-          '$$\\varphi\\Bigl(\\sum_{k} b_{k}\\otimes c_{k}\\Bigr) := \\sum_{k} f(b_{k})\\,g(c_{k}) \\in E .$$',
-          '它是**良定义**的：$\\otimes$ 的双线性关系逐条被 $f,g$ 的乘法性与 $f|_{A}=g|_{A}$ 满足（例如 $ab\\otimes c - b\\otimes ac \\mapsto f(ab)g(c)-f(b)g(ac) = f(a)f(b)g(c) - f(b)g(a)g(c) = 0$）✓；\n\n' +
-          '由交换性 $\\varphi$ 是环同态 ✓；\n\n' +
-          '且 $\\varphi\\beta = f$、$\\varphi\\gamma = g$ ✓。',
-          '- **唯一性**：$D$ 由 $\\beta(B)\\cup\\gamma(C)$ 生成（$b\\otimes c = \\beta(b)\\gamma(c)$），故在两个生成块上定死就唯一 ✓。',
-          '于是 $D$ 满足推出的泛性质，即 $B\\otimes_{A}C = B\\coprod_{A} C$。∎',
-          '⚠️ **交换性是必需的**：非交换环上，$B\\otimes_{A}C$ 一般不是环（乘法在张量积上不下降）—— 那时纤维余积要用自由积 / 余等化子另造。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⚠️ **交换性是必需的**：非交换环上，$B\\otimes_{A}C$ 一般不是环（乘法在张量积上不下降）—— 那时纤维余积要用自由积 / 余等化子另造。",
       refs: ['Le Stum, Exercise 1.36']
     }
   ],

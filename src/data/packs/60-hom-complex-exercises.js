@@ -31,11 +31,7 @@ window.MG = window.MG || {};
         '',
         '则 $d_{n-1} \\circ d_{n} = 0$，于是 $K_{\\bullet}$ 成为一个**链复形**。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 展开','$$d_{n-1}d_{n} = \\sum_{j=0}^{n-1}\\sum_{i=0}^{n} (-1)^{i+j} d^{n-1}_{j} d^{n}_{i}.$$','由单纯恒等式，$i \\le j-1$ 时 $d^{n-1}_{j} d^{n}_{i} = d^{n-1}_{i} d^{n}_{j+1}$；因此每一对 $(i,j)$ 与 $i > j$ 的那一对 $(j, i+1)$ 给出**同一项**，而符号为 $(-1)^{i+j}$ 与 $(-1)^{j+i+1}$ —— 恰好相反，两两抵消 ✓。\n\n于是 $d^{2} = 0$ ✓。\n\n∎'].join('\n'),
-        '⭐ 这是**单纯方法**的入口：把一个（半）单纯对象按交替和变成复形，就能用同调代数去算它的不变量。\n\n拓扑空间 $X$ 的奇异单纯集 $S_{\\bullet}(X) = h_{X} \\circ \\Delta^{\\bullet}$ 配上 $\\mathbb{Z}\\cdot(-)$ 给出的 $C_{\\bullet}(X) := \\mathbb{Z}\\cdot S_{\\bullet}(X)$ 就是标准例子 —— 它的同调正是**奇异同调**。',
-        '⚠️ 这里只需要**半**单纯（只要有面映射）；退化映射不进入微分（这是「正规化」的做法）。'
-      ].join('\n\n'),
+      notes: "⭐ 这是**单纯方法**的入口：把一个（半）单纯对象按交替和变成复形，就能用同调代数去算它的不变量。\n\n拓扑空间 $X$ 的奇异单纯集 $S_{\\bullet}(X) = h_{X} \\circ \\Delta^{\\bullet}$ 配上 $\\mathbb{Z}\\cdot(-)$ 给出的 $C_{\\bullet}(X) := \\mathbb{Z}\\cdot S_{\\bullet}(X)$ 就是标准例子 —— 它的同调正是**奇异同调**。\n\n⚠️ 这里只需要**半**单纯（只要有面映射）；退化映射不进入微分（这是「正规化」的做法）。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -58,10 +54,7 @@ window.MG = window.MG || {};
         '1. 这个函子**全忠实**；',
         '2. 它**保所有极限与所有余极限**。'
       ].join('\n'),
-      notes: [
-        ['**证明。**','**1.** 复形之间的态射是 $\\mathbb{Z}$ 指标的一族映射 $f^{n} : [M]^{n} \\to [N]^{n}$ 且与微分交换；而 $[M]$、$[N]$ 只在 $0$ 次非零，微分又是零，交换性自动成立 ✓。于是','$$\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}([M], [N]) = \\operatorname{Hom}_{\\mathcal{C}}(M, N) \\quad \\text{（只有 } n = 0 \\text{ 这一项）}\\;\\checkmark$$','即全忠实 ✓。','**2.** 复形范畴里的极限与余极限**逐项计算**（见「复形范畴的性质」）。\n\n逐项看：$0$ 次上得到原图在该处的极限（对 $[M_{i}]$ 逐项取极限，$0$ 次那一项恰是 $\\lim M_{i}$）✓；\n\n其余次上得到「一堆零对象的极限」—— 而 $0$ 既是始对象又是终对象，故那些极限与余极限仍是 $0$ ✓。\n\n于是 $[\\lim M_{i}] = \\lim [M_{i}]$，$[\\varinjlim M_{i}] = \\varinjlim [M_{i}]$ ✓。\n\n∎'].join('\n'),
-        '⭐ 用处：**「对象」可以当成「退化成一项的复形」来看**。于是「$\\mathcal{C}$ 里的构造」与「$\\mathcal{C}(\\mathcal{C})$ 里的构造」可以自由互相搬运，短正合列 $0 \\to M \\to N \\to P \\to 0$ 与两项复形的正合列不再需要区分。'
-      ].join('\n\n'),
+      notes: "⭐ 用处：**「对象」可以当成「退化成一项的复形」来看**。于是「$\\mathcal{C}$ 里的构造」与「$\\mathcal{C}(\\mathcal{C})$ 里的构造」可以自由互相搬运，短正合列 $0 \\to M \\to N \\to P \\to 0$ 与两项复形的正合列不再需要区分。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -80,16 +73,7 @@ window.MG = window.MG || {};
         '1. $f$ 是**同伦等价**（即在 $\\mathbf{K}(\\mathcal{C})$ 中同构）$\\iff$ 存在 $g : L^{\\bullet} \\to K^{\\bullet}$ 使 $g f \\sim 1_{K}$、$f g \\sim 1_{L}$；',
         '2. 复形 $K^{\\bullet}$ **同伦平凡** $\\iff$ $1_{K} \\sim 0_{K}$。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 两条都是把定义展开（$\\mathbf{K}(\\mathcal{C})$ 的对象是复形、态射是**同伦类**）。','**1.** 若 $f$ 在 $\\mathbf{K}(\\mathcal{C})$ 中同构，取它的逆 $g$（一个复形态射），则 $gf$ 与 $1_{K}$ 在同伦范畴里相等，即 $gf \\sim 1_{K}$ ✓；\n\n$fg \\sim 1_{L}$ 同理。\n\n反之，若存在这样的 $g$，则 $[f]$ 与 $[g]$ 在 $\\mathbf{K}(\\mathcal{C})$ 中互为逆 ✓。','**2.** 「同伦平凡」的定义就是「与零对象同构」；而 $\\mathbf{K}(\\mathcal{C})$ 中的零对象是零复形，$K \\to 0 \\to K$ 的复合是 $0_{K}$。故存在同构 $\\iff$ $1_{K} \\sim 0_{K}$ ✓。∎'].join('\n'),
-        '⚠️ 注意「同伦等价」**不是**「逐项同构」：$1 \\sim 0$ 意味着 $K^{\\bullet}$ 的两个相邻层之间有一族映射 $s^{n}$ 把恒等收缩掉，这样的复形（例如 $0 \\to M \\xrightarrow{1} M \\to 0$）每一层都非零，但整体同伦平凡。',
-        ,
-        '**各方向用到的假设**（同伦范畴中的可逆性完全由商范畴定义展开）：\n' +
-        '- $[f]$ 可逆 $\\implies$ 存在同伦逆 $g$：取逆态射的代表；商范畴态射是同伦类，故复合类等于恒等类就是所列两条同伦。不要求内射性或有界性。\n' +
-        '- $gf\\sim1_K$ 且 $fg\\sim1_L\\implies[f]$ 可逆：直接取 $[g]$ 为逆，属于定义展开，无需选择公理来同时选择一族代表。\n' +
-        '- $K$ 与零复形同构 $\\iff$ $1_K\\sim0$：来往零对象的态射唯一，复合为零，两方向直接核对逆的定义；只需可定义复形和同伦的加性范畴。\n' +
-        '- 不能把同伦平凡换成零调：阿贝尔群的非分裂正合复形 $0\\to\\mathbb Z\\xrightarrow{2}\\mathbb Z\\to\\mathbb Z/2\\to0$ 零调，但收缩同伦会迫使末端满射分裂。\n'
-      ].join('\n\n'),
+      notes: "⚠️ 注意「同伦等价」**不是**「逐项同构」：$1 \\sim 0$ 意味着 $K^{\\bullet}$ 的两个相邻层之间有一族映射 $s^{n}$ 把恒等收缩掉，这样的复形（例如 $0 \\to M \\xrightarrow{1} M \\to 0$）每一层都非零，但整体同伦平凡。\n\n\n\n**各方向用到的假设**（同伦范畴中的可逆性完全由商范畴定义展开）：\n- $[f]$ 可逆 $\\implies$ 存在同伦逆 $g$：取逆态射的代表；商范畴态射是同伦类，故复合类等于恒等类就是所列两条同伦。不要求内射性或有界性。\n- $gf\\sim1_K$ 且 $fg\\sim1_L\\implies[f]$ 可逆：直接取 $[g]$ 为逆，属于定义展开，无需选择公理来同时选择一族代表。\n- $K$ 与零复形同构 $\\iff$ $1_K\\sim0$：来往零对象的态射唯一，复合为零，两方向直接核对逆的定义；只需可定义复形和同伦的加性范畴。\n- 不能把同伦平凡换成零调：阿贝尔群的非分裂正合复形 $0\\to\\mathbb Z\\xrightarrow{2}\\mathbb Z\\to\\mathbb Z/2\\to0$ 零调，但收缩同伦会迫使末端满射分裂。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -113,10 +97,7 @@ window.MG = window.MG || {};
         '',
         '是 $\\mathbf{K}(\\mathcal{C}\')$ 中的导出三角。（$F$ 逐项作用在复形上。）'
       ].join('\n'),
-      notes: [
-        ['**证明。** 导出三角的定义是「同构于某个映射锥三角」。逐条检查：','- **$F$ 保映射锥**：$M(f)^{n} = K^{n+1} \\oplus L^{n}$ 而微分是分块矩阵 $\\begin{pmatrix} -d^{n+1} & 0 \\\\ f^{n} & d^{n} \\end{pmatrix}$。\n\n$F$ 加法，故保有限双积（$F(K^{n+1}\\oplus L^{n}) = FK^{n+1}\\oplus FL^{n}$）✓，而分块矩阵的两个条件（与微分交换、左上取 $-d$）都是等式，逐项被 $F$ 保持 ✓。\n\n于是 $F(M(f)) \\cong M(Ff)$ ✓。','- **$F$ 保平移**：$F(K[1]) = F(K)[1]$（逐项作用与指标无关）✓。','- **$F$ 保同构与同伦类**：$F$ 是函子，把同构送到同构、把 $\\mathbf{K}(\\mathcal{C})$ 的态射送到 $\\mathbf{K}(\\mathcal{C}\')$ 的态射 ✓。','于是任何导出三角（$\\cong$ 某个映射锥三角）被 $F$ 送到 $\\cong$ $F$ 的映射锥三角，仍是导出三角 ✓。','⚠️ 这里**必须**用加法性：非加法函子不保双积，$F(K^{n+1}\\oplus L^{n}) \\ne FK^{n+1}\\oplus FL^{n}$，论证立刻断掉。∎'].join('\n'),
-        '⭐ 推论：**任何加法函子都诱导同伦范畴之间的函子 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$，并保持三角结构** —— 这是「导出范畴之间也能搬东西」的第一步。'
-      ].join('\n\n'),
+      notes: "⭐ 推论：**任何加法函子都诱导同伦范畴之间的函子 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}')$，并保持三角结构** —— 这是「导出范畴之间也能搬东西」的第一步。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -132,10 +113,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{A}$ 是**阿贝尔范畴**。\n\n则上链复形范畴 $\\mathcal{C}(\\mathcal{A})$ **也是阿贝尔范畴**（$\\mathcal{C}^{+}(\\mathcal{A})$、$\\mathcal{C}^{-}(\\mathcal{A})$、$\\mathcal{C}^{b}(\\mathcal{A})$ 这些有界情形同理）。'
       ].join('\n'),
-      notes: [
-        ['**证明。** 阿贝尔范畴的定义是：预阿贝尔 + 每个单态射正则（等价地：$\\operatorname{coim} f \\to \\operatorname{im} f$ 是同构）。逐条验：','- **预阿贝尔**：复形范畴是加法范畴，而核与余核**逐项**取（见「复形范畴的性质」）✓；','- **$\\operatorname{coim} \\to \\operatorname{im}$ 逐项同构**：$\\mathcal{A}$ 里同构是逐项判断的（复形态射是同构 $\\iff$ 每一层都是同构，因为逆映射可以逐层拼起来），所以只要逐项验 ✓；\n\n而每一层上 $\\operatorname{coim} f^{n} \\to \\operatorname{im} f^{n}$ 是 $\\mathcal{A}$ 里的同构 ✓；\n\n','- **逐项构造与微分相容**：核、余核、像、余像的微分都是「由原来复形的微分限制 / 诱导」得到的，满足 $d^{2} = 0$ 与交换性 —— 这是「逐项计算」的一般机制 ✓。','于是 $\\mathcal{C}(\\mathcal{A})$ 满足阿贝尔范畴的全部条件 ✓。∎'].join('\n'),
-        '⭐ 这条是**整个同调代数的前提**：只有在 $\\mathcal{C}(\\mathcal{A})$ 里才能谈正合、才能谈同调 $H^{n}$。'
-      ].join('\n\n'),
+      notes: "⭐ 这条是**整个同调代数的前提**：只有在 $\\mathcal{C}(\\mathcal{A})$ 里才能谈正合、才能谈同调 $H^{n}$。",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -153,10 +131,7 @@ window.MG = window.MG || {};
         '',
         '$$0 \\longrightarrow H^{k} \\longrightarrow \\operatorname{coker}\\bigl(d^{k-1}\\bigr) \\longrightarrow Z^{k+1} \\longrightarrow H^{k+1} \\longrightarrow 0.$$'
       ].join('\n'),
-      notes: [
-        ['**证明。** $d^{k}\\circ d^{k-1} = 0$ 说明 $d^{k}$ 诱导出一个映射','$$D : \\operatorname{coker}(d^{k-1}) = K^{k}/B^{k} \\longrightarrow Z^{k+1},$$','（良定义：$B^{k} \\subseteq Z^{k}$，因为 $d^{k}$ 把 $B^{k}$ 杀死 ✓）。逐段读这条列：','- **$H^{k} = \\ker D$**：$D$ 的核是 $Z^{k}/B^{k}$，正是 $H^{k}$ ✓，这就是左端的正合性；','- **$\\operatorname{im}D = B^{k+1}$**：$D$ 的像就是 $d^{k}(K^{k}) = B^{k+1}$ ✓，这就是中间的正合性；','- **$\\operatorname{coker}D = Z^{k+1}/B^{k+1} = H^{k+1}$** ✓，即右端的正合性。','三段合起来就是整条列处处正合 ✓。∎','⭐ 这条列常常写成两条短正合列再拼起来：','$$0 \\to H^{k} \\to K^{k}/B^{k} \\to B^{k+1} \\to 0, \\qquad 0 \\to B^{k+1} \\to Z^{k+1} \\to H^{k+1} \\to 0.$$','后面构造谱序列时用的正是这两条。'].join('\n'),
-        '⭐ 用途：它把「同调」拆成两条只管闭链与上边缘的短正合列。**谱序列的全部技术内容就是在这些短正合列之间做逐步比较。**'
-      ].join('\n\n'),
+      notes: "⭐ 这条列常常写成两条短正合列再拼起来：\n$$0 \\to H^{k} \\to K^{k}/B^{k} \\to B^{k+1} \\to 0, \\qquad 0 \\to B^{k+1} \\to Z^{k+1} \\to H^{k+1} \\to 0.$$\n后面构造谱序列时用的正是这两条。\n\n⭐ 用途：它把「同调」拆成两条只管闭链与上边缘的短正合列。**谱序列的全部技术内容就是在这些短正合列之间做逐步比较。**",
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
