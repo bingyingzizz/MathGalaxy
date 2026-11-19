@@ -630,17 +630,7 @@
       regions: ['topology'],
       tags: ['引理', '拓扑', '流形', '群作用', '商空间'],
       statement: '设 $M$ 是 $n$ 维光滑流形，有限群 $\\Gamma$ 光滑地作用在 $M$ 上，且作用**自由**（$g\\ne e$ 时 $gx\\ne x$）、**真不连续**（每个 $x$ 有开邻域 $U$ 使 $gU\\cap U=\\emptyset$ 对所有 $g\\ne e$）。则轨道空间 $M/\\Gamma$ 有唯一的光滑结构使商映射 $\\pi:M\\to M/\\Gamma$ 是局部微分同胚；特别地 $M/\\Gamma$ 是 $n$ 维光滑流形。',
-      notes: [
-        '**开邻域**：对每个 $x\\in M$，因 $\\Gamma$ 有限且自由，对每个 $g\\ne e$ 有 $gx\\ne x$。由 $M$ Hausdorff，取 $x$ 与 $gx$ 的互不相交开邻域；对有限多个 $g$ 取交并回拉，得到 $x$ 的开邻域 $U$ 使 $gU\\cap U=\\emptyset$（$g\\ne e$）。',
-        '',
-        '**局部单射与开映射**：若 $u,v\\in U$ 且 $\\pi(u)=\\pi(v)$，则 $v=gu$，故 $u\\in U\\cap g^{-1}U$；由 $gU\\cap U=\\emptyset$（$g\\ne e$）得 $g=e$，$u=v$。所以 $\\pi|_{U}$ 是单射；又群作用的商映射是开映射，故 $\\pi|_{U}:U\\to\\pi(U)$ 是同胚。',
-        '',
-        '**图册**：取 $M$ 的图卡 $(U,\\varphi)$ 且 $U$ 满足上条；定义 $M/\\Gamma$ 上的卡 $(\\pi(U),\\varphi\\circ(\\pi|_{U})^{-1})$。这些 $\\pi(U)$ 覆盖 $M/\\Gamma$。若 $\\pi(z)\\in\\pi(U)\\cap\\pi(V)$，取 $h\\in\\Gamma$ 使 $hz\\in V$；在 $z$ 附近 $\\pi|_{V}^{-1}\\circ\\pi=h$（因为 $\\pi\\circ h=\\pi$，且 $hu\\in V$ 对 $u$ 靠近 $z$ 成立），故转移映射局部等于 $\\psi\\circ h\\circ\\varphi^{-1}$，是光滑的。',
-        '',
-        '**拓扑条件**：$M/\\Gamma$ 作为第二可数空间 $M$ 的商仍第二可数；又 $\\Gamma$ 有限且作用真不连续，不同轨道的饱和邻域可分离（对有限多个 $g$ 取 $gx$ 与 $\\Gamma y$ 的分离邻域），故 $M/\\Gamma$ Hausdorff。',
-        '',
-        '**唯一性**：若两种光滑结构都使 $\\pi$ 为局部微分同胚，则恒等映射在这两种结构下都是局部微分同胚，从而是微分同胚，两种结构相同。∎'
-      ].join('\n\n'),
+      notes: "",
       refs: ['Lee, Introduction to Smooth Manifolds (2nd ed.), Ch. 21 · quotient manifolds', 'Hatcher, Algebraic Topology, Ch. 1 §1.3 · covering space actions'],
     },
   ],

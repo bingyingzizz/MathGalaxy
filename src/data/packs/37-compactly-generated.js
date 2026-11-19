@@ -220,15 +220,7 @@ window.MG = window.MG || {};
         '',
         '$$kX \\times Y \\;=\\; k(X \\times Y).$$'
       ].join('\n'),
-      notes: [
-        '两式的差别正好是余反射子范畴的两个层次：一般情形下 $k$ 不是「积封闭」的，得对积再取一次 $k$；$Y$ 局部紧 Hausdorff 时（由商映射与积那条定理）$k$ 与「乘 $Y$」可交换。**这就是为什么 $k\\mathbf{Top}$ 里的乘积得取 $k(X \\times Y)$ 而不是 $X \\times Y$。**',
-        ['**证明（第一式）。** $k$-拓扑由「哪些紧 Hausdorff 块映射连续」决定，而关键是一条逐点事实：',
-          '- **对 $T$ 紧 Hausdorff，$g : T \\to X$ 连续 $\\iff$ $g : T \\to kX$ 连续。** 反正向显然（$kX$ 拓扑更细）；正向因为 $kX$ 的开集就是这么定义的：$U \\subseteq kX$ 开 $\\iff$ 沿每个紧 Hausdorff 映射的拉回开，取 $g$ 即得 $g^{-1}(U)$ 开。',
-          '- 于是对 $T$ 紧 Hausdorff：$(g_{1}, g_{2}) : T \\to X \\times Y$ 连续 $\\iff$ $g_{1} : T\\to X$ 与 $g_{2} : T \\to Y$ 都连续 $\\iff$ $g_{1} : T \\to kX$ 与 $g_{2}$ 都连续 $\\iff$ $T \\to kX\\times Y$ 连续。',
-          '- 两张 $k$-拓扑 $k(X\\times Y)$ 与 $k(kX\\times Y)$ 由**同一族**测试映射（全体 $T \\to$ 该底集合，$T$ 紧 Hausdorff）的连续性刻画，故它们的开集族相同，即 $k(kX\\times Y) = k(X\\times Y)$。',
-          '**第二式**：由上一条「$X$ 紧生成、$Y$ 局部紧 Hausdorff $\\implies$ $kX \\times Y$ 紧生成」得 $kX\\times Y$ 已经是紧生成的，对它取 $k$ 不再改变：$k(kX\\times Y) = kX\\times Y$；\n\n代入第一式即得 $kX\\times Y = k(X\\times Y)$。\n\n∎'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "两式的差别正好是余反射子范畴的两个层次：一般情形下 $k$ 不是「积封闭」的，得对积再取一次 $k$；$Y$ 局部紧 Hausdorff 时（由商映射与积那条定理）$k$ 与「乘 $Y$」可交换。**这就是为什么 $k\\mathbf{Top}$ 里的乘积得取 $k(X \\times Y)$ 而不是 $X \\times Y$。**",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
@@ -305,21 +297,7 @@ window.MG = window.MG || {};
           '- 若还有 $Y$ 弱 Hausdorff、$f, g : X \\rightrightarrows Y$ 连续，则 $\\ker(f, g) = \\{\\, x : f(x) = g(x) \\,\\} \\subseteq X$ 是 $k$-闭的。'
         ].join('\n')
       ].join('\n'),
-      notes: [
-        '**为什么叫「弱」Hausdorff。** Hausdorff 要求任意两点的开邻域能分开；弱 Hausdorff 只要求「紧块的像是闭的」—— 条件弱得多，却正好够用：出现在 $\\mathrm{CGWH}$ 里的那些构造（商、函数空间、纤维积）都不需要全 Hausdorff。',
-        '⚠️ 弱 Hausdorff **不蕴含** Hausdorff（存在紧生成的弱 Hausdorff 而非 Hausdorff 的空间）；但它蕴含 $T_{1}$，上面第二条就是。',
-        '**对角那条的作用**：$\\Delta_{X}$ $k$-闭 $\\iff$ 「两个映射相等的点集」是 $k$-闭的 —— 这与 $T_{1}$、$T_{2}$ 在一般拓扑里的刻画（对角闭）平行，只是这里闭的判据换成了 $k$-闭。紧生成是让这个等价反过来的补充条件。',
-        ['**证明。** 五条都只用定义。',
-          '- **紧 Hausdorff 子空间闭**：$K \\subseteq X$ 紧 Hausdorff，含入 $K \\hookrightarrow X$ 就是定义里的那个 $f$，故 $K = f(K)$ 闭。',
-          '- **$T_{1}$**：单点 $\\{x\\}$ 是紧 Hausdorff 空间（它自己的）的像，故闭 —— 单点闭就是 $T_{1}$。',
-          '- **$f(S)$ 紧 Hausdorff**：$f(S)$ 紧（连续像），且由定义它在 $X$ 中闭；闭子空间的子空间拓扑是 Hausdorff 的，故 $f(S)$ 紧 Hausdorff。',
-          '- **$\\Delta_{X}$ 是 $k$-闭的**：取紧 Hausdorff 的 $g = (g_{1}, g_{2}) : T \\to X\\times X$。\n\n$g_{1}(T)$、$g_{2}(T)$ 由上一款是紧 Hausdorff，故 $g_{1}(T)\\times g_{2}(T)$ 紧 Hausdorff，于是 $\\Delta_{X} \\cap \\bigl(g_{1}(T)\\times g_{2}(T)\\bigr) = \\Delta_{g_{1}(T)}$（两个紧 Hausdorff 集的「相等点」）在其中**闭**；\n\n而 $g^{-1}(\\Delta_{X}) = g^{-1}\\bigl(\\Delta_{X}\\cap(g_{1}(T)\\times g_{2}(T))\\bigr)$ 是闭集的逆像，闭 ✓。',
-          '- **反过来（$X$ 紧生成 + $\\Delta$ $k$-闭 $\\implies$ 弱 Hausdorff）**：取 $f : S\\to X$（$S$ 紧 Hausdorff），要证 $f(S)$ 闭。\n\n$X$ 紧生成，故只需证对每个紧 Hausdorff 的 $h : T \\to X$，$h^{-1}\\bigl(f(S)\\bigr)$ 在 $T$ 中闭。\n\n而',
-          '$$h^{-1}\\bigl(f(S)\\bigr) = \\operatorname{pr}_{T}\\Bigl(\\{(s, t) : f(s) = h(t)\\}\\Bigr) = \\operatorname{pr}_{T}\\Bigl((f,h)^{-1}(\\Delta_{X})\\Bigr),$$',
-          '其中 $(f,h)^{-1}(\\Delta_{X})$ 在 $S\\times T$ 中闭（$S\\times T$ 紧 Hausdorff，$\\Delta$ $k$-闭）；而 $\\operatorname{pr}_{T} : S\\times T\\to T$ 是**闭映射**（$S$ 紧），故 $h^{-1}(f(S))$ 闭 ✓。',
-          '- **$\\ker(f,g)$ 是 $k$-闭的**：$\\ker(f,g) = (f,g)^{-1}(\\Delta_{Y})$，而 $k$-闭集沿连续映射的拉回仍 $k$-闭（用紧 Hausdorff 测试：$(f,g)\\circ h$ 连续，$h^{-1}(\\ker) = ((f,g)\\circ h)^{-1}(\\Delta_{Y})$ 闭）。\n\n∎'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "**为什么叫「弱」Hausdorff。** Hausdorff 要求任意两点的开邻域能分开；弱 Hausdorff 只要求「紧块的像是闭的」—— 条件弱得多，却正好够用：出现在 $\\mathrm{CGWH}$ 里的那些构造（商、函数空间、纤维积）都不需要全 Hausdorff。\n\n⚠️ 弱 Hausdorff **不蕴含** Hausdorff（存在紧生成的弱 Hausdorff 而非 Hausdorff 的空间）；但它蕴含 $T_{1}$，上面第二条就是。\n\n**对角那条的作用**：$\\Delta_{X}$ $k$-闭 $\\iff$ 「两个映射相等的点集」是 $k$-闭的 —— 这与 $T_{1}$、$T_{2}$ 在一般拓扑里的刻画（对角闭）平行，只是这里闭的判据换成了 $k$-闭。紧生成是让这个等价反过来的补充条件。",
       refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 

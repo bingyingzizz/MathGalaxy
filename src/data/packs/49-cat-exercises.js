@@ -49,18 +49,7 @@ window.MG = window.MG || {};
         '',
         '是含入函子 $\\mathbf{Ab} \\hookrightarrow \\mathbf{Grp}$ 的**左伴随**。'
       ].join('\n'),
-      notes: [
-        '记号 $[G, G]$ 是**换位子子群**（由所有 $g h g^{-1} h^{-1}$ 生成）—— 它是正规子群，商掉它正好把「非交换性」清零。',
-        '⭐ **伴随的读法**：任何群同态 $G \\to A$（$A$ 阿贝尔）都唯一地穿过 $G \\to G^{\\mathrm{ab}}$。也就是说**「从 $G$ 到阿贝尔群」的映射全都只看 $G^{\\mathrm{ab}}$** —— 这就是「交换化是最经济的把群变阿贝尔的办法」。',
-        '**例子**：自由群 $F(S)^{\\mathrm{ab}} \\cong \\mathbb{Z}^{\\oplus S}$（自由阿贝尔群）。所以「自由阿贝尔群函子」= 「自由群函子」再交换化。',
-        ['**证明。** 要造自然双射',
-          '$$\\operatorname{Hom}_{\\mathbf{Grp}}(G,\\ A) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Ab}}\\bigl(G^{\\mathrm{ab}},\\ A\\bigr),\\qquad A\\ \\text{阿贝尔}.$$',
-          '- **良定义**：任给群同态 $\\varphi : G\\to A$（$A$ 阿贝尔）。\n\n换位子 $ghg^{-1}h^{-1}$ 被送到 $\\varphi(g)\\varphi(h)\\varphi(g)^{-1}\\varphi(h)^{-1} = e$（交换性！），故 $[G,G] \\subseteq \\ker\\varphi$，于是 $\\varphi$ 唯一地穿过商 $G\\twoheadrightarrow G^{\\mathrm{ab}}$ ✓。',
-          '- **反向**是 $G\\to G^{\\mathrm{ab}}$ 与函数的复合 ✓，且两个方向互逆（在 $G^{\\mathrm{ab}}$ 上验一次、在 $\\operatorname{Hom}(G,A)$ 上验一次）✓。',
-          '- **自然性**对 $G$ 与 $A$ 都逐项验证（$G\\to G\'$ 的像把 $[G,G]$ 送进 $[G\',G\']$，故诱导 $G^{\\mathrm{ab}}\\to G\'^{\\mathrm{ab}}$）✓。∎',
-          '⭐ 这正是「交换化是左伴随」的含义：它是「把非交换性清零」的**最经济**的函子 —— 任何到阿贝尔群的映射都只能看到 $G^{\\mathrm{ab}}$。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ 这正是「交换化是左伴随」的含义：它是「把非交换性清零」的**最经济**的函子 —— 任何到阿贝尔群的映射都只能看到 $G^{\\mathrm{ab}}$。",
       refs: ['Le Stum, Exercise 1.9'],
     },
 
@@ -157,18 +146,7 @@ window.MG = window.MG || {};
       regions: ['homology', 'category'],
       tags: ['同调代数', '阿贝尔群对象', '极限', '遗忘函子'],
       statement: '若 $\\mathcal{C}$ 有所有极限，则 $\\mathrm{Ab}(\\mathcal{C})$ 也有所有极限，并且**遗忘函子** $\\mathrm{Ab}(\\mathcal{C}) \\to \\mathcal{C}$ 保它们。',
-      notes: [
-        '⭐ **实用价值**：这条让「在 $\\mathcal{C}$ 里算极限」与「在 $\\mathrm{Ab}(\\mathcal{C})$ 里算极限」完全一致 —— 凝聚态那一侧 $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$ 有所有极限，就是这条在 $\\mathcal{C} = \\mathrm{Cond}$ 上的一次应用。',
-        ['**证明（极限在遗忘函子下逐项算）。** 阿贝尔群对象的定义是一组态射与**交换图**：',
-          '$$m : X \\times X \\to X, \\qquad e : 1 \\to X, \\qquad i : X \\to X$$',
-          '配上一串等式（结合、单位、逆、交换性）—— 全是「两个复合相等」形式的图。',
-          '- 设 $D : I \\to \\mathrm{Ab}(\\mathcal{C})$ 是可图表，记 $UX$ 为 $X$ 的底对象。\n\n' +
-          '因为极限保持极限（特别地保持有限积与终对象），把上述各图和等式逐项送进 $\\mathcal{C}$ 后仍然成立；\n\n' +
-          '于是底对象上的 $\\lim UD$ **自动**带上阿贝尔群对象的结构，$m$ 取 $\\lim (Um \\circ \\text{交换}) $、$e$ 取 $\\lim Ue$。',
-          '- 于是 $\\mathrm{Ab}(\\mathcal{C})$ 有 $I$-极限，而遗忘函子把它送到 $\\mathcal{C}$ 里的 $\\lim UD$ —— 即**保极限**。',
-          '- 细节只在一处：$\\lim$ 与有限积的交换（$U \\lim = \\lim U$ 与 $\\lim(X_{i}\\times Y_{i}) = \\lim X_{i}\\times \\lim Y_{i}$），那是极限的一般性质。∎'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **实用价值**：这条让「在 $\\mathcal{C}$ 里算极限」与「在 $\\mathrm{Ab}(\\mathcal{C})$ 里算极限」完全一致 —— 凝聚态那一侧 $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$ 有所有极限，就是这条在 $\\mathcal{C} = \\mathrm{Cond}$ 上的一次应用。",
       refs: ['Le Stum, Exercise 1.52']
     },
 
@@ -260,6 +238,15 @@ window.MG = window.MG || {};
   edges: [
     { id: 'dep.cat-sets-ex-algebra-categories', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'ex.algebra-categories', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
     { id: 'dep.cat-ab-prop-abelianization', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.abelianization', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
-    { id: 'dep.cat-ab-prop-ab6', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.ab6', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' }
+    { id: 'dep.cat-ab-prop-ab6', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.ab6', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
+    {
+      id: "imp.abelianization",
+      kind: "implication",
+      strength: "strong",
+      sources: ["def.commutator-subgroup","def.quotient-group","def.group-hom"],
+      target: "prop.abelianization",
+      note: "换位子被送到单位元，万有性质给出自然双射。",
+      proof: "**证明。** 要造自然双射\n$$\\operatorname{Hom}_{\\mathbf{Grp}}(G,\\ A) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Ab}}\\bigl(G^{\\mathrm{ab}},\\ A\\bigr),\\qquad A\\ \\text{阿贝尔}.$$\n- **良定义**：任给群同态 $\\varphi : G\\to A$（$A$ 阿贝尔）。\n\n换位子 $ghg^{-1}h^{-1}$ 被送到 $\\varphi(g)\\varphi(h)\\varphi(g)^{-1}\\varphi(h)^{-1} = e$（交换性！），故 $[G,G] \\subseteq \\ker\\varphi$，于是 $\\varphi$ 唯一地穿过商 $G\\twoheadrightarrow G^{\\mathrm{ab}}$ ✓。\n- **反向**是 $G\\to G^{\\mathrm{ab}}$ 与函数的复合 ✓，且两个方向互逆（在 $G^{\\mathrm{ab}}$ 上验一次、在 $\\operatorname{Hom}(G,A)$ 上验一次）✓。\n- **自然性**对 $G$ 与 $A$ 都逐项验证（$G\\to G'$ 的像把 $[G,G]$ 送进 $[G',G']$，故诱导 $G^{\\mathrm{ab}}\\to G'^{\\mathrm{ab}}$）✓。∎",
+    }
   ]
 });

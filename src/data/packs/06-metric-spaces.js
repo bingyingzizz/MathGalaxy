@@ -198,16 +198,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $A$ 是距离空间 $X$ 的子集（按子空间度量）。若 $A$ **紧**，则 $A$ 是 $X$ 中的**闭集**。'
       ].join('\n'),
-      notes: [
-        '其实只要 $X$ 是 Hausdorff 空间，紧子集就是闭的；距离空间自然 Hausdorff。',
-        '把它和「$X$ 完备」放在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\\implies A$ 完备」。',
-        ['**证明。** 设 $A$ 紧，取 $x \\in X\\setminus A$ 要证它是内点。',
-          '- 对每个 $a \\in A$，由 Hausdorff 性取 $a$ 的开邻域 $U_{a}$ 与 $x$ 的开邻域 $V_{a}$ 使 $U_{a}\\cap V_{a} = \\emptyset$（距离空间里取 $U_{a} = B(a, r/2)$、$V_{a} = B(x, r/2)$，$r = d(a,x)$）；',
-          '- $\\{U_{a}\\}_{a\\in A}$ 是 $A$ 的开覆盖，由**紧性**取有限子覆盖 $U_{a_{1}}, \\ldots, U_{a_{n}}$；',
-          '- $V := \\bigcap_{i=1}^{n} V_{a_{i}}$ 是 $x$ 的开邻域，且 $V\\cap U_{a_{i}} = \\emptyset$ 对每个 $i$ 成立，故 $V \\cap A = \\emptyset$，即 $V \\subseteq X\\setminus A$ ✓。',
-          '于是 $X\\setminus A$ 开，$A$ 闭。∎'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "其实只要 $X$ 是 Hausdorff 空间，紧子集就是闭的；距离空间自然 Hausdorff。\n\n把它和「$X$ 完备」放在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\\implies A$ 完备」。",
       refs: ['Munkres, Topology, §26']
     },
 
@@ -226,21 +217,7 @@ window.MG = window.MG || {};
         '',
         '（「$A$ 全有界」按子空间度量 $d|_A$ 理解。）'
       ].join('\n'),
-      notes: [
-        '⚠ **「$X$ 完备」这个前提不能省。** 理由是中间那一步：$A$ 作为子空间完备 $\\iff A$ 在 $X$ 中闭 —— 这一步要用 $X$ 完备。少了它，$A$ 闭 $A$ 全有界推不出 $A$ 紧。',
-        '这也是 **Heine–Borel** 的推广：$\\mathbb{R}^{n}$ 完备，而在 $\\mathbb{R}^{n}$ 中 $A$ 有界 $\\iff A$ 全有界，于是「有界闭集紧」正是它的特例。',
-        ['**证明。**',
-          '- **$\\implies$**：$A$ 紧 $\\implies$ $A$ 在 $X$ 中闭（上一条）。\n\n全有界：任给 $\\varepsilon > 0$，$\\{B(a,\\varepsilon)\\cap A\\}_{a\\in A}$ 是 $A$（带子空间度量）的开覆盖，紧性给有限子覆盖，那有限个中心就是 $\\varepsilon$-网 ✓。',
-          '- **$\\Longleftarrow$**：设 $A$ 闭、全有界。\n\n' +
-          '先看**完备性**：$X$ 完备、$A$ 闭，则 $A$ 里的 Cauchy 列在 $X$ 里收敛到某点，极限落在闭的 $A$ 里，故 $A$ 作为子空间完备 ✓。\n\n' +
-          '再证**紧**：全有界给可数稠密子集，于是 $A$ 里的任意序列可以用「逐层取 $2^{-n}$-网 + 抽屉原理」抽出 Cauchy 子列；\n\n' +
-          '完备性让这个子列收敛 ✓。\n\n' +
-          '所以 $A$ **列紧**；\n\n' +
-          '而在**度量空间**里列紧 $\\iff$ 紧 ✓。\n\n' +
-          '∎',
-          '⚠️ 「$X$ 完备 $\\implies$ $A$ 完备」那一步正是标题里那个前提的用处（见上一条说明）。'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⚠ **「$X$ 完备」这个前提不能省。** 理由是中间那一步：$A$ 作为子空间完备 $\\iff A$ 在 $X$ 中闭 —— 这一步要用 $X$ 完备。少了它，$A$ 闭 $A$ 全有界推不出 $A$ 紧。\n\n这也是 **Heine–Borel** 的推广：$\\mathbb{R}^{n}$ 完备，而在 $\\mathbb{R}^{n}$ 中 $A$ 有界 $\\iff A$ 全有界，于是「有界闭集紧」正是它的特例。\n\n⚠️ 「$X$ 完备 $\\implies$ $A$ 完备」那一步正是标题里那个前提的用处（见上一条说明）。",
       refs: ['Munkres, Topology, §28', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
     },
     {

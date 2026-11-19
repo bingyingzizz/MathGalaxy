@@ -28,21 +28,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, N)(S) \\cong \\operatorname{Ext}^{n}_{\\mathbb{Z}}(M \\cdot S,\\ N).$$'
       ].join('\n'),
-      notes: [
-        '**在做什么。** 左边是「Ext 层在 $S$ 上的截面」，右边是「把一个普通 Ext 算出来」。这条把**层的** Ext 换成了**单次**的 Ext —— 于是「算 Ext 层」这件事变成「算一个具体的导出 Hom」。',
-        '**为什么 Stonean 可以。** Stonean 空间 $S$ 上，$\\mathbb{Z}[S]$ 是**投射**的，于是 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}[S], -)$ 正合。把这个正合函子搬到自然同构',
-        '',
-        '$$\\operatorname{Hom}_{\\mathbb{Z}}(M \\cdot S,\\ N) \\cong \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ \\operatorname{Hom}_{\\mathbb{Z}}(M, N)\\bigr)$$',
-        '',
-        '两边，就得到了结论：右边是「内 Hom 的截面」，左边是「先张量再 Hom」。',
-        '⚠️ 关键前提是 **Stonean**（极不连通），不是一般的紧 Hausdorff —— 极不连通性正是 $\\mathbb{Z}[S]$ 投射的来源。',
-        '⭐ 这条是下面谱序列的**接线口**：Breen–Deligne 分解把 Ext 展开成若干「自由对象」，而每一项的 Ext 恰好可以用这条把层的计算搬回普通计算。',
-        ['**证明。** $S$ Stonean $\\implies$ $\\mathbb{Z}[S]$ 是**投射**对象，于是 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}[S], -)$ **正合**。',
-          '对自然同构',
-          '$$\\operatorname{Hom}_{\\mathbb{Z}}(M \\cdot S,\\ N) \\cong \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ \\operatorname{Hom}_{\\mathbb{Z}}(M, N)\\bigr)$$',
-          '（这是 $M \\cdot S = M \\otimes_{\\mathbb{Z}} \\mathbb{Z}[S]$ 的伴随形式）两边取右导出：左端给出 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M\\cdot S, N)$；\n\n右端因为 $\\operatorname{Hom}(\\mathbb{Z}[S],-)$ 正合，可以直接穿过导出函子，得 $\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S], \\operatorname{Ext}^{n}_{\\mathbb{Z}}(M,N)\\bigr)$，而后者按定义就是 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M,N)(S)$。\n\n两边一比即得。\n\n∎'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "**在做什么。** 左边是「Ext 层在 $S$ 上的截面」，右边是「把一个普通 Ext 算出来」。这条把**层的** Ext 换成了**单次**的 Ext —— 于是「算 Ext 层」这件事变成「算一个具体的导出 Hom」。\n\n**为什么 Stonean 可以。** Stonean 空间 $S$ 上，$\\mathbb{Z}[S]$ 是**投射**的，于是 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}[S], -)$ 正合。把这个正合函子搬到自然同构\n\n\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}(M \\cdot S,\\ N) \\cong \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ \\operatorname{Hom}_{\\mathbb{Z}}(M, N)\\bigr)$$\n\n\n\n两边，就得到了结论：右边是「内 Hom 的截面」，左边是「先张量再 Hom」。\n\n⚠️ 关键前提是 **Stonean**（极不连通），不是一般的紧 Hausdorff —— 极不连通性正是 $\\mathbb{Z}[S]$ 投射的来源。\n\n⭐ 这条是下面谱序列的**接线口**：Breen–Deligne 分解把 Ext 展开成若干「自由对象」，而每一项的 Ext 恰好可以用这条把层的计算搬回普通计算。",
       refs: ['Le Stum, Lemma 8.3.1']
     },
 
@@ -176,21 +162,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{RHom}_{\\mathbb{Z}}(M,\\ N) = 0.$$'
       ].join('\n'),
-      notes: [
-        '**与上一条对偶**：上一条说「实向量空间 $\\to$ 离散」全零；这条说「紧 Hausdorff 群 $\\to$ 实 Banach」全零。两条合起来正好是后面「分三类归约」时用来掐掉两端的两把剪刀。',
-        '**证法里的关键工具**是分解上乘 $p$ 的同伦：紧 Hausdorff 群上有「乘 $2$」这个映射，它在 Banach 空间里**可逆**（除以 $2$）；利用 $2 - [2]$ 的同伦，可以把一个闭链写成 $d$(一个收敛级数)，即每个闭链都是边界。收敛用 Banach 的完备性。',
-        '⚠️ 要求 $N$ 是**实** Banach 空间（带 $\\mathbb{R}$-模结构），不是任意 Banach 阿贝尔群 —— 除以 $2$ 那一步要用到标量结构。',
-        ['**证明（把闭链写成收敛级数）。** 仍用 Breen–Deligne 谱序列 $E^{p,q}_{1} = \\bigoplus_{i} H^{q}(M^{s_{p,i}}\\times S, N) \\implies \\operatorname{Ext}^{p+q}_{\\mathbb{Z}}(M,N)(S)$。',
-          '- 由 **Thm（实 Banach 在紧 Hausdorff 上零调）**，$M^{s_{p,i}}\\times S$ 是紧 Hausdorff（$M$ 紧、$S$ Stonean 紧），故 $q > 0$ 的整行是 $0$；\n\n只剩下 $q = 0$ 那一行，即复形 $K^{\\bullet}$，$K^{n} := \\bigoplus_{i} C\\bigl(M^{s_{n,i}}\\times S,\\ N\\bigr)$（Banach 空间）。\n\n只要证 $K^{\\bullet}$ 零调。',
-          '- **关键工具**是「乘 $2$ 与 $[2]$ 同伦」：由 $2 - [2] = dh + hd$，对闭链 $f \\in K^{n}$（$df = 0$）有 $2f - [2]f = dh^{n+1}f$，于是',
-          '$$f = \\tfrac{1}{2}[2]f + d\\Bigl(\\tfrac{1}{2}h^{n+1}f\\Bigr).$$',
-          '- 把这一式对 $f$ 反复代入 $n$ 次：',
-          '$$f = \\frac{1}{2^{n}}[2^{n}]f + d\\Bigl(\\sum_{k=1}^{n} \\frac{1}{2^{k}} h^{n+1}\\bigl([2^{k-1}]f\\bigr)\\Bigr).$$',
-          '- 因为 $\\|[2]\\| \\le 1$、$\\|h^{n+1}\\| \\le \\|h^{n+1}\\| < \\infty$ 且 $N$ 是 Banach（**完备**），级数 $\\sum_{k} \\frac{1}{2^{k}} h^{n+1}([2^{k-1}]f)$ **收敛**；\n\n又 $\\frac{1}{2^{n}}[2^{n}]f \\to 0$。\n\n令 $n\\to\\infty$：',
-          '$$f = d\\Bigl(\\sum_{k=1}^{\\infty} \\frac{1}{2^{k}} h^{n+1}\\bigl([2^{k-1}]f\\bigr)\\Bigr),$$',
-          '即每个闭链都是边界，$K^{\\bullet}$ 零调。∎'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "**与上一条对偶**：上一条说「实向量空间 $\\to$ 离散」全零；这条说「紧 Hausdorff 群 $\\to$ 实 Banach」全零。两条合起来正好是后面「分三类归约」时用来掐掉两端的两把剪刀。",
       refs: ['Le Stum, Proposition 8.3.6']
     },
 
@@ -271,21 +243,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, N) = 0.$$'
       ].join('\n'),
-      notes: [
-        '⭐ **这是 §8.3 的终点**：局部紧 Hausdorff 阿贝尔群之间的 Ext 只在 $0$ 次和 $1$ 次上可能非零，再高一律消失。凝聚态数学对局部紧阿贝尔群给出的最终结论就是这个。',
-        '**证法：先归约、再逐类掐掉**。\n\n' +
-        '由局部紧阿贝尔群的**结构定理**（每个这样的群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 群」扩张出来的），只要对三类源与三类靶交叉验证即可。\n\n' +
-        '$M$ 离散时用两段自由消解，$N$ 离散时用那条练习（连通局部紧群对离散群）；\n\n' +
-        '$N$ 是 Banach 时用「紧 $\\to$ Banach 全零」与「有限维 Banach 之间的 RHom 只有 0 次」。',
-        '**为什么是「只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$」**：$\\operatorname{Ext}^{0}$ 就是 $\\operatorname{Hom}$，$\\operatorname{Ext}^{1}$ 分类扩张 —— 这两项是**代数**上本来就该有的；\n\n这条定理说的是**没有更多**，即凝聚态阿贝尔群的范畴在局部紧对象上「同调维数 $\\le 1$」。',
-        '⚠️ 结论**不适用于非局部紧**的对象：像 $\\mathbb{R}^{I}$（任意大的积）这类东西，$\\operatorname{RHom}$ 的行为完全是另一回事。',
-        ['**证明（按结构定理分三类，逐类掐掉）。** 局部紧 Hausdorff 阿贝尔群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 阿贝尔群」扩张出来的。于是只需对三类源与三类靶交叉处理：',
-          '- **$M$ 离散**：有两段自由消解，长正合列把 $\\operatorname{Ext}^{n}$（$n \\ge 2$）全部掐掉（自由对象只在 $0$ 次有 Ext）。',
-          '- **$N$ 离散**：由连通局部紧群对离散群的那条（Exercises 8.18）同样只剩 $0, 1$ 两格。',
-          '- **$N$ 实 Banach**：由「紧 $\\to$ Banach 全零」与「有限维 Banach 之间的 $\\operatorname{RHom}$ 只有 $0$ 次」把高次掐掉。',
-          '- **$N$ 连通紧 Hausdorff**：有兩段消解 $0 \\to N \\to T^{E} \\to T^{E\'} \\to 0$，故只需证 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, T^{E}) = \\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, T)^{E} = 0$（$n \\ne 0,1$），而这由 $\\operatorname{RHom}_{\\mathbb{Z}}(M, T) \\cong M^{\\vee}$（上一条 Pontryagin 对偶）集中在次数 $0$ 给出。\n\n∎'
-        ].join('\n')
-      ].join('\n\n'),
+      notes: "⭐ **这是 §8.3 的终点**：局部紧 Hausdorff 阿贝尔群之间的 Ext 只在 $0$ 次和 $1$ 次上可能非零，再高一律消失。凝聚态数学对局部紧阿贝尔群给出的最终结论就是这个。",
       refs: ['Le Stum, Theorem 8.3.9']
     },
 

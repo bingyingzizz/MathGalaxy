@@ -223,19 +223,7 @@ window.MG = window.MG || {};
         '',
         '$$A\\Big/\\bigcap_{i} I_{i} \\;\\cong\\; \\prod_{i=1}^{k} A/I_{i} .$$',
       ].join('\n'),
-      notes: [
-        '**构造**：由互素写 $1 = u + v$（$u \\in I$、$v \\in J$），令 $e := u$（于是 $e \\in I$、$e \\equiv 1 \\pmod J$）。则',
-        '',
-        '$$e \\equiv 0 \\pmod I, \\qquad e \\equiv 1 \\pmod J, \\qquad e^{2} \\equiv e \\pmod{I \\cap J} .$$',
-        '',
-        '（$e$ 不是幂等元本身：$e(1-e)=uv\\in IJ\\subseteq I\\cap J$，只在模 $I\\cap J$ 的意义下幂等；又 $1-e=v$。）于是对任意右端 $(x, y)$，元素 $a = x(1-e) + y e = xv + yu$ 满足 $a \\equiv x \\pmod I$、$a \\equiv y \\pmod J$ —— 存在性。唯一性：两解之差被 $I$ 与 $J$ 同时整除，故落在 $I \\cap J$。',
-        '',
-        '**同构**：由第一同构定理（`thm.first-iso`），核是 $I \\cap J$、商掉即得；满射由上面的构造给出。',
-        '',
-        '**分母可以写成乘积**：互素时 $I \\cap J = IJ$（见 `def.comaximal`），所以也常写成 $A/IJ \\cong A/I \\times A/J$。',
-        '',
-        '**与数论的关系**：取 $A = \\mathbb{Z}$、$I = (m)$、$J = (n)$、$\\gcd(m,n) = 1$，就是 `thm.crt`：$\\mathbb{Z}/(mn) \\cong \\mathbb{Z}/m \\times \\mathbb{Z}/n$。\n\n这条环论形式才是它的「正确形状」—— 数论版只是 $A = \\mathbb{Z}$ 的特例。',
-      ].join('\n\n'),
+      notes: "**分母可以写成乘积**：互素时 $I \\cap J = IJ$（见 `def.comaximal`），所以也常写成 $A/IJ \\cong A/I \\times A/J$。\n\n\n\n**与数论的关系**：取 $A = \\mathbb{Z}$、$I = (m)$、$J = (n)$、$\\gcd(m,n) = 1$，就是 `thm.crt`：$\\mathbb{Z}/(mn) \\cong \\mathbb{Z}/m \\times \\mathbb{Z}/n$。\n\n这条环论形式才是它的「正确形状」—— 数论版只是 $A = \\mathbb{Z}$ 的特例。",
       refs: ['Atiyah–Macdonald, Ch. 1', 'Borevich–Shafarevich, Number Theory, Ch. 2'],
     },
   ],
@@ -401,6 +389,15 @@ window.MG = window.MG || {};
       definition: "def.principal-ideal",
       usedBy: "def.pid",
       note: "主理想整环要求每个理想都是主理想。"
+    },
+    {
+      id: "imp.crt-rings",
+      kind: "implication",
+      strength: "strong",
+      sources: ["def.comaximal","thm.first-iso","def.quotient-ring","def.ideal"],
+      target: "thm.crt-rings",
+      note: "用互素写 $1=u+v$ 造幂等、给出存在唯一性与第一同构定理。",
+      proof: "**构造**：由互素写 $1 = u + v$（$u \\in I$、$v \\in J$），令 $e := u$（于是 $e \\in I$、$e \\equiv 1 \\pmod J$）。则\n\n\n\n$$e \\equiv 0 \\pmod I, \\qquad e \\equiv 1 \\pmod J, \\qquad e^{2} \\equiv e \\pmod{I \\cap J} .$$\n\n\n\n（$e$ 不是幂等元本身：$e(1-e)=uv\\in IJ\\subseteq I\\cap J$，只在模 $I\\cap J$ 的意义下幂等；又 $1-e=v$。）于是对任意右端 $(x, y)$，元素 $a = x(1-e) + y e = xv + yu$ 满足 $a \\equiv x \\pmod I$、$a \\equiv y \\pmod J$ —— 存在性。唯一性：两解之差被 $I$ 与 $J$ 同时整除，故落在 $I \\cap J$。\n\n\n\n**同构**：由第一同构定理（`thm.first-iso`），核是 $I \\cap J$、商掉即得；满射由上面的构造给出。",
     }
   ],
 });

@@ -24,7 +24,7 @@ window.MG = window.MG || {};
 MG.i18n = {
   version: 2,
   generatedBy: 'tools/i18n-backfill.mjs',
-  updated: '2026-11-17',
+  updated: '2026-11-19',
   nodes: {
     'ax.choice': { title_en: 'axiom of choice', label_en: 'axiom of choice', from: 'explicit' },
     'ax.ext': { title_en: 'extensionality', label_en: 'extensionality', from: 'aka' },
@@ -850,6 +850,7 @@ MG.i18n = {
     'lem.goursat-triangle': { title_en: 'Goursat\'s Triangle Lemma', label_en: 'Goursat Triangle Lemma', from: 'manual' },
     'lem.horseshoe': { title_en: 'Horseshoe Lemma', label_en: 'Horseshoe Lemma', from: 'manual' },
     'lem.iso-factorization': { title_en: 'Isomorphism Factorization Lemma', label_en: 'Iso factorization', from: 'manual' },
+    'lem.isomorphism-extension': { title_en: 'isomorphism extension', label_en: 'isomorphism extension', from: 'manual' },
     'lem.jordan': { title_en: 'Jordan\'s lemma', label_en: 'Jordan\'s lemma', from: 'explicit' },
     'lem.k-bounded-completion': { title_en: 'k-bounded completion', label_en: 'k-bounded completion', from: 'aka' },
     'lem.minimal-closed-surjection': { title_en: 'minimal closed subset for a surjection', label_en: null, from: 'explicit' },
@@ -1703,6 +1704,8 @@ MG.i18n = {
     'thm.spectral-matrix': { title_en: 'Spectral Theorem (Matrices)', label_en: 'Spectral Theorem (Matrices)', from: 'manual' },
     'thm.spectral-theorem': { title_en: 'spectral theorem for real symmetric operators', label_en: null, from: 'explicit' },
     'thm.sphere-homology': { title_en: 'homology of spheres', label_en: 'homology of spheres', from: 'explicit' },
+    'thm.splitting-field-exists': { title_en: 'splitting field existence', label_en: 'splitting field exists', from: 'manual' },
+    'thm.splitting-field-unique': { title_en: 'splitting field uniqueness', label_en: 'splitting field unique', from: 'manual' },
     'thm.splitting-principle': { title_en: 'Splitting Principle', label_en: 'Splitting Principle', from: 'explicit' },
     'thm.squeeze': { title_en: 'squeeze theorem', label_en: 'squeeze theorem', from: 'explicit' },
     'thm.steinitz': { title_en: 'Steinitz exchange lemma', label_en: 'Steinitz exchange lemma', from: 'explicit' },

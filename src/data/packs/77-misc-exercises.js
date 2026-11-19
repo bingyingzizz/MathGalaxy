@@ -26,11 +26,7 @@ window.MG = window.MG || {};
         '',
         '左边的双线性映射与右边的群同态一一对应。'
       ].join('\n'),
-      notes: [
-        '**证明。** 先造自由模上的张量积：取 $\\mathbb{Z}\\cdot(M \\times N)$（自由阿贝尔群），商掉「双线性关系」',
-        '$$(m + m\', n) \\sim (m, n) + (m\', n), \\quad (m, n + n\') \\sim (m, n) + (m, n\'), \\quad (am, n) \\sim a(m,n) \\sim (m, an) ✓$$',
-        '一般模由自由模商出（取表现）✓，商上的张量积就是商 ✓。这时 $M \\times N \\to M \\otimes N$ 双线性 ✓，任何双线性映射 $M \\times N \\to P$ 唯一地穿过它 ✓ —— 这正是万有性质 ✓。∎'
-      ].join('\n\n'),
+      notes: "",
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.21']
     },
 
@@ -309,6 +305,15 @@ window.MG = window.MG || {};
       target: "prop.set-top-ab-complete",
       proof: "在 $\\mathbf{Set}$ 中，任意小族的积取任意族笛卡尔积（`thm.arbitrary-product`；有限族时由 `thm.product` 反复取二元积得到）；配合等化子即得所有小极限。这正是该命题中 $\\mathbf{Set}$ 完备性论证的第一步。$\\blacksquare$"
     },
-    { id: 'dep.banach-pontryagin-fd', kind: 'definition', definition: 'def.banach-space', usedBy: 'prop.pontryagin-finite-dim-banach', note: 'V 是有限维实 Banach 空间' }
+    { id: 'dep.banach-pontryagin-fd', kind: 'definition', definition: 'def.banach-space', usedBy: 'prop.pontryagin-finite-dim-banach', note: 'V 是有限维实 Banach 空间' },
+    {
+      id: "imp.module-tensor-universal",
+      kind: "implication",
+      strength: "strong",
+      sources: ["def.tensor-module","def.module","def.module-hom"],
+      target: "prop.module-tensor-universal",
+      note: "自由模商双线性关系、一般模取表现，得万有性质。",
+      proof: "**证明。** 先造自由模上的张量积：取 $\\mathbb{Z}\\cdot(M \\times N)$（自由阿贝尔群），商掉「双线性关系」\n\n$$(m + m', n) \\sim (m, n) + (m', n), \\quad (m, n + n') \\sim (m, n) + (m, n'), \\quad (am, n) \\sim a(m,n) \\sim (m, an) ✓$$\n\n一般模由自由模商出（取表现）✓，商上的张量积就是商 ✓。这时 $M \\times N \\to M \\otimes N$ 双线性 ✓，任何双线性映射 $M \\times N \\to P$ 唯一地穿过它 ✓ —— 这正是万有性质 ✓。∎",
+    }
   ]
 });
