@@ -20,9 +20,9 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '群',
-      title: '群与阿贝尔群',
+      title: '群',
       regions: ['algebra'],
-      tags: ['代数', '群', '阿贝尔群', '运算'],
+      tags: ['代数', '群', '运算'],
       statement: [
         '设 $G$ 是**集合**，$\\cdot$ 是 $G$ 上的**二元运算**（即函数 $G \\times G \\to G$，$(a, b) \\mapsto a \\cdot b$）。称 $(G, \\cdot)$ 是一个**群**，当且仅当：',
         '',
@@ -32,7 +32,7 @@ window.MG = window.MG || {};
           '- **逆元**：对每个 $a \\in G$ 存在 $a^{-1} \\in G$ 使 $a a^{-1} = a^{-1} a = e$。'
         ].join('\n'),
         '',
-        '再满足**交换律** $a b = b a$ 的群叫**阿贝尔群**（Abelian group），也叫**交换群**。'
+        '交换群单列为 `def.abelian-group`；本节点只保留群公理。'
       ].join('\n'),
       notes: [
         '⭐ **格式还是「集合 + 运算 + 公理」**：群不是凭空的对象 —— 一个集合、一个函数、三条等式就定出了一个群。判别一个东西是不是群，就是逐条核对这些等式。',

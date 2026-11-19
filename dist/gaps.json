@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T05:21:57.346Z",
+ "generated": "2026-11-19T11:06:15.621Z",
  "terms": 76,
  "missing": [
   {
@@ -473,11 +473,11 @@
    "gap": 0
   },
   {
-   "node": "def.category-of-groups",
-   "nodeLabel": "群范畴",
+   "node": "def.field",
+   "nodeLabel": "域",
    "nodeLayer": 10,
-   "def": "def.subcategory",
-   "defLabel": "子范畴",
+   "def": "def.abelian-group",
+   "defLabel": "阿贝尔群",
    "defLayer": 10,
    "gap": 0
   },
@@ -491,12 +491,39 @@
    "gap": 0
   },
   {
+   "node": "def.category-of-vector-spaces",
+   "nodeLabel": "向量空间范畴",
+   "nodeLayer": 15,
+   "def": "def.quotient-vs",
+   "defLabel": "商空间",
+   "defLayer": 15,
+   "gap": 0
+  },
+  {
+   "node": "def.ring",
+   "nodeLabel": "环",
+   "nodeLayer": 10,
+   "def": "def.abelian-group",
+   "defLabel": "阿贝尔群",
+   "defLayer": 10,
+   "gap": 0
+  },
+  {
    "node": "def.cech-complex",
    "nodeLabel": "Čech 复形",
    "nodeLayer": 18,
    "def": "def.bicomplex",
    "defLabel": "双复形",
    "defLayer": 18,
+   "gap": 0
+  },
+  {
+   "node": "def.divisible-group",
+   "nodeLabel": "可除群",
+   "nodeLayer": 10,
+   "def": "def.abelian-group",
+   "defLabel": "阿贝尔群",
+   "defLayer": 10,
    "gap": 0
   },
   {
@@ -509,7 +536,7 @@
    "gap": 0
   }
  ],
- "noEdgeAll": 51,
+ "noEdgeAll": 54,
  "noEdgeOk": 39,
  "noEdgeOkStale": [
   "def.bundle-section>def.differential-form",
