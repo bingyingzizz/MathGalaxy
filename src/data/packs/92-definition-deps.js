@@ -845,12 +845,6 @@ window.MG = window.MG || {};
       '诱导拓扑取的是使 $f^{-1}$ **连续**的最细拓扑。'],
 
     /* -------------------------------------------- 原书第 1 章的习题结论 */
-    ['def.group-object', 'ex.algebra-categories', 'def-dep.algcats-groupobj',
-      '$\\mathrm{Mon}$、$\\mathrm{Gr}$ 就是**范畴里的代数结构**在 $\\mathbf{Set}$ 上的样子。'],
-    ['def.ring', 'ex.algebra-categories', 'def-dep.algcats-ring',
-      '$\\mathrm{Rng}$、$k\\text{-}\\mathbf{Alg}$ 是**环**与它上面的代数。'],
-    ['def.module', 'ex.algebra-categories', 'def-dep.algcats-module',
-      '$A\\text{-}\\mathbf{Mod}$ 是**模**的范畴。'],
     ['def.quotient-group', 'prop.abelianization', 'def-dep.abelianization-quotient',
       '交换化就是商掉**换位子子群**。'],
     ['def.adjoint', 'prop.abelianization', 'def-dep.abelianization-adjoint',

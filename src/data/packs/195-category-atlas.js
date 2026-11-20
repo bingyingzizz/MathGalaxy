@@ -289,18 +289,6 @@ window.MG = window.MG || {};
       { id: 'atlas.analogy.vect-mod', kind: 'analogy', a: 'def.category-of-vector-spaces', b: 'def.module-category', note: '$\\mathbf{Vect}_K$ 就是 $K\\text{-}\\mathbf{Mod}$ 在 $K$ 为域时的特例。' },
       { id: 'atlas.analogy.rng-alg', kind: 'analogy', a: 'def.category-of-rings', b: 'def.category-of-algebras', note: '环是 $\\mathbb Z$-代数的非含幺版本；余积都是自由积。' },
 
-      /* ---------------------------------------------- 索引边：ex.algebra-categories */
-      { id: 'atlas.ex.set', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.top', kind: 'definition', definition: 'def.category-of-topological-spaces', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.grp', kind: 'definition', definition: 'def.category-of-groups', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.ab', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.vect', kind: 'definition', definition: 'def.category-of-vector-spaces', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.mon', kind: 'definition', definition: 'def.category-of-monoids', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.rng', kind: 'definition', definition: 'def.category-of-rings', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.gset', kind: 'definition', definition: 'def.category-of-g-sets', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.mod', kind: 'definition', definition: 'def.module-category', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.alg', kind: 'definition', definition: 'def.category-of-algebras', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
-      { id: 'atlas.ex.field', kind: 'definition', definition: 'def.category-of-fields', usedBy: 'ex.algebra-categories', note: '索引该范畴的极限/余极限表。' },
 
       /* ---------------------------------------------- 命题的入边：极限 */
       { id: 'atlas.lim.in.limit', kind: 'definition', definition: 'def.limit', usedBy: 'prop.algebra-categories-limits', note: '命题的极限表就是逐项验证 $\\mathbf{Set}$ 中的极限。' },

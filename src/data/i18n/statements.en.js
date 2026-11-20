@@ -11047,7 +11047,7 @@ This is the most common way to prove two sets equal: **containment both ways**.`
         basedOn: "v0.9.3#fb822ec1",
       },
       notes: {
-        en: "⭐ $K[x]$ is the value of the “univariate polynomial functor on $K$”: $K \\mapsto K[x]$ is left adjoint to “sending $K$ to $K$-algebras” (the free $K$-algebra).\n\nThe node `ex.algebra-categories` already mentioned $k\\text{-}\\mathbf{Alg}$.\n\n⭐ $\\deg(fg) = \\deg f + \\deg g$ is the whole source of integrality: integrality of the coefficient field makes degrees add, so there are no zero divisors.\n\n⚠ Constant polynomials ($\\deg = 0$) and the zero polynomial must be treated separately; every identity about degrees needs the hypothesis “$f, g \\ne 0$”.",
+        en: "⭐ $K[x]$ is the value of the “univariate polynomial functor on $K$”: $K \\mapsto K[x]$ is left adjoint to “sending $K$ to $K$-algebras” (the free $K$-algebra).\n\n(In the category of $k$-algebras the free object is the tensor algebra.)algebra-categories` already mentioned $k\\text{-}\\mathbf{Alg}$.\n\n⭐ $\\deg(fg) = \\deg f + \\deg g$ is the whole source of integrality: integrality of the coefficient field makes degrees add, so there are no zero divisors.\n\n⚠ Constant polynomials ($\\deg = 0$) and the zero polynomial must be treated separately; every identity about degrees needs the hypothesis “$f, g \\ne 0$”.",
         status: 'draft',
         basedOn: "v0.9.3#6b13910b",
       },

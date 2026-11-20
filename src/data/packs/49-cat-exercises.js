@@ -10,31 +10,7 @@ window.MG = window.MG || {};
   name: '第 1 章的习题结论',
   nodes: [
 
-    {
-      id: 'ex.algebra-categories',
-      cluster: 'cat.algebra',
-      type: 'example',
-      label: '代数的几个范畴',
-      title: '$\\mathrm{Mon}$、$\\mathrm{Gr}$、$\\mathrm{Rng}$、$G\\text{-}\\mathbf{Set}$、$A\\text{-}\\mathbf{Mod}$、$k\\text{-}\\mathbf{Alg}$',
-      regions: ['algebra', 'category'],
-      tags: ['代数', '范畴', '幺半群', '环', '模', '代数'],
-      statement: [
-        '常用的代数范畴（对象 + 保结构映射）：',
-        '',
-        [
-          '- $\\mathrm{Mon}$：幺半群；',
-          '- $\\mathrm{Gr}$（也写 $\\mathbf{Grp}$）：群；',
-          '- $\\mathrm{Rng}$：环；',
-          '- $G\\text{-}\\mathbf{Set}$：$G$-集（带 $G$ 作用的集合）；',
-          '- $A\\text{-}\\mathbf{Mod}$：$A$-模；',
-          '- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。',
-          '',
-          '各范畴的极限、余极限与 AB 公理见 `def.category-of-monoids`、`def.category-of-groups`、`def.category-of-rings`、`def.category-of-g-sets`、`def.module-category`、`def.category-of-algebras`、`def.category-of-sets`、`def.category-of-topological-spaces`、`def.category-of-abelian-groups`、`def.category-of-vector-spaces`；统一构造见 `prop.algebra-categories-limits` 与 `prop.algebra-categories-colimits`。'
-        ].join('\n')
-      ].join('\n'),
-      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。\n\n所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；\n\n$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。',
-      refs: ['Lang, Algebra']
-    },
+
 
     {
       id: 'prop.abelianization',
@@ -238,7 +214,6 @@ window.MG = window.MG || {};
   ],
 
   edges: [
-    { id: 'dep.cat-sets-ex-algebra-categories', kind: 'definition', definition: 'def.category-of-sets', usedBy: 'ex.algebra-categories', note: '陈述以集合范畴 $\\mathbf{Set}$ 为环境范畴' },
     { id: 'dep.cat-ab-prop-abelianization', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.abelianization', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
     { id: 'dep.cat-ab-prop-ab6', kind: 'definition', definition: 'def.category-of-abelian-groups', usedBy: 'prop.ab6', note: '陈述以阿贝尔群范畴 $\\mathbf{Ab}$ 为环境范畴' },
     {

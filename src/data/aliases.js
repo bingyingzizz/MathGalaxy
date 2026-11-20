@@ -441,7 +441,6 @@ MG.aliases = {
     { id: 'def.morphism-of-sites', aka: ['site 的态射', 'morphism of sites', 'Definition 3.4.5', 'Def 3.4.5', 'Exercise 3.58'] },
     { id: 'def.cocontinuous-functor', aka: ['余连续函子', 'cocontinuous', 'Definition 3.4.6', 'Def 3.4.6', 'Exercise 3.59', 'Exercise 3.60'] },
     { id: 'def.induced-topology', aka: ['诱导拓扑', 'induced topology', 'Definition 3.4.7', 'Def 3.4.7', 'Exercise 3.61'] },
-    { id: 'ex.algebra-categories', aka: ['代数的范畴', 'Mon', 'Gr', 'Rng', 'G-Set', 'A-Mod', 'k-Alg', 'Exercise 1.1'] },
     { id: 'prop.abelianization', aka: ['交换化', 'abelianization', '换位子子群', 'G ab', 'Exercise 1.9'] },
     { id: 'prop.poset-limit-join', en: 'limits in a poset are joins', aka: ['偏序集的极限', '极限就是交', 'Exercise 1.30'] },
     { id: 'def.strict-morphism', aka: ['严格态射', 'strict morphism', '严格', 'Exercise 1.33'] },

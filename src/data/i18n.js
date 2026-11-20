@@ -804,7 +804,6 @@ MG.i18n = {
     'def.zmodn': { title_en: 'the ring of residue classes', label_en: 'the ring of residue classes', from: 'explicit' },
     'ex-sl2-commutator': { title_en: 'commutator relations in sl2', label_en: 'commutator relations in sl2', from: 'explicit' },
     'ex.ab-of-categories': { title_en: 'examples of abelian categories', label_en: 'examples of abelian categories', from: 'explicit' },
-    'ex.algebra-categories': { title_en: 'Categories of Algebraic Structures', label_en: 'Algebraic Categories', from: 'manual' },
     'ex.bd-ss': { title_en: 'The General Breen–Deligne Spectral Sequence', label_en: 'Breen–Deligne Spectral Sequence', from: 'manual' },
     'ex.cg-examples': { title_en: 'Examples of Compactly Generated Spaces', label_en: 'CG Examples', from: 'manual' },
     'ex.chaus-banach-rhom': { title_en: 'Derived Hom from Compact Spaces to Real Banach Spaces', label_en: 'Compact to Banach RHom', from: 'manual' },

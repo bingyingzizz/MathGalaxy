@@ -1,8 +1,8 @@
 {
  "version": "v0.9.3",
- "generated": "2026-11-19",
+ "generated": "2026-11-20",
  "note": "节点 id 是对外契约：消失的 id 必须先在 tools/ids.retired.json 登记。",
- "count": 1737,
+ "count": 1736,
  "ids": [
   "ax.choice",
   "ax.ext",
@@ -782,7 +782,6 @@
   "def.zmodn",
   "ex-sl2-commutator",
   "ex.ab-of-categories",
-  "ex.algebra-categories",
   "ex.bd-ss",
   "ex.cg-examples",
   "ex.chaus-banach-rhom",

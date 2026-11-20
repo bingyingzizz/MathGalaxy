@@ -167,7 +167,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '极限', '余极限', '自由对象', '代数范畴'],
       statement: '设 $\\mathcal C$ 为 $\\mathbf{Mon}$、$\\mathbf{Grp}$、$\\mathbf{Rng}$、$G\\text{-}\\mathbf{Set}$、$R\\text{-}\\mathbf{Mod}$、$R\\text{-}\\mathbf{Alg}$、$\\mathbf{Vect}_K$、$\\mathbf{Set}$、$\\mathbf{Top}$、$\\mathbf{Ab}$ 之一。则 $\\mathcal C$ 完备：终对象、积、等化子与拉回都按底层集合逐项构造；遗忘函子 $U:\\mathcal C\\to\\mathbf{Set}$ 保极限。余极限见 `prop.algebra-categories-colimits`。',
-      notes: '**证明见边** `imp.algebra-categories-limits`：逐项构造并验证泛性质；遗忘函子保极限。**余极限**另见 `prop.algebra-categories-colimits`。**注意**：$\\mathbf{Top}$ 的极限取子空间/积拓扑，但 $\\mathbf{Top}$ 不是笛卡尔闭；$R\\text{-}\\mathbf{Mod}$ 的 AB 公理见 `def.ab-axioms`。',
+      notes: '**证明见边** `imp.algebra-categories-limits`：逐项构造并验证泛性质；遗忘函子保极限。**余极限**另见 `prop.algebra-categories-colimits`。**注意**：$\\mathbf{Top}$ 的极限取子空间/积拓扑，但 $\\mathbf{Top}$ 不是笛卡尔闭；$R\\text{-}\\mathbf{Mod}$ 的 AB 公理见 `def.ab-axioms`。这些范畴的共同点是「集合 + 运算 + 公理」，所以极限与自由对象的构造逐字通用。',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.28']
     },
 
