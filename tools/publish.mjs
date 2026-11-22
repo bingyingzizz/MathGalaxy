@@ -526,6 +526,11 @@ const RESEARCH_PAGES = [
     desc: '预印本（未经同行评审）：对任意紧群证明 H¹(G,V)=0、对 G=SU(2) 证明 H²(G,V)=0，'
       + 'V 取任意 p-liquid 实系数；核心是一个不使用 Haar 平均的算子 2−f*。',
     name: '紧群上平凡 p-liquid 系数的低次上同调' },
+  { src: 'research-hausdorff-p-banach.html', out: 'research-hausdorff-p-banach.html', pri: '0.9',
+    title: `紧群上 Hausdorff p-Banach 系数的正次数上同调 · ${USER}`,
+    desc: '预印本（未经同行评审）：对每个 0<p<1 构造 Hausdorff 实 p-Banach 系数与连续四余圈，'
+      + '证明 H⁴(SU(2),B_p)≠0，在 Hausdorff p-Banach 量词下否定 Clausen–Scholze Question 0.10.4；p=1 时正次全消失。',
+    name: '紧群上 Hausdorff p-Banach 系数的正次数上同调' },
 ];
 for (const rp of RESEARCH_PAGES) {
   fs.writeFileSync(path.join(STAGE, rp.out), fill(readSite(rp.src), {
@@ -697,18 +702,18 @@ console.log(`   IndexNow key 文件：${INDEXNOW_KEY}.txt（提交用 tools/inde
 // 根 llms.txt：AI agent 的约定入口。**必须在一次抓取之内**（同 dist 产物的 1300 B 口径）。
 const rootLlms = `# ${USER}.github.io
 
-个人站点。主体是**数学星图 MathGalaxy**：${cnt.nodes} 个数学概念（定理 / 定义 / 引理）按
-「星系 → 星团 → 恒星」三层组织，边是逻辑关系（推出 / 等价 / 定义引用 / 类比）。
+个人站点。主体是**数学星图 MathGalaxy**：${cnt.nodes} 个数学概念按「星系 → 星团 → 恒星」三层组织，
+边是逻辑关系（推出 / 等价 / 定义引用 / 类比）。
 
-## 想读内容，按这个顺序
+## 想读内容，按顺序
 
-- \`/mathgalaxy/llms.txt\`    星图的检索协议 —— **先读这一份**，它说清了每种产物怎么用
-- \`/mathgalaxy/index.md\`    索引：星系、星团、节点 id 一览
-- \`/mathgalaxy/nodes/<id>.md\`  一个概念一个文件，绝大多数 ≤ 1300 B，可以整份读进来
-- \`/mathgalaxy/nodes/<id>.html\` 同一个概念的完整单页版（公式是 MathML、不分页，但大得多）
+- \`/mathgalaxy/llms.txt\`    星图的检索协议 —— **先读这份**，说清每种产物怎么用
+- \`/mathgalaxy/index.md\`    索引：星系、星团、节点 id
+- \`/mathgalaxy/nodes/<id>.md\`  一概念一文件，多数 ≤ 1300 B，可整份读；同名 \`.html\` 是完整单页（MathML、不分页，大得多）
 - \`/read.html\`              给人读的：读图指南 / 记号对照表 / 内容准则 / 枢纽定理榜
-- \`/research-p-liquid.html\`  研究论文（英文）：p-liquid 正次数上同调反例
-- \`/research-low-degree-vanishing.html\`  研究论文（英文）：p-liquid 低次上同调消隐
+- \`/research-p-liquid.html\`  论文（英文）：p-liquid 正次数上同调反例
+- \`/research-low-degree-vanishing.html\`  论文（英文）：p-liquid 低次上同调消隐
+- \`/research-hausdorff-p-banach.html\`  论文（英文）：Hausdorff p-Banach 正次数上同调反例
 
 ## 程序化使用
 
@@ -716,8 +721,7 @@ const rootLlms = `# ${USER}.github.io
 
 ## 许可
 
-内容 **CC BY 4.0**（署名即可）；代码 MIT。引用请写节点 id + 版本，
-条款见 \`/mathgalaxy/LICENSE.txt\`。
+内容 **CC BY 4.0**（署名即可）；代码 MIT。引用写节点 id + 版本，条款见 \`/mathgalaxy/LICENSE.txt\`。
 `;
 const rootLlmsBytes = Buffer.byteLength(rootLlms, 'utf8');
 if (rootLlmsBytes > 1250) {
