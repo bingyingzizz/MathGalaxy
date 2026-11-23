@@ -18,7 +18,11 @@ import path from 'node:path';
 import { spawn } from 'node:child_process';
 
 const EDGE = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
-const PORT = 9333;
+/* ⚠️ 端口可用 MG_PORT 覆盖（默认 9333）。
+   为什么需要：并行 agent 都用 9333 时会**互相抢** —— 后启动的那个 findTarget()
+   会扬到别人浏览器里的页面上去（实测 2026-11-16：探针报 "no-app"，
+   截图里却是别的浏览器的 Tampermonkey 安装页）。测性能时用独立端口最稳。 */
+const PORT = Number(process.env.MG_PORT || 9333);
 const [, , url, outPng, scriptFile, waitMsArg, sizeArg] = process.argv;
 if (!url || !outPng) {
   console.error('用法：bun _tools/cdp.mjs <url> <out.png> [scriptFile] [waitMs] [WxH]');
@@ -36,7 +40,13 @@ const profile = process.env.MG_CDP_PROFILE ? path.resolve(process.env.MG_CDP_PRO
    Microsoft Basic Render Driver / SwANGLE，绝对数字作废 —— 用 SystemInfo 或页面 WebGL 核对） */
 const gpuArgs = process.env.MG_GPU === '1' ? [] : ['--disable-gpu'];
 const edge = spawn(EDGE, [
-  '--headless=new', ...gpuArgs, '--hide-scrollbars',
+  '--headless=new',
+  /* ⭐ 反节流（2026-11-16 补）：机器上开着一堆 Edge 时，新实例的页面会被当「后台标签」
+     ⇒ rAF 被节流到接近 0 ⇒ 探针读到「拖动中 null / prof 帧 2」而**不报错**。
+     这三个开关是标准解法。 */
+  '--disable-backgrounding-occluded-windows',
+  '--disable-renderer-backgrounding',
+  '--disable-background-timer-throttling', ...gpuArgs, '--hide-scrollbars',
   '--allow-file-access-from-files', '--no-first-run', '--no-default-browser-check',
   '--remote-debugging-port=' + PORT,
   '--user-data-dir=' + profile,
@@ -55,17 +65,33 @@ function send(method, params) {
     ws.send(JSON.stringify({ id: msgId, method, params: params || {} }));
     setTimeout(() => {
       if (pending.has(msgId)) { pending.delete(msgId); reject(new Error('超时：' + method)); }
-    }, 20000);
+    }, 60000);   // 60s：冒烟/假拖动这类探针本身就要跑 6~15s，机器负载高时 20s 不够（踩过）
   });
 }
 
 async function findTarget() {
+  /* ⭐⭐ 必须**按 URL 挑**，不能取「第一个 page」（2026-11-16 修的）。
+     旧写法 `list.find(t => t.type === 'page' …)`：机器上同时开着 AdBlock / Tampermonkey /
+     购物党等扩展的欢迎页时，星图的 page 排在它们后面 ⇒ 探针量到了**别的页面**，
+     表现是突兀的 `{"err":"no-app"}` / 截到 Tampermonkey 安装页，而不是报错。
+     没报错、只是错了 —— 这种静默误测比报错危险得多。
+     拿不到 url 时（旧版本）才退回原行为。 */
+  const want = String(url).split('#')[0];
   for (let i = 0; i < 60; i++) {
     try {
       const r = await fetch(`http://127.0.0.1:${PORT}/json/list`);
       const list = await r.json();
-      const page = list.find(t => t.type === 'page' && t.webSocketDebuggerUrl);
-      if (page) return page;
+      const pages = list.filter(t => t.type === 'page' && t.webSocketDebuggerUrl);
+      const hit = pages.find(t => String(t.url || '').split('#')[0] === want)
+        || pages.find(t => String(t.url || '').startsWith(want.split('?')[0]) && want.startsWith('file:'))
+        || (pages.length === 1 ? pages[0] : null);
+      if (hit) return hit;
+      if (pages.length && i > 40) {
+        // 等够久了还没匹配上：把看到的页面打出来，方便一眼看出接错了谁
+        console.error('⚠️ 等不到目标页：' + want);
+        pages.forEach(t => console.error('    看到: ' + String(t.url || '').slice(0, 100)));
+        return pages[0];
+      }
     } catch (_) { /* 还没起来 */ }
     await sleep(250);
   }

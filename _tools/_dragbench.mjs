@@ -36,7 +36,13 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const profile = path.join(process.env.TEMP || '.', 'dragbench-' + process.pid);
 const edge = spawn(EDGE, [
-  '--headless=new', ...(useGpu ? [] : ['--disable-gpu']), '--hide-scrollbars',
+  '--headless=new',
+  /* ⭐ 反节流（2026-11-16 补）：机器上开着一堆 Edge 时，新实例的页面会被当「后台标签」
+     ⇒ rAF 被节流到接近 0 ⇒ 探针读到「拖动中 null / prof 帧 2」而**不报错**。
+     这三个开关是标准解法。 */
+  '--disable-backgrounding-occluded-windows',
+  '--disable-renderer-backgrounding',
+  '--disable-background-timer-throttling', ...(useGpu ? [] : ['--disable-gpu']), '--hide-scrollbars',
   '--allow-file-access-from-files', '--no-first-run', '--no-default-browser-check',
   '--remote-debugging-port=' + PORT, '--user-data-dir=' + profile,
   '--window-size=' + size, url,
