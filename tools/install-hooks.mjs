@@ -15,7 +15,7 @@ import { spawnSync } from 'node:child_process';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const WANT = '.githooks';
 
-/* git 不在 PATH（见 AGENTS.md §环境）→ 按「环境变量 → PATH → 常见位置」找 */
+/* git 不在 PATH（见 AGENTS.md §12 环境）→ 按「环境变量 → PATH → 常见位置」找 */
 function findGit() {
   const candidates = [process.env.MG_GIT, 'git', 'H:/Git/cmd/git.exe', 'C:/Program Files/Git/cmd/git.exe'];
   for (const c of candidates) {

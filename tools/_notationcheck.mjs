@@ -21,7 +21,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 
-const ROOT = 'H:/MathGalaxy';
+const ROOT = path.resolve(import.meta.dirname, '..');
 
 /* ---------------------------------------------------- 载入记号表（真源） */
 function loadNotation() {

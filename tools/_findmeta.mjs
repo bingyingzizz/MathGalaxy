@@ -2,7 +2,7 @@
 // 排除源码注释行（/* … */ 里那些）
 import fs from "node:fs";
 import path from "node:path";
-const DIR = "H:/MathGalaxy/src/data/packs";
+const DIR = path.resolve(import.meta.dirname, "../src/data/packs");
 const PAT = /笔记|原稿|本人|确认|转写|存疑|字迹|VLM|手写|原书|书上|Le Stum/;
 const files = fs.readdirSync(DIR).filter(f => f.endsWith(".js")).sort();
 let n = 0;

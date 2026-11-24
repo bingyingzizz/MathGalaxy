@@ -3,11 +3,11 @@
    数学星图 · 性能不变量硬门（perfguard）
    --------------------------------------------------------------------------
    为什么要有这个文件（2026-11-09）：
-     `AGENTS.md` 第四节把性能铁律写得很细，但**文档挡不住删除**。
+     `docs/performance-runbook.md`把性能铁律写得很细，但**文档挡不住删除**。
      实测证据：那五条最硬的规矩，有三条在文档写出来之前就已经被违反/漂移了，
      而验收仪器被删掉时没有任何东西报警 —— 于是「拖动又变卡」就这样活了几周。
 
-     所以把「不许删」变成**机器检查**：这里每一条都对应 `AGENTS.md` 第四节的一小节，
+     所以把「不许删」变成**机器检查**：这里每一条都对应 `docs/performance-runbook.md`的一小节，
      删掉/改坏任何一条 ⇒ 构建直接红，报错里带着「去看 4.x」和当初的实测代价。
 
    两条设计原则（都很重要）：
@@ -74,7 +74,7 @@ for (const rel of ['_tools/_dragbench.mjs', '_tools/_chainprobe.js',
   '_tools/_smoke.engine.mjs', '_tools/_cloudchk.js',
   '_tools/_bandcost.js', '_tools/_bandreal.js']) {
   need(fs.existsSync(path.join(ROOT, rel)), `验收仪器在：${rel}`,
-    'AGENTS.md 4.4 / 4.2：改完必须用它们量。它们曾经被清掉过，于是没人量、违规活了几周');
+    'docs/performance-runbook.md 4.4 / 4.2：改完必须用它们量。它们曾经被清掉过，于是没人量、违规活了几周');
 }
 
 /* =========================================================== worldbitmap.js */
@@ -230,9 +230,9 @@ if (fails.length) {
     console.error(`  ✗ ${f.title}`);
     console.error(`    ↳ ${f.why}`);
   }
-  console.error('\n  这些约束都在 `AGENTS.md` 第四节，每条后面都写着当初的实测代价。');
+  console.error('\n  这些约束都在 `docs/performance-runbook.md`，每条后面都写着当初的实测代价。');
   console.error('  要改它们，先在那一条里给出「改前/改后」的数字，再改这里的体检。\n');
   process.exit(1);
 }
 console.log(`  ✓ 性能不变量体检通过（${total} 条）：位图载体 / 横带切片 / 带裁剪 / 剪交接 /`);
-console.log(`    几何缓存 / dpr 口径 / 新 API 回退 / 旋钮取值 —— 见 AGENTS.md 第四节`);
+console.log(`    几何缓存 / dpr 口径 / 新 API 回退 / 旋钮取值 —— 见 docs/performance-runbook.md`);

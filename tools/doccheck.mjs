@@ -67,7 +67,14 @@ const FILES = [
   /* 2026-11-06 加：这两份不给外人看，但都写着「实测状态」，最容易过期 ——
      上一轮 HANDOVER 的「强边 3128」就比图里少 2 条，而当时 doccheck 是绿的。 */
   'AGENTS.md',
-  'HANDOVER.md',
+  /* 2026-11-24：精简后的现行文档也纳入扫描（它们刻意不写死规模；万一有人写回去，这里会红）。
+     docs/archive/ 是历史快照，不扫。 */
+  'CLAUDE.md',
+  'docs/STATUS.md',
+  'docs/content-guidelines.md',
+  'docs/tools-and-methods.md',
+  'docs/performance-runbook.md',
+  /* 2026-11-24：HANDOVER.md 已迁入 docs/archive/（历史快照，不再扫描） */
   /* 2026-11-16 加：性能总账。开头就写「1736 节点 / 4184 连线」，不查一定烂。 */
   'PERFORMANCE.md',
   /* 本机记录（.gitignore 忽略）。存在就查，不存在不算错。 */
@@ -83,7 +90,7 @@ const OPTIONAL = new Set(['_外链材料.md']);
    而那是正在写内容的人的文件 —— 硬拦会把他的每次提交都堵在门口，
    最后大家学会 --no-verify，阀门就白装了。提醒照样能看见是哪一行过期。
    `--strict` 让内部文档也硬拦（CI 想收紧 / 手动较真时用）。 */
-const SOFT = new Set(['AGENTS.md', 'HANDOVER.md', 'PERFORMANCE.md', '_外链材料.md']);
+const SOFT = new Set(['AGENTS.md', 'CLAUDE.md', 'docs/STATUS.md', 'docs/content-guidelines.md', 'docs/tools-and-methods.md', 'docs/performance-runbook.md', 'PERFORMANCE.md', '_外链材料.md']);
 const STRICT = process.argv.includes('--strict');
 
 /* 每条规则：pattern、期望值、怎么改 */

@@ -4,7 +4,7 @@
 > 怎么测量、机器守着哪些约束、已知瓶颈、还没做的事。
 >
 > 配套：
-> - `AGENTS.md` 第四节 = **给改 UI 的 agent 的操作手册**（怎么写代码、改哪几处、验收四件套）
+> - `docs/performance-runbook.md`（原 AGENTS.md 第四节）= **给改性能敏感代码的 agent 的操作手册**（怎么写代码、改哪几处、验收四件套）；准入规则见本文 §0.0
 > - `tools/perfguard.mjs` = **这些约束的机器版本**（42 条，删一条就红）
 > - 本文件 = **总账 + 决策记录 + 待办**（为什么、代价、历史、还欠什么）
 >
@@ -12,6 +12,15 @@
 > ⚠️ 规模会变，跑 `bun tools/mg.mjs stat` 看准确值。
 
 ---
+
+## 0.0 准入规则：动性能敏感的东西之前必须先读本文件与 `docs/performance-runbook.md`
+
+**性能敏感 = 不只是 `src/core/`**。下面任何一类改动，开工前都必须读本文件（至少 §0–§5、§7、§10）和 `docs/performance-runbook.md`：
+渲染（含云雾/标签/hover）· 布局与预计算（`layout.js`、`layoutcache.js`、`tools/prelayout.mjs`）· 图算法与数据结构（`graph.js`、`layers.js`、搜索索引）· 缓存与签名 · 交互处理（拖动/缩放/滑杆/键鼠）· 资源加载与启动路径 · 性能关键的构建流程（`build.mjs` 的体积/产物、`publish.mjs` 的单文件内嵌）。拿不准是不是，就按「是」处理。
+
+- **重大的性能敏感改动要前后实测**：用 §5 的两个仪器（`_tools/_dragbench.mjs` 真鼠标 + `_tools/_chainprobe.js` 假拖动）在**同一台机器、同一窗口、同一 k** 上各量一次，报告 p50 / p95 / max 与结构指标（追赶 / 落洞 / 分配 / 出图率）；启动/布局类改动另报 `layoutMs` 与是否 `fromCache` / `layoutFromPre`。先验证测量没作废（§1.1、§5.4）。
+- ⛔ **不得为了让回归「过」而放宽阈值**：`tools/perfguard.mjs` 的断言、旋钮取值区间、本文件的 4.2 ms / p95 / max 判据都不能为迁就退化而改。要改某条约束，先在本文件给出「改前/改后」的实测数字，再改 `perfguard.mjs` 对应那条。
+- 没做实测的性能敏感改动，汇报里要明说「未实测」，不能写成已验证。
 
 ## 0. 一句话结论
 
@@ -193,7 +202,7 @@ src/core/renderer.js      决定「怎么画进那张画布」drawStatic(target,
 
 ## 4. 当前不变量清单（= `tools/perfguard.mjs` 的 42 条）
 
-> 每条都在 `AGENTS.md` 第四节写清「为什么」和「当初的实测代价」。
+> 每条都在 `docs/performance-runbook.md` 写清「为什么」和「当初的实测代价」。
 > ⛔ 要改一条：**先在文档那次给出「改前/改后」数字，再改体检**。
 
 ### 4.1 worldbitmap（换代与调度）
@@ -429,3 +438,84 @@ for (var i = 0; i < 3; i++) {
 改完：bun tools/build.mjs（含 perfguard 42 条）→ 冒烟 → 逐1/16带墨量 → 截图
 剩下唯一瓶颈：一轮=整张重画 ⇒ 待做 blit 滑动窗口（先量 drawImage 自绘耗时）
 ```
+
+---
+
+## 10. 位图之外的性能相关知识（2026-11-24 补入）
+
+> 这一节把原先**只散落在** `_audit/engine/ENG-*.md`、HANDOVER §4.9、DeepSeek 会话笔记（`B:\MathGalaxy-archive\attempt2-20261124-0004\item16-dsh-memory.tar.gz` 里的 `memory/FACT.md`）里的结论收进来。
+> 范围：启动布局、相机/LOD、位图矩形余量、背景雾层、层过滤、被否决的实验。位图/横带那一套仍以 §2–§9 为准。
+> 原始实测与截图仍在 `_audit/engine/`（受保护，不入 git）；要追溯数字就去那里。
+
+### 10.1 启动布局：冷算 6–8 s，预计算 3–4 ms（ENG-013 / 013b / 015）
+
+- `MG.computeLayout` 冷算约 **6–8 s**（~1.6k 点；1668 点实测 7.5 s）。命中预计算（`dist/mathgalaxy.html` 内嵌 `MG_PRELAYOUT`，或同目录 `layout.json`）后 **3–4 ms**。
+- 回退链：**预计算 → localStorage（`mathgalaxy.layout.v2`）→ 冷算**。任何一级验签失败只往下退，绝不用错坐标；缓存读取异常一律静默放过，不能让星图打不开。
+- **签名只有一份口径**：`MG.layoutCache.signature(graph)`，`tools/prelayout.mjs` 直接调它，不重写。
+  **凡是 `layout.js` 在布局阶段读到的 config 都必须进签名**（ENG-013 事故：板块云半径读 `config.background` 的 `cloudMargin/cloudRadiusMin`，签名漏了它 ⇒ 改雾参数后旧缓存里的旧半径「借尸还魂」⇒ 桌面雾很淡，清 localStorage 才正常）。宁可多算一次布局，也不能漏。改键名 = 一次性失效（v1→v2 即这么做的）。
+- **缓存读取要逐项校验数值**：判据是 `typeof v === 'number' && isFinite(v)`，**不能只写 `isFinite(v)`**——JSON 把 NaN/Infinity 写成 `null`，而 `isFinite(null)` 为 true（`Number(null)===0`）。坏记录整条 drop 并重算。
+- **构建硬门**：`tools/prelayout.mjs` 写完必须读回逐点校验（版本 / 签名 / counts / 每点两个有限数 / 与刚算的图逐点一致），缺文件、坏 JSON、坐标陈旧都让 build 变红；`publish.mjs` 拷贝前再检一次。产物**必须可复现**（不写时间戳、坐标取整、键序固定；同内容两次 build 字节相同，否则 `dist/` 无故弄脏）。
+- 三个踩过的坑：
+  1. **包载入顺序必须和 `index.html` 的 `<script>` 顺序一致**，不能用目录字典序（`100-x.js` 会排到 `11-y.js` 前）——否则构建 sig 与浏览器 sig 对不上，预计算被拒、退回冷算 6.5 s。
+  2. **源码页 `index.html` 把 `MG.contentVersion` 写成 `'dev'`** ⇒ 验签必败 ⇒ 冷算。要测/要嵌预计算布局，必须用**构建产物** `dist/mathgalaxy.html`，不是源码页。
+  3. **跨引擎坐标不同**：同一节点在 Bun 构建产物与 Edge 冷算里可差 ~25 世界单位（约 bbox 的 0.5%）。所以**预计算是唯一真源**，冷算回退只保证「能打开」，别拿冷算坐标去和构建坐标逐点比。
+
+### 10.2 相机 / LOD 不变量（ENG-001）
+
+- LOD 基准用 `renderer.lodK0()`：**固定参考视口 1600×900** 算出的「适配全部」k（`config.lod.ref`）。⛔ 不许读 `cam.viewW/viewH/availRect`。`computeLod / updateTier / thr / lodPaintKey` 都用它。
+- 同一个 k 在任何视口下缩放值相同；**窗口变化只改可见范围**：resize / 图例折叠 / 说明条展开走 `cam.keepCenter()` **只平移，cam.k 不动**。
+- 深链 `#vr=` 存 `r = k / lodK0`（与视口无关）；旧 `#v=<k>,…` 仍按绝对 k 读。`layoutCache` 存**绝对 k + 世界中心**。
+- 违反的症状：同一 k 改窗口大小，`rRel` 变、LOD 档位乱跳，窄窗（~500 px）内容被推出屏幕。
+
+### 10.3 世界位图矩形必须带余量（ENG-004）
+
+- 世界档矩形 = `graph.bbox()` **外扩 `worldPadPx`**（`worldbitmap.js`，默认 **150 个画布像素**；世界单位 padding = `worldPadPx / (k·m)`），且这圈余量**也计入面积预算**（内容宽 = `wW·k·d + 2·worldPadPx`，余量项与 k 无关）。
+- 零余量时，圆心正好落在 bbox 边上的节点只烘出**半个圆**，边上的贝塞尔外凸（`PAD_EDGE=140`）和箭头也被裁。
+- 验证坑：右/下边会被 128 px 的画布量化余量掩盖，**对比必须用左/上边的节点**（曾用 maxY 节点，两张图字节完全相同，白测一轮）。
+
+### 10.4 云雾层现状（取代 §3.10 / runbook 4.2 对云雾实现的描述；ENG-004/009/010/012）
+
+- 现行实现是 **ENG-009 雾场，单一实现、不分端、不画粒子**（`background.js`：`MG.background.buildTexture/draw`）：离屏纹理覆盖**全图**节点 bbox 外扩 35%（`fogPadRatio`），长边上限 `fogMaxSide`（现为 768），每个板块一团径向渐变（`fogAlpha`），四周 `destination-in` 羽化到 alpha=0；每帧只按世界坐标 `drawImage` **一次**（`imageSmoothingQuality='low'`）。旋钮见 `config.background`。
+- ⛔ **取景必须用全图 bbox，不能跟着当前层/手动隐藏走**（2026-11-15 事故：切到第 1 层时纹理缩成中间一块，右侧直接黑掉）。纹理只随主题变化，层过滤只影响节点/连线。
+- 成本（ENG-010/012，headless Edge、新 profile）：每帧 draw 桌面 **0.07 ms（fit）/ 0.28 ms（k=1）**，手机 390×844 dpr3 **0.14 / 0.26 ms**；`buildTexture` 约 **29–33 ms**（ENG-010 口径，纹理更大时），只在切换显隐/重建时发生，**不在每帧路径**（遗留，未优化）。
+- ⚠️ `cloudMargin` / `cloudRadiusMin` 是 `layout.js` 算板块云半径用的，**不是渲染参数**；删掉会变成 `Math.max(undefined,…)=NaN` ⇒ 冷启动 `createRadialGradient` 抛 TypeError（ENG-011 hotfix）。它们同时是布局签名的一部分（见 10.1）。
+- **被否决（别重做）**：手机/桌面分端 `matchMedia` 分支 + 点云/星芒/辉光（ENG-005–008，最终整段删除，`background.js` 从 799 行降到 116 行）；固定 1024×768 密度场拉伸铺满世界（放大后一整块糊雾）；每节点「0.05→0 直线渐变」圆盘撒点（上千个圆盘边缘叠成「肥皂泡」）。
+- 注意：`perfguard` 只断言 `MG.background` + `buildTexture/draw` 仍在，**不**断言 `smoothTexture`/`texScale` 这些旧实现细节（曾因此误报）。
+
+### 10.5 层过滤与位图重烘（ENG-025）
+
+- 切层**只改可见性，相机一点都不动**（不 `fitAll`、不 `centerOn`、不改 `cam.k`）。曾经松手的 `change` 事件不带 `{fit:false}` ⇒ 每次松手重新居中 ⇒ 屏幕中心世界点漂移。
+- `paintKey()` 必须含**过滤代次** `'f'+filterEpoch+'|'`（`applyFilter()` 变更时 +1）。漏了它：`view.visible` 换了但 key 没变，`worldbitmap` 认为输入没变、不重烘，屏幕留着上一层的静态线。
+- 滑杆拖动中的 `input` 走 **60 ms 尾随去抖**（`scheduleFilterEpoch`），松手 `change` / 程序化设层立刻刷新。实测不去抖：连续 24 次 input = **24 次烘焙、p90 帧 120.5 ms、最长 162.8 ms**，滑块拖不动。
+- 验收：可见性立即生效（实时层马上变），位图最多延 **≤200 ms**；实测松手后 **42 ms**（2~3 帧）换新，拖动停手 **115 ms**。
+
+### 10.6 被否决：拖动去模糊 `html.dragging .floating`（HANDOVER §4.9 / ENG-002，2026-11-05）
+
+- 想法：拖动时面板改实色并关 `backdrop-filter` 来省合成。**已删，keep 删。**
+- 实测（CDP 真鼠标 70 步 ×2，rAF 间隔）：RTX 4070 Ti dpr1 无规则 4.28/4.33 ms vs 有规则 4.22/4.21 ms；dpr2 4.25/4.20 vs 4.23/4.22；软合成 `--disable-gpu` 都卡在 60 fps 上限 ⇒ **无可测差异**。原提交 `4a110a80` 自己记的也是「p95 收益未证实（−7%，低于 15% 门槛）」。
+- 有规则时拖动起止面板**跳变一次**（`backdrop-filter` 关→开；背景 86%→94% 白；平均 |ΔRGB|≈4.55/255，变亮）。
+- ⚠️ 平板（Adreno 735）**未实测**。若平板拖动掉帧，回滚片段：
+  ```css
+  html.dragging .floating { -webkit-backdrop-filter: none; backdrop-filter: none;
+                            background: rgba(255,255,255,.94); }
+  ```
+  `interaction.js` 里 `.dragging` 现在只是留作钩子。
+
+### 10.7 方法学（全文在 `docs/content-guidelines.md` 2.13、`docs/tools-and-methods.md` §9）
+
+- **卡住就先加探针，再动手**；先分账（JS / 光栅 / 同步全烘）再改，别看着曲线找结论。
+- **改性能参数前先验证「测量本身没减半」**（§3.11 第 4 刀的教训）；两个仪器结论不一致时以假拖动为帧成本基准。
+- 结论要说明读的是哪一类数；真机手感是最终判据，用户的「突然顿一下」比任何 p95 都权威。
+
+### 10.8 `_audit/engine/` 记录索引（受保护，追溯原始数据时看）
+
+| 记录 | 主题 |
+|---|---|
+| `ENG-001-结论.md` | 视口变化被误判成缩放：`lodK0` + `keepCenter`（10.2） |
+| `ENG-002-结论.md` | `$` 渲染防御；拖动去模糊复核（10.6） |
+| `ENG-004-结论.md` | 世界位图零余量截断节点（10.3）；旧星云分辨率问题 |
+| `ENG-005…012` | 背景从分端点云演进到单一雾场及其浓度调参（10.4） |
+| `ENG-013` / `013b` | 布局缓存签名纳入全部 layout 读到的 config；数值校验（10.1） |
+| `ENG-015-预计算布局.md` / `-阶段二.md` | 构建期预计算 + 客户端接入、冷启动测量、跨引擎差异（10.1） |
+| `ENG-025-层过滤相机与重烘.md` | 切层相机不动 + 去抖重烘（10.5） |
+| `ENG-020/021/029` | 合流（超边）渲染的实测与修复——属 Task 3 范围，此处只作索引 |

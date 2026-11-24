@@ -13,7 +13,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const SRC = 'H:/MathGalaxy/src';
+const SRC = import.meta.dirname + '/../src';
 function load() {
   const win = {
     MG: {}, console,

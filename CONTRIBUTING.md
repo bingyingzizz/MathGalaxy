@@ -220,3 +220,24 @@ attribution only, so copying, mirroring, renaming and commercial reuse are all a
 Citing is a **request**, not a condition: please cite a node by its `id` and the content
 version. See `LICENSE` (which contains the English citation guide, templates and the
 mirror-impact table); the full legal code is in `LICENSE-CC-BY-4.0.txt`.
+
+---
+
+## 工作区卫生与临时文件
+
+一次性脚本、中间结果、调试截图、临时构建、测试日志、临时仓库副本、浏览器 profile 一律放在 `_tmp/<任务id>-<时间戳>/`（已被 git 忽略），或会话 scratchpad；不要把 `_audit/`、`tools/`、仓库根当草稿区。完整规则见 `AGENTS.md` §6–§8、§11。
+
+每个任务目录放一个 `MANIFEST.md`，供清理时判定归属：
+
+```markdown
+# <任务id>  <时间戳>
+- 负责人 / 会话：<谁>
+- 目的：<为什么建这个目录>
+- 产出（均可删）：<列表>
+- 要升格的：<要移进 tools/ 或 docs/ 的文件，及目标位置>
+- 后台进程：<有就写 PID 与如何停>
+```
+
+- 清理只删**已核实为本任务自有**、且路径落在该目录内的显式条目；不用通配符，不跟随符号链接。
+- 只有「可复用、用途明确、有文档」的脚本才升入 `tools/`；优先扩展已有工具，不要再攒一个近似的 fixer。
+- 随时可跑只读检查：`bun tools/hygiene.mjs`（报告根目录异常、`tools/` 杂物、没有清单或已过期的 `_tmp/` 目录；从不删除任何文件）。
