@@ -5,7 +5,7 @@
 
 ## 发布状态（2026-11-24 已提交并发布）
 
-分两次提交推到 `origin/main`，站点经 `tools/publish.mjs` 的流程发布到 `bingyingzizz.github.io`（`main`）：
+分两次提交推到 `origin/main`（A=`7465c7315`、B=`da32329fa`，CI「体检」通过），站点用 `tools/publish.mjs --stage --no-build` 组装后以普通 fast-forward 推到 `bingyingzizz.github.io` 的 `main`（`eae980f12`），线上 `graph.json`（英文节点 1274）、续页、`layout.json` 签名均已核对：
 
 | 提交 | 内容 |
 |---|---|
@@ -34,7 +34,7 @@
 | 3 | 人名写法：`Riesz–Markov` / `Pontryagin` 用本人语言写法还是通行拉丁写法 | §5.3 |
 | 4 | `refs` 的 17 条 A 类（Tu GTM 334 vs 275 共 13 条）：确认改指还是标「待核」 | §5.4 |
 | 5 | 是否把 `tools/_katexcheck.mjs` 纳入版本库：它只查源码里的 `$$…$$`，是 `_katexcheck-all.mjs`（权威，CI 用）的真子集。**建议不跟踪、不合并**；等确认没有文档依赖后归档。`tools/ingest.mjs` 的提示文字和旧文档还引用它 | 本次迁移 |
-| 6 | 迁移遗留的延后项：`_audit/*.json` 历史图转储（#9）、`dist-site/_CON`（#18） | 清理报告 |
+| 6 | 迁移遗留的延后项：`_audit/*.json` 历史图转储（#9）；`dist-site/_CON`（#18）已在发布组装时随清空一并移除（内容只是一行 git 凭据提示，无敏感信息） | 清理报告 |
 | 7 | `.githooks/pre-commit` 里的 bun 兜底路径是旧机器的；现靠 PATH 命中，可不改 | 迁移 |
 
 ## 已知环境事实
