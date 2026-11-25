@@ -20,6 +20,7 @@ import { ADAPTERS } from './jobs/index.mjs';
 import * as SR from './jobs/semreview.mjs';
 import { locate } from './lib/schedule.mjs';
 import { loadBench } from './bench.mjs';
+import { openHolds, holdWhy } from './lib/holds.mjs';
 
 const argv = process.argv.slice(2); const cmd = argv[0]; const flag = n => argv.includes('--' + n); const opt = (n, d = null) => { const i = argv.indexOf('--' + n); return i >= 0 ? argv[i + 1] : d; };
 const THINK = opt('thinking', 'on') !== 'off';
@@ -62,10 +63,10 @@ if (import.meta.main) try {
     }
   } else if (cmd === 'gate') {   // 确定性处置：pass → (可选)批准；correct → (可选)写返工意见（至多一轮）；escalate/hold → 例外清单给 Claude/作者
     const have = store.load(); const fbFile = path.join(STORE_DIR, 'feedback.json'); const fb = fs.existsSync(fbFile) ? JSON.parse(fs.readFileSync(fbFile, 'utf8')) : {};
-    const out = { pass: [], correct: [], escalate: [], hold: [], retry: [] }; const exceptions = [];
+    const HOLDS = openHolds(); const out = { pass: [], correct: [], escalate: [], hold: [], retry: [] }; const exceptions = [];
     for (const it of items) { const rec = have.get(it.requests[0].key); let row = { of: it.of, status: 'no-result' };
       if (rec && rec.state === 'fetched') { const p = SR.parseAndVerify(rec.raw, it); row = p.err ? { of: it.of, status: 'invalid', err: p.err } : { of: it.of, status: 'ok', ...p.ok }; }
-      const corrected = !!fb[sha256(it.zh)]; const g = SR.gateDecision(row, { alreadyCorrected: corrected }); out[g.decision].push(it.of);
+      const corrected = !!fb[sha256(it.zh)]; const g = SR.gateDecision(row, { alreadyCorrected: corrected, heldWhy: holdWhy(HOLDS, it.of) }); out[g.decision].push(it.of);
       if (['escalate', 'hold', 'retry'].includes(g.decision)) exceptions.push({ identity: it.of, decision: g.decision, why: g.why, findings: (g.findings || []).map(f => ({ type: f.type, severity: f.severity, zh: f.zh_quote.slice(0, 80), en: f.en_quote.slice(0, 80), note: f.explanation.slice(0, 160) })), concerns: (g.concerns || []).map(c => ({ zh: c.zh_quote.slice(0, 80), note: c.explanation.slice(0, 160) })) });
       if (g.decision === 'correct' && flag('write-feedback')) { if (it.requests.length !== 1) throw new Error('多段证明不做自动返工：' + it.of); fb[sha256(it.zh)] = g.findings.map(f => ({ type: f.type, zh_quote: f.zh_quote, en_quote: f.en_quote, explanation: f.explanation })); } }
     if (flag('write-feedback')) fs.writeFileSync(fbFile, JSON.stringify(fb, null, 1));

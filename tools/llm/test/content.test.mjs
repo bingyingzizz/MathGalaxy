@@ -195,6 +195,13 @@ export async function pipelineAndWriteback() {
     const w4 = mkWorld(); w4.graph.byId['n.1'].title_en = 'Changed Title'; ok(apply({ stores: [st], ctx: ctxFor(w4, P.d, f), dryRun: true }).stale.some(x => x.why.some(y => /请求载荷/.test(y))), '标题/术语变了');
     ok(apply({ stores: [st], ctx: { ...base, cfgHashOf: () => 'other-config' }, dryRun: true }).stale.some(x => x.why.some(y => /处理配置/.test(y))), '配置变了'); void w3;
   });
+  await t('SR-6：已批准的条目若进入源文复核搁置 → 回写拒绝（stale/refused），目标文件字节不变；解除搁置后才可写', async () => {
+    const w = mkWorld(); const P = await pipe('hold', w, { adapters: ['node-text'] }); const f = files(P.d); const st = P.stores['node-text']; const before = fs.readFileSync(f.statements, 'utf8');
+    const holds = new Map([['node:n.1:statement', [{ sr: 'SR-6', status: 'open' }]]]); const r = apply({ stores: [st], ctx: ctxFor(w, P.d, f, { holds }), dryRun: false });
+    ok(r.stale.some(x => x.identity === 'node:n.1:statement' && x.why.some(y => /源文复核搁置/.test(y))), JSON.stringify(r.stale)); 
+    const got = loadItems(fs.readFileSync(f.statements, 'utf8'), 'statements')['n.1']; ok(got && got.notes && !got.statement, '只有搁置的 statement 字段没写（同节点未搁置的 notes 照常）'); void before;
+    const r2 = apply({ stores: [st], ctx: ctxFor(w, P.d, f, { holds: new Map() }), dryRun: false }); ok(loadItems(fs.readFileSync(f.statements, 'utf8'), 'statements')['n.1'].statement, '搁置解除后可写');
+  });
   await t('保护现有译文：同字段已有不同译文 → 拒绝覆盖；同文 → 只记账', async () => {
     const w = mkWorld(); const P = await pipe('prot', w, { adapters: ['node-text'] }); const f = files(P.d);
     fs.writeFileSync(f.statements, STMT.replace("    'old.one'", "    'n.1': { statement: { en: 'Human version.', status: 'reviewed', basedOn: 'v0.0.0#1' } },\n    'old.one'"));

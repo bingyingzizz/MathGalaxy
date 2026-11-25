@@ -12,6 +12,7 @@ import vm from 'node:vm';
 import { hashOf, sha256 } from './lib/util.mjs';
 import { Lock } from './lib/lock.mjs';
 import { SRC } from './lib/mgload.mjs';
+import { openHolds, holdWhy } from './lib/holds.mjs';
 
 const T = {
   statements: { file: path.join(SRC, 'data/i18n/statements.en.js'), tail: '\n  },\n};', items: MG => MG.i18nStatements.items },
@@ -54,7 +55,8 @@ export function apply({ stores, ctx, dryRun = true, now = () => Date.now(), hook
       const target = (ctx.targetFiles || {})[kind] || T[kind].file; const text0 = fs.readFileSync(target, 'utf8'); const h0 = sha256(text0); const have = loadItems(text0, kind);
       const entries = new Map(); const accepted = []; const already = [];
       for (const { r, st } of mine) {
-        const a = r.approval || {}, why = []; const cur = ctx.current.get(r.identity); const legacy = !!(ctx.legacyKeys && ctx.legacyKeys.has(r.key)); const src = cur ? cur.basedOnSource : null;
+        const a = r.approval || {}, why = []; const held = holdWhy(ctx.holds || openHolds(), r.identity); if (held) why.push(held);   // 源文复核搁置优先：已批准的也不回写
+        const cur = ctx.current.get(r.identity); const legacy = !!(ctx.legacyKeys && ctx.legacyKeys.has(r.key)); const src = cur ? cur.basedOnSource : null;
         if (!r.result || hashOf(r.result) !== a.resultHash) why.push('结果与批准时不一致');
         if (!cur) why.push('节点/字段已不存在');
         else {

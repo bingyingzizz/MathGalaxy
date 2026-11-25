@@ -8,6 +8,7 @@ import { actualUsd, savingsOf } from './cost.mjs';
 import { orderTodo, phasesOf } from './lib/schedule.mjs';
 import { validate } from './validate.mjs';
 import { hashOf, redact } from './lib/util.mjs';
+import { openHolds, holdWhy } from './lib/holds.mjs';
 
 const PART_DONE = new Set(['fetched', 'invalid', 'failed']);
 
@@ -111,7 +112,7 @@ export function validateStage({ adapter, items, store }) {
 }
 
 /** 批准：绑定 {key, resultHash, srcHash, cfgHash}。review 必须逐条点名；ok 可 --all-ok。 */
-export function approve({ store, identities = null, includeOkAll = false }) {
+export function approve({ store, identities = null, includeOkAll = false, holds = openHolds(), onHeld = null }) {
   const have = store.load(); const out = []; const latest = new Map();         // 同一身份（含返工后的新条目）只批准最新一条
   for (const r of have.values()) if (r.kind === 'item' && r.result && (!latest.has(r.identity) || String(r.t) >= String(latest.get(r.identity).t))) latest.set(r.identity, r);
   for (const r of latest.values()) {
@@ -119,6 +120,7 @@ export function approve({ store, identities = null, includeOkAll = false }) {
     const named = identities && identities.includes(r.identity);
     if (!(named || (includeOkAll && r.state === 'ok'))) continue;
     if (!['ok', 'review'].includes(r.state)) continue;
+    if (holds.has(r.identity)) { if (onHeld) onHeld(r.identity, holdWhy(holds, r.identity)); continue; }   // 源文复核搁置优先于译文审核
     out.push({ ...r, t: undefined, state: 'approved', approval: { key: r.key, resultHash: hashOf(r.result), srcHash: r.srcHash, cfgHash: r.cfgHash } });
   }
   if (out.length) store.append(out);

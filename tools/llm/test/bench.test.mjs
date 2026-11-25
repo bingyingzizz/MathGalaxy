@@ -100,6 +100,26 @@ import { gateDecision } from '../jobs/semreview.mjs';
 import { makeRequest } from '../jobs/common.mjs';
 import { approve } from '../batch.mjs';
 import { sha256 } from '../lib/util.mjs';
+import { parseHolds, openHolds } from '../lib/holds.mjs';
+export async function holdPrecedence() {
+  console.log('源文复核搁置优先（SR-6 回归）');
+  await t('登记簿解析：open 条目成为搁置（含「同上」继承）；resolved/无身份的不算；真实登记簿含 SR-6', async () => {
+    const tbl = ['| SR-1 | `node:a:statement` | x | 中 | open |', '| SR-2 | `edge:e:proofs:p1` | x | 中 | open |', '| SR-3 | 同上 | x | 低 | open |', '| SR-4 | `node:b:notes` | x | 低 | resolved |', '| SR-5 | 全站 10 个字段 | x | 待查 | open |'].join(String.fromCharCode(10));
+    const h = parseHolds(tbl); eq([...h.keys()].sort(), ['edge:e:proofs:p1', 'node:a:statement']); eq(h.get('edge:e:proofs:p1').map(x => x.sr), ['SR-2', 'SR-3']);
+    ok(openHolds().has('node:thm.lax-milgram:statement'), '真实登记簿：SR-6 的陈述必须是搁置');
+  });
+  await t('gate：登记簿搁置压过「译文审核通过」→ hold（不是 pass）；无搁置时同一行仍是 pass', async () => {
+    const row = { status: 'ok', findings: [], source_concerns: [], overall: 'no_substantive_issue_found' };
+    eq(gateDecision(row).decision, 'pass'); eq(gateDecision(row, { heldWhy: 'SR-6' }).decision, 'hold'); eq(gateDecision({ status: 'invalid' }, { heldWhy: 'SR-6' }).decision, 'hold');
+  });
+  await t('approve：搁置身份不被批准（即使 state=ok、点名或 all-ok），其它身份照常；结果仍留在库里', async () => {
+    const d = dir('hold-apr'); const st = new Store(d, 'node-text'); const rec = (id, en) => ({ key: 'k-' + id, kind: 'item', identity: 'node:' + id + ':statement', id, state: 'ok', srcHash: 's', cfgHash: 'c', result: { en }, t: '2026-01-01T00:00:00Z' });
+    st.open(); st.append([rec('held', 'H'), rec('free', 'F')]); const holds = new Map([['node:held:statement', [{ sr: 'SR-6', status: 'open' }]]]); const seen = [];
+    eq(approve({ store: st, identities: ['node:held:statement', 'node:free:statement'], holds, onHeld: (i, w) => seen.push([i, w]) }), 1); eq(seen.length, 1); ok(/SR-6/.test(seen[0][1]));
+    const st2 = new Store(dir('hold-apr2'), 'node-text'); st2.open(); st2.append([rec('held', 'H'), rec('free', 'F')]); eq(approve({ store: st2, includeOkAll: true, holds }), 1, 'all-ok 也绕不过');
+    const all = [...st.load().values()]; ok(all.some(r => r.identity === 'node:held:statement' && r.state === 'ok' && r.result.en === 'H'), '结果保留在候选库'); ok(!all.some(r => r.identity === 'node:held:statement' && r.state === 'approved'));
+  });
+}
 export async function closeoutPieces() {
   console.log('收尾：思考模式 / 门 / 返工 / 最新条目批准');
   await t('思考模式：默认关（与试点逐字节一致）；开 = thinking.enabled、不发 temperature；非布尔拒绝；思考请求键与非思考不同', async () => {

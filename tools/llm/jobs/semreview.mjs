@@ -75,9 +75,10 @@ export function scoreAgainstTruth(rows, truth) {
     pass     无有效的中/高发现、无有效源文疑点 → 可批准（仍是 draft；证明/边标题只导出候选）
     correct  有有效的中/高发现、尚未返工过 → 带着发现返工一次（reviewer_findings），再评审
     escalate 返工后仍有有效发现，或属 silent_source_repair（译文无法修复源文问题）→ 交给 Claude
-    hold     译文无异议但有有效源文疑点 → 不回写，列给作者（登记簿）
+    hold     登记簿里有未解决的源文复核（优先于任何译文审核结果）；或译文无异议但有有效源文疑点 → 不回写，列给作者（登记簿）
     retry    评审本身失败/无结果 */
-export function gateDecision(row, { alreadyCorrected = false } = {}) {
+export function gateDecision(row, { alreadyCorrected = false, heldWhy = null } = {}) {
+  if (heldWhy) return { decision: 'hold', why: [heldWhy], concerns: [] };   // 登记簿未解决的源文复核搁置项优先于一切译文审核结果（含 pass）
   if (!row || row.status !== 'ok') return { decision: 'retry', why: [row ? row.status : 'no-row'] };
   const vf = row.findings.filter(f => f.verified && f.severity !== 'low'); const sc = row.source_concerns.filter(c => c.verified);
   if (vf.some(f => f.type === 'silent_source_repair')) return { decision: 'escalate', why: ['silent_source_repair'], findings: vf };

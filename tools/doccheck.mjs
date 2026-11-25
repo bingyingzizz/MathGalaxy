@@ -81,6 +81,12 @@ const FILES = [
   '_外链材料.md',
 ];
 
+/* 2026-11-24（Task 2.6）：工作流文档与审计登记簿也纳入硬数字扫描（它们刻意不写死规模；写回去会被抓到）。 */
+const WF_DIR = path.join(ROOT, 'docs', 'workflows');
+const WF_FILES = fs.existsSync(WF_DIR) ? fs.readdirSync(WF_DIR).filter(f => f.endsWith('.md')).sort() : [];
+for (const f of WF_FILES) FILES.push('docs/workflows/' + f);
+FILES.push('docs/audit-register.md');
+
 /* 可以不在的文件：只看有就查 */
 const OPTIONAL = new Set(['_外链材料.md']);
 
@@ -90,7 +96,7 @@ const OPTIONAL = new Set(['_外链材料.md']);
    而那是正在写内容的人的文件 —— 硬拦会把他的每次提交都堵在门口，
    最后大家学会 --no-verify，阀门就白装了。提醒照样能看见是哪一行过期。
    `--strict` 让内部文档也硬拦（CI 想收紧 / 手动较真时用）。 */
-const SOFT = new Set(['AGENTS.md', 'CLAUDE.md', 'docs/STATUS.md', 'docs/content-guidelines.md', 'docs/tools-and-methods.md', 'docs/performance-runbook.md', 'PERFORMANCE.md', '_外链材料.md']);
+const SOFT = new Set([...WF_FILES.map(f => 'docs/workflows/' + f), 'docs/audit-register.md', 'AGENTS.md', 'CLAUDE.md', 'docs/STATUS.md', 'docs/content-guidelines.md', 'docs/tools-and-methods.md', 'docs/performance-runbook.md', 'PERFORMANCE.md', '_外链材料.md']);
 const STRICT = process.argv.includes('--strict');
 
 /* 每条规则：pattern、期望值、怎么改 */
@@ -232,6 +238,30 @@ for (const [rel, token] of [['index.html', '%%NODES%%'], ['index.html', '%%EDGES
     bad++;
     console.log(`  ✗ ${rel} 里没有 ${token} 占位符 —— 壳页的数量必须由构建填（meta 描述那种爬虫要的静态文本）`);
   }
+}
+
+/* 工作流引用一致性（Task 2.6）：路由入口（AGENTS.md / CLAUDE.md）、工作流文档、实际文件三者不能互相矛盾。
+   这只查**引用是否存在、是否被路由**——不判断工作流内容是否正确。新增工作流要同时改 REQUIRED 与 AGENTS.md 路由表。 */
+{
+  const REQUIRED = ['audit', 'content-add', 'content-edit', 'pdf-ingestion', 'translation', 'engine', 'homepage', 'content-quality'];
+  const agents = fs.readFileSync(path.join(ROOT, 'AGENTS.md'), 'utf8');
+  const claude = fs.readFileSync(path.join(ROOT, 'CLAUDE.md'), 'utf8');
+  for (const w of REQUIRED) {
+    if (!WF_FILES.includes(w + '.md')) { bad++; console.log(`  ✗ docs/workflows/${w}.md 不存在（AGENTS.md §0.0 要求的工作流）`); continue; }
+    if (!agents.includes('docs/workflows/' + w + '.md') && w !== 'content-quality') { bad++; console.log(`  ✗ AGENTS.md 的路由表没有引用 docs/workflows/${w}.md`); }
+    if (w === 'content-quality' && !agents.includes('content-quality.md')) { bad++; console.log('  ✗ AGENTS.md 没有引用共用质量标准 content-quality.md'); }
+  }
+  for (const f of WF_FILES) if (!REQUIRED.includes(f.replace(/\.md$/, ''))) { bad++; console.log(`  ✗ docs/workflows/${f} 没有登记在 doccheck 的 REQUIRED 清单与 AGENTS.md 路由里`); }
+  if (!/^@AGENTS\.md\s*$/m.test(claude)) { bad++; console.log('  ✗ CLAUDE.md 没有 @AGENTS.md 导入行（工作流路由会在新会话里丢失）'); }
+  for (const doc of [agents, claude]) for (const m of doc.matchAll(/docs\/workflows\/([\w-]+\.md)/g)) if (!WF_FILES.includes(m[1])) { bad++; console.log(`  ✗ 路由文档引用了不存在的 docs/workflows/${m[1]}`); }
+  for (const f of WF_FILES) {   // 工作流内的相对 .md 链接必须能解析
+    const txt = fs.readFileSync(path.join(WF_DIR, f), 'utf8');
+    for (const m of txt.matchAll(/\]\(([^)#\s]+\.md)(?:#[^)]*)?\)/g)) {
+      if (/^https?:/.test(m[1])) continue;
+      if (!fs.existsSync(path.resolve(WF_DIR, m[1]))) { bad++; console.log(`  ✗ docs/workflows/${f} 的链接不存在：${m[1]}`); }
+    }
+  }
+  checked++;
 }
 
 if (soft) {
