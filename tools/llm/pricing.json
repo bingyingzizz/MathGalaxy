@@ -1,0 +1,61 @@
+{
+  "_source": "https://api-docs.deepseek.com/quick_start/pricing",
+  "_fetched": "2026-11-24 (re-verified twice the same day)",
+  "_note": "USD per 1M tokens (page shows $ only). Peak = Mon-Fri 01-04 and 06-10 UTC, excluding Chinese public holidays; off-peak is half. Budget estimates ALWAYS use the peak rate. Official docs name no retryable set: retryableStatus is OUR inference from the per-code advice (408/500/503/504 retry; 429 pace). Whether temperature is honored with thinking disabled is unspecified by the docs (we send 0, harmless). Re-verify before every live run.",
+  "models": {
+    "deepseek-flash": {
+      "hit": 0.006,
+      "miss": 0.3,
+      "out": 1.2,
+      "offpeak": {
+        "hit": 0.003,
+        "miss": 0.15,
+        "out": 0.6
+      },
+      "maxOutput": 384000
+    },
+    "deepseek-v4-pro": {
+      "hit": 0.044,
+      "miss": 1.32,
+      "out": 3.96,
+      "offpeak": {
+        "hit": 0.022,
+        "miss": 0.66,
+        "out": 1.98
+      },
+      "maxOutput": 384000
+    }
+  },
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "nonThinking": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "retryableStatus": [
+    408,
+    429,
+    500,
+    503,
+    504
+  ],
+  "peakUtc": {
+    "weekdays": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hours": [
+      [
+        1,
+        4
+      ],
+      [
+        6,
+        10
+      ]
+    ]
+  }
+}

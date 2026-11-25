@@ -213,3 +213,7 @@ _inbox/<名字>.md   →（人核验后 bun tools/ingest.mjs）→  src/data/pac
 ---
 
 **最后更新**：2026-11-06 · 与任何旧交接文档冲突时以本文件为准
+
+## DeepSeek 批处理流水线
+
+批量英译 / 结构化抽取 / 初筛走 `tools/llm/`（本地确定性脚本 → 官方 API；默认干跑、预算上限、可续跑、受控回写）。规程、存储与恢复、预算语义、Task 4 预留设计见 [`docs/llm-pipeline.md`](llm-pipeline.md)。

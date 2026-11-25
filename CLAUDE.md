@@ -7,6 +7,7 @@
 
 ## 开工顺序
 
+0. **任务路由（强制，见 AGENTS.md §0）**：先判定本任务该走本地脚本、DeepSeek 流水线（翻译/订正/批量语言活；常规语义审核用 thinking 开）还是 Claude；符合条件就**主动**用 `tools/llm/`，不等用户点名；计费前仍须密钥 + 用户批准的金额上限，否则停在 `plan`。
 1. `git status`（已有未提交改动必须保住）→ 读 `docs/STATUS.md`（待办与待拍板事项）。
 2. 只读与任务相关的专题：写内容读 `docs/content-guidelines.md` + `CONTRIBUTING.md`；**任何性能敏感改动（渲染、布局/预计算、图算法、缓存、交互、资源加载、构建关键路径，不止 `src/core/`）之前必读** `PERFORMANCE.md` §0.0 与 `docs/performance-runbook.md`；工具/环境坑读 `docs/tools-and-methods.md`。
 3. `docs/archive/`（旧 HANDOVER / 旧 AGENTS；迁移交接单在 `B:\MathGalaxy-archive\`，不入库）**不是必读**，需要追溯时再查。
@@ -18,6 +19,7 @@ bun tools/mg.mjs stat | find <词> | show <id> | path <a> <b>   # 查图，别�
 bun tools/build.mjs              # ⚠ 有副作用（改写 dist/ 与根目录文档）；不确定先在 _tmp/ 隔离副本里跑
 bun tools/_katexcheck-all.mjs && bun tools/doccheck.mjs --strict && bun tools/searchcheck.mjs && bun tools/idstable.mjs
 bun tools/hygiene.mjs            # 只读工作区卫生检查
+bun tools/llm/runner.mjs plan|run|validate|report|apply   # 批量英译等走 DeepSeek 流水线（默认干跑；规程 docs/llm-pipeline.md）
 ```
 
 ## 红线（完整版见 AGENTS.md）

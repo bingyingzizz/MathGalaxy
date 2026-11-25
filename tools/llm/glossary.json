@@ -1,0 +1,117 @@
+{
+ "_note": "术语子集的来源之一（另一来源 = 图里节点的 label→label_en，已审的名字）。选词规则见 lib/glossary.mjs：只取 ≥2 字的词、按最长匹配、跳过 ambiguous 与上下文规则不允许的位置。单字词一律不自动选（积/链/商/环/域/核/像/秩/阶 等）。",
+ "terms": {
+  "当且仅当": "if and only if",
+  "存在": "there exists",
+  "唯一": "unique",
+  "极大元": "maximal element",
+  "上界": "upper bound",
+  "良序": "well-order",
+  "同态": "homomorphism",
+  "同构": "isomorphism",
+  "单射": "injective",
+  "满射": "surjective",
+  "紧致": "compact",
+  "连通": "connected",
+  "可测": "measurable",
+  "测度": "measure",
+  "范畴": "category",
+  "函子": "functor",
+  "自然变换": "natural transformation",
+  "余极限": "colimit",
+  "余积": "coproduct",
+  "素理想": "prime ideal",
+  "极大理想": "maximal ideal",
+  "子群": "subgroup",
+  "正规子群": "normal subgroup",
+  "向量空间": "vector space",
+  "线性无关": "linearly independent",
+  "极限": "limit",
+  "积分": "integral",
+  "理想": "ideal",
+  "Hausdorff 空间": "Hausdorff space",
+  "正则表示": "regular representation",
+  "同调": "homology",
+  "上同调": "cohomology",
+  "存在性": "existence",
+  "唯一性": "uniqueness",
+  "路连通": "path-connected",
+  "不连通": "disconnected",
+  "微分同胚": "diffeomorphism",
+  "投射消解": "projective resolution",
+  "内射消解": "injective resolution",
+  "等距同构": "isometric isomorphism",
+  "偏序集": "poset",
+  "同余": "congruence",
+  "范数": "norm",
+  "自同构": "automorphism",
+  "内自同构": "inner automorphism",
+  "自同态": "endomorphism",
+  "局部等距": "local isometry"
+ },
+ "ambiguous": [
+  "任意",
+  "每个",
+  "所有",
+  "一个",
+  "性质",
+  "条件",
+  "结构",
+  "空间",
+  "函数",
+  "映射",
+  "关系",
+  "系统",
+  "运算",
+  "元素",
+  "对象",
+  "类型",
+  "严格凸",
+  "公式",
+  "挠积",
+  "消解的同伦唯一性",
+  "正交",
+  "相似",
+  "边缘"
+ ],
+ "rules": {
+  "极限": {
+   "notFollowedBy": [
+    "序数",
+    "点",
+    "集",
+    "环面",
+    "圆"
+   ]
+  },
+  "理想": {
+   "notPrecededBy": [
+    "素",
+    "极大",
+    "主",
+    "左",
+    "右"
+   ]
+  },
+  "测度": {
+   "notPrecededBy": [
+    "外",
+    "复",
+    "符号",
+    "乘积",
+    "概率",
+    "正则"
+   ]
+  },
+  "范畴": {
+   "notFollowedBy": [
+    "论"
+   ]
+  },
+  "同胚": {
+   "notPrecededBy": [
+    "微分"
+   ]
+  }
+ }
+}

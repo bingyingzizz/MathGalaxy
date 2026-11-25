@@ -25,6 +25,12 @@
 5. **硬错 19 条**：2026-11-05 对账为 2 已修 / 3 部分 / 14 未修（`docs/archive/HANDOVER-2026-11-09.md` §4.4）；之后是否又修了需复核。
 6. 已解决：凸性一族（`def.convex-set` 等四个节点现已存在）。
 
+## Task 2（DeepSeek 批处理流水线）进度
+
+- 已实现并离线自测通过（未提交）：`tools/llm/`（客户端/结果库/预算账本/校验/回写）+ `docs/llm-pipeline.md`；`tools/publish-git.mjs`（发布改为普通快进推送 + 显式暂存清单，分叉即停；**行为变化**，等你确认）。
+- **试点 pilot1（已完成 2026-11-24，10 项；`def.group-representation` 摘要因无中文摘要源被剔除，未替换）**：10 次请求全部 finish=stop、无重试、无未知用量；API usage 输入 7917（命中 2176 = 27.5%）/ 输出 2599 token；按峰值价计算 $0.004854（估价上限 $0.0265、预算 $0.06，余 $0.0551）；缓存节省 $0.00064。形式校验 0 invalid（1 ok / 9 review）；人工逐条语义核对：8 项忠实、1 项需人工改（`imp.det-exists-unique` 证法一把费解原文「规范的零点」静默改成 normalization，且未报歧义）、1 项术语需改（边标题「Tor product」）。**无任何译文已批准/回写**；证明与边标题只是候选。待办：全站前先做同质小簇基准（需另行批准）、体检自动词条、收紧启发式误报（不等式→negation、唯一性→uniqueness、某个→existential）。命令见 `docs/llm-pipeline.md`。
+- 实测口径（`bun tools/llm/inventory.mjs`）：陈述已有译文 1274 个节点、缺 462（其中 35 个公式含汉字被阻塞）——与交接单一致；`title_en` 是另一回事，1736/1736 是英文**名字**。全站其它缺口：边说明缺 2161、枢纽摘要缺 100、证明 974 条（单 950 + 等价 22 + 证法 2）全部无英文层且界面不能显示。
+
 ## 要用户拍板的事
 
 | # | 事项 | 来源 |
@@ -49,3 +55,36 @@
 - 迁移整理前 doccheck 共查 36 处声明、整理后 16 处。少掉的 20 处逐条核对过：`AGENTS.md` 2 处（规模句）+ `HANDOVER.md` 18 处（重复的 §0 统计块与规模行）。
   其中 10 处的事实仍被 `README.md` / `llms.txt` 的同类声明覆盖（重复）；另 10 处是 2026-11-07 的统计快照（强边 / 推论 / 英文页 / 别名 / 问法钩子，各出现两遍），现行文档不再陈述它们，故不需要恢复。没有「仍然有效却丢了校验」的声明。
 - 现行文档刻意不写死规模（用 `bun tools/mg.mjs stat`）。`CLAUDE.md`、`docs/STATUS.md`、`docs/content-guidelines.md`、`docs/tools-and-methods.md`、`docs/performance-runbook.md` 已加入 doccheck 的扫描清单（内部文档，非 `--strict` 时只提醒），谁把规模数字写回去会被抓到。`docs/archive/` 是历史快照，不扫。
+
+## 同质基准 bench1（待批准，未执行）· 2026-11-24
+
+- 已备好：`_audit/llm-store/bench1/manifest.json`（cat.basic 星团，82 条：edge-note 60、node-statement 9、node-notes 7、edge-proof 6；两臂 item/cluster 各半，无重复翻译）；第二遍语义初筛 `review2.mjs`（未跑）；源文问题登记簿 `docs/source-review-register.md`；成本模型 `bun tools/llm/costmodel.mjs`。
+- 离线自测 69/69。**没有任何计费请求**；运行与否等用户批准（提案见对话/下一步）。
+- 待办：中文源文订正由作者按登记簿处理；词表体检只覆盖高影响面，其余 ~160 条标记在基准里复核；渲染是否露出「反斜杠+反引号」的反斜杠未验证（SR-8）。
+
+## Task 2 收尾（2026-11-24）
+
+- **路由已写进持久指令**：`AGENTS.md §0`（强制任务路由）+ `CLAUDE.md` 开工顺序第 0 步 + `docs/llm-pipeline.md`「任务路由与默认工作流」。
+- **默认工作流已落地**：翻译 → 确定性校验 → 独立 DeepSeek 语义审核（thinking 开，`review2.mjs`）→ 门（pass/correct/escalate/hold/retry，至多一轮返工）→ 回写（`apply --legacy-from` 复用试点译文）→ build。
+- **试点译文待审核后回写**：可回写类型只有 3 条（convex 陈述/说明、mittag-leffler 边说明）；lax-milgram 陈述因源文含「本图约定」（SR-6）暂不回写；证明 6 条与边标题 1 条只导出候选；摘要未译。**未回写任何译文**——等 `review2.mjs` 审核（需密钥与你批准的上限，估价见对话）。
+- **未验证（首次真实审核时核对）**：thinking 与 JSON 模式同用、推理 token 是否含在 `max_tokens`、其计费。
+- **发布**：尚未 commit/push/publish；暂存清单见对话。
+
+## pilot1 审核受阻（2026-11-24）
+
+- 常设预算已落地（`tools/llm/budget-policy.json`：单任务 ≤ $0.50、每日 ≤ $2.00，账本强制；写入 AGENTS.md §0 与 docs/llm-pipeline.md）。
+- `review2.mjs run --from pilot --campaign pilot1-audit --max-usd 0.08` 已发出 10 次请求，**全部 HTTP 401（API key 无效）**；未计费（账本：10 reserve / 10 release，今日已花 $0.004854）。环境变量 DEEPSEEK_API_KEY 形态正常（35 位、sk- 开头、无空白），但服务端拒绝——需在 DeepSeek 控制台核对/重新生成密钥。
+- 重跑：`review2.mjs run --from pilot --campaign pilot1-audit --max-usd 0.08 --limit 10 --retry-failed`（401 记录是 failed，需 `--retry-failed` 才会重发）。之后 gate → approve → `apply --legacy-from pilot1-snapshot` → 隔离副本 build 与各道门。
+
+## pilot1 审核完成与回写（2026-11-24，Task 2 收尾）
+
+- 新密钥后 `pilot1-audit` 10/10 成功，花费 $0.0106（上限 $0.08；当日累计 $0.0155）。门：pass 7 · correct 0（无需返工轮）· escalate 1 · hold 2 · retry 0。
+- 已回写（draft）：仅 `edge-notes:imp.mittag-leffler`（`apply --legacy-from pilot1-snapshot`）。build、katexcheck、doccheck、searchcheck、idstable（干跑）、i18n-status 全绿。
+- **保持搁置**：`thm.lax-milgram` 陈述（SR-6，已撤销批准，译文保留在结果库）；`def.convex-function` 陈述与说明（hold：源文疑点，见登记簿）。
+- **留作候选导出**（不回写）：6 条证明 + 1 条边标题（`export`，6 行）；其中 `imp.det-exists-unique` 的一条证明被审核判为 `silent_source_repair`（源文「规范的零点」疑为笔误），升级给作者。
+- 待办：提交与发布需用户批准（发布工具改动 `tools/publish*.mjs` 单独成提交）。
+
+## Task 2 完成（网站发布推迟）· Task 2.6 待办
+
+- **Task 2 已完成**：流水线、路由、常设预算、pilot1 审核与回写均已落地；**网站发布推迟**（等用户批准），发布工具改动（`tools/publish.mjs`、`tools/publish-git*.mjs`）尚未提交，保持独立。
+- **Task 2.6（待做）— 源文复核优先级缺口**：SR-6 暴露：`review2.mjs gate` 只看译文审核结果，会把 `thm.lax-milgram:statement` 判 pass 并批准，即便登记簿里该条目有未解决的源文复核（open）。需要：**未解决的源文复核搁置项必须优先于译文审核批准**（门/批准/回写任一环遇到登记簿 open 项即拒绝批准或回写）。本次靠人工撤销批准（追加 `review` 状态记录）绕过，结果库中的译文与候选导出均保留。

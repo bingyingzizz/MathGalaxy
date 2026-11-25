@@ -3,6 +3,24 @@
 > 所有 agent（Claude Code / Codex / 其他）共用的**唯一操作规则**。`CLAUDE.md` 是 Claude Code 的短入口。
 > 这里只写「必须知道的」；细节按任务读 `docs/` 里的专题，不要整本加载。规模数字一律跑 `bun tools/mg.mjs stat`，别信文档。
 
+## 0. 任务路由（强制；`/clear`、重启、上下文压缩后依然有效）
+
+**每个任务开工前先判定执行方式，不等用户点名 DeepSeek**；这是工作流的一部分，不是可选工具：
+
+| 任务 | 走哪里 |
+|---|---|
+| 确定性操作：计数、搜索、抽取、比对、哈希、格式/公式校验、构建与各道门 | 本地脚本（§10） |
+| 常规翻译、文本订正、内容加工、可重复的语言模型活 | **DeepSeek 流水线**（`tools/llm/`，thinking 关） |
+| 常规语义审核 / 译文初筛 | **DeepSeek，thinking 开**（`review2.mjs`，与翻译分离、独立调用） |
+| 复杂推理、工程决策、流水线报出的例外与数学上可疑的情形 | Claude |
+
+1. Claude 自动选用并调用现有流水线：先 `plan` 干跑估价；**不手工逐条翻译、不逐条审阅成功的译文**，不把批量语言活读进上下文，只读紧凑例外清单（`exceptions.json`）。
+2. 默认翻译工作流：抽取 → DeepSeek 翻译 → 确定性校验 → 独立 DeepSeek 语义审核（thinking 开）→ 回写 → build 与各道门。**至多一轮**自动返工 + 复审；仍不过或数学可疑 → 升级给 Claude。
+3. 授权边界：计费请求需要 `DEEPSEEK_API_KEY` 在环境里，且 `--campaign --max-usd --limit` 齐全。**常设预算授权（用户 2026-11-24，`tools/llm/budget-policy.json`）**：常规 DeepSeek 任务每个任务累计 ≤ **$0.50**、全部任务每日累计 ≤ **$2.00**（账本跨战役强制；单任务上限在开战役时检查），范围内**不必逐次请示**；要超出必须先请示用户（获批才可加 `--above-policy`），**不得拆分任务/战役来绕过**。无密钥或超出范围就停在 `plan`，并给出用户可直接执行的命令。只发公开数学内容；译文一律 `draft`；证明与边标题只导出候选；**不改中文数学原文**（源文问题记入 `docs/source-review-register.md`，翻译/订正/验证分开）。
+4. 新的 AI 任务类型（例如 PDF 转写终稿订正——此前已成功用过 DeepSeek；PDF 集成**尚未做**）先复用这套流水线与路由，确有必要才加适配器。
+
+细则、命令、成本与实测教训：`docs/llm-pipeline.md`「任务路由与默认工作流」。
+
 ## 文档层级
 
 | 文档 | 职责 | 何时读 |
@@ -44,6 +62,7 @@ bun tools/searchcheck.mjs         # 搜索基准；改基准必须写理由并�
 bun tools/idstable.mjs            # id 稳定性（干跑；--apply 才写）
 bun tools/xlinkcheck.mjs  ·  bun tools/clustercheck.mjs <星团id>
 bun tools/hygiene.mjs             # 只读工作区卫生检查（见 §8）
+bun tools/llm/selftest.mjs        # DeepSeek 批处理流水线离线自测；批量英译/抽取走 tools/llm，规程见 docs/llm-pipeline.md
 ```
 - **加内容**：build → katexcheck-all → doccheck → searchcheck → idstable →（加了星团）clustercheck。
 - **性能敏感改动（不止 `src/core/`）**：渲染、布局/预计算、图算法与数据结构、缓存、交互、资源加载、性能关键的构建流程——**开工前必须读** `PERFORMANCE.md`（§0.0 准入规则）与 `docs/performance-runbook.md`；重大改动要前后实测（`_tools/_dragbench.mjs` + `_chainprobe.js`，启动类另报 `layoutMs`），另需引擎冒烟 + 带裁剪墨量比对 + **亲眼看截图**（runbook 4.1.3）。⛔ 不放宽 `perfguard` 断言、旋钮区间或帧时判据来迁就退化。build 绿 ≠ 改对了。
