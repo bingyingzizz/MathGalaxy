@@ -84,7 +84,30 @@
 - **留作候选导出**（不回写）：6 条证明 + 1 条边标题（`export`，6 行）；其中 `imp.det-exists-unique` 的一条证明被审核判为 `silent_source_repair`（源文「规范的零点」疑为笔误），升级给作者。
 - 待办：提交与发布需用户批准（发布工具改动 `tools/publish*.mjs` 单独成提交）。
 
-## Task 2 完成（网站发布推迟）· Task 2.6 待办
+## Task 2 完成（网站发布推迟）· Task 2.6（已完成，见下节）
 
 - **Task 2 已完成**：流水线、路由、常设预算、pilot1 审核与回写均已落地；**网站发布推迟**（等用户批准），发布工具改动（`tools/publish.mjs`、`tools/publish-git*.mjs`）尚未提交，保持独立。
-- **Task 2.6（待做）— 源文复核优先级缺口**：SR-6 暴露：`review2.mjs gate` 只看译文审核结果，会把 `thm.lax-milgram:statement` 判 pass 并批准，即便登记簿里该条目有未解决的源文复核（open）。需要：**未解决的源文复核搁置项必须优先于译文审核批准**（门/批准/回写任一环遇到登记簿 open 项即拒绝批准或回写）。本次靠人工撤销批准（追加 `review` 状态记录）绕过，结果库中的译文与候选导出均保留。
+- **（已在 Task 2.6 修复）源文复核优先级缺口**：SR-6 暴露：`review2.mjs gate` 只看译文审核结果，会把 `thm.lax-milgram:statement` 判 pass 并批准，即便登记簿里该条目有未解决的源文复核（open）。需要：**未解决的源文复核搁置项必须优先于译文审核批准**（门/批准/回写任一环遇到登记簿 open 项即拒绝批准或回写）。本次靠人工撤销批准（追加 `review` 状态记录）绕过，结果库中的译文与候选导出均保留。
+
+## Task 2.6 完成（2026-11-24）· 工作流标准化与治理
+
+> 状态：**已完成并经独立复核后收尾**。工作流与规程见 `docs/workflows/`；数学标准唯一权威是 `docs/workflows/content-quality.md`；问题登记见 `docs/audit-register.md`。规模数字不在这里写，跑 `bun tools/mg.mjs stat`。
+
+- **已实现**：七个工作流 + 共用质量标准；`AGENTS.md` §0.0（分类并加载工作流、复合任务共享一份计划/预算/记录/报告）、§0.1（规则权威等级与 agent 权限）；`CLAUDE.md` 经 `@AGENTS.md` 自动加载；SR-6 优先级修复（`tools/llm/lib/holds.mjs`，`approve`/`apply`/`review2 gate` 三处硬拒绝，离线自测覆盖）；`clustercheck` 去掉「例子须 ≥ 2 条强边」旗标；`_proofaudit` 把边证明与 Notes 标记分开报告（正则启发式候选）；`doccheck` 扫描工作流并检查路由一致性。
+- **收尾已解决的政策冲突**：定义引用只要求「真实的直接引用」，合法基础节点可无入边 definition，无最低连接数要求；同词不同物只需消歧注，类比边仅在确有数学类比时才建；存在性原则统一（性质/泛性质定义合法，但不自动证明存在）；废止「只保留最通用的版本」「保留推广程度最高的证法」，保留有价值的特例与不同证明；「团别超 40 点」降为诊断；`186-thin-fix.js` 的旧判据已标为被取代；「只写数学」不压制必要的数学约定。公开的 `policy.md`/`graph.json` 的内容策略与英文版 `policy.en.md` 已由生成器与 `docs.en.js` 同步（英文策略因文字已改，状态退回 `draft`，待用户审）。
+- **保留（诊断/工程功能）**：`clustercheck` 的「孤岛」「无 refs」旗标是**调查候选**；`src/core/config.js` 的 `clusterLink.minEdges`/`crossSectorMinEdges` 是渲染去杂乱参数（不是数学组织规则），保留。
+- **强制程度（如实）**：
+  - 代码强制：每日 $2.00 预算（账本）；单战役上限；源文复核搁置（approve/apply/gate）；perfguard；doccheck 的路由一致性与硬数字。
+  - **只靠指令**：开工前分类并读工作流；「每任务累计 $0.50 / 不拆战役」（代码不知道哪些战役属同一任务）；覆盖矩阵；审计记录字段；生命周期推进；整段独立验证；`content-quality` 的全部数学判据；agent 权限边界；审计抽取读的是否为目标版本（含未提交改动，`dist/graph.json` 可能陈旧）。
+- **未实现 / 缺口（留给后续）**：
+  - **受控替换过期译文**：`apply` 只追加、拒绝覆盖已有不同译文；没有「经授权、经校验的覆盖式更新」路径。源文修复后译文变 `stale` 时只能人工更新。
+  - 源文复核搁置只阻止**新的**批准与回写，**不撤回已生效的错误译文**（需 content-edit 处理）。
+  - 审计登记簿的机器可读 schema/校验、与审计/译文记录失效联动；增量审计有效性按源哈希自动判定。
+  - Notes/边证明的数学审计适配器（DeepSeek thinking 开）；对重复/残留证明的**语义**判定。
+  - 审计抽取版本新鲜度检查（生成物 vs 源/未提交改动）无自动化。
+  - `content-quality` §5 的 SCC 缩点与层号—构造前提一致性检查无自动化（`tools/_layers.mjs` 只是报告）。
+  - 站点统计「源 / 构建 / 已发布」三口径对照无自动化。
+  - 英文证明显示与回写支持（`docs/llm-pipeline.md` 提案）。
+  - PDF 流水线与**此前 DeepSeek 订正 PDF 的提示词/脚本的找回**：全部留给 Task 4。
+  - 登记簿 AR-1…AR-10 的数学裁定与修复：一条未做，全部待修复战役。
+- **延后的发布工具改动（保持独立、不提交、不批准）**：`tools/publish.mjs`、`tools/publish-git.mjs`、`tools/publish-git.selftest.mjs`。意图：把 `git add -A` + `push --force` 换成显式暂存清单 + 对账 + 普通快进推送（分叉即停，无强推开关）；自测只用本地仓库。**行为变化**：`--force` 不再存在；清单外的站点文件（如 IndexNow 密钥文件）会被删除，发布前需核对清单；未覆盖真实远端与凭据管理器。用户确认后再单独提交。预览/组装 `publish.mjs --stage` 会清空 `dist-site/` 工作树（见 `docs/workflows/homepage.md`）。

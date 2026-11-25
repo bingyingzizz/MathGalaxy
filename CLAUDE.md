@@ -5,9 +5,11 @@
 
 @AGENTS.md
 
+> `@AGENTS.md` 会把全文自动载入；其 §0.0 要求**开工前先给任务分类并读适用的 `docs/workflows/*.md`**，复合任务读全部适用的。这在 `/clear`、重启、压缩上下文后依然有效。
+
 ## 开工顺序
 
-0. **任务路由（强制，见 AGENTS.md §0）**：先判定本任务该走本地脚本、DeepSeek 流水线（翻译/订正/批量语言活；常规语义审核用 thinking 开）还是 Claude；符合条件就**主动**用 `tools/llm/`，不等用户点名；计费前仍须密钥 + 用户批准的金额上限，否则停在 `plan`。
+0. **任务分类与路由（强制，见 AGENTS.md §0）**：先按 §0.0 分类并**读适用的工作流**（`docs/workflows/`：audit / content-add / content-edit / pdf-ingestion / translation / engine / homepage；数学要求共用 `content-quality.md`）；再判定本任务该走本地脚本、DeepSeek 流水线（翻译/订正/批量语言活；常规语义审核用 thinking 开）还是 Claude；符合条件就**主动**用 `tools/llm/`，不等用户点名；计费前仍须密钥 + 用户批准的金额上限，否则停在 `plan`。
 1. `git status`（已有未提交改动必须保住）→ 读 `docs/STATUS.md`（待办与待拍板事项）。
 2. 只读与任务相关的专题：写内容读 `docs/content-guidelines.md` + `CONTRIBUTING.md`；**任何性能敏感改动（渲染、布局/预计算、图算法、缓存、交互、资源加载、构建关键路径，不止 `src/core/`）之前必读** `PERFORMANCE.md` §0.0 与 `docs/performance-runbook.md`；工具/环境坑读 `docs/tools-and-methods.md`。
 3. `docs/archive/`（旧 HANDOVER / 旧 AGENTS；迁移交接单在 `B:\MathGalaxy-archive\`，不入库）**不是必读**，需要追溯时再查。
@@ -24,7 +26,7 @@ bun tools/llm/runner.mjs plan|run|validate|report|apply   # 批量英译等走 D
 
 ## 红线（完整版见 AGENTS.md）
 
-- 不 commit / push / publish，除非用户明确批准；不 `git add -A`；不 `reset --hard` / `git clean`；不丢已有未提交改动（含约 330 条未构建的英文翻译）。
+- 不 commit / push / publish，除非用户明确批准；不 `git add -A`；不 `reset --hard` / `git clean`；不丢已有未提交改动（开工先 `git status`，含未入库的 `formal/`、发布工具改动等）。
 - 不删数学内容、审计记录、`_pdf/`、`formal/`；`_audit/` `_pdf/` 不入 git，删除不可恢复。
 - `packs/*.js` 里 LaTeX 反斜杠写两个，`_inbox/*.md` 写一个；不对 packs 做批量格式化。
 - 不改系统网络 / 防火墙 / 代理；不暴露凭据与浏览器 profile。
