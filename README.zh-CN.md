@@ -1,88 +1,75 @@
-# 数学星图 · MathGalaxy
+<p align="center">
+  <a href="https://bingyingzizz.github.io/mathgalaxy/"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy 数学星图，基于新版图谱布局的封面"></a>
+</p>
+
+<div align="center">
 
 **一张可以交互探索的数学知识地图。**
 
-[**进入在线星图**](https://bingyingzizz.github.io/mathgalaxy/) · [English](README.md) · [阅读指南](reading.md) · [贡献指南](CONTRIBUTING.md)
+[**进入在线星图 ↗**](https://bingyingzizz.github.io/mathgalaxy/) · [English](README.md) · [阅读指南](reading.md) · [贡献指南](CONTRIBUTING.md#中文贡献指南)
 
-数学星图将定义、定理和证明组织成一张知识图谱。它不局限于教材章节或课程顺序，而是着重呈现数学对象之间的逻辑关系：一个概念如何定义，一个结论依赖哪些前提，又能由此推出什么。
+[![Code: MIT](https://img.shields.io/badge/code-MIT-526c86)](LICENSE)
+[![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-526c86)](LICENSE)
+![Browser](https://img.shields.io/badge/browser-offline%20ready-526c86)
 
-你可以从整个数学领域进入一套具体的数学构造，再深入到单个定义、定理及其证明。
+</div>
 
-## 如何阅读星图
+## 数学知识自身的结构
 
-星图有三个尺度：**星系**（数学领域）、**星团**（围绕某一数学构造或工具组织的结果集合）、**恒星**（独立的数学陈述）。
+教材将数学组织成章节，数学星图则着重呈现知识之间的逻辑关系：一个概念如何定义，一个结论依赖哪些前提，又能由此推出什么。
 
-| 连线 | 含义 |
+从整个数学领域进入具体的数学构造，再深入到定义、定理及其证明。
+
+### 沿着逻辑阅读数学
+
+<a href="https://bingyingzizz.github.io/mathgalaxy/#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Task 3C 的 Stokes 链定理多前提汇合路由示意"></a>
+
+一条多前提推导是**共同推出**，不是若干彼此独立的蕴含。图中展示的是链上的 Stokes 定理在星图中记录的多前提推导。点击图片即可进入相应连线。
+
+<sub>封面及推导示意图取自 Task 3C 的布局与路由数据，是文档插图，并非当前线上应用的截图。</sub>
+
+## 探索星图
+
+| | |
 | --- | --- |
-| 黑色箭头 | 推出：多个前提共同推出结论。 |
-| 黑色直线 | 等价：可以查看不同方向的证明。 |
-| 蓝色连线 | 定义引用：某条陈述使用了相应定义。 |
-| 紫色虚线 | 类比：思想的联系，不代表逻辑推出。 |
-| 粉红色箭头 | 有效的推论，但不参与依赖层级的确定。 |
+| **浏览** | 从数学领域逐步缩放到星团和独立数学陈述。 |
+| **检索** | 按名称、别名、标识符或正文检索。 |
+| **阅读** | 查阅定义、定理、依赖关系和证明。 |
+| **探索** | 发现跨领域的数学类比，区分类比与逻辑推导。 |
+| **分享** | 分享具体数学结果，或将子图导出为 SVG、TikZ、JSON。 |
 
-推出关系构成有向超图。一个定理可能需要若干前提共同成立，不能把多前提推导中的任意支线理解为独立的充分条件。
-
-可以从[佐恩引理](https://bingyingzizz.github.io/mathgalaxy/#n=lem.zorn)或[选择公理与良序定理的等价关系](https://bingyingzizz.github.io/mathgalaxy/#e=eq.ac-wo)开始探索。
-
-## 可以做什么
-
-- 拖动平移，滚轮或双指捏合缩放。
-- 按名称、别名、标识符、标签或正文检索。
-- 点击节点阅读陈述及依赖，点击推导连线阅读证明。
-- 按领域、星团、陈述类别或依赖层级筛选，记录阅读进度。
-- 开启探索模式，寻找不同领域的数学类比。
-- 分享当前视图，将子图导出为 SVG、TikZ 或 JSON。
+可以从[佐恩引理](https://bingyingzizz.github.io/mathgalaxy/#n=lem.zorn)或[选择公理与良序定理的等价关系](https://bingyingzizz.github.io/mathgalaxy/#e=eq.ac-wo)开始。
 
 ## 数学组织原则
 
-尽可能从已有对象出发构造新对象。可以通过公理、性质或泛性质定义对象，但定义本身不能代替存在性证明。实质用到的定义及数学前提应当可以追溯，推导须证明所陈述的结论。同一陈述不重复收录，有价值的经典特例及真正不同的证明可以并存。星团围绕数学构造和工具组织。
+围绕数学构造而非课程划分知识。实质用到的数学前提应当可以追溯，多前提推导需要共同成立。有价值的经典特例与真正不同的有效证明可以并存。
 
-星图仍在持续完善，不是经过形式化验证的证明库。软件通过构建检查不代表数学论证已经得到验证。欢迎指出数学错误，并提供证明或参考来源。
+星图仍在持续完善，目前不是经过形式化验证的证明库。欢迎指出错误并提供证明或出处。中文是数学内容的权威源，英文译文逐项记录审核与源文版本信息。
 
-中文是数学内容的权威源，英文译文逐项记录审核状态与源文版本。参见[记号规范](notation.md)与[贡献指南](CONTRIBUTING.md)。
+## 开始使用
 
-## 离线使用
+**在线：** [进入交互星图](https://bingyingzizz.github.io/mathgalaxy/)。
 
-下载 [`dist/mathgalaxy.html`](dist/mathgalaxy.html)（选择 GitHub 的下载或 Raw 选项），用浏览器打开即可阅读自包含的离线快照。也可以克隆仓库，直接打开 `index.html`。
+**离线：** 下载 [`dist/mathgalaxy.html`](dist/mathgalaxy.html)，在浏览器中打开即可。
 
-星图是纯静态应用，运行时不需要后端服务或 npm 安装。重新构建发布产物需要 [Bun](https://bun.sh/)：
+**构建：** 克隆仓库，安装 [Bun](https://bun.sh/)，运行：
 
 ```sh
 bun tools/build.mjs
 ```
 
-## 数据与程序化访问
+静态应用运行时不需要后端服务或 npm 安装。
 
-稳定的节点标识符将交互星图、独立概念页面和结构化数据连接起来。
+## 数据与开发
 
-| 资源 | 用途 |
-| --- | --- |
-| [`dist/graph.json`](dist/graph.json) | 完整结构化图数据、数学关系与已有证明。 |
-| [`dist/index.md`](dist/index.md) | 按领域、星团及具体条目查阅。 |
-| [`dist/alias.md`](dist/alias.md) | 将数学名称、别名映射为稳定标识符。 |
-| [`dist/nodes/`](dist/nodes/) · [`dist/proofs/`](dist/proofs/) | 独立数学条目及证明。 |
-| [`llms.txt`](llms.txt) | 面向语言模型和其他自动化读者的检索指南。 |
+- [结构化数据](dist/graph.json) · [内容目录](dist/index.md) · [名称及别名索引](dist/alias.md)
+- [机器检索指南](llms.txt) · [记号规范](notation.md)
+- [贡献指南](CONTRIBUTING.md) · [源码](src/)
 
-建议先从目录或别名表定位条目，再按需读取，不必一次加载整份图谱。类比不能作为逻辑推导的依据。
+稳定的节点标识符将交互星图、独立概念页面与结构化数据连接起来。建议按需从目录或别名表定位条目。类比关系不属于逻辑推导的前提。
 
-## 仓库结构
+## 贡献与许可
 
-| 路径 | 职责 |
-| --- | --- |
-| `src/data/` | 数学内容、记号与翻译。 |
-| `src/core/` | 图谱引擎、布局、渲染、搜索与交互。 |
-| `tools/` | 构建、生成与校验工具。 |
-| `dist/` | 生成的离线应用与知识库导出。 |
-| `site/` | 公开网站模板。 |
+欢迎提交数学订正、新证明、翻译及软件改进，并说明对应的节点或连线及数学或技术依据。
 
-数学内容与引擎分离维护。生成文件应由权威源重新生成，而不是手工修改。
-
-## 贡献与引用
-
-欢迎报告错误的数学陈述、缺失的假设、证明缺口、遗漏的依赖关系及翻译问题。请尽量给出节点或连线标识符、相关数学论证或出处。详见[贡献指南](CONTRIBUTING.md)。
-
-引用星图条目时，建议注明项目名、稳定标识符和所用内容版本或提交，并附对应公开条目的链接。署名及引用指引见 [LICENSE](LICENSE)。
-
-## 许可协议
-
-代码采用 MIT 许可；数学图谱内容采用 CC BY 4.0 许可。具体条款见 [LICENSE](LICENSE) 与 [CC BY 4.0 法律文本](LICENSE-CC-BY-4.0.txt)。第三方材料仍适用各自的许可条款。
+代码采用 **MIT** 许可，数学图谱内容采用 **CC BY 4.0** 许可。署名与引用指引见 [LICENSE](LICENSE)。
