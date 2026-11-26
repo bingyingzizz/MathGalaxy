@@ -55,6 +55,7 @@ const nQueries = (scSrc.match(/^\s*\{\s*q:/gm) || []).length;
 
 const FILES = [
   'README.md',
+  'README.zh-CN.md',
   'CONTRIBUTING.md',
   'site/index.html',
   /* ⚠️ 2026-11-02 加：壳页的 <meta description> / 页内「全部概念索引（N 个）」写明死的数，
