@@ -1,5 +1,7 @@
 # Contributing to MathGalaxy
 
+<a id="contributing-in-english"></a>
+
 [中文贡献指南](#中文贡献指南) · [Notation](notation.md)
 
 MathGalaxy welcomes mathematical corrections, new results and proofs, translations, and software improvements. Keep each contribution focused and explain its mathematical or technical purpose.
@@ -125,6 +127,3 @@ Code contributions use MIT; mathematical content and translations use CC BY 4.0.
 临时文件放入已忽略的 `_tmp/<任务id>-<时间戳>/`，按上文 [Temporary work](#temporary-work) 的模板记录 MANIFEST.md。只清理本任务已核实的文件；不用广泛删除模式，不跟随符号链接。`bun tools/hygiene.mjs` 仅作只读检查。
 
 代码贡献适用 MIT 许可，数学内容及译文适用 CC BY 4.0。署名与引用指引见 [LICENSE](LICENSE)。
-
-<!-- Compatibility anchor for existing links to the English section. -->
-<a id="contributing-in-english"></a>
