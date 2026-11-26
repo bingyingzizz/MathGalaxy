@@ -64,7 +64,7 @@ The static application requires no backend or npm installation at runtime.
 
 - [Graph data](dist/graph.json) · [Content index](dist/index.md) · [Name and alias index](dist/alias.md)
 - [Machine-readable retrieval guide](llms.txt) · [Notation](notation.md)
-- [Contribution guide](CONTRIBUTING.md) · [Source code](src/)
+- [Contribution guide](CONTRIBUTING.md) · [Developer documentation](docs/README.md) · [Source code](src/)
 
 Stable identifiers connect the graph, individual concept pages and structured exports. For targeted retrieval, use the index and alias table rather than loading the entire graph. Analogy edges are not logical premises.
 

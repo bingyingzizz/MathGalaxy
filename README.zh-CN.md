@@ -64,7 +64,7 @@ bun tools/build.mjs
 
 - [结构化数据](dist/graph.json) · [内容目录](dist/index.md) · [名称及别名索引](dist/alias.md)
 - [机器检索指南](llms.txt) · [记号规范](notation.md)
-- [贡献指南](CONTRIBUTING.md) · [源码](src/)
+- [贡献指南](CONTRIBUTING.md) · [开发文档](docs/README.md) · [源码](src/)
 
 稳定的节点标识符将交互星图、独立概念页面与结构化数据连接起来。建议按需从目录或别名表定位条目。类比关系不属于逻辑推导的前提。
 
