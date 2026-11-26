@@ -35,6 +35,7 @@ const SHOW = 8; // 每节最多列几条
 const KNOWN_LOCAL = new Set([
   '.git', '_audit', '_pdf', '_tools', '_tmp', '_inbox', 'dist-site', 'memory',
   '_shots', '_dsh', 'node_modules', '.claude', '_外链材料.md',
+  'AGENTS.md', 'CLAUDE.md', 'papers',
 ]);
 /* 暂时未跟踪但属已知资产（等用户决定是否入库）：不当作「未识别」 */
 const KNOWN_UNTRACKED_DIRS = new Set(['formal', 'docs']);

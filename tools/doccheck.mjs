@@ -83,7 +83,7 @@ const FILES = [
 ];
 
 /* 可以不在的文件：只看有就查 */
-const OPTIONAL = new Set(['_外链材料.md']);
+const OPTIONAL = new Set(['_外链材料.md', 'AGENTS.md', 'CLAUDE.md', 'docs/STATUS.md']);
 
 /* 两档：公共面（README / 站点 / llms.txt / CONTRIBUTING）**拦提交**；
    内部文档（AGENTS / HANDOVER / 本机记录）只**提醒**。

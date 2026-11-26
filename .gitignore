@@ -63,3 +63,12 @@ memory/
 # 一次性脚本、中间结果、临时图转储、调试截图、浏览器 profile、临时构建、测试日志、临时仓库副本都放这里。
 # 上面的 `_*` 已经覆盖它，这里显式写出是为了让约定可见（见 AGENTS.md §7）。
 _tmp/
+
+# Private maintenance and research sources (restore locally, never stage)
+/AGENTS.md
+/CLAUDE.md
+/docs/STATUS.md
+/docs/archive/
+/papers/
+/tools/research-paper.mjs
+/tools/paper-md2html.mjs
