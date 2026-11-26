@@ -1,88 +1,75 @@
-# MathGalaxy · 数学星图
+<p align="center">
+  <a href="https://bingyingzizz.github.io/mathgalaxy/"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy — Mathematics, connected by logic; illustration based on the new graph layout"></a>
+</p>
 
-**An interactive atlas of mathematical knowledge.**
+<div align="center">
 
-[**Explore the live map**](https://bingyingzizz.github.io/mathgalaxy/) · [简体中文](README.zh-CN.md) · [Reading guide](reading.en.md) · [Contribute](CONTRIBUTING.md)
+**An interactive atlas of definitions, theorems, and proofs.**
 
-MathGalaxy organizes mathematics as a network of definitions, theorems and proofs. Rather than arranging results solely by textbook or course, it makes their logical dependencies visible: what a statement means, what is needed to prove it, and what follows from it.
+[**Explore MathGalaxy ↗**](https://bingyingzizz.github.io/mathgalaxy/) · [简体中文](README.zh-CN.md) · [Reading guide](reading.en.md) · [Contribute](CONTRIBUTING.md)
 
-Explore entire fields, follow the development of a mathematical construction, or inspect an individual result and its proof.
+[![Code: MIT](https://img.shields.io/badge/code-MIT-526c86)](LICENSE)
+[![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-526c86)](LICENSE)
+![Browser](https://img.shields.io/badge/browser-offline%20ready-526c86)
 
-## Reading the map
+</div>
 
-The map has three scales: **galaxies** (fields of mathematics), **clusters** (collections of results organized around a mathematical construction or tool), and **stars** (individual mathematical statements).
+## Mathematics as a connected structure
 
-| Connection | Meaning |
+Textbooks arrange mathematics in chapters. MathGalaxy organizes it by logical relationships: what a statement means, what is needed to prove it, and what follows from it.
+
+Explore entire mathematical fields, zoom into individual constructions, and follow dependencies from definitions to theorems and proofs.
+
+### Follow the logic
+
+<a href="https://bingyingzizz.github.io/mathgalaxy/#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Four recorded premises converge to Stokes on chains using the Task 3C routing geometry"></a>
+
+An implication is a **joint inference**, not merely a set of independent links. The diagram shows the recorded multi-premise edge for Stokes on chains. Click it to explore the corresponding edge in the live map.
+
+<sub>Cover and inference illustration are based on the Task 3C layout and route data. They are documentation graphics, not screenshots of the currently published application.</sub>
+
+## Explore the atlas
+
+| | |
 | --- | --- |
-| Black arrow | Implication: premises jointly imply the conclusion. |
-| Black line | Equivalence: inspect proofs in both directions. |
-| Blue line | Definition reference: a statement uses a definition. |
-| Purple dashed line | Analogy: a connection of ideas, not a logical inference. |
-| Pink arrow | Valid derived implication that does not determine dependency layering. |
+| **Navigate** | Zoom from mathematical fields to clusters and individual statements. |
+| **Search** | Find mathematical objects by name, alias, identifier or text. |
+| **Read** | Inspect definitions, theorems, dependencies and proofs. |
+| **Discover** | Explore analogies across fields, without confusing analogy with implication. |
+| **Share** | Link directly to a result or export a subgraph as SVG, TikZ or JSON. |
 
-The implication structure is a directed hypergraph: several premises can be necessary together. A branch of a multi-premise inference does not establish the conclusion by itself.
-
-Try [Zorn's lemma](https://bingyingzizz.github.io/mathgalaxy/#n=lem.zorn) or the [equivalence of the axiom of choice and the well-ordering theorem](https://bingyingzizz.github.io/mathgalaxy/#e=eq.ac-wo).
-
-## Explore
-
-- Pan by dragging, and zoom with the wheel or a two-finger pinch.
-- Search names, aliases, identifiers, tags and mathematical text.
-- Select nodes to read statements and dependencies; select inference edges to inspect proofs.
-- Filter by field, cluster, statement type or dependency layer; track reading progress.
-- Enable Explore to discover analogies across fields.
-- Share the current view or export a subgraph as SVG, TikZ or JSON.
+Try [Zorn's lemma](https://bingyingzizz.github.io/mathgalaxy/#n=lem.zorn) or the [axiom of choice and well-ordering theorem](https://bingyingzizz.github.io/mathgalaxy/#e=eq.ac-wo).
 
 ## Mathematical principles
 
-MathGalaxy aims to make the structure of mathematics explicit. Objects should be constructed from existing objects where possible; definitions by axioms or universal properties are legitimate, but do not establish existence on their own. Substantive definitions and premises must be traceable, and proofs must justify the stated conclusions. Equivalent statements should not be duplicated unnecessarily. Valuable classical special cases and genuinely different proofs may coexist. Clusters are organized around mathematical constructions and tools.
+Definitions and results are organized around mathematical constructions rather than course boundaries. Substantive premises are traceable; several premises may jointly imply a result. Valuable special cases and genuinely different proofs can coexist.
 
-The project is an evolving knowledge base, not a formally verified proof library. A successful software build does not certify mathematical correctness. Corrections and source references are welcome.
+MathGalaxy is an evolving mathematical knowledge base, not a formally verified proof library. Corrections and source references are welcome. Chinese is the authoritative mathematical source; English translations carry item-level review and source-version information.
 
-Chinese is the authoritative mathematical source. English translations carry item-level review and source-version information. See the [notation guide](notation.md) and [contribution guide](CONTRIBUTING.md).
+## Get started
 
-## Use offline
+**Online:** [open the interactive atlas](https://bingyingzizz.github.io/mathgalaxy/).
 
-Download [`dist/mathgalaxy.html`](dist/mathgalaxy.html) via GitHub's download/raw option and open it in a browser. This is a self-contained snapshot. Alternatively, clone the repository and open `index.html`.
+**Offline:** download [`dist/mathgalaxy.html`](dist/mathgalaxy.html) using GitHub's download/raw option and open it in a browser.
 
-The static application requires no backend service or npm installation. To regenerate the distribution, install [Bun](https://bun.sh/) and run:
+**Build from source:** clone the repository, install [Bun](https://bun.sh/), and run:
 
 ```sh
 bun tools/build.mjs
 ```
 
-## Data and programmatic access
+The static application requires no backend or npm installation at runtime.
 
-Stable node identifiers connect the interactive map, individual concept pages and structured exports.
+## Data and development
 
-| Resource | Purpose |
-| --- | --- |
-| [`dist/graph.json`](dist/graph.json) | Full structured graph, relationships and available proofs. |
-| [`dist/index.md`](dist/index.md) | Browse fields, clusters and individual entries. |
-| [`dist/alias.md`](dist/alias.md) | Resolve mathematical names and aliases to stable identifiers. |
-| [`dist/nodes/`](dist/nodes/) · [`dist/proofs/`](dist/proofs/) | Individual entries and proof material. |
-| [`llms.txt`](llms.txt) | Retrieval guide for language models and automated readers. |
+- [Graph data](dist/graph.json) · [Content index](dist/index.md) · [Name and alias index](dist/alias.md)
+- [Machine-readable retrieval guide](llms.txt) · [Notation](notation.md)
+- [Contribution guide](CONTRIBUTING.md) · [Source code](src/)
 
-For targeted retrieval, use the index or alias table before loading the full graph. Analogy edges must not be treated as proof dependencies.
+Stable identifiers connect the graph, individual concept pages and structured exports. For targeted retrieval, use the index and alias table rather than loading the entire graph. Analogy edges are not logical premises.
 
-## Repository
+## Contributing and license
 
-| Path | Role |
-| --- | --- |
-| `src/data/` | Mathematical content, notation and translations. |
-| `src/core/` | Graph engine, layout, rendering, search and interaction. |
-| `tools/` | Build, generation and validation tools. |
-| `dist/` | Generated offline application and knowledge exports. |
-| `site/` | Published website templates. |
+Mathematical corrections, new proofs, translations and software improvements are welcome. Please identify the relevant node or edge and explain the mathematical or technical basis for your contribution.
 
-The engine and mathematical content are maintained separately. Regenerate derived files from their authoritative sources.
-
-## Contributing and citing
-
-Reports of incorrect statements, missing hypotheses, proof gaps, omitted dependencies and translation errors are welcome. Include the node or edge identifier and the relevant mathematical argument or source. See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-When citing an entry, please include the project name, stable identifier and the content version or commit used, with a link to the published entry where available. See [LICENSE](LICENSE) for attribution and citation guidance.
-
-## License
-
-Code: MIT. Mathematical graph content: CC BY 4.0. See [LICENSE](LICENSE) and the [CC BY 4.0 legal text](LICENSE-CC-BY-4.0.txt). Third-party materials remain subject to their applicable terms.
+Code: **MIT**. Mathematical graph content: **CC BY 4.0**. See [LICENSE](LICENSE) for attribution and citation guidance.
