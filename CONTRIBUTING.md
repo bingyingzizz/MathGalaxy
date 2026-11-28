@@ -1,243 +1,129 @@
-# 参与数学星图（Contributing）
+# Contributing to MathGalaxy
 
-> 这份文件是给**要往星图里加东西 / 改引擎 / 补英文**的人的。
-> 数学内容怎么写、结构为什么是这样：见 `README.md`（细则更全）与 `policy.md`（内容准则）。
-> [Jump to the English section ↓](#contributing-in-english)
+<a id="contributing-in-english"></a>
 
----
+[中文贡献指南](#中文贡献指南) · [Notation](notation.md)
 
-## 一、先分清你在改哪一半
+MathGalaxy welcomes mathematical corrections, new results and proofs, translations, and software improvements. Keep each contribution focused and explain its mathematical or technical purpose.
 
-| 你在改什么 | 动哪里 | ⛔ 不许碰 |
-|---|---|---|
-| 加/改**数学内容**（节点、边、证明、别名、记号） | `src/data/` | `src/core/` |
-| 改**引擎**（布局、渲染、交互、LOD） | `src/core/` | `src/data/` |
-| 加**英文**（名字、摘要、陈述译文） | `src/data/i18n*` | 别手抄第二份中文 |
+## Reporting a problem
 
-引擎只管「怎么画」，不知道有什么内容；内容只管「有什么」，不知道引擎怎么画。
-**加内容只动 `src/data/`；改观感只动 `src/core/`。** 越界就是设计事故。
+Open an issue with the node or edge identifier (or source file), a description of the problem, and a proposed correction or reference if available. For an incorrect implication, identify all premises, the conclusion, and the gap in the argument. For software issues, include the browser, device, reproduction steps and relevant screenshots or measurements.
 
-## 二、最常做的两件事
+## Mathematical contributions
 
-**加一个节点**（`src/data/packs/*.js`）：
+Search existing entries for equivalent statements and related results before adding a node. Follow the [notation guide](notation.md).
 
-```js
-{ id: 'thm.foo', type: 'theorem', label: '短名', title: '正式名（英文名）',
-  cluster: '团id', regions: ['星系id'], tags: ['标签'],
-  statement: '……', notes: '……', refs: ['出处'] }
-```
+- State objects, hypotheses, quantifiers and conclusions precisely. Justify existence when introducing objects whose existence is not already established. Definitions by axioms or universal properties are legitimate.
+- Record an equivalent statement once; preserve valuable classical special cases and genuinely different valid proofs.
+- Make substantive direct dependencies explicit. A multi-premise inference must be justified from its complete premise set. Do not replace a joint inference by independent implications unless each holds.
+- Put inference proofs on the corresponding edges (`proof` / `proofs`), following the existing schema. Distinguish implication, equivalence, definition reference and analogy. A non-layering implication (`layer: false`) must still be mathematically valid. Do not manufacture relations to improve connectivity.
+- Use real bibliographic sources. Preserve the original-script names of Chinese and Russian mathematicians in both languages; give romanization in the node body where appropriate. Bibliographic titles and authors should follow the original source.
 
-- **一个概念一个节点**；同一结论只收一份（数学等价才算同一份）；经典/有教学价值/有独立价值的特例保留并连到一般结果
-- ⭐ **人名用本人语言的写法**（用户 2026-11-03 拍板）：
-  · 俄罗斯人写**西里尔字母**（`Чебышёв 估计`、`Егоров 定理`），不是 `Chebyshev` / `Egorov`；
-  · 中国人写**汉字**（`陈类`、`华罗庚`），**中文模式和英文模式都用汉字**，
-    ⛔ 英文名里也不写成 `Chern` / `Hua`；
-  · **罗马化只在节点内部写一次**：正文首次出现处括注，如
-    `陈省身（Shiing-Shen Chern）`、`华罗庚（Loo-Keng Hua）`；
-  · 已经通行的拉丁写法（`Euler`、`Cauchy`、`Riemann`）不受影响 —— 这条只管
-    「中文/俄文має本语写法」的人名；
-  · `refs` 是**书目**，照抄原书标题（`S. S. Chern, Curves and Surfaces...` 保持原样），
-    不套本条。。
-- 定义必须**构造出来**（子集 / 幂集 / 笛卡尔积 / 商集 / 函数空间……），
-  ⛔ 不许用「满足某组性质、在同构意义下唯一」引入 —— 那是公理刻画。
-- **证明写在边上**（`edges[]` 的 `proof` / `proofs`），不塞进节点正文。
-- 四种 `kind`：`implication`（推出）· `equivalence`（等价）· `definition`（定义引用）· `analogy`（类比，弱边，不参与分层）。
-- ⭐ 另有一种**推论标记**（画成**粉红箭头**，不是第五种 `kind`）：`implication` 多写一个
-  `layer: false`。语义是「逻辑上确实推得通，但不是由前面得来」—— 通常拿高级工具回头证
-  低级定理，所以**不参与分层**。判据只有一条：**推得通**；⛔ 不用管循环不循环，
-  黑边已经保证骨架无环。
-- 新加 `src/data/packs/*.js` 文件必须同时在 `index.html` 里挂 `<script>`，否则会出现
-  「构建说 N 条、网页说 N−4 条」。
-
-**加一个英文名**：在 `src/data/aliases.js` 那条 aka 里加英文写法，然后：
-
-```bash
-bun tools/i18n-backfill.mjs     # 重算 src/data/i18n.js（英文名旁挂表）
-```
-
-## 三、改完必须做的三步
-
-```bash
-bun tools/build.mjs             # 构建 + 全部硬断言
-bun tools/_katexcheck-all.mjs   # 公式逐条喂真 KaTeX（必须 0 失败）
-```
-
-第三步是**亲眼看**：用 headless Edge 截图，或双击 `index.html`。⛔ 不许只凭「语法正确」就说完成。
-
-发布（会把站点推到另一个仓库，**同时只能有一个人在跑**）：
-
-```bash
-bun tools/publish.mjs
-```
-
-## 四、提交习惯
-
-- ⛔ **不要 `git add -A`** —— 只 add 自己改的路径。
-- 中文提交信息：写进文件再 `git commit -F <文件>`（避免 BOM/编码问题）。
-- 仓库保持干净：`_*`、`dist-site/`、`_pdf/`、`_tools/` 都不进版本库。
-- **提交前会自动查「过时数字」**：`.githooks/pre-commit` 会跑 `bun tools/doccheck.mjs`，
-  文档里写死的节点数 / 连线数 / 版本号与 `dist/graph.json` 对不上就拦下这次提交。
-  新克隆后先跑一次 `bun tools/install-hooks.mjs`（它把 `core.hooksPath` 指到 `.githooks`）。
-  真需要跳过用 `git commit --no-verify`，但别习惯性用。
-
----
-
-## Contributing in English
-
-**What this repository is.** MathGalaxy is a zero-dependency, build-free static knowledge
-graph of mathematics: open `index.html` in a browser and it runs. There is no framework, no
-bundler and no npm dependency, and that is a deliberate choice, not a gap.
-
-**Two halves that must not mix.** `src/core/` is the *engine* (layout, rendering, interaction);
-`src/data/` is the *content* (nodes, edges, proofs, aliases, notation). The engine knows how to
-draw but nothing about mathematics; the content knows the mathematics but nothing about drawing.
-Add content only under `src/data/`; change the look only under `src/core/`.
-
-**Adding a node** lives in `src/data/packs/*.js`:
+Edit the authoritative content in `src/data/`. A new node follows the existing schema in `src/data/packs/`, for example:
 
 ```js
-{ id: 'thm.foo', type: 'theorem', label: 'short name', title: 'full name (English name)',
-  cluster: 'cluster-id', regions: ['region-id'], tags: ['tag'],
-  statement: '…', notes: '…', refs: ['source'] }
+{ id: 'thm.foo', type: 'theorem', label: 'short name',
+  title: 'full name', cluster: 'cluster-id', regions: ['region-id'],
+  tags: [], statement: '...', notes: '...', refs: ['source'] }
 ```
 
-House rules:
+Register new packs in `index.html`. In JavaScript strings, escape LaTeX backslashes correctly (Markdown submissions in `_inbox/` use ordinary LaTeX). See [submission template](_inbox/_模板.md). Preserve stable identifiers; use the existing retirement/migration mechanism when a change is necessary.
 
-- **One concept per node.** A statement is recorded once; keep the most general version and
-  put special cases in `notes`.
-- **Every layer is constructed from the layer below** (subsets, power sets, products, quotient
-  sets, function spaces, …). ⛔ Never introduce an object as "the thing satisfying these
-  properties, unique up to isomorphism" — that is an axiomatic characterisation and silently
-  assumes existence. Properties are theorems with proofs, not definitions.
-- **Proofs live on the edges** (`edges[].proof` / `edges[].proofs`), not in the node body.
-- Four `kind`s: `implication`, `equivalence`, `definition` (all strong, they form the logical
-  skeleton and drive layering) and `analogy` (weak: ideas resonate, nothing is implied;
-  it does not take part in layering).
-- ⭐ Plus a **derived** marker, drawn as a **pink arrow** — not a fifth `kind`, but an
-  `implication` with `layer: false`: the implication is valid, yet it is not how the graph was
-  built (usually a high-level tool re-proves a low-level theorem), so it **does not take part
-  in layering**. The only criterion is *does it follow*; ⛔ circularity is irrelevant because
-  the black edges already keep the skeleton acyclic.
-- A new file under `src/data/packs/` must also be added as a `<script>` tag in `index.html`.
+## Translations
 
-**The English layer.** English is generated from a single content tree — never a second copy:
+Chinese is the authoritative mathematical source. Use the existing sidecar files rather than a second content tree:
 
-| What | Where to edit | Then run |
-|---|---|---|
-| English name (`label_en` / `title_en`) | the `aka` list in `src/data/aliases.js` | `bun tools/i18n-backfill.mjs` |
-| English abstract (hubs only, `abstract_en`) | `src/data/i18n/abstracts.en.js` | `bun tools/build.mjs` |
-| English statement / notes (`statement`, `notes`) | `src/data/i18n/statements.en.js` | `bun tools/build.mjs` |
-| English read docs (`*.en.md`) | `src/data/i18n/docs.en.js` | `bun tools/build.mjs` |
+| Field | Source |
+| --- | --- |
+| English names and aliases | `src/data/aliases.js`; run `bun tools/i18n-backfill.mjs` |
+| Statements and notes | `src/data/i18n/statements.en.js` |
+| Hub abstracts | `src/data/i18n/abstracts.en.js` |
+| Reading documents and extra glossary terms | `src/data/i18n/docs.en.js` |
 
-English text is *never* the sole source of anything: Chinese is authoritative, and every
-unreviewed translation carries a status header — `draft` (machine-drafted, pending author
-review), `reviewed` (checked by the author) or `stale` (the Chinese wording, or the content
-version, moved on since the translation).
-⭐ **Status is per item, not per file**: an abstract carries its own `status` / `basedOn`, and a
-statement carries one for `statement` and one for `notes` — reviewing one field does not bless
-the others (read docs carry one status each). Status is computed at build time by
-`MG.enFieldStatus` from `status` + `basedOn`; you never write the banner by hand.
-Node `id`s are the citation contract and are stable across versions.
+Follow the [glossary](i18n/glossary.md). Preserve formulas verbatim; do not silently repair source mathematics through translation. Report source ambiguities separately rather than guessing. Record the translated item IDs, attribution, new terms and open questions in the review batch records under `i18n/`.
 
-**Contributing a translation.** Translations are welcome for any language — English is just
-the first one. The path is deliberately narrow, because the Chinese text is the single source
-of truth and a second copy would rot within a week.
+Maintain item-level `basedOn` and review status using the existing tooling (`bun tools/i18n-status.mjs --patch` prints fingerprints). Machine-drafted translations remain drafts unless authorized review has taken place. Never promote status or refresh a fingerprint just to clear a stale warning. Re-read the Chinese source first.
 
-1. **Pick a scope.** One node's `statement` + `notes` is a good unit; a whole cluster is a
-   good batch. Start from the hubs: the top-30 by in-degree are ranked in `dist/hubs.md`.
-2. **Say what you will take, before you start.** Name the node ids in an issue (or to the
-   author) so that two people do not translate the same node. The author keeps a per-batch
-   review list under `i18n/review-batch-N.md` — see `i18n/review-batch-1.md` for the format.
-3. **Translate into the existing sidecar files** — never a second tree:
-   `src/data/i18n/statements.en.js` (statements / notes), `src/data/i18n/abstracts.en.js`
-   (hub abstracts), `src/data/i18n/docs.en.js` (read docs).
-   ⛔ Do not create `en/` copies of packs, and do not edit `src/data/i18n.js` (generated).
-4. **Follow the glossary.** `i18n/glossary.md` is generated from the code; any term already
-   in it must be used as written. New terms go in through `docs.en.js` → `glossaryExtra`
-   (one entry, once) rather than being invented per node.
-5. **Formulas are copied verbatim.** `$…$` and `$$…$$` are not translated, not re-wrapped and
-   not re-spaced — the build asserts that both languages carry the *same* formulas (same count,
-   same text, and **no Han characters inside any formula**; if the Chinese has `\text{汉字}` in a
-   formula, move that Han out into prose first — see `i18n/deviations.md`). Prose is translated
-   literally. If the Chinese is genuinely ambiguous, leave a `⚠️ TODO(author): …` marker —
-   ⛔ never guess a meaning.
-6. **Write down what you were unsure about.** Every batch carries its own list:
-   node id / Chinese source / English draft / new terms / open questions.
-7. **Run the checks and open a PR.**
-   ```bash
-   bun tools/build.mjs          # build + all hard assertions (incl. the translation ones)
-   bun tools/i18n-status.mjs    # per-item status: draft / reviewed / stale, and why
-   bun tools/_katexcheck-all.mjs  # every formula (both languages) fed to the real KaTeX
-   ```
-   New items must carry a `basedOn`; `bun tools/i18n-status.mjs --patch` prints the exact value
-   (it is the fingerprint of the Chinese source you translated, so it has to be taken now).
+## Software contributions
 
-**Review rules.** A translation lands with a `basedOn` marker of the form
-`'<content version>#<fingerprint of the Chinese source>'".
+Keep the engine (`src/core/`) separate from mathematical data (`src/data/`). Preserve static offline operation, existing regression checks and visual correctness. Explain the effect of changes to rendering, layout, search, interaction or caching and compare against a relevant baseline.
 
-> ⭐ **2026-11-01 作者授权：不再逐条审校。** 原话：「draft 都通过。以后这些不用给我审校，
-> 直接提交就好」。所以 agent 起草的译文可以**直接写 `status: 'reviewed'`**
-> （`reviewed: { by, date }` 里 `by` 默认写 `bingyingzizz`，`date` 写落地那天）。
-> 想留待人工复核时才写 `draft`。⛔ 这条只放宽了「谁来翻」这一步，
-> **`basedOn` 仍然不许手工刷新**（下面那条不变）。
+## Validation and pull requests
 
-`reviewed` 是去掉该条「未审校」状态头的开关。
-Two things mark an item `stale` automatically: the content version moving
-past `basedOn`, or **that item's Chinese source being edited** (fingerprint mismatch). The fix is
-to re-read the Chinese and re-set `basedOn` to the newly printed value —
-⛔ never to bump `basedOn` without re-reading, and never to delete the header.
+Install [Bun](https://bun.sh/). Run the relevant checks from the repository root:
 
-**Attribution.** A translated node is credited as **node id + translator**. Your name (or
-handle) is recorded in the batch file `i18n/review-batch-N.md` next to the ids you translated.
-Content is CC BY 4.0, so you keep the copyright on your translation and grant it under the
-same licence; code contributions are MIT.
-
-**When does a full translation make sense?** Not yet. The graph is still growing, so a 100%
-translation would be `stale` within a week. The trigger we agreed on is all three of:
-(a) the hub set (top-30) is translated **and** reviewed; (b) the content version has not moved
-for a month; (c) someone other than the author is willing to maintain the translation. Until
-then translations stay per-batch, each carrying its own status header.
-
-**Before you commit**, run:
-
-```bash
-bun tools/build.mjs             # build + all hard assertions
-bun tools/_katexcheck-all.mjs   # every formula fed to the real KaTeX (must be 0 failures)
-bun tools/searchcheck.mjs       # search regression baseline (31 annotated queries)
-bun tools/i18n-status.mjs       # per-item English status (draft / reviewed / stale)
+```sh
+bun tools/build.mjs
+bun tools/_katexcheck-all.mjs
+bun tools/idstable.mjs
+bun tools/searchcheck.mjs
+bun tools/doccheck.mjs
+bun tools/xlinkcheck.mjs
+bun tools/perfguard.mjs
 ```
 
-…and then actually look at the result (screenshot or open `index.html`). Publishing is
-`bun tools/publish.mjs`; it force-pushes the site repository, so run it serially.
+For translations, also run `bun tools/i18n-status.mjs`. Install the existing local hooks with `bun tools/install-hooks.mjs`. Inspect the result in a browser for visible changes. Do not change regression baselines without justification. Software validation is not mathematical verification: explain how the argument was checked and disclose uncertainty.
 
-**Search is a contract too.** `tools/searchcheck.mjs` pins the behaviour of the search box
-(hit counts and the top ids for 31 annotated queries — including the `preadditive` case that
-once returned 14 wrong nodes). Adding queries is welcome; **changing an existing expectation
-needs a reason**.
+Submit a focused pull request with scope, reasoning, sources and test results. Stage only your own files, not `git add -A`. Regenerate required distribution files from their authoritative sources; do not hand-edit generated output. External contributors should not run the site publishing command.
 
-**Licence and citation.** Code is MIT; graph content is **CC BY 4.0** (SPDX `CC-BY-4.0`) —
-attribution only, so copying, mirroring, renaming and commercial reuse are all allowed.
-Citing is a **request**, not a condition: please cite a node by its `id` and the content
-version. See `LICENSE` (which contains the English citation guide, templates and the
-mirror-impact table); the full legal code is in `LICENSE-CC-BY-4.0.txt`.
+### Temporary work
 
----
-
-## 工作区卫生与临时文件
-
-一次性脚本、中间结果、调试截图、临时构建、测试日志、临时仓库副本、浏览器 profile 一律放在 `_tmp/<任务id>-<时间戳>/`（已被 git 忽略），或会话 scratchpad；不要把 `_audit/`、`tools/`、仓库根当草稿区。完整规则见 `AGENTS.md` §6–§8、§11。
-
-每个任务目录放一个 `MANIFEST.md`，供清理时判定归属：
+Use the ignored `_tmp/<task-id>-<timestamp>/` directory for temporary scripts, screenshots, builds and logs. Keep a manifest:
 
 ```markdown
-# <任务id>  <时间戳>
-- 负责人 / 会话：<谁>
-- 目的：<为什么建这个目录>
-- 产出（均可删）：<列表>
-- 要升格的：<要移进 tools/ 或 docs/ 的文件，及目标位置>
-- 后台进程：<有就写 PID 与如何停>
+# Task ID and timestamp
+- Owner / session:
+- Purpose:
+- Disposable outputs:
+- Files proposed for promotion and destination:
+- Background processes (PID and stop procedure), if any:
 ```
 
-- 清理只删**已核实为本任务自有**、且路径落在该目录内的显式条目；不用通配符，不跟随符号链接。
-- 只有「可复用、用途明确、有文档」的脚本才升入 `tools/`；优先扩展已有工具，不要再攒一个近似的 fixer。
-- 随时可跑只读检查：`bun tools/hygiene.mjs`（报告根目录异常、`tools/` 杂物、没有清单或已过期的 `_tmp/` 目录；从不删除任何文件）。
+Only remove verified files belonging to your task; do not use broad deletion patterns or follow symlinks. Reusable tools should have a documented purpose. `bun tools/hygiene.mjs` provides a read-only workspace check.
+
+Code contributions use MIT; mathematical content and translations use CC BY 4.0. Attribution and requested citation formats are described in [LICENSE](LICENSE).
+
+---
+
+## 中文贡献指南
+
+欢迎提交数学订正、新结果及证明、译文修订和软件改进。每次贡献应有明确范围，并说明数学或工程上的理由。
+
+### 报告问题
+
+在 Issue 中给出节点、连线标识符或源码路径，描述问题并尽可能附上订正建议或出处。推导错误应说明全部前提、结论和证明缺口；软件问题应提供浏览器、设备、复现步骤及相关截图或测量结果。
+
+### 数学内容
+
+先检索已有的等价陈述与相关结果，遵守[记号规范](notation.md)。
+
+- 明确数学对象、假设、量词和结论。对于尚未建立存在性的对象，应补足存在性依据；允许通过公理、性质或泛性质定义。
+- 同一陈述不重复收录，保留有价值的经典特例及真正不同的有效证明。
+- 明确实质用到的直接依赖。多前提推导必须由完整的前提集合证明，不能拆成不成立的独立推出。
+- 推导证明写在相应边的 `proof` / `proofs` 中。区分定义引用、推出、等价与类比。不参与分层的推论（`layer: false`）也必须成立，不为提高连通度添加关系。
+- 参考文献须真实。中文及俄文数学家的人名在中英文模式均保留原语言写法，必要时在节点正文给出罗马化形式；书目中的作者和书名照原文。
+
+在 `src/data/` 修改权威源，参考上文示例及 `src/data/packs/` 中的既有数据。新增内容包必须在 `index.html` 注册。JS 字符串中的 LaTeX 反斜杠需要正确转义；Markdown 投稿使用普通 LaTeX，见[投稿模板](_inbox/_模板.md)。保持稳定的节点标识符；确需变更时使用已有的退役或迁移机制。
+
+### 翻译
+
+中文是权威数学源。译文维护在现有旁挂文件中，不复制第二份内容树。具体路径见上文 [Translations](#translations)。
+
+遵循[术语表](i18n/glossary.md)，原样保留公式，准确翻译数学含义。源文有疑义时单独报告，不得猜测或通过翻译暗中修正。记录翻译条目 ID、贡献者、术语及存疑事项。
+
+用现有工具生成源文指纹 `basedOn`，逐项维护审核状态。机器起草的译文在获得授权审核前保留 draft；不能只更新元数据来消除 stale 状态。源文变化后必须重新阅读。
+
+### 软件改进
+
+保持图谱引擎与数学内容分离。涉及布局、渲染、搜索、交互及缓存时，说明影响范围并与相关基线比较，保留离线运行能力、已有回归检查和视觉正确性。
+
+### 验证与提交
+
+安装 [Bun](https://bun.sh/)，运行上文 [Validation and pull requests](#validation-and-pull-requests) 中与改动相关的检查。译文另运行 i18n-status，界面改动须在浏览器实际查看。构建通过不代表数学证明正确，应说明论证如何核实及仍存疑点。
+
+提交范围明确的 Pull Request，附理由、出处和测试结果。只暂存自己的文件，禁止 `git add -A`；按构建规则重新生成必要产物，不手改生成文件。外部贡献无需执行网站发布命令。
+
+临时文件放入已忽略的 `_tmp/<任务id>-<时间戳>/`，按上文 [Temporary work](#temporary-work) 的模板记录 MANIFEST.md。只清理本任务已核实的文件；不用广泛删除模式，不跟随符号链接。`bun tools/hygiene.mjs` 仅作只读检查。
+
+代码贡献适用 MIT 许可，数学内容及译文适用 CC BY 4.0。署名与引用指引见 [LICENSE](LICENSE)。

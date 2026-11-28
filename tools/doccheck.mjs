@@ -55,6 +55,7 @@ const nQueries = (scSrc.match(/^\s*\{\s*q:/gm) || []).length;
 
 const FILES = [
   'README.md',
+  'README.zh-CN.md',
   'CONTRIBUTING.md',
   'site/index.html',
   /* ⚠️ 2026-11-02 加：壳页的 <meta description> / 页内「全部概念索引（N 个）」写明死的数，
@@ -88,7 +89,7 @@ for (const f of WF_FILES) FILES.push('docs/workflows/' + f);
 FILES.push('docs/audit-register.md');
 
 /* 可以不在的文件：只看有就查 */
-const OPTIONAL = new Set(['_外链材料.md']);
+const OPTIONAL = new Set(['_外链材料.md', 'AGENTS.md', 'CLAUDE.md', 'docs/STATUS.md']);
 
 /* 两档：公共面（README / 站点 / llms.txt / CONTRIBUTING）**拦提交**；
    内部文档（AGENTS / HANDOVER / 本机记录）只**提醒**。
@@ -244,15 +245,21 @@ for (const [rel, token] of [['index.html', '%%NODES%%'], ['index.html', '%%EDGES
    这只查**引用是否存在、是否被路由**——不判断工作流内容是否正确。新增工作流要同时改 REQUIRED 与 AGENTS.md 路由表。 */
 {
   const REQUIRED = ['audit', 'content-add', 'content-edit', 'pdf-ingestion', 'translation', 'engine', 'homepage', 'content-quality'];
-  const agents = fs.readFileSync(path.join(ROOT, 'AGENTS.md'), 'utf8');
-  const claude = fs.readFileSync(path.join(ROOT, 'CLAUDE.md'), 'utf8');
+  const hasAgents = fs.existsSync(path.join(ROOT, 'AGENTS.md'));
+  const hasClaude = fs.existsSync(path.join(ROOT, 'CLAUDE.md'));
+  if (hasAgents !== hasClaude) { bad++; console.log('  ✗ 私有维护入口必须成对恢复：AGENTS.md / CLAUDE.md'); }
+  const privateRouting = hasAgents && hasClaude;
+  const agents = hasAgents ? fs.readFileSync(path.join(ROOT, 'AGENTS.md'), 'utf8') : '';
+  const claude = hasClaude ? fs.readFileSync(path.join(ROOT, 'CLAUDE.md'), 'utf8') : '';
+  // Public checkout still validates every required workflow and all workflow links.
+  // With the private maintenance documents restored, validate their route table and import as before.
   for (const w of REQUIRED) {
     if (!WF_FILES.includes(w + '.md')) { bad++; console.log(`  ✗ docs/workflows/${w}.md 不存在（AGENTS.md §0.0 要求的工作流）`); continue; }
-    if (!agents.includes('docs/workflows/' + w + '.md') && w !== 'content-quality') { bad++; console.log(`  ✗ AGENTS.md 的路由表没有引用 docs/workflows/${w}.md`); }
-    if (w === 'content-quality' && !agents.includes('content-quality.md')) { bad++; console.log('  ✗ AGENTS.md 没有引用共用质量标准 content-quality.md'); }
+    if (privateRouting && !agents.includes('docs/workflows/' + w + '.md') && w !== 'content-quality') { bad++; console.log(`  ✗ AGENTS.md 的路由表没有引用 docs/workflows/${w}.md`); }
+    if (privateRouting && w === 'content-quality' && !agents.includes('content-quality.md')) { bad++; console.log('  ✗ AGENTS.md 没有引用共用质量标准 content-quality.md'); }
   }
   for (const f of WF_FILES) if (!REQUIRED.includes(f.replace(/\.md$/, ''))) { bad++; console.log(`  ✗ docs/workflows/${f} 没有登记在 doccheck 的 REQUIRED 清单与 AGENTS.md 路由里`); }
-  if (!/^@AGENTS\.md\s*$/m.test(claude)) { bad++; console.log('  ✗ CLAUDE.md 没有 @AGENTS.md 导入行（工作流路由会在新会话里丢失）'); }
+  if (privateRouting && !/^@AGENTS\.md\s*$/m.test(claude)) { bad++; console.log('  ✗ CLAUDE.md 没有 @AGENTS.md 导入行（工作流路由会在新会话里丢失）'); }
   for (const doc of [agents, claude]) for (const m of doc.matchAll(/docs\/workflows\/([\w-]+\.md)/g)) if (!WF_FILES.includes(m[1])) { bad++; console.log(`  ✗ 路由文档引用了不存在的 docs/workflows/${m[1]}`); }
   for (const f of WF_FILES) {   // 工作流内的相对 .md 链接必须能解析
     const txt = fs.readFileSync(path.join(WF_DIR, f), 'utf8');
