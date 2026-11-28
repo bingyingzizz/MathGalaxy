@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy 数学星图，基于新版图谱布局的封面"></a>
+  <a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53"><img src="docs/assets/mathgalaxy-banner.svg" width="100%" alt="MathGalaxy 数学星图，基于新版图谱布局的封面"></a>
 </p>
 
 <div align="center">
@@ -22,7 +22,7 @@
 
 ### 沿着逻辑阅读数学
 
-<a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Stokes 链定理多前提汇合路由示意"></a>
+<a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-joint-inference.svg" width="100%" alt="Stokes 链定理多前提汇合路由示意"></a>
 
 一条多前提推导是**共同推出**，不是若干彼此独立的蕴含。图中展示的是链上的 Stokes 定理在星图中记录的多前提推导。点击图片即可进入相应连线。
 

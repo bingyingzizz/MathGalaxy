@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
-<title id="title">One inference, multiple premises: Stokes on chains</title><desc id="desc">The recorded MathGalaxy edge imp.spivak-chain-stokes with four premises and its Task 3C routing geometry, redrawn for documentation. Not a screenshot or mathematical verification.</desc>
+<title id="title">One inference, multiple premises: Stokes on chains</title><desc id="desc">The recorded MathGalaxy edge imp.spivak-chain-stokes with four premises and its recorded routing geometry, redrawn for documentation. Not a screenshot or mathematical verification.</desc>
 <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8Z" fill="#4f819c"/></marker></defs>
 <rect width="1200" height="500" rx="18" fill="#f7f9fc"/><rect x="1" y="1" width="1198" height="498" rx="17" fill="none" stroke="#d6e0ea"/>
 <g font-family="system-ui, -apple-system, Segoe UI, sans-serif"><text x="40" y="43" font-size="14" font-weight="700" letter-spacing="2" fill="#57748e">LOGICAL STRUCTURE  /  DIFFERENTIAL GEOMETRY</text>

@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy — Mathematics, connected by logic; illustration based on the new graph layout"></a>
+  <a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53"><img src="docs/assets/mathgalaxy-banner.svg" width="100%" alt="MathGalaxy — Mathematics, connected by logic; illustration based on the new graph layout"></a>
 </p>
 
 <div align="center">
@@ -22,7 +22,7 @@ Explore entire mathematical fields, zoom into individual constructions, and foll
 
 ### Follow the logic
 
-<a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Four recorded premises converge to Stokes on chains using the graph routing geometry"></a>
+<a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-joint-inference.svg" width="100%" alt="Four recorded premises converge to Stokes on chains using the graph routing geometry"></a>
 
 An implication is a **joint inference**, not merely a set of independent links. The diagram shows the recorded multi-premise edge for Stokes on chains. Click it to explore the corresponding edge in the live map.
 
