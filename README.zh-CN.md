@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://bingyingzizz.github.io/mathgalaxy/"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy 数学星图，基于新版图谱布局的封面"></a>
+  <a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy 数学星图，基于新版图谱布局的封面"></a>
 </p>
 
 <div align="center">
 
 **一张可以交互探索的数学知识地图。**
 
-[**进入在线星图 ↗**](https://bingyingzizz.github.io/mathgalaxy/) · [English](README.md) · [阅读指南](reading.md) · [贡献指南](CONTRIBUTING.md#中文贡献指南)
+[**进入在线星图 ↗**](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53) · [English](README.md) · [阅读指南](reading.md) · [贡献指南](CONTRIBUTING.md#中文贡献指南)
 
 [![Code: MIT](https://img.shields.io/badge/code-MIT-526c86)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-526c86)](LICENSE)
@@ -22,11 +22,11 @@
 
 ### 沿着逻辑阅读数学
 
-<a href="https://bingyingzizz.github.io/mathgalaxy/#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Task 3C 的 Stokes 链定理多前提汇合路由示意"></a>
+<a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Stokes 链定理多前提汇合路由示意"></a>
 
 一条多前提推导是**共同推出**，不是若干彼此独立的蕴含。图中展示的是链上的 Stokes 定理在星图中记录的多前提推导。点击图片即可进入相应连线。
 
-<sub>封面及推导示意图取自 Task 3C 的布局与路由数据，是文档插图，并非当前线上应用的截图。</sub>
+<sub>封面及推导示意图取自星图的布局与路由数据，是文档插图，并非当前线上应用的截图。</sub>
 
 ## 探索星图
 
@@ -38,7 +38,7 @@
 | **探索** | 发现跨领域的数学类比，区分类比与逻辑推导。 |
 | **分享** | 分享具体数学结果，或将子图导出为 SVG、TikZ、JSON。 |
 
-可以从[佐恩引理](https://bingyingzizz.github.io/mathgalaxy/#n=lem.zorn)或[选择公理与良序定理的等价关系](https://bingyingzizz.github.io/mathgalaxy/#e=eq.ac-wo)开始。
+可以从[佐恩引理](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#n=lem.zorn)或[选择公理与良序定理的等价关系](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=eq.ac-wo)开始。
 
 ## 数学组织原则
 
@@ -48,7 +48,7 @@
 
 ## 开始使用
 
-**在线：** [进入交互星图](https://bingyingzizz.github.io/mathgalaxy/)。
+**在线：** [进入交互星图](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53)。
 
 **离线：** 下载 [`dist/mathgalaxy.html`](dist/mathgalaxy.html)，在浏览器中打开即可。
 
