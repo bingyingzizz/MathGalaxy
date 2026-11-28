@@ -108,6 +108,28 @@
     }, null, 1) + '\n';
   }
 
+  /* ------------------------------------------------- 构建期路由（Task 3） */
+  /** 与渲染器同一份数据：graph.routeData（已验签）→ {边id: 线段表}；没有就是 null（回退为直线）。 */
+  function routeMapOf(graph) {
+    if (!graph || !graph.routeData || !MG.layoutCache || !MG.layoutCache.decodeRoutes) return null;
+    if (graph._expRouteSrc !== graph.routeData) {
+      graph._expRouteSrc = graph.routeData;
+      try { graph._expRouteMap = MG.layoutCache.decodeRoutes(graph, graph.routeData); } catch (e) { graph._expRouteMap = null; }
+    }
+    return graph._expRouteMap;
+  }
+  /** 一条可见推出边要输出的线段（共享线段只给第一次遇到的那条边；fanDone 由调用方持有） */
+  function exportSegments(graph, e, fanDone) {
+    var m = routeMapOf(graph), rt = m && e.kind === 'implication' && e.id && m[e.id];
+    if (!rt) return null;
+    var out = [];
+    rt.forEach(function (z) {
+      if (z.fan) { if (fanDone[z.fan]) return; fanDone[z.fan] = 1; }
+      out.push(z);
+    });
+    return out;
+  }
+
   /* ----------------------------------------------------------------- SVG */
   function toSVG(view, cam, version, nodeRadius) {
     var c = collect(view, cam);
@@ -157,7 +179,32 @@
 
     /* 线：直线 + 箭头；定义线用蓝色半透明，弱边虚线 */
     var STYLE = { implication: '#1C1C1E', equivalence: '#1C1C1E', definition: '#3C70F5', analogy: '#8A6AD6' };
+    var svgFan = Object.create(null);
     c.edges.forEach(function (e) {
+      var segs = exportSegments(view.graph, e, svgFan);
+      if (segs) {
+        var tg = byId[e.target];
+        segs.forEach(function (z) {
+          var A = { x: screenX(cam, { x: z.a[0], y: z.a[1] }) - x0, y: screenY(cam, { x: z.a[0], y: z.a[1] }) - y0 };
+          var B = { x: screenX(cam, { x: z.b[0], y: z.b[1] }) - x0, y: screenY(cam, { x: z.b[0], y: z.b[1] }) - y0 };
+          var d = Math.sqrt((B.x - A.x) * (B.x - A.x) + (B.y - A.y) * (B.y - A.y));
+          if (d < 1e-6) return;
+          var ux = (B.x - A.x) / d, uy = (B.y - A.y) / d;
+          var sn = z.source ? byId[z.source] : null;
+          var sa = sn && nodeRadius ? nodeRadius(sn) + 1.5 : 0, sb = z.target && tg && nodeRadius ? nodeRadius(tg) + 5 : 0;
+          if (sa + sb >= d) return;
+          var pa = { x: A.x + ux * sa, y: A.y + uy * sa }, pb = { x: B.x - ux * sb, y: B.y - uy * sb };
+          out.push('<line x1="' + pa.x.toFixed(1) + '" y1="' + pa.y.toFixed(1) + '" x2="' + pb.x.toFixed(1) + '" y2="' + pb.y.toFixed(1) +
+            '" stroke="#1C1C1E" stroke-opacity="0.85" stroke-width="1.2" stroke-linecap="round"' + (z.target ? ' marker-end="url(#arrow)"' : '') + '/>');
+          var len = d - sa - sb;
+          if (!z.target && len > 26 && z.hotPart !== 1) {        // 内部分段：小箭头标方向（放不下就不画）
+            var mx = pa.x + 0.65 * (pb.x - pa.x), my = pa.y + 0.65 * (pb.y - pa.y), s = 4.2;
+            out.push('<path d="M ' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' l ' + (-ux * s * 1.6 - uy * s * 0.7).toFixed(1) + ' ' + (-uy * s * 1.6 + ux * s * 0.7).toFixed(1) +
+              ' l ' + (uy * s * 1.4).toFixed(1) + ' ' + (-ux * s * 1.4).toFixed(1) + ' z" fill="#1C1C1E" fill-opacity="0.85"/>');
+          }
+        });
+        return;
+      }
       var ids = MG.graphUtil.edgeNodes(e);
       var a = byId[ids[0]], b = byId[ids[ids.length - 1]];
       if (!a || !b) return;
@@ -216,6 +263,7 @@
     out.push('  mgnode/.style={circle, draw=white, line width=0.6pt, inner sep=0pt, text=black!85, font=\\scriptsize},');
     out.push('  mgdef/.style={draw=blue!55, line width=0.4pt},');
     out.push('  mgimp/.style={draw=black!85, line width=0.5pt, ->, >=stealth},');
+    out.push('  mgimpline/.style={draw=black!85, line width=0.5pt},');
     out.push('  mgeq/.style={draw=black!85, line width=0.5pt},');
     out.push('  mgana/.style={draw=violet!70, line width=0.4pt, dashed}');
     out.push('}');
@@ -224,7 +272,23 @@
     out.push('');
 
     /* 边 */
+    var tikzFan = Object.create(null);
     c.edges.forEach(function (e) {
+      var segs = exportSegments(view.graph, e, tikzFan);
+      if (segs) {
+        var tg = byId[e.target], P = function (p) { return '(' + ((p[0] - cx) * s).toFixed(3) + ',' + (-(p[1] - cy) * s).toFixed(3) + ')'; };
+        out.push('  % ' + e.id + '：构建期路由（汇合/分流点只是几何点，不是数学节点）');
+        segs.forEach(function (z) {
+          var A = z.a, B = z.b, d = Math.sqrt((B[0] - A[0]) * (B[0] - A[0]) + (B[1] - A[1]) * (B[1] - A[1]));
+          if (d < 1e-6) return;
+          var ux = (B[0] - A[0]) / d, uy = (B[1] - A[1]) / d, sn = z.source ? byId[z.source] : null;
+          var rs = sn && nodeRadius ? nodeRadius(sn) / cam.k + 1.5 / cam.k : 0, rt2 = z.target && tg && nodeRadius ? nodeRadius(tg) / cam.k + 5 / cam.k : 0;
+          if (rs + rt2 >= d) return;
+          var pa = [A[0] + ux * rs, A[1] + uy * rs], pb = [B[0] - ux * rt2, B[1] - uy * rt2];
+          out.push('  \\draw[' + (z.target ? 'mgimp' : 'mgimpline') + '] ' + P(pa) + ' -- ' + P(pb) + ';');
+        });
+        return;
+      }
       var ids = MG.graphUtil.edgeNodes(e);
       var a = byId[ids[0]], b = byId[ids[ids.length - 1]];
       if (!a || !b) return;

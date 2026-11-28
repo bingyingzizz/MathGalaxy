@@ -61,6 +61,7 @@ let dragging = false, dir = 1, px = 0, zk = K, zdir = 1;
 })(0);
 
 const before = Object.assign({}, a.bitmap || {});
+const lp0 = a.renderer.labelPath ? a.renderer.labelPath() : null;   // Task 3D：标签路径计数（老构建没有）
 await sleep(2500);   // 躲开「世界档→区域档」那一次切档全烘
 rec.ts.length = 0; rec.n = 0;
 dragging = true;
@@ -85,6 +86,23 @@ out.出图 = { 轮数: (st.rounds || 0) - (before.rounds || 0), 带数: (st.band
   带ms: st.bandMs, 末轮ms: st.roundMs, 松弛: st.slack, 理由: st.reason,
   同步日志: st.同步日志, 轮日志: (st.轮日志||[]).slice(-5), 速度: st.speed, 掉: st.掉,
   最大5帧: rec.ts.slice().sort(function(a,b){return b-a;}).slice(0,5) };
+/* Task 3C 读数（老构建没有这些字段 ⇒ 写 n/a，探针对 3C 前后两版都能跑） */
+out.增量 = (st.incRounds == null) ? 'n/a（3C 之前的构建）' : {
+  增量轮: st.incRounds - (before.incRounds || 0), 整张轮: st.fullRounds - (before.fullRounds || 0),
+  复用像素: st.reusePx - (before.reusePx || 0), 新画像素: st.newPx - (before.newPx || 0),
+  整张像素: st.fullPx - (before.fullPx || 0),
+  搬图ms累计: +(st.copyMsSum - (before.copyMsSum || 0)).toFixed(2),
+  增量轮JS累计: +(st.incJsSum - (before.incJsSum || 0)).toFixed(1),
+  整张轮JS累计: +(st.fullJsSum - (before.fullJsSum || 0)).toFixed(1),
+  切片: st.pieces - (before.pieces || 0), 取消: (st.cancelled || 0) - (before.cancelled || 0),
+  未复用: st.miss, 开关: st.reuse };
+/* Task 3D：这一段里节点名走了哪条路（老构建没有 labelPath ⇒ n/a） */
+out.标签3D = (function () { try {
+  if (!a.renderer.labelPath) return 'n/a（3D 之前的构建）';
+  const p1 = a.renderer.labelPath(), o = {};
+  for (const q in p1) if (typeof p1[q] === 'number' && p1[q] !== (lp0[q] || 0)) o[q] = +(p1[q] - (lp0[q] || 0)).toFixed(3);
+  o.last = p1.last; o.labelFast = a.renderer.labelFast; return o;
+} catch (e) { return { err: String(e).slice(0, 100) }; } })();
 out.prof = (function () { try {
   const p = a.renderer.prof, f = Math.max(1, p.frames);
   return { 帧: p.frames, 边均: +(p.edges / f).toFixed(2), 节点均: +(p.nodes / f).toFixed(2), 标签均: +(p.labels / f).toFixed(2) };

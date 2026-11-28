@@ -133,8 +133,23 @@ const READ = `
                  追赶: (s.rushed || 0) - (b0.rushed || 0), 落洞: s.emerg,
                  分配: (s.realloc || 0) - (b0.realloc || 0), 带ms: s.bandMs,
                  末轮ms: s.roundMs, 带高: s.bandPx, 松弛: s.slack, inRound: s.inRound ? 1 : 0,
-                 理由: s.reason };
+                 理由: s.reason,
+                 /* Task 3C（老构建没有 ⇒ undefined）：增量轮 / 整张轮 / 新画与复用像素 / 搬图累计 ms / 切片 / 取消 */
+                 增量轮: s.incRounds == null ? undefined : s.incRounds - (b0.incRounds || 0),
+                 整张轮: s.fullRounds == null ? undefined : s.fullRounds - (b0.fullRounds || 0),
+                 新画像素: s.newPx == null ? undefined : s.newPx - (b0.newPx || 0),
+                 复用像素: s.reusePx == null ? undefined : s.reusePx - (b0.reusePx || 0),
+                 搬图ms: s.copyMsSum == null ? undefined : +(s.copyMsSum - (b0.copyMsSum || 0)).toFixed(2),
+                 切片: s.pieces == null ? undefined : s.pieces - (b0.pieces || 0),
+                 取消: s.cancelled == null ? undefined : s.cancelled - (b0.cancelled || 0) };
       } catch (e) { return { err: String(e).slice(0, 140) }; } })(),
+      /* Task 3D（老构建没有 labelPath ⇒ null）：这一段里节点名走了哪条路（direct 直画 / rebuild / replay / materialized / 拒绝原因） */
+      标签3D: (function () { try {
+        var R = MG.app.renderer; if (!R.labelPath) return null;
+        var p1 = R.labelPath(), p0 = window.__lp0 || {}, o = {};
+        for (var q in p1) if (typeof p1[q] === 'number' && p1[q] !== (p0[q] || 0)) o[q] = +(p1[q] - (p0[q] || 0)).toFixed(3);
+        o.last = p1.last; return o;
+      } catch (e) { return { err: String(e).slice(0, 100) }; } })(),
       fatal: (function () { const e = document.getElementById('mg-fatal'); return e ? String(e.textContent).slice(0, 200) : null; })(),
       按画布: (function () {
         const out = {};
@@ -221,7 +236,8 @@ try {
   for (let ri = 0; ri < runs; ri++) {
     await send('Runtime.evaluate', {
       expression: "window.__bench.strokes=0;window.__bench.samples=[];window.__bench.raf=[];window.__bench.canvas={};" +
-        "window.__bmp0=(window.MG&&MG.app&&MG.app.bitmap)?Object.assign({},MG.app.bitmap):null;'ok'",
+        "window.__bmp0=(window.MG&&MG.app&&MG.app.bitmap)?Object.assign({},MG.app.bitmap):null;" +
+        "window.__lp0=(window.MG&&MG.app&&MG.app.renderer&&MG.app.renderer.labelPath)?MG.app.renderer.labelPath():null;'ok'",
       returnByValue: true,
     });
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x, y, button: 'left', buttons: 1, clickCount: 1 });

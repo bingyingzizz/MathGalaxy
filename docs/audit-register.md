@@ -18,6 +18,12 @@
 | AR-8 | `thm.separable-hilbert-is-l2` Notes | Cauchy 估计用 $J\setminus J'$，应为 $J\triangle J'$（边写对了） | verified-by-source（对照边） | detected | Notes 与边重复且不一致 |
 | AR-9 | `thm.metric-compact-equiv` | 评审称 Notes 缺完备性条件 | — | detected（未复现） | **现行源文未复现**（陈述 (c) 已含「完备且全有界」，证明在边上）；搬迁前 Notes 未核；节点带「假设：完备」标签值得人看一眼 |
 | AR-10 | 全站 Notes 与边的重复/残留证明 | 粗扫（`bun tools/_proofaudit.mjs`，**正则启发式候选，不是严格的上界或下界，也不是语义结论**；数字随图变化，以当次输出为准）：对定理/引理/命题/推论分出「边上有证明 / 仅 Notes 命中标记 / 两处皆无」，并列出「边+Notes 同时命中标记」的重复候选 | heuristic（启发式） | detected | 旧版曾粗估 240 / 43，口径不同；不是 Notes 里有完整证明的计数；分诊需语义判断，**不批量迁移** |
+| AR-11 | `def.banach-space` 的分类 | 在多元微分学与数学分析之间的归属是否合适；Task 3 的自由布局把它摆在自然的中间位置，但**没有**改它的分类 | hypothesis（Task 3 观察，未核实） | detected | 审计线索，不是已确认缺陷；**不改分类、不借布局结果当论据** |
+| AR-12 | Banach 压缩映射原理 | 疑缺它与 Banach 空间的数学关系；需区分「完备度量空间上的一般定理」与「Banach 空间里的具体应用」 | hypothesis | detected | 先判断该不该有边，再谈连；**不为布局上靠近而造关系** |
+| AR-13 | `prop.algebra-categories-limits` 及其关联推出边 | 复核数学用处、现有例子节点、直接依赖、以及一般范畴原理的下游应用 | hypothesis | detected | **本条不授权删除/拆分/重构**；Task 3 只把它当作路由回归夹具 |
+| AR-14 | `def.solid-group` | 使用 $\mathbb Z[S]$ 但缺少足够明确的定义、所在范畴与定义依赖；需区分「自由凝聚阿贝尔群」与「抽象自由阿贝尔群」 | hypothesis | detected | |
+| AR-15 | `imp.riesz-markov-inputs` | LaTeX 表达式被误写成 Markdown 行内代码，及相关公式标记问题 | hypothesis | detected | Task 3 是引擎任务，未改任何数学陈述 |
+| AR-16 | 全站记号与隐含假设（通用审计要求） | 未定义的记号、缺失的对象/态射类型、隐含的数学假设、记号不一致、缺失的真实定义依赖 | hypothesis | detected | 审计线索，**不是已确认的全站缺陷**；母语写法的数学家人名（如西里尔字母）不是错误 |
 
 ## 不属于「错误」的保留项
 

@@ -76,9 +76,24 @@
     if (preLayout && MG.applyPreLayout) {
       if (MG.loading) MG.loading.step(null, '应用预计算布局…');
       MG.applyPreLayout(graph, preLayout);
+      graph.layoutMode = 'pre';
     } else {
-      if (MG.loading && MG.layoutCache && MG.layoutCache.peek(graph)) {
-        MG.loading.step(null, '恢复上次的布局…');
+      /* 没有可用的预计算布局。这**不是**正常的生产路径：官方构建（bun tools/build.mjs）有硬门，
+         保证 dist 里的单文件与 layout.json 都带有效的坐标/路由/密度产物。会走到这里的只有：
+           · 开发：直接打开源码 index.html（contentVersion 是 'dev'，签名必不匹配）——预期内；
+           · 恢复：产物缺失/过期/不兼容（手工改过文件、旧产物、被截断）——不应发生，必须大声说出来。
+         冷算保留（离线/开发/恢复都要能打开），但不再静默：状态写进 layoutMode，生产环境另报错。 */
+      var cheap = !!(MG.layoutCache && MG.layoutCache.peek(graph));
+      var devBuild = !MG.contentVersion || MG.contentVersion === 'dev';
+      graph.layoutMode = cheap ? 'cache' : (devBuild ? 'cold-dev' : 'cold-recovery');
+      if (MG.loading) {
+        MG.loading.step(null, cheap ? '恢复上次的布局…'
+          : devBuild ? '开发模式：没有预计算布局，正在现算（十余秒）…'
+          : '预计算布局不可用，正在恢复性现算（十余秒）…');
+      }
+      if (graph.layoutMode === 'cold-recovery') {
+        console.error('[数学星图] 生产产物里的预计算布局缺失/过期/不兼容，进入恢复模式冷算。'
+          + '官方构建本应保证它存在——请重新运行 bun tools/build.mjs。');
       }
       MG.computeLayout(graph);
       if (MG.layoutCache && !graph.layoutFromCache) {
@@ -147,6 +162,8 @@
     });
 
     var renderer = MG.createRenderer(graphEl, view);
+    /* Task 3D：&labfast=0 ⇒ 标签退回 3C 实现（A/B 与应急用；见 config.labelRender） */
+    if (/(^|[&#?])labfast=0/.test(String(location.hash || '') + '&' + String(location.search || ''))) renderer.setLabelFast(false);
 
     /* 内文概念跳转：面板正文里提到的概念名 → 可点，跳到那个节点。
        词表 = 每个节点的 label + aliases.js 的 aka；匹配与包标签都在 xlink 里。
@@ -450,6 +467,7 @@
 
     function focusNode(id, opts) {
       opts = opts || {};
+      if (fanPicker) fanPicker.close();
       // 被藏起来的点：先让它可见 —— 否则点了搜索结果/深链，星图上什么也没有
       revealForFocus(id);
       if (!vis.isNodeVisible(id)) vis.setNode(id, true);
@@ -468,6 +486,7 @@
 
     function focusEdge(id, opts) {
       opts = opts || {};
+      if (fanPicker) fanPicker.close(true);       // 保留 fan 之外的焦点由本函数立刻覆盖
       /* 先让两端真的可见，再设 focus/开面板（否则层过滤会把整条边藏掉，见 revealForEdge） */
       var e = findEdge(id);
       if (e) revealForEdge(e);
@@ -493,6 +512,7 @@
     }
 
     function clearFocus() {
+      if (fanPicker) fanPicker.close(true);
       view.focus = null;
       requestDraw();
       syncHash('push');
@@ -758,6 +778,7 @@
           var fe = findEdge(fo.id);
           gone = !!(fe && !vis.edgeOk(fe));
         }
+        if (fo.type === 'fan' && fanPicker) fanPicker.close();   // 可见集合变了：成员列表失效，收起临时选择框（再点即可）
         if (gone) { clearFocus(); panel.hide(); }
       }
       if (view.hover) {
@@ -881,6 +902,11 @@
     }
 
     /* ---------------------------------------------------------- 交互 */
+    /* 共享主干的证明选择（Task 3）：见 src/core/fanpicker.js */
+    var fanPicker = MG.createFanPicker({
+      view: view, graph: graph, panelEl: panelEl,
+      findEdge: findEdge, focusEdge: focusEdge, requestDraw: function () { requestDraw(); }
+    });
     var interaction = MG.createInteraction(graphEl, view, {
       draw: function () { requestDraw(); },
       hitTest: function (x, y) { return renderer.hitTest(x, y); },
@@ -891,6 +917,7 @@
           return;
         }
         if (hit.type === 'node') focusNode(hit.id);
+        else if (hit.type === 'fan') fanPicker.open(hit);
         else focusEdge(hit.id);
       },
       onHover: function () { /* #hint 不再随 hover 淡出（它现在承担页面标题与说明） */ }
@@ -1891,7 +1918,8 @@
 
     function buildHash() {
       var p = [];
-      if (view.focus) p.push((view.focus.type === 'node' ? 'n=' : 'e=') + enc(view.focus.id));
+      var persisted = fanPicker ? fanPicker.persistedFocus() : view.focus;     // 临时的 fan 焦点不进地址栏
+      if (persisted) p.push((persisted.type === 'node' ? 'n=' : 'e=') + enc(persisted.id));
       if (layerMax != null) p.push('ly=' + layerMax);
       if (trunkOnly) p.push('tr=1');
       if (subSeed) {
@@ -2405,7 +2433,22 @@
       resize();
       if (cloudDirty || !cloudTex) {
         cloudDirty = false;
-        cloudTex = MG.background.buildTexture(graph);
+        var dcfg = MG.config.background && MG.config.background.density;
+        if (dcfg && dcfg.enabled && graph.layoutFromPre && graph.densityTex && MG.background.loadPrecomputedTexture) {
+          /* B+ 密度纹理是**构建期**算好的静态数据（PNG，随 layout.json 发出）：这里只异步解码，
+             不占主线程；颜色/不透明度的主题合成仍在 draw()。解码失败才回退到现算（恢复路径）。 */
+          cloudTex = null;
+          MG.background.loadPrecomputedTexture(graph.densityTex, function (tex) {
+            if (tex) { cloudTex = tex; cloudDrawn.tex = null; }
+            else { console.warn('[数学星图] 预计算密度纹理解码失败，回退到现算（恢复路径）'); cloudDirty = true; }
+            requestDraw();
+          });
+        } else if (dcfg && dcfg.enabled && graph.layoutFromPre && graph.densityAnchors) {
+          cloudTex = null;                                  // 预计算布局但没有纹理（旧产物）：恢复路径，首屏后现算一次
+          setTimeout(function () { cloudDirty = true; requestDraw(); }, 150);
+        } else {
+          cloudTex = MG.background.buildTexture(graph);
+        }
       }
       syncToolbar();
       renderLegend();
@@ -2490,6 +2533,9 @@
       /* hover 叠加层默认走**甲支**（入射边加宽 + 箭头）—— 与旧「真画」观感一致，
          避免静默降质。要看廉价版（只画外环）：?hover=ring */
       var hoverFullOn = !/(^|[&#?])hover=ring/.test(flags);
+      /* Task 3C 增量烘焙：&reuse=0 关（退回整张带轮，A/B 与应急用）；&reusemin=<0..100> 重叠下限（百分比） */
+      var reuseOff = /(^|[&#?])reuse=0/.test(flags);
+      var reuseMinOn = /(^|[&#?])reusemin=(\d+)/.exec(flags);
       bitmap = MG.createWorldBitmap({
         renderer: renderer, graph: graph,
         host: graphEl.parentNode, beforeEl: graphEl,
@@ -2505,6 +2551,8 @@
         marginPx: marginOn ? Number(marginOn[2]) : C.bitmap.marginPx,
         worldPxMax: worldPxOn ? Number(worldPxOn[2]) : C.bitmap.worldPxMax,
         worldSideMax: C.bitmap.worldSideMax,
+        reuse: !reuseOff && C.bitmap.reuse !== false,
+        reuseMin: reuseMinOn ? Number(reuseMinOn[2]) / 100 : C.bitmap.reuseMin,
         enabled: C.bitmap.enabled !== false && bmpOn
       });
       bitmap.attach();
@@ -2557,6 +2605,10 @@
       requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次
       setBitmap: function (v) { if (bitmap) { bitmap.enable(v); bitmap.bakeNow(); } requestDraw(); },
       setRegion: function (v) { if (bitmap) bitmap.setRegion(v); requestDraw(); },
+      /* Task 3C：增量烘焙开关（false = 整张带轮）；min = 重叠面积占比下限（0..1，可省） */
+      setReuse: function (v, min) { if (bitmap && bitmap.setReuse) bitmap.setReuse(v, min); requestDraw(); },
+      /* Task 3D：节点名精确加速开关（false = 逐行退回 3C 的标签实现） */
+      setLabelFast: function (v) { renderer.setLabelFast(v); requestDraw(); },
       setMargin: function (v) { if (bitmap) bitmap.setMargin(v); requestDraw(); },
       setBand: function (v) { if (bitmap) bitmap.setBand(v); requestDraw(); },
       setWorldPad: function (v) { if (bitmap) bitmap.setWorldPad(v); requestDraw(); },

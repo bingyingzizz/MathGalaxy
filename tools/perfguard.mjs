@@ -126,6 +126,37 @@ for (const f of ['同步日志', '轮日志', 'rushed', 'realloc', 'emerg']) {
     '这些是「为什么卡」的唯一线索；删掉等于把仪表盘拆了');
 }
 
+/* ------------------------------------------- Task 3C：增量烘焙（重叠复用 + 露出矩形）
+   见 PERFORMANCE.md §12。只守「机械可判」的正确性前提，不守性能数字。 */
+{
+  const cp = body(wb, 'copyOverlap');
+  need(cp != null && /'copy'/.test(cp) && /\.clip\(\)/.test(cp) && /imageSmoothingEnabled\s*=\s*false/.test(cp),
+    '3C：搬图 = 矩形裁剪 + copy 合成 + 关平滑（整数偏移 1:1，不重采样、不与目标旧墨混合）',
+    '§12：source-over 搬进有旧墨的目标会叠色；平滑开着且偏移带小数会重采样、越搬越糊');
+  need(!/getImageData|willReadFrequently/.test(wb),
+    '3C：worldbitmap 里没有像素回读（getImageData / willReadFrequently）',
+    '§12 / 研究包：回读会把画布拖进软件路径，且在拖动热路径里强制同步；正确性比对只在探针里做');
+  const rp = body(wb, 'reusePlan');
+  need(rp != null && /valid\.rev/.test(rp) && /staticRev\(\)/.test(rp) && /snap\.key/.test(rp)
+    && /elScale\[cur\]/.test(rp) && /1e-3/.test(rp),
+    '3C：复用前核对源图完整性 / 静态代次 / 绘制输入 / 比例 / 整数偏移',
+    '§12：少一项就会把过期或不完整的像素当现货搬进新图（主题、过滤、内容并入、k 变了之后）');
+  const ist = body(wb, 'incStep');
+  need(ist != null && !/setClip|clearHandedOff/.test(ist),
+    '3C：增量轮的切片期间不交接（目标整张藏到最后一片画完）',
+    '§12：搬过来的重叠区与露出区在最后一片之前不完整，逐片松开裁剪 = 露出半成品');
+  need(/setReuse\s*:/.test(wb) && /reuse=0/.test(read('src/core/app.js') || ''),
+    '3C：增量烘焙有开关（?reuse=0 / setReuse(false) 退回整张带轮）',
+    '§12：整张带轮是正确性兜底，A/B 与应急都要能一键切回');
+}
+
+/* Task 3D 旁支（3C 跨尺度交接，PERFORMANCE.md §13.7）：盖不住时旧图保留的裁剪上沿，
+   分子必须用**新图**的显示倍率 mT0 = k·dpr / r.scale（与 clearHandedOff 的 mT 同式），分母才是旧图的 mO0。 */
+need(/var\s+mT0\s*=\s*\(k0\s*\*\s*dpr0\)\s*\/\s*r\.scale/.test(finish || '') && /r\.h\s*\*\s*mT0/.test(finish || '')
+  && !/r\.h\s*\*\s*mO0/.test(finish || ''),
+  '3C 交接：finishRound 盖不住分支用新图倍率 mT0 算新图下沿（不是旧图的 mO0）',
+  '§13.7：新旧 scale 不同（缩放期换代）时，放大方向旧图被裁过头 ⇒ 两图之间露洞（确定性几何探针：缝 +322 / +1340 px）');
+
 /* ============================================================== renderer.js */
 const rnd = CORE.rnd || '';
 
@@ -145,6 +176,60 @@ for (const [fn, fields] of Object.entries(CULL_NEEDS)) {
     `${fn}() 每个边界都取 cullBox（缺：${missing.length ? missing.join(',') : '无'}）`,
     '4.1-⑦：少一个边界，带裁剪就等于只在一侧生效（第一版就漏了 edgeInView 的上边界）');
 }
+
+/* Task 3C：增量烘焙会画竖条（x0 > 0）⇒ 左边界也要认 cullBox，烘焙几何缓存的键也要带左右边界 */
+{
+  const ev = body(rnd, 'edgeInView') || '', sh = body(rnd, 'segHitsView') || '', eg = body(rnd, 'ensureGeomBake') || '';
+  need(/cullBox\.x0\b/.test(ev) && /cullBox\.x0\b/.test(sh) && /cullBox\.x0/.test(eg) && /cullBox\.x1/.test(eg),
+    '3C：edgeInView / segHitsView 认 cullBox.x0，ensureGeomBake 的键含 x0/x1',
+    '§12：竖条切片时左边界恒为 0 ⇒ 白算整张左侧的线；几何缓存键不含 x ⇒ 同一行的两片竖条会拿错几何（丢线）');
+}
+
+/* ------------------------------------------- Task 3D：节点名精确加速 + 缩放帧直画 / 懒物化
+   见 PERFORMANCE.md §13。只守「机械可判」的正确性前提（路径区分、交接、回退、不许近似），不守性能数字。 */
+{
+  const dan = body(rnd, 'drawAllNames') || '';
+  need(/if\s*\(\s*labelFast\s*&&\s*prevCam\s*&&\s*prevCam\.k\s*!==\s*c\.k\s*\)\s*\{\s*if\s*\(drawNamesLive/.test(dan)
+    && (rnd.match(/\bdrawNamesLive\(/g) || []).length === 2 && !/forceDirect/.test(rnd)
+    && /labelInk\.nodes\.push\(L\.text,\s*L\.x,\s*L\.y,\s*font,\s*lw,\s*stroke,\s*fill\)/.test(body(rnd, 'drawReservedLabels') || '')
+    && /\bdrawReservedLabels\(\)/.test(body(rnd, 'drawLabels') || ''),
+    '3D：只有「这一帧 k 真的变了」才直画；交互预留标签也记入同一份墨迹（没有强制直画开关）',
+    '§13：同 k 的平移 / 停住必须走原来的位图回放；强制直画是基准里的研究开关，进生产 = 每帧全量重排');
+  const iDirect = dan.indexOf('drawNamesLive('), iHand = dan.indexOf('labelHandoffOk('), iPolicy = dan.indexOf('labelLayerAlive()');
+  need(iDirect >= 0 && iHand > iDirect && iPolicy > iHand && /materializeLabels\(/.test(dan),
+    '3D：直画缓存交接 = 先按原策略判会不会回放（labelHandoffOk）再物化，然后照原路验戳回放',
+    '§13：直画帧的层里没有那张缓存的像素；不判就贴 = 贴旧像素，判了不走原路 = 跳过验戳');
+  const ho = body(rnd, 'labelHandoffOk') || '';
+  need(/directOnly/.test(ho) && /record\.valid/.test(ho) && /record\.layer\s*!==\s*layer/.test(ho) && /cache\.sig\s*!==\s*sig/.test(ho)
+    && /margin\s*\*\s*0\.9/.test(ho) && /!far\s*&&\s*!stopped/.test(ho),
+    '3D：交接判据逐项照抄原回放条件（层 / dpr / k / 尺寸 / 指纹 / far=min(半屏,余量×0.9) / stopped）',
+    '§13：少一项 ⇒ 原策略要重算的那一帧被物化成旧机位的名字（错位 / 旧主题 / 旧过滤）');
+  const ml = body(rnd, 'materializeLabels') || '';
+  need(/stampLabelLayer\(\)/.test(ml) && /directOnly\s*=\s*false/.test(ml) && /labBad\s*=\s*true/.test(ml),
+    '3D：物化成功才打戳、清 directOnly；失败标 labBad 走重算',
+    '§13：没打戳的层会被验戳判空；失败不标 labBad 会把半张层贴出去');
+  const rec = body(rnd, 'labelRecorder') || '', rr = body(rnd, 'labelReplayRecord') || '';
+  need((rec.match(/rec\.valid\s*=\s*false/g) || []).length >= 3 && /unbalanced/.test(rr),
+    '3D：记录器遇到未登记的方法 / 非法属性值 / 不配对 restore 即作废；物化不配对即抛出',
+    '§13：作废记录只能走原来的重算（fail closed）；照样物化 = 层里少画或多画东西');
+  need(/getImageData/.test(body(rnd, 'labelLayerAlive') || ''),
+    '3D：回放前仍按实物验戳（labelLayerAlive 的 1×1 getImageData 没被去掉）',
+    '§13 / 4.1：离屏层会被浏览器回收成空白；去掉验戳 = 一直贴空图');
+  const labelSec = rnd.slice(rnd.indexOf('var labelCache = null;'), rnd.indexOf('function nodeNameBudget'));
+  need(labelSec.length > 0 && (labelSec.match(/createElement\(\s*'canvas'\s*\)/g) || []).length === 1
+    && !/mgD\b|[Aa]tlas|mgSprite|labelSprite|__mg3d|mgLabelProbe|translate3d/.test(rnd),
+    '3D：标签只有一张离屏层（无文字图集 / 精灵 / DOM 合成 / 近似缩放回放 / 研究开关）',
+    '§13：图集与近似回放是被否决的研究变体（改字形、改相位、多一张常驻画布）');
+  need(/i\s*>=\s*best/.test(body(rnd, 'labelGridIndex') || '') && /labelCoordsOk/.test(body(rnd, 'labelOwnSparse') || '')
+    && /labelCoordsOk/.test(body(rnd, 'labelThresholdSizes') || '') && /LABEL_GRID_MAX/.test(body(rnd, 'labelGridIndex') || ''),
+    '3D：避让索引返回插入序第一个阻挡者；稀疏网格对非有限 / 超大坐标退回旧实现',
+    '§13：返回任意阻挡者会改 blocker 诊断与结果；坐标 ±Infinity / >2^53 时 x++ 不前进 = 死循环');
+  need(/setLabelFast/.test(rnd) && /labfast=0\/\.test\(/.test(read('src/core/app.js') || '') && /setLabelFast/.test(read('src/core/app.js') || '')
+    && /labelRender\s*:\s*\{\s*fast\s*:/.test(cfg0()) && fs.existsSync(path.join(ROOT, 'tools/labelcheck.mjs')),
+    '3D：有回退开关（?labfast=0 / setLabelFast(false) / labelRender.fast）且离线对拍 tools/labelcheck.mjs 在',
+    '§13：旧实现是正确性兜底与 A/B 基线；对拍删了就没人再证明「逐项等价」');
+}
+function cfg0() { return CORE.cfg || ''; }
 
 /* 4.1-⑦ 烘焙入口必须按 band 设 cullBox */
 const ds = body(rnd, 'drawStatic');

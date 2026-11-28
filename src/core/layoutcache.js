@@ -86,6 +86,94 @@
     return ids.length + ':' + hash32(payload).toString(36);
   }
 
+  /* ------------------------------------------------------- 路由签名（Task 3）
+     路由是**具体坐标**的函数，所以签名 = 布局签名 + 全部节点坐标哈希 + 路由/节点尺寸配置。
+     客户端冷算/localStorage 的坐标与构建期坐标不逐位相同（跨引擎差 ~25 世界单位），
+     所以那两条路径上路由一律不匹配 ⇒ 回退旧的单汇合点画法；只有预计算布局才用新路由。 */
+  function coordHash(graph) {
+    var s = '';
+    for (var i = 0; i < graph.nodes.length; i++) {
+      var n = graph.nodes[i];
+      s += n.id + ':' + n.x.toFixed(3) + ',' + n.y.toFixed(3) + ';';
+    }
+    return hash32(s).toString(36);
+  }
+  function routeSignature(graph) {
+    var cfg = '';
+    try { cfg = JSON.stringify(MG.config.route) + '|' + JSON.stringify(MG.config.node); } catch (e) { cfg = 'cfg?'; }
+    return 'r' + hash32(signature(graph) + '|' + coordHash(graph) + '|' + cfg).toString(36);
+  }
+  /** 密度锚点签名：坐标 + 布局签名 + 密度配置（锚点是坐标的函数） */
+  function densitySignature(graph) {
+    var cfg = '';
+    try { cfg = JSON.stringify(MG.config.background && MG.config.background.density); } catch (e) { cfg = 'cfg?'; }
+    return 'd' + hash32(signature(graph) + '|' + coordHash(graph) + '|' + cfg).toString(36);
+  }
+  /** 预计算的标签锚点（已验签）：{region:{id:[x,y]},cluster:{},sector:{}}；不匹配返回 null */
+  function anchorsFor(data, graph) {
+    try {
+      var b = data && data.bg;
+      if (!b || b.sig !== densitySignature(graph)) return null;
+      var out = { region: {}, cluster: {}, sector: {} };
+      ['region', 'cluster', 'sector'].forEach(function (k) {
+        var src = b[k] || {};
+        Object.keys(src).forEach(function (id) { var v = src[id]; if (v && isNum(v[0]) && isNum(v[1])) out[k][id] = [v[0], v[1]]; });
+      });
+      return out;
+    } catch (e) { return null; }
+  }
+  /** 预计算的静态密度纹理描述（已验签）：{W,H,x,y,w,h,alpha,png(base64)}；缺失/不合法返回 null。
+      静态部分（密度场 + 颜色混合）与主题、可见性、缩放都无关：它们只在 draw 时做轻量合成。 */
+  function densityTexFor(data, graph) {
+    try {
+      var b = data && data.bg, t = b && b.tex;
+      if (!t || b.sig !== densitySignature(graph)) return null;
+      if (!isNum(t.W) || !isNum(t.H) || !isNum(t.x) || !isNum(t.y) || !isNum(t.w) || !isNum(t.h) || !isNum(t.alpha)) return null;
+      if (typeof t.png !== 'string' || t.png.length < 100) return null;
+      return t;
+    } catch (e) { return null; }
+  }
+  /** 预计算载荷里的路由（已验签）；不匹配/缺失返回 null（调用方回退旧画法）。 */
+  function routesFor(data, graph) {
+    try {
+      var r = data && data.routes;
+      if (!r || typeof r !== 'object' || !r.e || !r.f) return null;
+      if (r.sig !== routeSignature(graph)) return null;
+      return r;
+    } catch (e) { return null; }
+  }
+
+  /** 把预计算路由（紧凑数组）解成每条边的线段表：{edgeId: [{a,b,source,target,w,fan,fanSource,bendEnd,hotPart}]}
+      - source 段的 a、target 段的 b **取节点当前坐标**（逐位等于节点，不存副本）；
+      - 汇合点/折点/分流点只是几何点，不进图。 */
+  function decodeRoutes(graph, enc) {
+    var out = Object.create(null);
+    if (!enc || !enc.e) return out;
+    var nodes = graph.nodes, byId = graph.byId, edgeBy = Object.create(null), i;
+    for (i = 0; i < graph.edges.length; i++) if (graph.edges[i].id) edgeBy[graph.edges[i].id] = graph.edges[i];
+    Object.keys(enc.e).forEach(function (id) {
+      var rows = enc.e[id], e = edgeBy[id], tgt = e && byId[e.target];
+      if (!e || !tgt) return;                       // 边已不存在：丢弃整条（回退旧画法）
+      var segs = [], ok = true;
+      for (var k = 0; k < rows.length; k++) {
+        var r = rows[k], fl = r[5], src = r[6] >= 0 ? nodes[r[6]] : null;
+        if ((r[6] >= 0 && !src) || !isNum(r[4])) { ok = false; break; }
+        var a = src ? [src.x, src.y] : [r[0], r[1]], b = (fl & 1) ? [tgt.x, tgt.y] : [r[2], r[3]];
+        if (!isNum(a[0]) || !isNum(a[1]) || !isNum(b[0]) || !isNum(b[1])) { ok = false; break; }
+        var s = { a: a, b: b, source: src ? src.id : null, target: !!(fl & 1), w: r[4] };
+        if (fl & 2) s.bendEnd = true;
+        if (fl & 4) s.hotPart = 1; else if (fl & 8) s.hotPart = 2;
+        if (r[7] >= 0 && enc.f[r[7]]) {
+          s.fan = enc.f[r[7]][0];
+          var fs = enc.f[r[7]][1]; if (fs >= 0 && nodes[fs]) s.fanSource = nodes[fs].id;
+        } else if (r[8] >= 0 && nodes[r[8]]) s.fanSource = nodes[r[8]].id;
+        segs.push(s);
+      }
+      if (ok && segs.length) out[id] = segs;
+    });
+    return out;
+  }
+
   /* ---------------------------------------------------------------- 存取 */
   function store() {
     try { return global.localStorage || null; } catch (e) { return null; }
@@ -352,6 +440,7 @@
   }
 
   MG.layoutCache = {
+    coordHash: coordHash, routeSignature: routeSignature, densitySignature: densitySignature, anchorsFor: anchorsFor, densityTexFor: densityTexFor, routesFor: routesFor, decodeRoutes: decodeRoutes,
     key: KEY, camKey: CAM_KEY,
     signature: signature,
     peek: peek,

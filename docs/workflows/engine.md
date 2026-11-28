@@ -3,6 +3,10 @@
 > 触发：渲染、布局/几何、搜索、交互、缓存、资源加载、构建性能、预计算，以及其它**非内容**的工程改动。
 > 技术真源：[`PERFORMANCE.md`](../../PERFORMANCE.md)（总账 + 准入规则 §0.0 + 机器守卫不变量 §4）与 [`docs/performance-runbook.md`](../performance-runbook.md)（操作手册 4.0–4.6、验收四件套）。**本文只规定顺序与边界，不重复其细节，也不复述其中会过期的数字。**
 
+> 布局/密度背景/超边路由的设计、产物与校验：[`docs/layout-routing.md`](../layout-routing.md)（Task 3）；回归命令 `bun tools/routecheck.mjs`。
+
+> 节点名（标签）渲染的精确加速 / 缩放帧直画 / 懒物化：`PERFORMANCE.md` §13 与 runbook 4.4¾；回归命令 `bun tools/labelcheck.mjs`（离线对拍）+ 验收包 `_tmp/task3d-accept/`（页内探针）。
+
 ## 1. 开工前（性能敏感改动：强制）
 
 「性能敏感」**不止 `src/core/`**：渲染（含云雾/标签/hover）、布局与预计算（`layout.js`、`layoutcache.js`、`tools/prelayout.mjs`）、图算法与数据结构（`graph.js`、`layers.js`、搜索索引）、缓存与签名、交互、资源加载与启动路径、构建关键路径。

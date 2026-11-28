@@ -875,6 +875,12 @@
       }
     }
 
+    /* ------------------------------------ 3z. 自由力导向松弛（Task 3 · Layout B）
+       星团/星系只剩分类含义：松弛只受数学关系牵引，不再有团心/领域心锚力。 */
+    var _free = null;
+    if (cfg.free && cfg.free.enabled && MG.freeLayout) _free = MG.freeLayout.relax(graph, cfg.free);
+    graph._freeLayout = !!_free;
+
     /* -------------------------------------------- 4. 云统计（星系 / 星团） */
     var bc = MG.config.background;
     graph.regions.forEach(function (r) {
@@ -883,6 +889,12 @@
       var singles = list.filter(function (nd) { return !nd.isBorder; });
       var basis = singles.length >= 2 ? singles : list;
       var cx = r.center.x, cy = r.center.y, maxd = 0;
+      if (graph._freeLayout) {          // 自由布局：领域中心 = 实际成员质心（不再是求解出的锚）
+        cx = 0; cy = 0;
+        basis.forEach(function (nd) { cx += nd.x; cy += nd.y; });
+        cx /= basis.length; cy /= basis.length;
+        r.center = { x: cx, y: cy };
+      }
       /* ⭐ 阶段 4：板块云的半径改用**92 分位**而不是最大值。
          用户指着左边那团粉雾说「糊成一片」—— 根因是几个离心很远的跨板块节点
          把 maxd 拉得很长，云半径跟着涨，而那里其实没什么点。
@@ -1020,6 +1032,10 @@
     var liveClusters = graph.clusters.filter(function (c) { return c.nodes.length && c.stat; });
     graph.layoutFromCache = true;
     graph.layoutFromPre = true;
+    /* Task 3：构建期路由随预计算布局一起来；坐标一致才用（否则 null ⇒ 旧画法） */
+    graph.densityAnchors = (MG.layoutCache && MG.layoutCache.anchorsFor) ? MG.layoutCache.anchorsFor(data, graph) : null;
+    graph.densityTex = (MG.layoutCache && MG.layoutCache.densityTexFor) ? MG.layoutCache.densityTexFor(data, graph) : null;
+    graph.routeData = (MG.layoutCache && MG.layoutCache.routesFor) ? MG.layoutCache.routesFor(data, graph) : null;
     graph.layoutFromPreMs = Math.round(layoutNow() - tAll);
     finishLayout(graph, liveClusters, 0, tAll);
     return true;

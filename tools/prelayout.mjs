@@ -29,6 +29,9 @@
    ========================================================================== */
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
+import { encodePng } from './lib/png.mjs';
+import { planRoutes, encodeRoutes, decodeRoutes, validateRoutes } from './lib/routeplan.mjs';
 
 export const PRELAYOUT_V = 1;
 export const LAYOUT_FILE = 'layout.json';
@@ -58,7 +61,7 @@ export function buildPayload(MG, graph) {
     const s = cl.stat;
     return s ? [s.cx, s.cy, s.count, s.radius] : null;
   });
-  return {
+  const payload = {
     v: PRELAYOUT_V,
     sig: MG.layoutCache.signature(graph),
     counts: { nodes: graph.nodes.length, regions: graph.regions.length, clusters: graph.clusters.length },
@@ -66,6 +69,42 @@ export function buildPayload(MG, graph) {
     r,
     c
   };
+  /* Task 3：推出超边路由（世界坐标，随坐标签名）。关闭或失败都不影响布局本身。 */
+  if (MG.config.route && MG.config.route.enabled) {
+    const plan = planRoutes(MG, graph);
+    const enc = encodeRoutes(graph, plan.routes);
+    payload.routes = { v: MG.config.route.version, sig: MG.layoutCache.routeSignature(graph), f: enc.f, e: enc.e };
+  }
+  /* Task 3：静态密度产物（标签锚点 + 纹理）。构建期算好，运行时只解码与合成。 */
+  const bg = buildDensityStatic(MG, graph);
+  if (bg) payload.bg = bg;
+  return payload;
+}
+
+/** 大板块归属表 {regionId: sectorId}：构建的无头环境不载入 sectors.js（载入会改变布局输入），
+    所以这里单独在隔离的 vm 里读它，只为密度分组用；未列入的领域归 '__loose'（与 graph.js 同规则）。 */
+function sectorMap(MG, graph) {
+  const file = path.resolve(import.meta.dirname, '..', 'src', 'data', 'sectors.js');
+  const win = { MG: {}, console }; win.window = win;
+  vm.runInContext(fs.readFileSync(file, 'utf8'), vm.createContext(win), { filename: 'sectors.js' });
+  const out = {};
+  for (const s of (win.MG.sectors || [])) for (const r of (s.regions || [])) out[typeof r === 'string' ? r : r.id] = s.id;
+  for (const r of graph.regions) if (!out[r.id]) out[r.id] = '__loose';
+  return out;
+}
+function fnv(bytes) { let h = 0x811c9dc5; for (let i = 0; i < bytes.length; i++) { h ^= bytes[i]; h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; } return h >>> 0; }
+
+/** 静态密度产物。⚠️ 与主题/可见性/缩放无关：颜色混合是静态的，主题只在 draw() 里乘一个系数。 */
+export function buildDensityStatic(MG, graph) {
+  const bc = MG.config.background;
+  if (!(bc && bc.density && bc.density.enabled && MG.density)) return null;
+  const d = MG.density.compute(graph, Object.assign({ alpha: bc.fogAlpha, sectorOfRegion: sectorMap(MG, graph) }, bc.density));
+  if (!d) return null;
+  const q = (v) => Math.round(v * 100) / 100, bg = { sig: MG.layoutCache.densitySignature(graph), region: {}, cluster: {}, sector: {} };
+  for (const k of ['region', 'cluster', 'sector']) for (const id of Object.keys(d.anchors[k]).sort()) bg[k][id] = [q(d.anchors[k][id].x), q(d.anchors[k][id].y)];
+  const png = encodePng(d.W, d.H, d.rgba);
+  bg.tex = { W: d.W, H: d.H, x: d.x, y: d.y, w: d.w, h: d.h, alpha: d.alpha, groups: d.groups, hash: fnv(d.rgba).toString(36), png: png.toString('base64') };
+  return bg;
 }
 
 /** 稳定序列化：键顺序由 buildPayload 固定，这里只做紧凑输出。 */
@@ -128,6 +167,24 @@ export function validatePayload(MG, graph, data) {
     if (extra > 0) problems.push(`多出 ${extra} 个不在图里的节点 id`);
   }
 
+  if (MG.config.background && MG.config.background.density && MG.config.background.density.enabled) {
+    if (!data.bg || data.bg.sig !== MG.layoutCache.densitySignature(graph)) problems.push('bg（静态密度产物）缺失或签名与当前坐标/配置不符');
+    else if (!data.bg.tex || !data.bg.sector) problems.push('bg 缺纹理或大板块锚点（旧格式产物）');
+    else {
+      /* 重算一遍并逐字节比对：挡住「签名没变但纹理/锚点是上一次的」这类陈旧产物，也验证了确定性 */
+      const fresh = buildDensityStatic(MG, graph);
+      if (JSON.stringify(fresh) !== JSON.stringify(data.bg)) problems.push('bg 与按当前坐标重算的结果不一致（陈旧或损坏）');
+    }
+  }
+  if (MG.config.route && MG.config.route.enabled) {
+    const rt = data.routes;
+    if (!rt || !rt.e || !rt.f) problems.push('缺 routes（路由产物）');
+    else if (rt.sig !== MG.layoutCache.routeSignature(graph)) problems.push('routes 签名与当前坐标/配置不符');
+    else {
+      const v = validateRoutes(graph, decodeRoutes(MG, graph, rt), { GU: MG.graphUtil });
+      if (v.errors.length) problems.push('routes 语义校验 ' + v.errors.length + ' 项失败（例：' + v.errors.slice(0, 3).join('；') + '）');
+    }
+  }
   if (!validRows(data.r, graph.regions.length, 6)) problems.push('r（星系 stat）形状/数值不对');
   if (!validRows(data.c, graph.clusters.length, 4)) problems.push('c（星团 stat）形状/数值不对');
 

@@ -87,6 +87,20 @@
     var enabled = opt.enabled !== false;
     /* Phase B 区域模式开关（默认打开；关掉时 k > 世界单图上限仍走实时画）。 */
     var regionOn = !!opt.region;
+    /* ⭐ Task 3C 增量烘焙（区域档 · 同 k 平移）：开轮时把旧图与新矩形的**重叠区**整数像素
+       搬到另一代（cross-copy），只对**新露出的 ≤2 个矩形**跑 drawStatic（仍按帧切片）。
+       关掉（`?reuse=0` / setReuse(false)）= 逐位退回 3A/B 的整张带轮。
+       reuseMin = 重叠面积占比下限：低于它就整张重烘（搬图本身有固定开销，见 PERFORMANCE §12）。 */
+    var reuseOn = opt.reuse !== false;
+    var reuseMin = opt.reuseMin == null ? 0.25 : Math.max(0, Math.min(1, Number(opt.reuseMin) || 0));
+    /* 「静态绘制输入」代次：任何会让已烘像素作废、却未必改 paintKey 的事件（主题 / 旋钮 / 开关）都 +1。
+       源图只有在烘出来时的代次 = 现在 才允许复用。 */
+    var epoch = 0;
+    /* 现行那一代（els[cur]）的像素是否**完整且可复用**：只在一次烘焙/一轮**完整做完**时写，
+       任何就地重画（runBake）开始前清掉。⛔ 别拿 snap.ready 代替：snap.ready 在「降档重试」
+       「hide」等路径里不一定跟着像素走。 */
+    var valid = null;                    // { idx, rev, epoch, srev }
+    function staticRev() { return renderer && renderer.staticRev ? renderer.staticRev() : 0; }
 
     var els = [null, null];              // 两代（**都常显**）
     var cur = -1;                        // 快照（显示中的内容）在哪一代
@@ -112,7 +126,11 @@
     var rlog = [];                       // 近若干轮的诊断（state() 里带出去；排「为什么追赶」用）
     var stats = { bakes: 0, lastMs: 0, peakMs: 0, swaps: 0, skipped: 0, regionBakes: 0,
       fallbackFrames: 0, emerg: 0, reason: '', mode: '-', rounds: 0, bands: 0, bandMs: 0,
-      lastBands: 0, roundMs: 0, rushed: 0, realloc: 0 };
+      lastBands: 0, roundMs: 0, rushed: 0, realloc: 0,
+      /* Task 3C：增量轮 / 整张轮各几次、复用与新画的像素量（累计，设备像素）、搬图提交耗时、
+         增量轮的总 JS 准备耗时（搬图 + 全部切片），以及「为什么没复用」的计数 */
+      incRounds: 0, fullRounds: 0, reusePx: 0, newPx: 0, fullPx: 0,
+      copyMs: 0, copyMsSum: 0, incJsSum: 0, fullJsSum: 0, pieces: 0, miss: {}, cancelled: 0 };
     var snap = { ready: false, rect: null, mode: '', scale: 0, k: 0, dpr: 1, rev: 0, key: '' };
     /* 「这一档根本烘不出来」的签名（模式+像素尺寸+dpr）。
        ⛔ 有它才能保证**不卡在旧快照上**：烘不出来时必须 ready=false（退回实时画），
@@ -287,6 +305,7 @@
        区域模式下的**例行重烘**走带轮（见 startRound / bandStep）。 */
     function runBake() {
       pending = false;
+      if (round) stats.cancelled++;          // 在飞的轮被同步全烘顶掉（Task 3C 读数）
       round = null;
       if (!els[0]) attach();
       var k = last.k, dpr = Math.max(1, last.dpr);
@@ -298,6 +317,7 @@
       if (tooBig(pick, s)) { giveUp(pick, s, dpr, 'too-big'); return; }
       if (uncoverable(pick, r)) { giveUp(pick, s, dpr, '盖不住'); return; }
       failKey = '';
+      valid = null;                        // 下面要就地重画某一代 ⇒ 现有像素先作废（画完再登记）
       /* ⭐ 就地烘：**复用当前正在显示的那一代画布**，不换显示层。
          每次「换显示层」实测有 80~150ms 的固定开销（与画布大小、画多少内容都无关 ——
          连 646×548 的世界烘也照样挨这一刀），那是拖动里那一根尖峰的大头。
@@ -316,6 +336,7 @@
       cv.style.height = (s.h / dpr) + 'px';
       var gen = ++buildGen;
       var t0 = now();
+      var srev0 = staticRev(), ep0 = epoch;
       try {
         renderer.drawStatic(cv.getContext('2d'), s.scale, r, null, k);
       } catch (err) {
@@ -330,6 +351,7 @@
       snap = { ready: true, rect: r, mode: pick.mode, scale: s.scale, k: k, dpr: dpr, rev: ++rev, key: seenKey };
       cur = idx;
       elRect[idx] = r; elScale[idx] = s.scale; elTrans[idx] = '';
+      valid = (srev0 === staticRev() && ep0 === epoch) ? { idx: idx, rev: snap.rev, epoch: epoch, srev: srev0 } : null;
       setClip(idx, 0, 0);                  // 刚烘出来的那一代必须整张可见（它可能刚被换过来用）
       applyTransform();
       if (cv.style.display === 'none') cv.style.display = '';
@@ -383,9 +405,13 @@
       }
       cv.style.width = (s.w / dpr) + 'px';
       cv.style.height = (s.h / dpr) + 'px';
+      /* ⭐ Task 3C：能不能复用旧图。源永远是 els[cur]（现行、完整），目标永远是另一代；
+         这里只读 cur 的元数据，所以放在改写 target 元数据之前之后都一样 —— 放前面是为了读着清楚。 */
+      var plan = reusePlan(pick, s, k, dpr, paintKey, target);
       elRect[target] = r; elScale[target] = s.scale; elTrans[target] = '';
       setClip(target, s.h / dpr, 0);      // 目标先整张藏起来（旧墨不清，逐条带松开时被覆盖）
       if (cv.style.display === 'none') cv.style.display = '';
+      if (plan) return startIncRound(plan, pick, k, dpr, paintKey, target, s);
       /* 一条带多高：理想是 bandPx（约 1 个时隙），但轮必须在「旧图余量」用完之前跑完 ⇒
          T ≤ 余量 / 每帧平均位移。慢机 / 大位移时自动退化成更少更大的带（宁可单帧重一点，
          也不要收尾追赶 —— 追赶是整张一次画完，那才是真尖峰）。 */
@@ -401,11 +427,137 @@
       round = { target: target, old: cur, rect: r, scale: s.scale, k: k, dpr: dpr, key: paintKey,
         mode: pick.mode, w: s.w, h: s.h, y: 0, n: Math.ceil(s.h / bh), bandH: bh, i: 0, t0: now(), gen: ++buildGen,
         ticks: 0, rushBands: 0, slack0: Math.round(slack0), speed0: Math.round(speed),
-        gapSum: 0, gapN: 0, stepSum: 0, jsSum: 0, lastT: 0 };
+        gapSum: 0, gapN: 0, stepSum: 0, jsSum: 0, lastT: 0, inc: null, srev: staticRev(), epoch: epoch };
+      stats.fullRounds++; stats.fullPx += s.w * s.h;
       applyTransform();                          // 目标先落位（交接边界要按它现在的屏幕位置算）
       bandStep();                                // 第一条不当场画就得等下一帧，而下一帧不一定有
       startChain();                              // 剩下的带由自己的 rAF 链一帧一条推进
       return true;
+    }
+
+    /* ---------------------------------------------- Task 3C：增量轮（重叠复用 + 露出矩形）
+       几何（全部是**整数设备像素**、目标画布坐标）：
+         新旧两张同尺寸 W×H、同 scale；新原点相对旧原点偏 (a, b) 像素（两代原点都吸附在 1/(k·m)
+         的格上 ⇒ a、b 必为整数，算出来带小数尾巴就不复用）。目标像素 (x,y) ↔ 源像素 (x+a, y+b)。
+           重叠  O = [max(0,-a), +W-|a|) × [max(0,-b), +H-|b|)        面积 (W-|a|)(H-|b|)
+           露出  横条 = 整行宽 × |b|（b>0 在底、b<0 在顶）
+                 竖条 = |a| × 重叠的行高（a>0 在右、a<0 在左）         ⇒ 两块不相交，角上不重画
+                 面积和 = W·H − 重叠，恒等。
+       顺序：搬重叠（一次 drawImage，'copy' + 矩形裁剪 ⇒ 与目标的旧墨无关，透明像素原样搬）
+             → 露出矩形按「≈ 一条带的像素量」切片，一帧一片（drawStatic 的矩形 band：裁剪内先清再画）
+             → 全部画完才换代（目标全程整张藏在 clip-path 后面；旧图全程整张可见 ⇒ 不露洞、无半成品）。
+       ⛔ 不做逐片交接：目标在换代前不可见，旧图一直完整顶着；交接仍然只改 clip-path（4.1-②）。 */
+    function reusePlan(pick, s, k, dpr, paintKey, target) {
+      function miss(why) { stats.miss[why] = (stats.miss[why] || 0) + 1; return null; }
+      if (!reuseOn) return null;
+      if (pick.mode !== 'region' || snap.mode !== 'region') return miss('mode');
+      if (!snap.ready || cur < 0 || target === cur || !els[cur]) return miss('no-src');
+      if (!valid || valid.idx !== cur || valid.rev !== snap.rev) return miss('src-invalid');
+      if (valid.epoch !== epoch || valid.srev !== staticRev()) return miss('epoch');
+      if (pending) return miss('pending');
+      if (paintKey == null || snap.key !== paintKey) return miss('key');
+      if (snap.k !== k || snap.dpr !== dpr || elScale[cur] !== s.scale) return miss('scale');
+      var src = els[cur];
+      if (src.width !== s.w || src.height !== s.h) return miss('size');
+      var R0 = elRect[cur];
+      if (!R0) return miss('no-src');
+      var fx = (pick.r.minX - R0.minX) * s.scale, fy = (pick.r.minY - R0.minY) * s.scale;
+      var a = Math.round(fx), b = Math.round(fy);
+      if (Math.abs(fx - a) > 1e-3 || Math.abs(fy - b) > 1e-3) return miss('frac');
+      var W = s.w, H = s.h, aa = Math.abs(a), ab = Math.abs(b);
+      var ow = Math.max(0, W - aa), oh = Math.max(0, H - ab);
+      if (ow * oh < reuseMin * W * H || ow * oh <= 0) return miss('overlap');
+      var ox = Math.max(0, -a), oy = Math.max(0, -b);
+      var rects = [];
+      if (ab > 0) rects.push({ x0: 0, y0: b > 0 ? H - ab : 0, w: W, h: ab });
+      if (aa > 0) rects.push({ x0: a > 0 ? W - aa : 0, y0: oy, w: aa, h: oh });
+      return { a: a, b: b, ox: ox, oy: oy, ow: ow, oh: oh, sx: ox + a, sy: oy + b,
+        rects: rects, newPx: W * H - ow * oh, reusePx: ow * oh };
+    }
+    /** 把露出矩形切成「≈ area 像素」的片（整数像素、互不相交、并集 = 原矩形）。
+        横条按行切（片高 ≥ 1），竖条也按行切（片宽 = 竖条宽）。 */
+    function slicePieces(rects, area) {
+      var out = [];
+      for (var i = 0; i < rects.length; i++) {
+        var q = rects[i];
+        var ph = Math.max(1, Math.min(q.h, Math.floor(area / Math.max(1, q.w))));
+        var n = Math.ceil(q.h / ph);
+        ph = Math.ceil(q.h / n);                    // 均分，免得最后一片只剩几行
+        for (var y = 0; y < q.h; y += ph) out.push({ x0: q.x0, y0: q.y0 + y, w: q.w, h: Math.min(ph, q.h - y) });
+      }
+      return out;
+    }
+    function copyOverlap(dst, src, p) {
+      var g = dst.getContext('2d');
+      g.save();
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.globalAlpha = 1;
+      g.imageSmoothingEnabled = false;            // 整数偏移 1:1，本来就不重采样；关掉只是保险
+      g.beginPath(); g.rect(p.ox, p.oy, p.ow, p.oh); g.clip();
+      g.globalCompositeOperation = 'copy';        // 裁剪内整块替换（目标旧墨 / 透明像素都不参与混合）
+      g.drawImage(src, p.sx, p.sy, p.ow, p.oh, p.ox, p.oy, p.ow, p.oh);
+      g.restore();
+    }
+    function startIncRound(plan, pick, k, dpr, paintKey, target, s) {
+      var r = pick.r, cv = els[target];
+      var slack0 = slackOf(snap.rect);
+      /* 片的像素量 = 一条带（bandPx × 画布宽），与整张轮的单帧负荷同口径；
+         余量撑不住这么多帧时按整张轮同一条规矩放大（⛔ 至多 3 倍）。 */
+      var area0 = bandPx * s.w;
+      var pieces = slicePieces(plan.rects, area0);
+      var fit = Math.max(1, Math.floor(Math.max(0, slack0 - maxEst()) / (speedEst() + slackFall)) + 1);
+      if (pieces.length > fit) pieces = slicePieces(plan.rects, area0 * Math.min(3, pieces.length / fit));
+      var t0 = now();
+      try {
+        copyOverlap(cv, els[cur], plan);
+      } catch (err) {
+        stats.miss['copy-fail'] = (stats.miss['copy-fail'] || 0) + 1;
+        plan = null;
+      }
+      var cms = now() - t0;
+      if (!plan) {
+        /* 搬不过去（极少见）：退回整张轮。目标仍整张藏着，旧墨无所谓。 */
+        var reuseWas = reuseOn; reuseOn = false;
+        try { return startRound(pick, k, dpr, paintKey); } finally { reuseOn = reuseWas; }
+      }
+      stats.copyMs = +cms.toFixed(2); stats.copyMsSum += cms;
+      stats.incRounds++; stats.reusePx += plan.reusePx; stats.newPx += plan.newPx;
+      round = { target: target, old: cur, rect: r, scale: s.scale, k: k, dpr: dpr, key: paintKey,
+        mode: pick.mode, w: s.w, h: s.h, y: 0, n: pieces.length, bandH: 0, i: 0, t0: t0, gen: ++buildGen,
+        ticks: 0, rushBands: 0, slack0: Math.round(slack0), speed0: Math.round(speed),
+        gapSum: 0, gapN: 0, stepSum: 0, jsSum: cms, lastT: 0, srev: staticRev(), epoch: epoch,
+        inc: { pieces: pieces, a: plan.a, b: plan.b, newPx: plan.newPx, reusePx: plan.reusePx, copyMs: cms } };
+      applyTransform();
+      bandStep();                                // 搬图与第一片在同一帧（与整张轮「第一条当场画」同口径）
+      if (round) startChain();
+      return true;
+    }
+    /** 增量轮的一步：一片（rush ⇒ 剩下的全画完；⛔ 没有 64 条的保护上限 —— 少画一片就是洞）。 */
+    function incStep(rush) {
+      var cv = els[round.target], P = round.inc.pieces;
+      if (rush) round.rushBands += Math.max(0, P.length - round.i);
+      while (round && round.i < P.length) {
+        var q = P[round.i];
+        var t0 = now();
+        try {
+          renderer.drawStatic(cv.getContext('2d'), round.scale, round.rect, q, round.k);
+        } catch (err) {
+          stats.reason = '降档：' + ((err && err.message) || err);
+          round = null; snap.ready = false; valid = null; buildGen++;
+          if (ti < tiers.length - 1) { ti++; cv.width = 1; cv.height = 1; scheduleBake(); return; }
+          enabled = false; hide(); stats.skipped++; return;
+        }
+        var ms = now() - t0;
+        stats.lastMs = +ms.toFixed(1); stats.bandMs = +ms.toFixed(1);
+        round.jsSum += ms;
+        if (ms > stats.peakMs) stats.peakMs = +ms.toFixed(1);
+        stats.pieces++;
+        round.i++;
+        if (!rush) break;
+      }
+      if (!round) return;
+      if (round.i >= P.length) { stats.lastBands = round.n; finishRound(); return; }
+      if (opt.onSwap) opt.onSwap();              // 显式要下一帧（静止时没有下一帧）
     }
 
     /** 一帧一条带；跑完就换代。追不上（矩形盖不住了）时由调用方传 rush=true 一次画完剩下的。 */
@@ -414,6 +566,7 @@
       var cv = els[round.target];
       if (!cv) { round = null; return; }
       round.ticks++;
+      if (round.inc) { incStep(rush); return; }
       if (rush) round.rushBands += Math.max(0, Math.ceil((round.h - round.y) / round.bandH));
       var guard = 0;
       while (round) {
@@ -426,7 +579,7 @@
           renderer.drawStatic(cv.getContext('2d'), round.scale, round.rect, { y0: y0, h: h }, round.k);
         } catch (err) {
           stats.reason = '降档：' + ((err && err.message) || err);
-          round = null; snap.ready = false; buildGen++;
+          round = null; snap.ready = false; valid = null; buildGen++;
           if (ti < tiers.length - 1) { ti++; cv.width = 1; cv.height = 1; scheduleBake(); return; }
           enabled = false; hide(); stats.skipped++; return;
         }
@@ -486,6 +639,10 @@
       snap = { ready: true, rect: r.rect, mode: 'region', scale: r.scale, k: r.k, dpr: r.dpr, rev: ++rev, key: r.key };
       lastKey = r.key;
       cur = r.target;
+      /* ⭐ Task 3C：只有「整轮期间静态输入没变」的那一代才登记为可复用的源。
+         轮的中途 invalidate / 换主题过 ⇒ 前后几条带画的不是同一份内容 ⇒ 不许当源（下一轮整张重来）。 */
+      valid = (r.srev === staticRev() && r.epoch === epoch) ? { idx: cur, rev: snap.rev, epoch: epoch, srev: r.srev } : null;
+      if (r.inc) stats.incJsSum += r.jsSum; else stats.fullJsSum += r.jsSum;
       /* ⭐ 换代 = 纯裁剪：新显示层整张放开，旧那代整张藏起来（**不清像素**）。
          旧墨留在画布上没关系 —— 下一轮它当目标时先整张藏着，逐条带松开，
          松到哪一条那一条就已经是新画的（旧墨被覆盖掉了）。
@@ -499,7 +656,12 @@
           var mO0 = (k0 * dpr0) / elScale[old];
           var syO0 = Math.round((elRect[old].minY * k0 + last.ty) * dpr0);
           var syT0 = Math.round((r.rect.minY * k0 + last.ty) * dpr0);
-          setClip(old, Math.max(0, (syT0 + r.h * mO0 - syO0) / mO0) / dpr0, 0);
+          /* Task 3D·3C 交接修正（2026-11-26）：新图下沿（屏幕设备像素）= syT0 + r.h·mT0，mT0 是**新图**的显示倍率
+             （与 clearHandedOff 的 mT 同式）；除以 mO0 把屏幕像素换回**旧画布**像素。
+             旧写法分子用了 mO0：新旧 scale 不同（缩放期间换代）时，放大（scale 变大 ⇒ mT0 < mO0）会把旧图裁得太狠
+             ⇒ 两图之间露洞；缩小方向只是多叠一截（无害）。实测与几何对照见 PERFORMANCE.md §13.7。 */
+          var mT0 = (k0 * dpr0) / r.scale;
+          setClip(old, Math.max(0, (syT0 + r.h * mT0 - syO0) / mO0) / dpr0, 0);
         }
       }
       setClip(r.target, 0, 0);             // 新显示层必须整张可见
@@ -509,14 +671,16 @@
       stats.mode = r.mode;
       stats.roundMs = +(now() - r.t0).toFixed(1);
       lastBakeT = now();
-      rlog.push({ 带: r.n, tick: r.ticks, 追赶带: r.rushBands, ms: stats.roundMs,
+      rlog.push({ 增量: r.inc ? (r.inc.a + ',' + r.inc.b) : '', 新像素: r.inc ? r.inc.newPx : r.w * r.h,
+        搬图ms: r.inc ? +r.inc.copyMs.toFixed(2) : 0, 轮JS: +r.jsSum.toFixed(2),
+        带: r.n, tick: r.ticks, 追赶带: r.rushBands, ms: stats.roundMs,
         起松弛: r.slack0, 速度: r.speed0, 终松弛: Math.round(slackOf(r.rect)), 盖住: covered,
         带JS均: +(r.jsSum / Math.max(1, r.ticks)).toFixed(2),
         步ms均: +(r.stepSum / Math.max(1, r.ticks)).toFixed(2),
         间隔均: +(r.gapSum / Math.max(1, r.gapN)).toFixed(2) });
       if (rlog.length > 12) rlog.shift();
       stats.reason = 'ok ' + r.mode + ' ' + r.w + 'x' + r.h + ' @k=' + r.k.toFixed(3)
-        + ' 带' + r.n + (covered ? '' : ' ⚠未盖住') + ' tier=' + maxSide();
+        + (r.inc ? ' 增量' + r.n + '片' : ' 带' + r.n) + (covered ? '' : ' ⚠未盖住') + ' tier=' + maxSide();
       if (opt.onSwap) opt.onSwap();     // 换代之后也要至少再来一帧（HUD/标签要跟上）
     }
 
@@ -756,34 +920,43 @@
 
     function hide() {
       for (var i = 0; i < 2; i++) if (els[i] && els[i].style.display !== 'none') els[i].style.display = 'none';
+      if (round) stats.cancelled++;
       round = null;
       if (chainId) { global.cancelAnimationFrame(chainId); chainId = 0; }
     }
 
     return {
       attach: attach, tick: tick, hide: hide,
-      bakeNow: function () { scheduleBake(); },
-      enable: function (v) { enabled = !!v; if (!enabled) hide(); },
-      setRegion: function (v) { regionOn = !!v; snap.ready = false; scheduleBake(); },
+      /* ⭐ Task 3C：凡是「已烘像素可能作废」的入口都 epoch++（主题 / 开关 / 旋钮）⇒ 旧图不再当复用源 */
+      bakeNow: function () { epoch++; valid = null; scheduleBake(); },
+      enable: function (v) { enabled = !!v; epoch++; valid = null; if (!enabled) hide(); },
+      setRegion: function (v) { regionOn = !!v; epoch++; valid = null; snap.ready = false; scheduleBake(); },
       /* 余量旋钮（调参用）：改完下一次重烘生效 */
-      setMargin: function (v) { marginPx = Math.max(0, Number(v) || 0); snap.ready = false; scheduleBake(); },
+      setMargin: function (v) { marginPx = Math.max(0, Number(v) || 0); epoch++; valid = null; snap.ready = false; scheduleBake(); },
       /* 带高旋钮（调参 / A-B 用）：每条约多少设备像素 */
       setBand: function (v) {
         bandPx = Math.max(48, Math.round(Number(v) || 0) || 128);
-        round = null; snap.ready = false; scheduleBake();
+        if (round) stats.cancelled++;
+        epoch++; valid = null; round = null; snap.ready = false; scheduleBake();
       },
+      /* Task 3C 增量烘焙开关（A/B 与应急回退）：false = 逐位退回整张带轮。重叠下限（0..1）同理。 */
+      setReuse: function (v, min) {
+        reuseOn = !!v;
+        if (min != null) reuseMin = Math.max(0, Math.min(1, Number(min) || 0));
+      },
+      get reuse() { return reuseOn; },
       /* 缩放期出图间隔（毫秒；0 = 退回「只等停手」的老行为） */
       setZoomMs: function (v) { zoomMs = Math.max(0, Number(v) || 0); },
       /* 世界图面积预算旋钮（调参/A-B 用）。传 0 或不传 = 退回「只看边长」的老口径 */
       setWorldBudget: function (px, side) {
         worldPxMax = px == null ? 0 : Math.max(0, Number(px) || 0);
         worldSideMax = side == null ? 0 : Math.max(0, Number(side) || 0);
-        snap.ready = false; scheduleBake();
+        epoch++; valid = null; snap.ready = false; scheduleBake();
       },
       /* 世界图边框余量（画布像素；A/B 用：0 = 复现「bbox 边上半切节点」） */
       setWorldPad: function (v) {
         worldPadPx = Math.max(0, Number(v) || 0);
-        snap.ready = false; scheduleBake();
+        epoch++; valid = null; snap.ready = false; scheduleBake();
       },
       get margin() { return marginPx; },
       get band() { return bandPx; },
@@ -800,6 +973,17 @@
           /* 带轮读数：轮数 / 带数 / 末带ms / 末轮带数 / 末轮墙钟 / 追赶次数 / 分配次数 */
           rounds: stats.rounds, bands: stats.bands, bandMs: stats.bandMs,
           lastBands: stats.lastBands, roundMs: stats.roundMs, rushed: stats.rushed, realloc: stats.realloc,
+          /* Task 3C 读数：增量/整张轮数、复用/新画/整张像素（累计）、末次搬图提交 ms、
+             两类轮的累计 JS、切片数、未复用原因 */
+          reuse: reuseOn, reuseMin: reuseMin, incRounds: stats.incRounds, fullRounds: stats.fullRounds,
+          reusePx: stats.reusePx, newPx: stats.newPx, fullPx: stats.fullPx,
+          copyMs: stats.copyMs, copyMsSum: +stats.copyMsSum.toFixed(2),
+          incJsSum: +stats.incJsSum.toFixed(1), fullJsSum: +stats.fullJsSum.toFixed(1),
+          pieces: stats.pieces, miss: stats.miss, cancelled: stats.cancelled, inc: !!(round && round.inc),
+          /* 诊断（只读副本）：现行快照的世界矩形与烘焙比例 —— 正确性探针拿它在**新建的**离屏画布上
+             整张重画一份做对照。⛔ 生产路径不读回像素。 */
+          snapRect: snap.ready && snap.rect ? { minX: snap.rect.minX, minY: snap.rect.minY, maxX: snap.rect.maxX, maxY: snap.rect.maxY } : null,
+          snapScale: snap.scale, snapK: snap.k,
           bandPx: bandPx, inRound: !!round, live: cur, emerg: stats.emerg, 同步日志: slog, 轮日志: rlog,
           speed: Math.round(speed), zoomMs: zoomMs, 距上次出图: Math.round(now() - lastBakeT), 分配日志: rlLog, 掉: Math.round(slackFall),
           不可能: failKey,

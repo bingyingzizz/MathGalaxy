@@ -1,7 +1,7 @@
 # 引擎 / UI 性能手册（原 AGENTS.md 第四节，原文迁入）
 
 > **只加内容不需要读；动任何性能敏感的东西之前必须读**——不止 `src/core/`：渲染、布局/预计算、图算法与数据结构、缓存、交互处理、资源加载、性能关键的构建流程，以及任何「看起来只是样式」的东西。准入规则与前后实测要求见 `PERFORMANCE.md` §0.0。
-> 配套：`PERFORMANCE.md`（性能总账：为什么这么设计、每一刀改了什么、实测多少）· `tools/perfguard.mjs`（42 条机器守卫，`bun tools/build.mjs` 末尾自动跑）。
+> 配套：`PERFORMANCE.md`（性能总账：为什么这么设计、每一刀改了什么、实测多少）· `tools/perfguard.mjs`（58 条机器守卫，`bun tools/build.mjs` 末尾自动跑）。
 > ⚠️ **4.2（云雾层）描述的是 ENG-009 之前的旧实现**（`texScale`/`smoothTexture`/`texBlur`）；现行云雾实现与成本见 `PERFORMANCE.md` §10.4。放大纹理要 dither 抹平的通用教训仍成立，但函数/旋钮名以现行代码为准。
 > 原节号（4.0–4.6）保持不变——`perfguard` 报错里的「去看 4.x」指的就是本文件。
 > 文中的 `H:\MathGalaxy` 等是迁移前机器的**历史路径**，现行仓库在 `B:\MathGalaxy`；全部数字都是当时本机实测。
@@ -104,7 +104,7 @@
 | worldbitmap | `tick(cam,dpr,key,opt)` | **唯一的触发判据** | `lowSlack` 必须排在 `stale` 前面 |
 | renderer | `drawStatic(...)` | 把静态层画进目标画布 | 7 个模块级量必须 `try/finally` 复原 |
 | renderer | `ensureGeomBake()` | 烘焙几何缓存 | 域键必须含 `band` |
-| renderer | `inView / edgeInView / segHitsView` | 裁剪 | `inView` 认四个边界；另两个认 `x1/y0/y1`（左边恒为 0） |
+| renderer | `inView / edgeInView / segHitsView` | 裁剪 | 三个都认四个边界（Task 3C 起竖条切片的 `x0 > 0`） |
 | renderer | `draw()` | 实时层 | 位图模式且无 node-hover ⇒ 用 `EMPTY_GEOM` |
 | renderer | `bundleOffsets()` | 平行边让位 | 按 `view.visible` 引用同一性缓存 |
 
@@ -153,9 +153,10 @@ function inView(x, y, pad) {
 
 1. `inView` —— **四个边界全要**（`cullBox.x0/x1/y0/y1`）；
 2. `edgeInView` —— 端点预筛里的 **右 / 上 / 下**要换成 `cullBox.x1 / y0 / y1`
-   （左边恒用 `-PAD_EDGE`：`cullBox.x0` 永远是 0，没必要多一个三元式）；
+   （⚠️ 2026-11-25 Task 3C 起**左边也要** `cullBox.x0`：增量烘焙会画竖条，`x0` 不再恒为 0；
+   当初「左边恒为 0、省一个三元式」的前提已不成立）；
    ⛔ **我第一版就漏了「上」边界** ⇒ 量出来完全没变化，白查了一轮；
-3. `segHitsView` —— Liang–Barsky 的 `l/r/t/b`：`r/t/b` 换成 `cullBox.x1 / y0 / y1`。
+3. `segHitsView` —— Liang–Barsky 的 `l/r/t/b`：四个都取 `cullBox`（`l` 自 Task 3C 起）。
 
 然后在 `drawStatic` 里设/复原：
 
@@ -234,7 +235,7 @@ bun _tools/_dragbench.mjs "file:///H:/MathGalaxy/index.html?region=1&fps=1" out.
 
 **第 4 步：验收四件套（缺一不可）**
 
-1. `bun tools/build.mjs` —— 末尾会自动跑 `perfguard`（42 条）；
+1. `bun tools/build.mjs` —— 末尾会自动跑 `perfguard`（58 条）；
 2. 引擎冒烟：`bun _tools/cdp.mjs <url> out.png _tools/_smoke.engine.mjs 2500 1600x900`，判据无 `#mg-fatal`；
 3. **带裁剪有没有丢内容**：同机位「位图 vs 实时画」（`?region=1` / `?region=0`），
    逐 1/16 带比**墨量**，比值应恒略 >1 且**没有一条带变少**（隔带高低交替 = 丢带）；
@@ -291,6 +292,11 @@ bun _tools/_dragbench.mjs "file:///H:/MathGalaxy/index.html?region=1&fps=1" out.
 平移的一轮里**真正新增的只有一条窄带**（每轮位移 ~300px × 画布宽 3312 ≈ 1M px，
 而整张是 6.8M px ⇒ 理论上 6 倍余量）。做法：把旧图按位移**blit 过去**，只重画新露出的那条带。
 ⛔ 别先试「调 margin / 调 bandPx / 降 maxSide」—— 都量过了，无效或更差。
+
+> ⭐ **2026-11-25 已实现为 Task 3C「增量烘焙」**（重叠区 cross-copy 到另一代 + 只画新露出的 ≤2 个矩形）。
+> 机制、不变量、实测与未验证项见 `PERFORMANCE.md` §12。下面 4.1½.1 是**当初的设计稿**，保留作历史；
+> 与实现的差别：没有改 `rectFor()`（原来的「视口居中 + 吸附像素格」已保证两代原点差是整数像素），
+> 搬图走**另一代**（不是自绘），换代前目标整张藏着、**不逐片交接**。
 
 #### 4.1½.1 「blit 滑动窗口」怎么改（设计稿，⚠️ 先量一条再动手）
 
@@ -400,7 +406,7 @@ bun _tools/_dragbench.mjs "file:///H:/MathGalaxy/index.html?region=1#v=1.2000,11
 > 被违反/漂移了，而验收仪器被删时**没有任何东西报警** —— 于是「拖动又变卡」活了几周。
 
 所以把「不许删」变成了**构建即红**：`bun tools/build.mjs` 末尾会跑 `tools/perfguard.mjs`，
-CI 也单独跑一次。它逐条对着本文第四节断言（当前 42 条），删了/改坏了就报错，
+CI 也单独跑一次。它逐条对着本文第四节断言（当前 58 条；Task 3C 新增 6 条、Task 3D 新增 10 条，见 PERFORMANCE §4.5 / §4.6），删了/改坏了就报错，
 报错里带着「去看 4.x」和当初的实测代价。它同时守着**验收仪器本身在不在**。
 
 它故意只断言**机械可判**的东西（函数在不在、边界有没有用 `cullBox`、旋钮取值区间），
@@ -408,6 +414,18 @@ CI 也单独跑一次。它逐条对着本文第四节断言（当前 42 条）�
 背景重写后就误报了，而当时的云雾其实是干净的。
 
 要改一条约束：**先在本文那一条里给出「改前/改后」的数字，再改 `perfguard.mjs` 里对应那条**。
+
+### 4.4¾ 标签（节点名）渲染：Task 3D（2026-11-26，细节与实测见 `PERFORMANCE.md` §13）
+
+- **改标签代码之前必读 §13.1 / §13.2。** 标签有两条等价路径：旧实现（`?labfast=0`，3C 的原样，保留作兜底与对拍基线）与精确加速路径（稀疏网格归属 / 阈值字号 / 数值避让 / 静态序复用 + 缩放帧直画 + 懒物化）。**任何改动两条路径必须结果逐项相同**，所以先改旧实现再改快路径，或反过来都行，但必须一起过对拍。
+- 三个对拍 / 验证入口（缺一不可）：
+  1. `bun tools/labelcheck.mjs`（离线，合成数据 + 假 ctx；内含 11 个「改坏的版本必须被抓」的反向对照）；
+  2. `bun tools/perfguard.mjs`（28–36 守路径区分 / 交接 / 验戳 / 单层 / 回退开关）；
+  3. 页内探针 `bun _tools/_labelrun.mjs <url> <A|B|C|D|perf>`（`_tools/_labelharness.js`；`_*` 被忽略，入库需 `git add -f`；在最终单文件上跑）：同页同相机轨迹，`labfast=0` 对 快路径，逐帧 trace + 像素（gt8 / gt24）+ 路径模型（该直画 / 物化 / 丢弃）。像素判据：**真 GPU 上 gt8 必须为 0**；软件光栅上会有「层 vs 直画」的后端差，探针用「光栅对照」逐像素复现才算解释，**没解释掉的如实报**。
+- 最容易踩的四条：① `ownSizeMap` 只增不清（旧实现如此）——同页先后跑两种实现要先 `labelStateReset()`，否则假差异；② `labelStat` 在「LOD 把名字全砍」的帧不更新（`drawLabels` 提前返回）；③ 直画只在**这一帧 k 真的变了**；同 k 平移 / 停住必须走位图回放，pan 的 `direct` 计数必须是 0；④ 物化前先按**原策略**判会不会回放，别「反正画好了」就贴。
+- 标签路径读数：`MG.app.renderer.labelPath()`；`_chainprobe` / `_dragbench` 输出里的 `标签3D`。验收包与命令：`PERFORMANCE.md` §13.6。
+- Task 3D.2 的前台验收包另见 `PERFORMANCE.md` §13.9。对拍先比较同机位的 3D.1 生产快路径，再用旧路径检验交互与物化。宽度缓存读 `MG.textCacheStats()`，包含现存键、峰值、容量和淘汰量。长测与像素读回分开跑。
+- 世界位图交接（`finishRound` 盖不住分支）的裁剪公式用**新图**倍率，见 §13.7；确定性几何探针 `_tools/_wbgeom.js`（`cdp.mjs <url?region=1> out.png _tools/_wbgeom.js 2500 1600x900`；端到端洞计数 `_tools/_wbholes.js` 仅供参考）。
 
 ### 4.5 判断矩阵（先定主导项，别看着曲线找结论）
 

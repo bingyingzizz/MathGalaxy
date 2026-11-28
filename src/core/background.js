@@ -18,8 +18,41 @@
      雾是世界级背景：15 个板块的色团按 graph.regions 全画；如果 bbox 只用可见节点，
      切到第 1 层时纹理就缩成中间一小块，纹理外没有雾 ⇒ 屏幕右侧直接黑掉（用户 2026-11-15 报）。
      取景与内容都跟内容集合无关，纹理只随主题设置变化，层过滤只影响节点/连线。 */
+  /* ⭐ Task 3 · B+ 密度纹理：数值核心在 MG.density（纯数组、确定）；这里只把 RGBA 贴进离屏画布。
+     顺带把标签锚点（密度峰）写到 graph.densityAnchors（运行时算出的会补上构建期没有的大板块锚点）。
+     ⛔ 只在启动/主题等少数时刻算一次，拖动/缩放/hover 不重算。 */
+  function buildDensityTexture(graph) {
+    var bc = MG.config.background, d = MG.density.compute(graph, Object.assign({ alpha: bc.fogAlpha }, bc.density));
+    if (!d) return null;
+    var cv = document.createElement('canvas');
+    cv.width = d.W; cv.height = d.H;
+    var cx = cv.getContext('2d'), im = cx.createImageData(d.W, d.H);
+    im.data.set(d.rgba);
+    cx.putImageData(im, 0, 0);
+    var an = graph.densityAnchors || { region: {}, cluster: {}, sector: {} };
+    ['region', 'cluster', 'sector'].forEach(function (k) {
+      Object.keys(d.anchors[k]).forEach(function (id) { an[k][id] = [d.anchors[k][id].x, d.anchors[k][id].y]; });
+    });
+    graph.densityAnchors = an;
+    return { canvas: cv, x: d.x, y: d.y, w: d.w, h: d.h, alpha: d.alpha, cw: d.W, ch: d.H, regions: d.groups };
+  }
+
+  /** 预计算纹理（PNG data URL）→ 异步解码，回调拿到与 buildTexture 同形状的纹理；失败回调 null（调用方回退到现算）。
+      解码在浏览器后台线程，不占主线程；颜色/不透明度的主题合成仍在 draw()。 */
+  function loadPrecomputedTexture(t, done) {
+    var img = new Image(), finished = false;
+    function fin(v) { if (!finished) { finished = true; done(v); } }
+    img.onload = function () {
+      if (img.naturalWidth !== t.W || img.naturalHeight !== t.H) { fin(null); return; }
+      fin({ canvas: img, x: t.x, y: t.y, w: t.w, h: t.h, alpha: t.alpha, cw: t.W, ch: t.H, regions: t.groups || 0 });
+    };
+    img.onerror = function () { fin(null); };
+    img.src = 'data:image/png;base64,' + t.png;
+  }
+
   function buildTexture(graph) {
     var bc = MG.config.background;
+    if (bc.density && bc.density.enabled && MG.density) return buildDensityTexture(graph);
 
     /* 全图节点 bbox。 */
     var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
@@ -145,6 +178,7 @@
 
   MG.background = {
     buildTexture: buildTexture,
+    loadPrecomputedTexture: loadPrecomputedTexture,
     draw: draw
   };
 })(typeof window !== 'undefined' ? window : globalThis);

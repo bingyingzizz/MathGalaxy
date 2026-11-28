@@ -29,6 +29,7 @@ import { bucketRows, splitBuckets, decide } from './i18n-backfill.mjs';
 /* 布局预计算（2026-11-11）：把 computeLayout 的结果写进 dist/layout.json 并内联进单文件，
    让首次打开不再冷算 6~7s。签名口径仍然只有 src/core/layoutcache.js 一份。 */
 import { buildPayload, writeLayoutFile, assertLayoutFile, embedPreLayout, LAYOUT_FILE } from './prelayout.mjs';
+import { loadMG as loadMGShared } from './lib/loadmg.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SRC = path.join(ROOT, 'src');
@@ -90,76 +91,8 @@ function stableStamp(file, data) {
 }
 
 /* ---------------------------------------------------------------- 载入内容 */
-/** 造一个最小的 window，把引擎和内容脚本按顺序跑起来（不碰 DOM 的那部分） */
-function loadMG() {
-  const win = {
-    /* ⚠️ contentVersion 要事先塞进去：MG.enFieldStatus（core/i18n.js）靠它判
-       「这条英文是译自哪个内容版本」；浏览器里那个值来自 index.html 的 MG.contentVersion。 */
-    MG: { contentVersion: CONTENT_VERSION }, console,
-    document: {
-      createElement: () => ({ getContext: () => ({}), width: 0, height: 0 }),
-      addEventListener() {}, getElementById: () => null
-    },
-    performance: { now: () => Date.now() },
-    requestAnimationFrame: () => 0,
-    addEventListener() {},
-  };
-  win.window = win;
-  win.self = win;
-
-  const files = [
-    'core/config.js', 'core/util.js', 'core/i18n.js', 'core/camera.js', 'core/graph.js',
-    /* ⚠️ layoutcache 必须在 layout 之前：layout.computeLayout 里会调
-       MG.layoutCache.restore(graph)，也就是「有没有预计算布局」的判定点。 */
-    'core/layoutcache.js', 'core/layout.js',
-    'core/layers.js',
-    'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/i18n.js', 'data/notation.js', 'data/xref.js',
-    /* ⚠️ 只给构建用：浏览器端不需要英文文档正文（read.html 的英文版由 publish.mjs 组装），
-       所以这个文件**不挂进 index.html**。 */
-    'data/i18n/docs.en.js',
-    /* 英文摘要（T2.2）与英文陈述/说明（T3.2）：同样只给构建用 —— 浏览器端从
-       graph.js 挂好的字段读，不直接加载这两个文件。 */
-    'data/i18n/abstracts.en.js',
-    'data/i18n/statements.en.js',
-    /* 缺口候选词表（I2）：只给 build 用——浏览器端不需要，所以也不挂进 index.html */
-    'data/gaps.js',
-    /* 假设受控词表（I6/T14）：同样只给构建用 */
-    'data/hypotheses.js',
-  ];
-  const packDir = path.join(SRC, 'data', 'packs');
-  /* ⭐ 包顺序必须与 index.html 的 <script> 完全一致（2026-11-11）。
-     为什么：节点顺序既进 `layoutcache.signature()`，也影响布局求解的浮点累加顺序 ——
-     预计算布局（dist/layout.json）的签名必须和浏览器算出来的**逐位相同**。
-     按目录名排序会把 `100-x.js` 排到 `11-y.js` 前面，与页面顺序不同：实测两边的
-     签名因此变成 1620:eod6d9 vs 1620:1dlkc1p，预计算整包失效。
-     ⚠️ 同时校验「目录里的包」与「页面挂的包」集合一致 —— 少挂/多挂都是线上事故。 */
-  const shell = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-  const pagePacks = Array.from(
-    shell.matchAll(/<script[^>]+src="src\/data\/packs\/([^"]+\.js)"/g), (m) => m[1]
-  );
-  const dirPacks = fs.readdirSync(packDir).filter((f) => f.endsWith('.js')).sort();
-  if (!pagePacks.length) throw new Error('loadMG：index.html 里一个 packs <script> 都没找到');
-  {
-    const inPage = new Set(pagePacks), onDisk = new Set(dirPacks);
-    const missing = dirPacks.filter((f) => !inPage.has(f));
-    const ghost = pagePacks.filter((f) => !onDisk.has(f));
-    if (missing.length || ghost.length) {
-      throw new Error('loadMG：数据包与 index.html 不一致 —— ' +
-        (missing.length ? '目录有但页面没挂：' + missing.join(', ') + '；' : '') +
-        (ghost.length ? '页面挂了但目录没有：' + ghost.join(', ') + '；' : '') +
-        '（两边不一致会让构建和网页的节点数不同）');
-    }
-  }
-  pagePacks.forEach((f) => files.push('data/packs/' + f));
-
-  const ctx = vm.createContext(win);
-  for (const rel of files) {
-    const code = fs.readFileSync(path.join(SRC, rel), 'utf8');
-    try { vm.runInContext(code, ctx, { filename: rel }); }
-    catch (e) { throw new Error(`载入 ${rel} 失败：${e.message}`); }
-  }
-  return win.MG;
-}
+/** 造一个最小的 window（实现见 tools/lib/loadmg.mjs，与 routecheck 等共用） */
+function loadMG() { return loadMGShared({ root: ROOT, contentVersion: CONTENT_VERSION }); }
 
 /* ---------------------------------------------------------------- 组装图 */
 function buildGraph(MG) {
@@ -3245,6 +3178,24 @@ if (doHTML) {
   const chk = assertLayoutFile(MG, graph, DIST);
   console.log(`  ✓ 预计算布局校验通过（sig ${chk.sig} · ${chk.counts.nodes} 点逐点一致 · ` +
     `${(chk.bytes / 1024).toFixed(1)} KB）`);
+
+  /* ⭐ 生产分发物硬门（Task 3）：**单文件也必须内联同一份有效产物**。
+     正常的生产启动不得冷算布局/路由——所以发布出去的 dist/mathgalaxy.html 里
+     必须有与 layout.json 同签名的坐标、路由、静态密度（纹理 + 锚点）。缺了就是构建失败，
+     而不是让用户的浏览器在首次打开时静默地现算十几秒。 */
+  const singleFile = path.join(DIST, 'mathgalaxy.html');
+  if (fs.existsSync(singleFile)) {
+    const html = fs.readFileSync(singleFile, 'utf8');
+    const i = html.indexOf('window.MG_PRELAYOUT = {');
+    if (i < 0) throw new Error('生产分发物缺内联预计算布局：dist/mathgalaxy.html 里没有 window.MG_PRELAYOUT —— 用户首次打开会被迫冷算');
+    const want = JSON.parse(fs.readFileSync(path.join(DIST, LAYOUT_FILE), 'utf8'));
+    const head = html.slice(i, i + 400);
+    if (!head.includes('"sig":"' + want.sig + '"')) throw new Error('dist/mathgalaxy.html 内联的布局签名与 dist/layout.json 不一致（不是同一次构建）');
+    for (const key of ['"routes":{', '"bg":{', '"tex":{']) {
+      if (!html.includes(key)) throw new Error('dist/mathgalaxy.html 内联产物缺 ' + key + '（路由 / 静态密度）—— 生产启动会退回现算');
+    }
+    console.log('  ✓ 单文件内联了与 layout.json 同签名的坐标 / 路由 / 静态密度（生产启动无需求解）');
+  }
 }
 
 /* ⭐⭐ 性能不变量硬门（2026-11-09）—— **放在最后，但一定要跑**。

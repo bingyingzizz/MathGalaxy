@@ -101,7 +101,17 @@
 
       temp0: 62,                  // 初始温度（同时是每步位移上限）
       temp1: 0.5,                 // 终止温度
-      maxStep: 26
+      maxStep: 26,
+
+      /* Task 3 · 自由力导向松弛（Layout B）：见 src/core/freelayout.js。
+         version 进布局签名（JSON.stringify(config.layout)）⇒ 改算法/参数即让旧预计算与缓存失效。 */
+      free: {
+        enabled: true, version: 1,
+        iterations: 650, repulsion: 170000, minGap: 64, collide: 2.8,
+        springLen: 100, springK: 0.8, degExp: 0.18, centerPull: 0.001,
+        cutoff: null,                // 斥力截断半径；null = 精确 O(n²)（默认）。有限值会明显改变布局（实测 700：宽度 −16%）
+        separate: 60                 // 收尾成对松弛的最小间距
+      }
     },
 
     /* 相机 */
@@ -241,7 +251,15 @@
          k=1.5 时一条 500 单位（约 4 条边）的推出线在屏幕上 750px，
          旧口径把它压到 0.1，看起来像断了。世界长度才是「这条关系跨了多少条边」。
          < start ⇒ 不降；到 end ⇒ 降到 floor。选中 / 悬停的边永不降。 */
-      longFade: { start: 1300, end: 3400, floor: 0.18 }
+      longFade: { start: 1300, end: 3400, floor: 0.18 },
+      /* Task 3：定义线的两项**总览档**标定（自由布局把定义线变短了：世界长度 >1300 的占比 6.7%→0.4%、
+         p90 1119→618、均长 −33%，原来按 1300→3400 设计的长边衰减几乎不起作用，线又短又均匀，
+         在同一笔合并描边里糊成一片）。只管定义线；推出/等价/类比与近景外观不动。
+         · defLongFade：按新分布重标的长边衰减（≈ 原值 ×0.55，对应 p90 的比例）；
+         · defWidthOverview：总览档线宽（参考候选 0.72，不是通用常数），在 defWidthRel 区间内平滑过渡到 definitionWidth。 */
+      defLongFade: { start: 700, end: 1900, floor: 0.18 },
+      defWidthOverview: 0.72,
+      defWidthRel: [1.35, 2.8]
     },
 
     /* 星团包络（每个「装置」的范围）
@@ -258,8 +276,28 @@
       width: 1.6
     },
 
+    /* Task 3 · 推出超边路由（构建期求解，世界坐标）。整个对象进路由签名：改任何旋钮 ⇒ 旧产物作废。
+       ⚠️ 数字是工程旋钮，不是数学规则（见 tools/lib/routeopt.mjs 的说明）。 */
+    route: {
+      version: 1,
+      enabled: true,
+      refK: 0.8371509638705014,   // 参考缩放：把箭头/线宽的屏幕像素折成世界单位
+      maxBends: 260,              // 局部折点上限
+      bendOverlapMin: 22,
+      fanMaxAngleDeg1: 38, fanMaxAngleDeg2: 18,
+      mergeMinSaving: 55, mergeMinFrac: 0.25
+    },
+
     /* 电子云背景 */
     background: {
+      /* Task 3 · B+ 密度背景（取代「每板块一个圆」）：见 src/core/density.js。整个对象进布局签名与密度签名。
+         ⚠️ 数字是视觉旋钮：σ 是世界单位的核带宽；kRegion/kCluster 是饱和系数（防重叠区无限变深）。 */
+      density: {
+        enabled: true, version: 1,
+        longSide: 512, padRatio: 0.35,
+        sigmaRegion: 180, sigmaCluster: 95, sigmaSector: 240,
+        kRegion: 0.115, kCluster: 0.32, mix: 0.42
+      },
       /* ENG-009 的雾场（2026-11-08 恢复；背景粒子已全删）。
          纹理覆盖可见节点 bbox + fogPadRatio 的外扩，四周径向羽化到 alpha=0，
          所以任何视口、任何缩放下都看不到「云的边」。
@@ -427,6 +465,11 @@
     hideParallelImplications: true, // 已有等价线时不再叠画同对节点的箭头
     highlightDefinitions: true,   // 面板上把「定义引用」单独分组
 
+    /* Task 3D（2026-11-26）节点名的精确加速：稀疏网格归属 / 阈值字号 / 数值避让索引 / 静态优先级序复用 /
+       缩放帧直画主画布 + 停下时懒物化进标签层。结果与旧实现逐项相同（PERFORMANCE.md §13）。
+       关掉：?labfast=0 或 MG.app.setLabelFast(false) ⇒ 逐行退回 Task 3C 的标签实现（正确性兜底 / A/B）。 */
+    labelRender: { fast: true },
+
     /* Phase A：世界位图（DOM canvas + CSS transform 载体）
        maxSide = 单图最长边（设备像素）；k ≤ maxSide/世界长 才启用，超出交 Phase B。
        内存：4096×3475 单份 ≈54MB，两代并存 ≈109MB。阶梯 4096→3600→2048→关。 */
@@ -483,6 +526,12 @@
          100 ⇒ ≈0.6 帧预算、150 ⇒ ≈0.4、200 ⇒ ≈0.3（按整帧预算估的占用）。
          旋钮：&zoomms=<ms> 或 MG.app.setZoomMs(<ms>)。 */
       zoomMs: 150,
+      /* Task 3C 增量烘焙（区域档、同 k 平移）：旧图与新矩形重叠的部分整数像素搬过去，
+         只重画新露出的 ≤2 个矩形（仍按 bandPx 的像素量切片、一帧一片）。
+         关掉：?reuse=0 或 MG.app.setReuse(false) ⇒ 逐位退回整张带轮（正确性兜底）。
+         reuseMin = 重叠面积占比下限，低于它就整张重烘；取值依据见 PERFORMANCE.md §12。 */
+      reuse: true,
+      reuseMin: 0.25,
       settleMs: 180        // 停手多久才允许重烘（手势期间一律不烘）
     }
   };

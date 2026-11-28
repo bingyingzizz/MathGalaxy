@@ -45,25 +45,64 @@
      字宽完全不同；不带语言的缓存一旦跨语言复用，排出来的标签就会互相压叠。
      换语言时 `MG.localizeDisplay` 还会整体清一次（两条一起才算数）。
      ⚠️ 这是**防回归**（现在换语言走整页重载），不是修 bug。 */
-  var textCache = Object.create(null);
+  /* 两代精确宽度。满一代只换表，不在缩放帧逐项删除，也不给旧命中重排。 */
+  var TEXT_CACHE_BATCH = 8192;
+  var textCache = Object.create(null), textPrevious = Object.create(null);
+  var textCount = 0, textPreviousCount = 0, textHighWater = 0, textEvicted = 0;
   function textCacheKey(text, font) { return (MG.displayLang || 'zh') + '|' + font + '|' + text; }
-  function measure(ctx, text, font) {
-    var key = textCacheKey(text, font);
+  function textWidth(key) {
     var w = textCache[key];
-    if (w == null) {
-      var old = ctx.font;
-      ctx.font = font;
-      w = ctx.measureText(text).width;
-      ctx.font = old;
-      textCache[key] = w;
+    return w === undefined ? textPrevious[key] : w;
+  }
+  function rememberWidth(key, w) {
+    if (textCount === TEXT_CACHE_BATCH) {
+      textEvicted += textPreviousCount;
+      textPrevious = textCache;
+      textPreviousCount = textCount;
+      textCache = Object.create(null);
+      textCount = 0;
     }
+    textCache[key] = w;
+    textCount++;
+    if (textCount + textPreviousCount > textHighWater) textHighWater = textCount + textPreviousCount;
     return w;
   }
+  function measureMissing(ctx, text, font, key) {
+    var old = ctx.font;
+    ctx.font = font;
+    var w;
+    try { w = ctx.measureText(text).width; }
+    finally { ctx.font = old; }
+    return rememberWidth(key, w);
+  }
+  function measure(ctx, text, font) {
+    var key = textCacheKey(text, font);
+    var w = textWidth(key);
+    return w === undefined ? measureMissing(ctx, text, font, key) : w;
+  }
   /** 换语言后把量过的宽度全部作废（由 MG.localizeDisplay 调用） */
-  function clearTextCache() { textCache = Object.create(null); }
+  function clearTextCache() {
+    textCache = Object.create(null);
+    textPrevious = Object.create(null);
+    textCount = textPreviousCount = 0;
+  }
   MG.clearTextCache = clearTextCache;
-  MG.textCacheSize = function () { return Object.keys(textCache).length; };
+  MG.textCacheSize = function () { return textCount + textPreviousCount; };
   MG.textCacheKey = textCacheKey;
+
+  /* 同一画布的排序与落笔只换字体和锚点；量宽不受锚点影响。
+     独立小画布即使 getter 相同，字体回退也可能不同。save/restore 保留内部原始字号。 */
+  function measureDeferred(ctx, text, font, key) {
+    ctx.save();
+    try {
+      ctx.font = font;
+      return rememberWidth(key, ctx.measureText(text).width);
+    } finally { ctx.restore(); }
+  }
+  MG.textCacheStats = function () {
+    return { size: MG.textCacheSize(), highWater: textHighWater, limit: 2 * TEXT_CACHE_BATCH,
+      evicted: textEvicted };
+  };
 
   /* ------------------------------------------------------------ LOD 工具 */
   function smoothstep(e0, e1, x) {
@@ -104,6 +143,352 @@
     ctx.arcTo(x, y, x + w, y, q);
     ctx.closePath();
   }
+
+  /* ======================================================================= */
+  /* ⭐ Task 3D（2026-11-26）：节点名的**精确**加速 —— 与旧实现逐项等价，不是近似。
+     下面这一段是纯函数（只碰传进来的数组 / ctx），`tools/labelcheck.mjs` 按 begin/end 两行标记
+     整段抽出来，与旧实现（仍保留在 createRenderer 里，`?labfast=0` / setLabelFast(false) 走它）对拍。
+     ⛔ 这里的每一个比较（< 还是 <=、Math.floor、1e8 哨兵、1.25 / 1.6、按插入序取第一个阻挡者）
+        都决定「谁有名字、字多大、被谁挤掉」——改任何一处先跑 labelcheck，再看 PERFORMANCE.md §13。 */
+  /* ---- label-fast:begin ---- */
+  /** Map 的键按插入序取出（不分配 [k,v] 对；ES5 语法，经典 <script> 能跑） */
+  function mapKeys(m) {
+    var out = [], it = m.keys(), e;
+    while (!(e = it.next()).done) out.push(e.value);
+    return out;
+  }
+
+  /** 网格坐标是否在「整数步进精确」的范围里。⛔ 不是可有可无：坐标为 ±Infinity 或 |x/cell| ≳ 2^53 时
+      `for (x = cx - lim; x <= cx + lim; x++)` 的 x++ 不再前进 ⇒ 死循环（V8 原型就有这个洞）。
+      不满足 ⇒ 调用方退回旧实现（旧实现按偏移量 gx = -lim..lim 循环，次数有限）。 */
+  var LABEL_GRID_MAX = 1e15;
+  function labelCoordsOk(ns, cell) {
+    if (!(cell > 0) || !isFinite(cell)) return false;
+    for (var i = 0; i < ns.length; i++) {
+      var gx = ns[i].x / cell, gy = ns[i].y / cell;
+      if (!(Math.abs(gx) < LABEL_GRID_MAX) || !(Math.abs(gy) < LABEL_GRID_MAX)) return false;
+    }
+    return true;
+  }
+
+  /** 世界空间归属（= 旧 labelOwnSet 的贪心循环）：稀疏数值网格。
+      ns 已按「优先级降序、id 升序」排好；返回 {id:1}。
+      与旧实现等价的根据：同一个 cell、同一个 Math.floor、同一个窗口 [c-lim, c+lim]、
+      同一个严格不等式与半宽回退 (m.hw || hw)；旧实现用字符串键 "x,y" 逐格查，这里只查**存在的**格。
+      返回 null = 输入不受支持（非有限 / 超大坐标、非有限参数）⇒ 调用方走旧实现。 */
+  function labelOwnSparse(ns, k, S, P) {
+    if (!isFinite(k) || !isFinite(S) || !isFinite(P)) return null;
+    var kk0 = Math.max(0.02, k), cell = Math.max(6, (S + 12) / kk0);
+    if (!labelCoordsOk(ns, cell)) return null;
+    var cols = new Map(), set = Object.create(null);
+    var nx, ny, hw, hh, cy, lim;
+    function test(arr) {
+      if (!arr) return false;
+      for (var i = 0; i < arr.length; i++) {
+        var m = arr[i];
+        if (Math.abs(m.x - nx) < hw + (m.hw || hw) && Math.abs(m.y - ny) < hh + (m.hh || hh)) return true;
+      }
+      return false;
+    }
+    function hitCol(col) {
+      if (col.size < 2 * lim + 1) {
+        var ys = mapKeys(col);
+        for (var j = 0; j < ys.length; j++) if (ys[j] >= cy - lim && ys[j] <= cy + lim && test(col.get(ys[j]))) return true;
+      } else {
+        for (var y = cy - lim; y <= cy + lim; y++) if (test(col.get(y))) return true;
+      }
+      return false;
+    }
+    for (var q = 0; q < ns.length; q++) {
+      var n = ns[q], txt = n.labelShow || n.label;
+      if (!txt) continue;
+      var ww = (txt.length * S * 0.95 + P * 2) / kk0, hW = (S + 6) / kk0;
+      nx = n.x; ny = n.y; hw = ww / 2; hh = hW / 2;
+      var cx = Math.floor(n.x / cell);
+      cy = Math.floor(n.y / cell);
+      lim = Math.ceil(Math.max(ww, hW) * 0.68 / cell);
+      var blocked = false;
+      if (cols.size < 2 * lim + 1) {
+        var xs = mapKeys(cols);
+        for (var a = 0; a < xs.length && !blocked; a++) {
+          if (xs[a] >= cx - lim && xs[a] <= cx + lim && hitCol(cols.get(xs[a]))) blocked = true;
+        }
+      } else {
+        for (var x = cx - lim; x <= cx + lim && !blocked; x++) {
+          var col0 = cols.get(x);
+          if (col0 && hitCol(col0)) blocked = true;
+        }
+      }
+      if (blocked) continue;
+      var col = cols.get(cx);
+      if (!col) cols.set(cx, col = new Map());
+      var arr = col.get(cy);
+      if (!arr) col.set(cy, arr = []);
+      arr.push({ x: n.x, y: n.y, hw: hw, hh: hh });
+      set[n.id] = 1;
+    }
+    return set;
+  }
+
+  /** 字号档（= 旧 fillSize 的 O(n²) 最近邻）：只需知道「切比雪夫距离 / R 有没有 < 1.25、< 1.6 的邻居」。
+      候选格范围保守（+1 格余量）；最终判定逐字沿用旧式子（同一个除法、严格 <、1e8 哨兵、按对象身份排除自己）。
+      写 out[id]（= ownSizeMap，只写归属者；非归属者保留旧值，与旧实现一致）。
+      返回 false = 输入不受支持（k / S 非有限、非有限 / 超大坐标）⇒ 调用方走旧实现。 */
+  function labelThresholdSizes(acc, k, S, out) {
+    if (!isFinite(k) || !isFinite(S)) return false;
+    var kk = Math.max(0.02, k), cell = Math.max(6, (S + 12) / kk), cols = new Map();
+    if (!labelCoordsOk(acc, cell)) return false;
+    var i, n, c, a;
+    for (i = 0; i < acc.length; i++) {
+      n = acc[i];
+      var gx = Math.floor(n.x / cell), gy = Math.floor(n.y / cell);
+      c = cols.get(gx); if (!c) cols.set(gx, c = new Map());
+      a = c.get(gy); if (!a) c.set(gy, a = []);
+      a.push(n);
+    }
+    var me, R, size, cy, lim, mx, my;
+    function test(arr) {
+      if (!arr) return false;
+      for (var j = 0; j < arr.length; j++) {
+        var m = arr[j];
+        if (m === me) continue;
+        var d = Math.max(Math.abs(m.x - mx), Math.abs(m.y - my));
+        var ratio = d < 1e8 ? d / R : 9;
+        if (ratio < 1.25) { size = 0.72; return true; }
+        if (ratio < 1.6) size = 0.85;
+      }
+      return false;
+    }
+    function scan(col) {
+      if (col.size < 2 * lim + 1) {
+        var ys = mapKeys(col);
+        for (var j = 0; j < ys.length; j++) if (ys[j] >= cy - lim && ys[j] <= cy + lim && test(col.get(ys[j]))) return true;
+      } else {
+        for (var y = cy - lim; y <= cy + lim; y++) if (test(col.get(y))) return true;
+      }
+      return false;
+    }
+    for (i = 0; i < acc.length; i++) {
+      me = acc[i]; mx = me.x; my = me.y;
+      R = Math.max(8, (me.labelShow || me.label || '').length * S * 0.95) / kk;
+      var cx = Math.floor(me.x / cell);
+      cy = Math.floor(me.y / cell);
+      lim = Math.ceil(Math.min(1e8, 1.6 * R) / cell) + 1;
+      size = 1;
+      if (cols.size < 2 * lim + 1) {
+        var xs = mapKeys(cols);
+        for (var p = 0; p < xs.length; p++) if (xs[p] >= cx - lim && xs[p] <= cx + lim && scan(cols.get(xs[p]))) break;
+      } else {
+        for (var x = cx - lim; x <= cx + lim; x++) { c = cols.get(x); if (c && scan(c)) break; }
+      }
+      out[me.id] = size;
+    }
+    return true;
+  }
+
+  /** 旧 hitOf：按插入序返回**第一个**严格相交的框 */
+  function labelLinearHit(box, list) {
+    for (var i = 0; i < list.length; i++) {
+      var b = list[i];
+      if (box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0) return b;
+    }
+    return null;
+  }
+
+  /** 屏幕空间避让索引（只追加）：返回与 labelLinearHit **同一个**阻挡者（插入序最小的那个），
+      不是「随便一个撞上的」。list 只许 push（查询前把新追加的补进格子）；
+      坐标非有限 / 反向 / 太大（>4096 格）的框进 overflow（每次都查），查询框本身不合格就退回线性扫描。 */
+  function labelGridIndex(list) {
+    var cell = 64, cols = new Map(), overflow = [], seen = [], stamp = 0, size = 0, best = 0;
+    var r0 = 0, r1 = 0, r2 = 0, r3 = 0, qb = null;
+    function range(b) { r0 = Math.floor(b.x0 / cell); r1 = Math.floor(b.x1 / cell); r2 = Math.floor(b.y0 / cell); r3 = Math.floor(b.y1 / cell); }
+    function rangeOk() {
+      return isFinite(r0) && isFinite(r1) && isFinite(r2) && isFinite(r3) &&
+        Math.abs(r0) < LABEL_GRID_MAX && Math.abs(r1) < LABEL_GRID_MAX &&
+        Math.abs(r2) < LABEL_GRID_MAX && Math.abs(r3) < LABEL_GRID_MAX &&   // 超大坐标 x++ 不前进 ⇒ 进 overflow / 线性
+        r1 >= r0 && r3 >= r2 && (r1 - r0 + 1) * (r3 - r2 + 1) <= 4096;
+    }
+    function check(i) {
+      if (i >= best || seen[i] === stamp) return;
+      seen[i] = stamp;
+      var b = list[i];
+      if (qb.x0 < b.x1 && qb.x1 > b.x0 && qb.y0 < b.y1 && qb.y1 > b.y0) best = i;
+    }
+    return function (box) {
+      var i, x, y, col, a;
+      while (size < list.length) {
+        i = size++;
+        range(list[i]);
+        if (!rangeOk()) { overflow.push(i); continue; }
+        for (x = r0; x <= r1; x++) {
+          col = cols.get(x); if (!col) cols.set(x, col = new Map());
+          for (y = r2; y <= r3; y++) { a = col.get(y); if (!a) col.set(y, a = []); a.push(i); }
+        }
+      }
+      range(box);
+      if (!rangeOk()) return labelLinearHit(box, list);
+      best = list.length; stamp++; qb = box;
+      for (i = 0; i < overflow.length; i++) check(overflow[i]);
+      for (x = r0; x <= r1; x++) {
+        col = cols.get(x); if (!col) continue;
+        for (y = r2; y <= r3; y++) { a = col.get(y); if (a) for (var j = 0; j < a.length; j++) check(a[j]); }
+      }
+      qb = null;
+      return best < list.length ? list[best] : null;
+    };
+  }
+
+  /** 静态优先级序（跨帧复用）：order = [{n, p, on}]（graph.nodes 的顺序）。
+      idx = 按 p 降序、**输入序**升序（屏幕排序的平手规则 = 稳定排序）；
+      own = 按 p 降序、**id 字典序**升序（= 旧 labelOwnSet 的排序）。
+      exact=false（优先级非有限 / id 重复 ⇒ 旧比较器不是全序、结果依赖排序算法）⇒ 调用方走旧排序。 */
+  function labelRankBuild(order) {
+    var n = order.length, idx = new Array(n), nodes = new Array(n), prios = new Array(n);
+    var seen = Object.create(null), exact = true, i;
+    for (i = 0; i < n; i++) {
+      idx[i] = i; nodes[i] = order[i].n; prios[i] = order[i].p;
+      if (typeof prios[i] !== 'number' || !isFinite(prios[i])) exact = false;
+      var id = nodes[i] && nodes[i].id;
+      if (typeof id !== 'string' || seen[id]) exact = false; else seen[id] = 1;
+    }
+    var own = idx.slice();
+    idx.sort(function (a, b) { return (order[b].p - order[a].p) || (a - b); });
+    own.sort(function (a, b) { return (order[b].p - order[a].p) || (order[a].n.id < order[b].n.id ? -1 : 1); });
+    for (i = 0; i < n; i++) own[i] = order[own[i]].n;
+    return { nodes: nodes, prios: prios, idx: idx, own: own, exact: exact };
+  }
+  /** 能不能复用：同长、逐个同一节点对象、逐个同一优先级值 */
+  function labelRankSame(R, order) {
+    if (!R || R.nodes.length !== order.length) return false;
+    for (var i = 0; i < order.length; i++) if (R.nodes[i] !== order[i].n || R.prios[i] !== order[i].p) return false;
+    return true;
+  }
+  /** 稳定划分：按优先级序扫一遍，on=1 的在前 ⇒ 与 order.sort((b.on-a.on)||(b.p-a.p)) 逐项相同 */
+  function labelRankPartition(R, order) {
+    var yes = [], no = [], i, q;
+    for (i = 0; i < R.idx.length; i++) { q = order[R.idx[i]]; (q.on ? yes : no).push(q); }
+    for (i = 0; i < no.length; i++) yes.push(no[i]);
+    return yes;
+  }
+
+  /* ---- 直画 + 懒物化（缩放帧直接画进主画布；停下要回放时才把这一帧的命令补画进标签层） ---- */
+  var LABEL_STATE_KEYS = ['font', 'textAlign', 'textBaseline', 'direction', 'fontKerning', 'fontStretch',
+    'fontVariantCaps', 'letterSpacing', 'wordSpacing', 'textRendering', 'lineWidth', 'lineCap', 'lineJoin',
+    'miterLimit', 'fillStyle', 'strokeStyle', 'globalAlpha', 'globalCompositeOperation', 'shadowBlur',
+    'shadowColor', 'shadowOffsetX', 'shadowOffsetY', 'filter', 'lineDashOffset'];
+  /** 结构性名字（板块 / 领域 / 星团）允许被记录的方法；别的方法一出现 ⇒ 记录作废（照画，但不能物化） */
+  var LABEL_REC_METHODS = { save: 1, restore: 1, beginPath: 1, closePath: 1, moveTo: 1, lineTo: 1, arcTo: 1,
+    arc: 1, roundRect: 1, quadraticCurveTo: 1, bezierCurveTo: 1, rect: 1, fill: 1, stroke: 1, fillText: 1,
+    strokeText: 1, fillRect: 1, strokeRect: 1, setLineDash: 1 };
+  function labelReadState(g) {
+    var st = {};
+    for (var i = 0; i < LABEL_STATE_KEYS.length; i++) { var k = LABEL_STATE_KEYS[i]; if (k in g) st[k] = g[k]; }
+    return { state: st, dash: g.getLineDash() };
+  }
+  function labelWriteState(g, s) {
+    for (var k in s.state) if (Object.prototype.hasOwnProperty.call(s.state, k) && k in g && g[k] !== s.state[k]) g[k] = s.state[k];
+    g.setLineDash(s.dash);
+  }
+  /** 状态键从 src 抄到 dst（只抄两边都有、且不同的） */
+  function labelCopyState(dst, src) {
+    for (var i = 0; i < LABEL_STATE_KEYS.length; i++) {
+      var k = LABEL_STATE_KEYS[i];
+      if (k in dst && k in src && dst[k] !== src[k]) dst[k] = src[k];
+    }
+    dst.setLineDash(src.getLineDash());
+  }
+  /** 记录器：照常在 g 上画，同时把命令按顺序记进 rec.struct。
+      [0, 方法, 参数] / [1, 属性, 值]。不认识的方法、非字符串/数字的属性值（渐变等）、
+      不配对的 save/restore ⇒ rec.valid=false（这一帧照样画对，只是停下时不物化、改走重算）。
+      没有 Proxy 的环境返回 null（调用方直接画、记录作废）。 */
+  function labelRecorder(g, rec) {
+    if (typeof Proxy !== 'function' || typeof Reflect === 'undefined') return null;
+    var wrapped = Object.create(null);
+    return new Proxy(g, {
+      get: function (t, k) {
+        var v = Reflect.get(t, k, t);
+        if (typeof v !== 'function') return v;
+        if (wrapped[k]) return wrapped[k];
+        var fn;
+        if (LABEL_REC_METHODS[k] === 1) {
+          fn = function () {
+            var args = Array.prototype.slice.call(arguments);
+            for (var i = 0; i < args.length; i++) if (Array.isArray(args[i])) args[i] = args[i].slice();
+            if (k === 'restore' && rec.depth <= 0) rec.valid = false;
+            var out = v.apply(t, arguments);
+            if (k === 'save') rec.depth++; else if (k === 'restore') rec.depth--;
+            rec.struct.push([0, k, args]);
+            return out;
+          };
+        } else if (k === 'measureText' || k === 'getLineDash') {
+          fn = function () { return v.apply(t, arguments); };
+        } else {
+          fn = function () { rec.valid = false; return v.apply(t, arguments); };
+        }
+        wrapped[k] = fn;
+        return fn;
+      },
+      set: function (t, k, v) {
+        var ok = Reflect.set(t, k, v, t);
+        if (ok) {
+          if (LABEL_STATE_KEYS.indexOf(k) >= 0 && (typeof v === 'string' || typeof v === 'number')) rec.struct.push([1, k, v]);
+          else rec.valid = false;
+        }
+        return ok;
+      }
+    });
+  }
+  /** 物化：清层 → 原来的「带余量 dpr 变换」→ 起始状态 → 结构命令（原序）→ 节点名墨迹（原序）。
+      外面包一层 save/restore ⇒ 层的状态回到调用前（= 直画帧结束时抄回来的终态）。
+      抛异常 / 不配对 ⇒ 抛出（调用方判失败、改走重算）。 */
+  function labelReplayRecord(g, rec, d, ox, cw, ch) {
+    var depth = 0, i, cmd;
+    g.save();
+    try {
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.clearRect(0, 0, cw, ch);
+      g.setTransform(d, 0, 0, d, ox, ox);
+      labelWriteState(g, rec.start);
+      for (i = 0; i < rec.struct.length; i++) {
+        cmd = rec.struct[i];
+        if (cmd[0] === 1) { g[cmd[1]] = cmd[2]; continue; }
+        if (cmd[1] === 'restore' && depth <= 0) throw new Error('label replay: unbalanced restore');
+        g[cmd[1]].apply(g, cmd[2]);
+        if (cmd[1] === 'save') depth++; else if (cmd[1] === 'restore') depth--;
+      }
+      if (depth !== 0) throw new Error('label replay: unbalanced save');
+      var ns = rec.nodes;
+      if (ns.length) {
+        g.textAlign = 'center';
+        g.textBaseline = 'top';
+        for (i = 0; i < ns.length; i += 7) {
+          g.font = ns[i + 3]; g.lineWidth = ns[i + 4]; g.strokeStyle = ns[i + 5];
+          g.strokeText(ns[i], ns[i + 1], ns[i + 2]);
+          g.fillStyle = ns[i + 6];
+          g.fillText(ns[i], ns[i + 1], ns[i + 2]);
+        }
+      }
+    } finally {
+      while (depth > 0) { g.restore(); depth--; }
+      g.restore();
+    }
+    return true;
+  }
+  /** 交接判据：**原来的位图策略**在这一帧会不会回放这张缓存？会才物化，不会就扔掉记录走重算。
+      逐项照抄 drawAllNames 的回放条件：同 k / 同尺寸 / 同指纹 / 同层 / 同 dpr；
+      机位逐位相同 ⇒ 回放；有位移 ⇒ 只在 !far && !stopped 时回放（far = min(半屏, 余量×0.9)）。 */
+  function labelHandoffOk(cache, c, prev, sig, layer, d, w, h, margin) {
+    if (!cache || !cache.directOnly || !cache.record || !cache.record.valid || !layer || !layer.g ||
+        cache.record.layer !== layer || layer.dpr !== d || cache.k !== c.k ||
+        cache.w !== w || cache.h !== h || cache.sig !== sig) return false;
+    if (cache.tx === c.tx && cache.ty === c.ty) return true;
+    var vw = c.viewW || w, vh = c.viewH || h;
+    var far = Math.abs(c.tx - cache.tx) > Math.min(vw * 0.5, margin * 0.9) ||
+              Math.abs(c.ty - cache.ty) > Math.min(vh * 0.5, margin * 0.9);
+    var stopped = !!(prev && prev.k === c.k && prev.tx === c.tx && prev.ty === c.ty);
+    return !far && !stopped;
+  }
+  /* ---- label-fast:end ---- */
 
   /* ======================================================================= */
   function createRenderer(canvas, view) {
@@ -288,53 +673,14 @@
        所以判据用「被多少个 definition 边当作出处」（out-degree），同分再看层号小、id 小 ——
        `def.group`（35）、`def.topology`（31）同一规则选出来也对。
        缓存按 `view.graph` 引用：只在换图（rebuild / 外部包合并）时重算。 */
-    var entryCache = { g: null, set: null };
-    var NO_ENTRY = {};
-    function entryDefSet() {
-      var g = view && view.graph;
-      if (!g) return NO_ENTRY;
-      if (entryCache.g === g) return entryCache.set;
-      var out = Object.create(null), i, e;
-      for (i = 0; i < g.edges.length; i++) {
-        e = g.edges[i];
-        if (e.kind === 'definition' && e.definition && e.usedBy) out[e.definition] = (out[e.definition] || 0) + 1;
-      }
-      var byC = Object.create(null), set = Object.create(null);
-      g.nodes.forEach(function (n) {
-        if (n.type !== 'definition' || !n.cluster) return;
-        var o = out[n.id] || 0, c = byC[n.cluster];
-        if (!c || o > c.out || (o === c.out && (n.layer < c.layer || (n.layer === c.layer && n.id < c.id)))) {
-          byC[n.cluster] = { id: n.id, out: o, layer: n.layer };
-        }
-      });
-      Object.keys(byC).forEach(function (cid) { set[byC[cid].id] = true; });
-      entryCache.g = g; entryCache.set = set;
-      return set;
-    }
+    function entryDefSet() { return MG.nodeSize.entrySet(view && view.graph); }
     function isEntryDef(node) { return !!(node && node.id && entryDefSet()[node.id]); }
 
     /* -------------------------------------------------------- 尺寸计算 */
     /** 半径倍率：按「是不是中心天体 / 度数多大」分档。
         分档表在 config.js 的 node.sizeTiers —— 那里写了为什么不再用
         ×1.32 / ×1.22 那种「叠乘」写法（差距太小，看不出层级）。 */
-    function sizeMul(node) {
-      if (!node) return 1;
-      var t = C.node.sizeTiers;
-      if (!t) {
-        // 没有分档表时的老行为（保底）
-        var m = 1;
-        if (node.degree >= 5) m *= 1.22; else if (node.degree >= 3) m *= 1.1;
-        if (node.isHub) m *= 1.32;
-        return m;
-      }
-      if (isEntryDef(node)) return t.entry || t.hub;   // 团入口定义：最大一档（先于 hub，避免同团 hub 抢档）
-      if (node.isHub) return t.hub;
-      var d = node.degree || 0;
-      for (var i = 0; i < t.byDegree.length; i++) {
-        if (d >= t.byDegree[i][0]) return t.byDegree[i][1];
-      }
-      return 1;
-    }
+    function sizeMul(node) { return MG.nodeSize.mul(node, view && view.graph); }
 
     function nodeRadius(node) {
       /* ⭐ 2026-11-16（用户，第二次口径）：「不是点在屏幕中占的比例不变，是绝对大小不变，
@@ -397,13 +743,15 @@
       var ids = GU.edgeNodes(e);
       if (!ids.length) return false;
       var x1v = cullBox ? cullBox.x1 : W, y1v = cullBox ? cullBox.y1 : H;
-      var y0v = cullBox ? cullBox.y0 : 0;
+      /* Task 3C：增量烘焙会画竖条（x0 > 0），左边界也必须认 cullBox —— 否则竖条里
+         「所有端点都在竖条左侧之外」的线照样进几何（只是白算，不会丢线）。 */
+      var x0v = cullBox ? cullBox.x0 : 0, y0v = cullBox ? cullBox.y0 : 0;
       var left = true, right = true, up = true, down = true;
       for (var i = 0; i < ids.length; i++) {
         var n = view.graph.byId[ids[i]];
         if (!n) continue;
         var x = nodeSX(n), y = nodeSY(n);
-        if (x > -PAD_EDGE) left = false;
+        if (x > x0v - PAD_EDGE) left = false;
         if (x < x1v + PAD_EDGE) right = false;
         if (y > y0v - PAD_EDGE) up = false;
         if (y < y1v + PAD_EDGE) down = false;
@@ -420,7 +768,7 @@
 
     /** 线段与（带余量的）视口矩形相交？Liang–Barsky 参数裁剪，O(1)。 */
     function segHitsView(x1, y1, x2, y2) {
-      var l = -PAD_EDGE, r = (cullBox ? cullBox.x1 : W) + PAD_EDGE;
+      var l = (cullBox ? cullBox.x0 : 0) - PAD_EDGE, r = (cullBox ? cullBox.x1 : W) + PAD_EDGE;
       var t = (cullBox ? cullBox.y0 : 0) - PAD_EDGE, b = (cullBox ? cullBox.y1 : H) + PAD_EDGE;
       var dx = x2 - x1, dy = y2 - y1;
       var p = [-dx, dx, -dy, dy];
@@ -564,11 +912,35 @@
       return groups;
     }
 
+    /* ------------------------------------------------------------ 构建期路由（Task 3）
+       推出超边的几何由构建期求解（tools/lib/route*.mjs）、随预计算布局发出：自适应多路合并、
+       共同前提的延迟分流、局部去杂乱。运行时只**读**：不做任何求解。
+       · 数据：graph.routeData（已验签：布局签名 + 全部坐标哈希 + 配置）。签名对不上 ⇒ 根本没有这个对象
+         ⇒ 整张图回退到下面旧的「每条边一个汇合点」画法（绝不画过期几何）。
+       · 一条路由 = 世界坐标线段表；多条边共享的线段带同一个 fan 标签，只画一次，
+         点击它得到 {type:'fan', members}（可见成员），由界面让人选哪条证明。
+       · 汇合点/折点/分流点只是几何：不是数学节点，没有名字，不影响层号。 */
+    var routeSrc = null, routeMap = null;
+    function routesNow() {
+      var g = view.graph;
+      if (routeSrc === g) return routeMap;
+      routeSrc = g; routeMap = null;
+      if (g && g.routeData && MG.layoutCache && MG.layoutCache.decodeRoutes) {
+        try { routeMap = MG.layoutCache.decodeRoutes(g, g.routeData); } catch (err) { routeMap = null; }
+      }
+      return routeMap;
+    }
+    function routeOf(e) {
+      var m = routesNow();
+      return (m && e.id && e.kind === 'implication' && m[e.id]) || null;
+    }
+
     function trunkPlan(list) {
       var groups = trunkGroups(list);
       var out = Object.create(null);
       Object.keys(groups).forEach(function (key) {
         var arr = groups[key];
+        if (routeOf(arr[0])) return;               // 有构建期路由的边不走旧汇合点
         var tgt = arr[0].target;
         var tn = view.graph.byId[tgt];
         if (!tn) return;
@@ -668,7 +1040,7 @@
     var bakeGeom = null, bakeGeomCam = null;
     function ensureGeomBake() {
       var c = staticCam;
-      var bk = cullBox ? (cullBox.y0 + ":" + cullBox.y1) : "-";
+      var bk = cullBox ? (cullBox.x0 + ":" + cullBox.x1 + ":" + cullBox.y0 + ":" + cullBox.y1) : "-";
       if (bakeGeom && bakeGeomCam && bakeGeomCam.k === c.k && bakeGeomCam.tx === c.tx
         && bakeGeomCam.ty === c.ty && bakeGeomCam.w === W && bakeGeomCam.h === H
         && bakeGeomCam.band === bk) {
@@ -724,8 +1096,8 @@
          · 全图适配时所有线都短（世界再大也被缩到一屏）⇒ 骨架照常可见；
          · 放大后同一条线在屏幕上越来越长 ⇒ 自动退到 floor，局部结构才浮得出来。
        ⛔ 选中 / 悬停的边不降权（它在讲「我看的这一条从哪来」。） */
-    function edgeFade(g) {
-      var F = C.edge.longFade;
+    function edgeFade(g, Fover) {
+      var F = Fover || C.edge.longFade;
       if (!F || F.floor == null || F.floor >= 1) return 1;
       /* 用户主动打开「全部连线」= 他就是想看全，别再替他把长的压掉。 */
       if (C.showAllEdges) return 1;
@@ -746,6 +1118,37 @@
       var k = c.k || (E.widthRefK || 0.62);
       return U.clamp(Math.pow(k / (E.widthRefK || 0.62), E.widthPow == null ? 0.45 : E.widthPow),
         1, E.widthMax == null ? 2.6 : E.widthMax);
+    }
+
+    /** 路由 → 屏幕几何：逐段按节点屏幕半径裁剪；每段一个方向箭头（终端箭头更大）。
+        极小缩放下裁剪会反向 ⇒ 该段丢弃（宁可不画也不画反向线）。 */
+    function routeGeom(e, rt, tg) {
+      var byId = view.graph.byId, polys = [], arrows = [], fans = [], ends = [], seenEnd = Object.create(null);
+      for (var i = 0; i < rt.length; i++) {
+        var z = rt[i];
+        var A = w2s(z.a[0], z.a[1]), B = w2s(z.b[0], z.b[1]);
+        var d = Math.sqrt((B.x - A.x) * (B.x - A.x) + (B.y - A.y) * (B.y - A.y));
+        if (d < 1e-6) continue;
+        var ux = (B.x - A.x) / d, uy = (B.y - A.y) / d;
+        var sn = z.source ? byId[z.source] : null;
+        var sa = sn ? nodeRadius(sn) + 1.5 : 0, sb = z.target ? nodeRadius(tg) + 5 : 0;
+        if (sa + sb >= d) continue;
+        var a = { x: A.x + ux * sa, y: A.y + uy * sa }, b = { x: B.x - ux * sb, y: B.y - uy * sb };
+        polys.push([a, b]); fans.push(z.fan || null);
+        var l = d - sa - sb;
+        if (l > 3 && z.hotPart !== 1) {
+          arrows.push({
+            x: z.target ? b.x : a.x + 0.65 * (b.x - a.x), y: z.target ? b.y : a.y + 0.65 * (b.y - a.y),
+            angle: Math.atan2(uy, ux), len: l, terminal: !!z.target, fan: z.fan || null
+          });
+        }
+        if (z.source && !seenEnd[z.source]) { seenEnd[z.source] = 1; ends.push(z.source); }
+      }
+      if (!polys.length) return null;
+      ends.push(tg.id);
+      var g = edgeGeom(e, [], polys, null, null, ends);
+      g.routeArrows = arrows; g.fans = fans; g.trunk = { members: [e.id] };
+      return g;
     }
 
     function computeEdge(e, cam, bend, trunks) {
@@ -817,6 +1220,9 @@
          该边画，箭头也只画一次 —— 一条主干、一个箭镞。
          ⭐ 2026-11-20：分组键是**边 id**，不是 target —— 同目标的多条独立证明
          各有自己的汇合点/主干，点击不会串 proof。 */
+      var rt = routeOf(e);
+      if (rt) return routeGeom(e, rt, tg);
+
       var tp = trunks && trunks[e.id];
       if (tp) {
         var tpS = screenOf({ x: tp.wx, y: tp.wy });      // 世界汇合点 → 当前相机屏幕
@@ -924,6 +1330,7 @@
     function alphaForNode(id) {
       var f = view.focus;
       if (!f) return 1;
+      if (f.type === 'fan') return f.nodes.has(id) ? 1 : dimNode();
       if (f.type === 'node') return (id === f.id || isNeighbor(id, f.id)) ? 1 : dimNode();
       if (f.type === 'edge') {
         var e = edgeById(f.id);
@@ -935,6 +1342,7 @@
     function alphaForEdge(e) {
       var f = view.focus;
       if (!f) return 1;
+      if (f.type === 'fan') return f.members.has(e.id) ? 1 : dimEdge();
       if (f.type === 'node') return GU.edgeNodes(e).indexOf(f.id) >= 0 ? 1 : dimEdge();
       if (f.type === 'edge') return e.id === f.id ? 1 : dimEdge();
       return 1;
@@ -1047,7 +1455,8 @@
       drawEdges(anas);          // 弱边垫在最底下（平时几乎看不见）
       drawEdges(defs);
       drawEdges(eqs);
-      drawEdges(imps);
+      fanPass = new Map();
+      try { drawEdges(imps); } finally { flushFanPass(); }
       geoms.forEach(function (g) { if (g.arrow) drawArrow(g); });
       prof.edges += performance.now() - tE;
 
@@ -1121,7 +1530,9 @@
          ⇒ 屏幕上每次只脏一条带 ⇒ 「整张重新光栅化」那笔钱按带分帧摊掉
             （实测 k=1.2、3312×2056 的画布：整张 46~58ms/帧 → 1/10 带 ≤1 个时隙）。
          ⛔ y0 与 y0+h 必须是整数：小数的裁剪边会被抗锯齿，带与带之间就会出现接缝。
-         ⚠️ 清空写在裁剪**里面**：调用方不必管清底，也不会误清掉别的带。 */
+         ⚠️ 清空写在裁剪**里面**：调用方不必管清底，也不会误清掉别的带。
+       Task 3C：band 也可以是**任意矩形** {x0, y0, w, h}（增量烘焙的竖条/横条切片）；
+         不给 x0/w 时 = 整行宽（老调用方的横带，逐位不变）。四个量都必须是整数设备像素。 */
     function drawStatic(target, scale, rect, band, lodK) {
       var save = { ctx: ctx, W: W, H: H, dpr: dpr, cam: staticCam, cull: cullOff, cullBox: cullBox,
         hover: view.hover, labels: C.showLabels, glow: C.node.glow,
@@ -1151,7 +1562,9 @@
          和实时画同一套；PAD_NODE/PAD_EDGE 余量也在 ⇒ 与「不裁」逐像素一致。 */
       cullOff = false;
       /* ⭐ 带裁剪：只算/只画真的落在这一条带里的线（余量仍由 PAD_EDGE 负责） */
-      cullBox = (band && band.h > 0) ? { x0: 0, x1: W, y0: band.y0, y1: band.y0 + band.h } : null;
+      var bx0 = (band && band.x0 > 0) ? band.x0 : 0;
+      var bw = (band && band.w > 0) ? band.w : W - bx0;
+      cullBox = (band && band.h > 0) ? { x0: bx0, x1: bx0 + bw, y0: band.y0, y1: band.y0 + band.h } : null;
       view.hover = null;                    // hover 不进烘焙
       C.showLabels = false;                 // 标签不进烘焙
       C.node.glow = false;                  // 光晕实时画（实测 ≈0.05ms）
@@ -1169,9 +1582,9 @@
         if (band && band.h > 0) {
           ctx.save();
           ctx.beginPath();
-          ctx.rect(0, band.y0, W, band.h);
+          ctx.rect(bx0, band.y0, bw, band.h);
           ctx.clip();
-          ctx.clearRect(0, band.y0, W, band.h);
+          ctx.clearRect(bx0, band.y0, bw, band.h);
           clipped = true;
         } else {
           ctx.clearRect(0, 0, W, H);
@@ -1313,7 +1726,14 @@
 
     /* ------------------------------------------------ 大板块名（最远视角） */
     /* 板块落在哪：**成员领域 stat 重心的加权平均**（按节点数加权）。 */
+    /* 标签锚点：优先用密度峰（graph.densityAnchors，见 src/core/density.js），没有才回退到旧的质心/名字点。 */
+    function densityAnchor(kind, id) {
+      var a = view.graph.densityAnchors;
+      return a && a[kind] && a[kind][id] || null;
+    }
     function sectorAnchor(s) {
+      var da = densityAnchor('sector', s.id);
+      if (da) return { x: da[0], y: da[1] };
       var wsum = 0, x = 0, y = 0;
       (s.regions || []).forEach(function (r) {
         if (!r.stat) return;
@@ -1462,7 +1882,8 @@
         if (!r.stat || !r.name) return;
         // 整个星系的点都被藏起来了 → 只剩云雾，名字也不必出
         if (view.isNodeVisible && !regionHasVisible(r.id)) return;
-        var p = w2s(r.stat.nameX != null ? r.stat.nameX : r.stat.cx,
+        var dr = densityAnchor('region', r.id);
+        var p = dr ? w2s(dr[0], dr[1]) : w2s(r.stat.nameX != null ? r.stat.nameX : r.stat.cx,
                    r.stat.nameY != null ? r.stat.nameY : r.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         /* ⭐ T2.4 收尾：画布上的名字也要跟语言走。`nameShow` 是**启动时算一次**的
@@ -1576,6 +1997,8 @@
     }
 
     function drawEnvelopes() {
+      /* B+：自由布局下星团成员不再聚成一团，「成员外轮廓」会把无关区域圈进去；改由密度背景表达归属。 */
+      if (C.background && C.background.density && C.background.density.enabled) return;
       var a = lodA.envelope;
       if (a <= 0.02) return;
       var cfgE = C.envelope;
@@ -1658,7 +2081,8 @@
       (view.graph.clusters || []).forEach(function (c) {
         if (!c.stat || !c.name) return;
         if (view.isNodeVisible && !visibleIn(c.nodes)) return;   // 整团都藏起来了
-        var p = w2s(c.stat.cx, c.stat.cy);
+        var dc = densityAnchor('cluster', c.id);
+        var p = dc ? w2s(dc[0], dc[1]) : w2s(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = c.nameShow || c.name;      // ⭐ T2.4：星团名跟语言走（启动时算一次）
         /* ⚠️ 装置名之间也要互相避让：两个团挨得近时（比如「代数结构」与
@@ -1722,23 +2146,14 @@
           * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
         /* ⭐ 2026-10-19：全景/中景同样顶一个下限 —— 定义线占 89%，不顶就「只有推出线」 */
         if (!active && !C.showAllEdges && !view.focus) a = Math.max(a, lodA.edgeFloor);
-        if (!active) a *= edgeFade(g);          // 长边在屏幕空间降权
-        /* ⭐ 2026-10-19：**定义线这条「合并描边」路径以前完全没有视口裁剪** ——
-           两端都在屏外、只是线段横穿视口的线照样画。用户上报的「空白处几条长蓝线」
-           就是它（改前改后逐像素相同，正因为这两条路径压根不是同一条）。
-           口径：≥1.35 起，两端都在外 ⇒ 不画；只有一端在 ⇒ 按屏幕长度衰减。 */
-        if (!active && !C.showAllEdges && (lodA.rRel || 1) >= 1.35) {
-          var dEnds = GU.edgeNodes(e), dIn = 0;
-          for (var di = 0; di < dEnds.length; di++) {
-            var dn = view.graph.byId[dEnds[di]];
-            if (!dn) continue;
-            var dp = w2s(dn.x, dn.y);
-            if (dp.x >= 0 && dp.x <= W && dp.y >= 0 && dp.y <= H) dIn++;
-          }
-          if (dIn === 0) return;
-          if (dIn === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
-          if (a <= 0.06) return;
-        }
+        if (!active) a *= edgeFade(g, C.edge.defLongFade);   // 长边降权（定义线按新布局的长度分布单独标定）
+        /* ⭐ Task 3：**不再按端点是否在屏内取舍或衰减。**
+           旧规则（rRel≥1.35：两端都在屏外 ⇒ 不画；一端在屏内 ⇒ alpha×exp(−屏幕长度/320)）让一条
+           线随平移「端点离开视口就消失」，哪怕线段本身还穿过视口（实测 k=0.9：一端在屏内的定义线
+           平均只剩 0.35 的不透明度，两端都在屏外但穿过视口的有 14 条被丢）；位图烘焙时它还拿烘焙画布判端点，
+           重烘就跳变。线段只要与可见区域相交就该可见：相交判定已由 buildGeometry 的 polysHitView
+           与位图的 cullBox/带裁剪做完；「别让长线横穿空白」由上面按**世界长度**的 defLongFade 负责
+           （与相机/端点位置无关）。 */
         /* ⚠️ 选中 / 悬停的边：全景下节点级 LOD 的 alpha 是 0，会整条消失。
            用户点了一个点就想知道它连到哪 —— 和 drawEdgeOne 用同一个下限。 */
         if (active) a = Math.max(a, 0.55);
@@ -1751,6 +2166,12 @@
         /* 定义引用线**不跟着放大**（89% 的线都是它）。放大后如果它也变粗，
            整个画面会被蓝网盖住；「定义线降权」的既定口径不能破。 */
         var w = C.edge.definitionWidth * (active ? 1.85 : 1);
+        /* 总览档变细（近景 rRel≥defWidthRel[1] 时与原来逐位一致；选中/悬停不变）。
+           线宽在一帧内对所有未激活定义线相同，所以合并描边的分组数不增加。 */
+        if (!active && C.edge.defWidthOverview != null && C.edge.defWidthRel) {
+          var wt = smoothstep(C.edge.defWidthRel[0], C.edge.defWidthRel[1], lodA.rRel || 1);
+          w = C.edge.defWidthOverview + (C.edge.definitionWidth - C.edge.defWidthOverview) * wt;
+        }
         /* ⛔ 2026-10-19：定义引用线**永远用蓝**。原来 spineOnly（低缩放下 nodeEdge<0.9）会把
            定义线改画成主干色（T.spineColor 橙棕，低透明下看着就是黑的）—— 于是同一条定义线
            在全景是黑的、放大才变蓝（用户报）。主干强调只属于推出/等价，不该接管定义线。 */
@@ -1873,20 +2294,10 @@
            用户要求这一档只留蓝色的定义引用当雾网。 */
         if (rT < 1.35 && e.kind !== 'definition') { edgeTrace(g, 'far', 0, aLod, -1); return; }
         if (rT >= 2.8) {
-          var endIds = GU.edgeNodes(e), inside = 0;
-          for (var ei = 0; ei < endIds.length; ei++) {
-            var en = view.graph.byId[endIds[ei]];
-            if (!en) continue;
-            var sp = w2s(en.x, en.y);
-            if (sp.x >= 0 && sp.x <= W && sp.y >= 0 && sp.y <= H) inside++;
-          }
-          /* ⭐ 合流边（g.trunk）的近景特殊：分支两端都可能在屏外，但汇合点/分支
-             本身横穿视口 —— 几何已经由 polysHitView 判过「确实在屏内」，这里再按
-             端点判一次会把整组合流线（含主干）误杀。用户放大到汇合点附近时
-             要看见的正是这一段，所以端点全在屏外也放行。 */
-          if (inside === 0 && g.trunk) inside = 1;
-          insideN = inside;
-          if (inside === 0) { edgeTrace(g, 'off', 0, aLod, 0); return; }
+          /* ⭐ Task 3：不再按「端点是否在屏内」丢线（旧闸门：两端都在屏外 ⇒ 'off'，合流边靠 g.trunk 豁免）。
+             几何与视口是否相交已由 buildGeometry/polysHitView 和位图 cullBox 判过；
+             长线的淡出由下面的 edgeFade（世界长度）负责，平移时不随端点进出视口而跳变。 */
+          insideN = -1;
           /* ⭐⭐ 2026-10-2x（手机上报「全景很清楚、稍微放大就没了」）：
              ⛔ **删掉按屏幕长度衰减**（原来是 exp(-lenPx/320)）。理由有两条：
                ① 同一个量（这条边有多长）已经在 `edgeFade(g)` 里按**世界长度**算过一次，
@@ -1980,6 +2391,16 @@
 
       ctx.beginPath();
       g.polys.forEach(function (pts, i) {
+        /* 共享主干（多条边共用同一段几何）：只画一次。收集到 fanPass，由 flushFanPass 统一落笔，
+           取所有**可见**成员里最亮/最粗的那份样式 —— 隐藏的边不会出现在 geom 里，所以不会影响它。 */
+        var fid = g.fans && g.fans[i];
+        if (fid && fanPass) {
+          var prev = fanPass.get(fid);
+          if (!prev || a > prev.a || (a === prev.a && w > prev.w)) {
+            fanPass.set(fid, { pts: pts, a: a, w: w, color: ctx.strokeStyle, active: active, ar: g.routeArrows ? findFanArrow(g.routeArrows, fid) : null });
+          }
+          return;
+        }
         if (g.quads[i]) {
           var q = g.quads[i];
           ctx.moveTo(q.p0.x, q.p0.y);
@@ -1994,6 +2415,15 @@
          见 drawTrunksLive 上方的注释。 */
       ctx.stroke();
       edgeTrace(g, 'drawn', a, aLod, insideN);
+      if (g.routeArrows) {
+        /* 路由方向标：与所属线段同色同透明度；内部箭头更小，放不下（<3.1px）就不画，不堆叠难辨的标记 */
+        ctx.fillStyle = ctx.strokeStyle;
+        for (var ai = 0; ai < g.routeArrows.length; ai++) {
+          var ar = g.routeArrows[ai];
+          if (ar.fan && fanPass) continue;
+          drawRouteArrow(ar, active);
+        }
+      }
 
       // 等价线中点画一个 ⟺（用白色描边做底，而不是白方块，免得在云上留个补丁）
       if (g.glyph && cam_eqVisible()) {
@@ -2009,11 +2439,37 @@
       ctx.restore();
     }
 
+    var fanPass = null;
+    function findFanArrow(list, fid) { for (var i = 0; i < list.length; i++) if (list[i].fan === fid) return list[i]; return null; }
+    function drawRouteArrow(ar, active) {
+      var size = Math.min(ar.len * (ar.terminal ? 0.85 : 0.36),
+        U.clamp(C.edge.arrowSize * Math.pow(camNow().k, 0.35), 6, 17) * (ar.terminal ? 1 : 0.72) * (active ? 1.2 : 1));
+      if (size < 3.1) return;
+      ctx.save();
+      ctx.translate(ar.x, ar.y); ctx.rotate(ar.angle);
+      ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-size, size * 0.42); ctx.lineTo(-size * 0.72, 0); ctx.lineTo(-size, -size * 0.42);
+      ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    /** 共享主干统一落笔（每个 fan 一次） */
+    function flushFanPass() {
+      if (!fanPass) return;
+      fanPass.forEach(function (q) {
+        ctx.save();
+        ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = q.w; ctx.strokeStyle = q.color; ctx.fillStyle = q.color;
+        ctx.beginPath(); ctx.moveTo(q.pts[0].x, q.pts[0].y); ctx.lineTo(q.pts[1].x, q.pts[1].y); ctx.stroke();
+        if (q.ar) drawRouteArrow(q.ar, q.active);
+        ctx.restore();
+      });
+      fanPass = null;
+    }
+
     function cam_eqVisible() { return camNow().k >= C.edge.equivalenceGlyph; }
 
     function isEdgeActive(g) {
       var e = g.edge;
       if (view.hover && view.hover.type === 'edge' && view.hover.id === e.id) return true;
+      if (view.focus && view.focus.type === 'fan') return view.focus.members.has(e.id);
       if (view.focus && view.focus.type === 'edge' && view.focus.id === e.id) return true;
       if (view.focus && view.focus.type === 'node' && GU.edgeNodes(e).indexOf(view.focus.id) >= 0) return true;
       if (view.hover && view.hover.type === 'node' && GU.edgeNodes(e).indexOf(view.hover.id) >= 0) return true;
@@ -2184,6 +2640,21 @@
          落到画布外就不画。别再自作主张给它找位置。 */
       return { x: x, y: y, box: { x0: x - half, y0: y - 1, x1: x + half, y1: y + fs + 2 } };
     }
+    /** Task 3D：不量宽度判「nameSpot 的框与屏幕相不相交」。1 / 0 = 确定答案；-1 = 判不了，调用方照旧量宽 + nameSpot。
+        ⛔ 必须与 nameSpot 同一套式子（y 的求值顺序、y0 = y−1、y1 = y+fs+2、半宽 = tw/2+pad ≥ pad > 0）：
+           · y1 ≤ 0 或 y0 ≥ H ⇒ 无论多宽都不相交 ⇒ 0；
+           · 纵向相交且 0 ≤ px ≤ W：x1 = px+half ≥ px+pad > 0、x0 = px−half ≤ px−pad < W（浮点单调）⇒ 1。
+        改 nameSpot 就得改这里（`tools/labelcheck.mjs` 对拍两者）。 */
+    function nameOnScreenQuick(px, py, r, fs, camK) {
+      var pad = C.node.labelPad, lo = C.node.labelOffset;
+      if (!(pad > 0) || !isFinite(lo) || !isFinite(px) || !isFinite(py) || !isFinite(r) ||
+          !isFinite(fs) || !isFinite(camK)) return -1;
+      var off = lo * Math.max(camK, 0.62);
+      var y = py + r + off;
+      if (y + fs + 2 <= 0 || y - 1 >= H) return 0;
+      if (px >= 0 && px <= W && px + pad > 0 && px - pad < W) return 1;
+      return -1;
+    }
 
     /** 这一帧「必须赢」的标签：**选中 → 悬停 → 搜索命中**。
         为什么要在画板块名之前先占位：placeName() 是「先到先得」的队列，
@@ -2248,15 +2719,20 @@
         if (L.alpha <= 0.06) return;
         /* 字号跟着当前缩放走（预留时同一帧算的 fs）；高亮色 = 类型色，
            和普通节点名的墨色区分开 —— 但**不加粗、不放大**（优先级靠占位，不靠抢眼）。 */
-        ctx.font = '600 ' + L.fs + 'px ' + T.font;
+        var font = '600 ' + L.fs + 'px ' + T.font;
+        ctx.font = font;
         var alpha = L.alpha;
-        ctx.lineWidth = Math.max(2.5, L.fs * 0.28);
-        ctx.strokeStyle = 'rgba(' + T.ring + ',' + (0.9 * alpha).toFixed(3) + ')';
+        var lw = Math.max(2.5, L.fs * 0.28);
+        var stroke = 'rgba(' + T.ring + ',' + (0.9 * alpha).toFixed(3) + ')';
+        ctx.lineWidth = lw;
+        ctx.strokeStyle = stroke;
         ctx.strokeText(L.text, L.x, L.y);
-        ctx.fillStyle = (L.rank <= 1)
+        var fill = (L.rank <= 1)
           ? U.rgba(MG.typeStyle(L.type).color, alpha)
           : U.rgba(T.ink, alpha);
+        ctx.fillStyle = fill;
         ctx.fillText(L.text, L.x, L.y);
+        if (labelInk) labelInk.nodes.push(L.text, L.x, L.y, font, lw, stroke, fill);
         prof.labelCount++;
       });
     }
@@ -2322,6 +2798,12 @@
           = 0.1·margin·d（dpr2 ⇒ 40 设备像素）⇒ 戳在 (1,1) 永远在源矩形之外。 */
     var LAB_STAMP = [1, 1];
     var labBad = false;         // 重算抛过异常 / 层没内容 ⇒ 这一帧直接实时画（下帧再试）
+    function resetLostLabels() {
+      labelCache = null;
+      labBad = true;
+      clearTextCache();
+    }
+    canvas.addEventListener('contextlost', resetLostLabels);
 
     /** 离屏标签层（按 W/H/dpr 复用；尺寸或 dpr 变了就重建） */
     function ensureLabelLayer() {
@@ -2331,8 +2813,27 @@
       var cv = document.createElement('canvas');
       cv.width = Math.max(1, Math.round(W * d) + 2 * ox);
       cv.height = Math.max(1, Math.round(H * d) + 2 * ox);
-      labLayer = { cv: cv, g: cv.getContext('2d'), w: W, h: H, dpr: d, margin: m, ox: ox };
+      var g = null;
+      try { g = cv.getContext('2d'); } catch (_) {} // 分配失败时同一尺寸只试一次
+      var layer = labLayer = { cv: cv, g: g, w: W, h: H, dpr: d, margin: m, ox: ox };
+      if (g) {
+        cv.addEventListener('contextlost', function () {
+          if (labLayer === layer) { layer.g = null; resetLostLabels(); }
+        });
+        cv.addEventListener('contextrestored', function () {
+          if (labLayer === layer) { layer.g = g; resetLostLabels(); }
+        });
+      }
       return labLayer;
+    }
+    function usableLabelContext(L) {
+      var g = L && L.g;
+      if (g && g.isContextLost && g.isContextLost()) {
+        L.g = null;
+        resetLostLabels();
+        return null;
+      }
+      return g;
     }
 
     /** 把离屏层按 (dx,dy) 贴回主画布。
@@ -2347,19 +2848,101 @@
       ctx.drawImage(L.cv, L.ox - dx * d, L.ox - dy * d, W * d, H * d, 0, 0, W, H);
     }
 
+    /* ⭐⭐ Task 3D（2026-11-26）「缩放帧直画 + 懒物化」（PERFORMANCE.md §13）：
+       k 一变，旧策略每帧都要「清标签层 → 画进层 → 再贴回主画布」；缩放手势里这一层永远不会被回放。
+       现在：**只有真的在变 k 的帧**（且没有选中 / 悬停 / 搜索命中）把同一套出字函数直接画进主画布
+       （同一个 CSS 坐标 / dpr 变换、同一份标签层起始状态），同时把这一帧的命令记下来
+       （结构性名字 = 有序命令；节点名 = 7 元组）。缩放停下、原策略要回放这张缓存时，
+       才把记录补画进标签层（`materializeLabels`），然后照原路验戳、回放。
+       ⛔ 不缓存任何「屏幕相关」的结果跨机位；⛔ 记录只留最后一帧；⛔ 记录作废 ⇒ 一律走原来的重算。
+       回退：`?labfast=0` / `C.labelRender.fast=false` / `setLabelFast(false)` ⇒ 逐行回到 3C 的实现。 */
+    var labelFast = !(C.labelRender && C.labelRender.fast === false);
+    var labelInk = null;        // 直画帧的记录 { start, struct, nodes, layer, valid, depth }（只在那一帧里非空）
+    var labelRank = null;       // labelRankBuild 的结果（跨帧复用，逐项核对后才用）
+    /* 诊断计数（整数自增，热路径上不分配）：哪条路走了几次、为什么没走直画、物化成没成 */
+    var labelPathStat = { direct: 0, rebuild: 0, replay: 0, materialized: 0, discarded: 0,
+      recordInvalid: 0, directError: 0, fallback: 0, noContext: 0,
+      rankBuild: 0, rankHit: 0, materializeMs: 0, last: '' };
+
     /** 出字的那一组（顺序 = 避让优先级：板块 → 领域 → 星团 → 节点）。
-        ⚠️ 四个函数一行都没改：圆角框、字距、alpha、避让全靠「换 ctx」复用。 */
+        ⚠️ 四个函数一行都没改：圆角框、字距、alpha、避让全靠「换 ctx」复用。
+        Task 3D：直画帧里结构性名字经记录器画（同样是「换 ctx」）；节点名由 drawLabels 自己记 7 元组。 */
     function drawNamesGroup() {
+      var rec = labelInk;
+      if (rec && rec.valid && (lodA.sectorName > 0.02 || lodA.galaxyName > 0.02 || lodA.clusterName > 0.02)) {
+        var real = ctx, proxy = labelRecorder(real, rec);
+        if (!proxy) { rec.valid = false; drawNamesStructural(); }
+        else {
+          ctx = proxy;
+          try { drawNamesStructural(); } finally { ctx = real; }
+          if (rec.depth !== 0) rec.valid = false;
+        }
+      } else drawNamesStructural();
+      if (C.showLabels) drawLabels();
+    }
+    function drawNamesStructural() {
       if (lodA.sectorName > 0.02) drawSectorNames();
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
-      if (C.showLabels) drawLabels();
+    }
+
+    /** 直画一帧：返回 true = 这一帧的名字已经处理完（含失败）；false = 没有层 context，交给原路。
+        ⛔ 失败时**不在已画了一半的主画布上再画第二套**：清缓存、标 labBad，下一帧（停手那帧走重算）自愈。 */
+    function drawNamesLive(c, sig) {
+      var L = ensureLabelLayer(), g = usableLabelContext(L);
+      if (!g) { labelPathStat.noContext++; return false; }
+      labelCache = null;                     // 原策略在 k 变了时也会扔掉旧缓存、重算
+      labelBase = prof.labelCount;
+      var before = prof.labelCount;
+      var rec = { start: labelReadState(g), struct: [], nodes: [], layer: L, valid: true, depth: 0 };
+      var ok = false;
+      ctx.save();
+      try {
+        labelCopyState(ctx, g);              // 起始状态 = 标签层此刻的状态（旧路就是在它上面画的）
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        labelInk = rec;
+        try { drawNamesGroup(); } finally { labelInk = null; }
+        labelCopyState(g, ctx);              // 终态抄回层：下一次重算 / 物化看到的状态与旧路一致
+        ok = true;
+      } catch (e) {
+        ok = false;
+      } finally {
+        ctx.restore();
+      }
+      if (ctx.isContextLost && ctx.isContextLost()) { resetLostLabels(); return true; }
+      if (!ok) {
+        /* 与重算失败同一套善后（见 drawAllNames）：画到一半抛出 ⇒ 避让框可能只塞了一半，不清的话
+           下一趟重算（停手那帧）会被这些「幽灵框」挤掉名字。主画布已被画了一半，⛔ 不在上面补画第二套。 */
+        labBad = true; labelCache = null; labelBase = prof.labelCount; nameBoxes.length = 0;
+        labelPathStat.directError++; labelPathStat.last = 'direct-error';
+        return true;
+      }
+      if (!rec.valid) { labelPathStat.recordInvalid++; rec = null; }
+      labelCache = { k: c.k, tx: c.tx, ty: c.ty, w: W, h: H, sig: sig,
+        count: prof.labelCount - before, stamp: 0, directOnly: true, record: rec };
+      prof.labelRecalc++;
+      labelPathStat.direct++;
+      labelPathStat.last = 'direct';
+      return true;
+    }
+
+    /** 把直画帧的记录补画进标签层并打戳。成功 ⇒ 缓存变成普通的「已打戳」缓存（机位 / 条数仍是直画那一帧的）。 */
+    function materializeLabels(cache) {
+      var L = labLayer, ok = false, t0 = performance.now();   // 只在交接那一帧计时（不在热路径上）
+      try { ok = labelReplayRecord(L.g, cache.record, dpr, L.ox, L.cv.width, L.cv.height); }
+      catch (e) { ok = false; }
+      labelPathStat.materializeMs += performance.now() - t0;
+      if (!ok || !stampLabelLayer()) { labBad = true; return false; }
+      cache.record = null; cache.directOnly = false; cache.stamp = 1; labBad = false;
+      return true;
     }
 
     /** 退路：名字**直接画在主画布**上（不走离屏层）。
         层拿不到 context / 重算抛异常时用它 —— 慢一点，但这一帧至少还有字。
         ⛔ 吞掉异常：名字没画出来也不能把 draw() 后面的 hover 叠加一起带走。 */
     function drawNamesDirect() {
+      labelPathStat.fallback++;
+      labelPathStat.last = 'fallback';
       try { drawNamesGroup(); } catch (e) { labBad = true; }
     }
 
@@ -2367,9 +2950,8 @@
         ⛔ 落点必须在「永远贴不出去」的那一圈余量里：源矩形左边最小 = ox − 0.9·margin·d
            = 0.1·margin·d（dpr2 ⇒ 40 设备像素）⇒ 戳在 (1,1) 永远在源矩形之外。 */
     function stampLabelLayer() {
-      var L = labLayer;
-      if (!L || !L.g) return false;
-      var g = L.g;
+      var g = usableLabelContext(labLayer);
+      if (!g) return false;
       try {
         g.save();
         g.setTransform(1, 0, 0, 1, 0, 0);
@@ -2421,6 +3003,8 @@
       var n = labelCache.count || 0;
       prof.labelCount += n;
       prof.labelReplay += n;
+      labelPathStat.replay++;
+      labelPathStat.last = 'replay';
     }
 
     /** 统一入口：四类名字一次画完（顺序 = 避让优先级：板块 → 领域 → 星团 → 节点）
@@ -2431,6 +3015,20 @@
       var prevCam = labelPrevCam;
       labelPrevCam = { k: c.k, tx: c.tx, ty: c.ty };
       var sig = labelSig();
+      /* Task 3D：只有「这一帧 k 真的变了」才直画（⛔ 同 k 的平移 / 停住照旧走位图路） */
+      if (labelFast && prevCam && prevCam.k !== c.k) {
+        if (drawNamesLive(c, sig)) return;
+      }
+      /* Task 3D 交接：上一帧是直画（层里没有这张缓存的像素）。先按**原策略**判这一帧会不会回放它：
+         会 ⇒ 物化后照原路验戳、回放；不会（或物化失败）⇒ 扔掉，走原来的重算。⛔ 绝不贴旧像素。 */
+      if (labelCache && labelCache.directOnly) {
+        if (labelHandoffOk(labelCache, c, prevCam, sig, labLayer, dpr, W, H, LAB_MARGIN) && materializeLabels(labelCache)) {
+          labelPathStat.materialized++;
+        } else {
+          labelPathStat.discarded++;
+          labelCache = null;
+        }
+      }
       if (labelCache && labLayer && labLayer.g && labLayer.dpr === dpr && labelCache.k === c.k &&
           labelCache.w === W && labelCache.h === H && labelCache.sig === sig) {
         /* ⭐⭐ 机位与**重算那一帧**逐位相同 ⇒ 这一层就是为这一屏算的，直接贴，不重算。
@@ -2464,7 +3062,7 @@
              屏幕上就是「节点和线都在、文字整块消失」。 */
       labelCache = null;
       var L = ensureLabelLayer();
-      var g = L.g;
+      var g = usableLabelContext(L);
       if (!g) {                              // 拿不到 2d context（内存不足）：退化成每帧直接画
         labBad = true;
         drawNamesDirect();
@@ -2505,6 +3103,8 @@
       labelCache = { k: c.k, tx: c.tx, ty: c.ty, w: W, h: H, sig: sig,
         count: prof.labelCount - before, stamp: 1 };
       prof.labelRecalc++;
+      labelPathStat.rebuild++;
+      labelPathStat.last = 'rebuild';
       blitLabels(0, 0);
     }
 
@@ -2519,7 +3119,7 @@
     var ownCache = { key: '', set: null };
     /* ⭐ 2026-10-20 字号按**世界空间拥挤度**定档（与相机无关 ⇒ 平移不改字号）。 */
     var ownSizeMap = Object.create(null);
-    function labelOwnSet(k) {
+    function labelOwnSet(k, rank) {
       /* ⭐ 2026-11-16 修「第 6 层 def.weak-hausdorff 没名字」：
          旧实现拿**全图节点**（含被层过滤藏掉的）算世界归属 —— 藏掉的、优先级更高的
          节点照样占住格子，可见节点被判「不独占」直接 own 掉；屏幕上又找不到 blocker，
@@ -2528,12 +3128,20 @@
       var key = Math.round(k * 40) + '|' + (MG.displayLang || 'zh') + '|' + (C.showLabels ? 1 : 0) + '|' + sigEpoch;
       if (ownCache.key === key) return ownCache.set;
       var kk0 = Math.max(0.02, k);
-      var ns = view.graph.nodes.filter(function (n) { return nodeOk(n.id); }).sort(function (a, b) {
-        return (labelPriority(b) - labelPriority(a)) || (a.id < b.id ? -1 : 1);
-      });
+      var fast = labelFast;
+      /* Task 3D：本帧的静态优先级序（drawLabels 刚核对 / 建好）已经按「优先级降序、id 升序」排过全图；
+         过滤可见与排序可交换（全序）⇒ 与旧的 filter().sort() 逐项相同。rank.exact=false 时走旧排序。 */
+      var ns = (fast && rank && rank.exact)
+        ? rank.own.filter(function (n) { return nodeOk(n.id); })
+        : view.graph.nodes.filter(function (n) { return nodeOk(n.id); }).sort(function (a, b) {
+          return (labelPriority(b) - labelPriority(a)) || (a.id < b.id ? -1 : 1);
+        });
       var cell = Math.max(6, (C.node.labelSize + 12) / kk0);
-      var grid = Object.create(null), set = Object.create(null);
-      ns.forEach(function (n) {
+      var grid = Object.create(null);
+      var set = fast ? labelOwnSparse(ns, k, C.node.labelSize, C.node.labelPad) : null;
+      var legacyOwn = !set;
+      if (legacyOwn) set = Object.create(null);
+      if (legacyOwn) ns.forEach(function (n) {
         var txt = n.labelShow || n.label;
         if (!txt) return;
         var wW = (txt.length * C.node.labelSize * 0.95 + C.node.labelPad * 2) / kk0;
@@ -2563,6 +3171,7 @@
       (function fillSize() {
         var acc = [];
         for (var q = 0; q < ns.length; q++) if (set[ns[q].id]) acc.push(ns[q]);
+        if (fast && labelThresholdSizes(acc, k, C.node.labelSize, ownSizeMap)) return;
         for (var a1 = 0; a1 < acc.length; a1++) {
           var A1 = acc[a1], best = 1e9;
           for (var a2 = 0; a2 < acc.length; a2++) {
@@ -2642,15 +3251,37 @@
          ⭐⭐ 2026-10-2x：框一律走 `nameSpot()` —— **和落笔同一个实现**。贴边夹回画布
             之后，下边缘的名字会翻到节点上方（从「屏外」变成「屏内」）、左右边缘的
             名字会平移；排序判据不跟着走的话，它们会被当成余量里的名字排到最后。 */
-      ctx.font = '600 ' + fs + 'px ' + T.font;
+      var fast = labelFast, rank = null;
+      var baseFont = '600 ' + fs + 'px ' + T.font;
+      ctx.font = baseFont;
+      var lazy = fast && !labBad;
+      var rankFont = lazy ? ctx.font : null, pending = null;
       for (oi = 0; oi < allNodes.length; oi++) {
         oN = allNodes[oi];
         oS = screenOf(oN);
         var onI = 0;
         if (oS.x > -PAD_NODE && oS.x < W + PAD_NODE && oS.y > -PAD_NODE && oS.y < H + PAD_NODE) {
-          var bI = nameSpot(oS.x, oS.y, nodeRadius(oN),
-            measure(ctx, oN.labelShow || oN.label, ctx.font), fs, k).box;
-          onI = (bI.x1 > 0 && bI.x0 < W && bI.y1 > 0 && bI.y0 < H) ? 1 : 0;
+          var rI = nodeRadius(oN);
+          var qI = fast ? nameOnScreenQuick(oS.x, oS.y, rI, fs, k) : -1;
+          var textI = oN.labelShow || oN.label, wI;
+          if (lazy && qI >= 0) {
+            var keyI = textCacheKey(textI, rankFont);
+            if (textWidth(keyI) === undefined) {
+              if (!pending) {
+                // 保留旧预热首次未命中时写回序列化字体的状态变化。
+                ctx.font = rankFont;
+                pending = Object.create(null);
+              }
+              pending[keyI] = true;
+            }
+          } else {
+            wI = measure(ctx, textI, ctx.font);
+          }
+          if (qI >= 0) onI = qI;
+          else {
+            var bI = nameSpot(oS.x, oS.y, rI, wI, fs, k).box;
+            onI = (bI.x1 > 0 && bI.x0 < W && bI.y1 > 0 && bI.y0 < H) ? 1 : 0;
+          }
         }
         order.push({
           n: oN, x: oS.x, y: oS.y,
@@ -2658,7 +3289,14 @@
           p: labelPriority(oN)
         });
       }
-      order.sort(function (a, b) { return (b.on - a.on) || (b.p - a.p); });
+      if (fast) {
+        /* 静态优先级序跨帧复用（逐个节点对象 + 优先级值核对）；屏内/屏外是本帧的，只做稳定划分 */
+        if (labelRankSame(labelRank, order)) labelPathStat.rankHit++;
+        else { labelRank = labelRankBuild(order); labelPathStat.rankBuild++; }
+        rank = labelRank.exact ? labelRank : null;
+      }
+      if (rank) order = labelRankPartition(rank, order);
+      else order.sort(function (a, b) { return (b.on - a.on) || (b.p - a.p); });
 
       var reserved = Object.create(null);
       reservedLabels.forEach(function (L) { reserved[L.id] = 1; });
@@ -2683,9 +3321,15 @@
             实测平板 r=3.6：预算 120，结构性名字先吃掉 58 条 ⇒ 节点名实际只有 62 条。 */
       var nodeDrawn = 0;
 
-      ctx.font = '600 ' + fs + 'px ' + T.font;
+      ctx.font = baseFont;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
+      /* Task 3D：本帧内不变的东西只取一次 / 只设一次（值相同才省；字号仍按旧式逐个累乘） */
+      var hitFn = fast ? labelGridIndex(placed) : null;
+      var ownSet = null, curFont = fast ? ctx.font : null, lastLW = null, lastStroke = null, lastFill = null;
+      /* ctx.font getter 会舍入小数；记录实际赋值，不能把序列化字符串当成原始字号。 */
+      var rawFont = fast ? baseFont : null;
+      var ink = fast ? labelInk : null;
 
       order.forEach(function (it, ord) {
         var n = it.n, p = it;
@@ -2713,7 +3357,7 @@
         st.cand++;
         if (ex) ex.cand = st.cand;
         /* 归属与视口无关：不独占就不画（见 labelOwnSet）。主干/枢纽/选中/悬停/搜索命中不受限。 */
-        if (!labelMustDraw(n) && !labelOwnSet(k)[n.id]) {
+        if (!labelMustDraw(n) && !(fast ? (ownSet || (ownSet = labelOwnSet(k, rank))) : labelOwnSet(k))[n.id]) {
           st.cutOwn = (st.cutOwn || 0) + 1;
           if (miss) miss(n.id, 'own', ex);
           return;
@@ -2734,19 +3378,35 @@
         var _sz = (n.trunk || n.isHub) ? 1 : (ownSizeMap[n.id] || 1);
         if (_sz < 0.99) {
           fs = Math.round(Math.max(8, fs * _sz) * 10) / 10;
-          ctx.font = ctx.font.replace(/(\d+(?:\.\d+)?)px/, fs + 'px');
+          if (fast) {
+            var nf = curFont.replace(/(\d+(?:\.\d+)?)px/, fs + 'px');
+            if (nf !== curFont || rawFont !== curFont) { ctx.font = nf; rawFont = nf; curFont = ctx.font; }
+          } else ctx.font = ctx.font.replace(/(\d+(?:\.\d+)?)px/, fs + 'px');
         }
-        var tw = measure(ctx, text, ctx.font);
+        var tw;
+        if (fast) {
+          var key = textCacheKey(text, curFont);
+          tw = textWidth(key);
+          if (tw === undefined) {
+            if (pending && pending[key]) tw = measureDeferred(ctx, text, rankFont, key);
+            else {
+              // 只有逻辑未命中才写回当前字体；延后的排序宽度已经预热。
+              rawFont = curFont;
+              tw = measureMissing(ctx, text, curFont, key);
+            }
+          }
+        } else tw = measure(ctx, text, ctx.font);
         var spot = nameSpot(p.x, p.y, r, tw, fs, k);   // ⭐ 贴边夹回画布（见 nameSpot）
         var x = spot.x, y = spot.y;
         var box = { x0: spot.box.x0, y0: spot.box.y0, x1: spot.box.x1, y1: spot.box.y1,
           id: n.id, kind: 'node' };
 
-        var hit = hitOf(box, placed);
+        var hit = fast ? hitFn(box) : hitOf(box, placed);
         /* ⭐⭐ 2026-10-20 用户要求：**撞了先缩字号，缩到底还不下才不画**。
            以前一撞直接 return，于是有些名字必须放到最大才看得见。
-           最多缩到 10px（再小读不出）；每档重新量宽、重算框、重新判避让。 */
-        if (hit) {
+           最多缩到 10px（再小读不出）；每档重新量宽、重算框、重新判避让。
+           （tries 已停用为空表 ⇒ 这一段只剩一次同值的 ctx.font 赋值；fast 路径跳过它，结果相同） */
+        if (hit && !fast) {
           var fontBase = ctx.font;
           var tries = [];   /* 2026-10-20 停用：按本帧碰撞缩字号会让平移时字号乱跳（用户报） */
           for (var ti = 0; ti < tries.length; ti++) {
@@ -2763,6 +3423,8 @@
           ctx.font = fontBase;
         }
         if (hit) {
+          /* 旧碰撞路径即使 tries 为空仍会写回 fontBase；仅真正无差异时才省 setter。 */
+          if (fast && rawFont !== curFont) { ctx.font = curFont; rawFont = curFont; }
           st.cutAvoid++;
           if (miss) {
             ex.nx = x; ex.ny = y; ex.box = box;
@@ -2778,11 +3440,22 @@
         placed.push(box);
 
         var alpha = a * 0.92 * nameAlpha;
-        ctx.lineWidth = Math.max(2.5, fs * 0.28);
-        ctx.strokeStyle = 'rgba(' + T.ring + ',' + (0.9 * alpha).toFixed(3) + ')';
-        ctx.strokeText(text, x, y);
-        ctx.fillStyle = U.rgba(T.ink, alpha);
-        ctx.fillText(text, x, y);
+        if (fast) {
+          var lw = Math.max(2.5, fs * 0.28), stroke = 'rgba(' + T.ring + ',' + (0.9 * alpha).toFixed(3) + ')';
+          if (lw !== lastLW) { ctx.lineWidth = lw; lastLW = lw; }
+          if (stroke !== lastStroke) { ctx.strokeStyle = stroke; lastStroke = stroke; }
+          ctx.strokeText(text, x, y);
+          var fill = U.rgba(T.ink, alpha);
+          if (fill !== lastFill) { ctx.fillStyle = fill; lastFill = fill; }
+          ctx.fillText(text, x, y);
+          if (ink) ink.nodes.push(text, x, y, rawFont, lw, stroke, fill);   // 直画帧：留给懒物化
+        } else {
+          ctx.lineWidth = Math.max(2.5, fs * 0.28);
+          ctx.strokeStyle = 'rgba(' + T.ring + ',' + (0.9 * alpha).toFixed(3) + ')';
+          ctx.strokeText(text, x, y);
+          ctx.fillStyle = U.rgba(T.ink, alpha);
+          ctx.fillText(text, x, y);
+        }
         prof.labelCount++;                    // 节点名：真正画上去了才算一条
         nodeDrawn++;
         st.drawn++;
@@ -2886,27 +3559,29 @@
       // 再连线
       var tol = C.edge.hitTolerance;
       var list = geomCache ? Object.keys(geomCache).map(function (k) { return geomCache[k]; }) : [];
-      var hitEdge = null, hitD = Infinity;
+      var hitEdge = null, hitD = Infinity, hitFan = null, fanHits = null;
       list.forEach(function (g) {
         if (!edgeShown(g)) return;
         // 弱边没开探索模式时不响应点击（它本来就几乎看不见）
         if (GU.isWeak(g.edge) && !C.exploreMode) return;
         var a = alphaForEdge(g.edge);
         if (a <= 0.06) return;
-        g.polys.forEach(function (pts) {
-          var d = U.pointPolylineDist(sx, sy, pts);
-          if (d < tol && d < hitD) { hitD = d; hitEdge = g.edge.id; }
+        g.polys.forEach(function (pts, pi) {
+          var d = U.pointPolylineDist(sx, sy, pts), fid = g.fans && g.fans[pi];
+          /* 共享主干：成员 = 命中且**可见**的那些边（隐藏的边不在 geomCache 里，所以不会成为候选） */
+          if (fid && d < tol) { fanHits = fanHits || Object.create(null); (fanHits[fid] = fanHits[fid] || []).push(g.edge.id); }
+          if (d < tol && d < hitD) { hitD = d; hitEdge = g.edge.id; hitFan = fid || null; }
         });
         /* 合流主干：只有 root 边带 trunkPolys ⇒ 点主干总是打开**同一条**证明
            （规则见 trunkPlan：id 最小的那条），不会因为遍历顺序不同而漂。
            其它分支各自可点，证明入口一个都没丢。 */
         if (g.trunkPolys) {
           var dt = U.pointPolylineDist(sx, sy, g.trunkPolys);
-          if (dt < tol && dt < hitD) { hitD = dt; hitEdge = g.edge.id; }
+          if (dt < tol && dt < hitD) { hitD = dt; hitEdge = g.edge.id; hitFan = null; }
         }
         if (g.arrow) {
           var d2 = U.dist(sx, sy, g.arrow.x, g.arrow.y);
-          if (d2 < tol + 6 && d2 < hitD) { hitD = d2; hitEdge = g.edge.id; }
+          if (d2 < tol + 6 && d2 < hitD) { hitD = d2; hitEdge = g.edge.id; hitFan = null; }
         }
       });
       /* 合流主干：屏幕坐标必须**按当前相机现算**——几何缓存可能是烘焙机位（staticCam）
@@ -2919,18 +3594,33 @@
         var tB = screenOf(tn);
         var tB2 = trimTo(tB, tA, nodeRadius(tn) + 5);
         var dt = U.pointPolylineDist(sx, sy, [tA, tB2]);
-        if (dt < tol + 1 && dt < hitD) { hitD = dt; hitEdge = tp.id; }
+        if (dt < tol + 1 && dt < hitD) { hitD = dt; hitEdge = tp.id; hitFan = null; }
+      }
+      if (hitFan && fanHits && fanHits[hitFan] && fanHits[hitFan].length > 1) {
+        /* 命中的是多条边共用的主干：不替用户挑「第一条」，把全部可见成员交给界面选 */
+        var mem = fanHits[hitFan].filter(function (id, i, a) { return a.indexOf(id) === i; }).sort();
+        return { type: 'fan', id: hitFan, members: mem };
       }
       return hitEdge ? { type: 'edge', id: hitEdge } : null;
     }
 
-    function invalidate() { geomCache = null; sectorPairCache = null; sigEpoch++; bundleCache = null; bundleCacheSrc = null; }
+    function invalidate() {
+      geomCache = null; sectorPairCache = null; sigEpoch++; bundleCache = null; bundleCacheSrc = null;
+      /* Task 3D：直画帧的记录在指纹变了之后不可能再被物化 ⇒ 现在就放掉（不留旧图的命令）；优先级序重建 */
+      if (labelCache && labelCache.directOnly) labelCache = null;
+      labelRank = null;
+    }
+    /** Task 3D 回退开关：false ⇒ 节点名 / 归属 / 字号 / 避让 / 缓存全部逐行走 3C 的实现 */
+    function setLabelFast(v) { labelFast = !!v; labelCache = null; labelRank = null; return labelFast; }
 
     return {
       resize: resize,
       draw: draw,
       hitTest: hitTest,
       invalidate: invalidate,
+      /* Task 3C：静态内容代次（= invalidate() 的计数）。位图增量烘焙只在「源图烘出来时的代次 = 现在」
+         时才复用旧像素：可见集合 / 外部内容并入 / resize 都会调 invalidate ⇒ 旧图一律不再复用。 */
+      staticRev: function () { return sigEpoch; },
       nodeRadius: nodeRadius,
       screenOf: screenOf,
       drawStatic: drawStatic,                              // Phase A：烘焙入口
@@ -2947,6 +3637,25 @@
             nx, ny, alpha, box, blocker}`。要回答「谁把它挤掉的」必须能直接读到 blocker。
            ⛔ 旧的 `labelTrace()[id] === 'avoid'` 写法请改成 `.why`。 */
       labelStat: function () { return labelStat; },
+      /* Task 3D：开关 + 路径计数（direct / rebuild / replay / materialized / discarded / 拒绝原因 / last）。
+         labelCacheInfo = 当前标签缓存的机位与状态（directOnly = 层里还没有它的像素）。只读诊断。 */
+      setLabelFast: setLabelFast,
+      get labelFast() { return labelFast; },
+      labelPath: function () { var o = {}, q; for (q in labelPathStat) o[q] = labelPathStat[q]; return o; },
+      labelPathReset: function () { for (var q in labelPathStat) labelPathStat[q] = q === 'last' ? '' : 0; },
+      labelCacheInfo: function () {
+        var c = labelCache;
+        return c ? { k: c.k, tx: c.tx, ty: c.ty, w: c.w, h: c.h, sig: c.sig, count: c.count, stamp: c.stamp,
+          directOnly: !!c.directOnly, record: c.record ? { valid: c.record.valid, nodes: c.record.nodes.length / 7,
+            struct: c.record.struct.length } : null } : null;
+      },
+      /* 诊断（测试用，O(n) 拷贝）：本帧结构性名字框 + 字号档表 */
+      labelBoxes: function () { return nameBoxes.map(function (b) { var o = {}, q; for (q in b) o[q] = b[q]; return o; }); },
+      labelOwnSizes: function () { var o = {}, q; for (q in ownSizeMap) o[q] = ownSizeMap[q]; return o; },
+      /* 诊断（测试用）：把「跨帧残留」的世界归属状态清零（归属表缓存 + 字号档表 + 优先级序）。
+         ownSizeMap 本来就**只增不清**（旧实现如此，生产行为保持）⇒ 同一页里先后跑两种实现时，后跑的一方会带着前一趟的残留进场；
+         对拍要求两趟起点相同，所以测试在每趟开头调用它。生产代码不调用。 */
+      labelStateReset: function () { var q; for (q in ownSizeMap) delete ownSizeMap[q]; ownCache = { key: "", set: null }; labelRank = null; },
       setLabelTrace: function (on) { labelTraceOn = !!on; if (!labelTraceOn) labelTraceMap = null; return labelTraceOn; },
       labelTrace: function () { return labelTraceMap; },
       /* 诊断：大标签的「锚点 y vs 实际画在 y」账本（默认关、零分配）。见 bigTraceOn 的注释。 */
