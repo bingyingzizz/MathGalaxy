@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://bingyingzizz.github.io/mathgalaxy/"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy — Mathematics, connected by logic; illustration based on the new graph layout"></a>
+  <a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53"><img src="docs/assets/mathgalaxy-cover.svg" width="100%" alt="MathGalaxy — Mathematics, connected by logic; illustration based on the new graph layout"></a>
 </p>
 
 <div align="center">
 
 **An interactive atlas of definitions, theorems, and proofs.**
 
-[**Explore MathGalaxy ↗**](https://bingyingzizz.github.io/mathgalaxy/) · [简体中文](README.zh-CN.md) · [Reading guide](reading.en.md) · [Contribute](CONTRIBUTING.md)
+[**Explore MathGalaxy ↗**](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53) · [简体中文](README.zh-CN.md) · [Reading guide](reading.en.md) · [Contribute](CONTRIBUTING.md)
 
 [![Code: MIT](https://img.shields.io/badge/code-MIT-526c86)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-526c86)](LICENSE)
@@ -22,11 +22,11 @@ Explore entire mathematical fields, zoom into individual constructions, and foll
 
 ### Follow the logic
 
-<a href="https://bingyingzizz.github.io/mathgalaxy/#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Four recorded premises converge to Stokes on chains using the Task 3C routing geometry"></a>
+<a href="https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=imp.spivak-chain-stokes"><img src="docs/assets/stokes-inference.svg" width="100%" alt="Four recorded premises converge to Stokes on chains using the graph routing geometry"></a>
 
 An implication is a **joint inference**, not merely a set of independent links. The diagram shows the recorded multi-premise edge for Stokes on chains. Click it to explore the corresponding edge in the live map.
 
-<sub>Cover and inference illustration are based on the Task 3C layout and route data. They are documentation graphics, not screenshots of the currently published application.</sub>
+<sub>Cover and inference illustration are based on graph layout and route data. They are documentation graphics, not screenshots of the currently published application.</sub>
 
 ## Explore the atlas
 
@@ -38,7 +38,7 @@ An implication is a **joint inference**, not merely a set of independent links. 
 | **Discover** | Explore analogies across fields, without confusing analogy with implication. |
 | **Share** | Link directly to a result or export a subgraph as SVG, TikZ or JSON. |
 
-Try [Zorn's lemma](https://bingyingzizz.github.io/mathgalaxy/#n=lem.zorn) or the [axiom of choice and well-ordering theorem](https://bingyingzizz.github.io/mathgalaxy/#e=eq.ac-wo).
+Try [Zorn's lemma](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#n=lem.zorn) or the [axiom of choice and well-ordering theorem](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53#e=eq.ac-wo).
 
 ## Mathematical principles
 
@@ -48,7 +48,7 @@ MathGalaxy is an evolving mathematical knowledge base, not a formally verified p
 
 ## Get started
 
-**Online:** [open the interactive atlas](https://bingyingzizz.github.io/mathgalaxy/).
+**Online:** [open the interactive atlas](https://bingyingzizz.github.io/mathgalaxy/?v=14b71b53).
 
 **Offline:** download [`dist/mathgalaxy.html`](dist/mathgalaxy.html) using GitHub's download/raw option and open it in a browser.
 
